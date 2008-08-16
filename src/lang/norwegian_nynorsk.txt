@@ -1002,11 +1002,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COM
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har ein ugyldig stasjon i ordrane
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornying gjekk gale for tog {COMMA} (pengegrense)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatik fornying gjekk gale for køyretøy {COMMA} (pengegrense)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornying gjekk gale på skip {COMMA} (pengegrense)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornying gjekk gale for fly {COMMA} (pengegrense)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornying gjekk gale for tog {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatik fornying gjekk gale for køyretøy {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornying gjekk gale på skip {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornying gjekk gale for fly {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er vorte for langt etter utskifte
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengegrense)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Tilleggsinnstillingar
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Endre tilleggsinstillingar

@@ -1088,11 +1088,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Samolot 
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Samolot {COMMA} ma nieodpowiednią stację w rozkładzie
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Błąd autoodnowienia pociągu {COMMA} (limit funduszy)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Błąd autoodnowienia samochodu {COMMA} (limit funduszy)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Błąd autoodnowienia statku {COMMA} (limit funduszy)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Błąd autoodnowienia samolotu {COMMA} (limit funduszy)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Błąd autoodnowienia pociągu {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Błąd autoodnowienia samochodu {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Błąd autoodnowienia statku {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Błąd autoodnowienia samolotu {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Pociąg {COMMA} jest za długi po zamianie
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(limit funduszy)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Konfiguracja wtyczek
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguracja wtyczek

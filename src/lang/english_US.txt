@@ -1001,11 +1001,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aircraft
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aircraft {COMMA} has an invalid station in its orders
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenew failed on train {COMMA} (money limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew failed on road vehicle {COMMA} (money limit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew failed on ship {COMMA} (money limit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew failed on aircraft {COMMA} (money limit)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenew failed on train {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew failed on road vehicle {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew failed on ship {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew failed on aircraft {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} is too long after replacement
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configure Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configure the patches

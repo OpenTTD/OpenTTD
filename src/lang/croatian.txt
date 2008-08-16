@@ -1006,11 +1006,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Zrakoplo
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Zrakoplov {COMMA} ima nevažeću stanicu u voznom redu
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Neuspješna automatska obnova vlaka {COMMA} (ograničena količina novca)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatska zamjena nije izvršena na cestovnom vozilu {COMMA} (money limit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Neuspješna automatska obnova broda {COMMA} (ograničena količina novca)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Neuspjela automatska zamjena zrakoplova {COMMA} (novčano ograničenje)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Neuspješna automatska obnova vlaka {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatska zamjena nije izvršena na cestovnom vozilu {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Neuspješna automatska obnova broda {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Neuspjela automatska zamjena zrakoplova {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Nakon zamjene, vlak {COMMA} je postao predug
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(novčano ograničenje)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Konfiguriraj zakrpe
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguriraj zakrpe

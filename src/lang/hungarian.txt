@@ -1069,11 +1069,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}A(z) {CO
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}A(z) {COMMA}. repülőnek nemlétező állomás van a menetrendjében
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenew sikertelen a(z) {COMMA}. vonaton (pénzlimit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew sikertelen a(z) {COMMA}. közúti járművön (pénzlimit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew sikertelen a(z) {COMMA}. hajón (pénzlimit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew sikertelen a(z) {COMMA}. repülőn (pénzlimit)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenew sikertelen a(z) {COMMA}. vonaton{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew sikertelen a(z) {COMMA}. közúti járművön{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew sikertelen a(z) {COMMA}. hajón{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew sikertelen a(z) {COMMA}. repülőn{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}A {COMMA}. vonat túl hosszú a csere után
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(pénzlimit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Foltok beállítása
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Foltok beállítása

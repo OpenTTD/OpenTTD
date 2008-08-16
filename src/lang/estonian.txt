@@ -1067,11 +1067,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Õhusõi
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Õhusõiduki {COMMA} sõidugraafikus on kehtetu jaam
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rongi {COMMA} automaatne uuendamine nurjus (rahapiirang)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Mootorsõiduki {COMMA} automaatne uuendamine nurjus (rahapiirang)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laeva {COMMA} automaatne uuendamine nurjus (rahapiirang)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Õhusõiduki iseuuendamine nurjus{COMMA} (rahapiirang)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rongi {COMMA} automaatne uuendamine nurjus{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Mootorsõiduki {COMMA} automaatne uuendamine nurjus{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laeva {COMMA} automaatne uuendamine nurjus{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Õhusõiduki iseuuendamine nurjus{COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Rong {COMMA} on pärast asendust liiga pikk
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahapiirang)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Paikade seadistamine
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Paikade seadistamine

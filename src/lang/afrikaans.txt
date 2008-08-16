@@ -998,11 +998,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Vliegtui
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Vliegtuig {COMMA} hen 'n ongeldig stasie in sy opdrae
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Outohernu misluk op trien {COMMA} (geld perk)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Outohernu misluk op pad voertuig {COMMA} (geld perk)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Outohernu misluk op skip {COMMA} (geld perk)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Outohernuwe misluk op vliegtuig {COMMA} (geld perk)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Outohernu misluk op trien {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Outohernu misluk op pad voertuig {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Outohernu misluk op skip {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Outohernuwe misluk op vliegtuig {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {COMMA} is te lank na vervang
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(geld perk)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Konfigureer Laslappe
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfigureer die laslappe

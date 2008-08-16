@@ -1009,11 +1009,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}飛機 {
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}飛機 {COMMA} 日程表中機場不存在
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}列車 {COMMA} 自動翻新失敗 (金錢限制)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}車輛 {COMMA} 自動翻新失敗 (金錢限制)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}輪船 {COMMA} 自動翻新失敗 (金錢限制)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飛機 {COMMA}自動翻新失敗 (金錢限制)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}列車 {COMMA} 自動翻新失敗{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}車輛 {COMMA} 自動翻新失敗{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}輪船 {COMMA} 自動翻新失敗{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飛機 {COMMA}自動翻新失敗{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}置換後列車 {COMMA} 過長
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(金錢限制)
 
 STR_CONFIG_PATCHES                                              :{BLACK}設定補綴
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}設置修正選項

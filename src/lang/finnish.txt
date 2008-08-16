@@ -999,11 +999,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lentokon
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lentokoneen {COMMA} käskyissä on laiton asema.
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Junan {COMMA} itseuudistus epäonnistui (rahoitusraja).
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Ajoneuvon {COMMA} itseuudistus epäonnistui (rahoitusraja).
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivan {COMMA} itseuudistus epäonnistui (rahoitusraja).
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lentokoneen {COMMA} itseuudistus epäonnistui (rahoitusraja).
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Junan {COMMA} itseuudistus epäonnistui{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Ajoneuvon {COMMA} itseuudistus epäonnistui{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivan {COMMA} itseuudistus epäonnistui{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lentokoneen {COMMA} itseuudistus epäonnistui{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Juna {COMMA} kasvaisi liian pitkäksi
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahoitusraja)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Muokkaa paikkauksia
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Muokkaa paikkauksia.

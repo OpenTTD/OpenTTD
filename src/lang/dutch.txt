@@ -1013,11 +1013,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Vliegtui
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Vliegtuig {COMMA} heeft een ongeldig station in de orders
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisch vernieuwen mislukt bij trein {COMMA} (onvoldoende geld)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisch vernieuwen mislukt bij wagen {COMMA} (onvoldoende geld)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisch vernieuwen mislukt bij schip {COMMA} (onvoldoende geld)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA} (onvoldoende geld)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisch vernieuwen mislukt bij trein {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisch vernieuwen mislukt bij wagen {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisch vernieuwen mislukt bij schip {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {COMMA} is te lang na het vervangen
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(onvoldoende geld)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Selecteer patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Kies welke patches je wilt gebruiken

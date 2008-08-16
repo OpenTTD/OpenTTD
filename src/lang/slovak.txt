@@ -1076,11 +1076,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lietadlo
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lietadlo {COMMA} ma neplatnu stanicu v prikazoch
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Zlyhalo obnovenie vlaku {COMMA} (finacny limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Zlyhalo obnovenie automobilu {COMMA} (finacny limit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Zlyhalo obnovenie lode {COMMA} (financny limit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Zlyhalo obnovenie lietadla {COMMA} (finacny limit)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Zlyhalo obnovenie vlaku {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Zlyhalo obnovenie automobilu {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Zlyhalo obnovenie lode {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Zlyhalo obnovenie lietadla {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po vymene prilis dlhy
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(finacny limit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nastavenia patchov
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavenia patchov

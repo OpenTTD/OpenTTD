@@ -1010,11 +1010,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Flugvél
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Flugvél {COMMA} hefur ógilda stöð í áætluninni
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Sjálfvirk uppfæring lestar {COMMA} mistókst (takmarkað fjármagn)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Sjálfvirk uppfæring bifreiðar {COMMA} mistókst (takmarkað fjármagn)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Sjálfvirk uppfæring skips {COMMA} mistókst (takmarkað fjármagn)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvirk uppfæring flugvélar {COMMA} mistókst (takmarkað fjármagn)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Sjálfvirk uppfæring lestar {COMMA} mistókst{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Sjálfvirk uppfæring bifreiðar {COMMA} mistókst{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Sjálfvirk uppfæring skips {COMMA} mistókst{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvirk uppfæring flugvélar {COMMA} mistókst{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Lest {COMMA} er of löng eftir endurnýjun
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(takmarkað fjármagn)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Viðbætur
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Stilla viðbætur

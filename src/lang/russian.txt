@@ -1015,11 +1015,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}У ав�
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}У авиатранспорта {COMMA} неправильное место назначения
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Ошибка автообновления для поезда {COMMA} (денег мало)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Ошибка автообновления для автотранспорта {COMMA} (денег мало)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Ошибка автообновления для корабля {COMMA} (денег мало)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Ошибка автообновления для самолета {COMMA} (денег мало)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Ошибка автообновления для поезда {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Ошибка автообновления для автотранспорта {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Ошибка автообновления для корабля {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Ошибка автообновления для самолета {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поезд {COMMA} слишком длинный после автозамены
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(денег мало)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Настройки патчей
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Открыть настройки патчей

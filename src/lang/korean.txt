@@ -1012,11 +1012,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}항공�
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}항공기 {COMMA}에 잘못된 경로가 있습니다.
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}열차 {COMMA}의 자동 교체 실패 (자금 제한)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}자동차 {COMMA}의 자동 교체 실패 (자금 제한)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}선박 {COMMA}의 자동 교체 실패 (자금 제한)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}항공기 {COMMA}의 자동 교체 실패 (자금 제한)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}열차 {COMMA}의 자동 교체 실패{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}자동차 {COMMA}의 자동 교체 실패{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}선박 {COMMA}의 자동 교체 실패{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}항공기 {COMMA}의 자동 교체 실패{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}열차 {COMMA}의 교체 시기가 되었습니다.
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
 
 STR_CONFIG_PATCHES                                              :{BLACK}패치 구성
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}패치를 구성합니다.

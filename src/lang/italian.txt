@@ -1015,11 +1015,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}L'Aeromo
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}L'Aeromobile {COMMA} ha un aeroporto non valido nei suoi ordini
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rinnovo automatico fallito per il Treno {COMMA} (limite denaro)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Rinnovo automatico fallito per l'Automezzo {COMMA} (limite denaro)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Rinnovo automatico fallito per la nave {COMMA} (limite denaro)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Rinnovo automatico fallito per l'Aeromobile {COMMA} (limite denaro)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rinnovo automatico fallito per il Treno {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Rinnovo automatico fallito per l'Automezzo {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Rinnovo automatico fallito per la nave {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Rinnovo automatico fallito per l'Aeromobile {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Il Treno {COMMA} dopo la sostituzione è diventato troppo lungo
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite denaro)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configura patch
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configura le patch

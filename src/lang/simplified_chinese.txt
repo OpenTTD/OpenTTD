@@ -1005,11 +1005,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}飞机 {
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}飞机 {COMMA} 的调度计划中有无法到达的机场。
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}列车 {COMMA} 自动更新失败 (现金不够)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}汽车 {COMMA} 自动更新失败 (现金不够)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}轮船 {COMMA} 自动更新失败 (现金不够)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飞机 {COMMA} 自动更新失败 (现金不够)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}列车 {COMMA} 自动更新失败{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}汽车 {COMMA} 自动更新失败{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}轮船 {COMMA} 自动更新失败{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飞机 {COMMA} 自动更新失败{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}列车 {COMMA} 在自动升级后过长！
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(现金不够)
 
 STR_CONFIG_PATCHES                                              :{BLACK}配置补丁
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}配置游戏补丁

@@ -1009,11 +1009,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COM
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig lufthavn i sin ordreliste
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse af tog {COMMA} mislykkedes (ikke penge nok)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisk fornyelse af køretøj {COMMA} mislykkedes (ikke penge nok)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornyelse af skib {COMMA} mislykkedes (ikke penge nok)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornyelse af fly {COMMA} mislykkedes (ikke penge nok)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse af tog {COMMA} mislykkedes{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisk fornyelse af køretøj {COMMA} mislykkedes{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornyelse af skib {COMMA} mislykkedes{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornyelse af fly {COMMA} mislykkedes{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er for langt efter udskiftning
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(ikke penge nok)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Indstil programrettelser
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Indstilning af programrettelser

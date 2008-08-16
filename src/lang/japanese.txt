@@ -1004,10 +1004,6 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}飛行�
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}飛行機{COMMA}の指令リストに不正な空港が入っています
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}列車{COMMA}の自動交換が失敗しました（資金制限）
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}道路車両{COMMA}の自動交換が失敗しました（資金制限）
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}船舶{COMMA}の自動交換が失敗しました（資金制限）
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飛行機{COMMA}の自動交換が失敗しました（資金制限）
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}交換後に列車{COMMA}は長過ぎます
 
 STR_CONFIG_PATCHES                                              :{BLACK}パッチの設定

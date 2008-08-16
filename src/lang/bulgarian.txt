@@ -1012,11 +1012,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Само
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Самолет {COMMA} има невалидно летище в своите заповеди
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Автоматично подновяване на влак {COMMA} не успя (ограничение на парите)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Автоматично подновяване на автомобил {COMMA} не успя (ограничение на парите)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Автоматично подновяване на кораб {COMMA} не успя (ограничение на парите)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автообновяването на самолет е неуспешно {COMMA} (ограничени средства)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Автоматично подновяване на влак {COMMA} не успя{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Автоматично подновяване на автомобил {COMMA} не успя{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Автоматично подновяване на кораб {COMMA} не успя{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автообновяването на самолет е неуспешно {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Влак {COMMA} е прекалено дълъг след замяната
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(ограничени средства)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Настройка на кръпки
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Настройки на кръпките

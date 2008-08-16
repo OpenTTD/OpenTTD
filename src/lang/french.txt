@@ -1014,11 +1014,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aéronef
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aéronef {COMMA} a une station invalide dans ses ordres
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Le renouvellement automatique a échoué sur Train {COMMA} (limite d'argent)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Le renouvellement automatique a échoué sur Véhicule {COMMA} (limite d'argent)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Le renouvellement automatique a échoué sur Navire {COMMA} (limite d'argent)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Le renouvellement automatique d'Aéronef {COMMA} a échoué (limite d'argent)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Le renouvellement automatique a échoué sur Train {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Le renouvellement automatique a échoué sur Véhicule {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Le renouvellement automatique a échoué sur Navire {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Le renouvellement automatique d'Aéronef {COMMA} a échoué{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} est trop long après remplacement
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite d'argent)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Options Avancées
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurer les options avancées

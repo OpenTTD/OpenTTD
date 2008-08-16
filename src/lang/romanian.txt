@@ -1008,11 +1008,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aeronava
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronava {COMMA} are o staţie inexistentă în comenzi
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Înnoirea trenului {COMMA} a esuat (fonduri limitate)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Înnoirea autovehiculului {COMMA} a esuat (fonduri limitate)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Înnoirea navei {COMMA} a esuat (fonduri limitate)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Înnoirea automată a aeronavei {COMMA} a eşuat (fonduri limitate)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Înnoirea trenului {COMMA} a esuat{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Înnoirea autovehiculului {COMMA} a esuat{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Înnoirea navei {COMMA} a esuat{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Înnoirea automată a aeronavei {COMMA} a eşuat{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trenul {COMMA} este prea lung dupa inlocuire
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(fonduri limitate)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurare patch
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurează patch-urile OpenTTD

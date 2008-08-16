@@ -1009,11 +1009,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}L'avió 
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}L'avió {COMMA} té una estació incorrecta a les ordres
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenovació ha fallat al tren {COMMA} (límit de diners)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenovació ha fallat a l'automòbil {COMMA} (límit de diners)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovació ha fallat al vaixell {COMMA} (límit de diners)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}L'autorenovació ha fallat en l'avió {COMMA} (límit de diners)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenovació ha fallat al tren {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenovació ha fallat a l'automòbil {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovació ha fallat al vaixell {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}L'autorenovació ha fallat en l'avió {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren {COMMA} és massa llarg després del canvi
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(límit de diners)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configura Pedaços
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar els pedaços

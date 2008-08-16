@@ -1013,11 +1013,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aeronave
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronave {COMMA} possui uma estação inválida em suas ordens
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Falha na auto-renovação do trem {COMMA} (limite de dinheiro)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Falha na auto-renovação do automóvel {COMMA} (falta de dinheiro)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Falha na auto-renovação da embarcação {COMMA} (limite de dinheiro)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Falha na auto-renovação da aeronave {COMMA} (limite de dinheiro)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Falha na auto-renovação do trem {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Falha na auto-renovação do automóvel {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Falha na auto-renovação da embarcação {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Falha na auto-renovação da aeronave {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O trem {COMMA} ficará muito longo após a substituição
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite de dinheiro)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurar Correções
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar as correções

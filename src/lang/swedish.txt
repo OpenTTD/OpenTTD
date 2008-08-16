@@ -1009,10 +1009,10 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Flygplan
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Flygplan {COMMA} har en felaktig station ibland destinationerna
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatiska förnyandet av tåg {COMMA} misslyckades (inte tillräckligt med pengar)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatiska förnyandet av vägfordon {COMMA} misslyckades (otillräckligt med pengar)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatiska förnyandet av skepp {COMMA} misslyckades (otillräckligt med pengar)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatiska förnyandet av flygplan {COMMA} misslyckades (inte tillräckligt med pengar)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatiska förnyandet av tåg {COMMA} misslyckades{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatiska förnyandet av vägfordon {COMMA} misslyckades{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatiska förnyandet av skepp {COMMA} misslyckades{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatiska förnyandet av flygplan {COMMA} misslyckades{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tåg {COMMA} är för långt efter förnyandet
 
 STR_CONFIG_PATCHES                                              :{BLACK}Konfigurera patchar

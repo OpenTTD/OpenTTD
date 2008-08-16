@@ -1051,11 +1051,11 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Letalo {
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Letalo {COMMA} ima neveljavne postaje v navodilih
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Avtomatska zamenjava je spodletela na vlaku {COMMA} (denarna meja)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoobnova ni uspela na cestnem vozilu {COMMA} (denarna meja)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoobnova ni uspela na ladji {COMMA} (denarna meja)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Samoprenova na letalu {COMMA} (omejitev z denarjem) neuspela
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Avtomatska zamenjava je spodletela na vlaku {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoobnova ni uspela na cestnem vozilu {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoobnova ni uspela na ladji {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je predolg po zamenjavi
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(denarna meja)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nastavitve popravkov
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavi popravke

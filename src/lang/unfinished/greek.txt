@@ -992,11 +992,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Το Α�
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Το Αεροσκάφος {COMMA} έχει ένα λανθασμένο σταθμό στις οδηγίες του
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο τρένο {COMMA} (χρηματικό όριο)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο όχημα {COMMA} (χρηματικό όριο)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο πλοίο {COMMA} (χρηματικό όριο)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο αεροσκάφος {COMMA} (χρηματικό όριο)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο τρένο {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο όχημα {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο πλοίο {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο αεροσκάφος {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Το τρένο {COMMA} είναι πολύ μακρύ μετά την αντικατάσταση
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(χρηματικό όριο)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Ρύθμιση Διορθώσεων
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Ρύθμιση των Διορθώσεων

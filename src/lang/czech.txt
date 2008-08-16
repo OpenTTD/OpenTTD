@@ -1071,11 +1071,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Letadlo 
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Letadlo {COMMA} má v příkazech neplatnou stanici
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Obnovení vlaku {COMMA} selhalo (finanční limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Obnovení silničního vozidla {COMMA} selhalo (finanční limit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Obnovení lodi {COMMA} selhalo (finanční limit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Obnovení letadla {COMMA} selhalo (finanční limit)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Obnovení vlaku {COMMA} selhalo{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Obnovení silničního vozidla {COMMA} selhalo{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Obnovení lodi {COMMA} selhalo{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Obnovení letadla {COMMA} selhalo{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po výměně moc dlouhý
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(finanční limit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nastavit patche
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavit patche

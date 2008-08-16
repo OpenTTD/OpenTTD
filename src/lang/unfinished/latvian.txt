@@ -986,11 +986,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lidmas'i
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lidmas'i'nai {COMMA} ir nepareiza stacija ta's uzdevumu saraksta'
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Vilciena autoatjaunos'ana neizdeva's {COMMA} (naudas limits)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobil'a autoatjaunos'ana neizdeva's {COMMA} (naudas limits)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Kug'a autoatjaunos'ana neizdeva's {COMMA} (naudas limits)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lidmas'i'nas autoatjaunos'ana neizdeva's {COMMA} (naudas limits)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Vilciena autoatjaunos'ana neizdeva's {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobil'a autoatjaunos'ana neizdeva's {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Kug'a autoatjaunos'ana neizdeva's {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lidmas'i'nas autoatjaunos'ana neizdeva's {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vilciens {COMMA} ir pa'ra'k gars' pe'c aizvietos'anas
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(naudas limits)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Konfigure' uzlabojumus
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfigure't labojumus

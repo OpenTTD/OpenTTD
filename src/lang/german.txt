@@ -1005,11 +1005,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Flugzeug
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Flugzeug {COMMA} hat einen ungültigen Flughafen im Fahrplan
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Zug {COMMA} kann nicht erneuert werden (Geld fehlt)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Fahrzeug {COMMA} kann nicht erneuert werden (Geld fehlt)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Schiff {COMMA} kann nicht erneuert werden (Geld fehlt)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Flugzeug {COMMA} kann nicht erneuert werden (Geld fehlt)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Zug {COMMA} kann nicht erneuert werden{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Fahrzeug {COMMA} kann nicht erneuert werden{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Schiff {COMMA} kann nicht erneuert werden{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Flugzeug {COMMA} kann nicht erneuert werden{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Zug {COMMA} nach Erneuerung zu lang
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(Geld fehlt)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Einstellungen der Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Einstellungen der Patches

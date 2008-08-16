@@ -1138,11 +1138,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Літа
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Літак {COMMA} має в маршруті невірну станцію
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Помилка автооновлення поїзда {COMMA} (бракує коштів)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Помилка автооновлення авто {COMMA} (бракує коштів)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Помилка автооновлення корабля {COMMA} (бракує коштів)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Помилка автооновлення літака {COMMA} (бракує коштів)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Помилка автооновлення поїзда {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Помилка автооновлення авто {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Помилка автооновлення корабля {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Помилка автооновлення літака {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поїзд {COMMA} дуже довгий після оновлення
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(бракує коштів)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Розширені налаштування
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Розширені налаштування

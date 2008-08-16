@@ -1030,11 +1030,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lektuvas
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lektuvo {COMMA} uzduociu sarase yra netinkamu stoteliu
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Traukinio {COMMA} automatiskai atnaujinti nepavyko (pinigu limitas)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobilio {COMMA} automatiskai atnaujinti nepavyko (pinigu limitas)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivo {COMMA} automatinis atnaujimimas nepavyko (pinigu limitas)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lektuvo {COMMA} automatinis atnaujimimas nepavyko (pinigu limitas)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Traukinio {COMMA} automatiskai atnaujinti nepavyko{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobilio {COMMA} automatiskai atnaujinti nepavyko{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivo {COMMA} automatinis atnaujimimas nepavyko{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lektuvo {COMMA} automatinis atnaujimimas nepavyko{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Traukinys {COMMA} yra per ilgas po atnaujinimo
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(pinigu limitas)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Papildomi nustatymai
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguruok nustatymus

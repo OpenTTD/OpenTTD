@@ -985,11 +985,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}A aerona
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}A aeronave {COMMA} ten unha estación non válida nas ordes
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenovación fallida para o tren {COMMA} (límite de diñeiro)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenovación fallida para o vehículo de estrada {COMMA} (límite de diñeiro)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovación fallida para o barco {COMMA} (límite de diñeiro)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenovación fallida para a aeronave {COMMA} (límite de diñeiro)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenovación fallida para o tren {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenovación fallida para o vehículo de estrada {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovación fallida para o barco {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenovación fallida para a aeronave {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O tren {COMMA} e demasiado longo despois de substituír
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(límite de diñeiro)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configuración dos Parches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configura-los parches

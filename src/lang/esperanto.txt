@@ -998,11 +998,12 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aviadilo
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aviadilo {COMMA} havas nevalidan stacion en la ordenoj
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Aŭtomata novigo fiaskis al trajno {COMMA} (monlimo)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Aŭtomata novigo fiaskis al vojveturilo {COMMA} (monlimo)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Aŭtomata novigo fiaskis al ŝipo {COMMA} (monlimo)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Aŭtomata novigo fiaskis al aviadilo {COMMA} (monlimo)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Aŭtomata novigo fiaskis al trajno {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Aŭtomata novigo fiaskis al vojveturilo {COMMA}{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Aŭtomata novigo fiaskis al ŝipo {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Aŭtomata novigo fiaskis al aviadilo {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trajno {COMMA} tro longas post ŝanĝo
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(monlimo)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Agordu Flikojn
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Agordu la flikojn
