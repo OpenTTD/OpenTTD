@@ -1079,7 +1079,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		if (v->IsStoppedInDepot() && (flags & DC_AUTOREPLACE) == 0) DeleteVehicleNews(p1, vehicle_waiting_in_depot[v->type]);
 
 		v->vehstatus ^= VS_STOPPED;
-		v->cur_speed = 0;
+		if (v->type != VEH_TRAIN) v->cur_speed = 0; // trains can stop 'slowly'
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClasses(vehicle_list[v->type]);
