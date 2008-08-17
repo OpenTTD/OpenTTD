@@ -2496,7 +2496,7 @@ CommandCost Vehicle::SendToDepot(uint32 flags, DepotCommand command)
 {
 	if (!CheckOwnership(this->owner)) return CMD_ERROR;
 	if (this->vehstatus & VS_CRASHED) return CMD_ERROR;
-	if (this->IsInDepot()) return CMD_ERROR;
+	if (this->IsStoppedInDepot()) return CMD_ERROR;
 
 	if (this->current_order.IsType(OT_GOTO_DEPOT)) {
 		bool halt_in_depot = this->current_order.GetDepotActionType() & ODATFB_HALT;
@@ -2523,10 +2523,6 @@ CommandCost Vehicle::SendToDepot(uint32 flags, DepotCommand command)
 		}
 		return CommandCost();
 	}
-
-	/* check if at a standstill (not stopped only) in a depot
-	 * the check is down here to make it possible to alter stop/service for trains entering the depot */
-	if (this->type == VEH_TRAIN && IsRailDepotTile(this->tile) && this->cur_speed == 0) return CMD_ERROR;
 
 	TileIndex location;
 	DestinationID destination;

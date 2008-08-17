@@ -2128,8 +2128,13 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 
 	TrainFindDepotData tfdd;
 	tfdd.owner = v->owner;
-	tfdd.best_length = UINT_MAX;
 	tfdd.reverse = false;
+
+	if (IsRailDepotTile(v->tile)) {
+		tfdd.tile = v->tile;
+		tfdd.best_length = 0;
+		return tfdd;
+	}
 
 	PBSTileInfo origin = FollowTrainReservation(v);
 	if (IsRailDepotTile(origin.tile)) {
@@ -2137,6 +2142,8 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		tfdd.best_length = 0;
 		return tfdd;
 	}
+
+	tfdd.best_length = UINT_MAX;
 
 	uint8 pathfinder = _settings_game.pf.pathfinder_for_trains;
 	if ((_settings_game.pf.reserve_paths || HasReservedTracks(v->tile, v->u.rail.track)) && pathfinder == VPF_NTP) pathfinder = VPF_NPF;
