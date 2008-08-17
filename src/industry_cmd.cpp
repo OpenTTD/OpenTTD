@@ -423,7 +423,9 @@ static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
 			!_cheats.magic_bulldozer.value) ||
 			((flags & DC_AUTO) != 0) ||
-			(_current_player == OWNER_WATER && (indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER))) {
+			(_current_player == OWNER_WATER &&
+				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
+				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 		SetDParam(0, indspec->name);
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
