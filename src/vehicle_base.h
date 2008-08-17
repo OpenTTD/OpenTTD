@@ -202,6 +202,10 @@ private:
 	Vehicle *next;           ///< pointer to the next vehicle in the chain
 	Vehicle *previous;       ///< NOSAVE: pointer to the previous vehicle in the chain
 	Vehicle *first;          ///< NOSAVE: pointer to the first vehicle in the chain
+
+	Vehicle *next_shared;     ///< pointer to the next vehicle that shares the order
+	Vehicle *previous_shared; ///< NOSAVE: pointer to the previous vehicle in the shared order chain
+	Vehicle *first_shared;    ///< NOSAVE: pointer to the first vehicle in the shared order chain
 public:
 	friend const SaveLoad *GetVehicleDescription(VehicleType vt); ///< So we can use private/protected variables in the saveload code
 	friend void AfterLoadVehicles(bool clear_te_id);              ///< So we can set the previous and first pointers while loading
@@ -213,9 +217,6 @@ public:
 
 	TileIndex tile;          ///< Current tile index
 	TileIndex dest_tile;     ///< Heading for this tile
-
-	Vehicle *next_shared;    ///< If not NULL, this points to the next vehicle that shared the order
-	Vehicle *prev_shared;    ///< If not NULL, this points to the prev vehicle that shared the order
 
 	Money profit_this_year;        ///< Profit this year << 8, low 8 bits are fract
 	Money profit_last_year;        ///< Profit last year << 8, low 8 bits are fract
@@ -476,12 +477,37 @@ public:
 	 */
 	inline Vehicle *First() const { return this->first; }
 
+
+	/**
+	 * Adds this vehicle to a shared vehicle chain.
+	 * @param shared_chain a vehicle of the chain with shared vehicles.
+	 * @pre !this->IsOrderListShared()
+	 */
+	void AddToShared(Vehicle *shared_chain);
+
+	/**
+	 * Removes the vehicle from the shared order list.
+	 */
+	void RemoveFromShared();
+
+	/**
+	 * Get the next vehicle of this vehicle.
+	 * @note articulated parts are also counted as vehicles.
+	 * @return the next vehicle or NULL when there isn't a next vehicle.
+	 */
+	inline Vehicle *NextShared() const { return this->next_shared; }
+
+	/**
+	 * Get the first vehicle of this vehicle chain.
+	 * @return the first vehicle of the chain.
+	 */
+	inline Vehicle *FirstShared() const { return this->first_shared; }
+
 	/**
 	 * Check if we share our orders with another vehicle.
-	 * This is done by checking the previous and next pointers in the shared chain.
 	 * @return true if there are other vehicles sharing the same order
 	 */
-	inline bool IsOrderListShared() const { return this->next_shared != NULL || this->prev_shared != NULL; };
+	inline bool IsOrderListShared() const { return this->previous_shared != NULL || this->next_shared != NULL; };
 
 	/**
 	 * Copy certain configurations and statistics of a vehicle after successful autoreplace/renew
@@ -646,18 +672,6 @@ static inline Order *GetLastVehicleOrder(const Vehicle *v)
 		order = order->next;
 
 	return order;
-}
-
-/** Get the first vehicle of a shared-list, so we only have to walk forwards
- * @param v Vehicle to query
- * @return first vehicle of a shared-list
- */
-static inline Vehicle *GetFirstVehicleFromSharedList(const Vehicle *v)
-{
-	Vehicle *u = (Vehicle *)v;
-	while (u->prev_shared != NULL) u = u->prev_shared;
-
-	return u;
 }
 
 /**

@@ -1427,27 +1427,13 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					new_f->cur_order_index = first->cur_order_index;
 					new_f->orders          = first->orders;
 					new_f->num_orders      = first->num_orders;
+
+					/* Make sure the group counts stay correct. */
 					new_f->group_id        = first->group_id;
+					first->group_id        = DEFAULT_GROUP;
 
-					if (first->prev_shared != NULL) {
-						first->prev_shared->next_shared = new_f;
-						new_f->prev_shared = first->prev_shared;
-					}
-
-					if (first->next_shared != NULL) {
-						first->next_shared->prev_shared = new_f;
-						new_f->next_shared = first->next_shared;
-					}
-
-					/*
-					 * Remove all order information from the front train, to
-					 * prevent the order and the shared order list to be
-					 * destroyed by Destroy/DeleteVehicle.
-					 */
-					first->orders      = NULL;
-					first->prev_shared = NULL;
-					first->next_shared = NULL;
-					first->group_id    = DEFAULT_GROUP;
+					new_f->AddToShared(first);
+					first->RemoveFromShared();
 
 					/* If we deleted a window then open a new one for the 'new' train */
 					if (IsLocalPlayer() && w != NULL) ShowVehicleViewWindow(new_f);

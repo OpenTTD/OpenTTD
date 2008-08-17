@@ -2272,7 +2272,7 @@ bool AfterLoadGame()
 			if (v->orders != NULL && !v->orders->IsValid()) v->orders = NULL;
 
 			v->current_order.ConvertFromOldSavegame();
-			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->prev_shared == NULL) {
+			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->FirstShared() == v) {
 				FOR_VEHICLE_ORDERS(v, order) order->SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 			}
 		}

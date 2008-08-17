@@ -255,6 +255,7 @@ void AfterLoadVehicles(bool clear_te_id)
 	FOR_ALL_VEHICLES(v) {
 		/* Reinstate the previous pointer */
 		if (v->Next() != NULL) v->Next()->previous = v;
+		if (v->NextShared() != NULL) v->NextShared()->previous_shared = v;
 
 		v->UpdateDeltaXY(v->direction);
 
@@ -271,6 +272,13 @@ void AfterLoadVehicles(bool clear_te_id)
 		if (v->Previous() == NULL) {
 			for (Vehicle *u = v; u != NULL; u = u->Next()) {
 				u->first = v;
+			}
+
+			/* Shared orders are only valid for first vehicles in chains. */
+			if (v->previous_shared == NULL) {
+				for (Vehicle *u = v; u != NULL; u = u->NextShared()) {
+					u->first_shared = v;
+				}
 			}
 		}
 	}
@@ -329,6 +337,7 @@ Vehicle::Vehicle()
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;
 	this->first              = this;
+	this->first_shared       = this;
 	this->colormap           = PAL_NONE;
 }
 
@@ -2155,7 +2164,8 @@ static const SaveLoad _common_veh_desc[] = {
 	 SLE_CONDVAR(Vehicle, waiting_triggers,     SLE_UINT8,                 2, SL_MAX_VERSION),
 
 	 SLE_CONDREF(Vehicle, next_shared,        REF_VEHICLE,                 2, SL_MAX_VERSION),
-	 SLE_CONDREF(Vehicle, prev_shared,        REF_VEHICLE,                 2, SL_MAX_VERSION),
+	SLE_CONDNULL(2,                                                        2, 68),
+	SLE_CONDNULL(4,                                                       69, 100),
 
 	SLE_CONDVAR(Vehicle, group_id,             SLE_UINT16,                60, SL_MAX_VERSION),
 
@@ -2390,8 +2400,7 @@ void Load_VEHS()
 				/* If a vehicle has the same orders, add the link to eachother
 				 *  in both vehicles */
 				if (v->orders == u->orders) {
-					v->next_shared = u;
-					u->prev_shared = v;
+					u->AddToShared(v);
 					break;
 				}
 			}
@@ -2572,6 +2581,49 @@ void Vehicle::SetNext(Vehicle *next)
 			v->first = this->first;
 		}
 	}
+}
+
+void Vehicle::AddToShared(Vehicle *shared_chain)
+{
+	assert(!this->IsOrderListShared());
+
+	this->next_shared     = shared_chain->next_shared;
+	this->previous_shared = shared_chain;
+	this->first_shared    = shared_chain->first_shared;
+
+	shared_chain->next_shared = this;
+
+	if (this->next_shared != NULL) this->next_shared->previous_shared = this;
+}
+
+void Vehicle::RemoveFromShared()
+{
+	Vehicle *new_first;
+
+	if (this->FirstShared() == this) {
+		/* We are the first shared one, so update all the first pointers of our next shared ones. */
+		new_first = this->NextShared();
+		for (Vehicle *u = new_first; u != NULL; u = u->NextShared()) {
+			u->first_shared = new_first;
+		}
+	} else {
+		/* We are not the first shared one, so only relink our previous one. */
+		new_first = this->FirstShared();
+		this->previous_shared->next_shared = this->NextShared();
+	}
+
+	if (this->next_shared != NULL) this->next_shared->previous_shared = this->previous_shared;
+
+	if (new_first->NextShared() == NULL) {
+		/* When there is only one vehicle, remove the shared order list window. */
+		extern void RemoveSharedOrderVehicleList(Vehicle *v);
+		if (new_first->orders != NULL) RemoveSharedOrderVehicleList(new_first);
+		InvalidateVehicleOrder(new_first);
+	}
+
+	this->first_shared    = this;
+	this->next_shared     = NULL;
+	this->previous_shared = NULL;
 }
 
 void StopAllVehicles()

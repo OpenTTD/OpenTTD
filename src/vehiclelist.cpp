@@ -97,7 +97,7 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, PlayerID owner
 				/* Find a vehicle with the order in question */
 				if (v->orders != NULL && v->orders->index == index) {
 					/* Add all vehicles from this vehicle's shared order list */
-					for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
+					for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
 						*list->Append() = v;
 					}
 					break;

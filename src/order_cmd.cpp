@@ -506,7 +506,6 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		Vehicle *u;
 		Order *new_o = new Order();
 		new_o->AssignOrder(new_order);
 
@@ -537,9 +536,9 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 
-		u = GetFirstVehicleFromSharedList(v);
+		Vehicle *u = v->FirstShared();
 		DeleteOrderWarnings(u);
-		for (; u != NULL; u = u->next_shared) {
+		for (; u != NULL; u = u->NextShared()) {
 			/* Increase amount of orders */
 			u->num_orders++;
 
@@ -601,7 +600,7 @@ static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
  * Remove the VehicleList that shows all the vehicles with the same shared
  *  orders.
  */
-static void RemoveSharedOrderVehicleList(Vehicle *v)
+void RemoveSharedOrderVehicleList(Vehicle *v)
 {
 	assert(v->orders != NULL);
 	WindowClass window_class = WC_NONE;
@@ -624,7 +623,7 @@ static void RemoveSharedOrderVehicleList(Vehicle *v)
  */
 CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Vehicle *v, *u;
+	Vehicle *v;
 	VehicleID veh_id = p1;
 	VehicleOrderID sel_ord = p2;
 	Order *order;
@@ -665,9 +664,9 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* Give the item free */
 		order->Free();
 
-		u = GetFirstVehicleFromSharedList(v);
+		Vehicle *u = v->FirstShared();
 		DeleteOrderWarnings(u);
-		for (; u != NULL; u = u->next_shared) {
+		for (; u != NULL; u = u->NextShared()) {
 			u->num_orders--;
 
 			if (sel_ord < u->cur_order_index)
@@ -803,11 +802,11 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		/* Update shared list */
-		Vehicle *u = GetFirstVehicleFromSharedList(v);
+		Vehicle *u = v->FirstShared();
 
 		DeleteOrderWarnings(u);
 
-		for (; u != NULL; u = u->next_shared) {
+		for (; u != NULL; u = u->NextShared()) {
 			/* Update the first order */
 			if (u->orders != v->orders) u->orders = v->orders;
 
@@ -1027,9 +1026,9 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		/* Update the windows and full load flags, also for vehicles that share the same order list */
-		Vehicle *u = GetFirstVehicleFromSharedList(v);
+		Vehicle *u = v->FirstShared();
 		DeleteOrderWarnings(u);
-		for (; u != NULL; u = u->next_shared) {
+		for (; u != NULL; u = u->NextShared()) {
 			/* Toggle u->current_order "Full load" flag if it changed.
 			 * However, as the same flag is used for depot orders, check
 			 * whether we are not going to a depot as there are three
@@ -1090,13 +1089,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* Is the vehicle already in the shared list? */
-			{
-				const Vehicle* u;
-
-				for (u = GetFirstVehicleFromSharedList(src); u != NULL; u = u->next_shared) {
-					if (u == dst) return CMD_ERROR;
-				}
-			}
+			if (src->FirstShared() == dst->FirstShared()) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				/* If the destination vehicle had a OrderList, destroy it */
@@ -1106,10 +1099,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				dst->num_orders = src->num_orders;
 
 				/* Link this vehicle in the shared-list */
-				dst->next_shared = src->next_shared;
-				dst->prev_shared = src;
-				if (src->next_shared != NULL) src->next_shared->prev_shared = dst;
-				src->next_shared = dst;
+				dst->AddToShared(src);
 
 				InvalidateVehicleOrder(dst);
 				InvalidateVehicleOrder(src);
@@ -1212,12 +1202,9 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (order == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Vehicle *u;
-
 		order->SetRefit(cargo, subtype);
 
-		u = GetFirstVehicleFromSharedList(v);
-		for (; u != NULL; u = u->next_shared) {
+		for (Vehicle *u = v->FirstShared(); u != NULL; u = u->NextShared()) {
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u);
 
@@ -1253,7 +1240,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 
 	/* If we have shared orders, store it on a special way */
 	if (v->IsOrderListShared()) {
-		const Vehicle *u = (v->next_shared) ? v->next_shared : v->prev_shared;
+		const Vehicle *u = (v->FirstShared() == v) ? v->NextShared() : v->FirstShared();
 
 		bak->clone = u->index;
 	} else {
@@ -1413,7 +1400,7 @@ void CheckOrders(const Vehicle* v)
 		return;
 
 	/* do nothing we we're not the first vehicle in a share-chain */
-	if (v->next_shared != NULL) return;
+	if (v->FirstShared() != v) return;
 
 	/* Only check every 20 days, so that we don't flood the message log */
 	if (v->owner == _local_player && v->day_counter % 20 == 0) {
@@ -1541,49 +1528,16 @@ void DeleteVehicleOrders(Vehicle *v)
 {
 	DeleteOrderWarnings(v);
 
-	/* If we have a shared order-list, don't delete the list, but just
-	    remove our pointer */
 	if (v->IsOrderListShared()) {
-		Vehicle *u = v;
-
-		v->orders = NULL;
-		v->num_orders = 0;
-
-		/* Unlink ourself */
-		if (v->prev_shared != NULL) {
-			v->prev_shared->next_shared = v->next_shared;
-			u = v->prev_shared;
-		}
-		if (v->next_shared != NULL) {
-			v->next_shared->prev_shared = v->prev_shared;
-			u = v->next_shared;
-		}
-		v->prev_shared = NULL;
-		v->next_shared = NULL;
-
-		/* If we are the only one left in the Shared Order Vehicle List,
-		 *  remove it, as we are no longer a Shared Order Vehicle */
-		if (u->prev_shared == NULL && u->next_shared == NULL && u->orders != NULL) RemoveSharedOrderVehicleList(u);
-
-		/* We only need to update this-one, because if there is a third
-		 *  vehicle which shares the same order-list, nothing will change. If
-		 *  this is the last vehicle, the last line of the order-window
-		 *  will change from Shared order list, to Order list, so it needs
-		 *  an update */
-		InvalidateVehicleOrder(u);
-		return;
+		/* Remove ourself from the shared order list. */
+		v->RemoveFromShared();
+	} else if (v->orders != NULL) {
+		/* Remove the orders */
+		v->orders->FreeChain();
 	}
 
-	/* Remove the orders */
-	Order *cur = v->orders;
-	/* Delete the vehicle list of shared orders, if any */
-	if (cur != NULL) RemoveSharedOrderVehicleList(v);
 	v->orders = NULL;
 	v->num_orders = 0;
-
-	if (cur != NULL) {
-		cur->FreeChain(); // Free the orders.
-	}
 }
 
 Date GetServiceIntervalClamped(uint index)

@@ -372,8 +372,7 @@ static void FixOldVehicles()
 			/* If a vehicle has the same orders, add the link to eachother
 			 * in both vehicles */
 			if (v->orders == u->orders) {
-				v->next_shared = u;
-				u->prev_shared = v;
+				u->AddToShared(v);
 				break;
 			}
 		}
