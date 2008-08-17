@@ -93,15 +93,9 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, PlayerID owner
 			break;
 
 		case VLW_SHARED_ORDERS:
-			FOR_ALL_VEHICLES(v) {
-				/* Find a vehicle with the order in question */
-				if (v->orders != NULL && v->orders->index == index) {
-					/* Add all vehicles from this vehicle's shared order list */
-					for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
-						*list->Append() = v;
-					}
-					break;
-				}
+			/* Add all vehicles from this vehicle's shared order list */
+			for (v = GetVehicle(index); v != NULL; v = v->NextShared()) {
+				*list->Append() = v;
 			}
 			break;
 

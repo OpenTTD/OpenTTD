@@ -1074,6 +1074,12 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 
 	virtual void OnInvalidateData(int data)
 	{
+		if (HasBit(data, 15) && (this->window_number & VLW_MASK) == VLW_SHARED_ORDERS) {
+			SB(this->window_number, 16, 16, GB(data, 16, 16));
+			this->vehicles.ForceRebuild();
+			return;
+		}
+
 		if (data == 0) {
 			this->vehicles.ForceRebuild();
 		} else {
@@ -1163,8 +1169,7 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 
 void ShowVehicleListWindow(const Vehicle *v)
 {
-	if (v->orders == NULL) return; // no shared list to show
-	ShowVehicleListWindowLocal(v->owner, VLW_SHARED_ORDERS, v->type, v->orders->index);
+	ShowVehicleListWindowLocal(v->owner, VLW_SHARED_ORDERS, v->type, v->FirstShared()->index);
 }
 
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID station)

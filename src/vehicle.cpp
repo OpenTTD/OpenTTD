@@ -2614,11 +2614,15 @@ void Vehicle::RemoveFromShared()
 
 	if (this->next_shared != NULL) this->next_shared->previous_shared = this->previous_shared;
 
+	uint32 old_window_number = (this->FirstShared()->index << 16) | (this->type << 11) | VLW_SHARED_ORDERS | this->owner;
+
 	if (new_first->NextShared() == NULL) {
 		/* When there is only one vehicle, remove the shared order list window. */
-		extern void RemoveSharedOrderVehicleList(Vehicle *v);
-		if (new_first->orders != NULL) RemoveSharedOrderVehicleList(new_first);
+		DeleteWindowById(GetWindowClassForVehicleType(this->type), old_window_number);
 		InvalidateVehicleOrder(new_first);
+	} else if (this->FirstShared() == this) {
+		/* If we were the first one, update to the new first one. */
+		InvalidateWindowData(GetWindowClassForVehicleType(this->type), old_window_number, (new_first->index << 16) | (1 << 15));
 	}
 
 	this->first_shared    = this;

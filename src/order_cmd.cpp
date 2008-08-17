@@ -596,25 +596,6 @@ static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
 	return CommandCost();
 }
 
-/**
- * Remove the VehicleList that shows all the vehicles with the same shared
- *  orders.
- */
-void RemoveSharedOrderVehicleList(Vehicle *v)
-{
-	assert(v->orders != NULL);
-	WindowClass window_class = WC_NONE;
-
-	switch (v->type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:    window_class = WC_TRAINS_LIST;   break;
-		case VEH_ROAD:     window_class = WC_ROADVEH_LIST;  break;
-		case VEH_SHIP:     window_class = WC_SHIPS_LIST;    break;
-		case VEH_AIRCRAFT: window_class = WC_AIRCRAFT_LIST; break;
-	}
-	DeleteWindowById(window_class, (v->orders->index << 16) | (v->type << 11) | VLW_SHARED_ORDERS | v->owner);
-}
-
 /** Delete an order from the orderlist of a vehicle.
  * @param tile unused
  * @param flags operation to perform
@@ -650,10 +631,6 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				order = GetVehicleOrder(v, sel_ord + 1);
 				SwapOrders(v->orders, order);
 			} else {
-				/* XXX -- The system currently can't handle a shared-order vehicle list
-				 *  open when there aren't any orders in the list, so close the window
-				 *  in this case. Of course it needs a better fix later */
-				RemoveSharedOrderVehicleList(v);
 				/* Last item, so clean the list */
 				v->orders = NULL;
 			}

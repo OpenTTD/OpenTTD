@@ -654,7 +654,7 @@ public:
 			this->SetWidgetDisabledState(ORDER_WIDGET_UNLOAD,    order == NULL || (order->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) != 0); // unload
 			this->SetWidgetDisabledState(ORDER_WIDGET_UNLOAD_DROPDOWN, this->IsWidgetDisabled(ORDER_WIDGET_UNLOAD));
 			/* Disable list of vehicles with the same shared orders if there is no list */
-			this->SetWidgetDisabledState(ORDER_WIDGET_SHARED_ORDER_LIST, !shared_orders || this->vehicle->orders == NULL);
+			this->SetWidgetDisabledState(ORDER_WIDGET_SHARED_ORDER_LIST, !shared_orders);
 			this->SetWidgetDisabledState(ORDER_WIDGET_REFIT,     order == NULL); // Refit
 			this->SetWidgetDisabledState(ORDER_WIDGET_SERVICE,   order == NULL); // Refit
 			this->HideWidget(ORDER_WIDGET_REFIT); // Refit
