@@ -25,6 +25,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 {
 	uint y_offset = RoadVehHasArticPart(v) ? 15 : 0;
 	StringID str;
+	Money feeder_share = 0;
 
 	SetDParam(0, v->engine_type);
 	SetDParam(1, v->build_year);
@@ -70,6 +71,7 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 				SetDParam(1, u->cargo.Count());
 				SetDParam(2, u->cargo.Source());
 				str = STR_8813_FROM;
+				feeder_share += u->cargo.FeederShare();
 			}
 			DrawString(x, y + 21 + y_offset, str, TC_FROMSTRING);
 
@@ -88,12 +90,13 @@ void DrawRoadVehDetails(const Vehicle *v, int x, int y)
 			SetDParam(1, v->cargo.Count());
 			SetDParam(2, v->cargo.Source());
 			str = STR_8813_FROM;
+			feeder_share += v->cargo.FeederShare();
 		}
 		DrawString(x, y + 21 + y_offset, str, TC_FROMSTRING);
 	}
 
 	/* Draw Transfer credits text */
-	SetDParam(0, v->cargo.FeederShare());
+	SetDParam(0, feeder_share);
 	DrawString(x, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
 }
 
