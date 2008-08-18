@@ -11,8 +11,6 @@
 #include "station_type.h"
 #include <list>
 
-struct BackuppedVehicle;
-
 typedef uint32 CargoPacketID;
 struct CargoPacket;
 
@@ -103,7 +101,6 @@ private:
 	uint days_in_transit; ///< Cache for the number of days in transit
 
 public:
-	friend struct BackuppedVehicle;
 	friend void SaveLoad_STNS(Station *st);
 
 	/** Create the cargo list */
