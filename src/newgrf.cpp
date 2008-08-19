@@ -83,9 +83,6 @@ static byte _misc_grf_features = 0;
 /* 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static uint32 _ttdpatch_flags[8];
 
-/* Used by Action 0x06 to preload a pseudo sprite and modify its content */
-static byte *_preload_sprite = NULL;
-
 /* Indicates which are the newgrf features currently loaded ingame */
 GRFLoadedFeatures _loaded_newgrf_features;
 
@@ -129,9 +126,16 @@ struct GRFLocation {
 	{
 		return this->grfid < other.grfid || (this->grfid == other.grfid && this->nfoline < other.nfoline);
 	}
+
+	bool operator==(const GRFLocation &other) const
+	{
+		return this->grfid == other.grfid && this->nfoline == other.nfoline;
+	}
 };
 
 static std::map<GRFLocation, SpriteID> _grm_sprites;
+typedef std::map<GRFLocation, byte*> GRFLineToSpriteOverride;
+GRFLineToSpriteOverride _grf_line_to_action6_sprite_override;
 
 /** DEBUG() function dedicated to newGRF debugging messages
  * Function is essentialy the same as DEBUG(grf, severity, ...) with the
@@ -3766,11 +3770,12 @@ static void CfgApply(byte *buf, size_t len)
 	size_t pos = FioGetPos();
 	uint16 num = FioReadWord();
 	uint8 type = FioReadByte();
+	byte *preload_sprite = NULL;
 
 	/* Check if the sprite is a pseudo sprite. We can't operate on real sprites. */
 	if (type == 0xFF) {
-		_preload_sprite = MallocT<byte>(num);
-		FioReadBlock(_preload_sprite, num);
+		preload_sprite = MallocT<byte>(num);
+		FioReadBlock(preload_sprite, num);
 	}
 
 	/* Reset the file position to the start of the next sprite */
@@ -3778,7 +3783,17 @@ static void CfgApply(byte *buf, size_t len)
 
 	if (type != 0xFF) {
 		grfmsg(2, "CfgApply: Ignoring (next sprite is real, unsupported)");
+		free(preload_sprite);
 		return;
+	}
+
+	GRFLocation location(_cur_grfconfig->grfid, _nfo_line + 1);
+	GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.find(location);
+	if (it != _grf_line_to_action6_sprite_override.end()) {
+		free(preload_sprite);
+		preload_sprite = _grf_line_to_action6_sprite_override[location];
+	} else {
+		_grf_line_to_action6_sprite_override[location] = preload_sprite;
 	}
 
 	/* Now perform the Action 0x06 on our data. */
@@ -3824,12 +3839,12 @@ static void CfgApply(byte *buf, size_t len)
 			if (i == 0) carry = false;
 
 			if (add_value) {
-				uint new_value = _preload_sprite[offset + i] + GB(value, (i % 4) * 8, 8) + (carry ? 1 : 0);
-				_preload_sprite[offset + i] = GB(new_value, 0, 8);
+				uint new_value = preload_sprite[offset + i] + GB(value, (i % 4) * 8, 8) + (carry ? 1 : 0);
+				preload_sprite[offset + i] = GB(new_value, 0, 8);
 				/* Check if the addition overflowed */
 				carry = new_value >= 256;
 			} else {
-				_preload_sprite[offset + i] = GB(value, (i % 4) * 8, 8);
+				preload_sprite[offset + i] = GB(value, (i % 4) * 8, 8);
 			}
 		}
 	}
@@ -5790,17 +5805,20 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x13 */ { NULL,     NULL,      NULL,            NULL,           NULL,              TranslateGRFStrings, },
 	};
 
-	byte* buf;
+	bool preloaded_sprite = true;
+	GRFLocation location(_cur_grfconfig->grfid, _nfo_line);
+	byte *buf;
 
-	if (_preload_sprite == NULL) {
+	GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.find(location);
+	if (it == _grf_line_to_action6_sprite_override.end()) {
 		/* No preloaded sprite to work with; allocate and read the
 		 * pseudo sprite content. */
 		buf = MallocT<byte>(num);
 		FioReadBlock(buf, num);
+		preloaded_sprite = false;
 	} else {
 		/* Use the preloaded sprite data. */
-		buf = _preload_sprite;
-		_preload_sprite = NULL;
+		buf = _grf_line_to_action6_sprite_override[location];
 		grfmsg(7, "DecodeSpecialSprite: Using preloaded pseudo sprite data");
 
 		/* Skip the real (original) content of this action. */
@@ -5823,7 +5841,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		grfmsg(7, "DecodeSpecialSprite: Handling action 0x%02X in stage %d", action, stage);
 		handlers[action][stage](buf, num);
 	}
-	free(buf);
+	if (!preloaded_sprite) free(buf);
 }
 
 
@@ -5971,6 +5989,12 @@ static void AfterLoadGRFs()
 		*((*it).first) = MapGRFStringID((*it).second, *((*it).first));
 	}
 	_string_to_grf_mapping.clear();
+
+	/* Free the action 6 override sprites. */
+	for (GRFLineToSpriteOverride::iterator it = _grf_line_to_action6_sprite_override.begin(); it != _grf_line_to_action6_sprite_override.end(); it++) {
+		free((*it).second);
+	}
+	_grf_line_to_action6_sprite_override.clear();
 
 	/* Update the bitmasks for the vehicle lists */
 	Player *p;
