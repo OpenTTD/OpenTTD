@@ -83,6 +83,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 	assert((GetTileTrackStatus(tile, TRANSPORT_RAIL, 0) & TrackToTrackBits(t)) != 0);
 
 	if (_settings_client.gui.show_track_reservation) {
+		/* show the reserved rail if needed */
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -92,6 +93,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
 				if (!GetDepotWaypointReservation(tile)) {
 					SetDepotWaypointReservation(tile, true);
+					MarkTileDirtyByTile(tile); // some GRFs change their appearance when tile is reserved
 					return true;
 				}
 			}
@@ -101,7 +103,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			if (IsLevelCrossing(tile) && !GetCrossingReservation(tile)) {
 				SetCrossingReservation(tile, true);
 				BarCrossing(tile);
-				MarkTileDirtyByTile(tile);
+				MarkTileDirtyByTile(tile); // crossing barred, make tile dirty
 				return true;
 			}
 			break;
@@ -109,6 +111,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 		case MP_STATION:
 			if (IsRailwayStation(tile) && !GetRailwayStationReservation(tile)) {
 				SetRailwayStationReservation(tile, true);
+				MarkTileDirtyByTile(tile); // some GRFs need redraw after reserving track
 				return true;
 			}
 			break;
@@ -144,6 +147,7 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
 				SetDepotWaypointReservation(tile, false);
 				MarkTileDirtyByTile(tile);
+				break;
 			}
 			if (IsPlainRailTile(tile)) UnreserveTrack(tile, t);
 			break;
