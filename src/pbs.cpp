@@ -92,7 +92,6 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 			if (IsRailWaypoint(tile) || IsRailDepot(tile)) {
 				if (!GetDepotWaypointReservation(tile)) {
 					SetDepotWaypointReservation(tile, true);
-					MarkTileDirtyByTile(tile);
 					return true;
 				}
 			}
@@ -110,7 +109,6 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 		case MP_STATION:
 			if (IsRailwayStation(tile) && !GetRailwayStationReservation(tile)) {
 				SetRailwayStationReservation(tile, true);
-				MarkTileDirtyByTile(tile);
 				return true;
 			}
 			break;
