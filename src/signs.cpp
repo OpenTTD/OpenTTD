@@ -157,7 +157,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			MarkSignDirty(si);
 			delete si;
 
-			InvalidateWindowData(WC_SIGN_LIST, 0, 1);
+			InvalidateWindowData(WC_SIGN_LIST, 0, 0);
 		}
 	}
 
