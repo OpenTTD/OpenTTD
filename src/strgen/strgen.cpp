@@ -463,11 +463,11 @@ static const CmdStruct _cmd_structs[] = {
 	{"REV",           EmitSingleChar, SCC_REVISION,            0, 0}, // openttd revision string
 	{"SHORTCARGO",    EmitSingleChar, SCC_CARGO_SHORT,         2, 0}, // short cargo description, only ### tons, or ### litres
 
-	{"STRING1", EmitSingleChar, SCC_STRING1, 1, C_CASE}, // included string that consumes ONE argument
-	{"STRING2", EmitSingleChar, SCC_STRING2, 2, C_CASE}, // included string that consumes TWO arguments
-	{"STRING3", EmitSingleChar, SCC_STRING3, 3, C_CASE}, // included string that consumes THREE arguments
-	{"STRING4", EmitSingleChar, SCC_STRING4, 4, C_CASE}, // included string that consumes FOUR arguments
-	{"STRING5", EmitSingleChar, SCC_STRING5, 5, C_CASE}, // included string that consumes FIVE arguments
+	{"STRING1", EmitSingleChar, SCC_STRING1, 2, C_CASE}, // included string that consumes the string id and ONE argument
+	{"STRING2", EmitSingleChar, SCC_STRING2, 3, C_CASE}, // included string that consumes the string id and TWO arguments
+	{"STRING3", EmitSingleChar, SCC_STRING3, 4, C_CASE}, // included string that consumes the string id and THREE arguments
+	{"STRING4", EmitSingleChar, SCC_STRING4, 5, C_CASE}, // included string that consumes the string id and FOUR arguments
+	{"STRING5", EmitSingleChar, SCC_STRING5, 6, C_CASE}, // included string that consumes the string id and FIVE arguments
 
 	{"STATIONFEATURES", EmitSingleChar, SCC_STATION_FEATURES, 1, 0}, // station features string, icons of the features
 	{"INDUSTRY",        EmitSingleChar, SCC_INDUSTRY_NAME,    1, 0}, // industry, takes an industry #
