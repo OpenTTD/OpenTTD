@@ -3017,13 +3017,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarskuwing: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fout: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fataal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} sal nie met die TTDPatch uitgawe rapporteer deur OpenTTD werk nie.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} is vir die {STRING} uitgawe van TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} is onderwerp om saam met {STRING} gebruik te word
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ongeldig parameter vir {STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} moet voor {STRING} gelaai word.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} moet na {STRING} gelaai word.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} vereis OpenTTD uitgawe {STRING} of beter.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} sal nie met die TTDPatch uitgawe rapporteer deur OpenTTD werk nie.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} is vir die {STRING} uitgawe van TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} is onderwerp om saam met {STRING} gebruik te word
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Ongeldig parameter vir {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} moet voor {STRING} gelaai word.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} moet na {STRING} gelaai word.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} vereis OpenTTD uitgawe {STRING} of beter.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :die GRF lêer dit was ontwerp om te vertaal
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Te veel NewGRFs gelaai
 

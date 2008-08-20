@@ -3042,13 +3042,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}エラー：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}エラー：{SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING}はOpenTTDのTTDPatchバージョンに対応していません。
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING}はTTDの{STRING}バージョンのみに対応しています。
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}を使用時に、{STRING}を入にしなければなりません
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING}のパラメータが不正：パラメータ　{STRING}（{NUM}）
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{1:STRING}を読み込む前、{0:STRING}を読み込まなければなりません。
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING}は{STRING}の読み込み後のみに読み込めます。
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} は OpenTTD バージョン {STRING} もしくはそれ以降のバージョンが必要です。
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING}はOpenTTDのTTDPatchバージョンに対応していません。
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING}はTTDの{STRING}バージョンのみに対応しています。
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING}を使用時に、{STRING}を入にしなければなりません
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}{STRING}のパラメータが不正：パラメータ　{STRING}（{NUM}）
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{2:STRING}を読み込む前、{1:STRING}を読み込まなければなりません。
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING}は{STRING}の読み込み後のみに読み込めます。
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} は OpenTTD バージョン {STRING} もしくはそれ以降のバージョンが必要です。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :訳しにデザインされたGRFファイル
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :読み込んだ NewGRF が多すぎます。
 

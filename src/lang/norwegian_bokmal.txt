@@ -3031,13 +3031,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Advarsel: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Feil: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} virker ikke med TTDPatch versjonen som er rapportert av OpenTTD
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} er for versjon {STRING} av TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er designet for å bli brukt med {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} må være lastet før {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} må være lastet etter {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} krever OpenTTD versjon {STRING} eller bedre.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} virker ikke med TTDPatch versjonen som er rapportert av OpenTTD
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} er for versjon {STRING} av TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} er designet for å bli brukt med {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Ugyldig parameter for {STRING}: parameter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} må være lastet før {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} må være lastet etter {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} krever OpenTTD versjon {STRING} eller bedre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen den var laget for å oversette
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er er lastet.
 

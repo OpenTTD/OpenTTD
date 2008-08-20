@@ -3129,13 +3129,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Atentie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eroare: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} nu va functiona cu versiunea TTDPatch raportata de OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} este pentru versiunea {STRING} a TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} este conceput pentru a fi folosit cu {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Parametru invalid pentru {STRING}: parametrul {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} trebuie sa fie incarcat inaintea {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} trebuie sa fie incarcat dupa {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} necesita OpenTTD versiunea {STRING} sau mai noua.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} nu va functiona cu versiunea TTDPatch raportata de OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} este pentru versiunea {STRING} a TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} este conceput pentru a fi folosit cu {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Parametru invalid pentru {STRING}: parametrul {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} trebuie sa fie incarcat inaintea {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} trebuie sa fie incarcat dupa {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} necesita OpenTTD versiunea {STRING} sau mai noua.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Prea multe NewGRF-uri încărcate.
 

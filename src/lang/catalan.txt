@@ -3169,13 +3169,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Alerta: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Error: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatal: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} no funcionarà amb la versió de TTDPatch informada per OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} és per la versió {STRING} de TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} està dissenyat per ser utilitzat amb {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Paràmetre invàlid per {STRING}: paràmetre {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} ha de ser carregat abans de {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} ha de ser carregat després de {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} necessita OpenTTD versió {STRING} o més modern.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} no funcionarà amb la versió de TTDPatch informada per OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} és per la versió {STRING} de TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} està dissenyat per ser utilitzat amb {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Paràmetre invàlid per {STRING}: paràmetre {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} ha de ser carregat abans de {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} ha de ser carregat després de {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} necessita OpenTTD versió {STRING} o més modern.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :l'arxiu GRF dissenyat està pendent de traduir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Hi ha massa arxius NewGRF carregats.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregant {STRING} com a NewGRF estàtic amb {STRING} podria causar desincronitzacions.

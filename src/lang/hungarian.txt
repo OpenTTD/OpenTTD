@@ -3164,13 +3164,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Figyelmeztetés: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hiba: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Végzetes hiba: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} a TTD {STRING} verziójához van.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} úgy lett tervezve, hogy ezzel lesz használva: {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Hibás paraméterérték ehhez: {STRING}: paraméter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} muszáj hogy betöltődjön ezelőtt: {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} muszáj hogy ezután töltődjön be: {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} csak a {STRING} vagy nagyobb verziójú OpenTTD-vel működik.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} nem fog működni az OpenTTD által jelentett TTDPatch verzióval.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} a TTD {STRING} verziójához van.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} úgy lett tervezve, hogy ezzel lesz használva: {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Hibás paraméterérték ehhez: {STRING}: paraméter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} muszáj hogy betöltődjön ezelőtt: {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} muszáj hogy ezután töltődjön be: {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} csak a {STRING} vagy nagyobb verziójú OpenTTD-vel működik.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve.
 

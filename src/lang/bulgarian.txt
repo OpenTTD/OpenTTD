@@ -3164,13 +3164,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Внимание: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Грешка: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Критично: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} няма да работи с версията на TTDPatch указана от OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} е за {STRING} версията на TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} е проектиран да работи с {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Невалиден параметър за {STRING}: параметър {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} трябва да бъде зареден преди {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} трябва да бъде зареден след {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} поискай OpenTTD версиа {STRING} или по-добра.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} няма да работи с версията на TTDPatch указана от OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} е за {STRING} версията на TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} е проектиран да работи с {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Невалиден параметър за {STRING}: параметър {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} трябва да бъде зареден преди {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} трябва да бъде зареден след {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} поискай OpenTTD версиа {STRING} или по-добра.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF файлат беше предназначен да преведе
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Прекалено много графики (NewGRF) са заредени.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Зареждане на {STRING} като статичен NewGRF заедно с {STRING} може да доведе до проблеми.

@@ -3015,12 +3015,12 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Varoitus: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Virhe: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Virhe: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ei toimi tämän TTDPatchin version kanssa.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} on TTD:n {STRING} versiota varten.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} ja {STRING} on suunniteltu toimimaan yhdessä
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Virheellinen parametri: {STRING}: {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} tulee ladata ennen kuin {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} tulee ladata vasta kun {STRING} on ladattu.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} ei toimi tämän TTDPatchin version kanssa.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} on TTD:n {STRING} versiota varten.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} ja {STRING} on suunniteltu toimimaan yhdessä
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Virheellinen parametri: {STRING}: {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} tulee ladata ennen kuin {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} tulee ladata vasta kun {STRING} on ladattu.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-tiedosto jonka se muuntaa
 
 STR_NEWGRF_ADD                                                  :{BLACK}Lisää

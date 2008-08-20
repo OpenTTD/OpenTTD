@@ -2862,12 +2862,12 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Averto: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Eraro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fatalo: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ne funkcios kun la versio de TTDPatch menciata de OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} estas por versio {STRING} de TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} estas intencita por uzo kun {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Nevalida parametro por {STRING}: parametro{STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} estu ŝarĝata antaŭ {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} estu ŝarĝata post {STRING}.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} ne funkcios kun la versio de TTDPatch menciata de OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} estas por versio {STRING} de TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} estas intencita por uzo kun {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Nevalida parametro por {STRING}: parametro{STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} estu ŝarĝata antaŭ {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} estu ŝarĝata post {STRING}.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :la GRF-dosiero estas farita por traduki
 
 STR_NEWGRF_ADD                                                  :{BLACK}Aldonu

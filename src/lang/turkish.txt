@@ -3099,13 +3099,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Uyarı: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Hata: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Ölümcül hata: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} OpenTTD tarafından belirtilen TTDPatch sürümüyle çalışmayacaktır.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING}, TTD'nin {STRING} sürümü içindir.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING}, {STRING} ile kullanılmak için tasarlanmıştır
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING} için geçersiz parametre: {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} önce, {STRING} ondan sonra yüklenmeli.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} sonra, {STRING} ondan önce yüklenmeli.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} OpenTTD tarafından belirtilen TTDPatch sürümüyle çalışmayacaktır.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING}, TTD'nin {STRING} sürümü içindir.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING}, {STRING} ile kullanılmak için tasarlanmıştır
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}{STRING} için geçersiz parametre: {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} önce, {STRING} ondan sonra yüklenmeli.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} sonra, {STRING} ondan önce yüklenmeli.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi.
 

@@ -3020,13 +3020,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Arningway: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Errorway: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Atalfay: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} illway otnay orkway ithway ethay AtchtTDPay ersionvay eportedray ybay OpenTTDWAY.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} isway orfay ethay {STRING} ersionvay ofway TTDay.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} isway esignedday otay ebay usedway ithway {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Invalidway arameterpay orfay {STRING}: arameterpay {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} ustmay ebay oadedlay eforebay {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} ustmay ebay oadedlay afterway {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} equiresray OpenTTDWAY ersionvay {STRING} orway etterbay.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} illway otnay orkway ithway ethay AtchtTDPay ersionvay eportedray ybay OpenTTDWAY.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} isway orfay ethay {STRING} ersionvay ofway TTDay.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} isway esignedday otay ebay usedway ithway {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Invalidway arameterpay orfay {STRING}: arameterpay {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} ustmay ebay oadedlay eforebay {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} ustmay ebay oadedlay afterway {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} equiresray OpenTTDWAY ersionvay {STRING} orway etterbay.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :ethay GRFay ilefay itway asway esignedday otay anslatetray
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Ootay anymay NewGRFs areway oadedlay.
 

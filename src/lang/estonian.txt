@@ -3236,13 +3236,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Hoiatus: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Viga: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Saatuslik viga: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ei tööta TTDPatch versiooniga OpenTTD väitel.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} on {STRING} TTD versiooni jaoks.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} on mõeldud kasutamiseks {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :vigane parameeter {STRING} jaoks: parameeter {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} peab olema laetud enne {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} peab olema laetud pärast{STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} nõuab OpenTTD versiooni {STRING} või uuemat.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} ei tööta TTDPatch versiooniga OpenTTD väitel.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} on {STRING} TTD versiooni jaoks.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} on mõeldud kasutamiseks {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}vigane parameeter {STRING} jaoks: parameeter {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} peab olema laetud enne {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} peab olema laetud pärast{STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} nõuab OpenTTD versiooni {STRING} või uuemat.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.

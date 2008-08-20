@@ -3235,13 +3235,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Pozor: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Napaka: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Usodno: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} ne deluje s TTDPatch različico prijavljeno v OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} je za {STRING} različico TTD-ja.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} je izdelano za uporabo v {STRING} kombinaciji
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neveljavna nastavitev za {STRING}: nastavitev {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} je potrebno naložiti pred {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} je potrebno naložiti po {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potrebuje OpenTTD različico {STRING} ali boljšo.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} ne deluje s TTDPatch različico prijavljeno v OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} je za {STRING} različico TTD-ja.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} je izdelano za uporabo v {STRING} kombinaciji
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Neveljavna nastavitev za {STRING}: nastavitev {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} je potrebno naložiti pred {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} je potrebno naložiti po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} potrebuje OpenTTD različico {STRING} ali boljšo.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {STRING} kot statični NewGRF z/s {STRING} lahko povzroči desinhronizacijo.

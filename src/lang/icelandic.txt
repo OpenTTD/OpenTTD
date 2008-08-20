@@ -3137,13 +3137,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aðvörun: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Villa: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Banvænt: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} Mun ekki virka með útgáfu TTDPatch sem OpenTTD gefur til kynna.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} er fyrir {STRING} útgáfu af TTD.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} er hannað til að notast með {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Ógild færibreyta {STRING}: færibreyta {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} verður að hlaðast á undan {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} verður að hlaðast eftir {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} þarf OpenTTD útgáfu {STRING} eða nýrri.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} Mun ekki virka með útgáfu TTDPatch sem OpenTTD gefur til kynna.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} er fyrir {STRING} útgáfu af TTD.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} er hannað til að notast með {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Ógild færibreyta {STRING}: færibreyta {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} verður að hlaðast á undan {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} verður að hlaðast eftir {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} þarf OpenTTD útgáfu {STRING} eða nýrri.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF skránni sem það var hannað til að þýða
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Of mörg NewGRF eru hlaðin.
 

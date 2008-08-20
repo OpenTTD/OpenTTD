@@ -2869,10 +2869,10 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Aviso: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Erro: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Grave: {SILVER}{STRING}
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} está deseñado para ser usado con {STRING}
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} debe cargarse antes de {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} debe cargarse despois de {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} require OpenTTD versión {STRING} ou posterior.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} está deseñado para ser usado con {STRING}
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} debe cargarse antes de {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} debe cargarse despois de {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} require OpenTTD versión {STRING} ou posterior.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Engadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Engadir un novo arquivo NewGRF á lista

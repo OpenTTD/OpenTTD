@@ -2993,12 +2993,12 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}错误：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}严重错误：{SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} 不能与 OpenTTD 报告的 TTDPatch 版本兼容。
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} 是为 {STRING} 版 TTD 开发的。
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} 应当与 {STRING} 配合
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{STRING} 参数错误：参数 {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} 必须在 {STRING} 前加载。
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} 必须在 {STRING} 后加载。
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} 不能与 OpenTTD 报告的 TTDPatch 版本兼容。
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} 是为 {STRING} 版 TTD 开发的。
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} 应当与 {STRING} 配合
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}{STRING} 参数错误：参数 {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} 必须在 {STRING} 前加载。
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 必须在 {STRING} 后加载。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 被设计为可平移
 
 STR_NEWGRF_ADD                                                  :{BLACK}增加

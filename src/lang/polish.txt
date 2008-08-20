@@ -3158,13 +3158,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Ostrzeżenie: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Błąd: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Błąd krytyczny: {SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{STRING} nie zadziała z wersją TTDPatcha zgłoszoną przez OpenTTD.
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} jest przeznaczony dla TTD wersji {STRING}.
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} jest zaprojektowany do użycia z {STRING}
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Niewłaściwy parametr dla {STRING}: parametr {STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musi być wczytany przed {STRING}.
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musi być wczytany po {STRING}.
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} wymaga OpenTTD w wersji {STRING} lub nowszej.
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} nie zadziała z wersją TTDPatcha zgłoszoną przez OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} jest przeznaczony dla TTD wersji {STRING}.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} jest zaprojektowany do użycia z {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Niewłaściwy parametr dla {STRING}: parametr {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} musi być wczytany przed {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} musi być wczytany po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} wymaga OpenTTD w wersji {STRING} lub nowszej.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano za dużo NewGRF.
 

@@ -3135,13 +3135,13 @@ STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}警告：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}錯誤：{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}嚴重錯誤：{SILVER}{STRING}
-STR_NEWGRF_ERROR_VERSION_NUMBER                                 :已知 {STRING} 跟 TTDPatch 版本不合。
-STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{STRING} 只適合用於 TTD 版本 {STRING}
-STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} 必須跟 {STRING} 一起使用
-STR_NEWGRF_ERROR_INVALID_PARAMETER                              : {STRING} 的參數無效：{STRING} ({NUM})
-STR_NEWGRF_ERROR_LOAD_BEFORE                                    :載入前 {1:STRING} 必須先載入 {0:STRING}。
-STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} 必須在 {STRING} 之後載入。
-STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} 需要 {STRING} 或更新的 OpenTTD 版本。
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}已知 {STRING} 跟 TTDPatch 版本不合。
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} 只適合用於 TTD 版本 {STRING}
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} 必須跟 {STRING} 一起使用
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP} {STRING} 的參數無效：{STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}載入前 {2:STRING} 必須先載入 {1:STRING}。
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 必須在 {STRING} 之後載入。
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 需要 {STRING} 或更新的 OpenTTD 版本。
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 檔案翻譯後出現錯誤
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :已載入太多的 NewGRF。
 
