@@ -515,12 +515,6 @@ static const BubbleMovement * const _bubble_movement[] = {
 
 static void BubbleTick(Vehicle *v)
 {
-	/*
-	 * Warning: those effects can NOT use Random(), and have to use
-	 *  InteractiveRandom(), because somehow someone forgot to save
-	 *  spritenum to the savegame, and so it will cause desyncs in
-	 *  multiplayer!! (that is: in ToyLand)
-	 */
 	uint et;
 
 	v->progress++;
@@ -536,7 +530,7 @@ static void BubbleTick(Vehicle *v)
 			return;
 		}
 		if (v->u.effect.animation_substate != 0) {
-			v->spritenum = GB(InteractiveRandom(), 0, 2) + 1;
+			v->spritenum = GB(Random(), 0, 2) + 1;
 		} else {
 			v->spritenum = 6;
 		}
@@ -554,7 +548,7 @@ static void BubbleTick(Vehicle *v)
 	}
 
 	if (b->y == 4 && b->x == 1) {
-		if (v->z_pos > 180 || Chance16I(1, 96, InteractiveRandom())) {
+		if (v->z_pos > 180 || Chance16I(1, 96, Random())) {
 			v->spritenum = 5;
 			SndPlayVehicleFx(SND_2F_POP, v);
 		}

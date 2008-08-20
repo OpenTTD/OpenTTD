@@ -2270,8 +2270,10 @@ static const SaveLoad _special_desc[] = {
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleEffect, animation_state),    SLE_UINT16),
 	    SLE_VARX(cpp_offsetof(Vehicle, u) + cpp_offsetof(VehicleEffect, animation_substate), SLE_UINT8),
 
-	/* reserve extra space in savegame here. (currently 16 bytes) */
-	SLE_CONDNULL(16, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(Vehicle, spritenum,     SLE_UINT8, 2, SL_MAX_VERSION),
+
+	/* reserve extra space in savegame here. (currently 15 bytes) */
+	SLE_CONDNULL(15, 2, SL_MAX_VERSION),
 
 	SLE_END()
 };
