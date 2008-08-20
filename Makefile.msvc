@@ -20,8 +20,9 @@ SRC_DIR = "$(ROOT_DIR)/src"
 BUNDLE_DIR = "$(ROOT_DIR)/bundle"
 BUNDLES_DIR = "$(ROOT_DIR)/bundles"
 TTD = "openttd.exe"
+TARGET := $(shell echo $(PLATFORM) | sed "s/win64/x64/;s/win32/Win32/")
 
 all:
-	cp objs/$(PLATFORM)/Release/$(TTD) $(BIN_DIR)/$(TTD)
+	$(Q)cp objs/$(TARGET)/Release/$(TTD) $(BIN_DIR)/$(TTD)
 
 include Makefile.bundle

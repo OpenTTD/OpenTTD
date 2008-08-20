@@ -106,7 +106,6 @@ Section "!OpenTTD" Section1
 	; Copy language files
 	SetOutPath "$INSTDIR\lang\"
 	File ${PATH_ROOT}bin\lang\*.lng
-	File ${PATH_ROOT}src\lang\english.txt
 
 	; Copy data files
 	SetOutPath "$INSTDIR\data\"
@@ -131,7 +130,6 @@ Section "!OpenTTD" Section1
 
 	; Copy executable
 	File /oname=openttd.exe ${BINARY_DIR}\openttd.exe
-	File ${PATH_ROOT}objs\strgen\strgen.exe
 
 
 	; Delete old files from the main dir. they are now placed in data/ and lang/
@@ -248,7 +246,6 @@ Section "Uninstall"
 	Delete "$INSTDIR\readme.txt"
 	Delete "$INSTDIR\known-bugs.txt"
 	Delete "$INSTDIR\openttd.exe"
-	Delete "$INSTDIR\strgen.exe"
 	Delete "$INSTDIR\COPYING"
 	Delete "$INSTDIR\INSTALL.LOG"
 	Delete "$INSTDIR\crash.log"
@@ -293,7 +290,6 @@ Section "Uninstall"
 
 	; Language files
 	Delete "$INSTDIR\lang\*.lng"
-	Delete "$INSTDIR\lang\english.txt"
 
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Extras\"

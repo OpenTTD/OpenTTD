@@ -80,7 +80,7 @@ ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/heightmaps/\"* 2>/dev/nul
 	$(Q)cp "$(BIN_DIR)/scenario/heightmaps/"* "$(BUNDLE_DIR)/scenario/heightmap/"
 endif
 ifeq ($(TTD), openttd.exe)
-	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/readme.txt" "$(BUNDLE_DIR)/COPYING"
+	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/readme.txt" "$(BUNDLE_DIR)/COPYING" "$(BUNDLE_DIR)/changelog.txt" "$(BUNDLE_DIR)/known-bugs.txt"
 endif
 
 ### Packing the current bundle into several compressed file formats ###
@@ -122,6 +122,12 @@ bundle_dmg: bundle
 	$(Q)cp -R "$(BUNDLE_DIR)/" "$(BUNDLES_DIR)/OpenTTD $(REV)"
 	$(Q)hdiutil create -ov -format UDZO -srcfolder "$(BUNDLES_DIR)/OpenTTD $(REV)" "$(BUNDLES_DIR)/$(BUNDLE_NAME).dmg"
 	$(Q)rm -fr "$(BUNDLES_DIR)/OpenTTD $(REV)"
+
+bundle_exe: all
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).exe'
+	$(Q)unix2dos "$(ROOT_DIR)/docs/"* "$(ROOT_DIR)/readme.txt" "$(ROOT_DIR)/COPYING" "$(ROOT_DIR)/changelog.txt" "$(ROOT_DIR)/known-bugs.txt"
+	$(Q)cd $(ROOT_DIR)/os/win32/installer && makensis.exe //DVERSION_INCLUDE=version_$(PLATFORM).txt install.nsi
+	$(Q)mv $(ROOT_DIR)/os/win32/installer/*$(PLATFORM).exe "$(BUNDLES_DIR)/$(BUNDLE_NAME).exe"
 
 ifdef OSXAPP
 install:
