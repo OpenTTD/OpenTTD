@@ -11,6 +11,7 @@
 #include "order_type.h"
 #include "station_type.h"
 #include "engine_type.h"
+#include "waypoint.h"
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);
@@ -51,6 +52,7 @@ enum {
 	VLW_STATION_LIST  = 2 << 8,
 	VLW_DEPOT_LIST    = 3 << 8,
 	VLW_GROUP_LIST    = 4 << 8,
+	VLM_WAYPOINT_LIST = 5 << 8,
 	VLW_MASK          = 0x700,
 };
 
@@ -72,6 +74,7 @@ uint ShowAdditionalText(int x, int y, uint w, EngineID engine);
 uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine);
 
 void ShowVehicleListWindow(const Vehicle *v);
+void ShowVehicleListWindow(const Waypoint *wp);
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type);
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID station);
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex depot_tile);

@@ -789,6 +789,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 			case VLW_SHARED_ORDERS:
 				this->widget[VLW_WIDGET_CAPTION].data  = STR_VEH_WITH_SHARED_ORDERS_LIST;
 				break;
+
 			case VLW_STANDARD: /* Company Name - standard widget setup */
 				switch (this->vehicle_type) {
 					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_881B_TRAINS;        break;
@@ -798,6 +799,11 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 					default: NOT_REACHED(); break;
 				}
 				break;
+
+			case VLM_WAYPOINT_LIST:
+				this->widget[VLW_WIDGET_CAPTION].data = STR_WAYPOINT_VIEWPORT;
+				break;
+
 			case VLW_STATION_LIST: /* Station Name */
 				switch (this->vehicle_type) {
 					case VEH_TRAIN:    this->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_TRAINS;        break;
@@ -891,6 +897,10 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 			case VLW_STANDARD: /* Company Name */
 				SetDParam(0, owner);
 				SetDParam(1, this->vscroll.count);
+				break;
+
+			case VLM_WAYPOINT_LIST:
+				SetDParam(0, index);
 				break;
 
 			case VLW_STATION_LIST: /* Station Name */
@@ -1165,6 +1175,12 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 	} else {
 		ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);
 	}
+}
+
+void ShowVehicleListWindow(const Waypoint *wp)
+{
+	if (wp == NULL) return;
+	ShowVehicleListWindowLocal(GetTileOwner(wp->xy), VLM_WAYPOINT_LIST, VEH_TRAIN, wp->index);
 }
 
 void ShowVehicleListWindow(const Vehicle *v)

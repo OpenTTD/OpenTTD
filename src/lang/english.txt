@@ -2902,6 +2902,9 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rename t
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't rename train vehicle type...
 STR_CLEAR_TIME                                                  :{BLACK}Clear Time
 STR_RESET_LATENESS                                              :{BLACK}Reset Late Counter
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Change waypoint name
+STR_SHOW_TRAINS_ON_WAYPOINT                                     :{BLACK}Show Trains
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}

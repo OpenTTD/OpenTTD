@@ -1934,7 +1934,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 						y < wp->sign.top + 12 &&
 						x >= wp->sign.left &&
 						x < wp->sign.left + wp->sign.width_1) {
-					ShowRenameWaypointWindow(wp);
+					ShowWaypointWindow(wp);
 					return true;
 				}
 			}
@@ -1948,7 +1948,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 						y < wp->sign.top + 24 &&
 						x >= wp->sign.left &&
 						x < wp->sign.left + wp->sign.width_1 * 2) {
-					ShowRenameWaypointWindow(wp);
+					ShowWaypointWindow(wp);
 					return true;
 				}
 			}
@@ -1964,7 +1964,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 						y < wp->sign.top + ScaleByZoom(12, vp->zoom) &&
 						x >= wp->sign.left &&
 						x < wp->sign.left + ScaleByZoom(wp->sign.width_2, vp->zoom)) {
-					ShowRenameWaypointWindow(wp);
+					ShowWaypointWindow(wp);
 					return true;
 				}
 			}

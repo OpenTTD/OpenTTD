@@ -1867,6 +1867,10 @@
 				RelativePath=".\..\src\vehicle_gui.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\..\src\waypoints_gui.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Command handlers"

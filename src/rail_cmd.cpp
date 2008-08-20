@@ -2307,8 +2307,8 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 static void ClickTile_Track(TileIndex tile)
 {
 	switch (GetRailTileType(tile)) {
-		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_TRAIN);                  break;
-		case RAIL_TILE_WAYPOINT: ShowRenameWaypointWindow(GetWaypointByTile(tile)); break;
+		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_TRAIN);            break;
+		case RAIL_TILE_WAYPOINT: ShowWaypointWindow(GetWaypointByTile(tile)); break;
 		default: break;
 	}
 }

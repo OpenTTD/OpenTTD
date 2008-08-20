@@ -66,10 +66,6 @@ void HandleOnEditText(const char *str)
 	_cmd_text = str;
 
 	switch (_rename_what) {
-	case 1: // Rename a waypoint
-		if (*str == '\0') return;
-		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
-		break;
 #ifdef ENABLE_NETWORK
 	case 3: { // Give money, you can only give money in excess of loan
 		const Player *p = GetPlayer(_current_player);
@@ -130,23 +126,6 @@ void ShowNetworkGiveMoneyWindow(PlayerID player)
 	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, NULL, CS_NUMERAL);
 }
 #endif /* ENABLE_NETWORK */
-
-void ShowRenameWaypointWindow(const Waypoint *wp)
-{
-	int id = wp->index;
-
-	/* Are we allowed to change the name of the waypoint? */
-	if (!CheckTileOwnership(wp->xy)) {
-		ShowErrorMessage(_error_message, STR_CANT_CHANGE_WAYPOINT_NAME,
-			TileX(wp->xy) * TILE_SIZE, TileY(wp->xy) * TILE_SIZE);
-		return;
-	}
-
-	_rename_id = id;
-	_rename_what = 1;
-	SetDParam(0, id);
-	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_WAYPOINT_NAME_BYTES, MAX_LENGTH_WAYPOINT_NAME_PIXELS, NULL, CS_ALPHANUMERAL);
-}
 
 
 /* Zooms a viewport in a window in or out */
