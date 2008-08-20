@@ -1868,7 +1868,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\waypoints_gui.cpp"
+				RelativePath=".\..\src\waypoint_gui.cpp"
 				>
 			</File>
 		</Filter>
