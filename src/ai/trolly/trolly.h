@@ -89,7 +89,7 @@
 // How much cargo must there not be used in a city before we can build a new station?
 #define AI_CHECKCITY_NEEDED_CARGO 50
 // When there is already a station which takes the same good and the rating of that
-//  city is higher then this numer, we are not going to attempt to build anything
+//  city is higher than this numer, we are not going to attempt to build anything
 //  there
 #define AI_CHECKCITY_CARGO_RATING 50
 // But, there is a chance of 1 out of this number, that we do ;)
@@ -154,7 +154,7 @@
 // How money profit does a vehicle needs to make to stay in order
 //  This is the profit of this year + profit of last year
 //  But also for vehicles that are just one year old. In other words:
-//   Vehicles of 2 years do easier meet this setting then vehicles
+//   Vehicles of 2 years do easier meet this setting than vehicles
 //   of one year. This is a very good thing. New vehicles are filtered,
 //   while old vehicles stay longer, because we do get less in return.
 #define AI_MINIMUM_ROUTE_PROFIT 1000

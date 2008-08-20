@@ -956,11 +956,11 @@ static void _SetGeneratingWorldProgress(gwp_class cls, uint progress, uint total
 
 		/* Never display 0% */
 		if (_tp.percent == 0) return;
-		/* Reset if percent is lower then the last recorded */
+		/* Reset if percent is lower than the last recorded */
 		if (_tp.percent < last_percent) last_percent = 0;
-		/* Display every 5%, but 6% is also very valid.. just not smaller steps then 5% */
+		/* Display every 5%, but 6% is also very valid.. just not smaller steps than 5% */
 		if (_tp.percent % 5 != 0 && _tp.percent <= last_percent + 5) return;
-		/* Never show steps smaller then 2%, even if it is a mod 5% */
+		/* Never show steps smaller than 2%, even if it is a mod 5% */
 		if (_tp.percent <= last_percent + 2) return;
 
 		DEBUG(net, 1, "Map generation percentage complete: %d", _tp.percent);

@@ -69,7 +69,7 @@ enum IndustryBehaviour {
 	INDUSTRYBEH_PLANT_FIELDS          = 1 << 0,  ///< periodically plants fileds around itself (temp and artic farms)
 	INDUSTRYBEH_CUT_TREES             = 1 << 1,  ///< cuts trees and produce first output cargo from them (lumber mill)
 	INDUSTRYBEH_BUILT_ONWATER         = 1 << 2,  ///< is built on water (oil rig)
-	INDUSTRYBEH_TOWN1200_MORE         = 1 << 3,  ///< can only be built in towns larger then 1200 inhabitants (temperate bank)
+	INDUSTRYBEH_TOWN1200_MORE         = 1 << 3,  ///< can only be built in towns larger than 1200 inhabitants (temperate bank)
 	INDUSTRYBEH_ONLY_INTOWN           = 1 << 4,  ///< can only be built in towns (arctic/tropic banks, water tower)
 	INDUSTRYBEH_ONLY_NEARTOWN         = 1 << 5,  ///< is always built near towns (toy shop)
 	INDUSTRYBEH_PLANT_ON_BUILT        = 1 << 6,  ///< Fields are planted around when built (all farms)

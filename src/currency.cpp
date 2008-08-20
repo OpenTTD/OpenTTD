@@ -114,9 +114,9 @@ const byte TTDPatch_To_OTTDIndex[] =
 
 /**
  * Will return the ottd's index correspondance to
- * the ttdpatch's id.  If the id is bigger then the array,
- * it is  a grf written for ottd, thus returning the same id.
- * Only called from newgrf.c
+ * the ttdpatch's id.  If the id is bigger than the array,
+ * it is a grf written for ottd, thus returning the same id.
+ * Only called from newgrf.cpp
  * @param grfcurr_id currency id coming from newgrf
  * @return the corrected index
  **/

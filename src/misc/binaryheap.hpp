@@ -25,7 +25,7 @@
  *    use indices 1..max_items instead of zero based C indexing.
  *
  * 3) Item of the binary heap should support these public members:
- *    - 'lower-then' operator '<' - used for comparing items before moving
+ *    - 'lower-than' operator '<' - used for comparing items before moving
  *
  */
 

@@ -2159,7 +2159,7 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(58)) {
-		/* patch difficulty number_industries other then zero get bumped to +1
+		/* patch difficulty number_industries other than zero get bumped to +1
 		 * since a new option (very low at position1) has been added */
 		if (_settings_game.difficulty.number_industries > 0) {
 			_settings_game.difficulty.number_industries++;

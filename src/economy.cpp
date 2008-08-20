@@ -1218,7 +1218,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	/* Check if there's an industry close to the station that accepts the cargo
 	 * XXX - Think of something better to
 	 *       1) Only deliver to industries which are withing the catchment radius
-	 *       2) Distribute between industries if more then one is present */
+	 *       2) Distribute between industries if more than one is present */
 	best_dist = (_settings_game.station.station_spread + 8) * 2;
 	FOR_ALL_INDUSTRIES(ind) {
 		indspec = GetIndustrySpec(ind->type);
