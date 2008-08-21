@@ -17,7 +17,7 @@ ROOT_DIR="`dirname $0`"
 ROOT_DIR="`cd $ROOT_DIR && pwd`"
 
 PWD="`pwd`"
-PREFIX="`pwd`/bin"
+PREFIX="$PWD/bin"
 
 . $ROOT_DIR/config.lib
 
