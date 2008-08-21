@@ -67,7 +67,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
  *      <li>VLW_STANDARD: not used<li>
  *      <li>VLW_DEPOT_LIST: TileIndex of the depot/hangar to make the list for</li>
  *      <li>VLW_GROUP_LIST: index of group to generate a list for</li>
- *      <li>VLM_WAYPOINT_LIST: index of waypoint to generate a list for</li>
+ *      <li>VLW_WAYPOINT_LIST: index of waypoint to generate a list for</li>
  *    </ul>
  * @param window_type The type of window the list is for, using the VLW_ flags in vehicle_gui.h
  */
@@ -123,7 +123,7 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, PlayerID owner
 			}
 			break;
 
-		case VLM_WAYPOINT_LIST:
+		case VLW_WAYPOINT_LIST:
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->IsPrimaryVehicle()) {
 					const Order *order;

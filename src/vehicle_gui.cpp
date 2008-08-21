@@ -800,7 +800,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 				}
 				break;
 
-			case VLM_WAYPOINT_LIST:
+			case VLW_WAYPOINT_LIST:
 				this->widget[VLW_WIDGET_CAPTION].data = STR_WAYPOINT_VIEWPORT;
 				break;
 
@@ -899,7 +899,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 				SetDParam(1, this->vscroll.count);
 				break;
 
-			case VLM_WAYPOINT_LIST:
+			case VLW_WAYPOINT_LIST:
 				SetDParam(0, index);
 				break;
 
@@ -1180,7 +1180,7 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 void ShowVehicleListWindow(const Waypoint *wp)
 {
 	if (wp == NULL) return;
-	ShowVehicleListWindowLocal(GetTileOwner(wp->xy), VLM_WAYPOINT_LIST, VEH_TRAIN, wp->index);
+	ShowVehicleListWindowLocal(GetTileOwner(wp->xy), VLW_WAYPOINT_LIST, VEH_TRAIN, wp->index);
 }
 
 void ShowVehicleListWindow(const Vehicle *v)

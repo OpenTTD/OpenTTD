@@ -52,7 +52,7 @@ enum {
 	VLW_STATION_LIST  = 2 << 8,
 	VLW_DEPOT_LIST    = 3 << 8,
 	VLW_GROUP_LIST    = 4 << 8,
-	VLM_WAYPOINT_LIST = 5 << 8,
+	VLW_WAYPOINT_LIST = 5 << 8,
 	VLW_MASK          = 0x700,
 };
 
