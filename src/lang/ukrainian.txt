@@ -1143,6 +1143,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Поми
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Помилка автооновлення корабля {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Помилка автооновлення літака {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поїзд {COMMA} дуже довгий після оновлення
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Правила автозаміни/оновлення не примінялись.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(бракує коштів)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Розширені налаштування
@@ -3063,6 +3064,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Пере
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Неможливо перейменувати тип поїзду...
 STR_CLEAR_TIME                                                  :{BLACK}Очистити час
 STR_RESET_LATENESS                                              :{BLACK}Очистити лічильник запізнення
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Перейменувати точку маршруту
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Зупиняється
 STR_TRAIN_STOPPING_VEL                                          :{RED}Зупиняється, {VELOCITY}

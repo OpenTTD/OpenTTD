@@ -989,6 +989,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossí
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossível copiar a lista de ordens...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fim de Ordens Compartilhadas - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}O Trem {COMMA} não consegue encontrar uma via livre.
 STR_TRAIN_IS_LOST                                               :{WHITE}O trem {COMMA} está perdido.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}O lucro do trem {COMMA} no último ano foi de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}União Monetária Europeia!{}{} O Euro é introduzido como moeda única para todas as transações no seu país!
@@ -1018,6 +1019,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Falha na
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Falha na auto-renovação da embarcação {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Falha na auto-renovação da aeronave {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O trem {COMMA} ficará muito longo após a substituição
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Regras de autosubstituição/renovação não estão ativadas.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite de dinheiro)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurar Correções
@@ -1138,6 +1140,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Exibir vias reservadas: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Exibe ferramentas de construção na falta de veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
@@ -1173,6 +1176,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir sinaleiros até: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ativar interface de sinais: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de sinal a ser construído: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Avançado
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Avançado de mão única
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Tipo de sinal a ser exibido: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Normal apenas
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Avançados apenas
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todos
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}O layout de cidade "sem mais estradas" não é válido no editor
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecione o layout das estradas {ORANGE}{STRING}
@@ -1343,6 +1354,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústr
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nomes das indústrias - clique no nome para localizar a indústria
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...muito perto de outra indústria
 
@@ -1679,12 +1691,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia com si
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia com pré-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia com sinais combo
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ferrovia com sinais avançados
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ferrovia com sinais de mão única avançados
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Linha de trem com sinais normais e pré-sinais
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Linha de trem com sinais normais e de saída
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ferrovia com sinais normais e combo
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ferrovia com sinais normais e avançados
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ferrovia com sinais normais e de mão única avançados
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Linha de trem com pré-sinais e de saída
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ferrovia com pré-sinais e combo
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ferrovia com pré-sinais e sinais avançados
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ferrovia com pré-sinais e sinais avançados de mão única
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ferrovia com sinais combo e de saída
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ferrovia com sinais de saída e avançados
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ferrovia com sinais de saída e sinais avançados de mão única
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ferrovia com sinais combo e avançados
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ferrovia com sinais combo e sinais avançados de mão única
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ferrovia com sinais avançados e de mão única
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Deve remover a estação de trem antes
 
 
@@ -2880,12 +2903,15 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomear
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossível renomear tipo de veículo ferroviário...
 STR_CLEAR_TIME                                                  :{BLACK}Resetar horário
 STR_RESET_LATENESS                                              :{BLACK}Resetar contador de atraso
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Renomear ponto de controle
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Parando
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo de ferrovia incompatível
 STR_TRAIN_NO_POWER                                              :{RED}Sem força
 STR_TRAIN_START_NO_CATENARY                                     :Essa linha não tem energia, portanto o trem não parte
+STR_TRAIN_STUCK                                                 :{ORANGE}Aguardando via livre
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nov{G o a} {STRING} agora disponível!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2949,6 +2975,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construi
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Custo: {CURRENCY}{}Velocidade: {VELOCITY}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacidade: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veículo{P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Renomear automóvel
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Impossível renomear automóvel...
@@ -3580,10 +3609,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinais p
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sinal de Entrada (semáforo){}Verde contanto que haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, fica vermelho.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sinal de saída (semáforo){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Sinal combo (semáforo){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sinal avançado(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Sinal avançado de mão única(Semáforo){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sinal Padrão (elétrico){}Sinais são necessários para impedir que trens batam em redes de ferrovias com mais de uma máquina.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sinal de entrada (elétrico){}Verde contanto que haja um ou mais sinais de saída verdes na atual seção dos trilhos. Do contrário, fica vermelho.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinal de saída(elétrico){}Funciona como um sinal normal, porém é necessário para o funcionamento correto do sistema de sinais combo ou de entrada.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinal combo (elétrico){}O sinal combo funciona tanto como um sinal de entrada quanto de saída. Permite construir várias ramificações.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinal avançado(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Sinal avançado de mão única(Elétrico){}Um sinal avançado permite mais de um trem em um bloco de ferrovia, Se o trem no bloco puder reservar um local seguro para parar, o sinal avançado já permite a passada do próximo, porém não permite a passagem na via contrária.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Converter sinal{}Quando selecionado, clicar num sinal existente converte-o para o tipo selecionado e suas variantes. CTRL+clique muda a variante atual.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densidade dos sinais ao clicar e arrastar
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuir a densidade dos sinais

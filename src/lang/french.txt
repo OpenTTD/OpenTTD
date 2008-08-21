@@ -786,7 +786,7 @@ STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Afficher le nom des villes
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Afficher le nom des stations
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Afficher les panneaux
-STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Afficher les pts de contrôle
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Afficher les points de contrôle
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animation complète
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Détails maximums
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Édifices transparents
@@ -796,7 +796,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nom de
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Outil d'Inspection
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Afficher la console
+STR_CONSOLE_SETTING                                             :Afficher/cacher la console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Copie d'écran (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Copie géante d'écran (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :À Propos de 'OpenTTD'
@@ -1019,6 +1019,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Le renou
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Le renouvellement automatique a échoué sur Navire {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Le renouvellement automatique d'Aéronef {COMMA} a échoué{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} est trop long après remplacement
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Aucune règles de remplacement/renouvellement automatique appliquées.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite d'argent)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Options Avancées
@@ -1972,7 +1973,7 @@ STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Cliquer 
 
 STR_UNDEFINED                                                   :(chaîne non définie)
 STR_STAT_CLASS_DFLT                                             :Station par défaut
-STR_STAT_CLASS_WAYP                                             :Points de passage
+STR_STAT_CLASS_WAYP                                             :Points de contrôle
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépôt
@@ -2866,7 +2867,7 @@ STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer 
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Envoyer le train au dépôt. Ctrl-clic pour entretien seul
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Forcer le train à continuer sans tenir compte des feux
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Faire faire demi-tour au train
-STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Afficher les détails
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Afficher les détails du train
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Augmenter l'intervalle d'entretien
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Diminuer l'intervalle d'entretien
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Afficher des informations sur les marchandises transportées
@@ -2902,6 +2903,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renommer
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossible de renommer le type de train...
 STR_CLEAR_TIME                                                  :{BLACK}Annuler durée
 STR_RESET_LATENESS                                              :{BLACK}RAZ compteur de retard
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Renommer le Point de Contrôle
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Ralentit
 STR_TRAIN_STOPPING_VEL                                          :{RED}Ralentit, {VELOCITY}
@@ -2958,11 +2961,11 @@ STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossib
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Véhicules - Cliquer sur un véhicule pour obtenir des informations
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construire de nouveaux véhicules (nécessite un dépôt routier)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Comportement courant du véhicule - cliquer pour le démarrer/l'arrêter
-STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Afficher les ordres
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Afficher les ordres du véhicule routier
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centre la vue sur le véhicule
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Envoie le véhicule au dépôt. Ctrl-clic pour entretien seul
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Force le véhicule à faire demi-tour
-STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Affiche les détails
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Affiche les détails du véhicule routier
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Véhicules - cliquer pour obtenir des informations
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construire un nouveau véhicule
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Glisser un véhicule jusqu'ici pour le vendre
@@ -3045,7 +3048,7 @@ STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Action c
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Afficher les ordres du navire
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer la vue sur l'emplacement du navire
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envoyer le navire au dépôt. Ctrl-clic pour entretien seul
-STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afficher détails du navire
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afficher les détails du navire
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prix: {CURRENCY} Vitesse max.: {VELOCITY}{}Capacité: {CARGO}{}Coût d'entretien: {CURRENCY}/an
 STR_982F_NAME_SHIP                                              :{BLACK}Nommer navire
 
@@ -3117,7 +3120,7 @@ STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Action c
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Afficher les ordres de l'aéronef
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer la vue principale sur l'emplacement de l'aéronef
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envoyer l'aéronef au hangar. Ctrl-clic pour entretien seul
-STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Afficher détails de l'aéronef
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Afficher les détails de l'aéronef
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prix: {CURRENCY}    Vitesse max.: {VELOCITY}{}Capacité: {COMMA} passagers, {COMMA} sacs de courrier{}Coût d'entretien: {CURRENCY}/an
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nommer l'aéronef

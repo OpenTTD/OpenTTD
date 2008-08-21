@@ -1049,7 +1049,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTD패치에 적합한 직통(논스톱) 처리 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch와 호환되는 직통(논스톱) 처리 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
@@ -1342,6 +1342,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}산업�
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}%가 운반됨)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}산업시설 이름 - 산업시설을 가운데로 보려면 클릭하세요
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...다른 산업시설과 너무 가깝습니다.
 
@@ -1678,12 +1679,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호�
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :PRE 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :콤보-신호등을 가진 철로
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :고급 신호등이 있는 철길
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :편도 고급 신호등이 있는 철길
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :일반 신호등과 PRE신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :일반 신호등과 출구신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :일반, 콤보-신호등을 가진 철로
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :일반 및 고급 신호등이 있는 철길
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :일반 및 편도 고급 신호등이 있는 철길
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :PRE 신호등과 출구신호등이 설치된 철도
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :프리, 콤보-신호등을 가진 철로
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :프리 및 고급 신호등이 있는 철길
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :프리 및 편도 고급 신호등이 있는 철길
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :출구, 콤보-신호등을 가진 철로
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :출구 및 고급 신호등이 있는 철길
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :출구 및 편도 고급 신호등이 있는 철길
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :콤보 및 고급 신호등이 있는 철길
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :콤보 및 편도 고급 신호등이 있는 철길
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :고급 및 편도 고급 신호등이 있는 철길
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
 
 
@@ -2885,6 +2897,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}{VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :알맞지 않은 철도 타입
 STR_TRAIN_NO_POWER                                              :{RED}기관차 없음
 STR_TRAIN_START_NO_CATENARY                                     :연결고리가 모자라 운행을 시작할 수 없습니다.
+STR_TRAIN_STUCK                                                 :{ORANGE}멋대로 돌아다니려고 준비중
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2948,6 +2961,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}선택�
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}가격: {CURRENCY}{}속력: {VELOCITY}{}운행비용: {CURRENCY}/년{}수송량: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}수송량: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 차량{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}자동차 이름 지정
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}자동차의 이름을 지정할 수 없습니다...
@@ -3579,10 +3595,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}표준 �
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 출구 신호등이 하나라도 파란불이면 파란불이 뜨고 그렇지 않으면 빨간불이 됩니다.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (구식){}일반 신호등과 같은 방법으로 만들되, 입구 & 콤보 전면 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (구식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}고급 신호등 (까치발){}고급 신호등은 안전한 경로를 선택할 경우 한 대 이상의 열차가 한 폐색에 동시에 들어갈 수 있게 해줍니다. 고급 신호등은 반대편에서도 통과 가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}고급 편도 신호등 (까치발){}고급 신호등은 안전한 경로를 선택할 경우 한 대 이상의 열차가 한 폐색에 동시에 들어갈 수 있게 해줍니다. 고급 신호등은 반대편에서도 통과 가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}표준 신호기 (전자식){}신호등은 하나 이상의 열차가 한 철도 네트워크상에서 폭발사고를 일으키지 않게 해줍니다.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호등이 하나라도 파란불이면 파란불이 뜨고 그렇지 않으면 빨간불이 됩니다.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호등과 같은 방법으로 만들되, 입구 & 콤보 전면 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}고급 신호등 (전자식){}고급 신호등은 안전한 경로를 선택할 경우 한 대 이상의 열차가 한 폐색에 동시에 들어갈 수 있게 해줍니다. 고급 신호등은 반대편에서도 통과 가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}고급 편도 신호등 (전자식){}고급 신호등은 안전한 경로를 선택할 경우 한 대 이상의 열차가 한 폐색에 동시에 들어갈 수 있게 해줍니다. 고급 신호등은 반대편에서도 통과 가능합니다.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}드래그시 신호기 간격
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}드래그시 신호기 간격 감소

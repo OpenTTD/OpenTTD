@@ -1076,6 +1076,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Obnoven�
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Obnovení lodi {COMMA} selhalo{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Obnovení letadla {COMMA} selhalo{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po výměně moc dlouhý
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Žádné pravidlo pro výměnu vozidel se nepoužilo.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finanční limit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nastavit patche
@@ -1745,22 +1746,22 @@ STR_1023_RAILROAD_TRAIN_DEPOT                                   :Železniční d
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... území vlastní jiná společnost
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Koleje s obyčejným návěstidlem
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Koleje s vjezdovým návěstidlem
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Koleje s výjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Koleje s odjezdovým návěstidlem
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Koleje s cestovým (kombinovaným) návěstidlem
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Koleje s dokonalejším (PBS) návěstidlem
 STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Koleje s jednosměrným dokonalejším (PBS) návěstidlem
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Koleje s normálním a vjezdovým návěstidlem
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Koleje s obyčejným a výjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Koleje s obyčejným a odjezdovým návěstidlem
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Koleje s obyčejným a cestovým (kombinovaným) návěstidlem
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Koleje s obyčejným a dokonalejším (PBS) návěstidlem
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Koleje s obyčejným a jednosměrným dokonalejším (PBS) návěstidlem
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Koleje s vjezdovým a výjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Koleje s vjezdovým a odjezdovým návěstidlem
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Koleje s vjezdovým a cestovým návěstidlem
 STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Koleje s vjezdovým a dokonalejším (PBS) návěstidlem
 STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Koleje s vjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Koleje s výjezdovým a cestovým návěstidlem
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Koleje s výjezdovým a dokonalejším (PBS) návěstidlem
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Koleje s výjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Koleje s odjezdovým a cestovým návěstidlem
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Koleje s odjezdovým a dokonalejším (PBS) návěstidlem
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Koleje s odjezdovým a jednosměrným dokonalejším (PBS) návěstidlem
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Koleje s cestovým (kombinovaným) a dokonalejším (PBS) návěstidlem
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Koleje s cestovým (kombinovaným) a jednosměrným dokonalejším (PBS) návěstidlem
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Koleje s dokonalejším (PBS) a jednosměrným dokonalejším návěstidlem
@@ -3667,17 +3668,17 @@ STR_SIGNAL_SELECTION                                            :{WHITE}Výběr 
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Zde nelze změnit návěstidla...
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Cestové návěstidlo (semafor){}Cestové-kombinované slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" presignálů.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Cestové návěstidlo (semafor){}Cestové (kombinované) slouží zároveň jako vjezdové a odjezdové. Tím je možné postavit velké "řetězce" presignálů.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Dokonalejší (PBS) návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (semafor){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Obyčejné návěstidlo (elektrické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vjezdové návěstidlo (elektrické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Cestové návěstidlo (elektrické){}Cestové-kombinované návěstidlo slouží zároveň jako vjezdové a výjezdové. Tím je možné postavit velké "řetězce" presignálů.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Cestové návěstidlo (elektrické){}Cestové (kombinované) návěstidlo slouží zároveň jako vjezdové a odjezdové. Tím je možné postavit velké "řetězce" návěstidel.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Dokonalejší (PBS) návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Dokonalejší návěstidla se dají projet zezadu.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Dokonalejší (PBS) jednosměrné návěstidlo (elektrické){}Dokonalejší návěstidlo umožňuje vjet několika vlakům najednou do stejného úseku trati, pokud jsou schopny rezervovat si cestu až do bezpečného místa na zastavení. Jednosměrná návěstidla se nedají projet zezadu.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Přeměna návěstidel{}Když je přeměna zapnuta, návěstidlo se změní kliknutím na něj. Při kliknutí s CTRL se bude přepínat mezi variantami existujícího návěstidla.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Přeměna návěstidel{}Když je přeměna zapnuta, návěstidlo se změní kliknutím. Kliknutím s CTRL se přepne mezi variantami návěstidla.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Rozestup při stavbě návěstidel tažením
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Snížit rozestup mezi návěstidly
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit rozestup mezi návěstidly

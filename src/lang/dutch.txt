@@ -1018,6 +1018,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automati
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisch vernieuwen mislukt bij schip {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisch vernieuwen mislukt bij vliegtuig {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {COMMA} is te lang na het vervangen
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Geen automatischvervang/vernieuw regels opgegeven.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(onvoldoende geld)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Selecteer patches
@@ -2901,6 +2902,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Hernoem 
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan het trein voertuig type niet hernoemen...
 STR_CLEAR_TIME                                                  :{BLACK}Reset de tijd
 STR_RESET_LATENESS                                              :{BLACK}Reset teller
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Verander naam controlepost
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Gestopt
 STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het stoppen, {VELOCITY}

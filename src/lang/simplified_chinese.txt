@@ -485,6 +485,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}清除�
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}清除费用：{LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :无
 STR_01A7_OWNER                                                  :{BLACK}属主：{LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}道路属主: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}有轨电车道路属主: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}铁轨属主: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}地方政府：{LTBLUE}{STRING}
 STR_01A9_NONE                                                   :没有
 STR_01AA_NAME                                                   :{BLACK}名称
@@ -586,6 +589,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}玩家�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}对手车站的剪彩仪式
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事故/灾难
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司信息
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}工业开业
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}工业倒闭
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}经济变化
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}对玩家有利的工业产量变化
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}对对手有利的工业产量变化
@@ -857,6 +862,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :新的工业设
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}建设新的工业设施
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}只能在城镇中建设……
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}只能在雨林中建设……
@@ -981,6 +987,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}不能�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}不能复制调度计划……
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共享调度计划结束 - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}火车 {COMMA} 找不到道了。
 STR_TRAIN_IS_LOST                                               :{WHITE}列车 {COMMA} 迷路了。
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}列车 {COMMA} 去年的利润是 {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
@@ -1905,6 +1912,7 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}不能�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}保存游戏失败{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}不能删除文件
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}游戏存档读取失败{}{STRING}
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :文件无法写入
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}驱动器、目录和游戏存档列表
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}保存当前游戏用的存档名字
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}删除选定的游戏存档
@@ -1913,6 +1921,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}选择�
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}选择场景(绿色)，预设游戏(蓝色)或随机开始新游戏
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :随机生成新游戏
 STR_LOAD_HEIGHTMAP                                              :{WHITE}读取地形图
+STR_SAVE_OSKTITLE                                               :{BLACK}为存档命名
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}目标位置有 {STRING}
@@ -1962,6 +1971,9 @@ STR_4829_REQUIRES                                               :{BLACK}需要�
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}等待的货物:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}产出: {YELLOW}{STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}上月产量：
@@ -1993,6 +2005,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}隧道�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}必须先拆除隧道
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}必须先拆除桥梁
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}起止点不能相同
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}桥梁起止点不在同一水平高度
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}桥梁对于地形太低了
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}起止两端必须在一条线上
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}此处不适合作为隧道入口
 STR_500D                                                        :{GOLD}{STRING}，{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2077,6 +2091,7 @@ STR_SV_STNAME_UPPER                                             :前 {STRING}
 STR_SV_STNAME_LOWER                                             :后 {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} 停机楼
 STR_SV_STNAME_FOREST                                            :{STRING} 林场
+STR_SV_STNAME_FALLBACK                                          :{STRING} 车站 #{NUM}
 
 ############ end of savegame specific region!
 
@@ -2113,6 +2128,7 @@ STR_CITY_APPROVAL                                               :{LTBLUE}市政�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :没有
+STR_NUM_VERY_LOW                                                :很低
 STR_6816_LOW                                                    :低
 STR_6817_NORMAL                                                 :一般
 STR_6818_HIGH                                                   :高
@@ -2271,6 +2287,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}重置�
 STR_COMPANY_PASSWORD                                            :{BLACK}密码
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}设置密码可以防止未经授权的用户随意加入。
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}设置公司密码
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不保存所输入的密码
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}为公司设置新密码
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}公司密码
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}默认公司密码
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}将此公司密码作为新公司的默认密码
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}大萧条！{}{}金融专家预测世界经济将全面倒退！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}大萧条结束！{}{}贸易复苏带动经济全面启动！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}切换窗口大小
@@ -2296,6 +2317,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :载客车头 (蒸汽)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :载客车头 (内燃机)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :载客车头 (电力)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :客车车厢（单轨）
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :客车车厢（磁悬）
 STR_LIVERY_FREIGHT_WAGON                                        :平板车厢
 STR_LIVERY_BUS                                                  :巴士
 STR_LIVERY_TRUCK                                                :卡车
@@ -2304,6 +2327,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :平板货船
 STR_LIVERY_HELICOPTER                                           :直升机
 STR_LIVERY_SMALL_PLANE                                          :小型飞机
 STR_LIVERY_LARGE_PLANE                                          :大型飞机
+STR_LIVERY_PASSENGER_TRAM                                       :电车客车
+STR_LIVERY_FREIGHT_TRAM                                         :电车货车
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}显示总体配色方案
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}显示列车配色方案
@@ -2585,7 +2610,33 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一列火车抵达 {STATION}！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (详细信息)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}指定位置有列车
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}不停车
+STR_ORDER_GO_TO                                                 :前往
+STR_ORDER_GO_NON_STOP_TO                                        :不停车前往
+STR_ORDER_GO_VIA                                                :通过
+STR_ORDER_GO_NON_STOP_VIA                                       :前往不停车
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}全载所有货物
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :若有的话就装载
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :全装货物
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :全装任意货物
+STR_ORDER_DROP_NO_LOADING                                       :不装载
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}卸载全部
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :若接受的话就卸载
+STR_ORDER_DROP_UNLOAD                                           :卸载全部
+STR_ORDER_DROP_TRANSFER                                         :联运
 
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的车库
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的机库
+STR_ORDER_NEAREST_DEPOT                                         :最近的车库
+STR_ORDER_NEAREST_HANGAR                                        :最近的机库
+STR_ORDER_TRAIN_DEPOT                                           :火车车库
+STR_ORDER_ROAD_DEPOT                                            :汽车车库
+STR_ORDER_SHIP_DEPOT                                            :船坞
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} 机棚
 
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}旅行 (无时间表)
@@ -2783,7 +2834,7 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}不能�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}命名汽车
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在火球中丧车！
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在火球中丧生！
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}不能命令汽车掉头……
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}不能命令多节的汽车掉头
@@ -2948,6 +2999,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}你试图行贿地方官员已经被
 STR_BRIBE_FAILED_2                                              :{WHITE}当地侦探发现了！
 STR_BUILD_DATE                                                  :{BLACK}建造时间：{LTBLUE}{DATE_LONG}
+
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}详细表现值
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}详情
