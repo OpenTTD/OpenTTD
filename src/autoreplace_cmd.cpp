@@ -367,13 +367,13 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
 		}
 		Vehicle *new_head = (new_vehs[0] != NULL ? new_vehs[0] : old_vehs[0]);
 
-		/* Separate the head, so we can start constructing the new chain */
+		/* Note: When autoreplace has already failed here, old_vehs[] is not completely initialized. But it is also not needed. */
 		if (cost.Succeeded()) {
+			/* Separate the head, so we can start constructing the new chain */
 			Vehicle *second = GetNextUnit(old_head);
 			if (second != NULL) cost.AddCost(MoveVehicle(second, NULL, DC_EXEC | DC_AUTOREPLACE, true));
 
 			assert(GetNextUnit(new_head) == NULL);
-		}
 
 		/* Append engines to the new chain
 		 * We do this from back to front, so that the head of the temporary vehicle chain does not change all the time.
@@ -468,7 +468,9 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
 			}
 		}
 
-		/* If we are not in DC_EXEC undo everything */
+		/* If we are not in DC_EXEC undo everything, i.e. rearrange old vehicles.
+		 * We do this from back to front, so that the head of the temporary vehicle chain does not change all the time.
+		 * Note: The vehicle attach callback is disabled here :) */
 		if ((flags & DC_EXEC) == 0) {
 			/* Separate the head, so we can reattach the old vehicles */
 			Vehicle *second = GetNextUnit(old_head);
@@ -476,15 +478,16 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
 
 			assert(GetNextUnit(old_head) == NULL);
 
-			/* Rearrange old vehicles and sell new
-			 * We do this from back to front, so that the head of the temporary vehicle chain does not change all the time.
-			 * Note: The vehicle attach callback is disabled here :) */
+			for (int i = num_units - 1; i > 0; i--) {
+				CommandCost ret = MoveVehicle(old_vehs[i], old_head, DC_EXEC | DC_AUTOREPLACE, false);
+				assert(ret.Succeeded());
+			}
+		}
+		}
 
+		/* Finally undo buying of new vehicles */
+		if ((flags & DC_EXEC) == 0) {
 			for (int i = num_units - 1; i >= 0; i--) {
-				if (i > 0) {
-					CommandCost ret = MoveVehicle(old_vehs[i], old_head, DC_EXEC | DC_AUTOREPLACE, false);
-					assert(ret.Succeeded());
-				}
 				if (new_vehs[i] != NULL) {
 					DoCommand(0, new_vehs[i]->index, 0, DC_EXEC, GetCmdSellVeh(new_vehs[i]));
 					new_vehs[i] = NULL;
