@@ -908,7 +908,8 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 					if (ctrl_pressed) {
 						/* toggle the pressent signal variant: SIG_ELECTRIC <-> SIG_SEMAPHORE */
 						SetSignalVariant(tile, track, (GetSignalVariant(tile, track) == SIG_ELECTRIC) ? SIG_SEMAPHORE : SIG_ELECTRIC);
-
+						/* Query current signal type so the check for PBS signals below works. */
+						sigtype = GetSignalType(tile, track);
 					} else {
 						/* convert the present signal to the chosen type and variant */
 						SetSignalType(tile, track, sigtype);
@@ -931,6 +932,8 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 				} else {
 					/* cycle the signal side: both -> left -> right -> both -> ... */
 					CycleSignalSide(tile, track);
+					/* Query current signal type so the check for PBS signals below works. */
+					sigtype = GetSignalType(tile, track);
 				}
 			}
 		} else {
@@ -942,6 +945,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 		}
 
 		if (IsPbsSignal(sigtype)) {
+			/* PBS signals should show red unless they are on a reservation. */
 			uint mask = GetPresentSignals(tile) & SignalOnTrack(track);
 			SetSignalStates(tile, (GetSignalStates(tile) & ~mask) | ((HasBit(GetTrackReservation(tile), track) ? (uint)-1 : 0) & mask));
 		}
