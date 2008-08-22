@@ -219,7 +219,7 @@ Function DetermineSVNVersion()
 				If Err.Number = 0 Then
 					Do
 						line = OExec.StdOut.ReadLine()
-						If Mid(line, 1, 1) <> "?" Then
+						If Len(line) > 0 And Mid(line, 1, 1) <> "?" Then
 							version = version & "M"
 							Exit Do
 						End If
