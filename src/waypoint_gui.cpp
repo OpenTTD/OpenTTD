@@ -37,6 +37,7 @@ public:
 	WaypointWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->wp = GetWaypoint(this->window_number);
+		this->caption_color = (byte)GetTileOwner(this->wp->xy);
 
 		this->flags4 |= WF_DISABLE_VP_SCROLL;
 		InitializeWindowViewport(this, 3, 17, 254, 86, this->wp->xy, ZOOM_LVL_MIN);
@@ -107,5 +108,6 @@ static const WindowDesc _waypoint_view_desc = {
 
 void ShowWaypointWindow(const Waypoint *wp)
 {
+	if (!wp->IsValid()) return;  // little safety
 	AllocateWindowDescFront<WaypointWindow>(&_waypoint_view_desc, wp->index);
 }
