@@ -1887,7 +1887,12 @@ static void ReverseTrainDirection(Vehicle *v)
 	if (crossing != INVALID_TILE) MaybeBarCrossingWithSound(crossing);
 
 	/* If we are inside a depot after reversing, don't bother with path reserving. */
-	if (v->u.rail.track & TRACK_BIT_DEPOT) return;
+	if (v->u.rail.track & TRACK_BIT_DEPOT) {
+		/* Can't be stuck here as inside a depot is always a safe tile. */
+		if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
+		return;
+	}
 
 	/* TrainExitDir does not always produce the desired dir for depots and
 	 * tunnels/bridges that is needed for UpdateSignalsOnSegment. */
