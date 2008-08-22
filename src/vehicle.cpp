@@ -2467,9 +2467,10 @@ void Vehicle::LeaveStation()
 
 		/* Try to reserve a path when leaving the station as we
 		 * might not be marked as wanting a reservation, e.g.
-		 * when an overlenght train gets turned around in a station.
-		 */
-		TryPathReserve(this, true, true);
+		 * when an overlength train gets turned around in a station. */
+		if (UpdateSignalsOnSegment(this->tile, TrackdirToExitdir(GetVehicleTrackdir(this)), this->owner) == SIGSEG_PBS || _settings_game.pf.reserve_paths) {
+			TryPathReserve(this, true, true);
+		}
 	}
 }
 
