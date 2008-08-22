@@ -2464,6 +2464,7 @@ void FreeTrainTrackReservation(const Vehicle *v, TileIndex origin, Trackdir orig
 	TileIndex tile = origin != INVALID_TILE ? origin : v->tile;
 	Trackdir  td = orig_td != INVALID_TRACKDIR ? orig_td : GetVehicleTrackdir(v);
 	bool      free_tile = tile != v->tile || !(IsRailwayStationTile(v->tile) || IsTileType(v->tile, MP_TUNNELBRIDGE));
+	StationID station_id = IsRailwayStationTile(v->tile) ? GetStationIndex(v->tile) : INVALID_STATION;
 
 	/* Don't free reservation if it's not ours. */
 	if (TracksOverlap(GetReservedTrackbits(tile) | TrackToTrackBits(TrackdirToTrack(td)))) return;
@@ -2498,7 +2499,7 @@ void FreeTrainTrackReservation(const Vehicle *v, TileIndex origin, Trackdir orig
 		}
 
 		/* Don't free first station/bridge/tunnel if we are on it. */
-		if (free_tile || (!ft.m_is_station && !ft.m_is_tunnel && !ft.m_is_bridge)) ClearPathReservation(tile, td);
+		if (free_tile || (!(ft.m_is_station && GetStationIndex(ft.m_new_tile) == station_id) && !ft.m_is_tunnel && !ft.m_is_bridge)) ClearPathReservation(tile, td);
 
 		free_tile = true;
 	}
