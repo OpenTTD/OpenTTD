@@ -883,6 +883,8 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 		SortVehicleList(this);
 		SetVScrollCount(this, this->vehicles.Length());
 
+		if (this->vehicles.Length() == 0) HideDropDownMenu(this);
+
 		/* draw the widgets */
 		switch (window_type) {
 			case VLW_SHARED_ORDERS: /* Shared Orders */
