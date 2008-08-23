@@ -2522,7 +2522,7 @@ bool AfterLoadGame()
 		Waypoint *wp;
 		Owner owner;
 		FOR_ALL_WAYPOINTS(wp) {
-			owner = GetTileOwner(wp->xy);
+			owner = (IsTileType(wp->xy, MP_RAILWAY) && IsRailWaypoint(wp->xy) ? GetTileOwner(wp->xy) : OWNER_NONE);
 			wp->owner = IsValidPlayerID(owner) ? owner : OWNER_NONE;
 		}
 	}
