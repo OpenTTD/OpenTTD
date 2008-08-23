@@ -249,6 +249,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 			RedrawWaypointSign(wp);
 			wp->xy = tile;
+			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
 
 		const StationSpec* statspec;
