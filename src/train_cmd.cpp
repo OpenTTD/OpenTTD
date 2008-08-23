@@ -1433,7 +1433,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					first->group_id        = DEFAULT_GROUP;
 
 					new_f->AddToShared(first);
-					first->RemoveFromShared();
+					DeleteVehicleOrders(first);
 
 					/* If we deleted a window then open a new one for the 'new' train */
 					if (IsLocalPlayer() && w != NULL) ShowVehicleViewWindow(new_f);
