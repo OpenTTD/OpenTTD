@@ -56,8 +56,6 @@ struct CargoPacket : PoolItem<CargoPacket, CargoPacketID, &_CargoPacket_pool> {
 	 * @return true if and only if days_in_transit and source_xy are equal
 	 */
 	bool SameSource(const CargoPacket *cp) const;
-
-	void RestoreBackup() const;
 };
 
 /**
