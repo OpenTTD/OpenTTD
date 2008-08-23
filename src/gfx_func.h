@@ -179,6 +179,6 @@ extern DrawPixelInfo *_cur_dpi;
  */
 extern byte _colour_gradient[COLOUR_END][8];
 
-extern bool _use_dos_palette;
+extern Palette _use_palette;
 
 #endif /* GFX_FUNC_H */

@@ -21,6 +21,8 @@
 
 #include "table/sprites.h"
 
+Palette _use_palette = PAL_AUTODETECT;
+
 struct MD5File {
 	const char * filename;     ///< filename
 	uint8 hash[16];            ///< md5 sum of the file
@@ -130,7 +132,7 @@ static bool FileMD5(const MD5File file)
  */
 static void DeterminePalette()
 {
-	if (_use_dos_palette) return;
+	if (_use_palette < MAX_PAL) return;
 
 	/* Count of files from the different versions. */
 	uint dos = 0;
@@ -143,11 +145,11 @@ static void DeterminePalette()
 	for (uint i = 0; i < lengthof(files_win.landscape); i++) if (FioCheckFileExists(files_win.landscape[i].filename)) win++;
 
 	if (win == 5) {
-		_use_dos_palette = false;
+		_use_palette = PAL_WINDOWS;
 	} else if (dos == 5 || (win == 0 && dos > 0)) {
-		_use_dos_palette = true;
+		_use_palette = PAL_DOS;
 	} else {
-		_use_dos_palette = false;
+		_use_palette = PAL_WINDOWS;
 	}
 }
 
@@ -161,7 +163,7 @@ void CheckExternalFiles()
 	DeterminePalette();
 
 	static const size_t ERROR_MESSAGE_LENGTH = 128;
-	const FileList *files = _use_dos_palette ? &files_dos : &files_win;
+	const FileList *files = (_use_palette == PAL_DOS) ? &files_dos : &files_win;
 	char error_msg[ERROR_MESSAGE_LENGTH * (lengthof(files->basic) + lengthof(files->landscape) + 3)];
 	error_msg[0] = '\0';
 	char *add_pos = error_msg;
@@ -192,7 +194,7 @@ void CheckExternalFiles()
 
 static void LoadSpriteTables()
 {
-	const FileList *files = _use_dos_palette ? &files_dos : &files_win;
+	const FileList *files = (_use_palette == PAL_DOS) ? &files_dos : &files_win;
 	uint i = FIRST_GRF_SLOT;
 
 	LoadGrfFile(files->basic[0].filename, 0, i++);

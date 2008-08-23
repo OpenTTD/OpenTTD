@@ -235,4 +235,12 @@ enum FillRectMode {
 	FILLRECT_RECOLOR, ///< Apply a recolor sprite to the screen content
 };
 
+/** Palettes OpenTTD supports. */
+enum Palette {
+	PAL_DOS,        ///< Use the DOS palette.
+	PAL_WINDOWS,    ///< Use the Windows palette.
+	PAL_AUTODETECT, ///< Automatically detect the palette based on the graphics pack.
+	MAX_PAL = 2,    ///< The number of palettes.
+};
+
 #endif /* GFX_TYPE_H */

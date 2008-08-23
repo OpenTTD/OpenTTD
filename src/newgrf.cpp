@@ -323,7 +323,7 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 
 static uint8 MapDOSColour(uint8 colour)
 {
-	if (_use_dos_palette) return colour;
+	if (_use_palette == PAL_DOS) return colour;
 
 	if (colour < 10) {
 		static uint8 dos_to_win_colour_map[] = { 0, 215, 216, 136, 88, 106, 32, 33, 40, 245 };
@@ -3634,7 +3634,7 @@ bool GetGlobalVariable(byte param, uint32 *value)
 		}
 
 		case 0x0D: // TTD Version, 00=DOS, 01=Windows
-			*value = !_use_dos_palette;
+			*value = _use_palette;
 			return true;
 
 		case 0x0E: // Y-offset for train sprites

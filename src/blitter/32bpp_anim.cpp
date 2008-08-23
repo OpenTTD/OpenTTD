@@ -327,7 +327,7 @@ void Blitter_32bppAnim::CopyFromBuffer(void *video, const void *src, int width, 
 	}
 
 	/* We update the palette (or the pixels that do animation) immediatly, to avoid graphical glitches */
-	this->PaletteAnimate(PALETTE_ANIM_SIZE_START, _use_dos_palette ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN);
+	this->PaletteAnimate(PALETTE_ANIM_SIZE_START, (_use_palette == PAL_DOS) ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN);
 }
 
 void Blitter_32bppAnim::CopyToBuffer(const void *video, void *dst, int width, int height)

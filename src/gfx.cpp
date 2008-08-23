@@ -49,7 +49,6 @@ Colour _cur_palette[256];
 byte _stringwidth_table[FS_END][224]; ///< Cache containing width of often used characters. @see GetCharacterWidth()
 DrawPixelInfo *_cur_dpi;
 byte _colour_gradient[COLOUR_END][8];
-bool _use_dos_palette;
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL);
 
@@ -756,11 +755,10 @@ void DrawCharCentered(WChar c, int x, int y, uint16 real_color)
 {
 	FontSize size = FS_NORMAL;
 	byte color = real_color & 0xFF;
-	uint palette = _use_dos_palette ? 1 : 0;
 	int w = GetCharacterWidth(size, c);
 
-	_string_colorremap[1] = _string_colormap[palette][color].text;
-	_string_colorremap[2] = _string_colormap[palette][color].shadow;
+	_string_colorremap[1] = _string_colormap[_use_palette][color].text;
+	_string_colorremap[2] = _string_colormap[_use_palette][color].shadow;
 	_color_remap_ptr = _string_colorremap;
 
 	GfxMainBlitter(GetGlyph(size, c), x - w / 2, y, BM_COLOUR_REMAP);
@@ -802,11 +800,10 @@ int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool pars
 switch_colour:;
 			if (real_colour & IS_PALETTE_COLOR) {
 				_string_colorremap[1] = colour;
-				_string_colorremap[2] = _use_dos_palette ? 1 : 215;
+				_string_colorremap[2] = (_use_palette == PAL_DOS) ? 1 : 215;
 			} else {
-				uint palette = _use_dos_palette ? 1 : 0;
-				_string_colorremap[1] = _string_colormap[palette][colour].text;
-				_string_colorremap[2] = _string_colormap[palette][colour].shadow;
+				_string_colorremap[1] = _string_colormap[_use_palette][colour].text;
+				_string_colorremap[2] = _string_colormap[_use_palette][colour].shadow;
 			}
 			_color_remap_ptr = _string_colorremap;
 		}
@@ -989,7 +986,7 @@ void DoPaletteAnimations();
 
 void GfxInitPalettes()
 {
-	memcpy(_cur_palette, _palettes[_use_dos_palette ? 1 : 0], sizeof(_cur_palette));
+	memcpy(_cur_palette, _palettes[_use_palette], sizeof(_cur_palette));
 
 	DoPaletteAnimations();
 	_pal_first_dirty = 0;
@@ -1007,7 +1004,7 @@ void DoPaletteAnimations()
 	/* Amount of colors to be rotated.
 	 * A few more for the DOS palette, because the water colors are
 	 * 245-254 for DOS and 217-226 for Windows.  */
-	const int colour_rotation_amount = _use_dos_palette ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
+	const int colour_rotation_amount = (_use_palette == PAL_DOS) ? PALETTE_ANIM_SIZE_DOS : PALETTE_ANIM_SIZE_WIN;
 	Colour old_val[PALETTE_ANIM_SIZE_DOS];
 	const int oldval_size = colour_rotation_amount * sizeof(*old_val);
 	const uint old_tc = _palette_animation_counter;
@@ -1092,7 +1089,7 @@ void DoPaletteAnimations()
 	}
 
 	/* Animate water for old DOS graphics */
-	if (_use_dos_palette) {
+	if (_use_palette == PAL_DOS) {
 		/* Dark blue water DOS */
 		s = (_settings_game.game_creation.landscape == LT_TOYLAND) ? ev->dark_water_TOY : ev->dark_water;
 		j = EXTR(320, 5);
