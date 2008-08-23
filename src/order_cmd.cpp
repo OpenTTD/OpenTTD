@@ -1628,6 +1628,8 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 			break;
 
 		case OT_CONDITIONAL: {
+			if (conditional_depth > v->num_orders) return false;
+
 			VehicleOrderID next_order = ProcessConditionalOrder(order, v);
 			if (next_order != INVALID_VEH_ORDER_ID) {
 				UpdateVehicleTimetable(v, false);
@@ -1638,12 +1640,12 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 				v->cur_order_index++;
 			}
 
-			if (conditional_depth > v->num_orders) return false;
-
 			/* Get the current order */
 			if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
 
-			return UpdateOrderDest(v, GetVehicleOrder(v, v->cur_order_index), conditional_depth + 1);
+			const Order *order = GetVehicleOrder(v, v->cur_order_index);
+			v->current_order = *order;
+			return UpdateOrderDest(v, order, conditional_depth + 1);
 		}
 
 		default:
