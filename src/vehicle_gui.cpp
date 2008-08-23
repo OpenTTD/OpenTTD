@@ -1182,7 +1182,7 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
 void ShowVehicleListWindow(const Waypoint *wp)
 {
 	if (wp == NULL) return;
-	ShowVehicleListWindowLocal(GetTileOwner(wp->xy), VLW_WAYPOINT_LIST, VEH_TRAIN, wp->index);
+	ShowVehicleListWindowLocal(wp->owner, VLW_WAYPOINT_LIST, VEH_TRAIN, wp->index);
 }
 
 void ShowVehicleListWindow(const Vehicle *v)

@@ -442,7 +442,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (!IsValidWaypointID(new_order.GetDestination())) return CMD_ERROR;
 			const Waypoint *wp = GetWaypoint(new_order.GetDestination());
 
-			if (!CheckOwnership(GetTileOwner(wp->xy))) return CMD_ERROR;
+			if (!CheckOwnership(wp->owner)) return CMD_ERROR;
 
 			/* Order flags can be any of the following for waypoints:
 			 * [non-stop]

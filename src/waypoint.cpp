@@ -207,7 +207,8 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
 	}
 
-	if (!CheckTileOwnership(tile)) return CMD_ERROR;
+	Owner owner = GetTileOwner(tile);
+	if (!CheckOwnership(owner)) return CMD_ERROR;
 	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
@@ -230,6 +231,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 			wp->town_index = INVALID_TOWN;
 			wp->name = NULL;
 			wp->town_cn = 0;
+			wp->owner = owner;
 		} else {
 			/* Move existing (recently deleted) waypoint to the new location */
 
@@ -252,7 +254,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		const StationSpec* statspec;
 
 		bool reserved = HasBit(GetTrackReservation(tile), AxisToTrack(axis));
-		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GetRailType(tile), wp->index);
+		MakeRailWaypoint(tile, owner, axis, GetRailType(tile), wp->index);
 		SetDepotWaypointReservation(tile, reserved);
 		MarkTileDirtyByTile(tile);
 
@@ -316,7 +318,6 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 
 	if (flags & DC_EXEC) {
 		Track track = GetRailWaypointTrack(tile);
-		Owner owner = GetTileOwner(tile); // cannot use _current_player because of possible floods
 		wp = GetWaypointByTile(tile);
 
 		wp->deleted = 30; // let it live for this many days before we do the actual deletion.
@@ -326,7 +327,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		if (justremove) {
 			TrackBits tracks = GetRailWaypointBits(tile);
 			bool reserved = GetDepotWaypointReservation(tile);
-			MakeRailNormal(tile, GetTileOwner(tile), tracks, GetRailType(tile));
+			MakeRailNormal(tile, wp->owner, tracks, GetRailType(tile));
 			if (reserved) SetTrackReservation(tile, tracks);
 			MarkTileDirtyByTile(tile);
 		} else {
@@ -335,7 +336,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 				if (v != NULL) FreeTrainTrackReservation(v);
 			}
 			DoClearSquare(tile);
-			AddTrackToSignalBuffer(tile, track, owner);
+			AddTrackToSignalBuffer(tile, track, wp->owner);
 		}
 		YapfNotifyTrackLayoutChange(tile, track);
 		if (v != NULL) TryPathReserve(v, true);
@@ -505,6 +506,7 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_CONDVAR(Waypoint, build_date, SLE_INT32,                  31, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, localidx,   SLE_UINT8,                   3, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, grfid,      SLE_UINT32,                 17, SL_MAX_VERSION),
+	SLE_CONDVAR(Waypoint, owner,      SLE_UINT8,                 101, SL_MAX_VERSION),
 
 	SLE_END()
 };
