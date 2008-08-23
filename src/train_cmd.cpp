@@ -1421,19 +1421,19 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 * promote it as a new train, retaining the unitnumber, orders */
 				if (new_f != NULL && IsTrainEngine(new_f)) {
 					switch_engine = true;
-					/* Copy important data from the front engine */
-					new_f->unitnumber      = first->unitnumber;
-					new_f->current_order   = first->current_order;
-					new_f->cur_order_index = first->cur_order_index;
-					new_f->orders          = first->orders;
-					new_f->num_orders      = first->num_orders;
 
 					/* Make sure the group counts stay correct. */
 					new_f->group_id        = first->group_id;
 					first->group_id        = DEFAULT_GROUP;
 
+					/* Copy orders (by sharing) */
+					new_f->orders          = first->orders;
+					new_f->num_orders      = first->num_orders;
 					new_f->AddToShared(first);
 					DeleteVehicleOrders(first);
+
+					/* Copy other important data from the front engine */
+					new_f->CopyVehicleConfigAndStatistics(first);
 
 					/* If we deleted a window then open a new one for the 'new' train */
 					if (IsLocalPlayer() && w != NULL) ShowVehicleViewWindow(new_f);
