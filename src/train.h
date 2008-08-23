@@ -265,26 +265,26 @@ static inline Vehicle *GetPrevVehicle(const Vehicle *w)
  * @param v Vehicle.
  * @return Next vehicle in the consist.
  */
-static inline Vehicle *GetNextUnit(Vehicle *v)
+static inline Vehicle *GetNextUnit(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	v = GetNextVehicle(v);
-	if (v != NULL && IsRearDualheaded(v)) v = GetNextVehicle(v);
+	Vehicle *w = GetNextVehicle(v);
+	if (w != NULL && IsRearDualheaded(w)) w = GetNextVehicle(w);
 
-	return v;
+	return w;
 }
 
 /** Get the previous real (non-articulated part and non rear part of dualheaded engine) vehicle in the consist.
  * @param v Vehicle.
  * @return Previous vehicle in the consist.
  */
-static inline Vehicle *GetPrevUnit(Vehicle *v)
+static inline Vehicle *GetPrevUnit(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
-	v = GetPrevVehicle(v);
-	if (v != NULL && IsRearDualheaded(v)) v = GetPrevVehicle(v);
+	Vehicle *w = GetPrevVehicle(v);
+	if (w != NULL && IsRearDualheaded(w)) w = GetPrevVehicle(w);
 
-	return v;
+	return w;
 }
 
 void ConvertOldMultiheadToNew();
