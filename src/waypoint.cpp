@@ -231,7 +231,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 			wp->town_index = INVALID_TOWN;
 			wp->name = NULL;
 			wp->town_cn = 0;
-			wp->owner = owner;
 		} else {
 			/* Move existing (recently deleted) waypoint to the new location */
 
@@ -251,6 +250,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 			wp->xy = tile;
 			InvalidateWindowData(WC_WAYPOINT_VIEW, wp->index);
 		}
+		wp->owner = owner;
 
 		const StationSpec* statspec;
 
