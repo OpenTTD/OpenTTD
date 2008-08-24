@@ -1,3 +1,6 @@
+/* $Id$ */
+
+/** @file ini.cpp Definition of the IniItem class, related to reading/writing '*.ini' files. */
 
 #include "stdafx.h"
 #include "core/alloc_func.hpp"

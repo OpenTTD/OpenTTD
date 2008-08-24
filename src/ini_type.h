@@ -99,4 +99,4 @@ struct IniFile {
 	bool SaveToDisk(const char *filename);
 };
 
-#endif /* INI_TYPE */
+#endif /* INI_TYPE_H */
