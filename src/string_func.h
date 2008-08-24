@@ -159,6 +159,6 @@ static inline bool IsWhitespace(WChar c)
 #ifndef _GNU_SOURCE
 /* strndup is a GNU extension */
 char *strndup(const char *s, size_t len);
-#endif /* WIN32 || SUNOS */
-
 #endif /* !_GNU_SOURCE */
+
+#endif /* STRING_FUNC_H */
