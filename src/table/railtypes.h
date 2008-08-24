@@ -70,6 +70,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* flags */
 		RTFB_NONE,
+
+		/* cost multiplier */
+		8,
 	},
 
 	/** Electrified railway */
@@ -136,6 +139,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* flags */
 		RTFB_CATENARY,
+
+		/* cost multiplier */
+		12,
 	},
 
 	/** Monorail */
@@ -198,6 +204,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* flags */
 		RTFB_NONE,
+
+		/* cost multiplier */
+		16,
 	},
 
 	/** Maglev */
@@ -260,6 +269,9 @@ static const RailtypeInfo _original_railtypes[] = {
 
 		/* flags */
 		RTFB_NONE,
+
+		/* cost multiplier */
+		24,
 	},
 };
 

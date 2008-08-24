@@ -3643,15 +3643,15 @@ bool GetGlobalVariable(byte param, uint32 *value)
 
 		case 0x0F: // Rail track type cost factors
 			*value = 0;
-			SB(*value, 0, 8, _railtype_cost_multiplier[0]); // normal rail
+			SB(*value, 0, 8, GetRailTypeInfo(RAILTYPE_RAIL)->cost_multiplier); // normal rail
 			if (_settings_game.vehicle.disable_elrails) {
 				/* skip elrail multiplier - disabled */
-				SB(*value, 8, 8, _railtype_cost_multiplier[2]); // monorail
+				SB(*value, 8, 8, GetRailTypeInfo(RAILTYPE_MONO)->cost_multiplier); // monorail
 			} else {
-				SB(*value, 8, 8, _railtype_cost_multiplier[1]); // electified railway
+				SB(*value, 8, 8, GetRailTypeInfo(RAILTYPE_ELECTRIC)->cost_multiplier); // electified railway
 				/* Skip monorail multiplier - no space in result */
 			}
-			SB(*value, 16, 8, _railtype_cost_multiplier[3]); // maglev
+			SB(*value, 16, 8, GetRailTypeInfo(RAILTYPE_MAGLEV)->cost_multiplier); // maglev
 			return true;
 
 		case 0x11: // current rail tool type
@@ -4651,17 +4651,19 @@ static void ParamSet(byte *buf, size_t len)
 			_traininfo_vehicle_pitch = res;
 			break;
 
-		case 0x8F: // Rail track type cost factors
-			_railtype_cost_multiplier[0] = GB(res, 0, 8);
+		case 0x8F: { // Rail track type cost factors
+			extern RailtypeInfo _railtypes[RAILTYPE_END];
+			_railtypes[RAILTYPE_RAIL].cost_multiplier = GB(res, 0, 8);
 			if (_settings_game.vehicle.disable_elrails) {
-				_railtype_cost_multiplier[1] = GB(res, 0, 8);
-				_railtype_cost_multiplier[2] = GB(res, 8, 8);
+				_railtypes[RAILTYPE_ELECTRIC].cost_multiplier = GB(res, 0, 8);
+				_railtypes[RAILTYPE_MONO].cost_multiplier = GB(res, 8, 8);
 			} else {
-				_railtype_cost_multiplier[1] = GB(res, 8, 8);
-				_railtype_cost_multiplier[2] = GB(res, 16, 8);
+				_railtypes[RAILTYPE_ELECTRIC].cost_multiplier = GB(res, 8, 8);
+				_railtypes[RAILTYPE_MONO].cost_multiplier = GB(res, 16, 8);
 			}
-			_railtype_cost_multiplier[3] = GB(res, 16, 8);
+			_railtypes[RAILTYPE_MAGLEV].cost_multiplier = GB(res, 16, 8);
 			break;
+		}
 
 		/* @todo implement */
 		case 0x93: // Tile refresh offset to left
@@ -5472,9 +5474,6 @@ static void ResetNewGRFData()
 	_misc_grf_features = 0;
 	_traininfo_vehicle_pitch = 0;
 	_traininfo_vehicle_width = 29;
-
-	/* Reset track cost multipliers. */
-	memcpy(&_railtype_cost_multiplier, &_default_railtype_cost_multiplier, sizeof(_default_railtype_cost_multiplier));
 
 	_loaded_newgrf_features.has_2CC           = false;
 	_loaded_newgrf_features.has_newhouses     = false;

@@ -149,13 +149,6 @@ extern const TrackdirBits _uphill_trackdirs[] = {
 	TRACKDIR_BIT_X_NE | TRACKDIR_BIT_Y_SE, ///< 30 SLOPE_STEEP_E -> inclined for diagonal track
 };
 
-/* The default multiplier for the cost of building different types of railway
- * track, which will be divided by 8. Can be changed by newgrf files. */
-const int _default_railtype_cost_multiplier[RAILTYPE_END] = {
-	8, 12, 16, 24,
-};
-int _railtype_cost_multiplier[RAILTYPE_END];
-
 RailType GetTileRailType(TileIndex tile)
 {
 	switch (GetTileType(tile)) {

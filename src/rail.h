@@ -113,6 +113,11 @@ struct RailtypeInfo {
 	 * Bit mask of rail type flags
 	 */
 	RailTypeFlags flags;
+
+	/**
+	 * Cost multiplier for building this rail type
+	 */
+	uint8 cost_multiplier;
 };
 
 
@@ -154,10 +159,6 @@ static inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
 	return HasBit(GetRailTypeInfo(enginetype)->powered_railtypes, tiletype);
 }
 
-
-extern int _railtype_cost_multiplier[RAILTYPE_END];
-extern const int _default_railtype_cost_multiplier[RAILTYPE_END];
-
 /**
  * Returns the cost of building the specified railtype.
  * @param railtype The railtype being built.
@@ -166,7 +167,7 @@ extern const int _default_railtype_cost_multiplier[RAILTYPE_END];
 static inline Money RailBuildCost(RailType railtype)
 {
 	assert(railtype < RAILTYPE_END);
-	return (_price.build_rail * _railtype_cost_multiplier[railtype]) >> 3;
+	return (_price.build_rail * GetRailTypeInfo(railtype)->cost_multiplier) >> 3;
 }
 
 /**
