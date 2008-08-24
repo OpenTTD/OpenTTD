@@ -8,6 +8,7 @@
 #include "debug.h"
 #include "ini_type.h"
 #include "string_func.h"
+#include "fileio.h"
 
 IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), value(NULL), comment(NULL)
 {
@@ -138,12 +139,14 @@ void IniFile::LoadFromDisk(const char *filename)
 	uint comment_size = 0;
 	uint comment_alloc = 0;
 
-	FILE *in = fopen(filename, "r");
+	size_t end;
+	FILE *in = FioFOpenFile(filename, "r", DATA_DIR, &end);
 	if (in == NULL) return;
 
-	/* for each line in the file */
-	while (fgets(buffer, sizeof(buffer), in)) {
+	end += ftell(in);
 
+	/* for each line in the file */
+	while ((size_t)ftell(in) < end && fgets(buffer, sizeof(buffer), in)) {
 		/* trim whitespace from the left side */
 		for (s = buffer; *s == ' ' || *s == '\t'; s++) {}
 
