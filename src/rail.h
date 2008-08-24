@@ -183,7 +183,8 @@ static inline Money RailConvertCost(RailType from, RailType to)
 	 * (the price of workers to get to place is that 1/4)
 	 */
 	if (HasPowerOnRail(from, to)) {
-		return ((RailBuildCost(to) - RailBuildCost(from)) * 5) >> 2;
+		Money cost = ((RailBuildCost(to) - RailBuildCost(from)) * 5) >> 2;
+		if (cost != 0) return cost;
 	}
 
 	/* el. rail -> rail
@@ -191,7 +192,8 @@ static inline Money RailConvertCost(RailType from, RailType to)
 	 * (the price of workers is 1 / 4 + price of copper sold to a recycle center)
 	 */
 	if (HasPowerOnRail(to, from)) {
-		return (RailBuildCost(from) - RailBuildCost(to)) >> 2;
+		Money cost = (RailBuildCost(from) - RailBuildCost(to)) >> 2;
+		if (cost != 0) return cost;
 	}
 
 	/* make the price the same as remove + build new type */
