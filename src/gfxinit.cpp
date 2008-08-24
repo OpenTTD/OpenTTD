@@ -22,7 +22,7 @@
 
 #include "table/sprites.h"
 
-Palette _use_palette = PAL_AUTODETECT;
+PaletteType _use_palette = PAL_AUTODETECT;
 
 struct MD5File {
 	const char * filename;     ///< filename
@@ -35,7 +35,7 @@ struct MD5File {
 struct GraphicsSet {
 	const char *name;          ///< The name of the graphics set
 	const char *description;   ///< Description of the graphics set
-	Palette palette;           ///< Palette of this graphics set
+	PaletteType palette;       ///< Palette of this graphics set
 	MD5File basic[2];          ///< GRF files that always have to be loaded
 	MD5File landscape[3];      ///< Landscape specific grf files
 	const char *base_missing;  ///< Warning when one of the base GRF files is missing

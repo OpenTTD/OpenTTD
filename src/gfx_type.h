@@ -236,7 +236,7 @@ enum FillRectMode {
 };
 
 /** Palettes OpenTTD supports. */
-enum Palette {
+enum PaletteType {
 	PAL_DOS,        ///< Use the DOS palette.
 	PAL_WINDOWS,    ///< Use the Windows palette.
 	PAL_AUTODETECT, ///< Automatically detect the palette based on the graphics pack.
