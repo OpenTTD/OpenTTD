@@ -54,6 +54,19 @@
 #include "table/railtypes.h"
 #include "table/track_land.h"
 
+RailtypeInfo _railtypes[RAILTYPE_END];
+
+assert_compile(sizeof(_original_railtypes) <= sizeof(_railtypes));
+
+/**
+ * Initialize rail type information.
+ */
+void ResetRailTypes()
+{
+	memset(_railtypes, 0, sizeof(_railtypes));
+	memcpy(_railtypes, _original_railtypes, sizeof(_original_railtypes));
+}
+
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
 	 0, 21, 17, 12,

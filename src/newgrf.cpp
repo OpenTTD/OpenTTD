@@ -5422,6 +5422,9 @@ static void ResetNewGRFData()
 	/* Copy/reset original bridge info data */
 	ResetBridges();
 
+	/* Reset rail type information */
+	ResetRailTypes();
+
 	/* Allocate temporary refit/cargo class data */
 	_gted = CallocT<GRFTempEngineData>(GetEnginePoolSize());
 

@@ -9,7 +9,7 @@
 
 /** Global Railtype definition
  */
-RailtypeInfo _railtypes[] = {
+static const RailtypeInfo _original_railtypes[] = {
 	/** Railway */
 	{ /* Main Sprites */
 		{ SPR_RAIL_TRACK_Y, SPR_RAIL_TRACK_N_S, SPR_RAIL_TRACK_BASE, SPR_RAIL_SINGLE_Y, SPR_RAIL_SINGLE_X,

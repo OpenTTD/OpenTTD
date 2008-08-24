@@ -237,4 +237,9 @@ RailType GetBestRailtype(const PlayerID p);
  */
 RailTypes GetPlayerRailtypes(const PlayerID p);
 
+/**
+ * Reset all rail type information to its default values.
+ */
+void ResetRailTypes();
+
 #endif /* RAIL_H */
