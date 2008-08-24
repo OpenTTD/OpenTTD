@@ -39,7 +39,13 @@ RailtypeInfo _railtypes[] = {
 		},
 
 		/* strings */
-		{ STR_100A_RAILROAD_CONSTRUCTION },
+		{
+			STR_100A_RAILROAD_CONSTRUCTION,
+			STR_1015_RAILROAD_CONSTRUCTION,
+			STR_881C_NEW_RAIL_VEHICLES,
+			STR_RAIL_VEHICLES,
+			STR_8102_RAILROAD_LOCOMOTIVE,
+		},
 
 		/* Offset of snow tiles */
 		SPR_RAIL_SNOW_OFFSET,
@@ -99,7 +105,13 @@ RailtypeInfo _railtypes[] = {
 		},
 
 		/* strings */
-		{ STR_TITLE_ELRAIL_CONSTRUCTION },
+		{
+			STR_TITLE_ELRAIL_CONSTRUCTION,
+			STR_TOOLB_ELRAIL_CONSTRUCTION,
+			STR_NEW_ELRAIL_VEHICLES,
+			STR_ELRAIL_VEHICLES,
+			STR_8102_RAILROAD_LOCOMOTIVE,
+		},
 
 		/* Offset of snow tiles */
 		SPR_RAIL_SNOW_OFFSET,
@@ -155,7 +167,13 @@ RailtypeInfo _railtypes[] = {
 		},
 
 		/* strings */
-		{ STR_100B_MONORAIL_CONSTRUCTION },
+		{
+			STR_100B_MONORAIL_CONSTRUCTION,
+			STR_1016_MONORAIL_CONSTRUCTION,
+			STR_881D_NEW_MONORAIL_VEHICLES,
+			STR_MONORAIL_VEHICLES,
+			STR_8106_MONORAIL_LOCOMOTIVE,
+		},
 
 		/* Offset of snow tiles */
 		SPR_MONO_SNOW_OFFSET,
@@ -211,7 +229,13 @@ RailtypeInfo _railtypes[] = {
 		},
 
 		/* strings */
-		{ STR_100C_MAGLEV_CONSTRUCTION },
+		{
+			STR_100C_MAGLEV_CONSTRUCTION,
+			STR_1017_MAGLEV_CONSTRUCTION,
+			STR_881E_NEW_MAGLEV_VEHICLES,
+			STR_MAGLEV_VEHICLES,
+			STR_8107_MAGLEV_LOCOMOTIVE,
+		},
 
 		/* Offset of snow tiles */
 		SPR_MGLV_SNOW_OFFSET,

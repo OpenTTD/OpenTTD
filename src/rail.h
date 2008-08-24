@@ -69,6 +69,10 @@ struct RailtypeInfo {
 
 	struct {
 		StringID toolbar_caption;
+		StringID menu_text;
+		StringID build_caption;
+		StringID replace_text;
+		StringID new_loco;
 	} strings;
 
 	/** sprite number difference between a piece of track on a snowy ground and the corresponding one on normal ground */

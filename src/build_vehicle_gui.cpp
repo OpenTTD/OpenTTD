@@ -1113,7 +1113,14 @@ struct BuildVehicleWindow : Window {
 		uint max = min(this->vscroll.pos + this->vscroll.cap, this->eng_list.Length());
 
 		SetVScrollCount(this, this->eng_list.Length());
-		SetDParam(0, this->filter.railtype + STR_881C_NEW_RAIL_VEHICLES); // This should only affect rail vehicles
+		if (this->vehicle_type == VEH_TRAIN) {
+			if (this->filter.railtype == RAILTYPE_END) {
+				SetDParam(0, STR_ALL_AVAIL_RAIL_VEHICLES);
+			} else {
+				const RailtypeInfo *rti = GetRailTypeInfo(this->filter.railtype);
+				SetDParam(0, rti->strings.build_caption);
+			}
+		}
 
 		/* Set text of sort by dropdown */
 		this->widget[BUILD_VEHICLE_WIDGET_SORT_DROPDOWN].data = _sort_listing[this->vehicle_type][this->sort_criteria];

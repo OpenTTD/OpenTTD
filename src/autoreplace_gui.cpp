@@ -18,6 +18,7 @@
 #include "autoreplace_func.h"
 #include "gfx_func.h"
 #include "player_func.h"
+#include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "engine_func.h"
 #include "engine_base.h"
@@ -28,14 +29,6 @@
 #include "table/strings.h"
 
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);
-
-static const StringID _rail_types_list[] = {
-	STR_RAIL_VEHICLES,
-	STR_ELRAIL_VEHICLES,
-	STR_MONORAIL_VEHICLES,
-	STR_MAGLEV_VEHICLES,
-	INVALID_STRING_ID
-};
 
 enum ReplaceVehicleWindowWidgets {
 	RVW_WIDGET_LEFT_MATRIX = 3,
@@ -310,7 +303,8 @@ public:
 
 		if (this->window_number == VEH_TRAIN) {
 			/* Show the selected railtype in the pulldown menu */
-			this->widget[RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN].data = _rail_types_list[sel_railtype];
+			const RailtypeInfo *rti = GetRailTypeInfo(sel_railtype);
+			this->widget[RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN].data = rti->strings.replace_text;
 		}
 
 		this->DrawWidgets();
@@ -363,9 +357,17 @@ public:
 				this->SetDirty();
 				break;
 
-			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: /* Railtype selection dropdown menu */
-				ShowDropDownMenu(this, _rail_types_list, sel_railtype, RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN, 0, ~GetPlayer(_local_player)->avail_railtypes);
+			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: { /* Railtype selection dropdown menu */
+				const Player *p = GetPlayer(_local_player);
+				DropDownList *list = new DropDownList();
+				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+					const RailtypeInfo *rti = GetRailTypeInfo(rt);
+
+					list->push_back(new DropDownListStringItem(rti->strings.replace_text, rt, !HasBit(p->avail_railtypes, rt)));
+				}
+				ShowDropDownList(this, list, sel_railtype, RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN);
 				break;
+			}
 
 			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: /* toggle renew_keep_length */
 				DoCommandP(0, 5, GetPlayer(_local_player)->renew_keep_length ? 0 : 1, NULL, CMD_SET_AUTOREPLACE);

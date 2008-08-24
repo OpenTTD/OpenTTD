@@ -17,6 +17,7 @@
 #include "strings_func.h"
 #include "engine_gui.h"
 #include "articulated_vehicles.h"
+#include "rail.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -29,13 +30,7 @@ StringID GetEngineCategoryName(EngineID engine)
 		case VEH_AIRCRAFT:          return STR_8104_AIRCRAFT;
 		case VEH_SHIP:              return STR_8105_SHIP;
 		case VEH_TRAIN:
-			switch (RailVehInfo(engine)->railtype) {
-				default: NOT_REACHED();
-				case RAILTYPE_RAIL:     return STR_8102_RAILROAD_LOCOMOTIVE;
-				case RAILTYPE_ELECTRIC: return STR_8102_RAILROAD_LOCOMOTIVE;
-				case RAILTYPE_MONO:     return STR_8106_MONORAIL_LOCOMOTIVE;
-				case RAILTYPE_MAGLEV:   return STR_8107_MAGLEV_LOCOMOTIVE;
-			}
+			return GetRailTypeInfo(RailVehInfo(engine)->railtype)->strings.new_loco;
 	}
 }
 
