@@ -801,7 +801,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 				break;
 
 			case VLW_WAYPOINT_LIST:
-				this->widget[VLW_WIDGET_CAPTION].data = STR_WAYPOINT_VIEWPORT;
+				this->widget[VLW_WIDGET_CAPTION].data = STR_WAYPOINT_VIEWPORT_LIST;
 				break;
 
 			case VLW_STATION_LIST: /* Station Name */
@@ -903,6 +903,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 
 			case VLW_WAYPOINT_LIST:
 				SetDParam(0, index);
+				SetDParam(1, this->vscroll.count);
 				break;
 
 			case VLW_STATION_LIST: /* Station Name */
