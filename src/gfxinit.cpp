@@ -18,6 +18,7 @@
 #include "core/bitmath_func.hpp"
 #include <string.h>
 #include "settings_type.h"
+#include "string_func.h"
 
 #include "table/sprites.h"
 
@@ -28,12 +29,23 @@ struct MD5File {
 	uint8 hash[16];            ///< md5 sum of the file
 };
 
-struct FileList {
-	MD5File basic[2];     ///< GRF files that always have to be loaded
-	MD5File landscape[3]; ///< Landscape specific grf files
-	MD5File sound;        ///< Sound samples
-	MD5File openttd;      ///< GRF File with OTTD specific graphics
+/**
+ * Information about a single graphics set.
+ */
+struct GraphicsSet {
+	const char *name;          ///< The name of the graphics set
+	const char *description;   ///< Description of the graphics set
+	Palette palette;           ///< Palette of this graphics set
+	MD5File basic[2];          ///< GRF files that always have to be loaded
+	MD5File landscape[3];      ///< Landscape specific grf files
+	const char *base_missing;  ///< Warning when one of the base GRF files is missing
+	MD5File extra;             ///< NewGRF File with extra graphics loaded using Action 05
+	const char *extra_missing; ///< Warning when the extra (NewGRF) file is missing
+	uint found_grfs;           ///< Number of the GRFs that could be found
 };
+
+static const uint GRAPHICS_SET_GRF_COUNT = 6;
+static int _use_graphics_set = -1;
 
 #include "table/files.h"
 #include "table/landscape_sprite.h"
@@ -123,34 +135,31 @@ static bool FileMD5(const MD5File file)
 }
 
 /**
+ * Determine the graphics pack that has to be used.
+ * The one with the most correct files wins.
+ */
+static void DetermineGraphicsPack()
+{
+	if (_use_graphics_set >= 0) return;
+
+	uint max_index = 0;
+	for (uint j = 1; j < lengthof(_graphics_sets); j++) {
+		if (_graphics_sets[max_index].found_grfs < _graphics_sets[j].found_grfs) max_index = j;
+	}
+
+	_use_graphics_set = max_index;
+}
+
+/**
  * Determine the palette that has to be used.
- *  - forced DOS palette via command line -> leave it that way
- *  - all Windows files present -> Windows palette
- *  - all DOS files present -> DOS palette
- *  - no Windows files present and any DOS file present -> DOS palette
- *  - otherwise -> Windows palette
+ *  - forced palette via command line -> leave it that way
+ *  - otherwise -> palette based on the graphics pack
  */
 static void DeterminePalette()
 {
 	if (_use_palette < MAX_PAL) return;
 
-	/* Count of files from the different versions. */
-	uint dos = 0;
-	uint win = 0;
-
-	for (uint i = 0; i < lengthof(files_dos.basic); i++) if (FioCheckFileExists(files_dos.basic[i].filename)) dos++;
-	for (uint i = 0; i < lengthof(files_dos.landscape); i++) if (FioCheckFileExists(files_dos.landscape[i].filename)) dos++;
-
-	for (uint i = 0; i < lengthof(files_win.basic); i++) if (FioCheckFileExists(files_win.basic[i].filename)) win++;
-	for (uint i = 0; i < lengthof(files_win.landscape); i++) if (FioCheckFileExists(files_win.landscape[i].filename)) win++;
-
-	if (win == 5) {
-		_use_palette = PAL_WINDOWS;
-	} else if (dos == 5 || (win == 0 && dos > 0)) {
-		_use_palette = PAL_DOS;
-	} else {
-		_use_palette = PAL_WINDOWS;
-	}
+	_use_palette = _graphics_sets[_use_graphics_set].palette;
 }
 
 /**
@@ -160,32 +169,38 @@ static void DeterminePalette()
  */
 void CheckExternalFiles()
 {
+	DetermineGraphicsPack();
 	DeterminePalette();
 
 	static const size_t ERROR_MESSAGE_LENGTH = 128;
-	const FileList *files = (_use_palette == PAL_DOS) ? &files_dos : &files_win;
-	char error_msg[ERROR_MESSAGE_LENGTH * (lengthof(files->basic) + lengthof(files->landscape) + 3)];
+	const GraphicsSet *graphics = &_graphics_sets[_use_graphics_set];
+	char error_msg[ERROR_MESSAGE_LENGTH * (GRAPHICS_SET_GRF_COUNT + 1)];
 	error_msg[0] = '\0';
 	char *add_pos = error_msg;
 
-	for (uint i = 0; i < lengthof(files->basic); i++) {
-		if (!FileMD5(files->basic[i])) {
-			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! You can find '%s' on your Transport Tycoon Deluxe CD-ROM.\n", files->basic[i].filename, files->basic[i].filename);
+	for (uint i = 0; i < lengthof(graphics->basic); i++) {
+		if (!FileMD5(graphics->basic[i])) {
+			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! %s.\n", graphics->basic[i].filename, graphics->base_missing);
 		}
 	}
 
-	for (uint i = 0; i < lengthof(files->landscape); i++) {
-		if (!FileMD5(files->landscape[i])) {
-			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! You can find '%s' on your Transport Tycoon Deluxe CD-ROM.\n", files->landscape[i].filename, files->landscape[i].filename);
+	for (uint i = 0; i < lengthof(graphics->landscape); i++) {
+		if (!FileMD5(graphics->landscape[i])) {
+			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! %s\n", graphics->landscape[i].filename, graphics->base_missing);
 		}
 	}
 
-	if (!FileMD5(files_win.sound) && !FileMD5(files_dos.sound)) {
+	bool sound = false;
+	for (uint i = 0; !sound && i < lengthof(_sound_sets); i++) {
+		sound = FileMD5(_sound_sets[i]);
+	}
+
+	if (!sound) {
 		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
 	}
 
-	if (!FileMD5(files->openttd)) {
-		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! The file was part of your installation.\n", files->openttd.filename);
+	if (!FileMD5(graphics->extra)) {
+		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! %s\n", graphics->extra.filename, graphics->extra_missing);
 	}
 
 	if (add_pos != error_msg) ShowInfoF(error_msg);
@@ -194,10 +209,10 @@ void CheckExternalFiles()
 
 static void LoadSpriteTables()
 {
-	const FileList *files = (_use_palette == PAL_DOS) ? &files_dos : &files_win;
+	const GraphicsSet *graphics = &_graphics_sets[_use_graphics_set];
 	uint i = FIRST_GRF_SLOT;
 
-	LoadGrfFile(files->basic[0].filename, 0, i++);
+	LoadGrfFile(graphics->basic[0].filename, 0, i++);
 
 	/*
 	 * The second basic file always starts at the given location and does
@@ -205,7 +220,7 @@ static void LoadSpriteTables()
 	 * has a few sprites less. However, we do not care about those missing
 	 * sprites as they are not shown anyway (logos in intro game).
 	 */
-	LoadGrfFile(files->basic[1].filename, 4793, i++);
+	LoadGrfFile(graphics->basic[1].filename, 4793, i++);
 
 	/*
 	 * Load additional sprites for climates other than temperate.
@@ -214,7 +229,7 @@ static void LoadSpriteTables()
 	 */
 	if (_settings_game.game_creation.landscape != LT_TEMPERATE) {
 		LoadGrfIndexed(
-			files->landscape[_settings_game.game_creation.landscape - 1].filename,
+			graphics->landscape[_settings_game.game_creation.landscape - 1].filename,
 			_landscape_spriteindexes[_settings_game.game_creation.landscape - 1],
 			i++
 		);
@@ -230,7 +245,7 @@ static void LoadSpriteTables()
 	 */
 	GRFConfig *top = _grfconfig;
 	GRFConfig *master = CallocT<GRFConfig>(1);
-	master->filename = strdup(files->openttd.filename);
+	master->filename = strdup(graphics->extra.filename);
 	FillGRFDetails(master, false);
 	ClrBit(master->flags, GCF_INIT_ONLY);
 	master->next = top;
@@ -251,4 +266,69 @@ void GfxLoadSprites()
 	GfxInitSpriteMem();
 	LoadSpriteTables();
 	GfxInitPalettes();
+}
+
+/**
+ * Find all graphics sets and populate their data.
+ */
+void FindGraphicsSets()
+{
+	for (uint j = 0; j < lengthof(_graphics_sets); j++) {
+		_graphics_sets[j].found_grfs = 0;
+		for (uint i = 0; i < lengthof(_graphics_sets[j].basic); i++) {
+			if (FioCheckFileExists(_graphics_sets[j].basic[i].filename)) _graphics_sets[j].found_grfs++;
+		}
+		for (uint i = 0; i < lengthof(_graphics_sets[j].landscape); i++) {
+			if (FioCheckFileExists(_graphics_sets[j].landscape[i].filename)) _graphics_sets[j].found_grfs++;
+		}
+		if (FioCheckFileExists(_graphics_sets[j].extra.filename)) _graphics_sets[j].found_grfs++;
+	}
+}
+
+/**
+ * Set the graphics set to be used.
+ * @param name of the graphics set to use
+ * @return true if it could be loaded
+ */
+bool SetGraphicsSet(const char *name)
+{
+	if (StrEmpty(name)) {
+		DetermineGraphicsPack();
+		CheckExternalFiles();
+		return true;
+	}
+
+	for (uint i = 0; i < lengthof(_graphics_sets); i++) {
+		if (strcmp(name, _graphics_sets[i].name) == 0) {
+			_use_graphics_set = i;
+			CheckExternalFiles();
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Returns a list with the graphics sets.
+ * @param p    where to print to
+ * @param last the last character to print to
+ * @return the last printed character
+ */
+char *GetGraphicsSetsList(char *p, const char *last)
+{
+	p += snprintf(p, last - p, "List of graphics sets:\n");
+	for (uint i = 0; i < lengthof(_graphics_sets); i++) {
+		if (_graphics_sets[i].found_grfs <= 1) continue;
+
+		p += snprintf(p, last - p, "%18s: %s", _graphics_sets[i].name, _graphics_sets[i].description);
+		int difference = GRAPHICS_SET_GRF_COUNT - _graphics_sets[i].found_grfs;
+		if (difference != 0) {
+			p += snprintf(p, last - p, " (missing %i file%s)\n", difference, difference == 1 ? "" : "s");
+		} else {
+			p += snprintf(p, last - p, "\n");
+		}
+	}
+	p += snprintf(p, last - p, "\n");
+
+	return p;
 }

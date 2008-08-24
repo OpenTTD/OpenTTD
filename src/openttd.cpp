@@ -191,10 +191,15 @@ static void ShowHelp()
 #endif /* ENABLE_NETWORK */
 		"  -i                  = Force to use the DOS (0) or Windows (1) palette\n"
 		"                          (use this if you see a lot of pink)\n"
+		"  -I graphics_set     = Force the graphics set (see below)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
-		"  -x                  = Do not automatically save to config file on exit\n",
+		"  -x                  = Do not automatically save to config file on exit\n"
+		"\n",
 		lastof(buf)
 	);
+
+	/* List the graphics packs */
+	p = GetGraphicsSetsList(p, lastof(buf));
 
 	/* List the drivers */
 	p = VideoDriverFactoryBase::GetDriversInfo(p, lastof(buf));
@@ -380,7 +385,7 @@ int ttd_main(int argc, char *argv[])
 {
 	int i;
 	const char *optformat;
-	char musicdriver[32], sounddriver[32], videodriver[32], blitter[32];
+	char musicdriver[32], sounddriver[32], videodriver[32], blitter[32], graphics_set[32];
 	Dimension resolution = {0, 0};
 	Year startyear = INVALID_YEAR;
 	uint generation_seed = GENERATE_NEW_SEED;
@@ -394,7 +399,7 @@ int ttd_main(int argc, char *argv[])
 	uint16 dedicated_port = 0;
 #endif /* ENABLE_NETWORK */
 
-	musicdriver[0] = sounddriver[0] = videodriver[0] = blitter[0] = '\0';
+	musicdriver[0] = sounddriver[0] = videodriver[0] = blitter[0] = graphics_set[0] = '\0';
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
@@ -406,7 +411,7 @@ int ttd_main(int argc, char *argv[])
 	 *   a letter means: it accepts that param (e.g.: -h)
 	 *   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	 *   a '::' behind it means: it can optional have a param (e.g.: -d<debug>) */
-	optformat = "m:s:v:b:hD::n::ei::t:d::r:g::G:c:xl:"
+	optformat = "m:s:v:b:hD::n::ei::I:t:d::r:g::G:c:xl:"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif
@@ -416,6 +421,7 @@ int ttd_main(int argc, char *argv[])
 
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch (i) {
+		case 'I': ttd_strlcpy(graphics_set, mgo.opt, sizeof(graphics_set)); break;
 		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
 		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
 		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
@@ -481,6 +487,11 @@ int ttd_main(int argc, char *argv[])
 		case 'x': save_config = false; break;
 		case -2:
 		case 'h':
+			/* The next two functions are needed to list the graphics sets.
+			 * We can't do them earlier because then we can't show it on
+			 * the debug console as that hasn't been configured yet. */
+			DeterminePaths(argv[0]);
+			FindGraphicsSets();
 			ShowHelp();
 			return 0;
 		}
@@ -492,7 +503,7 @@ int ttd_main(int argc, char *argv[])
 #endif
 
 	DeterminePaths(argv[0]);
-	CheckExternalFiles();
+	FindGraphicsSets();
 
 #if defined(UNIX) && !defined(__MORPHOS__)
 	/* We must fork here, or we'll end up without some resources we need (like sockets) */
@@ -546,6 +557,12 @@ int ttd_main(int argc, char *argv[])
 
 	/* This must be done early, since functions use the InvalidateWindow* calls */
 	InitWindowSystem();
+
+	if (!SetGraphicsSet(graphics_set)) {
+		StrEmpty(graphics_set) ?
+			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD.") :
+			usererror("Failed to select requested graphics set '%s'", graphics_set);
+	}
 
 	/* Initialize game palette */
 	GfxInitPalettes();
