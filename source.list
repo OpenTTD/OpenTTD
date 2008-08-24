@@ -31,6 +31,7 @@ genworld.cpp
 gfx.cpp
 gfxinit.cpp
 heightmap.cpp
+ini.cpp
 landscape.cpp
 map.cpp
 md5.cpp
@@ -190,6 +191,7 @@ gui.h
 heightmap.h
 industry.h
 industry_type.h
+ini_type.h
 landscape.h
 landscape_type.h
 livery.h

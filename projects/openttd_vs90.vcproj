@@ -569,6 +569,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\ini.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\landscape.cpp"
 				>
 			</File>
@@ -1046,6 +1050,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\industry_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ini_type.h"
 				>
 			</File>
 			<File

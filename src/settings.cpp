@@ -63,6 +63,7 @@
 #include "gamelog.h"
 #include "station_func.h"
 #include "settings_func.h"
+#include "ini_type.h"
 
 #include "table/strings.h"
 
@@ -70,361 +71,21 @@ ClientSettings _settings_client;
 GameSettings _settings_game;
 GameSettings _settings_newgame;
 
-struct IniFile;
-struct IniItem;
-struct IniGroup;
-struct SettingsMemoryPool;
-
 typedef const char *SettingListCallbackProc(const IniItem *item, uint index);
 typedef void SettingDescProc(IniFile *ini, const SettingDesc *desc, const char *grpname, void *object);
 typedef void SettingDescProcList(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc);
 
-static void pool_init(SettingsMemoryPool **pool);
-static void *pool_alloc(SettingsMemoryPool **pool, size_t size);
-static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, size_t size);
-static void pool_free(SettingsMemoryPool **pool);
 static bool IsSignedVarMemType(VarType vt);
 
-struct SettingsMemoryPool {
-	size_t pos, size;
-	SettingsMemoryPool *next;
-	byte mem[1];
+/**
+ * Groups in openttd.cfg that are actually lists.
+ */
+static const char *_list_group_names[] = {
+	"bans",
+	"newgrf",
+	"servers",
+	NULL
 };
-
-static SettingsMemoryPool *pool_new(size_t minsize)
-{
-	SettingsMemoryPool *p;
-	if (minsize < 4096 - 12) minsize = 4096 - 12;
-
-	p = (SettingsMemoryPool*)MallocT<byte>(sizeof(SettingsMemoryPool) - 1 + minsize);
-	p->pos = 0;
-	p->size = minsize;
-	p->next = NULL;
-	return p;
-}
-
-static void pool_init(SettingsMemoryPool **pool)
-{
-	*pool = pool_new(0);
-}
-
-static void *pool_alloc(SettingsMemoryPool **pool, size_t size)
-{
-	size_t pos;
-	SettingsMemoryPool *p = *pool;
-
-	size = Align(size, sizeof(void*));
-
-	/* first check if there's memory in the next pool */
-	if (p->next && p->next->pos + size <= p->next->size) {
-		p = p->next;
-	/* then check if there's not memory in the cur pool */
-	} else if (p->pos + size > p->size) {
-		SettingsMemoryPool *n = pool_new(size);
-		*pool = n;
-		n->next = p;
-		p = n;
-	}
-
-	pos = p->pos;
-	p->pos += size;
-	return p->mem + pos;
-}
-
-static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, size_t size)
-{
-	byte *p = (byte*)pool_alloc(pool, size + 1);
-	p[size] = 0;
-	memcpy(p, mem, size);
-	return p;
-}
-
-static void pool_free(SettingsMemoryPool **pool)
-{
-	SettingsMemoryPool *p = *pool, *n;
-	*pool = NULL;
-	while (p) {
-		n = p->next;
-		free(p);
-		p = n;
-	}
-}
-
-/** structs describing the ini format. */
-struct IniItem {
-	char *name;
-	char *value;
-	char *comment;
-	IniItem *next;
-};
-
-struct IniGroup {
-	char *name;        ///< name of group
-	char *comment;     ///<comment for group
-	IniItem *item, **last_item;
-	IniGroup *next;
-	IniFile *ini;
-	IniGroupType type; ///< type of group
-};
-
-struct IniFile {
-	SettingsMemoryPool *pool;
-	IniGroup *group, **last_group;
-	char *comment;     ///< last comment in file
-};
-
-/** allocate an inifile object */
-static IniFile *ini_alloc()
-{
-	IniFile *ini;
-	SettingsMemoryPool *pool;
-	pool_init(&pool);
-	ini = (IniFile*)pool_alloc(&pool, sizeof(IniFile));
-	ini->pool = pool;
-	ini->group = NULL;
-	ini->last_group = &ini->group;
-	ini->comment = NULL;
-	return ini;
-}
-
-/** allocate an ini group object */
-static IniGroup *ini_group_alloc(IniFile *ini, const char *grpt, size_t len)
-{
-	IniGroup *grp = (IniGroup*)pool_alloc(&ini->pool, sizeof(IniGroup));
-	grp->ini = ini;
-	grp->name = (char*)pool_strdup(&ini->pool, grpt, len);
-	if (!strcmp(grp->name, "newgrf") || !strcmp(grp->name, "servers") || !strcmp(grp->name, "bans")) {
-		grp->type = IGT_LIST;
-	} else {
-		grp->type = IGT_VARIABLES;
-	}
-	grp->next = NULL;
-	grp->item = NULL;
-	grp->comment = NULL;
-	grp->last_item = &grp->item;
-	*ini->last_group = grp;
-	ini->last_group = &grp->next;
-	return grp;
-}
-
-static IniItem *ini_item_alloc(IniGroup *group, const char *name, size_t len)
-{
-	IniItem *item = (IniItem*)pool_alloc(&group->ini->pool, sizeof(IniItem));
-	item->name = (char*)pool_strdup(&group->ini->pool, name, len);
-	item->next = NULL;
-	item->comment = NULL;
-	item->value = NULL;
-	*group->last_item = item;
-	group->last_item = &item->next;
-	return item;
-}
-
-/** load an ini file into the "abstract" format */
-static IniFile *ini_load(const char *filename)
-{
-	char buffer[1024], c, *s, *t, *e;
-	FILE *in;
-	IniFile *ini;
-	IniGroup *group = NULL;
-	IniItem *item;
-
-	char *comment = NULL;
-	uint comment_size = 0;
-	uint comment_alloc = 0;
-
-	ini = ini_alloc();
-
-	in = fopen(filename, "r");
-	if (in == NULL) return ini;
-
-	/* for each line in the file */
-	while (fgets(buffer, sizeof(buffer), in)) {
-
-		/* trim whitespace from the left side */
-		for (s = buffer; *s == ' ' || *s == '\t'; s++) {}
-
-		/* trim whitespace from right side. */
-		e = s + strlen(s);
-		while (e > s && ((c = e[-1]) == '\n' || c == '\r' || c == ' ' || c == '\t')) e--;
-		*e = '\0';
-
-		/* skip comments and empty lines */
-		if (*s == '#' || *s == ';' || *s == '\0') {
-			uint ns = comment_size + (e - s + 1);
-			uint a = comment_alloc;
-			uint pos;
-			/* add to comment */
-			if (ns > a) {
-				a = max(a, 128U);
-				do a *= 2; while (a < ns);
-				comment = ReallocT(comment, comment_alloc = a);
-			}
-			pos = comment_size;
-			comment_size += (e - s + 1);
-			comment[pos + e - s] = '\n'; // comment newline
-			memcpy(comment + pos, s, e - s); // copy comment contents
-			continue;
-		}
-
-		/* it's a group? */
-		if (s[0] == '[') {
-			if (e[-1] != ']') {
-				ShowInfoF("ini: invalid group name '%s'", buffer);
-			} else {
-				e--;
-			}
-			s++; // skip [
-			group = ini_group_alloc(ini, s, e - s);
-			if (comment_size) {
-				group->comment = (char*)pool_strdup(&ini->pool, comment, comment_size);
-				comment_size = 0;
-			}
-		} else if (group) {
-			/* find end of keyname */
-			if (*s == '\"') {
-				s++;
-				for (t = s; *t != '\0' && *t != '\"'; t++) {}
-				if (*t == '\"') *t = ' ';
-			} else {
-				for (t = s; *t != '\0' && *t != '=' && *t != '\t' && *t != ' '; t++) {}
-			}
-
-			/* it's an item in an existing group */
-			item = ini_item_alloc(group, s, t-s);
-			if (comment_size) {
-				item->comment = (char*)pool_strdup(&ini->pool, comment, comment_size);
-				comment_size = 0;
-			}
-
-			/* find start of parameter */
-			while (*t == '=' || *t == ' ' || *t == '\t') t++;
-
-
-			/* remove starting quotation marks */
-			if (*t == '\"') t++;
-			/* remove ending quotation marks */
-			e = t + strlen(t);
-			if (e > t && e[-1] == '\"') e--;
-			*e = '\0';
-
-			item->value = (char*)pool_strdup(&ini->pool, t, e - t);
-		} else {
-			/* it's an orphan item */
-			ShowInfoF("ini: '%s' outside of group", buffer);
-		}
-	}
-
-	if (comment_size > 0) {
-		ini->comment = (char*)pool_strdup(&ini->pool, comment, comment_size);
-		comment_size = 0;
-	}
-
-	free(comment);
-	fclose(in);
-
-	return ini;
-}
-
-/** lookup a group or make a new one */
-static IniGroup *ini_getgroup(IniFile *ini, const char *name, size_t len = 0)
-{
-	IniGroup *group;
-
-	if (len == 0) len = strlen(name);
-
-	/* does it exist already? */
-	for (group = ini->group; group != NULL; group = group->next) {
-		if (!memcmp(group->name, name, len) && group->name[len] == 0) {
-			return group;
-		}
-	}
-
-	/* otherwise make a new one */
-	group = ini_group_alloc(ini, name, len);
-	group->comment = (char*)pool_strdup(&ini->pool, "\n", 1);
-	return group;
-}
-
-static void ini_removegroup(IniFile *ini, const char *name)
-{
-	size_t len = strlen(name);
-	IniGroup *prev = NULL;
-	IniGroup *group;
-
-	/* does it exist already? */
-	for (group = ini->group; group != NULL; prev = group, group = group->next) {
-		if (memcmp(group->name, name, len) == 0) {
-			break;
-		}
-	}
-
-	if (group == NULL) return;
-
-	if (prev != NULL) {
-		prev->next = prev->next->next;
-	} else {
-		ini->group = ini->group->next;
-	}
-}
-
-/** lookup an item or make a new one */
-static IniItem *ini_getitem(IniGroup *group, const char *name, bool create)
-{
-	IniItem *item;
-	size_t len = strlen(name);
-
-	for (item = group->item; item != NULL; item = item->next) {
-		if (strcmp(item->name, name) == 0) return item;
-	}
-
-	if (!create) return NULL;
-
-	/* otherwise make a new one */
-	return ini_item_alloc(group, name, len);
-}
-
-/** save ini file from the "abstract" format. */
-static bool ini_save(const char *filename, IniFile *ini)
-{
-	FILE *f;
-	IniGroup *group;
-	IniItem *item;
-
-	f = fopen(filename, "w");
-	if (f == NULL) return false;
-
-	for (group = ini->group; group != NULL; group = group->next) {
-		if (group->comment) fputs(group->comment, f);
-		fprintf(f, "[%s]\n", group->name);
-		for (item = group->item; item != NULL; item = item->next) {
-			assert(item->value != NULL);
-			if (item->comment != NULL) fputs(item->comment, f);
-
-			/* protect item->name with quotes if needed */
-			if (strchr(item->name, ' ') != NULL) {
-				fprintf(f, "\"%s\"", item->name);
-			} else {
-				fprintf(f, "%s", item->name);
-			}
-
-			/* Don't give an equal sign to list items that don't have a parameter */
-			if (group->type == IGT_LIST && *item->value == '\0') {
-				fprintf(f, "\n");
-			} else {
-				fprintf(f, " = %s\n", item->value);
-			}
-		}
-	}
-	if (ini->comment) fputs(ini->comment, f);
-
-	fclose(f);
-	return true;
-}
-
-static void ini_free(IniFile *ini)
-{
-	pool_free(&ini->pool);
-}
 
 /** Find the index value of a ONEofMANY type in a string seperated by |
  * @param many full domain of values the ONEofMANY setting can have
@@ -732,7 +393,7 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
 {
 	IniGroup *group;
-	IniGroup *group_def = ini_getgroup(ini, grpname);
+	IniGroup *group_def = ini->GetGroup(grpname);
 	IniItem *item;
 	const void *p;
 	void *ptr;
@@ -747,24 +408,24 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		/* For patches.xx.yy load the settings from [xx] yy = ? */
 		s = strchr(sdb->name, '.');
 		if (s != NULL) {
-			group = ini_getgroup(ini, sdb->name, s - sdb->name);
+			group = ini->GetGroup(sdb->name, s - sdb->name);
 			s++;
 		} else {
 			s = sdb->name;
 			group = group_def;
 		}
 
-		item = ini_getitem(group, s, false);
+		item = group->GetItem(s, false);
 		if (item == NULL && group != group_def) {
 			/* For patches.xx.yy load the settings from [patches] yy = ? in case the previous
 			 * did not exist (e.g. loading old config files with a [patches] section */
-			item = ini_getitem(group_def, s, false);
+			item = group_def->GetItem(s, false);
 		}
 		if (item == NULL) {
 			/* For patches.xx.zz.yy load the settings from [zz] yy = ? in case the previous
 			 * did not exist (e.g. loading old config files with a [yapf] section */
 			const char *sc = strchr(s, '.');
-			if (sc != NULL) item = ini_getitem(ini_getgroup(ini, s, sc - s), sc + 1, false);
+			if (sc != NULL) item = ini->GetGroup(s, sc - s)->GetItem(sc + 1, false);
 		}
 
 		p = (item == NULL) ? sdb->def : string_to_val(sdb, item->value);
@@ -839,15 +500,15 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		/* XXX - wtf is this?? (group override?) */
 		s = strchr(sdb->name, '.');
 		if (s != NULL) {
-			group = ini_getgroup(ini, sdb->name, s - sdb->name);
+			group = ini->GetGroup(sdb->name, s - sdb->name);
 			s++;
 		} else {
-			if (group_def == NULL) group_def = ini_getgroup(ini, grpname);
+			if (group_def == NULL) group_def = ini->GetGroup(grpname);
 			s = sdb->name;
 			group = group_def;
 		}
 
-		item = ini_getitem(group, s, true);
+		item = group->GetItem(s, true);
 		ptr = GetVariableAddress(object, sld);
 
 		if (item->value != NULL) {
@@ -919,7 +580,8 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		}
 
 		/* The value is different, that means we have to write it to the ini */
-		item->value = (char*)pool_strdup(&ini->pool, buf, strlen(buf));
+		free(item->value);
+		item->value = strdup(buf);
 	}
 }
 
@@ -937,7 +599,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * inside the list */
 static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
 {
-	IniGroup *group = ini_getgroup(ini, grpname);
+	IniGroup *group = ini->GetGroup(grpname);
 	IniItem *item;
 	const char *entry;
 	uint i, j;
@@ -965,7 +627,7 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list
  * @param proc callback function that can will provide the source data if defined */
 static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
 {
-	IniGroup *group = ini_getgroup(ini, grpname);
+	IniGroup *group = ini->GetGroup(grpname);
 	IniItem *item = NULL;
 	const char *entry;
 	uint i;
@@ -981,14 +643,14 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 		if (entry == NULL || *entry == '\0') continue;
 
 		if (first) { // add first item to the head of the group
-			item = ini_item_alloc(group, entry, strlen(entry));
-			item->value = item->name;
+			item = new IniItem(group, entry);
+			item->value = strdup("");
 			group->item = item;
 			first = false;
 		} else { // all other items are attached to the previous one
-			item->next = ini_item_alloc(group, entry, strlen(entry));
+			item->next = new IniItem(group, entry);
 			item = item->next;
-			item->value = item->name;
+			item->value = strdup("");
 		}
 	}
 }
@@ -1935,7 +1597,7 @@ bool ConvertOldNewsSetting(const char *name, const char *value)
 
 static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 {
-	IniGroup *group = ini_getgroup(ini, grpname);
+	IniGroup *group = ini->GetGroup(grpname);
 	IniItem *item;
 
 	/* If no group exists, return */
@@ -1976,7 +1638,7 @@ static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 /* Load a GRF configuration from the given group name */
 static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_static)
 {
-	IniGroup *group = ini_getgroup(ini, grpname);
+	IniGroup *group = ini->GetGroup(grpname);
 	IniItem *item;
 	GRFConfig *first = NULL;
 	GRFConfig **curr = &first;
@@ -1988,7 +1650,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 		c->filename = strdup(item->name);
 
 		/* Parse parameters */
-		if (*item->value != '\0') {
+		if (!StrEmpty(item->value)) {
 			c->num_params = parse_intlist(item->value, (int*)c->param, lengthof(c->param));
 			if (c->num_params == (byte)-1) {
 				ShowInfoF("ini: error in array '%s'", item->name);
@@ -2028,7 +1690,7 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 
 static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 {
-	IniGroup *group = ini_getgroup(ini, grpname);
+	IniGroup *group = ini->GetGroup(grpname);
 	IniItem **item;
 
 	if (group == NULL) return;
@@ -2041,8 +1703,8 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 
 		value = (v == ND_OFF ? "off" : (v == ND_SUMMARY ? "summarized" : "full"));
 
-		*item = ini_item_alloc(group, _news_type_data[i].name, strlen(_news_type_data[i].name));
-		(*item)->value = (char*)pool_strdup(&ini->pool, value, strlen(value));
+		*item = new IniItem(group, _news_type_data[i].name);
+		(*item)->value = strdup(value);
 		item = &(*item)->next;
 	}
 }
@@ -2053,7 +1715,7 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
  */
 static void SaveVersionInConfig(IniFile *ini)
 {
-	IniGroup *group = ini_getgroup(ini, "version");
+	IniGroup *group = ini->GetGroup("version");
 
 	if (group == NULL) return;
 	group->item = NULL;
@@ -2068,8 +1730,8 @@ static void SaveVersionInConfig(IniFile *ini)
 	};
 
 	for (uint i = 0; i < lengthof(versions); i++) {
-		*item = ini_item_alloc(group, versions[i][0], strlen(versions[i][0]));
-		(*item)->value = (char*)pool_strdup(&ini->pool, versions[i][1], strlen(versions[i][1]));
+		*item = new IniItem(group, versions[i][0]);
+		(*item)->value = strdup(versions[i][1]);
 		item = &(*item)->next;
 	}
 }
@@ -2077,7 +1739,7 @@ static void SaveVersionInConfig(IniFile *ini)
 /* Save a GRF configuration to the given group name */
 static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *list)
 {
-	IniGroup *group = ini_getgroup(ini, grpname);
+	IniGroup *group = ini->GetGroup(grpname);
 	IniItem **item;
 	const GRFConfig *c;
 
@@ -2089,8 +1751,8 @@ static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *li
 		char params[512];
 		GRFBuildParamList(params, c, lastof(params));
 
-		*item = ini_item_alloc(group, c->filename, strlen(c->filename));
-		(*item)->value = (char*)pool_strdup(&ini->pool, params, strlen(params));
+		*item = new IniItem(group, c->filename);
+		(*item)->value = strdup(params);
 		item = &(*item)->next;
 	}
 }
@@ -2113,10 +1775,17 @@ static void HandleSettingDescs(IniFile *ini, SettingDescProc *proc, SettingDescP
 #endif /* ENABLE_NETWORK */
 }
 
+static IniFile *IniLoadConfig()
+{
+	IniFile *ini = new IniFile(_list_group_names);
+	ini->LoadFromDisk(_config_file);
+	return ini;
+}
+
 /** Load the values from the configuration files */
 void LoadFromConfig()
 {
-	IniFile *ini = ini_load(_config_file);
+	IniFile *ini = IniLoadConfig();
 	ResetCurrencies(false); // Initialize the array of curencies, without preserving the custom one
 
 	PrepareOldDiffCustom();
@@ -2128,33 +1797,33 @@ void LoadFromConfig()
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
 	NewsDisplayLoadConfig(ini, "news_display");
 	CheckDifficultyLevels();
-	ini_free(ini);
+	delete ini;
 }
 
 /** Save the values to the configuration file */
 void SaveToConfig()
 {
-	IniFile *ini = ini_load(_config_file);
+	IniFile *ini = IniLoadConfig();
 
 	/* Remove some obsolete groups. These have all been loaded into other groups. */
-	ini_removegroup(ini, "patches");
-	ini_removegroup(ini, "yapf");
-	ini_removegroup(ini, "gameopt");
+	ini->RemoveGroup("patches");
+	ini->RemoveGroup("yapf");
+	ini->RemoveGroup("gameopt");
 
 	HandleSettingDescs(ini, ini_save_settings, ini_save_setting_list);
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
 	NewsDisplaySaveConfig(ini, "news_display");
 	SaveVersionInConfig(ini);
-	ini_save(_config_file, ini);
-	ini_free(ini);
+	ini->SaveToDisk(_config_file);
+	delete ini;
 }
 
 void GetGRFPresetList(GRFPresetList *list)
 {
 	list->Clear();
 
-	IniFile *ini = ini_load(_config_file);
+	IniFile *ini = IniLoadConfig();
 	IniGroup *group;
 	for (group = ini->group; group != NULL; group = group->next) {
 		if (strncmp(group->name, "preset-", 7) == 0) {
@@ -2162,7 +1831,7 @@ void GetGRFPresetList(GRFPresetList *list)
 		}
 	}
 
-	ini_free(ini);
+	delete ini;
 }
 
 GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
@@ -2170,9 +1839,9 @@ GRFConfig *LoadGRFPresetFromConfig(const char *config_name)
 	char *section = (char*)alloca(strlen(config_name) + 8);
 	sprintf(section, "preset-%s", config_name);
 
-	IniFile *ini = ini_load(_config_file);
+	IniFile *ini = IniLoadConfig();
 	GRFConfig *config = GRFLoadConfig(ini, section, false);
-	ini_free(ini);
+	delete ini;
 
 	return config;
 }
@@ -2182,10 +1851,10 @@ void SaveGRFPresetToConfig(const char *config_name, GRFConfig *config)
 	char *section = (char*)alloca(strlen(config_name) + 8);
 	sprintf(section, "preset-%s", config_name);
 
-	IniFile *ini = ini_load(_config_file);
+	IniFile *ini = IniLoadConfig();
 	GRFSaveConfig(ini, section, config);
-	ini_save(_config_file, ini);
-	ini_free(ini);
+	ini->SaveToDisk(_config_file);
+	delete ini;
 }
 
 void DeleteGRFPresetFromConfig(const char *config_name)
@@ -2193,10 +1862,10 @@ void DeleteGRFPresetFromConfig(const char *config_name)
 	char *section = (char*)alloca(strlen(config_name) + 8);
 	sprintf(section, "preset-%s", config_name);
 
-	IniFile *ini = ini_load(_config_file);
-	ini_removegroup(ini, section);
-	ini_save(_config_file, ini);
-	ini_free(ini);
+	IniFile *ini = IniLoadConfig();
+	ini->RemoveGroup(section);
+	ini->SaveToDisk(_config_file);
+	delete ini;
 }
 
 static const SettingDesc *GetSettingDescription(uint index)

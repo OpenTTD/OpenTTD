@@ -78,11 +78,6 @@ struct SettingDesc {
  * offset in a certain struct */
 typedef SettingDesc SettingDescGlobVarList;
 
-enum IniGroupType {
-	IGT_VARIABLES = 0, ///< values of the form "landscape = hilly"
-	IGT_LIST      = 1, ///< a list of values, seperated by \n and terminated by the next group block
-};
-
 const SettingDesc *GetPatchFromName(const char *name, uint *i);
 bool SetPatchValue(uint index, int32 value);
 bool SetPatchValue(uint index, const char *value);
