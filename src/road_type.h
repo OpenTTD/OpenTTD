@@ -13,6 +13,7 @@
  * @note currently only ROADTYPE_ROAD and ROADTYPE_TRAM are supported.
  */
 enum RoadType {
+	ROADTYPE_BEGIN = 0,     ///< Used for iterations
 	ROADTYPE_ROAD = 0,      ///< Basic road type
 	ROADTYPE_TRAM = 1,      ///< Trams
 	ROADTYPE_HWAY = 2,      ///< Only a placeholder. Not sure what we are going to do with this road type.
