@@ -1356,6 +1356,10 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 				if (newone != STR_UNDEFINED) bridge->transport_name[prop - 0x11] = newone;
 				} break;
 
+			case 0x13: // 16 bits cost multiplier
+				bridge->price = grf_load_word(&buf);
+				break;
+
 			default:
 				ret = true;
 				break;
