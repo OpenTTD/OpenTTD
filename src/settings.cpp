@@ -628,10 +628,8 @@ static void ini_load_setting_list(IniFile *ini, const char *grpname, char **list
 static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list, uint len, SettingListCallbackProc proc)
 {
 	IniGroup *group = ini->GetGroup(grpname);
-	IniItem *item = NULL;
 	const char *entry;
 	uint i;
-	bool first = true;
 
 	if (proc == NULL && list == NULL) return;
 	if (group == NULL) return;
@@ -642,16 +640,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 
 		if (entry == NULL || *entry == '\0') continue;
 
-		if (first) { // add first item to the head of the group
-			item = new IniItem(group, entry);
-			item->value = strdup("");
-			group->item = item;
-			first = false;
-		} else { // all other items are attached to the previous one
-			item->next = new IniItem(group, entry);
-			item = item->next;
-			item->value = strdup("");
-		}
+		new IniItem(group, entry, "");
 	}
 }
 
@@ -1691,11 +1680,6 @@ static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_stati
 static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 {
 	IniGroup *group = ini->GetGroup(grpname);
-	IniItem **item;
-
-	if (group == NULL) return;
-	group->item = NULL;
-	item = &group->item;
 
 	for (int i = 0; i < NT_END; i++) {
 		const char *value;
@@ -1703,9 +1687,7 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 
 		value = (v == ND_OFF ? "off" : (v == ND_SUMMARY ? "summarized" : "full"));
 
-		*item = new IniItem(group, _news_type_data[i].name);
-		(*item)->value = strdup(value);
-		item = &(*item)->next;
+		new IniItem(group, _news_type_data[i].name, value);
 	}
 }
 
@@ -1717,10 +1699,6 @@ static void SaveVersionInConfig(IniFile *ini)
 {
 	IniGroup *group = ini->GetGroup("version");
 
-	if (group == NULL) return;
-	group->item = NULL;
-	IniItem **item = &group->item;
-
 	char version[9];
 	snprintf(version, lengthof(version), "%08X", _openttd_newgrf_version);
 
@@ -1730,9 +1708,7 @@ static void SaveVersionInConfig(IniFile *ini)
 	};
 
 	for (uint i = 0; i < lengthof(versions); i++) {
-		*item = new IniItem(group, versions[i][0]);
-		(*item)->value = strdup(versions[i][1]);
-		item = &(*item)->next;
+		new IniItem(group, versions[i][0], versions[i][1]);
 	}
 }
 
@@ -1740,20 +1716,13 @@ static void SaveVersionInConfig(IniFile *ini)
 static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *list)
 {
 	IniGroup *group = ini->GetGroup(grpname);
-	IniItem **item;
 	const GRFConfig *c;
-
-	if (group == NULL) return;
-	group->item = NULL;
-	item = &group->item;
 
 	for (c = list; c != NULL; c = c->next) {
 		char params[512];
 		GRFBuildParamList(params, c, lastof(params));
 
-		*item = new IniItem(group, c->filename);
-		(*item)->value = strdup(params);
-		item = &(*item)->next;
+		new IniItem(group, c->filename, params);
 	}
 }
 

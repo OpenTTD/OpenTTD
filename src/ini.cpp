@@ -19,6 +19,14 @@ IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), v
 	parent->last_item = &this->next;
 }
 
+IniItem::IniItem(IniGroup *parent, const char *name, const char *value) : next(NULL), comment(NULL)
+{
+	this->name  = strdup(name);
+	this->value = strdup(value);
+	*parent->last_item = this;
+	parent->last_item = &this->next;
+}
+
 IniItem::~IniItem()
 {
 	free(this->name);
