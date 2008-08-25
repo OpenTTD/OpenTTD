@@ -229,7 +229,7 @@ struct DropdownWindow : Window {
 	}
 };
 
-void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width, bool instant_close)
+void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width, bool auto_width, bool instant_close)
 {
 	bool is_dropdown_menu_shown = w->IsWidgetLowered(button);
 
@@ -250,17 +250,16 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 	/* The preferred position is just below the dropdown calling widget */
 	int top = w->top + wi->bottom + 1;
 
-	bool auto_width = (width == UINT_MAX);
+	if (width == 0) width = wi->right - wi->left + 1;
+
+	uint max_item_width = 0;
 
 	if (auto_width) {
 		/* Find the longest item in the list */
-		width = 0;
 		for (DropDownList::const_iterator it = list->begin(); it != list->end(); ++it) {
 			const DropDownListItem *item = *it;
-			width = max(width, item->Width() + 5);
+			max_item_width = max(max_item_width, item->Width() + 5);
 		}
-	} else if (width == 0) {
-		width = wi->right - wi->left + 1;
 	}
 
 	/* Total length of list */
@@ -297,9 +296,11 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 			scroll = true;
 			/* Add space for the scroll bar if we automatically determined
 			 * the width of the list. */
-			if (auto_width) width += 12;
+			max_item_width += 12;
 		}
 	}
+
+	if (auto_width) width = max(width, max_item_width);
 
 	DropdownWindow *dw = new DropdownWindow(
 		w->left + wi->left,

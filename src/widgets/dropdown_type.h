@@ -70,11 +70,10 @@ typedef std::list<DropDownListItem *> DropDownList;
  * @param button   The widget within the parent window that is used to determine
  *                 the list's location.
  * @param width    Override the width determined by the selected widget.
- *                 If UINT_MAX then the width is determined by the widest item
- *                 in the list.
+ * @param auto_width Maximum width is determined by the widest item in the list.
  * @param instant_close Set to true if releasing mouse button should close the
  *                      list regardless of where the cursor is.
  */
-void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width = 0, bool instant_close = false);
+void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width = 0, bool auto_width = false, bool instant_close = false);
 
 #endif /* WIDGETS_DROPDOWN_TYPE_H */
