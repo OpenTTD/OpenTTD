@@ -3956,7 +3956,7 @@ static void AiBuildCompanyHQ(Player *p)
 {
 	TileIndex tile;
 
-	if (p->location_of_house == 0 &&
+	if (p->location_of_HQ == 0 &&
 			p->last_build_coordinate != 0) {
 		tile = AdjustTileCoordRandomly(p->last_build_coordinate, 8);
 		DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_BUILD_COMPANY_HQ);

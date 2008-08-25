@@ -45,13 +45,13 @@ static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
 	Player *p = GetPlayer(pid);
 
 	if (flags & DC_EXEC) {
-		TileIndex t = p->location_of_house;
+		TileIndex t = p->location_of_HQ;
 
 		DoClearSquare(t + TileDiffXY(0, 0));
 		DoClearSquare(t + TileDiffXY(0, 1));
 		DoClearSquare(t + TileDiffXY(1, 0));
 		DoClearSquare(t + TileDiffXY(1, 1));
-		p->location_of_house = 0; // reset HQ position
+		p->location_of_HQ = 0; // reset HQ position
 		InvalidateWindow(WC_COMPANY, pid);
 	}
 
@@ -62,7 +62,7 @@ static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
 void UpdateCompanyHQ(Player *p, uint score)
 {
 	byte val;
-	TileIndex tile = p->location_of_house;
+	TileIndex tile = p->location_of_HQ;
 
 	if (tile == 0) return;
 
@@ -96,14 +96,14 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
 	if (CmdFailed(cost)) return cost;
 
-	if (p->location_of_house != 0) { // Moving HQ
+	if (p->location_of_HQ != 0) { // Moving HQ
 		cost.AddCost(DestroyCompanyHQ(_current_player, flags));
 	}
 
 	if (flags & DC_EXEC) {
 		int score = UpdateCompanyRatingAndValue(p, false);
 
-		p->location_of_house = tile;
+		p->location_of_HQ = tile;
 
 		MakeCompanyHQ(tile, _current_player);
 

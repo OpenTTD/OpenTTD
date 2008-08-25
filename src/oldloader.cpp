@@ -993,7 +993,7 @@ static const OldChunks player_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Player, block_preview ),
 	 OCL_VAR(  OC_UINT8,   1, &ai_tick ),
 	OCL_SVAR(  OC_UINT8, Player, avail_railtypes ),
-	OCL_SVAR(   OC_TILE, Player, location_of_house ),
+	OCL_SVAR(   OC_TILE, Player, location_of_HQ ),
 	OCL_SVAR(  OC_UINT8, Player, share_owners[0] ),
 	OCL_SVAR(  OC_UINT8, Player, share_owners[1] ),
 	OCL_SVAR(  OC_UINT8, Player, share_owners[2] ),
@@ -1041,8 +1041,8 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 
 	_player_colors[num] = p->player_color;
 	p->inaugurated_year -= ORIGINAL_BASE_YEAR;
-	if (p->location_of_house == 0xFFFF)
-		p->location_of_house = 0;
+	if (p->location_of_HQ == 0xFFFF)
+		p->location_of_HQ = 0;
 
 	/* State 20 for AI players is sell vehicle. Since the AI struct is not
 	 * really figured out as of now, _players_ai[p->index].cur_veh; needed for 'sell vehicle'

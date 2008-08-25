@@ -107,7 +107,7 @@ static void AiNew_State_WakeUp(Player *p)
 	int c;
 	assert(_players_ainew[p->index].state == AI_STATE_WAKE_UP);
 	// First, check if we have a HQ
-	if (p->location_of_house == 0) {
+	if (p->location_of_HQ == 0) {
 		// We have no HQ yet, build one on a random place
 		// Random till we found a place for it!
 		// TODO: this should not be on a random place..

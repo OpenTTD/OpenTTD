@@ -1185,10 +1185,10 @@ struct PlayerCompanyWindow : Window
 		this->SetWidgetHiddenState(PCW_WIDGET_COLOR_SCHEME,   !local);
 		this->SetWidgetHiddenState(PCW_WIDGET_PRESIDENT_NAME, !local);
 		this->SetWidgetHiddenState(PCW_WIDGET_COMPANY_NAME,   !local);
-		this->widget[PCW_WIDGET_BUILD_VIEW_HQ].data = (local && p->location_of_house == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
-		if (local && p->location_of_house != 0) this->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
-		this->SetWidgetDisabledState(PCW_WIDGET_BUILD_VIEW_HQ, !local && p->location_of_house == 0);
-		this->SetWidgetHiddenState(PCW_WIDGET_RELOCATE_HQ,      !local || p->location_of_house == 0);
+		this->widget[PCW_WIDGET_BUILD_VIEW_HQ].data = (local && p->location_of_HQ == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
+		if (local && p->location_of_HQ != 0) this->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
+		this->SetWidgetDisabledState(PCW_WIDGET_BUILD_VIEW_HQ, !local && p->location_of_HQ == 0);
+		this->SetWidgetHiddenState(PCW_WIDGET_RELOCATE_HQ,      !local || p->location_of_HQ == 0);
 		this->SetWidgetHiddenState(PCW_WIDGET_BUY_SHARE,        local);
 		this->SetWidgetHiddenState(PCW_WIDGET_SELL_SHARE,       local);
 		this->SetWidgetHiddenState(PCW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
@@ -1267,7 +1267,7 @@ struct PlayerCompanyWindow : Window
 				break;
 
 			case PCW_WIDGET_BUILD_VIEW_HQ: {
-				TileIndex tile = GetPlayer((PlayerID)this->window_number)->location_of_house;
+				TileIndex tile = GetPlayer((PlayerID)this->window_number)->location_of_HQ;
 				if (tile == 0) {
 					if ((byte)this->window_number != _local_player) return;
 					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, this);

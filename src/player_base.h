@@ -56,7 +56,7 @@ struct Player : PoolItem<Player, PlayerByte, &_Player_pool> {
 
 	uint32 cargo_types; ///< which cargo types were transported the last year
 
-	TileIndex location_of_house;
+	TileIndex location_of_HQ;
 	TileIndex last_build_coordinate;
 
 	PlayerByte share_owners[4];
