@@ -5737,7 +5737,7 @@ static void FinaliseIndustriesArray()
 
 					if (indsp->station_name != STR_NULL) {
 						/* STR_NULL (0) can be set by grf.  It has a meaning regarding assignation of the
-						 * station's name. Don't wont to loose the value, therefor, do not process. */
+						 * station's name. Don't want to lose the value, therefore, do not process. */
 						strid = GetGRFStringID(indsp->grf_prop.grffile->grfid, indsp->station_name);
 						if (strid != STR_UNDEFINED) indsp->station_name = strid;
 					}

@@ -1198,7 +1198,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /**
  *
  * Backup a vehicle order-list, so you can replace a vehicle
- *  without loosing the order-list
+ *  without losing the order-list
  *
  */
 void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)

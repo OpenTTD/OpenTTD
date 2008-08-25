@@ -112,7 +112,7 @@ void NetworkUDPSocketHandler::ReceivePackets()
 	client_len = sizeof(client_addr);
 
 	/* Try to receive anything */
-	SetNonBlocking(this->sock); // Some OSes seem to loose the non-blocking status of the socket
+	SetNonBlocking(this->sock); // Some OSes seem to lose the non-blocking status of the socket
 	nbytes = recvfrom(this->sock, (char*)p.buffer, packet_len, 0, (struct sockaddr *)&client_addr, &client_len);
 
 	/* We got some bytes for the base header of the packet. */

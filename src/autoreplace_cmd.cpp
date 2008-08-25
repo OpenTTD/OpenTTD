@@ -181,7 +181,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 	} else {
 		if (!HasBit(available_cargo_types, cargo_type)) return CT_INVALID; // We can't refit the vehicle to carry the cargo we want
 
-		if (!VerifyAutoreplaceRefitForOrders(v, engine_type)) return CT_INVALID; // Some refit orders loose their effect
+		if (!VerifyAutoreplaceRefitForOrders(v, engine_type)) return CT_INVALID; // Some refit orders lose their effect
 
 		/* Do we have to refit the vehicle, or is it already carrying the right cargo? */
 		uint16 *default_capacity = GetCapacityOfArticulatedParts(engine_type, v->type);

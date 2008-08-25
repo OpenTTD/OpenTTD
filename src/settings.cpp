@@ -1061,7 +1061,7 @@ static int32 CheckTownLayout(int32 p1)
 
 /** Conversion callback for _gameopt_settings_game.landscape
  * It converts (or try) between old values and the new ones,
- * without loosing initial setting  of the user
+ * without losing initial setting of the user
  * @param value that was read from config file
  * @return the "hopefully" converted value
  */
