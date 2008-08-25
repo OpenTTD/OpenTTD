@@ -355,11 +355,16 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			cost.AddCost(ret);
 
 			/* If the rail types don't match, try to convert only if engines of
+			 * the new rail type are not powered on the present rail type and engines of
 			 * the present rail type are powered on the new rail type. */
-			if (GetRailType(tile) != railtype && HasPowerOnRail(GetRailType(tile), railtype)) {
-				ret = DoCommand(tile, tile, railtype, flags, CMD_CONVERT_RAIL);
-				if (CmdFailed(ret)) return ret;
-				cost.AddCost(ret);
+			if (GetRailType(tile) != railtype && !HasPowerOnRail(railtype, GetRailType(tile))) {
+				if (HasPowerOnRail(GetRailType(tile), railtype)) {
+					ret = DoCommand(tile, tile, railtype, flags, CMD_CONVERT_RAIL);
+					if (CmdFailed(ret)) return ret;
+					cost.AddCost(ret);
+				} else {
+					return CMD_ERROR;
+				}
 			}
 
 			if (flags & DC_EXEC) {
