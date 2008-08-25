@@ -1601,7 +1601,7 @@ static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, 
 			case ROAD_TILE_NORMAL: {
 				RoadBits bits = GetAllRoadBits(tile);
 				RoadBits bits_copy = bits;
-				/* Check if the slope-road_bits combination is valid at all, i.e. it is save to call GetRoadFoundation(). */
+				/* Check if the slope-road_bits combination is valid at all, i.e. it is safe to call GetRoadFoundation(). */
 				if (!CmdFailed(CheckRoadSlope(tileh_new, &bits_copy, ROAD_NONE, ROAD_NONE))) {
 					/* CheckRoadSlope() sometimes changes the road_bits, if it does not agree with them. */
 					if (bits == bits_copy) {

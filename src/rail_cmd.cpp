@@ -1521,7 +1521,7 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 
 /**
  * Get surface height in point (x,y)
- * On tiles with halftile foundations move (x,y) to a save point wrt. track
+ * On tiles with halftile foundations move (x,y) to a safe point wrt. track
  */
 static uint GetSaveSlopeZ(uint x, uint y, Track track)
 {
@@ -2519,7 +2519,7 @@ static CommandCost TestAutoslopeOnRailTile(TileIndex tile, uint flags, uint z_ol
 {
 	if (!_settings_game.construction.build_on_slopes || !AutoslopeEnabled()) return CMD_ERROR;
 
-	/* Is the slope-rail_bits combination valid in general? I.e. is it save to call GetRailFoundation() ? */
+	/* Is the slope-rail_bits combination valid in general? I.e. is it safe to call GetRailFoundation() ? */
 	if (CmdFailed(CheckRailSlope(tileh_new, rail_bits, TRACK_BIT_NONE, tile))) return CMD_ERROR;
 
 	/* Get the slopes on top of the foundations */

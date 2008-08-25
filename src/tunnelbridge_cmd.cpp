@@ -1472,7 +1472,7 @@ static CommandCost TerraformTile_TunnelBridge(TileIndex tile, uint32 flags, uint
 		uint z_old;
 		Slope tileh_old = GetTileSlope(tile, &z_old);
 
-		/* Check if new slope is valid for bridges in general (so we can savely call GetBridgeFoundation()) */
+		/* Check if new slope is valid for bridges in general (so we can safely call GetBridgeFoundation()) */
 		if ((direction == DIAGDIR_NW) || (direction == DIAGDIR_NE)) {
 			CheckBridgeSlopeSouth(axis, &tileh_old, &z_old);
 			res = CheckBridgeSlopeSouth(axis, &tileh_new, &z_new);
