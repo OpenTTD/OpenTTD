@@ -38,6 +38,9 @@
 #include "console_gui.h"
 #include "news_gui.h"
 #include "tilehighlight_func.h"
+#include "rail.h"
+#include "widgets/dropdown_func.h"
+#include "widgets/dropdown_type.h"
 
 #include "network/network.h"
 #include "network/network_gui.h"
@@ -45,8 +48,6 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-static void PopupMainToolbMenu(Window *parent, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask = 0, int sel_index = 0, int checked_items = 0);
-static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray = 0);
 static void SplitToolbar(Window *w);
 
 RailType _last_built_railtype;
@@ -121,13 +122,103 @@ enum ToolbarScenEditorWidgets {
 	TBSE_PLACESIGNS,
 };
 
-/** The idea of this enum is to allow a separation between widget position
- * and _menu_clicked_procs's entry.  By shifting, the "action" id is extracted and
- * kept safe for usage when required.
- * @see ToolbarMenuWindow::OnMouseLoop */
-enum ScenarioEditorMenuActions {
-	SEMA_MAP_CLICK = 17 << 8,
+/**
+ * Drop down list entry for showing a checked/unchecked toggle item.
+ */
+class DropDownListCheckedItem : public DropDownListStringItem {
+public:
+	bool checked;
+
+	DropDownListCheckedItem(StringID string, int result, bool masked, bool checked) : DropDownListStringItem(string, result, masked), checked(checked) {}
+
+	virtual ~DropDownListCheckedItem() {}
+
+	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+	{
+		if (checked) {
+			DrawString(x + 2, y, STR_CHECKMARK, sel ? TC_WHITE : TC_BLACK);
+		}
+		DrawStringTruncated(x + 2, y, this->String(), sel ? TC_WHITE : TC_BLACK, width);
+	}
 };
+
+/**
+ * Drop down list entry for showing a company entry, with player 'blob'.
+ */
+class DropDownListCompanyItem : public DropDownListItem {
+public:
+	bool greyed;
+
+	DropDownListCompanyItem(int result, bool masked, bool greyed) : DropDownListItem(result, masked), greyed(greyed) {}
+
+	virtual ~DropDownListCompanyItem() {}
+
+	bool Selectable() const
+	{
+		return true;
+	}
+
+	uint Width() const
+	{
+		char buffer[512];
+		PlayerID player = (PlayerID)result;
+		SetDParam(0, player);
+		SetDParam(1, player);
+		GetString(buffer, STR_7021, lastof(buffer));
+		return GetStringBoundingBox(buffer).width + 19;
+	}
+
+	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
+	{
+		PlayerID player = (PlayerID)result;
+		DrawPlayerIcon(player, x + 2, y + 1);
+
+		SetDParam(0, player);
+		SetDParam(1, player);
+		int col;
+		if (this->greyed) {
+			col = TC_GREY;
+		} else {
+			col = sel ? TC_WHITE : TC_BLACK;
+		}
+		DrawStringTruncated(x + 19, y, STR_7021, col, width - 17);
+	}
+};
+
+/**
+ * Pop up a generic text only menu.
+ */
+static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count)
+{
+	DropDownList *list = new DropDownList();
+	for (int i = 0; i < count; i++) {
+		list->push_back(new DropDownListStringItem(string + i, i, false));
+	}
+	ShowDropDownList(w, list, 0, widget, 140, true, true);
+	SndPlayFx(SND_15_BEEP);
+}
+
+/**
+ * Pop up a generic company list menu.
+ */
+static void PopupMainPlayerToolbMenu(Window *w, int widget, int grey = 0)
+{
+	DropDownList *list = new DropDownList();
+
+	if (widget == TBN_PLAYERS && _networking) {
+		/* Add the client list button for the Players menu */
+		list->push_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST, -1, false));
+	}
+
+	for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) {
+		if (!IsValidPlayerID(p)) continue;
+		list->push_back(new DropDownListCompanyItem(p, false, HasBit(grey, p)));
+	}
+
+	ShowDropDownList(w, list, _local_player == PLAYER_SPECTATOR ? -1 : _local_player, widget, 240, true, true);
+	SndPlayFx(SND_15_BEEP);
+}
+
 
 static ToolbarMode _toolbar_mode;
 
@@ -139,45 +230,6 @@ static void SelectSignTool()
 		SetObjectToPlace(SPR_CURSOR_SIGN, PAL_NONE, VHM_RECT, WC_MAIN_TOOLBAR, 0);
 		_place_proc = PlaceProc_Sign;
 	}
-}
-
-/** Returns the position where the toolbar wants the menu to appear.
- * Make sure the dropdown is fully visible within the window.
- * x + w->left because x is supposed to be the offset of the toolbar-button
- * we clicked on and w->left the toolbar window itself. So meaning that
- * the default position is aligned with the left side of the clicked button */
-static Point GetToolbarDropdownPos(uint16 parent_button, int width, int height)
-{
-	const Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-	Point pos;
-	pos.x = w->widget[GB(parent_button, 0, 8)].left;
-	pos.x = w->left + Clamp(pos.x, 0, w->width - width);
-	pos.y = w->height;
-
-	return pos;
-}
-
-/**
- * Retrieve the menu item number from a position
- * @param w Window holding the menu items
- * @param x X coordinate of the position
- * @param y Y coordinate of the position
- * @return Index number of the menu item, or \c -1 if no valid selection under position
- */
-static int GetMenuItemIndex(const Window *w, int item_count, int disabled_items)
-{
-	int x = _cursor.pos.x;
-	int y = _cursor.pos.y;
-
-	if ((x -= w->left) >= 0 && x < w->width && (y -= w->top + 1) >= 0) {
-		y /= 10;
-
-		if (y < item_count &&
-				!HasBit(disabled_items, y)) {
-			return y;
-		}
-	}
-	return -1;
 }
 
 /* --- Pausing --- */
@@ -200,12 +252,12 @@ static void ToolbarFastForwardClick(Window *w)
 /* --- Options button menu --- */
 
 enum OptionMenuEntries {
-	OME_GAMEOPTIONS    = 0,
+	OME_GAMEOPTIONS,
 	OME_DIFFICULTIES,
 	OME_PATCHES,
 	OME_NEWGRFSETTINGS,
 	OME_TRANSPARENCIES,
-	OME_SHOW_TOWNNAMES = 6,
+	OME_SHOW_TOWNNAMES,
 	OME_SHOW_STATIONNAMES,
 	OME_SHOW_SIGNS,
 	OME_SHOW_WAYPOINTNAMES,
@@ -213,22 +265,28 @@ enum OptionMenuEntries {
 	OME_FULL_DETAILS,
 	OME_TRANSPARENTBUILDINGS,
 	OME_SHOW_STATIONSIGNS,
-	OME_MENUCOUNT,
 };
 
 static void ToolbarOptionsClick(Window *w)
 {
-	uint16 x = 0;
-	if (HasBit(_display_opt, DO_SHOW_TOWN_NAMES))    SetBit(x, OME_SHOW_TOWNNAMES);
-	if (HasBit(_display_opt, DO_SHOW_STATION_NAMES)) SetBit(x, OME_SHOW_STATIONNAMES);
-	if (HasBit(_display_opt, DO_SHOW_SIGNS))         SetBit(x, OME_SHOW_SIGNS);
-	if (HasBit(_display_opt, DO_WAYPOINTS))          SetBit(x, OME_SHOW_WAYPOINTNAMES);
-	if (HasBit(_display_opt, DO_FULL_ANIMATION))     SetBit(x, OME_FULL_ANIMATION);
-	if (HasBit(_display_opt, DO_FULL_DETAIL))        SetBit(x, OME_FULL_DETAILS);
-	if (IsTransparencySet(TO_HOUSES))                SetBit(x, OME_TRANSPARENTBUILDINGS);
-	if (IsTransparencySet(TO_SIGNS))                 SetBit(x, OME_SHOW_STATIONSIGNS);
+	DropDownList *list = new DropDownList();
+	list->push_back(new DropDownListStringItem(STR_02C4_GAME_OPTIONS,        OME_GAMEOPTIONS, false));
+	list->push_back(new DropDownListStringItem(STR_02C6_DIFFICULTY_SETTINGS, OME_DIFFICULTIES, false));
+	list->push_back(new DropDownListStringItem(STR_MENU_CONFIG_PATCHES,      OME_PATCHES, false));
+	list->push_back(new DropDownListStringItem(STR_NEWGRF_SETTINGS,          OME_NEWGRFSETTINGS, false));
+	list->push_back(new DropDownListStringItem(STR_TRANSPARENCY_OPTIONS,     OME_TRANSPARENCIES, false));
+	list->push_back(new DropDownListItem(-1, false));
+	list->push_back(new DropDownListCheckedItem(STR_02CA_TOWN_NAMES_DISPLAYED,    OME_SHOW_TOWNNAMES, false, HasBit(_display_opt, DO_SHOW_TOWN_NAMES)));
+	list->push_back(new DropDownListCheckedItem(STR_02CC_STATION_NAMES_DISPLAYED, OME_SHOW_STATIONNAMES, false, HasBit(_display_opt, DO_SHOW_STATION_NAMES)));
+	list->push_back(new DropDownListCheckedItem(STR_02CE_SIGNS_DISPLAYED,         OME_SHOW_SIGNS, false, HasBit(_display_opt, DO_SHOW_SIGNS)));
+	list->push_back(new DropDownListCheckedItem(STR_WAYPOINTS_DISPLAYED2,         OME_SHOW_WAYPOINTNAMES, false, HasBit(_display_opt, DO_WAYPOINTS)));
+	list->push_back(new DropDownListCheckedItem(STR_02D0_FULL_ANIMATION,          OME_FULL_ANIMATION, false, HasBit(_display_opt, DO_FULL_ANIMATION)));
+	list->push_back(new DropDownListCheckedItem(STR_02D2_FULL_DETAIL,             OME_FULL_DETAILS, false, HasBit(_display_opt, DO_FULL_DETAIL)));
+	list->push_back(new DropDownListCheckedItem(STR_02D4_TRANSPARENT_BUILDINGS,   OME_TRANSPARENTBUILDINGS, false, IsTransparencySet(TO_HOUSES)));
+	list->push_back(new DropDownListCheckedItem(STR_TRANSPARENT_SIGNS,            OME_SHOW_STATIONSIGNS, false, IsTransparencySet(TO_SIGNS)));
 
-	PopupMainToolbMenu(w, TBN_SETTINGS, STR_02C4_GAME_OPTIONS, OME_MENUCOUNT, 0, 0, x);
+	ShowDropDownList(w, list, 0, TBN_SETTINGS, 140, true, true);
+	SndPlayFx(SND_15_BEEP);
 }
 
 static void MenuClickSettings(int index)
@@ -319,12 +377,7 @@ static void ToolbarMapClick(Window *w)
 
 static void ToolbarScenMapTownDir(Window *w)
 {
-	/* Scenario editor button, Use different button to activate.
-	 * This scheme will allow to have an action (SEMA_MAP_CLICK, which is in fact
-	 * an entry in _menu_clicked_procs) while at the same time having a start button
-	 * who is not at the same index as its action
-	 * @see ToolbarMenuWindow::OnMouseLoop */
-	PopupMainToolbMenu(w, TBSE_SMALLMAP | SEMA_MAP_CLICK, STR_02DE_MAP_OF_WORLD, MME_MENUCOUNT_EDITOR);
+	PopupMainToolbMenu(w, TBSE_SMALLMAP, STR_02DE_MAP_OF_WORLD, MME_MENUCOUNT_EDITOR);
 }
 
 static void MenuClickMap(int index)
@@ -394,10 +447,9 @@ static void ToolbarPlayersClick(Window *w)
 
 static void MenuClickCompany(int index)
 {
-	if (_networking && index == 0) {
+	if (_networking && index == -1) {
 		ShowClientList();
 	} else {
-		if (_networking) index--;
 		ShowPlayerCompany((PlayerID)index);
 	}
 }
@@ -444,7 +496,7 @@ static void MenuClickLeague(int index)
 static void ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, TBN_INDUSTRIES, STR_INDUSTRY_DIR, 2, (_current_player == PLAYER_SPECTATOR) ? 2 : 0);
+	PopupMainToolbMenu(w, TBN_INDUSTRIES, STR_INDUSTRY_DIR, (_current_player == PLAYER_SPECTATOR) ? 1 : 2);
 }
 
 static void MenuClickIndustry(int index)
@@ -540,7 +592,13 @@ static void ToolbarZoomOutClick(Window *w)
 static void ToolbarBuildRailClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
-	PopupMainToolbMenu(w, TBN_RAILS, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes, _last_built_railtype);
+	DropDownList *list = new DropDownList();
+	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
+		const RailtypeInfo *rti = GetRailTypeInfo(rt);
+		list->push_back(new DropDownListStringItem(rti->strings.menu_text, rt, !HasBit(p->avail_railtypes, rt)));
+	}
+	ShowDropDownList(w, list, _last_built_railtype, TBN_RAILS, 140, true, true);
+	SndPlayFx(SND_15_BEEP);
 }
 
 static void MenuClickBuildRail(int index)
@@ -554,8 +612,16 @@ static void MenuClickBuildRail(int index)
 static void ToolbarBuildRoadClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
-	/* The standard road button is *always* available */
-	PopupMainToolbMenu(w, TBN_ROADS, STR_180A_ROAD_CONSTRUCTION, 2, ~(p->avail_roadtypes | ROADTYPES_ROAD), _last_built_roadtype);
+	DropDownList *list = new DropDownList();
+	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
+		/* Highways don't exist */
+		if (rt == ROADTYPE_HWAY) continue;
+
+		/* The standard road button is *always* available */
+		list->push_back(new DropDownListStringItem(STR_180A_ROAD_CONSTRUCTION + rt, rt, !(HasBit(p->avail_railtypes, rt) || rt == ROADTYPE_ROAD)));
+	}
+	ShowDropDownList(w, list, _last_built_roadtype, TBN_ROADS, 140, true, true);
+	SndPlayFx(SND_15_BEEP);
 }
 
 static void MenuClickBuildRoad(int index)
@@ -846,6 +912,38 @@ static void SplitToolbar(Window *w)
 	}
 }
 
+typedef void MenuClickedProc(int index);
+
+static MenuClickedProc * const _menu_clicked_procs[] = {
+	NULL,                 /* 0 */
+	NULL,                 /* 1 */
+	MenuClickSettings,    /* 2 */
+	MenuClickSaveLoad,    /* 3 */
+	MenuClickMap,         /* 4 */
+	MenuClickTown,        /* 5 */
+	MenuClickSubsidies,   /* 6 */
+	MenuClickStations,    /* 7 */
+	MenuClickFinances,    /* 8 */
+	MenuClickCompany,     /* 9 */
+	MenuClickGraphs,      /* 10 */
+	MenuClickLeague,      /* 11 */
+	MenuClickIndustry,    /* 12 */
+	MenuClickShowTrains,  /* 13 */
+	MenuClickShowRoad,    /* 14 */
+	MenuClickShowShips,   /* 15 */
+	MenuClickShowAir,     /* 16 */
+	MenuClickMap,         /* 17 */
+	NULL,                 /* 18 */
+	MenuClickBuildRail,   /* 19 */
+	MenuClickBuildRoad,   /* 20 */
+	MenuClickBuildWater,  /* 21 */
+	MenuClickBuildAir,    /* 22 */
+	MenuClickForest,      /* 23 */
+	MenuClickMusicWindow, /* 24 */
+	MenuClickNewspaper,   /* 25 */
+	MenuClickHelp,        /* 26 */
+};
+
 /* --- Toolbar handling for the 'normal' case */
 
 typedef void ToolbarButtonProc(Window *w);
@@ -916,6 +1014,12 @@ struct MainToolbarWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		if (_game_mode != GM_MENU && !this->IsWidgetDisabled(widget)) _toolbar_button_procs[widget](this);
+	}
+
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		_menu_clicked_procs[widget](index);
+		SndPlayFx(SND_15_BEEP);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -1123,6 +1227,15 @@ public:
 		_scen_toolbar_button_procs[widget](this);
 	}
 
+	virtual void OnDropdownSelect(int widget, int index)
+	{
+		/* The map button is in a different location on the scenario
+		 * editor toolbar, so we need to adjust for it. */
+		if (widget == TBSE_SMALLMAP) widget = TBN_SMALLMAP;
+		_menu_clicked_procs[widget](index);
+		SndPlayFx(SND_15_BEEP);
+	}
+
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		switch (keycode) {
@@ -1294,358 +1407,6 @@ static const WindowDesc _toolb_scen_desc = {
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_toolb_scen_widgets,
 };
-
-/* --- Rendering/handling the drop down menus --- */
-
-typedef void MenuClickedProc(int index);
-
-static MenuClickedProc * const _menu_clicked_procs[] = {
-	NULL,                 /* 0 */
-	NULL,                 /* 1 */
-	MenuClickSettings,    /* 2 */
-	MenuClickSaveLoad,    /* 3 */
-	MenuClickMap,         /* 4 */
-	MenuClickTown,        /* 5 */
-	MenuClickSubsidies,   /* 6 */
-	MenuClickStations,    /* 7 */
-	MenuClickFinances,    /* 8 */
-	MenuClickCompany,     /* 9 */
-	MenuClickGraphs,      /* 10 */
-	MenuClickLeague,      /* 11 */
-	MenuClickIndustry,    /* 12 */
-	MenuClickShowTrains,  /* 13 */
-	MenuClickShowRoad,    /* 14 */
-	MenuClickShowShips,   /* 15 */
-	MenuClickShowAir,     /* 16 */
-	MenuClickMap,         /* 17 */
-	NULL,                 /* 18 */
-	MenuClickBuildRail,   /* 19 */
-	MenuClickBuildRoad,   /* 20 */
-	MenuClickBuildWater,  /* 21 */
-	MenuClickBuildAir,    /* 22 */
-	MenuClickForest,      /* 23 */
-	MenuClickMusicWindow, /* 24 */
-	MenuClickNewspaper,   /* 25 */
-	MenuClickHelp,        /* 26 */
-};
-
-struct ToolbarMenuWindow : Window {
-	int item_count;
-	int sel_index;
-	int main_button;
-	int action_id;
-	int checked_items;
-	int disabled_items;
-	StringID base_string;
-
-	ToolbarMenuWindow(int x, int y, int width, int height, const Widget *widgets, int item_count,
-										int sel_index, int parent_button, StringID base_string, int checked_items,
-										int disabled_items) :
-			Window(x, y, width, height, WC_TOOLBAR_MENU, widgets),
-			item_count(item_count), sel_index(sel_index), main_button(GB(parent_button, 0, 8)),
-			action_id((GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button),
-			checked_items(checked_items), disabled_items(disabled_items), base_string(base_string)
-	{
-		this->widget[0].bottom = item_count * 10 + 1;
-		this->widget[0].right = this->width - 1;
-		this->flags4 &= ~WF_WHITE_BORDER_MASK;
-
-		this->FindWindowPlacementAndResize(width, height);
-	}
-
-	~ToolbarMenuWindow()
-	{
-		Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		w->RaiseWidget(this->main_button);
-		w->SetDirty();
-	}
-
-	virtual void OnPaint()
-	{
-		this->DrawWidgets();
-
-		for (int i = 0, x = 1, y = 1; i != this->item_count; i++, y += 10) {
-			TextColour color = HasBit(this->disabled_items, i) ? TC_GREY : (this->sel_index == i) ? TC_WHITE : TC_BLACK;
-			if (this->sel_index == i) GfxFillRect(x, y, x + this->width - 3, y + 9, 0);
-
-			if (HasBit(this->checked_items, i)) DrawString(x + 2, y, STR_CHECKMARK, color);
-			DrawString(x + 2, y, this->base_string + i, color);
-		}
-	}
-
-	virtual void OnMouseLoop()
-	{
-		int index = GetMenuItemIndex(this, this->item_count, this->disabled_items);
-
-		if (_left_button_down) {
-			if (index == -1 || index == this->sel_index) return;
-
-			this->sel_index = index;
-			this->SetDirty();
-		} else {
-			if (index < 0) {
-				Window *w = FindWindowById(WC_MAIN_TOOLBAR,0);
-				if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) == this->main_button) {
-					index = this->sel_index;
-				}
-			}
-
-			int action_id = this->action_id;
-			delete this;
-
-			if (index >= 0) {
-				assert((uint)index <= lengthof(_menu_clicked_procs));
-				_menu_clicked_procs[action_id](index);
-			}
-		}
-	}
-};
-
-/* Dynamic widget length determined by toolbar-string length.
- * See PopupMainToolbMenu en MenuWndProc */
-static const Widget _menu_widgets[] = {
-{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY, 0,  0, 0, 0, 0x0, STR_NULL},
-{ WIDGETS_END},
-};
-
-
-/**
- * Get the maximum length of a given string in a string-list. This is an
- * implicit string-list where the ID's are consecutive
- * @param base_string StringID of the first string in the list
- * @param count amount of StringID's in the list
- * @return the length of the longest string
- */
-static int GetStringListMaxWidth(StringID base_string, byte count)
-{
-	char buffer[512];
-	int width, max_width = 0;
-
-	for (byte i = 0; i != count; i++) {
-		GetString(buffer, base_string + i, lastof(buffer));
-		width = GetStringBoundingBox(buffer).width;
-		if (width > max_width) max_width = width;
-	}
-
-	return max_width;
-}
-
-/**
- * Show a general dropdown menu. The positioning of the dropdown menu
- * defaults to the left side of the parent_button, eg the button that caused
- * this window to appear. The only exceptions are when the right side of this
- * dropdown would fall outside the main toolbar window, in that case it is
- * aligned with the toolbar's right side.
- * Since the disable-mask is only 8 bits right now, these dropdowns are
- * restricted to 8 items max if any bits of disabled_mask are active.
- * @param parent Pointer to a window this dropdown menu belongs to. Has no effect
- * whatsoever, only graphically for positioning.
- * @param parent_button The widget identifier of the button that was clicked for
- * this dropdown. The created dropdown then knows what button to raise (button) on
- * action and whose function to execute (action).
- * It is possible to appoint another button for an action event by setting the
- * upper 8 bits of this parameter. If non is set, action is presumed to be the same
- * as button. So<br>
- * button bits 0 -  7 - widget clicked to get dropdown
- * action bits 8 - 15 - function of widget to execute on select (defaults to bits 0 - 7)
- * @param base_string The first StringID shown in the dropdown list. All others are
- * consecutive indeces from the language file. XXX - fix? Use ingame-string tables?
- * @param item_count Number of strings in the list, see previous parameter
- * @param disabled_mask Bitmask of disabled strings in the list
- * @param sel_index The selected toolbar item
- * @param check_items The items to have a checked mark in front of them.
- * @return Return a pointer to the newly created dropdown window
- */
-static void PopupMainToolbMenu(Window *parent, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask, int sel_index, int checked_items)
-{
-	assert(disabled_mask == 0 || item_count <= 8);
-	parent->LowerWidget(parent_button);
-	parent->InvalidateWidget(parent_button);
-
-	DeleteWindowById(WC_TOOLBAR_MENU, 0);
-
-	/* Extend the dropdown toolbar to the longest string in the list */
-	int width = max(GetStringListMaxWidth(base_string, item_count) + 6, 140);
-	int height = item_count * 10 + 2;
-
-	Point pos = GetToolbarDropdownPos(parent_button, width, height);
-
-	new ToolbarMenuWindow(pos.x, pos.y, width, height, _menu_widgets, item_count, sel_index, parent_button, base_string, checked_items, disabled_mask);
-
-	SndPlayFx(SND_15_BEEP);
-}
-
-/* --- Rendering/drawing the player menu --- */
-static int GetPlayerIndexFromMenu(int index)
-{
-	if (index >= 0) {
-		const Player *p;
-
-		FOR_ALL_PLAYERS(p) {
-			if (--index < 0) return p->index;
-		}
-	}
-	return -1;
-}
-
-struct ToolbarPlayerMenuWindow : Window {
-	int item_count;
-	int sel_index;
-	int main_button;
-	int action_id;
-	int gray_items;
-
-	ToolbarPlayerMenuWindow(int x, int y, int width, int height, const Widget *widgets, int main_button, int gray) :
-			Window(x, y, width, height, WC_TOOLBAR_MENU, widgets),
-			item_count(0), main_button(main_button), action_id(main_button), gray_items(gray)
-	{
-		this->flags4 &= ~WF_WHITE_BORDER_MASK;
-		this->sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
-		if (_networking && main_button == TBN_PLAYERS) {
-			if (_local_player != PLAYER_SPECTATOR) {
-				this->sel_index++;
-			} else {
-				/* Select client list by default for spectators */
-				this->sel_index = 0;
-			}
-		}
-
-		this->FindWindowPlacementAndResize(width, height);
-	}
-
-	~ToolbarPlayerMenuWindow()
-	{
-		Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		w->RaiseWidget(this->main_button);
-		w->SetDirty();
-	}
-
-	void UpdatePlayerMenuHeight()
-	{
-		byte num = ActivePlayerCount();
-
-		/* Increase one to fit in PlayerList in the menu when in network */
-		if (_networking && this->main_button == TBN_PLAYERS) num++;
-
-		if (this->item_count != num) {
-			this->item_count = num;
-			this->SetDirty();
-			num = num * 10 + 2;
-			this->height = num;
-			this->widget[0].bottom = this->widget[0].top + num - 1;
-			this->top = GetToolbarDropdownPos(0, this->width, this->height).y;
-			this->SetDirty();
-		}
-	}
-
-	virtual void OnPaint()
-	{
-		this->UpdatePlayerMenuHeight();
-		this->DrawWidgets();
-
-		int x = 1;
-		int y = 1;
-		int sel = this->sel_index;
-		int gray = this->gray_items;
-
-		/* 9 = playerlist */
-		if (_networking && this->main_button == TBN_PLAYERS) {
-			if (sel == 0) {
-				GfxFillRect(x, y, x + 238, y + 9, 0);
-			}
-			DrawString(x + 19, y, STR_NETWORK_CLIENT_LIST, TC_FROMSTRING);
-			y += 10;
-			sel--;
-		}
-
-		for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) {
-			if (IsValidPlayerID(p)) {
-				if (p == sel) {
-					GfxFillRect(x, y, x + 238, y + 9, 0);
-				}
-
-				DrawPlayerIcon(p, x + 2, y + 1);
-
-				SetDParam(0, p);
-				SetDParam(1, p);
-
-				TextColour color = (p == sel) ? TC_WHITE : TC_BLACK;
-				if (gray & 1) color = TC_GREY;
-				DrawString(x + 19, y, STR_7021, color);
-
-				y += 10;
-			}
-			gray >>= 1;
-		}
-	}
-
-	virtual void OnMouseLoop()
-	{
-		int index = GetMenuItemIndex(this, this->item_count, 0);
-
-		if (_left_button_down) {
-			this->UpdatePlayerMenuHeight();
-			/* We have a new entry at the top of the list of menu 9 when networking
-				* so keep that in count */
-			if (_networking && this->main_button == TBN_PLAYERS) {
-				if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
-			} else {
-				index = GetPlayerIndexFromMenu(index);
-			}
-
-			if (index == -1 || index == this->sel_index) return;
-
-			this->sel_index = index;
-			this->SetDirty();
-		} else {
-			int action_id = this->action_id;
-
-			/* We have a new entry at the top of the list of menu 9 when networking
-				* so keep that in count */
-			if (_networking && this->main_button == TBN_PLAYERS) {
-				if (index > 0) index = GetPlayerIndexFromMenu(index - 1) + 1;
-			} else {
-				index = GetPlayerIndexFromMenu(index);
-			}
-
-			if (index < 0) {
-				Window *w = FindWindowById(WC_MAIN_TOOLBAR,0);
-				if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) == this->main_button) {
-					index = this->sel_index;
-				}
-			}
-
-			delete this;
-
-			if (index >= 0) {
-				assert(index >= 0 && index < 30);
-				_menu_clicked_procs[action_id](index);
-			}
-		}
-	}
-};
-
-static const Widget _player_menu_widgets[] = {
-{    WWT_PANEL, RESIZE_NONE,  COLOUR_GREY, 0, 240, 0, 81, 0x0, STR_NULL},
-{ WIDGETS_END},
-};
-
-/** Shows the list of players appearing under the buttons that are linked to options for
- * multiple players.
- * @param parent Window who triggered that action.  It's the toolbar, in fact
- * @param main_button widget which has been used
- * @param gray bit-mapping of the items that will need to be grayed out once displayed */
-static void PopupMainPlayerToolbMenu(Window *parent, int main_button, int gray)
-{
-	parent->LowerWidget(main_button);
-	parent->InvalidateWidget(main_button);
-
-	DeleteWindowById(WC_TOOLBAR_MENU, 0);
-	Point pos = GetToolbarDropdownPos(main_button, 241, 82);
-	new ToolbarPlayerMenuWindow(pos.x, pos.y, 241, 82, _player_menu_widgets, main_button, gray);
-
-	SndPlayFx(SND_15_BEEP);
-}
 
 /* --- Allocating the toolbar --- */
 
