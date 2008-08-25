@@ -1011,8 +1011,10 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				DrawBridgeTramBits(ti->x, ti->y, z, offset, HasBit(rts, ROADTYPE_ROAD), true);
 			}
 			EndSpriteCombine();
-		} else if (HasCatenaryDrawn(GetRailType(ti->tile))) {
-			DrawCatenary(ti);
+		} else if (transport_type == TRANSPORT_RAIL) {
+			if (HasCatenaryDrawn(GetRailType(ti->tile))) {
+				DrawCatenary(ti);
+			}
 		}
 
 		DrawBridgeMiddle(ti);
@@ -1139,8 +1141,10 @@ void DrawBridgeMiddle(const TileInfo* ti)
 			EndSpriteCombine();
 			StartSpriteCombine();
 		}
-	} else if (HasCatenaryDrawn(GetRailType(rampsouth))) {
-		DrawCatenaryOnBridge(ti);
+	} else if (transport_type == TRANSPORT_RAIL) {
+		if (HasCatenaryDrawn(GetRailType(rampsouth))) {
+			DrawCatenaryOnBridge(ti);
+		}
 	}
 
 	/* draw roof, the component of the bridge which is logically between the vehicle and the camera */
