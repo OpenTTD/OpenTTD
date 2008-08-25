@@ -26,14 +26,6 @@ struct IniItem {
 	 */
 	IniItem(struct IniGroup *parent, const char *name, size_t len = 0);
 
-	/**
-	 * Construct a new in-memory item of an Ini file.
-	 * @param parent the group we belong to
-	 * @param name   the name of the item
-	 * @param value  the value to immediatelly assign
-	 */
-	IniItem(IniGroup *parent, const char *name, const char *value);
-
 	/** Free everything we loaded. */
 	~IniItem();
 

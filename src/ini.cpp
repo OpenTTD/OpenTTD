@@ -19,14 +19,6 @@ IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), v
 	parent->last_item = &this->next;
 }
 
-IniItem::IniItem(IniGroup *parent, const char *name, const char *value) : next(NULL), comment(NULL)
-{
-	this->name  = strdup(name);
-	this->value = strdup(value);
-	*parent->last_item = this;
-	parent->last_item = &this->next;
-}
-
 IniItem::~IniItem()
 {
 	free(this->name);
@@ -34,6 +26,12 @@ IniItem::~IniItem()
 	free(this->comment);
 
 	delete this->next;
+}
+
+void IniItem::SetValue(const char *value)
+{
+	free(this->value);
+	this->value = strdup(value);
 }
 
 IniGroup::IniGroup(IniFile *parent, const char *name, size_t len) : next(NULL), type(IGT_VARIABLES), item(NULL), comment(NULL)

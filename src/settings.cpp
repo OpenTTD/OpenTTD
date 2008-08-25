@@ -640,7 +640,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 
 		if (entry == NULL || *entry == '\0') continue;
 
-		new IniItem(group, entry, "");
+		group->GetItem(entry, true)->SetValue("");
 	}
 }
 
@@ -1687,7 +1687,7 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 
 		value = (v == ND_OFF ? "off" : (v == ND_SUMMARY ? "summarized" : "full"));
 
-		new IniItem(group, _news_type_data[i].name, value);
+		group->GetItem(_news_type_data[i].name, true)->SetValue(value);
 	}
 }
 
@@ -1708,7 +1708,7 @@ static void SaveVersionInConfig(IniFile *ini)
 	};
 
 	for (uint i = 0; i < lengthof(versions); i++) {
-		new IniItem(group, versions[i][0], versions[i][1]);
+		group->GetItem(versions[i][0], true)->SetValue(versions[i][1]);
 	}
 }
 
@@ -1722,7 +1722,7 @@ static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *li
 		char params[512];
 		GRFBuildParamList(params, c, lastof(params));
 
-		new IniItem(group, c->filename, params);
+		group->GetItem(c->filename, true)->SetValue(params);
 	}
 }
 
