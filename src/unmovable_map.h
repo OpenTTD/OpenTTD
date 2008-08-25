@@ -83,7 +83,7 @@ static inline bool IsOwnedLandTile(TileIndex t)
 static inline bool IsCompanyHQ(TileIndex t)
 {
 	assert(IsTileType(t, MP_UNMOVABLE));
-	return IsInsideMM(GetUnmovableType(t), UNMOVABLE_HQ_NORTH, UNMOVABLE_HQ_END);
+	return HasBit(_m[t].m5, 7);
 }
 
 /**
