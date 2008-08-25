@@ -69,7 +69,7 @@ typedef unsigned long in_addr_t;
 #			include <ifaddrs.h>
 #			define HAVE_GETIFADDRS
 #		endif
-#		if defined(SUNOS) || defined(__MORPHOS__) || defined(__BEOS__)
+#		if !defined(INADDR_NONE)
 #			define INADDR_NONE 0xffffffff
 #		endif
 #		if defined(__BEOS__) && !defined(BEOS_NET_SERVER)
