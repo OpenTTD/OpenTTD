@@ -699,10 +699,10 @@ struct StationViewWindow : public Window {
 		WindowNumber wno =
 			(this->window_number << 16) | VLW_STATION_LIST | GetStation(this->window_number)->owner;
 
-		DeleteWindowById(WC_TRAINS_LIST, wno);
-		DeleteWindowById(WC_ROADVEH_LIST, wno);
-		DeleteWindowById(WC_SHIPS_LIST, wno);
-		DeleteWindowById(WC_AIRCRAFT_LIST, wno);
+		DeleteWindowById(WC_TRAINS_LIST, wno | (VEH_TRAIN << 11));
+		DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD << 11));
+		DeleteWindowById(WC_SHIPS_LIST, wno | (VEH_SHIP << 11));
+		DeleteWindowById(WC_AIRCRAFT_LIST, wno | (VEH_AIRCRAFT << 11));
 	}
 
 	virtual void OnPaint()
