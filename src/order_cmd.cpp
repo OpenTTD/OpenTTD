@@ -1474,7 +1474,11 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		}
 
 		/* Only invalidate once, and if needed */
-		if (invalidate) InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
+		if (invalidate) {
+			for (const Vehicle *w = v->FirstShared(); w != NULL; w = w->NextShared()) {
+				InvalidateVehicleOrder(w);
+			}
+		}
 	}
 }
 
