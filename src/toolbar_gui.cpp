@@ -618,7 +618,7 @@ static void ToolbarBuildRoadClick(Window *w)
 		if (rt == ROADTYPE_HWAY) continue;
 
 		/* The standard road button is *always* available */
-		list->push_back(new DropDownListStringItem(STR_180A_ROAD_CONSTRUCTION + rt, rt, !(HasBit(p->avail_railtypes, rt) || rt == ROADTYPE_ROAD)));
+		list->push_back(new DropDownListStringItem(STR_180A_ROAD_CONSTRUCTION + rt, rt, !(HasBit(p->avail_roadtypes, rt) || rt == ROADTYPE_ROAD)));
 	}
 	ShowDropDownList(w, list, _last_built_roadtype, TBN_ROADS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
