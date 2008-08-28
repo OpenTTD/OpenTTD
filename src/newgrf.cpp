@@ -6002,13 +6002,6 @@ static void AfterLoadGRFs()
 	}
 	_grf_line_to_action6_sprite_override.clear();
 
-	/* Update the bitmasks for the vehicle lists */
-	Player *p;
-	FOR_ALL_PLAYERS(p) {
-		p->avail_railtypes = GetPlayerRailtypes(p->index);
-		p->avail_roadtypes = GetPlayerRoadtypes(p->index);
-	}
-
 	/* Pre-calculate all refit masks after loading GRF files. */
 	CalculateRefitMasks();
 
