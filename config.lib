@@ -968,7 +968,7 @@ make_cflags_and_ldflags() {
 	else
 		OBJS_SUBDIR="debug"
 
-		# Each debug level reduces the optimalization by a bit
+		# Each debug level reduces the optimization by a bit
 		if [ $enable_debug -ge 1 ]; then
 			CFLAGS="$CFLAGS -g -D_DEBUG -D_FORTIFY_SOURCE=2"
 			if [ "$os" = "PSP" ]; then
@@ -2510,7 +2510,7 @@ showhelp() {
 	echo "                                 all HOSTs)"
 	echo "  --enable-translator            enable extra output for translators"
 	echo "  --enable-universal             enable universal builds (OSX ONLY)"
-	echo "  --enable-osx-g5                enables optimalizations for G5 (OSX ONLY)"
+	echo "  --enable-osx-g5                enables optimizations for G5 (OSX ONLY)"
 	echo "  --disable-cocoa-quartz         disable the quartz window mode driver for Cocoa (OSX ONLY)"
 	echo "  --disable-cocoa-quickdraw      disable the quickdraw window mode driver for Cocoa (OSX ONLY)"
 	echo "  --disable-unicode              disable unicode support to build win9x"
