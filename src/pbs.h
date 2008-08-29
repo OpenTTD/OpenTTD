@@ -21,7 +21,7 @@ void UnreserveRailTrack(TileIndex tile, Track t);
 struct PBSTileInfo {
 	TileIndex tile;      ///< Tile the path ends, INVALID_TILE if no valid path was found.
 	Trackdir  trackdir;  ///< The reserved trackdir on the tile.
-	bool      okay;      ///< True if tile is a safe wairing position, false otherwise.
+	bool      okay;      ///< True if tile is a safe waiting position, false otherwise.
 
 	PBSTileInfo() : tile(INVALID_TILE), trackdir(INVALID_TRACKDIR), okay(false) {}
 	PBSTileInfo(TileIndex _t, Trackdir _td, bool _okay) : tile(_t), trackdir(_td), okay(_okay) {}
