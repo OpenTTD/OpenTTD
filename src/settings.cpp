@@ -1715,6 +1715,7 @@ static void SaveVersionInConfig(IniFile *ini)
 /* Save a GRF configuration to the given group name */
 static void GRFSaveConfig(IniFile *ini, const char *grpname, const GRFConfig *list)
 {
+	ini->RemoveGroup(grpname);
 	IniGroup *group = ini->GetGroup(grpname);
 	const GRFConfig *c;
 
