@@ -5918,7 +5918,14 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 				FioSkipBytes(num);
 			}
 		} else {
-			if (_skip_sprites == 0) grfmsg(7, "LoadNewGRFFile: Skipping unexpected sprite");
+			if (_skip_sprites == 0) {
+				grfmsg(0, "LoadNewGRFFile: Unexpected sprite, disabling");
+				config->status = GCS_DISABLED;
+				config->error  = CallocT<GRFError>(1);
+				config->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+				config->error->message  = STR_NEWGRF_ERROR_UNEXPECTED_SPRITE;
+				break;
+			}
 
 			FioSkipBytes(7);
 			num -= 8;
