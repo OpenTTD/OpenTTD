@@ -5935,23 +5935,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 			}
 
 			FioSkipBytes(7);
-			num -= 8;
-
-			if (type & 2) {
-				FioSkipBytes(num);
-			} else {
-				while (num > 0) {
-					int8 i = FioReadByte();
-					if (i >= 0) {
-						num -= i;
-						FioSkipBytes(i);
-					} else {
-						i = -(i >> 3);
-						num -= i;
-						FioReadByte();
-					}
-				}
-			}
+			SkipSpriteData(type, num - 8);
 		}
 
 		if (_skip_sprites > 0) _skip_sprites--;

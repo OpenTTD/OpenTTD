@@ -72,6 +72,35 @@ static int _compact_cache_counter;
 
 static void CompactSpriteCache();
 
+/**
+ * Skip the given amount of sprite graphics data.
+ * @param type the type of sprite (compressed etc)
+ * @param num the amount of sprites to skip
+ */
+void SkipSpriteData(byte type, uint16 num)
+{
+	if (type & 2) {
+		FioSkipBytes(num);
+	} else {
+		while (num > 0) {
+			int8 i = FioReadByte();
+			if (i >= 0) {
+				i = (i == 0) ? 0x80 : i;
+				num -= i;
+				FioSkipBytes(i);
+			} else {
+				i = -(i >> 3);
+				num -= i;
+				FioReadByte();
+			}
+		}
+	}
+}
+
+/**
+ * Read the sprite header data and then skip the real payload.
+ * @return true if the sprite is a pseudo sprite.
+ */
 static bool ReadSpriteHeaderSkipData()
 {
 	uint16 num = FioReadWord();
@@ -88,24 +117,7 @@ static bool ReadSpriteHeaderSkipData()
 	}
 
 	FioSkipBytes(7);
-	num -= 8;
-	if (num == 0) return true;
-
-	if (type & 2) {
-		FioSkipBytes(num);
-	} else {
-		while (num > 0) {
-			int8 i = FioReadByte();
-			if (i >= 0) {
-				num -= i;
-				FioSkipBytes(i);
-			} else {
-				i = -(i >> 3);
-				num -= i;
-				FioReadByte();
-			}
-		}
-	}
+	SkipSpriteData(type, num - 8);
 
 	return true;
 }
