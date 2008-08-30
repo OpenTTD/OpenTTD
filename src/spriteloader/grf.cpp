@@ -30,8 +30,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 	 *  In case it is uncompressed, the size is 'num' - 8 (header-size). */
 	num = (type & 0x02) ? sprite->width * sprite->height : num - 8;
 
-	/* XXX -- We should use a pre-located memory segment for this, malloc/free is pretty expensive */
-	byte *dest_orig = MallocT<byte>(num);
+	byte *dest_orig = AllocaM(byte, num);
 	byte *dest = dest_orig;
 
 	/* Read the file, which has some kind of compression */
@@ -100,6 +99,5 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 	for (int i = 0; i < sprite->width * sprite->height; i++)
 		if (sprite->data[i].m != 0) sprite->data[i].a = 0xFF;
 
-	free(dest_orig);
 	return true;
 }
