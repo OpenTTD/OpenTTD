@@ -85,9 +85,9 @@ void SkipSpriteData(byte type, uint16 num)
 		while (num > 0) {
 			int8 i = FioReadByte();
 			if (i >= 0) {
-				i = (i == 0) ? 0x80 : i;
-				num -= i;
-				FioSkipBytes(i);
+				int size = (i == 0) ? 0x80 : i;
+				num -= size;
+				FioSkipBytes(size);
 			} else {
 				i = -(i >> 3);
 				num -= i;
