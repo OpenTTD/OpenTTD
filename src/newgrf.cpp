@@ -539,6 +539,9 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 				if (ctype < NUM_CARGO && HasBit(_cargo_mask, ctype)) {
 					rvi->cargo_type = ctype;
+				} else if (ctype == 0xFF) {
+					/* 0xFF is specified as 'use first refittable' */
+					rvi->cargo_type = CT_INVALID;
 				} else {
 					rvi->cargo_type = CT_INVALID;
 					grfmsg(2, "RailVehicleChangeInfo: Invalid cargo type %d, using first refittable", ctype);
@@ -732,8 +735,9 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
 					rvi->cargo_type = cargo;
-				} else {
+				} else if (cargo == 0xFF) {
 					rvi->cargo_type = CT_INVALID;
+				} else {
 					grfmsg(2, "RoadVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
 				}
 			} break;
@@ -849,6 +853,8 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 				if (cargo < NUM_CARGO && HasBit(_cargo_mask, cargo)) {
 					svi->cargo_type = cargo;
+				} else if (cargo == 0xFF) {
+					svi->cargo_type = CT_INVALID;
 				} else {
 					svi->cargo_type = CT_INVALID;
 					grfmsg(2, "ShipVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
