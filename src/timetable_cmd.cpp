@@ -24,15 +24,14 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 		order->wait_time = time;
 	}
 
-	if (v->cur_order_index == order_number && v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
-		if (is_journey) {
-			v->current_order.travel_time = time;
-		} else {
-			v->current_order.wait_time = time;
-		}
-	}
-
 	for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
+		if (v->cur_order_index == order_number && v->current_order.Equals(*order)) {
+			if (is_journey) {
+				v->current_order.travel_time = time;
+			} else {
+				v->current_order.wait_time = time;
+			}
+		}
 		InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
 	}
 }
