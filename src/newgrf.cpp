@@ -738,6 +738,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				} else if (cargo == 0xFF) {
 					rvi->cargo_type = CT_INVALID;
 				} else {
+					rvi->cargo_type = CT_INVALID;
 					grfmsg(2, "RoadVehicleChangeInfo: Invalid cargo type %d, using first refittable", cargo);
 				}
 			} break;
