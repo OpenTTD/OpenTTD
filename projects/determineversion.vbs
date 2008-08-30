@@ -199,7 +199,7 @@ Function DetermineSVNVersion()
 			Set oExec = WshShell.Exec("git symbolic-ref HEAD")
 			If Err.Number = 0 Then
 				line = oExec.StdOut.ReadLine()
-				line = Mid(line, InStrRev(line, "/")+1)
+				line = Mid(line, InStrRev(line, "/") + 1)
 				If line <> "master" Then
 					version = version & "-" & line
 				End If
@@ -214,7 +214,8 @@ Function DetermineSVNVersion()
 				Loop
 			End If
 			If Err.Number = 0 And oExec.ExitCode = 0 Then
-				version = "h" & Mid(OExec.StdOut.ReadLine(), 19, 8)
+				line = OExec.StdOut.ReadLine()
+				version = "h" & Mid(line, InStrRev(line, ":") + 1, 8)
 				Set oExec = WshShell.Exec("hg status ../src")
 				If Err.Number = 0 Then
 					Do

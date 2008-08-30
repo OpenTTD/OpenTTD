@@ -123,7 +123,7 @@ else
 # Are we a SVN dir?
 ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
 # Find if the local source if modified
-# Find the revision like: rXXXX-branch
+# Find the revision like: rXXXXM-branch
 REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branches/ { split($$2, a, "/"); for(i in a) if (a[i]=="branches") { BRANCH="-"a[i+1]; break } } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
 REV_NR := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^Last Changed Rev:/ { print $$4 }')
 else
@@ -136,7 +136,7 @@ else
 # Are we a hg (Mercurial) dir?
 ifeq ($(shell if test -d $(SRC_DIR)/../.hg; then echo 1; fi), 1)
 # Find the revision like: hXXXXM-branch
-REV := h$(shell if head=`LC_ALL=C hg tip 2>/dev/null`; then echo "$$head" | head -n 1 | cut -c19-26; fi)$(REV_MODIFIED)$(shell hg branch | sed 's/^/-/;s/^-default$$//')
+REV := h$(shell if head=`LC_ALL=C hg tip 2>/dev/null`; then echo "$$head" | head -n 1 | cut -d: -f3 | cut -c1-8; fi)$(REV_MODIFIED)$(shell hg branch | sed 's/^/-/;s/^-default$$//')
 REV_NR := $(shell LC_ALL=C hg log -k "svn" -l 1 --template "{desc}\n" $(SRC_DIR) | grep -m 1 "^(svn r[0-9]*)" | sed "s/.*(svn r\([0-9]*\)).*/\1/" )
 endif
 endif
