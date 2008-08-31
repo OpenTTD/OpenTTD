@@ -60,7 +60,7 @@ extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum* psn);
 #include "../../core/geometry_type.hpp"
 #include "cocoa_v.h"
 #include "../../blitter/factory.hpp"
-#include "../../fileio.h"
+#include "../../fileio_func.h"
 #include "../../gfx_func.h"
 #include "../../functions.h"
 

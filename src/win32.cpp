@@ -8,7 +8,8 @@
 #include "saveload.h"
 #include "gfx_func.h"
 #include "textbuf_gui.h"
-#include "fileio.h"
+#include "fileio_func.h"
+#include "fios.h"
 #include "rev.h"
 #include <windows.h>
 #include <winnt.h>
@@ -18,8 +19,6 @@
 #include <shlobj.h> // SHGetFolderPath
 #include "variables.h"
 #include "win32.h"
-#include "fios.h" // opendir/readdir/closedir
-#include "fileio.h"
 #include "core/alloc_func.hpp"
 #include "functions.h"
 #include "core/random_func.hpp"

@@ -7,7 +7,7 @@
 #include "../../variables.h"
 #include "../../debug.h"
 #include "../../gfx_func.h"
-#include "../../fileio.h"
+#include "../../fileio_func.h"
 #include "../../blitter/factory.hpp"
 
 #include "splash.h"

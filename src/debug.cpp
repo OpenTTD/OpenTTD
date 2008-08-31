@@ -170,7 +170,7 @@ const char *GetDebugString()
 }
 
 #ifdef DEBUG_DUMP_COMMANDS
-#include "fileio.h"
+#include "fileio_func.h"
 
 void CDECL DebugDumpCommands(const char *s, ...)
 {

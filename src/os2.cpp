@@ -6,8 +6,8 @@
 #include "openttd.h"
 #include "variables.h"
 #include "gui.h"
-#include "fileio.h"
-#include "fios.h" // opendir/readdir/closedir
+#include "fileio_func.h"
+#include "fios.h"
 #include "functions.h"
 #include "core/random_func.hpp"
 #include "string_func.h"
