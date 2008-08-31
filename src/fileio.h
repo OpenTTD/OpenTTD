@@ -96,4 +96,20 @@ bool FileExists(const char *filename);
 
 extern char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 
+/** Helper for scanning for files with a given name */
+class FileScanner
+{
+public:
+	uint Scan(const char *extension, Subdirectory sd, bool tars = true);
+
+	/**
+	 * Add a file with the given filename.
+	 * @param filename        the full path to the file to read
+	 * @param basepath_length amount of characters to chop of before to get a
+	 *                        filename relative to the search path.
+	 * @return true if the file is added.
+	 */
+	virtual bool AddFile(const char *filename, size_t basepath_length) = 0;
+};
+
 #endif /* FILEIO_H */

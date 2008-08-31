@@ -956,3 +956,98 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	*lenp = len;
 	return mem;
 }
+
+
+/**
+ * Scan a single directory (and recursively it's children) and add
+ * any graphics sets that are found.
+ * @param extension       the extension of files to search for.
+ * @param path            full path we're currently at
+ * @param basepath_length from where in the path are we 'based' on the search path
+ */
+static uint ScanPath(FileScanner *fs, const char *extension, const char *path, size_t basepath_length)
+{
+	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
+
+	uint num = 0;
+	struct stat sb;
+	struct dirent *dirent;
+	DIR *dir;
+
+	if (path == NULL || (dir = ttd_opendir(path)) == NULL) return 0;
+
+	while ((dirent = readdir(dir)) != NULL) {
+		const char *d_name = FS2OTTD(dirent->d_name);
+		char filename[MAX_PATH];
+
+		if (!FiosIsValidFile(path, dirent, &sb)) continue;
+
+		snprintf(filename, lengthof(filename), "%s%s", path, d_name);
+
+		if (sb.st_mode & S_IFDIR) {
+			/* Directory */
+			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
+			AppendPathSeparator(filename, lengthof(filename));
+			num += ScanPath(fs, extension, filename, basepath_length);
+		} else if (sb.st_mode & S_IFREG) {
+			/* File */
+			char *ext = strrchr(filename, '.');
+
+			/* If no extension or extension isn't .grf, skip the file */
+			if (ext == NULL) continue;
+			if (strcasecmp(ext, extension) != 0) continue;
+
+			if (fs->AddFile(filename, basepath_length)) num++;
+		}
+	}
+
+	closedir(dir);
+
+	return num;
+}
+
+/**
+ * Scan the given tar and add graphics sets when it finds one.
+ * @param extension the extension of files to search for.
+ * @param tar       the tar to search in.
+ */
+static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterator tar)
+{
+	uint num = 0;
+	const char *filename = (*tar).first.c_str();
+	const char *ext = strrchr(filename, '.');
+
+	/* If no extension or extension isn't .grf, skip the file */
+	if (ext == NULL) return false;
+	if (strcasecmp(ext, extension) != 0) return false;
+
+	if (fs->AddFile(filename, 0)) num++;
+
+	return num;
+}
+
+/**
+ * Scan for files with the given extention in the given search path.
+ * @param extension the extension of files to search for.
+ * @param sp        the sub directory to search in.
+ * @param tars      whether to search in the tars too.
+ * @return the number of found files, i.e. the number of times that
+ *         AddFile returned true.
+ */
+uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars)
+{
+	Searchpath sp;
+	char path[MAX_PATH];
+	TarFileList::iterator tar;
+	uint num = 0;
+
+	FOR_ALL_SEARCHPATHS(sp) {
+		FioAppendDirectory(path, MAX_PATH, sp, sd);
+		num += ScanPath(this, extension, path, strlen(path));
+	}
+	FOR_ALL_TARS(tar) {
+		num += ScanTar(this, extension, tar);
+	}
+
+	return num;
+}
