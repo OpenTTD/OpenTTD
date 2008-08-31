@@ -1094,7 +1094,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		/* Check that the station we are modifying is defined. */
 		if (statspec == NULL && prop != 0x08) {
 			grfmsg(2, "StationChangeInfo: Attempt to modify undefined station %u, ignoring", stid + i);
-			continue;
+			return false;
 		}
 
 		switch (prop) {
@@ -1435,7 +1435,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 
 		if (prop != 0x08 && housespec == NULL) {
 			grfmsg(2, "TownHouseChangeInfo: Attempt to modify undefined house %u. Ignoring.", hid + i);
-			continue;
+			return false;
 		}
 
 		switch (prop) {
@@ -1451,7 +1451,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				} else if (subs_id >= NEW_HOUSE_OFFSET) {
 					/* The substitute id must be one of the original houses. */
 					grfmsg(2, "TownHouseChangeInfo: Attempt to use new house %u as substitute house for %u. Ignoring.", subs_id, hid + i);
-					return false;
+					continue;
 				}
 
 				/* Allocate space for this house. */
@@ -1909,7 +1909,7 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 
 		if (sound >= GetNumSounds()) {
 			grfmsg(1, "SoundEffectChangeInfo: Sound %d not defined (max %d)", sound, GetNumSounds());
-			continue;
+			return false;
 		}
 
 		switch (prop) {
@@ -1965,7 +1965,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 
 		if (prop != 0x08 && tsp == NULL) {
 			grfmsg(2, "IndustryTilesChangeInfo: Attempt to modify undefined industry tile %u. Ignoring.", indtid + i);
-			continue;
+			return false;
 		}
 
 		switch (prop) {
@@ -1976,7 +1976,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 				if (subs_id >= NEW_INDUSTRYTILEOFFSET) {
 					/* The substitute id must be one of the original industry tile. */
 					grfmsg(2, "IndustryTilesChangeInfo: Attempt to use new industry tile %u as substitute industry tile for %u. Ignoring.", subs_id, indtid + i);
-					return false;
+					continue;
 				}
 
 				/* Allocate space for this industry. */
@@ -2007,7 +2007,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 				/* The industry being overridden must be an original industry. */
 				if (ovrid >= NEW_INDUSTRYTILEOFFSET) {
 					grfmsg(2, "IndustryTilesChangeInfo: Attempt to override new industry tile %u with industry tile id %u. Ignoring.", ovrid, indtid + i);
-					return false;
+					continue;
 				}
 
 				_industile_mngr.Add(indtid + i, _cur_grffile->grfid, ovrid);
@@ -2077,7 +2077,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 
 		if (prop != 0x08 && indsp == NULL) {
 			grfmsg(2, "IndustriesChangeInfo: Attempt to modify undefined industry %u. Ignoring.", indid + i);
-			continue;
+			return false;
 		}
 
 		switch (prop) {
@@ -2093,7 +2093,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				} else if (subs_id >= NEW_INDUSTRYOFFSET) {
 					/* The substitute id must be one of the original industry. */
 					grfmsg(2, "_industry_specs: Attempt to use new industry %u as substitute industry for %u. Ignoring.", subs_id, indid + i);
-					return false;
+					continue;
 				}
 
 				/* Allocate space for this industry.
@@ -2120,7 +2120,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				/* The industry being overridden must be an original industry. */
 				if (ovrid >= NEW_INDUSTRYOFFSET) {
 					grfmsg(2, "IndustriesChangeInfo: Attempt to override new industry %u with industry id %u. Ignoring.", ovrid, indid + i);
-					return false;
+					continue;
 				}
 				indsp->grf_prop.override = ovrid;
 				_industry_mngr.Add(indid + i, _cur_grffile->grfid, ovrid);
