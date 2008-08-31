@@ -16,36 +16,67 @@
 #include "gfx_func.h"
 #include "core/alloc_func.hpp"
 #include "core/bitmath_func.hpp"
+#include "core/smallvec_type.hpp"
 #include <string.h>
 #include "settings_type.h"
 #include "string_func.h"
+#include "ini_type.h"
 
 #include "table/sprites.h"
 
+/** The currently used palette */
 PaletteType _use_palette = PAL_AUTODETECT;
+char _ini_graphics_set[32];
 
+/** Structure holding filename and MD5 information about a single file */
 struct MD5File {
-	const char * filename;     ///< filename
-	uint8 hash[16];            ///< md5 sum of the file
+	const char *filename;        ///< filename
+	uint8 hash[16];              ///< md5 sum of the file
+	const char *missing_warning; ///< warning when this file is missing
 };
 
-/**
- * Information about a single graphics set.
- */
+/** Types of graphics in the base graphics set */
+enum GraphicsFileType {
+	GFT_BASE,     ///< Base sprites for all climates
+	GFT_LOGOS,    ///< Logos, landscape icons and original terrain generator sprites
+	GFT_ARCTIC,   ///< Landscape replacement sprites for arctic
+	GFT_TROPICAL, ///< Landscape replacement sprites for tropical
+	GFT_TOYLAND,  ///< Landscape replacement sprites for toyland
+	GFT_EXTRA,    ///< Extra sprites that were not part of the original sprites
+	MAX_GFT       ///< We are looking for this amount of GRFs
+};
+
+/** Information about a single graphics set. */
 struct GraphicsSet {
 	const char *name;          ///< The name of the graphics set
 	const char *description;   ///< Description of the graphics set
+	uint32 shortname;          ///< Four letter short variant of the name
+	uint32 version;            ///< The version of this graphics set
 	PaletteType palette;       ///< Palette of this graphics set
-	MD5File basic[2];          ///< GRF files that always have to be loaded
-	MD5File landscape[3];      ///< Landscape specific grf files
-	const char *base_missing;  ///< Warning when one of the base GRF files is missing
-	MD5File extra;             ///< NewGRF File with extra graphics loaded using Action 05
-	const char *extra_missing; ///< Warning when the extra (NewGRF) file is missing
+
+	MD5File files[MAX_GFT];    ///< All GRF files part of this set
 	uint found_grfs;           ///< Number of the GRFs that could be found
+
+	GraphicsSet *next;         ///< The next graphics set in this list
+
+	/** Free everything we allocated */
+	~GraphicsSet()
+	{
+		free((void*)this->name);
+		free((void*)this->description);
+		for (uint i = 0; i < MAX_GFT; i++) {
+			free((void*)this->files[i].filename);
+			free((void*)this->files[i].missing_warning);
+		}
+
+		delete this->next;
+	}
 };
 
-static const uint GRAPHICS_SET_GRF_COUNT = 6;
-static int _use_graphics_set = -1;
+/** All graphics sets currently available */
+static GraphicsSet *_available_graphics_sets = NULL;
+/** The one and only graphics set that is currently being used. */
+static const GraphicsSet *_used_graphics_set = NULL;
 
 #include "table/files.h"
 #include "table/landscape_sprite.h"
@@ -140,14 +171,17 @@ static bool FileMD5(const MD5File file)
  */
 static void DetermineGraphicsPack()
 {
-	if (_use_graphics_set >= 0) return;
+	if (_used_graphics_set != NULL) return;
 
-	uint max_index = 0;
-	for (uint j = 1; j < lengthof(_graphics_sets); j++) {
-		if (_graphics_sets[max_index].found_grfs < _graphics_sets[j].found_grfs) max_index = j;
+	const GraphicsSet *best = _available_graphics_sets;
+	for (const GraphicsSet *c = _available_graphics_sets; c != NULL; c = c->next) {
+		if (best->found_grfs < c->found_grfs ||
+				(best->found_grfs == c->found_grfs && best->shortname == c->shortname && best->version < c->version)) {
+			best = c;
+		}
 	}
 
-	_use_graphics_set = max_index;
+	_used_graphics_set = best;
 }
 
 /**
@@ -159,7 +193,7 @@ static void DeterminePalette()
 {
 	if (_use_palette < MAX_PAL) return;
 
-	_use_palette = _graphics_sets[_use_graphics_set].palette;
+	_use_palette = _used_graphics_set->palette;
 }
 
 /**
@@ -173,20 +207,13 @@ void CheckExternalFiles()
 	DeterminePalette();
 
 	static const size_t ERROR_MESSAGE_LENGTH = 128;
-	const GraphicsSet *graphics = &_graphics_sets[_use_graphics_set];
-	char error_msg[ERROR_MESSAGE_LENGTH * (GRAPHICS_SET_GRF_COUNT + 1)];
+	char error_msg[ERROR_MESSAGE_LENGTH * (MAX_GFT + 1)];
 	error_msg[0] = '\0';
 	char *add_pos = error_msg;
 
-	for (uint i = 0; i < lengthof(graphics->basic); i++) {
-		if (!FileMD5(graphics->basic[i])) {
-			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! %s.\n", graphics->basic[i].filename, graphics->base_missing);
-		}
-	}
-
-	for (uint i = 0; i < lengthof(graphics->landscape); i++) {
-		if (!FileMD5(graphics->landscape[i])) {
-			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! %s\n", graphics->landscape[i].filename, graphics->base_missing);
+	for (uint i = 0; i < lengthof(_used_graphics_set->files); i++) {
+		if (!FileMD5(_used_graphics_set->files[i])) {
+			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! %s\n", _used_graphics_set->files[i].filename, _used_graphics_set->files[i].missing_warning);
 		}
 	}
 
@@ -199,20 +226,15 @@ void CheckExternalFiles()
 		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
 	}
 
-	if (!FileMD5(graphics->extra)) {
-		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! %s\n", graphics->extra.filename, graphics->extra_missing);
-	}
-
 	if (add_pos != error_msg) ShowInfoF(error_msg);
 }
 
 
 static void LoadSpriteTables()
 {
-	const GraphicsSet *graphics = &_graphics_sets[_use_graphics_set];
 	uint i = FIRST_GRF_SLOT;
 
-	LoadGrfFile(graphics->basic[0].filename, 0, i++);
+	LoadGrfFile(_used_graphics_set->files[GFT_BASE].filename, 0, i++);
 
 	/*
 	 * The second basic file always starts at the given location and does
@@ -220,7 +242,7 @@ static void LoadSpriteTables()
 	 * has a few sprites less. However, we do not care about those missing
 	 * sprites as they are not shown anyway (logos in intro game).
 	 */
-	LoadGrfFile(graphics->basic[1].filename, 4793, i++);
+	LoadGrfFile(_used_graphics_set->files[GFT_LOGOS].filename, 4793, i++);
 
 	/*
 	 * Load additional sprites for climates other than temperate.
@@ -229,7 +251,7 @@ static void LoadSpriteTables()
 	 */
 	if (_settings_game.game_creation.landscape != LT_TEMPERATE) {
 		LoadGrfIndexed(
-			graphics->landscape[_settings_game.game_creation.landscape - 1].filename,
+			_used_graphics_set->files[GFT_ARCTIC + _settings_game.game_creation.landscape - 1].filename,
 			_landscape_spriteindexes[_settings_game.game_creation.landscape - 1],
 			i++
 		);
@@ -245,7 +267,7 @@ static void LoadSpriteTables()
 	 */
 	GRFConfig *top = _grfconfig;
 	GRFConfig *master = CallocT<GRFConfig>(1);
-	master->filename = strdup(graphics->extra.filename);
+	master->filename = strdup(_used_graphics_set->files[GFT_EXTRA].filename);
 	FillGRFDetails(master, false);
 	ClrBit(master->flags, GCF_INIT_ONLY);
 	master->next = top;
@@ -269,20 +291,173 @@ void GfxLoadSprites()
 }
 
 /**
- * Find all graphics sets and populate their data.
+ * Try to read a single piece of metadata and return false if it doesn't exist.
+ * @param name the name of the item to fetch.
  */
+#define fetch_metadata(name) \
+	item = metadata->GetItem(name, false); \
+	if (item == NULL || strlen(item->value) == 0) { \
+		DEBUG(grf, 0, "Base graphics set detail loading: %s field missing", name); \
+		return false; \
+	}
+
+/** Names corresponding to the GraphicsFileType */
+static const char *_gft_names[MAX_GFT] = { "base", "logos", "arctic", "tropical", "toyland", "extra" };
+
+/**
+ * Read the graphics set information from a loaded ini.
+ * @param graphics the graphics set to write to
+ * @param ini      the ini to read from
+ * @param path     the path to this ini file (for filenames)
+ * @return true if loading was successful.
+ */
+static bool FillGraphicsSetDetails(GraphicsSet *graphics, IniFile *ini, const char *path)
+{
+	memset(graphics, 0, sizeof(*graphics));
+
+	IniGroup *metadata = ini->GetGroup("metadata");
+	IniItem *item;
+
+	fetch_metadata("name");
+	graphics->name = strdup(item->value);
+
+	fetch_metadata("description");
+	graphics->description = strdup(item->value);
+
+	fetch_metadata("shortname");
+	for (uint i = 0; item->value[i] != '\0' && i < 4; i++) {
+		graphics->shortname |= ((uint8)item->value[i]) << (32 - i * 8);
+	}
+
+	fetch_metadata("version");
+	graphics->version = atoi(item->value);
+
+	fetch_metadata("palette");
+	graphics->palette = (*item->value == 'D' || *item->value == 'd') ? PAL_DOS : PAL_WINDOWS;
+
+	/* For each of the graphics file types we want to find the file, MD5 checksums and warning messages. */
+	IniGroup *files  = ini->GetGroup("files");
+	IniGroup *md5s   = ini->GetGroup("md5s");
+	IniGroup *origin = ini->GetGroup("origin");
+	for (uint i = 0; i < MAX_GFT; i++) {
+		MD5File *file = &graphics->files[i];
+		/* Find the filename first. */
+		item = files->GetItem(_gft_names[i], false);
+		if (item == NULL) {
+			DEBUG(grf, 0, "No graphics file for: %s", _gft_names[i]);
+			return false;
+		}
+
+		const char *filename = item->value;
+		file->filename = MallocT<char>(strlen(filename) + strlen(path) + 1);
+		sprintf((char*)file->filename, "%s%s", path, filename);
+
+		/* Then find the MD5 checksum */
+		item = md5s->GetItem(filename, false);
+		if (item == NULL) {
+			DEBUG(grf, 0, "No MD5 checksum specified for: %s", filename);
+			return false;
+		}
+		char *c = item->value;
+		for (uint i = 0; i < sizeof(file->hash) * 2; i++, c++) {
+			uint j;
+			if ('0' <= *c && *c <= '9') {
+				j = *c - '0';
+			} else if ('a' <= *c && *c <= 'f') {
+				j = *c - 'a' + 10;
+			} else if ('A' <= *c && *c <= 'F') {
+				j = *c - 'A' + 10;
+			} else {
+				DEBUG(grf, 0, "Malformed MD5 checksum specified for: %s", filename);
+				return false;
+			}
+			if (i % 2 == 0) {
+				file->hash[i / 2] = j << 4;
+			} else {
+				file->hash[i / 2] |= j;
+			}
+		}
+
+		/* Then find the warning message when the file's missing */
+		item = origin->GetItem(filename, false);
+		if (item == NULL) item = origin->GetItem("default", false);
+		if (item == NULL) {
+			DEBUG(grf, 1, "No origin warning message specified for: %s", filename);
+			file->missing_warning = strdup("");
+		} else {
+			file->missing_warning = strdup(item->value);
+		}
+
+		if (FileMD5(*file)) graphics->found_grfs++;
+	}
+
+	return true;
+}
+
+/** Helper for scanning for files with GRF as extension */
+class OBGFileScanner : FileScanner {
+public:
+	/* virtual */ bool AddFile(const char *filename, size_t basepath_length);
+
+	/** Do the scan for OBGs. */
+	static uint DoScan()
+	{
+		OBGFileScanner fs;
+		return fs.Scan(".obg", DATA_DIR);
+	}
+};
+
+/**
+ * Try to add a graphics set with the given filename.
+ * @param filename        the full path to the file to read
+ * @param basepath_length amount of characters to chop of before to get a relative DATA_DIR filename
+ * @return true if the file is added.
+ */
+bool OBGFileScanner::AddFile(const char *filename, size_t basepath_length)
+{
+	bool ret = false;
+	DEBUG(grf, 1, "Found %s as base graphics set", filename);
+
+	GraphicsSet *graphics = new GraphicsSet();;
+	IniFile *ini = new IniFile();
+	ini->LoadFromDisk(filename);
+
+	char *path = strdup(filename + basepath_length);
+	char *psep = strrchr(path, PATHSEPCHAR);
+	if (psep != NULL) {
+		psep[1] = '\0';
+	} else {
+		*path = '\0';
+	}
+
+	if (FillGraphicsSetDetails(graphics, ini, path)) {
+		bool duplicate = false;
+		for (const GraphicsSet *c = _available_graphics_sets; !duplicate && c != NULL; c = c->next) {
+			duplicate = (strcmp(c->name, graphics->name) == 0) || (c->shortname == graphics->shortname && c->version == graphics->version);
+		}
+		if (duplicate) {
+			delete graphics;
+		} else {
+			graphics->next = _available_graphics_sets;
+			_available_graphics_sets = graphics;
+			ret = true;
+		}
+	} else {
+		delete graphics;
+	}
+	free(path);
+
+	delete ini;
+	return ret;
+}
+
+
+
+/** Scan for all Grahpics sets */
 void FindGraphicsSets()
 {
-	for (uint j = 0; j < lengthof(_graphics_sets); j++) {
-		_graphics_sets[j].found_grfs = 0;
-		for (uint i = 0; i < lengthof(_graphics_sets[j].basic); i++) {
-			if (FioCheckFileExists(_graphics_sets[j].basic[i].filename)) _graphics_sets[j].found_grfs++;
-		}
-		for (uint i = 0; i < lengthof(_graphics_sets[j].landscape); i++) {
-			if (FioCheckFileExists(_graphics_sets[j].landscape[i].filename)) _graphics_sets[j].found_grfs++;
-		}
-		if (FioCheckFileExists(_graphics_sets[j].extra.filename)) _graphics_sets[j].found_grfs++;
-	}
+	DEBUG(grf, 1, "Scanning for Graphics sets");
+	OBGFileScanner::DoScan();
 }
 
 /**
@@ -298,9 +473,9 @@ bool SetGraphicsSet(const char *name)
 		return true;
 	}
 
-	for (uint i = 0; i < lengthof(_graphics_sets); i++) {
-		if (strcmp(name, _graphics_sets[i].name) == 0) {
-			_use_graphics_set = i;
+	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
+		if (strcmp(name, g->name) == 0) {
+			_used_graphics_set = g;
 			CheckExternalFiles();
 			return true;
 		}
@@ -317,11 +492,11 @@ bool SetGraphicsSet(const char *name)
 char *GetGraphicsSetsList(char *p, const char *last)
 {
 	p += snprintf(p, last - p, "List of graphics sets:\n");
-	for (uint i = 0; i < lengthof(_graphics_sets); i++) {
-		if (_graphics_sets[i].found_grfs <= 1) continue;
+	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
+		if (g->found_grfs <= 1) continue;
 
-		p += snprintf(p, last - p, "%18s: %s", _graphics_sets[i].name, _graphics_sets[i].description);
-		int difference = GRAPHICS_SET_GRF_COUNT - _graphics_sets[i].found_grfs;
+		p += snprintf(p, last - p, "%18s: %s", g->name, g->description);
+		int difference = MAX_GFT - g->found_grfs;
 		if (difference != 0) {
 			p += snprintf(p, last - p, " (missing %i file%s)\n", difference, difference == 1 ? "" : "s");
 		} else {

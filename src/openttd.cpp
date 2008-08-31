@@ -515,7 +515,9 @@ int ttd_main(int argc, char *argv[])
 	CheckConfig();
 	LoadFromHighScore();
 
+
 	/* override config? */
+	if (!StrEmpty(graphics_set)) ttd_strlcpy(_ini_graphics_set, graphics_set, sizeof(_ini_graphics_set));
 	if (!StrEmpty(musicdriver)) ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
 	if (!StrEmpty(sounddriver)) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
 	if (!StrEmpty(videodriver)) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
@@ -558,10 +560,10 @@ int ttd_main(int argc, char *argv[])
 	/* This must be done early, since functions use the InvalidateWindow* calls */
 	InitWindowSystem();
 
-	if (!SetGraphicsSet(graphics_set)) {
-		StrEmpty(graphics_set) ?
+	if (!SetGraphicsSet(_ini_graphics_set)) {
+		StrEmpty(_ini_graphics_set) ?
 			usererror("Failed to find a graphics set. Please acquire a graphics set for OpenTTD.") :
-			usererror("Failed to select requested graphics set '%s'", graphics_set);
+			usererror("Failed to select requested graphics set '%s'", _ini_graphics_set);
 	}
 
 	/* Initialize game palette */
