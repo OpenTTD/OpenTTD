@@ -48,7 +48,7 @@ static inline bool StrEmpty(const char *s) { return s == NULL || s[0] == '\0'; }
 static inline size_t ttd_strnlen(const char *str, size_t maxlen)
 {
 	const char *t;
-	for (t = str; *t != '\0' && (size_t)(t - str) < maxlen; t++) {}
+	for (t = str; (size_t)(t - str) < maxlen && *t != '\0'; t++) {}
 	return t - str;
 }
 
