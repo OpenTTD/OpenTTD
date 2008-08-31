@@ -439,6 +439,44 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
 
 typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
 
+static bool CommonVehicleChangeInfo(EngineInfo *ei, int prop, byte **buf)
+{
+	switch (prop) {
+		case 0x00: // Introduction date
+			ei->base_intro = grf_load_word(buf) + DAYS_TILL_ORIGINAL_BASE_YEAR;
+			break;
+
+		case 0x02: // Decay speed
+			ei->decay_speed = grf_load_byte(buf);
+			break;
+
+		case 0x03: // Vehicle life
+			ei->lifelength = grf_load_byte(buf);
+			break;
+
+		case 0x04: // Model life
+			ei->base_life = grf_load_byte(buf);
+			break;
+
+		case 0x06: // Climates available
+			ei->climates = grf_load_byte(buf);
+			/* Sometimes a GRF wants hidden vehicles. Setting climates to
+			 * zero may cause the ID to be reallocated. */
+			if (ei->climates == 0) ei->climates = 0x80;
+			break;
+
+		case 0x07: // Loading speed
+			/* Amount of cargo loaded during a vehicle's "loading tick" */
+			ei->load_amount = grf_load_byte(buf);
+			break;
+
+		default:
+			return false;
+	}
+
+	return true;
+}
+
 static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -669,7 +707,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			default:
-				ret = true;
+				ret = !CommonVehicleChangeInfo(ei, prop, &buf);
 				break;
 		}
 	}
@@ -698,7 +736,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			case 0x0A: { // Running cost base
-				uint32 base= grf_load_dword(&buf);
+				uint32 base = grf_load_dword(&buf);
 
 				/* These magic numbers are used in GRFs to specify the base cost:
 				 * http://wiki.ttdpatch.net/tiki-index.php?page=BaseCosts
@@ -806,7 +844,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			default:
-				ret = true;
+				ret = !CommonVehicleChangeInfo(ei, prop, &buf);
 				break;
 		}
 	}
@@ -919,7 +957,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			default:
-				ret = true;
+				ret = !CommonVehicleChangeInfo(ei, prop, &buf);
 				break;
 		}
 	}
@@ -1028,7 +1066,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				break;
 
 			default:
-				ret = true;
+				ret = !CommonVehicleChangeInfo(ei, prop, &buf);
 				break;
 		}
 	}
@@ -2329,67 +2367,10 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
-		bool ignoring = false;
 
-		switch (feature) {
-			case GSF_TRAIN:
-			case GSF_ROAD:
-			case GSF_SHIP:
-			case GSF_AIRCRAFT: {
-				bool handled = true;
-
-				for (uint i = 0; i < numinfo; i++) {
-					Engine *e = GetNewEngine(_cur_grffile, (VehicleType)feature, engine + i);
-					EngineInfo *ei = &e->info;
-
-					/* Common properties for vehicles */
-					switch (prop) {
-						case 0x00: // Introduction date
-							ei->base_intro = grf_load_word(&buf) + DAYS_TILL_ORIGINAL_BASE_YEAR;
-							break;
-
-						case 0x02: // Decay speed
-							ei->decay_speed = grf_load_byte(&buf);
-							break;
-
-						case 0x03: // Vehicle life
-							ei->lifelength = grf_load_byte(&buf);
-							break;
-
-						case 0x04: // Model life
-							ei->base_life = grf_load_byte(&buf);
-							break;
-
-						case 0x06: // Climates available
-							ei->climates = grf_load_byte(&buf);
-							// XXX sometimes a grf wants hidden vehicles :o
-							if (ei->climates == 0) ei->climates = 0x80;
-							break;
-
-						case 0x07: // Loading speed
-							/* Hyronymus explained me what does
-							 * this mean and insists on having a
-							 * credit ;-). --pasky */
-							ei->load_amount = grf_load_byte(&buf);
-							break;
-
-						default:
-							handled = false;
-							break;
-					}
-				}
-
-				if (handled) break;
-			} /* FALL THROUGH */
-
-			default:
-				if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
-					ignoring = true;
-				}
-				break;
+		if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
+			grfmsg(1, "FeatureChangeInfo: Ignoring property 0x%02X of feature 0x%02X (not implemented)", prop, feature);
 		}
-
-		if (ignoring) grfmsg(1, "FeatureChangeInfo: Ignoring property 0x%02X of feature 0x%02X (not implemented)", prop, feature);
 	}
 }
 
