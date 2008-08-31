@@ -22,7 +22,7 @@
 #include "../variables.h"
 #include "../genworld.h"
 #include "../core/alloc_func.hpp"
-#include "../fileio.h"
+#include "../fileio_func.h"
 #include "../string_func.h"
 #include "../player_base.h"
 #include "../player_func.h"

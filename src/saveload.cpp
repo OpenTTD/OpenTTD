@@ -31,6 +31,7 @@
 #include "vehicle_base.h"
 #include "autoreplace_base.h"
 #include "statusbar_gui.h"
+#include "fileio_func.h"
 #include <list>
 #include "gamelog.h"
 

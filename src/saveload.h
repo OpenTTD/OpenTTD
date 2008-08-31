@@ -5,7 +5,7 @@
 #ifndef SAVELOAD_H
 #define SAVELOAD_H
 
-#include "fileio.h"
+#include "fileio_type.h"
 
 #ifdef SIZE_MAX
 #undef SIZE_MAX

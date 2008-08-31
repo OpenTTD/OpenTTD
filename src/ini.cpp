@@ -8,7 +8,7 @@
 #include "debug.h"
 #include "ini_type.h"
 #include "string_func.h"
-#include "fileio.h"
+#include "fileio_func.h"
 
 IniItem::IniItem(IniGroup *parent, const char *name, size_t len) : next(NULL), value(NULL), comment(NULL)
 {

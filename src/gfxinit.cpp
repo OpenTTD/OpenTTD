@@ -7,7 +7,7 @@
 #include "debug.h"
 #include "gfxinit.h"
 #include "spritecache.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "fios.h"
 #include "newgrf.h"
 #include "md5.h"

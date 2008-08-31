@@ -14,7 +14,7 @@
 #include "../console_func.h"
 #include "../variables.h"
 #include "../genworld.h"
-#include "../fileio.h"
+#include "../fileio_type.h"
 #include "../fios.h"
 #include "../blitter/factory.hpp"
 #include "../core/alloc_func.hpp"

@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "variables.h"
 #include "debug.h"
 #include "fios.h"

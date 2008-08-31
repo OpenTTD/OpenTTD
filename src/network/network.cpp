@@ -28,7 +28,6 @@
 #include "../console_func.h"
 #include <stdarg.h> /* va_list */
 #include "../md5.h"
-#include "../fileio.h"
 #include "../texteff.hpp"
 #include "../core/random_func.hpp"
 #include "../window_func.h"

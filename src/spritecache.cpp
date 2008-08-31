@@ -7,7 +7,7 @@
 #include "variables.h"
 #include "debug.h"
 #include "spritecache.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "spriteloader/grf.hpp"
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"

@@ -175,7 +175,8 @@ engine_func.h
 engine_gui.h
 engine_type.h
 fiber.hpp
-fileio.h
+fileio_func.h
+fileio_type.h
 fios.h
 fontcache.h
 functions.h

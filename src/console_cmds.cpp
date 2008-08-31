@@ -15,7 +15,7 @@
 #include "command_func.h"
 #include "settings_func.h"
 #include "fios.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "screenshot.h"
 #include "genworld.h"
 #include "strings_func.h"

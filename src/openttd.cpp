@@ -33,7 +33,7 @@
 #include "town.h"
 #include "industry.h"
 #include "news_func.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "fios.h"
 #include "airport.h"
 #include "aircraft.h"

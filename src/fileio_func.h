@@ -1,11 +1,11 @@
 /* $Id$ */
 
-/** @file fileio.h Declarations for Standard In/Out file operations */
+/** @file fileio_func.h Functions for Standard In/Out file operations */
 
-#ifndef FILEIO_H
-#define FILEIO_H
+#ifndef FILEIO_FUNC_H
+#define FILEIO_FUNC_H
 
-#include "core/enum_type.hpp"
+#include "fileio_type.h"
 
 void FioSeekTo(size_t pos, int mode);
 void FioSeekToFile(uint8 slot, size_t pos);
@@ -19,38 +19,6 @@ void FioOpenFile(int slot, const char *filename);
 void FioReadBlock(void *ptr, size_t size);
 void FioSkipBytes(int n);
 void FioCreateDirectory(const char *filename);
-
-/**
- * The different kinds of subdirectories OpenTTD uses
- */
-enum Subdirectory {
-	BASE_DIR,      ///< Base directory for all subdirectories
-	SAVE_DIR,      ///< Base directory for all savegames
-	AUTOSAVE_DIR,  ///< Subdirectory of save for autosaves
-	SCENARIO_DIR,  ///< Base directory for all scenarios
-	HEIGHTMAP_DIR, ///< Subdirectory of scenario for heightmaps
-	GM_DIR,        ///< Subdirectory for all music
-	DATA_DIR,      ///< Subdirectory for all data (GRFs, sample.cat, intro game)
-	LANG_DIR,      ///< Subdirectory for all translation files
-	NUM_SUBDIRS,   ///< Number of subdirectories
-	NO_DIRECTORY,  ///< A path without any base directory
-};
-
-/**
- * Types of searchpaths OpenTTD might use
- */
-enum Searchpath {
-	SP_FIRST_DIR,
-	SP_WORKING_DIR = SP_FIRST_DIR, ///< Search in the working directory
-	SP_PERSONAL_DIR,               ///< Search in the personal directory
-	SP_SHARED_DIR,                 ///< Search in the shared directory, like 'Shared Files' under Windows
-	SP_BINARY_DIR,                 ///< Search in the directory where the binary resides
-	SP_INSTALLATION_DIR,           ///< Search in the installation directory
-	SP_APPLICATION_BUNDLE_DIR,     ///< Search within the application bundle
-	NUM_SEARCHPATHS
-};
-
-DECLARE_POSTFIX_INCREMENT(Searchpath);
 
 /**
  * The searchpaths OpenTTD could search through.
@@ -112,4 +80,52 @@ public:
 	virtual bool AddFile(const char *filename, size_t basepath_length) = 0;
 };
 
-#endif /* FILEIO_H */
+
+/* Implementation of opendir/readdir/closedir for Windows */
+#if defined(WIN32)
+#include <windows.h>
+struct DIR;
+
+struct dirent { // XXX - only d_name implemented
+	TCHAR *d_name; // name of found file
+	/* little hack which will point to parent DIR struct which will
+	 * save us a call to GetFileAttributes if we want information
+	 * about the file (for example in function fio_bla) */
+	DIR *dir;
+};
+
+struct DIR {
+	HANDLE hFind;
+	/* the dirent returned by readdir.
+	 * note: having only one global instance is not possible because
+	 * multiple independent opendir/readdir sequences must be supported. */
+	dirent ent;
+	WIN32_FIND_DATA fd;
+	/* since opendir calls FindFirstFile, we need a means of telling the
+	 * first call to readdir that we already have a file.
+	 * that's the case iff this is true */
+	bool at_first_entry;
+};
+
+DIR *opendir(const TCHAR *path);
+struct dirent *readdir(DIR *d);
+int closedir(DIR *d);
+#else
+/* Use system-supplied opendir/readdir/closedir functions */
+# include <sys/types.h>
+# include <dirent.h>
+#endif /* defined(WIN32) */
+
+/**
+ * A wrapper around opendir() which will convert the string from
+ * OPENTTD encoding to that of the filesystem. For all purposes this
+ * function behaves the same as the original opendir function
+ * @param path string to open directory of
+ * @return DIR pointer
+ */
+static inline DIR *ttd_opendir(const char *path)
+{
+	return opendir(OTTD2FS(path));
+}
+
+#endif /* FILEIO_FUNC_H */

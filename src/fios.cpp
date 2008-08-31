@@ -9,7 +9,7 @@
 #include "variables.h"
 #include "heightmap.h"
 #include "fios.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "functions.h"
 #include "string_func.h"
 #include <sys/types.h>

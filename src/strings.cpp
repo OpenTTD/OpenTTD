@@ -15,7 +15,7 @@
 #include "newgrf_text.h"
 #include "music.h"
 #include "industry.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "cargotype.h"
 #include "group.h"
 #include "debug.h"

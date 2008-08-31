@@ -18,7 +18,7 @@
 #include "../variables.h"
 #include "../ai/ai.h"
 #include "../core/alloc_func.hpp"
-#include "../fileio.h"
+#include "../fileio_func.h"
 #include "../md5.h"
 #include "../strings_func.h"
 #include "../window_func.h"

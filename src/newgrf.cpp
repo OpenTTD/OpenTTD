@@ -8,7 +8,7 @@
 
 #include "openttd.h"
 #include "debug.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "engine_func.h"
 #include "engine_base.h"
 #include "spritecache.h"

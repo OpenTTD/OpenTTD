@@ -15,7 +15,7 @@
 #include "gamelog.h"
 #include "network/network_type.h"
 
-#include "fileio.h"
+#include "fileio_func.h"
 #include "fios.h"
 
 

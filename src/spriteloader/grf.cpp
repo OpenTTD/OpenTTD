@@ -4,7 +4,7 @@
 
 #include "../stdafx.h"
 #include "../gfx_func.h"
-#include "../fileio.h"
+#include "../fileio_func.h"
 #include "../debug.h"
 #include "../core/alloc_func.hpp"
 #include "grf.hpp"

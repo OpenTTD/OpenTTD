@@ -30,7 +30,7 @@
 #include "cargotype.h"
 #include "player_face.h"
 #include "strings_func.h"
-#include "fileio.h"
+#include "fileio_func.h"
 #include "fios.h"
 #include "tile_cmd.h"
 #include "zoom_func.h"
