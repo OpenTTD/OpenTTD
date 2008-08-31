@@ -226,7 +226,6 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (flags & DC_EXEC) {
 		if (wp == NULL) {
 			wp = new Waypoint(tile);
-			if (wp == NULL) return CMD_ERROR;
 
 			wp->town_index = INVALID_TOWN;
 			wp->name = NULL;
