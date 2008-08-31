@@ -68,6 +68,9 @@ extern char *_personal_dir; ///< custom directory for personal settings, saves, 
 class FileScanner
 {
 public:
+	/** Destruct the proper one... */
+	virtual ~FileScanner() {}
+
 	uint Scan(const char *extension, Subdirectory sd, bool tars = true);
 
 	/**
