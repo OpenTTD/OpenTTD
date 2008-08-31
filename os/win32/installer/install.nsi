@@ -110,6 +110,7 @@ Section "!OpenTTD" Section1
 	; Copy data files
 	SetOutPath "$INSTDIR\data\"
 	File ${PATH_ROOT}bin\data\*.grf
+	File ${PATH_ROOT}bin\data\*.obg
 	File ${PATH_ROOT}bin\data\opntitle.dat
 	; Copy scenario files (don't choke if they don't exist)
 	SetOutPath "$INSTDIR\scenario\"
@@ -135,6 +136,7 @@ Section "!OpenTTD" Section1
 	; Delete old files from the main dir. they are now placed in data/ and lang/
 	Delete "$INSTDIR\*.lng"
 	Delete "$INSTDIR\*.grf"
+	Delete "$INSTDIR\*.obg"
 	Delete "$INSTDIR\sample.cat"
 	Delete "$INSTDIR\ttd.exe"
 
@@ -270,6 +272,9 @@ Section "Uninstall"
 	Delete "$INSTDIR\data\trkfoundw.grf"
 	Delete "$INSTDIR\data\openttdd.grf"
 	Delete "$INSTDIR\data\openttdw.grf"
+	Delete "$INSTDIR\data\orig_win.obg"
+	Delete "$INSTDIR\data\orig_dos.obg"
+	Delete "$INSTDIR\data\orig_dos_de.obg"
 
 	Delete "$INSTDIR\data\sample.cat"
 	; Windows Data files
