@@ -437,9 +437,16 @@ static void MapSpriteMappingRecolour(PalSpriteID *grf_sprite)
 	}
 }
 
-typedef bool (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
+enum ChangeInfoResult {
+	CIR_SUCCESS,    ///< Variable was parsed and read
+	CIR_UNHANDLED,  ///< Variable was parsed but unread
+	CIR_UNKNOWN,    ///< Variable is unknown
+	CIR_INVALID_ID, ///< Attempt to modify an invalid ID
+};
 
-static bool CommonVehicleChangeInfo(EngineInfo *ei, int prop, byte **buf)
+typedef ChangeInfoResult (*VCI_Handler)(uint engine, int numinfo, int prop, byte **buf, int len);
+
+static ChangeInfoResult CommonVehicleChangeInfo(EngineInfo *ei, int prop, byte **buf)
 {
 	switch (prop) {
 		case 0x00: // Introduction date
@@ -471,16 +478,16 @@ static bool CommonVehicleChangeInfo(EngineInfo *ei, int prop, byte **buf)
 			break;
 
 		default:
-			return false;
+			return CIR_UNKNOWN;
 	}
 
-	return true;
+	return CIR_SUCCESS;
 }
 
-static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
 		Engine *e = GetNewEngine(_cur_grffile, VEH_TRAIN, engine + i);
@@ -655,7 +662,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			case 0x20: // Air drag
 				/** @todo Air drag for trains. */
 				grf_load_byte(&buf);
-				ret = true;
+				ret = CIR_UNHANDLED;
 				break;
 
 			case 0x21: // Shorter vehicle
@@ -707,7 +714,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			default:
-				ret = !CommonVehicleChangeInfo(ei, prop, &buf);
+				ret = CommonVehicleChangeInfo(ei, prop, &buf);
 				break;
 		}
 	}
@@ -716,10 +723,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	return ret;
 }
 
-static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
 		Engine *e = GetNewEngine(_cur_grffile, VEH_ROAD, engine + i);
@@ -796,7 +803,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				 * computations (called rvpower in TTDPatch) is just
 				 * missing in OTTD yet. --pasky */
 				grf_load_byte(&buf);
-				ret = true;
+				ret = CIR_UNHANDLED;
 				break;
 
 			case 0x16: // Cargos available for refitting
@@ -811,7 +818,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			case 0x19: // Air drag
 				/** @todo Tractive effort and air drag for road vehicles. */
 				grf_load_byte(&buf);
-				ret = true;
+				ret = CIR_UNHANDLED;
 				break;
 
 			case 0x1A: // Refit cost
@@ -844,7 +851,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			default:
-				ret = !CommonVehicleChangeInfo(ei, prop, &buf);
+				ret = CommonVehicleChangeInfo(ei, prop, &buf);
 				break;
 		}
 	}
@@ -853,10 +860,10 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	return ret;
 }
 
-static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
 		Engine *e = GetNewEngine(_cur_grffile, VEH_SHIP, engine + i);
@@ -928,7 +935,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			case 0x15: // Canal speed fraction
 				/** @todo Speed fractions for ships on oceans and canals */
 				grf_load_byte(&buf);
-				ret = true;
+				ret = CIR_UNHANDLED;
 				break;
 
 			case 0x16: // Retire vehicle early
@@ -957,7 +964,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 				break;
 
 			default:
-				ret = !CommonVehicleChangeInfo(ei, prop, &buf);
+				ret = CommonVehicleChangeInfo(ei, prop, &buf);
 				break;
 		}
 	}
@@ -966,10 +973,10 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 	return ret;
 }
 
-static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
 		Engine *e = GetNewEngine(_cur_grffile, VEH_AIRCRAFT, engine + i);
@@ -1066,7 +1073,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 				break;
 
 			default:
-				ret = !CommonVehicleChangeInfo(ei, prop, &buf);
+				ret = CommonVehicleChangeInfo(ei, prop, &buf);
 				break;
 		}
 	}
@@ -1075,14 +1082,14 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 	return ret;
 }
 
-static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (stid + numinfo > MAX_STATIONS) {
 		grfmsg(1, "StationChangeInfo: Station %u is invalid, max %u, ignoring", stid + numinfo, MAX_STATIONS);
-		return false;
+		return CIR_INVALID_ID;
 	}
 
 	/* Allocate station specs if necessary */
@@ -1094,7 +1101,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		/* Check that the station we are modifying is defined. */
 		if (statspec == NULL && prop != 0x08) {
 			grfmsg(2, "StationChangeInfo: Attempt to modify undefined station %u, ignoring", stid + i);
-			return false;
+			return CIR_INVALID_ID;
 		}
 
 		switch (prop) {
@@ -1275,7 +1282,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -1284,14 +1291,14 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 	return ret;
 }
 
-static bool CanalChangeInfo(uint id, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult CanalChangeInfo(uint id, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (id + numinfo > CF_END) {
 		grfmsg(1, "CanalChangeInfo: Canal feature %u is invalid, max %u, ignoreing", id + numinfo, CF_END);
-		return false;
+		return CIR_INVALID_ID;
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1307,7 +1314,7 @@ static bool CanalChangeInfo(uint id, int numinfo, int prop, byte **bufp, int len
 				break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -1316,14 +1323,14 @@ static bool CanalChangeInfo(uint id, int numinfo, int prop, byte **bufp, int len
 	return ret;
 }
 
-static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (brid + numinfo > MAX_BRIDGES) {
 		grfmsg(1, "BridgeChangeInfo: Bridge %u is invalid, max %u, ignoring", brid + numinfo, MAX_BRIDGES);
-		return false;
+		return CIR_INVALID_ID;
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1406,7 +1413,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 				break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -1415,14 +1422,14 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 	return ret;
 }
 
-static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (hid + numinfo > HOUSE_MAX) {
 		grfmsg(1, "TownHouseChangeInfo: Too many houses loaded (%u), max (%u). Ignoring.", hid + numinfo, HOUSE_MAX);
-		return false;
+		return CIR_INVALID_ID;
 	}
 
 	/* Allocate house specs if they haven't been allocated already. */
@@ -1435,7 +1442,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 
 		if (prop != 0x08 && housespec == NULL) {
 			grfmsg(2, "TownHouseChangeInfo: Attempt to modify undefined house %u. Ignoring.", hid + i);
-			return false;
+			return CIR_INVALID_ID;
 		}
 
 		switch (prop) {
@@ -1618,7 +1625,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 			case 0x20: { // @todo Cargo acceptance watch list
 				byte count = grf_load_byte(&buf);
 				for (byte j = 0; j < count; j++) grf_load_byte(&buf);
-				ret = true;
+				ret = CIR_UNHANDLED;
 			} break;
 
 			case 0x21: // long introduction year
@@ -1630,7 +1637,7 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 				break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -1639,10 +1646,10 @@ static bool TownHouseChangeInfo(uint hid, int numinfo, int prop, byte **bufp, in
 	return ret;
 }
 
-static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	for (int i = 0; i < numinfo; i++) {
 		switch (prop) {
@@ -1759,7 +1766,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -1768,14 +1775,14 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 	return ret;
 }
 
-static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (cid + numinfo > NUM_CARGO) {
 		grfmsg(2, "CargoChangeInfo: Cargo type %d out of range (max %d)", cid + numinfo, NUM_CARGO - 1);
-		return false;
+		return CIR_INVALID_ID;
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1884,7 +1891,7 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 				break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -1894,14 +1901,14 @@ static bool CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int le
 }
 
 
-static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (_cur_grffile->sound_offset == 0) {
 		grfmsg(1, "SoundEffectChangeInfo: No effects defined, skipping");
-		return false;
+		return CIR_INVALID_ID;
 	}
 
 	for (int i = 0; i < numinfo; i++) {
@@ -1909,7 +1916,7 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 
 		if (sound >= GetNumSounds()) {
 			grfmsg(1, "SoundEffectChangeInfo: Sound %d not defined (max %d)", sound, GetNumSounds());
-			return false;
+			return CIR_INVALID_ID;
 		}
 
 		switch (prop) {
@@ -1936,7 +1943,7 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 			} break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -1945,14 +1952,14 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 	return ret;
 }
 
-static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (indtid + numinfo > NUM_INDUSTRYTILES) {
 		grfmsg(1, "IndustryTilesChangeInfo: Too many industry tiles loaded (%u), max (%u). Ignoring.", indtid + numinfo, NUM_INDUSTRYTILES);
-		return false;
+		return CIR_INVALID_ID;
 	}
 
 	/* Allocate industry tile specs if they haven't been allocated already. */
@@ -1965,7 +1972,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 
 		if (prop != 0x08 && tsp == NULL) {
 			grfmsg(2, "IndustryTilesChangeInfo: Attempt to modify undefined industry tile %u. Ignoring.", indtid + i);
-			return false;
+			return CIR_INVALID_ID;
 		}
 
 		switch (prop) {
@@ -2046,7 +2053,7 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 				break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -2055,14 +2062,14 @@ static bool IndustrytilesChangeInfo(uint indtid, int numinfo, int prop, byte **b
 	return ret;
 }
 
-static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp, int len)
+static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
-	bool ret = false;
+	ChangeInfoResult ret = CIR_SUCCESS;
 
 	if (indid + numinfo > NUM_INDUSTRYTYPES) {
 		grfmsg(1, "IndustriesChangeInfo: Too many industries loaded (%u), max (%u). Ignoring.", indid + numinfo, NUM_INDUSTRYTYPES);
-		return false;
+		return CIR_INVALID_ID;
 	}
 
 	grfmsg(1, "IndustriesChangeInfo: newid %u", indid);
@@ -2077,7 +2084,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 
 		if (prop != 0x08 && indsp == NULL) {
 			grfmsg(2, "IndustriesChangeInfo: Attempt to modify undefined industry %u. Ignoring.", indid + i);
-			return false;
+			return CIR_INVALID_ID;
 		}
 
 		switch (prop) {
@@ -2307,7 +2314,7 @@ static bool IndustriesChangeInfo(uint indid, int numinfo, int prop, byte **bufp,
 				break;
 
 			default:
-				ret = true;
+				ret = CIR_UNKNOWN;
 				break;
 		}
 	}
@@ -2368,8 +2375,27 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
 
-		if (handler[feature](engine, numinfo, prop, &buf, bufend - buf)) {
-			grfmsg(1, "FeatureChangeInfo: Ignoring property 0x%02X of feature 0x%02X (not implemented)", prop, feature);
+		ChangeInfoResult cir = handler[feature](engine, numinfo, prop, &buf, bufend - buf);
+		switch (cir) {
+			case CIR_SUCCESS:
+				break;
+
+			case CIR_UNHANDLED:
+				grfmsg(1, "FeatureChangeInfo: Ignoring property 0x%02X of feature 0x%02X (not implemented)", prop, feature);
+				break;
+
+			case CIR_UNKNOWN:
+				grfmsg(0, "FeatureChangeInfo: Unknown property 0x%02X of feature 0x%02X, disabling", prop, feature);
+				/* Fall through */
+
+			case CIR_INVALID_ID:
+				/* No debug message for an invalid ID, as it has already been output */
+				_skip_sprites = -1;
+				_cur_grfconfig->status = GCS_DISABLED;
+				_cur_grfconfig->error  = CallocT<GRFError>(1);
+				_cur_grfconfig->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+				_cur_grfconfig->error->message  = (cir == CIR_INVALID_ID) ? STR_NEWGRF_ERROR_INVALID_ID : STR_NEWGRF_ERROR_UNKNOWN_PROPERTY;
+				return;
 		}
 	}
 }
