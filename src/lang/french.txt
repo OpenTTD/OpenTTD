@@ -1035,7 +1035,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Autoris
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permettre le retrait de plus d'éléments possédés par une ville: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permettre les trains plus longs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permettre les accélérations réalistes pour les trains: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et navires les virages à 90° : {ORANGE}{STRING} {LTBLUE} (Nécessite le NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et navires les virages à 90° : {ORANGE}{STRING} {LTBLUE} (pas avec NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Joindre les gares juxtaposées: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Utiliser l'algorithme amélioré de chargement : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Charger les véhicules graduellement: {ORANGE}{STRING}
@@ -1270,6 +1270,7 @@ STR_WAYPOINT                                                    :{WHITE}Point de
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Choisir le type de point de contrôle
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Train{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Modifier nom du point de contrôle
@@ -3216,6 +3217,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :le fichier GRF qu'il doit traduire
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Trop de NewGRFs sont chargés.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Charger {STRING} comme NewGRF statique avec {STRING} peut provoquer des erreurs de synchronistation.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inattendu.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Charger la liste sélectionnée
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Sauver la liste

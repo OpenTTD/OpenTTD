@@ -1058,7 +1058,9 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Letalo {
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Avtomatska zamenjava je spodletela na vlaku {COMMA}{}{STRING}
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoobnova ni uspela na cestnem vozilu {COMMA}{}{STRING}
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoobnova ni uspela na ladji {COMMA}{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Samoobnova ni uspela na letalu {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je predolg po zamenjavi
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ni samoobnovitvenih pravil.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(denarna meja)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Nastavitve popravkov
@@ -1309,6 +1311,7 @@ STR_WAYPOINT                                                    :{WHITE}Točka p
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Izberi vrsto točke poti
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Vlak{P "" a i ov}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Uredi ime točke poti
@@ -2980,6 +2983,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ni mogoče preimenovati železniškega vozila ...
 STR_CLEAR_TIME                                                  :{BLACK}Počisti čas
 STR_RESET_LATENESS                                              :{BLACK}Resetiraj  Late Counter
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Spremeni ime točke poti
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Se ustavlja
 STR_TRAIN_STOPPING_VEL                                          :{RED}Se ustavlja, {VELOCITY}
@@ -3291,6 +3296,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je bila narejena za prevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {STRING} kot statični NewGRF z/s {STRING} lahko povzroči desinhronizacijo.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepričakovana sličica.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Naloži izbrano prednastavitev
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Shrani prednastavitev

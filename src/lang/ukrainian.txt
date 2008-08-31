@@ -1394,6 +1394,7 @@ STR_WAYPOINT                                                    :{WHITE}Точк
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Виберіть тип точки маршруту
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} поїзд{P "" и ів}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
@@ -3377,6 +3378,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-файл, для якого це призначалось перекласти
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Завантажено забагато NewGRF-файлів.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Завантаження {STRING} як статичного NewGRF з {STRING} може викликати десинхронізацію.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неочікуваний спрайт.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Завантажити обрані настройки
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Записати настройки

@@ -1172,6 +1172,12 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Поз�
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Поставяне семафори всеки: {ORANGE}{STRING} плочк{P а и}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Поставяне на семафори преди: {ORANGE}{STRING} година
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Инструменти за сигналите: {ORANGE}{STRING.p}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Нормален
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Напреднат
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Еднопосочен напреднат
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Само нормален
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Само напреднат
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Всички
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Грацкиа план "няма повече пътища" е невалиден в сценарий редакторат
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Избери грацки пътформат: {ORANGE}{STRING}
@@ -1388,8 +1394,12 @@ STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Игра
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Онлайн играчи / макс. брой играчи{}Онлайн компании / макс. компании
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Големина на картата
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Дата
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Настояща дата
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Години
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}ИНФО ЗА ИГРАТА
 STR_NETWORK_CLIENTS                                             :{SILVER}Играчи:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -2868,6 +2878,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Преи
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Не може да се преименува влак...
 STR_CLEAR_TIME                                                  :{BLACK}Изчисти времето
 STR_RESET_LATENESS                                              :{BLACK}Преправи закъснялата бройка
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Спира
 STR_TRAIN_STOPPING_VEL                                          :{RED}Спира, {VELOCITY}
@@ -3119,6 +3130,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Твоя
 STR_BRIBE_FAILED_2                                              :{WHITE}разкрит от местен дознател
 STR_BUILD_DATE                                                  :{BLACK}Построен: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Подробна оценка на представянето
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Подробности

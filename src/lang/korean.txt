@@ -988,6 +988,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}경로�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}경로를 복사할 수 없습니다...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 공유된 경로의 끝 - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}열차 {COMMA}, 진행할 경로를 찾을 수 없습니다.
 STR_TRAIN_IS_LOST                                               :{WHITE}열차 {COMMA}의 다음 목적지를 찾을 수 없습니다!
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}열차 {COMMA}의 작년 수입이 {CURRENCY} 였습니다.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}유로화가 당신 나라의 일상 거래에서의 유일한 화폐 단위가 되었습니다!
@@ -1017,6 +1018,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}자동�
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}선박 {COMMA}의 자동 교체 실패{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}항공기 {COMMA}의 자동 교체 실패{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}열차 {COMMA}의 교체 시기가 되었습니다.
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}자동대체/갱신 규칙이 적용되지 않았습니다.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
 
 STR_CONFIG_PATCHES                                              :{BLACK}패치 구성
@@ -1137,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :자기부상
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 가능한 것
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :마지막으로 사용 가능한 것
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :가장 많이 사용한 것
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}예약된 트랙 보이기: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}적절한 사용 가능한 차량이 없을 경우 건설 도구 표시: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
@@ -1172,6 +1175,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}다른 
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호등을 매 {ORANGE}{STRING}타일마다 설치
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}전자식 신호기의 사용 : {ORANGE}{STRING}년 이후에
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호기 GUI를 사용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :고급 신호기
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :편도 고급 신호기
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}신호기 종류를 통한 순환: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :고급 신호기만
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :모두
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}도시설계 "도로건설 안함"은 시나리오 에디터에서 유효하지 않습니다
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}도시도로 설계: {ORANGE}{STRING}
@@ -1258,6 +1269,7 @@ STR_WAYPOINT                                                    :{WHITE}웨이�
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}웨이포인트 종류 설정
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - 열차 {COMMA}대
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}웨이포인트 이름 설정
@@ -2891,6 +2903,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}열차 �
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}차량 타입의 이름을 다시 지정할 수 없습니다...
 STR_CLEAR_TIME                                                  :{BLACK}시간 초기화
 STR_RESET_LATENESS                                              :{BLACK}지연 카운터 초기화
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}웨이포인트 이름 변경
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}정지중
 STR_TRAIN_STOPPING_VEL                                          :{RED}{VELOCITY}의 속도로 정지중

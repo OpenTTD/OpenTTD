@@ -590,6 +590,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribad
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribada del 1er. vehicle a una estació competidora
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informació de l'Empresa
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Obertura d'indústries
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Tancament d'indústries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Canvis de l'Economia
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Canvis de producció en indústries proveïdes pel jugador
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Canvis de producció en indústries proveïdes pel competidor(s)
@@ -861,6 +863,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financia una no
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financia una nova indústria
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...només es pot construir en àrees de selva tropical
@@ -985,6 +988,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No es po
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No es pot copiar la llista d'ordres...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi d'Ordres Compartides - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}El Tren {COMMA} no pot trobar el camí per poder continuar.
 STR_TRAIN_IS_LOST                                               :{WHITE}El tren {COMMA} s'ha perdut.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}El benefici del tren {COMMA} el darrer any ha estat de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Unió Monetària Europea!{}{}S'introdueix l'Euro com a moneda única per les transaccions diàries del teu país!
@@ -1014,6 +1018,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoreno
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovació ha fallat al vaixell {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}L'autorenovació ha fallat en l'avió {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren {COMMA} és massa llarg després del canvi
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No s'han aplicat normes d'autosubstitució/renovació.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(límit de diners)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configura Pedaços
@@ -1134,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :La primera disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :La darrera disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :La més utilitzada
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostra les vies reservades: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostra les eines de construcció quan no hi hagi disponibles vehicles adequats: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
@@ -1169,6 +1175,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permet 
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Arrossegant, sitúa senyals cada: {ORANGE}{STRING} quadre(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir semàfors automàticament abans de: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activa la interfície de les senyals: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipus de senyal a construir predeterminada: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Avançades
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Avançades d'un sentit
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Canvia a través dels tipus de senyal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Només normal
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Només avançada
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Totes
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}El format de poble "no més carreteres" no és vàlid a l'editor d'escenaris
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecciona el format poble-carretera: {ORANGE}{STRING}
@@ -1255,6 +1269,7 @@ STR_WAYPOINT                                                    :{WHITE}Punt de 
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selecciona tipus de punt de control
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Tren{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edita nom de punt de control
@@ -1339,6 +1354,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústr
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportat)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportat)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nom de les indústries - clica al nom per centrar la vista a la indústria
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...massa a prop d'altres indústries
 
@@ -1675,12 +1691,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Via de tren amb
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Via de tren amb pre-senyals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Via de tren amb senyals de sortida
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Via de tren amb senyals combinades
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Via de tren amb senyals avançades
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Via de tren amb senyals avançades d'un sentit
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Via de tren amb senyals normals i pre-senyals
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Via de tren amb senyals normals i senyals de sortida
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Via de tren amb senyals normals i senyals combinades
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Via de tren amb senyals normals i avançades
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Via de tren amb senyals normals i avançades d'un sentit
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Via de tren amb pre-senyals i senyals de sortida
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Via de tren amb pre-senyals i senyals combinades
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Via de tren amb senyals pre- i avançades
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Via de tren amb senyals pre- i avançades d'un sentit
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Via de tren amb senyals de sortida i senyals combinades
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Via de tren amb senyals sortida- i avançades
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Via de tren amb senyals sortida- i avançades d'un sentit
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Via de tren amb senyals combo- i avançades
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Via de tren amb senyals combo- i avançades d'un sentit
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Via de tren amb senyals avançades i avançades d'un sentit
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Primer has de treure la via de l'estació
 
 
@@ -2876,12 +2903,15 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Reanomen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No es pot reanomenar el tipus d'element del tren...
 STR_CLEAR_TIME                                                  :{BLACK}Esborra Temps
 STR_RESET_LATENESS                                              :{BLACK}Reset. control de retràs
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Canvia el nom del punt de trobada
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipus de rail incompatible
 STR_TRAIN_NO_POWER                                              :{RED}Sense energia
 STR_TRAIN_START_NO_CATENARY                                     :Aquesta via no té catenària, el tren no pot arrencar
+STR_TRAIN_STUCK                                                 :{ORANGE}Esperant una ruta lliure
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nou {STRING} disponible!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2945,6 +2975,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construe
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Velocitat: {VELOCITY}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacitat: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicle{P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Anomena automòbil
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}No es pot anomenar l'automòbil...
@@ -3125,6 +3158,10 @@ STR_BRIBE_FAILED                                                :{WHITE}El teu i
 STR_BRIBE_FAILED_2                                              :{WHITE}descobert per un investigador regional
 STR_BUILD_DATE                                                  :{BLACK}Construit: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Classe d'estació: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Tipus d'estació: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detall de ratis de rendiment
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detall
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3180,6 +3217,12 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :l'arxiu GRF dis
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Hi ha massa arxius NewGRF carregats.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregant {STRING} com a NewGRF estàtic amb {STRING} podria causar desincronitzacions.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carrega la predefinició seleccionada
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Desa predefinició
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Desa la llista actual com a predefinició
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Introdueix el nom de la predefinició
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Esborra predefinició
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Esborra la predefinició selecciona actualment
 STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista
 STR_NEWGRF_REMOVE                                               :{BLACK}Treu
@@ -3210,6 +3253,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Arxius G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten arxiu(s) GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Treure la pausa pot provocar fallades d'OpenTTD. No informis d'errors a causa de fallades subseqüents.{}Estàs segur de voler treure la pausa?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{0:STRING}' probablement causarà desincronitzacions i/o penjades.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Canvia la llargada del vehicle pel '{1:ENGINE}' quan no sigui dins del dipòsit.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a la '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRFs. El joc podria desincronitzar-se i/o penjar-se.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El joc s'ha desat en una versió sense suport de tramvies. Tots els tramvies s'han eliminat.
 
@@ -3563,10 +3609,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Senyal e
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Senyal d'endrada (semàfor){}En verd mentre hi hagi una o més senyals de sortida en verd en la secció següent de vies. En cas contrari està en vermell.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Senyal de Sortida (semàfor){}Es comporta com una senyal normal però és necessari actuar sobre el color correcte en les pre-senyals d'entrada i combinada.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Senyal Combinada (semàfor){}La senyal combinada simplement actua com a senyal d'entrada i sortida. Això permet construir grans extensions de pre-senyals.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Senyal avançada (semàfor){}Una senyal avançada permet entrar dins d'un bloc de senyal a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals avançades poden ser passades des de darrera.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Senyal avançada d'un sentit (semàfor){}Una senyal avançada permet entrar dins d'un bloc de senyal a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals avançades d'un sentit poden ser passades des de darrera.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Senyal estàndard (elèctrica){}Les senyals són necessàries per impedir que els trens s'accidentin en xarxes de ferrocarrils amb més d'un tren.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Senyal d'endrada (elèctrica){}En verd mentre hi hagi una o més senyals de sortida en verd en la secció següent de vies. En cas contrari està en vermell.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Senyal de Sortida (elèctrica){}Es comporta com una senyal normal però és necessari actuar sobre el color correcte en les pre-senyals d'entrada i combinada.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Senyal Combinada (elèctrica){}La senyal combinada simplement actua com a senyal d'entrada i sortida. Això permet construir grans extensions de pre-senyals.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Senyal Avançada (elèctrica){}Una senyal avançada permet entrar dins d'un bloc de senyal a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals avançades poden ser passades des de darrera.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Senyal avançada d'un sentit (elèctrica){}Una senyal avançada permet entrar dins d'un bloc de senyal a més d'un tren a la vegada, si el tren pot reservar una ruta cap a un punt de parada segur. Les senyals avançades d'un sentit poden ser passades des de darrera.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversió de senyals{}Quan esta seleccionat, clicant una senyal existent la converteix en el tipus de senyal seleccionada i variants, CTRL-clic commuta la variant existent.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densitat de senyals en arrossegar
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Disminueix la densitat de senyals en arrossegar

@@ -1020,6 +1020,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Rinnovo 
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Rinnovo automatico fallito per la nave {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Rinnovo automatico fallito per l'Aeromobile {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Il Treno {COMMA} dopo la sostituzione è diventato troppo lungo
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nessuna regola di rimpiazzo/rinnovo automatico applicata.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite denaro)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configura patch
@@ -1035,7 +1036,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Consent
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade, ponti, etc. delle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impedisci a treni e navi di curvare a 90°: {ORANGE}{STRING} {LTBLUE} (richiede NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impedisci a treni e navi di curvare a 90°: {ORANGE}{STRING} {LTBLUE} (non funziona con NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unisci le stazioni ferroviarie costruite una accanto all'altra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa l'algoritmo di caricamento migliorato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Carica i veicoli gradualmente: {ORANGE}{STRING}
@@ -1270,6 +1271,7 @@ STR_WAYPOINT                                                    :{WHITE}Waypoint
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleziona il tipo di waypoint
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} tren{P o i}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Rinomina il waypoint
@@ -2903,6 +2905,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rinomina
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossibile rinominare il tipo di veicolo ferroviario...
 STR_CLEAR_TIME                                                  :{BLACK}Elimina tempo
 STR_RESET_LATENESS                                              :{BLACK}Azzera ritardo
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Cambia il nome del waypoint
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}In frenata
 STR_TRAIN_STOPPING_VEL                                          :{RED}In frenata, {VELOCITY}
@@ -3214,6 +3218,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :il file GRF che era progettato per tradurre
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Troppi file NewGRF caricati.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Caricare {STRING} come NewGRF statico insieme a {STRING} può causare errori di sincronizzazione
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inatteso.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carica il profilo selezionato
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salva profilo
@@ -3607,14 +3612,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Segnale 
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-segnale (semaforico){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Segnale combinato (semaforico){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Segnale avanzato (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. I segnali avanzati possono essere attraversati al contrario.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale avanzato a senso unico (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. I segnali a senso unico non possono essere attraversati al contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Segnale avanzato (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. Può essere attraversato al contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale avanzato a senso unico (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. Non può essere attraversato al contrario.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Segnale normale (luminoso){}I segnali sono necessari per impedire ai treni di scontrarsi su reti ferroviarie con più di un treno.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-segnale (luminoso){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Segnale avanzato (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. I segnali avanzati possono essere attraversati al contrario.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale avanzato a senso unico (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. I segnali a senso unico non possono essere attraversati al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Segnale avanzato (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. Può essere attraversato al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale avanzato a senso unico (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. Non può essere attraversato al contrario.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Riduce la distanza fra i segnali costruiti

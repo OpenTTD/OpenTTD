@@ -843,7 +843,7 @@ STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Zobrazení jmen měst
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Zobrazení jmen stanic
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Zobrazení popisku
-STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Zobrazení kontrolních bodů
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Zobrazení směrování
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plné animace
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plné detaily
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Průhledné budovy
@@ -1092,7 +1092,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů, tunelů, atp.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Zapnout realistické zrychlování vlaků: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING} {LTBLUE} (nefunguje s NTP (New Train Pathfinder), zastaralým hledačem cesty)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Spojovat stanice postavené vedle sebe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Použij vylepšený algoritmus nakládání: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Nakládat vozidla postupně: {ORANGE}{STRING}
@@ -1319,22 +1319,23 @@ STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Míří
 STR_GO_TO_WAYPOINT                                              :Jet přes {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Jet bez zastávky přes {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :Kontrolní bod {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrolní bod {TOWN} #{COMMA}
-STR_LANDINFO_WAYPOINT                                           :Kontrolní bod
+STR_WAYPOINTNAME_CITY                                           :Směrování {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Směrování {TOWN} č. {COMMA}
+STR_LANDINFO_WAYPOINT                                           :Směrování
 
-STR_WAYPOINT                                                    :{WHITE}Kontrolní bod
-STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ kontrolního bodu
+STR_WAYPOINT                                                    :{WHITE}Směrování
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ směrování
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} vlak{P "" y ů}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Změnit jméno kontrolního bodu
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Přejmenovat směrování
 
-STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nemohu změnit jméno kontrolního bodu...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Změnit koleje v kontrolní bod
-STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Nemohu zde vybudovat kontrolní bod...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nemohu zde zrušit kontrolní bod...
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nemohu přejmenovat směrování...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Postavit na trati směrování
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Zde nelze postavit směrování...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Zde nelze zbourat směrování...
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budovat koleje použitím režimu Autokoleje
 
@@ -2030,7 +2031,7 @@ STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podržen
 
 STR_UNDEFINED                                                   :(nedefinovaný řetězec)
 STR_STAT_CLASS_DFLT                                             :Původní stanice
-STR_STAT_CLASS_WAYP                                             :Kontrolní body
+STR_STAT_CLASS_WAYP                                             :Směrování
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientace lodního depa
@@ -2966,6 +2967,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Přejmen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu přejmenovat typ železničního vozidla...
 STR_CLEAR_TIME                                                  :{BLACK}Smazat čas
 STR_RESET_LATENESS                                              :{BLACK}Zapomenout zpoždění
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Přejmenovat směrování
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
@@ -3116,7 +3119,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Přejmen
 STR_9831_NAME_SHIP                                              :{WHITE}Přejemnovat loď
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nelze přejmenovat loď...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První loď přistála v {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Umístit bójku, kterou lze použít jako navigační bod
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Umístit bójku, kterou lze použít jako směrování
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Zde nelze umístit bójku...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Postavit akvadukt
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tady není možné postavit akvadukt...
@@ -3277,6 +3280,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF soubor, který se měl přeložit
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {STRING} jako statické NewGRF s {STRING} může způsobit chybu synchronizace.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepředpokládaný sprite.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit předvolbu
@@ -3545,7 +3549,7 @@ STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Změna p
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Změna průhlednosti stromů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Změna průhlednosti domů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Změna průhlednosti továren. Nastavení se zamkne CTRL+kliknutím.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, dep a kontrolních bodů. Nastavení se zamkne CTRL+kliknutím.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, dep a směrování. Nastavení se zamkne kliknutím s CTRL.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Změna průhlednosti mostů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Změna průhlednosti staveb jako majáků, vysílačů a doplňků (v budoucnosti). Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne CTRL+kliknutím.

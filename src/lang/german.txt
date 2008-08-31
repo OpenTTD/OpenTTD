@@ -1167,6 +1167,7 @@ STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Erricht
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatischer Bau von Formsignalen bis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Fortgeschritten
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Der Stadtaufbau "keine weiteren Straßen" ist im Szenarieneditor nicht möglich
@@ -3080,6 +3081,12 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der GRF-Datei, die es übersetzen soll,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ausgewählte Voreinstellung laden
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Voreinstellung speichern
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Aktuelle Liste als Voreinstellung speichern
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Name der Voreinstellung
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Voreinstellung löschen
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Löschen der ausgewählten Voreinstellung
 STR_NEWGRF_ADD                                                  :{BLACK}Hinzufügen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Eine neue NewGRF-Datei zur Liste hinzufügen
 STR_NEWGRF_REMOVE                                               :{BLACK}Entfernen
@@ -3428,7 +3435,7 @@ STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nein
 STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Erlaube Schnauzbart oder Ohrring
 STR_FACE_HAIR                                                   :Frisur:
-STR_FACE_HAIR_TIP                                               :{BLACK}Frisur
+STR_FACE_HAIR_TIP                                               :{BLACK}Frisur ändern
 STR_FACE_EYEBROWS                                               :Augenbrauen:
 STR_FACE_EYEBROWS_TIP                                           :{BLACK}Augenbrauen ändern
 STR_FACE_EYECOLOUR                                              :Augenfarbe:
@@ -3475,4 +3482,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :°!"§$%&/()=?`
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Stadt kontrolliert Lärmbelastung der Flughäfen: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Lärmbelastung in der Stadt: {ORANGE}{COMMA}{BLACK}  Grenzwert: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Lärmbelastung: {GOLD}{COMMA}
 ########

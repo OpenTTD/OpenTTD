@@ -1269,6 +1269,7 @@ STR_WAYPOINT                                                    :{WHITE}Controle
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selecteer controlepost type
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Trein{P "" en}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Naam controlepost aanpassen
@@ -2738,17 +2739,17 @@ STR_GO_TO_STATION                                               :{STRING} {STATI
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Voeg een geadvanceerde order toe
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtstbijzijnde depot
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde  hangaar
-STR_ORDER_NEAREST_DEPOT                                         :Het dichtstbijzijnde
-STR_ORDER_NEAREST_HANGAR                                        :De dichtstbijzijnde hangaar
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde  hangar
+STR_ORDER_NEAREST_DEPOT                                         :het dichtstbijzijnde
+STR_ORDER_NEAREST_HANGAR                                        :de dichtstbijzijnde hangar
 STR_ORDER_SERVICE_AT                                            :Onderhoud bij
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Onderhoud non-stop bij
 STR_ORDER_TRAIN_DEPOT                                           :Trein Depot
 STR_ORDER_ROAD_DEPOT                                            :Wagen Depot
-STR_ORDER_SHIP_DEPOT                                            :Schip dok
+STR_ORDER_SHIP_DEPOT                                            :Schip Dok
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
-STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangaar
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_ORDER_CONDITIONAL                                           :Conditionele order sprong
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Voertuig info voor basis springen wanneer
@@ -3215,6 +3216,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :het GRF bestand is bedoelt voor het vertalen van
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Er zijn teveel NewGRFs geladen.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden {STRING} als statisch NewGRF met {STRING} kan desyncs veroorzaken.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwachte tekening
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laad de geselecteerd voorkeursinstelling
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Bewaar voorkeursinstelling

@@ -1283,6 +1283,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Buraya k
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Kilit yap
 STR_LANDINFO_LOCK                                               :Kilit
 
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...samandıra kullanımda!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinatlar: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1370,6 +1371,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Sunucunu
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Oyuncular
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Bağlı oyuncular / en fazla oyuncu
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}OYUN BİLGİSİ
 STR_NETWORK_CLIENTS                                             :{SILVER}İstemciler:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Dil:  {WHITE}{STRING}
@@ -2880,6 +2885,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Seçili 
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Fiyat: {CURRENCY}{}Hız: {VELOCITY}{}Bakım: {CURRENCY}/sene{}Kapasite: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasite: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} araç{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Arabayı adlandır
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Araba adlandırılamıyor...
@@ -2904,6 +2912,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kamyon m
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kamyonun taşıyacağı kargo türünü seçin
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Suyolu inşaatı
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Suyolu inşaatı
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Suyolu
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Buraya iskele yapılamaz...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Tersanesi
 STR_9804_NEW_SHIPS                                              :{BLACK}Yeni gemi
@@ -2956,6 +2967,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Gemi adl
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama yapıldı . . .{}Şuraya ilk kez gemi geldi: {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Yerimi olarak kullanilabilecek bir şamandıra yerlestir
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Şamandıra yerlestirilemez...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Su kemeri yap
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Buraya su kemeri yapılamaz...
 STR_9836_RENAME                                                 :{BLACK}İsim
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Gemi türünü adlandır
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Gemi türünü adlandır
@@ -3055,6 +3068,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Rüsvet 
 STR_BRIBE_FAILED_2                                              :{WHITE}Reha Muhtar açığa çıkardı
 STR_BUILD_DATE                                                  :{BLACK}Yapım: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}İstasyon sınıfı: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}İstasyon türü: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Ayrıntılı performans
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detay
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3108,7 +3125,14 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} OpenTTD {STRING} veya daha yüksek bir sürüm gerektirir.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{STRING} adlı NewGRF'yi {STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Seçili seçkiyi yükle
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Seçkiyi kaydet
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Şimdiki listeyi seçki olarak kaydet
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Seçki için isim girin
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Seçkiyi sil
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Seçili olan seçkiyi sil
 STR_NEWGRF_ADD                                                  :{BLACK}Ekle
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle
 STR_NEWGRF_REMOVE                                               :{BLACK}Kaldır
@@ -3137,6 +3161,7 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik do
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Oyunu yüklemek için gerekli olan GRF dosyaları eksik
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik GRF dosyası
+
 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
