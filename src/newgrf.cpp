@@ -3068,7 +3068,7 @@ static void StationMapSpriteGroup(byte *buf, uint8 idcount)
 
 			if (statspec == NULL) {
 				grfmsg(1, "StationMapSpriteGroup: Station with ID 0x%02X does not exist, skipping", stations[i]);
-				return;
+				continue;
 			}
 
 			statspec->spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
@@ -3112,8 +3112,8 @@ static void TownHouseMapSpriteGroup(byte *buf, uint8 idcount)
 		HouseSpec *hs = _cur_grffile->housespec[houses[i]];
 
 		if (hs == NULL) {
-			grfmsg(1, "TownHouseMapSpriteGroup: Too many houses defined, skipping");
-			return;
+			grfmsg(1, "TownHouseMapSpriteGroup: House %d undefined, skipping.", houses[i]);
+			continue;
 		}
 
 		hs->spritegroup = _cur_grffile->spritegroups[groupid];
@@ -3138,8 +3138,8 @@ static void IndustryMapSpriteGroup(byte *buf, uint8 idcount)
 		IndustrySpec *indsp = _cur_grffile->industryspec[industries[i]];
 
 		if (indsp == NULL) {
-			grfmsg(1, "IndustryMapSpriteGroup: Too many industries defined, skipping");
-			return;
+			grfmsg(1, "IndustryMapSpriteGroup: Industry %d undefined, skipping", industries[i]);
+			continue;
 		}
 
 		indsp->grf_prop.spritegroup = _cur_grffile->spritegroups[groupid];
@@ -3164,8 +3164,8 @@ static void IndustrytileMapSpriteGroup(byte *buf, uint8 idcount)
 		IndustryTileSpec *indtsp = _cur_grffile->indtspec[indtiles[i]];
 
 		if (indtsp == NULL) {
-			grfmsg(1, "IndustrytileMapSpriteGroup: Too many industry tiles defined, skipping");
-			return;
+			grfmsg(1, "IndustrytileMapSpriteGroup: Industry tile %d undefined, skipping", indtiles[i]);
+			continue;
 		}
 
 		indtsp->grf_prop.spritegroup = _cur_grffile->spritegroups[groupid];
