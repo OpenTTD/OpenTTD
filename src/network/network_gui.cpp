@@ -530,6 +530,14 @@ public:
 		}
 	}
 
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		if (widget == NGWW_MATRIX) {
+			/* is the Join button enabled? */
+			if (!this->IsWidgetDisabled(NGWW_JOIN)) this->OnClick(pt, NGWW_JOIN);
+		}
+	}
+
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
@@ -1209,6 +1217,14 @@ struct NetworkLobbyWindow : public Window {
 				NetworkTCPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // company info
 				NetworkUDPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // general data
 				break;
+		}
+	}
+
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		if (widget == NLWW_MATRIX) {
+			/* is the Join button enabled? */
+			if (!this->IsWidgetDisabled(NLWW_JOIN)) this->OnClick(pt, NLWW_JOIN);
 		}
 	}
 };
