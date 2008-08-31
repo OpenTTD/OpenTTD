@@ -169,9 +169,9 @@ static bool FileMD5(const MD5File file)
  * Determine the graphics pack that has to be used.
  * The one with the most correct files wins.
  */
-static void DetermineGraphicsPack()
+static bool DetermineGraphicsPack()
 {
-	if (_used_graphics_set != NULL) return;
+	if (_used_graphics_set != NULL) return true;
 
 	const GraphicsSet *best = _available_graphics_sets;
 	for (const GraphicsSet *c = _available_graphics_sets; c != NULL; c = c->next) {
@@ -182,6 +182,7 @@ static void DetermineGraphicsPack()
 	}
 
 	_used_graphics_set = best;
+	return _used_graphics_set != NULL;
 }
 
 /**
@@ -191,6 +192,7 @@ static void DetermineGraphicsPack()
  */
 static void DeterminePalette()
 {
+	assert(_used_graphics_set != NULL);
 	if (_use_palette < MAX_PAL) return;
 
 	_use_palette = _used_graphics_set->palette;
@@ -203,7 +205,6 @@ static void DeterminePalette()
  */
 void CheckExternalFiles()
 {
-	DetermineGraphicsPack();
 	DeterminePalette();
 
 	static const size_t ERROR_MESSAGE_LENGTH = 128;
@@ -468,7 +469,7 @@ void FindGraphicsSets()
 bool SetGraphicsSet(const char *name)
 {
 	if (StrEmpty(name)) {
-		DetermineGraphicsPack();
+		if (!DetermineGraphicsPack()) return false;
 		CheckExternalFiles();
 		return true;
 	}
