@@ -1,0 +1,176 @@
+#
+# Creation of bundles
+#
+
+# The revision is needed for the bundle name and creating an OSX application bundle.
+ifdef REVISION
+REV := $(REVISION)
+else
+# Are we a SVN dir?
+ifeq ($(shell if test -d $(SRC_DIR)/.svn; then echo 1; fi), 1)
+# Find if the local source if modified
+REV_MODIFIED := $(shell svnversion $(SRC_DIR) | sed -n 's/.*\(M\).*/\1/p' )
+# Find the revision like: rXXXX-branch
+REV := $(shell LC_ALL=C svn info $(SRC_DIR) | $(AWK) '/^URL:.*branches/ { split($$2, a, "/"); for (i in a) if(a[i]=="branches") { BRANCH="-"a[i+1]; break } } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+endif
+endif
+# Make sure we have something in REV
+ifeq ($(REV),)
+REV := norev000
+endif
+
+ifndef BUNDLE_NAME
+BUNDLE_NAME = OTTD-$(OS)-custom-$(REV)
+endif
+
+# An OSX application bundle needs the data files, lang files and openttd executable in a different location.
+ifdef OSXAPP
+DATA_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/data
+LANG_DIR = $(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/lang
+TTD_DIR  = $(BUNDLE_DIR)/$(OSXAPP)/Contents/MacOS
+else
+DATA_DIR = $(BUNDLE_DIR)/data
+LANG_DIR = $(BUNDLE_DIR)/lang
+TTD_DIR  = $(BUNDLE_DIR)
+endif
+
+bundle: all
+	@echo '[BUNDLE] Constructing bundle'
+	$(Q)rm -rf   "${BUNDLE_DIR}"
+	$(Q)mkdir -p "${BUNDLE_DIR}"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/docs"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario/heightmap"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/media"
+	$(Q)mkdir -p "$(TTD_DIR)"
+	$(Q)mkdir -p "$(DATA_DIR)"
+	$(Q)mkdir -p "$(LANG_DIR)"
+ifdef OSXAPP
+	$(Q)mkdir -p "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources"
+	$(Q)echo "APPL????" >                                          "$(BUNDLE_DIR)/$(OSXAPP)/Contents/PkgInfo"
+	$(Q)cp    "$(ROOT_DIR)/os/macosx/openttd.icns"                 "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/openttd.icns"
+	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "${BUNDLE_DIR}/$(OSXAPP)" "$(REV)"
+	$(Q)cp    "$(ROOT_DIR)/docs/OSX_install_instructions.txt"      "$(BUNDLE_DIR)/docs/"
+	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(DATA_DIR)"
+endif
+	$(Q)cp "$(BIN_DIR)/$(TTD)"                "$(TTD_DIR)/"
+	$(Q)cp "$(BIN_DIR)/data/"*.grf            "$(DATA_DIR)/"
+	$(Q)cp "$(BIN_DIR)/data/opntitle.dat"     "$(DATA_DIR)/"
+	$(Q)cp "$(BIN_DIR)/lang/"*.lng            "$(LANG_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/readme.txt"           "$(BUNDLE_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/COPYING"              "$(BUNDLE_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/known-bugs.txt"       "$(BUNDLE_DIR)/"
+	$(Q)cp "$(ROOT_DIR)/docs/multiplayer.txt" "$(BUNDLE_DIR)/docs/"
+	$(Q)cp "$(ROOT_DIR)/docs/32bpp.txt"       "$(BUNDLE_DIR)/docs/"
+	$(Q)cp "$(ROOT_DIR)/changelog.txt"        "$(BUNDLE_DIR)/"
+ifdef MAN_DIR
+	$(Q)mkdir -p "$(BUNDLE_DIR)/man/"
+	$(Q)cp "$(ROOT_DIR)/docs/openttd.6"       "$(BUNDLE_DIR)/man/"
+	$(Q)gzip "$(BUNDLE_DIR)/man/openttd.6"
+endif
+	$(Q)cp "$(ROOT_DIR)/media/openttd.32.xpm" "$(BUNDLE_DIR)/media/"
+	$(Q)cp "$(ROOT_DIR)/media/openttd."*.png  "$(BUNDLE_DIR)/media/"
+ifdef MENU_DIR
+	$(Q)cp "$(ROOT_DIR)/media/openttd.desktop" "$(BUNDLE_DIR)/media/"
+endif
+ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/\"*.scn 2> /dev/null`"; then echo 1; fi), 1)
+	$(Q)cp "$(BIN_DIR)/scenario/"*.scn        "$(BUNDLE_DIR)/scenario/"
+endif
+ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/heightmaps/\"* 2>/dev/null`"; then echo 1; fi), 1)
+	$(Q)cp "$(BIN_DIR)/scenario/heightmaps/"* "$(BUNDLE_DIR)/scenario/heightmap/"
+endif
+ifeq ($(TTD), openttd.exe)
+	$(Q)unix2dos "$(BUNDLE_DIR)/docs/"* "$(BUNDLE_DIR)/readme.txt" "$(BUNDLE_DIR)/COPYING" "$(BUNDLE_DIR)/changelog.txt" "$(BUNDLE_DIR)/known-bugs.txt"
+endif
+
+### Packing the current bundle into several compressed file formats ###
+#
+# Zips & dmgs do not contain a root folder, i.e. they have files in the root of the zip/dmg.
+# gzip, bzip2 and lha archives have a root folder, with the same name as the bundle.
+#
+# One can supply a custom name by adding BUNDLE_NAME:=<name> to the make command.
+#
+bundle_zip: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).zip'
+	$(Q)mkdir -p "$(BUNDLES_DIR)"
+	$(Q)cd "$(BUNDLE_DIR)" && zip -r $(shell if test -z "$(VERBOSE)"; then echo '-q'; fi) "$(BUNDLES_DIR)/$(BUNDLE_NAME).zip" .
+
+bundle_gzip: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).tar.gz'
+	$(Q)mkdir -p "$(BUNDLES_DIR)/.gzip/$(BUNDLE_NAME)"
+	$(Q)cp -R    "$(BUNDLE_DIR)/"* "$(BUNDLES_DIR)/.gzip/$(BUNDLE_NAME)/"
+	$(Q)cd "$(BUNDLES_DIR)/.gzip" && tar -zc$(shell if test -n "$(VERBOSE)"; then echo 'v'; fi)f "$(BUNDLES_DIR)/$(BUNDLE_NAME).tar.gz" "$(BUNDLE_NAME)"
+	$(Q)rm -rf   "$(BUNDLES_DIR)/.gzip"
+
+bundle_bzip2: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).tar.bz2'
+	$(Q)mkdir -p "$(BUNDLES_DIR)/.bzip2/$(BUNDLE_NAME)"
+	$(Q)cp -R    "$(BUNDLE_DIR)/"* "$(BUNDLES_DIR)/.bzip2/$(BUNDLE_NAME)/"
+	$(Q)cd "$(BUNDLES_DIR)/.bzip2" && tar -jc$(shell if test -n "$(VERBOSE)"; then echo 'v'; fi)f "$(BUNDLES_DIR)/$(BUNDLE_NAME).tar.bz2" "$(BUNDLE_NAME)"
+	$(Q)rm -rf   "$(BUNDLES_DIR)/.bzip2"
+
+bundle_lha: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).lha'
+	$(Q)mkdir -p "$(BUNDLES_DIR)/.lha/$(BUNDLE_NAME)"
+	$(Q)cp -R    "$(BUNDLE_DIR)/"* "$(BUNDLES_DIR)/.lha/$(BUNDLE_NAME)/"
+	$(Q)cd "$(BUNDLES_DIR)/.lha" && lha ao6 "$(BUNDLES_DIR)/$(BUNDLE_NAME).lha" "$(BUNDLE_NAME)"
+	$(Q)rm -rf   "$(BUNDLES_DIR)/.lha"
+
+bundle_dmg: bundle
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).dmg'
+	$(Q)mkdir -p "$(BUNDLES_DIR)/OpenTTD $(REV)"
+	$(Q)cp -R "$(BUNDLE_DIR)/" "$(BUNDLES_DIR)/OpenTTD $(REV)"
+	$(Q)hdiutil create -ov -format UDZO -srcfolder "$(BUNDLES_DIR)/OpenTTD $(REV)" "$(BUNDLES_DIR)/$(BUNDLE_NAME).dmg"
+	$(Q)rm -fr "$(BUNDLES_DIR)/OpenTTD $(REV)"
+
+bundle_exe: all
+	@echo '[BUNDLE] Creating $(BUNDLE_NAME).exe'
+	$(Q)mkdir -p "$(BUNDLES_DIR)"
+	$(Q)unix2dos "$(ROOT_DIR)/docs/"* "$(ROOT_DIR)/readme.txt" "$(ROOT_DIR)/COPYING" "$(ROOT_DIR)/changelog.txt" "$(ROOT_DIR)/known-bugs.txt"
+	$(Q)cd $(ROOT_DIR)/os/win32/installer && makensis.exe //DVERSION_INCLUDE=version_$(PLATFORM).txt install.nsi
+	$(Q)mv $(ROOT_DIR)/os/win32/installer/*$(PLATFORM).exe "$(BUNDLES_DIR)/$(BUNDLE_NAME).exe"
+
+ifdef OSXAPP
+install:
+	@echo '[INSTALL] Cannot install the OSX Application Bundle'
+else
+install: bundle
+	@echo '[INSTALL] Installing OpenTTD'
+	$(Q)install -d "$(INSTALL_BINARY_DIR)"
+	$(Q)install -d "$(INSTALL_ICON_DIR)"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/gm"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/data"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/lang"
+	$(Q)install -d "$(INSTALL_DOC_DIR)"
+	$(Q)install -m 755 "$(BUNDLE_DIR)/$(TTD)" "$(INSTALL_BINARY_DIR)"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/lang/"* "$(INSTALL_DATA_DIR)/lang"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/data/"* "$(INSTALL_DATA_DIR)/data"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/docs/"* "$(INSTALL_DOC_DIR)"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.32.xpm" "$(INSTALL_ICON_DIR)"
+ifdef ICON_THEME_DIR
+	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)"
+	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)/16x16/apps"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.16.png" "$(INSTALL_ICON_THEME_DIR)/16x16/apps"
+	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)/32x32/apps"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.32.png" "$(INSTALL_ICON_THEME_DIR)/32x32/apps"
+	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)/48x48/apps"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.48.png" "$(INSTALL_ICON_THEME_DIR)/48x48/apps"
+	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)/64x64/apps"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.64.png" "$(INSTALL_ICON_THEME_DIR)/64x64/apps"
+	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)/128x128/apps"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.128.png" "$(INSTALL_ICON_THEME_DIR)/128x128/apps"
+	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)/256x256/apps"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.256.png" "$(INSTALL_ICON_THEME_DIR)/256x256/apps"
+else
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/"*.png "$(INSTALL_ICON_DIR)"
+endif
+ifdef MAN_DIR
+	$(Q)install -d "$(INSTALL_MAN_DIR)"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/man/openttd.6.gz" "$(INSTALL_MAN_DIR)"
+endif
+ifdef MENU_DIR
+	$(Q)install -d "$(INSTALL_MENU_DIR)"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.desktop" "$(INSTALL_MENU_DIR)"
+endif
+	$(Q)cp -R "$(BUNDLE_DIR)/scenario" "$(INSTALL_DATA_DIR)"
+endif # OSXAPP

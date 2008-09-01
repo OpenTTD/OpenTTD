@@ -9,28 +9,33 @@ Sub FindReplaceInFile(filename, to_find, replacement)
 	data = file.ReadAll
 	file.Close
 	data = Replace(data, to_find, replacement)
-	Set file = FSO.CreateTextFile(FileName, -1, 0)
+	Set file = FSO.CreateTextFile(filename, -1, 0)
 	file.Write data
 	file.Close
 End Sub
 
-Sub UpdateFile(revision, version, cur_date, filename)
+Sub UpdateFile(modified, revision, version, cur_date, filename)
 	FSO.CopyFile filename & ".in", filename
+	FindReplaceInFile filename, "@@MODIFIED@@", modified
 	FindReplaceInFile filename, "@@REVISION@@", revision
 	FindReplaceInFile filename, "@@VERSION@@", version
 	FindReplaceInFile filename, "@@DATE@@", cur_date
 End Sub
 
 Sub UpdateFiles(version)
-	Dim WshShell, cur_date, revision, oExec
+	Dim WshShell, cur_date, modified, revision, oExec
 	Set WshShell = CreateObject("WScript.Shell")
 	cur_date = DatePart("D", Date) & "." & DatePart("M", Date) & "." & DatePart("YYYY", Date)
 	revision = 0
+	modified = 1
 	Select Case Mid(version, 1, 1)
 		Case "r" ' svn
 			revision = Mid(version, 2)
 			If InStr(revision, "M") Then
 				revision = Mid(revision, 1, InStr(revision, "M") - 1)
+				modified = 2
+			Else
+				modified = 0
 			End If
 			If InStr(revision, "-") Then
 				revision = Mid(revision, 1, InStr(revision, "-") - 1)
@@ -49,8 +54,8 @@ Sub UpdateFiles(version)
 			End If
 	End Select
 
-	UpdateFile revision, version, cur_date, "../src/rev.cpp"
-	UpdateFile revision, version, cur_date, "../src/ottdres.rc"
+	UpdateFile modified, revision, version, cur_date, "../src/rev.cpp"
+	UpdateFile modified, revision, version, cur_date, "../src/ottdres.rc"
 End Sub
 
 Function ReadRegistryKey(shive, subkey, valuename, architecture)
@@ -136,6 +141,11 @@ Function DetermineSVNVersion()
 		' Do we have subversion installed? Check immediatelly whether we've got a modified WC.
 		Set oExec = WshShell.Exec("svnversion ../src")
 		If Err.Number = 0 Then
+			' Wait till the application is finished ...
+			Do While oExec.Status = 0
+			Loop
+		End If
+		If Err.Number = 0 And oExec.ExitCode = 0 Then
 			Dim modified
 			If InStr(OExec.StdOut.ReadLine(), "M") Then
 				modified = "M"
@@ -173,6 +183,11 @@ Function DetermineSVNVersion()
 		Err.Clear
 		Set oExec = WshShell.Exec("git rev-parse --verify --short=8 HEAD")
 		If Err.Number = 0 Then
+			' Wait till the application is finished ...
+			Do While oExec.Status = 0
+			Loop
+		End If
+		If Err.Number = 0 And oExec.ExitCode = 0 Then
 			version = "g" & oExec.StdOut.ReadLine()
 			Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../src")
 			Do While oExec.Status = 0 And Err.Number = 0
@@ -184,7 +199,7 @@ Function DetermineSVNVersion()
 			Set oExec = WshShell.Exec("git symbolic-ref HEAD")
 			If Err.Number = 0 Then
 				line = oExec.StdOut.ReadLine()
-				line = Mid(line, InStrRev(line, "/")+1)
+				line = Mid(line, InStrRev(line, "/") + 1)
 				If line <> "master" Then
 					version = version & "-" & line
 				End If
@@ -194,12 +209,18 @@ Function DetermineSVNVersion()
 			Err.Clear
 			Set oExec = WshShell.Exec("hg tip")
 			If Err.Number = 0 Then
-				version = "h" & Mid(OExec.StdOut.ReadLine(), 19, 8)
+				' Wait till the application is finished ...
+				Do While oExec.Status = 0
+				Loop
+			End If
+			If Err.Number = 0 And oExec.ExitCode = 0 Then
+				line = OExec.StdOut.ReadLine()
+				version = "h" & Mid(line, InStrRev(line, ":") + 1, 8)
 				Set oExec = WshShell.Exec("hg status ../src")
 				If Err.Number = 0 Then
 					Do
 						line = OExec.StdOut.ReadLine()
-						If Mid(line, 1, 1) <> "?" Then
+						If Len(line) > 0 And Mid(line, 1, 1) <> "?" Then
 							version = version & "M"
 							Exit Do
 						End If

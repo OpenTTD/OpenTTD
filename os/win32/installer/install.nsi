@@ -1,6 +1,7 @@
 !define APPNAME "OpenTTD"   ; Define application name
 !define APPVERSION "0.6.2"  ; Define application version
 !define INSTALLERVERSION 51 ; NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!include ${VERSION_INCLUDE}
 
 !define APPURLLINK "http://www.openttd.org"
 !define APPNAMEANDVERSION "${APPNAME} ${APPVERSION}"
@@ -18,21 +19,20 @@ SetCompressor LZMA
 ; Version Info
 Var AddWinPrePopulate
 VIProductVersion "${APPVERSIONINTERNAL}"
-VIAddVersionKey "ProductName" "OpenTTD Installer"
+VIAddVersionKey "ProductName" "OpenTTD Installer ${APPBITS} bits version ${EXTRA_VERSION}"
 VIAddVersionKey "Comments" "Installs ${APPNAMEANDVERSION}"
 VIAddVersionKey "CompanyName" "OpenTTD Developers"
 VIAddVersionKey "FileDescription" "Installs ${APPNAMEANDVERSION}"
 VIAddVersionKey "ProductVersion" "${APPVERSION}"
-VIAddVersionKey "InternalName" "InstOpenTTD"
-VIAddVersionKey "FileVersion" "${APPVERSION}"
+VIAddVersionKey "InternalName" "InstOpenTTD-${APPARCH}"
+VIAddVersionKey "FileVersion" "${APPVERSION}-${APPARCH}"
 VIAddVersionKey "LegalCopyright" " "
 ; Main Install settings
-Name "${APPNAMEANDVERSION}"
+Name "${APPNAMEANDVERSION} ${APPBITS} bits version ${EXTRA_VERSION}"
 
 ; NOTE: Keep trailing backslash!
-InstallDir "$PROGRAMFILES\OpenTTD\"
 InstallDirRegKey HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\OpenTTD" "Install Folder"
-OutFile "openttd-${APPVERSION}-win32.exe"
+OutFile "openttd-${APPVERSION}-${APPARCH}.exe"
 CRCCheck force
 
 ShowInstDetails show
@@ -45,7 +45,7 @@ Var CDDRIVE
 !include "MUI.nsh"
 
 !define MUI_ABORTWARNING
-
+!define MUI_WELCOMEPAGE_TITLE_3LINES
 !insertmacro MUI_PAGE_WELCOME
 
 !define MUI_LICENSEPAGE_RADIOBUTTONS
@@ -75,6 +75,8 @@ Page custom SelectCDEnter SelectCDExit ": TTD folder"
 ; New custom page to show UNICODE and MSLU information
 Page custom ShowWarningsPage
 
+!define MUI_FINISHPAGE_TITLE_3LINES
+!define MUI_FINISHPAGE_RUN_TEXT "Run ${APPNAMEANDVERSION} now!"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\openttd.exe"
 !define MUI_FINISHPAGE_LINK "Visit the OpenTTD site for latest news, FAQs and downloads"
 !define MUI_FINISHPAGE_LINK_LOCATION "${APPURLLINK}"
@@ -84,6 +86,7 @@ Page custom ShowWarningsPage
 !define MUI_WELCOMEFINISHPAGE_CUSTOMFUNCTION_INIT DisableBack
 
 !insertmacro MUI_PAGE_FINISH
+!define MUI_PAGE_HEADER_TEXT "Uninstall ${APPNAMEANDVERSION}"
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 
@@ -103,7 +106,6 @@ Section "!OpenTTD" Section1
 	; Copy language files
 	SetOutPath "$INSTDIR\lang\"
 	File ${PATH_ROOT}bin\lang\*.lng
-	File ${PATH_ROOT}src\lang\english.txt
 
 	; Copy data files
 	SetOutPath "$INSTDIR\data\"
@@ -127,8 +129,7 @@ Section "!OpenTTD" Section1
 	File ${PATH_ROOT}known-bugs.txt
 
 	; Copy executable
-	File /oname=openttd.exe ${PATH_ROOT}objs\Win32\Release\openttd.exe
-	File ${PATH_ROOT}objs\strgen\strgen.exe
+	File /oname=openttd.exe ${BINARY_DIR}\openttd.exe
 
 
 	; Delete old files from the main dir. they are now placed in data/ and lang/
@@ -245,10 +246,10 @@ Section "Uninstall"
 	Delete "$INSTDIR\readme.txt"
 	Delete "$INSTDIR\known-bugs.txt"
 	Delete "$INSTDIR\openttd.exe"
-	Delete "$INSTDIR\strgen.exe"
 	Delete "$INSTDIR\COPYING"
 	Delete "$INSTDIR\INSTALL.LOG"
 	Delete "$INSTDIR\crash.log"
+	Delete "$INSTDIR\crash.dmp"
 	Delete "$INSTDIR\openttd.cfg"
 	Delete "$INSTDIR\hs.dat"
 	Delete "$INSTDIR\cached_sprites.*"
@@ -267,6 +268,8 @@ Section "Uninstall"
 	Delete "$INSTDIR\data\openttd.grf"
 	Delete "$INSTDIR\data\roadstops.grf"
 	Delete "$INSTDIR\data\trkfoundw.grf"
+	Delete "$INSTDIR\data\openttdd.grf"
+	Delete "$INSTDIR\data\openttdw.grf"
 
 	Delete "$INSTDIR\data\sample.cat"
 	; Windows Data files
@@ -287,7 +290,6 @@ Section "Uninstall"
 
 	; Language files
 	Delete "$INSTDIR\lang\*.lng"
-	Delete "$INSTDIR\lang\english.txt"
 
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Extras\"
@@ -388,12 +390,53 @@ Function GetWindowsVersion
 	ClearErrors
 	StrCpy $R0 "winnt"
 
-	ReadRegStr $R1 HKLM "SOFTWARE\MICROSOFT\WINDOWS NT\CurrentVersion" CurrentVersion
-	IfErrors 0 WinNT
+	GetVersion::WindowsPlatformId
+	Pop $R0
+	IntCmp $R0 2 WinNT 0
 	StrCpy $R0 "win9x"
 WinNT:
 	ClearErrors
 	Push $R0
+FunctionEnd
+
+;-------------------------------------------------------------------------------
+; Check whether we're not running an installer for 64 bits on 32 bits and vice versa
+Function CheckProcessorArchitecture
+	GetVersion::WindowsPlatformArchitecture
+	Pop $R0
+	IntCmp $R0 64 Win64 0
+	ClearErrors
+	IntCmp ${APPBITS} 64 0 Done
+	MessageBox MB_OKCANCEL|MB_ICONSTOP "You want to install the 64 bits OpenTTD on a 32 bits Operating System. This is not going to work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	GoTo Done
+Win64:
+	ClearErrors
+	IntCmp ${APPBITS} 64 Done 0
+	MessageBox MB_OKCANCEL|MB_ICONINFORMATION "You want to install the 32 bits OpenTTD on a 64 bits Operating System. This is not adviced, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	GoTo Done
+Abort:
+	Quit
+Done:
+FunctionEnd
+
+
+;-------------------------------------------------------------------------------
+; Check whether we're not running an installer for NT on 9x and vice versa
+Function CheckWindowsVersion
+	Call GetWindowsVersion
+	Pop $R0
+	StrCmp $R0 "win9x" 0 WinNT
+	ClearErrors
+	StrCmp ${APPARCH} "win9x" Done 0
+	MessageBox MB_OKCANCEL|MB_ICONSTOP "You want to install the Windows 2000, XP and Vista version on Windows 95, 98 or ME. This is will not work. Please download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+	GoTo Done
+WinNT:
+	ClearErrors
+	StrCmp ${APPARCH} "win9x" 0 Done
+	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "You want to install the Windows 95, 98 and ME version on Windows 2000, XP or Vista. This is not adviced, but will work with reduced capabilities. We suggest that you download the correct version. Do you really want to continue?" IDOK Done IDCANCEL Abort
+Abort:
+	Quit
+Done:
 FunctionEnd
 
 Var OLDVERSION
@@ -446,6 +489,8 @@ InstallerIsOlder:
 
 FinishCallback:
 	ClearErrors
+	Call CheckProcessorArchitecture
+	Call CheckWindowsVersion
 FunctionEnd
 ; eof
 

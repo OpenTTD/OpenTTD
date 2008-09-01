@@ -17,7 +17,7 @@ ROOT_DIR="`dirname $0`"
 ROOT_DIR="`cd $ROOT_DIR && pwd`"
 
 PWD="`pwd`"
-PREFIX="`pwd`/bin"
+PREFIX="$PWD/bin"
 
 . $ROOT_DIR/config.lib
 
@@ -32,7 +32,7 @@ MEDIA_DIR="$ROOT_DIR/media"
 SOURCE_LIST="$ROOT_DIR/source.list"
 
 if [ "$1" = "--reconfig" ] || [ "$1" = "--reconfigure" ]; then
-	if ! [ -f "config.cache" ]; then
+	if [ ! -f "config.cache" ]; then
 		echo "can't reconfigure, because never configured before"
 		exit 1
 	fi
@@ -64,7 +64,7 @@ else
 	PIPE_SORT="$sort"
 fi
 
-if ! [ -f "$LANG_DIR/english.txt" ]; then
+if [ ! -f "$LANG_DIR/english.txt" ]; then
 	echo "Languages not found in $LANG_DIR. Can't continue without it."
 	echo "Please make sure the dir exists and contains at least english.txt"
 fi
