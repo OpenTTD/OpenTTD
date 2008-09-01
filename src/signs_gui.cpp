@@ -241,8 +241,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				this->SortSignsList();
 
 				/* By default pick the last entry */
-				const Sign *si = this->signs[this->signs.Length(
-				) - 1];
+				const Sign *si = this->signs[this->signs.Length() - 1];
 
 				for (uint i = 1; i < this->signs.Length(); i++) {
 					if (this->cur_sign == this->signs[i]->index) {
@@ -265,8 +264,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				this->SortSignsList();
 
 				/* By default pick the last entry */
-				const Sign *si = this->signs[this->signs.Length(
-				) - 1];
+				const Sign *si = this->signs[this->signs.Length() - 1];
 
 				for (uint i = 0; i < this->signs.Length() - 1; i++) {
 					if (this->cur_sign == this->signs[i]->index) {
