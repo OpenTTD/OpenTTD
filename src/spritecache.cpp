@@ -11,6 +11,7 @@
 #include "spriteloader/grf.hpp"
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"
+#include "gfx_func.h"
 #ifdef WITH_PNG
 #include "spriteloader/png.hpp"
 #endif /* WITH_PNG */
@@ -188,11 +189,30 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 			return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL);
 		}
 
-		byte *dest = (byte *)AllocSprite(num);
+		/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small
+		 * number of recolour sprites that are 17 bytes that only exist in DOS
+		 * GRFs which are the same as 257 byte recolour sprites, but with the last
+		 * 240 bytes zeroed.  */
+		static const int RECOLOUR_SPRITE_SIZE = 257;
+		byte *dest = (byte *)AllocSprite(max(RECOLOUR_SPRITE_SIZE, num));
 
 		sc->ptr = dest;
 		sc->type = sprite_type;
-		FioReadBlock(dest, num);
+
+		if (_palette_remap_grf[sc->file_slot]) {
+			byte *dest_tmp = AllocaM(byte, max(RECOLOUR_SPRITE_SIZE, num));
+
+			/* Only a few recolour sprites are less than 257 bytes */
+			if (num < RECOLOUR_SPRITE_SIZE) memset(dest_tmp, 0, RECOLOUR_SPRITE_SIZE);
+			FioReadBlock(dest_tmp, num);
+
+			/* The data of index 0 is never used; "literal 00" according to the (New)GRF specs. */
+			for (int i = 1; i < RECOLOUR_SPRITE_SIZE; i++) {
+				dest[i] = _palette_remap[dest_tmp[_palette_reverse_remap[i - 1] + 1]];
+			}
+		} else {
+			FioReadBlock(dest, num);
+		}
 
 		return sc->ptr;
 	}

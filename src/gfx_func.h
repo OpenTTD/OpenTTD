@@ -180,5 +180,8 @@ extern DrawPixelInfo *_cur_dpi;
 extern byte _colour_gradient[COLOUR_END][8];
 
 extern PaletteType _use_palette;
+extern bool _palette_remap_grf[];
+extern const byte *_palette_remap;
+extern const byte *_palette_reverse_remap;
 
 #endif /* GFX_FUNC_H */

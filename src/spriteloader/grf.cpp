@@ -83,7 +83,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 				data = &sprite->data[y * sprite->width + skip];
 
 				for (int x = 0; x < length; x++) {
-					data->m = *dest;
+					data->m = ((sprite_type == ST_NORMAL && _palette_remap_grf[file_slot]) ? _palette_remap[*dest] : *dest);
 					dest++;
 					data++;
 				}
@@ -91,8 +91,10 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 		}
 	} else {
 		dest = dest_orig;
-		for (int i = 0; i < sprite->width * sprite->height; i++)
-			sprite->data[i].m = dest[i];
+
+		for (int i = 0; i < sprite->width * sprite->height; i++) {
+			sprite->data[i].m = ((sprite_type == ST_NORMAL && _palette_remap_grf[file_slot]) ? _palette_remap[dest[i]] : dest[i]);
+		}
 	}
 
 	/* Make sure to mark all transparent pixels transparent on the alpha channel too */

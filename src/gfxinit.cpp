@@ -23,9 +23,17 @@
 #include "ini_type.h"
 
 #include "table/sprites.h"
+#include "table/palette_convert.h"
 
 /** The currently used palette */
 PaletteType _use_palette = PAL_AUTODETECT;
+/** Whether the given NewGRFs must get a palette remap or not. */
+bool _palette_remap_grf[MAX_FILE_SLOTS];
+/** Palette map to go from the !_use_palette to the _use_palette */
+const byte *_palette_remap = NULL;
+/** Palette map to go from the _use_palette to the !_use_palette */
+const byte *_palette_reverse_remap = NULL;
+
 char _ini_graphics_set[32];
 
 /** Structure holding filename and MD5 information about a single file */
@@ -176,7 +184,9 @@ static bool DetermineGraphicsPack()
 	const GraphicsSet *best = _available_graphics_sets;
 	for (const GraphicsSet *c = _available_graphics_sets; c != NULL; c = c->next) {
 		if (best->found_grfs < c->found_grfs ||
-				(best->found_grfs == c->found_grfs && best->shortname == c->shortname && best->version < c->version)) {
+				(best->found_grfs == c->found_grfs && (
+					(best->shortname == c->shortname && best->version < c->version) ||
+					(best->palette != _use_palette && c->palette == _use_palette)))) {
 			best = c;
 		}
 	}
@@ -193,9 +203,22 @@ static bool DetermineGraphicsPack()
 static void DeterminePalette()
 {
 	assert(_used_graphics_set != NULL);
-	if (_use_palette < MAX_PAL) return;
+	if (_use_palette >= MAX_PAL) _use_palette = _used_graphics_set->palette;
 
-	_use_palette = _used_graphics_set->palette;
+	switch (_use_palette) {
+		case PAL_DOS:
+			_palette_remap = _palmap_w2d;
+			_palette_reverse_remap = _palmap_d2w;
+			break;
+
+		case PAL_WINDOWS:
+			_palette_remap = _palmap_d2w;
+			_palette_reverse_remap = _palmap_w2d;
+			break;
+
+		default:
+			NOT_REACHED();
+	}
 }
 
 /**
@@ -206,6 +229,8 @@ static void DeterminePalette()
 void CheckExternalFiles()
 {
 	DeterminePalette();
+
+	DEBUG(grf, 1, "Using the %s base graphics set with the %s palette", _used_graphics_set->name, _use_palette == PAL_DOS ? "DOS" : "Windows");
 
 	static const size_t ERROR_MESSAGE_LENGTH = 128;
 	char error_msg[ERROR_MESSAGE_LENGTH * (MAX_GFT + 1)];
@@ -233,8 +258,10 @@ void CheckExternalFiles()
 
 static void LoadSpriteTables()
 {
+	memset(_palette_remap_grf, 0, sizeof(_palette_remap_grf));
 	uint i = FIRST_GRF_SLOT;
 
+	_palette_remap_grf[i] = (_use_palette != _used_graphics_set->palette);
 	LoadGrfFile(_used_graphics_set->files[GFT_BASE].filename, 0, i++);
 
 	/*
@@ -243,6 +270,7 @@ static void LoadSpriteTables()
 	 * has a few sprites less. However, we do not care about those missing
 	 * sprites as they are not shown anyway (logos in intro game).
 	 */
+	_palette_remap_grf[i] = (_use_palette != _used_graphics_set->palette);
 	LoadGrfFile(_used_graphics_set->files[GFT_LOGOS].filename, 4793, i++);
 
 	/*
@@ -251,6 +279,7 @@ static void LoadSpriteTables()
 	 * and the ground sprites.
 	 */
 	if (_settings_game.game_creation.landscape != LT_TEMPERATE) {
+		_palette_remap_grf[i] = (_use_palette != _used_graphics_set->palette);
 		LoadGrfIndexed(
 			_used_graphics_set->files[GFT_ARCTIC + _settings_game.game_creation.landscape - 1].filename,
 			_landscape_spriteindexes[_settings_game.game_creation.landscape - 1],
@@ -274,6 +303,7 @@ static void LoadSpriteTables()
 	master->next = top;
 	_grfconfig = master;
 
+	_palette_remap_grf[i] = (_use_palette != _used_graphics_set->palette);
 	LoadNewGRF(SPR_NEWGRFS_BASE, i);
 
 	/* Free and remove the top element. */

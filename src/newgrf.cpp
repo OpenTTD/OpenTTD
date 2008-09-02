@@ -3652,7 +3652,11 @@ bool GetGlobalVariable(byte param, uint32 *value)
 		}
 
 		case 0x0D: // TTD Version, 00=DOS, 01=Windows
-			*value = _use_palette;
+			if (_palette_remap_grf[_file_index]) {
+				*value = !_use_palette;
+			} else {
+				*value = _use_palette;
+			}
 			return true;
 
 		case 0x0E: // Y-offset for train sprites
