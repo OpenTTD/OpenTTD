@@ -27,7 +27,7 @@ struct ViewPort {
 struct ViewportSign {
 	int32 left;
 	int32 top;
-	byte width_1, width_2;
+	uint16 width_1, width_2;
 };
 
 enum {
