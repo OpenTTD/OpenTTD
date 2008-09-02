@@ -146,7 +146,19 @@ void IniFile::LoadFromDisk(const char *filename)
 	uint comment_alloc = 0;
 
 	size_t end;
-	FILE *in = FioFOpenFile(filename, "r", DATA_DIR, &end);
+	/*
+	 * Now we are going to open a file that contains no more than simple
+	 * plain text. That would raise the question: "why open the file as
+	 * if it is a binary file?". That's simple... Microsoft, in all
+	 * their greatness and wisdom decided it would be useful if ftell
+	 * is aware of '\r\n' and "sees" that as a single character. The
+	 * easiest way to test for that situation is by searching for '\n'
+	 * and decrease the value every time you encounter a '\n'. This will
+	 * thus also make ftell "see" the '\r' when it is not there, so the
+	 * result of ftell will be highly unreliable. So to work around this
+	 * marvel of wisdom we have to open in as a binary file.
+	 */
+	FILE *in = FioFOpenFile(filename, "rb", DATA_DIR, &end);
 	if (in == NULL) return;
 
 	end += ftell(in);
