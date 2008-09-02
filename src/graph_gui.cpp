@@ -686,7 +686,7 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 
 			this->colors[i] = cs->legend_colour;
 			for (uint j = 0; j != 20; j++) {
-				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, c);
+				this->cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, c);
 			}
 
 			i++;
