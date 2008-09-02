@@ -2374,6 +2374,7 @@ generate_main() {
 	# Create the main Makefile
 	echo "Generating Makefile..."
 	< $ROOT_DIR/Makefile.in sed "$SRC_REPLACE" > Makefile
+	cp $ROOT_DIR/Makefile.bundle.in Makefile.bundle
 	echo "# Auto-generated file -- DO NOT EDIT" > Makefile.am
 	echo >> Makefile.am
 	# Make the copy of the source-list, so we don't trigger an unwanted recompile

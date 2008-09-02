@@ -25,4 +25,4 @@ TARGET := $(shell echo $(PLATFORM) | sed "s/win64/x64/;s/win32/Win32/")
 all:
 	$(Q)cp objs/$(TARGET)/Release/$(TTD) $(BIN_DIR)/$(TTD)
 
-include Makefile.bundle
+include Makefile.bundle.in

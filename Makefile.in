@@ -113,7 +113,7 @@ mrproper:
 		rm -f $$dir/Makefile; \
 	done
 	$(Q)rm -rf objs
-	$(Q)rm -f Makefile Makefile.am
+	$(Q)rm -f Makefile Makefile.am Makefile.bundle
 	$(Q)rm -f media/openttd.desktop
 	$(Q)rm -f $(CONFIG_CACHE_SOURCE_LIST) config.cache config.log
 	$(Q)rm -rf $(BUNDLE_DIR)
