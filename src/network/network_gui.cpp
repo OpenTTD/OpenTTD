@@ -532,7 +532,7 @@ public:
 
 	virtual void OnDoubleClick(Point pt, int widget)
 	{
-		if (widget == NGWW_MATRIX) {
+		if (widget == NGWW_MATRIX || widget == NGWW_LASTJOINED) {
 			/* is the Join button enabled? */
 			if (!this->IsWidgetDisabled(NGWW_JOIN)) this->OnClick(pt, NGWW_JOIN);
 		}
