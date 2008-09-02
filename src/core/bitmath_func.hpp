@@ -318,7 +318,12 @@ static FORCEINLINE T ROR(const T x, const uint8 n)
 	 */
 	static FORCEINLINE uint32 BSWAP32(uint32 x)
 	{
+#if defined(__GNUC__) && ((__GNUC__ > 4) || ((__GNUC__ == 4)  && __GNUC_MINOR__ >= 3))
+		/* GCC >= 4.3 provides a builtin, resulting in faster code */
+		return (uint32)__builtin_bswap32((int32)x);
+#else
 		return ((x >> 24) & 0xFF) | ((x >> 8) & 0xFF00) | ((x << 8) & 0xFF0000) | ((x << 24) & 0xFF000000);
+#endif /* defined(__GNUC__) */
 	}
 
 	/**
