@@ -39,7 +39,7 @@ static const byte _palmap_w2d[] = {
 };
 
 /** Converting from the DOS palette to the Windows palette */
-static const byte _palmap_d2w[] = {
+extern const byte _palmap_d2w[] = {
 	  0, 215, 216, 136,  88, 106,  32,  33, //   0..7
 	 40, 245,  10,  11,  12,  13,  14,  15, //   8..15
 	 16,  17,  18,  19,  20,  21,  22,  23, //  16..23

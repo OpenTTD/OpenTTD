@@ -321,18 +321,10 @@ StringID MapGRFStringID(uint32 grfid, StringID str)
 	return str;
 }
 
-static uint8 MapDOSColour(uint8 colour)
+static inline uint8 MapDOSColour(uint8 colour)
 {
-	if (_use_palette == PAL_DOS) return colour;
-
-	if (colour < 10) {
-		static uint8 dos_to_win_colour_map[] = { 0, 215, 216, 136, 88, 106, 32, 33, 40, 245 };
-		return dos_to_win_colour_map[colour];
-	}
-
-	if (colour >= 245 && colour < 254) return colour - 28;
-
-	return colour;
+	extern const byte _palmap_d2w[];
+	return (_use_palette == PAL_DOS ? colour : _palmap_d2w[colour]);
 }
 
 static std::map<uint32, uint32> _grf_id_overrides;
