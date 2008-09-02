@@ -2312,6 +2312,7 @@ make_sed() {
 		s#!!CONFIG_CACHE_SOURCE!!#config.cache.source#g;
 		s#!!CONFIG_CACHE_VERSION!!#config.cache.version#g;
 		s#!!CONFIG_CACHE_SOURCE_LIST!!#config.cache.source.list#g;
+		s#!!CONFIG_CACHE_PWD!!#config.cache.pwd#g;
 		s#!!LANG_SUPPRESS!!#$lang_suppress#g;
 		s#!!OBJS_C!!#$OBJS_C#g;
 		s#!!OBJS_CPP!!#$OBJS_CPP#g;
@@ -2380,8 +2381,11 @@ generate_main() {
 	echo >> Makefile.am
 	# Make the copy of the source-list, so we don't trigger an unwanted recompile
 	cp $SOURCE_LIST config.cache.source.list
+	# Add the current directory, so we don't trigger an unwanted recompile
+	echo "`pwd`" > config.cache.pwd
 	# Make sure config.cache is OLDER then config.cache.source.list
 	touch config.cache
+	touch config.pwd
 
 	if [ "$menu_dir" != "" ]; then
 		generate_menu_item
