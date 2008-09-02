@@ -2363,6 +2363,7 @@ generate_menu_item() {
 		s#!!MENU_GROUP!!#$menu_group#g
 	"
 	echo "Generating menu item..."
+	mkdir -p media
 	< $ROOT_DIR/media/openttd.desktop.in sed "$MENU_REPLACE" > media/openttd.desktop
 }
 
