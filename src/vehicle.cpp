@@ -234,7 +234,7 @@ void VehiclePositionChanged(Vehicle *v)
 {
 	int img = v->cur_image;
 	Point pt = RemapCoords(v->x_pos + v->x_offs, v->y_pos + v->y_offs, v->z_pos);
-	const Sprite *spr = GetSprite(img);
+	const Sprite *spr = GetSprite(img, ST_NORMAL);
 
 	pt.x += spr->x_offs;
 	pt.y += spr->y_offs;

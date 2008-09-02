@@ -888,13 +888,13 @@ int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw
 void DrawSprite(SpriteID img, SpriteID pal, int x, int y, const SubSprite *sub)
 {
 	if (HasBit(img, PALETTE_MODIFIER_TRANSPARENT)) {
-		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_TRANSPARENT, sub);
+		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH), ST_NORMAL), x, y, BM_TRANSPARENT, sub);
 	} else if (pal != PAL_NONE) {
-		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH)) + 1;
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_COLOUR_REMAP, sub);
+		_color_remap_ptr = GetNonSprite(GB(pal, 0, PALETTE_WIDTH), ST_RECOLOUR) + 1;
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH), ST_NORMAL), x, y, BM_COLOUR_REMAP, sub);
 	} else {
-		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH)), x, y, BM_NORMAL, sub);
+		GfxMainBlitter(GetSprite(GB(img, 0, SPRITE_WIDTH), ST_NORMAL), x, y, BM_NORMAL, sub);
 	}
 }
 
@@ -1476,7 +1476,7 @@ static void SetCursorSprite(SpriteID cursor, SpriteID pal)
 
 	if (cv->sprite == cursor) return;
 
-	p = GetSprite(GB(cursor, 0, SPRITE_WIDTH));
+	p = GetSprite(GB(cursor, 0, SPRITE_WIDTH), ST_NORMAL);
 	cv->sprite = cursor;
 	cv->pal    = pal;
 	cv->size.y = p->height;

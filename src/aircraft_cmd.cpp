@@ -220,7 +220,7 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal)
  */
 void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 {
-	const Sprite *spr = GetSprite(GetAircraftIcon(engine));
+	const Sprite *spr = GetSprite(GetAircraftIcon(engine), ST_NORMAL);
 
 	width  = spr->width;
 	height = spr->height;

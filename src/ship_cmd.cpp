@@ -84,7 +84,7 @@ void DrawShipEngine(int x, int y, EngineID engine, SpriteID pal)
  */
 void GetShipSpriteSize(EngineID engine, uint &width, uint &height)
 {
-	const Sprite *spr = GetSprite(GetShipIcon(engine));
+	const Sprite *spr = GetSprite(GetShipIcon(engine), ST_NORMAL);
 
 	width  = spr->width;
 	height = spr->height;

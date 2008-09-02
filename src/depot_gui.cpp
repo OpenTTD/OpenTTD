@@ -281,7 +281,7 @@ struct DepotWindow : Window {
 			case VEH_ROAD:     DrawRoadVehImage( v, x + 24, sprite_y, this->sel, 1); break;
 			case VEH_SHIP:     DrawShipImage(    v, x + 19, sprite_y - 1, this->sel); break;
 			case VEH_AIRCRAFT: {
-				const Sprite *spr = GetSprite(v->GetImage(DIR_W));
+				const Sprite *spr = GetSprite(v->GetImage(DIR_W), ST_NORMAL);
 				DrawAircraftImage(v, x + 12,
 									y + max(spr->height + spr->y_offs - 14, 0), // tall sprites needs an y offset
 									this->sel);

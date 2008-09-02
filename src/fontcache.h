@@ -46,7 +46,7 @@ static inline const Sprite *GetGlyph(FontSize size, uint32 key)
 {
 	SpriteID sprite = GetUnicodeGlyph(size, key);
 	if (sprite == 0) sprite = GetUnicodeGlyph(size, '?');
-	return GetSprite(sprite);
+	return GetSprite(sprite, ST_FONT);
 }
 
 
@@ -55,7 +55,7 @@ static inline uint GetGlyphWidth(FontSize size, uint32 key)
 {
 	SpriteID sprite = GetUnicodeGlyph(size, key);
 	if (sprite == 0) sprite = GetUnicodeGlyph(size, '?');
-	return SpriteExists(sprite) ? GetSprite(sprite)->width + (size != FS_NORMAL) : 0;
+	return SpriteExists(sprite) ? GetSprite(sprite, ST_FONT)->width + (size != FS_NORMAL) : 0;
 }
 
 #endif /* WITH_FREETYPE */

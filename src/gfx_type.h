@@ -243,4 +243,12 @@ enum PaletteType {
 	MAX_PAL = 2,    ///< The number of palettes.
 };
 
+/** Types of sprites that might be loaded */
+enum SpriteType {
+	ST_NORMAL   = 0,      ///< The most basic (normal) sprite
+	ST_MAPGEN   = 1,      ///< Special sprite for the map generator
+	ST_FONT     = 2,      ///< A sprite used for fonts
+	ST_RECOLOUR = 3,      ///< Recolour sprite
+};
+
 #endif /* GFX_TYPE_H */

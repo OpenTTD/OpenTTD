@@ -28,7 +28,7 @@ struct SpriteCache {
 	uint32 id;
 	uint16 file_slot;
 	int16 lru;
-	bool real_sprite; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as non-real sprite. If the non-real sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
+	SpriteType type; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
 };
 
 
@@ -133,7 +133,7 @@ bool SpriteExists(SpriteID id)
 
 void* AllocSprite(size_t);
 
-static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
+static void* ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 {
 	uint8 file_slot = sc->file_slot;
 	size_t file_pos = sc->file_pos;
@@ -149,17 +149,17 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 		file_pos  = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
 	}
 
-	if (real_sprite && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
+	if (sprite_type == ST_NORMAL && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
 #ifdef WITH_PNG
 		/* Try loading 32bpp graphics in case we are 32bpp output */
 		SpriteLoaderPNG sprite_loader;
 		SpriteLoader::Sprite sprite;
 
-		if (sprite_loader.LoadSprite(&sprite, file_slot, sc->id)) {
+		if (sprite_loader.LoadSprite(&sprite, file_slot, sc->id, sprite_type)) {
 			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 			free(sprite.data);
 
-			sc->real_sprite = real_sprite;
+			sc->type = sprite_type;
 
 			return sc->ptr;
 		}
@@ -180,18 +180,18 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 	byte type = FioReadByte();
 	/* Type 0xFF indicates either a colormap or some other non-sprite info */
 	if (type == 0xFF) {
-		if (real_sprite) {
+		if (sprite_type != ST_RECOLOUR) {
 			static byte warning_level = 0;
-			DEBUG(sprite, warning_level, "Tried to load non sprite #%d as a real sprite. Probable cause: NewGRF interference", id);
+			DEBUG(sprite, warning_level, "Tried to load recolour sprite #%d as a real sprite. Probable cause: NewGRF interference", id);
 			warning_level = 6;
-			if (id == SPR_IMG_QUERY) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non- sprite?");
-			return (void*)GetRawSprite(SPR_IMG_QUERY, true);
+			if (id == SPR_IMG_QUERY) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a recolour-sprite?");
+			return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL);
 		}
 
 		byte *dest = (byte *)AllocSprite(num);
 
 		sc->ptr = dest;
-		sc->real_sprite = real_sprite;
+		sc->type = sprite_type;
 		FioReadBlock(dest, num);
 
 		return sc->ptr;
@@ -205,8 +205,8 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 	 * Ugly: yes. Other solution: no. Blame the original author or
 	 *  something ;) The image should really have been a data-stream
 	 *  (so type = 0xFF basicly). */
-	if (id >= 4845 && id <= 4881) {
-		assert(real_sprite);
+	assert((id >= 4845 && id <= 4881) == (sprite_type == ST_MAPGEN));
+	if (sprite_type == ST_MAPGEN) {
 		uint height = FioReadByte();
 		uint width  = FioReadWord();
 		Sprite *sprite;
@@ -234,24 +234,24 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, bool real_sprite)
 			}
 		}
 
-		sc->real_sprite = real_sprite;
+		sc->type = sprite_type;
 
 		return sc->ptr;
 	}
 
-	if (!real_sprite) {
+	if (sprite_type == ST_RECOLOUR) {
 		static byte warning_level = 0;
-		DEBUG(sprite, warning_level, "Tried to load real sprite #%d as a non sprite. Probable cause: NewGRF interference", id);
+		DEBUG(sprite, warning_level, "Tried to load real sprite #%d as a recolour sprite. Probable cause: NewGRF interference", id);
 		warning_level = 6;
-		return (void*)GetRawSprite(id, true);
+		return (void*)GetRawSprite(id, ST_NORMAL);
 	}
 
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
 
-	sc->real_sprite = real_sprite;
+	sc->type = sprite_type;
 
-	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos)) return NULL;
+	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos, sprite_type)) return NULL;
 	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 	free(sprite.data);
 
@@ -276,7 +276,7 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 	sc->ptr = NULL;
 	sc->lru = 0;
 	sc->id = file_sprite_id;
-	sc->real_sprite = false;
+	sc->type = ST_NORMAL;
 
 	return true;
 }
@@ -291,7 +291,7 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 	scnew->file_pos = scold->file_pos;
 	scnew->ptr = NULL;
 	scnew->id = scold->id;
-	scnew->real_sprite = scold->real_sprite;
+	scnew->type = scold->type;
 }
 
 
@@ -461,7 +461,7 @@ void* AllocSprite(size_t mem_req)
 }
 
 
-const void *GetRawSprite(SpriteID sprite, bool real_sprite)
+const void *GetRawSprite(SpriteID sprite, SpriteType type)
 {
 	SpriteCache *sc;
 	void* p;
@@ -476,7 +476,7 @@ const void *GetRawSprite(SpriteID sprite, bool real_sprite)
 	p = sc->ptr;
 
 	/* Load the sprite, if it is not loaded, yet */
-	if (p == NULL || sc->real_sprite != real_sprite) p = ReadSprite(sc, sprite, real_sprite);
+	if (p == NULL || sc->type != type) p = ReadSprite(sc, sprite, type);
 
 	return p;
 }
