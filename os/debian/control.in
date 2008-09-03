@@ -1,20 +1,21 @@
 Source: PACKAGE
 Section: contrib/games
 Priority: optional
-Maintainer: Matthijs Kooijman <m.kooijman@student.utwente.nl>
+Maintainer: Matthijs Kooijman <matthijs@stdin.nl>
 Uploaders: Jordi Mallach <jordi@debian.org>
-Build-Depends: debhelper (>= 4.0.0), dpatch, libsdl-dev, zlib1g-dev, libpng-dev, libfreetype6-dev, libfontconfig-dev
-Standards-Version: 3.7.2
+Build-Depends: debhelper (>= 4.0.0), libsdl-dev, zlib1g-dev, libpng-dev, libfreetype6-dev, libfontconfig-dev
+Standards-Version: 3.7.3
+Vcs-Browser: http://svn.debian.org/wsvn/collab-maint/deb-maint/openttd/trunk/
+Vcs-Svn: svn://svn.debian.org/svn/collab-maint/deb-maint/openttd/trunk
+Homepage: http://www.openttd.org/
 
 Package: PACKAGE
 Architecture: any
-Depends: ${shlibs:Depends}, debconf
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: timidity, freepats
 Description: reimplementation of Transport Tycoon Deluxe with enhancements
- A reimplementation of the Microprose game "Transport Tycoon Deluxe" with lots
- of new features and enhancements.
- You require the data files of the original Transport Tycoon Deluxe
- for Windows to play the game. You have to MANUALLY copy them to the
- game data directory! (see README.Debian for details)
- .
- Homepage: http://www.openttd.org/
+ OpenTTD is a reimplementation of the Microprose game "Transport
+ Tycoon Deluxe" with lots of new features and enhancements. The data
+ files of the original Transport Tycoon Deluxe for Windows are
+ mandatory to play the game. They must be manually copied to the game
+ data directory (see README.Debian for details).

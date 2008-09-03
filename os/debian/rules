@@ -11,8 +11,6 @@ DEFAULT_PACKAGE := openttd
 # Is this the best way to do this?
 PACKAGE = $(shell cat debian/changelog | head -1 | cut -f1 -d' ')
 
-include /usr/share/dpatch/dpatch.make
-
 debian/control:
 	# Generate control file
 	sed 's/PACKAGE/$(PACKAGE)/' debian/control.in > debian/control
@@ -23,7 +21,7 @@ debian/control:
 		echo "Conflicts: $(DEFAULT_PACKAGE)" >> debian/control ; \
 	fi;
 
-configure: debian/control patch configure-stamp
+configure: debian/control configure-stamp
 configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
@@ -44,13 +42,16 @@ build-stamp:
 
 	touch build-stamp
 
-clean: debian/control unpatch
+clean: debian/control
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
 
 	# Add here commands to clean up after the build process.
-	-$(MAKE) clean
+	# We check for Makefile presence, because clean is called at the
+	# start of the build process (before configure) where we don't
+	# have a Makefile yet.
+	[ ! -f Makefile ] || $(MAKE) distclean
 
 	dh_clean
 	# Clean up generated control file
@@ -101,4 +102,4 @@ binary-arch: debian/control build install
 	dh_builddeb
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure patch
+.PHONY: build clean binary-indep binary-arch binary install configure

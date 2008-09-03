@@ -15,7 +15,7 @@ You should copy the data files from the original TTD into the data directory
 	For in game music (optional), you should copy all files in the gm/
 	subdir of your ttd installation to /usr/share/games/openttd/gm.  You
 	should also install timidity and a soundfont (freepats is packaged in
-	debian and works out of the box).
+	Debian and works out of the box).
 
 	Don't forget to use -m extmidi if you want music, and if you have
 	problems, remember that not all audio devices support multiple
@@ -23,12 +23,9 @@ You should copy the data files from the original TTD into the data directory
 	mixing. My VIA AC97 device cannot do hardware mixing, for example.
 
 -Scenarios
-	There are a few scenarios included in this release. When you start
-	openttd it will look for scenarios in ~/.openttd/scenario, while the
-	premade scenarios are in /usr/share/games/openttd/data/scenario. You
-	have two options to use the scenarios.
-	* Navigate to /usr/share/games/openttd/data/scenario within openttd.
-	* Copy scenarios from /usr/share/games/openttd/data/scenario to
-	  ~/.openttd/scenario. We are looking into a better solution for this.
+	There are no scenarios included in this release. Scenarios can be
+	downloaded separately from the OpenTTD website and all over the
+	internet. Place scenarios in your ~/.openttd/scenario directory to
+	use them.
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>, Tue, 25 Jan 2004 14:11:01 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>, Tue, 25 Jan 2004 14:11:01 +0200
