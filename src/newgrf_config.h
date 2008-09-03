@@ -68,6 +68,7 @@ struct GRFConfig : public GRFIdentifier {
 	uint32 grf_bugs;    ///< NOSAVE: bugs in this GRF in this run, @see enum GRFBugs
 	uint32 param[0x80]; ///< GRF parameters
 	uint8 num_params;   ///< Number of used parameters
+	bool windows_paletted;  ///< Whether the NewGRF is Windows paletted or not
 
 	struct GRFConfig *next; ///< NOSAVE: Next item in the linked list
 

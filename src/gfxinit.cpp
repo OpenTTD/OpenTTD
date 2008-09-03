@@ -299,11 +299,11 @@ static void LoadSpriteTables()
 	GRFConfig *master = CallocT<GRFConfig>(1);
 	master->filename = strdup(_used_graphics_set->files[GFT_EXTRA].filename);
 	FillGRFDetails(master, false);
+	master->windows_paletted = (_used_graphics_set->palette == PAL_WINDOWS);
 	ClrBit(master->flags, GCF_INIT_ONLY);
 	master->next = top;
 	_grfconfig = master;
 
-	_palette_remap_grf[i] = (_use_palette != _used_graphics_set->palette);
 	LoadNewGRF(SPR_NEWGRFS_BASE, i);
 
 	/* Free and remove the top element. */

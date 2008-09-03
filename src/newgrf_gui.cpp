@@ -100,6 +100,10 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 		y += DrawStringMultiLine(x, y, STR_NEWGRF_PARAMETER, w, bottom - y);
 	}
 
+	/* Draw the palette of the NewGRF */
+	SetDParamStr(0, c->windows_paletted ? "Windows" : "DOS");
+	y += DrawStringMultiLine(x, y, STR_NEWGRF_PALETTE, w, bottom - y);
+
 	/* Show flags */
 	if (c->status == GCS_NOT_FOUND)        y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w, bottom - y);
 	if (c->status == GCS_DISABLED)         y += DrawStringMultiLine(x, y, STR_NEWGRF_DISABLED, w, bottom - y);
@@ -301,6 +305,7 @@ struct NewGRFWindow : public Window {
 		SNGRFS_SCROLLBAR,
 		SNGRFS_NEWGRF_INFO,
 		SNGRFS_SET_PARAMETERS,
+		SNGRFS_TOGGLE_PALETTE,
 		SNGRFS_APPLY_CHANGES,
 		SNGRFS_RESIZE,
 	};
@@ -359,6 +364,7 @@ struct NewGRFWindow : public Window {
 			SNGRFS_PRESET_LIST,
 			SNGRFS_ADD,
 			SNGRFS_APPLY_CHANGES,
+			SNGRFS_TOGGLE_PALETTE,
 			WIDGET_LIST_END
 		);
 	}
@@ -571,6 +577,14 @@ struct NewGRFWindow : public Window {
 				ShowQueryString(STR_JUST_RAW_STRING, STR_NEWGRF_PARAMETER_QUERY, 63, 250, this, CS_ALPHANUMERAL);
 				break;
 			}
+
+			case SNGRFS_TOGGLE_PALETTE: {
+				if (this->sel != NULL) {
+					this->sel->windows_paletted ^= true;
+					this->SetDirty();
+				}
+				break;
+			}
 		}
 	}
 
@@ -665,16 +679,17 @@ static const Widget _newgrf_widgets[] = {
 { WWT_PUSHTXTBTN, RESIZE_RIGHT,  COLOUR_YELLOW, 220, 289,  32,  43, STR_NEWGRF_MOVEDOWN,         STR_NEWGRF_MOVEDOWN_TIP },          // SNGRFS_MOVE_DOWN
 {     WWT_MATRIX,    RESIZE_RB,  COLOUR_MAUVE,    0, 287,  46, 115, 0x501,                       STR_NEWGRF_FILE_TIP },              // SNGRFS_FILE_LIST
 {  WWT_SCROLLBAR,   RESIZE_LRB,  COLOUR_MAUVE,  288, 299,  46, 115, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST }, // SNGRFS_SCROLLBAR
-{      WWT_PANEL,   RESIZE_RTB,  COLOUR_MAUVE,    0, 299, 116, 228, STR_NULL,                    STR_NULL },                         // SNGRFS_NEWGRF_INFO
-{ WWT_PUSHTXTBTN,    RESIZE_TB,  COLOUR_MAUVE,    0, 143, 229, 240, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },                         // SNGRFS_SET_PARAMETERS
-{ WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,  144, 287, 229, 240, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },                         // SNGRFS_APPLY_CHANGES
-{  WWT_RESIZEBOX,  RESIZE_LRTB,  COLOUR_MAUVE,  288, 299, 229, 240, 0x0,                         STR_RESIZE_BUTTON },                // SNGRFS_RESIZE
+{      WWT_PANEL,   RESIZE_RTB,  COLOUR_MAUVE,    0, 299, 116, 238, STR_NULL,                    STR_NULL },                         // SNGRFS_NEWGRF_INFO
+{ WWT_PUSHTXTBTN,    RESIZE_TB,  COLOUR_MAUVE,    0,  95, 239, 250, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },                         // SNGRFS_SET_PARAMETERS
+{ WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,   96, 191, 239, 250, STR_NEWGRF_TOGGLE_PALETTE,   STR_NEWGRF_TOGGLE_PALETTE_TIP },    // SNGRFS_TOGGLE_PALETTE
+{ WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,  192, 287, 239, 250, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },                         // SNGRFS_APPLY_CHANGES
+{  WWT_RESIZEBOX,  RESIZE_LRTB,  COLOUR_MAUVE,  288, 299, 239, 250, 0x0,                         STR_RESIZE_BUTTON },                // SNGRFS_RESIZE
 { WIDGETS_END },
 };
 
 /* Window definition of the manage newgrfs window */
 static const WindowDesc _newgrf_desc = {
-	WDP_CENTER, WDP_CENTER, 300, 241, 300, 241,
+	WDP_CENTER, WDP_CENTER, 300, 251, 300, 251,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,

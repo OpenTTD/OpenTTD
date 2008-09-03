@@ -14,6 +14,7 @@
 #include "string_func.h"
 #include "gamelog.h"
 #include "network/network_type.h"
+#include "gfx_func.h"
 
 #include "fileio_func.h"
 #include "fios.h"
@@ -71,6 +72,8 @@ bool FillGRFDetails(GRFConfig *config, bool is_static)
 		/* GCF_UNSAFE is set if GLS_SAFETYSCAN finds unsafe actions */
 		if (HasBit(config->flags, GCF_UNSAFE)) return false;
 	}
+
+	config->windows_paletted = (_use_palette == PAL_WINDOWS);
 
 	return CalcGRFMD5Sum(config);
 }
@@ -481,11 +484,12 @@ bool GRFConfig::IsOpenTTDBaseGRF() const
 
 
 static const SaveLoad _grfconfig_desc[] = {
-	SLE_STR(GRFConfig, filename,   SLE_STR, 0x40),
-	SLE_VAR(GRFConfig, grfid,      SLE_UINT32),
-	SLE_ARR(GRFConfig, md5sum,     SLE_UINT8, 16),
-	SLE_ARR(GRFConfig, param,      SLE_UINT32, 0x80),
-	SLE_VAR(GRFConfig, num_params, SLE_UINT8),
+	    SLE_STR(GRFConfig, filename,         SLE_STR,    0x40),
+	    SLE_VAR(GRFConfig, grfid,            SLE_UINT32),
+	    SLE_ARR(GRFConfig, md5sum,           SLE_UINT8,  16),
+	    SLE_ARR(GRFConfig, param,            SLE_UINT32, 0x80),
+	    SLE_VAR(GRFConfig, num_params,       SLE_UINT8),
+	SLE_CONDVAR(GRFConfig, windows_paletted, SLE_BOOL,   101, SL_MAX_VERSION),
 	SLE_END()
 };
 
@@ -508,6 +512,7 @@ static void Load_NGRF()
 	while (SlIterateArray() != -1) {
 		GRFConfig *c = CallocT<GRFConfig>(1);
 		SlObject(c, _grfconfig_desc);
+		if (CheckSavegameVersion(101)) c->windows_paletted = (_use_palette == PAL_WINDOWS);
 		AppendToGRFConfigList(&_grfconfig, c);
 	}
 
