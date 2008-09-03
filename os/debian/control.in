@@ -1,4 +1,4 @@
-Source: openttd
+Source: PACKAGE
 Section: contrib/games
 Priority: optional
 Maintainer: Matthijs Kooijman <m.kooijman@student.utwente.nl>
@@ -6,7 +6,7 @@ Uploaders: Jordi Mallach <jordi@debian.org>
 Build-Depends: debhelper (>= 4.0.0), dpatch, libsdl-dev, zlib1g-dev, libpng-dev, libfreetype6-dev, libfontconfig-dev
 Standards-Version: 3.7.2
 
-Package: openttd
+Package: PACKAGE
 Architecture: any
 Depends: ${shlibs:Depends}, debconf
 Suggests: timidity, freepats
