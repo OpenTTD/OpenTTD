@@ -219,7 +219,7 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 			if (mta != MTA_FINAL_DELIVERY) {
 				CargoPacket *cp_new = new CargoPacket();
 
-				Money fs = cp->feeder_share * count / cp->count;
+				Money fs = cp->feeder_share * count / static_cast<uint>(cp->count);
 				cp->feeder_share -= fs;
 
 				cp_new->source          = cp->source;
