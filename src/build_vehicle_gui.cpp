@@ -168,8 +168,8 @@ static int CDECL TrainEngineRunningCostSorter(const void *a, const void *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
 
-	Money va = rvi_a->running_cost * GetPriceByIndex(rvi_a->running_cost_class) * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
-	Money vb = rvi_b->running_cost * GetPriceByIndex(rvi_b->running_cost_class) * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	Money va = rvi_a->running_cost * GetPriceByIndex(rvi_a->running_cost_class);
+	Money vb = rvi_b->running_cost * GetPriceByIndex(rvi_b->running_cost_class);
 	int r = ClampToI32(va - vb);
 
 	return _internal_sort_order ? -r : r;
@@ -195,8 +195,11 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 
 static int CDECL TrainEngineCapacitySorter(const void *a, const void *b)
 {
-	int va = RailVehInfo(*(const EngineID*)a)->capacity;
-	int vb = RailVehInfo(*(const EngineID*)b)->capacity;
+	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
+	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
+
+	int va = rvi_a->capacity * (rvi_a->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
+	int vb = rvi_b->capacity * (rvi_b->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1);
 	int r = va - vb;
 
 	if (r == 0) {
