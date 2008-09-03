@@ -7,22 +7,49 @@
 ; Metadata contains information about the name, version and palette
 ; of the graphics set.
 ;
+; == Getting started ==
+; - you can't add comments after values
+; - you have to fill the MD5 checksum for each file
+; - you may not miss any of the metadata or files items
+; - `openttd -h` lists all graphics replacements sets it found to be correct
+; - `openttd -d grf=1` shows warnings/errors when parsing an .obg file
+; - `openttd -I <name>` starts OpenTTD with the given set (case sensitive)
+; - adding `graphics_set = <name>` to the misc section of openttd.cfg makes
+;   OpenTTD start with that graphics set by default
+; - there is a command line tool for all platforms called md5sum that can
+;   create the MD5 checksum you need.
+; - all files specified in this file are search relatively to the path where
+;   this file is found, i.e. if the graphics files are in a subdir you have
+;   to add that subdir to the names in this file to! It will NOT search for
+;   a file named like specified in here.
+
 [metadata]
-name         = example  ; the name of the pack, preferably less than 16 characters
-shortname    = XMPL     ; the short name (4 characters), used to identify this set within NewGRFs
-version      = 0        ; the version of this graphics set (read as single integer)
-description  = foo      ; a fairly short description of the set
-palette      = DOS      ; palette used by the set; either DOS or Windows
+; the name of the pack, preferably less than 16 characters
+name         = example
+; the short name (4 characters), used to identify this set within NewGRFs
+shortname    = XMPL
+; the version of this graphics set (read as single integer)
+version      = 0
+; a fairly short description of the set
+description  = foo
+; palette used by the set; either DOS or Windows
+palette      = DOS
 
 ; The files section lists the files that replace sprites.
 ; The file names are case sensitive.
 [files]
-base         = TRG1.GRF     ; GRF file with the base sprites
-logos        = TRGI.GRF     ; GRF file with logos, original terrain generator sprites
-arctic       = TRGC.GRF     ; GRF file with extra arctic sprites
-tropical     = TRGH.GRF     ; GRF file with extra tropical sprites
-toyland      = TRGT.GRF     ; GRF file with extra toyland sprites
-extra        = OPENTTDD.GRF ; NewGRF file using Actions 5, 7, 9 and A to replace sprites
+; GRF file with the base sprites
+base         = TRG1.GRF
+; GRF file with logos, original terrain generator sprites
+logos        = TRGI.GRF
+; GRF file with extra arctic sprites
+arctic       = TRGC.GRF
+; GRF file with extra tropical sprites
+tropical     = TRGH.GRF
+; GRF file with extra toyland sprites
+toyland      = TRGT.GRF
+; NewGRF file using Actions 5, 7, 9 and A to replace sprites
+extra        = OPENTTDD.GRF
 
 ; The md5s section lists the MD5 checksum for the files that replace them.
 ; Note that the list of files is case sensitive. Each GRF listed in the
