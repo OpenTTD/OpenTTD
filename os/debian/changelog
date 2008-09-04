@@ -1,4 +1,4 @@
-openttd (0.7~~svn-1) UNRELEASED; urgency=low
+openttd (0.7~svn-1) UNRELEASED; urgency=low
 
   * Unreleased SVN version. Versioned to allow normal upgrades to released
     versions.
