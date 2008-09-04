@@ -2375,7 +2375,8 @@ generate_main() {
 
 	# Create the main Makefile
 	echo "Generating Makefile..."
-	< $ROOT_DIR/Makefile.in sed "$SRC_REPLACE" > Makefile
+	echo "# Auto-generated file from 'Makefile.in' -- DO NOT EDIT" > Makefile
+	< $ROOT_DIR/Makefile.in sed "$SRC_REPLACE" >> Makefile
 	cp $ROOT_DIR/Makefile.bundle.in Makefile.bundle
 	echo "# Auto-generated file -- DO NOT EDIT" > Makefile.am
 	echo >> Makefile.am
@@ -2401,7 +2402,8 @@ generate_lang() {
 	mkdir -p $LANG_OBJS_DIR
 
 	echo "Generating lang/Makefile..."
-	< $ROOT_DIR/Makefile.lang.in sed "$SRC_REPLACE" > $LANG_OBJS_DIR/Makefile
+	echo "# Auto-generated file from 'Makefile.lang.in' -- DO NOT EDIT" > $LANG_OBJS_DIR/Makefile
+	< $ROOT_DIR/Makefile.lang.in sed "$SRC_REPLACE" >> $LANG_OBJS_DIR/Makefile
 	echo "DIRS += $LANG_OBJS_DIR" >> Makefile.am
 	echo "LANG_DIRS += $LANG_OBJS_DIR" >> Makefile.am
 }
@@ -2415,7 +2417,8 @@ generate_src_normal() {
 	mkdir -p $SRC_OBJS_DIR
 
 	echo "Generating $2/Makefile..."
-	< $ROOT_DIR/Makefile.src.in sed "$SRC_REPLACE" > $SRC_OBJS_DIR/Makefile
+	echo "# Auto-generated file from 'Makefile.src.in' -- DO NOT EDIT" > $SRC_OBJS_DIR/Makefile
+	< $ROOT_DIR/Makefile.src.in sed "$SRC_REPLACE" >> $SRC_OBJS_DIR/Makefile
 	echo "DIRS += $SRC_OBJS_DIR" >> Makefile.am
 	echo "SRC_DIRS += $SRC_OBJS_DIR" >> Makefile.am
 }
