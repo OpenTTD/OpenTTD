@@ -138,39 +138,42 @@ Function DetermineSVNVersion()
 		' Reset error and version
 		Err.Clear
 		version = "norev000"
+
+		' Set the environment to english
+		WshShell.Environment("PROCESS")("LANG") = "en"
+
 		' Do we have subversion installed? Check immediatelly whether we've got a modified WC.
 		Set oExec = WshShell.Exec("svnversion ../src")
 		If Err.Number = 0 Then
 			' Wait till the application is finished ...
 			Do While oExec.Status = 0
 			Loop
-		End If
-		If Err.Number = 0 And oExec.ExitCode = 0 Then
-			Dim modified
-			If InStr(OExec.StdOut.ReadLine(), "M") Then
-				modified = "M"
-			Else
-				modified = ""
-			End If
 
-			' Set the environment to english
-			WshShell.Environment("PROCESS")("LANG") = "en"
+			line = OExec.StdOut.ReadLine()
+			If line <> "exported" Then
+				Dim modified
+				If InStr(line, "M") Then
+					modified = "M"
+				Else
+					modified = ""
+				End If
 
-			' And use svn info to get the correct revision and branch information.
-			Set oExec = WshShell.Exec("svn info ../src")
-			If Err.Number = 0 Then
-				Do
-					line = OExec.StdOut.ReadLine()
-					If InStr(line, "URL") Then
-						url = line
-					End If
-					If InStr(line, "Last Changed Rev") Then
-						version = "r" & Mid(line, 19) & modified
-					End If
-				Loop While Not OExec.StdOut.atEndOfStream
-			End If
-		End If
-	End If
+				' And use svn info to get the correct revision and branch information.
+				Set oExec = WshShell.Exec("svn info ../src")
+				If Err.Number = 0 Then
+					Do
+						line = OExec.StdOut.ReadLine()
+						If InStr(line, "URL") Then
+							url = line
+						End If
+						If InStr(line, "Last Changed Rev") Then
+							version = "r" & Mid(line, 19) & modified
+						End If
+					Loop While Not OExec.StdOut.atEndOfStream
+				End If ' Err.Number = 0
+			End If ' line <> "exported"
+		End If ' Err.Number = 0
+	End If ' InStr(version, "$")
 
 	If version <> "norev000" Then
 		If InStr(url, "branches") Then
@@ -178,7 +181,7 @@ Function DetermineSVNVersion()
 			url = Mid(url, 1, InStr(2, url, "/") - 1)
 			version = version & Replace(url, "/", "-")
 		End If
-	Else
+	Else ' version <> "norev000"
 		' svn detection failed, reset error and try git
 		Err.Clear
 		Set oExec = WshShell.Exec("git rev-parse --verify --short=8 HEAD")
@@ -186,56 +189,65 @@ Function DetermineSVNVersion()
 			' Wait till the application is finished ...
 			Do While oExec.Status = 0
 			Loop
-		End If
-		If Err.Number = 0 And oExec.ExitCode = 0 Then
-			version = "g" & oExec.StdOut.ReadLine()
-			Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../src")
-			Do While oExec.Status = 0 And Err.Number = 0
-			Loop
-			If Err.Number = 0 And oExec.ExitCode = 1 Then
-				version = version & "M"
-			End If
 
-			Set oExec = WshShell.Exec("git symbolic-ref HEAD")
-			If Err.Number = 0 Then
-				line = oExec.StdOut.ReadLine()
-				line = Mid(line, InStrRev(line, "/") + 1)
-				If line <> "master" Then
-					version = version & "-" & line
-				End If
-			End If
-		Else
-			' try mercurial (hg)
+			If oExec.ExitCode = 0 Then
+				version = "g" & oExec.StdOut.ReadLine()
+				Set oExec = WshShell.Exec("git diff-index --exit-code --quiet HEAD ../src")
+				If Err.Number = 0 Then
+					' Wait till the application is finished ...
+					Do While oExec.Status = 0
+					Loop
+
+					If oExec.ExitCode = 1 Then
+						version = version & "M"
+					End If ' oExec.ExitCode = 1
+
+					Set oExec = WshShell.Exec("git symbolic-ref HEAD")
+					If Err.Number = 0 Then
+						line = oExec.StdOut.ReadLine()
+						line = Mid(line, InStrRev(line, "/") + 1)
+						If line <> "master" Then
+							version = version & "-" & line
+						End If ' line <> "master"
+					End If ' Err.Number = 0
+				End If ' Err.Number = 0
+			End If ' oExec.ExitCode = 0
+		End If ' Err.Number = 0
+
+		If version = "norev000" Then
+			' git detection failed, reset error and try mercurial (hg)
 			Err.Clear
 			Set oExec = WshShell.Exec("hg tip")
 			If Err.Number = 0 Then
 				' Wait till the application is finished ...
 				Do While oExec.Status = 0
 				Loop
-			End If
-			If Err.Number = 0 And oExec.ExitCode = 0 Then
-				line = OExec.StdOut.ReadLine()
-				version = "h" & Mid(line, InStrRev(line, ":") + 1, 8)
-				Set oExec = WshShell.Exec("hg status ../src")
-				If Err.Number = 0 Then
-					Do
-						line = OExec.StdOut.ReadLine()
-						If Len(line) > 0 And Mid(line, 1, 1) <> "?" Then
-							version = version & "M"
-							Exit Do
-						End If
-					Loop While Not OExec.StdOut.atEndOfStream
-				End If
-				Set oExec = WshShell.Exec("hg branch")
-				If Err.Number = 0 Then
-						line = OExec.StdOut.ReadLine()
-						If line <> "default" Then
-							version = version & "-" & line
-						End If
-				End If
-			End If
-		End If
-	End If
+
+				If oExec.ExitCode = 0 Then
+					line = OExec.StdOut.ReadLine()
+					version = "h" & Mid(line, InStrRev(line, ":") + 1, 8)
+					Set oExec = WshShell.Exec("hg status ../src")
+					If Err.Number = 0 Then
+						Do
+							line = OExec.StdOut.ReadLine()
+							If Len(line) > 0 And Mid(line, 1, 1) <> "?" Then
+								version = version & "M"
+								Exit Do
+							End If ' Len(line) > 0 And Mid(line, 1, 1) <> "?"
+						Loop While Not OExec.StdOut.atEndOfStream
+
+						Set oExec = WshShell.Exec("hg branch")
+						If Err.Number = 0 Then
+							line = OExec.StdOut.ReadLine()
+							If line <> "default" Then
+								version = version & "-" & line
+							End If ' line <> "default"
+						End If ' Err.Number = 0
+					End If ' Err.Number = 0
+				End If ' oExec.ExitCode = 0
+			End If ' Err.Number = 0
+		End If ' version = "norev000"
+	End If ' version <> "norev000"
 
 	DetermineSVNVersion = version
 End Function
