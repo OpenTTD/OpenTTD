@@ -26,6 +26,20 @@ GRFConfig *_grfconfig_newgame;
 GRFConfig *_grfconfig_static;
 
 
+/**
+ * Update the palettes of the graphics from the config file.
+ * This is needed because the config file gets read and parsed
+ * before the palette is chosen (one can configure the base
+ * graphics set governing the palette in the config after all).
+ * As a result of this we update the settings from the config
+ * once we have determined the palette.
+ */
+void UpdateNewGRFConfigPalette()
+{
+	for (GRFConfig *c = _grfconfig_newgame; c != NULL; c = c->next) c->windows_paletted = (_use_palette == PAL_WINDOWS);
+	for (GRFConfig *c = _grfconfig_static;  c != NULL; c = c->next) c->windows_paletted = (_use_palette == PAL_WINDOWS);
+}
+
 /* Calculate the MD5 Sum for a GRF */
 static bool CalcGRFMD5Sum(GRFConfig *config)
 {

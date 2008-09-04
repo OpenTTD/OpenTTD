@@ -195,6 +195,8 @@ static bool DetermineGraphicsPack()
 	return _used_graphics_set != NULL;
 }
 
+extern void UpdateNewGRFConfigPalette();
+
 /**
  * Determine the palette that has to be used.
  *  - forced palette via command line -> leave it that way
@@ -219,6 +221,8 @@ static void DeterminePalette()
 		default:
 			NOT_REACHED();
 	}
+
+	UpdateNewGRFConfigPalette();
 }
 
 /**
