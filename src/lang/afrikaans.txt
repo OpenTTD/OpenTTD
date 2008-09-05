@@ -585,6 +585,9 @@ STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aankoms
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukke / rampe
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Maatskappy informasie
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomie veranderings
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produksie veranderings van nywerhede wat by die speler bedien word
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksie veranderings van nywerhede wat deur mededingers bedien word
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Ander nywerheid produksie veranderings
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Raad / informasie op speler se voertuie
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuwe voertuie
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Veranderings na vrag aanvarde
@@ -929,6 +932,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Kies die
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Volskerm
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Kies die blokkie om OpenTTD in volleskerm te speel
+STR_FULLSCREEN_FAILED                                           :{WHITE}Volskerm metode gedop
 
 STR_OPTIONS_RES                                                 :{BLACK}Skerm resolusie
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1155,6 +1159,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ontsper
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Laattoe deele aankoop van ander maatskappye
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Wanneer sleep, plaas seine elke: {ORANGE}{STRING} teel(e)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Outomaties bou semaphores voor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Stel in staak die sein GUI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Die dorp uitleg "niks meer paaie" is nie geldig in die draaiboek redigeerder
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Kies dorp-pad uitleg: {ORANGE}{STRING}
@@ -1194,6 +1199,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Verander stel waarde
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Sommige of almal van die verstek diens pouse(s) onder is onversoenbaar met die gekies stel! 5-90% en 30-800 dae is geldig
+
 
 STR_TEMPERATE_LANDSCAPE                                         :Magtig landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :Onder-noordpool landskap
@@ -1262,6 +1268,7 @@ STR_LANDINFO_CANAL                                              :Kanaal
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan nie sluite hier bou nie...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Bou sluite
 STR_LANDINFO_LOCK                                               :Sluit
+
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...baken is in gebruik!
 
@@ -1349,6 +1356,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Invoeg d
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliente
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliente oplyn / Kliente maks{}Maatskappye oplyn / Maatskappye maks
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPEL INFORMASIE
 STR_NETWORK_CLIENTS                                             :{SILVER}Kliente:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  {WHITE}{STRING}
@@ -1686,6 +1697,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebou moet eers afgebreek word
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populasie: {ORANGE}{COMMA}{BLACK}  Huise: {ORANGE}{COMMA}
@@ -2290,6 +2302,9 @@ STR_RELOCATE_HQ                                                 :{BLACK}Beweeg H
 STR_COMPANY_PASSWORD                                            :{BLACK}Wagwoord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Wagwoord-beskerm jou maatskappy om onmagtig gebruikers te belet van verbinding
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Stel maatskappy wagwoord
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gee die maatskappy die nuwe wagwoord
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Maatskappy wagwoord
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}W�eld Insinking!{}{}Finansieel eksperte vrees ergste as ekonomie inmekaar sak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Insinking Oor!{}{}Oplewing in sake gee vertroue na nywerhede as ekonomie versterk!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Tokkel groot/klein venster groote
@@ -2606,6 +2621,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Burgers herdenk . . .{}Eerste trein arriveer by {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Aanwyse)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trein in die weg
+
+
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (Nie gerooster nie)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reis vir {STRING}
@@ -2973,6 +2990,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Jou omko
 STR_BRIBE_FAILED_2                                              :{WHITE}'n streek navorser uitgevind
 STR_BUILD_DATE                                                  :{BLACK}Gebou: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Aanwysend prestasie gradering
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Aanwyse
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3054,6 +3072,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Gelyke 
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Versoenbaar GRF(s) gelaai vir vermis lêers
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Vermis GRF lêers is gestrem
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Vermis GRF lêer(s) om speletjie te laai
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Gewoonte koers
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wissel koers: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3177,6 +3197,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Herpasba
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vrag tipes
 STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalwe {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. Traktiewe Poging: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 
@@ -3385,4 +3408,13 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Verander
 STR_FACE_TIE                                                    :Das:
 STR_FACE_EARRING                                                :Oorbel:
 STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Verander das of oorbel
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

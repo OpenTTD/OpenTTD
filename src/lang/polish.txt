@@ -17,8 +17,10 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Wymagany płaski teren
 STR_0008_WAITING                                                :{BLACK}Czeka: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} skierowany z {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akceptuje: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Akceptuje: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Zasoby: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Pasażerowie
 STR_000F_PASSENGERS.d                                           :pasażerów
@@ -429,6 +431,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Całkowita poje
 STR_SORT_BY_MAX_SPEED                                           :Prędkość maks.
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartość
+STR_SORT_BY_LENGTH                                              :Dlugosc
 STR_SORT_BY_FACILITY                                            :Typ stacji
 STR_SORT_BY_WAITING                                             :Wartość czekającego ładunku
 STR_SORT_BY_RATING_MAX                                          :Ocena ładunku
@@ -536,6 +539,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koszt cz
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koszt czyszczenia: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Brak
 STR_01A7_OWNER                                                  :{BLACK}Właściciel: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Wlasciciel drogi: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Wlasciciel linii tramwajowej: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Wlasciciel linii kolejowej: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokalne władze: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Brak
 STR_01AA_NAME                                                   :{BLACK}Nazwa
@@ -637,6 +643,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybyc
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybycie pierwszego pojazdu do stacji przeciwnika
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Wypadki / klęski
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacja firmy
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Otwarcie obiektow przemyslowych
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zamkniecie obiektow przemyslowych
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmiany ekonomiczne
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Zmiany produkcji przedsiębiorstw obsługiwanych przez gracza
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Zmiany produkcji przedsiębiorstw obsługiwanych przez przeciwników
@@ -810,6 +818,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umieść
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umieść nadajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiuj obszar pustyni.{}Wciśnij i trzymaj CTRL by usunąć
 STR_CREATE_LAKE                                                 :{BLACK}Stwórz akwen wodny.{}Tworzy kanał, chyba że przyrzymany jest CTRL na poziomie morza, wtedy pobliski teren zostanie zatopiony
+STR_CREATE_RIVER                                                :{BLACK}Umieszczanie rzek.
 STR_0290_DELETE                                                 :{BLACK}Skasuj
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto
 STR_0292_SAVE_SCENARIO                                          :Zapisz scenariusz
@@ -1246,6 +1255,9 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwól
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk{P e i ek}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Uaktywnij okno budowania sygnałów: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Tylko zwykle
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Tylko zaawansowane
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Wszystkie
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Plan sieci dróg "bez nowych dróg" nie jest poprawny dla edytora scenariuszy
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Wybierz plan sieci dróg miejskich: {ORANGE}{STRING}
@@ -1254,6 +1266,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standardowy
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepsze drogi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :siatka 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :siatka 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :losowo
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozycja głównego paska narzędzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Z lewej strony
@@ -1285,6 +1298,16 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmiana wartości
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Niektóre lub wszystkie domyślne okresy między serwisowania są sprzeczne z wybranymi! 5-90% i 30-800 dni są poprawne
+
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Wyszukiwanie tras dla pociagow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Rekomendowane)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orginalne {BLUE}(Rekomendowane)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nie rekomendowane)
 
 STR_TEMPERATE_LANDSCAPE                                         :Krajobraz umiarkowany
 STR_SUB_ARCTIC_LANDSCAPE                                        :Krajobraz arktyczny
@@ -1354,6 +1377,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Nie moż
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Buduj śluzy
 STR_LANDINFO_LOCK                                               :Śluza
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}NIe mozna tutaj umiescic rzeki...
+STR_LANDINFO_RIVER                                              :Rzeka
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boja w użyciu!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Współrzędne: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1420,6 +1446,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Gra Wiel
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nazwa gracza:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}To jest nazwa pod którą będą Cię widzieć inni gracze
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Wprowadz swoje imie
 STR_NETWORK_CONNECTION                                          :{BLACK}Połączenie:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Wybierz między grą w internecie a grą w sieci lokalnej
 
@@ -1440,6 +1467,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Wpisz ad
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientów
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientów podłączonych / maks.{}Firm podłączonych / maks.
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O GRZE
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienci:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Język:  {WHITE}{STRING}
@@ -2747,6 +2778,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociąg na drodze
 
+
+
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Przejazd (bez ustalonego czasu)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Przejazd przez {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
@@ -2788,9 +2821,9 @@ STR_8820_RENAME                                                 :{BLACK}Zmień n
 STR_8823_SKIP                                                   :{BLACK}Pomiń
 STR_8824_DELETE                                                 :{BLACK}Usuń
 STR_8826_GO_TO                                                  :{BLACK}Idź do
-STR_REFIT                                                       :{BLACK}Przebuduj
-STR_REFIT_TIP                                                   :{BLACK}Wybierz do przewozu jakiego ładunku przebudować pojazd w tym zadaniu. CTRL+klik usuwa polecenie przebudowy
-STR_REFIT_ORDER                                                 :(Przebuduj na {STRING})
+STR_REFIT                                                       :{BLACK}Przeksztalc
+STR_REFIT_TIP                                                   :{BLACK}Wybierz typ ladunku do przeksztalcenia. Klikniecie z CTRL usuwa zmiane
+STR_REFIT_ORDER                                                 :(Przeksztalc na {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
@@ -2873,7 +2906,7 @@ STR_RESET_LATENESS                                              :{BLACK}Wyzeruj 
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
 STR_TRAIN_STOPPING_VEL                                          :{RED}Hamowanie, {VELOCITY}
-STR_INCOMPATIBLE_RAIL_TYPES                                     :Niezgodne typy szyn
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Niezgodne typy torów
 STR_TRAIN_NO_POWER                                              :{RED}Brak zasilania
 STR_TRAIN_START_NO_CATENARY                                     :Ta trasa nie jest zelektryfikowana, wiec pociąg nie wystartuje
 
@@ -3114,6 +3147,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Twoja pr
 STR_BRIBE_FAILED_2                                              :{WHITE}wykryta przez lokalnych badaczy.
 STR_BUILD_DATE                                                  :{BLACK}Zbudowano: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Szczegóły oceny działalności
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Szczegóły
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3197,6 +3231,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Brakują
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Brak plików GRF potrzebnych do wczytania gry
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Brakujące pliki GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłączenie pauzy może zawiesić OpenTTD. Nie zgłaszaj błędów o powtarzających się zawieszeniach.{}Czy na pewno chcesz wyłączyć pauzę?
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Własna waluta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3320,6 +3356,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Można p
 STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy ładunków
 STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprócz {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Siła Pociągowa: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 
@@ -3546,4 +3585,10 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Zamiana 
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gęstość sygnałów przy przeciąganiu. CTRL-przeciągnij aby wypełnić trasę sygnałami.
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zwiększ gęstość sygnałów przy przeciąganiu
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

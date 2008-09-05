@@ -3196,10 +3196,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Punteggi
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Impostazioni NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Impostazioni NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Applica cambiamenti
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Alterna tavolozze
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Alterna la tavolozza colori utilizzata dal NewGRF selezionato.{}Utilizzare questa impostazione se la grafica di questo NewGRF durante il gioco appare rosa.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Imposta parametri
 STR_NEWGRF_TIP                                                  :{BLACK}Elenco di tutti i pacchetti NewGRF installati. Fare clic su uno di essi per cambiarne le impostazioni
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Attualmente non ci sono file NewGRF installati! Fare riferimento al manuale per istruzioni sull'installazione di grafica aggiuntiva
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome file: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Tavolozza: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}Somma MD5: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Si stanno per apportare cambiamenti a una partita in corso: questo potrebbe causare un crash di OpenTTD.{}Si è assolutamente sicuri?
@@ -3219,6 +3222,8 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :il file GRF che
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Troppi file NewGRF caricati.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Caricare {STRING} come NewGRF statico insieme a {STRING} può causare errori di sincronizzazione
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inatteso.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietà sconosciuta per l'azione 0.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativo di utilizzare un ID non valido.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carica il profilo selezionato
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salva profilo
@@ -3612,14 +3617,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Segnale 
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-segnale (semaforico){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Segnale combinato (semaforico){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Segnale avanzato (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. Può essere attraversato al contrario.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale avanzato a senso unico (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. Non può essere attraversato al contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Segnale avanzato (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione. Può essere attraversato al contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale avanzato a senso unico (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione. Non può essere attraversato al contrario.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Segnale normale (luminoso){}I segnali sono necessari per impedire ai treni di scontrarsi su reti ferroviarie con più di un treno.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-segnale (luminoso){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Segnale avanzato (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. Può essere attraversato al contrario.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale avanzato a senso unico (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione fino a un punto sicuro. Non può essere attraversato al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Segnale avanzato (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione. Può essere attraversato al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale avanzato a senso unico (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione. Non può essere attraversato al contrario.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Riduce la distanza fra i segnali costruiti

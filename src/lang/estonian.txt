@@ -1323,6 +1323,7 @@ STR_WAYPOINT                                                    :{WHITE}Meldepun
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vali meldepunkti liik
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} rong{P "" id}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muuda meldepunkti nime
@@ -2956,6 +2957,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Vaheta r
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Raudteesõiduki tüübinime ei saa vahetada...
 STR_CLEAR_TIME                                                  :{BLACK}Tühista aeg
 STR_RESET_LATENESS                                              :{BLACK}Tühista hilinemisloendur
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Muuda meldepunkti nime
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Peatub
 STR_TRAIN_STOPPING_VEL                                          :{RED}Peatub, {VELOCITY}
@@ -3245,10 +3248,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Kokku pu
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF seadistused
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Uue graafika sätted
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Rakenda muudatused
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Vaheta paletti
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Vaheta valitud NewGRF-i paletti.{}Tee seda, kui NewGRF-i graafika paistab mängus roosa.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Vali parameetrid
 STR_NEWGRF_TIP                                                  :{BLACK}Nimekiri kõikidest uue graafika sätted mida oled installeerinud. Vajuta komplektile et vahetada sätteid
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Sa ei ole installeerinud ühtegi uue graafika komplekti! Vaata õpetust et vaadata juhendit uue graafika installeerimisek
 STR_NEWGRF_FILENAME                                             :{BLACK}Faili nimi: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Palett: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Sa oled tegemas muudatusi töötavasse mängu; see võib OpenTTD kokku jooksutada.{}Kas sa oled täielikult veendunud selles?
@@ -3267,6 +3273,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fail, mis tehti tõlkimiseks,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liiga palju NewGRF-e on laaditud.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laadides {STRING} staatilise NewGRF-na koos {STRING} võib põhjustada sünkrooni katkemist.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Ootamatu sprait.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tundmatu Action 0 omadus.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Vale tunnuse kasutamise proov.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laadi valitud eelseadistused
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvesta eelseadistus

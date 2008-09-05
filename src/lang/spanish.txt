@@ -1019,6 +1019,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Auto ren
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Auto renovar ha fallado con el barco {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Auto renovar ha fallado con la aeronave {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren {COMMA} es demasiado largo tras el cambio
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No se han aplicado reglas de autoreemplazo/renovación.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(límite de dinero)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configurar Parches
@@ -1269,6 +1270,7 @@ STR_WAYPOINT                                                    :{WHITE}Punto de
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleccione tipo de punto de paso
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Tren{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nombre del punto de paso
@@ -2902,6 +2904,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renombra
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}No se puede renombrar tipo de vehículo...
 STR_CLEAR_TIME                                                  :{BLACK}Limpiar Horario
 STR_RESET_LATENESS                                              :{BLACK}Resetear Retrasos
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Cambiar nombre del punto de paso
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Parándose
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose, {VELOCITY}
@@ -3213,6 +3217,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :el fichero GRF ha sido diseñado para ser traducido
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs han sido cargados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {STRING} como NewGRF estático con {STRING} puede causar desincronizaciones.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propiedad Acción 0 desconocida.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar un ID incorrecto
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Cargar la programación seleccionada
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Grabar programación

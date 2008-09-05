@@ -486,6 +486,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Räumung
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Räumungskosten: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :k.A.
 STR_01A7_OWNER                                                  :{BLACK}Eigentümer: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Strassenbesitzer: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Strassenbahnbesitzer: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Schienenbesitzer: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Gehört zur Gemeinde: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Keine
 STR_01AA_NAME                                                   :{BLACK}Name
@@ -587,6 +590,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station eines Gegners
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Unfälle / Katastrophen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmendaten
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Eröffnung von Industrien
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Schliessung von Industrien
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produktionsänderungen bei vom Spieler belieferten Industriebetrieben
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsänderungen bei von Wettbewerbern belieferten Industriebetrieben
@@ -982,6 +987,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Fehler b
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Fahrplan kann nicht kopiert werden...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ende des gemeinsam genutzten Fahrplans - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Zug {COMMA} kann keinen Weg zum Ziel finden.
 STR_TRAIN_IS_LOST                                               :{WHITE}Zug {COMMA} hat sich verirrt.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Einkommen von Zug {COMMA} war letztes Jahr {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europäische Währungsunion!{}{}Der Euro wird einzige Währung für alltägliche Zahlungsvorgänge.
@@ -1166,8 +1172,12 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Erlaube
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatischer Bau von Formsignalen bis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standard gebaute Signalart: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Fortgeschritten
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Durchlaufen der Signalarten: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :nur Normale
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :nur Erweiterte
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Der Stadtaufbau "keine weiteren Straßen" ist im Szenarieneditor nicht möglich
@@ -1291,6 +1301,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Schleuse
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Schleusen bauen
 STR_LANDINFO_LOCK                                               :Schleuse
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Kann hier keine Flüsse platzieren...
 STR_LANDINFO_RIVER                                              :Fluss
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... Boje ist in Benutzung
@@ -1359,6 +1370,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Mehrspie
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spielername:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Dieser Name wird Sie anderen Spielern gegenüber identifizieren
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Bitte Ihren Name eingeben
 STR_NETWORK_CONNECTION                                          :{BLACK}Verbindung:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Wähle zwischen Internet oder LAN-Verbindung aus
 
@@ -1369,6 +1381,7 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Name
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Name des Spiels
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Sprache, Server-Version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Ein Spiel der Liste durch Anklicken wählen
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Zuletzt besuchtes Spiel:
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Server suchen
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Netzwerk nach einem Server durchsuchen
@@ -1380,12 +1393,15 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Teilnehmer
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Teilnehmer anwesend / max.
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Spielfeldgröße
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Spielfeldgröße{}Klicke um nach größe zu sortieren
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Heutiges Datum
 
 STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Jahre
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Jahre{}die das Spiel schon läuft
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPIEL-INFO
 STR_NETWORK_CLIENTS                                             :{SILVER}Teilnehmer:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1409,6 +1425,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Neues Sp
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spielname:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Der Name des Spieles wird anderen Spielern im Mehrspielerdialog angezeigt
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Namen für das Netzwerkspiel eingeben
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Passwort setzen
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Vergebe ein Passwort, um zu verhindern, dass unbefugte Leute beitreten können
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Spielfeld auswählen:
@@ -1563,6 +1580,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRIN
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] an {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
 STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Chattext eingeben
 STR_NETWORK_NAME_CHANGE                                         :ändert seinen Namen in
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}Der Server hat das Spiel beendet
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Der Server startet neu...{}Bitte warten...
@@ -1659,9 +1677,11 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit norma
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleise mit Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleis mit erweitertem Signal
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Vor- und Hauptsignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Haupt- und Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleise mit normalen und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Gleis mit normalem und erweitertem Signal
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Vor- und Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleise mit Vor-  und Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Gleise mit Ausfahr- und Kombinationssignalen
@@ -1714,6 +1734,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Straße mit Lat
 STR_1816_TREE_LINED_ROAD                                        :Straße mit Bäumen
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Fahrzeugdepot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Bahnübergang
+STR_TRAMWAY                                                     :Straßenbahn
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Bushaltestelle kann nicht entfernt werden...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}LKW-Ladestelle kann nicht entfernt werden...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Straßenbahnhaltestelle kann nicht entfernt werden...
@@ -1729,6 +1750,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebäude muss erst abgerissen werden
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Stadt)
 STR_2006_POPULATION                                             :{BLACK}Bevölkerung: {ORANGE}{COMMA}{BLACK}  Häuser: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Stadt umbenennen
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Die Stadt kann nicht umbenannt werden...
@@ -1938,6 +1960,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Werftaus
 STR_3804_WATER                                                  :Wasser
 STR_3805_COAST_OR_RIVERBANK                                     :Küste oder Flussufer
 STR_3806_SHIP_DEPOT                                             :Werft
+STR_AQUEDUCT                                                    :Aquädukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...kann nicht auf Wasser gebaut werden
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Kanal muss erst abgerissen werden
 
@@ -1965,6 +1988,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Neues Sp
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Wähle Szenario (grün), vorgegebens Spiel (blau), oder ein Spiel nach dem Zufallsprinzip
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Spiel nach Zufallsprinzip erstellen
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Reliefkarte laden
+STR_SAVE_OSKTITLE                                               :{BLACK}Name für das savegame eingeben
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} im Weg
@@ -2654,10 +2678,55 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Z
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Der erste Zug erreicht {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Zug ist im Weg
+STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
+STR_ORDER_GO_TO                                                 :Gehe zu
+STR_ORDER_GO_NON_STOP_TO                                        :Gehe non-stop zu
+STR_ORDER_GO_VIA                                                :Gehe über
+STR_ORDER_GO_NON_STOP_VIA                                       :Gehe non-stop über
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vollladen mit beliebiger Fracht
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lade wenn verfügbar
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Vollladen mit jeder Fracht
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Vollladen mit beliebiger Fracht
+STR_ORDER_DROP_NO_LOADING                                       :kein Beladen
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles entladen
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Entladen sofern akzeptiert
+STR_ORDER_DROP_UNLOAD                                           :Alles entladen
+STR_ORDER_DROP_TRANSFER                                         :Verlagern
+STR_ORDER_DROP_NO_UNLOADING                                     :Kein entladen
+STR_ORDER_FULL_LOAD                                             :(Vollladen)
+STR_ORDER_FULL_LOAD_ANY                                         :(Vollladen mit jeglicher Frach)
+STR_ORDER_NO_LOAD                                               :(kein Beladen)
+STR_ORDER_UNLOAD                                                :(Entladen und laden)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Entladen und auf volle Ladung warten)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Entladen und leer verlassen)
+STR_ORDER_NO_UNLOAD                                             :(Nicht entladen und laden)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nicht entladen und auf volle ladung warten)
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Erweiterten Befehl einfügen
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gehe zum nächsten Depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gehe zum nächsten Hangar
+STR_ORDER_TRAIN_DEPOT                                           :Zugdepot
+STR_ORDER_SHIP_DEPOT                                            :Werft
 
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Vergleich der Farzeuginformation mit eingegebenen Wert
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wert der mit Farzeuginformation verglichen wird
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Wert für den Vergleich eingeben
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Ladezustand (Prozent)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Zuverlässigkeit
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Höchstgeschwindigkeit
+STR_ORDER_CONDITIONAL_AGE                                       :Fahrzeugalter (Jahre)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Benötigt Inspektion
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Immer
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :ist gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :ist ungleich
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :ist weniger als
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :ist weniger als oder gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :ist mehr als
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :ist mehr als oder gleich
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :ist wahr
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ist falsch
+STR_CONDITIONAL_UNCONDITIONAL                                   :Springe zu Befehl {COMMA}
+STR_CONDITIONAL_NUM                                             :Springe zu Befehl {COMMA} wenn {STRING} {STRING} {COMMA}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Fahren (ohne Fahrplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING} lang fahren
@@ -2705,6 +2774,7 @@ STR_REFIT_TIP                                                   :{BLACK}Frachtar
 STR_REFIT_ORDER                                                 :(umrüsten auf {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Fahrplan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zur Fahrplanansicht wechseln
+STR_ORDER_VIEW                                                  :{BLACK}Aufträge
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Aufträge)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ende der Aufträge - -
 STR_SERVICE                                                     :{BLACK}Wartung
@@ -2713,6 +2783,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Laden / Entladen
+STR_LEAVING                                                     :{LTBLUE}verlassend
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Zug muss im Depot angehalten sein
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Zug kann nicht ins Depot geschickt werden...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Kein Platz für weitere Aufträge
@@ -2782,12 +2853,15 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zugtyp u
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Zugtyp kann nicht umbenannt werden...
 STR_CLEAR_TIME                                                  :{BLACK}Zeit löschen
 STR_RESET_LATENESS                                              :{BLACK}Verspätungszähler zurücksetzen
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Wegpunktname ändern
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Halte an
 STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatible Gleistypen
 STR_TRAIN_NO_POWER                                              :{RED}Keine Energie
 STR_TRAIN_START_NO_CATENARY                                     :Wegen fehlender Oberleitung kann der Zug nicht starten.
+STR_TRAIN_STUCK                                                 :{ORANGE}Warte auf freie Wege
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} jetzt erhältlich!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2851,6 +2925,7 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ausgewä
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY} pro Jahr{}Ladevermögen: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapazität: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fahrzeug{P "" e}{STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name des Fahrzeuges
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Fahrzeug kann nicht benannt werden...
@@ -2875,6 +2950,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Straßen
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wählen Sie aus, welche Fracht das Straßenfahrzeug transportieren soll
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Wasserwegerrichtung
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Wasserwegerrichtung
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Wasserwege
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Hafen kann hier nicht gebaut werden...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Werft
 STR_9804_NEW_SHIPS                                              :{BLACK}Neue Schiffe
@@ -2927,6 +3005,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Schiff k
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Die Einwohner feiern . . .{}Das erste Schiff erreicht {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Positionsboje, wird als Wegpunkt benötigt
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Boje kann hier nicht platziert werden...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Aquädukt bauen
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Kann hier kein Aquädukt bauen...
 STR_9836_RENAME                                                 :{BLACK}Umbenennen
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Schiff umbenennen
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Schiff umbenennen
@@ -3059,6 +3139,8 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Erreicht
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-Einstellungen
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Änderungen anwenden
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palette ändern
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Farbpalette der ausgewählten NewGRF ändern.{}Ausführen wenn die Grafiken der NewGRF im Spiel pink dargestellt werden
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parameter setzen
 STR_NEWGRF_TIP                                                  :{BLACK}Eine Liste aller NewGRF-Sets, die installiert sind. Per Klick auswählen.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Keine NewGRF-Dateien installiert. Bitte Installationsanleitung im Handbuch nachschlagen.
@@ -3118,6 +3200,7 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF-Dat
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das beenden der PAuse kann OpenTTD zum Abstürzen bringen. Bitte sende keine Fehlerberichte bei auftretenden Fehlern. {}Willst du die Pause wirklich beenden?
 
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Siele wurde in einer version ohne Strassenbahnunterstützung gespeichert. Alle Strassenbahnen wurden entfernt.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3348,6 +3431,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transpar
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten, einstellen
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparente Oberleitungen. Strg.+klick zum feststellen.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Objekte unsichtbar machen anstelle von transparent
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3403,6 +3487,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Name ber
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Zum nächsten Schild wechseln
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Zum vorherigen Schild wechseln
+STR_SIGN_OSKTITLE                                               :{BLACK}Gebe einen namen für dieses Schild ein
 
 ########
 

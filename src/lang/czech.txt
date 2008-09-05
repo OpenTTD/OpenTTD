@@ -623,13 +623,13 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Vymazat
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Uložit
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Momentální program skladeb
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Současný program skladeb
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Zvolit program 'všechny skladby'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Zvolit program 'staré skladby'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Zvolit program 'nové skladby'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Zvolit program 'Volba 1' (uživatelsky nastavený)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Zvolit program 'Volba 2' (uživatelsky nastavený)
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Vymaž aktuální program (jen u Volby 1 a 2)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Vyprázdnit současný program (jen u Voleb 1 a 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Uložit nastavení hudby
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Skladba se přidá do zvoleného programu (Volba 1 nebo 2) klepnutím na její název
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Hudební stopu odstraníš ze současného programu (pouze u vlastního) kliknutím na ni
@@ -803,7 +803,7 @@ STR_0298_LOAD_SCENARIO                                          :{WHITE}Otevří
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Uložit mapu
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Hrát mapu
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Hrát z výškové mapy
-STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Začne novou hru s použitím výškové mapy k vytvoření krajiny
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Začít novou hru s krajinou vytvořenou z výškové mapy
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Určite chceš opustit toto mapu?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Ukončit editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... může být budováno jen ve městech s populací 1200 lidí a více
@@ -827,7 +827,7 @@ STR_02BB_TOWN_DIRECTORY                                         :Seznam měst
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Názvy dopravních prostředků
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Základní
-STR_02BF_CUSTOM                                                 :Uživatelské
+STR_02BF_CUSTOM                                                 :Vlastní
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Uložit vlastní jména
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Výběr názvů dopravních prostředků
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Uložit uživatelské názvy dopravních prostředků na disk
@@ -836,8 +836,8 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Možnosti hry
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavení obtížnosti
-STR_MENU_CONFIG_PATCHES                                         :Nastavení patchů
-STR_NEWGRF_SETTINGS                                             :Nastavení newgrf
+STR_MENU_CONFIG_PATCHES                                         :Pokročilé nastavení
+STR_NEWGRF_SETTINGS                                             :Nastavení grafik
 STR_TRANSPARENCY_OPTIONS                                        :Nastavení průhlednosti
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Zobrazení jmen měst
@@ -896,14 +896,14 @@ STR_02F7_OFF                                                    :Vypnuto
 STR_02F8_EVERY_3_MONTHS                                         :Každé 3 měsíce
 STR_02F9_EVERY_6_MONTHS                                         :Každých 6 měsíců
 STR_02FA_EVERY_12_MONTHS                                        :Každých 12 měsíců
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Založit novou hru
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Hrát novou hru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrát hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvořit vlastní mapu - scénář
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vybrat hru pro jednoho hráče
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vyberte hru pro 2-8 hráčů
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Hrát ve 2-8 hráčích
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Zobrazit možnosti hry
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Zobrazit nastavení obtížnosti
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Založit novou hru, použít scénář
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Nastavit obtížnost
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Hrát novou hru ze scénáře
 STR_0304_QUIT                                                   :{BLACK}Ukončit
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Ukončit 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
@@ -925,13 +925,13 @@ STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... může být budováno jen ve městech
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... může být budováno jen v pralesech
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}... může být budováno jen na pouštích
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}... může být budováno jen v poušti
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUZA  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot úspěšně uložen jako '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot neuložen!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Zakoupit zemi pro budoucí užití
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Zakoupit pozemek pro budoucí užití
 STR_032F_AUTOSAVE                                               :{RED}Automatické ukládání
 STR_SAVING_GAME                                                 :{RED}*  *  UKLÁDÁ SE HRA  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukládání ještě běží,{}počkej prosím, než doběhne!
@@ -1079,9 +1079,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {CO
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Žádné pravidlo pro výměnu vozidel se nepoužilo.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finanční limit)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Nastavit patche
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavit patche
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Nastavit patche
+STR_CONFIG_PATCHES                                              :{BLACK}Pokročilé nastavení
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Ovlivnit, jak se hra chová pomocí velkého množství voleb
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Ovlivnit, jak se hra chová pomocí velkého množství voleb
 
 STR_CONFIG_PATCHES_OFF                                          :vypnuto
 STR_CONFIG_PATCHES_ON                                           :zapnuto
@@ -1132,7 +1132,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ano, u všech v
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varovat, pokud vlak prodělává: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozidlům se nikdy nezastaví výroba ('nezastarají'): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky nahradit dopravní prostředek, když zestárne
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před / po dosažení maximálního stáří
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před / po dosažení nejvyššího stáří
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimální částka pro automatické obnovení: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Doba zobrazení chybové zprávy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazovat populaci města v jeho popisku: {ORANGE}{STRING}
@@ -1439,7 +1439,7 @@ STR_NETWORK_CONNECTION                                          :{BLACK}Připoje
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Vyber si mezi hrou na internetu nebo v místní síti
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Spustit server
-STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Spustí tvůj vlastní server
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Spustit vlastní server
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Název
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Název hry
@@ -1456,14 +1456,14 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Vlož IP
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Hráčů
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Hráčů online / maximálně
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Hráčů on-line / nejvíce{}Společností on-line / nejvíce
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Rozměry mapy
 STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Rozměry mapy ve hře{}Kliknutím hry seřadíš podle plochy
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
-STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Aktuální datum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Současné datum
 
 STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Roků
 STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Počet let,{}po které už hra běží
@@ -1476,7 +1476,7 @@ STR_NETWORK_MAP_SIZE                                            :{SILVER}Velikos
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verze hry na serveru:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serveru:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Počáteční datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Momentální datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Současné datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Chráněno heslem!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER JE PLNÝ
@@ -1489,7 +1489,7 @@ STR_NETWORK_JOIN_GAME                                           :{BLACK}Přidat 
 STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Začít novou hru
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Jméno hry:
-STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Jméno hry se zobrazí ostatním hráčům v menu, kde si vybírají sitovou hru
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Jméno hry se zobrazí ostatním hráčům v nabídce síťové hry
 STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Zadej jméno této síťové hry
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nastavit heslo
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Svoji hru si můžeš ochránit heslem, když nechceš, aby se ti do ni hlásili jiní lidé
@@ -1497,12 +1497,12 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Vyber ma
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Ve které mapě si chceš zahrát?
 STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
-STR_NETWORK_INTERNET                                            :Internet
-STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
-STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznámit)
+STR_NETWORK_INTERNET                                            :internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :internet (zveřejnit)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" i ů}
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximální počet hráčů:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Zvol maximální počet hráčů. Může se jich připojit i méně.
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Nejvyšší počet hráčů:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Zvol nejvyšší počet hráčů. Může se jich připojit i méně.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} společnost{P "" i í}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximální počet společností:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Omezit serverem počet společností
@@ -1556,7 +1556,7 @@ STR_NETWORK_LANG_GREEK                                          :řečtina
 STR_NETWORK_LANG_LATVIAN                                        :lotyština
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Vstupní místnost do multiplayerové hry
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Vstupní místnost do hry více hráčů
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Připravuji se na vstoupení:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Současný seznam všech společností v této hře. Buď můžeš do jedné vstoupit, nebo můžeš založit novou.
@@ -1608,7 +1608,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam h
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Žádná síťová zařízení nebyla nalezena (nebo je hra zkompilována bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nenalezena žádná síťová hra
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server neodpověděl na požadavek
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nelze se připojit kvůli rozdílným GRF souborům
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Není možno se připojit kvůli rozdílným grafikám
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Síť - synchronizace hry selhala
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Síť - spojení ztraceno
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nemohu nahrát uloženou hru ze serveru
@@ -2009,7 +2009,7 @@ STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vycentro
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Ukázat hodnocení společností
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Změnit jméno stanice
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Ukázat seznam přijímaného nákladu
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Jména stanic - pro nahlédnutí na stanici klepni na její jméno
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Jména stanic - kliknutím na jméno stanice se na ni přesune pohled
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Zvol velikost a typ letiště
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -2056,7 +2056,7 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemohu �
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Uložení hry selhalo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nemohu smazat soubor
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nemohu otevřít hru{}{STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interní chyba: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Vnitřní chyba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Poškozená hra - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Uložená hra je z novější verze
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Soubor je nečitelný
@@ -2064,7 +2064,7 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Do souboru nelz
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Seznam jednotek, adresářů a uložených her
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Zvolené jméno uložené hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Smazat označenou uloženou hru
-STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Uložit aktuální hru se zvoleným jménem
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Uložit současnou hru se zvoleným jménem
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Zvolit nový typ hry
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Zvolit scénář (zelená), přednastavenou hru (modrá), nebo novou náhodnou hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vytvořit novou náhodnou hru
@@ -2362,7 +2362,7 @@ STR_MAX_LOAN                                                    :{WHITE}Max. pů
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Půjčit {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Vrátit {SKIP}{SKIP}{CURRENCY}
-STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... maximální dovolená výše půjčky je {CURRENCY}.
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... nejvyšší možná výše půjčky je {CURRENCY}.
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemohu půjčit více peněz...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}... žádný dluh ke splacení
 STR_702E_REQUIRED                                               :{WHITE}... je potřeba {CURRENCY}
@@ -2397,7 +2397,7 @@ STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Ukázat 
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda ke grafům společností
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klepni zde pro přepnuti zobrazení společnosti na grafu
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Doručeno jednotek zboží
-STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Hodnocení společností (nejvyšší hodnocení=1000)
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Hodnocení společností (nejvyšší hodnocení je 1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Hodnota společností
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tabulka pořadí společností
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
@@ -2925,7 +2925,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Nastav p
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Seznam vlaků - stiskni na vlaku pro informace
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kup označený vagon/lokomotivu
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Přejmenovat typ vlaku
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Momentální akce vlaku - stiskni pro zastavení/rozjetí vlaku
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Současná činnost vlaku - vlak se zastaví nebo rozjede, když sem klikneš
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Ukaž příkazy vlaku
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Nastav pohled na vlak
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Pošli vlak do depa
@@ -3024,7 +3024,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemohu p
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní garáž
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Silniční vozidla - stiskni vozidlo pro informace
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Koupit nová silniční vozidla (vyžaduje garáže)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Momentální činnost silničního vozidla - stiskni pro zastavení/rozjetí vozidla
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Současná činnost silničního vozidla - vozidlo se zastaví nebo rozjede, když sem klikneš
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Ukaž příkazy vozidla
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Nastav pohled na vozidlo
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Pošli vozidlo do garáže
@@ -3258,10 +3258,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Celkový
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Nastavení grafik
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavení grafických souborů
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit změny
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Přepnout paletu
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}U vybrané grafiky přepne paletu.{}Je to užitečné, když se ti ve hře zobrazuje růžově.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavit parametry
 STR_NEWGRF_TIP                                                  :{BLACK}Tady je seznam všech nainstalovaných grafických setů. Nastavení změníš kliknutím na set.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Žádné soubory s grafikou nejsou nainstalovány! Pro instrukce, jak nainstalovat grafické soubory, se podívej do manuálu.
 STR_NEWGRF_FILENAME                                             :{BLACK}Jméno souboru: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Právě se chystáš změnit nastavení grafik za běžící hry; může to shodit OpenTTD.{}Jsi si s tím opravdu jist/a?
@@ -3277,43 +3280,45 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Neplatný
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} musí být nahráván před {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} musí být nahráván po {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF soubor, který se měl přeložit
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :grafika, která se měla přeložit
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik.
-STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {STRING} jako statické NewGRF s {STRING} může způsobit chybu synchronizace.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {STRING} jako statické grafiky spolu s {STRING} může způsobit chybu synchronizace.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepředpokládaný sprite.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznámá vlastnost Action 0.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použití neplatného ID.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit předvolbu
 STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Uložit tento seznam jako předvolbu
 STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Zadej název předvolby
-STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Odstranit předvolbu
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Smazat předvolbu
 STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Odstranit vybranou předvolbu
 STR_NEWGRF_ADD                                                  :{BLACK}Přidat
-STR_NEWGRF_ADD_TIP                                              :{BLACK}Přidat NewGRF soubor do seznamu
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Přidat grafiku do seznamu
 STR_NEWGRF_REMOVE                                               :{BLACK}Odebrat
-STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Odstranit označený NewGRF soubor ze seznamu
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Odstranit označenou grafiku ze seznamu
 STR_NEWGRF_MOVEUP                                               :{BLACK}Nahoru
-STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Posunout označený NewGRF soubor nahoru
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Posunout označenou grafiku nahoru
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Dolů
-STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Posunout označený NewGRF soubor dolů
-STR_NEWGRF_FILE_TIP                                             :{BLACK}Seznam NewGRF souborů, které jsou nainstalovány. Parametry souboru můžeš změnit kliknutím na něj.
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Posunout označenou grafiku dolů
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Seznam grafik, které jsou nainstalovány. Kliknutím na jméno souboru můžeš nastavit parametry.
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parametry: {SILVER}{STRING}
-STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Zadej parametry NewGRF souboru
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Zadej parametry grafiky
 STR_NEWGRF_NO_INFO                                              :{BLACK}Není dostupná žádná informace
 
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupné NewGRF soubory
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupné grafiky
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Přidat do výběru
-STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Přidat vybraný NewGRF soubor do tvého nastavení
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Přidat vybranou grafiku do tvého seznamu
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Načíst soubory
-STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Aktualizovat seznam dostupných NewGRF souborů
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Znovu vytvořit seznam dostupných grafik
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nelze přidat soubor: duplicitní GRF ID
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Nenalezen odpovídající soubor
 STR_NEWGRF_DISABLED                                             :{RED}Vypnuto
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nenalezen (načten kompatibilní GRF)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nebyl nalezen (načetl se kompatibilní GRF)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní GRF načteny místo chybějících
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící soubory GRF byly vyřazeny
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní GRF se načetly místo chybějících
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící grafiky byly vypnuty
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Pro načtení hry chybí GRF soubory
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
