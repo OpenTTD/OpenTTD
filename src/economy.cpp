@@ -584,7 +584,7 @@ static void PlayersGenStatistics()
 		SubtractMoneyFromPlayer(cost);
 	}
 
-	if (!HasBit(1<<0|1<<3|1<<6|1<<9, _cur_month))
+	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month))
 		return;
 
 	FOR_ALL_PLAYERS(p) {
