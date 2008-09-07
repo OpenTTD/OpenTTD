@@ -40,6 +40,7 @@
 #include "vehicle_base.h"
 #include "sound_func.h"
 #include "effectvehicle_func.h"
+#include "roadveh.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -330,7 +331,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		v->current_order.SetDestination(1);
 
 		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_ROAD && IsHumanPlayer(u->owner)) {
+			if (u->type == VEH_ROAD && IsRoadVehFront(u) && IsHumanPlayer(u->owner)) {
 				v->dest_tile = u->index;
 				v->age = 0;
 				return;
@@ -341,7 +342,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 	} else {
 		/* Target a vehicle */
 		u = GetVehicle(v->dest_tile);
-		if (u->type != VEH_ROAD) {
+		if (u->type != VEH_ROAD || !IsRoadVehFront(u)) {
 			DeleteDisasterVeh(v);
 			return;
 		}
@@ -364,12 +365,16 @@ static void DisasterTick_Ufo(Vehicle *v)
 			v->age++;
 			if (u->u.road.crashed_ctr == 0) {
 				u->u.road.crashed_ctr++;
-				u->vehstatus |= VS_CRASHED;
 
 				AddNewsItem(STR_B001_ROAD_VEHICLE_DESTROYED,
 					NS_ACCIDENT_VEHICLE,
 					u->index,
 					0);
+
+				for (Vehicle *w = u; w != NULL; w = w->Next()) {
+					w->vehstatus |= VS_CRASHED;
+					MarkSingleVehicleDirty(w);
+				}
 			}
 		}
 
