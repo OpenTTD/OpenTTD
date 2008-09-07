@@ -124,9 +124,10 @@ void IniFile::RemoveGroup(const char *name)
 
 	if (prev != NULL) {
 		prev->next = prev->next->next;
+		if (this->last_group == &group->next) this->last_group = &prev->next;
 	} else {
 		this->group = this->group->next;
-		prev = this->group;
+		if (this->last_group == &group->next) this->last_group = &this->group;
 	}
 
 	group->next = NULL;
