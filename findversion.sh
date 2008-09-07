@@ -103,4 +103,4 @@ if [ -n "$BRANCH" ]; then
 	REV="${REV}-$BRANCH"
 fi
 
-echo -e "$REV\t$REV_NR\t$MODIFIED"
+echo "$REV	$REV_NR	$MODIFIED"
