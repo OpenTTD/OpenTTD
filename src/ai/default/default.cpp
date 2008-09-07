@@ -3599,6 +3599,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 	veh = AiChooseAircraftToBuild(p->player_money, forbidden);
 	if (veh == INVALID_ENGINE) return;
+	if (GetStationByTile(tile)->Airport()->nof_depots == 0) return;
 
 	/* XXX - Have the AI pick the hangar terminal in an airport. Eg get airport-type
 	 * and offset to the FIRST depot because the AI picks the st->xy tile */

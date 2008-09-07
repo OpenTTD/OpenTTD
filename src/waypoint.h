@@ -40,11 +40,6 @@ static inline bool IsValidWaypointID(WaypointID index)
 	return index < GetWaypointPoolSize() && GetWaypoint(index)->IsValid();
 }
 
-static inline void DeleteWaypoint(Waypoint *wp)
-{
-	wp->~Waypoint();
-}
-
 #define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) if (wp->IsValid())
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 

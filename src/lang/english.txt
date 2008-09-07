@@ -1331,6 +1331,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transported)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transported)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industry names - click on name to centre view on industry
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...too close to another industry
 
@@ -1893,7 +1894,7 @@ STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centre m
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Show station ratings
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Change name of station
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Show list of accepted cargo
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Station names - click on name to centre main view on station
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Station names - click on name to centre view on station
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Select size/type of airport
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}

@@ -705,7 +705,7 @@ static const Widget _industry_directory_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   201,   300,    14,    25, STR_SORT_BY_PRODUCTION,  STR_SORT_ORDER_TIP},                // IDW_SORTBYPROD
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   301,   400,    14,    25, STR_SORT_BY_TRANSPORTED, STR_SORT_ORDER_TIP},                // IDW_SORTBYTRANSPORT
 {      WWT_PANEL,   RESIZE_NONE,    13,   401,   495,    14,    25, 0x0,                     STR_NULL},                          // IDW_SPACER
-{      WWT_PANEL, RESIZE_BOTTOM,    13,     0,   495,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME}, // IDW_INDUSRTY_LIST
+{      WWT_PANEL, RESIZE_BOTTOM,    13,     0,   495,    26,   189, 0x0,                     STR_INDUSTRYDIR_LIST_CAPTION},      // IDW_INDUSRTY_LIST
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   496,   507,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},  // IDW_SCROLLBAR
 {  WWT_RESIZEBOX,     RESIZE_TB,    13,   496,   507,   178,   189, 0x0,                     STR_RESIZE_BUTTON},                 // IDW_RESIZE
 {   WIDGETS_END},

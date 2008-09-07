@@ -33,8 +33,6 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Determining version number"
-				CommandLine="&quot;$(InputDir)/determineversion.vbs&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -145,8 +143,6 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Determining version number"
-				CommandLine="&quot;$(InputDir)/determineversion.vbs&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -243,8 +239,6 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Determining version number"
-				CommandLine="&quot;$(InputDir)/determineversion.vbs&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -356,8 +350,6 @@
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Determining version number"
-				CommandLine="&quot;$(InputDir)/determineversion.vbs&quot;"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"

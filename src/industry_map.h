@@ -206,7 +206,8 @@ static inline void SetIndustryConstructionCounter(TileIndex tile, byte value)
 static inline void ResetIndustryConstructionStage(TileIndex tile)
 {
 	assert(IsTileType(tile, MP_INDUSTRY));
-	_m[tile].m1 = 0;
+	SB(_m[tile].m1, 0, 4, 0);
+	SB(_m[tile].m1, 7, 1, 0);
 }
 
 /**
