@@ -155,6 +155,15 @@ uint QZ_ListModes(OTTD_Point* modes, uint max_modes, CGDirectDisplayID display_i
 	return count;
 }
 
+/* Small function to test if the main display can display 8 bpp in fullscreen */
+bool QZ_CanDisplay8bpp()
+{
+	OTTD_Point p;
+
+	/* We want to know if 8 bpp is possible in fullscreen and not anything about resolutions.
+	 * Because of this we want to fill a list of 1 resolution of 8 bpp on display 0 (main) and return if we found one. */
+	return QZ_ListModes(&p, 1, 0, 8);
+}
 
 class FullscreenSubdriver: public CocoaSubdriver {
 	int                display_width;

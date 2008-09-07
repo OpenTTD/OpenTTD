@@ -28,6 +28,7 @@
 void DrawAircraftDetails(const Vehicle *v, int x, int y)
 {
 	int y_offset = (v->Next()->cargo_cap != 0) ? -11 : 0;
+	Money feeder_share = 0;
 
 	for (const Vehicle *u = v ; u != NULL ; u = u->Next()) {
 		if (IsNormalAircraft(u)) {
@@ -53,11 +54,12 @@ void DrawAircraftDetails(const Vehicle *v, int x, int y)
 				SetDParam(1, cargo_count);
 				SetDParam(2, u->cargo.Source());
 				DrawString(x, y + 21 + y_offset, STR_8813_FROM, TC_FROMSTRING);
+				feeder_share += u->cargo.FeederShare();
 			}
 		}
 	}
 
-	SetDParam(0, v->cargo.FeederShare());
+	SetDParam(0, feeder_share);
 	DrawString(x, y + 33 + y_offset, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
 }
 

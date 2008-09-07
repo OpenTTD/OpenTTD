@@ -334,14 +334,14 @@ void ClearSlot(Vehicle *v)
 	DEBUG(ms, 3, "Clearing slot at 0x%X", rs->xy);
 }
 
-static bool CheckRoadVehInDepotStopped(const Vehicle *v)
+bool RoadVehicle::IsStoppedInDepot() const
 {
-	TileIndex tile = v->tile;
+	TileIndex tile = this->tile;
 
 	if (!IsTileDepotType(tile, TRANSPORT_ROAD)) return false;
-	if (IsRoadVehFront(v) && !(v->vehstatus & VS_STOPPED)) return false;
+	if (IsRoadVehFront(this) && !(this->vehstatus & VS_STOPPED)) return false;
 
-	for (; v != NULL; v = v->Next()) {
+	for (const Vehicle *v = this; v != NULL; v = v->Next()) {
 		if (v->u.road.state != RVSB_IN_DEPOT || v->tile != tile) return false;
 	}
 	return true;
@@ -365,7 +365,7 @@ CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return_cmd_error(STR_CAN_T_SELL_DESTROYED_VEHICLE);
 
-	if (!CheckRoadVehInDepotStopped(v)) {
+	if (!v->IsStoppedInDepot()) {
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 	}
 
@@ -2150,7 +2150,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_ROAD || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!CheckRoadVehInDepotStopped(v)) return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
+	if (!v->IsStoppedInDepot()) return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 	if (v->vehstatus & VS_CRASHED) return_cmd_error(STR_CAN_T_REFIT_DESTROYED_VEHICLE);
 
 	if (new_cid >= NUM_CARGO) return CMD_ERROR;

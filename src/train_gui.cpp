@@ -231,6 +231,7 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 	} else {
 		AcceptedCargo act_cargo;
 		AcceptedCargo max_cargo;
+		Money         feeder_share = 0;
 
 		memset(max_cargo, 0, sizeof(max_cargo));
 		memset(act_cargo, 0, sizeof(act_cargo));
@@ -238,6 +239,7 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 		for (const Vehicle *u = v; u != NULL ; u = u->Next()) {
 			act_cargo[u->cargo_type] += u->cargo.Count();
 			max_cargo[u->cargo_type] += u->cargo_cap;
+			feeder_share             += u->cargo.FeederShare();
 		}
 
 		/* draw total cargo tab */
@@ -253,7 +255,7 @@ void DrawTrainDetails(const Vehicle *v, int x, int y, int vscroll_pos, uint16 vs
 				DrawString(x, y + 2, FreightWagonMult(i) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_TOTAL_CAPACITY, TC_FROMSTRING);
 			}
 		}
-		SetDParam(0, v->cargo.FeederShare());
+		SetDParam(0, feeder_share);
 		DrawString(x, y + 15, STR_FEEDER_CARGO_VALUE, TC_FROMSTRING);
 	}
 }

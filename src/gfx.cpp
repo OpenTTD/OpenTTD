@@ -568,8 +568,8 @@ Dimension GetStringBoundingBox(const char *str)
 
 /** Draw a string at the given coordinates with the given colour
  * @param string the string to draw
- * @param x offset from left side of the screen, if negative offset from the right side
- * @param y offset from top side of the screen, if negative offset from the bottom
+ * @param x offset from left side of the screen
+ * @param y offset from top side of the screen
  * @param real_color colour of the string, see _string_colormap in
  * table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
  * @return the x-coordinates where the drawing has finished. If nothing is drawn
@@ -585,11 +585,7 @@ int DoDrawString(const char *string, int x, int y, uint16 real_color)
 	byte previous_color = color;
 
 	if (color != 0xFE) {
-		if (x >= dpi->left + dpi->width ||
-				x + _screen.width * 2 <= dpi->left ||
-				y >= dpi->top + dpi->height ||
-				y + _screen.height <= dpi->top)
-					return x;
+		if (x >= dpi->left + dpi->width || y >= dpi->top + dpi->height) return x;
 
 		if (color != 0xFF) {
 switch_color:;

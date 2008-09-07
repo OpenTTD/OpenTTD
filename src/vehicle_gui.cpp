@@ -486,7 +486,10 @@ uint ShowAdditionalText(int x, int y, uint w, EngineID engine)
 
 	/* STR_02BD is used to start the string with {BLACK} */
 	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
-	return DrawStringMultiLine(x, y, STR_02BD, w);
+	PrepareTextRefStackUsage(0);
+	uint result = DrawStringMultiLine(x, y, STR_02BD, w);
+	StopTextRefStackUsage();
+	return result;
 }
 
 /** Display list of cargo types of the engine, for the purchase information window */
