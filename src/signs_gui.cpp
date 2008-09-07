@@ -22,6 +22,7 @@
 #include "viewport_func.h"
 #include "querystring_gui.h"
 #include "sortlist_type.h"
+#include "string_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -173,7 +174,7 @@ void ShowSignList()
 static void RenameSign(SignID index, const char *text)
 {
 	_cmd_text = text;
-	DoCommandP(0, index, 0, NULL, CMD_RENAME_SIGN | CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME));
+	DoCommandP(0, index, 0, NULL, CMD_RENAME_SIGN | (StrEmpty(text) ? CMD_MSG(STR_CAN_T_DELETE_SIGN) : CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME)));
 }
 
 enum QueryEditSignWidgets {
@@ -343,7 +344,7 @@ static const WindowDesc _query_sign_edit_desc = {
 void HandleClickOnSign(const Sign *si)
 {
 	if (_ctrl_pressed && si->owner == _local_player) {
-		RenameSign(si->index, "");
+		RenameSign(si->index, NULL);
 		return;
 	}
 	ShowRenameSignWindow(si);

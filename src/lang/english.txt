@@ -1881,6 +1881,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Can't pl
 STR_280A_SIGN                                                   :Sign
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Edit sign text
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Can't change sign name...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Can't delete sign...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Select tree type to plant
 STR_280E_TREES                                                  :Trees
 STR_280F_RAINFOREST                                             :Rainforest
