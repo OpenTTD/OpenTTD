@@ -2162,7 +2162,7 @@ void PlaceObject()
 bool ScrollWindowTo(int x , int y, Window *w, bool instant)
 {
 	/* The slope cannot be acquired outside of the map, so make sure we are always within the map. */
-	Point pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(Clamp(x, 0, MapSizeX()), Clamp(y, 0, MapSizeY())));
+	Point pt = MapXYZToViewport(w->viewport, x, y, GetSlopeZ(Clamp(x, 0, MapSizeX() * TILE_SIZE), Clamp(y, 0, MapSizeY() * TILE_SIZE)));
 	WP(w, vp_d).follow_vehicle = INVALID_VEHICLE;
 
 	if (WP(w, vp_d).dest_scrollpos_x == pt.x && WP(w, vp_d).dest_scrollpos_y == pt.y)

@@ -939,6 +939,8 @@ static void DrawVehicleListWindow(Window *w)
 	SortVehicleList(vl);
 	SetVScrollCount(w, vl->l.list_length);
 
+	if (vl->l.list_length == 0) HideDropDownMenu(w);
+
 	/* draw the widgets */
 	switch (window_type) {
 		case VLW_SHARED_ORDERS: /* Shared Orders */

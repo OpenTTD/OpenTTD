@@ -24,15 +24,14 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
 		order->wait_time = time;
 	}
 
-	if (v->cur_order_index == order_number && HasBit(v->current_order.flags, OF_PART_OF_ORDERS)) {
-		if (is_journey) {
-			v->current_order.travel_time = time;
-		} else {
-			v->current_order.wait_time = time;
-		}
-	}
-
 	for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
+		if (v->cur_order_index == order_number && HasBit(v->current_order.flags, OF_PART_OF_ORDERS)) {
+			if (is_journey) {
+				v->current_order.travel_time = time;
+			} else {
+				v->current_order.wait_time = time;
+			}
+		}
 		InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
 	}
 }

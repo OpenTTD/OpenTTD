@@ -173,6 +173,13 @@ void StartupEngines()
 			e->player_avail = 0;
 		}
 	}
+
+	/* Update the bitmasks for the vehicle lists */
+	Player *p;
+	FOR_ALL_PLAYERS(p) {
+		p->avail_railtypes = GetPlayerRailtypes(p->index);
+		p->avail_roadtypes = GetPlayerRoadtypes(p->index);
+	}
 }
 
 static void AcceptEnginePreview(EngineID eid, PlayerID player)

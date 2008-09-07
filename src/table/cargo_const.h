@@ -43,7 +43,7 @@ static const CargoSpec _default_cargo[] = {
 		STR_0022_WHEAT,          STR_0042_WHEAT,          STR_TONS,       STR_QUANTITY_WHEAT,        STR_ABBREV_WHEAT,
 		SPR_CARGO_GRAIN,         CC_BULK        ),
 
-	MK(  6, 'MAIZ', 191,  6, 4322,  4,  40, true,  TE_NONE,
+	MK(  6, 'MAIZ', 191, 16, 4322,  4,  40, true,  TE_NONE,
 		STR_001B_MAIZE,          STR_003B_MAIZE,          STR_TONS,       STR_QUANTITY_MAIZE,        STR_ABBREV_MAIZE,
 		SPR_CARGO_GRAIN,         CC_BULK        ),
 
@@ -85,19 +85,19 @@ static const CargoSpec _default_cargo[] = {
 		STR_001E_FOOD,           STR_003E_FOOD,           STR_TONS,       STR_QUANTITY_FOOD,         STR_ABBREV_FOOD,
 		SPR_CARGO_FOOD,          CC_EXPRESS     | CC_REFRIGERATED),
 
-	MK( 13, 'FRUT', 208,  6, 4209,  0,  15, true,  TE_NONE,
+	MK( 13, 'FRUT', 208, 16, 4209,  0,  15, true,  TE_NONE,
 		STR_001C_FRUIT,          STR_003C_FRUIT,          STR_TONS,       STR_QUANTITY_FRUIT,        STR_ABBREV_FRUIT,
 		SPR_CARGO_FRUIT,         CC_BULK        | CC_REFRIGERATED),
 
-	MK( 14, 'CORE', 184,  6, 4892, 12, 255, true,  TE_NONE,
+	MK( 14, 'CORE', 184, 16, 4892, 12, 255, true,  TE_NONE,
 		STR_001A_COPPER_ORE,     STR_003A_COPPER_ORE,     STR_TONS,       STR_QUANTITY_COPPER_ORE,   STR_ABBREV_COPPER_ORE,
 		SPR_CARGO_COPPER_ORE,    CC_BULK        ),
 
-	MK( 15, 'WATR',  10,  6, 4664, 20,  80, true,  TE_WATER,
+	MK( 15, 'WATR',  10, 16, 4664, 20,  80, true,  TE_WATER,
 		STR_0021_WATER,          STR_0041_WATER,          STR_LITERS,     STR_QUANTITY_WATER,        STR_ABBREV_WATER,
 		SPR_CARGO_WATERCOLA,     CC_LIQUID      ),
 
-	MK( 16, 'RUBR',  32,  6, 4437,  2,  20, true,  TE_NONE,
+	MK( 16, 'RUBR',  32, 16, 4437,  2,  20, true,  TE_NONE,
 		STR_0023_RUBBER,         STR_0043_RUBBER,         STR_LITERS,     STR_QUANTITY_RUBBER,       STR_ABBREV_RUBBER,
 		SPR_CARGO_RUBBER,        CC_LIQUID      ),
 
