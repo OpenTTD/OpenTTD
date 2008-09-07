@@ -130,7 +130,7 @@ static bool EnsureNoTrainOnTrack(TileIndex tile, Track track)
 {
 	TrackBits rail_bits = TrackToTrackBits(track);
 
-	return VehicleFromPos(tile, &rail_bits, &EnsureNoTrainOnTrackProc) == NULL;
+	return !HasVehicleOnPos(tile, &rail_bits, &EnsureNoTrainOnTrackProc);
 }
 
 static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags)
@@ -1334,7 +1334,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					SetRailType(tile, totype);
 					MarkTileDirtyByTile(tile);
 					/* update power of train engines on this tile */
-					VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
+					FindVehicleOnPos(tile, NULL, &UpdateTrainPowerProc);
 				}
 			}
 
@@ -1384,7 +1384,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 					/* When not coverting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
 					if (!IsCompatibleRail(GetRailType(tile), totype) &&
-							GetVehicleTunnelBridge(tile, endtile) != NULL) continue;
+							!HasVehicleOnTunnelBridge(tile, endtile)) continue;
 
 					if (flags & DC_EXEC) {
 						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
@@ -1398,8 +1398,8 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						SetRailType(tile, totype);
 						SetRailType(endtile, totype);
 
-						VehicleFromPos(tile, NULL, &UpdateTrainPowerProc);
-						VehicleFromPos(endtile, NULL, &UpdateTrainPowerProc);
+						FindVehicleOnPos(tile, NULL, &UpdateTrainPowerProc);
+						FindVehicleOnPos(endtile, NULL, &UpdateTrainPowerProc);
 
 						YapfNotifyTrackLayoutChange(tile, track);
 						YapfNotifyTrackLayoutChange(endtile, track);

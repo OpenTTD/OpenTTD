@@ -168,41 +168,11 @@ static Vehicle *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	return v;
 }
 
-Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z)
-{
-	return (Vehicle*)VehicleFromPos(tile, &z, &EnsureNoVehicleProcZ);
-}
-
 bool EnsureNoVehicleOnGround(TileIndex tile)
 {
-	return FindVehicleOnTileZ(tile, GetTileMaxZ(tile)) == NULL;
+	byte z = GetTileMaxZ(tile);
+	return !HasVehicleOnPos(tile, &z, &EnsureNoVehicleProcZ);
 }
-
-Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_crashed)
-{
-	int x1 = TileX(from);
-	int y1 = TileY(from);
-	int x2 = TileX(to);
-	int y2 = TileY(to);
-	Vehicle *veh;
-
-	/* Make sure x1 < x2 or y1 < y2 */
-	if (x1 > x2 || y1 > y2) {
-		Swap(x1, x2);
-		Swap(y1, y2);
-	}
-	FOR_ALL_VEHICLES(veh) {
-		if (without_crashed && (veh->vehstatus & VS_CRASHED) != 0) continue;
-		if ((veh->type == VEH_TRAIN || veh->type == VEH_ROAD) && (z == 0xFF || veh->z_pos == z)) {
-			if ((veh->x_pos >> 4) >= x1 && (veh->x_pos >> 4) <= x2 &&
-					(veh->y_pos >> 4) >= y1 && (veh->y_pos >> 4) <= y2) {
-				return veh;
-			}
-		}
-	}
-	return NULL;
-}
-
 
 /** Procedure called for every vehicle found in tunnel/bridge in the hash map */
 static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
@@ -217,14 +187,12 @@ static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
  * Finds vehicle in tunnel / bridge
  * @param tile first end
  * @param endtile second end
- * @return pointer to vehicle found
+ * @return true if the bridge has a vehicle
  */
-Vehicle *GetVehicleTunnelBridge(TileIndex tile, TileIndex endtile)
+bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile)
 {
-	Vehicle *v = (Vehicle*)VehicleFromPos(tile, NULL, &GetVehicleTunnelBridgeProc);
-	if (v != NULL) return v;
-
-	return (Vehicle*)VehicleFromPos(endtile, NULL, &GetVehicleTunnelBridgeProc);
+	return HasVehicleOnPos(tile, NULL, &GetVehicleTunnelBridgeProc) ||
+			HasVehicleOnPos(endtile, NULL, &GetVehicleTunnelBridgeProc);
 }
 
 
@@ -384,14 +352,14 @@ const int HASH_RES = 0;
 
 static Vehicle *_new_vehicle_position_hash[TOTAL_HASH_SIZE];
 
-static Vehicle *VehicleFromHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc)
+static Vehicle *VehicleFromHash(int xl, int yl, int xu, int yu, void *data, VehicleFromPosProc *proc, bool find_first)
 {
 	for (int y = yl; ; y = (y + (1 << HASH_BITS)) & (HASH_MASK << HASH_BITS)) {
 		for (int x = xl; ; x = (x + 1) & HASH_MASK) {
 			Vehicle *v = _new_vehicle_position_hash[(x + y) & TOTAL_HASH_MASK];
 			for (; v != NULL; v = v->next_new_hash) {
 				Vehicle *a = proc(v, data);
-				if (a != NULL) return a;
+				if (find_first && a != NULL) return a;
 			}
 			if (x == xu) break;
 		}
@@ -402,7 +370,18 @@ static Vehicle *VehicleFromHash(int xl, int yl, int xu, int yu, void *data, Vehi
 }
 
 
-Vehicle *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
+/**
+ * Helper function for FindVehicleOnPos/HasVehicleOnPos.
+ * @note Do not call this function directly!
+ * @param x    The X location on the map
+ * @param y    The Y location on the map
+ * @param data Arbitrary data passed to proc
+ * @param proc The proc that determines whether a vehicle will be "found".
+ * @param find_first Whether to return on the first found or iterate over
+ *                   all vehicles
+ * @return the best matching or first vehicle (depending on find_first).
+ */
+static Vehicle *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc, bool find_first)
 {
 	const int COLL_DIST = 6;
 
@@ -412,11 +391,55 @@ Vehicle *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
 	int yl = GB((y - COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
 	int yu = GB((y + COLL_DIST) / TILE_SIZE, HASH_RES, HASH_BITS) << HASH_BITS;
 
-	return VehicleFromHash(xl, yl, xu, yu, data, proc);
+	return VehicleFromHash(xl, yl, xu, yu, data, proc, find_first);
 }
 
+/**
+ * Find a vehicle from a specific location. It will call proc for ALL vehicles
+ * on the tile and YOU must make SURE that the "best one" is stored in the
+ * data value and is ALWAYS the same regardless of the order of the vehicles
+ * where proc was called on!
+ * When you fail to do this properly you create an almost untraceable DESYNC!
+ * @note The return value of proc will be ignored.
+ * @note Use this when you have the intention that all vehicles
+ *       should be iterated over.
+ * @param x    The X location on the map
+ * @param y    The Y location on the map
+ * @param data Arbitrary data passed to proc
+ * @param proc The proc that determines whether a vehicle will be "found".
+ */
+void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
+{
+	VehicleFromPosXY(x, y, data, proc, false);
+}
 
-Vehicle *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
+/**
+ * Checks whether a vehicle in on a specific location. It will call proc for
+ * vehicles until it returns non-NULL.
+ * @note Use FindVehicleOnPosXY when you have the intention that all vehicles
+ *       should be iterated over.
+ * @param x    The X location on the map
+ * @param y    The Y location on the map
+ * @param data Arbitrary data passed to proc
+ * @param proc The proc that determines whether a vehicle will be "found".
+ * @return True if proc returned non-NULL.
+ */
+bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc)
+{
+	return VehicleFromPosXY(x, y, data, proc, true) != NULL;
+}
+
+/**
+ * Helper function for FindVehicleOnPos/HasVehicleOnPos.
+ * @note Do not call this function directly!
+ * @param tile The location on the map
+ * @param data Arbitrary data passed to proc
+ * @param proc The proc that determines whether a vehicle will be "found".
+ * @param find_first Whether to return on the first found or iterate over
+ *                   all vehicles
+ * @return the best matching or first vehicle (depending on find_first).
+ */
+static Vehicle *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc, bool find_first)
 {
 	int x = GB(TileX(tile), HASH_RES, HASH_BITS);
 	int y = GB(TileY(tile), HASH_RES, HASH_BITS) << HASH_BITS;
@@ -426,11 +449,45 @@ Vehicle *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 		if (v->tile != tile) continue;
 
 		Vehicle *a = proc(v, data);
-		if (a != NULL) return a;
+		if (find_first && a != NULL) return a;
 	}
 
 	return NULL;
 }
+
+/**
+ * Find a vehicle from a specific location. It will call proc for ALL vehicles
+ * on the tile and YOU must make SURE that the "best one" is stored in the
+ * data value and is ALWAYS the same regardless of the order of the vehicles
+ * where proc was called on!
+ * When you fail to do this properly you create an almost untraceable DESYNC!
+ * @note The return value of proc will be ignored.
+ * @note Use this when you have the intention that all vehicles
+ *       should be iterated over.
+ * @param tile The location on the map
+ * @param data Arbitrary data passed to proc
+ * @param proc The proc that determines whether a vehicle will be "found".
+ */
+void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
+{
+	VehicleFromPos(tile, data, proc, false);
+}
+
+/**
+ * Checks whether a vehicle in on a specific location. It will call proc for
+ * vehicles until it returns non-NULL.
+ * @note Use FindVehicleOnPos when you have the intention that all vehicles
+ *       should be iterated over.
+ * @param tile The location on the map
+ * @param data Arbitrary data passed to proc
+ * @param proc The proc that determines whether a vehicle will be "found".
+ * @return True if proc returned non-NULL.
+ */
+bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
+{
+	return VehicleFromPos(tile, data, proc, true) != NULL;
+}
+
 
 static void UpdateNewVehiclePosHash(Vehicle *v, bool remove)
 {

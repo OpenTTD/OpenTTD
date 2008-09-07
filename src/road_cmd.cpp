@@ -223,7 +223,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 
 		case MP_TUNNELBRIDGE:
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
-			if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
+			if (HasVehicleOnTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile))) return CMD_ERROR;
 			break;
 
 		default:
@@ -589,7 +589,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (MirrorRoadBits(DiagDirToRoadBits(GetTunnelBridgeDirection(tile))) != pieces) return CMD_ERROR;
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 			/* Don't allow adding roadtype to the bridge/tunnel when vehicles are already driving on it */
-			if (GetVehicleTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile)) != NULL) return CMD_ERROR;
+			if (HasVehicleOnTunnelBridge(tile, GetOtherTunnelBridgeEnd(tile))) return CMD_ERROR;
 			break;
 
 		default: {

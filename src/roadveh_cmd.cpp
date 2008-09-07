@@ -646,7 +646,7 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 
 		if (!IsLevelCrossingTile(tile)) continue;
 
-		if (VehicleFromPosXY(v->x_pos, v->y_pos, u, EnumCheckRoadVehCrashTrain) != NULL) {
+		if (HasVehicleOnPosXY(v->x_pos, v->y_pos, u, EnumCheckRoadVehCrashTrain)) {
 			RoadVehCrash(v);
 			return;
 		}
@@ -725,7 +725,9 @@ static void StartRoadVehSound(const Vehicle* v)
 struct RoadVehFindData {
 	int x;
 	int y;
-	const Vehicle* veh;
+	const Vehicle *veh;
+	Vehicle *best;
+	uint best_diff;
 	Direction dir;
 };
 
@@ -734,28 +736,34 @@ static Vehicle *EnumCheckRoadVehClose(Vehicle *v, void *data)
 	static const int8 dist_x[] = { -4, -8, -4, -1, 4, 8, 4, 1 };
 	static const int8 dist_y[] = { -4, -1, 4, 8, 4, 1, -4, -8 };
 
-	const RoadVehFindData *rvf = (RoadVehFindData*)data;
+	RoadVehFindData *rvf = (RoadVehFindData*)data;
 
 	short x_diff = v->x_pos - rvf->x;
 	short y_diff = v->y_pos - rvf->y;
 
-	return
-		v->type == VEH_ROAD &&
-		!v->IsInDepot() &&
-		abs(v->z_pos - rvf->veh->z_pos) < 6 &&
-		v->direction == rvf->dir &&
-		rvf->veh->First() != v->First() &&
-		(dist_x[v->direction] >= 0 || (x_diff > dist_x[v->direction] && x_diff <= 0)) &&
-		(dist_x[v->direction] <= 0 || (x_diff < dist_x[v->direction] && x_diff >= 0)) &&
-		(dist_y[v->direction] >= 0 || (y_diff > dist_y[v->direction] && y_diff <= 0)) &&
-		(dist_y[v->direction] <= 0 || (y_diff < dist_y[v->direction] && y_diff >= 0)) ?
-			v : NULL;
+	if (v->type == VEH_ROAD &&
+			!v->IsInDepot() &&
+			abs(v->z_pos - rvf->veh->z_pos) < 6 &&
+			v->direction == rvf->dir &&
+			rvf->veh->First() != v->First() &&
+			(dist_x[v->direction] >= 0 || (x_diff > dist_x[v->direction] && x_diff <= 0)) &&
+			(dist_x[v->direction] <= 0 || (x_diff < dist_x[v->direction] && x_diff >= 0)) &&
+			(dist_y[v->direction] >= 0 || (y_diff > dist_y[v->direction] && y_diff <= 0)) &&
+			(dist_y[v->direction] <= 0 || (y_diff < dist_y[v->direction] && y_diff >= 0))) {
+		uint diff = abs(x_diff) + abs(y_diff);
+
+		if (diff < rvf->best_diff || (diff == rvf->best_diff && v->index < rvf->best->index)) {
+			rvf->best = v;
+			rvf->best_diff = diff;
+		}
+	}
+
+	return NULL;
 }
 
-static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
+static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, Direction dir)
 {
 	RoadVehFindData rvf;
-	Vehicle *u;
 	Vehicle *front = v->First();
 
 	if (front->u.road.reverse_ctr != 0) return NULL;
@@ -764,25 +772,27 @@ static Vehicle* RoadVehFindCloseTo(Vehicle* v, int x, int y, Direction dir)
 	rvf.y = y;
 	rvf.dir = dir;
 	rvf.veh = v;
+	rvf.best_diff = UINT_MAX;
+
 	if (front->u.road.state == RVSB_WORMHOLE) {
-		u = VehicleFromPos(v->tile, &rvf, EnumCheckRoadVehClose);
-		if (u == NULL) u = (Vehicle*)VehicleFromPos(GetOtherTunnelBridgeEnd(v->tile), &rvf, EnumCheckRoadVehClose);
+		FindVehicleOnPos(v->tile, &rvf, EnumCheckRoadVehClose);
+		FindVehicleOnPos(GetOtherTunnelBridgeEnd(v->tile), &rvf, EnumCheckRoadVehClose);
 	} else {
-		u = VehicleFromPosXY(x, y, &rvf, EnumCheckRoadVehClose);
+		FindVehicleOnPosXY(x, y, &rvf, EnumCheckRoadVehClose);
 	}
 
 	/* This code protects a roadvehicle from being blocked for ever
 	 * If more than 1480 / 74 days a road vehicle is blocked, it will
 	 * drive just through it. The ultimate backup-code of TTD.
 	 * It can be disabled. */
-	if (u == NULL) {
+	if (rvf.best_diff == UINT_MAX) {
 		front->u.road.blocked_ctr = 0;
 		return NULL;
 	}
 
 	if (++front->u.road.blocked_ctr > 1480) return NULL;
 
-	return u;
+	return rvf.best;
 }
 
 static void RoadVehArrivesAt(const Vehicle* v, Station* st)
@@ -903,7 +913,7 @@ static bool CheckRoadBlockedForOvertaking(OvertakeData *od)
 	if (!HasBit(trackdirbits, od->trackdir) || (trackbits & ~TRACK_BIT_CROSS) || (red_signals != TRACKDIR_BIT_NONE)) return true;
 
 	/* Are there more vehicles on the tile except the two vehicles involved in overtaking */
-	return VehicleFromPos(od->tile, od, EnumFindVehBlockingOvertake) != NULL;
+	return HasVehicleOnPos(od->tile, od, EnumFindVehBlockingOvertake);
 }
 
 static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
