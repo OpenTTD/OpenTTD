@@ -6,9 +6,22 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
-include /usr/share/dpatch/dpatch.make
+DEFAULT_PACKAGE := openttd
+# Find the package name from the topmost changelog entry.
+# Is this the best way to do this?
+PACKAGE = $(shell cat debian/changelog | head -1 | cut -f1 -d' ')
 
-configure: patch configure-stamp
+debian/control:
+	# Generate control file
+	sed 's/PACKAGE/$(PACKAGE)/' debian/control.in > debian/control
+
+	# TODO: How to do this using makefile conditionals?
+	if [ "$(PACKAGE)" != "$(DEFAULT_PACKAGE)" ]; then \
+		echo "Provides: $(DEFAULT_PACKAGE)" >> debian/control ; \
+		echo "Conflicts: $(DEFAULT_PACKAGE)" >> debian/control ; \
+	fi;
+
+configure: debian/control configure-stamp
 configure-stamp:
 	dh_testdir
 	# Add here commands to configure the package.
@@ -16,30 +29,35 @@ configure-stamp:
 	touch configure-stamp
 
 
-build: configure build-stamp
+build: debian/control configure build-stamp
 build-stamp:
 	dh_testdir
 
 	# Add here commands to compile the package.
 	
-	./configure --prefix-dir=/usr --binary-dir=games --data-dir=share/games/openttd --icon-dir=share/pixmaps --personal-dir=.openttd --install-dir=debian/openttd
+	./configure --prefix-dir=/usr --binary-dir=games --data-dir=share/games/openttd --icon-dir=share/pixmaps --personal-dir=.openttd --install-dir=debian/$(PACKAGE)
 	$(MAKE)
 
 	#/usr/bin/docbook-to-man debian/openttd.sgml > openttd.1
 
 	touch build-stamp
 
-clean: unpatch
+clean: debian/control
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
 
 	# Add here commands to clean up after the build process.
-	-$(MAKE) clean
+	# We check for Makefile presence, because clean is called at the
+	# start of the build process (before configure) where we don't
+	# have a Makefile yet.
+	[ ! -f Makefile ] || $(MAKE) distclean
 
 	dh_clean
+	# Clean up generated control file
+	-rm debian/control
 
-install: build
+install: debian/control build
 	dh_testdir
 	dh_testroot
 	dh_clean -k
@@ -53,7 +71,7 @@ binary-indep: build install
 # We have nothing to do by default.
 
 # Build architecture-dependent files here.
-binary-arch: build install
+binary-arch: debian/control build install
 	dh_testdir
 	dh_testroot
 	dh_installchangelogs changelog.txt
@@ -84,4 +102,4 @@ binary-arch: build install
 	dh_builddeb
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install configure patch
+.PHONY: build clean binary-indep binary-arch binary install configure

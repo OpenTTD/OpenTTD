@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: openttd_0.5.3-1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-09-19 04:33+0200\n"
+"PO-Revision-Date: 2007-12-18 20:01+0200\n"
+"Last-Translator: Esko Arajärvi <edu@iki.fi>\n"
+"Language-Team: Finnish <debian-l10n-finnish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Finnish\n"
+"X-Poedit-Country: Finland\n"
+
+#. Type: error
+#. Description
+#: ../templates:1001
+msgid "Data files needed"
+msgstr "Datatiedostoja puuttuu"
+
+#. Type: error
+#. Description
+#: ../templates:1001
+msgid "For its operation, OpenTTD needs the data files from the original Transport Tycoon Deluxe game."
+msgstr "OpenTTD tarvitsee toimiakseen datatiedostoja alkuperäisestä Transport Tycoon Deluxe -pelistä."
+
+#. Type: error
+#. Description
+#: ../templates:1001
+msgid "See the /usr/share/doc/openttd/README.Debian file for more details about the needed files and their location."
+msgstr "Tiedostossa /usr/share/doc/openttd/README.Debian on (englanniksi) lisätietoja tarvittavista tiedostoista ja niiden sijainnista."
+

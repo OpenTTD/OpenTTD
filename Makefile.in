@@ -1,5 +1,3 @@
-# Auto-generated file -- DO NOT EDIT
-
 # Check if we want to show what we are doing
 ifdef VERBOSE
 	Q =
@@ -11,6 +9,7 @@ include Makefile.am
 
 SOURCE_LIST = !!SOURCE_LIST!!
 CONFIG_CACHE_SOURCE_LIST = !!CONFIG_CACHE_SOURCE_LIST!!
+CONFIG_CACHE_PWD = !!CONFIG_CACHE_PWD!!
 CONFIGURE_FILES = !!CONFIGURE_FILES!!
 LIPO = !!LIPO!!
 BIN_DIR = !!BIN_DIR!!
@@ -37,9 +36,10 @@ REVISION = !!REVISION!!
 AWK = !!AWK!!
 DISTCC = !!DISTCC!!
 
-RES := $(shell if [ ! -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CACHE_SOURCE_LIST) $(SOURCE_LIST)`" ]; then cp $(SOURCE_LIST) $(CONFIG_CACHE_SOURCE_LIST); fi )
+RES := $(shell if [ ! -f $(CONFIG_CACHE_PWD) ] || [ "`pwd`" != "`cat $(CONFIG_CACHE_PWD)`" ]; then echo "`pwd`" > $(CONFIG_CACHE_PWD); fi )
+RES := $(shell if [ ! -f $(CONFIG_CACHE_SOURCE_LIST) ] || [ -n "`cmp $(CONFIG_CACHE_SOURCE_LIST) $(SOURCE_LIST) 2>/dev/null`" ]; then cp $(SOURCE_LIST) $(CONFIG_CACHE_SOURCE_LIST); fi )
 
-all: config.cache
+all: config.pwd config.cache
 ifdef DISTCC
 	@if [ -z "`echo '$(MFLAGS)' | grep '\-j'`" ]; then echo; echo "WARNING: you enabled distcc support, but you don't seem to be using the -jN paramter"; echo; fi
 endif
@@ -78,7 +78,13 @@ help:
 	@echo "  bundle_lha    create the lha installation bundle"
 	@echo "  bundle_dmg    create the dmg installation bundle"
 
+config.pwd: $(CONFIG_CACHE_PWD)
+	$(MAKE) reconfigure
+
 config.cache: $(CONFIG_CACHE_SOURCE_LIST) $(CONFIGURE_FILES)
+	$(MAKE) reconfigure
+
+reconfigure:
 ifeq ($(shell if test -f config.cache; then echo 1; fi), 1)
 	@echo "----------------"
 	@echo "The system detected that source.list or any configure file is altered."
@@ -87,7 +93,7 @@ ifeq ($(shell if test -f config.cache; then echo 1; fi), 1)
 # Make sure we don't lock config.cache
 	@$(shell cat config.cache | sed 's/\\ /\\\\ /g') || exit 1
 	@echo "----------------"
-	@echo "Reconfig done. Now compiling..."
+	@echo "Reconfig done. Please re-execute make."
 	@echo "----------------"
 else
 	@echo "----------------"
@@ -113,9 +119,9 @@ mrproper:
 		rm -f $$dir/Makefile; \
 	done
 	$(Q)rm -rf objs
-	$(Q)rm -f Makefile Makefile.am
+	$(Q)rm -f Makefile Makefile.am Makefile.bundle
 	$(Q)rm -f media/openttd.desktop
-	$(Q)rm -f $(CONFIG_CACHE_SOURCE_LIST) config.cache config.log
+	$(Q)rm -f $(CONFIG_CACHE_SOURCE_LIST) config.cache config.pwd config.log $(CONFIG_CACHE_PWD)
 	$(Q)rm -rf $(BUNDLE_DIR)
 	$(Q)rm -rf $(BUNDLES_DIR)
 

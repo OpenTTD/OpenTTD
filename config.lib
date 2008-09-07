@@ -2311,6 +2311,7 @@ make_sed() {
 		s#!!CONFIG_CACHE_SOURCE!!#config.cache.source#g;
 		s#!!CONFIG_CACHE_VERSION!!#config.cache.version#g;
 		s#!!CONFIG_CACHE_SOURCE_LIST!!#config.cache.source.list#g;
+		s#!!CONFIG_CACHE_PWD!!#config.cache.pwd#g;
 		s#!!LANG_SUPPRESS!!#$lang_suppress#g;
 		s#!!OBJS_C!!#$OBJS_C#g;
 		s#!!OBJS_CPP!!#$OBJS_CPP#g;
@@ -2372,13 +2373,18 @@ generate_main() {
 
 	# Create the main Makefile
 	echo "Generating Makefile..."
-	< $ROOT_DIR/Makefile.in sed "$SRC_REPLACE" > Makefile
+	echo "# Auto-generated file from 'Makefile.in' -- DO NOT EDIT" > Makefile
+	< $ROOT_DIR/Makefile.in sed "$SRC_REPLACE" >> Makefile
+	cp $ROOT_DIR/Makefile.bundle.in Makefile.bundle
 	echo "# Auto-generated file -- DO NOT EDIT" > Makefile.am
 	echo >> Makefile.am
 	# Make the copy of the source-list, so we don't trigger an unwanted recompile
 	cp $SOURCE_LIST config.cache.source.list
+	# Add the current directory, so we don't trigger an unwanted recompile
+	echo "`pwd`" > config.cache.pwd
 	# Make sure config.cache is OLDER then config.cache.source.list
 	touch config.cache
+	touch config.pwd
 
 	if [ "$menu_dir" != "" ]; then
 		generate_menu_item
@@ -2394,7 +2400,8 @@ generate_lang() {
 	mkdir -p $LANG_OBJS_DIR
 
 	echo "Generating lang/Makefile..."
-	< $ROOT_DIR/Makefile.lang.in sed "$SRC_REPLACE" > $LANG_OBJS_DIR/Makefile
+	echo "# Auto-generated file from 'Makefile.lang.in' -- DO NOT EDIT" > $LANG_OBJS_DIR/Makefile
+	< $ROOT_DIR/Makefile.lang.in sed "$SRC_REPLACE" >> $LANG_OBJS_DIR/Makefile
 	echo "DIRS += $LANG_OBJS_DIR" >> Makefile.am
 	echo "LANG_DIRS += $LANG_OBJS_DIR" >> Makefile.am
 }
@@ -2408,7 +2415,8 @@ generate_src_normal() {
 	mkdir -p $SRC_OBJS_DIR
 
 	echo "Generating $2/Makefile..."
-	< $ROOT_DIR/Makefile.src.in sed "$SRC_REPLACE" > $SRC_OBJS_DIR/Makefile
+	echo "# Auto-generated file from 'Makefile.src.in' -- DO NOT EDIT" > $SRC_OBJS_DIR/Makefile
+	< $ROOT_DIR/Makefile.src.in sed "$SRC_REPLACE" >> $SRC_OBJS_DIR/Makefile
 	echo "DIRS += $SRC_OBJS_DIR" >> Makefile.am
 	echo "SRC_DIRS += $SRC_OBJS_DIR" >> Makefile.am
 }

@@ -1,146 +1,126 @@
 openttd (0.6.2-1) unstable; urgency=low
 
   * New upstream release.
+    - Fixes remote crash vulnerability CVE-2008-3547. Closes: #493714
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Fri, 01 Aug 2008 21:25:00 +0200
+ -- Matthijs Kooijman <matthijs@stdin.nl>  Fri, 08 Aug 2008 11:07:05 +0200
 
-openttd (0.6.2~RC2-1) unstable; urgency=low
+openttd (0.6.2~rc2-1) experimental; urgency=low
 
+  [ Matthijs Kooijman ]
   * New upstream release.
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Fri, 25 Jul 2008 22:00:00 +0200
+  [ Jordi Mallach ]
+  * Fix typo in README.Debian (lintian).
+  * Remove dpatch build-dep and the empty debian/patches dir.
+  * Don't ignore possible "make distclean" errors.
 
-openttd (0.6.2~RC1-1) unstable; urgency=low
+ -- Jordi Mallach <jordi@debian.org>  Sat, 26 Jul 2008 01:35:30 +0200
 
+openttd (0.6.2~rc1-1) experimental; urgency=low
+
+  [ Matthijs Kooijman ]
   * New upstream release.
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed, 16 Jul 2008 19:45:00 +0200
+ -- Jordi Mallach <jordi@debian.org>  Thu, 24 Jul 2008 16:09:57 +0200
 
 openttd (0.6.1-1) unstable; urgency=low
 
+  [ Matthijs Kooijman ]
   * New upstream release.
+  * Remove no_install_personal.dpatch, it is included upstream now.
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sun, 01 Jun 2008 15:35:00 +0200
+ -- Jordi Mallach <jordi@debian.org>  Thu, 05 Jun 2008 00:47:36 +0200
 
-openttd (0.6.1~RC2-1) unstable; urgency=low
+openttd (0.6.0-2) unstable; urgency=low
 
-  * New upstream release.
+  [ Jordi Mallach ]
+  * Rename XS-Vcs-* to the official Vcs-* fields.
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed, 21 May 2008 00:05:00 +0200
+  [ Matthijs Kooijman ]
+  * Don't install anything into ~ during make install, this prevented
+    successful builds on some architectures. Fix imported from upstream.
+  * Put the homepage in it's own Homepage field instead of in the description.
+  * Bump Standards-Version to 3.7.3
 
-openttd (0.6.1~RC1-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sat, 26 Apr 2008 22:55:00 +0200
+ -- Jordi Mallach <jordi@debian.org>  Thu, 03 Apr 2008 00:07:10 +0200
 
 openttd (0.6.0-1) unstable; urgency=low
 
-  * New upstream release.
+  [ Matthijs Kooijman ]
+  * New upstream release:
+    - Adds note about font-configuration for non-latin languages.
+      Closes: #462604
+  * Add .desktop file, provided by Andrea Colangelo.
+    Closes: #460073
+  * Add Finnish Debconf translation, provided by Esko Arajärvi.
+    Closes: #456956
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Tue, 01 Apr 2008 13:33:37 +0100
+  [ Jordi Mallach ]
+  * Fixes and improvements for the .desktop file according to the spec.
 
-openttd (0.6.0~RC1-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed, 26 Mar 2008 15:51:40 +0100
-
-openttd (0.6.0~beta5-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 04 Mar 2008 18:06:31 +0100
-
-openttd (0.6.0~beta4-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 18 Feb 2008 20:09:29 +0100
-
-openttd (0.6.0~beta3-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Tue, 16 Jan 2008 21:40:07 +0100
-
-openttd (0.6.0~beta2-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sun, 09 Dec 2007 22:05:05 +0100
-
-openttd (0.6.0~beta1-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sun, 18 Nov 2007 16:05:05 +0100
+ -- Jordi Mallach <jordi@debian.org>  Wed, 02 Apr 2008 14:04:40 +0200
 
 openttd (0.5.3-1) unstable; urgency=low
 
-  * New upstream release.
+  [ Matthijs Kooijman ]
+  * New upstream release
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sat, 15 Sep 2007 13:30:00 +0100
-
-openttd (0.5.3~rc3-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu, 30 Aug 2007 23:30:00 +0100
-
-openttd (0.5.3~rc2-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Sat,  7 Jul 2007 20:05:00 +0100
-
-openttd (0.5.3~rc1-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Thu, 28 Jun 2007 18:00:00 +0100
+ -- Jordi Mallach <jordi@debian.org>  Tue, 18 Sep 2007 12:05:28 +0200
 
 openttd (0.5.2-1) unstable; urgency=low
 
+  [ Jordi Mallach ]
   * New upstream release.
+  * Debconf translation updates:
+    - Catalan.
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Tue, 29 May 2007 20:00:00 +0100
+  [ Christian Perrier ]
+  * Debconf templates and debian/control reviewed by the debian-l10n-
+    english team as part of the Smith review project.
+    Closes: #422183, #419096.
+  * Debconf translation updates:
+    - Swedish. Closes: #422780
+    - Basque. Closes: #422786
+    - Czech. Closes: #422809
+    - Galician. Closes: #422831
+    - German. Closes: #422908
+    - Tamil. Closes: #423079
+    - Russian. Closes: #423224
+    - Portuguese. Closes: #423413
+    - French. Closes: #424436
+    - Brazilian Portuguese. Closes: #425585
+    - Dutch. Closes: #425707
 
-openttd (0.5.2~rc1-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed, 16 May 2007 23:35:39 +0100
+ -- Jordi Mallach <jordi@debian.org>  Sat, 02 Jun 2007 06:24:34 +0200
 
 openttd (0.5.1-1) unstable; urgency=low
 
-  * New upstream release.
+  [ Matthijs Kooijman ]
+  * New upstream release
+  * Add German and Swedish translations (Closes: #420258, #419097)
+  * Remove bogus fuzzy mark from the Catalan translation
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Fri, 20 Apr 2007 21:45:32 +0100
+  [ Jordi Mallach ]
+  * debian/control: add XS-Vcs-Svn and XS-Vcs-Browser fields.
 
-openttd (0.5.1~rc3-1) unstable; urgency=low
+ -- Jordi Mallach <jordi@debian.org>  Mon, 23 Apr 2007 21:03:06 +0200
 
-  * New upstream release.
+openttd (0.5.0-2) unstable; urgency=low
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Tue, 17 Apr 2007 22:00:46 +0100
+  * Upload to Debian.
 
-openttd (0.5.1~rc2-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Fri, 23 Mar 2007 23:45:46 +0100
-
-openttd (0.5.1~rc1-1) unstable; urgency=low
-
-  * New upstream release.
-
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Wed, 20 Mar 2007 22:03:46 +0100
+ -- Jordi Mallach <jordi@debian.org>  Sun, 11 Mar 2007 14:12:37 +0100
 
 openttd (0.5.0-1) unstable; urgency=low
 
+  [ Matthijs Kooijman ]
   * New upstream release
 
- -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 26 Feb 2007 21:07:05 +0100
+  [ Jordi Mallach ]
+  * Depend on ${misc:Depends}, not debconf directly.
+
+ -- Jordi Mallach <jordi@debian.org>  Thu,  8 Mar 2007 15:34:54 +0100
 
 openttd (0.5.0~rc5-1) unstable; urgency=low
 
@@ -243,13 +223,13 @@ openttd (0.4.0.1-1) unstable; urgency=low
 
   * New upstream release
 
- -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Mon, 23 May 2005 13:04:24 +0200
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 23 May 2005 13:04:24 +0200
 
 openttd (0.4.0-1) unstable; urgency=low
 
   * New upstream release
 
- -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Mon, 16 May 2005 00:16:17 +0200
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 16 May 2005 00:16:17 +0200
 
 openttd (0.3.6-1) unstable; urgency=low
 
@@ -257,18 +237,18 @@ openttd (0.3.6-1) unstable; urgency=low
   * Modifed Makefile to install xpm icon and scenarios in /usr/share/games/openttd/
   * Added openttd.32.xpm, openttd.64.xpm was too big
 
- -- root <root@katherina.student.utwente.nl>  Tue, 25 Jan 2005 19:21:08 +0100
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Tue, 25 Jan 2005 19:21:08 +0100
 
 openttd (0.3.5-2) unstable; urgency=low
 
   * Fixed some lintian warnings.
   * Added openttd.64.xpm (icon for menu).
 
- -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Mon, 27 Dec 2004 01:51:36 +0100
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Mon, 27 Dec 2004 01:51:36 +0100
 
 openttd (0.3.5-1) unstable; urgency=low
 
   * Initial Release.
 
- -- Matthijs Kooijman <matthijs@katherina.student.utwente.nl>  Fri, 24 Dec 2004 02:58:47 +0100
+ -- Matthijs Kooijman <m.kooijman@student.utwente.nl>  Fri, 24 Dec 2004 02:58:47 +0100
 
