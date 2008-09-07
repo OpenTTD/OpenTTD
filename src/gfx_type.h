@@ -74,16 +74,6 @@ enum WindowKeyCodes {
 	 * a-z are mapped to 97-122 */
 
 	/* Numerical keyboard */
-	WKC_NUM_0       = 128,
-	WKC_NUM_1       = 129,
-	WKC_NUM_2       = 130,
-	WKC_NUM_3       = 131,
-	WKC_NUM_4       = 132,
-	WKC_NUM_5       = 133,
-	WKC_NUM_6       = 134,
-	WKC_NUM_7       = 135,
-	WKC_NUM_8       = 136,
-	WKC_NUM_9       = 137,
 	WKC_NUM_DIV     = 138,
 	WKC_NUM_MUL     = 139,
 	WKC_NUM_MINUS   = 140,
