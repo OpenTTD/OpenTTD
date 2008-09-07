@@ -25,10 +25,11 @@ Vehicle *GetLastVehicleInChain(Vehicle *v);
 uint CountVehiclesInChain(const Vehicle *v);
 bool IsEngineCountable(const Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
-void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
-void *VehicleFromPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
+void FindVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
+void FindVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
+bool HasVehicleOnPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
+bool HasVehicleOnPosXY(int x, int y, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks();
-Vehicle *FindVehicleOnTileZ(TileIndex tile, byte z);
 uint8 CalcPercentVehicleFilled(Vehicle *v, StringID *color);
 
 void InitializeTrains();
@@ -47,8 +48,7 @@ SpriteID GetRotorImage(const Vehicle *v);
 uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 
 StringID VehicleInTheWayErrMsg(const Vehicle* v);
-Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z, bool without_crashed = false);
-Vehicle *GetVehicleTunnelBridge(TileIndex tile, TileIndex endtile);
+bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile);
 
 Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y);
 

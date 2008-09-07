@@ -284,13 +284,13 @@ static SigFlags ExploreSegment(Owner owner)
 
 				if (IsRailDepot(tile)) {
 					if (enterdir == INVALID_DIAGDIR) { // from 'inside' - train just entered or left the depot
-						if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
+						if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 						exitdir = GetRailDepotDirection(tile);
 						tile += TileOffsByDiagDir(exitdir);
 						enterdir = ReverseDiagDir(exitdir);
 						break;
 					} else if (enterdir == GetRailDepotDirection(tile)) { // entered a depot
-						if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
+						if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 						continue;
 					} else {
 						continue;
@@ -299,7 +299,7 @@ static SigFlags ExploreSegment(Owner owner)
 
 				if (GetRailTileType(tile) == RAIL_TILE_WAYPOINT) {
 					if (GetWaypointAxis(tile) != DiagDirToAxis(enterdir)) continue;
-					if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
+					if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 					tile += TileOffsByDiagDir(exitdir);
 					/* enterdir and exitdir stay the same */
 					break;
@@ -310,10 +310,10 @@ static SigFlags ExploreSegment(Owner owner)
 
 				if (tracks == TRACK_BIT_HORZ || tracks == TRACK_BIT_VERT) { // there is exactly one incidating track, no need to check
 					tracks = tracks_masked;
-					if (!(flags & SF_TRAIN) && VehicleFromPos(tile, &tracks, &EnsureNoTrainOnTrackProc)) flags |= SF_TRAIN;
+					if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, &tracks, &EnsureNoTrainOnTrackProc)) flags |= SF_TRAIN;
 				} else {
 					if (tracks_masked == TRACK_BIT_NONE) continue; // no incidating track
-					if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
+					if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 				}
 
 				if (HasSignals(tile)) { // there is exactly one track - not zero, because there is exit from this tile
@@ -358,7 +358,7 @@ static SigFlags ExploreSegment(Owner owner)
 				if (DiagDirToAxis(enterdir) != GetRailStationAxis(tile)) continue; // different axis
 				if (IsStationTileBlocked(tile)) continue; // 'eye-candy' station tile
 
-				if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
+				if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 				tile += TileOffsByDiagDir(exitdir);
 				break;
 
@@ -367,7 +367,7 @@ static SigFlags ExploreSegment(Owner owner)
 				if (GetTileOwner(tile) != owner) continue;
 				if (DiagDirToAxis(enterdir) == GetCrossingRoadAxis(tile)) continue; // different axis
 
-				if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
+				if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 				tile += TileOffsByDiagDir(exitdir);
 				break;
 
@@ -377,13 +377,13 @@ static SigFlags ExploreSegment(Owner owner)
 				DiagDirection dir = GetTunnelBridgeDirection(tile);
 
 				if (enterdir == INVALID_DIAGDIR) { // incoming from the wormhole
-					if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
+					if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 					enterdir = dir;
 					exitdir = ReverseDiagDir(dir);
 					tile += TileOffsByDiagDir(exitdir); // just skip to next tile
 				} else { // NOT incoming from the wormhole!
 					if (ReverseDiagDir(enterdir) != dir) continue;
-					if (!(flags & SF_TRAIN) && VehicleFromPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
+					if (!(flags & SF_TRAIN) && HasVehicleOnPos(tile, NULL, &TrainOnTileEnum)) flags |= SF_TRAIN;
 					tile = GetOtherTunnelBridgeEnd(tile); // just skip to exit tile
 					enterdir = INVALID_DIAGDIR;
 					exitdir = INVALID_DIAGDIR;

@@ -34,6 +34,7 @@
 #include "settings_type.h"
 #include "clear_map.h"
 #include "tree_map.h"
+#include "aircraft.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -737,28 +738,47 @@ static void AnimateTile_Water(TileIndex tile)
 	/* not used */
 }
 
+static void FloodVehicle(Vehicle *v);
+
+/**
+ * Flood a vehicle if we are allowed to flood it, i.e. when it is on the ground.
+ * @param v    The vehicle to test for flooding.
+ * @param data The z of level to flood.
+ * @return NULL as we always want to remove everything.
+ */
+static void *FloodVehicleProc(Vehicle *v, void *data)
+{
+	byte z = *(byte*)data;
+
+	if (v->type == VEH_DISASTER || (v->type == VEH_AIRCRAFT && v->subtype == AIR_SHADOW)) return NULL;
+	if (v->z_pos > z || (v->vehstatus & VS_CRASHED) != 0) return NULL;
+
+	FloodVehicle(v);
+	return NULL;
+}
 
 /**
  * Finds a vehicle to flood.
  * It does not find vehicles that are already crashed on bridges, i.e. flooded.
  * @param tile the tile where to find a vehicle to flood
- * @return a vehicle too flood or NULL when there is no vehicle too flood.
  */
-static Vehicle *FindFloodableVehicleOnTile(TileIndex tile)
+static void FloodVehicles(TileIndex tile)
 {
+	byte z = 0;
+
 	if (IsTileType(tile, MP_STATION) && IsAirport(tile)) {
 		const Station *st = GetStationByTile(tile);
 		const AirportFTAClass *airport = st->Airport();
+		z = 1 + airport->delta_z;
 		for (uint x = 0; x < airport->size_x; x++) {
 			for (uint y = 0; y < airport->size_y; y++) {
 				tile = TILE_ADDXY(st->airport_tile, x, y);
-				Vehicle *v = FindVehicleOnTileZ(tile, 1 + airport->delta_z);
-				if (v != NULL && (v->vehstatus & VS_CRASHED) == 0) return v;
+				FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 			}
 		}
 
 		/* No vehicle could be flooded on this airport anymore */
-		return NULL;
+		return;
 	}
 
 	/* if non-uniform stations are disabled, flood some train in this train station (if there is any) */
@@ -767,31 +787,23 @@ static Vehicle *FindFloodableVehicleOnTile(TileIndex tile)
 
 		BEGIN_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
 			if (st->TileBelongsToRailStation(t)) {
-				Vehicle *v = FindVehicleOnTileZ(t, 0);
-				if (v != NULL && (v->vehstatus & VS_CRASHED) == 0) return v;
+				FindVehicleOnPos(tile, &z, &FloodVehicleProc);
 			}
 		END_TILE_LOOP(t, st->trainst_w, st->trainst_h, st->train_tile)
 
-		return NULL;
+		return;
 	}
 
-	if (!IsBridgeTile(tile)) return FindVehicleOnTileZ(tile, 0);
+	if (!IsBridgeTile(tile)) {
+		FindVehicleOnPos(tile, &z, &FloodVehicleProc);
+		return;
+	}
 
 	TileIndex end = GetOtherBridgeEnd(tile);
-	byte z = GetBridgeHeight(tile);
-	Vehicle *v;
+	z = GetBridgeHeight(tile);
 
-	/* check the start tile first since as this is closest to the water */
-	v = FindVehicleOnTileZ(tile, z);
-	if (v != NULL && (v->vehstatus & VS_CRASHED) == 0) return v;
-
-	/* check a vehicle in between both bridge heads */
-	v = FindVehicleBetween(tile, end, z, true);
-	if (v != NULL) return v;
-
-	/* check the end tile last to give fleeing vehicles a chance to escape */
-	v = FindVehicleOnTileZ(end, z);
-	return (v != NULL && (v->vehstatus & VS_CRASHED) == 0) ? v : NULL;
+	FindVehicleOnPos(tile, &z, &FloodVehicleProc);
+	FindVehicleOnPos(end, &z, &FloodVehicleProc);
 }
 
 static void FloodVehicle(Vehicle *v)
@@ -921,12 +933,8 @@ static void DoFloodTile(TileIndex target)
 		switch (GetTileType(target)) {
 			case MP_RAILWAY: {
 				if (!IsPlainRailTile(target)) break;
-
+				FloodVehicles(target);
 				flooded = FloodHalftile(target);
-
-				Vehicle *v = FindFloodableVehicleOnTile(target);
-				if (v != NULL) FloodVehicle(v);
-
 				break;
 			}
 
@@ -951,8 +959,7 @@ static void DoFloodTile(TileIndex target)
 		}
 	} else {
 		/* Flood vehicles */
-		Vehicle *v = FindFloodableVehicleOnTile(target);
-		if (v != NULL) FloodVehicle(v);
+		FloodVehicles(target);
 
 		/* flood flat tile */
 		if (CmdSucceeded(DoCommand(target, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR))) {

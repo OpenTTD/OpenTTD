@@ -1730,24 +1730,22 @@ static void *TrainApproachingCrossingEnum(Vehicle *v, void *data)
 /**
  * Finds a vehicle approaching rail-road crossing
  * @param tile tile to test
- * @return pointer to vehicle approaching the crossing
+ * @return true if a vehicle is approaching the crossing
  * @pre tile is a rail-road crossing
  */
-static Vehicle *TrainApproachingCrossing(TileIndex tile)
+static bool TrainApproachingCrossing(TileIndex tile)
 {
 	assert(IsLevelCrossingTile(tile));
 
 	DiagDirection dir = AxisToDiagDir(GetCrossingRailAxis(tile));
 	TileIndex tile_from = tile + TileOffsByDiagDir(dir);
 
-	Vehicle *v = (Vehicle *)VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);
-
-	if (v != NULL) return v;
+	if (HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum)) return true;
 
 	dir = ReverseDiagDir(dir);
 	tile_from = tile + TileOffsByDiagDir(dir);
 
-	return (Vehicle *)VehicleFromPos(tile_from, &tile, &TrainApproachingCrossingEnum);
+	return HasVehicleOnPos(tile_from, &tile, &TrainApproachingCrossingEnum);
 }
 
 
@@ -1761,8 +1759,8 @@ void UpdateLevelCrossing(TileIndex tile, bool sound)
 {
 	assert(IsLevelCrossingTile(tile));
 
-	/* train on crossing || train approaching crossing */
-	bool new_state = VehicleFromPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
+	/* train on crossing || train approaching crossing || reserved */
+	bool new_state = HasVehicleOnPos(tile, NULL, &TrainOnTileEnum) || TrainApproachingCrossing(tile);
 
 	if (new_state != IsCrossingBarred(tile)) {
 		if (new_state && sound) {
@@ -3083,10 +3081,10 @@ static void CheckTrainCollision(Vehicle *v)
 
 	/* find colliding vehicles */
 	if (v->u.rail.track == TRACK_BIT_WORMHOLE) {
-		VehicleFromPos(v->tile, &tcc, FindTrainCollideEnum);
-		VehicleFromPos(GetOtherTunnelBridgeEnd(v->tile), &tcc, FindTrainCollideEnum);
+		FindVehicleOnPos(v->tile, &tcc, FindTrainCollideEnum);
+		FindVehicleOnPos(GetOtherTunnelBridgeEnd(v->tile), &tcc, FindTrainCollideEnum);
 	} else {
-		VehicleFromPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
+		FindVehicleOnPosXY(v->x_pos, v->y_pos, &tcc, FindTrainCollideEnum);
 	}
 
 	/* any dead -> no crash */
@@ -3208,7 +3206,7 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 								exitdir = ReverseDiagDir(exitdir);
 
 								/* check if a train is waiting on the other side */
-								if (VehicleFromPos(o_tile, &exitdir, &CheckVehicleAtSignal) == NULL) return;
+								if (!HasVehicleOnPos(o_tile, &exitdir, &CheckVehicleAtSignal)) return;
 							}
 						}
 						goto reverse_train_direction;

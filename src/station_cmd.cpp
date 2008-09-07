@@ -1477,7 +1477,7 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 	/* don't do the check for drive-through road stops when company bankrupts */
 	if (IsDriveThroughStopTile(tile) && (flags & DC_BANKRUPT)) {
 		/* remove the 'going through road stop' status from all vehicles on that tile */
-		if (flags & DC_EXEC) VehicleFromPos(tile, NULL, &ClearRoadStopStatusEnum);
+		if (flags & DC_EXEC) FindVehicleOnPos(tile, NULL, &ClearRoadStopStatusEnum);
 	} else {
 		if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 	}

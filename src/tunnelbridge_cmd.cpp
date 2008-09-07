@@ -584,7 +584,7 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 
 	endtile = GetOtherTunnelEnd(tile);
 
-	if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
+	if (HasVehicleOnTunnelBridge(tile, endtile)) return CMD_ERROR;
 
 	_build_tunnel_endtile = endtile;
 
@@ -641,7 +641,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 
 	endtile = GetOtherBridgeEnd(tile);
 
-	if (GetVehicleTunnelBridge(tile, endtile) != NULL) return CMD_ERROR;
+	if (HasVehicleOnTunnelBridge(tile, endtile)) return CMD_ERROR;
 
 	direction = GetTunnelBridgeDirection(tile);
 	delta = TileOffsByDiagDir(direction);
