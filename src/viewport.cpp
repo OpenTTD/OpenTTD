@@ -1348,7 +1348,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 
 void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 {
-	char buffer[128];
+	char buffer[256];
 	uint w;
 
 	sign->top = top;

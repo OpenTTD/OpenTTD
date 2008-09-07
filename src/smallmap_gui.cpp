@@ -877,6 +877,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					_left_button_clicked = false;
 
 					pt = RemapCoords(WP(w, smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
+					WP(w2, vp_d).follow_vehicle = INVALID_VEHICLE;
 					WP(w2, vp_d).dest_scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
 					WP(w2, vp_d).dest_scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 

@@ -217,19 +217,21 @@ bool CargoList::MoveTo(CargoList *dest, uint count, CargoList::MoveToAction mta,
 			/* Can move only part of the packet, so split it into two pieces */
 			if (mta != MTA_FINAL_DELIVERY) {
 				CargoPacket *cp_new = new CargoPacket();
+
+				Money fs = cp->feeder_share * count / cp->count;
+				cp->feeder_share -= fs;
+
 				cp_new->source          = cp->source;
 				cp_new->source_xy       = cp->source_xy;
 				cp_new->loaded_at_xy    = (mta == MTA_CARGO_LOAD) ? data : cp->loaded_at_xy;
 
 				cp_new->days_in_transit = cp->days_in_transit;
-				cp_new->feeder_share    = cp->feeder_share / count;
+				cp_new->feeder_share    = fs;
 				/* When cargo is moved into another vehicle you have *always* paid for it */
 				cp_new->paid_for        = (mta == MTA_CARGO_LOAD) ? false : cp->paid_for;
 
 				cp_new->count = count;
 				dest->packets.push_back(cp_new);
-
-				cp->feeder_share /= cp->count - count;
 			}
 			cp->count -= count;
 

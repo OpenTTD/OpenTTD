@@ -765,7 +765,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 
 				gd.colors[i] = cs->legend_colour;
 				for (uint j = 0; j != 20; j++) {
-					gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 6 + 6, c);
+					gd.cost[i][j] = GetTransportedGoodsIncome(10, 20, j * 4 + 4, c);
 				}
 
 				i++;

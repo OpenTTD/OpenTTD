@@ -101,7 +101,7 @@ static const VkMapping _vk_mapping[] = {
 	AM(VK_F1, VK_F12, WKC_F1, WKC_F12),
 
 	/* Numeric part */
-	AM(VK_NUMPAD0, VK_NUMPAD9, WKC_NUM_0, WKC_NUM_9),
+	AM(VK_NUMPAD0, VK_NUMPAD9, '0', '9'),
 	AS(VK_DIVIDE,   WKC_NUM_DIV),
 	AS(VK_MULTIPLY, WKC_NUM_MUL),
 	AS(VK_SUBTRACT, WKC_NUM_MINUS),
