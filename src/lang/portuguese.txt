@@ -771,7 +771,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opções do Jogo
 STR_02C6_DIFFICULTY_SETTINGS                                    :Configurações de dificuldade
-STR_MENU_CONFIG_PATCHES                                         :Configurar correcções
 STR_NEWGRF_SETTINGS                                             :Definições Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Opções de Transparência
 STR_GAMEOPTMENU_0A                                              :
@@ -1011,9 +1010,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}A auto-r
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Combóio {COMMA} ficou demasiado longo após substituição
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite de dinheiro)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Configurar Correcções
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar as correcções
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configurar Correcções
 
 STR_CONFIG_PATCHES_OFF                                          :Desligado
 STR_CONFIG_PATCHES_ON                                           :Ligado

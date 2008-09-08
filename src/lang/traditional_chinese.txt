@@ -776,7 +776,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :遊戲選項
 STR_02C6_DIFFICULTY_SETTINGS                                    :難易設定
-STR_MENU_CONFIG_PATCHES                                         :設置修正
 STR_NEWGRF_SETTINGS                                             :NewGRF 設定
 STR_TRANSPARENCY_OPTIONS                                        :透明度選項
 STR_GAMEOPTMENU_0A                                              :
@@ -1016,9 +1015,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飛機 {
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}置換後列車 {COMMA} 過長
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(金錢限制)
 
-STR_CONFIG_PATCHES                                              :{BLACK}設定補綴
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}設置修正選項
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}設置修正
 
 STR_CONFIG_PATCHES_OFF                                          :關
 STR_CONFIG_PATCHES_ON                                           :開

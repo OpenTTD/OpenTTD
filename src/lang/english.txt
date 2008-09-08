@@ -778,7 +778,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Game options
 STR_02C6_DIFFICULTY_SETTINGS                                    :Difficulty settings
-STR_MENU_CONFIG_PATCHES                                         :Configure patches
+STR_MENU_CONFIG_PATCHES                                         :Advanced settings
 STR_NEWGRF_SETTINGS                                             :NewGRF settings
 STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_GAMEOPTMENU_0A                                              :
@@ -1021,9 +1021,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {C
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No autoreplace/renew rules applied.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Configure Patches
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configure the patches
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configure Patches
+STR_CONFIG_PATCHES                                              :{BLACK}Advanced Settings
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Display advanced settings
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Advanced Settings
 
 STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On

@@ -770,7 +770,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Seçenekler
 STR_02C6_DIFFICULTY_SETTINGS                                    :Zorluk Ayarları
-STR_MENU_CONFIG_PATCHES                                         :Yamaları Düzenle
 STR_NEWGRF_SETTINGS                                             :Newgrf ayarları
 STR_TRANSPARENCY_OPTIONS                                        :Şeffaflık seçenekleri
 STR_GAMEOPTMENU_0A                                              :
@@ -1010,9 +1009,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Şu uça
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tren {COMMA} değiştirildikten sonra uzadı
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(para yetmedi)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Yamaları Düzenle
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Yamaları Düzenle
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Yamaları Düzenle
 
 STR_CONFIG_PATCHES_OFF                                          :Kapalı
 STR_CONFIG_PATCHES_ON                                           :Açık

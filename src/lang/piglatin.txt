@@ -766,7 +766,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Amegay optionsway
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ifficultyday ettingssay
-STR_MENU_CONFIG_PATCHES                                         :Onfigurecay atchespay
 STR_NEWGRF_SETTINGS                                             :EwGRFnay ettingssay
 STR_TRANSPARENCY_OPTIONS                                        :Ansparencytray optionsway
 STR_GAMEOPTMENU_0A                                              :
@@ -1004,9 +1003,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorene
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Aintray {COMMA} isway ootay onglay afterway eplacementray
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(oneymay imitlay)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Onfigurecay Atchespay
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Onfigurecay ethay atchespay
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Onfigurecay Atchespay
 
 STR_CONFIG_PATCHES_OFF                                          :Offway
 STR_CONFIG_PATCHES_ON                                           :Onway

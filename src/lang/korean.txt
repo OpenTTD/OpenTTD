@@ -778,7 +778,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :게임 옵션
 STR_02C6_DIFFICULTY_SETTINGS                                    :난이도 설정
-STR_MENU_CONFIG_PATCHES                                         :패치 구성
 STR_NEWGRF_SETTINGS                                             :NewGRF 설정
 STR_TRANSPARENCY_OPTIONS                                        :투명 옵션
 STR_GAMEOPTMENU_0A                                              :
@@ -1021,9 +1020,6 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}열차 {
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}자동대체/갱신 규칙이 적용되지 않았습니다.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
 
-STR_CONFIG_PATCHES                                              :{BLACK}패치 구성
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}패치를 구성합니다.
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}패치 구성
 
 STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On

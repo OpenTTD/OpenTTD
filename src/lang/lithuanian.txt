@@ -799,7 +799,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Žaidimo nustatymai
 STR_02C6_DIFFICULTY_SETTINGS                                    :Sunkumo lygio nustatymai
-STR_MENU_CONFIG_PATCHES                                         :Papildomi nustatymai
 STR_NEWGRF_SETTINGS                                             :Papild. grafikos nustatymai (NewGRF)
 STR_TRANSPARENCY_OPTIONS                                        :Permatomumo nustatymai
 STR_GAMEOPTMENU_0A                                              :
@@ -1037,9 +1036,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lektuvo 
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Traukinys {COMMA} yra per ilgas po atnaujinimo
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pinigu limitas)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Papildomi nustatymai
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguruok nustatymus
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Papildomi nustatymai
 
 STR_CONFIG_PATCHES_OFF                                          :Išjungta
 STR_CONFIG_PATCHES_ON                                           :Įjungta

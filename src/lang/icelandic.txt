@@ -777,7 +777,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Stillingar
 STR_02C6_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
-STR_MENU_CONFIG_PATCHES                                         :Viðbætur
 STR_NEWGRF_SETTINGS                                             :NewGRF stillingar
 STR_TRANSPARENCY_OPTIONS                                        :Gegnsæisstillingar
 STR_GAMEOPTMENU_0A                                              :
@@ -1017,9 +1016,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvi
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Lest {COMMA} er of löng eftir endurnýjun
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(takmarkað fjármagn)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Viðbætur
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Stilla viðbætur
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Viðbætur
 
 STR_CONFIG_PATCHES_OFF                                          :Nei
 STR_CONFIG_PATCHES_ON                                           :Já

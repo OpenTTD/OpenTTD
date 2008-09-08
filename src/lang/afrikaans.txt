@@ -769,7 +769,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Speletjie opsies
 STR_02C6_DIFFICULTY_SETTINGS                                    :Moeite stellings
-STR_MENU_CONFIG_PATCHES                                         :Konfigureer laslappe
 STR_NEWGRF_SETTINGS                                             :NewGRF stellings
 STR_TRANSPARENCY_OPTIONS                                        :Deursigtigheid opsies
 STR_GAMEOPTMENU_0A                                              :
@@ -1009,9 +1008,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Outohern
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {COMMA} is te lank na vervang
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(geld perk)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Konfigureer Laslappe
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfigureer die laslappe
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}konfigureer Laslappe
 
 STR_CONFIG_PATCHES_OFF                                          :Af
 STR_CONFIG_PATCHES_ON                                           :Aan

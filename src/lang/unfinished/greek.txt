@@ -762,7 +762,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
-STR_MENU_CONFIG_PATCHES                                         :Ρύθμιση διορθώσεων
 STR_NEWGRF_SETTINGS                                             :Ρυθμίσεις NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ονόματα πόλεων που εμφανίζονται
@@ -999,9 +998,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Η Αυ�
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Το τρένο {COMMA} είναι πολύ μακρύ μετά την αντικατάσταση
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(χρηματικό όριο)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Ρύθμιση Διορθώσεων
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Ρύθμιση των Διορθώσεων
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Ρύθμιση Διορθώσεων
 
 STR_CONFIG_PATCHES_OFF                                          :Κλειστό
 STR_CONFIG_PATCHES_ON                                           :Ανοιχτό

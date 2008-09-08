@@ -820,7 +820,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Možnosti igre
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavitve težavnosti
-STR_MENU_CONFIG_PATCHES                                         :Urejanje popravkov
 STR_NEWGRF_SETTINGS                                             :NewGRF nastavitve
 STR_TRANSPARENCY_OPTIONS                                        :Nastavitve prozornega pogleda
 STR_GAMEOPTMENU_0A                                              :
@@ -1063,9 +1062,6 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {CO
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ni samoobnovitvenih pravil.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(denarna meja)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Nastavitve popravkov
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavi popravke
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Nastavitve popravkov
 
 STR_CONFIG_PATCHES_OFF                                          :Izklopi
 STR_CONFIG_PATCHES_ON                                           :Vklopi

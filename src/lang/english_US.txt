@@ -769,7 +769,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Game options
 STR_02C6_DIFFICULTY_SETTINGS                                    :Difficulty settings
-STR_MENU_CONFIG_PATCHES                                         :Configure patches
 STR_NEWGRF_SETTINGS                                             :Newgrf settings
 STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_GAMEOPTMENU_0A                                              :
@@ -1008,9 +1007,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorene
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} is too long after replacement
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Configure Patches
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configure the patches
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configure Patches
 
 STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On

@@ -832,7 +832,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Mängu valikud
 STR_02C6_DIFFICULTY_SETTINGS                                    :Raskusastme seadistused
-STR_MENU_CONFIG_PATCHES                                         :Paikade seadistamine
 STR_NEWGRF_SETTINGS                                             :NewGRF seadistused
 STR_TRANSPARENCY_OPTIONS                                        :Läbipaistvuse valikud
 STR_GAMEOPTMENU_0A                                              :
@@ -1075,9 +1074,6 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Rong {CO
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automaatse asendamise/uuendamise reegleid ei ole rakendatud
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahapiirang)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Paikade seadistamine
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Paikade seadistamine
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Paikade seadistamine
 
 STR_CONFIG_PATCHES_OFF                                          :Väljas
 STR_CONFIG_PATCHES_ON                                           :Sees

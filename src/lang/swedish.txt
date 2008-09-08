@@ -776,7 +776,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spelinställningar
 STR_02C6_DIFFICULTY_SETTINGS                                    :Svårighetsgrad
-STR_MENU_CONFIG_PATCHES                                         :Ändra Patchar
 STR_NEWGRF_SETTINGS                                             :NewGRF inställningar
 STR_TRANSPARENCY_OPTIONS                                        :Genomskinlighetsinställningar
 STR_GAMEOPTMENU_0A                                              :
@@ -1015,9 +1014,6 @@ STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automati
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatiska förnyandet av flygplan {COMMA} misslyckades{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tåg {COMMA} är för långt efter förnyandet
 
-STR_CONFIG_PATCHES                                              :{BLACK}Konfigurera patchar
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfigurera patcharna
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Konfigurera patchar
 
 STR_CONFIG_PATCHES_OFF                                          :Av
 STR_CONFIG_PATCHES_ON                                           :På

@@ -780,7 +780,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Postavke igre
 STR_02C6_DIFFICULTY_SETTINGS                                    :Postavke težine
-STR_MENU_CONFIG_PATCHES                                         :Konfiguriraj zakrpe
 STR_NEWGRF_SETTINGS                                             :Postavke NewGRF-a
 STR_TRANSPARENCY_OPTIONS                                        :Postavke prozirnosti
 STR_GAMEOPTMENU_0A                                              :
@@ -1023,9 +1022,6 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Nakon za
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Pravilo bez autozamjene/obnove/ primjenjeno
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(novčano ograničenje)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Konfiguriraj zakrpe
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguriraj zakrpe
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Konfiguriraj zakrpe
 
 STR_CONFIG_PATCHES_OFF                                          :Isključeno
 STR_CONFIG_PATCHES_ON                                           :Uključeno

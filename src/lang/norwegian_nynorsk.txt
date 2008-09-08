@@ -770,7 +770,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spelinstillingar
 STR_02C6_DIFFICULTY_SETTINGS                                    :Vanskegrad
-STR_MENU_CONFIG_PATCHES                                         :Konfigurer patcher
 STR_NEWGRF_SETTINGS                                             :Instillingar for ny grafikk
 STR_TRANSPARENCY_OPTIONS                                        :Gjennomsiktigheitsinnstillingar
 STR_GAMEOPTMENU_0A                                              :
@@ -1009,9 +1008,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automati
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er vorte for langt etter utskifte
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengegrense)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Tilleggsinnstillingar
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Endre tilleggsinstillingar
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Tilleggsinstillingar
 
 STR_CONFIG_PATCHES_OFF                                          :Av
 STR_CONFIG_PATCHES_ON                                           :På

@@ -599,7 +599,6 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sla eige
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spul Opsjes
 STR_02C6_DIFFICULTY_SETTINGS                                    :Swierrichheid ynstellings
-STR_MENU_CONFIG_PATCHES                                         :Patches Ynstellings
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Stêd nammen sjen litte
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stasjon nammen sjen litte
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Buordsjes sjen litte

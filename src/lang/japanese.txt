@@ -771,7 +771,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :ゲームの設定
 STR_02C6_DIFFICULTY_SETTINGS                                    :難易度の設定
-STR_MENU_CONFIG_PATCHES                                         :パッチの設定
 STR_NEWGRF_SETTINGS                                             :NewGRFの設定
 STR_TRANSPARENCY_OPTIONS                                        :半透明設定
 STR_GAMEOPTMENU_0A                                              :
@@ -1006,9 +1005,6 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}飛行�
 
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}交換後に列車{COMMA}は長過ぎます
 
-STR_CONFIG_PATCHES                                              :{BLACK}パッチの設定
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}パッチを設定します
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}パッチの設定
 
 STR_CONFIG_PATCHES_OFF                                          :切
 STR_CONFIG_PATCHES_ON                                           :入

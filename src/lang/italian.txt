@@ -780,7 +780,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opzioni gioco
 STR_02C6_DIFFICULTY_SETTINGS                                    :Impostazioni difficoltà
-STR_MENU_CONFIG_PATCHES                                         :Configura patch
 STR_NEWGRF_SETTINGS                                             :Impostazioni NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Opzioni trasparenza
 STR_GAMEOPTMENU_0A                                              :
@@ -1023,9 +1022,6 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Il Treno
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nessuna regola di rimpiazzo/rinnovo automatico applicata.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite denaro)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Configura patch
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configura le patch
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configura patch
 
 STR_CONFIG_PATCHES_OFF                                          :No
 STR_CONFIG_PATCHES_ON                                           :Si

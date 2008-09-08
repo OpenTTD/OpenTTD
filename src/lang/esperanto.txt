@@ -767,7 +767,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Ludaj opcioj
 STR_02C6_DIFFICULTY_SETTINGS                                    :Malfacilec-agordoj
-STR_MENU_CONFIG_PATCHES                                         :Agordu flikojn
 STR_NEWGRF_SETTINGS                                             :Agordoj de NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Urbonomoj montriĝas
@@ -1005,9 +1004,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Aŭtomat
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trajno {COMMA} tro longas post ŝanĝo
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(monlimo)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Agordu Flikojn
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Agordu la flikojn
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Agordu Flikojn
 
 STR_CONFIG_PATCHES_OFF                                          :Malaktiva
 STR_CONFIG_PATCHES_ON                                           :Aktiva

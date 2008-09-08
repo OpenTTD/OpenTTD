@@ -775,7 +775,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opţiunile jocului (F2)
 STR_02C6_DIFFICULTY_SETTINGS                                    :Setări dificultate
-STR_MENU_CONFIG_PATCHES                                         :Configurare patch
 STR_NEWGRF_SETTINGS                                             :Setari Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Optiuni transparenta
 STR_GAMEOPTMENU_0A                                              :
@@ -1015,9 +1014,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Înnoire
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trenul {COMMA} este prea lung dupa inlocuire
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(fonduri limitate)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Configurare patch
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurează patch-urile OpenTTD
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configurare patch
 
 STR_CONFIG_PATCHES_OFF                                          :inactiv
 STR_CONFIG_PATCHES_ON                                           :activ

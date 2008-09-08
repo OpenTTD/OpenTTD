@@ -842,7 +842,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Nastavenia hry
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavenia obtiaznosti
-STR_MENU_CONFIG_PATCHES                                         :Nastavenia patchov
 STR_NEWGRF_SETTINGS                                             :Nastavenie newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Nastavenia priehladnosti
 STR_GAMEOPTMENU_0A                                              :
@@ -1083,9 +1082,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Zlyhalo 
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po vymene prilis dlhy
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finacny limit)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Nastavenia patchov
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Nastavenia patchov
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Nastavenia patchov
 
 STR_CONFIG_PATCHES_OFF                                          :nie
 STR_CONFIG_PATCHES_ON                                           :áno

@@ -759,7 +759,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spe'les rez'i'mi
 STR_02C6_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
-STR_MENU_CONFIG_PATCHES                                         :Konfigure't labojumus (pac'us)
 STR_NEWGRF_SETTINGS                                             :Newgrf rez'i'mi
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ra'di't pilse'tu nosaukumus
@@ -993,9 +992,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lidmas'i
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vilciens {COMMA} ir pa'ra'k gars' pe'c aizvietos'anas
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(naudas limits)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Konfigure' uzlabojumus
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfigure't labojumus
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Konfigure't labojumus
 
 STR_CONFIG_PATCHES_OFF                                          :Ne'
 STR_CONFIG_PATCHES_ON                                           :Ja'

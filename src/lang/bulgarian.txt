@@ -778,7 +778,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Игрови опции
 STR_02C6_DIFFICULTY_SETTINGS                                    :Опции за трудност
-STR_MENU_CONFIG_PATCHES                                         :Конфигурирай патчове
 STR_NEWGRF_SETTINGS                                             :Newgrf настройки
 STR_TRANSPARENCY_OPTIONS                                        :Опций на прозрачност
 STR_GAMEOPTMENU_0A                                              :
@@ -1019,9 +1018,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Авто
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Влак {COMMA} е прекалено дълъг след замяната
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(ограничени средства)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Настройка на кръпки
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Настройки на кръпките
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройка на кръпките
 
 STR_CONFIG_PATCHES_OFF                                          :изключено
 STR_CONFIG_PATCHES_ON                                           :включено

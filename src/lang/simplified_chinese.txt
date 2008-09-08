@@ -777,7 +777,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :游戏选项
 STR_02C6_DIFFICULTY_SETTINGS                                    :难度设定
-STR_MENU_CONFIG_PATCHES                                         :配置补丁
 STR_NEWGRF_SETTINGS                                             :NewGRF 设置
 STR_TRANSPARENCY_OPTIONS                                        :透明选项
 STR_GAMEOPTMENU_0A                                              :
@@ -1019,9 +1018,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飞机 {
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}列车 {COMMA} 在自动升级后过长！
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(现金不够)
 
-STR_CONFIG_PATCHES                                              :{BLACK}配置补丁
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}配置游戏补丁
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}配置补丁
 
 STR_CONFIG_PATCHES_OFF                                          :关闭
 STR_CONFIG_PATCHES_ON                                           :打开

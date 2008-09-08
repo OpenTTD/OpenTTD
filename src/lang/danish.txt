@@ -776,7 +776,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spilvalg
 STR_02C6_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
-STR_MENU_CONFIG_PATCHES                                         :Indstil programrettelser
 STR_NEWGRF_SETTINGS                                             :NewGRF indstillinger
 STR_TRANSPARENCY_OPTIONS                                        :Gennemsigtighedsvalg
 STR_GAMEOPTMENU_0A                                              :
@@ -1016,9 +1015,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automati
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er for langt efter udskiftning
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(ikke penge nok)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Indstil programrettelser
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Indstilning af programrettelser
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Indstil programrettelser
 
 STR_CONFIG_PATCHES_OFF                                          :Fra
 STR_CONFIG_PATCHES_ON                                           :Til

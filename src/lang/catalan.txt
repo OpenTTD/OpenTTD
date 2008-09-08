@@ -778,7 +778,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opcions del Joc
 STR_02C6_DIFFICULTY_SETTINGS                                    :Paràmetres de dificultat
-STR_MENU_CONFIG_PATCHES                                         :Configura pedaços
 STR_NEWGRF_SETTINGS                                             :Extensions NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Opcions de transparència
 STR_GAMEOPTMENU_0A                                              :
@@ -1021,9 +1020,6 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren 
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No s'han aplicat normes d'autosubstitució/renovació.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(límit de diners)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Configura Pedaços
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configurar els pedaços
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configura Pedaços
 
 STR_CONFIG_PATCHES_OFF                                          :Inactiu
 STR_CONFIG_PATCHES_ON                                           :Actiu

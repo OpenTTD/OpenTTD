@@ -778,7 +778,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spelopties
 STR_02C6_DIFFICULTY_SETTINGS                                    :Moeilijkheidsgraad
-STR_MENU_CONFIG_PATCHES                                         :Kies patches
 STR_NEWGRF_SETTINGS                                             :Newgrf instellingen
 STR_TRANSPARENCY_OPTIONS                                        :Doorzichtigheidsopties
 STR_GAMEOPTMENU_0A                                              :
@@ -1021,9 +1020,6 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {C
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Geen automatischvervang/vernieuw regels opgegeven.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(onvoldoende geld)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Selecteer patches
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Kies welke patches je wilt gebruiken
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Kies patches
 
 STR_CONFIG_PATCHES_OFF                                          :Uit
 STR_CONFIG_PATCHES_ON                                           :Aan

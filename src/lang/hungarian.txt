@@ -836,7 +836,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Beállítások
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nehézségi beállítások
-STR_MENU_CONFIG_PATCHES                                         :Foltok beállítása
 STR_NEWGRF_SETTINGS                                             :Newgrf beállítások
 STR_TRANSPARENCY_OPTIONS                                        :Átlátszósági beállítások
 STR_GAMEOPTMENU_0A                                              :
@@ -1076,9 +1075,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorene
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}A {COMMA}. vonat túl hosszú a csere után
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pénzlimit)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Foltok beállítása
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Foltok beállítása
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Foltok beállítása
 
 STR_CONFIG_PATCHES_OFF                                          :Ki
 STR_CONFIG_PATCHES_ON                                           :Be

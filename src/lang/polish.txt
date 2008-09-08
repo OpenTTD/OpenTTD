@@ -865,7 +865,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opcje gry
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ustawienia trudności
-STR_MENU_CONFIG_PATCHES                                         :Konfiguracja wtyczek
 STR_NEWGRF_SETTINGS                                             :Ustawienia newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Opcje przeźroczystości
 STR_GAMEOPTMENU_0A                                              :
@@ -1104,9 +1103,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Błąd a
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Pociąg {COMMA} jest za długi po zamianie
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limit funduszy)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Konfiguracja wtyczek
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Konfiguracja wtyczek
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Konfiguracja wtyczek
 
 STR_CONFIG_PATCHES_OFF                                          :wył.
 STR_CONFIG_PATCHES_ON                                           :wł.

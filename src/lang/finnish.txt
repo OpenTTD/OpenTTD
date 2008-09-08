@@ -767,7 +767,6 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Pelin asetukset
 STR_02C6_DIFFICULTY_SETTINGS                                    :Vaikeusasetukset
-STR_MENU_CONFIG_PATCHES                                         :Muokkaa paikkauksia
 STR_NEWGRF_SETTINGS                                             :Newgrf-asetukset
 STR_TRANSPARENCY_OPTIONS                                        :Läpinäkyvyysvalinnat
 STR_GAMEOPTMENU_0A                                              :
@@ -1006,9 +1005,6 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lentokon
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Juna {COMMA} kasvaisi liian pitkäksi
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahoitusraja)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Muokkaa paikkauksia
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Muokkaa paikkauksia.
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Muokkaa paikkauksia
 
 STR_CONFIG_PATCHES_OFF                                          :pois
 STR_CONFIG_PATCHES_ON                                           :päällä
