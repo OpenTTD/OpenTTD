@@ -91,7 +91,7 @@ $(LANG_OBJS_DIR)/table/strings.h: $(LANG_DIR)/english.txt $(LANG_OBJS_DIR)/$(STR
 # Always run version detection, so we always have an accurate modified
 # flag
 VERSIONS := $(shell AWK="$(AWK)" "$(ROOT_DIR)/findversion.sh")
-MODIFIED := $(shell echo "$(VERSIONS)" | cut -f 3)
+MODIFIED := $(shell echo "$(VERSIONS)" | cut -f 3 -d'	')
 
 ifdef REVISION
 # Use specified revision (which should be of the form "r000").
@@ -99,8 +99,8 @@ REV := $(REVISION)
 REV_NR := $(shell echo $(REVISION) | sed "s/[^0-9]//g")
 else
 # Use autodetected revisions
-REV      := $(shell echo "$(VERSIONS)" | cut -f 1)
-REV_NR   := $(shell echo "$(VERSIONS)" | cut -f 2)
+REV      := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
+REV_NR   := $(shell echo "$(VERSIONS)" | cut -f 2 -d'	')
 endif
 
 # Make sure we have something in REV and REV_NR

@@ -8,7 +8,7 @@ REV := $(REVISION)
 else
 # Detect the revision
 VERSIONS := $(shell AWK="$(AWK)" "$(ROOT_DIR)/findversion.sh")
-REV      := $(shell echo "$(VERSIONS)" | cut -f 1)
+REV      := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
 endif
 
 # Make sure we have something in REV
