@@ -1035,7 +1035,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Nywerhe
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Toon altyd lang datum in die standbaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Toon seine op die bestuur kant: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Toon finansies venster op die einde van die jaar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch versoenbaar deurgaande hantering: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Pad voertuig toustaan (met kwantum effekte): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Was skerm as muis by die kant is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Laattoe die omkooping van plaaslike raad: {ORANGE}{STRING}

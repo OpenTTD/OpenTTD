@@ -1029,7 +1029,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alwaysway owshay onglay ateday inway ethay atusstay arbay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Owshay ignalssay onway ethay ivedray idesay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Owshay inancesfay indowway atway ethay endway ofway ethay earyay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}AtchtTDPay ompatiblecay onstopnay andlinghay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Oadray ehiclevay eueingquay (ithway antumquay effectsway): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Anpay indowway enwhay ousemay isway atway ethay edgeway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allowway ibingbray ofway ethay ocallay authorityway: {ORANGE}{STRING}

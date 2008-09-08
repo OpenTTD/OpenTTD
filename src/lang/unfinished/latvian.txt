@@ -1014,7 +1014,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Viena v
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vienme'r ra'di't garu datumu statusa josla': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Ra'di't signa'lus brauks'anas puse': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Ra'di't finanses gada beiga's: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch savietojams nekave'jos'ais apstra'da'jums: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automobi'l'u rindas (ar kvantu efektiem): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Bi'di't logu kad pele ir ta' mala': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Atl'aut viete'jo varas iesta'z'u piekukul'os'anu: {ORANGE}{STRING}

@@ -1028,7 +1028,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostrar sempre a data longa na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostrar sinais no lado de conducción: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Mostra-la fiestra de finanzas ó final do ano: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Manexo de nonstop compatible con TTDPatch: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cola para vehículos de estrada (con efectos cuánticos): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Desplaza-la fiestra cando o ratón esté no borde: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permiti-la chantaxe as autoridades locales: {ORANGE}{STRING}

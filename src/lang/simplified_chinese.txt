@@ -1044,7 +1044,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}工业�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}永远在状态栏中显示长日期：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}在列车前进的方向显示信号灯：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}在年终显示财务报表：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch 兼容的“不停车”模式：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}汽车自动排队 (有量子效应): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}当鼠标移动到屏幕边缘时移动屏幕：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}允许贿赂地方政府：{ORANGE}{STRING}

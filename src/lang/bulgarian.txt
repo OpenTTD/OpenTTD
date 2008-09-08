@@ -1045,7 +1045,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Инд�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Дълга дата в лента за състоянието: {ORANGE}{STRING.f}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Семафорите от страната на пътното движение: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Финансов отчет в края на годината: {ORANGE}{STRING.m}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch съвместима обработка на "без спиране": {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Опашка на автомобилите (със сумарен ефект): {ORANGE}{STRING.f}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Местене на екрана когато мишката е в края: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}

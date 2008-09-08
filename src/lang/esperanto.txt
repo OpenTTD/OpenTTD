@@ -1026,7 +1026,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Samtipa
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Ĉiam montru longan daton en la statbreto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Montru signalojn veturflanke: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Montru financan fenestron fine de la jaro: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch-amika nonstop-traktado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vojveturila vicigo (kun kvantum-efektoj): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ŝovu fenestron se la muso estas ĉe la rando: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permesu subaĉeti la lokajn estrojn: {ORANGE}{STRING}

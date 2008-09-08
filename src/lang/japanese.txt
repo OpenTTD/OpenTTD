@@ -1032,7 +1032,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}同類�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}常に状況バーに長型日付を表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}信号を運転側に表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}年末に財政ウインドウを表示：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatchに対応している直行便方法を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}車両の待ち行列を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}マウスが端にあるとき画面を移動：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}町議会の買収を許容：{ORANGE}{STRING}

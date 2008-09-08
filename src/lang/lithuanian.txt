@@ -1059,7 +1059,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Leisti 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Rodyti pilna data busenos eiluteje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Sviesoforus rodyti vairuotojo puseje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Rodyti finansine ataskaita metu pabaigoje: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch leidžia pravažiuoti nesustojant: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automobiliu vilkstine (su kvantavimo efektu): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Slinkti vaizdą pelei esant prie krašto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leisti papirkinėti miesto valdžią: {ORANGE}{STRING}

@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Consent
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostra sempre la data lunga nella barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostra i segnali sul lato di guida: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Mostra la finestra delle finanze alla fine dell'anno: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Gestisci la funzione 'no-stop' come in TTDPatch: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Accodamento automezzi fuori da una stazione occupata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scorri la visuale quando il mouse è su un bordo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Consenti la corruzione dell'autorità locale: {ORANGE}{STRING}

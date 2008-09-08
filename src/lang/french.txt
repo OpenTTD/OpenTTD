@@ -1052,7 +1052,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Permett
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afficher la date complète dans la barre d'état: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Signaux ferroviaires du côté du sens de conduite: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afficher le bilan de finances en fin d'année: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Compatibilité TTDPatch "nonstop handling": {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mise en file Véhicules Routiers (+ effets quantiques): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Défiler la vue horizontalement avec le pointeur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permettre la corruption de la municipalité: {ORANGE}{STRING}

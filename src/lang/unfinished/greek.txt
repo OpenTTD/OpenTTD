@@ -1020,7 +1020,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Βιο�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίες στη γραμμή κατάστασης: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Εμφάνιση σήμανσης στην πλευρά οδήγησης: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Εμφάνιση παράθυρου οικονομικών στο τέλος του έτους: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch συμβατός απ'ευθείας χειρισμός: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ουρά οχημάτων (με κβαντικά εφφέ): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Μετακίνηση παραθύρου όταν είναι το ποντίκι στην άκρη: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Επιτρέπεται η δωροδοκία της τοπικής αρχής: {ORANGE}{STRING}

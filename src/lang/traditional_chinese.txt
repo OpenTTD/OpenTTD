@@ -1042,7 +1042,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}同類�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}永遠於狀態列顯示長日期：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}於駕駛者的一邊顯示訊號燈：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}與 TTDPatch 相容之不停站處理：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}車輛排隊 (量子效應)：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}滑鼠在視窗邊緣時移動視窗：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}可以向地方政府行賄：{ORANGE}{STRING}

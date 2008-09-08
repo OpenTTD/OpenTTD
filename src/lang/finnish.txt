@@ -1031,7 +1031,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Samanty
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Näytä aina koko päiväys tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Näytä opastimet ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch: Junat pysähtyvät vain aikataulun asemilla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ajoneuvojonotus (kvanttitehostein): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}

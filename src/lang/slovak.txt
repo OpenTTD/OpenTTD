@@ -1109,7 +1109,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Rovnaky
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zobrazovat dátum v stavovej lište v dlhom formáte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zobrazovat žel. signály na rovnakej strane ako jazdia vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Zobrazit rozpocet na konci roku: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kompatibilna interpretacia prikazu nonstop: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestných vozidiel (podla množstva nákladu): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posúvat pohlad ked je kurzor myši na okraji okna: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}

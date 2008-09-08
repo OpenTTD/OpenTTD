@@ -1109,7 +1109,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Průmys
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Ukazovat dlouhé datum ve stavové liště: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Ukazovat semafory na straně, kde jezdí silniční vozidla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Ukazovat finanční okno na konci každého roku: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}Použití příkazu 'bez zastavení' jako v TTDPatchi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Silniční vozidla stojí fronty (s kvantovým efektem): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posouvat okno, když je kurzor na okraji: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Povolit úplatek místní správě: {ORANGE}{STRING}

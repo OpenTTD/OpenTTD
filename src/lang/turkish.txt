@@ -1036,7 +1036,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Aynı t
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Durum çubuğunda uzun tarih göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Sinyalizasyon sürüş yönünde olsun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Sene sonunda ekonomik durumu göster: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch uyumlu ekspress trenler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Fare kenardayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}

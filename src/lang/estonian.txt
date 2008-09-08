@@ -1101,7 +1101,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Sama li
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Olekuribal näidatakse alati täispikka kuupäeva: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Paiguta signaalid rööbasteele sõidusuunda arvestades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Aasta lõpus näidatakse rahavoogude aruannet: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatchiga ühilduv 'mittepeatumine': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mootorsõidukite järjekorrad (koos mahuefektidega): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Kursoriga ekraaniserva puudutamisel keritakse vaadet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Luba kohalikule omavalitsusele altkäemaksu maksmine: {ORANGE}{STRING}

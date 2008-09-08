@@ -1047,7 +1047,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch와 호환되는 직통(논스톱) 처리 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}

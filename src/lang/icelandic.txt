@@ -1043,7 +1043,6 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Má byg
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Sýna alltaf fulla dagsetningu á upplýsingaslá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Sýna umferðarljós akstursmegin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Sýna fjármálaglugga í lok árs: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch samhæfð meðhöndlun stansleysu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Bifreiðir bíða í röð (með skömmtunaráhrifum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Færa sjónarhorn þegar músin nálgast brún gluggans: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leyfilegt að múta bæjaryfirvöldum: {ORANGE}{STRING}

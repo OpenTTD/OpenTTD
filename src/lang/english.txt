@@ -1051,7 +1051,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Always show long date in the status bar: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch compatible nonstop handling: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING1}
