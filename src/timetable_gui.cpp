@@ -73,7 +73,7 @@ struct TimetableWindow : Window {
 
 		sel += this->vscroll.pos;
 
-		return (sel <= v->num_orders * 2 && sel >= 0) ? sel : INVALID_ORDER;
+		return (sel < v->num_orders * 2 && sel >= 0) ? sel : INVALID_ORDER;
 	}
 
 	void OnPaint()
