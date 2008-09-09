@@ -779,6 +779,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opciones de juego
 STR_02C6_DIFFICULTY_SETTINGS                                    :Configuración de dificultad
+STR_MENU_CONFIG_PATCHES                                         :Opciones avanzadas
 STR_NEWGRF_SETTINGS                                             :Configuración Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Opciones de transparencia
 STR_GAMEOPTMENU_0A                                              :
@@ -1021,6 +1022,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren 
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No se han aplicado reglas de autoreemplazo/renovación.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(límite de dinero)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Opciones avanzadas
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Mostrar las opciones avanzadas
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Opciones avanzadas
 
 STR_CONFIG_PATCHES_OFF                                          :No
 STR_CONFIG_PATCHES_ON                                           :Sí
@@ -1048,6 +1052,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostrar siempre fecha larga en la barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostrar señales en el lado de conducción: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Mostrar ventana de finanzas al final del año: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nuevas ordenes son 'sin parada' por defecto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cola de vehículos de carretera (con efecto cuantificador): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Desplazar ventana mediante el cursor en los bordes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir sobornos a la autoridad local: {ORANGE}{STRING}
@@ -1877,6 +1882,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}No se pu
 STR_280A_SIGN                                                   :Señal
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar texto de la señal
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}No se puede cambiar el nombre de la señal...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}No se puede borrar la señal...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Seleccione el tipo de árboles a plantar
 STR_280E_TREES                                                  :Árboles
 STR_280F_RAINFOREST                                             :Selváticos
@@ -3190,10 +3196,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configuración NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuración de Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar cambios
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Seleccionar paleta
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Seleccionar la paleta del NewGRF seleccionado.{}Hazlo cuando los gráficos de este NewGRF se vean rosa en el juego
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Establecer parámetros
 STR_NEWGRF_TIP                                                  :{BLACK}Un listado de todos los Newgrf que tiene instalados. Haga click para cambiar las opciones.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}¡No tiene ningún fichero newgrf instalado! Por favor, lea las instrucciones en el manual para instalar nuevos gráficos.
 STR_NEWGRF_FILENAME                                             :{BLACK}Fichero: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Se van a realizar cambios a un juego en ejecución; esto puede cerrar OpenTTD.{}¿Estás completamente seguro de realizar esto?

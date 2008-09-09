@@ -19,6 +19,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} unterwegs von {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akzeptiert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Akzeptiert: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Liefert: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passagiere
 STR_0010_COAL                                                   :Kohle
@@ -360,7 +361,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sind Si
 STR_0161_QUIT_GAME                                              :{WHITE}Spiel beenden
 STR_SORT_ORDER_TIP                                              :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sortierkriterium auswählen
-STR_SORT_BY                                                     :{BLACK}Sortieren nach
+STR_SORT_BY                                                     :{BLACK}Sortieren
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Bevölkerung
 STR_SORT_BY_PRODUCTION                                          :Produktion
@@ -778,7 +779,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spieleinstellungen
 STR_02C6_DIFFICULTY_SETTINGS                                    :Schwierigkeitsgrad
-STR_MENU_CONFIG_PATCHES                                         :Einstellungen der Patches
+STR_MENU_CONFIG_PATCHES                                         :Erweiterte Einstellungen
 STR_NEWGRF_SETTINGS                                             :Newgrf-Einstellungen
 STR_TRANSPARENCY_OPTIONS                                        :Transparenzeinstellungen
 STR_GAMEOPTMENU_0A                                              :
@@ -1017,11 +1018,12 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Fahrzeug
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Schiff {COMMA} kann nicht erneuert werden{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Flugzeug {COMMA} kann nicht erneuert werden{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Zug {COMMA} nach Erneuerung zu lang
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Keine Ersetzungs-/Erneuerungsregeln angewandt.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(Geld fehlt)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Einstellungen der Patches
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Einstellungen der Patches
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Einstellungen der Patches
+STR_CONFIG_PATCHES                                              :{BLACK}Erweiterte Einstellungen
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Erweiterte Einstellungen treffen
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Erweiterte Einstellungen
 
 STR_CONFIG_PATCHES_OFF                                          :Aus
 STR_CONFIG_PATCHES_ON                                           :An
@@ -1037,7 +1039,7 @@ STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Bahnhö
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Verbessertes Beladeverfahren nutzen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Fahrzeuge schrittweise beladen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Liefere Fracht nur, wenn die Station diese annimmt: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Fracht wird erst bei Bedarf an Haltestelle verfügbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erlaube das Bauen von sehr langen Brücken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Erlaube "Gehe zum Depot"-Aufträge im Fahrplan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Methode zum manuellen Bau von Primärindustrien: {ORANGE}{STRING}
@@ -1173,7 +1175,8 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automat
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standard gebaute Signalart: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Fortgeschritten
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Erweitert
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Einseitig erweitert
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Durchlaufen der Signalarten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :nur Normale
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :nur Erweiterte
@@ -1264,6 +1267,7 @@ STR_WAYPOINT                                                    :{WHITE}Wegpunkt
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Wegpunkttyp auswählen
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Z{P ug üge}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Wegpunktname ändern
@@ -1348,6 +1352,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportiert)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportiert)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industrienamen - Klick auf den Namen scrollt Hauptansicht zur Industrie
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zu nah an einer anderen Industrie
 
@@ -1381,6 +1386,7 @@ STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Name des
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Sprache, Server-Version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Ein Spiel der Liste durch Anklicken wählen
 STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Zuletzt besuchtes Spiel:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Zuletzt besuchten Server auswählen
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Server suchen
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Netzwerk nach einem Server durchsuchen
@@ -1394,7 +1400,7 @@ STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Teilnehm
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Spielfeldgröße
-STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Spielfeldgröße{}Klicke um nach größe zu sortieren
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Spielfeldgröße{}Klicke, um nach größe zu sortieren
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Heutiges Datum
@@ -1481,6 +1487,13 @@ STR_NETWORK_LANG_SPANISH                                        :Spanisch
 STR_NETWORK_LANG_SWEDISH                                        :Schwedisch
 STR_NETWORK_LANG_TURKISH                                        :Türkisch
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainisch
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Kroatisch
+STR_NETWORK_LANG_CATALAN                                        :Katalanisch
+STR_NETWORK_LANG_ESTONIAN                                       :Estländisch
+STR_NETWORK_LANG_GALICIAN                                       :Galicisch
+STR_NETWORK_LANG_GREEK                                          :Griechisch
+STR_NETWORK_LANG_LATVIAN                                        :Lettisch
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspielerlobby
@@ -1656,7 +1669,7 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Gleise k
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise können nicht abgerissen werden...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Signale können hier nicht entfernt werden...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zugdepotausrichtung
-STR_1015_RAILROAD_CONSTRUCTION                                  :Eisenbahnbau
+STR_1015_RAILROAD_CONSTRUCTION                                  :Gleisbau
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Bau elektrifizierter Strecken
 STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetschwebebahnbau
@@ -1677,13 +1690,22 @@ STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsi
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleise mit Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleis mit erweitertem Signal
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Gleis mit einseitig erweitertem Signal
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Vor- und Hauptsignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Haupt- und Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleise mit normalen und Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Gleis mit normalem und erweitertem Signal
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Gleis mit normalem und einseitig erweitertem Signal
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Vor- und Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleise mit Vor-  und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Gleis mit Vor- und erweitertem Signal
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Gleis mit Vor- und einseitig erweitertem Signal
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Gleise mit Ausfahr- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Gleis mit Ausfahr- und erweitertem Signal
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Gleis mit Ausfahr- und einseitig erweitertem Signal
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Gleis mit Kombinations- und erweitertem Signal
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Gleis mit Kominations- und einseitig erweitertem Signal
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Gleis mit erweitertem und einseitig erweitertem Signal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bahnhof muss erst abgerissen werden
 
 
@@ -1857,6 +1879,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Schild k
 STR_280A_SIGN                                                   :Schild
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Schildtext ändern
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Schildname kann nicht geändert werden...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Kann Schild nicht löschen...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Wähle die zu pflanzende Baumart
 STR_280E_TREES                                                  :Bäume
 STR_280F_RAINFOREST                                             :Regenwald
@@ -2682,10 +2705,10 @@ STR_ORDER_GO_TO                                                 :Gehe zu
 STR_ORDER_GO_NON_STOP_TO                                        :Gehe non-stop zu
 STR_ORDER_GO_VIA                                                :Gehe über
 STR_ORDER_GO_NON_STOP_VIA                                       :Gehe non-stop über
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vollladen mit beliebiger Fracht
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vollladen beliebiger Fracht
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lade wenn verfügbar
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Vollladen mit jeder Fracht
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Vollladen mit beliebiger Fracht
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Vollladen (jede Fracht)
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Vollladen (beliebige Fracht)
 STR_ORDER_DROP_NO_LOADING                                       :kein Beladen
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Alles entladen
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Entladen sofern akzeptiert
@@ -2693,20 +2716,40 @@ STR_ORDER_DROP_UNLOAD                                           :Alles entladen
 STR_ORDER_DROP_TRANSFER                                         :Verlagern
 STR_ORDER_DROP_NO_UNLOADING                                     :Kein entladen
 STR_ORDER_FULL_LOAD                                             :(Vollladen)
-STR_ORDER_FULL_LOAD_ANY                                         :(Vollladen mit jeglicher Frach)
+STR_ORDER_FULL_LOAD_ANY                                         :(Vollladen jeglicher Frach)
 STR_ORDER_NO_LOAD                                               :(kein Beladen)
 STR_ORDER_UNLOAD                                                :(Entladen und laden)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Entladen und auf volle Ladung warten)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Entladen und voll beladen mit beliebiger Fracht)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Entladen und leer verlassen)
+STR_ORDER_TRANSFER                                              :(Umladen und laden)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Umladen und auf volle Ladung warten)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Umladen und voll beladen mit beliebiger Fracht)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Umladen und leer verlassen)
 STR_ORDER_NO_UNLOAD                                             :(Nicht entladen und laden)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nicht entladen und auf volle ladung warten)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nicht entladen und voll beladen mit beliebiger Fracht)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ändert Stoppverhalten des ausgewählten Auftrags
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ändert Ladeverhalten des ausgewählten Auftrags
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändert Entladeverhalten des ausgewählten Auftrags
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Erweiterten Befehl einfügen
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gehe zum nächsten Depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gehe zum nächsten Hangar
+STR_ORDER_NEAREST_DEPOT                                         :dem nächsten
+STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar
+STR_ORDER_SERVICE_AT                                            :Wartung in
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Wartung ohne Halt in
 STR_ORDER_TRAIN_DEPOT                                           :Zugdepot
+STR_ORDER_ROAD_DEPOT                                            :Straßenfahrzeugdepot
 STR_ORDER_SHIP_DEPOT                                            :Werft
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fahrzeuginformation, welche für den Sprung ausgewertet wird
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Vergleich der Farzeuginformation mit eingegebenen Wert
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wert der mit Farzeuginformation verglichen wird
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Wert für den Vergleich eingeben
@@ -2724,8 +2767,10 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :ist mehr als
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :ist mehr als oder gleich
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :ist wahr
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :ist falsch
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Springe zu Befehl {COMMA}
 STR_CONDITIONAL_NUM                                             :Springe zu Befehl {COMMA} wenn {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Gehe zu Auftrag {COMMA}, wenn {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Fahren (ohne Fahrplan)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING} lang fahren
@@ -2774,6 +2819,7 @@ STR_REFIT_ORDER                                                 :(umrüsten auf 
 STR_TIMETABLE_VIEW                                              :{BLACK}Fahrplan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zur Fahrplanansicht wechseln
 STR_ORDER_VIEW                                                  :{BLACK}Aufträge
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Zur Auftragsanzeige wechseln
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Aufträge)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Ende der Aufträge - -
 STR_SERVICE                                                     :{BLACK}Wartung
@@ -2924,7 +2970,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ausgewä
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY} pro Jahr{}Ladevermögen: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapazität: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} Fahrzeug{P "" e}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name des Fahrzeuges
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Fahrzeug kann nicht benannt werden...
@@ -3105,6 +3153,9 @@ STR_BRIBE_FAILED                                                :{WHITE}Ihr Best
 STR_BRIBE_FAILED_2                                              :{WHITE}von einem regionalen Untersuchungsbeamten aufgedeckt.
 STR_BUILD_DATE                                                  :{BLACK}Errichtet am: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Stationsklasse: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Stationstyp: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Leistungsaufschlüsselung
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Details
@@ -3144,6 +3195,7 @@ STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Paramete
 STR_NEWGRF_TIP                                                  :{BLACK}Eine Liste aller NewGRF-Sets, die installiert sind. Per Klick auswählen.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Keine NewGRF-Dateien installiert. Bitte Installationsanleitung im Handbuch nachschlagen.
 STR_NEWGRF_FILENAME                                             :{BLACK}Dateiname: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Palette: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF-ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-Summe: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Sie sind im Begriff, Änderungen während eines laufenden Spiels zu machen. Dies kann zum Absturz von OpenTTD führen.{}Sind Sie sicher?
@@ -3161,13 +3213,16 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} Benötigt OpenTTD-Version {STRING} oder höher.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der GRF-Datei, die es übersetzen soll,
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {STRING} als statisches NewGRF mit {STRING} könnte Synchronisationsfehler hervorrufen.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versucht, eine ungültige ID zu verwenden.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ausgewählte Voreinstellung laden
-STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Voreinstellung speichern
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Speichern
 STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Aktuelle Liste als Voreinstellung speichern
 STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Name der Voreinstellung
-STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Voreinstellung löschen
-STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Löschen der ausgewählten Voreinstellung
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Löschen
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Ausgewählte Voreinstellung löschen
 STR_NEWGRF_ADD                                                  :{BLACK}Hinzufügen
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Eine neue NewGRF-Datei zur Liste hinzufügen
 STR_NEWGRF_REMOVE                                               :{BLACK}Entfernen
@@ -3198,6 +3253,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Es fehle
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF-Datei(en) fehlen
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das beenden der PAuse kann OpenTTD zum Abstürzen bringen. Bitte sende keine Fehlerberichte bei auftretenden Fehlern. {}Willst du die Pause wirklich beenden?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Siele wurde in einer version ohne Strassenbahnunterstützung gespeichert. Alle Strassenbahnen wurden entfernt.
 
@@ -3338,6 +3396,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Ändere 
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Welterstellung
 STR_RANDOM_SEED                                                 :{BLACK}Zufallsstartwert:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Gib einen Zufallsstartwert ein
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Zufallsstartwert eingeben
 STR_LAND_GENERATOR                                              :{BLACK}Landgenerator:
 STR_TREE_PLACER                                                 :{BLACK}Baumalgorithmus
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Reliefkarte drehen:
@@ -3550,10 +3609,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein normales Signal, wird jedoch benötigt, um Einfahr- oder Combosignalen den Block als "frei" zu melden.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combosignal (Formsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Erweitertes Signal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Erweiterte Signale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Erweitertes einseitiges Signal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Erweiterte einseitige Signale können nicht von der Rückseite durchfahren werden.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardsignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein normales Signal, gibt jedoch das Signal an Einfahr- und Combosignale im vorherliegenden Block weiter.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combosignal (Lichtsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Erweitertes Signal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Erweiterte Signale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Erweitertes einseitiges Signal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Erweiterte einseitige Signale können nicht von der Rückseite durchfahren werden.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg.+Klicken ändert die bestehende Bauform.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern

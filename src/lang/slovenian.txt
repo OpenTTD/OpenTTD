@@ -1919,6 +1919,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Ne more�
 STR_280A_SIGN                                                   :Znak
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Uredi znak
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Ne moreš spremeniti imena znaka ...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Nemogoče brisanje znaka...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Izberi vrsto drevesa za sajenje
 STR_280E_TREES                                                  :Drevesa
 STR_280F_RAINFOREST                                             :Deževni gozd
@@ -3269,10 +3270,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Skupno t
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF nastavitve
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF nastavitve
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potrdi spremembe
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Preklop palete
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Preklopi paleto izbranega NewGRF.{}To je potrebno storiti, če grafike iz NewGRF dobijo rožnato barvo
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavi parametre
 STR_NEWGRF_TIP                                                  :{BLACK}Seznam vseh Newgrf kompletov, ki so nameščeni. Klikni na komplet za spremembo nastavitev
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Trenutno ni NEWgrf datotek nameščenih! Prosim, poglej navodila za namestitev novih grafik
 STR_NEWGRF_FILENAME                                             :{BLACK}Ime datoteke: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Pripravljaš se narediti spremembe na zagnani igri; to lahko sesuje OpenTTD.{}Si zagotovo želiš tega?
@@ -3292,6 +3296,8 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Preveč NewGrf-jev je naloženih.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nalaganje {STRING} kot statični NewGRF z/s {STRING} lahko povzroči desinhronizacijo.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepričakovana sličica.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznan ukaz 0 lastnosti.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe neveljavnega ID-ja.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Naloži izbrano prednastavitev
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Shrani prednastavitev

@@ -380,6 +380,7 @@ STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Lonxitude
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Valor da carga en espera
+STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ordeación clásica)
 STR_ENGINE_SORT_COST                                            :Coste
 STR_ENGINE_SORT_POWER                                           :Potencia
 STR_ENGINE_SORT_INTRO_DATE                                      :Data de Presentación
@@ -393,6 +394,7 @@ STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehícul
 STR_AVAILABLE_SHIPS                                             :{BLACK}Barcos Dispoñibles
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aeronaves Dispoñibles
 STR_MANAGE_LIST                                                 :{BLACK}Xestionar lista
+STR_MANAGE_LIST_TIP                                             :{BLACK}Envia-las instruccións a tódolos vehículos desta lista
 STR_REPLACE_VEHICLES                                            :Reemplazar Vehículos
 STR_SEND_TRAIN_TO_DEPOT                                         :Enviar ó Depósito
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar ó Depósito
@@ -3020,10 +3022,12 @@ STR_NEWGRF_MOVEDOWN                                             :{BLACK}Baixar
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
 STR_NEWGRF_FILE_TIP                                             :{BLACK}Lista dos ficheiros NewGRF instalados. Pincha nun ficheiro para cambiar os parámetros
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parámetros: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Introduce os parámetros do NewGRF
 STR_NEWGRF_NO_INFO                                              :{BLACK}Non hai información dispoñible
 
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Arquivos NewGRF dispoñibles
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Engadir á selección
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Engadi-lo arquivo NewGRF seleccionado a túa configuración
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Actualizar ficheiros
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Actualiza a lista dos ficheiros NewGRF dispoñibles
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Non se pode engadir o ficheiro: ID do GRF duplicado
@@ -3032,6 +3036,7 @@ STR_NEWGRF_DISABLED                                             :{RED}Desactivad
 
 
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A partida grabouse nunha versión sen soporte para tranvías. Quitáronse tódolos tranvías.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda persoalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3073,6 +3078,7 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender t
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter a lista de tódolos trens co depósito actual nas súas ordes
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter a lista de tódolos vehículos de estrada co depósito actual nas súas ordes
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obter a lista de tódolos barcos co depósito actual nas súas ordes
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obter una lista de tódolos avións con algún hangar deste aeroporto nas súas ordes
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorreemprazar tódolos trens no depósito
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autorreemprazar tódolos vehículos no depósito
@@ -3080,6 +3086,7 @@ STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autorree
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autorreemprazar tódolos avións no hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vehículo{P "" s} de Estrada
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave
 
@@ -3224,6 +3231,7 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transferir Créditos: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...esta rúa pertenece á cidade
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opcións de Transparencia
 STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Habilitar transparencia para as sinais das estacións. CTRL+click para bloquear.
@@ -3250,10 +3258,12 @@ STR_GROUP_ALL_AIRCRAFTS                                         :Tódolos avión
 STR_GROUP_DEFAULT_TRAINS                                        :Trens sen agrupar
 STR_GROUP_DEFAULT_ROADS                                         :Vehículos de estrada sen agrupar
 STR_GROUP_DEFAULT_SHIPS                                         :Barcos sen agrupar
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Avións sen agrupar
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Borrar tódolos vehículos
 
 STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren{P "" s}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vehículo{P "" s} de Estrada
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Barco{P "" s}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronave{P "" s}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear un grupo
@@ -3293,13 +3303,17 @@ STR_FACE_SIMPLE                                                 :{BLACK}Simple
 STR_FACE_SIMPLE_TIP                                             :{BLACK}Selección simple de cara.
 STR_FACE_LOAD                                                   :{BLACK}Cargar
 STR_FACE_LOAD_TIP                                               :{BLACK}Carga-la cara favorita
+STR_FACE_LOAD_DONE                                              :{WHITE}A túa cara favorita cargouse dende o arquivo de configuración de OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Nº de cara.
 STR_FACE_FACECODE_ERR                                           :{WHITE}¡Non se pode axustar o número da cara - debe estar entre 0 e 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Grabar
 STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleccionar caras europeas
 STR_FACE_AFRICAN                                                :{BLACK}Africana
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Seleccionar caras africanas
 STR_FACE_YES                                                    :Si
 STR_FACE_NO                                                     :Non
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Activar bigote ou pendentes
 STR_FACE_HAIR                                                   :Pelo:
 STR_FACE_HAIR_TIP                                               :{BLACK}Cambiar pelo
 STR_FACE_EYEBROWS                                               :Cellas:

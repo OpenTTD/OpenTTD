@@ -1878,6 +1878,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Impossib
 STR_280A_SIGN                                                   :Cartello
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Modifica testo del cartello
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Impossibile modificare il testo del cartello...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Impossibile eliminare il cartello...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Seleziona il tipo di albero da piantare
 STR_280E_TREES                                                  :Alberi
 STR_280F_RAINFOREST                                             :Foresta pluviale
@@ -3190,7 +3191,7 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Punteggi
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Impostazioni NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Impostazioni NewGRF
-STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Applica cambiamenti
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Applica modifiche
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Alterna tavolozze
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Alterna la tavolozza colori utilizzata dal NewGRF selezionato.{}Utilizzare questa impostazione se la grafica di questo NewGRF durante il gioco appare rosa.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Imposta parametri

@@ -1930,6 +1930,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Siia ei 
 STR_280A_SIGN                                                   :Silt
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Sildi muutmine
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Silti ei saa muuta...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Silti ei saa kustutada...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Istutatava puu liigi valimine
 STR_280E_TREES                                                  :Puud
 STR_280F_RAINFOREST                                             :Vihmamets

@@ -1146,6 +1146,8 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enablew
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allowway uyingbay aresshay omfray otherway ompaniescay
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Enwhay aggingdray, aceplay ignalssay everyway: {ORANGE}{STRING} iletay(say)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticallyway uildbay emaphoressay eforebay: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Advancedway onlyway
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allway
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Ethay owntay ayoutlay "onay oremay oadsray" isn'tway alidvay inway ethay enarioscay editorway
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Electsay owntay-oadray ayoutlay: {ORANGE}{STRING}
@@ -1154,6 +1156,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :efaultday
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :etterbay oadsray
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2xay2 idgray
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3xay3 idgray
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :andomray
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Ositionpay ofway ainmay oolbartay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Eftlay
@@ -1170,6 +1173,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Eryvay astfay
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}1 inway {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}Onenay
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initialway itycay izesay ultipliermay: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaceway
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Onstructioncay
@@ -1184,6 +1188,16 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Angechay ettingsay aluevay
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Omesay orway allway ofway ethay efaultday ervicesay intervalway(say) elowbay areway incompatibleway ithway ethay osenchay ettingsay! 5-90% andway 30-800 aysday areway alidvay
+
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Otnay Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Originalway {RED}(Otnay Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Originalway {BLUE}(Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Otnay Ecommendedray)
 
 STR_TEMPERATE_LANDSCAPE                                         :Emperatetay andscapelay
 STR_SUB_ARCTIC_LANDSCAPE                                        :Ubsay-arcticway andscapelay
@@ -1217,6 +1231,7 @@ STR_WAYPOINT                                                    :{WHITE}Aypointw
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Electsay aypointway ypetay
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Rain{P "" s}tay
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editway aypointway amenay
@@ -1252,6 +1267,9 @@ STR_LANDINFO_CANAL                                              :Analcay
 STR_CANT_BUILD_LOCKS                                            :{WHITE}An'tcay uildbay ockslay erehay...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Uildbay ockslay
 STR_LANDINFO_LOCK                                               :Ocklay
+
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Ancay otnay lacepay iversray erehay...
+STR_LANDINFO_RIVER                                              :Iverray
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...uoybay isway inway useway!
 
@@ -1298,6 +1316,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% ansportedtray)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% ansportedtray)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industryway amesnay - lickcay onway amenay otay entrecay iewvay onway industryway
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...ootay oseclay otay anotherway industryway
 
@@ -1319,6 +1338,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Ultiplay
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Ayerplay amenay:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Isthay isway ethay amenay otherway ayersplay illway identifyway ouyay ybay
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Enterway ouryay amenay
 STR_NETWORK_CONNECTION                                          :{BLACK}Onnectioncay:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Oosechay etweenbay anway internetway amegay orway away Ocallay Areaway Etworknay (LANay) amegay
 
@@ -1329,6 +1349,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Amenay
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Amenay ofway ethay amegay
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Anguagelay, erversay ersionvay, etcway.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Ickclay away amegay omfray ethay istlay otay electsay itway
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Hetay erversay ouyay oinedjay astlay imetay:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Lickcay otay electsay hetay erversay ouyay layedpay astlay imetay
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Indfay erversay
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Earchsay etworknay orfay away erversay
@@ -1339,6 +1361,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Enterway
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Ientsclay
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Ientsclay onlineway / ientsclay axmay{}Ompaniescay onlineway / ompaniescay axmay
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}ybay{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Apmay izesay
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Apmay izesay ofway hetay amegay{}Lickcay otay ortsay ybay areaway
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Ateday
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Urrentcay ateday
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Earsyay
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Umbernay ofway earsyay{}hetay amegay isway unningray
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}EGAMay INFOWAY
 STR_NETWORK_CLIENTS                                             :{SILVER}Ientsclay:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Anguagelay:  {WHITE}{STRING}
@@ -2604,6 +2637,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Etailsday)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Aintray inway ethay ayway
 
+
+
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Aveltray (otnay imetabledtay)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Aveltray orfay {STRING}
 STR_TIMETABLE_STAY_FOR                                          :andway aystay orfay {STRING}
@@ -2971,6 +3006,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Ouryay a
 STR_BRIBE_FAILED_2                                              :{WHITE}iscoveredday ybay away egionalray investigatorway
 STR_BUILD_DATE                                                  :{BLACK}Uiltbay: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Etailedday erformancepay atingray
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Etailday
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3054,6 +3090,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Issingma
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Issingmay GRFay ilefay(say) otay ebay ableway otay oadlay amegay
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Issingmay GRF filesay
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausingway ancay ashcray OpenTTD. Oday otnay ilefay ugbay eportsray orfay ubsequentsay ashescray.{}Oday ouyay eallyray antway otay unpauseway?
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Ustomcay urrencycay
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchangeway ateray: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3177,6 +3215,9 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Efittabl
 STR_PURCHASE_INFO_ALL_TYPES                                     :Allway argocay ypestay
 STR_PURCHASE_INFO_ALL_BUT                                       :Allway utbay {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Axmay. Activetray Effortway: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 
@@ -3346,4 +3387,10 @@ STR_FACE_ADVANCED_TIP                                           :{BLACK}Advanced
 ########
 
 ############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

@@ -903,6 +903,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Налаштування гри
 STR_02C6_DIFFICULTY_SETTINGS                                    :Налаштування складності
+STR_MENU_CONFIG_PATCHES                                         :Розширені налаштування
 STR_NEWGRF_SETTINGS                                             :Нова графіка
 STR_TRANSPARENCY_OPTIONS                                        :Опції прозорості
 STR_GAMEOPTMENU_0A                                              :
@@ -1145,6 +1146,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поїз
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Правила автозаміни/оновлення не примінялись.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(бракує коштів)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Розширені налаштування
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Показати розширені налаштування
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Розширені налаштування
 
 STR_CONFIG_PATCHES_OFF                                          :Ні
 STR_CONFIG_PATCHES_ON                                           :Так
@@ -1172,6 +1176,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Буд�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Завжди показувати повну дату в рядку стану: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Показувати сигнали за напрямом руху: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показувати вікно фінансів в кінці року: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Нові накази - 'без зупинки': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ставати транспорту в чергу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Прокручувати вікно, коли курсор з краю: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Дозволити підкупляти місцеву владу: {ORANGE}{STRING}
@@ -2001,6 +2006,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Немо
 STR_280A_SIGN                                                   :Позначення
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Редагування напису
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Неможливо перейменувати місце...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Не можна видалити позначку...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Виберіть тип дерев
 STR_280E_TREES                                                  :Дерева
 STR_280F_RAINFOREST                                             :Джунглі

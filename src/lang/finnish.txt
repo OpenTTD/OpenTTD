@@ -17,6 +17,7 @@ STR_0008_WAITING                                                :{BLACK}Lähdös
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000C_ACCEPTS                                                :{BLACK}Vastaanottaa: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Vastaanottaa: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Tuottaa: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Matkustajia
 STR_0010_COAL                                                   :Kivihiiltä
@@ -484,6 +485,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistu
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen hinta: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :-
 STR_01A7_OWNER                                                  :{BLACK}Omistaja: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Tien omistaja: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Radan omistaja: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Junaradan omistaja: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Kunta: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ei mitään
 STR_01AA_NAME                                                   :{BLACK}Nimi
@@ -585,7 +589,10 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimm�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimmäinen ajoneuvo saapuu kilpailijan asemalle.
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Vahingot/onnettomuudet
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Yhtiön tiedot
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Uutta teollisuutta
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Lakkautettavaa teollisuutta
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Talouden muutokset
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Muita muutoksia tuotannossa
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Neuvoja/tietoja pelaajan ajoneuvoista
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Uudet ajoneuvot
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Rahdin vastaanottamisen muutokset
@@ -721,6 +728,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Sijoita 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sijoita lähetin.
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Määrittele aavikon alue.{}Paina ja pidä pohjassa CTRL-nappia poistaaksesi aavikkoa.
 STR_CREATE_LAKE                                                 :{BLACK}Määrittele vesialue.{}Tee kanava, paitsi jos CTRL on alaspainettuna merenpinnalla. Tällöin meri laajenee ympäristöön.
+STR_CREATE_RIVER                                                :{BLACK}Sijoita jokia.
 STR_0290_DELETE                                                 :{BLACK}Poista
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Poista tämä kaupunki kokonaan.
 STR_0292_SAVE_SCENARIO                                          :Tallenna skenaario
@@ -851,6 +859,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Rakenna uutta t
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Rakenna uutta teollisuutta
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin.
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...voidaan rakentaa vain sademetsäalueisiin.
@@ -929,6 +938,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Valitse 
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Koko näyttö
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Laita rasti ruutuun pelataksesi kokoruututilassa.
+STR_FULLSCREEN_FAILED                                           :{WHITE}Täyskuvatila ei toimi
 
 STR_OPTIONS_RES                                                 :{BLACK}Ruudun erottelukyky
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -974,6 +984,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Aikataul
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Aikataulua ei voi kopioida...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - jaetun aikataulun loppu - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Juna {COMMA} ei löydä reittiä
 STR_TRAIN_IS_LOST                                               :{WHITE}Juna {COMMA} on eksynyt.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Junan {COMMA} tuotto viime vuonna oli {CURRENCY}.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopan unionin talous- ja rahaliitto!{}{}Euro otetaan käyttöön maan ainoaksi valuutaksi päivittäisiin liiketapahtumiin!
@@ -1034,10 +1045,14 @@ STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Näytä
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ajoneuvojonotus (kvanttitehostein): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Salli kuljetusyksinoikeuksien ostaminen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Salli rahan lähettäminen muille yhtiöille: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Epäyhtenäiset asemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Kerroin rahdin painolle raskaiden junien simuilointiin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Lentokoneen nopeuskerroin: {ORANGE}1/{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Läpiajettavat pysäkit kaupungin teille: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Vierekkäiset asemat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Useat NewGRF-veturisetit: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Salli aina pienet lentokentät: {ORANGE}{STRING}
 
@@ -1148,6 +1163,11 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Tasaine
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Salli osakkeiden ostaminen muista yhtiöistä
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vedettäessä aseta opastimien väleiksi: {ORANGE}{STRING} ruutu(a)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Rakenna opasteet automaattisesti ennen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Tavallinen
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Edistynyt
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Vain tavallinen
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Vain edistynyt
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Kaikki
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Tiekaavaa "ei uusia teitä" ei voi käyttää editorissa
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Valitse tiekaava: {ORANGE}{STRING}
@@ -1188,6 +1208,11 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Osa allaolevista oletushuoltoväleistä ei ole yhteensopivia valitun asetuksen kanssa! 5-90{NBSP}% ja 30-800 päivää ovat oikein.
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Suositeltu)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Alkuperäinen {RED}(Ei suositeltu)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ei suositeltu)
 
 STR_TEMPERATE_LANDSCAPE                                         :lauhkea maasto
 STR_SUB_ARCTIC_LANDSCAPE                                        :pohjoinen maasto
@@ -1257,6 +1282,8 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Sulkua e
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Rakenna sulku
 STR_LANDINFO_LOCK                                               :Sulku
 
+STR_LANDINFO_RIVER                                              :Joki
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...poiju on käytössä!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinaatit: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1323,6 +1350,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Moninpel
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Pelaajan nimi
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Pelaajat tunnistetaan ja erotetaan toisistaan nimien avulla.
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Kirjoita nimesi
 STR_NETWORK_CONNECTION                                          :{BLACK}Yhteys:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Valitse Internet-peli tai paikallisverkkopeli
 
@@ -1333,6 +1361,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nimi
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Pelin nimi.
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Kieli, palvelimen versio, jne.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Napsauta peliä luettelossa valitaksesi
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Edellinen palvelin:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Valitse tästä edellinen palvelin, jolla pelasit
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Etsi palvelin
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Etsi palvelin verkosta.
@@ -1343,6 +1373,16 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Syötä 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Pelaajia
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Pelaajia pelissä/enintään.
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Kartan koko
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Kartan koko{}Valitse lajitellaksi koon mukaan
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Päiväys
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Tämä päivä
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Vuosia
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}PELITIEDOT
 STR_NETWORK_CLIENTS                                             :{SILVER}Pelaajat:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Kieli:  {WHITE}{STRING}
@@ -1421,6 +1461,12 @@ STR_NETWORK_LANG_SPANISH                                        :espanja
 STR_NETWORK_LANG_SWEDISH                                        :ruotsi
 STR_NETWORK_LANG_TURKISH                                        :turkki
 STR_NETWORK_LANG_UKRAINIAN                                      :ukraina
+STR_NETWORK_LANG_AFRIKAANS                                      :afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :kroatia
+STR_NETWORK_LANG_CATALAN                                        :katalan
+STR_NETWORK_LANG_ESTONIAN                                       :viro
+STR_NETWORK_LANG_GREEK                                          :kreikka
+STR_NETWORK_LANG_LATVIAN                                        :latvia
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Moninpeliaula
@@ -2282,6 +2328,8 @@ STR_RELOCATE_HQ                                                 :{BLACK}Sijoita 
 STR_COMPANY_PASSWORD                                            :{BLACK}Salasana
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Salasanalla voit suojata yhtiösi, jotta kukaan vieras ei pääse liittymään.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Aseta yhtiön salasana
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Yhtiön salasana
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Yhtiön oletussalasana
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Maailmanlaajuinen laskukausi!{}{}Rahoitusasiantuntijat pelkäävät pahinta talouden laskiessa!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Laskukausi ohi!{}{}Kaupankäynnin käänne parempaan lisää luottamusta teollisuuteen talouden vahvistuessa!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Suuri/pieni ikkunan koko
@@ -2307,6 +2355,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Matkustajavaunu (höyry)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Matkustajavaunu (diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Matkustajavaunu (sähkö)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Matkustajavaunu (Yksiraiteinen)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Matkustajavaunu (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Rahtivaunu
 STR_LIVERY_BUS                                                  :Linja-auto
 STR_LIVERY_TRUCK                                                :Kuorma-auto
@@ -2598,8 +2648,29 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}: 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kaupunkilaiset juhlivat . . .{}Ensimmäinen juna saapuu asemalle ({STATION})!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (yksityiskohdat)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna on tiellä.
+STR_ORDER_GO_TO                                                 :Mene
+STR_ORDER_GO_NON_STOP_TO                                        :Mene pysäyksettä
+STR_ORDER_GO_VIA                                                :Mene kautta
+STR_ORDER_GO_NON_STOP_VIA                                       :Mene pysäyksettä kautta
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lastaa jos saatavilla
+STR_ORDER_DROP_UNLOAD                                           :Pura kaikki
+STR_ORDER_FULL_LOAD                                             :(Täysi lastaus)
+STR_ORDER_NO_LOAD                                               :(Ei lastausta)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Pura ja lähde tyhjänä)
 
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmälle varikolle
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimmälle varikolle
+STR_ORDER_NEAREST_DEPOT                                         :lähin
+STR_ORDER_NEAREST_HANGAR                                        :lähin varikko
+STR_ORDER_SERVICE_AT                                            :Huolto
+STR_ORDER_ROAD_DEPOT                                            :Varikko
+STR_ORDER_SHIP_DEPOT                                            :Varikko
 
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Luotettavuus
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Huippunopeus
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Vaatii huoltoa
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Aina
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :on epätosi
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Kiertävä (ei aikataulua)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Kulje kohteeseen {STRING}
@@ -2966,6 +3037,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Yleinen 
 STR_BRIBE_FAILED_2                                              :{WHITE}lahjontayrityksesi.
 STR_BUILD_DATE                                                  :{BLACK}Rakennettu: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Yksityiskohtainen suoritearvio
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Yksityiskohta
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3045,6 +3117,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Sopivaa
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteensopivat GRF:t ladattu puuttuvien tiedostojen korvaamiseksi
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF tiedostot ovat poistettu käytöstä
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Puuttuvat GRF tiedostot tarvitaan pelin lataamiseksi.
+
 
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta

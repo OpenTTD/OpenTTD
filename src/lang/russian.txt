@@ -1019,6 +1019,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Ошиб
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Ошибка автообновления для корабля {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Ошибка автообновления для самолета {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поезд {COMMA} слишком длинный после автозамены
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Нельзя применить правила автозамены/обновления.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(денег мало)
 
 
@@ -1265,6 +1266,7 @@ STR_WAYPOINT                                                    :{WHITE}Точк
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Выбор типа точки пути
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Поезд{P "" а ов}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Переименовать точку пути
@@ -1876,6 +1878,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Нево
 STR_280A_SIGN                                                   :Знак
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Редактировать надпись на знаке
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Невозможно изменить надпись на знаке...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Не могу удалить знак...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Выбор типа деревьев для посадки
 STR_280E_TREES                                                  :Деревья
 STR_280F_RAINFOREST                                             :Джунгли
@@ -2781,9 +2784,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Перейти 
 STR_CONDITIONAL_NUM                                             :Перейти к заданию {COMMA} когда {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Перейти к заданию {COMMA} когда {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Нет назначения
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Путешествует (не учитывается)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Идти до {STRING}
 STR_TIMETABLE_STAY_FOR                                          :и ждать {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :и идти до {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} д{P ень ня ней}
 STR_TIMETABLE_TICKS                                             :{COMMA} тик{P "" а ов}
 
@@ -2907,6 +2912,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Пере
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Невозможно переименовать тип вагона ...
 STR_CLEAR_TIME                                                  :{BLACK}Сбросить Время
 STR_RESET_LATENESS                                              :{BLACK}Сброс счетчика
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Переименовать точку пути
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Остановлен
 STR_TRAIN_STOPPING_VEL                                          :{RED}Останавливаю, {VELOCITY}
@@ -3196,10 +3203,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Всег
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Настройки NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Настройки NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Применить изменения
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Переключить палитру
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Переключить палитру для выбраного NewGRF файла.{}Включите эту опцию для выбранного NewGRF файла, если все в игре вам кажентся в "розовом" цвете.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Параметры
 STR_NEWGRF_TIP                                                  :{BLACK}Список всех файлов NewGRF, которые у вас установлены. Выбрать для изменения настроек
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В настоящее время нет никаких установленных файлов NewGRF! Пожалуйста, обратитесь к описанию для инструкций для установки Новой Графики
 STR_NEWGRF_FILENAME                                             :{BLACK}Имя файла: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Палитра: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}Сумма MD5: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Вы вносите изменения в загруженной карте - это может привести к нестабильности игры.{}{}Вы действительно хотите этого?
@@ -3218,6 +3228,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :файл GRF, который им переводится.
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Слишком много загружено новой графики
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузка {STRING} в качестве статического NewGRF с {STRING} Может вызвать ошибку синхронизации.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неверный спрайт.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвестное свойство для Action 0.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Используется неправильный ID.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Загрузить выбранный набор
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Сохранить набор

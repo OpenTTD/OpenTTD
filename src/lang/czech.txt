@@ -3,7 +3,7 @@
 ##isocode cs_CZ
 ##plural 6
 ##case nom gen dat acc voc loc ins big small
-##gender f m n
+##gender m f n
 
 #
 
@@ -523,7 +523,7 @@ STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Zobrazit
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Zobrazit na mapě průmysl
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Zobrazit na mapě dopravní cesty
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Zobrazit na mapě vegetaci
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Zobrazit na mapě vlastníky půdy
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Zobrazit na mapě vlastníky pozemků
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Zobrazovat na mapě jména měst
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Zisk tento rok: {CURRENCY} (minulý rok: {CURRENCY})
 
@@ -874,10 +874,10 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nastavit
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Přejít na pohled
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit pohled do zorného pole
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Jednotky měny
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Měna
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Výběr jednotek měny
-STR_MEASURING_UNITS                                             :{BLACK}Jednotky vzdálenosti
+STR_MEASURING_UNITS                                             :{BLACK}Jednotka vzdálenosti
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Výběr jednotek vzdálenosti
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Silniční vozidla jezdí
@@ -1080,8 +1080,8 @@ STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Žádné
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finanční limit)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Pokročilé nastavení
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Ovlivnit, jak se hra chová pomocí velkého množství voleb
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Ovlivnit, jak se hra chová pomocí velkého množství voleb
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Zobrazit pokročilé nastavení
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Pokročilé nastavení
 
 STR_CONFIG_PATCHES_OFF                                          :vypnuto
 STR_CONFIG_PATCHES_ON                                           :zapnuto
@@ -1938,6 +1938,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Zde nem�
 STR_280A_SIGN                                                   :Nápis
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Upravit text popisku
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Nemůžeš změnit jméno nápisu...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Nelze smazat značku...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Zvol typ stromu na vysazení
 STR_280E_TREES                                                  :Stromy
 STR_280F_RAINFOREST                                             :Tropický prales
@@ -2251,7 +2252,7 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Uložit
 STR_6801_EASY                                                   :{BLACK}Lehká
 STR_6802_MEDIUM                                                 :{BLACK}Střední
 STR_6803_HARD                                                   :{BLACK}Těžká
-STR_6804_CUSTOM                                                 :{BLACK}Uživatelská
+STR_6804_CUSTOM                                                 :{BLACK}Vlastní
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -2261,7 +2262,7 @@ STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Množst
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Množství průmyslu: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximální počáteční dluh: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Počáteční úroková sazba: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cena provozu vozidel: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Náklady na provoz vozidel: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Rychlost výstavby protivníků: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligence protivníků: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Poruchy vozidel: {ORANGE}{STRING}

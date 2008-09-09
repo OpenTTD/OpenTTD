@@ -778,6 +778,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spelopties
 STR_02C6_DIFFICULTY_SETTINGS                                    :Moeilijkheidsgraad
+STR_MENU_CONFIG_PATCHES                                         :Geavanceerde instellingen
 STR_NEWGRF_SETTINGS                                             :Newgrf instellingen
 STR_TRANSPARENCY_OPTIONS                                        :Doorzichtigheidsopties
 STR_GAMEOPTMENU_0A                                              :
@@ -1020,6 +1021,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {C
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Geen automatischvervang/vernieuw regels opgegeven.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(onvoldoende geld)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Geavanceerde instellingen
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Toon geavanceerde instellingen
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Geavanceerde instellingen
 
 STR_CONFIG_PATCHES_OFF                                          :Uit
 STR_CONFIG_PATCHES_ON                                           :Aan
@@ -1047,6 +1051,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Altijd lange datum in statusbalk weergeven: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Seinen aan rijzijde plaatsen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Financieel overzicht aan het eind van het jaar weergeven: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nieuwe orders zijn standaard 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Rijvorming bij wegvoertuigen (met bijwerkingen): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Verschuif scherm als muis aan de rand is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Omkopen van de gemeente toestaan: {ORANGE}{STRING}
@@ -1876,6 +1881,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Kan hier
 STR_280A_SIGN                                                   :Bord
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Wijzig tekst van bord
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Kan de naam van het bord niet wijzigen
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Kan signaal niet verwijderen...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Kies een boom om te planten
 STR_280E_TREES                                                  :Bomen
 STR_280F_RAINFOREST                                             :Tropisch bos

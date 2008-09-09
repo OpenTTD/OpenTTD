@@ -1052,6 +1052,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Permett
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afficher la date complète dans la barre d'état: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Signaux ferroviaires du côté du sens de conduite: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afficher le bilan de finances en fin d'année: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Les nouveaux ordres sont 'sans-arrêt' par défaut: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mise en file Véhicules Routiers (+ effets quantiques): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Défiler la vue horizontalement avec le pointeur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permettre la corruption de la municipalité: {ORANGE}{STRING}
@@ -1877,10 +1878,11 @@ STR_2804_SITE_UNSUITABLE                                        :{WHITE}...l'end
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Plantation impossible...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...trop de panneaux
-STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Place du panneau impossible...
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Impossible de placer un panneau ici...
 STR_280A_SIGN                                                   :Panneau
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editer le texte du panneau
-STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Impossible d'éditer le texte...
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Impossible d'éditer le texte du panneau...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Impossible de supprimer le panneau...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Choix du type d'arbre
 STR_280E_TREES                                                  :Arbres
 STR_280F_RAINFOREST                                             :Forêt tropicale
