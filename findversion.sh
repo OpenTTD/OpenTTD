@@ -65,7 +65,7 @@ SRC_DIR=src
 MODIFIED="0"
 if [ -d "$ROOT_DIR/.svn" ]; then
 	# We are an svn checkout
-	if svnversion "$SRC_DIR" | grep 'M' > /dev/null; then
+	if [ -n "`svnversion \"$SRC_DIR\" | grep 'M'`" ]; then
 		MODIFIED="2"
 	fi
 	# Find the revision like: rXXXXM-branch
@@ -79,7 +79,7 @@ if [ -d "$ROOT_DIR/.svn" ]; then
 	fi
 elif [ -d "$ROOT_DIR/.git" ]; then
 	# We are a git checkout
-	if git diff-index HEAD "$SRC_DIR" | read dummy; then
+	if [ -n "`git diff-index HEAD \"$SRC_DIR\"`" ]; then
 		MODIFIED="2"
 	fi
 	HASH=`LC_ALL=C git rev-parse --verify HEAD 2>/dev/null | cut -c1-8`
@@ -88,7 +88,7 @@ elif [ -d "$ROOT_DIR/.git" ]; then
 	REV_NR=`LC_ALL=C git log --pretty=format:%s "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s/.*(svn r\([0-9]*\)).*/\1/"`
 elif [ -d "$ROOT_DIR/.hg" ]; then
 	# We are a hg checkout
-	if hg status "$SRC_DIR" | grep -v '^?' | read dummy; then
+	if [ -n "`hg status \"$SRC_DIR\" | grep -v '^?'`" ]; then
 		MODIFIED="2"
 	fi
 	HASH=`LC_ALL=C hg tip 2>/dev/null | head -n 1 | cut -d: -f3 | cut -c1-8`
