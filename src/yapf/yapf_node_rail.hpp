@@ -193,18 +193,6 @@ struct CYapfRailNodeT
 			cur = ft.m_new_tile;
 			assert(KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE);
 			cur_td = FindFirstTrackdir(ft.m_new_td_bits);
-
-			/* Did we skip tiles because of a station? */
-			if (ft.m_is_station && ft.m_tiles_skipped > 0) {
-				TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(cur_td));
-				TileIndex     tile = TILE_ADD(cur, -diff * ft.m_tiles_skipped);
-
-				/* Call func for all tiles in between. */
-				for (int i = 0; i < ft.m_tiles_skipped; ++i) {
-					if (!(obj.*func)(tile, cur_td)) return false;
-					tile = TILE_ADD(tile, diff);
-				}
-			}
 		}
 
 		return (obj.*func)(cur, cur_td);

@@ -10,6 +10,7 @@
 #include "yapf_destrail.hpp"
 #include "../vehicle_func.h"
 #include "../pbs.h"
+#include "../functions.h"
 
 #define DEBUG_YAPF_CACHE 0
 
@@ -46,23 +47,56 @@ private:
 		return true;
 	}
 
+	/** Reserve a railway platform. Tile contains the failed tile on abort. */
+	bool ReserveRailwayStationPlatform(TileIndex &tile, DiagDirection dir)
+	{
+		TileIndex     start = tile;
+		TileIndexDiff diff = TileOffsByDiagDir(dir);
+
+		do {
+			if (GetRailwayStationReservation(tile)) return false;
+			SetRailwayStationReservation(tile, true);
+			MarkTileDirtyByTile(tile);
+			tile = TILE_ADD(tile, diff);
+		} while (IsCompatibleTrainStationTile(tile, start));
+
+		return true;
+	}
+
+	/** Try to reserve a single track/platform. */
 	bool ReserveSingleTrack(TileIndex tile, Trackdir td)
 	{
-		if (!TryReserveRailTrack(tile, TrackdirToTrack(td))) {
-			/* Tile couldn't be reserved, undo. */
-			m_res_fail_tile = tile;
-			m_res_fail_td = td;
-			return false;
+		if (IsRailwayStationTile(tile)) {
+			if (!ReserveRailwayStationPlatform(tile, TrackdirToExitdir(ReverseTrackdir(td)))) {
+				/* Platform could not be reserved, undo. */
+				m_res_fail_tile = tile;
+				m_res_fail_td = td;
+			}
+		} else {
+			if (!TryReserveRailTrack(tile, TrackdirToTrack(td))) {
+				/* Tile couldn't be reserved, undo. */
+				m_res_fail_tile = tile;
+				m_res_fail_td = td;
+				return false;
+			}
 		}
-		/* YAPF can sometimes skip parts of a station, so make sure we
-		 * always reserve the whole platform. */
-		if (IsRailwayStationTile(tile)) SetRailwayStationPlatformReservation(tile, TrackdirToExitdir(ReverseTrackdir(td)), true);
+
 		return tile != m_res_dest;
 	}
 
+	/** Unreserve a single track/platform. Stops when the previous failer is reached. */
 	bool UnreserveSingleTrack(TileIndex tile, Trackdir td)
 	{
-		if (tile != m_res_fail_tile || td != m_res_fail_td) UnreserveRailTrack(tile, TrackdirToTrack(td));
+		if (IsRailwayStationTile(tile)) {
+			TileIndex     start = tile;
+			TileIndexDiff diff = TileOffsByDiagDir(TrackdirToExitdir(ReverseTrackdir(td)));
+			while ((tile != m_res_fail_tile || td != m_res_fail_td) && IsCompatibleTrainStationTile(tile, start)) {
+				SetRailwayStationReservation(tile, false);
+				tile = TILE_ADD(tile, diff);
+			}
+		} else if (tile != m_res_fail_tile || td != m_res_fail_td) {
+			UnreserveRailTrack(tile, TrackdirToTrack(td));
+		}
 		return tile != m_res_dest && (tile != m_res_fail_tile || td != m_res_fail_td);
 	}
 
