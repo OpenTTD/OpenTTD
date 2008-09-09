@@ -1019,7 +1019,6 @@ struct MainToolbarWindow : Window {
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		_menu_clicked_procs[widget](index);
-		SndPlayFx(SND_15_BEEP);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
