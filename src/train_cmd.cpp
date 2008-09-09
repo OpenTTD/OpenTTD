@@ -2325,8 +2325,8 @@ static void CheckNextTrainTile(Vehicle *v)
 	/* Don't do any look-ahead if path_backoff_interval is 255. */
 	if (_settings_game.pf.path_backoff_interval == 255) return;
 
-	/* Exit if we reached our destination or are inside a depot. */
-	if ((v->tile == v->dest_tile && !v->current_order.IsType(OT_GOTO_STATION)) || v->u.rail.track & TRACK_BIT_DEPOT) return;
+	/* Exit if we reached our destination depot or are inside a depot. */
+	if ((v->tile == v->dest_tile && v->current_order.IsType(OT_GOTO_DEPOT)) || v->u.rail.track & TRACK_BIT_DEPOT) return;
 	/* Exit if we are on a station tile and are going to stop. */
 	if (IsRailwayStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
 	/* Exit if the current order doesn't have a destination, but the train has orders. */
