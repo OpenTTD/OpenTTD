@@ -178,6 +178,7 @@ bool EnsureNoVehicleOnGround(TileIndex tile)
 static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
 {
 	if (v->type != VEH_TRAIN && v->type != VEH_ROAD && v->type != VEH_SHIP) return NULL;
+	if (v == (const Vehicle *)data) return NULL;
 
 	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
@@ -187,12 +188,13 @@ static Vehicle *GetVehicleTunnelBridgeProc(Vehicle *v, void *data)
  * Finds vehicle in tunnel / bridge
  * @param tile first end
  * @param endtile second end
+ * @param ignore Ignore this vehicle when searching
  * @return true if the bridge has a vehicle
  */
-bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile)
+bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *ignore)
 {
-	return HasVehicleOnPos(tile, NULL, &GetVehicleTunnelBridgeProc) ||
-			HasVehicleOnPos(endtile, NULL, &GetVehicleTunnelBridgeProc);
+	return HasVehicleOnPos(tile, (void *)ignore, &GetVehicleTunnelBridgeProc) ||
+			HasVehicleOnPos(endtile, (void *)ignore, &GetVehicleTunnelBridgeProc);
 }
 
 
