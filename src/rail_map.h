@@ -83,6 +83,16 @@ static inline bool IsRailWaypoint(TileIndex t)
 }
 
 /**
+ * Is this tile rail tile and a rail waypoint?
+ * @param t the tile to get the information from
+ * @return true if and only if the tile is a rail waypoint
+ */
+static inline bool IsRailWaypointTile(TileIndex t)
+{
+	return IsTileType(t, MP_RAILWAY) && IsRailWaypoint(t);
+}
+
+/**
  * Is this rail tile a rail depot?
  * @param t the tile to get the information from
  * @pre IsTileType(t, MP_RAILWAY)
@@ -96,7 +106,6 @@ static inline bool IsRailDepot(TileIndex t)
 /**
  * Is this tile rail tile and a rail depot?
  * @param t the tile to get the information from
- * @pre IsTileType(t, MP_RAILWAY)
  * @return true if and only if the tile is a rail depot
  */
 static inline bool IsRailDepotTile(TileIndex t)

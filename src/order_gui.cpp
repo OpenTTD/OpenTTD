@@ -318,10 +318,9 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	}
 
 	/* check waypoint */
-	if (IsTileType(tile, MP_RAILWAY) &&
+	if (IsRailWaypointTile(tile) &&
 			v->type == VEH_TRAIN &&
-			IsTileOwner(tile, _local_player) &&
-			IsRailWaypoint(tile)) {
+			IsTileOwner(tile, _local_player)) {
 		order.MakeGoToWaypoint(GetWaypointByTile(tile)->index);
 		if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 		return order;

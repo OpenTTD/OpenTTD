@@ -309,8 +309,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 	Waypoint *wp;
 
 	/* Make sure it's a waypoint */
-	if (!IsTileType(tile, MP_RAILWAY) ||
-			!IsRailWaypoint(tile) ||
+	if (!IsRailWaypointTile(tile) ||
 			(!CheckTileOwnership(tile) && _current_player != OWNER_WATER) ||
 			!EnsureNoVehicleOnGround(tile)) {
 		return CMD_ERROR;

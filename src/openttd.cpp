@@ -2539,9 +2539,8 @@ bool AfterLoadGame()
 		/* Give owners to waypoints, based on rail tracks it is sitting on.
 		 * If none is available, specify OWNER_NONE */
 		Waypoint *wp;
-		Owner owner;
 		FOR_ALL_WAYPOINTS(wp) {
-			owner = (IsTileType(wp->xy, MP_RAILWAY) && IsRailWaypoint(wp->xy) ? GetTileOwner(wp->xy) : OWNER_NONE);
+			Owner owner = (IsRailWaypointTile(wp->xy) ? GetTileOwner(wp->xy) : OWNER_NONE);
 			wp->owner = IsValidPlayerID(owner) ? owner : OWNER_NONE;
 		}
 	}

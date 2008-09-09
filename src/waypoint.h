@@ -55,7 +55,7 @@ static inline bool IsValidWaypointID(WaypointID index)
  */
 static inline Waypoint *GetWaypointByTile(TileIndex tile)
 {
-	assert(IsTileType(tile, MP_RAILWAY) && IsRailWaypoint(tile));
+	assert(IsRailWaypointTile(tile));
 	return GetWaypoint(GetWaypointIndex(tile));
 }
 

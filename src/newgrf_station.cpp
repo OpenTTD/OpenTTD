@@ -244,8 +244,7 @@ static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool ch
 		TileIndex new_tile = TILE_ADD(tile, delta);
 
 		if (waypoint) {
-			if (!IsTileType(new_tile, MP_RAILWAY)) break;
-			if (!IsRailWaypoint(new_tile)) break;
+			if (!IsRailWaypointTile(new_tile)) break;
 			if (check_axis && GetWaypointAxis(new_tile) != orig_axis) break;
 		} else {
 			if (!IsRailwayStationTile(new_tile)) break;
@@ -407,7 +406,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0x42: return GetTerrainType(tile) | (GetRailType(tile) << 8);
 		case 0x43: return st->owner; // Station owner
 		case 0x44:
-			if (IsTileType(tile, MP_RAILWAY) && IsRailWaypoint(tile)) {
+			if (IsRailWaypointTile(tile)) {
 				return GetDepotWaypointReservation(tile) ? 7 : 4;
 			} else {
 				return GetRailwayStationReservation(tile) ? 7 : 4; // PBS status
