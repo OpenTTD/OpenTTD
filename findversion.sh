@@ -70,10 +70,10 @@ if [ -d "$ROOT_DIR/.svn" ]; then
 	fi
 	# Find the revision like: rXXXXM-branch
 	BRANCH=`LC_ALL=C svn info "$SRC_DIR" | "$AWK" '/^URL:.*branches/ { split($2, a, "/"); for(i in a) if (a[i]=="branches") { print a[i+1]; break } }'`
-	TAGS=`LC_ALL=C svn info "$SRC_DIR" | "$AWK" '/^URL:.*tags/ { split($2, a, "/"); for(i in a) if (a[i]=="tags") { print a[i+1]; break } }'`
+	TAG=`LC_ALL=C svn info "$SRC_DIR" | "$AWK" '/^URL:.*tags/ { split($2, a, "/"); for(i in a) if (a[i]=="tags") { print a[i+1]; break } }'`
 	REV_NR=`LC_ALL=C svn info "$SRC_DIR" | "$AWK" '/^Last Changed Rev:/ { print $4 }'`
-	if [ -n "$TAGS" ]; then
-		REV=$TAGS
+	if [ -n "$TAG" ]; then
+		REV=$TAG
 	else
 		REV="r$REV_NR"
 	fi
