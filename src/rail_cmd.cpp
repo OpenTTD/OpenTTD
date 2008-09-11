@@ -1802,7 +1802,7 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 	}
 
 	/* PBS debugging, draw reserved tracks darker */
-	if (_settings_client.gui.show_track_reservation) {
+	if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation) {
 		TrackBits pbs = GetTrackReservation(ti->tile);
 		if (pbs & TRACK_BIT_X) {
 			if (ti->tileh == SLOPE_FLAT || ti->tileh == SLOPE_ELEVATED) {
@@ -1839,7 +1839,7 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 		}
 		DrawGroundSprite(image, pal, &(_halftile_sub_sprite[halftile_corner]));
 
-		if (_settings_client.gui.show_track_reservation && IsSteepSlope(ti->tileh) && HasReservedTracks(ti->tile, CornerToTrackBits(halftile_corner))) {
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && IsSteepSlope(ti->tileh) && HasReservedTracks(ti->tile, CornerToTrackBits(halftile_corner))) {
 			static const byte _corner_to_track_sprite[] = {3, 1, 2, 0};
 			AddSortableSpriteToDraw(_corner_to_track_sprite[halftile_corner] + rti->base_sprites.single_n, PALETTE_CRASH, ti->x, ti->y, 16, 16, 0, ti->z + 16);
 		}
@@ -1988,7 +1988,7 @@ default_waypoint:
 		DrawGroundSprite(image, PAL_NONE);
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_settings_client.gui.show_track_reservation && GetDepotWaypointReservation(ti->tile)) {
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && GetDepotWaypointReservation(ti->tile)) {
 			DrawGroundSprite(GetWaypointAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}
 

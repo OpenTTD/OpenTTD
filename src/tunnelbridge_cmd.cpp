@@ -905,7 +905,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 		DrawGroundSprite(image, PAL_NONE);
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_settings_client.gui.show_track_reservation && (transport_type == TRANSPORT_RAIL && GetTunnelBridgeReservation(ti->tile))) {
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && (transport_type == TRANSPORT_RAIL && GetTunnelBridgeReservation(ti->tile))) {
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			DrawGroundSprite(DiagDirToAxis(tunnelbridge_direction) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}

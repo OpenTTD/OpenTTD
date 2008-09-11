@@ -1183,7 +1183,7 @@ static void DrawTile_Road(TileInfo *ti)
 			DrawGroundSprite(image, pal);
 
 			/* PBS debugging, draw reserved tracks darker */
-			if (_settings_client.gui.show_track_reservation && GetCrossingReservation(ti->tile)) {
+			if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && GetCrossingReservation(ti->tile)) {
 				DrawGroundSprite(GetCrossingRoadAxis(ti->tile) == AXIS_Y ? GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_y : GetRailTypeInfo(GetRailType(ti->tile))->base_sprites.single_x, PALETTE_CRASH);
 			}
 

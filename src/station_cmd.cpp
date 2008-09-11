@@ -2267,7 +2267,7 @@ static void DrawTile_Station(TileInfo *ti)
 		DrawGroundSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_settings_client.gui.show_track_reservation && IsRailwayStation(ti->tile) && GetRailwayStationReservation(ti->tile)) {
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && IsRailwayStation(ti->tile) && GetRailwayStationReservation(ti->tile)) {
 			const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 			DrawGroundSprite(GetRailStationAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}
