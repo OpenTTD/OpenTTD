@@ -926,8 +926,12 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				}
 			}
 		} else if (HasCatenaryDrawn(GetRailType(ti->tile))) {
+			/* Maybe draw pylons on the entry side */
+			DrawCatenary(ti);
+
 			catenary = true;
 			StartSpriteCombine();
+			/* Draw wire above the ramp */
 			DrawCatenaryOnTunnel(ti);
 		}
 
