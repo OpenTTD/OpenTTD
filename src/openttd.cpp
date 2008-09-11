@@ -2342,9 +2342,6 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(86)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			/* Now all crossings should be in correct state */
-			if (IsLevelCrossingTile(t)) UpdateLevelCrossing(t, false);
-
 			/* Move river flag and update canals to use water class */
 			if (IsTileType(t, MP_WATER)) {
 				if (GetWaterClass(t) != WATER_CLASS_RIVER) {
@@ -2544,6 +2541,14 @@ bool AfterLoadGame()
 			wp->owner = IsValidPlayerID(owner) ? owner : OWNER_NONE;
 		}
 	}
+
+	if (CheckSavegameVersion(102)) {
+		for (TileIndex t = 0; t < map_size; t++) {
+			/* Now all crossings should be in correct state */
+			if (IsLevelCrossingTile(t)) UpdateLevelCrossing(t, false);
+		}
+	}
+
 
 	GamelogPrintDebug(1);
 
