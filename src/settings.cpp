@@ -1130,8 +1130,8 @@ static int32 UpdateRconPassword(int32 p1)
 
 static const SettingDesc _music_settings[] = {
 	 SDT_VAR(MusicFileSettings, playlist,   SLE_UINT8, S, 0,   0, 0,   5, 1,  STR_NULL, NULL),
-	 SDT_VAR(MusicFileSettings, music_vol,  SLE_UINT8, S, 0, 128, 0, 100, 1,  STR_NULL, NULL),
-	 SDT_VAR(MusicFileSettings, effect_vol, SLE_UINT8, S, 0, 128, 0, 100, 1,  STR_NULL, NULL),
+	 SDT_VAR(MusicFileSettings, music_vol,  SLE_UINT8, S, 0, 127, 0, 127, 1,  STR_NULL, NULL),
+	 SDT_VAR(MusicFileSettings, effect_vol, SLE_UINT8, S, 0, 127, 0, 127, 1,  STR_NULL, NULL),
 	SDT_LIST(MusicFileSettings, custom_1,   SLE_UINT8, S, 0, NULL,            STR_NULL, NULL),
 	SDT_LIST(MusicFileSettings, custom_2,   SLE_UINT8, S, 0, NULL,            STR_NULL, NULL),
 	SDT_BOOL(MusicFileSettings, playing,               S, 0, true,            STR_NULL, NULL),
