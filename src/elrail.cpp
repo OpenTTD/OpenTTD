@@ -346,6 +346,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		}
 	}
 
+	/* The wire above the tunnel is drawn together with the tunnel-roof (see DrawCatenaryOnTunnel()) */
+	if (IsTunnelTile(ti->tile)) return;
+
 	/* Don't draw a wire under a low bridge */
 	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !IsTransparencySet(TO_CATENARY)) {
 		uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile));
@@ -356,7 +359,6 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	/* Drawing of pylons is finished, now draw the wires */
 	for (Track t = TRACK_BEGIN; t < TRACK_END; t++) {
 		if (HasBit(trackconfig[TS_HOME], t)) {
-			if (IsTunnelTile(ti->tile)) break; // drawn together with tunnel-roof (see DrawCatenaryOnTunnel())
 			byte PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
 				(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
 
