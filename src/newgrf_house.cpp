@@ -333,6 +333,8 @@ static uint32 HouseGetVariable(const ResolverObject *object, byte variable, byte
 		/* Current animation frame. */
 		case 0x46: return IsTileType(tile, MP_HOUSE) ? GetHouseAnimationFrame(tile) : 0;
 
+		/* Position of the house */
+				case 0x47: return IsTileType(tile, MP_HOUSE) ? TileY(tile) << 16 | TileX(tile) : 0;
 
 		/* Building counts for old houses with id = parameter. */
 		case 0x60: return GetNumHouses(parameter, town);
