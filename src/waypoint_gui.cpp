@@ -15,6 +15,7 @@
 #include "gfx_func.h"
 #include "command_func.h"
 #include "functions.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 
@@ -43,6 +44,11 @@ public:
 		InitializeWindowViewport(this, 3, 17, 254, 86, this->wp->xy, ZOOM_LVL_MIN);
 
 		this->FindWindowPlacementAndResize(desc);
+	}
+
+	~WaypointWindow()
+	{
+		DeleteWindowById(WC_TRAINS_LIST, (this->window_number << 16) | (VEH_TRAIN << 11) | VLW_WAYPOINT_LIST | this->wp->owner);
 	}
 
 	virtual void OnPaint()
