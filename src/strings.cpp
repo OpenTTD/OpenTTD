@@ -822,9 +822,9 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
 				Waypoint *wp = GetWaypoint(GetInt32(&argv));
 
-				if (!wp->IsValid()) { // waypoint doesn't exist anymore
-					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
-				} else if (wp->name != NULL) {
+				assert(wp->IsValid());
+
+				if (wp->name != NULL) {
 					buff = strecpy(buff, wp->name, last);
 				} else {
 					int64 temp[2];
