@@ -256,6 +256,7 @@ public:
 		}
 
 		this->FindWindowPlacementAndResize(desc);
+		if (this->vehicle_type == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
 
 	~VehicleGroupWindow()
@@ -723,9 +724,9 @@ public:
 };
 
 
-static const WindowDesc _group_desc = {
-	WDP_AUTO, WDP_AUTO, 460, 194, 526, 246,
-	WC_TRAINS_LIST, WC_NONE,
+static WindowDesc _group_desc = {
+	WDP_AUTO, WDP_AUTO, 460, 194, 460, 246,
+	WC_INVALID, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_group_widgets,
 };
@@ -734,18 +735,7 @@ void ShowPlayerGroup(PlayerID player, VehicleType vehicle_type)
 {
 	if (!IsValidPlayerID(player)) return;
 
-	WindowClass wc;
-
-	switch (vehicle_type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:    wc = WC_TRAINS_LIST;   break;
-		case VEH_ROAD:     wc = WC_ROADVEH_LIST;  break;
-		case VEH_SHIP:     wc = WC_SHIPS_LIST;    break;
-		case VEH_AIRCRAFT: wc = WC_AIRCRAFT_LIST; break;
-	}
-
+	_group_desc.cls = GetWindowClassForVehicleType(vehicle_type);
 	WindowNumber num = (vehicle_type << 11) | VLW_GROUP_LIST | player;
-	DeleteWindowById(wc, num);
-	Window *w = new VehicleGroupWindow(&_group_desc, num);
-	w->window_class = wc;
+	AllocateWindowDescFront<VehicleGroupWindow>(&_group_desc, num);
 }

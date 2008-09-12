@@ -861,6 +861,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 		this->vehicles.NeedResort();
 
 		this->FindWindowPlacementAndResize(desc);
+		if (this->vehicle_type == VEH_TRAIN) ResizeWindow(this, 65, 0);
 	}
 
 	~VehicleListWindow()
@@ -1100,61 +1101,20 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 	}
 };
 
-static const WindowDesc _player_vehicle_list_train_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 194, 325, 246,
-	WC_TRAINS_LIST, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_list_widgets,
-};
-
-static const WindowDesc _player_vehicle_list_road_veh_desc = {
+static WindowDesc _vehicle_list_desc = {
 	WDP_AUTO, WDP_AUTO, 260, 194, 260, 246,
-	WC_ROADVEH_LIST, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_list_widgets,
-};
-
-static const WindowDesc _player_vehicle_list_ship_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 194, 260, 246,
-	WC_SHIPS_LIST, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_list_widgets,
-};
-
-static const WindowDesc _player_vehicle_list_aircraft_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 194, 260, 246,
-	WC_AIRCRAFT_LIST, WC_NONE,
+	WC_INVALID, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 };
 
 static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
 {
-	VehicleListWindow *w;
-	WindowNumber num;
-
 	if (!IsValidPlayerID(player)) return;
 
-	num = (unique_number << 16) | (vehicle_type << 11) | VLW_flag | player;
-
-	/* The vehicle list windows have been unified. Just some strings need
-	 * to be changed which happens in the WE_CREATE event and resizing
-	 * some of the windows to the correct size */
-	switch (vehicle_type) {
-		default: NOT_REACHED();
-		case VEH_TRAIN:
-			w = AllocateWindowDescFront<VehicleListWindow>(&_player_vehicle_list_train_desc, num);
-			break;
-		case VEH_ROAD:
-			w = AllocateWindowDescFront<VehicleListWindow>(&_player_vehicle_list_road_veh_desc, num);
-			break;
-		case VEH_SHIP:
-			w = AllocateWindowDescFront<VehicleListWindow>(&_player_vehicle_list_ship_desc, num);
-			break;
-		case VEH_AIRCRAFT:
-			w = AllocateWindowDescFront<VehicleListWindow>(&_player_vehicle_list_aircraft_desc, num);
-			break;
-	}
+	_vehicle_list_desc.cls = GetWindowClassForVehicleType(vehicle_type);
+	WindowNumber num = (unique_number << 16) | (vehicle_type << 11) | VLW_flag | player;
+	AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_desc, num);
 }
 
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
