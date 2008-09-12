@@ -380,6 +380,7 @@ struct NewGRFWindow : public Window {
 			WIDGET_LIST_END
 		);
 		this->SetWidgetDisabledState(SNGRFS_SET_PARAMETERS, !this->show_params || disable_all);
+		this->SetWidgetDisabledState(SNGRFS_TOGGLE_PALETTE, disable_all);
 
 		if (!disable_all) {
 			/* All widgets are now enabled, so disable widgets we can't use */
