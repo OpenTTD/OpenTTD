@@ -2502,7 +2502,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servisa
 
 STR_INVALID_ORDER                                               :{RED} (Neteisinga tvarka)
 
-STR_UNKNOWN_DESTINATION                                         :nezinomas tikslas
 STR_8812_EMPTY                                                  :{LTBLUE}Tuscias
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} is {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iš {STATION} (x{NUM})

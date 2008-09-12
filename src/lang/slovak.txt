@@ -2826,7 +2826,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servis 
 
 STR_INVALID_ORDER                                               :{RED} (Neplatny prikaz)
 
-STR_UNKNOWN_DESTINATION                                         :neznamy ciel
 STR_8812_EMPTY                                                  :{LTBLUE}Prazdny
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})

@@ -2953,7 +2953,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Тех�
 
 STR_INVALID_ORDER                                               :{RED} (Невірний наказ)
 
-STR_UNKNOWN_DESTINATION                                         :невідоме місце призначення
 STR_8812_EMPTY                                                  :{LTBLUE}порожній
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} з {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} з {STATION} (x{NUM})

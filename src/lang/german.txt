@@ -2785,7 +2785,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Wartung
 
 STR_INVALID_ORDER                                               :{RED} (Ungültiger Auftrag)
 
-STR_UNKNOWN_DESTINATION                                         :unbekanntes Ziel
 STR_8812_EMPTY                                                  :{LTBLUE}Leer
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} von {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} von {STATION} (x{NUM})

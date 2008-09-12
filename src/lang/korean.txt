@@ -2785,7 +2785,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} 
 
 STR_INVALID_ORDER                                               :{RED} (잘못된 경로)
 
-STR_UNKNOWN_DESTINATION                                         :알 수 없는 목적지
 STR_8812_EMPTY                                                  :{LTBLUE}비어있음
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (출발지: {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})

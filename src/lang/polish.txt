@@ -2788,7 +2788,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Serwisu
 
 STR_INVALID_ORDER                                               :{RED} (Błędne polecenie)
 
-STR_UNKNOWN_DESTINATION                                         :nieznany cel
 STR_8812_EMPTY                                                  :{LTBLUE}Pusty
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})

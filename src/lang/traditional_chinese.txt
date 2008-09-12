@@ -2729,7 +2729,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}正在 
 
 STR_INVALID_ORDER                                               :{RED} (指令不對)
 
-STR_UNKNOWN_DESTINATION                                         :目的地不明
 STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} 來自 {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} 來自 {STATION} (x{NUM})

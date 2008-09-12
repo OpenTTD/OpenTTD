@@ -2700,7 +2700,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} 
 
 STR_INVALID_ORDER                                               :{RED} (Hatalı talimat)
 
-STR_UNKNOWN_DESTINATION                                         :bilinmeyen hedef
 STR_8812_EMPTY                                                  :{LTBLUE}Boş
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} - {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} geldiği yer: {STATION} (x{NUM})

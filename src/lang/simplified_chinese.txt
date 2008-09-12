@@ -2647,7 +2647,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}在 {TO
 
 STR_INVALID_ORDER                                               :{RED} (非法的调度计划)
 
-STR_UNKNOWN_DESTINATION                                         :未知的目的地
 STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (来自 {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (来自 {STATION} (x{NUM}))

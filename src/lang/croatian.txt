@@ -2689,7 +2689,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servisi
 
 STR_INVALID_ORDER                                               :{RED} (Neispravna naredba)
 
-STR_UNKNOWN_DESTINATION                                         :nepoznato odredište
 STR_8812_EMPTY                                                  :{LTBLUE}Prazan
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} iz {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iz {STATION} (x{NUM})

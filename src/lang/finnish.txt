@@ -2685,7 +2685,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Huolto{
 
 STR_INVALID_ORDER                                               :{RED} (virheellinen käsky)
 
-STR_UNKNOWN_DESTINATION                                         :tuntematon päämäärä
 STR_8812_EMPTY                                                  :{LTBLUE}Tyhjä
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} asemalta {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} asemalta {STATION} (x{NUM})

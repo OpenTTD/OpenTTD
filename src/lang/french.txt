@@ -2792,7 +2792,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Entreti
 
 STR_INVALID_ORDER                                               :{RED} (Ordre invalide)
 
-STR_UNKNOWN_DESTINATION                                         :destination inconnue
 STR_8812_EMPTY                                                  :{LTBLUE}Vide
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})

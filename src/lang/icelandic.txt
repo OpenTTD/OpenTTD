@@ -2731,7 +2731,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Viðhal
 
 STR_INVALID_ORDER                                               :{RED} (Ógild Skipun)
 
-STR_UNKNOWN_DESTINATION                                         :óþekktur áfangastaður
 STR_8812_EMPTY                                                  :{LTBLUE}Tómt
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} frá {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} frá {STATION} (x{NUM})

@@ -2492,7 +2492,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Prizorg
 
 STR_INVALID_ORDER                                               :{RED} (Nevalida Ordeno)
 
-STR_UNKNOWN_DESTINATION                                         :nekonata destino
 STR_8812_EMPTY                                                  :{LTBLUE}Malplena
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})

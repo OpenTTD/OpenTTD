@@ -2761,7 +2761,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Javít�
 
 STR_INVALID_ORDER                                               :{RED} (Hibás menetrend)
 
-STR_UNKNOWN_DESTINATION                                         :ismeretlen célpont
 STR_8812_EMPTY                                                  :{LTBLUE}Üres
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} {STATION} állomásról
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} {STATION} állomásról (x{NUM})

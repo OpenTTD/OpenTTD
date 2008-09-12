@@ -2866,7 +2866,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Na serv
 
 STR_INVALID_ORDER                                               :{RED} (Neveljaven ukaz)
 
-STR_UNKNOWN_DESTINATION                                         :neznan cilj
 STR_8812_EMPTY                                                  :{LTBLUE}Prazen
 STR_8813_FROM                                                   :Tovor {LTBLUE}{CARGO} iz postaje {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iz {STATION} (x{NUM})

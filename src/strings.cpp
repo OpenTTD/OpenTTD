@@ -844,7 +844,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 					/* The station doesn't exist anymore. The only place where we might
 					 * be "drawing" an invalid station is in the case of cargo that is
 					 * in transit. */
-					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
+					buff = GetStringWithArgs(buff, STR_UNKNOWN_STATION, NULL, last);
 					break;
 				}
 

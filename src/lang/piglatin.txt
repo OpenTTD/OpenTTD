@@ -2652,7 +2652,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Ervices
 
 STR_INVALID_ORDER                                               :{RED} (Invalidway Orderway)
 
-STR_UNKNOWN_DESTINATION                                         :unknownway estinationday
 STR_8812_EMPTY                                                  :{LTBLUE}Emptyway
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} omfray {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} omfray {STATION} (xay{NUM})

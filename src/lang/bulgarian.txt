@@ -2760,7 +2760,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Рем�
 
 STR_INVALID_ORDER                                               :{RED} (Невалидна заповед)
 
-STR_UNKNOWN_DESTINATION                                         :неизвестно назначение
 STR_8812_EMPTY                                                  :{LTBLUE}Празен
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} от {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} от {STATION} (x{NUM})

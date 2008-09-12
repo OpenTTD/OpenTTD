@@ -2799,7 +2799,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Обс�
 
 STR_INVALID_ORDER                                               :{RED} (Неверный Маршрут)
 
-STR_UNKNOWN_DESTINATION                                         :неизвестно назначение
 STR_8812_EMPTY                                                  :{LTBLUE}Пусто
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} из {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} из {STATION} (x{NUM})

@@ -2840,7 +2840,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Hooldus
 
 STR_INVALID_ORDER                                               :{RED} (Ebasobiv järjekord)
 
-STR_UNKNOWN_DESTINATION                                         :tundmatu sihtpunkt
 STR_8812_EMPTY                                                  :{LTBLUE}Tühi
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} jaamast {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} jaamast {STATION} (x{NUM})

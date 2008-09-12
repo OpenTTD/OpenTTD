@@ -2854,7 +2854,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Údržb
 
 STR_INVALID_ORDER                                               :{RED} (neplatný příkaz)
 
-STR_UNKNOWN_DESTINATION                                         :neznámý cíl
 STR_8812_EMPTY                                                  :{LTBLUE}Prázdný
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})

@@ -2785,7 +2785,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Revisi√
 
 STR_INVALID_ORDER                                               :{RED} (Ordre incorrecte)
 
-STR_UNKNOWN_DESTINATION                                         :dest√≠ desconegut
 STR_8812_EMPTY                                                  :{LTBLUE}Buit
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} procedent{P "" s} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} des de {STATION} (x{NUM})

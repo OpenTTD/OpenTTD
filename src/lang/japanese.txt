@@ -2639,7 +2639,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN}�
 
 STR_INVALID_ORDER                                               :{RED}（不正な指令）
 
-STR_UNKNOWN_DESTINATION                                         :行き先不明
 STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO}（原点：{STATION}）
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO}（原点：{STATION}）（x{NUM}）

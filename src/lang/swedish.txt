@@ -2744,7 +2744,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service
 
 STR_INVALID_ORDER                                               :{RED} (Ogiltig order)
 
-STR_UNKNOWN_DESTINATION                                         :okänd destination
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} från {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} från {STATION} (x{NUM})

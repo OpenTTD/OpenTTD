@@ -2791,7 +2791,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Onderho
 
 STR_INVALID_ORDER                                               :{RED} (Ongeldige Order)
 
-STR_UNKNOWN_DESTINATION                                         :onbekende bestemming
 STR_8812_EMPTY                                                  :{LTBLUE}Leeg
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} van {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} van {STATION} (x{NUM})

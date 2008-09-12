@@ -2632,7 +2632,6 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Diens b
 
 STR_INVALID_ORDER                                               :{RED} (Ongeldig Opdrag)
 
-STR_UNKNOWN_DESTINATION                                         :onbekende destinasie
 STR_8812_EMPTY                                                  :{LTBLUE}Leë
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} vanaf {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} van {STATION} (x{NUM})
