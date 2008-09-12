@@ -778,6 +778,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :게임 옵션
 STR_02C6_DIFFICULTY_SETTINGS                                    :난이도 설정
+STR_MENU_CONFIG_PATCHES                                         :고급 설정
 STR_NEWGRF_SETTINGS                                             :NewGRF 설정
 STR_TRANSPARENCY_OPTIONS                                        :투명 옵션
 STR_GAMEOPTMENU_0A                                              :
@@ -1020,6 +1021,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}열차 {
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}자동대체/갱신 규칙이 적용되지 않았습니다.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
 
+STR_CONFIG_PATCHES                                              :{BLACK}고급 설정
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}고급 설정 표시
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}고급 설정
 
 STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On
@@ -1047,6 +1051,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}새로 지정할 경로는 기본적으로 논스톱 처리: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
@@ -1876,6 +1881,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}여기�
 STR_280A_SIGN                                                   :팻말
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}팻말 내용 고치기
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}팻말 내용을 고칠 수 없습니다...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}팻말을 삭제할 수 없습니다...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}심을 나무의 종류 선택
 STR_280E_TREES                                                  :나무
 STR_280F_RAINFOREST                                             :열대우림
@@ -3188,10 +3194,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}산출 �
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 설정
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}변경사항 적용
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}팔레트 전환
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}선택하신 NewGRF의 팔레트를 전환합니다.{}게임에서 이 NewGRF이 분홍색으로 보일때 이 기능을 사용하십시오.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}파라미터 설정
 STR_NEWGRF_TIP                                                  :{BLACK}당신이 설치한 NewGRF의 모든 목록입니다. 설정을 변경하려면 클릭하세요
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}없는 NewGRF 파일이 있습니다! NewGRF 설치 방법에 대한 매뉴얼을 참고해주십시오
 STR_NEWGRF_FILENAME                                             :{BLACK}파일명: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}팔레트: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}게임이 진행중인데 설정을 변경하려고 하면 게임과 충돌할 수도 있습니다.{}정말로 설정을 변경하시겠습니까?
@@ -3210,6 +3219,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING}�
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 파일 자체는 번역용으로 디자인됨
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :NewGRF이 너무 많습니다.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{1:STRING}를 포함한 정적 NewGRF {0:STRING}(을)를 불러오는 것은 비동기화를 야기시킬 수 있습니다.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :예기치 않은 조각
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :알수없는 액션 0 속성
+STR_NEWGRF_ERROR_INVALID_ID                                     :유효하지 않은 ID 사용 시도
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}선택한 프리셋을 불러옵니다
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}프리셋 저장

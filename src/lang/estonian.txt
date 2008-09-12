@@ -832,6 +832,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Mängu valikud
 STR_02C6_DIFFICULTY_SETTINGS                                    :Raskusastme seadistused
+STR_MENU_CONFIG_PATCHES                                         :Täpsemad seaded
 STR_NEWGRF_SETTINGS                                             :NewGRF seadistused
 STR_TRANSPARENCY_OPTIONS                                        :Läbipaistvuse valikud
 STR_GAMEOPTMENU_0A                                              :
@@ -1074,6 +1075,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Rong {CO
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automaatse asendamise/uuendamise reegleid ei ole rakendatud
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahapiirang)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Täpsemad seaded
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Näidata täpsemaid seadeid
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Täpsemad seaded
 
 STR_CONFIG_PATCHES_OFF                                          :Väljas
 STR_CONFIG_PATCHES_ON                                           :Sees
@@ -1101,6 +1105,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Sama li
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Olekuribal näidatakse alati täispikka kuupäeva: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Paiguta signaalid rööbasteele sõidusuunda arvestades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Aasta lõpus näidatakse rahavoogude aruannet: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uued sihtpunktid on vaikimisi 'peatusteta': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Mootorsõidukite järjekorrad (koos mahuefektidega): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Kursoriga ekraaniserva puudutamisel keritakse vaadet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Luba kohalikule omavalitsusele altkäemaksu maksmine: {ORANGE}{STRING}

@@ -779,6 +779,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opções do Jogo
 STR_02C6_DIFFICULTY_SETTINGS                                    :Configurações de dificuldade
+STR_MENU_CONFIG_PATCHES                                         :Configurações avançadas
 STR_NEWGRF_SETTINGS                                             :Configurar NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Opções de Transparência
 STR_GAMEOPTMENU_0A                                              :
@@ -1021,6 +1022,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O trem {
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Regras de autosubstituição/renovação não estão ativadas.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite de dinheiro)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Configurações avançadas
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Exibe as configurações avançadas
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configurações avançadas
 
 STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On
@@ -1048,6 +1052,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Indúst
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Sempre exibir a data completa na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Exibir sinais no lado da circulação: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Exibir janela das finanças no fim do ano: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Novas ordens são 'sem parar' por padrão: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fila de automóveis (com efeitos de quantidade): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o cursor está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
@@ -1265,6 +1270,7 @@ STR_WAYPOINT                                                    :{WHITE}Ponto de
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Selecione um tipo de ponto de controle
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Trem{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de controle
@@ -1876,6 +1882,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Impossí
 STR_280A_SIGN                                                   :Placa
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editar texto da placa
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Impossível alterar nome da placa...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Impossível remover placa
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Selecionar um tipo de árvore para plantar
 STR_280E_TREES                                                  :Árvores
 STR_280F_RAINFOREST                                             :Floresta Tropical
@@ -3188,10 +3195,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configurar NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configurar NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Liga/Desliga paleta
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Liga/desliga a paleta do NewGRF selecionado.{}Faça isso quando os gráficos deste ficarem rosa durante o jogo
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros
 STR_NEWGRF_TIP                                                  :{BLACK}Lista de todos os conjuntos Newgrf que instalou. Clique num conjunto para alterar as definições.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem arquivos NewGRF atualmente instalados! Consulte o manual de instruções sobre instalar novos gráficos.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do arquivo: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Você está prestes a efetuar alterações neste jogo atual; isto pode danificar o OpenTTD. {}Tem absoluta certeza que deseja fazer isto?
@@ -3210,6 +3220,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :o arquivo GRF foi designado para tradução
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Muitos NewGRFs foram carregados.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {STRING} como um NewGRF estático em conjunto com {STRING} pode causar desincronias.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite não esperado
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Ação Desconhecida 0
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carrega o padrão selecionado
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvar padrão

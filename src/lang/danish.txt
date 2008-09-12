@@ -389,7 +389,7 @@ STR_ENGINE_SORT_INTRO_DATE                                      :Introduktionsda
 STR_ENGINE_SORT_RUNNING_COST                                    :Driftsomkostning
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Drivmiddel/omkostninger
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lasteevne
-STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
+STR_NO_WAITING_CARGO                                            :{BLACK}Der venter ingen fragt af nogen type
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgængelige tog
@@ -778,6 +778,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spilvalg
 STR_02C6_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
+STR_MENU_CONFIG_PATCHES                                         :Avancerede indstillinger
 STR_NEWGRF_SETTINGS                                             :NewGRF indstillinger
 STR_TRANSPARENCY_OPTIONS                                        :Gennemsigtighedsvalg
 STR_GAMEOPTMENU_0A                                              :
@@ -945,11 +946,11 @@ STR_FULLSCREEN_FAILED                                           :{WHITE}Fuldskæ
 
 STR_OPTIONS_RES                                                 :{BLACK}Skærmopløsning
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Vælg ønskede skærmopløsning
+STR_OPTIONS_RES_TIP                                             :{BLACK}Vælg ønsket skærmopløsning
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skærmbillede format
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skærmbillede-format
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vælg skærmbillede format
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vælg skærmbillede-format
 
 STR_AUTOSAVE_1_MONTH                                            :Hver måned
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem
@@ -1017,8 +1018,12 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automati
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornyelse af skib {COMMA} mislykkedes{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornyelse af fly {COMMA} mislykkedes{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er for langt efter udskiftning
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ingen autoudskiftning/-fornyelse foretaget.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(ikke penge nok)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Avancerede indstillinger
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Vis avancerede indstillinger
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Avancerede indstillinger
 
 STR_CONFIG_PATCHES_OFF                                          :Fra
 STR_CONFIG_PATCHES_ON                                           :Til
@@ -1046,6 +1051,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Tillad 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis altid lang dato i statusbaren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis signaler i kørselssiden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis finansvinduet i slutningen af året: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordrer er 'uden stop' som standard: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kødannelse af køretøjer (med kvanteeffekt): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pannorer vindue når musen er ved kanten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING}
@@ -1133,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnetskinne
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgængelige
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Sidste tilgængelige
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest anvendte
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vis reserverede spor: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis byggeværktøjer hvis ingen passende transportmidler er tilgængelige: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. antal tog per spiller: {ORANGE}{STRING}
@@ -1172,6 +1179,7 @@ STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signalt
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Avanceret
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Ensrettet avanceret
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Bladr gennem signaltyper: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Kun normal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Kun avanceret
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
@@ -1261,6 +1269,7 @@ STR_WAYPOINT                                                    :{WHITE}Kontrols
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vælg udseende af kontrolsteder
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} tog{P "" e}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Omdøb kontrolsted
@@ -1960,7 +1969,7 @@ STR_3068_DOCK                                                   :{WHITE}Havn
 STR_3069_BUOY                                                   :Bøje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...der er en bøje i vejen
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stationen er for spredt
-STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ikke uniforme stationer er slået fra
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ikke-uniforme stationer er slået fra
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold CTRL nede for at vælge mere end en ting
 
 STR_UNDEFINED                                                   :(udefineret tekststring)
@@ -2793,7 +2802,7 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan 
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tog
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye jernbanekøretøjer
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nyt Elektrisk lokomotiv
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nyt elektrisk lokomotiv
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye monorailkøretøjer
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye magnetskinnekøretøjer
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Jernbanekøretøjer
@@ -2980,7 +2989,7 @@ STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Lastbil forulykket!{}Chauffør dør i flammerne efter sammenstød med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Bus forulykket!{}{COMMA} dør i flammerne efter kollision med et tog
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikke få køretøjet til at vende...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke vende et køretøg, der består af flere enheder
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke vende et køretøj, der består af flere enheder
 STR_9034_RENAME                                                 :{BLACK}Omdøb
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Omdøb køretøjstypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Omdøb køretøjstypen

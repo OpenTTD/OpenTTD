@@ -820,6 +820,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Možnosti igre
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavitve težavnosti
+STR_MENU_CONFIG_PATCHES                                         :Napredne nastavitve
 STR_NEWGRF_SETTINGS                                             :NewGRF nastavitve
 STR_TRANSPARENCY_OPTIONS                                        :Nastavitve prozornega pogleda
 STR_GAMEOPTMENU_0A                                              :
@@ -1062,6 +1063,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {CO
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ni samoobnovitvenih pravil.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(denarna meja)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Napredne nastavitve
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Prikaz naprednih nastavitev
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Napredne nastavitve
 
 STR_CONFIG_PATCHES_OFF                                          :Izklopi
 STR_CONFIG_PATCHES_ON                                           :Vklopi
@@ -1089,6 +1093,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vedno pokaži dolg datum v vrstici stanja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Prikaz signalov na vozni smeri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Prikaz okna financ na koncu leta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Novi ukazi so privzeti 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cestna vozila v vrsti (s quantum efekti): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Premakni okno, ko je miška na robu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Dovoli podkupovanje mestnih oblasti: {ORANGE}{STRING}

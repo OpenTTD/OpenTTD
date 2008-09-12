@@ -1881,7 +1881,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Kan hier
 STR_280A_SIGN                                                   :Bord
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Wijzig tekst van bord
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Kan de naam van het bord niet wijzigen
-STR_CAN_T_DELETE_SIGN                                           :{WHITE}Kan signaal niet verwijderen...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Kan bord niet verwijderen...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Kies een boom om te planten
 STR_280E_TREES                                                  :Bomen
 STR_280F_RAINFOREST                                             :Tropisch bos

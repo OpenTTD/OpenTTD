@@ -18,6 +18,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} pe drum de la {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Acceptă: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Acceptă: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Resurse: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :călători
 STR_0010_COAL                                                   :cărbune
@@ -589,6 +590,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sosirea
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sosirea primului vehicul la una din statiile competitorilor
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidente/dezastre
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informatii despre companie
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Inaugurare industrii
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Inchidere industrii
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbări economice
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Schimbări de producţie la industrii partenere cu jucătorul
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Schimbări de producţie la industrii partenere cu concurenţa
@@ -775,6 +778,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opţiunile jocului (F2)
 STR_02C6_DIFFICULTY_SETTINGS                                    :Setări dificultate
+STR_MENU_CONFIG_PATCHES                                         :Setari avansate
 STR_NEWGRF_SETTINGS                                             :Setari Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Optiuni transparenta
 STR_GAMEOPTMENU_0A                                              :
@@ -859,6 +863,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Obiectiv indust
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Construieşte un nou obiectiv industrial
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...se poate construi doar în oraşe
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...se poate construi doar in padurile ecuatoriale
@@ -983,6 +988,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nu se po
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nu pot copia lista de comenzi...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Sfârşitul comenzilor sincronizate - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Trenul {COMMA} nu poate gasi o cale pentru continuare.
 STR_TRAIN_IS_LOST                                               :{WHITE}Trenul {COMMA} s-a rãtãcit.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Profitul trenului {COMMA} a fost anul trecut de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Uniunea Monetară Europeană!{}{}Euro este introdus în ţară ca monedă unică de folosinţă în tranzacţiile zilnice!
@@ -1012,8 +1018,11 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Înnoire
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Înnoirea navei {COMMA} a esuat{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Înnoirea automată a aeronavei {COMMA} a eşuat{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trenul {COMMA} este prea lung dupa inlocuire
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nicio regula autoinlocuire/reinnoire aplicata.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(fonduri limitate)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Setari avansate
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Afiseaza setarile avansate
 
 STR_CONFIG_PATCHES_OFF                                          :inactiv
 STR_CONFIG_PATCHES_ON                                           :activ
@@ -3196,6 +3205,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Prea multe NewGRF-uri încărcate.
 
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Introdu un nume presetarii
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Sterge presetarea
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Sterge presetarea selectata
 STR_NEWGRF_ADD                                                  :{BLACK}Adauga
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adauga un fisier NewGRF in lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Elimina
@@ -3226,6 +3238,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fisierel
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fisier(e) GRF lipsa
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Reluarea jocului poate bloca OpenTTD. Nu raportati raporturi cu probleme pentru blocari succesive.{}Sigur doresti sa reiei jocul?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Comportamentul NewGRF '{0:STRING}' poate cauza desincronizari sau opriri.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica lungimea vehicolului pentru '{1:ENGINE}' cand nu este in depou.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trenul '{VEHICLE}', apartinand '{COMPANY}' nu are o lungima valida. Crobabila este o problema cu fisierele NewGRF. Jocul s-ar putea desincroniza sau prabusi.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Jocul a fost salvat într-o versiune fără suport pentru tramvaie. Toate tramvaiele au fost eliminate.
 
@@ -3457,7 +3472,9 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Comuta t
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Comuta transparenta pentru construibile, precum statii, depouri, indicatoare si linii electrificate
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comuta transparenta pentru poduri
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comuta transparenta pentru structuri ca farurile si antenele - poate in viitor, pentru efect
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Comuta transparenta pentru catenar. CTRL+clic pentru blocare.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Comuta transparenta pentru indicatorii de incarcare
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Seteaza obiectele ca invizibile in loc de transparent
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3513,6 +3530,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Numele t
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Mergi la semnul urmator
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Mergi la semnul anterior
+STR_SIGN_OSKTITLE                                               :{BLACK}Introdu un nume pentru semn
 
 ########
 
@@ -3587,6 +3605,8 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Mareste 
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ town controlled noise level
