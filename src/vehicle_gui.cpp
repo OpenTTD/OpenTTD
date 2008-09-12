@@ -688,18 +688,18 @@ static const Widget _vehicle_list_widgets[] = {
 	{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    80,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
 	{   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,    81,   247,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
 	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   248,   259,    14,    25, 0x0,                  STR_NULL},
-	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   247,    26,   169, 0x0,                  STR_NULL},
-	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   247,    26,   181, 0x0,                  STR_NULL},
+	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   248,   259,    26,   181, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 	/* Widget to be shown for other players hiding the following 6 widgets */
-	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   247,   170,   181, 0x0,                  STR_NULL},
+	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   247,   182,   193, 0x0,                  STR_NULL},
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   105,   170,   181, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
-	{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   106,   223,   170,   181, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   105,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
+	{   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   106,   223,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
 
-	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   224,   235,   170,   181, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
-	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   236,   247,   170,   181, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
-	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   248,   247,   170,   181, 0x0,                  STR_NULL},
-	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   248,   259,   170,   181, 0x0,                  STR_RESIZE_BUTTON},
+	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   224,   235,   182,   193, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
+	{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   236,   247,   182,   193, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
+	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   248,   247,   182,   193, 0x0,                  STR_NULL},
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   248,   259,   182,   193, 0x0,                  STR_RESIZE_BUTTON},
 	{   WIDGETS_END},
 };
 
@@ -831,9 +831,8 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 				this->resize.step_width = 1;
 				/* Fallthrough */
 			case VEH_ROAD:
-				this->vscroll.cap = 7;
+				this->vscroll.cap = 6;
 				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-				this->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); // Minimum of 4 vehicles
 				break;
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
@@ -1102,28 +1101,28 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 };
 
 static const WindowDesc _player_vehicle_list_train_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 182, 260, 182,
+	WDP_AUTO, WDP_AUTO, 260, 194, 325, 246,
 	WC_TRAINS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 };
 
 static const WindowDesc _player_vehicle_list_road_veh_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 182, 260, 182,
+	WDP_AUTO, WDP_AUTO, 260, 194, 260, 246,
 	WC_ROADVEH_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 };
 
 static const WindowDesc _player_vehicle_list_ship_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 182, 260, 182,
+	WDP_AUTO, WDP_AUTO, 260, 194, 260, 246,
 	WC_SHIPS_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 };
 
 static const WindowDesc _player_vehicle_list_aircraft_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 182, 260, 182,
+	WDP_AUTO, WDP_AUTO, 260, 194, 260, 246,
 	WC_AIRCRAFT_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
@@ -1145,11 +1144,9 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, Vehicle
 		default: NOT_REACHED();
 		case VEH_TRAIN:
 			w = AllocateWindowDescFront<VehicleListWindow>(&_player_vehicle_list_train_desc, num);
-			if (w != NULL) ResizeWindow(w, 65, 38);
 			break;
 		case VEH_ROAD:
 			w = AllocateWindowDescFront<VehicleListWindow>(&_player_vehicle_list_road_veh_desc, num);
-			if (w != NULL) ResizeWindow(w, 0, 38);
 			break;
 		case VEH_SHIP:
 			w = AllocateWindowDescFront<VehicleListWindow>(&_player_vehicle_list_ship_desc, num);
@@ -1157,12 +1154,6 @@ static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, Vehicle
 		case VEH_AIRCRAFT:
 			w = AllocateWindowDescFront<VehicleListWindow>(&_player_vehicle_list_aircraft_desc, num);
 			break;
-	}
-
-	if (w != NULL) {
-		/* Set the minimum window size to the current window size */
-		w->resize.width = w->width;
-		w->resize.height = w->height;
 	}
 }
 

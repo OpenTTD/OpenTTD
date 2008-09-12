@@ -190,7 +190,7 @@ public:
 			case VEH_AIRCRAFT:
 				this->vscroll.cap = 9;
 				this->vscroll2.cap = 4;
-				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG2;
+				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
 				break;
 		}
 
@@ -452,7 +452,7 @@ public:
 			SetDParam(0, v->unitnumber);
 			DrawString(x, y2 + 2, v->IsInDepot() ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), TC_FROMSTRING);
 
-			if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG2) DrawSmallOrderList(v, x + 138, y2);
+			if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, y2);
 
 			SetDParam(0, v->GetDisplayProfitThisYear());
 			SetDParam(1, v->GetDisplayProfitLastYear());
