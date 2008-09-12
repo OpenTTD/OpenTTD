@@ -322,14 +322,15 @@ public:
 		TrackdirBits dst_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(dst_tile, TRANSPORT_ROAD, v->u.road.compatible_roadtypes));
 		Yapf().SetDestination(dst_tile, dst_td_bits);
 
-		// find the best path
-		Yapf().FindPath(v);
-
 		// if path not found - return distance = UINT_MAX
 		uint dist = UINT_MAX;
+
+		// find the best path
+		if (!Yapf().FindPath(v)) return dist;
+
 		Node *pNode = Yapf().GetBestNode();
 		if (pNode != NULL) {
-			// path was found or at least suggested
+			// path was found
 			// get the path cost estimate
 			dist = pNode->GetCostEstimate();
 		}
