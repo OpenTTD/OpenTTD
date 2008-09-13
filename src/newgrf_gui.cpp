@@ -98,11 +98,11 @@ static void ShowNewGRFInfo(const GRFConfig *c, uint x, uint y, uint w, uint bott
 			SetDParam(0, STR_01A9_NONE);
 		}
 		y += DrawStringMultiLine(x, y, STR_NEWGRF_PARAMETER, w, bottom - y);
-	}
 
-	/* Draw the palette of the NewGRF */
-	SetDParamStr(0, c->windows_paletted ? "Windows" : "DOS");
-	y += DrawStringMultiLine(x, y, STR_NEWGRF_PALETTE, w, bottom - y);
+		/* Draw the palette of the NewGRF */
+		SetDParamStr(0, c->windows_paletted ? "Windows" : "DOS");
+		y += DrawStringMultiLine(x, y, STR_NEWGRF_PALETTE, w, bottom - y);
+	}
 
 	/* Show flags */
 	if (c->status == GCS_NOT_FOUND)        y += DrawStringMultiLine(x, y, STR_NEWGRF_NOT_FOUND, w, bottom - y);
