@@ -3251,7 +3251,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 			STR_8801_CITIZENS_CELEBRATE_FIRST,
 			v->owner == _local_player ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 			v->index,
-			0
+			st->index
 		);
 	}
 

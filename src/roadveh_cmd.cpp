@@ -807,7 +807,8 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 				v->u.road.roadtype == ROADTYPE_ROAD ? STR_902F_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM,
 				(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 				v->index,
-				0);
+				st->index
+			);
 		}
 	} else {
 		/* Check if station was ever visited before */
@@ -818,7 +819,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 				v->u.road.roadtype == ROADTYPE_ROAD ? STR_9030_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM,
 				(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 				v->index,
-				0
+				st->index
 			);
 		}
 	}

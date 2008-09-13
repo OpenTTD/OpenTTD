@@ -351,7 +351,8 @@ static void ShipArrivesAt(const Vehicle* v, Station* st)
 			STR_9833_CITIZENS_CELEBRATE_FIRST,
 			(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 			v->index,
-			0);
+			st->index
+		);
 	}
 }
 

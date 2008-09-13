@@ -1402,7 +1402,8 @@ static void AircraftEntersTerminal(Vehicle *v)
 			STR_A033_CITIZENS_CELEBRATE_FIRST,
 			(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
 			v->index,
-			0);
+			st->index
+		);
 	}
 
 	v->BeginLoading();

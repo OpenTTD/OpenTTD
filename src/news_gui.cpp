@@ -579,6 +579,29 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 	}
 }
 
+/** Remove news regarding given station so there are no 'unknown station now accepts Mail'
+ * or 'First train arrived at unknown station' news items.
+ * @param sid station to remove news about
+ */
+void DeleteStationNews(StationID sid)
+{
+	NewsItem *ni = _oldest_news;
+
+	while (ni != NULL) {
+		NewsItem *next = ni->next;
+		switch (ni->subtype) {
+			case NS_ARRIVAL_PLAYER:
+			case NS_ARRIVAL_OTHER:
+			case NS_ACCEPTANCE:
+				if (ni->data_b == sid) DeleteNewsItem(ni);
+				break;
+			default:
+				break;
+		}
+		ni = next;
+	}
+}
+
 void RemoveOldNewsItems()
 {
 	NewsItem *next;

@@ -7,6 +7,7 @@
 
 #include "news_type.h"
 #include "vehicle_type.h"
+#include "station_type.h"
 
 void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b, void *free_data = NULL);
 void NewsLoop();
@@ -23,5 +24,8 @@ extern NewsTypeData _news_type_data[NT_END];
  * deleted
  */
 void DeleteVehicleNews(VehicleID, StringID news);
+
+/** Delete news associated with given station */
+void DeleteStationNews(StationID);
 
 #endif /* NEWS_FUNC_H */

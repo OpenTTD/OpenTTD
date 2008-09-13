@@ -31,6 +31,7 @@
 #include "settings_type.h"
 #include "command_func.h"
 #include "order_func.h"
+#include "news_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -83,6 +84,9 @@ Station::~Station()
 
 	/* Subsidies need removal as well */
 	DeleteSubsidyWithStation(index);
+
+	/* Remove all news items */
+	DeleteStationNews(this->index);
 
 	xy = 0;
 
