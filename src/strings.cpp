@@ -846,11 +846,18 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			}
 
 			case SCC_STATION_NAME: { // {STATION}
-				const Station* st = GetStation(GetInt32(&argv));
+				StationID sid = GetInt32(&argv);
 
-				if (!st->IsValid()) { // station doesn't exist anymore
+				if (!IsValidStationID(sid)) {
+					/* The station doesn't exist anymore. The only place where we might
+					 * be "drawing" an invalid station is in the case of cargo that is
+					 * in transit. */
 					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
-				} else if (st->name != NULL) {
+					break;
+				}
+
+				const Station *st = GetStation(sid);
+				if (st->name != NULL) {
 					buff = strecpy(buff, st->name, last);
 				} else {
 					int64 temp[3];

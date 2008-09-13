@@ -1323,7 +1323,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool type = HasBit(p2, 0);
 	bool is_drive_through = HasBit(p2, 1);
 	bool build_over_road  = is_drive_through && IsNormalRoadTile(tile);
-	bool town_owned_road  = build_over_road && IsTileOwner(tile, OWNER_TOWN);
+	bool town_owned_road  = false;
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
 
 	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_player, rts)) return CMD_ERROR;
@@ -1342,22 +1342,27 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	CommandCost cost;
 
+	RoadTypes cur_rts = IsNormalRoadTile(tile) ? GetRoadTypes(tile) : ROADTYPES_NONE;
+	uint num_roadbits = 0;
 	/* Not allowed to build over this road */
 	if (build_over_road) {
-		if (IsTileOwner(tile, OWNER_TOWN) && !_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
-
-		RoadTypes cur_rts = GetRoadTypes(tile);
-
 		/* there is a road, check if we can build road+tram stop over it */
 		if (HasBit(cur_rts, ROADTYPE_ROAD)) {
 			Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
-			if (road_owner != OWNER_TOWN && road_owner != OWNER_NONE && !CheckOwnership(road_owner)) return CMD_ERROR;
+			if (road_owner == OWNER_TOWN) {
+				town_owned_road = true;
+				if (!_patches.road_stop_on_town_road) return_cmd_error(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD);
+			} else {
+				if (road_owner != OWNER_NONE && !CheckOwnership(road_owner)) return CMD_ERROR;
+			}
+			num_roadbits += CountBits(GetRoadBits(tile, ROADTYPE_ROAD));
 		}
 
 		/* there is a tram, check if we can build road+tram stop over it */
 		if (HasBit(cur_rts, ROADTYPE_TRAM)) {
 			Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
 			if (tram_owner != OWNER_NONE && !CheckOwnership(tram_owner)) return CMD_ERROR;
+			num_roadbits += CountBits(GetRoadBits(tile, ROADTYPE_TRAM));
 		}
 
 		/* Don't allow building the roadstop when vehicles are already driving on it */
@@ -1368,6 +1373,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 	cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL, !build_over_road);
 	if (CmdFailed(cost)) return cost;
+	uint roadbits_to_build = CountBits(rts) * 2 - num_roadbits;
+	cost.AddCost(_price.build_road * roadbits_to_build);
 
 	Station *st = NULL;
 

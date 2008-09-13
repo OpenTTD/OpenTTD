@@ -1,4 +1,4 @@
-Source: PACKAGE
+Source: openttd
 Section: contrib/games
 Priority: optional
 Maintainer: Matthijs Kooijman <matthijs@stdin.nl>
@@ -9,7 +9,7 @@ Vcs-Browser: http://svn.debian.org/wsvn/collab-maint/deb-maint/openttd/trunk/
 Vcs-Svn: svn://svn.debian.org/svn/collab-maint/deb-maint/openttd/trunk
 Homepage: http://www.openttd.org/
 
-Package: PACKAGE
+Package: openttd
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: timidity, freepats
