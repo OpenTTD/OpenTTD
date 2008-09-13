@@ -1578,17 +1578,12 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 	/* airport-road is free. We either have to go to another airport, or to the hangar
 	 * ---> start moving */
 
+	bool go_to_hangar = false;
 	switch (v->current_order.GetType()) {
 		case OT_GOTO_STATION: // ready to fly to another airport
-			/* airplane goto state takeoff, helicopter to helitakeoff */
-			v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
 			break;
 		case OT_GOTO_DEPOT:   // visit hangar for serivicing, sale, etc.
-			if (v->current_order.GetDestination() == v->u.air.targetairport) {
-				v->u.air.state = HANGAR;
-			} else {
-				v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
-			}
+			go_to_hangar = v->current_order.GetDestination() == v->u.air.targetairport;
 			break;
 		case OT_CONDITIONAL:
 			/* In case of a conditional order we just have to wait a tick
@@ -1597,7 +1592,14 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 			return;
 		default:  // orders have been deleted (no orders), goto depot and don't bother us
 			v->current_order.Free();
-			v->u.air.state = HANGAR;
+			go_to_hangar = GetStation(v->u.air.targetairport)->Airport()->nof_depots != 0;
+	}
+
+	if (go_to_hangar) {
+		v->u.air.state = HANGAR;
+	} else {
+		/* airplane goto state takeoff, helicopter to helitakeoff */
+		v->u.air.state = (v->subtype == AIR_HELICOPTER) ? HELITAKEOFF : TAKEOFF;
 	}
 	AirportMove(v, apc);
 }
