@@ -576,17 +576,14 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			return CommandCost(EXPENSES_CONSTRUCTION, _price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4));
 		}
 
-		case MP_STATION:
-			if (!IsRoadStop(tile)) goto do_clear;
-			if (IsDriveThroughStopTile(tile)) {
-				RoadBits curbits = AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(tile)));
-				if (pieces & ~curbits) goto do_clear;
-				pieces = curbits; // we need to pay for both roadbits
-			} else {
-				if (pieces & ~DiagDirToRoadBits(GetRoadStopDir(tile))) goto do_clear;
-			}
+		case MP_STATION: {
+			if (!IsDriveThroughStopTile(tile)) goto do_clear;
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
-			break;
+
+			RoadBits curbits = AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(tile)));
+			if (pieces & ~curbits) goto do_clear;
+			pieces = curbits; // we need to pay for both roadbits
+		} break;
 
 		case MP_TUNNELBRIDGE:
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
@@ -674,8 +671,9 @@ do_clear:;
 			} break;
 
 			case MP_STATION:
+				assert(IsDriveThroughStopTile(tile));
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
-				if (IsDriveThroughStopTile(tile) && rt == ROADTYPE_ROAD) SetStopBuiltOnTownRoad(tile, false);
+				if (rt == ROADTYPE_ROAD) SetStopBuiltOnTownRoad(tile, false);
 				break;
 
 			default:
