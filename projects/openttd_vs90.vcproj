@@ -453,6 +453,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\autoreplace.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\aystar.cpp"
 				>
 			</File>
@@ -1573,6 +1577,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\vehicle_gui_base.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\vehicle_type.h"
 				>
 			</File>
@@ -2038,6 +2046,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\table\palettes.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\table\palette_convert.h"
 				>
 			</File>
 			<File

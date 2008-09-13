@@ -2,6 +2,7 @@
 airport.cpp
 animated_tile.cpp
 articulated_vehicles.cpp
+autoreplace.cpp
 aystar.cpp
 bmp.cpp
 callback_table.cpp
@@ -321,6 +322,7 @@ variables.h
 vehicle_base.h
 vehicle_func.h
 vehicle_gui.h
+vehicle_gui_base.h
 vehicle_type.h
 vehiclelist.h
 viewport_func.h
@@ -456,6 +458,7 @@ table/industry_land.h
 table/landscape_sprite.h
 table/namegen.h
 table/palettes.h
+table/palette_convert.h
 table/railtypes.h
 table/road_land.h
 table/roadveh_movement.h

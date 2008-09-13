@@ -15,7 +15,6 @@
 #include "strings_type.h"
 
 typedef uint16 EngineID;
-typedef uint16 EngineRenewID;
 
 struct Engine;
 

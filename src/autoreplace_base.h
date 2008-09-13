@@ -8,6 +8,8 @@
 #include "oldpool.h"
 #include "autoreplace_type.h"
 
+typedef uint16 EngineRenewID;
+
 /**
  * Memory pool for engine renew elements. DO NOT USE outside of engine.c. Is
  * placed here so the only exception to this rule, the saveload code, can use

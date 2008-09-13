@@ -1315,6 +1315,7 @@ extern const ChunkHandler _animated_tile_chunk_handlers[];
 extern const ChunkHandler _newgrf_chunk_handlers[];
 extern const ChunkHandler _group_chunk_handlers[];
 extern const ChunkHandler _cargopacket_chunk_handlers[];
+extern const ChunkHandler _autoreplace_chunk_handlers[];
 
 static const ChunkHandler * const _chunk_handlers[] = {
 	_gamelog_chunk_handlers,
@@ -1337,6 +1338,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	_newgrf_chunk_handlers,
 	_group_chunk_handlers,
 	_cargopacket_chunk_handlers,
+	_autoreplace_chunk_handlers,
 	NULL,
 };
 

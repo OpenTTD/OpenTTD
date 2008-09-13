@@ -39,7 +39,7 @@ extern TileIndex _cur_tileloop_tile;
 void InitializeVehicles();
 void InitializeWaypoints();
 void InitializeDepots();
-void InitializeEngines();
+void InitializeEngineRenews();
 void InitializeOrders();
 void InitializeClearLand();
 void InitializeRailGui();
@@ -76,7 +76,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 		InitializeOldNames();
 	}
 
-	InitializeEngines();
+	InitializeEngineRenews();
 	InitializeVehicles();
 	InitializeWaypoints();
 	InitializeDepots();
