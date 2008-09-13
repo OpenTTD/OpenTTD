@@ -9,6 +9,7 @@
 #include "textbuf_gui.h"
 #include "command_func.h"
 #include "vehicle_gui.h"
+#include "vehicle_gui_base.h"
 #include "train.h"
 #include "group.h"
 #include "debug.h"
@@ -34,21 +35,11 @@ enum GroupListWidgets {
 	GRP_WIDGET_CLOSEBOX = 0,
 	GRP_WIDGET_CAPTION,
 	GRP_WIDGET_STICKY,
-	GRP_WIDGET_EMPTY_TOP_LEFT,
-	GRP_WIDGET_ALL_VEHICLES,
-	GRP_WIDGET_DEFAULT_VEHICLES,
-	GRP_WIDGET_LIST_GROUP,
-	GRP_WIDGET_LIST_GROUP_SCROLLBAR,
 	GRP_WIDGET_SORT_BY_ORDER,
 	GRP_WIDGET_SORT_BY_DROPDOWN,
 	GRP_WIDGET_EMPTY_TOP_RIGHT,
 	GRP_WIDGET_LIST_VEHICLE,
 	GRP_WIDGET_LIST_VEHICLE_SCROLLBAR,
-	GRP_WIDGET_CREATE_GROUP,
-	GRP_WIDGET_DELETE_GROUP,
-	GRP_WIDGET_RENAME_GROUP,
-	GRP_WIDGET_EMPTY1,
-	GRP_WIDGET_REPLACE_PROTECTION,
 	GRP_WIDGET_EMPTY2,
 	GRP_WIDGET_AVAILABLE_VEHICLES,
 	GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
@@ -56,6 +47,17 @@ enum GroupListWidgets {
 	GRP_WIDGET_START_ALL,
 	GRP_WIDGET_EMPTY_BOTTOM_RIGHT,
 	GRP_WIDGET_RESIZE,
+
+	GRP_WIDGET_EMPTY_TOP_LEFT,
+	GRP_WIDGET_ALL_VEHICLES,
+	GRP_WIDGET_DEFAULT_VEHICLES,
+	GRP_WIDGET_LIST_GROUP,
+	GRP_WIDGET_LIST_GROUP_SCROLLBAR,
+	GRP_WIDGET_CREATE_GROUP,
+	GRP_WIDGET_DELETE_GROUP,
+	GRP_WIDGET_RENAME_GROUP,
+	GRP_WIDGET_EMPTY1,
+	GRP_WIDGET_REPLACE_PROTECTION,
 };
 
 enum GroupActionListFunction {
@@ -92,21 +94,11 @@ static const Widget _group_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   447,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   448,   459,     0,    13, 0x0,                  STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    14,    25, 0x0,                  STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    26,    38, 0x0,                  STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    39,    51, 0x0,                  STR_NULL},
-{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   187,    52,   168, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,  COLOUR_GREY,   188,   199,    52,   168, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   200,   280,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
 {   WWT_DROPDOWN,   RESIZE_NONE,  COLOUR_GREY,   281,   447,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   448,   459,    14,    25, 0x0,                  STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,   200,   447,    26,   181, 0x701,                STR_NULL},
-{ WWT_SCROLL2BAR,    RESIZE_LRB,  COLOUR_GREY,   448,   459,    26,   181, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,     0,    23,   169,   193, 0x0,                  STR_GROUP_CREATE_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    24,    47,   169,   193, 0x0,                  STR_GROUP_DELETE_TIP},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    48,    71,   169,   193, 0x0,                  STR_GROUP_RENAME_TIP},
-{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,    72,   163,   169,   193, 0x0,                  STR_NULL},
-{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   164,   187,   169,   193, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TIP},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   448,   459,    26,   181, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,   188,   199,   169,   193, 0x0,                  STR_NULL},
 { WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   200,   305,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
 {   WWT_DROPDOWN,     RESIZE_TB,  COLOUR_GREY,   306,   423,   182,   193, STR_MANAGE_LIST,      STR_MANAGE_LIST_TIP},
@@ -114,11 +106,22 @@ static const Widget _group_widgets[] = {
 { WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   436,   447,   182,   193, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
 {      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,   448,   447,   182,   193, 0x0,                  STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   448,   459,   182,   193, 0x0,                  STR_RESIZE_BUTTON},
+
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    14,    25, 0x0,                  STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    26,    38, 0x0,                  STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   199,    39,    51, 0x0,                  STR_NULL},
+{     WWT_MATRIX, RESIZE_BOTTOM,  COLOUR_GREY,     0,   187,    52,   168, 0x701,                STR_GROUPS_CLICK_ON_GROUP_FOR_TIP},
+{ WWT_SCROLL2BAR, RESIZE_BOTTOM,  COLOUR_GREY,   188,   199,    52,   168, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,     0,    23,   169,   193, 0x0,                  STR_GROUP_CREATE_TIP},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    24,    47,   169,   193, 0x0,                  STR_GROUP_DELETE_TIP},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,    48,    71,   169,   193, 0x0,                  STR_GROUP_RENAME_TIP},
+{      WWT_PANEL,     RESIZE_TB,  COLOUR_GREY,    72,   163,   169,   193, 0x0,                  STR_NULL},
+{ WWT_PUSHIMGBTN,     RESIZE_TB,  COLOUR_GREY,   164,   187,   169,   193, 0x0,                  STR_GROUP_REPLACE_PROTECTION_TIP},
 {   WIDGETS_END},
 };
 
 
-class VehicleGroupWindow : public Window, public VehicleListBase {
+class VehicleGroupWindow : public BaseVehicleListWindow {
 private:
 	GroupID group_sel;
 	VehicleID vehicle_sel;
@@ -170,7 +173,7 @@ private:
 	}
 
 public:
-	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
 	{
 		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
@@ -182,20 +185,20 @@ public:
 			default: NOT_REACHED();
 			case VEH_TRAIN:
 			case VEH_ROAD:
-				this->vscroll.cap = 9;
-				this->vscroll2.cap = 6;
+				this->vscroll2.cap = 9;
+				this->vscroll.cap = 6;
 				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 				break;
 			case VEH_SHIP:
 			case VEH_AIRCRAFT:
-				this->vscroll.cap = 9;
-				this->vscroll2.cap = 4;
+				this->vscroll2.cap = 9;
+				this->vscroll.cap = 4;
 				this->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
 				break;
 		}
 
-		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll.cap << 8) + 1;
-		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll2.cap << 8) + 1;
+		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.cap << 8) + 1;
+		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.cap << 8) + 1;
 
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
@@ -285,21 +288,20 @@ public:
 	{
 		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
 		int x = this->widget[GRP_WIDGET_LIST_VEHICLE].left + 2;
-		int y2 = PLY_WND_PRC__OFFSET_TOP_WIDGET;
 		int y1 = PLY_WND_PRC__OFFSET_TOP_WIDGET + 2;
 		int max;
 		int i;
 
 		/* If we select the all vehicles, this->list will contain all vehicles of the player
 			* else this->list will contain all vehicles which belong to the selected group */
-		BuildVehicleList(this, owner, this->group_sel, IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST);
-		SortVehicleList(this);
+		this->BuildVehicleList(owner, this->group_sel, IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST);
+		this->SortVehicleList();
 
 		this->BuildGroupList(owner);
 		this->groups.Sort(&GroupNameSorter);
 
-		SetVScrollCount(this, this->groups.Length());
-		SetVScroll2Count(this, this->vehicles.Length());
+		SetVScroll2Count(this, this->groups.Length());
+		SetVScrollCount(this, this->vehicles.Length());
 
 		/* The drop down menu is out, *but* it may not be used, retract it. */
 		if (this->vehicles.Length() == 0 && this->IsWidgetLowered(GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN)) {
@@ -419,8 +421,8 @@ public:
 
 		DrawString(10, y1, str_no_group_veh, IsDefaultGroupID(this->group_sel) ? TC_WHITE : TC_BLACK);
 
-		max = min(this->vscroll.pos + this->vscroll.cap, this->groups.Length());
-		for (i = this->vscroll.pos ; i < max ; ++i) {
+		max = min(this->vscroll2.pos + this->vscroll2.cap, this->groups.Length());
+		for (i = this->vscroll2.pos ; i < max ; ++i) {
 			const Group *g = this->groups[i];
 
 			assert(g->owner == owner);
@@ -438,34 +440,7 @@ public:
 
 		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
-		int list_width = this->widget[GRP_WIDGET_LIST_VEHICLE].right - this->widget[GRP_WIDGET_LIST_VEHICLE].left - 20;
-
-		/* Draw Matrix Vehicle according to the vehicle list built before */
-		max = min(this->vscroll2.pos + this->vscroll2.cap, this->vehicles.Length());
-		for (i = this->vscroll2.pos ; i < max ; ++i) {
-			const Vehicle* v = this->vehicles[i];
-
-			assert(v->type == this->vehicle_type && v->owner == owner);
-
-			DrawVehicleImage(v, x + 19, y2 + 6, this->vehicle_sel, list_width, 0);
-			DrawVehicleProfitButton(v, x, y2 + 13);
-
-			SetDParam(0, v->unitnumber);
-			DrawString(x, y2 + 2, v->IsInDepot() ? STR_021F : (v->age > v->max_age - 366 ? STR_00E3 : STR_00E2), TC_FROMSTRING);
-
-			if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, y2);
-
-			SetDParam(0, v->GetDisplayProfitThisYear());
-			SetDParam(1, v->GetDisplayProfitLastYear());
-			DrawString(x + 19, y2 + this->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
-
-			if (IsValidGroupID(v->group_id)) {
-				SetDParam(0, v->group_id);
-				DrawString(x + 19, y2, STR_GROUP_TINY_NAME, TC_BLACK);
-			}
-
-			y2 += this->resize.step_height;
-		}
+		this->DrawVehicleListItems(x);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -501,9 +476,9 @@ public:
 			case GRP_WIDGET_LIST_GROUP: { // Matrix Group
 				uint16 id_g = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET - 26) / PLY_WND_PRC__SIZE_OF_ROW_TINY;
 
-				if (id_g >= this->vscroll.cap) return;
+				if (id_g >= this->vscroll2.cap) return;
 
-				id_g += this->vscroll.pos;
+				id_g += this->vscroll2.pos;
 
 				if (id_g >= this->groups.Length()) return;
 
@@ -518,9 +493,9 @@ public:
 				uint32 id_v = (pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / (int)this->resize.step_height;
 				const Vehicle *v;
 
-				if (id_v >= this->vscroll2.cap) return; // click out of bounds
+				if (id_v >= this->vscroll.cap) return; // click out of bounds
 
-				id_v += this->vscroll2.pos;
+				id_v += this->vscroll.pos;
 
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
@@ -608,9 +583,9 @@ public:
 
 				this->SetDirty();
 
-				if (id_g >= this->vscroll.cap) return;
+				if (id_g >= this->vscroll2.cap) return;
 
-				id_g += this->vscroll.pos;
+				id_g += this->vscroll2.pos;
 
 				if (id_g >= this->groups.Length()) return;
 
@@ -628,9 +603,9 @@ public:
 
 				this->SetDirty();
 
-				if (id_v >= this->vscroll2.cap) return; // click out of bounds
+				if (id_v >= this->vscroll.cap) return; // click out of bounds
 
-				id_v += this->vscroll2.pos;
+				id_v += this->vscroll.pos;
 
 				if (id_v >= this->vehicles.Length()) return; // click out of list bound
 
@@ -657,11 +632,11 @@ public:
 
 	virtual void OnResize(Point new_size, Point delta)
 	{
-		this->vscroll.cap += delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY;
-		this->vscroll2.cap += delta.y / (int)this->resize.step_height;
+		this->vscroll2.cap += delta.y / PLY_WND_PRC__SIZE_OF_ROW_TINY;
+		this->vscroll.cap += delta.y / (int)this->resize.step_height;
 
-		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll.cap << 8) + 1;
-		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll2.cap << 8) + 1;
+		this->widget[GRP_WIDGET_LIST_GROUP].data = (this->vscroll2.cap << 8) + 1;
+		this->widget[GRP_WIDGET_LIST_VEHICLE].data = (this->vscroll.cap << 8) + 1;
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)
@@ -717,9 +692,9 @@ public:
 
 	virtual void OnPlaceObjectAbort()
 	{
-			/* abort drag & drop */
-			this->vehicle_sel = INVALID_VEHICLE;
-			this->InvalidateWidget(GRP_WIDGET_LIST_VEHICLE);
+		/* abort drag & drop */
+		this->vehicle_sel = INVALID_VEHICLE;
+		this->InvalidateWidget(GRP_WIDGET_LIST_VEHICLE);
 	}
 };
 

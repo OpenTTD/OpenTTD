@@ -16,6 +16,7 @@
 #include "functions.h"
 #include "autoreplace_func.h"
 #include "articulated_vehicles.h"
+#include "core/alloc_func.hpp"
 
 #include "table/strings.h"
 

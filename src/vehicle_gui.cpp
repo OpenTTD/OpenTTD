@@ -12,6 +12,7 @@
 #include "command_func.h"
 #include "variables.h"
 #include "vehicle_gui.h"
+#include "vehicle_gui_base.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "train.h"
@@ -57,7 +58,7 @@ static GUIVehicleList::SortFunction VehicleModelSorter;
 static GUIVehicleList::SortFunction VehicleValueSorter;
 static GUIVehicleList::SortFunction VehicleLengthSorter;
 
-GUIVehicleList::SortFunction* const VehicleListBase::vehicle_sorter_funcs[] = {
+GUIVehicleList::SortFunction* const BaseVehicleListWindow::vehicle_sorter_funcs[] = {
 	&VehicleNumberSorter,
 	&VehicleNameSorter,
 	&VehicleAgeSorter,
@@ -71,7 +72,7 @@ GUIVehicleList::SortFunction* const VehicleListBase::vehicle_sorter_funcs[] = {
 	&VehicleLengthSorter,
 };
 
-const StringID VehicleListBase::vehicle_sorter_names[] = {
+const StringID BaseVehicleListWindow::vehicle_sorter_names[] = {
 	STR_SORT_BY_NUMBER,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_AGE,
@@ -86,23 +87,23 @@ const StringID VehicleListBase::vehicle_sorter_names[] = {
 	INVALID_STRING_ID
 };
 
-void BuildVehicleList(VehicleListBase *vl, PlayerID owner, uint16 index, uint16 window_type)
+void BaseVehicleListWindow::BuildVehicleList(PlayerID owner, uint16 index, uint16 window_type)
 {
-	if (!vl->vehicles.NeedRebuild()) return;
+	if (!this->vehicles.NeedRebuild()) return;
 
 	DEBUG(misc, 3, "Building vehicle list for player %d at station %d", owner, index);
 
-	GenerateVehicleSortList(&vl->vehicles, vl->vehicle_type, owner, index, window_type);
+	GenerateVehicleSortList(&this->vehicles, this->vehicle_type, owner, index, window_type);
 
-	vl->vehicles.RebuildDone();
+	this->vehicles.RebuildDone();
 }
 
 /* cached values for VehicleNameSorter to spare many GetString() calls */
 static const Vehicle *_last_vehicle[2] = { NULL, NULL };
 
-void SortVehicleList(VehicleListBase *vl)
+void BaseVehicleListWindow::SortVehicleList()
 {
-	if (vl->vehicles.Sort()) return;
+	if (this->vehicles.Sort()) return;
 
 	/* invalidate cached values for name sorter - vehicle names could change */
 	_last_vehicle[0] = _last_vehicle[1] = NULL;
@@ -703,7 +704,7 @@ static const Widget _vehicle_list_widgets[] = {
 	{   WIDGETS_END},
 };
 
-void DrawSmallOrderList(const Vehicle *v, int x, int y)
+static void DrawSmallOrderList(const Vehicle *v, int x, int y)
 {
 	const Order *order;
 	int sel, i = 0;
@@ -726,6 +727,58 @@ void DrawSmallOrderList(const Vehicle *v, int x, int y)
 	}
 }
 
+static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip)
+{
+	switch (v->type) {
+		case VEH_TRAIN:    DrawTrainImage(v, x, y, selection, count, skip); break;
+		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection, count);     break;
+		case VEH_SHIP:     DrawShipImage(v, x, y, selection);               break;
+		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);           break;
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Draw all the vehicle list items.
+ * @param x the position from where to draw the items.
+ */
+void BaseVehicleListWindow::DrawVehicleListItems(int x)
+{
+	int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
+	uint max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.Length());
+	for (uint i = this->vscroll.pos; i < max; ++i) {
+		const Vehicle *v = this->vehicles[i];
+		StringID str;
+
+		SetDParam(0, v->GetDisplayProfitThisYear());
+		SetDParam(1, v->GetDisplayProfitLastYear());
+
+		DrawVehicleImage(v, x + 19, y + 6, INVALID_VEHICLE, this->widget[VLW_WIDGET_LIST].right - this->widget[VLW_WIDGET_LIST].left - 20, 0);
+		DrawString(x + 19, y + this->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
+
+		if (v->name != NULL) {
+			/* The vehicle got a name so we will print it */
+			SetDParam(0, v->index);
+			DrawString(x + 19, y, STR_01AB, TC_FROMSTRING);
+		}
+
+		if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, y);
+
+		if (v->IsInDepot()) {
+			str = STR_021F;
+		} else {
+			str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
+		}
+
+		SetDParam(0, v->unitnumber);
+		DrawString(x, y + 2, str, TC_FROMSTRING);
+
+		DrawVehicleProfitButton(v, x, y + 13);
+
+		y += this->resize.step_height;
+	}
+}
+
 /**
  * Window for the (old) vehicle listing.
  *
@@ -735,9 +788,9 @@ void DrawSmallOrderList(const Vehicle *v, int x, int y)
  * 11-15 vehicle type (using VEH_, but can be compressed to fewer bytes if needed)
  * 16-31 StationID or OrderID depending on window type (bit 8-10)
  */
-struct VehicleListWindow : public Window, public VehicleListBase {
+struct VehicleListWindow : public BaseVehicleListWindow {
 
-	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
 	{
 		uint16 window_type = this->window_number & VLW_MASK;
 		PlayerID player = (PlayerID)GB(this->window_number, 0, 8);
@@ -872,15 +925,12 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 	virtual void OnPaint()
 	{
 		int x = 2;
-		int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
-		int max;
-		int i;
 		const PlayerID owner = (PlayerID)this->caption_color;
 		const uint16 window_type = this->window_number & VLW_MASK;
 		const uint16 index = GB(this->window_number, 16, 16);
 
-		BuildVehicleList(this, owner, index, window_type);
-		SortVehicleList(this);
+		this->BuildVehicleList(owner, index, window_type);
+		this->SortVehicleList();
 		SetVScrollCount(this, this->vehicles.Length());
 
 		if (this->vehicles.Length() == 0) HideDropDownMenu(this);
@@ -942,38 +992,7 @@ struct VehicleListWindow : public Window, public VehicleListBase {
 		/* draw arrow pointing up/down for ascending/descending sorting */
 		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
-		max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.Length());
-		for (i = this->vscroll.pos; i < max; ++i) {
-			const Vehicle *v = this->vehicles[i];
-			StringID str;
-
-			SetDParam(0, v->GetDisplayProfitThisYear());
-			SetDParam(1, v->GetDisplayProfitLastYear());
-
-			DrawVehicleImage(v, x + 19, y + 6, INVALID_VEHICLE, this->widget[VLW_WIDGET_LIST].right - this->widget[VLW_WIDGET_LIST].left - 20, 0);
-			DrawString(x + 19, y + this->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
-
-			if (v->name != NULL) {
-				/* The vehicle got a name so we will print it */
-				SetDParam(0, v->index);
-				DrawString(x + 19, y, STR_01AB, TC_FROMSTRING);
-			}
-
-			if (this->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, y);
-
-			if (v->IsInDepot()) {
-				str = STR_021F;
-			} else {
-				str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
-			}
-
-			SetDParam(0, v->unitnumber);
-			DrawString(x, y + 2, str, TC_FROMSTRING);
-
-			DrawVehicleProfitButton(v, x, y + 13);
-
-			y += this->resize.step_height;
-		}
+		this->DrawVehicleListItems(x);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -2013,17 +2032,6 @@ struct VehicleViewWindow : Window {
 void ShowVehicleViewWindow(const Vehicle *v)
 {
 	AllocateWindowDescFront<VehicleViewWindow>((v->type == VEH_TRAIN) ? &_train_view_desc : &_vehicle_view_desc, v->index);
-}
-
-void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip)
-{
-	switch (v->type) {
-		case VEH_TRAIN:    DrawTrainImage(v, x, y, selection, count, skip); break;
-		case VEH_ROAD:     DrawRoadVehImage(v, x, y, selection, count);     break;
-		case VEH_SHIP:     DrawShipImage(v, x, y, selection);               break;
-		case VEH_AIRCRAFT: DrawAircraftImage(v, x, y, selection);           break;
-		default: NOT_REACHED();
-	}
 }
 
 void StopGlobalFollowVehicle(const Vehicle *v)

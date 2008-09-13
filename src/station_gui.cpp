@@ -27,6 +27,7 @@
 #include "newgrf_cargo.h"
 #include "string_func.h"
 #include "player_base.h"
+#include "sortlist_type.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"

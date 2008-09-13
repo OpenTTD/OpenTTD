@@ -5,7 +5,6 @@
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 
-#include "sortlist_type.h"
 #include "window_type.h"
 #include "vehicle_type.h"
 #include "order_type.h"
@@ -34,14 +33,6 @@ enum VehicleViewWindowWidgets {
 	VVW_WIDGET_RESIZE,
 	VVW_WIDGET_TURN_AROUND,
 	VVW_WIDGET_FORCE_PROCEED,
-};
-
-/** Start of functions regarding vehicle list windows */
-enum {
-	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
-	PLY_WND_PRC__SIZE_OF_ROW_TINY  = 13,
-	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,
-	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 39,
 };
 
 /** Vehicle List Window type flags */
@@ -78,10 +69,6 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type);
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID station);
 void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex depot_tile);
 
-void DrawSmallOrderList(const Vehicle *v, int x, int y);
-
-void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection, int count, int skip);
-
 
 /* ChangeVehicleViewWindow() moves all windows for one vehicle to another vehicle.
  * For ease of use it can be called with both Vehicle pointers and VehicleIDs. */
@@ -112,34 +99,5 @@ static inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
 void ShowVehicleViewWindow(const Vehicle *v);
 
 Vehicle *CheckClickOnVehicle(const struct ViewPort *vp, int x, int y);
-
-typedef GUIList<const Vehicle*> GUIVehicleList;
-
-struct VehicleListBase {
-	GUIVehicleList vehicles;  ///< The list of vehicles
-	Listing *sorting;         ///< Pointer to the vehicle type related sorting.
-	VehicleType vehicle_type; ///< The vehicle type that is sorted
-
-	static const StringID vehicle_sorter_names[];
-	static GUIVehicleList::SortFunction *const vehicle_sorter_funcs[];
-
-	VehicleListBase()
-	{
-		this->vehicles.SetSortFuncs(this->vehicle_sorter_funcs);
-	}
-};
-
-struct Sorting {
-	Listing aircraft;
-	Listing roadveh;
-	Listing ship;
-	Listing train;
-};
-
-extern Sorting _sorting;
-
-/* sorter stuff */
-void SortVehicleList(VehicleListBase *vl);
-void BuildVehicleList(VehicleListBase *vl, PlayerID owner, uint16 index, uint16 window_type);
 
 #endif /* VEHICLE_GUI_H */

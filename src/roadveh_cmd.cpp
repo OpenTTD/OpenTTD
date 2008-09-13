@@ -43,6 +43,7 @@
 #include "depot_base.h"
 #include "depot_func.h"
 #include "effectvehicle_func.h"
+#include "core/alloc_func.hpp"
 
 #include "table/strings.h"
 
