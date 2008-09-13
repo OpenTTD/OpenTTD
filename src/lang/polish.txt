@@ -17,6 +17,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Wymagany płaski teren
 STR_0008_WAITING                                                :{BLACK}Czeka: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} skierowany z {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akceptuje: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Akceptuje: {GOLD}
 STR_000E                                                        :
@@ -811,6 +812,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umieść
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umieść nadajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definiuj obszar pustyni.{}Wciśnij i trzymaj CTRL by usunąć
 STR_CREATE_LAKE                                                 :{BLACK}Stwórz akwen wodny.{}Tworzy kanał, chyba że przyrzymany jest CTRL na poziomie morza, wtedy pobliski teren zostanie zatopiony
+STR_CREATE_RIVER                                                :{BLACK}Umieszczanie rzek.
 STR_0290_DELETE                                                 :{BLACK}Skasuj
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto
 STR_0292_SAVE_SCENARIO                                          :Zapisz scenariusz
@@ -1288,6 +1290,14 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmiana wartości
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Niektóre lub wszystkie domyślne okresy między serwisowania są sprzeczne z wybranymi! 5-90% i 30-800 dni są poprawne
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Rekomendowane)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orginalne {BLUE}(Rekomendowane)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nie rekomendowane)
 STR_TEMPERATE_LANDSCAPE                                         :Krajobraz umiarkowany
 STR_SUB_ARCTIC_LANDSCAPE                                        :Krajobraz arktyczny
 STR_SUB_TROPICAL_LANDSCAPE                                      :Krajobraz tropikalny
@@ -2813,9 +2823,9 @@ STR_8825_NON_STOP                                               :{BLACK}Non-Stop
 STR_8826_GO_TO                                                  :{BLACK}Idź do
 STR_8827_FULL_LOAD                                              :{BLACK}Załadunek
 STR_8828_UNLOAD                                                 :{BLACK}Wyładunek
-STR_REFIT                                                       :{BLACK}Przebuduj
-STR_REFIT_TIP                                                   :{BLACK}Wybierz do przewozu jakiego ładunku przebudować pojazd w tym zadaniu. CTRL+klik usuwa polecenie przebudowy
-STR_REFIT_ORDER                                                 :(Przebuduj na {STRING})
+STR_REFIT                                                       :{BLACK}Przeksztalc
+STR_REFIT_TIP                                                   :{BLACK}Wybierz typ ladunku do przeksztalcenia. Klikniecie z CTRL usuwa zmiane
+STR_REFIT_ORDER                                                 :(Przeksztalc na {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
@@ -2904,7 +2914,7 @@ STR_RESET_LATENESS                                              :{BLACK}Wyzeruj 
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
 STR_TRAIN_STOPPING_VEL                                          :{RED}Hamowanie, {VELOCITY}
-STR_INCOMPATIBLE_RAIL_TYPES                                     :Niezgodne typy szyn
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Niezgodne typy torów
 STR_TRAIN_NO_POWER                                              :{RED}Brak zasilania
 STR_TRAIN_START_NO_CATENARY                                     :Ta trasa nie jest zelektryfikowana, wiec pociąg nie wystartuje
 

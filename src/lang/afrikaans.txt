@@ -586,6 +586,9 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongeluk
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Maatskappy informasie
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Oop / sluiting van nywerhede
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomie veranderings
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produksie veranderings van nywerhede wat by die speler bedien word
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksie veranderings van nywerhede wat deur mededingers bedien word
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Ander nywerheid produksie veranderings
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Raad / informasie op speler se voertuie
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuwe voertuie
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Veranderings na vrag aanvarde
@@ -930,6 +933,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Kies die
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Volskerm
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Kies die blokkie om OpenTTD in volleskerm te speel
+STR_FULLSCREEN_FAILED                                           :{WHITE}Volskerm metode gedop
 
 STR_OPTIONS_RES                                                 :{BLACK}Skerm resolusie
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1689,6 +1693,7 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebou moet eers afgebreek word
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populasie: {ORANGE}{COMMA}{BLACK}  Huise: {ORANGE}{COMMA}
@@ -2293,6 +2298,9 @@ STR_RELOCATE_HQ                                                 :{BLACK}Beweeg H
 STR_COMPANY_PASSWORD                                            :{BLACK}Wagwoord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Wagwoord-beskerm jou maatskappy om onmagtig gebruikers te belet van verbinding
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Stel maatskappy wagwoord
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gee die maatskappy die nuwe wagwoord
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Maatskappy wagwoord
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}W�eld Insinking!{}{}Finansieel eksperte vrees ergste as ekonomie inmekaar sak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Insinking Oor!{}{}Oplewing in sake gee vertroue na nywerhede as ekonomie versterk!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Tokkel groot/klein venster groote

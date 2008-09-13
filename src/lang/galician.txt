@@ -155,6 +155,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcións da Partida
 STR_00B2_MESSAGE                                                :{YELLOW}Mensaxe
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mensaxe de {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}¡Atención!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Non podes facer eso....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Non podes limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Orixinal {COPYRIGHT} 1995 Chris Sawyer, Tódolos dereitos reservados
@@ -336,6 +337,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton. forza
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -371,13 +373,15 @@ STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Beneficio último ano
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Beneficio este ano
 STR_SORT_BY_AGE                                                 :Idade
-STR_SORT_BY_RELIABILITY                                         :Rendibilidade
+STR_SORT_BY_RELIABILITY                                         :Fiabilidade
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade total por tipo de carga
 STR_SORT_BY_MAX_SPEED                                           :Velocidade Máxima
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Valor da carga en espera
+STR_SORT_BY_RATING_MAX                                          :Puntuación da carga
+STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (ordeación clásica)
 STR_ENGINE_SORT_COST                                            :Coste
 STR_ENGINE_SORT_POWER                                           :Potencia
 STR_ENGINE_SORT_INTRO_DATE                                      :Data de Presentación
@@ -386,16 +390,20 @@ STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Coste 
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade De Carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Non queda ningún tipo de carga en espera
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar tódolos edificios
+STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar tódolos tipos de carga (incluso os que non están a esperar)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Trens Dispoñibles
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Vehículos Dispoñibles
 STR_AVAILABLE_SHIPS                                             :{BLACK}Barcos Dispoñibles
 STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Aeronaves Dispoñibles
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Ve-la lista das máquinas dispoñibles para este tipo de vehículo.
 STR_MANAGE_LIST                                                 :{BLACK}Xestionar lista
+STR_MANAGE_LIST_TIP                                             :{BLACK}Envia-las instruccións a tódolos vehículos desta lista
 STR_REPLACE_VEHICLES                                            :Reemplazar Vehículos
 STR_SEND_TRAIN_TO_DEPOT                                         :Enviar ó Depósito
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar ó Depósito
 STR_SEND_SHIP_TO_DEPOT                                          :Enviar ó Depósito
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Enviar ó Hangar
+STR_SEND_FOR_SERVICING                                          :Enviar para Servicio
 
 ############ range for months starts
 STR_0162_JAN                                                    :Xan
@@ -428,7 +436,7 @@ STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Amosa-la
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Amosa-la lista dos trens da compañía
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Amosa-la lista dos vehículos de estrada da compañía
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Amosa-la lista dos barcos da compañía
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Amosa-la lista das aeronaves da compañía
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Amosa-la lista dos avións da compañía
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Achega-la vista
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Alonxa-la vista
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Construír elementos do ferrocarril
@@ -445,6 +453,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Pechar f
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Título da fiestra - arrástrao para move-la fiestra
 STR_STICKY_BUTTON                                               :{BLACK}Marcar esta fiestra coma non pechable pola tecla de 'Pechar tódalas fiestras'
 STR_RESIZE_BUTTON                                               :{BLACK}Pincha e arrastra para redimensiona-la fiestra
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Pincha aquí para ir o directorio por defecto actual para grabar/cargar
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demoler edificios, etc. nun cadrado de terreo
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Baixar unha esquina de terreo
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Elevar unha esquina de terreo
@@ -561,6 +570,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Seleccio
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Limpa-lo programa actual(Só Persoalizado 1 e Persoalizado 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Graba-la configuración da música
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Pincha nunha pista de música para engadi-la ó programa actual(Sólo Persoal 1 e Persoal 2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Pincha na pista de música para borrala do programa actual (Só Persoal1 ou Persoal2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Activar/desactivar programa aleatorio
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Mostra-la pista musical na fiestra de selección
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Pincha no servicio para centra-la vista na industria/cidade
@@ -577,6 +587,9 @@ STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidentes / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Información da compañía
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambios económicos
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Cambios na producción das industrias servidas polo xogador
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Cambios na producción das industrias servidas polos competidores
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Cambios de producción doutras industrias
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Consellos/información sobre os teus vehículos
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Novos vehículos
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Cambios na admisión de carga
@@ -609,7 +622,9 @@ STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumenta-
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Disminuí-lo tamaño de terreo a baixar/subir
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Xerar terreo aleatorio
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reiniciar paisaxe
-STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reiniciar paisaxe
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reiniciar Paisaxe
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Quitar tódalas propiedades do xogador do mapa
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}¿Estás seguro de querer quitar tódalas propiedades do xogador?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Xeración de paisaxe
 STR_022F_TOWN_GENERATION                                        :{BLACK}Xeración de cidades
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Xeración de industrias
@@ -700,7 +715,7 @@ STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Constru�
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Construír Mina de Azucre
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Non se pode construír {STRING} aquí...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...debes construír unha cidade primeiro
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...soamente se permite un por cidade
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...só se permite un por cidade
 STR_0288_PLANT_TREES                                            :{BLACK}Plantar árbores
 STR_0289_PLACE_SIGN                                             :{BLACK}Colocar sinal
 STR_028A_RANDOM_TREES                                           :{BLACK}Árbores aleatorias
@@ -709,10 +724,13 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Colocar 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Colocar faro
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Colocar transmisor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definir área de deserto.{}Presiona Control para borrala
+STR_CREATE_LAKE                                                 :{BLACK}Define a área de auga.{}Fai un canal, a non ser que manteñas pulsado CTRL ó nivel do mar, entonces inundaránse os arredores do lugar
+STR_CREATE_RIVER                                                :{BLACK}Colocar ríos.
 STR_0290_DELETE                                                 :{BLACK}Borrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Borrar completamente esta cidade
 STR_0292_SAVE_SCENARIO                                          :Grabar Escenario
 STR_0293_LOAD_SCENARIO                                          :Cargar Escenario
+STR_MENU_LOAD_HEIGHTMAP                                         :Cargar mapa de altura
 STR_0294_QUIT_EDITOR                                            :Saír do editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Saír
@@ -720,6 +738,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Grabar e
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Cargar Escenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Grabar Escenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Xogar Escenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Xogar Mapa De Altitude
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Comezar una nova partida, usando un mapa de altura coma paisaxe
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}¿Estás seguro de que desexas saír deste escenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Saír do Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...só se pode construír en cidades con polo menos 1200 hab.
@@ -787,6 +807,7 @@ STR_TOWN_POPULATION                                             :{BLACK}Poboaci�
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar a vista
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copia a sitaución da vista global nesta vista
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Pegar desde punto de vista
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pega a situación desta vista na vista global
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unidades monetarias
@@ -897,7 +918,7 @@ STR_CURR_ISK                                                    :Corona Islandes
 STR_CURR_ITL                                                    :Lira Italiana (ITL)
 STR_CURR_NLG                                                    :Florín Holandés (NLG)
 STR_CURR_NOK                                                    :Corona Norueguesa (NOK)
-STR_CURR_PLN                                                    :Złoty Polaco (PLN)
+STR_CURR_PLN                                                    :Zloty Polaco (PLN)
 STR_CURR_ROL                                                    :Leu Rumano (ROL)
 STR_CURR_RUR                                                    :Rublo Ruso (RUR)
 STR_CURR_SIT                                                    :Tolar Esloveno (SIT)
@@ -914,6 +935,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Seleccio
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Pantalla Completa
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Marca nesta caixa para xogar a OpenTTD en modo de pantalla completa
+STR_FULLSCREEN_FAILED                                           :{WHITE}O modo de pantalla completa fallou
 
 STR_OPTIONS_RES                                                 :{BLACK}Resolución da pantalla
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -977,10 +999,10 @@ STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}O barco 
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}O barco {COMMA} ten unha orde inválida
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}O barco {COMMA} ten ordes duplicadas
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}O Barco {COMMA} ten unha estación non válida nas ordes
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}A aeronave {COMMA} ten moi poucas ordes no seu programa
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}A aeronave {COMMA} ten unha orde inválida
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}A aeronave {COMMA} ten ordes duplicadas
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}A aeronave {COMMA} ten unha estación non válida nas ordes
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}O avión {COMMA} ten moi poucas ordes no seu programa
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}O avión {COMMA} ten unha orde nula
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}O avión {COMMA} ten ordes duplicadas
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}O avión {COMMA} ten unha estación non válida nas ordes
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenovación fallida para o tren {COMMA} (límite de diñeiro)
@@ -1009,6 +1031,9 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflaci
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Descarga-la carga só cando haxa demanda: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permiti-la construcción de pontes moi longas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Permiti-las ordes de ir ó depósito: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :ningún
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :coma outras industrias
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :prospección
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Permitir múltiples industrias similares en cada cidade: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Permiti-la construcción de industrias iguais cercanas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostrar sempre a data longa na barra de estado: {ORANGE}{STRING}
@@ -1019,6 +1044,7 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cola pa
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Desplaza-la fiestra cando o ratón esté no borde: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permiti-la chantaxe as autoridades locales: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacións non uniformes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permiti-la construcción de estacións contiguas: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1039,24 +1065,42 @@ STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Xerador
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Orixinal
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da liña de neve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Moi Chairo
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Chairo
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Escabroso
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Moi Escabroso
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritmo de colocación de árbores: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ningún
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Orixinal
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Mellorado
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Esquerda
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dereita
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Face-lo servicio os helicópteros no heliporto automáticam.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverti-la dirección de desplazamento: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ningunha
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propia Compañía
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tódalas compañías
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom no mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Desprazar mapa
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Desconectado
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Apagado
 
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Off
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Propia Compañía
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Tódalas compañías
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Non
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Propia compañía
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Tódalas compañías
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Vía Normal
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Vía Electrificada
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monoraíl
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispoñible
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último dispoñible
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Máis usado
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nº máximo de trens por xogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nº máximo de vehículos de estrada por xogador: {ORANGE}{STRING}
@@ -1076,7 +1120,7 @@ STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Intervalo de servicio para os vehículos de estrada: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Intervalo de servicio para os vehículos de estrada: {ORANGE}deshabilitado
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Intervalo de servicio para as aeronaves: {ORANGE}{STRING} días
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de servicio para as aeronaves: {ORANGE}deshabilitado
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de servicio para os avións: {ORANGE}deshabilitado
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalo de servicio para os barcos: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de servicio para os barcos: {ORANGE}deshabilitado
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deshabilita-lo servicio cando as roturas están a ningún: {ORANGE}{STRING}
@@ -1089,6 +1133,8 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Cando se arrastre, colocar siniais cada: {ORANGE}{STRING} cadrado(s)
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :defecto
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :Reixa 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :Reixa 3x3
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posición da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1102,6 +1148,8 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lento
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rápido
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Moi rápido
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporción de pobos que serán cidades: {ORANGE}Ningunha
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Elimina-los elementos absurdos das estradas na construcción
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaz
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcción
@@ -1117,11 +1165,15 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambia-lo valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}¡Algún ou tódolos intervalo(s) de servicio por defecto son incompatibles coa opción elixida! 5-90% e 30-800 días son válidos
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Non recomendado)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recomendado)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Orixinal {RED}(Non recomendado)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recomendado)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orixinal {BLUE}(Recomendado)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Non recomendado)
 
 STR_TEMPERATE_LANDSCAPE                                         :Escenario temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :Escenario sub-ártico
@@ -1191,6 +1243,7 @@ STR_LANDINFO_LOCK                                               :Peche
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...a boia está en uso!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Coordinadas: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Non se pode eliminar parte da estación...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Non se pode converti-lo tipo de vía aí...
@@ -1284,7 +1337,7 @@ STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data ac
 STR_NETWORK_PASSWORD                                            :{SILVER}¡Protexido con clave!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR DESCONECTADO
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVIDOR CHEO
-STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSION INCORRECTA
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIÓN INCORRECTA
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Unirse á partida
 
@@ -1505,7 +1558,9 @@ STR_1004_TOO_HIGH                                               :{WHITE}Demasiad
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Non hay vía de ferrocarril adecuada
 STR_1007_ALREADY_BUILT                                          :{WHITE}...xa está construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Debes elimina-la pista de ferrocarril primeiro
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}A estrada é dun sentido ou está bloqueada
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construcción de Ferrocarrís
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construcción de Vías Electrificadas
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construcción de Monorraíl
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construcción de MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selecciona a Ponte do Ferrocarril
@@ -1517,6 +1572,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Non se p
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Non se pode elimina-los sinais de aí...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orient. do Dep. de Trens
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcción de Ferrocarrís
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Construcción de Vías Electrificadas
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construcción de Monorraíl
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construcción de MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construír vía de ferrocarril
@@ -1534,33 +1590,62 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a ár
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vía de ferrocarril con sinais normais
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vía de ferrocarril con pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vía de ferrocarril con sinais de saída
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía de tren con sinais combo
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vía de tren con sinais normais e presinalización
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vía de tren con sinais normais e de saída
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vía de tren con sinais normais e combo
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vía de tren con presinalización e sinais de saída
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}debes quita-la estación de tren primeiro
 
 
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Debes elimina-la estrada primeiro
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Traballos na estrada en progreso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcción de Estradas
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Construcción de Tranvías
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecciona a Ponte
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... as estradas dun sentido non poden ter cruces
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Non se pode construí-la estrada aí...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Non se pode construír un tranvía aquí...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Non se pode elimina-la estrada aí...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Non se pode quitar o tranvía aquí...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orient. do Depósito
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Orientación do Depósito de Tranvías
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Non se pode construí-lo depósito aí...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Non se pode construír o depósito de tranvías aquí...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Non se pode construí-la estación de autobús...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Non se pode construí-la estacion de camións...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Non se pode construír a estación de tranvía de pasaxeiros...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Non se pode construír a estación de tranvía de carga...
 STR_180A_ROAD_CONSTRUCTION                                      :Construcción de Estrada
+STR_TRAMWAY_CONSTRUCTION                                        :construcción de vías de tranvía
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construír unha sección de estrada
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construír estrada usando o modo Autoestrada
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Construír sección de vía de tranvía
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Construír sección de tranvía usando o modo Autotranvía
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Construír depósito de vehículos de estrada (para construír e dar servicio os vehículos de estrada)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Construír estación de autobús
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Construír bahía de carga de camións
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Construír estación de tranvía de pasaxeiros
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Construír estación de tranvía de carga
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Construír ponte de estrada
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Construír ponte de tranvías
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Construír túnel de estrada
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Construír túnel de tranvías
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Activar/Desactivar estradas dun sentido
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Intecambiar construír/eliminar para construír estradas
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Seleciona-la orientación do depósito de vehículos de estrada
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Selecciona a orientación do depósito de tranvías
 STR_1814_ROAD                                                   :Estrada
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Estrada con iluminación
 STR_1816_TREE_LINED_ROAD                                        :Estrada con árbores
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depósito de vehículos de estrada
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Paso a nivel para estrada/ferrocarril
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Non se pode borrar a estación de autobús...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Non se pode borra-la estación de camións...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Non se pode quita-la estación de tranvía de pasaxeiros...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Non se pode quita-la estación de tranvía de carga...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Cidades
@@ -1727,6 +1812,7 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} agora acepta {STRING} e {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientación da Estación
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientación da Estación
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Orientación Tranvía Pasaxeiros
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Debes demole-la estación de autobús primeiro
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Debes demole-la estación de camións primeiro
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estacións
@@ -1749,7 +1835,7 @@ STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Seleccio
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Estación de ferrocarril
-STR_305F_AIRCRAFT_HANGAR                                        :Hangar de aeronaves
+STR_305F_AIRCRAFT_HANGAR                                        :Hangar de avións
 STR_3060_AIRPORT                                                :Aeroporto
 STR_3061_TRUCK_LOADING_AREA                                     :Área de carga de camións
 STR_3062_BUS_STATION                                            :Estación de autobús
@@ -1777,6 +1863,7 @@ STR_3804_WATER                                                  :Auga
 STR_3805_COAST_OR_RIVERBANK                                     :Costa ou beiramar
 STR_3806_SHIP_DEPOT                                             :Depósito de barcos
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Non se pode construír na auga
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Debes demole-lo canal primeiro
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Grabar Partida
@@ -1784,11 +1871,15 @@ STR_4001_LOAD_GAME                                              :{WHITE}Cargar P
 STR_4002_SAVE                                                   :{BLACK}Grabar
 STR_4003_DELETE                                                 :{BLACK}Borrar
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} libres
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} libre{P "" s}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}No se pode lee-la unidade
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Grabación da partida fallida{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Non se pode borra-lo arquivo
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Carga da partida fallida{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Erro interno: {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A partida grabouse cunha versión máis nova do xogo
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ficheiro ilexible
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Non se pode escribir no ficheiro
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de unidades, directorios e arquivos de partida
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome seleccionado actualmente para o arquivo
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Borra-lo arquivo que está seleccionado
@@ -1796,6 +1887,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salva-la
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecciona o tipo de partida a empezar
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecciona escenario(verde), partida pre-configurada (azul), ou partida aleatoria
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Xerar unha nova partida aleatoriamente
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Cargar Mapa de Altitude
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} no camiño
@@ -1879,6 +1971,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Non se p
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Debes demole-lo túnel primeiro
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Debes demole-la ponte primeiro
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Non pode empezar e rematar na mesma posición
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Os comezos da ponte non están o mesmo nivel
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}O inicio e o final deben estar aliñados
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Emprazamento inadecuado para a entrada do túnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -1999,6 +2092,7 @@ STR_CITY_APPROVAL                                               :{LTBLUE}Actitud
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Ningún
+STR_NUM_VERY_LOW                                                :Moi baixo
 STR_6816_LOW                                                    :Baixo
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alto
@@ -2170,6 +2264,7 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} comprada por  {COMPANY}!
 STR_PROTECTED                                                   :{WHITE}Esta compañía todavía non comercia con accións...
 
+STR_LIVERY_DEFAULT                                              :Cor Estándar
 STR_LIVERY_STEAM                                                :Máquina de Vapor
 STR_LIVERY_DIESEL                                               :Máquina Diésel
 STR_LIVERY_ELECTRIC                                             :Máquina Eléctrica
@@ -2180,6 +2275,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagón De Pasaxeiros (Vapor)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón De Pasaxeiros (Diésel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagón De Pasaxeiros (Eléctrico)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Coche de Pasaxeiros (Monoraíl)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Coche de Pasaxeiros (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagón de Carga
 STR_LIVERY_BUS                                                  :Autobús
 STR_LIVERY_TRUCK                                                :Camión
@@ -2188,7 +2285,16 @@ STR_LIVERY_FREIGHT_SHIP                                         :Barco de Carga
 STR_LIVERY_HELICOPTER                                           :Helicóptero
 STR_LIVERY_SMALL_PLANE                                          :Aeronave Pequena
 STR_LIVERY_LARGE_PLANE                                          :Aeronave Grande
+STR_LIVERY_PASSENGER_TRAM                                       :Tranvía de Pasaxeiros
+STR_LIVERY_FREIGHT_TRAM                                         :Tranvía de Carga
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Mostra-los esquemas de cor xerais
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Mostra-los esquemas de cor dos trens
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mostra-los esquemas de cor dos vehículos de estrada
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Mostra-los esquemas de cor dos barcos
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostra-los esquemas de cor dos avións
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Elixe a cor primaria para o esquema seleccionado
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Elixe a cor secundaria para o esquema seleccionado
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
@@ -2451,7 +2557,7 @@ STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Mensaxe 
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Rematamo-lo deseño dun/dunha nov@ {STRING} - ¿Interésache probar este vehículo en exclusiva durante un ano, para comproba-lo seu rendemento antes de facelo dispoñible para todos?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :locomotora de ferrocarril
 STR_8103_ROAD_VEHICLE                                           :vehículo de estrada
-STR_8104_AIRCRAFT                                               :aeronave
+STR_8104_AIRCRAFT                                               :avión
 STR_8105_SHIP                                                   :barco
 STR_8106_MONORAIL_LOCOMOTIVE                                    :locomotora de monoraíl
 STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotora de maglev
@@ -2481,6 +2587,7 @@ STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sen paradas 
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Face-lo servicio sen paradas no Depósito de Trens de {TOWN}
 
 STR_TIMETABLE_DAYS                                              :{COMMA} día{P "" s}
+STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}En camiño ó Depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}En camiño ó Depósito de {TOWN}, {VELOCITY}
@@ -2520,7 +2627,9 @@ STR_8826_GO_TO                                                  :{BLACK}Ir a
 STR_8827_FULL_LOAD                                              :{BLACK}Cargar
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_REFIT                                                       :{BLACK}Reaxustar
+STR_REFIT_ORDER                                                 :(Reaxustar a {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Horario
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Cambiar á vista de horarios
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordes)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin das Ordes - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2537,6 +2646,8 @@ STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Demasiad
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}No se pode inserta-la nova orde...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Non se pode borrar esta orde...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Non se pode modificar esta orde...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Non se pode mover esta orde...
+STR_CAN_T_SKIP_ORDER                                            :{WHITE}Non se pode salta-la orde actual...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}No se pode move-lo vehículo...
 STR_8838_N_A                                                    :N/D{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Non se pode vende-lo vehículo de ferrocarril...
@@ -2573,6 +2684,7 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Facer qu
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insertar unha nova orde despois da seleccionada, o insertar unha nova orde ó final da lista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A orde seleccionada forzará o vehículo a esperar ata que a carga estea completa
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A orde seleccionada forzará o vehículo a descargar
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Horario - pincha nunha orde para seleccionala
 STR_SERVICE_HINT                                                :{BLACK}Saltar esta orde a non ser que sexa necesario o servicio
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Coste: {CURRENCY} Peso: {WEIGHT_S}{}Velocidade: {VELOCITY}  Potencia: {POWER}{}Coste de Mantemento: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Roto
@@ -2605,6 +2717,7 @@ STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}¡Nova {
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Non se pode vender un vehículo destruido...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Non se pode actualizar un vehículo destruido...
 
+STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Non se pode axusta-lo horario do vehículo...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Os vehículos só poden parar nas estacións.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Este vehículo non para nesta estación.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Cambiar Tempo
@@ -2750,8 +2863,8 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Non se p
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Hangar de Aeronaves de {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Aeronave
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar Aeronave
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto construirá una copia da aeronave. CTRL-Click compartirá as ordes
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá unha copia da aeronave. Pincha neste botón e nunha aeronave que estea dentro ou fora do hangar. Control-Click compartirá as ordes
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto construirá una copia do avión. CTRL-Click compartirá as ordes
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá unha copia do avión. Pincha neste botón e nun avión que estea dentro ou fóra do hangar. Control-Click compartirá as ordes
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronave
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construír Aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non se pode construí-lo avíon...
@@ -2764,55 +2877,55 @@ STR_A00E_MAX_SPEED                                              :{BLACK}Velocida
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Roturas dende o último servicio: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non se pode envia-la aeronave ó hangar...
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non se pode envia-lo avión ó hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Diríxese ó hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Diríxese ó hangar de {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Servicio no Hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servicio no Hangar de {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}A aeronave {COMMA} está a esperar no hangar
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}O avión {COMMA} está a esperar no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave no camiño
-STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non se pode parar/arrincar a aeronave...
-STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}A aeronave esta voando
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non se pode parar/arrincar o avión...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}O avión está voando
 STR_A019_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}, {CARGO}
 STR_A01A_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}A aeronave debe estar parada no hangar
-STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Non se pode vende-la aeronave...
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}O avión debe estar parado no hangar
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Non se pode vende-lo avión...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construcción de Aeroporto
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construír aeroporto
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronaves - pincha na aeronave para máis información
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construír nova aeronave (necesitas un aeroporto con hangar)
-STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronaves - pincha na aeronave para máis información
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construír nova aeronave
-STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra a aeronave aquí para vendela
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avións - pincha no avión para máis información
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construír novo avión(necesitas un aeroporto con hangar)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avións - pincha no avión para máis información
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construír novo avión
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra o avión aquí para vendelo
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centra-la vista principal na situación do hangar
-STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista de selección de aeronaves - pincha nunha aeronave para máis información
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construí-la aeronave seleccionada
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Tarefa actual da aeronave - pincha aquí para parar/arrancar a aeronave
-STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra-las ordes da aeronave
-STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra-la vista principal na situación da aeronave
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envia-la aeronave ó hangar
-STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra-los detalles da aeronave
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista de selección de avións - pincha nun avión para máis información
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construí-lo avión seleccionado
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Tarefa actual do avión - pincha aquí para parar/arrincar o avión
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra-las ordes do avión
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra-la vista principal na situación do avión
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envia-lo avión ó hangar
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra-los detalles do avión
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coste: {CURRENCY} Velocidade Máx.: {VELOCITY}{}Capacidade: {COMMA} pasaxeiros, {COMMA} sacos de correo{}Coste de Mantemento: {CURRENCY}/ano
 
-STR_A030_NAME_AIRCRAFT                                          :{WHITE}Cambia-lo nome da aeronave
-STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Non se pode renomea-la aeronave...
-STR_A032_NAME_AIRCRAFT                                          :{BLACK}Cambia-lo nome da aeronave
-STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega a primeira aeronave a {STATION}!
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Cambia-lo nome do avión
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Non se pode renomea-lo avión...
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Cambia-lo nome do avión
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega o primeiro avión a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}¡Accidente Aéreo!{}{COMMA} mortos na bola de lume en {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}¡Accidente de Aeronave!¡A aeronave {} quedou sen combustible, hai {COMMA} mortos na explosión!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}¡Accidente de Avión!¡O avión {} quedou sen combustible, hai {COMMA} mortos na explosión!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Renomear
-STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Renomea-lo tipo de aeronave
-STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Renomea-lo tipo de aeronave
-STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Non se pode renomea-lo tipo de aeronave...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reaxusta-la aeronave para levar un tipo distinto de carga
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Renomea-lo tipo de avión
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Renomea-lo tipo de avión
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Non se pode renomea-lo tipo de avión...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reaxusta-lo avión para levar un tipo distinto de carga
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Reaxustar)
-STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Reaxustar aeronave
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Reaxustar avión
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona o tipo de carga que levará
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reaxusta-la aeronave para levar o tipo de carga seleccionada
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reaxusta-lo avión para levar o tipo de carga seleccionada
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona o tipo de carga a levar:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacidade: {GOLD}{STRING}{}{BLACK}Cose do reaxuste: {GOLD}{CURRENCY}
-STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non se pode reaxusta-la aeronave...
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non se pode reaxusta-lo avión...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir ó hangar de {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Face-lo servicio no hangar de {STATION}
 
@@ -2849,8 +2962,11 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Diñeiro
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Crédito:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Número de vehículos; inclúe camións/buses, trens, barcos e aeronaves
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Número de vehículos; inclúe camións/buses, trens, barcos e avións
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Número de partes de estacións. Cóntase cada parte dunha estación (p.e. tren, autobús, aeroporto), incluso aínda que estén conectadas coma unha estación
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Beneficios do vehículo con menos ingresos (de tódolos vehículos de máis de 2 anos)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Cantidade de diñeiro ganado no mes co beneficio máis baixo nos últimos 12 cuartos
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Cantidade de diñeiro ganado no mes co beneficio máis alto nos últimos 12 cuartos
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Unidades de carga levadas nos últimos catro quartos
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Número de tipos de carga levados no último cuarto
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Cantidade de diñeiro que esta compañía ten no banco
@@ -2874,6 +2990,7 @@ STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Grave: {SI
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{STRING} está deseñado para ser usado con {STRING}
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} debe cargarse antes de {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} debe cargarse despois de {STRING}.
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Cargáronse demasiados NewGRFs.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Engadir
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Engadir un novo arquivo NewGRF á lista
@@ -2885,9 +3002,12 @@ STR_NEWGRF_MOVEDOWN                                             :{BLACK}Baixar
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move-lo arquivo NewGRF seleccionado abaixo na lista
 STR_NEWGRF_FILE_TIP                                             :{BLACK}Lista dos ficheiros NewGRF instalados. Pincha nun ficheiro para cambiar os parámetros
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parámetros: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Introduce os parámetros do NewGRF
 STR_NEWGRF_NO_INFO                                              :{BLACK}Non hai información dispoñible
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Arquivos NewGRF dispoñibles
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Engadir á selección
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Engadi-lo arquivo NewGRF seleccionado a túa configuración
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Actualizar ficheiros
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Actualiza a lista dos ficheiros NewGRF dispoñibles
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Non se pode engadir o ficheiro: ID do GRF duplicado
@@ -2895,6 +3015,7 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Non se p
 STR_NEWGRF_DISABLED                                             :{RED}Desactivado
 
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A partida grabouse nunha versión sen soporte para tranvías. Quitáronse tódolos tranvías.
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda persoalizada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de cambio: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separador:
@@ -2918,7 +3039,7 @@ STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Mostrar tódolos trens que teñen esta estación nas súas ordes
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar tódolos vehículos de estrada que teñen esta estación nas súas ordes
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar tódalas aeronaves que teñen esta estación nas súas ordes
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar tódolos avións que teñen esta estación nas súas ordes
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tódolos vehículos que comparten esta planificación
@@ -2930,16 +3051,17 @@ STR_DEPOT_WRONG_DEPOT_TYPE                                      :Tipo de depósi
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender tódolos trens do depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender tódolos vehículos que hai no depósito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender tódolos barcos no depósito
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender tódalas aeronaves do hangar
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender tódolos avións do hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter a lista de tódolos trens co depósito actual nas súas ordes
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter a lista de tódolos vehículos de estrada co depósito actual nas súas ordes
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obter a lista de tódolos barcos co depósito actual nas súas ordes
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obter una lista de tódolos avións con algún hangar deste aeroporto nas súas ordes
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorreemprazar tódolos trens no depósito
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autorreemprazar tódolos vehículos no depósito
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autorreemprazar tódolos barcos no depósito
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autorreemprazar tódolas aeronaves no hangar
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autorreemprazar tódolos avións no hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
@@ -2963,12 +3085,12 @@ STR_WAGONS                                                      :Vagóns
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pincha para parar tódolos trens que hai no depósito
 STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pincha para parar tódolos vehículos que hai no depósito
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pincha para parar tódolos barcos que hai no depósito
-STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pincha para parar tódalas aeronaves que hai no hangar
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pincha para parar tódolos avións que hai no hangar
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pincha para iniciar tódolos trens que hai no depósito
 STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Pincha para iniciar tódolos vehículos que hai no depósito
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Pincha para iniciar tódolos barcos que hai no depósito
-STR_MASS_START_HANGAR_TIP                                       :{BLACK}Pincha para iniciar tódalas aeronaves que hai no hangar
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Pincha para iniciar tódolos avións que hai no hangar
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Pincha para parar tódolos vehículos da lista
 STR_MASS_START_LIST_TIP                                         :{BLACK}Pincha para iniciar tódolos vehículos da lista
@@ -3000,6 +3122,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} pasaxeiros, {COMMA} sacos de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Actualizable a: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Tódolos tipos de carga
 STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 
 STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
@@ -3009,6 +3132,7 @@ STR_NUM_3                                                       :{BLACK}{SKIP}{S
 
 STR_GENERATE                                                    :{WHITE}Xerar
 STR_RANDOM                                                      :{BLACK}Aleatorio
+STR_RANDOM_HELP                                                 :{BLACK}Cambia-la semente aleatoria usada para a Xeración de Terreo
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Xeración do mundo
 STR_RANDOM_SEED                                                 :{BLACK}Semilla Aleatoria:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Pincha para introducir unha semilla
@@ -3026,7 +3150,7 @@ STR_SNOW_LINE_UP                                                :{BLACK}Subir a 
 STR_SNOW_LINE_DOWN                                              :{BLACK}Baixar a altura da liña de neve
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambiar a altura da liña de neve
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambia-lo ano de inicio
-STR_HEIGHTMAP_NAME                                              :{BLACK}Nome do mapa de altitude:
+STR_HEIGHTMAP_NAME                                              :{BLACK}Nome do mapa de altura:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamaño: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Xerando mundo...
 STR_GENERATION_ABORT                                            :{BLACK}Cancelar
@@ -3035,6 +3159,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}¿Está
 STR_PROGRESS                                                    :{WHITE}{NUM}% completado
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Xeración do mundo
+STR_TREE_GENERATION                                             :{BLACK}Xeración de árbores
 STR_SETTINGUP_GAME                                              :{BLACK}Configurando partida
 STR_PREPARING_GAME                                              :{BLACK}Preparando partida
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acción cambiou o nivel de dificultade a Personalizado
@@ -3081,6 +3206,7 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transferir Créditos: {LTBLUE}{CURRENCY}
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...esta rúa pertenece á cidade
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Opcións de Transparencia
 STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Habilitar transparencia para as sinais das estacións. CTRL+click para bloquear.
@@ -3089,6 +3215,8 @@ STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Habilita
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Habilitar transparencia para industrias. CTRL+click para bloquear.
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Habilitar transparencia para estacións, depósitos e puntos de ruta. CTRL+click para bloquear.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Habilitar transparencia para pontes. CTRL+click para bloquear.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Habilitar transparencia para estructuras coma faros e antenas. CTRL+click para bloquear.
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Activar transparencia para os indicadores de carga. CTRL+click para bloquear.
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3104,10 +3232,15 @@ STR_GROUP_ALL_TRAINS                                            :Tódolos trens
 STR_GROUP_ALL_ROADS                                             :Tódolos vehículos de estrada
 STR_GROUP_ALL_SHIPS                                             :Tódolos barcos
 STR_GROUP_ALL_AIRCRAFTS                                         :Tódolos avións
+STR_GROUP_DEFAULT_TRAINS                                        :Trens sen agrupar
+STR_GROUP_DEFAULT_ROADS                                         :Vehículos de estrada sen agrupar
+STR_GROUP_DEFAULT_SHIPS                                         :Barcos sen agrupar
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Avións sen agrupar
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :Borrar tódolos vehículos
 
 STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Tren{P "" s}
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Vehículo{P "" s} de Estrada
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Barco{P "" s}
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Aeronave{P "" s}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomear un grupo
@@ -3118,6 +3251,7 @@ STR_GROUP_CAN_T_DELETE                                          :{WHITE}Non se p
 STR_GROUP_CAN_T_RENAME                                          :{WHITE}Non se pode renomear o grupo...
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}Non se pode borrar tódolos vehículos deste grupo...
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}Non se pode engadir o vehículo a este grupo...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}Non se poden engadir vehículos compartidos ó grupo...
 
 STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupos - Pincha nun grupo para ver unha lista dos vehículos deste grupo
 STR_GROUP_CREATE_TIP                                            :{BLACK}Pincha para crear un grupo
@@ -3134,22 +3268,33 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}O nome debe ser único
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ir ó sinal seguinte
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ir ó sinal anterior
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Fundar
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Construír
 
 ############ Face formatting
 STR_FACE_ADVANCED                                               :{BLACK}Avanzado
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Selección avanzada de cara.
 STR_FACE_SIMPLE                                                 :{BLACK}Simple
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Selección simple de cara.
 STR_FACE_LOAD                                                   :{BLACK}Cargar
+STR_FACE_LOAD_TIP                                               :{BLACK}Carga-la cara favorita
+STR_FACE_LOAD_DONE                                              :{WHITE}A túa cara favorita cargouse dende o arquivo de configuración de OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}Nº de cara
 STR_FACE_FACECODE_ERR                                           :{WHITE}¡Non se pode axustar o número da cara - debe estar entre 0 e 4.294.967.295!
 STR_FACE_SAVE                                                   :{BLACK}Grabar
+STR_FACE_SAVE_TIP                                               :{BLACK}Grabar a cara favorita
 STR_FACE_EUROPEAN                                               :{BLACK}Europea
 STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Seleccionar caras europeas
 STR_FACE_AFRICAN                                                :{BLACK}Africana
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Seleccionar caras africanas
 STR_FACE_YES                                                    :Si
 STR_FACE_NO                                                     :Non
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Activar bigote ou pendentes
 STR_FACE_HAIR                                                   :Pelo:
 STR_FACE_HAIR_TIP                                               :{BLACK}Cambiar pelo
 STR_FACE_EYEBROWS                                               :Cellas:
@@ -3176,4 +3321,7 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambia-l
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Selección de Sinais
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuír a densidade de sinais ó arrastrar
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumentar a densidade de sinais ó arrastrar
 ########

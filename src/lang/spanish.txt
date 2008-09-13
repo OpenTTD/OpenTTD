@@ -1332,6 +1332,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nombre de industrias - pulse en el nombre para centrar la vista en él
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...demasiado cercano a otra industria
 
@@ -3131,6 +3132,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Fichero(
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Fichero(s) GRF que faltan
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Quitar la pausa puede hacer que se cierre OpenTTD. No notifique este error.{}¿Desea realmente quitar la pausa?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Problema con el NewGRF '{STRING}' puede causar desincronización o cuelgues
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Cambia la longitud del vehículo para '{1:ENGINE}' cuando no está dentro de un depósito
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tren '{VEHICLE}' perteneciente a '{COMPANY}' tiene una longitud incorrecta. Puede ser debido a problemas con los NewGRF. El juego puede fallar.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El juego ha sido grabado en una versión sin soporte de tranvía. Todos los tranvías serán eliminados.

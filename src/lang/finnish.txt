@@ -586,6 +586,7 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Vahingo
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Yhtiön tiedot
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Avaa / tehtaiden sulkemiset
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Talouden muutokset
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Muita muutoksia tuotannossa
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Neuvoja/tietoja pelaajan ajoneuvoista
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Uudet ajoneuvot
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Rahdin vastaanottamisen muutokset
@@ -721,6 +722,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Sijoita 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sijoita lähetin.
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Määrittele aavikon alue.{}Paina ja pidä pohjassa CTRL-nappia poistaaksesi aavikkoa.
 STR_CREATE_LAKE                                                 :{BLACK}Määrittele vesialue.{}Tee kanava, paitsi jos CTRL on alaspainettuna merenpinnalla. Tällöin meri laajenee ympäristöön.
+STR_CREATE_RIVER                                                :{BLACK}Sijoita jokia.
 STR_0290_DELETE                                                 :{BLACK}Poista
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Poista tämä kaupunki kokonaan.
 STR_0292_SAVE_SCENARIO                                          :Tallenna skenaario
@@ -930,6 +932,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Valitse 
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Koko näyttö
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Laita rasti ruutuun pelataksesi kokoruututilassa.
+STR_FULLSCREEN_FAILED                                           :{WHITE}Täyskuvatila ei toimi
 
 STR_OPTIONS_RES                                                 :{BLACK}Ruudun erottelukyky
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1193,6 +1196,11 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Osa allaolevista oletushuoltoväleistä ei ole yhteensopivia valitun asetuksen kanssa! 5-90{NBSP}% ja 30-800 päivää ovat oikein.
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Suositeltu)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Alkuperäinen {RED}(Ei suositeltu)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ei suositeltu)
 STR_TEMPERATE_LANDSCAPE                                         :lauhkea maasto
 STR_SUB_ARCTIC_LANDSCAPE                                        :pohjoinen maasto
 STR_SUB_TROPICAL_LANDSCAPE                                      :subtrooppinen maasto
@@ -2287,6 +2295,8 @@ STR_RELOCATE_HQ                                                 :{BLACK}Sijoita 
 STR_COMPANY_PASSWORD                                            :{BLACK}Salasana
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Salasanalla voit suojata yhtiösi, jotta kukaan vieras ei pääse liittymään.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Aseta yhtiön salasana
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Yhtiön salasana
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Yhtiön oletussalasana
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Maailmanlaajuinen laskukausi!{}{}Rahoitusasiantuntijat pelkäävät pahinta talouden laskiessa!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Laskukausi ohi!{}{}Kaupankäynnin käänne parempaan lisää luottamusta teollisuuteen talouden vahvistuessa!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Suuri/pieni ikkunan koko
@@ -2312,6 +2322,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Matkustajavaunu (höyry)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Matkustajavaunu (diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Matkustajavaunu (sähkö)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Matkustajavaunu (Yksiraiteinen)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Matkustajavaunu (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Rahtivaunu
 STR_LIVERY_BUS                                                  :Linja-auto
 STR_LIVERY_TRUCK                                                :Kuorma-auto

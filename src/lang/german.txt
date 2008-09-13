@@ -10,7 +10,7 @@
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Zu weit vom Spielfeldrand entfernt
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Zu nahe am Spielfeldrand
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nicht genug Geld - {CURRENCY} erforderlich
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nicht genug Geld - benötigt {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ebenes Land erforderlich
@@ -168,7 +168,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Verlassen
 STR_00C8_YES                                                    :{BLACK}Ja
 STR_00C9_NO                                                     :{BLACK}Nein
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sind Sie sicher, dass Sie das Spiel abbrechen und zu {STRING} zurückkehren wollen?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Das Spiel wirklich abbrechen und zu {STRING} zurückkehren?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -197,7 +197,7 @@ STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Standort
 STR_00E5_CONTOURS                                               :Umrisse
 STR_00E6_VEHICLES                                               :Fahrzeuge
-STR_00E7_INDUSTRIES                                             :Industrie
+STR_00E7_INDUSTRIES                                             :Industrien
 STR_00E8_ROUTES                                                 :Strecken
 STR_00E9_VEGETATION                                             :Vegetation
 STR_00EA_OWNERS                                                 :Eigentümer
@@ -250,7 +250,7 @@ STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFON
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamellgrube
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Zuckerbergwerk
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Bahnhof
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lkw-Ladestation
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}LKW-Ladestation
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Busbahnhof
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Flughafen / Heliport
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Hafen
@@ -360,7 +360,7 @@ STR_ABANDON_GAME_QUERY                                          :{YELLOW}Sind Si
 STR_0161_QUIT_GAME                                              :{WHITE}Spiel beenden
 STR_SORT_ORDER_TIP                                              :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sortierkriterium auswählen
-STR_SORT_BY                                                     :{BLACK}Sortieren nach
+STR_SORT_BY                                                     :{BLACK}Sortieren
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Bevölkerung
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produktion
@@ -433,10 +433,10 @@ STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Firmenfi
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Allgemeine Firmeninformationen anzeigen
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Diagramm anzeigen
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Firmentabelle anzeigen
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zuglisten der Firmen
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zuglisten der Firmen anzeigen
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Fahrzeuglisten der Firmen
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Schiffslisten der Firmen
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Flugzeuglisten der Firmen
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Schiffslisten der Firmen anzeigen
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Flugzeuglisten der Firmen anzeigen
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Ansicht vergrößern (hereinzoomen)
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Ansicht verkleinern (herauszoomen)
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise legen
@@ -473,7 +473,7 @@ STR_AGE                                                         :{COMMA} Jahr{P 
 STR_AGE_RED                                                     :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Fahrzeug
+STR_019C_ROAD_VEHICLE                                           :Straßenfahrzeug
 STR_019D_AIRCRAFT                                               :Flugzeug
 STR_019E_SHIP                                                   :Schiff
 STR_019F_TRAIN                                                  :Zug
@@ -531,13 +531,13 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Akzeptie
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Musikbox
 STR_01D3_SOUND_MUSIC                                            :Sound / Musik
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Zeige Sound- / Musikfenster
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Sound- / Musikfenster anzeigen
 STR_01D5_ALL                                                    :{TINYFONT}Alle
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Traditionell
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Modern
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
-STR_01D9_CUSTOM_1                                               :{TINYFONT}Benutzerdefiniert 1
-STR_01DA_CUSTOM_2                                               :{TINYFONT}Benutzerdefiniert 2
+STR_01D9_CUSTOM_1                                               :{TINYFONT}Benutzerdef. 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}Benutzerdef. 2
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Musiklautstärke
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Soundlautstärke
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
@@ -571,7 +571,7 @@ STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Lösche 
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Musikeinstellungen speichern
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klicke auf den Musiktitel, um ihn in das laufende Programm zu übernehmen (nur für Benutzerdefiniert 1 und 2)
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klicke auf einen Musiktitel, um ihn aus der aktuellen Liste zu entfernen(Custom1 or Custom2 only)
-STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Schalte Programmauswahl an/aus
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Zufällige Wiedergabe an/aus
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Zeige Musiktitelauswahl
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klick auf Dienstleistung scrollt Hauptansicht zur Industrie/Stadt
 STR_01FE_DIFFICULTY                                             :{BLACK}Schwierigkeit ({STRING})
@@ -615,7 +615,7 @@ STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} von {COMPANY} erreicht '{STRING}' Status!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Szenario bearbeiten
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Szenario Editor
 STR_0223_LAND_GENERATION                                        :{WHITE}Land erstellen
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
@@ -1010,7 +1010,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Zug {COM
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Fahrzeug {COMMA} kann nicht erneuert werden (Geld fehlt)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Schiff {COMMA} kann nicht erneuert werden (Geld fehlt)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Flugzeug {COMMA} kann nicht erneuert werden (Geld fehlt)
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Zug {COMMA} nach Erneuerung zu lang
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Zug {COMMA} nach Ersetzung zu lang
 
 STR_CONFIG_PATCHES                                              :{BLACK}Einstellungen der Patches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Einstellungen der Patches
@@ -1035,9 +1035,9 @@ STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Liefere
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erlaube das Bauen von sehr langen Brücken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Erlaube "Gehe zum Depot"-Aufträge im Fahrplan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Methode zum manuellen Bau von Primärindustrien: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :keine
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nicht erlaubt
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wie andere Industrien
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :mit Prospektion
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :durch Prospektion
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Erlaube mehrere gleichartige Industrien pro Stadt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Gleiche Industrien können nahe beieinander gebaut werden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Lange Datumsanzeige in der Statusleiste (links unten): {ORANGE}{STRING}
@@ -1077,8 +1077,8 @@ STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximaler Abstand der Ölraffinerien vom Spielfeldrand: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Schneegrenze auf: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rauheit (nur TerraGenesis): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr sanft
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sanft
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr eben
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Eben
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rauh
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr rauh
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Baumplatzierungsalgorithmus: {ORANGE}{STRING}
@@ -1147,13 +1147,13 @@ STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktivie
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaube KI im Mehrspielermodus (experimentell): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Vorgegebener Wartungsintervall für Züge: {ORANGE}{STRING} Tage
-STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebener Wartungsintervall für Züge: {ORANGE}abgeschaltet
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Vorgegebener Wartungsintervall für Straßenfahrzeuge: {ORANGE}{STRING} Tage
-STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Vorgegebener Wartungsintervall für Fahrzeuge: {ORANGE}abgeschaltet
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Vorgegebenes Wartungsintervall für Fahrzeuge: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Vorgegebener Wartungsintervall für Flugzeuge: {ORANGE}{STRING} Tage
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vorgegebener Wartungsintervall für Flugzeuge: {ORANGE}abgeschaltet
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}{STRING} Tage
-STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}abgeschaltet
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vorgegebenes Wartungsintervall für Schiffe: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Wartung deaktivieren, wenn Pannen abgeschaltet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Berücksichtige Waggonhöchstgeschwindigkeit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Deaktiviere elektrifizierte Strecken: {ORANGE}{STRING}
@@ -1280,7 +1280,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufälli
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zufällige Baumart pflanzen
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kanal kann hier nicht gebaut werden...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Kanalbau.
+STR_BUILD_CANALS_TIP                                            :{BLACK}Kanäle bauen.
 STR_LANDINFO_CANAL                                              :Kanal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Schleuse kann hier nicht gebaut werden...
@@ -1332,6 +1332,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportiert)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportiert)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industrienamen - Klick auf den Namen scrollt Hauptansicht zur Industrie
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zu nah an einer anderen Industrie
 
@@ -1626,7 +1627,7 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Gleise k
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise können nicht abgerissen werden...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Signale können hier nicht entfernt werden...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zugdepotausrichtung
-STR_1015_RAILROAD_CONSTRUCTION                                  :Eisenbahnbau
+STR_1015_RAILROAD_CONSTRUCTION                                  :Gleisbau
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Bau elektrifizierter Strecken
 STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetschwebebahnbau
@@ -1645,13 +1646,13 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...Gelä
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit normalen Signalen
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleise mit Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Vor- und Hauptsignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Haupt- und Ausfahrsignalen
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleise mit normalen und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleis mit normalen und Kombinationssignalen
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Vor- und Ausfahrsignalen
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleise mit Vor-  und Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Gleise mit Ausfahr- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleis mit Vor- und Kombinationssignalen
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Gleis mit Ausfahr- und Kombinationssignalen
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bahnhof muss erst abgerissen werden
 
 
@@ -1716,6 +1717,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Gebäude muss erst abgerissen werden
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Stadt)
 STR_2006_POPULATION                                             :{BLACK}Bevölkerung: {ORANGE}{COMMA}{BLACK}  Häuser: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Stadt umbenennen
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Die Stadt kann nicht umbenannt werden...
@@ -1848,9 +1850,9 @@ STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Flughafe
 
 STR_3030_RENAME_STATION_LOADING                                 :Station/Ladeplatz umbenennen
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Station kann nicht umbenannt werden...
-STR_3032_RATINGS                                                :{BLACK}Einschätzung
+STR_3032_RATINGS                                                :{BLACK}Bewertung
 STR_3033_ACCEPTS                                                :{BLACK}Akzeptiert
-STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Örtliche Bewertung der Transportunternehmen:
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Örtliche Bewertung der Dienstleistungen:
 
 ############ range for rating starts
 STR_3035_APPALLING                                              :Furchtbar
@@ -2134,7 +2136,7 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Speicher
 STR_6801_EASY                                                   :{BLACK}Leicht
 STR_6802_MEDIUM                                                 :{BLACK}Normal
 STR_6803_HARD                                                   :{BLACK}Schwer
-STR_6804_CUSTOM                                                 :{BLACK}Benutzerdefiniert
+STR_6804_CUSTOM                                                 :{BLACK}Individuell
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -2313,8 +2315,8 @@ STR_706F_BUILD_HQ                                               :{BLACK}Firmensi
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Firmensitz bauen / anzeigen
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu.
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Firmensitz kann nicht gebaut werden ...
-STR_7072_VIEW_HQ                                                :{BLACK}Firmensitz anzeigen
-STR_RELOCATE_HQ                                                 :{BLACK}Firmensitz verlegen
+STR_7072_VIEW_HQ                                                :{BLACK}Firmensitz
+STR_RELOCATE_HQ                                                 :{BLACK}verlegen
 STR_COMPANY_PASSWORD                                            :{BLACK}Passwort
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Sie können Ihre Firma mit einem Passwort schützen, sodass nur ausgewählte Spieler beitreten können.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Firmenpasswort setzen
@@ -2368,7 +2370,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Schiffsf
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Flugzeugfarbschema anzeigen
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wähle die Hauptfarbe für das gewählte Schema aus.
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Wähle die Nebenfarbe für das ausgewählte Schema.
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemen(mit STRG+Klick) aus, um diese zu ändern. Klicke in das Kästchen um ein Schema zu aktivieren.
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemen(mit Strg+Klick) aus, um diese zu ändern. Klicke in das Kästchen um ein Schema zu aktivieren.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Dampf)
@@ -2702,7 +2704,7 @@ STR_8820_RENAME                                                 :{BLACK}Umbenenn
 STR_8823_SKIP                                                   :{BLACK}Überspringen
 STR_8824_DELETE                                                 :{BLACK}Löschen
 STR_8825_NON_STOP                                               :{BLACK}ohne Halt
-STR_8826_GO_TO                                                  :{BLACK}Nach
+STR_8826_GO_TO                                                  :{BLACK}Gehe zu
 STR_8827_FULL_LOAD                                              :{BLACK}Beladen
 STR_8828_UNLOAD                                                 :{BLACK}Entladen
 STR_REFIT                                                       :{BLACK}Umrüsten
@@ -2774,8 +2776,8 @@ STR_SERVICE_HINT                                                :{BLACK}Überspr
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: {CURRENCY}   Gewicht: {WEIGHT_S}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY} pro Jahr{}Kapazität: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY} pro Jahr
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Leistung: {LTBLUE}{POWER}{BLACK}  Höchstgeschwindigk.: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S} {BLACK}Leistung: {LTBLUE}{POWER}{BLACK} Höchstgeschw.: {LTBLUE}{VELOCITY} {BLACK}Max. Zugkraft: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Leistung: {LTBLUE}{POWER}{BLACK}  Höchstgeschwindigkeit: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Leistung: {LTBLUE}{POWER}{BLACK}  Geschw.: {LTBLUE}{VELOCITY}  {BLACK}Zugkraft: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Gewinn lfd. Jahr: {LTBLUE}{CURRENCY}  (vergangenes Jahr: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Ausfälle seit letzter Wartung: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Angehalten
@@ -2792,7 +2794,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Zugtyp k
 STR_MAKE_THE_HIGHLIGHTED_ORDER                                  :{BLACK}Beim markierten Eintrag wird die Ladung in den Bahnhof entladen (für späteren Weitertransport)
 STR_TRANSFER                                                    :{BLACK}Umladen
 STR_CLEAR_TIME                                                  :{BLACK}Zeit löschen
-STR_RESET_LATENESS                                              :{BLACK}Verspätungszähler zurücksetzen
+STR_RESET_LATENESS                                              :{BLACK}Verspätung löschen
 
 STR_TRAIN_STOPPING                                              :{RED}Halte an
 STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, {VELOCITY}
@@ -2816,7 +2818,7 @@ STR_TIMETABLE_STATUS_LATE                                       :Dieses Fahrzeug
 STR_TIMETABLE_STATUS_EARLY                                      :Dieses Fahrzeug ist {STRING} zu früh
 STR_TIMETABLE_TOTAL_TIME                                        :Dieser Fahrplan benötigt {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Dieser Fahrplan benötigt mindestens {STRING} (nicht alle geplant)
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autom. ausfüllen
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autom.
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fahrplan automatisch mit den Ergebnissen der ersten Fahrt ergänzen
 
 ##id 0x9000
@@ -3076,7 +3078,7 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Erreicht
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-Einstellungen
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF-Einstellungen
-STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Änderungen anwenden
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Übernehmen
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parameter setzen
 STR_NEWGRF_TIP                                                  :{BLACK}Eine Liste aller NewGRF-Sets, die installiert sind. Per Klick auswählen.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Keine NewGRF-Dateien installiert. Bitte Installationsanleitung im Handbuch nachschlagen.
@@ -3129,6 +3131,10 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Es fehle
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF-Datei(en) fehlen
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das beenden der PAuse kann OpenTTD zum Abstürzen bringen. Bitte sende keine Fehlerberichte bei auftretenden Fehlern. {}Willst du die Pause wirklich beenden?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Zug '{VEHICLE}' der Firma '{COMPANY}' hat eine ungültige Länge. Vermutlich ein NewGRF Problem. Spiel kann desynchronisieren oder abstürzen.
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spiel wurde in einer Version ohne Straßenbahnunterstützung gespeichert. Alle Straßenbahnen wurden entfernt.
 STR_CURRENCY_WINDOW                                             :{WHITE}Eigene Währung
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wechselkurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Trennsymbol:
@@ -3183,8 +3189,8 @@ STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugzeug
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} ersetzen
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung aktivieren
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeugersetzung deaktivieren
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung an
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeugersetzung aus
 STR_NOT_REPLACING                                               :{BLACK}Keine Ersetzung
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Kein Fahrzeug gewählt
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Zu ersetzenden Loktyp auswählen
@@ -3236,7 +3242,7 @@ STR_MAGLEV_VEHICLES                                             :Magnetschwebeba
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Gewicht: {GOLD}{WEIGHT_S}
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschwindigk.: {GOLD}{VELOCITY}{BLACK}   Leistung: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.: {GOLD}{VELOCITY}{BLACK}  Leistung: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriebskosten: {GOLD}{CURRENCY} pro Jahr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{CARGO} {STRING}
@@ -3272,7 +3278,7 @@ STR_HEIGHTMAP_ROTATION                                          :{BLACK}Reliefka
 STR_TERRAIN_TYPE                                                :{BLACK}Landschaftstyp:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Gewässermenge:
 STR_SMOOTHNESS                                                  :{BLACK}Weichheit:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Schneegrenze
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Schneegrenze:
 STR_DATE                                                        :{BLACK}Datum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Städteanzahl:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Industriedichte:
@@ -3356,7 +3362,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Transpar
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Transparenz für Gebäude wie Bahnhöfe, Depots, Wegpunkte und Oberleitung einstellen
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Transparenz für Brücken einstellen
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Transparenz für Bauten wie Leuchttürme und Antennen, evtl. in der Zukunft auch für Sehenswürdigkeiten, einstellen
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparente Oberleitungen. Strg.+klick zum feststellen.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Transparente Oberleitungen. Strg+Klick zum feststellen.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparenz für Ladestandsanzeige einstellen
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
@@ -3429,7 +3435,7 @@ STR_FACE_SIMPLE_TIP                                             :{BLACK}Einfache
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TIP                                               :{BLACK}Lade bevorzugtes Gesicht
 STR_FACE_LOAD_DONE                                              :{WHITE}Dein bevorzugtes Gesicht wurde aus der OpenTTD-Konfigurationsdatei geladen.
-STR_FACE_FACECODE                                               :{BLACK}Nummer des Gesichts
+STR_FACE_FACECODE                                               :{BLACK}Gesichtsnummer
 STR_FACE_FACECODE_TIP                                           :{BLACK}Betrachte / Setze Nummer des Gesichts
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Betrachte / Setze Nummer des Gesichts
 STR_FACE_FACECODE_SET                                           :{WHITE}Neue Nummer wurde für das Gesicht registriert.
@@ -3445,7 +3451,7 @@ STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nein
 STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Erlaube Schnauzbart oder Ohrring
 STR_FACE_HAIR                                                   :Frisur:
-STR_FACE_HAIR_TIP                                               :{BLACK}Frisur
+STR_FACE_HAIR_TIP                                               :{BLACK}Frisur ändern
 STR_FACE_EYEBROWS                                               :Augenbrauen:
 STR_FACE_EYEBROWS_TIP                                           :{BLACK}Augenbrauen ändern
 STR_FACE_EYECOLOUR                                              :Augenfarbe:
@@ -3480,7 +3486,7 @@ STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standard
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein normales Signal, gibt jedoch das Signal an Einfahr- und Combosignale im vorherliegenden Block weiter.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combosignal (Lichtsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg.+Klicken ändert die bestehende Bauform.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Signalabstand erhöhen

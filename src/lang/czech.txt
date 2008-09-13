@@ -521,7 +521,7 @@ STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Zobrazit
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Zobrazit na mapě průmysl
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Zobrazit na mapě dopravní cesty
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Zobrazit na mapě vegetaci
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Zobrazit na mapě vlastníky půdy
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Zobrazit na mapě vlastníky pozemků
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Zobrazovat na mapě jména měst
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Zisk tento rok: {CURRENCY} (minulý rok: {CURRENCY})
 
@@ -618,13 +618,13 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Vymazat
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Uložit
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Momentální program skladeb
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Současný program skladeb
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Zvolit program 'všechny skladby'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Zvolit program 'staré skladby'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Zvolit program 'nové skladby'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Zvolit program 'Volba 1' (uživatelsky nastavený)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Zvolit program 'Volba 2' (uživatelsky nastavený)
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Vymaž aktuální program (jen u Volby 1 a 2)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Vyprázdnit současný program (jen u Voleb 1 a 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Uložit nastavení hudby
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Skladba se přidá do zvoleného programu (Volba 1 nebo 2) klepnutím na její název
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Hudební stopu odstraníš ze současného programu (pouze u vlastního) kliknutím na ni
@@ -797,7 +797,7 @@ STR_0298_LOAD_SCENARIO                                          :{WHITE}Otevří
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Uložit mapu
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Hrát mapu
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Hrát z výškové mapy
-STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Začne novou hru s použitím výškové mapy k vytvoření krajiny
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Začít novou hru s krajinou vytvořenou z výškové mapy
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Určite chceš opustit toto mapu?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Ukončit editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... může být budováno jen ve městech s populací 1200 lidí a více
@@ -821,7 +821,7 @@ STR_02BB_TOWN_DIRECTORY                                         :Seznam měst
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Názvy dopravních prostředků
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Základní
-STR_02BF_CUSTOM                                                 :Uživatelské
+STR_02BF_CUSTOM                                                 :Vlastní
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Uložit vlastní jména
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Výběr názvů dopravních prostředků
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Uložit uživatelské názvy dopravních prostředků na disk
@@ -831,13 +831,13 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C4_GAME_OPTIONS                                           :Možnosti hry
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavení obtížnosti
 STR_MENU_CONFIG_PATCHES                                         :Nastavení patchů
-STR_NEWGRF_SETTINGS                                             :Nastavení newgrf
+STR_NEWGRF_SETTINGS                                             :Nastavení grafik
 STR_TRANSPARENCY_OPTIONS                                        :Nastavení průhlednosti
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Zobrazení jmen měst
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Zobrazení jmen stanic
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Zobrazení popisku
-STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Zobrazení kontrolních bodů
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Zobrazení směrování
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plné animace
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plné detaily
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Průhledné budovy
@@ -868,10 +868,10 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Nastavit
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Přejít na pohled
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit pohled do zorného pole
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Jednotky měny
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Měna
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Výběr jednotek měny
-STR_MEASURING_UNITS                                             :{BLACK}Jednotky vzdálenosti
+STR_MEASURING_UNITS                                             :{BLACK}Jednotka vzdálenosti
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Výběr jednotek vzdálenosti
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Silniční vozidla jezdí
@@ -890,14 +890,14 @@ STR_02F7_OFF                                                    :Vypnuto
 STR_02F8_EVERY_3_MONTHS                                         :Každé 3 měsíce
 STR_02F9_EVERY_6_MONTHS                                         :Každých 6 měsíců
 STR_02FA_EVERY_12_MONTHS                                        :Každých 12 měsíců
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Založit novou hru
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Hrát novou hru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrát hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvořit vlastní mapu - scénář
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vybrat hru pro jednoho hráče
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vyberte hru pro 2-8 hráčů
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Hrát ve 2-8 hráčích
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Zobrazit možnosti hry
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Zobrazit nastavení obtížnosti
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Založit novou hru, použít scénář
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Nastavit obtížnost
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Hrát novou hru ze scénáře
 STR_0304_QUIT                                                   :{BLACK}Ukončit
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Ukončit 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
@@ -918,13 +918,13 @@ STR_JUST_STRING                                                 :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... může být budováno jen ve městech
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... může být budováno jen v pralesech
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}... může být budováno jen na pouštích
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}... může být budováno jen v poušti
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUZA  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot úspěšně uložen jako '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot neuložen!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Zakoupit zemi pro budoucí užití
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Zakoupit pozemek pro budoucí užití
 STR_032F_AUTOSAVE                                               :{RED}Automatické ukládání
 STR_SAVING_GAME                                                 :{RED}*  *  UKLÁDÁ SE HRA  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Ukládání ještě běží,{}počkej prosím, než doběhne!
@@ -1300,22 +1300,22 @@ STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Míří
 STR_GO_TO_WAYPOINT                                              :Jet přes {WAYPOINT}
 STR_GO_NON_STOP_TO_WAYPOINT                                     :Jet bez zastávky přes {WAYPOINT}
 
-STR_WAYPOINTNAME_CITY                                           :Kontrolní bod {TOWN}
-STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrolní bod {TOWN} #{COMMA}
-STR_LANDINFO_WAYPOINT                                           :Kontrolní bod
+STR_WAYPOINTNAME_CITY                                           :Směrování {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Směrování {TOWN} č. {COMMA}
+STR_LANDINFO_WAYPOINT                                           :Směrování
 
-STR_WAYPOINT                                                    :{WHITE}Kontrolní bod
-STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ kontrolního bodu
+STR_WAYPOINT                                                    :{WHITE}Směrování
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ směrování
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Změnit jméno kontrolního bodu
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Přejmenovat směrování
 
-STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nemohu změnit jméno kontrolního bodu...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Změnit koleje v kontrolní bod
-STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Nemohu zde vybudovat kontrolní bod...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Nemohu zde zrušit kontrolní bod...
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nemohu přejmenovat směrování...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Postavit na trati směrování
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Zde nelze postavit směrování...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Zde nelze zbourat směrování...
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budovat koleje použitím režimu Autokoleje
 
@@ -1389,6 +1389,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Průmysl
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA} % přepraveno)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA} %/{COMMA} % přepraveno)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Názvy průmyslu - na průmysl se podíváš kliknutím na jeho jméno
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... příliš blízko k jinému průmyslu
 
@@ -1414,7 +1415,7 @@ STR_NETWORK_CONNECTION                                          :{BLACK}Připoje
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Vyber si mezi hrou na internetu nebo v místní síti
 
 STR_NETWORK_START_SERVER                                        :{BLACK}Spustit server
-STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Spustí tvůj vlastní server
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Spustit vlastní server
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Název
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Název hry
@@ -1429,7 +1430,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Vlož IP
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Hráčů
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Hráčů online / maximálně
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Hráčů on-line / nejvíce{}Společností on-line / nejvíce
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O HŘE
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Klientů:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1439,7 +1440,7 @@ STR_NETWORK_MAP_SIZE                                            :{SILVER}Velikos
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verze hry na serveru:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa serveru:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Počáteční datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_CURRENT_DATE                                        :{SILVER}Momentální datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Současné datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Chráněno heslem!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER JE OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER JE PLNÝ
@@ -1452,19 +1453,19 @@ STR_NETWORK_JOIN_GAME                                           :{BLACK}Přidat 
 STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Začít novou hru
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Jméno hry:
-STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Jméno hry se zobrazí ostatním hráčům v menu, kde si vybírají sitovou hru
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Jméno hry se zobrazí ostatním hráčům v nabídce síťové hry
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nastavit heslo
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Svoji hru si můžeš ochránit heslem, když nechceš, aby se ti do ni hlásili jiní lidé
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Ve které mapě si chceš zahrát?
 STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
-STR_NETWORK_INTERNET                                            :Internet
-STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
-STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznámit)
+STR_NETWORK_INTERNET                                            :internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :internet (zveřejnit)
 STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P "" i ů}
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximální počet hráčů:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Zvol maximální počet hráčů. Může se jich připojit i méně.
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Nejvyšší počet hráčů:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Zvol nejvyšší počet hráčů. Může se jich připojit i méně.
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} společnost{P "" i í}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximální počet společností:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Omezit serverem počet společností
@@ -1511,7 +1512,7 @@ STR_NETWORK_LANG_TURKISH                                        :turečtina
 STR_NETWORK_LANG_UKRAINIAN                                      :ukrajinština
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Vstupní místnost do multiplayerové hry
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Vstupní místnost do hry více hráčů
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Připravuji se na vstoupení:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Současný seznam všech společností v této hře. Buď můžeš do jedné vstoupit, nebo můžeš založit novou.
@@ -1563,7 +1564,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam h
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Žádná síťová zařízení nebyla nalezena (nebo je hra zkompilována bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nenalezena žádná síťová hra
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} Server neodpověděl na požadavek
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Nelze se připojit kvůli rozdílným GRF souborům
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Není možno se připojit kvůli rozdílným grafikám
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} Síť - synchronizace hry selhala
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Síť - spojení ztraceno
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Nemohu nahrát uloženou hru ze serveru
@@ -1699,16 +1700,16 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Zvolit o
 STR_1021_RAILROAD_TRACK                                         :Koleje
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Železniční depo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... území vlastní jiná společnost
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Železniční trať s normálními signály
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Železniční trať s presignály
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Železniční trať s výstupními signály
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Železniční trať s kombinovanými signály
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Koleje s normálním a vjezdovým návěstím (pre-signal)
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Koleje s normálním a výjezdovým návěstím (exit-signal)
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Koleje s normálním a cestovým návěstím (combo-signal)
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Koleje s vjezdovým (pre-signal) a výjezdovým návěstím (exit-signal)
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Koleje s vjezdovým (pre-signal) a cestovým návěstím (combo-signal)
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Koleje s výjezdovým (exit-signal) a cestovým návěstím (combo-signal)
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Koleje s obyčejným návěstidlem
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Koleje s vjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Koleje s odjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Koleje s cestovým (kombinovaným) návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Koleje s normálním a vjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Koleje s obyčejným a odjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Koleje s obyčejným a cestovým (kombinovaným) návěstidlem
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Koleje s vjezdovým a odjezdovým návěstidlem
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Koleje s vjezdovým a cestovým návěstidlem
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Koleje s odjezdovým a cestovým návěstidlem
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je nejprve nutno odstranit stanici
 
 
@@ -1951,7 +1952,7 @@ STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vycentro
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Ukázat hodnocení společností
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Změnit jméno stanice
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Ukázat seznam přijímaného nákladu
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Jména stanic - pro nahlédnutí na stanici klepni na její jméno
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Jména stanic - kliknutím na jméno stanice se na ni přesune pohled
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Zvol velikost a typ letiště
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -1973,7 +1974,7 @@ STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podržen
 
 STR_UNDEFINED                                                   :(nedefinovaný řetězec)
 STR_STAT_CLASS_DFLT                                             :Původní stanice
-STR_STAT_CLASS_WAYP                                             :Kontrolní body
+STR_STAT_CLASS_WAYP                                             :Směrování
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientace lodního depa
@@ -1997,7 +1998,7 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemohu �
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Uložení hry selhalo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nemohu smazat soubor
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nemohu otevřít hru{}{STRING}
-STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Interní chyba: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Vnitřní chyba: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Poškozená hra - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Uložená hra je z novější verze
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Soubor je nečitelný
@@ -2005,7 +2006,7 @@ STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Do souboru nelz
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Seznam jednotek, adresářů a uložených her
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Zvolené jméno uložené hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Smazat označenou uloženou hru
-STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Uložit aktuální hru se zvoleným jménem
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Uložit současnou hru se zvoleným jménem
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Zvolit nový typ hry
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Zvolit scénář (zelená), přednastavenou hru (modrá), nebo novou náhodnou hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vytvořit novou náhodnou hru
@@ -2192,7 +2193,7 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Uložit
 STR_6801_EASY                                                   :{BLACK}Lehká
 STR_6802_MEDIUM                                                 :{BLACK}Střední
 STR_6803_HARD                                                   :{BLACK}Těžká
-STR_6804_CUSTOM                                                 :{BLACK}Uživatelská
+STR_6804_CUSTOM                                                 :{BLACK}Vlastní
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
@@ -2202,7 +2203,7 @@ STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Množst
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Množství průmyslu: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximální počáteční dluh: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Počáteční úroková sazba: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cena provozu vozidel: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Náklady na provoz vozidel: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Rychlost výstavby protivníků: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligence protivníků: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Poruchy vozidel: {ORANGE}{STRING}
@@ -2302,7 +2303,7 @@ STR_MAX_LOAN                                                    :{WHITE}Max. pů
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Půjčit {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Vrátit {SKIP}{SKIP}{CURRENCY}
-STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... maximální dovolená výše půjčky je {CURRENCY}.
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... nejvyšší možná výše půjčky je {CURRENCY}.
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemohu půjčit více peněz...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}... žádný dluh ke splacení
 STR_702E_REQUIRED                                               :{WHITE}... je potřeba {CURRENCY}
@@ -2337,7 +2338,7 @@ STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Ukázat 
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda ke grafům společností
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klepni zde pro přepnuti zobrazení společnosti na grafu
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Doručeno jednotek zboží
-STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Hodnocení společností (nejvyšší hodnocení=1000)
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Hodnocení společností (nejvyšší hodnocení je 1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Hodnota společností
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tabulka pořadí společností
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
@@ -2810,7 +2811,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Nastav p
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Seznam vlaků - stiskni na vlaku pro informace
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kup označený vagon/lokomotivu
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Přejmenovat typ vlaku
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Momentální akce vlaku - stiskni pro zastavení/rozjetí vlaku
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Současná činnost vlaku - vlak se zastaví nebo rozjede, když sem klikneš
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Ukaž příkazy vlaku
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Nastav pohled na vlak
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Pošli vlak do depa
@@ -2911,7 +2912,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemohu p
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní garáž
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Silniční vozidla - stiskni vozidlo pro informace
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Koupit nová silniční vozidla (vyžaduje garáže)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Momentální činnost silničního vozidla - stiskni pro zastavení/rozjetí vozidla
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Současná činnost silničního vozidla - vozidlo se zastaví nebo rozjede, když sem klikneš
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Ukaž příkazy vozidla
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Nastav pohled na vozidlo
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Pošli vozidlo do garáže
@@ -3004,7 +3005,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Přejmen
 STR_9831_NAME_SHIP                                              :{WHITE}Přejemnovat loď
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nelze přejmenovat loď...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První loď přistála v {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Umístit bójku, kterou lze použít jako navigační bod
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Umístit bójku, kterou lze použít jako směrování
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Zde nelze umístit bójku...
 STR_9836_RENAME                                                 :{BLACK}Přejmenovat
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Přejmenovat typ lodi
@@ -3160,39 +3161,42 @@ STR_NEWGRF_ERROR_INVALID_PARAMETER                              :Neplatný param
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{STRING} musí být nahráván před {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{STRING} musí být nahráván po {STRING}.
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{STRING} potřebuje verzi OpenTTD {STRING} nebo vyšší.
-STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF soubor, který se měl přeložit
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :grafika, která se měla přeložit
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Je nahráno příliš mnoho grafik.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Přidat
-STR_NEWGRF_ADD_TIP                                              :{BLACK}Přidat NewGRF soubor do seznamu
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Přidat grafiku do seznamu
 STR_NEWGRF_REMOVE                                               :{BLACK}Odebrat
-STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Odstranit označený NewGRF soubor ze seznamu
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Odstranit označenou grafiku ze seznamu
 STR_NEWGRF_MOVEUP                                               :{BLACK}Nahoru
-STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Posunout označený NewGRF soubor nahoru
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Posunout označenou grafiku nahoru
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Dolů
-STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Posunout označený NewGRF soubor dolů
-STR_NEWGRF_FILE_TIP                                             :{BLACK}Seznam NewGRF souborů, které jsou nainstalovány. Parametry souboru můžeš změnit kliknutím na něj.
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Posunout označenou grafiku dolů
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Seznam grafik, které jsou nainstalovány. Kliknutím na jméno souboru můžeš nastavit parametry.
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parametry: {SILVER}{STRING}
-STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Zadej parametry NewGRF souboru
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Zadej parametry grafiky
 STR_NEWGRF_NO_INFO                                              :{BLACK}Není dostupná žádná informace
 
-STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupné NewGRF soubory
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Dostupné grafiky
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Přidat do výběru
-STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Přidat vybraný NewGRF soubor do tvého nastavení
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Přidat vybranou grafiku do tvého seznamu
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Načíst soubory
-STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Aktualizovat seznam dostupných NewGRF souborů
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Znovu vytvořit seznam dostupných grafik
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nelze přidat soubor: duplicitní GRF ID
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Nenalezen odpovídající soubor
 STR_NEWGRF_DISABLED                                             :{RED}Vypnuto
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nenalezen (načten kompatibilní GRF)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Odpovídající soubor nebyl nalezen (načetl se kompatibilní GRF)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní GRF načteny místo chybějících
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící soubory GRF byly vyřazeny
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatibilní GRF se načetly místo chybějících
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Chybějící grafiky byly vypnuty
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Pro načtení hry chybí GRF soubory
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Chybějící grafické soubory
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Spuštění hry může shodit OpenTTD. Nehlaš chybu kvůli pádům způsobeným touto akcí.{}Opravdu chceš rozjet hru?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Chování grafiky '{0:STRING}' by mohlo způsobit desynchronizaci a/nebo pád hry.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Mění délku vozidla '{1:ENGINE}', které není v depu.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' patřící '{COMPANY}' nemá platnou délku. Pravděpodobně to způsobila nějaká grafika. Hra se může desynchronizovat nebo spadnout.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Hra byla uložena ve verzi bez podpory tramvají. Všechny tramvaje se odstraní.
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastní měna
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz měny: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3418,7 +3422,7 @@ STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Změna p
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Změna průhlednosti stromů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Změna průhlednosti domů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Změna průhlednosti továren. Nastavení se zamkne CTRL+kliknutím.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, dep a kontrolních bodů. Nastavení se zamkne CTRL+kliknutím.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, dep a směrování. Nastavení se zamkne kliknutím s CTRL.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Změna průhlednosti mostů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Změna průhlednosti staveb jako majáků, vysílačů a doplňků (v budoucnosti). Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne CTRL+kliknutím.
@@ -3476,8 +3480,8 @@ STR_VEHICLE_NAME                                                :{VEHICLE}
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Jméno musí být unikátní
 
 #### Improved sign GUI
-STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Na další signál
-STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Na předešlý signál
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Na další návěstidlo
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Na předešlé návěstidlo
 
 ########
 
@@ -3535,18 +3539,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Změnit 
 ########
 
 ############ signal GUI
-STR_SIGNAL_SELECTION                                            :{WHITE}Výběr signálů
-STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Zde nelze změnit signály...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardní signál (semafor){}Signály jsou nutné, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vjezdový signál (semafor){}Svítí zeleně do té doby, kdy v dalším úseku trati je alespoň jeden zeleně svítící výjezdový signál. Jinak svítí červeně.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výjezdový signál (semafor){}Chová se stejně jako normální signál, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinovaný signál (semafor){}Kombinovaný signál jednoduše slouží jako zároveň vjezdový a výjezdový signál. Tím je možné postavit velké "řetězce" presignálů.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardní signál (elektrický){}Signály jsou nutné, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vjezdový signál (elektrický){}Svítí zeleně do té doby, kdy v dalším úseku trati je alespoň jeden zeleně svítící výjezdový signál. Jinak svítí červeně.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výjezdový signál (elektrický){}Chová se stejně jako normální signál, ale musí se aktivovat správné světlo na vjezdovém a kombinovaném presignálu.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinovaný signál (elektrický){}Kombinovaný signál jednoduše slouží jako zároveň vjezdový a výjezdový signál. Tím je možné postavit velké "řetězce" presignálů.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Změna signálů{}Pokud je vybrána, signál se změní kliknutím na něj. Při kliknutí s CTRL se bude přepínat mezi variantami existujícího signálu.
-STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Rozestup při stavbě signálů tažením
-STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Snížit rozestup mezi signály
-STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit rozestup mezi signály
+STR_SIGNAL_SELECTION                                            :{WHITE}Výběr návěstidel
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Zde nelze změnit návěstidla...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Obyčejné návěstidlo (semafor){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vjezdové návěstidlo (semafor){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výjezdové návěstidlo (semafor){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Cestové návěstidlo (semafor){}Cestové (kombinované) slouží zároveň jako vjezdové a odjezdové. Tím je možné postavit velké "řetězce" presignálů.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Obyčejné návěstidlo (elektrické){}Návěstidla jsou nutná, aby nedocházelo ke srážkám vlaků na tratích, kde jezdí více než jeden vlak.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vjezdové návěstidlo (elektrické){}Svítí zeleně do té doby, kdy v následujícím úseku trati je alespoň jedno další svítící zeleně. Jinak svítí červeně.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výjezdové návěstidlo (elektrické){}Chová se stejně jako obyčejné, ale musí se aktivovat vjezdové a cestové návěstidlo.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Cestové návěstidlo (elektrické){}Cestové (kombinované) návěstidlo slouží zároveň jako vjezdové a odjezdové. Tím je možné postavit velké "řetězce" návěstidel.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Přeměna návěstidel{}Když je přeměna zapnuta, návěstidlo se změní kliknutím. Kliknutím s CTRL se přepne mezi variantami návěstidla.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Rozestup při stavbě návěstidel tažením
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Snížit rozestup mezi návěstidly
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit rozestup mezi návěstidly
 ########

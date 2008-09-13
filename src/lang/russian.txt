@@ -1333,6 +1333,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Пром
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Название производства, нажмите для центровки
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...слишком близко к другому предприятию
 
@@ -3143,6 +3144,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Не н�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Пропущенные GRF файлы
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Снятие с паузы может привести к ошибке OpenTTD.{}Вы хотите запустить игру?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Поведение строки '{STRING}' файла NewGRF может привести к потере синхронизации и вылету игры.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Меняется длина транспорта '{1:ENGINE}' находящегося вне депо.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Поезд '{VEHICLE}' принадлежащий '{COMPANY}' имеет неправильную длину. Вероятно, это вызвано проблемами в файле новой графики. Игра может рассинхронизироваться или вылететь.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Игра была сохранена в игре без поддержки трамваев. Все трамваи были отключены.
 STR_CURRENCY_WINDOW                                             :{WHITE}Своя валюта
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменный курс: {ORANGE}{CURRENCY} = £{COMMA}

@@ -1883,6 +1883,7 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}不能�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}保存游戏失败{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}不能删除文件
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}游戏存档读取失败{}{STRING}
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :文件无法写入
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}驱动器、目录和游戏存档列表
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}保存当前游戏用的存档名字
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}删除选定的游戏存档
@@ -1939,6 +1940,7 @@ STR_4828_REQUIRES                                               :{BLACK}需要�
 STR_4829_REQUIRES                                               :{BLACK}需要：{YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires ends
 
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}等待的货物:
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}上月产量：
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% 已运输)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}将屏幕中心移动到工厂所在的位置
@@ -1968,6 +1970,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}隧道�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}必须先拆除隧道
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}必须先拆除桥梁
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}起止点不能相同
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}桥梁起止点不在同一水平高度
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}桥梁对于地形太低了
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}起止两端必须在一条线上
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}此处不适合作为隧道入口
 STR_500D                                                        :{GOLD}{STRING}，{} {VELOCITY} {WHITE}{CURRENCY}
@@ -2088,6 +2092,7 @@ STR_CITY_APPROVAL                                               :{LTBLUE}市政�
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :没有
+STR_NUM_VERY_LOW                                                :很低
 STR_6816_LOW                                                    :低
 STR_6817_NORMAL                                                 :一般
 STR_6818_HIGH                                                   :高
@@ -2246,6 +2251,11 @@ STR_RELOCATE_HQ                                                 :{BLACK}重置�
 STR_COMPANY_PASSWORD                                            :{BLACK}密码
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}设置密码可以防止未经授权的用户随意加入。
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}设置公司密码
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}不保存所输入的密码
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}为公司设置新密码
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}公司密码
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}默认公司密码
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}将此公司密码作为新公司的默认密码
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}大萧条！{}{}金融专家预测世界经济将全面倒退！
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}大萧条结束！{}{}贸易复苏带动经济全面启动！
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}切换窗口大小
@@ -2271,6 +2281,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :载客车头 (蒸汽)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :载客车头 (内燃机)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :载客车头 (电力)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :客车车厢（单轨）
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :客车车厢（磁悬）
 STR_LIVERY_FREIGHT_WAGON                                        :平板车厢
 STR_LIVERY_BUS                                                  :巴士
 STR_LIVERY_TRUCK                                                :卡车
@@ -2279,6 +2291,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :平板货船
 STR_LIVERY_HELICOPTER                                           :直升机
 STR_LIVERY_SMALL_PLANE                                          :小型飞机
 STR_LIVERY_LARGE_PLANE                                          :大型飞机
+STR_LIVERY_PASSENGER_TRAM                                       :电车客车
+STR_LIVERY_FREIGHT_TRAM                                         :电车货车
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}显示总体配色方案
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}显示列车配色方案
@@ -2783,7 +2797,7 @@ STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}不能�
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}命名汽车
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在火球中丧车！
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在火球中丧生！
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}不能命令汽车掉头……
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}不能命令多节的汽车掉头

@@ -1456,6 +1456,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Пром
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Назви підприємств - клікніть на назві, щоб показати підприємство у центрі
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...дуже близько до іншої промисловості
 

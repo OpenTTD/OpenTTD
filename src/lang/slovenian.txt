@@ -1373,6 +1373,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% prepeljano)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% prepeljano)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Imena industrij - klikni na ime za pogled na industrijo
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...preblizu drugi industriji
 
@@ -3210,6 +3211,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Manjkajo
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manjkajoče GRF datoteke
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Izklop pavze lahko sesuje OpenTTD. Ne poročaj o napaki zaradi takih problemov.{}Zagotovo želiš izklopiti pavzo?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Ozadje NewGRFa '{0:STRING}' lahko povzroči desinhronizacijo in sesutje igre.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Spremeni dolžino vozila za '{1:ENGINE}' ko ni v garaži.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vlak '{VEHICLE}' , ki pripada družbi '{COMPANY}', ima neveljavno dolžino. Najbrž vsebuje probleme povezane z NewGRF. Igra se lahko sesuje.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je bila shranjena brez podpore za tramvaj. Vsi tramvaji so bili odstranjeni.
 STR_CURRENCY_WINDOW                                             :{WHITE}Valuta po meri
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Menjalni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}

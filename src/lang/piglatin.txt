@@ -1177,6 +1177,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Eryvay astfay
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}1 inway {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}Onenay
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initialway itycay izesay ultipliermay: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaceway
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Onstructioncay
@@ -1192,6 +1193,15 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Angechay ettingsay aluevay
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Omesay orway allway ofway ethay efaultday ervicesay intervalway(say) elowbay areway incompatibleway ithway ethay osenchay ettingsay! 5-90% andway 30-800 aysday areway alidvay
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Otnay Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Originalway {RED}(Otnay Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Originalway {BLUE}(Ecommendedray)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Otnay Ecommendedray)
 STR_TEMPERATE_LANDSCAPE                                         :Emperatetay andscapelay
 STR_SUB_ARCTIC_LANDSCAPE                                        :Ubsay-arcticway andscapelay
 STR_SUB_TROPICAL_LANDSCAPE                                      :Ubsay-opicaltray andscapelay
@@ -1305,6 +1315,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% ansportedtray)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% ansportedtray)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industryway amesnay - lickcay onway amenay otay entrecay iewvay onway industryway
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...ootay oseclay otay anotherway industryway
 

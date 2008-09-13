@@ -1332,6 +1332,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}산업�
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}%가 운반됨)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}산업시설 이름 - 산업시설을 가운데로 보려면 클릭하세요
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...다른 산업시설과 너무 가깝습니다.
 

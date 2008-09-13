@@ -1333,6 +1333,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústr
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nomes das indústrias - clique no nome para localizar a indústria
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...muito perto de outra indústria
 

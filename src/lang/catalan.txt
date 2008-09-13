@@ -1331,6 +1331,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústr
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportat)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportat)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nom de les indústries - clica al nom per centrar la vista a la indústria
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...massa a prop d'altres indústries
 
@@ -3130,6 +3131,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Arxius G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Falten arxiu(s) GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Treure la pausa pot provocar fallades d'OpenTTD. No informis d'errors a causa de fallades subseqüents.{}Estàs segur de voler treure la pausa?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}El comportament dels NewGRF '{0:STRING}' probablement causarà desincronitzacions i/o penjades.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Canvia la llargada del vehicle pel '{1:ENGINE}' quan no sigui dins del dipòsit.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}El tren '{VEHICLE}' pertanyent a la '{COMPANY}' té una llargada invàlida. Això està causat probablement per problemes amb els NewGRFs. El joc podria desincronitzar-se i/o penjar-se.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}El joc s'ha desat en una versió sense suport de tramvies. Tots els tramvies s'han eliminat.
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalitzada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = £ {COMMA}

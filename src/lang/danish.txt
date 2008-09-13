@@ -347,7 +347,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Graf over præs
 STR_0158_COMPANY_VALUE_GRAPH                                    :Graf over selskabsværdi
 STR_0159_CARGO_PAYMENT_RATES                                    :Graf over lastudbetalingsrater
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Selskabsoversigt
-STR_PERFORMANCE_DETAIL_MENU                                     :Præstations oversigt
+STR_PERFORMANCE_DETAIL_MENU                                     :Detaljeret præstationsoversigt
 ############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Om OpenTTD
@@ -387,7 +387,7 @@ STR_ENGINE_SORT_INTRO_DATE                                      :Introduktionsda
 STR_ENGINE_SORT_RUNNING_COST                                    :Driftsomkostning
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Drivmiddel/omkostninger
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lasteevne
-STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
+STR_NO_WAITING_CARGO                                            :{BLACK}Der venter ingen fragt af nogen type
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
 STR_AVAILABLE_TRAINS                                            :{BLACK}Tilgængelige tog
@@ -939,11 +939,11 @@ STR_FULLSCREEN_FAILED                                           :{WHITE}Fuldskæ
 
 STR_OPTIONS_RES                                                 :{BLACK}Skærmopløsning
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Vælg ønskede skærmopløsning
+STR_OPTIONS_RES_TIP                                             :{BLACK}Vælg ønsket skærmopløsning
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skærmbillede format
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Skærmbillede-format
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vælg skærmbillede format
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Vælg skærmbillede-format
 
 STR_AUTOSAVE_1_MONTH                                            :Hver måned
 STR_AUTOSAVE_FAILED                                             :{WHITE}Fejl under autogem
@@ -1331,6 +1331,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transporteret)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transporteret)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industrinavne - klik på navn for at centrere visningen over en industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for tæt på en anden industribygning
 
@@ -1910,7 +1911,7 @@ STR_3068_DOCK                                                   :{WHITE}Havn
 STR_3069_BUOY                                                   :Bøje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...der er en bøje i vejen
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stationen er for spredt
-STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ikke uniforme stationer er slået fra
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ikke-uniforme stationer er slået fra
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold CTRL nede for at vælge mere end en ting
 
 STR_UNDEFINED                                                   :(udefineret tekststring)
@@ -2686,7 +2687,7 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan 
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tog
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye jernbanekøretøjer
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nyt Elektrisk lokomotiv
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nyt elektrisk lokomotiv
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye monorailkøretøjer
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye magnetskinnekøretøjer
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Jernbanekøretøjer
@@ -2873,7 +2874,7 @@ STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Lastbil forulykket!{}Chauffør dør i flammerne efter sammenstød med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Bus forulykket!{}{COMMA} dør i flammerne efter kollision med et tog
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikke få køretøjet til at vende...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke vende et køretøg, der består af flere enheder
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke vende et køretøj, der består af flere enheder
 STR_9034_RENAME                                                 :{BLACK}Omdøb
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Omdøb køretøjstypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Omdøb køretøjstypen
@@ -3045,7 +3046,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Dit fors
 STR_BRIBE_FAILED_2                                              :{WHITE}opdaget af en inspektør.
 STR_BUILD_DATE                                                  :{BLACK}Produceret: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Præstations oversigt
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Præstationsoversigt
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalje
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -3066,12 +3067,12 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Antal af køretøjer; dette inkludere vejkøretøjer, tog, skibe og fly
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Antallet af stationer. Alle dele af en station (f.eks. banegård, rutebilstation, lufthavn) tæller med, selvom de er sammensat som én station
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Afkast for køretøjet med laveste indkomst (af alle køretøjer ældre end 2 år)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Indtægt i måneden med den laveste indtægt i de sidste 12 kvartaler
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Indkomst i måneden med det laveste afkast i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Indkomst i måneden med det højeste afkast i de sidste 12 kvartaler
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Antal enheder fragtet i de sidste 4 kvartaler
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Antallet af lasttyper fragtet i sidste kvartal
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Kapital denne virksomhed har i banken
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Har du et stort lån?
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Mængden af penge dette firma har lånt
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Samlet point ud af mulige points
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF indstillinger
@@ -3129,6 +3130,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglende GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}OpenTTD kan gå ned, når spillet sættes i gang igen. Undlad at indsende fejlrapporter for efterfølgende nedbrud.{}Vil du virkelig sætte spillet i gang igen?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Denne NewGRFs opførsel '{0:STRING}' vil sandsynligvis forårsage at spillet går ned.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Den ændrer toglængden for '{1:ENGINE}' mens den ikke er i depot.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Toget '{VEHICLE}' fra firmaet '{COMPANY}' har ugyldig længde. Det skyldes sandsynligvis at problem med en NewGRF. Spillet går muligvis ned.
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet er gemt i en version uden sporveje. Alle sporveje er blevet fjernet.
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3168,7 +3172,7 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sælg al
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sælg alle skibe i dokken
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Sælg alle fly i hangaren
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Vis en liste over alle toge med denne remise i ordrelisten
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Vis en liste over alle tog med denne remise i ordrelisten
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Vis liste over alle køretøjer med dette værksted i ordrelisten
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Vis liste over alle skibe med denne skibsdok i ordrelisten
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Vis liste over alle fly med en hangar ved denne lufthavn i ordrelisten
