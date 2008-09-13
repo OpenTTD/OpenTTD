@@ -523,10 +523,11 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				} break;
 
 				case ROAD_TILE_CROSSING:
-					if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 					other_bits = GetCrossingRoadBits(tile);
 					if (pieces & ComplementRoadBits(other_bits)) goto do_clear;
 					pieces = other_bits; // we need to pay for both roadbits
+
+					if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 					break;
 
 				default:
@@ -578,11 +579,12 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		case MP_STATION: {
 			if (!IsDriveThroughStopTile(tile)) goto do_clear;
-			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 
 			RoadBits curbits = AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(tile)));
 			if (pieces & ~curbits) goto do_clear;
 			pieces = curbits; // we need to pay for both roadbits
+
+			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 		} break;
 
 		case MP_TUNNELBRIDGE:
