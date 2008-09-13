@@ -1368,10 +1368,10 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
 
+	RoadTypes cur_rts = IsNormalRoadTile(tile) ? GetRoadTypes(tile) : ROADTYPES_NONE;
+	uint num_roadbits = 0;
 	/* Not allowed to build over this road */
 	if (build_over_road) {
-		RoadTypes cur_rts = GetRoadTypes(tile);
-
 		/* there is a road, check if we can build road+tram stop over it */
 		if (HasBit(cur_rts, ROADTYPE_ROAD)) {
 			Owner road_owner = GetRoadOwner(tile, ROADTYPE_ROAD);
@@ -1381,12 +1381,14 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			} else {
 				if (road_owner != OWNER_NONE && !CheckOwnership(road_owner)) return CMD_ERROR;
 			}
+			num_roadbits += CountBits(GetRoadBits(tile, ROADTYPE_ROAD));
 		}
 
 		/* there is a tram, check if we can build road+tram stop over it */
 		if (HasBit(cur_rts, ROADTYPE_TRAM)) {
 			Owner tram_owner = GetRoadOwner(tile, ROADTYPE_TRAM);
 			if (tram_owner != OWNER_NONE && !CheckOwnership(tram_owner)) return CMD_ERROR;
+			num_roadbits += CountBits(GetRoadBits(tile, ROADTYPE_TRAM));
 		}
 
 		/* Don't allow building the roadstop when vehicles are already driving on it */
@@ -1398,6 +1400,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	CommandCost cost = CheckFlatLandBelow(tile, 1, 1, flags, is_drive_through ? 5 << p1 : 1 << p1, NULL, !build_over_road);
 	if (CmdFailed(cost)) return cost;
+	uint roadbits_to_build = CountBits(rts) * 2 - num_roadbits;
+	cost.AddCost(_price.build_road * roadbits_to_build);
 
 	Station *st = NULL;
 
