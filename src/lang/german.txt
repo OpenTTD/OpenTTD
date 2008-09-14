@@ -436,7 +436,7 @@ STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Allgemei
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Diagramm anzeigen
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Firmentabelle anzeigen
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zuglisten der Firmen anzeigen
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Fahrzeuglisten der Firmen
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Fahrzeuglisten der Firmen anzeigen
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Schiffslisten der Firmen anzeigen
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Flugzeuglisten der Firmen anzeigen
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Ansicht vergrößern (hereinzoomen)
@@ -445,7 +445,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise l
 STR_0182_BUILD_ROADS                                            :{BLACK}Straßen bauen
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Hafen bauen
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Flughafen bauen
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Bäume pflanzen, Schilder aufstellen usw.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Bäume pflanzen
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Gebietsinformation
 STR_0187_OPTIONS                                                :{BLACK}Einstellungen
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -487,8 +487,8 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Räumung
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Räumungskosten: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :k.A.
 STR_01A7_OWNER                                                  :{BLACK}Eigentümer: {LTBLUE}{STRING}
-STR_ROAD_OWNER                                                  :{BLACK}Strassenbesitzer: {LTBLUE}{STRING}
-STR_TRAM_OWNER                                                  :{BLACK}Strassenbahnbesitzer: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Straßenbesitzer: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Straßenbahnbesitzer: {LTBLUE}{STRING}
 STR_RAIL_OWNER                                                  :{BLACK}Schienenbesitzer: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Gehört zur Gemeinde: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Keine
@@ -730,8 +730,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Bäume z
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige Gebiete in der Landschaft platzieren
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender errichten
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Lege Wüstengebiet an.{}STRG drücken zum entfernen
-STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal; Bei gedrückter Strg.-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Wüstengebiet anlegen{}Zum Entfernen Strg-Taste drücken
+STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Bei gedrückter Strg-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
 STR_CREATE_RIVER                                                :{BLACK}Flüsse platzieren.
 STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
@@ -1030,12 +1030,12 @@ STR_CONFIG_PATCHES_OFF                                          :Aus
 STR_CONFIG_PATCHES_ON                                           :An
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Fahrzeuggeschwindigkeit in der Statusleiste anzeigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Erlaube das Bauen an Hängen und Küsten: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Erlaube Landschaftsbau unter Gebäuden, Schienen, usw. (autoslope): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Landschaftsbau unter Gebäuden, Schienen, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Aktiviere realistische Einzugsgebiete: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Erlaube die Entfernung von Industrien, weiteren Straßen usw.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erlaube das Bauen von sehr langen Zügen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistische Zugbeschleunigung aktivieren: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbiete Zügen und Schiffen 90 Grad Kurven: {ORANGE}{STRING} {LTBLUE} (erfordert NWF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zügen und Schiffen 90° Kurven verbieten: {ORANGE}{STRING} {LTBLUE} (nicht mit NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Bahnhöfe vereinigen, die nebeneinander gebaut werden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Verbessertes Beladeverfahren nutzen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Fahrzeuge schrittweise beladen: {ORANGE}{STRING}
@@ -1043,7 +1043,7 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflati
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Fracht wird erst bei Bedarf an Haltestelle verfügbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erlaube das Bauen von sehr langen Brücken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Erlaube "Gehe zum Depot"-Aufträge im Fahrplan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Methode zum manuellen Bau von Rohstoffindustrien: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manueller Bau von Rohstoffindustrien: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nicht erlaubt
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wie andere Industrien
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :durch Prospektion
@@ -1052,6 +1052,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Gleiche
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Lange Datumsanzeige in der Statusleiste (links unten): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zeige Signale auf der selben Seite wie den Straßenverkehr: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Zeige Firmenfinanzen am Ende des Jahres: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Aufträge standardmäßig ohne Zwischenhalt anfahren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fahrzeugwarteschlange (mit Überlagerung): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Spielfeld scrollen, wenn die Maus am Bildrand anstößt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Bestechen der Stadtverwaltung erlauben: {ORANGE}{STRING}
@@ -1157,7 +1158,7 @@ STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaube
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}{STRING} Tage/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}abgeschaltet
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Vorgegebenes Wartungsintervall für Straßenfahrzeuge: {ORANGE}{STRING} Tage/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Vorgegebenes Wartungsintervall für Fahrzeuge: {ORANGE}{STRING} Tage/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Vorgegebenes Wartungsintervall für Fahrzeuge: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}{STRING} Tage/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vorgegebenes Wartungsintervall für Flugzeuge: {ORANGE}abgeschaltet
@@ -1177,11 +1178,11 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automat
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktiviere Signal-Menü: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Voreinstellung für Signale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Erweitert
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Einseitig erweitert
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Pfadsignal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Einseitiges Pfadsignal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Durchlaufen der Signalarten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :nur Normale
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :nur Erweiterte
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :nur Pfadsignale
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Der Stadtaufbau "keine weiteren Straßen" ist im Szenarieneditor nicht möglich
@@ -1402,7 +1403,7 @@ STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Teilnehm
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Spielfeldgröße
-STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Spielfeldgröße{}Klicke, um nach größe zu sortieren
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Spielfeldgröße{}Klick sortiert nach Größe
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Heutiges Datum
@@ -1434,7 +1435,7 @@ STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spielnam
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Der Name des Spieles wird anderen Spielern im Mehrspielerdialog angezeigt
 STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Namen für das Netzwerkspiel eingeben
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Passwort setzen
-STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Vergebe ein Passwort, um zu verhindern, dass unbefugte Leute beitreten können
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Ein Passwort verhindert, dass unbefugte Leute beitreten.
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Spielfeld auswählen:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Welches Spielfeld soll verwendet werden?
 STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
@@ -1691,23 +1692,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit norma
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleis mit erweitertem Signal
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Gleis mit einseitig erweitertem Signal
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Gleis mit Pfadsignal
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Gleis mit einseitigem Pfadsignal
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Gleis mit Vor- und Hauptsignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Gleis mit Haupt- und Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Gleis mit normalen und Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Gleis mit normalem und erweitertem Signal
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Gleis mit normalem und einseitig erweitertem Signal
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Gleis mit normalem Signal und Pfadsignal
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Gleis mit normalem Signal und einseitigem Pfadsignal
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Gleis mit Vor- und Ausfahrsignalen
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Gleis mit Vor- und Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Gleis mit Vor- und erweitertem Signal
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Gleis mit Vor- und einseitig erweitertem Signal
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Gleis mit Vor- und Pfadsignal
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Gleis mit Vor- und einseitigem Pfadsignal
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Gleis mit Ausfahr- und Kombinationssignalen
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Gleis mit Ausfahr- und erweitertem Signal
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Gleis mit Ausfahr- und einseitig erweitertem Signal
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Gleis mit Kombinations- und erweitertem Signal
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Gleis mit Kominations- und einseitig erweitertem Signal
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Gleis mit erweitertem und einseitig erweitertem Signal
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Gleis mit Ausfahr- und Pfadsignal
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Gleis mit Ausfahr- und einseitigem Pfadsignal
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Gleis mit Kombinations- und Pfadsignal
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Gleis mit Kombinations- und einseitigem Pfadsignal
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Gleis mit Pfadsignal und einseitigem Pfadsignal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bahnhof muss erst abgerissen werden
 
 
@@ -1970,7 +1971,7 @@ STR_3069_BUOY                                                   :Boje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje ist im Weg
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Bahnhof ist zu groß
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ungleichförmige Stationen deaktiviert
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}STRG gedrückt halten um mehrere Einträge auszuwählen
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Strg gedrückt halten, um mehrere Einträge auszuwählen
 
 STR_UNDEFINED                                                   :(nicht definierter Wert)
 STR_STAT_CLASS_DFLT                                             :Standardstation
@@ -2408,9 +2409,9 @@ STR_LIVERY_DMU                                                  :VT
 STR_LIVERY_EMU                                                  :ET
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagierwagen (Dampf)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagierwagen (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierwagen (elektrisch)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Reisezugwagen (Einschienenbahn)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Reisezugwagen (Magnetschwebebahn)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierwagen (elektr.)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagierwagen (Einsch.)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagierwagen (Magnet.)
 STR_LIVERY_FREIGHT_WAGON                                        :Güterwaggon
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Lastwagen
@@ -2744,7 +2745,7 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gehe zum nächs
 STR_ORDER_NEAREST_DEPOT                                         :dem nächsten
 STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar
 STR_ORDER_SERVICE_AT                                            :Wartung in
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Wartung ohne Halt in
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Gehe ohne Halt zur Wartung in
 STR_ORDER_TRAIN_DEPOT                                           :Zugdepot
 STR_ORDER_ROAD_DEPOT                                            :Straßenfahrzeugdepot
 STR_ORDER_SHIP_DEPOT                                            :Werft
@@ -2791,6 +2792,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Wartung
 
 STR_INVALID_ORDER                                               :{RED} (Ungültiger Auftrag)
 
+STR_UNKNOWN_STATION                                             :unbekannte Station
 STR_8812_EMPTY                                                  :{LTBLUE}Leer
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} von {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} von {STATION} (x{NUM})
@@ -3551,7 +3553,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Name ber
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Zum nächsten Schild wechseln
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Zum vorherigen Schild wechseln
-STR_SIGN_OSKTITLE                                               :{BLACK}Gebe einen namen für dieses Schild ein
+STR_SIGN_OSKTITLE                                               :{BLACK}Einen Namen für dieses Schild eingeben
 
 ########
 
@@ -3615,15 +3617,15 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Einfahrsignal (Formsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Ausfahrsignal (Formsignal){}Verhält sich wie ein normales Signal, wird jedoch benötigt, um Einfahr- oder Combosignalen den Block als "frei" zu melden.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combosignal (Formsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Erweitertes Signal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Erweiterte Signale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Erweitertes einseitiges Signal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Erweiterte einseitige Signale können nicht von der Rückseite durchfahren werden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Pfadsignal (Formsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Einseitiges Pfadsignal (Formsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardsignal (Lichtsignal){}Signale ermöglichen den unfallfreien Betrieb mehrerer Züge in einem Schienensystem.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein normales Signal, gibt jedoch das Signal an Einfahr- und Combosignale im vorherliegenden Block weiter.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combosignal (Lichtsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Erweitertes Signal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Erweiterte Signale können von hinten durchfahren werden.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Erweitertes einseitiges Signal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Erweiterte einseitige Signale können nicht von der Rückseite durchfahren werden.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Pfadsignal (Lichtsignal){}Erlaubt mehreren Zügen gleichzeitig, einen Signalbereich zu befahren, sofern ein Pfad reserviert werden kann. Pfadsignale können von hinten durchfahren werden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einseitiges Pfadsignal (Lichtsignal):{}Erlaubt mehreren Zügen, einen Signalblock zu befahren, sofern ein Pfad reserviert werden kann. Einseitige Pfadsignale können nicht von hinten durchfahren werden.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klicken ändert die bestehende Bauform.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Signalabstand erhöhen

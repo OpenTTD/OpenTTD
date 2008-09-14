@@ -590,6 +590,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst av första fordonet vid konkurrenternas stn.
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Olyckor / katastrofer
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Företagsinformation
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Industriöppning
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Industristängning
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Förändringar av ekonomin
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Förändringar i produktion vid industrier trafikerad av spelaren
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Förändringar i produktion vid industrier trafikerad av motståndare
@@ -776,6 +778,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spelinställningar
 STR_02C6_DIFFICULTY_SETTINGS                                    :Svårighetsgrad
+STR_MENU_CONFIG_PATCHES                                         :Avancerade inställningar
 STR_NEWGRF_SETTINGS                                             :NewGRF inställningar
 STR_TRANSPARENCY_OPTIONS                                        :Genomskinlighetsinställningar
 STR_GAMEOPTMENU_0A                                              :
@@ -860,6 +863,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Bekosta ny indu
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Bekosta ny industri
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bara byggas i städer
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan bara byggas i regnskog
@@ -984,6 +988,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan inte
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan inte kopiera orderlistan...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delade order - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Tåg {COMMA} hittar inte en väg att fortsätta på.
 STR_TRAIN_IS_LOST                                               :{WHITE}Tåg {COMMA} är vilse
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Förra året fölorade Tåg {COMMA}  {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeiska Valutasystemet!{}{}Euron introduceras och ditt land går över till den som dess enda valuta!
@@ -1013,7 +1018,11 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automati
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatiska förnyandet av skepp {COMMA} misslyckades{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatiska förnyandet av flygplan {COMMA} misslyckades{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tåg {COMMA} är för långt efter förnyandet
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Förnyar ej fordon automatiskt
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengagräns)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Avancerade inställningar
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Visa avancerade inställningar
 
 STR_CONFIG_PATCHES_OFF                                          :Av
 STR_CONFIG_PATCHES_ON                                           :På
@@ -1249,6 +1258,7 @@ STR_WAYPOINT                                                    :{WHITE}Kontroll
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Välj kontrollstationstyp
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Tåg{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ändra namn på kontrollstation
@@ -1333,6 +1343,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transporterat)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporterat)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industrinamn - klicka på namnet för att centrera vyn över industrin
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... för nära en annan industri
 
@@ -1377,6 +1388,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}IP-adres
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienter
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienter online / Klienter max
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Kartstorlek
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Kartstorlek av spelet{}Klicka för att sortera efter område
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Datum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Nuvarande datum
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}År
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Antal år{}som spelet pågår
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPELINFO
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienter:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:  {WHITE}{STRING}
@@ -1658,12 +1680,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Järnväg med v
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Järnväg med för-signaler
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Järnväg med utgående signaler
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Tågspår med kombinationsignaler
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Järnväg med avancerade signaler
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Järnväg med avancerade envägs-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Järnväg med normala signaler och för-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Järnväg med normala signaler och utfarts-signaler
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tågspår med normal- och kombinationsignaler
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Järnväg med normala samt avancerade signaler
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Järnväg med normala signaler samt avancerade envägs-signaler
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Järnväg med för- och utfarts-signaler
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tågspår med för- och kombinationsignaler
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Järnväg med för-signaler samt avancerade signaler
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Järnväg med för-signaler samt avancerade envägs-signaler
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tågspår med utgångs- och kombinationsignaler
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Järnväg med utfarts-signaler samt avancerade signaler
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Järnväg med utfarts-signaler samt avancerade envägs-signaler
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Järnväg med kombinations-signaler samt avancerade signaler
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Järnväg med kombinations-signaler samt avancerade envägs-signaler
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Järnväg med avancerade samt avancerande envägs-signaler
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Måste ta bort tågstationen först
 
 
@@ -1837,6 +1870,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Kan inte
 STR_280A_SIGN                                                   :Skylt
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Ändra skylttext
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Kan inte ändra skyltnamn...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Kan inte ta bort skylt...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Välj trädtyp att plantera
 STR_280E_TREES                                                  :Träd
 STR_280F_RAINFOREST                                             :Regnskog
@@ -2731,9 +2765,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Skippa till ord
 STR_CONDITIONAL_NUM                                             :Skippa till order {COMMA} när {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Skippa till order {COMMA} när {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Ingen resa
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Avres (Inte tillagd i tidtabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Res till {STRING}
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :och resa för {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
@@ -2744,6 +2780,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service
 
 STR_INVALID_ORDER                                               :{RED} (Ogiltig order)
 
+STR_UNKNOWN_STATION                                             :okänd station
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} från {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} från {STATION} (x{NUM})
@@ -2856,12 +2893,15 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Byt namn
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan inte byta namn på tågets fordonstyp...
 STR_CLEAR_TIME                                                  :{BLACK}Rensa tid
 STR_RESET_LATENESS                                              :{BLACK}Rensa räknaren för sen ankomst
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Ändra namn på kontrollstation
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Stannar
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stannar, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Fel järnvägstyp
 STR_TRAIN_NO_POWER                                              :{RED}Ingen Kraft
 STR_TRAIN_START_NO_CATENARY                                     :Detta spår saknar kedjekurva, så tåget kan inte starta
+STR_TRAIN_STUCK                                                 :{ORANGE}Väntar på ledig väg
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Ny {STRING} tillgänglig!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2925,6 +2965,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bygg mar
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kostnad: {CURRENCY}{}Hastighet: {VELOCITY}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitet: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} fordon{P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Byt namn på vägfordon
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan inte byta namn på vägfordon...
@@ -3105,6 +3148,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Ditt mut
 STR_BRIBE_FAILED_2                                              :{WHITE}uppdagat av en regional utredare.
 STR_BUILD_DATE                                                  :{BLACK}Byggt: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Stationsklass: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Stationstyp: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljerade prestandabetyg
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaljer
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3137,10 +3184,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totalt a
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Inställningar
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf inställningar
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Spara ändringar
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Byt palett
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Ändra palett för markerad NewGRF.{}Gör detta när grafiken från denna NewGRF är rosa i spelet
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parametrar
 STR_NEWGRF_TIP                                                  :{BLACK}En lista av alla Newgrf som du har installerade. Clicka på en för att ändra inställningar.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Det finns för närvarande inga newgrf filer installerade! Vänligen kolla manualen hur man installerar ny grafik.
 STR_NEWGRF_FILENAME                                             :{BLACK}Filnamn: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Palett: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du håller på att göra ändringar i ett spel som används; detta kan krascha OpenTTD.{}Är du helt säker på detta?
@@ -3159,7 +3209,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-filen den var designad att översätta
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :För många NewGRFer är laddade.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laddar {STRING} som statisk NewGRF med {STRING} kan orsaka osynk.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Oförväntad sprite.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Okänd egenskap för Action 0.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Försök att använda ogiltig ID.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ladda markerad förinställning
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Spara förinställning
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Spara denna lista som en förinställning
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Namnge förinställningen
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Ta bort förinställningen
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Ta bort markerad förinställning
 STR_NEWGRF_ADD                                                  :{BLACK}Lägg till
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lägg till en ny NewGRF-fil till listan
 STR_NEWGRF_REMOVE                                               :{BLACK}Ta bort
@@ -3189,6 +3248,9 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Saknad G
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Saknas GRF fil för att kunna ladda spel
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
+
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter fordonlängd för  '{1:ENGINE}' utanför en depå.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 
@@ -3542,10 +3604,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}För-signal (semafor){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Utfarts-signal (semafor){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinationssignal (semafor){}Kombinationssignalen fungerar helt enkelt som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Avancerad signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån, men priotieras ej.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Avancerad envägs-signal (semafor){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån, men priotieras icke
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Normal signal (elektrisk){}Signaler behövs för att se till att tåg inte kraschar på nätverk med mer än ett tåg.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}För-signal (elektrisk){}Grön så länge det finns en eller flera gröna utfarts-signaler på efterföljande bit av spår, annars visas rött.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Utfarts-signal (elektrisk){}Fungerar på samma sätt som en vanlig signal men behövs för att utlösa korrekt färg på In- eller kombinations-signaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinationssignal (elektrisk){}Kombinationssignalen fungerar helt enkelt som både en För- och Utfarts-signal. Denna tillåter dig att bygga stora "träd" av För-signaler.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Avancerad signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån, men priotieras icke
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Avancerad envägs-signal (elektrisk){}En avancerad signal tillåter flera fordon att befinna sig i ett signalblock samtidigt, om fordonet kan reservera en väg till en säker stopp-plats. Avancerade signaler kan passeras bakifrån, men priotieras icke
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konvertera Signal{}När markerad, klicka på en existerande signal för att konvertera den till vald signal-typ och variant. CTRL-klick ändrar den existerande varianten
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragen signals täthet
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minska dragen signals täthet

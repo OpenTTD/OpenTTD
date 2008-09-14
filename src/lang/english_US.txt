@@ -15,8 +15,10 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flat land required
 STR_0008_WAITING                                                :{BLACK}Waiting: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} en-route from {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepts: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepts: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Supplies: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passengers
 STR_0010_COAL                                                   :Coal
@@ -376,6 +378,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total capacity 
 STR_SORT_BY_MAX_SPEED                                           :Maximum speed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Value
+STR_SORT_BY_LENGTH                                              :Length
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waiting cargo value
 STR_SORT_BY_RATING_MAX                                          :Cargo rating
@@ -483,6 +486,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost to 
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost to clear: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Owner: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Road owner: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Streetcar track owner: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Railroad owner: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Local authority: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :None
 STR_01AA_NAME                                                   :{BLACK}Name
@@ -584,6 +590,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrival
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrival of first vehicle at competitor's station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / disasters
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Company information
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Opening of industries
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Closing of industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Economy changes
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Production changes of industries served by the player
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Production changes of industries served by competitor(s)
@@ -723,6 +731,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place li
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold CTRL to remove it
 STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
+STR_CREATE_RIVER                                                :{BLACK}Place rivers.
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
@@ -769,6 +778,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Game options
 STR_02C6_DIFFICULTY_SETTINGS                                    :Difficulty settings
+STR_MENU_CONFIG_PATCHES                                         :Advanced settings
 STR_NEWGRF_SETTINGS                                             :Newgrf settings
 STR_TRANSPARENCY_OPTIONS                                        :Transparency options
 STR_GAMEOPTMENU_0A                                              :
@@ -853,6 +863,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Fund new indust
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fund new industry
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...can only be built in rainforest areas
@@ -931,6 +942,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Select t
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fullscreen
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Check this box to play OpenTTD fullscreen mode
+STR_FULLSCREEN_FAILED                                           :{WHITE}Fullscreen mode failed
 
 STR_OPTIONS_RES                                                 :{BLACK}Screen resolution
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -976,6 +988,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Can't sh
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Can't copy order list...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - End of Shared Orders - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Train {COMMA} can't find a path to continue.
 STR_TRAIN_IS_LOST                                               :{WHITE}Train {COMMA} is lost.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Train {COMMA}'s profit last year was {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
@@ -1005,8 +1018,12 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorene
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew failed on ship {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew failed on aircraft {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} is too long after replacement
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No autoreplace/renew rules applied.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Advanced Settings
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Display advanced settings
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Advanced Settings
 
 STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On
@@ -1034,6 +1051,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Always show long date in the status bar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
@@ -1041,8 +1059,10 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Allow b
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Allow sending money to other companies: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Weight multiplier for freight to simulate heavy trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Plane speed factor: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Allow drive-through road stops on town owned roads: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Allow building adjacent stations: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Enable multiple NewGRF engine sets: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING}
 
@@ -1119,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :First available
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Last available
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Most used
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Show reserved tracks: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Show building tools when no suitable vehicles are available: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
@@ -1154,6 +1175,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allow b
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signal type to build by default: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Advanced
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :One-way advanced
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cycle through signal types: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Normal only
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Advanced only
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :All
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}The town layout "no more roads" isn't valid in the scenario editor
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Select town-road layout: {ORANGE}{STRING}
@@ -1162,6 +1191,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :default
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :better roads
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :random
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Left
@@ -1193,6 +1223,19 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Change setting value
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Some or all of the default service interval(s) below are incompatible with chosen setting! 5-90% and 30-800 days are valid
+
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder for trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pathfinder for road vehicles: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Not recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder for ships: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommended)
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperate landscape
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arctic landscape
@@ -1226,6 +1269,7 @@ STR_WAYPOINT                                                    :{WHITE}Waypoint
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Select waypoint type
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Train{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edit waypoint name
@@ -1261,6 +1305,9 @@ STR_LANDINFO_CANAL                                              :Canal
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Can't build locks here...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Build locks
 STR_LANDINFO_LOCK                                               :Lock
+
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Can't place rivers here...
+STR_LANDINFO_RIVER                                              :River
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... buoy is in use!
 
@@ -1307,6 +1354,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transported)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transported)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industry names - click on name to center view on industry
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...too close to another industry
 
@@ -1328,6 +1376,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multipla
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Player name:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}This is the name other players will identify you by
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Enter your name
 STR_NETWORK_CONNECTION                                          :{BLACK}Connection:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Choose between an internet game or a local area nework game
 
@@ -1338,6 +1387,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Name
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Name of the game
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Language, server version, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Click a game from the list to select it
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}The server you joined last time:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Click to select the server you played last time
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Find server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Search network for a server
@@ -1348,6 +1399,17 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Enter th
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clients
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clients online / clients max
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Map size
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Map size of the game{}Click to sort by area
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Date
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Current date
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Years
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Number of years{}the game is running
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}GAME INFO
 STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Language:  {WHITE}{STRING}
@@ -1370,6 +1432,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Start ne
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Game name:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}The game name will be displayed to other players in the multiplayer game selection menu
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Enter a name for the network game
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Set password
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protect your game with a password if you don't want other people to join it
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Select a map:
@@ -1426,6 +1489,13 @@ STR_NETWORK_LANG_SPANISH                                        :Spanish
 STR_NETWORK_LANG_SWEDISH                                        :Swedish
 STR_NETWORK_LANG_TURKISH                                        :Turkish
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainian
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Croatian
+STR_NETWORK_LANG_CATALAN                                        :Catalan
+STR_NETWORK_LANG_ESTONIAN                                       :Estonian
+STR_NETWORK_LANG_GALICIAN                                       :Galician
+STR_NETWORK_LANG_GREEK                                          :Greek
+STR_NETWORK_LANG_LATVIAN                                        :Latvian
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
@@ -1524,6 +1594,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] To {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Enter text for network chat
 STR_NETWORK_NAME_CHANGE                                         :has changed his name to
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} The server closed the session
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} The server is restarting...{}Please wait...
@@ -1587,6 +1658,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Too high
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}No suitable railroad track
 STR_1007_ALREADY_BUILT                                          :{WHITE}...already built
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Must remove railroad track first
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Road is one way or blocked
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Railroad Construction
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Electrified Railroad Construction
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorail Construction
@@ -1619,12 +1691,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railroad track 
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Railroad track with pre-signals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Railroad track with exit-signals
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railway track with combo-signals
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Railroad track with advanced signals
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Railroad track with one-way advanced signals
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Railway track with normal and pre-signals
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Railway track with normal and exit-signals
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Railway track with normal and combo-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Railroad track with normal and advanced signals
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Railroad track with normal and one-way advanced signals
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Railway track with pre- and exit-signals
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Railway track with pre- and combo-signals
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Railroad track with pre- and advanced signals
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Railroad track with pre- and one-way advanced signals
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Railway track with exit- and combo-signals
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Railroad track with exit- and advanced signals
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Railroad track with exit- and one-way advanced signals
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Railroad track with combo- and advanced signals
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Railroad track with combo- and one-way advanced signals
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Railroad track with advanced and one-way advanced signals
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railway station first
 
 
@@ -1674,6 +1757,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Road with stree
 STR_1816_TREE_LINED_ROAD                                        :Tree-lined road
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Road vehicle depot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail grade crossing
+STR_TRAMWAY                                                     :Streetcar track
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Can't remove bus station...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Can't remove truck station...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Can't remove passenger tram station...
@@ -1689,6 +1773,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Building must be demolished first
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (City)
 STR_2006_POPULATION                                             :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Houses: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Rename Town
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Can't rename town...
@@ -1796,6 +1881,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Can't pl
 STR_280A_SIGN                                                   :Sign
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Edit sign text
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Can't change sign name...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Can't delete sign...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Select tree type to plant
 STR_280E_TREES                                                  :Trees
 STR_280F_RAINFOREST                                             :Rainforest
@@ -1898,6 +1984,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Select s
 STR_3804_WATER                                                  :Water
 STR_3805_COAST_OR_RIVERBANK                                     :Coast or riverbank
 STR_3806_SHIP_DEPOT                                             :Ship depot
+STR_AQUEDUCT                                                    :Aqueduct
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Can't build on water
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Must demolish canal first
 
@@ -1925,6 +2012,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Select N
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Select scenario (green), pre-set game (blue), or random new game
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generate random new game
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Load Heightmap
+STR_SAVE_OSKTITLE                                               :{BLACK}Enter a name for the savegame
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in the way
@@ -2321,6 +2409,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passenger/Mail Car (Steam)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passenger/Mail Car (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passenger/Mail Car (Electric)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passenger Car (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passenger Car (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Freight Car
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Truck
@@ -2612,10 +2702,85 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
+STR_ORDER_GO_TO                                                 :Go to
+STR_ORDER_GO_NON_STOP_TO                                        :Go non-stop to
+STR_ORDER_GO_VIA                                                :Go via
+STR_ORDER_GO_NON_STOP_VIA                                       :Go non-stop via
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Full load any cargo
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Load if available
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Full load all cargo
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Full load any cargo
+STR_ORDER_DROP_NO_LOADING                                       :No loading
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Unload all
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Unload if accepted
+STR_ORDER_DROP_UNLOAD                                           :Unload all
+STR_ORDER_DROP_TRANSFER                                         :Transfer
+STR_ORDER_DROP_NO_UNLOADING                                     :No unloading
+STR_ORDER_FULL_LOAD                                             :(Full load)
+STR_ORDER_FULL_LOAD_ANY                                         :(Full load any cargo)
+STR_ORDER_NO_LOAD                                               :(No loading)
+STR_ORDER_UNLOAD                                                :(Unload and take cargo)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Unload and wait for full load)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Unload and wait for any full load)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Unload and leave empty)
+STR_ORDER_TRANSFER                                              :(Transfer and take cargo)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer and wait for full load)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer and wait for any full load)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer and leave empty)
+STR_ORDER_NO_UNLOAD                                             :(No unload and take cargo)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(No unload and wait for full load)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(No unload and wait for any full load)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Change the stopping behaviour of the highlighted order
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Change the loading behaviour of the highlighted order
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Change the unloading behaviour of the highlighted order
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Insert an advanced order
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Go to nearest depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Go to nearest hangar
+STR_ORDER_NEAREST_DEPOT                                         :the nearest
+STR_ORDER_NEAREST_HANGAR                                        :the nearest Hangar
+STR_ORDER_SERVICE_AT                                            :Service at
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Service non-stop at
+STR_ORDER_TRAIN_DEPOT                                           :Train Depot
+STR_ORDER_ROAD_DEPOT                                            :Road Vehicle Depot
+STR_ORDER_SHIP_DEPOT                                            :Ship Depot
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
+
+STR_ORDER_CONDITIONAL                                           :Conditional order jump
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How to compare the vehicle data to the given value
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}The value to compare the vehicle data against
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Enter value to compare against
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Load percentage
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Reliability
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximum speed
+STR_ORDER_CONDITIONAL_AGE                                       :Vehicle age (years)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requires service
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Always
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is not equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is less than
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is less or equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :is more than
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :is more or equal to
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is true
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is false
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Jump to order {COMMA}
+STR_CONDITIONAL_NUM                                             :Jump to order {COMMA} when {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Jump to order {COMMA} when {STRING} {STRING}
+
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}No travel
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Travel (not timetabled)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Travel for {STRING}
 STR_TIMETABLE_STAY_FOR                                          :and stay for {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :and travel for {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} day{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
@@ -2626,6 +2791,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service
 
 STR_INVALID_ORDER                                               :{RED} (Invalid Order)
 
+STR_UNKNOWN_STATION                                             :unknown station
 STR_8812_EMPTY                                                  :{LTBLUE}Empty
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} from {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} from {STATION} (x{NUM})
@@ -2658,6 +2824,8 @@ STR_REFIT_TIP                                                   :{BLACK}Select w
 STR_REFIT_ORDER                                                 :(Refit to {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Timetable
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Switch to the timetable view
+STR_ORDER_VIEW                                                  :{BLACK}Orders
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Switch to the order view
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - End of Orders - -
 STR_SERVICE                                                     :{BLACK}Service
@@ -2666,6 +2834,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Value: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Loading / Unloading
+STR_LEAVING                                                     :{LTBLUE}Leaving
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside a depot
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Can't send train to depot...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}No more space for orders
@@ -2735,18 +2904,22 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Rename t
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Can't rename train vehicle type...
 STR_CLEAR_TIME                                                  :{BLACK}Clear Time
 STR_RESET_LATENESS                                              :{BLACK}Reset Late Counter
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Change waypoint name
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Incompatible rail types
 STR_TRAIN_NO_POWER                                              :{RED}No power
 STR_TRAIN_START_NO_CATENARY                                     :This track lacks catenary, so the train can't start
+STR_TRAIN_STUCK                                                 :{ORANGE}Waiting for free path
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}New {STRING} now available!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}New {STRING} now available!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Can't sell destroyed vehicle...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Can't refit destroyed vehicle...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Can't timetable vehicle...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehicles can only wait at stations.
@@ -2803,6 +2976,9 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Build th
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Speed: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacity: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vehicle{P "" s}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name road vehicle
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Can't name road vehicle...
@@ -2827,6 +3003,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Can't re
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Select type of cargo for road vehicle to carry
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Waterways construction
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Waterways construction
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Waterways
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Can't build dock here...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Ship Depot
 STR_9804_NEW_SHIPS                                              :{BLACK}New Ships
@@ -2879,6 +3058,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Can't na
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First ship arrives at {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Place a buoy which can be used as a waypoint
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Can't place buoy here...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Build aqueduct
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Can't build aqueduct here...
 STR_9836_RENAME                                                 :{BLACK}Rename
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Rename ship type
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Rename ship type
@@ -2978,6 +3159,10 @@ STR_BRIBE_FAILED                                                :{WHITE}Your att
 STR_BRIBE_FAILED_2                                              :{WHITE}discovered by a regional investigator
 STR_BUILD_DATE                                                  :{BLACK}Built: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Station class: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Station type: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailed performance rating
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3010,10 +3195,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total po
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Settings
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf settings
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Apply changes
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Toggle palette
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Toggle the palette of the selected NewGRF.{}Do this when the graphics from this NewGRF look pink in-game
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Set parameters
 STR_NEWGRF_TIP                                                  :{BLACK}A list of all the Newgrf sets that you have installed. Click a set to change the settings.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}There are currently no newgrf files installed! Please refer to the manual for instructions to install new graphics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Filename: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Palette: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}You are about to make changes to a running game; this can crash OpenTTD.{}Are you absolutely sure about this?
@@ -3031,7 +3219,17 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} requires OpenTTD version {STRING} or better.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :the GRF file it was designed to translate
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Too many NewGRFs are loaded.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {STRING} as static NewGRF with {STRING} could cause desyncs.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Load the selected preset
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Save preset
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Save the current list as a preset
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Enter name for preset
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Delete preset
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Delete the currently selected preset
 STR_NEWGRF_ADD                                                  :{BLACK}Add
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Add a NewGRF file to the list
 STR_NEWGRF_REMOVE                                               :{BLACK}Remove
@@ -3059,6 +3257,14 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchin
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatible GRF(s) loaded for missing files
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing GRF file(s) have been disabled
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Missing GRF file(s) to be able to load game
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing GRF file(s)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
+
+STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{STRING}' is likely to cause desyncs and/or crashes.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash.
+
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without streetcar support. All streetcars have been removed.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3183,6 +3389,12 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
 STR_PURCHASE_INFO_ALL_BUT                                       :All but {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
+
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Generate
@@ -3191,6 +3403,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Change t
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}World generation
 STR_RANDOM_SEED                                                 :{BLACK}Random Seed:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Click to enter a random seed
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Enter a random seed
 STR_LAND_GENERATOR                                              :{BLACK}Land generator:
 STR_TREE_PLACER                                                 :{BLACK}Tree algorithm:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Heightmap rotation:
@@ -3281,7 +3494,9 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle t
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots, waypoints and catenary
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas, maybe in future for eyecandy
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Toggle transparency for catenary. CTRL+click to lock.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Set objects invisible instead of transparent
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3337,6 +3552,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Name mus
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Go to next sign
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Go to previous sign
+STR_SIGN_OSKTITLE                                               :{BLACK}Enter a name for the sign
 
 ########
 
@@ -3400,12 +3616,27 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Entry-Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a normal signal but is necessary to trigger the correct color on entry & combo pre-signals.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Advanced Signal (semaphore){}An advanced signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Advanced signals can be passed from the backside.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}One-way Advanced Signal (semaphore){}An advanced signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way signals cannot be passed from the backside.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standard Signal (electric){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Entry-Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-Signal (electric){}Behaves in the same way as a normal signal but is necessary to trigger the correct color on entry & combo pre-signals.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Advanced Signal (electric){}An advanced signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Advanced signals can be passed from the backside.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}One-way Advanced Signal (electric){}An advanced signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way signals cannot be passed from the backside.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, CTRL-click will toggle the existing variant.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragging signal density
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrease dragging signal density
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase dragging signal density
+########
+
+############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Allow town controlled noise level for airports: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Noise generated: {GOLD}{COMMA}
 ########
