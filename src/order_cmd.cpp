@@ -304,8 +304,10 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
 		if (conditional_depth > v->num_orders) return 0;
 
 		conditional_depth++;
-		return max(GetOrderDistance(prev, &v->orders[cur->GetConditionSkipToOrder()], v, conditional_depth),
-				GetOrderDistance(prev, (prev + 1 == &v->orders[v->num_orders]) ? v->orders : (prev + 1), v, conditional_depth));
+
+		int dist1 = GetOrderDistance(prev, GetVehicleOrder(v, cur->GetConditionSkipToOrder()), v, conditional_depth);
+		int dist2 = GetOrderDistance(prev, cur->next == NULL ? v->orders : cur->next, v, conditional_depth);
+		return max(dist1, dist2);
 	}
 
 	return DistanceManhattan(GetOrderLocation(*prev), GetOrderLocation(*cur));
