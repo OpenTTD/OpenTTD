@@ -118,7 +118,7 @@ void NetworkInitChatMessage()
 	_chatmsg_box.x      = 10;
 	_chatmsg_box.y      = 30;
 	_chatmsg_box.width  = _settings_client.gui.network_chat_box_width;
-	_chatmsg_box.height = _settings_client.gui.network_chat_box_height * NETWORK_CHAT_LINE_HEIGHT;
+	_chatmsg_box.height = _settings_client.gui.network_chat_box_height * NETWORK_CHAT_LINE_HEIGHT + 2;
 	_chatmessage_backup = ReallocT(_chatmessage_backup, _chatmsg_box.width * _chatmsg_box.height * BlitterFactoryBase::GetCurrentBlitter()->GetBytesPerPixel());
 
 	for (uint i = 0; i < MAX_CHAT_MESSAGES; i++) {
