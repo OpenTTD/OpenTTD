@@ -467,6 +467,11 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		} else {
 			_chat_tab_completion_active = false;
 			switch (this->HandleEditBoxKey(2, key, keycode, state)) {
+				default: NOT_REACHED();
+				case 0: {
+					Window *osk = FindWindowById(WC_OSK, 0);
+					if (osk != NULL && osk->parent == this) osk->OnInvalidateData();
+				} break;
 				case 1: /* Return */
 					SendChat(this->text.buf, this->dtype, this->dest);
 				/* FALLTHROUGH */
