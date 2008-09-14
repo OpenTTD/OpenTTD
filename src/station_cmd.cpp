@@ -2813,7 +2813,7 @@ static bool IsUniqueStationName(const char *name)
  */
 CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsValidStationID(p1))
+	if (!IsValidStationID(p1)) return CMD_ERROR;
 	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_STATION_NAME_BYTES) return CMD_ERROR;
 
 	Station *st = GetStation(p1);
