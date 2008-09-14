@@ -381,12 +381,10 @@ static bool IsUniqueWaypointName(const char *name)
  */
 CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Waypoint *wp;
-
 	if (!IsValidWaypointID(p1)) return CMD_ERROR;
 
-	wp = GetWaypoint(p1);
-	if (!CheckTileOwnership(wp->xy)) return CMD_ERROR;
+	Waypoint *wp = GetWaypoint(p1);
+	if (!CheckOwnership(wp->owner)) return CMD_ERROR;
 
 	if (!StrEmpty(_cmd_text)) {
 		if (strlen(_cmd_text) >= MAX_LENGTH_WAYPOINT_NAME_BYTES) return CMD_ERROR;
