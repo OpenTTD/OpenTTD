@@ -182,9 +182,9 @@ bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, uint32 flags)
  * @param flags type of operation
  * @param p1 packed start tile coords (~ dx)
  * @param p2 various bitstuffed elements
- * - p2 = (bit 0- 7) - bridge type (hi bh)
- * - p2 = (bit 8-..) - rail type or road types.
- * - p2 = (bit 15  ) - set means road bridge.
+ * - p2 = (bit  0- 7) - bridge type (hi bh)
+ * - p2 = (bit  8-14) - rail type or road types.
+ * - p2 = (bit 15-16) - transport type.
  */
 CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -226,7 +226,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 			break;
 
 		case TRANSPORT_RAIL:
-			railtype = (RailType)GB(p2, 8, 8);
+			railtype = (RailType)GB(p2, 8, 7);
 			if (!ValParamRailtype(railtype)) return CMD_ERROR;
 			break;
 

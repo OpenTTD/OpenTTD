@@ -275,17 +275,17 @@ static const WindowDesc _build_bridge_desc = {
  * @parma start The start tile of the bridge
  * @param end The end tile of the bridge
  * @param transport_type The transport type
- * @param bridge_type The bridge type
+ * @param road_rail_type The road/rail type
  */
-void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte bridge_type)
+void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transport_type, byte road_rail_type)
 {
 	DeleteWindowById(WC_BUILD_BRIDGE, 0);
 
 	/* Data type for the bridge.
 	 * Bit 16,15 = transport type,
-	 *     14..8 = road/rail pieces,
+	 *     14..8 = road/rail types,
 	 *      7..0 = type of bridge */
-	uint32 type = (transport_type << 15) | (bridge_type << 8);
+	uint32 type = (transport_type << 15) | (road_rail_type << 8);
 
 	/* only query bridge building possibility once, result is the same for all bridges!
 	 * returns CMD_ERROR on failure, and price on success */
