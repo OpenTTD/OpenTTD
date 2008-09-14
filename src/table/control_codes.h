@@ -64,6 +64,7 @@ enum StringControlCode {
 	SCC_STRING,
 	SCC_COMMA,
 	SCC_NUM,
+	SCC_HEX,
 
 	SCC_STRING_ID,
 	SCC_RAW_STRING_POINTER,
@@ -101,7 +102,7 @@ enum StringControlCode {
 	SCC_NEWGRF_FIRST,
 	SCC_NEWGRF_PRINT_DWORD = SCC_NEWGRF_FIRST, ///< Read 4 bytes from the stack
 	SCC_NEWGRF_PRINT_SIGNED_WORD,              ///< Read 2 bytes from the stack as signed value
-	SCC_NEWGRF_PRINT_SIGNED_BYTE,              ///< Read 1 bytes from the stack as signed value
+	SCC_NEWGRF_PRINT_SIGNED_BYTE,              ///< Read 1 byte from the stack as signed value
 	SCC_NEWGRF_PRINT_UNSIGNED_WORD,            ///< Read 2 bytes from the stack as unsigned value
 	SCC_NEWGRF_PRINT_DWORD_CURRENCY,           ///< Read 4 bytes from the stack as currency
 	SCC_NEWGRF_PRINT_STRING_ID,                ///< Read 2 bytes from the stack as String ID
@@ -110,6 +111,9 @@ enum StringControlCode {
 	SCC_NEWGRF_PRINT_WORD_SPEED,               ///< Read 2 bytes from the stack as signed speed
 	SCC_NEWGRF_PRINT_WORD_LITRES,              ///< Read 2 bytes from the stack as signed litres
 	SCC_NEWGRF_PRINT_QWORD_CURRENCY,           ///< Read 8 bytes from the stack as currency
+	SCC_NEWGRF_PRINT_HEX_BYTE,                 ///< Read 1 byte from the stack and print it as hex
+	SCC_NEWGRF_PRINT_HEX_WORD,                 ///< Read 2 bytes from the stack and print it as hex
+	SCC_NEWGRF_PRINT_HEX_DWORD,                ///< Read 4 bytes from the stack and print it as hex
 	SCC_NEWGRF_PUSH_WORD,                      ///< Pushes 2 bytes onto the stack
 	SCC_NEWGRF_UNPRINT,                        ///< "Unprints" the given number of bytes from the string
 	SCC_NEWGRF_DISCARD_WORD,                   ///< Discard the next two bytes

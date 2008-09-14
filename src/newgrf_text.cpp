@@ -284,6 +284,16 @@ char *TranslateTTDPatchCodes(uint32 grfid, const char *str)
 						d += Utf8Encode(d, SCC_NEWGRF_UNPRINT);
 						d += Utf8Encode(d, *str++);
 						break;
+					case 6:
+						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_BYTE);
+						break;
+					case 7:
+						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_WORD);
+						break;
+					case 8:
+						d += Utf8Encode(d, SCC_NEWGRF_PRINT_HEX_DWORD);
+						break;
+
 					default:
 						grfmsg(1, "missing handler for extended format code");
 						break;
@@ -625,6 +635,10 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 			case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
 			case SCC_NEWGRF_PRINT_DWORD:          *argv = _newgrf_textrefstack->PopSignedDWord();   break;
 
+			case SCC_NEWGRF_PRINT_HEX_BYTE:       *argv = _newgrf_textrefstack->PopUnsignedByte();  break;
+			case SCC_NEWGRF_PRINT_HEX_DWORD:      *argv = _newgrf_textrefstack->PopUnsignedDWord(); break;
+
+			case SCC_NEWGRF_PRINT_HEX_WORD:
 			case SCC_NEWGRF_PRINT_WORD_SPEED:
 			case SCC_NEWGRF_PRINT_WORD_LITRES:
 			case SCC_NEWGRF_PRINT_UNSIGNED_WORD:  *argv = _newgrf_textrefstack->PopUnsignedWord();  break;
@@ -652,6 +666,11 @@ uint RemapNewGRFStringControlCode(uint scc, char **buff, const char **str, int64
 		case SCC_NEWGRF_PRINT_SIGNED_BYTE:
 		case SCC_NEWGRF_PRINT_UNSIGNED_WORD:
 			return SCC_COMMA;
+
+		case SCC_NEWGRF_PRINT_HEX_BYTE:
+		case SCC_NEWGRF_PRINT_HEX_WORD:
+		case SCC_NEWGRF_PRINT_HEX_DWORD:
+			return SCC_HEX;
 
 		case SCC_NEWGRF_PRINT_DWORD_CURRENCY:
 		case SCC_NEWGRF_PRINT_QWORD_CURRENCY:

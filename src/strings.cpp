@@ -267,6 +267,10 @@ static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
 	return buff;
 }
 
+static char *FormatHexNumber(char *buff, int64 number, const char *last)
+{
+	return buff + snprintf(buff, last - buff, "0x%x", (uint32)number);
+}
 
 static char *FormatYmdString(char *buff, Date date, const char* last)
 {
@@ -813,6 +817,10 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 
 			case SCC_NUM: // {NUM}
 				buff = FormatNoCommaNumber(buff, GetInt64(&argv), last);
+				break;
+
+			case SCC_HEX: // {HEX}
+				buff = FormatHexNumber(buff, GetInt64(&argv), last);
 				break;
 
 			case SCC_CURRENCY: // {CURRENCY}
