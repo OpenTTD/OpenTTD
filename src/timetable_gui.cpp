@@ -231,7 +231,7 @@ struct TimetableWindow : Window {
 					}
 				}
 
-				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, 150, this, CS_NUMERAL);
+				ShowQueryString(current, STR_TIMETABLE_CHANGE_TIME, 31, 150, this, CS_NUMERAL, QSF_NONE);
 			} break;
 
 			case TTV_CLEAR_TIME: { /* Clear waiting time button. */

@@ -927,7 +927,7 @@ struct PatchesSelectionWindow : Window {
 
 						this->entry = btn;
 						SetDParam(0, value);
-						ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL);
+						ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
 					}
 				}
 			} break;
@@ -1165,7 +1165,7 @@ struct CustomCurrencyWindow : Window {
 
 		if (len != 0) {
 			this->query_widget = line;
-			ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, 250, this, afilter);
+			ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, 250, this, afilter, QSF_NONE);
 		}
 
 		this->flags4 |= 5 << WF_TIMEOUT_SHL;

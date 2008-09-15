@@ -8,6 +8,7 @@
 #include "window_type.h"
 #include "string_type.h"
 #include "strings_type.h"
+#include "core/enum_type.hpp"
 
 struct Textbuf {
 	char *buf;                  ///< buffer in which text is saved
@@ -28,9 +29,18 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode);
 void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16 maxwidth);
 void UpdateTextBufferSize(Textbuf *tb);
 
+/** Flags used in ShowQueryString() call */
+enum QueryStringFlags {
+	QSF_NONE            =    0,
+	QSF_ACCEPT_UNCHANGED = 0x01, ///< return success even when the text didn't change
+};
+
+DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)
+
+
 typedef void QueryCallbackProc(Window*, bool);
 
-void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter);
+void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter, QueryStringFlags flags);
 void ShowQuery(StringID caption, StringID message, Window *w, QueryCallbackProc *callback);
 
 /** The number of 'characters' on the on-screen keyboard. */

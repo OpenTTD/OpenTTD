@@ -916,7 +916,7 @@ public:
 			/* 'Player face number' button, view and/or set player face number */
 			case PFW_WIDGET_FACECODE:
 				SetDParam(0, this->face);
-				ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, 0, this, CS_NUMERAL);
+				ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, 0, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			/* Save button */
@@ -1257,13 +1257,13 @@ struct PlayerCompanyWindow : Window
 			case PCW_WIDGET_PRESIDENT_NAME:
 				this->query_widget = PCW_WIDGET_PRESIDENT_NAME;
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, MAX_LENGTH_PRESIDENT_NAME_BYTES, MAX_LENGTH_PRESIDENT_NAME_PIXELS, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, MAX_LENGTH_PRESIDENT_NAME_BYTES, MAX_LENGTH_PRESIDENT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
 			case PCW_WIDGET_COMPANY_NAME:
 				this->query_widget = PCW_WIDGET_COMPANY_NAME;
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, MAX_LENGTH_COMPANY_NAME_BYTES, MAX_LENGTH_COMPANY_NAME_PIXELS, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, MAX_LENGTH_COMPANY_NAME_BYTES, MAX_LENGTH_COMPANY_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
 			case PCW_WIDGET_BUILD_VIEW_HQ: {

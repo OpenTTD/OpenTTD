@@ -415,7 +415,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_START_DATE_TEXT: // Year text
 				this->widget_id = GLAND_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case GLAND_SNOW_LEVEL_DOWN:
@@ -433,7 +433,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SNOW_LEVEL_TEXT: // Snow line text
 				this->widget_id = GLAND_SNOW_LEVEL_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.snow_line_height);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_SNOW_LINE_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case GLAND_TREE_PULLDOWN: // Tree placer
@@ -709,7 +709,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_START_DATE_TEXT: // Year text
 				this->widget_id = CSCEN_START_DATE_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.starting_year);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			case CSCEN_FLAT_LAND_HEIGHT_DOWN:
@@ -727,7 +727,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_FLAT_LAND_HEIGHT_TEXT: // Height level text
 				this->widget_id = CSCEN_FLAT_LAND_HEIGHT_TEXT;
 				SetDParam(0, _settings_newgame.game_creation.se_flat_world_height);
-				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, this, CS_NUMERAL);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_FLAT_WORLD_HEIGHT_QUERY_CAPT, 3, 100, this, CS_NUMERAL, QSF_NONE);
 				break;
 		}
 	}

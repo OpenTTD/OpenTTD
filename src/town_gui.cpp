@@ -370,7 +370,7 @@ public:
 
 			case TVW_CHANGENAME: /* rename */
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
 			case TVW_EXPAND: /* expand town - only available on Scenario editor */

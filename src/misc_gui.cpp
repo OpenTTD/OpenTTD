@@ -1154,30 +1154,29 @@ static const WindowDesc _query_string_desc = {
 /** Show a query popup window with a textbox in it.
  * @param str StringID for the text shown in the textbox
  * @param caption StringID of text shown in caption of querywindow
- * @param maxlen maximum length in characters allowed. If bit 12 is set we
- *               will not check the resulting string against to original string to return success
+ * @param maxlen maximum length in characters allowed
  * @param maxwidth maximum width in pixels allowed
  * @param parent pointer to a Window that will handle the events (ok/cancel) of this
  *        window. If NULL, results are handled by global function HandleOnEditText
- * @param afilter filters out unwanted character input */
-void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter)
+ * @param afilter filters out unwanted character input
+ * @param flags various flags, @see QueryStringFlags
+ */
+void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, Window *parent, CharSetFilter afilter, QueryStringFlags flags)
 {
-	uint realmaxlen = maxlen & ~0x1000;
-
 	DeleteWindowById(WC_QUERY_STRING, 0);
 	DeleteWindowById(WC_SAVELOAD, 0);
 
-	QueryStringWindow *w = new QueryStringWindow(realmaxlen + 1, &_query_string_desc, parent);
+	QueryStringWindow *w = new QueryStringWindow(maxlen + 1, &_query_string_desc, parent);
 
-	GetString(w->edit_str_buf, str, &w->edit_str_buf[realmaxlen]);
-	w->edit_str_buf[realmaxlen] = '\0';
+	GetString(w->edit_str_buf, str, &w->edit_str_buf[maxlen]);
+	w->edit_str_buf[maxlen] = '\0';
 
-	if (!(maxlen & 0x1000)) w->orig = strdup(w->edit_str_buf);
+	if ((flags & QSF_ACCEPT_UNCHANGED) == 0) w->orig = strdup(w->edit_str_buf);
 
 	w->LowerWidget(QUERY_STR_WIDGET_TEXT);
 	w->caption = caption;
 	w->afilter = afilter;
-	InitializeTextBuffer(&w->text, w->edit_str_buf, realmaxlen, maxwidth);
+	InitializeTextBuffer(&w->text, w->edit_str_buf, maxlen, maxwidth);
 }
 
 

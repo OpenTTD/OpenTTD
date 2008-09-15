@@ -466,7 +466,7 @@ struct NewGRFWindow : public Window {
 
 			case SNGRFS_PRESET_SAVE:
 				this->query_widget = widget;
-				ShowQueryString(STR_EMPTY, STR_NEWGRF_PRESET_SAVE_QUERY, 32, 100, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_EMPTY, STR_NEWGRF_PRESET_SAVE_QUERY, 32, 100, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 
 			case SNGRFS_PRESET_DELETE:
@@ -575,7 +575,7 @@ struct NewGRFWindow : public Window {
 				static char buff[512];
 				GRFBuildParamList(buff, this->sel, lastof(buff));
 				SetDParamStr(0, buff);
-				ShowQueryString(STR_JUST_RAW_STRING, STR_NEWGRF_PARAMETER_QUERY, 63, 250, this, CS_ALPHANUMERAL);
+				ShowQueryString(STR_JUST_RAW_STRING, STR_NEWGRF_PARAMETER_QUERY, 63, 250, this, CS_ALPHANUMERAL, QSF_NONE);
 				break;
 			}
 
