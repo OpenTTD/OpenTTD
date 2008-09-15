@@ -1348,7 +1348,8 @@ bool AfterLoadGame()
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			st->name = CopyFromOldName(st->string_id);
-			if (st->name != NULL) st->string_id = STR_EMPTY;
+			/* generating new name would be too much work for little effect, use the station name fallback */
+			if (st->name != NULL) st->string_id = STR_SV_STNAME_FALLBACK;
 		}
 
 		Town *t;
