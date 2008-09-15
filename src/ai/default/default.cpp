@@ -2045,7 +2045,7 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 		}
 
 		// Is building a (rail)bridge possible at this place (type doesn't matter)?
-		if (CmdFailed(DoCommand(tile_new, tile, 0 | _players_ai[arf->player->index].railtype_to_use << 8, DC_AUTO, CMD_BUILD_BRIDGE))) {
+		if (CmdFailed(DoCommand(tile_new, tile, _players_ai[arf->player->index].railtype_to_use << 8 | TRANSPORT_RAIL << 15, DC_AUTO, CMD_BUILD_BRIDGE))) {
 			return;
 		}
 		AiBuildRailRecursive(arf, tile_new, dir2);
@@ -2231,13 +2231,13 @@ static void AiBuildRailConstruct(Player *p)
 			int i;
 			for (i = MAX_BRIDGES - 1; i != 0; i--) {
 				if (CheckBridge_Stuff(i, bridge_len)) {
-					CommandCost cost = DoCommand(t1, t2, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+					CommandCost cost = DoCommand(t1, t2, i | _players_ai[p->index].railtype_to_use << 8 | TRANSPORT_RAIL << 15, DC_AUTO, CMD_BUILD_BRIDGE);
 					if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 1) && cost.GetCost() < ((p->player_money + _economy.max_loan - p->current_loan) >> 5)) break;
 				}
 			}
 
 			/* Build it */
-			DoCommand(t1, t2, i | (_players_ai[p->index].railtype_to_use << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
+			DoCommand(t1, t2, i | _players_ai[p->index].railtype_to_use << 8 | TRANSPORT_RAIL << 15, DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
 		}
 
 		_players_ai[p->index].cur_tile_a = t2;
@@ -2954,7 +2954,7 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 		}
 
 		// Is building a (rail)bridge possible at this place (type doesn't matter)?
-		if (CmdFailed(DoCommand(tile_new, tile, ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE)))
+		if (CmdFailed(DoCommand(tile_new, tile, ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, DC_AUTO, CMD_BUILD_BRIDGE)))
 			return;
 		AiBuildRoadRecursive(arf, tile_new, dir2);
 
@@ -3112,13 +3112,13 @@ do_some_terraform:
 			 * unnecessary to check for worse bridge (i=0), since AI will always build that */
 			for (i = MAX_BRIDGES - 1; i != 0; i--) {
 				if (CheckBridge_Stuff(i, bridge_len)) {
-					CommandCost cost = DoCommand(t1, t2, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO, CMD_BUILD_BRIDGE);
+					CommandCost cost = DoCommand(t1, t2, i | ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, DC_AUTO, CMD_BUILD_BRIDGE);
 					if (CmdSucceeded(cost) && cost.GetCost() < (p->player_money >> 1) && cost.GetCost() < ((p->player_money + _economy.max_loan - p->current_loan) >> 5)) break;
 				}
 			}
 
 			/* Build it */
-			DoCommand(t1, t2, i + ((0x80 | ROADTYPES_ROAD) << 8), DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
+			DoCommand(t1, t2, i | ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, DC_AUTO | DC_EXEC, CMD_BUILD_BRIDGE);
 		}
 
 		_players_ai[p->index].cur_tile_a = t2;

@@ -77,9 +77,9 @@ CommandCost AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, by
 
 	// Now, simply, build the bridge!
 	if (_players_ainew[p->index].tbt == AI_TRAIN) {
-		return AI_DoCommand(tile_a, tile_b, (0x00 << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
+		return AI_DoCommand(tile_a, tile_b, type2 | RAILTYPE_RAIL  << 8 | TRANSPORT_RAIL << 15, flag | DC_AUTO, CMD_BUILD_BRIDGE);
 	} else {
-		return AI_DoCommand(tile_a, tile_b, ((0x80 | ROADTYPES_ROAD) << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
+		return AI_DoCommand(tile_a, tile_b, type2 | ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, flag | DC_AUTO, CMD_BUILD_BRIDGE);
 	}
 }
 
