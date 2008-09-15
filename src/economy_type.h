@@ -12,13 +12,15 @@
 typedef OverflowSafeInt64 Money;
 
 struct Economy {
-	Money max_loan;         ///< Maximum possible loan
-	Money max_loan_unround; ///< Economy fluctuation status
-	uint16 max_loan_unround_fract; ///< Fraction of the unrounded max loan
+	Money max_loan;                       ///< Maximum possible loan
+	Money max_loan_unround;               ///< Economy fluctuation status
+	uint16 max_loan_unround_fract;        ///< Fraction of the unrounded max loan
 	int16 fluct;
-	byte interest_rate;     ///< Interest
-	byte infl_amount;       ///< inflation amount
-	byte infl_amount_pr;    ///< inflation rate for payment rates
+	byte interest_rate;                   ///< Interest
+	byte infl_amount;                     ///< inflation amount
+	byte infl_amount_pr;                  ///< inflation rate for payment rates
+	uint32 industry_daily_change_counter; ///< Bits 31-16 are number of industry to be performed, 15-0 are fractional collected daily
+	uint32 industry_daily_increment;      ///< The value which will increment industry_daily_change_counter. Computed value. NOSAVE
 };
 
 struct Subsidy {

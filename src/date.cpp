@@ -159,7 +159,7 @@ Date ConvertYMDToDate(Year year, Month month, Day day)
 extern void WaypointsDailyLoop();
 extern void EnginesDailyLoop();
 extern void DisasterDailyLoop();
-
+extern void IndustryDailyLoop();
 extern void PlayersMonthlyLoop();
 extern void EnginesMonthlyLoop();
 extern void TownsMonthlyLoop();
@@ -229,6 +229,7 @@ void IncreaseDate()
 
 	DisasterDailyLoop();
 	WaypointsDailyLoop();
+	IndustryDailyLoop();
 
 	if (_game_mode != GM_MENU) {
 		InvalidateWindowWidget(WC_STATUS_BAR, 0, 0);

@@ -2235,6 +2235,47 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	}
 }
 
+/** Daily handler for the industry changes
+ * Taking the original map size of 256*256, the number of random changes was always of just one unit.
+ * But it cannot be the same on smaller or bigger maps. That number has to be scaled up or down.
+ * For small maps, it implies that less than one change per month is required, while on bigger maps,
+ * it would be way more. The daily loop handles those changes. */
+void IndustryDailyLoop()
+{
+	_economy.industry_daily_change_counter += _economy.industry_daily_increment;
+
+	/* Bits 16-31 of industry_construction_counter contain the number of industries to change/create today,
+	 * the lower 16 bit are a fractional part that might accumulate over several days until it
+	 * is sufficient for an industry. */
+	uint16 change_loop = _economy.industry_daily_change_counter >> 16;
+
+	/* Reset the active part of the counter, just keeping the "factional part" */
+	_economy.industry_daily_change_counter &= 0xFFFF;
+
+	if (change_loop == 0) {
+		return;  // Nothing to do? get out
+	}
+
+	PlayerID old_player = _current_player;
+	_current_player = OWNER_NONE;
+
+	/* perform the required industry changes for the day */
+	for (uint16 j = 0; j < change_loop; j++) {
+		/* 3% chance that we start a new industry */
+		if (Chance16(3, 100)) {
+			MaybeNewIndustry();
+		} else {
+			Industry *i = GetRandomIndustry();
+			if (i != NULL) ChangeIndustryProduction(i, false);
+		}
+	}
+
+	_current_player = old_player;
+
+	/* production-change */
+	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 1);
+}
+
 void IndustryMonthlyLoop()
 {
 	Industry *i;
@@ -2248,14 +2289,6 @@ void IndustryMonthlyLoop()
 		} else {
 			ChangeIndustryProduction(i, true);
 		}
-	}
-
-	/* 3% chance that we start a new industry */
-	if (Chance16(3, 100)) {
-		MaybeNewIndustry();
-	} else {
-		i = GetRandomIndustry();
-		if (i != NULL) ChangeIndustryProduction(i, false);
 	}
 
 	_current_player = old_player;

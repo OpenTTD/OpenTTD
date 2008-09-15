@@ -260,6 +260,8 @@ static inline IndustryGfx GetTranslatedIndustryTileID(IndustryGfx gfx)
 
 /* smallmap_gui.cpp */
 void BuildIndustriesLegend();
+/* industry_cmd.cpp */
+void SetIndustryDailyChanges();
 
 /**
  * Check if an Industry exists whithin the pool of industries

@@ -786,6 +786,27 @@ void SetPriceBaseMultiplier(uint price, byte factor)
 	price_base_multiplier[price] = factor;
 }
 
+/**
+ * Initialize the variables that will maintain the daily industry change system.
+ * @param init_counter specifies if the counter is required to be initialized
+ */
+static void StartupIndustryDailyChanges(bool init_counter)
+{
+	uint map_size = MapLogX() + MapLogY();
+	/* After getting map size, it needs to be scaled appropriately and divided by 31,
+	 * which stands for the days in a month.
+	 * Using just 31 will make it so that a monthly reset (based on the real number of days of that month)
+	 * would not be needed.
+	 * Since it is based on "fractionnal parts", the leftover days will not make much of a difference
+	 * on the overall total number of changes performed */
+	_economy.industry_daily_increment = (1 << map_size) / 31;
+
+	if (init_counter) {
+		/* A new game or a savegame from an older version will require the counter to be initialized */
+		_economy.industry_daily_change_counter = 0;
+	}
+}
+
 void StartupEconomy()
 {
 	int i;
@@ -816,6 +837,9 @@ void StartupEconomy()
 	_economy.infl_amount_pr = max(0, _settings_game.difficulty.initial_interest - 1);
 	_economy.max_loan_unround = _economy.max_loan = _settings_game.difficulty.max_loan;
 	_economy.fluct = GB(Random(), 0, 8) + 168;
+
+	StartupIndustryDailyChanges(true); // As we are starting a new game, initialize the counter too
+
 }
 
 void ResetEconomy()
@@ -1924,27 +1948,35 @@ static void SaveLoad_CAPR()
 }
 
 static const SaveLoad _economy_desc[] = {
-	SLE_CONDVAR(Economy, max_loan,         SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
-	SLE_CONDVAR(Economy, max_loan,         SLE_INT64,                  65, SL_MAX_VERSION),
-	SLE_CONDVAR(Economy, max_loan_unround, SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
-	SLE_CONDVAR(Economy, max_loan_unround, SLE_INT64,                  65, SL_MAX_VERSION),
-	SLE_CONDVAR(Economy, max_loan_unround_fract, SLE_UINT16,           70, SL_MAX_VERSION),
-	    SLE_VAR(Economy, fluct,            SLE_INT16),
-	    SLE_VAR(Economy, interest_rate,    SLE_UINT8),
-	    SLE_VAR(Economy, infl_amount,      SLE_UINT8),
-	    SLE_VAR(Economy, infl_amount_pr,   SLE_UINT8),
+	SLE_CONDVAR(Economy, max_loan,                      SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
+	SLE_CONDVAR(Economy, max_loan,                      SLE_INT64,                  65, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, max_loan_unround,              SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
+	SLE_CONDVAR(Economy, max_loan_unround,              SLE_INT64,                  65, SL_MAX_VERSION),
+	SLE_CONDVAR(Economy, max_loan_unround_fract,        SLE_UINT16,                 70, SL_MAX_VERSION),
+	    SLE_VAR(Economy, fluct,                         SLE_INT16),
+	    SLE_VAR(Economy, interest_rate,                 SLE_UINT8),
+	    SLE_VAR(Economy, infl_amount,                   SLE_UINT8),
+	    SLE_VAR(Economy, infl_amount_pr,                SLE_UINT8),
+	SLE_CONDVAR(Economy, industry_daily_change_counter, SLE_UINT32,                102, SL_MAX_VERSION),
 	    SLE_END()
 };
 
 /** Economy variables */
-static void SaveLoad_ECMY()
+static void Save_ECMY()
 {
 	SlObject(&_economy, _economy_desc);
+}
+
+/** Economy variables */
+static void Load_ECMY()
+{
+	SlObject(&_economy, _economy_desc);
+	StartupIndustryDailyChanges(CheckSavegameVersion(102));  // old savegames will need to be initialized
 }
 
 extern const ChunkHandler _economy_chunk_handlers[] = {
 	{ 'PRIC', SaveLoad_PRIC, SaveLoad_PRIC, CH_RIFF | CH_AUTO_LENGTH},
 	{ 'CAPR', SaveLoad_CAPR, SaveLoad_CAPR, CH_RIFF | CH_AUTO_LENGTH},
 	{ 'SUBS', Save_SUBS,     Load_SUBS,     CH_ARRAY},
-	{ 'ECMY', SaveLoad_ECMY, SaveLoad_ECMY, CH_RIFF | CH_LAST},
+	{ 'ECMY', Save_ECMY,     Load_ECMY,     CH_RIFF | CH_LAST},
 };
