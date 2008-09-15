@@ -363,10 +363,12 @@ static void LoadIntroGame()
 	if (SaveOrLoad("opntitle.dat", SL_LOAD, DATA_DIR) != SL_OK) {
 		GenerateWorld(GW_EMPTY, 64, 64); // if failed loading, make empty world.
 		WaitTillGeneratedWorld();
+		SetLocalPlayer(PLAYER_SPECTATOR);
+	} else {
+		SetLocalPlayer(PLAYER_FIRST);
 	}
 
 	_pause_game = 0;
-	SetLocalPlayer(PLAYER_FIRST);
 	_cursor.fix_at = false;
 	MarkWholeScreenDirty();
 
