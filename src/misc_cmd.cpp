@@ -269,7 +269,7 @@ CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint
 		free(p->president_name);
 		p->president_name = strdup(_cmd_text);
 
-		if (p->name_1 == STR_SV_UNNAMED) {
+		if (p->name_1 == STR_SV_UNNAMED && p->name == NULL) {
 			char buf[80];
 
 			snprintf(buf, lengthof(buf), "%s Transport", _cmd_text);
