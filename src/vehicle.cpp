@@ -1680,17 +1680,20 @@ static bool IsUniqueVehicleName(const char *name)
 CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
-	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_VEHICLE_NAME_BYTES) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p1);
-
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if ((flags & DC_AUTOREPLACE) == 0 && !IsUniqueVehicleName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	bool reset = StrEmpty(_cmd_text);
+
+	if (!reset) {
+		if (strlen(_cmd_text) >= MAX_LENGTH_VEHICLE_NAME_BYTES) return CMD_ERROR;
+		if (!(flags & DC_AUTOREPLACE) && !IsUniqueVehicleName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	}
 
 	if (flags & DC_EXEC) {
 		free(v->name);
-		v->name = strdup(_cmd_text);
+		v->name = reset ? NULL : strdup(_cmd_text);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 1);
 		MarkWholeScreenDirty();
 	}

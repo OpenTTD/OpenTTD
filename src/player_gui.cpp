@@ -1257,13 +1257,13 @@ struct PlayerCompanyWindow : Window
 			case PCW_WIDGET_PRESIDENT_NAME:
 				this->query_widget = PCW_WIDGET_PRESIDENT_NAME;
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, MAX_LENGTH_PRESIDENT_NAME_BYTES, MAX_LENGTH_PRESIDENT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, MAX_LENGTH_PRESIDENT_NAME_BYTES, MAX_LENGTH_PRESIDENT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case PCW_WIDGET_COMPANY_NAME:
 				this->query_widget = PCW_WIDGET_COMPANY_NAME;
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, MAX_LENGTH_COMPANY_NAME_BYTES, MAX_LENGTH_COMPANY_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, MAX_LENGTH_COMPANY_NAME_BYTES, MAX_LENGTH_COMPANY_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case PCW_WIDGET_BUILD_VIEW_HQ: {
@@ -1328,7 +1328,7 @@ struct PlayerCompanyWindow : Window
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		if (StrEmpty(str)) return;
+		if (str == NULL) return;
 
 		_cmd_text = str;
 		switch (this->query_widget) {

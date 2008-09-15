@@ -1049,6 +1049,7 @@ void QueryStringBaseWindow::DrawEditBox(int wid)
 
 enum QueryStringWidgets {
 	QUERY_STR_WIDGET_TEXT = 3,
+	QUERY_STR_WIDGET_DEFAULT,
 	QUERY_STR_WIDGET_CANCEL,
 	QUERY_STR_WIDGET_OK
 };
@@ -1093,6 +1094,9 @@ struct QueryStringWindow : public QueryStringBaseWindow
 				ShowOnScreenKeyboard(this, QUERY_STR_WIDGET_TEXT, QUERY_STR_WIDGET_CANCEL, QUERY_STR_WIDGET_OK);
 				break;
 
+			case QUERY_STR_WIDGET_DEFAULT:
+				this->text.buf[0] = '\0';
+				/* Fallthrough */
 			case QUERY_STR_WIDGET_OK:
 				this->OnOk();
 				/* Fallthrough */
@@ -1138,9 +1142,10 @@ static const Widget _query_string_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   259,     0,    13, STR_012D,        STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   259,    14,    29, 0x0,             STR_NULL},
-{    WWT_EDITBOX,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,    27, 0x0,             STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   129,    30,    41, STR_012E_CANCEL, STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   130,   259,    30,    41, STR_012F_OK,     STR_NULL},
+{    WWT_EDITBOX,   RESIZE_NONE,  COLOUR_GREY,     2,   257,    16,    27, 0x0,             STR_NULL}, // QUERY_STR_WIDGET_TEXT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    86,    30,    41, STR_DEFAULT,     STR_NULL}, // QUERY_STR_WIDGET_DEFAULT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    87,   172,    30,    41, STR_012E_CANCEL, STR_NULL}, // QUERY_STR_WIDGET_CANCEL
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   173,   259,    30,    41, STR_012F_OK,     STR_NULL}, // QUERY_STR_WIDGET_OK
 {   WIDGETS_END},
 };
 
@@ -1172,6 +1177,15 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	w->edit_str_buf[maxlen] = '\0';
 
 	if ((flags & QSF_ACCEPT_UNCHANGED) == 0) w->orig = strdup(w->edit_str_buf);
+
+	if ((flags & QSF_ENABLE_DEFAULT) == 0) {
+		/* without the "Default" button, make "Cancel" and "OK" buttons wider */
+		w->SetWidgetHiddenState(QUERY_STR_WIDGET_DEFAULT, true);
+		w->widget[QUERY_STR_WIDGET_CANCEL].left  = 0;
+		w->widget[QUERY_STR_WIDGET_CANCEL].right = w->width / 2 - 1;
+		w->widget[QUERY_STR_WIDGET_OK].left      = w->width / 2;
+		w->widget[QUERY_STR_WIDGET_OK].right     = w->width - 1;
+	}
 
 	w->LowerWidget(QUERY_STR_WIDGET_TEXT);
 	w->caption = caption;

@@ -912,7 +912,7 @@ struct StationViewWindow : public Window {
 
 			case SVW_RENAME:
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, MAX_LENGTH_STATION_NAME_BYTES, MAX_LENGTH_STATION_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_STATION, STR_3030_RENAME_STATION_LOADING, MAX_LENGTH_STATION_NAME_BYTES, MAX_LENGTH_STATION_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case SVW_TRAINS: { // Show a list of scheduled trains to this station
@@ -947,11 +947,10 @@ struct StationViewWindow : public Window {
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		if (!StrEmpty(str)) {
-			_cmd_text = str;
-			DoCommandP(0, this->window_number, 0, NULL,
-				CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
-		}
+		if (str == NULL) return;
+
+		_cmd_text = str;
+		DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
 	}
 
 	virtual void OnResize(Point new_size, Point delta)

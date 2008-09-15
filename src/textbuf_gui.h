@@ -31,8 +31,9 @@ void UpdateTextBufferSize(Textbuf *tb);
 
 /** Flags used in ShowQueryString() call */
 enum QueryStringFlags {
-	QSF_NONE            =    0,
+	QSF_NONE             =    0,
 	QSF_ACCEPT_UNCHANGED = 0x01, ///< return success even when the text didn't change
+	QSF_ENABLE_DEFAULT   = 0x02, ///< enable the 'Default' button ("\0" is returned)
 };
 
 DECLARE_ENUM_AS_BIT_SET(QueryStringFlags)

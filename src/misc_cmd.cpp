@@ -224,14 +224,17 @@ static bool IsUniqueCompanyName(const char *name)
  */
 CommandCost CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_COMPANY_NAME_BYTES) return CMD_ERROR;
+	bool reset = StrEmpty(_cmd_text);
 
-	if (!IsUniqueCompanyName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	if (!reset) {
+		if (strlen(_cmd_text) >= MAX_LENGTH_COMPANY_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueCompanyName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	}
 
 	if (flags & DC_EXEC) {
 		Player *p = GetPlayer(_current_player);
 		free(p->name);
-		p->name = strdup(_cmd_text);
+		p->name = reset ? NULL : strdup(_cmd_text);
 		MarkWholeScreenDirty();
 	}
 
@@ -260,22 +263,31 @@ static bool IsUniquePresidentName(const char *name)
  */
 CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_PRESIDENT_NAME_BYTES) return CMD_ERROR;
+	bool reset = StrEmpty(_cmd_text);
 
-	if (!IsUniquePresidentName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	if (!reset) {
+		if (strlen(_cmd_text) >= MAX_LENGTH_PRESIDENT_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniquePresidentName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	}
 
 	if (flags & DC_EXEC) {
 		Player *p = GetPlayer(_current_player);
 		free(p->president_name);
-		p->president_name = strdup(_cmd_text);
 
-		if (p->name_1 == STR_SV_UNNAMED && p->name == NULL) {
-			char buf[80];
+		if (reset) {
+			p->president_name = NULL;
+		} else {
+			p->president_name = strdup(_cmd_text);
 
-			snprintf(buf, lengthof(buf), "%s Transport", _cmd_text);
-			_cmd_text = buf;
-			DoCommand(0, 0, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
+			if (p->name_1 == STR_SV_UNNAMED && p->name == NULL) {
+				char buf[80];
+
+				snprintf(buf, lengthof(buf), "%s Transport", _cmd_text);
+				_cmd_text = buf;
+				DoCommand(0, 0, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
+			}
 		}
+
 		MarkWholeScreenDirty();
 	}
 

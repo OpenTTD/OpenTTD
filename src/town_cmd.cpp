@@ -2094,15 +2094,19 @@ static bool IsUniqueTownName(const char *name)
 CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidTownID(p1)) return CMD_ERROR;
-	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_TOWN_NAME_BYTES) return CMD_ERROR;
 
-	if (!IsUniqueTownName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	bool reset = StrEmpty(_cmd_text);
+
+	if (!reset) {
+		if (strlen(_cmd_text) >= MAX_LENGTH_TOWN_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueTownName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	}
 
 	if (flags & DC_EXEC) {
 		Town *t = GetTown(p1);
 
 		free(t->name);
-		t->name = strdup(_cmd_text);
+		t->name = reset ? NULL : strdup(_cmd_text);
 
 		UpdateTownVirtCoord(t);
 		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);

@@ -530,7 +530,7 @@ public:
 				const Group *g = GetGroup(this->group_sel);
 
 				SetDParam(0, g->index);
-				ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_BYTES, MAX_LENGTH_GROUP_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_GROUP_NAME, STR_GROUP_RENAME_CAPTION, MAX_LENGTH_GROUP_NAME_BYTES, MAX_LENGTH_GROUP_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 			} break;
 
 
@@ -623,11 +623,10 @@ public:
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		if (!StrEmpty(str)) {
-			_cmd_text = str;
+		if (str == NULL) return;
 
-			DoCommandP(0, this->group_sel, 0, NULL, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME));
-		}
+		_cmd_text = str;
+		DoCommandP(0, this->group_sel, 0, NULL, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME));
 	}
 
 	virtual void OnResize(Point new_size, Point delta)

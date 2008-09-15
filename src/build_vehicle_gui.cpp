@@ -1094,7 +1094,7 @@ struct BuildVehicleWindow : Window {
 						case VEH_AIRCRAFT: str = STR_A039_RENAME_AIRCRAFT_TYPE;      break;
 					}
 					SetDParam(0, sel_eng);
-					ShowQueryString(STR_ENGINE_NAME, str, MAX_LENGTH_ENGINE_NAME_BYTES, MAX_LENGTH_ENGINE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
+					ShowQueryString(STR_ENGINE_NAME, str, MAX_LENGTH_ENGINE_NAME_BYTES, MAX_LENGTH_ENGINE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				}
 				break;
 			}
@@ -1156,18 +1156,18 @@ struct BuildVehicleWindow : Window {
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		if (!StrEmpty(str)) {
-			StringID err_str = STR_NULL;
-			_cmd_text = str;
-			switch (this->vehicle_type) {
-				default: NOT_REACHED();
-				case VEH_TRAIN:    err_str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
-				case VEH_ROAD:     err_str = STR_9037_CAN_T_RENAME_ROAD_VEHICLE;  break;
-				case VEH_SHIP:     err_str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
-				case VEH_AIRCRAFT: err_str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
-			}
-			DoCommandP(0, this->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(err_str));
+		if (str == NULL) return;
+
+		StringID err_str = STR_NULL;
+		_cmd_text = str;
+		switch (this->vehicle_type) {
+			default: NOT_REACHED();
+			case VEH_TRAIN:    err_str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
+			case VEH_ROAD:     err_str = STR_9037_CAN_T_RENAME_ROAD_VEHICLE;  break;
+			case VEH_SHIP:     err_str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
+			case VEH_AIRCRAFT: err_str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
 		}
+		DoCommandP(0, this->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(err_str));
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)

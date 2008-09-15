@@ -386,26 +386,24 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	Waypoint *wp = GetWaypoint(p1);
 	if (!CheckOwnership(wp->owner)) return CMD_ERROR;
 
-	if (!StrEmpty(_cmd_text)) {
+	bool reset = StrEmpty(_cmd_text);
+
+	if (!reset) {
 		if (strlen(_cmd_text) >= MAX_LENGTH_WAYPOINT_NAME_BYTES) return CMD_ERROR;
 		if (!IsUniqueWaypointName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	}
 
-		if (flags & DC_EXEC) {
-			free(wp->name);
+	if (flags & DC_EXEC) {
+		free(wp->name);
+
+		if (reset) {
+			MakeDefaultWaypointName(wp); // sets wp->name = NULL
+		} else {
 			wp->name = strdup(_cmd_text);
-			wp->town_cn = 0;
-
-			UpdateWaypointSign(wp);
-			MarkWholeScreenDirty();
 		}
-	} else {
-		if (flags & DC_EXEC) {
-			free(wp->name);
 
-			MakeDefaultWaypointName(wp);
-			UpdateWaypointSign(wp);
-			MarkWholeScreenDirty();
-		}
+		UpdateWaypointSign(wp);
+		MarkWholeScreenDirty();
 	}
 	return CommandCost();
 }

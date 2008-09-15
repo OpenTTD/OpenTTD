@@ -74,7 +74,7 @@ public:
 
 			case WAYPVW_RENAME: /* rename */
 				SetDParam(0, this->wp->index);
-				ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_WAYPOINT_NAME_BYTES, MAX_LENGTH_WAYPOINT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, MAX_LENGTH_WAYPOINT_NAME_BYTES, MAX_LENGTH_WAYPOINT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case WAYPVW_SHOW_TRAINS: /* show list of trains having this waypoint in their orders*/
@@ -92,10 +92,10 @@ public:
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		if (!StrEmpty(str)) {
-			_cmd_text = str;
-			DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
-		}
+		if (str == NULL) return;
+
+		_cmd_text = str;
+		DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
 	}
 
 };

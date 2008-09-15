@@ -494,15 +494,33 @@ static bool IsUniqueEngineName(const char *name)
 CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsEngineIndex(p1)) return CMD_ERROR;
-	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_ENGINE_NAME_BYTES) return CMD_ERROR;
 
-	if (!IsUniqueEngineName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	bool reset = StrEmpty(_cmd_text);
+
+	if (!reset) {
+		if (strlen(_cmd_text) >= MAX_LENGTH_ENGINE_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueEngineName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	}
 
 	if (flags & DC_EXEC) {
 		Engine *e = GetEngine(p1);
 		free(e->name);
-		e->name = strdup(_cmd_text);
-		_vehicle_design_names |= 3;
+
+		if (reset) {
+			e->name = NULL;
+			/* if we removed the last custom name, disable the 'Save custom names' button */
+			_vehicle_design_names &= ~1;
+			FOR_ALL_ENGINES(e) {
+				if (e->name != NULL) {
+					_vehicle_design_names |= 1;
+					break;
+				}
+			}
+		} else {
+			e->name = strdup(_cmd_text);
+			_vehicle_design_names |= 3;
+		}
+
 		MarkWholeScreenDirty();
 	}
 

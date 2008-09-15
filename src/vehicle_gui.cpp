@@ -1470,7 +1470,7 @@ struct VehicleDetailsWindow : Window {
 			case VLD_WIDGET_RENAME_VEHICLE: {// rename
 				const Vehicle *v = GetVehicle(this->window_number);
 				SetDParam(0, v->index);
-				ShowQueryString(STR_VEHICLE_NAME, _name_vehicle_title[v->type], MAX_LENGTH_VEHICLE_NAME_BYTES, MAX_LENGTH_VEHICLE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_VEHICLE_NAME, _name_vehicle_title[v->type], MAX_LENGTH_VEHICLE_NAME_BYTES, MAX_LENGTH_VEHICLE_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 			} break;
 
 			case VLD_WIDGET_INCREASE_SERVICING_INTERVAL:   // increase int
@@ -1513,10 +1513,10 @@ struct VehicleDetailsWindow : Window {
 			STR_A031_CAN_T_NAME_AIRCRAFT
 		};
 
-		if (!StrEmpty(str)) {
-			_cmd_text = str;
-			DoCommandP(0, this->window_number, 0, NULL, CMD_NAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]));
-		}
+		if (str == NULL) return;
+
+		_cmd_text = str;
+		DoCommandP(0, this->window_number, 0, NULL, CMD_NAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]));
 	}
 
 	virtual void OnResize(Point new_size, Point delta)

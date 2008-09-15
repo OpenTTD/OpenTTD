@@ -370,7 +370,7 @@ public:
 
 			case TVW_CHANGENAME: /* rename */
 				SetDParam(0, this->window_number);
-				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_NONE);
+				ShowQueryString(STR_TOWN, STR_2007_RENAME_TOWN, MAX_LENGTH_TOWN_NAME_BYTES, MAX_LENGTH_TOWN_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
 			case TVW_EXPAND: /* expand town - only available on Scenario editor */
@@ -401,11 +401,10 @@ public:
 
 	virtual void OnQueryTextFinished(char *str)
 	{
-		if (!StrEmpty(str)) {
-			_cmd_text = str;
-			DoCommandP(0, this->window_number, 0, NULL,
-				CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
-		}
+		if (str == NULL) return;
+
+		_cmd_text = str;
+		DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
 	}
 };
 

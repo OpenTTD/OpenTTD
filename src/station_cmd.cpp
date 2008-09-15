@@ -2814,17 +2814,20 @@ static bool IsUniqueStationName(const char *name)
 CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidStationID(p1)) return CMD_ERROR;
-	if (StrEmpty(_cmd_text) || strlen(_cmd_text) >= MAX_LENGTH_STATION_NAME_BYTES) return CMD_ERROR;
 
 	Station *st = GetStation(p1);
-
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
-	if (!IsUniqueStationName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	bool reset = StrEmpty(_cmd_text);
+
+	if (!reset) {
+		if (strlen(_cmd_text) >= MAX_LENGTH_STATION_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueStationName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+	}
 
 	if (flags & DC_EXEC) {
 		free(st->name);
-		st->name = strdup(_cmd_text);
+		st->name = reset ? NULL : strdup(_cmd_text);
 
 		UpdateStationVirtCoord(st);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 1);
