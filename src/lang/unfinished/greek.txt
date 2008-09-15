@@ -1411,7 +1411,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Χτίστε ένα άγαλμα προς τιμήν της εταιρείας σας.{} Κόστος: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Χρηματοδοτήστε την κατασκευή νέων εμπορικών κτιρίων στην πόλη.{}  Κόστος: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Αγορά αποκλειστικών δικαιωμάτων διάρκειας 1 χρόνου για την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρείας σας.{} Κόστος: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα επανακατασκευής των δρόμων από την εταιρεία {COMPANY} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα επανακατασκευής των δρόμων από την εταιρεία {STRING} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (υπό κατασκευή)
@@ -1817,15 +1817,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Πίνα
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Εταιρεία μεταφορών σε μπελάδες!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Η εταιρεία {COMPANY} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί η απόδοσή της!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Η εταιρεία {STRING} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί η απόδοσή της!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Διευθυντής)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Συγχώνευση εταιρειών μεταφοράς!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}Η εταιρεία {COMPANY} πουλήθηκε στην {COMPANY} για το ποσό των {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}Η εταιρεία {STRING} πουλήθηκε στην {STRING} για το ποσό των {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Ψάχνουμε μία εταιρεία μεταφορών για να αναλάβει την εταιρεία μας.{}{}Θέλετε να αγοράσετε την {COMPANY} για {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Χρεωκοπία!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}Η {COMPANY} έκλεισε από τους επενδυτές και όλα εκποιήθηκαν!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}Η {STRING} έκλεισε από τους επενδυτές και όλα εκποιήθηκαν!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Ίδρυση νέας εταιρείας μεταφορών!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}Η {COMPANY} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}Η {STRING} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Αδύνατη η εξαγορά της εταιρείας...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ποσοστά Πληρωμής Φορτίων
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Μέρες σε μεταφορά
@@ -1856,8 +1856,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Πώλη
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Αδύνατη η αγορά μεριδίου 25% της εταιρείας...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Αδύνατη η πώληση μεριδίου 25% της εταιρείας...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% είναι ιδιοκτησία της εταιρείας {COMPANY}{}   {COMMA}% ιδιοκτησία της {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Η {COMPANY} εξαγοράστηκε από την {COMPANY}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Η {STRING} εξαγοράστηκε από την {STRING}!
 STR_PROTECTED                                                   :{WHITE}Αυτή η εταιρεία δεν είναι αρκετά ώριμη για συναλλαγή μετοχών ακόμα...
 
 
