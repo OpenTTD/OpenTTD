@@ -30,7 +30,7 @@ struct BaseVehicleListWindow: public Window {
 		this->vehicles.SetSortFuncs(this->vehicle_sorter_funcs);
 	}
 
-	void DrawVehicleListItems(int x);
+	void DrawVehicleListItems(int x, VehicleID selected_vehicle);
 	void SortVehicleList();
 	void BuildVehicleList(PlayerID owner, uint16 index, uint16 window_type);
 };

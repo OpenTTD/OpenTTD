@@ -440,7 +440,7 @@ public:
 
 		this->DrawSortButtonState(GRP_WIDGET_SORT_BY_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
-		this->DrawVehicleListItems(x);
+		this->DrawVehicleListItems(x, this->vehicle_sel);
 	}
 
 	virtual void OnClick(Point pt, int widget)

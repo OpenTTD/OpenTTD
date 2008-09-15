@@ -741,8 +741,9 @@ static void DrawVehicleImage(const Vehicle *v, int x, int y, VehicleID selection
 /**
  * Draw all the vehicle list items.
  * @param x the position from where to draw the items.
+ * @param selected_vehicle the vehicle that is to be selected
  */
-void BaseVehicleListWindow::DrawVehicleListItems(int x)
+void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehicle)
 {
 	int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
 	uint max = min(this->vscroll.pos + this->vscroll.cap, this->vehicles.Length());
@@ -753,7 +754,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x)
 		SetDParam(0, v->GetDisplayProfitThisYear());
 		SetDParam(1, v->GetDisplayProfitLastYear());
 
-		DrawVehicleImage(v, x + 19, y + 6, INVALID_VEHICLE, this->widget[VLW_WIDGET_LIST].right - this->widget[VLW_WIDGET_LIST].left - 20, 0);
+		DrawVehicleImage(v, x + 19, y + 6, selected_vehicle, this->widget[VLW_WIDGET_LIST].right - this->widget[VLW_WIDGET_LIST].left - 20, 0);
 		DrawString(x + 19, y + this->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, TC_FROMSTRING);
 
 		if (v->name != NULL) {
@@ -992,7 +993,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		/* draw arrow pointing up/down for ascending/descending sorting */
 		this->DrawSortButtonState(VLW_WIDGET_SORT_ORDER, this->vehicles.IsDescSortOrder() ? SBS_DOWN : SBS_UP);
 
-		this->DrawVehicleListItems(x);
+		this->DrawVehicleListItems(x,  INVALID_VEHICLE);
 	}
 
 	virtual void OnClick(Point pt, int widget)
