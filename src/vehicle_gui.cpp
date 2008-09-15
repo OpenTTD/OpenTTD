@@ -1516,7 +1516,7 @@ struct VehicleDetailsWindow : Window {
 		if (str == NULL) return;
 
 		_cmd_text = str;
-		DoCommandP(0, this->window_number, 0, NULL, CMD_NAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]));
+		DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]));
 	}
 
 	virtual void OnResize(Point new_size, Point delta)

@@ -113,11 +113,11 @@ DEF_COMMAND(CmdDecreaseLoan);
 
 DEF_COMMAND(CmdWantEnginePreview);
 
-DEF_COMMAND(CmdNameVehicle);
+DEF_COMMAND(CmdRenameVehicle);
 DEF_COMMAND(CmdRenameEngine);
 
-DEF_COMMAND(CmdChangeCompanyName);
-DEF_COMMAND(CmdChangePresidentName);
+DEF_COMMAND(CmdRenameCompany);
+DEF_COMMAND(CmdRenamePresident);
 
 DEF_COMMAND(CmdRenameStation);
 
@@ -263,11 +263,11 @@ static const Command _command_proc_table[] = {
 
 	{CmdWantEnginePreview,                   0}, /* CMD_WANT_ENGINE_PREVIEW */
 
-	{CmdNameVehicle,                         0}, /* CMD_NAME_VEHICLE */
+	{CmdRenameVehicle,                       0}, /* CMD_RENAME_VEHICLE */
 	{CmdRenameEngine,                        0}, /* CMD_RENAME_ENGINE */
 
-	{CmdChangeCompanyName,                   0}, /* CMD_CHANGE_COMPANY_NAME */
-	{CmdChangePresidentName,                 0}, /* CMD_CHANGE_PRESIDENT_NAME */
+	{CmdRenameCompany,                       0}, /* CMD_RENAME_COMPANY */
+	{CmdRenamePresident,                     0}, /* CMD_RENAME_PRESIDENT */
 
 	{CmdRenameStation,                       0}, /* CMD_RENAME_STATION */
 

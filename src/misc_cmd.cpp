@@ -222,7 +222,7 @@ static bool IsUniqueCompanyName(const char *name)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	bool reset = StrEmpty(_cmd_text);
 
@@ -261,7 +261,7 @@ static bool IsUniquePresidentName(const char *name)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenamePresident(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	bool reset = StrEmpty(_cmd_text);
 
@@ -284,7 +284,7 @@ CommandCost CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint
 
 				snprintf(buf, lengthof(buf), "%s Transport", _cmd_text);
 				_cmd_text = buf;
-				DoCommand(0, 0, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
+				DoCommand(0, 0, 0, DC_EXEC, CMD_RENAME_COMPANY);
 			}
 		}
 

@@ -880,7 +880,7 @@ CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 * For example in network_client.c:534? */
 				_cmd_text = ci->client_name;
 				_local_player = ci->client_playas;
-				NetworkSend_Command(0, 0, 0, CMD_CHANGE_PRESIDENT_NAME, NULL);
+				NetworkSend_Command(0, 0, 0, CMD_RENAME_PRESIDENT, NULL);
 				_local_player = player_backup;
 			}
 		}

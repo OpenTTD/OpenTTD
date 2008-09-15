@@ -313,7 +313,7 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 		/* Copy vehicle name */
 		if (old_head->name != NULL) {
 			_cmd_text = old_head->name;
-			DoCommand(0, new_head->index, 0, DC_EXEC | DC_AUTOREPLACE, CMD_NAME_VEHICLE);
+			DoCommand(0, new_head->index, 0, DC_EXEC | DC_AUTOREPLACE, CMD_RENAME_VEHICLE);
 			_cmd_text = NULL;
 		}
 

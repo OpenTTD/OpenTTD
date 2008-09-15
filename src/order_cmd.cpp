@@ -1259,7 +1259,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 	/* If we have a custom name, process that */
 	if (bak->name != NULL) {
 		_cmd_text = bak->name;
-		DoCommandP(0, v->index, 0, NULL, CMD_NAME_VEHICLE);
+		DoCommandP(0, v->index, 0, NULL, CMD_RENAME_VEHICLE);
 	}
 
 	/* If we had shared orders, recover that */

@@ -1677,7 +1677,7 @@ static bool IsUniqueVehicleName(const char *name)
  * @param p1 vehicle ID to name
  * @param p2 unused
  */
-CommandCost CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
