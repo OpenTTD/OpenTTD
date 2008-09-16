@@ -224,6 +224,33 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		this->InvalidateWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 	}
 
+	/**
+	 * Returns a pointer to the (alphabetically) previous or next sign of the current sign.
+	 * @param next false if the previous sign is wanted, true if the next sign is wanted
+	 * @return pointer to the previous/next sign
+	 */
+	const Sign *PrevNextSign(bool next)
+	{
+		/* Rebuild the sign list */
+		this->signs.ForceRebuild();
+		this->signs.NeedResort();
+		this->BuildSignsList();
+		this->SortSignsList();
+
+		/* Search through the list for the current sign, excluding
+		 * - the first sign if we want the previous sign or
+		 * - the last sign if we want the next sign */
+		uint end = this->signs.Length() - (next ? 1 : 0);
+		for (uint i = next ? 0 : 1; i < end; i++) {
+			if (this->cur_sign == this->signs[i]->index) {
+				/* We've found the current sign, so return the sign before/after it */
+				return this->signs[i + (next ? 1 : -1)];
+			}
+		}
+		/* If we haven't found the current sign by now, return the last/first sign */
+		return this->signs[next ? 0 : this->signs.Length() - 1];
+	}
+
 	virtual void OnPaint()
 	{
 		SetDParam(0, this->caption);
@@ -234,45 +261,15 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case QUERY_EDIT_SIGN_WIDGET_PREVIOUS: {
-				/* Rebuild the sign list */
-				this->signs.ForceRebuild();
-				this->signs.NeedResort();
-				this->BuildSignsList();
-				this->SortSignsList();
-
-				/* By default pick the last entry */
-				const Sign *si = this->signs[this->signs.Length() - 1];
-
-				for (uint i = 1; i < this->signs.Length(); i++) {
-					if (this->cur_sign == this->signs[i]->index) {
-						si = this->signs[i - 1];
-						break;
-					}
-				}
-
-				/* Scroll to sign and reopen window */
-				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
-				UpdateSignEditWindow(si);
-				break;
-			}
-
+			case QUERY_EDIT_SIGN_WIDGET_PREVIOUS:
 			case QUERY_EDIT_SIGN_WIDGET_NEXT: {
+				const Sign *si = this->PrevNextSign(widget == QUERY_EDIT_SIGN_WIDGET_NEXT);
+
 				/* Rebuild the sign list */
 				this->signs.ForceRebuild();
 				this->signs.NeedResort();
 				this->BuildSignsList();
 				this->SortSignsList();
-
-				/* By default pick the last entry */
-				const Sign *si = this->signs[this->signs.Length() - 1];
-
-				for (uint i = 0; i < this->signs.Length() - 1; i++) {
-					if (this->cur_sign == this->signs[i]->index) {
-						si = this->signs[i + 1];
-						break;
-					}
-				}
 
 				/* Scroll to sign and reopen window */
 				ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
