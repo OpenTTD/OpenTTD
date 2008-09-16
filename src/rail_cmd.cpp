@@ -1988,7 +1988,8 @@ default_waypoint:
 		DrawGroundSprite(image, PAL_NONE);
 
 		/* PBS debugging, draw reserved tracks darker */
-		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && GetDepotWaypointReservation(ti->tile)) {
+		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && GetDepotWaypointReservation(ti->tile) &&
+				(!IsRailDepot(ti->tile) || GetRailDepotDirection(ti->tile) == DIAGDIR_SW || GetRailDepotDirection(ti->tile) == DIAGDIR_SE)) {
 			DrawGroundSprite(GetWaypointAxis(ti->tile) == AXIS_X ? rti->base_sprites.single_y : rti->base_sprites.single_x, PALETTE_CRASH);
 		}
 
