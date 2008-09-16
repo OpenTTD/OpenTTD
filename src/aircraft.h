@@ -130,4 +130,6 @@ struct Aircraft : public Vehicle {
 	bool FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse);
 };
 
+Station *GetTargetAirportIfValid(const Vehicle *v);
+
 #endif /* AIRCRAFT_H */
