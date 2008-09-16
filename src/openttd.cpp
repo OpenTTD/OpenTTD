@@ -2560,6 +2560,13 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(103)) {
+		/* signs with invalid owner left from older savegames */
+		Sign *si;
+		FOR_ALL_SIGNS(si) {
+			if (si->owner != OWNER_NONE && !IsValidPlayerID(si->owner)) si->owner = OWNER_NONE;
+		}
+	}
 
 	GamelogPrintDebug(1);
 

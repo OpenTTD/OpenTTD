@@ -45,6 +45,7 @@
 #include "gfx_func.h"
 #include "autoreplace_func.h"
 #include "player_gui.h"
+#include "signs_base.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -465,6 +466,11 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		FOR_ALL_GROUPS(g) {
 			if (g->owner == old_player) g->owner = new_player;
 		}
+	}
+
+	Sign *si;
+	FOR_ALL_SIGNS(si) {
+		if (si->owner == old_player) si->owner = new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player;
 	}
 
 	/* Change color of existing windows */
