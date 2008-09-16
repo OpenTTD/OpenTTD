@@ -36,6 +36,10 @@ Sign::Sign(PlayerID owner)
 Sign::~Sign()
 {
 	free(this->name);
+
+	if (CleaningPool()) return;
+
+	DeleteRenameSignWindow(this->index);
 	this->owner = INVALID_PLAYER;
 }
 

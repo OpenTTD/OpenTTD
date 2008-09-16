@@ -286,8 +286,9 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 			case QUERY_EDIT_SIGN_WIDGET_DELETE:
 				/* Only need to set the buffer to null, the rest is handled as the OK button */
-				DeleteTextBufferAll(&this->text);
-				/* FALL THROUGH */
+				RenameSign(this->cur_sign, "");
+				/* don't delete this, we are deleted in Sign::~Sign() -> DeleteRenameSignWindow() */
+				break;
 
 			case QUERY_EDIT_SIGN_WIDGET_OK:
 				RenameSign(this->cur_sign, this->text.buf);
@@ -357,4 +358,11 @@ void ShowRenameSignWindow(const Sign *si)
 	DeleteWindowById(WC_SAVELOAD, 0);
 
 	new SignWindow(&_query_sign_edit_desc, si);
+}
+
+void DeleteRenameSignWindow(SignID sign)
+{
+	SignWindow *w = dynamic_cast<SignWindow *>(FindWindowById(WC_QUERY_STRING, 0));
+
+	if (w != NULL && w->cur_sign == sign) delete w;
 }
