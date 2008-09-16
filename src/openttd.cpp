@@ -1365,6 +1365,14 @@ bool AfterLoadGame()
 			wp->name = CopyFromOldName(wp->string);
 			wp->string = STR_EMPTY;
 		}
+
+		for (uint i = 0; i < GetSignPoolSize(); i++) {
+			/* invalid signs are determined by si->ower == INVALID_PLAYER now */
+			Sign *si = GetSign(i);
+			if (!si->IsValid() && si->name != NULL) {
+				si->owner = OWNER_NONE;
+			}
+		}
 	}
 
 	/* From this point the old names array is cleared. */
