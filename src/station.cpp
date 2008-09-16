@@ -31,6 +31,7 @@
 #include "variables.h"
 #include "settings_type.h"
 #include "command_func.h"
+#include "aircraft.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -71,6 +72,13 @@ Station::~Station()
 
 	while (!loading_vehicles.empty()) {
 		loading_vehicles.front()->LeaveStation();
+	}
+
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v) && v->u.air.targetairport == this->index) {
+			v->u.air.targetairport = INVALID_STATION;
+		}
 	}
 
 	MarkDirty();

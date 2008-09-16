@@ -629,6 +629,13 @@ void Vehicle::PreDestructor()
 	}
 
 	if (this->type == VEH_ROAD) ClearSlot(this);
+	if (this->type == VEH_AIRCRAFT && this->IsPrimaryVehicle()) {
+		Station *st = GetTargetAirportIfValid(this);
+		if (st != NULL) {
+			const AirportFTA *layout = st->Airport()->layout;
+			CLRBITS(st->airport_flags, layout[this->u.air.previous_pos].block | layout[this->u.air.pos].block);
+		}
+	}
 
 	if (this->type != VEH_TRAIN || (this->type == VEH_TRAIN && (IsFrontEngine(this) || IsFreeWagon(this)))) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, this->tile);

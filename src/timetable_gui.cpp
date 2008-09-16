@@ -51,6 +51,7 @@ static inline void SetTimetableParams(int param1, int param2, uint32 time)
 static void DrawTimetableWindow(Window *w)
 {
 	const Vehicle *v = GetVehicle(w->window_number);
+	if (WP(w, order_d).sel >= v->num_orders * 2) WP(w, order_d).sel = -1;
 	int selected = WP(w, order_d).sel;
 
 	SetVScrollCount(w, v->num_orders * 2);

@@ -127,4 +127,6 @@ struct Aircraft : public Vehicle {
 	void OnNewDay();
 };
 
+Station *GetTargetAirportIfValid(const Vehicle *v);
+
 #endif /* AIRCRAFT_H */

@@ -166,7 +166,8 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 				}
 			}
 		} else {
-			cost.AddCost(_price.remove_road);
+			assert(IsDriveThroughStopTile(tile));
+			cost.AddCost(_price.remove_road * 2);
 			if (flags & DC_EXEC) {
 				SetRoadTypes(tile, GetRoadTypes(tile) & ~RoadTypeToRoadTypes(rt));
 				MarkTileDirtyByTile(tile);
@@ -468,9 +469,11 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				} break;
 
 				case ROAD_TILE_CROSSING:
-					if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 					all_bits = GetCrossingRoadBits(tile);
 					if (pieces & ComplementRoadBits(all_bits)) goto do_clear;
+					pieces = all_bits; // we need to pay for both roadbits
+
+					if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
 					break;
 
 				default:
@@ -518,15 +521,15 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			return CommandCost(EXPENSES_CONSTRUCTION, _price.build_road * (rt == ROADTYPE_ROAD ? 2 : 4));
 		}
 
-		case MP_STATION:
-			if (!IsRoadStop(tile)) goto do_clear;
-			if (IsDriveThroughStopTile(tile)) {
-				if (pieces & ~AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(tile)))) goto do_clear;
-			} else {
-				if (pieces & ~DiagDirToRoadBits(GetRoadStopDir(tile))) goto do_clear;
-			}
+		case MP_STATION: {
+			if (!IsDriveThroughStopTile(tile)) goto do_clear;
+
+			RoadBits curbits = AxisToRoadBits(DiagDirToAxis(GetRoadStopDir(tile)));
+			if (pieces & ~curbits) goto do_clear;
+			pieces = curbits; // we need to pay for both roadbits
+
 			if (HasTileRoadType(tile, rt)) return_cmd_error(STR_1007_ALREADY_BUILT);
-			break;
+		} break;
 
 		case MP_TUNNELBRIDGE:
 			if (GetTunnelBridgeTransportType(tile) != TRANSPORT_ROAD) return CMD_ERROR;
@@ -612,6 +615,7 @@ do_clear:;
 			} break;
 
 			case MP_STATION:
+				assert(IsDriveThroughStopTile(tile));
 				SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
 				break;
 

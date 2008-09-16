@@ -369,7 +369,7 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (!IsValidWaypointID(p1)) return CMD_ERROR;
 
 	wp = GetWaypoint(p1);
-	if (!CheckTileOwnership(wp->xy)) return CMD_ERROR;
+	if (!IsTileType(wp->xy, MP_RAILWAY) || !CheckTileOwnership(wp->xy)) return CMD_ERROR;
 
 	if (!StrEmpty(_cmd_text)) {
 		if (!IsUniqueWaypointName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);

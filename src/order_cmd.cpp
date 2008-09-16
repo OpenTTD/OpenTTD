@@ -493,7 +493,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		/* Give the item free */
-		order->Free();
+		delete order;
 
 		u = GetFirstVehicleFromSharedList(v);
 		DeleteOrderWarnings(u);
