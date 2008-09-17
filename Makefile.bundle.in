@@ -17,7 +17,7 @@ REV := norev000
 endif
 
 ifndef BUNDLE_NAME
-BUNDLE_NAME = OTTD-$(OS)-custom-$(REV)
+BUNDLE_NAME = openttd-custom-$(REV)-$(OS)
 endif
 
 # An OSX application bundle needs the data files, lang files and openttd executable in a different location.
