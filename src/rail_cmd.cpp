@@ -1384,7 +1384,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 					/* When not coverting rail <-> el. rail, any vehicle cannot be in tunnel/bridge */
 					if (!IsCompatibleRail(GetRailType(tile), totype) &&
-							!HasVehicleOnTunnelBridge(tile, endtile)) continue;
+							HasVehicleOnTunnelBridge(tile, endtile)) continue;
 
 					if (flags & DC_EXEC) {
 						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
