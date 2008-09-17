@@ -57,6 +57,7 @@ static GUIVehicleList::SortFunction VehicleMaxSpeedSorter;
 static GUIVehicleList::SortFunction VehicleModelSorter;
 static GUIVehicleList::SortFunction VehicleValueSorter;
 static GUIVehicleList::SortFunction VehicleLengthSorter;
+static GUIVehicleList::SortFunction VehicleTimeToLiveSorter;
 
 GUIVehicleList::SortFunction* const BaseVehicleListWindow::vehicle_sorter_funcs[] = {
 	&VehicleNumberSorter,
@@ -70,6 +71,7 @@ GUIVehicleList::SortFunction* const BaseVehicleListWindow::vehicle_sorter_funcs[
 	&VehicleModelSorter,
 	&VehicleValueSorter,
 	&VehicleLengthSorter,
+	&VehicleTimeToLiveSorter,
 };
 
 const StringID BaseVehicleListWindow::vehicle_sorter_names[] = {
@@ -84,6 +86,7 @@ const StringID BaseVehicleListWindow::vehicle_sorter_names[] = {
 	STR_SORT_BY_MODEL,
 	STR_SORT_BY_VALUE,
 	STR_SORT_BY_LENGTH,
+	STR_SORT_BY_LIFE_TIME,
 	INVALID_STRING_ID
 };
 
@@ -626,6 +629,13 @@ static int CDECL VehicleLengthSorter(const Vehicle* const *a, const Vehicle* con
 
 		default: NOT_REACHED();
 	}
+	return (r != 0) ? r : VehicleNumberSorter(a, b);
+}
+
+/** Sort vehicles by the time they can still live */
+static int CDECL VehicleTimeToLiveSorter(const Vehicle* const *a, const Vehicle* const *b)
+{
+	int r = ClampToI32(((*a)->max_age - (*a)->age) - ((*b)->max_age - (*b)->age));
 	return (r != 0) ? r : VehicleNumberSorter(a, b);
 }
 
