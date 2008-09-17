@@ -94,7 +94,7 @@ elif [ -d "$ROOT_DIR/.hg" ]; then
 	HASH=`LC_ALL=C hg parents 2>/dev/null | head -n 1 | cut -d: -f3 | cut -c1-8`
 	REV="h$HASH"
 	BRANCH=`hg branch | sed 's/^default$//'`
-	REV_NR=`LC_ALL=C hg log -k "svn" -l 1 --template "{desc}\n" "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s/.*(svn r\([0-9]*\)).*/\1/"`
+	REV_NR=`LC_ALL=C hg log -r $HASH:0 -k "svn" -l 1 --template "{desc}\n" "$SRC_DIR" | grep "^(svn r[0-9]*)" | head -n 1 | sed "s/.*(svn r\([0-9]*\)).*/\1/"`
 else
 	# We don't know
 	MODIFIED="1"

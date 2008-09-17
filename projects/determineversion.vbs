@@ -41,7 +41,7 @@ Sub UpdateFiles(version)
 				revision = Mid(revision, 1, InStr(revision, "-") - 1)
 			End If
 		Case "h" ' mercurial (hg)
-			Set oExec = WshShell.Exec("hg log -k " & Chr(34) & "svn" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc}\n" & Chr(34) & " ../src")
+			Set oExec = WshShell.Exec("hg log -r " & Mid(version, 2, 8) & ":0 -k " & Chr(34) & "svn" & Chr(34) & " -l 1 --template " & Chr(34) & "{desc}\n" & Chr(34) & " ../src")
 			If Err.Number = 0 Then
 				revision = Mid(OExec.StdOut.ReadLine(), 7)
 				revision = Mid(revision, 1, InStr(revision, ")") - 1)
