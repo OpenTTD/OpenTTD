@@ -82,7 +82,9 @@ struct CFollowTrackT
 	/** Tests if a tile is a road tile with a single tramtrack (tram can reverse) */
 	FORCEINLINE DiagDirection GetSingleTramBit(TileIndex tile)
 	{
-		if (IsTram() && IsNormalRoadTile(tile)) {
+		assert(IsTram()); // this function shouldn't be called in other cases
+
+		if (IsNormalRoadTile(tile)) {
 			RoadBits rb = GetRoadBits(tile, ROADTYPE_TRAM);
 			switch (rb) {
 				case ROAD_NW: return DIAGDIR_NW;
@@ -103,7 +105,7 @@ struct CFollowTrackT
 		m_old_td = old_td;
 		m_err = EC_NONE;
 		assert(((TrackStatusToTrackdirBits(GetTileTrackStatus(m_old_tile, TT(), m_veh ? m_veh->u.road.compatible_roadtypes : 0)) & TrackdirToTrackdirBits(m_old_td)) != 0) ||
-		       (GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR)); // Disable the assertion for single tram bits
+		       (IsTram() && GetSingleTramBit(m_old_tile) != INVALID_DIAGDIR)); // Disable the assertion for single tram bits
 		m_exitdir = TrackdirToExitdir(m_old_td);
 		if (ForcedReverse()) return true;
 		if (!CanExitOldTile()) return false;
@@ -205,7 +207,7 @@ protected:
 		} else {
 			m_new_td_bits = TrackStatusToTrackdirBits(GetTileTrackStatus(m_new_tile, TT(), m_veh != NULL ? m_veh->u.road.compatible_roadtypes : 0));
 
-			if (m_new_td_bits == 0) {
+			if (IsTram() && m_new_td_bits == 0) {
 				/* GetTileTrackStatus() returns 0 for single tram bits.
 				 * As we cannot change it there (easily) without breaking something, change it here */
 				switch (GetSingleTramBit(m_new_tile)) {
@@ -239,10 +241,12 @@ protected:
 		}
 
 		/* single tram bits can only be left in one direction */
-		DiagDirection single_tram = GetSingleTramBit(m_old_tile);
-		if (single_tram != INVALID_DIAGDIR && single_tram != m_exitdir) {
-			m_err = EC_NO_WAY;
-			return false;
+		if (IsTram()) {
+			DiagDirection single_tram = GetSingleTramBit(m_old_tile);
+			if (single_tram != INVALID_DIAGDIR && single_tram != m_exitdir) {
+				m_err = EC_NO_WAY;
+				return false;
+			}
 		}
 
 		// road depots can be also left in one direction only
@@ -269,10 +273,12 @@ protected:
 		}
 
 		/* single tram bits can only be entered from one direction */
-		DiagDirection single_tram = GetSingleTramBit(m_new_tile);
-		if (single_tram != INVALID_DIAGDIR && single_tram != ReverseDiagDir(m_exitdir)) {
-			m_err = EC_NO_WAY;
-			return false;
+		if (IsTram()) {
+			DiagDirection single_tram = GetSingleTramBit(m_new_tile);
+			if (single_tram != INVALID_DIAGDIR && single_tram != ReverseDiagDir(m_exitdir)) {
+				m_err = EC_NO_WAY;
+				return false;
+			}
 		}
 
 		// road and rail depots can also be entered from one direction only
@@ -369,7 +375,7 @@ protected:
 		}
 
 		// single tram bits cause reversing
-		if (GetSingleTramBit(m_old_tile) == ReverseDiagDir(m_exitdir)) {
+		if (IsTram() && GetSingleTramBit(m_old_tile) == ReverseDiagDir(m_exitdir)) {
 			// reverse
 			m_new_tile = m_old_tile;
 			m_new_td_bits = TrackdirToTrackdirBits(ReverseTrackdir(m_old_td));
