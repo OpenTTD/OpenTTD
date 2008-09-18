@@ -1181,8 +1181,8 @@ static void ConvertTownOwner()
 	for (TileIndex tile = 0; tile != MapSize(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
-				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HasBit(_m[tile].m4, 7)) {
-					_m[tile].m4 = OWNER_TOWN;
+				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HasBit(_m[tile].m3, 7)) {
+					_m[tile].m3 = OWNER_TOWN;
 				}
 				/* FALLTHROUGH */
 
@@ -1565,7 +1565,7 @@ bool AfterLoadGame()
 
 				case MP_ROAD:
 					_m[t].m4 |= (_m[t].m2 << 4);
-					if (IsTileOwner(t, OWNER_TOWN)) {
+					if ((GB(_m[t].m5, 4, 2) == ROAD_TILE_CROSSING ? (Owner)_m[t].m3 : GetTileOwner(t)) == OWNER_TOWN) {
 						SetTownIndex(t, CalcClosestTownFromTile(t, (uint)-1)->index);
 					} else {
 						SetTownIndex(t, 0);
