@@ -539,21 +539,6 @@ private:
 	}
 
 	/**
-	 * Handle the click on the transfer button.
-	 *
-	 * @param w current window
-	 */
-	static void OrderClick_Transfer(OrdersWindow *w, int i)
-	{
-		VehicleOrderID sel_ord = w->OrderGetSel();
-		const Order *order = GetVehicleOrder(w->vehicle, sel_ord);
-
-		if (order == NULL) return;
-
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_UNLOAD | ((order->GetUnloadType() & ~OUFB_NO_UNLOAD) ^ OUFB_TRANSFER) << 4, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
-	}
-
-	/**
 	 * Handle the click on the skip button.
 	 * If ctrl is pressed skip to selected order.
 	 *  Else skip to current order + 1
@@ -969,7 +954,6 @@ public:
 			{'H', OrderClick_Nonstop},
 			{'J', OrderClick_FullLoad},
 			{'K', OrderClick_Unload},
-			//{'?', OrderClick_Transfer},
 			//('?', OrderClick_Service},
 		};
 
