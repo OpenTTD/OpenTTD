@@ -268,6 +268,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sne
 STR_012C_MESSAGE                                                :{WHITE}Besked
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Standard
 STR_012E_CANCEL                                                 :{BLACK}Annuller
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Omdøb
@@ -379,6 +380,7 @@ STR_SORT_BY_MAX_SPEED                                           :Tophastighed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Værdi
 STR_SORT_BY_LENGTH                                              :Længde
+STR_SORT_BY_LIFE_TIME                                           :Resterende levetid
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
 STR_SORT_BY_RATING_MAX                                          :Fragtbedømmelse
@@ -2791,6 +2793,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service
 
 STR_INVALID_ORDER                                               :{RED} (Ugyldig Order)
 
+STR_UNKNOWN_STATION                                             :ukendt station
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} fra {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} fra {STATION} (x{NUM})

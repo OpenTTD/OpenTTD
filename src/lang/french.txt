@@ -269,6 +269,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Neige
 STR_012C_MESSAGE                                                :{WHITE}Message
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Défaut
 STR_012E_CANCEL                                                 :{BLACK}Annuler
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Renommer
@@ -2792,6 +2793,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Entreti
 
 STR_INVALID_ORDER                                               :{RED} (Ordre invalide)
 
+STR_UNKNOWN_STATION                                             :station inconnue
 STR_8812_EMPTY                                                  :{LTBLUE}Vide
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})

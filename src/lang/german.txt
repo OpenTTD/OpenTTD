@@ -2,7 +2,7 @@
 ##ownname Deutsch
 ##isocode de_DE
 ##plural 0
-##gender m w n
+##gender m w n p
 
 #
 
@@ -269,6 +269,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Schnee
 STR_012C_MESSAGE                                                :{WHITE}Mitteilung
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Standard
 STR_012E_CANCEL                                                 :{BLACK}Abbrechen
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Umbenennen
@@ -380,6 +381,7 @@ STR_SORT_BY_MAX_SPEED                                           :Höchstgeschwin
 STR_SORT_BY_MODEL                                               :Bauart
 STR_SORT_BY_VALUE                                               :Wert
 STR_SORT_BY_LENGTH                                              :Länge
+STR_SORT_BY_LIFE_TIME                                           :Verbleibende Lebensdauer
 STR_SORT_BY_FACILITY                                            :Stationsart
 STR_SORT_BY_WAITING                                             :Menge der wartenden Fracht
 STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
@@ -1040,7 +1042,7 @@ STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Bahnhö
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Verbessertes Beladeverfahren nutzen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Fahrzeuge schrittweise beladen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Fracht wird erst bei Bedarf an Haltestelle verfügbar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Industrien beliefern nur Stationen mit passendem Transport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erlaube das Bauen von sehr langen Brücken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Erlaube "Gehe zum Depot"-Aufträge im Fahrplan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manueller Bau von Rohstoffindustrien: {ORANGE}{STRING}
@@ -2029,7 +2031,7 @@ STR_4809_PRINTING_WORKS                                         :{G=w}Druckerei
 STR_480A_STEEL_MILL                                             :{G=n}Stahlwalzwerk
 STR_480B_FARM                                                   :{G=m}Bauernhof
 STR_480C_COPPER_ORE_MINE                                        :{G=n}Kupfererzbergwerk
-STR_480D_OIL_WELLS                                              :{G=w}Ölquellen
+STR_480D_OIL_WELLS                                              :{G=p}Ölquellen
 STR_480E_BANK                                                   :{G=w}Bank
 STR_480F_FOOD_PROCESSING_PLANT                                  :{G=w}Nahrungsmittelfabrik
 STR_4810_PAPER_MILL                                             :{G=w}Papiermühle
@@ -2072,8 +2074,8 @@ STR_4828_PRODUCES                                               :{BLACK}Produzie
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% befördert)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Hauptansicht zum Industriegebiet scrollen
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} wird nahe {TOWN} gebaut!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} wird nahe {TOWN} aufgeforstet!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} aufgeforstet!
 STR_482F_COST                                                   :{BLACK}Kosten: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Industrie kann hier nicht gebaut werden...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Wald kann nur oberhalb der Schneegrenze gepflanzt werden
@@ -2690,7 +2692,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Hubsch
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Hubschrauber
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Hubschrauber
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Nachricht vom Fahrzeughersteller
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben ein{G en e ""} neue{G n "" s} {STRING} entwickelt. {}Sind Sie daran interessiert, das Fahrzeug ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor es allgemein zur Verfügung gestellt wird?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt. {}Sind Sie daran interessiert, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=w}Lokomotive
 STR_8103_ROAD_VEHICLE                                           :{G=n}Fahrzeug
 STR_8104_AIRCRAFT                                               :{G=n}Flugzeug
@@ -2915,9 +2917,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Keine Ener
 STR_TRAIN_START_NO_CATENARY                                     :Wegen fehlender Oberleitung kann der Zug nicht starten.
 STR_TRAIN_STUCK                                                 :{ORANGE}Warte auf freie Wege
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} jetzt erhältlich!
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} jetzt erhältlich!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s} {STRING} jetzt erhältlich!  -  {ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s ""} {STRING} jetzt erhältlich!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kann dieses Schrottfahrzeug nicht mehr verkaufen ...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kann zerstörtes Fahrzeug nicht nachrüsten...
@@ -3222,7 +3224,7 @@ STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :der GRF-Datei, 
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Zu viele NewGRFs geladen.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {STRING} als statisches NewGRF mit {STRING} könnte Synchronisationsfehler hervorrufen.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite.
-STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unbekannte Eigenschaft von Aktion 0
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :NewGRF Fehler: 'Unknown Action 0 property.'
 STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versucht, eine ungültige ID zu verwenden.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ausgewählte Voreinstellung laden

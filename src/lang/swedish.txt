@@ -268,6 +268,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Snö
 STR_012C_MESSAGE                                                :{WHITE}Meddelande
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Standardinställning
 STR_012E_CANCEL                                                 :{BLACK}Avbryt
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Byt namn
@@ -1023,6 +1024,7 @@ STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengagräns)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Avancerade inställningar
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Visa avancerade inställningar
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Avancerade inställningar
 
 STR_CONFIG_PATCHES_OFF                                          :Av
 STR_CONFIG_PATCHES_ON                                           :På
@@ -1050,6 +1052,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Visa alltid långt datum i statusfältet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Visa signaler på körsidan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Visa finansfönstret vid slutet av året: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nya orders är 'non-stop' om inte annat anges.{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vägfordonsköer (med kvanteffekter): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scrolla vyn när musen är vid kanten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillåt mutning av de lokala myndigheterna: {ORANGE}{STRING}
@@ -1137,6 +1140,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Första tillgängliga
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Sista tillgängliga
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest använd
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Visa reserverad väg: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Visa byggnationsverktygen när det ej finns några passande fordon tillgängligt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
@@ -1172,6 +1176,14 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillåt
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg automatiskt semaforer innan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Använd signal-GUI: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standardsignal-typ: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Avancerad
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Avancerad enväga
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Gå igenom signaltyper: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Endast normala
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Endast avancerade
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alla
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Det går ej att använda "inga fler vägar" i scenario editorn
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Välj stadens väg-inställningar: {ORANGE}{STRING}
@@ -3249,6 +3261,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Saknas G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{STRING}' kommer troligen orsaka desynkronisering och/eller krascher.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter fordonlängd för  '{1:ENGINE}' utanför en depå.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 

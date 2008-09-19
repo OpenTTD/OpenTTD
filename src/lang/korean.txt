@@ -268,6 +268,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}눈
 STR_012C_MESSAGE                                                :{WHITE}메시지
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}기본값
 STR_012E_CANCEL                                                 :{BLACK}취소
 STR_012F_OK                                                     :{BLACK}확인
 STR_0130_RENAME                                                 :{BLACK}이름
@@ -379,6 +380,7 @@ STR_SORT_BY_MAX_SPEED                                           :최고 속력
 STR_SORT_BY_MODEL                                               :모델
 STR_SORT_BY_VALUE                                               :가격
 STR_SORT_BY_LENGTH                                              :길이
+STR_SORT_BY_LIFE_TIME                                           :남은 수명
 STR_SORT_BY_FACILITY                                            :역 종류
 STR_SORT_BY_WAITING                                             :대기 화물량
 STR_SORT_BY_RATING_MAX                                          :화물 성취도
@@ -2791,6 +2793,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} 
 
 STR_INVALID_ORDER                                               :{RED} (잘못된 경로)
 
+STR_UNKNOWN_STATION                                             :알수없는 정거장
 STR_8812_EMPTY                                                  :{LTBLUE}비어있음
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (출발지: {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})

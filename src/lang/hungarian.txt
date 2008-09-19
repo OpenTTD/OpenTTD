@@ -442,6 +442,8 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Rakomány szeri
 STR_SORT_BY_MAX_SPEED                                           :Maximum sebesség
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Érték
+STR_SORT_BY_LENGTH                                              :Hossz
+STR_SORT_BY_LIFE_TIME                                           :Élettartamból hátralévő idő
 STR_SORT_BY_FACILITY                                            :Állomás típus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
 STR_SORT_BY_RATING_MAX                                          :Várakozó rakomány
@@ -650,6 +652,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Első j
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Első jármű megérkezése az ellenfél megállójába
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Balesetek / természeti csapások
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Céginformációk
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Új gazdasági épületek megjelenése
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Gazdasági épületek bezárása
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Gazdasági változások
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Termelésváltozások az általad szállított ipari cégeknél
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Termelésváltozások a konkurrenseid által szállított ipari cégeknél
@@ -836,6 +840,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Beállítások
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nehézségi beállítások
+STR_MENU_CONFIG_PATCHES                                         :Haladó beállítások
 STR_NEWGRF_SETTINGS                                             :Newgrf beállítások
 STR_TRANSPARENCY_OPTIONS                                        :Átlátszósági beállítások
 STR_GAMEOPTMENU_0A                                              :
@@ -1075,6 +1080,9 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorene
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}A {COMMA}. vonat túl hosszú a csere után
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pénzlimit)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Haladó beállítások
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Haladó beállítások megjelenítése
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Haladó beállítások
 
 STR_CONFIG_PATCHES_OFF                                          :Ki
 STR_CONFIG_PATCHES_ON                                           :Be
@@ -1102,6 +1110,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Több u
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mindig teljes dátum a képernyőn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Közlekedési lámpák a menetirány szerinti oldalon legyenek: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Pénzügyi összesítés minden év végén: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Minden új utasítás alapból 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Közúti járművek sorbanállása (quantum effektektus): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyő szélén van: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}
@@ -1188,6 +1197,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Leginkább használt
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Foglalt vágányok jelölése: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Akkor is mutasd az eszköztárat, ha nem építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
@@ -1223,6 +1233,10 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Másik 
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Amikor megragadom helyezzen lámpákat minden {ORANGE}{STRING}. mezőre
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatikusan szemafor épüljön eddig: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Szignálkezelő engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Alapértelmezett szignál típus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Sima
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Fejlett
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Egyirányú fejlett
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A "nincs több út" városkinézeti séma a pályaszerkesztőben nem elérhető
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Válassz városi úthálózat-sémát: {ORANGE}{STRING}
@@ -1309,6 +1323,7 @@ STR_WAYPOINT                                                    :{WHITE}Ellenőr
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Válassz ellenőrző-pont tipust
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Vonat
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Módosítd az ellenőrző pont nevét
@@ -1344,6 +1359,8 @@ STR_LANDINFO_CANAL                                              :Csatorna
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nem lehet zsilipet építeni ide...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Zsilip építése
 STR_LANDINFO_LOCK                                               :Zsilip
+
+STR_LANDINFO_RIVER                                              :Folyó
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... a bóját használják!
 
@@ -1390,6 +1407,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gazdasá
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% elszállítva)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% elszállítva)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Gazdasági épületek listája - a névre kattintva a fő nézetet a választott objektumra irányíthatod
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...túl közel egy másik gazdasági épülethez
 
@@ -1432,6 +1450,16 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Írd be 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliens
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliens online / kliens max
+
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Térkép mérete
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}A játék térképének mérete{}Kattints ide a rendezéshez
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Dátum
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Az aktuális dátum
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Évek
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}A játékban eltelt évek száma
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}JÁTÉK INFÓ
 STR_NETWORK_CLIENTS                                             :{SILVER}Játékos:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Nyelv:  {WHITE}{STRING}
@@ -1768,6 +1796,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Út lámpákkal
 STR_1816_TREE_LINED_ROAD                                        :Fával szegélyezett út
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garázs
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Út/vasút kereszteződés
+STR_TRAMWAY                                                     :Villamos-sín
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nem távolíthatod el ezt a buszmegállót...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nem távolíthatod el ezt a teherautó megállót...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nem lehet a villamos utasvárót eltávolítani...
@@ -1891,6 +1920,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Nem rakh
 STR_280A_SIGN                                                   :Felirat
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Felirat szerkesztése
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Nem változtathatod meg a feliratot...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}A felirat nem törölhető...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Válaszd ki, melyik fát ülteted
 STR_280E_TREES                                                  :Fák
 STR_280F_RAINFOREST                                             :Esőerdő
@@ -2747,6 +2777,11 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}i 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első vonat {STATION} állomásra!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vonat van az útban
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}A kijelölt célponton a várakozási szokások beállítása
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijelölt célponton a felpakodási szokások beállítása
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a lepakodási szokások beállítása
+
+
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Útipont (időzítetlen)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Menjen {STRING} állomásra
@@ -2870,12 +2905,14 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Márkan�
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nem változtathatod meg a márkanevet...
 STR_CLEAR_TIME                                                  :{BLACK}Idő törlése
 STR_RESET_LATENESS                                              :{BLACK}Késés nullázása
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Átnevezi az ellenőrző pontot
 
 STR_TRAIN_STOPPING                                              :{RED}Lassít
 STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatibilis sintípusok
 STR_TRAIN_NO_POWER                                              :{RED}Nincs áram
 STR_TRAIN_START_NO_CATENARY                                     :Ennek a sínnek nincs felsővezetéke, a vonat nem tud indulni
+STR_TRAIN_STUCK                                                 :{ORANGE}Szabad útra vár
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Új {STRING} elérhető!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -3114,6 +3151,7 @@ STR_BRIBE_FAILED                                                :{WHITE}A megves
 STR_BRIBE_FAILED_2                                              :{WHITE}lefülelte egy helyi nyomozó!
 STR_BUILD_DATE                                                  :{BLACK}Építve: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Teljesítményértékelések részletezése
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Részletek
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3197,6 +3235,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Hiányz�
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Kritikus GRF fájl(ok) hiányoznak, a játék nem betölthető
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányzó GRF fájl(ok)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}A játék folytatásától az OpenTTD lefagyhat.{}Ne jelentsd be az ismétlődő lefagyásokat egyesével.{}Biztosan folytatni akarod?
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3427,6 +3467,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Átkapcs
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Átkapcsolni egyéb épületekre, mint világítótorony és antennák (esetleg egyéb jövőbeni díszek)
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Átlátszóság kapcsolása a vezetékekhez, CTRL+click a zároláshoz.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Átlátszó betöltésjelző kapcsolása (ki/be)
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3556,4 +3597,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Automata
 ########
 
 ############ on screen keyboard
+########
+
+############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Várostól függő zajszint engedélyezése a repterek számára: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Zajszint a városban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Zajtermelés: {GOLD}{COMMA}
 ########

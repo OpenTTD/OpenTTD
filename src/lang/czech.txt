@@ -326,6 +326,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sníh
 STR_012C_MESSAGE                                                :{WHITE}Zpráva
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Původní
 STR_012E_CANCEL                                                 :{BLACK}Zrušit
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Přejmenovat
@@ -437,6 +438,7 @@ STR_SORT_BY_MAX_SPEED                                           :max. rychlosti
 STR_SORT_BY_MODEL                                               :modelu
 STR_SORT_BY_VALUE                                               :hodnoty
 STR_SORT_BY_LENGTH                                              :délky
+STR_SORT_BY_LIFE_TIME                                           :zbývající životnosti
 STR_SORT_BY_FACILITY                                            :druhu stanice
 STR_SORT_BY_WAITING                                             :množství čekajícího nákladu
 STR_SORT_BY_RATING_MAX                                          :hodnocení přepravy

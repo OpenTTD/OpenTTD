@@ -393,6 +393,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Сніг
 STR_012C_MESSAGE                                                :{WHITE}Повідомлення
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}За замовч.
 STR_012E_CANCEL                                                 :{BLACK}Відміна
 STR_012F_OK                                                     :{BLACK}Так
 STR_0130_RENAME                                                 :{BLACK}Назва
@@ -504,6 +505,7 @@ STR_SORT_BY_MAX_SPEED                                           :за швидк
 STR_SORT_BY_MODEL                                               :за моделлю
 STR_SORT_BY_VALUE                                               :за ціною
 STR_SORT_BY_LENGTH                                              :за довжиною
+STR_SORT_BY_LIFE_TIME                                           :Залишок строку служби
 STR_SORT_BY_FACILITY                                            :за типом станції
 STR_SORT_BY_WAITING                                             :за ціною вантажу
 STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
@@ -2953,6 +2955,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Тех�
 
 STR_INVALID_ORDER                                               :{RED} (Невірний наказ)
 
+STR_UNKNOWN_STATION                                             :невідома станція
 STR_8812_EMPTY                                                  :{LTBLUE}порожній
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} з {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} з {STATION} (x{NUM})

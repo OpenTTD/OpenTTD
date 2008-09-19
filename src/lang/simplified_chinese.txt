@@ -2621,7 +2621,27 @@ STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}卸载�
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :若接受的话就卸载
 STR_ORDER_DROP_UNLOAD                                           :卸载全部
 STR_ORDER_DROP_TRANSFER                                         :联运
+STR_ORDER_DROP_NO_UNLOADING                                     :不卸载
+STR_ORDER_FULL_LOAD                                             :（全部装载）
+STR_ORDER_FULL_LOAD_ANY                                         :（全部装载任意货物）
+STR_ORDER_NO_LOAD                                               :（不装载）
+STR_ORDER_UNLOAD                                                :（卸载并装货）
+STR_ORDER_UNLOAD_FULL_LOAD                                      :（卸载并等待装满）
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :（卸载并等待全部装满）
+STR_ORDER_UNLOAD_NO_LOAD                                        :（卸载并空车离开）
+STR_ORDER_TRANSFER                                              :（联运并装货）
+STR_ORDER_TRANSFER_FULL_LOAD                                    :（联运并等待装满）
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :（联运并全装任何货物）
+STR_ORDER_TRANSFER_NO_LOAD                                      :（联运并空车离开）
+STR_ORDER_NO_UNLOAD                                             :（不卸货并装货）
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :（不卸载并等待装满）
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :（不装货并等待全部装满）
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}改变当前选中车站停车时的执行动作
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}改变当前选中车站装载时的执行动作
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}改变当前选中车站卸载时的执行动作
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}插入高级指令
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的车库
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的机库
 STR_ORDER_NEAREST_DEPOT                                         :最近的车库
@@ -2762,11 +2782,14 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}正在停�
 STR_INCOMPATIBLE_RAIL_TYPES                                     :铁路类型不匹配
 STR_TRAIN_NO_POWER                                              :{RED}没有电力
 STR_TRAIN_START_NO_CATENARY                                     :这不是电气化铁路，电力机车不能启动
+STR_TRAIN_STUCK                                                 :{ORANGE}等待空余轨道
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}新 {STRING} 上市了！
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}新 {STRING} 上市了！  -  {ENGINE}
 
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}无法出售毁坏的列车……
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}无法调整毁坏的列车
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}不能给车辆编制时间表…
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}车辆只能在站内等候。
@@ -2822,12 +2845,17 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}汽车�
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}购买高亮的汽车
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}价格：{CURRENCY}{}速度：{VELOCITY}{}运行成本：{CURRENCY}/年{}装载能力：{CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}运力： {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}命名汽车
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}不能命名汽车……
 STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}命名汽车
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆巴士抵达 {STATION}！
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一辆货车抵达 {STATION}！
+STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆客运电车抵达 {STATION}!
+STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}市民欢庆~. . .{}首辆货运电车抵达 {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，司机在火球中丧生！
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}汽车事故！{}汽车与火车相撞，{COMMA} 人在事故中丧生！
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}不能命令汽车掉头……
@@ -2844,6 +2872,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}不能�
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}选择要运输的货物类型：
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :水运建设
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}水运建设
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}水运
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}不能在这里新建码头……
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} 船坞
 STR_9804_NEW_SHIPS                                              :{BLACK}购买船只
@@ -2896,6 +2927,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}不能�
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民举行庆祝仪式……{}第一艘船抵达 {STATION}！
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}放置一个浮标。
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}不能将浮标放置在这里。
+STR_BUILD_AQUEDUCT                                              :{BLACK}建设水渠
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}无法在此建设水渠……
 STR_9836_RENAME                                                 :{BLACK}重命名
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}重命名船只型号
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}重命名船只型号
@@ -2980,6 +3013,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}选择要
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}新的装载能力：{GOLD}{STRING}{}{BLACK}改装费用：{GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}不能改装飞机……
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (时间表)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}齐柏林飞艇在 {STATION} 失事！
@@ -2994,6 +3028,9 @@ STR_BRIBE_FAILED                                                :{WHITE}你试�
 STR_BRIBE_FAILED_2                                              :{WHITE}当地侦探发现了！
 STR_BUILD_DATE                                                  :{BLACK}建造时间：{LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}车站 列: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}车站类型: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}详细表现值
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}详情
@@ -3045,8 +3082,18 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}{STRING} 参数错误：参数 {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} 必须在 {STRING} 前加载。
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 必须在 {STRING} 后加载。
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 需要OpenTTD V {STRING} 或更高版本
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF 被设计为可平移
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :加载的NewGRF太多
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未可预料的 sprite 错误。
+STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用无效配置值
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}装在选定的预定义
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}保存预定义
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}将当前组保存为预定义
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}为预定义组起名
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}删除预定义组
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}删掉当前预定义组
 STR_NEWGRF_ADD                                                  :{BLACK}增加
 STR_NEWGRF_ADD_TIP                                              :{BLACK}向列表中增加一个 NewGRF 文件
 STR_NEWGRF_REMOVE                                               :{BLACK}删除
@@ -3074,6 +3121,7 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}未找�
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}已为缺失的文件载入兼容的 GRF
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}缺失的 GRF 文件已经被禁用
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}缺少使游戏运行所必需的 GRF 文件
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}无法找到GRF文件
 
 
 
@@ -3201,6 +3249,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大�
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
@@ -3210,6 +3261,7 @@ STR_RANDOM_HELP                                                 :{BLACK}改变�
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}地图生成器
 STR_RANDOM_SEED                                                 :{BLACK}随机种子：
 STR_RANDOM_SEED_HELP                                            :{BLACK}点志这里可以输入一个随机种子
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}请输入随机种子
 STR_LAND_GENERATOR                                              :{BLACK}生成地形：
 STR_TREE_PLACER                                                 :{BLACK}生成树木：
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}高度图旋转：
@@ -3254,6 +3306,7 @@ STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}改变�
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}地面高度：
 
 STR_SMALLMAP_CENTER                                             :{BLACK}设置小地图的中心位置
+STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}小型机场
@@ -3298,20 +3351,86 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}调节�
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}调节桥梁的透明度
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}调节灯塔及信号发射塔的透明度
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :组 {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :全部火车
+STR_GROUP_ALL_ROADS                                             :全部汽车
+STR_GROUP_ALL_SHIPS                                             :全部船只
+STR_GROUP_ALL_AIRCRAFTS                                         :全部飞机
+STR_GROUP_DEFAULT_TRAINS                                        :未分组火车
+STR_GROUP_DEFAULT_ROADS                                         :未分组汽车
+STR_GROUP_DEFAULT_SHIPS                                         :未分组船只
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :未分组飞机
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :添加共享车辆
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车辆
 
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 飞机
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}移除分组
 
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}无法新建分组……
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}无法删除分组……
+STR_GROUP_CAN_T_RENAME                                          :{WHITE}无法重命名分组……
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}无法从该组移除所有交通工具
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}无法添加交通工具到该组
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}无法添加共享交通工具到该组...
 
+STR_GROUP_CREATE_TIP                                            :{BLACK}创建分组
+STR_GROUP_DELETE_TIP                                            :{BLACK}删除分组
+STR_GROUP_RENAME_TIP                                            :{BLACK}重命名该分组
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PLAYER_NAME                                                 :{PLAYERNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}名称重复!请重新命名.
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}前往下个标记
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}前往上个标记
+STR_SIGN_OSKTITLE                                               :{BLACK}为标记起名
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}建设
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}勘探
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}建设
 
 ############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}高级
+STR_FACE_ADVANCED_TIP                                           :{BLACK}高级头像选项
+STR_FACE_SIMPLE                                                 :{BLACK}简易
+STR_FACE_SIMPLE_TIP                                             :{BLACK}简易头像选项
+STR_FACE_LOAD                                                   :{BLACK}装载
+STR_FACE_FACECODE                                               :{BLACK}头像种子
+STR_FACE_SAVE                                                   :{BLACK}保存
+STR_FACE_EUROPEAN                                               :{BLACK}欧洲人种肖像
+STR_FACE_AFRICAN                                                :{BLACK}非洲人种肖像
+STR_FACE_YES                                                    :是
+STR_FACE_NO                                                     :否
+STR_FACE_HAIR                                                   :发型
+STR_FACE_EYEBROWS                                               :眉毛
+STR_FACE_EYECOLOUR                                              :颜珠颜色
+STR_FACE_GLASSES                                                :眼镜
+STR_FACE_NOSE                                                   :鼻子
+STR_FACE_LIPS                                                   :嘴唇
+STR_FACE_MOUSTACHE                                              :胡子
+STR_FACE_CHIN                                                   :下巴
+STR_FACE_JACKET                                                 :衣着
+STR_FACE_COLLAR                                                 :领子
+STR_FACE_TIE                                                    :领带
+STR_FACE_EARRING                                                :耳环
 ########
 
 ############ signal GUI

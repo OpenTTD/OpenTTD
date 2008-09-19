@@ -270,6 +270,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Neve
 STR_012C_MESSAGE                                                :{WHITE}Messaggio
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Predefinito
 STR_012E_CANCEL                                                 :{BLACK}Annulla
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Rinomina
@@ -381,6 +382,7 @@ STR_SORT_BY_MAX_SPEED                                           :Velocità massi
 STR_SORT_BY_MODEL                                               :Modello
 STR_SORT_BY_VALUE                                               :Valore
 STR_SORT_BY_LENGTH                                              :Lunghezza
+STR_SORT_BY_LIFE_TIME                                           :Vita rimanente
 STR_SORT_BY_FACILITY                                            :Tipo di stazione
 STR_SORT_BY_WAITING                                             :Merci in attesa
 STR_SORT_BY_RATING_MAX                                          :Valutazione servizi
@@ -780,6 +782,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opzioni gioco
 STR_02C6_DIFFICULTY_SETTINGS                                    :Impostazioni difficoltà
+STR_MENU_CONFIG_PATCHES                                         :Impostazioni avanzate
 STR_NEWGRF_SETTINGS                                             :Impostazioni NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Opzioni trasparenza
 STR_GAMEOPTMENU_0A                                              :
@@ -1022,6 +1025,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Il Treno
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nessuna regola di rimpiazzo/rinnovo automatico applicata.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite denaro)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Impostazioni avanzate
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Mostra le impostazioni avanzate
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Impostazioni avanzate
 
 STR_CONFIG_PATCHES_OFF                                          :No
 STR_CONFIG_PATCHES_ON                                           :Si
@@ -1049,6 +1055,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Consent
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostra sempre la data lunga nella barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostra i segnali sul lato di guida: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Mostra la finestra delle finanze alla fine dell'anno: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Crea sempre i nuovi ordini 'no-stop': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Accodamento automezzi fuori da una stazione occupata: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scorri la visuale quando il mouse è su un bordo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Consenti la corruzione dell'autorità locale: {ORANGE}{STRING}
@@ -2788,6 +2795,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Manuten
 
 STR_INVALID_ORDER                                               :{RED} (Ordine non valido)
 
+STR_UNKNOWN_STATION                                             :stazione sconosciuta
 STR_8812_EMPTY                                                  :{LTBLUE}Vuoto
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} da {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} da {STATION} (x{NUM})
