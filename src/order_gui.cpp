@@ -147,7 +147,7 @@ static void DrawOrdersWindow(Window *w)
 		w->SetWidgetDisabledState(ORDER_WIDGET_REFIT,     order == NULL); // Refit
 		w->HideWidget(ORDER_WIDGET_REFIT); // Refit
 	} else {
-		w->DisableWidget(ORDER_WIDGET_TRANSFER);
+		w->DisableWidget(ORDER_WIDGET_RESIZE_BAR);
 	}
 
 	w->ShowWidget(ORDER_WIDGET_UNLOAD); // Unload
