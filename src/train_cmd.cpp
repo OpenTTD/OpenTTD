@@ -4434,7 +4434,7 @@ void ConnectMultiheadedTrains()
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN) {
+		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
 			/* Two ways to associate multiheaded parts to each other:
 			 * sequential-matching: Trains shall be arranged to look like <..>..<..>..<..>..
 			 * bracket-matching:    Free vehicle chains shall be arranged to look like ..<..<..>..<..>..>..
