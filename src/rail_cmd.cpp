@@ -831,6 +831,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * - p1 = (bit 8)   - convert the present signal type and variant
  * - p1 = (bit 9-11)- start cycle from this signal type
  * - p1 = (bit 12-14)-wrap around after this signal type
+ * - p1 = (bit 15-16)-cycle the signal direction this many times
  * @param p2 used for CmdBuildManySignals() to copy direction of first signal
  * TODO: p2 should be replaced by two bits for "along" and "against" the track.
  */
@@ -844,6 +845,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 	SignalType cycle_start = (SignalType)GB(p1, 9, 3);
 	SignalType cycle_stop = (SignalType)GB(p1, 12, 3);
 	CommandCost cost;
+	uint num_dir_cycle = GB(p1, 15, 2);
 
 	if (sigtype > SIGTYPE_LAST) return CMD_ERROR;
 
@@ -920,6 +922,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 				SetPresentSignals(tile, GetPresentSignals(tile) | (IsPbsSignal(sigtype) ? KillFirstBit(SignalOnTrack(track)) : SignalOnTrack(track)));
 				SetSignalType(tile, track, sigtype);
 				SetSignalVariant(tile, track, sigvar);
+				while (num_dir_cycle-- > 0) CycleSignalSide(tile, track);
 			} else {
 				if (convert_signal) {
 					/* convert signal button pressed */
