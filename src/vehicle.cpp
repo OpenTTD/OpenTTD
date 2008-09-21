@@ -643,8 +643,7 @@ void Vehicle::PreDestructor()
 	if (IsValidStationID(this->last_station_visited)) {
 		GetStation(this->last_station_visited)->loading_vehicles.remove(this);
 
-		HideFillingPercent(this->fill_percent_te_id);
-		this->fill_percent_te_id = INVALID_TE_ID;
+		HideFillingPercent(&this->fill_percent_te_id);
 	}
 
 	if (IsEngineCountable(this)) {
@@ -2533,8 +2532,7 @@ void Vehicle::LeaveStation()
 	Station *st = GetStation(this->last_station_visited);
 	st->loading_vehicles.remove(this);
 
-	HideFillingPercent(this->fill_percent_te_id);
-	this->fill_percent_te_id = INVALID_TE_ID;
+	HideFillingPercent(&this->fill_percent_te_id);
 
 	if (this->type == VEH_TRAIN) {
 		/* Trigger station animation (trains only) */

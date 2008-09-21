@@ -607,9 +607,12 @@ void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID string)
 	UpdateTextEffect(te_id, string);
 }
 
-void HideFillingPercent(TextEffectID te_id)
+void HideFillingPercent(TextEffectID *te_id)
 {
-	if (te_id != INVALID_TE_ID) RemoveTextEffect(te_id);
+	if (*te_id == INVALID_TE_ID) return;
+
+	RemoveTextEffect(*te_id);
+	*te_id = INVALID_TE_ID;
 }
 
 static const Widget _tooltips_widgets[] = {

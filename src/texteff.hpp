@@ -29,6 +29,6 @@ void RemoveTextEffect(TextEffectID effect_id);
 /* misc_gui.cpp */
 TextEffectID ShowFillingPercent(int x, int y, int z, uint8 percent, StringID color);
 void UpdateFillingPercent(TextEffectID te_id, uint8 percent, StringID color);
-void HideFillingPercent(TextEffectID te_id);
+void HideFillingPercent(TextEffectID *te_id);
 
 #endif /* TEXTEFF_HPP */

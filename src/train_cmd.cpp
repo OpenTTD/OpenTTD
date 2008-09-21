@@ -1957,6 +1957,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 			} else {
 				v->cur_speed = 0;
 				SetLastSpeed(v, 0);
+				HideFillingPercent(&v->fill_percent_te_id);
 				ReverseTrainDirection(v);
 			}
 		}
