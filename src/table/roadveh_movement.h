@@ -1259,7 +1259,7 @@ static const RoadDriveEntry _roadveh_tram_turn_sw_0[] = {
 	{15, 7},
 	{15, 6},
 	{15, 5},
-	{RDE_TURNED | DIAGDIR_SW, 0},
+	{RDE_TURNED | DIAGDIR_NE, 0},
 	{14, 5},
 	{13, 5},
 	{12, 5},

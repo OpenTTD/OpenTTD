@@ -1082,10 +1082,20 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 	}
 
 	if (v->u.road.reverse_ctr != 0) {
-		/* What happens here?? */
-		v->u.road.reverse_ctr = 0;
-		if (v->tile != tile) {
-			return_track(_road_reverse_table[enterdir]);
+		bool reverse = true;
+		if (v->u.road.roadtype == ROADTYPE_TRAM) {
+			/* Trams may only reverse on a tile if it contains at least the straight
+			 * trackbits or when it is a valid turning tile (i.e. one roadbit) */
+			RoadBits rb = GetAnyRoadBits(tile, ROADTYPE_TRAM);
+			RoadBits straight = AxisToRoadBits(DiagDirToAxis(enterdir));
+			reverse = ((rb & straight) == straight) ||
+			          (rb == DiagDirToRoadBits(enterdir));
+		}
+		if (reverse) {
+			v->u.road.reverse_ctr = 0;
+			if (v->tile != tile) {
+				return_track(_road_reverse_table[enterdir]);
+			}
 		}
 	}
 
@@ -1219,7 +1229,7 @@ enum {
 	RVC_DEFAULT_START_FRAME                =  0,
 	RVC_TURN_AROUND_START_FRAME            =  1,
 	RVC_DEPOT_START_FRAME                  =  6,
-	RVC_START_FRAME_AFTER_LONG_TRAM        = 22,
+	RVC_START_FRAME_AFTER_LONG_TRAM        = 21,
 	RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16,
 	/* Stop frame for a vehicle in a drive-through stop */
 	RVC_DRIVE_THROUGH_STOP_FRAME           =  7
@@ -1477,7 +1487,7 @@ again:
 					 *   going to cause the tram to split up.
 					 * - Or the front of the tram can drive over the next tile.
 					 */
-				} else if (!IsRoadVehFront(v) || !CanBuildTramTrackOnTile(v->owner, tile, needed)) {
+				} else if (!IsRoadVehFront(v) || !CanBuildTramTrackOnTile(v->owner, tile, needed) || ((~needed & GetRoadBits(v->tile, ROADTYPE_TRAM)) == ROAD_NONE)) {
 					/*
 					 * Taking the 'small' corner for trams only happens when:
 					 * - We are not the from vehicle of an articulated tram.
@@ -1587,12 +1597,12 @@ again:
 			 * going to be properly shown.
 			 */
 			turn_around_start_frame = RVC_START_FRAME_AFTER_LONG_TRAM;
-			switch (tram) {
+			switch (rd.x & 0x3) {
 				default: NOT_REACHED();
-				case ROAD_SW: dir = TRACKDIR_RVREV_NE; break;
-				case ROAD_NW: dir = TRACKDIR_RVREV_SE; break;
-				case ROAD_NE: dir = TRACKDIR_RVREV_SW; break;
-				case ROAD_SE: dir = TRACKDIR_RVREV_NW; break;
+				case DIAGDIR_NW: dir = TRACKDIR_RVREV_SE; break;
+				case DIAGDIR_NE: dir = TRACKDIR_RVREV_SW; break;
+				case DIAGDIR_SE: dir = TRACKDIR_RVREV_NW; break;
+				case DIAGDIR_SW: dir = TRACKDIR_RVREV_NE; break;
 			}
 		} else {
 			if (IsRoadVehFront(v)) {
