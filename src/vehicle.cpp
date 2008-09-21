@@ -264,6 +264,11 @@ void AfterLoadVehicles(bool clear_te_id)
 		}
 	}
 
+	/* Stop non-front engines */
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_TRAIN && IsTrainEngine(v) && !IsFrontEngine(v)) v->vehstatus |= VS_STOPPED;
+	}
+
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
 			case VEH_ROAD:
@@ -1110,6 +1115,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	Vehicle *v = GetVehicle(p1);
 
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	switch (v->type) {
 		case VEH_TRAIN:
