@@ -973,10 +973,8 @@ static bool AircraftController(Vehicle *v)
 {
 	int count;
 
-	StationID target = v->u.air.targetairport;
-
 	/* NULL if station is invalid */
-	const Station *st = IsValidStationID(target) ? GetStation(target) : NULL;
+	const Station *st = IsValidStationID(v->u.air.targetairport) ? GetStation(v->u.air.targetairport) : NULL;
 	/* 0 if there is no station */
 	TileIndex tile = 0;
 	if (st != NULL) {
