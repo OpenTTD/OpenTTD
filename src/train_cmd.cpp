@@ -1123,6 +1123,14 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		if (flags & DC_EXEC) src->unitnumber = unit_num;
 	}
 
+	/* When we move the front vehicle, the second vehicle might need a unitnumber */
+	if (!HasBit(p2, 0) && (IsFreeWagon(src) || IsFrontEngine(src)) && (flags & DC_AUTOREPLACE) == 0) {
+		Vehicle *second = GetNextUnit(src);
+		if (second != NULL && IsTrainEngine(second) && GetFreeUnitNumber(VEH_TRAIN) > _patches.max_trains) {
+			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		}
+	}
+
 	/*
 	 * Check whether the vehicles in the source chain are in the destination
 	 * chain. This can easily be done by checking whether the first vehicle
@@ -1962,6 +1970,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 			} else {
 				v->cur_speed = 0;
 				SetLastSpeed(v, 0);
+				HideFillingPercent(&v->fill_percent_te_id);
 				ReverseTrainDirection(v);
 			}
 		}
@@ -3850,9 +3859,23 @@ void ConnectMultiheadedTrains()
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
-			Vehicle *u = v;
+		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) {
+			/* Two ways to associate multiheaded parts to each other:
+			 * sequential-matching: Trains shall be arranged to look like <..>..<..>..<..>..
+			 * bracket-matching:    Free vehicle chains shall be arranged to look like ..<..<..>..<..>..>..
+			 *
+			 * Note: Old savegames might contain chains which do not comply with these rules, e.g.
+			 *   - the front and read parts have invalid orders
+			 *   - different engine types might be combined
+			 *   - there might be different amounts of front and rear parts.
+			 *
+			 * Note: The multiheaded parts need to be matched exactly like they are matched on the server, else desyncs will occur.
+			 *   This is why two matching strategies are needed.
+			 */
 
+			bool sequential_matching = IsFrontEngine(v);
+
+			Vehicle *u = v;
 			BEGIN_ENUM_WAGONS(u) {
 				if (u->u.rail.other_multiheaded_part != NULL) continue; // we already linked this one
 
@@ -3863,14 +3886,35 @@ void ConnectMultiheadedTrains()
 						u->spritenum--;
 					}
 
+					/* Find a matching back part */
+					EngineID eid = u->engine_type;
 					Vehicle *w;
-					for (w = u->Next(); w != NULL && (w->engine_type != u->engine_type || w->u.rail.other_multiheaded_part != NULL); w = GetNextVehicle(w)) {}
-					if (w != NULL) {
-						/* we found a car to partner with this engine. Now we will make sure it face the right way */
-						if (IsTrainEngine(w)) {
-							ClearTrainEngine(w);
-							w->spritenum++;
+					if (sequential_matching) {
+						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
+							if (w->engine_type != eid || w->u.rail.other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
+
+							/* we found a car to partner with this engine. Now we will make sure it face the right way */
+							if (IsTrainEngine(w)) {
+								ClearTrainEngine(w);
+								w->spritenum++;
+							}
+							break;
 						}
+					} else {
+						uint stack_pos = 0;
+						for (w = GetNextVehicle(u); w != NULL; w = GetNextVehicle(w)) {
+							if (w->engine_type != eid || w->u.rail.other_multiheaded_part != NULL || !IsMultiheaded(w)) continue;
+
+							if (IsTrainEngine(w)) {
+								stack_pos++;
+							} else {
+								if (stack_pos == 0) break;
+								stack_pos--;
+							}
+						}
+					}
+
+					if (w != NULL) {
 						w->u.rail.other_multiheaded_part = u;
 						u->u.rail.other_multiheaded_part = w;
 					} else {

@@ -251,8 +251,9 @@ static void QuerySignEditWndProc(Window *w, WindowEvent *e)
 
 				case QUERY_EDIT_SIGN_WIDGET_DELETE:
 					/* Only need to set the buffer to null, the rest is handled as the OK button */
-					DeleteTextBufferAll(&qs->text);
-					/* FALL THROUGH */
+					RenameSign(qs->cur_sign, "");
+					/* don't delete this, we are deleted in Sign::~Sign() -> DeleteRenameSignWindow() */
+					break;
 
 				case QUERY_EDIT_SIGN_WIDGET_OK:
 					RenameSign(qs->cur_sign, qs->text.buf);
@@ -325,5 +326,9 @@ void ShowRenameSignWindow(const Sign *si)
 	UpdateSignEditWindow(w, si);
 }
 
+void DeleteRenameSignWindow(SignID sign)
+{
+	const Window *w = FindWindowById(WC_QUERY_STRING, 0);
 
-
+	if (w != NULL && WP(w, editsign_d).cur_sign == sign) delete w;
+}

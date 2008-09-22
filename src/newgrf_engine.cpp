@@ -25,6 +25,7 @@
 #include "direction_func.h"
 #include "rail_map.h"
 #include "rail.h"
+#include "aircraft.h"
 
 
 int _traininfo_vehicle_pitch = 0;
@@ -215,8 +216,8 @@ enum {
  */
 static byte MapAircraftMovementState(const Vehicle *v)
 {
-	const Station *st = GetStation(v->u.air.targetairport);
-	if (st->airport_tile == 0) return AMS_TTDP_FLIGHT_TO_TOWER;
+	const Station *st = GetTargetAirportIfValid(v);
+	if (st == NULL) return AMS_TTDP_FLIGHT_TO_TOWER;
 
 	const AirportFTAClass *afc = st->Airport();
 	uint16 amdflag = afc->MovingData(v->u.air.pos)->flag;
@@ -552,22 +553,26 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			{
 				const Vehicle *w = v->Next();
 				uint16 altitude = v->z_pos - w->z_pos; // Aircraft height - shadow height
-				byte airporttype;
+				byte airporttype = ATP_TTDP_LARGE;
 
-				switch (GetStation(v->u.air.targetairport)->airport_type) {
-					/* Note, Helidepot and Helistation are treated as small airports
-					 * as they are at ground level. */
-					case AT_HELIDEPOT:
-					case AT_HELISTATION:
-					case AT_COMMUTER:
-					case AT_SMALL:         airporttype = ATP_TTDP_SMALL; break;
-					case AT_METROPOLITAN:
-					case AT_INTERNATIONAL:
-					case AT_INTERCON:
-					case AT_LARGE:         airporttype = ATP_TTDP_LARGE; break;
-					case AT_HELIPORT:      airporttype = ATP_TTDP_HELIPORT; break;
-					case AT_OILRIG:        airporttype = ATP_TTDP_OILRIG; break;
-					default:               airporttype = ATP_TTDP_LARGE; break;
+				const Station *st = GetTargetAirportIfValid(v);
+
+				if (st != NULL) {
+					switch (st->airport_type) {
+						/* Note, Helidepot and Helistation are treated as small airports
+						 * as they are at ground level. */
+						case AT_HELIDEPOT:
+						case AT_HELISTATION:
+						case AT_COMMUTER:
+						case AT_SMALL:         airporttype = ATP_TTDP_SMALL; break;
+						case AT_METROPOLITAN:
+						case AT_INTERNATIONAL:
+						case AT_INTERCON:
+						case AT_LARGE:         airporttype = ATP_TTDP_LARGE; break;
+						case AT_HELIPORT:      airporttype = ATP_TTDP_HELIPORT; break;
+						case AT_OILRIG:        airporttype = ATP_TTDP_OILRIG; break;
+						default:               airporttype = ATP_TTDP_LARGE; break;
+					}
 				}
 
 				return (altitude << 8) | airporttype;

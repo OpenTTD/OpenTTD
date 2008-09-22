@@ -1188,8 +1188,8 @@ static void ConvertTownOwner()
 	for (tile = 0; tile != MapSize(); tile++) {
 		switch (GetTileType(tile)) {
 			case MP_ROAD:
-				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HasBit(_m[tile].m4, 7)) {
-					_m[tile].m4 = OWNER_TOWN;
+				if (GB(_m[tile].m5, 4, 2) == ROAD_TILE_CROSSING && HasBit(_m[tile].m3, 7)) {
+					_m[tile].m3 = OWNER_TOWN;
 				}
 				/* FALLTHROUGH */
 
@@ -1596,7 +1596,7 @@ bool AfterLoadGame()
 
 				case MP_ROAD:
 					_m[t].m4 |= (_m[t].m2 << 4);
-					if (IsTileOwner(t, OWNER_TOWN)) {
+					if ((GB(_m[t].m5, 4, 2) == ROAD_TILE_CROSSING ? (Owner)_m[t].m3 : GetTileOwner(t)) == OWNER_TOWN) {
 						SetTownIndex(t, CalcClosestTownFromTile(t, (uint)-1)->index);
 					} else {
 						SetTownIndex(t, 0);
@@ -2474,6 +2474,15 @@ bool AfterLoadGame()
 				}
 				delete v;
 			}
+		}
+	}
+
+	/* Just always run this for 0.6. Doesn't hurt to fix the owners a second time. */
+	if (CheckSavegameVersion(103)) {
+		/* signs with invalid owner left from older savegames */
+		Sign *si;
+		FOR_ALL_SIGNS(si) {
+			if (si->owner != OWNER_NONE && !IsValidPlayer(si->owner) && GetPlayer(si->owner)->is_active) si->owner = OWNER_NONE;
 		}
 	}
 

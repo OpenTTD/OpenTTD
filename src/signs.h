@@ -67,7 +67,7 @@ void PlaceProc_Sign(TileIndex tile);
 
 /* signs_gui.cpp */
 void ShowRenameSignWindow(const Sign *si);
-
+void DeleteRenameSignWindow(SignID sign);
 void ShowSignList();
 
 #endif /* SIGNS_H */

@@ -463,8 +463,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			return 0;
 
 		case WM_CHAR: {
-			/* Silently drop all non-text messages as those were handled by WM_KEYDOWN */
-			if (wParam < VK_SPACE) return 0;
 			uint scancode = GB(lParam, 16, 8);
 			uint charcode = wParam;
 
@@ -490,12 +488,13 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		case WM_KEYDOWN: {
 			keycode = MapWindowsKey(wParam);
 
-			/* Silently drop all text messages as those will be handled by WM_CHAR
-			 * WM_KEYDOWN only handles CTRL+ commands and special keys like VK_LEFT, etc. */
-			if (keycode == 0 || (keycode > WKC_PAUSE && GB(keycode, 13, 4) == 0)) return 0;
-
-			/* Keys handled in WM_CHAR */
-			if ((uint)(GB(keycode, 0, 12) - WKC_NUM_DIV) <= WKC_MINUS - WKC_NUM_DIV) return 0;
+			/* Silently drop all messages handled by WM_CHAR. */
+			MSG msg;
+			if (PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE)) {
+				if (msg.message == WM_CHAR && GB(lParam, 16, 8) == GB(msg.lParam, 16, 8)) {
+					return 0;
+				}
+			}
 
 			HandleKeypress(0 | (keycode << 16));
 			return 0;
