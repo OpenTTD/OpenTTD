@@ -1121,6 +1121,14 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		if (flags & DC_EXEC) src->unitnumber = unit_num;
 	}
 
+	/* When we move the front vehicle, the second vehicle might need a unitnumber */
+	if (!HasBit(p2, 0) && (IsFreeWagon(src) || IsFrontEngine(src)) && (flags & DC_AUTOREPLACE) == 0) {
+		Vehicle *second = GetNextUnit(src);
+		if (second != NULL && IsTrainEngine(second) && GetFreeUnitNumber(VEH_TRAIN) > _settings_game.vehicle.max_trains) {
+			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+		}
+	}
+
 	/*
 	 * Check whether the vehicles in the source chain are in the destination
 	 * chain. This can easily be done by checking whether the first vehicle
