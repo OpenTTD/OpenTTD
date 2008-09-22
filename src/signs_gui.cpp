@@ -328,7 +328,7 @@ void ShowRenameSignWindow(const Sign *si)
 
 void DeleteRenameSignWindow(SignID sign)
 {
-	const Window *w = FindWindowById(WC_QUERY_STRING, 0);
+	Window *w = FindWindowById(WC_QUERY_STRING, 0);
 
-	if (w != NULL && WP(w, editsign_d).cur_sign == sign) delete w;
+	if (w != NULL && WP(w, editsign_d).caption == STR_280B_EDIT_SIGN_TEXT && WP(w, editsign_d).cur_sign == sign) DeleteWindow(w);
 }
