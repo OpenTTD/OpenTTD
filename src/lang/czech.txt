@@ -496,11 +496,11 @@ STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zobrazit
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zobrazit seznam letadel spolecnosti
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Přiblížit pohled
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Oddálit pohled
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Stavět koleje
-STR_0182_BUILD_ROADS                                            :{BLACK}Stavět silnice
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Stavět doky
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Budovat železnici
+STR_0182_BUILD_ROADS                                            :{BLACK}Budovat silniční síť
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Budovat vodní cesty
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Stavět letiště
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Zasadit stromy, umístit cedule, atd..
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Vysadit stromy
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informace o zemi
 STR_0187_OPTIONS                                                :{BLACK}Možnosti
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -633,22 +633,22 @@ STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Ukaž sk
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klepni na dotaci pro zobrazení města/průmyslu
 STR_01FE_DIFFICULTY                                             :{BLACK}Obtížnost ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
-STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Poslední zpráva / článek
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Poslední zpráva nebo článek
 STR_0201_MESSAGE_SETTINGS                                       :Nastavení zpráv
 STR_MESSAGE_HISTORY_MENU                                        :Historie zpráv
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Ukázat poslední zprávu / článek, možnosti zpráv
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Ukázat poslední zprávu nebo článek, možnosti zpráv
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Možnosti zpráv
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Typy zpráv:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Příjezd prvního vozidla do hráčovy stanice
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Příjezd prvního vozidla do konkurenční stanice
-STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nehody / katastrofy
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Nehody a katastrofy
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informace o společnosti
 STR_NEWS_OPEN_CLOSE                                             :{YELLOW}Otevření / zavření továren
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Změny v ekonomice
 STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Změny produkce průmyslu obsluhovaného hráčem
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Změny produkce průmyslu obsluhovaného konkurencí
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Jiné změny produkce průmyslu
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rady / informace o hráčových vozidlech
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rady a informace k hráčovým vozidlům
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nový dopravní prostředek
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Změny příjmu zboží
 STR_020E_SUBSIDIES                                              :{YELLOW}Dotace
@@ -686,7 +686,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Opravdu 
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generování krajiny
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generování měst
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generování průmyslu
-STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Výstavba silnic
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Výstavba silniční sítě
 STR_0233_TOWN_GENERATION                                        :{WHITE}Generování měst
 STR_0234_NEW_TOWN                                               :{BLACK}Nové město
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Vytvoř nové město
@@ -847,7 +847,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Průhl
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informace o zemi
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Zobrazit / skrýt konzoli
+STR_CONSOLE_SETTING                                             :Zobrazit nebo skrýt konzoli
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Obrovský screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
@@ -1328,7 +1328,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :Hodně náhodn�
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryje krajinu náhodným průmyslem
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nemůžu generovat průmysl...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Otevřít nástrojovou lištu na snížení / zvýšení terénu, výsadbu stromů, atd.
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Otevřít nástrojovou lištu na úpravu terénu, výsadbu stromů, atd.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Úpravy krajiny
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Srovnat terén
 
@@ -1350,7 +1350,7 @@ STR_LANDINFO_COORDS                                             :{BLACK}Souřadn
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Nemůžu odstranit část stanice...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Zde nemohu změnit typ kolejí...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Změnit / vylepšit typ kolejí
+STR_CONVERT_RAIL_TIP                                            :{BLACK}Změnit nebo vylepšit druh kolejí (na tento)
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Celý vlak prodáš lokomotivy na toto místo
 
@@ -1749,8 +1749,8 @@ STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Postavit
 STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Postavit tramvajový most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Postavit silniční tunel
 STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Postavit tramvajový tunel
-STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Stavět / nestavět jednosměrné silnice
-STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Přepnout stavba / odstranění silnice
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Stavět nebo nestavět jednosměrné silnice
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Stavět nebo bourat silnici nebo zastávku
 STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Přepínání mezi výstavbou a bouráním tramvajové tratě
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Výběr orientace garáže
 STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Zvol směr tramvajového depa
@@ -2273,8 +2273,8 @@ STR_700A_COMPANY_NAME                                           :Jméno společn
 STR_700B_PRESIDENT_S_NAME                                       :Jméno prezidenta
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Nemohu změnit jméno společnosti.
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Nemohu změnit jméno prezidenta.
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finance {BLACK}{COMPANYNUM}
-STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Příjmy / výdaje
+STR_700E_FINANCES                                               :{WHITE}Finance - {COMPANY} {BLACK}{COMPANYNUM}
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Příjmy a výdaje
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Výstavba
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nové dopravní prostředky
@@ -2357,7 +2357,7 @@ STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nemohu k
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ceny za přepravu nákladu
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Doba přepravy ve dnech
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Platba za doručeni 10 jednotek (nebo 10 000 litru) nákladu do vzdálenosti 20 čtverecků
-STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Zobrazit / skrýt graf pro určitý druh nákladu
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Zobrazit nebo skrýt graf pro určitý druh nákladu
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Strojvůdce
 STR_7067_TRAFFIC_MANAGER                                        :Manažer dopravy
@@ -2369,7 +2369,7 @@ STR_706C_CHAIRMAN                                               :Předseda
 STR_706D_PRESIDENT                                              :Prezident
 STR_706E_TYCOON                                                 :Magnát
 STR_706F_BUILD_HQ                                               :{BLACK}Ředitelství
-STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Vybudovat ředitelství společnosti / ukázat ředitelství společnosti
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Vybudovat ředitelství společnosti nebo ho ukázat
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sídlo společnosti můžeš vystavit jinde za 1 % její hodnoty
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nemohu postavit ředitelství společnosti
 STR_7072_VIEW_HQ                                                :{BLACK}Ředitelství
@@ -2783,7 +2783,7 @@ STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nemohu k
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Hodnota: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
-STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Nakládání / vykládání
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Nakládá nebo vykládá
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak musí stát v depu
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nelze poslat vlak do depa...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nedostatek prostoru na příkazy

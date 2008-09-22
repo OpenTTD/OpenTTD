@@ -1331,6 +1331,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transporterat)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transporterat)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industrinamn - klicka på namnet för att centrera vyn över industrin
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... för nära en annan industri
 
@@ -3130,6 +3131,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Saknas G
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Saknad(e) GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Avpausning kan krascha OpenTTD. Skicka ej igen bugg-rapport för möjlig krasch.{}Är du säker att du vill avpausa?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}'Beteendet hos '{STRING}' kommer troligen orsaka desynkronisering och/eller krascher.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Byter fordonlängd för  '{1:ENGINE}' utanför en depå.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tåg '{VEHICLE}' som tillhör '{COMPANY}' har ogiltig länd. Detta orsakas förmodligen av problem med en NewGRF. Spelet kan desynkroniseras eller krascha
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spelet sparades i en version som ej stöder spårvagn. Alla spårvagnar har tagits bort
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}

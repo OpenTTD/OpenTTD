@@ -16,6 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flatt land er nødvendig
 STR_0008_WAITING                                                :{BLACK}Venter: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} i-rute fra {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Godtar: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Godtar: {GOLD}
 STR_000E                                                        :
@@ -725,6 +726,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plasser 
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plasser radiosender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Trykk og hold inne CTRL for å fjerne den
 STR_CREATE_LAKE                                                 :{BLACK}Definer vannområde.{}Lag en kanal, untatt hvis CTRL holdes nede på havnivå, hvor områdene vil fylles istedenfor
+STR_CREATE_RIVER                                                :{BLACK}Plasser elver.
 STR_0290_DELETE                                                 :{BLACK}Slett
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Slett denne byen fullstendig
 STR_0292_SAVE_SCENARIO                                          :Lagre scenario
@@ -1203,6 +1205,15 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Noen eller alle av standard vedlikeholdsintervall(ene) under er inkompatible med valgte instillinger! 5-90{NBSP}% og 30-800 dager er gyldige
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikke anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Orginal {RED}(Ikke anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikke anbefalt)
 STR_TEMPERATE_LANDSCAPE                                         :Temperert landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktisk landskap
 STR_SUB_TROPICAL_LANDSCAPE                                      :subtropisk landskap
@@ -1316,6 +1327,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}{NBSP}% transportert)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}{NBSP}%/{COMMA}{NBSP}% transportert)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industri navn - klikk på navn for å sentrere sikt over industri
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for nært en annen industri
 
@@ -1597,6 +1609,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}For høy
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Upassende jernbanespor
 STR_1007_ALREADY_BUILT                                          :{WHITE}...allerede bygget
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Må fjerne jernbanespor først
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Vei er enveis eller blokkert
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Bygg jernbane
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrisk jernbane-konstruksjon
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Bygg Monorail
@@ -1699,6 +1712,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Bygningen må rives først
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (By)
 STR_2006_POPULATION                                             :{BLACK}Innbyggertall: {ORANGE}{COMMA}{BLACK}  Antall hus: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Bytt navn
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan ikke bytte navn på byen...
@@ -2331,6 +2345,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passasjervogn (damp)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passasjervogn (diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passasjervogn (elektrisk)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passasjer Vogn (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passasjer Vogn (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Fraktvogn
 STR_LIVERY_BUS                                                  :Buss
 STR_LIVERY_TRUCK                                                :Lastebil
@@ -3110,6 +3126,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mangler 
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler GRF-fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan gjøre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasje.{}Ønsker du virkelig å slå av pause?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Oppførselen av ny graffikk '{STRING}' er sansynlig til å skape forstyrrelse og/eller kollisjoner.
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Deler:
@@ -3233,6 +3250,9 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetyper
 STR_PURCHASE_INFO_ALL_BUT                                       :Alt utenom {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks. trekkraft: {GOLD}{FORCE}
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Generer
@@ -3331,6 +3351,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Skru på
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Skru på gjennomsiktighet for stasjoner, depoter, lokalstasjoner og skinner
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Skru på gjennomsiktighet for broer
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Skru på gjennomsiktighet for fyrtårn og antenner
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Skjul/vis gjennomsiktighet for kjettingkurve. CTRL+klikk til å låse.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Velg gjennomsiktighet for lastingsindikatorer
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}{NBSP}%{UPARROW}

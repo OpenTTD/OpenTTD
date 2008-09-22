@@ -15,6 +15,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flat land required
 STR_0008_WAITING                                                :{BLACK}Waiting: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} en-route from {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepts: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepts: {GOLD}
 STR_000E                                                        :
@@ -724,6 +725,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Place li
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Place transmitter
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Define desert area.{}Press and hold CTRL to remove it
 STR_CREATE_LAKE                                                 :{BLACK}Define water area.{}Make a canal, unless CTRL is held down at sea level, when it will flood the surroundings instead
+STR_CREATE_RIVER                                                :{BLACK}Place rivers.
 STR_0290_DELETE                                                 :{BLACK}Delete
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Delete this town completely
 STR_0292_SAVE_SCENARIO                                          :Save scenario
@@ -933,6 +935,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Select t
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fullscreen
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Check this box to play OpenTTD fullscreen mode
+STR_FULLSCREEN_FAILED                                           :{WHITE}Fullscreen mode failed
 
 STR_OPTIONS_RES                                                 :{BLACK}Screen resolution
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1201,6 +1204,15 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Change setting value
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Some or all of the default service interval(s) below are incompatible with chosen setting! 5-90% and 30-800 days are valid
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Not recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Not recommended)
 STR_TEMPERATE_LANDSCAPE                                         :Temperate landscape
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arctic landscape
 STR_SUB_TROPICAL_LANDSCAPE                                      :Sub-tropical landscape
@@ -1314,6 +1326,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transported)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transported)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Industry names - click on name to center view on industry
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...too close to another industry
 
@@ -1595,6 +1608,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Too high
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}No suitable railroad track
 STR_1007_ALREADY_BUILT                                          :{WHITE}...already built
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Must remove railroad track first
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Road is one way or blocked
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Railroad Construction
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Electrified Railroad Construction
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorail Construction
@@ -1697,6 +1711,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Building must be demolished first
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (City)
 STR_2006_POPULATION                                             :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Houses: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Rename Town
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Can't rename town...
@@ -2329,6 +2344,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passenger/Mail Car (Steam)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passenger/Mail Car (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passenger/Mail Car (Electric)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passenger Car (Monorail)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passenger Car (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Freight Car
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Truck
@@ -2784,6 +2801,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}New {STRING} now available!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Can't sell destroyed vehicle...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Can't refit destroyed vehicle...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Can't timetable vehicle...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vehicles can only wait at stations.
@@ -3104,7 +3122,13 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Matchin
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Compatible GRF(s) loaded for missing files
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Missing GRF file(s) have been disabled
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Missing GRF file(s) to be able to load game
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Missing GRF file(s)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Behaviour of NewGRF '{STRING}' is likely to cause desyncs and/or crashes.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}It changes vehicle length for '{1:ENGINE}' when not inside a depot.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Train '{VEHICLE}' belonging to '{COMPANY}' has invalid length. It is probably caused by problems with NewGRFs. Game may desync or crash.
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Game was saved in version without streetcar support. All streetcars have been removed.
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
@@ -3228,6 +3252,9 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
 STR_PURCHASE_INFO_ALL_BUT                                       :All but {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tractive Effort: {GOLD}{FORCE}
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Generate
@@ -3326,6 +3353,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Toggle t
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Toggle transparency for buildables like stations, depots, waypoints and catenary
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Toggle transparency for bridges
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Toggle transparency for structures like lighthouses and antennas, maybe in future for eyecandy
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Toggle transparency for catenary. CTRL+click to lock.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Toggle transparency for loading indicators
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

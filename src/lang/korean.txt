@@ -784,7 +784,7 @@ STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}웨이
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}완전한 애니메이션
 STR_02D2_FULL_DETAIL                                            :{SETX 12}아주 상세하게
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}건물 안보이기
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}역이름 팻말 안보이기
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}역이름 팻말 투명
 ############ range ends here
 
 ############ range for menu starts
@@ -1277,7 +1277,7 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}땅을 �
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}무작위 나무
-STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}모든 종류의 나무를 무작위로 심습니다.
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}나무를 무작위로 심습니다.
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}여기에 운하를 건설할 수 없습니다...
 STR_BUILD_CANALS_TIP                                            :{BLACK}운하 만들기
@@ -1344,9 +1344,9 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}열차�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}새로운 인공지능(AI) 개발에 오신 것을 환영합니다. 문제가 발생하면 스크린샷을 찍어 TTD포럼에 올려주십시오.
+TEMP_AI_IN_PROGRESS                                             :{WHITE}개발중인 새로운 인공지능(AI)에 오신 것을 환영합니다. 문제가 발생하면 스크린샷을 찍어 TTD포럼에 올려주십시오.
 TEMP_AI_ACTIVATED                                               :{WHITE}경고: 이 새로운 인공지능은 실험적입니다! 오직 버스와 트럭에만 적용될 것입니다.
-TEMP_AI_MULTIPLAYER                                             :{WHITE}경고: 아직 실험적인 기능입니다. truelight@openttd.org 으로 문제를 알려주십시오.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}경고: 아직 실험적인 기능입니다.
 
 ############ network gui strings
 
@@ -2721,7 +2721,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}싣는중 / 내리는중
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}차량기지 안에서 정지해있어야 합니다!
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}차량기지 안에 정지해있어야 합니다!
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}기차를 기지로 보낼 수 없습니다...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}더이상 경로를 지정할 공간이 없습니다
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}경로가 너무 많습니다!
@@ -2810,7 +2810,7 @@ STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}폭발�
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}파괴된 차량은 개조할 수 없습니다...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}차량의 시간표를 정할 수 없습니다...
-STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}정거장에서만 기다릴 수 있습니다.
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}차량은 정거장에서만 기다릴 수 있습니다.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}이 차량은 이 정거장에 서지 않습니다.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}시간 변경
 STR_TIMETABLE_STATUS_ON_TIME                                    :이 차량은 현재 제시간에 운행하고 있습니다
@@ -3162,8 +3162,8 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}이 역�
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}이 역을 거쳐가는 모든 항공기를 표시합니다
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}이 역을 거쳐가는 모든 선박을 표시합니다
 
-STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 차량의 공유된 목록
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}이 스케쥴을 공유한 모든 차량을 표시합니다.
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 차량의 공유된 경로 목록
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}이 경로를 공유하고 있는 모든 차량을 표시합니다.
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}이 안에 있는 모든 차량을 판매하려고 합니다. 정말 판매하시겠습니까?
@@ -3291,7 +3291,7 @@ STR_START_DATE_QUERY_CAPT                                       :{WHITE}시작 �
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크기에 대한 경고
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}맵 자원의 크기를 너무 키우는 것은 좋지 않습니다. 생성을 계속하시겠습니까?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}도시 설계 경고
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 생성을 계속 하시겠습니까?
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 생성을 계속하시겠습니까?
 STR_HEIGHTMAP_NAME                                              :{BLACK}DEM지형 이름:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}크기: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}나는야 신이라네~ 천지창조중...
@@ -3356,15 +3356,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...여�
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...도로가 잘못된 방향을 향하고 있습니다
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}투명 옵션
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}역이름 팻말 투명 전환
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}나무 투명 전환
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}집 투명 전환
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}산업시설 투명 전환
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}정거장, 차량기지, 웨이포인트, 연결고리와 같은 건설 가능한 것들에 대한 투명 전환
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}역이름 팻말 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}나무 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}집 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}산업시설 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}정거장, 차량기지, 웨이포인트와 같은 건설 가능한 것들에 대한 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리 투명 전환
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대와 안테나와 같은 구조물 투명 전환
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대와 안테나와 같은 구조물 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}케이블 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}적재 정도 투명 전환
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}적재 정도 투명 전환. 고정하려면 CTRL+클릭하세요.
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

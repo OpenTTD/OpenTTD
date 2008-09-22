@@ -2,7 +2,7 @@
 ##ownname Deutsch
 ##isocode de_DE
 ##plural 0
-##gender m w n
+##gender m w n p
 
 #
 
@@ -434,7 +434,7 @@ STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Allgemei
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Diagramm anzeigen
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Firmentabelle anzeigen
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zuglisten der Firmen anzeigen
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Fahrzeuglisten der Firmen
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Fahrzeuglisten der Firmen anzeigen
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Schiffslisten der Firmen anzeigen
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Flugzeuglisten der Firmen anzeigen
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Ansicht vergrößern (hereinzoomen)
@@ -443,7 +443,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise l
 STR_0182_BUILD_ROADS                                            :{BLACK}Straßen bauen
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Hafen bauen
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Flughafen bauen
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Bäume pflanzen, Schilder aufstellen usw.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Bäume pflanzen
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Gebietsinformation
 STR_0187_OPTIONS                                                :{BLACK}Einstellungen
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -724,8 +724,8 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Bäume z
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige Gebiete in der Landschaft platzieren
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender errichten
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Lege Wüstengebiet an.{}STRG drücken zum entfernen
-STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal; Bei gedrückter Strg.-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Wüstengebiet anlegen{}Zum Entfernen Strg-Taste drücken
+STR_CREATE_LAKE                                                 :{BLACK}Wasser erzeugen.{}Baut einen Kanal. Bei gedrückter Strg-Taste wird ein Wasserfeld erzeugt, das umliegendes Land flutet.
 STR_CREATE_RIVER                                                :{BLACK}Flüsse platzieren.
 STR_0290_DELETE                                                 :{BLACK}Löschen
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Diese Stadt vollständig löschen
@@ -1398,7 +1398,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Neues Sp
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spielname:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Der Name des Spieles wird anderen Spielern im Mehrspielerdialog angezeigt
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Passwort setzen
-STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Vergebe ein Passwort, um zu verhindern, dass unbefugte Leute beitreten können
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Ein Passwort verhindert, dass unbefugte Leute beitreten.
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Spielfeld auswählen:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Welches Spielfeld soll verwendet werden?
 STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
@@ -1913,7 +1913,7 @@ STR_3069_BUOY                                                   :Boje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje ist im Weg
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Bahnhof ist zu groß
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...ungleichförmige Stationen deaktiviert
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}STRG gedrückt halten um mehrere Einträge auszuwählen
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Strg gedrückt halten, um mehrere Einträge auszuwählen
 
 STR_UNDEFINED                                                   :(nicht definierter Wert)
 STR_STAT_CLASS_DFLT                                             :Standardstation
@@ -1969,7 +1969,7 @@ STR_4809_PRINTING_WORKS                                         :{G=w}Druckerei
 STR_480A_STEEL_MILL                                             :{G=n}Stahlwalzwerk
 STR_480B_FARM                                                   :{G=m}Bauernhof
 STR_480C_COPPER_ORE_MINE                                        :{G=n}Kupfererzbergwerk
-STR_480D_OIL_WELLS                                              :{G=w}Ölquellen
+STR_480D_OIL_WELLS                                              :{G=p}Ölquellen
 STR_480E_BANK                                                   :{G=w}Bank
 STR_480F_FOOD_PROCESSING_PLANT                                  :{G=w}Nahrungsmittelfabrik
 STR_4810_PAPER_MILL                                             :{G=w}Papiermühle
@@ -2012,8 +2012,8 @@ STR_4828_PRODUCES                                               :{BLACK}Produzie
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% befördert)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Hauptansicht zum Industriegebiet scrollen
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} wird nahe {TOWN} gebaut!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} wird nahe {TOWN} aufgeforstet!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} gebaut!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} {G 0 wird wird wird werden} nahe {TOWN} aufgeforstet!
 STR_482F_COST                                                   :{BLACK}Kosten: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Industrie kann hier nicht gebaut werden...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Wald kann nur oberhalb der Schneegrenze gepflanzt werden
@@ -2349,9 +2349,9 @@ STR_LIVERY_DMU                                                  :VT
 STR_LIVERY_EMU                                                  :ET
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagierwagen (Dampf)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagierwagen (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierwagen (elektrisch)
-STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Reisezugwagen (Einschienenbahn)
-STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Reisezugwagen (Magnetschwebebahn)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierwagen (elektr.)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passagierwagen (Einsch.)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passagierwagen (Magnet.)
 STR_LIVERY_FREIGHT_WAGON                                        :Güterwaggon
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Lastwagen
@@ -2630,7 +2630,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Hubsch
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Hubschrauber
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Hubschrauber
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Nachricht vom Fahrzeughersteller
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben ein{G en e ""} neue{G n "" s} {STRING} entwickelt. {}Sind Sie daran interessiert, das Fahrzeug ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor es allgemein zur Verfügung gestellt wird?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben {G "einen" "eine" "ein" ""} neue{G n "" s ""} {0:STRING} entwickelt. {}Sind Sie daran interessiert, {G 0 den die das die} {0:STRING} ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor {G 0 er sie es sie} allgemein zur Verfügung gestellt {G 0 wird wird wird werden}?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=w}Lokomotive
 STR_8103_ROAD_VEHICLE                                           :{G=n}Fahrzeug
 STR_8104_AIRCRAFT                                               :{G=n}Flugzeug
@@ -2802,9 +2802,9 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatible Gl
 STR_TRAIN_NO_POWER                                              :{RED}Keine Energie
 STR_TRAIN_START_NO_CATENARY                                     :Wegen fehlender Oberleitung kann der Zug nicht starten.
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} jetzt erhältlich!
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Neue{G r "" s ""} {STRING} jetzt erhältlich!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s} {STRING} jetzt erhältlich!  -  {ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Neue{G r "" s ""} {STRING} jetzt erhältlich!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kann dieses Schrottfahrzeug nicht mehr verkaufen ...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kann zerstörtes Fahrzeug nicht nachrüsten...
@@ -3486,7 +3486,7 @@ STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standard
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Einfahrsignal (Lichtsignal){}Zeigt grün, wenn im folgenden Block mindestens Ausfahrsignal grün zeigt. Andernfalls zeigt es rot.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ausfahrsignal (Lichtsignal){}Verhält sich wie ein normales Signal, gibt jedoch das Signal an Einfahr- und Combosignale im vorherliegenden Block weiter.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combosignal (Lichtsignal){}Das Combosignal ist gleichzeitig Ausfahr- und Einfahrsignal. Somit werden umfangreiche Signalverschaltungen möglich.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klick ändert die bestehende Bauform.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalumbau{}Wenn ausgewählt, werden bestehende Signale durch Anklicken zum ausgewählten Signaltyp umgebaut. Strg+Klicken ändert die bestehende Bauform.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Abstand der Signale
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Signalabstand verringern
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Signalabstand erhöhen

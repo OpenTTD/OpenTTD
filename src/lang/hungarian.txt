@@ -1190,7 +1190,7 @@ STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetre
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Alapértelmezett síntipus (játéktöltés/új játék után): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normál sín
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektromos sín
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Egysín
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Egysínű
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
@@ -1396,6 +1396,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gazdasá
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% elszállítva)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% elszállítva)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Gazdasági épületek listája - a névre kattintva a fő nézetet a választott objektumra irányíthatod
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...túl közel egy másik gazdasági épülethez
 
