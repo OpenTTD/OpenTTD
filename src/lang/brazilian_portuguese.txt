@@ -269,6 +269,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Neve
 STR_012C_MESSAGE                                                :{WHITE}Mensagem
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Padrão
 STR_012E_CANCEL                                                 :{BLACK}Cancelar
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Renomear
@@ -380,6 +381,7 @@ STR_SORT_BY_MAX_SPEED                                           :Velocidade máx
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_LENGTH                                              :Tamanho
+STR_SORT_BY_LIFE_TIME                                           :Vida útil restante
 STR_SORT_BY_FACILITY                                            :Tipo de estação
 STR_SORT_BY_WAITING                                             :Valor da carga aguardando
 STR_SORT_BY_RATING_MAX                                          :Taxa de Carga
@@ -2792,6 +2794,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Manuten
 
 STR_INVALID_ORDER                                               :{RED} (Ordem Inválida)
 
+STR_UNKNOWN_STATION                                             :estação desconhecida
 STR_8812_EMPTY                                                  :{LTBLUE}Vazio
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})

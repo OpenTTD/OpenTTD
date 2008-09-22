@@ -2260,7 +2260,7 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :Só ó final da
 STR_6836_OFF                                                    :Off
 STR_6837_ON                                                     :On
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Mostra-la lista das mellores puntuacións
-STR_PERMISSIVE                                                  :Permisivo
+STR_PERMISSIVE                                                  :Permisiva
 STR_TOLERANT                                                    :Tolerante
 STR_HOSTILE                                                     :Hostil
 

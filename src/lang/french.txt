@@ -381,6 +381,7 @@ STR_SORT_BY_MAX_SPEED                                           :Vitesse maximum
 STR_SORT_BY_MODEL                                               :Modèle
 STR_SORT_BY_VALUE                                               :Valeur
 STR_SORT_BY_LENGTH                                              :Longueur
+STR_SORT_BY_LIFE_TIME                                           :Durée de vie restante
 STR_SORT_BY_FACILITY                                            :Type de station
 STR_SORT_BY_WAITING                                             :Marchandise en attente
 STR_SORT_BY_RATING_MAX                                          :Notation

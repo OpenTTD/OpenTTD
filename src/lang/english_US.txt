@@ -268,6 +268,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Snow
 STR_012C_MESSAGE                                                :{WHITE}Message
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Default
 STR_012E_CANCEL                                                 :{BLACK}Cancel
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Rename
@@ -379,6 +380,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maximum speed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Value
 STR_SORT_BY_LENGTH                                              :Length
+STR_SORT_BY_LIFE_TIME                                           :Remaining life time
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waiting cargo value
 STR_SORT_BY_RATING_MAX                                          :Cargo rating
