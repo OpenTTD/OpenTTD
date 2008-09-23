@@ -747,7 +747,7 @@ static void ToolbarSwitchClick(Window *w)
 static void ToolbarScenDateBackward(Window *w)
 {
 	/* don't allow too fast scrolling */
-	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+	if ((w->flags4 & WF_TIMEOUT_MASK) <= WF_TIMEOUT_TRIGGER) {
 		w->HandleButtonClick(TBSE_DATEBACKWARD);
 		w->SetDirty();
 
@@ -760,7 +760,7 @@ static void ToolbarScenDateBackward(Window *w)
 static void ToolbarScenDateForward(Window *w)
 {
 	/* don't allow too fast scrolling */
-	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+	if ((w->flags4 & WF_TIMEOUT_MASK) <= WF_TIMEOUT_TRIGGER) {
 		w->HandleButtonClick(TBSE_DATEFORWARD);
 		w->SetDirty();
 

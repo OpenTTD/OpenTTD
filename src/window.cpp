@@ -116,7 +116,7 @@ void Window::InvalidateWidget(byte widget_index) const
 void Window::HandleButtonClick(byte widget)
 {
 	this->LowerWidget(widget);
-	this->flags4 |= 5 << WF_TIMEOUT_SHL;
+	this->flags4 |= WF_TIMEOUT_BEGIN;
 	this->InvalidateWidget(widget);
 }
 

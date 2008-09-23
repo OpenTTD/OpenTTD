@@ -598,7 +598,7 @@ public:
 
 						UpdateIndustryProduction(i);
 						this->SetDirty();
-						this->flags4 |= 5 << WF_TIMEOUT_SHL;
+						this->flags4 |= WF_TIMEOUT_BEGIN;
 						this->clicked_line = line + 1;
 						this->clicked_button = (x < 15 ? 1 : 2);
 					} else if (IsInsideMM(x, 34, 160)) {

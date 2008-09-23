@@ -487,8 +487,9 @@ enum WindowWidgetTypes {
  * Window flags
  */
 enum WindowFlags {
-	WF_TIMEOUT_SHL       = 0,       ///< Window timeout counter shift
-	WF_TIMEOUT_MASK      = 7,       ///< Window timeout counter bit mask (3 bits), @see WF_TIMEOUT_SHL
+	WF_TIMEOUT_TRIGGER   = 2,       ///< When the timeout should start triggering
+	WF_TIMEOUT_BEGIN     = 5,       ///< The initial value for the timeout
+	WF_TIMEOUT_MASK      = 7,       ///< Window timeout counter bit mask (3 bits)
 	WF_DRAGGING          = 1 <<  3, ///< Window is being dragged
 	WF_SCROLL_UP         = 1 <<  4, ///< Upper scroll button has been pressed, @see ScrollbarClickHandler()
 	WF_SCROLL_DOWN       = 1 <<  5, ///< Lower scroll button has been pressed, @see ScrollbarClickHandler()

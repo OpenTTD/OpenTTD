@@ -216,7 +216,7 @@ struct CheatWindow : Window {
 
 		if (value != oldvalue) WriteValue(ce->variable, ce->type, (int64)value);
 
-		flags4 |= 5 << WF_TIMEOUT_SHL;
+		this->flags4 |= WF_TIMEOUT_BEGIN;
 
 		SetDirty();
 	}

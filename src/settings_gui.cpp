@@ -890,8 +890,8 @@ struct PatchesSelectionWindow : Window {
 						uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
 						if (step == 0) step = 1;
 
-						// don't allow too fast scrolling
-						if ((this->flags4 & WF_TIMEOUT_MASK) > 2 << WF_TIMEOUT_SHL) {
+						/* don't allow too fast scrolling */
+						if ((this->flags4 & WF_TIMEOUT_MASK) > WF_TIMEOUT_TRIGGER) {
 							_left_button_clicked = false;
 							return;
 						}
@@ -908,7 +908,7 @@ struct PatchesSelectionWindow : Window {
 						/* Set up scroller timeout for numeric values */
 						if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
 							this->click = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
-							this->flags4 |= 5 << WF_TIMEOUT_SHL;
+							this->flags4 |= WF_TIMEOUT_BEGIN;
 							_left_button_clicked = false;
 						}
 					} break;
@@ -1168,7 +1168,7 @@ struct CustomCurrencyWindow : Window {
 			ShowQueryString(str, STR_CURRENCY_CHANGE_PARAMETER, len + 1, 250, this, afilter, QSF_NONE);
 		}
 
-		this->flags4 |= 5 << WF_TIMEOUT_SHL;
+		this->flags4 |= WF_TIMEOUT_BEGIN;
 		this->SetDirty();
 	}
 

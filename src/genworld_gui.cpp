@@ -403,7 +403,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_START_DATE_DOWN:
 			case GLAND_START_DATE_UP: // Year buttons
 				/* Don't allow too fast scrolling */
-				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= WF_TIMEOUT_TRIGGER) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 
@@ -421,7 +421,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SNOW_LEVEL_DOWN:
 			case GLAND_SNOW_LEVEL_UP: // Snow line buttons
 				/* Don't allow too fast scrolling */
-				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= WF_TIMEOUT_TRIGGER) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 
@@ -697,7 +697,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_START_DATE_DOWN:
 			case CSCEN_START_DATE_UP: // Year buttons
 				/* Don't allow too fast scrolling */
-				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= WF_TIMEOUT_TRIGGER) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 
@@ -715,7 +715,7 @@ struct CreateScenarioWindow : public Window
 			case CSCEN_FLAT_LAND_HEIGHT_DOWN:
 			case CSCEN_FLAT_LAND_HEIGHT_UP: // Height level buttons
 				/* Don't allow too fast scrolling */
-				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= WF_TIMEOUT_TRIGGER) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 

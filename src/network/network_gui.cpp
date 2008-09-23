@@ -855,7 +855,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_COMPANIES_BTND:  case NSSW_COMPANIES_BTNU:  // Click on up/down button for number of companies
 			case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU: // Click on up/down button for number of spectators
 				/* Don't allow too fast scrolling */
-				if ((this->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
+				if ((this->flags4 & WF_TIMEOUT_MASK) <= WF_TIMEOUT_TRIGGER) {
 					this->HandleButtonClick(widget);
 					this->SetDirty();
 					switch (widget) {
