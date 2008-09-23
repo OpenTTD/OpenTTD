@@ -171,10 +171,18 @@ void ShowSignList()
 	AllocateWindowDescFront<SignListWindow>(&_sign_list_desc, 0);
 }
 
-static void RenameSign(SignID index, const char *text)
+/**
+ * Actually rename the sign.
+ * @param index the sign to rename.
+ * @param text  the new name.
+ * @return true if the window will already be removed after returning.
+ */
+static bool RenameSign(SignID index, const char *text)
 {
+	bool remove = StrEmpty(text);
 	_cmd_text = text;
 	DoCommandP(0, index, 0, NULL, CMD_RENAME_SIGN | (StrEmpty(text) ? CMD_MSG(STR_CAN_T_DELETE_SIGN) : CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME)));
+	return remove;
 }
 
 enum QueryEditSignWidgets {
@@ -288,7 +296,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				break;
 
 			case QUERY_EDIT_SIGN_WIDGET_OK:
-				RenameSign(this->cur_sign, this->text.buf);
+				if (RenameSign(this->cur_sign, this->text.buf)) break;
 				/* FALL THROUGH */
 
 			case QUERY_EDIT_SIGN_WIDGET_CANCEL:
@@ -302,7 +310,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 		EventState state = ES_NOT_HANDLED;
 		switch (this->HandleEditBoxKey(QUERY_EDIT_SIGN_WIDGET_TEXT, key, keycode, state)) {
 			case 1: // Enter pressed, confirms change
-				RenameSign(this->cur_sign, this->text.buf);
+				if (RenameSign(this->cur_sign, this->text.buf)) break;
 				/* FALL THROUGH */
 
 			case 2: // ESC pressed, closes window, abandons changes
