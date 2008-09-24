@@ -231,9 +231,17 @@ Order UnpackOldOrder(uint16 packed)
  * Updates the widgets of a vehicle which contains the order-data
  *
  */
-void InvalidateVehicleOrder(const Vehicle *v)
+void InvalidateVehicleOrder(const Vehicle *v, int data)
 {
-	InvalidateWindow(WC_VEHICLE_VIEW,      v->index);
+	InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+
+	if (data != 0) {
+		/* Calls SetDirty() too */
+		InvalidateWindowData(WC_VEHICLE_ORDERS,    v->index, data);
+		InvalidateWindowData(WC_VEHICLE_TIMETABLE, v->index, data);
+		return;
+	}
+
 	InvalidateWindow(WC_VEHICLE_ORDERS,    v->index);
 	InvalidateWindow(WC_VEHICLE_TIMETABLE, v->index);
 }
@@ -558,7 +566,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					u->cur_order_index = cur;
 			}
 			/* Update any possible open window of the vehicle */
-			InvalidateVehicleOrder(u);
+			InvalidateVehicleOrder(u, INVALID_VEH_ORDER_ID | (sel_ord << 8));
 		}
 
 		/* As we insert an order, the order to skip to will be 'wrong'. */
@@ -592,7 +600,7 @@ static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
 {
 	if (flags & DC_EXEC) {
 		DeleteVehicleOrders(dst);
-		InvalidateVehicleOrder(dst);
+		InvalidateVehicleOrder(dst, -1);
 		InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 	}
 	return CommandCost();
@@ -664,7 +672,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			/* Update any possible open window of the vehicle */
-			InvalidateVehicleOrder(u);
+			InvalidateVehicleOrder(u, sel_ord | (INVALID_VEH_ORDER_ID << 8));
 		}
 
 		/* As we delete an order, the order to skip to will be 'wrong'. */
@@ -714,7 +722,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (v->current_order.IsType(OT_LOADING)) v->LeaveStation();
 
-		InvalidateVehicleOrder(v);
+		InvalidateVehicleOrder(v, 0);
 	}
 
 	/* We have an aircraft/ship, they have a mini-schedule, so update them all */
@@ -800,7 +808,7 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			assert(v->orders == u->orders);
 			/* Update any possible open window of the vehicle */
-			InvalidateVehicleOrder(u);
+			InvalidateVehicleOrder(u, moving_order | (target_order << 8));
 		}
 
 		/* As we move an order, the order to skip to will be 'wrong'. */
@@ -1022,7 +1030,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					u->current_order.GetLoadType() != order->GetLoadType()) {
 				u->current_order.SetLoadType(order->GetLoadType());
 			}
-			InvalidateVehicleOrder(u);
+			InvalidateVehicleOrder(u, 0);
 		}
 	}
 
@@ -1080,8 +1088,8 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				/* Link this vehicle in the shared-list */
 				dst->AddToShared(src);
 
-				InvalidateVehicleOrder(dst);
-				InvalidateVehicleOrder(src);
+				InvalidateVehicleOrder(dst, -1);
+				InvalidateVehicleOrder(src, 0);
 
 				InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 			}
@@ -1140,7 +1148,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				dst->num_orders = src->num_orders;
 
-				InvalidateVehicleOrder(dst);
+				InvalidateVehicleOrder(dst, -1);
 
 				InvalidateWindowClassesData(GetWindowClassForVehicleType(dst->type), 0);
 			}
@@ -1185,7 +1193,7 @@ CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		for (Vehicle *u = v->FirstShared(); u != NULL; u = u->NextShared()) {
 			/* Update any possible open window of the vehicle */
-			InvalidateVehicleOrder(u);
+			InvalidateVehicleOrder(u, 0);
 
 			/* If the vehicle already got the current depot set as current order, then update current order as well */
 			if (u->cur_order_index == order_number && u->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) {
@@ -1450,7 +1458,6 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 	/* Go through all vehicles */
 	FOR_ALL_VEHICLES(v) {
 		Order *order;
-		bool invalidate;
 
 		/* Forget about this station if this station is removed */
 		if (v->last_station_visited == destination && type == OT_GOTO_STATION) {
@@ -1465,20 +1472,18 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		}
 
 		/* Clear the order from the order-list */
-		invalidate = false;
+		int id = -1;
 		FOR_VEHICLE_ORDERS(v, order) {
+			id++;
 			if (order->IsType(OT_GOTO_DEPOT) && (order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) continue;
 			if ((v->type == VEH_AIRCRAFT && order->IsType(OT_GOTO_DEPOT) ? OT_GOTO_STATION : order->GetType()) == type &&
 					order->GetDestination() == destination) {
 				order->MakeDummy();
-				invalidate = true;
-			}
-		}
-
-		/* Only invalidate once, and if needed */
-		if (invalidate) {
-			for (const Vehicle *w = v->FirstShared(); w != NULL; w = w->NextShared()) {
-				InvalidateVehicleOrder(w);
+				for (const Vehicle *w = v->FirstShared(); w != NULL; w = w->NextShared()) {
+					/* In GUI, simulate by removing the order and adding it back */
+					InvalidateVehicleOrder(w, id | (INVALID_VEH_ORDER_ID << 8));
+					InvalidateVehicleOrder(w, (INVALID_VEH_ORDER_ID << 8) | id);
+				}
 			}
 		}
 	}
@@ -1745,7 +1750,7 @@ bool ProcessOrders(Vehicle *v)
 	/* Otherwise set it, and determine the destination tile. */
 	v->current_order = *order;
 
-	InvalidateVehicleOrder(v);
+	InvalidateVehicleOrder(v, 0);
 	switch (v->type) {
 		default:
 			NOT_REACHED();

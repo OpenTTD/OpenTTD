@@ -433,10 +433,11 @@ static const WindowDesc _vehicle_refit_desc = {
 * @param *v The vehicle to show the refit window for
 * @param order of the vehicle ( ? )
 */
-void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
+void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent)
 {
 	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
-	new RefitWindow(&_vehicle_refit_desc, v, order);
+	RefitWindow *w = new RefitWindow(&_vehicle_refit_desc, v, order);
+	w->parent = parent;
 }
 
 /** Display additional text from NewGRF in the purchase information window */
@@ -656,7 +657,7 @@ static inline void ChangeVehicleWindow(WindowClass window_class, VehicleID from_
 	if (w != NULL) {
 		w->window_number = to_index;
 		if (w->viewport != NULL) w->viewport->follow_vehicle = to_index;
-		if (to_index != INVALID_VEHICLE) InvalidateThisWindowData(w);
+		if (to_index != INVALID_VEHICLE) InvalidateThisWindowData(w, 0);
 	}
 }
 
@@ -1979,7 +1980,7 @@ struct VehicleViewWindow : Window {
 					_vehicle_command_translation_table[VCT_CMD_GOTO_DEPOT][v->type]);
 				break;
 			case VVW_WIDGET_REFIT_VEH: // refit
-				ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
+				ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID, this);
 				break;
 			case VVW_WIDGET_SHOW_ORDERS: // show orders
 				if (_ctrl_pressed) {

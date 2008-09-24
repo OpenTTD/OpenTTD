@@ -627,7 +627,7 @@ static void ShipController(Vehicle *v)
 						UpdateVehicleTimetable(v, true);
 						v->cur_order_index++;
 						v->current_order.MakeDummy();
-						InvalidateVehicleOrder(v);
+						InvalidateVehicleOrder(v, 0);
 					} else {
 						/* Non-buoy orders really need to reach the tile */
 						if (v->dest_tile == gp.new_tile) {
@@ -647,7 +647,7 @@ static void ShipController(Vehicle *v)
 								} else { // leave stations without docks right aways
 									v->current_order.MakeLeaveStation();
 									v->cur_order_index++;
-									InvalidateVehicleOrder(v);
+									InvalidateVehicleOrder(v, 0);
 								}
 							}
 						}

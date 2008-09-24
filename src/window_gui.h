@@ -251,6 +251,8 @@ public:
 	void DrawViewport() const;
 	void DrawSortButtonState(int widget, SortButtonState state) const;
 
+	void DeleteChildWindows() const;
+
 	void SetDirty() const;
 
 	/*** Event handling ***/

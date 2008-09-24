@@ -2574,7 +2574,7 @@ void Vehicle::HandleLoading(bool mode)
 	}
 
 	this->cur_order_index++;
-	InvalidateVehicleOrder(this);
+	InvalidateVehicleOrder(this, 0);
 }
 
 CommandCost Vehicle::SendToDepot(uint32 flags, DepotCommand command)
@@ -2695,7 +2695,7 @@ void Vehicle::RemoveFromShared()
 	if (new_first->NextShared() == NULL) {
 		/* When there is only one vehicle, remove the shared order list window. */
 		DeleteWindowById(GetWindowClassForVehicleType(this->type), old_window_number);
-		InvalidateVehicleOrder(new_first);
+		InvalidateVehicleOrder(new_first, 0);
 	} else if (this->FirstShared() == this) {
 		/* If we were the first one, update to the new first one. */
 		InvalidateWindowData(GetWindowClassForVehicleType(this->type), old_window_number, (new_first->index << 16) | (1 << 15));

@@ -13,7 +13,7 @@
 #include "waypoint.h"
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
-void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order);
+void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order, Window *parent);
 
 /** Constants of vehicle view widget indices */
 enum VehicleViewWindowWidgets {

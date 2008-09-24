@@ -392,6 +392,18 @@ Window **FindWindowZPosition(const Window *w)
 }
 
 /**
+ * Delete all children a window might have in a head-recursive manner
+ */
+void Window::DeleteChildWindows() const
+{
+	Window *child = FindChildWindow(this);
+	while (child != NULL) {
+		delete child;
+		child = FindChildWindow(this);
+	}
+}
+
+/**
  * Remove window and all its child windows from the window stack.
  */
 Window::~Window()
@@ -414,12 +426,7 @@ Window::~Window()
 	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
 	_last_z_window--;
 
-	/* Delete all children a window might have in a head-recursive manner */
-	Window *child = FindChildWindow(this);
-	while (child != NULL) {
-		delete child;
-		child = FindChildWindow(this);
-	}
+	this->DeleteChildWindows();
 
 	if (this->viewport != NULL) DeleteWindowViewport(this);
 

@@ -49,10 +49,12 @@ void SetTimetableParams(int param1, int param2, uint32 time)
 
 struct TimetableWindow : Window {
 	int sel_index;
+	const Vehicle *vehicle;
 
 	TimetableWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->caption_color = GetVehicle(window_number)->owner;
+		this->vehicle = GetVehicle(window_number);
+		this->caption_color = this->vehicle->owner;
 		this->vscroll.cap = 8;
 		this->resize.step_height = 10;
 		this->sel_index = -1;
@@ -76,9 +78,70 @@ struct TimetableWindow : Window {
 		return (sel < v->num_orders * 2 && sel >= 0) ? sel : INVALID_ORDER;
 	}
 
-	void OnPaint()
+	virtual void OnInvalidateData(int data)
 	{
-		const Vehicle *v = GetVehicle(this->window_number);
+		switch (data) {
+			case 0:
+				/* Autoreplace replaced the vehicle */
+				this->vehicle = GetVehicle(this->window_number);
+				break;
+
+			case -1:
+				/* Removed / replaced all orders (after deleting / sharing) */
+				if (this->sel_index == -1) break;
+
+				this->DeleteChildWindows();
+				this->sel_index = -1;
+				break;
+
+			default: {
+				/* Moving an order. If one of these is INVALID_VEH_ORDER_ID, then
+				 * the order is being created / removed */
+				if (this->sel_index == -1) break;
+
+				VehicleOrderID from = GB(data, 0, 8);
+				VehicleOrderID to   = GB(data, 8, 8);
+
+				if (from == to) break; // no need to change anything
+
+				/* if from == INVALID_VEH_ORDER_ID, one order was added; if to == INVALID_VEH_ORDER_ID, one order was removed */
+				uint old_num_orders = this->vehicle->num_orders - (uint)(from == INVALID_VEH_ORDER_ID) + (uint)(to == INVALID_VEH_ORDER_ID);
+
+				VehicleOrderID selected_order = (this->sel_index + 1) / 2;
+				if (selected_order == old_num_orders) selected_order = 0; // when last travel time is selected, it belongs to order 0
+
+				bool travel = HasBit(this->sel_index, 0);
+
+				if (from != selected_order) {
+					/* Moving from preceeding order? */
+					selected_order -= (int)(from <= selected_order);
+					/* Moving to   preceeding order? */
+					selected_order += (int)(to   <= selected_order);
+				} else {
+					/* Now we are modifying the selected order */
+					if (to == INVALID_VEH_ORDER_ID) {
+						/* Deleting selected order */
+						this->DeleteChildWindows();
+						this->sel_index = -1;
+						break;
+					} else {
+						/* Moving selected order */
+						selected_order = to;
+					}
+				}
+
+				/* recompute new sel_index */
+				this->sel_index = 2 * selected_order - (int)travel;
+				/* travel time of first order needs special handling */
+				if (this->sel_index == -1) this->sel_index = this->vehicle->num_orders * 2 - 1;
+			} break;
+		}
+	}
+
+
+	virtual void OnPaint()
+	{
+		const Vehicle *v = this->vehicle;
 		int selected = this->sel_index;
 
 		SetVScrollCount(this, v->num_orders * 2);
@@ -193,7 +256,7 @@ struct TimetableWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		const Vehicle *v = GetVehicle(this->window_number);
+		const Vehicle *v = this->vehicle;
 
 		switch (widget) {
 			case TTV_ORDER_VIEW: /* Order view button */
@@ -203,13 +266,8 @@ struct TimetableWindow : Window {
 			case TTV_TIMETABLE_PANEL: { /* Main panel. */
 				int selected = GetOrderFromTimetableWndPt(pt.y, v);
 
-				if (selected == INVALID_ORDER || selected == this->sel_index) {
-					/* Deselect clicked order */
-					this->sel_index = -1;
-				} else {
-					/* Select clicked order */
-					this->sel_index = selected;
-				}
+				this->DeleteChildWindows();
+				this->sel_index = (selected == INVALID_ORDER || selected == this->sel_index) ? -1 : selected;
 			} break;
 
 			case TTV_CHANGE_TIME: { /* "Wait For" button. */
@@ -255,7 +313,7 @@ struct TimetableWindow : Window {
 	{
 		if (str == NULL) return;
 
-		const Vehicle *v = GetVehicle(this->window_number);
+		const Vehicle *v = this->vehicle;
 
 		uint32 p1 = PackTimetableArgs(v, this->sel_index);
 

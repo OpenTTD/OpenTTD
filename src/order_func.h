@@ -31,7 +31,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *order = &_bac
 
 /* Functions */
 void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination);
-void InvalidateVehicleOrder(const Vehicle *v);
+void InvalidateVehicleOrder(const Vehicle *v, int data);
 bool VehicleHasDepotOrders(const Vehicle *v);
 void CheckOrders(const Vehicle*);
 void DeleteVehicleOrders(Vehicle *v);

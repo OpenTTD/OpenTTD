@@ -31,6 +31,7 @@
 #include "string_func.h"
 #include "depot_base.h"
 #include "tilehighlight_func.h"
+#include "network/network.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -549,20 +550,25 @@ private:
 	{
 		/* Don't skip when there's nothing to skip */
 		if (_ctrl_pressed && w->vehicle->cur_order_index == w->OrderGetSel()) return;
-		if (w->vehicle->num_orders == 0) return;
+		if (w->vehicle->num_orders <= 1) return;
 
 		DoCommandP(w->vehicle->tile, w->vehicle->index, _ctrl_pressed ? w->OrderGetSel() : ((w->vehicle->cur_order_index + 1) % w->vehicle->num_orders),
 				NULL, CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_CAN_T_SKIP_TO_ORDER : STR_CAN_T_SKIP_ORDER));
 	}
 
 	/**
-	 * Handle the click on the unload button.
+	 * Handle the click on the delete button.
 	 *
 	 * @param w current window
 	 */
 	static void OrderClick_Delete(OrdersWindow *w, int i)
 	{
-		DoCommandP(w->vehicle->tile, w->vehicle->index, w->OrderGetSel(), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER));
+		/* When networking, move one order lower */
+		int selected = w->selected_order + (int)_networking;
+
+		if (DoCommandP(w->vehicle->tile, w->vehicle->index, w->OrderGetSel(), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER))) {
+			w->selected_order = selected >= w->vehicle->num_orders ? -1 : selected;
+		}
 	}
 
 	/**
@@ -578,7 +584,7 @@ private:
 			/* Cancel refitting */
 			DoCommandP(w->vehicle->tile, w->vehicle->index, (w->OrderGetSel() << 16) | (CT_NO_REFIT << 8) | CT_NO_REFIT, NULL, CMD_ORDER_REFIT);
 		} else {
-			ShowVehicleRefitWindow(w->vehicle, w->OrderGetSel());
+			ShowVehicleRefitWindow(w->vehicle, w->OrderGetSel(), w);
 		}
 	}
 	typedef void Handler(OrdersWindow*, int);
@@ -603,10 +609,54 @@ public:
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	virtual void OnInvalidateData(int data = 0)
+	virtual void OnInvalidateData(int data)
 	{
-		/* Autoreplace replaced the vehicle */
-		this->vehicle = GetVehicle(this->window_number);
+		switch (data) {
+			case 0:
+				/* Autoreplace replaced the vehicle */
+				this->vehicle = GetVehicle(this->window_number);
+				break;
+
+			case -1:
+				/* Removed / replaced all orders (after deleting / sharing) */
+				if (this->selected_order == -1) break;
+
+				this->DeleteChildWindows();
+				HideDropDownMenu(this);
+				this->selected_order = -1;
+				break;
+
+			default: {
+				/* Moving an order. If one of these is INVALID_VEH_ORDER_ID, then
+				 * the order is being created / removed */
+				if (this->selected_order == -1) break;
+
+				VehicleOrderID from = GB(data, 0, 8);
+				VehicleOrderID to   = GB(data, 8, 8);
+
+				if (from == to) break; // no need to change anything
+
+				if (from != this->selected_order) {
+					/* Moving from preceeding order? */
+					this->selected_order -= (int)(from <= this->selected_order);
+					/* Moving to   preceeding order? */
+					this->selected_order += (int)(to   <= this->selected_order);
+					break;
+				}
+
+				/* Now we are modifying the selected order */
+				if (to == INVALID_VEH_ORDER_ID) {
+					/* Deleting selected order */
+					this->DeleteChildWindows();
+					HideDropDownMenu(this);
+					this->selected_order = -1;
+					break;
+				}
+
+				/* Moving selected order */
+				this->selected_order = to;
+			} break;
+		}
 	}
 
 	virtual void OnPaint()
@@ -753,14 +803,6 @@ public:
 
 				int sel = this->GetOrderFromPt(pt.y);
 
-				if (sel == INVALID_ORDER) {
-					/* This was a click on an empty part of the orders window, so
-					* deselect the currently selected order. */
-					this->selected_order = -1;
-					this->SetDirty();
-					return;
-				}
-
 				if (_ctrl_pressed && sel < this->vehicle->num_orders) {
 					const Order *ord = GetVehicleOrder(this->vehicle, sel);
 					TileIndex xy;
@@ -774,18 +816,22 @@ public:
 
 					if (xy != 0) ScrollMainWindowToTile(xy);
 					return;
-				} else {
-					if (sel == this->selected_order) {
-						/* Deselect clicked order */
-						this->selected_order = -1;
-					} else {
-						/* Select clicked order */
-						this->selected_order = sel;
+				}
 
-						if (this->vehicle->owner == _local_player) {
-							/* Activate drag and drop */
-							SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, VHM_DRAG, this);
-						}
+				/* This order won't be selected any more, close all child windows and dropdowns */
+				this->DeleteChildWindows();
+				HideDropDownMenu(this);
+
+				if (sel == INVALID_ORDER || sel == this->selected_order) {
+					/* Deselect clicked order */
+					this->selected_order = -1;
+				} else {
+					/* Select clicked order */
+					this->selected_order = sel;
+
+					if (this->vehicle->owner == _local_player) {
+						/* Activate drag and drop */
+						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, VHM_DRAG, this);
 					}
 				}
 
@@ -979,7 +1025,6 @@ public:
 			if (!cmd.IsValid()) return;
 
 			if (DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), cmd.Pack(), NULL, CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
-				if (this->selected_order != -1) this->selected_order++;
 				ResetObjectToPlace();
 			}
 		}
