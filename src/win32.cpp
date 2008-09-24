@@ -530,7 +530,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		ep->ContextRecord->EFlags
 	);
 #else
-	output += sprintf(output, "Exception %.8X at %.8X\r\n"
+	output += sprintf(output, "Exception %.8X at %.8p\r\n"
 		"Registers:\r\n"
 		" EAX: %.8X EBX: %.8X ECX: %.8X EDX: %.8X\r\n"
 		" ESI: %.8X EDI: %.8X EBP: %.8X ESP: %.8X\r\n"
@@ -596,9 +596,9 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	output = PrintModuleList(output);
 
 	{
-		OSVERSIONINFO os;
+		_OSVERSIONINFOA os;
 		os.dwOSVersionInfoSize = sizeof(os);
-		GetVersionEx(&os);
+		GetVersionExA(&os);
 		output += sprintf(output, "\r\nSystem information:\r\n"
 			" Windows version %d.%d %d %s\r\n\r\n",
 			os.dwMajorVersion, os.dwMinorVersion, os.dwBuildNumber, os.szCSDVersion);
@@ -804,7 +804,7 @@ void FiosGetDrives()
 	TCHAR drives[256];
 	const TCHAR *s;
 
-	GetLogicalDriveStrings(sizeof(drives), drives);
+	GetLogicalDriveStrings(lengthof(drives), drives);
 	for (s = drives; *s != '\0';) {
 		FiosItem *fios = _fios_items.Append();
 		fios->type = FIOS_TYPE_DRIVE;

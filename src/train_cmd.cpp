@@ -2747,7 +2747,7 @@ static PBSTileInfo ExtendTrainReservation(const Vehicle *v, TrackBits *new_track
 		if (!TryReserveRailTrack(tile, TrackdirToTrack(cur_td))) break;
 	}
 
-	if (ft.m_err == CFollowTrackRail::EC_OWNER && ft.m_err == CFollowTrackRail::EC_NO_WAY) {
+	if (ft.m_err == CFollowTrackRail::EC_OWNER || ft.m_err == CFollowTrackRail::EC_NO_WAY) {
 		/* End of line, path valid and okay. */
 		return PBSTileInfo(ft.m_old_tile, ft.m_old_td, true);
 	}
