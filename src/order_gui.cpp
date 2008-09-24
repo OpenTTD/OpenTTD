@@ -805,13 +805,17 @@ public:
 
 				if (_ctrl_pressed && sel < this->vehicle->num_orders) {
 					const Order *ord = GetVehicleOrder(this->vehicle, sel);
-					TileIndex xy;
+					TileIndex xy = 0;
 
 					switch (ord->GetType()) {
 						case OT_GOTO_STATION:  xy = GetStation(ord->GetDestination())->xy ; break;
-						case OT_GOTO_DEPOT:    xy = (this->vehicle->type == VEH_AIRCRAFT) ?  GetStation(ord->GetDestination())->xy : GetDepot(ord->GetDestination())->xy;    break;
 						case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->GetDestination())->xy; break;
-						default:               xy = 0; break;
+						case OT_GOTO_DEPOT:
+							if ((ord->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0) break;
+							xy = (this->vehicle->type == VEH_AIRCRAFT) ?  GetStation(ord->GetDestination())->xy : GetDepot(ord->GetDestination())->xy;
+							break;
+						default:
+							break;
 					}
 
 					if (xy != 0) ScrollMainWindowToTile(xy);
