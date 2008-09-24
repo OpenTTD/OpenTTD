@@ -2944,7 +2944,7 @@ STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} D
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nuevos vehículos
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nuevos vehículos
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Construir vehículo
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}CNo se puede construir vehículo...
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}No se puede construir vehículo...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detalles)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Edad: {LTBLUE}{STRING}{BLACK}   Coste Operativo: {LTBLUE}{CURRENCY}/año
 STR_900E_MAX_SPEED                                              :{BLACK}Velocidad Máx.: {LTBLUE}{VELOCITY}

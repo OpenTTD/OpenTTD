@@ -426,9 +426,9 @@ STR_016D_DEC                                                    :dec
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
-STR_0171_PAUSE_GAME                                             :{BLACK}Pause spillet
+STR_0171_PAUSE_GAME                                             :{BLACK}Sæt spillet på pause
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Gem spillet, forlad spillet, afslut
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis en liste over selskabets stationer
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over selskabets stationer
 STR_0174_DISPLAY_MAP                                            :{BLACK}Vis kortet
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Vis kortet, byoversigt
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Vis byoversigten
@@ -483,7 +483,7 @@ STR_019F_TRAIN                                                  :Tog
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} er ved at være for gammel
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} er alt for gammel
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er alt for gammel og bør udskiftes straks
-STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landområde information
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landområde-information
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for at rydde: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for at rydde: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
@@ -537,7 +537,7 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Accepter
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
 STR_01D3_SOUND_MUSIC                                            :Lyd/Musik
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Vis lyd/musik vindue
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Vis lyd-/musikvindue
 STR_01D5_ALL                                                    :{TINYFONT}Alle
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Old Style
 STR_01D7_NEW_STYLE                                              :{TINYFONT}New Style
@@ -567,7 +567,7 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Ryd
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Gem
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Nuværende musikprogram valg
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Nuværende musikprogram
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Vælg 'Alle numre' programmet
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Vælg 'Old style musik' programmet
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Vælg 'New style musik' programmet
@@ -585,7 +585,7 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Seneste besked/nyhedsrapport
 STR_0201_MESSAGE_SETTINGS                                       :Beskedindstillinger
 STR_MESSAGE_HISTORY_MENU                                        :Tidligere beskeder
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis sidste besked/nyhedsrapport, vis beskedvalg
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis seneste besked/nyhedsrapport, vis beskedvalg
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Beskedvalg
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Beskedtyper:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst af første køretøj til spillerens station
@@ -600,7 +600,7 @@ STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produkt
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andre produktionsændringer for industri
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rådgivning / information om spillerens køretøjer
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køretøjer
-STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ændring i accepteret last
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ændring i accepteret gods
 STR_020E_SUBSIDIES                                              :{YELLOW}Tilskudsordninger
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Generel information
 STR_MESSAGES_ALL                                                :{YELLOW}Sæt alle beskedtyper til: Fra / Kortfattet / Fuld
@@ -623,7 +623,7 @@ STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenarieeditor
-STR_0223_LAND_GENERATION                                        :{WHITE}Land generering
+STR_0223_LAND_GENERATION                                        :{WHITE}Land-generering
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Forstør landområdet der skal sænkes/hæves

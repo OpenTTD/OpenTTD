@@ -1237,6 +1237,10 @@ STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Alapér
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Sima
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Fejlett
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Egyirányú fejlett
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Szignálok típusa átalakításkor : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Csak sima
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Csak fejlett
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Mind
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A "nincs több út" városkinézeti séma a pályaszerkesztőben nem elérhető
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Válassz városi úthálózat-sémát: {ORANGE}{STRING}
@@ -1439,7 +1443,9 @@ STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Saját s
 STR_NETWORK_GAME_NAME                                           :{BLACK}Név
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Játék neve
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Nyelv, szerver verzió, stb.
-STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Kattints a listában a jatékra hogy kiválaszd
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Kattints a listában a játékra hogy kiválaszd
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}A szerver amihez legutóbb csatlakoztál:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Kattints ide a legutóbb használt szerver kiválasztásához
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Szerver keresése
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Szerver keresése a hálózaton
@@ -1514,8 +1520,8 @@ STR_NETWORK_LANG_ANY                                            :Bármilyen
 STR_NETWORK_LANG_ENGLISH                                        :Angol
 STR_NETWORK_LANG_GERMAN                                         :Német
 STR_NETWORK_LANG_FRENCH                                         :Francia
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazíl
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgár
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazil
+STR_NETWORK_LANG_BULGARIAN                                      :Bolgár
 STR_NETWORK_LANG_CHINESE                                        :Kínai
 STR_NETWORK_LANG_CZECH                                          :Cseh
 STR_NETWORK_LANG_DANISH                                         :Dán
@@ -1555,7 +1561,7 @@ STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Egy list
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Új vállalatot nyit
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Játék megvizsgálása
-STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Megtekinted a játékot mint vizsgálóbiztos
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Megtekinted a játékot mint megfigyelő
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Belépés a cégbe
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Segítesz valakinek egy cégénél (többen 1 céget)
 STR_NETWORK_REFRESH                                             :{BLACK}Szerver frissítése
@@ -1741,12 +1747,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti sin sze
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vasúti sin előrejelző szemaforral
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vasúti sin kijáratjelző szemaforral
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti sin vegyes szemaforral
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vasúti sín fejlett szignállal
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vasúti sín egyirányú fejlett szignállal
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vasúti sín normál és előrejelzőlámpával
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vasúti sín normál és utójelzőlámpával
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vasúti sín normál és előutójelző lámpával
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vasúti sín sima és fejlett szignállal
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vasúti sín sima és egyirányú fejlett szignállal
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vasúti sín elő és utójelző lámpával
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vasúti sín elő és előutójelző lámpával
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Vasúti sín elő- és fejlett szignállal
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Vasúti sín elő- és egyirányú fejlett szignállal
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vasúti sín utó és előutójelző lámpával
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Vasúti sín utó- és fejlett szignállal
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vasúti sín utó- és egyirányú fejlett szignállal
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vasúti sín összetett- és fejlett szignállal
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vasúti sín összetett- és egyirányú fejlett szignállal
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vasúti sín fejlett és egyirányú fejlett szignállal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a vasútállomást le kell rombolni
 
 

@@ -2812,10 +2812,10 @@ STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Neue Mag
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Eisenbahnfahrzeuge
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Fahrzeug duplizieren
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Fahrzeug kopieren
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Baut eine Kopie des Fahrzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Baut eine Kopie des Fahrzeuges. Klicke diese Schaltfläche und dann auf ein Fahrzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_CLONE_TRAIN                                                 :{BLACK}Zug duplizieren
+STR_CLONE_TRAIN                                                 :{BLACK}Zug kopieren
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Baut eine Kopie des Zuges mit allen Waggons. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Baut eine Kopie des Zuges mit allen Waggons. Klicke diese Schaltfläche und dann auf einen Zug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_8820_RENAME                                                 :{BLACK}Umbenennen
@@ -3015,7 +3015,7 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Neue Sch
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Schiff{P "" e}
 STR_9808_NEW_SHIPS                                              :{WHITE}Neue Schiffe
 STR_9809_BUILD_SHIP                                             :{BLACK}Schiff bauen
-STR_CLONE_SHIP                                                  :{BLACK}Schiff duplizieren
+STR_CLONE_SHIP                                                  :{BLACK}Schiff kopieren
 STR_CLONE_SHIP_INFO                                             :{BLACK}Baut eine Kopie des Schiffes. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Baut eine Kopie des Schiffes. Klicke diese Schaltfläche und dann auf eine Schiff innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Schiff muss in der Werft angehalten werden
@@ -3082,7 +3082,7 @@ STR_A000_AIRPORTS                                               :{WHITE}Flughäf
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Flughafen kann hier nicht gebaut werden...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Flugzeughangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neue Flugzeuge
-STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug duplizieren
+STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug kopieren
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neue Flugzeuge
@@ -3384,7 +3384,7 @@ STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf:
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
-STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschwindigk.: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschw.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{COMMA} Passagiere, {COMMA} Postsäcke
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Umrüstbar auf: {GOLD}

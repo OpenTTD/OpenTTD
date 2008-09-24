@@ -3199,10 +3199,12 @@ STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF I
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Innstillinger for ny grafikk
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Bruk forandringene
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Vis/skjul palette
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Skjul/vis paletten av valgte ny grafikk.{}Gjør dette når graffikken fra denne nye grafikken ser rosa i spillet
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Sett parametre
 STR_NEWGRF_TIP                                                  :{BLACK}En liste over alle de nye grafikkpakkene du har installert. Klikk på en pakke for å forandre innstillingene.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Der er for tiden ikke noen nye grafikkfiler installert! Manualen inneholder instruksjoner for installering av ny grafikk
 STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Palett: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Du er i ferd med å gjøre forandringer i et kjørende spill; Dette kan krasje OpenTTD.{}Er du helt sikker på at du vil gjøre dette?
@@ -3220,6 +3222,7 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} krever OpenTTD versjon {STRING} eller bedre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF filen den var laget for å oversette
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF-er er lastet.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laster {STRING} som statisk ny grafikk {STRING} could cause desyncs.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uforventet sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukjent hendelse 0 eiendom.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk å bruke ugyldig ID.
@@ -3261,7 +3264,10 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan gjøre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasje.{}Ønsker du virkelig å slå av pause?
 
 STR_NEWGRF_BROKEN                                               :{WHITE}Oppførselen av ny graffikk '{STRING}' er sansynlig til å skape forstyrrelse og/eller kollisjoner.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endrer kjøretøyets lengde for '{1:ENGINE}' når ikke i ett depo.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhører '{COMPANY}' har ugyldig lengde. Det er sannsynligvis forårsaket av problemer med ny grafikk. Spillet kan desynkronisere eller kollidere.
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet ble lagret i versjon uten trikk støtte. Alle trikker har blitt fjernet.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3613,10 +3619,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Grønt så lenge det er mer enn ett grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Utgangssignal (semafor){}Oppfører seg på samme måte som et vanlig signal ville gjort, men er nødvendig for å riktig farge på inngangs- og kombinasjonspresignaler.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinasjonssignal (semafor){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge «trær» av presignaler.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Avanserte (semaforer){}Ett avansert signal tillater mere enn ett tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Avanserte signaler kan bli sendt fra baksiden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Enveis Avansert Signal (semafore){}}Ett avansert signal tillater mere enn ett tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Enveis signaler kan bli sendt fra baksiden.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Vanlig signal (elektrisk){}Signaler trengs for å forhindre togkrasj på jernbanenettverk med mer enn ett tog.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Inngangssignal (elektrisk){}Grønt så lenge det er mer enn ett grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Utgangssignal (elektrisk){}Oppfører seg på samme måte som et vanlig signal ville gjort, men er nødvendig for å riktig farge på inngangs- og kombinasjonspresignaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinasjonssignal (elektrisk){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge «trær» av presignaler.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Avansert Signal (elektrisk){}}Ett avansert signal tillater mere enn ett tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Avanserte signaler kan bli sendt fra baksiden.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalkonvertering{}Konverterer signaler til den valgte signaltypen; Ctrl-klikk vil endre eksisterende variant.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Signaltetthet ved dra-og-slipp
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Senk signaltetthet ved dra-og-slipp
