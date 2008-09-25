@@ -657,19 +657,6 @@ static inline Order *GetVehicleOrder(const Vehicle *v, int index)
 	return order;
 }
 
-
-/** Returns VehicleOrderID of selected order */
-static inline VehicleOrderID GetVehicleOrderID(const Vehicle *v, OrderID order)
-{
-	VehicleOrderID ret = 0;
-
-	for (const Order *o = v->orders; o != NULL; o = o->next, ret++) {
-		if (o->index == order) return ret;
-	}
-
-	return INVALID_VEH_ORDER_ID;
-}
-
 /**
  * Returns the last order of a vehicle, or NULL if it doesn't exists
  * @param v Vehicle to query
