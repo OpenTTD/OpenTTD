@@ -752,8 +752,8 @@ STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start et
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Er du sikker på du vil forlate dette scenariet?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avslutt redigeringsprogrammet
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer med mer en 1200 innbyggere
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen tilbake ett år
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen frem ett år
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen tilbake et år
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen frem et år
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...broens ender må være på land
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
@@ -1369,7 +1369,7 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til denne nye AI, under konstruksjon. Du kan vente deg problemer. Når du finner ett problem, lag ett skjermbilde av det og post det i forumet. Mor deg!
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til denne nye AI, under konstruksjon. Du kan vente deg problemer. Når du finner et problem, lag et skjermbilde av det og post det i forumet.
 TEMP_AI_ACTIVATED                                               :{WHITE}Advarsel: denne nye AI er fremdeles alfa! Akkurat nå virker kun lastebiler og busser!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}Advarsel: dette er fortsatt eksperimentelt. Vennligst rapporter problemer til truelight@openttd.org.
 
@@ -1435,7 +1435,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Start et
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spillnavn:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Spillnavnet vil bli vist til andre spillere i flerspillermenyen
-STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Skriv ett navn for nettverks spillet
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Skriv et navn for nettverks spillet
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Sett passord
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Beskytt ditt spill med et passord hvis du ikke vil at hvem som helst skal bli med på det
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Velg et kart:
@@ -1504,7 +1504,7 @@ STR_NETWORK_LANG_LATVIAN                                        :Latvisk
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Flerspillere spill lobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Prøver å koble til:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}En liste over firma i spillet. Du kan enten bli med i ett eller starte et nytt.
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}En liste over firma i spillet. Du kan enten bli med i et eller starte et nytt.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nytt firma
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Start et nytt firma
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Se på spill
@@ -1819,9 +1819,9 @@ STR_202D_UNTIL                                                  :{YELLOW}, innti
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke lenger gi subsidier.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie trukket tilbake:{}{}Frakt av {STRING} fra {STATION} til {STATION} subsidieres ikke lenger.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidietilbud:{}{}Første frakt av {STRING} fra {STRING} til {STRING} vil subsidieres i et år av bystyret!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av ett år!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av et år!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi dobbelt så mye inntekt i løpet av et år!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i ett år fra nå!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i et år fra nå!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi fire ganger så mye inntekt i løpet av et år!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}s bystyre tillater ikke flere flyplasser i denne byen
 STR_2036_COTTAGES                                               :Hytter
@@ -1854,7 +1854,7 @@ STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finansier ombygging av det lokale veinettet. Fører til veiproblemer i seks måneder.{}  Koster: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bygg en statue for å ære firmaet.{} Cost: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finasier byggingen av nye forretningsbygninger i byen .{}  Koster: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kjøp ett års ekslusive transportrettigheter i byen. Bystyret vil kun tillate passasjerer og varer å bruke dine transporttjenester.{} Koster: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kjøp et års ekslusive transportrettigheter i byen. Bystyret vil kun tillate passasjerer og varer å bruke dine transporttjenester.{} Koster: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestikk bystyret til å forbedre vurderingen av firmaet, men du riskerer å bli bøtlagt hvis du blir oppdaget.{}  Koster: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffkkaos i {TOWN}!{}{}Ombygging av veien, finasiert av {STRING}, fører med seg seks måneders veiproblemer.
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -2692,7 +2692,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario-heliko
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2-helikopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut-helikopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Melding fra kjøretøysprodusent
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Vi har nettopp designet et nytt {STRING} - er du interessert i ett års ekslusivt bruk av dette, slik vi kan se hvordan det virker før det blir allment tilgjengelig?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Vi har nettopp designet et nytt {STRING} - er du interessert i et års ekslusivt bruk av dette, slik vi kan se hvordan det virker før det blir allment tilgjengelig?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotiv
 STR_8103_ROAD_VEHICLE                                           :kjøretøy
 STR_8104_AIRCRAFT                                               :fly
@@ -3619,13 +3619,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Grønt så lenge det er mer enn ett grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Utgangssignal (semafor){}Oppfører seg på samme måte som et vanlig signal ville gjort, men er nødvendig for å riktig farge på inngangs- og kombinasjonspresignaler.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinasjonssignal (semafor){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge «trær» av presignaler.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Avanserte (semaforer){}Ett avansert signal tillater mere enn ett tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Avanserte signaler kan bli sendt fra baksiden.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Enveis Avansert Signal (semafore){}}Ett avansert signal tillater mere enn ett tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Enveis signaler kan bli sendt fra baksiden.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Vanlig signal (elektrisk){}Signaler trengs for å forhindre togkrasj på jernbanenettverk med mer enn ett tog.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Inngangssignal (elektrisk){}Grønt så lenge det er mer enn ett grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Avanserte (semaforer){}Et avansert signal tillater mere enn et tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Avanserte signaler kan bli sendt fra baksiden.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Enveis Avansert Signal (semafore){}}Et avansert signal tillater mere enn et tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Enveis signaler kan bli sendt fra baksiden.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Vanlig signal (elektrisk){}Signaler trengs for å forhindre togkrasj på jernbanenettverk med mer enn et tog.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Inngangssignal (elektrisk){}Grønt så lenge det er mer enn et grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Utgangssignal (elektrisk){}Oppfører seg på samme måte som et vanlig signal ville gjort, men er nødvendig for å riktig farge på inngangs- og kombinasjonspresignaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinasjonssignal (elektrisk){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge «trær» av presignaler.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Avansert Signal (elektrisk){}}Ett avansert signal tillater mere enn ett tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Avanserte signaler kan bli sendt fra baksiden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Avansert Signal (elektrisk){}}Et avansert signal tillater mere enn et tog til å benytte en signal blokk samtidig, vis toget kan reservere en rute til en trygg holdeplass. Avanserte signaler kan bli sendt fra baksiden.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Enveis Avansert Signal (elektrisk){}Et avansert signal tillater mere enn et tog i en signal blokk samtidig, vis toget kan reservere en linje til et trygt stoppe punkt. Enveis signaler kan ikke bli passert fra baksiden.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalkonvertering{}Konverterer signaler til den valgte signaltypen; Ctrl-klikk vil endre eksisterende variant.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Signaltetthet ved dra-og-slipp
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Senk signaltetthet ved dra-og-slipp
@@ -3633,7 +3634,12 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Øk sign
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillat by kontrollert lyd nivå for flyplasser: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Lyd grense i by: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Lyd generert: {GOLD}{COMMA}
 ########

@@ -1850,7 +1850,7 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :지역 당국�
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간의 도로 혼잡을 야기시킬 수 있습니다.{}  가격: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간 도로 혼잡을 야기시킬 수 있습니다.{}  가격: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} 당신 회사의 명예의 동상을 건설합니다.{}  가격: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}  가격: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}  가격: {CURRENCY}
@@ -3536,7 +3536,7 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}이 그�
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}이 그룹에 차량을 추가할 수 없습니다...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}이 그룹에 공유된 차량을 추가할 수 없습니다...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 클릭하 그룹에 속한 차량을 모두 나열합니다
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 클릭한 그룹에 속한 차량을 모두 나열합니다
 STR_GROUP_CREATE_TIP                                            :{BLACK}그룹 만들기
 STR_GROUP_DELETE_TIP                                            :{BLACK}선택한 그룹 삭제
 STR_GROUP_RENAME_TIP                                            :{BLACK}선택한 그룹 이름 바꾸기

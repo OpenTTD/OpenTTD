@@ -1038,8 +1038,8 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}提高�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}真實的列車加速：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}禁止列車直角轉向：{ORANGE}{STRING} {LTBLUE} (NTP 模式下無法使用)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}合併建在一起的車站：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}使用改善後的載貨演算法：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}交通工具逐步載貨：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}使用改善後的裝載演算法：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}交通工具逐步裝載：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}通貨膨脹：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}有需求才向車站供貨：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}提高橋樑長度限制：{ORANGE}{STRING}
@@ -1053,6 +1053,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}同類�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}永遠於狀態列顯示長日期：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}於駕駛側顯示號誌：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}於年末顯示財政視窗：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}設定指令時預設選擇「直達」指令：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}車輛排隊 (量子效應)：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}滑鼠在視窗邊緣時移動視窗：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}可向地方政府行賄：{ORANGE}{STRING}
@@ -1126,7 +1127,7 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用�
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :無
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :自家公司
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :所有公司
-STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}使用載貨進度指示：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}使用裝載進度指示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :無
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :自家公司
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :所有公司
@@ -1140,7 +1141,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :磁浮
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :最先可用的路軌
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :最新可用的路軌
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的路軌
-STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}顯示進階號誌保留的路徑：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}顯示列車佔用的路徑：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}即使沒有適合的交通工具可使用也顯示建造工具：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家可擁有列車數目：{ORANGE}{STRING}
@@ -1369,7 +1370,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改�
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}歡迎使用正在開發的新 AI。如果有任何問題，歡迎擷取畫面放上討論區通知開發團隊。
 TEMP_AI_ACTIVATED                                               :{WHITE}警告： 這個新 AI 還在早期測試中，目前僅於汽車上實作！
-TEMP_AI_MULTIPLAYER                                             :{WHITE}警告：新 AI 開發仍在實驗中。
+TEMP_AI_MULTIPLAYER                                             :{WHITE}警告：新 AI 的實作仍在實驗中。
 
 ############ network gui strings
 
@@ -2758,10 +2759,10 @@ STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳躍�
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}如何與指定數值比對交通工具資料
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}與交通工具資料比對的數值
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}輸入想比對的數值
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :負載比例
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :裝載進度 (%)
 STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠度
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :極速
-STR_ORDER_CONDITIONAL_AGE                                       :交通工具年齡 (年)
+STR_ORDER_CONDITIONAL_AGE                                       :使用年限
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要維護
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :總是
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :等於
@@ -3493,7 +3494,7 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}切換�
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}切換橋樑是否透明，按住 CTRL 點選可鎖定
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}切換公用設施是否透明，如燈塔、天線塔等，按住 CTRL 點選可鎖定
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}切換供電線是否透明，按住 CTRL 點選可鎖定
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}切換載貨進度指示是否透明，按住 CTRL 點選可鎖定
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}切換裝載進度指示是否透明，按住 CTRL 點選可鎖定
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}讓物件完全隱藏，而非透明顯示
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

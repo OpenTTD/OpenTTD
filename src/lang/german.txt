@@ -381,7 +381,7 @@ STR_SORT_BY_MAX_SPEED                                           :Höchstgeschwin
 STR_SORT_BY_MODEL                                               :Bauart
 STR_SORT_BY_VALUE                                               :Wert
 STR_SORT_BY_LENGTH                                              :Länge
-STR_SORT_BY_LIFE_TIME                                           :Verbleibende Lebensdauer
+STR_SORT_BY_LIFE_TIME                                           :Verbleibende Betriebsdauer
 STR_SORT_BY_FACILITY                                            :Stationsart
 STR_SORT_BY_WAITING                                             :Menge der wartenden Fracht
 STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
@@ -589,15 +589,15 @@ STR_MESSAGE_HISTORY_MENU                                        :Vergangene Nach
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Zeige letzte Mitteilung / Nachricht, Nachrichtenoptionen anzeigen
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Nachrichtenoptionen
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Nachrichtenart:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station des Spielers
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station eines Gegners
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs an Station des Spielers
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs an Station eines Gegners
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Unfälle / Katastrophen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmendaten
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Eröffnung von Industrien
-STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Schliessung von Industrien
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Schließung von Industrien
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
-STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produktionsänderungen bei vom Spieler belieferten Industriebetrieben
-STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsänderungen bei von Wettbewerbern belieferten Industriebetrieben
+STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produktionsänderung von Industrien, die der Spieler bedient
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsänderung von Industrien, die ein Gegner bedient
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andere Produktionsänderungen
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Rat / Informationen zu Fahrzeugen des Spielers
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Neue Fahrzeuge
@@ -1052,7 +1052,7 @@ STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :durch Prospekti
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Erlaube mehrere gleichartige Industrien pro Stadt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Gleiche Industrien können nahe beieinander gebaut werden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Lange Datumsanzeige in der Statusleiste (links unten): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zeige Signale auf der selben Seite wie den Straßenverkehr: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Signale auf der Seite der Straßenverkehrsrichtung anzeigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Zeige Firmenfinanzen am Ende des Jahres: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Aufträge standardmäßig ohne Zwischenhalt anfahren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fahrzeugwarteschlange (mit Überlagerung): {ORANGE}{STRING}
@@ -3380,7 +3380,7 @@ STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschw.:
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriebskosten: {GOLD}{CURRENCY} pro Jahr
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{CARGO} {STRING}
-STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Lebensdauer: {GOLD}{COMMA} Jahre
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Betriebsdauer: {GOLD}{COMMA} Jahre
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht: {GOLD}{WEIGHT_S}  ({WEIGHT_S})

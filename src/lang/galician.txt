@@ -1735,7 +1735,7 @@ STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Non se p
 STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Non se pode construír a estación de tranvía de pasaxeiros...
 STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Non se pode construír a estación de tranvía de carga...
 STR_180A_ROAD_CONSTRUCTION                                      :Construcción de Estrada
-STR_TRAMWAY_CONSTRUCTION                                        :construcción de vías de tranvía
+STR_TRAMWAY_CONSTRUCTION                                        :Construcción de vías de tranvía
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Construír unha sección de estrada
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Construír estrada usando o modo Autoestrada
 STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Construír sección de vía de tranvía

@@ -310,6 +310,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sneg
 STR_012C_MESSAGE                                                :{WHITE}Sporočilo
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Privzeto
 STR_012E_CANCEL                                                 :{BLACK}Prekliči
 STR_012F_OK                                                     :{BLACK}Potrdi
 STR_0130_RENAME                                                 :{BLACK}Preimenuj
@@ -421,6 +422,7 @@ STR_SORT_BY_MAX_SPEED                                           :Največja hitro
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Vrednost
 STR_SORT_BY_LENGTH                                              :Dolžina
+STR_SORT_BY_LIFE_TIME                                           :Ostala življenjska doba
 STR_SORT_BY_FACILITY                                            :Tip postaje
 STR_SORT_BY_WAITING                                             :Čakanje vrednosti tovora
 STR_SORT_BY_RATING_MAX                                          :Ocene tovora
@@ -2871,6 +2873,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Na serv
 
 STR_INVALID_ORDER                                               :{RED} (Neveljaven ukaz)
 
+STR_UNKNOWN_STATION                                             :neznana postaja
 STR_8812_EMPTY                                                  :{LTBLUE}Prazen
 STR_8813_FROM                                                   :Tovor {LTBLUE}{CARGO} iz postaje {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iz {STATION} (x{NUM})
