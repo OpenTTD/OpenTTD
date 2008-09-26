@@ -1422,32 +1422,43 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 
-			/* 2. We are selling the first engine, some special action might be required
+			/* 2. We are selling the front vehicle, some special action might be required
 			 * here, so take attention */
-			if ((flags & DC_EXEC) && v == first) {
+			if (v == first) {
 				Vehicle *new_f = GetNextVehicle(first);
 
 				/* 2.2 If there are wagons present after the deleted front engine, check
 				 * if the second wagon (which will be first) is an engine. If it is one,
 				 * promote it as a new train, retaining the unitnumber, orders */
 				if (new_f != NULL && IsTrainEngine(new_f)) {
-					switch_engine = true;
+					if (IsTrainEngine(first)) {
+						/* Let the new front engine take over the setup of the old engine */
+						switch_engine = true;
 
-					/* Make sure the group counts stay correct. */
-					new_f->group_id        = first->group_id;
-					first->group_id        = DEFAULT_GROUP;
+						if (flags & DC_EXEC) {
+							/* Make sure the group counts stay correct. */
+							new_f->group_id        = first->group_id;
+							first->group_id        = DEFAULT_GROUP;
 
-					/* Copy orders (by sharing) */
-					new_f->orders          = first->orders;
-					new_f->num_orders      = first->num_orders;
-					new_f->AddToShared(first);
-					DeleteVehicleOrders(first);
+							/* Copy orders (by sharing) */
+							new_f->orders          = first->orders;
+							new_f->num_orders      = first->num_orders;
+							new_f->AddToShared(first);
+							DeleteVehicleOrders(first);
 
-					/* Copy other important data from the front engine */
-					new_f->CopyVehicleConfigAndStatistics(first);
+							/* Copy other important data from the front engine */
+							new_f->CopyVehicleConfigAndStatistics(first);
 
-					/* If we deleted a window then open a new one for the 'new' train */
-					if (IsLocalPlayer() && w != NULL) ShowVehicleViewWindow(new_f);
+							/* If we deleted a window then open a new one for the 'new' train */
+							if (IsLocalPlayer() && w != NULL) ShowVehicleViewWindow(new_f);
+						}
+					} else {
+						/* We are selling a free wagon, and construct a new train at the same time.
+						 * This needs lots of extra checks (e.g. train limit), which are done by first moving
+						 * the remaining vehicles to a new row */
+						cost.AddCost(DoCommand(0, new_f->index | INVALID_VEHICLE << 16, 1, flags, CMD_MOVE_RAIL_VEHICLE));
+						if (cost.Failed()) return cost;
+					}
 				}
 			}
 
