@@ -1165,36 +1165,39 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		Vehicle *src_previous = src->Previous();
 
 		while (next_to_attach != NULL) {
-			/* Back up and clear the first_engine data to avoid using wagon override group */
-			EngineID first_engine = next_to_attach->u.rail.first_engine;
-			next_to_attach->u.rail.first_engine = INVALID_ENGINE;
+			/* Don't check callback for articulated or rear dual headed parts */
+			if (!IsArticulatedPart(next_to_attach) && !IsRearDualheaded(next_to_attach)) {
+				/* Back up and clear the first_engine data to avoid using wagon override group */
+				EngineID first_engine = next_to_attach->u.rail.first_engine;
+				next_to_attach->u.rail.first_engine = INVALID_ENGINE;
 
-			uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, next_to_attach, dst_head);
+				uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, next_to_attach, dst_head);
 
-			/* Restore original first_engine data */
-			next_to_attach->u.rail.first_engine = first_engine;
+				/* Restore original first_engine data */
+				next_to_attach->u.rail.first_engine = first_engine;
 
-			if (callback != CALLBACK_FAILED) {
-				StringID error = STR_NULL;
+				if (callback != CALLBACK_FAILED) {
+					StringID error = STR_NULL;
 
-				if (callback == 0xFD) error = STR_INCOMPATIBLE_RAIL_TYPES;
-				if (callback < 0xFD) error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
+					if (callback == 0xFD) error = STR_INCOMPATIBLE_RAIL_TYPES;
+					if (callback < 0xFD) error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
 
-				if (error != STR_NULL) {
-					/*
-					 * The attaching is not allowed. In this case 'next_to_attach'
-					 * can contain some vehicles of the 'source' and the destination
-					 * train can have some too. We 'just' add the to-be added wagons
-					 * to the chain and then split it where it was previously
-					 * separated, i.e. the tail of the original destination train.
-					 * Furthermore the 'previous' link of the original source vehicle needs
-					 * to be restored, otherwise the train goes missing in the depot.
-					 */
-					dst_tail->SetNext(next_to_attach);
-					orig_tail->SetNext(NULL);
-					if (src_previous != NULL) src_previous->SetNext(src);
+					if (error != STR_NULL) {
+						/*
+						 * The attaching is not allowed. In this case 'next_to_attach'
+						 * can contain some vehicles of the 'source' and the destination
+						 * train can have some too. We 'just' add the to-be added wagons
+						 * to the chain and then split it where it was previously
+						 * separated, i.e. the tail of the original destination train.
+						 * Furthermore the 'previous' link of the original source vehicle needs
+						 * to be restored, otherwise the train goes missing in the depot.
+						 */
+						dst_tail->SetNext(next_to_attach);
+						orig_tail->SetNext(NULL);
+						if (src_previous != NULL) src_previous->SetNext(src);
 
-					return_cmd_error(error);
+						return_cmd_error(error);
+					}
 				}
 			}
 
