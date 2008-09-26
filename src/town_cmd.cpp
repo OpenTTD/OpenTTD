@@ -1022,7 +1022,7 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 		_grow_town_result = GROWTH_SEARCH_STOPPED;
 
 		/* Remove hills etc */
-		LevelTownLand(tile);
+		if (!_settings_game.construction.build_on_slopes || Chance16(1, 6)) LevelTownLand(tile);
 
 		/* Is a road allowed here? */
 		switch (t1->GetActiveLayout()) {
