@@ -8,6 +8,8 @@
 #include "debug.h"
 #include "vehicle_gui.h"
 #include "train.h"
+#include "aircraft.h"
+#include "roadveh.h"
 #include "rail.h"
 #include "command_func.h"
 #include "engine_base.h"
@@ -87,15 +89,27 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, PlayerID player)
 /** Transfer cargo from a single (articulated )old vehicle to the new vehicle chain
  * @param old_veh Old vehicle that will be sold
  * @param new_head Head of the completely constructed new vehicle chain
+ * @param part_of_chain The vehicle is part of a train
  */
-static void TransferCargo(Vehicle *old_veh, Vehicle *new_head)
+static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chain)
 {
+	assert(!part_of_chain || IsFrontEngine(new_head));
 	/* Loop through source parts */
 	for (Vehicle *src = old_veh; src != NULL; src = src->Next()) {
+		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != old_veh->u.rail.other_multiheaded_part && !IsArticulatedPart(src)) {
+			/* Skip vehicles, which do not belong to old_veh */
+			src = GetLastEnginePart(src);
+			continue;
+		}
 		if (src->cargo_type >= NUM_CARGO || src->cargo.Count() == 0) continue;
 
 		/* Find free space in the new chain */
 		for (Vehicle *dest = new_head; dest != NULL && src->cargo.Count() > 0; dest = dest->Next()) {
+			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != new_head->u.rail.other_multiheaded_part && !IsArticulatedPart(src)) {
+				/* Skip vehicles, which do not belong to new_head */
+				dest = GetLastEnginePart(dest);
+				continue;
+			}
 			if (dest->cargo_type != src->cargo_type) continue;
 
 			uint amount = min(src->cargo.Count(), dest->cargo_cap - dest->cargo.Count());
@@ -106,7 +120,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head)
 	}
 
 	/* Update train weight etc., the old vehicle will be sold anyway */
-	if (new_head->type == VEH_TRAIN) TrainConsistChanged(new_head, true);
+	if (part_of_chain && new_head->type == VEH_TRAIN) TrainConsistChanged(new_head, true);
 }
 
 /**
@@ -144,11 +158,12 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, EngineID engine_ty
  * Function to find what type of cargo to refit to when autoreplacing
  * @param *v Original vehicle, that is being replaced
  * @param engine_type The EngineID of the vehicle that is being replaced to
+ * @param part_of_chain The vehicle is part of a train
  * @return The cargo type to replace to
  *    CT_NO_REFIT is returned if no refit is needed
  *    CT_INVALID is returned when both old and new vehicle got cargo capacity and refitting the new one to the old one's cargo type isn't possible
  */
-static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
+static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool part_of_chain)
 {
 	CargoID cargo_type;
 
@@ -160,6 +175,8 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 
 	if (cargo_type == CT_INVALID) {
 		if (v->type != VEH_TRAIN) return CT_NO_REFIT; // If the vehicle does not carry anything at all, every replacement is fine.
+
+		if (!part_of_chain) return CT_NO_REFIT;
 
 		/* the old engine didn't have cargo capacity, but the new one does
 		 * now we will figure out what cargo the train is carrying and refit to fit this */
@@ -182,7 +199,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 	} else {
 		if (!HasBit(available_cargo_types, cargo_type)) return CT_INVALID; // We can't refit the vehicle to carry the cargo we want
 
-		if (!VerifyAutoreplaceRefitForOrders(v, engine_type)) return CT_INVALID; // Some refit orders lose their effect
+		if (part_of_chain && !VerifyAutoreplaceRefitForOrders(v, engine_type)) return CT_INVALID; // Some refit orders lose their effect
 
 		/* Do we have to refit the vehicle, or is it already carrying the right cargo? */
 		uint16 *default_capacity = GetCapacityOfArticulatedParts(engine_type, v->type);
@@ -226,9 +243,10 @@ static EngineID GetNewEngineType(const Vehicle *v, const Player *p)
  * Important: The old vehicle is still in the original vehicle chain (used for determining the cargo when the old vehicle did not carry anything, but the new one does)
  * @param old_veh A single (articulated/multiheaded) vehicle that shall be replaced.
  * @param new_vehicle Returns the newly build and refittet vehicle
+ * @param part_of_chain The vehicle is part of a train
  * @return cost or error
  */
-static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehicle)
+static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehicle, bool part_of_chain)
 {
 	*new_vehicle = NULL;
 
@@ -238,7 +256,7 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	if (e == INVALID_ENGINE) return CommandCost(); // neither autoreplace is set, nor autorenew is triggered
 
 	/* Does it need to be refitted */
-	CargoID refit_cargo = GetNewCargoTypeForReplace(old_veh, e);
+	CargoID refit_cargo = GetNewCargoTypeForReplace(old_veh, e, part_of_chain);
 	if (refit_cargo == CT_INVALID) return CommandCost(); // incompatible cargos
 
 	/* Build the new vehicle */
@@ -327,6 +345,57 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 	return cost;
 }
 
+/** Replace a single unit in a free wagon chain
+ * @param single_unit vehicle to let autoreplace/renew operator on
+ * @param flags command flags
+ * @param wagon_removal remove wagons when the resulting chain occupies more tiles than the old did
+ * @param nothing_to_do is set to 'false' when something was done (only valid when not failed)
+ * @return cost or error
+ */
+static CommandCost ReplaceFreeUnit(Vehicle **single_unit, uint32 flags, bool *nothing_to_do)
+{
+	Vehicle *old_v = *single_unit;
+	assert(old_v->type == VEH_TRAIN && !IsArticulatedPart(old_v) && !IsRearDualheaded(old_v));
+
+	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
+
+	/* Build and refit replacement vehicle */
+	Vehicle *new_v = NULL;
+	cost.AddCost(BuildReplacementVehicle(old_v, &new_v, false));
+
+	/* Was a new vehicle constructed? */
+	if (cost.Succeeded() && new_v != NULL) {
+		*nothing_to_do = false;
+
+		if ((flags & DC_EXEC) != 0) {
+			/* Move the new vehicle behind the old */
+			MoveVehicle(new_v, old_v, DC_EXEC, false);
+
+			/* Take over cargo
+			 * Note: We do only transfer cargo from the old to the new vehicle.
+			 *       I.e. we do not transfer remaining cargo to other vehicles.
+			 *       Else you would also need to consider moving cargo to other free chains,
+			 *       or doing the same in ReplaceChain(), which would be quite troublesome.
+			 */
+			TransferCargo(old_v, new_v, false);
+
+			*single_unit = new_v;
+		}
+
+		if (cost.Succeeded()) {
+			/* Sell the old vehicle */
+			cost.AddCost(DoCommand(0, old_v->index, 0, flags, GetCmdSellVeh(old_v)));
+		}
+
+		/* If we are not in DC_EXEC undo everything */
+		if ((flags & DC_EXEC) == 0) {
+			DoCommand(0, new_v->index, 0, DC_EXEC, GetCmdSellVeh(new_v));
+		}
+	}
+
+	return cost;
+}
+
 /** Replace a whole vehicle chain
  * @param chain vehicle chain to let autoreplace/renew operator on
  * @param flags command flags
@@ -337,6 +406,7 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_removal, bool *nothing_to_do)
 {
 	Vehicle *old_head = *chain;
+	assert(old_head->IsPrimaryVehicle());
 
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
 
@@ -359,7 +429,7 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
 			assert(i < num_units);
 			old_vehs[i] = w;
 
-			CommandCost ret = BuildReplacementVehicle(old_vehs[i], &new_vehs[i]);
+			CommandCost ret = BuildReplacementVehicle(old_vehs[i], &new_vehs[i], true);
 			cost.AddCost(ret);
 			if (cost.Failed()) break;
 
@@ -459,7 +529,7 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
 					 * Note: We cannot test 'new_vehs[i] != NULL' as wagon removal might cause to remove both */
 					if (w->First() == new_head) continue;
 
-					if ((flags & DC_EXEC) != 0) TransferCargo(w, new_head);
+					if ((flags & DC_EXEC) != 0) TransferCargo(w, new_head, true);
 
 					cost.AddCost(DoCommand(0, w->index, 0, flags, GetCmdSellVeh(w)));
 					if ((flags & DC_EXEC) != 0) {
@@ -502,7 +572,7 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
 	} else {
 		/* Build and refit replacement vehicle */
 		Vehicle *new_head = NULL;
-		cost.AddCost(BuildReplacementVehicle(old_head, &new_head));
+		cost.AddCost(BuildReplacementVehicle(old_head, &new_head, true));
 
 		/* Was a new vehicle constructed? */
 		if (cost.Succeeded() && new_head != NULL) {
@@ -514,7 +584,7 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
 			if (cost.Succeeded()) {
 				/* The new vehicle is constructed, now take over cargo */
 				if ((flags & DC_EXEC) != 0) {
-					TransferCargo(old_head, new_head);
+					TransferCargo(old_head, new_head, true);
 					*chain = new_head;
 				}
 
@@ -532,7 +602,8 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
 	return cost;
 }
 
-/** Autoreplace a vehicles
+/** Autoreplaces a vehicle
+ * Trains are replaced as a whole chain, free wagons in depot are replaced on their own
  * @param tile not used
  * @param flags type of operation
  * @param p1 Index of vehicle
@@ -549,6 +620,15 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (!v->IsInDepot()) return CMD_ERROR;
 	if (HASBITS(v->vehstatus, VS_CRASHED)) return CMD_ERROR;
 
+	bool free_wagon = false;
+	if (v->type == VEH_TRAIN) {
+		if (IsArticulatedPart(v) || IsRearDualheaded(v)) return CMD_ERROR;
+		free_wagon = !IsFrontEngine(v);
+		if (free_wagon && IsFrontEngine(v->First())) return CMD_ERROR;
+	} else {
+		if (!v->IsPrimaryVehicle()) return CMD_ERROR;
+	}
+
 	const Player *p = GetPlayer(_current_player);
 	bool wagon_removal = p->renew_keep_length;
 
@@ -557,11 +637,11 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint3
 	bool any_replacements = false;
 	while (w != NULL && !any_replacements) {
 		any_replacements = (GetNewEngineType(w, p) != INVALID_ENGINE);
-		w = (w->type == VEH_TRAIN ? GetNextUnit(w) : NULL);
+		w = (!free_wagon && w->type == VEH_TRAIN ? GetNextUnit(w) : NULL);
 	}
 
 	if (any_replacements) {
-		bool was_stopped = (v->vehstatus & VS_STOPPED) != 0;
+		bool was_stopped = free_wagon || ((v->vehstatus & VS_STOPPED) != 0);
 
 		/* Stop the vehicle */
 		if (!was_stopped) cost.AddCost(StartStopVehicle(v, true));
@@ -574,11 +654,20 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint3
 		 * to prevent desyncs and to replay newgrf callbacks during DC_EXEC */
 		SavedRandomSeeds saved_seeds;
 		SaveRandomSeeds(&saved_seeds);
-		cost.AddCost(ReplaceChain(&v, flags & ~DC_EXEC, wagon_removal, &nothing_to_do));
+		if (free_wagon) {
+			cost.AddCost(ReplaceFreeUnit(&v, flags & ~DC_EXEC, &nothing_to_do));
+		} else {
+			cost.AddCost(ReplaceChain(&v, flags & ~DC_EXEC, wagon_removal, &nothing_to_do));
+		}
 		RestoreRandomSeeds(saved_seeds);
 
 		if (cost.Succeeded() && (flags & DC_EXEC) != 0) {
-			CommandCost ret = ReplaceChain(&v, flags, wagon_removal, &nothing_to_do);
+			CommandCost ret;
+			if (free_wagon) {
+				ret = ReplaceFreeUnit(&v, flags, &nothing_to_do);
+			} else {
+				ret = ReplaceChain(&v, flags, wagon_removal, &nothing_to_do);
+			}
 			assert(ret.Succeeded() && ret.GetCost() == cost.GetCost());
 		}
 

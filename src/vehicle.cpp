@@ -1274,7 +1274,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
-	BuildDepotVehicleList(vehicle_type, tile, &list, &list);
+	BuildDepotVehicleList(vehicle_type, tile, &list, &list, true);
 
 	bool did_something = false;
 

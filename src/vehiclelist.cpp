@@ -18,8 +18,9 @@
  * @param tile    The tile the depot is located on
  * @param engines Pointer to list to add vehicles to
  * @param wagons  Pointer to list to add wagons to (can be NULL)
+ * @param individual_wagons If true add every wagon to #wagons which is not attached to an engine. If false only add the first wagon of every row.
  */
-void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engines, VehicleList *wagons)
+void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engines, VehicleList *wagons, bool individual_wagons)
 {
 	engines->Clear();
 	if (wagons != NULL && wagons != engines) wagons->Clear();
@@ -32,9 +33,10 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
 
 		switch (type) {
 			case VEH_TRAIN:
+				if (IsArticulatedPart(v) || IsRearDualheaded(v)) continue;
 				if (v->u.rail.track != TRACK_BIT_DEPOT) continue;
-				if (wagons != NULL && IsFreeWagon(v)) {
-					*wagons->Append() = v;
+				if (wagons != NULL && IsFreeWagon(v->First())) {
+					if (individual_wagons || IsFreeWagon(v)) *wagons->Append() = v;
 					continue;
 				}
 				break;
