@@ -382,10 +382,8 @@ static CommandCost ReplaceFreeUnit(Vehicle **single_unit, uint32 flags, bool *no
 			*single_unit = new_v;
 		}
 
-		if (cost.Succeeded()) {
-			/* Sell the old vehicle */
-			cost.AddCost(DoCommand(0, old_v->index, 0, flags, GetCmdSellVeh(old_v)));
-		}
+		/* Sell the old vehicle */
+		cost.AddCost(DoCommand(0, old_v->index, 0, flags, GetCmdSellVeh(old_v)));
 
 		/* If we are not in DC_EXEC undo everything */
 		if ((flags & DC_EXEC) == 0) {
