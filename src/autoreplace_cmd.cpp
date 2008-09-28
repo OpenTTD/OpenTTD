@@ -93,7 +93,7 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, PlayerID player)
  */
 static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chain)
 {
-	assert(!part_of_chain || IsFrontEngine(new_head));
+	assert(!part_of_chain || new_head->IsPrimaryVehicle());
 	/* Loop through source parts */
 	for (Vehicle *src = old_veh; src != NULL; src = src->Next()) {
 		if (!part_of_chain && src->type == VEH_TRAIN && src != old_veh && src != old_veh->u.rail.other_multiheaded_part && !IsArticulatedPart(src)) {
