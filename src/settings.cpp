@@ -1941,6 +1941,13 @@ bool SetPatchValue(uint index, const char *value)
 	return true;
 }
 
+/**
+ * Given a name of patch, return a setting description of it.
+ * @param name  Name of the patch to return a setting description of
+ * @param i     Pointer to an integer that will contain the index of the setting after the call, if it is successful.
+ * @return Pointer to the setting description of patch \a name if it can be found,
+ *         \c NULL indicates failure to obtain the description
+ */
 const SettingDesc *GetPatchFromName(const char *name, uint *i)
 {
 	const SettingDesc *sd;
@@ -2003,6 +2010,10 @@ void IConsoleSetPatchSetting(const char *name, int value)
 	SetPatchValue(index, value);
 }
 
+/**
+ * Output value of a specific patch to the console
+ * @param name  Name of the patch to output its value
+ */
 void IConsoleGetPatchSetting(const char *name)
 {
 	char value[20];
@@ -2031,6 +2042,11 @@ void IConsoleGetPatchSetting(const char *name)
 	}
 }
 
+/**
+ * List all patches and their value to the console
+ *
+ * @param prefilter  If not \c NULL, only list patches with names that begin with \a prefilter prefix
+ */
 void IConsoleListPatches(const char *prefilter)
 {
 	IConsolePrintF(CC_WARNING, "All patches with their current value:");

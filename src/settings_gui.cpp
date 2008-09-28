@@ -708,20 +708,26 @@ static const char *_patches_vehicles[] = {
 	"vehicle.dynamic_engines",
 };
 
+/** Data structure describing a single patch in a tab */
 struct PatchEntry {
-	const SettingDesc *setting;
-	uint index;
+	const SettingDesc *setting; ///< Setting description of the patch
+	uint index;                 ///< Index of the setting in the settings table
 };
 
+/**
+ * Data structure describing one page of patches in the patch settings window.
+ *
+ * The names of the patches to display are statically defined, and from this
+ * information, a dynamic array (with length \a num) of PatchEntry entries is
+ * constructed.
+ */
 struct PatchPage {
-	const char **names;
-	PatchEntry *entries;
-	byte num;
+	const char **names;  ///< Static list of strings with patch names that are settable from the tab
+	PatchEntry *entries; ///< Array of patch entries of the page. Initially \c NULL, filled in at run time
+	byte num;            ///< Number of entries on the page (statically filled).
 };
 
-/* PatchPage holds the categories, the number of elements in each category
- * and (in NULL) a dynamic array of settings based on the string-representations
- * of the settings. This way there is no worry about indeces, and such */
+/** Array of pages (tabs), where each page holds a number of advanced settings. */
 static PatchPage _patches_page[] = {
 	{_patches_ui,           NULL, lengthof(_patches_ui)},
 	{_patches_construction, NULL, lengthof(_patches_construction)},
@@ -731,19 +737,20 @@ static PatchPage _patches_page[] = {
 	{_patches_ai,           NULL, lengthof(_patches_ai)},
 };
 
+/** Widget numbers of config patches window */
 enum PatchesSelectionWidgets {
-	PATCHSEL_OPTIONSPANEL = 3,
-	PATCHSEL_INTERFACE,
-	PATCHSEL_CONSTRUCTION,
-	PATCHSEL_VEHICLES,
-	PATCHSEL_STATIONS,
-	PATCHSEL_ECONOMY,
-	PATCHSEL_COMPETITORS
+	PATCHSEL_OPTIONSPANEL = 3, ///< Panel widget containing the option lists
+	PATCHSEL_INTERFACE,        ///< Button 'Interface'
+	PATCHSEL_CONSTRUCTION,     ///< Button 'Construction'
+	PATCHSEL_VEHICLES,         ///< Button 'Vehicles'
+	PATCHSEL_STATIONS,         ///< Button 'Stations'
+	PATCHSEL_ECONOMY,          ///< Button 'Economy'
+	PATCHSEL_COMPETITORS       ///< Button 'Competitors'
 };
 
 struct PatchesSelectionWindow : Window {
 	static GameSettings *patches_ptr;
-	static int patches_max;
+	static int patches_max;  ///< Maximal number of patches on a single page
 
 	int page;
 	int entry;
@@ -855,15 +862,15 @@ struct PatchesSelectionWindow : Window {
 				int x, y;
 				byte btn;
 
-				y = pt.y - 46 - 1;
-				if (y < 0) return;
+				y = pt.y - 46 - 1;  // Shift y coordinate
+				if (y < 0) return;  // Clicked above first entry
 
-				x = pt.x - 5;
-				if (x < 0) return;
+				x = pt.x - 5;  // Shift x coordinate
+				if (x < 0) return;  // Clicked left of the entry
 
-				btn = y / 11;
-				if (y % 11 > 9) return;
-				if (btn >= page->num) return;
+				btn = y / 11;  // Compute which setting is selected
+				if (y % 11 > 9) return;  // Clicked too low at the setting
+				if (btn >= page->num) return;  // Clicked below the last setting of the page
 
 				sd = page->entries[btn].setting;
 
