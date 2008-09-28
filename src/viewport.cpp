@@ -1333,15 +1333,12 @@ static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 				}
 			}
 
-			/* Swap the two sprites ps and ps2 using bubble-sort algorithm. */
-			ParentSpriteToDraw **psd3 = psd;
-			do {
-				ParentSpriteToDraw *temp = *psd3;
-				*psd3 = ps2;
-				ps2 = temp;
-
-				psd3++;
-			} while (psd3 <= psd2);
+			/* Move ps2 in front of ps */
+			ParentSpriteToDraw *temp = ps2;
+			for (ParentSpriteToDraw **psd3 = psd2; psd3 > psd; psd3--) {
+				*psd3 = *(psd3 - 1);
+			}
+			*psd = temp;
 		}
 	}
 }
