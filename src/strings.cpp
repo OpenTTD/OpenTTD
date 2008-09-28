@@ -191,8 +191,9 @@ void SetDParamStr(uint n, const char *str)
 	SetDParam(n, (uint64)(size_t)str);
 }
 
-void InjectDParam(int amount)
+void InjectDParam(uint amount)
 {
+	assert((uint)amount < lengthof(_decode_parameters));
 	memmove(_decode_parameters + amount, _decode_parameters, sizeof(_decode_parameters) - amount * sizeof(uint64));
 }
 

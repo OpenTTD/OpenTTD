@@ -11,7 +11,7 @@ char *InlineString(char *buf, StringID string);
 char *GetString(char *buffr, StringID string, const char *last);
 const char *GetStringPtr(StringID string);
 
-void InjectDParam(int amount);
+void InjectDParam(uint amount);
 
 static inline void SetDParamX(uint64 *s, uint n, uint64 v)
 {
