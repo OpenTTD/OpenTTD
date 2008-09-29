@@ -52,7 +52,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 	TileIndex t;
 	int best_dist;
 	for (t = 0; t < MapSize(); t++) {
-		if (IsTileType(t, MP_WATER) == water) break;
+		if (!IsTileType(t, MP_VOID) && IsTileType(t, MP_WATER) == water) break;
 	}
 	if (t == MapSize() && !water) return 0x200;
 	best_dist = DistanceManhattan(tile, t);
@@ -60,7 +60,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 	for (; t < MapSize(); t++) {
 		int dist = DistanceManhattan(tile, t);
 		if (dist < best_dist) {
-			if (IsTileType(t, MP_WATER) == water) best_dist = dist;
+			if (!IsTileType(t, MP_VOID) && IsTileType(t, MP_WATER) == water) best_dist = dist;
 		} else {
 			/* When the Y distance between the current row and the 'source' tile
 			 * is larger than the best distance, we've found the best distance */
