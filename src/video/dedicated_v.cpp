@@ -226,7 +226,8 @@ static void DedicatedHandleKeyInput()
 	if (fgets(input_line, lengthof(input_line), stdin) == NULL) return;
 #else
 	/* Handle console input, and singal console thread, it can accept input again */
-	strncpy(input_line, _win_console_thread_buffer, lengthof(input_line));
+	assert_compile(lengthof(_win_console_thread_buffer) <= lengthof(input_line));
+	strcpy(input_line, _win_console_thread_buffer);
 	SetEvent(_hWaitForInputHandling);
 #endif
 

@@ -389,7 +389,7 @@ IConsoleAlias *IConsoleAliasGet(const char *name)
 static inline int IConsoleCopyInParams(char *dst, const char *src, uint bufpos)
 {
 	int len = min(ICON_MAX_STREAMSIZE - bufpos, (uint)strlen(src));
-	strncpy(dst, src, len);
+	strecpy(dst, src, dst + len - 1);
 
 	return len;
 }

@@ -633,7 +633,7 @@ static bool TarListAddFile(const char *filename)
 						} else {
 							/* Append at end of 'dest' */
 							if (destpos != dest) *(destpos++) = PATHSEPCHAR;
-							strncpy(destpos, pos, next - pos);
+							strncpy(destpos, pos, next - pos); // Safe as we do '\0'-termination ourselves
 							destpos += next - pos;
 						}
 						*destpos = '\0';

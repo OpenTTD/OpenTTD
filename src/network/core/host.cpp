@@ -162,7 +162,7 @@ static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // !GET
 		if (req->ifr_addr.sa_family == AF_INET) {
 			struct ifreq r;
 
-			strncpy(r.ifr_name, req->ifr_name, lengthof(r.ifr_name));
+			strecpy(r.ifr_name, req->ifr_name, lastof(r.ifr_name));
 			if (ioctl(sock, SIOCGIFFLAGS, &r) != -1 &&
 					r.ifr_flags & IFF_BROADCAST &&
 					ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {

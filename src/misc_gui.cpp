@@ -633,6 +633,7 @@ struct TooltipsWindow : public Window
 	{
 		this->string_id = str;
 		assert(sizeof(this->params[0]) == sizeof(params[0]));
+		assert(paramcount <= lengthof(this->params));
 		memcpy(this->params, params, sizeof(this->params[0]) * paramcount);
 		this->paramcount = paramcount;
 		this->use_left_mouse_button = use_left_mouse_button;

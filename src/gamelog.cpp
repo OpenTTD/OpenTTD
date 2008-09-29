@@ -394,7 +394,7 @@ void GamelogRevision()
 	LoggedChange *lc = GamelogChange(GLCT_REVISION);
 	if (lc == NULL) return;
 
-	strncpy(lc->revision.text, _openttd_revision, lengthof(lc->revision.text));
+	strecpy(lc->revision.text, _openttd_revision, lastof(lc->revision.text));
 	lc->revision.slver = SAVEGAME_VERSION;
 	lc->revision.modified = _openttd_revision_modified;
 	lc->revision.newgrf = _openttd_newgrf_version;

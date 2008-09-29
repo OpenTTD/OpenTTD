@@ -22,6 +22,7 @@ static FMusicDriver_Win32 iFMusicDriver_Win32;
 
 void MusicDriver_Win32::PlaySong(const char *filename)
 {
+	assert(filename != NULL);
 	strcpy(_midi.start_song, filename);
 	_midi.playing = true;
 	_midi.stop_song = false;
