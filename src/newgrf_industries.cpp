@@ -73,7 +73,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 			} else if (TileX(tile) < TileX(t)) {
 				/* We can safely skip this many tiles; up to here all tiles have a
 				 * higher or equal distance than the best distance */
-				t += max(best_dist - dist, 0);
+				t += dist - best_dist;
 				continue;
 			}
 		}
