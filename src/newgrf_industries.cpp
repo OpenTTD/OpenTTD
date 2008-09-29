@@ -45,41 +45,55 @@ IndustryType MapNewGRFIndustryType(IndustryType grf_type, uint32 grf_id)
  * Finds the distance for the closest tile with water/land given a tile
  * @param tile  the tile to find the distance too
  * @param water whether to find water or land
+ * @return distance to nearest water (max 0x7F) / land (max 0x1FF; 0x200 if there is no land)
  * @note FAILS when an industry should be seen as water
  */
 static uint GetClosestWaterDistance(TileIndex tile, bool water)
 {
-	TileIndex t;
-	int best_dist;
-	for (t = 0; t < MapSize(); t++) {
-		if (!IsTileType(t, MP_VOID) && IsTileType(t, MP_WATER) == water) break;
-	}
-	if (t == MapSize() && !water) return 0x200;
-	best_dist = DistanceManhattan(tile, t);
+	if (IsTileType(tile, MP_WATER) == water) return 0;
 
-	for (; t < MapSize(); t++) {
-		int dist = DistanceManhattan(tile, t);
-		if (dist < best_dist) {
-			if (!IsTileType(t, MP_VOID) && IsTileType(t, MP_WATER) == water) best_dist = dist;
-		} else {
-			/* When the Y distance between the current row and the 'source' tile
-			 * is larger than the best distance, we've found the best distance */
-			if ((int)TileY(t) - (int)TileY(tile) > best_dist) break;
-			if ((int)TileX(t) - (int)TileX(tile) > best_dist) {
-				/* We can safely skip this many tiles; from here all tiles have a
-				 * higher or equal distance than the best distance */
-				t |= MapMaxX();
-				continue;
-			} else if (TileX(tile) < TileX(t)) {
-				/* We can safely skip this many tiles; up to here all tiles have a
-				 * higher or equal distance than the best distance */
-				t += dist - best_dist;
-				continue;
+	uint max_dist = water ? 0x7F : 0x200;
+
+	int x = TileX(tile);
+	int y = TileY(tile);
+
+	uint max_x = MapMaxX();
+	uint max_y = MapMaxY();
+
+	/* go in a 'spiral' with increasing manhattan distance in each iteration */
+	for (uint dist = 1; dist < max_dist; dist++) {
+		/* next 'diameter' */
+		y--;
+
+		/* going counter-clockwise around this square */
+		for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
+			static const int8 ddx[DIAGDIR_END] = { -1,  1,  1, -1};
+			static const int8 ddy[DIAGDIR_END] = {  1,  1, -1, -1};
+
+			int dx = ddx[dir];
+			int dy = ddy[dir];
+
+			/* each side of this square has length 'dist' */
+			for (uint a = 0; a < dist; a++) {
+				/* MP_VOID tiles are not checked (interval is [0; max) for IsInsideMM())*/
+				if (IsInsideMM(x, 0, max_x) && IsInsideMM(y, 0, max_y)) {
+					TileIndex t = TileXY(x, y);
+					if (IsTileType(t, MP_WATER) == water) return dist;
+				}
+				x += dx;
+				y += dy;
 			}
 		}
 	}
 
-	return min(best_dist, water ? 0x7F : 0x1FF);
+	if (!water) {
+		/* no land found - is this a water-only map? */
+		for (TileIndex t = 0; t < MapSize(); t++) {
+			if (!IsTileType(t, MP_VOID) && !IsTileType(t, MP_WATER)) return 0x1FF;
+		}
+	}
+
+	return max_dist;
 }
 
 /** Make an analysis of a tile and check for its belonging to the same
