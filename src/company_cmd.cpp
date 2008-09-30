@@ -462,14 +462,14 @@ restart:;
 		c->president_name_1 = SPECSTR_PRESIDENT_NAME;
 
 		SetDParam(0, c->index);
-		GetString(buffer, STR_PLAYER_NAME, lastof(buffer));
+		GetString(buffer, STR_PRESIDENT_NAME, lastof(buffer));
 		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 94)
 			continue;
 
 		FOR_ALL_COMPANIES(cc) {
 			if (c != cc) {
 				SetDParam(0, cc->index);
-				GetString(buffer2, STR_PLAYER_NAME, lastof(buffer2));
+				GetString(buffer2, STR_PRESIDENT_NAME, lastof(buffer2));
 				if (strcmp(buffer2, buffer) == 0)
 					goto restart;
 			}

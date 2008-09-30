@@ -507,7 +507,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"VEHICLE",  EmitSingleChar, SCC_VEHICLE_NAME,  1, 0},
 	{"COMPANY",  EmitSingleChar, SCC_COMPANY_NAME,  1, 0},
 	{"COMPANYNUM", EmitSingleChar, SCC_COMPANY_NUM, 1, 0},
-	{"PLAYERNAME", EmitSingleChar, SCC_PLAYER_NAME, 1, 0},
+	{"PRESIDENTNAME", EmitSingleChar, SCC_PRESIDENT_NAME, 1, 0},
 
 	// 0x9D is used for the pseudo command SETCASE
 	// 0x9E is used for case switching

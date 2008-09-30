@@ -595,10 +595,8 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Инф�
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Открытие производства
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Закрытие производства
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Изменения в экономике
-STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Изменения уровня производства предприятий, обслуживаемых игроком
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Изменения уровня производства предприятий, обслуживаемых соперниками
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Изменения уровня производства предприятий, никем не обслуживаемых
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Сообщения о транспорте игрока
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Новый транспорт
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Изменения в списке принимаемых грузов
 STR_020E_SUBSIDIES                                              :{YELLOW}Субсидии
@@ -616,10 +614,10 @@ STR_0216_CAPITALIST                                             :Капитал�
 STR_0217_MAGNATE                                                :Магнат
 STR_0218_MOGUL                                                  :Транспортный король
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Магнат Века
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} достиг статуса '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} из {COMPANY} достиг статуса '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} из {COMPANY} достиг статуса '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор сценариев
@@ -1243,7 +1241,6 @@ STR_CHEATS                                                      :{WHITE}ЧИТЫ
 STR_CHEATS_TIP                                                  :{BLACK}Галочка показывает, использовали ли Вы этот ЧИТ раньше
 STR_CHEATS_WARNING                                              :{BLACK}Внимание, вы собираетесь предать своих соперников! Этого вам никогда не простят!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличить деньги на {CURRENCY}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Играть за компанию: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный динамит (снос _ВСЕГО_): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Туннели могут пересекаться: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Строить в режиме паузы: {ORANGE}{STRING}
@@ -1575,7 +1572,6 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :получен 
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :версии не совпадают
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :имя уже используется
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :неверный пароль
-STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :неверный id-игрока в DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :вас выкинул сервер
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :попытался применить чит
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер переполнен
@@ -2272,7 +2268,6 @@ STR_HOSTILE                                                     :Враждеб�
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_7002_PLAYER                                                 :(Игрок {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Лицо
 STR_7005_COLOR_SCHEME                                           :{BLACK}Цвет
 STR_7006_COLOR_SCHEME                                           :{GOLD}Цвет:
@@ -2326,7 +2321,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Изме
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Выберите цветовую схему
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Взять/увеличить кредит
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Вернуть часть ссуды
-STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Директор)
+STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Директор)
 STR_7038_INAUGURATED                                            :{GOLD}В должности с: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Транспорт:
 STR_TRAINS                                                      :{WHITE}{COMMA} поезд{P "" а ов}
@@ -2355,7 +2350,7 @@ STR_7054                                                        :{WHITE}{STRING}
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Транспортная компания в опасном положении!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT} {STRING} будет продана или объявлена банкротом, если ситуация не изменится!
-STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Директор)
+STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Директор)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Объединение компаний!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} продана {STRING} за {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Мы ищем транспортную компанию для присоединения к ней.{}{}Вы хотите купить {COMPANY} за {CURRENCY}?
@@ -3550,7 +3545,6 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}В за�
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
-STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

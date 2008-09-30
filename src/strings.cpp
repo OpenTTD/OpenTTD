@@ -978,12 +978,12 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				if (IsValidCompanyID(company) && IsHumanCompany(company)) {
 					int64 args[1];
 					args[0] = company + 1;
-					buff = GetStringWithArgs(buff, STR_7002_PLAYER, args, last);
+					buff = GetStringWithArgs(buff, STR_7002_COMPANY, args, last);
 				}
 				break;
 			}
 
-			case SCC_PLAYER_NAME: { // {PLAYERNAME}
+			case SCC_PRESIDENT_NAME: { // {PRESIDENTNAME}
 				const Company *c = GetCompany((CompanyID)GetInt32(&argv));
 
 				if (c->president_name != NULL) {

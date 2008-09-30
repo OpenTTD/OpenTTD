@@ -595,10 +595,8 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Företa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Industriöppning
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Industristängning
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Förändringar av ekonomin
-STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Förändringar i produktion vid industrier trafikerad av spelaren
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Förändringar i produktion vid industrier trafikerad av motståndare
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andra förändringar i produktion vid industrier.
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Råd / information om spelarens fordon
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nya fordon
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ändringar i godsacceptans
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventioner
@@ -616,10 +614,10 @@ STR_0216_CAPITALIST                                             :Kapitalist
 STR_0217_MAGNATE                                                :Magnat
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Århundradets Tycoon
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} uppnår '{STRING}' status!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} från {COMPANY} uppnår '{STRING}' status!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} från {COMPANY} uppnår '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario-editor
@@ -1248,7 +1246,6 @@ STR_CHEATS                                                      :{WHITE}Fusk
 STR_CHEATS_TIP                                                  :{BLACK}Checkboxar indikerar om du använt det här fusket förut
 STR_CHEATS_WARNING                                              :{BLACK}Varning! Du är på väg att förråda dina motståndare. Kom ihåg att detta inte kommer glömmas.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Öka pengar med {CURRENCY}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spela som Spelare: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk Bulldozer (ta bort industrier, fyrar etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnlar kan korsa varandra: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bygga i pause-läge: {ORANGE}{STRING}
@@ -1580,7 +1577,6 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :mottog konstigt
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :fel revision
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :namnet används redan
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :fel lösenord
-STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :fel spelar-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :utkastad av servern
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :försökte fuska
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servern är full
@@ -2266,7 +2262,6 @@ STR_HOSTILE                                                     :Fientlig
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_7002_PLAYER                                                 :(Spelare {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nytt ansikte
 STR_7005_COLOR_SCHEME                                           :{BLACK}Färgval
 STR_7006_COLOR_SCHEME                                           :{GOLD}Färgval:
@@ -2320,7 +2315,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Byt för
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Fälj ny färg
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Öka lånets storlek
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Återbetala en del av lånet
-STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(VD)
+STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(VD)
 STR_7038_INAUGURATED                                            :{GOLD}Etablerades: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Fordon:
 STR_TRAINS                                                      :{WHITE}{COMMA} tåg
@@ -2349,7 +2344,7 @@ STR_7054                                                        :{WHITE}{STRING}
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportföretag har problem!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} kommer att säljas eller gå bankrutt om det inte går bättre snart!
-STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(VD)
+STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(VD)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportföretag slås ihop!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} har sålts till {STRING} för {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Vi letar efter någon som vill köpa och ta över vårt företag{}{}Vill du köpa {COMPANY} för {CURRENCY}?
@@ -3545,7 +3540,6 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klicka f
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
-STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

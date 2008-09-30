@@ -646,10 +646,8 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Otwarcie obiektow przemyslowych
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zamkniecie obiektow przemyslowych
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmiany ekonomiczne
-STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Zmiany produkcji przedsiębiorstw obsługiwanych przez gracza
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Zmiany produkcji przedsiębiorstw obsługiwanych przez przeciwników
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Zmiany produkcji pozostałych przedsiębiorstw
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Porady / informacje o pojazdach gracza
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nowe pojazdy
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Zamiany w akceptowaniu ładunku
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsydia
@@ -667,10 +665,10 @@ STR_0216_CAPITALIST                                             :Kapitalista
 STR_0217_MAGNATE                                                :Magnat
 STR_0218_MOGUL                                                  :Potentat
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon Stulecia
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} osiąga status: '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} z {COMPANY} osiągnęło status '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} z {COMPANY} osiągnęło status '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Edytor Scenariuszy
@@ -1313,7 +1311,6 @@ STR_CHEATS                                                      :{WHITE}Oszukiwa
 STR_CHEATS_TIP                                                  :{BLACK}Checkboxy pokazują czy używano już tego oszustwa
 STR_CHEATS_WARNING                                              :{BLACK}Uwaga! Właśnie chcesz zdradzić swoich wspólników.{}Miej na uwadze, że zostanie to zapamiętane na wieki!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Graj jako gracz: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, itp.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się krzyżować: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowa w czasie pauzy: {ORANGE}{STRING}
@@ -1626,7 +1623,6 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :odebrany niezna
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :zła wersja
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nazwa już w użyciu
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :złe hasło gry
-STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :błędne id gracza w DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :wyrzucony przez serwer
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probował użyć ułatwień
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serwer jest pełny
@@ -2330,7 +2326,6 @@ STR_HOSTILE                                                     :Wrogie
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_7002_PLAYER                                                 :(Gracz {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nowa Twarz
 STR_7005_COLOR_SCHEME                                           :{BLACK}Schemat Koloru
 STR_7006_COLOR_SCHEME                                           :{GOLD}Schemat koloru:
@@ -2384,7 +2379,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Zmień n
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Kliknij na nowym schemacie kolorów
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Zwiększ wielkość pożyczki
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Zwróć cześć pożyczki
-STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Prezes)
+STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Prezes)
 STR_7038_INAUGURATED                                            :{GOLD}Inauguracja: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Pojazdy:
 STR_TRAINS                                                      :{WHITE}{COMMA} pociąg{P "" i ów}
@@ -2413,7 +2408,7 @@ STR_7054                                                        :{WHITE}{STRING}
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Firma ma problemy!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} będzie odsprzedane lub ogłoszone upadłym jeżeli zysk firmy nie wzrośnie!
-STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Prezes)
+STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Prezes)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Połączenie firm transportowych!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} został sprzedany {STRING} za {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Szukamy firmy transportowej która przejęłaby naszą firmę{}{}Czy chcesz kupić {COMPANY} za {CURRENCY}?
@@ -3499,7 +3494,6 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknij,
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
-STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

@@ -248,7 +248,7 @@ static bool IsUniquePresidentName(const char *name)
 
 	FOR_ALL_COMPANIES(c) {
 		SetDParam(0, c->index);
-		GetString(buf, STR_PLAYER_NAME, lastof(buf));
+		GetString(buf, STR_PRESIDENT_NAME, lastof(buf));
 		if (strcmp(buf, name) == 0) return false;
 	}
 

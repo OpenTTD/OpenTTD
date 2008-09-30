@@ -583,7 +583,6 @@ STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sa'ncen
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Negadijumi / ava'rijas
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Kompa'nijas informa'cija
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomijas izmain'as
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Padoms / informa'cija par spe'le'ta'ja transporta li'dzekl'iem
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Jaunie transporta li'dzekl'i
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Izmain'as kravas pien'ems'ana'
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsi'dijas
@@ -601,10 +600,10 @@ STR_0216_CAPITALIST                                             :Kapita'lists
 STR_0217_MAGNATE                                                :Magna'ts
 STR_0218_MOGUL                                                  :Moguls
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Gadsimta supervecis
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} sasniegus'i  '{STRING}' statusu!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} no {COMPANY} sasniegusi '{STRING}' statusu!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} no {COMPANY} sasniegusi '{STRING}' statusu!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scena'riju redaktors

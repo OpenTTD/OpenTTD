@@ -585,10 +585,8 @@ STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aankoms
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukke / rampe
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Maatskappy informasie
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomie veranderings
-STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER                           :{YELLOW}Produksie veranderings van nywerhede wat by die speler bedien word
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksie veranderings van nywerhede wat deur mededingers bedien word
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Ander nywerheid produksie veranderings
-STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Raad / informasie op speler se voertuie
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuwe voertuie
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Veranderings na vrag aanvarde
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidiee
@@ -606,10 +604,10 @@ STR_0216_CAPITALIST                                             :Kapitalis
 STR_0217_MAGNATE                                                :Magnaat
 STR_0218_MOGUL                                                  :Mongool
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnaat van die eeu
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} behaal '{STRING}' stand!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} van {COMPANY} behaal '{STRING}' stand!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} van {COMPANY} behaal '{STRING}' stand!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Draaiboek Redigeerder
@@ -1205,7 +1203,6 @@ STR_CHEATS                                                      :{WHITE}Kullery
 STR_CHEATS_TIP                                                  :{BLACK}Tikblokkies wys ann as jy die bedreig vroeë gebruik het
 STR_CHEATS_WARNING                                              :{BLACK}Waarskuwing! U staan op die punt om jou mededinger te verrai. Hou in gedagte dat so 'n skande sal vir ewigheid onthou word.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Vermeerder geld by {CURRENCY}
-STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Speel as speler: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tower stootskraper (uitwis nywerhede, onbeweegbares): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tonnels mag vir mekaar kruis: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bou terwyl in pouse modus: {ORANGE}{STRING}
@@ -1515,7 +1512,6 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :vreemde pakket 
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :verkeerde hersiening
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :naam reeds in gebruik
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :verkeerde wagwoord
-STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :verkeerde speler-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :geskop by verskaffer
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :het probeer om 'n bedreig te gebruik
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :verskaffer vol
@@ -2182,7 +2178,6 @@ STR_HOSTILE                                                     :Vyandelik
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
-STR_7002_PLAYER                                                 :(Speler {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nuwe Gesig
 STR_7005_COLOR_SCHEME                                           :{BLACK}Kleur Skema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Kleur Skema
@@ -2236,7 +2231,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Verander
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Kliek op verkieste kleur skema
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Vermeer groote van lening
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Terugbetaal deel van lening
-STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Bestuurder)
+STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Bestuurder)
 STR_7038_INAUGURATED                                            :{GOLD}Bevestig: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Voertuie
 STR_TRAINS                                                      :{WHITE}{COMMA} trein{P "" e}
@@ -2265,7 +2260,7 @@ STR_7054                                                        :{WHITE}{STRING}
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Vervoer maatsappy in moelikheid!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} sal binnekort afverkoop of bankrospeler verklaar word tensy prestasie verbeter!
-STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Bestuurder)
+STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Bestuurder)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Vervoer maatskappy samesmelting!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} is na {STRING} vir  {CURRENCY} verkoop!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Ons is opsoek na 'n vervoer maatskappy wat ons se maatskappy sal oorvat.{}{}Wil jy {COMPANY} koop vir {CURRENCY}?
@@ -3339,7 +3334,6 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliek om
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
-STR_PLAYER_NAME                                                 :{PLAYERNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

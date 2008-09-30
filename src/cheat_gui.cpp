@@ -107,7 +107,7 @@ struct CheatEntry {
 
 static const CheatEntry _cheats_ui[] = {
 	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                    &_cheats.money.been_used,            &ClickMoneyCheat         },
-	{SLE_UINT8, STR_CHEAT_CHANGE_PLAYER,   &_local_company,                         &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
+	{SLE_UINT8, STR_CHEAT_CHANGE_COMPANY,  &_local_company,                         &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
 	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,          &_cheats.magic_bulldozer.been_used,  NULL                     },
 	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, NULL                     },
 	{SLE_BOOL,  STR_CHEAT_BUILD_IN_PAUSE,  &_cheats.build_in_pause.value,           &_cheats.build_in_pause.been_used,   NULL                     },
@@ -164,9 +164,9 @@ struct CheatWindow : Window {
 						case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
 
 						/* Draw colored flag for change company cheat */
-						case STR_CHEAT_CHANGE_PLAYER:
+						case STR_CHEAT_CHANGE_COMPANY:
 							SetDParam(0, val);
-							GetString(buf, STR_CHEAT_CHANGE_PLAYER, lastof(buf));
+							GetString(buf, STR_CHEAT_CHANGE_COMPANY, lastof(buf));
 							DrawCompanyIcon(_current_company, 60 + GetStringBoundingBox(buf).width, y + 2);
 							break;
 
