@@ -382,10 +382,10 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			case 0x41:
 			case 0x46:
 			case 0x47:
-			case 0x49: return 0x2110000;       // Platforms, tracks & position
-			case 0x42: return 0;               // Rail type (XXX Get current type from GUI?)
-			case 0x43: return _current_player; // Station owner
-			case 0x44: return 2;               // PBS status
+			case 0x49: return 0x2110000;        // Platforms, tracks & position
+			case 0x42: return 0;                // Rail type (XXX Get current type from GUI?)
+			case 0x43: return _current_company; // Station owner
+			case 0x44: return 2;                // PBS status
 			case 0xFA: return Clamp(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0, 65535); // Build date, clamped to a 16 bit value
 		}
 
@@ -782,7 +782,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 	SpriteID relocation;
 	SpriteID image;
-	SpriteID palette = PLAYER_SPRITE_COLOR(_local_player);
+	SpriteID palette = COMPANY_SPRITE_COLOR(_local_company);
 	uint tile = 2;
 
 	statspec = GetCustomStationSpec(sclass, station);

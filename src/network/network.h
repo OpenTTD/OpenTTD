@@ -34,7 +34,7 @@ static inline void NetworkDrawChatMessage() {}
 
 #endif /* ENABLE_NETWORK */
 
-/** As which player do we play? */
-extern PlayerID _network_playas;
+/** As which company do we play? */
+extern CompanyID _network_playas;
 
 #endif /* NETWORK_H */

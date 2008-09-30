@@ -65,9 +65,9 @@ uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine);
 
 void ShowVehicleListWindow(const Vehicle *v);
 void ShowVehicleListWindow(const Waypoint *wp);
-void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type);
-void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID station);
-void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex depot_tile);
+void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type);
+void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station);
+void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile);
 
 
 /* ChangeVehicleViewWindow() moves all windows for one vehicle to another vehicle.
@@ -82,7 +82,7 @@ static inline uint GetVehicleListHeight(VehicleType type)
 /** Get WindowClass for vehicle list of given vehicle type
  * @param vt vehicle type to check
  * @return corresponding window class
- * @note works only for player buildable vehicle types
+ * @note works only for company buildable vehicle types
  */
 static inline WindowClass GetWindowClassForVehicleType(VehicleType vt)
 {

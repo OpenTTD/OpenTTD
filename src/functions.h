@@ -15,10 +15,10 @@ void DrawClearLandTile(const TileInfo *ti, byte set);
 void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
-/* players.cpp */
-bool CheckPlayerHasMoney(CommandCost cost);
-void SubtractMoneyFromPlayer(CommandCost cost);
-void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cost);
+/* company_cmd.cpp */
+bool CheckCompanyHasMoney(CommandCost cost);
+void SubtractMoneyFromCompany(CommandCost cost);
+void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cost);
 bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
 

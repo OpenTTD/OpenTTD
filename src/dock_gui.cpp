@@ -278,7 +278,7 @@ static const WindowDesc _build_docks_toolbar_desc = {
 
 void ShowBuildDocksToolbar()
 {
-	if (!IsValidPlayerID(_current_player)) return;
+	if (!IsValidCompanyID(_current_company)) return;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
 	AllocateWindowDescFront<BuildDocksToolbarWindow>(&_build_docks_toolbar_desc, TRANSPORT_WATER);

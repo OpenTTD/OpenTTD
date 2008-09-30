@@ -160,13 +160,13 @@ extern void WaypointsDailyLoop();
 extern void EnginesDailyLoop();
 extern void DisasterDailyLoop();
 extern void IndustryDailyLoop();
-extern void PlayersMonthlyLoop();
+extern void CompaniesMonthlyLoop();
 extern void EnginesMonthlyLoop();
 extern void TownsMonthlyLoop();
 extern void IndustryMonthlyLoop();
 extern void StationMonthlyLoop();
 
-extern void PlayersYearlyLoop();
+extern void CompaniesYearlyLoop();
 extern void TrainsYearlyLoop();
 extern void RoadVehiclesYearlyLoop();
 extern void AircraftYearlyLoop();
@@ -255,7 +255,7 @@ void IncreaseDate()
 		}
 
 		InvalidateWindowClasses(WC_CHEATS);
-		PlayersMonthlyLoop();
+		CompaniesMonthlyLoop();
 		EnginesMonthlyLoop();
 		TownsMonthlyLoop();
 		IndustryMonthlyLoop();
@@ -270,7 +270,7 @@ void IncreaseDate()
 	_cur_year = ymd.year;
 
 	/* yes, call various yearly loops */
-	PlayersYearlyLoop();
+	CompaniesYearlyLoop();
 	TrainsYearlyLoop();
 	RoadVehiclesYearlyLoop();
 	AircraftYearlyLoop();

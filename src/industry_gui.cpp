@@ -359,7 +359,7 @@ public:
 				return;
 			}
 
-			_current_player = OWNER_NONE;
+			_current_company = OWNER_NONE;
 			_generating_world = true;
 			_ignore_restrictions = true;
 			success = DoCommandP(tile, (InteractiveRandomRange(indsp->num_table) << 16) | this->selected_type, seed, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY));
@@ -420,7 +420,7 @@ public:
 
 void ShowBuildIndustryWindow()
 {
-	if (_game_mode != GM_EDITOR && !IsValidPlayerID(_current_player)) return;
+	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_current_company)) return;
 	if (BringWindowToFrontById(WC_BUILD_INDUSTRY, 0)) return;
 	new BuildIndustryWindow();
 }

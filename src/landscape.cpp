@@ -473,9 +473,9 @@ TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode
 	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode, sub_mode, side);
 }
 
-void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player)
+void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner)
 {
-	_tile_type_procs[GetTileType(tile)]->change_tile_owner_proc(tile, old_player, new_player);
+	_tile_type_procs[GetTileType(tile)]->change_tile_owner_proc(tile, old_owner, new_owner);
 }
 
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac)
@@ -895,7 +895,7 @@ void OnTick_Trees();
 void OnTick_Station();
 void OnTick_Industry();
 
-void OnTick_Players();
+void OnTick_Companies();
 void OnTick_Train();
 
 void CallLandscapeTick()
@@ -905,7 +905,7 @@ void CallLandscapeTick()
 	OnTick_Station();
 	OnTick_Industry();
 
-	OnTick_Players();
+	OnTick_Companies();
 	OnTick_Train();
 }
 

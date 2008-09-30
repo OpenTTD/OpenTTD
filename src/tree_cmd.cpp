@@ -390,7 +390,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						}
 					}
 
-					if (_game_mode != GM_EDITOR && IsValidPlayerID(_current_player)) {
+					if (_game_mode != GM_EDITOR && IsValidCompanyID(_current_company)) {
 						Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 						if (t != NULL) ChangeTownRating(t, RATING_TREE_UP_STEP, RATING_TREE_MAXIMUM);
 					}
@@ -533,7 +533,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 {
 	uint num;
 
-	if (IsValidPlayerID(_current_player)) {
+	if (IsValidCompanyID(_current_company)) {
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 		if (t != NULL) ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM);
 	}
@@ -754,7 +754,7 @@ static TrackStatus GetTileTrackStatus_Trees(TileIndex tile, TransportType mode, 
 	return 0;
 }
 
-static void ChangeTileOwner_Trees(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Trees(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	/* not used */
 }

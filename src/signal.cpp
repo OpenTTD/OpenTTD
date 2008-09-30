@@ -473,13 +473,13 @@ static inline void ResetSets()
 /**
  * Updates blocks in _globset buffer
  *
- * @param owner player whose signals we are updating
+ * @param owner company whose signals we are updating
  * @return state of the first block from _globset
- * @pre IsValidPlayerID(owner)
+ * @pre IsValidCompanyID(owner)
  */
 static SigSegState UpdateSignalsInBuffer(Owner owner)
 {
-	assert(IsValidPlayerID(owner));
+	assert(IsValidCompanyID(owner));
 
 	bool first = true;  // first block?
 	SigSegState state = SIGSEG_FREE; // value to return
@@ -594,7 +594,7 @@ void AddTrackToSignalBuffer(TileIndex tile, Track track, Owner owner)
 		DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE
 	};
 
-	/* do not allow signal updates for two players in one run */
+	/* do not allow signal updates for two companies in one run */
 	assert(_globset.IsEmpty() || owner == _last_owner);
 
 	_last_owner = owner;
@@ -619,7 +619,7 @@ void AddTrackToSignalBuffer(TileIndex tile, Track track, Owner owner)
  */
 void AddSideToSignalBuffer(TileIndex tile, DiagDirection side, Owner owner)
 {
-	/* do not allow signal updates for two players in one run */
+	/* do not allow signal updates for two companies in one run */
 	assert(_globset.IsEmpty() || owner == _last_owner);
 
 	_last_owner = owner;

@@ -151,8 +151,8 @@ bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, Owner owner, RoadType
 	/* Water can always flood and towns can always remove "normal" road pieces.
 	 * Towns are not be allowed to remove non "normal" road pieces, like tram
 	 * tracks as that would result in trams that cannot turn. */
-	if (_current_player == OWNER_WATER ||
-			(rt == ROADTYPE_ROAD && !IsValidPlayerID(_current_player))) return true;
+	if (_current_company == OWNER_WATER ||
+			(rt == ROADTYPE_ROAD && !IsValidCompanyID(_current_company))) return true;
 
 	/* Only do the special processing if the road is owned
 	 * by a town */
@@ -272,7 +272,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			const RoadBits other = GetOtherRoadBits(tile, rt);
 			const Foundation f = GetRoadFoundation(tileh, present);
 
-			if (HasRoadWorks(tile) && _current_player != OWNER_WATER) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+			if (HasRoadWorks(tile) && _current_company != OWNER_WATER) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
 			/* Autocomplete to a straight road
 			 * @li on steep slopes
@@ -300,7 +300,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			if (flags & DC_EXEC) {
 				if (HasRoadWorks(tile)) {
 					/* flooding tile with road works, don't forget to remove the effect vehicle too */
-					assert(_current_player == OWNER_WATER);
+					assert(_current_company == OWNER_WATER);
 					Vehicle *v;
 					FOR_ALL_VEHICLES(v) {
 						if (v->type == VEH_EFFECT && TileVirtXY(v->x_pos, v->y_pos) == tile) {
@@ -474,8 +474,8 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	RoadBits other_bits = ROAD_NONE;
 
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
-	 * if a non-player is building the road */
-	if ((IsValidPlayerID(_current_player) && p2 != 0) || (_current_player == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
+	 * if a non-company is building the road */
+	if ((IsValidCompanyID(_current_company) && p2 != 0) || (_current_company == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
 
 	RoadBits pieces = Extract<RoadBits, 0>(p1);
 
@@ -506,7 +506,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					}
 					if ((existing & pieces) == pieces) {
 						/* We only want to set the (dis)allowed road directions */
-						if (toggle_drd != DRD_NONE && rt != ROADTYPE_TRAM && IsRoadOwner(tile, ROADTYPE_ROAD, _current_player)) {
+						if (toggle_drd != DRD_NONE && rt != ROADTYPE_TRAM && IsRoadOwner(tile, ROADTYPE_ROAD, _current_company)) {
 							if (crossing) return_cmd_error(STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION);
 
 							if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
@@ -569,7 +569,7 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
 				/* Always add road to the roadtypes (can't draw without it) */
 				bool reserved = HasBit(GetTrackReservation(tile), AxisToTrack(OtherAxis(roaddir)));
-				MakeRoadCrossing(tile, _current_player, _current_player, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
+				MakeRoadCrossing(tile, _current_company, _current_company, _current_company, GetTileOwner(tile), roaddir, GetRailType(tile), RoadTypeToRoadTypes(rt) | ROADTYPES_ROAD, p2);
 				SetCrossingReservation(tile, reserved);
 				UpdateLevelCrossing(tile, false);
 				MarkTileDirtyByTile(tile);
@@ -650,8 +650,8 @@ do_clear:;
 				RoadTileType rtt = GetRoadTileType(tile);
 				if (existing == ROAD_NONE || rtt == ROAD_TILE_CROSSING) {
 					SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
-					SetRoadOwner(tile, rt, _current_player);
-					if (_current_player == OWNER_TOWN && rt == ROADTYPE_ROAD) SetTownIndex(tile, p2);
+					SetRoadOwner(tile, rt, _current_company);
+					if (_current_company == OWNER_TOWN && rt == ROADTYPE_ROAD) SetTownIndex(tile, p2);
 				}
 				if (rtt != ROAD_TILE_CROSSING) SetRoadBits(tile, existing | pieces, rt);
 			} break;
@@ -679,7 +679,7 @@ do_clear:;
 				break;
 
 			default:
-				MakeRoadNormal(tile, pieces, RoadTypeToRoadTypes(rt), p2, _current_player, _current_player, _current_player);
+				MakeRoadNormal(tile, pieces, RoadTypeToRoadTypes(rt), p2, _current_company, _current_company, _current_company);
 				break;
 		}
 
@@ -883,7 +883,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		Depot *dep = new Depot(tile);
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeRoadDepot(tile, _current_player, dir, rt);
+		MakeRoadDepot(tile, _current_company, dir, rt);
 		MarkTileDirtyByTile(tile);
 	}
 	return cost.AddCost(_price.build_road_depot);
@@ -891,7 +891,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 static CommandCost RemoveRoadDepot(TileIndex tile, uint32 flags)
 {
-	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
+	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;
 
 	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
@@ -1203,7 +1203,7 @@ static void DrawTile_Road(TileInfo *ti)
 		case ROAD_TILE_DEPOT: {
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-			SpriteID palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
+			SpriteID palette = COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile));
 
 			const DrawTileSprites *dts;
 			if (HasTileRoadType(ti->tile, ROADTYPE_TRAM)) {
@@ -1243,7 +1243,7 @@ static void DrawTile_Road(TileInfo *ti)
 
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 {
-	SpriteID palette = PLAYER_SPRITE_COLOR(_local_player);
+	SpriteID palette = COMPANY_SPRITE_COLOR(_local_company);
 	const DrawTileSprites *dts = (rt == ROADTYPE_TRAM) ? &_tram_depot[dir] : &_road_depot[dir];
 
 	x += 33;
@@ -1559,14 +1559,14 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int 
 }
 
 
-static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Road(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	if (IsRoadDepot(tile)) {
-		if (GetTileOwner(tile) == old_player) {
-			if (new_player == PLAYER_SPECTATOR) {
+		if (GetTileOwner(tile) == old_owner) {
+			if (new_owner == INVALID_OWNER) {
 				DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
 			} else {
-				SetTileOwner(tile, new_player);
+				SetTileOwner(tile, new_owner);
 			}
 		}
 		return;
@@ -1574,17 +1574,17 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 	for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 		/* Update all roadtypes, no matter if they are present */
-		if (GetRoadOwner(tile, rt) == old_player) {
-			SetRoadOwner(tile, rt, new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player);
+		if (GetRoadOwner(tile, rt) == old_owner) {
+			SetRoadOwner(tile, rt, new_owner == INVALID_OWNER ? OWNER_NONE : new_owner);
 		}
 	}
 
 	if (IsLevelCrossing(tile)) {
-		if (GetTileOwner(tile) == old_player) {
-			if (new_player == PLAYER_SPECTATOR) {
+		if (GetTileOwner(tile) == old_owner) {
+			if (new_owner == INVALID_OWNER) {
 				DoCommand(tile, 0, GetCrossingRailTrack(tile), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
 			} else {
-				SetTileOwner(tile, new_player);
+				SetTileOwner(tile, new_owner);
 			}
 		}
 	}

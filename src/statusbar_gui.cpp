@@ -78,15 +78,15 @@ struct StatusBarWindow : Window {
 
 	virtual void OnPaint()
 	{
-		const Player *p = (_local_player == PLAYER_SPECTATOR) ? NULL : GetPlayer(_local_player);
+		const Company *c = (_local_company == COMPANY_SPECTATOR) ? NULL : GetCompany(_local_company);
 
 		this->DrawWidgets();
 		SetDParam(0, _date);
 		DrawStringCentered(70, 1, (_pause_game || _settings_client.gui.status_long_date) ? STR_00AF : STR_00AE, TC_FROMSTRING);
 
-		if (p != NULL) {
-			/* Draw player money */
-			SetDParam(0, p->player_money);
+		if (c != NULL) {
+			/* Draw company money */
+			SetDParam(0, c->money);
 			DrawStringCentered(this->widget[2].left + 70, 1, STR_0004, TC_FROMSTRING);
 		}
 
@@ -101,16 +101,16 @@ struct StatusBarWindow : Window {
 			/* Draw the scrolling news text */
 			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[1].right - this->widget[1].left - 2)) {
 				this->ticker_scroll = -1280;
-				if (p != NULL) {
+				if (c != NULL) {
 					/* This is the default text */
-					SetDParam(0, p->index);
+					SetDParam(0, c->index);
 					DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
 				}
 			}
 		} else {
-			if (p != NULL) {
+			if (c != NULL) {
 				/* This is the default text */
-				SetDParam(0, p->index);
+				SetDParam(0, c->index);
 				DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
 			}
 		}
@@ -133,7 +133,7 @@ struct StatusBarWindow : Window {
 	{
 		switch (widget) {
 			case 1: ShowLastNewsMessage(); break;
-			case 2: if (_local_player != PLAYER_SPECTATOR) ShowPlayerFinances(_local_player); break;
+			case 2: if (_local_company != COMPANY_SPECTATOR) ShowCompanyFinances(_local_company); break;
 			default: ResetObjectToPlace();
 		}
 	}

@@ -48,7 +48,7 @@ static inline void UpdateNumEngineGroup(EngineID i, GroupID old_g, GroupID new_g
 DEFINE_OLD_POOL_GENERIC(Group, Group)
 
 
-Group::Group(PlayerID owner)
+Group::Group(Owner owner)
 {
 	this->owner = owner;
 
@@ -58,13 +58,13 @@ Group::Group(PlayerID owner)
 Group::~Group()
 {
 	free(this->name);
-	this->owner = INVALID_PLAYER;
+	this->owner = INVALID_OWNER;
 	free(this->num_engines);
 }
 
 bool Group::IsValid() const
 {
-	return this->owner != INVALID_PLAYER;
+	return this->owner != INVALID_OWNER;
 }
 
 void InitializeGroup(void)
@@ -83,16 +83,16 @@ void InitializeGroup(void)
 CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleType vt = (VehicleType)p1;
-	if (!IsPlayerBuildableVehicleType(vt)) return CMD_ERROR;
+	if (!IsCompanyBuildableVehicleType(vt)) return CMD_ERROR;
 
 	if (!Group::CanAllocateItem()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Group *g = new Group(_current_player);
+		Group *g = new Group(_current_company);
 		g->replace_protection = false;
 		g->vehicle_type = vt;
 
-		InvalidateWindowData(GetWindowClassForVehicleType(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
+		InvalidateWindowData(GetWindowClassForVehicleType(vt), (vt << 11) | VLW_GROUP_LIST | _current_company);
 	}
 
 	return CommandCost();
@@ -111,7 +111,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
 	Group *g = GetGroup(p1);
-	if (g->owner != _current_player) return CMD_ERROR;
+	if (g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Vehicle *v;
@@ -125,13 +125,13 @@ CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (_backup_orders_data.group == g->index) _backup_orders_data.group = DEFAULT_GROUP;
 
 		/* If we set an autoreplace for the group we delete, remove it. */
-		if (_current_player < MAX_PLAYERS) {
-			Player *p;
+		if (_current_company < MAX_COMPANIES) {
+			Company *c;
 			EngineRenew *er;
 
-			p = GetPlayer(_current_player);
+			c = GetCompany(_current_company);
 			FOR_ALL_ENGINE_RENEWS(er) {
-				if (er->group_id == g->index) RemoveEngineReplacementForPlayer(p, er->from, g->index, flags);
+				if (er->group_id == g->index) RemoveEngineReplacementForCompany(c, er->from, g->index, flags);
 			}
 		}
 
@@ -141,7 +141,7 @@ CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteWindowById(WC_REPLACE_VEHICLE, g->vehicle_type);
 		delete g;
 
-		InvalidateWindowData(GetWindowClassForVehicleType(vt), (vt << 11) | VLW_GROUP_LIST | _current_player);
+		InvalidateWindowData(GetWindowClassForVehicleType(vt), (vt << 11) | VLW_GROUP_LIST | _current_company);
 	}
 
 	return CommandCost();
@@ -173,7 +173,7 @@ CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
 	Group *g = GetGroup(p1);
-	if (g->owner != _current_player) return CMD_ERROR;
+	if (g->owner != _current_company) return CMD_ERROR;
 
 	bool reset = StrEmpty(_cmd_text);
 
@@ -188,7 +188,7 @@ CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		/* Assign the new one */
 		g->name = reset ? NULL : strdup(_cmd_text);
 
-		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
+		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_company);
 	}
 
 	return CommandCost();
@@ -213,10 +213,10 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (IsValidGroupID(new_g)) {
 		Group *g = GetGroup(new_g);
-		if (g->owner != _current_player || g->vehicle_type != v->type) return CMD_ERROR;
+		if (g->owner != _current_company || g->vehicle_type != v->type) return CMD_ERROR;
 	}
 
-	if (v->owner != _current_player || !v->IsPrimaryVehicle()) return CMD_ERROR;
+	if (v->owner != _current_company || !v->IsPrimaryVehicle()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		DecreaseGroupNumVehicle(v->group_id);
@@ -237,7 +237,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 		/* Update the Replace Vehicle Windows */
 		InvalidateWindow(WC_REPLACE_VEHICLE, v->type);
-		InvalidateWindowData(GetWindowClassForVehicleType(v->type), (v->type << 11) | VLW_GROUP_LIST | _current_player);
+		InvalidateWindowData(GetWindowClassForVehicleType(v->type), (v->type << 11) | VLW_GROUP_LIST | _current_company);
 	}
 
 	return CommandCost();
@@ -253,7 +253,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleType type = (VehicleType)p2;
-	if (!IsValidGroupID(p1) || !IsPlayerBuildableVehicleType(type)) return CMD_ERROR;
+	if (!IsValidGroupID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		Vehicle *v;
@@ -273,7 +273,7 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, ui
 			}
 		}
 
-		InvalidateWindowData(GetWindowClassForVehicleType(type), (type << 11) | VLW_GROUP_LIST | _current_player);
+		InvalidateWindowData(GetWindowClassForVehicleType(type), (type << 11) | VLW_GROUP_LIST | _current_company);
 	}
 
 	return CommandCost();
@@ -290,10 +290,10 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, ui
 CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	VehicleType type = (VehicleType)p2;
-	if (!IsValidGroupID(p1) || !IsPlayerBuildableVehicleType(type)) return CMD_ERROR;
+	if (!IsValidGroupID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
 
 	Group *g = GetGroup(p1);
-	if (g->owner != _current_player) return CMD_ERROR;
+	if (g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		GroupID old_g = p1;
@@ -309,7 +309,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, u
 			}
 		}
 
-		InvalidateWindowData(GetWindowClassForVehicleType(type), (type << 11) | VLW_GROUP_LIST | _current_player);
+		InvalidateWindowData(GetWindowClassForVehicleType(type), (type << 11) | VLW_GROUP_LIST | _current_company);
 	}
 
 	return CommandCost();
@@ -329,12 +329,12 @@ CommandCost CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
 	Group *g = GetGroup(p1);
-	if (g->owner != _current_player) return CMD_ERROR;
+	if (g->owner != _current_company) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		g->replace_protection = HasBit(p2, 0);
 
-		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_player);
+		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_company);
 	}
 
 	return CommandCost();
@@ -398,26 +398,26 @@ void UpdateTrainGroupID(Vehicle *v)
 	InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
 }
 
-uint GetGroupNumEngines(PlayerID p, GroupID id_g, EngineID id_e)
+uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e)
 {
 	if (IsValidGroupID(id_g)) return GetGroup(id_g)->num_engines[id_e];
 
-	uint num = GetPlayer(p)->num_engines[id_e];
+	uint num = GetCompany(company)->num_engines[id_e];
 	if (!IsDefaultGroupID(id_g)) return num;
 
 	const Group *g;
 	FOR_ALL_GROUPS(g) {
-		if (g->owner == p) num -= g->num_engines[id_e];
+		if (g->owner == company) num -= g->num_engines[id_e];
 	}
 	return num;
 }
 
-void RemoveAllGroupsForPlayer(const PlayerID p)
+void RemoveAllGroupsForCompany(const CompanyID company)
 {
 	Group *g;
 
 	FOR_ALL_GROUPS(g) {
-		if (p == g->owner) delete g;
+		if (company == g->owner) delete g;
 	}
 }
 

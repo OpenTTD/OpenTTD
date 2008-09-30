@@ -59,7 +59,7 @@ static void ClickTile_Dummy(TileIndex tile)
 	/* not used */
 }
 
-static void ChangeTileOwner_Dummy(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Dummy(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	/* not used */
 }

@@ -77,17 +77,17 @@ static const char *GenerateCompanyPasswordHash(const char *password)
 }
 
 /**
- * Hash the current company password; used when the server 'player' sets his/her password.
+ * Hash the current company password; used when the server 'company' sets his/her password.
  */
 void HashCurrentCompanyPassword()
 {
-	if (StrEmpty(_network_player_info[_local_player].password)) return;
+	if (StrEmpty(_network_company_info[_local_company].password)) return;
 
 	_password_game_seed = _settings_game.game_creation.generation_seed;
 	ttd_strlcpy(_password_server_unique_id, _settings_client.network.network_id, sizeof(_password_server_unique_id));
 
-	const char *new_pw = GenerateCompanyPasswordHash(_network_player_info[_local_player].password);
-	ttd_strlcpy(_network_player_info[_local_player].password, new_pw, sizeof(_network_player_info[_local_player].password));
+	const char *new_pw = GenerateCompanyPasswordHash(_network_company_info[_local_company].password);
+	ttd_strlcpy(_network_company_info[_local_company].password, new_pw, sizeof(_network_company_info[_local_company].password));
 }
 
 
@@ -119,10 +119,10 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	// Function: Try to join the server
 	// Data:
 	//    String: OpenTTD Revision (norev000 if no revision)
-	//    String: Player Name (max NETWORK_NAME_LENGTH)
-	//    uint8:  Play as Player id (1..MAX_PLAYERS)
+	//    String: Client Name (max NETWORK_NAME_LENGTH)
+	//    uint8:  Play as Company id (1..MAX_COMPANIES)
 	//    uint8:  Language ID
-	//    String: Unique id to find the player back in server-listing
+	//    String: Unique id to find the client back in server-listing
 	//
 
 	Packet *p;
@@ -131,7 +131,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 
 	p = NetworkSend_Init(PACKET_CLIENT_JOIN);
 	p->Send_string(_openttd_revision);
-	p->Send_string(_settings_client.network.player_name); // Player name
+	p->Send_string(_settings_client.network.client_name); // Client name
 	p->Send_uint8 (_network_playas);      // PlayAs
 	p->Send_uint8 (NETLANG_ANY);          // Language
 	p->Send_string(_settings_client.network.network_id);
@@ -213,7 +213,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 	// Packet: CLIENT_COMMAND
 	// Function: Send a DoCommand to the Server
 	// Data:
-	//    uint8:  PlayerID (0..MAX_PLAYERS-1)
+	//    uint8:  CompanyID (0..MAX_COMPANIES-1)
 	//    uint32: CommandID (see command.h)
 	//    uint32: P1 (free variables used in DoCommand)
 	//    uint32: P2
@@ -224,7 +224,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_COMMAND);
 
-	p->Send_uint8 (cp->player);
+	p->Send_uint8 (cp->company);
 	p->Send_uint32(cp->cmd);
 	p->Send_uint32(cp->p1);
 	p->Send_uint32(cp->p2);
@@ -244,7 +244,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	// Data:
 	//    uint8:  ActionID (see network_data.h, NetworkAction)
 	//    uint8:  Destination Type (see network_data.h, DestType);
-	//    uint16: Destination Player
+	//    uint16: Destination Company/Client
 	//    String: Message (max NETWORK_CHAT_LENGTH)
 	//
 
@@ -290,7 +290,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
 {
 	//
 	// Packet: PACKET_CLIENT_SET_NAME
-	// Function: Gives the player a new name
+	// Function: Gives the client a new name
 	// Data:
 	//    String: Name
 	//
@@ -359,7 +359,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 	if (!MY_CLIENT->has_quit && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
 		byte total;
-		PlayerID current;
+		CompanyID current;
 
 		total = p->Recv_uint8();
 
@@ -367,21 +367,21 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		if (total == 0) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		current = (Owner)p->Recv_uint8();
-		if (current >= MAX_PLAYERS) return NETWORK_RECV_STATUS_CLOSE_QUERY;
+		if (current >= MAX_COMPANIES) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		p->Recv_string(_network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
-		_network_player_info[current].inaugurated_year = p->Recv_uint32();
-		_network_player_info[current].company_value    = p->Recv_uint64();
-		_network_player_info[current].money            = p->Recv_uint64();
-		_network_player_info[current].income           = p->Recv_uint64();
-		_network_player_info[current].performance      = p->Recv_uint16();
-		_network_player_info[current].use_password     = p->Recv_bool();
+		p->Recv_string(_network_company_info[current].company_name, sizeof(_network_company_info[current].company_name));
+		_network_company_info[current].inaugurated_year = p->Recv_uint32();
+		_network_company_info[current].company_value    = p->Recv_uint64();
+		_network_company_info[current].money            = p->Recv_uint64();
+		_network_company_info[current].income           = p->Recv_uint64();
+		_network_company_info[current].performance      = p->Recv_uint16();
+		_network_company_info[current].use_password     = p->Recv_bool();
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
-			_network_player_info[current].num_vehicle[i] = p->Recv_uint16();
+			_network_company_info[current].num_vehicle[i] = p->Recv_uint16();
 		for (i = 0; i < NETWORK_STATION_TYPES; i++)
-			_network_player_info[current].num_station[i] = p->Recv_uint16();
+			_network_company_info[current].num_station[i] = p->Recv_uint16();
 
-		p->Recv_string(_network_player_info[current].players, sizeof(_network_player_info[current].players));
+		p->Recv_string(_network_company_info[current].clients, sizeof(_network_company_info[current].clients));
 
 		InvalidateWindow(WC_NETWORK_WINDOW, 0);
 
@@ -398,7 +398,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 {
 	NetworkClientInfo *ci;
 	uint16 index = p->Recv_uint16();
-	PlayerID playas = (Owner)p->Recv_uint8();
+	CompanyID playas = (CompanyID)p->Recv_uint8();
 	char name[NETWORK_NAME_LENGTH];
 
 	p->Recv_string(name, sizeof(name));
@@ -414,7 +414,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 			// Client name changed, display the change
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", name);
 		} else if (playas != ci->client_playas) {
-			// The player changed from client-player..
+			// The client changed from client-player..
 			// Do not display that for now
 		}
 
@@ -451,7 +451,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 		/* We made an error in the protocol, and our connection is closed.... */
 		case NETWORK_ERROR_NOT_AUTHORIZED:
 		case NETWORK_ERROR_NOT_EXPECTED:
-		case NETWORK_ERROR_PLAYER_MISMATCH:
+		case NETWORK_ERROR_COMPANY_MISMATCH:
 			_switch_mode_errorstr = STR_NETWORK_ERR_SERVER_ERROR;
 			break;
 		case NETWORK_ERROR_FULL:
@@ -622,21 +622,21 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		// Say we received the map and loaded it correctly!
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
 
-		/* New company/spectator (invalid player) or company we want to join is not active
-		 * Switch local player to spectator and await the server's judgement */
-		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayerID(_network_playas)) {
-			SetLocalPlayer(PLAYER_SPECTATOR);
+		/* New company/spectator (invalid company) or company we want to join is not active
+		 * Switch local company to spectator and await the server's judgement */
+		if (_network_playas == COMPANY_NEW_COMPANY || !IsValidCompanyID(_network_playas)) {
+			SetLocalCompany(COMPANY_SPECTATOR);
 
-			if (_network_playas != PLAYER_SPECTATOR) {
-				/* We have arrived and ready to start playing; send a command to make a new player;
+			if (_network_playas != COMPANY_SPECTATOR) {
+				/* We have arrived and ready to start playing; send a command to make a new company;
 				 * the server will give us a client-id and let us in */
 				_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
 				ShowJoinStatusWindow();
-				NetworkSend_Command(0, 0, 0, CMD_PLAYER_CTRL, NULL);
+				NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL);
 			}
 		} else {
 			// take control over an existing company
-			SetLocalPlayer(_network_playas);
+			SetLocalCompany(_network_playas);
 		}
 	}
 
@@ -685,7 +685,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 {
 	CommandPacket *cp = MallocT<CommandPacket>(1);
-	cp->player   = (PlayerID)p->Recv_uint8();
+	cp->company  = (CompanyID)p->Recv_uint8();
 	cp->cmd      = p->Recv_uint32();
 	cp->p1       = p->Recv_uint32();
 	cp->p2       = p->Recv_uint32();
@@ -733,12 +733,12 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 				break;
 
-			/* For speaking to company or giving money, we need the player-name */
+			/* For speaking to company or giving money, we need the company-name */
 			case NETWORK_ACTION_GIVE_MONEY:
-				if (!IsValidPlayerID(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
+				if (!IsValidCompanyID(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
 				/* fallthrough */
 			case NETWORK_ACTION_CHAT_COMPANY: {
-				StringID str = IsValidPlayerID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
+				StringID str = IsValidCompanyID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 				SetDParam(0, ci_to->client_playas);
 
 				GetString(name, str, lastof(name));
@@ -754,7 +754,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	}
 
 	if (ci != NULL)
-		NetworkTextMessage(action, (ConsoleColour)GetDrawStringPlayerColor(ci->client_playas), self_send, name, "%s", msg);
+		NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), self_send, name, "%s", msg);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
@@ -831,10 +831,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SHUTDOWN)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEWGAME)
 {
 	// To trottle the reconnects a bit, every clients waits
-	//  his _local_player value before reconnecting
-	// PLAYER_SPECTATOR is currently 255, so to avoid long wait periods
+	//  his _local_company value before reconnecting
+	// COMPANY_SPECTATOR is currently 255, so to avoid long wait periods
 	//  set the max to 10.
-	_network_reconnect = min(_local_player + 1, 10);
+	_network_reconnect = min(_local_company + 1, 10);
 	_switch_mode_errorstr = STR_NETWORK_SERVER_REBOOT;
 
 	return NETWORK_RECV_STATUS_SERVER_ERROR;
@@ -938,20 +938,20 @@ void NetworkClientSendRcon(const char *password, const char *command)
 	SEND_COMMAND(PACKET_CLIENT_RCON)(password, command);
 }
 
-void NetworkUpdatePlayerName()
+void NetworkUpdateClientName()
 {
 	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 
 	if (ci == NULL) return;
 
 	/* Don't change the name if it is the same as the old name */
-	if (strcmp(ci->client_name, _settings_client.network.player_name) != 0) {
+	if (strcmp(ci->client_name, _settings_client.network.client_name) != 0) {
 		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_settings_client.network.player_name);
+			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_settings_client.network.client_name);
 		} else {
-			if (NetworkFindName(_settings_client.network.player_name)) {
-				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.player_name);
-				ttd_strlcpy(ci->client_name, _settings_client.network.player_name, sizeof(ci->client_name));
+			if (NetworkFindName(_settings_client.network.client_name)) {
+				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.client_name);
+				ttd_strlcpy(ci->client_name, _settings_client.network.client_name, sizeof(ci->client_name));
 				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
 			}
 		}
@@ -965,7 +965,7 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
 
 void NetworkClientSetPassword()
 {
-	SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_player_info[_local_player].password);
+	SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_company_info[_local_company].password);
 }
 
 #endif /* ENABLE_NETWORK */

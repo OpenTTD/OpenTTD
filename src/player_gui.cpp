@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file player_gui.cpp Player related GUIs. */
+/** @file company_gui.cpp Company related GUIs. */
 
 #include "stdafx.h"
 #include "openttd.h"
@@ -37,10 +37,10 @@ enum {
 	FIRST_GUI_CALL = INT_MAX,  ///< default value to specify thuis is the first call of the resizable gui
 };
 
-static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
-static void DoSelectPlayerFace(Window *parent, bool show_big, int top =  FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
+static void DoShowCompanyFinances(CompanyID company, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
+static void DoSelectCompanyManagerFace(Window *parent, bool show_big, int top =  FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 
-static void DrawPlayerEconomyStats(const Player *p, bool small)
+static void DrawCompanyEconomyStats(const Company *c, bool small)
 {
 	int x, y, i, j, year;
 	const Money (*tbl)[EXPENSES_END];
@@ -58,9 +58,9 @@ static void DrawPlayerEconomyStats(const Player *p, bool small)
 		year = _cur_year - 2;
 		j = 3;
 		x = 215;
-		tbl = p->yearly_expenses + 2;
+		tbl = c->yearly_expenses + 2;
 		do {
-			if (year >= p->inaugurated_year) {
+			if (year >= c->inaugurated_year) {
 				SetDParam(0, year);
 				DrawStringRightAlignedUnderline(x, 15, STR_7010, TC_FROMSTRING);
 				sum = 0;
@@ -99,30 +99,30 @@ static void DrawPlayerEconomyStats(const Player *p, bool small)
 	}
 
 	DrawString(2, y, STR_7026_BANK_BALANCE, TC_FROMSTRING);
-	SetDParam(0, p->player_money);
+	SetDParam(0, c->money);
 	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
 
 	y += 10;
 
 	DrawString(2, y, STR_7027_LOAN, TC_FROMSTRING);
-	SetDParam(0, p->current_loan);
+	SetDParam(0, c->current_loan);
 	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
 
 	y += 12;
 
 	GfxFillRect(182 - 75, y - 2, 182, y - 2, 215);
 
-	SetDParam(0, p->player_money - p->current_loan);
+	SetDParam(0, c->money - c->current_loan);
 	DrawStringRightAligned(182, y, STR_7028, TC_FROMSTRING);
 }
 
-enum PlayerFinancesWindowWidgets {
-	PFW_WIDGET_TOGGLE_SIZE   = 2,
-	PFW_WIDGET_INCREASE_LOAN = 6,
-	PFW_WIDGET_REPAY_LOAN    = 7,
+enum CompanyFinancesWindowWidgets {
+	CFW_WIDGET_TOGGLE_SIZE   = 2,
+	CFW_WIDGET_INCREASE_LOAN = 6,
+	CFW_WIDGET_REPAY_LOAN    = 7,
 };
 
-static const Widget _player_finances_widgets[] = {
+static const Widget _company_finances_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   380,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
@@ -134,7 +134,7 @@ static const Widget _player_finances_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const Widget _player_finances_small_widgets[] = {
+static const Widget _company_finances_small_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   253,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   254,   267,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
@@ -146,12 +146,12 @@ static const Widget _player_finances_small_widgets[] = {
 {   WIDGETS_END},
 };
 
-struct PlayerFinancesWindow : Window {
+struct CompanyFinancesWindow : Window {
 	bool small;
 
-	PlayerFinancesWindow(const WindowDesc *desc, PlayerID player, bool show_small,
+	CompanyFinancesWindow(const WindowDesc *desc, CompanyID company, bool show_small,
 					bool show_stickied, int top, int left) :
-			Window(desc, player),
+			Window(desc, company),
 			small(show_small)
 	{
 		this->caption_color = this->window_number;
@@ -169,98 +169,98 @@ struct PlayerFinancesWindow : Window {
 
 	virtual void OnPaint()
 	{
-		PlayerID player = (PlayerID)this->window_number;
-		const Player *p = GetPlayer(player);
+		CompanyID company = (CompanyID)this->window_number;
+		const Company *c = GetCompany(company);
 
-		/* Recheck the size of the window as it might need to be resized due to the local player changing */
-		int new_height = ((player != _local_player) ? 0 : 12) + ((this->small != 0) ? 48 : 74 + 10 * EXPENSES_END);
+		/* Recheck the size of the window as it might need to be resized due to the local company changing */
+		int new_height = ((company != _local_company) ? 0 : 12) + ((this->small != 0) ? 48 : 74 + 10 * EXPENSES_END);
 		if (this->height != new_height) {
 			/* Make window dirty before and after resizing */
 			this->SetDirty();
 			this->height = new_height;
 			this->SetDirty();
 
-			this->SetWidgetHiddenState(PFW_WIDGET_INCREASE_LOAN, player != _local_player);
-			this->SetWidgetHiddenState(PFW_WIDGET_REPAY_LOAN,    player != _local_player);
+			this->SetWidgetHiddenState(CFW_WIDGET_INCREASE_LOAN, company != _local_company);
+			this->SetWidgetHiddenState(CFW_WIDGET_REPAY_LOAN,    company != _local_company);
 		}
 
 		/* Borrow button only shows when there is any more money to loan */
-		this->SetWidgetDisabledState(PFW_WIDGET_INCREASE_LOAN, p->current_loan == _economy.max_loan);
+		this->SetWidgetDisabledState(CFW_WIDGET_INCREASE_LOAN, c->current_loan == _economy.max_loan);
 
 		/* Repay button only shows when there is any more money to repay */
-		this->SetWidgetDisabledState(PFW_WIDGET_REPAY_LOAN, player != _local_player || p->current_loan == 0);
+		this->SetWidgetDisabledState(CFW_WIDGET_REPAY_LOAN, company != _local_company || c->current_loan == 0);
 
-		SetDParam(0, p->index);
-		SetDParam(1, p->index);
+		SetDParam(0, c->index);
+		SetDParam(1, c->index);
 		SetDParam(2, LOAN_INTERVAL);
 		this->DrawWidgets();
 
-		DrawPlayerEconomyStats(p, this->small);
+		DrawCompanyEconomyStats(c, this->small);
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case PFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
+			case CFW_WIDGET_TOGGLE_SIZE: {/* toggle size */
 				bool new_mode = !this->small;
 				bool stickied = !!(this->flags4 & WF_STICKY);
 				int oldtop = this->top;   ///< current top position of the window before closing it
 				int oldleft = this->left; ///< current left position of the window before closing it
-				PlayerID player = (PlayerID)this->window_number;
+				CompanyID company = (CompanyID)this->window_number;
 
 				delete this;
 				/* Open up the (toggled size) Finance window at the same position as the previous */
-				DoShowPlayerFinances(player, new_mode, stickied, oldtop, oldleft);
+				DoShowCompanyFinances(company, new_mode, stickied, oldtop, oldleft);
 			}
 			break;
 
-			case PFW_WIDGET_INCREASE_LOAN: /* increase loan */
+			case CFW_WIDGET_INCREASE_LOAN: /* increase loan */
 				DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
 				break;
 
-			case PFW_WIDGET_REPAY_LOAN: /* repay loan */
+			case CFW_WIDGET_REPAY_LOAN: /* repay loan */
 				DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
 				break;
 		}
 	}
 };
 
-static const WindowDesc _player_finances_desc = {
+static const WindowDesc _company_finances_desc = {
 	WDP_AUTO, WDP_AUTO, 407, 86 + 10 * EXPENSES_END, 407, 86 + 10 * EXPENSES_END,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_player_finances_widgets,
+	_company_finances_widgets,
 };
 
-static const WindowDesc _player_finances_small_desc = {
+static const WindowDesc _company_finances_small_desc = {
 	WDP_AUTO, WDP_AUTO, 280, 60, 280, 60,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
-	_player_finances_small_widgets,
+	_company_finances_small_widgets,
 };
 
 /**
- * Open the small/large finance window of the player
+ * Open the small/large finance window of the company
  *
- * @param player         the player who's finances are requested to be seen
+ * @param company        the company who's finances are requested to be seen
  * @param show_small     show large or small version opf the window
  * @param show_stickied  previous "stickyness" of the window
  * @param top            previous top position of the window
  * @param left           previous left position of the window
  *
- * @pre is player a valid player
+ * @pre is company a valid company
  */
-static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied, int top, int left)
+static void DoShowCompanyFinances(CompanyID company, bool show_small, bool show_stickied, int top, int left)
 {
-	if (!IsValidPlayerID(player)) return;
+	if (!IsValidCompanyID(company)) return;
 
-	if (BringWindowToFrontById(WC_FINANCES, player)) return;
-	new PlayerFinancesWindow(show_small ? &_player_finances_small_desc : &_player_finances_desc, player, show_small, show_stickied, top, left);
+	if (BringWindowToFrontById(WC_FINANCES, company)) return;
+	new CompanyFinancesWindow(show_small ? &_company_finances_small_desc : &_company_finances_desc, company, show_small, show_stickied, top, left);
 }
 
-void ShowPlayerFinances(PlayerID player)
+void ShowCompanyFinances(CompanyID company)
 {
-	DoShowPlayerFinances(player, false, false);
+	DoShowCompanyFinances(company, false, false);
 }
 
 /* List of colours for the livery window */
@@ -321,24 +321,24 @@ public:
 	}
 };
 
-struct SelectPlayerLiveryWindow : public Window {
+struct SelectCompanyLiveryWindow : public Window {
 private:
 	uint32 sel;
 	LiveryClass livery_class;
 
-	enum PlayerLiveryWindowWidgets {
-		PLW_WIDGET_CLOSE,
-		PLW_WIDGET_CAPTION,
-		PLW_WIDGET_CLASS_GENERAL,
-		PLW_WIDGET_CLASS_RAIL,
-		PLW_WIDGET_CLASS_ROAD,
-		PLW_WIDGET_CLASS_SHIP,
-		PLW_WIDGET_CLASS_AIRCRAFT,
-		PLW_WIDGET_SPACER_CLASS,
-		PLW_WIDGET_SPACER_DROPDOWN,
-		PLW_WIDGET_PRI_COL_DROPDOWN,
-		PLW_WIDGET_SEC_COL_DROPDOWN,
-		PLW_WIDGET_MATRIX,
+	enum SelectCompanyLiveryWindowWidgets {
+		SCLW_WIDGET_CLOSE,
+		SCLW_WIDGET_CAPTION,
+		SCLW_WIDGET_CLASS_GENERAL,
+		SCLW_WIDGET_CLASS_RAIL,
+		SCLW_WIDGET_CLASS_ROAD,
+		SCLW_WIDGET_CLASS_SHIP,
+		SCLW_WIDGET_CLASS_AIRCRAFT,
+		SCLW_WIDGET_SPACER_CLASS,
+		SCLW_WIDGET_SPACER_DROPDOWN,
+		SCLW_WIDGET_PRI_COL_DROPDOWN,
+		SCLW_WIDGET_SEC_COL_DROPDOWN,
+		SCLW_WIDGET_MATRIX,
 	};
 
 	void ShowColourDropDownMenu(uint32 widget)
@@ -347,11 +347,11 @@ private:
 		const Livery *livery;
 		LiveryScheme scheme;
 
-		/* Disallow other player colours for the primary colour */
-		if (HasBit(this->sel, LS_DEFAULT) && widget == PLW_WIDGET_PRI_COL_DROPDOWN) {
-			const Player *p;
-			FOR_ALL_PLAYERS(p) {
-				if (p->index != _local_player) SetBit(used_colours, p->player_color);
+		/* Disallow other company colours for the primary colour */
+		if (HasBit(this->sel, LS_DEFAULT) && widget == SCLW_WIDGET_PRI_COL_DROPDOWN) {
+			const Company *c;
+			FOR_ALL_COMPANIES(c) {
+				if (c->index != _local_company) SetBit(used_colours, c->colour);
 			}
 		}
 
@@ -360,36 +360,36 @@ private:
 			if (HasBit(this->sel, scheme)) break;
 		}
 		if (scheme == LS_END) scheme = LS_DEFAULT;
-		livery = &GetPlayer((PlayerID)this->window_number)->livery[scheme];
+		livery = &GetCompany((CompanyID)this->window_number)->livery[scheme];
 
 		DropDownList *list = new DropDownList();
 		for (uint i = 0; i < lengthof(_colour_dropdown); i++) {
 			list->push_back(new DropDownListColourItem(i, HasBit(used_colours, i)));
 		}
 
-		ShowDropDownList(this, list, widget == PLW_WIDGET_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);
+		ShowDropDownList(this, list, widget == SCLW_WIDGET_PRI_COL_DROPDOWN ? livery->colour1 : livery->colour2, widget);
 	}
 
 public:
-	SelectPlayerLiveryWindow(const WindowDesc *desc, PlayerID player) : Window(desc, player)
+	SelectCompanyLiveryWindow(const WindowDesc *desc, CompanyID company) : Window(desc, company)
 	{
-		this->caption_color = player;
+		this->caption_color = company;
 		this->livery_class = LC_OTHER;
 		this->sel = 1;
-		this->LowerWidget(PLW_WIDGET_CLASS_GENERAL);
+		this->LowerWidget(SCLW_WIDGET_CLASS_GENERAL);
 		this->OnInvalidateData(_loaded_newgrf_features.has_2CC);
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
-		const Player *p = GetPlayer((PlayerID)this->window_number);
+		const Company *c = GetCompany((CompanyID)this->window_number);
 		LiveryScheme scheme = LS_DEFAULT;
 		int y = 51;
 
 		/* Disable dropdown controls if no scheme is selected */
-		this->SetWidgetDisabledState(PLW_WIDGET_PRI_COL_DROPDOWN, this->sel == 0);
-		this->SetWidgetDisabledState(PLW_WIDGET_SEC_COL_DROPDOWN, this->sel == 0);
+		this->SetWidgetDisabledState(SCLW_WIDGET_PRI_COL_DROPDOWN, this->sel == 0);
+		this->SetWidgetDisabledState(SCLW_WIDGET_SEC_COL_DROPDOWN, this->sel == 0);
 
 		if (this->sel != 0) {
 			for (scheme = LS_BEGIN; scheme < LS_END; scheme++) {
@@ -398,8 +398,8 @@ public:
 			if (scheme == LS_END) scheme = LS_DEFAULT;
 		}
 
-		SetDParam(0, STR_00D1_DARK_BLUE + p->livery[scheme].colour1);
-		SetDParam(1, STR_00D1_DARK_BLUE + p->livery[scheme].colour2);
+		SetDParam(0, STR_00D1_DARK_BLUE + c->livery[scheme].colour1);
+		SetDParam(1, STR_00D1_DARK_BLUE + c->livery[scheme].colour2);
 
 		this->DrawWidgets();
 
@@ -408,17 +408,17 @@ public:
 				bool sel = HasBit(this->sel, scheme) != 0;
 
 				if (scheme != LS_DEFAULT) {
-					DrawSprite(p->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
+					DrawSprite(c->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, PAL_NONE, 2, y);
 				}
 
 				DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? TC_WHITE : TC_BLACK);
 
-				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour1), 152, y);
-				DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
+				DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(c->livery[scheme].colour1), 152, y);
+				DrawString(165, y, STR_00D1_DARK_BLUE + c->livery[scheme].colour1, sel ? TC_WHITE : TC_GOLD);
 
-				if (!this->IsWidgetHidden(PLW_WIDGET_SEC_COL_DROPDOWN)) {
-					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(p->livery[scheme].colour2), 277, y);
-					DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
+				if (!this->IsWidgetHidden(SCLW_WIDGET_SEC_COL_DROPDOWN)) {
+					DrawSprite(SPR_SQUARE, GENERAL_SPRITE_COLOR(c->livery[scheme].colour2), 277, y);
+					DrawString(290, y, STR_00D1_DARK_BLUE + c->livery[scheme].colour2, sel ? TC_WHITE : TC_GOLD);
 				}
 
 				y += 14;
@@ -439,17 +439,17 @@ public:
 
 		switch (widget) {
 			/* Livery Class buttons */
-			case PLW_WIDGET_CLASS_GENERAL:
-			case PLW_WIDGET_CLASS_RAIL:
-			case PLW_WIDGET_CLASS_ROAD:
-			case PLW_WIDGET_CLASS_SHIP:
-			case PLW_WIDGET_CLASS_AIRCRAFT: {
+			case SCLW_WIDGET_CLASS_GENERAL:
+			case SCLW_WIDGET_CLASS_RAIL:
+			case SCLW_WIDGET_CLASS_ROAD:
+			case SCLW_WIDGET_CLASS_SHIP:
+			case SCLW_WIDGET_CLASS_AIRCRAFT: {
 				LiveryScheme scheme;
 
-				this->RaiseWidget(this->livery_class + PLW_WIDGET_CLASS_GENERAL);
-				this->livery_class = (LiveryClass)(widget - PLW_WIDGET_CLASS_GENERAL);
+				this->RaiseWidget(this->livery_class + SCLW_WIDGET_CLASS_GENERAL);
+				this->livery_class = (LiveryClass)(widget - SCLW_WIDGET_CLASS_GENERAL);
 				this->sel = 0;
-				this->LowerWidget(this->livery_class + PLW_WIDGET_CLASS_GENERAL);
+				this->LowerWidget(this->livery_class + SCLW_WIDGET_CLASS_GENERAL);
 
 				/* Select the first item in the list */
 				for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
@@ -459,21 +459,21 @@ public:
 					}
 				}
 				this->height = 49 + livery_height[this->livery_class] * 14;
-				this->widget[PLW_WIDGET_MATRIX].bottom = this->height - 1;
-				this->widget[PLW_WIDGET_MATRIX].data = livery_height[this->livery_class] << 8 | 1;
+				this->widget[SCLW_WIDGET_MATRIX].bottom = this->height - 1;
+				this->widget[SCLW_WIDGET_MATRIX].data = livery_height[this->livery_class] << 8 | 1;
 				MarkWholeScreenDirty();
 				break;
 			}
 
-			case PLW_WIDGET_PRI_COL_DROPDOWN: /* First colour dropdown */
-				ShowColourDropDownMenu(PLW_WIDGET_PRI_COL_DROPDOWN);
+			case SCLW_WIDGET_PRI_COL_DROPDOWN: /* First colour dropdown */
+				ShowColourDropDownMenu(SCLW_WIDGET_PRI_COL_DROPDOWN);
 				break;
 
-			case PLW_WIDGET_SEC_COL_DROPDOWN: /* Second colour dropdown */
-				ShowColourDropDownMenu(PLW_WIDGET_SEC_COL_DROPDOWN);
+			case SCLW_WIDGET_SEC_COL_DROPDOWN: /* Second colour dropdown */
+				ShowColourDropDownMenu(SCLW_WIDGET_SEC_COL_DROPDOWN);
 				break;
 
-			case PLW_WIDGET_MATRIX: {
+			case SCLW_WIDGET_MATRIX: {
 				LiveryScheme scheme;
 				LiveryScheme j = (LiveryScheme)((pt.y - 48) / 14);
 
@@ -485,7 +485,7 @@ public:
 
 				/* If clicking on the left edge, toggle using the livery */
 				if (pt.x < 10) {
-					DoCommandP(0, j | (2 << 8), !GetPlayer((PlayerID)this->window_number)->livery[j].in_use, NULL, CMD_SET_PLAYER_COLOR);
+					DoCommandP(0, j | (2 << 8), !GetCompany((CompanyID)this->window_number)->livery[j].in_use, NULL, CMD_SET_COMPANY_COLOR);
 				}
 
 				if (_ctrl_pressed) {
@@ -503,7 +503,7 @@ public:
 	{
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 			if (HasBit(this->sel, scheme)) {
-				DoCommandP(0, scheme | (widget == PLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), index, NULL, CMD_SET_PLAYER_COLOR);
+				DoCommandP(0, scheme | (widget == SCLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), index, NULL, CMD_SET_COMPANY_COLOR);
 			}
 		}
 	}
@@ -516,16 +516,16 @@ public:
 
 		has2cc = !!data;
 
-		int r = this->widget[has2cc ? PLW_WIDGET_SEC_COL_DROPDOWN : PLW_WIDGET_PRI_COL_DROPDOWN].right;
-		this->SetWidgetHiddenState(PLW_WIDGET_SEC_COL_DROPDOWN, !has2cc);
-		this->widget[PLW_WIDGET_CAPTION].right = r;
-		this->widget[PLW_WIDGET_SPACER_CLASS].right = r;
-		this->widget[PLW_WIDGET_MATRIX].right = r;
+		int r = this->widget[has2cc ? SCLW_WIDGET_SEC_COL_DROPDOWN : SCLW_WIDGET_PRI_COL_DROPDOWN].right;
+		this->SetWidgetHiddenState(SCLW_WIDGET_SEC_COL_DROPDOWN, !has2cc);
+		this->widget[SCLW_WIDGET_CAPTION].right = r;
+		this->widget[SCLW_WIDGET_SPACER_CLASS].right = r;
+		this->widget[SCLW_WIDGET_MATRIX].right = r;
 		this->width = r + 1;
 	}
 };
 
-static const Widget _select_player_livery_widgets[] = {
+static const Widget _select_company_livery_widgets[] = {
 { WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
 {  WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 399,   0,  13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS },
 {   WWT_IMGBTN, RESIZE_NONE,  COLOUR_GREY,   0,  21,  14,  35, SPR_IMG_COMPANY_GENERAL,   STR_LIVERY_GENERAL_TIP },
@@ -541,34 +541,34 @@ static const Widget _select_player_livery_widgets[] = {
 { WIDGETS_END },
 };
 
-static const WindowDesc _select_player_livery_desc = {
+static const WindowDesc _select_company_livery_desc = {
 	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14, 400, 49 + 1 * 14,
-	WC_PLAYER_COLOR, WC_NONE,
+	WC_COMPANY_COLOR, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_select_player_livery_widgets,
+	_select_company_livery_widgets,
 };
 
 /**
- * Draws the face of a player.
- * @param pf    the player's face
+ * Draws the face of a company manager's face.
+ * @param cmf   the company manager's face
  * @param color the (background) color of the gradient
  * @param x     x-position to draw the face
  * @param y     y-position to draw the face
  */
-void DrawPlayerFace(PlayerFace pf, int color, int x, int y)
+void DrawCompanyManagerFace(CompanyManagerFace cmf, int color, int x, int y)
 {
-	GenderEthnicity ge = (GenderEthnicity)GetPlayerFaceBits(pf, PFV_GEN_ETHN, GE_WM);
+	GenderEthnicity ge = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
 
-	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE,   ge) != 0;
-	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
-	bool has_glasses     = GetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge) != 0;
+	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE,   ge) != 0;
+	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge) != 0;
+	bool has_glasses     = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
 	SpriteID pal;
 
 	/* Modify eye colour palette only if 2 or more valid values exist */
-	if (_pf_info[PFV_EYE_COLOUR].valid_values[ge] < 2) {
+	if (_cmf_info[CMFV_EYE_COLOUR].valid_values[ge] < 2) {
 		pal = PAL_NONE;
 	} else {
-		switch (GetPlayerFaceBits(pf, PFV_EYE_COLOUR, ge)) {
+		switch (GetCompanyManagerFaceBits(cmf, CMFV_EYE_COLOUR, ge)) {
 			default: NOT_REACHED();
 			case 0: pal = PALETTE_TO_BROWN; break;
 			case 1: pal = PALETTE_TO_BLUE;  break;
@@ -579,90 +579,90 @@ void DrawPlayerFace(PlayerFace pf, int color, int x, int y)
 	/* Draw the gradient (background) */
 	DrawSprite(SPR_GRADIENT, GENERAL_SPRITE_COLOR(color), x, y);
 
-	for (PlayerFaceVariable pfv = PFV_CHEEKS; pfv < PFV_END; pfv++) {
-		switch (pfv) {
-			case PFV_MOUSTACHE:   if (!has_moustache)   continue; break;
-			case PFV_LIPS:        /* FALL THROUGH */
-			case PFV_NOSE:        if (has_moustache)    continue; break;
-			case PFV_TIE_EARRING: if (!has_tie_earring) continue; break;
-			case PFV_GLASSES:     if (!has_glasses)     continue; break;
+	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
+		switch (cmfv) {
+			case CMFV_MOUSTACHE:   if (!has_moustache)   continue; break;
+			case CMFV_LIPS:        /* FALL THROUGH */
+			case CMFV_NOSE:        if (has_moustache)    continue; break;
+			case CMFV_TIE_EARRING: if (!has_tie_earring) continue; break;
+			case CMFV_GLASSES:     if (!has_glasses)     continue; break;
 			default: break;
 		}
-		DrawSprite(GetPlayerFaceSprite(pf, pfv, ge), (pfv == PFV_EYEBROWS) ? pal : PAL_NONE, x, y);
+		DrawSprite(GetCompanyManagerFaceSprite(cmf, cmfv, ge), (cmfv == CMFV_EYEBROWS) ? pal : PAL_NONE, x, y);
 	}
 }
 
-/** Widget description for the normal/simple player face selection dialog */
-static const Widget _select_player_face_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},              // PFW_WIDGET_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   174,     0,    13, STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // PFW_WIDGET_CAPTION
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   175,   189,     0,    13, SPR_LARGE_SMALL_WINDOW,  STR_FACE_ADVANCED_TIP},              // PFW_WIDGET_TOGGLE_LARGE_SMALL
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   189,    14,   150, 0x0,                     STR_NULL},                           // PFW_WIDGET_SELECT_FACE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    94,   151,   162, STR_012E_CANCEL,         STR_7047_CANCEL_NEW_FACE_SELECTION}, // PFW_WIDGET_CANCEL
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   189,   151,   162, STR_012F_OK,             STR_7048_ACCEPT_NEW_FACE_SELECTION}, // PFW_WIDGET_ACCEPT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    75,    86, STR_7044_MALE,           STR_7049_SELECT_MALE_FACES},         // PFW_WIDGET_MALE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    87,    98, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},       // PFW_WIDGET_FEMALE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   137,   148, STR_7046_NEW_FACE,       STR_704B_GENERATE_RANDOM_NEW_FACE},  // PFW_WIDGET_RANDOM_NEW_FACE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    16,    27, STR_FACE_ADVANCED,       STR_FACE_ADVANCED_TIP},              // PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
+/** Widget description for the normal/simple company manager face selection dialog */
+static const Widget _select_company_manager_face_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},              // SCMFW_WIDGET_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   174,     0,    13, STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // SCMFW_WIDGET_CAPTION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   175,   189,     0,    13, SPR_LARGE_SMALL_WINDOW,  STR_FACE_ADVANCED_TIP},              // SCMFW_WIDGET_TOGGLE_LARGE_SMALL
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   189,    14,   150, 0x0,                     STR_NULL},                           // SCMFW_WIDGET_SELECT_FACE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    94,   151,   162, STR_012E_CANCEL,         STR_7047_CANCEL_NEW_FACE_SELECTION}, // SCMFW_WIDGET_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   189,   151,   162, STR_012F_OK,             STR_7048_ACCEPT_NEW_FACE_SELECTION}, // SCMFW_WIDGET_ACCEPT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    75,    86, STR_7044_MALE,           STR_7049_SELECT_MALE_FACES},         // SCMFW_WIDGET_MALE
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    87,    98, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},       // SCMFW_WIDGET_FEMALE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   137,   148, STR_7046_NEW_FACE,       STR_704B_GENERATE_RANDOM_NEW_FACE},  // SCMFW_WIDGET_RANDOM_NEW_FACE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   187,    16,    27, STR_FACE_ADVANCED,       STR_FACE_ADVANCED_TIP},              // SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
 {   WIDGETS_END},
 };
 
-/** Widget description for the advanced player face selection dialog */
-static const Widget _select_player_face_adv_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},              // PFW_WIDGET_CLOSEBOX
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   204,     0,    13, STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // PFW_WIDGET_CAPTION
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   205,   219,     0,    13, SPR_LARGE_SMALL_WINDOW,  STR_FACE_SIMPLE_TIP},                // PFW_WIDGET_TOGGLE_LARGE_SMALL
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   219,    14,   207, 0x0,                     STR_NULL},                           // PFW_WIDGET_SELECT_FACE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    94,   208,   219, STR_012E_CANCEL,         STR_7047_CANCEL_NEW_FACE_SELECTION}, // PFW_WIDGET_CANCEL
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   219,   208,   219, STR_012F_OK,             STR_7048_ACCEPT_NEW_FACE_SELECTION}, // PFW_WIDGET_ACCEPT
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    96,   156,    32,    43, STR_7044_MALE,           STR_7049_SELECT_MALE_FACES},         // PFW_WIDGET_MALE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   157,   217,    32,    43, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},       // PFW_WIDGET_FEMALE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   137,   148, STR_RANDOM,              STR_704B_GENERATE_RANDOM_NEW_FACE},  // PFW_WIDGET_RANDOM_NEW_FACE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   217,    16,    27, STR_FACE_SIMPLE,         STR_FACE_SIMPLE_TIP},                // PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   158,   169, STR_FACE_LOAD,           STR_FACE_LOAD_TIP},                  // PFW_WIDGET_LOAD
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   170,   181, STR_FACE_FACECODE,       STR_FACE_FACECODE_TIP},              // PFW_WIDGET_FACECODE
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   182,   193, STR_FACE_SAVE,           STR_FACE_SAVE_TIP},                  // PFW_WIDGET_SAVE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    96,   156,    46,    57, STR_FACE_EUROPEAN,       STR_FACE_SELECT_EUROPEAN},           // PFW_WIDGET_ETHNICITY_EUR
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   157,   217,    46,    57, STR_FACE_AFRICAN,        STR_FACE_SELECT_AFRICAN},            // PFW_WIDGET_ETHNICITY_AFR
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   175,   217,    60,    71, STR_EMPTY,               STR_FACE_MOUSTACHE_EARRING_TIP},     // PFW_WIDGET_HAS_MOUSTACHE_EARRING
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   175,   217,    72,    83, STR_EMPTY,               STR_FACE_GLASSES_TIP},               // PFW_WIDGET_HAS_GLASSES
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   110,   121, SPR_ARROW_LEFT,          STR_FACE_EYECOLOUR_TIP},             // PFW_WIDGET_EYECOLOUR_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   110,   121, STR_EMPTY,               STR_FACE_EYECOLOUR_TIP},             // PFW_WIDGET_EYECOLOUR
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   110,   121, SPR_ARROW_RIGHT,         STR_FACE_EYECOLOUR_TIP},             // PFW_WIDGET_EYECOLOUR_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   158,   169, SPR_ARROW_LEFT,          STR_FACE_CHIN_TIP},                  // PFW_WIDGET_CHIN_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   158,   169, STR_EMPTY,               STR_FACE_CHIN_TIP},                  // PFW_WIDGET_CHIN
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   158,   169, SPR_ARROW_RIGHT,         STR_FACE_CHIN_TIP},                  // PFW_WIDGET_CHIN_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,    98,   109, SPR_ARROW_LEFT,          STR_FACE_EYEBROWS_TIP},              // PFW_WIDGET_EYEBROWS_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,    98,   109, STR_EMPTY,               STR_FACE_EYEBROWS_TIP},              // PFW_WIDGET_EYEBROWS
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,    98,   109, SPR_ARROW_RIGHT,         STR_FACE_EYEBROWS_TIP},              // PFW_WIDGET_EYEBROWS_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   146,   157, SPR_ARROW_LEFT,          STR_FACE_LIPS_MOUSTACHE_TIP},        // PFW_WIDGET_LIPS_MOUSTACHE_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   146,   157, STR_EMPTY,               STR_FACE_LIPS_MOUSTACHE_TIP},        // PFW_WIDGET_LIPS_MOUSTACHE
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   146,   157, SPR_ARROW_RIGHT,         STR_FACE_LIPS_MOUSTACHE_TIP},        // PFW_WIDGET_LIPS_MOUSTACHE_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   134,   145, SPR_ARROW_LEFT,          STR_FACE_NOSE_TIP},                  // PFW_WIDGET_NOSE_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   134,   145, STR_EMPTY,               STR_FACE_NOSE_TIP},                  // PFW_WIDGET_NOSE
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   134,   145, SPR_ARROW_RIGHT,         STR_FACE_NOSE_TIP},                  // PFW_WIDGET_NOSE_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,    86,    97, SPR_ARROW_LEFT,          STR_FACE_HAIR_TIP},                  // PFW_WIDGET_HAIR_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,    86,    97, STR_EMPTY,               STR_FACE_HAIR_TIP},                  // PFW_WIDGET_HAIR
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,    86,    97, SPR_ARROW_RIGHT,         STR_FACE_HAIR_TIP},                  // PFW_WIDGET_HAIR_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   170,   181, SPR_ARROW_LEFT,          STR_FACE_JACKET_TIP},                // PFW_WIDGET_JACKET_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   170,   181, STR_EMPTY,               STR_FACE_JACKET_TIP},                // PFW_WIDGET_JACKET
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   170,   181, SPR_ARROW_RIGHT,         STR_FACE_JACKET_TIP},                // PFW_WIDGET_JACKET_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   182,   193, SPR_ARROW_LEFT,          STR_FACE_COLLAR_TIP},                // PFW_WIDGET_COLLAR_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   182,   193, STR_EMPTY,               STR_FACE_COLLAR_TIP},                // PFW_WIDGET_COLLAR
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   182,   193, SPR_ARROW_RIGHT,         STR_FACE_COLLAR_TIP},                // PFW_WIDGET_COLLAR_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   194,   205, SPR_ARROW_LEFT,          STR_FACE_TIE_EARRING_TIP},           // PFW_WIDGET_TIE_EARRING_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   194,   205, STR_EMPTY,               STR_FACE_TIE_EARRING_TIP},           // PFW_WIDGET_TIE_EARRING
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   194,   205, SPR_ARROW_RIGHT,         STR_FACE_TIE_EARRING_TIP},           // PFW_WIDGET_TIE_EARRING_R
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   122,   133, SPR_ARROW_LEFT,          STR_FACE_GLASSES_TIP_2},             // PFW_WIDGET_GLASSES_L
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   122,   133, STR_EMPTY,               STR_FACE_GLASSES_TIP_2},             // PFW_WIDGET_GLASSES
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   122,   133, SPR_ARROW_RIGHT,         STR_FACE_GLASSES_TIP_2},             // PFW_WIDGET_GLASSES_R
+/** Widget description for the advanced company manager face selection dialog */
+static const Widget _select_company_manager_face_adv_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},              // SCMFW_WIDGET_CLOSEBOX
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   204,     0,    13, STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},    // SCMFW_WIDGET_CAPTION
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   205,   219,     0,    13, SPR_LARGE_SMALL_WINDOW,  STR_FACE_SIMPLE_TIP},                // SCMFW_WIDGET_TOGGLE_LARGE_SMALL
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   219,    14,   207, 0x0,                     STR_NULL},                           // SCMFW_WIDGET_SELECT_FACE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    94,   208,   219, STR_012E_CANCEL,         STR_7047_CANCEL_NEW_FACE_SELECTION}, // SCMFW_WIDGET_CANCEL
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   219,   208,   219, STR_012F_OK,             STR_7048_ACCEPT_NEW_FACE_SELECTION}, // SCMFW_WIDGET_ACCEPT
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    96,   156,    32,    43, STR_7044_MALE,           STR_7049_SELECT_MALE_FACES},         // SCMFW_WIDGET_MALE
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   157,   217,    32,    43, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},       // SCMFW_WIDGET_FEMALE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   137,   148, STR_RANDOM,              STR_704B_GENERATE_RANDOM_NEW_FACE},  // SCMFW_WIDGET_RANDOM_NEW_FACE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    95,   217,    16,    27, STR_FACE_SIMPLE,         STR_FACE_SIMPLE_TIP},                // SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   158,   169, STR_FACE_LOAD,           STR_FACE_LOAD_TIP},                  // SCMFW_WIDGET_LOAD
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   170,   181, STR_FACE_FACECODE,       STR_FACE_FACECODE_TIP},              // SCMFW_WIDGET_FACECODE
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     2,    93,   182,   193, STR_FACE_SAVE,           STR_FACE_SAVE_TIP},                  // SCMFW_WIDGET_SAVE
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    96,   156,    46,    57, STR_FACE_EUROPEAN,       STR_FACE_SELECT_EUROPEAN},           // SCMFW_WIDGET_ETHNICITY_EUR
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,   157,   217,    46,    57, STR_FACE_AFRICAN,        STR_FACE_SELECT_AFRICAN},            // SCMFW_WIDGET_ETHNICITY_AFR
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   175,   217,    60,    71, STR_EMPTY,               STR_FACE_MOUSTACHE_EARRING_TIP},     // SCMFW_WIDGET_HAS_MOUSTACHE_EARRING
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   175,   217,    72,    83, STR_EMPTY,               STR_FACE_GLASSES_TIP},               // SCMFW_WIDGET_HAS_GLASSES
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   110,   121, SPR_ARROW_LEFT,          STR_FACE_EYECOLOUR_TIP},             // SCMFW_WIDGET_EYECOLOUR_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   110,   121, STR_EMPTY,               STR_FACE_EYECOLOUR_TIP},             // SCMFW_WIDGET_EYECOLOUR
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   110,   121, SPR_ARROW_RIGHT,         STR_FACE_EYECOLOUR_TIP},             // SCMFW_WIDGET_EYECOLOUR_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   158,   169, SPR_ARROW_LEFT,          STR_FACE_CHIN_TIP},                  // SCMFW_WIDGET_CHIN_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   158,   169, STR_EMPTY,               STR_FACE_CHIN_TIP},                  // SCMFW_WIDGET_CHIN
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   158,   169, SPR_ARROW_RIGHT,         STR_FACE_CHIN_TIP},                  // SCMFW_WIDGET_CHIN_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,    98,   109, SPR_ARROW_LEFT,          STR_FACE_EYEBROWS_TIP},              // SCMFW_WIDGET_EYEBROWS_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,    98,   109, STR_EMPTY,               STR_FACE_EYEBROWS_TIP},              // SCMFW_WIDGET_EYEBROWS
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,    98,   109, SPR_ARROW_RIGHT,         STR_FACE_EYEBROWS_TIP},              // SCMFW_WIDGET_EYEBROWS_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   146,   157, SPR_ARROW_LEFT,          STR_FACE_LIPS_MOUSTACHE_TIP},        // SCMFW_WIDGET_LIPS_MOUSTACHE_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   146,   157, STR_EMPTY,               STR_FACE_LIPS_MOUSTACHE_TIP},        // SCMFW_WIDGET_LIPS_MOUSTACHE
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   146,   157, SPR_ARROW_RIGHT,         STR_FACE_LIPS_MOUSTACHE_TIP},        // SCMFW_WIDGET_LIPS_MOUSTACHE_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   134,   145, SPR_ARROW_LEFT,          STR_FACE_NOSE_TIP},                  // SCMFW_WIDGET_NOSE_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   134,   145, STR_EMPTY,               STR_FACE_NOSE_TIP},                  // SCMFW_WIDGET_NOSE
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   134,   145, SPR_ARROW_RIGHT,         STR_FACE_NOSE_TIP},                  // SCMFW_WIDGET_NOSE_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,    86,    97, SPR_ARROW_LEFT,          STR_FACE_HAIR_TIP},                  // SCMFW_WIDGET_HAIR_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,    86,    97, STR_EMPTY,               STR_FACE_HAIR_TIP},                  // SCMFW_WIDGET_HAIR
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,    86,    97, SPR_ARROW_RIGHT,         STR_FACE_HAIR_TIP},                  // SCMFW_WIDGET_HAIR_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   170,   181, SPR_ARROW_LEFT,          STR_FACE_JACKET_TIP},                // SCMFW_WIDGET_JACKET_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   170,   181, STR_EMPTY,               STR_FACE_JACKET_TIP},                // SCMFW_WIDGET_JACKET
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   170,   181, SPR_ARROW_RIGHT,         STR_FACE_JACKET_TIP},                // SCMFW_WIDGET_JACKET_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   182,   193, SPR_ARROW_LEFT,          STR_FACE_COLLAR_TIP},                // SCMFW_WIDGET_COLLAR_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   182,   193, STR_EMPTY,               STR_FACE_COLLAR_TIP},                // SCMFW_WIDGET_COLLAR
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   182,   193, SPR_ARROW_RIGHT,         STR_FACE_COLLAR_TIP},                // SCMFW_WIDGET_COLLAR_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   194,   205, SPR_ARROW_LEFT,          STR_FACE_TIE_EARRING_TIP},           // SCMFW_WIDGET_TIE_EARRING_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   194,   205, STR_EMPTY,               STR_FACE_TIE_EARRING_TIP},           // SCMFW_WIDGET_TIE_EARRING
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   194,   205, SPR_ARROW_RIGHT,         STR_FACE_TIE_EARRING_TIP},           // SCMFW_WIDGET_TIE_EARRING_R
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    175,  183,   122,   133, SPR_ARROW_LEFT,          STR_FACE_GLASSES_TIP_2},             // SCMFW_WIDGET_GLASSES_L
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,    184,  208,   122,   133, STR_EMPTY,               STR_FACE_GLASSES_TIP_2},             // SCMFW_WIDGET_GLASSES
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,  COLOUR_GREY,    209,  217,   122,   133, SPR_ARROW_RIGHT,         STR_FACE_GLASSES_TIP_2},             // SCMFW_WIDGET_GLASSES_R
 {   WIDGETS_END},
 };
 
-class SelectPlayerFaceWindow : public Window
+class SelectCompanyManagerFaceWindow : public Window
 {
-	PlayerFace face; // player face bits
-	bool advanced;   // advance player face selection window
+	CompanyManagerFace face; ///< company manager face bits
+	bool advanced; ///< advanced company manager face selection window
 
 	GenderEthnicity ge;
 	bool is_female;
@@ -670,58 +670,58 @@ class SelectPlayerFaceWindow : public Window
 
 	/**
 	 * Names of the widgets. Keep them in the same order as in the widget array.
-	 * Do not change the order of the widgets from PFW_WIDGET_HAS_MOUSTACHE_EARRING to PFW_WIDGET_GLASSES_R,
+	 * Do not change the order of the widgets from SCMFW_WIDGET_HAS_MOUSTACHE_EARRING to SCMFW_WIDGET_GLASSES_R,
 	 * this order is needed for the WE_CLICK event of DrawFaceStringLabel().
 	 */
-	enum PlayerFaceWindowWidgets {
-		PFW_WIDGET_CLOSEBOX = 0,
-		PFW_WIDGET_CAPTION,
-		PFW_WIDGET_TOGGLE_LARGE_SMALL,
-		PFW_WIDGET_SELECT_FACE,
-		PFW_WIDGET_CANCEL,
-		PFW_WIDGET_ACCEPT,
-		PFW_WIDGET_MALE,
-		PFW_WIDGET_FEMALE,
-		PFW_WIDGET_RANDOM_NEW_FACE,
-		PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
-		/* from here is the advanced player face selection window */
-		PFW_WIDGET_LOAD,
-		PFW_WIDGET_FACECODE,
-		PFW_WIDGET_SAVE,
-		PFW_WIDGET_ETHNICITY_EUR,
-		PFW_WIDGET_ETHNICITY_AFR,
-		PFW_WIDGET_HAS_MOUSTACHE_EARRING,
-		PFW_WIDGET_HAS_GLASSES,
-		PFW_WIDGET_EYECOLOUR_L,
-		PFW_WIDGET_EYECOLOUR,
-		PFW_WIDGET_EYECOLOUR_R,
-		PFW_WIDGET_CHIN_L,
-		PFW_WIDGET_CHIN,
-		PFW_WIDGET_CHIN_R,
-		PFW_WIDGET_EYEBROWS_L,
-		PFW_WIDGET_EYEBROWS,
-		PFW_WIDGET_EYEBROWS_R,
-		PFW_WIDGET_LIPS_MOUSTACHE_L,
-		PFW_WIDGET_LIPS_MOUSTACHE,
-		PFW_WIDGET_LIPS_MOUSTACHE_R,
-		PFW_WIDGET_NOSE_L,
-		PFW_WIDGET_NOSE,
-		PFW_WIDGET_NOSE_R,
-		PFW_WIDGET_HAIR_L,
-		PFW_WIDGET_HAIR,
-		PFW_WIDGET_HAIR_R,
-		PFW_WIDGET_JACKET_L,
-		PFW_WIDGET_JACKET,
-		PFW_WIDGET_JACKET_R,
-		PFW_WIDGET_COLLAR_L,
-		PFW_WIDGET_COLLAR,
-		PFW_WIDGET_COLLAR_R,
-		PFW_WIDGET_TIE_EARRING_L,
-		PFW_WIDGET_TIE_EARRING,
-		PFW_WIDGET_TIE_EARRING_R,
-		PFW_WIDGET_GLASSES_L,
-		PFW_WIDGET_GLASSES,
-		PFW_WIDGET_GLASSES_R,
+	enum SelectCompanyManagerFaceWidgets {
+		SCMFW_WIDGET_CLOSEBOX = 0,
+		SCMFW_WIDGET_CAPTION,
+		SCMFW_WIDGET_TOGGLE_LARGE_SMALL,
+		SCMFW_WIDGET_SELECT_FACE,
+		SCMFW_WIDGET_CANCEL,
+		SCMFW_WIDGET_ACCEPT,
+		SCMFW_WIDGET_MALE,
+		SCMFW_WIDGET_FEMALE,
+		SCMFW_WIDGET_RANDOM_NEW_FACE,
+		SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON,
+		/* from here is the advanced company manager face selection window */
+		SCMFW_WIDGET_LOAD,
+		SCMFW_WIDGET_FACECODE,
+		SCMFW_WIDGET_SAVE,
+		SCMFW_WIDGET_ETHNICITY_EUR,
+		SCMFW_WIDGET_ETHNICITY_AFR,
+		SCMFW_WIDGET_HAS_MOUSTACHE_EARRING,
+		SCMFW_WIDGET_HAS_GLASSES,
+		SCMFW_WIDGET_EYECOLOUR_L,
+		SCMFW_WIDGET_EYECOLOUR,
+		SCMFW_WIDGET_EYECOLOUR_R,
+		SCMFW_WIDGET_CHIN_L,
+		SCMFW_WIDGET_CHIN,
+		SCMFW_WIDGET_CHIN_R,
+		SCMFW_WIDGET_EYEBROWS_L,
+		SCMFW_WIDGET_EYEBROWS,
+		SCMFW_WIDGET_EYEBROWS_R,
+		SCMFW_WIDGET_LIPS_MOUSTACHE_L,
+		SCMFW_WIDGET_LIPS_MOUSTACHE,
+		SCMFW_WIDGET_LIPS_MOUSTACHE_R,
+		SCMFW_WIDGET_NOSE_L,
+		SCMFW_WIDGET_NOSE,
+		SCMFW_WIDGET_NOSE_R,
+		SCMFW_WIDGET_HAIR_L,
+		SCMFW_WIDGET_HAIR,
+		SCMFW_WIDGET_HAIR_R,
+		SCMFW_WIDGET_JACKET_L,
+		SCMFW_WIDGET_JACKET,
+		SCMFW_WIDGET_JACKET_R,
+		SCMFW_WIDGET_COLLAR_L,
+		SCMFW_WIDGET_COLLAR,
+		SCMFW_WIDGET_COLLAR_R,
+		SCMFW_WIDGET_TIE_EARRING_L,
+		SCMFW_WIDGET_TIE_EARRING,
+		SCMFW_WIDGET_TIE_EARRING_R,
+		SCMFW_WIDGET_GLASSES_L,
+		SCMFW_WIDGET_GLASSES,
+		SCMFW_WIDGET_GLASSES_R,
 	};
 	/**
 	 * Draw dynamic a label to the left of the button and a value in the button
@@ -754,17 +754,17 @@ class SelectPlayerFaceWindow : public Window
 
 	void UpdateData()
 	{
-		this->ge = (GenderEthnicity)GB(this->face, _pf_info[PFV_GEN_ETHN].offset, _pf_info[PFV_GEN_ETHN].length); // get the gender and ethnicity
+		this->ge = (GenderEthnicity)GB(this->face, _cmf_info[CMFV_GEN_ETHN].offset, _cmf_info[CMFV_GEN_ETHN].length); // get the gender and ethnicity
 		this->is_female = HasBit(this->ge, GENDER_FEMALE); // get the gender: 0 == male and 1 == female
-		this->is_moust_male = !is_female && GetPlayerFaceBits(this->face, PFV_HAS_MOUSTACHE, this->ge) != 0; // is a male face with moustache
+		this->is_moust_male = !is_female && GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE, this->ge) != 0; // is a male face with moustache
 	}
 
 public:
-	SelectPlayerFaceWindow(const WindowDesc *desc, Window *parent, bool advanced, int top, int left) : Window(desc, parent->window_number)
+	SelectCompanyManagerFaceWindow(const WindowDesc *desc, Window *parent, bool advanced, int top, int left) : Window(desc, parent->window_number)
 	{
 		this->parent = parent;
 		this->caption_color = this->window_number;
-		this->face = GetPlayer((PlayerID)this->window_number)->face;
+		this->face = GetCompany((CompanyID)this->window_number)->face;
 		this->advanced = advanced;
 
 		this->UpdateData();
@@ -781,105 +781,105 @@ public:
 	virtual void OnPaint()
 	{
 		/* lower the non-selected gender button */
-		this->SetWidgetLoweredState(PFW_WIDGET_MALE,  !this->is_female);
-		this->SetWidgetLoweredState(PFW_WIDGET_FEMALE, this->is_female);
+		this->SetWidgetLoweredState(SCMFW_WIDGET_MALE,  !this->is_female);
+		this->SetWidgetLoweredState(SCMFW_WIDGET_FEMALE, this->is_female);
 
-		/* advanced player face selection window */
+		/* advanced company manager face selection window */
 		if (this->advanced) {
 			/* lower the non-selected ethnicity button */
-			this->SetWidgetLoweredState(PFW_WIDGET_ETHNICITY_EUR, !HasBit(this->ge, ETHNICITY_BLACK));
-			this->SetWidgetLoweredState(PFW_WIDGET_ETHNICITY_AFR,  HasBit(this->ge, ETHNICITY_BLACK));
+			this->SetWidgetLoweredState(SCMFW_WIDGET_ETHNICITY_EUR, !HasBit(this->ge, ETHNICITY_BLACK));
+			this->SetWidgetLoweredState(SCMFW_WIDGET_ETHNICITY_AFR,  HasBit(this->ge, ETHNICITY_BLACK));
 
 
-			/* Disable dynamically the widgets which PlayerFaceVariable has less than 2 options
+			/* Disable dynamically the widgets which CompanyManagerFaceVariable has less than 2 options
 			* (or in other words you haven't any choice).
 			* If the widgets depend on a HAS-variable and this is false the widgets will be disabled, too. */
 
 			/* Eye colour buttons */
-			this->SetWidgetsDisabledState(_pf_info[PFV_EYE_COLOUR].valid_values[this->ge] < 2,
-				PFW_WIDGET_EYECOLOUR, PFW_WIDGET_EYECOLOUR_L, PFW_WIDGET_EYECOLOUR_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_EYE_COLOUR].valid_values[this->ge] < 2,
+				SCMFW_WIDGET_EYECOLOUR, SCMFW_WIDGET_EYECOLOUR_L, SCMFW_WIDGET_EYECOLOUR_R, WIDGET_LIST_END);
 
 			/* Chin buttons */
-			this->SetWidgetsDisabledState(_pf_info[PFV_CHIN].valid_values[this->ge] < 2,
-				PFW_WIDGET_CHIN, PFW_WIDGET_CHIN_L, PFW_WIDGET_CHIN_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_CHIN].valid_values[this->ge] < 2,
+				SCMFW_WIDGET_CHIN, SCMFW_WIDGET_CHIN_L, SCMFW_WIDGET_CHIN_R, WIDGET_LIST_END);
 
 			/* Eyebrows buttons */
-			this->SetWidgetsDisabledState(_pf_info[PFV_EYEBROWS].valid_values[this->ge] < 2,
-				PFW_WIDGET_EYEBROWS, PFW_WIDGET_EYEBROWS_L, PFW_WIDGET_EYEBROWS_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_EYEBROWS].valid_values[this->ge] < 2,
+				SCMFW_WIDGET_EYEBROWS, SCMFW_WIDGET_EYEBROWS_L, SCMFW_WIDGET_EYEBROWS_R, WIDGET_LIST_END);
 
 			/* Lips or (if it a male face with a moustache) moustache buttons */
-			this->SetWidgetsDisabledState(_pf_info[this->is_moust_male ? PFV_MOUSTACHE : PFV_LIPS].valid_values[this->ge] < 2,
-				PFW_WIDGET_LIPS_MOUSTACHE, PFW_WIDGET_LIPS_MOUSTACHE_L, PFW_WIDGET_LIPS_MOUSTACHE_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[this->is_moust_male ? CMFV_MOUSTACHE : CMFV_LIPS].valid_values[this->ge] < 2,
+				SCMFW_WIDGET_LIPS_MOUSTACHE, SCMFW_WIDGET_LIPS_MOUSTACHE_L, SCMFW_WIDGET_LIPS_MOUSTACHE_R, WIDGET_LIST_END);
 
 			/* Nose buttons | male faces with moustache haven't any nose options */
-			this->SetWidgetsDisabledState(_pf_info[PFV_NOSE].valid_values[this->ge] < 2 || this->is_moust_male,
-				PFW_WIDGET_NOSE, PFW_WIDGET_NOSE_L, PFW_WIDGET_NOSE_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_NOSE].valid_values[this->ge] < 2 || this->is_moust_male,
+				SCMFW_WIDGET_NOSE, SCMFW_WIDGET_NOSE_L, SCMFW_WIDGET_NOSE_R, WIDGET_LIST_END);
 
 			/* Hair buttons */
-			this->SetWidgetsDisabledState(_pf_info[PFV_HAIR].valid_values[this->ge] < 2,
-				PFW_WIDGET_HAIR, PFW_WIDGET_HAIR_L, PFW_WIDGET_HAIR_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_HAIR].valid_values[this->ge] < 2,
+				SCMFW_WIDGET_HAIR, SCMFW_WIDGET_HAIR_L, SCMFW_WIDGET_HAIR_R, WIDGET_LIST_END);
 
 			/* Jacket buttons */
-			this->SetWidgetsDisabledState(_pf_info[PFV_JACKET].valid_values[this->ge] < 2,
-				PFW_WIDGET_JACKET, PFW_WIDGET_JACKET_L, PFW_WIDGET_JACKET_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_JACKET].valid_values[this->ge] < 2,
+				SCMFW_WIDGET_JACKET, SCMFW_WIDGET_JACKET_L, SCMFW_WIDGET_JACKET_R, WIDGET_LIST_END);
 
 			/* Collar buttons */
-			this->SetWidgetsDisabledState(_pf_info[PFV_COLLAR].valid_values[this->ge] < 2,
-				PFW_WIDGET_COLLAR, PFW_WIDGET_COLLAR_L, PFW_WIDGET_COLLAR_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_COLLAR].valid_values[this->ge] < 2,
+				SCMFW_WIDGET_COLLAR, SCMFW_WIDGET_COLLAR_L, SCMFW_WIDGET_COLLAR_R, WIDGET_LIST_END);
 
 			/* Tie/earring buttons | female faces without earring haven't any earring options */
-			this->SetWidgetsDisabledState(_pf_info[PFV_TIE_EARRING].valid_values[this->ge] < 2 ||
-					(this->is_female && GetPlayerFaceBits(this->face, PFV_HAS_TIE_EARRING, this->ge) == 0),
-				PFW_WIDGET_TIE_EARRING, PFW_WIDGET_TIE_EARRING_L, PFW_WIDGET_TIE_EARRING_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_TIE_EARRING].valid_values[this->ge] < 2 ||
+					(this->is_female && GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge) == 0),
+				SCMFW_WIDGET_TIE_EARRING, SCMFW_WIDGET_TIE_EARRING_L, SCMFW_WIDGET_TIE_EARRING_R, WIDGET_LIST_END);
 
 			/* Glasses buttons | faces without glasses haven't any glasses options */
-			this->SetWidgetsDisabledState(_pf_info[PFV_GLASSES].valid_values[this->ge] < 2 || GetPlayerFaceBits(this->face, PFV_HAS_GLASSES, this->ge) == 0,
-				PFW_WIDGET_GLASSES, PFW_WIDGET_GLASSES_L, PFW_WIDGET_GLASSES_R, WIDGET_LIST_END);
+			this->SetWidgetsDisabledState(_cmf_info[CMFV_GLASSES].valid_values[this->ge] < 2 || GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES, this->ge) == 0,
+				SCMFW_WIDGET_GLASSES, SCMFW_WIDGET_GLASSES_L, SCMFW_WIDGET_GLASSES_R, WIDGET_LIST_END);
 		}
 
 		this->DrawWidgets();
 
-		/* Draw dynamic button value and labels for the advanced player face selection window */
+		/* Draw dynamic button value and labels for the advanced company manager face selection window */
 		if (this->advanced) {
 			if (this->is_female) {
 				/* Only for female faces */
-				this->DrawFaceStringLabel(PFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_EARRING,   GetPlayerFaceBits(this->face, PFV_HAS_TIE_EARRING, this->ge), true );
-				this->DrawFaceStringLabel(PFW_WIDGET_TIE_EARRING,           STR_FACE_EARRING,   GetPlayerFaceBits(this->face, PFV_TIE_EARRING,     this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_EARRING,   GetCompanyManagerFaceBits(this->face, CMFV_HAS_TIE_EARRING, this->ge), true );
+				this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING,           STR_FACE_EARRING,   GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING,     this->ge), false);
 			} else {
 				/* Only for male faces */
-				this->DrawFaceStringLabel(PFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_MOUSTACHE, GetPlayerFaceBits(this->face, PFV_HAS_MOUSTACHE,   this->ge), true );
-				this->DrawFaceStringLabel(PFW_WIDGET_TIE_EARRING,           STR_FACE_TIE,       GetPlayerFaceBits(this->face, PFV_TIE_EARRING,     this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_MOUSTACHE_EARRING, STR_FACE_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_HAS_MOUSTACHE,   this->ge), true );
+				this->DrawFaceStringLabel(SCMFW_WIDGET_TIE_EARRING,           STR_FACE_TIE,       GetCompanyManagerFaceBits(this->face, CMFV_TIE_EARRING,     this->ge), false);
 			}
 			if (this->is_moust_male) {
 				/* Only for male faces with moustache */
-				this->DrawFaceStringLabel(PFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_MOUSTACHE, GetPlayerFaceBits(this->face, PFV_MOUSTACHE,       this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_MOUSTACHE, GetCompanyManagerFaceBits(this->face, CMFV_MOUSTACHE,       this->ge), false);
 			} else {
 				/* Only for female faces or male faces without moustache */
-				this->DrawFaceStringLabel(PFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_LIPS,      GetPlayerFaceBits(this->face, PFV_LIPS,            this->ge), false);
+				this->DrawFaceStringLabel(SCMFW_WIDGET_LIPS_MOUSTACHE,        STR_FACE_LIPS,      GetCompanyManagerFaceBits(this->face, CMFV_LIPS,            this->ge), false);
 			}
 			/* For all faces */
-			this->DrawFaceStringLabel(PFW_WIDGET_HAS_GLASSES,           STR_FACE_GLASSES,     GetPlayerFaceBits(this->face, PFV_HAS_GLASSES,     this->ge), true );
-			this->DrawFaceStringLabel(PFW_WIDGET_HAIR,                  STR_FACE_HAIR,        GetPlayerFaceBits(this->face, PFV_HAIR,            this->ge), false);
-			this->DrawFaceStringLabel(PFW_WIDGET_EYEBROWS,              STR_FACE_EYEBROWS,    GetPlayerFaceBits(this->face, PFV_EYEBROWS,        this->ge), false);
-			this->DrawFaceStringLabel(PFW_WIDGET_EYECOLOUR,             STR_FACE_EYECOLOUR,   GetPlayerFaceBits(this->face, PFV_EYE_COLOUR,      this->ge), false);
-			this->DrawFaceStringLabel(PFW_WIDGET_GLASSES,               STR_FACE_GLASSES,     GetPlayerFaceBits(this->face, PFV_GLASSES,         this->ge), false);
-			this->DrawFaceStringLabel(PFW_WIDGET_NOSE,                  STR_FACE_NOSE,        GetPlayerFaceBits(this->face, PFV_NOSE,            this->ge), false);
-			this->DrawFaceStringLabel(PFW_WIDGET_CHIN,                  STR_FACE_CHIN,        GetPlayerFaceBits(this->face, PFV_CHIN,            this->ge), false);
-			this->DrawFaceStringLabel(PFW_WIDGET_JACKET,                STR_FACE_JACKET,      GetPlayerFaceBits(this->face, PFV_JACKET,          this->ge), false);
-			this->DrawFaceStringLabel(PFW_WIDGET_COLLAR,                STR_FACE_COLLAR,      GetPlayerFaceBits(this->face, PFV_COLLAR,          this->ge), false);
+			this->DrawFaceStringLabel(SCMFW_WIDGET_HAS_GLASSES,           STR_FACE_GLASSES,     GetCompanyManagerFaceBits(this->face, CMFV_HAS_GLASSES,     this->ge), true );
+			this->DrawFaceStringLabel(SCMFW_WIDGET_HAIR,                  STR_FACE_HAIR,        GetCompanyManagerFaceBits(this->face, CMFV_HAIR,            this->ge), false);
+			this->DrawFaceStringLabel(SCMFW_WIDGET_EYEBROWS,              STR_FACE_EYEBROWS,    GetCompanyManagerFaceBits(this->face, CMFV_EYEBROWS,        this->ge), false);
+			this->DrawFaceStringLabel(SCMFW_WIDGET_EYECOLOUR,             STR_FACE_EYECOLOUR,   GetCompanyManagerFaceBits(this->face, CMFV_EYE_COLOUR,      this->ge), false);
+			this->DrawFaceStringLabel(SCMFW_WIDGET_GLASSES,               STR_FACE_GLASSES,     GetCompanyManagerFaceBits(this->face, CMFV_GLASSES,         this->ge), false);
+			this->DrawFaceStringLabel(SCMFW_WIDGET_NOSE,                  STR_FACE_NOSE,        GetCompanyManagerFaceBits(this->face, CMFV_NOSE,            this->ge), false);
+			this->DrawFaceStringLabel(SCMFW_WIDGET_CHIN,                  STR_FACE_CHIN,        GetCompanyManagerFaceBits(this->face, CMFV_CHIN,            this->ge), false);
+			this->DrawFaceStringLabel(SCMFW_WIDGET_JACKET,                STR_FACE_JACKET,      GetCompanyManagerFaceBits(this->face, CMFV_JACKET,          this->ge), false);
+			this->DrawFaceStringLabel(SCMFW_WIDGET_COLLAR,                STR_FACE_COLLAR,      GetCompanyManagerFaceBits(this->face, CMFV_COLLAR,          this->ge), false);
 		}
 
-		/* Draw the player face picture */
-		DrawPlayerFace(this->face, GetPlayer((PlayerID)this->window_number)->player_color, 2, 16);
+		/* Draw the company manager face picture */
+		DrawCompanyManagerFace(this->face, GetCompany((CompanyID)this->window_number)->colour, 2, 16);
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
 			/* Toggle size, advanced/simple face selection */
-			case PFW_WIDGET_TOGGLE_LARGE_SMALL:
-			case PFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON: {
-				DoCommandP(0, 0, this->face, NULL, CMD_SET_PLAYER_FACE);
+			case SCMFW_WIDGET_TOGGLE_LARGE_SMALL:
+			case SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON: {
+				DoCommandP(0, 0, this->face, NULL, CMD_SET_COMPANY_MANAGER_FACE);
 
 				/* Backup some data before deletion */
 				int oldtop = this->top;     ///< current top position of the window before closing it
@@ -890,99 +890,99 @@ public:
 				delete this;
 
 				/* Open up the (toggled size) Face selection window at the same position as the previous */
-				DoSelectPlayerFace(parent, adv, oldtop, oldleft);
+				DoSelectCompanyManagerFace(parent, adv, oldtop, oldleft);
 			} break;
 
 
 			/* OK button */
-			case PFW_WIDGET_ACCEPT:
-				DoCommandP(0, 0, this->face, NULL, CMD_SET_PLAYER_FACE);
+			case SCMFW_WIDGET_ACCEPT:
+				DoCommandP(0, 0, this->face, NULL, CMD_SET_COMPANY_MANAGER_FACE);
 				/* Fall-Through */
 
 			/* Cancel button */
-			case PFW_WIDGET_CANCEL:
+			case SCMFW_WIDGET_CANCEL:
 				delete this;
 				break;
 
 			/* Load button */
-			case PFW_WIDGET_LOAD:
-				this->face = _player_face;
-				ScaleAllPlayerFaceBits(this->face);
+			case SCMFW_WIDGET_LOAD:
+				this->face = _company_manager_face;
+				ScaleAllCompanyManagerFaceBits(this->face);
 				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_LOAD_DONE, 0, 0);
 				this->UpdateData();
 				this->SetDirty();
 				break;
 
-			/* 'Player face number' button, view and/or set player face number */
-			case PFW_WIDGET_FACECODE:
+			/* 'Company manager face number' button, view and/or set company manager face number */
+			case SCMFW_WIDGET_FACECODE:
 				SetDParam(0, this->face);
 				ShowQueryString(STR_JUST_INT, STR_FACE_FACECODE_CAPTION, 10 + 1, 0, this, CS_NUMERAL, QSF_NONE);
 				break;
 
 			/* Save button */
-			case PFW_WIDGET_SAVE:
-				_player_face = this->face;
+			case SCMFW_WIDGET_SAVE:
+				_company_manager_face = this->face;
 				ShowErrorMessage(INVALID_STRING_ID, STR_FACE_SAVE_DONE, 0, 0);
 				break;
 
 			/* Toggle gender (male/female) button */
-			case PFW_WIDGET_MALE:
-			case PFW_WIDGET_FEMALE:
-				SetPlayerFaceBits(this->face, PFV_GENDER, this->ge, widget - PFW_WIDGET_MALE);
-				ScaleAllPlayerFaceBits(this->face);
+			case SCMFW_WIDGET_MALE:
+			case SCMFW_WIDGET_FEMALE:
+				SetCompanyManagerFaceBits(this->face, CMFV_GENDER, this->ge, widget - SCMFW_WIDGET_MALE);
+				ScaleAllCompanyManagerFaceBits(this->face);
 				this->UpdateData();
 				this->SetDirty();
 				break;
 
 			/* Randomize face button */
-			case PFW_WIDGET_RANDOM_NEW_FACE:
-				RandomPlayerFaceBits(this->face, this->ge, this->advanced);
+			case SCMFW_WIDGET_RANDOM_NEW_FACE:
+				RandomCompanyManagerFaceBits(this->face, this->ge, this->advanced);
 				this->UpdateData();
 				this->SetDirty();
 				break;
 
 			/* Toggle ethnicity (european/african) button */
-			case PFW_WIDGET_ETHNICITY_EUR:
-			case PFW_WIDGET_ETHNICITY_AFR:
-				SetPlayerFaceBits(this->face, PFV_ETHNICITY, this->ge, widget - PFW_WIDGET_ETHNICITY_EUR);
-				ScaleAllPlayerFaceBits(this->face);
+			case SCMFW_WIDGET_ETHNICITY_EUR:
+			case SCMFW_WIDGET_ETHNICITY_AFR:
+				SetCompanyManagerFaceBits(this->face, CMFV_ETHNICITY, this->ge, widget - SCMFW_WIDGET_ETHNICITY_EUR);
+				ScaleAllCompanyManagerFaceBits(this->face);
 				this->UpdateData();
 				this->SetDirty();
 				break;
 
 			default:
-				/* For all buttons from PFW_WIDGET_HAS_MOUSTACHE_EARRING to PFW_WIDGET_GLASSES_R is the same function.
+				/* For all buttons from SCMFW_WIDGET_HAS_MOUSTACHE_EARRING to SCMFW_WIDGET_GLASSES_R is the same function.
 				* Therefor is this combined function.
-				* First it checks which PlayerFaceVariable will be change and then
+				* First it checks which CompanyManagerFaceVariable will be change and then
 				* a: invert the value for boolean variables
-				* or b: it checks inside of IncreasePlayerFaceBits() if a left (_L) butten is pressed and then decrease else increase the variable */
-				if (this->advanced && widget >= PFW_WIDGET_HAS_MOUSTACHE_EARRING && widget <= PFW_WIDGET_GLASSES_R) {
-					PlayerFaceVariable pfv; // which PlayerFaceVariable shall be edited
+				* or b: it checks inside of IncreaseCompanyManagerFaceBits() if a left (_L) butten is pressed and then decrease else increase the variable */
+				if (this->advanced && widget >= SCMFW_WIDGET_HAS_MOUSTACHE_EARRING && widget <= SCMFW_WIDGET_GLASSES_R) {
+					CompanyManagerFaceVariable cmfv; // which CompanyManagerFaceVariable shall be edited
 
-					if (widget < PFW_WIDGET_EYECOLOUR_L) { // Bool buttons
-						switch (widget - PFW_WIDGET_HAS_MOUSTACHE_EARRING) {
+					if (widget < SCMFW_WIDGET_EYECOLOUR_L) { // Bool buttons
+						switch (widget - SCMFW_WIDGET_HAS_MOUSTACHE_EARRING) {
 							default: NOT_REACHED();
-							case 0: pfv = this->is_female ? PFV_HAS_TIE_EARRING : PFV_HAS_MOUSTACHE; break; // Has earring/moustache button
-							case 1: pfv = PFV_HAS_GLASSES; break; // Has glasses button
+							case 0: cmfv = this->is_female ? CMFV_HAS_TIE_EARRING : CMFV_HAS_MOUSTACHE; break; // Has earring/moustache button
+							case 1: cmfv = CMFV_HAS_GLASSES; break; // Has glasses button
 						}
-						SetPlayerFaceBits(this->face, pfv, this->ge, !GetPlayerFaceBits(this->face, pfv, this->ge));
-						ScaleAllPlayerFaceBits(this->face);
+						SetCompanyManagerFaceBits(this->face, cmfv, this->ge, !GetCompanyManagerFaceBits(this->face, cmfv, this->ge));
+						ScaleAllCompanyManagerFaceBits(this->face);
 					} else { // Value buttons
-						switch ((widget - PFW_WIDGET_EYECOLOUR_L) / 3) {
+						switch ((widget - SCMFW_WIDGET_EYECOLOUR_L) / 3) {
 							default: NOT_REACHED();
-							case 0: pfv = PFV_EYE_COLOUR; break;  // Eye colour buttons
-							case 1: pfv = PFV_CHIN; break;        // Chin buttons
-							case 2: pfv = PFV_EYEBROWS; break;    // Eyebrows buttons
-							case 3: pfv = this->is_moust_male ? PFV_MOUSTACHE : PFV_LIPS; break; // Moustache or lips buttons
-							case 4: pfv = PFV_NOSE; break;        // Nose buttons
-							case 5: pfv = PFV_HAIR; break;        // Hair buttons
-							case 6: pfv = PFV_JACKET; break;      // Jacket buttons
-							case 7: pfv = PFV_COLLAR; break;      // Collar buttons
-							case 8: pfv = PFV_TIE_EARRING; break; // Tie/earring buttons
-							case 9: pfv = PFV_GLASSES; break;     // Glasses buttons
+							case 0: cmfv = CMFV_EYE_COLOUR; break;  // Eye colour buttons
+							case 1: cmfv = CMFV_CHIN; break;        // Chin buttons
+							case 2: cmfv = CMFV_EYEBROWS; break;    // Eyebrows buttons
+							case 3: cmfv = this->is_moust_male ? CMFV_MOUSTACHE : CMFV_LIPS; break; // Moustache or lips buttons
+							case 4: cmfv = CMFV_NOSE; break;        // Nose buttons
+							case 5: cmfv = CMFV_HAIR; break;        // Hair buttons
+							case 6: cmfv = CMFV_JACKET; break;      // Jacket buttons
+							case 7: cmfv = CMFV_COLLAR; break;      // Collar buttons
+							case 8: cmfv = CMFV_TIE_EARRING; break; // Tie/earring buttons
+							case 9: cmfv = CMFV_GLASSES; break;     // Glasses buttons
 						}
 						/* 0 == left (_L), 1 == middle or 2 == right (_R) - button click */
-						IncreasePlayerFaceBits(this->face, pfv, this->ge, (((widget - PFW_WIDGET_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
+						IncreaseCompanyManagerFaceBits(this->face, cmfv, this->ge, (((widget - SCMFW_WIDGET_EYECOLOUR_L) % 3) != 0) ? 1 : -1);
 					}
 					this->UpdateData();
 					this->SetDirty();
@@ -994,10 +994,10 @@ public:
 	virtual void OnQueryTextFinished(char *str)
 	{
 		if (str == NULL) return;
-		/* Set a new player face number */
+		/* Set a new company manager face number */
 		if (!StrEmpty(str)) {
 			this->face = strtoul(str, NULL, 10);
-			ScaleAllPlayerFaceBits(this->face);
+			ScaleAllCompanyManagerFaceBits(this->face);
 			ShowErrorMessage(INVALID_STRING_ID, STR_FACE_FACECODE_SET, 0, 0);
 			this->UpdateData();
 			this->SetDirty();
@@ -1007,58 +1007,56 @@ public:
 	}
 };
 
-/** normal/simple player face selection window description */
-static const WindowDesc _select_player_face_desc = {
+/** normal/simple company manager face selection window description */
+static const WindowDesc _select_company_manager_face_desc = {
 	WDP_AUTO, WDP_AUTO, 190, 163, 190, 163,
-	WC_PLAYER_FACE, WC_NONE,
+	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_select_player_face_widgets,
+	_select_company_manager_face_widgets,
 };
 
-/** advanced player face selection window description */
-static const WindowDesc _select_player_face_adv_desc = {
+/** advanced company manager face selection window description */
+static const WindowDesc _select_company_manager_face_adv_desc = {
 	WDP_AUTO, WDP_AUTO, 220, 220, 220, 220,
-	WC_PLAYER_FACE, WC_NONE,
+	WC_COMPANY_MANAGER_FACE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_select_player_face_adv_widgets,
+	_select_company_manager_face_adv_widgets,
 };
 
 /**
- * Open the simple/advanced player face selection window
+ * Open the simple/advanced company manager face selection window
  *
- * @param player the player which face shall be edited
- * @param adv    simple or advanced player face selection window
+ * @param parent the parent company window
+ * @param adv    simple or advanced face selection window
  * @param top    previous top position of the window
  * @param left   previous left position of the window
- *
- * @pre is player a valid player
  */
-static void DoSelectPlayerFace(Window *parent, bool adv, int top, int left)
+static void DoSelectCompanyManagerFace(Window *parent, bool adv, int top, int left)
 {
-	if (!IsValidPlayerID((PlayerID)parent->window_number)) return;
+	if (!IsValidCompanyID((CompanyID)parent->window_number)) return;
 
-	if (BringWindowToFrontById(WC_PLAYER_FACE, parent->window_number)) return;
-	new SelectPlayerFaceWindow(adv ? &_select_player_face_adv_desc : &_select_player_face_desc, parent, adv, top, left); // simple or advanced window
+	if (BringWindowToFrontById(WC_COMPANY_MANAGER_FACE, parent->window_number)) return;
+	new SelectCompanyManagerFaceWindow(adv ? &_select_company_manager_face_adv_desc : &_select_company_manager_face_desc, parent, adv, top, left); // simple or advanced window
 }
 
 
 /* Names of the widgets. Keep them in the same order as in the widget array */
-enum PlayerCompanyWindowWidgets {
-	PCW_WIDGET_CLOSEBOX = 0,
-	PCW_WIDGET_CAPTION,
-	PCW_WIDGET_FACE,
-	PCW_WIDGET_NEW_FACE,
-	PCW_WIDGET_COLOR_SCHEME,
-	PCW_WIDGET_PRESIDENT_NAME,
-	PCW_WIDGET_COMPANY_NAME,
-	PCW_WIDGET_BUILD_VIEW_HQ,
-	PCW_WIDGET_RELOCATE_HQ,
-	PCW_WIDGET_BUY_SHARE,
-	PCW_WIDGET_SELL_SHARE,
-	PCW_WIDGET_COMPANY_PASSWORD,
+enum CompanyWindowWidgets {
+	CW_WIDGET_CLOSEBOX = 0,
+	CW_WIDGET_CAPTION,
+	CW_WIDGET_FACE,
+	CW_WIDGET_NEW_FACE,
+	CW_WIDGET_COLOR_SCHEME,
+	CW_WIDGET_PRESIDENT_NAME,
+	CW_WIDGET_COMPANY_NAME,
+	CW_WIDGET_BUILD_VIEW_HQ,
+	CW_WIDGET_RELOCATE_HQ,
+	CW_WIDGET_BUY_SHARE,
+	CW_WIDGET_SELL_SHARE,
+	CW_WIDGET_COMPANY_PASSWORD,
 };
 
-static const Widget _player_company_widgets[] = {
+static const Widget _company_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   359,     0,    13, STR_7001,                          STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   359,    14,   157, 0x0,                               STR_NULL},
@@ -1077,9 +1075,9 @@ static const Widget _player_company_widgets[] = {
 
 /**
  * Draws text "Vehicles:" and number of all vehicle types, or "(none)"
- * @param player ID of player to print statistics of
+ * @param company ID of company to print statistics of
  */
-static void DrawPlayerVehiclesAmount(PlayerID player)
+static void DrawCompanyVehiclesAmount(CompanyID company)
 {
 	const int x = 110;
 	int y = 63;
@@ -1092,7 +1090,7 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 	DrawString(x, y, STR_7039_VEHICLES, TC_FROMSTRING);
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner == player) {
+		if (v->owner == company) {
 			switch (v->type) {
 				case VEH_TRAIN:    if (IsFrontEngine(v)) train++; break;
 				case VEH_ROAD:     if (IsRoadVehFront(v)) road++; break;
@@ -1131,29 +1129,29 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 	}
 }
 
-int GetAmountOwnedBy(const Player *p, PlayerID owner)
+int GetAmountOwnedBy(const Company *c, Owner owner)
 {
-	return (p->share_owners[0] == owner) +
-				 (p->share_owners[1] == owner) +
-				 (p->share_owners[2] == owner) +
-				 (p->share_owners[3] == owner);
+	return (c->share_owners[0] == owner) +
+				 (c->share_owners[1] == owner) +
+				 (c->share_owners[2] == owner) +
+				 (c->share_owners[3] == owner);
 }
 
 /**
  * Draws list of all companies with shares
- * @param p pointer to the Player structure
+ * @param c pointer to the Company structure
  */
-static void DrawCompanyOwnerText(const Player *p)
+static void DrawCompanyOwnerText(const Company *c)
 {
-	const Player *p2;
+	const Company *c2;
 	uint num = 0;
 	const byte height = GetCharacterHeight(FS_NORMAL);
 
-	FOR_ALL_PLAYERS(p2) {
-		uint amt = GetAmountOwnedBy(p, p2->index);
+	FOR_ALL_COMPANIES(c2) {
+		uint amt = GetAmountOwnedBy(c, c2->index);
 		if (amt != 0) {
 			SetDParam(0, amt * 25);
-			SetDParam(1, p2->index);
+			SetDParam(1, c2->index);
 
 			DrawString(120, (num++) * height + 116, STR_707D_OWNED_BY, TC_FROMSTRING);
 		}
@@ -1161,16 +1159,13 @@ static void DrawCompanyOwnerText(const Player *p)
 }
 
 /**
- * Player company window event definition
- *
- * @param w window pointer
- * @param e event been triggered
+ * Window with general information about a company
  */
-struct PlayerCompanyWindow : Window
+struct CompanyWindow : Window
 {
-	PlayerCompanyWindowWidgets query_widget;
+	CompanyWindowWidgets query_widget;
 
-	PlayerCompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	CompanyWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->caption_color = this->window_number;
 		this->FindWindowPlacementAndResize(desc);
@@ -1178,102 +1173,102 @@ struct PlayerCompanyWindow : Window
 
 	virtual void OnPaint()
 	{
-		const Player *p = GetPlayer((PlayerID)this->window_number);
-		bool local = this->window_number == _local_player;
+		const Company *c = GetCompany((CompanyID)this->window_number);
+		bool local = this->window_number == _local_company;
 
-		this->SetWidgetHiddenState(PCW_WIDGET_NEW_FACE,       !local);
-		this->SetWidgetHiddenState(PCW_WIDGET_COLOR_SCHEME,   !local);
-		this->SetWidgetHiddenState(PCW_WIDGET_PRESIDENT_NAME, !local);
-		this->SetWidgetHiddenState(PCW_WIDGET_COMPANY_NAME,   !local);
-		this->widget[PCW_WIDGET_BUILD_VIEW_HQ].data = (local && p->location_of_HQ == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
-		if (local && p->location_of_HQ != 0) this->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
-		this->SetWidgetDisabledState(PCW_WIDGET_BUILD_VIEW_HQ, !local && p->location_of_HQ == 0);
-		this->SetWidgetHiddenState(PCW_WIDGET_RELOCATE_HQ,      !local || p->location_of_HQ == 0);
-		this->SetWidgetHiddenState(PCW_WIDGET_BUY_SHARE,        local);
-		this->SetWidgetHiddenState(PCW_WIDGET_SELL_SHARE,       local);
-		this->SetWidgetHiddenState(PCW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
+		this->SetWidgetHiddenState(CW_WIDGET_NEW_FACE,       !local);
+		this->SetWidgetHiddenState(CW_WIDGET_COLOR_SCHEME,   !local);
+		this->SetWidgetHiddenState(CW_WIDGET_PRESIDENT_NAME, !local);
+		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_NAME,   !local);
+		this->widget[CW_WIDGET_BUILD_VIEW_HQ].data = (local && c->location_of_HQ == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
+		if (local && c->location_of_HQ != 0) this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
+		this->SetWidgetDisabledState(CW_WIDGET_BUILD_VIEW_HQ, !local && c->location_of_HQ == 0);
+		this->SetWidgetHiddenState(CW_WIDGET_RELOCATE_HQ,      !local || c->location_of_HQ == 0);
+		this->SetWidgetHiddenState(CW_WIDGET_BUY_SHARE,        local);
+		this->SetWidgetHiddenState(CW_WIDGET_SELL_SHARE,       local);
+		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
 
 		if (!local) {
 			if (_settings_game.economy.allow_shares) { // Shares are allowed
 				/* If all shares are owned by someone (none by nobody), disable buy button */
-				this->SetWidgetDisabledState(PCW_WIDGET_BUY_SHARE, GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0 ||
-						/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
-						(GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) ||
+				this->SetWidgetDisabledState(CW_WIDGET_BUY_SHARE, GetAmountOwnedBy(c, INVALID_OWNER) == 0 ||
+						/* Only 25% left to buy. If the company is human, disable buying it up.. TODO issues! */
+						(GetAmountOwnedBy(c, INVALID_OWNER) == 1 && !c->is_ai) ||
 						/* Spectators cannot do anything of course */
-						_local_player == PLAYER_SPECTATOR);
+						_local_company == COMPANY_SPECTATOR);
 
-				/* If the player doesn't own any shares, disable sell button */
-				this->SetWidgetDisabledState(PCW_WIDGET_SELL_SHARE, (GetAmountOwnedBy(p, _local_player) == 0) ||
+				/* If the company doesn't own any shares, disable sell button */
+				this->SetWidgetDisabledState(CW_WIDGET_SELL_SHARE, (GetAmountOwnedBy(c, _local_company) == 0) ||
 						/* Spectators cannot do anything of course */
-						_local_player == PLAYER_SPECTATOR);
+						_local_company == COMPANY_SPECTATOR);
 			} else { // Shares are not allowed, disable buy/sell buttons
-				this->DisableWidget(PCW_WIDGET_BUY_SHARE);
-				this->DisableWidget(PCW_WIDGET_SELL_SHARE);
+				this->DisableWidget(CW_WIDGET_BUY_SHARE);
+				this->DisableWidget(CW_WIDGET_SELL_SHARE);
 			}
 		}
 
-		SetDParam(0, p->index);
-		SetDParam(1, p->index);
+		SetDParam(0, c->index);
+		SetDParam(1, c->index);
 
 		this->DrawWidgets();
 
-		/* Player face */
-		DrawPlayerFace(p->face, p->player_color, 2, 16);
+		/* Company manager's face */
+		DrawCompanyManagerFace(c->face, c->colour, 2, 16);
 
 		/* "xxx (Manager)" */
-		SetDParam(0, p->index);
+		SetDParam(0, c->index);
 		DrawStringMultiCenter(48, 141, STR_7037_PRESIDENT, MAX_LENGTH_PRESIDENT_NAME_PIXELS);
 
 		/* "Inaugurated:" */
-		SetDParam(0, p->inaugurated_year);
+		SetDParam(0, c->inaugurated_year);
 		DrawString(110, 23, STR_7038_INAUGURATED, TC_FROMSTRING);
 
 		/* "Colour scheme:" */
 		DrawString(110, 43, STR_7006_COLOR_SCHEME, TC_FROMSTRING);
 		/* Draw company-colour bus */
-		DrawSprite(SPR_VEH_BUS_SW_VIEW, PLAYER_SPRITE_COLOR(p->index), 215, 44);
+		DrawSprite(SPR_VEH_BUS_SW_VIEW, COMPANY_SPRITE_COLOR(c->index), 215, 44);
 
 		/* "Vehicles:" */
-		DrawPlayerVehiclesAmount((PlayerID)this->window_number);
+		DrawCompanyVehiclesAmount((CompanyID)this->window_number);
 
 		/* "Company value:" */
-		SetDParam(0, CalculateCompanyValue(p));
+		SetDParam(0, CalculateCompanyValue(c));
 		DrawString(110, 106, STR_7076_COMPANY_VALUE, TC_FROMSTRING);
 
 		/* Shares list */
-		DrawCompanyOwnerText(p);
+		DrawCompanyOwnerText(c);
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case PCW_WIDGET_NEW_FACE: DoSelectPlayerFace(this, false); break;
+			case CW_WIDGET_NEW_FACE: DoSelectCompanyManagerFace(this, false); break;
 
-			case PCW_WIDGET_COLOR_SCHEME:
-				if (BringWindowToFrontById(WC_PLAYER_COLOR, this->window_number)) break;
-				new SelectPlayerLiveryWindow(&_select_player_livery_desc, (PlayerID)this->window_number);
+			case CW_WIDGET_COLOR_SCHEME:
+				if (BringWindowToFrontById(WC_COMPANY_COLOR, this->window_number)) break;
+				new SelectCompanyLiveryWindow(&_select_company_livery_desc, (CompanyID)this->window_number);
 				break;
 
-			case PCW_WIDGET_PRESIDENT_NAME:
-				this->query_widget = PCW_WIDGET_PRESIDENT_NAME;
+			case CW_WIDGET_PRESIDENT_NAME:
+				this->query_widget = CW_WIDGET_PRESIDENT_NAME;
 				SetDParam(0, this->window_number);
 				ShowQueryString(STR_PLAYER_NAME, STR_700B_PRESIDENT_S_NAME, MAX_LENGTH_PRESIDENT_NAME_BYTES, MAX_LENGTH_PRESIDENT_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case PCW_WIDGET_COMPANY_NAME:
-				this->query_widget = PCW_WIDGET_COMPANY_NAME;
+			case CW_WIDGET_COMPANY_NAME:
+				this->query_widget = CW_WIDGET_COMPANY_NAME;
 				SetDParam(0, this->window_number);
 				ShowQueryString(STR_COMPANY_NAME, STR_700A_COMPANY_NAME, MAX_LENGTH_COMPANY_NAME_BYTES, MAX_LENGTH_COMPANY_NAME_PIXELS, this, CS_ALPHANUMERAL, QSF_ENABLE_DEFAULT);
 				break;
 
-			case PCW_WIDGET_BUILD_VIEW_HQ: {
-				TileIndex tile = GetPlayer((PlayerID)this->window_number)->location_of_HQ;
+			case CW_WIDGET_BUILD_VIEW_HQ: {
+				TileIndex tile = GetCompany((CompanyID)this->window_number)->location_of_HQ;
 				if (tile == 0) {
-					if ((byte)this->window_number != _local_player) return;
+					if ((byte)this->window_number != _local_company) return;
 					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, this);
 					SetTileSelectSize(2, 2);
-					this->LowerWidget(PCW_WIDGET_BUILD_VIEW_HQ);
-					this->InvalidateWidget(PCW_WIDGET_BUILD_VIEW_HQ);
+					this->LowerWidget(CW_WIDGET_BUILD_VIEW_HQ);
+					this->InvalidateWidget(CW_WIDGET_BUILD_VIEW_HQ);
 				} else {
 					if (_ctrl_pressed) {
 						ShowExtraViewPortWindow(tile);
@@ -1284,24 +1279,24 @@ struct PlayerCompanyWindow : Window
 				break;
 			}
 
-			case PCW_WIDGET_RELOCATE_HQ:
+			case CW_WIDGET_RELOCATE_HQ:
 				SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, this);
 				SetTileSelectSize(2, 2);
-				this->LowerWidget(PCW_WIDGET_RELOCATE_HQ);
-				this->InvalidateWidget(PCW_WIDGET_RELOCATE_HQ);
+				this->LowerWidget(CW_WIDGET_RELOCATE_HQ);
+				this->InvalidateWidget(CW_WIDGET_RELOCATE_HQ);
 				break;
 
-			case PCW_WIDGET_BUY_SHARE:
+			case CW_WIDGET_BUY_SHARE:
 				DoCommandP(0, this->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
 				break;
 
-			case PCW_WIDGET_SELL_SHARE:
+			case CW_WIDGET_SELL_SHARE:
 				DoCommandP(0, this->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
 				break;
 
 #ifdef ENABLE_NETWORK
-			case PCW_WIDGET_COMPANY_PASSWORD:
-				if (this->window_number == _local_player) ShowNetworkCompanyPasswordWindow(this);
+			case CW_WIDGET_COMPANY_PASSWORD:
+				if (this->window_number == _local_company) ShowNetworkCompanyPasswordWindow(this);
 				break;
 #endif /* ENABLE_NETWORK */
 		}
@@ -1317,7 +1312,7 @@ struct PlayerCompanyWindow : Window
 	{
 		if (DoCommandP(tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
 			ResetObjectToPlace();
-			this->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // this button can now behave as a normal push button
+			this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // this button can now behave as a normal push button
 			this->RaiseButtons();
 	}
 
@@ -1334,29 +1329,29 @@ struct PlayerCompanyWindow : Window
 		switch (this->query_widget) {
 			default: NOT_REACHED();
 
-			case PCW_WIDGET_PRESIDENT_NAME:
+			case CW_WIDGET_PRESIDENT_NAME:
 				DoCommandP(0, 0, 0, NULL, CMD_RENAME_PRESIDENT | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
 				break;
 
-			case PCW_WIDGET_COMPANY_NAME:
+			case CW_WIDGET_COMPANY_NAME:
 				DoCommandP(0, 0, 0, NULL, CMD_RENAME_COMPANY | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
 				break;
 		}
 	}
 };
 
-static const WindowDesc _player_company_desc = {
+static const WindowDesc _company_desc = {
 	WDP_AUTO, WDP_AUTO, 360, 170, 360, 170,
 	WC_COMPANY, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_player_company_widgets,
+	_company_widgets,
 };
 
-void ShowPlayerCompany(PlayerID player)
+void ShowCompany(CompanyID company)
 {
-	if (!IsValidPlayerID(player)) return;
+	if (!IsValidCompanyID(company)) return;
 
-	AllocateWindowDescFront<PlayerCompanyWindow>(&_player_company_desc, player);
+	AllocateWindowDescFront<CompanyWindow>(&_company_desc, company);
 }
 
 
@@ -1369,15 +1364,15 @@ struct BuyCompanyWindow : Window {
 
 	virtual void OnPaint()
 	{
-		Player *p = GetPlayer((PlayerID)this->window_number);
+		Company *c = GetCompany((CompanyID)this->window_number);
 		SetDParam(0, STR_COMPANY_NAME);
-		SetDParam(1, p->index);
+		SetDParam(1, c->index);
 		this->DrawWidgets();
 
-		DrawPlayerFace(p->face, p->player_color, 2, 16);
+		DrawCompanyManagerFace(c->face, c->colour, 2, 16);
 
-		SetDParam(0, p->index);
-		SetDParam(1, p->bankrupt_value);
+		SetDParam(0, c->index);
+		SetDParam(1, c->bankrupt_value);
 		DrawStringMultiCenter(214, 65, STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT, 238);
 	}
 
@@ -1412,9 +1407,9 @@ static const WindowDesc _buy_company_desc = {
 };
 
 
-void ShowBuyCompanyDialog(uint player)
+void ShowBuyCompanyDialog(CompanyID company)
 {
-	AllocateWindowDescFront<BuyCompanyWindow>(&_buy_company_desc, player);
+	AllocateWindowDescFront<BuyCompanyWindow>(&_buy_company_desc, company);
 }
 
 /********** HIGHSCORE and ENDGAME windows */
@@ -1465,9 +1460,9 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 
 		this->background_img = SPR_TYCOON_IMG1_BEGIN;
 
-		if (_local_player != PLAYER_SPECTATOR) {
-			const Player *p = GetPlayer(_local_player);
-			if (p->old_economy[0].performance_history == SCORE_MAX) {
+		if (_local_company != COMPANY_SPECTATOR) {
+			const Company *c = GetCompany(_local_company);
+			if (c->old_economy[0].performance_history == SCORE_MAX) {
 				this->background_img = SPR_TYCOON_IMG2_BEGIN;
 			}
 		}
@@ -1478,10 +1473,10 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 			this->window_number = lengthof(_highscore_table) - 1;
 			this->rank = SaveHighScoreValueNetwork();
 		} else {
-			/* in single player _local player is always valid */
-			const Player *p = GetPlayer(_local_player);
+			/* in single player _local company is always valid */
+			const Company *c = GetCompany(_local_company);
 			this->window_number = _settings_game.difficulty.diff_level;
-			this->rank = SaveHighScoreValue(p);
+			this->rank = SaveHighScoreValue(c);
 		}
 
 		MarkWholeScreenDirty();
@@ -1495,24 +1490,24 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 
 	virtual void OnPaint()
 	{
-		const Player *p;
+		const Company *c;
 		uint x, y;
 
 		this->SetupHighScoreEndWindow(&x, &y);
 
-		if (!IsValidPlayerID(_local_player)) return;
+		if (!IsValidCompanyID(_local_company)) return;
 
-		p = GetPlayer(_local_player);
+		c = GetCompany(_local_company);
 		/* We need to get performance from last year because the image is shown
 		 * at the start of the new year when these things have already been copied */
 		if (this->background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
-			SetDParam(0, p->index);
-			SetDParam(1, p->index);
-			SetDParam(2, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
+			SetDParam(0, c->index);
+			SetDParam(1, c->index);
+			SetDParam(2, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
 			DrawStringMultiCenter(x + (640 / 2), y + 107, STR_021C_OF_ACHIEVES_STATUS, 640);
 		} else {
-			SetDParam(0, p->index);
-			SetDParam(1, EndGameGetPerformanceTitleFromValue(p->old_economy[0].performance_history));
+			SetDParam(0, c->index);
+			SetDParam(1, EndGameGetPerformanceTitleFromValue(c->old_economy[0].performance_history));
 			DrawStringMultiCenter(x + (640 / 2), y + 157, STR_021B_ACHIEVES_STATUS, 640);
 		}
 	}

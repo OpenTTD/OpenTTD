@@ -9,9 +9,9 @@
 #include "player_base.h"
 
 /**
- * Remove all engine replacement settings for the player.
- * @param  erl The renewlist for a given player.
- * @return The new renewlist for the player.
+ * Remove all engine replacement settings for the company.
+ * @param  erl The renewlist for a given company.
+ * @return The new renewlist for the company.
  */
 void RemoveAllEngineReplacement(EngineRenewList *erl);
 
@@ -44,62 +44,62 @@ CommandCost AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, Engi
 CommandCost RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, GroupID group, uint32 flags);
 
 /**
- * Remove all engine replacement settings for the given player.
- * @param p Player.
+ * Remove all engine replacement settings for the given company.
+ * @param c the company.
  */
-static inline void RemoveAllEngineReplacementForPlayer(Player *p)
+static inline void RemoveAllEngineReplacementForCompany(Company *c)
 {
-	RemoveAllEngineReplacement(&p->engine_renew_list);
+	RemoveAllEngineReplacement(&c->engine_renew_list);
 }
 
 /**
- * Retrieve the engine replacement for the given player and original engine type.
- * @param p Player.
+ * Retrieve the engine replacement for the given company and original engine type.
+ * @param c company.
  * @param engine Engine type.
  * @return The engine type to replace with, or INVALID_ENGINE if no
  * replacement is in the list.
  */
-static inline EngineID EngineReplacementForPlayer(const Player *p, EngineID engine, GroupID group)
+static inline EngineID EngineReplacementForCompany(const Company *c, EngineID engine, GroupID group)
 {
-	return EngineReplacement(p->engine_renew_list, engine, group);
+	return EngineReplacement(c->engine_renew_list, engine, group);
 }
 
 /**
- * Check if a player has a replacement set up for the given engine.
- * @param p Player.
+ * Check if a company has a replacement set up for the given engine.
+ * @param c Company.
  * @param  engine Engine type to be replaced.
  * @return true if a replacement was set up, false otherwise.
  */
-static inline bool EngineHasReplacementForPlayer(const Player *p, EngineID engine, GroupID group)
+static inline bool EngineHasReplacementForCompany(const Company *c, EngineID engine, GroupID group)
 {
-	return EngineReplacementForPlayer(p, engine, group) != INVALID_ENGINE;
+	return EngineReplacementForCompany(c, engine, group) != INVALID_ENGINE;
 }
 
 /**
- * Add an engine replacement for the player.
- * @param p Player.
+ * Add an engine replacement for the company.
+ * @param c Company.
  * @param old_engine The original engine type.
  * @param new_engine The replacement engine type.
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-static inline CommandCost AddEngineReplacementForPlayer(Player *p, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags)
+static inline CommandCost AddEngineReplacementForCompany(Company *c, EngineID old_engine, EngineID new_engine, GroupID group, uint32 flags)
 {
-	return AddEngineReplacement(&p->engine_renew_list, old_engine, new_engine, group, flags);
+	return AddEngineReplacement(&c->engine_renew_list, old_engine, new_engine, group, flags);
 }
 
 /**
- * Remove an engine replacement for the player.
- * @param p Player.
+ * Remove an engine replacement for the company.
+ * @param c Company.
  * @param engine The original engine type.
  * @param flags The calling command flags.
  * @return 0 on success, CMD_ERROR on failure.
  */
-static inline CommandCost RemoveEngineReplacementForPlayer(Player *p, EngineID engine, GroupID group, uint32 flags)
+static inline CommandCost RemoveEngineReplacementForCompany(Company *c, EngineID engine, GroupID group, uint32 flags)
 {
-	return RemoveEngineReplacement(&p->engine_renew_list, engine, group, flags);
+	return RemoveEngineReplacement(&c->engine_renew_list, engine, group, flags);
 }
 
-bool CheckAutoreplaceValidity(EngineID from, EngineID to, PlayerID player);
+bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company);
 
 #endif /* AUTOREPLACE_FUNC_H */

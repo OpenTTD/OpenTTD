@@ -1,32 +1,32 @@
 /* $Id$ */
 
-/** @file player_type.h Types related to players. */
+/** @file company_type.h Types related to companies. */
 
-#ifndef PLAYER_TYPE_H
-#define PLAYER_TYPE_H
+#ifndef COMPANY_TYPE_H
+#define COMPANY_TYPE_H
 
 #include "core/enum_type.hpp"
 
 /**
- * Enum for all players/owners.
+ * Enum for all companies/owners.
  */
 enum Owner {
-	/* Player identifiers All players below MAX_PLAYERS are playable
-	 * players, above, they are special, computer controlled players */
-	OWNER_BEGIN     = 0x00, ///< First Owner
-	PLAYER_FIRST    = 0x00, ///< First Player, same as owner
-	MAX_PLAYERS     = 0x08, ///< Maximum numbe rof players
+	/* All companies below MAX_COMPANIES are playable
+	 * companies, above, they are special, computer controlled 'companies' */
+	OWNER_BEGIN     = 0x00, ///< First owner
+	COMPANY_FIRST   = 0x00, ///< First company, same as owner
+	MAX_COMPANIES   = 0x08, ///< Maximum number of companies
 	OWNER_TOWN      = 0x0F, ///< A town owns the tile, or a town is expanding
 	OWNER_NONE      = 0x10, ///< The tile has no ownership
 	OWNER_WATER     = 0x11, ///< The tile/execution is done by "water"
 	OWNER_END,              ///< Last + 1 owner
 	INVALID_OWNER   = 0xFF, ///< An invalid owner
-	INVALID_PLAYER  = 0xFF, ///< And a valid owner
+	INVALID_COMPANY = 0xFF, ///< An invalid company
 
-	/* 'Fake' Players used for networks */
-	PLAYER_INACTIVE_CLIENT = 253, ///< The client is joining
-	PLAYER_NEW_COMPANY     = 254, ///< The client wants a new company
-	PLAYER_SPECTATOR       = 255, ///< The client is spectating
+	/* 'Fake' companies used for networks */
+	COMPANY_INACTIVE_CLIENT = 253, ///< The client is joining
+	COMPANY_NEW_COMPANY     = 254, ///< The client wants a new company
+	COMPANY_SPECTATOR       = 255, ///< The client is spectating
 };
 DECLARE_POSTFIX_INCREMENT(Owner);
 
@@ -41,12 +41,12 @@ enum {
 template <> struct EnumPropsT<Owner> : MakeEnumPropsT<Owner, byte, OWNER_BEGIN, OWNER_END, INVALID_OWNER> {};
 typedef TinyEnumT<Owner> OwnerByte;
 
-typedef Owner PlayerID;
-typedef OwnerByte PlayerByte;
+typedef Owner CompanyID;
+typedef OwnerByte CompanyByte;
 
-typedef uint8 PlayerMask;
+typedef uint8 CompanyMask;
 
-struct Player;
-typedef uint32 PlayerFace; ///< player face bits, info see in player_face.h
+struct Company;
+typedef uint32 CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h
 
-#endif /* PLAYER_TYPE_H */
+#endif /* COMPANY_TYPE_H */

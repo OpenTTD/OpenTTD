@@ -267,16 +267,16 @@ uint32 IndustryGetVariable(const ResolverObject *object, byte variable, byte par
 		/* Layout number */
 		case 0x44: return industry->selected_layout;
 
-		/* player info */
+		/* Company info */
 		case 0x45: {
 			byte colours;
 			bool is_ai = false;
 
-			if (IsValidPlayerID(industry->founder)) {
-				const Player *p = GetPlayer(industry->founder);
-				const Livery *l = &p->livery[LS_DEFAULT];
+			if (IsValidCompanyID(industry->founder)) {
+				const Company *c = GetCompany(industry->founder);
+				const Livery *l = &c->livery[LS_DEFAULT];
 
-				is_ai = p->is_ai;
+				is_ai = c->is_ai;
 				colours = l->colour1 + l->colour2 * 16;
 			} else {
 				colours = GB(Random(), 0, 8);

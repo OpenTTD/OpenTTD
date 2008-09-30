@@ -573,7 +573,7 @@ static void NPFSaveTargetData(AyStar* as, OpenListNode* current)
 }
 
 /**
- * Finds out if a given player's vehicles are allowed to enter a given tile.
+ * Finds out if a given company's vehicles are allowed to enter a given tile.
  * @param owner    The owner of the vehicle.
  * @param tile     The tile that is about to be entered.
  * @param enterdir The direction in which the vehicle wants to enter the tile.

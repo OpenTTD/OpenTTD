@@ -80,7 +80,7 @@ enum ToolbarNormalWidgets {
 	TBN_SUBSIDIES,
 	TBN_STATIONS,
 	TBN_FINANCES,
-	TBN_PLAYERS,
+	TBN_COMPANIES,
 	TBN_GRAPHICS,
 	TBN_LEAGUE,
 	TBN_INDUSTRIES,
@@ -143,7 +143,7 @@ public:
 };
 
 /**
- * Drop down list entry for showing a company entry, with player 'blob'.
+ * Drop down list entry for showing a company entry, with companies 'blob'.
  */
 class DropDownListCompanyItem : public DropDownListItem {
 public:
@@ -161,20 +161,20 @@ public:
 	uint Width() const
 	{
 		char buffer[512];
-		PlayerID player = (PlayerID)result;
-		SetDParam(0, player);
-		SetDParam(1, player);
+		CompanyID company = (CompanyID)result;
+		SetDParam(0, company);
+		SetDParam(1, company);
 		GetString(buffer, STR_7021, lastof(buffer));
 		return GetStringBoundingBox(buffer).width + 19;
 	}
 
 	void Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const
 	{
-		PlayerID player = (PlayerID)result;
-		DrawPlayerIcon(player, x + 2, y + 1);
+		CompanyID company = (CompanyID)result;
+		DrawCompanyIcon(company, x + 2, y + 1);
 
-		SetDParam(0, player);
-		SetDParam(1, player);
+		SetDParam(0, company);
+		SetDParam(1, company);
 		int col;
 		if (this->greyed) {
 			col = TC_GREY;
@@ -201,21 +201,21 @@ static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count
 /**
  * Pop up a generic company list menu.
  */
-static void PopupMainPlayerToolbMenu(Window *w, int widget, int grey = 0)
+static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 {
 	DropDownList *list = new DropDownList();
 
-	if (widget == TBN_PLAYERS && _networking) {
-		/* Add the client list button for the Players menu */
+	if (widget == TBN_COMPANIES && _networking) {
+		/* Add the client list button for the companies menu */
 		list->push_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST, -1, false));
 	}
 
-	for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) {
-		if (!IsValidPlayerID(p)) continue;
-		list->push_back(new DropDownListCompanyItem(p, false, HasBit(grey, p)));
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		if (!IsValidCompanyID(c)) continue;
+		list->push_back(new DropDownListCompanyItem(c, false, HasBit(grey, c)));
 	}
 
-	ShowDropDownList(w, list, _local_player == PLAYER_SPECTATOR ? -1 : _local_player, widget, 240, true, true);
+	ShowDropDownList(w, list, _local_company == COMPANY_SPECTATOR ? -1 : _local_company, widget, 240, true, true);
 	SndPlayFx(SND_15_BEEP);
 }
 
@@ -418,31 +418,31 @@ static void MenuClickSubsidies(int index)
 
 static void ToolbarStationsClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, TBN_STATIONS);
+	PopupMainCompanyToolbMenu(w, TBN_STATIONS);
 }
 
 static void MenuClickStations(int index)
 {
-	ShowPlayerStations((PlayerID)index);
+	ShowCompanyStations((CompanyID)index);
 }
 
 /* --- Finances button menu --- */
 
 static void ToolbarFinancesClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, TBN_FINANCES);
+	PopupMainCompanyToolbMenu(w, TBN_FINANCES);
 }
 
 static void MenuClickFinances(int index)
 {
-	ShowPlayerFinances((PlayerID)index);
+	ShowCompanyFinances((CompanyID)index);
 }
 
 /* --- Company's button menu --- */
 
-static void ToolbarPlayersClick(Window *w)
+static void ToolbarCompaniesClick(Window *w)
 {
-	PopupMainPlayerToolbMenu(w, TBN_PLAYERS);
+	PopupMainCompanyToolbMenu(w, TBN_COMPANIES);
 }
 
 static void MenuClickCompany(int index)
@@ -450,7 +450,7 @@ static void MenuClickCompany(int index)
 	if (_networking && index == -1) {
 		ShowClientList();
 	} else {
-		ShowPlayerCompany((PlayerID)index);
+		ShowCompany((CompanyID)index);
 	}
 }
 
@@ -496,7 +496,7 @@ static void MenuClickLeague(int index)
 static void ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, TBN_INDUSTRIES, STR_INDUSTRY_DIR, (_current_player == PLAYER_SPECTATOR) ? 1 : 2);
+	PopupMainToolbMenu(w, TBN_INDUSTRIES, STR_INDUSTRY_DIR, (_current_company == COMPANY_SPECTATOR) ? 1 : 2);
 }
 
 static void MenuClickIndustry(int index)
@@ -517,7 +517,7 @@ static void ToolbarVehicleClick(Window *w, VehicleType veh)
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == veh && v->IsPrimaryVehicle()) ClrBit(dis, v->owner);
 	}
-	PopupMainPlayerToolbMenu(w, TBN_VEHICLESTART + veh, dis);
+	PopupMainCompanyToolbMenu(w, TBN_VEHICLESTART + veh, dis);
 }
 
 
@@ -528,7 +528,7 @@ static void ToolbarTrainClick(Window *w)
 
 static void MenuClickShowTrains(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, VEH_TRAIN);
+	ShowVehicleListWindow((CompanyID)index, VEH_TRAIN);
 }
 
 /* --- Road vehicle button menu --- */
@@ -540,7 +540,7 @@ static void ToolbarRoadClick(Window *w)
 
 static void MenuClickShowRoad(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, VEH_ROAD);
+	ShowVehicleListWindow((CompanyID)index, VEH_ROAD);
 }
 
 /* --- Ship button menu --- */
@@ -552,7 +552,7 @@ static void ToolbarShipClick(Window *w)
 
 static void MenuClickShowShips(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, VEH_SHIP);
+	ShowVehicleListWindow((CompanyID)index, VEH_SHIP);
 }
 
 /* --- Aircraft button menu --- */
@@ -564,7 +564,7 @@ static void ToolbarAirClick(Window *w)
 
 static void MenuClickShowAir(int index)
 {
-	ShowVehicleListWindow((PlayerID)index, VEH_AIRCRAFT);
+	ShowVehicleListWindow((CompanyID)index, VEH_AIRCRAFT);
 }
 
 /* --- Zoom in button --- */
@@ -591,11 +591,11 @@ static void ToolbarZoomOutClick(Window *w)
 
 static void ToolbarBuildRailClick(Window *w)
 {
-	const Player *p = GetPlayer(_local_player);
+	const Company *c = GetCompany(_local_company);
 	DropDownList *list = new DropDownList();
 	for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 		const RailtypeInfo *rti = GetRailTypeInfo(rt);
-		list->push_back(new DropDownListStringItem(rti->strings.menu_text, rt, !HasBit(p->avail_railtypes, rt)));
+		list->push_back(new DropDownListStringItem(rti->strings.menu_text, rt, !HasBit(c->avail_railtypes, rt)));
 	}
 	ShowDropDownList(w, list, _last_built_railtype, TBN_RAILS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
@@ -611,14 +611,14 @@ static void MenuClickBuildRail(int index)
 
 static void ToolbarBuildRoadClick(Window *w)
 {
-	const Player *p = GetPlayer(_local_player);
+	const Company *c = GetCompany(_local_company);
 	DropDownList *list = new DropDownList();
 	for (RoadType rt = ROADTYPE_BEGIN; rt != ROADTYPE_END; rt++) {
 		/* Highways don't exist */
 		if (rt == ROADTYPE_HWAY) continue;
 
 		/* The standard road button is *always* available */
-		list->push_back(new DropDownListStringItem(STR_180A_ROAD_CONSTRUCTION + rt, rt, !(HasBit(p->avail_roadtypes, rt) || rt == ROADTYPE_ROAD)));
+		list->push_back(new DropDownListStringItem(STR_180A_ROAD_CONSTRUCTION + rt, rt, !(HasBit(c->avail_roadtypes, rt) || rt == ROADTYPE_ROAD)));
 	}
 	ShowDropDownList(w, list, _last_built_roadtype, TBN_ROADS, 140, true, true);
 	SndPlayFx(SND_15_BEEP);
@@ -958,7 +958,7 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarSubsidiesClick,
 	ToolbarStationsClick,
 	ToolbarFinancesClick,
-	ToolbarPlayersClick,
+	ToolbarCompaniesClick,
 	ToolbarGraphsClick,
 	ToolbarLeagueClick,
 	ToolbarIndustryClick,
@@ -1001,9 +1001,9 @@ struct MainToolbarWindow : Window {
 		/* If spectator, disable all construction buttons
 		* ie : Build road, rail, ships, airports and landscaping
 		* Since enabled state is the default, just disable when needed */
-		this->SetWidgetsDisabledState(_current_player == PLAYER_SPECTATOR, TBN_RAILS, TBN_ROADS, TBN_WATER, TBN_AIR, TBN_LANDSCAPE, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(_current_company == COMPANY_SPECTATOR, TBN_RAILS, TBN_ROADS, TBN_WATER, TBN_AIR, TBN_LANDSCAPE, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
-		this->SetWidgetsDisabledState(ActivePlayerCount() == TBN_PAUSE, TBN_STATIONS, TBN_FINANCES, TBN_TRAINS, TBN_ROADVEHS, TBN_SHIPS, TBN_AIRCRAFTS, WIDGET_LIST_END);
+		this->SetWidgetsDisabledState(ActiveCompanyCount() == TBN_PAUSE, TBN_STATIONS, TBN_FINANCES, TBN_TRAINS, TBN_ROADVEHS, TBN_SHIPS, TBN_AIRCRAFTS, WIDGET_LIST_END);
 
 		this->SetWidgetDisabledState(TBN_RAILS, !CanBuildVehicleInfrastructure(VEH_TRAIN));
 		this->SetWidgetDisabledState(TBN_AIR, !CanBuildVehicleInfrastructure(VEH_AIRCRAFT));
@@ -1030,16 +1030,16 @@ struct MainToolbarWindow : Window {
 			case WKC_F4: ShowSmallMap(); break;
 			case WKC_F5: ShowTownDirectory(); break;
 			case WKC_F6: ShowSubsidiesList(); break;
-			case WKC_F7: ShowPlayerStations(_local_player); break;
-			case WKC_F8: ShowPlayerFinances(_local_player); break;
-			case WKC_F9: ShowPlayerCompany(_local_player); break;
+			case WKC_F7: ShowCompanyStations(_local_company); break;
+			case WKC_F8: ShowCompanyFinances(_local_company); break;
+			case WKC_F9: ShowCompany(_local_company); break;
 			case WKC_F10: ShowOperatingProfitGraph(); break;
 			case WKC_F11: ShowCompanyLeagueTable(); break;
 			case WKC_F12: ShowBuildIndustryWindow(); break;
-			case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, VEH_TRAIN); break;
-			case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, VEH_ROAD); break;
-			case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, VEH_SHIP); break;
-			case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, VEH_AIRCRAFT); break;
+			case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_company, VEH_TRAIN); break;
+			case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_company, VEH_ROAD); break;
+			case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_company, VEH_SHIP); break;
+			case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_company, VEH_AIRCRAFT); break;
 			case WKC_NUM_PLUS: // Fall through
 			case WKC_EQUALS: // Fall through
 			case WKC_SHIFT | WKC_EQUALS: // Fall through
@@ -1121,7 +1121,7 @@ static const Widget _toolb_normal_widgets[] = {
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_LIST,    STR_0173_DISPLAY_LIST_OF_COMPANY},  // TBN_STATIONS
 
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_FINANCE, STR_0177_DISPLAY_COMPANY_FINANCES}, // TBN_FINANCES
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_0178_DISPLAY_COMPANY_GENERAL},  // TBN_PLAYERS
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_0178_DISPLAY_COMPANY_GENERAL},  // TBN_COMPANIES
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_GRAPHS,          STR_0179_DISPLAY_GRAPHS},           // TBN_GRAPHICS
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_COMPANY_LEAGUE,  STR_017A_DISPLAY_COMPANY_LEAGUE},   // TBN_LEAGUE
 {     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,     0,     0,     0,    21, SPR_IMG_INDUSTRY,        STR_0312_FUND_CONSTRUCTION_OF_NEW}, // TBN_INDUSTRIES

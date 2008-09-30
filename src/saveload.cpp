@@ -1300,7 +1300,7 @@ extern const ChunkHandler _misc_chunk_handlers[];
 extern const ChunkHandler _name_chunk_handlers[];
 extern const ChunkHandler _cheat_chunk_handlers[] ;
 extern const ChunkHandler _setting_chunk_handlers[];
-extern const ChunkHandler _player_chunk_handlers[];
+extern const ChunkHandler _company_chunk_handlers[];
 extern const ChunkHandler _engine_chunk_handlers[];
 extern const ChunkHandler _veh_chunk_handlers[];
 extern const ChunkHandler _waypoint_chunk_handlers[];
@@ -1333,7 +1333,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	_town_chunk_handlers,
 	_sign_chunk_handlers,
 	_station_chunk_handlers,
-	_player_chunk_handlers,
+	_company_chunk_handlers,
 	_animated_tile_chunk_handlers,
 	_newgrf_chunk_handlers,
 	_group_chunk_handlers,

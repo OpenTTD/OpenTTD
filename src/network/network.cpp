@@ -47,7 +47,7 @@ bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkServerGameInfo _network_game_info;
-NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
+NetworkCompanyInfo _network_company_info[MAX_COMPANIES];
 NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 uint16 _network_own_client_index;
 uint16 _redirect_console_to_client;
@@ -155,7 +155,7 @@ byte NetworkSpectatorCount()
 	byte count = 0;
 
 	FOR_ALL_CLIENTS(cs) {
-		if (DEREF_CLIENT_INFO(cs)->client_playas == PLAYER_SPECTATOR) count++;
+		if (DEREF_CLIENT_INFO(cs)->client_playas == COMPANY_SPECTATOR) count++;
 	}
 
 	return count;
@@ -335,54 +335,54 @@ char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
 }
 
 /* Count the number of active clients connected */
-static uint NetworkCountPlayers()
+static uint NetworkCountActiveClients()
 {
 	NetworkTCPSocketHandler *cs;
 	uint count = 0;
 
 	FOR_ALL_CLIENTS(cs) {
 		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
-		if (IsValidPlayerID(ci->client_playas)) count++;
+		if (IsValidCompanyID(ci->client_playas)) count++;
 	}
 
 	return count;
 }
 
-static bool _min_players_paused = false;
+static bool _min_active_clients_paused = false;
 
-/* Check if the minimum number of players has been reached and pause or unpause the game as appropriate */
-void CheckMinPlayers()
+/* Check if the minimum number of active clients has been reached and pause or unpause the game as appropriate */
+void CheckMinActiveClients()
 {
 	if (!_network_dedicated) return;
 
-	if (NetworkCountPlayers() < _settings_client.network.min_players) {
-		if (_min_players_paused) return;
+	if (NetworkCountActiveClients() < _settings_client.network.min_active_clients) {
+		if (_min_active_clients_paused) return;
 
-		_min_players_paused = true;
+		_min_active_clients_paused = true;
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", NETWORK_SERVER_INDEX);
 	} else {
-		if (!_min_players_paused) return;
+		if (!_min_active_clients_paused) return;
 
-		_min_players_paused = false;
+		_min_active_clients_paused = false;
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", NETWORK_SERVER_INDEX);
 	}
 }
 
-/** Converts a string to ip/port/player
- *  Format: IP#player:port
+/** Converts a string to ip/port/company
+ *  Format: IP#company:port
  *
- * connection_string will be re-terminated to seperate out the hostname, and player and port will
- * be set to the player and port strings given by the user, inside the memory area originally
+ * connection_string will be re-terminated to seperate out the hostname, and company and port will
+ * be set to the company and port strings given by the user, inside the memory area originally
  * occupied by connection_string. */
-void ParseConnectionString(const char **player, const char **port, char *connection_string)
+void ParseConnectionString(const char **company, const char **port, char *connection_string)
 {
 	char *p;
 	for (p = connection_string; *p != '\0'; p++) {
 		switch (*p) {
 			case '#':
-				*player = p + 1;
+				*company = p + 1;
 				*p = '\0';
 				break;
 			case ':':
@@ -421,7 +421,7 @@ static NetworkTCPSocketHandler *NetworkAllocClient(SOCKET s)
 
 		cs->index = _network_client_index++;
 		ci->client_index = cs->index;
-		ci->client_playas = PLAYER_INACTIVE_CLIENT;
+		ci->client_playas = COMPANY_INACTIVE_CLIENT;
 		ci->join_date = _date;
 
 		InvalidateWindow(WC_CLIENT_LIST, 0);
@@ -495,7 +495,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 	cs->index = NETWORK_EMPTY_INDEX;
 	ci->client_index = NETWORK_EMPTY_INDEX;
 
-	CheckMinPlayers();
+	CheckMinActiveClients();
 }
 
 // A client wants to connect to a server
@@ -688,7 +688,7 @@ static void NetworkInitialize()
 
 	// Clean the client_info memory
 	memset(&_network_client_info, 0, sizeof(_network_client_info));
-	memset(&_network_player_info, 0, sizeof(_network_player_info));
+	memset(&_network_company_info, 0, sizeof(_network_company_info));
 
 	_sync_frame = 0;
 	_network_first_time = true;
@@ -729,7 +729,7 @@ void NetworkAddServer(const char *b)
 {
 	if (*b != '\0') {
 		const char *port = NULL;
-		const char *player = NULL;
+		const char *company = NULL;
 		char host[NETWORK_HOSTNAME_LENGTH];
 		uint16 rport;
 
@@ -738,7 +738,7 @@ void NetworkAddServer(const char *b)
 		ttd_strlcpy(_settings_client.network.connect_to_ip, b, lengthof(_settings_client.network.connect_to_ip));
 		rport = NETWORK_DEFAULT_PORT;
 
-		ParseConnectionString(&player, &port, host);
+		ParseConnectionString(&company, &port, host);
 		if (port != NULL) rport = atoi(port);
 
 		NetworkUDPQueryServer(host, rport, true);
@@ -812,9 +812,9 @@ static void NetworkInitGameInfo()
 	memset(ci, 0, sizeof(*ci));
 
 	ci->client_index = NETWORK_SERVER_INDEX;
-	ci->client_playas = _network_dedicated ? PLAYER_SPECTATOR : _local_player;
+	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : _local_company;
 
-	ttd_strlcpy(ci->client_name, _settings_client.network.player_name, sizeof(ci->client_name));
+	ttd_strlcpy(ci->client_name, _settings_client.network.client_name, sizeof(ci->client_name));
 	ttd_strlcpy(ci->unique_id, _settings_client.network.network_id, sizeof(ci->unique_id));
 }
 
@@ -841,8 +841,8 @@ bool NetworkServerStart()
 	_last_sync_frame = 0;
 	_network_own_client_index = NETWORK_SERVER_INDEX;
 
-	/* Non-dedicated server will always be player #1 */
-	if (!_network_dedicated) _network_playas = PLAYER_FIRST;
+	/* Non-dedicated server will always be company #1 */
+	if (!_network_dedicated) _network_playas = COMPANY_FIRST;
 
 	_network_clients_connected = 0;
 
@@ -853,8 +853,8 @@ bool NetworkServerStart()
 	// if the server is dedicated ... add some other script
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
 
-	_min_players_paused = false;
-	CheckMinPlayers();
+	_min_active_clients_paused = false;
+	CheckMinActiveClients();
 
 	/* Try to register us to the master server */
 	_network_last_advertise_frame = 0;
@@ -1077,7 +1077,7 @@ void NetworkGameLoop()
 
 		while (f != NULL && !feof(f)) {
 			if (cp != NULL && _date == next_date && _date_fract == next_date_fract) {
-				_current_player = cp->player;
+				_current_company = cp->company;
 				_cmd_text = cp->text;
 				DoCommandP(cp->tile, cp->p1, cp->p2, NULL, cp->cmd);
 				free(cp);
@@ -1090,9 +1090,9 @@ void NetworkGameLoop()
 			if (fgets(buff, lengthof(buff), f) == NULL) break;
 			if (strncmp(buff, "ddc:cmd:", 8) != 0) continue;
 			cp = MallocT<CommandPacket>(1);
-			int player;
-			sscanf(&buff[8], "%d;%d;%d;%d;%d;%d;%d;%s", &next_date, &next_date_fract, &player, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
-			cp->player = (Owner)player;
+			int company;
+			sscanf(&buff[8], "%d;%d;%d;%d;%d;%d;%d;%s", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
+			cp->company = (CompanyID)company;
 		}
 #endif /* DEBUG_DUMP_COMMANDS */
 
@@ -1238,4 +1238,4 @@ bool IsNetworkCompatibleVersion(const char *other)
 #endif /* ENABLE_NETWORK */
 
 /* NOTE: this variable needs to be always available */
-PlayerID _network_playas;
+CompanyID _network_playas;

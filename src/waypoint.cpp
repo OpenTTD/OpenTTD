@@ -144,7 +144,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 	uint thres = 8;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->deleted && (wp->owner == OWNER_NONE || wp->owner == _current_player)) {
+		if (wp->deleted && (wp->owner == OWNER_NONE || wp->owner == _current_company)) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
 			if (cur_dist < thres) {
@@ -310,7 +310,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 
 	/* Make sure it's a waypoint */
 	if (!IsRailWaypointTile(tile) ||
-			(!CheckTileOwnership(tile) && _current_player != OWNER_WATER) ||
+			(!CheckTileOwnership(tile) && _current_company != OWNER_WATER) ||
 			!EnsureNoVehicleOnGround(tile)) {
 		return CMD_ERROR;
 	}

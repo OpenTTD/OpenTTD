@@ -363,7 +363,7 @@ static void FixOldVehicles()
 		 * or vehicles that could not have an order would still have a
 		 * (loading) order which causes assertions and the like later on.
 		 */
-		if (!IsPlayerBuildableVehicleType(v) ||
+		if (!IsCompanyBuildableVehicleType(v) ||
 				(v->IsPrimaryVehicle() && v->current_order.IsType(OT_NOTHING))) {
 			v->current_order.MakeDummy();
 		}
@@ -770,60 +770,60 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	return true;
 }
 
-static PlayerID _current_player_id;
+static CompanyID _current_company_id;
 static int32 _old_yearly;
 
-static const OldChunks player_yearly_chunk[] = {
+static const OldChunks _company_yearly_chunk[] = {
 	OCL_VAR(  OC_INT32,   1, &_old_yearly ),
 	OCL_END()
 };
 
-static bool OldPlayerYearly(LoadgameState *ls, int num)
+static bool OldCompanyYearly(LoadgameState *ls, int num)
 {
 	int i;
-	Player *p = GetPlayer(_current_player_id);
+	Company *c = GetCompany(_current_company_id);
 
 	for (i = 0; i < 13; i++) {
-		if (!LoadChunk(ls, NULL, player_yearly_chunk)) return false;
+		if (!LoadChunk(ls, NULL, _company_yearly_chunk)) return false;
 
-		p->yearly_expenses[num][i] = _old_yearly;
+		c->yearly_expenses[num][i] = _old_yearly;
 	}
 
 	return true;
 }
 
-static const OldChunks player_economy_chunk[] = {
-	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, PlayerEconomyEntry, income ),
-	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, PlayerEconomyEntry, expenses ),
-	OCL_SVAR( OC_INT32, PlayerEconomyEntry, delivered_cargo ),
-	OCL_SVAR( OC_INT32, PlayerEconomyEntry, performance_history ),
-	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, PlayerEconomyEntry, company_value ),
+static const OldChunks _company_economy_chunk[] = {
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, CompanyEconomyEntry, income ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, CompanyEconomyEntry, expenses ),
+	OCL_SVAR( OC_INT32,                 CompanyEconomyEntry, delivered_cargo ),
+	OCL_SVAR( OC_INT32,                 CompanyEconomyEntry, performance_history ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, CompanyEconomyEntry, company_value ),
 
 	OCL_END()
 };
 
-static bool OldPlayerEconomy(LoadgameState *ls, int num)
+static bool OldCompanyEconomy(LoadgameState *ls, int num)
 {
 	int i;
-	Player *p = GetPlayer(_current_player_id);
+	Company *c = GetCompany(_current_company_id);
 
-	if (!LoadChunk(ls, &p->cur_economy, player_economy_chunk)) return false;
+	if (!LoadChunk(ls, &c->cur_economy, _company_economy_chunk)) return false;
 
 	/* Don't ask, but the number in TTD(Patch) are inversed to OpenTTD */
-	p->cur_economy.income   = -p->cur_economy.income;
-	p->cur_economy.expenses = -p->cur_economy.expenses;
+	c->cur_economy.income   = -c->cur_economy.income;
+	c->cur_economy.expenses = -c->cur_economy.expenses;
 
 	for (i = 0; i < 24; i++) {
-		if (!LoadChunk(ls, &p->old_economy[i], player_economy_chunk)) return false;
+		if (!LoadChunk(ls, &c->old_economy[i], _company_economy_chunk)) return false;
 
-		p->old_economy[i].income   = -p->old_economy[i].income;
-		p->old_economy[i].expenses = -p->old_economy[i].expenses;
+		c->old_economy[i].income   = -c->old_economy[i].income;
+		c->old_economy[i].expenses = -c->old_economy[i].expenses;
 	}
 
 	return true;
 }
 
-static const OldChunks player_ai_build_rec_chunk[] = {
+static const OldChunks _company_ai_build_rec_chunk[] = {
 	OCL_SVAR(   OC_TILE, AiBuildRec, spec_tile ),
 	OCL_SVAR(   OC_TILE, AiBuildRec, use_tile ),
 	OCL_SVAR(  OC_UINT8, AiBuildRec, rand_rng ),
@@ -842,216 +842,215 @@ static const OldChunks player_ai_build_rec_chunk[] = {
 
 static bool OldLoadAIBuildRec(LoadgameState *ls, int num)
 {
-	Player *p = GetPlayer(_current_player_id);
+	Company *c = GetCompany(_current_company_id);
 
 	switch (num) {
-		case 0: return LoadChunk(ls, &_players_ai[p->index].src, player_ai_build_rec_chunk);
-		case 1: return LoadChunk(ls, &_players_ai[p->index].dst, player_ai_build_rec_chunk);
-		case 2: return LoadChunk(ls, &_players_ai[p->index].mid1, player_ai_build_rec_chunk);
-		case 3: return LoadChunk(ls, &_players_ai[p->index].mid2, player_ai_build_rec_chunk);
+		case 0: return LoadChunk(ls, &_companies_ai[c->index].src,  _company_ai_build_rec_chunk);
+		case 1: return LoadChunk(ls, &_companies_ai[c->index].dst,  _company_ai_build_rec_chunk);
+		case 2: return LoadChunk(ls, &_companies_ai[c->index].mid1, _company_ai_build_rec_chunk);
+		case 3: return LoadChunk(ls, &_companies_ai[c->index].mid2, _company_ai_build_rec_chunk);
 	}
 
 	return false;
 }
-static const OldChunks player_ai_chunk[] = {
-	OCL_SVAR(  OC_UINT8, PlayerAI, state ),
+static const OldChunks _company_ai_chunk[] = {
+	OCL_SVAR(  OC_UINT8, CompanyAI, state ),
 	OCL_NULL( 1 ),         ///< Junk
-	OCL_SVAR(  OC_UINT8, PlayerAI, state_mode ),
-	OCL_SVAR( OC_UINT16, PlayerAI, state_counter ),
-	OCL_SVAR( OC_UINT16, PlayerAI, timeout_counter ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, state_mode ),
+	OCL_SVAR( OC_UINT16, CompanyAI, state_counter ),
+	OCL_SVAR( OC_UINT16, CompanyAI, timeout_counter ),
 
 	OCL_CHUNK( 4, OldLoadAIBuildRec ),
 
 	OCL_NULL( 20 ),        ///< More junk
 
-	OCL_SVAR(  OC_UINT8, PlayerAI, cargo_type ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, num_wagons ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, build_kind ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, num_build_rec ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, num_loco_to_build ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, num_want_fullload ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, cargo_type ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, num_wagons ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, build_kind ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, num_build_rec ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, num_loco_to_build ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, num_want_fullload ),
 
 	OCL_NULL( 14 ),        ///< Oh no more junk :|
 
 	OCL_NULL( 2 ),         ///< Loco-id, not used
 
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[0] ),
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[1] ),
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[2] ),
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[3] ),
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[4] ),
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[5] ),
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[6] ),
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[7] ),
-	OCL_SVAR( OC_UINT16, PlayerAI, wagon_list[8] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[0] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[1] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[2] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[3] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[4] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[5] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[6] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[7] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[8] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[9] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[10] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[11] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[12] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[13] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[14] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[15] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[16] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[17] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[18] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, order_list_blocks[19] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[0] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[1] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[2] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[3] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[4] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[5] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[6] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[7] ),
+	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[8] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[0] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[1] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[2] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[3] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[4] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[5] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[6] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[7] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[8] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[9] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[10] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[11] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[12] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[13] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[14] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[15] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[16] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[17] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[18] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[19] ),
 
-	OCL_SVAR( OC_UINT16, PlayerAI, start_tile_a ),
-	OCL_SVAR( OC_UINT16, PlayerAI, start_tile_b ),
-	OCL_SVAR( OC_UINT16, PlayerAI, cur_tile_a ),
-	OCL_SVAR( OC_UINT16, PlayerAI, cur_tile_b ),
+	OCL_SVAR( OC_UINT16, CompanyAI, start_tile_a ),
+	OCL_SVAR( OC_UINT16, CompanyAI, start_tile_b ),
+	OCL_SVAR( OC_UINT16, CompanyAI, cur_tile_a ),
+	OCL_SVAR( OC_UINT16, CompanyAI, cur_tile_b ),
 
-	OCL_SVAR(  OC_UINT8, PlayerAI, start_dir_a ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, start_dir_b ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, cur_dir_a ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, cur_dir_b ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, start_dir_a ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, start_dir_b ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, cur_dir_a ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, cur_dir_b ),
 
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_tile_count ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_tile_count ),
 
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[0] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[0] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[1] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[1] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[2] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[2] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[3] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[3] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[4] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[4] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[5] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[5] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[6] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[6] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[7] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[7] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[8] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[8] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[9] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[9] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[10] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[10] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[11] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[11] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[12] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[12] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[13] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[13] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[14] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[14] ),
-	OCL_SVAR(   OC_TILE, PlayerAI, banned_tiles[15] ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, banned_val[15] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[0] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[0] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[1] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[1] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[2] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[2] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[3] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[3] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[4] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[4] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[5] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[5] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[6] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[6] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[7] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[7] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[8] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[8] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[9] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[9] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[10] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[10] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[11] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[11] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[12] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[12] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[13] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[13] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[14] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[14] ),
+	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[15] ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[15] ),
 
-	OCL_SVAR(  OC_UINT8, PlayerAI, railtype_to_use ),
-	OCL_SVAR(  OC_UINT8, PlayerAI, route_type_mask ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, railtype_to_use ),
+	OCL_SVAR(  OC_UINT8, CompanyAI, route_type_mask ),
 
 	OCL_END()
 };
 
-static bool OldPlayerAI(LoadgameState *ls, int num)
+static bool OldCompanyAI(LoadgameState *ls, int num)
 {
-	return LoadChunk(ls, &_players_ai[_current_player_id], player_ai_chunk);
+	return LoadChunk(ls, &_companies_ai[_current_company_id], _company_ai_chunk);
 }
 
 uint8 ai_tick;
-static const OldChunks player_chunk[] = {
+static const OldChunks _company_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
-	OCL_SVAR( OC_UINT32, Player, name_2 ),
-	OCL_SVAR( OC_UINT32, Player, face ),
+	OCL_SVAR( OC_UINT32, Company, name_2 ),
+	OCL_SVAR( OC_UINT32, Company, face ),
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id_2 ),
-	OCL_SVAR( OC_UINT32, Player, president_name_2 ),
+	OCL_SVAR( OC_UINT32, Company, president_name_2 ),
 
-	OCL_SVAR(  OC_INT32, Player, player_money ),
-	OCL_SVAR(  OC_INT32, Player, current_loan ),
+	OCL_SVAR(  OC_INT32, Company, money ),
+	OCL_SVAR(  OC_INT32, Company, current_loan ),
 
-	OCL_SVAR(  OC_UINT8, Player, player_color ),
-	OCL_SVAR(  OC_UINT8, Player, player_money_fraction ),
-	OCL_SVAR(  OC_UINT8, Player, quarters_of_bankrupcy ),
-	OCL_SVAR(  OC_UINT8, Player, bankrupt_asked ),
-	OCL_SVAR( OC_FILE_U32 | OC_VAR_I64, Player, bankrupt_value ),
-	OCL_SVAR( OC_UINT16, Player, bankrupt_timeout ),
+	OCL_SVAR(  OC_UINT8, Company, colour ),
+	OCL_SVAR(  OC_UINT8, Company, money_fraction ),
+	OCL_SVAR(  OC_UINT8, Company, quarters_of_bankrupcy ),
+	OCL_SVAR(  OC_UINT8, Company, bankrupt_asked ),
+	OCL_SVAR( OC_FILE_U32 | OC_VAR_I64, Company, bankrupt_value ),
+	OCL_SVAR( OC_UINT16, Company, bankrupt_timeout ),
 
-	OCL_SVAR( OC_UINT32, Player, cargo_types ),
+	OCL_SVAR( OC_UINT32, Company, cargo_types ),
 
-	OCL_CHUNK( 3, OldPlayerYearly ),
-	OCL_CHUNK( 1, OldPlayerEconomy ),
+	OCL_CHUNK( 3, OldCompanyYearly ),
+	OCL_CHUNK( 1, OldCompanyEconomy ),
 
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Player, inaugurated_year),
-	OCL_SVAR(                  OC_TILE, Player, last_build_coordinate ),
-	OCL_SVAR(                 OC_UINT8, Player, num_valid_stat_ent ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32, Company, inaugurated_year),
+	OCL_SVAR(                  OC_TILE, Company, last_build_coordinate ),
+	OCL_SVAR(                 OC_UINT8, Company, num_valid_stat_ent ),
 
-	OCL_CHUNK( 1, OldPlayerAI ),
+	OCL_CHUNK( 1, OldCompanyAI ),
 
-	OCL_SVAR(  OC_UINT8, Player, block_preview ),
+	OCL_SVAR(  OC_UINT8, Company, block_preview ),
 	 OCL_VAR(  OC_UINT8,   1, &ai_tick ),
-	OCL_SVAR(  OC_UINT8, Player, avail_railtypes ),
-	OCL_SVAR(   OC_TILE, Player, location_of_HQ ),
-	OCL_SVAR(  OC_UINT8, Player, share_owners[0] ),
-	OCL_SVAR(  OC_UINT8, Player, share_owners[1] ),
-	OCL_SVAR(  OC_UINT8, Player, share_owners[2] ),
-	OCL_SVAR(  OC_UINT8, Player, share_owners[3] ),
+	OCL_SVAR(  OC_UINT8, Company, avail_railtypes ),
+	OCL_SVAR(   OC_TILE, Company, location_of_HQ ),
+	OCL_SVAR(  OC_UINT8, Company, share_owners[0] ),
+	OCL_SVAR(  OC_UINT8, Company, share_owners[1] ),
+	OCL_SVAR(  OC_UINT8, Company, share_owners[2] ),
+	OCL_SVAR(  OC_UINT8, Company, share_owners[3] ),
 
 	OCL_NULL( 8 ), ///< junk at end of chunk
 
 	OCL_END()
 };
 
-static bool LoadOldPlayer(LoadgameState *ls, int num)
+static bool LoadOldCompany(LoadgameState *ls, int num)
 {
-	Player *p = new (num) Player();
+	Company *c = new (num) Company();
 
-	_current_player_id = (PlayerID)num;
+	_current_company_id = (CompanyID)num;
 
-	if (!LoadChunk(ls, p, player_chunk)) return false;
+	if (!LoadChunk(ls, c, _company_chunk)) return false;
 
 	if (_old_string_id == 0) {
-		delete p;
+		delete c;
 		return true;
 	}
 
-	p->name_1 = RemapOldStringID(_old_string_id);
-	p->president_name_1 = RemapOldStringID(_old_string_id_2);
-	_players_ai[_current_player_id].tick = ai_tick;
+	c->name_1 = RemapOldStringID(_old_string_id);
+	c->president_name_1 = RemapOldStringID(_old_string_id_2);
+	_companies_ai[_current_company_id].tick = ai_tick;
 
 	if (num == 0) {
-		/* If the first player has no name, make sure we call it UNNAMED */
-		if (p->name_1 == 0)
-			p->name_1 = STR_SV_UNNAMED;
+		/* If the first company has no name, make sure we call it UNNAMED */
+		if (c->name_1 == 0)
+			c->name_1 = STR_SV_UNNAMED;
 	} else {
 		/* Beside some multiplayer maps (1 on 1), which we don't official support,
-		all other players are an AI.. mark them as such */
-		p->is_ai = true;
+		 * all other companys are an AI.. mark them as such */
+		c->is_ai = true;
 	}
 
 	/* Sometimes it is better to not ask.. in old scenarios, the money
-	was always 893288 pounds. In the newer versions this is correct,
-	but correct for those oldies
-	Ps: this also means that if you had exact 893288 pounds, you will go back
-	to 10000.. this is a very VERY small chance ;) */
-	if (p->player_money == 893288)
-		p->player_money = p->current_loan = 100000;
+	 * was always 893288 pounds. In the newer versions this is correct,
+	 * but correct for those oldies
+	 * Ps: this also means that if you had exact 893288 pounds, you will go back
+	 * to 10000.. this is a very VERY small chance ;) */
+	if (c->money == 893288) c->money = c->current_loan = 100000;
 
-	_player_colors[num] = p->player_color;
-	p->inaugurated_year -= ORIGINAL_BASE_YEAR;
-	if (p->location_of_HQ == 0xFFFF)
-		p->location_of_HQ = 0;
+	_company_colours[num] = c->colour;
+	c->inaugurated_year -= ORIGINAL_BASE_YEAR;
+	if (c->location_of_HQ == 0xFFFF)
+		c->location_of_HQ = 0;
 
-	/* State 20 for AI players is sell vehicle. Since the AI struct is not
-	 * really figured out as of now, _players_ai[p->index].cur_veh; needed for 'sell vehicle'
+	/* State 20 for AI companies is sell vehicle. Since the AI struct is not
+	 * really figured out as of now, _companies_ai[c->index].cur_veh; needed for 'sell vehicle'
 	 * is NULL and the function will crash. To fix this, just change the state
 	 * to some harmless state, like 'loop vehicle'; 1 */
-	if (!IsHumanPlayer((PlayerID)num) && _players_ai[p->index].state == 20) _players_ai[p->index].state = 1;
+	if (!IsHumanCompany((CompanyID)num) && _companies_ai[c->index].state == 20) _companies_ai[c->index].state = 1;
 
-	if (p->is_ai && (!_networking || _network_server) && _ai.enabled)
-		AI_StartNewAI(p->index);
+	if (c->is_ai && (!_networking || _network_server) && _ai.enabled)
+		AI_StartNewAI(c->index);
 
 	return true;
 }
@@ -1323,7 +1322,7 @@ static bool LoadOldSign(LoadgameState *ls, int num)
 }
 
 static const OldChunks engine_chunk[] = {
-	OCL_SVAR( OC_UINT16, Engine, player_avail ),
+	OCL_SVAR( OC_UINT16, Engine, company_avail ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Engine, intro_date ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Engine, age ),
 	OCL_SVAR( OC_UINT16, Engine, reliability ),
@@ -1337,7 +1336,7 @@ static const OldChunks engine_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Engine, lifelength ),
 	OCL_SVAR(  OC_UINT8, Engine, flags ),
-	OCL_SVAR(  OC_UINT8, Engine, preview_player_rank ),
+	OCL_SVAR(  OC_UINT8, Engine, preview_company_rank ),
 	OCL_SVAR(  OC_UINT8, Engine, preview_wait ),
 
 	OCL_NULL( 2 ), ///< Junk
@@ -1542,7 +1541,7 @@ static const OldChunks main_chunk[] = {
 
 	OCL_CHUNK(250, LoadOldStation ),
 	OCL_CHUNK( 90, LoadOldIndustry ),
-	OCL_CHUNK(  8, LoadOldPlayer ),
+	OCL_CHUNK(  8, LoadOldCompany ),
 
 	OCL_ASSERT( 0x547F2 ),
 
@@ -1577,16 +1576,16 @@ static const OldChunks main_chunk[] = {
 	OCL_CHUNK(256, LoadOldEngineName ),
 
 	OCL_NULL( 144 ),             ///< AI cargo-stuff, calculated in InitializeLandscapeVariables
-	OCL_NULL( 2 ),               ///< Company indexes of players, no longer in use
+	OCL_NULL( 2 ),               ///< Company indexes of companies, no longer in use
 
 	OCL_VAR ( OC_FILE_U8 | OC_VAR_U16,    1, &_station_tick_ctr ),
 
 	OCL_VAR (  OC_UINT8,    1, &_settings_game.locale.currency ),
 	OCL_VAR (  OC_UINT8,    1, &_settings_game.locale.units ),
-	OCL_VAR ( OC_FILE_U8 | OC_VAR_U32,    1, &_cur_player_tick_index ),
+	OCL_VAR ( OC_FILE_U8 | OC_VAR_U32,    1, &_cur_company_tick_index ),
 
 	OCL_NULL( 2 ),               ///< Date stuff, calculated automatically
-	OCL_NULL( 8 ),               ///< Player colors, calculated automatically
+	OCL_NULL( 8 ),               ///< Company colors, calculated automatically
 
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount ),
 	OCL_VAR (  OC_UINT8,    1, &_economy.infl_amount_pr ),
@@ -1693,7 +1692,7 @@ static bool LoadOldMain(LoadgameState *ls)
 	FOR_ALL_ENGINES(e) {
 		if (_date >= (e->intro_date + 365)) {
 			e->flags = (e->flags & ~ENGINE_EXCLUSIVE_PREVIEW) | ENGINE_AVAILABLE;
-			e->player_avail = (byte)-1;
+			e->company_avail = (CompanyMask)-1;
 		}
 	}
 

@@ -49,7 +49,7 @@ uint64 _decode_parameters[20];
 
 static char *StationGetSpecialString(char *buff, int x, const char* last);
 static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char* last);
-static char *GetSpecialPlayerNameString(char *buff, int ind, const int64 *argv, const char* last);
+static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const char* last);
 
 static char *FormatString(char *buff, const char *str, const int64 *argv, uint casei, const char* last);
 
@@ -130,7 +130,7 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 
 		case 14:
 			if (index >= 0xE4)
-				return GetSpecialPlayerNameString(buffr, index - 0xE4, argv, last);
+				return GetSpecialNameString(buffr, index - 0xE4, argv, last);
 			break;
 
 		case 15:
@@ -959,39 +959,39 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			}
 
 			case SCC_COMPANY_NAME: { // {COMPANY}
-				const Player *p = GetPlayer((PlayerID)GetInt32(&argv));
+				const Company *c = GetCompany((CompanyID)GetInt32(&argv));
 
-				if (p->name != NULL) {
-					buff = strecpy(buff, p->name, last);
+				if (c->name != NULL) {
+					buff = strecpy(buff, c->name, last);
 				} else {
 					int64 args[1];
-					args[0] = p->name_2;
-					buff = GetStringWithArgs(buff, p->name_1, args, last);
+					args[0] = c->name_2;
+					buff = GetStringWithArgs(buff, c->name_1, args, last);
 				}
 				break;
 			}
 
 			case SCC_COMPANY_NUM: { // {COMPANYNUM}
-				PlayerID player = (PlayerID)GetInt32(&argv);
+				CompanyID company = (CompanyID)GetInt32(&argv);
 
-				/* Nothing is added for AI or inactive players */
-				if (IsValidPlayerID(player) && IsHumanPlayer(player)) {
+				/* Nothing is added for AI or inactive companies */
+				if (IsValidCompanyID(company) && IsHumanCompany(company)) {
 					int64 args[1];
-					args[0] = player + 1;
+					args[0] = company + 1;
 					buff = GetStringWithArgs(buff, STR_7002_PLAYER, args, last);
 				}
 				break;
 			}
 
 			case SCC_PLAYER_NAME: { // {PLAYERNAME}
-				const Player *p = GetPlayer((PlayerID)GetInt32(&argv));
+				const Company *c = GetCompany((CompanyID)GetInt32(&argv));
 
-				if (p->president_name != NULL) {
-					buff = strecpy(buff, p->president_name, last);
+				if (c->president_name != NULL) {
+					buff = strecpy(buff, c->president_name, last);
 				} else {
 					int64 args[1];
-					args[0] = p->president_name_2;
-					buff = GetStringWithArgs(buff, p->president_name_1, args, last);
+					args[0] = c->president_name_2;
+					buff = GetStringWithArgs(buff, c->president_name_1, args, last);
 				}
 				break;
 			}
@@ -1165,7 +1165,7 @@ static char *GenPresidentName(char *buff, uint32 x, const char* last)
 	return buff;
 }
 
-static char *GetSpecialPlayerNameString(char *buff, int ind, const int64 *argv, const char* last)
+static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const char* last)
 {
 	switch (ind) {
 		case 1: // not used

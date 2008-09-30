@@ -776,12 +776,12 @@ void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *
 
 	for (; min < max; min++, y += step_size) {
 		const EngineID engine = (*eng_list)[min];
-		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_player here. */
-		const uint num_engines = GetGroupNumEngines(_local_player, selected_group, engine);
+		/* Note: num_engines is only used in the autoreplace GUI, so it is correct to use _local_company here. */
+		const uint num_engines = GetGroupNumEngines(_local_company, selected_group, engine);
 
 		SetDParam(0, engine);
 		DrawStringTruncated(x + x_offset, y, STR_ENGINE_NAME, engine == selected_id ? TC_WHITE : TC_BLACK, maxw);
-		DrawVehicleEngine(type, x, y + y_offset, engine, (count_location != 0 && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_player));
+		DrawVehicleEngine(type, x, y + y_offset, engine, (count_location != 0 && num_engines == 0) ? PALETTE_CRASH : GetEnginePalette(engine, _local_company));
 		if (count_location != 0) {
 			SetDParam(0, num_engines);
 			DrawStringRightAligned(count_location, y + (GetVehicleListHeight(type) == 14 ? 3 : 8), STR_TINY_BLACK, TC_FROMSTRING);
@@ -818,7 +818,7 @@ struct BuildVehicleWindow : Window {
 		this->resize.width  = this->width;
 		this->resize.height = this->height;
 
-		this->caption_color = (tile != 0) ? GetTileOwner(tile) : _local_player;
+		this->caption_color = (tile != 0) ? GetTileOwner(tile) : _local_company;
 
 		this->sel_engine      = INVALID_ENGINE;
 		this->regenerate_list = false;
@@ -925,7 +925,7 @@ struct BuildVehicleWindow : Window {
 			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (this->filter.railtype != RAILTYPE_END && !HasPowerOnRail(rvi->railtype, this->filter.railtype)) continue;
-			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_player)) continue;
+			if (!IsEngineBuildable(eid, VEH_TRAIN, _local_company)) continue;
 
 			*this->eng_list.Append() = eid;
 
@@ -962,7 +962,7 @@ struct BuildVehicleWindow : Window {
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
 			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_ROAD, _local_player)) continue;
+			if (!IsEngineBuildable(eid, VEH_ROAD, _local_company)) continue;
 			if (!HasBit(this->filter.roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD)) continue;
 			*this->eng_list.Append() = eid;
 
@@ -980,7 +980,7 @@ struct BuildVehicleWindow : Window {
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) {
 			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_SHIP, _local_player)) continue;
+			if (!IsEngineBuildable(eid, VEH_SHIP, _local_company)) continue;
 			*this->eng_list.Append() = eid;
 
 			if (eid == this->sel_engine) sel_id = eid;
@@ -1002,7 +1002,7 @@ struct BuildVehicleWindow : Window {
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) {
 			EngineID eid = e->index;
-			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_player)) continue;
+			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
 			if (!this->listview_mode && !CanAircraftUseStation(eid, this->window_number)) continue;
 
@@ -1207,7 +1207,7 @@ void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 	 *  number. */
 	uint num = (tile == 0) ? (int)type : tile;
 
-	assert(IsPlayerBuildableVehicleType(type));
+	assert(IsCompanyBuildableVehicleType(type));
 
 	DeleteWindowById(WC_BUILD_VEHICLE, num);
 

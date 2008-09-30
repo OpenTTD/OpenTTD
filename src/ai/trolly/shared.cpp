@@ -78,13 +78,13 @@ DiagDirection AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b)
 
 // This functions looks up if this vehicle is special for this AI
 //  and returns his flag
-uint AiNew_GetSpecialVehicleFlag(Player* p, Vehicle* v)
+uint AiNew_GetSpecialVehicleFlag(Company *c, Vehicle *v)
 {
 	uint i;
 
 	for (i = 0; i < AI_MAX_SPECIAL_VEHICLES; i++) {
-		if (_players_ainew[p->index].special_vehicles[i].veh_id == v->index) {
-			return _players_ainew[p->index].special_vehicles[i].flag;
+		if (_companies_ainew[c->index].special_vehicles[i].veh_id == v->index) {
+			return _companies_ainew[c->index].special_vehicles[i].flag;
 		}
 	}
 
@@ -93,19 +93,19 @@ uint AiNew_GetSpecialVehicleFlag(Player* p, Vehicle* v)
 }
 
 
-bool AiNew_SetSpecialVehicleFlag(Player* p, Vehicle* v, uint flag)
+bool AiNew_SetSpecialVehicleFlag(Company *c, Vehicle *v, uint flag)
 {
 	int new_id = -1;
 	uint i;
 
 	for (i = 0; i < AI_MAX_SPECIAL_VEHICLES; i++) {
-		if (_players_ainew[p->index].special_vehicles[i].veh_id == v->index) {
-			_players_ainew[p->index].special_vehicles[i].flag |= flag;
+		if (_companies_ainew[c->index].special_vehicles[i].veh_id == v->index) {
+			_companies_ainew[c->index].special_vehicles[i].flag |= flag;
 			return true;
 		}
 		if (new_id == -1 &&
-				_players_ainew[p->index].special_vehicles[i].veh_id == 0 &&
-				_players_ainew[p->index].special_vehicles[i].flag == 0) {
+				_companies_ainew[c->index].special_vehicles[i].veh_id == 0 &&
+				_companies_ainew[c->index].special_vehicles[i].flag == 0) {
 			new_id = i;
 		}
 	}
@@ -115,7 +115,7 @@ bool AiNew_SetSpecialVehicleFlag(Player* p, Vehicle* v, uint flag)
 		DEBUG(ai, 1, "special_vehicles list is too small");
 		return false;
 	}
-	_players_ainew[p->index].special_vehicles[new_id].veh_id = v->index;
-	_players_ainew[p->index].special_vehicles[new_id].flag = flag;
+	_companies_ainew[c->index].special_vehicles[new_id].veh_id = v->index;
+	_companies_ainew[c->index].special_vehicles[new_id].flag = flag;
 	return true;
 }

@@ -488,7 +488,7 @@ static void TileLoop_Town(TileIndex tile)
 		}
 	}
 
-	_current_player = OWNER_TOWN;
+	_current_company = OWNER_TOWN;
 
 	if (hs->building_flags & BUILDING_HAS_1_TILE &&
 			HasBit(t->flags12, TOWN_IS_FUNDED) &&
@@ -503,7 +503,7 @@ static void TileLoop_Town(TileIndex tile)
 		if (GB(r, 24, 8) >= 12) BuildTownHouse(t, tile);
 	}
 
-	_current_player = OWNER_NONE;
+	_current_company = OWNER_NONE;
 }
 
 /**
@@ -529,8 +529,8 @@ static CommandCost ClearTile_Town(TileIndex tile, byte flags)
 	_cleared_town_rating += rating;
 	Town *t = _cleared_town = GetTownByTile(tile);
 
-	if (IsValidPlayerID(_current_player)) {
-		if (rating > t->ratings[_current_player] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
+	if (IsValidCompanyID(_current_company)) {
+		if (rating > t->ratings[_current_company] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
 		}
@@ -638,7 +638,7 @@ static TrackStatus GetTileTrackStatus_Town(TileIndex tile, TransportType mode, u
 	return 0;
 }
 
-static void ChangeTileOwner_Town(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Town(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	/* not used */
 }
@@ -1284,9 +1284,9 @@ static bool GrowTown(Town *t)
 		{ 0,  0}
 	};
 
-	/* Current player is a town */
-	PlayerID old_player = _current_player;
-	_current_player = OWNER_TOWN;
+	/* Current "company" is a town */
+	CompanyID old_company = _current_company;
+	_current_company = OWNER_TOWN;
 
 	TileIndex tile = t->xy; // The tile we are working with ATM
 
@@ -1295,7 +1295,7 @@ static bool GrowTown(Town *t)
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
 		if (GetTownRoadBits(tile) != ROAD_NONE) {
 			int r = GrowTownAtRoad(t, tile);
-			_current_player = old_player;
+			_current_company = old_company;
 			return r != 0;
 		}
 		tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
@@ -1309,14 +1309,14 @@ static bool GrowTown(Town *t)
 		if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile, NULL) == SLOPE_FLAT) {
 			if (CmdSucceeded(DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR))) {
 				DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
-				_current_player = old_player;
+				_current_company = old_company;
 				return true;
 			}
 		}
 		tile = TILE_ADD(tile, ToTileIndexDiff(*ptr));
 	}
 
-	_current_player = old_player;
+	_current_company = old_company;
 	return false;
 }
 
@@ -1455,10 +1455,10 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 	t->act_food = 0;
 	t->act_water = 0;
 
-	for (uint i = 0; i != MAX_PLAYERS; i++) t->ratings[i] = RATING_INITIAL;
+	for (uint i = 0; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
 
 	t->have_ratings = 0;
-	t->exclusivity = INVALID_PLAYER;
+	t->exclusivity = INVALID_COMPANY;
 	t->exclusive_counter = 0;
 	t->statues = 0;
 
@@ -2143,17 +2143,17 @@ extern const byte _town_action_costs[8] = {
 
 static void TownActionAdvertiseSmall(Town *t)
 {
-	ModifyStationRatingAround(t->xy, _current_player, 0x40, 10);
+	ModifyStationRatingAround(t->xy, _current_company, 0x40, 10);
 }
 
 static void TownActionAdvertiseMedium(Town *t)
 {
-	ModifyStationRatingAround(t->xy, _current_player, 0x70, 15);
+	ModifyStationRatingAround(t->xy, _current_company, 0x70, 15);
 }
 
 static void TownActionAdvertiseLarge(Town *t)
 {
-	ModifyStationRatingAround(t->xy, _current_player, 0xA0, 20);
+	ModifyStationRatingAround(t->xy, _current_company, 0xA0, 20);
 }
 
 static void TownActionRoadRebuild(Town *t)
@@ -2161,7 +2161,7 @@ static void TownActionRoadRebuild(Town *t)
 	t->road_build_months = 6;
 
 	char *company_name = MallocT<char>(64);
-	SetDParam(0, _current_player);
+	SetDParam(0, _current_company);
 	GetString(company_name, STR_COMPANY_NAME, company_name + 64);
 
 	SetDParam(0, t->index);
@@ -2182,14 +2182,14 @@ static bool DoBuildStatueOfCompany(TileIndex tile, TownID town_id)
 		return false;
 	}
 
-	PlayerID old = _current_player;
-	_current_player = OWNER_NONE;
+	CompanyID old = _current_company;
+	_current_company = OWNER_NONE;
 	CommandCost r = DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-	_current_player = old;
+	_current_company = old;
 
 	if (CmdFailed(r)) return false;
 
-	MakeStatue(tile, _current_player, town_id);
+	MakeStatue(tile, _current_company, town_id);
 	MarkTileDirtyByTile(tile);
 
 	return true;
@@ -2217,7 +2217,7 @@ static void TownActionBuildStatue(Town *t)
 	TileIndex tile = t->xy;
 
 	if (CircularTileSearch(&tile, 9, SearchTileForStatue, &t->index)) {
-		SetBit(t->statues, _current_player); // Once found and built, "inform" the Town
+		SetBit(t->statues, _current_company); // Once found and built, "inform" the Town
 	}
 }
 
@@ -2237,35 +2237,35 @@ static void TownActionBuyRights(Town *t)
 	if (!_settings_game.economy.exclusive_rights) return;
 
 	t->exclusive_counter = 12;
-	t->exclusivity = _current_player;
+	t->exclusivity = _current_company;
 
-	ModifyStationRatingAround(t->xy, _current_player, 130, 17);
+	ModifyStationRatingAround(t->xy, _current_company, 130, 17);
 }
 
 static void TownActionBribe(Town *t)
 {
 	if (Chance16(1, 14)) {
 		/* set as unwanted for 6 months */
-		t->unwanted[_current_player] = 6;
+		t->unwanted[_current_company] = 6;
 
 		/* set all close by station ratings to 0 */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (st->town == t && st->owner == _current_player) {
+			if (st->town == t && st->owner == _current_company) {
 				for (CargoID i = 0; i < NUM_CARGO; i++) st->goods[i].rating = 0;
 			}
 		}
 
 		/* only show errormessage to the executing player. All errors are handled command.c
 		 * but this is special, because it can only 'fail' on a DC_EXEC */
-		if (IsLocalPlayer()) ShowErrorMessage(STR_BRIBE_FAILED_2, STR_BRIBE_FAILED, 0, 0);
+		if (IsLocalCompany()) ShowErrorMessage(STR_BRIBE_FAILED_2, STR_BRIBE_FAILED, 0, 0);
 
 		/* decrease by a lot!
 		 * ChangeTownRating is only for stuff in demolishing. Bribe failure should
 		 * be independent of any cheat settings
 		 */
-		if (t->ratings[_current_player] > RATING_BRIBE_DOWN_TO) {
-			t->ratings[_current_player] = RATING_BRIBE_DOWN_TO;
+		if (t->ratings[_current_company] > RATING_BRIBE_DOWN_TO) {
+			t->ratings[_current_company] = RATING_BRIBE_DOWN_TO;
 			InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
 		}
 	} else {
@@ -2285,7 +2285,7 @@ static TownActionProc *const _town_action_proc[] = {
 	TownActionBribe
 };
 
-extern uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t);
+extern uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
 
 /** Do a town action.
  * This performs an action such as advertising, building a statue, funding buildings,
@@ -2301,7 +2301,7 @@ CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	Town *t = GetTown(p1);
 
-	if (!HasBit(GetMaskOfTownActions(NULL, _current_player, t), p2)) return CMD_ERROR;
+	if (!HasBit(GetMaskOfTownActions(NULL, _current_company, t), p2)) return CMD_ERROR;
 
 	CommandCost cost(EXPENSES_OTHER, (_price.build_industry >> 8) * _town_action_costs[p2]);
 
@@ -2315,11 +2315,11 @@ CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static void UpdateTownGrowRate(Town *t)
 {
-	/* Increase player ratings if they're low */
-	const Player *p;
-	FOR_ALL_PLAYERS(p) {
-		if (t->ratings[p->index] < RATING_GROWTH_MAXIMUM) {
-			t->ratings[p->index] = min((int)RATING_GROWTH_MAXIMUM, t->ratings[p->index] + RATING_GROWTH_UP_STEP);
+	/* Increase company ratings if they're low */
+	const Company *c;
+	FOR_ALL_COMPANIES(c) {
+		if (t->ratings[c->index] < RATING_GROWTH_MAXIMUM) {
+			t->ratings[c->index] = min((int)RATING_GROWTH_MAXIMUM, t->ratings[c->index] + RATING_GROWTH_UP_STEP);
 		}
 	}
 
@@ -2330,12 +2330,12 @@ static void UpdateTownGrowRate(Town *t)
 		if (DistanceSquare(st->xy, t->xy) <= t->squared_town_zone_radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
-				if (IsValidPlayerID(st->owner)) {
+				if (IsValidCompanyID(st->owner)) {
 					int new_rating = t->ratings[st->owner] + RATING_STATION_UP_STEP;
 					t->ratings[st->owner] = min(new_rating, INT16_MAX); // do not let it overflow
 				}
 			} else {
-				if (IsValidPlayerID(st->owner)) {
+				if (IsValidCompanyID(st->owner)) {
 					int new_rating = t->ratings[st->owner] + RATING_STATION_DOWN_STEP;
 					t->ratings[st->owner] = max(new_rating, INT16_MIN);
 				}
@@ -2344,7 +2344,7 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	/* clamp all ratings to valid values */
-	for (uint i = 0; i < MAX_PLAYERS; i++) {
+	for (uint i = 0; i < MAX_COMPANIES; i++) {
 		t->ratings[i] = Clamp(t->ratings[i], RATING_MINIMUM, RATING_MAXIMUM);
 	}
 
@@ -2412,21 +2412,21 @@ static void UpdateTownAmounts(Town *t)
 
 static void UpdateTownUnwanted(Town *t)
 {
-	const Player *p;
+	const Company *c;
 
-	FOR_ALL_PLAYERS(p) {
-		if (t->unwanted[p->index] > 0) t->unwanted[p->index]--;
+	FOR_ALL_COMPANIES(c) {
+		if (t->unwanted[c->index] > 0) t->unwanted[c->index]--;
 	}
 }
 
 bool CheckIfAuthorityAllows(TileIndex tile)
 {
-	if (!IsValidPlayerID(_current_player)) return true;
+	if (!IsValidCompanyID(_current_company)) return true;
 
 	Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 	if (t == NULL) return true;
 
-	if (t->ratings[_current_player] > RATING_VERYPOOR) return true;
+	if (t->ratings[_current_company] > RATING_VERYPOOR) return true;
 
 	_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 	SetDParam(0, t->index);
@@ -2491,19 +2491,19 @@ static int GetRating(const Town *t)
 			return (*it).second;
 		}
 	}
-	return t->ratings[_current_player];
+	return t->ratings[_current_company];
 }
 
 void ChangeTownRating(Town *t, int add, int max)
 {
 	/* if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff */
 	if (t == NULL ||
-			!IsValidPlayerID(_current_player) ||
+			!IsValidCompanyID(_current_company) ||
 			(_cheats.magic_bulldozer.value && add < 0)) {
 		return;
 	}
 
-	SetBit(t->have_ratings, _current_player);
+	SetBit(t->have_ratings, _current_company);
 
 	int rating = GetRating(t);
 	if (add < 0) {
@@ -2520,7 +2520,7 @@ void ChangeTownRating(Town *t, int add, int max)
 	if (_town_rating_test) {
 		_town_test_ratings[t] = rating;
 	} else {
-		t->ratings[_current_player] = rating;
+		t->ratings[_current_company] = rating;
 		InvalidateWindow(WC_TOWN_AUTHORITY, t->index);
 	}
 }
@@ -2536,7 +2536,7 @@ static const int _default_rating_settings [3][3] = {
 bool CheckforTownRating(uint32 flags, Town *t, byte type)
 {
 	/* if magic_bulldozer cheat is active, town doesn't restrict your destructive actions */
-	if (t == NULL || !IsValidPlayerID(_current_player) || _cheats.magic_bulldozer.value)
+	if (t == NULL || !IsValidCompanyID(_current_company) || _cheats.magic_bulldozer.value)
 		return true;
 
 	/* check if you're allowed to remove the street/bridge/tunnel/industry
@@ -2562,7 +2562,7 @@ void TownsMonthlyLoop()
 		if (t->road_build_months != 0) t->road_build_months--;
 
 		if (t->exclusive_counter != 0)
-			if (--t->exclusive_counter == 0) t->exclusivity = INVALID_PLAYER;
+			if (--t->exclusive_counter == 0) t->exclusivity = INVALID_COMPANY;
 
 		UpdateTownGrowRate(t);
 		UpdateTownAmounts(t);

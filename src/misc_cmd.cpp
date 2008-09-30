@@ -25,26 +25,26 @@
 
 #include "table/strings.h"
 
-/** Change the player's face.
+/** Change the company manager's face.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 unused
  * @param p2 face bitmasked
  */
-CommandCost CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetCompanyManagerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	PlayerFace pf = (PlayerFace)p2;
+	CompanyManagerFace cmf = (CompanyManagerFace)p2;
 
-	if (!IsValidPlayerIDFace(pf)) return CMD_ERROR;
+	if (!IsValidCompanyManagerFace(cmf)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		GetPlayer(_current_player)->face = pf;
+		GetCompany(_current_company)->face = cmf;
 		MarkWholeScreenDirty();
 	}
 	return CommandCost();
 }
 
-/** Change the player's company-colour
+/** Change the company's company-colour
  * @param tile unused
  * @param flags operation to perform
  * @param p1 bitstuffed:
@@ -52,7 +52,7 @@ CommandCost CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * p1 bits 8-9 set in use state or first/second colour
  * @param p2 new colour for vehicles, property, etc.
  */
-CommandCost CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetCompanyColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (p2 >= 16) return CMD_ERROR; // max 16 colours
 
@@ -63,35 +63,35 @@ CommandCost CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	if (scheme >= LS_END || state >= 3) return CMD_ERROR;
 
-	Player *p = GetPlayer(_current_player);
+	Company *c = GetCompany(_current_company);
 
 	/* Ensure no two companies have the same primary colour */
 	if (scheme == LS_DEFAULT && state == 0) {
-		const Player *pp;
-		FOR_ALL_PLAYERS(pp) {
-			if (pp != p && pp->player_color == colour) return CMD_ERROR;
+		const Company *cc;
+		FOR_ALL_COMPANIES(cc) {
+			if (cc != c && cc->colour == colour) return CMD_ERROR;
 		}
 	}
 
 	if (flags & DC_EXEC) {
 		switch (state) {
 			case 0:
-				p->livery[scheme].colour1 = colour;
+				c->livery[scheme].colour1 = colour;
 
 				/* If setting the first colour of the default scheme, adjust the
-				 * original and cached player colours too. */
+				 * original and cached company colours too. */
 				if (scheme == LS_DEFAULT) {
-					_player_colors[_current_player] = colour;
-					p->player_color = colour;
+					_company_colours[_current_company] = colour;
+					c->colour = colour;
 				}
 				break;
 
 			case 1:
-				p->livery[scheme].colour2 = colour;
+				c->livery[scheme].colour2 = colour;
 				break;
 
 			case 2:
-				p->livery[scheme].in_use = colour != 0;
+				c->livery[scheme].in_use = colour != 0;
 
 				/* Now handle setting the default scheme's in_use flag.
 				 * This is different to the other schemes, as it signifies if any
@@ -101,16 +101,16 @@ CommandCost CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 				/* If enabling a scheme, set the default scheme to be in use too */
 				if (colour != 0) {
-					p->livery[LS_DEFAULT].in_use = true;
+					c->livery[LS_DEFAULT].in_use = true;
 					break;
 				}
 
 				/* Else loop through all schemes to see if any are left enabled.
 				 * If not, disable the default scheme too. */
-				p->livery[LS_DEFAULT].in_use = false;
+				c->livery[LS_DEFAULT].in_use = false;
 				for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
-					if (p->livery[scheme].in_use) {
-						p->livery[LS_DEFAULT].in_use = true;
+					if (c->livery[scheme].in_use) {
+						c->livery[LS_DEFAULT].in_use = true;
 						break;
 					}
 				}
@@ -134,9 +134,9 @@ CommandCost CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  */
 CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p = GetPlayer(_current_player);
+	Company *c = GetCompany(_current_company);
 
-	if (p->current_loan >= _economy.max_loan) {
+	if (c->current_loan >= _economy.max_loan) {
 		SetDParam(0, _economy.max_loan);
 		return_cmd_error(STR_702B_MAXIMUM_PERMITTED_LOAN);
 	}
@@ -145,20 +145,20 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	switch (p2) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Take some extra loan
-			loan = (IsHumanPlayer(_current_player) || _settings_game.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI;
+			loan = (IsHumanCompany(_current_company) || _settings_game.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI;
 			break;
 		case 1: // Take a loan as big as possible
-			loan = _economy.max_loan - p->current_loan;
+			loan = _economy.max_loan - c->current_loan;
 			break;
 	}
 
 	/* Overflow protection */
-	if (p->player_money + p->current_loan + loan < p->player_money) return CMD_ERROR;
+	if (c->money + c->current_loan + loan < c->money) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		p->player_money += loan;
-		p->current_loan += loan;
-		InvalidatePlayerWindows(p);
+		c->money        += loan;
+		c->current_loan += loan;
+		InvalidateCompanyWindows(c);
 	}
 
 	return CommandCost(EXPENSES_OTHER);
@@ -173,42 +173,42 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p = GetPlayer(_current_player);
+	Company *c = GetCompany(_current_company);
 
-	if (p->current_loan == 0) return_cmd_error(STR_702D_LOAN_ALREADY_REPAYED);
+	if (c->current_loan == 0) return_cmd_error(STR_702D_LOAN_ALREADY_REPAYED);
 
 	Money loan;
 	switch (p2) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Pay back one step
-			loan = min(p->current_loan, (Money)(IsHumanPlayer(_current_player) || _settings_game.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI);
+			loan = min(c->current_loan, (Money)(IsHumanCompany(_current_company) || _settings_game.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI);
 			break;
 		case 1: // Pay back as much as possible
-			loan = max(min(p->current_loan, p->player_money), (Money)LOAN_INTERVAL);
+			loan = max(min(c->current_loan, c->money), (Money)LOAN_INTERVAL);
 			loan -= loan % LOAN_INTERVAL;
 			break;
 	}
 
-	if (p->player_money < loan) {
+	if (c->money < loan) {
 		SetDParam(0, loan);
 		return_cmd_error(STR_702E_REQUIRED);
 	}
 
 	if (flags & DC_EXEC) {
-		p->player_money -= loan;
-		p->current_loan -= loan;
-		InvalidatePlayerWindows(p);
+		c->money        -= loan;
+		c->current_loan -= loan;
+		InvalidateCompanyWindows(c);
 	}
 	return CommandCost();
 }
 
 static bool IsUniqueCompanyName(const char *name)
 {
-	const Player *p;
+	const Company *c;
 	char buf[512];
 
-	FOR_ALL_PLAYERS(p) {
-		SetDParam(0, p->index);
+	FOR_ALL_COMPANIES(c) {
+		SetDParam(0, c->index);
 		GetString(buf, STR_COMPANY_NAME, lastof(buf));
 		if (strcmp(buf, name) == 0) return false;
 	}
@@ -232,9 +232,9 @@ CommandCost CmdRenameCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		Player *p = GetPlayer(_current_player);
-		free(p->name);
-		p->name = reset ? NULL : strdup(_cmd_text);
+		Company *c = GetCompany(_current_company);
+		free(c->name);
+		c->name = reset ? NULL : strdup(_cmd_text);
 		MarkWholeScreenDirty();
 	}
 
@@ -243,11 +243,11 @@ CommandCost CmdRenameCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static bool IsUniquePresidentName(const char *name)
 {
-	const Player *p;
+	const Company *c;
 	char buf[512];
 
-	FOR_ALL_PLAYERS(p) {
-		SetDParam(0, p->index);
+	FOR_ALL_COMPANIES(c) {
+		SetDParam(0, c->index);
 		GetString(buf, STR_PLAYER_NAME, lastof(buf));
 		if (strcmp(buf, name) == 0) return false;
 	}
@@ -271,15 +271,15 @@ CommandCost CmdRenamePresident(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	}
 
 	if (flags & DC_EXEC) {
-		Player *p = GetPlayer(_current_player);
-		free(p->president_name);
+		Company *c = GetCompany(_current_company);
+		free(c->president_name);
 
 		if (reset) {
-			p->president_name = NULL;
+			c->president_name = NULL;
 		} else {
-			p->president_name = strdup(_cmd_text);
+			c->president_name = strdup(_cmd_text);
 
-			if (p->name_1 == STR_SV_UNNAMED && p->name == NULL) {
+			if (c->name_1 == STR_SV_UNNAMED && c->name == NULL) {
 				char buf[80];
 
 				snprintf(buf, lengthof(buf), "%s Transport", _cmd_text);
@@ -358,34 +358,34 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return CommandCost(EXPENSES_OTHER, -(int32)p1);
 }
 
-/** Transfer funds (money) from one player to another.
+/** Transfer funds (money) from one company to another.
  * To prevent abuse in multiplayer games you can only send money to other
- * players if you have paid off your loan (either explicitely, or implicitely
+ * companies if you have paid off your loan (either explicitely, or implicitely
  * given the fact that you have more money than loan).
  * @param tile unused
  * @param flags operation to perform
  * @param p1 the amount of money to transfer; max 20.000.000
- * @param p2 the player to transfer the money to
+ * @param p2 the company to transfer the money to
  */
 CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!_settings_game.economy.give_money) return CMD_ERROR;
 
-	const Player *p = GetPlayer(_current_player);
+	const Company *c = GetCompany(_current_company);
 	CommandCost amount(EXPENSES_OTHER, min((Money)p1, (Money)20000000LL));
 
 	/* You can only transfer funds that is in excess of your loan */
-	if (p->player_money - p->current_loan < amount.GetCost() || amount.GetCost() <= 0) return CMD_ERROR;
-	if (!_networking || !IsValidPlayerID((PlayerID)p2)) return CMD_ERROR;
+	if (c->money - c->current_loan < amount.GetCost() || amount.GetCost() <= 0) return CMD_ERROR;
+	if (!_networking || !IsValidCompanyID((CompanyID)p2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		/* Add money to player */
-		PlayerID old_cp = _current_player;
-		_current_player = (PlayerID)p2;
-		SubtractMoneyFromPlayer(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
-		_current_player = old_cp;
+		/* Add money to company */
+		CompanyID old_company = _current_company;
+		_current_company = (CompanyID)p2;
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -amount.GetCost()));
+		_current_company = old_company;
 	}
 
-	/* Subtract money from local-player */
+	/* Subtract money from local-company */
 	return amount;
 }

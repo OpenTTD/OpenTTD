@@ -39,10 +39,10 @@ static bool EnginesGotCargoInCommon(EngineID engine_a, EngineID engine_b, Vehicl
  * Checks some basic properties whether autoreplace is allowed
  * @param from Origin engine
  * @param to Destination engine
- * @param player Player to check for
+ * @param company Company to check for
  * @return true if autoreplace is allowed
  */
-bool CheckAutoreplaceValidity(EngineID from, EngineID to, PlayerID player)
+bool CheckAutoreplaceValidity(EngineID from, EngineID to, CompanyID company)
 {
 	/* First we make sure that it's a valid type the user requested
 	 * check that it's an engine that is in the engine array */
@@ -53,8 +53,8 @@ bool CheckAutoreplaceValidity(EngineID from, EngineID to, PlayerID player)
 
 	VehicleType type = GetEngine(from)->type;
 
-	/* check that the new vehicle type is available to the player and its type is the same as the original one */
-	if (!IsEngineBuildable(to, type, player)) return false;
+	/* check that the new vehicle type is available to the company and its type is the same as the original one */
+	if (!IsEngineBuildable(to, type, company)) return false;
 
 	switch (type) {
 		case VEH_TRAIN: {
@@ -213,10 +213,10 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type, bool 
 
 /** Get the EngineID of the replacement for a vehicle
  * @param v The vehicle to find a replacement for
- * @param p The vehicle's owner (it's faster to forward the pointer than refinding it)
+ * @param c The vehicle's owner (it's faster to forward the pointer than refinding it)
  * @return the EngineID of the replacement. INVALID_ENGINE if no buildable replacement is found
  */
-static EngineID GetNewEngineType(const Vehicle *v, const Player *p)
+static EngineID GetNewEngineType(const Vehicle *v, const Company *c)
 {
 	assert(v->type != VEH_TRAIN || !IsArticulatedPart(v));
 
@@ -225,14 +225,14 @@ static EngineID GetNewEngineType(const Vehicle *v, const Player *p)
 		return INVALID_ENGINE;
 	}
 
-	EngineID e = EngineReplacementForPlayer(p, v->engine_type, v->group_id);
+	EngineID e = EngineReplacementForCompany(c, v->engine_type, v->group_id);
 
-	if (e != INVALID_ENGINE && IsEngineBuildable(e, v->type, _current_player)) {
+	if (e != INVALID_ENGINE && IsEngineBuildable(e, v->type, _current_company)) {
 		return e;
 	}
 
-	if (v->NeedsAutorenewing(p) && // replace if engine is too old
-	    IsEngineBuildable(v->engine_type, v->type, _current_player)) { // engine can still be build
+	if (v->NeedsAutorenewing(c) && // replace if engine is too old
+	    IsEngineBuildable(v->engine_type, v->type, _current_company)) { // engine can still be build
 		return v->engine_type;
 	}
 
@@ -251,8 +251,8 @@ static CommandCost BuildReplacementVehicle(Vehicle *old_veh, Vehicle **new_vehic
 	*new_vehicle = NULL;
 
 	/* Shall the vehicle be replaced? */
-	const Player *p = GetPlayer(_current_player);
-	EngineID e = GetNewEngineType(old_veh, p);
+	const Company *c = GetCompany(_current_company);
+	EngineID e = GetNewEngineType(old_veh, c);
 	if (e == INVALID_ENGINE) return CommandCost(); // neither autoreplace is set, nor autorenew is triggered
 
 	/* Does it need to be refitted */
@@ -627,14 +627,14 @@ CommandCost CmdAutoreplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint3
 		if (!v->IsPrimaryVehicle()) return CMD_ERROR;
 	}
 
-	const Player *p = GetPlayer(_current_player);
-	bool wagon_removal = p->renew_keep_length;
+	const Company *c = GetCompany(_current_company);
+	bool wagon_removal = c->renew_keep_length;
 
 	/* Test whether any replacement is set, before issuing a whole lot of commands that would end in nothing changed */
 	Vehicle *w = v;
 	bool any_replacements = false;
 	while (w != NULL && !any_replacements) {
-		any_replacements = (GetNewEngineType(w, p) != INVALID_ENGINE);
+		any_replacements = (GetNewEngineType(w, c) != INVALID_ENGINE);
 		w = (!free_wagon && w->type == VEH_TRAIN ? GetNextUnit(w) : NULL);
 	}
 

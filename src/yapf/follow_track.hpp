@@ -288,7 +288,7 @@ protected:
 				m_err = EC_NO_WAY;
 				return false;
 			}
-			// don't try to enter other player's depots
+			// don't try to enter other company's depots
 			if (GetTileOwner(m_new_tile) != m_veh_owner) {
 				m_err = EC_OWNER;
 				return false;

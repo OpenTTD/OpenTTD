@@ -71,10 +71,10 @@ static int CDECL EngineNumberSorter(const void *a, const void *b)
  */
 void InvalidateAutoreplaceWindow(EngineID e, GroupID id_g)
 {
-	Player *p = GetPlayer(_local_player);
-	uint num_engines = GetGroupNumEngines(_local_player, id_g, e);
+	Company *c = GetCompany(_local_company);
+	uint num_engines = GetGroupNumEngines(_local_company, id_g, e);
 
-	if (num_engines == 0 || p->num_engines[e] == 0) {
+	if (num_engines == 0 || c->num_engines[e] == 0) {
 		/* We don't have any of this engine type.
 		 * Either we just sold the last one, we build a new one or we stopped replacing it.
 		 * In all cases, we need to update the left list */
@@ -147,12 +147,12 @@ class ReplaceVehicleWindow : public Window {
 
 			if (draw_left) {
 				const GroupID selected_group = this->sel_group;
-				const uint num_engines = GetGroupNumEngines(_local_player, selected_group, eid);
+				const uint num_engines = GetGroupNumEngines(_local_company, selected_group, eid);
 
 				/* Skip drawing the engines we don't have any of and haven't set for replacement */
-				if (num_engines == 0 && EngineReplacementForPlayer(GetPlayer(_local_player), eid, selected_group) == INVALID_ENGINE) continue;
+				if (num_engines == 0 && EngineReplacementForCompany(GetCompany(_local_company), eid, selected_group) == INVALID_ENGINE) continue;
 			} else {
-				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_player)) continue;
+				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
 
 			*list->Append() = eid;
@@ -244,7 +244,7 @@ public:
 		this->resize.width  = this->width;
 		this->resize.height = this->height;
 
-		this->caption_color = _local_player;
+		this->caption_color = _local_company;
 		this->sel_group = id_g;
 		this->vscroll2.cap = this->vscroll.cap;   // these two are always the same
 
@@ -262,7 +262,7 @@ public:
 
 		if (this->update_left || this->update_right) this->GenerateLists();
 
-		Player *p = GetPlayer(_local_player);
+		Company *c = GetCompany(_local_company);
 		EngineID selected_id[2];
 		const GroupID selected_group = this->sel_group;
 
@@ -276,29 +276,29 @@ public:
 		this->SetWidgetDisabledState(RVW_WIDGET_START_REPLACE,
 										selected_id[0] == INVALID_ENGINE ||
 										selected_id[1] == INVALID_ENGINE ||
-										EngineReplacementForPlayer(p, selected_id[1], selected_group) != INVALID_ENGINE ||
-										EngineReplacementForPlayer(p, selected_id[0], selected_group) == selected_id[1]);
+										EngineReplacementForCompany(c, selected_id[1], selected_group) != INVALID_ENGINE ||
+										EngineReplacementForCompany(c, selected_id[0], selected_group) == selected_id[1]);
 
 		/* Disable the "Stop Replacing" button if:
 		 *   The left list (existing vehicle) is empty
 		 *   or The selected vehicle has no replacement set up */
 		this->SetWidgetDisabledState(RVW_WIDGET_STOP_REPLACE,
 										selected_id[0] == INVALID_ENGINE ||
-										!EngineHasReplacementForPlayer(p, selected_id[0], selected_group));
+										!EngineHasReplacementForCompany(c, selected_id[0], selected_group));
 
 		/* now the actual drawing of the window itself takes place */
 		SetDParam(0, _vehicle_type_names[this->window_number]);
 
 		if (this->window_number == VEH_TRAIN) {
 			/* set on/off for renew_keep_length */
-			SetDParam(1, p->renew_keep_length ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+			SetDParam(1, c->renew_keep_length ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
 
 			/* set wagon/engine button */
 			SetDParam(2, this->wagon_btnstate ? STR_ENGINES : STR_WAGONS);
 
 			/* sets the colour of that art thing */
-			this->widget[RVW_WIDGET_TRAIN_FLUFF_LEFT].color  = _player_colors[_local_player];
-			this->widget[RVW_WIDGET_TRAIN_FLUFF_RIGHT].color = _player_colors[_local_player];
+			this->widget[RVW_WIDGET_TRAIN_FLUFF_LEFT].color  = _company_colours[_local_company];
+			this->widget[RVW_WIDGET_TRAIN_FLUFF_RIGHT].color = _company_colours[_local_company];
 		}
 
 		if (this->window_number == VEH_TRAIN) {
@@ -311,11 +311,11 @@ public:
 
 		/* sets up the string for the vehicle that is being replaced to */
 		if (selected_id[0] != INVALID_ENGINE) {
-			if (!EngineHasReplacementForPlayer(p, selected_id[0], selected_group)) {
+			if (!EngineHasReplacementForCompany(c, selected_id[0], selected_group)) {
 				SetDParam(0, STR_NOT_REPLACING);
 			} else {
 				SetDParam(0, STR_ENGINE_NAME);
-				SetDParam(1, EngineReplacementForPlayer(p, selected_id[0], selected_group));
+				SetDParam(1, EngineReplacementForCompany(c, selected_id[0], selected_group));
 			}
 		} else {
 			SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
@@ -358,19 +358,19 @@ public:
 				break;
 
 			case RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN: { /* Railtype selection dropdown menu */
-				const Player *p = GetPlayer(_local_player);
+				const Company *c = GetCompany(_local_company);
 				DropDownList *list = new DropDownList();
 				for (RailType rt = RAILTYPE_BEGIN; rt != RAILTYPE_END; rt++) {
 					const RailtypeInfo *rti = GetRailTypeInfo(rt);
 
-					list->push_back(new DropDownListStringItem(rti->strings.replace_text, rt, !HasBit(p->avail_railtypes, rt)));
+					list->push_back(new DropDownListStringItem(rti->strings.replace_text, rt, !HasBit(c->avail_railtypes, rt)));
 				}
 				ShowDropDownList(this, list, sel_railtype, RVW_WIDGET_TRAIN_RAILTYPE_DROPDOWN);
 				break;
 			}
 
 			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: /* toggle renew_keep_length */
-				DoCommandP(0, 5, GetPlayer(_local_player)->renew_keep_length ? 0 : 1, NULL, CMD_SET_AUTOREPLACE);
+				DoCommandP(0, 5, GetCompany(_local_company)->renew_keep_length ? 0 : 1, NULL, CMD_SET_AUTOREPLACE);
 				break;
 
 			case RVW_WIDGET_START_REPLACE: { /* Start replacing */

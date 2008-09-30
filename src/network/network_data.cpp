@@ -36,12 +36,12 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 {
 	CommandPacket c;
 
-	c.player = _local_player;
-	c.next   = NULL;
-	c.tile   = tile;
-	c.p1     = p1;
-	c.p2     = p2;
-	c.cmd    = cmd;
+	c.company = _local_company;
+	c.next    = NULL;
+	c.tile    = tile;
+	c.p1      = p1;
+	c.p2      = p2;
+	c.cmd     = cmd;
 
 	c.callback = 0;
 	while (c.callback < _callback_table_count && _callback_table[c.callback] != callback) {
@@ -95,7 +95,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 // Execute a DoCommand we received from the network
 void NetworkExecuteCommand(CommandPacket *cp)
 {
-	_current_player = cp->player;
+	_current_company = cp->company;
 	_cmd_text = cp->text;
 	/* cp->callback is unsigned. so we don't need to do lower bounds checking. */
 	if (cp->callback > _callback_table_count) {
@@ -103,7 +103,7 @@ void NetworkExecuteCommand(CommandPacket *cp)
 		cp->callback = 0;
 	}
 
-	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->player, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
+	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
 
 	DoCommandP(cp->tile, cp->p1, cp->p2, _callback_table[cp->callback], cp->cmd | CMD_NETWORK_COMMAND, cp->my_cmd);
 }

@@ -17,7 +17,7 @@
 /**
  * This is the struct used by both client and server
  * some fields will be empty on the client (like game_password) by default
- * and only filled with data a player enters.
+ * and only filled with data a client enters.
  */
 struct NetworkServerGameInfo {
 	byte clients_on;                                ///< Current count of clients on server

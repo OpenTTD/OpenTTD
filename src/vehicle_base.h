@@ -256,7 +256,7 @@ public:
 	byte z_pos;
 	DirectionByte direction; // facing
 
-	PlayerByte owner;        // which player owns the vehicle?
+	OwnerByte owner;         // which company owns the vehicle?
 	byte spritenum;          // currently displayed sprite index
 	                         // 0xfd == custom sprite, 0xfe == custom second head sprite
 	                         // 0xff == reserved for another custom sprite
@@ -532,7 +532,7 @@ public:
 		this->service_interval = src->service_interval;
 	}
 
-	bool NeedsAutorenewing(const Player *p) const;
+	bool NeedsAutorenewing(const Company *c) const;
 
 	/**
 	 * Check if the vehicle needs to go to a depot in near future (if a opportunity presents itself) for service or replacement.

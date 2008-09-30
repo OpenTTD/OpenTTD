@@ -655,7 +655,7 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 			v->x_pos = x;
 			v->y_pos = y;
 			v->z_pos = GetSlopeZ(x, y);
-			v->owner = _current_player;
+			v->owner = _current_company;
 			v->u.rail.track = TRACK_BIT_DEPOT;
 			v->vehstatus = VS_HIDDEN | VS_DEFPAL;
 
@@ -692,10 +692,10 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 			UpdateTrainGroupID(v->First());
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-			if (IsLocalPlayer()) {
+			if (IsLocalCompany()) {
 				InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
 			}
-			GetPlayer(_current_player)->num_engines[engine]++;
+			GetCompany(_current_company)->num_engines[engine]++;
 		}
 	}
 
@@ -759,14 +759,14 @@ static void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool buildin
  */
 CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	/* Check if the engine-type is valid (for the player) */
-	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_player)) return_cmd_error(STR_RAIL_VEHICLE_NOT_AVAILABLE);
+	/* Check if the engine-type is valid (for the company) */
+	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_company)) return_cmd_error(STR_RAIL_VEHICLE_NOT_AVAILABLE);
 
 	/* Check if the train is actually being built in a depot belonging
-	 * to the player. Doesn't matter if only the cost is queried */
+	 * to the company. Doesn't matter if only the cost is queried */
 	if (!(flags & DC_QUERY_COST)) {
 		if (!IsRailDepotTile(tile)) return CMD_ERROR;
-		if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
+		if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
 	}
 
 	const RailVehicleInfo *rvi = RailVehInfo(p1);
@@ -807,7 +807,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			v->unitnumber = unit_num;
 			v->direction = DiagDirToDir(dir);
 			v->tile = tile;
-			v->owner = _current_player;
+			v->owner = _current_company;
 			v->x_pos = x;
 			v->y_pos = y;
 			v->z_pos = GetSlopeZ(x, y);
@@ -874,11 +874,11 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 			InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 			InvalidateWindow(WC_COMPANY, v->owner);
-			if (IsLocalPlayer()) {
+			if (IsLocalCompany()) {
 				InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
 			}
 
-			GetPlayer(_current_player)->num_engines[p1]++;
+			GetCompany(_current_company)->num_engines[p1]++;
 		}
 	}
 
@@ -1450,7 +1450,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 							new_f->CopyVehicleConfigAndStatistics(first);
 
 							/* If we deleted a window then open a new one for the 'new' train */
-							if (IsLocalPlayer() && w != NULL) ShowVehicleViewWindow(new_f);
+							if (IsLocalCompany() && w != NULL) ShowVehicleViewWindow(new_f);
 						}
 					} else {
 						/* We are selling a free wagon, and construct a new train at the same time.
@@ -2110,7 +2110,7 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 struct TrainFindDepotData {
 	uint best_length;
 	TileIndex tile;
-	PlayerID owner;
+	Owner owner;
 	/**
 	 * true if reversing is necessary for the train to get to this depot
 	 * This value is unused when new depot finding and NPF are both disabled
@@ -2227,7 +2227,7 @@ CommandCost CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_TRAIN, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot(VEH_TRAIN, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
@@ -2916,7 +2916,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 				/* it is first time the problem occurred, set the "path not found" flag */
 				SetBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 				/* and notify user about the event */
-				if (_settings_client.gui.lost_train_warn && v->owner == _local_player) {
+				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
 					SetDParam(0, v->unitnumber);
 					AddNewsItem(
 						STR_TRAIN_IS_LOST,
@@ -3272,7 +3272,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 		SetDParam(0, st->index);
 		AddNewsItem(
 			STR_8801_CITIZENS_CELEBRATE_FIRST,
-			v->owner == _local_player ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
+			v->owner == _local_company ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,
 			st->index
 		);
@@ -4254,7 +4254,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 
 			if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK) && v->load_unload_time_rem > 2 * _settings_game.pf.wait_for_pbs_path * DAY_TICKS) {
 				/* Show message to player. */
-				if (_settings_client.gui.lost_train_warn && v->owner == _local_player) {
+				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
 					SetDParam(0, v->unitnumber);
 					AddNewsItem(
 						STR_TRAIN_IS_STUCK,
@@ -4401,7 +4401,7 @@ void Train::OnNewDay()
 			this->profit_this_year -= cost.GetCost();
 			this->running_ticks = 0;
 
-			SubtractMoneyFromPlayerFract(this->owner, cost);
+			SubtractMoneyFromCompanyFract(this->owner, cost);
 
 			InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 			InvalidateWindowClasses(WC_TRAINS_LIST);
@@ -4419,7 +4419,7 @@ void TrainsYearlyLoop()
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
 			/* show warning if train is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
-			if (_settings_client.gui.train_income_warn && v->owner == _local_player && v->age >= 730 && v->GetDisplayProfitThisYear() < 0) {
+			if (_settings_client.gui.train_income_warn && v->owner == _local_company && v->age >= 730 && v->GetDisplayProfitThisYear() < 0) {
 				SetDParam(1, v->GetDisplayProfitThisYear());
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(

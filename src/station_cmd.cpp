@@ -334,7 +334,7 @@ static Station *GetClosestStationFromTile(TileIndex tile)
 	Station *st;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->facilities == 0 && st->owner == _current_player) {
+		if (st->facilities == 0 && st->owner == _current_company) {
 			uint cur_dist = DistanceManhattan(tile, st->xy);
 
 			if (cur_dist < threshold) {
@@ -590,7 +590,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	if (old_acc == new_acc) return;
 
 	/* show a message to report that the acceptance was changed? */
-	if (show_msg && st->owner == _local_player && st->facilities) {
+	if (show_msg && st->owner == _local_company && st->facilities) {
 		/* List of accept and reject strings for different number of
 		 * cargo types */
 		static const StringID accept_msg[] = {
@@ -689,12 +689,12 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 		 *   1) The tile is "steep" (i.e. stretches two height levels)
 		 * -OR-
 		 *   2) The tile is non-flat if
-		 *     a) the player building is an "old-school" AI
+		 *     a) the company building is an "old-school" AI
 		 *   -OR-
 		 *     b) the build_on_slopes switch is disabled
 		 */
 		if (IsSteepSlope(tileh) ||
-				((_is_old_ai_player || !_settings_game.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {
+				((_is_old_ai_company || !_settings_game.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
@@ -919,7 +919,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 			}
 		} else {
 			/* There's no station here. Don't check the tiles surrounding this
-			 * one if the player wanted to build an adjacent station. */
+			 * one if the company wanted to build an adjacent station. */
 			if (HasBit(p1, 24)) check_surrounding = false;
 		}
 	}
@@ -935,12 +935,12 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 	if (st != NULL) {
 		/* Reuse an existing station. */
-		if (st->owner != _current_player)
+		if (st->owner != _current_company)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
 		if (st->train_tile != 0) {
 			/* check if we want to expanding an already existing station? */
-			if (_is_old_ai_player || !_settings_game.station.join_stations)
+			if (_is_old_ai_company || !_settings_game.station.join_stations)
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
 			if (!CanExpandRailroadStation(st, finalvalues, axis))
 				return CMD_ERROR;
@@ -958,8 +958,8 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 			st->town = ClosestTownFromTile(tile_org, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile_org, STATIONNAMING_RAIL);
 
-			if (IsValidPlayerID(_current_player)) {
-				SetBit(st->town->have_ratings, _current_player);
+			if (IsValidCompanyID(_current_company)) {
+				SetBit(st->town->have_ratings, _current_company);
 			}
 		}
 	}
@@ -1057,7 +1057,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 				tile += tile_delta;
 			} while (--w);
-			AddTrackToSignalBuffer(tile_org, track, _current_player);
+			AddTrackToSignalBuffer(tile_org, track, _current_company);
 			YapfNotifyTrackLayoutChange(tile_org, track);
 			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
@@ -1179,7 +1179,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 
 		/* Check ownership of station */
 		Station *st = GetStationByTile(tile2);
-		if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) {
+		if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
 			continue;
 		}
 
@@ -1252,12 +1252,12 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {
 	/* if there is flooding and non-uniform stations are enabled, remove platforms tile by tile */
-	if (_current_player == OWNER_WATER && _settings_game.station.nonuniform_stations) {
+	if (_current_company == OWNER_WATER && _settings_game.station.nonuniform_stations) {
 		return DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_FROM_RAILROAD_STATION);
 	}
 
-	/* Current player owns the station? */
-	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) return CMD_ERROR;
+	/* Current company owns the station? */
+	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) return CMD_ERROR;
 
 	/* determine width and height of platforms */
 	tile = st->train_tile;
@@ -1279,7 +1279,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 				if (flags & DC_EXEC) {
 					/* read variables before the station tile is removed */
 					Track track = GetRailStationTrack(tile);
-					Owner owner = GetTileOwner(tile); // _current_player can be OWNER_WATER
+					Owner owner = GetTileOwner(tile); // _current_company can be OWNER_WATER
 					Vehicle *v = NULL;
 					if (GetRailwayStationReservation(tile)) {
 						v = GetTrainForReservation(tile, track);
@@ -1354,7 +1354,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	bool town_owned_road  = false;
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
 
-	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_player, rts)) return CMD_ERROR;
+	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 
 	/* Trams only have drive through stops */
 	if (!is_drive_through && HasBit(rts, ROADTYPE_TRAM)) return CMD_ERROR;
@@ -1422,7 +1422,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (st != NULL) {
-		if (st->owner != _current_player) {
+		if (st->owner != _current_company) {
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
@@ -1437,8 +1437,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile, STATIONNAMING_ROAD);
 
-			if (IsValidPlayerID(_current_player)) {
-				SetBit(st->town->have_ratings, _current_player);
+			if (IsValidCompanyID(_current_company)) {
+				SetBit(st->town->have_ratings, _current_company);
 			}
 			st->sign.width_1 = 0;
 		}
@@ -1489,7 +1489,7 @@ static Vehicle *ClearRoadStopStatusEnum(Vehicle *v, void *)
  */
 static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 {
-	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) {
+	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
 	}
 
@@ -1566,10 +1566,10 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	/* If the stop was a drive-through stop replace the road */
 	if ((flags & DC_EXEC) && CmdSucceeded(ret) && is_drive_through) {
 		/* Rebuild the drive throuhg road stop. As a road stop can only be
-		 * removed by the owner of the roadstop, _current_player is the
+		 * removed by the owner of the roadstop, _current_company is the
 		 * owner of the road stop. */
 		MakeRoadNormal(tile, road_bits, rts, is_towns_road ? ClosestTownFromTile(tile, UINT_MAX)->index : 0,
-				is_towns_road ? OWNER_TOWN : _current_player, _current_player, _current_player);
+				is_towns_road ? OWNER_TOWN : _current_company, _current_company, _current_company);
 	}
 
 	return ret;
@@ -1815,7 +1815,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	if (st != NULL) {
-		if (st->owner != _current_player) {
+		if (st->owner != _current_company) {
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
@@ -1836,8 +1836,8 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st->town = t;
 			st->string_id = GenerateStationName(st, tile, !(afc->flags & AirportFTAClass::AIRPLANES) ? STATIONNAMING_HELIPORT : STATIONNAMING_AIRPORT);
 
-			if (IsValidPlayerID(_current_player)) {
-				SetBit(st->town->have_ratings, _current_player);
+			if (IsValidCompanyID(_current_company)) {
+				SetBit(st->town->have_ratings, _current_company);
 			}
 			st->sign.width_1 = 0;
 		}
@@ -1889,7 +1889,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static CommandCost RemoveAirport(Station *st, uint32 flags)
 {
-	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner)) {
+	if (_current_company != OWNER_WATER && !CheckOwnership(st->owner)) {
 		return CMD_ERROR;
 	}
 
@@ -1969,8 +1969,8 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st->town = ClosestTownFromTile(tile, UINT_MAX);
 		st->string_id = GenerateStationName(st, tile, STATIONNAMING_BUOY);
 
-		if (IsValidPlayerID(_current_player)) {
-			SetBit(st->town->have_ratings, _current_player);
+		if (IsValidCompanyID(_current_company)) {
+			SetBit(st->town->have_ratings, _current_company);
 		}
 		st->sign.width_1 = 0;
 		st->dock_tile = tile;
@@ -1994,16 +1994,16 @@ CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /**
- * Tests whether the player's vehicles have this station in orders
- * When player == INVALID_PLAYER, then check all vehicles
+ * Tests whether the company's vehicles have this station in orders
+ * When company == INVALID_COMPANY, then check all vehicles
  * @param station station ID
- * @param player player ID, INVALID_PLAYER to disable the check
+ * @param company company ID, INVALID_COMPANY to disable the check
  */
-bool HasStationInUse(StationID station, PlayerID player)
+bool HasStationInUse(StationID station, CompanyID company)
 {
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (player == INVALID_PLAYER || v->owner == player) {
+		if (company == INVALID_COMPANY || v->owner == company) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
 				if (order->IsType(OT_GOTO_STATION) && order->GetDestination() == station) {
@@ -2018,11 +2018,11 @@ bool HasStationInUse(StationID station, PlayerID player)
 static CommandCost RemoveBuoy(Station *st, uint32 flags)
 {
 	/* XXX: strange stuff */
-	if (!IsValidPlayerID(_current_player)) return_cmd_error(INVALID_STRING_ID);
+	if (!IsValidCompanyID(_current_company)) return_cmd_error(INVALID_STRING_ID);
 
 	TileIndex tile = st->dock_tile;
 
-	if (HasStationInUse(st->index, INVALID_PLAYER)) return_cmd_error(STR_BUOY_IS_IN_USE);
+	if (HasStationInUse(st->index, INVALID_COMPANY)) return_cmd_error(STR_BUOY_IS_IN_USE);
 	/* remove the buoy if there is a ship on tile when company goes bankrupt... */
 	if (!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
@@ -2110,7 +2110,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (st == NULL) st = GetClosestStationFromTile(tile);
 
 	if (st != NULL) {
-		if (st->owner != _current_player) {
+		if (st->owner != _current_company) {
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
@@ -2128,8 +2128,8 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st->town = ClosestTownFromTile(tile, UINT_MAX);
 			st->string_id = GenerateStationName(st, tile, STATIONNAMING_DOCK);
 
-			if (IsValidPlayerID(_current_player)) {
-				SetBit(st->town->have_ratings, _current_player);
+			if (IsValidCompanyID(_current_company)) {
+				SetBit(st->town->have_ratings, _current_company);
 			}
 		}
 	}
@@ -2208,13 +2208,13 @@ static void DrawTile_Station(TileInfo *ti)
 	uint32 relocation = 0;
 	const Station *st = NULL;
 	const StationSpec *statspec = NULL;
-	PlayerID owner = GetTileOwner(ti->tile);
+	Owner owner = GetTileOwner(ti->tile);
 
 	SpriteID palette;
-	if (IsValidPlayerID(owner)) {
-		palette = PLAYER_SPRITE_COLOR(owner);
+	if (IsValidCompanyID(owner)) {
+		palette = COMPANY_SPRITE_COLOR(owner);
 	} else {
-		/* Some stations are not owner by a player, namely oil rigs */
+		/* Some stations are not owner by a company, namely oil rigs */
 		palette = PALETTE_TO_GREY;
 	}
 
@@ -2326,7 +2326,7 @@ static void DrawTile_Station(TileInfo *ti)
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image)
 {
 	int32 total_offset = 0;
-	SpriteID pal = PLAYER_SPRITE_COLOR(_local_player);
+	SpriteID pal = COMPANY_SPRITE_COLOR(_local_company);
 	const DrawTileSprites *t = &_station_display_datas[st][image];
 
 	if (railtype != INVALID_RAILTYPE) {
@@ -2649,7 +2649,7 @@ static void UpdateStationRating(Station *st)
 				(rating += 13, true);
 			}
 
-			if (IsValidPlayerID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
+			if (IsValidCompanyID(st->owner) && HasBit(st->town->statues, st->owner)) rating += 26;
 
 			{
 				byte days = ge->days_since_pickup;
@@ -2762,7 +2762,7 @@ void StationMonthlyLoop()
 }
 
 
-void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius)
+void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius)
 {
 	Station *st;
 
@@ -3044,15 +3044,15 @@ void DeleteOilRig(TileIndex tile)
 	if (st->facilities == 0) delete st;
 }
 
-static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Station(TileIndex tile, Owner old_owner, Owner new_owner)
 {
-	if (!IsTileOwner(tile, old_player)) return;
+	if (!IsTileOwner(tile, old_owner)) return;
 
-	if (new_player != PLAYER_SPECTATOR) {
+	if (new_owner != INVALID_OWNER) {
 		Station *st = GetStationByTile(tile);
 
-		SetTileOwner(tile, new_player);
-		if (!IsBuoy(tile)) st->owner = new_player; // do not set st->owner for buoys
+		SetTileOwner(tile, new_owner);
+		if (!IsBuoy(tile)) st->owner = new_owner; // do not set st->owner for buoys
 		InvalidateWindowClassesData(WC_STATION_LIST, 0);
 	} else {
 		if (IsDriveThroughStopTile(tile)) {
@@ -3060,13 +3060,13 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 			DoCommand(tile, 0, (GetStationType(tile) == STATION_TRUCK) ? ROADSTOP_TRUCK : ROADSTOP_BUS, DC_EXEC | DC_BANKRUPT, CMD_REMOVE_ROAD_STOP);
 			assert(IsTileType(tile, MP_ROAD));
 			/* Change owner of tile and all roadtypes */
-			ChangeTileOwner(tile, old_player, new_player);
+			ChangeTileOwner(tile, old_owner, new_owner);
 		} else {
 			DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
 			/* Set tile owner of water under (now removed) buoy and dock to OWNER_NONE.
 			 * Update owner of buoy if it was not removed (was in orders).
 			 * Do not update when owned by OWNER_WATER (sea and rivers). */
-			if ((IsTileType(tile, MP_WATER) || IsBuoyTile(tile)) && IsTileOwner(tile, old_player)) SetTileOwner(tile, OWNER_NONE);
+			if ((IsTileType(tile, MP_WATER) || IsBuoyTile(tile)) && IsTileOwner(tile, old_owner)) SetTileOwner(tile, OWNER_NONE);
 		}
 	}
 }

@@ -1068,7 +1068,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 
 static void AddStation(const Station *st, StringID str, uint16 width)
 {
-	AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, (st->owner == OWNER_NONE || st->facilities == 0) ? 0xE : _player_colors[st->owner], width);
+	AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, (st->owner == OWNER_NONE || st->facilities == 0) ? 0xE : _company_colours[st->owner], width);
 }
 
 
@@ -1132,7 +1132,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 
 static void AddSign(const Sign *si, StringID str, uint16 width)
 {
-	AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->index, 0, (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner], width);
+	AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->index, 0, (si->owner == OWNER_NONE) ? 14 : _company_colours[si->owner], width);
 }
 
 
@@ -1861,8 +1861,8 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
 	const Sign *si;
 
-	/* Signs are turned off, or they are transparent and invisibility is ON, or player is a spectator */
-	if (!HasBit(_display_opt, DO_SHOW_SIGNS) || IsInvisibilitySet(TO_SIGNS) || _current_player == PLAYER_SPECTATOR) return false;
+	/* Signs are turned off, or they are transparent and invisibility is ON, or company is a spectator */
+	if (!HasBit(_display_opt, DO_SHOW_SIGNS) || IsInvisibilitySet(TO_SIGNS) || _current_company == COMPANY_SPECTATOR) return false;
 
 	switch (vp->zoom) {
 		case ZOOM_LVL_NORMAL:

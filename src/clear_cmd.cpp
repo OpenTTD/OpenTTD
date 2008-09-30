@@ -339,7 +339,7 @@ static void GetTileDesc_Clear(TileIndex tile, TileDesc *td)
 	td->owner[0] = GetTileOwner(tile);
 }
 
-static void ChangeTileOwner_Clear(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Clear(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	return;
 }

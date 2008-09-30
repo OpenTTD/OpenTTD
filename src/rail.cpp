@@ -174,25 +174,25 @@ RailType GetTileRailType(TileIndex tile)
 	return INVALID_RAILTYPE;
 }
 
-bool HasRailtypeAvail(const PlayerID p, const RailType railtype)
+bool HasRailtypeAvail(const CompanyID company, const RailType railtype)
 {
-	return HasBit(GetPlayer(p)->avail_railtypes, railtype);
+	return HasBit(GetCompany(company)->avail_railtypes, railtype);
 }
 
 bool ValParamRailtype(const RailType rail)
 {
-	return HasRailtypeAvail(_current_player, rail);
+	return HasRailtypeAvail(_current_company, rail);
 }
 
-RailType GetBestRailtype(const PlayerID p)
+RailType GetBestRailtype(const CompanyID company)
 {
-	if (HasRailtypeAvail(p, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
-	if (HasRailtypeAvail(p, RAILTYPE_MONO)) return RAILTYPE_MONO;
-	if (HasRailtypeAvail(p, RAILTYPE_ELECTRIC)) return RAILTYPE_ELECTRIC;
+	if (HasRailtypeAvail(company, RAILTYPE_MAGLEV)) return RAILTYPE_MAGLEV;
+	if (HasRailtypeAvail(company, RAILTYPE_MONO)) return RAILTYPE_MONO;
+	if (HasRailtypeAvail(company, RAILTYPE_ELECTRIC)) return RAILTYPE_ELECTRIC;
 	return RAILTYPE_RAIL;
 }
 
-RailTypes GetPlayerRailtypes(PlayerID p)
+RailTypes GetCompanyRailtypes(CompanyID company)
 {
 	RailTypes rt = RAILTYPES_NONE;
 
@@ -201,7 +201,7 @@ RailTypes GetPlayerRailtypes(PlayerID p)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->player_avail, p) || _date >= e->intro_date + 365)) {
+				(HasBit(e->company_avail, company) || _date >= e->intro_date + 365)) {
 			const RailVehicleInfo *rvi = &e->u.rail;
 
 			if (rvi->railveh_type != RAILVEH_WAGON) {

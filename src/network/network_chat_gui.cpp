@@ -27,7 +27,7 @@
 
 #include "table/strings.h"
 
-/* The draw buffer must be able to contain the chat message, player name and the "[All]" message,
+/* The draw buffer must be able to contain the chat message, client name and the "[All]" message,
  * some spaces and possible translations of [All] to other languages. */
 assert_compile((int)DRAW_STRING_BUFFER >= (int)NETWORK_CHAT_LENGTH + NETWORK_NAME_LENGTH + 40);
 
@@ -99,7 +99,7 @@ void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *messa
 		ChatMessage *cmsg = &_chatmsg_list[msg_count++];
 		ttd_strlcpy(cmsg->message, bufp, sizeof(cmsg->message));
 
-		/* The default colour for a message is player colour. Replace this with
+		/* The default colour for a message is company colour. Replace this with
 		 * white for any additional lines */
 		cmsg->color = (bufp == buf && color & IS_PALETTE_COLOR) ? color : (0x1D - 15) | IS_PALETTE_COLOR;
 		cmsg->end_date = _date + duration;

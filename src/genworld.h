@@ -36,7 +36,7 @@ struct gw_info {
 	bool quit_thread;      ///< Do we want to quit the active thread
 	bool threaded;         ///< Whether we run _GenerateWorld threaded
 	GenerateWorldMode mode;///< What mode are we making a world in
-	PlayerID lp;           ///< The local_player before generating
+	CompanyID lc;          ///< The local_company before generating
 	uint size_x;           ///< X-size of the map
 	uint size_y;           ///< Y-size of the map
 	gw_done_proc *proc;    ///< Proc that is called when done (can be NULL)

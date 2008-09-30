@@ -32,7 +32,7 @@ struct BaseVehicleListWindow: public Window {
 
 	void DrawVehicleListItems(int x, VehicleID selected_vehicle);
 	void SortVehicleList();
-	void BuildVehicleList(PlayerID owner, uint16 index, uint16 window_type);
+	void BuildVehicleList(Owner owner, uint16 index, uint16 window_type);
 };
 
 struct Sorting {

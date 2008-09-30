@@ -72,7 +72,7 @@ enum OrderNonStopFlags {
  * Reasons that could cause us to go to the depot.
  */
 enum OrderDepotTypeFlags {
-	ODTF_MANUAL          = 0,      ///< The player initiated this order manually.
+	ODTF_MANUAL          = 0,      ///< Manually initiated order.
 	ODTFB_SERVICE        = 1 << 0, ///< This depot order is because of the servicing limit.
 	ODTFB_PART_OF_ORDERS = 1 << 1, ///< This depot order is because of a regular order.
 };

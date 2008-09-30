@@ -139,7 +139,7 @@ public:
 	byte time_since_load;
 	byte time_since_unload;
 	byte delete_ctr;
-	PlayerByte owner;
+	OwnerByte owner;
 	byte facilities;
 	byte airport_type;
 

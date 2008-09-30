@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file players.cpp Handling of players. */
+/** @file company_cmd.cpp Handling of companies. */
 
 #include "stdafx.h"
 #include "openttd.h"
@@ -43,21 +43,21 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-PlayerByte _local_player;
-PlayerByte _current_player;
-/* NOSAVE: can be determined from player structs */
-byte _player_colors[MAX_PLAYERS];
-PlayerFace _player_face; ///< for player face storage in openttd.cfg
+CompanyByte _local_company;
+CompanyByte _current_company;
+/* NOSAVE: can be determined from company structs */
+byte _company_colours[MAX_COMPANIES];
+CompanyManagerFace _company_manager_face; ///< for company manager face storage in openttd.cfg
 HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
 
-DEFINE_OLD_POOL_GENERIC(Player, Player)
+DEFINE_OLD_POOL_GENERIC(Company, Company)
 
-Player::Player(uint16 name_1, bool is_ai) : name_1(name_1), is_ai(is_ai)
+Company::Company(uint16 name_1, bool is_ai) : name_1(name_1), is_ai(is_ai)
 {
-	for (uint j = 0; j < 4; j++) this->share_owners[j] = PLAYER_SPECTATOR;
+	for (uint j = 0; j < 4; j++) this->share_owners[j] = COMPANY_SPECTATOR;
 }
 
-Player::~Player()
+Company::~Company()
 {
 	free(this->name);
 	free(this->president_name);
@@ -65,26 +65,26 @@ Player::~Player()
 
 	if (CleaningPool()) return;
 
-	DeletePlayerWindows(this->index);
+	DeleteCompanyWindows(this->index);
 	this->name_1 = 0;
 }
 
 /**
- * Sets the local player and updates the patch settings that are set on a
- * per-company (player) basis to reflect the core's state in the GUI.
- * @param new_player the new player
- * @pre IsValidPlayerID(new_player) || new_player == PLAYER_SPECTATOR || new_player == OWNER_NONE
+ * Sets the local company and updates the patch settings that are set on a
+ * per-company basis to reflect the core's state in the GUI.
+ * @param new_company the new company
+ * @pre IsValidCompanyID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE
  */
-void SetLocalPlayer(PlayerID new_player)
+void SetLocalCompany(CompanyID new_company)
 {
-	/* Player could also be PLAYER_SPECTATOR or OWNER_NONE */
-	assert(IsValidPlayerID(new_player) || new_player == PLAYER_SPECTATOR || new_player == OWNER_NONE);
+	/* company could also be COMPANY_SPECTATOR or OWNER_NONE */
+	assert(IsValidCompanyID(new_company) || new_company == COMPANY_SPECTATOR || new_company == OWNER_NONE);
 
-	_local_player = new_player;
+	_local_company = new_company;
 
 	/* Do not update the patches if we are in the intro GUI */
-	if (IsValidPlayerID(new_player) && _game_mode != GM_MENU) {
-		const Player *p = GetPlayer(new_player);
+	if (IsValidCompanyID(new_company) && _game_mode != GM_MENU) {
+		const Company *p = GetCompany(new_company);
 		_settings_client.gui.autorenew        = p->engine_renew;
 		_settings_client.gui.autorenew_months = p->engine_renew_months;
 		_settings_client.gui.autorenew_money  = p->engine_renew_money;
@@ -92,27 +92,27 @@ void SetLocalPlayer(PlayerID new_player)
 	}
 }
 
-bool IsHumanPlayer(PlayerID pi)
+bool IsHumanCompany(CompanyID company)
 {
-	return !GetPlayer(pi)->is_ai;
+	return !GetCompany(company)->is_ai;
 }
 
 
-uint16 GetDrawStringPlayerColor(PlayerID player)
+uint16 GetDrawStringCompanyColor(CompanyID company)
 {
 	/* Get the color for DrawString-subroutines which matches the color
-	 * of the player */
-	if (!IsValidPlayerID(player)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOR;
-	return (_colour_gradient[_player_colors[player]][4]) | IS_PALETTE_COLOR;
+	 * of the company */
+	if (!IsValidCompanyID(company)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOR;
+	return (_colour_gradient[_company_colours[company]][4]) | IS_PALETTE_COLOR;
 }
 
-void DrawPlayerIcon(PlayerID p, int x, int y)
+void DrawCompanyIcon(CompanyID p, int x, int y)
 {
-	DrawSprite(SPR_PLAYER_ICON, PLAYER_SPRITE_COLOR(p), x, y);
+	DrawSprite(SPR_PLAYER_ICON, COMPANY_SPRITE_COLOR(p), x, y);
 }
 
 /**
- * Converts an old player face format to the new player face format
+ * Converts an old company manager's face format to the new company manager's face format
  *
  * Meaning of the bits in the old face (some bits are used in several times):
  * - 4 and 5: chin
@@ -129,100 +129,100 @@ void DrawPlayerIcon(PlayerID p, int x, int y)
  * @param face the face in the old format
  * @return the face in the new format
  */
-PlayerFace ConvertFromOldPlayerFace(uint32 face)
+CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32 face)
 {
-	PlayerFace pf = 0;
+	CompanyManagerFace cmf = 0;
 	GenderEthnicity ge = GE_WM;
 
 	if (HasBit(face, 31)) SetBit(ge, GENDER_FEMALE);
 	if (HasBit(face, 27) && (HasBit(face, 26) == HasBit(face, 19))) SetBit(ge, ETHNICITY_BLACK);
 
-	SetPlayerFaceBits(pf, PFV_GEN_ETHN,    ge, ge);
-	SetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge, GB(face, 28, 3) <= 1);
-	SetPlayerFaceBits(pf, PFV_EYE_COLOUR,  ge, HasBit(ge, ETHNICITY_BLACK) ? 0 : ClampU(GB(face, 20, 3), 5, 7) - 5);
-	SetPlayerFaceBits(pf, PFV_CHIN,        ge, ScalePlayerFaceValue(PFV_CHIN,     ge, GB(face,  4, 2)));
-	SetPlayerFaceBits(pf, PFV_EYEBROWS,    ge, ScalePlayerFaceValue(PFV_EYEBROWS, ge, GB(face,  6, 4)));
-	SetPlayerFaceBits(pf, PFV_HAIR,        ge, ScalePlayerFaceValue(PFV_HAIR,     ge, GB(face, 16, 4)));
-	SetPlayerFaceBits(pf, PFV_JACKET,      ge, ScalePlayerFaceValue(PFV_JACKET,   ge, GB(face, 20, 2)));
-	SetPlayerFaceBits(pf, PFV_COLLAR,      ge, ScalePlayerFaceValue(PFV_COLLAR,   ge, GB(face, 22, 2)));
-	SetPlayerFaceBits(pf, PFV_GLASSES,     ge, GB(face, 28, 1));
+	SetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN,    ge, ge);
+	SetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge, GB(face, 28, 3) <= 1);
+	SetCompanyManagerFaceBits(cmf, CMFV_EYE_COLOUR,  ge, HasBit(ge, ETHNICITY_BLACK) ? 0 : ClampU(GB(face, 20, 3), 5, 7) - 5);
+	SetCompanyManagerFaceBits(cmf, CMFV_CHIN,        ge, ScaleCompanyManagerFaceValue(CMFV_CHIN,     ge, GB(face,  4, 2)));
+	SetCompanyManagerFaceBits(cmf, CMFV_EYEBROWS,    ge, ScaleCompanyManagerFaceValue(CMFV_EYEBROWS, ge, GB(face,  6, 4)));
+	SetCompanyManagerFaceBits(cmf, CMFV_HAIR,        ge, ScaleCompanyManagerFaceValue(CMFV_HAIR,     ge, GB(face, 16, 4)));
+	SetCompanyManagerFaceBits(cmf, CMFV_JACKET,      ge, ScaleCompanyManagerFaceValue(CMFV_JACKET,   ge, GB(face, 20, 2)));
+	SetCompanyManagerFaceBits(cmf, CMFV_COLLAR,      ge, ScaleCompanyManagerFaceValue(CMFV_COLLAR,   ge, GB(face, 22, 2)));
+	SetCompanyManagerFaceBits(cmf, CMFV_GLASSES,     ge, GB(face, 28, 1));
 
 	uint lips = GB(face, 10, 4);
 	if (!HasBit(ge, GENDER_FEMALE) && lips < 4) {
-		SetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE, ge, true);
-		SetPlayerFaceBits(pf, PFV_MOUSTACHE,     ge, max(lips, 1U) - 1);
+		SetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE, ge, true);
+		SetCompanyManagerFaceBits(cmf, CMFV_MOUSTACHE,     ge, max(lips, 1U) - 1);
 	} else {
 		if (!HasBit(ge, GENDER_FEMALE)) {
 			lips = lips * 15 / 16;
 			lips -= 3;
 			if (HasBit(ge, ETHNICITY_BLACK) && lips > 8) lips = 0;
 		} else {
-			lips = ScalePlayerFaceValue(PFV_LIPS, ge, lips);
+			lips = ScaleCompanyManagerFaceValue(CMFV_LIPS, ge, lips);
 		}
-		SetPlayerFaceBits(pf, PFV_LIPS, ge, lips);
+		SetCompanyManagerFaceBits(cmf, CMFV_LIPS, ge, lips);
 
 		uint nose = GB(face, 13, 3);
 		if (ge == GE_WF) {
 			nose = (nose * 3 >> 3) * 3 >> 2; // There is 'hole' in the nose sprites for females
 		} else {
-			nose = ScalePlayerFaceValue(PFV_NOSE, ge, nose);
+			nose = ScaleCompanyManagerFaceValue(CMFV_NOSE, ge, nose);
 		}
-		SetPlayerFaceBits(pf, PFV_NOSE, ge, nose);
+		SetCompanyManagerFaceBits(cmf, CMFV_NOSE, ge, nose);
 	}
 
 	uint tie_earring = GB(face, 24, 4);
 	if (!HasBit(ge, GENDER_FEMALE) || tie_earring < 3) { // Not all females have an earring
-		if (HasBit(ge, GENDER_FEMALE)) SetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge, true);
-		SetPlayerFaceBits(pf, PFV_TIE_EARRING, ge, HasBit(ge, GENDER_FEMALE) ? tie_earring : ScalePlayerFaceValue(PFV_TIE_EARRING, ge, tie_earring / 2));
+		if (HasBit(ge, GENDER_FEMALE)) SetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge, true);
+		SetCompanyManagerFaceBits(cmf, CMFV_TIE_EARRING, ge, HasBit(ge, GENDER_FEMALE) ? tie_earring : ScaleCompanyManagerFaceValue(CMFV_TIE_EARRING, ge, tie_earring / 2));
 	}
 
-	return pf;
+	return cmf;
 }
 
 /**
- * Checks whether a player's face is a valid encoding.
+ * Checks whether a company manager's face is a valid encoding.
  * Unused bits are not enforced to be 0.
- * @param pf the fact to check
+ * @param cmf the fact to check
  * @return true if and only if the face is valid
  */
-bool IsValidPlayerIDFace(PlayerFace pf)
+bool IsValidCompanyManagerFace(CompanyManagerFace cmf)
 {
-	if (!ArePlayerFaceBitsValid(pf, PFV_GEN_ETHN, GE_WM)) return false;
+	if (!AreCompanyManagerFaceBitsValid(cmf, CMFV_GEN_ETHN, GE_WM)) return false;
 
-	GenderEthnicity ge   = (GenderEthnicity)GetPlayerFaceBits(pf, PFV_GEN_ETHN, GE_WM);
-	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetPlayerFaceBits(pf, PFV_HAS_MOUSTACHE,   ge) != 0;
-	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetPlayerFaceBits(pf, PFV_HAS_TIE_EARRING, ge) != 0;
-	bool has_glasses     = GetPlayerFaceBits(pf, PFV_HAS_GLASSES, ge) != 0;
+	GenderEthnicity ge   = (GenderEthnicity)GetCompanyManagerFaceBits(cmf, CMFV_GEN_ETHN, GE_WM);
+	bool has_moustache   = !HasBit(ge, GENDER_FEMALE) && GetCompanyManagerFaceBits(cmf, CMFV_HAS_MOUSTACHE,   ge) != 0;
+	bool has_tie_earring = !HasBit(ge, GENDER_FEMALE) || GetCompanyManagerFaceBits(cmf, CMFV_HAS_TIE_EARRING, ge) != 0;
+	bool has_glasses     = GetCompanyManagerFaceBits(cmf, CMFV_HAS_GLASSES, ge) != 0;
 
-	if (!ArePlayerFaceBitsValid(pf, PFV_EYE_COLOUR, ge)) return false;
-	for (PlayerFaceVariable pfv = PFV_CHEEKS; pfv < PFV_END; pfv++) {
-		switch (pfv) {
-			case PFV_MOUSTACHE:   if (!has_moustache)   continue; break;
-			case PFV_LIPS:        /* FALL THROUGH */
-			case PFV_NOSE:        if (has_moustache)    continue; break;
-			case PFV_TIE_EARRING: if (!has_tie_earring) continue; break;
-			case PFV_GLASSES:     if (!has_glasses)     continue; break;
+	if (!AreCompanyManagerFaceBitsValid(cmf, CMFV_EYE_COLOUR, ge)) return false;
+	for (CompanyManagerFaceVariable cmfv = CMFV_CHEEKS; cmfv < CMFV_END; cmfv++) {
+		switch (cmfv) {
+			case CMFV_MOUSTACHE:   if (!has_moustache)   continue; break;
+			case CMFV_LIPS:        /* FALL THROUGH */
+			case CMFV_NOSE:        if (has_moustache)    continue; break;
+			case CMFV_TIE_EARRING: if (!has_tie_earring) continue; break;
+			case CMFV_GLASSES:     if (!has_glasses)     continue; break;
 			default: break;
 		}
-		if (!ArePlayerFaceBitsValid(pf, pfv, ge)) return false;
+		if (!AreCompanyManagerFaceBitsValid(cmf, cmfv, ge)) return false;
 	}
 
 	return true;
 }
 
-void InvalidatePlayerWindows(const Player *p)
+void InvalidateCompanyWindows(const Company *company)
 {
-	PlayerID pid = p->index;
+	CompanyID cid = company->index;
 
-	if (pid == _local_player) InvalidateWindow(WC_STATUS_BAR, 0);
-	InvalidateWindow(WC_FINANCES, pid);
+	if (cid == _local_company) InvalidateWindow(WC_STATUS_BAR, 0);
+	InvalidateWindow(WC_FINANCES, cid);
 }
 
-bool CheckPlayerHasMoney(CommandCost cost)
+bool CheckCompanyHasMoney(CommandCost cost)
 {
 	if (cost.GetCost() > 0) {
-		PlayerID pid = _current_player;
-		if (IsValidPlayerID(pid) && cost.GetCost() > GetPlayer(pid)->player_money) {
+		CompanyID company = _current_company;
+		if (IsValidCompanyID(company) && cost.GetCost() > GetCompany(company)->money) {
 			SetDParam(0, cost.GetCost());
 			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
 			return false;
@@ -231,48 +231,48 @@ bool CheckPlayerHasMoney(CommandCost cost)
 	return true;
 }
 
-static void SubtractMoneyFromAnyPlayer(Player *p, CommandCost cost)
+static void SubtractMoneyFromAnyCompany(Company *c, CommandCost cost)
 {
 	if (cost.GetCost() == 0) return;
 	assert(cost.GetExpensesType() != INVALID_EXPENSES);
 
-	p->player_money -= cost.GetCost();
-	p->yearly_expenses[0][cost.GetExpensesType()] += cost.GetCost();
+	c->money -= cost.GetCost();
+	c->yearly_expenses[0][cost.GetExpensesType()] += cost.GetCost();
 
 	if (HasBit(1 << EXPENSES_TRAIN_INC    |
 	           1 << EXPENSES_ROADVEH_INC  |
 	           1 << EXPENSES_AIRCRAFT_INC |
 	           1 << EXPENSES_SHIP_INC, cost.GetExpensesType())) {
-		p->cur_economy.income -= cost.GetCost();
+		c->cur_economy.income -= cost.GetCost();
 	} else if (HasBit(1 << EXPENSES_TRAIN_RUN    |
 	                  1 << EXPENSES_ROADVEH_RUN  |
 	                  1 << EXPENSES_AIRCRAFT_RUN |
 	                  1 << EXPENSES_SHIP_RUN     |
 	                  1 << EXPENSES_PROPERTY     |
 	                  1 << EXPENSES_LOAN_INT, cost.GetExpensesType())) {
-		p->cur_economy.expenses -= cost.GetCost();
+		c->cur_economy.expenses -= cost.GetCost();
 	}
 
-	InvalidatePlayerWindows(p);
+	InvalidateCompanyWindows(c);
 }
 
-void SubtractMoneyFromPlayer(CommandCost cost)
+void SubtractMoneyFromCompany(CommandCost cost)
 {
-	PlayerID pid = _current_player;
+	CompanyID cid = _current_company;
 
-	if (IsValidPlayerID(pid)) SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
+	if (IsValidCompanyID(cid)) SubtractMoneyFromAnyCompany(GetCompany(cid), cost);
 }
 
-void SubtractMoneyFromPlayerFract(PlayerID player, CommandCost cst)
+void SubtractMoneyFromCompanyFract(CompanyID company, CommandCost cst)
 {
-	Player *p = GetPlayer(player);
-	byte m = p->player_money_fraction;
+	Company *c = GetCompany(company);
+	byte m = c->money_fraction;
 	Money cost = cst.GetCost();
 
-	p->player_money_fraction = m - (byte)cost;
+	c->money_fraction = m - (byte)cost;
 	cost >>= 8;
-	if (p->player_money_fraction > m) cost++;
-	if (cost != 0) SubtractMoneyFromAnyPlayer(p, CommandCost(cst.GetExpensesType(), cost));
+	if (c->money_fraction > m) cost++;
+	if (cost != 0) SubtractMoneyFromAnyCompany(c, CommandCost(cst.GetExpensesType(), cost));
 }
 
 void GetNameOfOwner(Owner owner, TileIndex tile)
@@ -280,16 +280,14 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 	SetDParam(2, owner);
 
 	if (owner != OWNER_TOWN) {
-		if (!IsValidPlayerID(owner)) {
+		if (!IsValidCompanyID(owner)) {
 			SetDParam(0, STR_0150_SOMEONE);
 		} else {
-			const Player* p = GetPlayer(owner);
-
 			SetDParam(0, STR_COMPANY_NAME);
-			SetDParam(1, p->index);
+			SetDParam(1, owner);
 		}
 	} else {
-		const Town* t = ClosestTownFromTile(tile, (uint)-1);
+		const Town *t = ClosestTownFromTile(tile, (uint)-1);
 
 		SetDParam(0, STR_TOWN);
 		SetDParam(1, t->index);
@@ -297,11 +295,11 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 }
 
 
-bool CheckOwnership(PlayerID owner)
+bool CheckOwnership(Owner owner)
 {
 	assert(owner < OWNER_END);
 
-	if (owner == _current_player) return true;
+	if (owner == _current_company) return true;
 	_error_message = STR_013B_OWNED_BY;
 	GetNameOfOwner(owner, 0);
 	return false;
@@ -313,26 +311,26 @@ bool CheckTileOwnership(TileIndex tile)
 
 	assert(owner < OWNER_END);
 
-	if (owner == _current_player) return true;
+	if (owner == _current_company) return true;
 	_error_message = STR_013B_OWNED_BY;
 
-	/* no need to get the name of the owner unless we're the local player (saves some time) */
-	if (IsLocalPlayer()) GetNameOfOwner(owner, tile);
+	/* no need to get the name of the owner unless we're the local company (saves some time) */
+	if (IsLocalCompany()) GetNameOfOwner(owner, tile);
 	return false;
 }
 
-static void GenerateCompanyName(Player *p)
+static void GenerateCompanyName(Company *c)
 {
 	TileIndex tile;
 	Town *t;
 	StringID str;
-	Player *pp;
+	Company *cc;
 	uint32 strp;
 	char buffer[100];
 
-	if (p->name_1 != STR_SV_UNNAMED) return;
+	if (c->name_1 != STR_SV_UNNAMED) return;
 
-	tile = p->last_build_coordinate;
+	tile = c->last_build_coordinate;
 	if (tile == 0) return;
 
 	t = ClosestTownFromTile(tile, (uint)-1);
@@ -342,36 +340,36 @@ static void GenerateCompanyName(Player *p)
 		strp = t->townnameparts;
 
 verify_name:;
-		/* No player must have this name already */
-		FOR_ALL_PLAYERS(pp) {
-			if (pp->name_1 == str && pp->name_2 == strp) goto bad_town_name;
+		/* No companies must have this name already */
+		FOR_ALL_COMPANIES(cc) {
+			if (cc->name_1 == str && cc->name_2 == strp) goto bad_town_name;
 		}
 
 		GetString(buffer, str, lastof(buffer));
 		if (strlen(buffer) >= MAX_LENGTH_COMPANY_NAME_BYTES) goto bad_town_name;
 
 set_name:;
-		p->name_1 = str;
-		p->name_2 = strp;
+		c->name_1 = str;
+		c->name_2 = strp;
 
 		MarkWholeScreenDirty();
 
-		if (!IsHumanPlayer(p->index)) {
+		if (!IsHumanCompany(c->index)) {
 			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
-			cni->FillData(p);
+			cni->FillData(c);
 			SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
 			SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
 			SetDParamStr(2, cni->company_name);
 			SetDParam(3, t->index);
-			AddNewsItem(STR_02B6, NS_COMPANY_NEW, p->last_build_coordinate, 0, cni);
+			AddNewsItem(STR_02B6, NS_COMPANY_NEW, c->last_build_coordinate, 0, cni);
 		}
 		return;
 	}
 bad_town_name:;
 
-	if (p->president_name_1 == SPECSTR_PRESIDENT_NAME) {
+	if (c->president_name_1 == SPECSTR_PRESIDENT_NAME) {
 		str = SPECSTR_ANDCO_NAME;
-		strp = p->president_name_2;
+		strp = c->president_name_2;
 		goto set_name;
 	} else {
 		str = SPECSTR_ANDCO_NAME;
@@ -400,7 +398,7 @@ static const Colours _similar_colour[COLOUR_END][2] = {
 	{ COLOUR_GREY,       INVALID_COLOUR    }, // COLOUR_WHITE
 };
 
-static byte GeneratePlayerColour()
+static byte GenerateCompanyColour()
 {
 	Colours colours[COLOUR_END];
 
@@ -422,10 +420,10 @@ static byte GeneratePlayerColour()
 		}
 	};
 
-	/* Move the colors that look similar to each player's color to the side */
-	Player *p;
-	FOR_ALL_PLAYERS(p) {
-		Colours pcolour = (Colours)p->player_color;
+	/* Move the colors that look similar to each company's color to the side */
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		Colours pcolour = (Colours)c->colour;
 
 		for (uint i = 0; i < COLOUR_END; i++) {
 			if (colours[i] == pcolour) {
@@ -452,25 +450,25 @@ static byte GeneratePlayerColour()
 	NOT_REACHED();
 }
 
-static void GeneratePresidentName(Player *p)
+static void GeneratePresidentName(Company *c)
 {
-	Player *pp;
+	Company *cc;
 	char buffer[100], buffer2[40];
 
 	for (;;) {
 restart:;
 
-		p->president_name_2 = Random();
-		p->president_name_1 = SPECSTR_PRESIDENT_NAME;
+		c->president_name_2 = Random();
+		c->president_name_1 = SPECSTR_PRESIDENT_NAME;
 
-		SetDParam(0, p->index);
+		SetDParam(0, c->index);
 		GetString(buffer, STR_PLAYER_NAME, lastof(buffer));
 		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 94)
 			continue;
 
-		FOR_ALL_PLAYERS(pp) {
-			if (p != pp) {
-				SetDParam(0, pp->index);
+		FOR_ALL_COMPANIES(cc) {
+			if (c != cc) {
+				SetDParam(0, cc->index);
 				GetString(buffer2, STR_PLAYER_NAME, lastof(buffer2));
 				if (strcmp(buffer2, buffer) == 0)
 					goto restart;
@@ -480,81 +478,81 @@ restart:;
 	}
 }
 
-void ResetPlayerLivery(Player *p)
+void ResetCompanyLivery(Company *c)
 {
 	for (LiveryScheme scheme = LS_BEGIN; scheme < LS_END; scheme++) {
-		p->livery[scheme].in_use  = false;
-		p->livery[scheme].colour1 = p->player_color;
-		p->livery[scheme].colour2 = p->player_color;
+		c->livery[scheme].in_use  = false;
+		c->livery[scheme].colour1 = c->colour;
+		c->livery[scheme].colour2 = c->colour;
 	}
 }
 
 /**
- * Create a new player and sets all player variables default values
+ * Create a new company and sets all company variables default values
  *
- * @param is_ai is a ai player?
- * @return the player struct
+ * @param is_ai is a ai company?
+ * @return the company struct
  */
-Player *DoStartupNewPlayer(bool is_ai)
+Company *DoStartupNewCompany(bool is_ai)
 {
-	if (!Player::CanAllocateItem()) return NULL;
+	if (!Company::CanAllocateItem()) return NULL;
 
-	Player *p = new Player(STR_SV_UNNAMED, is_ai);
+	Company *c = new Company(STR_SV_UNNAMED, is_ai);
 
-	memset(&_players_ai[p->index], 0, sizeof(PlayerAI));
-	memset(&_players_ainew[p->index], 0, sizeof(PlayerAiNew));
+	memset(&_companies_ai[c->index], 0, sizeof(CompanyAI));
+	memset(&_companies_ainew[c->index], 0, sizeof(CompanyAiNew));
 
 	/* Make a color */
-	p->player_color = GeneratePlayerColour();
-	ResetPlayerLivery(p);
-	_player_colors[p->index] = p->player_color;
+	c->colour = GenerateCompanyColour();
+	ResetCompanyLivery(c);
+	_company_colours[c->index] = c->colour;
 
-	p->player_money = p->current_loan = 100000;
+	c->money = c->current_loan = 100000;
 
-	_players_ai[p->index].state = 5; // AIS_WANT_NEW_ROUTE
-	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = PLAYER_SPECTATOR;
+	_companies_ai[c->index].state = 5; // AIS_WANT_NEW_ROUTE
+	c->share_owners[0] = c->share_owners[1] = c->share_owners[2] = c->share_owners[3] = INVALID_OWNER;
 
-	p->avail_railtypes = GetPlayerRailtypes(p->index);
-	p->avail_roadtypes = GetPlayerRoadtypes(p->index);
-	p->inaugurated_year = _cur_year;
-	RandomPlayerFaceBits(p->face, (GenderEthnicity)Random(), false); // create a random player face
+	c->avail_railtypes = GetCompanyRailtypes(c->index);
+	c->avail_roadtypes = GetCompanyRoadtypes(c->index);
+	c->inaugurated_year = _cur_year;
+	RandomCompanyManagerFaceBits(c->face, (GenderEthnicity)Random(), false); // create a random company manager face
 
 	/* Engine renewal settings */
-	p->engine_renew_list = NULL;
-	p->renew_keep_length = false;
-	p->engine_renew = _settings_client.gui.autorenew;
-	p->engine_renew_months = _settings_client.gui.autorenew_months;
-	p->engine_renew_money = _settings_client.gui.autorenew_money;
+	c->engine_renew_list = NULL;
+	c->renew_keep_length = false;
+	c->engine_renew = _settings_client.gui.autorenew;
+	c->engine_renew_months = _settings_client.gui.autorenew_months;
+	c->engine_renew_money = _settings_client.gui.autorenew_money;
 
-	GeneratePresidentName(p);
+	GeneratePresidentName(c);
 
 	InvalidateWindow(WC_GRAPH_LEGEND, 0);
 	InvalidateWindow(WC_TOOLBAR_MENU, 0);
 	InvalidateWindow(WC_CLIENT_LIST, 0);
 
 	if (is_ai && (!_networking || _network_server) && _ai.enabled)
-		AI_StartNewAI(p->index);
+		AI_StartNewAI(c->index);
 
-	p->num_engines = CallocT<uint16>(GetEnginePoolSize());
+	c->num_engines = CallocT<uint16>(GetEnginePoolSize());
 
-	return p;
+	return c;
 }
 
-void StartupPlayers()
+void StartupCompanies()
 {
 	/* The AI starts like in the setting with +2 month max */
 	_next_competitor_start = _settings_game.difficulty.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
 }
 
-static void MaybeStartNewPlayer()
+static void MaybeStartNewCompany()
 {
 	uint n;
-	Player *p;
+	Company *c;
 
 	/* count number of competitors */
 	n = 0;
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_ai) n++;
+	FOR_ALL_COMPANIES(c) {
+		if (c->is_ai) n++;
 	}
 
 	/* when there's a lot of computers in game, the probability that a new one starts is lower */
@@ -565,7 +563,7 @@ static void MaybeStartNewPlayer()
 			)) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		DoCommandP(0, 1, 0, NULL, CMD_PLAYER_CTRL);
+		DoCommandP(0, 1, 0, NULL, CMD_COMPANY_CTRL);
 	}
 
 	/* The next AI starts like the difficulty setting said, with +2 month max */
@@ -573,44 +571,44 @@ static void MaybeStartNewPlayer()
 	_next_competitor_start += _network_server ? InteractiveRandomRange(60 * DAY_TICKS) : RandomRange(60 * DAY_TICKS);
 }
 
-void InitializePlayers()
+void InitializeCompanies()
 {
-	_Player_pool.CleanPool();
-	_Player_pool.AddBlockToPool();
-	_cur_player_tick_index = 0;
+	_Company_pool.CleanPool();
+	_Company_pool.AddBlockToPool();
+	_cur_company_tick_index = 0;
 }
 
-void OnTick_Players()
+void OnTick_Companies()
 {
 	if (_game_mode == GM_EDITOR) return;
 
-	if (IsValidPlayerID((PlayerID)_cur_player_tick_index)) {
-		Player *p = GetPlayer((PlayerID)_cur_player_tick_index);
-		if (p->name_1 != 0) GenerateCompanyName(p);
+	if (IsValidCompanyID((CompanyID)_cur_company_tick_index)) {
+		Company *c = GetCompany((CompanyID)_cur_company_tick_index);
+		if (c->name_1 != 0) GenerateCompanyName(c);
 
 		if (AI_AllowNewAI() && _game_mode != GM_MENU && !--_next_competitor_start) {
-			MaybeStartNewPlayer();
+			MaybeStartNewCompany();
 		}
 	}
 
-	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
+	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;
 }
 
-void PlayersYearlyLoop()
+void CompaniesYearlyLoop()
 {
-	Player *p;
+	Company *c;
 
 	/* Copy statistics */
-	FOR_ALL_PLAYERS(p) {
-		memmove(&p->yearly_expenses[1], &p->yearly_expenses[0], sizeof(p->yearly_expenses) - sizeof(p->yearly_expenses[0]));
-		memset(&p->yearly_expenses[0], 0, sizeof(p->yearly_expenses[0]));
-		InvalidateWindow(WC_FINANCES, p->index);
+	FOR_ALL_COMPANIES(c) {
+		memmove(&c->yearly_expenses[1], &c->yearly_expenses[0], sizeof(c->yearly_expenses) - sizeof(c->yearly_expenses[0]));
+		memset(&c->yearly_expenses[0], 0, sizeof(c->yearly_expenses[0]));
+		InvalidateWindow(WC_FINANCES, c->index);
 	}
 
-	if (_settings_client.gui.show_finances && _local_player != PLAYER_SPECTATOR) {
-		ShowPlayerFinances(_local_player);
-		p = GetPlayer(_local_player);
-		if (p->num_valid_stat_ent > 5 && p->old_economy[0].performance_history < p->old_economy[4].performance_history) {
+	if (_settings_client.gui.show_finances && _local_company != COMPANY_SPECTATOR) {
+		ShowCompanyFinances(_local_company);
+		c = GetCompany(_local_company);
+		if (c->num_valid_stat_ent > 5 && c->old_economy[0].performance_history < c->old_economy[4].performance_history) {
 			SndPlayFx(SND_01_BAD_YEAR);
 		} else {
 			SndPlayFx(SND_00_GOOD_YEAR);
@@ -648,17 +646,17 @@ void PlayersYearlyLoop()
  */
 CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsValidPlayerID(_current_player)) return CMD_ERROR;
+	if (!IsValidCompanyID(_current_company)) return CMD_ERROR;
 
-	Player *p = GetPlayer(_current_player);
+	Company *c = GetCompany(_current_company);
 	switch (GB(p1, 0, 3)) {
 		case 0:
-			if (p->engine_renew == HasBit(p2, 0)) return CMD_ERROR;
+			if (c->engine_renew == HasBit(p2, 0)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->engine_renew = HasBit(p2, 0);
-				if (IsLocalPlayer()) {
-					_settings_client.gui.autorenew = p->engine_renew;
+				c->engine_renew = HasBit(p2, 0);
+				if (IsLocalCompany()) {
+					_settings_client.gui.autorenew = c->engine_renew;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -666,12 +664,12 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 		case 1:
 			if (Clamp((int16)p2, -12, 12) != (int16)p2) return CMD_ERROR;
-			if (p->engine_renew_months == (int16)p2) return CMD_ERROR;
+			if (c->engine_renew_months == (int16)p2) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->engine_renew_months = (int16)p2;
-				if (IsLocalPlayer()) {
-					_settings_client.gui.autorenew_months = p->engine_renew_months;
+				c->engine_renew_months = (int16)p2;
+				if (IsLocalCompany()) {
+					_settings_client.gui.autorenew_months = c->engine_renew_months;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -679,12 +677,12 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 		case 2:
 			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
-			if (p->engine_renew_money == p2) return CMD_ERROR;
+			if (c->engine_renew_money == p2) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->engine_renew_money = p2;
-				if (IsLocalPlayer()) {
-					_settings_client.gui.autorenew_money = p->engine_renew_money;
+				c->engine_renew_money = p2;
+				if (IsLocalCompany()) {
+					_settings_client.gui.autorenew_money = c->engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
@@ -698,14 +696,14 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 			if (!IsValidGroupID(id_g) && !IsAllGroupID(id_g) && !IsDefaultGroupID(id_g)) return CMD_ERROR;
 			if (new_engine_type != INVALID_ENGINE) {
-				if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_player)) return CMD_ERROR;
+				if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
 
-				cost = AddEngineReplacementForPlayer(p, old_engine_type, new_engine_type, id_g, flags);
+				cost = AddEngineReplacementForCompany(c, old_engine_type, new_engine_type, id_g, flags);
 			} else {
-				cost = RemoveEngineReplacementForPlayer(p, old_engine_type, id_g, flags);
+				cost = RemoveEngineReplacementForCompany(c, old_engine_type, id_g, flags);
 			}
 
-			if (IsLocalPlayer()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
+			if (IsLocalCompany()) InvalidateAutoreplaceWindow(old_engine_type, id_g);
 
 			return cost;
 		}
@@ -715,25 +713,25 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (ClampU(p2, 0, 2000000) != p2) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->engine_renew = HasBit(p1, 15);
-				p->engine_renew_months = (int16)GB(p1, 16, 16);
-				p->engine_renew_money = p2;
+				c->engine_renew = HasBit(p1, 15);
+				c->engine_renew_months = (int16)GB(p1, 16, 16);
+				c->engine_renew_money = p2;
 
-				if (IsLocalPlayer()) {
-					_settings_client.gui.autorenew = p->engine_renew;
-					_settings_client.gui.autorenew_months = p->engine_renew_months;
-					_settings_client.gui.autorenew_money = p->engine_renew_money;
+				if (IsLocalCompany()) {
+					_settings_client.gui.autorenew = c->engine_renew;
+					_settings_client.gui.autorenew_months = c->engine_renew_months;
+					_settings_client.gui.autorenew_money = c->engine_renew_money;
 					InvalidateWindow(WC_GAME_OPTIONS, 0);
 				}
 			}
 			break;
 
 		case 5:
-			if (p->renew_keep_length == HasBit(p2, 0)) return CMD_ERROR;
+			if (c->renew_keep_length == HasBit(p2, 0)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
-				p->renew_keep_length = HasBit(p2, 0);
-				if (IsLocalPlayer()) {
+				c->renew_keep_length = HasBit(p2, 0);
+				if (IsLocalCompany()) {
 					InvalidateWindow(WC_REPLACE_VEHICLE, VEH_TRAIN);
 				}
 			}
@@ -748,9 +746,9 @@ CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param p the current company.
  * @param other the other company.
  */
-void CompanyNewsInformation::FillData(const Player *p, const Player *other)
+void CompanyNewsInformation::FillData(const Company *c, const Company *other)
 {
-	SetDParam(0, p->index);
+	SetDParam(0, c->index);
 	GetString(this->company_name, STR_COMPANY_NAME, lastof(this->company_name));
 
 	if (other == NULL) {
@@ -758,184 +756,184 @@ void CompanyNewsInformation::FillData(const Player *p, const Player *other)
 	} else {
 		SetDParam(0, other->index);
 		GetString(this->other_company_name, STR_COMPANY_NAME, lastof(this->other_company_name));
-		p = other;
+		c = other;
 	}
 
-	SetDParam(0, p->index);
+	SetDParam(0, c->index);
 	GetString(this->president_name, STR_7058_PRESIDENT, lastof(this->president_name));
 
-	this->colour = p->player_color;
-	this->face = p->face;
+	this->colour = c->colour;
+	this->face = c->face;
 
 }
 
-/** Control the players: add, delete, etc.
+/** Control the companies: add, delete, etc.
  * @param tile unused
  * @param flags operation to perform
  * @param p1 various functionality
- * - p1 = 0 - create a new player, Which player (network) it will be is in p2
- * - p1 = 1 - create a new AI player
- * - p1 = 2 - delete a player. Player is identified by p2
- * - p1 = 3 - merge two companies together. Player to merge #1 with player #2. Identified by p2
+ * - p1 = 0 - create a new company, Which company (network) it will be is in p2
+ * - p1 = 1 - create a new AI company
+ * - p1 = 2 - delete a company. Company is identified by p2
+ * - p1 = 3 - merge two companies together. merge #1 with #2. Identified by p2
  * @param p2 various functionality, dictated by p1
- * - p1 = 0 - ClientID of the newly created player
- * - p1 = 2 - PlayerID of the that is getting deleted
- * - p1 = 3 - #1 p2 = (bit  0-15) - player to merge (p2 & 0xFFFF)
- *          - #2 p2 = (bit 16-31) - player to be merged into ((p2>>16)&0xFFFF)
- * @todo In the case of p1=0, create new player, the clientID of the new player is in parameter
+ * - p1 = 0 - ClientID of the newly created client
+ * - p1 = 2 - CompanyID of the that is getting deleted
+ * - p1 = 3 - #1 p2 = (bit  0-15) - company to merge (p2 & 0xFFFF)
+ *          - #2 p2 = (bit 16-31) - company to be merged into ((p2>>16)&0xFFFF)
+ * @todo In the case of p1=0, create new company, the clientID of the new client is in parameter
  * p2. This parameter is passed in at function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
  * on the server itself. First of all this is unbelievably ugly; second of all, well,
  * it IS ugly! <b>Someone fix this up :)</b> So where to fix?@n
  * @arg - network_server.c:838 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)@n
  * @arg - network_client.c:536 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP) from where the map has been received
  */
-CommandCost CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (flags & DC_EXEC) _current_player = OWNER_NONE;
+	if (flags & DC_EXEC) _current_company = OWNER_NONE;
 
 	InvalidateWindowData(WC_COMPANY_LEAGUE, 0, 0);
 
 	switch (p1) {
-	case 0: { /* Create a new player */
-		/* This command is only executed in a multiplayer game */
-		if (!_networking) return CMD_ERROR;
+		case 0: { /* Create a new company */
+			/* This command is only executed in a multiplayer game */
+			if (!_networking) return CMD_ERROR;
 
 #ifdef ENABLE_NETWORK
 
-		/* Joining Client:
-		 * _local_player: PLAYER_SPECTATOR
-		 * _network_playas/cid = requested company/player
-		 *
-		 * Other client(s)/server:
-		 * _local_player/_network_playas: what they play as
-		 * cid = requested company/player of joining client */
-		uint16 cid = p2; // ClientID
+			/* Joining Client:
+			* _local_company: COMPANY_SPECTATOR
+			* _network_playas/cid = requested company/clientid
+			*
+			* Other client(s)/server:
+			* _local_company/_network_playas: what they play as
+			* cid = requested company/company of joining client */
+			uint16 cid = p2; // ClientID
 
-		/* Has the network client a correct ClientID? */
-		if (!(flags & DC_EXEC)) return CommandCost();
-		if (cid >= MAX_CLIENT_INFO) return CommandCost();
+			/* Has the network client a correct ClientID? */
+			if (!(flags & DC_EXEC)) return CommandCost();
+			if (cid >= MAX_CLIENT_INFO) return CommandCost();
 
-		/* Delete multiplayer progress bar */
-		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+			/* Delete multiplayer progress bar */
+			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
-		Player *p = DoStartupNewPlayer(false);
+			Company *c = DoStartupNewCompany(false);
 
-		/* A new player could not be created, revert to being a spectator */
-		if (p == NULL) {
+			/* A new company could not be created, revert to being a spectator */
+			if (c == NULL) {
+				if (_network_server) {
+					NetworkClientInfo *ci = &_network_client_info[cid];
+					ci->client_playas = COMPANY_SPECTATOR;
+					NetworkUpdateClientInfo(ci->client_index);
+				} else if (_local_company == COMPANY_SPECTATOR) {
+					_network_playas = COMPANY_SPECTATOR;
+				}
+				break;
+			}
+
+			/* This is the joining client who wants a new company */
+			if (_local_company != _network_playas && _network_playas == c->index) {
+				assert(_local_company == COMPANY_SPECTATOR);
+				SetLocalCompany(c->index);
+				if (!StrEmpty(_settings_client.network.default_company_pass)) {
+					char *password = _settings_client.network.default_company_pass;
+					NetworkChangeCompanyPassword(1, &password);
+				}
+
+				_current_company = _local_company;
+
+				/* Now that we have a new company, broadcast our autorenew settings to
+				* all clients so everything is in sync */
+				NetworkSend_Command(0,
+					(_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4,
+					_settings_client.gui.autorenew_money,
+					CMD_SET_AUTOREPLACE,
+					NULL
+				);
+
+				MarkWholeScreenDirty();
+			}
+
 			if (_network_server) {
+				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
+				* server-side in network_server.c:838, function
+				* DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 				NetworkClientInfo *ci = &_network_client_info[cid];
-				ci->client_playas = PLAYER_SPECTATOR;
+				ci->client_playas = c->index;
 				NetworkUpdateClientInfo(ci->client_index);
-			} else if (_local_player == PLAYER_SPECTATOR) {
-				_network_playas = PLAYER_SPECTATOR;
+
+				if (IsValidCompanyID(ci->client_playas)) {
+					CompanyID company_backup = _local_company;
+					_network_company_info[c->index].months_empty = 0;
+
+					/* XXX - When a client joins, we automatically set its name to the
+					* client's name (for some reason). As it stands now only the server
+					* knows the client's name, so it needs to send out a "broadcast" to
+					* do this. To achieve this we send a network command. However, it
+					* uses _local_company to execute the command as.  To prevent abuse
+					* (eg. only yourself can change your name/company), we 'cheat' by
+					* impersonation _local_company as the server. Not the best solution;
+					* but it works.
+					* TODO: Perhaps this could be improved by when the client is ready
+					* with joining to let it send itself the command, and not the server?
+					* For example in network_client.c:534? */
+					_cmd_text = ci->client_name;
+					_local_company = ci->client_playas;
+					NetworkSend_Command(0, 0, 0, CMD_RENAME_PRESIDENT, NULL);
+					_local_company = company_backup;
+				}
 			}
-			break;
-		}
-
-		/* This is the joining client who wants a new company */
-		if (_local_player != _network_playas && _network_playas == p->index) {
-			assert(_local_player == PLAYER_SPECTATOR);
-			SetLocalPlayer(p->index);
-			if (!StrEmpty(_settings_client.network.default_company_pass)) {
-				char *password = _settings_client.network.default_company_pass;
-				NetworkChangeCompanyPassword(1, &password);
-			}
-
-			_current_player = _local_player;
-
-			/* Now that we have a new player, broadcast our autorenew settings to
-			 * all clients so everything is in sync */
-			NetworkSend_Command(0,
-				(_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4,
-				_settings_client.gui.autorenew_money,
-				CMD_SET_AUTOREPLACE,
-				NULL
-			);
-
-			MarkWholeScreenDirty();
-		}
-
-		if (_network_server) {
-			/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
-			 * server-side in network_server.c:838, function
-			 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
-			NetworkClientInfo *ci = &_network_client_info[cid];
-			ci->client_playas = p->index;
-			NetworkUpdateClientInfo(ci->client_index);
-
-			if (IsValidPlayerID(ci->client_playas)) {
-				PlayerID player_backup = _local_player;
-				_network_player_info[p->index].months_empty = 0;
-
-				/* XXX - When a client joins, we automatically set its name to the
-				 * player's name (for some reason). As it stands now only the server
-				 * knows the client's name, so it needs to send out a "broadcast" to
-				 * do this. To achieve this we send a network command. However, it
-				 * uses _local_player to execute the command as.  To prevent abuse
-				 * (eg. only yourself can change your name/company), we 'cheat' by
-				 * impersonation _local_player as the server. Not the best solution;
-				 * but it works.
-				 * TODO: Perhaps this could be improved by when the client is ready
-				 * with joining to let it send itself the command, and not the server?
-				 * For example in network_client.c:534? */
-				_cmd_text = ci->client_name;
-				_local_player = ci->client_playas;
-				NetworkSend_Command(0, 0, 0, CMD_RENAME_PRESIDENT, NULL);
-				_local_player = player_backup;
-			}
-		}
 #endif /* ENABLE_NETWORK */
-	} break;
+		} break;
 
-	case 1: /* Make a new AI player */
-		if (!(flags & DC_EXEC)) return CommandCost();
+		case 1: /* Make a new AI company */
+			if (!(flags & DC_EXEC)) return CommandCost();
 
-		DoStartupNewPlayer(true);
-		break;
+			DoStartupNewCompany(true);
+			break;
 
-	case 2: { /* Delete a player */
-		Player *p;
+		case 2: { /* Delete a company */
+			Company *c;
 
-		if (!IsValidPlayerID((PlayerID)p2)) return CMD_ERROR;
+			if (!IsValidCompanyID((CompanyID)p2)) return CMD_ERROR;
 
-		if (!(flags & DC_EXEC)) return CommandCost();
+			if (!(flags & DC_EXEC)) return CommandCost();
 
-		p = GetPlayer((PlayerID)p2);
+			c = GetCompany((CompanyID)p2);
 
-		/* Only allow removal of HUMAN companies */
-		if (IsHumanPlayer(p->index)) {
-			/* Delete any open window of the company */
-			DeletePlayerWindows(p->index);
+			/* Only allow removal of HUMAN companies */
+			if (IsHumanCompany(c->index)) {
+				/* Delete any open window of the company */
+				DeleteCompanyWindows(c->index);
 
-			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
-			cni->FillData(p);
+				CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+				cni->FillData(c);
 
-			/* Show the bankrupt news */
-			SetDParam(0, STR_705C_BANKRUPT);
-			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
-			SetDParamStr(2, cni->company_name);
-			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
+				/* Show the bankrupt news */
+				SetDParam(0, STR_705C_BANKRUPT);
+				SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
+				SetDParamStr(2, cni->company_name);
+				AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
 
-			/* Remove the company */
-			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
+				/* Remove the company */
+				ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
 
-			delete p;
-		}
-	} break;
+				delete c;
+			}
+		} break;
 
-	case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */
-		PlayerID pid_old = (PlayerID)GB(p2,  0, 16);
-		PlayerID pid_new = (PlayerID)GB(p2, 16, 16);
+		case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */
+			CompanyID cid_old = (CompanyID)GB(p2,  0, 16);
+			CompanyID cid_new = (CompanyID)GB(p2, 16, 16);
 
-		if (!IsValidPlayerID(pid_old) || !IsValidPlayerID(pid_new)) return CMD_ERROR;
+			if (!IsValidCompanyID(cid_old) || !IsValidCompanyID(cid_new)) return CMD_ERROR;
 
-		if (!(flags & DC_EXEC)) return CMD_ERROR;
+			if (!(flags & DC_EXEC)) return CMD_ERROR;
 
-		ChangeOwnershipOfPlayerItems(pid_old, pid_new);
-		delete GetPlayer(pid_old);
-	} break;
+			ChangeOwnershipOfCompanyItems(cid_old, cid_new);
+			delete GetCompany(cid_old);
+		} break;
 
-	default: return CMD_ERROR;
+		default: return CMD_ERROR;
 	}
 
 	return CommandCost();
@@ -967,12 +965,12 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 	return _endgame_perf_titles[value];
 }
 
-/** Save the highscore for the player */
-int8 SaveHighScoreValue(const Player *p)
+/** Save the highscore for the company */
+int8 SaveHighScoreValue(const Company *c)
 {
 	HighScore *hs = _highscore_table[_settings_game.difficulty.diff_level];
 	uint i;
-	uint16 score = p->old_economy[0].performance_history;
+	uint16 score = c->old_economy[0].performance_history;
 
 	/* Exclude cheaters from the honour of being in the highscore table */
 	if (CheatHasBeenUsed()) return -1;
@@ -982,8 +980,8 @@ int8 SaveHighScoreValue(const Player *p)
 		if (hs[i].score <= score) {
 			/* move all elements one down starting from the replaced one */
 			memmove(&hs[i + 1], &hs[i], sizeof(HighScore) * (lengthof(_highscore_table[0]) - i - 1));
-			SetDParam(0, p->index);
-			SetDParam(1, p->index);
+			SetDParam(0, c->index);
+			SetDParam(1, c->index);
 			GetString(hs[i].company, STR_HIGHSCORE_NAME, lastof(hs[i].company)); // get manager/company name string
 			hs[i].score = score;
 			hs[i].title = EndGameGetPerformanceTitleFromValue(score);
@@ -994,8 +992,8 @@ int8 SaveHighScoreValue(const Player *p)
 	return -1; // too bad; we did not make it into the top5
 }
 
-/** Sort all players given their performance */
-static int CDECL HighScoreSorter(const Player* const *a, const Player* const *b)
+/** Sort all companies given their performance */
+static int CDECL HighScoreSorter(const Company* const *a, const Company* const *b)
 {
 	return (*b)->old_economy[0].performance_history - (*a)->old_economy[0].performance_history;
 }
@@ -1004,15 +1002,15 @@ static int CDECL HighScoreSorter(const Player* const *a, const Player* const *b)
 #define LAST_HS_ITEM lengthof(_highscore_table) - 1
 int8 SaveHighScoreValueNetwork()
 {
-	const Player* p;
-	const Player* pl[MAX_PLAYERS];
+	const Company *c;
+	const Company *cl[MAX_COMPANIES];
 	uint count = 0;
-	int8 player = -1;
+	int8 company = -1;
 
-	/* Sort all active players with the highest score first */
-	FOR_ALL_PLAYERS(p) pl[count++] = p;
+	/* Sort all active companies with the highest score first */
+	FOR_ALL_COMPANIES(c) cl[count++] = c;
 
-	GSortT(pl, count, &HighScoreSorter);
+	GSortT(cl, count, &HighScoreSorter);
 
 	{
 		uint i;
@@ -1023,19 +1021,19 @@ int8 SaveHighScoreValueNetwork()
 		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < count; i++) {
 			HighScore* hs = &_highscore_table[LAST_HS_ITEM][i];
 
-			SetDParam(0, pl[i]->index);
-			SetDParam(1, pl[i]->index);
+			SetDParam(0, cl[i]->index);
+			SetDParam(1, cl[i]->index);
 			GetString(hs->company, STR_HIGHSCORE_NAME, lastof(hs->company)); // get manager/company name string
-			hs->score = pl[i]->old_economy[0].performance_history;
+			hs->score = cl[i]->old_economy[0].performance_history;
 			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 
-			/* get the ranking of the local player */
-			if (pl[i]->index == _local_player) player = i;
+			/* get the ranking of the local company */
+			if (cl[i]->index == _local_company) company = i;
 		}
 	}
 
-	/* Add top5 players to highscore table */
-	return player;
+	/* Add top5 companys to highscore table */
+	return company;
 }
 
 /** Save HighScore table to file */
@@ -1099,63 +1097,63 @@ void LoadFromHighScore()
 	_settings_client.gui.ending_year = 2051;
 }
 
-/* Save/load of players */
-static const SaveLoad _player_desc[] = {
-	    SLE_VAR(Player, name_2,          SLE_UINT32),
-	    SLE_VAR(Player, name_1,          SLE_STRINGID),
-	SLE_CONDSTR(Player, name,            SLE_STR, 0,                       84, SL_MAX_VERSION),
+/* Save/load of companies */
+static const SaveLoad _company_desc[] = {
+	    SLE_VAR(Company, name_2,          SLE_UINT32),
+	    SLE_VAR(Company, name_1,          SLE_STRINGID),
+	SLE_CONDSTR(Company, name,            SLE_STR, 0,                       84, SL_MAX_VERSION),
 
-	    SLE_VAR(Player, president_name_1, SLE_UINT16),
-	    SLE_VAR(Player, president_name_2, SLE_UINT32),
-	SLE_CONDSTR(Player, president_name,  SLE_STR, 0,                       84, SL_MAX_VERSION),
+	    SLE_VAR(Company, president_name_1, SLE_UINT16),
+	    SLE_VAR(Company, president_name_2, SLE_UINT32),
+	SLE_CONDSTR(Company, president_name,  SLE_STR, 0,                       84, SL_MAX_VERSION),
 
-	    SLE_VAR(Player, face,            SLE_UINT32),
+	    SLE_VAR(Company, face,            SLE_UINT32),
 
 	/* money was changed to a 64 bit field in savegame version 1. */
-	SLE_CONDVAR(Player, player_money,          SLE_VAR_I64 | SLE_FILE_I32,  0, 0),
-	SLE_CONDVAR(Player, player_money,          SLE_INT64,                   1, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, money,                 SLE_VAR_I64 | SLE_FILE_I32,  0, 0),
+	SLE_CONDVAR(Company, money,                 SLE_INT64,                   1, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Player, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
-	SLE_CONDVAR(Player, current_loan,          SLE_INT64,                  65, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, current_loan,          SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
+	SLE_CONDVAR(Company, current_loan,          SLE_INT64,                  65, SL_MAX_VERSION),
 
-	    SLE_VAR(Player, player_color,          SLE_UINT8),
-	    SLE_VAR(Player, player_money_fraction, SLE_UINT8),
-	SLE_CONDVAR(Player, avail_railtypes,       SLE_UINT8,                   0, 57),
-	    SLE_VAR(Player, block_preview,         SLE_UINT8),
+	    SLE_VAR(Company, colour,                SLE_UINT8),
+	    SLE_VAR(Company, money_fraction,        SLE_UINT8),
+	SLE_CONDVAR(Company, avail_railtypes,       SLE_UINT8,                   0, 57),
+	    SLE_VAR(Company, block_preview,         SLE_UINT8),
 
-	SLE_CONDVAR(Player, cargo_types,           SLE_FILE_U16 | SLE_VAR_U32,  0, 93),
-	SLE_CONDVAR(Player, cargo_types,           SLE_UINT32,                 94, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, location_of_HQ,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(Player, location_of_HQ,        SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(Player, last_build_coordinate, SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  0, 30),
-	SLE_CONDVAR(Player, inaugurated_year,      SLE_INT32,                  31, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, cargo_types,           SLE_FILE_U16 | SLE_VAR_U32,  0, 93),
+	SLE_CONDVAR(Company, cargo_types,           SLE_UINT32,                 94, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, location_of_HQ,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(Company, location_of_HQ,        SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(Company, last_build_coordinate, SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  0, 30),
+	SLE_CONDVAR(Company, inaugurated_year,      SLE_INT32,                  31, SL_MAX_VERSION),
 
-	    SLE_ARR(Player, share_owners,          SLE_UINT8, 4),
+	    SLE_ARR(Company, share_owners,          SLE_UINT8, 4),
 
-	    SLE_VAR(Player, num_valid_stat_ent,    SLE_UINT8),
+	    SLE_VAR(Company, num_valid_stat_ent,    SLE_UINT8),
 
-	    SLE_VAR(Player, quarters_of_bankrupcy, SLE_UINT8),
-	    SLE_VAR(Player, bankrupt_asked,        SLE_UINT8),
-	    SLE_VAR(Player, bankrupt_timeout,      SLE_INT16),
-	SLE_CONDVAR(Player, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
-	SLE_CONDVAR(Player, bankrupt_value,        SLE_INT64,                  65, SL_MAX_VERSION),
+	    SLE_VAR(Company, quarters_of_bankrupcy, SLE_UINT8),
+	    SLE_VAR(Company, bankrupt_asked,        SLE_UINT8),
+	    SLE_VAR(Company, bankrupt_timeout,      SLE_INT16),
+	SLE_CONDVAR(Company, bankrupt_value,        SLE_VAR_I64 | SLE_FILE_I32,  0, 64),
+	SLE_CONDVAR(Company, bankrupt_value,        SLE_INT64,                  65, SL_MAX_VERSION),
 
 	/* yearly expenses was changed to 64-bit in savegame version 2. */
-	SLE_CONDARR(Player, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, 0, 1),
-	SLE_CONDARR(Player, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
+	SLE_CONDARR(Company, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, 0, 1),
+	SLE_CONDARR(Company, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Player, is_ai,                 SLE_BOOL, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, is_ai,                 SLE_BOOL, 2, SL_MAX_VERSION),
 	SLE_CONDNULL(1, 4, 99),
 
 	/* Engine renewal settings */
 	SLE_CONDNULL(512, 16, 18),
-	SLE_CONDREF(Player, engine_renew_list,     REF_ENGINE_RENEWS,          19, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, engine_renew,          SLE_BOOL,                   16, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, engine_renew_months,   SLE_INT16,                  16, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, engine_renew_money,    SLE_UINT32,                 16, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, renew_keep_length,     SLE_BOOL,                    2, SL_MAX_VERSION), // added with 16.1, but was blank since 2
+	SLE_CONDREF(Company, engine_renew_list,     REF_ENGINE_RENEWS,          19, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, engine_renew,          SLE_BOOL,                   16, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, engine_renew_months,   SLE_INT16,                  16, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, engine_renew_money,    SLE_UINT32,                 16, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, renew_keep_length,     SLE_BOOL,                    2, SL_MAX_VERSION), // added with 16.1, but was blank since 2
 
 	/* reserve extra space in savegame here. (currently 63 bytes) */
 	SLE_CONDNULL(63, 2, SL_MAX_VERSION),
@@ -1163,73 +1161,73 @@ static const SaveLoad _player_desc[] = {
 	SLE_END()
 };
 
-static const SaveLoad _player_economy_desc[] = {
+static const SaveLoad _company_economy_desc[] = {
 	/* these were changed to 64-bit in savegame format 2 */
-	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_INT64,                  2, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_INT64,                  2, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry, company_value,       SLE_INT64,                  2, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
+	SLE_CONDVAR(CompanyEconomyEntry, income,              SLE_INT64,                  2, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
+	SLE_CONDVAR(CompanyEconomyEntry, expenses,            SLE_INT64,                  2, SL_MAX_VERSION),
+	SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
+	SLE_CONDVAR(CompanyEconomyEntry, company_value,       SLE_INT64,                  2, SL_MAX_VERSION),
 
-	    SLE_VAR(PlayerEconomyEntry, delivered_cargo,     SLE_INT32),
-	    SLE_VAR(PlayerEconomyEntry, performance_history, SLE_INT32),
+	    SLE_VAR(CompanyEconomyEntry, delivered_cargo,     SLE_INT32),
+	    SLE_VAR(CompanyEconomyEntry, performance_history, SLE_INT32),
 
 	SLE_END()
 };
 
-static const SaveLoad _player_livery_desc[] = {
+static const SaveLoad _company_livery_desc[] = {
 	SLE_CONDVAR(Livery, in_use,  SLE_BOOL,  34, SL_MAX_VERSION),
 	SLE_CONDVAR(Livery, colour1, SLE_UINT8, 34, SL_MAX_VERSION),
 	SLE_CONDVAR(Livery, colour2, SLE_UINT8, 34, SL_MAX_VERSION),
 	SLE_END()
 };
 
-static void SaveLoad_PLYR(Player* p)
+static void SaveLoad_PLYR(Company *c)
 {
 	int i;
 
-	SlObject(p, _player_desc);
+	SlObject(c, _company_desc);
 
 	/* Write AI? */
-	if (!IsHumanPlayer(p->index)) {
-		SaveLoad_AI(p->index);
+	if (!IsHumanCompany(c->index)) {
+		SaveLoad_AI(c->index);
 	}
 
 	/* Write economy */
-	SlObject(&p->cur_economy, _player_economy_desc);
+	SlObject(&c->cur_economy, _company_economy_desc);
 
 	/* Write old economy entries. */
-	for (i = 0; i < p->num_valid_stat_ent; i++) {
-		SlObject(&p->old_economy[i], _player_economy_desc);
+	for (i = 0; i < c->num_valid_stat_ent; i++) {
+		SlObject(&c->old_economy[i], _company_economy_desc);
 	}
 
 	/* Write each livery entry. */
 	int num_liveries = CheckSavegameVersion(63) ? LS_END - 4 : (CheckSavegameVersion(85) ? LS_END - 2: LS_END);
 	for (i = 0; i < num_liveries; i++) {
-		SlObject(&p->livery[i], _player_livery_desc);
+		SlObject(&c->livery[i], _company_livery_desc);
 	}
 
 	if (num_liveries < LS_END) {
 		/* We want to insert some liveries somewhere in between. This means some have to be moved. */
-		memmove(&p->livery[LS_FREIGHT_WAGON], &p->livery[LS_PASSENGER_WAGON_MONORAIL], (LS_END - LS_FREIGHT_WAGON) * sizeof(p->livery[0]));
-		p->livery[LS_PASSENGER_WAGON_MONORAIL] = p->livery[LS_MONORAIL];
-		p->livery[LS_PASSENGER_WAGON_MAGLEV]   = p->livery[LS_MAGLEV];
+		memmove(&c->livery[LS_FREIGHT_WAGON], &c->livery[LS_PASSENGER_WAGON_MONORAIL], (LS_END - LS_FREIGHT_WAGON) * sizeof(c->livery[0]));
+		c->livery[LS_PASSENGER_WAGON_MONORAIL] = c->livery[LS_MONORAIL];
+		c->livery[LS_PASSENGER_WAGON_MAGLEV]   = c->livery[LS_MAGLEV];
 	}
 
 	if (num_liveries == LS_END - 4) {
 		/* Copy bus/truck liveries over to trams */
-		p->livery[LS_PASSENGER_TRAM] = p->livery[LS_BUS];
-		p->livery[LS_FREIGHT_TRAM]   = p->livery[LS_TRUCK];
+		c->livery[LS_PASSENGER_TRAM] = c->livery[LS_BUS];
+		c->livery[LS_FREIGHT_TRAM]   = c->livery[LS_TRUCK];
 	}
 }
 
 static void Save_PLYR()
 {
-	Player *p;
-	FOR_ALL_PLAYERS(p) {
-		SlSetArrayIndex(p->index);
-		SlAutolength((AutolengthProc*)SaveLoad_PLYR, p);
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		SlSetArrayIndex(c->index);
+		SlAutolength((AutolengthProc*)SaveLoad_PLYR, c);
 	}
 }
 
@@ -1237,19 +1235,19 @@ static void Load_PLYR()
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		Player *p = new (index) Player();
-		SaveLoad_PLYR(p);
-		_player_colors[index] = p->player_color;
+		Company *c = new (index) Company();
+		SaveLoad_PLYR(c);
+		_company_colours[index] = c->colour;
 
 		/* This is needed so an AI is attached to a loaded AI */
-		if (p->is_ai && (!_networking || _network_server) && _ai.enabled) {
+		if (c->is_ai && (!_networking || _network_server) && _ai.enabled) {
 			/* Clear the memory of the new AI, otherwise we might be doing wrong things. */
-			memset(&_players_ainew[index], 0, sizeof(PlayerAiNew));
-			AI_StartNewAI(p->index);
+			memset(&_companies_ainew[index], 0, sizeof(CompanyAiNew));
+			AI_StartNewAI(c->index);
 		}
 	}
 }
 
-extern const ChunkHandler _player_chunk_handlers[] = {
+extern const ChunkHandler _company_chunk_handlers[] = {
 	{ 'PLYR', Save_PLYR, Load_PLYR, CH_ARRAY | CH_LAST},
 };

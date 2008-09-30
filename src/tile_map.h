@@ -122,7 +122,7 @@ static inline bool IsValidTile(TileIndex tile)
  *
  * This function returns the owner of a tile. This cannot used
  * for tiles which type is one of MP_HOUSE, MP_VOID and MP_INDUSTRY
- * as no player owned any of these buildings.
+ * as no company owned any of these buildings.
  *
  * @param tile The tile to check
  * @return The owner of the tile

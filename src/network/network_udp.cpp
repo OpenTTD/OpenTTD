@@ -83,7 +83,7 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	ngi.server_lang    = _settings_client.network.server_lang;
 	ngi.use_password   = !StrEmpty(_settings_client.network.server_password);
 	ngi.clients_max    = _settings_client.network.max_clients;
-	ngi.companies_on   = ActivePlayerCount();
+	ngi.companies_on   = ActiveCompanyCount();
 	ngi.companies_max  = _settings_client.network.max_companies;
 	ngi.spectators_on  = NetworkSpectatorCount();
 	ngi.spectators_max = _settings_client.network.max_spectators;
@@ -116,36 +116,36 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 
 	/* Send the amount of active companies */
 	packet.Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
-	packet.Send_uint8 (ActivePlayerCount());
+	packet.Send_uint8 (ActiveCompanyCount());
 
 	/* Fetch the latest version of everything */
 	NetworkPopulateCompanyInfo();
 
-	Player *player;
+	Company *company;
 	byte current = 0;
-	/* Go through all the players */
-	FOR_ALL_PLAYERS(player) {
+	/* Go through all the companies */
+	FOR_ALL_COMPANIES(company) {
 		current++;
 
 		/* Send the information */
 		packet.Send_uint8 (current);
 
-		packet.Send_string(_network_player_info[player->index].company_name);
-		packet.Send_uint32(_network_player_info[player->index].inaugurated_year);
-		packet.Send_uint64(_network_player_info[player->index].company_value);
-		packet.Send_uint64(_network_player_info[player->index].money);
-		packet.Send_uint64(_network_player_info[player->index].income);
-		packet.Send_uint16(_network_player_info[player->index].performance);
+		packet.Send_string(_network_company_info[company->index].company_name);
+		packet.Send_uint32(_network_company_info[company->index].inaugurated_year);
+		packet.Send_uint64(_network_company_info[company->index].company_value);
+		packet.Send_uint64(_network_company_info[company->index].money);
+		packet.Send_uint64(_network_company_info[company->index].income);
+		packet.Send_uint16(_network_company_info[company->index].performance);
 
 		/* Send 1 if there is a passord for the company else send 0 */
-		packet.Send_bool  (!StrEmpty(_network_player_info[player->index].password));
+		packet.Send_bool  (!StrEmpty(_network_company_info[company->index].password));
 
 		for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
-			packet.Send_uint16(_network_player_info[player->index].num_vehicle[i]);
+			packet.Send_uint16(_network_company_info[company->index].num_vehicle[i]);
 		}
 
 		for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
-			packet.Send_uint16(_network_player_info[player->index].num_station[i]);
+			packet.Send_uint16(_network_company_info[company->index].num_station[i]);
 		}
 	}
 

@@ -69,20 +69,20 @@ DECLARE_ENUM_AS_BIT_SET(TownActions);
 
 /** Get a list of available actions to do at a town.
  * @param nump if not NULL add put the number of available actions in it
- * @param pid the player that is querying the town
+ * @param cid the company that is querying the town
  * @param t the town that is queried
  * @return bitmasked value of enabled actions
  */
-uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
+uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
 {
 	int num = 0;
 	TownActions buttons = TACT_NONE;
 
 	/* Spectators and unwanted have no options */
-	if (pid != PLAYER_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[pid])) {
+	if (cid != COMPANY_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[cid])) {
 
 		/* Things worth more than this are not shown */
-		Money avail = GetPlayer(pid)->player_money + _price.station_value * 200;
+		Money avail = GetCompany(cid)->money + _price.station_value * 200;
 		Money ref = _price.build_industry >> 8;
 
 		/* Check the action bits for validity and
@@ -90,16 +90,16 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 		for (uint i = 0; i != lengthof(_town_action_costs); i++) {
 			const TownActions cur = (TownActions)(1 << i);
 
-			/* Is the player not able to bribe ? */
-			if (cur == TACT_BRIBE && (!_settings_game.economy.bribe || t->ratings[pid] >= RATING_BRIBE_MAXIMUM))
+			/* Is the company not able to bribe ? */
+			if (cur == TACT_BRIBE && (!_settings_game.economy.bribe || t->ratings[cid] >= RATING_BRIBE_MAXIMUM))
 				continue;
 
-			/* Is the player not able to buy exclusive rights ? */
+			/* Is the company not able to buy exclusive rights ? */
 			if (cur == TACT_BUY_RIGHTS && !_settings_game.economy.exclusive_rights)
 				continue;
 
-			/* Is the player not able to build a statue ? */
-			if (cur == TACT_BUILD_STATUE && HasBit(t->statues, pid))
+			/* Is the company not able to build a statue ? */
+			if (cur == TACT_BUILD_STATUE && HasBit(t->statues, cid))
 				continue;
 
 			if (avail >= _town_action_costs[i] * ref) {
@@ -162,7 +162,7 @@ public:
 	virtual void OnPaint()
 	{
 		int numact;
-		uint buttons = GetMaskOfTownActions(&numact, _local_player, this->town);
+		uint buttons = GetMaskOfTownActions(&numact, _local_company, this->town);
 
 		SetVScrollCount(this, numact + 1);
 
@@ -177,18 +177,18 @@ public:
 
 		DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
 
-		/* Draw list of players */
+		/* Draw list of companies */
 		int y = 25;
 
-		const Player *p;
-		FOR_ALL_PLAYERS(p) {
-			if ((HasBit(this->town->have_ratings, p->index) || this->town->exclusivity == p->index)) {
-				DrawPlayerIcon(p->index, 2, y);
+		const Company *c;
+		FOR_ALL_COMPANIES(c) {
+			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
+				DrawCompanyIcon(c->index, 2, y);
 
-				SetDParam(0, p->index);
-				SetDParam(1, p->index);
+				SetDParam(0, c->index);
+				SetDParam(1, c->index);
 
-				int r = this->town->ratings[p->index];
+				int r = this->town->ratings[c->index];
 				StringID str;
 				(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
 				(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
@@ -200,7 +200,7 @@ public:
 				(str++,                    true);                    // Outstanding
 
 				SetDParam(2, str);
-				if (this->town->exclusivity == p->index) { // red icon for player with exclusive rights
+				if (this->town->exclusivity == c->index) { // red icon for company with exclusive rights
 					DrawSprite(SPR_BLOT, PALETTE_TO_RED, 18, y);
 				}
 
@@ -243,7 +243,7 @@ public:
 
 				if (!IsInsideMM(y, 0, 5)) return;
 
-				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_player, this->town), y + this->vscroll.pos - 1);
+				y = GetNthSetBit(GetMaskOfTownActions(NULL, _local_company, this->town), y + this->vscroll.pos - 1);
 				if (y >= 0) {
 					this->sel_index = y;
 					this->SetDirty();
@@ -780,7 +780,7 @@ static const WindowDesc _scen_edit_town_gen_desc = {
 
 void ShowBuildTownWindow()
 {
-	if (_game_mode != GM_EDITOR && !IsValidPlayerID(_current_player)) return;
+	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_current_company)) return;
 	AllocateWindowDescFront<ScenarioEditorTownGenerationWindow>(&_scen_edit_town_gen_desc, 0);
 }
 

@@ -420,10 +420,10 @@ static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 	 * with magic_bulldozer cheat you can destroy industries
 	 * (area around OILRIG is water, so water shouldn't flood it
 	 */
-	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
+	if ((_current_company != OWNER_WATER && _game_mode != GM_EDITOR &&
 			!_cheats.magic_bulldozer.value) ||
 			((flags & DC_AUTO) != 0) ||
-			(_current_player == OWNER_WATER &&
+			(_current_company == OWNER_WATER &&
 				((indspec->behaviour & INDUSTRYBEH_BUILT_ONWATER) ||
 				HasBit(GetIndustryTileSpec(GetIndustryGfx(tile))->slopes_refused, 5)))) {
 		SetDParam(0, indspec->name);
@@ -852,11 +852,11 @@ static void GetProducedCargo_Industry(TileIndex tile, CargoID *b)
 	b[1] = i->produced_cargo[1];
 }
 
-static void ChangeTileOwner_Industry(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Industry(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	/* If the founder merges, the industry was created by the merged company */
 	Industry *i = GetIndustryByTile(tile);
-	if (i->founder == old_player) i->founder = (new_player == PLAYER_SPECTATOR) ? OWNER_NONE : new_player;
+	if (i->founder == old_owner) i->founder = (new_owner == INVALID_OWNER) ? OWNER_NONE : new_owner;
 }
 
 static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
@@ -976,17 +976,17 @@ void PlantRandomFarmField(const Industry *i)
 static bool SearchLumberMillTrees(TileIndex tile, void *user_data)
 {
 	if (IsTileType(tile, MP_TREES) && GetTreeGrowth(tile) > 2) { ///< 3 and up means all fully grown trees
-		PlayerID old_player = _current_player;
+		CompanyID old_company = _current_company;
 		/* found a tree */
 
-		_current_player = OWNER_NONE;
+		_current_company = OWNER_NONE;
 		_industry_sound_ctr = 1;
 		_industry_sound_tile = tile;
 		SndPlayTileFx(SND_38_CHAINSAW, tile);
 
 		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
-		_current_player = old_player;
+		_current_company = old_company;
 		return true;
 	}
 	return false;
@@ -1361,10 +1361,10 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 	/* Check if we don't leave the map */
 	if (TileX(cur_tile) == 0 || TileY(cur_tile) == 0 || TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
 
-	/* _current_player is OWNER_NONE for randomly generated industries and in editor, or the player who funded or prospected the industry.
+	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
 	 * Perform terraforming as OWNER_TOWN to disable autoslope. */
-	PlayerID old_player = _current_player;
-	_current_player = OWNER_TOWN;
+	CompanyID old_company = _current_company;
+	_current_company = OWNER_TOWN;
 
 	BEGIN_TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
 		curh = TileHeight(tile_walk);
@@ -1372,13 +1372,13 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 			/* This tile needs terraforming. Check if we can do that without
 			 *  damaging the surroundings too much. */
 			if (!CheckCanTerraformSurroundingTiles(tile_walk, h, 0)) {
-				_current_player = old_player;
+				_current_company = old_company;
 				return false;
 			}
 			/* This is not 100% correct check, but the best we can do without modifying the map.
 			 *  What is missing, is if the difference in height is more than 1.. */
 			if (CmdFailed(DoCommand(tile_walk, SLOPE_N, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND))) {
-				_current_player = old_player;
+				_current_company = old_company;
 				return false;
 			}
 		}
@@ -1398,7 +1398,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 		} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)
 	}
 
-	_current_player = old_player;
+	_current_company = old_company;
 	return true;
 }
 
@@ -1502,7 +1502,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->last_prod_year = _cur_year;
 	i->last_month_production[0] = i->production_rate[0] * 8;
 	i->last_month_production[1] = i->production_rate[1] * 8;
-	i->founder = _current_player;
+	i->founder = _current_company;
 
 	if (HasBit(indspec->callback_flags, CBM_IND_DECIDE_COLOUR)) {
 		uint16 res = GetIndustryCallback(CBID_INDUSTRY_DECIDE_COLOUR, 0, 0, i, type, INVALID_TILE);
@@ -1734,8 +1734,8 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 	num = (ind_spc->check_proc == CHECK_REFINERY || ind_spc->check_proc == CHECK_OIL_RIG) ? ScaleByMapSize1D(num) : ScaleByMapSize(num);
 
 	if (_settings_game.difficulty.number_industries != 0) {
-		PlayerID old_player = _current_player;
-		_current_player = OWNER_NONE;
+		CompanyID old_company = _current_company;
+		_current_company = OWNER_NONE;
 		assert(num > 0);
 
 		do {
@@ -1748,7 +1748,7 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 			}
 		} while (--num);
 
-		_current_player = old_player;
+		_current_company = old_company;
 	}
 }
 
@@ -1959,7 +1959,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 *
 * @param ind: Industry being investigated.
 *
-* @return: 0 if nobody can service the industry, 2 if the local player can
+* @return: 0 if nobody can service the industry, 2 if the local company can
 * service the industry, and 1 otherwise (only competitors can service the
 * industry)
 */
@@ -1974,7 +1974,7 @@ int WhoCanServiceIndustry(Industry* ind)
 	int result = 0;
 	FOR_ALL_VEHICLES(v) {
 		/* Is it worthwhile to try this vehicle? */
-		if (v->owner != _local_player && result != 0) continue;
+		if (v->owner != _local_company && result != 0) continue;
 
 		/* Check whether it accepts the right kind of cargo */
 		bool c_accepts = false;
@@ -2005,7 +2005,7 @@ int WhoCanServiceIndustry(Industry* ind)
 				if ((o->GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
 
 				if (stations.find(st) != stations.end()) {
-					if (v->owner == _local_player) return 2; // Player services industry
+					if (v->owner == _local_company) return 2; // Company services industry
 					result = 1; // Competitor services industry
 				}
 			}
@@ -2026,9 +2026,9 @@ static void ReportNewsProductionChangeIndustry(Industry *ind, CargoID type, int 
 	NewsSubtype ns;
 
 	switch (WhoCanServiceIndustry(ind)) {
-		case 0: ns = NS_INDUSTRY_NOBODY; break;
-		case 1: ns = NS_INDUSTRY_OTHER;  break;
-		case 2: ns = NS_INDUSTRY_PLAYER; break;
+		case 0: ns = NS_INDUSTRY_NOBODY;  break;
+		case 1: ns = NS_INDUSTRY_OTHER;   break;
+		case 2: ns = NS_INDUSTRY_COMPANY; break;
 		default: NOT_REACHED(); break;
 	}
 	SetDParam(2, abs(percent));
@@ -2210,9 +2210,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			ns = NS_INDUSTRY_CLOSE;
 		} else {
 			switch (WhoCanServiceIndustry(i)) {
-				case 0: ns = NS_INDUSTRY_NOBODY; break;
-				case 1: ns = NS_INDUSTRY_OTHER;  break;
-				case 2: ns = NS_INDUSTRY_PLAYER; break;
+				case 0: ns = NS_INDUSTRY_NOBODY;  break;
+				case 1: ns = NS_INDUSTRY_OTHER;   break;
+				case 2: ns = NS_INDUSTRY_COMPANY; break;
 				default: NOT_REACHED(); break;
 			}
 		}
@@ -2256,8 +2256,8 @@ void IndustryDailyLoop()
 		return;  // Nothing to do? get out
 	}
 
-	PlayerID old_player = _current_player;
-	_current_player = OWNER_NONE;
+	CompanyID old_company = _current_company;
+	_current_company = OWNER_NONE;
 
 	/* perform the required industry changes for the day */
 	for (uint16 j = 0; j < change_loop; j++) {
@@ -2270,7 +2270,7 @@ void IndustryDailyLoop()
 		}
 	}
 
-	_current_player = old_player;
+	_current_company = old_company;
 
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 1);
@@ -2279,8 +2279,8 @@ void IndustryDailyLoop()
 void IndustryMonthlyLoop()
 {
 	Industry *i;
-	PlayerID old_player = _current_player;
-	_current_player = OWNER_NONE;
+	CompanyID old_company = _current_company;
+	_current_company = OWNER_NONE;
 
 	FOR_ALL_INDUSTRIES(i) {
 		UpdateIndustryStatistics(i);
@@ -2291,7 +2291,7 @@ void IndustryMonthlyLoop()
 		}
 	}
 
-	_current_player = old_player;
+	_current_company = old_company;
 
 	/* production-change */
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 1);

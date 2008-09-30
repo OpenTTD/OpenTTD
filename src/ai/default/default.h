@@ -9,8 +9,8 @@
 #include "../../vehicle_type.h"
 #include "../../rail_type.h"
 
-void AiDoGameLoop(Player*);
-void SaveLoad_AI(PlayerID id);
+void AiDoGameLoop(Company *c);
+void SaveLoad_AI(CompanyID company);
 
 struct AiBuildRec {
 	TileIndex spec_tile;
@@ -25,7 +25,7 @@ struct AiBuildRec {
 	CargoID cargo;
 };
 
-struct PlayerAI {
+struct CompanyAI {
 	byte state;
 	byte tick;            ///< Used to determine how often to move
 	uint32 state_counter; ///< Can hold tile index!
@@ -65,6 +65,6 @@ struct PlayerAI {
 	byte banned_val[16];
 };
 
-extern PlayerAI _players_ai[MAX_PLAYERS];
+extern CompanyAI _companies_ai[MAX_COMPANIES];
 
 #endif

@@ -201,8 +201,8 @@ enum {
 	CMD_BUILD_INDUSTRY,               ///< build a new industry
 
 	CMD_BUILD_COMPANY_HQ,             ///< build the company headquarter
-	CMD_SET_PLAYER_FACE,              ///< set the face of the player/company
-	CMD_SET_PLAYER_COLOR,             ///< set the color of the player/company
+	CMD_SET_COMPANY_MANAGER_FACE,     ///< set the manager's face of the company
+	CMD_SET_COMPANY_COLOR,            ///< set the color of the company
 
 	CMD_INCREASE_LOAN,                ///< increase the loan from the bank
 	CMD_DECREASE_LOAN,                ///< decrease the loan from the bank
@@ -254,7 +254,7 @@ enum {
 	CMD_MONEY_CHEAT,                  ///< do the money cheat
 	CMD_BUILD_CANAL,                  ///< build a canal
 
-	CMD_PLAYER_CTRL,                  ///< used in multiplayer to create a new player etc.
+	CMD_COMPANY_CTRL,                 ///< used in multiplayer to create a new companies etc.
 	CMD_LEVEL_LAND,                   ///< level land
 
 	CMD_REFIT_RAIL_VEHICLE,           ///< refit the cargo space of a train
@@ -264,7 +264,7 @@ enum {
 	CMD_BUILD_SIGNAL_TRACK,           ///< add signals along a track (by dragging)
 	CMD_REMOVE_SIGNAL_TRACK,          ///< remove signals along a track (by dragging)
 
-	CMD_GIVE_MONEY,                   ///< give money to an other player
+	CMD_GIVE_MONEY,                   ///< give money to another company
 	CMD_CHANGE_PATCH_SETTING,         ///< change a patch setting
 
 	CMD_SET_AUTOREPLACE,              ///< set an autoreplace entry

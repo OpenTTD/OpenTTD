@@ -214,7 +214,7 @@ public:
 	Scrollbar vscroll2; ///< Second vertical scroll bar
 	ResizeInfo resize;  ///< Resize information
 
-	byte caption_color; ///< Background color of the window caption, contains PlayerID
+	byte caption_color; ///< Background color of the window caption, contains CompanyID
 
 	ViewportData *viewport;      ///< Pointer to viewport data, if present
 	Widget *widget;        ///< Widgets of the window

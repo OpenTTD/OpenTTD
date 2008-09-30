@@ -104,7 +104,7 @@ enum HelicopterRotorStates {
 };
 
 /** Find the nearest hangar to v
- * INVALID_STATION is returned, if the player does not have any suitable
+ * INVALID_STATION is returned, if the company does not have any suitable
  * airports (like helipads only)
  * @param v vehicle looking for a hangar
  * @return the StationID if one is found, otherwise, INVALID_STATION
@@ -266,7 +266,7 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  */
 CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_player)) return_cmd_error(STR_AIRCRAFT_NOT_AVAILABLE);
+	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_AIRCRAFT_NOT_AVAILABLE);
 
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
 	CommandCost value = EstimateAircraftCost(p1, avi);
@@ -274,7 +274,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* to just query the cost, it is not neccessary to have a valid tile (automation/AI) */
 	if (flags & DC_QUERY_COST) return value;
 
-	if (!IsHangarTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
+	if (!IsHangarTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Prevent building aircraft types at places which can't handle them */
 	if (!CanAircraftUseStation(p1, tile)) return CMD_ERROR;
@@ -299,7 +299,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->unitnumber = unit_num;
 		v->direction = DIR_SE;
 
-		v->owner = u->owner = _current_player;
+		v->owner = u->owner = _current_company;
 
 		v->tile = tile;
 //		u->tile = 0;
@@ -428,7 +428,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			w = new (w) Aircraft();
 			w->direction = DIR_N;
-			w->owner = _current_player;
+			w->owner = _current_company;
 			w->x_pos = v->x_pos;
 			w->y_pos = v->y_pos;
 			w->z_pos = v->z_pos + 5;
@@ -448,10 +448,10 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
-		if (IsLocalPlayer())
+		if (IsLocalCompany())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); //updates the replace Aircraft window
 
-		GetPlayer(_current_player)->num_engines[p1]++;
+		GetCompany(_current_company)->num_engines[p1]++;
 	}
 
 	return value;
@@ -529,7 +529,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_AIRCRAFT, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot(VEH_AIRCRAFT, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
@@ -597,7 +597,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	_returned_refit_capacity = pass;
 
 	CommandCost cost;
-	if (IsHumanPlayer(v->owner) && new_cid != v->cargo_type) {
+	if (IsHumanCompany(v->owner) && new_cid != v->cargo_type) {
 		cost = GetRefitCost(v->engine_type);
 	}
 
@@ -660,7 +660,7 @@ void Aircraft::OnNewDay()
 	this->profit_this_year -= cost.GetCost();
 	this->running_ticks = 0;
 
-	SubtractMoneyFromPlayerFract(this->owner, cost);
+	SubtractMoneyFromCompanyFract(this->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
@@ -1312,11 +1312,11 @@ void HandleMissingAircraftOrders(Vehicle *v)
 	const Station *st = GetTargetAirportIfValid(v);
 	if (st == NULL) {
 		CommandCost ret;
-		PlayerID old_player = _current_player;
+		CompanyID old_company = _current_company;
 
-		_current_player = v->owner;
+		_current_company = v->owner;
 		ret = DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
-		_current_player = old_player;
+		_current_company = old_company;
 
 		if (CmdFailed(ret)) CrashAirplane(v);
 	} else if (!v->current_order.IsType(OT_GOTO_DEPOT)) {
@@ -1413,7 +1413,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 		/* show newsitem of celebrating citizens */
 		AddNewsItem(
 			STR_A033_CITIZENS_CELEBRATE_FIRST,
-			(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
+			(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,
 			st->index
 		);
@@ -1477,28 +1477,28 @@ static void AircraftLeaveHangar(Vehicle *v)
 static inline bool CheckSendAircraftToHangarForReplacement(const Vehicle *v)
 {
 	EngineID new_engine;
-	Player *p = GetPlayer(v->owner);
+	Company *c = GetCompany(v->owner);
 
 	if (VehicleHasDepotOrders(v)) return false; // The aircraft will end up in the hangar eventually on it's own
 
-	new_engine = EngineReplacementForPlayer(p, v->engine_type, v->group_id);
+	new_engine = EngineReplacementForCompany(c, v->engine_type, v->group_id);
 
 	if (new_engine == INVALID_ENGINE) {
 		/* There is no autoreplace assigned to this EngineID so we will set it to renew to the same type if needed */
 		new_engine = v->engine_type;
 
-		if (!v->NeedsAutorenewing(p)) {
+		if (!v->NeedsAutorenewing(c)) {
 			/* No need to replace the aircraft */
 			return false;
 		}
 	}
 
-	if (!HasBit(GetEngine(new_engine)->player_avail, v->owner)) {
+	if (!HasBit(GetEngine(new_engine)->company_avail, v->owner)) {
 		/* Engine is not buildable anymore */
 		return false;
 	}
 
-	if (p->player_money < (p->engine_renew_money + (2 * DoCommand(0, new_engine, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT).GetCost()))) {
+	if (c->money < (c->engine_renew_money + (2 * DoCommand(0, new_engine, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT).GetCost()))) {
 		/* We lack enough money to request the replacement right away.
 		 * We want 2*(the price of the new vehicle) and not looking at the value of the vehicle we are going to sell.
 		 * The reason is that we don't want to send a whole lot of vehicles to the hangars when we only have enough money to replace a single one.
@@ -1652,9 +1652,9 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 
 	/* Send the helicopter to a hangar if needed for replacement */
 	if (CheckSendAircraftToHangarForReplacement(v)) {
-		_current_player = v->owner;
+		_current_company = v->owner;
 		DoCommand(v->tile, v->index, DEPOT_SERVICE | DEPOT_LOCATE_HANGAR, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
-		_current_player = OWNER_NONE;
+		_current_company = OWNER_NONE;
 	}
 }
 
@@ -1704,9 +1704,9 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *apc)
 
 	/* check if the aircraft needs to be replaced or renewed and send it to a hangar if needed */
 	if (CheckSendAircraftToHangarForReplacement(v)) {
-		_current_player = v->owner;
+		_current_company = v->owner;
 		DoCommand(v->tile, v->index, DEPOT_SERVICE, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
-		_current_player = OWNER_NONE;
+		_current_company = OWNER_NONE;
 	}
 }
 

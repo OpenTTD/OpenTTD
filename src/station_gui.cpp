@@ -84,9 +84,9 @@ static void StationsWndShowStationRating(int x, int y, CargoID type, uint amount
 typedef GUIList<const Station*> GUIStationList;
 
 /**
- * The list of stations per player.
+ * The list of stations per company.
  */
-class PlayerStationsWindow : public Window
+class CompanyStationsWindow : public Window
 {
 protected:
 	/* Runtime saved values */
@@ -107,13 +107,13 @@ protected:
 	/**
 	 * (Re)Build station list
 	 *
-	 * @param owner player whose stations are to be in list
+	 * @param owner company whose stations are to be in list
 	 */
-	void BuildStationsList(const PlayerID owner)
+	void BuildStationsList(const Owner owner)
 	{
 		if (!this->stations.NeedRebuild()) return;
 
-		DEBUG(misc, 3, "Building station list for player %d", owner);
+		DEBUG(misc, 3, "Building station list for company %d", owner);
 
 		this->stations.Clear();
 
@@ -208,7 +208,7 @@ protected:
 	}
 
 public:
-	PlayerStationsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	CompanyStationsWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		this->caption_color = (byte)this->window_number;
 		this->vscroll.cap = 12;
@@ -276,21 +276,21 @@ public:
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	~PlayerStationsWindow()
+	~CompanyStationsWindow()
 	{
 		this->last_sorting = this->stations.GetListing();
 	}
 
 	virtual void OnPaint()
 	{
-		const PlayerID owner = (PlayerID)this->window_number;
+		const Owner owner = (Owner)this->window_number;
 
 		this->BuildStationsList(owner);
 		this->SortStationsList();
 
 		SetVScrollCount(this, this->stations.Length());
 
-		/* draw widgets, with player's name in the caption */
+		/* draw widgets, with company's name in the caption */
 		SetDParam(0, owner);
 		SetDParam(1, this->vscroll.count);
 
@@ -326,7 +326,7 @@ public:
 		cg_ofst = this->IsWidgetLowered(SLW_FACILALL) ? 2 : 1;
 		DrawString(71 + cg_ofst, y + cg_ofst, STR_ABBREV_ALL, TC_BLACK);
 
-		if (this->vscroll.count == 0) { // player has no stations
+		if (this->vscroll.count == 0) { // company has no stations
 			DrawString(xb, 40, STR_304A_NONE, TC_FROMSTRING);
 			return;
 		}
@@ -373,7 +373,7 @@ public:
 
 				const Station *st = this->stations[id_v];
 				/* do not check HasStationInUse - it is slow and may be invalid */
-				assert(st->owner == (PlayerID)this->window_number || (st->owner == OWNER_NONE && !st->IsBuoy()));
+				assert(st->owner == (Owner)this->window_number || (st->owner == OWNER_NONE && !st->IsBuoy()));
 
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(st->xy);
@@ -512,7 +512,7 @@ public:
 	{
 		if (_pause_game != 0) return;
 		if (this->stations.NeedResort()) {
-			DEBUG(misc, 3, "Periodic rebuild station list player %d", this->window_number);
+			DEBUG(misc, 3, "Periodic rebuild station list company %d", this->window_number);
 			this->SetDirty();
 		}
 	}
@@ -538,15 +538,15 @@ public:
 	}
 };
 
-Listing PlayerStationsWindow::last_sorting = {false, 0};
-byte PlayerStationsWindow::facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-bool PlayerStationsWindow::include_empty = true;
-const uint32 PlayerStationsWindow::cargo_filter_max = UINT32_MAX;
-uint32 PlayerStationsWindow::cargo_filter = UINT32_MAX;
-const Station *PlayerStationsWindow::last_station = NULL;
+Listing CompanyStationsWindow::last_sorting = {false, 0};
+byte CompanyStationsWindow::facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
+bool CompanyStationsWindow::include_empty = true;
+const uint32 CompanyStationsWindow::cargo_filter_max = UINT32_MAX;
+uint32 CompanyStationsWindow::cargo_filter = UINT32_MAX;
+const Station *CompanyStationsWindow::last_station = NULL;
 
 /* Availible station sorting functions */
-GUIStationList::SortFunction *const PlayerStationsWindow::sorter_funcs[] = {
+GUIStationList::SortFunction *const CompanyStationsWindow::sorter_funcs[] = {
 	&StationNameSorter,
 	&StationTypeSorter,
 	&StationWaitingSorter,
@@ -554,7 +554,7 @@ GUIStationList::SortFunction *const PlayerStationsWindow::sorter_funcs[] = {
 };
 
 /* Names of the sorting functions */
-const StringID PlayerStationsWindow::sorter_names[] = {
+const StringID CompanyStationsWindow::sorter_names[] = {
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_FACILITY,
 	STR_SORT_BY_WAITING,
@@ -563,7 +563,7 @@ const StringID PlayerStationsWindow::sorter_names[] = {
 };
 
 
-static const Widget _player_stations_widgets[] = {
+static const Widget _company_stations_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // SLW_CLOSEBOX
 {    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   345,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   346,   357,     0,    13, 0x0,               STR_STICKY_BUTTON},
@@ -589,23 +589,23 @@ static const Widget _player_stations_widgets[] = {
 {   WIDGETS_END},
 };
 
-static const WindowDesc _player_stations_desc = {
+static const WindowDesc _company_stations_desc = {
 	WDP_AUTO, WDP_AUTO, 358, 162, 358, 162,
 	WC_STATION_LIST, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_player_stations_widgets,
+	_company_stations_widgets,
 };
 
 /**
- * Opens window with list of player's stations
+ * Opens window with list of company's stations
  *
- * @param player player whose stations' list show
+ * @param company whose stations' list show
  */
-void ShowPlayerStations(PlayerID player)
+void ShowCompanyStations(CompanyID company)
 {
-	if (!IsValidPlayerID(player)) return;
+	if (!IsValidCompanyID(company)) return;
 
-	AllocateWindowDescFront<PlayerStationsWindow>(&_player_stations_desc, player);
+	AllocateWindowDescFront<CompanyStationsWindow>(&_company_stations_desc, company);
 }
 
 static const Widget _station_view_widgets[] = {
@@ -687,7 +687,7 @@ struct StationViewWindow : public Window {
 
 	StationViewWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		PlayerID owner = GetStation(window_number)->owner;
+		Owner owner = GetStation(window_number)->owner;
 		if (owner != OWNER_NONE) this->caption_color = owner;
 		this->vscroll.cap = 5;
 		this->resize.step_height = 10;
@@ -755,7 +755,7 @@ struct StationViewWindow : public Window {
 		SetVScrollCount(this, (int)cargolist.size() + 1); // update scrollbar
 
 		/* disable some buttons */
-		this->SetWidgetDisabledState(SVW_RENAME,   st->owner != _local_player);
+		this->SetWidgetDisabledState(SVW_RENAME,   st->owner != _local_company);
 		this->SetWidgetDisabledState(SVW_TRAINS,   !(st->facilities & FACIL_TRAIN));
 		this->SetWidgetDisabledState(SVW_ROADVEHS, !(st->facilities & FACIL_TRUCK_STOP) && !(st->facilities & FACIL_BUS_STOP));
 		this->SetWidgetDisabledState(SVW_PLANES,   !(st->facilities & FACIL_AIRPORT));
@@ -929,16 +929,16 @@ struct StationViewWindow : public Window {
 
 			case SVW_PLANES: { // Show a list of scheduled aircraft to this station
 				const Station *st = GetStation(this->window_number);
-				/* Since oilrigs have no owners, show the scheduled aircraft of current player */
-				PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
+				/* Since oilrigs have no owners, show the scheduled aircraft of current company */
+				Owner owner = (st->owner == OWNER_NONE) ? _current_company : st->owner;
 				ShowVehicleListWindow(owner, VEH_AIRCRAFT, (StationID)this->window_number);
 				break;
 			}
 
 			case SVW_SHIPS: { // Show a list of scheduled ships to this station
 				const Station *st = GetStation(this->window_number);
-				/* Since oilrigs/bouys have no owners, show the scheduled ships of current player */
-				PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
+				/* Since oilrigs/bouys have no owners, show the scheduled ships of current company */
+				Owner owner = (st->owner == OWNER_NONE) ? _current_company : st->owner;
 				ShowVehicleListWindow(owner, VEH_SHIP, (StationID)this->window_number);
 				break;
 			}

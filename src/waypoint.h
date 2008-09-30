@@ -25,7 +25,7 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 
 	ViewportSign sign; ///< Dimensions of sign (not saved)
 	Date build_date;   ///< Date of construction
-	PlayerByte owner;  ///< Whom this waypoint belongs to
+	OwnerByte owner;   ///< Whom this waypoint belongs to
 
 	byte stat_id;      ///< ID of waypoint within the waypoint class (not saved)
 	uint32 grfid;      ///< ID of GRF file

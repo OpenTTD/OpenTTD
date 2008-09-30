@@ -11,7 +11,7 @@
 #include "../console_type.h"
 
 extern NetworkServerGameInfo _network_game_info;
-extern NetworkPlayerInfo _network_player_info[MAX_PLAYERS];
+extern NetworkCompanyInfo _network_company_info[MAX_COMPANIES];
 extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 
 extern uint16 _network_own_client_index;
@@ -23,16 +23,16 @@ extern char *_network_host_list[10];
 extern char *_network_ban_list[25];
 
 byte NetworkSpectatorCount();
-void CheckMinPlayers();
-void NetworkUpdatePlayerName();
-bool NetworkCompanyHasPlayers(PlayerID company);
+void CheckMinActiveClients();
+void NetworkUpdateClientName();
+bool NetworkCompanyHasClients(CompanyID company);
 bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
 void NetworkReboot();
 void NetworkDisconnect();
 void NetworkGameLoop();
 void NetworkUDPGameLoop();
 void NetworkUDPCloseAll();
-void ParseConnectionString(const char **player, const char **port, char *connection_string);
+void ParseConnectionString(const char **company, const char **port, char *connection_string);
 void NetworkStartDebugLog(const char *hostname, uint16 port);
 void NetworkPopulateCompanyInfo();
 
@@ -45,13 +45,13 @@ void NetworkClientSetPassword();
 /*** Commands ran by the server ***/
 void NetworkServerMonthlyLoop();
 void NetworkServerYearlyLoop();
-void NetworkServerChangeOwner(PlayerID current_player, PlayerID new_player);
+void NetworkServerChangeOwner(Owner current_owner, Owner new_owner);
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
 
 NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index);
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
-const char* GetPlayerIP(const NetworkClientInfo *ci);
+const char* GetClientIP(const NetworkClientInfo *ci);
 
 void NetworkServerSendRcon(uint16 client_index, ConsoleColour colour_code, const char *string);
 void NetworkServerSendError(uint16 client_index, NetworkErrorCode error);

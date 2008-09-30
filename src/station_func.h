@@ -14,7 +14,7 @@
 #include "vehicle_type.h"
 #include <set>
 
-void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
+void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 
 /** A set of stations (\c const \c Station* ) */
 typedef std::set<Station*> StationSet;
@@ -31,7 +31,7 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int 
 const DrawTileSprites *GetStationTileLayout(StationType st, byte gfx);
 void StationPickerDrawSprite(int x, int y, StationType st, RailType railtype, RoadType roadtype, int image);
 
-bool HasStationInUse(StationID station, PlayerID player);
+bool HasStationInUse(StationID station, CompanyID company);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
 uint GetNumRoadStops(const Station* st, RoadStopType type);

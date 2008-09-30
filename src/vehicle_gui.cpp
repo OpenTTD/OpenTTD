@@ -90,11 +90,11 @@ const StringID BaseVehicleListWindow::vehicle_sorter_names[] = {
 	INVALID_STRING_ID
 };
 
-void BaseVehicleListWindow::BuildVehicleList(PlayerID owner, uint16 index, uint16 window_type)
+void BaseVehicleListWindow::BuildVehicleList(Owner owner, uint16 index, uint16 window_type)
 {
 	if (!this->vehicles.NeedRebuild()) return;
 
-	DEBUG(misc, 3, "Building vehicle list for player %d at station %d", owner, index);
+	DEBUG(misc, 3, "Building vehicle list for company %d at station %d", owner, index);
 
 	GenerateVehicleSortList(&this->vehicles, this->vehicle_type, owner, index, window_type);
 
@@ -684,7 +684,7 @@ enum VehicleListWindowWidgets {
 	VLW_WIDGET_EMPTY_TOP_RIGHT,
 	VLW_WIDGET_LIST,
 	VLW_WIDGET_SCROLLBAR,
-	VLW_WIDGET_OTHER_PLAYER_FILLER,
+	VLW_WIDGET_OTHER_COMPANY_FILLER,
 	VLW_WIDGET_AVAILABLE_VEHICLES,
 	VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 	VLW_WIDGET_STOP_ALL,
@@ -702,7 +702,7 @@ static const Widget _vehicle_list_widgets[] = {
 	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   248,   259,    14,    25, 0x0,                  STR_NULL},
 	{     WWT_MATRIX,     RESIZE_RB,  COLOUR_GREY,     0,   247,    26,   181, 0x0,                  STR_NULL},
 	{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   248,   259,    26,   181, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
-	/* Widget to be shown for other players hiding the following 6 widgets */
+	/* Widget to be shown for other companies hiding the following 6 widgets */
 	{      WWT_PANEL,    RESIZE_RTB,  COLOUR_GREY,     0,   247,   182,   193, 0x0,                  STR_NULL},
 
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,     0,   105,   182,   193, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
@@ -795,7 +795,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehic
  * Window for the (old) vehicle listing.
  *
  * bitmask for w->window_number
- * 0-7 PlayerID (owner)
+ * 0-7 CompanyID (owner)
  * 8-10 window type (use flags in vehicle_gui.h)
  * 11-15 vehicle type (using VEH_, but can be compressed to fewer bytes if needed)
  * 16-31 StationID or OrderID depending on window type (bit 8-10)
@@ -805,15 +805,15 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 	VehicleListWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
 	{
 		uint16 window_type = this->window_number & VLW_MASK;
-		PlayerID player = (PlayerID)GB(this->window_number, 0, 8);
+		CompanyID company = (CompanyID)GB(this->window_number, 0, 8);
 
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
-		this->caption_color = player;
+		this->caption_color = company;
 
 		/* Hide the widgets that we will not use in this window
 		* Some windows contains actions only fit for the owner */
-		if (player == _local_player) {
-			this->HideWidget(VLW_WIDGET_OTHER_PLAYER_FILLER);
+		if (company == _local_company) {
+			this->HideWidget(VLW_WIDGET_OTHER_COMPANY_FILLER);
 			this->SetWidgetDisabledState(VLW_WIDGET_AVAILABLE_VEHICLES, window_type != VLW_STANDARD);
 		} else {
 			this->SetWidgetsHiddenState(true,
@@ -937,7 +937,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 	virtual void OnPaint()
 	{
 		int x = 2;
-		const PlayerID owner = (PlayerID)this->caption_color;
+		const Owner owner = (Owner)this->caption_color;
 		const uint16 window_type = this->window_number & VLW_MASK;
 		const uint16 index = GB(this->window_number, 16, 16);
 
@@ -1103,9 +1103,9 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 		if (_pause_game != 0) return;
 		if (this->vehicles.NeedResort()) {
 			StationID station = ((this->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(this->window_number, 16, 16) : INVALID_STATION;
-			PlayerID owner = (PlayerID)this->caption_color;
+			Owner owner = (Owner)this->caption_color;
 
-			DEBUG(misc, 3, "Periodic resort %d list player %d at station %d", this->vehicle_type, owner, station);
+			DEBUG(misc, 3, "Periodic resort %d list company %d at station %d", this->vehicle_type, owner, station);
 			this->SetDirty();
 		}
 	}
@@ -1139,26 +1139,26 @@ static WindowDesc _vehicle_list_desc = {
 	_vehicle_list_widgets,
 };
 
-static void ShowVehicleListWindowLocal(PlayerID player, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
+static void ShowVehicleListWindowLocal(CompanyID company, uint16 VLW_flag, VehicleType vehicle_type, uint16 unique_number)
 {
-	if (!IsValidPlayerID(player)) return;
+	if (!IsValidCompanyID(company)) return;
 
 	_vehicle_list_desc.cls = GetWindowClassForVehicleType(vehicle_type);
-	WindowNumber num = (unique_number << 16) | (vehicle_type << 11) | VLW_flag | player;
+	WindowNumber num = (unique_number << 16) | (vehicle_type << 11) | VLW_flag | company;
 	AllocateWindowDescFront<VehicleListWindow>(&_vehicle_list_desc, num);
 }
 
-void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type)
+void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type)
 {
 	/* If _settings_client.gui.advanced_vehicle_list > 1, display the Advanced list
-	 * if _settings_client.gui.advanced_vehicle_list == 1, display Advanced list only for local player
+	 * if _settings_client.gui.advanced_vehicle_list == 1, display Advanced list only for local company
 	 * if _ctrl_pressed, do the opposite action (Advanced list x Normal list)
 	 */
 
-	if ((_settings_client.gui.advanced_vehicle_list > (uint)(player != _local_player)) != _ctrl_pressed) {
-		ShowPlayerGroup(player, vehicle_type);
+	if ((_settings_client.gui.advanced_vehicle_list > (uint)(company != _local_company)) != _ctrl_pressed) {
+		ShowCompanyGroup(company, vehicle_type);
 	} else {
-		ShowVehicleListWindowLocal(player, VLW_STANDARD, vehicle_type, 0);
+		ShowVehicleListWindowLocal(company, VLW_STANDARD, vehicle_type, 0);
 	}
 }
 
@@ -1173,12 +1173,12 @@ void ShowVehicleListWindow(const Vehicle *v)
 	ShowVehicleListWindowLocal(v->owner, VLW_SHARED_ORDERS, v->type, v->FirstShared()->index);
 }
 
-void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, StationID station)
+void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, StationID station)
 {
-	ShowVehicleListWindowLocal(player, VLW_STATION_LIST, vehicle_type, station);
+	ShowVehicleListWindowLocal(company, VLW_STATION_LIST, vehicle_type, station);
 }
 
-void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex depot_tile)
+void ShowVehicleListWindow(CompanyID company, VehicleType vehicle_type, TileIndex depot_tile)
 {
 	uint16 depot_airport_index;
 
@@ -1189,7 +1189,7 @@ void ShowVehicleListWindow(PlayerID player, VehicleType vehicle_type, TileIndex 
 		if (depot == NULL) return; // no depot to show
 		depot_airport_index = depot->index;
 	}
-	ShowVehicleListWindowLocal(player, VLW_DEPOT_LIST, vehicle_type, depot_airport_index);
+	ShowVehicleListWindowLocal(company, VLW_DEPOT_LIST, vehicle_type, depot_airport_index);
 }
 
 
@@ -1381,7 +1381,7 @@ struct VehicleDetailsWindow : Window {
 		const Vehicle *v = GetVehicle(this->window_number);
 		byte det_tab = this->tab;
 
-		this->SetWidgetDisabledState(VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_player);
+		this->SetWidgetDisabledState(VLD_WIDGET_RENAME_VEHICLE, v->owner != _local_company);
 
 		if (v->type == VEH_TRAIN) {
 			this->DisableWidget(det_tab + VLD_WIDGET_DETAILS_CARGO_CARRIED);
@@ -1843,21 +1843,21 @@ struct VehicleViewWindow : Window {
 
 		const Vehicle *v = GetVehicle(this->window_number);
 		StringID str;
-		bool is_localplayer = v->owner == _local_player;
+		bool is_localcompany = v->owner == _local_company;
 		bool refitable_and_stopped_in_depot = IsVehicleRefitable(v);
 
-		this->SetWidgetDisabledState(VVW_WIDGET_GOTO_DEPOT, !is_localplayer);
+		this->SetWidgetDisabledState(VVW_WIDGET_GOTO_DEPOT, !is_localcompany);
 		this->SetWidgetDisabledState(VVW_WIDGET_REFIT_VEH,
-																!refitable_and_stopped_in_depot || !is_localplayer);
-		this->SetWidgetDisabledState(VVW_WIDGET_CLONE_VEH, !is_localplayer);
+																!refitable_and_stopped_in_depot || !is_localcompany);
+		this->SetWidgetDisabledState(VVW_WIDGET_CLONE_VEH, !is_localcompany);
 
 		if (v->type == VEH_TRAIN) {
-			this->SetWidgetDisabledState(VVW_WIDGET_FORCE_PROCEED, !is_localplayer);
-			this->SetWidgetDisabledState(VVW_WIDGET_TURN_AROUND, !is_localplayer);
+			this->SetWidgetDisabledState(VVW_WIDGET_FORCE_PROCEED, !is_localcompany);
+			this->SetWidgetDisabledState(VVW_WIDGET_TURN_AROUND, !is_localcompany);
 
 			/* Cargo refit button is disabled, until we know we can enable it below. */
 
-			if (is_localplayer) {
+			if (is_localcompany) {
 				/* See if any vehicle can be refitted */
 				for (const Vehicle *u = v; u != NULL; u = u->Next()) {
 					if (EngInfo(u->engine_type)->refit_mask != 0 ||

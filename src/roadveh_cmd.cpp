@@ -180,7 +180,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	UnitID unit_num;
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_ROAD, _current_player)) return_cmd_error(STR_ROAD_VEHICLE_NOT_AVAILABLE);
+	if (!IsEngineBuildable(p1, VEH_ROAD, _current_company)) return_cmd_error(STR_ROAD_VEHICLE_NOT_AVAILABLE);
 
 	cost = EstimateRoadVehCost(p1);
 	if (flags & DC_QUERY_COST) return cost;
@@ -188,7 +188,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* The ai_new queries the vehicle cost before building the route,
 	 * so we must check against cheaters no sooner than now. --pasky */
 	if (!IsRoadDepotTile(tile)) return CMD_ERROR;
-	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
+	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	if (HasTileRoadType(tile, ROADTYPE_TRAM) != HasBit(EngInfo(p1)->misc_flags, EF_ROAD_TRAM)) return_cmd_error(STR_DEPOT_WRONG_DEPOT_TYPE);
 
@@ -218,7 +218,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v = new (v) RoadVehicle();
 		v->unitnumber = unit_num;
 		v->direction = DiagDirToDir(GetRoadDepotDirection(tile));
-		v->owner = _current_player;
+		v->owner = _current_company;
 
 		v->tile = tile;
 		x = TileX(tile) * TILE_SIZE + TILE_SIZE / 2;
@@ -283,10 +283,10 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
-		if (IsLocalPlayer())
+		if (IsLocalCompany())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Road window
 
-		GetPlayer(_current_player)->num_engines[p1]++;
+		GetCompany(_current_company)->num_engines[p1]++;
 	}
 
 	return cost;
@@ -441,7 +441,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_ROAD, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot(VEH_ROAD, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
@@ -805,7 +805,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 			SetDParam(0, st->index);
 			AddNewsItem(
 				v->u.road.roadtype == ROADTYPE_ROAD ? STR_902F_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM,
-				(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
+				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 				v->index,
 				st->index
 			);
@@ -817,7 +817,7 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 			SetDParam(0, st->index);
 			AddNewsItem(
 				v->u.road.roadtype == ROADTYPE_ROAD ? STR_9030_CITIZENS_CELEBRATE_FIRST : STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM,
-				(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
+				(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 				v->index,
 				st->index
 			);
@@ -1043,7 +1043,7 @@ static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection ent
 
 	if (IsTileType(tile, MP_ROAD)) {
 		if (IsRoadDepot(tile) && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir || (GetRoadTypes(tile) & v->u.road.compatible_roadtypes) == 0)) {
-			/* Road depot owned by another player or with the wrong orientation */
+			/* Road depot owned by another company or with the wrong orientation */
 			trackdirs = TRACKDIR_BIT_NONE;
 		}
 	} else if (IsTileType(tile, MP_STATION) && IsStandardRoadStopTile(tile)) {
@@ -1358,20 +1358,20 @@ static Trackdir FollowPreviousRoadVehicle(const Vehicle *v, const Vehicle *prev,
 
 /**
  * Can a tram track build without destruction on the given tile?
- * @param p the player that would be building the tram tracks
+ * @param c the company that would be building the tram tracks
  * @param t the tile to build on.
  * @param r the road bits needed.
  * @return true when a track track can be build on 't'
  */
-static bool CanBuildTramTrackOnTile(PlayerID p, TileIndex t, RoadBits r)
+static bool CanBuildTramTrackOnTile(CompanyID c, TileIndex t, RoadBits r)
 {
-	/* The 'current' player is not necessarily the owner of the vehicle. */
-	PlayerID original_player = _current_player;
-	_current_player = p;
+	/* The 'current' company is not necessarily the owner of the vehicle. */
+	CompanyID original_company = _current_company;
+	_current_company = c;
 
 	CommandCost ret = DoCommand(t, ROADTYPE_TRAM << 4 | r, 0, 0, CMD_BUILD_ROAD);
 
-	_current_player = original_player;
+	_current_company = original_company;
 	return CmdSucceeded(ret);
 }
 
@@ -1491,7 +1491,7 @@ again:
 					/*
 					 * Taking the 'small' corner for trams only happens when:
 					 * - We are not the from vehicle of an articulated tram.
-					 * - Or when the player cannot build on the next tile.
+					 * - Or when the company cannot build on the next tile.
 					 *
 					 * The 'small' corner means that the vehicle is on the end of a
 					 * tram track and needs to start turning there. To do this properly
@@ -1502,7 +1502,7 @@ again:
 					tile = v->tile;
 					start_frame = RVC_TURN_AROUND_START_FRAME_SHORT_TRAM;
 				} else {
-					/* The player can build on the next tile, so wait till (s)he does. */
+					/* The company can build on the next tile, so wait till (s)he does. */
 					v->cur_speed = 0;
 					return false;
 				}
@@ -1985,7 +1985,7 @@ void RoadVehicle::OnNewDay()
 	this->profit_this_year -= cost.GetCost();
 	this->running_ticks = 0;
 
-	SubtractMoneyFromPlayerFract(this->owner, cost);
+	SubtractMoneyFromCompanyFract(this->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	InvalidateWindowClasses(WC_ROADVEH_LIST);
@@ -2086,7 +2086,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		total_capacity += capacity;
 
-		if (IsHumanPlayer(v->owner) && new_cid != v->cargo_type) {
+		if (IsHumanCompany(v->owner) && new_cid != v->cargo_type) {
 			cost.AddCost(GetRefitCost(v->engine_type));
 		}
 

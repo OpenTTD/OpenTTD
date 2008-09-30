@@ -91,7 +91,7 @@ protected:
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
-	/// return current settings (can be custom - player based - but later)
+	/// return current settings (can be custom - company based - but later)
 	FORCEINLINE const YAPFSettings& PfGetSettings() const
 	{
 		return *m_settings;

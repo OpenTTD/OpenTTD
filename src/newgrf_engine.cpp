@@ -445,8 +445,8 @@ static uint8 LiveryHelper(EngineID engine, const Vehicle *v)
 	const Livery *l;
 
 	if (v == NULL) {
-		if (!IsValidPlayerID(_current_player)) return 0;
-		l = GetEngineLivery(engine, _current_player, INVALID_ENGINE, NULL);
+		if (!IsValidCompanyID(_current_company)) return 0;
+		l = GetEngineLivery(engine, _current_company, INVALID_ENGINE, NULL);
 	} else if (v->type == VEH_TRAIN) {
 		l = GetEngineLivery((v->u.rail.first_engine != INVALID_ENGINE && (IsArticulatedPart(v) || UsesWagonOverride(v))) ? v->u.rail.first_engine : v->engine_type, v->owner, v->u.rail.first_engine, v);
 	} else {
@@ -464,7 +464,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 	if (v == NULL) {
 		/* Vehicle does not exist, so we're in a purchase list */
 		switch (variable) {
-			case 0x43: return _current_player | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
+			case 0x43: return _current_company | (LiveryHelper(object->u.vehicle.self_type, NULL) << 24); // Owner information
 			case 0x46: return 0;               // Motion counter
 			case 0x48: return GetEngine(object->u.vehicle.self_type)->flags; // Vehicle Type Info
 			case 0x49: return _cur_year; // 'Long' format build year
@@ -542,8 +542,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			return cargo_classes | (common_cargo_type << 8) | (common_subtype << 16) | (user_def_data << 24);
 		}
 
-		case 0x43: // Player information
-			return v->owner | (GetPlayer(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
+		case 0x43: // Company information
+			return v->owner | (GetCompany(v->owner)->is_ai ? 0x10000 : 0) | (LiveryHelper(v->engine_type, v) << 24);
 
 		case 0x44: // Aircraft information
 			if (v->type != VEH_AIRCRAFT) return UINT_MAX;

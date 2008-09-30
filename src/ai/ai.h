@@ -24,8 +24,8 @@ struct AICommand {
 	AICommand *next;
 };
 
-/* The struct for an AIScript Player */
-struct AIPlayer {
+/* The struct for an AIScript Company */
+struct AICompany {
 	bool active;            ///< Is this AI active?
 	AICommand *queue;       ///< The commands that he has in his queue
 	AICommand *queue_tail;  ///< The tail of this queue
@@ -39,11 +39,11 @@ struct AIStruct {
 };
 
 extern AIStruct _ai;
-extern AIPlayer _ai_player[MAX_PLAYERS];
+extern AICompany _ai_company[MAX_COMPANIES];
 
 // ai.c
-void AI_StartNewAI(PlayerID player);
-void AI_PlayerDied(PlayerID player);
+void AI_StartNewAI(CompanyID company);
+void AI_CompanyDied(CompanyID company);
 void AI_RunGameLoop();
 void AI_Initialize();
 void AI_Uninitialize();

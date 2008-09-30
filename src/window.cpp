@@ -483,11 +483,11 @@ restart_search:
 	}
 }
 
-/** Delete all windows of a player. We identify windows of a player
- * by looking at the caption colour. If it is equal to the player ID
- * then we say the window belongs to the player and should be deleted
- * @param id PlayerID player identifier */
-void DeletePlayerWindows(PlayerID id)
+/** Delete all windows of a company. We identify windows of a company
+ * by looking at the caption colour. If it is equal to the company ID
+ * then we say the window belongs to the company and should be deleted
+ * @param id company identifier */
+void DeleteCompanyWindows(CompanyID id)
 {
 	Window* const *wz;
 
@@ -503,26 +503,26 @@ restart_search:
 		}
 	}
 
-	/* Also delete the player specific windows, that don't have a player-colour */
+	/* Also delete the company specific windows, that don't have a company-colour */
 	DeleteWindowById(WC_BUY_COMPANY, id);
 }
 
-/** Change the owner of all the windows one player can take over from another
- * player in the case of a company merger. Do not change ownership of windows
+/** Change the owner of all the windows one company can take over from another
+ * company in the case of a company merger. Do not change ownership of windows
  * that need to be deleted once takeover is complete
- * @param old_player PlayerID of original owner of the window
- * @param new_player PlayerID of the new owner of the window */
-void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
+ * @param old_owner original owner of the window
+ * @param new_owner the new owner of the window */
+void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 {
 	Window* const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
 		Window *w = *wz;
 
-		if (w->caption_color != old_player) continue;
+		if (w->caption_color != old_owner) continue;
 
 		switch (w->window_class) {
-			case WC_PLAYER_COLOR:
+			case WC_COMPANY_COLOR:
 			case WC_FINANCES:
 			case WC_STATION_LIST:
 			case WC_TRAINS_LIST:
@@ -534,7 +534,7 @@ void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
 				continue;
 
 			default:
-				w->caption_color = new_player;
+				w->caption_color = new_owner;
 				break;
 		}
 	}
@@ -1635,12 +1635,12 @@ void HandleKeypress(uint32 raw_key)
 	* During the generation of the world, there might be
 	* another thread that is currently building for example
 	* a road. To not interfere with those tasks, we should
-	* NOT change the _current_player here.
+	* NOT change the _current_company here.
 	*
 	* This is not necessary either, as the only events that
 	* can be handled are the 'close application' events
 	*/
-	if (!IsGeneratingWorld()) _current_player = _local_player;
+	if (!IsGeneratingWorld()) _current_company = _local_company;
 
 	/* Setup event */
 	uint16 key     = GB(raw_key,  0, 16);
@@ -1914,12 +1914,12 @@ void HandleMouseEvents()
 	 * During the generation of the world, there might be
 	 * another thread that is currently building for example
 	 * a road. To not interfere with those tasks, we should
-	 * NOT change the _current_player here.
+	 * NOT change the _current_company here.
 	 *
 	 * This is not necessary either, as the only events that
 	 * can be handled are the 'close application' events
 	 */
-	if (!IsGeneratingWorld()) _current_player = _local_player;
+	if (!IsGeneratingWorld()) _current_company = _local_company;
 
 	/* Mouse event? */
 	MouseClick click = MC_NONE;

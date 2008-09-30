@@ -98,7 +98,7 @@ void ProcessAsyncSaveFinish();
 void CallWindowTickEvent();
 
 extern void SetDifficultyLevel(int mode, DifficultySettings *gm_opt);
-extern Player* DoStartupNewPlayer(bool is_ai);
+extern Company *DoStartupNewCompany(bool is_ai);
 extern void ShowOSErrorBox(const char *buf, bool system);
 extern void InitializeRailGUI();
 
@@ -182,7 +182,7 @@ static void ShowHelp()
 		"  -g [savegame]       = Start new/save game immediately\n"
 		"  -G seed             = Set random seed\n"
 #if defined(ENABLE_NETWORK)
-		"  -n [ip:port#player] = Start networkgame\n"
+		"  -n [ip:port#company]= Start networkgame\n"
 		"  -D [ip][:port]      = Start dedicated server\n"
 		"  -l ip[:port]        = Redirect DEBUG()\n"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
@@ -307,7 +307,7 @@ static void InitializeDynamicVariables()
 	/* Dynamic stuff needs to be initialized somewhere... */
 	_industry_mngr.ResetMapping();
 	_industile_mngr.ResetMapping();
-	_Player_pool.AddBlockToPool();
+	_Company_pool.AddBlockToPool();
 }
 
 
@@ -341,7 +341,7 @@ static void ShutdownGame()
 	_Group_pool.CleanPool();
 	_CargoPacket_pool.CleanPool();
 	_Engine_pool.CleanPool();
-	_Player_pool.CleanPool();
+	_Company_pool.CleanPool();
 
 	free(_config_file);
 
@@ -363,9 +363,9 @@ static void LoadIntroGame()
 	if (SaveOrLoad("opntitle.dat", SL_LOAD, DATA_DIR) != SL_OK) {
 		GenerateWorld(GW_EMPTY, 64, 64); // if failed loading, make empty world.
 		WaitTillGeneratedWorld();
-		SetLocalPlayer(PLAYER_SPECTATOR);
+		SetLocalCompany(COMPANY_SPECTATOR);
 	} else {
-		SetLocalPlayer(PLAYER_FIRST);
+		SetLocalCompany(COMPANY_FIRST);
 	}
 
 	_pause_game = 0;
@@ -437,7 +437,7 @@ int ttd_main(int argc, char *argv[])
 			dedicated = true;
 			if (mgo.opt != NULL) {
 				/* Use the existing method for parsing (openttd -n).
-				 * However, we do ignore the #player part. */
+				 * However, we do ignore the #company part. */
 				const char *temp = NULL;
 				const char *port = NULL;
 				ParseConnectionString(&temp, &port, mgo.opt);
@@ -649,20 +649,20 @@ int ttd_main(int argc, char *argv[])
 	if (network && _network_available) {
 		if (network_conn != NULL) {
 			const char *port = NULL;
-			const char *player = NULL;
+			const char *company = NULL;
 			uint16 rport;
 
 			rport = NETWORK_DEFAULT_PORT;
-			_network_playas = PLAYER_NEW_COMPANY;
+			_network_playas = COMPANY_NEW_COMPANY;
 
-			ParseConnectionString(&player, &port, network_conn);
+			ParseConnectionString(&company, &port, network_conn);
 
-			if (player != NULL) {
-				_network_playas = (PlayerID)atoi(player);
+			if (company != NULL) {
+				_network_playas = (CompanyID)atoi(company);
 
-				if (_network_playas != PLAYER_SPECTATOR) {
+				if (_network_playas != COMPANY_SPECTATOR) {
 					_network_playas--;
-					if (_network_playas >= MAX_PLAYERS) return false;
+					if (_network_playas >= MAX_COMPANIES) return false;
 				}
 			}
 			if (port != NULL) rport = atoi(port);
@@ -719,21 +719,21 @@ static void MakeNewGameDone()
 
 	/* In a dedicated server, the server does not play */
 	if (_network_dedicated) {
-		SetLocalPlayer(PLAYER_SPECTATOR);
+		SetLocalCompany(COMPANY_SPECTATOR);
 		return;
 	}
 
-	/* Create a single player */
-	DoStartupNewPlayer(false);
+	/* Create a single company */
+	DoStartupNewCompany(false);
 
-	SetLocalPlayer(PLAYER_FIRST);
-	_current_player = _local_player;
+	SetLocalCompany(COMPANY_FIRST);
+	_current_company = _local_company;
 	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
 	InitializeRailGUI();
 
 #ifdef ENABLE_NETWORK
-	/* We are the server, we start a new player (not dedicated),
+	/* We are the server, we start a new company (not dedicated),
 	 * so set the default password *if* needed. */
 	if (_network_server && !StrEmpty(_settings_client.network.default_company_pass)) {
 		char *password = _settings_client.network.default_company_pass;
@@ -759,7 +759,7 @@ static void MakeNewGame(bool from_heightmap)
 
 static void MakeNewEditorWorldDone()
 {
-	SetLocalPlayer(OWNER_NONE);
+	SetLocalCompany(OWNER_NONE);
 
 	MarkWholeScreenDirty();
 }
@@ -774,7 +774,7 @@ static void MakeNewEditorWorld()
 	GenerateWorld(GW_EMPTY, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 }
 
-void StartupPlayers();
+void StartupCompanies();
 void StartupDisasters();
 extern void StartupEconomy();
 
@@ -816,12 +816,12 @@ static void StartScenario()
 
 	/* Inititalize data */
 	StartupEconomy();
-	StartupPlayers();
+	StartupCompanies();
 	StartupEngines();
 	StartupDisasters();
 
-	SetLocalPlayer(PLAYER_FIRST);
-	_current_player = _local_player;
+	SetLocalCompany(COMPANY_FIRST);
+	_current_company = _local_company;
 	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
 	MarkWholeScreenDirty();
@@ -927,9 +927,9 @@ void SwitchMode(int new_mode)
 				if (_saveload_mode == SLD_LOAD_SCENARIO) {
 					StartupEngines();
 				}
-				/* Update the local player for a loaded game. It is either always
-				* player #1 (eg 0) or in the case of a dedicated server a spectator */
-				SetLocalPlayer(_network_dedicated ? PLAYER_SPECTATOR : PLAYER_FIRST);
+				/* Update the local company for a loaded game. It is either always
+				* company #1 (eg 0) or in the case of a dedicated server a spectator */
+				SetLocalCompany(_network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST);
 				/* Decrease pause counter (was increased from opening load dialog) */
 				DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 #ifdef ENABLE_NETWORK
@@ -951,7 +951,7 @@ void SwitchMode(int new_mode)
 			break;
 
 		case SM_LOAD_HEIGHTMAP: /* Load heightmap from scenario editor */
-			SetLocalPlayer(OWNER_NONE);
+			SetLocalCompany(OWNER_NONE);
 
 			GenerateWorld(GW_HEIGHTMAP, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			MarkWholeScreenDirty();
@@ -959,7 +959,7 @@ void SwitchMode(int new_mode)
 
 		case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
 			if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR, NO_DIRECTORY)) {
-				SetLocalPlayer(OWNER_NONE);
+				SetLocalCompany(OWNER_NONE);
 				_settings_newgame.game_creation.starting_year = _cur_year;
 			} else {
 				SetDParam(0, STR_JUST_RAW_STRING);
@@ -987,7 +987,7 @@ void SwitchMode(int new_mode)
 			break;
 
 		case SM_GENRANDLAND: /* Generate random land within scenario editor */
-			SetLocalPlayer(OWNER_NONE);
+			SetLocalCompany(OWNER_NONE);
 			GenerateWorld(GW_RANDOM, 1 << _settings_game.game_creation.map_x, 1 << _settings_game.game_creation.map_y);
 			/* XXX: set date */
 			MarkWholeScreenDirty();
@@ -1034,7 +1034,7 @@ void StateGameLoop()
 				case VEH_ROAD: {
 					extern byte GetRoadVehLength(const Vehicle *v);
 					if (GetRoadVehLength(v) != v->u.road.cached_veh_length) {
-						printf("cache mismatch: vehicle %i, player %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
+						printf("cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
 					}
 				} break;
 
@@ -1051,7 +1051,7 @@ void StateGameLoop()
 					length = 0;
 					for (Vehicle *u = v; u != NULL; u = u->Next()) {
 						if (memcmp(&wagons[length], &u->u.rail, sizeof(VehicleRail)) != 0) {
-							printf("cache mismatch: vehicle %i, player %i, unit number %i, wagon %i\n", v->index, (int)v->owner, v->unitnumber, length);
+							printf("cache mismatch: vehicle %i, company %i, unit number %i, wagon %i\n", v->index, (int)v->owner, v->unitnumber, length);
 						}
 						length++;
 					}
@@ -1063,7 +1063,7 @@ void StateGameLoop()
 					uint speed = v->u.air.cached_max_speed;
 					UpdateAircraftCache(v);
 					if (speed != v->u.air.cached_max_speed) {
-						printf("cache mismatch: vehicle %i, player %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
+						printf("cache mismatch: vehicle %i, company %i, unit number %i\n", v->index, (int)v->owner, v->unitnumber);
 					}
 				} break;
 
@@ -1075,8 +1075,8 @@ void StateGameLoop()
 
 		/* All these actions has to be done from OWNER_NONE
 		 *  for multiplayer compatibility */
-		PlayerID p = _current_player;
-		_current_player = OWNER_NONE;
+		CompanyID old_company = _current_company;
+		_current_company = OWNER_NONE;
 
 		AnimateAnimatedTiles();
 		IncreaseDate();
@@ -1089,7 +1089,7 @@ void StateGameLoop()
 
 		CallWindowTickEvent();
 		NewsLoop();
-		_current_player = p;
+		_current_company = old_company;
 	}
 }
 
@@ -1104,8 +1104,8 @@ static void DoAutosave()
 	if (_networking) return;
 #endif /* PSP */
 
-	if (_settings_client.gui.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
-		SetDParam(0, _local_player);
+	if (_settings_client.gui.keep_all_autosave && _local_company != COMPANY_SPECTATOR) {
+		SetDParam(0, _local_company);
 		SetDParam(1, _date);
 		GetString(buf, STR_4004, lastof(buf));
 		ttd_strlcat(buf, ".sav", lengthof(buf));
@@ -1203,16 +1203,16 @@ static void UpdateExclusiveRights()
 	Town *t;
 
 	FOR_ALL_TOWNS(t) {
-		t->exclusivity = INVALID_PLAYER;
+		t->exclusivity = INVALID_COMPANY;
 	}
 
 	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
 	 *   could be implemented this way:
 	 * 1.) Go through all stations
-	 *     Build an array town_blocked[ town_id ][ player_id ]
-	 *     that stores if at least one station in that town is blocked for a player
+	 *     Build an array town_blocked[ town_id ][ company_id ]
+	 *     that stores if at least one station in that town is blocked for a company
 	 * 2.) Go through that array, if you find a town that is not blocked for
-	 *     one player, but for all others, then give him exclusivity.
+	 *     one company, but for all others, then give him exclusivity.
 	 */
 }
 
@@ -1282,13 +1282,13 @@ static bool InitializeWindowsAndCaches()
 	UpdateAllTownVirtCoords();
 	UpdateAllWaypointSigns();
 
-	Player *p;
-	FOR_ALL_PLAYERS(p) {
-		/* For each player, verify (while loading a scenario) that the inauguration date is the current year and set it
-		 * accordingly if it is not the case.  No need to set it on players that are not been used already,
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		/* For each company, verify (while loading a scenario) that the inauguration date is the current year and set it
+		 * accordingly if it is not the case.  No need to set it on companies that are not been used already,
 		 * thus the MIN_YEAR (which is really nothing more than Zero, initialized value) test */
-		if (_file_to_saveload.filetype == FT_SCENARIO && p->inaugurated_year != MIN_YEAR) {
-			p->inaugurated_year = _cur_year;
+		if (_file_to_saveload.filetype == FT_SCENARIO && c->inaugurated_year != MIN_YEAR) {
+			c->inaugurated_year = _cur_year;
 		}
 	}
 
@@ -1307,7 +1307,7 @@ static bool InitializeWindowsAndCaches()
 bool AfterLoadGame()
 {
 	TileIndex map_size = MapSize();
-	Player *p;
+	Company *c;
 
 	if (CheckSavegameVersion(98)) GamelogOldver();
 
@@ -1334,19 +1334,18 @@ bool AfterLoadGame()
 	 * walk through the whole map.. */
 	if (CheckSavegameVersionOldStyle(4, 3)) {
 		for (TileIndex t = 0; t < map_size; t++) {
-			if (IsTileType(t, MP_WATER) && GetTileOwner(t) >= MAX_PLAYERS) {
+			if (IsTileType(t, MP_WATER) && GetTileOwner(t) >= MAX_COMPANIES) {
 				SetTileOwner(t, OWNER_WATER);
 			}
 		}
 	}
 
 	if (CheckSavegameVersion(84)) {
-		Player *p;
-		FOR_ALL_PLAYERS(p) {
-			p->name = CopyFromOldName(p->name_1);
-			if (p->name != NULL) p->name_1 = STR_SV_UNNAMED;
-			p->president_name = CopyFromOldName(p->president_name_1);
-			if (p->president_name != NULL) p->president_name_1 = SPECSTR_PRESIDENT_NAME;
+		FOR_ALL_COMPANIES(c) {
+			c->name = CopyFromOldName(c->name_1);
+			if (c->name != NULL) c->name_1 = STR_SV_UNNAMED;
+			c->president_name = CopyFromOldName(c->president_name_1);
+			if (c->president_name != NULL) c->president_name_1 = SPECSTR_PRESIDENT_NAME;
 		}
 
 		Station *st;
@@ -1369,7 +1368,7 @@ bool AfterLoadGame()
 		}
 
 		for (uint i = 0; i < GetSignPoolSize(); i++) {
-			/* invalid signs are determined by si->ower == INVALID_PLAYER now */
+			/* invalid signs are determined by si->ower == INVALID_COMPANY now */
 			Sign *si = GetSign(i);
 			if (!si->IsValid() && si->name != NULL) {
 				si->owner = OWNER_NONE;
@@ -1444,11 +1443,11 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(87)) UpdateVoidTiles();
 
 	/* If Load Scenario / New (Scenario) Game is used,
-	 *  a player does not exist yet. So create one here.
-	 * 1 exeption: network-games. Those can have 0 players
+	 *  a company does not exist yet. So create one here.
+	 * 1 exeption: network-games. Those can have 0 companies
 	 *   But this exeption is not true for non dedicated network_servers! */
-	if (!IsValidPlayerID(PLAYER_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated)))
-		DoStartupNewPlayer(false);
+	if (!IsValidCompanyID(COMPANY_FIRST) && (!_networking || (_networking && _network_server && !_network_dedicated)))
+		DoStartupNewCompany(false);
 
 	if (CheckSavegameVersion(72)) {
 		/* Locks/shiplifts in very old savegames had OWNER_WATER as owner */
@@ -1589,24 +1588,24 @@ bool AfterLoadGame()
 	/* From version 16.0, we included autorenew on engines, which are now saved, but
 	 *  of course, we do need to initialize them for older savegames. */
 	if (CheckSavegameVersion(16)) {
-		FOR_ALL_PLAYERS(p) {
-			p->engine_renew_list   = NULL;
-			p->engine_renew        = false;
-			p->engine_renew_months = -6;
-			p->engine_renew_money  = 100000;
+		FOR_ALL_COMPANIES(c) {
+			c->engine_renew_list   = NULL;
+			c->engine_renew        = false;
+			c->engine_renew_months = -6;
+			c->engine_renew_money  = 100000;
 		}
 
-		/* When loading a game, _local_player is not yet set to the correct value.
+		/* When loading a game, _local_company is not yet set to the correct value.
 		 * However, in a dedicated server we are a spectator, so nothing needs to
-		 * happen. In case we are not a dedicated server, the local player always
-		 * becomes player 0, unless we are in the scenario editor where all the
-		 * players are 'invalid'.
+		 * happen. In case we are not a dedicated server, the local company always
+		 * becomes company 0, unless we are in the scenario editor where all the
+		 * companies are 'invalid'.
 		 */
-		if (!_network_dedicated && IsValidPlayerID(PLAYER_FIRST)) {
-			p = GetPlayer(PLAYER_FIRST);
-			p->engine_renew        = _settings_client.gui.autorenew;
-			p->engine_renew_months = _settings_client.gui.autorenew_months;
-			p->engine_renew_money  = _settings_client.gui.autorenew_money;
+		if (!_network_dedicated && IsValidCompanyID(COMPANY_FIRST)) {
+			c = GetCompany(COMPANY_FIRST);
+			c->engine_renew        = _settings_client.gui.autorenew;
+			c->engine_renew_months = _settings_client.gui.autorenew_months;
+			c->engine_renew_money  = _settings_client.gui.autorenew_money;
 		}
 	}
 
@@ -1808,11 +1807,11 @@ bool AfterLoadGame()
 
 	}
 
-	/* In version 16.1 of the savegame a player can decide if trains, which get
+	/* In version 16.1 of the savegame a company can decide if trains, which get
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */
 	if (CheckSavegameVersionOldStyle(16, 1)) {
-		FOR_ALL_PLAYERS(p) p->renew_keep_length = false;
+		FOR_ALL_COMPANIES(c) c->renew_keep_length = false;
 	}
 
 	/* In version 17, ground type is moved from m2 to m4 for depots and
@@ -1913,11 +1912,11 @@ bool AfterLoadGame()
 
 	YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 
-	if (CheckSavegameVersion(34)) FOR_ALL_PLAYERS(p) ResetPlayerLivery(p);
+	if (CheckSavegameVersion(34)) FOR_ALL_COMPANIES(c) ResetCompanyLivery(c);
 
-	FOR_ALL_PLAYERS(p) {
-		p->avail_railtypes = GetPlayerRailtypes(p->index);
-		p->avail_roadtypes = GetPlayerRoadtypes(p->index);
+	FOR_ALL_COMPANIES(c) {
+		c->avail_railtypes = GetCompanyRailtypes(c->index);
+		c->avail_roadtypes = GetCompanyRoadtypes(c->index);
 	}
 
 	if (!CheckSavegameVersion(27)) AfterLoadStations();
@@ -1928,18 +1927,17 @@ bool AfterLoadGame()
 		Station *st;
 		Waypoint *wp;
 		Engine *e;
-		Player *player;
 		Industry *i;
 		Vehicle *v;
 
 		_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		_cur_year += ORIGINAL_BASE_YEAR;
 
-		FOR_ALL_STATIONS(st)    st->build_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		FOR_ALL_WAYPOINTS(wp)   wp->build_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		FOR_ALL_ENGINES(e)      e->intro_date  += DAYS_TILL_ORIGINAL_BASE_YEAR;
-		FOR_ALL_PLAYERS(player) player->inaugurated_year += ORIGINAL_BASE_YEAR;
-		FOR_ALL_INDUSTRIES(i)   i->last_prod_year        += ORIGINAL_BASE_YEAR;
+		FOR_ALL_STATIONS(st)  st->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		FOR_ALL_WAYPOINTS(wp) wp->build_date      += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		FOR_ALL_ENGINES(e)    e->intro_date       += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		FOR_ALL_COMPANIES(c)  c->inaugurated_year += ORIGINAL_BASE_YEAR;
+		FOR_ALL_INDUSTRIES(i) i->last_prod_year   += ORIGINAL_BASE_YEAR;
 
 		FOR_ALL_VEHICLES(v) {
 			v->date_of_last_service += DAYS_TILL_ORIGINAL_BASE_YEAR;
@@ -2139,7 +2137,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (CheckSavegameVersion(49)) FOR_ALL_PLAYERS(p) p->face = ConvertFromOldPlayerFace(p->face);
+	if (CheckSavegameVersion(49)) FOR_ALL_COMPANIES(c) c->face = ConvertFromOldCompanyManagerFace(c->face);
 
 	if (CheckSavegameVersion(52)) {
 		for (TileIndex t = 0; t < map_size; t++) {
@@ -2337,18 +2335,17 @@ bool AfterLoadGame()
 			}
 		}
 
-		/* Set all share owners to PLAYER_SPECTATOR for
-		 * 1) all inactive players
-		 *     (when inactive players were stored in the savegame - TTD, TTDP and some
-		 *      *really* old revisions of OTTD; else it is already set in InitializePlayers())
-		 * 2) shares that are owned by inactive players or self
-		 *     (caused by cheating players in earlier revisions) */
-		Player *p;
-		FOR_ALL_PLAYERS(p) {
+		/* Set all share owners to INVALID_COMPANY for
+		 * 1) all inactive companies
+		 *     (when inactive companies were stored in the savegame - TTD, TTDP and some
+		 *      *really* old revisions of OTTD; else it is already set in InitializeCompanies())
+		 * 2) shares that are owned by inactive companies or self
+		 *     (caused by cheating clients in earlier revisions) */
+		FOR_ALL_COMPANIES(c) {
 			for (uint i = 0; i < 4; i++) {
-				PlayerID o = p->share_owners[i];
-				if (o == PLAYER_SPECTATOR) continue;
-				if (!IsValidPlayerID(o) || o == p->index) p->share_owners[i] = PLAYER_SPECTATOR;
+				CompanyID company = c->share_owners[i];
+				if (company == INVALID_COMPANY) continue;
+				if (!IsValidCompanyID(company) || company == c->index) c->share_owners[i] = INVALID_COMPANY;
 			}
 		}
 	}
@@ -2396,13 +2393,13 @@ bool AfterLoadGame()
 
 			if (IsBuoyTile(t) || IsDriveThroughStopTile(t) || IsTileType(t, MP_WATER)) {
 				Owner o = GetTileOwner(t);
-				if (o < MAX_PLAYERS && !IsValidPlayerID(o)) {
-					_current_player = o;
-					ChangeTileOwner(t, o, PLAYER_SPECTATOR);
+				if (o < MAX_COMPANIES && !IsValidCompanyID(o)) {
+					_current_company = o;
+					ChangeTileOwner(t, o, INVALID_OWNER);
 				}
 				if (IsBuoyTile(t)) {
 					/* reset buoy owner to OWNER_NONE in the station struct
-					 * (even if it is owned by active player) */
+					 * (even if it is owned by active company) */
 					GetStationByTile(t)->owner = OWNER_NONE;
 				}
 			} else if (IsTileType(t, MP_ROAD)) {
@@ -2410,13 +2407,13 @@ bool AfterLoadGame()
 				for (RoadType rt = ROADTYPE_ROAD; rt < ROADTYPE_END; rt++) {
 					/* update even non-existing road types to update tile owner too */
 					Owner o = GetRoadOwner(t, rt);
-					if (o < MAX_PLAYERS && !IsValidPlayerID(o)) SetRoadOwner(t, rt, OWNER_NONE);
+					if (o < MAX_COMPANIES && !IsValidCompanyID(o)) SetRoadOwner(t, rt, OWNER_NONE);
 				}
 				if (IsLevelCrossing(t)) {
 					Owner o = GetTileOwner(t);
-					if (!IsValidPlayerID(o)) {
+					if (!IsValidCompanyID(o)) {
 						/* remove leftover rail piece from crossing (from very old savegames) */
-						_current_player = o;
+						_current_company = o;
 						DoCommand(t, 0, GetCrossingRailTrack(t), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
 					}
 				}
@@ -2551,7 +2548,7 @@ bool AfterLoadGame()
 		Waypoint *wp;
 		FOR_ALL_WAYPOINTS(wp) {
 			Owner owner = (IsRailWaypointTile(wp->xy) ? GetTileOwner(wp->xy) : OWNER_NONE);
-			wp->owner = IsValidPlayerID(owner) ? owner : OWNER_NONE;
+			wp->owner = IsValidCompanyID(owner) ? owner : OWNER_NONE;
 		}
 	}
 
@@ -2566,7 +2563,7 @@ bool AfterLoadGame()
 		/* signs with invalid owner left from older savegames */
 		Sign *si;
 		FOR_ALL_SIGNS(si) {
-			if (si->owner != OWNER_NONE && !IsValidPlayerID(si->owner)) si->owner = OWNER_NONE;
+			if (si->owner != OWNER_NONE && !IsValidCompanyID(si->owner)) si->owner = OWNER_NONE;
 		}
 	}
 
@@ -2598,7 +2595,7 @@ void ReloadNewGRFData()
 	/* Check and update house and town values */
 	UpdateHousesAndTowns();
 	/* Update livery selection windows */
-	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) InvalidateWindowData(WC_PLAYER_COLOR, i, _loaded_newgrf_features.has_2CC);
+	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) InvalidateWindowData(WC_COMPANY_COLOR, i, _loaded_newgrf_features.has_2CC);
 	/* redraw the whole screen */
 	MarkWholeScreenDirty();
 	CheckTrainsLengths();

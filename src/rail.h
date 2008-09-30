@@ -210,35 +210,35 @@ Foundation GetRailFoundation(Slope tileh, TrackBits bits);
 
 
 /**
- * Finds out if a Player has a certain railtype available
- * @param p Player in question
+ * Finds out if a company has a certain railtype available
+ * @param company the company in question
  * @param railtype requested RailType
- * @return true if player has requested RailType available
+ * @return true if company has requested RailType available
  */
-bool HasRailtypeAvail(const PlayerID p, const RailType railtype);
+bool HasRailtypeAvail(const CompanyID company, const RailType railtype);
 
 /**
  * Validate functions for rail building.
  * @param rail the railtype to check.
- * @return true if the current player may build the rail.
+ * @return true if the current company may build the rail.
  */
 bool ValParamRailtype(const RailType rail);
 
 /**
- * Returns the "best" railtype a player can build.
+ * Returns the "best" railtype a company can build.
  * As the AI doesn't know what the BEST one is, we have our own priority list
  * here. When adding new railtypes, modify this function
- * @param p the player "in action"
- * @return The "best" railtype a player has available
+ * @param company the company "in action"
+ * @return The "best" railtype a company has available
  */
-RailType GetBestRailtype(const PlayerID p);
+RailType GetBestRailtype(const CompanyID company);
 
 /**
- * Get the rail types the given player can build.
- * @param p the player to get the rail types for.
+ * Get the rail types the given company can build.
+ * @param company the company to get the rail types for.
  * @return the rail types.
  */
-RailTypes GetPlayerRailtypes(const PlayerID p);
+RailTypes GetCompanyRailtypes(const CompanyID p);
 
 /**
  * Reset all rail type information to its default values.

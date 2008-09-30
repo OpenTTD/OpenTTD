@@ -36,33 +36,33 @@
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
  * rebuilding it. Otherwise, only water can destroy it.
- * @param pid Player requesting the destruction of his HQ
+ * @param cid Company requesting the destruction of his HQ
  * @param flags docommand flags of calling function
  * @return cost of the operation
  */
-static CommandCost DestroyCompanyHQ(PlayerID pid, uint32 flags)
+static CommandCost DestroyCompanyHQ(CompanyID cid, uint32 flags)
 {
-	Player *p = GetPlayer(pid);
+	Company *c = GetCompany(cid);
 
 	if (flags & DC_EXEC) {
-		TileIndex t = p->location_of_HQ;
+		TileIndex t = c->location_of_HQ;
 
 		DoClearSquare(t + TileDiffXY(0, 0));
 		DoClearSquare(t + TileDiffXY(0, 1));
 		DoClearSquare(t + TileDiffXY(1, 0));
 		DoClearSquare(t + TileDiffXY(1, 1));
-		p->location_of_HQ = 0; // reset HQ position
-		InvalidateWindow(WC_COMPANY, pid);
+		c->location_of_HQ = 0; // reset HQ position
+		InvalidateWindow(WC_COMPANY, cid);
 	}
 
 	/* cost of relocating company is 1% of company value */
-	return CommandCost(EXPENSES_PROPERTY, CalculateCompanyValue(p) / 100);
+	return CommandCost(EXPENSES_PROPERTY, CalculateCompanyValue(c) / 100);
 }
 
-void UpdateCompanyHQ(Player *p, uint score)
+void UpdateCompanyHQ(Company *c, uint score)
 {
 	byte val;
-	TileIndex tile = p->location_of_HQ;
+	TileIndex tile = c->location_of_HQ;
 
 	if (tile == 0) return;
 
@@ -90,25 +90,25 @@ extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags
  */
 CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	Player *p = GetPlayer(_current_player);
+	Company *c = GetCompany(_current_company);
 	CommandCost cost(EXPENSES_PROPERTY);
 
 	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
 	if (CmdFailed(cost)) return cost;
 
-	if (p->location_of_HQ != 0) { // Moving HQ
-		cost.AddCost(DestroyCompanyHQ(_current_player, flags));
+	if (c->location_of_HQ != 0) { // Moving HQ
+		cost.AddCost(DestroyCompanyHQ(_current_company, flags));
 	}
 
 	if (flags & DC_EXEC) {
-		int score = UpdateCompanyRatingAndValue(p, false);
+		int score = UpdateCompanyRatingAndValue(c, false);
 
-		p->location_of_HQ = tile;
+		c->location_of_HQ = tile;
 
-		MakeCompanyHQ(tile, _current_player);
+		MakeCompanyHQ(tile, _current_company);
 
-		UpdateCompanyHQ(p, score);
-		InvalidateWindow(WC_COMPANY, p->index);
+		UpdateCompanyHQ(c, score);
+		InvalidateWindow(WC_COMPANY, c->index);
 	}
 
 	return cost;
@@ -116,7 +116,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 /** Purchase a land area. Actually you only purchase one tile, so
  * the name is a bit confusing ;p
- * @param tile the tile the player is purchasing
+ * @param tile the tile the company is purchasing
  * @param flags for this command type
  * @param p1 unused
  * @param p2 unused
@@ -126,7 +126,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
-	if (IsOwnedLandTile(tile) && IsTileOwner(tile, _current_player)) {
+	if (IsOwnedLandTile(tile) && IsTileOwner(tile, _current_company)) {
 		return_cmd_error(STR_5807_YOU_ALREADY_OWN_IT);
 	}
 
@@ -134,7 +134,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		MakeOwnedLand(tile, _current_player);
+		MakeOwnedLand(tile, _current_company);
 		MarkTileDirtyByTile(tile);
 	}
 
@@ -143,7 +143,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 /** Sell a land area. Actually you only sell one tile, so
  * the name is a bit confusing ;p
- * @param tile the tile the player is selling
+ * @param tile the tile the company is selling
  * @param flags for this command type
  * @param p1 unused
  * @param p2 unused
@@ -152,7 +152,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
-	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER) return CMD_ERROR;
+	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;
 
 	if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
@@ -192,14 +192,14 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 			if (IsInvisibilitySet(TO_STRUCTURES)) break;
 
-			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, IsTransparencySet(TO_STRUCTURES));
+			AddSortableSpriteToDraw(SPR_STATUE_COMPANY, COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile)), ti->x, ti->y, 16, 16, 25, ti->z, IsTransparencySet(TO_STRUCTURES));
 			break;
 
 		case UNMOVABLE_OWNED_LAND:
 			DrawClearLandTile(ti, 0);
 
 			AddSortableSpriteToDraw(
-				SPR_BOUGHT_LAND, PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)),
+				SPR_BOUGHT_LAND, COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile)),
 				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, BB_HEIGHT_UNDER_BRIDGE, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
 			);
 			DrawBridgeMiddle(ti);
@@ -209,7 +209,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			assert(IsCompanyHQ(ti->tile));
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
-			SpriteID palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
+			SpriteID palette = COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile));
 
 			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
 			DrawGroundSprite(t->ground.sprite, palette);
@@ -251,7 +251,7 @@ static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh)
 static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
 {
 	if (IsCompanyHQ(tile)) {
-		if (_current_player == OWNER_WATER) {
+		if (_current_company == OWNER_WATER) {
 			return DestroyCompanyHQ(GetTileOwner(tile), DC_EXEC);
 		} else {
 			return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
@@ -263,7 +263,7 @@ static CommandCost ClearTile_Unmovable(TileIndex tile, byte flags)
 	}
 
 	/* checks if you're allowed to remove unmovable things */
-	if (_game_mode != GM_EDITOR && _current_player != OWNER_WATER && ((flags & DC_AUTO || !_cheats.magic_bulldozer.value)) )
+	if (_game_mode != GM_EDITOR && _current_company != OWNER_WATER && ((flags & DC_AUTO || !_cheats.magic_bulldozer.value)) )
 		return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 
 	if (IsStatue(tile)) {
@@ -357,7 +357,7 @@ static TrackStatus GetTileTrackStatus_Unmovable(TileIndex tile, TransportType mo
 
 static void ClickTile_Unmovable(TileIndex tile)
 {
-	if (IsCompanyHQ(tile)) ShowPlayerCompany(GetTileOwner(tile));
+	if (IsCompanyHQ(tile)) ShowCompany(GetTileOwner(tile));
 }
 
 
@@ -433,20 +433,20 @@ void GenerateUnmovables()
 	}
 }
 
-static void ChangeTileOwner_Unmovable(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Unmovable(TileIndex tile, Owner old_owner, Owner new_owner)
 {
-	if (!IsTileOwner(tile, old_player)) return;
+	if (!IsTileOwner(tile, old_owner)) return;
 
-	if (IsOwnedLand(tile) && new_player != PLAYER_SPECTATOR) {
-		SetTileOwner(tile, new_player);
+	if (IsOwnedLand(tile) && new_owner != INVALID_OWNER) {
+		SetTileOwner(tile, new_owner);
 	} else if (IsStatueTile(tile)) {
 		TownID town = GetStatueTownID(tile);
 		Town *t = GetTown(town);
-		ClrBit(t->statues, old_player);
-		if (new_player != PLAYER_SPECTATOR && !HasBit(t->statues, new_player)) {
+		ClrBit(t->statues, old_owner);
+		if (new_owner != INVALID_OWNER && !HasBit(t->statues, new_owner)) {
 			/* Transfer ownership to the new company */
-			SetBit(t->statues, new_player);
-			SetTileOwner(tile, new_player);
+			SetBit(t->statues, new_owner);
+			SetTileOwner(tile, new_owner);
 		} else {
 			DoClearSquare(tile);
 		}

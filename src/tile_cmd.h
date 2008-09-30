@@ -81,7 +81,7 @@ typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
 typedef void ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
 typedef void TileLoopProc(TileIndex tile);
-typedef void ChangeTileOwnerProc(TileIndex tile, PlayerID old_player, PlayerID new_player);
+typedef void ChangeTileOwnerProc(TileIndex tile, Owner old_owner, Owner new_owner);
 
 /** @see VehicleEnterTileStatus to see what the return values mean */
 typedef VehicleEnterTileStatus VehicleEnterTileProc(Vehicle *v, TileIndex tile, int x, int y);
@@ -123,7 +123,7 @@ extern const TileTypeProcs * const _tile_type_procs[16];
 
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
-void ChangeTileOwner(TileIndex tile, PlayerID old_player, PlayerID new_player);
+void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void AnimateTile(TileIndex tile);
 void ClickTile(TileIndex tile);
 void GetTileDesc(TileIndex tile, TileDesc *td);

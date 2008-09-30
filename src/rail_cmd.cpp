@@ -155,7 +155,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 
 	/* Let's see if we may build this */
 	if (flags & DC_NO_RAIL_OVERLAP || HasSignals(tile)) {
-		/* If we are not allowed to overlap (flag is on for ai players or we have
+		/* If we are not allowed to overlap (flag is on for ai companies or we have
 		 * signals on the tile), check that */
 		return future == TRACK_BIT_HORZ || future == TRACK_BIT_VERT;
 	} else {
@@ -307,7 +307,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 
 	/* check track/slope combination */
 	if ((f_new == FOUNDATION_INVALID) ||
-			((f_new != FOUNDATION_NONE) && (!_settings_game.construction.build_on_slopes || _is_old_ai_player))) {
+			((f_new != FOUNDATION_NONE) && (!_settings_game.construction.build_on_slopes || _is_old_ai_company))) {
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -344,7 +344,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 					!EnsureNoTrainOnTrack(tile, track)) {
 				return CMD_ERROR;
 			}
-			if (!IsTileOwner(tile, _current_player) ||
+			if (!IsTileOwner(tile, _current_company) ||
 					!IsCompatibleRail(GetRailType(tile), railtype)) {
 				/* Get detailed error message */
 				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -395,7 +395,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 					default: break;
 					case ROADTYPES_TRAM:
 						/* Tram crossings must always have road. */
-						if (flags & DC_EXEC) SetRoadOwner(tile, ROADTYPE_ROAD, _current_player);
+						if (flags & DC_EXEC) SetRoadOwner(tile, ROADTYPE_ROAD, _current_company);
 						roadtypes |= ROADTYPES_ROAD;
 						break;
 
@@ -412,7 +412,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 				if ((track == TRACK_X && road == ROAD_Y) ||
 						(track == TRACK_Y && road == ROAD_X)) {
 					if (flags & DC_EXEC) {
-						MakeRoadCrossing(tile, GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
+						MakeRoadCrossing(tile, GetRoadOwner(tile, ROADTYPE_ROAD), GetRoadOwner(tile, ROADTYPE_TRAM), GetRoadOwner(tile, ROADTYPE_HWAY), _current_company, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, roadtypes, GetTownIndex(tile));
 						UpdateLevelCrossing(tile, false);
 					}
 					break;
@@ -442,7 +442,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			}
 
 			if (flags & DC_EXEC) {
-				MakeRailNormal(tile, _current_player, trackbit, railtype);
+				MakeRailNormal(tile, _current_company, trackbit, railtype);
 				if (water_ground) SetRailGroundType(tile, RAIL_GROUND_WATER);
 			}
 			break;
@@ -450,7 +450,7 @@ CommandCost CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (flags & DC_EXEC) {
 		MarkTileDirtyByTile(tile);
-		AddTrackToSignalBuffer(tile, track, _current_player);
+		AddTrackToSignalBuffer(tile, track, _current_company);
 		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
@@ -474,7 +474,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	trackbit = TrackToTrackBits(track);
 
 	/* Need to read tile owner now because it may change when the rail is removed
-	 * Also, in case of floods, _current_player != owner
+	 * Also, in case of floods, _current_company != owner
 	 * There may be invalid tiletype even in exec run (when removing long track),
 	 * so do not call GetTileOwner(tile) in any case here */
 	Owner owner = INVALID_OWNER;
@@ -485,7 +485,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		case MP_ROAD: {
 			if (!IsLevelCrossing(tile) ||
 					GetCrossingRailBits(tile) != trackbit ||
-					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
+					(_current_company != OWNER_WATER && !CheckTileOwnership(tile)) ||
 					(!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile))) {
 				return CMD_ERROR;
 			}
@@ -505,7 +505,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			TrackBits present;
 
 			if (!IsPlainRailTile(tile) ||
-					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
+					(_current_company != OWNER_WATER && !CheckTileOwnership(tile)) ||
 					!EnsureNoTrainOnTrack(tile, track)) {
 				return CMD_ERROR;
 			}
@@ -546,7 +546,7 @@ CommandCost CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	if (flags & DC_EXEC) {
 		/* if we got that far, 'owner' variable is set correctly */
-		assert(IsValidPlayerID(owner));
+		assert(IsValidCompanyID(owner));
 
 		MarkTileDirtyByTile(tile);
 		if (crossing) {
@@ -590,7 +590,7 @@ bool FloodHalftile(TileIndex t)
 
 		TrackBits to_remove = lower_track & rail_bits;
 		if (to_remove != 0) {
-			_current_player = OWNER_WATER;
+			_current_company = OWNER_WATER;
 			if (CmdFailed(DoCommand(t, 0, FIND_FIRST_BIT(to_remove), DC_EXEC, CMD_REMOVE_SINGLE_RAIL))) return flooded; // not yet floodable
 			flooded = true;
 			rail_bits = rail_bits & ~to_remove;
@@ -789,7 +789,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	 */
 
 	if (tileh != SLOPE_FLAT && (
-				_is_old_ai_player ||
+				_is_old_ai_company ||
 				!_settings_game.construction.build_on_slopes ||
 				IsSteepSlope(tileh) ||
 				!CanBuildDepotByTileh(dir, tileh)
@@ -806,12 +806,12 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	if (flags & DC_EXEC) {
 		Depot *d = new Depot(tile);
-		MakeRailDepot(tile, _current_player, dir, (RailType)p1);
+		MakeRailDepot(tile, _current_company, dir, (RailType)p1);
 		MarkTileDirtyByTile(tile);
 
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_player);
+		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_company);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
 	}
 
@@ -971,7 +971,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 			SetSignalStates(tile, (GetSignalStates(tile) & ~mask) | ((HasBit(GetTrackReservation(tile), track) ? (uint)-1 : 0) & mask));
 		}
 		MarkTileDirtyByTile(tile);
-		AddTrackToSignalBuffer(tile, track, _current_player);
+		AddTrackToSignalBuffer(tile, track, _current_company);
 		YapfNotifyTrackLayoutChange(tile, track);
 		if (v != NULL) TryPathReserve(v, true);
 	}
@@ -1200,7 +1200,7 @@ CommandCost CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint3
 	}
 
 	/* Only water can remove signals from anyone */
-	if (_current_player != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
+	if (_current_company != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
 
 	/* Do it? */
 	if (flags & DC_EXEC) {
@@ -1441,7 +1441,7 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static CommandCost RemoveTrainDepot(TileIndex tile, uint32 flags)
 {
-	if (!CheckTileOwnership(tile) && _current_player != OWNER_WATER)
+	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER)
 		return CMD_ERROR;
 
 	if (!EnsureNoVehicleOnGround(tile))
@@ -1474,7 +1474,7 @@ static CommandCost ClearTile_Track(TileIndex tile, byte flags)
 	CommandCost ret;
 
 	if (flags & DC_AUTO) {
-		if (!IsTileOwner(tile, _current_player))
+		if (!IsTileOwner(tile, _current_company))
 			return_cmd_error(STR_1024_AREA_IS_OWNED_BY_ANOTHER);
 
 		if (IsPlainRailTile(tile)) {
@@ -1902,7 +1902,7 @@ static void DrawTile_Track(TileInfo *ti)
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	SpriteID image;
 
-	_drawtile_track_palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
+	_drawtile_track_palette = COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile));
 
 	if (IsPlainRailTile(ti->tile)) {
 		TrackBits rails = GetTrackBits(ti->tile);
@@ -2039,7 +2039,7 @@ default_waypoint:
 
 static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStruct* dtss, uint32 offset)
 {
-	SpriteID palette = PLAYER_SPRITE_COLOR(_local_player);
+	SpriteID palette = COMPANY_SPRITE_COLOR(_local_company);
 
 	DrawSprite(ground, PAL_NONE, x, y);
 	for (; dtss->image.sprite != 0; dtss++) {
@@ -2188,7 +2188,7 @@ static void TileLoop_Track(TileIndex tile)
 			case TRACK_BIT_RIGHT: new_ground = RAIL_GROUND_FENCE_VERT2;  break;
 
 			default: {
-				PlayerID owner = GetTileOwner(tile);
+				Owner owner = GetTileOwner(tile);
 
 				if (rail == (TRACK_BIT_LOWER | TRACK_BIT_RIGHT) || (
 							(rail & TRACK_BIT_3WAY_NW) == 0 &&
@@ -2414,12 +2414,12 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 	}
 }
 
-static void ChangeTileOwner_Track(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Track(TileIndex tile, Owner old_owner, Owner new_owner)
 {
-	if (!IsTileOwner(tile, old_player)) return;
+	if (!IsTileOwner(tile, old_owner)) return;
 
-	if (new_player != PLAYER_SPECTATOR) {
-		SetTileOwner(tile, new_player);
+	if (new_owner != INVALID_OWNER) {
+		SetTileOwner(tile, new_owner);
 	} else {
 		DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR);
 	}

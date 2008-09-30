@@ -23,7 +23,7 @@
 // Build HQ
 //  Params:
 //    tile : tile where HQ is going to be build
-bool AiNew_Build_CompanyHQ(Player *p, TileIndex tile)
+bool AiNew_Build_CompanyHQ(Company *c, TileIndex tile)
 {
 	if (CmdFailed(AI_DoCommand(tile, 0, 0, DC_AUTO | DC_NO_WATER, CMD_BUILD_COMPANY_HQ)))
 		return false;
@@ -40,7 +40,7 @@ bool AiNew_Build_CompanyHQ(Player *p, TileIndex tile)
 //    numtracks : in case of AI_TRAIN: tracks of station
 //    direction : the direction of the station
 //    flag : flag passed to DoCommand (normally 0 to get the cost or DC_EXEC to build it)
-CommandCost AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag)
+CommandCost AiNew_Build_Station(Company *c, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag)
 {
 	if (type == AI_TRAIN)
 		return AI_DoCommand(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
@@ -52,12 +52,12 @@ CommandCost AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte lengt
 }
 
 
-// Builds a brdige. The second best out of the ones available for this player
+// Builds a brdige. The second best out of the ones available for this company
 //  Params:
 //   tile_a : starting point
 //   tile_b : end point
 //   flag : flag passed to DoCommand
-CommandCost AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag)
+CommandCost AiNew_Build_Bridge(Company *c, TileIndex tile_a, TileIndex tile_b, byte flag)
 {
 	int bridge_type, bridge_len, type, type2;
 
@@ -76,7 +76,7 @@ CommandCost AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, by
 	if (type2 == 0 && type != 0) type2 = type;
 
 	// Now, simply, build the bridge!
-	if (_players_ainew[p->index].tbt == AI_TRAIN) {
+	if (_companies_ainew[c->index].tbt == AI_TRAIN) {
 		return AI_DoCommand(tile_a, tile_b, type2 | RAILTYPE_RAIL  << 8 | TRANSPORT_RAIL << 15, flag | DC_AUTO, CMD_BUILD_BRIDGE);
 	} else {
 		return AI_DoCommand(tile_a, tile_b, type2 | ROADTYPES_ROAD << 8 | TRANSPORT_ROAD << 15, flag | DC_AUTO, CMD_BUILD_BRIDGE);
@@ -94,7 +94,7 @@ CommandCost AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, by
 //   part : Which part we need to build
 //
 // TODO: skip already builded road-pieces (e.g.: cityroad)
-CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte flag)
+CommandCost AiNew_Build_RoutePart(Company *c, Ai_PathFinderInfo *PathFinderInfo, byte flag)
 {
 	int part = PathFinderInfo->position;
 	byte *route_extra = PathFinderInfo->route_extra;
@@ -127,7 +127,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 		}
 		// Bridge code
 		if ((AI_PATHFINDER_FLAG_BRIDGE & route_extra[part]) != 0) {
-			cost.AddCost(AiNew_Build_Bridge(p, route[part], route[part - 1], flag));
+			cost.AddCost(AiNew_Build_Bridge(c, route[part], route[part - 1], flag));
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
@@ -150,7 +150,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 				res = AI_DoCommand(route[part], 0, dir, flag, CMD_BUILD_SINGLE_RAIL);
 				if (CmdFailed(res)) {
 					// Problem.. let's just abort it all!
-					_players_ainew[p->index].state = AI_STATE_NOTHING;
+					_companies_ainew[c->index].state = AI_STATE_NOTHING;
 					return CommandCost();
 				}
 				cost.AddCost(res);
@@ -177,7 +177,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 		}
 		// Bridge code
 		if ((AI_PATHFINDER_FLAG_BRIDGE & route_extra[part]) != 0) {
-			cost.AddCost(AiNew_Build_Bridge(p, route[part], route[part + 1], flag));
+			cost.AddCost(AiNew_Build_Bridge(c, route[part], route[part + 1], flag));
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
@@ -206,7 +206,7 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 					if (CmdFailed(res) && flag == DC_EXEC && !IsTileType(route[part], MP_ROAD) && !EnsureNoVehicleOnGround(route[part])) {
 						// Problem.. let's just abort it all!
 						DEBUG(ai, 0, "[BuidPath] route building failed at tile 0x%X, aborting", route[part]);
-						_players_ainew[p->index].state = AI_STATE_NOTHING;
+						_companies_ainew[c->index].state = AI_STATE_NOTHING;
 						return CommandCost();
 					}
 
@@ -230,9 +230,9 @@ CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, 
 
 // This functions tries to find the best vehicle for this type of cargo
 // It returns INVALID_ENGINE if not suitable engine is found
-EngineID AiNew_PickVehicle(Player *p)
+EngineID AiNew_PickVehicle(Company *c)
 {
-	if (_players_ainew[p->index].tbt == AI_TRAIN) {
+	if (_companies_ainew[c->index].tbt == AI_TRAIN) {
 		// Not supported yet
 		return INVALID_ENGINE;
 	} else {
@@ -246,14 +246,14 @@ EngineID AiNew_PickVehicle(Player *p)
 			const RoadVehicleInfo *rvi = &e->u.road;
 
 			/* Skip vehicles which can't take our cargo type */
-			if (rvi->cargo_type != _players_ainew[p->index].cargo && !CanRefitTo(i, _players_ainew[p->index].cargo)) continue;
+			if (rvi->cargo_type != _companies_ainew[c->index].cargo && !CanRefitTo(i, _companies_ainew[c->index].cargo)) continue;
 
 			/* Skip trams */
 			if (HasBit(EngInfo(i)->misc_flags, EF_ROAD_TRAM)) continue;
 
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
-			if (!HasBit(e->player_avail, _current_player) || e->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
+			if (!HasBit(e->company_avail, _current_company) || e->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
 
 			/* Rate and compare the engine by speed & capacity */
 			int rating = rvi->max_speed * rvi->capacity;
@@ -274,34 +274,34 @@ EngineID AiNew_PickVehicle(Player *p)
 
 void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	Player* p = GetPlayer(_current_player);
+	Company *c = GetCompany(_current_company);
 
 	if (success) {
-		_players_ainew[p->index].state = AI_STATE_GIVE_ORDERS;
-		_players_ainew[p->index].veh_id = _new_vehicle_id;
+		_companies_ainew[c->index].state = AI_STATE_GIVE_ORDERS;
+		_companies_ainew[c->index].veh_id = _new_vehicle_id;
 
-		if (GetVehicle(_players_ainew[p->index].veh_id)->cargo_type != _players_ainew[p->index].cargo) {
+		if (GetVehicle(_companies_ainew[c->index].veh_id)->cargo_type != _companies_ainew[c->index].cargo) {
 			/* Cargo type doesn't match, so refit it */
-			if (CmdFailed(DoCommand(tile, _players_ainew[p->index].veh_id, _players_ainew[p->index].cargo, DC_EXEC, CMD_REFIT_ROAD_VEH))) {
+			if (CmdFailed(DoCommand(tile, _companies_ainew[c->index].veh_id, _companies_ainew[c->index].cargo, DC_EXEC, CMD_REFIT_ROAD_VEH))) {
 				/* Refit failed, so sell the vehicle */
-				DoCommand(tile, _players_ainew[p->index].veh_id, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
-				_players_ainew[p->index].state = AI_STATE_NOTHING;
+				DoCommand(tile, _companies_ainew[c->index].veh_id, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
+				_companies_ainew[c->index].state = AI_STATE_NOTHING;
 			}
 		}
 	} else {
 		/* XXX this should be handled more gracefully */
-		_players_ainew[p->index].state = AI_STATE_NOTHING;
+		_companies_ainew[c->index].state = AI_STATE_NOTHING;
 	}
 }
 
 
 // Builds the best vehicle possible
-CommandCost AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
+CommandCost AiNew_Build_Vehicle(Company *c, TileIndex tile, byte flag)
 {
-	EngineID i = AiNew_PickVehicle(p);
+	EngineID i = AiNew_PickVehicle(c);
 
 	if (i == INVALID_ENGINE) return CMD_ERROR;
-	if (_players_ainew[p->index].tbt == AI_TRAIN) return CMD_ERROR;
+	if (_companies_ainew[c->index].tbt == AI_TRAIN) return CMD_ERROR;
 
 	if (flag & DC_EXEC) {
 		return AI_DoCommandCc(tile, i, 0, flag, CMD_BUILD_ROAD_VEH, CcAI);
@@ -310,10 +310,10 @@ CommandCost AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
 	}
 }
 
-CommandCost AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag)
+CommandCost AiNew_Build_Depot(Company *c, TileIndex tile, DiagDirection direction, byte flag)
 {
 	CommandCost ret, ret2;
-	if (_players_ainew[p->index].tbt == AI_TRAIN) {
+	if (_companies_ainew[c->index].tbt == AI_TRAIN) {
 		return AI_DoCommand(tile, 0, direction, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_TRAIN_DEPOT);
 	} else {
 		ret = AI_DoCommand(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_DEPOT);

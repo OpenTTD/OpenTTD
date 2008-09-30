@@ -28,7 +28,7 @@ SignID _new_sign_id;
 /* Initialize the sign-pool */
 DEFINE_OLD_POOL_GENERIC(Sign, Sign)
 
-Sign::Sign(PlayerID owner)
+Sign::Sign(Owner owner)
 {
 	this->owner = owner;
 }
@@ -40,7 +40,7 @@ Sign::~Sign()
 	if (CleaningPool()) return;
 
 	DeleteRenameSignWindow(this->index);
-	this->owner = INVALID_PLAYER;
+	this->owner = INVALID_OWNER;
 }
 
 /**
@@ -105,7 +105,7 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
-		Sign *si = new Sign(_current_player);
+		Sign *si = new Sign(_current_company);
 		int x = TileX(tile) * TILE_SIZE;
 		int y = TileY(tile) * TILE_SIZE;
 
@@ -146,7 +146,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			free(si->name);
 			/* Assign the new one */
 			si->name = strdup(_cmd_text);
-			si->owner = _current_player;
+			si->owner = _current_company;
 
 			/* Update; mark sign dirty twice, because it can either becom longer, or shorter */
 			MarkSignDirty(si);

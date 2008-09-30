@@ -465,7 +465,7 @@ void DrawCatenary(const TileInfo *ti)
 int32 SettingsDisableElrail(int32 p1)
 {
 	Vehicle *v;
-	Player *p;
+	Company *c;
 	bool disable = (p1 != 0);
 
 	/* we will now walk through all electric train engines and change their railtypes if it is the wrong one*/
@@ -506,7 +506,7 @@ int32 SettingsDisableElrail(int32 p1)
 		}
 	}
 
-	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
+	FOR_ALL_COMPANIES(c) c->avail_railtypes = GetCompanyRailtypes(c->index);
 
 	/* This resets the _last_built_railtype, which will be invalid for electric
 	* rails. It may have unintended consequences if that function is ever

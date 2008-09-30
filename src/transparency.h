@@ -17,7 +17,7 @@ enum TransparencyOption {
 	TO_TREES,      ///< trees
 	TO_HOUSES,     ///< town buildings
 	TO_INDUSTRIES, ///< industries
-	TO_BUILDINGS,  ///< player buildings - depots, stations, HQ, ...
+	TO_BUILDINGS,  ///< company buildings - depots, stations, HQ, ...
 	TO_BRIDGES,    ///< bridges
 	TO_STRUCTURES, ///< unmovable structures
 	TO_CATENARY,   ///< catenary

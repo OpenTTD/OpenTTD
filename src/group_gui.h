@@ -7,6 +7,6 @@
 
 #include "vehicle_type.h"
 
-void ShowPlayerGroup(PlayerID player, VehicleType veh);
+void ShowCompanyGroup(CompanyID company, VehicleType veh);
 
 #endif /* GROUP_GUI_H */

@@ -105,8 +105,8 @@ DEF_COMMAND(CmdRestoreOrderIndex);
 DEF_COMMAND(CmdBuildIndustry);
 
 DEF_COMMAND(CmdBuildCompanyHQ);
-DEF_COMMAND(CmdSetPlayerFace);
-DEF_COMMAND(CmdSetPlayerColor);
+DEF_COMMAND(CmdSetCompanyManagerFace);
+DEF_COMMAND(CmdSetCompanyColor);
 
 DEF_COMMAND(CmdIncreaseLoan);
 DEF_COMMAND(CmdDecreaseLoan);
@@ -165,7 +165,7 @@ DEF_COMMAND(CmdMoneyCheat);
 DEF_COMMAND(CmdBuildCanal);
 DEF_COMMAND(CmdBuildLock);
 
-DEF_COMMAND(CmdPlayerCtrl);
+DEF_COMMAND(CmdCompanyCtrl);
 
 DEF_COMMAND(CmdLevelLand);
 
@@ -255,8 +255,8 @@ static const Command _command_proc_table[] = {
 
 	{CmdBuildIndustry,                       0}, /* CMD_BUILD_INDUSTRY */
 	{CmdBuildCompanyHQ,               CMD_AUTO}, /* CMD_BUILD_COMPANY_HQ */
-	{CmdSetPlayerFace,                       0}, /* CMD_SET_PLAYER_FACE */
-	{CmdSetPlayerColor,                      0}, /* CMD_SET_PLAYER_COLOR */
+	{CmdSetCompanyManagerFace,               0}, /* CMD_SET_COMPANY_MANAGER_FACE */
+	{CmdSetCompanyColor,                     0}, /* CMD_SET_COMPANY_COLOR */
 
 	{CmdIncreaseLoan,                        0}, /* CMD_INCREASE_LOAN */
 	{CmdDecreaseLoan,                        0}, /* CMD_DECREASE_LOAN */
@@ -310,7 +310,7 @@ static const Command _command_proc_table[] = {
 
 	{CmdMoneyCheat,                CMD_OFFLINE}, /* CMD_MONEY_CHEAT */
 	{CmdBuildCanal,                   CMD_AUTO}, /* CMD_BUILD_CANAL */
-	{CmdPlayerCtrl,                          0}, /* CMD_PLAYER_CTRL */
+	{CmdCompanyCtrl,                         0}, /* CMD_COMPANY_CTRL */
 
 	{CmdLevelLand,                    CMD_AUTO}, /* CMD_LEVEL_LAND */
 
@@ -417,7 +417,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 				!(flags & DC_QUERY_COST) &&
 				!(flags & DC_BANKRUPT) &&
 				res.GetCost() != 0 &&
-				!CheckPlayerHasMoney(res)) {
+				!CheckCompanyHasMoney(res)) {
 			goto error;
 		}
 
@@ -441,10 +441,10 @@ error:
 
 	/* if toplevel, subtract the money. */
 	if (--_docommand_recursive == 0 && !(flags & DC_BANKRUPT)) {
-		SubtractMoneyFromPlayer(res);
-		/* XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of player */
-		if (tile != 0 && IsValidPlayerID(_current_player)) {
-			GetPlayer(_current_player)->last_build_coordinate = tile;
+		SubtractMoneyFromCompany(res);
+		/* XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of company */
+		if (tile != 0 && IsValidCompanyID(_current_company)) {
+			GetCompany(_current_company)->last_build_coordinate = tile;
 		}
 	}
 
@@ -454,30 +454,30 @@ error:
 
 /*!
  * This functions returns the money which can be used to execute a command.
- * This is either the money of the current player or INT64_MAX if there
- * is no such a player "at the moment" like the server itself.
+ * This is either the money of the current company or INT64_MAX if there
+ * is no such a company "at the moment" like the server itself.
  *
- * @return The available money of a player or INT64_MAX
+ * @return The available money of a company or INT64_MAX
  */
 Money GetAvailableMoneyForCommand()
 {
-	PlayerID pid = _current_player;
-	if (!IsValidPlayerID(pid)) return INT64_MAX;
-	return GetPlayer(pid)->player_money;
+	CompanyID company = _current_company;
+	if (!IsValidCompanyID(company)) return INT64_MAX;
+	return GetCompany(company)->money;
 }
 
 /*!
- * Toplevel network safe docommand function for the current player. Must not be called recursively.
+ * Toplevel network safe docommand function for the current company. Must not be called recursively.
  * The callback is called when the command succeeded or failed. The parameters
  * tile, p1 and p2 are from the #CommandProc function. The paramater cmd is the command to execute.
- * The parameter my_cmd is used to indicate if the command is from a player or the server.
+ * The parameter my_cmd is used to indicate if the command is from a company or the server.
  *
  * @param tile The tile to perform a command on (see #CommandProc)
  * @param p1 Additional data for the command (see #CommandProc)
  * @param p2 Additional data for the command (see #CommandProc)
  * @param callback A callback function to call after the command is finished
  * @param cmd The command to execute (a CMD_* value)
- * @param my_cmd indicator if the command is from a player or server (to display error messages for a user)
+ * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
  * @return true if the command succeeded, else false
  */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd, bool my_cmd)
@@ -505,7 +505,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	/** Spectator has no rights except for the (dedicated) server which
 	 * is/can be a spectator but as the server it can do anything */
-	if (_current_player == PLAYER_SPECTATOR && !_network_server) {
+	if (_current_company == COMPANY_SPECTATOR && !_network_server) {
 		if (my_cmd) ShowErrorMessage(_error_message, error_part1, x, y);
 		_cmd_text = NULL;
 		return false;
@@ -547,7 +547,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	/* cost estimation only? */
 	if (!IsGeneratingWorld() &&
 			_shift_pressed &&
-			IsLocalPlayer() &&
+			IsLocalCompany() &&
 			!(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR)) &&
 			(cmd & 0xFF) != CMD_PAUSE) {
 		/* estimate the cost. */
@@ -578,33 +578,33 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 			goto show_error;
 		}
 		/* no money? Only check if notest is off */
-		if (!notest && res.GetCost() != 0 && !CheckPlayerHasMoney(res)) goto show_error;
+		if (!notest && res.GetCost() != 0 && !CheckCompanyHasMoney(res)) goto show_error;
 	}
 
 #ifdef ENABLE_NETWORK
 	/** If we are in network, and the command is not from the network
 	 * send it to the command-queue and abort execution
-	 * If we are a dedicated server temporarily switch local player, otherwise
+	 * If we are a dedicated server temporarily switch local company, otherwise
 	 * the other parties won't be able to execute our command and will desync.
 	 * We also need to do this if the server's company has gone bankrupt
 	 * @todo Rewrite (dedicated) server to something more than a dirty hack!
 	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
-		PlayerID pbck = _local_player;
-		if (_network_dedicated || (_network_server && pbck == PLAYER_SPECTATOR)) _local_player = PLAYER_FIRST;
+		CompanyID pbck = _local_company;
+		if (_network_dedicated || (_network_server && pbck == COMPANY_SPECTATOR)) _local_company = COMPANY_FIRST;
 		NetworkSend_Command(tile, p1, p2, cmd, callback);
-		if (_network_dedicated || (_network_server && pbck == PLAYER_SPECTATOR)) _local_player = pbck;
+		if (_network_dedicated || (_network_server && pbck == COMPANY_SPECTATOR)) _local_company = pbck;
 		_docommand_recursive = 0;
 		_cmd_text = NULL;
 		ClearStorageChanges(false);
 		return true;
 	}
 #endif /* ENABLE_NETWORK */
-	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)_current_player, tile, p1, p2, cmd, _cmd_text);
+	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd, _cmd_text);
 
-	/* update last build coordinate of player. */
-	if (tile != 0 && IsValidPlayerID(_current_player)) {
-		GetPlayer(_current_player)->last_build_coordinate = tile;
+	/* update last build coordinate of company. */
+	if (tile != 0 && IsValidCompanyID(_current_company)) {
+		GetCompany(_current_company)->last_build_coordinate = tile;
 	}
 
 	/* Actually try and execute the command. If no cost-type is given
@@ -622,12 +622,12 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		}
 	}
 
-	SubtractMoneyFromPlayer(res2);
+	SubtractMoneyFromCompany(res2);
 
 	/* update signals if needed */
 	UpdateSignalsInBuffer();
 
-	if (IsLocalPlayer() && _game_mode != GM_EDITOR) {
+	if (IsLocalCompany() && _game_mode != GM_EDITOR) {
 		if (res2.GetCost() != 0 && tile != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2.GetCost());
 		if (_additional_cash_required != 0) {
 			SetDParam(0, _additional_cash_required);
@@ -645,7 +645,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 show_error:
 	/* show error message if the command fails? */
-	if (IsLocalPlayer() && error_part1 != 0 && my_cmd) {
+	if (IsLocalCompany() && error_part1 != 0 && my_cmd) {
 		ShowErrorMessage(_error_message, error_part1, x, y);
 	}
 

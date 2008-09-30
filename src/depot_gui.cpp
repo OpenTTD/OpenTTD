@@ -314,7 +314,7 @@ struct DepotWindow : Window {
 		uint16 boxes_in_each_row = this->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
 
 		/* setup disabled buttons */
-		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_player),
+		this->SetWidgetsDisabledState(!IsTileOwner(tile, _local_company),
 			DEPOT_WIDGET_STOP_ALL,
 			DEPOT_WIDGET_START_ALL,
 			DEPOT_WIDGET_SELL,
@@ -702,7 +702,7 @@ struct DepotWindow : Window {
 		this->type = type;
 		_backup_orders_tile = 0;
 
-		assert(IsPlayerBuildableVehicleType(type)); // ensure that we make the call with a valid type
+		assert(IsCompanyBuildableVehicleType(type)); // ensure that we make the call with a valid type
 
 		/* Resize the window according to the vehicle type */
 

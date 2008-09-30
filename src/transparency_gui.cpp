@@ -24,7 +24,7 @@ class TransparenciesWindow : public Window
 		TTW_WIDGET_TREES,        ///< Make trees transparent
 		TTW_WIDGET_HOUSES,       ///< Make houses transparent
 		TTW_WIDGET_INDUSTRIES,   ///< Make Industries transparent
-		TTW_WIDGET_BUILDINGS,    ///< Make player buildings and structures transparent
+		TTW_WIDGET_BUILDINGS,    ///< Make company buildings and structures transparent
 		TTW_WIDGET_BRIDGES,      ///< Make bridges transparent
 		TTW_WIDGET_STRUCTURES,   ///< Make unmovable structures transparent
 		TTW_WIDGET_CATENARY,     ///< Make catenary transparent
@@ -99,7 +99,7 @@ static const Widget _transparency_widgets[] = {
 {WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN, 207, 218,   0,  13, STR_NULL,                 STR_STICKY_BUTTON},
 
 /* transparency widgets:
- * transparent signs, trees, houses, industries, player's buildings, bridges, unmovable structures, catenary and loading indicators */
+ * transparent signs, trees, houses, industries, company's buildings, bridges, unmovable structures, catenary and loading indicators */
 {   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,   0,  21,  14,  35, SPR_IMG_SIGN,         STR_TRANSPARENT_SIGNS_DESC},
 {   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  22,  43,  14,  35, SPR_IMG_PLANTTREES,   STR_TRANSPARENT_TREES_DESC},
 {   WWT_IMGBTN,   RESIZE_NONE,  COLOUR_DARK_GREEN,  44,  65,  14,  35, SPR_IMG_TOWN,         STR_TRANSPARENT_HOUSES_DESC},

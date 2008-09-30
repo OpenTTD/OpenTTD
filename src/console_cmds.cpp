@@ -375,7 +375,7 @@ DEF_CONSOLE_CMD(ConBan)
 	uint32 index;
 
 	if (argc == 0) {
-		IConsoleHelp("Ban a player from a network game. Usage: 'ban <ip | client-id>'");
+		IConsoleHelp("Ban a client from a network game. Usage: 'ban <ip | client-id>'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
 		IConsoleHelp("If the client is no longer online, you can still ban his/her IP");
 		return true;
@@ -408,7 +408,7 @@ DEF_CONSOLE_CMD(ConBan)
 
 	if (ci != NULL) {
 		IConsolePrint(CC_DEFAULT, "Client banned");
-		banip = GetPlayerIP(ci);
+		banip = GetClientIP(ci);
 		NetworkServerSendError(index, NETWORK_ERROR_KICKED);
 	} else {
 		IConsolePrint(CC_DEFAULT, "Client not online, banned IP");
@@ -430,7 +430,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 	uint i, index;
 
 	if (argc == 0) {
-		IConsoleHelp("Unban a player from a network game. Usage: 'unban <ip | client-id>'");
+		IConsoleHelp("Unban a client from a network game. Usage: 'unban <ip | client-id>'");
 		IConsoleHelp("For a list of banned IP's, see the command 'banlist'");
 		return true;
 	}
@@ -540,13 +540,13 @@ DEF_CONSOLE_CMD(ConStatus)
 DEF_CONSOLE_CMD(ConServerInfo)
 {
 	if (argc == 0) {
-		IConsoleHelp("List current and maximum client/player limits. Usage 'server_info'");
+		IConsoleHelp("List current and maximum client/company limits. Usage 'server_info'");
 		IConsoleHelp("You can change these values by setting the variables 'max_clients', 'max_companies' and 'max_spectators'");
 		return true;
 	}
 
 	IConsolePrintF(CC_DEFAULT, "Current/maximum clients:    %2d/%2d", _network_game_info.clients_on, _settings_client.network.max_clients);
-	IConsolePrintF(CC_DEFAULT, "Current/maximum companies:  %2d/%2d", ActivePlayerCount(), _settings_client.network.max_companies);
+	IConsolePrintF(CC_DEFAULT, "Current/maximum companies:  %2d/%2d", ActiveCompanyCount(), _settings_client.network.max_companies);
 	IConsolePrintF(CC_DEFAULT, "Current/maximum spectators: %2d/%2d", NetworkSpectatorCount(), _settings_client.network.max_spectators);
 
 	return true;
@@ -558,7 +558,7 @@ DEF_CONSOLE_CMD(ConKick)
 	uint32 index;
 
 	if (argc == 0) {
-		IConsoleHelp("Kick a player from a network game. Usage: 'kick <ip | client-id>'");
+		IConsoleHelp("Kick a client from a network game. Usage: 'kick <ip | client-id>'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
 		return true;
 	}
@@ -594,32 +594,32 @@ DEF_CONSOLE_CMD(ConKick)
 
 DEF_CONSOLE_CMD(ConResetCompany)
 {
-	PlayerID index;
+	CompanyID index;
 
 	if (argc == 0) {
 		IConsoleHelp("Remove an idle company from the game. Usage: 'reset_company <company-id>'");
-		IConsoleHelp("For company-id's, see the list of companies from the dropdown menu. Player 1 is 1, etc.");
+		IConsoleHelp("For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
 		return true;
 	}
 
 	if (argc != 2) return false;
 
-	index = (PlayerID)(atoi(argv[1]) - 1);
+	index = (CompanyID)(atoi(argv[1]) - 1);
 
 	/* Check valid range */
-	if (!IsValidPlayerID(index)) {
-		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_PLAYERS);
+	if (!IsValidCompanyID(index)) {
+		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
 
-	const Player *p = GetPlayer(index);
+	const Company *c = GetCompany(index);
 
-	if (p->is_ai) {
+	if (c->is_ai) {
 		IConsoleError("Company is owned by an AI.");
 		return true;
 	}
 
-	if (NetworkCompanyHasPlayers(index)) {
+	if (NetworkCompanyHasClients(index)) {
 		IConsoleError("Cannot remove company: a client is connected to that company.");
 		return false;
 	}
@@ -630,7 +630,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	}
 
 	/* It is safe to remove this company */
-	DoCommandP(0, 2, index, NULL, CMD_PLAYER_CTRL);
+	DoCommandP(0, 2, index, NULL, CMD_COMPANY_CTRL);
 	IConsolePrint(CC_DEFAULT, "Company deleted.");
 
 	return true;
@@ -648,8 +648,8 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
 		               ci->client_index, ci->client_name,
-		               ci->client_playas + (IsValidPlayerID(ci->client_playas) ? 1 : 0),
-		               GetPlayerIP(ci));
+		               ci->client_playas + (IsValidCompanyID(ci->client_playas) ? 1 : 0),
+		               GetClientIP(ci));
 	}
 
 	return true;
@@ -659,13 +659,13 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 {
 	char *ip;
 	const char *port = NULL;
-	const char *player = NULL;
+	const char *company = NULL;
 	uint16 rport;
 
 	if (argc == 0) {
 		IConsoleHelp("Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'");
-		IConsoleHelp("IP can contain port and player: 'IP[[#Player]:Port]', eg: 'server.ottd.org#2:443'");
-		IConsoleHelp("Player #255 is spectator all others are a certain company with Company 1 being #1");
+		IConsoleHelp("IP can contain port and company: 'IP[[#Company]:Port]', eg: 'server.ottd.org#2:443'");
+		IConsoleHelp("Company #255 is spectator all others are a certain company with Company 1 being #1");
 		return true;
 	}
 
@@ -675,20 +675,20 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	ip = argv[1];
 	/* Default settings: default port and new company */
 	rport = NETWORK_DEFAULT_PORT;
-	_network_playas = PLAYER_NEW_COMPANY;
+	_network_playas = COMPANY_NEW_COMPANY;
 
-	ParseConnectionString(&player, &port, ip);
+	ParseConnectionString(&company, &port, ip);
 
 	IConsolePrintF(CC_DEFAULT, "Connecting to %s...", ip);
-	if (player != NULL) {
-		_network_playas = (PlayerID)atoi(player);
-		IConsolePrintF(CC_DEFAULT, "    player-no: %d", _network_playas);
+	if (company != NULL) {
+		_network_playas = (CompanyID)atoi(company);
+		IConsolePrintF(CC_DEFAULT, "    company-no: %d", _network_playas);
 
-		/* From a user pov 0 is a new player, internally it's different and all
-		 * players are offset by one to ease up on users (eg players 1-8 not 0-7) */
-		if (_network_playas != PLAYER_SPECTATOR) {
+		/* From a user pov 0 is a new company, internally it's different and all
+		 * companies are offset by one to ease up on users (eg companies 1-8 not 0-7) */
+		if (_network_playas != COMPANY_SPECTATOR) {
 			_network_playas--;
-			if (!IsValidPlayerID(_network_playas)) return false;
+			if (!IsValidCompanyID(_network_playas)) return false;
 		}
 	}
 	if (port != NULL) {
@@ -1138,24 +1138,24 @@ DEF_CONSOLE_CMD(ConSay)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConPlayers)
+DEF_CONSOLE_CMD(ConCompanies)
 {
-	Player *p;
+	Company *c;
 
 	if (argc == 0) {
-		IConsoleHelp("List the in-game details of all clients connected to the server. Usage 'players'");
+		IConsoleHelp("List the in-game details of all clients connected to the server. Usage 'companies'");
 		return true;
 	}
 	NetworkPopulateCompanyInfo();
 
-	FOR_ALL_PLAYERS(p) {
+	FOR_ALL_COMPANIES(c) {
 		char buffer[512];
 
-		const NetworkPlayerInfo *npi = &_network_player_info[p->index];
+		const NetworkCompanyInfo *npi = &_network_company_info[c->index];
 
-		GetString(buffer, STR_00D1_DARK_BLUE + _player_colors[p->index], lastof(buffer));
+		GetString(buffer, STR_00D1_DARK_BLUE + _company_colours[c->index], lastof(buffer));
 		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %" OTTD_PRINTF64 "d  Loan: %" OTTD_PRINTF64 "d  Value: %" OTTD_PRINTF64 "d  (T:%d, R:%d, P:%d, S:%d) %sprotected",
-			p->index + 1, buffer, npi->company_name, p->inaugurated_year, (int64)p->player_money, (int64)p->current_loan, (int64)CalculateCompanyValue(p),
+			c->index + 1, buffer, npi->company_name, c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
 			/* trains      */ npi->num_vehicle[0],
 			/* lorry + bus */ npi->num_vehicle[1] + npi->num_vehicle[2],
 			/* planes      */ npi->num_vehicle[3],
@@ -1166,26 +1166,26 @@ DEF_CONSOLE_CMD(ConPlayers)
 	return true;
 }
 
-DEF_CONSOLE_CMD(ConSayPlayer)
+DEF_CONSOLE_CMD(ConSayCompany)
 {
 	if (argc == 0) {
-		IConsoleHelp("Chat to a certain player in a multiplayer game. Usage: 'say_player <player-no> \"<msg>\"'");
-		IConsoleHelp("PlayerNo is the player that plays as company <playerno>, 1 through max_players");
+		IConsoleHelp("Chat to a certain company in a multiplayer game. Usage: 'say_company <company-no> \"<msg>\"'");
+		IConsoleHelp("CompanyNo is the company that plays as company <companyno>, 1 through max_companies");
 		return true;
 	}
 
 	if (argc != 3) return false;
 
-	PlayerID player_id = (PlayerID)(atoi(argv[1]) - 1);
-	if (!IsValidPlayerID(player_id)) {
-		IConsolePrintF(CC_DEFAULT, "Unknown player. Player range is between 1 and %d.", MAX_PLAYERS);
+	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
+	if (!IsValidCompanyID(company_id)) {
+		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
 		return true;
 	}
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, player_id, argv[2]);
+		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2]);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, player_id, argv[2], NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2], NETWORK_SERVER_INDEX);
 	}
 
 	return true;
@@ -1194,7 +1194,7 @@ DEF_CONSOLE_CMD(ConSayPlayer)
 DEF_CONSOLE_CMD(ConSayClient)
 {
 	if (argc == 0) {
-		IConsoleHelp("Chat to a certain player in a multiplayer game. Usage: 'say_client <client-no> \"<msg>\"'");
+		IConsoleHelp("Chat to a certain client in a multiplayer game. Usage: 'say_client <client-no> \"<msg>\"'");
 		IConsoleHelp("For client-id's, see the command 'clients'");
 		return true;
 	}
@@ -1212,16 +1212,16 @@ DEF_CONSOLE_CMD(ConSayClient)
 
 extern void HashCurrentCompanyPassword();
 
-/* Also use from within player_gui to change the password graphically */
+/* Also use from within company_gui to change the password graphically */
 bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 {
 	if (argc == 0) {
-		if (!IsValidPlayerID(_local_player)) return true; // dedicated server
-		IConsolePrintF(CC_WARNING, "Current value for 'company_pw': %s", _network_player_info[_local_player].password);
+		if (!IsValidCompanyID(_local_company)) return true; // dedicated server
+		IConsolePrintF(CC_WARNING, "Current value for 'company_pw': %s", _network_company_info[_local_company].password);
 		return true;
 	}
 
-	if (!IsValidPlayerID(_local_player)) {
+	if (!IsValidCompanyID(_local_company)) {
 		IConsoleError("You have to own a company to make use of this command.");
 		return false;
 	}
@@ -1230,7 +1230,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 
 	if (strcmp(argv[0], "*") == 0) argv[0][0] = '\0';
 
-	ttd_strlcpy(_network_player_info[_local_player].password, argv[0], sizeof(_network_player_info[_local_player].password));
+	ttd_strlcpy(_network_company_info[_local_company].password, argv[0], sizeof(_network_company_info[_local_company].password));
 
 	if (!_network_server) {
 		NetworkClientSetPassword();
@@ -1238,7 +1238,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 		HashCurrentCompanyPassword();
 	}
 
-	IConsolePrintF(CC_WARNING, "'company_pw' changed to:  %s", _network_player_info[_local_player].password);
+	IConsolePrintF(CC_WARNING, "'company_pw' changed to:  %s", _network_company_info[_local_company].password);
 
 	return true;
 }
@@ -1248,7 +1248,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 DEF_CONSOLE_CMD(ConPatch)
 {
 	if (argc == 0) {
-		IConsoleHelp("Change patch variables for all players. Usage: 'patch <name> [<value>]'");
+		IConsoleHelp("Change patch variables for all clients. Usage: 'patch <name> [<value>]'");
 		IConsoleHelp("Omitting <value> will print out the current value of the patch-setting.");
 		return true;
 	}
@@ -1384,10 +1384,12 @@ void IConsoleStdLibRegister()
 	/*** Networking commands ***/
 	IConsoleCmdRegister("say",             ConSay);
 	IConsoleCmdHookAdd("say",              ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
-	IConsoleCmdRegister("players",             ConPlayers);
-	IConsoleCmdHookAdd("players",              ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-	IConsoleCmdRegister("say_player",      ConSayPlayer);
-	IConsoleCmdHookAdd("say_player",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("companies",       ConCompanies);
+	IConsoleCmdHookAdd("companies",        ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleAliasRegister("players",       "companies");
+	IConsoleCmdRegister("say_company",     ConSayCompany);
+	IConsoleCmdHookAdd("say_company",      ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleAliasRegister("say_player",    "say_company %+");
 	IConsoleCmdRegister("say_client",      ConSayClient);
 	IConsoleCmdHookAdd("say_client",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 
@@ -1433,7 +1435,7 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("server_password",       "patch server_password %+");
 	IConsoleAliasRegister("rcon_pw",               "patch rcon_password %+");
 	IConsoleAliasRegister("rcon_password",         "patch rcon_password %+");
-	IConsoleAliasRegister("name",                  "patch player_name %+");
+	IConsoleAliasRegister("name",                  "patch client_name %+");
 	IConsoleAliasRegister("server_name",           "patch server_name %+");
 	IConsoleAliasRegister("server_port",           "patch server_port %+");
 	IConsoleAliasRegister("server_ip",             "patch server_bind_ip %+");
@@ -1450,7 +1452,7 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("autoclean_protected",   "patch autoclean_protected %+");
 	IConsoleAliasRegister("autoclean_unprotected", "patch autoclean_unprotected %+");
 	IConsoleAliasRegister("restart_game_year",     "patch restart_game_year %+");
-	IConsoleAliasRegister("min_players",           "patch min_players %+");
+	IConsoleAliasRegister("min_players",           "patch min_clients %+");
 	IConsoleAliasRegister("reload_cfg",            "patch reload_cfg %+");
 #endif /* ENABLE_NETWORK */
 

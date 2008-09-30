@@ -134,8 +134,8 @@ enum {
  */
 enum {
 	ENGINE_AVAILABLE         = 1, ///< This vehicle is available to everyone.
-	ENGINE_EXCLUSIVE_PREVIEW = 2, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a player.
-	ENGINE_OFFER_WINDOW_OPEN = 4, ///< The exclusive offer window is currently open for a player.
+	ENGINE_EXCLUSIVE_PREVIEW = 2, ///< This vehicle is in the exclusive preview stage, either being used or being offered to a company.
+	ENGINE_OFFER_WINDOW_OPEN = 4, ///< The exclusive offer window is currently open for a company.
 };
 
 enum {

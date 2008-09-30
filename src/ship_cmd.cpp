@@ -176,7 +176,7 @@ void Ship::OnNewDay()
 	this->profit_this_year -= cost.GetCost();
 	this->running_ticks = 0;
 
-	SubtractMoneyFromPlayerFract(this->owner, cost);
+	SubtractMoneyFromCompanyFract(this->owner, cost);
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, this->index);
 	/* we need this for the profit */
@@ -349,7 +349,7 @@ static void ShipArrivesAt(const Vehicle* v, Station* st)
 		SetDParam(0, st->index);
 		AddNewsItem(
 			STR_9833_CITIZENS_CELEBRATE_FIRST,
-			(v->owner == _local_player) ? NS_ARRIVAL_PLAYER : NS_ARRIVAL_OTHER,
+			(v->owner == _local_company) ? NS_ARRIVAL_COMPANY : NS_ARRIVAL_OTHER,
 			v->index,
 			st->index
 		);
@@ -757,7 +757,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	UnitID unit_num;
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_SHIP, _current_player)) return_cmd_error(STR_SHIP_NOT_AVAILABLE);
+	if (!IsEngineBuildable(p1, VEH_SHIP, _current_company)) return_cmd_error(STR_SHIP_NOT_AVAILABLE);
 
 	value = EstimateShipCost(p1);
 	if (flags & DC_QUERY_COST) return value;
@@ -765,7 +765,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* The ai_new queries the vehicle cost before building the route,
 	 * so we must check against cheaters no sooner than now. --pasky */
 	if (!IsShipDepotTile(tile)) return CMD_ERROR;
-	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
+	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_SHIP);
 
@@ -781,7 +781,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Vehicle *v = new Ship();
 		v->unitnumber = unit_num;
 
-		v->owner = _current_player;
+		v->owner = _current_company;
 		v->tile = tile;
 		x = TileX(tile) * TILE_SIZE + TILE_SIZE / 2;
 		y = TileY(tile) * TILE_SIZE + TILE_SIZE / 2;
@@ -829,10 +829,10 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 		InvalidateWindow(WC_COMPANY, v->owner);
-		if (IsLocalPlayer())
+		if (IsLocalCompany())
 			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Ship window
 
-		GetPlayer(_current_player)->num_engines[p1]++;
+		GetCompany(_current_company)->num_engines[p1]++;
 	}
 
 	return value;
@@ -899,7 +899,7 @@ CommandCost CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
 		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_SHIP, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
+		return SendAllVehiclesToDepot(VEH_SHIP, flags, p2 & DEPOT_SERVICE, _current_company, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
@@ -962,7 +962,7 @@ CommandCost CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 	_returned_refit_capacity = capacity;
 
-	if (IsHumanPlayer(v->owner) && new_cid != v->cargo_type) {
+	if (IsHumanCompany(v->owner) && new_cid != v->cargo_type) {
 		cost = GetRefitCost(v->engine_type);
 	}
 

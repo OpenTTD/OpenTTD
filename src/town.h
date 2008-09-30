@@ -81,7 +81,7 @@ DECLARE_ENUM_AS_BIT_SET(HouseZones)
 enum HouseExtraFlags {
 	NO_EXTRA_FLAG            =       0,
 	BUILDING_IS_HISTORICAL   = 1U << 0,  ///< this house will only appear during town generation in random games, thus the historical
-	BUILDING_IS_PROTECTED    = 1U << 1,  ///< towns and AI will not remove this house, while human players will be able tp
+	BUILDING_IS_PROTECTED    = 1U << 1,  ///< towns and AI will not remove this house, while human players will be able to
 	SYNCHRONISED_CALLBACK_1B = 1U << 2,  ///< synchronized callback 1B will be performed, on multi tile houses
 	CALLBACK_1A_RANDOM_BITS  = 1U << 3,  ///< callback 1A needs random bits
 };
@@ -120,15 +120,15 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	/* level of noise that all the airports are generating */
 	uint16 noise_reached;
 
-	/* Which players have a statue? */
+	/* Which companies have a statue? */
 	byte statues;
 
-	/* Player ratings as well as a mask that determines which players have a rating. */
-	PlayerMask have_ratings;
-	uint8 unwanted[MAX_PLAYERS]; ///< how many months companies aren't wanted by towns (bribe)
-	PlayerByte exclusivity;      ///< which player has exslusivity
-	uint8 exclusive_counter;     ///< months till the exclusivity expires
-	int16 ratings[MAX_PLAYERS];
+	/* Company ratings as well as a mask that determines which companies have a rating. */
+	CompanyMask have_ratings;
+	uint8 unwanted[MAX_COMPANIES]; ///< how many months companies aren't wanted by towns (bribe)
+	CompanyByte exclusivity;       ///< which company has exclusivity
+	uint8 exclusive_counter;       ///< months till the exclusivity expires
+	int16 ratings[MAX_COMPANIES];
 
 	/* Maximum amount of passengers and mail that can be transported. */
 	uint32 max_pass;

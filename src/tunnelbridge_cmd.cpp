@@ -222,7 +222,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	switch (transport_type) {
 		case TRANSPORT_ROAD:
 			roadtypes = (RoadTypes)GB(p2, 8, 3);
-			if (!AreValidRoadTypes(roadtypes) || !HasRoadTypesAvail(_current_player, roadtypes)) return CMD_ERROR;
+			if (!AreValidRoadTypes(roadtypes) || !HasRoadTypesAvail(_current_company, roadtypes)) return CMD_ERROR;
 			break;
 
 		case TRANSPORT_RAIL:
@@ -304,8 +304,8 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 			return_cmd_error(STR_1007_ALREADY_BUILT);
 		}
 
-		/* Do not allow replacing another player's bridges. */
-		if (!IsTileOwner(tile_start, _current_player) && !IsTileOwner(tile_start, OWNER_TOWN)) {
+		/* Do not allow replacing another company's bridges. */
+		if (!IsTileOwner(tile_start, _current_company) && !IsTileOwner(tile_start, OWNER_TOWN)) {
 			return_cmd_error(STR_1024_AREA_IS_OWNED_BY_ANOTHER);
 		}
 
@@ -318,7 +318,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	} else {
 		/* Build a new bridge. */
 
-		bool allow_on_slopes = (!_is_old_ai_player && _settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
+		bool allow_on_slopes = (!_is_old_ai_company && _settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
 
 		/* Try and clear the start landscape */
 		ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -364,7 +364,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	/* do the drill? */
 	if (flags & DC_EXEC) {
 		DiagDirection dir = AxisToDiagDir(direction);
-		Owner owner = (replace_bridge && IsTileOwner(tile_start, OWNER_TOWN)) ? OWNER_TOWN : _current_player;
+		Owner owner = (replace_bridge && IsTileOwner(tile_start, OWNER_TOWN)) ? OWNER_TOWN : _current_company;
 
 		switch (transport_type) {
 			case TRANSPORT_RAIL:
@@ -443,7 +443,7 @@ not_valid_below:;
 
 	if (flags & DC_EXEC && transport_type == TRANSPORT_RAIL) {
 		Track track = AxisToTrack(direction);
-		AddSideToSignalBuffer(tile_start, INVALID_DIAGDIR, _current_player);
+		AddSideToSignalBuffer(tile_start, INVALID_DIAGDIR, _current_company);
 		YapfNotifyTrackLayoutChange(tile_start, track);
 	}
 
@@ -451,10 +451,10 @@ not_valid_below:;
 	 * It's unnecessary to execute this command every time for every bridge. So it is done only
 	 * and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
 	 */
-	if (!(flags & DC_QUERY_COST) || (IsValidPlayerID(_current_player) && GetPlayer(_current_player)->is_ai)) {
+	if (!(flags & DC_QUERY_COST) || (IsValidCompanyID(_current_company) && GetCompany(_current_company)->is_ai)) {
 		bridge_len += 2; // begin and end tiles/ramps
 
-		if (IsValidPlayerID(_current_player) && !_is_old_ai_player)
+		if (IsValidCompanyID(_current_company) && !_is_old_ai_company)
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		cost.AddCost((int64)bridge_len * _price.build_bridge * GetBridgeSpec(bridge_type)->price >> 8);
@@ -491,7 +491,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 		if (!ValParamRailtype((RailType)p1)) return CMD_ERROR;
 	} else {
 		const RoadTypes rts = (RoadTypes)GB(p1, 0, 3);
-		if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_player, rts)) return CMD_ERROR;
+		if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 	}
 
 	start_tileh = GetTileSlope(start_tile, &start_z);
@@ -571,13 +571,13 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 
 	if (flags & DC_EXEC) {
 		if (transport_type == TRANSPORT_RAIL) {
-			MakeRailTunnel(start_tile, _current_player, direction,                 (RailType)GB(p1, 0, 4));
-			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
-			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_player);
+			MakeRailTunnel(start_tile, _current_company, direction,                 (RailType)GB(p1, 0, 4));
+			MakeRailTunnel(end_tile,   _current_company, ReverseDiagDir(direction), (RailType)GB(p1, 0, 4));
+			AddSideToSignalBuffer(start_tile, INVALID_DIAGDIR, _current_company);
 			YapfNotifyTrackLayoutChange(start_tile, DiagDirToDiagTrack(direction));
 		} else {
-			MakeRoadTunnel(start_tile, _current_player, direction,                 (RoadTypes)GB(p1, 0, 3));
-			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 3));
+			MakeRoadTunnel(start_tile, _current_company, direction,                 (RoadTypes)GB(p1, 0, 3));
+			MakeRoadTunnel(end_tile,   _current_company, ReverseDiagDir(direction), (RoadTypes)GB(p1, 0, 3));
 		}
 	}
 
@@ -588,7 +588,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
 {
 	/* Floods can remove anything as well as the scenario editor */
-	if (_current_player == OWNER_WATER || _game_mode == GM_EDITOR) return true;
+	if (_current_company == OWNER_WATER || _game_mode == GM_EDITOR) return true;
 	/* Obviously if the bridge/tunnel belongs to us, or no-one, we can remove it */
 	if (CheckTileOwnership(tile) || IsTileOwner(tile, OWNER_NONE)) return true;
 	/* Otherwise we can only remove town-owned stuff with extra patch-settings, or cheat */
@@ -1295,12 +1295,12 @@ static TrackStatus GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType
 	return CombineTrackStatus(TrackBitsToTrackdirBits(DiagDirToDiagTrackBits(dir)), TRACKDIR_BIT_NONE);
 }
 
-static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_TunnelBridge(TileIndex tile, Owner old_owner, Owner new_owner)
 {
-	if (!IsTileOwner(tile, old_player)) return;
+	if (!IsTileOwner(tile, old_owner)) return;
 
-	if (new_player != PLAYER_SPECTATOR) {
-		SetTileOwner(tile, new_player);
+	if (new_owner != INVALID_OWNER) {
+		SetTileOwner(tile, new_owner);
 	} else {
 		if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_BANKRUPT, CMD_LANDSCAPE_CLEAR))) {
 			/* When clearing the bridge/tunnel failed there are still vehicles on/in

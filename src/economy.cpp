@@ -96,18 +96,18 @@ const ScoreInfo _score_info[] = {
 	{ SCORE_TOTAL,             0,   0 }
 };
 
-int _score_part[MAX_PLAYERS][SCORE_END];
+int _score_part[MAX_COMPANIES][SCORE_END];
 Economy _economy;
-Subsidy _subsidies[MAX_PLAYERS];
+Subsidy _subsidies[MAX_COMPANIES];
 Prices _price;
 uint16 _price_frac[NUM_PRICES];
 Money  _cargo_payment_rates[NUM_CARGO];
 uint16 _cargo_payment_rates_frac[NUM_CARGO];
 Money _additional_cash_required;
 
-Money CalculateCompanyValue(const Player* p)
+Money CalculateCompanyValue(const Company *c)
 {
-	PlayerID owner = p->index;
+	Owner owner = c->index;
 	Money value = 0;
 
 	Station *st;
@@ -132,8 +132,8 @@ Money CalculateCompanyValue(const Player* p)
 	}
 
 	/* Add real money value */
-	value -= p->current_loan;
-	value += p->player_money;
+	value -= c->current_loan;
+	value += c->money;
 
 	return max(value, (Money)1);
 }
@@ -141,17 +141,17 @@ Money CalculateCompanyValue(const Player* p)
 /** if update is set to true, the economy is updated with this score
  *  (also the house is updated, should only be true in the on-tick event)
  * @param update the economy with calculated score
- * @param p player been evaluated
- * @return actual score of this player
+ * @param c company been evaluated
+ * @return actual score of this company
  * */
-int UpdateCompanyRatingAndValue(Player *p, bool update)
+int UpdateCompanyRatingAndValue(Company *c, bool update)
 {
-	byte owner = p->index;
+	Owner owner = c->index;
 	int score = 0;
 
 	memset(_score_part[owner], 0, sizeof(_score_part[owner]));
 
-/* Count vehicles */
+	/* Count vehicles */
 	{
 		Vehicle *v;
 		Money min_profit = 0;
@@ -160,7 +160,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner != owner) continue;
-			if (IsPlayerBuildableVehicleType(v->type) && v->IsPrimaryVehicle()) {
+			if (IsCompanyBuildableVehicleType(v->type) && v->IsPrimaryVehicle()) {
 				num++;
 				if (v->age > 730) {
 					/* Find the vehicle with the lowest amount of profit */
@@ -180,7 +180,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 			_score_part[owner][SCORE_MIN_PROFIT] = ClampToI32(min_profit);
 	}
 
-/* Count stations */
+	/* Count stations */
 	{
 		uint num = 0;
 		const Station* st;
@@ -191,61 +191,62 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		_score_part[owner][SCORE_STATIONS] = num;
 	}
 
-/* Generate statistics depending on recent income statistics */
+	/* Generate statistics depending on recent income statistics */
 	{
-		int numec = min(p->num_valid_stat_ent, 12);
+		int numec = min(c->num_valid_stat_ent, 12);
 		if (numec != 0) {
-			const PlayerEconomyEntry *pee = p->old_economy;
-			Money min_income = pee->income + pee->expenses;
-			Money max_income = pee->income + pee->expenses;
+			const CompanyEconomyEntry *cee = c->old_economy;
+			Money min_income = cee->income + cee->expenses;
+			Money max_income = cee->income + cee->expenses;
 
 			do {
-				min_income = min(min_income, pee->income + pee->expenses);
-				max_income = max(max_income, pee->income + pee->expenses);
-			} while (++pee,--numec);
+				min_income = min(min_income, cee->income + cee->expenses);
+				max_income = max(max_income, cee->income + cee->expenses);
+			} while (++cee,--numec);
 
-			if (min_income > 0)
+			if (min_income > 0) {
 				_score_part[owner][SCORE_MIN_INCOME] = ClampToI32(min_income);
+			}
 
 			_score_part[owner][SCORE_MAX_INCOME] = ClampToI32(max_income);
 		}
 	}
 
-/* Generate score depending on amount of transported cargo */
+	/* Generate score depending on amount of transported cargo */
 	{
-		const PlayerEconomyEntry* pee;
+		const CompanyEconomyEntry *cee;
 		int numec;
 		uint32 total_delivered;
 
-		numec = min(p->num_valid_stat_ent, 4);
+		numec = min(c->num_valid_stat_ent, 4);
 		if (numec != 0) {
-			pee = p->old_economy;
+			cee = c->old_economy;
 			total_delivered = 0;
 			do {
-				total_delivered += pee->delivered_cargo;
-			} while (++pee,--numec);
+				total_delivered += cee->delivered_cargo;
+			} while (++cee,--numec);
 
 			_score_part[owner][SCORE_DELIVERED] = total_delivered;
 		}
 	}
 
-/* Generate score for variety of cargo */
+	/* Generate score for variety of cargo */
 	{
-		uint num = CountBits(p->cargo_types);
+		uint num = CountBits(c->cargo_types);
 		_score_part[owner][SCORE_CARGO] = num;
-		if (update) p->cargo_types = 0;
+		if (update) c->cargo_types = 0;
 	}
 
-/* Generate score for player money */
+	/* Generate score for company's money */
 	{
-		if (p->player_money > 0) {
-			_score_part[owner][SCORE_MONEY] = ClampToI32(p->player_money);
+		if (c->money > 0) {
+			_score_part[owner][SCORE_MONEY] = ClampToI32(c->money);
 		}
 	}
 
-/* Generate score for loan */
+	/* Generate score for loan */
 	{
-		_score_part[owner][SCORE_LOAN] = ClampToI32(_score_info[SCORE_LOAN].needed - p->current_loan);
+		_score_part[owner][SCORE_LOAN] = ClampToI32(_score_info[SCORE_LOAN].needed - c->current_loan);
 	}
 
 	/* Now we calculate the score for each item.. */
@@ -269,92 +270,92 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 	}
 
 	if (update) {
-		p->old_economy[0].performance_history = score;
-		UpdateCompanyHQ(p, score);
-		p->old_economy[0].company_value = CalculateCompanyValue(p);
+		c->old_economy[0].performance_history = score;
+		UpdateCompanyHQ(c, score);
+		c->old_economy[0].company_value = CalculateCompanyValue(c);
 	}
 
 	InvalidateWindow(WC_PERFORMANCE_DETAIL, 0);
 	return score;
 }
 
-/*  use PLAYER_SPECTATOR as new_player to delete the player. */
-void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
+/*  use INVALID_OWNER as new_owner to delete the company. */
+void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 {
 	Town *t;
-	PlayerID old = _current_player;
+	CompanyID old = _current_company;
 
-	assert(old_player != new_player);
+	assert(old_owner != new_owner);
 
 	{
-		Player *p;
+		Company *c;
 		uint i;
 
-		/* See if the old_player had shares in other companies */
-		_current_player = old_player;
-		FOR_ALL_PLAYERS(p) {
+		/* See if the old_owner had shares in other companies */
+		_current_company = old_owner;
+		FOR_ALL_COMPANIES(c) {
 			for (i = 0; i < 4; i++) {
-				if (p->share_owners[i] == old_player) {
+				if (c->share_owners[i] == old_owner) {
 					/* Sell his shares */
-					CommandCost res = DoCommand(0, p->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+					CommandCost res = DoCommand(0, c->index, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
 					/* Because we are in a DoCommand, we can't just execute an other one and
 					 *  expect the money to be removed. We need to do it ourself! */
-					SubtractMoneyFromPlayer(res);
+					SubtractMoneyFromCompany(res);
 				}
 			}
 		}
 
 		/* Sell all the shares that people have on this company */
-		p = GetPlayer(old_player);
+		c = GetCompany(old_owner);
 		for (i = 0; i < 4; i++) {
-			_current_player = p->share_owners[i];
-			if (_current_player != PLAYER_SPECTATOR) {
+			_current_company = c->share_owners[i];
+			if (_current_company != INVALID_OWNER) {
 				/* Sell the shares */
-				CommandCost res = DoCommand(0, old_player, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
+				CommandCost res = DoCommand(0, old_owner, 0, DC_EXEC, CMD_SELL_SHARE_IN_COMPANY);
 				/* Because we are in a DoCommand, we can't just execute an other one and
 				 *  expect the money to be removed. We need to do it ourself! */
-				SubtractMoneyFromPlayer(res);
+				SubtractMoneyFromCompany(res);
 			}
 		}
 	}
 
-	_current_player = old_player;
+	_current_company = old_owner;
 
-	/* Temporarily increase the player's money, to be sure that
+	/* Temporarily increase the company's money, to be sure that
 	 * removing his/her property doesn't fail because of lack of money.
 	 * Not too drastically though, because it could overflow */
-	if (new_player == PLAYER_SPECTATOR) {
-		GetPlayer(old_player)->player_money = UINT64_MAX >> 2; // jackpot ;p
+	if (new_owner == INVALID_OWNER) {
+		GetCompany(old_owner)->money = UINT64_MAX >> 2; // jackpot ;p
 	}
 
-	if (new_player == PLAYER_SPECTATOR) {
+	if (new_owner == INVALID_OWNER) {
 		Subsidy *s;
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age >= 12) {
-				if (GetStation(s->to)->owner == old_player) s->cargo_type = CT_INVALID;
+				if (GetStation(s->to)->owner == old_owner) s->cargo_type = CT_INVALID;
 			}
 		}
 	}
 
 	/* Take care of rating in towns */
 	FOR_ALL_TOWNS(t) {
-		/* If a player takes over, give the ratings to that player. */
-		if (new_player != PLAYER_SPECTATOR) {
-			if (HasBit(t->have_ratings, old_player)) {
-				if (HasBit(t->have_ratings, new_player)) {
+		/* If a company takes over, give the ratings to that company. */
+		if (new_owner != INVALID_OWNER) {
+			if (HasBit(t->have_ratings, old_owner)) {
+				if (HasBit(t->have_ratings, new_owner)) {
 					// use max of the two ratings.
-					t->ratings[new_player] = max(t->ratings[new_player], t->ratings[old_player]);
+					t->ratings[new_owner] = max(t->ratings[new_owner], t->ratings[old_owner]);
 				} else {
-					SetBit(t->have_ratings, new_player);
-					t->ratings[new_player] = t->ratings[old_player];
+					SetBit(t->have_ratings, new_owner);
+					t->ratings[new_owner] = t->ratings[old_owner];
 				}
 			}
 		}
 
-		/* Reset the ratings for the old player */
-		t->ratings[old_player] = RATING_INITIAL;
-		ClrBit(t->have_ratings, old_player);
+		/* Reset the ratings for the old owner */
+		t->ratings[old_owner] = RATING_INITIAL;
+		ClrBit(t->have_ratings, old_owner);
 	}
 
 	{
@@ -366,7 +367,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 		/*  Determine Ids for the new vehicles */
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner == new_player) {
+			if (v->owner == new_owner) {
 				switch (v->type) {
 					case VEH_TRAIN:    if (IsFrontEngine(v)) num_train++; break;
 					case VEH_ROAD:     if (IsRoadVehFront(v)) num_road++; break;
@@ -378,8 +379,8 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner == old_player && IsInsideMM(v->type, VEH_TRAIN, VEH_AIRCRAFT + 1)) {
-				if (new_player == PLAYER_SPECTATOR) {
+			if (v->owner == old_owner && IsInsideMM(v->type, VEH_TRAIN, VEH_AIRCRAFT + 1)) {
+				if (new_owner == INVALID_OWNER) {
 					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
 					DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
@@ -408,10 +409,10 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 						}
 					}
 				} else {
-					v->owner = new_player;
+					v->owner = new_owner;
 					v->colormap = PAL_NONE;
 					v->group_id = DEFAULT_GROUP;
-					if (IsEngineCountable(v)) GetPlayer(new_player)->num_engines[v->engine_type]++;
+					if (IsEngineCountable(v)) GetCompany(new_owner)->num_engines[v->engine_type]++;
 					switch (v->type) {
 						case VEH_TRAIN:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
 						case VEH_ROAD:     if (IsRoadVehFront(v)) v->unitnumber = ++num_road; break;
@@ -428,24 +429,24 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	{
 		TileIndex tile = 0;
 		do {
-			ChangeTileOwner(tile, old_player, new_player);
+			ChangeTileOwner(tile, old_owner, new_owner);
 		} while (++tile != MapSize());
 
-		if (new_player != PLAYER_SPECTATOR) {
-			/* Update all signals because there can be new segment that was owned by two players
+		if (new_owner != INVALID_OWNER) {
+			/* Update all signals because there can be new segment that was owned by two companies
 			 * and signals were not propagated
 			 * Similiar with crossings - it is needed to bar crossings that weren't before
 			 * because of different owner of crossing and approaching train */
 			tile = 0;
 
 			do {
-				if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, new_player) && HasSignals(tile)) {
+				if (IsTileType(tile, MP_RAILWAY) && IsTileOwner(tile, new_owner) && HasSignals(tile)) {
 					TrackBits tracks = GetTrackBits(tile);
 					do { // there may be two tracks with signals for TRACK_BIT_HORZ and TRACK_BIT_VERT
 						Track track = RemoveFirstTrack(&tracks);
-						if (HasSignalOnTrack(tile, track)) AddTrackToSignalBuffer(tile, track, new_player);
+						if (HasSignalOnTrack(tile, track)) AddTrackToSignalBuffer(tile, track, new_owner);
 					} while (tracks != TRACK_BIT_NONE);
-				} else if (IsLevelCrossingTile(tile) && IsTileOwner(tile, new_player)) {
+				} else if (IsLevelCrossingTile(tile) && IsTileOwner(tile, new_owner)) {
 					UpdateLevelCrossing(tile);
 				}
 			} while (++tile != MapSize());
@@ -457,60 +458,60 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 	/* In all cases clear replace engine rules.
 	 * Even if it was copied, it could interfere with new owner's rules */
-	RemoveAllEngineReplacementForPlayer(GetPlayer(old_player));
+	RemoveAllEngineReplacementForCompany(GetCompany(old_owner));
 
-	if (new_player == PLAYER_SPECTATOR) {
-		RemoveAllGroupsForPlayer(old_player);
+	if (new_owner == INVALID_OWNER) {
+		RemoveAllGroupsForCompany(old_owner);
 	} else {
 		Group *g;
 		FOR_ALL_GROUPS(g) {
-			if (g->owner == old_player) g->owner = new_player;
+			if (g->owner == old_owner) g->owner = new_owner;
 		}
 	}
 
 	Sign *si;
 	FOR_ALL_SIGNS(si) {
-		if (si->owner == old_player) si->owner = new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player;
+		if (si->owner == old_owner) si->owner = new_owner == INVALID_OWNER ? OWNER_NONE : new_owner;
 	}
 
 	/* Change color of existing windows */
-	if (new_player != PLAYER_SPECTATOR) ChangeWindowOwner(old_player, new_player);
+	if (new_owner != INVALID_OWNER) ChangeWindowOwner(old_owner, new_owner);
 
-	_current_player = old;
+	_current_company = old;
 
 	MarkWholeScreenDirty();
 }
 
-static void ChangeNetworkOwner(PlayerID current_player, PlayerID new_player)
+static void ChangeNetworkOwner(Owner current_owner, Owner new_owner)
 {
 #ifdef ENABLE_NETWORK
 	if (!_networking) return;
 
-	if (current_player == _local_player) {
-		_network_playas = new_player;
-		SetLocalPlayer(new_player);
+	if (current_owner == _local_company) {
+		_network_playas = new_owner;
+		SetLocalCompany(new_owner);
 	}
 
 	if (!_network_server) return;
 
-	NetworkServerChangeOwner(current_player, new_player);
+	NetworkServerChangeOwner(current_owner, new_owner);
 #endif /* ENABLE_NETWORK */
 }
 
-static void PlayersCheckBankrupt(Player *p)
+static void CompanyCheckBankrupt(Company *c)
 {
-	/*  If the player has money again, it does not go bankrupt */
-	if (p->player_money >= 0) {
-		p->quarters_of_bankrupcy = 0;
+	/*  If the company has money again, it does not go bankrupt */
+	if (c->money >= 0) {
+		c->quarters_of_bankrupcy = 0;
 		return;
 	}
 
-	p->quarters_of_bankrupcy++;
+	c->quarters_of_bankrupcy++;
 
 	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
-	cni->FillData(p);
+	cni->FillData(c);
 
-	switch (p->quarters_of_bankrupcy) {
+	switch (c->quarters_of_bankrupcy) {
 		default:
 			free(cni);
 			break;
@@ -522,9 +523,9 @@ static void PlayersCheckBankrupt(Player *p)
 			AddNewsItem(STR_02B6, NS_COMPANY_TROUBLE, 0, 0, cni);
 			break;
 		case 3: {
-			/* XXX - In multiplayer, should we ask other players if it wants to take
+			/* XXX - In multiplayer, should we ask other companies if it wants to take
 		          over when it is a human company? -- TrueLight */
-			if (IsHumanPlayer(p->index)) {
+			if (IsHumanCompany(c->index)) {
 				SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
 				SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
 				SetDParamStr(2, cni->company_name);
@@ -534,11 +535,11 @@ static void PlayersCheckBankrupt(Player *p)
 
 			/* Check if the company has any value.. if not, declare it bankrupt
 			 *  right now */
-			Money val = CalculateCompanyValue(p);
+			Money val = CalculateCompanyValue(c);
 			if (val > 0) {
-				p->bankrupt_value = val;
-				p->bankrupt_asked = 1 << p->index; // Don't ask the owner
-				p->bankrupt_timeout = 0;
+				c->bankrupt_value = val;
+				c->bankrupt_asked = 1 << c->index; // Don't ask the owner
+				c->bankrupt_timeout = 0;
 				free(cni);
 				break;
 			}
@@ -546,7 +547,7 @@ static void PlayersCheckBankrupt(Player *p)
 		}
 		case 4: {
 			/* Close everything the owner has open */
-			DeletePlayerWindows(p->index);
+			DeleteCompanyWindows(c->index);
 
 			/* Show bankrupt news */
 			SetDParam(0, STR_705C_BANKRUPT);
@@ -554,56 +555,56 @@ static void PlayersCheckBankrupt(Player *p)
 			SetDParamStr(2, cni->company_name);
 			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
 
-			if (IsHumanPlayer(p->index)) {
-				/* XXX - If we are in offline mode, leave the player playing. Eg. there
-				 * is no THE-END, otherwise mark the player as spectator to make sure
+			if (IsHumanCompany(c->index)) {
+				/* XXX - If we are in offline mode, leave the company playing. Eg. there
+				 * is no THE-END, otherwise mark the client as spectator to make sure
 				 * he/she is no long in control of this company */
 				if (!_networking) {
-					p->bankrupt_asked = 0xFF;
-					p->bankrupt_timeout = 0x456;
+					c->bankrupt_asked = 0xFF;
+					c->bankrupt_timeout = 0x456;
 					break;
 				}
 
-				ChangeNetworkOwner(p->index, PLAYER_SPECTATOR);
+				ChangeNetworkOwner(c->index, COMPANY_SPECTATOR);
 			}
 
-			/* Remove the player */
-			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
-			/* Register the player as not-active */
+			/* Remove the company */
+			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
+			/* Register the company as not-active */
 
-			if (!IsHumanPlayer(p->index) && (!_networking || _network_server) && _ai.enabled)
-				AI_PlayerDied(p->index);
+			if (!IsHumanCompany(c->index) && (!_networking || _network_server) && _ai.enabled)
+				AI_CompanyDied(c->index);
 
-			delete p;
+			delete c;
 		}
 	}
 }
 
-static void PlayersGenStatistics()
+static void CompaniesGenStatistics()
 {
 	Station *st;
-	Player *p;
+	Company *c;
 
 	FOR_ALL_STATIONS(st) {
-		_current_player = st->owner;
+		_current_company = st->owner;
 		CommandCost cost(EXPENSES_PROPERTY, _price.station_value >> 1);
-		SubtractMoneyFromPlayer(cost);
+		SubtractMoneyFromCompany(cost);
 	}
 
 	if (!HasBit(1 << 0 | 1 << 3 | 1 << 6 | 1 << 9, _cur_month))
 		return;
 
-	FOR_ALL_PLAYERS(p) {
-		memmove(&p->old_economy[1], &p->old_economy[0], sizeof(p->old_economy) - sizeof(p->old_economy[0]));
-		p->old_economy[0] = p->cur_economy;
-		memset(&p->cur_economy, 0, sizeof(p->cur_economy));
+	FOR_ALL_COMPANIES(c) {
+		memmove(&c->old_economy[1], &c->old_economy[0], sizeof(c->old_economy) - sizeof(c->old_economy[0]));
+		c->old_economy[0] = c->cur_economy;
+		memset(&c->cur_economy, 0, sizeof(c->cur_economy));
 
-		if (p->num_valid_stat_ent != 24) p->num_valid_stat_ent++;
+		if (c->num_valid_stat_ent != 24) c->num_valid_stat_ent++;
 
-		UpdateCompanyRatingAndValue(p, true);
-		PlayersCheckBankrupt(p);
+		UpdateCompanyRatingAndValue(c, true);
+		CompanyCheckBankrupt(c);
 
-		if (p->block_preview != 0) p->block_preview--;
+		if (c->block_preview != 0) c->block_preview--;
 	}
 
 	InvalidateWindow(WC_INCOME_GRAPH, 0);
@@ -676,17 +677,17 @@ static void AddInflation(bool check_year = true)
 	InvalidateWindow(WC_PAYMENT_RATES, 0);
 }
 
-static void PlayersPayInterest()
+static void CompaniesPayInterest()
 {
-	const Player* p;
+	const Company *c;
 	int interest = _economy.interest_rate * 54;
 
-	FOR_ALL_PLAYERS(p) {
-		_current_player = p->index;
+	FOR_ALL_COMPANIES(c) {
+		_current_company = c->index;
 
-		SubtractMoneyFromPlayer(CommandCost(EXPENSES_LOAN_INT, (Money)BigMulSU(p->current_loan, interest, 16)));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_LOAN_INT, (Money)BigMulSU(c->current_loan, interest, 16)));
 
-		SubtractMoneyFromPlayer(CommandCost(EXPENSES_OTHER, _price.station_value >> 2));
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, _price.station_value >> 2));
 	}
 }
 
@@ -1097,7 +1098,7 @@ static void SubsidyMonthlyHandler()
 			modified = true;
 		} else if (s->age == 2*12-1) {
 			st = GetStation(s->to);
-			if (st->owner == _local_player) {
+			if (st->owner == _local_company) {
 				pair = SetupSubsidyDecodeParam(s, 1);
 				AddNewsItem(STR_202F_SUBSIDY_WITHDRAWN_SERVICE, NS_SUBSIDIES, pair.a, pair.b);
 			}
@@ -1352,7 +1353,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 			pair = SetupSubsidyDecodeParam(s, 0);
 			InjectDParam(1);
 
-			SetDParam(0, _current_player);
+			SetDParam(0, _current_company);
 			AddNewsItem(
 				STR_2031_SERVICE_SUBSIDY_AWARDED + _settings_game.difficulty.subsidy_multiplier,
 				NS_SUBSIDIES,
@@ -1374,11 +1375,11 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 
 	assert(num_pieces > 0);
 
-	/* Update player statistics */
+	/* Update company statistics */
 	{
-		Player *p = GetPlayer(_current_player);
-		p->cur_economy.delivered_cargo += num_pieces;
-		SetBit(p->cargo_types, cargo_type);
+		Company *c = GetCompany(_current_company);
+		c->cur_economy.delivered_cargo += num_pieces;
+		SetBit(c->cargo_types, cargo_type);
 	}
 
 	/* Get station pointers. */
@@ -1428,8 +1429,8 @@ void VehiclePayment(Vehicle *front_v)
 	Station *st = GetStation(last_visited);
 
 	/* The owner of the train wants to be paid */
-	PlayerID old_player = _current_player;
-	_current_player = front_v->owner;
+	CompanyID old_company = _current_company;
+	_current_company = front_v->owner;
 
 	/* At this moment loading cannot be finished */
 	ClrBit(front_v->vehicle_flags, VF_LOADING_FINISHED);
@@ -1496,16 +1497,16 @@ void VehiclePayment(Vehicle *front_v)
 
 	if (route_profit != 0) {
 		front_v->profit_this_year += vehicle_profit << 8;
-		SubtractMoneyFromPlayer(CommandCost(front_v->GetExpenseType(true), -route_profit));
+		SubtractMoneyFromCompany(CommandCost(front_v->GetExpenseType(true), -route_profit));
 
-		if (IsLocalPlayer() && !PlayVehicleSound(front_v, VSE_LOAD_UNLOAD)) {
+		if (IsLocalCompany() && !PlayVehicleSound(front_v, VSE_LOAD_UNLOAD)) {
 			SndPlayVehicleFx(SND_14_CASHTILL, front_v);
 		}
 
 		ShowCostOrIncomeAnimation(front_v->x_pos, front_v->y_pos, front_v->z_pos, -vehicle_profit);
 	}
 
-	_current_player = old_player;
+	_current_company = old_company;
 }
 
 /**
@@ -1726,10 +1727,10 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 	/* Calculate the loading indicator fill percent and display
 	 * In the Game Menu do not display indicators
 	 * If _settings_client.gui.loading_indicators == 2, show indicators (bool can be promoted to int as 0 or 1 - results in 2 > 0,1 )
-	 * if _settings_client.gui.loading_indicators == 1, _local_player must be the owner or must be a spectator to show ind., so 1 > 0
+	 * if _settings_client.gui.loading_indicators == 1, _local_company must be the owner or must be a spectator to show ind., so 1 > 0
 	 * if _settings_client.gui.loading_indicators == 0, do not display indicators ... 0 is never greater than anything
 	 */
-	if (_game_mode != GM_MENU && (_settings_client.gui.loading_indicators > (uint)(v->owner != _local_player && _local_player != PLAYER_SPECTATOR))) {
+	if (_game_mode != GM_MENU && (_settings_client.gui.loading_indicators > (uint)(v->owner != _local_company && _local_company != COMPANY_SPECTATOR))) {
 		StringID percent_up_down = STR_NULL;
 		int percent = CalcPercentVehicleFilled(v, &percent_up_down);
 		if (v->fill_percent_te_id == INVALID_TE_ID) {
@@ -1774,68 +1775,68 @@ void LoadUnloadStation(Station *st)
 	}
 }
 
-void PlayersMonthlyLoop()
+void CompaniesMonthlyLoop()
 {
-	PlayersGenStatistics();
+	CompaniesGenStatistics();
 	if (_settings_game.economy.inflation) AddInflation();
-	PlayersPayInterest();
-	/* Reset the _current_player flag */
-	_current_player = OWNER_NONE;
+	CompaniesPayInterest();
+	/* Reset the _current_company flag */
+	_current_company = OWNER_NONE;
 	HandleEconomyFluctuations();
 	SubsidyMonthlyHandler();
 }
 
-static void DoAcquireCompany(Player *p)
+static void DoAcquireCompany(Company *c)
 {
-	Player *owner;
+	Company *owner;
 	int i;
 	Money value;
 
 	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
-	cni->FillData(p, GetPlayer(_current_player));
+	cni->FillData(c, GetCompany(_current_company));
 
 	SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
-	SetDParam(1, p->bankrupt_value == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR);
+	SetDParam(1, c->bankrupt_value == 0 ? STR_707F_HAS_BEEN_TAKEN_OVER_BY : STR_705A_HAS_BEEN_SOLD_TO_FOR);
 	SetDParamStr(2, cni->company_name);
 	SetDParamStr(3, cni->other_company_name);
-	SetDParam(4, p->bankrupt_value);
+	SetDParam(4, c->bankrupt_value);
 	AddNewsItem(STR_02B6, NS_COMPANY_MERGER, 0, 0, cni);
 
 	/* original code does this a little bit differently */
-	PlayerID pi = p->index;
-	ChangeNetworkOwner(pi, _current_player);
-	ChangeOwnershipOfPlayerItems(pi, _current_player);
+	CompanyID ci = c->index;
+	ChangeNetworkOwner(ci, _current_company);
+	ChangeOwnershipOfCompanyItems(ci, _current_company);
 
-	if (p->bankrupt_value == 0) {
-		owner = GetPlayer(_current_player);
-		owner->current_loan += p->current_loan;
+	if (c->bankrupt_value == 0) {
+		owner = GetCompany(_current_company);
+		owner->current_loan += c->current_loan;
 	}
 
-	value = CalculateCompanyValue(p) >> 2;
-	PlayerID old_player = _current_player;
+	value = CalculateCompanyValue(c) >> 2;
+	CompanyID old_company = _current_company;
 	for (i = 0; i != 4; i++) {
-		if (p->share_owners[i] != PLAYER_SPECTATOR) {
-			_current_player = p->share_owners[i];
-			SubtractMoneyFromPlayer(CommandCost(EXPENSES_OTHER, -value));
+		if (c->share_owners[i] != COMPANY_SPECTATOR) {
+			_current_company = c->share_owners[i];
+			SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, -value));
 		}
 	}
-	_current_player = old_player;
+	_current_company = old_company;
 
-	DeletePlayerWindows(pi);
+	DeleteCompanyWindows(ci);
 	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
 	InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
 	InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 
-	delete p;
+	delete c;
 }
 
-extern int GetAmountOwnedBy(const Player *p, PlayerID owner);
+extern int GetAmountOwnedBy(const Company *c, Owner owner);
 
 /** Acquire shares in an opposing company.
  * @param tile unused
  * @param flags type of operation
- * @param p1 player to buy the shares from
+ * @param p1 company to buy the shares from
  * @param p2 unused
  */
 CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -1844,31 +1845,31 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	/* Check if buying shares is allowed (protection against modified clients) */
 	/* Cannot buy own shares */
-	if (!IsValidPlayerID((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+	if (!IsValidCompanyID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
-	Player *p = GetPlayer((PlayerID)p1);
+	Company *c = GetCompany((CompanyID)p1);
 
 	/* Protect new companies from hostile takeovers */
-	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_PROTECTED);
+	if (_cur_year - c->inaugurated_year < 6) return_cmd_error(STR_PROTECTED);
 
 	/* Those lines are here for network-protection (clients can be slow) */
-	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0) return cost;
+	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 0) return cost;
 
-	/* We can not buy out a real player (temporarily). TODO: well, enable it obviously */
-	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) return cost;
+	/* We can not buy out a real company (temporarily). TODO: well, enable it obviously */
+	if (GetAmountOwnedBy(c, COMPANY_SPECTATOR) == 1 && !c->is_ai) return cost;
 
-	cost.AddCost(CalculateCompanyValue(p) >> 2);
+	cost.AddCost(CalculateCompanyValue(c) >> 2);
 	if (flags & DC_EXEC) {
-		PlayerByte* b = p->share_owners;
+		OwnerByte *b = c->share_owners;
 		int i;
 
-		while (*b != PLAYER_SPECTATOR) b++; /* share owners is guaranteed to contain at least one PLAYER_SPECTATOR */
-		*b = _current_player;
+		while (*b != COMPANY_SPECTATOR) b++; /* share owners is guaranteed to contain at least one COMPANY_SPECTATOR */
+		*b = _current_company;
 
-		for (i = 0; p->share_owners[i] == _current_player;) {
+		for (i = 0; c->share_owners[i] == _current_company;) {
 			if (++i == 4) {
-				p->bankrupt_value = 0;
-				DoAcquireCompany(p);
+				c->bankrupt_value = 0;
+				DoAcquireCompany(c);
 				break;
 			}
 		}
@@ -1880,28 +1881,28 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
 /** Sell shares in an opposing company.
  * @param tile unused
  * @param flags type of operation
- * @param p1 player to sell the shares from
+ * @param p1 company to sell the shares from
  * @param p2 unused
  */
 CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	/* Check if selling shares is allowed (protection against modified clients) */
 	/* Cannot sell own shares */
-	if (!IsValidPlayerID((PlayerID)p1) || !_settings_game.economy.allow_shares || _current_player == (PlayerID)p1) return CMD_ERROR;
+	if (!IsValidCompanyID((CompanyID)p1) || !_settings_game.economy.allow_shares || _current_company == (CompanyID)p1) return CMD_ERROR;
 
-	Player *p = GetPlayer((PlayerID)p1);
+	Company *c = GetCompany((CompanyID)p1);
 
 	/* Those lines are here for network-protection (clients can be slow) */
-	if (GetAmountOwnedBy(p, _current_player) == 0) return CommandCost();
+	if (GetAmountOwnedBy(c, _current_company) == 0) return CommandCost();
 
 	/* adjust it a little to make it less profitable to sell and buy */
-	Money cost = CalculateCompanyValue(p) >> 2;
+	Money cost = CalculateCompanyValue(c) >> 2;
 	cost = -(cost - (cost >> 7));
 
 	if (flags & DC_EXEC) {
-		PlayerByte* b = p->share_owners;
-		while (*b != _current_player) b++; // share owners is guaranteed to contain player
-		*b = PLAYER_SPECTATOR;
+		OwnerByte *b = c->share_owners;
+		while (*b != _current_company) b++; // share owners is guaranteed to contain company
+		*b = COMPANY_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, p1);
 	}
 	return CommandCost(EXPENSES_OTHER, cost);
@@ -1910,30 +1911,30 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
 /** Buy up another company.
  * When a competing company is gone bankrupt you get the chance to purchase
  * that company.
- * @todo currently this only works for AI players
+ * @todo currently this only works for AI companies
  * @param tile unused
  * @param flags type of operation
- * @param p1 player/company to buy up
+ * @param p1 company to buy up
  * @param p2 unused
  */
 CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	PlayerID pid = (PlayerID)p1;
+	CompanyID cid = (CompanyID)p1;
 
 	/* Disable takeovers in multiplayer games */
-	if (!IsValidPlayerID(pid) || _networking) return CMD_ERROR;
+	if (!IsValidCompanyID(cid) || _networking) return CMD_ERROR;
 
-	/* Do not allow players to take over themselves */
-	if (pid == _current_player) return CMD_ERROR;
+	/* Do not allow companies to take over themselves */
+	if (cid == _current_company) return CMD_ERROR;
 
-	Player *p = GetPlayer(pid);
+	Company *c = GetCompany(cid);
 
-	if (!p->is_ai) return CMD_ERROR;
+	if (!c->is_ai) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		DoAcquireCompany(p);
+		DoAcquireCompany(c);
 	}
-	return CommandCost(EXPENSES_OTHER, p->bankrupt_value);
+	return CommandCost(EXPENSES_OTHER, c->bankrupt_value);
 }
 
 /** Prices */

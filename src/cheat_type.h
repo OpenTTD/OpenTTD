@@ -20,7 +20,7 @@ struct Cheat {
  */
 struct Cheats {
 	Cheat magic_bulldozer;  ///< dynamite industries, unmovables
-	Cheat switch_player;    ///< change to another player
+	Cheat switch_company;   ///< change to another company
 	Cheat money;            ///< get rich or poor
 	Cheat crossing_tunnels; ///< allow tunnels that cross each other
 	Cheat build_in_pause;   ///< build while in pause mode

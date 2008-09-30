@@ -17,17 +17,17 @@ struct Sign : PoolItem<Sign, SignID, &_Sign_pool> {
 	int32        x;
 	int32        y;
 	byte         z;
-	PlayerByte   owner; // placed by this player. Anyone can delete them though. OWNER_NONE for gray signs from old games.
+	OwnerByte    owner; // placed by this company. Anyone can delete them though. OWNER_NONE for gray signs from old games.
 
 	/**
 	 * Creates a new sign
 	 */
-	Sign(PlayerID owner = INVALID_PLAYER);
+	Sign(Owner owner = INVALID_OWNER);
 
 	/** Destroy the sign */
 	~Sign();
 
-	inline bool IsValid() const { return this->owner != INVALID_PLAYER; }
+	inline bool IsValid() const { return this->owner != INVALID_OWNER; }
 };
 
 static inline SignID GetMaxSignIndex()

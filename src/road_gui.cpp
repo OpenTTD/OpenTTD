@@ -421,7 +421,7 @@ struct BuildRoadToolbarWindow : Window {
 	/**
 	 * Update the remove button lowered state of the road toolbar
 	 *
-	 * @param clicked_widget The widget which the player clicked just now
+	 * @param clicked_widget The widget which the client clicked just now
 	 */
 	void UpdateOptionWidgetStatus(RoadToolbarWidgets clicked_widget)
 	{
@@ -676,7 +676,7 @@ static const WindowDesc _build_tramway_desc = {
 
 void ShowBuildRoadToolbar(RoadType roadtype)
 {
-	if (!IsValidPlayerID(_current_player)) return;
+	if (!IsValidCompanyID(_current_company)) return;
 	_cur_roadtype = roadtype;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);

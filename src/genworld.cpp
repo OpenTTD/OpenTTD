@@ -36,7 +36,7 @@ bool GenerateTowns();
 void GenerateTrees();
 
 void StartupEconomy();
-void StartupPlayers();
+void StartupCompanies();
 void StartupDisasters();
 
 void InitializeGame(uint size_x, uint size_y, bool reset_date);
@@ -126,7 +126,7 @@ static void _GenerateWorld(void *arg)
 
 		/* These are probably pointless when inside the scenario editor. */
 		SetGeneratingWorldProgress(GWP_GAME_INIT, 3);
-		StartupPlayers();
+		StartupCompanies();
 		IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
 		StartupEngines();
 		IncreaseGeneratingWorldProgress(GWP_GAME_INIT);
@@ -145,7 +145,7 @@ static void _GenerateWorld(void *arg)
 		}
 
 		ResetObjectToPlace();
-		_local_player = _gw.lp;
+		_local_company = _gw.lc;
 
 		SetGeneratingWorldProgress(GWP_GAME_START, 1);
 		/* Call any callback */
@@ -259,15 +259,15 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 	_gw.active = true;
 	_gw.abort  = false;
 	_gw.abortp = NULL;
-	_gw.lp     = _local_player;
+	_gw.lc     = _local_company;
 	_gw.wait_for_draw = false;
 	_gw.quit_thread   = false;
 	_gw.threaded      = true;
 
 	/* This disables some commands and stuff */
-	SetLocalPlayer(PLAYER_SPECTATOR);
+	SetLocalCompany(COMPANY_SPECTATOR);
 	/* Make sure everything is done via OWNER_NONE */
-	_current_player = OWNER_NONE;
+	_current_company = OWNER_NONE;
 
 	/* Set the date before loading sprites as some newgrfs check it */
 	SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));

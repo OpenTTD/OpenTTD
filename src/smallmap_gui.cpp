@@ -597,7 +597,7 @@ public:
 
 		/* setup owner table */
 		if (this->map_type == SMT_OWNER) {
-			const Player *p;
+			const Company *c;
 
 			/* fill with some special colors */
 			_owner_colors[OWNER_TOWN] = MKCOLOR(0xB4B4B4B4);
@@ -605,10 +605,10 @@ public:
 			_owner_colors[OWNER_WATER] = MKCOLOR(0xCACACACA);
 			_owner_colors[OWNER_END]   = MKCOLOR(0x20202020); /* industry */
 
-			/* now fill with the player colors */
-			FOR_ALL_PLAYERS(p) {
-				_owner_colors[p->index] =
-					_colour_gradient[p->player_color][5] * 0x01010101;
+			/* now fill with the company colours */
+			FOR_ALL_COMPANIES(c) {
+				_owner_colors[c->index] =
+					_colour_gradient[c->colour][5] * 0x01010101;
 			}
 		}
 

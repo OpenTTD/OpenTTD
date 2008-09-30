@@ -146,7 +146,7 @@ struct TimetableWindow : Window {
 
 		SetVScrollCount(this, v->num_orders * 2);
 
-		if (v->owner == _local_player) {
+		if (v->owner == _local_company) {
 			bool disable = true;
 			if (selected != -1) {
 				const Order *order = GetVehicleOrder(v, ((selected + 1) / 2) % v->num_orders);

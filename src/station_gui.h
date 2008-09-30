@@ -5,7 +5,7 @@
 #ifndef STATION_GUI_H
 #define STATION_GUI_H
 
-/** Enum for PlayerStations, referring to _player_stations_widgets */
+/** Enum for CompanyStations, referring to _company_stations_widgets */
 enum StationListWidgets {
 	SLW_CLOSEBOX       =  0, ///< Close 'X' button
 
@@ -27,7 +27,7 @@ enum StationListWidgets {
 	SLW_SORTDROPBTN    = 17, ///< Dropdown button
 	SLW_PAN_SORT_RIGHT = 18, ///< Panel right of sorting options
 
-	SLW_CARGOSTART     = 19, ///< Widget numbers used for list of cargo types (not present in _player_stations_widgets)
+	SLW_CARGOSTART     = 19, ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets)
 };
 
 /** Enum for StationView, referring to _station_view_widgets and _station_view_expanded_widgets */

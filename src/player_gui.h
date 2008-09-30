@@ -1,20 +1,20 @@
 /* $Id$ */
 
-/** @file player_gui.h GUI Functions related to players. */
+/** @file company_gui.h GUI Functions related to companies. */
 
-#ifndef PLAYER_GUI_H
-#define PLAYER_GUI_H
+#ifndef COMPANY_GUI_H
+#define COMPANY_GUI_H
 
 #include "player_type.h"
 
-uint16 GetDrawStringPlayerColor(PlayerID player);
-void DrawPlayerIcon(PlayerID p, int x, int y);
+uint16 GetDrawStringCompanyColor(CompanyID company);
+void DrawCompanyIcon(CompanyID p, int x, int y);
 
-void ShowPlayerStations(PlayerID player);
-void ShowPlayerFinances(PlayerID player);
-void ShowPlayerCompany(PlayerID player);
+void ShowCompanyStations(CompanyID company);
+void ShowCompanyFinances(CompanyID company);
+void ShowCompany(CompanyID company);
 
-void InvalidatePlayerWindows(const Player *p);
-void DeletePlayerWindows(PlayerID pi);
+void InvalidateCompanyWindows(const Company *c);
+void DeleteCompanyWindows(CompanyID company);
 
-#endif /* PLAYER_GUI_H */
+#endif /* COMPANY_GUI_H */

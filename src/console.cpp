@@ -79,7 +79,7 @@ void IConsoleFree()
 
 /**
  * Handle the printing of text entered into the console or redirected there
- * by any other means. Text can be redirected to other players in a network game
+ * by any other means. Text can be redirected to other clients in a network game
  * as well as to a logfile. If the network server is a dedicated server, all activities
  * are also logged. All lines to print are added to a temporary buffer which can be
  * used as a history to print them onscreen

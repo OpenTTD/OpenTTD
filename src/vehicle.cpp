@@ -101,16 +101,16 @@ DEFINE_OLD_POOL_GENERIC(Vehicle, Vehicle)
  * @param *p The vehicle owner
  * @return true if the vehicle is old enough for replacement
  */
-bool Vehicle::NeedsAutorenewing(const Player *p) const
+bool Vehicle::NeedsAutorenewing(const Company *c) const
 {
-	/* We can always generate the Player pointer when we have the vehicle.
-	 * However this takes time and since the Player pointer is often present
+	/* We can always generate the Company pointer when we have the vehicle.
+	 * However this takes time and since the Company pointer is often present
 	 * when this function is called then it's faster to pass the pointer as an
 	 * argument rather than finding it again. */
-	assert(p == GetPlayer(this->owner));
+	assert(c == GetCompany(this->owner));
 
-	if (!p->engine_renew) return false;
-	if (this->age - this->max_age < (p->engine_renew_months * 30)) return false;
+	if (!c->engine_renew) return false;
+	if (this->age - this->max_age < (c->engine_renew_months * 30)) return false;
 	if (this->age == 0) return false; // rail cars don't age and lacks a max age
 
 	return true;
@@ -131,7 +131,7 @@ bool Vehicle::NeedsServicing() const
 	if (_settings_game.order.no_servicing_if_no_breakdowns && _settings_game.difficulty.vehicle_breakdowns == 0) {
 		/* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off.
 		 * Note: If servicing is enabled, we postpone replacement till next service. */
-		return EngineHasReplacementForPlayer(GetPlayer(this->owner), this->engine_type, this->group_id);
+		return EngineHasReplacementForCompany(GetCompany(this->owner), this->engine_type, this->group_id);
 	}
 
 	return _settings_game.vehicle.servint_ispercent ?
@@ -619,7 +619,7 @@ uint CountVehiclesInChain(const Vehicle* v)
 	return count;
 }
 
-/** Check if a vehicle is counted in num_engines in each player struct
+/** Check if a vehicle is counted in num_engines in each company struct
  * @param *v Vehicle to test
  * @return true if the vehicle is counted in num_engines
  */
@@ -632,7 +632,7 @@ bool IsEngineCountable(const Vehicle *v)
 			!IsRearDualheaded(v); // rear parts of multiheaded engines
 		case VEH_ROAD: return IsRoadVehFront(v);
 		case VEH_SHIP: return true;
-		default: return false; // Only count player buildable vehicles
+		default: return false; // Only count company buildable vehicles
 	}
 }
 
@@ -647,8 +647,8 @@ void Vehicle::PreDestructor()
 	}
 
 	if (IsEngineCountable(this)) {
-		GetPlayer(this->owner)->num_engines[this->engine_type]--;
-		if (this->owner == _local_player) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
+		GetCompany(this->owner)->num_engines[this->engine_type]--;
+		if (this->owner == _local_company) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
 
 		if (IsValidGroupID(this->group_id)) GetGroup(this->group_id)->num_engines[this->engine_type]--;
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
@@ -781,8 +781,8 @@ void CallVehicleTicks()
 	v = _first_veh_in_depot_list;
 	if (v != NULL) {
 		while (v != NULL) {
-			/* Autoreplace needs the current player set as the vehicle owner */
-			_current_player = v->owner;
+			/* Autoreplace needs the current company set as the vehicle owner */
+			_current_company = v->owner;
 
 			/* Buffer v->depot_list and clear it.
 			 * Autoreplace might clear this so it has to be buffered. */
@@ -802,13 +802,13 @@ void CallVehicleTicks()
 			int y = v->y_pos;
 			int z = v->z_pos;
 
-			const Player *p = GetPlayer(_current_player);
-			SubtractMoneyFromPlayer(CommandCost(EXPENSES_NEW_VEHICLES, (Money)p->engine_renew_money));
+			const Company *c = GetCompany(_current_company);
+			SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->engine_renew_money));
 			CommandCost res = DoCommand(0, v->index, 0, DC_EXEC, CMD_AUTOREPLACE_VEHICLE);
 			if (res.Succeeded()) v = NULL; // no longer valid
-			SubtractMoneyFromPlayer(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)p->engine_renew_money));
+			SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->engine_renew_money));
 
-			if (IsLocalPlayer()) {
+			if (IsLocalCompany()) {
 				if (res.Succeeded()) {
 					ShowCostOrIncomeAnimation(x, y, z, res.GetCost());
 				} else {
@@ -839,7 +839,7 @@ void CallVehicleTicks()
 
 			v = w;
 		}
-		_current_player = OWNER_NONE;
+		_current_company = OWNER_NONE;
 	}
 }
 
@@ -1069,10 +1069,10 @@ static const StringID _vehicle_type_names[4] = {
 
 static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 {
-	if (v->owner != _local_player) return;
+	if (v->owner != _local_company) return;
 
 	/* Do not show getting-old message if autorenew is active (and it can replace the vehicle) */
-	if (GetPlayer(v->owner)->engine_renew && GetEngine(v->engine_type)->player_avail != 0) return;
+	if (GetCompany(v->owner)->engine_renew && GetEngine(v->engine_type)->company_avail != 0) return;
 
 	SetDParam(0, _vehicle_type_names[v->type]);
 	SetDParam(1, v->unitnumber);
@@ -1189,7 +1189,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
 		uint32 id = p1;
 		uint16 window_type = p2 & VLW_MASK;
 
-		GenerateVehicleSortList(&list, vehicle_type, _current_player, id, window_type);
+		GenerateVehicleSortList(&list, vehicle_type, _current_company, id, window_type);
 	} else {
 		/* Get the list of vehicles in the depot */
 		BuildDepotVehicleList(vehicle_type, tile, &list, NULL);
@@ -1271,7 +1271,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
 	VehicleType vehicle_type = (VehicleType)GB(p1, 0, 8);
 	bool all_or_nothing = HasBit(p2, 0);
 
-	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_player)) return CMD_ERROR;
+	if (!IsDepotTile(tile) || !IsTileOwner(tile, _current_company)) return CMD_ERROR;
 
 	/* Get the list of vehicles in the depot */
 	BuildDepotVehicleList(vehicle_type, tile, &list, &list, true);
@@ -1463,8 +1463,8 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* Since we can't estimate the cost of cloning a vehicle accurately we must
-	 * check whether the player has enough money manually. */
-	if (!CheckPlayerHasMoney(total_cost)) {
+	 * check whether the company has enough money manually. */
+	if (!CheckCompanyHasMoney(total_cost)) {
 		if (flags & DC_EXEC) {
 			/* The vehicle has already been bought, so now it must be sold again. */
 			DoCommand(w_front->tile, w_front->index, 1, flags, GetCmdSellVeh(w_front));
@@ -1480,11 +1480,11 @@ CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param type type of vehicle
  * @param flags the flags used for DoCommand()
  * @param service should the vehicles only get service in the depots
- * @param owner PlayerID of owner of the vehicles to send
+ * @param owner owner of the vehicles to send
  * @param vlw_flag tells what kind of list requested the goto depot
  * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
  */
-CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
+CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, Owner owner, uint16 vlw_flag, uint32 id)
 {
 	VehicleList list;
 
@@ -1603,18 +1603,18 @@ void VehicleEnterDepot(Vehicle *v)
 		v->current_order.MakeDummy();
 
 		if (t.IsRefit()) {
-			_current_player = v->owner;
+			_current_company = v->owner;
 			CommandCost cost = DoCommand(v->tile, v->index, t.GetRefitCargo() | t.GetRefitSubtype() << 8, DC_EXEC, GetCmdRefitVeh(v));
 
 			if (CmdFailed(cost)) {
 				v->leave_depot_instantly = false; // We ensure that the vehicle stays in the depot
-				if (v->owner == _local_player) {
+				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */
 					SetDParam(0, _vehicle_type_names[v->type]);
 					SetDParam(1, v->unitnumber);
 					AddNewsItem(STR_ORDER_REFIT_FAILED, NS_ADVICE, v->index, 0);
 				}
-			} else if (v->owner == _local_player && cost.GetCost() != 0) {
+			} else if (v->owner == _local_company && cost.GetCost() != 0) {
 				ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost.GetCost());
 			}
 		}
@@ -1626,7 +1626,7 @@ void VehicleEnterDepot(Vehicle *v)
 		} else if (t.GetDepotActionType() & ODATFB_HALT) {
 			/* Force depot visit */
 			v->vehstatus |= VS_STOPPED;
-			if (v->owner == _local_player) {
+			if (v->owner == _local_company) {
 				StringID string;
 
 				switch (v->type) {
@@ -1912,7 +1912,7 @@ UnitID GetFreeUnitNumber(VehicleType type)
 
 	/* Fill the cache */
 	FOR_ALL_VEHICLES(u) {
-		if (u->type == type && u->owner == _current_player && u->unitnumber != 0 && u->unitnumber <= max)
+		if (u->type == type && u->owner == _current_company && u->unitnumber != 0 && u->unitnumber <= max)
 			cache[u->unitnumber] = true;
 	}
 
@@ -1936,9 +1936,9 @@ UnitID GetFreeUnitNumber(VehicleType type)
  */
 bool CanBuildVehicleInfrastructure(VehicleType type)
 {
-	assert(IsPlayerBuildableVehicleType(type));
+	assert(IsCompanyBuildableVehicleType(type));
 
-	if (!IsValidPlayerID(_current_player)) return false;
+	if (!IsValidCompanyID(_current_company)) return false;
 	if (_settings_client.gui.always_build_infrastructure) return true;
 
 	UnitID max;
@@ -1955,7 +1955,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 		/* Can we actually build the vehicle type? */
 		const Engine *e;
 		FOR_ALL_ENGINES_OF_TYPE(e, type) {
-			if (HasBit(e->player_avail, _local_player)) return true;
+			if (HasBit(e->company_avail, _local_company)) return true;
 		}
 		return false;
 	}
@@ -1963,22 +1963,22 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 	/* We should be able to build infrastructure when we have the actual vehicle type */
 	const Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner == _local_player && v->type == type) return true;
+		if (v->owner == _local_company && v->type == type) return true;
 	}
 
 	return false;
 }
 
 
-const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v)
+const Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v)
 {
-	const Player *p = GetPlayer(player);
+	const Company *c = GetCompany(company);
 	LiveryScheme scheme = LS_DEFAULT;
 	CargoID cargo_type = v == NULL ? (CargoID)CT_INVALID : v->cargo_type;
 
 	/* The default livery is always available for use, but its in_use flag determines
 	 * whether any _other_ liveries are in use. */
-	if (p->livery[LS_DEFAULT].in_use && (_settings_client.gui.liveries == 2 || (_settings_client.gui.liveries == 1 && player == _local_player))) {
+	if (c->livery[LS_DEFAULT].in_use && (_settings_client.gui.liveries == 2 || (_settings_client.gui.liveries == 1 && company == _local_company))) {
 		/* Determine the livery scheme to use */
 		switch (GetEngine(engine_type)->type) {
 			default: NOT_REACHED();
@@ -2051,14 +2051,14 @@ const Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID pa
 		}
 
 		/* Switch back to the default scheme if the resolved scheme is not in use */
-		if (!p->livery[scheme].in_use) scheme = LS_DEFAULT;
+		if (!c->livery[scheme].in_use) scheme = LS_DEFAULT;
 	}
 
-	return &p->livery[scheme];
+	return &c->livery[scheme];
 }
 
 
-static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v)
+static SpriteID GetEngineColourMap(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v)
 {
 	SpriteID map = (v != NULL) ? v->colormap : PAL_NONE;
 
@@ -2086,7 +2086,7 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 
 	if (map == PAL_NONE) map = twocc ? (SpriteID)SPR_2CCMAP_BASE : (SpriteID)PALETTE_RECOLOR_START;
 
-	const Livery *livery = GetEngineLivery(engine_type, player, parent_engine_type, v);
+	const Livery *livery = GetEngineLivery(engine_type, company, parent_engine_type, v);
 
 	map += livery->colour1;
 	if (twocc) map += livery->colour2 * 16;
@@ -2096,9 +2096,9 @@ static SpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Engine
 	return map;
 }
 
-SpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
+SpriteID GetEnginePalette(EngineID engine_type, CompanyID company)
 {
-	return GetEngineColourMap(engine_type, player, INVALID_ENGINE, NULL);
+	return GetEngineColourMap(engine_type, company, INVALID_ENGINE, NULL);
 }
 
 SpriteID GetVehiclePalette(const Vehicle *v)
@@ -2440,7 +2440,7 @@ void Load_VEHS()
 
 		SlObject(v, GetVehicleDescription(vtype));
 
-		if (_cargo_count != 0 && IsPlayerBuildableVehicleType(v)) {
+		if (_cargo_count != 0 && IsCompanyBuildableVehicleType(v)) {
 			/* Don't construct the packet with station here, because that'll fail with old savegames */
 			CargoPacket *cp = new CargoPacket();
 			cp->source          = _cargo_source;

@@ -21,8 +21,8 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-/* Bitmasks of player and cargo indices that shouldn't be drawn. */
-static uint _legend_excluded_players;
+/* Bitmasks of company and cargo indices that shouldn't be drawn. */
+static uint _legend_excluded_companies;
 static uint _legend_excluded_cargo;
 
 /* Apparently these don't play well with enums. */
@@ -37,7 +37,7 @@ struct GraphLegendWindow : Window {
 	GraphLegendWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
 		for (uint i = 3; i < this->widget_count; i++) {
-			if (!HasBit(_legend_excluded_players, i - 3)) this->LowerWidget(i);
+			if (!HasBit(_legend_excluded_companies, i - 3)) this->LowerWidget(i);
 		}
 
 		this->FindWindowPlacementAndResize(desc);
@@ -45,22 +45,22 @@ struct GraphLegendWindow : Window {
 
 	virtual void OnPaint()
 	{
-		for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) {
-			if (IsValidPlayerID(p)) continue;
+		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+			if (IsValidCompanyID(c)) continue;
 
-			SetBit(_legend_excluded_players, p);
-			this->RaiseWidget(p + 3);
+			SetBit(_legend_excluded_companies, c);
+			this->RaiseWidget(c + 3);
 		}
 
 		this->DrawWidgets();
 
-		const Player *p;
-		FOR_ALL_PLAYERS(p) {
-			DrawPlayerIcon(p->index, 4, 18 + p->index * 12);
+		const Company *c;
+		FOR_ALL_COMPANIES(c) {
+			DrawCompanyIcon(c->index, 4, 18 + c->index * 12);
 
-			SetDParam(0, p->index);
-			SetDParam(1, p->index);
-			DrawString(21, 17 + p->index * 12, STR_7021, HasBit(_legend_excluded_players, p->index) ? TC_BLACK : TC_WHITE);
+			SetDParam(0, c->index);
+			SetDParam(1, c->index);
+			DrawString(21, 17 + c->index * 12, STR_7021, HasBit(_legend_excluded_companies, c->index) ? TC_BLACK : TC_WHITE);
 		}
 	}
 
@@ -68,7 +68,7 @@ struct GraphLegendWindow : Window {
 	{
 		if (!IsInsideMM(widget, 3, 11)) return;
 
-		ToggleBit(_legend_excluded_players, widget - 3);
+		ToggleBit(_legend_excluded_companies, widget - 3);
 		this->ToggleWidgetLoweredState(widget);
 		this->SetDirty();
 		InvalidateWindow(WC_INCOME_GRAPH, 0);
@@ -155,8 +155,8 @@ protected:
 		int x_axis_offset;               ///< Distance from the top of the graph to the x axis.
 
 		/* the colors and cost array of GraphDrawer must accomodate
-		* both values for cargo and players. So if any are higher, quit */
-		assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_PLAYERS);
+		* both values for cargo and companies. So if any are higher, quit */
+		assert(GRAPH_MAX_DATASETS >= (int)NUM_CARGO && GRAPH_MAX_DATASETS >= (int)MAX_COMPANIES);
 		assert(this->num_vert_lines > 0);
 
 		byte grid_colour = _colour_gradient[COLOUR_GREY][4];
@@ -354,19 +354,19 @@ public:
 	{
 		this->DrawWidgets();
 
-		uint excluded_players = _legend_excluded_players;
+		uint excluded_companies = _legend_excluded_companies;
 
-		/* Exclude the players which aren't valid */
-		for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) {
-			if (!IsValidPlayerID(p)) SetBit(excluded_players, p);
+		/* Exclude the companies which aren't valid */
+		for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+			if (!IsValidCompanyID(c)) SetBit(excluded_companies, c);
 		}
-		this->excluded_data = excluded_players;
+		this->excluded_data = excluded_companies;
 		this->num_vert_lines = 24;
 
 		byte nums = 0;
-		const Player *p;
-		FOR_ALL_PLAYERS(p) {
-			nums = max(nums, p->num_valid_stat_ent);
+		const Company *c;
+		FOR_ALL_COMPANIES(c) {
+			nums = max(nums, c->num_valid_stat_ent);
 		}
 		this->num_on_x_axis = min(nums, 24);
 
@@ -381,12 +381,12 @@ public:
 		this->month = mo;
 
 		int numd = 0;
-		for (PlayerID k = PLAYER_FIRST; k < MAX_PLAYERS; k++) {
-			if (IsValidPlayerID(k)) {
-				p = GetPlayer(k);
-				this->colors[numd] = _colour_gradient[p->player_color][6];
+		for (CompanyID k = COMPANY_FIRST; k < MAX_COMPANIES; k++) {
+			if (IsValidCompanyID(k)) {
+				c = GetCompany(k);
+				this->colors[numd] = _colour_gradient[c->colour][6];
 				for (int j = this->num_on_x_axis, i = 0; --j >= 0;) {
-					this->cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_DATAPOINT : GetGraphData(p, j);
+					this->cost[numd][i] = (j >= c->num_valid_stat_ent) ? INVALID_DATAPOINT : GetGraphData(c, j);
 					i++;
 				}
 			}
@@ -398,7 +398,7 @@ public:
 		this->DrawGraph();
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
 	{
 		return INVALID_DATAPOINT;
 	}
@@ -421,9 +421,9 @@ struct OperatingProfitGraphWindow : BaseGraphWindow {
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
 	{
-		return p->old_economy[j].income + p->old_economy[j].expenses;
+		return c->old_economy[j].income + c->old_economy[j].expenses;
 	}
 };
 
@@ -460,9 +460,9 @@ struct IncomeGraphWindow : BaseGraphWindow {
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
 	{
-		return p->old_economy[j].income;
+		return c->old_economy[j].income;
 	}
 };
 
@@ -497,9 +497,9 @@ struct DeliveredCargoGraphWindow : BaseGraphWindow {
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
 	{
-		return p->old_economy[j].delivered_cargo;
+		return c->old_economy[j].delivered_cargo;
 	}
 };
 
@@ -534,9 +534,9 @@ struct PerformanceHistoryGraphWindow : BaseGraphWindow {
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
 	{
-		return p->old_economy[j].performance_history;
+		return c->old_economy[j].performance_history;
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -578,9 +578,9 @@ struct CompanyValueGraphWindow : BaseGraphWindow {
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	virtual OverflowSafeInt64 GetGraphData(const Player *p, int j)
+	virtual OverflowSafeInt64 GetGraphData(const Company *c, int j)
 	{
-		return p->old_economy[j].company_value;
+		return c->old_economy[j].company_value;
 	}
 };
 
@@ -668,13 +668,13 @@ struct PaymentRatesGraphWindow : BaseGraphWindow {
 			if (!cs->IsValid()) continue;
 
 			/* Only draw labels for widgets that exist. If the widget doesn't
-				* exist then the local player has used the climate cheat or
-				* changed the NewGRF configuration with this window open. */
+			 * exist then the local company has used the climate cheat or
+			 * changed the NewGRF configuration with this window open. */
 			if (i + 3 < this->widget_count) {
 				/* Since the buttons have no text, no images,
-					* both the text and the colored box have to be manually painted.
-					* clk_dif will move one pixel down and one pixel to the right
-					* when the button is clicked */
+				 * both the text and the colored box have to be manually painted.
+				 * clk_dif will move one pixel down and one pixel to the right
+				 * when the button is clicked */
 				byte clk_dif = this->IsWidgetLowered(i + 3) ? 1 : 0;
 
 				GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
@@ -759,63 +759,63 @@ static inline StringID GetPerformanceTitleFromValue(uint value)
 
 class CompanyLeagueWindow : public Window {
 private:
-	GUIList<const Player*> players;
+	GUIList<const Company*> companies;
 
 	/**
 	 * (Re)Build the company league list
 	 */
-	void BuildPlayerList()
+	void BuildCompanyList()
 	{
-		if (!this->players.NeedRebuild()) return;
+		if (!this->companies.NeedRebuild()) return;
 
-		this->players.Clear();
+		this->companies.Clear();
 
-		const Player *p;
-		FOR_ALL_PLAYERS(p) {
-			*this->players.Append() = p;
+		const Company *c;
+		FOR_ALL_COMPANIES(c) {
+			*this->companies.Append() = c;
 		}
 
-		this->players.Compact();
-		this->players.RebuildDone();
+		this->companies.Compact();
+		this->companies.RebuildDone();
 	}
 
 	/** Sort the company league by performance history */
-	static int CDECL PerformanceSorter(const Player* const *p1, const Player* const *p2)
+	static int CDECL PerformanceSorter(const Company* const *c1, const Company* const *c2)
 	{
-		return (*p2)->old_economy[1].performance_history - (*p1)->old_economy[1].performance_history;
+		return (*c2)->old_economy[1].performance_history - (*c1)->old_economy[1].performance_history;
 	}
 
 public:
 	CompanyLeagueWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->players.ForceRebuild();
-		this->players.NeedResort();
+		this->companies.ForceRebuild();
+		this->companies.NeedResort();
 
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
-		this->BuildPlayerList();
-		this->players.Sort(&PerformanceSorter);
+		this->BuildCompanyList();
+		this->companies.Sort(&PerformanceSorter);
 
 		this->DrawWidgets();
 
-		for (uint i = 0; i != this->players.Length(); i++) {
-			const Player *p = this->players[i];
+		for (uint i = 0; i != this->companies.Length(); i++) {
+			const Company *c = this->companies[i];
 			SetDParam(0, i + STR_01AC_1ST);
-			SetDParam(1, p->index);
-			SetDParam(2, p->index);
-			SetDParam(3, GetPerformanceTitleFromValue(p->old_economy[1].performance_history));
+			SetDParam(1, c->index);
+			SetDParam(2, c->index);
+			SetDParam(3, GetPerformanceTitleFromValue(c->old_economy[1].performance_history));
 
 			DrawString(2, 15 + i * 10, i == 0 ? STR_7054 : STR_7055, TC_FROMSTRING);
-			DrawPlayerIcon(p->index, 27, 16 + i * 10);
+			DrawCompanyIcon(c->index, 27, 16 + i * 10);
 		}
 	}
 
 	virtual void OnTick()
 	{
-		if (this->players.NeedResort()) {
+		if (this->companies.NeedResort()) {
 			this->SetDirty();
 		}
 	}
@@ -823,9 +823,9 @@ public:
 	virtual void OnInvalidateData(int data)
 	{
 		if (data == 0) {
-			this->players.ForceRebuild();
+			this->companies.ForceRebuild();
 		} else {
-			this->players.ForceResort();
+			this->companies.ForceResort();
 		}
 	}
 };
@@ -858,35 +858,35 @@ void ShowCompanyLeagueTable()
 struct PerformanceRatingDetailWindow : Window {
 private:
 	enum PerformanteRatingWidgets {
-		PRW_PLAYER_FIRST = 13,
-		PRW_PLAYER_LAST  = 20,
+		PRW_COMPANY_FIRST = 13,
+		PRW_COMPANY_LAST  = 20,
 	};
 
 public:
-	static PlayerID player;
+	static CompanyID company;
 	int timeout;
 
 	PerformanceRatingDetailWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		/* Disable the players who are not active */
-		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-			this->SetWidgetDisabledState(i + PRW_PLAYER_FIRST, !IsValidPlayerID(i));
+		/* Disable the companies who are not active */
+		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+			this->SetWidgetDisabledState(i + PRW_COMPANY_FIRST, !IsValidCompanyID(i));
 		}
 
-		this->UpdatePlayerStats();
+		this->UpdateCompanyStats();
 
-		if (player != INVALID_PLAYER) this->LowerWidget(player + PRW_PLAYER_FIRST);
+		if (company != INVALID_COMPANY) this->LowerWidget(company + PRW_COMPANY_FIRST);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
 
-	void UpdatePlayerStats()
+	void UpdateCompanyStats()
 	{
-		/* Update all player stats with the current data
+		/* Update all company stats with the current data
 		 * (this is because _score_info is not saved to a savegame) */
-		Player *p;
-		FOR_ALL_PLAYERS(p) {
-			UpdateCompanyRatingAndValue(p, false);
+		Company *c;
+		FOR_ALL_COMPANIES(c) {
+			UpdateCompanyRatingAndValue(c, false);
 		}
 
 		this->timeout = DAY_TICKS * 5;
@@ -903,39 +903,39 @@ public:
 		/* Draw standard stuff */
 		this->DrawWidgets();
 
-		/* Check if the currently selected player is still active. */
-		if (player == INVALID_PLAYER || !IsValidPlayerID(player)) {
-			if (player != INVALID_PLAYER) {
+		/* Check if the currently selected company is still active. */
+		if (company == INVALID_COMPANY || !IsValidCompanyID(company)) {
+			if (company != INVALID_COMPANY) {
 				/* Raise and disable the widget for the previous selection. */
-				this->RaiseWidget(player + PRW_PLAYER_FIRST);
-				this->DisableWidget(player + PRW_PLAYER_FIRST);
+				this->RaiseWidget(company + PRW_COMPANY_FIRST);
+				this->DisableWidget(company + PRW_COMPANY_FIRST);
 				this->SetDirty();
 
-				player = INVALID_PLAYER;
+				company = INVALID_COMPANY;
 			}
 
-			for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-				if (IsValidPlayerID(i)) {
-					/* Lower the widget corresponding to this player. */
-					this->LowerWidget(i + PRW_PLAYER_FIRST);
+			for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+				if (IsValidCompanyID(i)) {
+					/* Lower the widget corresponding to this company. */
+					this->LowerWidget(i + PRW_COMPANY_FIRST);
 					this->SetDirty();
 
-					player = i;
+					company = i;
 					break;
 				}
 			}
 		}
 
-		/* If there are no active players, don't display anything else. */
-		if (player == INVALID_PLAYER) return;
+		/* If there are no active companies, don't display anything else. */
+		if (company == INVALID_COMPANY) return;
 
-		/* Paint the player icons */
-		for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-			if (!IsValidPlayerID(i)) {
-				/* Check if we have the player as an active player */
-				if (!this->IsWidgetDisabled(i + PRW_PLAYER_FIRST)) {
-					/* Bah, player gone :( */
-					this->DisableWidget(i + PRW_PLAYER_FIRST);
+		/* Paint the company icons */
+		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+			if (!IsValidCompanyID(i)) {
+				/* Check if we have the company as an active company */
+				if (!this->IsWidgetDisabled(i + PRW_COMPANY_FIRST)) {
+					/* Bah, company gone :( */
+					this->DisableWidget(i + PRW_COMPANY_FIRST);
 
 					/* We need a repaint */
 					this->SetDirty();
@@ -943,16 +943,16 @@ public:
 				continue;
 			}
 
-			/* Check if we have the player marked as inactive */
-			if (this->IsWidgetDisabled(i + PRW_PLAYER_FIRST)) {
-				/* New player! Yippie :p */
-				this->EnableWidget(i + PRW_PLAYER_FIRST);
+			/* Check if we have the company marked as inactive */
+			if (this->IsWidgetDisabled(i + PRW_COMPANY_FIRST)) {
+				/* New company! Yippie :p */
+				this->EnableWidget(i + PRW_COMPANY_FIRST);
 				/* We need a repaint */
 				this->SetDirty();
 			}
 
-			x = (i == player) ? 1 : 0;
-			DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
+			x = (i == company) ? 1 : 0;
+			DrawCompanyIcon(i, i * 37 + 13 + x, 16 + x);
 		}
 
 		/* The colors used to show how the progress is going */
@@ -961,7 +961,7 @@ public:
 
 		/* Draw all the score parts */
 		for (ScoreID i = SCORE_BEGIN; i < SCORE_END; i++) {
-			int val    = _score_part[player][i];
+			int val    = _score_part[company][i];
 			int needed = _score_info[i].needed;
 			int score  = _score_info[i].score;
 
@@ -1024,12 +1024,12 @@ public:
 	virtual void OnClick(Point pt, int widget)
 	{
 		/* Check which button is clicked */
-		if (IsInsideMM(widget, PRW_PLAYER_FIRST, PRW_PLAYER_LAST + 1)) {
+		if (IsInsideMM(widget, PRW_COMPANY_FIRST, PRW_COMPANY_LAST + 1)) {
 			/* Is it no on disable? */
 			if (!this->IsWidgetDisabled(widget)) {
-				this->RaiseWidget(player + PRW_PLAYER_FIRST);
-				player = (PlayerID)(widget - PRW_PLAYER_FIRST);
-				this->LowerWidget(player + PRW_PLAYER_FIRST);
+				this->RaiseWidget(company + PRW_COMPANY_FIRST);
+				company = (CompanyID)(widget - PRW_COMPANY_FIRST);
+				this->LowerWidget(company + PRW_COMPANY_FIRST);
 				this->SetDirty();
 			}
 		}
@@ -1039,15 +1039,15 @@ public:
 	{
 		if (_pause_game != 0) return;
 
-		/* Update the player score every 5 days */
+		/* Update the company score every 5 days */
 		if (--this->timeout == 0) {
-			this->UpdatePlayerStats();
+			this->UpdateCompanyStats();
 			this->SetDirty();
 		}
 	}
 };
 
-PlayerID PerformanceRatingDetailWindow::player = INVALID_PLAYER;
+CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 
 
 static const Widget _performance_rating_detail_widgets[] = {

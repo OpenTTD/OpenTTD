@@ -114,17 +114,17 @@ Engine::~Engine()
 	free(this->name);
 }
 
-/** Sets cached values in Player::num_vehicles and Group::num_vehicles
+/** Sets cached values in Company::num_vehicles and Group::num_vehicles
  */
 void SetCachedEngineCounts()
 {
 	uint engines = GetEnginePoolSize();
 
-	/* Set up the engine count for all players */
-	Player *p;
-	FOR_ALL_PLAYERS(p) {
-		free(p->num_engines);
-		p->num_engines = CallocT<EngineID>(engines);
+	/* Set up the engine count for all companies */
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		free(c->num_engines);
+		c->num_engines = CallocT<EngineID>(engines);
 	}
 
 	/* Recalculate */
@@ -140,7 +140,7 @@ void SetCachedEngineCounts()
 
 		assert(v->engine_type < engines);
 
-		GetPlayer(v->owner)->num_engines[v->engine_type]++;
+		GetCompany(v->owner)->num_engines[v->engine_type]++;
 
 		if (v->group_id == DEFAULT_GROUP) continue;
 
@@ -195,12 +195,12 @@ static void CalcEngineReliability(Engine *e)
 	uint age = e->age;
 
 	/* Check for early retirement */
-	if (e->player_avail != 0 && !_settings_game.vehicle.never_expire_vehicles) {
+	if (e->company_avail != 0 && !_settings_game.vehicle.never_expire_vehicles) {
 		int retire_early = e->info.retire_early;
 		uint retire_early_max_age = max(0, e->duration_phase_1 + e->duration_phase_2 - retire_early * 12);
 		if (retire_early != 0 && age >= retire_early_max_age) {
 			/* Early retirement is enabled and we're past the date... */
-			e->player_avail = 0;
+			e->company_avail = 0;
 			AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 		}
 	}
@@ -218,7 +218,7 @@ static void CalcEngineReliability(Engine *e)
 	} else {
 		/* time's up for this engine.
 		 * We will now completely retire this design */
-		e->player_avail = 0;
+		e->company_avail = 0;
 		e->reliability = e->reliability_final;
 		/* Kick this engine out of the lists */
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
@@ -239,7 +239,7 @@ void StartupEngines()
 
 		e->age = 0;
 		e->flags = 0;
-		e->player_avail = 0;
+		e->company_avail = 0;
 
 		/* The magic value of 729 days below comes from the NewGRF spec. If the
 		 * base intro date is before 1922 then the random number of days is not
@@ -248,7 +248,7 @@ void StartupEngines()
 		e->intro_date = ei->base_intro <= ConvertYMDToDate(1922, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
 		if (e->intro_date <= _date) {
 			e->age = (aging_date - e->intro_date) >> 5;
-			e->player_avail = (byte)-1;
+			e->company_avail = (CompanyMask)-1;
 			e->flags |= ENGINE_AVAILABLE;
 		}
 
@@ -275,63 +275,63 @@ void StartupEngines()
 		/* prevent certain engines from ever appearing. */
 		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) {
 			e->flags |= ENGINE_AVAILABLE;
-			e->player_avail = 0;
+			e->company_avail = 0;
 		}
 	}
 
 	/* Update the bitmasks for the vehicle lists */
-	Player *p;
-	FOR_ALL_PLAYERS(p) {
-		p->avail_railtypes = GetPlayerRailtypes(p->index);
-		p->avail_roadtypes = GetPlayerRoadtypes(p->index);
+	Company *c;
+	FOR_ALL_COMPANIES(c) {
+		c->avail_railtypes = GetCompanyRailtypes(c->index);
+		c->avail_roadtypes = GetCompanyRoadtypes(c->index);
 	}
 }
 
-static void AcceptEnginePreview(EngineID eid, PlayerID player)
+static void AcceptEnginePreview(EngineID eid, CompanyID company)
 {
 	Engine *e = GetEngine(eid);
-	Player *p = GetPlayer(player);
+	Company *c = GetCompany(company);
 
-	SetBit(e->player_avail, player);
+	SetBit(e->company_avail, company);
 	if (e->type == VEH_TRAIN) {
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
 		assert(rvi->railtype < RAILTYPE_END);
-		SetBit(p->avail_railtypes, rvi->railtype);
+		SetBit(c->avail_railtypes, rvi->railtype);
 	} else if (e->type == VEH_ROAD) {
-		SetBit(p->avail_roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		SetBit(c->avail_roadtypes, HasBit(EngInfo(eid)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
-	e->preview_player_rank = 0xFF;
-	if (player == _local_player) {
+	e->preview_company_rank = 0xFF;
+	if (company == _local_company) {
 		AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 	}
 }
 
-static PlayerID GetBestPlayer(uint8 pp)
+static CompanyID GetBestCompany(uint8 pp)
 {
-	const Player *p;
+	const Company *c;
 	int32 best_hist;
-	PlayerID best_player;
+	CompanyID best_company;
 	uint mask = 0;
 
 	do {
 		best_hist = -1;
-		best_player = PLAYER_SPECTATOR;
-		FOR_ALL_PLAYERS(p) {
-			if (p->block_preview == 0 && !HasBit(mask, p->index) &&
-					p->old_economy[0].performance_history > best_hist) {
-				best_hist = p->old_economy[0].performance_history;
-				best_player = p->index;
+		best_company = INVALID_COMPANY;
+		FOR_ALL_COMPANIES(c) {
+			if (c->block_preview == 0 && !HasBit(mask, c->index) &&
+					c->old_economy[0].performance_history > best_hist) {
+				best_hist = c->old_economy[0].performance_history;
+				best_company = c->index;
 			}
 		}
 
-		if (best_player == PLAYER_SPECTATOR) return PLAYER_SPECTATOR;
+		if (best_company == INVALID_COMPANY) return INVALID_COMPANY;
 
-		SetBit(mask, best_player);
+		SetBit(mask, best_company);
 	} while (--pp != 0);
 
-	return best_player;
+	return best_company;
 }
 
 void EnginesDailyLoop()
@@ -343,33 +343,33 @@ void EnginesDailyLoop()
 		EngineID i = e->index;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
 			if (e->flags & ENGINE_OFFER_WINDOW_OPEN) {
-				if (e->preview_player_rank != 0xFF && !--e->preview_wait) {
+				if (e->preview_company_rank != 0xFF && !--e->preview_wait) {
 					e->flags &= ~ENGINE_OFFER_WINDOW_OPEN;
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
-					e->preview_player_rank++;
+					e->preview_company_rank++;
 				}
-			} else if (e->preview_player_rank != 0xFF) {
-				PlayerID best_player = GetBestPlayer(e->preview_player_rank);
+			} else if (e->preview_company_rank != 0xFF) {
+				CompanyID best_company = GetBestCompany(e->preview_company_rank);
 
-				if (best_player == PLAYER_SPECTATOR) {
-					e->preview_player_rank = 0xFF;
+				if (best_company == INVALID_COMPANY) {
+					e->preview_company_rank = 0xFF;
 					continue;
 				}
 
-				if (!IsHumanPlayer(best_player)) {
+				if (!IsHumanCompany(best_company)) {
 					/* XXX - TTDBUG: TTD has a bug here ???? */
-					AcceptEnginePreview(i, best_player);
+					AcceptEnginePreview(i, best_company);
 				} else {
 					e->flags |= ENGINE_OFFER_WINDOW_OPEN;
 					e->preview_wait = 20;
-					if (IsInteractivePlayer(best_player)) ShowEnginePreviewWindow(i);
+					if (IsInteractiveCompany(best_company)) ShowEnginePreviewWindow(i);
 				}
 			}
 		}
 	}
 }
 
-/** Accept an engine prototype. XXX - it is possible that the top-player
+/** Accept an engine prototype. XXX - it is possible that the top-company
  * changes while you are waiting to accept the offer? Then it becomes invalid
  * @param tile unused
  * @param flags operation to perfom
@@ -382,9 +382,9 @@ CommandCost CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	if (!IsEngineIndex(p1)) return CMD_ERROR;
 	e = GetEngine(p1);
-	if (GetBestPlayer(e->preview_player_rank) != _current_player) return CMD_ERROR;
+	if (GetBestCompany(e->preview_company_rank) != _current_company) return CMD_ERROR;
 
-	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_player);
+	if (flags & DC_EXEC) AcceptEnginePreview(p1, _current_company);
 
 	return CommandCost();
 }
@@ -394,26 +394,26 @@ StringID GetEngineCategoryName(EngineID engine);
 static void NewVehicleAvailable(Engine *e)
 {
 	Vehicle *v;
-	Player *p;
+	Company *c;
 	EngineID index = e->index;
 
-	/* In case the player didn't build the vehicle during the intro period,
-	 * prevent that player from getting future intro periods for a while. */
+	/* In case the company didn't build the vehicle during the intro period,
+	 * prevent that company from getting future intro periods for a while. */
 	if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) {
-		FOR_ALL_PLAYERS(p) {
-			uint block_preview = p->block_preview;
+		FOR_ALL_COMPANIES(c) {
+			uint block_preview = c->block_preview;
 
-			if (!HasBit(e->player_avail, p->index)) continue;
+			if (!HasBit(e->company_avail, c->index)) continue;
 
 			/* We assume the user did NOT build it.. prove me wrong ;) */
-			p->block_preview = 20;
+			c->block_preview = 20;
 
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == VEH_TRAIN || v->type == VEH_ROAD || v->type == VEH_SHIP ||
 						(v->type == VEH_AIRCRAFT && IsNormalAircraft(v))) {
-					if (v->owner == p->index && v->engine_type == index) {
+					if (v->owner == c->index && v->engine_type == index) {
 						/* The user did prove me wrong, so restore old value */
-						p->block_preview = block_preview;
+						c->block_preview = block_preview;
 						break;
 					}
 				}
@@ -424,8 +424,8 @@ static void NewVehicleAvailable(Engine *e)
 	e->flags = (e->flags & ~ENGINE_EXCLUSIVE_PREVIEW) | ENGINE_AVAILABLE;
 	AddRemoveEngineFromAutoreplaceAndBuildWindows(e->type);
 
-	/* Now available for all players */
-	e->player_avail = (PlayerMask)-1;
+	/* Now available for all companies */
+	e->company_avail = (CompanyMask)-1;
 
 	/* Do not introduce new rail wagons */
 	if (IsWagon(index)) return;
@@ -434,10 +434,10 @@ static void NewVehicleAvailable(Engine *e)
 		/* maybe make another rail type available */
 		RailType railtype = e->u.rail.railtype;
 		assert(railtype < RAILTYPE_END);
-		FOR_ALL_PLAYERS(p) SetBit(p->avail_railtypes, railtype);
+		FOR_ALL_COMPANIES(c) SetBit(c->avail_railtypes, railtype);
 	} else if (e->type == VEH_ROAD) {
 		/* maybe make another road type available */
-		FOR_ALL_PLAYERS(p) SetBit(p->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
+		FOR_ALL_COMPANIES(c) SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
 
 	SetDParam(0, GetEngineCategoryName(index));
@@ -457,15 +457,15 @@ void EnginesMonthlyLoop()
 			}
 
 			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + 365)) {
-				/* Introduce it to all players */
+				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
 			} else if (!(e->flags & (ENGINE_AVAILABLE|ENGINE_EXCLUSIVE_PREVIEW)) && _date >= e->intro_date) {
-				/* Introduction date has passed.. show introducing dialog to one player. */
+				/* Introduction date has passed.. show introducing dialog to one companies. */
 				e->flags |= ENGINE_EXCLUSIVE_PREVIEW;
 
 				/* Do not introduce new rail wagons */
 				if (!IsWagon(e->index))
-					e->preview_player_rank = 1; // Give to the player with the highest rating.
+					e->preview_company_rank = 1; // Give to the company with the highest rating.
 			}
 		}
 	}
@@ -529,13 +529,13 @@ CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 
 /** Check if an engine is buildable.
- * @param engine index of the engine to check.
- * @param type   the type the engine should be.
- * @param player index of the player.
+ * @param engine  index of the engine to check.
+ * @param type    the type the engine should be.
+ * @param company index of the company.
  * @return True if an engine is valid, of the specified type, and buildable by
- *              the given player.
+ *              the given company.
  */
-bool IsEngineBuildable(EngineID engine, VehicleType type, PlayerID player)
+bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 {
 	/* check if it's an engine that is in the engine array */
 	if (!IsEngineIndex(engine)) return false;
@@ -546,12 +546,12 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, PlayerID player)
 	if (e->type != type) return false;
 
 	/* check if it's available */
-	if (!HasBit(e->player_avail, player)) return false;
+	if (!HasBit(e->company_avail, company)) return false;
 
 	if (type == VEH_TRAIN) {
-		/* Check if the rail type is available to this player */
-		const Player *p = GetPlayer(player);
-		if (!HasBit(p->avail_railtypes, RailVehInfo(engine)->railtype)) return false;
+		/* Check if the rail type is available to this company */
+		const Company *c = GetCompany(company);
+		if (!HasBit(c->avail_railtypes, RailVehInfo(engine)->railtype)) return false;
 	}
 
 	return true;
@@ -602,10 +602,10 @@ static const SaveLoad _engine_desc[] = {
 
 	    SLE_VAR(Engine, lifelength,          SLE_UINT8),
 	    SLE_VAR(Engine, flags,               SLE_UINT8),
-	    SLE_VAR(Engine, preview_player_rank, SLE_UINT8),
+	    SLE_VAR(Engine, preview_company_rank,SLE_UINT8),
 	    SLE_VAR(Engine, preview_wait,        SLE_UINT8),
 	SLE_CONDNULL(1, 0, 44),
-	    SLE_VAR(Engine, player_avail,        SLE_UINT8),
+	    SLE_VAR(Engine, company_avail,       SLE_UINT8),
 	SLE_CONDSTR(Engine, name,                SLE_STR, 0,                 84, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 16 bytes) */
@@ -664,9 +664,9 @@ void CopyTempEngineData()
 		e->duration_phase_3    = se->duration_phase_3;
 		e->lifelength          = se->lifelength;
 		e->flags               = se->flags;
-		e->preview_player_rank = se->preview_player_rank;
+		e->preview_company_rank= se->preview_company_rank;
 		e->preview_wait        = se->preview_wait;
-		e->player_avail        = se->player_avail;
+		e->company_avail       = se->company_avail;
 		if (se->name != NULL) e->name = strdup(se->name);
 	}
 

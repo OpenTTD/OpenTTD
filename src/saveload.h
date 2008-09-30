@@ -160,7 +160,7 @@ enum VarTypes {
 
 	/* 8 bytes allocated for a maximum of 8 flags
 	 * Flags directing saving/loading of a variable */
-	SLF_SAVE_NO      = 1 <<  8, ///< do not save with savegame, basically player-based
+	SLF_SAVE_NO      = 1 <<  8, ///< do not save with savegame, basically client-based
 	SLF_CONFIG_NO    = 1 <<  9, ///< do not save to config file
 	SLF_NETWORK_NO   = 1 << 10, ///< do not synchronize over network (but it is saved if SSF_SAVE_NO is not set)
 	/* 5 more possible flags */

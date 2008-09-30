@@ -1,9 +1,9 @@
 /* $Id$ */
 
-/** @file player_base.h Definition of stuff that is very close to a player, like the player struct itself. */
+/** @file company_base.h Definition of stuff that is very close to a company, like the company struct itself. */
 
-#ifndef PLAYER_BASE_H
-#define PLAYER_BASE_H
+#ifndef COMPANY_BASE_H
+#define COMPANY_BASE_H
 
 #include "player_type.h"
 #include "oldpool.h"
@@ -16,23 +16,23 @@
 #include "economy_type.h"
 #include "tile_type.h"
 
-struct PlayerEconomyEntry {
+struct CompanyEconomyEntry {
 	Money income;
 	Money expenses;
 	int32 delivered_cargo;
-	int32 performance_history; ///< player score (scale 0-1000)
+	int32 performance_history; ///< company score (scale 0-1000)
 	Money company_value;
 };
 
 /* The third parameter and the number after >> MUST be the same,
- * otherwise more (or less) players will be allowed to be
- * created than what MAX_PLAYER specifies!
+ * otherwise more (or less) companies will be allowed to be
+ * created than what MAX_COMPANIES specifies!
  */
-DECLARE_OLD_POOL(Player, Player, 1, MAX_PLAYERS >> 1)
+DECLARE_OLD_POOL(Company, Company, 1, MAX_COMPANIES >> 1)
 
-struct Player : PoolItem<Player, PlayerByte, &_Player_pool> {
-	Player(uint16 name_1 = 0, bool is_ai = false);
-	~Player();
+struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
+	Company(uint16 name_1 = 0, bool is_ai = false);
+	~Company();
 
 	uint32 name_2;
 	uint16 name_1;
@@ -42,14 +42,14 @@ struct Player : PoolItem<Player, PlayerByte, &_Player_pool> {
 	uint32 president_name_2;
 	char *president_name;
 
-	PlayerFace face;
+	CompanyManagerFace face;
 
-	Money player_money;
+	Money money;
+	byte money_fraction;
 	Money current_loan;
 
-	byte player_color;
+	byte colour;
 	Livery livery[LS_END];
-	byte player_money_fraction;
 	RailTypes avail_railtypes;
 	RoadTypes avail_roadtypes;
 	byte block_preview;
@@ -59,49 +59,49 @@ struct Player : PoolItem<Player, PlayerByte, &_Player_pool> {
 	TileIndex location_of_HQ;
 	TileIndex last_build_coordinate;
 
-	PlayerByte share_owners[4];
+	OwnerByte share_owners[4];
 
 	Year inaugurated_year;
 	byte num_valid_stat_ent;
 
 	byte quarters_of_bankrupcy;
-	byte bankrupt_asked; ///< which players were asked about buying it?
+	byte bankrupt_asked; ///< which companies were asked about buying it?
 	int16 bankrupt_timeout;
 	Money bankrupt_value;
 
 	bool is_ai;
 
 	Money yearly_expenses[3][EXPENSES_END];
-	PlayerEconomyEntry cur_economy;
-	PlayerEconomyEntry old_economy[24];
+	CompanyEconomyEntry cur_economy;
+	CompanyEconomyEntry old_economy[24];
 	EngineRenewList engine_renew_list; ///< Defined later
 	bool engine_renew;
 	bool renew_keep_length;
 	int16 engine_renew_months;
 	uint32 engine_renew_money;
-	uint16 *num_engines; ///< caches the number of engines of each type the player owns (no need to save this)
+	uint16 *num_engines; ///< caches the number of engines of each type the company owns (no need to save this)
 
 	inline bool IsValid() const { return this->name_1 != 0; }
 };
 
-static inline bool IsValidPlayerID(PlayerID index)
+static inline bool IsValidCompanyID(CompanyID company)
 {
-	return (uint)index < GetPlayerPoolSize() && GetPlayer(index)->IsValid();
+	return (uint)company < GetCompanyPoolSize() && GetCompany(company)->IsValid();
 }
 
-#define FOR_ALL_PLAYERS_FROM(d, start) for (d = GetPlayer(start); d != NULL; d = (d->index + 1U < GetPlayerPoolSize()) ? GetPlayer(d->index + 1U) : NULL) if (d->IsValid())
-#define FOR_ALL_PLAYERS(d) FOR_ALL_PLAYERS_FROM(d, 0)
+#define FOR_ALL_COMPANIES_FROM(d, start) for (d = GetCompany(start); d != NULL; d = (d->index + 1U < GetCompanyPoolSize()) ? GetCompany(d->index + 1U) : NULL) if (d->IsValid())
+#define FOR_ALL_COMPANIES(d) FOR_ALL_COMPANIES_FROM(d, 0)
 
-static inline byte ActivePlayerCount()
+static inline byte ActiveCompanyCount()
 {
-	const Player *p;
+	const Company *c;
 	byte count = 0;
 
-	FOR_ALL_PLAYERS(p) count++;
+	FOR_ALL_COMPANIES(c) count++;
 
 	return count;
 }
 
-Money CalculateCompanyValue(const Player *p);
+Money CalculateCompanyValue(const Company *c);
 
-#endif /* PLAYER_BASE_H */
+#endif /* COMPANY_BASE_H */

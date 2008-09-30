@@ -51,7 +51,7 @@ struct GUISettings {
 	bool   smooth_scroll;                    ///< smooth scroll viewports
 	bool   measure_tooltip;                  ///< show a permanent tooltip when dragging tools
 	byte   liveries;                         ///< options for displaying company liveries, 0=none, 1=self, 2=all
-	bool   prefer_teamchat;                  ///< choose the chat message target with <ENTER>, true=all players, false=your team
+	bool   prefer_teamchat;                  ///< choose the chat message target with <ENTER>, true=all clients, false=your team
 	uint8  advanced_vehicle_list;            ///< use the "advanced" vehicle list
 	uint8  loading_indicators;               ///< show loading indicators
 	uint8  default_rail_type;                ///< the default rail type for the rail GUI
@@ -111,7 +111,7 @@ struct NetworkSettings {
 	char   rcon_password[NETWORK_PASSWORD_LENGTH];        ///< passowrd for rconsole (server side)
 	bool   server_advertise;                              ///< advertise the server to the masterserver
 	uint8  lan_internet;                                  ///< search on the LAN or internet for servers
-	char   player_name[NETWORK_NAME_LENGTH];              ///< name of the player
+	char   client_name[NETWORK_NAME_LENGTH];              ///< name of the player (as client)
 	char   default_company_pass[NETWORK_PASSWORD_LENGTH]; ///< default password for new companies in encrypted form
 	char   connect_to_ip[NETWORK_HOSTNAME_LENGTH];        ///< default for the "Add server" query
 	char   network_id[NETWORK_UNIQUE_ID_LENGTH];          ///< semi-unique ID of the client
@@ -122,7 +122,7 @@ struct NetworkSettings {
 	uint8  max_clients;                                   ///< maximum amount of clients
 	uint8  max_spectators;                                ///< maximum amount of spectators
 	Year   restart_game_year;                             ///< year the server restarts
-	uint8  min_players;                                   ///< minimum amount of players to unpause the game
+	uint8  min_active_clients;                            ///< minimum amount of active clients to unpause the game
 	uint8  server_lang;                                   ///< language of the server
 	bool   reload_cfg;                                    ///< reload the config file before restarting
 	char   last_host[NETWORK_HOSTNAME_LENGTH];            ///< IP address of the last joined server
@@ -277,10 +277,10 @@ struct VehicleSettings {
 	bool   realistic_acceleration;           ///< realistic acceleration for trains
 	bool   wagon_speed_limits;               ///< enable wagon speed limits
 	bool   disable_elrails;                  ///< when true, the elrails are disabled
-	UnitID max_trains;                       ///< max trains in game per player
-	UnitID max_roadveh;                      ///< max trucks in game per player
-	UnitID max_aircraft;                     ///< max planes in game per player
-	UnitID max_ships;                        ///< max ships in game per player
+	UnitID max_trains;                       ///< max trains in game per company
+	UnitID max_roadveh;                      ///< max trucks in game per company
+	UnitID max_aircraft;                     ///< max planes in game per company
+	UnitID max_ships;                        ///< max ships in game per company
 	bool   servint_ispercent;                ///< service intervals are in percents
 	uint16 servint_trains;                   ///< service interval for trains
 	uint16 servint_roadveh;                  ///< service interval for road vehicles
@@ -302,7 +302,7 @@ struct EconomySettings {
 	bool   allow_shares;                     ///< allow the buying/selling of shares
 	byte   dist_local_authority;             ///< distance for town local authority, default 20
 	bool   exclusive_rights;                 ///< allow buying exclusive rights
-	bool   give_money;                       ///< allow giving other players money
+	bool   give_money;                       ///< allow giving other companies money
 	bool   mod_road_rebuild;                 ///< roadworks remove unneccesary RoadBits
 	bool   multiple_industry_per_town;       ///< allow many industries of the same type per town
 	bool   same_industry_close;              ///< allow same type industries to be built close to each other

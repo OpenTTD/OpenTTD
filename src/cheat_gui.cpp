@@ -39,22 +39,22 @@ static int32 ClickMoneyCheat(int32 p1, int32 p2)
 }
 
 /**
- * @param p1 player to set to
+ * @param p1 company to set to
  * @param p2 is -1 or +1 (down/up)
  */
-static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
+static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
 {
-	while ((uint)p1 < GetPlayerPoolSize()) {
-		if (IsValidPlayerID((PlayerID)p1)) {
-			SetLocalPlayer((PlayerID)p1);
+	while ((uint)p1 < GetCompanyPoolSize()) {
+		if (IsValidCompanyID((CompanyID)p1)) {
+			SetLocalCompany((CompanyID)p1);
 
 			MarkWholeScreenDirty();
-			return _local_player;
+			return _local_company;
 		}
 		p1 += p2;
 	}
 
-	return _local_player;
+	return _local_company;
 }
 
 /**
@@ -106,15 +106,15 @@ struct CheatEntry {
 };
 
 static const CheatEntry _cheats_ui[] = {
-	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,               &_cheats.money.been_used,            &ClickMoneyCheat        },
-	{SLE_UINT8, STR_CHEAT_CHANGE_PLAYER,   &_local_player,                     &_cheats.switch_player.been_used,    &ClickChangePlayerCheat },
-	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,     &_cheats.magic_bulldozer.been_used,  NULL                    },
-	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,    &_cheats.crossing_tunnels.been_used, NULL                    },
-	{SLE_BOOL,  STR_CHEAT_BUILD_IN_PAUSE,  &_cheats.build_in_pause.value,      &_cheats.build_in_pause.been_used,   NULL                    },
-	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,         &_cheats.no_jetcrash.been_used,      NULL                    },
-	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,          &_cheats.setup_prod.been_used,       NULL                    },
-	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_settings_game.game_creation.landscape, &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat},
-	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                         &_cheats.change_date.been_used,      &ClickChangeDateCheat   },
+	{SLE_INT32, STR_CHEAT_MONEY,           &_money_cheat_amount,                    &_cheats.money.been_used,            &ClickMoneyCheat         },
+	{SLE_UINT8, STR_CHEAT_CHANGE_PLAYER,   &_local_company,                         &_cheats.switch_company.been_used,   &ClickChangeCompanyCheat },
+	{SLE_BOOL,  STR_CHEAT_EXTRA_DYNAMITE,  &_cheats.magic_bulldozer.value,          &_cheats.magic_bulldozer.been_used,  NULL                     },
+	{SLE_BOOL,  STR_CHEAT_CROSSINGTUNNELS, &_cheats.crossing_tunnels.value,         &_cheats.crossing_tunnels.been_used, NULL                     },
+	{SLE_BOOL,  STR_CHEAT_BUILD_IN_PAUSE,  &_cheats.build_in_pause.value,           &_cheats.build_in_pause.been_used,   NULL                     },
+	{SLE_BOOL,  STR_CHEAT_NO_JETCRASH,     &_cheats.no_jetcrash.value,              &_cheats.no_jetcrash.been_used,      NULL                     },
+	{SLE_BOOL,  STR_CHEAT_SETUP_PROD,      &_cheats.setup_prod.value,               &_cheats.setup_prod.been_used,       NULL                     },
+	{SLE_UINT8, STR_CHEAT_SWITCH_CLIMATE,  &_settings_game.game_creation.landscape, &_cheats.switch_climate.been_used,   &ClickChangeClimateCheat },
+	{SLE_INT32, STR_CHEAT_CHANGE_DATE,     &_cur_year,                              &_cheats.change_date.been_used,      &ClickChangeDateCheat    },
 };
 
 
@@ -163,11 +163,11 @@ struct CheatWindow : Window {
 						/* Display date for change date cheat */
 						case STR_CHEAT_CHANGE_DATE: SetDParam(0, _date); break;
 
-						/* Draw colored flag for change player cheat */
+						/* Draw colored flag for change company cheat */
 						case STR_CHEAT_CHANGE_PLAYER:
 							SetDParam(0, val);
 							GetString(buf, STR_CHEAT_CHANGE_PLAYER, lastof(buf));
-							DrawPlayerIcon(_current_player, 60 + GetStringBoundingBox(buf).width, y + 2);
+							DrawCompanyIcon(_current_company, 60 + GetStringBoundingBox(buf).width, y + 2);
 							break;
 
 						/* Set correct string for switch climate cheat */

@@ -25,7 +25,7 @@ void DrawAircraftEngine(int x, int y, EngineID engine, SpriteID pal);
 void LoadCustomEngineNames();
 void DeleteCustomEngineNames();
 
-bool IsEngineBuildable(EngineID engine, VehicleType type, PlayerID player);
+bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company);
 CargoID GetEngineCargoType(EngineID engine);
 void SetCachedEngineCounts();
 

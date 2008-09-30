@@ -68,7 +68,7 @@ void TrainConsistChanged(Vehicle *v, bool same_length);
 void TrainPowerChanged(Vehicle *v);
 Money GetTrainRunningCost(const Vehicle *v);
 
-CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
+CommandCost SendAllVehiclesToDepot(VehicleType type, uint32 flags, bool service, Owner owner, uint16 vlw_flag, uint32 id);
 void VehicleEnterDepot(Vehicle *v);
 
 bool CanBuildVehicleInfrastructure(VehicleType type);
@@ -86,7 +86,7 @@ struct GetNewVehiclePosResult {
 GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v);
 Direction GetDirectionTowards(const Vehicle *v, int x, int y);
 
-static inline bool IsPlayerBuildableVehicleType(VehicleType type)
+static inline bool IsCompanyBuildableVehicleType(VehicleType type)
 {
 	switch (type) {
 		case VEH_TRAIN:
@@ -99,20 +99,20 @@ static inline bool IsPlayerBuildableVehicleType(VehicleType type)
 	}
 }
 
-static inline bool IsPlayerBuildableVehicleType(const BaseVehicle *v)
+static inline bool IsCompanyBuildableVehicleType(const BaseVehicle *v)
 {
-	return IsPlayerBuildableVehicleType(v->type);
+	return IsCompanyBuildableVehicleType(v->type);
 }
 
-const struct Livery *GetEngineLivery(EngineID engine_type, PlayerID player, EngineID parent_engine_type, const Vehicle *v);
+const struct Livery *GetEngineLivery(EngineID engine_type, CompanyID company, EngineID parent_engine_type, const Vehicle *v);
 
 /**
  * Get the colour map for an engine. This used for unbuilt engines in the user interface.
  * @param engine_type ID of engine
- * @param player ID of player
+ * @param company ID of company
  * @return A ready-to-use palette modifier
  */
-SpriteID GetEnginePalette(EngineID engine_type, PlayerID player);
+SpriteID GetEnginePalette(EngineID engine_type, CompanyID company);
 
 /**
  * Get the colour map for a vehicle.

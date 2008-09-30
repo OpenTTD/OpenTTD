@@ -135,7 +135,7 @@ void Station::AddFacility(byte new_facility_bit, TileIndex facil_xy)
 		random_bits = Random();
 	}
 	facilities |= new_facility_bit;
-	owner = _current_player;
+	owner = _current_company;
 	build_date = _date;
 }
 

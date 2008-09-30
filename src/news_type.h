@@ -13,17 +13,17 @@
  * Type of news.
  */
 enum NewsType {
-	NT_ARRIVAL_PLAYER,  ///< Cargo arrived for player
+	NT_ARRIVAL_COMPANY, ///< Cargo arrived for company
 	NT_ARRIVAL_OTHER,   ///< Cargo arrived for competitor
 	NT_ACCIDENT,        ///< An accident or disaster has occurred
 	NT_COMPANY_INFO,    ///< Company info (new companies, bankrupcy messages)
 	NT_INDUSTRY_OPEN,   ///< Opening of industries
 	NT_INDUSTRY_CLOSE,  ///< Closing of industries
 	NT_ECONOMY,         ///< Economic changes (recession, industry up/dowm)
-	NT_INDUSTRY_PLAYER, ///< Production changes of industry serviced by local player
+	NT_INDUSTRY_COMPANY,///< Production changes of industry serviced by local company
 	NT_INDUSTRY_OTHER,  ///< Production changes of industry serviced by competitor(s)
 	NT_INDUSTRY_NOBODY, ///< Other industry production changes
-	NT_ADVICE,          ///< Bits of news about vehicles of the player
+	NT_ADVICE,          ///< Bits of news about vehicles of the company
 	NT_NEW_VEHICLES,    ///< New vehicle has become available
 	NT_ACCEPTANCE,      ///< A type of cargo is (no longer) accepted
 	NT_SUBSIDIES,       ///< News about subsidies (announcements, expirations, acceptance)
@@ -35,7 +35,7 @@ enum NewsType {
  * News subtypes.
  */
 enum NewsSubtype {
-	NS_ARRIVAL_PLAYER,   ///< NT_ARRIVAL_PLAYER
+	NS_ARRIVAL_COMPANY,  ///< NT_ARRIVAL_COMPANY
 	NS_ARRIVAL_OTHER,    ///< NT_ARRIVAL_OTHER
 	NS_ACCIDENT_TILE,    ///< NT_ACCIDENT (tile)
 	NS_ACCIDENT_VEHICLE, ///< NT_ACCIDENT (vehicle)
@@ -46,7 +46,7 @@ enum NewsSubtype {
 	NS_INDUSTRY_OPEN,    ///< NT_INDUSTRY_OPEN
 	NS_INDUSTRY_CLOSE,   ///< NT_INDUSTRY_CLOSE
 	NS_ECONOMY,          ///< NT_ECONOMY
-	NS_INDUSTRY_PLAYER,  ///< NT_INDUSTRY_PLAYER
+	NS_INDUSTRY_COMPANY, ///< NT_INDUSTRY_COMPANY
 	NS_INDUSTRY_OTHER,   ///< NT_INDUSTRY_OTHER
 	NS_INDUSTRY_NOBODY,  ///< NT_INDUSTRY_NOBODY
 	NS_ADVICE,           ///< NT_ADVICE
@@ -130,7 +130,7 @@ struct CompanyNewsInformation {
 	uint32 face; ///< The face of the president
 	byte colour; ///< The colour related to the company
 
-	void FillData(const struct Player *p, const struct Player *other = NULL);
+	void FillData(const struct Company *c, const struct Company *other = NULL);
 };
 
 #endif /* NEWS_TYPE_H */

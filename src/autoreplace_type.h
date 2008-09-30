@@ -8,8 +8,8 @@
 struct EngineRenew;
 
 /**
- * A list to group EngineRenew directives together (such as per-player).
+ * A list to group EngineRenew directives together (such as per-company).
  */
-typedef EngineRenew* EngineRenewList;
+typedef EngineRenew *EngineRenewList;
 
 #endif /* AUTOREPLACE_TYPE_H */

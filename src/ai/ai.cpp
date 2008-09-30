@@ -16,16 +16,16 @@
 #include "../signal_func.h"
 
 AIStruct _ai;
-AIPlayer _ai_player[MAX_PLAYERS];
+AICompany _ai_company[MAX_COMPANIES];
 
 /**
  * Dequeues commands put in the queue via AI_PutCommandInQueue.
  */
-static void AI_DequeueCommands(PlayerID player)
+static void AI_DequeueCommands(CompanyID company)
 {
 	AICommand *com, *entry_com;
 
-	entry_com = _ai_player[player].queue;
+	entry_com = _ai_company[company].queue;
 
 	/* It happens that DoCommandP issues a new DoCommandAI which adds a new command
 	 *  to this very same queue (don't argue about this, if it currently doesn't
@@ -33,12 +33,12 @@ static void AI_DequeueCommands(PlayerID player)
 	 *  do not make the queue NULL, that commands will be dequeued immediatly.
 	 *  Therefor we safe the entry-point to entry_com, and make the queue NULL, so
 	 *  the new queue can be safely built up. */
-	_ai_player[player].queue = NULL;
-	_ai_player[player].queue_tail = NULL;
+	_ai_company[company].queue = NULL;
+	_ai_company[company].queue_tail = NULL;
 
 	/* Dequeue all commands */
 	while ((com = entry_com) != NULL) {
-		_current_player = player;
+		_current_company = company;
 
 		_cmd_text = com->text;
 		DoCommandP(com->tile, com->p1, com->p2, com->callback, com->procc);
@@ -54,22 +54,22 @@ static void AI_DequeueCommands(PlayerID player)
  * Needed for SP; we need to delay DoCommand with 1 tick, because else events
  *  will make infinite loops (AIScript).
  */
-static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uint32 p2, uint32 procc, CommandCallback* callback)
+static void AI_PutCommandInQueue(CompanyID company, TileIndex tile, uint32 p1, uint32 p2, uint32 procc, CommandCallback* callback)
 {
 	AICommand *com;
 
-	if (_ai_player[player].queue_tail == NULL) {
+	if (_ai_company[company].queue_tail == NULL) {
 		/* There is no item in the queue yet, create the queue */
-		_ai_player[player].queue = MallocT<AICommand>(1);
-		_ai_player[player].queue_tail = _ai_player[player].queue;
+		_ai_company[company].queue = MallocT<AICommand>(1);
+		_ai_company[company].queue_tail = _ai_company[company].queue;
 	} else {
 		/* Add an item at the end */
-		_ai_player[player].queue_tail->next = MallocT<AICommand>(1);
-		_ai_player[player].queue_tail = _ai_player[player].queue_tail->next;
+		_ai_company[company].queue_tail->next = MallocT<AICommand>(1);
+		_ai_company[company].queue_tail = _ai_company[company].queue_tail->next;
 	}
 
 	/* This is our new item */
-	com = _ai_player[player].queue_tail;
+	com = _ai_company[company].queue_tail;
 
 	/* Assign the info */
 	com->tile  = tile;
@@ -92,7 +92,7 @@ static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uin
  */
 CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc, CommandCallback* callback)
 {
-	PlayerID old_lp;
+	CompanyID old_local_company;
 	CommandCost res;
 	const char* tmp_cmdtext;
 
@@ -113,10 +113,10 @@ CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, u
 	/* Restore _cmd_text */
 	_cmd_text = tmp_cmdtext;
 
-	/* NetworkSend_Command needs _local_player to be set correctly, so
+	/* NetworkSend_Command needs _local_company to be set correctly, so
 	 * adjust it, and put it back right after the function */
-	old_lp = _local_player;
-	_local_player = _current_player;
+	old_local_company = _local_company;
+	_local_company = _current_company;
 
 #ifdef ENABLE_NETWORK
 	/* Send the command */
@@ -129,11 +129,11 @@ CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, u
 #endif
 		/* If we execute BuildCommands directly in SP, we have a big problem with events
 		 *  so we need to delay is for 1 tick */
-		AI_PutCommandInQueue(_current_player, tile, p1, p2, procc, callback);
+		AI_PutCommandInQueue(_current_company, tile, p1, p2, procc, callback);
 	}
 
-	/* Set _local_player back */
-	_local_player = old_lp;
+	/* Set _local_company back */
+	_local_company = old_local_company;
 
 	return res;
 }
@@ -148,20 +148,20 @@ CommandCost AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uin
 /**
  * Run 1 tick of the AI. Don't overdo it, keep it realistic.
  */
-static void AI_RunTick(PlayerID player)
+static void AI_RunTick(CompanyID company)
 {
-	extern void AiNewDoGameLoop(Player *p);
+	extern void AiNewDoGameLoop(Company *c);
 
-	Player *p = GetPlayer(player);
-	_current_player = player;
+	Company *c = GetCompany(company);
+	_current_company = company;
 
 	if (_settings_game.ai.ainew_active) {
-		AiNewDoGameLoop(p);
+		AiNewDoGameLoop(c);
 	} else {
 		/* Enable all kind of cheats the old AI needs in order to operate correctly... */
-		_is_old_ai_player = true;
-		AiDoGameLoop(p);
-		_is_old_ai_player = false;
+		_is_old_ai_company = true;
+		AiDoGameLoop(c);
+		_is_old_ai_company = false;
 	}
 
 	/* AI could change some track, so update signals */
@@ -191,47 +191,47 @@ void AI_RunGameLoop()
 	/* Check for AI-client (so joining a network with an AI) */
 	if (!_networking || _network_server) {
 		/* Check if we want to run AIs (server or SP only) */
-		const Player* p;
+		const Company *c;
 
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_ai) {
+		FOR_ALL_COMPANIES(c) {
+			if (c->is_ai) {
 				/* This should always be true, else something went wrong... */
-				assert(_ai_player[p->index].active);
+				assert(_ai_company[c->index].active);
 
 				/* Run the script */
-				AI_DequeueCommands(p->index);
-				AI_RunTick(p->index);
+				AI_DequeueCommands(c->index);
+				AI_RunTick(c->index);
 			}
 		}
 	}
 
-	_current_player = OWNER_NONE;
+	_current_company = OWNER_NONE;
 }
 
 /**
  * A new AI sees the day of light. You can do here what ever you think is needed.
  */
-void AI_StartNewAI(PlayerID player)
+void AI_StartNewAI(CompanyID company)
 {
-	assert(IsValidPlayerID(player));
+	assert(IsValidCompanyID(company));
 
 	/* Called if a new AI is booted */
-	_ai_player[player].active = true;
+	_ai_company[company].active = true;
 }
 
 /**
- * This AI player died. Give it some chance to make a final puf.
+ * This AI company died. Give it some chance to make a final puf.
  */
-void AI_PlayerDied(PlayerID player)
+void AI_CompanyDied(CompanyID company)
 {
 	/* Called if this AI died */
-	_ai_player[player].active = false;
+	_ai_company[company].active = false;
 
-	if (_players_ainew[player].pathfinder == NULL) return;
+	if (_companies_ainew[company].pathfinder == NULL) return;
 
-	AyStarMain_Free(_players_ainew[player].pathfinder);
-	delete _players_ainew[player].pathfinder;
-	_players_ainew[player].pathfinder = NULL;
+	AyStarMain_Free(_companies_ainew[company].pathfinder);
+	delete _companies_ainew[company].pathfinder;
+	_companies_ainew[company].pathfinder = NULL;
 
 }
 
@@ -244,7 +244,7 @@ void AI_Initialize()
 	AI_Uninitialize();
 
 	memset(&_ai, 0, sizeof(_ai));
-	memset(&_ai_player, 0, sizeof(_ai_player));
+	memset(&_ai_company, 0, sizeof(_ai_company));
 
 	_ai.enabled = true;
 }
@@ -254,5 +254,5 @@ void AI_Initialize()
  */
 void AI_Uninitialize()
 {
-	for (PlayerID p = PLAYER_FIRST; p < MAX_PLAYERS; p++) AI_PlayerDied(p);
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) AI_CompanyDied(c);
 }

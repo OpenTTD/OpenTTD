@@ -279,7 +279,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	if (_settings_game.order.gotodepot) {
 		switch (GetTileType(tile)) {
 			case MP_RAILWAY:
-				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_player)) {
+				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_company)) {
 					if (IsRailDepot(tile)) {
 						order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
 						if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
@@ -289,7 +289,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				break;
 
 			case MP_ROAD:
-				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_player)) {
+				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_company)) {
 					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
 					if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					return order;
@@ -298,7 +298,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 			case MP_STATION:
 				if (v->type != VEH_AIRCRAFT) break;
-				if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
+				if (IsHangar(tile) && IsTileOwner(tile, _local_company)) {
 					order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS);
 					return order;
 				}
@@ -306,7 +306,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 			case MP_WATER:
 				if (v->type != VEH_SHIP) break;
-				if (IsShipDepot(tile) && IsTileOwner(tile, _local_player)) {
+				if (IsShipDepot(tile) && IsTileOwner(tile, _local_company)) {
 					TileIndex tile2 = GetOtherShipDepotTile(tile);
 
 					order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS);
@@ -321,7 +321,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	/* check waypoint */
 	if (IsRailWaypointTile(tile) &&
 			v->type == VEH_TRAIN &&
-			IsTileOwner(tile, _local_player)) {
+			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetWaypointByTile(tile)->index);
 		if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 		return order;
@@ -331,7 +331,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		StationID st_index = GetStationIndex(tile);
 		const Station *st = GetStation(st_index);
 
-		if (st->owner == _current_player || st->owner == OWNER_NONE) {
+		if (st->owner == _current_company || st->owner == OWNER_NONE) {
 			byte facil;
 			(facil = FACIL_DOCK, v->type == VEH_SHIP) ||
 			(facil = FACIL_TRAIN, v->type == VEH_TRAIN) ||
@@ -668,7 +668,7 @@ public:
 		int sel = OrderGetSel();
 		const Order *order = GetVehicleOrder(this->vehicle, sel);
 
-		if (this->vehicle->owner == _local_player) {
+		if (this->vehicle->owner == _local_company) {
 			/* Set the strings for the dropdown boxes. */
 			this->widget[ORDER_WIDGET_COND_VARIABLE].data   = _order_conditional_variable[order == NULL ? 0 : order->GetConditionVariable()];
 			this->widget[ORDER_WIDGET_COND_COMPARATOR].data = _order_conditional_condition[order == NULL ? 0 : order->GetConditionComparator()];
@@ -833,7 +833,7 @@ public:
 					/* Select clicked order */
 					this->selected_order = sel;
 
-					if (this->vehicle->owner == _local_player) {
+					if (this->vehicle->owner == _local_company) {
 						/* Activate drag and drop */
 						SetObjectToPlaceWnd(SPR_CURSOR_MOUSE, PAL_NONE, VHM_DRAG, this);
 					}
@@ -1007,7 +1007,7 @@ public:
 			//('?', OrderClick_Service},
 		};
 
-		if (this->vehicle->owner != _local_player) return ES_NOT_HANDLED;
+		if (this->vehicle->owner != _local_company) return ES_NOT_HANDLED;
 
 		for (uint i = 0; i < lengthof(keytoevent); i++) {
 			if (keycode == keytoevent[i].keycode) {
@@ -1093,7 +1093,7 @@ public:
 };
 
 /**
- * Widget definition for player train orders
+ * Widget definition for "your" train orders
  */
 static const Widget _orders_train_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
@@ -1136,7 +1136,7 @@ static const WindowDesc _orders_train_desc = {
 };
 
 /**
- * Widget definition for player orders (!train)
+ * Widget definition for "your" orders (!train)
  */
 static const Widget _orders_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
@@ -1228,7 +1228,7 @@ void ShowOrdersWindow(const Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 
-	if (v->owner != _local_player) {
+	if (v->owner != _local_company) {
 		new OrdersWindow(&_other_orders_desc, v);
 	} else {
 		new OrdersWindow((v->type == VEH_TRAIN || v->type == VEH_ROAD) ? &_orders_train_desc : &_orders_desc, v);

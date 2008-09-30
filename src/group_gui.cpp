@@ -132,7 +132,7 @@ private:
 	 *
 	 * @param owner The owner of the window
 	 */
-	void BuildGroupList(PlayerID owner)
+	void BuildGroupList(Owner owner)
 	{
 		if (!this->groups.NeedRebuild()) return;
 
@@ -175,7 +175,7 @@ private:
 public:
 	VehicleGroupWindow(const WindowDesc *desc, WindowNumber window_number) : BaseVehicleListWindow(desc, window_number)
 	{
-		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
+		const Owner owner = (Owner)GB(this->window_number, 0, 8);
 		this->vehicle_type = (VehicleType)GB(this->window_number, 11, 5);
 
 		this->caption_color = owner;
@@ -286,14 +286,14 @@ public:
 
 	virtual void OnPaint()
 	{
-		const PlayerID owner = (PlayerID)GB(this->window_number, 0, 8);
+		const Owner owner = (Owner)GB(this->window_number, 0, 8);
 		int x = this->widget[GRP_WIDGET_LIST_VEHICLE].left + 2;
 		int y1 = PLY_WND_PRC__OFFSET_TOP_WIDGET + 2;
 		int max;
 		int i;
 
-		/* If we select the all vehicles, this->list will contain all vehicles of the player
-			* else this->list will contain all vehicles which belong to the selected group */
+		/* If we select the all vehicles, this->list will contain all vehicles of the owner
+		 * else this->list will contain all vehicles which belong to the selected group */
 		this->BuildVehicleList(owner, this->group_sel, IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST);
 		this->SortVehicleList();
 
@@ -310,26 +310,26 @@ public:
 		}
 
 		/* Disable all lists management button when the list is empty */
-		this->SetWidgetsDisabledState(this->vehicles.Length() == 0 || _local_player != owner,
+		this->SetWidgetsDisabledState(this->vehicles.Length() == 0 || _local_company != owner,
 				GRP_WIDGET_STOP_ALL,
 				GRP_WIDGET_START_ALL,
 				GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN,
 				WIDGET_LIST_END);
 
 		/* Disable the group specific function when we select the default group or all vehicles */
-		this->SetWidgetsDisabledState(IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel) || _local_player != owner,
+		this->SetWidgetsDisabledState(IsDefaultGroupID(this->group_sel) || IsAllGroupID(this->group_sel) || _local_company != owner,
 				GRP_WIDGET_DELETE_GROUP,
 				GRP_WIDGET_RENAME_GROUP,
 				GRP_WIDGET_REPLACE_PROTECTION,
 				WIDGET_LIST_END);
 
-		/* Disable remaining buttons for non-local player
-			* Needed while changing _local_player, eg. by cheats
-			* All procedures (eg. move vehicle to another group)
-			*  verify, whether you are the owner of the vehicle,
-			*  so it doesn't have to be disabled
-			*/
-		this->SetWidgetsDisabledState(_local_player != owner,
+		/* Disable remaining buttons for non-local companies
+		 * Needed while changing _local_company, eg. by cheats
+		 * All procedures (eg. move vehicle to another group)
+		 *  verify, whether you are the owner of the vehicle,
+		 *  so it doesn't have to be disabled
+		 */
+		this->SetWidgetsDisabledState(_local_company != owner,
 				GRP_WIDGET_CREATE_GROUP,
 				GRP_WIDGET_AVAILABLE_VEHICLES,
 				WIDGET_LIST_END);
@@ -705,11 +705,11 @@ static WindowDesc _group_desc = {
 	_group_widgets,
 };
 
-void ShowPlayerGroup(PlayerID player, VehicleType vehicle_type)
+void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)
 {
-	if (!IsValidPlayerID(player)) return;
+	if (!IsValidCompanyID(company)) return;
 
 	_group_desc.cls = GetWindowClassForVehicleType(vehicle_type);
-	WindowNumber num = (vehicle_type << 11) | VLW_GROUP_LIST | player;
+	WindowNumber num = (vehicle_type << 11) | VLW_GROUP_LIST | company;
 	AllocateWindowDescFront<VehicleGroupWindow>(&_group_desc, num);
 }

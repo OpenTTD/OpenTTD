@@ -11,7 +11,7 @@
 void SetWindowDirty(const Window *w);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
-void ChangeWindowOwner(PlayerID old_player, PlayerID new_player);
+void ChangeWindowOwner(Owner old_owner, Owner new_owner);
 
 void ResizeWindow(Window *w, int x, int y);
 int PositionMainToolbar(Window *w);

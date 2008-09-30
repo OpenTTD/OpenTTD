@@ -52,7 +52,7 @@ void InitializeTrees();
 void InitializeSigns();
 void InitializeStations();
 void InitializeCargoPackets();
-void InitializePlayers();
+void InitializeCompanies();
 void InitializeCheats();
 void InitializeNPF();
 void InitializeOldNames();
@@ -101,7 +101,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	InitializeTrains();
 	InitializeNPF();
 
-	InitializePlayers();
+	InitializeCompanies();
 	AI_Initialize();
 	InitializeCheats();
 
@@ -151,7 +151,7 @@ static const SaveLoadGlobVarList _date_desc[] = {
 	    SLEG_VAR(_random.state[1],        SLE_UINT32),
 	SLEG_CONDVAR(_cur_town_ctr,           SLE_FILE_U8  | SLE_VAR_U32,  0, 9),
 	SLEG_CONDVAR(_cur_town_ctr,           SLE_UINT32,                 10, SL_MAX_VERSION),
-	    SLEG_VAR(_cur_player_tick_index,  SLE_FILE_U8  | SLE_VAR_U32),
+	    SLEG_VAR(_cur_company_tick_index, SLE_FILE_U8  | SLE_VAR_U32),
 	    SLEG_VAR(_next_competitor_start,  SLE_FILE_U16 | SLE_VAR_U32),
 	    SLEG_VAR(_trees_tick_ctr,         SLE_UINT8),
 	SLEG_CONDVAR(_pause_game,             SLE_UINT8,                   4, SL_MAX_VERSION),

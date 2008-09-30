@@ -327,7 +327,7 @@ static const WindowDesc _terraform_desc = {
 
 void ShowTerraformToolbar(Window *link)
 {
-	if (!IsValidPlayerID(_current_player)) return;
+	if (!IsValidCompanyID(_current_company)) return;
 	Window *w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
 	if (w != NULL && link != NULL) {
 		/* Align the terraform toolbar under the main toolbar and put the linked
@@ -487,7 +487,7 @@ enum EditorTerraformToolbarWidgets {
 	ETTW_INCREASE_SIZE = ETTW_BUTTONS_END, ///< Upwards arrow button to increase terraforming size
 	ETTW_DECREASE_SIZE,                    ///< Downwards arrow button to decrease terraforming size
 	ETTW_NEW_SCENARIO,                     ///< Button for generating a new scenario
-	ETTW_RESET_LANDSCAPE,                  ///< Button for removing all player-owned property
+	ETTW_RESET_LANDSCAPE,                  ///< Button for removing all company-owned property
 };
 
 /**
@@ -557,22 +557,22 @@ static OnButtonClick * const _editor_terraform_button_proc[] = {
 static void ResetLandscapeConfirmationCallback(Window *w, bool confirmed)
 {
 	if (confirmed) {
-		Player *p;
+		Company *c;
 
 		/* Set generating_world to true to get instant-green grass after removing
-		 * player property. */
+		 * company property. */
 		_generating_world = true;
 
-		/* Delete all stations owned by a player */
+		/* Delete all stations owned by a company */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
-			if (IsValidPlayerID(st->owner)) delete st;
+			if (IsValidCompanyID(st->owner)) delete st;
 		}
 
-		/* Delete all players */
-		FOR_ALL_PLAYERS(p) {
-			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
-			delete p;
+		/* Delete all companies */
+		FOR_ALL_COMPANIES(c) {
+			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
+			delete c;
 		}
 		_generating_world = false;
 	}

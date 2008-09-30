@@ -285,7 +285,7 @@ void Order::AssignOrder(const Order &other)
 /**
  * Delete all news items regarding defective orders about a vehicle
  * This could kill still valid warnings (for example about void order when just
- * another order gets added), but assume the player will notice the problems,
+ * another order gets added), but assume the company will notice the problems,
  * when (s)he's changing the orders.
  */
 static void DeleteOrderWarnings(const Vehicle* v)
@@ -437,7 +437,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					}
 				}
 			} else {
-				if (!IsPlayerBuildableVehicleType(v)) return CMD_ERROR;
+				if (!IsCompanyBuildableVehicleType(v)) return CMD_ERROR;
 			}
 
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
@@ -495,7 +495,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!HasOrderPoolFree(1)) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
-	if (v->type == VEH_SHIP && IsHumanPlayer(v->owner) && _settings_game.pf.pathfinder_for_ships != VPF_NPF) {
+	if (v->type == VEH_SHIP && IsHumanCompany(v->owner) && _settings_game.pf.pathfinder_for_ships != VPF_NPF) {
 		/* Make sure the new destination is not too far away from the previous */
 		const Order *prev = NULL;
 		uint n = 0;
@@ -1390,7 +1390,7 @@ void CheckOrders(const Vehicle* v)
 	if (v->FirstShared() != v) return;
 
 	/* Only check every 20 days, so that we don't flood the message log */
-	if (v->owner == _local_player && v->day_counter % 20 == 0) {
+	if (v->owner == _local_company && v->day_counter % 20 == 0) {
 		int n_st, problem_type = -1;
 		const Order *order;
 		int message = 0;

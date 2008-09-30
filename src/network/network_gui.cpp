@@ -87,7 +87,7 @@ enum NetworkGameWindowWidgets {
 
 	NGWW_CONNECTION,    ///< Label in from of connection droplist
 	NGWW_CONN_BTN,      ///< 'Connection' droplist button
-	NGWW_PLAYER,        ///< Panel with editbox to set player name
+	NGWW_CLIENT,        ///< Panel with editbox to set client name
 
 	NGWW_NAME,          ///< 'Name' button
 	NGWW_CLIENTS,       ///< 'Clients' button
@@ -286,7 +286,7 @@ protected:
 public:
 	NetworkGameWindow(const WindowDesc *desc) : QueryStringBaseWindow(NETWORK_NAME_LENGTH, desc)
 	{
-		ttd_strlcpy(this->edit_str_buf, _settings_client.network.player_name, this->edit_str_size);
+		ttd_strlcpy(this->edit_str_buf, _settings_client.network.client_name, this->edit_str_size);
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
 
@@ -295,7 +295,7 @@ public:
 		this->vscroll.cap = 11;
 		this->resize.step_height = NET_PRC__SIZE_OF_ROW;
 
-		this->field = NGWW_PLAYER;
+		this->field = NGWW_CLIENT;
 		this->server = NULL;
 
 		this->servers.SetListing(this->last_sorting);
@@ -339,10 +339,10 @@ public:
 		SetDParam(1, _lan_internet_types_dropdown[_settings_client.network.lan_internet]);
 		this->DrawWidgets();
 
-		/* Edit box to set player name */
-		this->DrawEditBox(NGWW_PLAYER);
+		/* Edit box to set client name */
+		this->DrawEditBox(NGWW_CLIENT);
 
-		DrawString(this->widget[NGWW_PLAYER].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
+		DrawString(this->widget[NGWW_CLIENT].left - 100, 23, STR_NETWORK_PLAYER_NAME, TC_GOLD);
 
 		/* Sort based on widgets: name, clients, compatibility */
 		switch (this->servers.SortType()) {
@@ -446,8 +446,8 @@ public:
 	{
 		this->field = widget;
 		switch (widget) {
-			case NGWW_PLAYER:
-				ShowOnScreenKeyboard(this, NGWW_PLAYER, 0, 0);
+			case NGWW_CLIENT:
+				ShowOnScreenKeyboard(this, NGWW_CLIENT, 0, 0);
 				break;
 
 			case NGWW_CANCEL: // Cancel button
@@ -554,7 +554,7 @@ public:
 
 	virtual void OnMouseLoop()
 	{
-		if (this->field == NGWW_PLAYER) this->HandleEditBox(NGWW_PLAYER);
+		if (this->field == NGWW_CLIENT) this->HandleEditBox(NGWW_CLIENT);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -567,7 +567,7 @@ public:
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
 		EventState state = ES_NOT_HANDLED;
-		if (this->field != NGWW_PLAYER) {
+		if (this->field != NGWW_CLIENT) {
 			if (this->server != NULL) {
 				if (keycode == WKC_DELETE) { // Press 'delete' to remove servers
 					NetworkGameListRemoveItem(this->server);
@@ -578,13 +578,13 @@ public:
 			return state;
 		}
 
-		if (this->HandleEditBoxKey(NGWW_PLAYER, key, keycode, state) == 1) return state; // enter pressed
+		if (this->HandleEditBoxKey(NGWW_CLIENT, key, keycode, state) == 1) return state; // enter pressed
 
 		/* The name is only allowed when it starts with a letter! */
 		if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
-			ttd_strlcpy(_settings_client.network.player_name, this->edit_str_buf, lengthof(_settings_client.network.player_name));
+			ttd_strlcpy(_settings_client.network.client_name, this->edit_str_buf, lengthof(_settings_client.network.client_name));
 		} else {
-			ttd_strlcpy(_settings_client.network.player_name, "Player", lengthof(_settings_client.network.player_name));
+			ttd_strlcpy(_settings_client.network.client_name, "Player", lengthof(_settings_client.network.client_name));
 		}
 		return state;
 	}
@@ -670,7 +670,7 @@ static const Widget _network_game_window_widgets[] = {
 {       WWT_TEXT,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,     9,    85,    23,    35, STR_NETWORK_CONNECTION,           STR_NULL},                         // NGWW_CONNECTION
 { WWT_DROPDOWNIN,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    90,   181,    22,    33, STR_NETWORK_LAN_INTERNET_COMBO,   STR_NETWORK_CONNECTION_TIP},       // NGWW_CONN_BTN
 
-{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   290,   440,    22,    33, STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP},       // NGWW_PLAYER
+{    WWT_EDITBOX,   RESIZE_LR,     COLOUR_LIGHT_BLUE,   290,   440,    22,    33, STR_NETWORK_PLAYER_NAME_OSKTITLE, STR_NETWORK_ENTER_NAME_TIP},       // NGWW_CLIENT
 
 /* LEFT SIDE */
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         10,    70,    42,    53, STR_NETWORK_GAME_NAME,            STR_NETWORK_GAME_NAME_TIP},        // NGWW_NAME
@@ -864,7 +864,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 							_settings_client.network.max_clients    = Clamp(_settings_client.network.max_clients    + widget - NSSW_CLIENTS_TXT,    2, MAX_CLIENTS);
 							break;
 						case NSSW_COMPANIES_BTND: case NSSW_COMPANIES_BTNU:
-							_settings_client.network.max_companies  = Clamp(_settings_client.network.max_companies  + widget - NSSW_COMPANIES_TXT,  1, MAX_PLAYERS);
+							_settings_client.network.max_companies  = Clamp(_settings_client.network.max_companies  + widget - NSSW_COMPANIES_TXT,  1, MAX_COMPANIES);
 							break;
 						case NSSW_SPECTATORS_BTND: case NSSW_SPECTATORS_BTNU:
 							_settings_client.network.max_spectators = Clamp(_settings_client.network.max_spectators + widget - NSSW_SPECTATORS_TXT, 0, MAX_CLIENTS);
@@ -874,7 +874,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 				_left_button_clicked = false;
 				break;
 
-			case NSSW_CLIENTS_TXT:    // Click on number of players
+			case NSSW_CLIENTS_TXT:    // Click on number of clients
 				this->widget_id = NSSW_CLIENTS_TXT;
 				SetDParam(0, _settings_client.network.max_clients);
 				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_NETWORK_NUMBER_OF_CLIENTS,    3, 50, this, CS_NUMERAL, QSF_NONE);
@@ -977,7 +977,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			switch (this->widget_id) {
 				default: NOT_REACHED();
 				case NSSW_CLIENTS_TXT:    _settings_client.network.max_clients    = Clamp(value, 2, MAX_CLIENTS); break;
-				case NSSW_COMPANIES_TXT:  _settings_client.network.max_companies  = Clamp(value, 1, MAX_PLAYERS); break;
+				case NSSW_COMPANIES_TXT:  _settings_client.network.max_companies  = Clamp(value, 1, MAX_COMPANIES); break;
 				case NSSW_SPECTATORS_TXT: _settings_client.network.max_spectators = Clamp(value, 0, MAX_CLIENTS); break;
 			}
 		}
@@ -1046,16 +1046,16 @@ static void ShowNetworkStartServerWindow()
 	new NetworkStartServerWindow(&_network_start_server_window_desc);
 }
 
-static PlayerID NetworkLobbyFindCompanyIndex(byte pos)
+static CompanyID NetworkLobbyFindCompanyIndex(byte pos)
 {
-	/* Scroll through all _network_player_info and get the 'pos' item that is not empty */
-	for (PlayerID i = PLAYER_FIRST; i < MAX_PLAYERS; i++) {
-		if (_network_player_info[i].company_name[0] != '\0') {
+	/* Scroll through all _network_company_info and get the 'pos' item that is not empty */
+	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+		if (!StrEmpty(_network_company_info[i].company_name)) {
 			if (pos-- == 0) return i;
 		}
 	}
 
-	return PLAYER_FIRST;
+	return COMPANY_FIRST;
 }
 
 /** Enum for NetworkLobbyWindow, referring to _network_lobby_window_widgets */
@@ -1071,11 +1071,11 @@ enum NetworkLobbyWindowWidgets {
 };
 
 struct NetworkLobbyWindow : public Window {
-	PlayerID company;        ///< Select company
+	CompanyID company;       ///< Select company
 	NetworkGameList *server; ///< Selected server
 
 	NetworkLobbyWindow(const WindowDesc *desc, NetworkGameList *ngl) :
-			Window(desc), company(INVALID_PLAYER), server(ngl)
+			Window(desc), company(INVALID_COMPANY), server(ngl)
 	{
 		this->vscroll.cap = 10;
 
@@ -1088,7 +1088,7 @@ struct NetworkLobbyWindow : public Window {
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
 		/* Join button is disabled when no company is selected */
-		this->SetWidgetDisabledState(NLWW_JOIN, this->company == INVALID_PLAYER);
+		this->SetWidgetDisabledState(NLWW_JOIN, this->company == INVALID_COMPANY);
 		/* Cannot start new company if there are too many */
 		this->SetWidgetDisabledState(NLWW_NEW, gi->companies_on >= gi->companies_max);
 		/* Cannot spectate if there are too many spectators */
@@ -1107,11 +1107,11 @@ struct NetworkLobbyWindow : public Window {
 				GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
 			}
 
-			DoDrawStringTruncated(_network_player_info[company].company_name, 13, y, TC_BLACK, 135 - 13);
-			if (_network_player_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
+			DoDrawStringTruncated(_network_company_info[company].company_name, 13, y, TC_BLACK, 135 - 13);
+			if (_network_company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
-			if (_network_player_info[company].income >= 0) income = true;
+			if (_network_company_info[company].income >= 0) income = true;
 			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, 145, y);
 
 			pos++;
@@ -1122,7 +1122,7 @@ struct NetworkLobbyWindow : public Window {
 		/* Draw info about selected company when it is selected in the left window */
 		GfxFillRect(174, 39, 403, 75, 157);
 		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING);
-		if (this->company != INVALID_PLAYER) {
+		if (this->company != INVALID_COMPANY) {
 			const uint x = 183;
 			const uint trunc_width = this->widget[NLWW_DETAILS].right - x;
 			y = 80;
@@ -1134,47 +1134,47 @@ struct NetworkLobbyWindow : public Window {
 			DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
 			y += 10;
 
-			SetDParamStr(0, _network_player_info[this->company].company_name);
+			SetDParamStr(0, _network_company_info[this->company].company_name);
 			DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, TC_GOLD, trunc_width);
 			y += 10;
 
-			SetDParam(0, _network_player_info[this->company].inaugurated_year);
+			SetDParam(0, _network_company_info[this->company].inaugurated_year);
 			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, TC_GOLD); // inauguration year
 			y += 10;
 
-			SetDParam(0, _network_player_info[this->company].company_value);
+			SetDParam(0, _network_company_info[this->company].company_value);
 			DrawString(x, y, STR_NETWORK_VALUE, TC_GOLD); // company value
 			y += 10;
 
-			SetDParam(0, _network_player_info[this->company].money);
+			SetDParam(0, _network_company_info[this->company].money);
 			DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, TC_GOLD); // current balance
 			y += 10;
 
-			SetDParam(0, _network_player_info[this->company].income);
+			SetDParam(0, _network_company_info[this->company].income);
 			DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, TC_GOLD); // last year's income
 			y += 10;
 
-			SetDParam(0, _network_player_info[this->company].performance);
+			SetDParam(0, _network_company_info[this->company].performance);
 			DrawString(x, y, STR_NETWORK_PERFORMANCE, TC_GOLD); // performance
 			y += 10;
 
-			SetDParam(0, _network_player_info[this->company].num_vehicle[0]);
-			SetDParam(1, _network_player_info[this->company].num_vehicle[1]);
-			SetDParam(2, _network_player_info[this->company].num_vehicle[2]);
-			SetDParam(3, _network_player_info[this->company].num_vehicle[3]);
-			SetDParam(4, _network_player_info[this->company].num_vehicle[4]);
+			SetDParam(0, _network_company_info[this->company].num_vehicle[0]);
+			SetDParam(1, _network_company_info[this->company].num_vehicle[1]);
+			SetDParam(2, _network_company_info[this->company].num_vehicle[2]);
+			SetDParam(3, _network_company_info[this->company].num_vehicle[3]);
+			SetDParam(4, _network_company_info[this->company].num_vehicle[4]);
 			DrawString(x, y, STR_NETWORK_VEHICLES, TC_GOLD); // vehicles
 			y += 10;
 
-			SetDParam(0, _network_player_info[this->company].num_station[0]);
-			SetDParam(1, _network_player_info[this->company].num_station[1]);
-			SetDParam(2, _network_player_info[this->company].num_station[2]);
-			SetDParam(3, _network_player_info[this->company].num_station[3]);
-			SetDParam(4, _network_player_info[this->company].num_station[4]);
+			SetDParam(0, _network_company_info[this->company].num_station[0]);
+			SetDParam(1, _network_company_info[this->company].num_station[1]);
+			SetDParam(2, _network_company_info[this->company].num_station[2]);
+			SetDParam(3, _network_company_info[this->company].num_station[3]);
+			SetDParam(4, _network_company_info[this->company].num_station[4]);
 			DrawString(x, y, STR_NETWORK_STATIONS, TC_GOLD); // stations
 			y += 10;
 
-			SetDParamStr(0, _network_player_info[this->company].players);
+			SetDParamStr(0, _network_company_info[this->company].clients);
 			DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, TC_GOLD, trunc_width); // players
 		}
 	}
@@ -1193,7 +1193,7 @@ struct NetworkLobbyWindow : public Window {
 				if (id_v >= this->vscroll.cap) break;
 
 				id_v += this->vscroll.pos;
-				this->company = (id_v >= this->server->info.companies_on) ? INVALID_PLAYER : NetworkLobbyFindCompanyIndex(id_v);
+				this->company = (id_v >= this->server->info.companies_on) ? INVALID_COMPANY : NetworkLobbyFindCompanyIndex(id_v);
 				this->SetDirty();
 			} break;
 
@@ -1204,12 +1204,12 @@ struct NetworkLobbyWindow : public Window {
 				break;
 
 			case NLWW_NEW:      // New company
-				_network_playas = PLAYER_NEW_COMPANY;
+				_network_playas = COMPANY_NEW_COMPANY;
 				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
 				break;
 
 			case NLWW_SPECTATE: // Spectate game
-				_network_playas = PLAYER_SPECTATOR;
+				_network_playas = COMPANY_SPECTATOR;
 				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
 				break;
 
@@ -1240,7 +1240,7 @@ static const Widget _network_lobby_window_widgets[] = {
 {     WWT_MATRIX,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,    10,   155,    50,   190, (10 << 8) + 1,               STR_NETWORK_COMPANY_LIST_TIP},     // NLWW_MATRIX
 {  WWT_SCROLLBAR,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   156,   167,    38,   190, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-/* company/player info */
+/* company info */
 {      WWT_PANEL,   RESIZE_NONE,   COLOUR_LIGHT_BLUE,   173,   404,    38,   190, 0x0,                         STR_NULL},                         // NLWW_DETAILS
 
 /* buttons */
@@ -1276,7 +1276,7 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 //  and also makes able to give money to them, kick them (if server)
 //  and stuff like that.
 
-extern void DrawPlayerIcon(PlayerID pid, int x, int y);
+extern void DrawCompanyIcon(CompanyID cid, int x, int y);
 
 // Every action must be of this form
 typedef void ClientList_Action_Proc(byte client_no);
@@ -1326,7 +1326,7 @@ static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 // Here we start to define the options out of the menu
 static void ClientList_Kick(byte client_no)
 {
-	if (client_no < MAX_PLAYERS)
+	if (client_no < MAX_COMPANIES)
 		SEND_COMMAND(PACKET_SERVER_ERROR)(DEREF_CLIENT(client_no), NETWORK_ERROR_KICKED);
 }
 
@@ -1341,7 +1341,7 @@ static void ClientList_Ban(byte client_no)
 		}
 	}
 
-	if (client_no < MAX_PLAYERS) {
+	if (client_no < MAX_COMPANIES) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(DEREF_CLIENT(client_no), NETWORK_ERROR_KICKED);
 	}
 }
@@ -1402,7 +1402,7 @@ struct NetworkClientListPopupWindow : Window {
 			this->proc[i++] = &ClientList_SpeakToClient;
 		}
 
-		if (IsValidPlayerID(ci->client_playas) || ci->client_playas == PLAYER_SPECTATOR) {
+		if (IsValidCompanyID(ci->client_playas) || ci->client_playas == COMPANY_SPECTATOR) {
 			GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, lastof(this->action[i]));
 			this->proc[i++] = &ClientList_SpeakToCompany;
 		}
@@ -1410,8 +1410,8 @@ struct NetworkClientListPopupWindow : Window {
 		this->proc[i++] = &ClientList_SpeakToAll;
 
 		if (_network_own_client_index != ci->client_index) {
-			/* We are no spectator and the player we want to give money to is no spectator and money gifts are allowed */
-			if (IsValidPlayerID(_network_playas) && IsValidPlayerID(ci->client_playas) && _settings_game.economy.give_money) {
+			/* We are no spectator and the company we want to give money to is no spectator and money gifts are allowed */
+			if (IsValidCompanyID(_network_playas) && IsValidCompanyID(ci->client_playas) && _settings_game.economy.give_money) {
 				GetString(this->action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(this->action[i]));
 				this->proc[i++] = &ClientList_GiveMoney;
 			}
@@ -1600,7 +1600,7 @@ struct NetworkClientListWindow : Window
 			}
 
 			/* Filter out spectators */
-			if (IsValidPlayerID(ci->client_playas)) DrawPlayerIcon(ci->client_playas, 64, y + 1);
+			if (IsValidCompanyID(ci->client_playas)) DrawCompanyIcon(ci->client_playas, 64, y + 1);
 
 			DoDrawString(ci->client_name, 81, y, colour);
 

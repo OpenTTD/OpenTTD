@@ -30,17 +30,17 @@ static inline bool AutoslopeCheckForEntranceEdge(TileIndex tile, uint z_new, Slo
 }
 
 /**
- * Tests if autoslope is enabled for _current_player.
+ * Tests if autoslope is enabled for _current_company.
  *
- * Autoslope is disabled for town/industry construction and old ai players.
+ * Autoslope is disabled for town/industry construction and old ai companies.
  *
  * @return true iff autoslope is enabled.
  */
 static inline bool AutoslopeEnabled()
 {
 	return (_settings_game.construction.autoslope &&
-	        ((_current_player < MAX_PLAYERS && !_is_old_ai_player) ||
-	         (_current_player == OWNER_NONE && _game_mode == GM_EDITOR)));
+	        ((_current_company < MAX_COMPANIES && !_is_old_ai_company) ||
+	         (_current_company == OWNER_NONE && _game_mode == GM_EDITOR)));
 }
 
 #endif /* AUTOSLOPE_H */

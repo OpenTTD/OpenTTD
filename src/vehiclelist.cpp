@@ -61,7 +61,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
  * Generate a list of vehicles based on window type.
  * @param list        Pointer to list to add vehicles to
  * @param type        Type of vehicle
- * @param owner       Player to generate list for
+ * @param owner       Company to generate list for
  * @param index       This parameter has different meanings depending on window_type
  *    <ul>
  *      <li>VLW_STATION_LIST:  index of station to generate a list for</li>
@@ -73,7 +73,7 @@ void BuildDepotVehicleList(VehicleType type, TileIndex tile, VehicleList *engine
  *    </ul>
  * @param window_type The type of window the list is for, using the VLW_ flags in vehicle_gui.h
  */
-void GenerateVehicleSortList(VehicleList *list, VehicleType type, PlayerID owner, uint32 index, uint16 window_type)
+void GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, uint32 index, uint16 window_type)
 {
 	list->Clear();
 

@@ -1089,15 +1089,15 @@ static int32 CheckNoiseToleranceLevel(const char *value)
 
 #ifdef ENABLE_NETWORK
 
-static int32 UpdateMinPlayers(int32 p1)
+static int32 UpdateMinActiveClients(int32 p1)
 {
-	CheckMinPlayers();
+	CheckMinActiveClients();
 	return 0;
 }
 
-static int32 UpdatePlayerName(int32 p1)
+static int32 UpdateClientName(int32 p1)
 {
-	NetworkUpdatePlayerName();
+	NetworkUpdateClientName();
 	return 0;
 }
 
@@ -1180,7 +1180,7 @@ static const SettingDescGlobVarList _misc_settings[] = {
 	 SDTG_BOOL("large_aa",                   S, 0, _freetype.large_aa,    false,    STR_NULL, NULL),
 #endif
 	  SDTG_VAR("sprite_cache_size",SLE_UINT, S, 0, _sprite_cache_size,     4, 1, 64, 0, STR_NULL, NULL),
-	  SDTG_VAR("player_face",    SLE_UINT32, S, 0, _player_face,      0,0,0xFFFFFFFF,0, STR_NULL, NULL),
+	  SDTG_VAR("player_face",    SLE_UINT32, S, 0, _company_manager_face,0,0,0xFFFFFFFF,0, STR_NULL, NULL),
 	  SDTG_VAR("transparency_options", SLE_UINT, S, 0, _transparency_opt,  0,0,0x1FF,0, STR_NULL, NULL),
 	  SDTG_VAR("transparency_locks", SLE_UINT, S, 0, _transparency_lock,   0,0,0x1FF,0, STR_NULL, NULL),
 	  SDTG_VAR("invisibility_options", SLE_UINT, S, 0, _invisibility_opt,  0,0, 0xFF,0, STR_NULL, NULL),
@@ -1224,7 +1224,7 @@ static const SettingDesc _gameopt_settings[] = {
  * It is also a bit tricky since you would think that service_interval
  * for example doesn't need to be synched. Every client assigns the
  * service_interval value to the v->service_interval, meaning that every client
- * assigns his value. If the setting was player-based, that would mean that
+ * assigns his value. If the setting was company-based, that would mean that
  * vehicles could decide on different moments that they are heading back to a
  * service depot, causing desyncs on a massive scale. */
 const SettingDesc _patch_settings[] = {
@@ -1470,7 +1470,7 @@ const SettingDesc _patch_settings[] = {
 	  SDTC_VAR(network.server_port,          SLE_UINT16, S, NO,NETWORK_DEFAULT_PORT,0,65535,0,STR_NULL,                                       NULL),
 	 SDTC_BOOL(network.server_advertise,                 S, NO, false,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.lan_internet,          SLE_UINT8, S, NO,     0,        0,        1, 0, STR_NULL,                                       NULL),
-	  SDTC_STR(network.player_name,            SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       UpdatePlayerName),
+	  SDTC_STR(network.client_name,            SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       UpdateClientName),
 	  SDTC_STR(network.server_password,        SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateServerPassword),
 	  SDTC_STR(network.rcon_password,          SLE_STRB, S, NO,  NULL,                        STR_NULL,                                       UpdateRconPassword),
 	  SDTC_STR(network.default_company_pass,   SLE_STRB, S,  0,  NULL,                        STR_NULL,                                       NULL),
@@ -1480,11 +1480,11 @@ const SettingDesc _patch_settings[] = {
 	 SDTC_BOOL(network.autoclean_companies,              S, NO, false,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.autoclean_unprotected, SLE_UINT8, S,D0|NO,  12,     0,         240, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.autoclean_protected,   SLE_UINT8, S,D0|NO,  36,     0,         240, 0, STR_NULL,                                       NULL),
-	  SDTC_VAR(network.max_companies,         SLE_UINT8, S, NO,     8,     1, MAX_PLAYERS, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_companies,         SLE_UINT8, S, NO,     8,     1,MAX_COMPANIES,0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.max_clients,           SLE_UINT8, S, NO,    10,     2, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.max_spectators,        SLE_UINT8, S, NO,    10,     0, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.restart_game_year,     SLE_INT32, S,D0|NO|NC,0, MIN_YEAR, MAX_YEAR, 1, STR_NULL,                                       NULL),
-	  SDTC_VAR(network.min_players,           SLE_UINT8, S, NO,     0,     0,        10,   0, STR_NULL,                                       UpdateMinPlayers),
+	  SDTC_VAR(network.min_active_clients,    SLE_UINT8, S, NO,     0,     0,        10,   0, STR_NULL,                                       UpdateMinActiveClients),
 	SDTC_OMANY(network.server_lang,           SLE_UINT8, S, NO,     0,    35, "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN", STR_NULL, NULL),
 	 SDTC_BOOL(network.reload_cfg,                       S, NO, false,                        STR_NULL,                                       NULL),
 	  SDTC_STR(network.last_host,              SLE_STRB, S,  0, "0.0.0.0",                    STR_NULL,                                       NULL),
@@ -1899,9 +1899,9 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 bool SetPatchValue(uint index, int32 value)
 {
 	const SettingDesc *sd = &_patch_settings[index];
-	/* If an item is player-based, we do not send it over the network
+	/* If an item is company-based, we do not send it over the network
 	 * (if any) to change. Also *hack*hack* we update the _newgame version
-	 * of patches because changing a player-based setting in a game also
+	 * of patches because changing a company-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
 	if (sd->save.conv & SLF_NETWORK_NO) {
 		void *var = GetVariableAddress((_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game, &sd->save);
@@ -1916,7 +1916,7 @@ bool SetPatchValue(uint index, int32 value)
 		return true;
 	}
 
-	/* send non-player-based settings over the network */
+	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
 		return DoCommandP(0, index, value, NULL, CMD_CHANGE_PATCH_SETTING);
 	}

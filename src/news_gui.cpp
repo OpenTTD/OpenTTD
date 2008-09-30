@@ -51,7 +51,7 @@ static void DrawNewsBankrupcy(Window *w, const NewsItem *ni)
 {
 	const CompanyNewsInformation *cni = (const CompanyNewsInformation*)ni->free_data;
 
-	DrawPlayerFace(cni->face, cni->colour, 2, 23);
+	DrawCompanyManagerFace(cni->face, cni->colour, 2, 23);
 	GfxFillRect(3, 23, 3 + 91, 23 + 118, PALETTE_TO_STRUCT_GREY, FILLRECT_RECOLOR);
 
 	SetDParamStr(0, cni->president_name);
@@ -123,26 +123,26 @@ struct NewsSubtypeData {
  * Data common to all news items of a given subtype (actual data)
  */
 static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
-	/* type,             display_mode, flags,                  callback */
-	{ NT_ARRIVAL_PLAYER,  NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_PLAYER
-	{ NT_ARRIVAL_OTHER,   NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_OTHER
-	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCIDENT_TILE
-	{ NT_ACCIDENT,        NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ACCIDENT_VEHICLE
-	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
-	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
-	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
-	{ NT_COMPANY_INFO,    NM_NORMAL,   NF_TILE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
-	{ NT_INDUSTRY_OPEN,   NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OPEN
-	{ NT_INDUSTRY_CLOSE,  NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_CLOSE
-	{ NT_ECONOMY,         NM_NORMAL,   NF_NONE,                NULL                    }, ///< NS_ECONOMY
-	{ NT_INDUSTRY_PLAYER, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_PLAYER
-	{ NT_INDUSTRY_OTHER,  NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OTHER
-	{ NT_INDUSTRY_NOBODY, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_NOBODY
-	{ NT_ADVICE,          NM_SMALL,    NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ADVICE
-	{ NT_NEW_VEHICLES,    NM_NORMAL,   NF_NONE,                DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
-	{ NT_ACCEPTANCE,      NM_SMALL,    NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCEPTANCE
-	{ NT_SUBSIDIES,       NM_NORMAL,   NF_TILE|NF_TILE2,       NULL                    }, ///< NS_SUBSIDIES
-	{ NT_GENERAL,         NM_NORMAL,   NF_TILE,                NULL                    }, ///< NS_GENERAL
+	/* type,               display_mode, flags,                  callback */
+	{ NT_ARRIVAL_COMPANY,  NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_COMPANY
+	{ NT_ARRIVAL_OTHER,    NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ARRIVAL_OTHER
+	{ NT_ACCIDENT,         NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCIDENT_TILE
+	{ NT_ACCIDENT,         NM_THIN,     NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ACCIDENT_VEHICLE
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_TROUBLE
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_MERGER
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_NONE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_BANKRUPT
+	{ NT_COMPANY_INFO,     NM_NORMAL,   NF_TILE,                DrawNewsBankrupcy       }, ///< NS_COMPANY_NEW
+	{ NT_INDUSTRY_OPEN,    NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OPEN
+	{ NT_INDUSTRY_CLOSE,   NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_CLOSE
+	{ NT_ECONOMY,          NM_NORMAL,   NF_NONE,                NULL                    }, ///< NS_ECONOMY
+	{ NT_INDUSTRY_COMPANY, NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_COMPANY
+	{ NT_INDUSTRY_OTHER,   NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_OTHER
+	{ NT_INDUSTRY_NOBODY,  NM_THIN,     NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_INDUSTRY_NOBODY
+	{ NT_ADVICE,           NM_SMALL,    NF_VIEWPORT|NF_VEHICLE, NULL                    }, ///< NS_ADVICE
+	{ NT_NEW_VEHICLES,     NM_NORMAL,   NF_NONE,                DrawNewsNewVehicleAvail }, ///< NS_NEW_VEHICLES
+	{ NT_ACCEPTANCE,       NM_SMALL,    NF_VIEWPORT|NF_TILE,    NULL                    }, ///< NS_ACCEPTANCE
+	{ NT_SUBSIDIES,        NM_NORMAL,   NF_TILE|NF_TILE2,       NULL                    }, ///< NS_SUBSIDIES
+	{ NT_GENERAL,          NM_NORMAL,   NF_TILE,                NULL                    }, ///< NS_GENERAL
 };
 
 /**
@@ -150,14 +150,14 @@ static const struct NewsSubtypeData _news_subtype_data[NS_END] = {
  */
 NewsTypeData _news_type_data[NT_END] = {
 	/* name,              age, sound,           display */
-	{ "arrival_player",    60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_PLAYER
+	{ "arrival_player",    60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_COMPANY
 	{ "arrival_other",     60, SND_1D_APPLAUSE, ND_FULL },  ///< NT_ARRIVAL_OTHER
 	{ "accident",          90, SND_BEGIN,       ND_FULL },  ///< NT_ACCIDENT
 	{ "company_info",      60, SND_BEGIN,       ND_FULL },  ///< NT_COMPANY_INFO
 	{ "open",              90, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OPEN
 	{ "close",             90, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_CLOSE
 	{ "economy",           30, SND_BEGIN,       ND_FULL },  ///< NT_ECONOMY
-	{ "production_player", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_PLAYER
+	{ "production_player", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_COMPANY
 	{ "production_other",  30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_OTHER
 	{ "production_nobody", 30, SND_BEGIN,       ND_FULL },  ///< NT_INDUSTRY_NOBODY
 	{ "advice",           150, SND_BEGIN,       ND_FULL },  ///< NT_ADVICE
@@ -590,7 +590,7 @@ void DeleteStationNews(StationID sid)
 	while (ni != NULL) {
 		NewsItem *next = ni->next;
 		switch (ni->subtype) {
-			case NS_ARRIVAL_PLAYER:
+			case NS_ARRIVAL_COMPANY:
 			case NS_ARRIVAL_OTHER:
 			case NS_ACCEPTANCE:
 				if (ni->data_b == sid) DeleteNewsItem(ni);
@@ -968,21 +968,21 @@ static const Widget _message_options_widgets[] = {
 /* List of news-setting lines (4 widgets for each line).
  * First widget must be number WIDGET_NEWSOPT_START_OPTION
  */
-NEWS_SETTINGS_LINE(26, NT_ARRIVAL_PLAYER,  STR_0206_ARRIVAL_OF_FIRST_VEHICLE),
-NEWS_SETTINGS_LINE(26, NT_ARRIVAL_OTHER,   STR_0207_ARRIVAL_OF_FIRST_VEHICLE),
-NEWS_SETTINGS_LINE(26, NT_ACCIDENT,        STR_0208_ACCIDENTS_DISASTERS),
-NEWS_SETTINGS_LINE(26, NT_COMPANY_INFO,    STR_0209_COMPANY_INFORMATION),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OPEN,   STR_NEWS_INDUSTRY_OPEN),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_CLOSE,  STR_NEWS_INDUSTRY_CLOSE),
-NEWS_SETTINGS_LINE(26, NT_ECONOMY,         STR_020A_ECONOMY_CHANGES),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_PLAYER, STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OTHER,  STR_INDUSTRY_CHANGES_SERVED_BY_OTHER),
-NEWS_SETTINGS_LINE(26, NT_INDUSTRY_NOBODY, STR_OTHER_INDUSTRY_PRODUCTION_CHANGES),
-NEWS_SETTINGS_LINE(26, NT_ADVICE,          STR_020B_ADVICE_INFORMATION_ON_PLAYER),
-NEWS_SETTINGS_LINE(26, NT_NEW_VEHICLES,    STR_020C_NEW_VEHICLES),
-NEWS_SETTINGS_LINE(26, NT_ACCEPTANCE,      STR_020D_CHANGES_OF_CARGO_ACCEPTANCE),
-NEWS_SETTINGS_LINE(26, NT_SUBSIDIES,       STR_020E_SUBSIDIES),
-NEWS_SETTINGS_LINE(26, NT_GENERAL,         STR_020F_GENERAL_INFORMATION),
+NEWS_SETTINGS_LINE(26, NT_ARRIVAL_COMPANY,  STR_0206_ARRIVAL_OF_FIRST_VEHICLE),
+NEWS_SETTINGS_LINE(26, NT_ARRIVAL_OTHER,    STR_0207_ARRIVAL_OF_FIRST_VEHICLE),
+NEWS_SETTINGS_LINE(26, NT_ACCIDENT,         STR_0208_ACCIDENTS_DISASTERS),
+NEWS_SETTINGS_LINE(26, NT_COMPANY_INFO,     STR_0209_COMPANY_INFORMATION),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OPEN,    STR_NEWS_INDUSTRY_OPEN),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_CLOSE,   STR_NEWS_INDUSTRY_CLOSE),
+NEWS_SETTINGS_LINE(26, NT_ECONOMY,          STR_020A_ECONOMY_CHANGES),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_COMPANY, STR_INDUSTRY_CHANGES_SERVED_BY_PLAYER),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_OTHER,   STR_INDUSTRY_CHANGES_SERVED_BY_OTHER),
+NEWS_SETTINGS_LINE(26, NT_INDUSTRY_NOBODY,  STR_OTHER_INDUSTRY_PRODUCTION_CHANGES),
+NEWS_SETTINGS_LINE(26, NT_ADVICE,           STR_020B_ADVICE_INFORMATION_ON_PLAYER),
+NEWS_SETTINGS_LINE(26, NT_NEW_VEHICLES,     STR_020C_NEW_VEHICLES),
+NEWS_SETTINGS_LINE(26, NT_ACCEPTANCE,       STR_020D_CHANGES_OF_CARGO_ACCEPTANCE),
+NEWS_SETTINGS_LINE(26, NT_SUBSIDIES,        STR_020E_SUBSIDIES),
+NEWS_SETTINGS_LINE(26, NT_GENERAL,          STR_020F_GENERAL_INFORMATION),
 
 {   WIDGETS_END},
 };

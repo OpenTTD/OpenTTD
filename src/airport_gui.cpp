@@ -146,7 +146,7 @@ static const WindowDesc _air_toolbar_desc = {
 
 void ShowBuildAirToolbar()
 {
-	if (!IsValidPlayerID(_current_player)) return;
+	if (!IsValidCompanyID(_current_company)) return;
 
 	DeleteWindowByClass(WC_BUILD_TOOLBAR);
 	AllocateWindowDescFront<BuildAirToolbarWindow>(&_air_toolbar_desc, TRANSPORT_AIR);

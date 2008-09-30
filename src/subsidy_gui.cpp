@@ -153,8 +153,7 @@ struct SubsidyListWindow : Window {
 
 				SetupSubsidyDecodeParam(s, 1);
 
-				PlayerID player = GetStation(s->to)->owner;
-				SetDParam(3, player);
+				SetDParam(3, GetStation(s->to)->owner);
 
 				/* Displays the two connected stations */
 				xt = DrawStringTruncated(x + 2, y, STR_202C_FROM_TO, TC_FROMSTRING, width - 2);

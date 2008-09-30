@@ -224,8 +224,8 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		Depot *depot = new Depot(tile);
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
-		MakeShipDepot(tile,  _current_player, DEPOT_NORTH, axis, wc1);
-		MakeShipDepot(tile2, _current_player, DEPOT_SOUTH, axis, wc2);
+		MakeShipDepot(tile,  _current_company, DEPOT_NORTH, axis, wc1);
+		MakeShipDepot(tile2, _current_company, DEPOT_SOUTH, axis, wc2);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile2);
 	}
@@ -314,7 +314,7 @@ static CommandCost DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 fla
 	}
 
 	if (flags & DC_EXEC) {
-		MakeLock(tile, _current_player, dir, wc_lower, wc_upper);
+		MakeLock(tile, _current_company, dir, wc_lower, wc_upper);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile - delta);
 		MarkTileDirtyByTile(tile + delta);
@@ -418,7 +418,7 @@ CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			} else if (p2 == 2) {
 				MakeRiver(tile, Random());
 			} else {
-				MakeCanal(tile, _current_player, Random());
+				MakeCanal(tile, _current_company, Random());
 			}
 			MarkTileDirtyByTile(tile);
 			MarkCanalsAndRiversAroundDirty(tile);
@@ -482,7 +482,7 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 			};
 
 			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
-			if (_current_player == OWNER_WATER) return CMD_ERROR;
+			if (_current_company == OWNER_WATER) return CMD_ERROR;
 			/* move to the middle tile.. */
 			return RemoveShiplift(tile + ToTileIndexDiff(_shiplift_tomiddle_offs[GetSection(tile)]), flags);
 		}
@@ -741,7 +741,7 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_TILE_DEPOT:
 			DrawWaterClassGround(ti);
-			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)), 0, false);
+			DrawWaterStuff(ti, _shipdepot_display_seq[GetSection(ti->tile)], COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile)), 0, false);
 			break;
 	}
 }
@@ -754,7 +754,7 @@ void DrawShipDepotSprite(int x, int y, int image)
 
 	for (; wdts->delta_x != 0x80; wdts++) {
 		Point pt = RemapCoords(wdts->delta_x, wdts->delta_y, wdts->delta_z);
-		DrawSprite(wdts->image, PLAYER_SPRITE_COLOR(_local_player), x + pt.x, y + pt.y);
+		DrawSprite(wdts->image, COMPANY_SPRITE_COLOR(_local_company), x + pt.x, y + pt.y);
 	}
 }
 
@@ -993,7 +993,7 @@ static void DoFloodTile(TileIndex target)
 
 	bool flooded = false; // Will be set to true if something is changed.
 
-	_current_player = OWNER_WATER;
+	_current_company = OWNER_WATER;
 
 	Slope tileh = GetTileSlope(target, NULL);
 	if (tileh != SLOPE_FLAT) {
@@ -1045,7 +1045,7 @@ static void DoFloodTile(TileIndex target)
 		UpdateSignalsInBuffer();
 	}
 
-	_current_player = OWNER_NONE;
+	_current_company = OWNER_NONE;
 }
 
 /**
@@ -1053,7 +1053,7 @@ static void DoFloodTile(TileIndex target)
  */
 static void DoDryUp(TileIndex tile)
 {
-	_current_player = OWNER_WATER;
+	_current_company = OWNER_WATER;
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
@@ -1089,7 +1089,7 @@ static void DoDryUp(TileIndex tile)
 		default: NOT_REACHED();
 	}
 
-	_current_player = OWNER_NONE;
+	_current_company = OWNER_NONE;
 }
 
 /**
@@ -1213,12 +1213,12 @@ static void ClickTile_Water(TileIndex tile)
 	}
 }
 
-static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID new_player)
+static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_owner)
 {
-	if (!IsTileOwner(tile, old_player)) return;
+	if (!IsTileOwner(tile, old_owner)) return;
 
-	if (new_player != PLAYER_SPECTATOR) {
-		SetTileOwner(tile, new_player);
+	if (new_owner != INVALID_OWNER) {
+		SetTileOwner(tile, new_owner);
 		return;
 	}
 
@@ -1227,7 +1227,7 @@ static void ChangeTileOwner_Water(TileIndex tile, PlayerID old_player, PlayerID 
 
 	/* Set owner of canals and locks ... and also canal under dock there was before.
 	 * Check if the new owner after removing depot isn't OWNER_WATER. */
-	if (IsTileOwner(tile, old_player)) SetTileOwner(tile, OWNER_NONE);
+	if (IsTileOwner(tile, old_owner)) SetTileOwner(tile, OWNER_NONE);
 }
 
 static VehicleEnterTileStatus VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)

@@ -120,7 +120,7 @@
 // Minimum % of reliabilty a vehicle has to have before the AI buys it
 #define AI_VEHICLE_MIN_RELIABILTY 60
 
-// The minimum amount of money a player should always have
+// The minimum amount of money a company should always have
 #define AI_MINIMUM_MONEY 15000
 
 // If the most cheap route is build, how much is it going to cost..
@@ -148,7 +148,7 @@
 
 // How many days must there between vehicle checks
 //  The more often, the less non-money-making lines there will be
-//   but the unfair it may seem to a human player
+//   but the unfair it may seem to a human company
 #define AI_DAYS_BETWEEN_VEHICLE_CHECKS 30
 
 // How money profit does a vehicle needs to make to stay in order
@@ -239,10 +239,10 @@ enum {
 #define AI_PATHFINDER_FLAG_BRIDGE 1
 #define AI_PATHFINDER_FLAG_TUNNEL 2
 
-typedef void AiNew_StateFunction(Player *p);
+typedef void AiNew_StateFunction(Company *c);
 
 // ai_new.c
-void AiNewDoGameLoop(Player *p);
+void AiNewDoGameLoop(Company *c);
 
 struct Ai_PathFinderInfo {
 	TileIndex start_tile_tl; ///< tl = top-left
@@ -268,17 +268,17 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c);
 int AiNew_GetRoadDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c);
 DiagDirection AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b);
-bool AiNew_SetSpecialVehicleFlag(Player *p, Vehicle *v, uint flag);
-uint AiNew_GetSpecialVehicleFlag(Player *p, Vehicle *v);
+bool AiNew_SetSpecialVehicleFlag(Company *c, Vehicle *v, uint flag);
+uint AiNew_GetSpecialVehicleFlag(Company *c, Vehicle *v);
 
 // ai_build.c
-bool AiNew_Build_CompanyHQ(Player *p, TileIndex tile);
-CommandCost AiNew_Build_Station(Player *p, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag);
-CommandCost AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag);
-CommandCost AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte flag);
-EngineID AiNew_PickVehicle(Player *p);
-CommandCost AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag);
-CommandCost AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag);
+bool AiNew_Build_CompanyHQ(Company *c, TileIndex tile);
+CommandCost AiNew_Build_Station(Company *c, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag);
+CommandCost AiNew_Build_Bridge(Company *c, TileIndex tile_a, TileIndex tile_b, byte flag);
+CommandCost AiNew_Build_RoutePart(Company *c, Ai_PathFinderInfo *PathFinderInfo, byte flag);
+EngineID AiNew_PickVehicle(Company *c);
+CommandCost AiNew_Build_Vehicle(Company *c, TileIndex tile, byte flag);
+CommandCost AiNew_Build_Depot(Company *c, TileIndex tile, DiagDirection direction, byte flag);
 
 /* The amount of memory reserved for the AI-special-vehicles */
 #define AI_MAX_SPECIAL_VEHICLES 100
@@ -288,7 +288,7 @@ struct Ai_SpecialVehicle {
 	uint32 flag;
 };
 
-struct PlayerAiNew {
+struct CompanyAiNew {
 	uint8 state;
 	uint tick;
 	uint idle;
@@ -338,6 +338,6 @@ struct PlayerAiNew {
 	int to_ic;
 	byte to_type;
 };
-extern PlayerAiNew _players_ainew[MAX_PLAYERS];
+extern CompanyAiNew _companies_ainew[MAX_COMPANIES];
 
 #endif /* AI_TROLLY_H */

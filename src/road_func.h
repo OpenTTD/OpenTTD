@@ -140,26 +140,26 @@ static inline RoadBits AxisToRoadBits(Axis a)
 }
 
 /**
- * Finds out, whether given player has all given RoadTypes available
- * @param PlayerID ID of player
+ * Finds out, whether given company has all given RoadTypes available
+ * @param company ID of company
  * @param rts RoadTypes to test
- * @return true if player has all requested RoadTypes available
+ * @return true if company has all requested RoadTypes available
  */
-bool HasRoadTypesAvail(const PlayerID p, const RoadTypes rts);
+bool HasRoadTypesAvail(const CompanyID company, const RoadTypes rts);
 
 /**
  * Validate functions for rail building.
  * @param rt road type to check.
- * @return true if the current player may build the road.
+ * @return true if the current company may build the road.
  */
 bool ValParamRoadType(const RoadType rt);
 
 /**
- * Get the road types the given player can build.
- * @param p the player to get the roadtypes for.
+ * Get the road types the given company can build.
+ * @param company the company to get the roadtypes for.
  * @return the road types.
  */
-RoadTypes GetPlayerRoadtypes(const PlayerID p);
+RoadTypes GetCompanyRoadtypes(const CompanyID company);
 
 void UpdateLevelCrossing(TileIndex tile, bool sound = true);
 

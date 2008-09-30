@@ -61,7 +61,7 @@ enum {
 /** Packet that wraps a command */
 struct CommandPacket {
 	CommandPacket *next; ///< the next command packet (if in queue)
-	PlayerByte player; ///< player that is executing the command
+	CompanyByte company; ///< company that is executing the command
 	uint32 cmd;        ///< command being executed
 	uint32 p1;         ///< parameter p1
 	uint32 p2;         ///< parameter p2
@@ -81,7 +81,7 @@ enum ClientStatus {
 	STATUS_MAP,        ///< The client is downloading the map
 	STATUS_DONE_MAP,   ///< The client has downloaded the map
 	STATUS_PRE_ACTIVE, ///< The client is catching up the delayed frames
-	STATUS_ACTIVE,     ///< The client is an active player in the game
+	STATUS_ACTIVE,     ///< The client is active within in the game
 };
 
 /** Base socket handler for all TCP sockets */

@@ -111,7 +111,7 @@ struct SignListWindow : Window, SignList {
 		for (uint16 i = this->vscroll.pos; i < this->vscroll.cap + this->vscroll.pos && i < this->vscroll.count; i++) {
 			const Sign *si = this->signs[i];
 
-			if (si->owner != OWNER_NONE) DrawPlayerIcon(si->owner, 4, y + 1);
+			if (si->owner != OWNER_NONE) DrawCompanyIcon(si->owner, 4, y + 1);
 
 			SetDParam(0, si->index);
 			DrawString(22, y, STR_SIGN_NAME, TC_YELLOW);
@@ -349,7 +349,7 @@ static const WindowDesc _query_sign_edit_desc = {
 
 void HandleClickOnSign(const Sign *si)
 {
-	if (_ctrl_pressed && si->owner == _local_player) {
+	if (_ctrl_pressed && si->owner == _local_company) {
 		RenameSign(si->index, NULL);
 		return;
 	}

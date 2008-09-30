@@ -11,7 +11,7 @@
 #include "network_type.h"
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
-void ShowNetworkGiveMoneyWindow(PlayerID player); // PlayerID
+void ShowNetworkGiveMoneyWindow(CompanyID company);
 void ShowNetworkChatQueryWindow(DestType type, int dest);
 void ShowJoinStatusWindow();
 void ShowNetworkGameWindow();

@@ -242,7 +242,7 @@ enum Sprites {
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face
 
-	/* Icon showing player colour. */
+	/* Icon showing company colour. */
 	SPR_PLAYER_ICON = 747,
 
 	/* is itself no foundation sprite, because tileh 0 has no foundation */
@@ -1530,7 +1530,7 @@ enum PaletteSprites {
 	PALETTE_TO_DARK_GREEN       = 0x30E,
 	PALETTE_TO_BLUE             = 0x30F,
 	PALETTE_TO_CREAM            = 0x310,
-	//maybe don't use as player color because it doesn't display in the graphs?
+	//maybe don't use as company color because it doesn't display in the graphs?
 	PALETTE_TO_MAUVE            = 0x311,
 	PALETTE_TO_PURPLE           = 0x312,
 	PALETTE_TO_ORANGE           = 0x313,

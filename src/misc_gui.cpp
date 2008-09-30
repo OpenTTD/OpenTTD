@@ -104,13 +104,13 @@ public:
 	}
 
 	LandInfoWindow(TileIndex tile) : Window(&_land_info_desc) {
-		Player *p = GetPlayer(IsValidPlayerID(_local_player) ? _local_player : PLAYER_FIRST);
+		Company *c = GetCompany(IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
 		Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 
-		Money old_money = p->player_money;
-		p->player_money = INT64_MAX;
+		Money old_money = c->money;
+		c->money = INT64_MAX;
 		CommandCost costclear = DoCommand(tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR);
-		p->player_money = old_money;
+		c->money = old_money;
 
 		/* Because build_date is not set yet in every TileDesc, we make sure it is empty */
 		TileDesc td;
@@ -423,14 +423,14 @@ private:
 	uint64 decode_params[20];
 	StringID message_1;
 	StringID message_2;
-	bool show_player_face;
+	bool show_company_manager_face;
 
 	int y[2];
 
 public:
-	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_player_face) :
+	ErrmsgWindow(Point pt, int width, int height, StringID msg1, StringID msg2, const Widget *widget, bool show_company_manager_face) :
 			Window(pt.x, pt.y, width, height, WC_ERRMSG, widget),
-			show_player_face(show_player_face)
+			show_company_manager_face(show_company_manager_face)
 	{
 		this->duration = _settings_client.gui.errmsg_duration;
 		CopyOutDParam(this->decode_params, 0, lengthof(this->decode_params));
@@ -476,9 +476,9 @@ public:
 		SwitchToErrorRefStack();
 		RewindTextRefStack();
 
-		if (this->show_player_face) {
-			const Player *p = GetPlayer((PlayerID)GetDParamX(this->decode_params, 2));
-			DrawPlayerFace(p->face, p->player_color, 2, 16);
+		if (this->show_company_manager_face) {
+			const Company *c = GetCompany((CompanyID)GetDParamX(this->decode_params, 2));
+			DrawCompanyManagerFace(c->face, c->colour, 2, 16);
 		}
 
 		DrawStringMultiCenter(this->width - 120, y[1], this->message_2, this->width - 2);
@@ -1419,10 +1419,10 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 	void GenerateFileName()
 	{
 		/* Check if we are not a spectator who wants to generate a name..
-		 * Let's use the name of player #0 for now. */
-		const Player *p = GetPlayer(IsValidPlayerID(_local_player) ? _local_player : PLAYER_FIRST);
+		 * Let's use the name of company #0 for now. */
+		const Company *c = GetCompany(IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
 
-		SetDParam(0, p->index);
+		SetDParam(0, c->index);
 		SetDParam(1, _date);
 		GetString(this->edit_str_buf, STR_4004, &this->edit_str_buf[this->edit_str_size - 1]);
 		SanitizeFilename(this->edit_str_buf);

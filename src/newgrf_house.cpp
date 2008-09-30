@@ -579,10 +579,10 @@ bool CanDeleteHouse(TileIndex tile)
 {
 	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
 
-	/* Human players are always allowed to remove buildings, as is water and
+	/* Humans are always allowed to remove buildings, as is water and
 	 * anyone using the scenario editor. */
-	if ((IsValidPlayerID(_current_player) && IsHumanPlayer(_current_player))
-			|| _current_player == OWNER_WATER || _current_player == OWNER_NONE) return true;
+	if ((IsValidCompanyID(_current_company) && IsHumanCompany(_current_company))
+			|| _current_company == OWNER_WATER || _current_company == OWNER_NONE) return true;
 
 	if (HasBit(hs->callback_mask, CBM_HOUSE_DENY_DESTRUCTION)) {
 		uint16 callback_res = GetHouseCallback(CBID_HOUSE_DENY_DESTRUCTION, 0, 0, GetHouseType(tile), GetTownByTile(tile), tile);

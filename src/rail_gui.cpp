@@ -843,7 +843,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 {
 	BuildRailToolbarWindow *w;
 
-	if (!IsValidPlayerID(_current_player)) return;
+	if (!IsValidCompanyID(_current_company)) return;
 	if (!ValParamRailtype(railtype)) return;
 
 	// don't recreate the window if we're clicking on a button and the window exists.
@@ -1718,7 +1718,7 @@ void ReinitGuiAfterToggleElrail(bool disable)
 /** Set the initial (default) railtype to use */
 static void SetDefaultRailGui()
 {
-	if (_local_player == PLAYER_SPECTATOR || !IsValidPlayerID(_local_player)) return;
+	if (_local_company == COMPANY_SPECTATOR || !IsValidCompanyID(_local_company)) return;
 
 	extern RailType _last_built_railtype;
 	RailType rt = (RailType)_settings_client.gui.default_rail_type;
@@ -1745,11 +1745,11 @@ static void SetDefaultRailGui()
 		switch (rt) {
 			case RAILTYPE_END + 0:
 				rt = RAILTYPE_RAIL;
-				while (rt < RAILTYPE_END && !HasRailtypeAvail(_local_player, rt)) rt++;
+				while (rt < RAILTYPE_END && !HasRailtypeAvail(_local_company, rt)) rt++;
 				break;
 
 			case RAILTYPE_END + 1:
-				rt = GetBestRailtype(_local_player);
+				rt = GetBestRailtype(_local_company);
 				break;
 
 			default:

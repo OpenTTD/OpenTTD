@@ -27,7 +27,7 @@ VARDEF uint32 _cur_town_ctr;
 /* Frequency iterator at the same place */
 VARDEF uint32 _cur_town_iter;
 
-VARDEF uint _cur_player_tick_index;
+VARDEF uint _cur_company_tick_index;
 VARDEF uint _next_competitor_start;
 
 /* Determines how often to run the tree loop */
@@ -44,7 +44,7 @@ VARDEF int _palette_animation_counter;
 VARDEF uint32 _frame_counter;
 VARDEF uint32 _realtime_tick;
 
-VARDEF bool _is_old_ai_player; // current player is an oldAI player? (enables a lot of cheats..)
+VARDEF bool _is_old_ai_company; // current company is an oldAI company? (enables a lot of cheats..)
 
 VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;

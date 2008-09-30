@@ -17,13 +17,13 @@ struct Group : PoolItem<Group, GroupID, &_Group_pool> {
 	char *name;                             ///< Group Name
 
 	uint16 num_vehicle;                     ///< Number of vehicles wich belong to the group
-	PlayerByte owner;                       ///< Group Owner
+	OwnerByte owner;                        ///< Group Owner
 	VehicleTypeByte vehicle_type;           ///< Vehicle type of the group
 
 	bool replace_protection;                ///< If set to true, the global autoreplace have no effect on the group
-	uint16 *num_engines;                    ///< Caches the number of engines of each type the player owns (no need to save this)
+	uint16 *num_engines;                    ///< Caches the number of engines of each type the company owns (no need to save this)
 
-	Group(PlayerID owner = INVALID_PLAYER);
+	Group(CompanyID owner = INVALID_COMPANY);
 	virtual ~Group();
 
 	bool IsValid() const;
@@ -41,7 +41,7 @@ static inline bool IsDefaultGroupID(GroupID index)
 }
 
 /**
- * Checks if a GroupID stands for all vehicles of a player
+ * Checks if a GroupID stands for all vehicles of a company
  * @param id_g The GroupID to check
  * @return true is id_g is identical to ALL_GROUP
  */
@@ -73,7 +73,7 @@ static inline uint GetGroupArraySize(void)
  * @param id_e The EngineID of the engine to count
  * @return The number of engines with EngineID id_e in the group
  */
-uint GetGroupNumEngines(PlayerID p, GroupID id_g, EngineID id_e);
+uint GetGroupNumEngines(CompanyID company, GroupID id_g, EngineID id_e);
 
 static inline void IncreaseGroupNumVehicle(GroupID id_g)
 {
@@ -90,6 +90,6 @@ void InitializeGroup();
 void SetTrainGroupID(Vehicle *v, GroupID grp);
 void UpdateTrainGroupID(Vehicle *v);
 void RemoveVehicleFromGroup(const Vehicle *v);
-void RemoveAllGroupsForPlayer(const PlayerID p);
+void RemoveAllGroupsForCompany(const CompanyID company);
 
 #endif /* GROUP_H */
