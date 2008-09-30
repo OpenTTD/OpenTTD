@@ -31,7 +31,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "variables.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "settings_type.h"
 #include "clear_map.h"
 #include "tree_map.h"

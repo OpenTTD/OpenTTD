@@ -13,8 +13,8 @@
 #include "../../tunnelbridge_map.h"
 #include "../ai.h"
 #include "../../variables.h"
-#include "../../player_base.h"
-#include "../../player_func.h"
+#include "../../company_base.h"
+#include "../../company_func.h"
 #include "../../tunnelbridge.h"
 
 

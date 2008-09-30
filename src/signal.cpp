@@ -17,7 +17,7 @@
 #include "track_type.h"
 #include "track_func.h"
 #include "signal_func.h"
-#include "player_func.h"
+#include "company_func.h"
 
 
 /** these are the maximums used for updating signal blocks */

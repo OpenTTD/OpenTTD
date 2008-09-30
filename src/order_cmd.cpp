@@ -10,7 +10,7 @@
 #include "order_base.h"
 #include "waypoint.h"
 #include "command_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "news_func.h"
 #include "saveload.h"
 #include "vehicle_gui.h"

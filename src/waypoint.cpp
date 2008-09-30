@@ -28,7 +28,7 @@
 #include "vehicle_base.h"
 #include "string_func.h"
 #include "signal_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "settings_type.h"
 #include "newgrf_station.h"
 #include "oldpool_func.h"

@@ -29,7 +29,7 @@
 #include "waypoint.h"
 #include "town.h"
 #include "industry.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "airport.h"
 #include "variables.h"
 #include "settings_type.h"

@@ -6,7 +6,7 @@
 #define AUTOSLOPE_H
 
 #include "settings_type.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "depot_func.h"
 
 /**

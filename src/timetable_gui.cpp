@@ -14,7 +14,7 @@
 #include "vehicle_base.h"
 #include "string_func.h"
 #include "gfx_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "order_func.h"
 #include "settings_type.h"
 

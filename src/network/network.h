@@ -5,7 +5,7 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#include "../player_type.h"
+#include "../company_type.h"
 
 #ifdef ENABLE_NETWORK
 

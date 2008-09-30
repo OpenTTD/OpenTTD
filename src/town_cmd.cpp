@@ -16,7 +16,7 @@
 #include "command_func.h"
 #include "industry.h"
 #include "station_base.h"
-#include "player_base.h"
+#include "company_base.h"
 #include "news_func.h"
 #include "saveload.h"
 #include "gui.h"

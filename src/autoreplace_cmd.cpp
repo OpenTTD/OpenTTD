@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "debug.h"
 #include "vehicle_gui.h"
 #include "train.h"

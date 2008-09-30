@@ -33,7 +33,7 @@
 #include "sound_func.h"
 #include "signal_func.h"
 #include "tunnelbridge.h"
-#include "player_base.h"
+#include "company_base.h"
 #include "engine_func.h"
 #include "engine_base.h"
 #include "economy_func.h"

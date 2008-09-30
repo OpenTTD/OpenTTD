@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "landscape.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "variables.h"
 #include "thread.h"
 #include "command_func.h"

@@ -16,11 +16,11 @@
 #include "settings_type.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "order_func.h"
 #include "station_type.h"
 #include "tilehighlight_func.h"
-#include "player_base.h"
+#include "company_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

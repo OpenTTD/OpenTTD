@@ -8,7 +8,7 @@
 #include "aystar.h"
 #include "station_type.h"
 #include "rail_type.h"
-#include "player_type.h"
+#include "company_type.h"
 #include "vehicle_type.h"
 #include "tile_type.h"
 #include "track_type.h"

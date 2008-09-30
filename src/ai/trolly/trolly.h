@@ -6,7 +6,7 @@
 #define AI_TROLLY_H
 
 #include "../../aystar.h"
-#include "../../player_type.h"
+#include "../../company_type.h"
 #include "../../vehicle_type.h"
 #include "../../date_type.h"
 #include "../../engine_type.h"

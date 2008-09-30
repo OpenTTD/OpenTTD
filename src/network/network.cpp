@@ -3,7 +3,7 @@
 /** @file network.cpp Base functions for networking support. */
 
 #include "../stdafx.h"
-#include "../player_type.h"
+#include "../company_type.h"
 
 #ifdef ENABLE_NETWORK
 
@@ -32,7 +32,7 @@
 #include "../core/random_func.hpp"
 #include "../window_func.h"
 #include "../string_func.h"
-#include "../player_func.h"
+#include "../company_func.h"
 #include "../settings_type.h"
 #include "../landscape_type.h"
 #include "../rev.h"
@@ -40,7 +40,7 @@
 	#include "../core/alloc_func.hpp"
 #endif /* DEBUG_DUMP_COMMANDS */
 #include "table/strings.h"
-#include "../player_base.h"
+#include "../company_base.h"
 
 bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?

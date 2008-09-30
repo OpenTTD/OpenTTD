@@ -668,10 +668,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\players.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\queue.cpp"
 				>
 			</File>
@@ -873,6 +869,26 @@
 			</File>
 			<File
 				RelativePath=".\..\src\command_type.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\company_base.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\company_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\company_gui.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\company_manager_face.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\company_type.h"
 				>
 			</File>
 			<File
@@ -1277,26 +1293,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\pbs.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\player_base.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\player_face.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\player_func.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\player_gui.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\player_type.h"
 				>
 			</File>
 			<File
@@ -1744,6 +1740,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\company_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\depot_gui.cpp"
 				>
 			</File>
@@ -1809,10 +1809,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\osk_gui.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\player_gui.cpp"
 				>
 			</File>
 			<File
@@ -1905,6 +1901,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\clear_cmd.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\company_cmd.cpp"
 				>
 			</File>
 			<File

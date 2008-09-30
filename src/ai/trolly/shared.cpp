@@ -7,7 +7,7 @@
 #include "../../debug.h"
 #include "../../map_func.h"
 #include "../../vehicle_base.h"
-#include "../../player_base.h"
+#include "../../company_base.h"
 #include "trolly.h"
 
 int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c)

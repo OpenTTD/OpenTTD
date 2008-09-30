@@ -5,7 +5,7 @@
 #ifndef COMPANY_GUI_H
 #define COMPANY_GUI_H
 
-#include "player_type.h"
+#include "company_type.h"
 
 uint16 GetDrawStringCompanyColor(CompanyID company);
 void DrawCompanyIcon(CompanyID p, int x, int y);

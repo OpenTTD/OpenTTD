@@ -16,7 +16,7 @@
 #include "news_func.h"
 #include "command_func.h"
 #include "saveload.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "debug.h"
 #include "vehicle_gui.h"
 #include "rail_type.h"

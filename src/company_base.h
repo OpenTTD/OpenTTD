@@ -5,7 +5,7 @@
 #ifndef COMPANY_BASE_H
 #define COMPANY_BASE_H
 
-#include "player_type.h"
+#include "company_type.h"
 #include "oldpool.h"
 #include "road_type.h"
 #include "rail_type.h"

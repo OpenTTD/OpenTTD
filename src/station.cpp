@@ -10,7 +10,7 @@
 #include "station_base.h"
 #include "town.h"
 #include "saveload.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "airport.h"
 #include "sprite.h"
 #include "train.h"

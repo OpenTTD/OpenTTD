@@ -14,7 +14,7 @@
 #include "strings_type.h"
 #include "date_type.h"
 #include "vehicle_type.h"
-#include "player_type.h"
+#include "company_type.h"
 #include "core/geometry_type.hpp"
 #include "viewport_type.h"
 #include <list>

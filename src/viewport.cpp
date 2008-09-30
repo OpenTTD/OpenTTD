@@ -40,7 +40,7 @@
 #include "strings_func.h"
 #include "zoom_func.h"
 #include "vehicle_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "settings_type.h"
 #include "station_func.h"
 #include "core/alloc_type.hpp"

@@ -5,7 +5,7 @@
 #ifndef LIVERY_H
 #define LIVERY_H
 
-#include "player_type.h"
+#include "company_type.h"
 
 /* List of different livery schemes. */
 enum LiveryScheme {

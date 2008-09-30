@@ -44,7 +44,7 @@
 #include "sound_func.h"
 #include "string_func.h"
 #include "road_func.h"
-#include "player_base.h"
+#include "company_base.h"
 #include "settings_type.h"
 #include "network/network.h"
 #include "map_func.h"

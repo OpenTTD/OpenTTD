@@ -26,8 +26,8 @@
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "string_func.h"
-#include "player_func.h"
-#include "player_base.h"
+#include "company_func.h"
+#include "company_base.h"
 #include "settings_type.h"
 #include "gamelog.h"
 

@@ -26,7 +26,7 @@
 #include "window_func.h"
 #include "date_func.h"
 #include "sound_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "settings_type.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"

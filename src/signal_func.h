@@ -9,7 +9,7 @@
 #include "tile_type.h"
 #include "direction_type.h"
 #include "track_type.h"
-#include "player_type.h"
+#include "company_type.h"
 
 /**
  * Maps a trackdir to the bit that stores its status in the map arrays, in the

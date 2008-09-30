@@ -11,7 +11,7 @@
 #include "gfx_type.h"
 #include "date_type.h"
 #include "sound_type.h"
-#include "player_type.h"
+#include "company_type.h"
 #include "strings_type.h"
 
 typedef uint16 EngineID;

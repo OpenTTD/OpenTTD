@@ -6,7 +6,7 @@
 #define WINDOW_FUNC_H
 
 #include "window_type.h"
-#include "player_type.h"
+#include "company_type.h"
 
 void SetWindowDirty(const Window *w);
 

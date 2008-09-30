@@ -9,7 +9,7 @@
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "station_base.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "economy_func.h"
 #include "town.h"
 #include "command_func.h"
@@ -26,7 +26,7 @@
 #include "widgets/dropdown_func.h"
 #include "newgrf_cargo.h"
 #include "string_func.h"
-#include "player_base.h"
+#include "company_base.h"
 #include "sortlist_type.h"
 
 #include "table/strings.h"

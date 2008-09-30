@@ -21,7 +21,7 @@
 #include "string_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "widgets/dropdown_type.h"
 #include "widgets/dropdown_func.h"
 #include "tilehighlight_func.h"

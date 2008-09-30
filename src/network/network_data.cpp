@@ -13,7 +13,7 @@
 #include "../core/alloc_func.hpp"
 #include "../string_func.h"
 #include "../date_func.h"
-#include "../player_func.h"
+#include "../company_func.h"
 
 // Add a command to the local command queue
 void NetworkAddCommandQueue(NetworkTCPSocketHandler *cs, CommandPacket *cp)

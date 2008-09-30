@@ -18,7 +18,7 @@
 #include "core/endian_func.hpp"
 #include "map_func.h"
 #include "date_func.h"
-#include "player_func.h"
+#include "company_func.h"
 
 #include "table/strings.h"
 

@@ -19,7 +19,7 @@
 #include "widgets/dropdown_func.h"
 #include "map_func.h"
 #include "statusbar_gui.h"
-#include "player_face.h"
+#include "company_manager_face.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

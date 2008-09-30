@@ -64,7 +64,7 @@
 #include "transparency.h"
 #include "tunnelbridge_map.h"
 #include "vehicle_func.h"
-#include "player_base.h"
+#include "company_base.h"
 #include "tunnelbridge.h"
 #include "engine_func.h"
 #include "elrail_func.h"

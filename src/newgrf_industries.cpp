@@ -19,8 +19,8 @@
 #include "newgrf_town.h"
 #include "window_func.h"
 #include "town.h"
-#include "player_func.h"
-#include "player_base.h"
+#include "company_func.h"
+#include "company_base.h"
 #include "command_func.h"
 
 #include "table/strings.h"

@@ -22,7 +22,7 @@
 #include "newgrf_town.h"
 #include "gfx_func.h"
 #include "date_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "animated_tile_func.h"
 #include "functions.h"
 #include "tunnelbridge_map.h"

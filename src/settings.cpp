@@ -43,7 +43,7 @@
 #include "vehicle_func.h"
 #include "sound_func.h"
 #include "core/alloc_func.hpp"
-#include "player_func.h"
+#include "company_func.h"
 #include "rev.h"
 #ifdef WITH_FREETYPE
 #include "fontcache.h"

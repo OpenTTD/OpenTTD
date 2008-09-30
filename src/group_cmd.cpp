@@ -19,7 +19,7 @@
 #include "autoreplace_base.h"
 #include "autoreplace_func.h"
 #include "string_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "order_func.h"
 #include "oldpool_func.h"
 #include "core/alloc_func.hpp"

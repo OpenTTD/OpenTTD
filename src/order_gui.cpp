@@ -24,7 +24,7 @@
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "settings_type.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "newgrf_cargo.h"
 #include "widgets/dropdown_func.h"
 #include "textbuf_gui.h"

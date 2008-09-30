@@ -18,8 +18,8 @@
 #include "town.h"
 #include "date_func.h"
 #include "debug.h"
-#include "player_func.h"
-#include "player_base.h"
+#include "company_func.h"
+#include "company_base.h"
 #include "signal_func.h"
 
 #include "table/strings.h"

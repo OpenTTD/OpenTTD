@@ -5,7 +5,7 @@
 #ifndef GENWORLD_H
 #define GENWORLD_H
 
-#include "player_type.h"
+#include "company_type.h"
 
 /*
  * Order of these enums has to be the same as in lang/english.txt

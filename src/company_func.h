@@ -6,7 +6,7 @@
 #define COMPANY_FUNC_H
 
 #include "core/math_func.hpp"
-#include "player_type.h"
+#include "company_type.h"
 #include "tile_type.h"
 #include "strings_type.h"
 

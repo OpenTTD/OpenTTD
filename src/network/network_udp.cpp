@@ -21,8 +21,8 @@
 #include "../newgrf_config.h"
 #include "../core/endian_func.hpp"
 #include "../string_func.h"
-#include "../player_base.h"
-#include "../player_func.h"
+#include "../company_base.h"
+#include "../company_func.h"
 #include "../settings_type.h"
 #include "../rev.h"
 

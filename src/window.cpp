@@ -6,7 +6,7 @@
 #include <stdarg.h>
 #include "openttd.h"
 #include "debug.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "gfx_func.h"
 #include "console_func.h"
 #include "console_gui.h"

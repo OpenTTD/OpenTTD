@@ -12,7 +12,7 @@
 #include "tile_type.h"
 #include "date_type.h"
 #include "town_type.h"
-#include "player_type.h"
+#include "company_type.h"
 #include "settings_type.h"
 #include "strings_type.h"
 #include "viewport_type.h"

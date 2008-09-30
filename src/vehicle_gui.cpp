@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"

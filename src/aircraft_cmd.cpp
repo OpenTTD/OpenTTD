@@ -33,7 +33,7 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
-#include "player_func.h"
+#include "company_func.h"
 #include "settings_type.h"
 #include "order_func.h"
 #include "effectvehicle_func.h"
