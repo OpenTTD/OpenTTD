@@ -551,6 +551,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}{LTBLUE}
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}A megtisztítás költsége: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Nincs
 STR_01A7_OWNER                                                  :{BLACK}Tulajdonos: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Az út tulajdonosa: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}A villamossín tulajdonosa: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}A vasúti sín tulajdonosa: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Helyi önkormányzat: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nincs
 STR_01AA_NAME                                                   :{BLACK}Név
@@ -2275,7 +2278,7 @@ STR_SV_STNAME_UPPER                                             :{STRING}-felső
 STR_SV_STNAME_LOWER                                             :{STRING}-alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING}i helikopter-leszálló
 STR_SV_STNAME_FOREST                                            :{STRING}i erdőség
-STR_SV_STNAME_FALLBACK                                          :{STRING}{NUM}. állomás
+STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. állomás
 
 ############ end of savegame specific region!
 

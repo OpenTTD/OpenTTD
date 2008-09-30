@@ -267,6 +267,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}雪地
 STR_012C_MESSAGE                                                :{WHITE}消息
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}默认
 STR_012E_CANCEL                                                 :{BLACK}取消
 STR_012F_OK                                                     :{BLACK}确定
 STR_0130_RENAME                                                 :{BLACK}重命名
@@ -378,6 +379,7 @@ STR_SORT_BY_MAX_SPEED                                           :最大速度
 STR_SORT_BY_MODEL                                               :型号
 STR_SORT_BY_VALUE                                               :价值
 STR_SORT_BY_LENGTH                                              :长度
+STR_SORT_BY_LIFE_TIME                                           :剩余寿命年限
 STR_SORT_BY_FACILITY                                            :车站类型
 STR_SORT_BY_WAITING                                             :等待的货物价值
 STR_SORT_BY_RATING_MAX                                          :货物评价
@@ -777,6 +779,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :游戏选项
 STR_02C6_DIFFICULTY_SETTINGS                                    :难度设定
+STR_MENU_CONFIG_PATCHES                                         :高级设置
 STR_NEWGRF_SETTINGS                                             :NewGRF 设置
 STR_TRANSPARENCY_OPTIONS                                        :透明选项
 STR_GAMEOPTMENU_0A                                              :
@@ -812,7 +815,7 @@ STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}视点 {
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}复制到视点
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}将屏幕中心复制到额外视点中
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}从视点复制
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}将屏幕中心移动到额外试点的位置
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}将屏幕中心移动到额外视点的位置
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}货币单位
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -1016,8 +1019,12 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}汽车 {
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}轮船 {COMMA} 自动更新失败{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飞机 {COMMA} 自动更新失败{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}列车 {COMMA} 在自动升级后过长！
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}当前无车辆更新进行中.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(现金不够)
 
+STR_CONFIG_PATCHES                                              :{BLACK}高级设置
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}显示高级设置
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}高级设置
 
 STR_CONFIG_PATCHES_OFF                                          :关闭
 STR_CONFIG_PATCHES_ON                                           :打开
@@ -1107,6 +1114,7 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :滚动地图
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :关闭
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}地图滚动速度：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}右键模拟: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :关闭
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}开始新游戏时自动暂停: {ORANGE}{STRING}
@@ -1163,8 +1171,20 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}允许�
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}当拖动的时候每 {ORANGE}{STRING} 个地块放置一个信号灯
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}在 {ORANGE}{STRING} 前自动设置旗帜信号
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}使用信号GUI： {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :普通
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :高级
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :高级单行道
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :仅有普通
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :仅有高级
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :全部
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}选择城镇自动扩展布局: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :无道路
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :默认
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :改良道路
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2格
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3格
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :随机
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}主工具栏位置：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :左侧
@@ -1196,6 +1216,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}改变设置值
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}下面一个或多个保养周期的值设置不对，应当在 0%-90% 或 30-800 天之内。
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}火车寻路: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(不推荐)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(推荐)
@@ -1324,6 +1345,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}工业�
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 已运输)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% 已运输)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}工业设施名 - 点击其名以将视野中心移动到它上面
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}距离另一工业设施过近……
 
@@ -1369,8 +1391,15 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}客户端
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}在线客户端 / 最多 - 在线公司 / 最多
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}地图大小
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}游戏地图大小{}Click to sort by area
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}日期
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}当前日期
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}年
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}年数{}游戏正在运行的
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}游戏信息
 STR_NETWORK_CLIENTS                                             :{SILVER}客 户 端：   {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1404,10 +1433,13 @@ STR_NETWORK_LAN                                                 :局域网
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :局域网 / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} 客户端
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}玩家数目：
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}选择可以参加的玩家上限（达不到此数量仍然可以开始游戏）
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} 公司
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}公司数量：
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}限制服务器上可以创建的公司数量
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} 观众
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}旁观数量：
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}限制服务器上旁观者的数量
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}语言选项：
@@ -1617,7 +1649,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}太高�
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}没有合适的铁轨
 STR_1007_ALREADY_BUILT                                          :{WHITE}已经建好了……
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}必须先拆除铁轨
-STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}这是单行道或堵死了
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}这是单行道或这条路被堵死了
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}铁路建设
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}电气化铁路建设
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}单轨铁路建设
@@ -1650,7 +1682,24 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :带有普通信
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :带有入口信号的铁路
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :带有出口信号的铁路
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :双向信号灯的铁路
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :带有高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :带有单向高级信号灯的铁轨
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :单信号灯的铁路
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :带有普通出口信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :带有普通组合信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :带有普通和高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :带有普通和单向高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :带有提前和出口信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :带有提前和组合信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :带有提前和高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :带有提前和单向高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :带有提前和组合信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :带有出口和高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :带有出口和单向高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :带有组合和高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :带有组合和单向高级信号灯的铁轨
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :带有高级和单向高级信号灯的铁轨
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}请先移除火车站
 
 
 
@@ -1658,20 +1707,33 @@ STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :单信号灯的
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}必须先拆除公路
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}正在进行道路工程
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}道路建设
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}电车建设
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}选择公路桥梁
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... 单行道无法连接路口
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}不能在这里修筑公路……
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}此处无法建造电车道...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}不能拆除这里的公路……
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}无法移除此处的电车道...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}汽车车库的方向……
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}建设电车车库
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}不能在这里修建汽车车库……
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}此处无法建造电车车库....
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}不能建设公共汽车站
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}不能建设汽车货场
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}此处无法建设客运电车站...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}此处无法建设货运电车站...
 STR_180A_ROAD_CONSTRUCTION                                      :道路建设
+STR_TRAMWAY_CONSTRUCTION                                        :电车建设
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}建设道路
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}使用多向车道建设工具
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}建设汽车车库 (可以购买或维护车辆)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}建造电车车库(发车与车辆维修)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}建设公共汽车站
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}建设汽车货场
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}建设公路桥梁
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}建设电车大桥
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}建设公路隧道
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}建设电车隧道
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}建设/拆除公路
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}选择汽车车库方向
 STR_1814_ROAD                                                   :公路
@@ -1679,6 +1741,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :带路灯的公
 STR_1816_TREE_LINED_ROAD                                        :林荫公路
 STR_1817_ROAD_VEHICLE_DEPOT                                     :汽车车库
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :公路铁路平交路口
+STR_TRAMWAY                                                     :电车
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}不能移除公共汽车站……
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}不能移除汽车货场
 
@@ -1894,6 +1957,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}选择�
 STR_3804_WATER                                                  :水
 STR_3805_COAST_OR_RIVERBANK                                     :海岸线或河岸
 STR_3806_SHIP_DEPOT                                             :船坞
+STR_AQUEDUCT                                                    :水渠
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}不能在水上建造……
 
 ##id 0x4000
@@ -1907,6 +1971,7 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}不能�
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}保存游戏失败{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}不能删除文件
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}游戏存档读取失败{}{STRING}
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :文件无法读取
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :文件无法写入
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}驱动器、目录和游戏存档列表
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}保存当前游戏用的存档名字
@@ -2646,6 +2711,8 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :前往最近的
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :前往最近的机库
 STR_ORDER_NEAREST_DEPOT                                         :最近的车库
 STR_ORDER_NEAREST_HANGAR                                        :最近的机库
+STR_ORDER_SERVICE_AT                                            :维修在
+STR_ORDER_SERVICE_NON_STOP_AT                                   :维修,不停靠于
 STR_ORDER_TRAIN_DEPOT                                           :火车车库
 STR_ORDER_ROAD_DEPOT                                            :汽车车库
 STR_ORDER_SHIP_DEPOT                                            :船坞
@@ -2653,6 +2720,24 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} 机棚
 
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :装载进度
+STR_ORDER_CONDITIONAL_RELIABILITY                               :可靠性
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :最大速度
+STR_ORDER_CONDITIONAL_AGE                                       :寿命(年)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :需要维修
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :总是
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :等于
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :不等于
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :少于
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :小于等于
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :大于
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :大于等于
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :为是
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :为否
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :跳至 {COMMA}
+STR_CONDITIONAL_NUM                                             :跳至 {COMMA} [ 当 {STRING} {STRING} {COMMA} ]
+STR_CONDITIONAL_TRUE_FALSE                                      :跳至 {COMMA} [ 当 {STRING} {STRING}]
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}旅行 (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}前往 {STRING} 旅行
@@ -2667,6 +2752,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}在 {TO
 
 STR_INVALID_ORDER                                               :{RED} (非法的调度计划)
 
+STR_UNKNOWN_STATION                                             :未知车站
 STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (来自 {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (来自 {STATION} (x{NUM}))
@@ -2699,6 +2785,7 @@ STR_REFIT_TIP                                                   :{BLACK}选择�
 STR_REFIT_ORDER                                                 :(改装为 {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}时间表
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}切换到时间表视图
+STR_ORDER_VIEW                                                  :{BLACK}命令
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (调度计划)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}-- 调度计划结束 --
 STR_SERVICE                                                     :{BLACK}保养
@@ -2707,6 +2794,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   价值：{LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}装载/卸货
+STR_LEAVING                                                     :{LTBLUE}发车
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}列车必须停在一个车库中
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}不能命令列车前往车库……
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}没有多余的调度计划的位置了……
@@ -2776,6 +2864,8 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}重命�
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}不能重命名车辆的类型...
 STR_CLEAR_TIME                                                  :{BLACK}清除时间
 STR_RESET_LATENESS                                              :{BLACK}清除晚点计数器
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}修改路点名
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}正在停止
 STR_TRAIN_STOPPING_VEL                                          :{RED}正在停止，{VELOCITY}
@@ -2847,6 +2937,7 @@ STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}价格�
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}运力： {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} 车辆{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}命名汽车
@@ -3156,6 +3247,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}显示�
 
 ### depot strings
 STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}你将要出售车库中的所有车辆，确定吗？
+STR_DEPOT_WRONG_DEPOT_TYPE                                      :车库类型错误
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}出售车库中的所有列车
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}出售车库中的所有汽车
@@ -3279,6 +3371,8 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}改变�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}改变游戏开始的日期
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}缩放警告
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}城镇扩张警告
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}城镇扩张选项使用“无道路”方式进行是不推荐的.继续么?
 STR_HEIGHTMAP_NAME                                              :{BLACK}高度图名称：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}大小： {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}正在生成地图……
@@ -3373,8 +3467,12 @@ STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMM
 STR_GROUP_ADD_SHARED_VEHICLE                                    :添加共享车辆
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :移除所有车辆
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} 列车
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} 公路车辆
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} 船只
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 飞机
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}移除分组
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}替换"{GROUP}"组的车辆
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}无法新建分组……
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}无法删除分组……
@@ -3413,27 +3511,51 @@ STR_FACE_ADVANCED_TIP                                           :{BLACK}高级�
 STR_FACE_SIMPLE                                                 :{BLACK}简易
 STR_FACE_SIMPLE_TIP                                             :{BLACK}简易头像选项
 STR_FACE_LOAD                                                   :{BLACK}装载
+STR_FACE_LOAD_TIP                                               :{BLACK}载入保存的肖像
+STR_FACE_LOAD_DONE                                              :{WHITE}您保存的肖像已经从配置文件中读入。
 STR_FACE_FACECODE                                               :{BLACK}头像种子
+STR_FACE_FACECODE_TIP                                           :{BLACK}查看与设置肖像编号
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}查看与设置肖像编号
+STR_FACE_FACECODE_SET                                           :{WHITE}新编号已经启用
+STR_FACE_FACECODE_ERR                                           :{WHITE}编号必须在 0 ~ 4,294,967,295 范围内!
 STR_FACE_SAVE                                                   :{BLACK}保存
+STR_FACE_SAVE_TIP                                               :{BLACK}保存此肖像
+STR_FACE_SAVE_DONE                                              :{WHITE}该肖像将被保存至配置文件中
 STR_FACE_EUROPEAN                                               :{BLACK}欧洲人种肖像
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}使用欧洲人种肖像
 STR_FACE_AFRICAN                                                :{BLACK}非洲人种肖像
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}使用非洲人种肖像
 STR_FACE_YES                                                    :是
 STR_FACE_NO                                                     :否
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}改胡子或耳环
 STR_FACE_HAIR                                                   :发型
+STR_FACE_HAIR_TIP                                               :{BLACK}换发型
 STR_FACE_EYEBROWS                                               :眉毛
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}换眉毛
 STR_FACE_EYECOLOUR                                              :颜珠颜色
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}换瞳孔色泽
 STR_FACE_GLASSES                                                :眼镜
+STR_FACE_GLASSES_TIP                                            :{BLACK}使用眼镜
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}换眼镜
 STR_FACE_NOSE                                                   :鼻子
+STR_FACE_NOSE_TIP                                               :{BLACK}改鼻子
 STR_FACE_LIPS                                                   :嘴唇
 STR_FACE_MOUSTACHE                                              :胡子
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}换嘴唇或是胡子
 STR_FACE_CHIN                                                   :下巴
+STR_FACE_CHIN_TIP                                               :{BLACK}换下巴
 STR_FACE_JACKET                                                 :衣着
+STR_FACE_JACKET_TIP                                             :{BLACK}换衬衫
 STR_FACE_COLLAR                                                 :领子
+STR_FACE_COLLAR_TIP                                             :{BLACK}换领子
 STR_FACE_TIE                                                    :领带
 STR_FACE_EARRING                                                :耳环
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}换领带或是耳环
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}单项信号
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}无法转换此处的信号灯…
 ########
 
 ############ on screen keyboard

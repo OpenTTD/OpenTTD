@@ -380,6 +380,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maximal hastigh
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Värde
 STR_SORT_BY_LENGTH                                              :Längd
+STR_SORT_BY_LIFE_TIME                                           :Återstående livstid
 STR_SORT_BY_FACILITY                                            :Stationstyp
 STR_SORT_BY_WAITING                                             :Väntande last-värde
 STR_SORT_BY_RATING_MAX                                          :Lasts-värdering
