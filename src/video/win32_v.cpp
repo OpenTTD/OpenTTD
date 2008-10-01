@@ -285,7 +285,7 @@ static bool MakeWindow(bool full_screen)
 			extern const char _openttd_revision[];
 			TCHAR Windowtitle[50];
 
-			_sntprintf(Windowtitle, sizeof(Windowtitle), _T("OpenTTD %s"), MB_TO_WIDE(_openttd_revision));
+			_sntprintf(Windowtitle, lengthof(Windowtitle), _T("OpenTTD %s"), MB_TO_WIDE(_openttd_revision));
 
 			_wnd.main_wnd = CreateWindow(_T("OTTD"), Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
 			if (_wnd.main_wnd == NULL) error("CreateWindow failed");

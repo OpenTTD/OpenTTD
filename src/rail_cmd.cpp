@@ -1002,8 +1002,8 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	track = TrackdirToTrack(trackdir); /* trackdir might have changed, keep track in sync */
 	Trackdir start_trackdir = trackdir;
 
-	/* Autofill must start on a valid track to be able to avoid loops */
-	if (autofill && !HasTrack(tile, track)) return CMD_ERROR;
+	/* Must start on a valid track to be able to avoid loops */
+	if (!HasTrack(tile, track)) return CMD_ERROR;
 
 	/* copy the signal-style of the first rail-piece if existing */
 	if (HasSignals(tile)) {

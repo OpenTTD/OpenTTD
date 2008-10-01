@@ -36,7 +36,7 @@ static inline int32 SeedChanceBias(int shift_by, int max, uint32 seed, int bias)
 
 static void ReplaceWords(const char *org, const char *rep, char *buf)
 {
-	if (strncmp(buf, org, 4) == 0) strncpy(buf, rep, 4);
+	if (strncmp(buf, org, 4) == 0) strncpy(buf, rep, 4); // Safe as the string in buf is always more than 4 characters long.
 }
 
 static byte MakeEnglishOriginalTownName(char *buf, uint32 seed, const char *last)

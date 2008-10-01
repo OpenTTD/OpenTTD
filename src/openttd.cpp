@@ -425,8 +425,10 @@ int ttd_main(int argc, char *argv[])
 			}
 
 			_switch_mode = SM_NEWGAME;
-			/* Give a random map */
-			generation_seed = InteractiveRandom();
+			/* Give a random map if no seed has been given */
+			if (generation_seed == GENERATE_NEW_SEED) {
+				generation_seed = InteractiveRandom();
+			}
 			break;
 		case 'G': generation_seed = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
