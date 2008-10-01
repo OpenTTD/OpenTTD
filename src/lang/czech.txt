@@ -1085,7 +1085,7 @@ STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Zapnout
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Spojovat stanice postavené vedle sebe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Odjet, když je plně naložen jakýkoli náklad při 'naložit': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Použij vylepšený algoritmus nakládání: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Použít vylepšený algoritmus nakládání: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Nakládat vozidla postupně: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflace: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Dodávat zboží do stanice jen když je poptávka: {ORANGE}{STRING}
@@ -1122,7 +1122,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ano, u všech v
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varovat, pokud vlak prodělává: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozidlům se nikdy nezastaví výroba ('nezastarají'): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky nahradit dopravní prostředek, když zestárne
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před / po dosažení maximálního stáří
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před nebo po dosažení nejvyššího stáří
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimální částka pro automatické obnovení: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Doba zobrazení chybové zprávy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazovat populaci města v jeho popisku: {ORANGE}{STRING}
@@ -1220,9 +1220,9 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Počát
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Ukončit hru v roce: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Plynulé změny ekonomiky (více menších změn)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit kupování podílu z ostatních společností
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat signály každých(é): {ORANGE}{STRING} dilků(y)
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Při tažení umisťovat návěstidla každých(é): {ORANGE}{STRING} dilků(y)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Semafory automaticky stavět do roku: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu signálů: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Okno pro stavbu návěstidel: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vzor "žádné silnice" se neuplatňuje v editoru scénářů
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vzor městských silnic: {ORANGE}{STRING}
@@ -2075,7 +2075,7 @@ STR_482F_COST                                                   :{BLACK}Cena: {Y
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tento druh průmyslu zde nemohu postavit...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... lesy lze vysadit jen nad sněhovou čáru
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} ohlašuje okamžité uzavření!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zásobovací problémy způsobily uzavření {STRING}!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zásobovací problémy způsobily uzavření {STRING.gen}!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatek stromů způsobil uzavření {STRING}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvyšuje produkci!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nové ložisko uhlí nalezené v {INDUSTRY}!{}Zdvojnásobí se produkce!
@@ -2161,10 +2161,10 @@ STR_SV_STNAME_HEIGHTS                                           :{STRING} výši
 STR_SV_STNAME_WOODS                                             :{STRING} polesí
 STR_SV_STNAME_LAKESIDE                                          :{STRING} jezero
 STR_SV_STNAME_EXCHANGE                                          :{STRING} centrála
-STR_SV_STNAME_AIRPORT                                           :{STRING} letiště
-STR_SV_STNAME_OILFIELD                                          :{STRING} ropná plošina
+STR_SV_STNAME_AIRPORT                                           :Letiště {STRING}
+STR_SV_STNAME_OILFIELD                                          :Ropná plošina {STRING}
 STR_SV_STNAME_MINES                                             :{STRING} doly
-STR_SV_STNAME_DOCKS                                             :{STRING} přístav
+STR_SV_STNAME_DOCKS                                             :Přístav {STRING}
 STR_SV_STNAME_BUOY_1                                            :{STRING} bójka 1
 STR_SV_STNAME_BUOY_2                                            :{STRING} bójka 2
 STR_SV_STNAME_BUOY_3                                            :{STRING} bójka 3
@@ -2177,11 +2177,11 @@ STR_SV_STNAME_BUOY_9                                            :{STRING} bójka
 STR_SV_STNAME_ANNEXE                                            :{STRING} přípojné
 STR_SV_STNAME_SIDINGS                                           :{STRING} odstavné
 STR_SV_STNAME_BRANCH                                            :{STRING} odbočka
-STR_SV_STNAME_UPPER                                             :horní {STRING}
-STR_SV_STNAME_LOWER                                             :dolní {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} heliport
+STR_SV_STNAME_UPPER                                             :Horní {STRING}
+STR_SV_STNAME_LOWER                                             :Dolní {STRING}
+STR_SV_STNAME_HELIPORT                                          :Heliport {STRING}
 STR_SV_STNAME_FOREST                                            :{STRING} les
-STR_SV_STNAME_FALLBACK                                          :{STRING} Stanice #{NUM}
+STR_SV_STNAME_FALLBACK                                          :{STRING} Stanice č. {NUM}
 
 ############ end of savegame specific region!
 

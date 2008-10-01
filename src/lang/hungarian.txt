@@ -1083,8 +1083,8 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Foltok b
 STR_CONFIG_PATCHES_OFF                                          :Ki
 STR_CONFIG_PATCHES_ON                                           :Be
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Járművek sebességének kijelzése: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Lejtőre es partokra építés: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Épületek, sinek alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Lejtőre és partokra építés: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Épületek, sínek alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett befogadókörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, stb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
@@ -1427,7 +1427,7 @@ STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Saját s
 STR_NETWORK_GAME_NAME                                           :{BLACK}Név
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Játék neve
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Nyelv, szerver verzió, stb.
-STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Kattints a listában a jatékra hogy kiválaszd
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Kattints a listában a játékra hogy kiválaszd
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Szerver keresése
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Szerver keresése a hálózaton
@@ -1492,8 +1492,8 @@ STR_NETWORK_LANG_ANY                                            :Bármilyen
 STR_NETWORK_LANG_ENGLISH                                        :Angol
 STR_NETWORK_LANG_GERMAN                                         :Német
 STR_NETWORK_LANG_FRENCH                                         :Francia
-STR_NETWORK_LANG_BRAZILIAN                                      :Brazíl
-STR_NETWORK_LANG_BULGARIAN                                      :Bulgár
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazil
+STR_NETWORK_LANG_BULGARIAN                                      :Bolgár
 STR_NETWORK_LANG_CHINESE                                        :Kínai
 STR_NETWORK_LANG_CZECH                                          :Cseh
 STR_NETWORK_LANG_DANISH                                         :Dán
@@ -1526,7 +1526,7 @@ STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Egy list
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Új vállalatot nyit
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Játék megvizsgálása
-STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Megtekinted a játékot mint vizsgálóbiztos
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Megtekinted a játékot mint megfigyelő
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Belépés a cégbe
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Segítesz valakinek egy cégénél (többen 1 céget)
 STR_NETWORK_REFRESH                                             :{BLACK}Szerver frissítése
@@ -2225,7 +2225,7 @@ STR_SV_STNAME_UPPER                                             :{STRING}-felső
 STR_SV_STNAME_LOWER                                             :{STRING}-alsó
 STR_SV_STNAME_HELIPORT                                          :{STRING}i helikopter-leszálló
 STR_SV_STNAME_FOREST                                            :{STRING}i erdőség
-STR_SV_STNAME_FALLBACK                                          :{STRING}{NUM}. állomás
+STR_SV_STNAME_FALLBACK                                          :{STRING} {NUM}. állomás
 
 ############ end of savegame specific region!
 

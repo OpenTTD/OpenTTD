@@ -731,7 +731,7 @@ STR_0290_DELETE                                                 :{BLACK}삭제
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}이 도시를 완전히 삭제
 STR_0292_SAVE_SCENARIO                                          :시나리오 저장
 STR_0293_LOAD_SCENARIO                                          :시나리오 불러오기
-STR_MENU_LOAD_HEIGHTMAP                                         :DEM지형 불러오기
+STR_MENU_LOAD_HEIGHTMAP                                         :Heightmap 불러오기
 STR_0294_QUIT_EDITOR                                            :에디터 종료
 STR_0295                                                        :
 STR_0296_QUIT                                                   :게임 종료
@@ -739,8 +739,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}시나�
 STR_0298_LOAD_SCENARIO                                          :{WHITE}시나리오 불러오기
 STR_0299_SAVE_SCENARIO                                          :{WHITE}시나리오 저장하기
 STR_029A_PLAY_SCENARIO                                          :{BLACK}시나리오 플레이
-STR_PLAY_HEIGHTMAP                                              :{BLACK}DEM지형 플레이
-STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}DEM지형을 풍경으로 하여 게임을 시작합니다.
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Heightmap 플레이
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Heightmap을 풍경으로 하여 게임을 시작합니다.
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}정말 이 시나리오를 종료하시겠습니까?
 STR_029C_QUIT_EDITOR                                            :{WHITE}에디터 종료
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...1200명 이상의 도시에만 건설할 수 있습니다!
@@ -964,8 +964,8 @@ STR_MONTH_DEC                                                   :12월
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}{STATION}(으)로 향하는 중
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}{STATION}(으)로 향하는 중 ({VELOCITY})
-STR_NO_ORDERS                                                   :{LTBLUE}멋대로 다니는 중
-STR_NO_ORDERS_VEL                                               :{LTBLUE}멋대로 다니는 중 ({VELOCITY})
+STR_NO_ORDERS                                                   :{LTBLUE}경로 없음
+STR_NO_ORDERS_VEL                                               :{LTBLUE}경로 없음 ({VELOCITY})
 
 STR_PASSENGERS                                                  :승객
 STR_BAGS                                                        :자루
@@ -1085,7 +1085,7 @@ STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}나무 
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :없음
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :오리지널
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :향상됨
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}DEM 회전: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap 회전: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 시나리오 맵이 받는 높이: {ORANGE}{STRING}
@@ -1384,7 +1384,7 @@ STR_NETWORK_SERVER_VERSION                                      :{SILVER}서버 
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}서버 주소:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}시작 날짜:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}현재 날짜:  {WHITE}{DATE_SHORT}
-STR_NETWORK_PASSWORD                                            :{SILVER}접근 암호를 입력하세요!
+STR_NETWORK_PASSWORD                                            :{SILVER}암호가 걸려있습니다!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}서버 오프라인
 STR_NETWORK_SERVER_FULL                                         :{SILVER}서버가 꽉 참
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}버전 다름
@@ -1398,9 +1398,9 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}새로�
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}게임 제목:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}멀티플레이 게임 선택 메뉴에서 보여질 게임 제목입니다.
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}암호 설정
-STR_NETWORK_PASSWORD_TIP                                        :{BLACK}자유로운 접근을 막고 싶을 때 게임 접근시 암호를 설정할 수 있습니다
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}자유로운 접근을 막고 싶을 때 암호를 설정할 수 있습니다
 STR_NETWORK_SELECT_MAP                                          :{BLACK}맵 선택:
-STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}플레이할 맵을 선택합니다.
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}어떤 맵을 선택하시겠습니까?
 STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :인터넷
@@ -1421,7 +1421,7 @@ STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{S
 STR_NETWORK_START_GAME                                          :{BLACK}서버 열기
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}무작위 맵이나 시나리오로 새로운 네트워크 게임을 시작합니다.
 STR_NETWORK_LOAD_GAME                                           :{BLACK}맵 불러오기
-STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}이미 저장된 멀티플레이 게임을 불러옵니다
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}이미 저장된 멀티플레이 게임을 불러옵니다 (올바른 플레이어로 연결하시기 바랍니다)
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :모든 언어
@@ -1457,10 +1457,10 @@ STR_NETWORK_LANG_UKRAINIAN                                      :우크라이나
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}멀티플레이 준비
 
-STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}참가를 준비중:   {ORANGE}{STRING}
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}참가 준비중:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}이 게임에 있는 회사의 목록입니다. 다른 회사에 같이 참가하거나 (빈 슬롯이 있을 경우) 새로운 회사로 시작할 수 있습니다.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}새로운 회사
-STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}새로운 회사를 설립하여 그 회사로 플레이합니다.
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}새로운 회사를 설립합니다.
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}게임 관전
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}게임에 참여하지 않고 보기만 합니다.
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}회사 참여
@@ -1494,7 +1494,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) �
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}게임 정보 가져오는 중..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}회사 정보 가져오는 중..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}명의 접속자가 먼저 대기중입니다.
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}명의 접속자가 앞에서 대기중입니다.
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} Kb 다운로드
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}접속 끊기
@@ -1513,7 +1513,7 @@ STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} 네트�
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} 세이브 게임을 불러올 수 없습니다
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} 서버를 시작할 수 없습니다
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} 접속할 수 없습니다
-STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} 연결 #{NUM}의 시간이 너무 오래 걸렸습니다
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} 연결 #{NUM}가 시간초과되었습니다.
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} 프로토콜 오류가 발생되어 연결이 끊어졌습니다
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} 이 접속자의 교정내용이 서버의 것과 일치하지 않습니다.
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} 잘못된 암호입니다
@@ -1532,13 +1532,13 @@ STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :프로토콜 �
 STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :NewGRF 안맞음
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :권한 없음
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :이상 패킷 수신
-STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :잘못된 교정
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :잘못된 버전
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :이미 사용중인 이름
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :잘못된 암호
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :잘못된 플레이어 아이디
 STR_NETWORK_ERR_CLIENT_KICKED                                   :강제추방
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :치트 사용 시도
-STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :서버 만원
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :서버 꽉참
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :님이 게임에 참여하셨습니다!
 STR_NETWORK_GIVE_MONEY                                          :님이 ({CURRENCY})의 자금을 송금해주셨습니다.
@@ -1792,7 +1792,7 @@ STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :지역 당국�
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 중간 규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 대규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간의 도로 혼잡을 야기시킬 수 있습니다.{}  가격: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} 도시 도로 네트워크망의 재공사에 투자합니다. 앞으로 6개월간 도로 혼잡을 야기시킬 수 있습니다.{}  가격: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} 당신 회사의 명예의 동상을 건설합니다.{}  가격: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} 도시 상업 건물의 건설에 투자합니다.{}  가격: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} 1년간의 수송 권한 독점권을 구입합니다. 도시 당국은 오직 당신 회사의 역에만 승객과 화물을 허용할 것입니다.{}  가격: {CURRENCY}
@@ -1953,7 +1953,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}선택�
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}새로운 게임 종류를 선택
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}시나리오(녹색), 프리셋 게임(파랑), 무작위 게임 선택
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :신규 무작위 게임 생성
-STR_LOAD_HEIGHTMAP                                              :{WHITE}DEM지형 로드
+STR_LOAD_HEIGHTMAP                                              :{WHITE}Heightmap 로드
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}중간에 {STRING}이/가 있습니다
@@ -2365,12 +2365,12 @@ STR_LIVERY_FREIGHT_TRAM                                         :화물 전차
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}일반 색상 선택
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}열차 색상 선택
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}자동사 색상 선택
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}자동차 색상 선택
 STR_LIVERY_SHIP_TIP                                             :{BLACK}선박 색상 선택
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}항공기 색상 선택
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}선택한 색상을 1차 색상으로 선택
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}선택한 색상을 2차 색상으로 선택
-STR_LIVERY_PANEL_TIP                                            :{BLACK}변경을 원하시면 선택하세요. (2개 이상 선택시 CTRL+클릭)
+STR_LIVERY_PANEL_TIP                                            :{BLACK}색상 스키마 변경을 원하시면 선택하세요. (2개 이상 선택시 CTRL+클릭). 박스를 클릭하여 스키마를 전환합니다.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (증기)
@@ -3081,11 +3081,11 @@ STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF �
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}변경사항 적용
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}파라미터 설정
 STR_NEWGRF_TIP                                                  :{BLACK}당신이 설치한 NewGRF의 모든 목록입니다. 설정을 변경하려면 클릭하세요
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}없는 NewGRF 파일이 있습니다! NewGRF 설치 방법에 대한 매뉴얼을 참고해주십시오
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}NewGRF 파일이 설치되어 있지 않습니다! NewGRF 설치 방법에 대한 매뉴얼을 참고해주십시오
 STR_NEWGRF_FILENAME                                             :{BLACK}파일명: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}게임이 진행중인데 설정을 변경하려고 하면 게임과 충돌할 수도 있습니다.{}정말로 설정을 변경하시겠습니까?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}게임 진행중에 설정을 변경하면 게임이 충돌할 수도 있습니다.{}정말로 설정을 변경하시겠습니까?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}경고: {SILVER}{STRING}
@@ -3110,7 +3110,7 @@ STR_NEWGRF_MOVEUP                                               :{BLACK}위로
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}선택한 NewGRF 파일을 위로 올림
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}아래로
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}선택한 NewGRF 파일을 아래로 내림
-STR_NEWGRF_FILE_TIP                                             :{BLACK}당신이 설치한 NewGRF의 모든 목록입니다. 파라미터를 변경하려면 클릭하세요.
+STR_NEWGRF_FILE_TIP                                             :{BLACK}설치된 NewGRF의 목록입니다. 파라미터를 변경하려면 클릭하세요.
 STR_NEWGRF_PARAMETER                                            :{BLACK}파라미터: {SILVER}{STRING}
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}NewGRF 파라미터 입력
 STR_NEWGRF_NO_INFO                                              :{BLACK}사용가능한 정보 없음
@@ -3124,13 +3124,13 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}파일 �
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}일치하는 파일을 찾을 수 없습니다
 STR_NEWGRF_DISABLED                                             :{RED}사용안함
-STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}매치되는 파일을 찾을 수 없음 (그래픽 로드 충돌)
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}매치되는 파일을 찾을 수 없음 (호환되는 GRF 로드됨)
 
-STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}사라진 파일의 자리에 알맞은 GRF가 로드되었습니다
-STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용불가능합니다
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}없는 파일 대신에 호환되는 GRF가 로드되었습니다
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}사라진 GRF 파일은 사용이 불가능합니다
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}사라진 GRF 파일이 게임 로드에 사용될 수 있습니다
-STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 손실
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류를 위해 버그 리포트를 보관하지 마십시오.{}일시정지를 해제하시겠습니까?
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF 파일 없음
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}일시정지를 해제하면 오류가 발생할 수도 있습니다. 차후에 나오는 오류에 대해서 버그 리포트를 제출하지 마십시오.{}정말로 일시정지를 해제하시겠습니까?
 
 STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{STRING}'는 비동기화 혹은 충돌을 일으킬 수 있습니다.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}'이/가 차고 안에 있지 않으면 차량 길이가 바뀝니다.
@@ -3235,7 +3235,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 �
 
 STR_RAIL_VEHICLES                                               :철도
 STR_ELRAIL_VEHICLES                                             :전기 철도
-STR_MONORAIL_VEHICLES                                           :모노레일
+STR_MONORAIL_VEHICLES                                           :모노레일 차량
 STR_MAGLEV_VEHICLES                                             :자기부상
 
 ############ End of list of rail types
@@ -3275,7 +3275,7 @@ STR_RANDOM_SEED                                                 :{BLACK}무작�
 STR_RANDOM_SEED_HELP                                            :{BLACK}무작위수치를 입력하세요
 STR_LAND_GENERATOR                                              :{BLACK}지형 생성:
 STR_TREE_PLACER                                                 :{BLACK}나무 알고리즘:
-STR_HEIGHTMAP_ROTATION                                          :{BLACK}DEM지형 방향:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Heightmap 방향:
 STR_TERRAIN_TYPE                                                :{BLACK}지형 종류:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}해수면:
 STR_SMOOTHNESS                                                  :{BLACK}부드러움:
@@ -3292,12 +3292,12 @@ STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크�
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}맵 자원의 크기를 너무 키우는 것은 좋지 않습니다. 생성을 계속하시겠습니까?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}도시 설계 경고
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 생성을 계속하시겠습니까?
-STR_HEIGHTMAP_NAME                                              :{BLACK}DEM지형 이름:
+STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap 이름:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}크기: {ORANGE}{NUM} x {NUM}
-STR_GENERATION_WORLD                                            :{WHITE}나는야 신이라네~ 천지창조중...
+STR_GENERATION_WORLD                                            :{WHITE}세계 생성중..
 STR_GENERATION_ABORT                                            :{BLACK}중지
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}천지 창조 중단?
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}신이시여, 세상의 창조를 중단하시겠습니까?
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}세계 생성 중단
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 생성을 중단하시겠습니까?
 STR_PROGRESS                                                    :{WHITE}{NUM}% 완료
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}지형 생성중
@@ -3385,7 +3385,7 @@ STR_GROUP_DEFAULT_ROADS                                         :그룹에 속�
 STR_GROUP_DEFAULT_SHIPS                                         :그룹에 속하지 않은 선박
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :그룹에 속하지 않은 항공기
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
-STR_GROUP_ADD_SHARED_VEHICLE                                    :모든 공유된 차량
+STR_GROUP_ADD_SHARED_VEHICLE                                    :공유된 차량 추가
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
 
 STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} 기차
@@ -3396,13 +3396,13 @@ STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 �
 STR_GROUP_REPLACE_CAPTION                                       :{WHITE}"{GROUP}"의 차량 교체
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}그룹을 만들 수 없습니다...
-STR_GROUP_CAN_T_DELETE                                          :{WHITE}이 그룹을 지울 수 없습니다.
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}이 그룹을 지울 수 없습니다...
 STR_GROUP_CAN_T_RENAME                                          :{WHITE}그룹의 이름을 바꿀 수 없습니다.
-STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}이 구릅의 모든 차량을 제거할 수 없습니다.
-STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}이 그룹에 차량을 추가할 수 없습니다.
-STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}이 구릅에 공유된 차량을 추가할 수 없습니다.
+STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}이 그룹의 모든 차량을 제거할 수 없습니다.
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}이 그룹에 차량을 추가할 수 없습니다...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}이 그룹에 공유된 차량을 추가할 수 없습니다...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 클릭하신 그룹에 속한 차량을 모두 나열합니다
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 클릭한 그룹에 속한 차량을 모두 나열합니다
 STR_GROUP_CREATE_TIP                                            :{BLACK}그룹 만들기
 STR_GROUP_DELETE_TIP                                            :{BLACK}선택한 그룹 삭제
 STR_GROUP_RENAME_TIP                                            :{BLACK}선택한 그룹 이름 바꾸기

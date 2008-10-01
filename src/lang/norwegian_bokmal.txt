@@ -744,8 +744,8 @@ STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start et
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Er du sikker på du vil forlate dette scenariet?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avslutt redigeringsprogrammet
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer med mer en 1200 innbyggere
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen tilbake ett år
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen frem ett år
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen tilbake et år
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen frem et år
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...broens ender må være på land
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
@@ -1051,6 +1051,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Tillat 
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Tillat pengeoverføring til andre firmaer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Uensartede stasjoner: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Fly hastighet faktor: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat gjennomkjøring av stoppesteder på veier som er eid av byene: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillat bygging av nærliggende stasjoner: {ORANGE}{STRING}
 
@@ -1205,12 +1206,15 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Noen eller alle av standard vedlikeholdsintervall(ene) under er inkompatible med valgte instillinger! 5-90{NBSP}% og 30-800 dager er gyldige
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Linjefinner for tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikke anbefalt)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Linjefinner for kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Orginal {RED}(Ikke anbefalt)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Linjefinner for skip: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orginal {BLUE}(Anbefalt)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikke anbefalt)
@@ -1339,7 +1343,7 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til denne nye AI, under konstruksjon. Du kan vente deg problemer. Når du finner ett problem, lag ett skjermbilde av det og post det i forumet. Mor deg!
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til denne nye AI, under konstruksjon. Du kan vente deg problemer. Når du finner et problem, lag et skjermbilde av det og post det i forumet.
 TEMP_AI_ACTIVATED                                               :{WHITE}Advarsel: denne nye AI er fremdeles alfa! Akkurat nå virker kun lastebiler og busser!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}Advarsel: dette er fortsatt eksperimentelt. Vennligst rapporter problemer til truelight@openttd.org.
 
@@ -1453,7 +1457,7 @@ STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Flerspillere spill lobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Prøver å koble til:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}En liste over firma i spillet. Du kan enten bli med i ett eller starte et nytt.
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}En liste over firma i spillet. Du kan enten bli med i et eller starte et nytt.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nytt firma
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Start et nytt firma
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Se på spill
@@ -1755,9 +1759,9 @@ STR_202D_UNTIL                                                  :{YELLOW}, innti
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidietilbud har gått ut:{}{}{STRING} fra {STRING} til {STRING} vil ikke lenger gi subsidier.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidie trukket tilbake:{}{}Frakt av {STRING} fra {STATION} til {STATION} subsidieres ikke lenger.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Subsidietilbud:{}{}Første frakt av {STRING} fra {STRING} til {STRING} vil subsidieres i et år av bystyret!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av ett år!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi 50{NBSP}% mer inntekt i løpet av et år!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi dobbelt så mye inntekt i løpet av et år!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i ett år fra nå!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Frakt av {STRING} fra {STATION} til {STATION} vil gi trippel betaling i løpet i et år fra nå!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie gitt til {COMPANY}!{}{}Transport av {STRING} fra {STATION} til {STATION} vil gi fire ganger så mye inntekt i løpet av et år!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}s bystyre tillater ikke flere flyplasser i denne byen
 STR_2036_COTTAGES                                               :Hytter
@@ -1790,7 +1794,7 @@ STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finansier ombygging av det lokale veinettet. Fører til veiproblemer i seks måneder.{}  Koster: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bygg en statue for å ære firmaet.{} Cost: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finasier byggingen av nye forretningsbygninger i byen .{}  Koster: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kjøp ett års ekslusive transportrettigheter i byen. Bystyret vil kun tillate passasjerer og varer å bruke dine transporttjenester.{} Koster: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kjøp et års ekslusive transportrettigheter i byen. Bystyret vil kun tillate passasjerer og varer å bruke dine transporttjenester.{} Koster: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestikk bystyret til å forbedre vurderingen av firmaet, men du riskerer å bli bøtlagt hvis du blir oppdaget.{}  Koster: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffkkaos i {TOWN}!{}{}Ombygging av veien, finasiert av {COMPANY}, fører med seg seks måneders veiproblemer.
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -2625,7 +2629,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario-heliko
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2-helikopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut-helikopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Melding fra kjøretøysprodusent
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Vi har nettopp designet et nytt {STRING} - er du interessert i ett års ekslusivt bruk av dette, slik vi kan se hvordan det virker før det blir allment tilgjengelig?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Vi har nettopp designet et nytt {STRING} - er du interessert i et års ekslusivt bruk av dette, slik vi kan se hvordan det virker før det blir allment tilgjengelig?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotiv
 STR_8103_ROAD_VEHICLE                                           :kjøretøy
 STR_8104_AIRCRAFT                                               :fly
@@ -3127,6 +3131,9 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Mangler
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Å slå av pause kan gjøre at OpenTTD krasjer. Ikke rapporter feil for etterfølgende krasje.{}Ønsker du virkelig å slå av pause?
 
 STR_NEWGRF_BROKEN                                               :{WHITE}Oppførselen av ny graffikk '{STRING}' er sansynlig til å skape forstyrrelse og/eller kollisjoner.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Det endrer kjøretøyets lengde for '{1:ENGINE}' når ikke i ett depo.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Tog '{VEHICLE}' tilhører '{COMPANY}' har ugyldig lengde. Det er sannsynligvis forårsaket av problemer med ny grafikk. Spillet kan desynkronisere eller kollidere.
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spillet ble lagret i versjon uten trikk støtte. Alle trikker har blitt fjernet.
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Deler:
@@ -3471,8 +3478,8 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Grønt så lenge det er mer enn ett grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Utgangssignal (semafor){}Oppfører seg på samme måte som et vanlig signal ville gjort, men er nødvendig for å riktig farge på inngangs- og kombinasjonspresignaler.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinasjonssignal (semafor){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge «trær» av presignaler.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Vanlig signal (elektrisk){}Signaler trengs for å forhindre togkrasj på jernbanenettverk med mer enn ett tog.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Inngangssignal (elektrisk){}Grønt så lenge det er mer enn ett grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Vanlig signal (elektrisk){}Signaler trengs for å forhindre togkrasj på jernbanenettverk med mer enn et tog.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Inngangssignal (elektrisk){}Grønt så lenge det er mer enn et grønt utgangssignal fra etterfølgende sporseksjon. Ellers rødt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Utgangssignal (elektrisk){}Oppfører seg på samme måte som et vanlig signal ville gjort, men er nødvendig for å riktig farge på inngangs- og kombinasjonspresignaler.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinasjonssignal (elektrisk){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge «trær» av presignaler.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signalkonvertering{}Konverterer signaler til den valgte signaltypen; Ctrl-klikk vil endre eksisterende variant.
