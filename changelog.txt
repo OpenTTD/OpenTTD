@@ -1,3 +1,11 @@
+0.6.3 (2008-10-01)
+------------------------------------------------------------------------
+- Fix: NewGRF VarAction 2 variable 43 for industries saw MP_VOID tiles as land tiles and was inefficient (r14417, r14416, r14415)
+- Fix: Possible buffer overrun/wrong parameter type passed to printf (r14414, r14397)
+- Fix: Generation seed set using -G was always overwritten by -g (r14408)
+- Fix: Do not allow extending signals by dragging in any direction other than the track direction [FS#2202] (r14013)
+
+
 0.6.3-RC1 (2008-09-22)
 ------------------------------------------------------------------------
 - Fix: Invalid v->u.air.targetairport could cause crashes at several places [FS#2300] (r14383, r14344, r14343)

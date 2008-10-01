@@ -278,7 +278,7 @@ typedef unsigned char byte;
 #if defined(__OS2__)
 	#define assert_compile(expr)
 #else
-	#define assert_compile(expr) extern "C" void __ct_assert__(int a[1 - 2 * !(expr)])
+	#define assert_compile(expr) extern const int __ct_assert__[1 - 2 * !(expr)]
 #endif /* __OS2__ */
 
 /* Check if the types have the bitsizes like we are using them */

@@ -1,3 +1,9 @@
+openttd (0.6.3-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Remko Bijker <rubidium@openttd.org>  Wed, 01 Oct 2008 18:48:05 +0200
+
 openttd (0.6.3~rc1-1) unstable; urgency=low
 
   * New upstream release.
