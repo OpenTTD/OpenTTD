@@ -85,8 +85,8 @@ public:
 	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
 	{
 		return
-			IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, TrackFollower::Allow90degTurns()) &&
-			IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, TrackFollower::Allow90degTurns());
+			IsSafeWaitingPosition(Yapf().GetVehicle(), tile, td, true, !TrackFollower::Allow90degTurns()) &&
+			IsWaitingPositionFree(Yapf().GetVehicle(), tile, td, !TrackFollower::Allow90degTurns());
 	}
 
 	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination

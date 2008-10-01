@@ -329,8 +329,8 @@ bool IsSafeWaitingPosition(const Vehicle *v, TileIndex tile, Trackdir trackdir, 
 
 	/* Check for reachable tracks. */
 	ft.m_new_td_bits &= DiagdirReachesTrackdirs(ft.m_exitdir);
-	if (ft.m_new_td_bits == TRACKDIR_BIT_NONE) return include_line_end;
 	if (forbid_90deg) ft.m_new_td_bits &= ~TrackdirCrossesTrackdirs(trackdir);
+	if (ft.m_new_td_bits == TRACKDIR_BIT_NONE) return include_line_end;
 
 	if (ft.m_new_td_bits != TRACKDIR_BIT_NONE && KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
 		/* PBS signal on next trackdir? Safe position. */
