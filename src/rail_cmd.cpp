@@ -2399,7 +2399,16 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 				}
 			};
 
-			td->str = signal_type[GetSignalType(tile, TRACK_UPPER)][GetSignalType(tile, TRACK_LOWER)];
+			uint primary_signal;
+			uint secondary_signal;
+			if (HasSignalOnTrack(tile, TRACK_UPPER)) {
+				primary_signal = GetSignalType(tile, TRACK_UPPER);
+				secondary_signal = HasSignalOnTrack(tile, TRACK_LOWER) ? GetSignalType(tile, TRACK_LOWER) : primary_signal;
+			} else {
+				secondary_signal = primary_signal = GetSignalType(tile, TRACK_LOWER);
+			}
+
+			td->str = signal_type[secondary_signal][primary_signal];
 			break;
 		}
 
