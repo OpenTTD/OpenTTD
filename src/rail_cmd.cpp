@@ -2399,8 +2399,8 @@ static void GetTileDesc_Track(TileIndex tile, TileDesc *td)
 				}
 			};
 
-			uint primary_signal;
-			uint secondary_signal;
+			SignalType primary_signal;
+			SignalType secondary_signal;
 			if (HasSignalOnTrack(tile, TRACK_UPPER)) {
 				primary_signal = GetSignalType(tile, TRACK_UPPER);
 				secondary_signal = HasSignalOnTrack(tile, TRACK_LOWER) ? GetSignalType(tile, TRACK_LOWER) : primary_signal;
