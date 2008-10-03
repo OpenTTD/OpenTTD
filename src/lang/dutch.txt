@@ -595,8 +595,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Bedrijf
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Openen van industriën
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Sluiten van industriën
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Veranderingen in de economie
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Productie wijzigingen van bedrijven bezocht door het bedrijf
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Productie veranderingen van industriën bezocht door tegenstander(s)
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andere productie aanpassingen van industriën
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Advies / informatie over bedrijfsvoertuigen
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nieuwe voertuigen
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Verandering geaccepteerde goederen
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidies
@@ -1246,6 +1248,7 @@ STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Keuzevakjes geven aan of je deze cheat al ooit gebruikt hebt.
 STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je concurrenten te verraden. Bedenk dat zo'n schande eeuwig wordt onthouden.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Verhoog geld met {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spelen als bedrijf: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
@@ -1577,6 +1580,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :raar pakket ont
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :foute revisie
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :naam al in gebruik
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :fout spel-wachtwoord
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :verkeerde bedrijfs-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :geschopt door server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probeerde vals te spelen
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server is vol
@@ -2262,6 +2266,7 @@ STR_HOSTILE                                                     :Negatief
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Bedrijf {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nieuw gezicht
 STR_7005_COLOR_SCHEME                                           :{BLACK}Kleurenschema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Kleurenschema:
@@ -3540,6 +3545,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klik om 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

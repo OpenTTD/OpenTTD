@@ -596,8 +596,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Abertura de indústrias
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Fechamento de indústrias
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Alterações econômicas
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Mudanças na produção das indústrias servidas pela companhia
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Mudanças na produção de indústrias providas pelo(s) competidor(es)
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Outras mudanças de produção das indústrias
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Notícias / informações sobre os veículos da companhia
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Novos veículos
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Alterações de aceitação de carga
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsídios
@@ -1247,6 +1249,7 @@ STR_CHEATS                                                      :{WHITE}Trapaça
 STR_CHEATS_TIP                                                  :{BLACK}As caixas de verificação indicam se esta trapaça já foi usada antes
 STR_CHEATS_WARNING                                              :{BLACK}Atenção! Você está prestes a trair os seus oponentes. Saiba que isto ficará registrado para sempre.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando pela Co.: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permitir construção quando em pausa: {ORANGE}{STRING}
@@ -1578,6 +1581,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recebido um pac
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versão incorreta
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nome já está em uso
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :senha incorreta
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :wrong company-id in DoCommand (ERRO)
 STR_NETWORK_ERR_CLIENT_KICKED                                   :expulso pelo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :estava tentando trapacear
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheio
@@ -2263,6 +2267,7 @@ STR_HOSTILE                                                     :Hostil
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Companhia {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Novo Rosto
 STR_7005_COLOR_SCHEME                                           :{BLACK}Cores
 STR_7006_COLOR_SCHEME                                           :{GOLD}Cores:
@@ -3541,6 +3546,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clique p
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

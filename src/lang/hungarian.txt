@@ -658,8 +658,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Céginf
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Új gazdasági épületek megjelenése
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Gazdasági épületek bezárása
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Gazdasági változások
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}A vállalat által kiszolgált ipari létesítmények termelékenységének változásai
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Termelésváltozások a konkurrenseid által szállított ipari cégeknél
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Más ipari termelési változások
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}A vállalat járműveire vonatkozó ötletek / információk
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Új járművek
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Áruk elfogadásának változásai
 STR_020E_SUBSIDIES                                              :{YELLOW}Támogatások
@@ -1050,6 +1052,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nem lehe
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nem lehet másolni a menetrendet...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Megosztott menetrend vége - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}A(z) {COMMA}. vonat  nem talál megfelelő utat a továbbhaladáshoz.
 STR_TRAIN_IS_LOST                                               :{WHITE}{COMMA}. vonat eltévedt.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}{COMMA}. vonat profitja az elmúlt évben: {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Európai Pénzügyi Únió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
@@ -1122,6 +1125,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Tömegs
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtható állomások engedélyezése városi utakra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Több NewGRF járműgarnitúra engedélyezése: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Mindig engedélyezze a kis repülőtereket: {ORANGE}{STRING}
 
@@ -1364,6 +1368,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Nem lehe
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Zsilip építése
 STR_LANDINFO_LOCK                                               :Zsilip
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Nem lehet ide folyót elhelyezni...
 STR_LANDINFO_RIVER                                              :Folyó
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... a bóját használják!
@@ -2039,6 +2044,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Válaszd
 STR_3804_WATER                                                  :Víz
 STR_3805_COAST_OR_RIVERBANK                                     :Tenger- vagy folyópart
 STR_3806_SHIP_DEPOT                                             :Dokk
+STR_AQUEDUCT                                                    :Vízvezeték
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...nem építhető vízen
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}A csatornát előbb le kell rombolni
 
@@ -2796,7 +2802,31 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}A kijel�
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijelölt célponton a felpakodási szokások beállítása
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a lepakodási szokások beállítása
 
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Menj a legközelebbi járműtelepre
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Menj a legközelebbi hangárba
 
+STR_ORDER_CONDITIONAL                                           :Feltételes ugrás utasításra
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hogyan viszonyul a jármű kiválasztott adata a megadott értékhez
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Az érték amihez a jármű egy tulajdonságát hasonlítjuk
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Írd be a számot amihez hasonlítani szeretnél
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Töltöttségi állapot
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Megbízhatóság
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximális sebesség
+STR_ORDER_CONDITIONAL_AGE                                       :Életkor (év)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Szervízre van szüksége
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Mindig
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :egyenlő
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nem egyenlő
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :kevesebb, mint
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :nem több, mint
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :több, mint
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :nem kevesebb, mint
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :igaz
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :hamis
+STR_CONDITIONAL_UNCONDITIONAL                                   :Ugorj a(z) {COMMA}. utasításra
+STR_CONDITIONAL_NUM                                             :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Útipont (időzítetlen)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Menjen {STRING} állomásra
@@ -2843,6 +2873,8 @@ STR_REFIT_TIP                                                   :{BLACK}Válaszd
 STR_REFIT_ORDER                                                 :(Átalakít erre: {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Menetrend
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Átkapcsolás menetrendi nézetre
+STR_ORDER_VIEW                                                  :{BLACK}Menetrend
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Átkapcsolás a menetrend utasítástáblájára
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} menetrendje
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Menetrend vége - -
 STR_SERVICE                                                     :{BLACK}Javítás
@@ -3015,6 +3047,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nem lehe
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Válaszd ki a közúti jármű által szállítandó rakományt
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Vízi utak építése
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Vízi utak építése
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Vízi utak
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nem építhetsz ide kikötőt...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}i dokk
 STR_9804_NEW_SHIPS                                              :{BLACK}Új hajók
@@ -3067,6 +3102,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nem neve
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első hajó {STATION} állomásra!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Bója lerakása, ami az útvonal pontosítására használható
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Nem rakhatsz ide bóját...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Vízvezeték építése
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Nem lehet ide vízvezetéket építeni...
 STR_9836_RENAME                                                 :{BLACK}Átnevez
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}A hajó márkanevének megváltoztatása
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Márkanév megváltoztatása
@@ -3166,6 +3203,9 @@ STR_BRIBE_FAILED                                                :{WHITE}A megves
 STR_BRIBE_FAILED_2                                              :{WHITE}lefülelte egy helyi nyomozó!
 STR_BUILD_DATE                                                  :{BLACK}Építve: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Állomás osztálya: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Állomás típusa: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Teljesítményértékelések részletezése
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Részletek
@@ -3199,10 +3239,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Megszerz
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF beállítások
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf beállítások
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Alkalmazás
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palettaváltás
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}A kiválasztott NewGRF palettájának váltása.{}Akkor használd, ha a NewGRF-ból származó grafikai elemek rózsaszínként jelennek meg
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Paraméterek beállítása
 STR_NEWGRF_TIP                                                  :{BLACK}Az általad felinstallált newgrf csomagok listája. Kattints a csomagra a beállítások módosításához.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Jelenleg nincsennek newgrf csomagok felinstallálva. Olvasd el a manuálban, hogyan kell installálni az új grafikákat.
 STR_NEWGRF_FILENAME                                             :{BLACK}Fájlnév: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Paletta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Te éppen a jelenleg futó játékot akarod megváltoztatni; ettől elszállhat az OpenTTD.{}Teljesen biztos vagy benne, hogy ezt akarod?
@@ -3537,6 +3580,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}A névne
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Következő felirat
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Előző felirat
+STR_SIGN_OSKTITLE                                               :{BLACK}Felirat szövegének szerkesztése
 
 ########
 
@@ -3600,10 +3644,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Általá
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Belépő-szignál (szemafor){}Mindaddig zöld, amíg van legalább egy zöld kilépő-szignál az utánakövetkező szakaszon. Egyébként pirosat mutat.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Kilépő-szignál (szemafor){}Ugyanúgy viselkedik mint az általános szignál, de megléte elengedhetetlenül szükséges a belépő- és a kombó-szignálok működéséhez.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombó-szignál (szemafor){}A kombó szignál voltaképpen egy kilépő- és egy belépő-szignál egybeépítve. Segítségével előjelző szignálokból lehet nagy "fákat" kialakítani.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Fejlett szignál (szemafor){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. A fejlett szignálok mellett hátulról is át lehet hajtani.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Egyirányú fejlett szignál (szemafor){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. Az egyirányú szignálok mellett nem lehet hátulról áthajtani.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Általános szignál (lámpa){}A szignálok feladata a vonatok összeütközésének megakadályozása a többvonatos vasúti hálózatokon.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Belépő-szignál (lámpa){}Mindaddig zöld, amíg van legalább egy zöld kilépő-szignál az utánakövetkező szakaszon. Egyébként pirosat mutat.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Kilépő-szignál (lámpa){}Ugyanúgy viselkedik mint az általános szignál, de megléte elengedhetetlenül szükséges a belépő- és a kombó-szignálok működéséhez.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombó-szignál (lámpa){}A kombó szignál voltaképpen egy kilépő- és egy belépő-szignál egybeépítve. Segítségével előjelző szignálokból lehet nagy "fákat" kialakítani.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Fejlett szignál (lámpa){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. A fejlett szignálok mellett hátulról is át lehet hajtani.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Egyirányú fejlett szignál (lámpa){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. Az egyirányú szignálok mellett nem lehet hátulról áthajtani.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Szignál Átalakító{}Amikor ki van jelölve, egy meglévő szignálra kattintással átkonvertálja a kiválasztott szignál-típusra és -variációra, CTRL+kattintás a variációt fogja változtatni.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Automata szignálsűrűség
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Automata szignáltávolság csökkentése

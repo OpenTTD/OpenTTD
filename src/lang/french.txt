@@ -596,8 +596,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Ouvertures d'industries
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Fermetures d'industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Changements économiques
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Changements de production des industries desservies par la compagnie
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Changements de production des industries desservies par les autres
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Changement de production des industries non desservies
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Conseils / information sur les véhicules de la compagnie
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nouveaux véhicules
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changements d'acceptation de marchandises
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventions
@@ -1247,6 +1249,7 @@ STR_CHEATS                                                      :{WHITE}Triches
 STR_CHEATS_TIP                                                  :{BLACK}Les cases à cocher indiquent que vous avez déjà utilisé cette triche auparavant
 STR_CHEATS_WARNING                                              :{BLACK}Attention ! Vous êtes sur le point de trahir vos adversaires. Gardez en tête qu'une telle honte sera gardée en mémoire pour l'éternité.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Augmenter l'argent de {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jouer en tant que compagnie: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magique (enlèvement industries et objets fixes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Les tunnels peuvent se croiser: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construire pendant le mode pause: {ORANGE}{STRING}
@@ -1578,6 +1581,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :paquet étrange
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :révision incorrecte
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nom déjà utilisé
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :mot de passe de partie incorrect
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :mauvais company-id dans DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :jeté par le serveur
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :a tenté de tricher
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Serveur complet
@@ -2263,6 +2267,7 @@ STR_HOSTILE                                                     :Hostile
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Compagnie {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nouveau visage
 STR_7005_COLOR_SCHEME                                           :{BLACK}Couleur
 STR_7006_COLOR_SCHEME                                           :{GOLD}Couleur:
@@ -3541,6 +3546,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Cliquer 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

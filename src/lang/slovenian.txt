@@ -637,8 +637,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Odpiranje industrij
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zapiranje industrij
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomske spremembe
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Sprememba proizvodnje industrij v oskrbi podjetja
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Proizvodne spremembe industrij v oskrbi tekmecev
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Spremembe proizvodnje drugih industrij
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Nasveti / informacije o vozilih podjetja
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vozila
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Spremebe v sprejemanju tovora
 STR_020E_SUBSIDIES                                              :{YELLOW}Subvencije
@@ -1288,6 +1290,7 @@ STR_CHEATS                                                      :{WHITE}Goljufij
 STR_CHEATS_TIP                                                  :{BLACK}Kljukice kažejo, če so bile goljufije že kdaj uporabljene
 STR_CHEATS_WARNING                                              :{BLACK}Pozor! Nameravaš izdati svoje tekmece. Tako sramotno dejanje bo zabeleženo za vselej.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Povečaj denar za {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Igra kot podjetje: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čarobni buldožer (odstrani tovarne, neodstranljive objekte): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli se lahko križajo pod zemljo: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Zgrajeno med pavzo: {ORANGE}{STRING}
@@ -1619,6 +1622,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :sprejet je bil 
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :napačna različica
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :ime je že v uporabi
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :napačno geslo
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :napačna oznaka podjetja v DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :brcnjen od gostitelja
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :je poskusil/a uporabiti goljufanje
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :gostitelj zaseden
@@ -2342,6 +2346,7 @@ STR_HOSTILE                                                     :Sovražno
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Podjetje {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nov obraz
 STR_7005_COLOR_SCHEME                                           :{BLACK}Barvna shema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Barvna shema:
@@ -3620,6 +3625,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikni z
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

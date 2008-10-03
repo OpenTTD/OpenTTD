@@ -454,7 +454,7 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Das Wartungsintervall kann nicht geändert werden...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Fenster schließen
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titelleiste verschieben um das Fenster zu bewegen
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titelleiste verschieben, um das Fenster zu bewegen
 STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch die "schließe alle Fenster"-Taste geschlossen
 STR_RESIZE_BUTTON                                               :{BLACK}Klicken und Ziehen zum Größe ändern
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardspielstandsverzeichnis zu gehen
@@ -596,8 +596,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmend
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Eröffnung von Industrien
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Schließung von Industrien
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Produktionsänderung bei vom Unternehmen belieferten Industrien
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsänderung von Industrien, die ein Gegner bedient
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andere Produktionsänderungen
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Rat / Informationen zu Fahrzeugen des Unternehmens
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Neue Fahrzeuge
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Änderungen akzeptierter Fracht
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventionen
@@ -1031,7 +1033,7 @@ STR_CONFIG_PATCHES_ON                                           :An
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Fahrzeuggeschwindigkeit in der Statusleiste anzeigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Erlaube das Bauen an Hängen und Küsten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Landschaftsbau unter Gebäuden, Schienen, usw. erlauben: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Aktiviere realistische Einzugsgebiete: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Stationsarten haben verschieden große Einzugsgebiete: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erlaube das Bauen von sehr langen Zügen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistische Zugbeschleunigung aktivieren: {ORANGE}{STRING}
@@ -1042,7 +1044,7 @@ STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Fahrzeu
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Industrien beliefern nur Stationen mit passendem Transport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erlaube das Bauen von sehr langen Brücken: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Erlaube "Gehe zum Depot"-Aufträge im Fahrplan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Erlaube "Fahre zum Depot"-Aufträge im Fahrplan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Manueller Bau von Rohstoffindustrien: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nicht erlaubt
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :wie andere Industrien
@@ -1059,7 +1061,7 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Bestech
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Erlaube den Erwerb exklusiver Transportrechte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Erlaube es, anderen Firmen Geld zu schenken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ungleichmäßige Bahnhöfe: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen um schwere Züge zu simulieren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Frachtgewicht erhöhen, um schwere Züge zu simulieren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Flugzeug-Geschwindigkeitsfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Bushaltestellen an städtischen Straßen erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Bau angrenzender Stationen erlauben: {ORANGE}{STRING}
@@ -1067,7 +1069,7 @@ STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Mehrere
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Warnung wenn der Zug verloren ist: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Warnung, wenn sich ein Zug verirrt hat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Fahrpläne prüfen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nein
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, aber ohne gestoppte Fahrzeuge
@@ -1206,8 +1208,8 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :langsam
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :mittel
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :schnell
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :sehr schnell
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Anteil der Städte die doppelt so schnell wachsen: {ORANGE}jede {STRING}.
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Anteil der Städte die doppelt so schnell wachsen: {ORANGE}keine
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Anteil der Städte, die doppelt so schnell wachsen: {ORANGE}jede {STRING}.
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Anteil der Städte, die doppelt so schnell wachsen: {ORANGE}keine
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Startmultiplikator der Stadtgröße: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Entferne absurde Straßenteile während des Straßenbaus
 
@@ -1247,8 +1249,9 @@ STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Die Kontrollkästchen zeigen an, ob dieser Cheat schonmal verwendet worden ist.
 STR_CHEATS_WARNING                                              :{BLACK}Achtung! Sie sind im Begriff, Ihre Mitspieler zu betrügen. Bedenken Sie, dass sie Ihnen das niemals verzeihen werden.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Kontostand um {CURRENCY} erhöhen
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiele das Unternehmen: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Mächtigeres Abrisswerkzeug: {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnel dürfen sich kreuzen {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnel dürfen sich kreuzen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bauen im Pausenmodus: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Flugzeuge stürzen auf kleinen Flughäfen nicht häufiger ab: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Wechsle Klima: {ORANGE} {STRING}
@@ -1578,6 +1581,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :Unerwartetes Da
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :Falsche Version
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :Name wird bereits verwendet
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :Falsches Spielpasswort
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :Falsche Unternehmens-ID in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :ausgeschlossen
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :hat versucht zu mogeln
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Server voll
@@ -2011,7 +2015,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Neues Sp
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Wähle Szenario (grün), vorgegebens Spiel (blau), oder ein Spiel nach dem Zufallsprinzip
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Spiel nach Zufallsprinzip erstellen
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Reliefkarte laden
-STR_SAVE_OSKTITLE                                               :{BLACK}Name für das savegame eingeben
+STR_SAVE_OSKTITLE                                               :{BLACK}Name für den Spielstand eingeben
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} im Weg
@@ -2263,6 +2267,7 @@ STR_HOSTILE                                                     :Feindlich
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Unternehmen {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Neues Gesicht
 STR_7005_COLOR_SCHEME                                           :{BLACK}Farbauswahl
 STR_7006_COLOR_SCHEME                                           :{GOLD}Farbauswahl:
@@ -2703,10 +2708,10 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Zug ist 
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}ohne Halt
-STR_ORDER_GO_TO                                                 :Gehe zu
-STR_ORDER_GO_NON_STOP_TO                                        :Gehe ohne Halt zu
-STR_ORDER_GO_VIA                                                :Gehe über
-STR_ORDER_GO_NON_STOP_VIA                                       :Gehe ohne Halt über
+STR_ORDER_GO_TO                                                 :Fahre zu
+STR_ORDER_GO_NON_STOP_TO                                        :Fahre ohne Halt nach
+STR_ORDER_GO_VIA                                                :Fahre über
+STR_ORDER_GO_NON_STOP_VIA                                       :Fahre ohne Halt über
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vollladen einer Fracht
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lade wenn verfügbar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Vollladen jeder Fracht
@@ -2737,12 +2742,12 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ändert 
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Erweiterten Befehl einfügen
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gehe zum nächsten Depot
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gehe zum nächsten Hangar
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Fahre zum nächsten Depot
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Fahre zum nächsten Hangar
 STR_ORDER_NEAREST_DEPOT                                         :dem nächsten
 STR_ORDER_NEAREST_HANGAR                                        :dem nächsten Hangar
 STR_ORDER_SERVICE_AT                                            :Wartung in
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Gehe ohne Halt zur Wartung in
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Fahre ohne Halt zur Wartung in
 STR_ORDER_TRAIN_DEPOT                                           :Zugdepot
 STR_ORDER_ROAD_DEPOT                                            :Straßenfahrzeugdepot
 STR_ORDER_SHIP_DEPOT                                            :Werft
@@ -2816,7 +2821,7 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Baut ein
 STR_8820_RENAME                                                 :{BLACK}Umbenennen
 STR_8823_SKIP                                                   :{BLACK}Überspringen
 STR_8824_DELETE                                                 :{BLACK}Löschen
-STR_8826_GO_TO                                                  :{BLACK}Gehe zu
+STR_8826_GO_TO                                                  :{BLACK}Fahre nach
 STR_REFIT                                                       :{BLACK}Umrüsten
 STR_REFIT_TIP                                                   :{BLACK}Frachtart auswählen, auf die umgerüstet werden soll. Strg+Klick, um einen Umrüstungsauftrag wieder zu entfernen
 STR_REFIT_ORDER                                                 :(umrüsten auf {STRING})
@@ -3256,7 +3261,7 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Kompatib
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Fehlende GRF-Dateien wurden deaktiviert.
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Es fehlen GRF-Dateien um das Spiel zu laden
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}GRF-Datei(en) fehlen
-STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das beenden der PAuse kann OpenTTD zum Abstürzen bringen. Bitte sende keine Fehlerberichte bei auftretenden Fehlern. {}Willst du die Pause wirklich beenden?
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Das Beenden der Pause kann OpenTTD zum Absturz bringen. Bitte keine Fehlerberichte bei auftretenden Fehlern senden. {}Pause wirklich beenden?
 
 STR_NEWGRF_BROKEN                                               :{WHITE}Verhalten des NewGRFs '{STRING}' wird voraussichtlich zu Synchronisationsfehlern und/oder Absturz des Spiels führen.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Verändert die Fahrzeuglänge von '{1:ENGINE}' außerhalb eines Depots.
@@ -3403,7 +3408,7 @@ STR_RANDOM_SEED                                                 :{BLACK}Zufallss
 STR_RANDOM_SEED_HELP                                            :{BLACK}Gib einen Zufallsstartwert ein
 STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Zufallsstartwert eingeben
 STR_LAND_GENERATOR                                              :{BLACK}Landgenerator:
-STR_TREE_PLACER                                                 :{BLACK}Baumalgorithmus
+STR_TREE_PLACER                                                 :{BLACK}Baumalgorithmus:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Reliefkarte drehen:
 STR_TERRAIN_TYPE                                                :{BLACK}Landschaftstyp:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Gewässermenge:
@@ -3541,6 +3546,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Diese Gr
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

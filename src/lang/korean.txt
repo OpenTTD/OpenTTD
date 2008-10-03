@@ -595,8 +595,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}회사 
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}산업시설의 건설
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}산업시설의 폐쇄
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}경제적 변화
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}회사가 달성한 생산량 변동량
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}경쟁자에 의한 산업시설의 생산품 변화
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}다른 산업 생산물 변화
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}회사의 차량에 관한 권고/정보
 STR_020C_NEW_VEHICLES                                           :{YELLOW}새로운 차량
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}역에서 받는 화물의 변경
 STR_020E_SUBSIDIES                                              :{YELLOW}보조금
@@ -1246,6 +1248,7 @@ STR_CHEATS                                                      :{WHITE}치트
 STR_CHEATS_TIP                                                  :{BLACK}체크박스는 이전에 사용한 치트를 나타냅니다.
 STR_CHEATS_WARNING                                              :{BLACK}경고! 당신은 경쟁자를 속이고 있습니다. 그러한 창피는 영원히 지워지지 않으리란 것을 명심하십시오.
 STR_CHEAT_MONEY                                                 :{LTBLUE}재정을 {CURRENCY} 만큼 증가
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}다음 회사로 플레이중: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}마법 불도저 (산업시설, 움직이지 못하는 것들 제거) : {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}터널 교차를 허용 : {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}일시정지 상태에서의 건설 허용 : {ORANGE}{STRING}
@@ -1577,6 +1580,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :이상 패킷 �
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :잘못된 버전
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :이미 사용중인 이름
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :잘못된 암호
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :DoCommand에서의 잘못된 회사 번호
 STR_NETWORK_ERR_CLIENT_KICKED                                   :강제추방
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :치트 사용 시도
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :서버 꽉참
@@ -2262,6 +2266,7 @@ STR_HOSTILE                                                     :적대적
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(회사 {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}새 얼굴
 STR_7005_COLOR_SCHEME                                           :{BLACK}색상
 STR_7006_COLOR_SCHEME                                           :{GOLD}색상:
@@ -3540,6 +3545,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}전체 �
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

@@ -596,8 +596,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Apertura de industrias
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Pecha unha industria
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambios económicos
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Cambios de producción nas industrias servidas pola compañía
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Cambios na producción das industrias servidas polos competidores
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Cambios de producción doutras industrias
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Consello / información acerca dos vehículos da compañía
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Novos vehículos
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Cambios na admisión de carga
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidios
@@ -1247,6 +1249,7 @@ STR_CHEATS                                                      :{WHITE}Trampas
 STR_CHEATS_TIP                                                  :{BLACK}As caixas de confirmación indican se usaches esta trampa antes
 STR_CHEATS_WARNING                                              :{BLACK}¡Advertencia! Estás a piques de traizoa-los teus opoñentes. Ten en conta que unha desgracia coma esta se lembrará eternamente.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementa-lo diñeiro en {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Xogando coma compañía: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Escavadora máxica(Elimina industrias, non eliminables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os tuneis poden cruzarse entre eles: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permiti-la construcción en modo pausa: {ORANGE}{STRING}
@@ -1578,6 +1581,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recibiuse un pa
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisión errónea
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :o nome xa está en uso
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contrasinal incorrecta
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :company-id erróneo en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :pateado polo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :intentaba usar unha trampa
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheo
@@ -2263,6 +2267,7 @@ STR_HOSTILE                                                     :Hostil
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Compañía {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nova Cara
 STR_7005_COLOR_SCHEME                                           :{BLACK}Esquema de Cor
 STR_7006_COLOR_SCHEME                                           :{GOLD}Esquema de Cor:
@@ -3541,6 +3546,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Pincha p
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
