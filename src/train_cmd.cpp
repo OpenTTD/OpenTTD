@@ -3227,6 +3227,16 @@ void Train::MarkDirty()
 	UpdateTrainAcceleration(this);
 }
 
+/**
+ * This function looks at the vehicle and updates it's speed (cur_speed
+ * and subspeed) variables. Furthermore, it returns the distance that
+ * the train can drive this tick. This distance is expressed as 256 * n,
+ * where n is the number of straight (long) tracks the train can
+ * traverse. This means that moving along a straight track costs 256
+ * "speed" and a diagonal track costs 192 "speed".
+ * @param v The vehicle to update the speed of.
+ * @return distance to drive.
+ */
 static int UpdateTrainSpeed(Vehicle *v)
 {
 	uint accel;
@@ -3254,11 +3264,22 @@ static int UpdateTrainSpeed(Vehicle *v)
 		v->cur_speed = spd = Clamp(v->cur_speed + ((int)spd >> 8), 0, tempmax);
 	}
 
-	if (!(v->direction & 1)) spd = spd * 3 >> 2;
+	/* Scale speed by 3/4. Previously this was only done when the train was
+	 * facing diagonally and would apply to however many moves the train made
+	 * regardless the of direction actually moved in. Now it is always scaled,
+	 * 256 spd is used to go straight and 192 is used to go diagonally
+	 * (3/4 of 256). This results in the same effect, but without the error the
+	 * previous method caused.
+	 *
+	 * The scaling is done in this direction and not by multiplying the amount
+	 * to be subtracted by 4/3 so that the leftover speed can be saved in a
+	 * byte in v->progress.
+	 */
+	int scaled_spd = spd * 3 >> 2;
 
-	spd += v->progress;
-	v->progress = (byte)spd;
-	return (spd >> 8);
+	scaled_spd += v->progress;
+	v->progress = 0; // set later in TrainLocoHandler or TrainController
+	return scaled_spd;
 }
 
 static void TrainEnterStation(Vehicle *v, StationID station)
@@ -4279,21 +4300,24 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 	}
 
-	if (j == 0) {
+	int adv_spd = (v->direction & 1) ? 192 : 256;
+	if (j < adv_spd) {
 		/* if the vehicle has speed 0, update the last_speed field. */
-		if (v->cur_speed != 0) return;
+		if (v->cur_speed == 0) SetLastSpeed(v, v->cur_speed);
 	} else {
 		TrainCheckIfLineEnds(v);
-
+		/* Loop until the train has finished moving. */
 		do {
+			j -= adv_spd;
 			TrainController(v, NULL, true);
 			CheckTrainCollision(v);
-			if (v->cur_speed <= 0x100)
-				break;
-		} while (--j != 0);
+			/* 192 spd used for going straight, 256 for going diagonally. */
+			adv_spd = (v->direction & 1) ? 192 : 256;
+		} while (j >= adv_spd);
+		SetLastSpeed(v, v->cur_speed);
 	}
 
-	SetLastSpeed(v, v->cur_speed);
+	if (v->progress == 0) v->progress = j;	// Save unused spd for next time, if TrainController didn't set progress
 }
 
 
