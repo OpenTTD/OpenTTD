@@ -2,7 +2,6 @@
 ##ownname Norsk (bokmål)
 ##isocode nb_NO
 ##plural 0
-##gender masculinum neutrium femininum
 
 #
 
@@ -596,8 +595,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmain
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Åpning av industrier
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Stengning av industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiske endringer
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Produksjon endring av industrier servert av kompaniet
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksjonsendringer hos industrier som får leveranser av motspiller(e)
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andre produksjonsendringer
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Fåreslå / informasjon på kompaniets kjøretøyer
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye kjøretøy
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Endringer i godtatte varer
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidier
@@ -1247,6 +1248,7 @@ STR_CHEATS                                                      :{WHITE}Juks
 STR_CHEATS_TIP                                                  :{BLACK}Avkrysningsbokser indikerer at du har brukt denne juksekoden tidligere.
 STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Vær klar over at du er i ferd med å bedra dine motstandere og at straffen for slike handlinger er evig tid i skjærsilden.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Øk pengebeholdningen med {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som kompani: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldoser (fjern industrier, ufjernbare ting): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneller kan krysse hverandre: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillat bygging i pausemodus: {ORANGE}{STRING}
@@ -1578,6 +1580,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :mottok merkelig
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :feil versjon
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :navnet er brukt av noen andre
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :feil passord til spillet
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :feil kompani-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :sparket ut av tjeneren
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvde å jukse
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er full
@@ -2263,6 +2266,7 @@ STR_HOSTILE                                                     :Fientlig
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Kompani {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nytt ansikt
 STR_7005_COLOR_SCHEME                                           :{BLACK}Firmafarge
 STR_7006_COLOR_SCHEME                                           :{GOLD}Firmafarge:
@@ -3541,6 +3545,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikk fo
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

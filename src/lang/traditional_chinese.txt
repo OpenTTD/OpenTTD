@@ -1995,7 +1995,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}儲存�
 STR_4001_LOAD_GAME                                              :{WHITE}載入遊戲
 STR_4002_SAVE                                                   :{BLACK}儲存
 STR_4003_DELETE                                                 :{BLACK}刪除
-STR_4004                                                        :{COMPANY}，{DATE_LONG}
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}空間尚有 {COMMA} MB
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}無法讀取磁碟
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}遊戲儲存失敗{}{STRING}
@@ -2691,7 +2691,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario 直升
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 直升機
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut 直升機
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}交通工具製造商的訊息
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}我們剛設計了一種新{STRING} - 您有興趣獨家使用它一年，讓我們在正式上市之前先觀察它的表現嗎？
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}我們剛設計了一種新{STRING} - 您有興趣獨家使用它一年，讓我們在正式上市之前先 觀察它的表現嗎？
 STR_8102_RAILROAD_LOCOMOTIVE                                    :鐵路機車頭
 STR_8103_ROAD_VEHICLE                                           :車輛
 STR_8104_AIRCRAFT                                               :飛機

@@ -2933,7 +2933,7 @@ STR_TIMETABLE_STATUS_LATE                                       :Dieses Fahrzeug
 STR_TIMETABLE_STATUS_EARLY                                      :Dieses Fahrzeug ist {STRING} zu früh
 STR_TIMETABLE_TOTAL_TIME                                        :Dieser Fahrplan benötigt {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Dieser Fahrplan benötigt mindestens {STRING} (nicht alle geplant)
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autom.
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Erfassen
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fahrplan automatisch mit den Ergebnissen der ersten Fahrt ergänzen
 
 ##id 0x9000

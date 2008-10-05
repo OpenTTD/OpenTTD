@@ -2778,6 +2778,7 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :跳至 {COMMA}
 STR_CONDITIONAL_NUM                                             :跳至 {COMMA} [ 当 {STRING} {STRING} {COMMA} ]
 STR_CONDITIONAL_TRUE_FALSE                                      :跳至 {COMMA} [ 当 {STRING} {STRING}]
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}原地待命
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}旅行 (无时间表)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}前往 {STRING} 旅行
 STR_TIMETABLE_STAY_FOR                                          :并且在 {STRING} 停留

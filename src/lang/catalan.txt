@@ -595,8 +595,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Obertura d'indústries
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Tancament d'indústries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Canvis de l'Economia
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Canvis de producció de les indústries aprovisionades per la companyia
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Canvis de producció en indústries proveïdes pel competidor(s)
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Altres canvis de producció de l'indústria
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Alertes / informació sobre els vehicles de la companyia
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nous vehicles
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Canvis en admisió de càrrega
 STR_020E_SUBSIDIES                                              :{YELLOW}Subvencions
@@ -1246,6 +1248,7 @@ STR_CHEATS                                                      :{WHITE}Trampes
 STR_CHEATS_TIP                                                  :{BLACK}Els quadres marcats indiquen que ja has fet servir aquesta trampa
 STR_CHEATS_WARNING                                              :{BLACK}Atenció! Estàs a punt d'enredar als teus companys competidors. Pensa que una cosa així serà recordada per tota la eternitat!.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Incrementa els diners en {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jugant com la companyia: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries, inamovibles): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Els túnels es poden creuar: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construeix mentre el joc està en pausa: {ORANGE}{STRING}
@@ -1577,6 +1580,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :s'ha rebut un p
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisió incorrecta
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nom ja utilitzat
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contrasenya de joc incorrecta
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :id-companyia erroni en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :tret pel servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :s'ha intentat utilitzar una trampa
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor ple
@@ -2262,6 +2266,7 @@ STR_HOSTILE                                                     :Hostil
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Companyia {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nova Cara
 STR_7005_COLOR_SCHEME                                           :{BLACK}Esquema de color
 STR_7006_COLOR_SCHEME                                           :{GOLD}Esquema de color:
@@ -3540,6 +3545,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clica pe
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

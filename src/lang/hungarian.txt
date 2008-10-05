@@ -2361,6 +2361,7 @@ STR_HOSTILE                                                     :Ellenséges
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :({COMMA}. vállalat)
 STR_7004_NEW_FACE                                               :{BLACK}Új arc
 STR_7005_COLOR_SCHEME                                           :{BLACK}Szín váltása
 STR_7006_COLOR_SCHEME                                           :{GOLD}Szín:
@@ -2805,7 +2806,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijel�
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Menj a legközelebbi járműtelepre
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Menj a legközelebbi hangárba
 
-STR_ORDER_CONDITIONAL                                           :Feltételes ugrás utasításra
+STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hogyan viszonyul a jármű kiválasztott adata a megadott értékhez
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Az érték amihez a jármű egy tulajdonságát hasonlítjuk
