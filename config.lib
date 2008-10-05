@@ -390,7 +390,7 @@ save_params() {
 	configure="$CONFIGURE_EXECUTABLE --ignore-extra-parameters"
 	for p in $save_params_array; do
 		eval "v=\"\$$p\""
-		p=`echo "$p" | sed 's/_/-/g;s/\n//g;'`
+		p=`echo "$p" | sed 's/_/-/g;s/\n//g;s/ /\\ /g'`
 		# Only save those params that aren't empty
 		configure="$configure --$p=\"$v\""
 	done
@@ -845,6 +845,8 @@ check_params() {
 		else
 			doc_dir="$data_dir/docs"
 		fi
+	else
+		doc_dir="`echo $doc_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
 	fi
 
 	if [ "$icon_theme_dir" = "1" ]; then
@@ -853,6 +855,8 @@ check_params() {
 		else
 			icon_theme_dir=""
 		fi
+	else
+		icon_theme_dir="`echo $icon_theme_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
 	fi
 
 	if [ "$personal_dir" = "1" ]; then
@@ -863,6 +867,8 @@ check_params() {
 		else
 			personal_dir=".openttd"
 		fi
+	else
+		personal_dir="`echo $personal_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
 	fi
 
 	if [ "$shared_dir" = "1" ]; then
@@ -872,6 +878,8 @@ check_params() {
 		else
 			shared_dir=""
 		fi
+	else
+		shared_dir="`echo $shared_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
 	fi
 
 	if [ "$man_dir" = "1" ]; then
@@ -881,6 +889,8 @@ check_params() {
 		else
 			man_dir=""
 		fi
+	else
+		man_dir="`echo $man_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
 	fi
 
 	if [ "$menu_dir" = "1" ]; then
@@ -890,6 +900,8 @@ check_params() {
 		else
 			menu_dir=""
 		fi
+	else
+		menu_dir="`echo $menu_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
 	fi
 
 	# "set_universal_binary_flags" needs to be before "detect_iconv"
