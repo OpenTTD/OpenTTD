@@ -105,7 +105,7 @@ static void TransferCargo(Vehicle *old_veh, Vehicle *new_head, bool part_of_chai
 
 		/* Find free space in the new chain */
 		for (Vehicle *dest = new_head; dest != NULL && src->cargo.Count() > 0; dest = dest->Next()) {
-			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != new_head->u.rail.other_multiheaded_part && !IsArticulatedPart(src)) {
+			if (!part_of_chain && dest->type == VEH_TRAIN && dest != new_head && dest != new_head->u.rail.other_multiheaded_part && !IsArticulatedPart(dest)) {
 				/* Skip vehicles, which do not belong to new_head */
 				dest = GetLastEnginePart(dest);
 				continue;
