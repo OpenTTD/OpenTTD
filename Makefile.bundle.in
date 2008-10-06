@@ -33,8 +33,8 @@ endif
 
 bundle: all
 	@echo '[BUNDLE] Constructing bundle'
-	$(Q)rm -rf   "${BUNDLE_DIR}"
-	$(Q)mkdir -p "${BUNDLE_DIR}"
+	$(Q)rm -rf   "$(BUNDLE_DIR)"
+	$(Q)mkdir -p "$(BUNDLE_DIR)"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/docs"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario/heightmap"
@@ -46,7 +46,7 @@ ifdef OSXAPP
 	$(Q)mkdir -p "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources"
 	$(Q)echo "APPL????" >                                          "$(BUNDLE_DIR)/$(OSXAPP)/Contents/PkgInfo"
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/openttd.icns"                 "$(BUNDLE_DIR)/$(OSXAPP)/Contents/Resources/openttd.icns"
-	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "${BUNDLE_DIR}/$(OSXAPP)" "$(REV)"
+	$(Q)$(ROOT_DIR)/os/macosx/plistgen.sh                          "$(BUNDLE_DIR)/$(OSXAPP)" "$(REV)"
 	$(Q)cp    "$(ROOT_DIR)/docs/OSX_install_instructions.txt"      "$(BUNDLE_DIR)/docs/"
 	$(Q)cp    "$(ROOT_DIR)/os/macosx/splash.png"                   "$(DATA_DIR)"
 endif

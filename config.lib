@@ -390,7 +390,7 @@ save_params() {
 	configure="$CONFIGURE_EXECUTABLE --ignore-extra-parameters"
 	for p in $save_params_array; do
 		eval "v=\"\$$p\""
-		p=`echo "$p" | sed 's/_/-/g;s/\n//g;s/ /\\ /g'`
+		p=`echo "$p" | sed 's#_#-#g;s#\n##g;s# #\\ #g'`
 		# Only save those params that aren't empty
 		configure="$configure --$p=\"$v\""
 	done
@@ -846,7 +846,7 @@ check_params() {
 			doc_dir="$data_dir/docs"
 		fi
 	else
-		doc_dir="`echo $doc_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
+		doc_dir="`echo $doc_dir | sed 's#\([^\]\)\\\\ #\1\\\\\\\\ #g;s#\([^\]\) #\1\\\\\\\\ #g'`"
 	fi
 
 	if [ "$icon_theme_dir" = "1" ]; then
@@ -856,7 +856,7 @@ check_params() {
 			icon_theme_dir=""
 		fi
 	else
-		icon_theme_dir="`echo $icon_theme_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
+		icon_theme_dir="`echo $icon_theme_dir | sed 's#\([^\]\)\\\\ #\1\\\\\\\\ #g;s#\([^\]\) #\1\\\\\\\\ #g'`"
 	fi
 
 	if [ "$personal_dir" = "1" ]; then
@@ -868,7 +868,7 @@ check_params() {
 			personal_dir=".openttd"
 		fi
 	else
-		personal_dir="`echo $personal_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
+		personal_dir="`echo $personal_dir | sed 's#\([^\]\)\\\\ #\1\\\\\\\\ #g;s#\([^\]\) #\1\\\\\\\\ #g'`"
 	fi
 
 	if [ "$shared_dir" = "1" ]; then
@@ -879,7 +879,7 @@ check_params() {
 			shared_dir=""
 		fi
 	else
-		shared_dir="`echo $shared_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
+		shared_dir="`echo $shared_dir | sed 's#\([^\]\)\\\\ #\1\\\\\\\\ #g;s#\([^\]\) #\1\\\\\\\\ #g'`"
 	fi
 
 	if [ "$man_dir" = "1" ]; then
@@ -890,7 +890,7 @@ check_params() {
 			man_dir=""
 		fi
 	else
-		man_dir="`echo $man_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
+		man_dir="`echo $man_dir | sed 's#\([^\]\)\\\\ #\1\\\\\\\\ #g;s#\([^\]\) #\1\\\\\\\\ #g'`"
 	fi
 
 	if [ "$menu_dir" = "1" ]; then
@@ -901,7 +901,7 @@ check_params() {
 			menu_dir=""
 		fi
 	else
-		menu_dir="`echo $menu_dir | sed 's/\([^\]\)\\\\ /\1\\\\\\\\ /g;s/\([^\]\) /\1\\\\\\\\ /g'`"
+		menu_dir="`echo $menu_dir | sed 's#\([^\]\)\\\\ #\1\\\\\\\\ #g;s#\([^\]\) #\1\\\\\\\\ #g'`"
 	fi
 
 	# "set_universal_binary_flags" needs to be before "detect_iconv"
@@ -1192,7 +1192,7 @@ make_cflags_and_ldflags() {
 			if [ "$os" = "OSX" ]; then
 				# fontconfig_config goes via pkg-config on all systems, which doesn't know --prefix
 				# Also, despite the reason we link to the .a file ourself (because we can't use -static), we do need to ask pkg-config about possible other deps
-				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a `$fontconfig_config --libs --static | sed s/-lfontconfig//`"
+				LIBS="$LIBS `$fontconfig_config --variable=prefix`/lib/libfontconfig.a `$fontconfig_config --libs --static | sed s#-lfontconfig##`"
 			else
 				LIBS="$LIBS `$fontconfig_config --libs --static | tr '\n\r' '  '`"
 			fi

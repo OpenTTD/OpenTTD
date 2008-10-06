@@ -96,7 +96,7 @@ MODIFIED := $(shell echo "$(VERSIONS)" | cut -f 3 -d'	')
 ifdef REVISION
 # Use specified revision (which should be of the form "r000").
 REV := $(REVISION)
-REV_NR := $(shell echo $(REVISION) | sed "s/[^0-9]//g")
+REV_NR := $(shell echo $(REVISION) | sed "s#[^0-9]##g")
 else
 # Use autodetected revisions
 REV      := $(shell echo "$(VERSIONS)" | cut -f 1 -d'	')
@@ -180,7 +180,7 @@ endif
 
 # Convert x:/... paths to /x/... for mingw
 ifeq ($(OS), MINGW)
-	@cat Makefile.dep.tmp | sed 's@\([a-zA-Z]\):\/@\/\1\/@g' > Makefile.dep.tmp.mingw
+	@cat Makefile.dep.tmp | sed 's#\([a-zA-Z]\):\/#\/\1\/#g' > Makefile.dep.tmp.mingw
 	@cp Makefile.dep.tmp.mingw Makefile.dep.tmp
 	@rm -f Makefile.dep.tmp.mingw
 endif
@@ -209,7 +209,7 @@ endif
 	{                                   \
 		print $$0                         \
 	}                                   \
-	' < Makefile.dep.tmp | sed 's/  */ /g;s/ $$//' | $(SORT) > Makefile.dep
+	' < Makefile.dep.tmp | sed 's#  *# #g;s# $$##' | $(SORT) > Makefile.dep
 
 	$(Q)rm -f Makefile.dep.tmp Makefile.dep.tmp.bak
 
