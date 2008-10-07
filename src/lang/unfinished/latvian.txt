@@ -153,8 +153,8 @@ STR_00AE                                                        :{WHITE}{DATE_SH
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Spe'les parametri
-STR_00B2_MESSAGE                                                :{YELLOW}Zin'ojums
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Zin'ojums no {STRING}
+STR_00B2_MESSAGE                                                :{YELLOW}Ziņojums
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Ziņojums no {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uzmanību!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ta' nevar dari't....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}S'o laukumu nevar noli'dzina't....
@@ -266,7 +266,7 @@ STR_0128_TOWNS                                                  :{BLACK}{TINYFON
 STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Industrijas
 STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Tuksnesis
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sniegs
-STR_012C_MESSAGE                                                :{WHITE}Zin'ojums
+STR_012C_MESSAGE                                                :{WHITE}Ziņojums
 STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Atcelt
 STR_012F_OK                                                     :{BLACK}Labi
@@ -293,9 +293,9 @@ STR_CAPACITY_MULT                                               :{BLACK}Ietilpī
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Kope'ja' vilciena kravas ietilpi'ba:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
-STR_0140_NEW_GAME                                               :{BLACK}Jauna spe'le
+STR_0140_NEW_GAME                                               :{BLACK}Jauna spēle
 STR_0141_LOAD_GAME                                              :{BLACK}Iela'de't spe'li
-STR_SINGLE_PLAYER                                               :{BLACK}Viens spe'le'ta'js
+STR_SINGLE_PLAYER                                               :{BLACK}Viens spēlētājs
 STR_MULTIPLAYER                                                 :{BLACK}Daudz-spe'le'ta'ju
 STR_SCENARIO_EDITOR                                             :{BLACK}Scenāriju redaktors
 
@@ -539,8 +539,8 @@ STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFON
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Pa'rlekt uz ieprieks'e'jo dziesmu
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Pa'rlekt us na'kamo dziesmu
-STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Apsta'dina't muzikas spe'le's'anu
-STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Sa'kt muzikas spe'le's'anu
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Apturēt mūzikas atskaņošanu
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Sākt mūzikas atskaņošanu
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Bi'di klok'us lai maini'tu muzikas un skan'as efektu skal'umu
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
@@ -668,7 +668,7 @@ STR_025C_TOY_FACTORY                                            :{BLACK}Rotal'li
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastmasas stru'klakas
 STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Burbul'u'den'u ru'pni'cu
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Burbul'u g'eneratoru
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Toffee lauztuves
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}Īrisa karjers
 STR_0261_SUGAR_MINE                                             :{BLACK}Cukura raktuves
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Bu've't ogl'u raktuves
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Bu've't spe'kstaciju
@@ -703,7 +703,7 @@ STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bu've't 
 STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Bu've't plastmasas stru'klakas
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Bu've't burbul'u'den'u ru'pni'cu
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Bu've't burbul'u g'eneratoru
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bu've't Toffee lauztuves
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Būvēt īrisa karjeru
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Bu've't cukura raktuves
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}S'eit nevar bu've't {STRING}...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...vispirms ja'cel' pilse'ta
@@ -818,10 +818,10 @@ STR_02F9_EVERY_6_MONTHS                                         :Katrus 6 me'nes
 STR_02FA_EVERY_12_MONTHS                                        :Katrus 12 me'nes'us
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Sa'kt jaunu spe'li
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Iela'de't saglaba'to spe'li
-STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Radi't specia'lu spe'les zemi un/vai scena'riju
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Izve'le'ties viena spe'le'ta'ja spe'li
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izve'le'ties 2 li'dz 8 spe'le'ta'ju spe'li
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Ra'di't spe'les rez'i'mus
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Izveidot speciālu spēles pasauli/scenāriju
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Izvēlēties viena spēlētāja spēli
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izvēlēties 2 līdz 8 spēlētāju spēli
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Rādīt spēles režīmus
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Ra'di't gru'ti'bas paka'pes rez'i'mus
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Sa'kt jaunu spe'li ar specia'lu scena'riju
 STR_0304_QUIT                                                   :{BLACK}Beigt
@@ -914,7 +914,7 @@ STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{S
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Interfeisa valodas izve'le
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Pilna ekra'na
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}iezi'me' k'eksi lai spe'le'tu OpenTTD pilna ekra'na rez'i'ma'
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Iezīmē ķeksi, lai spēlētu OpenTTD pilna ekrāna režīmā
 
 STR_OPTIONS_RES                                                 :{BLACK}Ekra'na izs'k'irtspe'ja
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1059,6 +1059,7 @@ STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Paša uzņēmum
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Visi uzņēmumi
 
 
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Visas kompānijas
 
 
 
@@ -1171,6 +1172,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Nevar š
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Būvēt slūžas
 STR_LANDINFO_LOCK                                               :Slūžas
 
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boja jau tiek lietota!
 
 
@@ -1208,7 +1210,7 @@ STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Finansē
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Veikt kolas urbumus
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Finansēt plastmasas strūklakas
 STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Būvēt burbuļu ģenerātoru
-STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Finansēt Toffee raktuves
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Izveidot īrisa karjeru
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Būvēt cukura raktuves
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrîjas
@@ -1256,6 +1258,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Ievadiet
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klienti
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klienti tiešsaitē / Maksimālais klientu skaits{}Uzņēmumi tiešsaistē / Maksimālais uzņēmumu skaits
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPĒLES INFORMĀCIJA
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Valoda:  {WHITE}{STRING}
@@ -1834,6 +1840,7 @@ STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kuģis i
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaļas)
 STR_9813_MAX_SPEED                                              :{BLACK}Maksimālais ātrums: {LTBLUE}{VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Kuģis {COMMA} gaida ostā
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Uzbûvet jauno kuìi
 
 STR_9836_RENAME                                                 :{BLACK}Pârsaukt
@@ -1849,6 +1856,7 @@ STR_A037_RENAME                                                 :{BLACK}Pârsauk
 ##id 0xB000
 
 
+
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaïas
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -1861,6 +1869,8 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Aizdevum
 ############ End of order list
 
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+
+
 
 
 
@@ -1968,4 +1978,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-va
 ########
 
 ############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

@@ -720,8 +720,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Інф�
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Відкриття підприємств
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Закриття підприємств
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Зміни в економіці
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Зміни обсягу виробництва на підприємствах, обслуговуваних компанією
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Зміна обсягів виробництва на підприємствах, обслуговуваних суперниками
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Інші зміни обсягів виробництва
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Поради / інформація про транспорт компанії
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Новий транспорт
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Зміни в попиті на перевезення
 STR_020E_SUBSIDIES                                              :{YELLOW}Субсидії
@@ -1371,6 +1373,7 @@ STR_CHEATS                                                      :{WHITE}Грат
 STR_CHEATS_TIP                                                  :{BLACK}Галка показує, що Ви стали грати нечесно
 STR_CHEATS_WARNING                                              :{BLACK}Попередження! Ви збираєтеся обманювати конкурентів. Зауважте, подібне безчестя запам'ятається назавжди.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Збільшити кошти на {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Грає як компанія: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Супер бульдозер (руйнує все): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунелі перетинаються: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Будувати в режимі паузи: {ORANGE}{STRING}
@@ -1702,6 +1705,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :отриман�
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :невірна версія гри
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :таке ім'я вже є
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :пароль невірний
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :неправильний company-id в DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :відключено сервером від гри
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :спроба грати нечесно
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер переповнений
@@ -2424,6 +2428,7 @@ STR_HOSTILE                                                     :вороже
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Компанія {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Нове обличчя
 STR_7005_COLOR_SCHEME                                           :{BLACK}Колір
 STR_7006_COLOR_SCHEME                                           :{GOLD}Колір:
@@ -3702,6 +3707,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Клік
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
