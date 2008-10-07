@@ -1178,12 +1178,12 @@ STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dr
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatically build semaphores before: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enable the signal GUI: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signal type to build by default: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normal
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Advanced
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :One-way advanced
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Block signals
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Path signals
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :One-way path signals
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cycle through signal types: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Normal only
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Advanced only
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Block signals only
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Path signals only
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :All
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}The town layout "no more roads" isn't valid in the scenario editor
@@ -1689,27 +1689,27 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Select r
 STR_1021_RAILROAD_TRACK                                         :Railway track
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Railway train depot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...area is owned by another company
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railway track with normal signals
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Railway track with block signals
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Railway track with pre-signals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Railway track with exit-signals
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Railway track with combo-signals
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Railway track with advanced signals
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Railway track with one-way advanced signals
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Railway track with normal and pre-signals
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Railway track with normal and exit-signals
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Railway track with normal and combo-signals
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Railway track with normal and advanced signals
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Railway track with normal and one-way advanced signals
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Railway track with path signals
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Railway track with one-way path signals
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Railway track with block and pre-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Railway track with block and exit-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Railway track with block and combo-signals
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Railway track with block and path signals
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Railway track with block and one-way path signals
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Railway track with pre- and exit-signals
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Railway track with pre- and combo-signals
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Railway track with pre- and advanced signals
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Railway track with pre- and one-way advanced signals
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Railway track with pre- and path signals
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Railway track with pre- and one-way path signals
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Railway track with exit- and combo-signals
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Railway track with exit- and advanced signals
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Railway track with exit- and one-way advanced signals
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Railway track with combo- and advanced signals
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Railway track with combo- and one-way advanced signals
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Railway track with advanced and one-way advanced signals
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Railway track with exit- and path signals
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Railway track with exit- and one-way path signals
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Railway track with combo- and path signals
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Railway track with combo- and one-way path signals
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Railway track with path and one-way path signals
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railway station first
 
 
@@ -3614,18 +3614,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Change t
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Signal Selection
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Can't convert signals here...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard Signal (semaphore){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Block Signal (semaphore){}This is the most basic type of signal, allowing only one train to be in the same block at the same time.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Entry-Signal (semaphore){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a normal signal but is necessary to trigger the correct colour on entry & combo pre-signals.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Advanced Signal (semaphore){}An advanced signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Advanced signals can be passed from the backside.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}One-way Advanced Signal (semaphore){}An advanced signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way signals cannot be passed from the backside.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standard Signal (electric){}Signals are necessary to keep trains from crashing on railway networks with more than one train.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}One-way Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals cannot be passed from the back side.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Block Signal (electric){}This is the most basic type of signal, allowing only one train to be in the same block at the same time.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Entry-Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-Signal (electric){}Behaves in the same way as a normal signal but is necessary to trigger the correct colour on entry & combo pre-signals.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-Signal (electric){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Advanced Signal (electric){}An advanced signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Advanced signals can be passed from the backside.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}One-way Advanced Signal (electric){}An advanced signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way signals cannot be passed from the backside.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals cannot be passed from the back side.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, CTRL-click will toggle the existing variant.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragging signal density
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrease dragging signal density
