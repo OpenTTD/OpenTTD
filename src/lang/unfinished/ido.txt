@@ -1,0 +1,4 @@
+##name Ido
+##ownname Ido
+##isocode id_XX
+##plural 0

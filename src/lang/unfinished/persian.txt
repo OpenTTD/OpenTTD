@@ -1,0 +1,4 @@
+##name Persian
+##ownname Farsi
+##isocode fa_IR
+##plural 0
