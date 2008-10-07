@@ -1532,6 +1532,18 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
 		delete cur_stop;
+
+		/* Make sure no vehicle is going to the old roadstop */
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_ROAD &&
+					v->First() == v &&
+					v->current_order.IsType(OT_GOTO_STATION) &&
+					v->dest_tile == tile) {
+				v->dest_tile = v->GetOrderStationLocation(st->index);
+			}
+		}
+
 		DoClearSquare(tile);
 		st->rect.AfterRemoveTile(st, tile);
 
