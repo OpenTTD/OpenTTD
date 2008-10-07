@@ -238,7 +238,7 @@ RailType GetBestRailtype(const CompanyID company);
  * @param company the company to get the rail types for.
  * @return the rail types.
  */
-RailTypes GetCompanyRailtypes(const CompanyID p);
+RailTypes GetCompanyRailtypes(const CompanyID c);
 
 /**
  * Reset all rail type information to its default values.

@@ -8,7 +8,7 @@
 #include "company_type.h"
 
 uint16 GetDrawStringCompanyColor(CompanyID company);
-void DrawCompanyIcon(CompanyID p, int x, int y);
+void DrawCompanyIcon(CompanyID c, int x, int y);
 
 void ShowCompanyStations(CompanyID company);
 void ShowCompanyFinances(CompanyID company);

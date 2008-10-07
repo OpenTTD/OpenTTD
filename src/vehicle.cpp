@@ -98,7 +98,7 @@ const uint32 _send_to_depot_proc_table[] = {
 DEFINE_OLD_POOL_GENERIC(Vehicle, Vehicle)
 
 /** Function to tell if a vehicle needs to be autorenewed
- * @param *p The vehicle owner
+ * @param *c The vehicle owner
  * @return true if the vehicle is old enough for replacement
  */
 bool Vehicle::NeedsAutorenewing(const Company *c) const

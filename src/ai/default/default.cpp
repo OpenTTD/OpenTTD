@@ -293,7 +293,7 @@ static EngineID AiChooseTrainToReplaceWith(const Company *c, const Vehicle *v)
 	return AiChooseTrainToBuild(v->u.rail.railtype, avail_money, 0, v->tile);
 }
 
-static EngineID AiChooseShipToReplaceWith(const Company *p, const Vehicle *v)
+static EngineID AiChooseShipToReplaceWith(const Company *c, const Vehicle *v)
 {
 	/* Ships are not implemented in this (broken) AI */
 	return INVALID_ENGINE;

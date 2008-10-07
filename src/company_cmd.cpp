@@ -84,10 +84,10 @@ void SetLocalCompany(CompanyID new_company)
 
 	/* Do not update the patches if we are in the intro GUI */
 	if (IsValidCompanyID(new_company) && _game_mode != GM_MENU) {
-		const Company *p = GetCompany(new_company);
-		_settings_client.gui.autorenew        = p->engine_renew;
-		_settings_client.gui.autorenew_months = p->engine_renew_months;
-		_settings_client.gui.autorenew_money  = p->engine_renew_money;
+		const Company *c = GetCompany(new_company);
+		_settings_client.gui.autorenew        = c->engine_renew;
+		_settings_client.gui.autorenew_months = c->engine_renew_months;
+		_settings_client.gui.autorenew_money  = c->engine_renew_money;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
 }
@@ -106,9 +106,9 @@ uint16 GetDrawStringCompanyColor(CompanyID company)
 	return (_colour_gradient[_company_colours[company]][4]) | IS_PALETTE_COLOR;
 }
 
-void DrawCompanyIcon(CompanyID p, int x, int y)
+void DrawCompanyIcon(CompanyID c, int x, int y)
 {
-	DrawSprite(SPR_PLAYER_ICON, COMPANY_SPRITE_COLOR(p), x, y);
+	DrawSprite(SPR_PLAYER_ICON, COMPANY_SPRITE_COLOR(c), x, y);
 }
 
 /**

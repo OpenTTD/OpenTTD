@@ -590,10 +590,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	 * @todo Rewrite (dedicated) server to something more than a dirty hack!
 	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
-		CompanyID pbck = _local_company;
-		if (_network_dedicated || (_network_server && pbck == COMPANY_SPECTATOR)) _local_company = COMPANY_FIRST;
+		CompanyID bck = _local_company;
+		if (_network_dedicated || (_network_server && bck == COMPANY_SPECTATOR)) _local_company = COMPANY_FIRST;
 		NetworkSend_Command(tile, p1, p2, cmd, callback);
-		if (_network_dedicated || (_network_server && pbck == COMPANY_SPECTATOR)) _local_company = pbck;
+		if (_network_dedicated || (_network_server && bck == COMPANY_SPECTATOR)) _local_company = bck;
 		_docommand_recursive = 0;
 		_cmd_text = NULL;
 		ClearStorageChanges(false);

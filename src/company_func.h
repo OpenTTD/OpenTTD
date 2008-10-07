@@ -43,7 +43,7 @@ struct HighScore {
 extern HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
 void SaveToHighScore();
 void LoadFromHighScore();
-int8 SaveHighScoreValue(const Company *p);
+int8 SaveHighScoreValue(const Company *c);
 int8 SaveHighScoreValueNetwork();
 
 #endif /* COMPANY_FUNC_H */
