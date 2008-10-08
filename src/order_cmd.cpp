@@ -1616,7 +1616,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 
 				if (v->FindClosestDepot(&location, &destination, &reverse)) {
 					v->dest_tile = location;
-					v->current_order.MakeGoToDepot(destination, ODTFB_PART_OF_ORDERS);
+					v->current_order.MakeGoToDepot(destination, v->current_order.GetDepotOrderType());
 
 					/* If there is no depot in front, reverse automatically (trains only) */
 					if (v->type == VEH_TRAIN && reverse) DoCommand(v->tile, v->index, 0, DC_EXEC, CMD_REVERSE_TRAIN_DIRECTION);
