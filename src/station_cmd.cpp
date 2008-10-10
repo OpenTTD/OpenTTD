@@ -547,7 +547,12 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 		MergePoint(&rect, st->airport_tile + TileDiffXY(afc->size_x - 1, afc->size_y - 1));
 	}
 
-	if (st->dock_tile != 0) MergePoint(&rect, st->dock_tile);
+	if (st->dock_tile != 0) {
+		MergePoint(&rect, st->dock_tile);
+		if (IsDockTile(st->dock_tile)) {
+			MergePoint(&rect, st->dock_tile + TileOffsByDiagDir(GetDockDirection(st->dock_tile)));
+		} // else OilRig
+	}
 
 	for (const RoadStop *rs = st->bus_stops; rs != NULL; rs = rs->next) {
 		MergePoint(&rect, rs->xy);
@@ -559,7 +564,12 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 
 	/* And retrieve the acceptance. */
 	AcceptedCargo accepts;
+	assert((rect.right >= rect.left) == !st->rect.IsEmpty());
 	if (rect.right >= rect.left) {
+		assert(rect.left == st->rect.left);
+		assert(rect.top == st->rect.bottom);
+		assert(rect.right == st->rect.right);
+		assert(rect.bottom == st->rect.top);
 		GetAcceptanceAroundTiles(
 			accepts,
 			TileXY(rect.left, rect.bottom),
@@ -2126,7 +2136,9 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 		}
 
-		if (!st->rect.BeforeAddRect(tile, _dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TEST)) return CMD_ERROR;
+		if (!st->rect.BeforeAddRect(
+				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
+				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TEST)) return CMD_ERROR;
 
 		if (st->dock_tile != 0) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
@@ -2150,7 +2162,9 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st->dock_tile = tile;
 		st->AddFacility(FACIL_DOCK, tile);
 
-		st->rect.BeforeAddRect(tile, _dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TRY);
+		st->rect.BeforeAddRect(
+				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
+				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TRY);
 
 		MakeDock(tile, st->owner, st->index, direction, wc);
 

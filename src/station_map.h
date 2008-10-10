@@ -165,6 +165,11 @@ static inline bool IsDock(TileIndex t)
 	return GetStationType(t) == STATION_DOCK;
 }
 
+static inline bool IsDockTile(TileIndex t)
+{
+	return IsTileType(t, MP_STATION) && GetStationType(t) == STATION_DOCK;
+}
+
 static inline bool IsBuoy(TileIndex t)
 {
 	return GetStationType(t) == STATION_BUOY;
