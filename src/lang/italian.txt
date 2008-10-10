@@ -597,8 +597,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Apertura di industrie
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Chiusura di industrie
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambiamenti economici
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Cambiamenti produzione industrie servite dalla compagnia
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Cambiamenti produzione industrie servite dagli avversari
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Altri cambiamenti di produzione industrie
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Consigli / informazioni sui veicoli della compagnia
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nuovi veicoli
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Cambiamenti della merce accettata
 STR_020E_SUBSIDIES                                              :{YELLOW}Sussidi
@@ -1178,12 +1180,12 @@ STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascin
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Costruisci automaticamente i semafori prima del: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Abilita l'interfaccia di selezione segnali: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo di segnale predefinito: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normale
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Avanzato
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Avanzato a senso unico
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Segnale di blocco
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Segnale a percorso
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Segnale a percorso a senso unico
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Tipi di segnale fra cui alternare: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Solo normali
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Solo avanzati
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Solo segnali di blocco
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Solo segnali a percorso
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Tutti
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}L'opzione "Nessuna nuova strada" non è valida nell'editor di scenari
@@ -1248,6 +1250,7 @@ STR_CHEATS                                                      :{WHITE}Trucchi
 STR_CHEATS_TIP                                                  :{BLACK}Le caselle indicano se un trucco è già stato usato una volta
 STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per tradire i tuoi avversari. Ricordati che un così grande disonore sarà ricordato per l'eternità.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumenta denaro di {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Compagnia controllata: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magico (rimuove industrie e oggetti inamovibili): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}I tunnel possono incrociarsi tra loro: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Consenti costruzione in pausa: {ORANGE}{STRING}
@@ -1579,6 +1582,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ricevuto un pac
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisione differente
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nome già in uso
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :password errata
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :company-id errato in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :espulso dal server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :ha provato a usare un trucco
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server pieno
@@ -1687,27 +1691,27 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Selezion
 STR_1021_RAILROAD_TRACK                                         :Binari
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Deposito ferroviario
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...l'area appartiene a un'altra compagnia
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia con segnali normali
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia con segnali di blocco
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ferrovia con pre-segnali
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ferrovia con segnali di uscita
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia con segnali combinati
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ferrovia con segnali avanzati
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ferrovia con segnali avanzati a senso unico
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ferrovia con segnali normali e pre-segnali
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ferrovia con segnali normali e di uscita
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ferrovia con segnali normali e combinati
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ferrovia con segnali normali e avanzati
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ferrovia con segnali normali e avanzati a senso unico
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Ferrovia con segnali a percorso
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Ferrovia con segnali a percorso s.u.
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Ferrovia con segnali di blocco e pre-segnali
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ferrovia con segnali di blocco e di uscita
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ferrovia con segnali di blocco e combinati
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Ferrovia con segnali di blocco e a percorso
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Ferrovia con segnali di blocco e a percorso s.u.
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ferrovia con pre-segnali e segnali di uscita
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ferrovia con pre-segnali e segnali combinati
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ferrovia con pre-segnali e segnali avanzati
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ferrovia con pre-segnali e segnali avanzati a senso unico
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ferrovia con pre-segnali e segnali a percorso
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ferrovia con pre-segnali e segnali a percorso s.u.
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ferrovia con segnali di uscita e combinati
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ferrovia con segnali di uscita e avanzati
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ferrovia con segnali di uscita e avanzati a senso unico
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ferrovia con segnali combinati e avanzati
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ferrovia con segnali combinati e avanzati a senso unico
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ferrovia con segnali avanzati e avanzati a senso unico
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ferrovia con segnali di uscita e a percorso
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ferrovia con segnali di uscita e a percorso s.u.
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ferrovia con segnali combinati e a percorso
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ferrovia con segnali combinati e a percorso s.u.
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ferrovia con segnali a percorso e a percorso s.u.
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bisogna rimuovere la stazione prima
 
 
@@ -2264,6 +2268,7 @@ STR_HOSTILE                                                     :Ostile
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Compagnia {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nuova faccia
 STR_7005_COLOR_SCHEME                                           :{BLACK}Colori compagnia
 STR_7006_COLOR_SCHEME                                           :{GOLD}Schema colori:
@@ -3542,6 +3547,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Fare cli
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3610,18 +3616,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambia l
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Selezione segnale
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Impossibile convertire i segnali qui...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Segnale normale (semaforico){}I segnali sono necessari per impedire ai treni di scontrarsi su reti ferroviarie con più di un treno.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Segnale di blocco (semaforico){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia di un treno.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-segnale (semaforico){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Segnale combinato (semaforico){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Segnale avanzato (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione. Può essere attraversato al contrario.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale avanzato a senso unico (semaforico){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione. Non può essere attraversato al contrario.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Segnale normale (luminoso){}I segnali sono necessari per impedire ai treni di scontrarsi su reti ferroviarie con più di un treno.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Segnale a percorso (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale a percorso a senso unico (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Segnale di blocco (luminoso){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-segnale (luminoso){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale normale, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione di blocco.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Segnale avanzato (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione. Può essere attraversato al contrario.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale avanzato a senso unico (luminoso){}Un segnale avanzato consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che i treni possano riservarsi un percorso attraverso la sezione. Non può essere attraversato al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Segnale a percorso (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale a percorso a senso unico (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Riduce la distanza fra i segnali costruiti

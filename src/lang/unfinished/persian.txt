@@ -2,3 +2,377 @@
 ##ownname Farsi
 ##isocode fa_IR
 ##plural 0
+
+#
+
+##id 0x0000
+STR_000F_PASSENGERS                                             :مسافر
+STR_0010_COAL                                                   :ذغال
+STR_0011_MAIL                                                   :پاکت پستی
+STR_0012_OIL                                                    :نفت
+STR_0014_GOODS                                                  :محصولات مصرفی
+STR_0015_GRAIN                                                  :غله
+STR_0016_WOOD                                                   :چوب
+STR_0017_IRON_ORE                                               :سنگ آهن
+STR_0018_STEEL                                                  :فولاد
+STR_0019_VALUABLES                                              :جواهرات
+STR_001A_COPPER_ORE                                             :سنگ مس
+STR_001C_FRUIT                                                  :میوه
+STR_001D_DIAMONDS                                               :الماس
+STR_001E_FOOD                                                   :مواد خوراکی
+STR_001F_PAPER                                                  :کاغذ
+STR_0020_GOLD                                                   :طلا
+STR_0021_WATER                                                  :آب
+STR_0022_WHEAT                                                  :گندم
+STR_0024_SUGAR                                                  :شکر
+STR_0025_TOYS                                                   :اسباب بازی
+STR_0026_CANDY                                                  :شیرینی
+STR_0027_COLA                                                   :نوشابه
+STR_0028_COTTON_CANDY                                           :پشمک
+STR_0029_BUBBLES                                                :حباب
+STR_002A_TOFFEE                                                 :تافی
+STR_002B_BATTERIES                                              :باتری
+STR_002C_PLASTIC                                                :پلاستیک
+STR_002D_FIZZY_DRINKS                                           :نوشابه گازدار
+STR_002F_PASSENGER                                              :مسافر
+STR_0030_COAL                                                   :ذغال
+STR_0031_MAIL                                                   :نامه
+STR_0032_OIL                                                    :نفت
+STR_0034_GOODS                                                  :محصولات مصرفی
+STR_0035_GRAIN                                                  :غله
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ range for menu starts
+############ range for menu ends
+
+
+
+############ range for months starts
+############ range for months ends
+
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days starts
+############ range for days ends
+
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+
+############ end of savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+
+##id 0xB000
+
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### For showing numbers in widgets
+
+
+########### String for New Landscape Generator
+
+
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########

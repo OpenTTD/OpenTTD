@@ -1051,7 +1051,7 @@ STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :답사
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}한 도시당 같은 종류의 산업시설의 중복 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 종류의 산업 시설이 가까이에 지어지는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호등을 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호기를 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}새로 지정할 경로는 기본적으로 논스톱 처리: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
@@ -1174,16 +1174,16 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}시작 
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}종료 년도: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제 설정 사용 (좀더 적은 변화)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}다른 회사가 주식을 사는 것을 허용
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호등을 매 {ORANGE}{STRING}타일마다 설치
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}드래그 할때 신호기를 매 {ORANGE}{STRING}타일마다 설치
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}전자식 신호기의 사용 : {ORANGE}{STRING}년 이후에
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호기 GUI를 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :고급 신호기
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :편도 고급 신호기
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :경로 신호기
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 신호기
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}신호기 종류를 통한 순환: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :고급 신호기만
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :경로 신호기만
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :모두
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}도시설계 "도로건설 안함"은 시나리오 에디터에서 유효하지 않습니다
@@ -1668,10 +1668,10 @@ STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}자기�
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}철교 선택
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}여기에 차량기지를 건설할 수 없습니다...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}여기에 역을 건설할 수 없습니다...
-STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}여기에 신호등을 건설할 수 없습니다...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}여기에 신호기를 건설할 수 없습니다...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}여기에 철로를 건설할 수 없습니다...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}이곳의 철로를 제거할 수 없습니다...
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}이곳의 신호등을 제거할 수 없습니다...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}이곳의 신호기를 제거할 수 없습니다...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}차량 기지 방향
 STR_1015_RAILROAD_CONSTRUCTION                                  :철도 건설
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :전기철도 건설
@@ -1680,36 +1680,36 @@ STR_1017_MAGLEV_CONSTRUCTION                                    :자기부상열
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}일반 철도를 건설합니다
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}차량기지를 건설합니다 (열차 건설 및 점검용)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}철도 역사 건설
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}철도 신호등 건설
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}철도 신호기 건설
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}철교 건설
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}터널 건설
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}철로/신호등 제거툴 켜기/끄기
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}철로/신호기 건설/제거툴 켜기/끄기
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}다리 건설 - 원하는 교량을 선택하세요
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}차량기지의 방향을 선택하세요
 STR_1021_RAILROAD_TRACK                                         :철도
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :철도 차량기지
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...다른 회사의 소유지입니다!
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :PRE 신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :콤보-신호등을 가진 철로
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :편도 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :일반 신호등과 PRE신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :일반 신호등과 출구신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :일반, 콤보-신호등을 가진 철로
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :일반 및 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :일반 및 편도 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :PRE 신호등과 출구신호등이 설치된 철도
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :프리, 콤보-신호등을 가진 철로
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :프리 및 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :프리 및 편도 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :출구, 콤보-신호등을 가진 철로
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :출구 및 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :출구 및 편도 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :콤보 및 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :콤보 및 편도 고급 신호등이 있는 철길
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :고급 및 편도 고급 신호등이 있는 철길
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :프리 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :콤보 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :일방통행 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :일반 신호등과 프리 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :일반 신호등과 출구 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :일반, 콤보 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :일반 및 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :일반 및 일방통행 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :프리 신호등과 출구 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :프리, 콤보 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :프리 및 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :프리 및 일방통행 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :출구, 콤보 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :출구 및 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :출구 및 일방통행 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :콤보 및 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :콤보 및 일방통행 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :경로 및 일방통행 경로 신호기가 있는 철길
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
 
 
@@ -1751,11 +1751,11 @@ STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}터널 �
 STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}터널 건설
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}일방통행 활성/비활성화
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}도로 제거툴 켜기/끄기
-STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}전찻길/신호등 제거툴 켜기/끄기
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}전찻길/신호등 건설/제거툴 켜기/끄기
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}차고의 방향을 선택하십시오
 STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}차량기지의 방향을 선택하세요
 STR_1814_ROAD                                                   :도로
-STR_1815_ROAD_WITH_STREETLIGHTS                                 :신호등이 있는 도로
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :가로등이 있는 도로
 STR_1816_TREE_LINED_ROAD                                        :가로수가 있는 도로
 STR_1817_ROAD_VEHICLE_DEPOT                                     :차고
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :철도 건널목
@@ -3614,18 +3614,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}넥타�
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}신호기 선택
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}이곳의 신호기를 변환할 수 없습니다...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}표준 신호기 (구식){}신호등은 하나 이상의 열차가 한 철도 네트워크상에서 폭발사고를 일으키지 않게 해줍니다.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 출구 신호등이 하나라도 파란불이면 파란불이 뜨고 그렇지 않으면 빨간불이 됩니다.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (구식){}일반 신호등과 같은 방법으로 만들되, 입구 & 콤보 전면 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (구식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}고급 신호등 (까치발){}고급 신호등은 안전한 경로를 선택할 경우 한 대 이상의 열차가 한 폐색에 동시에 들어갈 수 있게 해줍니다. 고급 신호등은 반대편에서도 통과 가능합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}고급 편도 신호등 (까치발){}고급 신호등은 안전한 경로를 선택할 경우 한 대 이상의 열차가 한 폐색에 동시에 들어갈 수 있게 해줍니다. 고급 신호등은 반대편에서도 통과 가능합니다.
-STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}표준 신호기 (전자식){}신호등은 하나 이상의 열차가 한 철도 네트워크상에서 폭발사고를 일으키지 않게 해줍니다.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호등이 하나라도 파란불이면 파란불이 뜨고 그렇지 않으면 빨간불이 됩니다.
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호등과 같은 방법으로 만들되, 입구 & 콤보 전면 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}표준 신호기 (완목){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (완목){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (완목){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (완목){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}경로 신호기 (완목){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}일방통행 경로 신호기 (완목){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}고급 신호등 (전자식){}고급 신호등은 안전한 경로를 선택할 경우 한 대 이상의 열차가 한 폐색에 동시에 들어갈 수 있게 해줍니다. 고급 신호등은 반대편에서도 통과 가능합니다.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}고급 편도 신호등 (전자식){}고급 신호등은 안전한 경로를 선택할 경우 한 대 이상의 열차가 한 폐색에 동시에 들어갈 수 있게 해줍니다. 고급 신호등은 반대편에서도 통과 가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}드래그시 신호기 간격
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}드래그시 신호기 간격 감소

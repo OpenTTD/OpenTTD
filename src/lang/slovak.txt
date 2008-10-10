@@ -332,6 +332,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sneh
 STR_012C_MESSAGE                                                :{WHITE}Správa
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Standardné
 STR_012E_CANCEL                                                 :{BLACK}Zrušit
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Premenovat
@@ -443,6 +444,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maximalna rychl
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Hodnota
 STR_SORT_BY_LENGTH                                              :Dlžka
+STR_SORT_BY_LIFE_TIME                                           :Zostávajúca životnost
 STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
 STR_SORT_BY_RATING_MAX                                          :Hodnotenie prepravy
@@ -657,8 +659,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Vznik priemyslu
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zánik priemyslu
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmeny v ekonomike
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Zmeny produkcie priemyslu obsluhovaného spolocnostou
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Zmeny produkcie priemyslu obsluhovaného konkurenciou
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Ostatné zmeny produkcie priemyslu
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Rady / informácie o vozidlách spolocnosti
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nove vozidla
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Zmeny prijmu nakladu
 STR_020E_SUBSIDIES                                              :{YELLOW}Dotacie
@@ -840,6 +844,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Nastavenia hry
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavenia obtiaznosti
+STR_MENU_CONFIG_PATCHES                                         :Rozšírené nastavenia
 STR_NEWGRF_SETTINGS                                             :Nastavenie newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Nastavenia priehladnosti
 STR_GAMEOPTMENU_0A                                              :
@@ -1049,6 +1054,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemozno 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemozno kopirovat zoznam prikazov ...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec zdielanych prikazov - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Vlak {COMMA} nevie nasjt cestu pre pokracovanie.
 STR_TRAIN_IS_LOST                                               :{WHITE}Vlak {COMMA} sa stratil.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Zisk vlaku {COMMA} za posledny rok bol {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europska Menova Unia!{}{}Euro bolo uvedene ako hlavna mena pre bezne pouzivanie v tejto krajine.
@@ -1078,8 +1084,12 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Zlyhalo 
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Zlyhalo obnovenie lode {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Zlyhalo obnovenie lietadla {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po vymene prilis dlhy
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Neboli využité žiadne pravidlá pre obnovu.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finacny limit)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Rozšírené nastavenia
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Zobrazit rozšírené nastavenia
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Rozšírené nastavenia
 
 STR_CONFIG_PATCHES_OFF                                          :nie
 STR_CONFIG_PATCHES_ON                                           :áno
@@ -1107,6 +1117,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Rovnaky
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zobrazovat dátum v stavovej lište v dlhom formáte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zobrazovat žel. signály na rovnakej strane ako jazdia vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Zobrazit rozpocet na konci roku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nové príkazy sú štandardne 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestných vozidiel (podla množstva nákladu): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posúvat pohlad ked je kurzor myši na okraji okna: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
@@ -1194,6 +1205,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :prvé dostupné
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :posledné dostupné
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :najpoužívanejšie
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Zobrazit rezervované trate: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje výstavby ak nie sú dostupné vhodné vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
@@ -1229,6 +1241,8 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Povolit
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pri stavbe tahaním umiestnit signály na každé: {ORANGE}{STRING}. pole
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticky stavat semafóry namiesto signálov pred rokom: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Zapnút grafické rozhranie stavby signálov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standardne budovaný typ signálov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blokové signály
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Struktúra mesta "žiadne cesty naviac" nie je platná v editore scenárov
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Struktúra mestských ciest: {ORANGE}{STRING}

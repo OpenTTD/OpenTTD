@@ -1466,31 +1466,31 @@ STR_NETWORK_LANG_ANY                                            :Valfritt
 STR_NETWORK_LANG_ENGLISH                                        :Engelska
 STR_NETWORK_LANG_GERMAN                                         :Tyska
 STR_NETWORK_LANG_FRENCH                                         :Franska
-STR_NETWORK_LANG_BRAZILIAN                                      :Brasiliansk
-STR_NETWORK_LANG_BULGARIAN                                      :Belgisk
-STR_NETWORK_LANG_CHINESE                                        :Kines
-STR_NETWORK_LANG_CZECH                                          :Tjeckisk
-STR_NETWORK_LANG_DANISH                                         :Dansk
-STR_NETWORK_LANG_DUTCH                                          :Holländsk
-STR_NETWORK_LANG_ESPERANTO                                      :Spansk
-STR_NETWORK_LANG_FINNISH                                        :Finsk
-STR_NETWORK_LANG_HUNGARIAN                                      :Ungersk
-STR_NETWORK_LANG_ICELANDIC                                      :Isländsk
-STR_NETWORK_LANG_ITALIAN                                        :Italiensk
-STR_NETWORK_LANG_JAPANESE                                       :Japansk
-STR_NETWORK_LANG_KOREAN                                         :Koreansk
-STR_NETWORK_LANG_LITHUANIAN                                     :Litauisk
-STR_NETWORK_LANG_NORWEGIAN                                      :Norsk
-STR_NETWORK_LANG_POLISH                                         :Polsk
-STR_NETWORK_LANG_PORTUGUESE                                     :Portugisisk
-STR_NETWORK_LANG_ROMANIAN                                       :Rumänsk
-STR_NETWORK_LANG_RUSSIAN                                        :Rysk
-STR_NETWORK_LANG_SLOVAK                                         :Slovakisk
-STR_NETWORK_LANG_SLOVENIAN                                      :Slovensk
-STR_NETWORK_LANG_SPANISH                                        :Spansk
-STR_NETWORK_LANG_SWEDISH                                        :Svensk
-STR_NETWORK_LANG_TURKISH                                        :Turkisk
-STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
+STR_NETWORK_LANG_BRAZILIAN                                      :Brasilianska
+STR_NETWORK_LANG_BULGARIAN                                      :Belgiska
+STR_NETWORK_LANG_CHINESE                                        :Kinesiska
+STR_NETWORK_LANG_CZECH                                          :Tjeckiska
+STR_NETWORK_LANG_DANISH                                         :Danska
+STR_NETWORK_LANG_DUTCH                                          :Holländska
+STR_NETWORK_LANG_ESPERANTO                                      :Spanska
+STR_NETWORK_LANG_FINNISH                                        :Finska
+STR_NETWORK_LANG_HUNGARIAN                                      :Ungerska
+STR_NETWORK_LANG_ICELANDIC                                      :Isländska
+STR_NETWORK_LANG_ITALIAN                                        :Italienska
+STR_NETWORK_LANG_JAPANESE                                       :Japanska
+STR_NETWORK_LANG_KOREAN                                         :Koreanska
+STR_NETWORK_LANG_LITHUANIAN                                     :Litauiska
+STR_NETWORK_LANG_NORWEGIAN                                      :Norska
+STR_NETWORK_LANG_POLISH                                         :Polska
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugisiska
+STR_NETWORK_LANG_ROMANIAN                                       :Rumänska
+STR_NETWORK_LANG_RUSSIAN                                        :Ryska
+STR_NETWORK_LANG_SLOVAK                                         :Slovakiska
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovenska
+STR_NETWORK_LANG_SPANISH                                        :Spanska
+STR_NETWORK_LANG_SWEDISH                                        :Svenska
+STR_NETWORK_LANG_TURKISH                                        :Turkiska
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainska
 STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
 STR_NETWORK_LANG_CROATIAN                                       :Kroatiska
 STR_NETWORK_LANG_CATALAN                                        :Katalanska
@@ -2927,7 +2927,7 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan inte
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Fordon kan enbart vänta vid stationer.
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Detta fordon stannar inte vid denna station.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ändra Tid
-STR_TIMETABLE_STATUS_ON_TIME                                    :Detta fordon ligger efter i tidtabellen
+STR_TIMETABLE_STATUS_ON_TIME                                    :Detta fordon kör enligt tidtabellen
 STR_TIMETABLE_STATUS_LATE                                       :Detta fordon är för tillfället {STRING} sen
 STR_TIMETABLE_STATUS_EARLY                                      :Detta fordon är för tillfället {STRING} tidig
 STR_TIMETABLE_TOTAL_TIME                                        :Den här tidtabellen kommer ta {STRING} att slutföra
