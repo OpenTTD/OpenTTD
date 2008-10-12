@@ -3043,6 +3043,8 @@ void BuildOilRig(TileIndex tile)
 	st->facilities = FACIL_AIRPORT | FACIL_DOCK;
 	st->build_date = _date;
 
+	st->rect.BeforeAddTile(tile, StationRect::ADD_FORCE);
+
 	for (CargoID j = 0; j < NUM_CARGO; j++) {
 		st->goods[j].acceptance_pickup = 0;
 		st->goods[j].days_since_pickup = 255;
@@ -3066,6 +3068,9 @@ void DeleteOilRig(TileIndex tile)
 	st->airport_tile = 0;
 	st->facilities &= ~(FACIL_AIRPORT | FACIL_DOCK);
 	st->airport_flags = 0;
+
+	st->rect.AfterRemoveTile(st, tile);
+
 	UpdateStationVirtCoordDirty(st);
 	if (st->facilities == 0) delete st;
 }
