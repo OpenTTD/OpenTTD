@@ -271,7 +271,7 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}기본값
 STR_012E_CANCEL                                                 :{BLACK}취소
 STR_012F_OK                                                     :{BLACK}확인
-STR_0130_RENAME                                                 :{BLACK}이름
+STR_0130_RENAME                                                 :{BLACK}이름 바꾸기
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}더이상 이름을 설정할 수 없습니다!
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}이미 사용중인 이름입니다!
 
@@ -355,7 +355,7 @@ STR_PERFORMANCE_DETAIL_MENU                                     :상세 성취�
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD에 대해서
 STR_015C_SAVE_GAME                                              :게임 저장하기
 STR_015D_LOAD_GAME                                              :불러오기
-STR_015E_QUIT_GAME                                              :그만하기
+STR_015E_QUIT_GAME                                              :게임 그만두기
 STR_015F_QUIT                                                   :종료
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}정말 이 게임을 종료하고 메인으로 이동하시겠습니까?
 STR_0161_QUIT_GAME                                              :{WHITE}게임 그만두기
@@ -442,7 +442,7 @@ STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사�
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 항공기 목록 표시
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}풍경 확대
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}풍경 축소
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}철도 건설
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}철로 건설
 STR_0182_BUILD_ROADS                                            :{BLACK}도로 건설
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}항만 건설
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}공항 건설
@@ -451,7 +451,7 @@ STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}지역 �
 STR_0187_OPTIONS                                                :{BLACK}옵션
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}점검하러 가는 기간 간격을 바꿀 수 없습니다...
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}점검 기간 간격을 바꿀 수 없습니다...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}창닫기
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}창 제목 - 창을 움직이려면 여기를 드래그하세요
 STR_STICKY_BUTTON                                               :{BLACK}이 창을 '모든 창 닫기' 키로 닫을 수 없게 하기
@@ -875,7 +875,7 @@ STR_0319_PAUSED                                                 :{YELLOW}* *  �
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}스크린 샷이 다음과 같이 저장되었습니다 : '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}스크린 샷을 찍지 못했습니다!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}미리 소유권 사두기
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}나중 사용을 위해서 소유권 사 놓기
 STR_032F_AUTOSAVE                                               :{RED}자동저장
 STR_SAVING_GAME                                                 :{RED}*  *  게임 저장중  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}저장중입니다,{}끝날때까지 기다려주세요
@@ -1032,7 +1032,7 @@ STR_CONFIG_PATCHES_ON                                           :On
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}상태바에 차량 속도를 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}경사/해안가 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}건물, 트랙 등의 하부 지형 편집 허용 (자동 슬로프): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}드래그로 철도역 크기 설정 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}좀더 현실적인 역세권 지정 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}매우 긴 열차 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}사실감있는 열차 가속 사용 : {ORANGE}{STRING}
@@ -1053,7 +1053,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호기를 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}새로 지정할 경로는 기본적으로 논스톱 처리: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}새 경로는 기본으로 논스톱 처리: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
@@ -1102,7 +1102,7 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 높은 값은 게임을 느리게함!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 정보 링크 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 툴바 연결 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 화면 스크롤: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리측정 툴팁 표시 : {ORANGE}{STRING}
@@ -1133,7 +1133,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :소유한 회�
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :모든 회사
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}자주 쓰는 철도 종류 설정: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}철도 형식 기본값 설정 (게임 시작/로드 후): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :보통 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전기 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :모노레일
@@ -1167,7 +1167,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}선박 
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}선박 기본 점검 간격: {ORANGE}사용불가
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}고장이 나지 않게 설정되어있으면 점검 간격을 설정하지 않음 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}일렉트릭(전기) 철도를 사용하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}전기 철도를 사용하지 않음 : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{ORANGE}{STRING}{LTBLUE}년부터 컬러 뉴스가 뜸
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}시작 년도: {ORANGE}{STRING}
@@ -1180,7 +1180,7 @@ STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호�
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :경로 신호기
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 신호기
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 경로 신호기
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}신호기 종류를 통한 순환: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :경로 신호기만
@@ -1281,7 +1281,7 @@ STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}웨이�
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}여기에 웨이포인트를 건설할 수 없습니다.
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}이 웨이포인트를 제거할 수 없습니다.
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 레일 기능으로 철도 제작
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 레일 기능으로 철로 만들기
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...시나리오에 도시가 없습니다.
 
@@ -1316,7 +1316,7 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}...사�
 STR_LANDINFO_COORDS                                             :{BLACK}좌표: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}역의 일부를 제거할 수 없습니다...
-STR_CANT_CONVERT_RAIL                                           :{WHITE}이곳의 철도 타입을 바꿀 수 없습니다...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}이곳의 철로 형식을 바꿀 수 없습니다...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}철도의 타입을 변경/업그레이드 합니다
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}열차 전체를 팔려면 기관차를 여기로 드래그하세요
@@ -1686,30 +1686,30 @@ STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}터널 �
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}철로/신호기 건설/제거툴 켜기/끄기
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}다리 건설 - 원하는 교량을 선택하세요
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}차량기지의 방향을 선택하세요
-STR_1021_RAILROAD_TRACK                                         :철도
+STR_1021_RAILROAD_TRACK                                         :철로
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :철도 차량기지
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...다른 회사의 소유지입니다!
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호기가 있는 철도
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :프리 신호기가 있는 철도
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :일반 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :프리 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :출구 신호기가 있는 철로
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :콤보 신호기가 있는 철로
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :일방통행 경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :일반 신호등과 프리 신호기가 있는 철도
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :일반 신호등과 출구 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :일방통행 경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :일반 신호등과 프리 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :일반 신호등과 출구 신호기가 있는 철로
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :일반, 콤보 신호기가 있는 철로
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :일반 및 경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :일반 및 일방통행 경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :프리 신호등과 출구 신호기가 있는 철도
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :일반 및 경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :일반 및 일방통행 경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :프리 신호등과 출구 신호기가 있는 철로
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :프리, 콤보 신호기가 있는 철로
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :프리 및 경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :프리 및 일방통행 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :프리 및 경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :프리 및 일방통행 경로 신호기가 있는 철로
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :출구, 콤보 신호기가 있는 철로
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :출구 및 경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :출구 및 일방통행 경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :콤보 및 경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :콤보 및 일방통행 경로 신호기가 있는 철길
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :경로 및 일방통행 경로 신호기가 있는 철길
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :출구 및 경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :출구 및 일방통행 경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :콤보 및 경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :콤보 및 일방통행 경로 신호기가 있는 철로
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :경로 및 일방통행 경로 신호기가 있는 철로
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
 
 
@@ -2116,19 +2116,19 @@ STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}여기�
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}여기에 터널을 지을 수 없습니다...
 STR_5017_RAILROAD_TUNNEL                                        :철도용 터널
 STR_5018_ROAD_TUNNEL                                            :도로용 터널
-STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :강철 현수교 (철도용)
-STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :강철 아치교 (철도용)
-STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :강철 캔틸레버교 (철도용)
-STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :철근 콘크리트 현수교 (철도용)
-STR_501F_WOODEN_RAIL_BRIDGE                                     :나무 다리 (철도용)
-STR_5020_CONCRETE_RAIL_BRIDGE                                   :콘크리트교 (철도용)
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :강철 현수 철교
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :강철 들보 철교
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :강철 캔틸레버 철교
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :철근 콘크리트 현수 철교
+STR_501F_WOODEN_RAIL_BRIDGE                                     :나무 철교
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :콘크리트 철교
 STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :강철 현수교 (도로용)
 STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :강철 거더교 (도로용)
 STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :강철 캔틸레버교 (도로용)
 STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :철근 콘트리트 현수교 (도로용)
 STR_5025_WOODEN_ROAD_BRIDGE                                     :나무 다리 (도로용)
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :콘크리트교 (도로용)
-STR_5027_TUBULAR_RAIL_BRIDGE                                    :원통형 다리 (철도용)
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :원통형 철교
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :원통형 다리 (도로용)
 
 ##id 0x5800
@@ -3330,7 +3330,7 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}교체�
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}좌측에서 선택한 기관차 종류를 교체할 새로운 기관차로 선택하십시오.
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}좌측에서 선택한 기관차 종류의 교체를 중지하려면 누르세요
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}좌측에서 선택한 기관차 종류를 우측의 새 기관차로 교체하려면 누르세요
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차가 속한 철도의 타입을 고르세요
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}교체할 기관차가 속한 철도의 형식을 고르세요
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}좌측의 선택된 기관차가 어떤 기관차로 교체되고 있는지 표시합니다
 STR_REPLACE_HELP                                                :{BLACK}이 기능은 열차가 차량기지로 들어갔을 때 한 기관차 종류를 다른 종류로 교체하게 할 수 있습니다
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}화물차 제거: {ORANGE}{SKIP}{STRING}
@@ -3365,7 +3365,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 �
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES                                               :철도
+STR_RAIL_VEHICLES                                               :철도 차량
 STR_ELRAIL_VEHICLES                                             :전기 철도
 STR_MONORAIL_VEHICLES                                           :모노레일 차량
 STR_MAGLEV_VEHICLES                                             :자기부상
@@ -3614,7 +3614,7 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}넥타�
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}신호기 선택
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}이곳의 신호기를 변환할 수 없습니다...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}표준 신호기 (완목){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}폐색 신호기 (완목){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (완목){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (완목){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (완목){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.

@@ -7,6 +7,48 @@
 
 ##id 0x0000
 STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Exter la bordo del mapo
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Tro proxim la bordo del mapo
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Ne sat pekunio - requizitas {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Plata tereno requizitita
+STR_0008_WAITING                                                :{BLACK}Vartabas: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000C_ACCEPTS                                                :{BLACK}Aceptas: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Aceptas: {GOLD}
+STR_000F_PASSENGERS                                             :Pasajero
+STR_0010_COAL                                                   :Karbono
+STR_0012_OIL                                                    :Petrolo
+STR_0013_LIVESTOCK                                              :Brutaro
+STR_0015_GRAIN                                                  :Semino
+STR_0017_IRON_ORE                                               :Fer-erco
+STR_0018_STEEL                                                  :Stalo
+STR_001A_COPPER_ORE                                             :Kupr-erco
+STR_001B_MAIZE                                                  :Maizo
+STR_001C_FRUIT                                                  :Frukto
+STR_001D_DIAMONDS                                               :Diamanti
+STR_001E_FOOD                                                   :Nutrajo
+STR_001F_PAPER                                                  :Papero
+STR_0020_GOLD                                                   :Oro
+STR_0021_WATER                                                  :Aquo
+STR_0022_WHEAT                                                  :Frumento
+STR_0023_RUBBER                                                 :Kauchuko
+STR_0024_SUGAR                                                  :Sukro
+STR_0025_TOYS                                                   :Ludili
+STR_002B_BATTERIES                                              :Baterii
+STR_002C_PLASTIC                                                :Plastiko
+STR_002F_PASSENGER                                              :Pasajero
+STR_0030_COAL                                                   :Karbono
+STR_0032_OIL                                                    :Petrolo
+STR_0033_LIVESTOCK                                              :Brutaro
+STR_0035_GRAIN                                                  :Semino
+STR_0037_IRON_ORE                                               :Fer-erco
+STR_0038_STEEL                                                  :Stalo
+STR_003B_MAIZE                                                  :Maizo
+STR_003C_FRUIT                                                  :Frukto
+STR_003D_DIAMOND                                                :Diamanto
+STR_003E_FOOD                                                   :Nutrajo
+STR_003F_PAPER                                                  :Papero
 
 
 
@@ -264,6 +306,7 @@ STR_NULL                                                        :
 
 
 
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 

@@ -1688,7 +1688,7 @@ STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Costruis
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Seleziona fra costruzione/rimozione di binari e segnali
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Selezione ponte - fare clic sul ponte desiderato per costruirlo
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Seleziona l'orientamento del deposito ferroviario
-STR_1021_RAILROAD_TRACK                                         :Binari
+STR_1021_RAILROAD_TRACK                                         :Ferrovia
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Deposito ferroviario
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...l'area appartiene a un'altra compagnia
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Ferrovia con segnali di blocco
@@ -3616,18 +3616,18 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Cambia l
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Selezione segnale
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Impossibile convertire i segnali qui...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Segnale di blocco (semaforico){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia di un treno.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-segnale (semaforico){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Segnale di blocco (semaforico){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-segnale (semaforico){}Via libera se è presente almeno un segnale di uscita su via libera al termine della sezione di blocco successiva. Altrimenti presenta via impedita.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Segnale di uscita (semaforico){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Segnale combinato (semaforico){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Segnale a percorso (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale a percorso a senso unico (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Segnale a percorso s. u. (semaforico){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Segnale di blocco (luminoso){}I segnali sono necessari per impedire ai convogli di scontrarsi su reti ferroviarie dove viaggia più di un treno.
-STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-segnale (luminoso){}Verde se è presente almeno un segnale di uscita verde al termine della sezione di blocco successiva. Altrimenti presenta il rosso.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-segnale (luminoso){}Via libera se è presente almeno un segnale di uscita su via libera al termine della sezione di blocco successiva. Altrimenti presenta via impedita.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Segnale di uscita (luminoso){}Si comporta come un segnale di blocco, ma è necessario per far funzionare correttamente i pre-segnali e i segnali combinati all'ingresso della sezione.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Segnale combinato (luminoso){}Un segnale combinato funziona contemporaneamente da segnale d'uscita e da pre-segnale. In questo modo è possibile costruire "alberi" di pre-segnali.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Segnale a percorso (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Può essere superato al contrario.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale a percorso a senso unico (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Segnale a percorso s. u. (luminoso){}Un segnale a percorso consente a più di un treno alla volta di entrare in una sezione di blocco, ammesso che ognuno possa riservarsi un percorso attraverso la sezione. Non può essere superato al contrario.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversione segnali - Se attivato, facendo clic su un segnale esistente lo si converte nel tipo selezionato, mentre con CTRL+clic se ne modifica la variante.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Distanza fra i segnali costruiti automaticamente trascinando il cursore
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Riduce la distanza fra i segnali costruiti

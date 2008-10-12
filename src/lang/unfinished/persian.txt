@@ -40,7 +40,73 @@ STR_0031_MAIL                                                   :نامه
 STR_0032_OIL                                                    :نفت
 STR_0034_GOODS                                                  :محصولات مصرفی
 STR_0035_GRAIN                                                  :غله
+STR_0036_WOOD                                                   :چوب
+STR_0037_IRON_ORE                                               :سنگ آهن
+STR_0038_STEEL                                                  :فولاد
+STR_003A_COPPER_ORE                                             :سنگ مس
+STR_003C_FRUIT                                                  :میوه
+STR_003D_DIAMOND                                                :الماس
+STR_003E_FOOD                                                   :مواد خوراکی
+STR_003F_PAPER                                                  :کاغذ
+STR_0040_GOLD                                                   :طلا
+STR_0041_WATER                                                  :آب
+STR_0042_WHEAT                                                  :گندم
+STR_0044_SUGAR                                                  :شکر
+STR_0045_TOY                                                    :اسباب بازی
+STR_0046_CANDY                                                  :شیرینی
+STR_0047_COLA                                                   :نوشابه
+STR_0048_COTTON_CANDY                                           :پشمک
+STR_0049_BUBBLE                                                 :حباب
+STR_004A_TOFFEE                                                 :تافی
+STR_004B_BATTERY                                                :باتری
+STR_004C_PLASTIC                                                :پلاستیک
+STR_004D_FIZZY_DRINK                                            :نوشابه گازدار
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}نقشه - {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}تنظیمات بازی
+STR_00B2_MESSAGE                                                :{YELLOW}پیام
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}پیام از {STRING}
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}نمی‌توانم انجام دهم
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}این منطقه پاک نمی‌شود
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
 
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}خروج
+STR_00C8_YES                                                    :{BLACK}بله
+STR_00C9_NO                                                     :{BLACK}خیر
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}آیا می‌خواهید از بازی خارج شوید و برگردید به{STRING}?
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :هیچی
+STR_00D1_DARK_BLUE                                              :آبی تیره
+STR_00D2_PALE_GREEN                                             :سبز روشن
+STR_00D3_PINK                                                   :صورتی
+STR_00D4_YELLOW                                                 :زرد
+STR_00D5_RED                                                    :قرمز
+STR_00D6_LIGHT_BLUE                                             :آبی روشن
+STR_00D7_GREEN                                                  :سبز
+STR_00D8_DARK_GREEN                                             :سبز تیره
+STR_00D9_BLUE                                                   :آبی
+STR_00DA_CREAM                                                  :کرم
+STR_00DB_MAUVE                                                  :بنفش تیره
+STR_00DC_PURPLE                                                 :بنفش
+STR_00DD_ORANGE                                                 :نارنجی
+STR_00DE_BROWN                                                  :قهوه‌ای
+STR_00DF_GREY                                                   :خاکستری
+STR_00E0_WHITE                                                  :سفید
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}ماشین‌های زیادی در بازی هستند
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}مختصات
+STR_00E6_VEHICLES                                               :وسایل نقلیه
+STR_00E7_INDUSTRIES                                             :کارخانه‌ها
 
 
 

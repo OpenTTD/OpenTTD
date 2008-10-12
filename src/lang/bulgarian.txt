@@ -1679,6 +1679,9 @@ STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Железоп�
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Железопътна линиа с пре- и изходни сигнали
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Железопътна линиа с пре- и комбинирани сигнали
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Железопътна линиа с изходни и комбинирани знаци
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Релсов път със смесени и двупосочни знаци
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Релсов път със смесени и еднопосочни знаци
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Релсов път с двупосочни и еднопосочни знаци
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Железопътната гара трябва да бъде премахната първо
 
 
@@ -1852,6 +1855,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Тук �
 STR_280A_SIGN                                                   :Знак
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Промяна текста на знака
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Името на знака не може да бъде променяно...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Не може да изтриеш знака....
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Избор тип на дърво за засаждане
 STR_280E_TREES                                                  :Дървета
 STR_280F_RAINFOREST                                             :Дъждовни гори
@@ -2234,6 +2238,7 @@ STR_HOSTILE                                                     :враждеб�
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Компания {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Ново лице
 STR_7005_COLOR_SCHEME                                           :{BLACK}Цветове
 STR_7006_COLOR_SCHEME                                           :{GOLD}Цветове:
@@ -2673,7 +2678,7 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Влак на пътя
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
-STR_ORDER_NON_STOP                                              :{BLACK}NБез спирка
+STR_ORDER_NON_STOP                                              :{BLACK}Без спирка
 STR_ORDER_GO_TO                                                 :Отиди до
 STR_ORDER_GO_NON_STOP_TO                                        :Отиди без спиране до
 STR_ORDER_GO_VIA                                                :Отиди чрез
@@ -2755,6 +2760,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Рем�
 
 STR_INVALID_ORDER                                               :{RED} (Невалидна заповед)
 
+STR_UNKNOWN_STATION                                             :неизвестна гара
 STR_8812_EMPTY                                                  :{LTBLUE}Празен
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} от {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} от {STATION} (x{NUM})

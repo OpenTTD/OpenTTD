@@ -595,8 +595,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Company
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Opening of industries
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Closing of industries
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Economy changes
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Production changes of industries served by the company
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Production changes of industries served by competitor(s)
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Other industry production changes
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Advice / information on company's vehicles
 STR_020C_NEW_VEHICLES                                           :{YELLOW}New vehicles
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changes of cargo acceptance
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidies
@@ -1246,6 +1248,7 @@ STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Checkboxes indicate if you have used this cheat before
 STR_CHEATS_WARNING                                              :{BLACK}Warning! You are about to betray your fellow competitors. Keep in mind that such a disgrace will be remembered for eternity.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Increase money by {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Playing as company: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovables): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Build while in pause mode: {ORANGE}{STRING}
@@ -1577,6 +1580,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :received strang
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :wrong revision
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :name already in use
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :wrong game-password
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :wrong company-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :kicked by server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :was trying to use a cheat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server full
@@ -2262,6 +2266,7 @@ STR_HOSTILE                                                     :Hostile
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Company {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}New Face
 STR_7005_COLOR_SCHEME                                           :{BLACK}Color Scheme
 STR_7006_COLOR_SCHEME                                           :{GOLD}Color Scheme:
@@ -3540,6 +3545,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Click to
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
