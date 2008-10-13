@@ -12,9 +12,10 @@
 
 typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
 
+/** Combination of a palette sprite and a 'real' sprite */
 struct PalSpriteID {
-	SpriteID sprite;
-	SpriteID pal;
+	SpriteID sprite;  ///< The 'real' sprite
+	SpriteID pal;     ///< The palette (use \c PAL_NONE) if not needed)
 };
 typedef int32 CursorID;
 

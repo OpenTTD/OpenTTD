@@ -102,6 +102,9 @@ typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
  */
 typedef CommandCost TerraformTileProc(TileIndex tile, uint32 flags, uint z_new, Slope tileh_new);
 
+/**
+ * Set of callback functions for performing tile operations of a given tile type.
+ * @see TileType */
 struct TileTypeProcs {
 	DrawTileProc *draw_tile_proc;
 	GetSlopeZProc *get_slope_z_proc;

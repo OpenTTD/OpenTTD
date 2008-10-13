@@ -83,6 +83,7 @@ struct ChildScreenSpriteToDraw {
 	int next;                       ///< next child to draw (-1 at the end)
 };
 
+/** Parent sprite that should be drawn */
 struct ParentSpriteToDraw {
 	SpriteID image;                 ///< sprite to draw
 	SpriteID pal;                   ///< palette to use
@@ -105,7 +106,7 @@ struct ParentSpriteToDraw {
 	bool comparison_done;           ///< Used during sprite sorting: true if sprite has been compared with all other sprites
 };
 
-/* Enumeration of multi-part foundations */
+/** Enumeration of multi-part foundations */
 enum FoundationPart {
 	FOUNDATION_PART_NONE     = 0xFF,  ///< Neither foundation nor groundsprite drawn yet.
 	FOUNDATION_PART_NORMAL   = 0,     ///< First part (normal foundation or no foundation)
@@ -119,13 +120,14 @@ typedef SmallVector<ParentSpriteToDraw, 64> ParentSpriteToDrawVector;
 typedef SmallVector<ParentSpriteToDraw*, 64> ParentSpriteToSortVector;
 typedef SmallVector<ChildScreenSpriteToDraw, 16> ChildScreenSpriteToDrawVector;
 
+/** Data structure storing rendering information */
 struct ViewportDrawer {
 	DrawPixelInfo dpi;
 
 	StringSpriteToDrawVector string_sprites_to_draw;
 	TileSpriteToDrawVector tile_sprites_to_draw;
 	ParentSpriteToDrawVector parent_sprites_to_draw;
-	ParentSpriteToSortVector parent_sprites_to_sort;
+	ParentSpriteToSortVector parent_sprites_to_sort; ///< Parent sprite pointer array used for sorting
 	ChildScreenSpriteToDrawVector child_screen_sprites_to_draw;
 
 	int *last_child;
@@ -356,6 +358,12 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
 	return NULL;
 }
 
+/**
+ * Translate screen coordinate in a viewport to a tile coordinate
+ * @param vp  Viewport that contains the (\a x, \a y) screen coordinate
+ * @param x   Screen x coordinate
+ * @param y   Screen y coordinate
+ * @return Tile coordinate */
 static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 {
 	Point pt;
@@ -1286,6 +1294,7 @@ static void ViewportDrawTileSprites(const TileSpriteToDrawVector *tstdv)
 	}
 }
 
+/** Sort parent sprites pointer array */
 static void ViewportSortParentSprites(ParentSpriteToSortVector *psdv)
 {
 	ParentSpriteToDraw **psdvend = psdv->End();

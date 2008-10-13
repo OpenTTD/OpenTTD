@@ -5,10 +5,10 @@
 #ifndef LANDSCAPE_TYPE_H
 #define LANDSCAPE_TYPE_H
 
-typedef byte LandscapeID;
+typedef byte LandscapeID; ///< Landscape type. @see LandscapeType
 
-/* Landscape types */
-enum {
+/** Landscape types */
+enum LandscapeType {
 	LT_TEMPERATE  = 0,
 	LT_ARCTIC     = 1,
 	LT_TROPIC     = 2,

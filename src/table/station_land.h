@@ -2,8 +2,30 @@
 
 /** @file station_land.h Sprites to use and how to display them for station tiles. */
 
+/**
+ * Constructor macro for an image without a palette in a DrawTileSeqStruct array.
+ * @param dx  Offset in x direction
+ * @param dy  Offset in y direction
+ * @param dz  Offset in z direction
+ * @param sx  Size in x direction
+ * @param sy  Size in y direction
+ * @param sz  Size in z direction
+ * @param img Sprite to draw
+ */
 #define TILE_SEQ_LINE(dx, dy, dz, sx, sy, sz, img) { dx, dy, dz, sx, sy, sz, {img, PAL_NONE} },
+/**
+ * Constructor macro for an image with a palette in a DrawTileSeqStruct array.
+ * @param dx  Offset in x direction
+ * @param dy  Offset in y direction
+ * @param dz  Offset in z direction
+ * @param sx  Size in x direction
+ * @param sy  Size in y direction
+ * @param sz  Size in z direction
+ * @param img Sprite to draw
+ * @param pal Paleltte sprite
+ */
 #define TILE_SEQ_LINE_PAL(dx, dy, dz, sx, sy, sz, img, pal) { dx, dy, dz, sx, sy, sz, {img, pal} },
+/** Constructor macro for a terminating DrawTileSeqStruct entry in an array */
 #define TILE_SEQ_END() { (byte)0x80, 0, 0, 0, 0, 0, {0, 0} }
 
 static const DrawTileSeqStruct _station_display_nothing[] = {
@@ -995,6 +1017,11 @@ static const DrawTileSeqStruct _station_display_datas_0171[] = {
 #undef TILE_SEQ_LINE
 #undef TILE_SEQ_LINE_PAL
 
+/**
+ * Constructor macro of a DrawTileSprites structure
+ * @param img   Ground sprite without palette of the tile
+ * @param dtss  Sequence child sprites of the tile
+ */
 #define TILE_SPRITE_LINE(img, dtss) { {img, PAL_NONE}, dtss },
 
 static const DrawTileSprites _station_display_datas_rail[] = {

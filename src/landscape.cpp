@@ -67,7 +67,7 @@ const byte _tileh_to_sprite[32] = {
 SnowLine *_snow_line = NULL;
 
 /**
- * Applys a foundation to a slope.
+ * Applies a foundation to a slope.
  *
  * @pre      Foundation and slope must be valid combined.
  * @param f  The #Foundation.
@@ -473,6 +473,12 @@ TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode
 	return _tile_type_procs[GetTileType(tile)]->get_tile_track_status_proc(tile, mode, sub_mode, side);
 }
 
+/**
+ * Change the owner of a tile
+ * @param tile      Tile to change
+ * @param old_owner Current owner of the tile
+ * @param new_owner New owner of the tile
+ */
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner)
 {
 	_tile_type_procs[GetTileType(tile)]->change_tile_owner_proc(tile, old_owner, new_owner);

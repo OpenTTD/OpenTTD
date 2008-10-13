@@ -23,8 +23,9 @@
  * bounding box. Used especially for various multi-sprite buildings (like
  * depots or stations): */
 
+/** A tile child sprite and palette to draw for stations etc, with 3D bounding box */
 struct DrawTileSeqStruct {
-	int8 delta_x; // 0x80 is sequence terminator
+	int8 delta_x; ///< \c 0x80 is sequence terminator
 	int8 delta_y;
 	int8 delta_z;
 	byte size_x;
@@ -33,9 +34,10 @@ struct DrawTileSeqStruct {
 	PalSpriteID image;
 };
 
+/** Ground palette sprite of a tile, together with its child sprites */
 struct DrawTileSprites {
-	PalSpriteID ground;
-	const DrawTileSeqStruct *seq;
+	PalSpriteID ground;           ///< Palette and sprite for the ground
+	const DrawTileSeqStruct *seq; ///< Array of child sprites. Terminated with a terminator entry
 };
 
 /**

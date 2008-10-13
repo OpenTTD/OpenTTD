@@ -18,7 +18,7 @@ enum {
 
 
 /**
- * The different type of a tile.
+ * The different types of tiles.
  *
  * Each tile belongs to one type, according whatever is build on it.
  *
