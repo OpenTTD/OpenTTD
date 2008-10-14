@@ -993,7 +993,7 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 {
 	Town *from,*to;
 
-	fr->distance = (uint)-1;
+	fr->distance = UINT_MAX;
 
 	fr->from = from = GetRandomTown();
 	if (from == NULL || from->population < 400) return;
@@ -1011,7 +1011,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	int trans, total;
 	CargoID cargo;
 
-	fr->distance = (uint)-1;
+	fr->distance = UINT_MAX;
 
 	fr->from = i = GetRandomIndustry();
 	if (i == NULL) return;

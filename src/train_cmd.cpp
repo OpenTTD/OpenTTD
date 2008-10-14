@@ -2205,7 +2205,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 bool Train::FindClosestDepot(TileIndex *location, DestinationID *destination, bool *reverse)
 {
 	TrainFindDepotData tfdd = FindClosestTrainDepot(this, 0);
-	if (tfdd.best_length == (uint)-1) return false;
+	if (tfdd.best_length == UINT_MAX) return false;
 
 	if (location    != NULL) *location    = tfdd.tile;
 	if (destination != NULL) *destination = GetDepotByTile(tfdd.tile)->index;
@@ -4376,7 +4376,7 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 
 	TrainFindDepotData tfdd = FindClosestTrainDepot(v, MAX_ACCEPTABLE_DEPOT_DIST);
 	/* Only go to the depot if it is not too far out of our way. */
-	if (tfdd.best_length == (uint)-1 || tfdd.best_length > MAX_ACCEPTABLE_DEPOT_DIST) {
+	if (tfdd.best_length == UINT_MAX || tfdd.best_length > MAX_ACCEPTABLE_DEPOT_DIST) {
 		if (v->current_order.IsType(OT_GOTO_DEPOT)) {
 			/* If we were already heading for a depot but it has
 			 * suddenly moved farther away, we continue our normal

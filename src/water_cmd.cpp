@@ -222,7 +222,7 @@ CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	if (flags & DC_EXEC) {
 		Depot *depot = new Depot(tile);
-		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
+		depot->town_index = ClosestTownFromTile(tile, UINT_MAX)->index;
 
 		MakeShipDepot(tile,  _current_company, DEPOT_NORTH, axis, wc1);
 		MakeShipDepot(tile2, _current_company, DEPOT_SOUTH, axis, wc2);

@@ -809,7 +809,7 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		MakeRailDepot(tile, _current_company, dir, (RailType)p1);
 		MarkTileDirtyByTile(tile);
 
-		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
+		d->town_index = ClosestTownFromTile(tile, UINT_MAX)->index;
 
 		AddSideToSignalBuffer(tile, INVALID_DIAGDIR, _current_company);
 		YapfNotifyTrackLayoutChange(tile, DiagDirToDiagTrack(dir));
@@ -968,7 +968,7 @@ CommandCost CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32
 		if (IsPbsSignal(sigtype)) {
 			/* PBS signals should show red unless they are on a reservation. */
 			uint mask = GetPresentSignals(tile) & SignalOnTrack(track);
-			SetSignalStates(tile, (GetSignalStates(tile) & ~mask) | ((HasBit(GetTrackReservation(tile), track) ? (uint)-1 : 0) & mask));
+			SetSignalStates(tile, (GetSignalStates(tile) & ~mask) | ((HasBit(GetTrackReservation(tile), track) ? UINT_MAX : 0) & mask));
 		}
 		MarkTileDirtyByTile(tile);
 		AddTrackToSignalBuffer(tile, track, _current_company);

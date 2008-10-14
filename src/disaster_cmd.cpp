@@ -602,7 +602,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			}
 		}
 
-		t = ClosestTownFromTile(v->dest_tile, (uint)-1);
+		t = ClosestTownFromTile(v->dest_tile, UINT_MAX);
 		SetDParam(0, t->index);
 		AddNewsItem(STR_B004_UFO_LANDS_NEAR,
 			NS_ACCIDENT_TILE,

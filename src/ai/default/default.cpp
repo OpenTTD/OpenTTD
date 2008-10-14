@@ -2158,9 +2158,9 @@ static void AiBuildRailConstruct(Company *c)
 	arf.depth = 0;
 	arf.recursive_mode = 0;
 	arf.best_ptr = NULL;
-	arf.cur_best_dist = (uint)-1;
+	arf.cur_best_dist = UINT_MAX;
 	arf.cur_best_depth = 0xff;
-	arf.best_dist = (uint)-1;
+	arf.best_dist = UINT_MAX;
 	arf.best_depth = 0xff;
 	arf.cur_best_tile = 0;
 	arf.best_tile = 0;
@@ -2855,7 +2855,7 @@ static bool AiCheckRoadPathBetter(AiRoadFinder *arf, const byte *p)
 		}
 	}
 	arf->recursive_mode = 0;
-	arf->cur_best_dist = (uint)-1;
+	arf->cur_best_dist = UINT_MAX;
 	arf->cur_best_depth = 0xff;
 
 	return better;
@@ -2892,7 +2892,7 @@ static bool AiCheckRoadFinished(Company *c)
 	TrackdirBits bits = TrackStatusToTrackdirBits(GetTileTrackStatus(tile, TRANSPORT_ROAD, ROADTYPES_ROAD)) & DiagdirReachesTrackdirs(dir);
 	if (bits == TRACKDIR_BIT_NONE) return false;
 
-	are.best_dist = (uint)-1;
+	are.best_dist = UINT_MAX;
 
 	while (bits != TRACKDIR_BIT_NONE) {
 		Trackdir trackdir = RemoveFirstTrackdir(&bits);
@@ -3058,9 +3058,9 @@ static void AiBuildRoadConstruct(Company *c)
 	arf.depth = 0;
 	arf.recursive_mode = 0;
 	arf.best_ptr = NULL;
-	arf.cur_best_dist = (uint)-1;
+	arf.cur_best_dist = UINT_MAX;
 	arf.cur_best_depth = 0xff;
-	arf.best_dist = (uint)-1;
+	arf.best_dist = UINT_MAX;
 	arf.best_depth =  0xff;
 	arf.cur_best_tile = 0;
 	arf.best_tile = 0;

@@ -85,7 +85,7 @@ static void MakeDefaultWaypointName(Waypoint* wp)
 	uint32 next = 0; // first waypoint number in the bitmap
 	WaypointID idx = 0; // index where we will stop
 
-	wp->town_index = ClosestTownFromTile(wp->xy, (uint)-1)->index;
+	wp->town_index = ClosestTownFromTile(wp->xy, UINT_MAX)->index;
 
 	/* Find first unused waypoint number belonging to this town. This can never fail,
 	 * as long as there can be at most 65535 waypoints in total.
@@ -472,7 +472,7 @@ void FixOldWaypoints()
 
 	/* Convert the old 'town_or_string', to 'string' / 'town' / 'town_cn' */
 	FOR_ALL_WAYPOINTS(wp) {
-		wp->town_index = ClosestTownFromTile(wp->xy, (uint)-1)->index;
+		wp->town_index = ClosestTownFromTile(wp->xy, UINT_MAX)->index;
 		wp->town_cn = 0;
 		if (wp->string & 0xC000) {
 			wp->town_cn = wp->string & 0x3F;

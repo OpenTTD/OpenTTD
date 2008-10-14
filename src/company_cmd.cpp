@@ -287,7 +287,7 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 			SetDParam(1, owner);
 		}
 	} else {
-		const Town *t = ClosestTownFromTile(tile, (uint)-1);
+		const Town *t = ClosestTownFromTile(tile, UINT_MAX);
 
 		SetDParam(0, STR_TOWN);
 		SetDParam(1, t->index);
@@ -333,7 +333,7 @@ static void GenerateCompanyName(Company *c)
 	tile = c->last_build_coordinate;
 	if (tile == 0) return;
 
-	t = ClosestTownFromTile(tile, (uint)-1);
+	t = ClosestTownFromTile(tile, UINT_MAX);
 
 	if (t->name == NULL && IsInsideMM(t->townnametype, SPECSTR_TOWNNAME_START, SPECSTR_TOWNNAME_LAST + 1)) {
 		str = t->townnametype - SPECSTR_TOWNNAME_START + SPECSTR_PLAYERNAME_START;

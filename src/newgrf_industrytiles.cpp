@@ -79,7 +79,7 @@ static uint32 IndustryTileGetVariable(const ResolverObject *object, byte variabl
 		case 0x41 : return GetTerrainType(tile);
 
 		/* Current town zone of the tile in the nearest town */
-		case 0x42 : return GetTownRadiusGroup(ClosestTownFromTile(tile, (uint)-1), tile);
+		case 0x42 : return GetTownRadiusGroup(ClosestTownFromTile(tile, UINT_MAX), tile);
 
 		/* Relative position */
 		case 0x43 : return GetRelativePosition(tile, inds->xy);

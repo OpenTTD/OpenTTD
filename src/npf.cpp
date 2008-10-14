@@ -910,8 +910,8 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, bool ignore_start
 	}
 
 	/* Initialize result */
-	result.best_bird_dist = (uint)-1;
-	result.best_path_dist = (uint)-1;
+	result.best_bird_dist = UINT_MAX;
+	result.best_path_dist = UINT_MAX;
 	result.best_trackdir  = INVALID_TRACKDIR;
 	result.node.tile      = INVALID_TILE;
 	result.res_okay       = false;
@@ -1000,7 +1000,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	 */
 	Queue depots;
 	int r;
-	NPFFoundTargetData best_result = {(uint)-1, (uint)-1, INVALID_TRACKDIR, {INVALID_TILE, 0, {0, 0}}, false};
+	NPFFoundTargetData best_result = {UINT_MAX, UINT_MAX, INVALID_TRACKDIR, {INVALID_TILE, 0, {0, 0}}, false};
 	NPFFoundTargetData result;
 	NPFFindStationOrTileData target;
 	AyStarNode start;
@@ -1046,8 +1046,8 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 
 	/* Initialize Result */
 	_npf_aystar.user_path = &result;
-	best_result.best_path_dist = (uint)-1;
-	best_result.best_bird_dist = (uint)-1;
+	best_result.best_path_dist = UINT_MAX;
+	best_result.best_bird_dist = UINT_MAX;
 
 	/* Just iterate the depots in order of increasing distance */
 	while ((current = (Depot*)depots.pop(&depots))) {
@@ -1067,8 +1067,8 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 		_npf_aystar.addstart(&_npf_aystar, &start, 0);
 
 		/* Initialize result */
-		result.best_bird_dist = (uint)-1;
-		result.best_path_dist = (uint)-1;
+		result.best_bird_dist = UINT_MAX;
+		result.best_path_dist = UINT_MAX;
 		result.best_trackdir = INVALID_TRACKDIR;
 
 		/* Initialize target */

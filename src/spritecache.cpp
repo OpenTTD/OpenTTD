@@ -425,7 +425,7 @@ static void DeleteEntryFromSpriteCache()
 
 	/* Display an error message and die, in case we found no sprite at all.
 	 * This shouldn't really happen, unless all sprites are locked. */
-	if (best == (uint)-1) error("Out of sprite memory");
+	if (best == UINT_MAX) error("Out of sprite memory");
 
 	/* Mark the block as free (the block must be in use) */
 	s = (MemBlock*)GetSpriteCache(best)->ptr - 1;

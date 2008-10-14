@@ -512,7 +512,7 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	ind.width = 0;
 	ind.type = type;
 	ind.selected_layout = itspec_index;
-	ind.town = ClosestTownFromTile(tile, (uint)-1);
+	ind.town = ClosestTownFromTile(tile, UINT_MAX);
 
 	NewIndustryResolver(&object, tile, &ind, type);
 	object.GetVariable = IndustryLocationGetVariable;

@@ -78,7 +78,7 @@ enum NPFNodeFlag {
 /* Meant to be stored in AyStar.userpath */
 struct NPFFoundTargetData {
 	uint best_bird_dist;    ///< The best heuristic found. Is 0 if the target was found
-	uint best_path_dist;    ///< The shortest path. Is (uint)-1 if no path is found
+	uint best_path_dist;    ///< The shortest path. Is UINT_MAX if no path is found
 	Trackdir best_trackdir; ///< The trackdir that leads to the shortest path/closest birds dist
 	AyStarNode node;        ///< The node within the target the search led us to
 	bool res_okay;          ///< True if a path reservation could be made

@@ -1190,7 +1190,7 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 	const Town *t;
 	const Industry *i;
 
-	t = ClosestTownFromTile(tile, (uint)-1);
+	t = ClosestTownFromTile(tile, UINT_MAX);
 
 	if (_settings_game.economy.multiple_industry_per_town) return t;
 

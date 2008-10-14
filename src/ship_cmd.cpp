@@ -409,8 +409,8 @@ static uint FindShipTrack(Vehicle *v, TileIndex tile, DiagDirection dir, TrackBi
 	do {
 		i = RemoveFirstTrack(&bits);
 
-		pfs.best_bird_dist = (uint)-1;
-		pfs.best_length = (uint)-1;
+		pfs.best_bird_dist = UINT_MAX;
+		pfs.best_length = UINT_MAX;
 
 		FollowTrack(tile, PATHFIND_FLAGS_SHIP_MODE | PATHFIND_FLAGS_DISABLE_TILE_HASH, TRANSPORT_WATER, 0, (DiagDirection)_ship_search_directions[i][dir], (TPFEnumProc*)ShipTrackFollower, NULL, &pfs);
 

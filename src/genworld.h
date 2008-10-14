@@ -15,7 +15,7 @@ enum {
 	LG_ORIGINAL     = 0,  ///< The original landscape generator
 	LG_TERRAGENESIS = 1,  ///< TerraGenesis Perlin landscape generator
 
-	GENERATE_NEW_SEED = (uint)-1, ///< Create a new random seed
+	GENERATE_NEW_SEED = UINT_MAX, ///< Create a new random seed
 };
 
 /* Modes for GenerateWorld */

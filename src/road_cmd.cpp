@@ -881,7 +881,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 	if (flags & DC_EXEC) {
 		Depot *dep = new Depot(tile);
-		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
+		dep->town_index = ClosestTownFromTile(tile, UINT_MAX)->index;
 
 		MakeRoadDepot(tile, _current_company, dir, rt);
 		MarkTileDirtyByTile(tile);
@@ -1331,7 +1331,7 @@ static void TileLoop_Road(TileIndex tile)
 
 	if (IsRoadDepot(tile)) return;
 
-	const Town *t = ClosestTownFromTile(tile, (uint)-1);
+	const Town *t = ClosestTownFromTile(tile, UINT_MAX);
 	if (!HasRoadWorks(tile)) {
 		HouseZonesBits grp = HZB_TOWN_EDGE;
 

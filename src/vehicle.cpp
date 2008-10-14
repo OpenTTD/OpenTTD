@@ -970,7 +970,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 {
 	Vehicle *found = NULL, *v;
-	uint dist, best_dist = (uint)-1;
+	uint dist, best_dist = UINT_MAX;
 
 	if ((uint)(x -= vp->left) >= (uint)vp->width || (uint)(y -= vp->top) >= (uint)vp->height) return NULL;
 

@@ -1431,7 +1431,7 @@ bool AfterLoadGame()
 	AfterLoadTown();
 
 	/* make sure there is a town in the game */
-	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, (uint)-1)) {
+	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, UINT_MAX)) {
 		SetSaveLoadError(STR_NO_TOWN_IN_SCENARIO);
 		return false;
 	}
@@ -1561,13 +1561,13 @@ bool AfterLoadGame()
 			switch (GetTileType(t)) {
 				case MP_HOUSE:
 					_m[t].m4 = _m[t].m2;
-					SetTownIndex(t, CalcClosestTownFromTile(t, (uint)-1)->index);
+					SetTownIndex(t, CalcClosestTownFromTile(t, UINT_MAX)->index);
 					break;
 
 				case MP_ROAD:
 					_m[t].m4 |= (_m[t].m2 << 4);
 					if ((GB(_m[t].m5, 4, 2) == ROAD_TILE_CROSSING ? (Owner)_m[t].m3 : GetTileOwner(t)) == OWNER_TOWN) {
-						SetTownIndex(t, CalcClosestTownFromTile(t, (uint)-1)->index);
+						SetTownIndex(t, CalcClosestTownFromTile(t, UINT_MAX)->index);
 					} else {
 						SetTownIndex(t, 0);
 					}
@@ -1694,7 +1694,7 @@ bool AfterLoadGame()
 								GetRailType(t)
 							);
 						} else {
-							TownID town = IsTileOwner(t, OWNER_TOWN) ? ClosestTownFromTile(t, (uint)-1)->index : 0;
+							TownID town = IsTileOwner(t, OWNER_TOWN) ? ClosestTownFromTile(t, UINT_MAX)->index : 0;
 
 							MakeRoadNormal(
 								t,
@@ -2142,7 +2142,7 @@ bool AfterLoadGame()
 	if (CheckSavegameVersion(52)) {
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (IsStatueTile(t)) {
-				_m[t].m2 = CalcClosestTownFromTile(t, (uint)-1)->index;
+				_m[t].m2 = CalcClosestTownFromTile(t, UINT_MAX)->index;
 			}
 		}
 	}

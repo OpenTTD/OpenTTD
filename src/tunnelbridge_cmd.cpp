@@ -610,7 +610,7 @@ static CommandCost DoClearTunnel(TileIndex tile, uint32 flags)
 	_build_tunnel_endtile = endtile;
 
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
-		t = ClosestTownFromTile(tile, (uint)-1); // town penalty rating
+		t = ClosestTownFromTile(tile, UINT_MAX); // town penalty rating
 
 		/* Check if you are allowed to remove the tunnel owned by a town
 		 * Removal depends on difficulty settings */
@@ -676,7 +676,7 @@ static CommandCost DoClearBridge(TileIndex tile, uint32 flags)
 	delta = TileOffsByDiagDir(direction);
 
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
-		t = ClosestTownFromTile(tile, (uint)-1); // town penalty rating
+		t = ClosestTownFromTile(tile, UINT_MAX); // town penalty rating
 
 		/* Check if you are allowed to remove the bridge owned by a town
 		 * Removal depends on difficulty settings */

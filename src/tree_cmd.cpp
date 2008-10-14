@@ -333,7 +333,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p2 >= MapSize()) return CMD_ERROR;
 	/* Check the tree type. It can be random or some valid value within the current climate */
-	if (p1 != (uint)-1 && p1 - _tree_base_by_landscape[_settings_game.game_creation.landscape] >= _tree_count_by_landscape[_settings_game.game_creation.landscape]) return CMD_ERROR;
+	if (p1 != UINT_MAX && p1 - _tree_base_by_landscape[_settings_game.game_creation.landscape] >= _tree_count_by_landscape[_settings_game.game_creation.landscape]) return CMD_ERROR;
 
 	// make sure sx,sy are smaller than ex,ey
 	ex = TileX(tile);

@@ -95,7 +95,7 @@ Town::~Town()
 			case MP_ROAD:
 			case MP_TUNNELBRIDGE:
 				if (IsTileOwner(tile, OWNER_TOWN) &&
-						ClosestTownFromTile(tile, (uint)-1) == this)
+						ClosestTownFromTile(tile, UINT_MAX) == this)
 					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 
