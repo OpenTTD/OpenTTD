@@ -7,6 +7,7 @@
 
 #include "station_type.h"
 #include "sprite.h"
+#include "oldpool.h"
 #include "rail_type.h"
 #include "road_type.h"
 #include "tile_type.h"
@@ -17,7 +18,7 @@
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 
 /** A set of stations (\c const \c Station* ) */
-typedef std::set<Station*> StationSet;
+typedef std::set<Station*, PoolItemIndexLess<Station> > StationSet;
 
 StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h);
 

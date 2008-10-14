@@ -155,6 +155,23 @@ static void PoolCleanBlock(uint start_item, uint end_item)
 	}
 }
 
+/**
+ * Template providing a predicate to allow STL containers of
+ * pointers to pool items to be sorted by index.
+ */
+template <typename T>
+struct PoolItemIndexLess {
+	/**
+	 * The actual comparator.
+	 * @param lhs the left hand side of the comparison.
+	 * @param rhs the right hand side of the comparison.
+	 * @return true if lhs' index is less than rhs' index.
+	 */
+	bool operator()(const T *lhs, const T *rhs) const
+	{
+		return lhs->index < rhs->index;
+	}
+};
 
 /**
  * Generalization for all pool items that are saved in the savegame.
