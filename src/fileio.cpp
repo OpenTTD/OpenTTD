@@ -1029,7 +1029,7 @@ static uint ScanTar(FileScanner *fs, const char *extension, TarFileList::iterato
 /**
  * Scan for files with the given extention in the given search path.
  * @param extension the extension of files to search for.
- * @param sp        the sub directory to search in.
+ * @param sd        the sub directory to search in.
  * @param tars      whether to search in the tars too.
  * @return the number of found files, i.e. the number of times that
  *         AddFile returned true.

@@ -51,6 +51,13 @@ bool _scrolling_viewport;
 byte _special_mouse_mode;
 
 
+/**
+ * Sets the enabled/disabled status of a list of widgets.
+ * By default, widgets are enabled.
+ * On certain conditions, they have to be disabled.
+ * @param disab_stat status to use ie: disabled = true, enabled = false
+ * @param widgets list of widgets ended by WIDGET_LIST_END
+ */
 void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
 {
 	va_list wdg_list;
@@ -65,6 +72,13 @@ void CDECL Window::SetWidgetsDisabledState(bool disab_stat, int widgets, ...)
 	va_end(wdg_list);
 }
 
+/**
+ * Sets the hidden/shown status of a list of widgets.
+ * By default, widgets are visible.
+ * On certain conditions, they have to be hidden.
+ * @param hidden_stat status to use ie. hidden = true, visible = false
+ * @param widgets list of widgets ended by WIDGET_LIST_END
+ */
 void CDECL Window::SetWidgetsHiddenState(bool hidden_stat, int widgets, ...)
 {
 	va_list wdg_list;
@@ -79,6 +93,11 @@ void CDECL Window::SetWidgetsHiddenState(bool hidden_stat, int widgets, ...)
 	va_end(wdg_list);
 }
 
+/**
+ * Sets the lowered/raised status of a list of widgets.
+ * @param lowered_stat status to use ie: lowered = true, raised = false
+ * @param widgets list of widgets ended by WIDGET_LIST_END
+ */
 void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
 {
 	va_list wdg_list;
@@ -93,6 +112,9 @@ void CDECL Window::SetWidgetsLoweredState(bool lowered_stat, int widgets, ...)
 	va_end(wdg_list);
 }
 
+/**
+ * Raise all buttons of the window
+ */
 void Window::RaiseButtons()
 {
 	for (uint i = 0; i < this->widget_count; i++) {
@@ -103,6 +125,10 @@ void Window::RaiseButtons()
 	}
 }
 
+/**
+ * Invalidate a widget, i.e. mark it as being changed and in need of redraw.
+ * @param widget_index the widget to redraw.
+ */
 void Window::InvalidateWidget(byte widget_index) const
 {
 	const Widget *wi = &this->widget[widget_index];
@@ -113,6 +139,11 @@ void Window::InvalidateWidget(byte widget_index) const
 	SetDirtyBlocks(this->left + wi->left, this->top + wi->top, this->left + wi->right + 1, this->top + wi->bottom + 1);
 }
 
+/**
+ * Do all things to make a button look clicked and mark it to be
+ * unclicked in a few ticks.
+ * @param widget the widget to "click"
+ */
 void Window::HandleButtonClick(byte widget)
 {
 	this->LowerWidget(widget);
@@ -340,7 +371,6 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 
 /**
  * Mark entire window as dirty (in need of re-paint)
- * @param w Window to redraw
  * @ingroup dirty
  */
 void Window::SetDirty() const
@@ -792,6 +822,10 @@ void Window::FindWindowPlacementAndResize(int def_width, int def_height)
 	this->SetDirty();
 }
 
+/**
+ * Resize window towards the default size given in the window description.
+ * @param desc the description to get the default size from.
+ */
 void Window::FindWindowPlacementAndResize(const WindowDesc *desc)
 {
 	this->FindWindowPlacementAndResize(desc->default_width, desc->default_height);

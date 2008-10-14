@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file network_internal.h Variables and function used internally. */
+/** @file network_func.h Network functions used by other parts of OpenTTD. */
 
 #ifndef NETWORK_FUNC_H
 #define NETWORK_FUNC_H

@@ -82,7 +82,10 @@ struct Widget {
 	byte type;                        ///< Widget type, see WindowWidgetTypes
 	byte display_flags;               ///< Resize direction, alignment, etc. during resizing. @see ResizeFlags
 	byte color;                       ///< Widget colour, see docs/ottd-colourtext-palette.png
-	int16 left, right, top, bottom;   ///< The position offsets inside the window
+	int16 left;                       ///< The left edge of the widget
+	int16 right;                      ///< The right edge of the widget
+	int16 top;                        ///< The top edge of the widget
+	int16 bottom;                     ///< The bottom edge of the widget
 	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
 	StringID tooltips;                ///< Tooltips that are shown when rightclicking on a widget
 };
@@ -183,9 +186,10 @@ struct ViewportData : ViewPort {
  * Data structure for an opened window
  */
 struct Window : ZeroedMemoryAllocator {
+	/** State whether an event is handled or not */
 	enum EventState {
-		ES_HANDLED,
-		ES_NOT_HANDLED,
+		ES_HANDLED,     ///< The passed event is handled
+		ES_NOT_HANDLED, ///< The passed event is not handled
 	};
 
 protected:
@@ -483,6 +487,7 @@ enum WindowWidgetTypes {
 	WWT_PUSHIMGBTN  = WWT_IMGBTN  | WWB_PUSHBUTTON,
 };
 
+/** Marker for the "end of widgets" in a Window(Desc) widget table. */
 #define WIDGETS_END WWT_LAST,   RESIZE_NONE,     0,     0,     0,     0,     0, 0, STR_NULL
 
 /**
@@ -512,9 +517,8 @@ Window *FindWindowFromPt(int x, int y);
 
 /**
  * Open a new window.
- * @param *desc The pointer to the WindowDesc to be created
+ * @param desc The pointer to the WindowDesc to be created
  * @param window_number the window number of the new window
- * @param data arbitrary data that is send with the WE_CREATE message
  * @return see Window pointer of the newly created window
  */
 template <typename Wcls>
@@ -535,6 +539,8 @@ int GetWidgetFromPos(const Window *w, int x, int y);
 /* window.cpp */
 extern Window *_z_windows[];
 extern Window **_last_z_window;
+
+/** Iterate over all windows */
 #define FOR_ALL_WINDOWS(wz) for (wz = _z_windows; wz != _last_z_window; wz++)
 
 /**
@@ -587,8 +593,8 @@ void SetHScrollCount(Window *w, int num);
  * Sets the enabled/disabled status of a widget.
  * By default, widgets are enabled.
  * On certain conditions, they have to be disabled.
- * @param widget_index : index of this widget in the window
- * @param disab_stat : status to use ie: disabled = true, enabled = false
+ * @param widget_index index of this widget in the window
+ * @param disab_stat status to use ie: disabled = true, enabled = false
  */
 inline void Window::SetWidgetDisabledState(byte widget_index, bool disab_stat)
 {
@@ -598,7 +604,7 @@ inline void Window::SetWidgetDisabledState(byte widget_index, bool disab_stat)
 
 /**
  * Sets a widget to disabled.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  */
 inline void Window::DisableWidget(byte widget_index)
 {
@@ -607,7 +613,7 @@ inline void Window::DisableWidget(byte widget_index)
 
 /**
  * Sets a widget to Enabled.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  */
 inline void Window::EnableWidget(byte widget_index)
 {
@@ -616,7 +622,7 @@ inline void Window::EnableWidget(byte widget_index)
 
 /**
  * Gets the enabled/disabled status of a widget.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  * @return status of the widget ie: disabled = true, enabled = false
  */
 inline bool Window::IsWidgetDisabled(byte widget_index) const
@@ -640,7 +646,7 @@ inline void Window::SetWidgetHiddenState(byte widget_index, bool hidden_stat)
 
 /**
  * Sets a widget hidden.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  */
 inline void Window::HideWidget(byte widget_index)
 {
@@ -649,7 +655,7 @@ inline void Window::HideWidget(byte widget_index)
 
 /**
  * Sets a widget visible.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  */
 inline void Window::ShowWidget(byte widget_index)
 {
@@ -658,7 +664,7 @@ inline void Window::ShowWidget(byte widget_index)
 
 /**
  * Gets the visibility of a widget.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  * @return status of the widget ie: hidden = true, visible = false
  */
 inline bool Window::IsWidgetHidden(byte widget_index) const
@@ -669,8 +675,8 @@ inline bool Window::IsWidgetHidden(byte widget_index) const
 
 /**
  * Sets the lowered/raised status of a widget.
- * @param widget_index : index of this widget in the window
- * @param lowered_stat : status to use ie: lowered = true, raised = false
+ * @param widget_index index of this widget in the window
+ * @param lowered_stat status to use ie: lowered = true, raised = false
  */
 inline void Window::SetWidgetLoweredState(byte widget_index, bool lowered_stat)
 {
@@ -680,7 +686,7 @@ inline void Window::SetWidgetLoweredState(byte widget_index, bool lowered_stat)
 
 /**
  * Invert the lowered/raised  status of a widget.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  */
 inline void Window::ToggleWidgetLoweredState(byte widget_index)
 {
@@ -690,7 +696,7 @@ inline void Window::ToggleWidgetLoweredState(byte widget_index)
 
 /**
  * Marks a widget as lowered.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  */
 inline void Window::LowerWidget(byte widget_index)
 {
@@ -699,7 +705,7 @@ inline void Window::LowerWidget(byte widget_index)
 
 /**
  * Marks a widget as raised.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  */
 inline void Window::RaiseWidget(byte widget_index)
 {
@@ -708,7 +714,7 @@ inline void Window::RaiseWidget(byte widget_index)
 
 /**
  * Gets the lowered state of a widget.
- * @param widget_index : index of this widget in the window
+ * @param widget_index index of this widget in the window
  * @return status of the widget ie: lowered = true, raised= false
  */
 inline bool Window::IsWidgetLowered(byte widget_index) const

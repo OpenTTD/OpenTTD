@@ -64,7 +64,7 @@ public:
 
 	/**
 	 * Multiplies the cost of the command by the given factor.
-	 * @param cost factor to multiply the costs with
+	 * @param factor factor to multiply the costs with
 	 * @return this class
 	 */
 	CommandCost MultiplyCost(int factor)

@@ -100,6 +100,8 @@ enum WindowClass {
 };
 
 struct Window;
+
+/** Number to differentiate different windows of the same class */
 typedef int32 WindowNumber;
 
 #endif /* WINDOW_TYPE_H */

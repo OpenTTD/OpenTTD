@@ -204,7 +204,6 @@ void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFla
 
 /**
  * Paint all widgets of a window.
- * @param w Window
  */
 void Window::DrawWidgets() const
 {
@@ -616,8 +615,8 @@ void ResizeWindowForWidget(Window *w, uint widget, int delta_x, int delta_y)
 	w->resize.height += delta_y;
 }
 
-/** Draw a sort button's up or down arrow symbol.
- * @param w Window of widget
+/**
+ * Draw a sort button's up or down arrow symbol.
  * @param widget Sort button widget
  * @param state State of sort button
  */

@@ -1549,6 +1549,9 @@ static inline void ViewportDraw(const ViewPort *vp, int left, int top, int right
 	ViewportDrawChk(vp, left, top, right, bottom);
 }
 
+/**
+ * Draw the viewport of this window.
+ */
 void Window::DrawViewport() const
 {
 	DrawPixelInfo *dpi = _cur_dpi;
