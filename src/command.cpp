@@ -349,7 +349,7 @@ static const Command _command_proc_table[] = {
  * @param cmd The integervalue of a command
  * @return true if the command is valid (and got a CommandProc function)
  */
-bool IsValidCommand(uint cmd)
+bool IsValidCommand(uint32 cmd)
 {
 	cmd &= 0xFF;
 
@@ -364,12 +364,11 @@ bool IsValidCommand(uint cmd)
  *
  * @param cmd The integer value of the command
  * @return The flags for this command
- * @bug integervalues which are less equals 0xFF and greater than the
- *      size of _command_proc_table can result in an index out of bounce
- *      error (which doesn't happend anyway). Check function #IsValidCommand(). (Progman)
  */
-byte GetCommandFlags(uint cmd)
+byte GetCommandFlags(uint32 cmd)
 {
+	assert(IsValidCommand(cmd));
+
 	return _command_proc_table[cmd & 0xFF].flags;
 }
 
@@ -389,7 +388,6 @@ static int _docommand_recursive = 0;
 CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc)
 {
 	CommandCost res;
-	CommandProc *proc;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (!IsValidTile(tile)) {
@@ -397,7 +395,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 		return CMD_ERROR;
 	}
 
-	proc = _command_proc_table[procc].proc;
+	CommandProc *proc = _command_proc_table[procc].proc;
 
 	if (_docommand_recursive == 0) _error_message = INVALID_STRING_ID;
 
