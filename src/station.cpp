@@ -286,9 +286,10 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 	int y = TileY(tile);
 	if (IsEmpty()) {
 		/* we are adding the first station tile */
-		left = right = x;
-		top = bottom = y;
-
+		if (mode != ADD_TEST) {
+			left = right = x;
+			top = bottom = y;
+		}
 	} else if (!PtInExtendedRect(x, y)) {
 		/* current rect is not empty and new point is outside this rect */
 		/* make new spread-out rectangle */
@@ -316,7 +317,8 @@ bool StationRect::BeforeAddTile(TileIndex tile, StationRectMode mode)
 
 bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mode)
 {
-	return BeforeAddTile(tile, mode) && BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
+	return (mode == ADD_FORCE || (w <= _settings_game.station.station_spread && h <= _settings_game.station.station_spread)) && // important when the old rect is completely inside the new rect, resp. the old one was empty
+			BeforeAddTile(tile, mode) && BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
 }
 
 /*static*/ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
