@@ -41,6 +41,7 @@ STR_002F_PASSENGER                                              :Pasajero
 STR_0030_COAL                                                   :Karbono
 STR_0032_OIL                                                    :Petrolo
 STR_0033_LIVESTOCK                                              :Brutaro
+STR_0034_GOODS                                                  :Havaji
 STR_0035_GRAIN                                                  :Semino
 STR_0037_IRON_ORE                                               :Fer-erco
 STR_0038_STEEL                                                  :Stalo
@@ -49,7 +50,104 @@ STR_003C_FRUIT                                                  :Frukto
 STR_003D_DIAMOND                                                :Diamanto
 STR_003E_FOOD                                                   :Nutrajo
 STR_003F_PAPER                                                  :Papero
+STR_0040_GOLD                                                   :Oro
+STR_0041_WATER                                                  :Aquo
+STR_0042_WHEAT                                                  :Frumento
+STR_0043_RUBBER                                                 :Kauchuko
+STR_0044_SUGAR                                                  :Sukro
+STR_0045_TOY                                                    :Ludilo
+STR_0046_CANDY                                                  :Bonbono
+STR_0048_COTTON_CANDY                                           :Kandi-lanugo
+STR_0049_BUBBLE                                                 :Bulo
+STR_004A_TOFFEE                                                 :Karamelo
+STR_004B_BATTERY                                                :Baterio
+STR_004C_PLASTIC                                                :Plastiko
+STR_004D_FIZZY_DRINK                                            :Gasoza Drinkajo
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}Mapo - {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Ludo Selekti
+STR_00B2_MESSAGE                                                :{YELLOW}Sendajo
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sendajo de {STRING}
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne povas facas ca...
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne povas netigas ca areo....
+STR_00B7_VERSION                                                :{BLACK}OpenTTD versiono {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 La kruo OpenTTD
 
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}Livas
+STR_00C8_YES                                                    :{BLACK}Yes
+STR_00C9_NO                                                     :{BLACK}Ne
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Kad tu esas certa ke tu volas livar OpenTTD ed rivenar a {STRING}?
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :Nulo
+STR_00D1_DARK_BLUE                                              :Obskur-blua
+STR_00D2_PALE_GREEN                                             :Pal-verda
+STR_00D3_PINK                                                   :Rozea
+STR_00D4_YELLOW                                                 :Flava
+STR_00D5_RED                                                    :Reda
+STR_00D6_LIGHT_BLUE                                             :Klar-Blua
+STR_00D7_GREEN                                                  :Verda
+STR_00D8_DARK_GREEN                                             :Obskur-verda
+STR_00D9_BLUE                                                   :Blua
+STR_00DA_CREAM                                                  :Kremea
+STR_00DB_MAUVE                                                  :Malva
+STR_00DC_PURPLE                                                 :Purpuro
+STR_00DD_ORANGE                                                 :Orangea
+STR_00DE_BROWN                                                  :Bruna
+STR_00DF_GREY                                                   :Griza
+STR_00E0_WHITE                                                  :Blanka
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Tro multa vehili en la ludo
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}Loko
+STR_00E5_CONTOURS                                               :Konturi
+STR_00E6_VEHICLES                                               :Vehili
+STR_00E7_INDUSTRIES                                             :Industrii
+STR_00E8_ROUTES                                                 :Voyi
+STR_00E9_VEGETATION                                             :Vejetado
+STR_00EA_OWNERS                                                 :Proprietanto
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Voyi
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Fervoyo
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stacioni/Aeroportua/Doko
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Edifici/Industrii
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Vehili
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Treni
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Voy-Vehili
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Bateli
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeroplani
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transport-voyi
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Foresto
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Segerio
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Petrol-refineyo
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Farmerio
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrikerio
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Imprimado
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Staliferio
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banko
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paper-fabrikerio
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Or-mineyo
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Agroalimental-fabrikerio
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamant-mineyo
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Kupr-erco Mineyo
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Frukto Plantacerio
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kauchuko Plantacerio
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Aquo Fonto
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Aquo Turmo
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Segerio
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Kandi-lanugo Foresto
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Bonbono Fabrikerio
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Baterio Farmo
 
 
 

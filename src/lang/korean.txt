@@ -294,7 +294,7 @@ STR_CAPACITY_MULT                                               :{BLACK}수용�
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}이 열차의 총 수용량:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
-STR_0140_NEW_GAME                                               :{BLACK}새로운 게임
+STR_0140_NEW_GAME                                               :{BLACK}새 게임
 STR_0141_LOAD_GAME                                              :{BLACK}불러오기
 STR_SINGLE_PLAYER                                               :{BLACK}싱글 플레이
 STR_MULTIPLAYER                                                 :{BLACK}멀티 플레이
@@ -599,7 +599,7 @@ STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}회사�
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}경쟁자에 의한 산업시설의 생산품 변화
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}다른 산업 생산물 변화
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}회사의 차량에 관한 권고/정보
-STR_020C_NEW_VEHICLES                                           :{YELLOW}새로운 차량
+STR_020C_NEW_VEHICLES                                           :{YELLOW}새 차량
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}역에서 받는 화물의 변경
 STR_020E_SUBSIDIES                                              :{YELLOW}보조금
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}일반 정보
@@ -623,21 +623,21 @@ STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}시나리오 에디터
-STR_0223_LAND_GENERATION                                        :{WHITE}지형 생성기
+STR_0223_LAND_GENERATION                                        :{WHITE}지형 만들기
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 편집툴의 크기를 키움
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 편집툴의 크기를 줄임
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}무작위 지형을 생성
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}무작위로 지형 만들기
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}풍경 초기화
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}풍경 리셋
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}맵에서 모든 플레이어 소유의 자산을 제거
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}정말로 모든 플레이어 소유의 자산을 제거하시겠습니까?
-STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}지형 생성기
-STR_022F_TOWN_GENERATION                                        :{BLACK}마을 생성
-STR_0230_INDUSTRY_GENERATION                                    :{BLACK}산업 시설 생성
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}지형 만들기
+STR_022F_TOWN_GENERATION                                        :{BLACK}마을 만들기
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}산업 시설 만들기
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}도로 건설
-STR_0233_TOWN_GENERATION                                        :{WHITE}마을 생성
+STR_0233_TOWN_GENERATION                                        :{WHITE}마을 만들기
 STR_0234_NEW_TOWN                                               :{BLACK}새 도시
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}새 도시 건설
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}여기에 도시를 건설할 수 없습니다...
@@ -645,13 +645,13 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...맵 �
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...다른 도시와 너무 가깝습니다!
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...알맞지 않은 장소입니다!
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...도시가 너무 많습니다!
-STR_CANNOT_GENERATE_TOWN                                        :{WHITE}도시를 생성할 수 없습니다!
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}도시를 만들 수 없습니다!
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...맵에 더이상 공간이 없습니다!
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}도시의 크기 키우기
 STR_023C_EXPAND                                                 :{BLACK}확장하기
 STR_023D_RANDOM_TOWN                                            :{BLACK}무작위
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}무작위로 도시를 건설합니다.
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}산업시설 생성
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}산업시설 만들기
 STR_0240_COAL_MINE                                              :{BLACK}석탄 광산
 STR_0241_POWER_STATION                                          :{BLACK}발전소
 STR_0242_SAWMILL                                                :{BLACK}제재소
@@ -790,8 +790,8 @@ STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}팻말
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}웨이포인트 표시됨
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}완전한 애니메이션
 STR_02D2_FULL_DETAIL                                            :{SETX 12}아주 상세하게
-STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}건물 안보이기
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}역이름 팻말 투명
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}투명한 건물
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}투명한 역명판
 ############ range ends here
 
 ############ range for menu starts
@@ -840,14 +840,14 @@ STR_02F7_OFF                                                    :사용 안함
 STR_02F8_EVERY_3_MONTHS                                         :3개월마다
 STR_02F9_EVERY_6_MONTHS                                         :6개월마다
 STR_02FA_EVERY_12_MONTHS                                        :12개월마다
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}새로운 게임 시작
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}새 게임 시작
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}저장된 게임 불러오기
-STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}사용자 게임/시나리오 생성
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}사용자 게임/시나리오 만들기
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}싱글 플레이 게임 선택
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}2-8명의 멀티 플레이 게임 선택
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}게임 옵션 표시
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}난이도 옵션 표시
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}사용자 시나리오로 새로운 게임을 시작
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}사용자 시나리오로 새 게임을 시작
 STR_0304_QUIT                                                   :{BLACK}종료
 STR_0305_QUIT_OPENTTD                                           :{BLACK}'OpenTTD'를 종료합니다.
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
@@ -856,14 +856,14 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}온대 �
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}냉대 기후 선택
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}열대 기후 선택
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}장난감나라 선택
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}새로운 산업시설에 투자
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}새 산업시설에 투자
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :산업시설 목록
-STR_0313_FUND_NEW_INDUSTRY                                      :새로운 산업시설 건설
+STR_0313_FUND_NEW_INDUSTRY                                      :새 산업시설 건설
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}새로운 산업시설 건설
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}새 산업시설 건설
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
@@ -1042,7 +1042,7 @@ STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}향상�
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}점차적으로 차량 싣기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}인플레이션 (화폐가치하락) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}매우 긴 교각 건설 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}매우 긴 다리 건설 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}차량기지(차고/격납고)를 경로에 지정하는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}수동 기본 산업 건설 방법: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :없음
@@ -1081,7 +1081,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}교체�
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}오류 메시지 표시 : {ORANGE}{STRING}초 동안
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}도시명 옆에 인구를 표시함 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}지형 생성: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}지형 만들기: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :오리지널
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :천지창조
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}석유 정제소는 맵 가장자리에서 {ORANGE}{STRING}칸 떨어진 곳까지 건설 가능
@@ -1122,7 +1122,7 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :커맨드 + 클
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :컨트롤 + 클릭
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새로운 게임 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새 게임을 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :끄기
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :내 회사만
@@ -1154,7 +1154,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}컴퓨�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}새로운 인공지능(AI) 사용 (알파 버전) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}새 인공지능(AI) 사용 (알파 버전) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티 플레이어에서의 AI 허가 (실험적) : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
@@ -1169,7 +1169,7 @@ STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}고장�
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}전기 철도를 사용하지 않음 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{ORANGE}{STRING}{LTBLUE}년부터 컬러 뉴스가 뜸
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{ORANGE}{STRING}{LTBLUE}년부터 컬러로 된 뉴스가 나옴
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}시작 년도: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}종료 년도: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}부드러운 경제 설정 사용 (좀더 적은 변화)
@@ -1285,12 +1285,12 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 �
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...시나리오에 도시가 없습니다.
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}무작위로 지형을 생성하시겠습니까?
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}무작위로 지형을 만드시겠습니까?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}무작위 도시 건설
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}무작위로 도시를 건설합니다.
 STR_MANY_RANDOM_INDUSTRIES                                      :무작위 산업시설 건설
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}무작위로 산업시설을 건설합니다.
-STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}산업시설을 생성할 수 없습니다...
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}산업시설을 만들 수 없습니다...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}땅을 올리거나 내리기, 나무 심기 등의 지형 툴바를 엽니다.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지평편집
@@ -1504,8 +1504,8 @@ STR_NETWORK_GAME_LOBBY                                          :{WHITE}멀티�
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}참가 준비중:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}이 게임에 있는 회사의 목록입니다. 다른 회사에 같이 참가하거나 (빈 슬롯이 있을 경우) 새로운 회사로 시작할 수 있습니다.
-STR_NETWORK_NEW_COMPANY                                         :{BLACK}새로운 회사
-STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}새로운 회사를 설립합니다.
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}새 회사
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}새 회사를 만듭니다
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}게임 관전
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}게임에 참여하지 않고 보기만 합니다.
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}회사 참여
@@ -1552,7 +1552,7 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}접속�
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} 네트워크 장치를 찾을수 없거나 컴파일되지 않았습니다.
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 네트워크 게임이 존재하지 않습니다.
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} 서버가 요청을 받지 않습니다.
-STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE}NewGRF이 맞지 않아서 연결할 수 없습니다
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} NewGRF이 맞지 않아서 연결할 수 없습니다
 STR_NETWORK_ERR_DESYNC                                          :{WHITE} 네트워크 게임 동기화 실패
 STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} 네트워크 게임 연결 손실
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} 세이브 게임을 불러올 수 없습니다
@@ -1684,7 +1684,7 @@ STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}철도 �
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}철교 건설
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}터널 건설
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}철로/신호기 건설/제거툴 켜기/끄기
-STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}다리 건설 - 원하는 교량을 선택하세요
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}다리 건설 - 원하는 다리 종류를 선택하세요
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}차량기지의 방향을 선택하세요
 STR_1021_RAILROAD_TRACK                                         :철로
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :철도 차량기지
@@ -1719,7 +1719,7 @@ STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}도로�
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}도로 작업이 진행중입니다
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}도로 건설
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}전찻길 건설
-STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}교량을 선택하십시오
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}다리 종류를 선택하십시오
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... 일방통행 도로는 교차로를 만들 수 없습니다
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}도로를 건설할 수 없습니다...
 STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}여기에 전찻길을 건설할 수 없습니다...
@@ -1745,8 +1745,8 @@ STR_180D_BUILD_BUS_STATION                                      :{BLACK}버스 �
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}트럭 적하장 건설
 STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}승객 전차 정거장 건설
 STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}화물 전차 전거장 건설
-STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}교량 건설
-STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}철교 건설
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}다리 건설
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}전차교 건설
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}터널 건설
 STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}터널 건설
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}일방통행 활성/비활성화
@@ -1844,7 +1844,7 @@ STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :중규모 광�
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :대규모 광고 캠페인
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :지역 도로 재공사에 투자
 STR_204A_BUILD_STATUE_OF_COMPANY                                :회사 소유주의 동상 건설
-STR_204B_FUND_NEW_BUILDINGS                                     :새로운 건물에 투자
+STR_204B_FUND_NEW_BUILDINGS                                     :새 건물에 투자
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :수송 권한 독점권 구입
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :지역 당국에 뇌물 먹이기
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} 더 많은 승객과 화물을 유치하기 위해 소규모의 광고 캠페인을 시작합니다.{}  가격: {CURRENCY}
@@ -2010,9 +2010,9 @@ STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}드라�
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}저장될 세이브 파일의 이름입니다.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}선택된 세이브 파일을 삭제합니다.
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}선택한 이름으로 현재 게임을 저장합니다
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}새로운 게임 종류를 선택
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}새 게임 종류를 선택
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}시나리오(녹색), 프리셋 게임(파랑), 무작위 게임 선택
-STR_4010_GENERATE_RANDOM_NEW_GAME                               :신규 무작위 게임 생성
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :신규 무작위 게임 만들기
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Heightmap 로드
 STR_SAVE_OSKTITLE                                               :{BLACK}게임을 저장할 파일명을 입력하세요
 
@@ -2073,8 +2073,8 @@ STR_4828_PRODUCES                                               :{BLACK}생산: 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}지난달 생산량:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% 수송됨)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}이 산업시설이 있는 곳으로 이동
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}새로운 {STRING}이/가 {TOWN} 근처에 지어지고 있습니다!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}새로운 {STRING}이/가 {TOWN} 근처에서 자라나고 있습니다!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}새 {STRING}이/가 {TOWN} 근처에 지어지고 있습니다!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}새 {STRING}이/가 {TOWN} 근처에서 자라나고 있습니다!
 STR_482F_COST                                                   :{BLACK}가격: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}여기에 이 산업시설을 건설할 수 없습니다...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...숲은 만년설 높이 이상의 고도에만 심을 수 있습니다.
@@ -2082,8 +2082,8 @@ STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}연결된 수요가 없는 관계로 {STRING}의 긴급 폐쇄를 알립니다!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}근처에 나무 고갈로 인한 {STRING}의 긴급 폐쇄를 알립니다!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY}이/가 생산량을 늘렸습니다!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY}에서 새로운 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY}에서 새로운 유전을 찾았습니다!{}생산량이 2배가 되었습니다!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}{INDUSTRY}에서 새 석탄 광맥을 찾았습니다!{}생산량이 2배가 되었습니다!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}{INDUSTRY}에서 새 유전을 찾았습니다!{}생산량이 2배가 되었습니다!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}{INDUSTRY}에서 향상된 농업 기술을 발견해 생산량이 2배가 되었습니다!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY}의 생산량이 50%로 떨어졌습니다.
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}{INDUSTRY}이/가 곤충떼의 습격으로 황폐화되었습니다!{}생산량이 50%로 떨어졌습니다.
@@ -2122,14 +2122,14 @@ STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :강철 캔틸�
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :철근 콘크리트 현수 철교
 STR_501F_WOODEN_RAIL_BRIDGE                                     :나무 철교
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :콘크리트 철교
-STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :강철 현수교 (도로용)
-STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :강철 거더교 (도로용)
-STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :강철 캔틸레버교 (도로용)
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :강철 현수교
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :강철 들보교
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :강철 캔틸레버교
 STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :철근 콘트리트 현수교 (도로용)
-STR_5025_WOODEN_ROAD_BRIDGE                                     :나무 다리 (도로용)
-STR_5026_CONCRETE_ROAD_BRIDGE                                   :콘크리트교 (도로용)
+STR_5025_WOODEN_ROAD_BRIDGE                                     :나무 다리
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :콘크리트교
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :원통형 철교
-STR_5028_TUBULAR_ROAD_BRIDGE                                    :원통형 다리 (도로용)
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :원통형 다리
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}중간에 오브젝트가 있습니다
@@ -2270,7 +2270,7 @@ STR_7002_COMPANY                                                :(회사 {COMMA}
 STR_7004_NEW_FACE                                               :{BLACK}새 얼굴
 STR_7005_COLOR_SCHEME                                           :{BLACK}색상
 STR_7006_COLOR_SCHEME                                           :{GOLD}색상:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}새로운 색상
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}새 색상
 STR_7008_COMPANY_NAME                                           :{BLACK}회사 이름
 STR_7009_PRESIDENT_NAME                                         :{BLACK}매니저 이름
 STR_700A_COMPANY_NAME                                           :회사 이름
@@ -2281,7 +2281,7 @@ STR_700E_FINANCES                                               :{WHITE}{COMPANY
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}지출/수입
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}건설
-STR_7012_NEW_VEHICLES                                           :{GOLD}신규차량구입
+STR_7012_NEW_VEHICLES                                           :{GOLD}신규 차량 구입
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}열차 운행비용
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}자동차 운행비용
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}항공기 운행비용
@@ -2331,12 +2331,12 @@ STR_7042_NONE                                                   :{WHITE}없음
 STR_7043_FACE_SELECTION                                         :{WHITE}얼굴 선택
 STR_7044_MALE                                                   :{BLACK}남성
 STR_7045_FEMALE                                                 :{BLACK}여성
-STR_7046_NEW_FACE                                               :{BLACK}새로운 얼굴
+STR_7046_NEW_FACE                                               :{BLACK}새 얼굴
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}새 얼굴 선택을 취소합니다.
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}이 얼굴을 선택합니다.
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}남성의 얼굴을 선택합니다.
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}여성의 얼굴을 선택합니다.
-STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}얼굴을 생성합니다.
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}얼굴을 만듭니다.
 STR_704C_KEY                                                    :{BLACK}키
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}그래프의 키를 보여줍니다.
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}회사 그래프의 키를 보여줍니다.
@@ -2355,7 +2355,7 @@ STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}저희 회사를 거두어주실 운송회사를 찾고있습니다.{}{}저희 {COMPANY} 회사를 {CURRENCY}의 가격으로 인수합병하시겠습니까?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}파산!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING}가 채권자에 의해 파산되고 모든 자산이 팔렸습니다!
-STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}새로운 운송회사 등장!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}새 운송회사 등장!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING}이/가 {TOWN}에서 공사를 시작했습니다!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}회사를 인수할 수 없습니다...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}화물 운송단가 비율
@@ -2798,19 +2798,19 @@ STR_8812_EMPTY                                                  :{LTBLUE}비어�
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (출발지: {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}열차 {COMMA}이/가 차량기지에서 대기중
-STR_8815_NEW_VEHICLES                                           :{BLACK}새로운 열차
+STR_8815_NEW_VEHICLES                                           :{BLACK}새 열차
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}열차가 너무 깁니다!
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}차량기지 내에서 정지한 경우에만 개조할 수 있습니다
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA}대의 열차
 
-STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}새 기차 생성
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}새 전기 기차 생성
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}새 모노레일 생성
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}새 자기부상열차 생성
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}새 기차
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}새 전기 기차
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}새 모노레일
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}새 자기부상열차
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}기차
 
-STR_881F_BUILD_VEHICLE                                          :{BLACK}만들기
+STR_881F_BUILD_VEHICLE                                          :{BLACK}차량 만들기
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}차량 복제
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}이 버튼은 자동차를 복제할 것입니다. CTRL+클릭하시면 경로도 같이 공유됩니다.
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}이 버튼은 자동차를 복제할 것입니다. 이 버튼을 클릭하고 차고 안/밖에 있는 차량을 클릭하십시오. CTRL+클릭하면 경로도 같이 공유됩니다.
@@ -2831,7 +2831,7 @@ STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}순서 �
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (경로)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 경로의 끝 - -
 STR_SERVICE                                                     :{BLACK}점검
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}기차를 생성할 수 없습니다...
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}기차를 만들 수 없습니다...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   생산: {LTBLUE}{NUM}{BLACK} 가격: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   가격: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
@@ -2858,7 +2858,7 @@ STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}점검 �
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}열차 - 열차 정보를 보려면 클릭
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}새 기차를 만듭니다 (차량기지 필요)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}열차 - 열차 정보를 보려면 클릭, 차량을 드래그해서 추가하거나 삭제하세요
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}새로운 기차 만들기
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}새 기차 만들기
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}기관차/객차/화물차 한량만 제거하려면 여기로 드래그하세요
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}차량기지가 있는 곳으로 이동
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}기차 선택 목록 - 차량 정보를 보려면 클릭
@@ -2880,7 +2880,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}각 화�
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}이 열차의 경로 - 선택하려면 클릭하세요. CTRL+클릭하시면 그 역이 있는 장소로 이동합니다.
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}현재 경로를 건너 뜁니다, 그리고 다음 경로를 시작합니다. Ctrl + 클릭은 선택된 경로로 건너 뜁니다.
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}선택된 경로를 삭제합니다.
-STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새로운 경로를 삽입합니다.
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}선택된 경로 바로 전이나 목록 맨 끝에 새 경로를 삽입합니다.
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}시간표 - 경로를 클릭하면 선택합니다.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}선택한 경로가 대기하고 있을 시간 변경
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}선택한 경로의 시간 초기화
@@ -2913,7 +2913,7 @@ STR_TRAIN_STOPPING                                              :{RED}정지중
 STR_TRAIN_STOPPING_VEL                                          :{RED}{VELOCITY}의 속도로 정지중
 STR_INCOMPATIBLE_RAIL_TYPES                                     :알맞지 않은 철도 타입
 STR_TRAIN_NO_POWER                                              :{RED}기관차 없음
-STR_TRAIN_START_NO_CATENARY                                     :연결고리가 모자라 운행을 시작할 수 없습니다.
+STR_TRAIN_START_NO_CATENARY                                     :전차선이 없어서 운행할 수 없습니다.
 STR_TRAIN_STUCK                                                 :{ORANGE}빈 경로 탐색중
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}신형 {STRING} 이(가) 출시되었습니다!
@@ -2940,7 +2940,7 @@ STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}중간�
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA}대의 자동차
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} 차고
-STR_9004_NEW_VEHICLES                                           :{BLACK}새로운 차량
+STR_9004_NEW_VEHICLES                                           :{BLACK}새 차량
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}새 자동차
 STR_9007_BUILD_VEHICLE                                          :{BLACK}차량 만들기
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}자동차를 만들 수 없습니다...
@@ -3013,13 +3013,13 @@ STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} �
 STR_9804_NEW_SHIPS                                              :{BLACK}새 선박
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA}대의 선박
 STR_9808_NEW_SHIPS                                              :{WHITE}새 선박
-STR_9809_BUILD_SHIP                                             :{BLACK}선박 생성
+STR_9809_BUILD_SHIP                                             :{BLACK}선박 만들기
 STR_CLONE_SHIP                                                  :{BLACK}선박 복제
 STR_CLONE_SHIP_INFO                                             :{BLACK}이 버튼은 선박을 복제할 것입니다. CTRL+클릭은 경로를 같이 공유합니다.
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}이 버튼을 누르고 복제를 원하는 선박을 클릭하십시오. CTRL+클릭은 경로를 같이 공유합니다.
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}정박소 내에서 정지해있어야 합니다!
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}선박을 팔 수 없습니다...
-STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}선박을 생성할 수 없습니다...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}선박을 만들 수 없습니다...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}중간에 선박이 있습니다
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (상세정보)
@@ -3038,15 +3038,15 @@ STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중 ({VELOCITY})
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}선박 {COMMA}이/가 정박소에서 대기중입니다
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}항구 건설
-STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}정박소 건설 (선박 생성 및 점검용)
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}정박소 만들기 (선박 제작 및 점검용)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}새로운 선박을 생성합니다
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}새 선박을 만듭니다
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}선박을 팔려면 여기로 드래그하세요
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}이 정박소가 잇는 위치로 이동합니다
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}새로운 선박을 생성합니다 (정박소 필요)
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}새 선박을 만듭니다 (정박소 필요)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}선박 선택 목록 - 선박의 정보를 보려면 클릭하세요
-STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}선택한 선박 생성
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}선택한 선박 만들기
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}현재 선박 행동 - 선박을 운행/중지시키려면 클릭하세요
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}선박의 경로 보여주기
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}이 선박이 있는 곳으로 이동합니다
@@ -3112,13 +3112,13 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}항공�
 STR_A01D_AIRPORT_CONSTRUCTION                                   :공항 건설
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}공항 건설
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}새 항공기 생성 (격납고가 있는 공항 필요)
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}새 항공기 (격납고가 있는 공항 필요)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}항공기 - 항공기 정보를 보려면 클릭하세요
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}새 항공기 생성
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}새 항공기
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}항공기를 팔려면 여기로 드래그하세요
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}이 격납고가 있는 공항으로 이동
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}항공기 선택 목록 - 항공기 정보를 보려면 클릭하세요
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}선택한 항공기를 생성합니다
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}선택한 항공기를 만듭니다
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}현재 항공기 행동 - 항공기를 운행/중지시키려면 여기를 클릭하세요
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}항공기 경로를 보여줍니다
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}이 항공기가 있는 곳으로 이동
@@ -3399,14 +3399,14 @@ STR_NUM_3                                                       :{BLACK}{SKIP}{S
 
 ########### String for New Landscape Generator
 
-STR_GENERATE                                                    :{WHITE}생성
+STR_GENERATE                                                    :{WHITE}만들기
 STR_RANDOM                                                      :{BLACK}무작위화
-STR_RANDOM_HELP                                                 :{BLACK}지형 생성을 위한 무작위수치 변경
+STR_RANDOM_HELP                                                 :{BLACK}지형 만들기를 위한 무작위수치 변경
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}세계 창조
 STR_RANDOM_SEED                                                 :{BLACK}무작위수치:
 STR_RANDOM_SEED_HELP                                            :{BLACK}무작위수치를 입력하세요
 STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}임의 설정값 입력
-STR_LAND_GENERATOR                                              :{BLACK}지형 생성:
+STR_LAND_GENERATOR                                              :{BLACK}지형 만들기:
 STR_TREE_PLACER                                                 :{BLACK}나무 알고리즘:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Heightmap 방향:
 STR_TERRAIN_TYPE                                                :{BLACK}지형 종류:
@@ -3422,29 +3422,29 @@ STR_SNOW_LINE_DOWN                                              :{BLACK}만년�
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}만년설의 높이를 변경
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}시작 년도를 변경합니다.
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크기에 대한 경고
-STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}맵 자원의 크기를 너무 키우는 것은 좋지 않습니다. 생성을 계속하시겠습니까?
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}맵 자원의 크기를 너무 키우는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}도시 설계 경고
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 생성을 계속하시겠습니까?
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 만들기를 계속하시겠습니까?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap 이름:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}크기: {ORANGE}{NUM} x {NUM}
-STR_GENERATION_WORLD                                            :{WHITE}세계 생성중..
+STR_GENERATION_WORLD                                            :{WHITE}세계 만드는 중..
 STR_GENERATION_ABORT                                            :{BLACK}중지
-STR_GENERATION_ABORT_CAPTION                                    :{WHITE}세계 생성 중단
-STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 생성을 중단하시겠습니까?
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}세계 만들기 중단
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}세계 만들기를 중단하시겠습니까?
 STR_PROGRESS                                                    :{WHITE}{NUM}% 완료
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
-STR_WORLD_GENERATION                                            :{BLACK}지형 생성중
-STR_TREE_GENERATION                                             :{BLACK}나무 생성중
-STR_UNMOVABLE_GENERATION                                        :{BLACK}움직일수 없는 객체 생성중
-STR_CLEARING_TILES                                              :{BLACK}거친 암석지대 생성중
+STR_WORLD_GENERATION                                            :{BLACK}지형 만드는 중
+STR_TREE_GENERATION                                             :{BLACK}나무 심는 중
+STR_UNMOVABLE_GENERATION                                        :{BLACK}움직일수 없는 객체 만드는 중
+STR_CLEARING_TILES                                              :{BLACK}거친 암석지대 만드는 중
 STR_SETTINGUP_GAME                                              :{BLACK}게임 셋업중
 STR_PREPARING_TILELOOP                                          :{BLACK}타일 루프 작동중
 STR_PREPARING_GAME                                              :{BLACK}게임 준비중
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}이 행위는 난이도를 사용자 설정으로 변경합니다
 STR_SE_FLAT_WORLD                                               :{WHITE}평평한 땅
-STR_SE_FLAT_WORLD_TIP                                           :{BLACK}평평한 땅 생성
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}평평한 땅 만들기
 STR_SE_RANDOM_LAND                                              :{WHITE}무작위 땅
-STR_SE_NEW_WORLD                                                :{BLACK}새 시나리오 생성
+STR_SE_NEW_WORLD                                                :{BLACK}새 시나리오 만들기
 STR_SE_CAPTION                                                  :{WHITE}시나리오 종류
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}평지의 높이를 1칸 높입니다.
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}평지의 높이를 1칸 낮춥니다
@@ -3489,14 +3489,14 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...여�
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...도로가 잘못된 방향을 향하고 있습니다
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}투명 옵션
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}역이름 팻말 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}역명판 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}나무 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}집 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}산업시설 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}정거장, 차량기지, 웨이포인트와 같은 건설 가능한 것들에 대한 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리 투명 전환
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대와 안테나와 같은 구조물 투명 전환. 고정하려면 CTRL+클릭하세요.
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}케이블 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}다리를 투명하게 합니다. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}등대나 안테나 같은 구조물 투명 전환. 고정하려면 CTRL+클릭하세요.
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}전차선 보이기/숨기기. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}적재 정도 투명 전환. 고정하려면 CTRL+클릭하세요.
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}투명이 아니라 아예 안보이게 할 항목을 선택하세요
 

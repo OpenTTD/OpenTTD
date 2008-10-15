@@ -15,7 +15,7 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nepietie
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei jābūt plakanai
-STR_0008_WAITING                                                :{BLACK}Gaida: {WHITE}{STRING.a}
+STR_0008_WAITING                                                :{BLACK}Gaida: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000C_ACCEPTS                                                :{BLACK}Pieņem: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Pieņem: {GOLD}
@@ -75,10 +75,10 @@ STR_0042_WHEAT                                                  :Kvieši
 STR_0043_RUBBER                                                 :Kaučuks
 STR_0044_SUGAR                                                  :Cukurs
 STR_0045_TOY                                                    :Rotaļlieta
-STR_0046_CANDY                                                  :Saldums
+STR_0046_CANDY                                                  :Saldumi
 STR_0047_COLA                                                   :Kola
 STR_0048_COTTON_CANDY                                           :Cukurvate
-STR_0049_BUBBLE                                                 :Burbulis
+STR_0049_BUBBLE                                                 :Burbuļi
 STR_004A_TOFFEE                                                 :Īriss
 STR_004B_BATTERY                                                :Baterijas
 STR_004C_PLASTIC                                                :Plastmasas
@@ -228,7 +228,7 @@ STR_0102_OIL_WELLS                                              :{BLACK}{TINYFON
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Dzelzs rūdas raktuves
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Tērauda lietuve
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papi'ra ru'pni'ca
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papīra rūpnīca
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Zelta raktuves
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Pārtikas ražotne
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Dimantu raktuves
@@ -237,12 +237,12 @@ STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFON
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kaučuka plantācija
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Ūdens avoti
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Ūdenstornis
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Baļķu zāģētava
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Kokzāģētava
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Cukurvates mežš
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Saldumu rūpnīca
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Bateriju ferma
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kolas akas
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Rotaļlietu darbnīca
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Rotaļlietu veikals
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Rotaļlietu fabrika
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastmasas strūklakas
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Burbuļūdeņa rūpnīca
@@ -271,7 +271,7 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Atcelt
 STR_012F_OK                                                     :{BLACK}Labi
 STR_0130_RENAME                                                 :{BLACK}Mainīt nosaukumu
-STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Define'ti pa'ra'k daudz nosaukumu
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Izveidoti pārāk daudz daudz nosaukumu
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Izvēlētais nosaukums jau tiek lietots
 
 STR_OSNAME_WINDOWS                                              :Windows
@@ -303,7 +303,7 @@ STR_MAPSIZE                                                     :{BLACK}Kartes i
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spēles parametri
 
-STR_0150_SOMEONE                                                :ka'ds{SKIP}{SKIP}
+STR_0150_SOMEONE                                                :kāds{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Pasaules karte
 STR_0152_TOWN_DIRECTORY                                         :Pilsētu saraksts
 STR_0153_SUBSIDIES                                              :Subsīdijas
@@ -455,11 +455,11 @@ STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik te 
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Nojaukt celtnes uc uz zemes pleķa
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Pazemināt zemes stūri
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Pacelt zemes stūri
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Skrollba'rs - bi'da sarakstu augs'up/lejup
-STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Skrollba'ri - skrolle' sarakstu pal kreisi un pa labi
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Ra'di't zemes kontu'ras uz kartes
-STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Ra'di't transporta li'dzekl'us uz kartes
-STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Ra'di't industrijas uz kartes
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Ritjosla - bīda sarakstu augšup/lejup
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Ritjosla - bīda sarakstu pa kreisi/labi
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Rādīt zemes kontūras uz kartes
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Rādīt  transporta līdzekļus uz kartes
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Rādīt rūpnīcas uz kartes
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Rādīt pārvadājuma maršrutus uz kartes
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Rādīt  augu valsti uz kartes
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Rādī zemes īpašniekus uz kartes
@@ -473,7 +473,7 @@ STR_AGE_RED                                                     :{RED}{COMMA} ga
 
 STR_019C_ROAD_VEHICLE                                           :Autotransports
 STR_019D_AIRCRAFT                                               :Lidaparāts
-STR_019E_SHIP                                                   :Kueģis
+STR_019E_SHIP                                                   :Kuģis
 STR_019F_TRAIN                                                  :Vilciens
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} paliek vecs
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} paliek ļoti vecs
@@ -527,7 +527,7 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Pieņem kravu: {LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
-STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Dz'eza muzikas automa'ts
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Džeza mūzikas automāts
 STR_01D3_SOUND_MUSIC                                            :Skaņa/mūzika
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Rādīt skaņas/mūzikas logu
 STR_01D5_ALL                                                    :{TINYFONT}Visi
@@ -561,7 +561,7 @@ STR_01F0_CLEAR                                                  :{TINYFONT}{BLAC
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Saglabāt
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Tekošā muzikas gabalu programma
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Atzīmē 'visas dziesmas' programmu
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Atzīmē 'vecāstila muzika' programmu
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Atzīmē 'vecā stila muzika' programmu
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Atzīmē 'jaunā stila muzika' programmu
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Atzīmē '1. Speciālo' (lietotāja definēto) programmu
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Atzīmē '2. Speciālo' (lietotāja definēto) programmu
@@ -584,142 +584,142 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Spēlē
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sāncenša stacijā ierodas pirmais transporta līdzeklis
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Negadijumi / avārijas
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Uzņēmuma informācija
-STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomijas izmain'as
-STR_020C_NEW_VEHICLES                                           :{YELLOW}Jaunie transporta li'dzekl'i
-STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Izmain'as kravas pien'ems'ana'
-STR_020E_SUBSIDIES                                              :{YELLOW}Subsi'dijas
-STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Vispa'ri'ga informa'cija
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomikas izmaiņas
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Jaunie transporta līdzekļi
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Izmaiņas pieņemaja kravā
+STR_020E_SUBSIDIES                                              :{YELLOW}Subsīdijas
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Vispārīgā informācija
 STR_MESSAGES_ALL                                                :{YELLOW}Rez'i'ms visiem zin'ojumu tipiem (iesle'gts/izsle'gts/kopsavilkums)
 STR_MESSAGE_SOUND                                               :{YELLOW}Spe'le't skan'as effektu zin'u kopsavilkumiem
-STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...pa'ra'k ta'lu no ieprieks'e'ja' gala punkta
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Laba'ka's kompa'nijas, kas sasniegus'as{NUM}{}({STRING} Level)
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...pārāk tāla no iepriekšējā punkta
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Labākie uzņēmumi, kuri sasnieguši {NUM}{}({STRING} Līmeni)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Uzņēmumu rangu sarkstā {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
-STR_0213_BUSINESSMAN                                            :Biznesmens
-STR_0214_ENTREPRENEUR                                           :Uzn'e'me'js
-STR_0215_INDUSTRIALIST                                          :Industria'lists
-STR_0216_CAPITALIST                                             :Kapita'lists
-STR_0217_MAGNATE                                                :Magna'ts
+STR_0213_BUSINESSMAN                                            :Darījumu cilvēks
+STR_0214_ENTREPRENEUR                                           :Uzņēmējs
+STR_0215_INDUSTRIALIST                                          :Industriālists
+STR_0216_CAPITALIST                                             :Kapitālists
+STR_0217_MAGNATE                                                :Magnāts
 STR_0218_MOGUL                                                  :Moguls
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Gadsimta supervecis
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} sasniegus'i  '{STRING}' statusu!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} no {COMPANY} sasniegusi '{STRING}' statusu!
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} sasnieguši  '{STRING}' statusu!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} no {COMPANY} sasnieguši '{STRING}' statusu!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scena'riju redaktors
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenāriju redaktors
 STR_0223_LAND_GENERATION                                        :{WHITE}Zemes ģenerēšana
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Palielina't zemes apgabalu pazemina's'anai/pazels'anai
-STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Samazina't zemes apgabalu pazemina's'anai/pazels'anai
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}G'enere't nejaus'u zemi
-STR_022B_RESET_LANDSCAPE                                        :{BLACK}Atjaunot zemes virsu
-STR_022C_RESET_LANDSCAPE                                        :{WHITE}Atjaunot zemes virsu
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Palielinā zemes apgabalu pazemināšanai/pazelšanai
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Samazināt zemes apgabalu pazemināšanai/pazelšanai
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Ģenerēt nejaušu zemi
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Atjaunot zemes virsmu
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Atjaunot zemes virsmu
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Novākt visus spēlētājam piederošos īpašumus no kartes
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Vai esat drošs, ka vēlaties novākt visus spēlētājam piederošos īpašumus?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Zemes virsmas ģenerēšana
 STR_022F_TOWN_GENERATION                                        :{BLACK}Pilsētu ģenerēšana
-STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Rūpniecības ģenerēšana
-STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Cel'u konstrukcija
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Rūpniecību ģenerēšana
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Ceļu būvēšana
 STR_0233_TOWN_GENERATION                                        :{WHITE}Pilsētu ģenerēšana
-STR_0234_NEW_TOWN                                               :{BLACK}Jauna pilse'ta
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Konstrue't jaunu pilse'tu
-STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Te nevar bu've't jaunu pilse'tu...
-STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...pa'ra'k tuvu kartes malai
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...pa'ra'k tuvu citai pilse'tai
-STR_0239_SITE_UNSUITABLE                                        :{WHITE}...vieta nav pieme'rota
-STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...pa'ra'k daudz pilse'tu
+STR_0234_NEW_TOWN                                               :{BLACK}Jauna pilsēta
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Būvēt jaunu pilsētu
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Te nevar būvēt jaunu pilsētu
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...pārāk tuvu kartes malai
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...pārāk tuvu citai pilsētai
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...vieta nav piemērota
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...pārāk daudz pilsētu
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Celt pilse'tas nav iespe'jams
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...Uz kartes nav vaira'k vietas
-STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Palielina't pilse'tas izme'rus
-STR_023C_EXPAND                                                 :{BLACK}Paplas'ina't
-STR_023D_RANDOM_TOWN                                            :{BLACK}Nejaus'a pilse'ta
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Celt pilse'tu nejaus'a' vieta'
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Palielināt pilsētas izmērus
+STR_023C_EXPAND                                                 :{BLACK}Paplašināt
+STR_023D_RANDOM_TOWN                                            :{BLACK}Nejauša pilsēta
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Celt pilsētu nejaušā vietā
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Rūpniecības ģenerēšana
-STR_0240_COAL_MINE                                              :{BLACK}Ogl'u raktuve
-STR_0241_POWER_STATION                                          :{BLACK}Spe'kstacija
-STR_0242_SAWMILL                                                :{BLACK}Kokza'g'e'tava
-STR_0243_FOREST                                                 :{BLACK}Mez's'
-STR_0244_OIL_REFINERY                                           :{BLACK}Naftas pa'rstra'des ru'pni'ca
+STR_0240_COAL_MINE                                              :{BLACK}Ogļu raktuve
+STR_0241_POWER_STATION                                          :{BLACK}Spēkstacija
+STR_0242_SAWMILL                                                :{BLACK}Kokzāģētava
+STR_0243_FOREST                                                 :{BLACK}Mežš
+STR_0244_OIL_REFINERY                                           :{BLACK}Naftas pārstrādes rūpnīca
 STR_0245_OIL_RIG                                                :{BLACK}Naftas atradnes
-STR_0246_FACTORY                                                :{BLACK}Ru'pni'cu
-STR_0247_STEEL_MILL                                             :{BLACK}Te'rauda lietuvi
+STR_0246_FACTORY                                                :{BLACK}Rūpnīcu
+STR_0247_STEEL_MILL                                             :{BLACK}Tērauda lietuvi
 STR_0248_FARM                                                   :{BLACK}Fermu
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Dzelzs ru'das raktuves
-STR_024A_OIL_WELLS                                              :{BLACK}Naftas su'kn'u staciju
+STR_0249_IRON_ORE_MINE                                          :{BLACK}Dzelzs rūdas raktuves
+STR_024A_OIL_WELLS                                              :{BLACK}Naftas sūkņu staciju
 STR_024B_BANK                                                   :{BLACK}Banku
-STR_024C_PAPER_MILL                                             :{BLACK}Papi'ra ru'pni'cu
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Pa'rtikas ru'pni'cu
-STR_024E_PRINTING_WORKS                                         :{BLACK}Druka'tavu
+STR_024C_PAPER_MILL                                             :{BLACK}Papīra rūpnīcu
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Pārtikas rūpnīcu
+STR_024E_PRINTING_WORKS                                         :{BLACK}Tipogrāfiju
 STR_024F_GOLD_MINE                                              :{BLACK}Zelta atradnes
-STR_0250_LUMBER_MILL                                            :{BLACK}Bal'k'u za'g'e'tavu
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Augl'u planta'ciju
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kauc'uka planta'ciju
-STR_0253_WATER_SUPPLY                                           :{BLACK}U'dens piega'di
-STR_0254_WATER_TOWER                                            :{BLACK}U'dens torni
+STR_0250_LUMBER_MILL                                            :{BLACK}Baļķu zāģētavu
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Augļu plantāciju
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kaučuka plantāciju
+STR_0253_WATER_SUPPLY                                           :{BLACK}Ūdens piegādi
+STR_0254_WATER_TOWER                                            :{BLACK}Ūdens torni
 STR_0255_DIAMOND_MINE                                           :{BLACK}Dimanta raktuves
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Vara ru'das raktuves
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Cukurvates mez'u
-STR_0258_CANDY_FACTORY                                          :{BLACK}Saldumu ru'pni'cu
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}Vara rūdas raktuves
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Cukurvates mežu
+STR_0258_CANDY_FACTORY                                          :{BLACK}Saldumu rūpnīcu
 STR_0259_BATTERY_FARM                                           :{BLACK}Bateriju fermu
 STR_025A_COLA_WELLS                                             :{BLACK}Kolas akas
-STR_025B_TOY_SHOP                                               :{BLACK}Rotal'lietu veikalu
-STR_025C_TOY_FACTORY                                            :{BLACK}Rotal'lietu ru'pni'cu
-STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastmasas stru'klakas
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Burbul'u'den'u ru'pni'cu
-STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Burbul'u g'eneratoru
+STR_025B_TOY_SHOP                                               :{BLACK}Rotaļlietu veikalu
+STR_025C_TOY_FACTORY                                            :{BLACK}Rotaļlietu rūpnīcu
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Plastmasas strūklakas
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Burbuļūdeņa rūpnīcu
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Burbuļu ģenerātoru
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Īrisa lauztuves
 STR_0261_SUGAR_MINE                                             :{BLACK}Cukura raktuves
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Bu've't ogl'u raktuves
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Būvēt ogļu raktuves
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Būvēt spēkstaciju
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Bu've't bal'k'u za'g'e'tavu
-STR_0265_PLANT_FOREST                                           :{BLACK}Sta'di't mez'u
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Bu've't naftas pa'rstra'des ru'pni'cu
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Bu've't naftas platformu (atl'auts celt tikai kartes malu tuvuma')
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Bu've't rupni'cu
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Bu've't te'rauda lietuvi
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Bu've't fermu
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Bu've't dzelzs ru'das raktuves
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Bu've't naftas atradnes
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bu've't banku (atl'auts bu've't tikai pilse'ta's kur iedzi'vota'ju skaits liela'ks par 1200)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Bu've't papi'ra fabriku
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Bu've't pa'rtikas apstra'des ru'pni'cu
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Bu've't druka'tavu
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Bu've't zelta atradnes
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bu've't banku (atl'auts celt tikai pilse'ta's)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bu've't bal'k'u za'g'e'tavu (lai ti'ri'tu mez'us un raz'otu kokmaterea'lus)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Sta'di't augl'u planta'ciju
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Sta'di't kauc'uka planta'ciju
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Bu've't u'dens piega'des staciju
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Būvēt baļķu zāģētavu
+STR_0265_PLANT_FOREST                                           :{BLACK}Stādīt mežu
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Būvēt naftas pārstrādes rūpnīcu
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Būvēt naftas platformu (atļauts celt tikai kartes malu tuvumā)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Būvēt rupnīcu
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Būvēt  tērauda lietuvi
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Būvēt fermu
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Būvēt dzelzs rūdas raktuves
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Būvēt  naftas atradnes
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Būvēt  banku (atļauts būvēt tikai pilsētās kur iedzi'votāju skaits lielāks par 1200)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Būvēt papīra fabriku
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Būvēt pārtikas apstrādes rūpnīcu
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Būvēt tipogrāfiju
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Būvēt zelta atradnes
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}°Būvēt banku (atļauts celt tikai pilsētās)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Būvēt  baļķu zāģētavu (lai iznīcinātu mežus un ražotu kokmateriālus)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Stādīt augļu plantāciju
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Stādīt kaučuka plantāciju
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Būvēt ūdens piegādes staciju
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bu've't u'dens torni (atl'auts bu've't tikai pilse'ta's)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bu've't dimanta raktuves
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bu've't vara ru'das raktuves
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Sta'di't cukurvates mez'u
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bu've't saldumu ru'pni'cu
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bu've't bateriju fermu
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bu've't kolas akas
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Bu've't rotal'lietu veikalu
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bu've't rotal'lietu ru'pni'cu
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Bu've't plastmasas stru'klakas
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Bu've't burbul'u'den'u ru'pni'cu
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Bu've't burbul'u g'eneratoru
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Būvēt dimanta raktuves
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Būvēt vara rūdas raktuves
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Stādīt cukurvades mežu
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Būvēt saldumu rūpnīcu
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Būvēt bateriju fermu
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Būvēt kolas akas
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Būvēt rotaļlietu veikalu
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Būvēt rotaļlietu rūpnīcu
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Būvēt plastmasas strūklakas
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Būvēt burbuļūdeņa fabriku
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Būvēt burbuļu ģenerātoru
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Būvēt īrisa lauztuves
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Bu've't cukura raktuves
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}S'eit nevar bu've't {STRING}...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...vispirms ja'cel' pilse'ta
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...pilse'ta' atl'auts tikai viens(a)
-STR_0288_PLANT_TREES                                            :{BLACK}Sta'di't kokus
-STR_0289_PLACE_SIGN                                             :{BLACK}Novietot zi'mi
-STR_028A_RANDOM_TREES                                           :{BLACK}Nejaus'i koki
-STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Nejaus'i sta'di't kokus pa visu plati'bu
-STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Novietot akmen'ainus apgabalus uz kartes
-STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Bu've't ba'ku
-STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Bu've't raidi'ta'ju
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Nora'di't tuksnes'a plati'bu.{}Spiest un turet CTRL lai to izdze'stu
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Būvēt cukura raktuves
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Šeit nevar būvēt {STRING}...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...vispirms jāuzceļ pilsēta
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...pilsētā atļauts tikai viens(a)
+STR_0288_PLANT_TREES                                            :{BLACK}Stādīt kokus
+STR_0289_PLACE_SIGN                                             :{BLACK}Novietot zīmi
+STR_028A_RANDOM_TREES                                           :{BLACK}Nejauši koki
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Stādīt nejaušus kokus uz kartes
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Novietot akmeņainus apgabalus uz kartes
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Buvēt bāku
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Būvēt raidītāju
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Norādīt tuksneša platību.{}Spiest un turet CTRL lai to izdzēstu
 STR_0290_DELETE                                                 :{BLACK}Izdzest
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Pilni'ba' izdze'st s'o pilse'tu
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Pilnībā dzēst šo pilsētu
 STR_0292_SAVE_SCENARIO                                          :Saglabāt scenāriju
 STR_0293_LOAD_SCENARIO                                          :Ielādē scenāriju
 STR_0294_QUIT_EDITOR                                            :Beigt redaktoru
@@ -731,64 +731,64 @@ STR_0299_SAVE_SCENARIO                                          :{WHITE}Saglabā
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spēlēt scenāriju
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Vai esat pārliecināts, ka vēlaties pamest šo scenāriju?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Beigt redaktoru
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...atl'auts bu've't tikai pilse'ta's ar iedzi'vota'ju skaitu vismaz 1200
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pa'rvietot starta datumu 1 gadu uz atpakal'u
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pa'rvietot starta datumu 1 gadu uz prieks'u
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...abiem tilta galiem ja'bu't uz zemes
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...atļauts būvēt tikai pilsētās ar iedzīvotāju skaitu vismaz 1200
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pārvietot sākšanas datumu 1 gadu atpakaļ
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pārvietot sākuma datumu 1 gadu  uz priekšu
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...abiem tilta galiem jābūt uz zemes
 STR_02A1_SMALL                                                  :{BLACK}Mazs
-STR_02A2_MEDIUM                                                 :{BLACK}Vide'js
+STR_02A2_MEDIUM                                                 :{BLACK}Vidējs
 STR_02A3_LARGE                                                  :{BLACK}Liels
-STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Nora'di't pilse'tas izme'rus
-STR_02A5_TOWN_SIZE                                              :{YELLOW}Pilse'tas izme'ri:
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Norādīt pislētas izmērus
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Pilsētas izmēri:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
-STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Para'di't pe'de'jo zin'ojumu
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Parādīt pēdējo ziņojumu vai avīzes rakstu
 STR_OFF                                                         :Nav
 STR_SUMMARY                                                     :Kopsavilkums
 STR_FULL                                                        :Pilns
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Pilse'tu saraksts
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Transporta li'dzekl'u dizaina nosaukumi
+STR_02BB_TOWN_DIRECTORY                                         :Pilsētu saraksts
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Transporta līdzekļu dizaina nosaukumi
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Pe'c nokluse's'anas
-STR_02BF_CUSTOM                                                 :Specia'ls
+STR_02BE_DEFAULT                                                :Pēc noklusēšanas
+STR_02BF_CUSTOM                                                 :Speciāls
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Saglaba't specia'los nosaukumus
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Transporta li'dzekl'u dizaina nosaukumu izve'le
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Saglaba't specia'los transporta li'dzekl'a dizaina nosaukumus
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Transporta līdzekļu dizaina nosaukumu izvēle
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Saglabāt speciālos transporta līdzekļu dizaina nosaukumus
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C4_GAME_OPTIONS                                           :Spe'les rez'i'mi
+STR_02C4_GAME_OPTIONS                                           :Spēles režīmi
 STR_02C6_DIFFICULTY_SETTINGS                                    :Grūtības pakāpes
 STR_NEWGRF_SETTINGS                                             :Newgrf rez'i'mi
 STR_GAMEOPTMENU_0A                                              :
-STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ra'di't pilse'tu nosaukumus
-STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ra'di't staciju nosaukumus
-STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Ra'di't zi'mes
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Rādīt pilsētu nosaukumus
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Rādīt staciju nosaukumus
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Rādīt zīmes
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Rādīt ceļazīmes
-STR_02D0_FULL_ANIMATION                                         :{SETX 12}Pilna anima'cija
-STR_02D2_FULL_DETAIL                                            :{SETX 12}Pilnas detal'as
-STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Caurspi'di'gas e'kas
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}Pilna animācija
+STR_02D2_FULL_DETAIL                                            :{SETX 12}Visas detaļas
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Caurspīdīgas ēkas
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Caurspidīgas staciju zīmes
 ############ range ends here
 
 ############ range for menu starts
-STR_02D5_LAND_BLOCK_INFO                                        :Zemes apgabala informa'cija
+STR_02D5_LAND_BLOCK_INFO                                        :Zemes apgabala informācija
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Pa'rsle'gt konsoli
-STR_02D7_SCREENSHOT_CTRL_S                                      :Ekra'na kopija (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Liela ekra'na kopija (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Ekrāna kopija (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Liela ekrāna kopija (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Par 'OpenTTD'
 ############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}Nav
 STR_02DA_ON                                                     :{BLACK}Ir
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Ra'di't subsi'dijas
-STR_02DD_SUBSIDIES                                              :Subsi'dijas
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Rādīt subsīdijas
+STR_02DD_SUBSIDIES                                              :Subsīdijas
 STR_02DE_MAP_OF_WORLD                                           :Pasaules karte
 STR_EXTRA_VIEW_PORT                                             :Papildus skats
 STR_SIGN_LIST                                                   :Zi'mju saraksts
-STR_02DF_TOWN_DIRECTORY                                         :Pilse'tu saraksts
+STR_02DF_TOWN_DIRECTORY                                         :Pilsētu saraksts
 STR_TOWN_POPULATION                                             :{BLACK}Pasaules iedzīotāju skaits: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Skats {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kope't uz skatu
@@ -796,30 +796,30 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Kope't g
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Kope't no skata
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kope't atras'ana's vietu no s'i' skata uz globa'lo skatu
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Naudas vieni'bas
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Naudas vienības
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Naudas vieni'bu izve'le
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Naudas vienību izvēle
 STR_MEASURING_UNITS                                             :{BLACK}Mērvienības
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Mērvienību izvēle
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cel'a satiksmes li'dzekl'i
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Ceļu satiksmes līdzekļi
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Braucama's cel'a puses izve'le
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Braucamās ceļa puses izvēle
 STR_02E9_DRIVE_ON_LEFT                                          :Braukt pa kreiso pusi
 STR_02EA_DRIVE_ON_RIGHT                                         :Braukt pa labo pusi
-STR_02EB_TOWN_NAMES                                             :{BLACK}Pilse'tu nosaukumi
+STR_02EB_TOWN_NAMES                                             :{BLACK}Pilsētu nosaukumi
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Pilse'tu nosaukumu stila izve'le
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Pilsētu nosaukumu stila izvēle
 
-STR_02F4_AUTOSAVE                                               :{BLACK}Auto-saglaba's'ana
+STR_02F4_AUTOSAVE                                               :{BLACK}Auto-saglabaāšana
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Spe'les auto-saglaba's'anas laika inerva'la izve'le
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Spēles auto-saglabāšanas laika inervāla izvēle
 STR_02F7_OFF                                                    :Nav
-STR_02F8_EVERY_3_MONTHS                                         :Katrus 3 me'nes'us
-STR_02F9_EVERY_6_MONTHS                                         :Katrus 6 me'nes'us
-STR_02FA_EVERY_12_MONTHS                                        :Katrus 12 me'nes'us
+STR_02F8_EVERY_3_MONTHS                                         :Katrus 3 mēnešus
+STR_02F9_EVERY_6_MONTHS                                         :Katrus 6 mēnešus
+STR_02FA_EVERY_12_MONTHS                                        :Katrus 12 mēnešus
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Sākt jaunu spēli
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Iela'de't saglaba'to spe'li
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Ielādēt saglabāto spēli
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Izveidot speciālu spēles pasauli/scenāriju
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Izvēlēties viena spēlētāja spēli
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izvēlēties 2 līdz 8 spēlētāju spēli
@@ -829,33 +829,33 @@ STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Sākt ja
 STR_0304_QUIT                                                   :{BLACK}Beigt
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Beigt 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...var celt tikai pilse'ta's
-STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Izve'le'ties ' me'renu ' zemes stilu
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Izve'le'ties ' sub-arktisku ' zemes stilu
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Izve'le'ties ' sub-tropisku ' zemes stilu
-STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Izve'le'ties ' rotal'u ' zemes stilu
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finanse't jaunas industrijas bu'vnieci'bu
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...var celt tikai pilsētās
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Izvēlēties ' mērenu' zemes stilu
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Izvēlēties ' sub-arktisku ' zemes stilu
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Izvēlēties 'sub-tropisku ' zemes stilu
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Izvēlēties 'rotaļu ' zemes stilu
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Finansēt jauna industriāla objekta būvniecību
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Industriju saraksts
-STR_0313_FUND_NEW_INDUSTRY                                      :Finanse't jaunu industriju
+STR_0313_FUND_NEW_INDUSTRY                                      :Finansēt jaunu industriālo objektu
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finanse't jaunu industriju
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansēt jaunu industriālo objektu
 STR_JUST_STRING                                                 :{STRING}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...var celt tikai pilse'ta's
-STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...var celt tikai mez'u apgabalos
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...var celt tikai tuksnes'ainos apgabalos
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...var celt tikai pilsētās
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...var celt tikai mežu apgabalos
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...var celt tikai tuksnešainos apgabalos
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUZE  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Ekra'na kopija saglaba'ta ieks'  '{STRING}'
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekra'na kopija neizdeva's!
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Ekrāna kopija saglabāta kā  '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekrāna kopijas veidošana neizdevās!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Pe'rc zemi na'kotnes lietos'anai
-STR_032F_AUTOSAVE                                               :{RED}AUTOSAGLABA'S'ANA
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Pirkt zemi vēlākai lietošanai
+STR_032F_AUTOSAVE                                               :{RED}AUTOSAGLABĀŠANA
 STR_SAVING_GAME                                                 :{RED}*  *  Spe'le tiek saglaba'ta *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Notiek saglabas'ana,{}lu'dzu uzgaidiet!
-STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}izve'lies 'Ez'u Ielas muzikas stila' programmu
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}izvēlēties 'Ežu Ielas muzikas stila' programmu
 
 STR_6                                                           :{BLACK}6
 STR_7                                                           :{BLACK}7
@@ -1391,11 +1391,26 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}kartes 
 
 
 ##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}Izmaksas: {CURRENCY}
+STR_0801_COST                                                   :{RED}Izmaksas: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Ienākumi: {CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}Ienākumi: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Pa'rved: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Pa'rved: {CURRENCY}
-STR_080A_ROCKS                                                  :Akmeòi
+STR_0805_ESTIMATED_COST                                         :{WHITE}Plānotās izmaksas: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Plānotie ineākumi: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Šeit nevar uzbērt augstāk...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Šeit nevar norakt zemāk...
+STR_080A_ROCKS                                                  :Akmeņi
+STR_080B_ROUGH_LAND                                             :Nelīdzena zeme
+STR_080C_BARE_LAND                                              :Kaila zeme
+STR_080D_GRASS                                                  :Zālājs
+STR_080E_FIELDS                                                 :Lauki
+STR_080F_SNOW_COVERED_LAND                                      :Apsnigusi zeme
+STR_0810_DESERT                                                 :Tuksnesis
 
 ##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Nogāze ir uz nepareizo pusi
 STR_1021_RAILROAD_TRACK                                         :Dzelzceïa ceïs
 
 

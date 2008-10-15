@@ -590,7 +590,7 @@ STR_MESSAGE_HISTORY_MENU                                        :Cronologia mess
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostra l'ultimo messaggio/notizia, mostra le opzioni dei messaggi
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opzioni messaggi
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipi messaggi:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni del giocatore
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni della compagnia
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni di un avversario
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Incidenti / disastri
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informazioni sulla compagnia

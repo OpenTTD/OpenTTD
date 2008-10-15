@@ -18,6 +18,7 @@ STR_0008_WAITING                                                :{BLACK}Várakoz
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000C_ACCEPTS                                                :{BLACK}Elfogad:{WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Elfogad:{GOLD}
+STR_SUPPLIES                                                    :{BLACK}Termel: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Utas
 STR_000F_PASSENGERS.t                                           :Utast
@@ -2803,6 +2804,7 @@ STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}A kijel�
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijelölt célponton a felpakodási szokások beállítása
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a lepakodási szokások beállítása
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Fejlett utasítás elhelyezése
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Menj a legközelebbi járműtelepre
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Menj a legközelebbi hangárba
 
@@ -2829,7 +2831,7 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Ugorj a(z) {COM
 STR_CONDITIONAL_NUM                                             :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Útipont (időzítetlen)
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Utazás (időzítetlen)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Menjen {STRING} állomásra
 STR_TIMETABLE_STAY_FOR                                          :és maradjon {STRING.t}
 STR_TIMETABLE_DAYS                                              :{COMMA} nap
@@ -3265,6 +3267,12 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :az adott GRF fájl célja egy másik lefordítása
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Túl sok NewGRF van betöltve.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Kiválasztott lista betöltése
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Lista mentése
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}A kiválasztott elemek listába mentése
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Írj be egy nevet a listának
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Lista törlése
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}A jelenleg kiválasztott lista törlése
 STR_NEWGRF_ADD                                                  :{BLACK}Hozzáad
 STR_NEWGRF_ADD_TIP                                              :{BLACK}A NewGRF-et hozzáadja a listához
 STR_NEWGRF_REMOVE                                               :{BLACK}Eltávolít
