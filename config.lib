@@ -2559,7 +2559,7 @@ showhelp() {
 	echo "                                 (OSX ONLY)"
 	echo "  --without-menu-entry           Don't generate a menu item (Freedesktop based only)"
 	echo "  --menu-group=group             Category in which the menu item will be placed (Freedesktop based only)"
-	echo "  --menu-name=name               Name of the menu item when placed [OpenTTD]
+	echo "  --menu-name=name               Name of the menu item when placed [OpenTTD]"
 	echo "  --with-direct-music            enable direct music support (Win32 ONLY)"
 	echo "  --with-sort=sort               define a non-default location for sort"
 	echo "  --with-midi=midi               define which midi-player to use"
