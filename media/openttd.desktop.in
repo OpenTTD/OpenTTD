@@ -4,9 +4,8 @@
 Encoding=UTF-8
 Type=Application
 Version=1.1
-Name=OpenTTD
-GenericName=A clone of Transport Tycoon Deluxe
-Comment=A business simulation game
+Name=!!MENU_NAME!!
+Comment=A clone of Transport Tycoon Deluxe
 Icon=openttd
 Exec=!!TTD!!
 Terminal=false

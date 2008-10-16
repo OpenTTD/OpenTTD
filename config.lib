@@ -37,6 +37,7 @@ set_default() {
 	man_dir="1"
 	menu_dir="1"
 	menu_group="Game;"
+	menu_name="OpenTTD"
 	binary_name="openttd"
 	enable_debug="0"
 	enable_desync_debug="0"
@@ -101,6 +102,7 @@ set_default() {
 		shared_dir
 		install_dir
 		menu_group
+		menu_name
 		binary_name
 		enable_debug
 		enable_desync_debug
@@ -214,6 +216,9 @@ detect_params() {
 			--menu-dir)                   prevp_p="menu_dir";;
 			--menu-dir=*)                 menu_dir="$optarg";;
 			--without-menu-entry)         menu_dir="";;
+
+			--menu-name)                  prevp_p="menu_name";;
+			--menu-name=*)                menu_name="$optarg";;
 
 			--binary-name)                prevp_p="binary_name";;
 			--binary-name=*)              binary_name="$optarg";;
@@ -2379,7 +2384,8 @@ make_sed() {
 generate_menu_item() {
 	MENU_REPLACE="
 		s~!!TTD!!~$TTD~g;
-		s~!!MENU_GROUP!!~$menu_group~g
+		s~!!MENU_GROUP!!~$menu_group~g;
+		s~!!MENU_NAME!!~$menu_name~g
 	"
 	echo "Generating menu item..."
 	mkdir -p media
@@ -2553,6 +2559,7 @@ showhelp() {
 	echo "                                 (OSX ONLY)"
 	echo "  --without-menu-entry           Don't generate a menu item (Freedesktop based only)"
 	echo "  --menu-group=group             Category in which the menu item will be placed (Freedesktop based only)"
+	echo "  --menu-name=name               Name of the menu item when placed [OpenTTD]
 	echo "  --with-direct-music            enable direct music support (Win32 ONLY)"
 	echo "  --with-sort=sort               define a non-default location for sort"
 	echo "  --with-midi=midi               define which midi-player to use"
