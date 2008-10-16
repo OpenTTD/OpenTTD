@@ -37,6 +37,7 @@ set_default() {
 	man_dir="1"
 	menu_dir="1"
 	menu_group="Game;"
+	binary_name="openttd"
 	enable_debug="0"
 	enable_desync_debug="0"
 	enable_profiling="0"
@@ -100,6 +101,7 @@ set_default() {
 		shared_dir
 		install_dir
 		menu_group
+		binary_name
 		enable_debug
 		enable_desync_debug
 		enable_profiling
@@ -212,6 +214,9 @@ detect_params() {
 			--menu-dir)                   prevp_p="menu_dir";;
 			--menu-dir=*)                 menu_dir="$optarg";;
 			--without-menu-entry)         menu_dir="";;
+
+			--binary-name)                prevp_p="binary_name";;
+			--binary-name=*)              binary_name="$optarg";;
 
 			--man-dir)                    prevp_p="man_dir";;
 			--man-dir=*)                  man_dir="$optarg";;
@@ -2311,6 +2316,7 @@ make_sed() {
 		s~!!PERSONAL_DIR!!~$personal_dir~g;
 		s~!!SHARED_DIR!!~$shared_dir~g;
 		s~!!INSTALL_DIR!!~$install_dir~g;
+		s~!!BINARY_NAME!!~$binary_name~g;
 		s~!!STRGEN!!~$STRGEN~g;
 		s~!!ENDIAN_CHECK!!~$ENDIAN_CHECK~g;
 		s~!!ENDIAN_FORCE!!~$endian~g;
@@ -2521,6 +2527,8 @@ showhelp() {
 	echo "                                 [os-dependent default]"
 	echo "  --install-dir=dir              specifies the root to install to."
 	echo "                                 Useful to install into jails [/]"
+	echo "  --binary-name                  the name used for the binary, icons,"
+	echo "                                 desktop file, etc. when installing [openttd]"
 	echo ""
 	echo "Features and packages:"
 	echo "  --enable-debug[=LVL]           enable debug-mode (LVL=[0123], 0 is release)"
