@@ -15,6 +15,12 @@ enum {
 	MAX_LANG = 64, ///< Maximal number of languages supported by the game
 };
 
+/** Directions a text can go to */
+enum TextDirection {
+	TD_LTR, ///< Text is written left-to-right by default
+	TD_RTL, ///< Text is written right-to-left by default
+};
+
 /** Information about a language */
 struct Language {
 	char *name; ///< The internal name of the language
@@ -26,6 +32,7 @@ struct DynamicLanguages {
 	int num;                  ///< Number of languages
 	int curr;                 ///< Currently selected language index
 	char curr_file[MAX_PATH]; ///< Currently selected language file name without path (needed for saving the filename of the loaded language).
+	TextDirection text_dir;   ///< Text direction of the currently selected language
 	Language ent[MAX_LANG];   ///< Information about the languages
 };
 

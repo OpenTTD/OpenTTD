@@ -2,6 +2,7 @@
 ##ownname Farsi
 ##isocode fa_IR
 ##plural 0
+##textdir rtl
 
 #
 

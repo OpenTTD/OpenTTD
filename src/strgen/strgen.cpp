@@ -6,6 +6,7 @@
 #include "../core/alloc_func.hpp"
 #include "../core/endian_func.hpp"
 #include "../string_func.h"
+#include "../strings_type.h"
 #include "../table/control_codes.h"
 
 #include <stdio.h>
@@ -35,14 +36,15 @@
 typedef void (*ParseCmdProc)(char *buf, int value);
 
 struct LanguagePackHeader {
-	uint32 ident;
+	uint32 ident;       // 32-bits identifier
 	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];      // the international name of this language
 	char own_name[32];  // the localized name of this language
 	char isocode[16];   // the ISO code for the language (not country code)
 	uint16 offsets[32]; // the offsets
 	byte plural_form;   // plural form index
-	byte pad[3];        // pad header to be a multiple of 4
+	byte text_dir;      // default direction of the text
+	byte pad[2];        // pad header to be a multiple of 4
 };
 
 struct CmdStruct {
@@ -95,6 +97,7 @@ static int _next_string_id;
 static uint32 _hash;
 static char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
 static byte _lang_pluralform;
+static byte _lang_textdir;
 #define MAX_NUM_GENDER 8
 static char _genders[MAX_NUM_GENDER][8];
 static int _numgenders;
@@ -649,6 +652,14 @@ static void HandlePragma(char *str)
 		_lang_pluralform = atoi(str + 7);
 		if (_lang_pluralform >= lengthof(_plural_form_counts))
 			error("Invalid pluralform %d", _lang_pluralform);
+	} else if (!memcmp(str, "textdir ", 8)) {
+		if (!memcmp(str + 8, "ltr", 3)) {
+			_lang_textdir = TD_LTR;
+		} else if (!memcmp(str + 8, "rtl", 3)) {
+			_lang_textdir = TD_RTL;
+		} else {
+			error("Invalid textdir %s", str + 8);
+		}
 	} else if (!memcmp(str, "gender ", 7)) {
 		char* buf = str + 7;
 
@@ -911,6 +922,7 @@ static void ParseFile(const char *file, bool english)
 	/* For each new file we parse, reset the genders, and language codes */
 	_numgenders = 0;
 	_lang_name[0] = _lang_ownname[0] = _lang_isocode[0] = '\0';
+	_lang_textdir = TD_LTR;
 	// TODO:!! We can't reset the cases. In case the translated strings
 	// derive some strings from english....
 
@@ -1159,6 +1171,7 @@ static void WriteLangfile(const char *filename)
 	hdr.ident = TO_LE32(0x474E414C); // Big Endian value for 'LANG'
 	hdr.version = TO_LE32(_hash);
 	hdr.plural_form = _lang_pluralform;
+	hdr.text_dir = _lang_textdir;
 	strcpy(hdr.name, _lang_name);
 	strcpy(hdr.own_name, _lang_ownname);
 	strcpy(hdr.isocode, _lang_isocode);

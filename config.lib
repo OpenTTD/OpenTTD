@@ -2634,6 +2634,7 @@ showhelp() {
 	echo "                                 enables libfreetype support"
 	echo "  --with-fontconfig[=pkg-config fontconfig]"
 	echo "                                 enables fontconfig support"
+	echo "  --with-icu[=icu-config]        enables icu (used for right-to-left support)"
 	echo "  --with-iconv[=iconv-path]      enables iconv support"
 	echo "  --with-psp-config[=psp-config] enables psp-config support (PSP ONLY)"
 	echo "  --with-makedepend[=makedepend] enables makedepend support"
