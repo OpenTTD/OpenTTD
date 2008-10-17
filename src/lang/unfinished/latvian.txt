@@ -1411,6 +1411,16 @@ STR_0810_DESERT                                                 :Tuksnesis
 
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Nogāze ir uz nepareizo pusi
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Neiespējama sliežu kombinācija
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Rakšana sabojās tuneli
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Jau ir jūras līmenī
+STR_1004_TOO_HIGH                                               :{WHITE}Pārāk augstu
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nepiemērotas sliedes
+STR_1007_ALREADY_BUILT                                          :{WHITE}...jau uzbūvēts
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Vispirms jānojauc sliedes
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Dzelzceļa būvēšana
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Viensliežu būvēšana
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Maglev būvēšana
 STR_1021_RAILROAD_TRACK                                         :Dzelzceïa ceïs
 
 

@@ -151,10 +151,44 @@ STR_0114_TOY_SHOP                                               :{BLACK}{TINYFON
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}کارخانه اسباب بازی سازی
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}کارخانه نوشابه گازدار سازی
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}مولد حباب
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}معدن شکر
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}ایستگاه قطار
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}ایستگاه اتوبوس
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}هواپیما/بالگرد
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}اسکله
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}زمین سنگی
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}زمین علفی
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}زمین بایر
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}محوطه ها
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}درختان
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}سخره ها
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}آب
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}بدون مالک
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}شهر
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}کارخانه
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}صحرا
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}برف
+STR_012C_MESSAGE                                                :{WHITE}پیغام
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}لغو
+STR_012F_OK                                                     :{BLACK}تایید
+STR_0130_RENAME                                                 :{BLACK}نام گزاری
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}بیش از اندازه نام انتخاب شده
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}این اسم قبلا مورد استفاده قرار گرفته
 
 
+STR_013B_OWNED_BY                                               :{WHITE} صاحب {STRING} است.
+STR_013C_CARGO                                                  :{BLACK}محموله
+STR_013D_INFORMATION                                            :{BLACK}اطلاعات
+STR_013E_CAPACITIES                                             :{BLACK}ضرفیت ها
+STR_013F_CAPACITY                                               :{BLACK}ضرفیت: {LTBLUE}{CARGO}
+STR_0140_NEW_GAME                                               :{BLACK}بازی جدید
+STR_0141_LOAD_GAME                                              :{BLACK}ادامه بازی های قبلی
 
+STR_0148_GAME_OPTIONS                                           :{BLACK}تنضیمات بازی
 
+STR_0151_MAP_OF_WORLD                                           :نقشه
+STR_0152_TOWN_DIRECTORY                                         :لیست شهر ها
 
 
 
@@ -165,11 +199,32 @@ STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFON
 
 
 ############ range for menu starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :نمودار سود خالص
+STR_0155_INCOME_GRAPH                                           :نمودار درآمد
+STR_0156_DELIVERED_CARGO_GRAPH                                  :نمودار محموله های رسانده شده
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :نمودار پیشرفت شرکت ها
+STR_0158_COMPANY_VALUE_GRAPH                                    :نمودار ارزش شرکت ها
+STR_0159_CARGO_PAYMENT_RATES                                    :نمودار قیمت پرداختی محموله ها
 ############ range for menu ends
 
+STR_015B_OPENTTD                                                :{WHITE}OpenTTD در باره ی
+STR_015C_SAVE_GAME                                              :ذخیره بازی
+STR_015E_QUIT_GAME                                              :رها کردن بازی
+STR_015F_QUIT                                                   :خروج
+STR_0161_QUIT_GAME                                              :{WHITE}رها کردن بازی
 
 
 ############ range for months starts
+STR_0162_JAN                                                    :بهمن
+STR_0163_FEB                                                    :اسفند
+STR_0164_MAR                                                    :فروردین
+STR_0165_APR                                                    :اردیبهشت
+STR_0166_MAY                                                    :خرداد
+STR_0167_JUN                                                    :تیر
+STR_0168_JUL                                                    :مرداد
+STR_0169_AUG                                                    :شهریور
+STR_016A_SEP                                                    :مهر
+STR_016B_OCT                                                    :آبان
 ############ range for months ends
 
 
