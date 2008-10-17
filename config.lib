@@ -69,6 +69,7 @@ set_default() {
 	with_libtimidity="1"
 	with_freetype="1"
 	with_fontconfig="1"
+	with_icu="1"
 	with_psp_config="1"
 	with_threads="1"
 	with_distcc="1"
@@ -133,6 +134,7 @@ set_default() {
 		with_libtimidity
 		with_freetype
 		with_fontconfig
+		with_icu
 		with_psp_config
 		with_threads
 		with_distcc
@@ -319,6 +321,13 @@ detect_params() {
 			--with-libfontconfig)         with_fontconfig="2";;
 			--without-libfontconfig)      with_fontconfig="0";;
 			--with-libfontconfig=*)       with_fontconfig="$optarg";;
+
+			--with-icu)                   with_icu="2";;
+			--without-icu)                with_icu="0";;
+			--with-icu=*)                 with_icu="$optarg";;
+			--with-libicu)                with_icu="2";;
+			--without-libicu)             with_icu="0";;
+			--with-libicu=*)              with_icu="$optarg";;
 
 			--with-psp-config)            with_psp_config="2";;
 			--without-psp-config)         with_psp_config="0";;
@@ -604,6 +613,7 @@ check_params() {
 	detect_png
 	detect_freetype
 	detect_fontconfig
+	detect_icu
 	detect_pspconfig
 	detect_libtimidity
 
@@ -1226,6 +1236,14 @@ make_cflags_and_ldflags() {
 			LIBS="$LIBS `$freetype_config --libs | tr '\n\r' '  '`"
 		fi
 	fi
+
+	if [ -n "$icu_config" ]; then
+		CFLAGS="$CFLAGS -DWITH_ICU"
+		CFLAGS="$CFLAGS `$icu_config --cppflags | tr '\n\r' '  '`"
+
+		LIBS="$LIBS `$icu_config --ldflags-libsonly | tr '\n\r' '  '`"
+	fi
+
 
 	if [ "$with_direct_music" != "0" ]; then
 		CFLAGS="$CFLAGS -DWIN32_ENABLE_DIRECTMUSIC_SUPPORT"
@@ -2058,6 +2076,49 @@ detect_fontconfig() {
 	fi
 
 	log 1 "checking libfontconfig... found"
+}
+
+detect_icu() {
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$with_icu" = "0" ]; then
+		log 1 "checking libicu... disabled"
+
+		icu_config=""
+		return 0
+	fi
+
+	if [ "$with_icu" = "1" ] || [ "$with_icu" = "" ] || [ "$with_icu" = "2" ]; then
+		icu_config="icu-config"
+	else
+		icu_config="$with_icu"
+	fi
+
+	version=`$icu_config --version 2>/dev/null`
+	ret=$?
+	shortversion=`echo $version | cut -c 1,3`
+	log 2 "executing $icu_config --version"
+	log 2 "  returned $version"
+	log 2 "  exit code $ret"
+
+	if [ -z "$version" ] || [ "$ret" != "0" ] || [ "$shortversion" -lt "20" ]; then
+		if [ -n "$shortversion" ] && [ "$shortversion" -lt "20" ]; then
+			log 1 "checking libicu... needs at least version 2.0.0, icu NOT enabled"
+		else
+			log 1 "checking libicu... not found"
+		fi
+
+		# It was forced, so it should be found.
+		if [ "$with_icu" != "1" ]; then
+			log 1 "configure: error: icu-config couldn't be found"
+			log 1 "configure: error: you supplied '$with_icuconfig', but it seems invalid"
+			exit 1
+		fi
+
+		icu_config=""
+		return 0
+	fi
+
+	log 1 "checking libicu... found"
 }
 
 detect_pspconfig() {

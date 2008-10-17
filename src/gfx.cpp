@@ -51,6 +51,7 @@ DrawPixelInfo *_cur_dpi;
 byte _colour_gradient[COLOUR_END][8];
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, BlitterMode mode, const SubSprite *sub = NULL);
+static int ReallyDoDrawString(const char *string, int x, int y, uint16 real_colour, bool parse_string_also_when_clipped = false);
 
 FontSize _cur_fontsize;
 static FontSize _last_fontsize;
@@ -238,6 +239,74 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 }
 
 
+#if !defined(WITH_ICU)
+static void HandleBiDiAndArabicShapes(char *text, const char *lastof) {}
+#else
+#include "unicode/ubidi.h"
+#include "unicode/ushape.h"
+
+/**
+ * Function to be able to handle right-to-left text and Arabic chars properly.
+ *
+ * First: right-to-left (RTL) is stored 'logically' in almost all applications
+ *        and so do we. This means that their text is stored from right to the
+ *        left in memory and any non-RTL text (like numbers or English) are
+ *        then stored from left-to-right. When we want to actually draw the
+ *        text we need to reverse the RTL text in memory, which is what
+ *        happens in ubidi_writeReordered.
+ * Second: Arabic characters "differ" based on their context. To draw the
+ *        correct variant we pass it through u_shapeArabic. This function can
+ *        add or remove some characters. This is the reason for the lastof
+ *        so we know till where we can fill the output.
+ *
+ * Sadly enough these functions work with a custom character format, UChar,
+ * which isn't the same size as WChar. Because of that we need to transform
+ * our text first to UChars and then back to something we can use.
+ *
+ * To be able to truncate strings properly you must truncate before passing to
+ * this function. This way the logical begin of the string remains and the end
+ * gets chopped of instead of the other way around.
+ *
+ * The reshaping of Arabic characters might increase or decrease the width of
+ * the characters/string. So it might still overflow after truncation, though
+ * the chance is fairly slim as most characters get shorter instead of longer.
+ * @param buffer the buffer to read from/to
+ * @param lastof the end of the buffer
+ */
+static void HandleBiDiAndArabicShapes(char *buffer, const char *lastof)
+{
+	UChar input_output[DRAW_STRING_BUFFER];
+	UChar intermediate[DRAW_STRING_BUFFER];
+
+	char *t = buffer;
+	size_t length = 0;
+	while (*t != '\0' && length < lengthof(input_output)) {
+		WChar tmp;
+		t += Utf8Decode(&tmp, t);
+		input_output[length++] = tmp;
+	}
+	input_output[length] = 0;
+
+	UErrorCode err = U_ZERO_ERROR;
+	UBiDi *para = ubidi_openSized(length, 0, &err);
+	if (para == NULL) return;
+
+	ubidi_setPara(para, input_output, length, UBIDI_DEFAULT_RTL, NULL, &err);
+	ubidi_writeReordered(para, intermediate, length, 0, &err);
+	length = u_shapeArabic(intermediate, length, input_output, lengthof(input_output), U_SHAPE_TEXT_DIRECTION_VISUAL_LTR | U_SHAPE_LETTERS_SHAPE, &err);
+	ubidi_close(para);
+
+	if (U_FAILURE(err)) return;
+
+	t = buffer;
+	for (size_t i = 0; i < length && t < (lastof - 4); i++) {
+		t += Utf8Encode(t, input_output[i]);
+	}
+	*t = '\0';
+}
+#endif /* WITH_ICU */
+
+
 /** Truncate a given string to a maximum width if neccessary.
  * If the string is truncated, add three dots ('...') to show this.
  * @param *str string that is checked and possibly truncated
@@ -322,7 +391,8 @@ int DrawString(int x, int y, StringID str, uint16 color)
 	char buffer[DRAW_STRING_BUFFER];
 
 	GetString(buffer, str, lastof(buffer));
-	return DoDrawString(buffer, x, y, color);
+	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
+	return ReallyDoDrawString(buffer, x, y, color);
 }
 
 /**
@@ -340,7 +410,8 @@ int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	TruncateStringID(str, buffer, maxw, lastof(buffer));
-	return DoDrawString(buffer, x, y, color);
+	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
+	return ReallyDoDrawString(buffer, x, y, color);
 }
 
 /**
@@ -359,8 +430,10 @@ int DrawStringRightAligned(int x, int y, StringID str, uint16 color)
 	int w;
 
 	GetString(buffer, str, lastof(buffer));
+	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
+
 	w = GetStringBoundingBox(buffer).width;
-	DoDrawString(buffer, x - w, y, color);
+	ReallyDoDrawString(buffer, x - w, y, color);
 
 	return w;
 }
@@ -379,7 +452,8 @@ void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, u
 	char buffer[DRAW_STRING_BUFFER];
 
 	TruncateStringID(str, buffer, maxw, lastof(buffer));
-	DoDrawString(buffer, x - GetStringBoundingBox(buffer).width, y, color);
+	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
+	ReallyDoDrawString(buffer, x - GetStringBoundingBox(buffer).width, y, color);
 }
 
 /**
@@ -412,9 +486,10 @@ int DrawStringCentered(int x, int y, StringID str, uint16 color)
 	int w;
 
 	GetString(buffer, str, lastof(buffer));
+	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
 
 	w = GetStringBoundingBox(buffer).width;
-	DoDrawString(buffer, x - w / 2, y, color);
+	ReallyDoDrawString(buffer, x - w / 2, y, color);
 
 	return w;
 }
@@ -433,8 +508,11 @@ int DrawStringCentered(int x, int y, StringID str, uint16 color)
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 color)
 {
 	char buffer[DRAW_STRING_BUFFER];
-	int w = TruncateStringID(str, buffer, xr - xl, lastof(buffer));
-	return DoDrawString(buffer, (xl + xr - w) / 2, y, color);
+	TruncateStringID(str, buffer, xr - xl, lastof(buffer));
+	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
+
+	int w = GetStringBoundingBox(buffer).width;
+	return ReallyDoDrawString(buffer, (xl + xr - w) / 2, y, color);
 }
 
 /**
@@ -449,8 +527,12 @@ int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 colo
  */
 int DoDrawStringCentered(int x, int y, const char *str, uint16 color)
 {
-	int w = GetStringBoundingBox(str).width;
-	DoDrawString(str, x - w / 2, y, color);
+	char buffer[DRAW_STRING_BUFFER];
+	strecpy(buffer, str, lastof(buffer));
+	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
+
+	int w = GetStringBoundingBox(buffer).width;
+	ReallyDoDrawString(buffer, x - w / 2, y, color);
 	return w;
 }
 
@@ -613,7 +695,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 {
 	char buffer[DRAW_STRING_BUFFER];
 	uint32 tmp;
-	int num, w, mt;
+	int num, mt;
 	const char *src;
 	WChar c;
 
@@ -629,8 +711,11 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 	src = buffer;
 
 	for (;;) {
-		w = GetStringBoundingBox(src).width;
-		DoDrawString(src, x - (w >> 1), y, 0xFE, true);
+		char buf2[DRAW_STRING_BUFFER];
+		strecpy(buf2, src, lastof(buf2));
+		HandleBiDiAndArabicShapes(buf2, lastof(buf2));
+		int w = GetStringBoundingBox(buf2).width;
+		ReallyDoDrawString(buf2, x - (w >> 1), y, 0xFE, true);
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
@@ -680,7 +765,10 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw, int maxh)
 	src = buffer;
 
 	for (;;) {
-		DoDrawString(src, x, y, 0xFE, true);
+		char buf2[DRAW_STRING_BUFFER];
+		strecpy(buf2, src, lastof(buf2));
+		HandleBiDiAndArabicShapes(buf2, lastof(buf2));
+		ReallyDoDrawString(buf2, x, y, 0xFE, true);
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
@@ -767,7 +855,7 @@ void DrawCharCentered(WChar c, int x, int y, uint16 real_color)
 /** Draw a string at the given coordinates with the given colour.
  *  While drawing the string, parse it in case some formatting is specified,
  *  like new colour, new size or even positionning.
- * @param string              The string to draw
+ * @param string              The string to draw. This is not yet bidi reordered.
  * @param x                   Offset from left side of the screen
  * @param y                   Offset from top side of the screen
  * @param real_colour         Colour of the string, see _string_colormap in
@@ -782,6 +870,32 @@ void DrawCharCentered(WChar c, int x, int y, uint16 real_color)
  *                            If nothing is drawn, the originally passed x-coordinate is returned
  */
 int DoDrawString(const char *string, int x, int y, uint16 real_colour, bool parse_string_also_when_clipped)
+{
+	char buffer[DRAW_STRING_BUFFER];
+	strecpy(buffer, string, lastof(buffer));
+	HandleBiDiAndArabicShapes(buffer, lastof(buffer));
+
+	return ReallyDoDrawString(buffer, x, y, real_colour, parse_string_also_when_clipped);
+}
+
+/** Draw a string at the given coordinates with the given colour.
+ *  While drawing the string, parse it in case some formatting is specified,
+ *  like new colour, new size or even positionning.
+ * @param string              The string to draw. This is already bidi reordered.
+ * @param x                   Offset from left side of the screen
+ * @param y                   Offset from top side of the screen
+ * @param real_colour         Colour of the string, see _string_colormap in
+ *                            table/palettes.h or docs/ottd-colourtext-palette.png or the enum TextColour in gfx_type.h
+ * @param parse_string_also_when_clipped
+ *                            By default, always test the available space where to draw the string.
+ *                            When in multipline drawing, it would already be done,
+ *                            so no need to re-perform the same kind (more or less) of verifications.
+ *                            It's not only an optimisation, it's also a way to ensures the string will be parsed
+ *                            (as there are certain side effects on global variables, which are important for the next line)
+ * @return                    the x-coordinates where the drawing has finished.
+ *                            If nothing is drawn, the originally passed x-coordinate is returned
+ */
+static int ReallyDoDrawString(const char *string, int x, int y, uint16 real_colour, bool parse_string_also_when_clipped)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	FontSize size = _cur_fontsize;
