@@ -2918,6 +2918,15 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		}
 	}
 
+	/* Save the current train order. The destructor will restore the old order on function exit. */
+	VehicleOrderSaver orders(v);
+
+	/* If the current tile is the destination of the current order and
+	* a reservation was requested, advance to the next order. */
+	if (v->tile == v->dest_tile || (v->current_order.IsType(OT_GOTO_STATION) && IsRailwayStationTile(v->tile) && v->current_order.GetDestination() == GetStationIndex(v->tile))) {
+		orders.SwitchToNextOrder();
+	}
+
 	if (res_dest.tile != INVALID_TILE && !res_dest.okay) {
 		/* Pathfinders are able to tell that route was only 'guessed'. */
 		bool      path_not_found = false;
@@ -2981,8 +2990,6 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 
 	if (got_reservation != NULL) *got_reservation = true;
 
-	/* Save the current train order. The destructor will restore the old order on function exit. */
-	VehicleOrderSaver orders(v);
 	/* Reservation target found and free, check if it is safe. */
 	while (!IsSafeWaitingPosition(v, res_dest.tile, res_dest.trackdir, true, _settings_game.pf.forbid_90_deg)) {
 		/* Extend reservation until we have found a safe position. */
