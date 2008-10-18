@@ -114,7 +114,7 @@ static void SelectSongToPlay()
 	do {
 		/* We are now checking for the existence of that file prior
 		 * to add it to the list of available songs */
-		if (FioCheckFileExists(origin_songs_specs[_playlists[msf.playlist][i]].filename, GM_DIR)) {
+		if (FioCheckFileExists(origin_songs_specs[_playlists[msf.playlist][i] - 1].filename, GM_DIR)) {
 			_cur_playlist[j] = _playlists[msf.playlist][i];
 			j++;
 		}
