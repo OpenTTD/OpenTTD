@@ -167,7 +167,7 @@ static void NewIndustryTileResolver(ResolverObject *res, IndustryGfx gfx, TileIn
 	res->grffile         = (its != NULL ? its->grf_prop.grffile : NULL);
 }
 
-void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte rnd_color, byte stage, IndustryGfx gfx)
+static void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte rnd_color, byte stage, IndustryGfx gfx)
 {
 	const DrawTileSprites *dts = group->g.layout.dts;
 	const DrawTileSeqStruct *dtss;
@@ -198,7 +198,7 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 
 		if (IS_CUSTOM_SPRITE(image)) image += stage;
 
-		if (HasBit(image, PALETTE_MODIFIER_COLOR)) {
+		if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
 			if (pal == 0) {
 				pal = GENERAL_SPRITE_COLOR(rnd_color);
 			}
@@ -215,7 +215,8 @@ void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte r
 				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_INDUSTRIES)
 			);
 		} else {
-			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, IsTransparencySet(TO_INDUSTRIES));
+			/* For industries and houses delta_x and delta_y are unsigned */
+			AddChildSpriteScreen(image, pal, (byte)dtss->delta_x, (byte)dtss->delta_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_INDUSTRIES));
 		}
 	}
 }

@@ -2344,7 +2344,8 @@ static void DrawTile_Station(TileInfo *ti)
 				!HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS)
 			);
 		} else {
-			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, IsTransparencySet(TO_BUILDINGS));
+			/* For stations and original spritelayouts delta_x and delta_y are signed */
+			AddChildSpriteScreen(image, pal, dtss->delta_x, dtss->delta_y, !HasBit(image, SPRITE_MODIFIER_OPAQUE) && IsTransparencySet(TO_BUILDINGS));
 		}
 	}
 }
