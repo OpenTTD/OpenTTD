@@ -35,7 +35,7 @@ void SetRandomSeed(uint32 seed)
 }
 
 #ifdef RANDOM_DEBUG
-#include "../network/network_data.h"
+#include "../network/network_internal.h"
 #include "../variables.h" /* _frame_counter */
 #include "../company_func.h"
 

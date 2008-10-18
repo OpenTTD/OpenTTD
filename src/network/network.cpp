@@ -38,6 +38,7 @@
 #include "../rev.h"
 #ifdef DEBUG_DUMP_COMMANDS
 	#include "../core/alloc_func.hpp"
+	#include "../fileio_func.h"
 #endif /* DEBUG_DUMP_COMMANDS */
 #include "table/strings.h"
 #include "../company_base.h"
