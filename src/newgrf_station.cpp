@@ -27,6 +27,7 @@
 #include "functions.h"
 #include "tunnelbridge_map.h"
 #include "rail_map.h"
+#include "spritecache.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -811,8 +812,9 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	DrawSprite(image, PAL_NONE, x, y);
 
+	Point child_offset = {0, 0};
+
 	foreach_draw_tile_seq(seq, sprites->seq) {
-		Point pt;
 		image = seq->image.sprite;
 		if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += rti->total_offset;
@@ -832,8 +834,15 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 		}
 
 		if ((byte)seq->delta_z != 0x80) {
-			pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
+			Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
 			DrawSprite(image, pal, x + pt.x, y + pt.y);
+
+			const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
+			child_offset.x = pt.x + spr->x_offs;
+			child_offset.y = pt.y + spr->y_offs;
+		} else {
+			/* For stations and original spritelayouts delta_x and delta_y are signed */
+			DrawSprite(image, pal, x + child_offset.x + seq->delta_x, y + child_offset.y + seq->delta_y);
 		}
 	}
 
