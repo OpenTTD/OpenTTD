@@ -2809,49 +2809,66 @@ static bool TryReserveSafeTrack(const Vehicle* v, TileIndex tile, Trackdir td, b
 	}
 }
 
-/**
- * Query the next order after a certain order index.
- *
- * @param v The vehicle
- * @param order_index [in/out] Index of the current order, returns index of the chosen order
- * @return Pointer to the order or NULL if the order chain was completely followed
- *          without finding a suitable order.
- */
-static const Order* GetNextTrainOrder(const Vehicle *v, VehicleOrderID *order_index)
+/** This class will save the current order of a vehicle and restore it on destruction. */
+class VehicleOrderSaver
 {
-	++(*order_index);
+private:
+	Vehicle        *v;
+	Order          old_order;
+	TileIndex      old_dest_tile;
+	VehicleOrderID index;
 
-	do {
-		/* Wrap around. */
-		if (*order_index >= v->num_orders) *order_index = 0;
+public:
+	VehicleOrderSaver(Vehicle *_v) : v(_v), old_order(_v->current_order), old_dest_tile(_v->dest_tile), index(_v->cur_order_index)
+	{
+	}
 
-		Order *order = GetVehicleOrder(v, *order_index);
-		assert(order != NULL);
+	~VehicleOrderSaver()
+	{
+		this->v->current_order = this->old_order;
+		this->v->dest_tile = this->old_dest_tile;
+	}
 
-		switch (order->GetType()) {
-			case OT_GOTO_DEPOT:
-				/* Skip service in depot orders when the train doesn't need service. */
-				if ((order->GetDepotOrderType() & ODTFB_SERVICE) && !v->NeedsServicing()) break;
-			case OT_GOTO_STATION:
-			case OT_GOTO_WAYPOINT:
-				return order;
-			case OT_CONDITIONAL: {
-				VehicleOrderID next = ProcessConditionalOrder(order, v);
-				if (next != INVALID_VEH_ORDER_ID) {
-					*order_index = next;
-					continue;
+	/**
+	 * Set the current vehicle order to the next order in the order list.
+	 * @return True if a suitable next order could be found.
+	 */
+	bool SwitchToNextOrder()
+	{
+		++this->index;
+
+		do {
+			/* Wrap around. */
+			if (this->index >= this->v->num_orders) this->index = 0;
+
+			Order *order = GetVehicleOrder(this->v, this->index);
+			assert(order != NULL);
+
+			switch (order->GetType()) {
+				case OT_GOTO_DEPOT:
+					/* Skip service in depot orders when the train doesn't need service. */
+					if ((order->GetDepotOrderType() & ODTFB_SERVICE) && !this->v->NeedsServicing()) break;
+				case OT_GOTO_STATION:
+				case OT_GOTO_WAYPOINT:
+					this->v->current_order = *order;
+					UpdateOrderDest(this->v, order);
+					return true;
+				case OT_CONDITIONAL: {
+					VehicleOrderID next = ProcessConditionalOrder(order, this->v);
+					if (next != INVALID_VEH_ORDER_ID) {
+						this->index = next;
+						continue;
+					}
+					break;
 				}
-				break;
+				default:
+					break;
 			}
-			default:
-				break;
-		}
+		} while (++this->index != this->v->cur_order_index);
 
-		++(*order_index);
-	} while (*order_index != v->cur_order_index);
-
-	return NULL;
-}
+		return false;
+	}
+};
 
 /* choose a track */
 static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck)
@@ -2964,10 +2981,9 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 
 	if (got_reservation != NULL) *got_reservation = true;
 
+	/* Save the current train order. The destructor will restore the old order on function exit. */
+	VehicleOrderSaver orders(v);
 	/* Reservation target found and free, check if it is safe. */
-	Order          cur_order = v->current_order;
-	TileIndex      cur_dest_tile = v->dest_tile;
-	VehicleOrderID order_index = v->cur_order_index;
 	while (!IsSafeWaitingPosition(v, res_dest.tile, res_dest.trackdir, true, _settings_game.pf.forbid_90_deg)) {
 		/* Extend reservation until we have found a safe position. */
 		DiagDirection exitdir = TrackdirToExitdir(res_dest.trackdir);
@@ -2978,10 +2994,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		}
 
 		/* Get next order with destination. */
-		const Order *order = GetNextTrainOrder(v, &order_index);
-		if (order != NULL) {
-			v->current_order = *order;
-			UpdateOrderDest(v, order);
+		if (orders.SwitchToNextOrder()) {
 			PBSTileInfo cur_dest;
 			DoTrainPathfind(v, next_tile, exitdir, reachable, NULL, true, &cur_dest);
 			if (cur_dest.tile != INVALID_TILE) {
@@ -3004,8 +3017,6 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		}
 		break;
 	}
-	v->current_order = cur_order;
-	v->dest_tile = cur_dest_tile;
 
 	TryReserveRailTrack(v->tile, TrackdirToTrack(GetVehicleTrackdir(v)));
 
