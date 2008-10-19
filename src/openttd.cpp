@@ -1507,7 +1507,8 @@ bool AfterLoadGame()
 			case MP_STATION: {
 				Station *st = GetStationByTile(t);
 
-				st->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
+				/* Set up station spread; buoys do not have one */
+				if (!IsBuoy(t)) st->rect.BeforeAddTile(t, StationRect::ADD_FORCE);
 
 				switch (GetStationType(t)) {
 					case STATION_TRUCK:
