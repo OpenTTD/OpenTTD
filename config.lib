@@ -610,6 +610,16 @@ check_params() {
 	fi
 
 	detect_zlib
+
+	if [ "$with_zlib" = "0" ] || [ -z "$zlib" ]; then
+		log 1 "WARNING: zlib was not detected or disabled"
+		log 1 "WARNING: OpenTTD doesn't require zlib, but it does mean many features (like"
+		log 1 "WARNING: loading most savegames/scenarios, joining most servers, loading"
+		log 1 "WARNING: heightmaps, using PNG or using fonts, ...) will be disabled."
+		log 1 "WARNING: We strongly suggest you to install zlib."
+		sleep 5
+	fi
+
 	detect_png
 	detect_freetype
 	detect_fontconfig
@@ -1950,10 +1960,19 @@ detect_png() {
 		return 0
 	fi
 
-	if [ "$with_zlib" = "0" ] || [ "$zlib" = "" ]; then
-		log 1 "configure: error: libpng depends on zlib, which couldn't be found / was disabled"
-		log 1 "configure: error: please supply --with-zlib, with a valid zlib location"
-		exit 1
+	if [ "$with_zlib" = "0" ] || [ -z "$zlib" ]; then
+		if [ "$with_png" != "1" ]; then
+			log 1 "checking libpng... no zlib"
+			log 1 "ERROR: libpng was forced, but zlib was not detected / disabled."
+			log 1 "ERROR: libpng depends on zlib."
+
+			exit 1
+		fi
+
+		log 1 "checking libpng... no zlib, skipping"
+
+		png_config=""
+		return 0
 	fi
 
 	if [ "$with_png" = "1" ] || [ "$with_png" = "" ] || [ "$with_png" = "2" ]; then
@@ -2000,10 +2019,19 @@ detect_freetype() {
 		return 0
 	fi
 
-	if [ "$with_zlib" = "0" ] || [ "$zlib" = "" ]; then
-		log 1 "configure: error: libfreetype depends on zlib, which couldn't be found / was disabled"
-		log 1 "configure: error: please supply --with-zlib, with a valid zlib location"
-		exit 1
+	if [ "$with_zlib" = "0" ] || [ -z "$zlib" ]; then
+		if [ "$with_freetype" != "1" ]; then
+			log 1 "checking libfreetype... no zlib"
+			log 1 "ERROR: libfreetype was forced, but zlib was not detected / disabled."
+			log 1 "ERROR: libfreetype depends on zlib."
+
+			exit 1
+		fi
+
+		log 1 "checking libfreetype... no zlib, skipping"
+
+		freetype_config=""
+		return 0
 	fi
 
 	if [ "$with_freetype" = "1" ] || [ "$with_freetype" = "" ] || [ "$with_freetype" = "2" ]; then
