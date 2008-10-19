@@ -2077,6 +2077,12 @@ detect_fontconfig() {
 		fontconfig_config=""
 		return 0
 	fi
+	if [ "$with_fontconfig" != "2" ] && [ -z "$freetype_config" ]; then
+		log 1 "checking libfontconfig... no freetype, skipping"
+
+		fontconfig_config=""
+		return 0
+	fi
 
 	if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
 		log 1 "checking libfontconfig... WIN32, skipping"
