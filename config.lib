@@ -563,7 +563,7 @@ check_params() {
 	detect_cocoa
 
 	if [ "$enable_dedicated" != "0" ]; then
-		log 1 "checking GDI video driver... skipping"
+		log 1 "checking GDI video driver... dedicated server, skipping"
 		log 1 "checking dedicated... found"
 
 		if [ "$enable_network" = "0" ]; then
@@ -1750,7 +1750,7 @@ detect_sdl() {
 	fi
 
 	if [ "$enable_dedicated" != "0" ]; then
-		log 1 "checking SDL... skipping"
+		log 1 "checking SDL... dedicated server, skipping"
 
 		sdl_config=""
 		return 0
@@ -1808,7 +1808,7 @@ detect_cocoa() {
 	fi
 
 	if [ "$enable_dedicated" != "0" ]; then
-		log 1 "checking COCOA... skipping"
+		log 1 "checking COCOA... dedicated server, skipping"
 
 		with_cocoa="0"
 		return 0
@@ -1993,6 +1993,12 @@ detect_freetype() {
 		freetype_config=""
 		return 0
 	fi
+	if [ "$with_freetype" = "1" ] && [ "$enable_dedicated" != "0" ]; then
+		log 1 "checking libfreetype... dedicated server, skipping"
+
+		freetype_config=""
+		return 0
+	fi
 
 	if [ "$with_zlib" = "0" ] || [ "$zlib" = "" ]; then
 		log 1 "configure: error: libfreetype depends on zlib, which couldn't be found / was disabled"
@@ -2033,6 +2039,12 @@ detect_fontconfig() {
 	# 0 means no, 1 is auto-detect, 2 is force
 	if [ "$with_fontconfig" = "0" ]; then
 		log 1 "checking libfontconfig... disabled"
+
+		fontconfig_config=""
+		return 0
+	fi
+	if [ "$with_fontconfig" = "1" ] && [ "$enable_dedicated" != "0" ]; then
+		log 1 "checking libfontconfig... dedicated server, skipping"
 
 		fontconfig_config=""
 		return 0
@@ -2082,6 +2094,12 @@ detect_icu() {
 	# 0 means no, 1 is auto-detect, 2 is force
 	if [ "$with_icu" = "0" ]; then
 		log 1 "checking libicu... disabled"
+
+		icu_config=""
+		return 0
+	fi
+	if [ "$with_icu" = "1" ] && [ "$enable_dedicated" != "0" ]; then
+		log 1 "checking libicu... dedicated server, skipping"
 
 		icu_config=""
 		return 0
