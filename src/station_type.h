@@ -14,6 +14,7 @@ struct StationSpec;
 
 static const StationID INVALID_STATION = 0xFFFF;
 
+/** Station types */
 enum StationType {
 	STATION_RAIL,
 	STATION_AIRPORT,

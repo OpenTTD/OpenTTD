@@ -1779,7 +1779,10 @@ void MarkSingleVehicleDirty(const Vehicle *v)
 	MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
 }
 
-/* returns true if staying in the same tile */
+/**
+ * Get position information of a vehicle when moving one pixel in the direction it is facing
+ * @param v Vehicle to move
+ * @return Position information after the move */
 GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v)
 {
 	static const int8 _delta_coord[16] = {
@@ -1870,7 +1873,12 @@ Trackdir GetVehicleTrackdir(const Vehicle *v)
 }
 
 /**
- * Returns some meta-data over the to be entered tile.
+ * Call the tile callback function for a vehicle entering a tile
+ * @param v    Vehicle entering the tile
+ * @param tile Tile entered
+ * @param x    X position
+ * @param y    Y position
+ * @return Some meta-data over the to be entered tile.
  * @see VehicleEnterTileStatus to see what the bits in the return value mean.
  */
 uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)

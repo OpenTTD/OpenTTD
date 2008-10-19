@@ -224,6 +224,7 @@ static uint GetSlopeZ_Town(TileIndex tile, uint x, uint y)
 	return GetTileMaxZ(tile);
 }
 
+/** Tile callback routine */
 static Foundation GetFoundation_Town(TileIndex tile, Slope tileh)
 {
 	return FlatteningFoundation(tileh);
@@ -399,7 +400,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 	MarkTileDirtyByTile(tile);
 }
 
-/** Make the house advances in its construction stages until completion
+/** Make the house advance in its construction stages until completion
  * @param tile TileIndex of house
  */
 static void MakeTownHouseBigger(TileIndex tile)
@@ -412,6 +413,8 @@ static void MakeTownHouseBigger(TileIndex tile)
 }
 
 /**
+ * Tile callback function.
+ *
  * Periodic tic handler for houses and town
  * @param tile been asked to do its stuff
  */
@@ -507,7 +510,7 @@ static void TileLoop_Town(TileIndex tile)
 }
 
 /**
- * Unused handler
+ * Dummy tile callback function for handling tile clicks in towns
  * @param tile unused
  */
 static void ClickTile_Town(TileIndex tile)
@@ -2002,7 +2005,12 @@ static bool BuildTownHouse(Town *t, TileIndex tile)
 	return false;
 }
 
-
+/**
+ * Update data structures when a house is removed
+ * @param tile  Tile of the house
+ * @param t     Town owning the house
+ * @param house House type
+ */
 static void DoClearTownHouseHelper(TileIndex tile, Town *t, HouseID house)
 {
 	assert(IsTileType(tile, MP_HOUSE));
@@ -2601,6 +2609,7 @@ static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 
+/** Tile callback functions for a town */
 extern const TileTypeProcs _tile_type_town_procs = {
 	DrawTile_Town,           // draw_tile_proc
 	GetSlopeZ_Town,          // get_slope_z_proc

@@ -2,6 +2,8 @@
 
 /** @file landscape.cpp Functions related to the landscape (slopes etc.). */
 
+/** @defgroup SnowLineGroup Snowline functions and data structures */
+
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
@@ -44,18 +46,21 @@ extern const TileTypeProcs
 	_tile_type_tunnelbridge_procs,
 	_tile_type_unmovable_procs;
 
+/** Tile callback functions for each type of tile.
+ * @ingroup TileCallbackGroup
+ * @see TileType */
 const TileTypeProcs * const _tile_type_procs[16] = {
-	&_tile_type_clear_procs,
-	&_tile_type_rail_procs,
-	&_tile_type_road_procs,
-	&_tile_type_town_procs,
-	&_tile_type_trees_procs,
-	&_tile_type_station_procs,
-	&_tile_type_water_procs,
-	&_tile_type_dummy_procs,
-	&_tile_type_industry_procs,
-	&_tile_type_tunnelbridge_procs,
-	&_tile_type_unmovable_procs,
+	&_tile_type_clear_procs,        ///< Callback functions for MP_CLEAR tiles
+	&_tile_type_rail_procs,         ///< Callback functions for MP_RAILWAY tiles
+	&_tile_type_road_procs,         ///< Callback functions for MP_ROAD tiles
+	&_tile_type_town_procs,         ///< Callback functions for MP_HOUSE tiles
+	&_tile_type_trees_procs,        ///< Callback functions for MP_TREES tiles
+	&_tile_type_station_procs,      ///< Callback functions for MP_STATION tiles
+	&_tile_type_water_procs,        ///< Callback functions for MP_WATER tiles
+	&_tile_type_dummy_procs,        ///< Callback functions for MP_VOID tiles
+	&_tile_type_industry_procs,     ///< Callback functions for MP_INDUSTRY tiles
+	&_tile_type_tunnelbridge_procs, ///< Callback functions for MP_TUNNELBRIDGE tiles
+	&_tile_type_unmovable_procs,    ///< Callback functions for MP_UNMOVABLE tiles
 };
 
 /* landscape slope => sprite */
@@ -64,6 +69,13 @@ const byte _tileh_to_sprite[32] = {
 	0, 0, 0, 0, 0, 0, 0, 16, 0, 0,  0, 17,  0, 15, 18, 0,
 };
 
+/**
+ * Description of the snow line throughout the year.
+ *
+ * If it is \c NULL, a static snowline height is used, as set by \c _settings_game.game_creation.snow_line.
+ * Otherwise it points to a table loaded from a newGRF file, that describes the variable snowline
+ * @ingroup SnowLineGroup
+ * @see GetSnowLine() GameCreationSettings */
 SnowLine *_snow_line = NULL;
 
 /**
@@ -360,7 +372,11 @@ static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 	return (z_N_here > z_N) || (z_E_here > z_E);
 }
 
-
+/**
+ * Draw foundation \a f at tile \a ti. Updates \a ti.
+ * @param ti Tile to draw foundation on
+ * @param f  Foundation to draw
+ */
 void DrawFoundation(TileInfo *ti, Foundation f)
 {
 	if (!IsFoundation(f)) return;
@@ -508,6 +524,7 @@ void GetTileDesc(TileIndex tile, TileDesc *td)
 /**
  * Has a snow line table already been loaded.
  * @return true if the table has been loaded already.
+ * @ingroup SnowLineGroup
  */
 bool IsSnowLineSet(void)
 {
@@ -517,6 +534,7 @@ bool IsSnowLineSet(void)
 /**
  * Set a variable snow line, as loaded from a newgrf file.
  * @param table the 12 * 32 byte table containing the snowline for each day
+ * @ingroup SnowLineGroup
  */
 void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
 {
@@ -533,6 +551,7 @@ void SetSnowLine(byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS])
 /**
  * Get the current snow line, either variable or static.
  * @return the snow line height.
+ * @ingroup SnowLineGroup
  */
 byte GetSnowLine(void)
 {
@@ -546,6 +565,7 @@ byte GetSnowLine(void)
 /**
  * Get the highest possible snow line height, either variable or static.
  * @return the highest snow line height.
+ * @ingroup SnowLineGroup
  */
 byte HighestSnowLine(void)
 {
@@ -554,6 +574,7 @@ byte HighestSnowLine(void)
 
 /**
  * Clear the variable snow line table and free the memory.
+ * @ingroup SnowLineGroup
  */
 void ClearSnowLine(void)
 {

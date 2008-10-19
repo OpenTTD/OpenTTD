@@ -43,7 +43,10 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-
+/**
+ * Verify whether a road vehicle is available.
+ * @return \c true if at least one road vehicle is available, \c false if not
+ */
 bool RoadVehiclesAreBuilt()
 {
 	const Vehicle* v;
@@ -1156,6 +1159,7 @@ static void DrawRoadBits(TileInfo *ti)
 	}
 }
 
+/** Tile callback function for rendering a road tile to the screen */
 static void DrawTile_Road(TileInfo *ti)
 {
 	switch (GetRoadTileType(ti->tile)) {
@@ -1630,20 +1634,20 @@ static CommandCost TerraformTile_Road(TileIndex tile, uint32 flags, uint z_new, 
 	return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 }
 
-
+/** Tile callback functions for road tiles */
 extern const TileTypeProcs _tile_type_road_procs = {
-	DrawTile_Road,           /* draw_tile_proc */
-	GetSlopeZ_Road,          /* get_slope_z_proc */
-	ClearTile_Road,          /* clear_tile_proc */
-	GetAcceptedCargo_Road,   /* get_accepted_cargo_proc */
-	GetTileDesc_Road,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Road, /* get_tile_track_status_proc */
-	ClickTile_Road,          /* click_tile_proc */
-	AnimateTile_Road,        /* animate_tile_proc */
-	TileLoop_Road,           /* tile_loop_clear */
-	ChangeTileOwner_Road,    /* change_tile_owner_clear */
-	NULL,                    /* get_produced_cargo_proc */
-	VehicleEnter_Road,       /* vehicle_enter_tile_proc */
-	GetFoundation_Road,      /* get_foundation_proc */
-	TerraformTile_Road,      /* terraform_tile_proc */
+	DrawTile_Road,           // draw_tile_proc
+	GetSlopeZ_Road,          // get_slope_z_proc
+	ClearTile_Road,          // clear_tile_proc
+	GetAcceptedCargo_Road,   // get_accepted_cargo_proc
+	GetTileDesc_Road,        // get_tile_desc_proc
+	GetTileTrackStatus_Road, // get_tile_track_status_proc
+	ClickTile_Road,          // click_tile_proc
+	AnimateTile_Road,        // animate_tile_proc
+	TileLoop_Road,           // tile_loop_clear
+	ChangeTileOwner_Road,    // change_tile_owner_clear
+	NULL,                    // get_produced_cargo_proc
+	VehicleEnter_Road,       // vehicle_enter_tile_proc
+	GetFoundation_Road,      // get_foundation_proc
+	TerraformTile_Road,      // terraform_tile_proc
 };

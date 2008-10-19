@@ -75,14 +75,13 @@ bool CanBuildVehicleInfrastructure(VehicleType type);
 
 void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
-
+/** Position information of a vehicle after it moved */
 struct GetNewVehiclePosResult {
-	int x, y;
-	TileIndex old_tile;
-	TileIndex new_tile;
+	int x, y;  ///< x and y position of the vehicle after moving
+	TileIndex old_tile; ///< Current tile of the vehicle
+	TileIndex new_tile; ///< Tile of the vehicle after moving
 };
 
-/* returns true if staying in the same tile */
 GetNewVehiclePosResult GetNewVehiclePos(const Vehicle *v);
 Direction GetDirectionTowards(const Vehicle *v, int x, int y);
 

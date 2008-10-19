@@ -14,6 +14,10 @@
 
 typedef byte StationGfx;
 
+/** Get Station ID from a tile
+ * @pre Tile \t must be part of the station
+ * @param t Tile to query station ID from
+ * @return Station ID of the station at \a t */
 static inline StationID GetStationIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
@@ -97,16 +101,29 @@ static inline bool IsAirport(TileIndex t)
 
 bool IsHangar(TileIndex t);
 
+/**
+ * Is the station at \a t a truck stop?
+ * @param t Tile to check
+ * @return \c true if station is a truck stop, \c false otherwise */
 static inline bool IsTruckStop(TileIndex t)
 {
 	return GetStationType(t) == STATION_TRUCK;
 }
 
+/**
+ * Is the station at \a t a bus stop?
+ * @param t Tile to check
+ * @return \c true if station is a bus stop, \c false otherwise */
 static inline bool IsBusStop(TileIndex t)
 {
 	return GetStationType(t) == STATION_BUS;
 }
 
+/**
+ * Is the station at \a t a road station?
+ * @pre Tile at \a t is a station tile
+ * @param t Tile to check
+ * @return \c true if station at the tile is a bus top or a truck stop, \c false otherwise */
 static inline bool IsRoadStop(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));

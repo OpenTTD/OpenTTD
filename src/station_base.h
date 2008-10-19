@@ -107,6 +107,7 @@ struct StationRect : public Rect {
 	StationRect& operator = (Rect src);
 };
 
+/** Station data structure */
 struct Station : PoolItem<Station, StationID, &_Station_pool> {
 public:
 	RoadStop *GetPrimaryRoadStop(RoadStopType type) const
@@ -150,13 +151,13 @@ public:
 	uint8 num_specs;
 	StationSpecList *speclist;
 
-	Date build_date;
+	Date build_date;  ///< Date of construction
 
 	uint64 airport_flags;   ///< stores which blocks on the airport are taken. was 16 bit earlier on, then 32
 
 	byte last_vehicle_type;
 	std::list<Vehicle *> loading_vehicles;
-	GoodsEntry goods[NUM_CARGO];
+	GoodsEntry goods[NUM_CARGO];  ///< Goods at this station
 
 	uint16 random_bits;
 	byte waiting_triggers;

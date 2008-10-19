@@ -321,6 +321,15 @@ bool StationRect::BeforeAddRect(TileIndex tile, int w, int h, StationRectMode mo
 			BeforeAddTile(tile, mode) && BeforeAddTile(TILE_ADDXY(tile, w - 1, h - 1), mode);
 }
 
+/**
+ * Check whether station tiles of the given station id exist in the given rectangle
+ * @param st_id    Station ID to look for in the rectangle
+ * @param left_a   Minimal tile X edge of the rectangle
+ * @param top_a    Minimal tile Y edge of the rectangle
+ * @param right_a  Maximal tile X edge of the rectangle (inclusive)
+ * @param bottom_a Maximal tile Y edge of the rectangle (inclusive)
+ * @return \c true if a station tile with the given \a st_id exists in the rectangle, \c false otherwise
+ */
 /*static*/ bool StationRect::ScanForStationTiles(StationID st_id, int left_a, int top_a, int right_a, int bottom_a)
 {
 	TileIndex top_left = TileXY(left_a, top_a);

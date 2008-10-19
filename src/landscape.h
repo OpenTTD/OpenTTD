@@ -11,13 +11,15 @@
 #include "direction_type.h"
 
 enum {
-	SNOW_LINE_MONTHS = 12,
-	SNOW_LINE_DAYS   = 32,
+	SNOW_LINE_MONTHS = 12, ///< Number of months in the snow line table.
+	SNOW_LINE_DAYS   = 32, ///< Number of days in each month in the snow line table.
 };
 
+/** Structure describing the height of the snow line each day of the year
+ * @ingroup SnowLineGroup */
 struct SnowLine {
-	byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS];
-	byte highest_value;
+	byte table[SNOW_LINE_MONTHS][SNOW_LINE_DAYS]; ///< Height of the snow line each day of the year
+	byte highest_value; ///< Highest snow line of the year
 };
 
 bool IsSnowLineSet(void);

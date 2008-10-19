@@ -7,6 +7,11 @@
 #include "tile_map.h"
 #include "core/math_func.hpp"
 
+/**
+ * Return the slope of a given tile
+ * @param tile Tile to compute slope of
+ * @param h    If not \c NULL, pointer to storage of z height
+ * @return Slope of the tile, except for the HALFTILE part */
 Slope GetTileSlope(TileIndex tile, uint *h)
 {
 	uint a;
@@ -42,6 +47,10 @@ Slope GetTileSlope(TileIndex tile, uint *h)
 	return (Slope)r;
 }
 
+/**
+ * Get bottom height of the tile
+ * @param tile Tile to compute height of
+ * @return Minimum height of the tile */
 uint GetTileZ(TileIndex tile)
 {
 	if (TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) return 0;
@@ -54,7 +63,10 @@ uint GetTileZ(TileIndex tile)
 	return h * TILE_HEIGHT;
 }
 
-
+/**
+ * Get top height of the tile
+ * @param tile Tile to compute height of
+ * @return Maximum height of the tile */
 uint GetTileMaxZ(TileIndex t)
 {
 	if (TileX(t) == MapMaxX() || TileY(t) == MapMaxY()) return 0;

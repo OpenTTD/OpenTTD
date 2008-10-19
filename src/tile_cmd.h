@@ -39,34 +39,53 @@ enum VehicleEnterTileStatus {
 };
 DECLARE_ENUM_AS_BIT_SET(VehicleEnterTileStatus);
 
+/** Tile information, used while rendering the tile */
 struct TileInfo {
-	uint x;
-	uint y;
-	Slope tileh;
-	TileIndex tile;
-	uint z;
+	uint x;         ///< X position of the tile in unit coordinates
+	uint y;         ///< Y position of the tile in unit coordinates
+	Slope tileh;    ///< Slope of the tile
+	TileIndex tile; ///< Tile index
+	uint z;         ///< Height
 };
 
+/** Tile description for the 'land area information' tool */
 struct TileDesc {
-	StringID str;
-	Owner owner[4];
-	StringID owner_type[4];
-	Date build_date;
-	StringID station_class;
-	StringID station_name;
-	const char *grf;
-	uint64 dparam[2];
+	StringID str;           ///< Description of the tile
+	Owner owner[4];         ///< Name of the owner(s)
+	StringID owner_type[4]; ///< Type of each owner
+	Date build_date;        ///< Date of construction of tile contents
+	StringID station_class; ///< Class of station
+	StringID station_name;  ///< Type of station within the class
+	const char *grf;        ///< newGRF used for the tile contents
+	uint64 dparam[2];       ///< Parameters of the \a str string
 };
 
+/**
+ * Tile callback function signature for drawing a tile and its contents to the screen
+ * @param ti Information about the tile to draw
+ */
 typedef void DrawTileProc(TileInfo *ti);
 typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);
 typedef CommandCost ClearTileProc(TileIndex tile, byte flags);
+
+/**
+ * Tile callback function signature for obtaining accepted carog of a tile
+ * @param tile Tile queried for its accepted cargo
+ * @param res  Storage destination of the cargo accepted
+ */
 typedef void GetAcceptedCargoProc(TileIndex tile, AcceptedCargo res);
+
+/**
+ * Tile callback function signature for obtaining a tile description
+ * @param tile Tile being queried
+ * @param td   Storage pointer for returned tile description
+ */
 typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
 
 /**
- * GetTileTrackStatusProcs return a value that contains the possible tracks
+ * Tile callback function signature for getting the possible tracks
  * that can be taken on a given tile by a given transport.
+ *
  * The return value contains the existing trackdirs and signal states.
  *
  * see track_func.h for usage of TrackStatus.
@@ -77,6 +96,12 @@ typedef void GetTileDescProc(TileIndex tile, TileDesc *td);
  * @return the track status information
  */
 typedef TrackStatus GetTileTrackStatusProc(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side);
+
+/**
+ * Tile callback function signature for obtaining the produced cargo of a tile.
+ * @param tile Tile being queried
+ * @param b    Destination array of produced cargo
+ */
 typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
 typedef void ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
@@ -88,9 +113,11 @@ typedef VehicleEnterTileStatus VehicleEnterTileProc(Vehicle *v, TileIndex tile, 
 typedef Foundation GetFoundationProc(TileIndex tile, Slope tileh);
 
 /**
- * Called when a tile is affected by a terraforming operation.
- * The function has to check if terraforming of the tile is allowed and return extra terraform-cost that depend on the tiletype.
- * With DC_EXEC in flags it has to perform tiletype-specific actions (like clearing land etc., but not the terraforming itself).
+ * Tile callback function signature of the terraforming callback.
+ *
+ * The function is called when a tile is affected by a terraforming operation.
+ * It has to check if terraforming of the tile is allowed and return extra terraform-cost that depend on the tiletype.
+ * With DC_EXEC in \a flags it has to perform tiletype-specific actions (like clearing land etc., but not the terraforming itself).
  *
  * @note The terraforming has not yet taken place. So GetTileZ() and GetTileSlope() refer to the landscape before the terraforming operation.
  *
@@ -106,20 +133,20 @@ typedef CommandCost TerraformTileProc(TileIndex tile, uint32 flags, uint z_new, 
  * Set of callback functions for performing tile operations of a given tile type.
  * @see TileType */
 struct TileTypeProcs {
-	DrawTileProc *draw_tile_proc;
+	DrawTileProc *draw_tile_proc;                  ///< Called to render the tile and its contents to the screen
 	GetSlopeZProc *get_slope_z_proc;
 	ClearTileProc *clear_tile_proc;
-	GetAcceptedCargoProc *get_accepted_cargo_proc;
-	GetTileDescProc *get_tile_desc_proc;
-	GetTileTrackStatusProc *get_tile_track_status_proc;
-	ClickTileProc *click_tile_proc;
+	GetAcceptedCargoProc *get_accepted_cargo_proc; ///< Return accepted cargo of the tile
+	GetTileDescProc *get_tile_desc_proc;           ///< Get a description of a tile (for the 'land area information' tool)
+	GetTileTrackStatusProc *get_tile_track_status_proc; ///< Get available tracks and status of a tile
+	ClickTileProc *click_tile_proc;                ///< Called when tile is clicked
 	AnimateTileProc *animate_tile_proc;
 	TileLoopProc *tile_loop_proc;
 	ChangeTileOwnerProc *change_tile_owner_proc;
-	GetProducedCargoProc *get_produced_cargo_proc;
-	VehicleEnterTileProc *vehicle_enter_tile_proc;
+	GetProducedCargoProc *get_produced_cargo_proc; ///< Return produced cargo of the tile
+	VehicleEnterTileProc *vehicle_enter_tile_proc; ///< Called when a vehicle enters a tile
 	GetFoundationProc *get_foundation_proc;
-	TerraformTileProc *terraform_tile_proc;
+	TerraformTileProc *terraform_tile_proc;        ///< Called when a terraforming operation is about to take place
 };
 
 extern const TileTypeProcs * const _tile_type_procs[16];

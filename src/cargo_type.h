@@ -7,7 +7,8 @@
 
 typedef byte CargoID;
 
-enum {
+/** Available types of cargo */
+enum CargoTypes {
 	/* Temperate */
 	CT_PASSENGERS   =  0,
 	CT_COAL         =  1,
@@ -54,6 +55,7 @@ enum {
 	CT_INVALID      = 0xFF
 };
 
+/** Array for storing amounts of accepted cargo */
 typedef uint AcceptedCargo[NUM_CARGO];
 
-#endif /* OPENTTD_H */
+#endif /* CARGO_TYPE_H */

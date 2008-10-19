@@ -2468,7 +2468,8 @@ int TicksToLeaveDepot(const Vehicle *v)
 	return 0; // make compilers happy
 }
 
-
+/** Tile callback routine when vehicle enters tile
+ * @see vehicle_enter_tile_proc */
 static VehicleEnterTileStatus VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 {
 	byte fract_coord;
