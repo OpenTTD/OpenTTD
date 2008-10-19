@@ -8,7 +8,7 @@
 typedef byte CargoID;
 
 enum {
-	// Temperate
+	/* Temperate */
 	CT_PASSENGERS   =  0,
 	CT_COAL         =  1,
 	CT_MAIL         =  2,
@@ -21,14 +21,14 @@ enum {
 	CT_STEEL        =  9,
 	CT_VALUABLES    = 10,
 
-	// Arctic
+	/* Arctic */
 	CT_WHEAT        =  6,
 	CT_HILLY_UNUSED =  8,
 	CT_PAPER        =  9,
 	CT_GOLD         = 10,
 	CT_FOOD         = 11,
 
-	// Tropic
+	/* Tropic */
 	CT_RUBBER       =  1,
 	CT_FRUIT        =  4,
 	CT_MAIZE        =  6,
@@ -36,7 +36,7 @@ enum {
 	CT_WATER        =  9,
 	CT_DIAMONDS     = 10,
 
-	// Toyland
+	/* Toyland */
 	CT_SUGAR        =  1,
 	CT_TOYS         =  3,
 	CT_BATTERIES    =  4,

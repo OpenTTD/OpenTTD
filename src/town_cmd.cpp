@@ -2602,20 +2602,20 @@ static CommandCost TerraformTile_Town(TileIndex tile, uint32 flags, uint z_new, 
 }
 
 extern const TileTypeProcs _tile_type_town_procs = {
-	DrawTile_Town,           /* draw_tile_proc */
-	GetSlopeZ_Town,          /* get_slope_z_proc */
-	ClearTile_Town,          /* clear_tile_proc */
-	GetAcceptedCargo_Town,   /* get_accepted_cargo_proc */
-	GetTileDesc_Town,        /* get_tile_desc_proc */
-	GetTileTrackStatus_Town, /* get_tile_track_status_proc */
-	ClickTile_Town,          /* click_tile_proc */
-	AnimateTile_Town,        /* animate_tile_proc */
-	TileLoop_Town,           /* tile_loop_clear */
-	ChangeTileOwner_Town,    /* change_tile_owner_clear */
-	GetProducedCargo_Town,   /* get_produced_cargo_proc */
-	NULL,                    /* vehicle_enter_tile_proc */
-	GetFoundation_Town,      /* get_foundation_proc */
-	TerraformTile_Town,      /* terraform_tile_proc */
+	DrawTile_Town,           // draw_tile_proc
+	GetSlopeZ_Town,          // get_slope_z_proc
+	ClearTile_Town,          // clear_tile_proc
+	GetAcceptedCargo_Town,   // get_accepted_cargo_proc
+	GetTileDesc_Town,        // get_tile_desc_proc
+	GetTileTrackStatus_Town, // get_tile_track_status_proc
+	ClickTile_Town,          // click_tile_proc
+	AnimateTile_Town,        // animate_tile_proc
+	TileLoop_Town,           // tile_loop_clear
+	ChangeTileOwner_Town,    // change_tile_owner_clear
+	GetProducedCargo_Town,   // get_produced_cargo_proc
+	NULL,                    // vehicle_enter_tile_proc
+	GetFoundation_Town,      // get_foundation_proc
+	TerraformTile_Town,      // terraform_tile_proc
 };
 
 
