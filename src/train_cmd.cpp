@@ -2857,6 +2857,7 @@ public:
 					VehicleOrderID next = ProcessConditionalOrder(order, this->v);
 					if (next != INVALID_VEH_ORDER_ID) {
 						this->index = next;
+						/* Don't increment next, so no break here. */
 						continue;
 					}
 					break;
@@ -2864,7 +2865,10 @@ public:
 				default:
 					break;
 			}
-		} while (++this->index != this->v->cur_order_index);
+			/* Don't increment inside the while because otherwise conditional
+			 * orders can lead to an infinite loop. */
+			++this->index;
+		} while (this->index != this->v->cur_order_index);
 
 		return false;
 	}
