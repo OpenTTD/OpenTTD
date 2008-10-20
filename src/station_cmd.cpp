@@ -425,7 +425,7 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int w, int h, int rad)
 {
-	memset(produced, 0, sizeof(AcceptedCargo));
+	memset(produced, 0, sizeof(produced));
 
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -451,7 +451,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 				GetProducedCargoProc *gpc = _tile_type_procs[GetTileType(tile)]->get_produced_cargo_proc;
 				if (gpc != NULL) {
 					CargoID cargos[256]; // Required for CBID_HOUSE_PRODUCE_CARGO.
-					memset(cargos, CT_INVALID, 256);
+					memset(cargos, CT_INVALID, sizeof(cargos));
 
 					gpc(tile, cargos);
 					for (uint i = 0; i < lengthof(cargos); ++i) {
@@ -474,7 +474,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	int w, int h, int rad)
 {
-	memset(accepts, 0, sizeof(AcceptedCargo));
+	memset(accepts, 0, sizeof(accepts));
 
 	int x = TileX(tile);
 	int y = TileY(tile);
