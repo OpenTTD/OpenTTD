@@ -17,6 +17,7 @@
 #include "strings_type.h"
 #include "viewport_type.h"
 #include "economy_type.h"
+#include "map_type.h"
 
 enum {
 	HOUSE_NO_CLASS   = 0,
