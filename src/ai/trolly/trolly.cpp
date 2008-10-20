@@ -1057,7 +1057,7 @@ static void AiNew_State_BuildPath(Company *c)
 
 				ret = AI_DoCommand(tile, DiagDirToRoadBits(ReverseDiagDir(dir1)), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (CmdSucceeded(ret)) {
-					TileIndex offset = TileOffsByDiagDir(dir1);
+					TileIndexDiff offset = TileOffsByDiagDir(dir1);
 					if (IsTileType(tile + offset, MP_CLEAR) || IsTileType(tile + offset, MP_TREES)) {
 						ret = AI_DoCommand(tile + offset, AiNew_GetRoadDirection(tile, tile + offset, tile + offset + offset), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (CmdSucceeded(ret)) {
@@ -1069,7 +1069,7 @@ static void AiNew_State_BuildPath(Company *c)
 
 				ret = AI_DoCommand(tile, DiagDirToRoadBits(ReverseDiagDir(dir2)), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (CmdSucceeded(ret)) {
-					TileIndex offset = TileOffsByDiagDir(dir2);
+					TileIndexDiff offset = TileOffsByDiagDir(dir2);
 					if (IsTileType(tile + offset, MP_CLEAR) || IsTileType(tile + offset, MP_TREES)) {
 						ret = AI_DoCommand(tile + offset, AiNew_GetRoadDirection(tile, tile + offset, tile + offset + offset), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (CmdSucceeded(ret)) {
@@ -1081,7 +1081,7 @@ static void AiNew_State_BuildPath(Company *c)
 
 				ret = AI_DoCommand(tile, DiagDirToRoadBits(dir3), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 				if (CmdSucceeded(ret)) {
-					TileIndex offset = TileOffsByDiagDir(dir3);
+					TileIndexDiff offset = TileOffsByDiagDir(dir3);
 					if (IsTileType(tile + offset, MP_CLEAR) || IsTileType(tile + offset, MP_TREES)) {
 						ret = AI_DoCommand(tile + offset, AiNew_GetRoadDirection(tile, tile + offset, tile + offset + offset), 0, DC_EXEC | DC_NO_WATER, CMD_BUILD_ROAD);
 						if (CmdSucceeded(ret)) {
