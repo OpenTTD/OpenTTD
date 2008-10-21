@@ -425,7 +425,7 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int w, int h, int rad)
 {
-	memset(produced, 0, sizeof(produced));
+	memset(produced, 0, sizeof(AcceptedCargo)); // sizeof(AcceptedCargo) != sizeof(produced) (== sizeof(uint *))
 
 	int x = TileX(tile);
 	int y = TileY(tile);
@@ -474,7 +474,7 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	int w, int h, int rad)
 {
-	memset(accepts, 0, sizeof(accepts));
+	memset(accepts, 0, sizeof(AcceptedCargo)); // sizeof(AcceptedCargo) != sizeof(accepts) (== sizeof(uint *))
 
 	int x = TileX(tile);
 	int y = TileY(tile);
