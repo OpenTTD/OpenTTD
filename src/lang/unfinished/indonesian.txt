@@ -1,0 +1,4 @@
+##name Indonesian
+##ownname Indonesian
+##isocode id_ID
+##plural 0
