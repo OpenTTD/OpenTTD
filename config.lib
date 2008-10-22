@@ -1276,10 +1276,12 @@ make_cflags_and_ldflags() {
 
 	if [ "$with_iconv" != "0" ]; then
 		CFLAGS="$CFLAGS -DWITH_ICONV"
-		LIBS="$LIBS -liconv"
-		if [ "$with_iconv" != "2" ]; then
-			CFLAGS="$CFLAGS -I$with_iconv/include"
-			LIBS="$LIBS -L$with_iconv/lib"
+		if [ "$link_to_iconv" = "yes" ]; then
+			LIBS="$LIBS -liconv"
+			if [ "$with_iconv" != "2" ]; then
+				CFLAGS="$CFLAGS -I$with_iconv/include"
+				LIBS="$LIBS -L$with_iconv/lib"
+			fi
 		fi
 
 		if [ "$have_broken_iconv" != "no" ]; then
@@ -2297,6 +2299,27 @@ EOF
 	log 2 "  exit code $ret"
 	if [ "$ret" = "0" ]; then have_broken_iconv="no"; else have_broken_iconv="yes"; fi
 	log 1 "checking if iconv has non-const inbuf... $have_broken_iconv"
+
+	cat > tmp.iconv.cpp << EOF
+#include "src/stdafx.h"
+#include <iconv.h>
+int main() {
+	static char buf[1024];
+	iconv_t convd = 0;
+	char *inbuf = "";
+	char *outbuf  = buf;
+	size_t outlen = 1023;
+	size_t inlen  = 0;
+	return iconv(convd, &inbuf, &inlen, &outbuf, &outlen);
+}
+EOF
+	execute="$cxx_host $CFLAGS tmp.iconv.cpp -o tmp.iconv -DTESTING 2>&1"
+	eval $execute >&/dev/null
+	ret=$?
+	log 2 "executing $execute"
+	log 2 "  exit code $ret"
+	if [ "$ret" = "0" ]; then link_to_iconv="no"; else link_to_iconv="yes"; fi
+	log 1 "checking whether to link to iconv... $link_to_iconv"
 	rm -f tmp.iconv tmp.iconv.cpp
 }
 
