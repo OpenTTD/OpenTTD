@@ -2713,7 +2713,7 @@ STR_ORDER_GO_TO                                                 :Vai a
 STR_ORDER_GO_NON_STOP_TO                                        :Vai no-stop a
 STR_ORDER_GO_VIA                                                :Passa per
 STR_ORDER_GO_NON_STOP_VIA                                       :Passa no-stop per
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi pieno carico
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi qualsiasi carico
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carica se possibile
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Attendi pieno carico
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Attendi qualsiasi carico

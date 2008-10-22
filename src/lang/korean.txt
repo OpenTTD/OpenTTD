@@ -1039,7 +1039,7 @@ STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}사실�
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (NPF 필요)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}점차적으로 차량 싣기 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}차량에 단계적으로 싣기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}인플레이션 (화폐가치하락) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}수요가 있을때만 화물을 역에 옮겨놓음 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}매우 긴 다리 건설 허용 : {ORANGE}{STRING}
@@ -1055,7 +1055,7 @@ STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호�
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}새 경로는 기본으로 논스톱 처리: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면을 움직이게 하기 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면 움직이기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}독점 운송권 구입 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}다른 회사에게 돈을 송금하는 것을 허용: {ORANGE}{STRING}
@@ -1105,13 +1105,13 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리�
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 툴바 연결 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}스크롤 방향 뒤집기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}부드러운 화면 스크롤: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리측정 툴팁 표시 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}회사 조합원 표시 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}건설도구 사용시 거리 툴팁 표시 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}회사 색상 표시 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :없음
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :내 회사
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :모든 회사
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>키로 우리 팀원끼리 채팅 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}스크롤의 역할: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}<ENTER>키로 같은 팀끼리 채팅 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}마우스 휠 동작: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :맵 줌
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :맵 스크롤
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :끄기
@@ -1964,9 +1964,9 @@ STR_3060_AIRPORT                                                :공항
 STR_3061_TRUCK_LOADING_AREA                                     :트럭 적하장
 STR_3062_BUS_STATION                                            :버스 정류장
 STR_3063_SHIP_DOCK                                              :항구
-STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}건설될 장소를 하이라이트합니다.
-STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}건설될 장소를 하이라이트하지 않습니다.
-STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}건설 장소 하이라이트
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}역세권을 하이라이트합니다.
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}역세권을 하이라이트하지 않습니다.
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}역세권 하이라이트
 STR_3068_DOCK                                                   :{WHITE}항구
 STR_3069_BUOY                                                   :부이
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...도중에 부이가 있습니다.
@@ -2991,7 +2991,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}{STATION}에 처음으로 화물 전차가 도착했습니다!{}사람들이 환호성을 지릅니다!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 운전사가 사망했습니다!
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}자동차 충돌!{}열차와의 충돌로 {COMMA}명이 사망했습니다!
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}자동차를 회차시킬 수 없습니다...
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}자동차를 돌릴 수 없습니다...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}여러대의 차량이 연결된 차량은 회차시킬 수 없습니다
 STR_9034_RENAME                                                 :{BLACK}이름 지정
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}자동차 타입의 이름 지정
@@ -3118,7 +3118,7 @@ STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}새 항�
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}항공기를 팔려면 여기로 드래그하세요
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}이 격납고가 있는 공항으로 이동
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}항공기 선택 목록 - 항공기 정보를 보려면 클릭하세요
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}선택한 항공기를 만듭니다
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}선택한 항공기 만들기
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}현재 항공기 행동 - 항공기를 운행/중지시키려면 여기를 클릭하세요
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}항공기 경로를 보여줍니다
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}이 항공기가 있는 곳으로 이동
@@ -3614,12 +3614,12 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}넥타�
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}신호기 선택
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}이곳의 신호기를 변환할 수 없습니다...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}폐색 신호기 (구식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}폐색 신호기 (완목){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (완목){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (완목){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (완목){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}경로 신호기 (구식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}일방통행 경로 신호기 (구식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}경로 신호기 (완목){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}일방통행 경로 신호기 (완목){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.

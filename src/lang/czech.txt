@@ -653,8 +653,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Otevírání průmyslu
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zavírání průmyslu
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Změny v ekonomice
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Změny produkce průmyslu obsluhovaného společností
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Změny produkce průmyslu obsluhovaného konkurencí
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Jiné změny produkce průmyslu
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Rady a informace k vozidlům společnosti
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nový dopravní prostředek
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Změny příjmu zboží
 STR_020E_SUBSIDIES                                              :{YELLOW}Dotace
@@ -1304,6 +1306,7 @@ STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TIP                                                  :{BLACK}Zaškrtávací políčka ukazují, jestli jsi tento cheat už použil.
 STR_CHEATS_WARNING                                              :{BLACK}Varování! Chystáš se podvést ostatní hráče. Pamatuj si, že tento podlý čin nebude nikdy zapomenut!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Navýšit peníze o {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrát jako společnost: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magický buldozer (odstraní průmysl a neodstranitelné předměty): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely se mohou křížit: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Povolit stavění v pauze: {ORANGE}{STRING}
@@ -1635,6 +1638,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :přišel neplat
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :špatná revize hry
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :jméno se už používá
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :špatné heslo
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :špatné ID společnosti v DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :vyhozen serverem
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :se pokoušel podvádět
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :na serveru je plno
@@ -2320,6 +2324,7 @@ STR_HOSTILE                                                     :zaujatý
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(společnost {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nový obličej
 STR_7005_COLOR_SCHEME                                           :{BLACK}Barva
 STR_7006_COLOR_SCHEME                                           :{GOLD}Barevné schéma:
@@ -3604,6 +3609,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknut�
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

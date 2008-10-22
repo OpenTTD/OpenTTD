@@ -2,3 +2,464 @@
 ##ownname Indonesian
 ##isocode id_ID
 ##plural 0
+
+#
+
+##id 0x0000
+STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Batas tepi dari peta
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Terlalu dekat dengan tepi peta
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Dana tidak cukup - dibutuhkan {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Daratan harus rata
+STR_0008_WAITING                                                :{BLACK}Menunggu: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000C_ACCEPTS                                                :{BLACK}Menerima: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Menerima: {GOLD}
+STR_000E                                                        :
+STR_000F_PASSENGERS                                             :Penumpang
+STR_0010_COAL                                                   :Batubara
+STR_0011_MAIL                                                   :Dokumen
+STR_0012_OIL                                                    :Minyak
+STR_0013_LIVESTOCK                                              :Ternak
+STR_0014_GOODS                                                  :Barang-barang
+STR_0015_GRAIN                                                  :Pangan
+STR_0016_WOOD                                                   :Kayu
+STR_0017_IRON_ORE                                               :Biji besi
+STR_0018_STEEL                                                  :Baja
+STR_0019_VALUABLES                                              :Barang berharga
+STR_001A_COPPER_ORE                                             :Biji Tembaga
+STR_001B_MAIZE                                                  :Jagung
+STR_001C_FRUIT                                                  :Buah-buahan
+STR_001D_DIAMONDS                                               :Permata
+STR_001E_FOOD                                                   :Makanan
+STR_001F_PAPER                                                  :Kertas
+STR_0020_GOLD                                                   :Emas
+STR_0021_WATER                                                  :Air
+STR_0022_WHEAT                                                  :Gandum
+STR_0023_RUBBER                                                 :Karet
+STR_0024_SUGAR                                                  :Gula
+STR_0025_TOYS                                                   :Mainan
+STR_0026_CANDY                                                  :Manisan
+STR_0027_COLA                                                   :Cola
+STR_0028_COTTON_CANDY                                           :Harum manis
+STR_0029_BUBBLES                                                :Gelembung
+STR_002A_TOFFEE                                                 :Kopi Toffee
+STR_002B_BATTERIES                                              :Baterai
+STR_002C_PLASTIC                                                :Plastik
+STR_002D_FIZZY_DRINKS                                           :Minuman berdesis
+STR_002E                                                        :
+STR_002F_PASSENGER                                              :Penumpang
+STR_0030_COAL                                                   :Batubara
+STR_0031_MAIL                                                   :Dokumen
+STR_0032_OIL                                                    :Minyak
+STR_0033_LIVESTOCK                                              :Ternak
+STR_0034_GOODS                                                  :Barang-barang
+STR_0035_GRAIN                                                  :Pangan
+STR_0036_WOOD                                                   :Kayu
+STR_0037_IRON_ORE                                               :Biji besi
+STR_0038_STEEL                                                  :Baja
+STR_0039_VALUABLES                                              :Barang berharga
+STR_003A_COPPER_ORE                                             :Biji Tembaga
+STR_003B_MAIZE                                                  :Jagung
+STR_003C_FRUIT                                                  :Buah-buahan
+STR_003D_DIAMOND                                                :Permata
+STR_003E_FOOD                                                   :Makanan
+STR_003F_PAPER                                                  :Kertas
+STR_0040_GOLD                                                   :Emas
+STR_0041_WATER                                                  :Air
+STR_0042_WHEAT                                                  :Gandum
+STR_0043_RUBBER                                                 :Karet
+STR_0044_SUGAR                                                  :Gula
+STR_0045_TOY                                                    :Mainan
+STR_0046_CANDY                                                  :Manisan
+STR_0047_COLA                                                   :Cola
+STR_0048_COTTON_CANDY                                           :Harum manis
+STR_0049_BUBBLE                                                 :Gelembung
+STR_004A_TOFFEE                                                 :Kopi Toffee
+STR_004B_BATTERY                                                :Baterai
+STR_004C_PLASTIC                                                :Plastik
+STR_004D_FIZZY_DRINK                                            :Minuman berdesis
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}Peta - {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Pilihan permainan
+STR_00B2_MESSAGE                                                :{YELLOW}Pesan
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Pesan dari {STRING}
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tidak dapat melakukan ini....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak dapat menghapus area ini....
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hak Cipta asli {COPYRIGHT} 1995 Chris Sawyer, Hak Cipta dilindungi
+STR_00B7_VERSION                                                :{BLACK}OpenTTD versi {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 Tim OpenTTD
+
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}Keluar
+STR_00C8_YES                                                    :{BLACK}Ya
+STR_00C9_NO                                                     :{BLACK}Tidak
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Anda yakin akan keluar dari OpenTTD dan kembali ke {STRING}?
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :Tidak ada
+STR_00D1_DARK_BLUE                                              :Biru tua
+STR_00D2_PALE_GREEN                                             :Hijau pucat
+STR_00D3_PINK                                                   :Merah muda
+STR_00D4_YELLOW                                                 :Kuning
+STR_00D5_RED                                                    :Merah
+STR_00D6_LIGHT_BLUE                                             :Biru terang
+STR_00D7_GREEN                                                  :Hijau
+STR_00D8_DARK_GREEN                                             :Hijau tua
+STR_00D9_BLUE                                                   :Biru
+STR_00DA_CREAM                                                  :Cream
+STR_00DB_MAUVE                                                  :Lembayung muda
+STR_00DC_PURPLE                                                 :Ungu
+STR_00DD_ORANGE                                                 :Oranye
+STR_00DE_BROWN                                                  :Coklat
+STR_00DF_GREY                                                   :Abu-abu
+STR_00E0_WHITE                                                  :Putih
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Terlalu banyak kendaraan dalam permainan
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}Lokasi
+STR_00E5_CONTOURS                                               :Sekeliling
+STR_00E6_VEHICLES                                               :Kendaraan
+STR_00E7_INDUSTRIES                                             :Industri
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ range for menu starts
+############ range for menu ends
+
+
+
+############ range for months starts
+############ range for months ends
+
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days starts
+############ range for days ends
+
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+
+############ end of savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+
+##id 0xB000
+
+
+
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### For showing numbers in widgets
+
+
+########### String for New Landscape Generator
+
+
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########

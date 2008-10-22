@@ -225,18 +225,145 @@ STR_0168_JUL                                                    :مرداد
 STR_0169_AUG                                                    :شهریور
 STR_016A_SEP                                                    :مهر
 STR_016B_OCT                                                    :آبان
+STR_016C_NOV                                                    :آذر
+STR_016D_DEC                                                    :دی
 ############ range for months ends
 
+STR_0171_PAUSE_GAME                                             :{BLACK}متوقف کردن بازی
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}ذخیره بازی، ترک بازی، خروج از بازی
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}لیست ایستگاه های شرکت ها را نشان می دهد
+STR_0174_DISPLAY_MAP                                            :{BLACK}نقشه، پنجره اضافی یا لیست علامت ها را نشان می دهد
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}نقشه، لیست شهر ها را نشان می دهد
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}لیست شهرها را نشان می دهد
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}اطلاعات مالی شرکت را نشان می دهد
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}توضیحات کلی راجع به شرکت را نشان می دهد
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}نمودار ها را نشان می دهد
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}جدول رده بندی شرکت ها را نشان می دهد
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}لیست قطار های شرکت ها را نشان می دهد
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}لیست ماشین های شرکت را نشان می دهد
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}لیست کشتی های شرکت را نشان می دهد
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}لیست هواپیماهای شرکت را نشان می دهد
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}تصویر را بزرگ می کند
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}تصویر را کوچک می کند
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}ساخت راه آهن
+STR_0182_BUILD_ROADS                                            :{BLACK}ساخت جاده
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}ساخت اسکله
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}ساخت فرودگاه
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}کاشتن درختان، قرار دادن علامت و غیره
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}توضیحات درباره ی زمین
+STR_0187_OPTIONS                                                :{BLACK}تنضیمات
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018B_CLOSE_WINDOW                                           :{BLACK}بستن پنجره
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}تخریب ساختمان و ... در بخشی از زمین
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}پایین آوردن گوشه ی نقشه
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}بال آوردن گوشه ی نقشه
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}حاشیه ی زمین را در نقشه نشان بده
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}وسایل حمل و نقل را در صفحه نشن بده
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}کارخانه ها را در نقشه نشان بده
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}مسیر های حمل و نقل را در نقشه نشان بده
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}صاحب زمین را در نقشه نشان بده
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}نشان دادن یا ندادن اسم شهر ها در نقشه
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}سود امسال : {CURRENCY} (سود پارسال: {CURRENCY})
 
 ############ range for service numbers starts
 ############ range for service numbers ends
 
+STR_019C_ROAD_VEHICLE                                           :ماشین
+STR_019D_AIRCRAFT                                               :هواپیما
+STR_019E_SHIP                                                   :کشتی
+STR_019F_TRAIN                                                  :قطار
+STR_01A0_IS_GETTING_OLD                                         :در حال کهنه شدن است{WHITE}{STRING} {COMMA}
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}اطلاعات زمین
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}هزینه پاک کردن: {LTBLUE}0
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}هزینه پاک کردن: {LTBLUE}{CURRENCY}
+STR_01A6_N_A                                                    :0
+STR_01AA_NAME                                                   :{BLACK}نام
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
+STR_01AC_1ST                                                    :اولین
+STR_01AD_2ND                                                    :دومین
+STR_01AE_3RD                                                    :سومین
+STR_01AF_4TH                                                    :چهارمین
+STR_01B0_5TH                                                    :پنجمین
+STR_01B1_6TH                                                    :ششمین
+STR_01B2_7TH                                                    :هفتمین
+STR_01B3_8TH                                                    :هشتمین
+STR_01B4_9TH                                                    :نهمین
+STR_01B5_10TH                                                   :دهمین
+STR_01B6_11TH                                                   :یازدهمین
+STR_01B7_12TH                                                   :دوازدهمین
+STR_01B8_13TH                                                   :سیزدهمین
+STR_01B9_14TH                                                   :چهار دهمین
+STR_01BA_15TH                                                   :پونزدهمین
+STR_01BB_16TH                                                   :شونزدهمین
+STR_01BC_17TH                                                   :هفدهمین
+STR_01BD_18TH                                                   :هجدهمین
+STR_01BE_19TH                                                   :نونزدهمین
+STR_01BF_20TH                                                   :بیستمین
+STR_01C0_21ST                                                   :بیست و یکمین
+STR_01C1_22ND                                                   :بیست و دومین
+STR_01C2_23RD                                                   :بیست و سومین
+STR_01C3_24TH                                                   :بیست و چهارمین
+STR_01C4_25TH                                                   :بیست و پنجمین
+STR_01C5_26TH                                                   :بیست و ششمین
+STR_01C6_27TH                                                   :بیست و هفتمین
+STR_01C7_28TH                                                   :بیست و هشتمین
+STR_01C8_29TH                                                   :بیست و نهمین
+STR_01C9_30TH                                                   :سیمین
+STR_01CA_31ST                                                   :سی و یکمین
 ############ range for days ends
 
+STR_01CB                                                        :{TINYFONT}{COMMA}
 
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}محموله های دریافتی : {LTBLUE}
 
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
+STR_01D3_SOUND_MUSIC                                            :صدا/موسیقی
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}صفحه ی صدا/موسیقی
+STR_01D5_ALL                                                    :{TINYFONT}همه:
+STR_01D6_OLD_STYLE                                              :{TINYFONT}مدل قدیمی
+STR_01D7_NEW_STYLE                                              :{TINYFONT}مدل جدید
+STR_01D9_CUSTOM_1                                               :{TINYFONT}انتخابی 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}انتخابی 2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}شدت صدای موسیقی
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}شدت صدای محیط
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}حد اکثر . . . . . . . . . حد اقل
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}بازگشت به آهنگ قبلی در لیست انتخاب شده ها
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}آهنگ بعدی در لیست انتخاب شده ها
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}توقف موسیقی
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}پخش موسیقی
+STR_01E3                                                        :{DKGREEN}{TINYFONT}--
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
+STR_01E6                                                        :{DKGREEN}{TINYFONT}------
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
+STR_01E9_SHUFFLE                                                :{TINYFONT}پخش تصادفی
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}برنامه
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}شماره ی آهنگ
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}پاک کن
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}ذخیره کن
+STR_01FE_DIFFICULTY                                             :{BLACK}سختی ({STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0201_MESSAGE_SETTINGS                                       :تنظیمات پیغام ها
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}انتخاب های پیغام ها
+STR_0205_MESSAGE_TYPES                                          :{BLACK}انواع پیغام ها
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}رسیدن اولین وسیله نقلیه به یکی ازایستگاه های بازیکن
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}رسیدن اولین وسیله نقلیه به یکی ازایستگاه ها کامپوتر
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}حوادث / بلایا
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}اطلاعات شرکت
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}تغییرات اقتصادی
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}راهنمایی یا اطلاعات درباره ی وسایل حمل و نقل شرکت
+STR_020C_NEW_VEHICLES                                           :{YELLOW}وسیله نقلیه جدید
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}تغیرات دریاف کالا
+STR_020E_SUBSIDIES                                              :{YELLOW}کمک هزینه
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}توضیهات کلی
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}از هدف قبلی بسیار دور است......
+STR_0212                                                        :{BIGFONT}{COMMA}.
+STR_0213_BUSINESSMAN                                            :تاجر
 
 
 ############ range for menu starts
