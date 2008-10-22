@@ -196,7 +196,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 			{
 				uint w;
 
-				if (tb->length + length >= tb->maxlength - 1) break;
+				if (tb->size + length + 1 > tb->maxsize) break;
 
 				w = GetCharacterWidth(FS_NORMAL, (byte)*i);
 				if (tb->maxwidth != 0 && width + tb->width + w > tb->maxwidth) break;
@@ -205,11 +205,11 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 				length++;
 			}
 
-			memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->length - tb->caretpos + 1);
+			memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->size - tb->caretpos);
 			memcpy(tb->buf + tb->caretpos, text, length);
 			tb->width += width;
 			tb->caretxoffs += width;
-			tb->length += length;
+			tb->size += length;
 			tb->caretpos += length;
 
 			WinCloseClipbrd(hab);
