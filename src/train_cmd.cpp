@@ -3572,10 +3572,10 @@ static Vehicle *FindTrainCollideEnum(Vehicle *v, void *data)
  * Reports the incident in a flashy news item, modifies station ratings and
  * plays a sound.
  */
-static void CheckTrainCollision(Vehicle *v)
+static bool CheckTrainCollision(Vehicle *v)
 {
 	/* can't collide in depot */
-	if (v->u.rail.track == TRACK_BIT_DEPOT) return;
+	if (v->u.rail.track == TRACK_BIT_DEPOT) return false;
 
 	assert(v->u.rail.track == TRACK_BIT_WORMHOLE || TileVirtXY(v->x_pos, v->y_pos) == v->tile);
 
@@ -3592,7 +3592,7 @@ static void CheckTrainCollision(Vehicle *v)
 	}
 
 	/* any dead -> no crash */
-	if (tcc.num == 0) return;
+	if (tcc.num == 0) return false;
 
 	SetDParam(0, tcc.num);
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
@@ -3603,6 +3603,7 @@ static void CheckTrainCollision(Vehicle *v)
 
 	ModifyStationRatingAround(v->tile, v->owner, -160, 30);
 	SndPlayVehicleFx(SND_13_BIG_CRASH, v);
+	return true;
 }
 
 static Vehicle *CheckVehicleAtSignal(Vehicle *v, void *data)
@@ -4332,7 +4333,8 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		do {
 			j -= adv_spd;
 			TrainController(v, NULL, true);
-			CheckTrainCollision(v);
+			/* Don't continue to move if the train crashed. */
+			if (CheckTrainCollision(v)) break;
 			/* 192 spd used for going straight, 256 for going diagonally. */
 			adv_spd = (v->direction & 1) ? 192 : 256;
 		} while (j >= adv_spd);
