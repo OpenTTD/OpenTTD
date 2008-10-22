@@ -291,7 +291,7 @@ static void HandleBiDiAndArabicShapes(char *buffer, const char *lastof)
 	UBiDi *para = ubidi_openSized((int32_t)length, 0, &err);
 	if (para == NULL) return;
 
-	ubidi_setPara(para, input_output, (int32_t)length, UBIDI_DEFAULT_RTL, NULL, &err);
+	ubidi_setPara(para, input_output, (int32_t)length, _dynlang.text_dir == TD_RTL ? UBIDI_DEFAULT_RTL : UBIDI_DEFAULT_LTR, NULL, &err);
 	ubidi_writeReordered(para, intermediate, (int32_t)length, 0, &err);
 	length = u_shapeArabic(intermediate, (int32_t)length, input_output, lengthof(input_output), U_SHAPE_TEXT_DIRECTION_VISUAL_LTR | U_SHAPE_LETTERS_SHAPE, &err);
 	ubidi_close(para);
