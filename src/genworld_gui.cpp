@@ -255,6 +255,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	{
 		this->LowerWidget(_settings_newgame.game_creation.landscape + GLAND_TEMPERATE);
 
+		/* snprintf() always outputs trailing '\0', so whole buffer can be used */
 		snprintf(this->edit_str_buf, this->edit_str_size, "%u", _settings_newgame.game_creation.generation_seed);
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 120);
 		this->caption = STR_NULL;

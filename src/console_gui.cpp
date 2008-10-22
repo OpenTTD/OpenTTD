@@ -133,7 +133,7 @@ IConsoleModes _iconsole_mode;
 static void IConsoleClearCommand()
 {
 	memset(_iconsole_cmdline.buf, 0, ICON_CMDLN_SIZE);
-	_iconsole_cmdline.length = 0;
+	_iconsole_cmdline.size = 1; // only terminating zero
 	_iconsole_cmdline.width = 0;
 	_iconsole_cmdline.caretpos = 0;
 	_iconsole_cmdline.caretxoffs = 0;
@@ -336,7 +336,7 @@ void IConsoleGUIInit()
 	memset(_iconsole_history, 0, sizeof(_iconsole_history));
 
 	_iconsole_cmdline.buf = CallocT<char>(ICON_CMDLN_SIZE); // create buffer and zero it
-	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE;
+	_iconsole_cmdline.maxsize = ICON_CMDLN_SIZE;
 
 	IConsolePrintF(CC_WARNING, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
 	IConsolePrint(CC_WHITE,  "------------------------------------");
@@ -430,7 +430,7 @@ static void IConsoleHistoryNavigate(int direction)
 	IConsoleClearCommand();
 	/* copy history to 'command prompt / bash' */
 	assert(_iconsole_history[i] != NULL && IsInsideMM(i, 0, ICON_HISTORY_SIZE));
-	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[i], _iconsole_cmdline.maxlength);
+	ttd_strlcpy(_iconsole_cmdline.buf, _iconsole_history[i], _iconsole_cmdline.maxsize);
 	UpdateTextBufferSize(&_iconsole_cmdline);
 }
 

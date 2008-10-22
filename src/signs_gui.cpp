@@ -215,7 +215,7 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 	void UpdateSignEditWindow(const Sign *si)
 	{
-		char *last_of = &this->edit_str_buf[this->edit_str_size - 1];
+		char *last_of = &this->edit_str_buf[this->edit_str_size - 1]; // points to terminating '\0'
 
 		/* Display an empty string when the sign hasnt been edited yet */
 		if (si->name != NULL) {

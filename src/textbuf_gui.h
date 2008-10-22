@@ -11,12 +11,12 @@
 #include "core/enum_type.hpp"
 
 struct Textbuf {
-	char *buf;                  ///< buffer in which text is saved
-	uint16 maxlength, maxwidth; ///< the maximum size of the buffer. Maxwidth specifies screensize in pixels, maxlength is in bytes
-	uint16 length, width;       ///< the current size of the string. Width specifies screensize in pixels, length is in bytes
-	bool caret;                 ///< is the caret ("_") visible or not
-	uint16 caretpos;            ///< the current position of the caret in the buffer, in bytes
-	uint16 caretxoffs;          ///< the current position of the caret in pixels
+	char *buf;                ///< buffer in which text is saved
+	uint16 maxsize, maxwidth; ///< the maximum size of the buffer. Maxwidth specifies screensize in pixels, maxsize is in bytes (including terminating '\0')
+	uint16 size, width;       ///< the current size of the string. Width specifies screensize in pixels, size is in bytes
+	bool caret;               ///< is the caret ("_") visible or not
+	uint16 caretpos;          ///< the current position of the caret in the buffer, in bytes
+	uint16 caretxoffs;        ///< the current position of the caret in pixels
 };
 
 bool HandleCaret(Textbuf *tb);
@@ -26,7 +26,7 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode);
 bool InsertTextBufferChar(Textbuf *tb, uint32 key);
 bool InsertTextBufferClipboard(Textbuf *tb);
 bool MoveTextBufferPos(Textbuf *tb, int navmode);
-void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16 maxwidth);
+void InitializeTextBuffer(Textbuf *tb, char *buf, uint16 maxsize, uint16 maxwidth);
 void UpdateTextBufferSize(Textbuf *tb);
 
 /** Flags used in ShowQueryString() call */
