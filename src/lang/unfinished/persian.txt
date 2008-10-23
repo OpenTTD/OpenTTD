@@ -364,6 +364,94 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}توض�
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}از هدف قبلی بسیار دور است......
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :تاجر
+STR_021F                                                        :{BLUE}{COMMA}
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0223_LAND_GENERATION                                        :{WHITE}طراحی اتوماتیک سرزمین
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}نقشه ی تصادفی بساز
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}تمام تغییرات را بر گردان
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}تمام تغییرات را بر گردان
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}طراحی اتوماتیک سرزمین
+STR_022F_TOWN_GENERATION                                        :{BLACK}طراحی مشخصات شهر ها
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}طراحی مشخصات کارخانه ها
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}طراحی مشخصات کارخانه ها
+STR_0233_TOWN_GENERATION                                        :{WHITE}طراحی مشخصات شهر ها
+STR_0234_NEW_TOWN                                               :{BLACK}شهر جدید
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}ساختن شهر جدید
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}اینجا نمی شود شهر ساخت
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE} به حاشیه ی نقشه زیادی نزدیک است
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE} به شهر دیگری بسیار نزدیک است
+STR_0239_SITE_UNSUITABLE                                        :{WHITE} مکان مناسب نیست
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}تعداد شهر ها بسیار زیاد شده
+STR_023D_RANDOM_TOWN                                            :{BLACK}شهر صادفی
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}شهری در مکانی تصادفی بساز
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}طراحی مشخصات کارخانه ها
+STR_0240_COAL_MINE                                              :{BLACK}معدن ذغال سنگ
+STR_0241_POWER_STATION                                          :{BLACK}نیروگاه
+STR_0242_SAWMILL                                                :{BLACK}چوببری
+STR_0243_FOREST                                                 :{BLACK}جنگل
+STR_0244_OIL_REFINERY                                           :{BLACK}پالایشگاه
+STR_0245_OIL_RIG                                                :{BLACK}سکوی نفت
+STR_0246_FACTORY                                                :{BLACK}کارخانه
+STR_0247_STEEL_MILL                                             :{BLACK}فولاد سازی
+STR_0248_FARM                                                   :{BLACK}مزرعه
+STR_0249_IRON_ORE_MINE                                          :{BLACK}معدن سنگ آهن
+STR_024A_OIL_WELLS                                              :{BLACK}چاه نفت
+STR_024B_BANK                                                   :{BLACK}بانک
+STR_024C_PAPER_MILL                                             :{BLACK}کاغذ سازی
+STR_024E_PRINTING_WORKS                                         :{BLACK}در حال چاپ
+STR_024F_GOLD_MINE                                              :{BLACK}معدن طلا
+STR_0250_LUMBER_MILL                                            :{BLACK}چوببری
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}باغ میوه
+STR_0253_WATER_SUPPLY                                           :{BLACK}منبع آب
+STR_0254_WATER_TOWER                                            :{BLACK}برج آب
+STR_0255_DIAMOND_MINE                                           :{BLACK}معدن الماس
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}معدن سنگ مس
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}جنگل پشمک
+STR_0259_BATTERY_FARM                                           :{BLACK}مزرعه ی باتری
+STR_025A_COLA_WELLS                                             :{BLACK}چاه نوشابه
+STR_025B_TOY_SHOP                                               :{BLACK}اسباب بازی فروشی
+STR_025C_TOY_FACTORY                                            :{BLACK}اسباب بازی سازی
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}چشمه ی پلاستیک
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}کارخانه نوشابه گازدار
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}مولد حباب
+STR_0261_SUGAR_MINE                                             :{BLACK}معدن شکر
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK} ساخت معدن ذغال سنگ
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}ساخت نیروگاه
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}ساخن چوببری
+STR_0265_PLANT_FOREST                                           :{BLACK}کاشتن جنگل
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}ساخت پالایشگاه
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}ساخت سکوی نفتی ( فقط در حاشیه ی نقشه می شود ساخت) .
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}ساخت کارخانه
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}ساخت فولاد سازی
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}ساخت مزرعه
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}ساخت معدن آهن
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}ساخت چاه نفت
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}ساخت بانک ( فقط در شهر هایی با جمعیت بیش از 1200 نفر می شود ساخت )
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}ساخت کاغذ سازی
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}حفر معدن طلا
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}ساخت بانک (فقط در شهرها)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}کاشتن مزرعه ی میوه
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}ساخت منبع آب
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}ساخت برج ذخیره آب (فقط در شهر ها)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}حفر معدن الماس
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}حفر معدن سنگ مس
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK} کاشتن جنگل پشمک
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}ساخت کارخانه شیرینی جات
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}کاشتن مزرعه ی باتری
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}حفر چاه نوشابه
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}ساخت اسباب بازی فروشی
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}ساخت کارخانه اسباب بازی
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}ساخت چشمه ی پلاستیک
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}ساخت کارخانه نوشابه گازدار
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK} ساخت مولد حباب
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}حفر معدن شکر
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}نمی شود {STRING} اینجا ساخت
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE} اول باید شهر ساخته شود
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE} فقط یکی به ازای هر شهر مجاز است
+STR_0288_PLANT_TREES                                            :{BLACK}کاشت درخت
+STR_0289_PLACE_SIGN                                             :{BLACK}علامت گذاری
 
 
 ############ range for menu starts

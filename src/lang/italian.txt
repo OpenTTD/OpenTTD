@@ -2713,10 +2713,10 @@ STR_ORDER_GO_TO                                                 :Vai a
 STR_ORDER_GO_NON_STOP_TO                                        :Vai no-stop a
 STR_ORDER_GO_VIA                                                :Passa per
 STR_ORDER_GO_NON_STOP_VIA                                       :Passa no-stop per
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi qualsiasi carico
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Attendi carico
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Carica se possibile
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Attendi pieno carico
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Attendi qualsiasi carico
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Attendi carico
 STR_ORDER_DROP_NO_LOADING                                       :Non caricare
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Scarica tutto
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Scarica se accettato
@@ -2724,19 +2724,19 @@ STR_ORDER_DROP_UNLOAD                                           :Scarica tutto
 STR_ORDER_DROP_TRANSFER                                         :Trasferisci
 STR_ORDER_DROP_NO_UNLOADING                                     :Non scaricare
 STR_ORDER_FULL_LOAD                                             :(Attendi pieno carico)
-STR_ORDER_FULL_LOAD_ANY                                         :(Attendi qualsiasi carico)
+STR_ORDER_FULL_LOAD_ANY                                         :(Attendi carico)
 STR_ORDER_NO_LOAD                                               :(Non caricare)
 STR_ORDER_UNLOAD                                                :(Scarica)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Scarica e attendi pieno carico)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Scarica e attendi qualsiasi carico)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Scarica e attendi carico)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Scarica e parti vuoto)
 STR_ORDER_TRANSFER                                              :(Trasferisci e carica)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Trasferisci e attendi pieno carico)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Trasferisci e attendi qualsiasi carico)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Trasferisci e attendi carico)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Trasferisci e parti vuoto)
 STR_ORDER_NO_UNLOAD                                             :(Non scaricare e carica)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Non scaricare e attendi pieno carico)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non scaricare e attendi qualsiasi carico)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Non scaricare e attendi carico)
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Cambia la modalità di fermata alle stazioni intermedie relativa all'ordine selezionato
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Cambia la modalità di caricamento alla stazione indicata nell'ordine selezionato
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Cambia la modalità di scaricamento alla stazione indicata nell'ordine selezionato
