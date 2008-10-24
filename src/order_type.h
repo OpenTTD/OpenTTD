@@ -122,12 +122,22 @@ enum ModifyOrderFlags {
 	MOF_NON_STOP,        ///< Passes a OrderNonStopFlags.
 	MOF_UNLOAD,          ///< Passes an OrderUnloadType.
 	MOF_LOAD,            ///< Passes an OrderLoadType
-	MOF_DEPOT_ACTION,    ///< Toggle the 'service' if needed flag.
+	MOF_DEPOT_ACTION,    ///< Selects the OrderDepotAction
 	MOF_COND_VARIABLE,   ///< A conditional variable changes.
 	MOF_COND_COMPARATOR, ///< A comparator changes.
 	MOF_COND_VALUE,      ///< The value to set the condition to.
 	MOF_COND_DESTINATION,///< Change the destination of a conditional order.
 	MOF_END
+};
+
+/**
+ * Depot action to switch to when doing a MOF_DEPOT_ACTION.
+ */
+enum OrderDepotAction {
+	DA_ALWAYS_GO, ///< Always go to the depot
+	DA_SERVICE,   ///< Service only if needed
+	DA_STOP,      ///< Go to the depot and stop there
+	DA_END
 };
 
 

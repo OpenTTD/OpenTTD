@@ -906,7 +906,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			break;
 
 		case MOF_DEPOT_ACTION:
-			if (data != 0) return CMD_ERROR;
+			if (data >= DA_END) return CMD_ERROR;
 			break;
 
 		case MOF_COND_VARIABLE:
@@ -969,9 +969,27 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 				break;
 
-			case MOF_DEPOT_ACTION:
-				order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() ^ ODTFB_SERVICE));
-				break;
+			case MOF_DEPOT_ACTION: {
+				switch (data) {
+					case DA_ALWAYS_GO:
+						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() & ~ODTFB_SERVICE));
+						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_HALT));
+						break;
+
+					case DA_SERVICE:
+						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() | ODTFB_SERVICE));
+						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() & ~ODATFB_HALT));
+						break;
+
+					case DA_STOP:
+						order->SetDepotOrderType((OrderDepotTypeFlags)(order->GetDepotOrderType() & ~ODTFB_SERVICE));
+						order->SetDepotActionType((OrderDepotActionFlags)(order->GetDepotActionType() | ODATFB_HALT));
+						break;
+
+					default:
+						NOT_REACHED();
+				}
+			} break;
 
 			case MOF_COND_VARIABLE: {
 				order->SetConditionVariable((OrderConditionVariable)data);

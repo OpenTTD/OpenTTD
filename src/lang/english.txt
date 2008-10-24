@@ -2754,6 +2754,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Always go
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Service if needed
+STR_ORDER_DROP_HALT_DEPOT                                       :Stop
+
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How to compare the vehicle data to the given value
@@ -2824,6 +2828,8 @@ STR_8826_GO_TO                                                  :{BLACK}Go To
 STR_REFIT                                                       :{BLACK}Refit
 STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Control click to remove refit instruction
 STR_REFIT_ORDER                                                 :(Refit to {STRING})
+STR_REFIT_STOP_ORDER                                            :(Refit to {STRING} and stop)
+STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Timetable
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Switch to the timetable view
 STR_ORDER_VIEW                                                  :{BLACK}Orders

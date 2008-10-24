@@ -1913,7 +1913,7 @@ struct VehicleViewWindow : Window {
 						SetDParam(0, depot->town_index);
 						SetDParam(1, v->GetDisplaySpeed());
 					}
-					if ((v->current_order.GetDepotActionType() & ODATFB_HALT) && !(v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS)) {
+					if (v->current_order.GetDepotActionType() & ODATFB_HALT) {
 						str = _heading_for_depot_strings[v->type] + _settings_client.gui.vehicle_speed;
 					} else {
 						str = _heading_for_depot_service_strings[v->type] + _settings_client.gui.vehicle_speed;

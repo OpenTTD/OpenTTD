@@ -725,9 +725,10 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	/* We need to set v->leave_depot_instantly as we have no control of it's contents at this time.
 	 * Vehicle should stop in the depot if it was in 'stopping' state - train intered depot while slowing down. */
-	if (((v->current_order.GetDepotActionType() & ODATFB_HALT) && !(v->current_order.GetDepotOrderType() & ODTFB_PART_OF_ORDERS) && v->current_order.IsType(OT_GOTO_DEPOT)) ||
+	if (((v->current_order.GetDepotActionType() & ODATFB_HALT) && v->current_order.IsType(OT_GOTO_DEPOT)) ||
 			(v->vehstatus & VS_STOPPED)) {
 		/* we keep the vehicle in the depot since the user ordered it to stay */
+		v->vehstatus |= VS_STOPPED; // needed for refitting
 		v->leave_depot_instantly = false;
 	} else {
 		/* the vehicle do not plan on stopping in the depot, so we stop it to ensure that it will not reserve the path
@@ -1623,7 +1624,8 @@ void VehicleEnterDepot(Vehicle *v)
 			/* Part of orders */
 			UpdateVehicleTimetable(v, true);
 			v->cur_order_index++;
-		} else if (t.GetDepotActionType() & ODATFB_HALT) {
+		}
+		if (t.GetDepotActionType() & ODATFB_HALT) {
 			/* Force depot visit */
 			v->vehstatus |= VS_STOPPED;
 			if (v->owner == _local_company) {

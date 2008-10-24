@@ -53,6 +53,7 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_UNLOAD_DROPDOWN,
 	ORDER_WIDGET_UNLOAD,
 	ORDER_WIDGET_REFIT,
+	ORDER_WIDGET_SERVICE_DROPDOWN,
 	ORDER_WIDGET_SERVICE,
 	ORDER_WIDGET_COND_VARIABLE,
 	ORDER_WIDGET_COND_COMPARATOR,
@@ -162,6 +163,23 @@ static const StringID _order_conditional_condition[] = {
 extern uint ConvertSpeedToDisplaySpeed(uint speed);
 extern uint ConvertDisplaySpeedToSpeed(uint speed);
 
+static const StringID _order_depot_action_dropdown[] = {
+	STR_ORDER_DROP_GO_ALWAYS_DEPOT,
+	STR_ORDER_DROP_SERVICE_DEPOT,
+	STR_ORDER_DROP_HALT_DEPOT,
+	INVALID_STRING_ID
+};
+
+static int DepotActionStringIndex(const Order *order)
+{
+	if (order->GetDepotActionType() & ODATFB_HALT) {
+		return DA_STOP;
+	} else if (order->GetDepotOrderType() & ODTFB_SERVICE) {
+		return DA_SERVICE;
+	} else {
+		return DA_ALWAYS_GO;
+	}
+}
 
 void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int y, bool selected, bool timetable, int width)
 {
@@ -227,8 +245,12 @@ void DrawOrderString(const Vehicle *v, const Order *order, int order_index, int 
 				SetDParam(2, (order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS) ? STR_ORDER_GO_NON_STOP_TO : STR_ORDER_GO_TO);
 			}
 
+			if (!timetable && (order->GetDepotActionType() & ODATFB_HALT)) {
+				SetDParam(6, STR_STOP_ORDER);
+			}
+
 			if (!timetable && order->IsRefit()) {
-				SetDParam(6, STR_REFIT_ORDER);
+				SetDParam(6, (order->GetDepotActionType() & ODATFB_HALT) ? STR_REFIT_STOP_ORDER : STR_REFIT_ORDER);
 				SetDParam(7, GetCargo(order->GetRefitCargo())->name);
 			}
 			break;
@@ -466,7 +488,14 @@ private:
 	 */
 	static void OrderClick_Service(OrdersWindow *w, int i)
 	{
-		DoCommandP(w->vehicle->tile, w->vehicle->index + (w->OrderGetSel() << 16), MOF_DEPOT_ACTION, NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
+		VehicleOrderID sel_ord = w->OrderGetSel();
+
+		if (i < 0) {
+			const Order *order = GetVehicleOrder(w->vehicle, sel_ord);
+			if (order == NULL) return;
+			i = (order->GetDepotOrderType() & ODTFB_SERVICE) ? DA_ALWAYS_GO : DA_SERVICE;
+		}
+		DoCommandP(w->vehicle->tile, w->vehicle->index + (sel_ord << 16), MOF_DEPOT_ACTION | (i << 4), NULL, CMD_MODIFY_ORDER | CMD_MSG(STR_8835_CAN_T_MODIFY_THIS_ORDER));
 	}
 
 	/**
@@ -690,9 +719,11 @@ public:
 			/* Disable list of vehicles with the same shared orders if there is no list */
 			this->SetWidgetDisabledState(ORDER_WIDGET_SHARED_ORDER_LIST, !shared_orders);
 			this->SetWidgetDisabledState(ORDER_WIDGET_REFIT,     order == NULL); // Refit
-			this->SetWidgetDisabledState(ORDER_WIDGET_SERVICE,   order == NULL); // Refit
+			this->SetWidgetDisabledState(ORDER_WIDGET_SERVICE,   order == NULL); // Service
+			this->SetWidgetDisabledState(ORDER_WIDGET_SERVICE_DROPDOWN,   order == NULL); // Service
 			this->HideWidget(ORDER_WIDGET_REFIT); // Refit
 			this->HideWidget(ORDER_WIDGET_SERVICE); // Service
+			this->HideWidget(ORDER_WIDGET_SERVICE_DROPDOWN); // Service
 
 			this->HideWidget(ORDER_WIDGET_COND_VARIABLE);
 			this->HideWidget(ORDER_WIDGET_COND_COMPARATOR);
@@ -709,6 +740,7 @@ public:
 		this->RaiseWidget(ORDER_WIDGET_NON_STOP);
 		this->RaiseWidget(ORDER_WIDGET_FULL_LOAD);
 		this->RaiseWidget(ORDER_WIDGET_UNLOAD);
+		this->RaiseWidget(ORDER_WIDGET_SERVICE);
 
 		if (order != NULL) {
 			this->SetWidgetLoweredState(ORDER_WIDGET_NON_STOP, order->GetNonStopType() & ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
@@ -735,6 +767,7 @@ public:
 					this->HideWidget(ORDER_WIDGET_FULL_LOAD_DROPDOWN);
 					this->HideWidget(ORDER_WIDGET_FULL_LOAD);
 					this->ShowWidget(ORDER_WIDGET_REFIT);
+					this->ShowWidget(ORDER_WIDGET_SERVICE_DROPDOWN);
 					this->ShowWidget(ORDER_WIDGET_SERVICE);
 					this->SetWidgetLoweredState(ORDER_WIDGET_SERVICE, order->GetDepotOrderType() & ODTFB_SERVICE);
 					break;
@@ -888,7 +921,11 @@ public:
 				break;
 
 			case ORDER_WIDGET_SERVICE:
-				OrderClick_Service(this, 0);
+				OrderClick_Service(this, -1);
+				break;
+
+			case ORDER_WIDGET_SERVICE_DROPDOWN:
+				ShowDropDownMenu(this, _order_depot_action_dropdown, DepotActionStringIndex(GetVehicleOrder(this->vehicle, this->OrderGetSel())), ORDER_WIDGET_SERVICE_DROPDOWN, 0, 0);
 				break;
 
 			case ORDER_WIDGET_TIMETABLE_VIEW:
@@ -962,6 +999,10 @@ public:
 					case 2: OrderClick_Conditional(this, 0); break;
 					default: NOT_REACHED();
 				}
+				break;
+
+			case ORDER_WIDGET_SERVICE_DROPDOWN:
+				OrderClick_Service(this, index);
 				break;
 
 			case ORDER_WIDGET_COND_VARIABLE:
@@ -1115,7 +1156,8 @@ static const Widget _orders_train_widgets[] = {
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,   248,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   248,   371,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   248,   371,    76,    87, STR_NULL,                STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,   248,   359,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
 
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
@@ -1158,7 +1200,8 @@ static const Widget _orders_widgets[] = {
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD_DROPDOWN
 	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,   186,   359,    76,    87, STR_ORDER_TOGGLE_UNLOAD, STR_ORDER_TOOLTIP_UNLOAD},            // ORDER_WIDGET_UNLOAD
 	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,     0,   185,    76,    87, STR_REFIT,               STR_REFIT_TIP},                       // ORDER_WIDGET_REFIT
-	{ WWT_PUSHTXTBTN,   RESIZE_TB,     COLOUR_GREY,   186,   371,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
+	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   186,   371,    76,    87, STR_NULL,                STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE_DROPDOWN
+	{    WWT_TEXTBTN,   RESIZE_TB,     COLOUR_GREY,   186,   359,    76,    87, STR_SERVICE,             STR_SERVICE_HINT},                    // ORDER_WIDGET_SERVICE
 
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,     0,   123,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP},   // ORDER_WIDGET_COND_VARIABLE
 	{   WWT_DROPDOWN,   RESIZE_TB,     COLOUR_GREY,   124,   247,    76,    87, STR_NULL,                STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP}, // ORDER_WIDGET_COND_COMPARATOR
@@ -1201,6 +1244,7 @@ static const Widget _other_orders_widgets[] = {
 	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD_DROPDOWN
 	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_UNLOAD
 	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_REFIT
+	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SERVICE_DROPDOWN
 	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_SERVICE
 
 	{      WWT_EMPTY,   RESIZE_NONE,   COLOUR_GREY,     0,     0,    76,    87, 0x0,                STR_NULL},                            // ORDER_WIDGET_COND_VARIABLE
