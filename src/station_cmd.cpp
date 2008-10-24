@@ -2548,10 +2548,6 @@ static void ClickTile_Station(TileIndex tile)
 	}
 }
 
-static const byte _enter_station_speedtable[12] = {
-	215, 195, 175, 155, 135, 115, 95, 75, 55, 35, 15, 0
-};
-
 static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	StationID station_id = GetStationIndex(tile);
@@ -2568,12 +2564,13 @@ static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, i
 			if (DiagDirToAxis(dir) != AXIS_X) Swap(x, y);
 			if (y == TILE_SIZE / 2) {
 				if (dir != DIAGDIR_SE && dir != DIAGDIR_SW) x = TILE_SIZE - 1 - x;
-				if (x == 12) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); /* enter station */
-				if (x < 12) {
+				int stop = TILE_SIZE - (v->u.rail.cached_veh_length + 1) / 2;
+				if (x == stop) return VETSB_ENTERED_STATION | (VehicleEnterTileStatus)(station_id << VETS_STATION_ID_OFFSET); /* enter station */
+				if (x < stop) {
 					uint16 spd;
 
 					v->vehstatus |= VS_TRAIN_SLOWING;
-					spd = _enter_station_speedtable[x];
+					spd = max(0, (stop - x) * 20 - 15);
 					if (spd < v->cur_speed) v->cur_speed = spd;
 				}
 			}

@@ -4104,7 +4104,7 @@ static bool TrainApproachingLineEnd(Vehicle *v, bool signal)
 	}
 
 	/* do not reverse when approaching red signal */
-	if (!signal && x + 4 >= TILE_SIZE) {
+	if (!signal && x + (v->u.rail.cached_veh_length + 1) / 2 >= TILE_SIZE) {
 		/* we are too near the tile end, reverse now */
 		v->cur_speed = 0;
 		ReverseTrainDirection(v);
