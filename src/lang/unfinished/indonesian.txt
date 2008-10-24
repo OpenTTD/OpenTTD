@@ -658,6 +658,8 @@ STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Beli tan
 STR_032F_AUTOSAVE                                               :{RED}SIMPAN OTOMATIS
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Pilih program 'gaya music Ezy Street'
 
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 ############ end of townname region
@@ -984,6 +986,7 @@ STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu 
 ##id 0x3800
 
 ##id 0x4000
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}SImpan permainan saat ini, gunakan nama yang terpilih
 
 ##id 0x4800
 
@@ -993,10 +996,69 @@ STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu 
 ############ range for produces starts
 ############ range for produces ends
 
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Arahkan pandangan pada lokasi industri
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT} {STRING} baru sedang dibangun di dekat {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT} {STRING} baru sedang ditanam di dekat {TOWN}!
+STR_482F_COST                                                   :{BLACK}Biaya: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tidak dapat membangun industri tipe ini disini...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...hutan hanya dapat ditanam diatas batas salju
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} mengumumkan akan segera ditutup!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Masalah suplay mengakibatkan {STRING} mengumumkan akan segera ditutup!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Ketiadaan pepohonan didekatnya menyebabkan {STRING} mengumumkan akan segera ditutup!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} meningkatkan produksi!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Lapisan batu bara baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Cadangan minyak baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Peningkatan metode pertanian pada{INDUSTRY} diperkirakan produksi akan meningkat dua kali lipat!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produksi menurun hingga 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Serangan serangga menyebabkan malapetaka pada {INDUSTRY}!{}Produksi menurun hingga 50%
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...hanya dapat diletakkan didekat batas peta
 
 ##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Kereta Api sedang di dalam terowongan
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Kendaraan sedang di dalam terowongan
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Bersinggungan dengan terowongan lain
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tidak dapat menyesuaikan kemiringan tanah di ujung terowongan
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Terowongan harus dihancurkan terlebih dahulu
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Jembatan harus dihancurkan terlebih dahulu
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Tidak dapat awal dan akhir pada spot yang sama
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Awal dan akhir harus segaris
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lokasi tidak sesuai untuk jalur masuk terowongan
+STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :Suspensi, Baja
+STR_500F_GIRDER_STEEL                                           :Balok, Baja
+STR_5010_CANTILEVER_STEEL                                       :Beton, Baja
+STR_5011_SUSPENSION_CONCRETE                                    :Suspensi, Beton
+STR_5012_WOODEN                                                 :Kayu
+STR_5013_CONCRETE                                               :Beton
+STR_5014_TUBULAR_STEEL                                          :Pipa, Baja
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Tidak dapat membangun jembatan disini...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tidak dapat membangun terowongan disini...
+STR_5017_RAILROAD_TUNNEL                                        :Terowongan Kereta
+STR_5018_ROAD_TUNNEL                                            :Terowongan jalan
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Jembatan rel suspensi dan baja
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Jembatan rel balok dan baja
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Jembatan rel beton dan baja
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Jembatan rel suspensi beton bertulang
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Jembatan rel kayu
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Jembatan rel beton
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Jembatan jalan suspensi baja
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Jembatan jalan balok dan baja
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Jembatan jalan beton dan baja
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Jembatan jalan suspensi beton bertulang
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Jembatan jalan kayu
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Jembatan jalan beton
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Jembatan jalan pipa
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Jembatan jalan pipa
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objek diperjalanan
+STR_5801_TRANSMITTER                                            :Pemancar
+STR_5802_LIGHTHOUSE                                             :Mercusuar
+STR_5803_COMPANY_HEADQUARTERS                                   :Kantor Utama Perusahaan
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...kantor utama perusahaan di perjalanan
+STR_5805_COMPANY_OWNED_LAND                                     :Tanah milik Perusahaan
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Tidak dapat membeli area ini
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...anda sudah memilikinya!
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -1007,21 +1069,372 @@ STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu 
 ############ end of savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Tingkat kesulitan
 
 ############ range for difficulty levels starts
+STR_6801_EASY                                                   :{BLACK}Mudah
+STR_6802_MEDIUM                                                 :{BLACK}Sedang
+STR_6803_HARD                                                   :{BLACK}Sulit
+STR_6804_CUSTOM                                                 :{BLACK}Kustom
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimum jumlah pesaing: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Pesaing mulai pada waktu: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Jumlah kota: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Jumlah industri: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimum pinjaman: {ORANGE}{CURRENCY}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Membalikkan kereta: {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}Bencana alam: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_6816_LOW                                                    :Rendah
+STR_6817_NORMAL                                                 :Normal
+STR_6818_HIGH                                                   :Tinggi
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
+STR_681B_VERY_SLOW                                              :Sangat lambat
+STR_681C_SLOW                                                   :Lambat
+STR_681D_MEDIUM                                                 :Sedang
+STR_681E_FAST                                                   :Cepat
+STR_681F_VERY_FAST                                              :Sangat Cepat
+STR_6820_LOW                                                    :Rendah
+STR_6821_MEDIUM                                                 :Sedang
+STR_6822_HIGH                                                   :Tinggi
+STR_6823_NONE                                                   :Kosong
+STR_6824_REDUCED                                                :Dikurangi
+STR_6825_NORMAL                                                 :Normal
+STR_6826_X1_5                                                   :x1.5
+STR_6827_X2                                                     :x2
+STR_6828_X3                                                     :x3
+STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :Sangat Datar
+STR_682B_FLAT                                                   :Datar
+STR_682C_HILLY                                                  :Berbukit-bukit
+STR_682D_MOUNTAINOUS                                            :Bergunung-gunung
+STR_682E_STEADY                                                 :Stabil
+STR_682F_FLUCTUATING                                            :Berubah-ubah
+STR_6830_IMMEDIATE                                              :Segera
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 bulan setelah pemain
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 bulan setelah pemain
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 bulan setelah pemain
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Pada ujung jalur, dan pada stasiun
+STR_6835_AT_END_OF_LINE_ONLY                                    :Hanya pada ujung jalur
+STR_6836_OFF                                                    :Mati
+STR_6837_ON                                                     :Hidup
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Tampilkan tabel hi-score
 
 ##id 0x7000
+STR_7000                                                        :
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Perusahaan {COMMA})
+STR_7004_NEW_FACE                                               :{BLACK}Wajah Baru
+STR_7005_COLOR_SCHEME                                           :{BLACK}Warna tema
+STR_7006_COLOR_SCHEME                                           :{GOLD}Warna tema:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Warna tema baru
+STR_7008_COMPANY_NAME                                           :{BLACK}Nama Perusahaan
+STR_7009_PRESIDENT_NAME                                         :{BLACK}Nama Manajer
+STR_700A_COMPANY_NAME                                           :Nama Perusahaan
+STR_700B_PRESIDENT_S_NAME                                       :Nama Manajer
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Tidak dapat mengubah nama perusahaan
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Tidak dapat mengubah nama manajer...
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Keuangan {BLACK}{COMPANYNUM}
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Belanja / Pendapatan
+STR_7010                                                        :{WHITE}{NUM}
+STR_7011_CONSTRUCTION                                           :{GOLD}Konstruksi
+STR_7012_NEW_VEHICLES                                           :{GOLD}Kendaraan Baru
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Biaya Operasional Kereta Api
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Biaya Operasional Kendaraan darat
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Biaya Operasional Pesawat Udara
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Biaya Operasional Kapal
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Perawatan Properti
+STR_7018_TRAIN_INCOME                                           :{GOLD}Pendapatan Kereta Api
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Pendapatan Kendaraan darat
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Pendapatan Pesawat Udara
+STR_701B_SHIP_INCOME                                            :{GOLD}Pendapatan Kapal
+STR_701C_LOAN_INTEREST                                          :{GOLD}Bunga Pinjaman
+STR_701D_OTHER                                                  :{GOLD}Lain-lain
+STR_701E                                                        :{BLACK}-{CURRENCY}
+STR_701F                                                        :{BLACK}+{CURRENCY}
+STR_7020_TOTAL                                                  :{WHITE}Total:
+STR_7021                                                        :{COMPANY} {COMPANYNUM}
+STR_7022_INCOME_GRAPH                                           :{WHITE}Grafik Pendapatan
+STR_7024                                                        :{COMMA}
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Grafik Keuntungan
+STR_7026_BANK_BALANCE                                           :{WHITE}Saldo Bank
+STR_7027_LOAN                                                   :{WHITE}Hutang
+STR_7028                                                        :{BLACK}{CURRENCY}
+STR_7029_BORROW                                                 :{BLACK}Pinjam {SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Bayar {SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimum besar pinjaman yang diizinkan adalah {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Tidak dapat mminjam uang lagi...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...tidak ada hutang yang harus dibayar
+STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} dibutuhkan
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Tidak dapat membayar hutang...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Pilih wajah baru untuk manajer
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Ubah seragam kendaraan perusahaan
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Ubah nama manager
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Ubah nama perusahaan
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klik pada tema warna yang diinginkan
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Naikkan jumlah pinjaman
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Bayar sebagian pinjaman
+STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manajer)
+STR_7038_INAUGURATED                                            :{GOLD}Dilantik: {WHITE}{NUM}
+STR_7039_VEHICLES                                               :{GOLD}Kendaraan:
+STR_7042_NONE                                                   :{WHITE}Kosong
+STR_7043_FACE_SELECTION                                         :{WHITE}Pilihan Wajah
+STR_7044_MALE                                                   :{BLACK}Pria
+STR_7045_FEMALE                                                 :{BLACK}Wanita
+STR_7046_NEW_FACE                                               :{BLACK}Wajah Baru
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Batalkan pilihan wajah baru
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Terima pilihan wajah baru
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Pilih wajah pria
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Pilih wajah wanita
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Buat wajah baru secara acak
+STR_704C_KEY                                                    :{BLACK}Item
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Tampilkan grafik item
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Grafik item perusahaan
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klik disini untuk menandai daftar perusahaan pada grafik
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unit angkutan yang diantar
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Peringkat rating perusahaan (maksimum rating=1000)
+STR_7052_COMPANY_VALUES                                         :{WHITE}Nilai Perusahaan
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tabel Liga Perusahaan
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Perusahaan transportasi dalam masalah!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} akan dijual atau dinyatakan bangkrut kecuali jika dapat meningkatkan nilainya segera!
+STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Manajer)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Perusahaan transportasi bergabung!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} telah dijual kepada {STRING} senilai {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY}?
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bangkrut!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} telah ditutup oleh pemilik modal dan segala asetnya dijual!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Perusahaan transportasi baru didirikan!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} mulai dibangun di dekat {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Tidak dapat membeli perusahaan...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Tingkat tarif biaya angkutan
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Hari transit
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Pembayaran untuk mengirimkan 10 unit ( atau 10,000 liter ) untuk jarak 20 kotak
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Tandai grafik untuk tipe angkutan
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Engineer
+STR_7067_TRAFFIC_MANAGER                                        :Traffic Manager
+STR_7068_TRANSPORT_COORDINATOR                                  :Transport Coordinator
+STR_7069_ROUTE_SUPERVISOR                                       :Route Supervisor
+STR_706A_DIRECTOR                                               :Director
+STR_706B_CHIEF_EXECUTIVE                                        :Chief Executive
+STR_706C_CHAIRMAN                                               :Chairman
+STR_706D_PRESIDENT                                              :President
+STR_706E_TYCOON                                                 :Tycoon
+STR_706F_BUILD_HQ                                               :{BLACK}Bangun Kantor Utama
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Jual 25% saham perusahaan ini
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Tidak dapat membeli 25% saham perusahaan ini...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Tidak dapat menjual 25% saham perusahaan ini...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% dimiliki oleh {COMPANY})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} telah diambil alih oleh {STRING}!
 
 
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Kereta Uap)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Kereta Uap)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (Kereta Uap)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Kereta Uap)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (Kereta Uap)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Diesel)
+STR_800C_DASH_DIESEL                                            :'Dash' (Diesel)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Diesel)
+STR_800E_UU_37_DIESEL                                           :UU '37' (Diesel)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Diesel)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (Diesel)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (Diesel)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Diesel)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Diesel)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Diesel)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Diesel)
+STR_8016_SH_125_DIESEL                                          :SH '125' (Diesel)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (Kereta Listrik)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Kereta Listrik)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Kereta Listrik)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Kereta Listrik)
+STR_801B_PASSENGER_CAR                                          :Pengangkut Penumpang
+STR_801C_MAIL_VAN                                               :Van Dokumen
+STR_801D_COAL_CAR                                               :Truk Batubara
+STR_801E_OIL_TANKER                                             :Tangki Minyak
+STR_801F_LIVESTOCK_VAN                                          :Van Ternak
+STR_8020_GOODS_VAN                                              :Van Barang-barang
+STR_8021_GRAIN_HOPPER                                           :Pengangkut Biji-bijian
+STR_8022_WOOD_TRUCK                                             :Truk Kayu
+STR_8023_IRON_ORE_HOPPER                                        :Pengangkut Biji Besi
+STR_8024_STEEL_TRUCK                                            :Truk Baja
+STR_8025_ARMORED_VAN                                            :Van Berlapis baja
+STR_8026_FOOD_VAN                                               :Van Makanan
+STR_8027_PAPER_TRUCK                                            :Truk Kertas
+STR_8028_COPPER_ORE_HOPPER                                      :Pengangkut Biji Tembaga
+STR_8029_WATER_TANKER                                           :Tangki Air
+STR_802A_FRUIT_TRUCK                                            :Truk Buah
+STR_802B_RUBBER_TRUCK                                           :Truk Karet
+STR_802C_SUGAR_TRUCK                                            :Truk Gula
+STR_802D_COTTON_CANDY_HOPPER                                    :Pengangkut Harum Manis
+STR_802E_TOFFEE_HOPPER                                          :Pengangkut Kopi Toffee
+STR_802F_BUBBLE_VAN                                             :Van Gelembung
+STR_8030_COLA_TANKER                                            :Tangki Cola
+STR_8031_CANDY_VAN                                              :Van Manisan
+STR_8032_TOY_VAN                                                :Van Mainan
+STR_8033_BATTERY_TRUCK                                          :Truk Baterai
+STR_8034_FIZZY_DRINK_TRUCK                                      :Truk Minuman berdesis
+STR_8035_PLASTIC_TRUCK                                          :Truk Plastik
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Kereta Listrik)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Kereta Listrik)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Pengantar Penumpang
+STR_803A_MAIL_VAN                                               :Van Dokumen
+STR_803B_COAL_CAR                                               :Truk Batubara
+STR_803C_OIL_TANKER                                             :Tangki Minyak
+STR_803D_LIVESTOCK_VAN                                          :Van Ternak
+STR_803E_GOODS_VAN                                              :Van Barang-barang
+STR_803F_GRAIN_HOPPER                                           :Pengangkut Biji-bijian
+STR_8040_WOOD_TRUCK                                             :Truk Kayu
+STR_8041_IRON_ORE_HOPPER                                        :Pengangkut Biji Besi
+STR_8042_STEEL_TRUCK                                            :Truk Baja
+STR_8043_ARMORED_VAN                                            :Van Berlapis baja
+STR_8044_FOOD_VAN                                               :Van Makanan
+STR_8045_PAPER_TRUCK                                            :Truk kertas
+STR_8046_COPPER_ORE_HOPPER                                      :Pengangkut Biji Tembaga
+STR_8047_WATER_TANKER                                           :Tangki Air
+STR_8048_FRUIT_TRUCK                                            :Truk Buah-buahan
+STR_8049_RUBBER_TRUCK                                           :Truk Karet
+STR_804A_SUGAR_TRUCK                                            :Truk Gula
+STR_804B_COTTON_CANDY_HOPPER                                    :Pengangkut Harum Manis
+STR_804C_TOFFEE_HOPPER                                          :Pengangkut Toffee
+STR_804D_BUBBLE_VAN                                             :Van Gelembung
+STR_804E_COLA_TANKER                                            :Tangki Cola
+STR_804F_CANDY_VAN                                              :Van Manisan
+STR_8050_TOY_VAN                                                :Van Mainan
+STR_8051_BATTERY_TRUCK                                          :Truk Baterai
+STR_8052_FIZZY_DRINK_TRUCK                                      :Truk Minuman berdesis
+STR_8053_PLASTIC_TRUCK                                          :Truk Plastik
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Kereta Listrik)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Kereta Listrik)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Kereta Listrik)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Kereta Listrik)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR                                          :Pengangkut Penumpang
+STR_805A_MAIL_VAN                                               :Van Dokumen
+STR_805B_COAL_CAR                                               :Truk Batubara
+STR_805C_OIL_TANKER                                             :Tangki Minyak
+STR_805D_LIVESTOCK_VAN                                          :Van Ternak
+STR_805E_GOODS_VAN                                              :Van Barang-barang
+STR_805F_GRAIN_HOPPER                                           :Pengangkut Biji-bijian
+STR_8060_WOOD_TRUCK                                             :Truk Kayu
+STR_8061_IRON_ORE_HOPPER                                        :Pengankut Biji Besi
+STR_8062_STEEL_TRUCK                                            :Truk Baja
+STR_8063_ARMORED_VAN                                            :Van Berlapis baja
+STR_8064_FOOD_VAN                                               :Van Makanan
+STR_8065_PAPER_TRUCK                                            :Truk Kertas
+STR_8066_COPPER_ORE_HOPPER                                      :Pengangkut Biji Tembaga
+STR_8067_WATER_TANKER                                           :Tangki Air
+STR_8068_FRUIT_TRUCK                                            :Truk Buah-buahan
+STR_8069_RUBBER_TRUCK                                           :Truk Karet
+STR_806A_SUGAR_TRUCK                                            :Truk Gula
+STR_806B_COTTON_CANDY_HOPPER                                    :Pengangkut Harum Manis
+STR_806C_TOFFEE_HOPPER                                          :Pengangkut Kopi Toffee
+STR_806D_BUBBLE_VAN                                             :Van Gelembung
+STR_806E_COLA_TANKER                                            :Tangki Cola
+STR_806F_CANDY_VAN                                              :Van Manisan
+STR_8070_TOY_VAN                                                :Van Mainan
+STR_8071_BATTERY_TRUCK                                          :Truk Baterai
+STR_8072_FIZZY_DRINK_TRUCK                                      :Truk Minuman berdesis
+STR_8073_PLASTIC_TRUCK                                          :Truk Plastik
+STR_8074_MPS_REGAL_BUS                                          :Bus MPS Regal
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Bus Hereford Leopard
+STR_8076_FOSTER_BUS                                             :Bus Foster
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Superbus Foster MkII
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Bus Ploddyphut MkI
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Bus Ploddyphut MkII
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Bus Ploddyphut MkIII
+STR_807B_BALOGH_COAL_TRUCK                                      :Truk Batubara Balogh
+STR_807C_UHL_COAL_TRUCK                                         :Truk Batubara Uhl
+STR_807E_MPS_MAIL_TRUCK                                         :Truk Dokumen MPS
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Van Ternak Talbott
+STR_8088_UHL_LIVESTOCK_VAN                                      :Van Ternak Uhl
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Van Ternak Foster
+STR_808A_BALOGH_GOODS_TRUCK                                     :Truk Barang Balogh
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :ruk Barang Craighead
+STR_808C_GOSS_GOODS_TRUCK                                       :Truk Barang Goss
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Truk Biji-bijian Hereford
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Truk Biji-bijian Thomas
+STR_808F_GOSS_GRAIN_TRUCK                                       :Truk Biji-bijian Goss
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Truk Biji-bijian Witcombe
+STR_8091_FOSTER_WOOD_TRUCK                                      :Truk Kayu Foster
+STR_8092_MORELAND_WOOD_TRUCK                                    :Truk Kayu Moreland
+STR_8093_MPS_IRON_ORE_TRUCK                                     :Truk Biji Besi MPS
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Truk Biji Besi Uhl
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Truk Biji Besi Chippy
+STR_8096_BALOGH_STEEL_TRUCK                                     :Truk Baja Balogh
+STR_8097_UHL_STEEL_TRUCK                                        :Truk Baja Uhl
+STR_8098_KELLING_STEEL_TRUCK                                    :Truk Baja Kelling
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Truk Berlapis baja Balogh
+STR_809A_UHL_ARMORED_TRUCK                                      :Truk Berlapis baja Uhl
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Truk Berlapis baja Foster
+STR_809C_FOSTER_FOOD_VAN                                        :Van Makanan Foster
+STR_809D_PERRY_FOOD_VAN                                         :Van Makanan Perry
+STR_809E_CHIPPY_FOOD_VAN                                        :Van Makanan Chippy
+STR_809F_UHL_PAPER_TRUCK                                        :Truk Kertas Uhl
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Truk Kertas Balogh
+STR_80A1_MPS_PAPER_TRUCK                                        :Truk Kertas MPS
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :Truk Biji Tembaga MPS
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Truk Biji Tembaga Uhl
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Truk Biji Tembaga Goss
+STR_80A5_UHL_WATER_TANKER                                       :Tangki Air Uhl
+STR_80A6_BALOGH_WATER_TANKER                                    :Tangki Air Balogh
+STR_80A7_MPS_WATER_TANKER                                       :Tangki Air MPS
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Truk Buah Balogh
+STR_80A9_UHL_FRUIT_TRUCK                                        :Truk Buah Uhl
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Truk Buah Keling
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Truk Karet Balogh
+STR_80AC_UHL_RUBBER_TRUCK                                       :Truk Karet Uhl
+STR_80AD_RMT_RUBBER_TRUCK                                       :Truk Karet RMT
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :Truk Gula MightyMover
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Truk Gula Powernaught
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Truk Gula Wizzowow
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :Truk Cola MightyMover
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Truk Cola Powernaught
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Truk Cola Wizzowow
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :Truk Harum Manis MightyMover
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Truk Harum Manis Powernaught
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Truk Harum Manis Wizzowow
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :Truk Toffee MightyMover
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Truk Toffee Powernaught
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Truk Toffee Wizzowow
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :Van Mainan MightyMover
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Van Mainan Powernaught
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Van Mainan Wizzowow
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :Truk Manisan MightyMover
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Truk Manisan Powernaught
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Truk Manisan Wizzowow
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :Truk Baterai MightyMover
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Truk Baterai Powernaught
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Truk Baterai Wizzowow
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :Truk Minuman berdesis MightyMover
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Truk Minuman berdesis Powernaught
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Truk Minuman berdesis Wizzowow
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :Truk Plastik MightyMover
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Truk Plastik Powernaught
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Truk Plastik Wizzowow
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Truk Gelembung MightyMover
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Truk Gelembung Powernaught
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Truk Gelembung Wizzowow
+STR_80CC_MPS_OIL_TANKER                                         :Tangki Minyak MPS
 
 ##id 0x8800
+
 
 
 
