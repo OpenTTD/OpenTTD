@@ -417,7 +417,11 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			/* inclined foundation */
 			byte inclined = highest_corner * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);
 
-			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
+			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y,
+				f == FOUNDATION_INCLINED_X ? 16 : 1,
+				f == FOUNDATION_INCLINED_Y ? 16 : 1,
+				TILE_HEIGHT + 1, ti->z
+			);
 			OffsetGroundSprite(31, 9);
 		} else if (IsLeveledFoundation(f)) {
 			AddSortableSpriteToDraw(leveled_base + SlopeWithOneCornerRaised(highest_corner), PAL_NONE, ti->x, ti->y, 16, 16, 7, ti->z - TILE_HEIGHT);
@@ -462,7 +466,11 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			/* inclined foundation */
 			byte inclined = GetHighestSlopeCorner(ti->tileh) * 2 + (f == FOUNDATION_INCLINED_Y ? 1 : 0);
 
-			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y, 16, 16, 1, ti->z);
+			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y,
+				f == FOUNDATION_INCLINED_X ? 16 : 1,
+				f == FOUNDATION_INCLINED_Y ? 16 : 1,
+				TILE_HEIGHT + 1, ti->z
+			);
 			OffsetGroundSprite(31, 9);
 		}
 		ti->z += ApplyFoundationToSlope(f, &ti->tileh);
