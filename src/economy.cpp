@@ -11,6 +11,7 @@
 #include "command_func.h"
 #include "saveload.h"
 #include "industry.h"
+#include "industry_map.h"
 #include "town.h"
 #include "news_func.h"
 #include "network/network.h"
@@ -1238,47 +1239,98 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	return BigMulS(dist * time_factor * num_pieces, _cargo_payment_rates[cargo_type], 21);
 }
 
-static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pieces)
+
+struct FindIndustryToDeliverData {
+	const Rect *rect;            ///< Station acceptance rectangle
+	CargoID cargo_type;          ///< Cargo type that was delivered
+
+	Industry *ind;               ///< Returns found industry
+	const IndustrySpec *indspec; ///< Spec of ind
+	uint cargo_index;            ///< Index of cargo_type in acceptance list of ind
+};
+
+static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
 {
-	Industry *best = NULL;
-	Industry *ind;
-	const IndustrySpec *indspec;
-	uint best_dist;
-	uint accepted_cargo_index = 0;  ///< unlikely value, just for warning removing
+	FindIndustryToDeliverData *callback_data = (FindIndustryToDeliverData *)user_data;
+	const Rect *rect = callback_data->rect;
+	CargoID cargo_type = callback_data->cargo_type;
 
-	/* Check if there's an industry close to the station that accepts the cargo
-	 * XXX - Think of something better to
-	 *       1) Only deliver to industries which are withing the catchment radius
-	 *       2) Distribute between industries if more than one is present */
-	best_dist = (_settings_game.station.station_spread + 8) * 2;
-	FOR_ALL_INDUSTRIES(ind) {
-		indspec = GetIndustrySpec(ind->type);
-		uint i;
+	/* Only process industry tiles */
+	if (!IsTileType(ind_tile, MP_INDUSTRY)) return false;
 
-		for (i = 0; i < lengthof(ind->accepts_cargo); i++) {
-			if (cargo_type == ind->accepts_cargo[i]) break;
-		}
+	/* Only process tiles in the station acceptance rectangle */
+	int x = TileX(ind_tile);
+	int y = TileY(ind_tile);
+	if (x < rect->left || x > rect->right || y < rect->top || y > rect->bottom) return false;
 
-		/* Check if matching cargo has been found */
-		if (i == lengthof(ind->accepts_cargo)) continue;
+	Industry *ind = GetIndustryByTile(ind_tile);
+	const IndustrySpec *indspec = GetIndustrySpec(ind->type);
 
-		if (HasBit(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
-			uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->xy);
-			if (res == 0) continue;
-		}
+	uint cargo_index;
+	for (cargo_index = 0; cargo_index < lengthof(ind->accepts_cargo); cargo_index++) {
+		if (cargo_type == ind->accepts_cargo[cargo_index]) break;
+	}
+	/* Check if matching cargo has been found */
+	if (cargo_index >= lengthof(ind->accepts_cargo)) return false;
 
-		uint dist = DistanceManhattan(ind->xy, xy);
-
-		if (dist < best_dist) {
-			best = ind;
-			best_dist = dist;
-			accepted_cargo_index = i;
-		}
+	/* Check if industry temporarly refuses acceptance */
+	if (HasBit(indspec->callback_flags, CBM_IND_REFUSE_CARGO)) {
+		uint16 res = GetIndustryCallback(CBID_INDUSTRY_REFUSE_CARGO, 0, GetReverseCargoTranslation(cargo_type, indspec->grf_prop.grffile), ind, ind->type, ind->xy);
+		if (res == 0) return false;
 	}
 
-	/* Found one? */
-	if (best != NULL) {
-		indspec = GetIndustrySpec(best->type);
+	/* Found industry accepting the cargo */
+	callback_data->ind = ind;
+	callback_data->indspec = indspec;
+	callback_data->cargo_index = cargo_index;
+	return true;
+}
+
+/**
+ * Transfer goods from station to industry.
+ * All cargo is delivered to the nearest (Manhattan) industry to the station sign, which is inside the acceptance rectangle and actually accepts the cargo.
+ * @param st The station that accepted the cargo
+ * @param cargo_type Type of cargo delivered
+ * @param nun_pieces Amount of cargo delivered
+ */
+static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int num_pieces)
+{
+	if (st->rect.IsEmpty()) return;
+
+	/* Compute acceptance rectangle */
+	uint catchment_radius = st->GetCatchmentRadius();
+	Rect rect = {
+		max(st->rect.left   - catchment_radius, 0u),
+		max(st->rect.top    - catchment_radius, 0u),
+		min(st->rect.right  + catchment_radius, MapMaxX()),
+		min(st->rect.bottom + catchment_radius, MapMaxY())
+	};
+
+	/* Compute maximum extent of acceptance rectangle wrt. station sign */
+	TileIndex start_tile = st->xy;
+	uint max_radius = max(
+		max(DistanceManhattan(start_tile, TileXY(rect.left , rect.top)), DistanceManhattan(start_tile, TileXY(rect.left , rect.bottom))),
+		max(DistanceManhattan(start_tile, TileXY(rect.right, rect.top)), DistanceManhattan(start_tile, TileXY(rect.right, rect.bottom)))
+	);
+
+	FindIndustryToDeliverData callback_data;
+	callback_data.rect = &rect;
+	callback_data.cargo_type = cargo_type;
+	callback_data.ind = NULL;
+	callback_data.indspec = NULL;
+	callback_data.cargo_index = 0;
+
+	/* Find the nearest industrytile to the station sign inside the catchment area, whose industry accepts the cargo.
+	 * This fails in three cases:
+	 *  1) The station accepts the cargo because there are enough houses around it accepting the cargo.
+	 *  2) The industries in the catchment area temporarily reject the cargo, and the daily station loop has not yet updated station acceptance.
+	 *  3) The results of callbacks CBID_INDUSTRY_REFUSE_CARGO and CBID_INDTILE_CARGO_ACCEPTANCE are inconsistent. (documented behaviour)
+	 */
+	if (CircularTileSearch(&start_tile, 2 * max_radius + 1, FindIndustryToDeliver, &callback_data)) {
+		Industry *best = callback_data.ind;
+		const IndustrySpec *indspec = callback_data.indspec;
+		uint accepted_cargo_index = callback_data.cargo_index;
+		assert(best != NULL && indspec != NULL);
 		uint16 callback = indspec->callback_flags;
 
 		best->was_cargo_delivered = true;
@@ -1395,7 +1447,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	if (cs->town_effect == TE_WATER) s_to->town->new_act_water += num_pieces;
 
 	/* Give the goods to the industry. */
-	DeliverGoodsToIndustry(s_to->xy, cargo_type, num_pieces);
+	DeliverGoodsToIndustry(s_to, cargo_type, num_pieces);
 
 	/* Determine profit */
 	profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, s_to->xy), days_in_transit, cargo_type);
