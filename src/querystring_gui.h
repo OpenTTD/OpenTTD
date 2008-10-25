@@ -9,6 +9,16 @@
 #include "window_gui.h"
 
 /**
+ * Return values for HandleEditBoxKey
+ */
+enum HandleEditBoxResult
+{
+	HEBR_EDITING = 0, // Other key pressed.
+	HEBR_CONFIRM,     // Return or enter key pressed.
+	HEBR_CANCEL,      // Escape key pressed.
+};
+
+/**
  * Data stored about a string that can be modified in the GUI
  */
 struct QueryString {
@@ -35,7 +45,7 @@ struct QueryString {
 
 	void DrawEditBox(Window *w, int wid);
 	void HandleEditBox(Window *w, int wid);
-	int HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state);
+	HandleEditBoxResult HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state);
 };
 
 struct QueryStringBaseWindow : public Window, public QueryString {

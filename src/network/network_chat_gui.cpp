@@ -468,14 +468,14 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			_chat_tab_completion_active = false;
 			switch (this->HandleEditBoxKey(2, key, keycode, state)) {
 				default: NOT_REACHED();
-				case 0: {
+				case HEBR_EDITING: {
 					Window *osk = FindWindowById(WC_OSK, 0);
 					if (osk != NULL && osk->parent == this) osk->OnInvalidateData();
 				} break;
-				case 1: /* Return */
+				case HEBR_CONFIRM:
 					SendChat(this->text.buf, this->dtype, this->dest);
 				/* FALLTHROUGH */
-				case 2: /* Escape */ delete this; break;
+				case HEBR_CANCEL: delete this; break;
 			}
 		}
 		return state;

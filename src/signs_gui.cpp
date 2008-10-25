@@ -309,11 +309,13 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	{
 		EventState state = ES_NOT_HANDLED;
 		switch (this->HandleEditBoxKey(QUERY_EDIT_SIGN_WIDGET_TEXT, key, keycode, state)) {
-			case 1: // Enter pressed, confirms change
+			default: break;
+
+			case HEBR_CONFIRM:
 				if (RenameSign(this->cur_sign, this->text.buf)) break;
 				/* FALL THROUGH */
 
-			case 2: // ESC pressed, closes window, abandons changes
+			case HEBR_CANCEL: // close window, abandon changes
 				delete this;
 				break;
 		}

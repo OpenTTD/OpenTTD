@@ -960,14 +960,14 @@ bool HandleCaret(Textbuf *tb)
 	return false;
 }
 
-int QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state)
+HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode, Window::EventState &state)
 {
 	state = Window::ES_HANDLED;
 
 	switch (keycode) {
-		case WKC_ESC: return 2;
+		case WKC_ESC: return HEBR_CANCEL;
 
-		case WKC_RETURN: case WKC_NUM_ENTER: return 1;
+		case WKC_RETURN: case WKC_NUM_ENTER: return HEBR_CONFIRM;
 
 		case (WKC_CTRL | 'V'):
 			if (InsertTextBufferClipboard(&this->text)) w->InvalidateWidget(wid);
@@ -994,7 +994,7 @@ int QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key, uint16 keycode
 			}
 	}
 
-	return 0;
+	return HEBR_EDITING;
 }
 
 void QueryString::HandleEditBox(Window *w, int wid)
@@ -1124,13 +1124,13 @@ struct QueryStringWindow : public QueryStringBaseWindow
 		EventState state;
 		switch (this->HandleEditBoxKey(QUERY_STR_WIDGET_TEXT, key, keycode, state)) {
 			default: NOT_REACHED();
-			case 0: {
+			case HEBR_EDITING: {
 				Window *osk = FindWindowById(WC_OSK, 0);
 				if (osk != NULL && osk->parent == this) osk->OnInvalidateData();
 			} break;
-			case 1: this->OnOk(); // Enter pressed, confirms change
+			case HEBR_CONFIRM: this->OnOk();
 			/* FALL THROUGH */
-			case 2: delete this; break; // ESC pressed, closes window, abandons changes
+			case HEBR_CANCEL: delete this; break; // close window, abandon changes
 		}
 		return state;
 	}
@@ -1624,7 +1624,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 
 		EventState state = ES_NOT_HANDLED;
 		if ((_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) &&
-				this->HandleEditBoxKey(10, key, keycode, state) == 1) { // Press Enter
+				this->HandleEditBoxKey(10, key, keycode, state) == HEBR_CONFIRM) {
 			this->HandleButtonClick(12);
 		}
 

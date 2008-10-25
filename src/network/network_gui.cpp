@@ -668,7 +668,7 @@ public:
 			return state;
 		}
 
-		if (this->HandleEditBoxKey(NGWW_CLIENT, key, keycode, state) == 1) return state; // enter pressed
+		if (this->HandleEditBoxKey(NGWW_CLIENT, key, keycode, state) == HEBR_CONFIRM) return state;
 
 		/* The name is only allowed when it starts with a letter! */
 		if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
@@ -1047,7 +1047,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 	{
 		EventState state = ES_NOT_HANDLED;
 		if (this->field == NSSW_GAMENAME) {
-			if (this->HandleEditBoxKey(NSSW_GAMENAME, key, keycode, state) == 1) return state; // enter pressed
+			if (this->HandleEditBoxKey(NSSW_GAMENAME, key, keycode, state) == HEBR_CONFIRM) return state;
 
 			ttd_strlcpy(_settings_client.network.server_name, this->text.buf, sizeof(_settings_client.network.server_name));
 		}
@@ -1906,11 +1906,13 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 	{
 		EventState state;
 		switch (this->HandleEditBoxKey(4, key, keycode, state)) {
-			case 1: // Return
+			default: break;
+
+			case HEBR_CONFIRM:
 				this->OnOk();
 				/* FALL THROUGH */
 
-			case 2: // Escape
+			case HEBR_CANCEL:
 				delete this;
 				break;
 		}
