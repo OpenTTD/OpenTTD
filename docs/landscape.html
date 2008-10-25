@@ -513,6 +513,7 @@
    <td valign=top nowrap>&nbsp;</td>
    <td>
     <ul>
+     <li>m2: Index into the array of towns (owning town for town roads; closest town otherwise, INVALID_TOWN if not yet calculated)</li>
      <li>m3 bit 7 set = on snow or desert</li>
      <li>m7 bits 7..5: present road types
       <table>
@@ -534,7 +535,6 @@
      </li>
      <li>m5 bits 7 clear: road or level-crossing
       <ul>
-       <li>m2: Index into the array of towns, 0 for non-town roads</li>
        <li>m3 bits 6..4:
         <table>
          <tr>

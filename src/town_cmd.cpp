@@ -8,6 +8,7 @@
 #include "debug.h"
 #include "road_map.h"
 #include "road_internal.h" /* Cleaning up road bits */
+#include "road_cmd.h"
 #include "landscape.h"
 #include "town_map.h"
 #include "tunnel_map.h"
@@ -93,6 +94,12 @@ Town::~Town()
 				break;
 
 			case MP_ROAD:
+				if (!IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN) && GetTownIndex(tile) == this->index) {
+					/* Town-owned roads get cleared soon, anyway */
+					SetTownIndex(tile, (TownID)INVALID_TOWN);
+					break;
+				}
+				/* Fall-through */
 			case MP_TUNNELBRIDGE:
 				if (IsTileOwner(tile, OWNER_TOWN) &&
 						ClosestTownFromTile(tile, UINT_MAX) == this)
@@ -1558,6 +1565,7 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Town *t = new Town(tile);
 		_generating_world = true;
 		DoCreateTown(t, tile, townnameparts, (TownSizeMode)p2, p1);
+		InvalidateTownForRoadTile();
 		_generating_world = false;
 	}
 	return CommandCost();
@@ -2468,6 +2476,19 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 				IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)
 			)) {
 		return GetTownByTile(tile);
+	} else if (IsTileType(tile, MP_ROAD)) {
+		TownID town_id = GetTownIndex(tile);
+		Town *town;
+
+		if (town_id == INVALID_TOWN) {
+			town = CalcClosestTownFromTile(tile, UINT_MAX);
+			if (town != NULL) SetTownIndex(tile, town->index);
+		} else {
+			town = GetTown(town_id);
+		}
+
+		if (town != NULL && town->IsValid() && DistanceManhattan(tile, town->xy) < threshold) return town;
+		return NULL;
 	} else {
 		return CalcClosestTownFromTile(tile, threshold);
 	}

@@ -1590,7 +1590,7 @@ CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		/* Rebuild the drive throuhg road stop. As a road stop can only be
 		 * removed by the owner of the roadstop, _current_company is the
 		 * owner of the road stop. */
-		MakeRoadNormal(tile, road_bits, rts, is_towns_road ? ClosestTownFromTile(tile, UINT_MAX)->index : 0,
+		MakeRoadNormal(tile, road_bits, rts, ClosestTownFromTile(tile, UINT_MAX)->index,
 				is_towns_road ? OWNER_TOWN : _current_company, _current_company, _current_company);
 	}
 

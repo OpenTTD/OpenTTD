@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "map_func.h"
 #include "bridge_map.h"
 #include "bridge.h"
 #include "cmd_helper.h"
@@ -317,6 +318,11 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 						/* Includes MarkTileDirtyByTile() */
 						DoClearSquare(tile);
 					} else {
+						if (rt == ROADTYPE_ROAD && IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)) {
+							/* Promote ownership from tram or highway and invalidate town index */
+							SetRoadOwner(tile, ROADTYPE_ROAD, GetRoadOwner(tile, (HasBit(rts, ROADTYPE_TRAM) ? ROADTYPE_TRAM : ROADTYPE_HWAY)));
+							SetTownIndex(tile, (TownID)INVALID_TOWN);
+						}
 						SetRoadBits(tile, ROAD_NONE, rt);
 						SetRoadTypes(tile, rts);
 						MarkTileDirtyByTile(tile);
@@ -354,6 +360,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 					if (reserved) SetTrackReservation(tile, tracks);
 				} else {
 					SetRoadTypes(tile, rts);
+					/* If we ever get HWAY and it is possible without road then we will need to promote ownership and invalidate town index here, too */
 				}
 				MarkTileDirtyByTile(tile);
 				YapfNotifyTrackLayoutChange(tile, FindFirstTrack(GetTrackBits(tile)));
@@ -479,6 +486,10 @@ CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	/* Road pieces are max 4 bitset values (NE, NW, SE, SW) and town can only be non-zero
 	 * if a non-company is building the road */
 	if ((IsValidCompanyID(_current_company) && p2 != 0) || (_current_company == OWNER_TOWN && !IsValidTownID(p2))) return CMD_ERROR;
+	if (_current_company != OWNER_TOWN) {
+		const Town *town = CalcClosestTownFromTile(tile, UINT_MAX);
+		p2 = (town != NULL) ? town->index : (TownID)INVALID_TOWN;
+	}
 
 	RoadBits pieces = Extract<RoadBits, 0>(p1);
 
@@ -654,7 +665,7 @@ do_clear:;
 				if (existing == ROAD_NONE || rtt == ROAD_TILE_CROSSING) {
 					SetRoadTypes(tile, GetRoadTypes(tile) | RoadTypeToRoadTypes(rt));
 					SetRoadOwner(tile, rt, _current_company);
-					if (_current_company == OWNER_TOWN && rt == ROADTYPE_ROAD) SetTownIndex(tile, p2);
+					if (rt == ROADTYPE_ROAD) SetTownIndex(tile, p2);
 				}
 				if (rtt != ROAD_TILE_CROSSING) SetRoadBits(tile, existing | pieces, rt);
 			} break;
@@ -886,7 +897,7 @@ CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		Depot *dep = new Depot(tile);
 		dep->town_index = ClosestTownFromTile(tile, UINT_MAX)->index;
 
-		MakeRoadDepot(tile, _current_company, dir, rt);
+		MakeRoadDepot(tile, _current_company, dir, rt, dep->town_index);
 		MarkTileDirtyByTile(tile);
 	}
 	return cost.AddCost(_price.build_road_depot);
@@ -1260,6 +1271,18 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 		SpriteID image = dtss->image.sprite;
 
 		DrawSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE, x + pt.x, y + pt.y);
+	}
+}
+
+void InvalidateTownForRoadTile()
+{
+	TileIndex map_size = MapSize();
+
+	for (TileIndex t = 0; t < map_size; t++) {
+		if (IsTileType(t, MP_ROAD) && GetRoadOwner(t, ROADTYPE_ROAD) != OWNER_TOWN) {
+			/* GetRoadOwner(t, ROADTYPE_ROAD) is valid for road tiles even when there is no road */
+			SetTownIndex(t, (TownID)INVALID_TOWN);
+		}
 	}
 }
 

@@ -8,5 +8,6 @@
 #include "direction_type.h"
 
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt);
+void InvalidateTownForRoadTile();
 
 #endif /* ROAD_CMD_H */

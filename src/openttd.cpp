@@ -71,6 +71,7 @@
 #include "tree_map.h"
 #include "rail_map.h"
 #include "road_map.h"
+#include "road_cmd.h"
 #include "station_map.h"
 #include "town_map.h"
 #include "industry_map.h"
@@ -2561,6 +2562,9 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(103)) {
+		/* Non-town-owned roads now store the closest town */
+		InvalidateTownForRoadTile();
+
 		/* signs with invalid owner left from older savegames */
 		Sign *si;
 		FOR_ALL_SIGNS(si) {

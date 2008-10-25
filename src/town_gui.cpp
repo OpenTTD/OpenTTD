@@ -25,6 +25,7 @@
 #include "tilehighlight_func.h"
 #include "string_func.h"
 #include "sortlist_type.h"
+#include "road_cmd.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -731,6 +732,7 @@ public:
 					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
 				} else {
 					ScrollMainWindowToTile(t->xy);
+					InvalidateTownForRoadTile();
 				}
 			} break;
 
@@ -738,7 +740,11 @@ public:
 				this->HandleButtonClick(TSEW_MANYRANDOMTOWNS);
 
 				_generating_world = true;
-				if (!GenerateTowns()) ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+				if (!GenerateTowns()) {
+					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
+				} else {
+					InvalidateTownForRoadTile();
+				}
 				_generating_world = false;
 				break;
 
@@ -783,4 +789,3 @@ void ShowBuildTownWindow()
 	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_current_company)) return;
 	AllocateWindowDescFront<ScenarioEditorTownGenerationWindow>(&_scen_edit_town_gen_desc, 0);
 }
-

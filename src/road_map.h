@@ -189,7 +189,7 @@ static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
 
 static inline bool IsRoadOwner(TileIndex t, RoadType rt, Owner o)
 {
-	assert(HasTileRoadType(t, rt));
+	assert(rt == ROADTYPE_ROAD || HasTileRoadType(t, rt));
 	return (GetRoadOwner(t, rt) == o);
 }
 
@@ -451,11 +451,11 @@ static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner tram, Owner h
 }
 
 
-static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir, RoadType rt)
+static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir, RoadType rt, TownID town)
 {
 	SetTileType(t, MP_ROAD);
 	SetTileOwner(t, owner);
-	_m[t].m2 = 0;
+	_m[t].m2 = town;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = ROAD_TILE_DEPOT << 6 | dir;
