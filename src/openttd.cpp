@@ -190,8 +190,8 @@ static void ShowHelp()
 		"  -f                  = Fork into the background (dedicated only)\n"
 #endif
 #endif /* ENABLE_NETWORK */
-		"  -i                  = Force to use the DOS (0) or Windows (1) palette\n"
-		"                          (use this if you see a lot of pink)\n"
+		"  -i palette          = Force to use the DOS (0) or Windows (1) palette\n"
+		"                          (defines default setting when adding newgrfs)\n"
 		"  -I graphics_set     = Force the graphics set (see below)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
 		"  -x                  = Do not automatically save to config file on exit\n"
