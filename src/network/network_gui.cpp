@@ -1892,7 +1892,7 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 				break;
 
 			case NCPWW_PASSWORD:
-				ShowOnScreenKeyboard(this, NCPWW_PASSWORD, 2, 1);
+				ShowOnScreenKeyboard(this, NCPWW_PASSWORD, NCPWW_CANCEL, NCPWW_OK);
 				break;
 		}
 	}
