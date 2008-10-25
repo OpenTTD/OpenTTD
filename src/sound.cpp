@@ -23,43 +23,37 @@ MusicFileSettings msf;
 // Number of levels of panning per side
 #define PANNING_LEVELS 16
 
+/** The number of sounds in the original sample.cat */
+static const uint ORIGINAL_SAMPLE_COUNT = 73;
 
 static void OpenBankFile(const char *filename)
 {
-	uint i;
+	FileEntry *fe = CallocT<FileEntry>(ORIGINAL_SAMPLE_COUNT);
+	_file_count = ORIGINAL_SAMPLE_COUNT;
+	_files = fe;
 
 	FioOpenFile(SOUND_SLOT, filename);
 	size_t pos = FioGetPos();
 	uint count = FioReadDword() / 8;
 
 	/* Simple check for the correct number of original sounds. */
-	if (count != 73) {
+	if (count != ORIGINAL_SAMPLE_COUNT) {
+		/* Corrupt sample data? Just leave the allocated memory as those tell
+		 * there is no sound to play (size = 0 due to calloc). Not allocating
+		 * the memory disables valid NewGRFs that replace sounds. */
 		DEBUG(misc, 6, "Incorrect number of sounds in '%s', ignoring.", filename);
-		_file_count = 0;
-		_files = NULL;
 		return;
 	}
-
-	FileEntry *fe = CallocT<FileEntry>(count);
-
-	if (fe == NULL) {
-		_file_count = 0;
-		_files = NULL;
-		return;
-	}
-
-	_file_count = count;
-	_files = fe;
 
 	FioSeekTo(pos, SEEK_SET);
 
-	for (i = 0; i != count; i++) {
+	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++) {
 		fe[i].file_slot = SOUND_SLOT;
 		fe[i].file_offset = FioReadDword() + pos;
 		fe[i].file_size = FioReadDword();
 	}
 
-	for (i = 0; i != count; i++, fe++) {
+	for (uint i = 0; i != ORIGINAL_SAMPLE_COUNT; i++, fe++) {
 		char name[255];
 
 		FioSeekTo(fe->file_offset, SEEK_SET);
