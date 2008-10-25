@@ -195,6 +195,8 @@ public:
 	 * @return true if and only is the station exists
 	 */
 	inline bool IsValid() const { return this->xy != 0; }
+
+	uint GetCatchmentRadius() const;
 };
 
 static inline StationID GetMaxStationIndex()

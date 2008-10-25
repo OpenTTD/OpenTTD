@@ -97,24 +97,6 @@ static uint GetNumRoadStopsInStation(const Station *st, RoadStopType type)
 }
 
 
-/** Calculate the radius of the station. Basicly it is the biggest
- *  radius that is available within the station
- * @param st Station to query
- * @return the so calculated radius
- */
-static uint FindCatchmentRadius(const Station *st)
-{
-	uint ret = CA_NONE;
-
-	if (st->bus_stops   != NULL) ret = max<uint>(ret, CA_BUS);
-	if (st->truck_stops != NULL) ret = max<uint>(ret, CA_TRUCK);
-	if (st->train_tile  != 0)    ret = max<uint>(ret, CA_TRAIN);
-	if (st->dock_tile   != 0)    ret = max<uint>(ret, CA_DOCK);
-	if (st->airport_tile)        ret = max<uint>(ret, st->Airport()->catchment);
-
-	return ret;
-}
-
 #define CHECK_STATIONS_ERR ((Station*)-1)
 
 static Station *GetStationAround(TileIndex tile, int w, int h, StationID closest_station)
@@ -575,7 +557,7 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 			TileXY(rect.left, rect.bottom),
 			rect.right - rect.left   + 1,
 			rect.top   - rect.bottom + 1,
-			_settings_game.station.modified_catchment ? FindCatchmentRadius(st) : (uint)CA_UNMODIFIED
+			st->GetCatchmentRadius()
 		);
 	} else {
 		memset(accepts, 0, sizeof(accepts));
@@ -2907,7 +2889,7 @@ StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h)
 			const int y_min_prod = max_rad + 1;
 			const int y_max_prod = max_rad + h_prod;
 
-			int rad = FindCatchmentRadius(st);
+			int rad = st->GetCatchmentRadius();
 
 			int x_dist = min(w_cur - x_min_prod, x_max_prod - w_cur);
 			if (w_cur < x_min_prod) {

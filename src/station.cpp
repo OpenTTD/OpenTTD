@@ -246,6 +246,28 @@ bool Station::IsBuoy() const
 	return (had_vehicle_of_type & HVOT_BUOY) != 0;
 }
 
+/** Determines the catchment radius of the station
+ * @return The radius
+ */
+uint Station::GetCatchmentRadius() const
+{
+	uint ret = CA_NONE;
+
+	if (_settings_game.station.modified_catchment) {
+		if (this->bus_stops    != NULL) ret = max<uint>(ret, CA_BUS);
+		if (this->truck_stops  != NULL) ret = max<uint>(ret, CA_TRUCK);
+		if (this->train_tile   != 0)    ret = max<uint>(ret, CA_TRAIN);
+		if (this->dock_tile    != 0)    ret = max<uint>(ret, CA_DOCK);
+		if (this->airport_tile != 0)    ret = max<uint>(ret, this->Airport()->catchment);
+	} else {
+		if (this->bus_stops != NULL || this->truck_stops != NULL || this->train_tile != 0 || this->dock_tile != 0 || this->airport_tile != 0) {
+			ret = CA_UNMODIFIED;
+		}
+	}
+
+	return ret;
+}
+
 
 /************************************************************************/
 /*                     StationRect implementation                       */
