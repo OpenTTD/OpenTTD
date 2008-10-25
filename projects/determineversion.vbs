@@ -97,7 +97,7 @@ Function DetermineSVNVersion()
 		Dim file
 		' Write some "magic" to a temporary file so we can acquire the svn revision/state
 		Set file = FSO.CreateTextFile("tsvn_tmp", -1, 0)
-		file.WriteLine "r$WCREV$$WCMODS?M:$"
+		file.WriteLine "r$WCREV$"
 		file.WriteLine "$WCURL$"
 		file.WriteLine "$WCMODS?2:0$"
 		file.WriteLine "$WCREV$"
