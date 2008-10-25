@@ -1298,12 +1298,12 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
 	if (st->rect.IsEmpty()) return;
 
 	/* Compute acceptance rectangle */
-	uint catchment_radius = st->GetCatchmentRadius();
+	int catchment_radius = st->GetCatchmentRadius();
 	Rect rect = {
-		max(st->rect.left   - catchment_radius, 0u),
-		max(st->rect.top    - catchment_radius, 0u),
-		min(st->rect.right  + catchment_radius, MapMaxX()),
-		min(st->rect.bottom + catchment_radius, MapMaxY())
+		max<int>(st->rect.left   - catchment_radius, 0),
+		max<int>(st->rect.top    - catchment_radius, 0),
+		min<int>(st->rect.right  + catchment_radius, MapMaxX()),
+		min<int>(st->rect.bottom + catchment_radius, MapMaxY())
 	};
 
 	/* Compute maximum extent of acceptance rectangle wrt. station sign */
