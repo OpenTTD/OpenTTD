@@ -1432,6 +1432,56 @@ STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Truk Gelembung 
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Truk Gelembung Powernaught
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Truk Gelembung Wizzowow
 STR_80CC_MPS_OIL_TANKER                                         :Tangki Minyak MPS
+STR_80CD_CS_INC_OIL_TANKER                                      :Tangki Minyak CS-Inc
+STR_80CE_MPS_PASSENGER_FERRY                                    :Ferry Penumpang MPS
+STR_80CF_FFP_PASSENGER_FERRY                                    :Ferry Penumpang FFP
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Kapal hovercraft Bakewell 300
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Ferry Penumpang Chugger-Chug
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Ferry Penumpang Shivershake
+STR_80D3_YATE_CARGO_SHIP                                        :Kapal Cargo Yate
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Kapal Cargo Bakewell
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Kapal Cargo MightyMover
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Kapal Cargo Powernaught
+STR_80D7_SAMPSON_U52                                            :Sampson U52
+STR_80D8_COLEMAN_COUNT                                          :Coleman Count
+STR_80D9_FFP_DART                                               :FFP Dart
+STR_80DA_YATE_HAUGAN                                            :Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100                                             :Darwin 100
+STR_80E3_DARWIN_200                                             :Darwin 200
+STR_80E4_DARWIN_300                                             :Darwin 300
+STR_80E5_DARWIN_400                                             :Darwin 400
+STR_80E6_DARWIN_500                                             :Darwin 500
+STR_80E7_DARWIN_600                                             :Darwin 600
+STR_80E8_GURU_GALAXY                                            :Guru Galaxy
+STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
+STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
+STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
+STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
+STR_80EE_DINGER_100                                             :Dinger 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
 
 ##id 0x8800
 

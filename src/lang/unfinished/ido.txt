@@ -148,6 +148,37 @@ STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFON
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Kandi-lanugo Foresto
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Bonbono Fabrikerio
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Baterio Farmo
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Ludilo Butiko
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Ludilo Fabrikerio
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastika Fonteno
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Gasoza Drinkajo Fabrikerio
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Bulo Generatoro
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Karamelo-Mineyo
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Sukro-Mineyo
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Fervoyala Staciono
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Kamiono-Kayo
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Autobuso Staciono
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aeroportuo/Heliportuo
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Portuo
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Ruda Tereno
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Herbo
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Nudiga Tereno
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Agri
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}Arbori
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Roki
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}Aquo
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Ne proprietanto
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Urbi
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Industrii
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Dezerto
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Nivo
+STR_012C_MESSAGE                                                :{WHITE}Sendajo
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}Anular
+STR_012F_OK                                                     :{BLACK}OK
+STR_0130_RENAME                                                 :{BLACK}Rinomizar
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Tro multa nomi definita
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Selektita nomo ja uzata
 
 
 
@@ -375,6 +406,7 @@ STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFON
 ##id 0x8000
 
 ##id 0x8800
+
 
 
 

@@ -854,7 +854,7 @@ STR_0307_OPENTTD                                                :{WHITE}OpenTTD 
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...도시에만 건설할 수 있습니다!
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}온대 기후 선택
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}냉대 기후 선택
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}열대 기후 선택
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}아열대 기후 선택
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}장난감나라 선택
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}새 산업시설에 투자
 
@@ -1180,7 +1180,7 @@ STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호�
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :경로 신호기
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 경로 신호기
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 신호기
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}신호기 종류를 통한 순환: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :경로 신호기만
@@ -1241,7 +1241,7 @@ STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(비�
 
 STR_TEMPERATE_LANDSCAPE                                         :온대 기후
 STR_SUB_ARCTIC_LANDSCAPE                                        :냉대 기후
-STR_SUB_TROPICAL_LANDSCAPE                                      :열대 기후
+STR_SUB_TROPICAL_LANDSCAPE                                      :아열대 기후
 STR_TOYLAND_LANDSCAPE                                           :장난감 나라
 
 STR_CHEATS                                                      :{WHITE}치트
@@ -2754,6 +2754,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} 격납고
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :항상 감
+STR_ORDER_DROP_SERVICE_DEPOT                                    :필요하면 점검
+STR_ORDER_DROP_HALT_DEPOT                                       :멈춤
+
 STR_ORDER_CONDITIONAL                                           :조건부 경로 건너뛰기
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}경로를 건너뛰기 위한 차량값
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}차량 데이터와 주어진 값을 비교하는 방법
@@ -2824,6 +2828,8 @@ STR_8826_GO_TO                                                  :{BLACK}행선�
 STR_REFIT                                                       :{BLACK}개조
 STR_REFIT_TIP                                                   :{BLACK}이 경로에서 어떤 화물을 받을 것인지 선택하십시오. CTRL+클릭은 제거입니다.
 STR_REFIT_ORDER                                                 :({STRING}(으)로 개조)
+STR_REFIT_STOP_ORDER                                            :({STRING}에서 수리 후 멈춤)
+STR_STOP_ORDER                                                  :(멈춤)
 STR_TIMETABLE_VIEW                                              :{BLACK}시간표
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}시간표 보기 전환
 STR_ORDER_VIEW                                                  :{BLACK}순서
@@ -3625,7 +3631,7 @@ STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-�
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}일방통행 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}드래그시 신호기 간격
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}드래그시 신호기 간격 감소

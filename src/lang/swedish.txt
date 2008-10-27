@@ -2754,6 +2754,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Åk alltid
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Service vid behov
+STR_ORDER_DROP_HALT_DEPOT                                       :Stanna
+
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fordonsdata att basera hoppning på
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How-to: Jämför fordonsdata med givet värde
@@ -2824,6 +2828,8 @@ STR_8826_GO_TO                                                  :{BLACK}Gå Till
 STR_REFIT                                                       :{BLACK}Anpassa
 STR_REFIT_TIP                                                   :{BLACK}Välj vilken godstyp anpassningen ska göras i denna order. CTRL+ klicka för att ta bort anpassningsordern
 STR_REFIT_ORDER                                                 :(Anpassa för {STRING})
+STR_REFIT_STOP_ORDER                                            :(Anpassa för {STRING} och stanna)
+STR_STOP_ORDER                                                  :(Stanna)
 STR_TIMETABLE_VIEW                                              :{BLACK}Tidtabell
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Ändra till tidtabellsvy
 STR_ORDER_VIEW                                                  :{BLACK}Order

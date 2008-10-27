@@ -2755,6 +2755,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} Hangar de {STATION}
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ir sempre
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Facer servicio se é necesario
+STR_ORDER_DROP_HALT_DEPOT                                       :Parar
+
 STR_ORDER_CONDITIONAL                                           :Salto de orde condicional
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datos do vehículo para basa lo salto
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como compara-los datos do vehículo co dato proporcionado
@@ -2825,6 +2829,8 @@ STR_8826_GO_TO                                                  :{BLACK}Ir a
 STR_REFIT                                                       :{BLACK}Reaxustar
 STR_REFIT_TIP                                                   :{BLACK}Selecciona o tipo de carga para reaxustar nesta orde. CTRL+click para quita la instrucción de reaxuste
 STR_REFIT_ORDER                                                 :(Reaxustar a {STRING})
+STR_REFIT_STOP_ORDER                                            :(Reaxustar a {STRING} e parar)
+STR_STOP_ORDER                                                  :(Parar)
 STR_TIMETABLE_VIEW                                              :{BLACK}Horario
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Cambiar á vista de horarios
 STR_ORDER_VIEW                                                  :{BLACK}Ordes

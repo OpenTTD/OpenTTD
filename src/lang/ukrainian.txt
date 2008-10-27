@@ -2916,6 +2916,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Ангар
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Завжди рухатись
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Обслуговувати при потребі
+STR_ORDER_DROP_HALT_DEPOT                                       :Зупинити
+
 STR_ORDER_CONDITIONAL                                           :Зміна наказу з умовою
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Дані транспорту для базування наказу
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Як порівнювати дані транспорту з заданим значенням
@@ -2986,6 +2990,8 @@ STR_8826_GO_TO                                                  :{BLACK}Прям
 STR_REFIT                                                       :{BLACK}Переобладнати
 STR_REFIT_TIP                                                   :{BLACK}Оберіть на який тип вантажу переобладнати це завдання. Control+клік видалити команду переобладнання
 STR_REFIT_ORDER                                                 :(Переобладнати до {STRING})
+STR_REFIT_STOP_ORDER                                            :(Переобладнати на {STRING} і зупинити)
+STR_STOP_ORDER                                                  :(зупинити)
 STR_TIMETABLE_VIEW                                              :{BLACK}Розклад
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Переключитись на розклад
 STR_ORDER_VIEW                                                  :{BLACK}Завдання
