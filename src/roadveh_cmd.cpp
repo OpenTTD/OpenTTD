@@ -1796,7 +1796,10 @@ again:
 		return false;
 	}
 
-	if (v->current_order.IsType(OT_LEAVESTATION) && IsDriveThroughStopTile(v->tile)) v->current_order.Free();
+	if (v->current_order.IsType(OT_LEAVESTATION) && IsDriveThroughStopTile(v->tile)) {
+		v->current_order.Free();
+		ClearSlot(v);
+	}
 
 	/* Move to next frame unless vehicle arrived at a stop position
 	 * in a depot or entered a tunnel/bridge */
