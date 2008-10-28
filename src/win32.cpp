@@ -177,14 +177,14 @@ static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 }
 
 
-static char *PrintModuleInfo(char *output, HMODULE mod)
+static char *PrintModuleInfo(char *output, const char *last, HMODULE mod)
 {
 	TCHAR buffer[MAX_PATH];
 	DebugFileInfo dfi;
 
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);
-	output += sprintf(output, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n",
+	output += seprintf(output, last, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n",
 		WIDE_TO_MB(buffer),
 		mod,
 		dfi.size,
@@ -199,7 +199,7 @@ static char *PrintModuleInfo(char *output, HMODULE mod)
 	return output;
 }
 
-static char *PrintModuleList(char *output)
+static char *PrintModuleList(char *output, const char *last)
 {
 	BOOL (WINAPI *EnumProcessModules)(HANDLE, HMODULE*, DWORD, LPDWORD);
 
@@ -215,12 +215,12 @@ static char *PrintModuleList(char *output)
 			if (res) {
 				size_t count = min(needed / sizeof(HMODULE), lengthof(modules));
 
-				for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, modules[i]);
+				for (size_t i = 0; i != count; i++) output = PrintModuleInfo(output, last, modules[i]);
 				return output;
 			}
 		}
 	}
-	output = PrintModuleInfo(output, NULL);
+	output = PrintModuleInfo(output, last, NULL);
 	return output;
 }
 
@@ -464,6 +464,9 @@ static void GamelogPrintCrashLogProc(const char *s)
 	WriteFile(_file_crash_log, "\r\n", (DWORD)strlen("\r\n"), &num_written, NULL);
 }
 
+/** Amount of output for the execption handler. */
+static const int EXCEPTION_OUTPUT_SIZE = 8192;
+
 static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
 	char *output;
@@ -475,12 +478,13 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	_ident = GetTickCount(); // something pretty unique
 
 	MakeCRCTable(AllocaM(uint32, 256));
-	_crash_msg = output = (char*)LocalAlloc(LMEM_FIXED, 8192);
+	_crash_msg = output = (char*)LocalAlloc(LMEM_FIXED, EXCEPTION_OUTPUT_SIZE);
+	const char *last = output + EXCEPTION_OUTPUT_SIZE - 1;
 
 	{
 		SYSTEMTIME time;
 		GetLocalTime(&time);
-		output += sprintf(output,
+		output += seprintf(output, last,
 			"*** OpenTTD Crash Report ***\r\n"
 			"Date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n"
 			"Build: %s built on " __DATE__ " " __TIME__ "\r\n",
@@ -495,12 +499,12 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	}
 
 	if (_exception_string)
-		output += sprintf(output, "Reason: %s\r\n", _exception_string);
+		output += seprintf(output, last, "Reason: %s\r\n", _exception_string);
 
-	output += sprintf(output, "Language: %s\r\n", _dynlang.curr_file);
+	output += seprintf(output, last, "Language: %s\r\n", _dynlang.curr_file);
 
 #ifdef _M_AMD64
-	output += sprintf(output, "Exception %.8X at %.16IX\r\n"
+	output += seprintf(output, last, "Exception %.8X at %.16IX\r\n"
 		"Registers:\r\n"
 		"RAX: %.16llX RBX: %.16llX RCX: %.16llX RDX: %.16llX\r\n"
 		"RSI: %.16llX RDI: %.16llX RBP: %.16llX RSP: %.16llX\r\n"
@@ -530,7 +534,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		ep->ContextRecord->EFlags
 	);
 #else
-	output += sprintf(output, "Exception %.8X at %.8p\r\n"
+	output += seprintf(output, last, "Exception %.8X at %.8p\r\n"
 		"Registers:\r\n"
 		" EAX: %.8X EBX: %.8X ECX: %.8X EDX: %.8X\r\n"
 		" ESI: %.8X EDI: %.8X EBP: %.8X ESP: %.8X\r\n"
@@ -560,13 +564,13 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		int i;
 		for (i = 0; i != 24; i++) {
 			if (IsBadReadPtr(b, 1)) {
-				output += sprintf(output, " ??"); // OCR: WAS: , 0);
+				output += seprintf(output, last, " ??"); // OCR: WAS: , 0);
 			} else {
-				output += sprintf(output, " %.2X", *b);
+				output += seprintf(output, last, " %.2X", *b);
 			}
 			b++;
 		}
-		output += sprintf(output,
+		output += seprintf(output, last,
 			"\r\n"
 			"\r\nStack trace: \r\n"
 		);
@@ -582,24 +586,24 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 		for (j = 0; j != 24; j++) {
 			for (i = 0; i != 8; i++) {
 				if (IsBadReadPtr(b, sizeof(uint32))) {
-					output += sprintf(output, " ????????"); //OCR: WAS - , 0);
+					output += seprintf(output, last, " ????????"); //OCR: WAS - , 0);
 				} else {
-					output += sprintf(output, " %.8X", *b);
+					output += seprintf(output, last, " %.8X", *b);
 				}
 				b++;
 			}
-			output += sprintf(output, "\r\n");
+			output += seprintf(output, last, "\r\n");
 		}
 	}
 
-	output += sprintf(output, "\r\nModule information:\r\n");
-	output = PrintModuleList(output);
+	output += seprintf(output, last, "\r\nModule information:\r\n");
+	output = PrintModuleList(output, last);
 
 	{
 		_OSVERSIONINFOA os;
 		os.dwOSVersionInfoSize = sizeof(os);
 		GetVersionExA(&os);
-		output += sprintf(output, "\r\nSystem information:\r\n"
+		output += seprintf(output, last, "\r\nSystem information:\r\n"
 			" Windows version %d.%d %d %s\r\n\r\n",
 			os.dwMajorVersion, os.dwMinorVersion, os.dwBuildNumber, os.szCSDVersion);
 	}

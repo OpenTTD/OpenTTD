@@ -27,7 +27,7 @@ static long CDECL MidiSendCommand(const char *cmd, ...)
 	va_list va;
 	char buf[512];
 	va_start(va, cmd);
-	vsprintf(buf, cmd, va);
+	vseprintf(buf, lastof(buf), cmd, va);
 	va_end(va);
 	return mciSendString(buf, NULL, 0, NULL, 0);
 }

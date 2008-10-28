@@ -95,9 +95,9 @@ char *FiosBrowseTo(const FiosItem *item)
 	switch (item->type) {
 		case FIOS_TYPE_DRIVE:
 #if defined(WINCE)
-			sprintf(path, PATHSEP "");
+			snprintf(path, MAX_PATH, PATHSEP "");
 #elif defined(WIN32) || defined(__OS2__)
-			sprintf(path, "%c:" PATHSEP, item->title[0]);
+			snprintf(path, MAX_PATH, "%c:" PATHSEP, item->title[0]);
 #endif
 		/* Fallthrough */
 		case FIOS_TYPE_INVALID:
@@ -124,7 +124,7 @@ char *FiosBrowseTo(const FiosItem *item)
 			break;
 
 		case FIOS_TYPE_DIRECT:
-			sprintf(path, "%s", item->name);
+			snprintf(path, MAX_PATH, "%s", item->name);
 			break;
 
 		case FIOS_TYPE_FILE:

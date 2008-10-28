@@ -1512,7 +1512,7 @@ struct NetworkClientListPopupWindow : Window {
 			GetString(this->action[i], STR_NETWORK_CLIENTLIST_KICK, lastof(this->action[i]));
 			this->proc[i++] = &ClientList_Kick;
 
-			sprintf(this->action[i],"Ban"); // XXX GetString?
+			seprintf(this->action[i], lastof(this->action[i]), "Ban"); // XXX GetString?
 			this->proc[i++] = &ClientList_Ban;
 		}
 
