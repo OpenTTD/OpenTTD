@@ -14,6 +14,23 @@
 #include <stdarg.h>
 #include <ctype.h> // required for tolower()
 
+/**
+ * Safer implementation of vsnprintf; same as vsnprintf except:
+ * - last instead of size, i.e. replace sizeof with lastof.
+ * - return gives the amount of characters added, not what it would add.
+ * @param str    buffer to write to up to last
+ * @param last   last character we may write to
+ * @param format the formatting (see snprintf)
+ * @param ap     the list of arguments for the format
+ * @return the number of added characters
+ */
+static int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
+{
+	if (str >= last) return 0;
+	size_t size = last - str;
+	return min((int)size, vsnprintf(str, size, format, ap));
+}
+
 void ttd_strlcat(char *dst, const char *src, size_t size)
 {
 	assert(size > 0);
@@ -203,24 +220,6 @@ int CDECL seprintf(char *str, const char *last, const char *format, ...)
 	va_end(ap);
 	return ret;
 }
-
-/**
- * Safer implementation of vsnprintf; same as vsnprintf except:
- * - last instead of size, i.e. replace sizeof with lastof.
- * - return gives the amount of characters added, not what it would add.
- * @param str    buffer to write to up to last
- * @param last   last character we may write to
- * @param format the formatting (see snprintf)
- * @param ap     the list of arguments for the format
- * @return the number of added characters
- */
-int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
-{
-	if (str >= last) return 0;
-	size_t size = last - str;
-	return min((int)size, vsnprintf(str, size, format, ap));
-}
-
 
 
 /** Convert the md5sum to a hexadecimal string representation

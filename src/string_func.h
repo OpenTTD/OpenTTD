@@ -42,7 +42,6 @@ char *strecat(char *dst, const char *src, const char *last);
 char *strecpy(char *dst, const char *src, const char *last);
 
 int CDECL seprintf(char *str, const char *last, const char *format, ...);
-int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap);
 
 char *CDECL str_fmt(const char *str, ...);
 
