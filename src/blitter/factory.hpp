@@ -119,13 +119,13 @@ public:
 
 	static char *GetBlittersInfo(char *p, const char *last)
 	{
-		p += snprintf(p, last - p, "List of blitters:\n");
+		p += seprintf(p, last, "List of blitters:\n");
 		Blitters::iterator it = GetBlitters().begin();
 		for (; it != GetBlitters().end(); it++) {
 			BlitterFactoryBase *b = (*it).second;
-			p += snprintf(p, last - p, "%18s: %s\n", b->name, b->GetDescription());
+			p += seprintf(p, last, "%18s: %s\n", b->name, b->GetDescription());
 		}
-		p += snprintf(p, last - p, "\n");
+		p += seprintf(p, last, "\n");
 
 		return p;
 	}

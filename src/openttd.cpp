@@ -166,7 +166,7 @@ static void ShowHelp()
 	char buf[4096];
 	char *p = buf;
 
-	p += snprintf(p, lengthof(buf), "OpenTTD %s\n", _openttd_revision);
+	p += seprintf(p, lastof(buf), "OpenTTD %s\n", _openttd_revision);
 	p = strecpy(p,
 		"\n"
 		"\n"

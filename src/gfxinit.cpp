@@ -240,10 +240,11 @@ void CheckExternalFiles()
 	char error_msg[ERROR_MESSAGE_LENGTH * (MAX_GFT + 1)];
 	error_msg[0] = '\0';
 	char *add_pos = error_msg;
+	const char *last = lastof(error_msg);
 
 	for (uint i = 0; i < lengthof(_used_graphics_set->files); i++) {
 		if (!FileMD5(_used_graphics_set->files[i])) {
-			add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your '%s' file is corrupted or missing! %s\n", _used_graphics_set->files[i].filename, _used_graphics_set->files[i].missing_warning);
+			add_pos += seprintf(add_pos, last, "Your '%s' file is corrupted or missing! %s\n", _used_graphics_set->files[i].filename, _used_graphics_set->files[i].missing_warning);
 		}
 	}
 
@@ -253,7 +254,7 @@ void CheckExternalFiles()
 	}
 
 	if (!sound) {
-		add_pos += snprintf(add_pos, ERROR_MESSAGE_LENGTH, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
+		add_pos += seprintf(add_pos, last, "Your 'sample.cat' file is corrupted or missing! You can find 'sample.cat' on your Transport Tycoon Deluxe CD-ROM.\n");
 	}
 
 	if (add_pos != error_msg) ShowInfoF(error_msg);
@@ -526,19 +527,19 @@ bool SetGraphicsSet(const char *name)
  */
 char *GetGraphicsSetsList(char *p, const char *last)
 {
-	p += snprintf(p, last - p, "List of graphics sets:\n");
+	p += seprintf(p, last, "List of graphics sets:\n");
 	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
 		if (g->found_grfs <= 1) continue;
 
-		p += snprintf(p, last - p, "%18s: %s", g->name, g->description);
+		p += seprintf(p, last, "%18s: %s", g->name, g->description);
 		int difference = MAX_GFT - g->found_grfs;
 		if (difference != 0) {
-			p += snprintf(p, last - p, " (missing %i file%s)\n", difference, difference == 1 ? "" : "s");
+			p += seprintf(p, last, " (missing %i file%s)\n", difference, difference == 1 ? "" : "s");
 		} else {
-			p += snprintf(p, last - p, "\n");
+			p += seprintf(p, last, "\n");
 		}
 	}
-	p += snprintf(p, last - p, "\n");
+	p += seprintf(p, last, "\n");
 
 	return p;
 }

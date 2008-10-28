@@ -479,7 +479,7 @@ char *GRFBuildParamList(char *dst, const GRFConfig *c, const char *last)
 
 	for (i = 0; i < c->num_params; i++) {
 		if (i > 0) dst = strecpy(dst, " ", last);
-		dst += snprintf(dst, last - dst, "%d", c->param[i]);
+		dst += seprintf(dst, last, "%d", c->param[i]);
 	}
 	return dst;
 }

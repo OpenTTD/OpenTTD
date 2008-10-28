@@ -271,7 +271,7 @@ static char *FormatNoCommaNumber(char *buff, int64 number, const char *last)
 
 static char *FormatHexNumber(char *buff, int64 number, const char *last)
 {
-	return buff + snprintf(buff, last - buff, "0x%x", (uint32)number);
+	return buff + seprintf(buff, last, "0x%x", (uint32)number);
 }
 
 static char *FormatYmdString(char *buff, Date date, const char* last)
@@ -1198,8 +1198,8 @@ static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const 
 	/* resolution size? */
 	if (IsInsideMM(ind, (SPECSTR_RESOLUTION_START - 0x70E4), (SPECSTR_RESOLUTION_END - 0x70E4) + 1)) {
 		int i = ind - (SPECSTR_RESOLUTION_START - 0x70E4);
-		buff += snprintf(
-			buff, last - buff + 1, "%dx%d", _resolutions[i].width, _resolutions[i].height
+		buff += seprintf(
+			buff, last, "%dx%d", _resolutions[i].width, _resolutions[i].height
 		);
 		return buff;
 	}

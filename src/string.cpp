@@ -6,6 +6,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "core/alloc_func.hpp"
+#include "core/math_func.hpp"
 #include "string_func.h"
 
 #include "table/control_codes.h"
@@ -59,17 +60,16 @@ char* strecpy(char* dst, const char* src, const char* last)
 }
 
 
-char* CDECL str_fmt(const char* str, ...)
+char *CDECL str_fmt(const char *str, ...)
 {
 	char buf[4096];
 	va_list va;
-	int len;
 
 	va_start(va, str);
-	len = vsnprintf(buf, lengthof(buf), str, va);
+	int len = vseprintf(buf, lastof(buf), str, va);
 	va_end(va);
-	char* p = MallocT<char>(len + 1);
-	if (p != NULL) memcpy(p, buf, len + 1);
+	char *p = MallocT<char>(len + 1);
+	memcpy(p, buf, len + 1);
 	return p;
 }
 
@@ -185,6 +185,43 @@ int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
 
 #endif /* WIN32 */
 
+/**
+ * Safer implementation of snprintf; same as snprintf except:
+ * - last instead of size, i.e. replace sizeof with lastof.
+ * - return gives the amount of characters added, not what it would add.
+ * @param str    buffer to write to up to last
+ * @param last   last character we may write to
+ * @param format the formatting (see snprintf)
+ * @return the number of added characters
+ */
+int CDECL seprintf(char *str, const char *last, const char *format, ...)
+{
+	va_list ap;
+
+	va_start(ap, format);
+	int ret = vseprintf(str, last, format, ap);
+	va_end(ap);
+	return ret;
+}
+
+/**
+ * Safer implementation of vsnprintf; same as vsnprintf except:
+ * - last instead of size, i.e. replace sizeof with lastof.
+ * - return gives the amount of characters added, not what it would add.
+ * @param str    buffer to write to up to last
+ * @param last   last character we may write to
+ * @param format the formatting (see snprintf)
+ * @param ap     the list of arguments for the format
+ * @return the number of added characters
+ */
+int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap)
+{
+	if (str >= last) return 0;
+	size_t size = last - str;
+	return min((int)size, vsnprintf(str, size, format, ap));
+}
+
+
 
 /** Convert the md5sum to a hexadecimal string representation
  * @param buf buffer to put the md5sum into
@@ -196,8 +233,7 @@ char *md5sumToString(char *buf, const char *last, const uint8 md5sum[16])
 	char *p = buf;
 
 	for (uint i = 0; i < 16; i++) {
-		p += snprintf(p, last + 1 - p, "%02X", md5sum[i]);
-		if (p >= last) break;
+		p += seprintf(p, last, "%02X", md5sum[i]);
 	}
 
 	return p;

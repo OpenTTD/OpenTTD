@@ -168,7 +168,7 @@ void DriverFactoryBase::RegisterDriver(const char *name, Driver::Type type, int 
 char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 {
 	for (Driver::Type type = Driver::DT_BEGIN; type != Driver::DT_END; type++) {
-		p += snprintf(p, last - p, "List of %s drivers:\n", GetDriverTypeName(type));
+		p += seprintf(p, last, "List of %s drivers:\n", GetDriverTypeName(type));
 
 		for (int priority = 10; priority >= 0; priority--) {
 			Drivers::iterator it = GetDrivers().begin();
@@ -176,11 +176,11 @@ char *DriverFactoryBase::GetDriversInfo(char *p, const char *last)
 				DriverFactoryBase *d = (*it).second;
 				if (d->type != type) continue;
 				if (d->priority != priority) continue;
-				p += snprintf(p, last - p, "%18s: %s\n", d->name, d->GetDescription());
+				p += seprintf(p, last, "%18s: %s\n", d->name, d->GetDescription());
 			}
 		}
 
-		p += snprintf(p, last - p, "\n");
+		p += seprintf(p, last, "\n");
 	}
 
 	return p;

@@ -1,6 +1,19 @@
 /* $Id$ */
 
-/** @file string_func.h Functions related to low-level strings. */
+/** @file string_func.h Functions related to low-level strings.
+ *
+ * @note Be aware of "dangerous" string functions; string functions that
+ * have behaviour that could easily cause buffer overruns and such:
+ * - strncpy: does not '\0' terminate when input string is longer than
+ *   the size of the output string. Use strecpy instead.
+ * - [v]snprintf: returns the length of the string as it would be written
+ *   when the output is large enough, so it can be more than the size of
+ *   the buffer and than can underflow size_t (uint-ish) which makes all
+ *   subsequent snprintf alikes write outside of the buffer. Use
+ *   [v]seprintf instead; it will return the number of bytes actually
+ *   added so no [v]seprintf will cause outside of bounds writes.
+ * - [v]sprintf: does not bounds checking: use [v]seprintf instead.
+ */
 
 #ifndef STRING_FUNC_H
 #define STRING_FUNC_H
@@ -27,6 +40,9 @@ void ttd_strlcpy(char *dst, const char *src, size_t size);
  */
 char *strecat(char *dst, const char *src, const char *last);
 char *strecpy(char *dst, const char *src, const char *last);
+
+int CDECL seprintf(char *str, const char *last, const char *format, ...);
+int CDECL vseprintf(char *str, const char *last, const char *format, va_list ap);
 
 char *CDECL str_fmt(const char *str, ...);
 
