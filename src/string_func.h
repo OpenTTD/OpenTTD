@@ -22,23 +22,67 @@
 #include "string_type.h"
 
 /**
- * usage ttd_strlcpy(dst, src, lengthof(dst));
- * @param dst destination buffer
- * @param src string to copy/concatenate
- * @param size size of the destination buffer
+ * Appends characters from one string to another.
+ *
+ * Appends the source string to the destination string with respect of the
+ * terminating null-character and the maximum size of the destination
+ * buffer.
+ *
+ * @note usage ttd_strlcat(dst, src, lengthof(dst));
+ *
+ * @param dst The buffer containing the target string
+ * @param src The buffer containing the string to append
+ * @param size The maximum size of the destination buffer
  */
 void ttd_strlcat(char *dst, const char *src, size_t size);
+
+/**
+ * Copies characters from one buffer to another.
+ *
+ * Copies the source string to the destination buffer with respect of the
+ * terminating null-character and the maximum size of the destination
+ * buffer.
+ *
+ * @note usage ttd_strlcpy(dst, src, lengthof(dst));
+ *
+ * @param dst The destination buffer
+ * @param src The buffer containing the string to copy
+ * @param size The maximum size of the destination buffer
+ */
 void ttd_strlcpy(char *dst, const char *src, size_t size);
 
 /**
- * usage: strecpy(dst, src, lastof(dst));
- * @param dst destination buffer
- * @param src string to copy
- * @param last pointer to the last element in the dst array
- *             if NULL no boundary check is performed
- * @return a pointer to the terminating \0 in the destination buffer
+ * Appends characters from one string to another.
+ *
+ * Appends the source string to the destination string with respect of the
+ * terminating null-character and and the last pointer to the last element
+ * in the destination buffer. If the last pointer is set to NULL no
+ * boundary check is performed.
+ *
+ * @note usage: strecat(dst, src, lastof(dst));
+ *
+ * @param dst The buffer containing the target string
+ * @param src The buffer containing the string to append
+ * @param last The pointer to the last element of the destination buffer
+ * @return The pointer to the terminating null-character in the destination buffer
  */
 char *strecat(char *dst, const char *src, const char *last);
+
+/**
+ * Copies characters from one buffer to another.
+ *
+ * Copies the source string to the destination buffer with respect of the
+ * terminating null-character and the last pointer to the last element in
+ * the destination buffer. If the last pointer is set to NULL no boundary
+ * check is performed.
+ *
+ * @note usage: strecpy(dst, src, lastof(dst));
+ *
+ * @param dst The destination buffer
+ * @param src The buffer containing the string to copy
+ * @param last The pointer to the last element of the destination buffer
+ * @return The pointer to the terminating null-character in the destination buffer
+ */
 char *strecpy(char *dst, const char *src, const char *last);
 
 int CDECL seprintf(char *str, const char *last, const char *format, ...);

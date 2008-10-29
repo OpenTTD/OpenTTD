@@ -34,17 +34,21 @@ static int CDECL vseprintf(char *str, const char *last, const char *format, va_l
 void ttd_strlcat(char *dst, const char *src, size_t size)
 {
 	assert(size > 0);
-	for (; size > 0 && *dst != '\0'; --size, ++dst) {}
-	assert(size > 0);
-	while (--size > 0 && *src != '\0') *dst++ = *src++;
-	*dst = '\0';
+	while (size > 0 && *dst != '\0') {
+		size--;
+		dst++;
+	}
+
+	ttd_strlcpy(dst, src, size);
 }
 
 
 void ttd_strlcpy(char *dst, const char *src, size_t size)
 {
 	assert(size > 0);
-	while (--size > 0 && *src != '\0') *dst++ = *src++;
+	while (--size > 0 && *src != '\0') {
+		*dst++ = *src++;
+	}
 	*dst = '\0';
 }
 
@@ -52,10 +56,11 @@ void ttd_strlcpy(char *dst, const char *src, size_t size)
 char* strecat(char* dst, const char* src, const char* last)
 {
 	assert(dst <= last);
-	for (; *dst != '\0'; ++dst)
+	while (*dst != '\0') {
 		if (dst == last) return dst;
-	for (; *src != '\0' && dst != last; ++dst, ++src) *dst = *src;
-	*dst = '\0';
+		dst++;
+	}
+
 	return strecpy(dst, src, last);
 }
 
@@ -63,8 +68,11 @@ char* strecat(char* dst, const char* src, const char* last)
 char* strecpy(char* dst, const char* src, const char* last)
 {
 	assert(dst <= last);
-	for (; *src != '\0' && dst != last; ++dst, ++src) *dst = *src;
+	while (dst != last && *src != '\0') {
+		*dst++ = *src++;
+	}
 	*dst = '\0';
+
 	if (dst == last && *src != '\0') {
 #ifdef STRGEN
 		error("String too long for destination buffer");
