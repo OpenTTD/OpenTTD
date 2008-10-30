@@ -121,18 +121,6 @@ bool Order::Equals(const Order &other) const
 			this->dest  == other.dest;
 }
 
-static bool HasOrderPoolFree(uint amount)
-{
-	const Order *order;
-
-	/* There is always room if not all blocks in the pool are reserved */
-	if (_Order_pool.CanAllocateMoreBlocks()) return true;
-
-	FOR_ALL_ORDERS(order) if (!order->IsValid() && --amount == 0) return true;
-
-	return false;
-}
-
 uint32 Order::Pack() const
 {
 	return this->dest << 16 | this->flags << 8 | this->type;
@@ -493,7 +481,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (sel_ord > v->num_orders) return CMD_ERROR;
 
-	if (!HasOrderPoolFree(1)) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+	if (!Order::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
 	if (v->type == VEH_SHIP && IsHumanCompany(v->owner) && _settings_game.pf.pathfinder_for_ships != VPF_NPF) {
 		/* Make sure the new destination is not too far away from the previous */
@@ -1147,8 +1135,9 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* make sure there are orders available */
 			delta = dst->IsOrderListShared() ? src->num_orders + 1 : src->num_orders - dst->num_orders;
-			if (!HasOrderPoolFree(delta))
+			if (!Order::CanAllocateItem(delta)) {
 				return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+			}
 
 			if (flags & DC_EXEC) {
 				const Order *order;

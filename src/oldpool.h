@@ -311,7 +311,7 @@ protected:
 	}
 
 public:
-	static bool CanAllocateItem();
+	static bool CanAllocateItem(uint count = 1);
 };
 
 

@@ -38,19 +38,21 @@ template<typename T, typename Tid, OldMemoryPool<T> *Tpool> T *PoolItem<T, Tid, 
  * Check whether we can allocate an item in this pool. This to prevent the
  * need to actually construct the object and then destructing it again,
  * which could be *very* costly.
- * @return true if and only if at least ONE item can be allocated.
+ * @param count the number of items to create
+ * @return true if and only if at least count items can be allocated.
  */
-template<typename T, typename Tid, OldMemoryPool<T> *Tpool> bool PoolItem<T, Tid, Tpool>::CanAllocateItem()
+template<typename T, typename Tid, OldMemoryPool<T> *Tpool> bool PoolItem<T, Tid, Tpool>::CanAllocateItem(uint count)
 {
 	uint last_minus_one = Tpool->GetSize() - 1;
 
-	for (T *t = Tpool->Get(Tpool->first_free_index); t != NULL; t = ((uint)t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
-		if (!t->IsValid()) return true;
-		Tpool->first_free_index = t->index;
+	for (T *t = Tpool->Get(Tpool->first_free_index); count > 0 && t != NULL; t = ((uint)t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
+		if (!t->IsValid()) count--;
 	}
 
+	if (count == 0) return true;
+
 	/* Check if we can add a block to the pool */
-	if (Tpool->AddBlockToPool()) return CanAllocateItem();
+	if (Tpool->AddBlockToPool()) return CanAllocateItem(count);
 
 	return false;
 }
