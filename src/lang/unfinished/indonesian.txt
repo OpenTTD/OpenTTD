@@ -1482,8 +1482,22 @@ STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
 STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
 STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Pesan dari pembuat kendaraan
+STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotif kereta api
+STR_8103_ROAD_VEHICLE                                           :kendaraan darat
+STR_8104_AIRCRAFT                                               :pesawat udara
+STR_8105_SHIP                                                   :kapal
+STR_8106_MONORAIL_LOCOMOTIVE                                    :lokomotif monorail
+STR_8107_MAGLEV_LOCOMOTIVE                                      :lpkomotif maglev
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Depot Kereta
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Kereta Api pertama tiba di {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Kereta dalam perjalanan
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 
 
 
@@ -1491,22 +1505,227 @@ STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicop
 
 
 
+STR_8812_EMPTY                                                  :{LTBLUE}Kosong
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} dari {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Kereta {COMMA} sedang menunggu di depot
+STR_8815_NEW_VEHICLES                                           :{BLACK}Kendaraan Baru
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Kereta terlalu panjang
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam depot
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Kereta{P "" s}
 
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Kereta Api Baru
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Monorail Baru
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Maglev Baru
 
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Buat Kendaraan
+STR_8820_RENAME                                                 :{BLACK}Ubah Nama
+STR_8823_SKIP                                                   :{BLACK}Lewati
+STR_8824_DELETE                                                 :{BLACK}Hapus
+STR_8826_GO_TO                                                  :{BLACK}Menuju
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Batas Order - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Tidak dapat membangun kendaraan...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Buatan: {LTBLUE}{NUM}{BLACK} Harga: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Harga: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Bongkar / Muat
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Tidak dapat mengirim kereta ke depot...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Tidak cukup tempat untuk order
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Order terlalu banyak
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Tidak dapat menambah order baru...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Tidak dapat menghapus order ini...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Tidak dapat mengubah order ini...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Tidak dapat memindahkan kendaraan...
+STR_8838_N_A                                                    :N/A{SKIP}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Tidak dapat menjual kendaraan...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Tidak menemukan rute menuju depot terdekat
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Tidak dapat menghentikan dan menjalankan kereta...
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Waktu servis: {LTBLUE}{COMMA}hari{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta Api - klik pada kereta untuk melihat informasi
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Membuat kereta baru (membutuhkan depot kereta)
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta Api - klik untuk info kereta., drag kendaraan untuk menambah atau menghapus dari kereta
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Membuat kereta api baru
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Drag kereta api ke sini untuk menjualnya
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Arahkan pandangan utama pada lokasi depot kereta
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Daftar pilihan kereta - klik pada kendaraan untuk menampilkan informasi
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Membuat kendaraan yang dipilih
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Mengubah nama tipe kendaraan
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aksi kereta saat ini - klik disini untuk menjalankan / menghentikan kereta
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Tampilkan order kereta
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Arahkan tampilan pada lokasi kereta
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Kirim kereta ke depot. CTRL+klik hanya akan memerintahkan servis
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Paksa kereta untuk berjalan tanpa menunggu sinyal
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Ubah arah kereta
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Tampilkan informasi kereta
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Menambah jarak waktu servis
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Mengurangi jarak waktu servis
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Tampilkan detail muatan yang diangkut
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Tampilkan detail dari kereta api
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Tampilkan kapasitas setiap kendaraan
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Daftar order - klik pada order untuk menandainya. CTRL + klik ke stasiun
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Lewati order saat ini, dan lanjutkan berikutnya. CTRL + klik lewati pada order yang dipilih
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Hapus order yang ditandai
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Masukkan order baru sebelum order yang ditandai, atau tambahkan pada akhir daftar
+STR_885C_BROKEN_DOWN                                            :{RED}Rusak
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/thn
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY}  (tahun lalu: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Kehandalan: {LTBLUE}{COMMA}%  {BLACK}Kerusakan sejak servis terakhir: {LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED}Berhenti
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Tidak dapat memaksa kereta melanggar sinyal pada saat bahaya...
+STR_8863_CRASHED                                                :{RED}Kecelakaan!
 
+STR_8865_NAME_TRAIN                                             :{WHITE}Nama kereta
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Tdak dapat menamai kereta...
+STR_8867_NAME_TRAIN                                             :{BLACK}Nama kereta
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Kecelakaan Kereta Api!{}{COMMA} mati dalam api setelah kecelakaan
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Tidak dapat mengubah arah kereta...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Ubah nama tipe kereta
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tidak dapat mengubah nama tipe kendaraan...
 
 
 
 
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kendaraan dalam perjalanan
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Kendaraan Darat{P "" s}
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Depot Kendaraan Darat
+STR_9004_NEW_VEHICLES                                           :{BLACK}Kendaraan Baru
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Kendaraan Darat Baru
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Membuat Kendaraan
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tidak dapat membuat kendaraan darat...
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/yr
+STR_900E_MAX_SPEED                                              :{BLACK}Kecepatan maksimum: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY}  (tahun lalu: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Kehandalan: {LTBLUE}{COMMA}%  {BLACK}Kerusakan sejak servis terakhir: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Buatan: {LTBLUE}{NUM}{BLACK} Harga: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...harus dihentikan didalam depot kendaraan darat
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Tidak dapat menjual kendaraan...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Tidak dapat menghentikan / menjalankan kendaraan...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Kendaraa darat {COMMA} menanti di depot
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Tidak dapat mengirim kendaraan ke depot...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Tidak dapat menemukan depot terdekat
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Kendaraan darat - klik pada kendaraan untuk menampilkan informasi
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Membuat kendaraan baru (membutuhkan depot kendaraan darat)
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Kegiatan kendaraan saat ini - klik disini untuk menghentikan / menjalankan kendaraan
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Tampilkan order kendaraan
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Arahkan pandangan pada lokasi kendaraan
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Kirim kendaraan ke depot. CTRL + klik hanya akan memerintahkan servis
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Memaksa kendaraan untuk berbalik arah
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Tampilkan detail kendaraan darat
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Kendaraan - klik pada kendaraa untuk informasi
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Membuat kendaraan darat baru
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Drag kendaraan ke sini untuk menjualnya
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Arahkan pandangan pada lokasi depot kendaraan darat
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Daftar pilihan kendaraan - klik pada kendaraan untuk menampilkan informasi
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Membuat kendaraan yang dipilih
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Harga: {CURRENCY}{}Kecepatan: {VELOCITY}{}Biaya Operasional: {CURRENCY}/yr{}Kapasitas: {CARGO}
 
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nama kendaraan
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Tidak dapat menamai kendaraan...
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nama kendaraan
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Bus pertama tiba di {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
 
 
 ##id 0x9800
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Tidak dapat membuat pelabuhan disini...
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Depot Kapal
+STR_9804_NEW_SHIPS                                              :{BLACK}Kapal Baru
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Kapal{P "" s}
+STR_9808_NEW_SHIPS                                              :{WHITE}Kapal Baru
+STR_9809_BUILD_SHIP                                             :{BLACK}Membuat Kapal
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kapal harus berhenti di depot
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Tidak dapat menjual kapal...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Tidak dapat membuat kapal...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kapal dalam perjalanan
+STR_980F                                                        :{WHITE}{VEHICLE}
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/thn
+STR_9813_MAX_SPEED                                              :{BLACK}Kecepatan Maks: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY}  (tahun lalu: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Kehandalan: {LTBLUE}{COMMA}%  {BLACK}Kerusakan sejak servis terakhir: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Buatan: {LTBLUE}{NUM}{BLACK} Harga: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Tidak dapat menghentikan / menjalankan kapal...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Tidak dapat mengirim kapal ke depot...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Tidak dapat menemukan depot terdekat
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Kapal {COMMA} menanti di depot
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Membangun pelabuhan kapal
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Membangun depot kapal (untuk membuat dan memperbaiki kapal)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Membuat kapal baru
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Drag kapal kesini untuk menjualnya
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Arahkan pandangan pada lokasi depot kapal
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Membuat kapal baru (membutuhkan depot kapal)
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Daftar pilihan kapal - klik pada kapal untuk informasi
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Buat kapal yang ditandai
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Aksi kapal saat ini - klik disini untuk menghentikan / menjalankan kapal
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Tampilkan order kapal
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Arahkan pandangan pada lokasi kapal
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Kirim kapal ke depot. CTRL+klik hanya akan memerintahkan servis
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Tampilkan detail kapal
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Biaya: {CURRENCY} Kecepatan maks: {VELOCITY}{}Kapasitas: {CARGO}{}Biaya Operasional: {CURRENCY}/yr
+STR_982F_NAME_SHIP                                              :{BLACK}Nama kapal
 
+STR_9831_NAME_SHIP                                              :{WHITE}Nama kapal
+STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Tidak dapat memberi nama kapal...
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Menempatkan rambu yang dapat digunakan sebagai petunjuk jalan
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Tidak dapat menempatkan rambu disini...
+STR_9836_RENAME                                                 :{BLACK}Ubah Nama
+STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Ubah nama tipe kapal
+STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Ubah nama tipe kapal
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Tidak dapat mengubah nama tipe kapal...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Reparasi kapal kargo untuk membawa barang yang berbeda jenis
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Reparasi)
+STR_983C_REFIT_SHIP                                             :{BLACK}Reparasi kapal
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pilih tipe barang untuk dibawa kapal
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Reparasi kapal untuk membawa tipe barang yang dipilih
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pilih tipe barang untuk dibawa
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Kapasitas baru: {GOLD}{CARGO}{}{BLACK}Biaya reparasi: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Tidak dapat reparasi kapal...
+STR_9842_REFITTABLE                                             :(telah direparasi)
 
 ##id 0xA000
+STR_A000_AIRPORTS                                               :{WHITE}Bandara
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Tidak dapat membangun bandara disini...
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION}Hangar Pesawat
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Pesawat Baru
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Pesawat Baru
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Buat Pesawat
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Tidak dapat membuat pesawat...
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Pesawat Udara
+STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
+STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/thn
+STR_A00E_MAX_SPEED                                              :{BLACK}Kecepatan maks: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY}  (tahun lalu: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Kehandalan: {LTBLUE}{COMMA}%  {BLACK}Kerusakan sejak servis terakhir: {LTBLUE}{COMMA}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Buatan: {LTBLUE}{NUM}{BLACK} Harga: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Tidak dapat mengirim pesawat ke hangar...
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Pesawat {COMMA} menanti di hangar pesawat
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Pesawat Udara dalam perjalanan
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Tidak dapat menghentikan / menjalankan pesawat...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Pesawat dalam penerbangan
+STR_A019_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Pesawat Udara harus berhenti di hangar
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Tidak dapat menjual pesawat...
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Konstruksi Bandara
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Membangun bandara
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat Udara - klik pada pesawat untuk informasi
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Buat pesawat baru (dibutuhkan bandara dengan hangar)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat Udara - klik pada pesawat untuk informasi
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Buat pesawat baru
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag pesawat kesini untuk menjualnya
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Arahkan pandangan ke lokasi hangar
 
 
 

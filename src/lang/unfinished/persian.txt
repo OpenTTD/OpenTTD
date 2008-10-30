@@ -452,22 +452,107 @@ STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE} اول 
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE} فقط یکی به ازای هر شهر مجاز است
 STR_0288_PLANT_TREES                                            :{BLACK}کاشت درخت
 STR_0289_PLACE_SIGN                                             :{BLACK}علامت گذاری
+STR_028A_RANDOM_TREES                                           :{BLACK} درخت های تصادفی
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK} به شکل تصافی در تمام نقشه درخت بکار
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}مکان های سنگی در نقشه ایجاد کن
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}فانوس دریایی بساز
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK} ناحیه ی بیابانی را مشخص کن {} دکمه ی "کنترل" را فشار بده تا حذف کند
+STR_0290_DELETE                                                 :{BLACK}پاک کردن
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK} این شهر را به شکل کامل حذف کن
+STR_0294_QUIT_EDITOR                                            :خارج شدن از محیط طراحی
+STR_0295                                                        :
+STR_0296_QUIT                                                   :خروج
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE} فقط در شهرهایی با جمعیت بیش از 1200 نفر ممکن است
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}روز شروع بازی را یک سال به عقب برگردان
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}روز شروع بازی را یک سال جلو ببر
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}هر دو سر پل باید در خشکی قرار بگیرد
+STR_02A1_SMALL                                                  :{BLACK}کوچک
+STR_02A2_MEDIUM                                                 :{BLACK}متوسط
+STR_02A3_LARGE                                                  :{BLACK}بزرگ
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}انتخاب اندازه ی شهر
+STR_02A5_TOWN_SIZE                                              :{YELLOW}اندازه ی شهر :
 
+STR_02B6                                                        :{STRING}  -  {STRING}
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK} اخرین پیغام یا گزارش را نشان بده
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :لیست شهر ها
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}نام وسایل نقلیه
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :معمولی
+STR_02BF_CUSTOM                                                 :انتخابی
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}نام های انتخابی را ذخیره کن
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}انتخاب نام وسایل نقلیه
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}نام های انتخابی وسایل نقلیه را ذخیره کن
 
 ############ range for menu starts
+STR_02C4_GAME_OPTIONS                                           :تنظیمات بازی
+STR_02C6_DIFFICULTY_SETTINGS                                    :تنظیمات سختی
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}نام شهرها نشان داده شود
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}نام ایستگاه ها نشان داده شود
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}علامت ها نشان داده شوند
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}انیمیشن کامل
+STR_02D2_FULL_DETAIL                                            :{SETX 12}جزعیات کامل
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}ساختمان های نامرئی
 ############ range ends here
 
 ############ range for menu starts
+STR_02D6                                                        :
+STR_02D7_SCREENSHOT_CTRL_S                                      :(Ctrl-S) تصویر از بازی
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :(Ctrl-G) نصویر از دنیا
+STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' درباره
 ############ range ends here
 
+STR_02DB_OFF                                                    :{BLACK}خاموش
+STR_02DA_ON                                                     :{BLACK}روشن
+STR_02DE_MAP_OF_WORLD                                           :نقشه ی دنیا
+STR_02DF_TOWN_DIRECTORY                                         :لیست شهر ها
 
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}واحد پول
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}انتخب واحد پول
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_02E6_ROAD_VEHICLES                                          :{BLACK} وسایل حمل و نقل جاده ای
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}انتخاب جهت فرمان ماشین ها
+STR_02E9_DRIVE_ON_LEFT                                          :چپ فرمان
+STR_02EA_DRIVE_ON_RIGHT                                         :راست فرمان
+STR_02EB_TOWN_NAMES                                             :{BLACK} نام شهرها
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}انتخاب نوع نام شهرها
 
+STR_02F4_AUTOSAVE                                               :{BLACK} ذخیره اتوماتیک
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK} انتخاب فاصله زمانی بین ذخیره کردن های اتوماتیک
+STR_02F7_OFF                                                    :خاموش
+STR_02F8_EVERY_3_MONTHS                                         :هر 3 ماه
+STR_02F9_EVERY_6_MONTHS                                         :هر 6 ماه
+STR_02FA_EVERY_12_MONTHS                                        :هر 12 ماه
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}شروع بازی جدید
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}ادامه ی بازی گذشته
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}انتخاب بازی تک نفره
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}انتخاب بازی 2-8 نفره
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}نشان دادن تنظیمات بازی
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK} نشان دادن تنظیمات سختی
+STR_0304_QUIT                                                   :{BLACK}خروج
+STR_0305_QUIT_OPENTTD                                           :{BLACK} خروج از 'OpenTTD'
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}فقط می توان در شهر ها ساخت
 
 ############ range for menu starts
+STR_0313_FUND_NEW_INDUSTRY                                      :ساخت کارخانه جدید
 ############ range ends here
 
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE} ساخت کارخانه جدید
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE} فقط می شود در شهر ها ساخت
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE} فقط میتوان در جنگل های بارانی ساخت
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE} فقط می توان در صحرا ساخت
+STR_0319_PAUSED                                                 :{YELLOW}* *  توقف  *  *
 
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE} تصویر با موفقیت در {STRING} ذخیره شد
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}تصئیر ذخیره نشد
 
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}خرید زمین برای استفاده های بعدی
+STR_032F_AUTOSAVE                                               :{RED}ذخیره اتوماتیک
 
 
 ############ start of townname region
@@ -587,6 +672,20 @@ STR_0289_PLACE_SIGN                                             :{BLACK}علام
 
 
 ##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}مخارج: {CURRENCY}
+STR_0801_COST                                                   :{RED}مخارج: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}درآمد : {CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}درآمد: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}مخارج تقریبی: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}در آمد تقریبی: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}نمی شود افزایش ارتفاع اد
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}نمی توان ارتفاع زمین را کم کرد
+STR_080A_ROCKS                                                  :صخره
+STR_080B_ROUGH_LAND                                             :سرزمین سنگلاخی
+STR_080C_BARE_LAND                                              :سرزمین بایر
+STR_080D_GRASS                                                  :چمن
+STR_080F_SNOW_COVERED_LAND                                      :زمین پوشیده از برف
+STR_0810_DESERT                                                 :صحرا
 
 ##id 0x1000
 
@@ -648,6 +747,7 @@ STR_0289_PLACE_SIGN                                             :{BLACK}علام
 ##id 0x8000
 
 ##id 0x8800
+
 
 
 

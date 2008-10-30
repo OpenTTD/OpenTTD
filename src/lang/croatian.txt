@@ -1176,6 +1176,7 @@ STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmjerni na
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Kruži kroz tipove signala: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Samo normalni
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Samo napredni
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Sve
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Raspored grada "nema više cesta" nije valjan u editoru scenarija
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Odaberi grad-cesta raspored: {ORANGE}{STRING}
@@ -1217,12 +1218,15 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Promijeni vrijednost postavke
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Neki ili svi od zadanih servisnih intervala ispod nisu kompatibilni s odabranim postavkama! Valjane vrijednosti su 5-90% ili 30-800 dana.
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder za vlakove: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nije preporučivo)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Preporučeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pathfinder za cestovna vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Original {RED}(Nije preporučivo)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Preporučeno)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pathfinder za brodove: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Original {BLUE}(Preporučeno)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučivo)
@@ -1236,6 +1240,7 @@ STR_CHEATS                                                      :{WHITE}Varanje
 STR_CHEATS_TIP                                                  :{BLACK}Kvačice ukazuju na to jesi li koristio ovo varanje prije
 STR_CHEATS_WARNING                                              :{BLACK}Upozorenje! Upravo se spremaš izdati svoj kolege natjecatelje. Imaj na umu da se takva sramota pamti zauvijek.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Povećaj novce za iznos {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Igraj kao tvrtka: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Čudesni buldožer (uklanja industrije, nepokretne objekte): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneli se mogu ukrštavati međusobno: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Gradi dok je vrijeme zaustavljeno: {ORANGE}{STRING}
@@ -1294,6 +1299,8 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Ovdje ni
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Izgradi brane
 STR_LANDINFO_LOCK                                               :Brana
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Ne mogu postaviti rijeku ovdje...
+STR_LANDINFO_RIVER                                              :Rijeka
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...plutača je u uporabi!
 
@@ -1340,6 +1347,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prevezeno)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Imena industrija - za centriranje pogleda klikni na ime
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...preblizu drugoj industriji
 
@@ -1372,6 +1380,7 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Ime
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Ime igre
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Jezik, verzija poslužitelja, itd.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klikni na igru s popisa kako bi ju odabrao
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Server kojemu st ezadnji put pristupili:
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Pronađi poslužitelj
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Pronađi poslužitelje u mreži
@@ -2668,6 +2677,7 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na 
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Neprestano
+
 
 
 

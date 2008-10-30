@@ -181,8 +181,19 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Tro mult
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Selektita nomo ja uzata
 
 
+STR_013C_CARGO                                                  :{BLACK}Kargajo
+STR_013D_INFORMATION                                            :{BLACK}Informo
+STR_013E_CAPACITIES                                             :{BLACK}Kapacesi
+STR_013F_CAPACITY                                               :{BLACK}Kapaceso: {LTBLUE}{CARGO}
+STR_0140_NEW_GAME                                               :{BLACK}Nova Ludo
+STR_0141_LOAD_GAME                                              :{BLACK}Charjas Ludo
 
+STR_0148_GAME_OPTIONS                                           :{BLACK}Ludo Selekti
 
+STR_0150_SOMEONE                                                :ulu{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                           :Mapo di mondo
+STR_0152_TOWN_DIRECTORY                                         :Urbo repertorio
+STR_0153_SUBSIDIES                                              :Subsidii
 
 
 
@@ -193,6 +204,8 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Selektit
 
 
 ############ range for menu starts
+STR_0155_INCOME_GRAPH                                           :Revenuo grafiko
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Livrita kargajo grafiko
 ############ range for menu ends
 
 

@@ -1180,7 +1180,7 @@ STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}신호�
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본적으로 만들 신호기 종류: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :경로 신호기
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 신호기
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 경로 신호기
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}신호기 종류를 통한 순환: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :경로 신호기만
@@ -3631,7 +3631,7 @@ STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-�
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}콤보-신호기 (전자식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}일방통행 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}일방통행 경로 신호기 (전자식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 경로 신호기는 반대편에서 통과가 불가능합니다.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}신호기 변환{}선택했을 때, 이미 설치한 신호기를 클릭하면 선택한 신호기의 타입과 종류를 변경하게 되고, CTRL+클릭은 존재하는 종류를 토글할 것입니다.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}드래그시 신호기 간격
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}드래그시 신호기 간격 감소

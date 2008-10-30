@@ -1882,6 +1882,7 @@ STR_8104_AIRCRAFT                                               :lidmaðîna
 
 
 
+
 STR_UNKNOWN_STATION                                             :nezināma stacija
 STR_8812_EMPTY                                                  :{LTBLUE}Tukšs
 STR_8816                                                        :{BLACK}-

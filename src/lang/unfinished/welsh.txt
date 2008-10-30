@@ -3,6 +3,8 @@
 ##isocode cy_GB
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Oddi ar ymyl y map
@@ -150,7 +152,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Map - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Dewisiadau Gêm
 STR_00B2_MESSAGE                                                :{YELLOW}Neges
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Neges oddi wrth {STRING1}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Neges oddi wrth {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Rhybudd!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Does dim modd gwneud hynny....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Does dim modd clirio’r ardal hon....
@@ -270,12 +272,16 @@ STR_0130_RENAME                                                 :{BLACK}Ailenwi
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Gormod o enwau wedi'u diffinio
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Mae'r enw hwnnw eisoes mewn defnydd
 
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
 STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
-STR_013B_OWNED_BY                                               :{WHITE}...eiddo {STRING2}
+STR_013B_OWNED_BY                                               :{WHITE}...eiddo {STRING}
 STR_013C_CARGO                                                  :{BLACK}Llwyth
 STR_013D_INFORMATION                                            :{BLACK}Gwybodaeth
 STR_013E_CAPACITIES                                             :{BLACK}Cyfansymau Gallu Cludo
@@ -407,7 +413,7 @@ STR_016D_DEC                                                    :Rhag
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_0170                                                        :{TINYFONT}{STRING2}-
+STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Oedi'r gêm
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Cadw'r gêm, cefnu ar y gêm, cau
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Dangos rhestr o orsafoedd y cwmni
@@ -469,8 +475,8 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gwybodat
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Côst i'w glirio: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Côst i'w glirio {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
-STR_01A7_OWNER                                                  :{BLACK}Perchennog: {LTBLUE}{STRING1}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Awdurdod Lleol: {LTBLUE}{STRING1}
+STR_01A7_OWNER                                                  :{BLACK}Perchennog: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Awdurdod Lleol: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Dim
 STR_01AA_NAME                                                   :{BLACK}Enw
 STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
@@ -535,13 +541,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Teitl{SETX 88}Trac
 STR_01E9_SHUFFLE                                                :{TINYFONT}Cymysgu Trefn
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Rhaglen
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Dewisiadau Rhaglen Gerddoriaeth
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING1}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Indecs Traciau
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Rhaglen - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Clirio
@@ -728,7 +734,7 @@ STR_02A3_LARGE                                                  :{BLACK}Mawr
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Dewiswch maint y dref
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Maint tref:
 
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Dangos y neges neu'r adroddiad newyddion ddiwethaf...
 STR_OFF                                                         :I Ffwrdd
 STR_SUMMARY                                                     :Crynodeb
@@ -755,7 +761,7 @@ STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animei
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Manylder llawn
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Adeiladau Tryloyw
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Arwyddion Tryloyw
-############ range ends yma
+############ range ends here
 
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Gwybodaeth ardal tir
@@ -764,7 +770,7 @@ STR_CONSOLE_SETTING                                             :Toglu Consol
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ciplun (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Ciplun anferth (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Gwybodaeth am 'OpenTTD'
-############ range ends yma
+############ range ends here
 
 STR_02DB_OFF                                                    :{BLACK}I Ffwrdd
 STR_02DA_ON                                                     :{BLACK}Ymlaen
@@ -824,7 +830,7 @@ STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Ariannu 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Cyfeiriadur Diwydiannau
 STR_0313_FUND_NEW_INDUSTRY                                      :Ariannu diwydiant newydd
-############ range ends yma
+############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Ariannu diwydiant newydd
 STR_JUST_STRING                                                 :{STRING}
@@ -842,7 +848,8 @@ STR_SAVING_GAME                                                 :{RED}*  *  CADW
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Mae'r gêm wrthi'n cael ei chadw,{}Arhoswch nes y bydd y broses wedi'i chwblhau!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Dewis y rhaglen 'Ezy Scoedent style music'
 
-############ start o townname region
+
+############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Saesneg (Gwreiddiol)
 STR_TOWNNAME_FRENCH                                             :Ffrangeg
 STR_TOWNNAME_GERMAN                                             :Almaeneg
@@ -864,7 +871,7 @@ STR_TOWNNAME_DANISH                                             :Danaidd
 STR_TOWNNAME_TURKISH                                            :Twrcaidd
 STR_TOWNNAME_ITALIAN                                            :Eidalaidd
 STR_TOWNNAME_CATALAN                                            :Catalanaidd
-############ end o townname region
+############ end of townname region
 
 STR_CURR_GBP                                                    :Punnoedd (£)
 STR_CURR_USD                                                    :Doleri ($)
@@ -969,7 +976,7 @@ STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Does gan
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Mae gan Awyren {COMMA} orchymyn gwag
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Mae gan Awyren {COMMA} orchmynion dyblyg
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Mae gan Awyren {COMMA} orsaf annilys yn ei restr orchmynion
-# end o order system
+# end of order system
 
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Mae Trên {COMMA} yn rhy hir wedi iddo gael ei ddisodli
 
@@ -979,112 +986,116 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Ffurfwed
 
 STR_CONFIG_PATCHES_OFF                                          :I  Ffwrdd
 STR_CONFIG_PATCHES_ON                                           :Ymlaen
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Dangos cyflymder y cerbyd yn y bar statws: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Caniatáu adeiladu a'r lethrau ac arfordiroedd {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Caniatáu ardaloedd dalgylch mwy realistig eu maint: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Caniatáu chwalu ffyrdd, pontydd ayb. o eiddo trefi: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Galluogi adeiladu trenau hir iawn: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Galluogi cyflymu realistig ar gyfer trenau: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Rhwystro trenau a llongau rhag troi 90 gradd: {ORANGE}{STRING1} {LTBLUE} (angen NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Uno gorsafoedd trên sydd drws nesaf i'w gilydd: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Defnyddio'r algorithm llwytho gwell: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Llwytho cerbydau'n raddol: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Chwyddiant: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Danfon llwyth i orsaf dim ond pan fo galw: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Caniatáu adeiladu pontydd hir iawn: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Caniatáu gorchmynion mynd i depo: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Caniatáu nifer o ddiwydiannau bach i bob tref: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Gall diwydiannau o'r un math gael eu hadeiladu'n agos i'w gilydd: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Dangos y dyddiad hir yn y bar statws drwy'r amser: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Dangos signalau ar yr ochr yrru: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Tremio'r ffenestr pan fydd y llygoden ar ymyl y sgrin: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Caniatáu llwgrwobrwyo'r awdurdod lleol: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gorsafoedd anunffurf: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Dangos cyflymder y cerbyd yn y bar statws: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Caniatáu adeiladu a'r lethrau ac arfordiroedd {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Caniatáu ardaloedd dalgylch mwy realistig eu maint: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Caniatáu chwalu ffyrdd, pontydd ayb. o eiddo trefi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Galluogi adeiladu trenau hir iawn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Galluogi cyflymu realistig ar gyfer trenau: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Rhwystro trenau a llongau rhag troi 90 gradd: {ORANGE}{STRING} {LTBLUE} (angen NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Uno gorsafoedd trên sydd drws nesaf i'w gilydd: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Defnyddio'r algorithm llwytho gwell: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Llwytho cerbydau'n raddol: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Chwyddiant: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Danfon llwyth i orsaf dim ond pan fo galw: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Caniatáu adeiladu pontydd hir iawn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Caniatáu gorchmynion mynd i depo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Caniatáu nifer o ddiwydiannau bach i bob tref: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Gall diwydiannau o'r un math gael eu hadeiladu'n agos i'w gilydd: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Dangos y dyddiad hir yn y bar statws drwy'r amser: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Dangos signalau ar yr ochr yrru: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Dangos y ffenestr gyllid ar ddechrau'r flwyddyn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ciwio cerbydau ffordd (gyda effeithiau cwantwm): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Tremio'r ffenestr pan fydd y llygoden ar ymyl y sgrin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Caniatáu llwgrwobrwyo'r awdurdod lleol: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Gorsafoedd anunffurf: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Lluosogydd pwysau ar gyfer llwythi i adlewyrchu trenau trwm{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Caniatáu meysydd awyr bach drwy gydol y gêm: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Caniatáu meysydd awyr bach drwy gydol y gêm: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Rhybuddio os yw'r trên ar goll: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Adolygu gorchmynion y cerbyd: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Rhybuddio os yw'r trên ar goll: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Adolygu gorchmynion y cerbyd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :na
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :iawn, ond hepgor cerbydau sydd wedi'i stopio
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :o bob cerbyd
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Rhybuddio os yw incwm trên yn negyddol: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nid yw cerbydau'n darfod: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Rhybuddio os yw incwm trên yn negyddol: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nid yw cerbydau'n darfod: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Awtoadnewyddu cerbyd pan aiff yn hen
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Awtoadnewyddu cerbyd {ORANGE}{STRING1}{LTBLUE} mis cyn ei oedran eithaf
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Isafswm arain awtoadnewyddu ar gyfer adolygu: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Cyfnod dangos neges wall: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Dangos poblogaeth tref yn label y dref: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Awtoadnewyddu cerbyd {ORANGE}{STRING}{LTBLUE} mis cyn ei oedran eithaf
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Isafswm arain awtoadnewyddu ar gyfer adolygu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Cyfnod dangos neges wall: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Dangos poblogaeth tref yn label y dref: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Cynhyrchydd Tir: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Cynhyrchydd Tir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Gwreiddiol
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Uchafswm pellter o'r ymyl ar gyfer Purfeydd Olew {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Uchder Llinell Eira: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Garwder y tirwedd (TerraGenesis yn unig) : {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Uchafswm pellter o'r ymyl ar gyfer Purfeydd Olew {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Uchder Llinell Eira: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Garwder y tirwedd (TerraGenesis yn unig) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Llyfn Iawn
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Llyfn
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Garw
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Garw Iawn
-STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algorithm gosod coed: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algorithm gosod coed: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Dim
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Gwreiddiol
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Gwell
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Tro Map Uchder: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Tro Map Uchder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Gwrthglocwedd
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clocwedd
-STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Y lefel map uchder mae map senario fflat yn ei dderbyn: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Y lefel map uchder mae map senario fflat yn ei dderbyn: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Arwynebedd mwyaf gorsaf: {ORANGE}{STRING1} {RED}Rhybudd: Byddgosodiad uchel yn arafu'r gêm
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Rhoi gwasanaeth i hofrenyddion ar helepads yn awtomatig: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Cyfuno'r bar offer tirwedd gyda'r bariau offer ffordd/rheilffordd/maes awyr: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}gwrthdroi'r cyfeiriad sgrolio: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Dangos cymorth mesur wrth ddefnyddio'r offer adeiladu amrywiol: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Dangos lifrau cwmnïau: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Arwynebedd mwyaf gorsaf: {ORANGE}{STRING} {RED}Rhybudd: Byddgosodiad uchel yn arafu'r gêm
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Rhoi gwasanaeth i hofrenyddion ar helepads yn awtomatig: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Cyfuno'r bar offer tirwedd gyda'r bariau offer ffordd/rheilffordd/maes awyr: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}gwrthdroi'r cyfeiriad sgrolio: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Dangos cymorth mesur wrth ddefnyddio'r offer adeiladu amrywiol: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Dangos lifrau cwmnïau: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Dim
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eich Cwmni
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Pob cwmni
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Newid Sgwrsio Tîm i <ENTER>: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Newid Sgwrsio Tîm i <ENTER>: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Uchafswm trenau y chwaraewr: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Uchafswm cerbyd ffordd y chwaraewr: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Uchafswm awyren y chwaraewr: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Uchafswm llongau y chwaraewr: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Analluogi trenau ar gyfer y cyfrifiadur: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Analluogi cerbyd ffordd ar gyfer y cyfrifiadur: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Analluogi awyren ar gyfer y cyfrifiadur: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Analluogi llongau ar gyfer y cyfrifiadur: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Galluogi AI newydd (alpha): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Caniatáu AIau mewn gemau amlchwaraewr (): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Uchafswm trenau y chwaraewr: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Uchafswm cerbyd ffordd y chwaraewr: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Uchafswm awyren y chwaraewr: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Uchafswm llongau y chwaraewr: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}{STRING1} days/%
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Analluogi trenau ar gyfer y cyfrifiadur: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Analluogi cerbyd ffordd ar gyfer y cyfrifiadur: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Analluogi awyren ar gyfer y cyfrifiadur: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Analluogi llongau ar gyfer y cyfrifiadur: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Galluogi AI newydd (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Caniatáu AIau mewn gemau amlchwaraewr (): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}{STRING1} days/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer cerbyd ffordd: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer awyren: {ORANGE}{STRING1} days/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer awyren: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer awyren: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer llongau: {ORANGE}{STRING1} days/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer llongau: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer llongau: {ORANGE}disabled
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Analluogi gwasanaethau pan fydd torri i lawr wedi ei osod i Ddim: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Galluogi terfynau cyflymder wagenni: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Analluogi rheilffyrdd trydan: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Analluogi gwasanaethau pan fydd torri i lawr wedi ei osod i Ddim: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Galluogi terfynau cyflymder wagenni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Analluogi rheilffyrdd trydan: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Bydd newyddion lliw yn ymddangos yn: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Blwyddyn gychwyn: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Gorffen y gêm yn: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Bydd newyddion lliw yn ymddangos yn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Blwyddyn gychwyn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Gorffen y gêm yn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Galluogi economi llyfn (mwy o newidiadau llai)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Caniatáu prynu cyfranddaliadau mewn cwmnïau eraill
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pan yn llusgo, gosod signalau bob: {ORANGE}{STRING1} sgwâr
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Safle'r prif far offer: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Pan yn llusgo, gosod signalau bob: {ORANGE}{STRING} sgwâr
+
+
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Safle'r prif far offer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Chwith
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Canol
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :De
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radiws snap ffenestr: {ORANGE}{STRING1} px
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radiws snap ffenestr: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radiws snap ffenestr: {ORANGE}analluogwyd
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Rhyngwyneb
@@ -1101,6 +1112,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Newid gwerth gosodiad
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}mae rhai o'r cyfnodau rhwng gwasanaeth isod yn anghydnaws gyda'r gosodiadau a ddewiswyd! Mae 5-90% a 30-800 diwrnod yn ddilys
 
+
 STR_TEMPERATE_LANDSCAPE                                         :Tirwedd Tymherus
 STR_SUB_ARCTIC_LANDSCAPE                                        :Tirwedd Is-arctig
 STR_SUB_TROPICAL_LANDSCAPE                                      :Tirwedd Is-drofannol
@@ -1110,13 +1122,13 @@ STR_CHEATS                                                      :{WHITE}Twyllo
 STR_CHEATS_TIP                                                  :{BLACK}Mae'r blychau marcio'n dangos os ydych chi wedi twyllo neu beidio, gan nodi sut
 STR_CHEATS_WARNING                                              :{BLACK}Rhybudd! Rydych chi ar fin bradychu eich cydgystadleuwyr. Cofiwch y bydd y fath gywilydd yn cael ei gofio hyd tragwyddoldeb.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Cynyddu arian {CURRENCY}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tarw Dur Hud (chwalu diwydiannau, gwrthrychau nad oes modd eu chwalu): {ORANGE}{STRING1}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Caiff twneli groesi eu gilydd: {ORANGE}{STRING1}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Adeiladu tra fod y gêm wedi'i hoedi: {ORANGE}{STRING1}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tarw Dur Hud (chwalu diwydiannau, gwrthrychau nad oes modd eu chwalu): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Caiff twneli groesi eu gilydd: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Adeiladu tra fod y gêm wedi'i hoedi: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Ni fydd awyrennau jet yn crashio (yn aml) ar feysydd awyr bach: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Newid hinsawdd: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Newid dyddiad: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Galluogi newid graddfeydd cynhyrchu: {ORANGE}{STRING1}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Galluogi newid graddfeydd cynhyrchu: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Mynd am {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Mynd am {WAYPOINT}, {VELOCITY}
@@ -1167,7 +1179,9 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Methu ad
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Adeiladu lociau
 STR_LANDINFO_LOCK                                               :Loc
 
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...bwi mewn defnydd!
+
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Methu tynnu rhan o orsaf...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Methu trosi'r math rheilffordd hwn...
@@ -1216,7 +1230,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Ailffiti
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Dewiswch fath o lwyth i'r trên ei gario
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ailffitio'r trên i gario'r math o llwyth sydd wedi'i ddewis
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Methu ailffitio trên...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Croeso i'r AI sy'n cael ei ddatblygu. Os dewch chi ar draws problem, cymrwch giplun a'i phostio ar y fforwm.
@@ -1249,6 +1263,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Rhowch g
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Cleientiaid
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Cleientiaid ar-lein / uchafswm cleientiaid{}Cwmnïau ar-lein / uchafswm cwmnïau
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}GWYBODAETH AM Y GÊM
 STR_NETWORK_CLIENTS                                             :{SILVER}Cleientiaid:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Iaith:  {WHITE}{STRING}
@@ -1275,12 +1293,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Gosod cy
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Diogelwch eich gêm â chyfrinair os nad ydych am i fynediad ato fod yn gyhoeddus
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Dewiswch fap:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Pa fap hoffech chi chwarae?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Uchafswm cleientiaid:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Dewiswch uchafswm y cleientiaid. Does dim rhaid llanw pob slot
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Rhyngrwyd
 STR_NETWORK_LAN_INTERNET                                        :LAN / Rhyngrwyd
 STR_NETWORK_INTERNET_ADVERTISE                                  :Rhyngrwyd (hysbysebu)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Uchafswm cleientiaid:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Dewiswch uchafswm y cleientiaid. Does dim rhaid llanw pob slot
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Uchafswm cwmnïau:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}rhoi cyfyngiad penodol ar sawl cwmni mae'r gweinydd yn ei ganiatáu
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Uchafswm gwylwyr:
@@ -1297,7 +1315,7 @@ STR_NETWORK_LANG_ANY                                            :Unrhyw
 STR_NETWORK_LANG_ENGLISH                                        :Saesneg
 STR_NETWORK_LANG_GERMAN                                         :Almaeneg
 STR_NETWORK_LANG_FRENCH                                         :Ffrangeg
-############ End o leave-in-this-order
+############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Cyntedd Gemau Amlchwaraewr
 
@@ -1337,7 +1355,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Co
 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Estyn gwybodaeth gêm..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Estyn gwybodaeth cwmnïau..
-############ End o leave-in-this-order
+############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cleient{P "" iau}o'ch blaen
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kdid wedi'i llwytho i lawr hyd yn hyn
 
@@ -1382,7 +1400,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :cyfrinair anghy
 STR_NETWORK_ERR_CLIENT_KICKED                                   :wedi cael cic gan y gweinydd
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :yn ceisio twyllo
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :gweinydd llawn
-############ End o leave-in-this-order
+############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :wedi ymuno â'r gêm
 STR_NETWORK_GIVE_MONEY                                          :rhoi mwy o arian i'ch cwmni ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :fe roddoch chi arian i {STRING} ({CURRENCY})
@@ -1415,8 +1433,8 @@ STR_NETWORK_SEND                                                :{BLACK}Anfon
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-faint map: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-faint map: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-faint map: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-faint map: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
@@ -1560,15 +1578,15 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Graddfey
 STR_2024                                                        :{YELLOW}{COMPANY}{COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Cymorthdaliadau
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Cymorthdaliadau sy'n cael eu cynnig ar gyfer cludo:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} o {STRING2} i {STRING2}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} o {STRING} i {STRING2}
 STR_2028_BY                                                     :{YELLOW} (erbyn {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Dim
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Gwasanaethau sydd eisoes yn derbyn cymhorthdal:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} o {STATION} i {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, tan {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Cynnig cymhorthdal ar ben: {}{}Ni fydd cludo {STRING} o {STRING2} i {STRING2} bellach yn derbyn cymhorthdal.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Cynnig cymhorthdal ar ben: {}{}Ni fydd cludo {STRING} o {STRING} i {STRING2} bellach yn derbyn cymhorthdal.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Cymhorthdal wedi'i dynnu'n ôl: {}{}Ni fydd y gwasanaeth {STRING} o {STATION} i {STATION} bellach yn derbyn cymhorthdal.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Cymhorthdal yn cael ei gynnig:{}{}bydd y gwasanaeth {STRING} cyntaf o {STRING2} i {STRING2} yn derbyn blwyddyn o gymhorthdal oddi wrth yr awdurdod lleol!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Cymhorthdal yn cael ei gynnig:{}{}bydd y gwasanaeth {STRING} cyntaf o {STRING} i {STRING2} yn derbyn blwyddyn o gymhorthdal oddi wrth yr awdurdod lleol!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {COMPANY}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu 50% yn fwy am y flwyddyn nesaf!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {COMPANY}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu dwywaith yn fwy am y flwyddyn nesaf!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Cymhorthdal wedi ei ddyfarnu i {COMPANY}! Bydd y gwasanaeth {}{}{STRING} o {STATION} i {STATION} yn talu teirgwaith yn fwy am y flwyddyn nesaf!
@@ -1606,7 +1624,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Ariannu adeiladu adeiladau masnachol newydd yn y dref.{} Côst: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Prynu'r hawl i fod yr unig gwmni trafnidiaeth sy'n cael gweithredu yn ardal y dref  am flwydd. Dim ond eich gorsafoedd chi fydd yr awdurdod lleol yn caniatáu i deithwyr a llwythi eu defnyddio.{} Côst: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Llwgrwobrwyo'r awdurdod lleol i wella'ch gradd, ond byddwch mewn perygl o dderbyn côsb sylweddol os cewch chi'ch dal.{} Côst: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Anrhefn traffig yn {TOWN}!{}{}Daw gwaith ffordd a ariannwyd gan {RAW_STRING} â 6 mis o boen i deithwyr ffordd y dref!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Anrhefn traffig yn {TOWN}!{}{}Daw gwaith ffordd a ariannwyd gan {STRING} â 6 mis o boen i deithwyr ffordd y dref!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (wrthi'n cael ei adeiladu)
@@ -1788,8 +1806,11 @@ STR_4824_BUBBLE_GENERATOR                                       :Cynhyrchydd Swi
 STR_4825_TOFFEE_QUARRY                                          :Chwarel Doffi
 STR_4826_SUGAR_MINE                                             :Mwynglawdd Siwgr
 
-############ range for angen starts
-############ range for angen ends
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Cynnyrch mis diwethaf:
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Canoli'r brif olygfa ar y diwydiant
@@ -1861,7 +1882,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...rydyc
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
-############ These strings may never get a newydd id, or savegames will break!
+############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Dienw
@@ -1870,41 +1891,41 @@ STR_SV_ROADVEH_NAME                                             :Cerbyd Ffordd {
 STR_SV_SHIP_NAME                                                :Llong {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Awyren {COMMA}
 
-STR_SV_STNAME                                                   :{STRING1}
-STR_SV_STNAME_NORTH                                             :Gogledd {STRING1}
-STR_SV_STNAME_SOUTH                                             :De {STRING1}
-STR_SV_STNAME_EAST                                              :Dwyrain {STRING1}
-STR_SV_STNAME_WEST                                              :Gorllewin {STRING1}
-STR_SV_STNAME_CENTRAL                                           :Canol {STRING1}
-STR_SV_STNAME_TRANSFER                                          :Cyffordd {STRING1}
-STR_SV_STNAME_HALT                                              :Terfynfa {STRING1}
-STR_SV_STNAME_VALLEY                                            :{STRING1} Isaf
-STR_SV_STNAME_HEIGHTS                                           :{STRING1} Uchaf
-STR_SV_STNAME_WOODS                                             :Coed {STRING1}
-STR_SV_STNAME_LAKESIDE                                          :Glan {STRING1}
-STR_SV_STNAME_EXCHANGE                                          :Cyfnewidfa {STRING1}
-STR_SV_STNAME_AIRPORT                                           :Maes Awyr {STRING1}
-STR_SV_STNAME_OILFIELD                                          :Maes Olew{STRING1}
-STR_SV_STNAME_MINES                                             :Mwynglawdd {STRING1}
-STR_SV_STNAME_DOCKS                                             :Dociau {STRING1}
-STR_SV_STNAME_BUOY_1                                            :{STRING1} Bwi 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} Bwi 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} Bwi 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} Bwi 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} Bwi 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} Bwi 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} Bwi 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} Bwi 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} Bwi 9
-STR_SV_STNAME_ANNEXE                                            :{STRING1} Rhandre
-STR_SV_STNAME_SIDINGS                                           :{STRING1} Cilffordd
-STR_SV_STNAME_BRANCH                                            :{STRING1} Cangen
-STR_SV_STNAME_UPPER                                             :Blaenau {STRING1}
-STR_SV_STNAME_LOWER                                             :Dyffryn {STRING1}
-STR_SV_STNAME_HELIPORT                                          :Hofrenyddborth {STRING1}
-STR_SV_STNAME_FOREST                                            :Coedwig {STRING1}
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :Gogledd {STRING}
+STR_SV_STNAME_SOUTH                                             :De {STRING}
+STR_SV_STNAME_EAST                                              :Dwyrain {STRING}
+STR_SV_STNAME_WEST                                              :Gorllewin {STRING}
+STR_SV_STNAME_CENTRAL                                           :Canol {STRING}
+STR_SV_STNAME_TRANSFER                                          :Cyffordd {STRING}
+STR_SV_STNAME_HALT                                              :Terfynfa {STRING}
+STR_SV_STNAME_VALLEY                                            :{STRING} Isaf
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Uchaf
+STR_SV_STNAME_WOODS                                             :Coed {STRING}
+STR_SV_STNAME_LAKESIDE                                          :Glan {STRING}
+STR_SV_STNAME_EXCHANGE                                          :Cyfnewidfa {STRING}
+STR_SV_STNAME_AIRPORT                                           :Maes Awyr {STRING}
+STR_SV_STNAME_OILFIELD                                          :Maes Olew{STRING}
+STR_SV_STNAME_MINES                                             :Mwynglawdd {STRING}
+STR_SV_STNAME_DOCKS                                             :Dociau {STRING}
+STR_SV_STNAME_BUOY_1                                            :{STRING} Bwi 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Bwi 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Bwi 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Bwi 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Bwi 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Bwi 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Bwi 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Bwi 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Bwi 9
+STR_SV_STNAME_ANNEXE                                            :{STRING} Rhandre
+STR_SV_STNAME_SIDINGS                                           :{STRING} Cilffordd
+STR_SV_STNAME_BRANCH                                            :{STRING} Cangen
+STR_SV_STNAME_UPPER                                             :Blaenau {STRING}
+STR_SV_STNAME_LOWER                                             :Dyffryn {STRING}
+STR_SV_STNAME_HELIPORT                                          :Hofrenyddborth {STRING}
+STR_SV_STNAME_FOREST                                            :Coedwig {STRING}
 
-############ end o savegame specific region!
+############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Lefel Anhawster
@@ -2058,15 +2079,15 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tablau C
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Cwmni Trafnidiaeth mewn Trafferth!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Bydd {RAW_STRING} yn cael ei werthu neu ei ddatgan yn fethdalwr oni bai fod ei berfformiad yn gwella'n fuan!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Bydd {STRING} yn cael ei werthu neu ei ddatgan yn fethdalwr oni bai fod ei berfformiad yn gwella'n fuan!
 STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Manager)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Uno cwmnïau trafnidiaeth!
-STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}Mae {RAW_STRING} wedi cael ei werthu i {RAW_STRING} am {CURRENCY}!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}Mae {STRING} wedi cael ei werthu i {RAW_STRING} am {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Rydyn ni'n chwilio am rywun i gymryd ein cwmni ni drosodd.{}{}Hoffech chi brynu {COMPANY} am {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Methdalwyr!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}Mae {RAW_STRING} wedi cael ei gau gan ei gredydwyr a''u hasedau wedi'u gwerthu!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}Mae {STRING} wedi cael ei gau gan ei gredydwyr a''u hasedau wedi'u gwerthu!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Cwmni trafnidiaeth newydd wedi'i lansio!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}Mae {RAW_STRING} wedi cychwyn adeiladu ger {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}Mae {STRING} wedi cychwyn adeiladu ger {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Methu prynu cwmni...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Graddfeydd Tâl Llwythi
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Diwrnodau ar daith
@@ -2102,7 +2123,7 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Gwerthu 
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Methu prynu cyfran o 25% o'r cwmni hwn...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Methu gwerthu cyfran o 25% o'r cwmni ...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% yn eiddo {COMPANY})
-STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Mae {RAW_STRING} wedi cael ei brynu gan {RAW_STRING}!
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Mae {STRING} wedi cael ei brynu gan {RAW_STRING}!
 
 STR_LIVERY_DEFAULT                                              :Lifrau cyffredin
 STR_LIVERY_STEAM                                                :Injan Stêm
@@ -2405,6 +2426,10 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Manylion)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trên yn y ffordd
 
+
+
+
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Mynd am Ddepo Trên {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Mynd am Ddepo Trên {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Gwasanaeth yn Nepo Trên {TOWN}
@@ -2493,7 +2518,7 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Ychwaneg
 STR_SERVICE_HINT                                                :{BLACK}Hepgor y gorchymyn hwn os nad oes angen gwasanaeth
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Côst: {CURRENCY} Pwysau: {WEIGHT_S}{}Cyflymder: {VELOCITY}  Pŵer: {POWER}{}Côst Rhedeg: {CURRENCY}/bl{}Gallu cludo: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Wedi torri i lawr
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING2}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pwysau: {LTBLUE}{WEIGHT_S}  {BLACK}Pŵer: {LTBLUE}{POWER}{BLACK} Cyflymder uchaf: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (llynedd: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
@@ -2519,6 +2544,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}New {STRING} ar gael yn awr!  -  {ENGINE}
 
+
+
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cerbyd ffordd yn y ffordd
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Cerbyd{P "" au} Ffordd
@@ -2529,7 +2556,7 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Cerbydau
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Adeiladu Cerbyd
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Methu adeiladu cerbyd...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Manylion)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING2}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
 STR_900E_MAX_SPEED                                              :{BLACK}Cyflymder uchaf: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
@@ -2597,7 +2624,7 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Methu ad
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Llong yn y ffordd
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Manylion)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING2}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
 STR_9813_MAX_SPEED                                              :{BLACK}Cyflymder uchaf: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (llynedd: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
@@ -2663,7 +2690,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Gorchmynion)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Manylion)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING2}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Oed: {LTBLUE}{STRING}{BLACK}   Côst Rhedeg: {LTBLUE}{CURRENCY}/bl
 STR_A00E_MAX_SPEED                                              :{BLACK}Cyflymder uchaf: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Elw eleni: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Dibynadwyedd: {LTBLUE}{COMMA}%  {BLACK}Torri i lawr ers y gwasanaeth diwethaf: {LTBLUE}{COMMA}
@@ -2715,8 +2742,9 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Ailffiti
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Dewiswch y math o lwyth i'r awyren ei chario
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Ailffitio awyren i gario'r math o lwyth sydd wedi'i amlygu
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Dewiswch y math o lwyth i'w gario:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Bellach yn gallu cludo: {GOLD}{STRING1}{}{BLACK}Côst ailffitio: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Bellach yn gallu cludo: {GOLD}{STRING}{}{BLACK}Côst ailffitio: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Methu ailffitio awyren...
+
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Trychineb Zeppelin yn {STATION}!
@@ -2730,6 +2758,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Cafodd eich ymgais i lwgrwobrwyo ei
 STR_BRIBE_FAILED_2                                              :{WHITE}ddarganfod gan ymchwilydd ardal
 STR_BUILD_DATE                                                  :{BLACK}Adeiladwyd: {LTBLUE}{DATE_LONG}
+
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Graddio perfformiad manwl
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Allwedd
@@ -2748,7 +2777,7 @@ STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Llwyth:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Arian:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Benthyciad:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Cyfanswm:
-############ End o order list
+############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Nifer y cerbydau; mae hyn yn cynnwys cerbydau ffordd, trenau, llongau ac awyrennau
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Nifer y rhannau gorsaf. Mae pob rhan o orsaf (e.e. gorsaf drenau, gorsaf fysiau a meysydd awyr) yn cael eu cyfrif, hyd yn oed os ydyn nhw wedi'u cysylltu fel un gorsaf
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Elw'r cerbyd gyda'r incwm lleiaf (o bob cerbyd dros 2 flwydd oed)
@@ -2770,6 +2799,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Enw Ffei
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Rydych ar fin gwneud newidiadau i gêm sy'n rhedeg; all hyn beri i OpenTTD grashio.{}Ydych chi'n siŵr eich bod chi eisiau gwneud hyn?
+
 
 STR_NEWGRF_ADD                                                  :{BLACK}Ychwanegu
 STR_NEWGRF_ADD_TIP                                              :{BLACK}ychwanegu ffeil NewGRF i'r rhestr
@@ -2798,6 +2828,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ni ddar
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Llwythwyd GRF(au) cytûn yn lle'r rhai coll
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Analluogwyd y ffeiliau GRF coll
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Ffeiliau GRF ar goll i fedru llwytho gêm
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Arian cyfaddas
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Cyfradd gyfnewid: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2828,7 +2860,7 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Dangos p
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Rhestr wedi'i rhannu {COMMA} Cerbyd{P "" au}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Dangos pob cerbydau sy'n rhannu'r amserlen hon
 
-### depo strings
+### depot strings
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Gwerthu pob trên yn y depo
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Gwerthu pob cerbyd ffordd yn y depo
@@ -2845,10 +2877,10 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Awtoddis
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Awtoddisodli pob llong yn y depo
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Awtoddisodli pob awyren yn yr awyrendy
 
-STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING1} - {COMMA} Tr{P "ên" enau}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING1} - {COMMA} Cerbyd{P "" au} Ffordd
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING1} - {COMMA} Llong{P "" au}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING1} - {COMMA} Awyren
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tr{P "ên" enau}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Cerbyd{P "" au} Ffordd
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Llong{P "" au}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Awyren
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Disodli {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Dechrau Disodli Cerbydau
@@ -2888,14 +2920,14 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Rhestr A
 
 STR_ORDER_REFIT_FAILED                                          :{WHITE}Methodd y gorchymyn i ailffitio {STRING} {COMMA}
 
-############ Lists rail maths
+############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Cerbydau Rheilffordd
 STR_ELRAIL_VEHICLES                                             :Cerbydau Rheilffordd Drydan
 STR_MONORAIL_VEHICLES                                           :Cerbydau Monoreilffordd
 STR_MAGLEV_VEHICLES                                             :Cerbydau Maglef
 
-############ End o list o rail maths
+############ End of list of rail types
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
@@ -2914,6 +2946,9 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pwered W
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modd ei ailffitio i: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Pob math o lwyth
 STR_PURCHASE_INFO_ALL_BUT                                       :Popeth ond{GOLD}
+
+########### For showing numbers in widgets
+
 
 ########### String for New Landscape Generator
 
@@ -2968,7 +3003,7 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}uchder t
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Canoli'r map bach ar y lleoliad presennol
 
-########### String for newydd meysydd awyr
+########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Bach
 STR_CITY_AIRPORT                                                :{BLACK}Dinas
 STR_METRO_AIRPORT                                               :{BLACK}Maes awyr metropolitan
@@ -2996,4 +3031,31 @@ STR_DATE_TINY                                                   :{STRING}-{STRIN
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

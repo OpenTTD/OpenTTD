@@ -1684,7 +1684,7 @@ STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Bygg jä
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bygg järnvägsbro
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Bygg järnvägstunnel
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Växla mellan att bygga/ta bort järnväg och signaler
-STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Välj bro - klicka på vald bro för att bygga den
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Välj bro - klicka på önskad bro för att bygga den
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Välj riktning för depå
 STR_1021_RAILROAD_TRACK                                         :Järnvägsspår
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Järnvägsdepå
@@ -2523,7 +2523,7 @@ STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' 
 STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Elektricitet)
 STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Elektricitet)
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
-STR_8059_PASSENGER_CAR                                          :Passagerarbil
+STR_8059_PASSENGER_CAR                                          :Passagerarvagn
 STR_805A_MAIL_VAN                                               :Postvagn
 STR_805B_COAL_CAR                                               :Kolvagn
 STR_805C_OIL_TANKER                                             :Oljetank
@@ -2787,7 +2787,7 @@ STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Avres 
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Res till {STRING}
 STR_TIMETABLE_STAY_FOR                                          :och stanna i {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :och resa för {STRING}
-STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" s}
+STR_TIMETABLE_DAYS                                              :{COMMA} dag{P "" ar}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" s}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}På väg mot {TOWN}s tågdepå

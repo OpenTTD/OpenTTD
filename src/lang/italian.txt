@@ -2753,7 +2753,7 @@ STR_ORDER_TRAIN_DEPOT                                           :Deposito ferrov
 STR_ORDER_ROAD_DEPOT                                            :Deposito automezzi
 STR_ORDER_SHIP_DEPOT                                            :Deposito navale
 STR_GO_TO_DEPOT                                                 :{0:STRING}l {2:STRING} di {1:TOWN}
-STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING}l {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING}ll'Hangar di {STATION}
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Sempre
