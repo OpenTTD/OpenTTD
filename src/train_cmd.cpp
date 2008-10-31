@@ -2926,8 +2926,12 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	VehicleOrderSaver orders(v);
 
 	/* If the current tile is the destination of the current order and
-	* a reservation was requested, advance to the next order. */
-	if (v->tile == v->dest_tile || (v->current_order.IsType(OT_GOTO_STATION) && IsRailwayStationTile(v->tile) && v->current_order.GetDestination() == GetStationIndex(v->tile))) {
+	 * a reservation was requested, advance to the next order.
+	 * Don't advance on a depot order as depots are always safe end points
+	 * for a path and no look-ahead is necessary. This also avoids a
+	 * problem with depot orders not part of the order list when the
+	 * order list itself is empty. */
+	if (!v->current_order.IsType(OT_GOTO_DEPOT) && (v->tile == v->dest_tile || (v->current_order.IsType(OT_GOTO_STATION) && IsRailwayStationTile(v->tile) && v->current_order.GetDestination() == GetStationIndex(v->tile)))) {
 		orders.SwitchToNextOrder();
 	}
 
