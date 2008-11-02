@@ -420,7 +420,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y,
 				f == FOUNDATION_INCLINED_X ? 16 : 1,
 				f == FOUNDATION_INCLINED_Y ? 16 : 1,
-				TILE_HEIGHT + 1, ti->z
+				TILE_HEIGHT, ti->z
 			);
 			OffsetGroundSprite(31, 9);
 		} else if (IsLeveledFoundation(f)) {
@@ -469,7 +469,7 @@ void DrawFoundation(TileInfo *ti, Foundation f)
 			AddSortableSpriteToDraw(inclined_base + inclined, PAL_NONE, ti->x, ti->y,
 				f == FOUNDATION_INCLINED_X ? 16 : 1,
 				f == FOUNDATION_INCLINED_Y ? 16 : 1,
-				TILE_HEIGHT + 1, ti->z
+				TILE_HEIGHT, ti->z
 			);
 			OffsetGroundSprite(31, 9);
 		}
