@@ -99,7 +99,7 @@ static char _lang_name[32], _lang_ownname[32], _lang_isocode[16];
 static byte _lang_pluralform;
 static byte _lang_textdir;
 #define MAX_NUM_GENDER 8
-static char _genders[MAX_NUM_GENDER][8];
+static char _genders[MAX_NUM_GENDER][16];
 static int _numgenders;
 
 // contains the name of all cases.
