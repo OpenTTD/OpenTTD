@@ -250,8 +250,8 @@ DEF_CONSOLE_CMD(ConLoad)
 				_switch_mode = SM_LOAD;
 				SetFiosType(item->type);
 
-				ttd_strlcpy(_file_to_saveload.name, FiosBrowseTo(item), sizeof(_file_to_saveload.name));
-				ttd_strlcpy(_file_to_saveload.title, item->title, sizeof(_file_to_saveload.title));
+				strecpy(_file_to_saveload.name, FiosBrowseTo(item), lastof(_file_to_saveload.name));
+				strecpy(_file_to_saveload.title, item->title, lastof(_file_to_saveload.title));
 			} break;
 			default: IConsolePrintF(CC_ERROR, "%s: Not a savegame.", file);
 		}
@@ -1230,7 +1230,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 
 	if (strcmp(argv[0], "*") == 0) argv[0][0] = '\0';
 
-	ttd_strlcpy(_network_company_info[_local_company].password, argv[0], sizeof(_network_company_info[_local_company].password));
+	strecpy(_network_company_info[_local_company].password, argv[0], lastof(_network_company_info[_local_company].password));
 
 	if (!_network_server) {
 		NetworkClientSetPassword();

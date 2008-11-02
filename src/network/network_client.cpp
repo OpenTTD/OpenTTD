@@ -84,10 +84,10 @@ void HashCurrentCompanyPassword()
 	if (StrEmpty(_network_company_info[_local_company].password)) return;
 
 	_password_game_seed = _settings_game.game_creation.generation_seed;
-	ttd_strlcpy(_password_server_unique_id, _settings_client.network.network_id, sizeof(_password_server_unique_id));
+	strecpy(_password_server_unique_id, _settings_client.network.network_id, lastof(_password_server_unique_id));
 
 	const char *new_pw = GenerateCompanyPasswordHash(_network_company_info[_local_company].password);
-	ttd_strlcpy(_network_company_info[_local_company].password, new_pw, sizeof(_network_company_info[_local_company].password));
+	strecpy(_network_company_info[_local_company].password, new_pw, lastof(_network_company_info[_local_company].password));
 }
 
 
@@ -419,7 +419,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 		}
 
 		ci->client_playas = playas;
-		ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
+		strecpy(ci->client_name, name, lastof(ci->client_name));
 
 		InvalidateWindow(WC_CLIENT_LIST, 0);
 
@@ -432,7 +432,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 		ci->client_index = index;
 		ci->client_playas = playas;
 
-		ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
+		strecpy(ci->client_name, name, lastof(ci->client_name));
 
 		InvalidateWindow(WC_CLIENT_LIST, 0);
 
@@ -951,7 +951,7 @@ void NetworkUpdateClientName()
 		} else {
 			if (NetworkFindName(_settings_client.network.client_name)) {
 				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.client_name);
-				ttd_strlcpy(ci->client_name, _settings_client.network.client_name, sizeof(ci->client_name));
+				strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
 				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
 			}
 		}

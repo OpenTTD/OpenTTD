@@ -34,7 +34,7 @@ void MusicDriver_ExtMidi::Stop()
 
 void MusicDriver_ExtMidi::PlaySong(const char* filename)
 {
-	ttd_strlcpy(this->song, filename, lengthof(this->song));
+	strecpy(this->song, filename, lastof(this->song));
 	this->DoStop();
 }
 

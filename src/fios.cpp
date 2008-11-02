@@ -216,14 +216,14 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 		fios = _fios_items.Append();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
-		ttd_strlcpy(fios->name, "..", lengthof(fios->name));
-		ttd_strlcpy(fios->title, ".. (Parent directory)", lengthof(fios->title));
+		strecpy(fios->name, "..", lastof(fios->name));
+		strecpy(fios->title, ".. (Parent directory)", lastof(fios->title));
 	}
 
 	/* Show subdirectories */
 	if (mode != SLD_NEW_GAME && (dir = ttd_opendir(_fios_path)) != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
-			ttd_strlcpy(d_name, FS2OTTD(dirent->d_name), sizeof(d_name));
+			strecpy(d_name, FS2OTTD(dirent->d_name), lastof(d_name));
 
 			/* found file must be directory, but not '.' or '..' */
 			if (FiosIsValidFile(_fios_path, dirent, &sb) && (sb.st_mode & S_IFDIR) &&
@@ -232,7 +232,7 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 				fios = _fios_items.Append();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
-				ttd_strlcpy(fios->name, d_name, lengthof(fios->name));
+				strecpy(fios->name, d_name, lastof(fios->name));
 				snprintf(fios->title, lengthof(fios->title), "%s" PATHSEP " (Directory)", d_name);
 				str_validate(fios->title);
 			}
@@ -257,7 +257,7 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 		while ((dirent = readdir(dir)) != NULL) {
 			char fios_title[64];
 			char *t;
-			ttd_strlcpy(d_name, FS2OTTD(dirent->d_name), sizeof(d_name));
+			strecpy(d_name, FS2OTTD(dirent->d_name), lastof(d_name));
 
 			if (!FiosIsValidFile(_fios_path, dirent, &sb) || !(sb.st_mode & S_IFREG) || FiosIsHiddenFile(dirent)) continue;
 
@@ -270,12 +270,12 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 				fios = _fios_items.Append();
 				fios->mtime = sb.st_mtime;
 				fios->type = type;
-				ttd_strlcpy(fios->name, d_name, lengthof(fios->name));
+				strecpy(fios->name, d_name, lastof(fios->name));
 
 				/* Some callbacks want to lookup the title of the file. Allow that.
 				 * If we just copy the title from the filename, strip the extension */
 				t = (fios_title[0] == '\0') ? *t = '\0', d_name : fios_title;
-				ttd_strlcpy(fios->title, t, lengthof(fios->title));
+				strecpy(fios->title, t, lastof(fios->title));
 				str_validate(fios->title);
 			}
 		}

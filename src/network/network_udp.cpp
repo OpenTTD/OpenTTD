@@ -94,9 +94,9 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_FIND_SERVER)
 	ngi.dedicated      = _network_dedicated;
 	ngi.grfconfig      = _grfconfig;
 
-	ttd_strlcpy(ngi.map_name, _network_game_info.map_name, lengthof(ngi.map_name));
-	ttd_strlcpy(ngi.server_name, _settings_client.network.server_name, lengthof(ngi.server_name));
-	ttd_strlcpy(ngi.server_revision, _openttd_revision, lengthof(ngi.server_revision));
+	strecpy(ngi.map_name, _network_game_info.map_name, lastof(ngi.map_name));
+	strecpy(ngi.server_name, _settings_client.network.server_name, lastof(ngi.server_name));
+	strecpy(ngi.server_revision, _openttd_revision, lastof(ngi.server_revision));
 
 	Packet packet(PACKET_UDP_SERVER_RESPONSE);
 	this->Send_NetworkGameInfo(&packet, &ngi);
@@ -209,8 +209,8 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_GET_NEWGRFS)
 		char name[NETWORK_GRF_NAME_LENGTH];
 
 		/* The name could be an empty string, if so take the filename */
-		ttd_strlcpy(name, (in_reply[i]->name != NULL && !StrEmpty(in_reply[i]->name)) ?
-				in_reply[i]->name : in_reply[i]->filename, sizeof(name));
+		strecpy(name, (in_reply[i]->name != NULL && !StrEmpty(in_reply[i]->name)) ?
+				in_reply[i]->name : in_reply[i]->filename, lastof(name));
 		this->Send_GRFIdentifier(&packet, in_reply[i]);
 		packet.Send_string(name);
 	}
@@ -465,8 +465,8 @@ void NetworkUDPQueryServer(const char* host, unsigned short port, bool manually)
 
 	if (StrEmpty(item->info.server_name)) {
 		memset(&item->info, 0, sizeof(item->info));
-		ttd_strlcpy(item->info.server_name, host, lengthof(item->info.server_name));
-		ttd_strlcpy(item->info.hostname, host, lengthof(item->info.hostname));
+		strecpy(item->info.server_name, host, lastof(item->info.server_name));
+		strecpy(item->info.hostname, host, lastof(item->info.hostname));
 		item->online = false;
 	}
 	item->manually = manually;

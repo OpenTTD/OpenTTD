@@ -672,9 +672,9 @@ public:
 
 		/* The name is only allowed when it starts with a letter! */
 		if (!StrEmpty(this->edit_str_buf) && this->edit_str_buf[0] != ' ') {
-			ttd_strlcpy(_settings_client.network.client_name, this->edit_str_buf, lengthof(_settings_client.network.client_name));
+			strecpy(_settings_client.network.client_name, this->edit_str_buf, lastof(_settings_client.network.client_name));
 		} else {
-			ttd_strlcpy(_settings_client.network.client_name, "Player", lengthof(_settings_client.network.client_name));
+			strecpy(_settings_client.network.client_name, "Player", lastof(_settings_client.network.client_name));
 		}
 		return state;
 	}
@@ -1003,8 +1003,8 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 					if (name != NULL) {
 						SetFiosType(this->map->type);
 						_file_to_saveload.filetype = FT_SCENARIO;
-						ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-						ttd_strlcpy(_file_to_saveload.title, this->map->title, sizeof(_file_to_saveload.title));
+						strecpy(_file_to_saveload.name, name, lastof(_file_to_saveload.name));
+						strecpy(_file_to_saveload.title, this->map->title, lastof(_file_to_saveload.title));
 
 						delete this;
 						SwitchMode(SM_START_SCENARIO);
@@ -1049,7 +1049,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		if (this->field == NSSW_GAMENAME) {
 			if (this->HandleEditBoxKey(NSSW_GAMENAME, key, keycode, state) == HEBR_CONFIRM) return state;
 
-			ttd_strlcpy(_settings_client.network.server_name, this->text.buf, sizeof(_settings_client.network.server_name));
+			strecpy(_settings_client.network.server_name, this->text.buf, lastof(_settings_client.network.server_name));
 		}
 
 		return state;
@@ -1060,7 +1060,7 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 		if (str == NULL) return;
 
 		if (this->widget_id == NSSW_SETPWD) {
-			ttd_strlcpy(_settings_client.network.server_password, str, lengthof(_settings_client.network.server_password));
+			strecpy(_settings_client.network.server_password, str, lastof(_settings_client.network.server_password));
 		} else {
 			int32 value = atoi(str);
 			this->InvalidateWidget(this->widget_id);

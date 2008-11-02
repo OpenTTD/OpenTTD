@@ -1190,15 +1190,15 @@ struct CustomCurrencyWindow : Window {
 
 			case CUSTCURR_SEPARATOR: /* Thousands seperator */
 				_custom_currency.separator = StrEmpty(str) ? ' ' : str[0];
-				ttd_strlcpy(this->separator, str, lengthof(this->separator));
+				strecpy(this->separator, str, lastof(this->separator));
 				break;
 
 			case CUSTCURR_PREFIX:
-				ttd_strlcpy(_custom_currency.prefix, str, lengthof(_custom_currency.prefix));
+				strecpy(_custom_currency.prefix, str, lastof(_custom_currency.prefix));
 				break;
 
 			case CUSTCURR_SUFFIX:
-				ttd_strlcpy(_custom_currency.suffix, str, lengthof(_custom_currency.suffix));
+				strecpy(_custom_currency.suffix, str, lastof(_custom_currency.suffix));
 				break;
 
 			case CUSTCURR_TO_EURO: { /* Year to switch to euro */

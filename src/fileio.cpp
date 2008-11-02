@@ -310,7 +310,7 @@ FILE *FioFOpenFileSp(const char *filename, const char *mode, Searchpath sp, Subd
 	char buf[MAX_PATH];
 
 	if (subdir == NO_DIRECTORY) {
-		ttd_strlcpy(buf, filename, lengthof(buf));
+		strecpy(buf, filename, lastof(buf));
 	} else {
 		snprintf(buf, lengthof(buf), "%s%s%s", _searchpaths[sp], _subdirs[subdir], filename);
 	}

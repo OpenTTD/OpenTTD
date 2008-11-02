@@ -643,11 +643,11 @@ static void HandlePragma(char *str)
 	if (!memcmp(str, "id ", 3)) {
 		_next_string_id = strtoul(str + 3, NULL, 0);
 	} else if (!memcmp(str, "name ", 5)) {
-		ttd_strlcpy(_lang_name, str + 5, sizeof(_lang_name));
+		strecpy(_lang_name, str + 5, lastof(_lang_name));
 	} else if (!memcmp(str, "ownname ", 8)) {
-		ttd_strlcpy(_lang_ownname, str + 8, sizeof(_lang_ownname));
+		strecpy(_lang_ownname, str + 8, lastof(_lang_ownname));
 	} else if (!memcmp(str, "isocode ", 8)) {
-		ttd_strlcpy(_lang_isocode, str + 8, sizeof(_lang_isocode));
+		strecpy(_lang_isocode, str + 8, lastof(_lang_isocode));
 	} else if (!memcmp(str, "plural ", 7)) {
 		_lang_pluralform = atoi(str + 7);
 		if (_lang_pluralform >= lengthof(_plural_form_counts))
@@ -668,7 +668,7 @@ static void HandlePragma(char *str)
 
 			if (s == NULL) break;
 			if (_numgenders >= MAX_NUM_GENDER) error("Too many genders, max %d", MAX_NUM_GENDER);
-			ttd_strlcpy(_genders[_numgenders], s, sizeof(_genders[_numgenders]));
+			strecpy(_genders[_numgenders], s, lastof(_genders[_numgenders]));
 			_numgenders++;
 		}
 	} else if (!memcmp(str, "case ", 5)) {
@@ -679,7 +679,7 @@ static void HandlePragma(char *str)
 
 			if (s == NULL) break;
 			if (_numcases >= MAX_NUM_CASES) error("Too many cases, max %d", MAX_NUM_CASES);
-			ttd_strlcpy(_cases[_numcases], s, sizeof(_cases[_numcases]));
+			strecpy(_cases[_numcases], s, lastof(_cases[_numcases]));
 			_numcases++;
 		}
 	} else {

@@ -424,11 +424,11 @@ int ttd_main(int argc, char *argv[])
 
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch (i) {
-		case 'I': ttd_strlcpy(graphics_set, mgo.opt, sizeof(graphics_set)); break;
-		case 'm': ttd_strlcpy(musicdriver, mgo.opt, sizeof(musicdriver)); break;
-		case 's': ttd_strlcpy(sounddriver, mgo.opt, sizeof(sounddriver)); break;
-		case 'v': ttd_strlcpy(videodriver, mgo.opt, sizeof(videodriver)); break;
-		case 'b': ttd_strlcpy(blitter, mgo.opt, sizeof(blitter)); break;
+		case 'I': strecpy(graphics_set, mgo.opt, lastof(graphics_set)); break;
+		case 'm': strecpy(musicdriver, mgo.opt, lastof(musicdriver)); break;
+		case 's': strecpy(sounddriver, mgo.opt, lastof(sounddriver)); break;
+		case 'v': strecpy(videodriver, mgo.opt, lastof(videodriver)); break;
+		case 'b': strecpy(blitter, mgo.opt, lastof(blitter)); break;
 #if defined(ENABLE_NETWORK)
 		case 'D':
 			strcpy(musicdriver, "null");
@@ -467,7 +467,7 @@ int ttd_main(int argc, char *argv[])
 		case 'i': _use_palette = (mgo.opt == NULL || atoi(mgo.opt) == 0) ? PAL_DOS : PAL_WINDOWS; break;
 		case 'g':
 			if (mgo.opt != NULL) {
-				ttd_strlcpy(_file_to_saveload.name, mgo.opt, sizeof(_file_to_saveload.name));
+				strecpy(_file_to_saveload.name, mgo.opt, lastof(_file_to_saveload.name));
 				_switch_mode = SM_LOAD;
 				_file_to_saveload.mode = SL_LOAD;
 
@@ -522,11 +522,11 @@ int ttd_main(int argc, char *argv[])
 
 
 	/* override config? */
-	if (!StrEmpty(graphics_set)) ttd_strlcpy(_ini_graphics_set, graphics_set, sizeof(_ini_graphics_set));
-	if (!StrEmpty(musicdriver)) ttd_strlcpy(_ini_musicdriver, musicdriver, sizeof(_ini_musicdriver));
-	if (!StrEmpty(sounddriver)) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
-	if (!StrEmpty(videodriver)) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
-	if (!StrEmpty(blitter))     ttd_strlcpy(_ini_blitter, blitter, sizeof(_ini_blitter));
+	if (!StrEmpty(graphics_set)) strecpy(_ini_graphics_set, graphics_set, lastof(_ini_graphics_set));
+	if (!StrEmpty(musicdriver)) strecpy(_ini_musicdriver, musicdriver, lastof(_ini_musicdriver));
+	if (!StrEmpty(sounddriver)) strecpy(_ini_sounddriver, sounddriver, lastof(_ini_sounddriver));
+	if (!StrEmpty(videodriver)) strecpy(_ini_videodriver, videodriver, lastof(_ini_videodriver));
+	if (!StrEmpty(blitter))     strecpy(_ini_blitter, blitter, lastof(_ini_blitter));
 	if (resolution.width != 0) { _cur_resolution = resolution; }
 	if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
@@ -1109,7 +1109,7 @@ static void DoAutosave()
 		SetDParam(0, _local_company);
 		SetDParam(1, _date);
 		GetString(buf, STR_4004, lastof(buf));
-		ttd_strlcat(buf, ".sav", lengthof(buf));
+		strecat(buf, ".sav", lastof(buf));
 	} else {
 		/* generate a savegame name and number according to _settings_client.gui.max_num_autosaves */
 		snprintf(buf, sizeof(buf), "autosave%d.sav", _autosave_ctr);

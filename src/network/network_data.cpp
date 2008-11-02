@@ -53,7 +53,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 		c.callback = 0; // _callback_table[0] == NULL
 	}
 
-	ttd_strlcpy(c.text, (_cmd_text != NULL) ? _cmd_text : "", lengthof(c.text));
+	strecpy(c.text, (_cmd_text != NULL) ? _cmd_text : "", lastof(c.text));
 
 	if (_network_server) {
 		/* If we are the server, we queue the command in our 'special' queue.

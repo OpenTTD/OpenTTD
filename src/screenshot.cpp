@@ -548,7 +548,7 @@ static char *MakeScreenshotName(const char *ext)
 	size_t len;
 
 	if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_company == COMPANY_SPECTATOR) {
-		ttd_strlcpy(_screenshot_name, "screenshot", lengthof(_screenshot_name));
+		strecpy(_screenshot_name, "screenshot", lastof(_screenshot_name));
 	} else {
 		SetDParam(0, _local_company);
 		SetDParam(1, _date);

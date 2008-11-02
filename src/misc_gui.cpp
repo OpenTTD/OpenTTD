@@ -1488,7 +1488,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 				break;
 
 			default:
-				ttd_strlcpy(o_dir.name, _personal_dir, lengthof(o_dir.name));
+				strecpy(o_dir.name, _personal_dir, lastof(o_dir.name));
 		}
 
 		this->vscroll.cap = 10;
@@ -1574,14 +1574,14 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 						_switch_mode = (_game_mode == GM_EDITOR) ? SM_LOAD_SCENARIO : SM_LOAD;
 
 						SetFiosType(file->type);
-						ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-						ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+						strecpy(_file_to_saveload.name, name, lastof(_file_to_saveload.name));
+						strecpy(_file_to_saveload.title, file->title, lastof(_file_to_saveload.title));
 
 						delete this;
 					} else if (_saveload_mode == SLD_LOAD_HEIGHTMAP) {
 						SetFiosType(file->type);
-						ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
-						ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+						strecpy(_file_to_saveload.name, name, lastof(_file_to_saveload.name));
+						strecpy(_file_to_saveload.title, file->title, lastof(_file_to_saveload.title));
 
 						delete this;
 						ShowHeightmapLoad();

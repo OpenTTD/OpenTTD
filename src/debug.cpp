@@ -163,7 +163,7 @@ const char *GetDebugString()
 
 	for (i++; i != endof(debug_level); i++) {
 		snprintf(dbgval, sizeof(dbgval), ", %s=%d", i->name, *i->level);
-		ttd_strlcat(dbgstr, dbgval, sizeof(dbgstr));
+		strecat(dbgstr, dbgval, lastof(dbgstr));
 	}
 
 	return dbgstr;

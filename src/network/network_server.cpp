@@ -679,7 +679,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	}
 
 	// We need a valid name.. make it Player
-	if (StrEmpty(name)) ttd_strlcpy(name, "Player", sizeof(name));
+	if (StrEmpty(name)) strecpy(name, "Player", lastof(name));
 
 	if (!NetworkFindName(name)) { // Change name if duplicate
 		// We could not create a name for this client
@@ -689,8 +689,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	ci = DEREF_CLIENT_INFO(cs);
 
-	ttd_strlcpy(ci->client_name, name, sizeof(ci->client_name));
-	ttd_strlcpy(ci->unique_id, unique_id, sizeof(ci->unique_id));
+	strecpy(ci->client_name, name, lastof(ci->client_name));
+	strecpy(ci->unique_id, unique_id, lastof(ci->unique_id));
 	ci->client_playas = playas;
 	ci->client_lang = client_lang;
 
@@ -1194,7 +1194,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 	ci = DEREF_CLIENT_INFO(cs);
 
 	if (IsValidCompanyID(ci->client_playas)) {
-		ttd_strlcpy(_network_company_info[ci->client_playas].password, password, sizeof(_network_company_info[0].password));
+		strecpy(_network_company_info[ci->client_playas].password, password, lastof(_network_company_info[0].password));
 	}
 }
 
@@ -1218,7 +1218,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 		// Display change
 		if (NetworkFindName(client_name)) {
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", client_name);
-			ttd_strlcpy(ci->client_name, client_name, sizeof(ci->client_name));
+			strecpy(ci->client_name, client_name, lastof(ci->client_name));
 			NetworkUpdateClientInfo(ci->client_index);
 		}
 	}
@@ -1313,11 +1313,11 @@ void NetworkPopulateCompanyInfo()
 
 	FOR_ALL_COMPANIES(c) {
 		// Clean the info but not the password
-		ttd_strlcpy(password, _network_company_info[c->index].password, sizeof(password));
+		strecpy(password, _network_company_info[c->index].password, lastof(password));
 		months_empty = _network_company_info[c->index].months_empty;
 		memset(&_network_company_info[c->index], 0, sizeof(NetworkCompanyInfo));
 		_network_company_info[c->index].months_empty = months_empty;
-		ttd_strlcpy(_network_company_info[c->index].password, password, sizeof(_network_company_info[c->index].password));
+		strecpy(_network_company_info[c->index].password, password, lastof(_network_company_info[c->index].password));
 
 		// Grap the company name
 		SetDParam(0, c->index);
@@ -1372,7 +1372,7 @@ void NetworkPopulateCompanyInfo()
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	// Register local company (if not dedicated)
 	if (ci != NULL && IsValidCompanyID(ci->client_playas))
-		ttd_strlcpy(_network_company_info[ci->client_playas].clients, ci->client_name, sizeof(_network_company_info[0].clients));
+		strecpy(_network_company_info[ci->client_playas].clients, ci->client_name, lastof(_network_company_info[0].clients));
 
 	FOR_ALL_CLIENTS(cs) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
@@ -1382,10 +1382,10 @@ void NetworkPopulateCompanyInfo()
 		ci = DEREF_CLIENT_INFO(cs);
 		if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
 			if (!StrEmpty(_network_company_info[ci->client_playas].clients)) {
-				ttd_strlcat(_network_company_info[ci->client_playas].clients, ", ", lengthof(_network_company_info[0].clients));
+				strecat(_network_company_info[ci->client_playas].clients, ", ", lastof(_network_company_info[0].clients));
 			}
 
-			ttd_strlcat(_network_company_info[ci->client_playas].clients, client_name, lengthof(_network_company_info[0].clients));
+			strecat(_network_company_info[ci->client_playas].clients, client_name, lastof(_network_company_info[0].clients));
 		}
 	}
 }

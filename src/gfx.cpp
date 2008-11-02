@@ -986,7 +986,7 @@ skip_cont:;
 int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw)
 {
 	char buffer[DRAW_STRING_BUFFER];
-	ttd_strlcpy(buffer, str, sizeof(buffer));
+	strecpy(buffer, str, lastof(buffer));
 	TruncateString(buffer, maxw);
 	return DoDrawString(buffer, x, y, color);
 }

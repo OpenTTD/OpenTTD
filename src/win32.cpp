@@ -803,7 +803,7 @@ void FiosGetDrives()
 	fios->type = FIOS_TYPE_DRIVE;
 	fios->mtime = 0;
 	snprintf(fios->name, lengthof(fios->name), PATHSEP "");
-	ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
+	strecpy(fios->title, fios->name, lastof(fios->title));
 #else
 	TCHAR drives[256];
 	const TCHAR *s;
@@ -814,7 +814,7 @@ void FiosGetDrives()
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
 		snprintf(fios->name, lengthof(fios->name),  "%c:", s[0] & 0xFF);
-		ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
+		strecpy(fios->title, fios->name, lastof(fios->title));
 		while (*s++ != '\0') { /* Nothing */ }
 	}
 #endif
@@ -1127,7 +1127,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		cbuf = GetClipboardData(CF_TEXT);
 
 		ptr = (const char*)GlobalLock(cbuf);
-		ttd_strlcpy(utf8_buf, FS2OTTD(ptr), lengthof(utf8_buf));
+		strecpy(utf8_buf, FS2OTTD(ptr), lastof(utf8_buf));
 
 		GlobalUnlock(cbuf);
 		CloseClipboard();

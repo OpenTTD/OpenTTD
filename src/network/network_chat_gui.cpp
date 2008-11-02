@@ -97,7 +97,7 @@ void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *messa
 
 	for (bufp = buf; lines != 0; lines--) {
 		ChatMessage *cmsg = &_chatmsg_list[msg_count++];
-		ttd_strlcpy(cmsg->message, bufp, sizeof(cmsg->message));
+		strecpy(cmsg->message, bufp, lastof(cmsg->message));
 
 		/* The default colour for a message is company colour. Replace this with
 		 * white for any additional lines */

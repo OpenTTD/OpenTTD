@@ -446,7 +446,7 @@ char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 	grf = CallocT<UnknownGRF>(1);
 	grf->grfid = grfid;
 	grf->next  = unknown_grfs;
-	ttd_strlcpy(grf->name, UNKNOWN_GRF_NAME_PLACEHOLDER, sizeof(grf->name));
+	strecpy(grf->name, UNKNOWN_GRF_NAME_PLACEHOLDER, lastof(grf->name));
 	memcpy(grf->md5sum, md5sum, sizeof(grf->md5sum));
 
 	unknown_grfs = grf;

@@ -1271,7 +1271,7 @@ bool ReadLanguagePack(int lang_index)
 	_langpack_offs = langpack_offs;
 
 	const char *c_file = strrchr(_dynlang.ent[lang_index].file, PATHSEPCHAR) + 1;
-	ttd_strlcpy(_dynlang.curr_file, c_file, lengthof(_dynlang.curr_file));
+	strecpy(_dynlang.curr_file, c_file, lastof(_dynlang.curr_file));
 
 	_dynlang.curr = lang_index;
 	_dynlang.text_dir = (TextDirection)lang_pack->text_dir;

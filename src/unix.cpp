@@ -154,7 +154,7 @@ static const char *convert_tofrom_fs(iconv_t convd, const char *name)
 	size_t outlen = sizeof(buf) - 1;
 	size_t inlen  = strlen(name);
 
-	ttd_strlcpy(outbuf, name, sizeof(buf));
+	strecpy(outbuf, name, lastof(buf));
 
 	iconv(convd, NULL, NULL, NULL, NULL);
 	if (iconv(convd, &inbuf, &inlen, &outbuf, &outlen) == (size_t)(-1)) {

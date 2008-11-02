@@ -212,19 +212,19 @@ void CDECL NetworkTextMessage(NetworkAction action, ConsoleColour color, bool se
 			SetDParamStr(0, name);
 			SetDParamStr(1, buf);
 			GetString(temp, self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY, lastof(temp));
-			ttd_strlcpy(message, temp, sizeof(message));
+			strecpy(message, temp, lastof(message));
 			break;
 		case NETWORK_ACTION_CHAT_CLIENT:
 			SetDParamStr(0, name);
 			SetDParamStr(1, buf);
 			GetString(temp, self_send ? STR_NETWORK_CHAT_TO_CLIENT : STR_NETWORK_CHAT_CLIENT, lastof(temp));
-			ttd_strlcpy(message, temp, sizeof(message));
+			strecpy(message, temp, lastof(message));
 			break;
 		default:
 			SetDParamStr(0, name);
 			SetDParamStr(1, buf);
 			GetString(temp, STR_NETWORK_CHAT_ALL, lastof(temp));
-			ttd_strlcpy(message, temp, sizeof(message));
+			strecpy(message, temp, lastof(message));
 			break;
 	}
 
@@ -734,9 +734,9 @@ void NetworkAddServer(const char *b)
 		char host[NETWORK_HOSTNAME_LENGTH];
 		uint16 rport;
 
-		ttd_strlcpy(host, b, lengthof(host));
+		strecpy(host, b, lastof(host));
 
-		ttd_strlcpy(_settings_client.network.connect_to_ip, b, lengthof(_settings_client.network.connect_to_ip));
+		strecpy(_settings_client.network.connect_to_ip, b, lastof(_settings_client.network.connect_to_ip));
 		rport = NETWORK_DEFAULT_PORT;
 
 		ParseConnectionString(&company, &port, host);
@@ -774,7 +774,7 @@ bool NetworkClientConnectGame(const char *host, uint16 port)
 
 	if (port == 0) return false;
 
-	ttd_strlcpy(_settings_client.network.last_host, host, sizeof(_settings_client.network.last_host));
+	strecpy(_settings_client.network.last_host, host, lastof(_settings_client.network.last_host));
 	_settings_client.network.last_port = port;
 
 	NetworkDisconnect();
@@ -815,8 +815,8 @@ static void NetworkInitGameInfo()
 	ci->client_index = NETWORK_SERVER_INDEX;
 	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : _local_company;
 
-	ttd_strlcpy(ci->client_name, _settings_client.network.client_name, sizeof(ci->client_name));
-	ttd_strlcpy(ci->unique_id, _settings_client.network.network_id, sizeof(ci->unique_id));
+	strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
+	strecpy(ci->unique_id, _settings_client.network.network_id, lastof(ci->unique_id));
 }
 
 bool NetworkServerStart()
