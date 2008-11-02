@@ -1558,6 +1558,10 @@ void VehicleEnterDepot(Vehicle *v)
 	switch (v->type) {
 		case VEH_TRAIN:
 			InvalidateWindowClasses(WC_TRAINS_LIST);
+			/* Clear path reservation */
+			SetDepotWaypointReservation(v->tile, false);
+			if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
+
 			if (!IsFrontEngine(v)) v = v->First();
 			UpdateSignalsOnSegment(v->tile, INVALID_DIAGDIR, v->owner);
 			v->load_unload_time_rem = 0;

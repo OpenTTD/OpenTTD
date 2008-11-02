@@ -3654,10 +3654,6 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 						TrainEnterStation(v, r >> VETS_STATION_ID_OFFSET);
 						return;
 					}
-					if (v->Next() == NULL && IsRailDepotTile(v->tile) && HasBit(r, VETS_ENTERED_WORMHOLE)) {
-						SetDepotWaypointReservation(v->tile, false);
-						if (_settings_client.gui.show_track_reservation) MarkTileDirtyByTile(v->tile);
-					}
 
 					if (v->current_order.IsType(OT_LEAVESTATION)) {
 						v->current_order.Free();
