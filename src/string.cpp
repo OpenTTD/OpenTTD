@@ -78,7 +78,6 @@ char* strecpy(char* dst, const char* src, const char* last)
 		error("String too long for destination buffer");
 #else /* STRGEN */
 		DEBUG(misc, 0, "String too long for destination buffer");
-		*dst = '\0';
 #endif /* STRGEN */
 	}
 	return dst;
