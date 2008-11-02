@@ -1393,7 +1393,8 @@ CommandCost CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 						Track track = DiagDirToDiagTrack(GetTunnelBridgeDirection(tile));
 						if (GetTunnelBridgeReservation(tile)) {
 							Vehicle *v = GetTrainForReservation(tile, track);
-							if (v != NULL) {
+							if (v != NULL && !HasPowerOnRail(v->u.rail.railtype, totype)) {
+								/* No power on new rail type, reroute. */
 								FreeTrainTrackReservation(v);
 								*vehicles_affected.Append() = v;
 							}
