@@ -305,8 +305,30 @@ assert_compile(sizeof(uint32) == 4);
 assert_compile(sizeof(uint16) == 2);
 assert_compile(sizeof(uint8)  == 1);
 
+/**
+ * Return the length of an fixed size array.
+ * Unlike sizeof this function returns the number of elements
+ * of the given type.
+ *
+ * @param x The pointer to the first element of the array
+ * @return The number of elements
+ */
 #define lengthof(x) (sizeof(x) / sizeof(x[0]))
+
+/**
+ * Get the end element of an fixed size array.
+ *
+ * @param x The pointer to the first element of the array
+ * @return The pointer past to the last element of the array
+ */
 #define endof(x) (&x[lengthof(x)])
+
+/**
+ * Get the last element of an fixed size array.
+ *
+ * @param x The pointer to the first element of the array
+ * @return The pointer to the last element of the array
+ */
 #define lastof(x) (&x[lengthof(x) - 1])
 
 #define cpp_offsetof(s, m)   (((size_t)&reinterpret_cast<const volatile char&>((((s*)(char*)8)->m))) - 8)

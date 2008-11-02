@@ -29,6 +29,7 @@
  * buffer.
  *
  * @note usage ttd_strlcat(dst, src, lengthof(dst));
+ * @note lengthof() applies only to fixed size arrays
  *
  * @param dst The buffer containing the target string
  * @param src The buffer containing the string to append
@@ -44,6 +45,7 @@ void ttd_strlcat(char *dst, const char *src, size_t size);
  * buffer.
  *
  * @note usage ttd_strlcpy(dst, src, lengthof(dst));
+ * @note lengthof() applies only to fixed size arrays
  *
  * @param dst The destination buffer
  * @param src The buffer containing the string to copy
@@ -60,6 +62,7 @@ void ttd_strlcpy(char *dst, const char *src, size_t size);
  * boundary check is performed.
  *
  * @note usage: strecat(dst, src, lastof(dst));
+ * @note lastof() applies only to fixed size arrays
  *
  * @param dst The buffer containing the target string
  * @param src The buffer containing the string to append
@@ -77,6 +80,7 @@ char *strecat(char *dst, const char *src, const char *last);
  * check is performed.
  *
  * @note usage: strecpy(dst, src, lastof(dst));
+ * @note lastof() applies only to fixed size arrays
  *
  * @param dst The destination buffer
  * @param src The buffer containing the string to copy
@@ -99,11 +103,25 @@ void str_strip_colours(char *str);
 /** Convert the given string to lowercase, only works with ASCII! */
 void strtolower(char *str);
 
+/**
+ * Check if a string buffer is empty.
+ *
+ * @param s The pointer to the firste element of the buffer
+ * @return true if the buffer starts with the terminating null-character or
+ *         if the given pointer points to NULL else return false
+ */
+static inline bool StrEmpty(const char *s)
+{
+	return s == NULL || s[0] == '\0';
+}
 
-static inline bool StrEmpty(const char *s) { return s == NULL || s[0] == '\0'; }
-
-
-/** Get the length of a string, within a limited buffer */
+/**
+ * Get the length of a string, within a limited buffer.
+ *
+ * @param str The pointer to the firste element of the buffer
+ * @param maxlen The maximum size of the buffer
+ * @return The length of the string
+ */
 static inline size_t ttd_strnlen(const char *str, size_t maxlen)
 {
 	const char *t;
