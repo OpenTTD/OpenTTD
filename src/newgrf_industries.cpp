@@ -523,7 +523,7 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 
 	/* Unlike the "normal" cases, not having a valid result means we allow
 	 * the building of the industry, as that's how it's done in TTDP. */
-	if (group == NULL || group->type != SGT_CALLBACK) return true;
+	if (group == NULL || group->type != SGT_CALLBACK || group->g.callback.result == 0x400) return true;
 
 	/* Copy some parameters from the registers to the error message text ref. stack */
 	SwitchToErrorRefStack();
@@ -531,7 +531,6 @@ bool CheckIfCallBackAllowsCreation(TileIndex tile, IndustryType type, uint itspe
 	SwitchToNormalRefStack();
 
 	switch (group->g.callback.result) {
-		case 0x400: return true;
 		case 0x401: _error_message = STR_0239_SITE_UNSUITABLE; break;
 		case 0x402: _error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST; break;
 		case 0x403: _error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT; break;
