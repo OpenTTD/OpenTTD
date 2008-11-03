@@ -1372,7 +1372,7 @@ void NetworkPopulateCompanyInfo()
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	// Register local company (if not dedicated)
 	if (ci != NULL && IsValidCompanyID(ci->client_playas))
-		strecpy(_network_company_info[ci->client_playas].clients, ci->client_name, lastof(_network_company_info[0].clients));
+		strecpy(_network_company_info[ci->client_playas].clients, ci->client_name, lastof(_network_company_info[ci->client_playas].clients));
 
 	FOR_ALL_CLIENTS(cs) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
@@ -1382,10 +1382,10 @@ void NetworkPopulateCompanyInfo()
 		ci = DEREF_CLIENT_INFO(cs);
 		if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
 			if (!StrEmpty(_network_company_info[ci->client_playas].clients)) {
-				strecat(_network_company_info[ci->client_playas].clients, ", ", lastof(_network_company_info[0].clients));
+				strecat(_network_company_info[ci->client_playas].clients, ", ", lastof(_network_company_info[ci->client_playas].clients));
 			}
 
-			strecat(_network_company_info[ci->client_playas].clients, client_name, lastof(_network_company_info[0].clients));
+			strecat(_network_company_info[ci->client_playas].clients, client_name, lastof(_network_company_info[ci->client_playas].clients));
 		}
 	}
 }
