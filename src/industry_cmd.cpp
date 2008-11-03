@@ -2089,6 +2089,9 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 				case 0xE:                         // increment production
 					increment = res == 0x0D ? -1 : 1;
 					break;
+				case 0xF:                         // Set production to higher word of register 0x100
+					i->prod_level = Clamp(GB(GetRegister(0x100), 16, 16), PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
+					break;
 			}
 		}
 	}
