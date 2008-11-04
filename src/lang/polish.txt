@@ -2770,6 +2770,7 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociąg 
 
 
 
+
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Przejazd (bez ustalonego czasu)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Przejazd przez {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
@@ -3136,6 +3137,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Twoja pr
 STR_BRIBE_FAILED_2                                              :{WHITE}wykryta przez lokalnych badaczy.
 STR_BUILD_DATE                                                  :{BLACK}Zbudowano: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Szczegóły oceny działalności
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Szczegóły
@@ -3169,6 +3171,8 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Suma prz
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Ustawienia NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Ustawienia NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Zastosuj zmiany
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Zmień paletę
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Zmień paletę kolorów wybranego NewGRF.{}Zrób to gdy grafika tego NewGRF jest różowa
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Ustaw parametry
 STR_NEWGRF_TIP                                                  :{BLACK}Lista plików NewGRF jakie są zainstalowane. Kliknij na ustawienia aby zmienić
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Obecnie nie ma zainstalowanych żadnych plików NewGRF! Proszę sprawdzić instrukcję jak zainstalować nowe grafiki
@@ -3190,6 +3194,9 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} wymaga OpenTTD w wersji {STRING} lub nowszej.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano za dużo NewGRF.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj plik NewGRF do listy

@@ -2747,8 +2747,8 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Deposito più v
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar più vicino
 STR_ORDER_NEAREST_DEPOT                                         :più vicino
 STR_ORDER_NEAREST_HANGAR                                        :più vicino Hangar
-STR_ORDER_SERVICE_AT                                            :Manutenzione al
-STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenzione no-stop al
+STR_ORDER_SERVICE_AT                                            :Manutenzione a
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Manutenzione no-stop a
 STR_ORDER_TRAIN_DEPOT                                           :Deposito ferroviario
 STR_ORDER_ROAD_DEPOT                                            :Deposito automezzi
 STR_ORDER_SHIP_DEPOT                                            :Deposito navale

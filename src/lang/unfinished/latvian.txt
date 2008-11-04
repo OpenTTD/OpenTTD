@@ -1464,9 +1464,16 @@ STR_2024                                                        :{YELLOW}{COMPAN
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidijas
 STR_202A_NONE                                                   :{ORANGE}Neviens
 STR_2036_COTTAGES                                               :Kotedži
+STR_2038_FLATS                                                  :Dzīvokļi
+STR_2039_TALL_OFFICE_BLOCK                                      :Augsta biroju ēka
+STR_203A_SHOPS_AND_OFFICES                                      :Veikali un biroji
+STR_203B_SHOPS_AND_OFFICES                                      :Veikali un biroji
+STR_203C_THEATER                                                :Teātris
 STR_203D_STADIUM                                                :Stadions
-STR_203F_HOUSES                                                 :Mâjas
+STR_203E_OFFICES                                                :Biroji
+STR_203F_HOUSES                                                 :Mājas
 STR_2040_CINEMA                                                 :Coca-Cola Plaza
+STR_2041_SHOPPING_MALL                                          :Tirdzniecības centrs
 STR_2042_DO_IT                                                  :{BLACK}Darīt
 STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Šajā pilsētā atļautās darbības - paskaidrojumam klikšķini uz darbību
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Veikt iezīmēto darbību no augstāk esošā saraksta
@@ -1477,9 +1484,22 @@ STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Liela reklāmas
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Finansēt ceļu labošanas darbus
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Uzbūvēt uzņēmuma vadītāja statuju
 STR_204B_FUND_NEW_BUILDINGS                                     :Finansēt jaunas ēkas
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Nopirkt vienīgā pārvadātāja tiesības
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Dot kukuli pašvaldībai
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Veikt mazu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu.{}  Izmaksā: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Veikt vidēju reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu.{}  Izmaksā: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Veikt lielu reklāmas kampaņu, lai piesaistītu vairāk pasažieru un kravu.{}  Izmaksā: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finansēt ceļu remontdarbus. Rada satiksmes traucējumus līdz pat pusgadam.{}  Izmaksā: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Uzbūvēt statuju par godu savam uzņēmumam.{} Izmaksā: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finansēt jaunu komercplatību būvēšanu šajā pilsētā.{}  Izmaksā: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Pirkt vienīgā pārvadātāja statusu uz vienu gadu. Pašvaldība atļaus pasažieriem un kravas pārvešanai izmanto tkai jūsu uzņēmuma stacijas.{} Izmaksā: {CURRENCY}
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Satiksmes haoss {TOWN}!{}{}{STRING} apmaksātie ielu pārbūves darbi rada vājprātu uz ielām pusgada garumā!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (notiek būvdarbi)
+STR_2059_IGLOO                                                  :Iglu
+STR_205A_TEPEES                                                 :Vigvams
+STR_205B_TEAPOT_HOUSE                                           :Tējas namiņš
 STR_205C_PIGGY_BANK                                             :Cūku-Banka
 
 STR_INDUSTRY                                                    :{INDUSTRY}
@@ -1489,12 +1509,18 @@ STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_2800_PLANT_TREES                                            :Stādīt kokus
+STR_2801_PLACE_SIGN                                             :Novietot zīmi
 STR_2802_TREES                                                  :{WHITE}Koki
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...šeit jau aug koks
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...nepiemērota vieta
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Šeit nevar iestādīt koku..
 STR_2806                                                        :{WHITE}{SIGN}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...pārāk daudz zīmju
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Šeit nevar novietot zīmi...
 STR_280A_SIGN                                                   :Zīme
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Labot zīmi
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Nevar izmainīt zīmi..
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Izvēlies koka tipu stādīšanai
 STR_280E_TREES                                                  :Koki
 STR_280F_RAINFOREST                                             :Lietus meži
 STR_2810_CACTUS_PLANTS                                          :Kaktusu plantācijas
@@ -1506,6 +1532,7 @@ STR_3002_ORIENTATION                                            :{BLACK}Virziens
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Platformu skaits
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platformas garums
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Pārāk tuvu citai dzelzceļa stacijai
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Piekļaujas vairāk par vienai stacijai/iekrašanas zonai
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz staciju/iekrašanas zonu šajā pilsētā
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz stacijas/iekraušanas zonas
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Pa'ra'k daudz autobusa pieturu
@@ -1539,7 +1566,9 @@ STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} pieņem {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} pieņem {STRING} un {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Autoostas virziens
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Kravas stacijas virziens
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Virpirms jānojauc autoosta
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Vispirms jānojauc kravas stacija
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stacij{P a s u}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nav -
@@ -1550,6 +1579,7 @@ STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Izvēlat
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Izvēlaties platformu skaitu dzelzsceļa stacijai
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Izvēlaties dzelzceļa stacijas garumu
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Izvēlaties autoostas virzienu
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Izvēlaties kravas iekraušanas laukuma virzienu
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrēt galveno skatījumu uz stacijas atrašanās vietu
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Parādīt stacijas reitingu
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Mainīt stacijas nosaukumu
@@ -1561,29 +1591,62 @@ STR_STATION_SIGN_TINY                                           :{TINYFONT}{STAT
 STR_305E_RAILROAD_STATION                                       :Dzelzsceļa stacija
 STR_305F_AIRCRAFT_HANGAR                                        :Lidaparātu angārs
 STR_3060_AIRPORT                                                :Lidosta
+STR_3061_TRUCK_LOADING_AREA                                     :Kravas iekraušanas zona
 STR_3062_BUS_STATION                                            :Autoosta
 STR_3063_SHIP_DOCK                                              :Osta
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Iezīmēt izvēlētā pārklāto lauku
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Neiezīmēt izvēlētā pārklāto lauku
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Pārklātā laukuma iezīmēšana
 STR_3068_DOCK                                                   :{WHITE}Osta
 STR_3069_BUOY                                                   :Boja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja traucē
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stacija ir pārāk izplesta
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...neregula'ras stacijas nav atl'autas
 
 STR_UNDEFINED                                                   :(nedefinēta rinda)
 
 ##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Kuģu depo virziens
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...jābūvē uz ūdens
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Šeit nevar būvēt ķuģu depo...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Izvēlies kuģu depo virzienu
 STR_3804_WATER                                                  :Ūdens
+STR_3805_COAST_OR_RIVERBANK                                     :Jūras vai upes krasts
+STR_3806_SHIP_DEPOT                                             :Kuģu depo
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Nevar būvēt uz ūdens
 
 ##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}Saglabāt spēli
+STR_4001_LOAD_GAME                                              :{WHITE}Ielādēt spēli
+STR_4002_SAVE                                                   :{BLACK}Saglabāt
 STR_4003_DELETE                                                 :{BLACK}Dzēst
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nevar lasīt disku
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spēles saglabāšana neizdevās{}{STRING}
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nevar dzēst failu
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Spēles ielādēšana neizdevās{}{STRING}
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Disku, mapju un saglabāto spēļu datņu saraksts
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Šobrīd izvēlētais saglabājamās spēles nosaukums
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Dzēst izvēlēto saglabāto spēli
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Saglabāt šo spēli izmantojot izvēlēto vārdu
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Izvēlies jaunu spēles tipu
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Izvēlies scenāriju (zaļš), "pre-set" spēli (zils), vai jaunu spēli pēc gadījuma principa
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Ģenerēt jaunu spēli pēc  gadījuma principa
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} traucē
 STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :Ogļu raktuves
 STR_4803_POWER_STATION                                          :Spēkstacija
 STR_4804_SAWMILL                                                :Gateris
 STR_4805_FOREST                                                 :Mežs
+STR_4806_OIL_REFINERY                                           :Naftas pārstrāde
+STR_4807_OIL_RIG                                                :Naftas ieguve
+STR_4808_FACTORY                                                :Rūpnīca
+STR_4809_PRINTING_WORKS                                         :Tipogrāfija
+STR_480A_STEEL_MILL                                             :Tērauda lietuve
 STR_480B_FARM                                                   :Ferma
+STR_480C_COPPER_ORE_MINE                                        :Vara rūdas raktuves
 STR_480D_OIL_WELLS                                              :Naftas urbumi
 STR_480E_BANK                                                   :Banka
 STR_480F_FOOD_PROCESSING_PLANT                                  :Pārtikas ražotne
@@ -1599,7 +1662,9 @@ STR_4818_WATER_TOWER                                            :Ūdens tornis
 STR_4819_FACTORY                                                :Rūpnīca
 STR_481A_FARM                                                   :Ferma
 STR_481B_LUMBER_MILL                                            :Kokzāģētava
+STR_481C_COTTON_CANDY_FOREST                                    :Cukurvates mežš
 STR_481D_CANDY_FACTORY                                          :Saldumu fabrika
+STR_481E_BATTERY_FARM                                           :Bateriju ferma
 STR_481F_COLA_WELLS                                             :Kolas urbumi
 STR_4820_TOY_SHOP                                               :Rotaļlietu veikals
 STR_4821_TOY_FACTORY                                            :Rotaļlietu fabrika

@@ -688,15 +688,126 @@ STR_080F_SNOW_COVERED_LAND                                      :زمین پوش
 STR_0810_DESERT                                                 :صحرا
 
 ##id 0x1000
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}ترکیب ریل غیر ممکن است
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE} قبلا یه سطح دریا رسیده است
+STR_1004_TOO_HIGH                                               :{WHITE}بیش از اندازه ارتفاع دارد
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}قطعه مناسب راه آهن انتخاب نشده
+STR_1007_ALREADY_BUILT                                          :{WHITE} قبلا در اینجا ساخته شده
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}اول باید ریل راه آهن حذف شود
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}ساخت راه آهن
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}ساخت مونوریل
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}ساخت ریل مغناطیسی
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}انتخب پل راه آهن
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE} اینجا نمی شود ایستگاه راه آهن ساخت
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}اینجا نمی شود علامت ساخت
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE} اینجا نمی شود ریل ساخت
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}از اینجا نمی شود ریل را حذف کرد
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE} از اینجا نمی شود چراغ ها ی راهنمایی را حذف کرد
+STR_1015_RAILROAD_CONSTRUCTION                                  :ساخت راه آهن
+STR_1016_MONORAIL_CONSTRUCTION                                  :ساخت مونوریل
+STR_1017_MAGLEV_CONSTRUCTION                                    :ساخت ریل مغناطیسی
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}ساخت راه آهن
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK} سات ایستگاه قطار
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}ساخت چراغ راهنمایی راه آهن
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK} ساخت پل راه آهن
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK} ساخت تونل راه آهن
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}تغییر بین حذف یا ساخت چراغ راهنمایی و ریل
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK} ساخت پل - بر روی پل مورد نظر خود کلیک کنید تا ساخته شود
+STR_1021_RAILROAD_TRACK                                         :قطعه ریل راه آهن
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE} این ناحیه توسط شرکت دیگری تصاحب شده
 
 
 
 ##id 0x1800
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE} اول باید جاده حذف شود
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}ساخت جاده
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE} ساخت پل ماشین رو
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE} اینجا نمی توان جاده ساخت
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}جاده را نمی شود از اینجا حذف کرد
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}اینجا ایستگاه اتوبوس نمی شود ساخت
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}اینجا ایستگاه کامیون نمیشود ساخت
+STR_180A_ROAD_CONSTRUCTION                                      :ساخت جاده
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}بخش ساخت جاده
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}ساخت ایستگاه اتوبوس
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}ساخت ایستگاه بارگیری/تخلیه بار کامیون
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}ساخت پل ماشین رو
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}ساخت تون ماشین رو
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK} تغییر بین ساخت/حذف جاده
+STR_1814_ROAD                                                   :جاده
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :جاده با چراغ راهنمایی رانندگی
+STR_1816_TREE_LINED_ROAD                                        :جاده 3 لاین
 
 ##id 0x2000
+STR_2000_TOWNS                                                  :{WHITE}شهرها
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE} اول باید ساختمان تخریب شود
+STR_2005                                                        :{WHITE}{TOWN}
+STR_2006_POPULATION                                             :{BLACK}جمعیت: {ORANGE}{COMMA}{BLACK}  خانه ها: {ORANGE}{COMMA}
+STR_2007_RENAME_TOWN                                            :تغییر اسم شهر
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}نمی توان اسم شهر را تغییر داد
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE} انجمن شهر {TOWN} اجازه این کار را نمیدهد
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}تغییر نام شهر
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}مسافران در ماه گذشته: {ORANGE}{COMMA}{BLACK}  حداکثر: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}نامه ها در ماه گذشته: {ORANGE}{COMMA}{BLACK}  حداکثر: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :ساختمان اداری بلند
+STR_2010_OFFICE_BLOCK                                           :ساختمان اداری
+STR_2012_CHURCH                                                 :کلیسا
+STR_2013_LARGE_OFFICE_BLOCK                                     :ساختمان اداری بزرگ
+STR_2014_TOWN_HOUSES                                            :خانه های شهر
+STR_2015_HOTEL                                                  :هتل
+STR_2016_STATUE                                                 :مجسمه
+STR_2017_FOUNTAIN                                               :فواره
+STR_2018_PARK                                                   :پارک
+STR_2019_OFFICE_BLOCK                                           :ساختمان اداری
+STR_201A_SHOPS_AND_OFFICES                                      :مغازه ها و ادارات
+STR_201B_MODERN_OFFICE_BUILDING                                 :ساختمان اداری مدرن
+STR_201C_WAREHOUSE                                              :انبار
+STR_201D_OFFICE_BLOCK                                           :ساختمان اداری
+STR_201E_STADIUM                                                :ورزشگاه
+STR_201F_OLD_HOUSES                                             :خانه قدیمی
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK} امتیازات شرکت
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} از {STRING} به {STRING}
+STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} از {STATION} به {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}, تا {DATE_SHORT})
+STR_2036_COTTAGES                                               :کلبه ها
+STR_2037_HOUSES                                                 :خانه ها
+STR_2039_TALL_OFFICE_BLOCK                                      :ساختمان اداری بلند
+STR_203A_SHOPS_AND_OFFICES                                      :فروشگاه ها و ادارات
+STR_203B_SHOPS_AND_OFFICES                                      :فروشگاه ها و ادارات
+STR_203D_STADIUM                                                :ورزشگاه
+STR_203E_OFFICES                                                :ادارات
+STR_203F_HOUSES                                                 :خانه ها
+STR_2040_CINEMA                                                 :سینما
+STR_2041_SHOPPING_MALL                                          :مرکز خرید
+STR_2042_DO_IT                                                  :{BLACK}انجام بده
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}لیست کارهایی که می شود در این شهر انجام داد- برای اطلاعات بیشتر کلیک کنید
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}کارهای ممکن :
+STR_204A_BUILD_STATUE_OF_COMPANY                                :ساخت مجسمه رئیس شرکت
+STR_204B_FUND_NEW_BUILDINGS                                     :ساخت اختمان های جدید
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (در دست ساخت)
+STR_2059_IGLOO                                                  :ایگلو
+STR_205B_TEAPOT_HOUSE                                           :خانه-قوری
 
 
 ##id 0x2800
+STR_2800_PLANT_TREES                                            :کاشتن درخت
+STR_2801_PLACE_SIGN                                             :قرار دادن علامت
+STR_2802_TREES                                                  :{WHITE}درختان
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE} قبلا اینجا درخت کشته شده است
+STR_2804_SITE_UNSUITABLE                                        :{WHITE} موقعیت مناسب نیست
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE} اینجا نمی شود درخت کاشت
+STR_2806                                                        :{WHITE}{SIGN}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE} تعداد لامات بسیار زیاد شده
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}اینجا نمی شود علامت ساخت
+STR_280A_SIGN                                                   :علامت
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}نمی شود اسم علامت را عوض کرد
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}نوع درخت را مشخص کنید تا کاشته شود
+STR_280E_TREES                                                  :درختان
 
 ##id 0x3000
 

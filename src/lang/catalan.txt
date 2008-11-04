@@ -1360,10 +1360,10 @@ STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nom de l
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...massa a prop d'altres indústries
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Remodela tren per transportar un altre tipus de càrrega
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Remodela un tren per transportar un altre tipus de càrrega
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Remodela tren
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona tipus de càrrega a transportar
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Remodela tren per transportar el tipus de càrrega seleccionat
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Remodela un tren per transportar el tipus de càrrega seleccionada
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No es pot remodelar el tren...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de manteniment estàn en percentatges: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvi de producció
@@ -2754,6 +2754,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Ves sempre
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Revisa si és necessari
+STR_ORDER_DROP_HALT_DEPOT                                       :Para
+
 STR_ORDER_CONDITIONAL                                           :Ordre de salt condicionada
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dades del vehicle on basar el salt a
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Com comparar les dades del vehicle al valor donat
@@ -2824,6 +2828,8 @@ STR_8826_GO_TO                                                  :{BLACK}Ves a
 STR_REFIT                                                       :{BLACK}Remodela
 STR_REFIT_TIP                                                   :{BLACK}Selecciona quin tipus de càrrega vols remodelar en aquesta ordre. Control + Clic per eliminar l'ordre de remodelar
 STR_REFIT_ORDER                                                 :(Remodela a {STRING})
+STR_REFIT_STOP_ORDER                                            :(Remodela a {STRING} i para)
+STR_STOP_ORDER                                                  :(Para)
 STR_TIMETABLE_VIEW                                              :{BLACK}Horari
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Canvia cap a la vista d'horari
 STR_ORDER_VIEW                                                  :{BLACK}Ordres
