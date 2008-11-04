@@ -1194,7 +1194,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 	ci = DEREF_CLIENT_INFO(cs);
 
 	if (IsValidCompanyID(ci->client_playas)) {
-		strecpy(_network_company_info[ci->client_playas].password, password, lastof(_network_company_info[0].password));
+		strecpy(_network_company_info[ci->client_playas].password, password, lastof(_network_company_info[ci->client_playas].password));
 	}
 }
 
