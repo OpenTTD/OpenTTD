@@ -598,15 +598,6 @@ static inline bool IsSnowRailGround(TileIndex t)
 	return GetRailGroundType(t) == RAIL_GROUND_ICE_DESERT;
 }
 
-static inline void UpdateStat(TileIndex t, bool on_track)
-{
-	_me[t].m7 = _me[t].m7 << 1 | !!on_track;
-}
-
-static inline byte GetStat(TileIndex t)
-{
-	return _me[t].m7;
-}
 
 static inline void MakeRailNormal(TileIndex t, Owner o, TrackBits b, RailType r)
 {
