@@ -1922,7 +1922,7 @@ void RoadVehicle::OnNewDay()
 	}
 
 	/* update destination */
-	if (!(this->vehstatus & VS_STOPPED) && this->current_order.IsType(OT_GOTO_STATION) && this->u.road.slot == NULL && !(this->vehstatus & VS_CRASHED)) {
+	if (!(this->vehstatus & VS_STOPPED) && this->current_order.IsType(OT_GOTO_STATION) && !(this->current_order.GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION) && this->u.road.slot == NULL && !(this->vehstatus & VS_CRASHED)) {
 		Station *st = GetStation(this->current_order.GetDestination());
 		RoadStop *rs = st->GetPrimaryRoadStop(this);
 		RoadStop *best = NULL;

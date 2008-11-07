@@ -383,6 +383,20 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
 }
 
+#define MK(x) MKCOLOR(x << 24 | x << 16 | x << 8 | x)
+
+static const uint32 _busyness[] = {
+	MK(15),
+	MK(150),
+	MK(209),
+	MK(206),
+	MK(191),
+	MK(186),
+	MK(184),
+	MK(180),
+};
+
+
 /**
  * Return the color a tile would be displayed with in the small map in mode "Routes".
  *
@@ -405,7 +419,7 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 		}
 	} else {
 		/* ground color */
-		bits = ApplyMask(MKCOLOR(0x54545454), &_smallmap_contours_andor[t]);
+		bits = ApplyMask(t == MP_RAILWAY ? _busyness[CountBits(GetStat(tile))] : MKCOLOR(0x54545454), &_smallmap_contours_andor[t]);
 	}
 	return bits;
 }
