@@ -808,13 +808,55 @@ STR_280A_SIGN                                                   :علامت
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}نمی شود اسم علامت را عوض کرد
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}نوع درخت را مشخص کنید تا کاشته شود
 STR_280E_TREES                                                  :درختان
+STR_280F_RAINFOREST                                             :جنگل بارانی
+STR_2810_CACTUS_PLANTS                                          :کاکتوس
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}انتخاب ایستگاه راه آهن
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}انتخاب فرودگاه
+STR_3002_ORIENTATION                                            :{BLACK} جهت
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK} تعداد خطوط
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}طول ایستگاه
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}به ایستگاه دیگری بسیار نزدیک است
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}تعداد ایستگاه ها در این شهر ماکزیمم است
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE} تعداد محوطه های بارگیری/ایستگاه بسیار زیاد شده
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}به محوطه ی بارگیری/ایستگاه دیگری بسیار نزدیک است
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE} اول باید راه آهن تخریب شود
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE} به فرودگاه دیگری بسیار نزدیک شده
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE} اول باید فرودگاه تخریب شود
 
+STR_3030_RENAME_STATION_LOADING                                 :نام گذاری محوطه ایستگاه/بارگیری
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}نام این ایستگاه را نمی شود تغییر داد
+STR_3032_RATINGS                                                :{BLACK}رده بندی
+STR_3033_ACCEPTS                                                :{BLACK}قبول می کند
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}رده بندی محلی درباره ی وضعیت حمل و نقل
 
 ############ range for rating starts
+STR_3035_APPALLING                                              :ترسناک
+STR_3036_VERY_POOR                                              :بسیار ضعیف
+STR_3037_POOR                                                   :ضعیف
+STR_3038_MEDIOCRE                                               :متوسط
+STR_3039_GOOD                                                   :خوب
+STR_303A_VERY_GOOD                                              :بسیار خوب
+STR_303B_EXCELLENT                                              :عالی
+STR_303C_OUTSTANDING                                            :بسیار عالی
 ############ range for rating ends
 
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} دیگر {STRING} قبول نمی کند
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} دیگر {STRING} و {STRING} قبول نمی کند
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} از این پس {STRING} را هم قبول می کند
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}موقعیت مناسب نیست
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}به بندر دیگری بسییار نزدیک است
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}باید اول بندر را تخریب کرد
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}انتخاب جهت ایستگاه راه آهن
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}انتخاب تعداد سکوها برای ایستگاه راه آهن
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}انتخاب طول ایستگاه راه آهن
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}انتخاب جهت ایستگاه اتوبوس
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}انتخاب جهت محل بارگیری کامیون
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}مرکز تصویر اصلی را روی محل ایستگاه قرار بده
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}نشان دادن امتیازات ایستگاه
 
 
 ##id 0x3800

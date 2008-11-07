@@ -1671,6 +1671,7 @@ STR_4821_TOY_FACTORY                                            :Rotaļlietu fab
 STR_4822_PLASTIC_FOUNTAINS                                      :Plastmasas strūklakas
 STR_4823_FIZZY_DRINK_FACTORY                                    :Dzirkstošo dzērienu ražotne
 STR_4824_BUBBLE_GENERATOR                                       :Burbuļu ģenerātors
+STR_4825_TOFFEE_QUARRY                                          :Īrisa lauztuves
 STR_4826_SUGAR_MINE                                             :Cukura raktuve
 
 ############ range for requires starts
@@ -1682,30 +1683,57 @@ STR_4829_REQUIRES                                               :{BLACK}Nepiecie
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Krava, kas jāapstrādā:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Ražo: {YELLOW}{STRING}{STRING}
 STR_4828_PRODUCES                                               :{BLACK}Ražo: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Iepriekšēja mēnesī saražots:
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% aizvests)
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Iecentrēt galveno skatu uz rūpnīcu
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Tiek būvēts jauns {STRING} netālu no {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Jauns {STRING} tiek stādīts netālu no {TOWN}!
+STR_482F_COST                                                   :{BLACK}Izmaksā: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Šeit nevar būvēt šī tipa rūpnīcu...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...mežus atļauts stādīt tikai virs sniega līnijas
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} paziņo par tūlītēju darbības pārtraukšanu!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Piegādes problēmas {STRING} izraisa tūlītēju darbības pārtraukšanu!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Tuvumā esošo koku iztrūkums izrausa {STRING} tūlītēju darbības pārtraukšanu!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} palielina ražošanas apjomu!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Atklāts jaunu ogļu slānis {INDUSTRY}!{}Paredzams, ka raktuves dubultos rakšanas apjomu!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Atrastas jaunas naftas rezervers {INDUSTRY}!{}Paredzams naftas ieguves apjoma dubultošanās!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Uzlabotas apsaimniekošanas metodes {INDUSTRY} palielinās saražoto divkārtīgi!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} saražotā apjoms samazinās par 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Kukaiņu invācija {INDUSTRY}!{} Saražotā apjoms samazinās par 50%
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...drīkst novietot tikai pie kartes stūriem
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vilciens tunelī
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Automašīna tunelī
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Traucē cits tunelis
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nevar izrakt citu tuneli
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Vispirms jānojauc tunelis
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Vispirms jānojauc tilts
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Nevar sākties un beigties tajā paša vietā
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Sākumam un beigām jābūt uz vienas līnijas
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Nederīga vieta tuneļa sākumam
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Vanšu, Terauda
 STR_5012_WOODEN                                                 :Koka
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Šeit nevar būvēt tiltu..
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Šeit nevar būvēt tuneli
 STR_5017_RAILROAD_TUNNEL                                        :Dzelzceļa tunelis
+STR_5018_ROAD_TUNNEL                                            :Autoceļa tunelis
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Koka dzelzeļa tilts
 STR_5025_WOODEN_ROAD_BRIDGE                                     :Koka autoceļa tilts
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Traucējoš objekts
+STR_5801_TRANSMITTER                                            :Raidītājs
 STR_5802_LIGHTHOUSE                                             :Bāka
 STR_5803_COMPANY_HEADQUARTERS                                   :Uzņēmuma birojs
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...traucē uzņēmuma birojs
 STR_5805_COMPANY_OWNED_LAND                                     :Uzņēmumam piederoša zeme
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Nevar nopirkt šo zemes pleķi...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...tev jau tā pieder!
 
 
@@ -1757,27 +1785,54 @@ STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Pretini
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Transportlīdzekļu lūšana: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Subsīdiju reizinātājs: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Būvēšanas izmaksas: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Zems tips: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Jūru/ezeru daudzums: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomika: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Vilcieni var braukt uz pretējo pusi: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Katrastrofas: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_6816_LOW                                                    :Zems
+STR_6817_NORMAL                                                 :Normāls
+STR_6818_HIGH                                                   :Augsts
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
+STR_681B_VERY_SLOW                                              :Ļoti lēns
+STR_681C_SLOW                                                   :Lēns
+STR_681D_MEDIUM                                                 :Vidējs
+STR_681E_FAST                                                   :Ātrs
+STR_681F_VERY_FAST                                              :Ļoti ātrs
 STR_VERY_LOW                                                    :Ļoti zems
-STR_6824_REDUCED                                                :Samazinâts
+STR_6820_LOW                                                    :Zems
+STR_6821_MEDIUM                                                 :Vidējs
+STR_6822_HIGH                                                   :Augsts
+STR_6823_NONE                                                   :Nekas
+STR_6824_REDUCED                                                :Samazināts
+STR_6825_NORMAL                                                 :Normāls
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :Ļoti līdzens
+STR_682B_FLAT                                                   :Līdzens
+STR_682C_HILLY                                                  :Paugurains
+STR_682D_MOUNTAINOUS                                            :Kalnains
+STR_682E_STEADY                                                 :Stabila
+STR_682F_FLUCTUATING                                            :Pulsējoša
 STR_6830_IMMEDIATE                                              :Uzreiz
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mēnešus vēlāk par spēlētāju
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mēnešus vēlāk par spēlētaju
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :6 mēnešus vēlāk par spēlētaju
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Līniju biegās un stacijās
+STR_6835_AT_END_OF_LINE_ONLY                                    :Tikai līniju beigās
+STR_6836_OFF                                                    :Izslēgts
+STR_6837_ON                                                     :Ieslēgts
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Parādīt rekordu tabulu
 
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Uzņēmums {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Jauna seja
 STR_7005_COLOR_SCHEME                                           :{BLACK}Krāsu palete
 STR_7006_COLOR_SCHEME                                           :{GOLD}Krāsu palete:
@@ -1789,6 +1844,7 @@ STR_700B_PRESIDENT_S_NAME                                       :Vadītaja vārd
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Nevar mainīt uzņēmuma nosaukumu..
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Nevar mainīt vadītaja vārdu..
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finanses {BLACK}{COMPANYNUM}
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Izdevumi/ienākumi
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Būvdarbi
 STR_7012_NEW_VEHICLES                                           :{GOLD}Jauni transporta līdzekļi
@@ -1810,12 +1866,25 @@ STR_7021                                                        :{COMPANY} {COMP
 STR_7022_INCOME_GRAPH                                           :{WHITE}Ienākumu grafiks
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Darbības peļņas grafiks
+STR_7026_BANK_BALANCE                                           :{WHITE}Bankas bilance
 STR_7027_LOAN                                                   :{WHITE}Aizdevums
 STR_MAX_LOAN                                                    :{WHITE}Pieejamais aizdevums:  {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Aizņemties {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Atmaksāt {SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksimāli pieļaujamais kredīta apjoms ir {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nevar aizņemties vairāk naudu...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...visi kredīti atmaksāti
+STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} nepieciešams
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Nevar atmaksāt aizdevumu...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Naudu, kas ir bankas aizn'e'mums, nevar dot prom...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Izvēlieties jaunu seju vadītājam
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Izmainīt uzņēmuma transportlīdzekļu izskatu
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Mainīt vadītāja vārdu
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Mainīt uzņēmuma  nosaukumu
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Noklikšķiniet uz vēlamo krāsu shēmu
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Palielināt aizdevuma apmēru
 STR_7042_NONE                                                   :{WHITE}Neviens
 STR_7044_MALE                                                   :{BLACK}Viriešu
 STR_7045_FEMALE                                                 :{BLACK}Sieviešu
