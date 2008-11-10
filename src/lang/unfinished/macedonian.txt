@@ -1,0 +1,271 @@
+##name Macedonian
+##ownname Македонски
+##isocode mk_MK
+##plural 0
+
+##id 0x0000
+STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Надвор од работ на мапата
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Преблиску до работ на мапата
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недоволно средства - потребни {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Потребно е рамно земјиште
+STR_0008_WAITING                                                :{BLACK}Чекање: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000C_ACCEPTS                                                :{BLACK}Прифаќа: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Прифаќа: {GOLD}
+STR_000E                                                        :
+STR_000F_PASSENGERS                                             :Патници
+STR_0010_COAL                                                   :Јаглен
+STR_0011_MAIL                                                   :Пошта
+STR_0012_OIL                                                    :Нафта
+STR_0013_LIVESTOCK                                              :Добиток
+STR_0014_GOODS                                                  :Роба
+STR_0015_GRAIN                                                  :Жито
+STR_0016_WOOD                                                   :Дрва
+STR_0017_IRON_ORE                                               :Железна Руда
+STR_0018_STEEL                                                  :Челик
+STR_0019_VALUABLES                                              :Скапочености
+STR_001A_COPPER_ORE                                             :Бакарна Руда
+STR_001B_MAIZE                                                  :Пченка
+STR_001C_FRUIT                                                  :Овошје
+STR_001D_DIAMONDS                                               :Дијаманти
+STR_001E_FOOD                                                   :Храна
+STR_001F_PAPER                                                  :Хартија
+STR_0020_GOLD                                                   :Злато
+STR_0021_WATER                                                  :Вода
+STR_0022_WHEAT                                                  :Пченица
+STR_0023_RUBBER                                                 :Гума
+STR_0024_SUGAR                                                  :Шеќер
+STR_0025_TOYS                                                   :Играчки
+STR_0026_CANDY                                                  :Колачиња
+STR_0027_COLA                                                   :Кола (сок)
+STR_0028_COTTON_CANDY                                           :Суровина за колачиња
+STR_0029_BUBBLES                                                :Меурчиња
+STR_002A_TOFFEE                                                 :Карамели
+STR_002B_BATTERIES                                              :Батерии
+STR_002C_PLASTIC                                                :Пластика
+STR_002D_FIZZY_DRINKS                                           :Пенливи пијалоци
+STR_002E                                                        :
+STR_002F_PASSENGER                                              :Патник
+STR_0030_COAL                                                   :Јаглен
+STR_0031_MAIL                                                   :Пошта
+STR_0032_OIL                                                    :Нафта
+STR_0033_LIVESTOCK                                              :Добиток
+STR_0034_GOODS                                                  :Роба
+STR_0035_GRAIN                                                  :Жито
+STR_0036_WOOD                                                   :Дрва
+STR_0037_IRON_ORE                                               :Железна Руда
+STR_0038_STEEL                                                  :Челик
+STR_0039_VALUABLES                                              :Скапоцености
+STR_003A_COPPER_ORE                                             :Бакарна Руда
+STR_003B_MAIZE                                                  :Пченка
+STR_003C_FRUIT                                                  :Овошје
+STR_003D_DIAMOND                                                :Дијаманти
+STR_003E_FOOD                                                   :Храна
+STR_003F_PAPER                                                  :Хартија
+STR_0040_GOLD                                                   :Злато
+STR_0041_WATER                                                  :Вода
+STR_0042_WHEAT                                                  :Пченица
+STR_0043_RUBBER                                                 :Гума
+STR_0044_SUGAR                                                  :Шеќер
+STR_0045_TOY                                                    :Играчка
+STR_0046_CANDY                                                  :Колаче
+STR_0047_COLA                                                   :Кола (сок)
+STR_0048_COTTON_CANDY                                           :Суровина за колачиња
+STR_0049_BUBBLE                                                 :Меурче
+STR_004A_TOFFEE                                                 :Карамела
+STR_004B_BATTERY                                                :Батерија
+STR_004C_PLASTIC                                                :Пластика
+STR_004D_FIZZY_DRINK                                            :Пенлив Пијалок
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} патни{P к ци}
+STR_QUANTITY_COAL                                               :{WEIGHT} јаглен
+STR_QUANTITY_MAIL                                               :{COMMA} торб{P а и} со пошта
+STR_QUANTITY_OIL                                                :{VOLUME} нафта
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} грл{P о а} добиток
+STR_QUANTITY_GOODS                                              :{COMMA} пакет{P "" и} роба
+STR_QUANTITY_GRAIN                                              :{WEIGHT} жито
+STR_QUANTITY_WOOD                                               :{WEIGHT} дрва
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} железна руда
+STR_QUANTITY_STEEL                                              :{WEIGHT} челик
+STR_QUANTITY_VALUABLES                                          :{COMMA} торб{P а и} со скапоцености
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} бакарна руда
+STR_QUANTITY_MAIZE                                              :{WEIGHT} пченка
+STR_QUANTITY_FRUIT                                              :{WEIGHT} овошје
+STR_QUANTITY_DIAMONDS                                           :{COMMA} торб{P а и} со дијаманти
+STR_QUANTITY_FOOD                                               :{WEIGHT} храна
+STR_QUANTITY_PAPER                                              :{WEIGHT} хартија
+STR_QUANTITY_GOLD                                               :{COMMA} торб{P а и} злато
+STR_QUANTITY_WATER                                              :{VOLUME} вода
+STR_QUANTITY_WHEAT                                              :{WEIGHT} пченица
+STR_QUANTITY_RUBBER                                             :{VOLUME} гума
+STR_QUANTITY_SUGAR                                              :{WEIGHT} шеќер
+STR_QUANTITY_TOYS                                               :{COMMA} играчк{P а и}
+STR_QUANTITY_SWEETS                                             :{COMMA} торб{P а и} колачиња
+STR_QUANTITY_COLA                                               :{VOLUME} кола
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} суровина за колачиња
+STR_QUANTITY_BUBBLES                                            :{COMMA} меурч{P е иња}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} карамели
+STR_QUANTITY_BATTERIES                                          :{COMMA} батери{P ја и}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} пластика
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} пенлив пијалок
+STR_ABBREV_NOTHING                                              :
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПА
+STR_ABBREV_COAL                                                 :{TINYFONT}ЈА
+STR_ABBREV_MAIL                                                 :{TINYFONT}ПО
+STR_ABBREV_OIL                                                  :{TINYFONT}НА
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ГД
+STR_ABBREV_GOODS                                                :{TINYFONT}СТ
+STR_ABBREV_GRAIN                                                :{TINYFONT}ЖИ
+STR_ABBREV_WOOD                                                 :{TINYFONT}ДР
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}ЖР
+STR_ABBREV_STEEL                                                :{TINYFONT}ЧЕ
+STR_ABBREV_VALUABLES                                            :{TINYFONT}СЦ
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}БР
+STR_ABBREV_MAIZE                                                :{TINYFONT}ПЧ
+STR_ABBREV_FRUIT                                                :{TINYFONT}ОВ
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}ДИ
+STR_ABBREV_FOOD                                                 :{TINYFONT}ХР
+STR_ABBREV_PAPER                                                :{TINYFONT}ХА
+STR_ABBREV_GOLD                                                 :{TINYFONT}ЗЛ
+STR_ABBREV_WATER                                                :{TINYFONT}ВО
+STR_ABBREV_WHEAT                                                :{TINYFONT}ПЦ
+STR_ABBREV_RUBBER                                               :{TINYFONT}ГУ
+STR_ABBREV_SUGAR                                                :{TINYFONT}ШЕ
+STR_ABBREV_TOYS                                                 :{TINYFONT}ИГ
+STR_ABBREV_SWEETS                                               :{TINYFONT}КЊ
+STR_ABBREV_COLA                                                 :{TINYFONT}КЛ
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}СК
+STR_ABBREV_BUBBLES                                              :{TINYFONT}МЕ
+STR_ABBREV_TOFFEE                                               :{TINYFONT}КА
+STR_ABBREV_BATTERIES                                            :{TINYFONT}БА
+STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ПП
+STR_ABBREV_NONE                                                 :{TINYFONT}НТ
+STR_ABBREV_ALL                                                  :{TINYFONT}Се`
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}Мапа - {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Опции на играта
+STR_00B2_MESSAGE                                                :{YELLOW}Порака
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Порака од {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Внимание!
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ова не е можно....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Не може да се исчисти областа....
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Оригинален copyright {COPYRIGHT} 1995 Chris Sawyer, Сите права се задржани
+STR_00B7_VERSION                                                :{BLACK}OpenTTD верзија {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 OpenTTD тимот
+STR_TRANSLATED_BY                                               :{BLACK}  Преведувач(и) -
+
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}Напушти
+STR_00C8_YES                                                    :{BLACK}Да
+STR_00C9_NO                                                     :{BLACK}Не
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Дали сте сигурни дека сакате да ја напуштите играта и да се вратите во {STRING}?
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :Ништо
+STR_00D1_DARK_BLUE                                              :Темоно Сина
+STR_00D2_PALE_GREEN                                             :Матно Зелена
+STR_00D3_PINK                                                   :Розова
+STR_00D4_YELLOW                                                 :Жолта
+STR_00D5_RED                                                    :Црвена
+STR_00D6_LIGHT_BLUE                                             :Светло Сина
+STR_00D7_GREEN                                                  :Зелена
+STR_00D8_DARK_GREEN                                             :Темно Зелена
+STR_00D9_BLUE                                                   :Сина
+STR_00DA_CREAM                                                  :Крем
+STR_00DB_MAUVE                                                  :Виолетова
+STR_00DC_PURPLE                                                 :Пурпурна
+STR_00DD_ORANGE                                                 :Портокалова
+STR_00DE_BROWN                                                  :Кафена
+STR_00DF_GREY                                                   :Сива
+STR_00E0_WHITE                                                  :Бела
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Има премногу возила во играта
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}Локација
+STR_00E5_CONTOURS                                               :Контури
+STR_00E6_VEHICLES                                               :Возила
+STR_00E7_INDUSTRIES                                             :Индустрии
+STR_00E8_ROUTES                                                 :Рути
+STR_00E9_VEGETATION                                             :Вегетација
+STR_00EA_OWNERS                                                 :Сопственици
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Патишта
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Пруги
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Станици/Аеродроми/Докови
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Згради/Индустрии
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Возила
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Возови
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Патни Возила
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Бродови
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Летала
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Транспортни Рути
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Рудник за јаглен
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Електрана
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Шума
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Пилана
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Рафинерија за Нафта
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Фарма
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Фабрика
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}печатница
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Нафтен извор
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Рудник за Железна Руда
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Фабрика за челик
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}Банка
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Фабрика за Хартија
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Рудник за Злато
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Фабрика за Прехрана
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Рудник за Дијаманти
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Рудник за Бакар
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Овошна плантажа
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Плантажа за Гума
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Резервор за Вода
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Кула за Вода
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Пилана за Граѓа
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Шума со сировина за колачиња
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Фабрика за Благо
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Фарма за Батерии
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Извор на Кола
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Продавница за Играчки
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Фабрика за Играчки
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Фонтани на Пластика
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Фабрика за Пенливи Пијалоци
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Генератор на Меурчиња
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Рудник за Карамели
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Рудник за Шеќер
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Железничка Станица
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Станица за Товарење
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Автобуска Станица
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Аеродром/Хелипорт
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Док
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Груба Земја
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Земја со Трева
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Гола Земја
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Полиња
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}Дрва
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Карпи
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}Вода
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Нема Сопственик
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Градови
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Индустрии
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Пустина
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Снег
+STR_012C_MESSAGE                                                :{WHITE}Порака
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}Откажи
+STR_012F_OK                                                     :{BLACK}Во ред
+STR_0130_RENAME                                                 :{BLACK}Преименувај
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Дефинирани се премногу имиња
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Избраното име веќе се користи
