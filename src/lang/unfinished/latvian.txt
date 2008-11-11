@@ -1885,9 +1885,23 @@ STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Mainīt 
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Mainīt uzņēmuma  nosaukumu
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Noklikšķiniet uz vēlamo krāsu shēmu
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Palielināt aizdevuma apmēru
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Atmaksāt aizdevuma daļu
+STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Vadītājs)
+STR_7038_INAUGURATED                                            :{GOLD}Dibināta: {WHITE}{NUM}
+STR_7039_VEHICLES                                               :{GOLD}Transportlīdzekļi:
 STR_7042_NONE                                                   :{WHITE}Neviens
+STR_7043_FACE_SELECTION                                         :{WHITE}Sejas izvēle
 STR_7044_MALE                                                   :{BLACK}Viriešu
 STR_7045_FEMALE                                                 :{BLACK}Sieviešu
+STR_7046_NEW_FACE                                               :{BLACK}Jauna seja
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Pārtraukt jaunas sejas izvēli
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Apstiprināt izvēlēto jauno seju
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Izvēlēties vīriešu sejas
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Izvēlēties sieviešu sejas
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Ģenerēt gadījuma principa seju
+STR_704C_KEY                                                    :{BLACK}Leģenda
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Grafikos rādīt leģendas
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Leģendas kompāniju grafikos
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrots!

@@ -2779,8 +2779,8 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :is waar
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :is niet waar
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Spring naar order {COMMA}
-STR_CONDITIONAL_NUM                                             :Spring naar order {COMMA} wanneer {STRING} {STRING} {COMMA}
-STR_CONDITIONAL_TRUE_FALSE                                      :Spring naar order {COMMA} wanneer {STRING} {STRING}
+STR_CONDITIONAL_NUM                                             :Spring naar order {COMMA} als {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Spring naar order {COMMA} als {STRING} {STRING}
 
 STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Niet rijden
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (geen dienstregeling)

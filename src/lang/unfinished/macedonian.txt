@@ -3,6 +3,8 @@
 ##isocode mk_MK
 ##plural 0
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Надвор од работ на мапата
@@ -13,20 +15,22 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Потребно е рамно земјиште
 STR_0008_WAITING                                                :{BLACK}Чекање: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} пренасочено од {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Прифаќа: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Прифаќа: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Залихи: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Патници
 STR_0010_COAL                                                   :Јаглен
 STR_0011_MAIL                                                   :Пошта
 STR_0012_OIL                                                    :Нафта
 STR_0013_LIVESTOCK                                              :Добиток
-STR_0014_GOODS                                                  :Роба
+STR_0014_GOODS                                                  :Стока
 STR_0015_GRAIN                                                  :Жито
 STR_0016_WOOD                                                   :Дрва
 STR_0017_IRON_ORE                                               :Железна Руда
 STR_0018_STEEL                                                  :Челик
-STR_0019_VALUABLES                                              :Скапочености
+STR_0019_VALUABLES                                              :Скапоцености
 STR_001A_COPPER_ORE                                             :Бакарна Руда
 STR_001B_MAIZE                                                  :Пченка
 STR_001C_FRUIT                                                  :Овошје
@@ -46,7 +50,7 @@ STR_0029_BUBBLES                                                :Меурчињ�
 STR_002A_TOFFEE                                                 :Карамели
 STR_002B_BATTERIES                                              :Батерии
 STR_002C_PLASTIC                                                :Пластика
-STR_002D_FIZZY_DRINKS                                           :Пенливи пијалоци
+STR_002D_FIZZY_DRINKS                                           :Газирани пијалоци
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Патник
 STR_0030_COAL                                                   :Јаглен
@@ -54,7 +58,7 @@ STR_0031_MAIL                                                   :Пошта
 STR_0032_OIL                                                    :Нафта
 STR_0033_LIVESTOCK                                              :Добиток
 STR_0034_GOODS                                                  :Роба
-STR_0035_GRAIN                                                  :Жито
+STR_0035_GRAIN                                                  :Зрнести производи
 STR_0036_WOOD                                                   :Дрва
 STR_0037_IRON_ORE                                               :Железна Руда
 STR_0038_STEEL                                                  :Челик
@@ -62,7 +66,7 @@ STR_0039_VALUABLES                                              :Скапоце�
 STR_003A_COPPER_ORE                                             :Бакарна Руда
 STR_003B_MAIZE                                                  :Пченка
 STR_003C_FRUIT                                                  :Овошје
-STR_003D_DIAMOND                                                :Дијаманти
+STR_003D_DIAMOND                                                :Дијамант
 STR_003E_FOOD                                                   :Храна
 STR_003F_PAPER                                                  :Хартија
 STR_0040_GOLD                                                   :Злато
@@ -78,7 +82,7 @@ STR_0049_BUBBLE                                                 :Меурче
 STR_004A_TOFFEE                                                 :Карамела
 STR_004B_BATTERY                                                :Батерија
 STR_004C_PLASTIC                                                :Пластика
-STR_004D_FIZZY_DRINK                                            :Пенлив Пијалок
+STR_004D_FIZZY_DRINK                                            :Газиран Пијалок
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} патни{P к ци}
 STR_QUANTITY_COAL                                               :{WEIGHT} јаглен
@@ -148,12 +152,12 @@ STR_ABBREV_ALL                                                  :{TINYFONT}Се`
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Мапа - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Опции на играта
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Опции на Играта
 STR_00B2_MESSAGE                                                :{YELLOW}Порака
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Порака од {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Внимание!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ова не е можно....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Не може да се исчисти областа....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Не може да се исчисти оваа област....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Оригинален copyright {COPYRIGHT} 1995 Chris Sawyer, Сите права се задржани
 STR_00B7_VERSION                                                :{BLACK}OpenTTD верзија {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 OpenTTD тимот
@@ -164,7 +168,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Напушти
 STR_00C8_YES                                                    :{BLACK}Да
 STR_00C9_NO                                                     :{BLACK}Не
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Дали сте сигурни дека сакате да ја напуштите играта и да се вратите во {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Дали сте сигурни дека сакате да ја напуштите OpenTTD и да се вратите во {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -219,31 +223,31 @@ STR_00FD_SAWMILL                                                :{BLACK}{TINYFON
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Рафинерија за Нафта
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Фарма
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Фабрика
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}печатница
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Печатница
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Нафтен извор
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Рудник за Железна Руда
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Фабрика за челик
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Фабрика за Челик
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Банка
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Фабрика за Хартија
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Рудник за Злато
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Фабрика за Прехрана
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Рудник за Дијаманти
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Рудник за Бакар
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Овошна плантажа
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Овошна Плантажа
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Плантажа за Гума
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Резервор за Вода
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Кула за Вода
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Пилана за Граѓа
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Шума со сировина за колачиња
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Шума со Суровина за Колачиња
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Фабрика за Благо
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Фарма за Батерии
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Извор на Кола
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Продавница за Играчки
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Фабрика за Играчки
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Фонтани на Пластика
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Фабрика за Пенливи Пијалоци
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Фабрика за Газирани Пијалоци
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Генератор на Меурчиња
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Рудник за Карамели
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Рудник за Карамела
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Рудник за Шеќер
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Железничка Станица
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Станица за Товарење
@@ -264,8 +268,503 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Снег
 STR_012C_MESSAGE                                                :{WHITE}Порака
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Зададено
 STR_012E_CANCEL                                                 :{BLACK}Откажи
 STR_012F_OK                                                     :{BLACK}Во ред
 STR_0130_RENAME                                                 :{BLACK}Преименувај
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Дефинирани се премногу имиња
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Избраното име веќе се користи
+
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
+
+STR_013B_OWNED_BY                                               :{WHITE}...во сопственост на {STRING}
+STR_013C_CARGO                                                  :{BLACK}Товар
+STR_013D_INFORMATION                                            :{BLACK}Информација
+STR_013E_CAPACITIES                                             :{BLACK}Капацитети
+STR_TOTAL_CARGO                                                 :{BLACK}Вкупно Товар
+STR_013F_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Капацитет: {LTBLUE}{CARGO} (x{NUM})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Вкупен капацитет на овој воз:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
+STR_0140_NEW_GAME                                               :{BLACK}Нова Игра
+STR_0141_LOAD_GAME                                              :{BLACK}Вчитај Игра
+STR_SINGLE_PLAYER                                               :{BLACK}Сам играч
+STR_MULTIPLAYER                                                 :{BLACK}Повеќе играчи
+STR_SCENARIO_EDITOR                                             :{BLACK}Сценарио едитор
+
+STR_MAPSIZE                                                     :{BLACK}Големина на мапа:
+STR_BY                                                          :{BLACK}*
+STR_0148_GAME_OPTIONS                                           :{BLACK}Опции на Играта
+
+STR_0150_SOMEONE                                                :некој{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                           :Карта на светот
+STR_0152_TOWN_DIRECTORY                                         :Именик на градови
+STR_0153_SUBSIDIES                                              :Привилегии
+
+STR_UNITS_IMPERIAL                                              :Империјален
+STR_UNITS_METRIC                                                :Метрички
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}кс
+STR_UNITS_POWER_METRIC                                          :{COMMA}кс
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P "" и}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P "" и}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" и}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} лит{P ар ри}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} тонска сила
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
+############ range for menu starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :График на оперативен профит
+STR_0155_INCOME_GRAPH                                           :График на добивка
+STR_0156_DELIVERED_CARGO_GRAPH                                  :График на испорачан товар
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :График на историја на перформанси
+STR_0158_COMPANY_VALUE_GRAPH                                    :График на вредност на компанијата
+STR_0159_CARGO_PAYMENT_RATES                                    :Курс на исплата за товар
+STR_015A_COMPANY_LEAGUE_TABLE                                   :Табела на вредност на компании
+############ range for menu ends
+
+STR_015B_OPENTTD                                                :{WHITE}За OpenTTD
+STR_015C_SAVE_GAME                                              :Зачувај ја играта
+STR_015D_LOAD_GAME                                              :Вчитај игра
+STR_015E_QUIT_GAME                                              :Напушти ја играта
+STR_015F_QUIT                                                   :Излез
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Дали сте сигурни дека сакате да ја напуштите играта?
+STR_0161_QUIT_GAME                                              :{WHITE}Напушти ја Играта
+STR_SORT_ORDER_TIP                                              :{BLACK}Изберете начин на сортирање (намалувачки/зголемувачки)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Изберете критериум за сортирање
+STR_SORT_BY                                                     :{BLACK}Сортирање според
+
+STR_SORT_BY_POPULATION                                          :{BLACK}Населеност
+STR_SORT_BY_PRODUCTION                                          :Производство
+STR_SORT_BY_TYPE                                                :Тип
+STR_SORT_BY_TRANSPORTED                                         :Транспортирано
+STR_SORT_BY_NAME                                                :{BLACK}Име
+STR_SORT_BY_DROPDOWN_NAME                                       :Име
+STR_SORT_BY_DATE                                                :{BLACK}Датум
+STR_SORT_BY_NUMBER                                              :Број
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Минатогодишен профит
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Годинашен профит
+STR_SORT_BY_AGE                                                 :Старост
+STR_SORT_BY_RELIABILITY                                         :Веродостојност
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Вкупен капацитет според типот на товарот
+STR_SORT_BY_MAX_SPEED                                           :Максимална брзина
+STR_SORT_BY_MODEL                                               :Модел
+STR_SORT_BY_VALUE                                               :Вредност
+STR_SORT_BY_LENGTH                                              :Должина
+STR_SORT_BY_LIFE_TIME                                           :Преостанат животен век
+STR_SORT_BY_FACILITY                                            :Вид на станица
+STR_SORT_BY_WAITING                                             :Вредност на товарот кој чека
+STR_SORT_BY_RATING_MAX                                          :Рејтинг на товарот
+STR_ENGINE_SORT_ENGINE_ID                                       :Идентификација на моторот (класично сортирање)
+STR_ENGINE_SORT_COST                                            :Цена
+STR_ENGINE_SORT_POWER                                           :Моќност
+STR_ENGINE_SORT_INTRO_DATE                                      :Датум на претставување
+STR_ENGINE_SORT_RUNNING_COST                                    :Потрошувачка
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Моќност/Потрошувачка
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Капацитет за товар
+STR_NO_WAITING_CARGO                                            :{BLACK}Не чека никаков товар
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Избери ги сите објекти
+STR_SELECT_ALL_TYPES                                            :{BLACK}Избери ги сите видови товар (including no waiting cargo)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Достапни Возови
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Достапни Возила
+STR_AVAILABLE_SHIPS                                             :{BLACK}Достапни Бродови
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Достапни Летала
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Преглед на листа на достапни мотори за овој вид на возило
+STR_MANAGE_LIST                                                 :{BLACK}Менаџирање на листа
+STR_MANAGE_LIST_TIP                                             :{BLACK}Испрати ги инструкциите на сите возила во листата
+STR_REPLACE_VEHICLES                                            :Замени ги возилата
+STR_SEND_TRAIN_TO_DEPOT                                         :Испрати во Гаража
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Испрати во Гаража
+STR_SEND_SHIP_TO_DEPOT                                          :Испрати во Гаража
+
+############ range for months starts
+STR_0162_JAN                                                    :Јан
+STR_0163_FEB                                                    :Фев
+STR_0164_MAR                                                    :Мар
+STR_0165_APR                                                    :Апр
+STR_0166_MAY                                                    :Мај
+STR_0167_JUN                                                    :Јун
+STR_0168_JUL                                                    :Јул
+STR_0169_AUG                                                    :Авг
+STR_016A_SEP                                                    :Сеп
+STR_016B_OCT                                                    :Окт
+STR_016C_NOV                                                    :Ное
+STR_016D_DEC                                                    :Дек
+############ range for months ends
+
+STR_0171_PAUSE_GAME                                             :{BLACK}Паузирај ја играта
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Зачувај ја играта, напушти, излези
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Прикажи листа на станиците на компанијата
+STR_0174_DISPLAY_MAP                                            :{BLACK}Прикажи мапа, екстра viewport или листа на знаци
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Прикажи мапа, именик на градови
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Прикажи именик на градови
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Прикажи информации за финансиите на компанијата
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Прикажи општи информации за компанијата
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Прикажи графици
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Прикажи ја табелата за успешност на компанијата
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Прикажи листа на возови на компанијата
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Прикажи листа на патни возила на компанијата
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Прикажи листа на бродови на компанијата
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Прикажи листа на летала на компанијата
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Приближи го погледот
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Оддалечи го погледот
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Градба на пруга
+STR_0182_BUILD_ROADS                                            :{BLACK}Градба на патишта
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Градба на пристаништа
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Градба на аеродроми
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Засадување на дрва, местење знаци итн.
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Информација за земјишна област
+STR_0187_OPTIONS                                                :{BLACK}Опции
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Не може да се смени интервалот за сервисирање...
+STR_018B_CLOSE_WINDOW                                           :{BLACK}Затвори го прозорецот
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Наслов на прозорец - влечи тука за да го поместиш прозорецот
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Уривање згради итн. на квадратна област
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Снижи агол на земјата
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Подигни агол на земјата
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Поместувач - ја поместува листата нагоре/надолу
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Прикажи ги контурите на земјата на мапа
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Прикажи ги возилата на мапа
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Прикажи ги индустриите на мапа
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days starts
+############ range for days ends
+
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+
+############ end of savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+
+##id 0xB000
+
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### For showing numbers in widgets
+
+
+########### String for New Landscape Generator
+
+
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########

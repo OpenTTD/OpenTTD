@@ -1156,6 +1156,7 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir automaticamente semáforos antes de: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar ferramenta de sinais: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todos
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A disposição de cidade "sem mais estradas" não é válida no editor de cenários
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Seleccionar disposição das estradas na cidade: {ORANGE}{STRING}
@@ -2682,6 +2683,7 @@ STR_ORDER_SHIP_DEPOT                                            :Depósito para 
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
+
 
 STR_ORDER_CONDITIONAL                                           :Saltar ordem condicionalmente
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de veículo para ida à base
