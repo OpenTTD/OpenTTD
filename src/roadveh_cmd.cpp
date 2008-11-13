@@ -2085,8 +2085,6 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 		}
 
-		if (capacity == 0) continue;
-
 		total_capacity += capacity;
 
 		if (IsHumanCompany(v->owner) && new_cid != v->cargo_type) {

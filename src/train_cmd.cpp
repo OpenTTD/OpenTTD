@@ -2080,21 +2080,19 @@ CommandCost CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 				}
 			}
 
-			if (amount != 0) {
-				if (new_cid != v->cargo_type) {
-					cost.AddCost(GetRefitCost(v->engine_type));
-				}
+			if (new_cid != v->cargo_type) {
+				cost.AddCost(GetRefitCost(v->engine_type));
+			}
 
-				num += amount;
-				if (flags & DC_EXEC) {
-					v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
-					v->cargo_type = new_cid;
-					v->cargo_cap = amount;
-					v->cargo_subtype = new_subtype;
-					InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-					InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-					InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-				}
+			num += amount;
+			if (flags & DC_EXEC) {
+				v->cargo.Truncate((v->cargo_type == new_cid) ? amount : 0);
+				v->cargo_type = new_cid;
+				v->cargo_cap = amount;
+				v->cargo_subtype = new_subtype;
+				InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+				InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+				InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 			}
 		}
 	} while ((v = v->Next()) != NULL && !only_this);
