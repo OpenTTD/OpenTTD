@@ -120,6 +120,10 @@ Section "!OpenTTD" Section1
 	SetOutPath "$INSTDIR\scenario\heightmap\"
 	File /nonfatal ${PATH_ROOT}bin\scenario\heightmap\*.*
 
+	; Copy the scripts
+	SetOutPath "$INSTDIR\scripts\"
+	File ${PATH_ROOT}bin\scripts\*.*
+
 	; Copy the rest of the stuff
 	SetOutPath "$INSTDIR\"
 
@@ -295,6 +299,9 @@ Section "Uninstall"
 
 	; Language files
 	Delete "$INSTDIR\lang\*.lng"
+
+	; Scripts
+	Delete "$INSTDIR\scripts\*.lng"
 
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Extras\"

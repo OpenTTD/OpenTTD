@@ -39,6 +39,7 @@ bundle: all
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario/heightmap"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/media"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/scripts"
 	$(Q)mkdir -p "$(TTD_DIR)"
 	$(Q)mkdir -p "$(DATA_DIR)"
 	$(Q)mkdir -p "$(LANG_DIR)"
@@ -69,6 +70,7 @@ ifdef MAN_DIR
 endif
 	$(Q)cp "$(ROOT_DIR)/media/openttd.32.xpm" "$(BUNDLE_DIR)/media/"
 	$(Q)cp "$(ROOT_DIR)/media/openttd."*.png  "$(BUNDLE_DIR)/media/"
+	$(Q)cp "$(BIN_DIR)/scripts/"*             "$(BUNDLE_DIR)/scripts/"
 ifdef MENU_DIR
 	$(Q)cp "$(ROOT_DIR)/media/openttd.desktop" "$(BUNDLE_DIR)/media/"
 	$(Q)cat "$(ROOT_DIR)/media/openttd.desktop" | sed s/=openttd/=$(BINARY_NAME)/g > "$(ROOT_DIR)/media/openttd.desktop.install"
@@ -149,6 +151,7 @@ else
 endif
 	$(Q)install -m 644 "$(BUNDLE_DIR)/lang/"* "$(INSTALL_DATA_DIR)/lang"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/data/"* "$(INSTALL_DATA_DIR)/data"
+	$(Q)install -m 644 "$(BUNDLE_DIR)/scripts/"* "$(INSTALL_DATA_DIR)/scripts"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/docs/"* "$(INSTALL_DOC_DIR)"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/"*.txt "$(INSTALL_DOC_DIR)"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/COPYING" "$(INSTALL_DOC_DIR)"
