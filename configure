@@ -128,7 +128,7 @@ else
 	sort="$sort -u"
 fi
 
-CONFIGURE_FILES="$ROOT_DIR/configure $ROOT_DIR/config.lib $ROOT_DIR/Makefile.in $ROOT_DIR/Makefile.lang.in $ROOT_DIR/Makefile.src.in"
+CONFIGURE_FILES="$ROOT_DIR/configure $ROOT_DIR/config.lib $ROOT_DIR/Makefile.in $ROOT_DIR/Makefile.lang.in $ROOT_DIR/Makefile.src.in $ROOT_DIR/Makefile.bundle.in"
 
 generate_main
 generate_lang
