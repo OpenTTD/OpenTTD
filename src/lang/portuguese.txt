@@ -1121,6 +1121,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostrar estrada de ferro reservada: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar ferram. de construção se não houver veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
@@ -1156,6 +1157,13 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ao arrastar colocar sinais a cada: {ORANGE}{STRING} quadrado(s)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construir automaticamente semáforos antes de: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activar ferramenta de sinais: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo de farol padrão para construir: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Faróis de obstrução
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Faróis de rota
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Faróis para rota de mão única
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Trocar tipos de faróis: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Apenas faróis de obstrução
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Apenas faróis de rota
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todos
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A disposição de cidade "sem mais estradas" não é válida no editor de cenários
@@ -1165,6 +1173,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :por defeito
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :estradas melhores
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grelha 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :grelha 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :ao acaso
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1219,6 +1228,7 @@ STR_CHEATS                                                      :{WHITE}Truques
 STR_CHEATS_TIP                                                  :{BLACK}As caixas de verificação indicam se já usou este truque antes
 STR_CHEATS_WARNING                                              :{BLACK}Atenção! Está prestes a trair os seus oponentes. Tenha em conta que isto ficará registado para sempre.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumentar dinheiro em {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Jogando como empresa: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer mágico (destrói indústrias, etc.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Os túneis poderão cruzar-se: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Permitir construção quando em pausa: {ORANGE}{STRING}
@@ -1241,6 +1251,7 @@ STR_WAYPOINT                                                    :{WHITE}Ponto de
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Seleccione um tipo de ponto de passagem
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Trem{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Editar nome do ponto de passagem
@@ -1277,6 +1288,8 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Não é 
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Construir diques
 STR_LANDINFO_LOCK                                               :Dique
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Não se pode pôr rio aqui...
+STR_LANDINFO_RIVER                                              :Rio
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...boia está em uso!
 
@@ -1323,6 +1336,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústr
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportado)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nomes de indústrias - clique no nome para centrar-se na indústria
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...muito perto de outra indústria
 
@@ -1344,6 +1358,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multi-jo
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nome do jogador:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Este é o nome pelo qual os outros jogadores o irão identificar
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Digite teu nome
 STR_NETWORK_CONNECTION                                          :{BLACK}Conexão:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Escolha entre um jogo pela Internet ou pela rede local
 
@@ -1354,6 +1369,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nome do jogo
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Idioma, versão do servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Clique num jogo da lista para o seleccionar
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}O Servidor ao que se juntaste a última vez:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Clique para indicar o servidor que jogaste a última vez
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Localizar servidor
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Pesquisar por um servidor na rede
@@ -1365,8 +1382,14 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Clientes
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes ligados / max. clientes
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Tomanho do mapa
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Data
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Date de hoje
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Anos
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Número de anos{}que o jogo vai durar
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMAÇÃO DE JOGO
 STR_NETWORK_CLIENTS                                             :{SILVER}Clientes:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1390,6 +1413,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Iniciar 
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nome do jogo:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}O nome do jogo será mostrado aos outros jogadores no menu de selecção de jogos multi-jogador
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Digite nome para o jogo de rede
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Definir password
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Proteja o jogo com uma senha se não desejar que pessoas indesejadas se juntem
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Seleccione um mapa:
@@ -1446,6 +1470,8 @@ STR_NETWORK_LANG_SPANISH                                        :Espanhol
 STR_NETWORK_LANG_SWEDISH                                        :Sueco
 STR_NETWORK_LANG_TURKISH                                        :Turco
 STR_NETWORK_LANG_UKRAINIAN                                      :Ucraniano
+STR_NETWORK_LANG_GREEK                                          :grego
+STR_NETWORK_LANG_LATVIAN                                        :letão
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera de jogo multi-jogador
@@ -1639,9 +1665,13 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Caminhos-de-fer
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Caminhos-de-ferro com pre-sinais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Caminhos-de-ferro com sinais de saída
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Caminhos-de-ferro com sinais combinados
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Estrada de ferro com faróis de rota
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Estrada de ferro com faróis de mão única
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Carris com sinais normais e pré-sinais
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Carris com sinais normais e de saída
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Carris com sinais normais e combinados
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Estrada de ferro com obstrução e faróis de rota
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Estrada de ferro com obstrução e faróis de mão única
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Carris com pré-sinais e sinais de saída
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Carris com pré-sinais e sinais combinados
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Carris com sinais de saída e combinados
@@ -2684,13 +2714,27 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vai sempre
+STR_ORDER_DROP_HALT_DEPOT                                       :Pare
 
 STR_ORDER_CONDITIONAL                                           :Saltar ordem condicionalmente
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de veículo para ida à base
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máximo
+STR_ORDER_CONDITIONAL_AGE                                       :Idade de veículo (anos)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requer manutenção
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Sempre
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :é igual a
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :é diferente de
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :é menos que
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :é menos que igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :é mais que
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :é mais que ou igual a
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :é verdadeiro
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :é falso
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Pula para ordem {COMMA}
+STR_CONDITIONAL_NUM                                             :Pula para ordem {COMMA} quando {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Pula para ordem {COMMA} quando {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viagem (sem programação)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viajar durante {STRING}
@@ -2705,6 +2749,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Serviç
 
 STR_INVALID_ORDER                                               :{RED} (Ordem Inválida)
 
+STR_UNKNOWN_STATION                                             :estação desconhecida
 STR_8812_EMPTY                                                  :{LTBLUE}Vazio
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})
@@ -2737,6 +2782,7 @@ STR_REFIT_TIP                                                   :{BLACK}Seleccio
 STR_REFIT_ORDER                                                 :(Converter para {STRING})
 STR_TIMETABLE_VIEW                                              :{BLACK}Horário
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Mudar para a vista de horário
+STR_ORDER_VIEW                                                  :{BLACK}Ordens
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
 STR_SERVICE                                                     :{BLACK}Manutenção
@@ -2745,6 +2791,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valor: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}A carregar / descarregar
+STR_LEAVING                                                     :{LTBLUE}Saindo
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Comboio tem que estar parado dentro do depósito
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Não é possível mandar o comboio para o depósito...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Não há espaço para mais ordens
@@ -2814,6 +2861,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomear
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Não é possível renomear tipo de veículo ferroviário...
 STR_CLEAR_TIME                                                  :{BLACK}Apagar Tempo
 STR_RESET_LATENESS                                              :{BLACK}Apagar Contad. Atraso
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}A Parar
 STR_TRAIN_STOPPING_VEL                                          :{RED}A Parar, {VELOCITY}
@@ -3420,6 +3468,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Clique p
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

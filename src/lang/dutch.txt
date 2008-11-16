@@ -1210,7 +1210,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Heel snel
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Verhouding van steden die twee keer zo snel groeien: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Verhouding van steden die twee keer zo snel groeien: {ORANGE}Niet
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Stad groei indicator: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Verwijder  rare weg-elementen tijdens het herbouwen van de weg
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Verwijder rare weg-elementen tijdens het herbouwen van de weg
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Constructie
@@ -2742,7 +2742,7 @@ STR_GO_TO_STATION                                               :{STRING} {STATI
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Voeg een geadvanceerde order toe
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtstbijzijnde depot
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde  hangar
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde hangar
 STR_ORDER_NEAREST_DEPOT                                         :het dichtstbijzijnde
 STR_ORDER_NEAREST_HANGAR                                        :de dichtstbijzijnde hangar
 STR_ORDER_SERVICE_AT                                            :Onderhoud bij
@@ -3319,7 +3319,7 @@ STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Geef een
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Vervang automatisch alle treinen in het depot
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Vervang automatisch alle weg voertuigen in het depot
-STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Vervang automatisch alle schepen in  het depot
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Vervang automatisch alle schepen in het depot
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Vervang automatisch alle vliegtuigen in de hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trein{P "" s}
@@ -3367,7 +3367,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klik om 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order ombouwen mislukt gestopt{STRING} {COMMA}
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Order ombouwen mislukt gestopt {STRING} {COMMA}
 
 ############ Lists rail types
 

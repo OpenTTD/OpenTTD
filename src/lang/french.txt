@@ -1644,6 +1644,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Coût Es
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Revenu Estimé: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Impossible d'élever le terrain ici...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Impossible d'abaisser le terrain ici...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Impossible de niveler le terrain ici...
 STR_080A_ROCKS                                                  :Roches
 STR_080B_ROUGH_LAND                                             :Terre en friche
 STR_080C_BARE_LAND                                              :Terre nue
@@ -1656,8 +1657,9 @@ STR_0810_DESERT                                                 :Désert
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terrain en pente dans la mauvaise direction
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combinaison de rail impossible
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}L'excavation endommagerait le tunnel
-STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Déjà au niveau de la mer
-STR_1004_TOO_HIGH                                               :{WHITE}Trop élevé
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... déjà au niveau de la mer
+STR_1004_TOO_HIGH                                               :{WHITE}... trop élevé
+STR_ALREADY_LEVELLED                                            :{WHITE}... déjà à niveau
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Aucuns rails convenables
 STR_1007_ALREADY_BUILT                                          :{WHITE}...déjà construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Vous devez d'abord enlever les rails

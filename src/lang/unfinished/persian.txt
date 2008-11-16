@@ -857,11 +857,32 @@ STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}انتخ
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}انتخاب جهت محل بارگیری کامیون
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}مرکز تصویر اصلی را روی محل ایستگاه قرار بده
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}نشان دادن امتیازات ایستگاه
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}تغییر نام ایستگاه
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}نشان دادن لیست کالاهای قابل دریافت
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}نام ایستگاه ها- بر روی نام کلیک کنید تا مرکز صفحه را بر روی ایستگاه قرار دهد
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}انتخاب اندازه/نوع فرودگاه
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305E_RAILROAD_STATION                                       :ایستگاه راه آهن
+STR_305F_AIRCRAFT_HANGAR                                        :آشیانه هواپیما
+STR_3060_AIRPORT                                                :فرودگاه
+STR_3061_TRUCK_LOADING_AREA                                     :محوطه بارگیری کامیون
+STR_3062_BUS_STATION                                            :ایستگاه اتوبوس
+STR_3063_SHIP_DOCK                                              :اسکله
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}نور ناحیه ی اطراف ایستگاه
+STR_3068_DOCK                                                   :{WHITE}اسکله
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}ایستگاه زیادی پخش شده است
 
 
 ##id 0x3800
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE} باید بر روی آب ساخته شود
+STR_3804_WATER                                                  :آب
+STR_3805_COAST_OR_RIVERBANK                                     :خلیج یا ساحل رودخانه
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}نمی شود بر روی آب ساخت
 
 ##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}ذخیره ی بازی
+STR_4001_LOAD_GAME                                              :{WHITE}ادامه ی بازی
+STR_4002_SAVE                                                   :{BLACK}ذخیره
 
 ##id 0x4800
 

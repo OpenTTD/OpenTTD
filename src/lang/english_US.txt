@@ -1643,6 +1643,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Estimate
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Estimated Income: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Can't raise land here...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Can't lower land here...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Can't level land here...
 STR_080A_ROCKS                                                  :Rocks
 STR_080B_ROUGH_LAND                                             :Rough land
 STR_080C_BARE_LAND                                              :Bare land
@@ -1657,6 +1658,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Impossib
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Excavation would damage tunnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Already at sea-level
 STR_1004_TOO_HIGH                                               :{WHITE}Too high
+STR_ALREADY_LEVELLED                                            :{WHITE}... already flat
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}No suitable railroad track
 STR_1007_ALREADY_BUILT                                          :{WHITE}...already built
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Must remove railroad track first
@@ -2754,6 +2756,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Always go
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Service if needed
+STR_ORDER_DROP_HALT_DEPOT                                       :Stop
+
 STR_ORDER_CONDITIONAL                                           :Conditional order jump
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vehicle data to base jumping on
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}How to compare the vehicle data to the given value
@@ -2824,6 +2830,8 @@ STR_8826_GO_TO                                                  :{BLACK}Go To
 STR_REFIT                                                       :{BLACK}Refit
 STR_REFIT_TIP                                                   :{BLACK}Select what cargo type to refit to in this order. Control click to remove refit instruction
 STR_REFIT_ORDER                                                 :(Refit to {STRING})
+STR_REFIT_STOP_ORDER                                            :(Refit to {STRING} and stop)
+STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Timetable
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Switch to the timetable view
 STR_ORDER_VIEW                                                  :{BLACK}Orders
