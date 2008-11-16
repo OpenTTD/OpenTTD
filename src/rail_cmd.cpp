@@ -725,7 +725,7 @@ static CommandCost CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, u
 		if (!IsDiagonalTrackdir(trackdir)) ToggleBit(trackdir, 0);
 	}
 
-	return (total_cost.GetCost() == 0) ? CMD_ERROR : total_cost;
+	return (total_cost.GetCost() == 0) ? CommandCost(STR_1007_ALREADY_BUILT) : total_cost;
 }
 
 /** Build rail on a stretch of track.
