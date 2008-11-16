@@ -301,7 +301,7 @@ Section "Uninstall"
 	Delete "$INSTDIR\lang\*.lng"
 
 	; Scripts
-	Delete "$INSTDIR\scripts\*.lng"
+	Delete "$INSTDIR\scripts\*.*"
 
 	; Remove remaining directories
 	RMDir "$SMPROGRAMS\$SHORTCUTS\Extras\"
