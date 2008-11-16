@@ -143,6 +143,7 @@ install: bundle
 	$(Q)install -d "$(INSTALL_DATA_DIR)/gm"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/data"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/lang"
+	$(Q)install -d "$(INSTALL_DATA_DIR)/scripts"
 	$(Q)install -d "$(INSTALL_DOC_DIR)"
 ifeq ($(TTD), openttd.exe)
 	$(Q)install -m 755 "$(BUNDLE_DIR)/$(TTD)" "$(INSTALL_BINARY_DIR)/${BINARY_NAME}.exe"
