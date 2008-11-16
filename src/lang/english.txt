@@ -1643,6 +1643,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Estimate
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Estimated Income: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Can't raise land here...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Can't lower land here...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Can't level land here...
 STR_080A_ROCKS                                                  :Rocks
 STR_080B_ROUGH_LAND                                             :Rough land
 STR_080C_BARE_LAND                                              :Bare land
@@ -1655,8 +1656,9 @@ STR_0810_DESERT                                                 :Desert
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Land sloped in wrong direction
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Impossible track combination
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Excavation would damage tunnel
-STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Already at sea-level
-STR_1004_TOO_HIGH                                               :{WHITE}Too high
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... already at sea level
+STR_1004_TOO_HIGH                                               :{WHITE}... too high
+STR_ALREADY_LEVELLED                                            :{WHITE}... already flat
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}No suitable railway track
 STR_1007_ALREADY_BUILT                                          :{WHITE}...already built
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Must remove railway track first
