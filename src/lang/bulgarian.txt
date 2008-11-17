@@ -270,6 +270,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Сняг
 STR_012C_MESSAGE                                                :{WHITE}Съобщение
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}По подразбиране
 STR_012E_CANCEL                                                 :{BLACK}Отказ
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Преименувай
@@ -381,6 +382,7 @@ STR_SORT_BY_MAX_SPEED                                           :Максима�
 STR_SORT_BY_MODEL                                               :Модел
 STR_SORT_BY_VALUE                                               :Цена
 STR_SORT_BY_LENGTH                                              :Дължина
+STR_SORT_BY_LIFE_TIME                                           :Оставащо време за експлоатация
 STR_SORT_BY_FACILITY                                            :Вид на гарата
 STR_SORT_BY_WAITING                                             :Цена на чакащият товар
 STR_SORT_BY_RATING_MAX                                          :Рейтинг на товара
@@ -592,9 +594,13 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пър�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Първо пристигане на превозно средство в конкурентна станция
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Инциденти / бедствия
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Информация за компанията
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Откриване на индустрии
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Закриане на индустрии
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Промени в икономиката
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Промяна на продукцията в индустрии обслужвани от играча
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Промяна в производството на индустрия обслужвана от конкуренцията
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Промяна в производството на индустрия
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Съвет / инфомация относно превозните средства на играча
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Нови превозни средства
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Промени в приемането на товари
 STR_020E_SUBSIDIES                                              :{YELLOW}Субсидии
@@ -776,6 +782,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Игрови опции
 STR_02C6_DIFFICULTY_SETTINGS                                    :Опции за трудност
+STR_MENU_CONFIG_PATCHES                                         :Настройки за напреднали
 STR_NEWGRF_SETTINGS                                             :Newgrf настройки
 STR_TRANSPARENCY_OPTIONS                                        :Опций на прозрачност
 STR_GAMEOPTMENU_0A                                              :
@@ -985,6 +992,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Не м�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Не може да се копира списъка от задачи...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Край на Споделения пътен лист - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Влак {COMMA} не може да намери пътя за да продължи
 STR_TRAIN_IS_LOST                                               :{WHITE}Влак {COMMA} е загубен.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Печалбата на влак {COMMA} предходната година е {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Европейски монетарен съюз!{}{}Еврото е прието като национална валута за всекидневни транзакции страната!
@@ -1014,8 +1022,12 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Авто
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Автоматично подновяване на кораб {COMMA} не успя{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автообновяването на самолет е неуспешно {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Влак {COMMA} е прекалено дълъг след замяната
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Не са открити правила за автоматично подновяване/замяна
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(ограничени средства)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Настройки за напреднали
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Покажи настройките за напреднали
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройки за напреднали
 
 STR_CONFIG_PATCHES_OFF                                          :изключено
 STR_CONFIG_PATCHES_ON                                           :включено
@@ -1043,6 +1055,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Инд�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Дълга дата в лента за състоянието: {ORANGE}{STRING.f}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Семафорите от страната на пътното движение: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Финансов отчет в края на годината: {ORANGE}{STRING.m}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}По подразбиране новите зповеди са 'без спиране': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Опашка на автомобилите (със сумарен ефект): {ORANGE}{STRING.f}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Местене на екрана когато мишката е в края: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
@@ -1130,6 +1143,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :маглев р
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :първите налични
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :последните налични
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :най-използваните
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Покажи запазените линии/пътища: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Строене при липса на подходящи ПС: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. брой влакове на играч: {ORANGE}{STRING}
@@ -1165,9 +1179,11 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Поз�
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Поставяне семафори всеки: {ORANGE}{STRING} плочк{P а и}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Поставяне на семафори преди: {ORANGE}{STRING} година
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Инструменти за сигналите: {ORANGE}{STRING.p}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Подразбиращ се вид на сигнала при строене : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Нормален
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Напреднат
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Еднопосочен напреднат
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Смяна на вида сигнал: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Само нормален
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Само напреднат
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Всички
@@ -1234,6 +1250,7 @@ STR_CHEATS                                                      :{WHITE}Кодо
 STR_CHEATS_TIP                                                  :{BLACK}Кутийките показват дали този код е бил използван
 STR_CHEATS_WARNING                                              :{BLACK}Внимание! По този начин ще измамите своите съперници. Имайте в предвид, че това безчестие ще бъде запомнено вовеки веков.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличаване на парите с {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Играе като компания: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Магически булдозер (премахва промишленост, неподвижни обекти): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Тунелите може да се пресичат: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Строене докато режима е Пауза: {ORANGE}{STRING}
@@ -1256,6 +1273,7 @@ STR_WAYPOINT                                                    :{WHITE}Пътн
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Избор тип на пътни точки
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Влак{P "" s}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Редакция името на пътна точка
@@ -1340,6 +1358,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Инду
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% превозено)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% превозено)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Имена на индустиите - натисни за да центрираш изгледа
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...прекалено близо до друка индустрия
 
@@ -1387,11 +1406,13 @@ STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Онла
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Големина на картата
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Големина на картата в играта{}Натисни за сортиране по площ
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Дата
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Настояща дата
 
 STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Години
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Брой години{}през които продължава играта
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}ИНФО ЗА ИГРАТА
 STR_NETWORK_CLIENTS                                             :{SILVER}Играчи:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1561,6 +1582,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :получен 
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :грешна ревизия
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :името вече се използва
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :грешна парола
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :wrong company-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :изхрърлен от сървъра
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :се опита да използва измама
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сървърът е пълен
@@ -1623,6 +1645,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Приб
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Приблизителен приход: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Не може да повдигаш земята тук...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Не може да понижиш земята тук...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Не може да се изравнява земята на това място...
 STR_080A_ROCKS                                                  :Скали
 STR_080B_ROUGH_LAND                                             :Неравна земя
 STR_080C_BARE_LAND                                              :Пуста земя
@@ -1637,6 +1660,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Невъ
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Изкопните работи ще повредят тунела
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Морското ниво е вече достигнато
 STR_1004_TOO_HIGH                                               :{WHITE}Прекалено високо
+STR_ALREADY_LEVELLED                                            :{WHITE}... вече е равно
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Неподходящ за употреба релсов път
 STR_1007_ALREADY_BUILT                                          :{WHITE}...вече е построено
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Първо трябва да премахнеш релсовия път
@@ -1673,12 +1697,20 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :ЖП линия
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :ЖП линия с пре-сигнали
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :ЖП линия с изходни сигнали
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Железопътна линиа с комбинирани знаци
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :ЖП линия с маршрутизиращи знаци
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :ЖП линия с еднопоссочни маршрутизиращи знаци
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Железопътна линиа с нормални и пре-сигнали
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Железопътна линиа с нормални и изходни сигнали
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Железопътна линиа с нормални и комбинирани знаци
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :ЖП линия с обикновени и маршрутизиращи знаци
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :ЖП линия с обикновени и еднопосочни маршрутизиращи знаци
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Железопътна линиа с пре- и изходни сигнали
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Железопътна линиа с пре- и комбинирани сигнали
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :ЖП линия с пре- и маршрутизиращи сигнали
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :ЖП линия с пре- и еднопосочни маршрутизиращи сигнали
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Железопътна линиа с изходни и комбинирани знаци
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :ЖП линия с изходни и еднопосочни маршрутизиращи сигнали
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :ЖП линия с изходни и еднопосочни маршрутизиращи сигнали
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Релсов път със смесени и двупосочни знаци
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Релсов път със смесени и еднопосочни знаци
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Релсов път с двупосочни и еднопосочни знаци
@@ -2726,7 +2758,14 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} хангар
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Винаги напред
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Сервиз, когато е необходимо
+STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
+
 STR_ORDER_CONDITIONAL                                           :Условна променяща се заповед
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данни за превозното средство, на които се базира
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Как да сравня данните за превозното средсвто с дадената стойност
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Стойност, с която да сравня данните на превозното средство
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Вкарай стойност за сравнение
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Процент товарене
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Надеждност
@@ -2747,9 +2786,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Премини 
 STR_CONDITIONAL_NUM                                             :Премини на заповед {COMMA} когато {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Премини на заповед {COMMA} когато {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Без преминаване
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Патувай (без разписание)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Патувай за {STRING}
 STR_TIMETABLE_STAY_FOR                                          :и остани за {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :и отпътувай към {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} ден{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} щракане{P "" та}
 
@@ -2791,6 +2832,8 @@ STR_8826_GO_TO                                                  :{BLACK}Отид
 STR_REFIT                                                       :{BLACK}Преустройство
 STR_REFIT_TIP                                                   :{BLACK}Избор какво преустройсто да се направи. Щракване със задържан контрол премахва инструкцията
 STR_REFIT_ORDER                                                 :(Преустройство към {STRING})
+STR_REFIT_STOP_ORDER                                            :(Преоборудване на {STRING} и спиране)
+STR_STOP_ORDER                                                  :(Спри)
 STR_TIMETABLE_VIEW                                              :{BLACK}Разписание
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Виж разписанието
 STR_ORDER_VIEW                                                  :{BLACK}Сортиране
@@ -2873,6 +2916,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Преи
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Не може да се преименува влак...
 STR_CLEAR_TIME                                                  :{BLACK}Изчисти времето
 STR_RESET_LATENESS                                              :{BLACK}Преправи закъснялата бройка
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Смяна на името на пътната точка
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Спира
@@ -2880,6 +2924,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Спира
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Несъвместими ЖП линии
 STR_TRAIN_NO_POWER                                              :{RED}Няма мощност
 STR_TRAIN_START_NO_CATENARY                                     :Влака не може да тръгне, защото ЖП линията няма catenary
+STR_TRAIN_STUCK                                                 :{ORANGE}Изчакване за свободен път
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Нов {STRING} е на разположение!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2944,6 +2989,7 @@ STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капацитет: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} превозно средство{P о а}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Преименувай МПС-то
@@ -3125,6 +3171,8 @@ STR_BRIBE_FAILED                                                :{WHITE}Твоя
 STR_BRIBE_FAILED_2                                              :{WHITE}разкрит от местен дознател
 STR_BUILD_DATE                                                  :{BLACK}Построен: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Клас на станцията: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Тип на станцията: {LTBLUE}{STRING}
 STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Подробна оценка на представянето
@@ -3159,10 +3207,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Натр
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF настройки
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf настройки
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Прилагане на промените
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Превключване на палитрата
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Превключване на палитрата на избрания NewGRF.{}Когато графиката от NewGRF изглежда розова в играта
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Настройване на параметрите
 STR_NEWGRF_TIP                                                  :{BLACK}Списък с всички инсталирани Newgrf пакети. Натисни на пакет за промяна на настройките
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В момента няма инсталирани newgrf файлове! Моля обърнете се към наръчника за инструкции по инсталирането на нова графика
 STR_NEWGRF_FILENAME                                             :{BLACK}Име на файл:  {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Палитра: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5 сума: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}На път си да извършиш промени в активна игра; това може да крашне OpenTTD.{}Напълно ли си сигурен в това?
@@ -3181,7 +3232,16 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF файлат беше предназначен да преведе
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Прекалено много графики (NewGRF) са заредени.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Зареждане на {STRING} като статичен NewGRF заедно с {STRING} може да доведе до проблеми.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Зареди избрания шаблон
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Запиши шаблон
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Запиши текущия списък като шаблон
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Въведи име на шаблона
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Изтрий шаблон
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Изтрий текущо избрания шаблон
 STR_NEWGRF_ADD                                                  :{BLACK}Добави
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Добавяне на NewGRF файл към списъка
 STR_NEWGRF_REMOVE                                               :{BLACK}Махни
@@ -3212,6 +3272,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Липс
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Липсва GRF файл(ове)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Може да счупи OpenTTD. Не пускайте съобщение за грешка за последвали счупвания.{}Желаете ли да се махне паузата?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Поведението на NewGRF '{STRING}' вероятно ще предизвика десинхронизции и/или сривове
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Смяна на дължината на превозното средство '{1:ENGINE}', когато не е в депо.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Влак '{VEHICLE}' на '{COMPANY}' има невалидна дължина. Това вероятно е породено от проблеми с  NewGRFs. Играта може да загуби синхронизация или да забие.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Играта бе записана във версия без поддръжка на трамваи. Всички трамваи са изтрити.
 
@@ -3492,6 +3555,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Щрак
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3564,10 +3628,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Норм
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Входен сигнал (семафор){}Свети зелено докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Изходен сигнал (семафор){}Действа като нормален сигнал, но е необходим за да работят входните и комбинираните сигнали.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Комбиниран сигнал (семафор){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява за изграждането на големи "дървета" от сигнали.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Маршрутизиращ знак(семафор){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. През стандартните сигнали може да се преминава и в двете посоки.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Еднопосочен маршрутизиращ знак(семафор){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. рез еднопосочните сигнали може да се премине само в едната посока.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Нормален сигнал (електрически){}Сигналите са необходими за да предпазват влаковете от катастрофи по ЖП мрежата.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Входен сигнал (електрически){}Свети зелено докато има поне един зелен изходен сигнал от следващия сегмент от пътя. В противен случай свети червено.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Изходен сигнал (електрически){}Действа като нормален сигнал, но е необходим за да работят входните и комбинираните сигнали.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комбиниран сигнал (електрически){}Комбинирания сигнал действа едновременно като входен и изходен сигнал. Това позволява за изграждането на големи "дървета" от сигнали.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Маршрутизиращ знак(електрически){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. През стандартните сигнали може да се преминава и в двете посоки.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Еднопосочен маршрутизиращ знак(електрически){}Маршрутизиращите знаци позволяват на повече от един влак да навлязат в сигнален блок едновременно ако влаковете могат да резервират маршрут до безопасно място. рез еднопосочните сигнали може да се премине само в едната посока.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Конвертиране на сигнал{}Когато е избран, натискането на съществуващ сигнал ще го конвертира в избрания тип и вариант, CTRL-click ще смени съществуващия вариант.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Плътност на сигналите при влачене
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Намалява плътноста на сигналите при влачене

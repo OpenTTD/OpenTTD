@@ -16,6 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sima talaj szükséges
 STR_0008_WAITING                                                :{BLACK}Várakozik: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} ideszállítva {STATION} állomásról)
 STR_000C_ACCEPTS                                                :{BLACK}Elfogad:{WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Elfogad:{GOLD}
 STR_SUPPLIES                                                    :{BLACK}Termel: {GOLD}
@@ -1702,6 +1703,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Becsült
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Becsült bevétel: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Nem emelheted fel itt a földet...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Nem süllyesztheted le itt a földet...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Itt nem tudsz terepmagasságot változtatni...
 STR_080A_ROCKS                                                  :Kövek
 STR_080B_ROUGH_LAND                                             :Durva föld
 STR_080C_BARE_LAND                                              :Csupasz föld
@@ -1716,6 +1718,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Nem lehe
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Az ásás megsértené az alagutat
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Már tengerszinten van
 STR_1004_TOO_HIGH                                               :{WHITE}Túl magas
+STR_ALREADY_LEVELLED                                            :{WHITE}... már sík
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nincs megfelelő sín
 STR_1007_ALREADY_BUILT                                          :{WHITE}...már van itt
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Előbb le kell rombolnod a sínt
@@ -2808,6 +2811,7 @@ STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Fejlett 
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Menj a legközelebbi járműtelepre
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Menj a legközelebbi hangárba
 
+
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hogyan viszonyul a jármű kiválasztott adata a megadott értékhez
@@ -2844,6 +2848,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Javít�
 
 STR_INVALID_ORDER                                               :{RED} (Hibás menetrend)
 
+STR_UNKNOWN_STATION                                             :ismeretlen állomás
 STR_8812_EMPTY                                                  :{LTBLUE}Üres
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} {STATION} állomásról
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} {STATION} állomásról (x{NUM})
@@ -3304,6 +3309,7 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányz
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}A játék folytatásától az OpenTTD lefagyhat.{}Ne jelentsd be az ismétlődő lefagyásokat egyesével.{}Biztosan folytatni akarod?
 
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat . Az összes villamos törölve lett.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}

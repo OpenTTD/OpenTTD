@@ -1643,6 +1643,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Verwacht
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Verwachte inkomsten: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kan het land hier niet verhogen...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kan het land hier niet verlagen...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Kan land hier niet gelijk maken...
 STR_080A_ROCKS                                                  :Rotsen
 STR_080B_ROUGH_LAND                                             :Ruw land
 STR_080C_BARE_LAND                                              :Onbegroeid land
@@ -1657,6 +1658,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Onmogeli
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Graafwerkzaamheden zouden tunnel beschadigen
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Reeds op zeeniveau
 STR_1004_TOO_HIGH                                               :{WHITE}Te hoog
+STR_ALREADY_LEVELLED                                            :{WHITE}... is al plat
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Geen bruikbaar spoor
 STR_1007_ALREADY_BUILT                                          :{WHITE}...reeds gebouwd
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Bestaand spoor moet eerst weggehaald worden

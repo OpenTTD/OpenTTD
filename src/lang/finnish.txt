@@ -1207,9 +1207,13 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Osa allaolevista oletushuoltoväleistä ei ole yhteensopivia valitun asetuksen kanssa! 5-90{NBSP}% ja 30-800 päivää ovat oikein.
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ei suositeltu)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Suositeltu)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Alkuperäinen {RED}(Ei suositeltu)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Suositeltu)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Alkuperäinen {BLUE}(Suositeltu)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ei suositeltu)
 
@@ -2661,6 +2665,7 @@ STR_ORDER_NEAREST_HANGAR                                        :lähin varikko
 STR_ORDER_SERVICE_AT                                            :Huolto
 STR_ORDER_ROAD_DEPOT                                            :Varikko
 STR_ORDER_SHIP_DEPOT                                            :Varikko
+
 
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Luotettavuus
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Huippunopeus

@@ -1243,6 +1243,12 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automat
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Zapnút grafické rozhranie stavby signálov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Standardne budovaný typ signálov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blokové signály
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Obojsmerné signály
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Jednosmerné signály
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Cyklovať typom signálov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Iba blokovacie signály
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Iba obojsmerné signály
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Všetky
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Struktúra mesta "žiadne cesty naviac" nie je platná v editore scenárov
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Struktúra mestských ciest: {ORANGE}{STRING}
@@ -1306,6 +1312,7 @@ STR_CHEATS                                                      :{WHITE}Cheaty
 STR_CHEATS_TIP                                                  :{BLACK}Checkbox indikuje opakovane pouzite cheatu
 STR_CHEATS_WARNING                                              :{BLACK}Varovanie! Chcete podviest vasich protihracov. Tento podvod sa navzdy zapameta.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zvysit hotovost o {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Hrať za spoločnosť: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magicky buldozer (odstrani priemysel, budovy): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunely sa mozu navzajom krizit: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Umoznit vystavbu v pauze: {ORANGE}{STRING}
@@ -1412,6 +1419,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Priemyse
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% prepravenych)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% prepravenych)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Názvy priemyslu - klikni na meno pre vycentrovanie priemyslu na stred obrazovky
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... prilis blizko ineho priemyslu
 
@@ -1635,6 +1643,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :neplatny packet
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :chybna revizia hry
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :meno sa uz pouziva
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :nespravne heslo
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :zlá spoločnosť-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :vyhodeny zo servera
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :sa pokusal cheatovat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server je plny
@@ -1697,6 +1706,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Priblizn
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Priblizny zisk: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Tu nemozno zdvihnut teren ...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Tu nemozno znizit teren ...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Nemôžem tu upraviť terén...
 STR_080A_ROCKS                                                  :Skaly
 STR_080B_ROUGH_LAND                                             :Nerovny teren
 STR_080C_BARE_LAND                                              :Holy teren
@@ -1711,6 +1721,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Nemozna 
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Vyhlbenie by poskodilo tunel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Na urovni mora
 STR_1004_TOO_HIGH                                               :{WHITE}Prilis vysoko
+STR_ALREADY_LEVELLED                                            :{WHITE}... už vyrovnané
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ziadne pouzitelne zeleznicne kolaje
 STR_1007_ALREADY_BUILT                                          :{WHITE}... uz bolo vytvorene
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najskor treba odstranit zeleznicne kolaje
@@ -1748,12 +1759,22 @@ STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kola
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje s exit-signalmi
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicné kolaje s combo signálmi
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Kolajnice so semaformi pbs
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Železničná  trasa s jednosmernými signálmi
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Železnicné kolaje s normálnymi a pre-signálmi
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Železnicné kolaje s normálnymi a exit-signálmi
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Zeleznicné kolaje s normálnymi a combo signálmi
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Železničná trasa s blokovacími a obojstranými signálmi
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Železničná trasa s blokovacími a jednosmernými signálmi
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Železnicné kolaje s pre- a exit-signálmi
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Zeleznicné kolaje s pre- a combo signálmi
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Železničná trasa s pre-  a obojstranými signálmi
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Železničná trasa s pre- a jednosmernými signálmi
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Zeleznicné kolaje s exit- a combo signálmi
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Železničná trasa s konečnými a obojstranými signálmi
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Železničná trasa s konečnými a jednosmernými signálmi
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Železničná trasa s kombo a obojstranými signálmi
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Železničná trasa s kombo a jednosmernými signálmi
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Železničná trať s obojstrannými a jednosmernými signálmi
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je potrebné najprv odstránit železnicnú stanicu
 
 
@@ -1927,6 +1948,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Tu sa ne
 STR_280A_SIGN                                                   :Popis
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Upravit text popisu
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Nemozno zmenit text popisu ...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Nemôžem zmazať popis...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Vybrat typ stromu pre sadenie
 STR_280E_TREES                                                  :Stromy
 STR_280F_RAINFOREST                                             :Dazdovy prales
@@ -2309,6 +2331,7 @@ STR_HOSTILE                                                     :Odmietavy
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Spoločnosť {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nová tvár
 STR_7005_COLOR_SCHEME                                           :{BLACK}Farebna schema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Farebna schema:
@@ -2796,6 +2819,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangár
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vždy choď
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis, ak je potrebné
+STR_ORDER_DROP_HALT_DEPOT                                       :Zastav
+
 STR_ORDER_CONDITIONAL                                           :Podmienený príkaz skoku
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Údaje vozidla na základe ktorých sa vykoná skok
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Sposob porovnania údajov vozidla so zadanou hodnotou
@@ -2835,6 +2862,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servis 
 
 STR_INVALID_ORDER                                               :{RED} (Neplatny prikaz)
 
+STR_UNKNOWN_STATION                                             :neznáma stanica
 STR_8812_EMPTY                                                  :{LTBLUE}Prazdny
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
@@ -2865,6 +2893,8 @@ STR_8826_GO_TO                                                  :{BLACK}Chod do
 STR_REFIT                                                       :{BLACK}Prestavba
 STR_REFIT_TIP                                                   :{BLACK}Vyberte typ nákladu na prestavbu v tomto poradí. CTRL+klik na odstránenie príkazu prestavby
 STR_REFIT_ORDER                                                 :(Prestavba na {STRING})
+STR_REFIT_STOP_ORDER                                            :(Prestavať na {STRING} a zastaviť)
+STR_STOP_ORDER                                                  :(Zastaviť)
 STR_TIMETABLE_VIEW                                              :{BLACK}CP
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prepnút na zobrazenie cestovného poriadku
 STR_ORDER_VIEW                                                  :{BLACK}Príkazy
@@ -2947,12 +2977,15 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Premenov
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Typ vlaku nemoze byt premenovany ...
 STR_CLEAR_TIME                                                  :{BLACK}Vymazat cas
 STR_RESET_LATENESS                                              :{BLACK}Reset meskania
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Zmeniť meno smerového bodu
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilne typy kolaji
 STR_TRAIN_NO_POWER                                              :{RED}Nie je prud
 STR_TRAIN_START_NO_CATENARY                                     :Vlak nemoze nastartovat, pretoze trat nie je pripojena
+STR_TRAIN_STUCK                                                 :{ORANGE}Čakám na uvoľnenie trate
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nové {STRING} dostupné!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -3016,6 +3049,8 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zakupit 
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rýchlost: {VELOCITY}{}Náklady na prevádzku: {CURRENCY}/rok{}Kapacita: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pomenovat automobil
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nemozno pomenovat automobil ...
@@ -3232,10 +3267,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Celkove 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Nastavenia NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenie novych grafickych suborov
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit zmeny
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Prepnúť paletu
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Prepnúť paletu na zvolené NewGRF.{}Vykonajte to ak grafika z tohoto NewGRF je v hre ružová
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavit parametre
 STR_NEWGRF_TIP                                                  :{BLACK}Zoznam vsetkych sad nainstalovanych novych grafik. Nastavenie zmenite kliknutim na set.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie sú nainštalované žiadne súbory s novou grafikou. Postup inštalácie nových grafík nájdete v manuály.
 STR_NEWGRF_FILENAME                                             :{BLACK}Názov súboru: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Chystáte sa vykonat zmeny v spustenej hre, co može sposobit pád hry.{}Naozaj ich chcete vykonat?
@@ -3254,6 +3292,9 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF súbor bol navrhnutý na preklad
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Nahraných príliš vela NewGRF súborov.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahratie {STRING} ako statického NewGRF s {STRING} by mohlo sposobit desynchronizáciu.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočakávaný sprite.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznáma Akcia 0 nehnuteľnosti.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Požiadavka na neplatného ID.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrat vybraný zoznam
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit zoznam
@@ -3574,6 +3615,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknite
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3646,10 +3688,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standard
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Vstupný signál (semafór){}Zelený ak je na danom úseku trate 1 alebo viac zelených výstupných signálov, inak je cervený.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Výstupný signál (semafór){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre urcenie správnej farby na na vstupných a kombinovaných signáloch.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombinovaný signál (semafór){}Funguje jednoducho ako vstupný a výstupný signál zároven, co umožnuje budovat "stromové" štruktúry.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Obojstranné signály (semaphore){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály umožňujú vlakom prechádzať trať z oboch strán.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Jednosmerné signály (semaphore){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály umožňujú vlakom prechádzať trať iba z jednej strany.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardný signál (elektrický){}Signály sú nevyhnutné pre zabránenie zrážke v železnicnej sieti s viac ako 1 vlakom.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Vstupný signál (elektrický){}Zelený ak je na danom úseku trate 1 alebo viac zelených výstupných signálov, inak je cervený.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Výstupný signál (elektrický){}Funguje rovnako ako štandardný signál, avšak je nevyhnutný pre urcenie správnej farby na na vstupných a kombinovaných signáloch.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombinovaný signál (elektrický){}Funguje jednoducho ako vstupný a výstupný signál zároven, co umožnuje budovat "stromové" štruktúry.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Obojstranné signály (electric){}Obojstranné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Obojstranné signály umožňujú vlakom prechádzať trať z oboch strán.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Jednosmerné signály (electric){}Jednosmerné signály umožnujú vstúpiť viacerým vlakom na trať súčasne, iba ak vlak dokáže zastaviť pred brzdiacim bodom. Jednosmerné signály umožňujú vlakom prechádzať trať iba z jednej strany.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konverzia signálu{}Pri vybraní, kliknutie na existujúci signál ho zmení na vybraný typ a variant, CTRL+klik prepne existujúci variant.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Hustota signálov pri stavbe tahaním
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Znižit hustotu signálov

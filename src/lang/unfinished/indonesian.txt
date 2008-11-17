@@ -1726,7 +1726,27 @@ STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat 
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Buat pesawat baru
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag pesawat kesini untuk menjualnya
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Arahkan pandangan ke lokasi hangar
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Daftar pilihan Pesawat - Klik pada pesawat untuk informasi
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Buat pesawat yang ditandai
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Aksi pesawat saat ini - klik disini untuk menghentikan / menjalankan pesawat
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Tampilkan order pesawat
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Arahkan pandangan pada lokasi pesawat
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Kirim pesawat ke depot. CTRL+klik hanya akan memerintahkan servis
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Tampilkan detail pesawat
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Biaya: {CURRENCY} Kecepatan maks: {VELOCITY}{}Kapasitas: {COMMA} penumpang, {COMMA} tas dokumen{}Biaya Operasional: {CURRENCY}/thn
 
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nama pesawat
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Tidak dapat memberi nama pesawat
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nama pesawat
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Pesawat pertama tiba di {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Kecelakaan Pesawat!{}{COMMA} mati dalam kebakaran di {STATION}
+STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
+STR_A037_RENAME                                                 :{BLACK}Ubah Nama
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Ubah nama tipe pesawat
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Ubah nama tipe pesawat
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Tidak dapat mengubah nama tipe pesawat...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reparasi kapal kargo untuk membawa barang jenis lain
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Reparasi)
 
 
 ##id 0xB000

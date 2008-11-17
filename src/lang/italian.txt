@@ -1645,6 +1645,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Costo st
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Incasso stimato: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Impossibile alzare il terreno qui...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Impossibile abbassare il terreno qui...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Impossibile livellare il terreno qui...
 STR_080A_ROCKS                                                  :Roccie
 STR_080B_ROUGH_LAND                                             :Terreno accidentato
 STR_080C_BARE_LAND                                              :Terreno spoglio
@@ -1657,8 +1658,9 @@ STR_0810_DESERT                                                 :Deserto
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreno inclinato nella direzione sbagliata
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combinazione di binari impossibile
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Gli scavi danneggerebbero la galleria
-STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Già al livello del mare
-STR_1004_TOO_HIGH                                               :{WHITE}Troppo alto
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}...già al livello del mare
+STR_1004_TOO_HIGH                                               :{WHITE}...troppo alto
+STR_ALREADY_LEVELLED                                            :{WHITE}...già pianeggiante
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo di binari non adatti
 STR_1007_ALREADY_BUILT                                          :{WHITE}...già costruito
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Bisogna demolire i binari prima

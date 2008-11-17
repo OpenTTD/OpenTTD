@@ -1644,6 +1644,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Custo Es
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Lucro Estimado: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Impossível elevar terreno aqui...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Impossível baixar terreno aqui...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Impossível terraplanar aqui...
 STR_080A_ROCKS                                                  :Rochas
 STR_080B_ROUGH_LAND                                             :Terreno Irregular
 STR_080C_BARE_LAND                                              :Deserto
@@ -1658,6 +1659,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Impossí
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}A escavação estragaria o túnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Já está ao nível do mar
 STR_1004_TOO_HIGH                                               :{WHITE}Muito alto
+STR_ALREADY_LEVELLED                                            :{WHITE}... já está plano
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo de linha não apropriado
 STR_1007_ALREADY_BUILT                                          :{WHITE}...já construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Deve remover a ferrovia primeiro

@@ -1699,8 +1699,9 @@ STR_FEEDER_TINY                                                 :{TINYFONT}{YELL
 STR_FEEDER                                                      :{YELLOW}Překládka: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Odhadovaná cena: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Odhadovaný příjem: {CURRENCY}
-STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Zde nemohu zvednout zemi...
-STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Zde nemohu snížit zemi...
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Zde nelze zvednout terén...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Zde nelze snížit terén...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Zde nelze srovnat terén...
 STR_080A_ROCKS                                                  :Kamení
 STR_080B_ROUGH_LAND                                             :Hrbolatá země
 STR_080C_BARE_LAND                                              :Prázdná země
@@ -1713,8 +1714,9 @@ STR_0810_DESERT                                                 :Poušť
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Země skloněna nesprávným směrem
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Nemožná kombinace kolejí
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Úprava terénu by poškodila tunel
-STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Již na úrovni moře
-STR_1004_TOO_HIGH                                               :{WHITE}Příliš vysoko
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... již na úrovni moře
+STR_1004_TOO_HIGH                                               :{WHITE}... příliš vysoko
+STR_ALREADY_LEVELLED                                            :{WHITE}... už je plochý
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Žádné použitelné koleje
 STR_1007_ALREADY_BUILT                                          :{WHITE}... již vystavěno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Musíš nejprve odstranit koleje
@@ -2818,6 +2820,7 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} hangár
 
+
 STR_ORDER_CONDITIONAL                                           :Podmíněné přeskočení příkazu
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Vlastnost vozidla, podle které přeskakovat
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porovnat vlastnost vozidla se zadanou hodnotou
@@ -2888,6 +2891,8 @@ STR_8826_GO_TO                                                  :{BLACK}Jet do
 STR_REFIT                                                       :{BLACK}Přestavět
 STR_REFIT_TIP                                                   :{BLACK}Vyber, na který druh nákladu přestavět. CTRL-klik odstraní přestavbu z příkazu.
 STR_REFIT_ORDER                                                 :(Přestavět na {STRING})
+STR_REFIT_STOP_ORDER                                            :(Přestavět na {STRING} a zastavit)
+STR_STOP_ORDER                                                  :(Zastavit)
 STR_TIMETABLE_VIEW                                              :{BLACK}Jízdní řád
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Přepnout na jízdní řád
 STR_ORDER_VIEW                                                  :{BLACK}Příkazy
