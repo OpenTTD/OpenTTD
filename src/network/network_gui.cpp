@@ -1416,8 +1416,9 @@ static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 // Here we start to define the options out of the menu
 static void ClientList_Kick(byte client_no)
 {
-	if (client_no < MAX_COMPANIES)
+	if (client_no < MAX_CLIENTS) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(DEREF_CLIENT(client_no), NETWORK_ERROR_KICKED);
+	}
 }
 
 static void ClientList_Ban(byte client_no)
@@ -1431,7 +1432,7 @@ static void ClientList_Ban(byte client_no)
 		}
 	}
 
-	if (client_no < MAX_COMPANIES) {
+	if (client_no < MAX_CLIENTS) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(DEREF_CLIENT(client_no), NETWORK_ERROR_KICKED);
 	}
 }
