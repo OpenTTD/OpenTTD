@@ -93,10 +93,10 @@ enum {
  * certain characteristics about the variable it refers to. For example
  * SLE_FILE_* gives the size(type) as it would be in the savegame and
  * SLE_VAR_* the size(type) as it is in memory during runtime. These are
- * the first 8 bytes (0-3 SLE_FILE, 4-7 SLE_VAR).
- * Bytes 8-15 are reserved for various flags as explained below */
+ * the first 8 bits (0-3 SLE_FILE, 4-7 SLE_VAR).
+ * Bits 8-15 are reserved for various flags as explained below */
 enum VarTypes {
-	/* 4 bytes allocated a maximum of 16 types for NumberType */
+	/* 4 bits allocated a maximum of 16 types for NumberType */
 	SLE_FILE_I8       = 0,
 	SLE_FILE_U8       = 1,
 	SLE_FILE_I16      = 2,
@@ -109,7 +109,7 @@ enum VarTypes {
 	SLE_FILE_STRING   = 9,
 	/* 6 more possible file-primitives */
 
-	/* 4 bytes allocated a maximum of 16 types for NumberType */
+	/* 4 bits allocated a maximum of 16 types for NumberType */
 	SLE_VAR_BL    =  0 << 4,
 	SLE_VAR_I8    =  1 << 4,
 	SLE_VAR_U8    =  2 << 4,
@@ -125,7 +125,7 @@ enum VarTypes {
 	SLE_VAR_STR   = 12 << 4, ///< string pointer
 	SLE_VAR_STRQ  = 13 << 4, ///< string pointer enclosed in quotes
 	SLE_VAR_NAME  = 14 << 4, ///< old custom name to be converted to a char pointer
-	/* 2 more possible memory-primitives */
+	/* 1 more possible memory-primitives */
 
 	/* Shortcut values */
 	SLE_VAR_CHAR = SLE_VAR_I8,
@@ -158,7 +158,7 @@ enum VarTypes {
 	SLE_STR   = SLE_STRING,
 	SLE_STRQ  = SLE_STRINGQUOTE,
 
-	/* 8 bytes allocated for a maximum of 8 flags
+	/* 8 bits allocated for a maximum of 8 flags
 	 * Flags directing saving/loading of a variable */
 	SLF_SAVE_NO      = 1 <<  8, ///< do not save with savegame, basically client-based
 	SLF_CONFIG_NO    = 1 <<  9, ///< do not save to config file

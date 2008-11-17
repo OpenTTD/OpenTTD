@@ -59,7 +59,7 @@ enum OldChunkType {
 	OC_NULL      = 1,
 	OC_CHUNK     = 2,
 	OC_ASSERT    = 3,
-	/* 8 bytes allocated (256 max) */
+	/* 8 bits allocated (256 max) */
 
 	OC_VAR_I8    = 1 << 8,
 	OC_VAR_U8    = 2 << 8,
@@ -68,7 +68,7 @@ enum OldChunkType {
 	OC_VAR_I32   = 5 << 8,
 	OC_VAR_U32   = 6 << 8,
 	OC_VAR_I64   = 7 << 8,
-	/* 8 bytes allocated (256 max) */
+	/* 8 bits allocated (256 max) */
 
 	OC_FILE_I8   = 1 << 16,
 	OC_FILE_U8   = 2 << 16,
@@ -76,7 +76,7 @@ enum OldChunkType {
 	OC_FILE_U16  = 4 << 16,
 	OC_FILE_I32  = 5 << 16,
 	OC_FILE_U32  = 6 << 16,
-	/* 8 bytes allocated (256 max) */
+	/* 8 bits allocated (256 max) */
 
 	OC_INT8      = OC_VAR_I8   | OC_FILE_I8,
 	OC_UINT8     = OC_VAR_U8   | OC_FILE_U8,
@@ -93,7 +93,7 @@ enum OldChunkType {
 	 */
 	OC_DEREFERENCE_POINTER = 1 << 31,
 
-	OC_END       = 0 ///< End of the whole chunk, all 32bits set to zero
+	OC_END       = 0 ///< End of the whole chunk, all 32 bits set to zero
 };
 
 DECLARE_ENUM_AS_BIT_SET(OldChunkType);
