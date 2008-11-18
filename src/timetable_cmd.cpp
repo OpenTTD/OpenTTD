@@ -133,7 +133,9 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, uint32 flags, uint32 p1, uint32 
  * @param tile Not used.
  * @param flags Operation to perform.
  * @param p1 Vehicle index.
- * @param p2 Set to 1 to enable, 0 to disable.
+ * @param p2 Various bitstuffed elements
+ * - p2 = (bit 0) - Set to 1 to enable, 0 to disable autofill.
+ * - p2 = (bit 1) - Set to 1 to preserve waiting times in non-destructive mode
  */
 CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -146,21 +148,18 @@ CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (p2 == 1) {
+		if (HasBit(p2, 0)) {
 			/* Start autofilling the timetable, which clears all the current
 			 * timings and clears the "timetable has started" bit. */
 			SetBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 			ClrBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
 
-			for (Order *order = GetVehicleOrder(v, 0); order != NULL; order = order->next) {
-				order->wait_time = 0;
-				order->travel_time = 0;
-			}
+			if (HasBit(p2, 1)) SetBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
 
-			v->current_order.wait_time = 0;
-			v->current_order.travel_time = 0;
+			v->lateness_counter = 0;
 		} else {
 			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+			ClrBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
 		}
 	}
 
@@ -180,32 +179,47 @@ void UpdateVehicleTimetable(Vehicle *v, bool travelling)
 
 	if (!_settings_game.order.timetabling) return;
 
+	bool just_started = false;
+
 	/* Make sure the timetable only starts when the vehicle reaches the first
 	 * order, not when travelling from the depot to the first station. */
 	if (v->cur_order_index == 0 && !HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) {
 		SetBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
-		return;
+		just_started = true;
 	}
 
 	if (!HasBit(v->vehicle_flags, VF_TIMETABLE_STARTED)) return;
 
 	if (HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) {
-		if (timetabled == 0) {
+		if (travelling && !HasBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME)) {
+			/* Need to clear that now as otherwise we are not able to reduce the wait time */
+			v->current_order.wait_time = 0;
+		}
+
+		if (just_started) return;
+
+		/* Modify station waiting time only if our new value is larger (this is
+		 * always the case when we cleared the timetable). */
+		if (!v->current_order.IsType(OT_CONDITIONAL) && (travelling || time_taken > v->current_order.wait_time)) {
 			/* Round the time taken up to the nearest day, as this will avoid
 			 * confusion for people who are timetabling in days, and can be
 			 * adjusted later by people who aren't. */
 			time_taken = (((time_taken - 1) / DAY_TICKS) + 1) * DAY_TICKS;
 
-			if (!v->current_order.IsType(OT_CONDITIONAL)) {
-				ChangeTimetable(v, v->cur_order_index, time_taken, travelling);
-			}
-			return;
-		} else if (v->cur_order_index == 0) {
-			/* Otherwise if we're at the beginning and it already has a value,
-			 * assume that autofill is finished and turn it off again. */
-			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+			ChangeTimetable(v, v->cur_order_index, time_taken, travelling);
 		}
+
+		if (v->cur_order_index == 0 && travelling) {
+			/* If we just started we would have returned earlier and have not reached
+			 * this code. So obviously, we have completed our round: So turn autofill
+			 * off again. */
+			ClrBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
+			ClrBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
+		}
+		return;
 	}
+
+	if (just_started) return;
 
 	/* Vehicles will wait at stations if they arrive early even if they are not
 	 * timetabled to wait there, so make sure the lateness counter is updated

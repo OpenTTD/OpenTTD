@@ -301,9 +301,12 @@ struct TimetableWindow : Window {
 				DoCommandP(0, v->index, 0, NULL, CMD_SET_VEHICLE_ON_TIME | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
 				break;
 
-			case TTV_AUTOFILL: /* Autofill the timetable. */
-				DoCommandP(0, v->index, HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE) ? 0 : 1, NULL, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
-				break;
+			case TTV_AUTOFILL: { /* Autofill the timetable. */
+				uint32 p2 = 0;
+				if (!HasBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE)) SetBit(p2, 0);
+				if (_ctrl_pressed) SetBit(p2, 1);
+				DoCommandP(0, v->index, p2, NULL, CMD_AUTOFILL_TIMETABLE | CMD_MSG(STR_CAN_T_TIMETABLE_VEHICLE));
+			} break;
 		}
 
 		this->SetDirty();
