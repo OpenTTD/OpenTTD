@@ -189,8 +189,19 @@ static inline void SetRoadOwner(TileIndex t, RoadType rt, Owner o)
 
 static inline bool IsRoadOwner(TileIndex t, RoadType rt, Owner o)
 {
-	assert(rt == ROADTYPE_ROAD || HasTileRoadType(t, rt));
+	assert(HasTileRoadType(t, rt));
 	return (GetRoadOwner(t, rt) == o);
+}
+
+/** Checks if given tile has town owned road
+ * @param t tile to check
+ * @return true iff tile has road and the road is owned by a town
+ * @pre IsTileType(t, MP_ROAD)
+ */
+static inline bool HasTownOwnedRoad(TileIndex t)
+{
+	assert(IsTileType(t, MP_ROAD));
+	return HasTileRoadType(t, ROADTYPE_ROAD) && IsRoadOwner(t, ROADTYPE_ROAD, OWNER_TOWN);
 }
 
 /** Which directions are disallowed ? */

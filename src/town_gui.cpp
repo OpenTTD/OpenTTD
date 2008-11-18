@@ -725,14 +725,15 @@ public:
 
 				this->HandleButtonClick(TSEW_RANDOMTOWN);
 				_generating_world = true;
+				UpdateNearestTownForRoadTiles(true);
 				t = CreateRandomTown(20, mode, size);
+				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;
 
 				if (t == NULL) {
 					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
 				} else {
 					ScrollMainWindowToTile(t->xy);
-					InvalidateTownForRoadTile();
 				}
 			} break;
 
@@ -740,11 +741,11 @@ public:
 				this->HandleButtonClick(TSEW_MANYRANDOMTOWNS);
 
 				_generating_world = true;
+				UpdateNearestTownForRoadTiles(true);
 				if (!GenerateTowns()) {
 					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
-				} else {
-					InvalidateTownForRoadTile();
 				}
+				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;
 				break;
 

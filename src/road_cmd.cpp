@@ -319,9 +319,9 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 						DoClearSquare(tile);
 					} else {
 						if (rt == ROADTYPE_ROAD && IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)) {
-							/* Promote ownership from tram or highway and invalidate town index */
-							SetRoadOwner(tile, ROADTYPE_ROAD, GetRoadOwner(tile, (HasBit(rts, ROADTYPE_TRAM) ? ROADTYPE_TRAM : ROADTYPE_HWAY)));
-							SetTownIndex(tile, (TownID)INVALID_TOWN);
+							/* Update nearest-town index */
+							const Town *town = CalcClosestTownFromTile(tile, UINT_MAX);
+							SetTownIndex(tile, town == NULL ? (TownID)INVALID_TOWN : town->index);
 						}
 						SetRoadBits(tile, ROAD_NONE, rt);
 						SetRoadTypes(tile, rts);
@@ -348,7 +348,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
 			}
 
 			/* Don't allow road to be removed from the crossing when there is tram;
-			 * we can't draw the crossing without trambits ;) */
+			 * we can't draw the crossing without roadbits ;) */
 			if (rt == ROADTYPE_ROAD && HasTileRoadType(tile, ROADTYPE_TRAM) && (flags & DC_EXEC || crossing_check)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
@@ -1274,14 +1274,22 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir, RoadType rt)
 	}
 }
 
-void InvalidateTownForRoadTile()
+/** Updates cached nearest town for all road tiles
+ * @param invalidate are we just invalidating cached data?
+ * @pre invalidate == true implies _generating_world == true
+ */
+void UpdateNearestTownForRoadTiles(bool invalidate)
 {
-	TileIndex map_size = MapSize();
+	assert(!invalidate || _generating_world);
 
-	for (TileIndex t = 0; t < map_size; t++) {
-		if (IsTileType(t, MP_ROAD) && GetRoadOwner(t, ROADTYPE_ROAD) != OWNER_TOWN) {
-			/* GetRoadOwner(t, ROADTYPE_ROAD) is valid for road tiles even when there is no road */
-			SetTownIndex(t, (TownID)INVALID_TOWN);
+	for (TileIndex t = 0; t < MapSize(); t++) {
+		if (IsTileType(t, MP_ROAD) && !HasTownOwnedRoad(t)) {
+			TownID tid = (TownID)INVALID_TOWN;
+			if (!invalidate) {
+				const Town *town = CalcClosestTownFromTile(t, UINT_MAX);
+				if (town != NULL) tid = town->index;
+			}
+			SetTownIndex(t, tid);
 		}
 	}
 }

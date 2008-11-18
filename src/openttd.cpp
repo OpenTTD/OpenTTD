@@ -2563,7 +2563,7 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(103)) {
 		/* Non-town-owned roads now store the closest town */
-		InvalidateTownForRoadTile();
+		UpdateNearestTownForRoadTiles(false);
 
 		/* signs with invalid owner left from older savegames */
 		Sign *si;

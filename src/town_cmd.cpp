@@ -94,12 +94,12 @@ Town::~Town()
 				break;
 
 			case MP_ROAD:
-				if (!IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN) && GetTownIndex(tile) == this->index) {
-					/* Town-owned roads get cleared soon, anyway */
-					SetTownIndex(tile, (TownID)INVALID_TOWN);
-					break;
+				/* Cached nearest town is updated later (after this town has been deleted) */
+				if (HasTownOwnedRoad(tile) && GetTownIndex(tile) == this->index) {
+					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				}
-				/* Fall-through */
+				break;
+
 			case MP_TUNNELBRIDGE:
 				if (IsTileOwner(tile, OWNER_TOWN) &&
 						ClosestTownFromTile(tile, UINT_MAX) == this)
@@ -116,6 +116,8 @@ Town::~Town()
 	MarkWholeScreenDirty();
 
 	this->xy = 0;
+
+	UpdateNearestTownForRoadTiles(false);
 }
 
 /**
@@ -1564,8 +1566,9 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		Town *t = new Town(tile);
 		_generating_world = true;
+		UpdateNearestTownForRoadTiles(true);
 		DoCreateTown(t, tile, townnameparts, (TownSizeMode)p2, p1);
-		InvalidateTownForRoadTile();
+		UpdateNearestTownForRoadTiles(false);
 		_generating_world = false;
 	}
 	return CommandCost();
@@ -2471,26 +2474,32 @@ Town *CalcClosestTownFromTile(TileIndex tile, uint threshold)
 
 Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 {
-	if (IsTileType(tile, MP_HOUSE) || (
-				IsTileType(tile, MP_ROAD) && HasTileRoadType(tile, ROADTYPE_ROAD) &&
-				IsRoadOwner(tile, ROADTYPE_ROAD, OWNER_TOWN)
-			)) {
-		return GetTownByTile(tile);
-	} else if (IsTileType(tile, MP_ROAD)) {
-		TownID town_id = GetTownIndex(tile);
-		Town *town;
+	switch (GetTileType(tile)) {
+		case MP_ROAD:
+			if (!HasTownOwnedRoad(tile)) {
+				TownID tid = GetTownIndex(tile);
+				if (tid == (TownID)INVALID_TOWN) {
+					/* in the case we are generating "many random towns", this value may be INVALID_TOWN */
+					if (_generating_world) CalcClosestTownFromTile(tile, threshold);
+					assert(GetNumTowns() == 0);
+					return NULL;
+				}
 
-		if (town_id == INVALID_TOWN) {
-			town = CalcClosestTownFromTile(tile, UINT_MAX);
-			if (town != NULL) SetTownIndex(tile, town->index);
-		} else {
-			town = GetTown(town_id);
-		}
+				Town *town = GetTown(tid);
+				assert(town->IsValid());
+				assert(town == CalcClosestTownFromTile(tile, UINT_MAX));
 
-		if (town != NULL && town->IsValid() && DistanceManhattan(tile, town->xy) < threshold) return town;
-		return NULL;
-	} else {
-		return CalcClosestTownFromTile(tile, threshold);
+				if (DistanceManhattan(tile, town->xy) >= threshold) town = NULL;
+
+				return town;
+			}
+			/* FALL THROUGH */
+
+		case MP_HOUSE:
+			return GetTownByTile(tile);
+
+		default:
+			return CalcClosestTownFromTile(tile, threshold);
 	}
 }
 
