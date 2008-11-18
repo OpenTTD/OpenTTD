@@ -2939,7 +2939,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Detta fordon ä
 STR_TIMETABLE_TOTAL_TIME                                        :Den här tidtabellen kommer ta {STRING} att slutföra
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Denna tidtabell kommer att ta åtminstonde {STRING} att slutföra (allt är inte inlagt i en tidtabell)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofyll
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll tidtabellen automatiskt med värdena från första resan
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen

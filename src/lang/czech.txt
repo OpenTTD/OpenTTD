@@ -3005,7 +3005,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Vozidlo jede {S
 STR_TIMETABLE_TOTAL_TIME                                        :Tento jízdní řád bude trvat {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Tento jízdní řád bude trvat nejméně {STRING} (vozidla mimo jízdní řád)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaticky
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vyplnit jízdní řád automaticky s hodnotami z první jízdy
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silniční vozidlo v cestě

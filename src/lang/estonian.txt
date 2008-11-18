@@ -2982,7 +2982,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :See sõiduk on 
 STR_TIMETABLE_TOTAL_TIME                                        :Selle sõiduplaani täitmine võtab {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Selle sõiduplaani täitmine võtab vähemalt {STRING} (kõik ei ole planeeritud)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Täida ise
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Täida sõiduplaan ise esmareisi väärtustega
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Mootorsõiduk takistab teed

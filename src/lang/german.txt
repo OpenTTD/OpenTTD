@@ -2934,7 +2934,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Dieses Fahrzeug
 STR_TIMETABLE_TOTAL_TIME                                        :Dieser Fahrplan benötigt {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Dieser Fahrplan benötigt mindestens {STRING} (nicht alle geplant)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Erfassen
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fahrplan automatisch mit den Ergebnissen der ersten Fahrt ergänzen
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Fahrzeug ist im Weg

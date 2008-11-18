@@ -2941,7 +2941,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :이 차량은 �
 STR_TIMETABLE_TOTAL_TIME                                        :이 시간표는 완주하는데 {STRING}이(가) 걸릴 것입니다
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :이 시간표는 완주하는데 최소 {STRING}이(가) 필요합니다 (일부만 시간지정됨)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}자동채움
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}첫 여행으로부터의 값으로 시간표 자동 작성
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}중간에 자동차가 있습니다.

@@ -2929,7 +2929,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Mae'r cerbyd hw
 STR_TIMETABLE_TOTAL_TIME                                        :Bydd yr amserlen hon yn cymryd {STRING} i'w chwblhau
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Bydd yr amserlen hon yn cymryd o leiaf {STRING} i'w chwblhau (heb ei hamserlennu'n llwyr)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Awtolenwi
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Llenwi'r amserlen yn awtomatig gyda'r gwerthoedd o'r daith nesaf
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cerbyd ffordd yn y ffordd

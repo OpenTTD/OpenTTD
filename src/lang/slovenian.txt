@@ -3013,7 +3013,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :To vozilo prehi
 STR_TIMETABLE_TOTAL_TIME                                        :Ta časovna tabela bo trajala {STRING} do zaključka
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ta časovna tabela bo trajala vsaj {STRING} do zaključka (ni vse zajeto v tabeli)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Samodejno
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Napolni tabelo samodejno z vrednostmi iz prvega potovanja
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestno vozilo na poti

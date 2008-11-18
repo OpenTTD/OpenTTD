@@ -2942,7 +2942,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Ce véhicule es
 STR_TIMETABLE_TOTAL_TIME                                        :Cet horaire prendra {STRING} pour s'achever
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Cet horaire prendra au moins {STRING} pour s'achever (horaire incomplet)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoremplir
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Remplit l'horaire automatiquement avec les valeurs du premier trajet
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Véhicule Routier présent

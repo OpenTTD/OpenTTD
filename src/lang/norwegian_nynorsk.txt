@@ -2754,7 +2754,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Dette køyretø
 STR_TIMETABLE_TOTAL_TIME                                        :Det vil ta {STRING} å gjere ferdig denne rutetabellen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Det vil ta minst {STRING} å gjere ferdig denne rutetabellen ( ikkje alle på rutetabellen
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatisk utfylling
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll ut rutetabellen automatisk med verdiar frå den første turen
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køyretøy i vegen

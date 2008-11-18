@@ -2933,7 +2933,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :该车辆目前
 STR_TIMETABLE_TOTAL_TIME                                        :该时间表需要 {STRING} 完成
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :该时间表至少需要 {STRING} 完成（并非全部计划的时间）
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动填充
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}以第一次运行的时间来填充时间表
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}指定的位置有汽车

@@ -2827,7 +2827,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Ovo vozilo je s
 STR_TIMETABLE_TOTAL_TIME                                        :Ovaj raspored trebat će {STRING} za završetak
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ovaj raspored trebat će najmanje {STRING} za završetak (nije sve raspoređeno)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automatsko punjenje
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Napuni raspored automatski sa vrijednostima iz prvog puta
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestovno vozilo na putu

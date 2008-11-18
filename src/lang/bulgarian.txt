@@ -2943,7 +2943,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Това пре
 STR_TIMETABLE_TOTAL_TIME                                        :Ще трябва {STRING} за това разписание да бъде приклучено
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Това разписание ще вземе най-малко {STRING} за да приклучи (не всичко е планирано)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Афтонапълване
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Автоматично попълване на разписанието със стойности от първото пътуване
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Кола на пътя

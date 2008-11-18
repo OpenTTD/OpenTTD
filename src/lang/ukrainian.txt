@@ -3101,7 +3101,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Цей тран
 STR_TIMETABLE_TOTAL_TIME                                        :Цей розклад займе ще {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Цей розклад займе якнайменше {STRING} (не все за розкладом)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автозаповнення
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Автоматично заповнювати розклад згiдно даних першої подорожі
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто

@@ -2781,7 +2781,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Isthay ehicleva
 STR_TIMETABLE_TOTAL_TIME                                        :Isthay imetabletay illway aketay {STRING} otay ompletecay
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Isthay imetabletay illway aketay atway eastlay {STRING} otay ompletecay (otnay allway imetabledtay)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofillway
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill thIllfay ethay imetabletay automaticallyway ithway ethay aluesvay omfray ethay irstfay ourneyjay
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Oadray ehiclevay inway ethay ayway

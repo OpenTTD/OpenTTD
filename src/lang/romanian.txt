@@ -2912,7 +2912,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Momentan, acest
 STR_TIMETABLE_TOTAL_TIME                                        :Acest orar va lua {STRING} pentru finalizare
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-completare
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completeaza automat orarul cu valorile primei calatorii
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Autovehicul in cale

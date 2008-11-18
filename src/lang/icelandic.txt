@@ -2862,7 +2862,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Þetta farartæ
 STR_TIMETABLE_TOTAL_TIME                                        :Það mun taka {STRING} að ljúka við þessa áætlun
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Það mun að minnsta kosti taka {STRING} að ljúka við þessa áætlun (ekki allar skipanir á áætlun)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Skrifa sjálfvirkt
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Skrifa áætlunina sjálfvirkt með gildum úr fyrstu ferð
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bíll fyrir

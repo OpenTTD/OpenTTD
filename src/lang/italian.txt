@@ -2943,7 +2943,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Il veicolo viag
 STR_TIMETABLE_TOTAL_TIME                                        :Questi ordini richiedono {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Questi ordini richiedono almeno {STRING} (non tutti i tempi specificati)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Riempie automaticamente la tabella oraria con i tempi del primo viaggio
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automezzo di mezzo

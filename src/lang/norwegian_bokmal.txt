@@ -2939,7 +2939,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Dette kjøretø
 STR_TIMETABLE_TOTAL_TIME                                        :Det vil ta {STRING} å fullføre tidstabellen
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Det vil ta minst {STRING} å fullføre denne tidstabellen (tidstabell ikke fullstendig)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Fyll automatisk
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fyll tidstabellen automatisk med verdiene fra forrige tur
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien

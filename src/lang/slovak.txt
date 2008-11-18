@@ -3005,7 +3005,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Toto vozidlo id
 STR_TIMETABLE_TOTAL_TIME                                        :Na dokoncenie cestovného poriadku je potrebných {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Na dokoncenie cestovného poriadku je potrebných min. {STRING} (nie všetko je urcené)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Vyplnit
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vyplnit cestovný poriadok automaticky hodnotami z prvej cesty
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobil v ceste

@@ -2767,7 +2767,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :この車両は
 STR_TIMETABLE_TOTAL_TIME                                        :この時刻を実行するには{STRING}がかかります
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :この時刻を実行するには少なくとも{STRING}がかかります（時刻されていない部分があります）
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動時刻
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}最初の旅行の時間を用いて時刻表を作成します
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}道路車両があります

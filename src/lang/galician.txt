@@ -2940,7 +2940,6 @@ STR_TIMETABLE_STATUS_EARLY                                      :Este vehículo 
 STR_TIMETABLE_TOTAL_TIME                                        :Levará {STRING} completar este horario
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Este horario levará {STRING} completalo (non está completo)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoencher
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo horario automáticamente cos valores do primeiro viaxe
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Haí un vehículo de estrada no camiño
