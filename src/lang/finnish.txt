@@ -267,6 +267,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Lunta
 STR_012C_MESSAGE                                                :{WHITE}Viesti
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Oletus
 STR_012E_CANCEL                                                 :{BLACK}Peruuta
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Nimeä uud.
@@ -774,6 +775,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Pelin asetukset
 STR_02C6_DIFFICULTY_SETTINGS                                    :Vaikeusasetukset
+STR_MENU_CONFIG_PATCHES                                         :Lisäasetukset
 STR_NEWGRF_SETTINGS                                             :Newgrf-asetukset
 STR_TRANSPARENCY_OPTIONS                                        :Läpinäkyvyysvalinnat
 STR_GAMEOPTMENU_0A                                              :
@@ -1015,6 +1017,8 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lentokon
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Juna {COMMA} kasvaisi liian pitkäksi
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahoitusraja)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Lisäasetukset
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Lisäasetukset
 
 STR_CONFIG_PATCHES_OFF                                          :pois
 STR_CONFIG_PATCHES_ON                                           :päällä
@@ -1467,6 +1471,7 @@ STR_NETWORK_LANG_AFRIKAANS                                      :afrikaans
 STR_NETWORK_LANG_CROATIAN                                       :kroatia
 STR_NETWORK_LANG_CATALAN                                        :katalan
 STR_NETWORK_LANG_ESTONIAN                                       :viro
+STR_NETWORK_LANG_GALICIAN                                       :galego
 STR_NETWORK_LANG_GREEK                                          :kreikka
 STR_NETWORK_LANG_LATVIAN                                        :latvia
 ############ End of leave-in-this-order
@@ -2214,6 +2219,7 @@ STR_HOSTILE                                                     :Vihamielinen
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Yhtiö {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Uudet kasvot
 STR_7005_COLOR_SCHEME                                           :{BLACK}Väriteema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Väriteema:

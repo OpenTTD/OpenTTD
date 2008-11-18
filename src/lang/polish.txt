@@ -321,6 +321,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Śnieg
 STR_012C_MESSAGE                                                :{WHITE}Wiadomość
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Domyslna
 STR_012E_CANCEL                                                 :{BLACK}Anuluj
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Zmień nazwę
@@ -432,6 +433,7 @@ STR_SORT_BY_MAX_SPEED                                           :Prędkość mak
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartość
 STR_SORT_BY_LENGTH                                              :Dlugosc
+STR_SORT_BY_LIFE_TIME                                           :Pozostaly czas zycia
 STR_SORT_BY_FACILITY                                            :Typ stacji
 STR_SORT_BY_WAITING                                             :Wartość czekającego ładunku
 STR_SORT_BY_RATING_MAX                                          :Ocena ładunku
@@ -646,8 +648,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Otwarcie obiektow przemyslowych
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zamkniecie obiektow przemyslowych
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Zmiany ekonomiczne
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Zmiana w produkcji zakladu obslugiwanego przez firme
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Zmiany produkcji przedsiębiorstw obsługiwanych przez przeciwników
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Zmiany produkcji pozostałych przedsiębiorstw
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Rada / informacja o pojazdach firmy
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nowe pojazdy
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Zamiany w akceptowaniu ładunku
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsydia
@@ -863,6 +867,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opcje gry
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ustawienia trudności
+STR_MENU_CONFIG_PATCHES                                         :Ustawienia zaawanasowane
 STR_NEWGRF_SETTINGS                                             :Ustawienia newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Opcje przeźroczystości
 STR_GAMEOPTMENU_0A                                              :
@@ -947,6 +952,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Ufunduj nowe pr
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Ufunduj nowe przedsięb.
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...może być wybudowane tylko w mieście
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...może być wybudowane tylko w lasach deszczowych
@@ -1025,6 +1031,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Wybierz 
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Pełny ekran
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Zaznacz to jeśli chcesz grać w OpenTTD w trybie pełnoekranowym
+STR_FULLSCREEN_FAILED                                           :{WHITE}Uruchomienie trybu pelnoekranowego nie powiodlo sie
 
 STR_OPTIONS_RES                                                 :{BLACK}Rozdzielczość ekranu
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1070,6 +1077,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nie moż
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nie można skopiować listy poleceń...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec współdzielonych poleceń - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Pociag {COMMA} nie moze znalezc dalszej drogi.
 STR_TRAIN_IS_LOST                                               :{WHITE}Pociąg {COMMA} zabłądził.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Pociąg {COMMA} zarobił w zeszłym roku {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europejska Unia Monetarna!{}{}Euro zostało wprowadzone jako jedyna waluta do wszystkich transakcji w twoim kraju!
@@ -1099,8 +1107,12 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Błąd a
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Błąd autoodnowienia statku {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Błąd autoodnowienia samolotu {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Pociąg {COMMA} jest za długi po zamianie
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Brak regul autozastepowania/odnawiania.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limit funduszy)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Ustawienia zaawansowane
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Wyswietl ustawienia zaawansowane
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Ustawienia zaawansowane
 
 STR_CONFIG_PATCHES_OFF                                          :wył.
 STR_CONFIG_PATCHES_ON                                           :wł.
@@ -1128,6 +1140,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Przedsi
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zawsze pokazuj datę w długim formacie w pasku statusu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Pokazuj sygnały po stronie jazdy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Pokazuj okno finansów na koniec roku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nowe polecenia sa domyslnie 'non-stop': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ustawianie się samochodów w kolejkach (z efektem quantum): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Przesuń okno, kiedy kursor jest przy krawędzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Pozwól dawać łapówki lokalnym władzom: {ORANGE}{STRING}
@@ -1135,8 +1148,10 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Pozwól
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Pozwól na wysyłanie pieniędzy do innych firm:: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Niejednolite stacje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Mnożnik wagi dla symulacji ciężkich pociągów towarowych: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Wspolczynnik predkosci samolotu: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Pozwól na budowę przystanków typu ro-ro na drogach miejskich: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Pozwól na budowę stacji przyległych do stacji przeciwnika (z CTRL): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Zezwol na wiele zestawow NewGRF: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Zawsze zezwalaj budować małe lotniska: {ORANGE}{STRING}
 
@@ -1213,6 +1228,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :MagLev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Pierwszy dostępny
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Najnowszy
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Najczęściej używany
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Pokaz zarezerwowane tory: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Pokaż okno narzędzi do budowy nawet gdy nie ma odpowiednich pojazdów: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociągów na gracza: {ORANGE}{STRING}
@@ -1248,6 +1264,11 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwól
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciągania ustaw sygnały co: {ORANGE}{STRING} kratk{P e i ek}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatycznie buduj semafory przed: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Uaktywnij okno budowania sygnałów: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Domyslny typ sygnalow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Zablokuj sygnalizatory
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Sygnalizatory jazdy
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Sygnalizatory jazdy - jednokierunkowe
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Przelaczaj typy sygnalizatorow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Tylko zwykle
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Tylko zaawansowane
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Wszystkie
@@ -1296,8 +1317,11 @@ STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Wyszuki
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Not recommended)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Wyszukuj automatycznie (pathfinder) droge dla pojazdow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Oryginalnie {RED}(Nie zalecane)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Rekomendowane)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Wyszikaj automatycznie (pathfinder) droge dla statkow: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orginalne {BLUE}(Rekomendowane)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nie rekomendowane)
@@ -1311,6 +1335,7 @@ STR_CHEATS                                                      :{WHITE}Oszukiwa
 STR_CHEATS_TIP                                                  :{BLACK}Checkboxy pokazują czy używano już tego oszustwa
 STR_CHEATS_WARNING                                              :{BLACK}Uwaga! Właśnie chcesz zdradzić swoich wspólników.{}Miej na uwadze, że zostanie to zapamiętane na wieki!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Zwiększ ilość pieniędzy o {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Grasz jako: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiczny buldożer (usuwanie przedsiębiorstw, itp.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunele mogą się krzyżować: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Budowa w czasie pauzy: {ORANGE}{STRING}
@@ -1333,6 +1358,7 @@ STR_WAYPOINT                                                    :{WHITE}Pkt kont
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Wybierz typ pkt kontrolnego
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Train{P "" i ow}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Edytuj nazwę pkt. kontrolnego
@@ -1417,6 +1443,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Przemys�
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (przetransportowano {COMMA}%)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (przetransportowano {COMMA}%/{COMMA}%)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nazwy zakladow - kliknij na nazwie by wysrodkowac na nim widok
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zbyt blisko innego przedsiębiorstwa
 
@@ -1449,6 +1476,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nazwa
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nazwa gry
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Język, wersja serwera, itp.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Kliknij na grze z listy by ją wybrać
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Serwer do ktorego ostatnio sie polaczyles:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Kliknij by wybrac serwer na ktorym grales ostatnim razem
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Szukanie serwera
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Przeszukuje siec w poszukiwaniu serwera
@@ -1460,6 +1489,7 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientów
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientów podłączonych / maks.{}Firm podłączonych / maks.
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 
 
 

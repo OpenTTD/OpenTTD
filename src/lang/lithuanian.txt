@@ -17,8 +17,10 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Paviršius turi būti lygus
 STR_0008_WAITING                                                :{BLACK}Laukia: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} pakeliui iš {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Priima: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Priima: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Tiekia: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Keleivius
 STR_000F_PASSENGERS.ko                                          :Keleivių
@@ -300,6 +302,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sniegas
 STR_012C_MESSAGE                                                :{WHITE}Pranešimas
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Pagal nutylejimą
 STR_012E_CANCEL                                                 :{BLACK}Atšaukti
 STR_012F_OK                                                     :{BLACK}Gerai
 STR_0130_RENAME                                                 :{BLACK}Pervardinti
@@ -410,6 +413,8 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Suminius produk
 STR_SORT_BY_MAX_SPEED                                           :Maksimalus greitis
 STR_SORT_BY_MODEL                                               :Modelis
 STR_SORT_BY_VALUE                                               :Verte
+STR_SORT_BY_LENGTH                                              :Ilgis
+STR_SORT_BY_LIFE_TIME                                           :Likęs gyvavimo laikas
 STR_SORT_BY_FACILITY                                            :Stoties tipas
 STR_SORT_BY_WAITING                                             :Laukiančio krovinio vertė
 STR_SORT_BY_RATING_MAX                                          :Kroviniu reitingavimas
@@ -517,6 +522,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Išvalym
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Išvalymo kaina: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :NĖRA
 STR_01A7_OWNER                                                  :{BLACK}Savininkas: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Kelio savininkas: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Tramvajaus linijos savininkas: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Geležinkelio savininkas: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Vietos valdžia: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nėra
 STR_01AA_NAME                                                   :{BLACK}Vardas
@@ -618,7 +626,13 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Pirmosi
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Pirmosios transporto priemonės atvykimas į konkurento stotelę
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Avarijos / nelaimės
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Kompanijos informacija
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Gamyklų atidarymas
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Gamyklų uždarymas
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomikos pokyčiai
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Gamyklų aptarnaujamų kompanijos gamybos pasikeitimas
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Gamyklų aptarnaujamų kitų kompanijų gamybos pasikeitimas
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Kitų gamyklų gamybos pasikeitimas
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Patarimai / informacija apie kompanijos transporto priemones
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Naujos transporto priemonės
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Prekių supirkimo pokyčiai
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidijos
@@ -752,6 +766,8 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Sukurti 
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Statyti švyturį
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Statyti siųstuvą
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Nurodyti dykumos plotus{}Laikant nuspaustą VALD (CTRL) galima ją pašalinti
+STR_CREATE_LAKE                                                 :{BLACK}Nurodykite vandens viena.{}Sukurkit kanalą. Jeigu nuspaustas CTRL jūros lygyje, tada aplinka bus užlieta
+STR_CREATE_RIVER                                                :{BLACK}Kasti upes.
 STR_0290_DELETE                                                 :{BLACK}Šalinti
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Šalinti šį miestą
 STR_0292_SAVE_SCENARIO                                          :Išsaugoti scenarijų
@@ -798,6 +814,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Žaidimo nustatymai
 STR_02C6_DIFFICULTY_SETTINGS                                    :Sunkumo lygio nustatymai
+STR_MENU_CONFIG_PATCHES                                         :Sudėtingesni nustatymai
 STR_NEWGRF_SETTINGS                                             :Papild. grafikos nustatymai (NewGRF)
 STR_TRANSPARENCY_OPTIONS                                        :Permatomumo nustatymai
 STR_GAMEOPTMENU_0A                                              :
@@ -882,6 +899,8 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finansuoti nauj
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansuoti naują pramonės įmonę
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...galima statyti tik miestuose
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...gali būti statomas tik drėgnose miškingose teritorijose
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...gali buti statomas tik dykumose
@@ -959,6 +978,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Pasirink
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Visu ekranu
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Pažymėkite šį langelį, jeigu norite OpenTTD žaisti visu ekranu
+STR_FULLSCREEN_FAILED                                           :{WHITE}Viso ekrano nustatymas nepavyko
 
 STR_OPTIONS_RES                                                 :{BLACK}Ekrano raiška
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1004,6 +1024,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Uzduociu
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Uzduociu saraso kopijuoti negalima...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Bendru uzduociu pabaiga - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Traukinys {COMMA} negali rasti reikalingo kelio
 STR_TRAIN_IS_LOST                                               :{WHITE}Traukinys {COMMA} pasimete.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Traukinio {COMMA} pelnas praeitais metais buvo {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Bendras Europos sajungos piniginis vienetas - Euras!{}{}Nuo siol Euras tampa pagrindine valiuta kasdieniniuose atsiskaitymuose!
@@ -1033,13 +1054,18 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobi
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivo {COMMA} automatinis atnaujimimas nepavyko{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lektuvo {COMMA} automatinis atnaujimimas nepavyko{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Traukinys {COMMA} yra per ilgas po atnaujinimo
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nėra automatinio atnaujinimo taisyklių
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pinigu limitas)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Sudėtingesni nustatymai
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Rodyti sudėtingesnius nustatymus
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Sudėtingesni nustatymai
 
 STR_CONFIG_PATCHES_OFF                                          :Išjungta
 STR_CONFIG_PATCHES_ON                                           :Įjungta
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Rodyti tr. priemones greiti statuso eiluteje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Leisti statyti pastatus pakrantėse ir ant šlaitų: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Leisti keisti reljiefą po pastatys, begiais, ir t.t.. (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Kurti tikroviškesnio dydžio mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Leisti statyti ypac ilgus traukinius: {ORANGE}{STRING}
@@ -1052,12 +1078,16 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infliac
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Pristatyti krovini stotelei tiktai tuomet, kai yra poreikis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Leisti statyti labai ilgus tiltus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Leisti naudoti uzduoti 'Keliauti i depa': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Rankinis pradinių gamyklų statymas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamyklos
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vaizdavimas
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Leisti kelias panašias pramonės įmones viename mieste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Leisti statyti to paties tipo fabrikus arti vienas kito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Rodyti pilna data busenos eiluteje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Sviesoforus rodyti vairuotojo puseje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Rodyti finansine ataskaita metu pabaigoje: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nauji nurodymai yra 'non-stop' pagal nutylejimą: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automobiliu vilkstine (su kvantavimo efektu): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Slinkti vaizdą pelei esant prie krašto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leisti papirkinėti miesto valdžią: {ORANGE}{STRING}
@@ -1166,6 +1196,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Keisti reiksmes
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Klaidingai nurodytas remonto intervalas. Intervalas dienomis: 30-800 d., procentais: 5-90%.
 
+
 STR_TEMPERATE_LANDSCAPE                                         :Normalus klimatas
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arktinis klimatas
 STR_SUB_TROPICAL_LANDSCAPE                                      :Sub-tropinis klimatas
@@ -1231,6 +1262,7 @@ STR_LANDINFO_CANAL                                              :Kanalas
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Neimanoma cia irengti sliuzu...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Irengti sliuzus
 STR_LANDINFO_LOCK                                               :Sliuzai
+
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...pluduras naudojamas!
 
@@ -1317,6 +1349,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Ivesk ad
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Zaidejai
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Zaidzia / maksimaliai zaideju
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}Zaidimo informacija
 STR_NETWORK_CLIENTS                                             :{SILVER}Zaidejai:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Kalba:  {WHITE}{STRING}
@@ -2491,6 +2527,9 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Traukinys kelyje
 
 
+
+
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kursas i {TOWN} depa
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kursas i {TOWN} depa, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servisas {TOWN} Traukiniu Depe
@@ -2818,6 +2857,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Tavo meg
 STR_BRIBE_FAILED_2                                              :{WHITE}issaiskinta vietiniu pareigunu
 STR_BUILD_DATE                                                  :{BLACK}Pastatytas: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Issamus veiklos ivertinimas
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaliai
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -2886,6 +2926,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atitink
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Suderinami grafikos failai panaudoti vietoj trūkstamų
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Trūkstami grafikos failai nenaudojami
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Trūksta žaidimo paleidimui reikalingų grafikos failų
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3005,6 +3047,9 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Visus krovinių
 STR_PURCHASE_INFO_ALL_BUT                                       :Visus, išskyrus {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Did. traukiamoji galia: {GOLD}{FORCE}
 
+########### For showing numbers in widgets
+
+
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Sukurti
@@ -3101,4 +3146,13 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Sritis: 
 
 
 ############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

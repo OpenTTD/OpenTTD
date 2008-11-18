@@ -1643,6 +1643,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Cost Est
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Ingressos Estimats: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Aquí no es pot elevar el terreny...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Aquí no es pot rebaixar el terreny...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Aquí no es pot anivellar...
 STR_080A_ROCKS                                                  :Roques
 STR_080B_ROUGH_LAND                                             :Terreny Irregular
 STR_080C_BARE_LAND                                              :Terreny erm
@@ -1657,6 +1658,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combinac
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}La excavació pot malmetre el túnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Ja ets a nivell del mar
 STR_1004_TOO_HIGH                                               :{WHITE}Massa alt
+STR_ALREADY_LEVELLED                                            :{WHITE}... ja és pla
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Via de tren no apropiada
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ja construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}S'ha de treure la via primer

@@ -1335,6 +1335,7 @@ STR_WAYPOINT                                                    :{WHITE}Smerovy 
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ kontrolneho bodu
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Vlak{P "" y ov}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Upravit nazvy smerovych bodov
@@ -3050,6 +3051,7 @@ STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {C
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacita: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} vozid{P lo lá iel}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pomenovat automobil

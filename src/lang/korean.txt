@@ -596,7 +596,7 @@ STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}산업�
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}산업시설의 폐쇄
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}경제적 변화
 STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}회사가 달성한 생산량 변동량
-STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}경쟁자에 의한 산업시설의 생산품 변화
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}경쟁자에 의한 산업시설의 생산 변화
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}다른 산업 생산물 변화
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}회사의 차량에 관한 권고/정보
 STR_020C_NEW_VEHICLES                                           :{YELLOW}새 차량
@@ -1292,7 +1292,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :무작위 산�
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}무작위로 산업시설을 건설합니다.
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}산업시설을 만들 수 없습니다...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}땅을 올리거나 내리기, 나무 심기 등의 지형 툴바를 엽니다.
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}땅을 올리기/내리기, 나무 심기가 있는 지형 툴바를 엽니다.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}지평편집
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}땅을 평평하게 고릅니다.
 
@@ -1353,10 +1353,10 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}태피 �
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}설탕 광산을 건설합니다.
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}산업시설
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}%가 운반됨)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% 운반됨)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}%가 각각 운반됨)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
-STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}산업시설 이름 - 산업시설을 가운데로 보려면 클릭하세요
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}산업시설 이름 - 산업시설을 가운데에 보려면 클릭하세요
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...다른 산업시설과 너무 가깝습니다.
 
@@ -1643,6 +1643,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}예상 �
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}예상 수익: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}이곳의 땅을 올릴 수 없습니다...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}이곳의 땅을 내릴 수 없습니다...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}이 땅의 높이를 조절할 수 없습니다...
 STR_080A_ROCKS                                                  :암석
 STR_080B_ROUGH_LAND                                             :거친 땅
 STR_080C_BARE_LAND                                              :맨 땅
@@ -1657,6 +1658,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}불가�
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}터널 때문에 지형을 편집할 수 없습니다.
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}이미 해수면에 도달했습니다
 STR_1004_TOO_HIGH                                               :{WHITE}너무 높습니다!
+STR_ALREADY_LEVELLED                                            :{WHITE}... 이미 평평합니다.
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}알맞지 않은 철로입니다.
 STR_1007_ALREADY_BUILT                                          :{WHITE}...이미 지어져있습니다
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}철로를 먼저 제거하십시오
@@ -3428,7 +3430,7 @@ STR_SNOW_LINE_DOWN                                              :{BLACK}만년�
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}만년설의 높이를 변경
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}시작 년도를 변경합니다.
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크기에 대한 경고
-STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}맵 자원의 크기를 너무 키우는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}원본 맵의 크기를 많이 조정하는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}도시 설계 경고
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 만들기를 계속하시겠습니까?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap 이름:
@@ -3452,7 +3454,7 @@ STR_SE_FLAT_WORLD_TIP                                           :{BLACK}평평�
 STR_SE_RANDOM_LAND                                              :{WHITE}무작위 땅
 STR_SE_NEW_WORLD                                                :{BLACK}새 시나리오 만들기
 STR_SE_CAPTION                                                  :{WHITE}시나리오 종류
-STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}평지의 높이를 1칸 높입니다.
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}평지의 높이를 1칸 낮춥니다.
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}평지의 높이를 1칸 낮춥니다
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}평지의 높이 변경
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}평지의 높이:
@@ -3529,7 +3531,7 @@ STR_GROUP_ADD_SHARED_VEHICLE                                    :공유된 차�
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :모든 차량 제거
 
 STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} 기차
-STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} 자동차
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} 차량
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} 선박
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} 항공기
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}그룹 이름 바꾸기
@@ -3542,11 +3544,11 @@ STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}이 그�
 STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}이 그룹에 차량을 추가할 수 없습니다...
 STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}이 그룹에 공유된 차량을 추가할 수 없습니다...
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 클릭한 그룹에 속한 차량을 모두 나열합니다
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}그룹 - 클릭해서 그룹에 속한 차량을 모두 나열합니다.
 STR_GROUP_CREATE_TIP                                            :{BLACK}그룹 만들기
 STR_GROUP_DELETE_TIP                                            :{BLACK}선택한 그룹 삭제
 STR_GROUP_RENAME_TIP                                            :{BLACK}선택한 그룹 이름 바꾸기
-STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}전체 자동 교체로부터 이 그룹 보호
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}클릭하여 전체 자동 교체로부터 이 그룹을 보호합니다.
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
