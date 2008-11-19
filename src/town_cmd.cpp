@@ -2480,7 +2480,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 				TownID tid = GetTownIndex(tile);
 				if (tid == (TownID)INVALID_TOWN) {
 					/* in the case we are generating "many random towns", this value may be INVALID_TOWN */
-					if (_generating_world) CalcClosestTownFromTile(tile, threshold);
+					if (_generating_world) return CalcClosestTownFromTile(tile, threshold);
 					assert(GetNumTowns() == 0);
 					return NULL;
 				}
