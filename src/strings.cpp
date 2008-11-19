@@ -862,11 +862,24 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				if (st->name != NULL) {
 					buff = strecpy(buff, st->name, last);
 				} else {
+					StringID str = st->string_id;
+					if (st->indtype != IT_INVALID) {
+						/* Special case where the industry provides the name for the station */
+						const IndustrySpec *indsp = GetIndustrySpec(st->indtype);
+
+						/* Industry GRFs can change which might remove the station name and
+						 * thus cause very strange things. Here we check for that before we
+						 * actually set the station name. */
+						if (indsp->station_name != STR_NULL && indsp->station_name != STR_UNDEFINED) {
+							str = indsp->station_name;
+						}
+					}
+
 					int64 temp[3];
 					temp[0] = STR_TOWN;
 					temp[1] = st->town->index;
 					temp[2] = st->index;
-					buff = GetStringWithArgs(buff, st->string_id, temp, last);
+					buff = GetStringWithArgs(buff, str, temp, last);
 				}
 				break;
 			}

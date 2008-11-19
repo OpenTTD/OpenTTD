@@ -2570,6 +2570,13 @@ bool AfterLoadGame()
 		FOR_ALL_SIGNS(si) {
 			if (si->owner != OWNER_NONE && !IsValidCompanyID(si->owner)) si->owner = OWNER_NONE;
 		}
+
+		/* Station can get named based on an industry type, but the current ones
+		 * are not, so mark them as if they are not named by an industry. */
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			st->indtype = IT_INVALID;
+		}
 	}
 
 	GamelogPrintDebug(1);

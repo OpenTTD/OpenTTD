@@ -51,6 +51,7 @@ Station::Station(TileIndex tile)
 	facilities = 0;
 
 	last_vehicle_type = VEH_INVALID;
+	indtype = IT_INVALID;
 
 	random_bits = 0; // Random() must be called when station is really built (DC_EXEC)
 	waiting_triggers = 0;

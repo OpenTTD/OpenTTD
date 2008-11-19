@@ -15,6 +15,7 @@
 #include "date_type.h"
 #include "vehicle_type.h"
 #include "company_type.h"
+#include "industry_type.h"
 #include "core/geometry_type.hpp"
 #include "viewport_type.h"
 #include <list>
@@ -130,8 +131,11 @@ public:
 	TileIndex airport_tile;
 	TileIndex dock_tile;
 	Town *town;
-	StringID string_id;     ///< Default name (town area) of station
+
+	/* Place to get a name from, in order of importance: */
 	char *name;             ///< Custom name
+	IndustryType indtype;   ///< Industry type to get the name from
+	StringID string_id;     ///< Default name (town area) of station
 
 	ViewportSign sign;
 

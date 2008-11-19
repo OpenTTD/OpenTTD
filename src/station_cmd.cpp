@@ -223,6 +223,36 @@ enum StationNaming {
 	STATIONNAMING_HELIPORT,
 };
 
+/** Information to handle station action 0 property 24 correctly */
+struct StationNameInformation {
+	uint32 free_names; ///< Current bitset of free names (we can remove names).
+	bool *indtypes;    ///< Array of bools telling whether an industry type has been found.
+};
+
+/**
+ * Find a station action 0 property 24 station name, or reduce the
+ * free_names if needed.
+ * @param tile the tile to search
+ * @param user_data the StationNameInformation to base the search on
+ * @return true if the tile contains an industry that has not given
+ *              it's name to one of the other stations in town.
+ */
+static bool FindNearIndustryName(TileIndex tile, void *user_data)
+{
+	/* All already found industry types */
+	StationNameInformation *sni = (StationNameInformation*)user_data;
+	if (!IsTileType(tile, MP_INDUSTRY)) return false;
+
+	/* If the station name is undefined it means that it doesn't name a station */
+	IndustryType indtype = GetIndustryType(tile);
+	if (GetIndustrySpec(indtype)->station_name == STR_UNDEFINED) return false;
+
+	/* In all cases if an industry that provides a name is found two of
+	 * the standard names will be disabled. */
+	sni->free_names &= ~(1 << M(STR_SV_STNAME_OILFIELD) | 1 << M(STR_SV_STNAME_MINES));
+	return !sni->indtypes[indtype];
+}
+
 static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 {
 	static const uint32 _gen_station_name_bits[] = {
@@ -237,9 +267,16 @@ static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 	const Town *t = st->town;
 	uint32 free_names = UINT32_MAX;
 
+	bool indtypes[NUM_INDUSTRYTYPES];
+	memset(indtypes, 0, sizeof(indtypes));
+
 	const Station *s;
 	FOR_ALL_STATIONS(s) {
 		if (s != st && s->town == t) {
+			if (s->indtype != IT_INVALID) {
+				indtypes[s->indtype] = true;
+				continue;
+			}
 			uint str = M(s->string_id);
 			if (str <= 0x20) {
 				if (str == M(STR_SV_STNAME_FOREST)) {
@@ -248,6 +285,24 @@ static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 				ClrBit(free_names, str);
 			}
 		}
+	}
+
+	if (flag != STATIONNAMING_BUOY) {
+		TileIndex indtile = tile;
+		StationNameInformation sni = { free_names, indtypes };
+		if (CircularTileSearch(&indtile, 7, FindNearIndustryName, &sni)) {
+			/* An industry has been found nearby */
+			IndustryType indtype = GetIndustryType(indtile);
+			const IndustrySpec *indsp = GetIndustrySpec(indtype);
+			/* STR_NULL means it only disables oil rig/mines */
+			if (indsp->station_name != STR_NULL) {
+				st->indtype = indtype;
+				return STR_SV_STNAME_FALLBACK;
+			}
+		}
+
+		/* Oil rigs/mines name could be marked not free by looking for a near by industry. */
+		free_names = sni.free_names;
 	}
 
 	/* check default names */
@@ -3255,6 +3310,7 @@ static const SaveLoad _station_desc[] = {
 
 	    SLE_VAR(Station, string_id,                  SLE_STRINGID),
 	SLE_CONDSTR(Station, name,                       SLE_STR, 0,                 84, SL_MAX_VERSION),
+	SLE_CONDVAR(Station, indtype,                    SLE_UINT8,                 103, SL_MAX_VERSION),
 	    SLE_VAR(Station, had_vehicle_of_type,        SLE_UINT16),
 
 	    SLE_VAR(Station, time_since_load,            SLE_UINT8),
