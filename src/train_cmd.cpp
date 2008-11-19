@@ -2814,10 +2814,16 @@ private:
 	Vehicle        *v;
 	Order          old_order;
 	TileIndex      old_dest_tile;
+	StationID      old_last_station_visited;
 	VehicleOrderID index;
 
 public:
-	VehicleOrderSaver(Vehicle *_v) : v(_v), old_order(_v->current_order), old_dest_tile(_v->dest_tile), index(_v->cur_order_index)
+	VehicleOrderSaver(Vehicle *_v) :
+		v(_v),
+		old_order(_v->current_order),
+		old_dest_tile(_v->dest_tile),
+		old_last_station_visited(_v->last_station_visited),
+		index(_v->cur_order_index)
 	{
 	}
 
@@ -2825,6 +2831,7 @@ public:
 	{
 		this->v->current_order = this->old_order;
 		this->v->dest_tile = this->old_dest_tile;
+		this->v->last_station_visited = this->old_last_station_visited;
 	}
 
 	/**
