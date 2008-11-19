@@ -38,11 +38,12 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    6, ' ', CF_NOEURO, "",     " zl",   1,  STR_CURR_PLN    }, ///< polish zloty
 	{    5, '.', CF_NOEURO, "",     " Lei",  1,  STR_CURR_ROL    }, ///< romanian Lei
 	{   50, ' ', CF_NOEURO, "",     " p",    1,  STR_CURR_RUR    }, ///< russian rouble
-	{  352, '.', CF_NOEURO, "",     " SIT",  1,  STR_CURR_SIT    }, ///< slovenian tolar
+	{  352, '.', 2007,      "",     " SIT",  1,  STR_CURR_SIT    }, ///< slovenian tolar
 	{   13, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_SEK    }, ///< swedish krona
 	{    3, '.', CF_NOEURO, "",     " YTL",  1,  STR_CURR_YTL    }, ///< turkish lira
 	{   52, ',', CF_NOEURO, "",     " Sk",   1,  STR_CURR_SKK    }, ///< slovak koruna
-	{    4, ',', CF_NOEURO, "R$ ",  "",      0,  STR_CURR_BRR    }, ///< brazil real
+	{    4, ',', CF_NOEURO, "R$ ",  "",      0,  STR_CURR_BRL    }, ///< brazil real
+	{   20, '.', CF_NOEURO, "",     " EEK",  1,  STR_CURR_EEK    }, ///< estonian krooni
 	{    1, ' ', CF_NOEURO, "",     "",      2,  STR_CURR_CUSTOM }, ///< custom currency
 };
 
@@ -81,6 +82,9 @@ enum {
 	CURR_SIT,
 	CURR_SEK,
 	CURR_YTL,
+	CURR_SKK,
+	CURR_BRL,
+	CURR_EEK,
 };
 
 /**

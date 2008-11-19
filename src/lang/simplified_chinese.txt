@@ -934,7 +934,7 @@ STR_CURR_SIT                                                    :斯洛文尼亚
 STR_CURR_SEK                                                    :瑞典克郎 (SEK)
 STR_CURR_YTL                                                    :土耳其里拉 (YTL)
 STR_CURR_SKK                                                    :斯洛伐克克郎 (SKK)
-STR_CURR_BRR                                                    :巴西里亚伊 (BRL)
+STR_CURR_BRL                                                    :巴西里亚伊 (BRL)
 
 STR_CURR_CUSTOM                                                 :自定义……
 

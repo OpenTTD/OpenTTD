@@ -911,7 +911,7 @@ STR_CURR_SIT                                                    :Σλοβένι�
 STR_CURR_SEK                                                    :Σουηδική Κορώνα (SEK)
 STR_CURR_YTL                                                    :Τούρκικη Λίρα (YTL)
 STR_CURR_SKK                                                    :Σλοβάκικη Κορώνα (SKK)
-STR_CURR_BRR                                                    :Βραζιλιάνικο Real (BRL)
+STR_CURR_BRL                                                    :Βραζιλιάνικο Real (BRL)
 
 STR_CURR_CUSTOM                                                 :Άλλο...
 

@@ -920,7 +920,7 @@ STR_CURR_SIT                                                    :Slovenya Tolar�
 STR_CURR_SEK                                                    :İsveç Kronasi (SEK)
 STR_CURR_YTL                                                    :Türk Lirasi (YTL)
 STR_CURR_SKK                                                    :Slovak Korunasi (SKK)
-STR_CURR_BRR                                                    :Brezilya Reali (BRL)
+STR_CURR_BRL                                                    :Brezilya Reali (BRL)
 
 STR_CURR_CUSTOM                                                 :Özel...
 

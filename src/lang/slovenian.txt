@@ -976,7 +976,7 @@ STR_CURR_SIT                                                    :Slovenski tolar
 STR_CURR_SEK                                                    :Švedska Krona (SEK)
 STR_CURR_YTL                                                    :Turška lira (TL)
 STR_CURR_SKK                                                    :Slovaška krona (SKK)
-STR_CURR_BRR                                                    :Brazilski Real (BRL)
+STR_CURR_BRL                                                    :Brazilski Real (BRL)
 
 STR_CURR_CUSTOM                                                 :Poljubno...
 

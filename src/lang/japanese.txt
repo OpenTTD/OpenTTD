@@ -921,7 +921,7 @@ STR_CURR_SIT                                                    :スロベニア
 STR_CURR_SEK                                                    :スウェーデンクローナ（SEK）
 STR_CURR_YTL                                                    :トルコリーラ（YTL）
 STR_CURR_SKK                                                    :スロバキアコルナ（SKK）
-STR_CURR_BRR                                                    :ブラジルレアル（BRL）
+STR_CURR_BRL                                                    :ブラジルレアル（BRL）
 
 STR_CURR_CUSTOM                                                 :カスタム...
 

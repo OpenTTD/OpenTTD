@@ -935,7 +935,7 @@ STR_CURR_SIT                                                    :Slovenische Tal
 STR_CURR_SEK                                                    :Schwedische Kronen (SEK)
 STR_CURR_YTL                                                    :Türkische Lire (YTL)
 STR_CURR_SKK                                                    :Slowakische Kronen (SKK)
-STR_CURR_BRR                                                    :Brasilianische Reais (BRL)
+STR_CURR_BRL                                                    :Brasilianische Reais (BRL)
 
 STR_CURR_CUSTOM                                                 :Eigene...
 

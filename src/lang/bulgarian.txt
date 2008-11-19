@@ -936,7 +936,7 @@ STR_CURR_SIT                                                    :словенс�
 STR_CURR_SEK                                                    :шведска крона (SEK)
 STR_CURR_YTL                                                    :турска лира (YTL)
 STR_CURR_SKK                                                    :словашка крона (SKK)
-STR_CURR_BRR                                                    :бразилски реал (BRL)
+STR_CURR_BRL                                                    :бразилски реал (BRL)
 
 STR_CURR_CUSTOM                                                 :друга...
 

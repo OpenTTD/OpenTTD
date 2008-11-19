@@ -916,7 +916,7 @@ STR_CURR_SIT                                                    :Ovenianslay Ola
 STR_CURR_SEK                                                    :Edishsway Onakray (EKSay)
 STR_CURR_YTL                                                    :Urkishtay Iralay (YTLay)
 STR_CURR_SKK                                                    :Ovakslay Orunakay (SKKay)
-STR_CURR_BRR                                                    :Azilianbray Ealray (BRLay)
+STR_CURR_BRL                                                    :Azilianbray Ealray (BRLay)
 
 STR_CURR_CUSTOM                                                 :Ustomcay...
 

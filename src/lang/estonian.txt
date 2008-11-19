@@ -986,7 +986,7 @@ STR_CURR_SIT                                                    :Sloveenia Talaa
 STR_CURR_SEK                                                    :Rootsi kroon (SEK)
 STR_CURR_YTL                                                    :Türgi Liir (YTL)
 STR_CURR_SKK                                                    :Slovakkia Kroon (SKK)
-STR_CURR_BRR                                                    :Brasiilia Reaal (BRL
+STR_CURR_BRL                                                    :Brasiilia Reaal (BRL
 
 STR_CURR_CUSTOM                                                 :Omatehtud...
 

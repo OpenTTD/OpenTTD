@@ -934,7 +934,7 @@ STR_CURR_SIT                                                    :Eslovè Tolar (
 STR_CURR_SEK                                                    :Corones Sueques (SEK)
 STR_CURR_YTL                                                    :Lira Turca (YTL)
 STR_CURR_SKK                                                    :Corona Eslovaca (SKK)
-STR_CURR_BRR                                                    :Real Brasiler (BRL)
+STR_CURR_BRL                                                    :Real Brasiler (BRL)
 
 STR_CURR_CUSTOM                                                 :Personalitzat...
 

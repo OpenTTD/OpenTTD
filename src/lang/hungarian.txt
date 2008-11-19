@@ -999,7 +999,7 @@ STR_CURR_SIT                                                    :Szlovén Tolár
 STR_CURR_SEK                                                    :Svéd Korona (SEK)
 STR_CURR_YTL                                                    :Török Lira (YTL)
 STR_CURR_SKK                                                    :Szlovák korona (SKK)
-STR_CURR_BRR                                                    :Brazil Real (BRL)
+STR_CURR_BRL                                                    :Brazil Real (BRL)
 
 STR_CURR_CUSTOM                                                 :Saját...
 

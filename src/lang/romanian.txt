@@ -930,7 +930,7 @@ STR_CURR_SIT                                                    :Tolar Sloven (S
 STR_CURR_SEK                                                    :Coroană suedeză (SEK)
 STR_CURR_YTL                                                    :Liră Turcească (YTL)
 STR_CURR_SKK                                                    :Coroană Slovacă (SKK)
-STR_CURR_BRR                                                    :Real Brazilian (BRL)
+STR_CURR_BRL                                                    :Real Brazilian (BRL)
 
 STR_CURR_CUSTOM                                                 :Personalizată...
 

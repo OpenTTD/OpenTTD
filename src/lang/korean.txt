@@ -934,7 +934,7 @@ STR_CURR_SIT                                                    :슬로바키아
 STR_CURR_SEK                                                    :스웨덴 크로나 (SEK)
 STR_CURR_YTL                                                    :터키 리라 (YTL)
 STR_CURR_SKK                                                    :슬로바키아 코루나 (SKK)
-STR_CURR_BRR                                                    :브라질 레알 (BRL)
+STR_CURR_BRL                                                    :브라질 레알 (BRL)
 
 STR_CURR_CUSTOM                                                 :사용자 설정...
 

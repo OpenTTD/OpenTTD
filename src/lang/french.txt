@@ -935,7 +935,7 @@ STR_CURR_SIT                                                    :Tolar Slovénie
 STR_CURR_SEK                                                    :Couronne Suédoise (SEK)
 STR_CURR_YTL                                                    :Lire Turque (YTL)
 STR_CURR_SKK                                                    :Couronne Slovaque (SKK)
-STR_CURR_BRR                                                    :Réal Brésilien (BRL)
+STR_CURR_BRL                                                    :Réal Brésilien (BRL)
 
 STR_CURR_CUSTOM                                                 :Personnalisée...
 

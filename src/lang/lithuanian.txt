@@ -968,7 +968,7 @@ STR_CURR_SIT                                                    :Slovėnijos tol
 STR_CURR_SEK                                                    :Svedijos kronos (SEK)
 STR_CURR_YTL                                                    :Turkijos liros (YTL)
 STR_CURR_SKK                                                    :Slovakijos kronos (SKK)
-STR_CURR_BRR                                                    :Brazilijos realai (BRL)
+STR_CURR_BRL                                                    :Brazilijos realai (BRL)
 
 STR_CURR_CUSTOM                                                 :Kita...
 

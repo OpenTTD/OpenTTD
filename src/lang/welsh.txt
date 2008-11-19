@@ -934,7 +934,7 @@ STR_CURR_SIT                                                    :Tolar Slofenaid
 STR_CURR_SEK                                                    :Krona Swedaidd (SEK)
 STR_CURR_YTL                                                    :Lira Twrcaidd (YTL)
 STR_CURR_SKK                                                    :Koruna Slofacaidd (SKK)
-STR_CURR_BRR                                                    :Real Brazilaidd (BRL)
+STR_CURR_BRL                                                    :Real Brazilaidd (BRL)
 
 STR_CURR_CUSTOM                                                 :Addasedig...
 
