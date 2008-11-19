@@ -2942,6 +2942,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Este vehículo 
 STR_TIMETABLE_TOTAL_TIME                                        :Los horarios tomarán  {STRING} para completarse
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Estos horarios tomarán {STRING} para completarse (no todos los horarios)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automático
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Rellena la tabla de horarios automáticamente con los valores de la siguiente jornada (CTRL-click para tratar de mantener los tiempos de espera))
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehículo de carretera en camino

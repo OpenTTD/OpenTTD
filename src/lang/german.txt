@@ -10,11 +10,11 @@
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Zu weit vom Spielfeldrand entfernt
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Zu nahe am Spielfeldrand
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nicht genug Geld - benötigt {CURRENCY}
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nicht genug Geld - Es werden {CURRENCY} benötigt
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ebenes Land erforderlich
-STR_0008_WAITING                                                :{BLACK}Im Wartezustand:  {WHITE}{STRING}
+STR_0008_WAITING                                                :{BLACK}Wartend:  {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} unterwegs von {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akzeptiert: {WHITE}
@@ -1644,6 +1644,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Geschät
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Geschätzte Einnahmen: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Land kann nicht angehoben werden...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Land kann nicht abgesenkt werden...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Kann dieses Land nicht anpassen...
 STR_080A_ROCKS                                                  :Gebirge
 STR_080B_ROUGH_LAND                                             :Unebenes Land
 STR_080C_BARE_LAND                                              :Kahles Land
@@ -1658,6 +1659,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Unmögli
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Die Ausschachtung würde den Tunnel zerstören
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Ist bereits auf Meereshöhe
 STR_1004_TOO_HIGH                                               :{WHITE}Zu hoch
+STR_ALREADY_LEVELLED                                            :{WHITE}... ist schon flach
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Keine geeigneten Gleise
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ist bereits gebaut
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Gleise müssen erst entfernt werden
@@ -2755,6 +2757,10 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Gehe immer
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Wartung wenn benötigt
+STR_ORDER_DROP_HALT_DEPOT                                       :Stopp
+
 STR_ORDER_CONDITIONAL                                           :Bedingter Sprung zu Auftrag
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Fahrzeuginformation, welche für den Sprung ausgewertet wird
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Vergleich der Farzeuginformation mit eingegebenen Wert
@@ -2825,6 +2831,7 @@ STR_8826_GO_TO                                                  :{BLACK}Fahre na
 STR_REFIT                                                       :{BLACK}Umrüsten
 STR_REFIT_TIP                                                   :{BLACK}Frachtart auswählen, auf die umgerüstet werden soll. Strg+Klick, um einen Umrüstungsauftrag wieder zu entfernen
 STR_REFIT_ORDER                                                 :(umrüsten auf {STRING})
+STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Fahrplan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zur Fahrplanansicht wechseln
 STR_ORDER_VIEW                                                  :{BLACK}Aufträge

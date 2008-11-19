@@ -453,16 +453,106 @@ STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Поме
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Прикажи ги контурите на земјата на мапа
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Прикажи ги возилата на мапа
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Прикажи ги индустриите на мапа
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Прикажи ги транспортните рути на мапа
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Прикажи ја вегетацијата на мапа
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Прикажи сопственици на земјата на мапа
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Вклучи/исклучи имиња на градови на мапа
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Годинашна заработка: {CURRENCY} (лани: {CURRENCY})
 
 ############ range for service numbers starts
 ############ range for service numbers ends
 
+STR_019C_ROAD_VEHICLE                                           :Патно возило
+STR_019D_AIRCRAFT                                               :Летало
+STR_019E_SHIP                                                   :Брод
+STR_019F_TRAIN                                                  :Воз
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} застарува
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} е многу застарено
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} е многу застарено и потребна е итна замена
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информации за земјишна област
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Цена за чистење: {LTBLUE}N/A
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за чистење: {LTBLUE}{CURRENCY}
+STR_01A6_N_A                                                    :N/A
+STR_01A7_OWNER                                                  :{BLACK}Сопственик: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Локална власт: {LTBLUE}{STRING}
+STR_01A9_NONE                                                   :Ништо
+STR_01AA_NAME                                                   :{BLACK}Име
+STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
+STR_01AC_1ST                                                    :1-в
+STR_01AD_2ND                                                    :2-ор
+STR_01AE_3RD                                                    :3-ет
+STR_01AF_4TH                                                    :4-рт
+STR_01B0_5TH                                                    :5-ти
+STR_01B1_6TH                                                    :6-ти
+STR_01B2_7TH                                                    :7-ми
+STR_01B3_8TH                                                    :8-ми
+STR_01B4_9TH                                                    :9-ти
+STR_01B5_10TH                                                   :10-ти
+STR_01B6_11TH                                                   :11-ти
+STR_01B7_12TH                                                   :12-ти
+STR_01B8_13TH                                                   :13-ти
+STR_01B9_14TH                                                   :14-ти
+STR_01BA_15TH                                                   :15-ти
+STR_01BB_16TH                                                   :16-ти
+STR_01BC_17TH                                                   :17-ти
+STR_01BD_18TH                                                   :18-ти
+STR_01BE_19TH                                                   :19-ти
+STR_01BF_20TH                                                   :20-ти
+STR_01C0_21ST                                                   :21-ви
+STR_01C1_22ND                                                   :22-ри
+STR_01C2_23RD                                                   :23-ти
+STR_01C3_24TH                                                   :24-ти
+STR_01C4_25TH                                                   :25-ти
+STR_01C5_26TH                                                   :26-ти
+STR_01C6_27TH                                                   :27-ми
+STR_01C7_28TH                                                   :28-ми
+STR_01C8_29TH                                                   :29-ти
+STR_01C9_30TH                                                   :30-ти
+STR_01CA_31ST                                                   :31-ви
 ############ range for days ends
 
+STR_01CB                                                        :{TINYFONT}{COMMA}
 
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Прифатен товар: {LTBLUE}
 
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Џез Џубокс
+STR_01D3_SOUND_MUSIC                                            :Звук/музика
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Прикажи го прозорецот за звук и музика
+STR_01D5_ALL                                                    :{TINYFONT}Сите
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Стар Стил
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Нов Стил
+STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
+STR_01D9_CUSTOM_1                                               :{TINYFONT}Свое 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}Свое 2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Гласност на музка
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Гласност на ефекти
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}МИН  '  '  ' '  '  '  МАКС
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Прескокни на претходна избрана песна
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Прескокни на следна избрана песна
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Запри ја музиката
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Вклучи музика
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Повлечи ги лизгачите за местење на гласноста на музиката и ефектите
+STR_01E3                                                        :{DKGREEN}{TINYFONT}--
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
+STR_01E6                                                        :{DKGREEN}{TINYFONT}------
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Песна{SETX 88}Наслов
+STR_01E9_SHUFFLE                                                :{TINYFONT}Измешај
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Програм
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Избор на музички програм
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Индекс на песната
+STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Програм - '{STRING}'
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Исчисти
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Зачувај
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Тековен програм на музика
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Избери програм со сите песни
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избери 'old style music' програм
 
 
 ############ range for menu starts
