@@ -1054,6 +1054,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Nywerhe
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Toon altyd lang datum in die standbaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Toon seine op die bestuur kant: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Toon finansies venster op die einde van die jaar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nuwe bevele is vooraf 'geen-stop' {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Pad voertuig toustaan (met kwantum effekte): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Was skerm as muis by die kant is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Laattoe die omkooping van plaaslike raad: {ORANGE}{STRING}
@@ -1140,6 +1141,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Eers beskikbaar
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Laas beskikbaar
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Meeste gebruik
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Wys geresrveerde spore: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Toon gebou gereedskap wanneer geen geskik voertuie is beskikbaar : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treine per speler: {ORANGE}{STRING}
@@ -1176,6 +1178,9 @@ STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Wanneer
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Outomaties bou semaphores voor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Stel in staak die sein GUI: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blok seine
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Pad seine
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Een-rigting seine
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Wissel deur tiepe seine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Blok seine aleenlik
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Pad seinligte alleenlik
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
@@ -1568,6 +1573,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :vreemde pakket 
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :verkeerde hersiening
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :naam reeds in gebruik
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :verkeerde wagwoord
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :verkeerde maatskapy-id in DoenBevel
 STR_NETWORK_ERR_CLIENT_KICKED                                   :geskop by verskaffer
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :het probeer om 'n bedreig te gebruik
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :verskaffer vol
@@ -1691,7 +1697,10 @@ STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Trainspoor met 
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Trainspoor met blok en een-rigting aanwysers
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Spoorweg spoor met pre- en uitgang-seine
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Spoorweg spoor met pre- en kombo-seine
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Spoorweg spoor met pre- en pad seiene
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Spoorweg spoor met pre- en een-rigting seiene
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Spoorweg spoor met uitgang- en kombo-seine
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Spoorweg spoor met afklim- en pad seiene
 STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Treinspoor met afklim- en een-rigting aanwysers
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Trainspoor met kombineer- en rigting aanwysers
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Trainspoor met kombineer- en een-rigting aanwysers
@@ -2370,6 +2379,8 @@ STR_SET_COMPANY_PASSWORD                                        :{BLACK}Stel maa
 STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}Moenie die ingesleutelde wagwoord bewaar nie
 STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gee die maatskappy die nuwe wagwoord
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Maatskappy wagwoord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Voorbepaalde maatskappy wagwoord
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Gebruik die maatskapy wagwoord as die standaard vir nuwe maatskappye
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}W�eld Insinking!{}{}Finansieel eksperte vrees ergste as ekonomie inmekaar sak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Insinking Oor!{}{}Oplewing in sake gee vertroue na nywerhede as ekonomie versterk!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Tokkel groot/klein venster groote
@@ -2395,6 +2406,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passasier Rytuig (Stoom)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passasier Rytuig (Diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passasier Rytuig (Elektries)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Passasier koets (Monospeer)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Passasier koets (Maglev)
 STR_LIVERY_FREIGHT_WAGON                                        :Vraag Wa
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Vragmotor
@@ -2691,6 +2704,8 @@ STR_8805                                                        :{RIGHTARROW}{SE
 STR_ORDER_NON_STOP                                              :{BLACK}Sonder-stop
 STR_ORDER_GO_TO                                                 :Gaan na
 STR_ORDER_GO_NON_STOP_TO                                        :Gaan sonder-stop na
+STR_ORDER_GO_VIA                                                :Gaan deur
+STR_ORDER_GO_NON_STOP_VIA                                       :Gaan sonder-stop deur
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Vol laai eenigge vrag
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Laai indine beskikbaar
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Vol laai alle vragte
@@ -2699,6 +2714,7 @@ STR_ORDER_DROP_NO_LOADING                                       :Geen laai
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Laai als af
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Laai af indien aanvaar
 STR_ORDER_DROP_UNLOAD                                           :Laai als af
+STR_ORDER_DROP_TRANSFER                                         :Verplaas
 STR_ORDER_DROP_NO_UNLOADING                                     :Geen aflaai
 STR_ORDER_FULL_LOAD                                             :(Vol laai)
 STR_ORDER_FULL_LOAD_ANY                                         :(Vol laai eenigge vrag)
@@ -2707,6 +2723,10 @@ STR_ORDER_UNLOAD                                                :(Laai af en vat
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Laai af en wag vir 'n vol vrag)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Laai af en wag vir eenigge vol vrag)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Laai af en los leeg)
+STR_ORDER_TRANSFER                                              :(Verplaas en vat vrag)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Verplaas en wag vir 'n vol vrag)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Verplaas en wag vir eenigge vol vrag)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Verplaas en verlaat leeg)
 STR_ORDER_NO_UNLOAD                                             :(Geen aflaai en vat vrag)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Geen aflaai en wag vir vol vra)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Geen aflaay en wag vir eenigge vol vrag)
@@ -2716,9 +2736,15 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}verander
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Sit 'n bevorderde bevel in
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Gaan na naaste diensstasie
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Gaan na naaste vliegtuigloods
 STR_ORDER_NEAREST_DEPOT                                         :die naaste
+STR_ORDER_NEAREST_HANGAR                                        :die naaste Vliegtuigloods
 STR_ORDER_SERVICE_AT                                            :Diens by
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Diens geen-stop by
+STR_ORDER_TRAIN_DEPOT                                           :Trein Diensstasie
+STR_ORDER_ROAD_DEPOT                                            :Pad Voertuig Diensstasie
+STR_ORDER_SHIP_DEPOT                                            :Sleep Diensstasie
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
@@ -2977,6 +3003,7 @@ STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kies vra
 
 ##id 0x9800
 STR_9800_WATERWAYS_CONSTRUCTION                                 :Waterweg konstruksie
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Waterweg konstruksie
 STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Waterweë
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan nie werf hier bou nie...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Skip Depot
@@ -3133,6 +3160,7 @@ STR_BUILD_DATE                                                  :{BLACK}Gebou: {
 
 STR_TILEDESC_STATION_CLASS                                      :{BLACK}Stasie klas: {LTBLUE}{STRING}
 STR_TILEDESC_STATION_TYPE                                       :{BLACK}Stasie tiepe: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NuweGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Aanwysend prestasie gradering
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Aanwyse
@@ -3189,6 +3217,8 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} vereis OpenTTD uitgawe {STRING} of beter.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :die GRF lêer dit was ontwerp om te vertaal
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Te veel NewGRFs gelaai
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Aksie 0 waarde.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Pooging om onvoldoende ID te gebruik.
 
 STR_NEWGRF_ADD                                                  :{BLACK}Voeg
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg 'n NewGRF na die lys
@@ -3218,6 +3248,7 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Versoenb
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Vermis GRF lêers is gestrem
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Vermis GRF lêer(s) om speletjie te laai
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Dit verander voertuig lengte vier '{1:ENGINE}' wanneer die nie in diensstasie is nie.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Trein '{VEHICLE}' wat aan '{COMPANY}' behoort het 'n onaanvaarbare lengte. Dit is heel waarskeinlik veroorsaak deur probleme met NewGRFs. Speeletjie mag uit  sinkrone gaan of  hang.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Speeletjie was gesoor in 'n weergawe sonder trem toelaating. Alle tremme was verwyder.
@@ -3565,6 +3596,9 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Verander
 
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Sein seleksie
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan nie seine hier verander nie...
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Een-rigting pad sein (elektries){}'n Pad sein laat meer as een trein in 'n sein block op die selfde tyd, as die trein 'n pad kan vind na 'n veiligge stop punt. Een-rigting seine kan nie  van die agterkant verby gevat word nie.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein verander{}Wanneer geselekteer is, 'n kliek askei op die sein sal die sein verander na die geselekteerde sein tiepe en waarde, CTRL-kliek sal die bestaande waarde tokkel.
 ########
 
 ############ on screen keyboard

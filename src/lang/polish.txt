@@ -1490,8 +1490,11 @@ STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientó
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientów podłączonych / maks.{}Firm podłączonych / maks.
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Rozmiar mapy
 
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Bieżąca data
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Lata
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O GRZE
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienci:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1515,6 +1518,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Rozpoczn
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nazwa gry:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Nazwa gry będzie wyświetlana u innych graczy w menu gry wieloosobowej
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Wpisz nazwę dla gry sieciowej
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Ustaw hasło
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Zabezpiecz grę hasłem jeśli nie chcesz, by była publicznie dostępna
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Wybierz mapę:
@@ -1571,6 +1575,12 @@ STR_NETWORK_LANG_SPANISH                                        :Hiszpański
 STR_NETWORK_LANG_SWEDISH                                        :Szwedzki
 STR_NETWORK_LANG_TURKISH                                        :Turecki
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukraiński
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrykanerski
+STR_NETWORK_LANG_CROATIAN                                       :Chorwacki
+STR_NETWORK_LANG_ESTONIAN                                       :Estoński
+STR_NETWORK_LANG_GALICIAN                                       :Galicyjski
+STR_NETWORK_LANG_GREEK                                          :Grecki
+STR_NETWORK_LANG_LATVIAN                                        :Łotewski
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Lobby gry wieloosobowej
@@ -1731,6 +1741,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Zbyt wys
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nieodpowiednie tory
 STR_1007_ALREADY_BUILT                                          :{WHITE}...już zbudowano
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Należy najpierw usunąć tory
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Droga jest jednokierunkowa lub zablokowana
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Konstrukcja torowiska
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Konstrukcja elektryfikowanego torowiska
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Konstrukcja torowiska jednoszynowego
@@ -1763,6 +1774,8 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Tory kolejowe z
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Tory kolejowe z pre-sygnałami
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Tory kolejowe z exit-sygnałami
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Tory kolejowe z combo-sygnałami
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Tor kolejowy z sygnalizacją
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Tor kolejowy z sygnalizacją jednokierunkową
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Tory kolejowe z normalnymi i pre-sygnałami
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tory kolejowe z normalnymi i exit-sygnałami
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tory kolejowe z normalnymi i combo-sygnałami
@@ -1818,6 +1831,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Droga z oświet
 STR_1816_TREE_LINED_ROAD                                        :Droga z drzewami
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Zajezdnia samochodowa
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Przejazd kolejowy
+STR_TRAMWAY                                                     :Szyny tramwajowe
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nie można usunąć przystanku...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nie można usunąć stacji załadunkowej...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nie można usunąć przystanku tramwajowego...
@@ -1940,6 +1954,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Nie moż
 STR_280A_SIGN                                                   :Napis
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Edycja tekstu napisu
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Nie możesz zmienić nazwy napisu...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Nie można usunąć znaku...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Wybierz typ drzew do sadzenia
 STR_280E_TREES                                                  :Drzewa
 STR_280F_RAINFOREST                                             :Las deszczowy
@@ -2797,9 +2812,26 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Zajezdni
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy pociąg przybył do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociąg na drodze
+STR_ORDER_GO_TO                                                 :Idź do
+STR_ORDER_GO_NON_STOP_TO                                        :Idź bez przerwy do
+STR_ORDER_GO_VIA                                                :Idź przez
+STR_ORDER_GO_NON_STOP_VIA                                       :Idź bez przerwy przez
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Załaduj jeśli dostępne
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Wyładuj wszystko
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Wyładuj jeśli akceptowane
+STR_ORDER_DROP_UNLOAD                                           :Wyładuj wszystko
+STR_ORDER_FULL_LOAD                                             :(Pełne załadowanie)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Wyładuj i czekaj na pełny załadunek)
+STR_ORDER_UNLOAD_NO_LOAD                                        :Wyładuj i zostaw pusty
 
 
+STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Załadowanie procentowo
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Prędkość maksymalna
+STR_ORDER_CONDITIONAL_AGE                                       :Wiek pojazdu (lata)
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Przejazd (bez ustalonego czasu)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Przejazd przez {STRING}
@@ -2814,6 +2846,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Serwisu
 
 STR_INVALID_ORDER                                               :{RED} (Błędne polecenie)
 
+STR_UNKNOWN_STATION                                             :Nieznana stacja
 STR_8812_EMPTY                                                  :{LTBLUE}Pusty
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
@@ -2844,6 +2877,7 @@ STR_8826_GO_TO                                                  :{BLACK}Idź do
 STR_REFIT                                                       :{BLACK}Przeksztalc
 STR_REFIT_TIP                                                   :{BLACK}Wybierz typ ladunku do przeksztalcenia. Klikniecie z CTRL usuwa zmiane
 STR_REFIT_ORDER                                                 :(Przeksztalc na {STRING})
+STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
@@ -2929,6 +2963,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Hamowanie,
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Niezgodne typy torów
 STR_TRAIN_NO_POWER                                              :{RED}Brak zasilania
 STR_TRAIN_START_NO_CATENARY                                     :Ta trasa nie jest zelektryfikowana, wiec pociąg nie wystartuje
+STR_TRAIN_STUCK                                                 :{ORANGE}Czeka na wolną drogę
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Dostępn{G y a e} now{G y a e} {STRING}!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2991,6 +3026,7 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zbuduj w
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koszt: {CURRENCY}{}Prędkość: {VELOCITY}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Pojemność: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nazwij samochód
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nie można nazwać samochodu...
@@ -3166,6 +3202,8 @@ STR_BRIBE_FAILED                                                :{WHITE}Twoja pr
 STR_BRIBE_FAILED_2                                              :{WHITE}wykryta przez lokalnych badaczy.
 STR_BUILD_DATE                                                  :{BLACK}Zbudowano: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Klasa stacji: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Typ stacji: {LTBLUE}{STRING}
 STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Szczegóły oceny działalności
@@ -3257,7 +3295,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Brak pli
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Brakujące pliki GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłączenie pauzy może zawiesić OpenTTD. Nie zgłaszaj błędów o powtarzających się zawieszeniach.{}Czy na pewno chcesz wyłączyć pauzę?
 
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie problemem powoduje NewGRFs. Gra może działać niestabilnie lub się zawiesić.
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Własna waluta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Współczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3384,6 +3424,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Si�
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
@@ -3530,6 +3573,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Kliknij,
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3538,6 +3582,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nazwa ni
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Idź do następnej tablicy
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Idź do poprzedniej tablicy
+STR_SIGN_OSKTITLE                                               :{BLACK}Wpisz nazwę dla znaku
 
 ########
 

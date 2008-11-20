@@ -1000,6 +1000,7 @@ STR_CURR_SEK                                                    :Svéd Korona (S
 STR_CURR_YTL                                                    :Török Lira (YTL)
 STR_CURR_SKK                                                    :Szlovák korona (SKK)
 STR_CURR_BRL                                                    :Brazil Real (BRL)
+STR_CURR_EEK                                                    :Észt Korona (EKK)
 
 STR_CURR_CUSTOM                                                 :Saját...
 
@@ -1243,11 +1244,11 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automat
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Szignálkezelő engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Alapértelmezett szignál típus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Sima
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Fejlett
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Egyirányú fejlett
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Fejlett (PBS)
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Egyirányú fejlett (PBS)
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Szignálok típusa átalakításkor : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Csak sima
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Csak fejlett
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Csak fejlett (PBS)
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Mind
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A "nincs több út" városkinézeti séma a pályaszerkesztőben nem elérhető
@@ -1725,7 +1726,7 @@ STR_1007_ALREADY_BUILT                                          :{WHITE}...már 
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Előbb le kell rombolnod a vasúti pályát
 STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Az út egy irányú vagy blokkolt
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Vasútépítés
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektromos-vasút építés
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Villamosított vasút építése
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Egysínű vasút építése
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev vasút építése
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Válassz egy vasúti hidat
@@ -1737,7 +1738,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nem szed
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nem veheted le innen a szemafort...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Járműtelep helyzete
 STR_1015_RAILROAD_CONSTRUCTION                                  :Vasútépítés
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektromos-vasút építés
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Villamosított vasút építése
 STR_1016_MONORAIL_CONSTRUCTION                                  :Egysínű vasút építése
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev vasút építése
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Sín lerakása
@@ -1752,27 +1753,27 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Válaszd
 STR_1021_RAILROAD_TRACK                                         :Vasúti pálya
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Járműtelep
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a terület más cégé
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti sin szemaforral
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vasúti sin előrejelző szemaforral
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vasúti sin kijáratjelző szemaforral
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti sin vegyes szemaforral
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vasúti pálya fejlett szignállal
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vasúti pálya egyirányú fejlett szignállal
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vasúti pálya normál és előrejelzőlámpával
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vasúti pálya normál és utójelzőlámpával
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vasúti pálya normál és előutójelző lámpával
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vasúti pálya sima és fejlett szignállal
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vasúti pálya sima és egyirányú fejlett szignállal
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vasúti pálya elő és utójelző lámpával
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vasúti pálya elő és előutójelző lámpával
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Vasúti pálya elő- és fejlett szignállal
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Vasúti pálya elő- és egyirányú fejlett szignállal
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vasúti pálya utó és előutójelző lámpával
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Vasúti pálya utó- és fejlett szignállal
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vasúti pálya utó- és egyirányú fejlett szignállal
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vasúti pálya összetett- és fejlett szignállal
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vasúti pálya összetett- és egyirányú fejlett szignállal
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vasúti pálya fejlett és egyirányú fejlett szignállal
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti pálya normál jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vasúti pálya előjelzőkkel
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vasúti pálya kijárati jelzővel
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti pálya kombinált jelzőkkel
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vasúti pálya fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vasúti pálya egyirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vasúti pálya normál- és előjelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vasúti pálya normál és kijárati jelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vasúti pálya normál és kombinált jelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vasúti pálya normál és fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vasúti pálya normál és egyirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vasúti pálya elő- és kijárati jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vasúti pálya elő- és kombinált jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Vasúti pálya elő- és fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Vasúti pálya elő- és egyirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vasúti pálya kijárati- és előjelzőkkel
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Vasúti pálya kijárati- és fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vasúti pálya kijárati- és egyirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vasúti pálya kombinált és fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vasúti pálya egy- és kétirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vasúti pálya egy- és kétirányú fejlett jelzőkkel
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a vasútállomást le kell rombolni
 
 
@@ -1789,7 +1790,7 @@ STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Ide nem 
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nem rombolhatod le innen az utat...
 STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Innen nem lehet villamospályát eltávolítani...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Garázs helyzete
-STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Villamos-depó iránya
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Villamos-remíz iránya
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nem építhetsz ide garázst...
 STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Ide nem lehet villamos-depót építeni...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nem építhetsz ide buszmegállót...
@@ -1822,7 +1823,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Út lámpákkal
 STR_1816_TREE_LINED_ROAD                                        :Fával szegélyezett út
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garázs
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Út/vasút kereszteződés
-STR_TRAMWAY                                                     :Villamos-pálya
+STR_TRAMWAY                                                     :Villamospálya
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Nem távolíthatod el ezt a buszmegállót...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Nem távolíthatod el ezt a teherautó megállót...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Nem lehet a villamos utasvárót eltávolítani...
@@ -2264,7 +2265,7 @@ STR_SV_STNAME_VALLEY                                            :{STRING}i völg
 STR_SV_STNAME_HEIGHTS                                           :{STRING}i hegy
 STR_SV_STNAME_WOODS                                             :{STRING}i erdő
 STR_SV_STNAME_LAKESIDE                                          :{STRING}i tópart
-STR_SV_STNAME_EXCHANGE                                          :{STRING} csere
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Átrakó
 STR_SV_STNAME_AIRPORT                                           :{STRING}i reptér
 STR_SV_STNAME_OILFIELD                                          :{STRING}i olajmező
 STR_SV_STNAME_MINES                                             :{STRING}i bánya
@@ -2279,7 +2280,7 @@ STR_SV_STNAME_BUOY_7                                            :{STRING}i bója
 STR_SV_STNAME_BUOY_8                                            :{STRING}i bója 8
 STR_SV_STNAME_BUOY_9                                            :{STRING}i bója 9
 STR_SV_STNAME_ANNEXE                                            :{STRING} mellék
-STR_SV_STNAME_SIDINGS                                           :{STRING} oldal
+STR_SV_STNAME_SIDINGS                                           :{STRING}i rakodó
 STR_SV_STNAME_BRANCH                                            :{STRING} mellékág
 STR_SV_STNAME_UPPER                                             :{STRING}-felső
 STR_SV_STNAME_LOWER                                             :{STRING}-alsó
@@ -2452,7 +2453,7 @@ STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT
 STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME} {}(Elnök)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Szállítási cégek egyesülése!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING}  céget felvásárolta {STRING}  {CURRENCY}-ért!
-STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Egy olyan szállítási céget keresünk, aki tovább vezetné a cégünket{}{}Megveszed {COMPANY}  céget {CURRENCY}-ért?
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Cégünk vagyontárgyait eladásra kínáljuk: járművek, terület és hálózat tulajdonok, bankszámla{}{}Megveszed {COMPANY}  céget {CURRENCY}-ért?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Csőd!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} céget bezáratták a hitelezői és minden vagyonát elárverezték!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Új szállítási vállalatot alapítottak!
@@ -2806,9 +2807,9 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vonat van az útban
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Menj
-STR_ORDER_GO_NON_STOP_TO                                        :Non-stop és megáll
-STR_ORDER_GO_VIA                                                :Megállás nélkül menj át
-STR_ORDER_GO_NON_STOP_VIA                                       :Non-stop és áthalad
+STR_ORDER_GO_NON_STOP_TO                                        :Menj megállás nélkül
+STR_ORDER_GO_VIA                                                :Menj keresztül
+STR_ORDER_GO_NON_STOP_VIA                                       :Megállás nélkül áthalad
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Telepakol bármelyikből
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :felpakol, ha lehetséges
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :telepakol mindent
@@ -2838,16 +2839,19 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijel�
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a lepakolási szokások beállítása
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Fejlett utasítás elhelyezése
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi járműtelepre
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi depóba
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangárba
 STR_ORDER_NEAREST_DEPOT                                         :a legközelebbi
 STR_ORDER_NEAREST_HANGAR                                        :a legközelebbi hangárba
+STR_ORDER_SERVICE_AT                                            :Ha javítás szükséges, menj
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Ha javítás szükséges megállás nélkül menj
 STR_ORDER_TRAIN_DEPOT                                           :járműtelep
 STR_ORDER_ROAD_DEPOT                                            :garázs
 STR_ORDER_SHIP_DEPOT                                            :dokk
 STR_GO_TO_HANGAR                                                :{STRING} {STATION}i reptér hangárja
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mindig menj
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Javítsd ha szükséges
 
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk
@@ -2858,7 +2862,7 @@ STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Töltöttségi 
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Megbízhatóság
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximális sebesség
 STR_ORDER_CONDITIONAL_AGE                                       :Életkor (év)
-STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Szervízre van szüksége
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Javításra szorul
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Mindig
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :egyenlő
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nem egyenlő
@@ -2873,8 +2877,8 @@ STR_CONDITIONAL_NUM                                             :Ugorj a(z) {COM
 STR_CONDITIONAL_TRUE_FALSE                                      :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Utazás (időzítetlen)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Tartson az út {STRING} az állomásra
-STR_TIMETABLE_STAY_FOR                                          :állomásra és maradj ott {STRING.t}
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Tartson az út {STRING}ig az állomásra
+STR_TIMETABLE_STAY_FOR                                          :állomásra és maradj ott {STRING.t}ig
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :és menj {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} nap
 STR_TIMETABLE_TICKS                                             :{COMMA} tick
@@ -2932,7 +2936,7 @@ STR_882D_VALUE                                                  :{LTBLUE}{ENGINE
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Felpakol / Lepakol
 STR_LEAVING                                                     :{LTBLUE}Indul
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A remízben kellene állnia ehhez
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A depóban kellene állnia ehhez
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nem küldheted a vonatot a járműtelepre...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nincs több hely új célpontnak
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Túl sok a célpont
@@ -3002,6 +3006,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nem vál
 STR_CLEAR_TIME                                                  :{BLACK}Idő törlése
 STR_RESET_LATENESS                                              :{BLACK}Késés nullázása
 STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Átnevezi az ellenőrző pontot
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Lassít
 STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {VELOCITY}
@@ -3027,6 +3032,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Ez a jármű je
 STR_TIMETABLE_TOTAL_TIME                                        :Ezen menetrend teljesítési ideje: {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ezen menetrend teljesítési ideje legalább: {STRING} (nincs minden időzítve)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automata kitöltés
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetrend automatikus kitöltése a következő út értékeivel (CTRL-lal megtartja a várakozási időket)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármű van az útban
@@ -3473,7 +3479,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajto
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható:  {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Minden szállítmány típusra
 STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális húzó erő: {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maximális vonóerő: {GOLD}{FORCE}
 
 ########### For showing numbers in widgets
 
@@ -3489,6 +3495,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Megvált
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Térkép létrehozása
 STR_RANDOM_SEED                                                 :{BLACK}Véletlen alapszám:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Kattints ide a véletlen alapszám beírásához
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Írj be egy tetszőleges számot
 STR_LAND_GENERATOR                                              :{BLACK}Térkép generátor:
 STR_TREE_PLACER                                                 :{BLACK}Fa algoritmus:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Magasságtérkép elforgatása:
@@ -3500,8 +3507,8 @@ STR_DATE                                                        :{BLACK}Dátum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Várossűrűség:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Iparsűrűség:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
-STR_SNOW_LINE_UP                                                :{BLACK}A hóhatár eggyel megnövelése
-STR_SNOW_LINE_DOWN                                              :{BLACK}A hóhatár eggyel csökkentése
+STR_SNOW_LINE_UP                                                :{BLACK}A hóhatár megnövelése eggyel
+STR_SNOW_LINE_DOWN                                              :{BLACK}A hóhatár csökkentése eggyel
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Hóhatár megváltoztatása
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Kezdő év megváltoztatása
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Átméretezési figyelmeztetés
@@ -3694,21 +3701,21 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Nyakkend
 ########
 
 ############ signal GUI
-STR_SIGNAL_SELECTION                                            :{WHITE}Szignál választó
-STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Itt nem lehet konvertálni a szignálokat...
+STR_SIGNAL_SELECTION                                            :{WHITE}Jelző választó
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Itt nem lehet konvertálni a jelzőket...
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Általános szignál (szemafor){}A szignálok feladata a vonatok összeütközésének megakadályozása a többvonatos vasúti hálózatokon.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Belépő-szignál (szemafor){}Mindaddig zöld, amíg van legalább egy zöld kilépő-szignál az utánakövetkező szakaszon. Egyébként pirosat mutat.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Kilépő-szignál (szemafor){}Ugyanúgy viselkedik mint az általános szignál, de megléte elengedhetetlenül szükséges a belépő- és a kombó-szignálok működéséhez.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombó-szignál (szemafor){}A kombó szignál voltaképpen egy kilépő- és egy belépő-szignál egybeépítve. Segítségével előjelző szignálokból lehet nagy "fákat" kialakítani.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Fejlett szignál (szemafor){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. A fejlett szignálok mellett hátulról is át lehet hajtani.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Egyirányú fejlett szignál (szemafor){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. Az egyirányú szignálok mellett nem lehet hátulról áthajtani.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Fejlett jelző (PBS szemafor){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. A fejlett szignálok mellett hátulról is át lehet hajtani.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Egyirányú fejlett jelző (PBS szemafor){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. Az egyirányú szignálok mellett nem lehet hátulról áthajtani.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Általános szignál (lámpa){}A szignálok feladata a vonatok összeütközésének megakadályozása a többvonatos vasúti hálózatokon.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Belépő-szignál (lámpa){}Mindaddig zöld, amíg van legalább egy zöld kilépő-szignál az utánakövetkező szakaszon. Egyébként pirosat mutat.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Kilépő-szignál (lámpa){}Ugyanúgy viselkedik mint az általános szignál, de megléte elengedhetetlenül szükséges a belépő- és a kombó-szignálok működéséhez.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombó-szignál (lámpa){}A kombó szignál voltaképpen egy kilépő- és egy belépő-szignál egybeépítve. Segítségével előjelző szignálokból lehet nagy "fákat" kialakítani.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Fejlett szignál (lámpa){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. A fejlett szignálok mellett hátulról is át lehet hajtani.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Egyirányú fejlett szignál (lámpa){}Egy fejlett szignál lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. Az egyirányú szignálok mellett nem lehet hátulról áthajtani.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Szignál Átalakító{}Amikor ki van jelölve, egy meglévő szignálra kattintással átkonvertálja a kiválasztott szignál-típusra és -variációra, CTRL+kattintás a variációt fogja változtatni.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Fejlett jelző (PBS lámpa){}Egy fejlett jelző lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. A fejlett szignálok mellett hátulról is át lehet hajtani.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Egyirányú fejlett jelző (PBS lámpa){}Egy fejlett jelző lehetővé teszi, hogy amennyiben le tudnak foglalni utat maguknak egy biztonságos pontig, több vonat is beléphessen ugyanabba a szignál blokkba. Az egyirányú szignálok mellett nem lehet hátulról áthajtani.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Jelző Átalakító{}Amikor ki van jelölve, egy meglévő jelzőre kattintással átkonvertálja a kiválasztott jelzőtípusra és -variációra, CTRL+kattintás a variációt fogja változtatni.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Automata szignálsűrűség
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Automata szignáltávolság csökkentése
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Automata szignáltávolság növelése

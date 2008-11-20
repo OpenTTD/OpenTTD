@@ -936,6 +936,7 @@ STR_CURR_SEK                                                    :Corona Sueca (S
 STR_CURR_YTL                                                    :Lira Turca (YTL)
 STR_CURR_SKK                                                    :Corona Eslovaca (SKK)
 STR_CURR_BRL                                                    :Real Brasileño (BRL)
+STR_CURR_EEK                                                    :Corona Estona (EEK)
 
 STR_CURR_CUSTOM                                                 :Persoal...
 
@@ -1644,6 +1645,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Coste Es
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Ingreso Estimado: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Non se pode subi-lo terreo aí...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Non se pode baixa-lo terreo aí...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Non se pode aplana-lo terreo...
 STR_080A_ROCKS                                                  :Rochas
 STR_080B_ROUGH_LAND                                             :Terra Quebrada
 STR_080C_BARE_LAND                                              :Terra Deserta
@@ -1658,6 +1660,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combinac
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}A excavación danaría un tunel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Xa está a nivel do mar
 STR_1004_TOO_HIGH                                               :{WHITE}Demasiado alto
+STR_ALREADY_LEVELLED                                            :{WHITE}... xa é plana
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Non hay vía de ferrocarril adecuada
 STR_1007_ALREADY_BUILT                                          :{WHITE}...xa está construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Debes elimina-la pista de ferrocarril primeiro
@@ -2940,6 +2943,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Este vehículo 
 STR_TIMETABLE_TOTAL_TIME                                        :Levará {STRING} completar este horario
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Este horario levará {STRING} completalo (non está completo)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoencher
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Enche-lo horario automáticamente cos valores da seguinte viaxe (CTRL-click para intentar mante-los tempos de espera)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Haí un vehículo de estrada no camiño

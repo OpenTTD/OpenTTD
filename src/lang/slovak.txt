@@ -999,6 +999,7 @@ STR_CURR_SEK                                                    :Svedske Koruny 
 STR_CURR_YTL                                                    :Turecke Liry (YTL)
 STR_CURR_SKK                                                    :Slovenske Koruny (SKK)
 STR_CURR_BRL                                                    :Brazílske Realy (BRL)
+STR_CURR_EEK                                                    :Estónsky (EEK)
 
 STR_CURR_CUSTOM                                                 :Vlastná ...
 
