@@ -936,6 +936,7 @@ STR_CURR_SEK                                                    :Corona Sueca (S
 STR_CURR_YTL                                                    :Lira Turca (YTL)
 STR_CURR_SKK                                                    :Corona Eslovaca
 STR_CURR_BRL                                                    :Real Brasileño (BRL)
+STR_CURR_EEK                                                    :Krooni Estonio (EEK)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
 

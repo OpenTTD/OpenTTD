@@ -1491,10 +1491,13 @@ STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientó
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Rozmiar mapy
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Rozmiar mapy{}Kliknij by sortowac po powierzchni
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Data
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Bieżąca data
 
 STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Lata
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Ilosc lat{}trwania gry
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O GRZE
 STR_NETWORK_CLIENTS                                             :{SILVER}Klienci:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1577,6 +1580,7 @@ STR_NETWORK_LANG_TURKISH                                        :Turecki
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukraiński
 STR_NETWORK_LANG_AFRIKAANS                                      :Afrykanerski
 STR_NETWORK_LANG_CROATIAN                                       :Chorwacki
+STR_NETWORK_LANG_CATALAN                                        :Katalonski
 STR_NETWORK_LANG_ESTONIAN                                       :Estoński
 STR_NETWORK_LANG_GALICIAN                                       :Galicyjski
 STR_NETWORK_LANG_GREEK                                          :Grecki
@@ -1663,6 +1667,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :odebrany niezna
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :zła wersja
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nazwa już w użyciu
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :złe hasło gry
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :zla nazwa firmy w DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :wyrzucony przez serwer
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probował użyć ułatwień
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serwer jest pełny
@@ -1678,6 +1683,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STR
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] do {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Wszyscy] :
 STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wpisz tekst do chat'u
 STR_NETWORK_NAME_CHANGE                                         :zmienił/-a swoją nazwę na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serwer zamknął sesję
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Restart serwera...{}Proszę czekać...
@@ -1724,6 +1730,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Szacowan
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Szacowany przychód: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Nie można tutaj podnieść lądu...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Nie można tutaj obniżyć lądu...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Nie mozna wyrownac tutaj terenu
 STR_080A_ROCKS                                                  :Skały
 STR_080B_ROUGH_LAND                                             :Wyboisty teren
 STR_080C_BARE_LAND                                              :Odkryty teren
@@ -1738,6 +1745,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Niemożl
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Wykop zniszczyłby tunel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Już na poziome morza
 STR_1004_TOO_HIGH                                               :{WHITE}Zbyt wysoko
+STR_ALREADY_LEVELLED                                            :{WHITE}... juz wyrownany
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nieodpowiednie tory
 STR_1007_ALREADY_BUILT                                          :{WHITE}...już zbudowano
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Należy najpierw usunąć tory
@@ -1779,6 +1787,7 @@ STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Tor kolejowy z 
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Tory kolejowe z normalnymi i pre-sygnałami
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tory kolejowe z normalnymi i exit-sygnałami
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tory kolejowe z normalnymi i combo-sygnałami
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Tory kolejowe z sygnalizatorami blokowania i jazdy
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tory kolejowe z pre- i exit-sygnałami
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tory kolejowe z pre i combo-sygnałami
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tory kolejowe z exit i combo-sygnałami
@@ -1847,6 +1856,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Należy najpierw zburzyć budynek
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (City)
 STR_2006_POPULATION                                             :{BLACK}Populacja: {ORANGE}{COMMA}{BLACK}  Domów: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Zmień nazwę miasta
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nie można zmienić nazwy miasta...
@@ -2057,6 +2067,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}wybierz 
 STR_3804_WATER                                                  :Woda
 STR_3805_COAST_OR_RIVERBANK                                     :Wybrzeże lub brzeg rzeki
 STR_3806_SHIP_DEPOT                                             :Stocznia
+STR_AQUEDUCT                                                    :Akwedukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Nie można wybudować na wodzie
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Należy najpierw usunąć kanał
 
@@ -2084,6 +2095,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Wybierz 
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Wybierz scenariusz (zielony), ustawioną grę (niebieski), lub losową nową grę
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Tworzenie losowej nowej gry
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Wczytaj mapę wysokości
+STR_SAVE_OSKTITLE                                               :{BLACK}Wprowadz nazwe pod jaka zapisac gre
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na drodze
@@ -2371,6 +2383,7 @@ STR_HOSTILE                                                     :Wrogie
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Firma {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nowa Twarz
 STR_7005_COLOR_SCHEME                                           :{BLACK}Schemat Koloru
 STR_7006_COLOR_SCHEME                                           :{GOLD}Schemat koloru:
@@ -2515,6 +2528,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Wagon pasażerski (parowóz)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Wagon pasażerski (spalinowy)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Wagon pasażerski (elektryczny)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Wagon osobowy (Jednotorowy)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Wagon osobowy (Na poduszcze magnetycznej)
 STR_LIVERY_FREIGHT_WAGON                                        :Wagon towarowy
 STR_LIVERY_BUS                                                  :Autobus
 STR_LIVERY_TRUCK                                                :Ciężarówka
@@ -2812,26 +2827,71 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Zajezdni
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy pociąg przybył do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Szczegóły)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Pociąg na drodze
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Idź do
 STR_ORDER_GO_NON_STOP_TO                                        :Idź bez przerwy do
 STR_ORDER_GO_VIA                                                :Idź przez
 STR_ORDER_GO_NON_STOP_VIA                                       :Idź bez przerwy przez
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pelny zaladunek czegokolwiek
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Załaduj jeśli dostępne
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pelny zaladunek wszystkiego
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pelny zaladunek czegokolwiek
+STR_ORDER_DROP_NO_LOADING                                       :Nie ladowac
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Wyładuj wszystko
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Wyładuj jeśli akceptowane
 STR_ORDER_DROP_UNLOAD                                           :Wyładuj wszystko
+STR_ORDER_DROP_TRANSFER                                         :Przeladowywac
+STR_ORDER_DROP_NO_UNLOADING                                     :Nie rozladowywac
 STR_ORDER_FULL_LOAD                                             :(Pełne załadowanie)
+STR_ORDER_FULL_LOAD_ANY                                         :(Pelny zaladunek wszystkiego)
+STR_ORDER_NO_LOAD                                               :(Nie ladowac)
+STR_ORDER_UNLOAD                                                :(Rozkladuj i zaladuj)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Wyładuj i czekaj na pełny załadunek)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Rozladuj i czekaj na pelny ladunek czegokolwiek)
 STR_ORDER_UNLOAD_NO_LOAD                                        :Wyładuj i zostaw pusty
+STR_ORDER_TRANSFER                                              :(Przeladuj i zabierz ladunek)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Przeladuj i czekaj na pelny zaladunek)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Przeladuj i czekaj na pelny zaladunek czegokolwiek)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Przeladuj i odjedz pusty)
+STR_ORDER_NO_UNLOAD                                             :(Nie rozladowuj i wez ladunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozladowuj i czekaj na pelny zaladunek)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozladowuj i czekaj na pelny zaladunek czegokolwiek)
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedz do najblizszej zajezdni
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Lec do najblizszego hangaru
+STR_ORDER_NEAREST_DEPOT                                         :najblizszy
+STR_ORDER_NEAREST_HANGAR                                        :najblizszy hangar
+STR_ORDER_SERVICE_AT                                            :Obsluga w
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Obsluga non-stop w
+STR_ORDER_TRAIN_DEPOT                                           :Zajezdni kolejowej
+STR_ORDER_ROAD_DEPOT                                            :Zajezdni samochodowej
+STR_ORDER_SHIP_DEPOT                                            :Doku
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangaru
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Zawsze do
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Obsluga jesli wymagana
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Załadowanie procentowo
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Prędkość maksymalna
 STR_ORDER_CONDITIONAL_AGE                                       :Wiek pojazdu (lata)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga obslugi
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :jest rowny
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nii jest rowny
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :jest mniejszy niz
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :jest mniejszy badz rowny
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :jest wiecej niz
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :jest wiecej badz rowny
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :jest prawda
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :jest falszem
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Przejazd (bez ustalonego czasu)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Przejazd przez {STRING}
@@ -2957,6 +3017,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana n
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie można zmienić nazwy typu pojazdu...
 STR_CLEAR_TIME                                                  :{BLACK}Usuń czas
 STR_RESET_LATENESS                                              :{BLACK}Wyzeruj spóźnienia
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
 STR_TRAIN_STOPPING_VEL                                          :{RED}Hamowanie, {VELOCITY}

@@ -935,6 +935,7 @@ STR_CURR_SEK                                                    :Corones Sueques
 STR_CURR_YTL                                                    :Lira Turca (YTL)
 STR_CURR_SKK                                                    :Corona Eslovaca (SKK)
 STR_CURR_BRL                                                    :Real Brasiler (BRL)
+STR_CURR_EEK                                                    :Corona Estoniana (EEK)
 
 STR_CURR_CUSTOM                                                 :Personalitzat...
 
@@ -2941,6 +2942,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Actualment aque
 STR_TIMETABLE_TOTAL_TIME                                        :L'horari tardarà {STRING} a complir-se
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :L'horari tardarà almenys {STRING} a complir-se (no tot està planificat)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autoomple
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Omple automàticament l'horari amb valors del dia següent (CTRL-clic per intentar mantenir les hores)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automòbil en camí

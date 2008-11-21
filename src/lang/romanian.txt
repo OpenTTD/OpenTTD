@@ -268,6 +268,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Zăpadă
 STR_012C_MESSAGE                                                :{WHITE}Mesaj
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Prestabilit(e)
 STR_012E_CANCEL                                                 :{BLACK}Anulează
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Redenumeste
@@ -379,6 +380,7 @@ STR_SORT_BY_MAX_SPEED                                           :Viteza maxima
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Valoare
 STR_SORT_BY_LENGTH                                              :Lungime
+STR_SORT_BY_LIFE_TIME                                           :Durată de viaţă rămasă
 STR_SORT_BY_FACILITY                                            :Tipul de statie
 STR_SORT_BY_WAITING                                             :In asteptarea valorii  încãrcãturii
 STR_SORT_BY_RATING_MAX                                          :Evaluare încãrcãturã
@@ -595,6 +597,7 @@ STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Inchide
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbări economice
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Schimbări de producţie la industrii partenere cu concurenţa
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Alte schimbări în producţia industrială
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Detalii / informaţii despre vehicolele companiei
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Vehicule noi
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Schimbări ale acceptării mărfurilor
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventii
@@ -931,6 +934,7 @@ STR_CURR_SEK                                                    :Coroană suedez
 STR_CURR_YTL                                                    :Liră Turcească (YTL)
 STR_CURR_SKK                                                    :Coroană Slovacă (SKK)
 STR_CURR_BRL                                                    :Real Brazilian (BRL)
+STR_CURR_EEK                                                    :Coroane Estoniene (EEK)
 
 STR_CURR_CUSTOM                                                 :Personalizată...
 
@@ -1021,6 +1025,7 @@ STR_AUTOREPLACE_MONEY_LIMIT                                     :(fonduri limita
 
 STR_CONFIG_PATCHES                                              :{BLACK}Setari avansate
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Afiseaza setarile avansate
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Setări avansate
 
 STR_CONFIG_PATCHES_OFF                                          :inactiv
 STR_CONFIG_PATCHES_ON                                           :activ
@@ -1170,6 +1175,7 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permite
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare automată a semafoarelor la fiecare: {ORANGE}{STRING} pătrăţele
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construieste automat semafaore înainte de: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activare GUI pentru semnale: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tip semafor prestabilit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Sens unic avansat
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ciclu prin tipurile de semnal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Doar normal
@@ -1631,6 +1637,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Cost est
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Venit estimat: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Nu se poate înălţa terenul...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Nu se poate coborî terenul...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Terenul nu poate fi uniformizat aici...
 STR_080A_ROCKS                                                  :Stânci
 STR_080B_ROUGH_LAND                                             :Teren pietros
 STR_080C_BARE_LAND                                              :Teren viran
@@ -1645,6 +1652,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combina�
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Săpăturile ar afecta tunelul
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Deja la nivelul mării
 STR_1004_TOO_HIGH                                               :{WHITE}Prea înalt
+STR_ALREADY_LEVELLED                                            :{WHITE}... este deja plat
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Cale ferată nepotrivită
 STR_1007_ALREADY_BUILT                                          :{WHITE}...deja construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Mai întâi trebuie înlăturată calea ferată
@@ -2254,6 +2262,7 @@ STR_HOSTILE                                                     :ostilă
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Companie {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Schimbă poza
 STR_7005_COLOR_SCHEME                                           :{BLACK}Culoare
 STR_7006_COLOR_SCHEME                                           :{GOLD}Culoare:
@@ -2741,6 +2750,7 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+
 STR_ORDER_CONDITIONAL                                           :Salt in ordine conditionata
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cum se face compararea datelor din vehicul cu valoarea data
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Valoarea cu care se compară
@@ -2777,6 +2787,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service
 
 STR_INVALID_ORDER                                               :{RED} (Comenzi eronate)
 
+STR_UNKNOWN_STATION                                             :staţie necunoscută
 STR_8812_EMPTY                                                  :{LTBLUE}Gol
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de la {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de la {STATION} (x{NUM})
@@ -2807,6 +2818,7 @@ STR_8826_GO_TO                                                  :{BLACK}Mergi la
 STR_REFIT                                                       :{BLACK}Rearanjeaza
 STR_REFIT_TIP                                                   :{BLACK}Alege tipul de marfa pentru rearanjare. Control+click pt a anula rearanjarea
 STR_REFIT_ORDER                                                 :(Rearanjeaza in {STRING})
+STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Orar
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Comuta in modul de vizualizare orar
 STR_ORDER_VIEW                                                  :{BLACK}Comenzi
@@ -2887,6 +2899,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Redenume
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu se poate redenumi modelul de vehicul...
 STR_CLEAR_TIME                                                  :{BLACK}Curata timp
 STR_RESET_LATENESS                                              :{BLACK}Reinitializeaza contorul de intarziere
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Oprire
 STR_TRAIN_STOPPING_VEL                                          :{RED}Oprire, {VELOCITY}
@@ -3198,7 +3211,12 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} necesita OpenTTD versiunea {STRING} sau mai noua.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Prea multe NewGRF-uri încărcate.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Imagine neaşteptată/eronată
+STR_NEWGRF_ERROR_INVALID_ID                                     :Incercare de folosire a unui ID invalid
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Incarcă presetarea selectată
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvează presetare
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Salvează lista curentă ca presetare
 STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Introdu un nume presetarii
 STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Sterge presetarea
 STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Sterge presetarea selectata
@@ -3515,6 +3533,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Click ai
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3603,5 +3622,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permite controlarea nivelului de zgomot din aeroport de către oras: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Limita zgomotului în oraş: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Zgomot generat: {GOLD}{COMMA}
 ########

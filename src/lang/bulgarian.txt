@@ -937,6 +937,7 @@ STR_CURR_SEK                                                    :шведска 
 STR_CURR_YTL                                                    :турска лира (YTL)
 STR_CURR_SKK                                                    :словашка крона (SKK)
 STR_CURR_BRL                                                    :бразилски реал (BRL)
+STR_CURR_EEK                                                    :Естонски крони (EEK)
 
 STR_CURR_CUSTOM                                                 :друга...
 
@@ -2943,6 +2944,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Това пре
 STR_TIMETABLE_TOTAL_TIME                                        :Ще трябва {STRING} за това разписание да бъде приклучено
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Това разписание ще вземе най-малко {STRING} за да приклучи (не всичко е планирано)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Афтонапълване
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Запълни времевата таблица със стойностите от следващото пътуване (CTRL-клик за опит за запазване на времената за изчакване)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Кола на пътя

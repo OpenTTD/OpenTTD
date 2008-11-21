@@ -934,6 +934,7 @@ STR_CURR_SEK                                                    :Шведска�
 STR_CURR_YTL                                                    :Турецкая лира (YTL)
 STR_CURR_SKK                                                    :Словацкая крона (SKK)
 STR_CURR_BRL                                                    :Бразильский реал (BRL)
+STR_CURR_EEK                                                    :Эстонские кроны (EEK)
 
 STR_CURR_CUSTOM                                                 :Своя...
 
@@ -1578,6 +1579,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :получен 
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :версии не совпадают
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :имя уже используется
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :неверный пароль
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :неправильный параметр company-id в DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :вас выкинул сервер
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :попытался применить чит
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер переполнен

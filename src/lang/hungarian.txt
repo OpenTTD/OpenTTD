@@ -475,18 +475,18 @@ STR_SEND_AIRCRAFT_TO_HANGAR                                     :Elküldi hangá
 STR_SEND_FOR_SERVICING                                          :Javításra küld
 
 ############ range for months starts
-STR_0162_JAN                                                    :jan
-STR_0163_FEB                                                    :feb
-STR_0164_MAR                                                    :már
-STR_0165_APR                                                    :ápr
-STR_0166_MAY                                                    :máj
-STR_0167_JUN                                                    :jún
-STR_0168_JUL                                                    :júl
-STR_0169_AUG                                                    :aug
-STR_016A_SEP                                                    :sze
-STR_016B_OCT                                                    :okt
-STR_016C_NOV                                                    :nov
-STR_016D_DEC                                                    :dec
+STR_0162_JAN                                                    :jan.
+STR_0163_FEB                                                    :febr.
+STR_0164_MAR                                                    :márc.
+STR_0165_APR                                                    :ápr.
+STR_0166_MAY                                                    :máj.
+STR_0167_JUN                                                    :jún.
+STR_0168_JUL                                                    :júl.
+STR_0169_AUG                                                    :aug.
+STR_016A_SEP                                                    :szept.
+STR_016B_OCT                                                    :okt.
+STR_016C_NOV                                                    :nov.
+STR_016D_DEC                                                    :dec.
 ############ range for months ends
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
@@ -520,7 +520,7 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Nem változtathatod meg a javítási időközt...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Az ablak bezárása
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Az ablak címsora - húzd ezt a mozgatáshoz
-STR_STICKY_BUTTON                                               :{BLACK}Ez az ablak akkor se legyen becsukható ha az összes ablakot bezárjuk (Delete gomb)
+STR_STICKY_BUTTON                                               :{BLACK}Ez az ablak akkor se záródjon be, ha a DEL billentyűvel az összes ablakot bezatjuk
 STR_RESIZE_BUTTON                                               :{BLACK}Fogd és húzd hogy átméretezd az ablakot
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kattints ide az aktuális mentési könyvtárra való ugráshoz
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Tárgyak lerombolása egy mezőről
@@ -931,6 +931,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Új gazdasági 
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Új gazdasági épület
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak településben építhető
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...csak esőerdőben építhető
@@ -1127,7 +1128,7 @@ STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Lehesse
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Különböző vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak (szimulációs célból): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Repülőgép sebességszorzó: {ORANGE}1 / {STRING}
-STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtható állomások engedélyezése városi utakra: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Áthajtó állomások engedélyezése városi tulajdonu utakra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Érintkező állomások építésének engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Több NewGRF járműgarnitúra engedélyezése: {ORANGE}{STRING}
 
@@ -1313,10 +1314,11 @@ STR_CHEATS                                                      :{WHITE}Csaláso
 STR_CHEATS_TIP                                                  :{BLACK}A kijelölőnégyzetek jelzik a csalások eddigi használtságát
 STR_CHEATS_WARNING                                              :{BLACK}Figyelem! Te épp a versenytársaidat készülöd elárulni. Sose felejtsd el, hogy egy ilyen szégyenletes tett sose merül feledésbe.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tőkeemelés {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Irányított cég: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Csodabuldózer (lerombol gazdasági épületeket, stb): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}A csatornák keresztezhessék egymást: {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Alagutak keresztezhessék egymást: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Építés szünet módban: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet-repülőgépek nem fognak (gyakran) lezuhanni a kisebb repülőtereken: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet-repülők nem fognak gyakran lezuhanni a kis repülőtereken: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Klíma változtatás: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Dátum módosítás: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}A nyersanyagüzemek termelése változtatható: {ORANGE}{STRING}
@@ -1324,8 +1326,8 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}A nyers
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Úton {WAYPOINT} felé
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Úton {WAYPOINT} felé, {VELOCITY}
 
-STR_GO_TO_WAYPOINT                                              :{WAYPOINT}on át
-STR_GO_NON_STOP_TO_WAYPOINT                                     :Úton {WAYPOINT} ellenőrző ponton át
+STR_GO_TO_WAYPOINT                                              :Menj át a(z) {WAYPOINT}on
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Megállás nélkül menj a(z) {WAYPOINT}hoz
 
 STR_WAYPOINTNAME_CITY                                           :{TOWN}i ellenőrző pont
 STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN}i {COMMA}. ellenőrző pont
@@ -1466,7 +1468,8 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliens
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliens online / kliens max
 
-STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Térkép mérete
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Térkép méret
 STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}A játék térképének mérete{}Kattints ide a rendezéshez
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Dátum
@@ -1563,16 +1566,16 @@ STR_NETWORK_LANG_GREEK                                          :Görög
 STR_NETWORK_LANG_LATVIAN                                        :Lett
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Hálózati-játék lobby
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Hálózati-játék beállítások
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Készülődés a kapcsolódáshoz:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Egy lista az összes cégről aki játékban van. Beléphetsz egybe, vagy kezdhetsz egy
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Egy lista az összes cégről aki játékban van. Alapíthatsz újat, beléphetsz egybe, vagy csak nézheted őket megfigyelőként
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Új vállalat
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Új vállalatot alapít
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Játék megvizsgálása
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Megtekinted a játékot mint megfigyelő
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Belépés a cégbe
-STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Segítesz valakinek egy cégénél (többen 1 céget)
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Segítesz valakinek egy cégben (többen irányítottok egy céget)
 STR_NETWORK_REFRESH                                             :{BLACK}Szerver frissítése
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}Szerver infó frissítése
 
@@ -1605,7 +1608,7 @@ STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Céginf�
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kliensre várunk, hogy befejezze
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kilobájt lett eddig letöltve
 
-STR_NETWORK_DISCONNECT                                          :{BLACK}Lebontás
+STR_NETWORK_DISCONNECT                                          :{BLACK}Megszakít
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Írd be mennyi pénzt akarsz adományozni
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerver jelszóval van védve. Írd be
@@ -1643,6 +1646,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ismeretlen csom
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :rossz verzió
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :a név már használva van
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :rossz játék-jelszó
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :hibás cég azonosító (wrong company-id in DoCommand)
 STR_NETWORK_ERR_CLIENT_KICKED                                   :a szerver kirúgott
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :csalni próbált
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :a szerver megtelt
@@ -2807,9 +2811,9 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vonat van az útban
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Menj
-STR_ORDER_GO_NON_STOP_TO                                        :Menj megállás nélkül
-STR_ORDER_GO_VIA                                                :Menj keresztül
-STR_ORDER_GO_NON_STOP_VIA                                       :Megállás nélkül áthalad
+STR_ORDER_GO_NON_STOP_TO                                        :Nonstop - Megállás nélkül menj
+STR_ORDER_GO_VIA                                                :Via - Megállás nélkül menj át
+STR_ORDER_GO_NON_STOP_VIA                                       :Nonstop via - Megállás nélkül menj és hajts át
 STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Telepakol bármelyikből
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :felpakol, ha lehetséges
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :telepakol mindent
@@ -2834,30 +2838,31 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(odaszállít �
 STR_ORDER_NO_UNLOAD                                             :(nem pakol le, csak felvesz rakományt)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(nem pakol le, mindenből teljes rakományra vár)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(nem pakol le, bármiből teljes rakományra vár)
-STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}A kijelölt célpont megközelítése és a megállás/áthajtási szokások beállítása
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}A kijelölt célpont megközelítésének és a megállási-áthajtási szokásainak beállítása
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijelölt célponton a felpakolási szokások beállítása
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a lepakolási szokások beállítása
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Fejlett utasítás elhelyezése
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi depóba
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangárba
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi depó
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangár
 STR_ORDER_NEAREST_DEPOT                                         :a legközelebbi
 STR_ORDER_NEAREST_HANGAR                                        :a legközelebbi hangárba
 STR_ORDER_SERVICE_AT                                            :Ha javítás szükséges, menj
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Ha javítás szükséges megállás nélkül menj
-STR_ORDER_TRAIN_DEPOT                                           :járműtelep
+STR_ORDER_TRAIN_DEPOT                                           :járműtelepre
 STR_ORDER_ROAD_DEPOT                                            :garázs
 STR_ORDER_SHIP_DEPOT                                            :dokk
-STR_GO_TO_HANGAR                                                :{STRING} {STATION}i reptér hangárja
+STR_GO_TO_HANGAR                                                :{STRING} {STATION}i reptér hangárjába
 
-STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mindig menj
-STR_ORDER_DROP_SERVICE_DEPOT                                    :Javítsd ha szükséges
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mindig menj javítani
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Ha szükséges javítsd
+STR_ORDER_DROP_HALT_DEPOT                                       :Maradj a depóban
 
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Hogyan viszonyul a jármű kiválasztott adata a megadott értékhez
-STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Az érték amihez a jármű egy tulajdonságát hasonlítjuk
-STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Írd be a számot amihez hasonlítani szeretnél
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Az érték amihez a jármű egy adatát viszonyítjuk
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Írd be az értéket amihez viszonyítani szeretnél
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Töltöttségi állapot
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Megbízhatóság
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maximális sebesség
@@ -2874,10 +2879,10 @@ STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :igaz
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :hamis
 STR_CONDITIONAL_UNCONDITIONAL                                   :Ugorj a(z) {COMMA}. utasításra
 STR_CONDITIONAL_NUM                                             :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING} {COMMA}
-STR_CONDITIONAL_TRUE_FALSE                                      :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING}
+STR_CONDITIONAL_TRUE_FALSE                                      :Ugorj a(z) {COMMA}. utasításra, ha a '{STRING}' feltétel {STRING}
 
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Utazás (időzítetlen)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Tartson az út {STRING}ig az állomásra
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Következő célpontig a menetidő időzítetlen
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Következő célpontig rendelkezésre álló menetidő: {STRING}
 STR_TIMETABLE_STAY_FOR                                          :állomásra és maradj ott {STRING.t}ig
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :és menj {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} nap
@@ -3031,7 +3036,7 @@ STR_TIMETABLE_STATUS_LATE                                       :Ez a jármű je
 STR_TIMETABLE_STATUS_EARLY                                      :Ez a jármű jelenleg {STRING}pal korábban közlekedik
 STR_TIMETABLE_TOTAL_TIME                                        :Ezen menetrend teljesítési ideje: {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ezen menetrend teljesítési ideje legalább: {STRING} (nincs minden időzítve)
-STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automata kitöltés
+STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autokitölt
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Menetrend automatikus kitöltése a következő út értékeivel (CTRL-lal megtartja a várakozási időket)
 
 ##id 0x9000
@@ -3173,7 +3178,7 @@ STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nem alak
 STR_9842_REFITTABLE                                             :(átalakítható)
 
 ##id 0xA000
-STR_A000_AIRPORTS                                               :{WHITE}Repterek
+STR_A000_AIRPORTS                                               :{WHITE}Reptér
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Nem építhetsz ide repülőteret...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} hangárja
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Új repülőgépek
@@ -3495,7 +3500,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Megvált
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Térkép létrehozása
 STR_RANDOM_SEED                                                 :{BLACK}Véletlen alapszám:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Kattints ide a véletlen alapszám beírásához
-STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Írj be egy tetszőleges számot
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Irj be egy tetszőleges számot
 STR_LAND_GENERATOR                                              :{BLACK}Térkép generátor:
 STR_TREE_PLACER                                                 :{BLACK}Fa algoritmus:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Magasságtérkép elforgatása:
@@ -3635,6 +3640,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Csoport 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

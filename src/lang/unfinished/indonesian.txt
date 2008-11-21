@@ -11,11 +11,14 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Batas te
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Terlalu dekat dengan tepi peta
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Dana tidak cukup - dibutuhkan {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Daratan harus rata
 STR_0008_WAITING                                                :{BLACK}Menunggu: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} dialihkan dari {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Menerima: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Menerima: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Suplai: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Penumpang
 STR_0010_COAL                                                   :Batubara
@@ -80,17 +83,73 @@ STR_004A_TOFFEE                                                 :Kopi Toffee
 STR_004B_BATTERY                                                :Baterai
 STR_004C_PLASTIC                                                :Plastik
 STR_004D_FIZZY_DRINK                                            :Minuman berdesis
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} penumpang
+STR_QUANTITY_COAL                                               :{WEIGHT} batubara
+STR_QUANTITY_MAIL                                               :{COMMA} tas dokumen
+STR_QUANTITY_OIL                                                :{VOLUME} minyak
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} item ternak
+STR_QUANTITY_GOODS                                              :{COMMA} peti barang
+STR_QUANTITY_GRAIN                                              :{WEIGHT} gandum
+STR_QUANTITY_WOOD                                               :{WEIGHT} kayu
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} biji besi
+STR_QUANTITY_STEEL                                              :{WEIGHT} baja
+STR_QUANTITY_VALUABLES                                          :{COMMA} tas benda berharga
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} biji tembaga
+STR_QUANTITY_MAIZE                                              :{WEIGHT} tepung jagung
+STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
+STR_QUANTITY_DIAMONDS                                           :{COMMA} tas intan
+STR_QUANTITY_FOOD                                               :{WEIGHT} makanan
+STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} kopi toffee
+STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
+STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman berdesis
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}PN
+STR_ABBREV_COAL                                                 :{TINYFONT}BB
+STR_ABBREV_MAIL                                                 :{TINYFONT}SR
+STR_ABBREV_OIL                                                  :{TINYFONT}MY
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}TR
+STR_ABBREV_GOODS                                                :{TINYFONT}BR
+STR_ABBREV_GRAIN                                                :{TINYFONT}GD
+STR_ABBREV_WOOD                                                 :{TINYFONT}KY
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}BS
+STR_ABBREV_STEEL                                                :{TINYFONT}BJ
+STR_ABBREV_VALUABLES                                            :{TINYFONT}BB
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}TB
+STR_ABBREV_MAIZE                                                :{TINYFONT}JG
+STR_ABBREV_FRUIT                                                :{TINYFONT}BH
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}IN
+STR_ABBREV_FOOD                                                 :{TINYFONT}MK
+STR_ABBREV_PAPER                                                :{TINYFONT}KR
+STR_ABBREV_GOLD                                                 :{TINYFONT}EM
+STR_ABBREV_WATER                                                :{TINYFONT}AR
+STR_ABBREV_WHEAT                                                :{TINYFONT}TG
+STR_ABBREV_RUBBER                                               :{TINYFONT}KR
+STR_ABBREV_SUGAR                                                :{TINYFONT}GL
+STR_ABBREV_TOYS                                                 :{TINYFONT}MA
+STR_ABBREV_SWEETS                                               :{TINYFONT}MN
+STR_ABBREV_COLA                                                 :{TINYFONT}KL
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}HM
+STR_ABBREV_BUBBLES                                              :{TINYFONT}GL
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KT
+STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MB
+STR_ABBREV_ALL                                                  :{TINYFONT}SM
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Peta - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Pilihan permainan
 STR_00B2_MESSAGE                                                :{YELLOW}Pesan
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Pesan dari {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Awas!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tidak dapat melakukan ini....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak dapat menghapus area ini....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hak Cipta asli {COPYRIGHT} 1995 Chris Sawyer, Hak Cipta dilindungi
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versi {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 Tim OpenTTD
+STR_TRANSLATED_BY                                               :{BLACK}  Penerjemah(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -197,6 +256,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Salju
 STR_012C_MESSAGE                                                :{WHITE}Pesan
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Asali
 STR_012E_CANCEL                                                 :{BLACK}Batal
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Ubah nama
@@ -208,10 +268,19 @@ STR_013B_OWNED_BY                                               :{WHITE}...dimil
 STR_013C_CARGO                                                  :{BLACK}Muatan
 STR_013D_INFORMATION                                            :{BLACK}Informasi
 STR_013E_CAPACITIES                                             :{BLACK}Kapasitas
+STR_TOTAL_CARGO                                                 :{BLACK}Total KArgo
 STR_013F_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO} (x{NUM})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Total kapasitas kargo untuk kereta:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Permainan baru
 STR_0141_LOAD_GAME                                              :{BLACK}Buka Permainan
+STR_SINGLE_PLAYER                                               :{BLACK}Bermain sendiri
+STR_MULTIPLAYER                                                 :{BLACK}Bermain bersama
+STR_SCENARIO_EDITOR                                             :{BLACK}Editor Skenario
 
+STR_MAPSIZE                                                     :{BLACK}Ukuran Peta:
 STR_0148_GAME_OPTIONS                                           :{BLACK}Pilihan permainan
 
 STR_0150_SOMEONE                                                :seseorang{SKIP}{SKIP}
@@ -219,12 +288,31 @@ STR_0151_MAP_OF_WORLD                                           :Peta Dunia
 STR_0152_TOWN_DIRECTORY                                         :Daftar Kota
 STR_0153_SUBSIDIES                                              :Pembiayaan
 
+STR_UNITS_METRIC                                                :Metrik
+STR_UNITS_SI                                                    :Standar Internasional
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mil/j
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/j
+STR_UNITS_VELOCITY_SI                                           :{COMMA} meter/detik
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gln
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 
 
 ############ range for menu starts
