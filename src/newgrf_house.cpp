@@ -447,14 +447,13 @@ static void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte st
 		if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
 			if (pal == 0) {
 				const HouseSpec *hs = GetHouseSpecs(house_id);
+				pal = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOR_START;
 				if (HasBit(hs->callback_mask, CBM_HOUSE_COLOUR)) {
 					uint16 callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, GetTownByTile(ti->tile), ti->tile);
 					if (callback != CALLBACK_FAILED) {
 						/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
 						pal = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
 					}
-				} else {
-					pal = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOR_START;
 				}
 			}
 		} else {
