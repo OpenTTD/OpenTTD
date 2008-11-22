@@ -234,104 +234,104 @@ STR_00E7_INDUSTRIES                                             :Gazdaság
 STR_00E8_ROUTES                                                 :Utak
 STR_00E9_VEGETATION                                             :Növényzet
 STR_00EA_OWNERS                                                 :Tulajdonosok
-STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Út
-STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Vasút
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Állomás/Reptér/Kikötő
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Épület/Gazdasági épület
-STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Jármű
-STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
-STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
-STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
-STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
-STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
-STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Vonat
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Közúti jármű
-STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Hajó
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Repülőgép
-STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Szállítási útvonal
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}szénbánya
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}ÚT
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}VASÚT
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}ÁLLOMÁS - REPTÉR - KIKÖTÖ
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}ÉPÜLET - GAZDASÁGI ÉPÜLET
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}JÁRMÜ
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 M
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 M
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300 M
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 M
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 M
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}VONAT
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}KÖZÚTI JÁRMÜ
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}HAJÓ
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}REPÜLÖGÉP
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}SZÁLLITÁSI ÚTVONAL
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}SZÉNBÁNYA
 STR_00FA_COAL_MINE.t                                            :{BLACK}{TINYFONT}szénbányát
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}erőmű
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}ERÖMÜ
 STR_00FB_POWER_STATION.t                                        :{BLACK}{TINYFONT}erőművet
-STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}erdő
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}ERDÖ
 STR_00FC_FOREST.t                                               :{BLACK}{TINYFONT}erdőt
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}fűrésztelep
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}FÜRÉSZTELEP
 STR_00FD_SAWMILL.t                                              :{BLACK}{TINYFONT}fűrésztelepet
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}olajfinomító
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}OLAJFINOMITÓ
 STR_00FE_OIL_REFINERY.t                                         :{BLACK}{TINYFONT}olajfinomítót
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}farm
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}FARM
 STR_00FF_FARM.t                                                 :{BLACK}{TINYFONT}farmot
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}gyár
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}GYÁR
 STR_0100_FACTORY.t                                              :{BLACK}{TINYFONT}gyárat
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}nyomda
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}NYOMDA
 STR_0101_PRINTING_WORKS.t                                       :{BLACK}{TINYFONT}nyomdát
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}olajkút
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}OLAJKÚT
 STR_0102_OIL_WELLS.t                                            :{BLACK}{TINYFONT}olajkútat
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}vasércbánya
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}VASÉRCBÁNYA
 STR_0103_IRON_ORE_MINE.t                                        :{BLACK}{TINYFONT}vasércbányát
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}acélöntő
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}ACÉLÖNTÖ
 STR_0104_STEEL_MILL.t                                           :{BLACK}{TINYFONT}acélöntőt
-STR_0105_BANK                                                   :{BLACK}{TINYFONT}bank
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}BANK
 STR_0105_BANK.t                                                 :{BLACK}{TINYFONT}bankot
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}papírgyár
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}PAPIRGYÁR
 STR_0106_PAPER_MILL.t                                           :{BLACK}{TINYFONT}papírgyárat
-STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}aranybánya
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}ARANYBÁNYA
 STR_0107_GOLD_MINE.t                                            :{BLACK}{TINYFONT}aranybányát
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}konzervgyár
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}KONZERVGYÁR
 STR_0108_FOOD_PROCESSING_PLANT.t                                :{BLACK}{TINYFONT}konzervgyárat
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}gyémántbánya
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}GYÉMÁNTBÁNYA
 STR_0109_DIAMOND_MINE.t                                         :{BLACK}{TINYFONT}gyémántbányát
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}rézércbánya
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}RÉZÉRCBÁNYA
 STR_010A_COPPER_ORE_MINE.t                                      :{BLACK}{TINYFONT}rézércbányát
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}gyümölcsültetvény
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}GYÜMÖLCSÜLTETVÉNY
 STR_010B_FRUIT_PLANTATION.t                                     :{BLACK}{TINYFONT}gyümölcsültetvényt
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}gumifa ültetvény
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}GUMIFA ÜLTETVÉNY
 STR_010C_RUBBER_PLANTATION.t                                    :{BLACK}{TINYFONT}gumiültetvényt
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}vízforrás
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}VIZFORRÁS
 STR_010D_WATER_SUPPLY.t                                         :{BLACK}{TINYFONT}vízforrást
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}víztorony
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}VIZTORONY
 STR_010E_WATER_TOWER.t                                          :{BLACK}{TINYFONT}víztornyot
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}favágó
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}FAVÁGÓ
 STR_010F_LUMBER_MILL.t                                          :{BLACK}{TINYFONT}favágót
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}vattacukor-erdő
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}VATTACUKOR-ERDÖ
 STR_0110_COTTON_CANDY_FOREST.t                                  :{BLACK}{TINYFONT}vattacukor-erdőt
-STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}cukorkagyár
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}CUKORKAGYÁR
 STR_0111_CANDY_FACTORY.t                                        :{BLACK}{TINYFONT}cukorkagyárat
-STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}elemfarm
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}ELEMFARM
 STR_0112_BATTERY_FARM.t                                         :{BLACK}{TINYFONT}elemfarmot
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}kólakút
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}KÓLAKÚT
 STR_0113_COLA_WELLS.t                                           :{BLACK}{TINYFONT}kólakútat
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}játékbolt
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}JÁTÉKBOLT
 STR_0114_TOY_SHOP.t                                             :{BLACK}{TINYFONT}játékboltot
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}játékgyár
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}JÁTÉKGYÁR
 STR_0115_TOY_FACTORY.t                                          :{BLACK}{TINYFONT}játékgyárat
-STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}műanyagforrás
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}MÜANYAGFORRÁS
 STR_0116_PLASTIC_FOUNTAINS.t                                    :{BLACK}{TINYFONT}műanyagforrást
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}üdítőital-gyár
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}ÜDITÖITAL GYÁR
 STR_0117_FIZZY_DRINK_FACTORY.t                                  :{BLACK}{TINYFONT}üdítőital-gyárat
-STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}buborékgenerátor
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}BUBORÉKGENERÁTOR
 STR_0118_BUBBLE_GENERATOR.t                                     :{BLACK}{TINYFONT}buborékgenerátort
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}tejkaramella fejtő
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}TEJKARAMELLA FEJTÖ
 STR_0119_TOFFEE_QUARRY.t                                        :{BLACK}{TINYFONT}tejkaramella fejtőt
-STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}cukorbánya
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}CUKORBÁNYA
 STR_011A_SUGAR_MINE.t                                           :{BLACK}{TINYFONT}cukorbányát
-STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Vasútállomás
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Teherautó-rakodóhely
-STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Buszmegálló
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Repülőtér/Helikopter-leszálló
-STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Kikötő
-STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Göröngyös talaj
-STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Füves talaj
-STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Csupasz föld
-STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Szántóföld
-STR_0124_TREES                                                  :{BLACK}{TINYFONT}Fa
-STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Kő
-STR_0126_WATER                                                  :{BLACK}{TINYFONT}Víz
-STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Nincs tulajdonos
-STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Város
-STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Gazdasági épület
-STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Sivatag
-STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Hó
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}VASÚTÁLLOMÁS
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}TEHERAUTÓ-RAKODÓHELY
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}BUSZMEGÁLLÓ
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}REPÜLÖTÉR - HELIKOPTER-LESZÁLLÓ
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}KIKÖTÖ
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}GÖRÖNGYÖS TALAJ
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}FÜVES TALAJ
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}CSUPASZ FÖLD
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}SZÁNTÓFÖLD
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}FA
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}KÖ
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}VIZ
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}NINCS TULAJDONOS
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}VÁROS
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}GAZDASÁGI ÉPÜLET
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}SIVATAG
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}HÓ
 STR_012C_MESSAGE                                                :{WHITE}Üzenet
 STR_012D                                                        :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Alapértelmezett
@@ -535,7 +535,7 @@ STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Szállí
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Növényzet mutatása a térképen
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Tulajdonosok mutatása a térképen
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Városnevek ki/be
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Idei nyereség: {CURRENCY} (Tavalyi: {CURRENCY})
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}IDEI NYERESÉG: {CURRENCY} (TAVALYI: {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} év ({COMMA})
@@ -604,14 +604,14 @@ STR_01D1_8                                                      :({COMMA}/8 {STR
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz zenegép
 STR_01D3_SOUND_MUSIC                                            :Hang/zene
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Hang/zene beállítás
-STR_01D5_ALL                                                    :{TINYFONT}Mind
-STR_01D6_OLD_STYLE                                              :{TINYFONT}Régi stílus
-STR_01D7_NEW_STYLE                                              :{TINYFONT}Új stílus
-STR_01D8_EZY_STREET                                             :{TINYFONT}Szép az élet
-STR_01D9_CUSTOM_1                                               :{TINYFONT}Saját 1
-STR_01DA_CUSTOM_2                                               :{TINYFONT}Saját 2
-STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Zene hangereje
-STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Hangok hangereje
+STR_01D5_ALL                                                    :{TINYFONT}MIND
+STR_01D6_OLD_STYLE                                              :{TINYFONT}RÉGI STILUS
+STR_01D7_NEW_STYLE                                              :{TINYFONT}ÚJ STILUS
+STR_01D8_EZY_STREET                                             :{TINYFONT}SZÉP AZ ÉLET
+STR_01D9_CUSTOM_1                                               :{TINYFONT}SAJÁT 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}SAJÁT 2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}ZENE HANGEREJE
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}HANGOK HANGEREJE
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  '  '  '  '  MAX
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Előző szám
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Következő szám
@@ -623,16 +623,16 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Szám{SETX 88}Cím
-STR_01E9_SHUFFLE                                                :{TINYFONT}Kever
-STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Műsor
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}SZÁM{SETX 88}CIM
+STR_01E9_SHUFFLE                                                :{TINYFONT}KEVER
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}MÜSOR
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Zenei műsor kiválasztása
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
-STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Számlista
-STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}"{STRING}" műsora
-STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Törlés
-STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Mentés
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}SZÁMLISTA
+STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}"{STRING}" MÜSORA
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}TÖRLÉS
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}MENTÉS
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Az aktuális műsor számai
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}A 'minden szám' műsor kiválasztása
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}A 'régi stílus' zenei műsor kiválasztása
@@ -1699,11 +1699,11 @@ STR_BMPMAP_ERROR                                                :{WHITE}Nem sike
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nem sikerült a képtípust konvertálni.
 
 ##id 0x0800
-STR_0800_COST                                                   :{TINYFONT}{RED}{CURRENCY} kiadás
+STR_0800_COST                                                   :{TINYFONT}{RED}{CURRENCY} KIADÁS
 STR_0801_COST                                                   :{RED}{CURRENCY} kiadás
-STR_0802_INCOME                                                 :{TINYFONT}{GREEN}{CURRENCY} bevétel
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}{CURRENCY} BEVÉTEL
 STR_0803_INCOME                                                 :{GREEN}{CURRENCY} bevétel
-STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Elszállít: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}ELSZÁLLIT: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Elszállít: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Becsült ár: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Becsült bevétel: {CURRENCY}
@@ -2464,8 +2464,8 @@ STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} {TOWN} közelében kezd építkezni!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nem veheted meg a céget...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Rakományok szállítási díja
-STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Úton töltött napok
-STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Fizetség 10 egység (vagy 10000 liter) áru 20 négyzetre való szállításáért
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}ÚTON TÖLTÖTT NAPOK
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}FIZETSÉG 10 EGYSÉGNYI (VAGY 10000 LITER) ÁRU 20 NÉGYZET TÁVOLSÁGRA VALÓ SZÁLLÍTÁSÁÉRT
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Az adott áru grafikonjának mutatása be/ki
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Mérnök
