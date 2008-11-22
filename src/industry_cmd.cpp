@@ -1966,7 +1966,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 int WhoCanServiceIndustry(Industry* ind)
 {
 	/* Find all stations within reach of the industry */
-	StationSet stations = FindStationsAroundIndustryTile(ind->xy, ind->width, ind->height);
+	StationSet stations = FindStationsAroundTiles(ind->xy, ind->width, ind->height);
 
 	if (stations.size() == 0) return 0; // No stations found at all => nobody services
 

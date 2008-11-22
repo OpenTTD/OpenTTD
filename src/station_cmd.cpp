@@ -453,11 +453,11 @@ static void ShowRejectOrAcceptNews(const Station *st, uint num_items, CargoID *c
 
 /**
  * Get a list of the cargo types being produced around the tile (in a rectangle).
- * @param produced: Destination array of produced cargo
- * @param tile: Center of the search area
- * @param w: Width of the center
- * @param h: Height of the center
- * @param rad: Radius of the search area
+ * @param produced Destination array of produced cargo
+ * @param tile Northtile of area
+ * @param w X extent of the area
+ * @param h Y extent of the area
+ * @param rad Search radius in addition to the given area
  */
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 	int w, int h, int rad)
@@ -502,11 +502,11 @@ void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile,
 
 /**
  * Get a list of the cargo types that are accepted around the tile.
- * @param accepts: Destination array of accepted cargo
- * @param tile: Center of the search area
- * @param w: Width of the center
- * @param h: Height of the center
- * @param rad: Radius of the rectangular search area
+ * @param accepts Destination array of accepted cargo
+ * @param tile Center of the search area
+ * @param w X extent of area
+ * @param h Y extent of area
+ * @param rad Search radius in addition to given area
  */
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile,
 	int w, int h, int rad)
@@ -2899,34 +2899,22 @@ CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /**
- * Find all (non-buoy) stations around an industry tile
+ * Find all (non-buoy) stations around a rectangular producer (industry, house, headquarter, ...)
  *
- * @param tile: Center tile to search from
- * @param w: Width of the center
- * @param h: Height of the center
+ * @param tile North tile of producer
+ * @param w_prod X extent of producer
+ * @param h_prod Y extent of producer
  *
  * @return: Set of found stations
  */
-StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h)
+StationSet FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod)
 {
 	StationSet station_set;
 
-	int w_prod; // width and height of the "producer" of the cargo
-	int h_prod;
-	int max_rad;
-	if (_settings_game.station.modified_catchment) {
-		w_prod = w;
-		h_prod = h;
-		w += 2 * MAX_CATCHMENT;
-		h += 2 * MAX_CATCHMENT;
-		max_rad = MAX_CATCHMENT;
-	} else {
-		w_prod = 0;
-		h_prod = 0;
-		w += 8;
-		h += 8;
-		max_rad = CA_UNMODIFIED;
-	}
+	/* area to search = producer plus station catchment radius */
+	int max_rad = (_settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED);
+	int w = w_prod + 2 * max_rad;
+	int h = h_prod + 2 * max_rad;
 
 	BEGIN_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
 		cur_tile = TILE_MASK(cur_tile);
@@ -2982,7 +2970,7 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 	uint best_rating1 = 0; // rating of st1
 	uint best_rating2 = 0; // rating of st2
 
-	StationSet all_stations = FindStationsAroundIndustryTile(tile, w, h);
+	StationSet all_stations = FindStationsAroundTiles(tile, w, h);
 	for (StationSet::iterator st_iter = all_stations.begin(); st_iter != all_stations.end(); ++st_iter) {
 		Station *st = *st_iter;
 

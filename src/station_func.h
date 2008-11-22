@@ -20,7 +20,7 @@ void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint rad
 /** A set of stations (\c const \c Station* ) */
 typedef std::set<Station*, PoolItemIndexLess<Station> > StationSet;
 
-StationSet FindStationsAroundIndustryTile(TileIndex tile, int w, int h);
+StationSet FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod);
 
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord();
