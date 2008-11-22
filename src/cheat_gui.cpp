@@ -165,7 +165,7 @@ struct CheatWindow : Window {
 
 						/* Draw colored flag for change company cheat */
 						case STR_CHEAT_CHANGE_COMPANY:
-							SetDParam(0, val);
+							SetDParam(0, val + 1);
 							GetString(buf, STR_CHEAT_CHANGE_COMPANY, lastof(buf));
 							DrawCompanyIcon(_current_company, 60 + GetStringBoundingBox(buf).width, y + 2);
 							break;
