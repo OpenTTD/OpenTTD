@@ -7,6 +7,7 @@
 
 #include "town.h"
 #include "date_type.h"
+#include "date_func.h"
 #include "tile_map.h"
 
 /**
@@ -285,7 +286,7 @@ static inline void SetHouseConstructionYear(TileIndex t, Year year)
 static inline Year GetHouseConstructionYear(TileIndex t)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	return IsHouseCompleted(t) ? _m[t].m5 + GetHouseSpecs(GetHouseType(t))->min_year : 0;
+	return IsHouseCompleted(t) ? _m[t].m5 + GetHouseSpecs(GetHouseType(t))->min_year : _cur_year;
 }
 
 /**
