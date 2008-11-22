@@ -30,6 +30,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
+#include "newgrf_commons.h"
 #include "train.h"
 #include "variables.h"
 #include "autoslope.h"
@@ -1920,6 +1921,7 @@ static void DrawTile_Track(TileInfo *ti)
 		const DrawTileSprites* dts;
 		const DrawTileSeqStruct* dtss;
 		uint32 relocation;
+		SpriteID pal = PAL_NONE;
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
@@ -1976,6 +1978,8 @@ static void DrawTile_Track(TileInfo *ti)
 					} else {
 						image += rti->total_offset;
 					}
+
+					pal = dts->ground.pal;
 				} else {
 					goto default_waypoint;
 				}
@@ -1989,7 +1993,7 @@ default_waypoint:
 			}
 		}
 
-		DrawGroundSprite(image, PAL_NONE);
+		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, _drawtile_track_palette));
 
 		/* PBS debugging, draw reserved tracks darker */
 		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && GetDepotWaypointReservation(ti->tile) &&
@@ -2001,7 +2005,7 @@ default_waypoint:
 
 		foreach_draw_tile_seq(dtss, dts->seq) {
 			SpriteID image = dtss->image.sprite;
-			SpriteID pal;
+			SpriteID pal   = dtss->image.pal;
 
 			/* Stop drawing sprite sequence once we meet a sprite that doesn't have to be opaque */
 			if (IsInvisibilitySet(TO_BUILDINGS) && !HasBit(image, SPRITE_MODIFIER_OPAQUE)) return;
@@ -2015,15 +2019,7 @@ default_waypoint:
 				image += relocation;
 			}
 
-			if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
-				if (dtss->image.pal != 0) {
-					pal = dtss->image.pal;
-				} else {
-					pal = _drawtile_track_palette;
-				}
-			} else {
-				pal = PAL_NONE;
-			}
+			pal = SpriteLayoutPaletteTransform(image, pal, _drawtile_track_palette);
 
 			if ((byte)dtss->delta_z != 0x80) {
 				AddSortableSpriteToDraw(

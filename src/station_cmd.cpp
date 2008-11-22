@@ -24,6 +24,7 @@
 #include "industry_map.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
+#include "newgrf_commons.h"
 #include "yapf/yapf.h"
 #include "road_type.h"
 #include "road_internal.h" /* For drawing catenary/checking road removal */
@@ -2325,13 +2326,14 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 	} else {
 		SpriteID image = t->ground.sprite;
+		SpriteID pal   = t->ground.pal;
 		if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 			image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
 			image += custom_ground_offset;
 		} else {
 			image += total_offset;
 		}
-		DrawGroundSprite(image, HasBit(image, PALETTE_MODIFIER_COLOR) ? palette : PAL_NONE);
+		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
 
 		/* PBS debugging, draw reserved tracks darker */
 		if (_game_mode != GM_MENU && _settings_client.gui.show_track_reservation && IsRailwayStation(ti->tile) && GetRailwayStationReservation(ti->tile)) {
@@ -2361,16 +2363,7 @@ static void DrawTile_Station(TileInfo *ti)
 			image += relocation;
 		}
 
-		SpriteID pal;
-		if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
-			if (dtss->image.pal > 0) {
-				pal = dtss->image.pal;
-			} else {
-				pal = palette;
-			}
-		} else {
-			pal = PAL_NONE;
-		}
+		SpriteID pal = SpriteLayoutPaletteTransform(image, dtss->image.pal, palette);
 
 		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(

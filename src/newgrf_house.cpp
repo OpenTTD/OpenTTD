@@ -426,12 +426,24 @@ static void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte st
 	const DrawTileSprites *dts = group->g.layout.dts;
 	const DrawTileSeqStruct *dtss;
 
+	const HouseSpec *hs = GetHouseSpecs(house_id);
+	SpriteID palette = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOR_START;
+	if (HasBit(hs->callback_mask, CBM_HOUSE_COLOUR)) {
+		uint16 callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, GetTownByTile(ti->tile), ti->tile);
+		if (callback != CALLBACK_FAILED) {
+			/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
+			palette = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
+		}
+	}
+
 	SpriteID image = dts->ground.sprite;
 	SpriteID pal   = dts->ground.pal;
 
 	if (IS_CUSTOM_SPRITE(image)) image += stage;
 
-	if (GB(image, 0, SPRITE_WIDTH) != 0) DrawGroundSprite(image, pal);
+	if (GB(image, 0, SPRITE_WIDTH) != 0) {
+		DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, palette));
+	}
 
 	foreach_draw_tile_seq(dtss, dts->seq) {
 		if (GB(dtss->image.sprite, 0, SPRITE_WIDTH) == 0) continue;
@@ -444,21 +456,7 @@ static void DrawTileLayout(const TileInfo *ti, const SpriteGroup *group, byte st
 
 		if (IS_CUSTOM_SPRITE(image)) image += stage;
 
-		if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
-			if (pal == 0) {
-				const HouseSpec *hs = GetHouseSpecs(house_id);
-				pal = hs->random_colour[TileHash2Bit(ti->x, ti->y)] + PALETTE_RECOLOR_START;
-				if (HasBit(hs->callback_mask, CBM_HOUSE_COLOUR)) {
-					uint16 callback = GetHouseCallback(CBID_HOUSE_COLOUR, 0, 0, house_id, GetTownByTile(ti->tile), ti->tile);
-					if (callback != CALLBACK_FAILED) {
-						/* If bit 14 is set, we should use a 2cc colour map, else use the callback value. */
-						pal = HasBit(callback, 14) ? GB(callback, 0, 8) + SPR_2CCMAP_BASE : callback;
-					}
-				}
-			}
-		} else {
-			pal = PAL_NONE;
-		}
+		pal = SpriteLayoutPaletteTransform(image, pal, palette);
 
 		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(

@@ -183,7 +183,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group,
 		if (image == SPR_FLAT_WATER_TILE && IsIndustryTileOnWater(ti->tile)) {
 			DrawWaterClassGround(ti);
 		} else {
-			DrawGroundSprite(image, pal);
+			DrawGroundSprite(image, GroundSpritePaletteTransform(image, pal, GENERAL_SPRITE_COLOR(rnd_color)));
 		}
 	}
 
@@ -198,13 +198,7 @@ static void IndustryDrawTileLayout(const TileInfo *ti, const SpriteGroup *group,
 
 		if (IS_CUSTOM_SPRITE(image)) image += stage;
 
-		if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
-			if (pal == 0) {
-				pal = GENERAL_SPRITE_COLOR(rnd_color);
-			}
-		} else {
-			pal = PAL_NONE;
-		}
+		pal = SpriteLayoutPaletteTransform(image, pal, GENERAL_SPRITE_COLOR(rnd_color));
 
 		if ((byte)dtss->delta_z != 0x80) {
 			AddSortableSpriteToDraw(

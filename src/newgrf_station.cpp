@@ -803,6 +803,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	}
 
 	image = sprites->ground.sprite;
+	SpriteID pal = sprites->ground.pal;
 	if (HasBit(image, SPRITE_MODIFIER_USE_OFFSET)) {
 		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
 		image += rti->custom_ground_offset;
@@ -810,7 +811,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 		image += rti->total_offset;
 	}
 
-	DrawSprite(image, PAL_NONE, x, y);
+	DrawSprite(image, GroundSpritePaletteTransform(image, pal, palette), x, y);
 
 	Point child_offset = {0, 0};
 
@@ -822,16 +823,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 			image += relocation;
 		}
 
-		SpriteID pal;
-		if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
-			if (seq->image.pal > 0) {
-				pal = seq->image.pal;
-			} else {
-				pal = palette;
-			}
-		} else {
-			pal = PAL_NONE;
-		}
+		pal = SpriteLayoutPaletteTransform(image, seq->image.pal, palette);
 
 		if ((byte)seq->delta_z != 0x80) {
 			Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);

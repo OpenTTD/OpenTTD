@@ -7,6 +7,10 @@
 #ifndef NEWGRF_COMMONS_H
 #define NEWGRF_COMMONS_H
 
+#include "core/bitmath_func.hpp"
+
+#include "table/sprites.h"
+
 /**
  * Maps an entity id stored on the map to a GRF file.
  * Entities are objects used ingame (houses, industries, industry tiles) for
@@ -95,5 +99,44 @@ extern IndustryTileOverrideManager _industile_mngr;
 uint32 GetTerrainType(TileIndex tile);
 TileIndex GetNearbyTile(byte parameter, TileIndex tile);
 uint32 GetNearbyTileInformation(TileIndex tile);
+
+/**
+ * Applies PALETTE_MODIFIER_TRANSPARENT and PALETTE_MODIFIER_COLOR to a palette entry of a sprite layout entry
+ * @Note for ground sprites use #GroundSpritePaletteTransform
+ * @Note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
+ *       when to use the default palette.
+ *
+ * @param image The sprite to draw
+ * @param pal The palette from the sprite layout
+ * @param default_pal The default recolour sprite to use (typically company color resp. random industry/house color)
+ * @return The palette to use
+ */
+static inline SpriteID SpriteLayoutPaletteTransform(SpriteID image, SpriteID pal, SpriteID default_pal)
+{
+	if (HasBit(image, PALETTE_MODIFIER_TRANSPARENT) || HasBit(image, PALETTE_MODIFIER_COLOR)) {
+		return (pal != 0 ? pal : default_pal);
+	} else {
+		return PAL_NONE;
+	}
+}
+
+/**
+ * Applies PALETTE_MODIFIER_COLOR to a palette entry of a ground sprite
+ * @Note Not useable for OTTD internal spritelayouts from table/xxx_land.h as PALETTE_MODIFIER_TRANSPARENT is only set
+ *       when to use the default palette.
+ *
+ * @param image The sprite to draw
+ * @param pal The palette from the sprite layout
+ * @param default_pal The default recolour sprite to use (typically company color resp. random industry/house color)
+ * @return The palette to use
+ */
+static inline SpriteID GroundSpritePaletteTransform(SpriteID image, SpriteID pal, SpriteID default_pal)
+{
+	if (HasBit(image, PALETTE_MODIFIER_COLOR)) {
+		return (pal != 0 ? pal : default_pal);
+	} else {
+		return PAL_NONE;
+	}
+}
 
 #endif /* NEWGRF_COMMONS_H */
