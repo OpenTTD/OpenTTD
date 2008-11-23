@@ -1266,9 +1266,22 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 					_error_message = STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 					return false;
 				}
-				if (CmdFailed(DoCommand(cur_tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR))) return false;
+
+				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
+				CompanyID old_company = _current_company;
+				_current_company = OWNER_TOWN;
+				bool not_clearable = CmdFailed(DoCommand(cur_tile, 0, 0, 0, CMD_LANDSCAPE_CLEAR));
+				_current_company = old_company;
+
+				if (not_clearable) return false;
 			} else if ((ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) == 0 || !IsTileType(cur_tile, MP_HOUSE)) {
-				if (CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) return false;
+				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
+				CompanyID old_company = _current_company;
+				_current_company = OWNER_TOWN;
+				bool not_clearable = CmdFailed(DoCommand(cur_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR));
+				_current_company = old_company;
+
+				if (not_clearable) return false;
 			}
 		}
 	} while ((++it)->ti.x != -0x80);
@@ -1540,6 +1553,9 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 
 	i->prod_level = PRODLEVEL_DEFAULT;
 
+	/* Clear the tiles as OWNER_TOWN, to not affect town rating, and to not clear protected buildings */
+	CompanyID old_company = _current_company;
+	_current_company = OWNER_TOWN;
 	do {
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
@@ -1568,6 +1584,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 			if (its->animation_info != 0xFFFF) AddAnimatedTile(cur_tile);
 		}
 	} while ((++it)->ti.x != -0x80);
+	_current_company = old_company;
 
 	i->width++;
 	i->height++;

@@ -556,7 +556,10 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 
 	/* slope of end tile must be complementary to the slope of the start tile */
 	if (end_tileh != ComplementSlope(start_tileh)) {
-		/* Check if there is a structure on the terraformed tile. Do not add the cost, that will be done by the terraforming */
+		/* Check if there is a structure on the terraformed tile. Do not add the cost, that will be done by the terraforming
+		 * Note: Currently the town rating is also affected by this clearing-test. So effectivly the player is punished twice for clearing
+		 *       the tree on end_tile.
+		 */
 		ret = DoCommand(end_tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR);
 		if (CmdFailed(ret)) return_cmd_error(STR_5005_UNABLE_TO_EXCAVATE_LAND);
 
