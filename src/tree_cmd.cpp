@@ -350,7 +350,7 @@ CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			switch (GetTileType(tile)) {
 				case MP_TREES:
 					/* no more space for trees? */
-					if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 3) {
+					if (_game_mode != GM_EDITOR && GetTreeCount(tile) == 4) {
 						msg = STR_2803_TREE_ALREADY_HERE;
 						continue;
 					}
@@ -478,7 +478,7 @@ static void DrawTile_Trees(TileInfo *ti)
 	TreeListEnt te[4];
 
 	/* put the trees to draw in a list */
-	uint trees = GetTreeCount(ti->tile) + 1;
+	uint trees = GetTreeCount(ti->tile);
 
 	for (uint i = 0; i < trees; i++) {
 		SpriteID image = s[0].sprite + (i == trees - 1 ? GetTreeGrowth(ti->tile) : 3);
@@ -538,7 +538,7 @@ static CommandCost ClearTile_Trees(TileIndex tile, byte flags)
 		if (t != NULL) ChangeTownRating(t, RATING_TREE_DOWN_STEP, RATING_TREE_MINIMUM);
 	}
 
-	num = GetTreeCount(tile) + 1;
+	num = GetTreeCount(tile);
 	if (IsInsideMM(GetTreeType(tile), TREE_RAINFOREST, TREE_CACTUS)) num *= 4;
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
@@ -664,7 +664,7 @@ static void TileLoop_Trees(TileIndex tile)
 						break;
 
 					case 1: /* add a tree */
-						if (GetTreeCount(tile) < 3) {
+						if (GetTreeCount(tile) < 4) {
 							AddTreeCount(tile, 1);
 							SetTreeGrowth(tile, 0);
 							break;
@@ -694,7 +694,7 @@ static void TileLoop_Trees(TileIndex tile)
 			break;
 
 		case 6: /* final stage of tree destruction */
-			if (GetTreeCount(tile) > 0) {
+			if (GetTreeCount(tile) > 1) {
 				/* more than one tree, delete it */
 				AddTreeCount(tile, -1);
 				SetTreeGrowth(tile, 3);

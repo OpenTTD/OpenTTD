@@ -144,7 +144,7 @@ static inline void SetTreeGroundDensity(TileIndex t, TreeGround g, uint d)
 static inline uint GetTreeCount(TileIndex t)
 {
 	assert(IsTileType(t, MP_TREES));
-	return GB(_m[t].m5, 6, 2);
+	return GB(_m[t].m5, 6, 2) + 1;
 }
 
 /**
@@ -162,21 +162,6 @@ static inline void AddTreeCount(TileIndex t, int c)
 {
 	assert(IsTileType(t, MP_TREES)); // XXX incomplete
 	_m[t].m5 += c << 6;
-}
-
-/**
- * Sets the tree amount of a tile.
- *
- * This function directly sets the amount of trees of a tile.
- *
- * @param t The tile to set the amount of trees
- * @param c The number of trees
- * @pre Tile must be of type MP_TREES
- */
-static inline void SetTreeCount(TileIndex t, uint c)
-{
-	assert(IsTileType(t, MP_TREES)); // XXX incomplete
-	SB(_m[t].m5, 6, 2, c);
 }
 
 /**
