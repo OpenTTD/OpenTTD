@@ -7,7 +7,30 @@
 #include "../fileio_func.h"
 #include "../debug.h"
 #include "../core/alloc_func.hpp"
+#include "../strings_func.h"
+#include "table/strings.h"
+#include "../gui.h"
 #include "grf.hpp"
+
+/**
+ * We found a corrupted sprite. This means that the sprite itself
+ * contains invalid data or is too small for the given dimensions.
+ * @param file_slot the file the errored sprite is in
+ * @param file_pos the location in the file of the errored sprite
+ * @param line the line where the error occurs.
+ * @return always false (to tell loading the sprite failed)
+ */
+static bool WarnCorruptSprite(uint8 file_slot, size_t file_pos, int line)
+{
+	static byte warning_level = 0;
+	if (warning_level == 0) {
+		SetDParamStr(0, FioGetFilename(file_slot));
+		ShowErrorMessage(INVALID_STRING_ID, STR_NEWGRF_ERROR_CORRUPT_SPRITE, 0, 0);
+	}
+	DEBUG(sprite, warning_level, "[%i] Loading corrupted sprite from %s at position %i", line, FioGetFilename(file_slot), (int)file_pos);
+	warning_level = 6;
+	return false;
+}
 
 bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, size_t file_pos, SpriteType sprite_type)
 {
@@ -32,6 +55,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 	byte *dest_orig = AllocaM(byte, num);
 	byte *dest = dest_orig;
+	const int dest_size = num;
 
 	/* Read the file, which has some kind of compression */
 	while (num > 0) {
@@ -41,6 +65,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 			/* Plain bytes to read */
 			int size = (code == 0) ? 0x80 : code;
 			num -= size;
+			if (num < 0) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 			for (; size > 0; size--) {
 				*dest = FioReadByte();
 				dest++;
@@ -48,8 +73,10 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 		} else {
 			/* Copy bytes from earlier in the sprite */
 			const uint data_offset = ((code & 7) << 8) | FioReadByte();
+			if (dest - data_offset < dest_orig) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 			int size = -(code >> 3);
 			num -= size;
+			if (num < 0) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 			for (; size > 0; size--) {
 				*dest = *(dest - data_offset);
 				dest++;
@@ -57,7 +84,7 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 		}
 	}
 
-	assert(num == 0);
+	if (num != 0) return WarnCorruptSprite(file_slot, file_pos, __LINE__);
 
 	sprite->data = CallocT<SpriteLoader::CommonPixel>(sprite->width * sprite->height);
 
@@ -67,10 +94,16 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 			bool last_item = false;
 			/* Look up in the header-table where the real data is stored for this row */
 			int offset = (dest_orig[y * 2 + 1] << 8) | dest_orig[y * 2];
+
 			/* Go to that row */
-			dest = &dest_orig[offset];
+			dest = dest_orig + offset;
 
 			do {
+				if (dest + 2 > dest_orig + dest_size) {
+					free(sprite->data);
+					return WarnCorruptSprite(file_slot, file_pos, __LINE__);
+				}
+
 				SpriteLoader::CommonPixel *data;
 				/* Read the header:
 				 *  0 .. 14  - length
@@ -82,6 +115,11 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 
 				data = &sprite->data[y * sprite->width + skip];
 
+				if (skip + length > sprite->width || dest + length > dest_orig + dest_size) {
+					free(sprite->data);
+					return WarnCorruptSprite(file_slot, file_pos, __LINE__);
+				}
+
 				for (int x = 0; x < length; x++) {
 					data->m = ((sprite_type == ST_NORMAL && _palette_remap_grf[file_slot]) ? _palette_remap[*dest] : *dest);
 					dest++;
@@ -90,6 +128,17 @@ bool SpriteLoaderGrf::LoadSprite(SpriteLoader::Sprite *sprite, uint8 file_slot, 
 			} while (!last_item);
 		}
 	} else {
+		if (dest_size < sprite->width * sprite->height) {
+			free(sprite->data);
+			return WarnCorruptSprite(file_slot, file_pos, __LINE__);
+		}
+
+		if (dest_size > sprite->width * sprite->height) {
+			static byte warning_level = 0;
+			DEBUG(sprite, warning_level, "Ignoring %i unused extra bytes from the sprite from %s at position %i", dest_size - sprite->width * sprite->height, FioGetFilename(file_slot), (int)file_pos);
+			warning_level = 6;
+		}
+
 		dest = dest_orig;
 
 		for (int i = 0; i < sprite->width * sprite->height; i++) {

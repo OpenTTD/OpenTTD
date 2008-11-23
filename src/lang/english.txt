@@ -3234,6 +3234,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {RAW_ST
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{RAW_STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Load the selected preset
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Save preset

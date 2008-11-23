@@ -271,7 +271,10 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 
 	sc->type = sprite_type;
 
-	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos, sprite_type)) return NULL;
+	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos, sprite_type)) {
+		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
+		return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL);
+	}
 	sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 	free(sprite.data);
 
