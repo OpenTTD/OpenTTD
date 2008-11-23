@@ -115,6 +115,19 @@ void Order::FreeChain()
 
 bool Order::Equals(const Order &other) const
 {
+	/* In case of go to nearest depot orders we need "only" compare the flags
+	 * with the other and not the nearest depot order bit or the actual
+	 * destination because those get clear/filled in during the order
+	 * evaluation. If we do not do this the order will continuously be seen as
+	 * a different order and it will try to find a "nearest depot" every tick. */
+	if ((this->type == OT_GOTO_DEPOT && this->type == other.type) &&
+			((this->GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0 ||
+			 (other.GetDepotActionType() & ODATFB_NEAREST_DEPOT) != 0)) {
+		return
+			this->GetDepotOrderType() == other.GetDepotOrderType() &&
+			(this->GetDepotActionType() & ~ODATFB_NEAREST_DEPOT) == (other.GetDepotActionType() & ~ODATFB_NEAREST_DEPOT);
+	}
+
 	return
 			this->type  == other.type &&
 			this->flags == other.flags &&
