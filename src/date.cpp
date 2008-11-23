@@ -171,6 +171,7 @@ extern void TrainsYearlyLoop();
 extern void RoadVehiclesYearlyLoop();
 extern void AircraftYearlyLoop();
 extern void ShipsYearlyLoop();
+extern void TownsYearlyLoop();
 
 extern void ShowEndGameChart();
 
@@ -275,6 +276,7 @@ void IncreaseDate()
 	RoadVehiclesYearlyLoop();
 	AircraftYearlyLoop();
 	ShipsYearlyLoop();
+	TownsYearlyLoop();
 #ifdef ENABLE_NETWORK
 	if (_network_server) NetworkServerYearlyLoop();
 #endif /* ENABLE_NETWORK */

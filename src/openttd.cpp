@@ -2477,8 +2477,8 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(99)) {
-		/* Set newly introduced WaterClass of industry tiles */
 		for (TileIndex t = 0; t < map_size; t++) {
+			/* Set newly introduced WaterClass of industry tiles */
 			if (IsTileType(t, MP_STATION) && IsOilRig(t)) {
 				SetWaterClassDependingOnSurroundings(t, true);
 			}
@@ -2488,6 +2488,11 @@ bool AfterLoadGame()
 				} else {
 					SetWaterClass(t, WATER_CLASS_INVALID);
 				}
+			}
+
+			/* Replace "house construction year" with "house age" */
+			if (IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)) {
+				_m[t].m5 = Clamp(_cur_year - (_m[t].m5 + ORIGINAL_BASE_YEAR), 0, 0xFF);
 			}
 		}
 	}

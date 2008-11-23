@@ -404,7 +404,7 @@ static void MakeSingleHouseBigger(TileIndex tile)
 		/* Now that construction is complete, we can add the population of the
 		 * building to the town. */
 		ChangePopulation(GetTownByTile(tile), hs->population);
-		SetHouseConstructionYear(tile, _cur_year);
+		ResetHouseAge(tile);
 	}
 	MarkTileDirtyByTile(tile);
 }
@@ -505,7 +505,7 @@ static void TileLoop_Town(TileIndex tile)
 	if (hs->building_flags & BUILDING_HAS_1_TILE &&
 			HasBit(t->flags12, TOWN_IS_FUNDED) &&
 			CanDeleteHouse(tile) &&
-			max(_cur_year - GetHouseConstructionYear(tile), 0) >= hs->minimum_life &&
+			GetHouseAge(tile) >= hs->minimum_life &&
 			--t->time_until_rebuild == 0) {
 		t->time_until_rebuild = GB(r, 16, 8) + 192;
 
@@ -2605,6 +2605,15 @@ void TownsMonthlyLoop()
 		UpdateTownGrowRate(t);
 		UpdateTownAmounts(t);
 		UpdateTownUnwanted(t);
+	}
+}
+
+void TownsYearlyLoop()
+{
+	/* Increment house ages */
+	for (TileIndex t = 0; t < MapSize(); t++) {
+		if (!IsTileType(t, MP_HOUSE)) continue;
+		IncrementHouseAge(t);
 	}
 }
 

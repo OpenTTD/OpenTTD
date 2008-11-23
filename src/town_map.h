@@ -6,8 +6,6 @@
 #define TOWN_MAP_H
 
 #include "town.h"
-#include "date_type.h"
-#include "date_func.h"
 #include "tile_map.h"
 
 /**
@@ -266,27 +264,38 @@ static inline void IncHouseConstructionTick(TileIndex t)
 }
 
 /**
- * Set the year that this house was constructed.
+ * Sets the age of the house to zero.
+ * Needs to be called after the house is completed. During construction stages the map space is used otherwise.
  * @param t the tile of this house
- * @param year the year to set
  * @pre IsTileType(t, MP_HOUSE) && IsHouseCompleted(t)
  */
-static inline void SetHouseConstructionYear(TileIndex t, Year year)
+static inline void ResetHouseAge(TileIndex t)
 {
 	assert(IsTileType(t, MP_HOUSE) && IsHouseCompleted(t));
-	_m[t].m5 = Clamp(year - GetHouseSpecs(GetHouseType(t))->min_year, 0, 0xFF);
+	_m[t].m5 = 0;
 }
 
 /**
- * Get the year that this house was constructed.
+ * Increments the age of the house.
+ * @param t the tile of this house
+ * @pre IsTileType(t, MP_HOUSE)
+ */
+static inline void IncrementHouseAge(TileIndex t)
+{
+	assert(IsTileType(t, MP_HOUSE));
+	if (IsHouseCompleted(t) && _m[t].m5 < 0xFF) _m[t].m5++;
+}
+
+/**
+ * Get the age of the house
  * @param t the tile of this house
  * @pre IsTileType(t, MP_HOUSE)
  * @return year
  */
-static inline Year GetHouseConstructionYear(TileIndex t)
+static inline Year GetHouseAge(TileIndex t)
 {
 	assert(IsTileType(t, MP_HOUSE));
-	return IsHouseCompleted(t) ? _m[t].m5 + GetHouseSpecs(GetHouseType(t))->min_year : _cur_year;
+	return IsHouseCompleted(t) ? _m[t].m5 : 0;
 }
 
 /**
