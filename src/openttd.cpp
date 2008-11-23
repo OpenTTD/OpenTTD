@@ -192,6 +192,8 @@ static void ShowHelp()
 #endif /* ENABLE_NETWORK */
 		"  -i palette          = Force to use the DOS (0) or Windows (1) palette\n"
 		"                          (defines default setting when adding newgrfs)\n"
+		"                        Default value (2) lets OpenTTD use the palette\n"
+		"                          specified in graphics set file (see below)\n"
 		"  -I graphics_set     = Force the graphics set (see below)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
 		"  -x                  = Do not automatically save to config file on exit\n"
@@ -464,7 +466,13 @@ int ttd_main(int argc, char *argv[])
 				if (mgo.opt != NULL) SetDebugString(mgo.opt);
 			} break;
 		case 'e': _switch_mode = SM_EDITOR; break;
-		case 'i': _use_palette = (mgo.opt == NULL || atoi(mgo.opt) == 0) ? PAL_DOS : PAL_WINDOWS; break;
+		case 'i':
+			/* there is an argument, it is not empty, and it is exactly 1 char long */
+			if (!StrEmpty(mgo.opt) && mgo.opt[1] == '\0') {
+				_use_palette = (PaletteType)(mgo.opt[0] - '0');
+				if (_use_palette <= MAX_PAL) break;
+			}
+			usererror("Valid value for '-i' is 0, 1 or 2");
 		case 'g':
 			if (mgo.opt != NULL) {
 				strecpy(_file_to_saveload.name, mgo.opt, lastof(_file_to_saveload.name));
