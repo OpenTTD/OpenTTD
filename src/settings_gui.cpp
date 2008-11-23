@@ -1015,7 +1015,7 @@ void ShowPatchesSelection()
  */
 void DrawArrowButtons(int x, int y, Colours button_colour, byte state, bool clickable_left, bool clickable_right)
 {
-	int colour = _colour_gradient[COLOUR_YELLOW][2];
+	int colour = _colour_gradient[button_colour][2];
 
 	DrawFrameRect(x,      y + 1, x +  9, y + 9, button_colour, (state == 1) ? FR_LOWERED : FR_NONE);
 	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, button_colour, (state == 2) ? FR_LOWERED : FR_NONE);
