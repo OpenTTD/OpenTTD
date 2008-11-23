@@ -565,17 +565,17 @@ STR_01EC_0                                                      :{TINYFONT}{LTBL
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Lista melodiilor
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
-STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Şterge
-STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Salvează
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Sterge
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Salveaza
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Programul current al pieselor muzicale
-STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selectează programul 'toate melodiile'
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selectează programul 'oldies'
-STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selectează programul 'modern'
-STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Selectează programul personal 1
-STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selectează programul personal 2
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Şterge programul curent (doar pentru cele personale)
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selecteaza programul 'toate melodiile'
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selecteaza programul 'oldies'
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selecteaza programul 'modern'
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Selecteaza programul personal 1
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selecteaza programul personal 2
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Sterge programul curent (doar pentru cele personale)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Salveaza setarile pentru muzica
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Clic pe o melodie pentru a o adăuga în programul personal curent
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Clic pe o melodie pentru a o adauga în programul personal curent
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Apasa pe pista audio pentru a o elimina din programul actual (doar Custom1 sau Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Comutator pentru amestecarea melodiilor (da/nu)
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Afiseaza fereastra pentru selectia melodiilor
@@ -583,7 +583,7 @@ STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Click pe
 STR_01FE_DIFFICULTY                                             :{BLACK}Nivel dificultate ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Ultimul mesaj/ultima stire
-STR_0201_MESSAGE_SETTINGS                                       :Setări mesaje
+STR_0201_MESSAGE_SETTINGS                                       :Setari mesaje
 STR_MESSAGE_HISTORY_MENU                                        :Lista ultimelor mesaje
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Afiseaza ultimul mesaj (ultima stire) si optiunile pentru mesaje
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Optiuni mesaje
@@ -594,12 +594,13 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acciden
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informatii despre companie
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Inaugurare industrii
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Inchidere industrii
-STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbări economice
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Schimbari economice
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Schimbarile de productie ale industriilor oferite de companie
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Schimbări de producţie la industrii partenere cu concurenţa
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Alte schimbări în producţia industrială
-STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Detalii / informaţii despre vehicolele companiei
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Sugestii / informatii despre vehiculele companiei
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Vehicule noi
-STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Schimbări ale acceptării mărfurilor
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Schimbari ale acceptarii marfurilor
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventii
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informatii generale
 STR_MESSAGES_ALL                                                :{YELLOW}Setare pentru tipurile de mesaje (da/nu/rezumat)
@@ -685,26 +686,26 @@ STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Fabrică
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generator de balonaşe
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}Carieră de caramel
 STR_0261_SUGAR_MINE                                             :{BLACK}Mină de zahăr
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construieşte mină de cupru
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construieşte termocentrală
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Înfiinţează fabrică de cherestea
-STR_0265_PLANT_FOREST                                           :{BLACK}Plantează pădure
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construieşte rafinărie
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construieşte platformă petrolieră (doar în apropierea marginilor hărţii)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construieşte fabrică de conserve
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construieşte oţelărie
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}Înfiinţează fermă
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construieşte mină de fier
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construieşte sonde de petrol
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construieşte bancă (doar în oraşele cu o populaţie de cel puţin 1200 locuitori)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construieşte fabrică de hârtie
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construieşte combinat alimentar
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construieşte tipografie
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construieşte mină de aur
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construieşte bancă (doar în oraşe)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construieşte fabrică de cherestea (taie arborii din jur pentru a produce lemne)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plantează livadă
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Înfiinţează plantaţie de cauciuc
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Construieste mina de cupru
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Construieste termocentrala
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Infiinteaza fabrica de cherestea
+STR_0265_PLANT_FOREST                                           :{BLACK}Planteaza padure
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Construieste rafinarie
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Construieste platforma petroliera (doar în apropierea marginilor hartii)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Construieste fabrica de conserve
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Construieste otelarie
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Infiinteaza ferma
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Construieste mina de fier
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Construieste sonde de petrol
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construieste banca (doar în oraşele cu o populaţie de cel putin 1200 locuitori)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Construieste fabrica de hartie
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Construieste combinat alimentar
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Construieste tipografie
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Construieste mina de aur
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Construieste banca (doar în orase)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construieste fabrica de cherestea (taie arborii din jur pentru a produce lemne)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Planteaza livada
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Înfiinteaza plantatie de cauciuc
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construieşte rezervor de apă
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construieşte turn de apă (doar în oraşe)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construieşte mină de diamante
@@ -885,21 +886,21 @@ STR_7                                                           :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engleza (Original)
-STR_TOWNNAME_FRENCH                                             :Frantuzesti
+STR_TOWNNAME_FRENCH                                             :Franceza
 STR_TOWNNAME_GERMAN                                             :Germane
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Engleza (Aditional)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Latino-Americane
 STR_TOWNNAME_SILLY                                              :Amuzante (englezã)
 STR_TOWNNAME_SWEDISH                                            :Suedeze
-STR_TOWNNAME_DUTCH                                              :Olandeze
-STR_TOWNNAME_FINNISH                                            :Finlandeze
+STR_TOWNNAME_DUTCH                                              :Olandeza
+STR_TOWNNAME_FINNISH                                            :Finlandeza
 STR_TOWNNAME_POLISH                                             :Poloneze
 STR_TOWNNAME_SLOVAKISH                                          :Slovace
 STR_TOWNNAME_NORWEGIAN                                          :Norvegian
 STR_TOWNNAME_HUNGARIAN                                          :Unguresti
 STR_TOWNNAME_AUSTRIAN                                           :Austriece
 STR_TOWNNAME_ROMANIAN                                           :Romanesti
-STR_TOWNNAME_CZECH                                              :Cehe
+STR_TOWNNAME_CZECH                                              :Ceha
 STR_TOWNNAME_SWISS                                              :Elvetian
 STR_TOWNNAME_DANISH                                             :Danezã
 STR_TOWNNAME_TURKISH                                            :Turcã
@@ -1025,7 +1026,7 @@ STR_AUTOREPLACE_MONEY_LIMIT                                     :(fonduri limita
 
 STR_CONFIG_PATCHES                                              :{BLACK}Setari avansate
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Afiseaza setarile avansate
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Setări avansate
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Setari avansate
 
 STR_CONFIG_PATCHES_OFF                                          :inactiv
 STR_CONFIG_PATCHES_ON                                           :activ
@@ -1176,6 +1177,8 @@ STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Plasare
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Construieste automat semafaore înainte de: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activare GUI pentru semnale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tip semafor prestabilit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blocheaza semnalele
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Semnale pentru linii
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Sens unic avansat
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ciclu prin tipurile de semnal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Doar normal
@@ -1244,6 +1247,7 @@ STR_CHEATS                                                      :{WHITE}Cheat-ur
 STR_CHEATS_TIP                                                  :{BLACK}Bifa vă indică dacă aţi folosit anterior acest cheat
 STR_CHEATS_WARNING                                              :{BLACK}Atenţie! Eşti pe cale să-ţi trădezi colegii de joc! Nu uita că această ruşine va rămâne înregistrată pentru totdeauna!
 STR_CHEAT_MONEY                                                 :{LTBLUE}Măreşte fondurile cu {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Joaca ca, compania: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer magic (demolează industrii şi lucruri amovibile): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunelele se pot intersecta: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construieşte în modul pauză: {ORANGE}{STRING}
@@ -1575,6 +1579,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :primit pachet c
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :versiune incorectă
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nume folosit deja
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :parola greşită
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :Id de companie gresit in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :dat afară de pe server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :a încercat să folosească un cheat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server plin
@@ -2750,6 +2755,8 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Todeauna avanseaza
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Service daca este nevoie
 
 STR_ORDER_CONDITIONAL                                           :Salt in ordine conditionata
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cum se face compararea datelor din vehicul cu valoarea data
@@ -2774,6 +2781,7 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Salt la comanda
 STR_CONDITIONAL_NUM                                             :Salt la comanda {COMMA} cand {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Salt la comanda {COMMA} cand {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}NU este calatorie
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Calatorie (fara orar)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Calatorii pentru {STRING}
 STR_TIMETABLE_STAY_FOR                                          :si opriri pentru {STRING}
@@ -2787,7 +2795,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service
 
 STR_INVALID_ORDER                                               :{RED} (Comenzi eronate)
 
-STR_UNKNOWN_STATION                                             :staţie necunoscută
+STR_UNKNOWN_STATION                                             :statie necunoscuta
 STR_8812_EMPTY                                                  :{LTBLUE}Gol
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de la {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de la {STATION} (x{NUM})
@@ -2822,6 +2830,7 @@ STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Orar
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Comuta in modul de vizualizare orar
 STR_ORDER_VIEW                                                  :{BLACK}Comenzi
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Schimba la panoul de comenzi
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Comenzi)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Sfârşitul comenzilor - -
 STR_SERVICE                                                     :{BLACK}Service
@@ -2830,6 +2839,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Valoare: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Încărcare / Descărcare
+STR_LEAVING                                                     :{LTBLUE}Pleaca
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Trenul trebuie oprit intr-un depou
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nu se poate trimite trenul la depou...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nu mai este loc pentru comenzi
@@ -2899,6 +2909,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Redenume
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nu se poate redenumi modelul de vehicul...
 STR_CLEAR_TIME                                                  :{BLACK}Curata timp
 STR_RESET_LATENESS                                              :{BLACK}Reinitializeaza contorul de intarziere
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Schimba numele haltei
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Oprire
@@ -2925,6 +2936,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Momentan, acest
 STR_TIMETABLE_TOTAL_TIME                                        :Acest orar va lua {STRING} pentru finalizare
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Acest orar va lua cel putin {STRING} pentru finalizare (nu in intregime programat)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-completare
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Completeaza tabla cu timpuri automat cu valorile pentru urmatoarea calatorie (CTRL-clci pentru a incerca sa pastrati timpurile de asteptare)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Autovehicul in cale
@@ -3212,6 +3224,7 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Prea multe NewGRF-uri încărcate.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Imagine neaşteptată/eronată
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Actiune necunoscuta proprietate 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Incercare de folosire a unui ID invalid
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Incarcă presetarea selectată

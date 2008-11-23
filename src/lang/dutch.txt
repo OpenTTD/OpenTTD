@@ -157,7 +157,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}Bericht
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Bericht van {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Waarschuwing!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Kan dit niet uitvoeren....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan gebied niet ontruimen....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan dit gebied niet ontruimen....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originele copyright {COPYRIGHT} 1995 Chris Sawyer, alle rechten voorbehouden
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versie {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 Het OpenTTD team
@@ -252,7 +252,7 @@ STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFON
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Treinstation
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Laadstation
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Busstation
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Vliegveld/Helipoort
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Vliegveld/Heliplatform
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Haven
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Woestenij
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Grasland
@@ -284,7 +284,7 @@ STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 STR_OSNAME_SUNOS                                                :SunOS
 
-STR_013B_OWNED_BY                                               :{WHITE}...is van {STRING}
+STR_013B_OWNED_BY                                               :{WHITE}...is eigendom van {STRING}
 STR_013C_CARGO                                                  :{BLACK}Lading
 STR_013D_INFORMATION                                            :{BLACK}Informatie
 STR_013E_CAPACITIES                                             :{BLACK}Capaciteiten
@@ -480,9 +480,9 @@ STR_019C_ROAD_VEHICLE                                           :Voertuig
 STR_019D_AIRCRAFT                                               :Vliegtuig
 STR_019E_SHIP                                                   :Schip
 STR_019F_TRAIN                                                  :Trein
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} wordt oud
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} wordt erg oud
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} wordt erg oud en is aan vervanging toe
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} is oud aan het worden
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} is erg oud aan het worden
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} is heel erg oud aan het worden en is aan vervanging toe
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landinformatie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Sloopkosten: {LTBLUE}{CURRENCY}
@@ -532,12 +532,12 @@ STR_01CA_31ST                                                   :31
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
-STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Accepteert: {LTBLUE}
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Geaccepteerde goederen: {LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz jukebox
 STR_01D3_SOUND_MUSIC                                            :Geluid/muziek
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Toon geluid/muziek scherm
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Toon geluid/muziekscherm
 STR_01D5_ALL                                                    :{TINYFONT}Alle
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Oude stijl
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Nieuwe stijl
@@ -563,14 +563,14 @@ STR_01EA_PROGRAM                                                :{TINYFONT}{BLAC
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muziekprogrammakeuze
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
-STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Nummer index
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Nummerindex
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programma - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Leeg
-STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Sla op
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Opslaan
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Huidig muziekprogramma
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Selecteer 'alle nummers' programma
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selecteer 'oude stijl muziek' programma
-STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selecteer 'nieuwe stijl muziek' programma
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Selecteer 'oude stijl-muziek' programma
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Selecteer 'nieuwe stijl-muziek' programma
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Selecteer 'aangepast 1' programma
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selecteer 'aangepast 2' programma
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Leeg huidig programma (alleen Aangepast 1 en Aangepast 2)
@@ -580,14 +580,14 @@ STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik op 
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Programmashuffle aan/uit
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Toon nummerselectiescherm
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik op de dienst om de stad/industrie te centreren
-STR_01FE_DIFFICULTY                                             :{BLACK}Moeilijkheid ({STRING})
+STR_01FE_DIFFICULTY                                             :{BLACK}Moeilijkheidsgraad ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Laatste (nieuws)bericht
-STR_0201_MESSAGE_SETTINGS                                       :Berichteninstellingen
+STR_0201_MESSAGE_SETTINGS                                       :Berichtinstellingen
 STR_MESSAGE_HISTORY_MENU                                        :Berichtengeschiedenis
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Toon laatste (nieuws)bericht, toon berichteninstellingen
-STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Berichtenopties
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Berichttypen:
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Toon laatste (nieuws)bericht, toon berichtinstellingen
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Berichtopties
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Berichtsoorten:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste voertuig bij eigen station
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste voertuig bij concurrerend station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukken/rampen
@@ -622,7 +622,7 @@ STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} van {COMPANY} bereikt '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario editor
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Scenario-editor
 STR_0223_LAND_GENERATION                                        :{WHITE}Landontwikkeling
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
@@ -691,7 +691,7 @@ STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Plaats e
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Plaats houtzagerij
 STR_0265_PLANT_FOREST                                           :{BLACK}Plant bos
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Plaats olieraffinaderij
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Plaats olieplatform (alleen bij randen van de kaart)
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Plaats olieplatform (kan alleen worden gebouwd bij randen van de kaart)
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Plaats fabriek
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Plaats hoogoven
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Plaats boerderij
@@ -702,12 +702,12 @@ STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Plaats p
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Plaats voedselverwerkingsfabriek
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Plaats drukkerij
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Plaats goudmijn
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Plaats bank (alleen in steden)
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Plaats bank (kan alleen worden gebouwd in steden)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Plaats houtzagerij (kapt regenwoud en produceert hout)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plant fruitplantage
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plant rubberplantage
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Plaats waterbron
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Plaats watertoren (alleen in steden)
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Plaats watertoren (kan alleen worden gebouwd in steden)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Plaats diamantmijn
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Plaats kopermijn
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plant suikerspinbos
@@ -726,12 +726,12 @@ STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...plaat
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...slechts één per stad toegestaan
 STR_0288_PLANT_TREES                                            :{BLACK}Plant bomen
 STR_0289_PLACE_SIGN                                             :{BLACK}Plaats bord
-STR_028A_RANDOM_TREES                                           :{BLACK}Verspreid willekeurige bomen
-STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Verspreid bomen over de kaart
+STR_028A_RANDOM_TREES                                           :{BLACK}Willekeurige bomen
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Verspreid bomen willekeurig over de kaart
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaats steenachtige gebieden op de kaart
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats vuurtoren
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijn gebied.{}Gebruik CTRL om het te verwijderen
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijngebied.{}Gebruik CTRL om het te verwijderen
 STR_CREATE_LAKE                                                 :{BLACK}Definiëer water gebied.{}Maak een kanaal, tenzij CTRL wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
 STR_CREATE_RIVER                                                :{BLACK}Maak rivier.
 STR_0290_DELETE                                                 :{BLACK}Verwijder
@@ -742,7 +742,7 @@ STR_MENU_LOAD_HEIGHTMAP                                         :Laad hoogtekaar
 STR_0294_QUIT_EDITOR                                            :Sluit editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Afsluiten
-STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sla scenario op, open scenario, scenarioeditor verlaten, OpenTTD afsluiten
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sla scenario op, open scenario, scenario-editor verlaten, afsluiten
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Scenario openen
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Scenario opslaan
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Scenario spelen
@@ -750,12 +750,12 @@ STR_PLAY_HEIGHTMAP                                              :{BLACK}Speel Ho
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sluit editor
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in steden met bevolking van meer dan 1200 gebouwd worden
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats begindatum 1 jaar achteruit
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats begindatum 1 jaar vooruit
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in steden met bevolking van meer dan 1200 worden gebouwd
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats startdatum 1 jaar terug
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Verplaats startdatum 1 jaar vooruit
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...uiteinden van brug moeten beiden op land zijn
 STR_02A1_SMALL                                                  :{BLACK}Klein
-STR_02A2_MEDIUM                                                 :{BLACK}Middel
+STR_02A2_MEDIUM                                                 :{BLACK}Middelmatig
 STR_02A3_LARGE                                                  :{BLACK}Groot
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Kies stadsgrootte

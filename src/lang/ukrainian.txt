@@ -1060,6 +1060,7 @@ STR_CURR_SEK                                                    :Шведськ�
 STR_CURR_YTL                                                    :Турецька ліра (YTL)
 STR_CURR_SKK                                                    :Словацька крона (SKK)
 STR_CURR_BRL                                                    :Бразильський реал (BRL)
+STR_CURR_EEK                                                    :Естонська крона (EEK)
 
 STR_CURR_CUSTOM                                                 :Власна...
 
@@ -1768,6 +1769,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Приб
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Приблизний прибуток: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Неможливо підняти ділянку...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Неможливо опустити ділянку...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Тут не можна вирівняти землю...
 STR_080A_ROCKS                                                  :Каміння
 STR_080B_ROUGH_LAND                                             :Нерівна земля
 STR_080C_BARE_LAND                                              :Пустир
@@ -1782,6 +1784,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Немо
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Роботи пошкодять тунель
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Вже понижено до рівня моря
 STR_1004_TOO_HIGH                                               :{WHITE}Дуже високо
+STR_ALREADY_LEVELLED                                            :{WHITE}... вже рівна
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Невідповідний тип колії
 STR_1007_ALREADY_BUILT                                          :{WHITE}...вже побудовано
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Спочатку приберіть колію
@@ -3101,6 +3104,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Цей тран
 STR_TIMETABLE_TOTAL_TIME                                        :Цей розклад займе ще {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Цей розклад займе якнайменше {STRING} (не все за розкладом)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автозаповнення
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Автоматично заповнити розклад значеннями з настуної поїздки (CTRL+click - спробувати зберегти час очікування)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто

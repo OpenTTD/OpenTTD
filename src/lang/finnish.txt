@@ -1021,7 +1021,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Ajoneuvo
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivan {COMMA} itseuudistus epäonnistui{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lentokoneen {COMMA} itseuudistus epäonnistui{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Juna {COMMA} kasvaisi liian pitkäksi
-STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ei käytössä olevia automaattikorvaus- tai -uudistussääntöjä
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ei käytössä olevia itsekorvaus- tai itseuudistussääntöjä
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahoitusraja)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Lisäasetukset
@@ -1054,6 +1054,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Samanty
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Näytä aina koko päiväys tilapalkissa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Näytä opastimet ajokaistalla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Näytä rahoitusikkuna vuoden lopussa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Uudet määräykset ovat oletusarvoisesti nonstop-tyyppisiä: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Ajoneuvojonotus (kvanttitehostein): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Vieritä ikkunaa, kun hiiri osuu reunaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Salli viranomaisten lahjominen: {ORANGE}{STRING}
@@ -1141,6 +1142,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Viimeinen
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Näytä varatut radat: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Näytä rakennustyökalut, kun sopivaa ajoneuvoa ei ole: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaaja: {ORANGE}{STRING}
@@ -1175,8 +1177,12 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Tasaine
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Salli osakkeiden ostaminen muista yhtiöistä
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vedettäessä aseta opastimien väleiksi: {ORANGE}{STRING} ruutu(a)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Rakenna opasteet automaattisesti ennen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Käytä graafista opastinkäyttöliittymää: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Oletusarvoinen opastintyyppi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Tavallinen
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Edistynyt
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Yksisuuntaiset reittiopastimet
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Vaihda opastintyyppien välillä: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Vain tavallinen
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Vain edistynyt
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Kaikki
@@ -1266,6 +1272,7 @@ STR_WAYPOINT                                                    :{WHITE}Reittipi
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Valitse reittipisteen tyyppi
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Juna{P "" a}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Muokkaa reittipisteen nimeä
@@ -1404,6 +1411,7 @@ STR_NETWORK_DATE_CAPTION                                        :{BLACK}Päiväy
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Tämä päivä
 
 STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Vuosia
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Pelin kesto{}vuosina
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}PELITIEDOT
 STR_NETWORK_CLIENTS                                             :{SILVER}Pelaajat:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1688,12 +1696,23 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rautatie tavall
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rautatie esiopastimin
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Rautatie poistumisopastimin
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdistelmäopastein
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Rautatiekiskot reittiopastimilla
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Rautatiekiskot yksisuuntaisilla reittiopastimilla
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Rautatie esisignaaleilla
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Rautatie poistumis-signaaleilla
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Rautatie normaali- ja yhdistelmäopastein
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Rautatieraiteet blokki- ja reittiopastimilla
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Rautatieraiteet blokki- ja yksisuuntaisilla reittiopastimilla
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Rautatie esi- ja poistumissignaaleilla
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Rautatie esi- ja yhdistelmäopastein
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Rautatieraiteet ehto- ja reittiopastimilla
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Rautatieraiteet ehto- ja yksisuuntaisopastimilla
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Rautatie poistumis- ja yhdistelmäopastein
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Rautatieraiteet poistumis- ja reittiopastimilla
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Rautatieraiteet poistumis- ja yksisuuntaisopastimilla
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Rautatieraiteet yhdistelmä- ja reittiopastimilla
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Rautatieraiteet yhdistelmä- ja yksisuuntaisopastimilla
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rautatieraiteet reitti- ja yksisuuntaisopastimilla
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Poista asema ensin
 
 
@@ -1722,6 +1741,7 @@ STR_TRAMWAY_CONSTRUCTION                                        :Raitiotien rake
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Rakenna tieosuus.
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Rakenna tieosuus käyttäen Autoroad-tilaa
 STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Rakenna raitiotietä
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Rakenna raitiovaunuosuus käyttäen Autotram-tilaa
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Rakenna autovarikko (ajoneuvojen rakentamista ja huoltoa varten)
 STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Rakenna raitiotievarikko (vaunujen rakentamiseen ja korjaamiseen)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Rakenna linja-autoasema
@@ -2688,6 +2708,8 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (yksityiskohdat)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Juna on tiellä.
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Nonstop
 STR_ORDER_GO_TO                                                 :Mene
 STR_ORDER_GO_NON_STOP_TO                                        :Mene pysäyksettä
 STR_ORDER_GO_VIA                                                :Mene kautta
@@ -2697,7 +2719,7 @@ STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Lastaa jos saat
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Lastaa täyteen kaikki rahtityypit
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Lastaa täyteen mikä tahansa rahtityyppi
 STR_ORDER_DROP_NO_LOADING                                       :Älä lastaa rahtia
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Pura kaikki rahti
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Pura koko lasti
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Pura lasti, jos asema hyväksyy sitä
 STR_ORDER_DROP_UNLOAD                                           :Pura kaikki
 STR_ORDER_DROP_TRANSFER                                         :Siirrä
@@ -2716,17 +2738,24 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Siirrä rahti 
 STR_ORDER_NO_UNLOAD                                             :(Ei lastin purkua, mutta lastaa rahti)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Ei lastin purkua, mutta odota uuden lastin täyttymistä)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Ei lastin purkua, mutta odota minkä tahansa lastin täyttymistä)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Muuta korostetun määräyksen pysähtymiskäyttäytymistä
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Muuta korostetun määräyksen lastauskäyttäytymistä
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Muuta korostetun määräyksen purkamiskäyttäytymistä
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Lisää kehittynyt määräys
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Mene lähimmälle varikolle
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Mene lähimmälle varikolle
 STR_ORDER_NEAREST_DEPOT                                         :lähin
 STR_ORDER_NEAREST_HANGAR                                        :lähin varikko
 STR_ORDER_SERVICE_AT                                            :Huolto
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Nonstop-huolto
+STR_ORDER_TRAIN_DEPOT                                           :Junavarikko
 STR_ORDER_ROAD_DEPOT                                            :Varikko
 STR_ORDER_SHIP_DEPOT                                            :Varikko
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+STR_GO_TO_HANGAR                                                :{STRING} aseman {STATION} lentokonehalliin
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mene aina
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Huolto, jos tarpeen
@@ -2751,6 +2780,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :on enemmän kui
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :on enemmän tai yhtä kuin
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :on tosi
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :on epätosi
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Hyppää määräykseen {COMMA}
 STR_CONDITIONAL_NUM                                             :Hyppää määräykseen {COMMA}, kun {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Hyppää määräykseen {COMMA}, kun {STRING} {STRING}
@@ -2799,9 +2829,12 @@ STR_8826_GO_TO                                                  :{BLACK}Mene
 STR_REFIT                                                       :{BLACK}Sovita
 STR_REFIT_TIP                                                   :{BLACK}Valitse rahdin tyyppi jolla tämä käsky uudistetaan. CTRL+klikkaus poistaa uudistuksen
 STR_REFIT_ORDER                                                 :(Sovita {STRING})
+STR_REFIT_STOP_ORDER                                            :(Sovita rahtityypiksi {STRING} ja pysähdy)
+STR_STOP_ORDER                                                  :(Pysähdy)
 STR_TIMETABLE_VIEW                                              :{BLACK}Aikataulu
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näytä aikataulu
 STR_ORDER_VIEW                                                  :{BLACK}Määräykset
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Vaihda määräysnäkymään
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (aikataulu)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - aikataulun loppu - -
 STR_SERVICE                                                     :{BLACK}Huolto
@@ -2879,6 +2912,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Nimeä j
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Juna(vaunu)n tyyppiä ei voi uudelleennimetä...
 STR_CLEAR_TIME                                                  :{BLACK}Nollaa aika
 STR_RESET_LATENESS                                              :{BLACK}Nollaa myöhästymislaskuri
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Muuta reittipisteen nimeä
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Pysäytetään
@@ -2893,6 +2927,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Uusi {STRING} on nyt saatavilla! - {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Tuhoutunutta kulkuneuvoa ei voi myydä...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Ei voi sovittaa tuhoutunutta kulkuneuvoa...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Ei voi asettaa aikataulua.
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Vain asemalla voi odottaa.
@@ -2976,6 +3011,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ajoneuvo
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse ajoneuvolla ajettava rahti
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Vesireittien rakentaminen
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Vesireittien rakentaminen
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Vesireitit
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Satamaa ei voi rakentaa tähän...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}, telakka
 STR_9804_NEW_SHIPS                                              :{BLACK}Uusia laivoja
@@ -3129,6 +3167,8 @@ STR_BRIBE_FAILED                                                :{WHITE}Yleinen 
 STR_BRIBE_FAILED_2                                              :{WHITE}lahjontayrityksesi.
 STR_BUILD_DATE                                                  :{BLACK}Rakennettu: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Aseman luokka: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Aseman tyyppi: {LTBLUE}{STRING}
 STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Yksityiskohtainen suoritearvio
@@ -3187,10 +3227,18 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} vaatii OpenTTD:n version {STRING} tai uudemman.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF-tiedosto jonka se muuntaa
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Liian monta NewGRF:ää on ladattu.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :NewGRF:n {STRING} lataaminen staattisena NewGRF:nä {STRING}:n kanssa saattaa aiheuttaa nykimistä.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Odottamaton sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tuntematon Action 0 -ominaisuus.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Virheellisen ID:n käyttöyritys.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisältää korruptoituneen spriten. Kaikki korruptoituneet spritet näkyvät punaisina kysymysmerkkeinä (?).
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Lataa valittu valmislista
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Tallenna valmislistaksi
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Tallenna nykyinen lista valmislistaksi
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Syötä nimi valmislistalle
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Poista valmislista
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Poista valittu valmislista
 STR_NEWGRF_ADD                                                  :{BLACK}Lisää
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Lisää NewGRF-tiedosto listaan
 STR_NEWGRF_REMOVE                                               :{BLACK}Poista
@@ -3219,7 +3267,11 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Yhteenso
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Puuttuvat GRF tiedostot ovat poistettu käytöstä
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Puuttuvat GRF tiedostot tarvitaan pelin lataamiseksi.
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Puuttuva(t) GRF-tiedosto(t)
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Taukotilasta poistuminen saattaa kaataa OpenTTD:n. Älä lähetä virheraportteja tämänjälkeisistä kaatumisista.{}Haluatko todella poistua taukotilasta?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF:n '{0:STRING}' käytös aiheuttaa todennäköisesti nykimistä ja/tai kaatumisia.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Se muuttaa kulkuneuvon '{1:ENGINE}' pituutta, kun se ei ole varikolla.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Yhtiölle '{1:COMPANY}' kuuluvan junan '{0:VEHICLE}' pituus on virheellinen. Tämä johtuu luultavasti NewGRF:ien ongelmista. Peli saattaa nykiä tai kaatua.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Peli tallennettiin versiossa, joka ei tue raitiovaunuja. Kaikki raitiovaunut on poistettu.
 
@@ -3567,9 +3619,17 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Vaihda s
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Opastimien valinta
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Ei voi muuntaa opastimia tässä...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Blokkisignaali (siipiopastin){}Tämä on kaikkein alkeellisin signaali, joka sallii vain yhden junan samassa blokissa yhtä aikaa.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Opastimien tiheys vetämällä lisättäessä
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Pienennä opastimien tiheyttä vetämällä lisättäessä
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Suurenna opastimien tiheyttä vetämällä lisättäessä
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :§1234567890+´ qwertyuiopå¨asdfghjklöä' zxcvbnm,.- .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :½!"#¤%&/()=?` QWERTYUIOPÅ^ASDFGHJKLÖÄ* ZXCVBNM;:_ .
 ########
 
 ############ town controlled noise level

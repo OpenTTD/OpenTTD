@@ -357,7 +357,7 @@ STR_013E_CAPACITIES                                             :{BLACK}Kapacit�
 STR_TOTAL_CARGO                                                 :{BLACK}Teljes rakomány
 STR_013F_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO} (x{NUM})
-STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Teljes rakománya (kapacitása) ennek a vonatnak:
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Teljes rakomány-kapacitása ennek a vonatnak:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Új játék
@@ -383,9 +383,9 @@ STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mf/h
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}lóerő
-STR_UNITS_POWER_METRIC                                          :{COMMA}lóerő
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} LE
+STR_UNITS_POWER_METRIC                                          :{COMMA} LE
+STR_UNITS_POWER_SI                                              :{COMMA} kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
@@ -1097,14 +1097,14 @@ STR_CONFIG_PATCHES_OFF                                          :Ki
 STR_CONFIG_PATCHES_ON                                           :Be
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Járművek sebességének kijelzése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Lejtőre és partokra építés: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Épületek, sínek alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Építmények alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett befogadókörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, stb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Vonatok valósághű gyorsulása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}A vonatok és a hajók nem tesznek 90 fokos kanyart: {ORANGE}{STRING} {LTBLUE} (csak NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Egymás mellé építhető vonatállomások: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}A továbbfejlesztett betöltés használata: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telepakolása (egyidejű helyett): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Csak akkor szállítson árut az állomásra, ha ott van rá kereslet: {ORANGE}{STRING}
@@ -1141,9 +1141,9 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :igen, de nem az
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :minden járműre
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Figyelmeztetés, ha a vonat veszteséges: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Járművek sose avuljanak el: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatán felújítja a járművet ha elöregedik
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatikusan felújítja a járművet ha elöregedik
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automatán felújítja a járművet {ORANGE}{STRING}{LTBLUE} hónappal a max életkora előtt/után
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automata megújításhoz szükséges minimális pénz: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autom. megújításhoz szükséges min. bankbetét: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a lakosságot a feliratban: {ORANGE}{STRING}
 
@@ -1168,10 +1168,10 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}A sima 
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendező eszköztár megnyitása a közúti/vasúti/vízi/légi eszköztárakkal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendező eszköztár megnyitása az építési eszköztárakkal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Egeres mozgáskor a táj a másik irányba mozdul el: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Finomított nézőpont-görgetés: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Építési eszközök használata esetén területinformációk mutatása: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Területinformációk mutatása építési eszközök használatakor : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Cégek járműveinek mutatása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Egyikét sem
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Csak a sajátét
@@ -1199,7 +1199,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Saját vállala
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Minden vállalat
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Időalapú menetrend engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Menetrendi idő-alapegység tick a nap helyett: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Alapértelmezett vasúti pályatipus (játéktöltés/új játék után): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Alapértelmezett vasúti pályatipus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normál vasúti pálya
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektromos vasúti pálya
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Egysínű
@@ -1276,7 +1276,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Nagyon gyors
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Dupla gyorsan növekvő települések aránya: {ORANGE}{STRING} településből 1
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Dupla gyorsan növekvő települések aránya: {ORANGE}Nincsennek
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Kezdeti városméret-szorzó: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Abszurd útrészletek útépítés közbeni eltávolítása
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Abszurd útrészletek automatikus eltávolítása (városi tul. utakon)
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Megjelenítés
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Építkezés
@@ -1757,27 +1757,27 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Válaszd
 STR_1021_RAILROAD_TRACK                                         :Vasúti pálya
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Járműtelep
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...a terület más cégé
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti pálya normál jelzőkkel
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vasúti pálya előjelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Vasúti pálya normál jelzővel
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Vasúti pálya előjelzővel
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Vasúti pálya kijárati jelzővel
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti pálya kombinált jelzőkkel
-STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vasúti pálya fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vasúti pálya egyirányú fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vasúti pálya normál- és előjelzőkkel
-STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vasúti pálya normál és kijárati jelzőkkel
-STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vasúti pálya normál és kombinált jelzőkkel
-STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vasúti pálya normál és fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vasúti pálya normál és egyirányú fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vasúti pálya elő- és kijárati jelzőkkel
-STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vasúti pálya elő- és kombinált jelzőkkel
-STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Vasúti pálya elő- és fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Vasúti pálya elő- és egyirányú fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vasúti pálya kijárati- és előjelzőkkel
-STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Vasúti pálya kijárati- és fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vasúti pálya kijárati- és egyirányú fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vasúti pálya kombinált és fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vasúti pálya egy- és kétirányú fejlett jelzőkkel
-STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vasúti pálya egy- és kétirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vasúti pálya kombinált jelzővel
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Vasúti pálya fejlett jelzővel
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Vasúti pálya egyirányú fejlett jelzővel
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Vasúti pályák normál és előjelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Vasúti pályák normál és kijárati jelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Vasúti pályák normál és kombinált jelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Vasúti pályák normál és fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Vasúti pályák normál és egyirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Vasúti pályák elő- és kijárati jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Vasúti pályák elő- és kombinált jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Vasúti pályák elő- és fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Vasúti pályák elő- és egyirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Vasúti pályák kijárati és előjelzőkkel
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Vasúti pályák kijárati és fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Vasúti pályák kijárati és egyirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vasúti pályák kombinált és fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vasúti pályák egy- és kétirányú fejlett jelzőkkel
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vasúti pályák egy- és kétirányú fejlett jelzőkkel
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a vasútállomást le kell rombolni
 
 
@@ -2326,7 +2326,7 @@ STR_6815_DISASTERS                                              :{LTBLUE}Kataszt
 STR_CITY_APPROVAL                                               :{LTBLUE}A városi tanács hozzáállása a területrendezéshez: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
-STR_NONE                                                        :Egyiksem
+STR_NONE                                                        :Semmi
 STR_NUM_VERY_LOW                                                :Nagyon kevés
 STR_6816_LOW                                                    :Kevés
 STR_6817_NORMAL                                                 :Normál
@@ -2994,7 +2994,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CU
 STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Működtetési költség: {LTBLUE}{CURRENCY}/év
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_S}   {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK}   Végsebesség: {LTBLUE} {VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Súly: {LTBLUE}{WEIGHT_S} {BLACK}Telj.: {LTBLUE}{POWER}{BLACK} Max. seb.: {LTBLUE}{VELOCITY} {BLACK}Max. húzóerő: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}Súly: {LTBLUE}{WEIGHT_S} {BLACK}Telj.: {LTBLUE}{POWER}{BLACK} Max. seb.: {LTBLUE}{VELOCITY} {BLACK}Vonóerő: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Áll
@@ -3247,7 +3247,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Átalakí
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapacitás: {GOLD}{STRING}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nem alakíthatod át a repülőgépet...
 
-STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Menetrendesítve)
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} várakozási és menetidői
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinbaleset {STATION} közelében!
@@ -3401,7 +3401,7 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Összes 
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Összes dokkbeli hajó eladása
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Összes hangárbéli repülő eladása
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Az összes, ezen depotot menetrendszerüen látogató vonat listájának összeállítása
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Az összes, ezen depót menetrendszerüen látogató vonat listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Az összes, ezen hangárt menetrendszerüen látogató jármű listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Az összes, ezen dokkot menetrendszerüen látogató hajó listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Az összes, itteni hangárt menetrendszerüen látogató repülőgép listájának összeállítása
