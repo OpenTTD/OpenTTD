@@ -199,7 +199,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid)
 {
 	EFCParam langInfo;
-	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, (LPWSTR)&langInfo.locale, sizeof(langInfo.locale) / sizeof(TCHAR)) == 0) {
+	if (GetLocaleInfo(MAKELCID(winlangid, SORT_DEFAULT), LOCALE_FONTSIGNATURE, (LPTSTR)&langInfo.locale, sizeof(langInfo.locale) / sizeof(TCHAR)) == 0) {
 		/* Invalid langid or some other mysterious error, can't determine fallback font. */
 		DEBUG(freetype, 1, "Can't get locale info for fallback font (langid=0x%x)", winlangid);
 		return false;
