@@ -187,6 +187,9 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 		if ((fs.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (fs.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
 	}
 
+	const char *font_name = WIDE_TO_MB((const TCHAR*)logfont->elfFullName);
+	DEBUG(freetype, 1, "Fallback font: %s", font_name);
+
 	strecpy(info->settings->small_font,  font_name, lastof(info->settings->small_font));
 	strecpy(info->settings->medium_font, font_name, lastof(info->settings->medium_font));
 	strecpy(info->settings->large_font,  font_name, lastof(info->settings->large_font));
