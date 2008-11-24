@@ -884,8 +884,30 @@ STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}نمی �
 STR_4000_SAVE_GAME                                              :{WHITE}ذخیره ی بازی
 STR_4001_LOAD_GAME                                              :{WHITE}ادامه ی بازی
 STR_4002_SAVE                                                   :{BLACK}ذخیره
+STR_4003_DELETE                                                 :{BLACK}حذف
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} free
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}درایو خوانده می شود
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}بازی ذخیره نشد{}{STRING}
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}فایل حذف نمی شود
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}بازی بارگزاری نشد{}{STRING}
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}لیست درایو ها، پوشه ها و بازی های ذخیره شده
 
 ##id 0x4800
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :معدن ذغال
+STR_4803_POWER_STATION                                          :نیروگاه
+STR_4804_SAWMILL                                                :چوب بری
+STR_4805_FOREST                                                 :جنگل
+STR_4806_OIL_REFINERY                                           :پالایشگاه
+STR_4807_OIL_RIG                                                :سکوی نفت
+STR_4808_FACTORY                                                :کارخانه
+STR_4809_PRINTING_WORKS                                         :چاپخانه
+STR_480A_STEEL_MILL                                             :فولاد سازی
+STR_480B_FARM                                                   :مزرعه
+STR_480C_COPPER_ORE_MINE                                        :معدن سنگ مس
+STR_480D_OIL_WELLS                                              :چاه نفت
+STR_480E_BANK                                                   :بانک
 
 ############ range for requires starts
 ############ range for requires ends

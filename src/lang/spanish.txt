@@ -3236,6 +3236,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {STRING}
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propiedad Acción 0 desconocida.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar un ID incorrecto
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene un sprite corrupto. Todos los sprites corruptos serán mostrados como un interrogante rojo (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Cargar la programación seleccionada
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Grabar programación

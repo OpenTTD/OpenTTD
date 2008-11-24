@@ -3299,6 +3299,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Nahrání {STRI
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepředpokládaný sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznámá vlastnost Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použití neplatného ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit předvolbu

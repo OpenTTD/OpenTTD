@@ -383,6 +383,7 @@ STR_SORT_BY_MAX_SPEED                                           :Максима�
 STR_SORT_BY_MODEL                                               :Модель
 STR_SORT_BY_VALUE                                               :Стоимость
 STR_SORT_BY_LENGTH                                              :Длина
+STR_SORT_BY_LIFE_TIME                                           :Оставшийся срок службы
 STR_SORT_BY_FACILITY                                            :Тип станции
 STR_SORT_BY_WAITING                                             :Кол-во товара на станции
 STR_SORT_BY_RATING_MAX                                          :Рейтинг грузов
@@ -597,8 +598,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Инф�
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Открытие производства
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Закрытие производства
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Изменения в экономике
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Изменения производительности предприятий, обслуживаемых компанией
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Изменения уровня производства предприятий, обслуживаемых соперниками
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Изменения уровня производства предприятий, никем не обслуживаемых
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Советы/сведения по транспорту компании
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Новый транспорт
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Изменения в списке принимаемых грузов
 STR_020E_SUBSIDIES                                              :{YELLOW}Субсидии
@@ -1054,6 +1057,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Оди�
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Всегда полная дата в панели состояния: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Показывать светофоры на стороне движения: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показывать финансовую статистику каждый год: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Новые задания будут 'без остановки' по умолчанию: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Автотранспорт строится в очередь у станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Смещать обзор, когда курсор находится у края экрана: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Разрешить подкупать муниципальную власть: {ORANGE}{STRING}
@@ -1643,6 +1647,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Пред
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Предполагаемый доход: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Невозможно повысить уровень земли здесь...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Невозможно понизить уровень земли здесь...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Не могу изменить уровень здесь...
 STR_080A_ROCKS                                                  :Скалы
 STR_080B_ROUGH_LAND                                             :Грубая земля
 STR_080C_BARE_LAND                                              :Голая земля
@@ -1657,6 +1662,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Нево
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Земляные работы разрушат туннель
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Уже на уровне моря
 STR_1004_TOO_HIGH                                               :{WHITE}Слишком высоко
+STR_ALREADY_LEVELLED                                            :{WHITE}... уже ровно
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Нет подходящих рельсов
 STR_1007_ALREADY_BUILT                                          :{WHITE}...уже построено
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Сначала надо удалить рельсы
@@ -2765,6 +2771,9 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} Ангар ({STATION})
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Всегда идти
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Обслуж. если необходимо
+STR_ORDER_DROP_HALT_DEPOT                                       :Стоп
 
 STR_ORDER_CONDITIONAL                                           :Условный переход к заданию
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Данные транспорта для перехода
@@ -2836,6 +2845,8 @@ STR_8826_GO_TO                                                  :{BLACK}Ехат
 STR_REFIT                                                       :{BLACK}Переоб.
 STR_REFIT_TIP                                                   :{BLACK}Выберите тип грузов для переоборудования. CTRL+клик - для удаления.
 STR_REFIT_ORDER                                                 :(Переоборуд. для {STRING})
+STR_REFIT_STOP_ORDER                                            :(Переоборуд. для {STRING} и стоп)
+STR_STOP_ORDER                                                  :(Стоп)
 STR_TIMETABLE_VIEW                                              :{BLACK}Расписание
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Просмотр расписания
 STR_ORDER_VIEW                                                  :{BLACK}Задания
@@ -2945,6 +2956,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Этот тра
 STR_TIMETABLE_TOTAL_TIME                                        :Выполнение этого расписания займет {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Выполнение этого расписания займет не менее {STRING} (не все просчитано)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Автомат.
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (CTRL-click to try to keep waiting times)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Машина на пути
@@ -3236,6 +3248,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Загрузк�
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неверный спрайт.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвестное свойство для Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Используется неправильный ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} содержит неправильный спрайт. Все неправльные спрайты будут показаны красным знаком вопроса (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Загрузить выбранный набор
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Сохранить набор

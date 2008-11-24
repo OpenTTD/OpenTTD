@@ -1646,7 +1646,11 @@ STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Ailwayray acktr
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Ailwayray acktray ithway ormalnay andway ombocay-ignalssay
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ailwayray acktray ithway epray- andway exitway-ignalssay
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ailwayray acktray ithway epray- andway ombocay-ignalssay
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ailwayray racktay ithway repay- andway athpay ignalssay
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ailwayray racktay ithway repay- andway one-ayway athpay ignalssay
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Ailwayray acktray ithway exitway- andway ombocay-ignalssay
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Ailwayray racktay ithway exitway- andway athpay ignalssay
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Ailwayray racktay ithway exitway- andway one-ayway athpay ignalssay
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Ustmay emoveray ailwayray ationstay irstfay
 
 
@@ -1711,6 +1715,7 @@ STR_2002                                                        :{TINYFONT}{BLAC
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Uildingbay ustmay ebay emolishedday irstfay
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Itycay)
 STR_2006_POPULATION                                             :{BLACK}Opulationpay: {ORANGE}{COMMA}{BLACK}  Ouseshay: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Enameray Owntay
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}An'tcay enameray owntay...
@@ -1818,6 +1823,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}An'tcay 
 STR_280A_SIGN                                                   :Ignsay
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Editway ignsay exttay
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}An'tcay angechay ignsay amenay...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Anay otnay eleteday ignsay...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Electsay eetray ypetay otay antplay
 STR_280E_TREES                                                  :Eestray
 STR_280F_RAINFOREST                                             :Ainforestray
@@ -1920,6 +1926,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Electsay
 STR_3804_WATER                                                  :Aterway
 STR_3805_COAST_OR_RIVERBANK                                     :Oastcay orway iverbankray
 STR_3806_SHIP_DEPOT                                             :Ipshay epotday
+STR_AQUEDUCT                                                    :Aqueductway
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...An'tcay uildbay onway aterway
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Ustmay emolishday analcay irstfay
 
@@ -1947,6 +1954,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Electsay
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Electsay enarioscay (eengray), epray-etsay amegay (ueblay), orway andomray ewnay amegay
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Enerategay andomray ewnay amegay
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Oadlay Eightmaphay
+STR_SAVE_OSKTITLE                                               :{BLACK}Enterway away amenay orfay hetay avesay-amegay
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} inway ethay ayway
@@ -2198,6 +2206,7 @@ STR_HOSTILE                                                     :Ostilehay
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Ompanycay {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Ewnay Acefay
 STR_7005_COLOR_SCHEME                                           :{BLACK}Olourcay Emeschay
 STR_7006_COLOR_SCHEME                                           :{GOLD}Olourcay Emeschay:
@@ -2342,6 +2351,8 @@ STR_LIVERY_EMU                                                  :EMUWAY
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Assengerpay Oachcay (Eamstay)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Assengerpay Oachcay (Ieselday)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Assengerpay Oachcay (Electricway)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Assengerpay Oachcay (Onorailmay)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Assengerpay Oachcay (Aglevmay)
 STR_LIVERY_FREIGHT_WAGON                                        :Eightfray Agonway
 STR_LIVERY_BUS                                                  :Usbay
 STR_LIVERY_TRUCK                                                :Orrylay
@@ -2633,6 +2644,17 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} A
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Itizenscay elebratecay . . .{}Irstfay aintray arrivesway atway {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Etailsday)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Aintray inway ethay ayway
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Onay-topsay
+STR_ORDER_GO_TO                                                 :Ogay otay
+STR_ORDER_GO_NON_STOP_TO                                        :Ogay onay-topsay otay
+STR_ORDER_GO_VIA                                                :Ogay iavay
+STR_ORDER_GO_NON_STOP_VIA                                       :Ogay onay-topsay iavay
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Ullfay oadlay anyway argocay
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Oadlay ifwawy availableway
+STR_ORDER_DROP_TRANSFER                                         :Ransfertay
+
 
 
 

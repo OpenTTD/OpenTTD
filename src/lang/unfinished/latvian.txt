@@ -1896,17 +1896,36 @@ STR_7044_MALE                                                   :{BLACK}Viriešu
 STR_7045_FEMALE                                                 :{BLACK}Sieviešu
 STR_7046_NEW_FACE                                               :{BLACK}Jauna seja
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Pārtraukt jaunas sejas izvēli
-STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Apstiprināt izvēlēto jauno seju
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Apstiprināt izvēlēto seju
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Izvēlēties vīriešu sejas
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Izvēlēties sieviešu sejas
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Ģenerēt gadījuma principa seju
 STR_704C_KEY                                                    :{BLACK}Leģenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Grafikos rādīt leģendas
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Leģendas kompāniju grafikos
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Pārvadātās kargo vienības
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Uzņēmuma veikspējas tabula (lielākais=1000)
+STR_7052_COMPANY_VALUES                                         :{WHITE}Uzņēmuma vērtības
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Vadošo kompāniju saraksts
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transpora uzņēmumam problēmas!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} tiks izspārdots vai paziņots par bankrotu, ja vien darbības rādītāji tuvākajā laikā neuzlabosies!
+STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Vadītājs)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transporta uzņēmumi apvienojas!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} tika pārdots {STRING} par {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Mēs mēklējam kādu, kas vēlētos pirkt mūsu uzņēmumu.{}{}Vai tu gribi nopirkt {COMPANY} par {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrots!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} tika slēgts un visi īpašumi tika iztirgoti!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Darbu sāk jauns transporta uzņēmums!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} sāk būvdarbus netālu no {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nevar nopirkt uzņēmumu...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Pārvadāšanas izmaksas
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dienas pārvadājumos
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Izmaksas par 10 vienību (vai 10,000 litru) kravas pārvadāšanu par 20mit lauciņiem
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Ieslēgt/izslēgt kravas tipa grafiku
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Inženieris
 STR_COMPANY_PASSWORD                                            :{BLACK}Parole
 STR_PROTECTED                                                   :{WHITE}S'i' kompa'nija ir pa'ra'k jauna lai tirgotu akcijas...
 

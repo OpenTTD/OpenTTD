@@ -3235,6 +3235,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Laden {STRING} 
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwachte tekening
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende aktie 0 waarde.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebruik ongeldig ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige sprite. Alle ongeldige sprites worden getoond als een rood vraagteken (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laad de geselecteerd voorkeursinstelling
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Bewaar voorkeursinstelling

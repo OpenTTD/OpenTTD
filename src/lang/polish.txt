@@ -284,7 +284,7 @@ STR_0104_STEEL_MILL                                             :{BLACK}{TINYFON
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}{G=m}Bank
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}{G=m}Zakłady papiernicze
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}{G=f}Kopalnia złota
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}{G=f}Przetwórnia jedzenia
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}{G=f}Przetwórnia żywności
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}{G=f}Kopalnia diamentów
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}{G=f}Kopalnia rudy miedzi
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}{G=f}Plantacja owoców
@@ -2863,7 +2863,7 @@ STR_GO_TO_STATION                                               :{STRING} {STATI
 
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedz do najblizszej zajezdni
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Lec do najblizszego hangaru
-STR_ORDER_NEAREST_DEPOT                                         :najblizszy
+STR_ORDER_NEAREST_DEPOT                                         :najbliższy
 STR_ORDER_NEAREST_HANGAR                                        :najblizszy hangar
 STR_ORDER_SERVICE_AT                                            :Obsluga w
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Obsluga non-stop w
@@ -2876,7 +2876,7 @@ STR_GO_TO_HANGAR                                                :{STRING} {STATI
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Zawsze do
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Obsluga jesli wymagana
-STR_ORDER_DROP_HALT_DEPOT                                       :Stop
+STR_ORDER_DROP_HALT_DEPOT                                       :Zatrzymaj
 
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Załadowanie procentowo
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
@@ -3722,4 +3722,6 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zwiększ
 ########
 
 ############ town controlled noise level
+STR_NOISE_IN_TOWN                                               :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Wytwarzany hałas: {GOLD}{COMMA}
 ########
