@@ -1,6 +1,7 @@
 ##name Esperanto
 ##ownname Esperanto
 ##isocode eo_EO
+##winlangid 0x0000
 ##plural 0
 ##case n
 

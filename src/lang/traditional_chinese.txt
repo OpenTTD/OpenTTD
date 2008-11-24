@@ -1,6 +1,7 @@
 ##name Chinese (Traditional)
 ##ownname 中文
 ##isocode zh_TW
+##winlangid 0x0404
 ##plural 1
 
 #

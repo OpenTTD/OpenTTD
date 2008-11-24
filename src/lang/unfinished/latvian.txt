@@ -1,6 +1,7 @@
 ##name Latvian
 ##ownname Latviešu
 ##isocode lv_LV
+##winlangid 0x0426
 ##plural 3
 ##case kas
 ##gender m f

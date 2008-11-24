@@ -1,6 +1,7 @@
 ##name Romanian
 ##ownname Românã
 ##isocode ro_RO
+##winlangid 0x0418
 ##plural 0
 
 #

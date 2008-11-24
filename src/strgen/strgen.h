@@ -14,7 +14,16 @@ struct LanguagePackHeader {
 	uint16 offsets[32]; // the offsets
 	byte plural_form;   // plural form index
 	byte text_dir;      // default direction of the text
-	byte pad[2];        // pad header to be a multiple of 4
+	/**
+	 * Windows language ID:
+	 * Windows cannot and will not convert isocodes to something it can use to
+	 * determine whether a font can be used for the language or not. As a result
+	 * of that we need to pass the language id via strgen to OpenTTD to tell
+	 * what language it is in "Windows". The ID is the 'locale identifier' on:
+	 *   http://msdn.microsoft.com/en-us/library/ms776294.aspx
+	 */
+	uint16 winlangid;   // windows language id
+	/* byte pad[0];        // pad header to be a multiple of 4 */
 };
 
 assert_compile(sizeof(LanguagePackHeader) % 4 == 0);

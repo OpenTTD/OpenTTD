@@ -1,6 +1,7 @@
 ##name French
 ##ownname Français
 ##isocode fr_FR
+##winlangid 0x040c
 ##plural 2
 ##gender m m2 f
 

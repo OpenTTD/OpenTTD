@@ -1,6 +1,7 @@
 ##name English (UK)
 ##ownname English (UK)
 ##isocode en_GB
+##winlangid 0x0809
 ##plural 0
 
 #

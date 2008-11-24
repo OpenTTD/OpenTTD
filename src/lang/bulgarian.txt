@@ -1,6 +1,7 @@
 ##name Bulgarian
 ##ownname Български
 ##isocode bg_BG
+##winlangid 0x0402
 ##plural 0
 ##case m f n p
 ##gender m f n p

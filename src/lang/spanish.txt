@@ -1,6 +1,7 @@
 ##name Spanish
 ##ownname Español (ES)
 ##isocode es_ES
+##winlangid 0x0c0a
 ##plural 0
 ##gender masculino femenino
 

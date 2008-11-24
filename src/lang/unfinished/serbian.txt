@@ -1,6 +1,7 @@
 ##name Serbian
 ##ownname Srpski
 ##isocode sr_YU
+##winlangid 0x7c1a
 ##plural 0
 ##case ih a ova ca ci ka ća va ao u om im e ke on ona to
 ##gender muški ženski srednji

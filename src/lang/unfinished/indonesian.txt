@@ -1,6 +1,7 @@
 ##name Indonesian
 ##ownname Indonesian
 ##isocode id_ID
+##winlangid 0x0421
 ##plural 0
 
 #

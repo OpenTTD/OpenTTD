@@ -1,6 +1,7 @@
 ##name Macedonian
 ##ownname Македонски
 ##isocode mk_MK
+##winlangid 0x042f
 ##plural 0
 
 #

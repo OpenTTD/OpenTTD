@@ -1,6 +1,7 @@
 ##name Welsh
 ##ownname Cymraeg
 ##isocode cy_GB
+##winlangid 0x0452
 ##plural 0
 
 #

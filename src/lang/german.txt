@@ -1,6 +1,7 @@
 ##name German
 ##ownname Deutsch
 ##isocode de_DE
+##winlangid 0x0407
 ##plural 0
 ##gender m w n p
 

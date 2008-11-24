@@ -1,6 +1,7 @@
 ##name Russian
 ##ownname Русский
 ##isocode ru_RU
+##winlangid 0x0419
 ##plural 6
 ##case m f n p
 ##gender m f n p

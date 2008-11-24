@@ -1,6 +1,7 @@
 ##name Greek
 ##ownname Ελληνικά
 ##isocode el_GR
+##winlangid 0x0408
 ##plural 0
 ##gender m f n
 

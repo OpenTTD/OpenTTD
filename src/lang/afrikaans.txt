@@ -1,6 +1,7 @@
 ##name Afrikaans
 ##ownname Jaybee
 ##isocode af_ZA
+##winlangid 0x0436
 ##plural 0
 ##gender male
 

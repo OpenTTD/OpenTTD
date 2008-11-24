@@ -1358,9 +1358,13 @@ static bool GetLanguageFileHeader(const char *file, LanguagePack *hdr)
 	size_t read = fread(hdr, sizeof(*hdr), 1, f);
 	fclose(f);
 
-	return read == 1 &&
+	bool ret = read == 1 &&
 			hdr->ident == TO_LE32(LANGUAGE_PACK_IDENT) &&
 			hdr->version == TO_LE32(LANGUAGE_PACK_VERSION);
+
+	/* Convert endianness for the windows language ID */
+	if (ret) hdr->winlangid = FROM_LE16(hdr->winlangid);
+	return ret;
 }
 
 /**
@@ -1478,45 +1482,83 @@ void InitializeLanguagePacks()
  */
 void CheckForMissingGlyphsInLoadedLanguagePack()
 {
-	const Sprite *question_mark = GetGlyph(FS_NORMAL, '?');
+#ifdef WITH_FREETYPE
+	/* Reset to the original state; switching languages might cause us to
+	 * automatically choose another font. This resets that choice. */
+	UninitFreeType();
+	InitFreeType();
+#endif
 
-	for (uint i = 0; i != 32; i++) {
-		for (uint j = 0; j < _langtab_num[i]; j++) {
-			const char *string = _langpack_offs[_langtab_start[i] + j];
-			WChar c;
-			while ((c = Utf8Consume(&string)) != '\0') {
-				if (c == SCC_SETX) {
-					/*
-					 * SetX is, together with SetXY as special character that
-					 * uses the next (two) characters as data points. We have
-					 * to skip those, otherwise the UTF8 reading will go
-					 * haywire.
-					 */
-					string++;
-				} else if (c == SCC_SETXY) {
-					string += 2;
-				} else if (IsPrintable(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
-					/*
-					 * The character is printable, but not in the normal font.
-					 * This is the case we were testing for. In this case we
-					 * have to show the error. As we do not want the string to
-					 * be translated by the translators, we 'force' it into the
-					 * binary and 'load' it via a BindCString. To do this
-					 * properly we have to set the color of the string,
-					 * otherwise we end up with a lot of artefacts. The color
-					 * 'character' might change in the future, so for safety
-					 * we just Utf8 Encode it into the string, which takes
-					 * exactly three characters, so it replaces the "XXX" with
-					 * the color marker.
-					 */
-					static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
-					Utf8Encode(err_str, SCC_YELLOW);
-					SetDParamStr(0, err_str);
-					ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
-					return;
+	bool retry = false;
+	for (;;) {
+		const Sprite *question_mark = GetGlyph(FS_NORMAL, '?');
+
+		for (uint i = 0; i != 32; i++) {
+			for (uint j = 0; j < _langtab_num[i]; j++) {
+				const char *string = _langpack_offs[_langtab_start[i] + j];
+				WChar c;
+				while ((c = Utf8Consume(&string)) != '\0') {
+					if (c == SCC_SETX) {
+						/*
+						  * SetX is, together with SetXY as special character that
+						 * uses the next (two) characters as data points. We have
+						 * to skip those, otherwise the UTF8 reading will go
+						 * haywire.
+						 */
+						string++;
+					} else if (c == SCC_SETXY) {
+						string += 2;
+					} else if (IsPrintable(c) && c != '?' && GetGlyph(FS_NORMAL, c) == question_mark) {
+#ifdef WITH_FREETYPE
+						if (!retry) {
+							/* We found an unprintable character... lets try whether we can
+							 * find a fallback font that can print the characters in the
+							 * current language. */
+							retry = true;
+
+							FreeTypeSettings backup;
+							memcpy(&backup, &_freetype, sizeof(backup));
+
+							bool success = SetFallbackFont(&_freetype, _langpack->isocode, _langpack->winlangid);
+							if (success) {
+								UninitFreeType();
+								InitFreeType();
+							}
+
+							memcpy(&_freetype, &backup, sizeof(backup));
+
+							if (success) continue;
+						} else {
+							/* Our fallback font does miss characters too, so keep the
+							 * user chosen font as that is more likely to be any good than
+							 * the wild guess we made */
+							UninitFreeType();
+							InitFreeType();
+						}
+#endif
+						/*
+						 * The character is printable, but not in the normal font.
+						 * This is the case we were testing for. In this case we
+						 * have to show the error. As we do not want the string to
+						 * be translated by the translators, we 'force' it into the
+						 * binary and 'load' it via a BindCString. To do this
+						 * properly we have to set the color of the string,
+						 * otherwise we end up with a lot of artefacts. The color
+						 * 'character' might change in the future, so for safety
+						 * we just Utf8 Encode it into the string, which takes
+						 * exactly three characters, so it replaces the "XXX" with
+						 * the color marker.
+						 */
+						static char *err_str = strdup("XXXThe current font is missing some of the characters used in the texts for this language. Read the readme to see how to solve this.");
+						Utf8Encode(err_str, SCC_YELLOW);
+						SetDParamStr(0, err_str);
+						ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
+						return;
+					}
 				}
 			}
 		}
+		break;
 	}
 
 #if !defined(WITH_ICU)

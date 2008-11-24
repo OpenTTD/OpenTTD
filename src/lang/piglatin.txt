@@ -1,6 +1,7 @@
 ##name Pig latin
 ##ownname Igpay atinlay
 ##isocode xx_PL
+##winlangid 0x0000
 ##plural 0
 
 #

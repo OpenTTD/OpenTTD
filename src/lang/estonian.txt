@@ -1,6 +1,7 @@
 ##name Estonian
 ##ownname Eesti keel
 ##isocode et_ET
+##winlangid 0x0425
 ##plural 0
 ##case g in
 

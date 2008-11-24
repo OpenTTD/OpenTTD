@@ -1,6 +1,7 @@
 ##name English (US)
 ##ownname English (US)
 ##isocode en_US
+##winlangid 0x0409
 ##plural 0
 
 #

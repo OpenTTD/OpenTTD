@@ -1,6 +1,7 @@
 ##name Norwegian
 ##ownname Norsk (bokmål)
 ##isocode nb_NO
+##winlangid 0x0414
 ##plural 0
 
 #

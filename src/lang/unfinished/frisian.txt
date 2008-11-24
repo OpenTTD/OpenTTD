@@ -1,6 +1,7 @@
 ##name Frisian
 ##ownname Frysk
 ##isocode fy_NL
+##winlangid 0x0462
 
 ##id 0x0000
 STR_NULL                                                        :

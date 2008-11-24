@@ -1,6 +1,7 @@
 ##name Swedish
 ##ownname Svenska
 ##isocode sv_SE
+##winlangid 0x081d
 ##plural 0
 
 #

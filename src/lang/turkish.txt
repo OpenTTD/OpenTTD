@@ -1,6 +1,7 @@
 ##name Turkish
 ##ownname Türkçe
 ##isocode tr_TR
+##winlangid 0x041f
 ##plural 1
 
 #

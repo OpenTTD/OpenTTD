@@ -1,6 +1,7 @@
 ##name Catalan
 ##ownname Català
 ##isocode ca_ES
+##winlangid 0x0403
 ##plural 0
 
 #

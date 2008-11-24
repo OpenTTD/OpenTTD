@@ -1,6 +1,7 @@
 ##name Croatian
 ##ownname Hrvatski
 ##isocode hr_HR
+##winlangid 0x041a
 ##plural 6
 ##case nom gen dat aku vok lok ins
 ##gender male female middle

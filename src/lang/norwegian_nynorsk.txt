@@ -1,6 +1,7 @@
 ##name Norwegian new
 ##ownname Norsk, Nynorsk
 ##isocode nn_NO
+##winlangid 0x0814
 ##plural 0
 ##gender masculine feminine neuter
 

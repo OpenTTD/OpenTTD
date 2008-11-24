@@ -1,6 +1,7 @@
 ##name Italian
 ##ownname Italiano
 ##isocode it_IT
+##winlangid 0x0410
 ##plural 0
 ##case ms mp fs fp
 ##gender m f

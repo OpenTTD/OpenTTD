@@ -1,6 +1,7 @@
 ##name Chinese (Simplified)
 ##ownname 简体中文
 ##isocode zh_CN
+##winlangid 0x0804
 ##plural 1
 
 #

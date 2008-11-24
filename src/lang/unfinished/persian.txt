@@ -1,6 +1,7 @@
 ##name Persian
 ##ownname Farsi
 ##isocode fa_IR
+##winlangid 0x0429
 ##plural 0
 ##textdir rtl
 

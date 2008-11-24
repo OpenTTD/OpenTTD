@@ -1,6 +1,7 @@
 ##name Ukrainian
 ##ownname Українська
 ##isocode uk_UA
+##winlangid 0x0422
 ##plural 6
 ##gender m f s mn
 ##case r d z

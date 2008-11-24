@@ -1,6 +1,7 @@
 ##name Slovak
 ##ownname Slovensky
 ##isocode sk_SK
+##winlangid 0x041b
 ##plural 6
 ##case g
 ##gender m z s

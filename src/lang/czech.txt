@@ -1,6 +1,7 @@
 ##name Czech
 ##ownname Čeština
 ##isocode cs_CZ
+##winlangid 0x0405
 ##plural 6
 ##case nom gen dat acc voc loc ins big small
 ##gender m f n

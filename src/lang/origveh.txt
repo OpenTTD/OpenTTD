@@ -1,6 +1,7 @@
 ##name Original vehicle names (ENG)
 ##ownname Original vehicle names (ENG)
-##isocode xx
+##isocode xx_OV
+##winlangid 0x0000
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Collett Pannier Tank (Steam)

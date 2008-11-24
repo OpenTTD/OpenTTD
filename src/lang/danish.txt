@@ -1,6 +1,7 @@
 ##name Danish
 ##ownname Dansk
 ##isocode da_DA
+##winlangid 0x0406
 ##plural 0
 
 #

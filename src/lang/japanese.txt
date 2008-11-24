@@ -1,6 +1,7 @@
 ##name Japanese
 ##ownname 日本語
 ##isocode ja_JP
+##winlangid 0x0411
 ##plural 1
 
 #

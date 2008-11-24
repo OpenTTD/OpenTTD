@@ -1,6 +1,7 @@
 ##name Galician
 ##ownname Galego
 ##isocode gl_ES
+##winlangid 0x0456
 ##plural 0
 ##gender m f n
 

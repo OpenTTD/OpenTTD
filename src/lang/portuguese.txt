@@ -1,6 +1,7 @@
 ##name Portuguese
 ##ownname Português
 ##isocode pt_PT
+##winlangid 0x0816
 ##plural 0
 
 #
