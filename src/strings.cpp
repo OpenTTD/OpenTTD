@@ -48,11 +48,11 @@
 DynamicLanguages _dynlang;
 uint64 _decode_parameters[20];
 
-static char *StationGetSpecialString(char *buff, int x, const char* last);
-static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char* last);
-static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const char* last);
+static char *StationGetSpecialString(char *buff, int x, const char *last);
+static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last);
+static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const char *last);
 
-static char *FormatString(char *buff, const char *str, const int64 *argv, uint casei, const char* last);
+static char *FormatString(char *buff, const char *str, const int64 *argv, uint casei, const char *last);
 
 struct LanguagePack : public LanguagePackHeader {
 	char data[VARARRAY_SIZE]; // list of strings
@@ -108,7 +108,7 @@ const char *GetStringPtr(StringID string)
  * @param last
  * @return a formatted string of char
  */
-static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, const char* last)
+static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, const char *last)
 {
 	if (GB(string, 0, 16) == 0) return GetStringWithArgs(buffr, STR_UNDEFINED, argv, last);
 
@@ -161,7 +161,7 @@ static char *GetStringWithArgs(char *buffr, uint string, const int64 *argv, cons
 	return FormatString(buffr, GetStringPtr(GB(string, 0, 16)), argv, GB(string, 24, 8), last);
 }
 
-char *GetString(char *buffr, StringID string, const char* last)
+char *GetString(char *buffr, StringID string, const char *last)
 {
 	return GetStringWithArgs(buffr, string, (int64*)_decode_parameters, last);
 }
@@ -266,7 +266,7 @@ static char *FormatHexNumber(char *buff, int64 number, const char *last)
 	return buff + seprintf(buff, last, "0x%x", (uint32)number);
 }
 
-static char *FormatYmdString(char *buff, Date date, const char* last)
+static char *FormatYmdString(char *buff, Date date, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
@@ -275,7 +275,7 @@ static char *FormatYmdString(char *buff, Date date, const char* last)
 	return FormatString(buff, GetStringPtr(STR_DATE_LONG), args, 0, last);
 }
 
-static char *FormatMonthAndYear(char *buff, Date date, const char* last)
+static char *FormatMonthAndYear(char *buff, Date date, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
@@ -284,7 +284,7 @@ static char *FormatMonthAndYear(char *buff, Date date, const char* last)
 	return FormatString(buff, GetStringPtr(STR_DATE_SHORT), args, 0, last);
 }
 
-static char *FormatTinyDate(char *buff, Date date, const char* last)
+static char *FormatTinyDate(char *buff, Date date, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
@@ -299,7 +299,7 @@ static char *FormatTinyDate(char *buff, Date date, const char* last)
 	return FormatString(buff, GetStringPtr(STR_DATE_TINY), args, 0, last);
 }
 
-static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money number, bool compact, const char* last)
+static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money number, bool compact, const char *last)
 {
 	/* We are going to make number absolute for printing, so
 	 * keep this piece of data as we need it later on */
@@ -520,7 +520,7 @@ uint ConvertDisplaySpeedToSpeed(uint speed)
 	return ((speed << units[_settings_game.locale.units].s_s) + units[_settings_game.locale.units].s_m / 2) / units[_settings_game.locale.units].s_m;
 }
 
-static char* FormatString(char* buff, const char* str, const int64* argv, uint casei, const char* last)
+static char *FormatString(char *buff, const char *str, const int64 *argv, uint casei, const char *last)
 {
 	WChar b;
 	const int64 *argv_orig = argv;
@@ -576,15 +576,15 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 			}
 
-			case SCC_CURRENCY_COMPACT: /* {CURRCOMPACT} */
+			case SCC_CURRENCY_COMPACT: // {CURRCOMPACT}
 				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), true, last);
 				break;
 
-			case SCC_REVISION: /* {REV} */
+			case SCC_REVISION: // {REV}
 				buff = strecpy(buff, _openttd_revision, last);
 				break;
 
-			case SCC_CARGO_SHORT: { /* {SHORTCARGO} */
+			case SCC_CARGO_SHORT: { // {SHORTCARGO}
 				/* Short description of cargotypes. Layout:
 				 * 8-bit = cargo type
 				 * 16-bit = cargo count */
@@ -622,7 +622,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				}
 			} break;
 
-			case SCC_STRING1: { /* {STRING1} */
+			case SCC_STRING1: { // {STRING1}
 				/* String that consumes ONE argument */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 1), last);
@@ -630,7 +630,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 			}
 
-			case SCC_STRING2: { /* {STRING2} */
+			case SCC_STRING2: { // {STRING2}
 				/* String that consumes TWO arguments */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 2), last);
@@ -638,7 +638,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 			}
 
-			case SCC_STRING3: { /* {STRING3} */
+			case SCC_STRING3: { // {STRING3}
 				/* String that consumes THREE arguments */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 3), last);
@@ -646,7 +646,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 			}
 
-			case SCC_STRING4: { /* {STRING4} */
+			case SCC_STRING4: { // {STRING4}
 				/* String that consumes FOUR arguments */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 4), last);
@@ -654,7 +654,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 			}
 
-			case SCC_STRING5: { /* {STRING5} */
+			case SCC_STRING5: { // {STRING5}
 				/* String that consumes FIVE arguments */
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 5), last);
@@ -662,13 +662,13 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 				break;
 			}
 
-			case SCC_STATION_FEATURES: { /* {STATIONFEATURES} */
+			case SCC_STATION_FEATURES: { // {STATIONFEATURES}
 				buff = StationGetSpecialString(buff, GetInt32(&argv), last);
 				break;
 			}
 
-			case SCC_INDUSTRY_NAME: { /* {INDUSTRY} */
-				const Industry* i = GetIndustry(GetInt32(&argv));
+			case SCC_INDUSTRY_NAME: { // {INDUSTRY}
+				const Industry *i = GetIndustry(GetInt32(&argv));
 				int64 args[2];
 
 				/* industry not valid anymore? */
@@ -877,7 +877,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 			}
 
 			case SCC_TOWN_NAME: { // {TOWN}
-				const Town* t = GetTown(GetInt32(&argv));
+				const Town *t = GetTown(GetInt32(&argv));
 				int64 temp[1];
 
 				assert(t->IsValid());
@@ -1036,7 +1036,7 @@ static char* FormatString(char* buff, const char* str, const int64* argv, uint c
 }
 
 
-static char *StationGetSpecialString(char *buff, int x, const char* last)
+static char *StationGetSpecialString(char *buff, int x, const char *last)
 {
 	if ((x & FACIL_TRAIN)      && (buff + Utf8CharLen(SCC_TRAIN) < last)) buff += Utf8Encode(buff, SCC_TRAIN);
 	if ((x & FACIL_TRUCK_STOP) && (buff + Utf8CharLen(SCC_LORRY) < last)) buff += Utf8Encode(buff, SCC_LORRY);
@@ -1047,7 +1047,7 @@ static char *StationGetSpecialString(char *buff, int x, const char* last)
 	return buff;
 }
 
-static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char* last)
+static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const char *last)
 {
 	char name[512];
 
@@ -1055,7 +1055,7 @@ static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const ch
 	return strecpy(buff, name, last);
 }
 
-static const char* const _silly_company_names[] = {
+static const char * const _silly_company_names[] = {
 	"Bloggs Brothers",
 	"Tiny Transport Ltd.",
 	"Express Travel",
@@ -1071,7 +1071,7 @@ static const char* const _silly_company_names[] = {
 	"Getout & Pushit Ltd."
 };
 
-static const char* const _surname_list[] = {
+static const char * const _surname_list[] = {
 	"Adams",
 	"Allan",
 	"Baker",
@@ -1103,7 +1103,7 @@ static const char* const _surname_list[] = {
 	"Watkins"
 };
 
-static const char* const _silly_surname_list[] = {
+static const char * const _silly_surname_list[] = {
 	"Grumpy",
 	"Dozy",
 	"Speedy",
@@ -1123,9 +1123,9 @@ static const char _initial_name_letters[] = {
 	'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'W',
 };
 
-static char *GenAndCoName(char *buff, uint32 arg, const char* last)
+static char *GenAndCoName(char *buff, uint32 arg, const char *last)
 {
-	const char* const* base;
+	const char * const *base;
 	uint num;
 
 	if (_settings_game.game_creation.landscape == LT_TOYLAND) {
@@ -1142,10 +1142,10 @@ static char *GenAndCoName(char *buff, uint32 arg, const char* last)
 	return buff;
 }
 
-static char *GenPresidentName(char *buff, uint32 x, const char* last)
+static char *GenPresidentName(char *buff, uint32 x, const char *last)
 {
 	char initial[] = "?. ";
-	const char* const* base;
+	const char * const *base;
 	uint num;
 	uint i;
 
@@ -1171,7 +1171,7 @@ static char *GenPresidentName(char *buff, uint32 x, const char* last)
 	return buff;
 }
 
-static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const char* last)
+static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const char *last)
 {
 	switch (ind) {
 		case 1: // not used
@@ -1487,9 +1487,9 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 	 * automatically choose another font. This resets that choice. */
 	UninitFreeType();
 	InitFreeType();
+	bool retry = false;
 #endif
 
-	bool retry = false;
 	for (;;) {
 		const Sprite *question_mark = GetGlyph(FS_NORMAL, '?');
 
@@ -1500,7 +1500,7 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 				while ((c = Utf8Consume(&string)) != '\0') {
 					if (c == SCC_SETX) {
 						/*
-						  * SetX is, together with SetXY as special character that
+						 * SetX is, together with SetXY as special character that
 						 * uses the next (two) characters as data points. We have
 						 * to skip those, otherwise the UTF8 reading will go
 						 * haywire.
