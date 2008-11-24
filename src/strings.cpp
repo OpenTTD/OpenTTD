@@ -40,6 +40,7 @@
 #include "engine_func.h"
 #include "engine_base.h"
 #include "saveload.h"
+#include "strgen/strgen.h"
 
 #include "table/strings.h"
 #include "table/control_codes.h"
@@ -53,16 +54,7 @@ static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const 
 
 static char *FormatString(char *buff, const char *str, const int64 *argv, uint casei, const char* last);
 
-struct LanguagePack {
-	uint32 ident;       // 32-bits identifier
-	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
-	char name[32];      // the international name of this language
-	char own_name[32];  // the localized name of this language
-	char isocode[16];   // the ISO code for the language (not country code)
-	uint16 offsets[32]; // the offsets
-	byte plural_form;   // how to compute plural forms
-	byte text_dir;      // default direction of the text
-	byte pad[2];        // pad header to be a multiple of 4
+struct LanguagePack : public LanguagePackHeader {
 	char data[VARARRAY_SIZE]; // list of strings
 };
 
