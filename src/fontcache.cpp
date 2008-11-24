@@ -351,7 +351,7 @@ error_pattern:
 
 #else /* without WITH_FONTCONFIG */
 FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) {return FT_Err_Cannot_Open_Resource;}
-bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode) { return false; }
+bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, int winlangid) { return false; }
 #endif /* WITH_FONTCONFIG */
 
 /**
