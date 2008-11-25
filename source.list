@@ -290,6 +290,7 @@ station_gui.h
 station_type.h
 statusbar_gui.h
 stdafx.h
+strgen/strgen.h
 string_func.h
 string_type.h
 strings_func.h

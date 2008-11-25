@@ -1449,6 +1449,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\strgen\strgen.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\string_func.h"
 				>
 			</File>
