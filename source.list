@@ -122,6 +122,9 @@ widget.cpp
 window.cpp
 
 # Header Files
+#if ALLEGRO
+	video/allegro_v.h
+#end
 ai/ai.h
 aircraft.h
 airport.h
@@ -604,6 +607,9 @@ yapf/yapf_road.cpp
 yapf/yapf_ship.cpp
 
 # Video
+#if ALLEGRO
+	video/allegro_v.cpp
+#end
 video/dedicated_v.cpp
 video/null_v.cpp
 #if SDL

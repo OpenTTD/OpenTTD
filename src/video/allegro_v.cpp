@@ -1,0 +1,498 @@
+/* $Id$ */
+
+/** @file allegro_v.cpp Implementation of the Allegro video driver. */
+
+#ifdef WITH_ALLEGRO
+
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "../debug.h"
+#include "../gfx_func.h"
+#include "../sdl.h"
+#include "../variables.h"
+#include "../rev.h"
+#include "../blitter/factory.hpp"
+#include "../network/network.h"
+#include "../core/math_func.hpp"
+#include "../core/random_func.hpp"
+#include "../functions.h"
+#include "../texteff.hpp"
+#include "allegro_v.h"
+#include <allegro.h>
+
+static FVideoDriver_Allegro iFVideoDriver_Allegro;
+
+static BITMAP *_allegro_screen;
+
+#define MAX_DIRTY_RECTS 100
+static PointDimension _dirty_rects[MAX_DIRTY_RECTS];
+static int _num_dirty_rects;
+
+void VideoDriver_Allegro::MakeDirty(int left, int top, int width, int height)
+{
+	if (_num_dirty_rects < MAX_DIRTY_RECTS) {
+		_dirty_rects[_num_dirty_rects].x = left;
+		_dirty_rects[_num_dirty_rects].y = top;
+		_dirty_rects[_num_dirty_rects].width = width;
+		_dirty_rects[_num_dirty_rects].height = height;
+	}
+	_num_dirty_rects++;
+}
+
+static void DrawSurfaceToScreen()
+{
+	int n = _num_dirty_rects;
+	if (n == 0) return;
+
+	_num_dirty_rects = 0;
+	if (n > MAX_DIRTY_RECTS) {
+		blit(_allegro_screen, screen, 0, 0, 0, 0, _allegro_screen->w, _allegro_screen->h);
+		return;
+	}
+
+	for (int i = 0; i < n; i++) {
+		blit(_allegro_screen, screen, _dirty_rects[i].x, _dirty_rects[i].y, _dirty_rects[i].x, _dirty_rects[i].y, _dirty_rects[i].width, _dirty_rects[i].height);
+	}
+}
+
+
+static void UpdatePalette(uint start, uint count)
+{
+	static PALETTE pal;
+
+	uint end = start + count;
+	for (uint i = start; i != end; i++) {
+		pal[i].r = _cur_palette[i].r / 4;
+		pal[i].g = _cur_palette[i].g / 4;
+		pal[i].b = _cur_palette[i].b / 4;
+		pal[i].filler = 0;
+	}
+
+	set_palette_range(pal, start, end - 1, 1);
+}
+
+static void InitPalette()
+{
+	UpdatePalette(0, 256);
+}
+
+static void CheckPaletteAnim()
+{
+	if (_pal_count_dirty != 0) {
+		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
+
+		switch (blitter->UsePaletteAnimation()) {
+			case Blitter::PALETTE_ANIMATION_VIDEO_BACKEND:
+				UpdatePalette(_pal_first_dirty, _pal_count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_BLITTER:
+				blitter->PaletteAnimate(_pal_first_dirty, _pal_count_dirty);
+				break;
+
+			case Blitter::PALETTE_ANIMATION_NONE:
+				break;
+
+			default:
+				NOT_REACHED();
+		}
+		_pal_count_dirty = 0;
+	}
+}
+
+static const Dimension default_resolutions[] = {
+	{ 640,  480},
+	{ 800,  600},
+	{1024,  768},
+	{1152,  864},
+	{1280,  800},
+	{1280,  960},
+	{1280, 1024},
+	{1400, 1050},
+	{1600, 1200},
+	{1680, 1050},
+	{1920, 1200}
+};
+
+static void GetVideoModes()
+{
+	/* Need to set a gfx_mode as there is NO other way to autodetect for
+	 * cards ourselves... and we need a card to get the modes. */
+	set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, 640, 480, 0, 0);
+
+	GFX_MODE_LIST *mode_list = get_gfx_mode_list(gfx_driver->id);
+	if (mode_list == NULL) {
+		memcpy(_resolutions, default_resolutions, sizeof(default_resolutions));
+		_num_resolutions = lengthof(default_resolutions);
+		return;
+	}
+
+	GFX_MODE *modes = mode_list->mode;
+
+	int n = 0;
+	for (int i = 0; modes[i].bpp != 0; i++) {
+		int w = modes[i].width;
+		int h = modes[i].height;
+		if (w >= 640 && h >= 480) {
+			int j;
+			for (j = 0; j < n; j++) {
+				if (_resolutions[j].width == w && _resolutions[j].height == h) break;
+			}
+
+			if (j == n) {
+				_resolutions[j].width  = w;
+				_resolutions[j].height = h;
+				if (++n == lengthof(_resolutions)) break;
+			}
+		}
+	}
+	_num_resolutions = n;
+	SortResolutions(_num_resolutions);
+
+	destroy_gfx_mode_list(mode_list);
+}
+
+static void GetAvailableVideoMode(int *w, int *h)
+{
+	/* is the wanted mode among the available modes? */
+	for (int i = 0; i != _num_resolutions; i++) {
+		if (*w == _resolutions[i].width && *h == _resolutions[i].height) return;
+	}
+
+	/* use the closest possible resolution */
+	int best = 0;
+	uint delta = abs((_resolutions[0].width - *w) * (_resolutions[0].height - *h));
+	for (int i = 1; i != _num_resolutions; ++i) {
+		uint newdelta = abs((_resolutions[i].width - *w) * (_resolutions[i].height - *h));
+		if (newdelta < delta) {
+			best = i;
+			delta = newdelta;
+		}
+	}
+	*w = _resolutions[best].width;
+	*h = _resolutions[best].height;
+}
+
+static bool CreateMainSurface(int w, int h)
+{
+	int bpp = BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth();
+	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
+	set_color_depth(bpp);
+
+	GetVideoModes();
+	GetAvailableVideoMode(&w, &h);
+	if (set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, w, h, 0, 0) != 0) return false;
+
+	_allegro_screen = create_bitmap(screen->w, screen->h);
+	_screen.width = screen->w;
+	_screen.height = screen->h;
+	_screen.pitch = ((byte*)screen->line[1] - (byte*)screen->line[0]) / (bitmap_color_depth(screen) / 8);
+
+	poll_mouse();
+	_cursor.pos.x = mouse_x;
+	_cursor.pos.y = mouse_y;
+
+	InitPalette();
+
+	char caption[32];
+	snprintf(caption, sizeof(caption), "OpenTTD %s", _openttd_revision);
+	set_window_title(caption);
+
+	GameSizeChanged();
+
+	return true;
+}
+
+struct VkMapping {
+	uint16 vk_from;
+	byte vk_count;
+	byte map_to;
+};
+
+#define AS(x, z) {x, 0, z}
+#define AM(x, y, z, w) {x, y - x, z}
+
+static const VkMapping _vk_mapping[] = {
+	/* Pageup stuff + up/down */
+	AM(KEY_PGUP, KEY_PGDN, WKC_PAGEUP, WKC_PAGEDOWN),
+	AS(KEY_UP,     WKC_UP),
+	AS(KEY_DOWN,   WKC_DOWN),
+	AS(KEY_LEFT,   WKC_LEFT),
+	AS(KEY_RIGHT,  WKC_RIGHT),
+
+	AS(KEY_HOME,   WKC_HOME),
+	AS(KEY_END,    WKC_END),
+
+	AS(KEY_INSERT, WKC_INSERT),
+	AS(KEY_DEL,    WKC_DELETE),
+
+	/* Map letters & digits */
+	AM(KEY_A, KEY_Z, 'A', 'Z'),
+	AM(KEY_0, KEY_9, '0', '9'),
+
+	AS(KEY_ESC,       WKC_ESC),
+	AS(KEY_PAUSE,     WKC_PAUSE),
+	AS(KEY_BACKSPACE, WKC_BACKSPACE),
+
+	AS(KEY_SPACE,     WKC_SPACE),
+	AS(KEY_ENTER,     WKC_RETURN),
+	AS(KEY_TAB,       WKC_TAB),
+
+	/* Function keys */
+	AM(KEY_F1, KEY_F12, WKC_F1, WKC_F12),
+
+	/* Numeric part. */
+	AM(KEY_0_PAD, KEY_9_PAD, '0', '9'),
+	AS(KEY_SLASH_PAD,   WKC_NUM_DIV),
+	AS(KEY_ASTERISK,    WKC_NUM_MUL),
+	AS(KEY_MINUS_PAD,   WKC_NUM_MINUS),
+	AS(KEY_PLUS_PAD,    WKC_NUM_PLUS),
+	AS(KEY_ENTER_PAD,   WKC_NUM_ENTER),
+	AS(KEY_DEL_PAD,     WKC_DELETE),
+
+	/* Other non-letter keys */
+	AS(KEY_SLASH,        WKC_SLASH),
+	AS(KEY_SEMICOLON,    WKC_SEMICOLON),
+	AS(KEY_EQUALS,       WKC_EQUALS),
+	AS(KEY_OPENBRACE,    WKC_L_BRACKET),
+	AS(KEY_BACKSLASH,    WKC_BACKSLASH),
+	AS(KEY_CLOSEBRACE,   WKC_R_BRACKET),
+
+	AS(KEY_QUOTE,   WKC_SINGLEQUOTE),
+	AS(KEY_COMMA,   WKC_COMMA),
+	AS(KEY_MINUS,   WKC_MINUS),
+	AS(KEY_STOP,    WKC_PERIOD),
+	AS(KEY_TILDE,   WKC_BACKQUOTE),
+};
+
+static uint32 ConvertAllegroKeyIntoMy()
+{
+	int scancode;
+	int unicode = ureadkey(&scancode);
+
+	const VkMapping *map;
+	uint key = 0;
+
+	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
+		if ((uint)(scancode - map->vk_from) <= map->vk_count) {
+			key = scancode - map->vk_from + map->map_to;
+			break;
+		}
+	}
+
+	if (key_shifts & KB_SHIFT_FLAG) key |= WKC_SHIFT;
+	if (key_shifts & KB_CTRL_FLAG)  key |= WKC_CTRL;
+	if (key_shifts & KB_ALT_FLAG)   key |= WKC_ALT;
+#if 0
+	DEBUG(driver, 0, "Scancode character pressed %u", scancode);
+	DEBUG(driver, 0, "Unicode character pressed %u", unicode);
+#endif
+	return (key << 16) + unicode;
+}
+
+enum {
+	LEFT_BUTTON,
+	RIGHT_BUTTON,
+};
+
+static void PollEvent()
+{
+	poll_mouse();
+
+	bool mouse_action = false;
+
+	/* Mouse buttons */
+	static int prev_button_state;
+	if (prev_button_state != mouse_b) {
+		uint diff = prev_button_state ^ mouse_b;
+		while (diff != 0) {
+			int button = FindFirstBit(diff);
+			ClrBit(diff, button);
+			if (HasBit(mouse_b, button)) {
+				/* Pressed mouse button */
+				if (_rightclick_emulate && key_shifts & KB_CTRL_FLAG) {
+					button = RIGHT_BUTTON;
+					ClrBit(diff, RIGHT_BUTTON);
+				}
+				switch (button) {
+					case LEFT_BUTTON:
+						_left_button_down = true;
+						break;
+
+					case RIGHT_BUTTON:
+						_right_button_down = true;
+						_right_button_clicked = true;
+						break;
+
+					default:
+						/* ignore rest */
+						break;
+				}
+			} else {
+				/* Released mouse button */
+				if (_rightclick_emulate) {
+					_right_button_down = false;
+					_left_button_down = false;
+					_left_button_clicked = false;
+				} else if (button == LEFT_BUTTON) {
+					_left_button_down = false;
+					_left_button_clicked = false;
+				} else if (button == RIGHT_BUTTON) {
+					_right_button_down = false;
+				}
+			}
+		}
+		prev_button_state = mouse_b;
+		mouse_action = true;
+	}
+
+	/* Mouse movement */
+	int dx = mouse_x - _cursor.pos.x;
+	int dy = mouse_y - _cursor.pos.y;
+	if (dx != 0 || dy != 0) {
+		if (_cursor.fix_at) {
+			_cursor.delta.x += dx;
+			_cursor.delta.y += dy;
+			position_mouse(_cursor.pos.x, _cursor.pos.y);
+		} else {
+			_cursor.delta.x = dx;
+			_cursor.delta.y = dy;
+			_cursor.pos.x = mouse_x;
+			_cursor.pos.y = mouse_y;
+			_cursor.dirty = true;
+		}
+		mouse_action = true;
+	}
+
+	if (mouse_action) HandleMouseEvents();
+
+	poll_keyboard();
+	if (key_shifts & KB_ALT_FLAG && (key[KEY_ENTER] || key[KEY_F])) {
+		ToggleFullScreen(!_fullscreen);
+	} else if (keypressed()) {
+		HandleKeypress(ConvertAllegroKeyIntoMy());
+	}
+}
+
+const char *VideoDriver_Allegro::Start(const char * const *parm)
+{
+	if (install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
+
+	install_timer();
+	install_mouse();
+	install_keyboard();
+
+	CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
+	MarkWholeScreenDirty();
+	set_close_button_callback(HandleExitGameRequest);
+
+	return NULL;
+}
+
+void VideoDriver_Allegro::Stop()
+{
+	allegro_exit();
+}
+
+#if defined(UNIX) || defined(__OS2__) || defined(PSP)
+# include <sys/time.h> /* gettimeofday */
+
+static uint32 GetTime()
+{
+	struct timeval tim;
+
+	gettimeofday(&tim, NULL);
+	return tim.tv_usec / 1000 + tim.tv_sec * 1000;
+}
+#else
+static uint32 GetTime()
+{
+	return GetTickCount();
+}
+#endif
+
+
+void VideoDriver_Allegro::MainLoop()
+{
+	uint32 cur_ticks = GetTime();
+	uint32 last_cur_ticks = cur_ticks;
+	uint32 next_tick = cur_ticks + 30;
+	uint32 pal_tick = 0;
+
+	for (;;) {
+		uint32 prev_cur_ticks = cur_ticks; // to check for wrapping
+		InteractiveRandom(); // randomness
+
+		PollEvent();
+		if (_exit_game) return;
+
+#if defined(_DEBUG)
+		if (_shift_pressed)
+#else
+		/* Speedup when pressing tab, except when using ALT+TAB
+		 * to switch to another application */
+		if (keys[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0)
+#endif
+		{
+			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
+		} else if (_fast_forward & 2) {
+			_fast_forward = 0;
+		}
+
+		cur_ticks = GetTime();
+		if (cur_ticks >= next_tick || (_fast_forward && !_pause_game) || cur_ticks < prev_cur_ticks) {
+			_realtime_tick += cur_ticks - last_cur_ticks;
+			last_cur_ticks = cur_ticks;
+			next_tick = cur_ticks + 30;
+
+			bool old_ctrl_pressed = _ctrl_pressed;
+
+			_ctrl_pressed  = !!(key_shifts & KB_CTRL_FLAG);
+			_shift_pressed = !!(key_shifts & KB_SHIFT_FLAG);
+
+			/* determine which directional keys are down */
+			_dirkeys =
+				(key[KEY_LEFT]  ? 1 : 0) |
+				(key[KEY_UP]    ? 2 : 0) |
+				(key[KEY_RIGHT] ? 4 : 0) |
+				(key[KEY_DOWN]  ? 8 : 0);
+
+			if (old_ctrl_pressed != _ctrl_pressed) HandleCtrlChanged();
+
+			GameLoop();
+
+			_screen.dst_ptr = _allegro_screen->line[0];
+			UpdateWindows();
+			if (++pal_tick > 4) {
+				CheckPaletteAnim();
+				pal_tick = 1;
+			}
+			DrawSurfaceToScreen();
+		} else {
+			CSleep(1);
+			_screen.dst_ptr = _allegro_screen->line[0];
+			NetworkDrawChatMessage();
+			DrawMouseCursor();
+			DrawSurfaceToScreen();
+		}
+	}
+}
+
+bool VideoDriver_Allegro::ChangeResolution(int w, int h)
+{
+	return CreateMainSurface(w, h);
+}
+
+bool VideoDriver_Allegro::ToggleFullscreen(bool fullscreen)
+{
+	_fullscreen = fullscreen;
+	GetVideoModes(); // get the list of available video modes
+	if (_num_resolutions == 0 || !this->ChangeResolution(_cur_resolution.width, _cur_resolution.height)) {
+		/* switching resolution failed, put back full_screen to original status */
+		_fullscreen ^= true;
+		return false;
+	}
+	return true;
+}
+
+#endif /* WITH_ALLEGRO */

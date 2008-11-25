@@ -56,6 +56,7 @@ set_default() {
 	with_osx_sysroot="1"
 	with_application_bundle="1"
 	with_menu_entry="1"
+	with_allegro="1"
 	with_sdl="1"
 	with_cocoa="1"
 	with_zlib="1"
@@ -121,6 +122,7 @@ set_default() {
 		enable_cocoa_quickdraw
 		with_osx_sysroot
 		with_application_bundle
+		with_allegro
 		with_sdl
 		with_cocoa
 		with_zlib
@@ -284,6 +286,10 @@ detect_params() {
 			--disable-cocoa-quickdraw)    enable_cocoa_quickdraw="0";;
 			--enable-cocoa-quickdraw)     enable_cocoa_quickdraw="2";;
 			--enable-cocoa-quickdraw=*)   enable_cocoa_quickdraw="$optarg";;
+
+			--with-allegro)               with_allegro="2";;
+			--without-allegro)            with_allegro="0";;
+			--with-allegro=*)             with_allegro="$optarg";;
 
 			--with-sdl)                   with_sdl="2";;
 			--without-sdl)                with_sdl="0";;
@@ -559,6 +565,7 @@ check_params() {
 		sleep 5
 	fi
 
+	detect_allegro
 	detect_sdl
 	detect_cocoa
 
@@ -577,7 +584,7 @@ check_params() {
 			log 1 "checking GDI video driver... not Windows, skipping"
 		fi
 
-		if [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
+		if [ -z "$allegro_config" ] && [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
 			log 1 "WARNING: no video driver found, building dedicated only"
 			enable_dedicated="1"
 			sleep 1
@@ -1164,6 +1171,18 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DWIN"
 	fi
 
+	if [ -n "$allegro_config" ]; then
+		CFLAGS="$CFLAGS -DWITH_ALLEGRO"
+		CFLAGS="$CFLAGS `$allegro_config --cflags`"
+		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
+			if [ "$enable_static" != "0" ]; then
+				LIBS="$LIBS `$allegro_config --static --libs`"
+			else
+				LIBS="$LIBS `$allegro_config --libs`"
+			fi
+		fi
+	fi
+
 	if [ -n "$sdl_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_SDL"
 		CFLAGS="$CFLAGS `$sdl_config --cflags`"
@@ -1739,6 +1758,72 @@ detect_os() {
 		log 1 "forcing OS... $os"
 	fi
 }
+
+detect_allegro() {
+	# 0 means no, 1 is auto-detect, 2 is force
+	if [ "$with_allegro" = "0" ]; then
+		log 1 "checking Allegro... disabled"
+
+		allegro_config=""
+		return 0
+	fi
+
+	if [ "$with_allegro" = "2" ] && [ "$with_cocoa" = "2" ]; then
+		log 1 "configure: error: it is impossible to compile both Allegro and COCOA"
+		log 1 "configure: error: please deselect one of them and try again"
+		exit 1
+	fi
+
+	if [ "$with_allegro" = "2" ] && [ "$enable_dedicated" != "0" ]; then
+		log 1 "configure: error: it is impossible to compile a dedicated with Allegro"
+		log 1 "configure: error: please deselect one of them and try again"
+		exit 1
+	fi
+
+	if [ "$enable_dedicated" != "0" ]; then
+		log 1 "checking Allegro... dedicated server, skipping"
+
+		allegro_config=""
+		return 0
+	fi
+
+	# By default on OSX we don't use SDL. The rest is auto-detect
+	if [ "$with_allegro" = "1" ] && [ "$os" = "OSX" ] && [ "$with_cocoa" != "0" ]; then
+		log 1 "checking SDL... OSX, skipping"
+
+		allegro_config=""
+		return 0
+	fi
+
+	if [ "$with_allegro" = "1" ] || [ "$with_allegro" = "" ] || [ "$with_allegro" = "2" ]; then
+		allegro_config="allegro-config"
+	else
+		allegro_config="$with_allegro"
+	fi
+
+	version=`$allegro_config --version 2>/dev/null`
+	ret=$?
+	log 2 "executing $allegro_config --version"
+	log 2 "  returned $version"
+	log 2 "  exit code $ret"
+
+	if [ -z "$version" ] || [ "$ret" != "0" ]; then
+		log 1 "checking Allegro... not found"
+
+		# It was forced, so it should be found.
+		if [ "$with_allegro" != "1" ]; then
+			log 1 "configure: error: allegro-config couldn't be found"
+			log 1 "configure: error: you supplied '$with_allegro', but it seems invalid"
+			exit 1
+		fi
+
+		allegro_config=""
+		return 0
+	fi
+
+	log 1 "checking Allegro... found"
+}
+
 
 detect_sdl() {
 	# 0 means no, 1 is auto-detect, 2 is force
@@ -2701,6 +2786,8 @@ showhelp() {
 	echo "  --with-midi=midi               define which midi-player to use"
 	echo "  --with-midi-arg=arg            define which args to use for the"
 	echo "                                 midi-player"
+	echo "  --with-allegrol[=allegro-config]"
+	echo "                                 enables Allegro video driver support"
 	echo "  --with-cocoa                   enables COCOA video driver (OSX ONLY)"
 	echo "  --with-sdl[=sdl-config]        enables SDL video driver support"
 	echo "  --with-zlib[=zlib.a]           enables zlib support"

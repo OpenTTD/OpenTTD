@@ -28,6 +28,7 @@ fi
 
 
 # First, collect the list of Windows files
+allegro_config=""
 sdl_config="1"
 png_config="1"
 os="MSVC"
@@ -78,6 +79,7 @@ load_main_data() {
 
 			deep += 1;
 
+			if ($0 == "ALLEGRO"     && "'$allegro_config'" == "")      { next; }
 			if ($0 == "SDL"         && "'$sdl_config'" == "")          { next; }
 			if ($0 == "PNG"         && "'$png_config'" == "")          { next; }
 			if ($0 == "OSX"         && "'$os'" != "OSX")               { next; }
