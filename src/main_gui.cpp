@@ -267,7 +267,9 @@ struct MainWindow : Window
 
 			case '1' | WKC_ALT: // Gimme money
 				/* Server can not cheat in advertise mode either! */
+#ifdef ENABLE_NETWORK
 				if (!_networking || !_network_server || !_settings_client.network.server_advertise)
+#endif /* ENABLE_NETWORK */
 					DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
 				break;
 
