@@ -1789,6 +1789,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Tory kolejowe z
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Tory kolejowe z normalnymi i exit-sygnałami
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Tory kolejowe z normalnymi i combo-sygnałami
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Tory kolejowe z sygnalizatorami blokowania i jazdy
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Tor kolejowy z blokadą i jednokierunkowymi sygnałami
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tory kolejowe z pre- i exit-sygnałami
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tory kolejowe z pre i combo-sygnałami
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tory kolejowe z exit i combo-sygnałami
@@ -2859,8 +2860,12 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Przeladuj i od
 STR_ORDER_NO_UNLOAD                                             :(Nie rozladowuj i wez ladunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Nie rozladowuj i czekaj na pelny zaladunek)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Nie rozladowuj i czekaj na pelny zaladunek czegokolwiek)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Zmień zachowanie hamowania podświetlonych rozkazów
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Zmień zachowanie załadunku podświetlonego rozkazu
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}}Zmień zachowanie wyładunku podświetlonego rozkazu
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Dodaj zaawansowany rozkaz
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Jedz do najblizszej zajezdni
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Lec do najblizszego hangaru
 STR_ORDER_NEAREST_DEPOT                                         :najbliższy
@@ -2878,6 +2883,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Zawsze do
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Obsluga jesli wymagana
 STR_ORDER_DROP_HALT_DEPOT                                       :Zatrzymaj
 
+STR_ORDER_CONDITIONAL                                           :Skok warunkowego rozkazu
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porównać dane pojazdu z zadaną wartością
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wartość do porównania z danymi pojazdu
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Podaj wartość do porównania
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Załadowanie procentowo
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Prędkość maksymalna
@@ -2893,10 +2902,15 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :jest wiecej bad
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :jest prawda
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :jest falszem
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Skocz do rozkazu {COMMA}
+STR_CONDITIONAL_NUM                                             :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Nie podróżuje
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Przejazd (bez ustalonego czasu)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Przejazd przez {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i zostań tam przez {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :i podróżuje dla{STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} d{P zień ni ni}
 STR_TIMETABLE_TICKS                                             :{COMMA} tick{P "" i ów}
 
@@ -2941,6 +2955,8 @@ STR_REFIT_ORDER                                                 :(Przeksztalc na
 STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
+STR_ORDER_VIEW                                                  :{BLACK}Rozkazy
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Przełącz w oknie rozkazów
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Polecenia)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec poleceń - -
 STR_SERVICE                                                     :{BLACK}Serwis
@@ -2949,6 +2965,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Wartość: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Załadunek / Wyładunek
+STR_LEAVING                                                     :{LTBLUE}Opuszcza
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Pociąg musi być zatrzymany w zajezdni
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nie można wysłać pociągu do zajezdni...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Brak miejsca na polecenia
@@ -3018,6 +3035,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana n
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie można zmienić nazwy typu pojazdu...
 STR_CLEAR_TIME                                                  :{BLACK}Usuń czas
 STR_RESET_LATENESS                                              :{BLACK}Wyzeruj spóźnienia
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Zmień nazwę punktu orientacyjnego
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
@@ -3088,6 +3106,8 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zbuduj w
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Koszt: {CURRENCY}{}Prędkość: {VELOCITY}{}Utrzymanie: {CURRENCY}/rok{}Pojemność: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Pojemność: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} pojazd{P "" y ów}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nazwij samochód
@@ -3113,6 +3133,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nie moż
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz ładunek jaki ma przewozić ten samochód
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Konstrukcja kanału wodnego
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Konstrukcja kanału wodnego
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Kanał wodny
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nie można tutaj wybudować portu...
 STR_9803_SHIP_DEPOT                                             :{WHITE}Stocznia w {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Nowe statki
@@ -3165,6 +3188,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nie moż
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkańcy świętują . . .{}Pierwszy statek przybył do {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Ustaw boję, która może być użyta jako punkt kontrolny
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Nie można tutaj ustawić boi...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Zbuduj akwedukt
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Nie można zbudować tu akweduktu...
 STR_9836_RENAME                                                 :{BLACK}Zmień nazwę
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Zmień nazwę typu statku
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Zmień nazwę typu statku
@@ -3306,6 +3331,7 @@ STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Ustaw pa
 STR_NEWGRF_TIP                                                  :{BLACK}Lista plików NewGRF jakie są zainstalowane. Kliknij na ustawienia aby zmienić
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Obecnie nie ma zainstalowanych żadnych plików NewGRF! Proszę sprawdzić instrukcję jak zainstalować nowe grafiki
 STR_NEWGRF_FILENAME                                             :{BLACK}Nazwa pliku: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Paleta: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}suma MD5: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Zamierzasz wprowadzić zmiany do gry w toku; to może zawiesić OpenTTD.{}Czy jesteś całkowicie pewien?
@@ -3323,10 +3349,17 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} wymaga OpenTTD w wersji {STRING} lub nowszej.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :pliku GRF który miał być tłumaczony
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Wczytano za dużo NewGRF.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ładowanie {STRING} jako statyczne NewGRF z {STRING} może spowodować desynchronizacje.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Załaduj wskazany stan ustawień
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Zapisz stan ustawień
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Zapisz obecną listę jako stan ustawień
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Nadaj nazwę dla stanu ustawień
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Usuń stan ustawień
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Usuń obecnie wskazany stan ustawień
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj plik NewGRF do listy
 STR_NEWGRF_REMOVE                                               :{BLACK}Usuń
@@ -3498,6 +3531,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Zmień l
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Tworzenie świata
 STR_RANDOM_SEED                                                 :{BLACK}Losowy numer:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Kliknij aby wpisać losowy numer
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Wprowadź losowe ziarno
 STR_LAND_GENERATOR                                              :{BLACK}Generator terenu:
 STR_TREE_PLACER                                                 :{BLACK}Algorytm drzew:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Obrót mapy wysokości:
@@ -3589,6 +3623,7 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Przełą
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Przełącz przeźroczystość mostów
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Przełącz przeźroczystość obiektów takich jak latarnie morskie i nadajniki, być może w przyszłości dodatki graficzne
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Przełącz przeźroczystość wskaźników załadunku
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Ustaw obiekty jako niewidoczne zamiast przeźroczyste
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3722,6 +3757,7 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zwiększ
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Zezwól miastom kontrolować poziom hałasu dla lotnisk: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Wytwarzany hałas: {GOLD}{COMMA}
 ########

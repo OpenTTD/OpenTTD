@@ -3237,6 +3237,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Caricare {STRIN
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inatteso.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietà sconosciuta per l'azione 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativo di utilizzare un ID non valido.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene degli sprite corrotti. Tutti gli sprite corrotti saranno mostrati come punti interrogativi (?) rossi.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carica il profilo selezionato
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salva profilo

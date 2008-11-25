@@ -5,6 +5,8 @@
 ##plural 0
 ##gender m f n
 
+#
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Απο την άκρη του χάρτη
@@ -376,6 +378,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Συνολικ�
 STR_SORT_BY_MAX_SPEED                                           :Μέγιστη ταχύτητα
 STR_SORT_BY_MODEL                                               :Μοντέλο
 STR_SORT_BY_VALUE                                               :Αξία
+STR_SORT_BY_LENGTH                                              :Μήκος
 STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
 STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
 STR_SORT_BY_RATING_MAX                                          :Εκτίμηση φορτίου
@@ -576,6 +579,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}{G=f}Δ�
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Τελευταίο μήνυμα/αναφορά νέων
 STR_0201_MESSAGE_SETTINGS                                       :Ρυθμίσεις μηνυμάτων
+STR_MESSAGE_HISTORY_MENU                                        :Ιστορικό Μηνυμάτων
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Επιλογές Μηνυμάτων
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Τύποι μηνυμάτων:
@@ -583,6 +587,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφι�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφιξη του πρώτου οχήματος το σταθμό του αντιπάλου
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ατυχήματα / καταστροφές
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Πληροφορίες εταιρείας
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Κλείνουν οι βιομηχανίες
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Οικονομικές αλλαγές
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Νέα οχήματα
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Αλλαγές στην αποδοχή φορτίου
@@ -740,6 +745,7 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...κα�
 STR_02A1_SMALL                                                  :{BLACK}Μικρό
 STR_02A2_MEDIUM                                                 :{BLACK}Μεσαίο
 STR_02A3_LARGE                                                  :{BLACK}Μεγάλο
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Πόλη
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Επιλογή μεγέθους πόλης
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Μέγεθος πόλης:
 
@@ -922,6 +928,7 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Επιλ
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Σε όλη την οθόνη
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Τσεκάρεται αυτό το κουτάκι ωστε να παίξετε το OpenTTD σε όλη την οθόνη
+STR_FULLSCREEN_FAILED                                           :{WHITE}Πλήρεις Οθόνη απέτυχε
 
 STR_OPTIONS_RES                                                 :{BLACK}Ανάλυση οθόνης
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -967,6 +974,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Αδύν
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Αδύνατο να αντιγραφεί η λίστα οδηγιών...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Τέλος Μοιρασμένων Οδηγιών - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}το τρένο {COMMA} δεν μπορεί να βρει διαδρομή για να συνεχίσει
 STR_TRAIN_IS_LOST                                               :{WHITE}Το τραίνο {COMMA} Χάθηκε
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Τα κέρδη του Τρένου {COMMA}το προηγούμενο έτος ήταν {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
@@ -1077,6 +1085,17 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Μετακίν�
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Κλειστό
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Ταχύτητα ροδέλας μετακίνησης χάρτη: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
+
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :όχι
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :όχι
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Κανονικός σιδηρόδρομος
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Ηλεκτρικός σιδηρόδρομος
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorail
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Πρώτη διαθεσιμότητα
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Τελευταία διαθεσιμότητα
+
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Μέγιστα τρένα ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Μέγιστα οχήματα ανα παίκτη: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Μέγιστα αεροσκάφη ανα παίκτη: {ORANGE}{STRING}
@@ -1109,6 +1128,8 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ενε�
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Ενεργοποίηση δυνατότητας αγοράς μετοχών από άλλες εταιρείες
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Κατά το σύρσιμο, τοποθέτησε σήματα κάθε: {ORANGE}{STRING} τετράγωνο(α)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Αυτόματο χτίσιμο σηματοφόρων πρίν: {ORANGE}{STRING}
+
+
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Θέση κύριας εργαλειοθήκης: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Αριστερά
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Κέντρο
@@ -1129,6 +1150,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Αλλαγή τιμής ρύθμισης
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Κάποια ή όλα τα προεπιλεγμένα διαστήματα επισκευών παρακάτω δεν είναι συμβατά με την επιλεγμένη ρύθμιση! 5-90% και 30-800 μέρες είναι τα αποδεκτά
+
 
 STR_TEMPERATE_LANDSCAPE                                         :Συγκρατημένο τοπίο
 STR_SUB_ARCTIC_LANDSCAPE                                        :Πολικό τοπίο
@@ -1188,6 +1210,7 @@ STR_CANT_BUILD_CANALS                                           :{WHITE}Δεν �
 STR_LANDINFO_CANAL                                              :Κανάλι
 
 
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...σημαδούρα σε χρήση
 
 
@@ -1216,6 +1239,10 @@ STR_STATION_DRAG_DROP                                           :{BLACK}Φτιά
 
 
 
+
+
+
+
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
@@ -1231,8 +1258,24 @@ STR_STATION_DRAG_DROP                                           :{BLACK}Φτιά
 
 
 
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} Απέτυχε η σύνδεση λόγο διαφορετικών NewGRF
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Η έκδοση του client δεν ταιριάζει με την έκδοση του server
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Λανθασμένος κωδικός
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Ο server ειναι γεμάτος
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Έχετε γίνει ban απο τον server
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Έχετε γίνει kick απο τον server
+STR_NETWORK_ERR_CHEATER                                         :{WHITE} Δεν επιτρέπονται τα cheats στον server
 
+STR_NETWORK_ERR_LEFT                                            :έφυγε απο το παιχνίδι
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL                                  :Γενικό πρόβλημα
+STR_NETWORK_ERR_CLIENT_DESYNC                                   :Πρόβλημα συγχρονισμού
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :Η σύνδεση χάθηκε
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :λάθος έκδοση
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :το όνομα χρησιμοποιείται
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :λάθος κωδικός
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :λάθος company-id στο DoCommand
+STR_NETWORK_ERR_CLIENT_KICKED                                   :Kicked απο τον server
 ############ End of leave-in-this-order
 
 
@@ -1593,6 +1636,9 @@ STR_4828_REQUIRES                                               :{BLACK}Απαι
 STR_4829_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+############ range for produces starts
+############ range for produces ends
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Παραγωγή προηγούμενου μήνα:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας
@@ -1928,6 +1974,12 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 
 
+
+
+
+
+
+
 ##id 0x9000
 
 
@@ -1938,12 +1990,16 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 ##id 0xA000
 
 
+
 ##id 0xB000
+
 
 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
+
 
 
 
@@ -1976,6 +2032,9 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 
 
 
+########### For showing numbers in widgets
+
+
 ########### String for New Landscape Generator
 
 
@@ -1991,3 +2050,28 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ########
 
 
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########

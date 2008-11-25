@@ -365,8 +365,8 @@ STR_SORT_ORDER_TIP                                              :{BLACK}Izaberi 
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Izaberi kriterij za sortiranje
 STR_SORT_BY                                                     :{BLACK}Sortiraj prema
 
-STR_SORT_BY_POPULATION                                          :{BLACK}Stanovnici
-STR_SORT_BY_PRODUCTION                                          :Produkcija
+STR_SORT_BY_POPULATION                                          :{BLACK}Stanovništvo
+STR_SORT_BY_PRODUCTION                                          :Proizvodnja
 STR_SORT_BY_TYPE                                                :Vrsta
 STR_SORT_BY_TRANSPORTED                                         :Prevezeno
 STR_SORT_BY_NAME                                                :{BLACK}Ime
@@ -382,6 +382,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maksimalna brzi
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Vrijednost
 STR_SORT_BY_LENGTH                                              :Dužina
+STR_SORT_BY_LIFE_TIME                                           :Preostali životni vijek
 STR_SORT_BY_FACILITY                                            :Vrsta stanice
 STR_SORT_BY_WAITING                                             :Vrijednost tereta koji čeka
 STR_SORT_BY_RATING_MAX                                          :Ocjena tereta
@@ -745,8 +746,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Snimi sc
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Učitaj scenarij
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Spremi scenarij
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Igraj scenarij
-STR_PLAY_HEIGHTMAP                                              :{BLACK}Igraj Rastersku Mapu
-STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Pokreni novu igru, koristeći rastersku mapu kao krajolik
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Igraj visinsku kartu
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Pokreni novu igru, koristeći visinsku kartu kao krajolik
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Jeste li sigurni da želite završiti ovaj scenarij?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Završi uređivanje
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}..može se izgraditi u gradovima sa najmanje 1200 stanovnika
@@ -1088,7 +1089,7 @@ STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algorit
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nijedan
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Izvorni
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Unaprijeđen
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotacija visinske mape: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotacija visinske karte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Obrnuto od smjera kazaljke na satu
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :U smjeru kazaljke na satu
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visinski nivo koji ravna mapa u scenariju dobiva: {ORANGE}{STRING}
@@ -1233,8 +1234,8 @@ STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nije preporučivo)
 
 STR_TEMPERATE_LANDSCAPE                                         :Blagi krajolik
-STR_SUB_ARCTIC_LANDSCAPE                                        :Pod-arktički krajolik
-STR_SUB_TROPICAL_LANDSCAPE                                      :Sub-tropski krajolik
+STR_SUB_ARCTIC_LANDSCAPE                                        :Subarktički krajolik
+STR_SUB_TROPICAL_LANDSCAPE                                      :Suptropski krajolik
 STR_TOYLAND_LANDSCAPE                                           :Toyland krajolik
 
 STR_CHEATS                                                      :{WHITE}Varanje
@@ -1950,7 +1951,7 @@ STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}...neuje
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Drži CTRL kako bi odabrao više od jedne stavke
 
 STR_UNDEFINED                                                   :(neodređen znakovni niz)
-STR_STAT_CLASS_DFLT                                             :Pretpostavljena stanica
+STR_STAT_CLASS_DFLT                                             :Zadana stanica
 STR_STAT_CLASS_WAYP                                             :Čvorišta
 
 ##id 0x3800
@@ -2681,6 +2682,9 @@ STR_ORDER_NON_STOP                                              :{BLACK}Nepresta
 
 
 
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :je istinito
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :je lažno
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Putovanje (bez rasporeda)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Putovanje za {STRING}
@@ -2695,6 +2699,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servisi
 
 STR_INVALID_ORDER                                               :{RED} (Neispravna naredba)
 
+STR_UNKNOWN_STATION                                             :nepoznata postaja
 STR_8812_EMPTY                                                  :{LTBLUE}Prazan
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} iz {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iz {STATION} (x{NUM})
@@ -2725,8 +2730,10 @@ STR_8826_GO_TO                                                  :{BLACK}Idi do
 STR_REFIT                                                       :{BLACK}Prenamijeni
 STR_REFIT_TIP                                                   :{BLACK}Odaberi vrstu tereta za prenamijenu u ovoj naredbi. CTRL+klik kako bi uklonio naputak za prenamjenu
 STR_REFIT_ORDER                                                 :(Prenamijeni u {STRING})
+STR_STOP_ORDER                                                  :(Stani)
 STR_TIMETABLE_VIEW                                              :{BLACK} Raspored
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prebacivanje na pogled rasporeda
+STR_ORDER_VIEW                                                  :{BLACK}Naredbe
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Naredbe)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Kraj naredbi - -
 STR_SERVICE                                                     :{BLACK}Servis
@@ -2804,6 +2811,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nije moguće preimenovati vrstu vagona...
 STR_CLEAR_TIME                                                  :{BLACK}Obriši vrijeme
 STR_RESET_LATENESS                                              :{BLACK}Poništi Brojač Kašnjenja
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Zaustavljam
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zaustavljam, {VELOCITY}
@@ -2872,6 +2880,8 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Izgradi 
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Trošak: {CURRENCY}{}Brzina: {VELOCITY}{}Trošak uporabe: {CURRENCY}/god{}Kapacitet: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Nosivost: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Imenuj cestovno vozilo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nije moguće imenovati cestovno vozilo...
@@ -2948,6 +2958,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nije mog
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi brod  je stigao u {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Smjesti plutaču koja može biti korištena kao pokazatelj puta
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Nije moguće staviti plutaču ovdje...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Izgradi akvadukt
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Ovdje nije moguće izgraditi akvadukt...
 STR_9836_RENAME                                                 :{BLACK}Preimenuj
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Preimenuj vrstu broda
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Preimenuj vrstu broda
@@ -3047,6 +3059,8 @@ STR_BRIBE_FAILED                                                :{WHITE}Tvoj pok
 STR_BRIBE_FAILED_2                                              :{WHITE}otkriven od strane regionalnog istražitelja
 STR_BUILD_DATE                                                  :{BLACK}Izgrađeno: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Klasa postaje: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Vrsta postaje: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljna procjena rezultata
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalji
@@ -3259,6 +3273,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK} Maks. v
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
@@ -3284,10 +3301,10 @@ STR_SNOW_LINE_DOWN                                              :{BLACK}Pomakni 
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Promijeni visinu linije snijega
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Promijeni početnu godinu
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozorenje o veličini
-STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine mape nije preporučena. Nastaviti sa kreiranjem?
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine karte nije preporučena. Nastaviti sa kreiranjem?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Upozorenje na raspored grada
 STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Raspored grada s opcijom "nema više cesti" nije preporučen. Nastaviti s generiranjem?
-STR_HEIGHTMAP_NAME                                              :{BLACK}Ime heightmape:
+STR_HEIGHTMAP_NAME                                              :{BLACK}Ime visinske karte:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Veličina: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Izrada svijeta u toku...
 STR_GENERATION_ABORT                                            :{BLACK}Prekini
@@ -3405,6 +3422,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikni k
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3413,6 +3431,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Ime mora
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Idi do sljedećeg znaka
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Idi do prethodnog znaka
+STR_SIGN_OSKTITLE                                               :{BLACK}Unesi naziv znaka
 
 ########
 
@@ -3475,7 +3494,7 @@ STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Ovdje ni
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standardni signal (semafor){}Signali su nužni kako bi spriječili vlakove da se sudaraju na pružnim mrežama s više od jednog vlaka.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Ulazni signal (semafor){}Zeleno sve dok je jedan ili više zelenih izlaznih signala na narednom dijelu pruge. U protivnom pokazuje crveno.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Izlazni signal (semafor){}Ponaša se na isti način kao i normalni signali, ali je nužno potrefiti točnu boju na ulaznim & kombo pre-signalima.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombo signal (semafor){}Kombo singal jednostavno radi kao ulazni i izlazni signal. Ovo omogućava izgradnju velike "šume" pre-signala.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Kombo signal (semafor){}Kombo signal jednostavno radi kao ulazni i izlazni signal. Ovo omogućava izgradnju velike "šume" pre-signala.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standardni signal (električni){}Signali su nužni kako bi spriječili vlakove da se sudaraju na pružnim mrežama s više od jednog vlaka
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Ulazni signal (električni){}Zeleno sve dok je jedan ili više zelenih izlaznih signala na narednom dijelu pruge. U protivnom pokazuje crveno.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Izlazni signal (električni){}Ponaša se na isti način kao i normalni signali, ali je nužno potrefiti točnu boju na ulaznim & kombo pre-signalima.
@@ -3487,7 +3506,9 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povećaj
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 ########
 
 ############ town controlled noise level
+STR_STATION_NOISE                                               :{BLACK}Proizvedeno buke: {GOLD}{COMMA}
 ########
