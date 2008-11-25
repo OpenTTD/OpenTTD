@@ -40,12 +40,12 @@ void SoundDriver_Allegro::MainLoop()
 
 /** There are multiple modules that might be using Allegro and
  * Allegro can only be initiated once. */
-extern int _allegro_count;
+extern int _allegro_instance_count;
 
 const char *SoundDriver_Allegro::Start(const char * const *parm)
 {
-	if (_allegro_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
-	_allegro_count++;
+	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
+	_allegro_instance_count++;
 
 	/* Initialise the sound */
 	if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, NULL) != 0) return NULL;
@@ -68,7 +68,7 @@ void SoundDriver_Allegro::Stop()
 	}
 	remove_sound();
 
-	if (--_allegro_count == 0) allegro_exit();
+	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
 #endif /* WITH_ALLEGRO */

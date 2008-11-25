@@ -376,12 +376,12 @@ static void PollEvent()
 
 /** There are multiple modules that might be using Allegro and
  * Allegro can only be initiated once. */
-int _allegro_count = 0;
+int _allegro_instance_count = 0;
 
 const char *VideoDriver_Allegro::Start(const char * const *parm)
 {
-	if (_allegro_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
-	_allegro_count++;
+	if (_allegro_instance_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
+	_allegro_instance_count++;
 
 	install_timer();
 	install_mouse();
@@ -396,7 +396,7 @@ const char *VideoDriver_Allegro::Start(const char * const *parm)
 
 void VideoDriver_Allegro::Stop()
 {
-	if (--_allegro_count == 0) allegro_exit();
+	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
 #if defined(UNIX) || defined(__OS2__) || defined(PSP)
