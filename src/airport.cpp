@@ -205,7 +205,7 @@ void UnInitializeAirports()
 
 
 static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA);
-static AirportFTA* AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA);
+static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA);
 static byte AirportGetTerminalCount(const byte *terminals, byte *groups);
 static byte AirportTestFTA(uint nofelements, const AirportFTA *layout, const byte *terminals);
 
@@ -272,7 +272,7 @@ AirportFTAClass::AirportFTAClass(
 
 	/* Build the state machine itself */
 	layout = AirportBuildAutomata(nofelements, apFA);
-	DEBUG(misc, 2, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d (%dgrp); entries %3d, %3d, %3d, %3d",
+	DEBUG(misc, 6, "[Ap] #count %3d; #term %2d (%dgrp); #helipad %2d (%dgrp); entries %3d, %3d, %3d, %3d",
 		nofelements, nofterminals, nofterminalgroups, nofhelipads, nofhelipadgroups,
 		entry_points[DIAGDIR_NE], entry_points[DIAGDIR_SE], entry_points[DIAGDIR_SW], entry_points[DIAGDIR_NW]);
 
@@ -320,7 +320,7 @@ static uint16 AirportGetNofElements(const AirportFTAbuildup *apFA)
 	return nofelements;
 }
 
-/* We calculate the terminal/helipod count based on the data passed to us
+/** We calculate the terminal/helipod count based on the data passed to us
  * This data (terminals) contains an index as a first element as to how many
  * groups there are, and then the number of terminals for each group */
 static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
@@ -341,7 +341,7 @@ static byte AirportGetTerminalCount(const byte *terminals, byte *groups)
 }
 
 
-static AirportFTA* AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA)
+static AirportFTA *AirportBuildAutomata(uint nofelements, const AirportFTAbuildup *apFA)
 {
 	AirportFTA *FAutomata = MallocT<AirportFTA>(nofelements);
 	uint16 internalcounter = 0;
@@ -353,7 +353,7 @@ static AirportFTA* AirportBuildAutomata(uint nofelements, const AirportFTAbuildu
 		current->block         = apFA[internalcounter].block;
 		current->next_position = apFA[internalcounter].next;
 
-		// outgoing nodes from the same position, create linked list
+		/* outgoing nodes from the same position, create linked list */
 		while (current->position == apFA[internalcounter + 1].position) {
 			AirportFTA *newNode = MallocT<AirportFTA>(1);
 
@@ -361,7 +361,7 @@ static AirportFTA* AirportBuildAutomata(uint nofelements, const AirportFTAbuildu
 			newNode->heading       = apFA[internalcounter + 1].heading;
 			newNode->block         = apFA[internalcounter + 1].block;
 			newNode->next_position = apFA[internalcounter + 1].next;
-			// create link
+			/* create link */
 			current->next = newNode;
 			current = current->next;
 			internalcounter++;
@@ -405,7 +405,7 @@ static byte AirportTestFTA(uint nofelements, const AirportFTA *layout, const byt
 }
 
 #ifdef DEBUG_AIRPORT
-static const char* const _airport_heading_strings[] = {
+static const char * const _airport_heading_strings[] = {
 	"TO_ALL",
 	"HANGAR",
 	"TERM1",
@@ -454,8 +454,8 @@ static void AirportPrintOut(uint nofelements, const AirportFTA *layout, bool ful
 
 const AirportFTAClass *GetAirport(const byte airport_type)
 {
-	//FIXME -- AircraftNextAirportPos_and_Order -> Needs something nicer, don't like this code
-	// needs constant change if more airports are added
+	/* FIXME -- AircraftNextAirportPos_and_Order -> Needs something nicer, don't like this code
+	 * needs constant change if more airports are added */
 	switch (airport_type) {
 		default:               NOT_REACHED();
 		case AT_SMALL:         return CountryAirport;
