@@ -8,6 +8,9 @@
 #include "../driver.h"
 
 class SoundDriver: public Driver {
+public:
+	/* Called once every tick */
+	virtual void MainLoop() {}
 };
 
 class SoundDriverFactoryBase: public DriverFactoryBase {

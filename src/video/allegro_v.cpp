@@ -374,9 +374,14 @@ static void PollEvent()
 	}
 }
 
+/** There are multiple modules that might be using Allegro and
+ * Allegro can only be initiated once. */
+int _allegro_count = 0;
+
 const char *VideoDriver_Allegro::Start(const char * const *parm)
 {
-	if (install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
+	if (_allegro_count == 0 && install_allegro(SYSTEM_AUTODETECT, &errno, NULL)) return NULL;
+	_allegro_count++;
 
 	install_timer();
 	install_mouse();
@@ -391,7 +396,7 @@ const char *VideoDriver_Allegro::Start(const char * const *parm)
 
 void VideoDriver_Allegro::Stop()
 {
-	allegro_exit();
+	if (--_allegro_count == 0) allegro_exit();
 }
 
 #if defined(UNIX) || defined(__OS2__) || defined(PSP)
@@ -431,7 +436,7 @@ void VideoDriver_Allegro::MainLoop()
 #else
 		/* Speedup when pressing tab, except when using ALT+TAB
 		 * to switch to another application */
-		if (keys[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0)
+		if (key[KEY_TAB] && (key_shifts & KB_ALT_FLAG) == 0)
 #endif
 		{
 			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;

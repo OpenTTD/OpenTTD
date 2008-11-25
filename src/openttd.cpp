@@ -1184,6 +1184,7 @@ void GameLoop()
 
 	InputLoop();
 
+	_sound_driver->MainLoop();
 	MusicLoop();
 }
 

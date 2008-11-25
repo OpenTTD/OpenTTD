@@ -123,6 +123,7 @@ window.cpp
 
 # Header Files
 #if ALLEGRO
+	sound/allegro_s.h
 	video/allegro_v.h
 #end
 ai/ai.h
@@ -646,6 +647,9 @@ music/null_m.cpp
 #end
 
 # Sound
+#if ALLEGRO
+	sound/allegro_s.cpp
+#end
 sound/null_s.cpp
 #if SDL
 	sound/sdl_s.cpp
