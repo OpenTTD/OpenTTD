@@ -1,0 +1,10 @@
+##name Malay
+##ownname Malay
+##isocode ms_MY
+##winlangid 0x043a
+##plural 0
+
+#
+
+##id 0x0000
+STR_NULL                                                        :
