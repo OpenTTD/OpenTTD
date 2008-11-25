@@ -1,0 +1,11 @@
+bin/lang/*
+bin/opentd*
+bundle/*
+config.cache.*
+config.log
+config.pwd
+Makefile
+Makefile.am
+media/openttd.desktop*
+objs/*
+src/rev.cpp
