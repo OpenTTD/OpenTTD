@@ -773,6 +773,10 @@ void ChangeWorkingDirectory(const char *exe)
 	char *s = strrchr(exe, PATHSEPCHAR);
 	if (s != NULL) {
 		*s = '\0';
+#if defined(__DJGPP__)
+		/* If we want to go to the root, we can't use cd C:, but we must use '/' */
+		if (s[-1] == ':') chdir("/");
+#endif
 		if (chdir(exe) != 0) DEBUG(misc, 0, "Directory with the binary does not exist?");
 		*s = PATHSEPCHAR;
 	}
@@ -788,7 +792,7 @@ void ChangeWorkingDirectory(const char *exe)
 void DetermineBasePaths(const char *exe)
 {
 	char tmp[MAX_PATH];
-#if defined(__MORPHOS__) || defined(__AMIGA__) || !defined(WITH_PERSONAL_DIR)
+#if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS) || !defined(WITH_PERSONAL_DIR)
 	_searchpaths[SP_PERSONAL_DIR] = NULL;
 #else
 	const char *homedir = getenv("HOME");
@@ -826,7 +830,7 @@ void DetermineBasePaths(const char *exe)
 	AppendPathSeparator(tmp, MAX_PATH);
 	_searchpaths[SP_BINARY_DIR] = strdup(tmp);
 
-#if defined(__MORPHOS__) || defined(__AMIGA__)
+#if defined(__MORPHOS__) || defined(__AMIGA__) || defined(DOS)
 	_searchpaths[SP_INSTALLATION_DIR] = NULL;
 #else
 	snprintf(tmp, MAX_PATH, "%s", GLOBAL_DATA_DIR);

@@ -50,7 +50,7 @@ save_params
 make_cflags_and_ldflags
 
 EXE=""
-if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ] || [ "$os" = "WINCE" ]; then
+if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "OS2" ] || [ "$os" = "DOS" ] || [ "$os" = "WINCE" ]; then
 	EXE=".exe"
 fi
 

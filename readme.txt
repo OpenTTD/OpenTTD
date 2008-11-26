@@ -73,14 +73,15 @@ OpenTTD has been ported to several platforms and operating systems. It shouldn't
 be very difficult to port it to a new platform. The currently working platforms
 are:
 
-  BeOS                 - SDL
+  BeOS                 - SDL or Allegro
+  DOS                  - Allegro
   FreeBSD              - SDL
-  Linux                - SDL
+  Linux                - SDL or Allegro
   MacOS X (universal)  - Cocoa video and sound drivers (SDL works too, but not 100% and not as a universal binary)
   MorphOS              - SDL
   OpenBSD              - SDL
   OS/2                 - SDL
-  Windows              - Win32 GDI (faster) or SDL
+  Windows              - Win32 GDI (faster) or SDL or Allegro
 
 
 4.0) Installing and running OpenTTD:
@@ -297,6 +298,16 @@ MorphOS:
 OS/2:
   A comprehensive GNU build environment is required to build the OS/2 version.
   See the docs/Readme_OS2.txt file for more information.
+
+DOS:
+  A build environment with DJGPP is needed as well as libraries such as
+  Allegro, zlib and libpng, which all can be downloaded from the DJGPP
+  website. Compilation is straight forward: use make, but do a "./configure"
+  before the first build. The build binary will need cwsdpmi.exe to be in
+  the same directory as the openttd executable. cwsdpmi.exe can be found in
+  the os/dos subdirectory. If you compile with stripping turned on a binary
+  will be generated that does not need cwsdpmi.exe by adding the cswdstub.exe
+  to the created OpenTTD binary.
 
 
 8.0) Translating:

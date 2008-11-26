@@ -179,13 +179,19 @@ static bool CreateMainSurface(int w, int h)
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 	set_color_depth(bpp);
 
+#if defined(DOS)
+	/* Force DOS builds to ALWAYS use full screen as
+	 * it can't do windowed. */
+	_fullscreen = true;
+#endif
+
 	GetVideoModes();
 	GetAvailableVideoMode(&w, &h);
 	if (set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, w, h, 0, 0) != 0) return false;
 
-	_allegro_screen = create_bitmap(screen->w, screen->h);
-	_screen.width = screen->w;
-	_screen.height = screen->h;
+	_allegro_screen = create_bitmap(w, h);
+	_screen.width = w;
+	_screen.height = h;
 	_screen.pitch = ((byte*)screen->line[1] - (byte*)screen->line[0]) / (bitmap_color_depth(screen) / 8);
 
 	poll_mouse();
@@ -399,7 +405,7 @@ void VideoDriver_Allegro::Stop()
 	if (--_allegro_instance_count == 0) allegro_exit();
 }
 
-#if defined(UNIX) || defined(__OS2__) || defined(PSP)
+#if defined(UNIX) || defined(__OS2__) || defined(PSP) || defined(DOS)
 # include <sys/time.h> /* gettimeofday */
 
 static uint32 GetTime()
@@ -490,6 +496,9 @@ bool VideoDriver_Allegro::ChangeResolution(int w, int h)
 
 bool VideoDriver_Allegro::ToggleFullscreen(bool fullscreen)
 {
+#ifdef DOS
+	return false;
+#else
 	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
 	if (_num_resolutions == 0 || !this->ChangeResolution(_cur_resolution.width, _cur_resolution.height)) {
@@ -498,6 +507,7 @@ bool VideoDriver_Allegro::ToggleFullscreen(bool fullscreen)
 		return false;
 	}
 	return true;
+#endif
 }
 
 #endif /* WITH_ALLEGRO */

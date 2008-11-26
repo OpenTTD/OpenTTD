@@ -639,7 +639,10 @@ music/null_m.cpp
 	#else
 		#if PSP
 		#else
-			music/extmidi.cpp
+			#if DOS
+			#else
+				music/extmidi.cpp
+			#end
 		#end
 	#end
 #end

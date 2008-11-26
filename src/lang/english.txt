@@ -277,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Too many
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Chosen name already in use
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS

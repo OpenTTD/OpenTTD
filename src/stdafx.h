@@ -353,7 +353,7 @@ void NORETURN CDECL usererror(const char *str, ...);
 void NORETURN CDECL error(const char *str, ...);
 #define NOT_REACHED() error("NOT_REACHED triggered at line %i of %s", __LINE__, __FILE__)
 
-#if defined(MORPHOS) || defined(__NDS__)
+#if defined(MORPHOS) || defined(__NDS__) || defined(__DJGPP__)
 	/* MorphOS and NDS don't have C++ conformant _stricmp... */
 	#define _stricmp stricmp
 #elif defined(OPENBSD)
@@ -361,7 +361,7 @@ void NORETURN CDECL error(const char *str, ...);
 	#define _stricmp strcasecmp
 #endif
 
-#if !defined(MORPHOS) && !defined(OPENBSD) && !defined(__NDS__)
+#if !defined(MORPHOS) && !defined(OPENBSD) && !defined(__NDS__) && !defined(__DJGPP__)
 	/* NDS, MorphOS & OpenBSD don't know wchars, the rest does :( */
 	#define HAS_WCHAR
 #endif /* !defined(MORPHOS) && !defined(OPENBSD) && !defined(__NDS__) */
