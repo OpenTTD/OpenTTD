@@ -84,13 +84,13 @@ const char *GetDebugString();
  *  it with an other block.
  **/
 #define TIC() {\
-	extern uint64 _rdtsc();\
-	uint64 _xxx_ = _rdtsc();\
+	extern uint64 ottd_rdtsc();\
+	uint64 _xxx_ = ottd_rdtsc();\
 	static uint64 __sum__ = 0;\
 	static uint32 __i__ = 0;
 
 #define TOC(str, count)\
-	__sum__ += _rdtsc() - _xxx_;\
+	__sum__ += ottd_rdtsc() - _xxx_;\
 	if (++__i__ == count) {\
 		DEBUG(misc, 0, "[%s] %" OTTD_PRINTF64 "u [avg: %.1f]\n", str, __sum__, __sum__/(double)__i__);\
 		__i__ = 0;\

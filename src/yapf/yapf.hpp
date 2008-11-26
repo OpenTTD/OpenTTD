@@ -23,7 +23,7 @@
 #include "../settings_type.h"
 #include "../tunnelbridge.h"
 
-extern uint64 _rdtsc();
+extern uint64 ottd_rdtsc();
 
 #include <limits.h>
 #include <new>
@@ -45,7 +45,7 @@ struct CPerformanceTimer
 	FORCEINLINE void Stop() {m_acc += QueryTime() - m_start;}
 	FORCEINLINE int Get(int64 coef) {return (int)(m_acc * coef / QueryFrequency());}
 
-	FORCEINLINE int64 QueryTime() {return _rdtsc();}
+	FORCEINLINE int64 QueryTime() {return ottd_rdtsc();}
 	FORCEINLINE int64 QueryFrequency() {return ((int64)2200 * 1000000);}
 };
 
