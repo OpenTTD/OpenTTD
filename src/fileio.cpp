@@ -984,12 +984,12 @@ static uint ScanPath(FileScanner *fs, const char *extension, const char *path, s
 
 		snprintf(filename, lengthof(filename), "%s%s", path, d_name);
 
-		if (sb.st_mode & S_IFDIR) {
+		if (S_ISDIR(sb.st_mode)) {
 			/* Directory */
 			if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
 			AppendPathSeparator(filename, lengthof(filename));
 			num += ScanPath(fs, extension, filename, basepath_length);
-		} else if (sb.st_mode & S_IFREG) {
+		} else if (S_ISREG(sb.st_mode)) {
 			/* File */
 			char *ext = strrchr(filename, '.');
 

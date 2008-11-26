@@ -235,6 +235,11 @@
 		#undef assert
 		#define assert(expression) if (!(expression)) { SetExceptionString("Assertion failed at %s:%d: %s", __FILE__, __LINE__, #expression); *(byte*)0 = 0; }
 	#endif
+
+	/* MSVC doesn't have these :( */
+	#define S_ISDIR(mode) (mode & S_IFDIR)
+	#define S_ISREG(mode) (mode & S_IFREG)
+
 #endif /* defined(_MSC_VER) */
 
 #if defined(WINCE)
