@@ -1,0 +1,11 @@
+##name Arabic (Egypt)
+##ownname Arabic
+##isocode ar_EG
+##winlangid 0x0c01
+##plural 0
+##textdir rtl
+
+#
+
+##id 0x0000
+STR_NULL                                                        :
