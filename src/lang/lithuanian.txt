@@ -241,11 +241,11 @@ STR_00EC_RAILROADS                                              :{BLACK}{TINYFON
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stotelės/Oro uostai/Prieplaukos
 STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Pastatai/Pramonės įmonės
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Transporto priemonės
-STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
-STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
-STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
-STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
-STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 m
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 m
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300 m
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 m
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Traukiniai
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Automobiliai
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laivai
@@ -270,10 +270,10 @@ STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFON
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Vario rūdos kasykla
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Vaismedžių plantacija
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kaučiukmedžių plantacija
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vandens grežinys
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vandentiekio bokštas
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vandens gręžinys
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vandens bokštas
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Lentpjūvė
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Cukraus vatos krumynai
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Cukraus vatos krūmynai
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Saldumynų gamykla
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Baterijų ūkis
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kolos gręžiniai
@@ -306,7 +306,7 @@ STR_012D                                                        :{WHITE}{STRING}
 STR_DEFAULT                                                     :{BLACK}Pagal nutylejimą
 STR_012E_CANCEL                                                 :{BLACK}Atšaukti
 STR_012F_OK                                                     :{BLACK}Gerai
-STR_0130_RENAME                                                 :{BLACK}Pervardinti
+STR_0130_RENAME                                                 :{BLACK}Pervadinti
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Per daug vardų
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Pasirinktas vardas jau naudojamas
 
@@ -1079,7 +1079,7 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infliac
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Pristatyti krovini stotelei tiktai tuomet, kai yra poreikis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Leisti statyti labai ilgus tiltus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Leisti naudoti uzduoti 'Keliauti i depa': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Rankinis pradinių gamyklų statymas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Pagrindinis pramonės statymo būdas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nėra
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kaip kitos gamyklos
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :vaizdavimas
@@ -1141,7 +1141,15 @@ STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Visų kompanij�
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Rašyti komandai naudojant <ĮVESTI> (ENTER): {ORANGE}{STRING}
 
 
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifikuoti bėgiai
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Vienbėgis geležinkelis
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :„Maglev“
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Pirmas galimas
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Paskutinis galimas
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Dažiausiai naudojamas
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Rodyti rezervuotus bėgius: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Rodyti statymo įrankius, kai nėra tinkamų transporto priemonių: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. traukiniu vienam zaidejui: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. automobiliu zaidejui: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks. lektuvu zaidejui: {ORANGE}{STRING}
@@ -1174,7 +1182,21 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Tolygi 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Leisti pirkti kitų kompanijų akcijas
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tempiant, kopijuoti šviesoforus kas: {ORANGE}{STRING} langel{P į lius lių}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatiškai pastatyti semaforus prieš: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Įjungti šviesaforų langą: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Pagal nutylėjimą statomas šviesaforų tipas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Paprasti šviesaforai
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Krypties šviesaforai
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Vienos krypties šviesaforai
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Pasirinkimui skirti šviesaforų tipai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Tik paprasti šviesaforai
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Tik krypties šviesaforai
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Visi
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :pagrindinis
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :geresni keliai
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 tinklelis
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 tinklelis
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :atsitiktinis
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pagrindines irankiu juostos pozicija: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Kaireje
@@ -1182,6 +1204,16 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centruoti
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Desineje
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Langu persidengimo atstumas: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Langų kibumo atsumas: {ORANGE}disabled
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Miesto augimo tempas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Neauga
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lėtas
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Vidutinis
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Greitas
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Labai greitas
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Miestelių tampančių miestais santykis: {ORANGE}1 iš {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Miestelių tampančių miestais santykis: {ORANGE}Nėra
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Pradinis miestų dydžio daugiklis: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Panaikinti beprasmius kelio elementus kelių statybos metu
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Vaizdas
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstrukcijos
@@ -1197,6 +1229,18 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Keisti reiksmes
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Klaidingai nurodytas remonto intervalas. Intervalas dienomis: 30-800 d., procentais: 5-90%.
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Traukinių maršruto radėjas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nerekomenduojama)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Rekomenduojama)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Automobilių maršruto radėjas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Originalus {RED}(Nerekomenduojama)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Rekomenduojama)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Laivų maršruto radėjas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Originalus {BLUE}(Rekomenduojama)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Nerekomenduojama)
 
 STR_TEMPERATE_LANDSCAPE                                         :Normalus klimatas
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arktinis klimatas
@@ -1207,6 +1251,7 @@ STR_CHEATS                                                      :{WHITE}Sukciavi
 STR_CHEATS_TIP                                                  :{BLACK}Laukeliai rodo ar jus naudojote si triuka pries tai
 STR_CHEATS_WARNING                                              :{BLACK}Demesio! Tu bandai isduoti vargsus savo varzovus. Tai bus tavo geda visiems laikams ir niekada neuzmirsta.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Padauginti pinigu {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Žaidiama už kompaniją: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magiskas buldozeris (pasalina gamyklas ir kt.): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneliai gali susikirsti: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Galima statyti pauzes rezime: {ORANGE}{STRING}
@@ -1229,6 +1274,7 @@ STR_WAYPOINT                                                    :{WHITE}Kontrole
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Pasirinkite punkto tipa
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Traukin{P ys iai ių}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Redaguoti punkto varda
@@ -1258,15 +1304,19 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Atsitikt
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Sodina atsitiktinės rūšies medžius
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Neimanoma cia iskasti kanalu...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Statyk kanalus.
 STR_LANDINFO_CANAL                                              :Kanalas
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Neimanoma cia irengti sliuzu...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Irengti sliuzus
 STR_LANDINFO_LOCK                                               :Sliuzai
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Upių čia iškarsti negalima...
+STR_LANDINFO_RIVER                                              :Upė
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...pluduras naudojamas!
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinatės: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Neimanoma pasalinti stoties dalies...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Neimanoma cia pakeisti begio tipo...
@@ -1309,6 +1359,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gamyklos
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% transportuota)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportuota)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Pramonės pavadinimai  - spragtelėjus ant pavadinimo, pramonė rodoma ekrano centre
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...per arti kitos gamyklos
 
@@ -1330,6 +1381,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Žaidima
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Zaidejo vardas:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Tai vardas, pagal kuri kiti zaidejai tave pazins
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Įveskite savo vardą
 STR_NETWORK_CONNECTION                                          :{BLACK}Rysys:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Pasirink zaidima internete ar vietiniame tinkle (LAN)
 
@@ -1340,6 +1392,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Vardas
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Zaidimo pavadinimas
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Kalba, serverio versija ir kt.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Pasirink is saraso zaidima
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Serveris, prie kuriame žaidėte paskutinį kartą:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Spragtelkite ant serverio, kuriame žaidėte paskutinį kartą
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Rasti serveri
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Ieskoti serverio
@@ -1351,8 +1405,15 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Zaidejai
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Zaidzia / maksimaliai zaideju
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Žemėlapio dydis
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Žaidimo žemėlapio dydis{}Pragtelėjus rušiuojama pagal dydį
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Data
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Dabartinė data
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Metai
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Metų skaičius{}vykstančio žaidimo
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}Zaidimo informacija
 STR_NETWORK_CLIENTS                                             :{SILVER}Zaidejai:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1376,22 +1437,28 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Pradeti 
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Zaidimo vardas:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Zaidimo pavadinimas bus rodomas kitiems zaidejams meniu
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Įveskite tinklo žaidimo pavadinimą
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nustatyti slaptazodi
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Apsaugokite savo zaidima slaptazodziu, jei nenorite, kad jis butu viesai prieinamas
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Pasirinkite zemelapi:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kuriame zemelapyje norite zaisti?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Vietinis tinklas
 STR_NETWORK_INTERNET                                            :Internetas
 STR_NETWORK_LAN_INTERNET                                        :Vietinis tinklas/ Internetas
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internetas (visiems)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} klient{P as ai ų}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimalus klientu skaicius:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pasirinkite maksimalu klientu skaiciu. Nebutinai visos jungtys turi buti uzpildytos
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} kompanij{P a os ų}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maksimum kompaniju:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Riboti serveri iki tam tikro skaiciaus kompaniju
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} stebėtoj{P as ai ų}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksimum ziurovu:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Riboti serveri iki tam tikro skaiciaus ziurovu
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Kalba:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Kiti zaidejai zinos kokia kalba kalbama serveryje
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Pradeti zaidima
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Predeti nauja zaidima tinkle (atsitiktinis zemelapis ar scenarijus)
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Atverti zaidima
@@ -1402,6 +1469,38 @@ STR_NETWORK_LANG_ANY                                            :Bet kokia
 STR_NETWORK_LANG_ENGLISH                                        :Anglu
 STR_NETWORK_LANG_GERMAN                                         :Vokieciu
 STR_NETWORK_LANG_FRENCH                                         :Prancuzu
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazilų
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgarų
+STR_NETWORK_LANG_CHINESE                                        :Kinų
+STR_NETWORK_LANG_CZECH                                          :Čekų
+STR_NETWORK_LANG_DANISH                                         :Danų
+STR_NETWORK_LANG_DUTCH                                          :Olandų
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Suomių
+STR_NETWORK_LANG_HUNGARIAN                                      :Vengrų
+STR_NETWORK_LANG_ICELANDIC                                      :Islandų
+STR_NETWORK_LANG_ITALIAN                                        :Italų
+STR_NETWORK_LANG_JAPANESE                                       :Japonų
+STR_NETWORK_LANG_KOREAN                                         :Korėjiečių
+STR_NETWORK_LANG_LITHUANIAN                                     :Lietuvių
+STR_NETWORK_LANG_NORWEGIAN                                      :Norvegų
+STR_NETWORK_LANG_POLISH                                         :Lenkų
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugalų
+STR_NETWORK_LANG_ROMANIAN                                       :Rumunų
+STR_NETWORK_LANG_RUSSIAN                                        :Rusų
+STR_NETWORK_LANG_SLOVAK                                         :Slovakų
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovėnų
+STR_NETWORK_LANG_SPANISH                                        :Isapnų
+STR_NETWORK_LANG_SWEDISH                                        :Švedų
+STR_NETWORK_LANG_TURKISH                                        :Turkų
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainiečių
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikiečių
+STR_NETWORK_LANG_CROATIAN                                       :Kroatų
+STR_NETWORK_LANG_CATALAN                                        :Katalonų
+STR_NETWORK_LANG_ESTONIAN                                       :Estų
+STR_NETWORK_LANG_GALICIAN                                       :Galisų
+STR_NETWORK_LANG_GREEK                                          :Graikų
+STR_NETWORK_LANG_LATVIAN                                        :Latvių
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Keliu zaideju meniu
@@ -1565,7 +1664,7 @@ STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Pirmiau 
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Geležinkelio statyba
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifikuoto Gelezinkelio Statyba
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Vienbėgio geležinkelio statyba
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev statyba
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}„Maglev“ statyba
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Pasirinkite geležinkelio tilto tipą
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Čia negalima statyti traukinių depo...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Geležinkelio stoties čia statyti negalima...
@@ -1577,7 +1676,7 @@ STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Traukini
 STR_1015_RAILROAD_CONSTRUCTION                                  :Geležinkelio statyba
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifikuoto Gelezinkelio statyba
 STR_1016_MONORAIL_CONSTRUCTION                                  :Vienbegio geležinkelio statyba
-STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev statyba
+STR_1017_MAGLEV_CONSTRUCTION                                    :„Maglev“ statyba
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Statyti geležinkelio bėgius
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Statyti traukinių depa (traukinių surinkimui ir aptarnavimui)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Statyti geležinkelio stotį
@@ -2231,7 +2330,7 @@ STR_LIVERY_STEAM                                                :Garo Variklis
 STR_LIVERY_DIESEL                                               :Dyzelinis Variklis
 STR_LIVERY_ELECTRIC                                             :Elektrinis Variklis
 STR_LIVERY_MONORAIL                                             :Vienbegis Variklis
-STR_LIVERY_MAGLEV                                               :Maglev Variklis
+STR_LIVERY_MAGLEV                                               :„Maglev“ Variklis
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Keleivinis Vagonas (Garinis)
@@ -2519,7 +2618,7 @@ STR_8103_ROAD_VEHICLE                                           :automobilis
 STR_8104_AIRCRAFT                                               :lektuvas
 STR_8105_SHIP                                                   :laivas
 STR_8106_MONORAIL_LOCOMOTIVE                                    :vienbegis lokomotyvas
-STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetinis lokomotyvas
+STR_8107_MAGLEV_LOCOMOTIVE                                      :„Maglev“ lokomotyvas
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Traukinių depas
@@ -2551,7 +2650,7 @@ STR_881B_TRAINS                                                 :{WHITE}{COMPANY
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nauji Traukiniai
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nauji Elektriniai Traukiniai
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nauji Vienbegiai Traukiniai
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nauji Maglev Traukiniai
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nauji „Maglev“ traukiniai
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Traukiniai
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Pirkti
@@ -3025,7 +3124,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Klaida p
 STR_RAIL_VEHICLES                                               :Paprasti traukiniai
 STR_ELRAIL_VEHICLES                                             :Elektrifikuoti Traukiniai
 STR_MONORAIL_VEHICLES                                           :Vienbegiai traukiniai
-STR_MAGLEV_VEHICLES                                             :Magnetiniai traukiniai
+STR_MAGLEV_VEHICLES                                             :„Maglev“ traukiniai
 
 ############ End of list of rail types
 

@@ -908,13 +908,51 @@ STR_480B_FARM                                                   :مزرعه
 STR_480C_COPPER_ORE_MINE                                        :معدن سنگ مس
 STR_480D_OIL_WELLS                                              :چاه نفت
 STR_480E_BANK                                                   :بانک
+STR_4810_PAPER_MILL                                             :کاغذ سازی
+STR_4811_GOLD_MINE                                              :معدن طلا
+STR_4812_BANK                                                   :بانک
+STR_4813_DIAMOND_MINE                                           :معدن الماس
+STR_4814_IRON_ORE_MINE                                          :معدن سنگ آهن
+STR_4815_FRUIT_PLANTATION                                       :باغ میوه
+STR_4817_WATER_SUPPLY                                           :منبع آب
+STR_4818_WATER_TOWER                                            :برج آب
+STR_4819_FACTORY                                                :کارخانه
+STR_481A_FARM                                                   :مزرعه
+STR_481B_LUMBER_MILL                                            :چوب بری
+STR_481C_COTTON_CANDY_FOREST                                    :جنگل پشمک
+STR_481D_CANDY_FACTORY                                          :کارخانه شیرینی جات
+STR_481E_BATTERY_FARM                                           :مزرعه باتری
+STR_481F_COLA_WELLS                                             :چاه های نوشابه
+STR_4820_TOY_SHOP                                               :اسباب بازی فروشی
+STR_4821_TOY_FACTORY                                            :کارخانه اسباب بازی
+STR_4822_PLASTIC_FOUNTAINS                                      :چشمه ی پلاستک
+STR_4823_FIZZY_DRINK_FACTORY                                    :کارخانه نوشابه گاز دار
+STR_4824_BUBBLE_GENERATOR                                       :مولد حباب
+STR_4826_SUGAR_MINE                                             :معدن شکر
 
 ############ range for requires starts
+STR_4827_REQUIRES                                               :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}مواد اولیه: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
+STR_4827_PRODUCES                                               :{BLACK}محصولات: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}محصولات: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}تولید در ماه گذشته:
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% منتقل شد)
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}مرکز تصویر را روی کارخانه قرار بده
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT} {STRING} جدیدی در مجاورت {TOWN} در حال ساخت است!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT} {STRING} جدیدی در مجاورت {TOWN} در حال کاشته شدن است!
+STR_482F_COST                                                   :{BLACK}خرج: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}این نوع کاخانه را در اینجا نمی شود ساخت...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...جنگل باید بالای خط برف کاشته شود
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} تعطیلی فوری خود را اعلام کرد!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}مشکلات مالی باعث شد {STRING} تعطیلی فوری خود را اعلام کند!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} افزایش تولید داشت!
 
 ##id 0x5000
 

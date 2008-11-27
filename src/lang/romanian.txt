@@ -277,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Prea mul
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Numele ales este deja folosit
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -1055,6 +1056,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afişează întotdeauna data în format lung în bara de stare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Afişează semafoarele pe partea de circulaţie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afişează finanţele la sfârşitul fiecărui an: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Comenzile noi vor aparea "non_stop" : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Autovehiculele pot forma cozi (cu efecte cuantice): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Mută imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permite mituirea autorităţilor locale: {ORANGE}{STRING}
@@ -1142,6 +1144,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prima disponibila
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Ultima disponibila
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Cea mai folosita
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Arata liniile rezervate: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Arata uneltele de constructie cand nu sunt disponibile vehiculele potrivite: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri pentru un jucător: {ORANGE}{STRING}
@@ -2758,6 +2761,7 @@ STR_GO_TO_HANGAR                                                :{STRING} {STATI
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Todeauna avanseaza
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Service daca este nevoie
+STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
 STR_ORDER_CONDITIONAL                                           :Salt in ordine conditionata
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cum se face compararea datelor din vehicul cu valoarea data
@@ -2786,6 +2790,7 @@ STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}NU est
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Calatorie (fara orar)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Calatorii pentru {STRING}
 STR_TIMETABLE_STAY_FOR                                          :si opriri pentru {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :si calatoreste pentru {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} zi{P "" le}
 STR_TIMETABLE_TICKS                                             :{COMMA} programare{P "" s}
 
@@ -3202,6 +3207,7 @@ STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Setari N
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setari Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplică schimbările
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Comuta paleta
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Schimba paleta la NewGRF ul selectat .{} Efectueaza acest lucru cand graficele din acest NewGRF sunt roz in joc
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Seteaza parametri
 STR_NEWGRF_TIP                                                  :{BLACK}Lista tuturor setarilor Newgrf pe care le-ai instalat. Click pentru a schimba setarile.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nu exista fisiere newgrf instalate! Citeste manualul pentru instructiunile de instalare a fisierelor grafice noi.
@@ -3224,9 +3230,11 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} necesita OpenTTD versiunea {STRING} sau mai noua.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :fisierul GRF conceput pentru traducere
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Prea multe NewGRF-uri încărcate.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Incarcarea {STRING} ca si un NewGRF static cu {STRING} ar putea cauza desincronizari.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Imagine neaşteptată/eronată
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Actiune necunoscuta proprietate 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Incercare de folosire a unui ID invalid
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING}Contine un sprite corupt. Toate sprite-urile corupte vor fi aratate ca si semne de intrebare (?) de culoare rosie.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Incarcă presetarea selectată
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvează presetare

@@ -17,8 +17,10 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο εδαφος
 STR_0008_WAITING                                                :{BLACK}Αναμονη: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} καθ οδόν από το {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Δέχεται: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Δέχεται: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Προμηθειών : {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Επιβάτες
 STR_0010_COAL                                                   :Άνθρακας
@@ -268,6 +270,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Χιόνι
 STR_012C_MESSAGE                                                :{WHITE}Μήνυμα
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Προεπιλογή
 STR_012E_CANCEL                                                 :{BLACK}Άκυρο
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Μετονομασία
@@ -275,6 +278,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Καθο
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Το όνομα που διαλέξατε υπάρχει ήδη
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -379,6 +383,7 @@ STR_SORT_BY_MAX_SPEED                                           :Μέγιστη 
 STR_SORT_BY_MODEL                                               :Μοντέλο
 STR_SORT_BY_VALUE                                               :Αξία
 STR_SORT_BY_LENGTH                                              :Μήκος
+STR_SORT_BY_LIFE_TIME                                           :Υπόλοιπη διάρκεια ζωής
 STR_SORT_BY_FACILITY                                            :Τύπος σταθμού
 STR_SORT_BY_WAITING                                             :Αξία φορτίου σε αναμονή
 STR_SORT_BY_RATING_MAX                                          :Εκτίμηση φορτίου
@@ -486,6 +491,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Κόστ
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Κόστος καθαρισμού: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Μ/Δ
 STR_01A7_OWNER                                                  :{BLACK}Ιδιοκτήτης: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Ιδιοκτήτης της Οδός: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Ιδιοκτήτης του τραμ: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Ιδιοκτήτης του σιδηροδρόμου: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Τοπική αρχή: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Κανένα
 STR_01AA_NAME                                                   :{BLACK}Όνομα
@@ -587,8 +595,10 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφι�
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφιξη του πρώτου οχήματος το σταθμό του αντιπάλου
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ατυχήματα / καταστροφές
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Πληροφορίες εταιρείας
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Έναρξη των βιομηχανιών
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Κλείνουν οι βιομηχανίες
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Οικονομικές αλλαγές
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Αλλαγή της Παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρεία
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Νέα οχήματα
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Αλλαγές στην αποδοχή φορτίου
 STR_020E_SUBSIDIES                                              :{YELLOW}Επιχορηγήσεις

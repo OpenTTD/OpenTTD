@@ -343,6 +343,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Túl sok
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}A megadott név már használatban van
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -469,8 +470,8 @@ STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Tekintsd
 STR_MANAGE_LIST                                                 :{BLACK}Lista kezelése
 STR_MANAGE_LIST_TIP                                             :{BLACK}A listán szereplő járműveknek utasítás küldése
 STR_REPLACE_VEHICLES                                            :Járművek lecserélése
-STR_SEND_TRAIN_TO_DEPOT                                         :Elküldi depóba
-STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Elküldi depóba
+STR_SEND_TRAIN_TO_DEPOT                                         :Elküldi járműtelepre
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Elküldi garázsba
 STR_SEND_SHIP_TO_DEPOT                                          :Elküldi dokkba
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Elküldi hangárba
 STR_SEND_FOR_SERVICING                                          :Javításra küld
@@ -511,7 +512,7 @@ STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Közelí
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Távolítás
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Vasúti pálya építése
 STR_0182_BUILD_ROADS                                            :{BLACK}Út építése
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Kikötő építése
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Vízi utak építése
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Repülőtér építése
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Faültetés, feliratok lerakása stb.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Terület-információ
@@ -703,7 +704,7 @@ STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Biztos v
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Táj szerkesztése
 STR_022F_TOWN_GENERATION                                        :{BLACK}Városkészítés
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gazdasági épület készítése
-STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Útépítés
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Út építése
 STR_0233_TOWN_GENERATION                                        :{WHITE}Városkészítés
 STR_0234_NEW_TOWN                                               :{BLACK}Új település
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Új település építése
@@ -797,7 +798,7 @@ STR_028A_RANDOM_TREES                                           :{BLACK}Véletle
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Véletlenszerűen fákat ültet a térképre
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Sziklás területek elhelyezése a térképen
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Világítótorony építése
-STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Rádióadó torony építése
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Adótorony építése
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Sivatagot hoz létre.{}Nyomj CTRL-t az eltávolításához
 STR_CREATE_LAKE                                                 :{BLACK}Vizi terület definiálása.{}Csatornát készít, kivéve ha tengerszinten CTRL-t lenyomva hívod meg, ekkor elárasztja a területet
 STR_CREATE_RIVER                                                :{BLACK}Folyók elhelyezése
@@ -872,7 +873,7 @@ STR_02D9_ABOUT_OPENTTD                                          :Az  'OpenTTD'-r
 
 STR_02DB_OFF                                                    :{BLACK}Ki
 STR_02DA_ON                                                     :{BLACK}Be
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Állami támogatások
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Támogatások megjelenítése
 STR_02DD_SUBSIDIES                                              :Támogatások
 STR_02DE_MAP_OF_WORLD                                           :Világtérkép
 STR_EXTRA_VIEW_PORT                                             :Extra látkép
@@ -1209,7 +1210,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Leginkább használt
-STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Foglalt vágányok jelölése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányút jelzése: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Akkor is mutasd az eszköztárat, ha nem építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
@@ -1362,7 +1363,7 @@ STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nem tudo
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Nyisd meg a tájrendező ablakot a talaj növeléshez/csökkentéshez, faültetéshez, stb.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Tájrendezés
-STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Talajszint
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Talajszintezés
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletlenszerű fafélék
@@ -1731,7 +1732,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nincs me
 STR_1007_ALREADY_BUILT                                          :{WHITE}...már van itt
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Előbb le kell rombolnod a vasúti pályát
 STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Az út egy irányú vagy blokkolt
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Vasútépítés
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Normál vasút építése
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Villamosított vasút építése
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Egysínű vasút építése
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev vasút építése
@@ -1743,14 +1744,14 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Nem rakh
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nem szedheted fel innen a vasúti pályát...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Innen nem távolíthatod el a jelzőt...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Járműtelep helyzete
-STR_1015_RAILROAD_CONSTRUCTION                                  :Vasútépítés
+STR_1015_RAILROAD_CONSTRUCTION                                  :Normál vasút építése
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Villamosított vasút építése
 STR_1016_MONORAIL_CONSTRUCTION                                  :Egysínű vasút építése
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev vasút építése
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Sín lerakása
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Járműtelep építése (vonatok vételére és karbantartására)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Vasútállomás építése
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Szemafor lerakása
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Vasúti jelzők építése
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Vasúti híd építése
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Vasúti alagút építése
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Felszedés/lerakás közötti váltás vasúti pályánál és jelzőnél
@@ -1787,8 +1788,8 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Előbb le kell rombolnod az utat
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Útkarbantartás folyamatban
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Útépítés
-STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Villamospálya építés
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Út építése
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Villamospálya építése
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Közúti híd építése
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... egy irányú utaknak nem lehetnek kereszteződéseik...
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Nem építhetsz ide utat...
@@ -1796,15 +1797,15 @@ STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Ide nem 
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Nem rombolhatod le innen az utat...
 STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Innen nem lehet villamospályát eltávolítani...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Garázs helyzete
-STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Villamos-remíz iránya
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Remíz helyzete
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nem építhetsz ide garázst...
-STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Ide nem lehet villamos-depót építeni...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Ide nem lehet remízt építeni...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nem építhetsz ide buszmegállót...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nem építhetsz ide teherautó-rakodóhelyet...
 STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Nem lehet villamos utasvárót építeni...
 STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Nem lehet tehervillamos-állomást építeni...
-STR_180A_ROAD_CONSTRUCTION                                      :Útépítés
-STR_TRAMWAY_CONSTRUCTION                                        :Villamospálya építés
+STR_180A_ROAD_CONSTRUCTION                                      :Út építése
+STR_TRAMWAY_CONSTRUCTION                                        :Villamospálya építése
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Út építése
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Közút építése egyszerűsített módon
 STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Villamospálya építése
@@ -1823,7 +1824,7 @@ STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Egyirán
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Építés/felszedés közötti váltás utaknál
 STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Építő/bontó üzemmód váltása a villamospályához
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Válaszd ki a garázs helyzetét
-STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Válassz villamos-depó irányt
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Válaszd ki a remíz helyzetét
 STR_1814_ROAD                                                   :Út
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Út lámpákkal
 STR_1816_TREE_LINED_ROAD                                        :Fával szegélyezett út
@@ -2018,8 +2019,8 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}A vasút
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}A vasútállomás hossza
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Buszmegálló helyzetének kiválasztása
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Teherautó-rakodó helyzetének kiválasztása
-STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Válassz villamos utasváró irányt
-STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Válassz tehervillamos-állomás irányt
+STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Villamos-utasváró helyzetének kiválasztása
+STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Tehervillamos-állomás helyzetének kiválasztása
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}A fő nézetet az állomásra állítja
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Vélemény megmutatása az állomásról
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Az állomás nevének megváltoztatása
@@ -2480,11 +2481,11 @@ STR_706C_CHAIRMAN                                               :Alelnök
 STR_706D_PRESIDENT                                              :Elnök
 STR_706E_TYCOON                                                 :Nagytőkés
 STR_706F_BUILD_HQ                                               :{BLACK}Székház építése
-STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}A cég székházának megépítése/ megnézése
-STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}A cég főhadiszállásának újraépítése másutt a cég értékének 1%-áért
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}A cég székházának megépítése/ megtekintése
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}A cég székházának újraépítése máshol a cég értékének 1%-áért
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nem építheted ide a székházadat...
 STR_7072_VIEW_HQ                                                :{BLACK}Székház
-STR_RELOCATE_HQ                                                 :{BLACK}FH áthelyezése
+STR_RELOCATE_HQ                                                 :{BLACK}SZH áthelyezése
 STR_COMPANY_PASSWORD                                            :{BLACK}Jelszó
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vállalati jelszó beállítása
@@ -2811,6 +2812,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}i 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az első vonat {STATION} állomásra!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} adatai
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vonat van az útban
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
 STR_ORDER_GO_TO                                                 :Menj
 STR_ORDER_GO_NON_STOP_TO                                        :Nonstop - Megállás nélkül menj
@@ -2843,9 +2846,10 @@ STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(nem pakol le, 
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}A kijelölt célpont megközelítésének és a megállási-áthajtási szokásainak beállítása
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}A kijelölt célponton a felpakolási szokások beállítása
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijelölt célponton a lepakolási szokások beállítása
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Fejlett utasítás elhelyezése
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi depó
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi jtp.
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangár
 STR_ORDER_NEAREST_DEPOT                                         :a legközelebbi
 STR_ORDER_NEAREST_HANGAR                                        :a legközelebbi hangárba
@@ -2854,11 +2858,13 @@ STR_ORDER_SERVICE_NON_STOP_AT                                   :Ha javítás sz
 STR_ORDER_TRAIN_DEPOT                                           :járműtelepre
 STR_ORDER_ROAD_DEPOT                                            :garázs
 STR_ORDER_SHIP_DEPOT                                            :dokk
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION}i reptér hangárjába
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Mindig menj javítani
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Ha szükséges javítsd
-STR_ORDER_DROP_HALT_DEPOT                                       :Maradj a depóban
+STR_ORDER_DROP_HALT_DEPOT                                       :Maradj ott
 
 STR_ORDER_CONDITIONAL                                           :Feltételes ugrás
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}A jármű adata ami alapján ugrani szeretnénk a parancssorban
@@ -2879,6 +2885,7 @@ STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :több, mint
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :nem kevesebb, mint
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :igaz
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :hamis
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Ugorj a(z) {COMMA}. utasításra
 STR_CONDITIONAL_NUM                                             :Ugorj a(z) {COMMA}. utasításra, ha {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Ugorj a(z) {COMMA}. utasításra, ha a '{STRING}' feltétel {STRING}
@@ -2893,8 +2900,8 @@ STR_TIMETABLE_TICKS                                             :{COMMA} tick
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Úton {TOWN} járműtelepére
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Úton {TOWN} járműtelepére, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Javítás {TOWN} depójában
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Javítás {TOWN} depójában, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Javítás {TOWN} járműtelepén
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Javítás {TOWN} járműtelepén, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Hibás menetrend)
 
@@ -2944,7 +2951,7 @@ STR_882D_VALUE                                                  :{LTBLUE}{ENGINE
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Felpakol / Lepakol
 STR_LEAVING                                                     :{LTBLUE}Indul
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A depóban kellene állnia ehhez
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}A járműtelepen kellene állnia ehhez
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nem küldheted a vonatot a járműtelepre...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nincs több hely új célpontnak
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Túl sok a célpont
@@ -3085,6 +3092,7 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}A kijel�
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ár: {CURRENCY}{}Sebesség: {VELOCITY}{}Működtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacitás: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} jármű{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
@@ -3370,7 +3378,7 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Hiányz
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}A játék folytatásától az OpenTTD lefagyhat.{}Ne jelentsd be az ismétlődő lefagyásokat egyesével.{}Biztosan folytatni akarod?
 
 STR_NEWGRF_BROKEN                                               :{WHITE}A '{0:STRING}' viselkedése valószínűleg ütközést vagy összeomlást okoz.
-STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatja '{1:ENGINE}' jármű hosszát mikor nincs bent a depóban.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Megváltoztatja '{1:ENGINE}' jármű hosszát mikor nincs bent a járműtelepen.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}A '{1:COMPANY}' cég '{0:VEHICLE}'-jelű vonatának érvénytelen a hossza. Ezt a NewGRF-ek okozhatják. A játék elszállhat - lefagyhat.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}A játék olyan verzióban lett elmentve, ami nem támogatja a villamosokat . Az összes villamos törölve lett.
@@ -3405,21 +3413,21 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Megmutatja az összes járművet, amik megosztják ezt a menetrendet
 
 ### depot strings
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Biztosan eladod a depóban lévő összes járművet?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Biztosan eladod a járműtelepen lévő összes járművet?
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Rossz depó típus
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Összes depóbeli vonat eladása
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Összes vonat eladása a járműtelepen
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Összes garázsbeli jármű eladása
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Összes dokkbeli hajó eladása
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Összes hangárbéli repülő eladása
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Az összes, ezen depót menetrendszerüen látogató vonat listájának összeállítása
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Az összes, ezen járműtelepet menetrendszerüen látogató vonat listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Az összes, ezen hangárt menetrendszerüen látogató jármű listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Az összes, ezen dokkot menetrendszerüen látogató hajó listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Az összes, itteni hangárt menetrendszerüen látogató repülőgép listájának összeállítása
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}A depóban lévő összes vonat automatikus cseréje
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}A depóben lévő összes jármű automatikus cseréje
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}A járműtelepen lévő összes vonat automatikus cseréje
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}A garázsban lévő összes jármű automatikus cseréje
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}A dokkban lévő összes hajó automatikus cseréje
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}A hangárban lévő összes repülő automatikus cseréje
 
@@ -3439,7 +3447,7 @@ STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nyomd me
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nyomd meg ezt a gombot hogy a bal oldalon kiválasztott egységet lecseréld a jobb oldalon kiválasztottra
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Válaszd ki a cserélendő egységek vasúttípusát
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali egységet akarod kicserélni
-STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetőve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármű karbantartásra a depóba megy
+STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetőve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármű karbantartásra a járműtelepre megy
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (mozdony utántól kezdve), ha a csere után a szerelvény hosszabb lenne.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Lecserél: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -3452,13 +3460,13 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}A repül
 STR_ENGINES                                                     :Mozdonyok
 STR_WAGONS                                                      :Vagonok
 
-STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kattints ide az összes depóbeli vonat leállításához
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kattints ide az összes depóbeli közúti jármű leállításához
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kattints ide az összes vonat megállításában a járműtelepen
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kattints ide az összes közúti jármű megállításához a garázsban
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kattints ide az összes dokkbeli hajó leállításához
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kattints ide az összes hangárbeli repülő leállításához
 
-STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kattints ide az összes depóbeli vonat elindításához
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kattints ide az összes depóbeli közúti jármű elindításához
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kattints ide az összes vonat elindításához a járműtelepről
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kattints ide az összes közúti jármű elindításához a garázsból
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kattints ide az összes dokkbeli hajó elindításához
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kattints ide az összes hangárbeli repülő elindításához
 
@@ -3569,7 +3577,7 @@ STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Nemzetk�
 STR_COMMUTER_AIRPORT                                            :{BLACK}Bejáró
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinentális
 STR_HELIPORT                                                    :{BLACK}Helileszálló
-STR_HELIDEPOT                                                   :{BLACK}Helidepó
+STR_HELIDEPOT                                                   :{BLACK}Helihangár
 STR_HELISTATION                                                 :{BLACK}Heliállomás
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Kis repterek
@@ -3596,15 +3604,15 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ez eg
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...az út másik irányba vezet
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Átlátszósági beállítások
-STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Ki - Be kapcsolni  az állomásjelzések láthatóságát
-STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Ki - Be kapcsolni a fák láthatóságát
-STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Átkapcsolni az épületekre
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Ki - Be kapcsolni a gazdasági létesítmények láthatóságát
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Átkapcsolni az építhető elemekre (állomások, depók, útipontok és felsővezeték)
-STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Átkapcsolni a hidakra
-STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Ki - Be kapcsolni az egyéb épületek, mint világítótorony és antennák (esetleg egyéb jövőbeni díszek) láthatóságát
-STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Átlátszóság kapcsolása a vezetékekhez, CTRL+click a zároláshoz.
-STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Átlátszó rakodásjelző ki-be kapcsolása
+STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Keret nélküli állomásnevek bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Fák átlátszóságának bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Épületek átlátszóságának bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Gazdasági létesítmények átlátszóságának bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Építhető elemek (állomások, járműtelepek, ellenőrző pontok) átlátszóságának bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Hidak átlátszóságának bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Átlátszó tereptárgyak (adótornyok, világítótornyok, stb.) átlátszóságának bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Felsővezetékek átlátszóságának bekapcsolása. CTRL+kattintással zárolható
+STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Átlátszó rakodásjelző bekapcsolása. CTRL+kattintással zárolható
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Az objektum ne átlátszó legyen, hanem láthatatlan
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}

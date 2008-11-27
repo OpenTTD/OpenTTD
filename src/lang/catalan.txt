@@ -3235,6 +3235,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregant {STRI
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite no esperat.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Acció desconeguda 0 atributs.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Intenta utilitzar una ID invàlida.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conté un sprite corrupte. Tots els sprites corruptes seran mostrats amb un interrogant vermell (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carrega la predefinició seleccionada
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Desa predefinició

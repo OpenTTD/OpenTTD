@@ -17,6 +17,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flatt land er naudsynt
 STR_0008_WAITING                                                :{BLACK}Ventar: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} på veg frå {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Godtek: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Godtek: {GOLD}
 STR_000E                                                        :
@@ -52,7 +53,7 @@ STR_002B_BATTERIES                                              :Batteri
 STR_002C_PLASTIC                                                :Plastikk
 STR_002D_FIZZY_DRINKS                                           :Brus
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Passasjar
+STR_002F_PASSENGER                                              :Passasjerar
 STR_0030_COAL                                                   :Kol
 STR_0031_MAIL                                                   :Post
 STR_0032_OIL                                                    :Olje
@@ -378,6 +379,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapasitet
 STR_SORT_BY_MAX_SPEED                                           :Maksimal fart
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Verdi
+STR_SORT_BY_LENGTH                                              :Lengde
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Verdien av ventande last
 STR_SORT_BY_RATING_MAX                                          :Vurdering av last
@@ -769,6 +771,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Spelinstillingar
 STR_02C6_DIFFICULTY_SETTINGS                                    :Vanskegrad
+STR_MENU_CONFIG_PATCHES                                         :Avanserte alternativ
 STR_NEWGRF_SETTINGS                                             :Instillingar for ny grafikk
 STR_TRANSPARENCY_OPTIONS                                        :Gjennomsiktigheitsinnstillingar
 STR_GAMEOPTMENU_0A                                              :
@@ -853,6 +856,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Finansier ny in
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Finansier ny industri
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan berre byggjast i byar
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan berre byggjast i regnskogområde
@@ -976,6 +980,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikkj
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikkje kopiere ordreliste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordrar - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Tog {COMMA} finn ikkje vegen vidare.
 STR_TRAIN_IS_LOST                                               :{WHITE}Tog {COMMA} har køyrt seg vill
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA}s forteneste førre år var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeisk valutaunion!{}{} Euro er introdusert som den einaste gjeldande valuta for kvadagslege forretningar i landet ditt.
@@ -1007,6 +1012,8 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automati
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er vorte for langt etter utskifte
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengegrense)
 
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Vis avanserte alternativ
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Avanserte alternativ
 
 STR_CONFIG_PATCHES_OFF                                          :Av
 STR_CONFIG_PATCHES_ON                                           :På
@@ -1194,6 +1201,13 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Nokon eller alle standard-vedlikehaldsintervalla under er ikkje kompatible med valde innstillingar! 5-90 % og 30-800 dagar er gyldige
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ikkje anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Anbefalt)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Ikkje anbefalt)
+
 STR_TEMPERATE_LANDSCAPE                                         :Temperert landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktisk landskap
 STR_SUB_TROPICAL_LANDSCAPE                                      :subtropisk landskap
@@ -1261,6 +1275,8 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ikkj
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Bygg sluser
 STR_LANDINFO_LOCK                                               :Sluse
 
+STR_LANDINFO_RIVER                                              :Elv
+
 STR_BUOY_IS_IN_USE                                              :{WHITE}...bøye er i bruk!
 
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinatar: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
@@ -1327,6 +1343,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Fleirspe
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spelarnamn:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Dette er namnet andre spelarar vil identifisere deg med
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Sett inn namnet ditt
 STR_NETWORK_CONNECTION                                          :{BLACK}Samband:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Vel mellom å spele på internett eller i lokalt nettverk (LAN)
 
@@ -1337,6 +1354,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Namn
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Namn på spelet
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Språk, tenarversjon, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klikk på eit spel i lista for å velje det
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Tenaren du brukte sist gong:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Klikk for å velje tenaren du brukte sist gong
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Finn tenar
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Søk på nettverket etter ein tenar
@@ -1347,6 +1366,12 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Skriv in
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientar
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientar på nett / maks. antal klientar{}Firma på nett / maks. antal firma
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Dato
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPELOVERSIKT
 STR_NETWORK_CLIENTS                                             :{SILVER}Klientar:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Språk:  {WHITE}{STRING}
@@ -1425,6 +1450,12 @@ STR_NETWORK_LANG_SPANISH                                        :Spansk
 STR_NETWORK_LANG_SWEDISH                                        :Svensk
 STR_NETWORK_LANG_TURKISH                                        :Tyrkisk
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainsk
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_CROATIAN                                       :Kroatisk
+STR_NETWORK_LANG_CATALAN                                        :Katalansk
+STR_NETWORK_LANG_ESTONIAN                                       :Estisk
+STR_NETWORK_LANG_GREEK                                          :Gresk
+STR_NETWORK_LANG_LATVIAN                                        :Latvisk
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Fleirspelarspel-lobby
@@ -1568,6 +1599,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Berekna 
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Berekna inntekt: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kan ikkje heve land her...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kan ikkje senke land her...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Kan ikkje jemne ut land her...
 STR_080A_ROCKS                                                  :Steinar
 STR_080B_ROUGH_LAND                                             :Ulendt terreng
 STR_080C_BARE_LAND                                              :Bart land
@@ -1896,6 +1928,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vel retn
 STR_3804_WATER                                                  :Vatn
 STR_3805_COAST_OR_RIVERBANK                                     :Kyst eller elvebreidd
 STR_3806_SHIP_DEPOT                                             :Skipsdepot
+STR_AQUEDUCT                                                    :Akvedukt
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan ikkje byggje på vatn
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Må fjerna kanal først
 
@@ -2609,6 +2642,13 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} t
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Innbyggjarane jublar . . .{}Første tog kjem til {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaljar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vegen
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
+
+
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (ikke på rutetabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reis i  {STRING}
@@ -2974,6 +3014,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Freistin
 STR_BRIBE_FAILED_2                                              :{WHITE}er oppdaga av ein regional inspektør.
 STR_BUILD_DATE                                                  :{BLACK}Byggd: {LTBLUE}{DATE_LONG}
 
+
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljert prestasjonsnivå
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalj
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
@@ -3057,6 +3098,8 @@ STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Ein elle
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Manglar ein eller fleire GRF-filer for å kunne laste inn spelet
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Manglar GRF fil(er)
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Unpausing can crash OpenTTD. Do not file bug reports for subsequent crashes.{}Do you really want to unpause?
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanleg valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3180,6 +3223,12 @@ STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Ombyggba
 STR_PURCHASE_INFO_ALL_TYPES                                     :Alle varetypar
 STR_PURCHASE_INFO_ALL_BUT                                       :Alt utanom {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maks trekkraft: {GOLD}{FORCE}
+
+########### For showing numbers in widgets
+
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
@@ -3326,6 +3375,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klikk fo
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3405,4 +3455,10 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal K
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Tettleik for dra og slepp signalbygging
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minsk tettleik for dra og slepp signalbygging
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Auk tettleik for dra og slepp signalbygging
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########

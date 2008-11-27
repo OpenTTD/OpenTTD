@@ -330,6 +330,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Za dużo
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nazwa jest już używana
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -1023,6 +1024,7 @@ STR_CURR_SEK                                                    :Korona szwedzka
 STR_CURR_YTL                                                    :Lira turecka (YTL)
 STR_CURR_SKK                                                    :Korona słowacka (SKK)
 STR_CURR_BRL                                                    :Real brazylijski (BRL)
+STR_CURR_EEK                                                    :Korony estońskie (EEK)
 
 STR_CURR_CUSTOM                                                 :Wlasna...
 
@@ -1792,7 +1794,14 @@ STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Tory kolejowe z
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Tor kolejowy z blokadą i jednokierunkowymi sygnałami
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Tory kolejowe z pre- i exit-sygnałami
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Tory kolejowe z pre i combo-sygnałami
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Tor kolejowy z sygnalizatorami wejścia i trasy
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Tor kolejowy z sygnalizatorami wejścia i jednokierunkowymi trasy
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Tory kolejowe z exit i combo-sygnałami
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Tor kolejowy z sygnałami wyjścia- i trasy
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Tor kolejowy z sygnałami wyjścia- i trasy jednokierunkowej
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Tor kolejowy z sygnałami mieszanymi- i trasy
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Tor kolejowy z sygnałami mieszanymi- i trasy jednokierunkowej
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Tor kolejowy z sygnałami trasy i trasy jednokierunkowej
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Należy najpierw usunąć stację kolejową
 
 
@@ -2952,6 +2961,7 @@ STR_8826_GO_TO                                                  :{BLACK}Idź do
 STR_REFIT                                                       :{BLACK}Przeksztalc
 STR_REFIT_TIP                                                   :{BLACK}Wybierz typ ladunku do przeksztalcenia. Klikniecie z CTRL usuwa zmiane
 STR_REFIT_ORDER                                                 :(Przeksztalc na {STRING})
+STR_REFIT_STOP_ORDER                                            :(Remontuj w {STRING} i zatrzymaj)
 STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Rozkład
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Otwórz widok rozkładu jazdy
@@ -3062,6 +3072,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Ten pojazd spie
 STR_TIMETABLE_TOTAL_TIME                                        :Ten rozkład jazdy zajmie {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Ten rozkład jazdy zajmie przynajmniej {STRING} (nie wszystkie stacje są na rozkładzie)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Wypełnij rozkład jazdy automatycznie wartościami z następnego wyjazdu (CTRL-klik by spróbować utrzymać czasy oczekiwania))
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Samochód na drodze
@@ -3390,6 +3401,8 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Brak pli
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Brakujące pliki GRF
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Wyłączenie pauzy może zawiesić OpenTTD. Nie zgłaszaj błędów o powtarzających się zawieszeniach.{}Czy na pewno chcesz wyłączyć pauzę?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Zachowanie NewGRF '{0:STRING}' może powodować desynchronizacje i/lub błędy.
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Zmienia długość pojazdu dla '{1:ENGINE}' gdy nie jest w zajezdni.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Pociąg '{VEHICLE}' należący do '{COMPANY}' ma niepoprawną długość. Prawdopodobnie problemem powoduje NewGRFs. Gra może działać niestabilnie lub się zawiesić.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Gra została zapisana w wersji nie obsługującej tramwajów. Wszystkie tramwaje zostały usunięte.
@@ -3622,6 +3635,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Przełą
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Przełącz przeźroczystość infrastruktury takiej jak stacje, zajezdnie, punkty kontrolne i trakcja elektryczna
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Przełącz przeźroczystość mostów
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Przełącz przeźroczystość obiektów takich jak latarnie morskie i nadajniki, być może w przyszłości dodatki graficzne
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Przełaczaj przeźroczystość dla trakcji (linii nośnych). CTRL+klik by zablokować.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Przełącz przeźroczystość wskaźników załadunku
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Ustaw obiekty jako niewidoczne zamiast przeźroczyste
 
@@ -3743,10 +3757,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Zwykły 
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Pre-sygnał (semafor){}Jest zielony jeżeli zielony jest przynajmniej jeden exit-sygnał przy pobliskim skrzyżowaniu. W przeciwnym wypadku, jest czerwony.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-sygnał (semafor){}Zachowuje się tak jak zwykły sygnał, ale wpływa na pobliskie pre- i combo-sygnały.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-sygnał(semafor){}Sygnał combo skupia działanie zarówno pre- jak i exit-sygnałów. Pozwala to na budowę zaawansowanych układów sygnałów.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sygnalizatory trasy (semafor){}Sygnalizator zezwalajacy więcej niż jednemu pociagowi wjazd na odcinek torów w tym samym czasie, jeśli może on zarezerwować następny odcinek torowiska.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Jednokierunkowe sygnalizatory trasy (semafor){}Sygnalizator zezwalajacy więcej niż jednemu pociagowi wjazd na odcinek torów w tym samym czasie, jeśli może on zarezerwować następny odcinek torowiska. Standardowe sygnalizatory trasy nie blokuja wjazdu z tyłu..
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Zwykły sygnał (świetlny){}Sygnały są potrzebne aby uniknąć zderzeń pociągów na liniach z więcej niż jednym pociągiem.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Pre-sygnał (świetlny){}Jest zielony jeżeli zielony jest przynajmniej jeden exit-sygnał przy pobliskim skrzyżowaniu. W przeciwnym wypadku, jest czerwony.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-sygnał (świetlny){}Zachowuje się tak jak zwykły sygnał, ale wpływa na pobliskie pre- i combo-sygnały.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-sygnał(świetlny){}Sygnał combo skupia działanie zarówno pre- jak i exit-sygnałów. Pozwala to na budowę zaawansowanych układów sygnałów.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sygnalizatory trasy (światła){}Sygnalizator zezwalajacy więcej niż jednemu pociagowi wjazd na odcinek torów w tym samym czasie, jeśli może on zarezerwować następny odcinek torowiska. Standardowe sygnalizatory trasy nie blokuja wjazdu z tyłu..
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Jednokierunkowy sygnalizatory trasy (światła){}Sygnalizator zezwalajacy więcej niż jednemu pociagowi wjazd na odcinek torów w tym samym czasie, jeśli może on zarezerwować następny odcinek torowiska. Standardowe sygnalizatory trasy nie blokuja wjazdu z tyłu..
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Zamiana sygnałów{}Jeżeli włączone, kliknięcie na istniejący sygnał spowoduje zamianę jego typu na wybrany obok. CTRL-klik przełącza wygląd semafor/świetlny.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Gęstość sygnałów przy przeciąganiu. CTRL-przeciągnij aby wypełnić trasę sygnałami.
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Zmniejsz gęstość sygnałów przy przeciąganiu
@@ -3754,6 +3772,8 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zwiększ
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ town controlled noise level

@@ -278,6 +278,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Muitos n
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}O nome escolhido já está em uso
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -937,6 +938,7 @@ STR_CURR_SEK                                                    :Coroa Sueca (SE
 STR_CURR_YTL                                                    :Lira Turca (YTL)
 STR_CURR_SKK                                                    :Coroa Eslovaca (SKK)
 STR_CURR_BRL                                                    :Real Brasileiro (BRL)
+STR_CURR_EEK                                                    :Coroa Estoniana (EEK)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
 
@@ -2943,6 +2945,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Esse veículo e
 STR_TIMETABLE_TOTAL_TIME                                        :Esse horário será completo em {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Esse horário será completo em no mínimo {STRING} (nem todos agendados)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autopreencher
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preenche automaticamente com os valores da próxima viagem. (CTRL-clique para tentar manter os intervalos de espera)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automóvel no caminho
@@ -3234,6 +3237,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {STRIN
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite não esperado
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Ação Desconhecida 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrupto. Todos os sprites corruptos serão exibidos como um "?" vermelho.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carrega o padrão selecionado
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvar padrão

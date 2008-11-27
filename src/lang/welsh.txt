@@ -277,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Gormod o
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Mae'r enw hwnnw eisoes mewn defnydd
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -936,6 +937,7 @@ STR_CURR_SEK                                                    :Krona Swedaidd 
 STR_CURR_YTL                                                    :Lira Twrcaidd (YTL)
 STR_CURR_SKK                                                    :Koruna Slofacaidd (SKK)
 STR_CURR_BRL                                                    :Real Brazilaidd (BRL)
+STR_CURR_EEK                                                    :Krooni Estonia (EEK)
 
 STR_CURR_CUSTOM                                                 :Addasedig...
 

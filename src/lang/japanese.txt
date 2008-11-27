@@ -248,7 +248,7 @@ STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFON
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}プラスチック泉
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}炭酸飲料工場
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}泡の発生器
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}タフィー採石場
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}タフィー採掘場
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}砂糖鉱山
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}駅
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}荷役所
@@ -296,14 +296,14 @@ STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}この�
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}新しいゲーム
-STR_0141_LOAD_GAME                                              :{BLACK}ゲームを開く
+STR_0141_LOAD_GAME                                              :{BLACK}ロード
 STR_SINGLE_PLAYER                                               :{BLACK}一人でプレイ
 STR_MULTIPLAYER                                                 :{BLACK}多人数プレイ
 STR_SCENARIO_EDITOR                                             :{BLACK}シナリオエディタ
 
 STR_MAPSIZE                                                     :{BLACK}地図のサイズ：
 STR_BY                                                          :{BLACK}x
-STR_0148_GAME_OPTIONS                                           :{BLACK}ゲームの設定
+STR_0148_GAME_OPTIONS                                           :{BLACK}ゲームの基本設定
 
 STR_0150_SOMEONE                                                :誰かは{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :世界の地図
@@ -355,7 +355,7 @@ STR_PERFORMANCE_DETAIL_MENU                                     :詳しい成績
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD について
 STR_015C_SAVE_GAME                                              :ゲームを保存
-STR_015D_LOAD_GAME                                              :ゲームを開く
+STR_015D_LOAD_GAME                                              :ロード
 STR_015E_QUIT_GAME                                              :ゲームを断念
 STR_015F_QUIT                                                   :終了
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}このゲームを終了してもよろしいですか？
@@ -428,7 +428,7 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}ポーズ
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}ゲームを保存、ゲームを断念、終了
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}セーブ、ゲームを断念、終了
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}会社の駅を表示します
 STR_0174_DISPLAY_MAP                                            :{BLACK}地図を表示します
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}地図、町のリストを表示します
@@ -447,14 +447,14 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}鉄道�
 STR_0182_BUILD_ROADS                                            :{BLACK}道路を建設します
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}埠頭を建設します
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}空港を建設します
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}植林したり、標示の置いたりすることなど
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}植林、標示設置等を行います
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}地域情報
 STR_0187_OPTIONS                                                :{BLACK}設定
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}整備間隔が変更できません
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}整備間隔を変更できません
 STR_018B_CLOSE_WINDOW                                           :{BLACK}ウィンドウを閉じます
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}ウィンドウのタイトル - ウィンドウを動くには、クリックしてドラッグします
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}ウィンドウのタイトル - ウィンドウを動かすには、クリックしてドラッグします
 STR_STICKY_BUTTON                                               :{BLACK}「すべてのウィンドウを閉じる」をクリックしてもこのウィンドウを閉じられないようにします
 STR_RESIZE_BUTTON                                               :{BLACK}リサイズするには、クリックしてドラッグします
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}デフォルトの保存先フォルダへジャンプするにはここへクリックします
@@ -463,7 +463,7 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}土地�
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}土地の角を上げます
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}スクロールバー
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}スクロールバー - リストをスクロールします
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}地図に土地の形勢を表示します
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}地図に土地の状態を表示します
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}地図に車両を表示します
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}地図に産業を表示します
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}地図に運送経路を表示します
@@ -483,10 +483,10 @@ STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}{COMMA}は古くなっています
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}{COMMA}はとても古くなっています
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}{COMMA}はとても古くなっていて、緊急に交換しなければなりません
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}{COMMA}は老朽化により、緊急に交換する必要があります。
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地域情報
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}破壊の価格：{LTBLUE}破壊不可
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}破壊の価格：{LTBLUE}{CURRENCY}
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}破壊費用：{LTBLUE}破壊不可
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}破壊費用：{LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}所有者：{LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}道路の所有者: {LTBLUE}{STRING}
@@ -579,8 +579,8 @@ STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}音楽�
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}選択したプレイリストへ追加するには、曲をクリックします（カスタム 1／2 のみ）。
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}洗濯中のプレイリストから取り除くには、曲をクリックします（カスタム１、２のみ）
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}プレイリストのシャッフルを入／切にします
-STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}曲の選択のウィンドウ表示します
-STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}町／インダストリを見るためにサービスをクリックして下さい
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}曲選択のウィンドウを表示します
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}町／産業を見るためにサービスをクリックして下さい
 STR_01FE_DIFFICULTY                                             :{BLACK} 難易度 ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :最後のメッセージ
@@ -599,14 +599,15 @@ STR_020A_ECONOMY_CHANGES                                        :{YELLOW}経済�
 STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}自社が運送している産業の生産量が変化したとき
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}競争者が運送している産業の生産量が変更したとき
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}その他の産業の生産量が変更したとき
-STR_020C_NEW_VEHICLES                                           :{YELLOW}車両の新登場
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}会社の車両についての勧告／情報
+STR_020C_NEW_VEHICLES                                           :{YELLOW}新式の乗り物
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}貨物の受入れの変化
 STR_020E_SUBSIDIES                                              :{YELLOW}助成金
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}一般情報
 STR_MESSAGES_ALL                                                :{YELLOW}すべてのメッセージ種類を：切／概要／完全
 STR_MESSAGE_SOUND                                               :{YELLOW}概要ニュースを表示するときに、サウンドを再生
-STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...前の行き先から遠すぎます
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}{NUM}{}({STRING} レベル) に当たった最高の会社
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...前の目的地から遠すぎます
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}{NUM}{}({STRING} レベル) に最初に到達した会社
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}{NUM}の会社リーグ表
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :ビジネスマン
@@ -669,7 +670,7 @@ STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}食品�
 STR_024E_PRINTING_WORKS                                         :{BLACK}印刷所
 STR_024F_GOLD_MINE                                              :{BLACK}金鉱
 STR_0250_LUMBER_MILL                                            :{BLACK}製材所
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}果物農園
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}果樹園
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}ゴム園
 STR_0253_WATER_SUPPLY                                           :{BLACK}給水設備
 STR_0254_WATER_TOWER                                            :{BLACK}給水塔
@@ -684,20 +685,20 @@ STR_025C_TOY_FACTORY                                            :{BLACK}玩具�
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}プラスチック泉
 STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}炭酸飲料工場
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}発泡所
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}タフィー鉱
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}タフィー採掘所
 STR_0261_SUGAR_MINE                                             :{BLACK}砂糖鉱山
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}炭鉱を建設します
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}発電所を建設します
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}製材工場を建設します
 STR_0265_PLANT_FOREST                                           :{BLACK}森林を植林します
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}石油精製所
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}石油掘削装置を建設します（地図の端の近くにのみ建設できます）
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}石油掘削装置を建設します（マップの端の近くにのみ建設できます）
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}工場を建設します
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}製鋼所を建設します
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}農場を建設します
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}鉄鉱山を建設します
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}油田を建設します
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}銀行を建設します（人口が1200人以上の市町のみに建設できます）
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}銀行を建設します（人口1200人以上の市町のみに建設できます）
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}製紙工場を建設します
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}食品加工場を建設します
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}印刷所を建設します
@@ -778,7 +779,7 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}カス�
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
-STR_02C4_GAME_OPTIONS                                           :ゲームの設定
+STR_02C4_GAME_OPTIONS                                           :ゲームの基本設定
 STR_02C6_DIFFICULTY_SETTINGS                                    :難易度の設定
 STR_MENU_CONFIG_PATCHES                                         :パッチ設定
 STR_NEWGRF_SETTINGS                                             :NewGRFの設定
@@ -844,7 +845,7 @@ STR_02FB_START_A_NEW_GAME                                       :{BLACK}新規�
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}ゲームを開きます
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}カスタムシナリオを作成します
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}一人プレイを選択します
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}多人数プレイ（２〜８人）を選択します
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}マルチプレイ（２〜８人）を選択します
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}ゲームの設定を表示します
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}難易度の設定を表示します
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}カスタムシナリオを使用して新規ゲームを開始します
@@ -872,7 +873,7 @@ STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...砂�
 STR_0319_PAUSED                                                 :{YELLOW}＊＊ポーズ＊＊
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}スクリーンショットを'{STRING}'に正常に保存しました
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}スクリーンショット撮影に失敗しました！
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}スクリーンショットの保存に失敗しました！
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}将来用に土地を購入
 STR_032F_AUTOSAVE                                               :{RED}自動保存
@@ -1616,7 +1617,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}収入：{CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}送金：{CURRENCY}
 STR_FEEDER                                                      :{YELLOW}送金：{CURRENCY}
-STR_0805_ESTIMATED_COST                                         :{WHITE}推定の価値：{CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}推定の費用：{CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}推定の収入：{CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}ここの土地を上げられません
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}ここの土地を下げられません
@@ -1632,7 +1633,7 @@ STR_0810_DESERT                                                 :砂漠
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}土地の傾きが違います
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}不可能な線路の組み合わせ
-STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}掘削はトンネルを破壊します
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}掘削するとトンネルが破壊されます
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}すでに海水位です
 STR_1004_TOO_HIGH                                               :{WHITE}高すぎます
 STR_ALREADY_LEVELLED                                            :{WHITE}... すでに平坦です。
@@ -1783,8 +1784,8 @@ STR_202A_NONE                                                   :{ORANGE}なし
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}すでに助成金を受けている運送経路：
 STR_202C_FROM_TO                                                :{ORANGE}{STRING}を{STATION}から{STATION}へ{YELLOW}（{COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}、{DATE_SHORT}まで）
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限が切られた：{}{STRING}を運ぶ{STRING}から{STRING}行き一便は{}今後助成金を受けず
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{STRING}を運ぶ{STATION}から{STATION}行き一便は{}今後助成金を受けず
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}助成金提案の有効期限満了：{}{STRING}を運ぶ{STRING}から{STRING}行き一便は{}今後助成金を受けず
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}助成金の終止{}{STRING}を運ぶ{STATION}から{STATION}行き一便の{}助成金は終了しました
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}助成金提案の報告{}{STRING}を運ぶ{STRING}から{STRING}行き{}先駆の一便は一年間助成金を受ける！
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}５０％の助成金を受ける！
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY}が助成金を受けた！{}今後一年間{STRING}を運ぶ{STATION}から{STATION}行き一便は{}１００％の助成金を受ける！
@@ -1810,18 +1811,18 @@ STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}起こ�
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :小型広告キャンペーン
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :中型広告キャンペーン
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :大型広告キャンペーン
-STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :道路再建を出資
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :道路再建に出資
 STR_204A_BUILD_STATUE_OF_COMPANY                                :会社長の彫像を建設
-STR_204B_FUND_NEW_BUILDINGS                                     :市街地開発を出資
+STR_204B_FUND_NEW_BUILDINGS                                     :市街地開発に出資
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :独占的運送権を購入
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :町議会を買収
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、{}町内の小型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、{}町内の中型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やすには、{}町内の大型広告キャンペーンを行います。{}  価格：{CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}町内の道路の再建を出資します。{}最高6ヶ月間まで、道路交通に途絶を与えます。{}  価格：{CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}会社を推進するに彫像を建設{}価格：{CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}町内の市街地の開発を出資{}　価格：{CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}一年間独占的運送権利を買収します。{}町議会は乗客や貨物があなたの交通会社の運送経路の使用のみを制御します。{}価格：{CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の小型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の中型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW}あなたの運送経路の利用率を増やす為に、{}町内の大型広告キャンペーンを行います。{}  価格：{CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW}町内の道路の再建に出資します。{}最高6ヶ月間まで、道路交通に途絶を与えます。{}  価格：{CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW}会社長の栄誉を称える彫像を建設{}価格：{CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW}町内の市街地の開発に出資{}　価格：{CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW}一年間の独占的運送権を購入します。{}町議会は乗客や貨物があなたの交通会社の運送経路の使用のみを制御します。{}価格：{CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW}町議会間の評価を高めるに買収する。注意：露見された場合は処罰が厳しいです！{}価格：{CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}で渋滞！{}{}{STRING}が出資した道路工事は６ヶ月間続く！
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -1918,11 +1919,11 @@ STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}バス�
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}荷役所の配置を選択します
 STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}乗客用路面電車駅の配置を選択
 STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}貨物用路面電車駅の配置を選択
-STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}主の画面を駅の場所に移動します
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}メイン画面を駅の場所に移動します
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}駅の評価を表示します
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}駅名を変更します
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}受入れる貨物のリストを表示します
-STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}駅名 - 主の画面を駅の場所に移動するに駅名をクリックします
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}駅名 - メイン画面を駅の場所に移動するには駅名をクリックします
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}空港のサイズ／種類を選択します
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
@@ -1934,7 +1935,7 @@ STR_3062_BUS_STATION                                            :バス停
 STR_3063_SHIP_DOCK                                              :埠頭
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}駅の受入れる地域をハイライトします
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}駅の受入れる地域をハイライトしません
-STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}駅の受入れる地域をハイライト
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}駅の受入れる地域をハイライトします
 STR_3068_DOCK                                                   :{WHITE}埠頭
 STR_3069_BUOY                                                   :ブイ
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...ブイがあります
@@ -3537,7 +3538,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}入口�
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}出口信号（腕木式）{}動作は通常の信号と同様ですが、入口／コンボ信号を使用する場合に必要になります。
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}コンボ信号（腕木式）{}コンボ信号は入口信号と出口信号の機能を併せたものです。
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}パス信号 (腕木式) {}パス信号は、1編成以上の列車に対し、列車が安全な停止位置までの経路を予約できる場合同時に信号区間に進入する事を許可します。標準パス信号は信号の背面から通過することができます。
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}一方通行パス信号 (腕木式) {}パス信号は、1編成以上の列車に対し、列車が安全な停止位置までの経路を予約できる場合同時に信号区間に進入する事を許可します。標準パス信号は信号の背面から通過することができます。
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}一方通行パス信号 (腕木式) {}パス信号は、1編成以上の列車に対し、列車が安全な停止位置までの経路を予約できる場合同時に信号区間に進入する事を許可します。一方通行パス信号は信号の背面から通過することはできません。
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}通常の信号（電子式）{}線路上に複数の電車を走行させる場合は、事故を避ける為に信号が必要になります。
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}入口信号（電子式）{}信号の先の区間にある出口信号のうち最低1個が青であれば青になります。
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}出口信号（電子式）{}動作は通常の信号と同様ですが、入口／コンボ信号を使用する場合に必要になります。

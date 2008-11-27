@@ -277,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liian mo
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nimi on jo käytössä
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS{NBSP}X{NBSP}
 STR_OSNAME_BEOS                                                 :BeOS
@@ -2786,9 +2787,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Hyppää määr
 STR_CONDITIONAL_NUM                                             :Hyppää määräykseen {COMMA}, kun {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Hyppää määräykseen {COMMA}, kun {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Ei kulkua
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Kiertävä (ei aikataulua)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Kulje kohteeseen {STRING}
 STR_TIMETABLE_STAY_FOR                                          :ja odota {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :ja kulje {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} päivä{P "" ä}
 STR_TIMETABLE_TICKS                                             :{COMMA} tunti{P "" a}
 
@@ -2844,6 +2847,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Arvo: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Lastataan/puretaan
+STR_LEAVING                                                     :{LTBLUE}Poistuu
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Juna täytyy pysäyttää veturitallin sisällä
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Junan lähettäminen veturitalliin ei onnistu...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ei enää tilaa pysähdyksille.
