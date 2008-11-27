@@ -1523,7 +1523,7 @@ static void SaveFileStart()
  * on saveload */
 static void SaveFileDone()
 {
-	_fast_forward = _ts.ff_state;
+	if (_game_mode != GM_MENU) _fast_forward = _ts.ff_state;
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE, PAL_NONE);
 
 	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_SAVELOAD_FINISH);
