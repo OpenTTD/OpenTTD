@@ -271,6 +271,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Snijeg
 STR_012C_MESSAGE                                                :{WHITE}Poruka
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Zadano
 STR_012E_CANCEL                                                 :{BLACK}Odustani
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Preimenuj
@@ -278,6 +279,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Previše
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Odabrano ime već se koristi
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -599,6 +601,7 @@ STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Zatvara
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Promjene u gospodarstvu
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Izmjene u produktivnosti industrija djelovanjem suparnika
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Ostale izmjene u produktivnosti industrija
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Savjeti / informacije o vozilima poduzeća
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vozila
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Promjene u prihvaćanju tereta
 STR_020E_SUBSIDIES                                              :{YELLOW}Subvencije
@@ -780,6 +783,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Postavke igre
 STR_02C6_DIFFICULTY_SETTINGS                                    :Postavke težine
+STR_MENU_CONFIG_PATCHES                                         :Napredne postavke
 STR_NEWGRF_SETTINGS                                             :Postavke NewGRF-a
 STR_TRANSPARENCY_OPTIONS                                        :Postavke prozirnosti
 STR_GAMEOPTMENU_0A                                              :
@@ -934,6 +938,7 @@ STR_CURR_SEK                                                    :Švedska kruna 
 STR_CURR_YTL                                                    :Turska lira(YTL)
 STR_CURR_SKK                                                    :Slovačka kruna (SKK)
 STR_CURR_BRL                                                    :Brazilski real (BRL)
+STR_CURR_EEK                                                    :estonska kruna(EEK)
 
 STR_CURR_CUSTOM                                                 :Proizvoljno...
 
@@ -1022,6 +1027,9 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Nakon za
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Pravilo bez autozamjene/obnove/ primjenjeno
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(novčano ograničenje)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Napredne postavke
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Prikaži napredne postavke
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Napredne postavke
 
 STR_CONFIG_PATCHES_OFF                                          :Isključeno
 STR_CONFIG_PATCHES_ON                                           :Uključeno
@@ -2681,14 +2689,33 @@ STR_8805                                                        :{RIGHTARROW}{SE
 STR_ORDER_NON_STOP                                              :{BLACK}Neprestano
 
 
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Servisiraj prema potrebi
+STR_ORDER_DROP_HALT_DEPOT                                       :Stani
 
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Postotak ukrcaja
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Pouzdanost
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maksimalna brzina
+STR_ORDER_CONDITIONAL_AGE                                       :Starost vozila (godine)
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Treba servis
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Uvijek
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :je jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nije jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :je manje od
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :je manje ili jednako
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :je više od
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :je više ili jednako
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :je istinito
 STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :je lažno
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Skočin na naredbu {COMMA}
+STR_CONDITIONAL_NUM                                             :Skoči na naredbu {COMMA} kada {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Skoči na naredbu {COMMA} kada {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Nema putovanja
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Putovanje (bez rasporeda)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Putovanje za {STRING}
 STR_TIMETABLE_STAY_FOR                                          :i boravak za {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :i putovanja za {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dan{P "" a a}
 STR_TIMETABLE_TICKS                                             :{COMMA} tik{P "" a ova}
 
@@ -2730,6 +2757,7 @@ STR_8826_GO_TO                                                  :{BLACK}Idi do
 STR_REFIT                                                       :{BLACK}Prenamijeni
 STR_REFIT_TIP                                                   :{BLACK}Odaberi vrstu tereta za prenamijenu u ovoj naredbi. CTRL+klik kako bi uklonio naputak za prenamjenu
 STR_REFIT_ORDER                                                 :(Prenamijeni u {STRING})
+STR_REFIT_STOP_ORDER                                            :(Prenamijeni u {STRING} i zaustavi se)
 STR_STOP_ORDER                                                  :(Stani)
 STR_TIMETABLE_VIEW                                              :{BLACK} Raspored
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Prebacivanje na pogled rasporeda
@@ -2742,6 +2770,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Vrijednost: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Utovar / Istovar
+STR_LEAVING                                                     :{LTBLUE}Odlazeći
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vlak mora biti zaustavljen unutar spremišta
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nije moguće poslati vlak u spremište...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nema mjesta za nove naredbe
@@ -2811,6 +2840,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nije moguće preimenovati vrstu vagona...
 STR_CLEAR_TIME                                                  :{BLACK}Obriši vrijeme
 STR_RESET_LATENESS                                              :{BLACK}Poništi Brojač Kašnjenja
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Promijeni ime čvorišta
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Zaustavljam
@@ -2818,6 +2848,7 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Zaustavlja
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilna vrsta tračnica
 STR_TRAIN_NO_POWER                                              :{RED}Nema struje
 STR_TRAIN_START_NO_CATENARY                                     :Ovoj pruzi nedostaje vučna užad, stoga vlak ne može krenuti
+STR_TRAIN_STUCK                                                 :{ORANGE}Čekanje slobodne putanje
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Novi {STRING} je sada dostupan!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2906,6 +2937,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nije mog
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Odaberi vrstu tereta koje će cestovno vozilo prevoziti
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Izgradnja plovnih kanala
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Izgradnja plovnih kanala
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Plovni kanali
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Ovdje nije moguće izgraditi pristanište...
 STR_9803_SHIP_DEPOT                                             :{WHITE} Spremište brodova grada {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Novi brodovi
@@ -3061,6 +3095,7 @@ STR_BUILD_DATE                                                  :{BLACK}Izgrađe
 
 STR_TILEDESC_STATION_CLASS                                      :{BLACK}Klasa postaje: {LTBLUE}{STRING}
 STR_TILEDESC_STATION_TYPE                                       :{BLACK}Vrsta postaje: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detaljna procjena rezultata
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalji
@@ -3115,7 +3150,10 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} zahtijeva OpenTTD verziju {STRING} ili bolju.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF datoteka je dizajnirana za prijevod
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Previše je učitanih NewGRF-ova.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočekivani grafički znak.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušaj uporabe neispravnog ID-a.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Učitaj unaprijed odabrane postavke
 STR_NEWGRF_ADD                                                  :{BLACK}Dodaj
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Dodaj NewGRF datoteku u listu
 STR_NEWGRF_REMOVE                                               :{BLACK}Ukloni
@@ -3147,6 +3185,7 @@ STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Nedosta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Odpauziranje može uzrokovati rušenje OpenTTD-a. Nemojte slati prijave bugova za posljedična rušenja.{}Želite li stvarno odpauzirati?
 
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Igra je bila spremljena u verziji bez podrške za tramvaje. Zbog toga su svi tramvaji uklonjeni.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Proizvoljna valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Devizni tečaj: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3376,6 +3415,7 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Namjesti
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Namjesti prozirnost za mostove
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Namjesti prozirnost za strukture poput svjetionika i antena, možda u budućnosti i vizualne efekte
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Namjesti prozirnost za indikatore učitavanja
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Učini objekte nevidljivima umjesto prozirnima
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3507,8 +3547,11 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povećaj
 
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Omogući određivanje razine buke za zračne luke od strane gradova: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Ograničenje buke u gradu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Proizvedeno buke: {GOLD}{COMMA}
 ########

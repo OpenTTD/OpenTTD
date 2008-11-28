@@ -402,6 +402,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Дуже
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Така назва вже є
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -3397,6 +3398,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Заванта�
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неочікуваний спрайт.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Невідома властивість Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Спроба використання невірного ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} містить зіпсований спрайт. Усі зіпсовані спрайти будуть показані як червоний знак питання (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Завантажити обрані настройки
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Записати настройки

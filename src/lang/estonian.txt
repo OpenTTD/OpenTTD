@@ -331,6 +331,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Liiga pa
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valitud nimi on juba kasutusel
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -988,6 +989,7 @@ STR_CURR_SEK                                                    :Rootsi kroon (S
 STR_CURR_YTL                                                    :Türgi Liir (YTL)
 STR_CURR_SKK                                                    :Slovakkia Kroon (SKK)
 STR_CURR_BRL                                                    :Brasiilia Reaal (BRL
+STR_CURR_EEK                                                    :Eesti Kroon (EEK)
 
 STR_CURR_CUSTOM                                                 :Omatehtud...
 
@@ -1632,6 +1634,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :kahtlane pakett
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :vale versioon
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nimi on juba kasutusel
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :vale mängu parool
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :vale ettevõtte id DoCommand-is
 STR_NETWORK_ERR_CLIENT_KICKED                                   :server viskas välja
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :üritas pettust kasutada
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server on täis
@@ -2317,6 +2320,7 @@ STR_HOSTILE                                                     :Vaenulik
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY}{BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Ettevõte {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Uus nägu
 STR_7005_COLOR_SCHEME                                           :{BLACK}Värvivalik
 STR_7006_COLOR_SCHEME                                           :{GOLD}Värvivalik:
@@ -2804,6 +2808,9 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} angaar
 
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Hoolda, kui vaja
+STR_ORDER_DROP_HALT_DEPOT                                       :Peatu
+
 STR_ORDER_CONDITIONAL                                           :Tinglik sihtpunkti vahetamine
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Sõiduki andmed, millel sihtpunkti vahetamine põhineb
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kuidas sõiduki andmeid antud väärtusega võrreldakse
@@ -2874,6 +2881,7 @@ STR_8826_GO_TO                                                  :{BLACK}Mine
 STR_REFIT                                                       :{BLACK}Taasseadista
 STR_REFIT_TIP                                                   :{BLACK}Vali, millist laadungit ümber seadistada selles järjestuses. Ümberseadistuse käsu eemaldamiseks hoia klõpsamise ajal all Control nuppu
 STR_REFIT_ORDER                                                 :(Taasseadista {STRING})
+STR_STOP_ORDER                                                  :(Peatu)
 STR_TIMETABLE_VIEW                                              :{BLACK}Sõiduplaan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Näita sõiduplaani
 STR_ORDER_VIEW                                                  :{BLACK}Korraldused
@@ -3594,6 +3602,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klõpsa,
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

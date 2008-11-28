@@ -1056,7 +1056,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Afişează întotdeauna data în format lung în bara de stare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Afişează semafoarele pe partea de circulaţie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Afişează finanţele la sfârşitul fiecărui an: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Comenzile noi vor aparea "non_stop" : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Ordinele noi prestabilite sunt 'fără oprire': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Autovehiculele pot forma cozi (cu efecte cuantice): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Mută imaginea când mouse-ul este la marginea ecranului: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permite mituirea autorităţilor locale: {ORANGE}{STRING}
@@ -2764,6 +2764,7 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Service daca es
 STR_ORDER_DROP_HALT_DEPOT                                       :Stop
 
 STR_ORDER_CONDITIONAL                                           :Salt in ordine conditionata
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Datele vehiculului pe care se bazează
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Cum se face compararea datelor din vehicul cu valoarea data
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Valoarea cu care se compară
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introduceţi valoarea de comparat
@@ -2832,6 +2833,7 @@ STR_8826_GO_TO                                                  :{BLACK}Mergi la
 STR_REFIT                                                       :{BLACK}Rearanjeaza
 STR_REFIT_TIP                                                   :{BLACK}Alege tipul de marfa pentru rearanjare. Control+click pt a anula rearanjarea
 STR_REFIT_ORDER                                                 :(Rearanjeaza in {STRING})
+STR_REFIT_STOP_ORDER                                            :(Modifică pentru {STRING} şi opreşte)
 STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Orar
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Comuta in modul de vizualizare orar
@@ -3628,10 +3630,14 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Semnal s
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Semnal de intrare (semafor){}Verde, atat timp cat exista unul sau mai multe semnale verzi de iesire din sectiunea urmatoare a caii ferate. Altfel indica rosu.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Semnal de iesire (semafor){}Se comporta in acelasi fel ca semnalul normal but este necesar pentru declansarea culorii corecte la intrari si presemnalizatoare combinate.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Semnal combinat (semafor){}Semnalul combinat se comporta atat ca semnal de intrare si iesire. Acest lucru permite constructiile "arborilor" mari de presemnalizare.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Semnal (semafor){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalele pot fi parcurse îm ambele sensuri.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Semnal de sens unic (semafor){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalul de sens unic nu poate fi parcurs în sens opus.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Semnal standard (electric){}Semnalele sunt necesare pentru prevenirea deraierii trenurilor pe retele de cai ferate cu mai mult decat un tren.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Semnal de intrare (electric){}Verde atat timp cat exista unul sau mai multe semnale de iesire in sectiunea urmatoare a caii ferate. Altfel indica rosu.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Semnal de iesire (electric){}Se comporta in acelasi fel ca semnalul normal, dar este necesar pentru declansarea culorii corecte la intrari si presemnalizatoare combinate.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Semnal combinat (electric){}Semnalul combinat se comporta atat ca semnalul de intrare si iesire. Acest lucru permite construirea "arborilor" mari de presemnalizare.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Semnal (electric){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalele pot fi parcurse îm ambele sensuri.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Semnal de sens unic (electric){}Un semnal va permite trecerea în acelaşi timp în blocurile de semnale a mai multor trenuri, dacă trenurile pot găsi o cale până la un punct sigur pentru oprire pe linie. Semnalul de sens unic nu poate fi parcurs în sens opus.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Conversie semnal{}Cand este selectat, click-ul pe un semafor existent il va converti in tipul si varianta aleasa de semnalizare, iar CTRL-click va comuta varianta existenta.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densitate semnal tractare
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Scade densitatea semnalului de tractare

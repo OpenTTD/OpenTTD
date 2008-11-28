@@ -268,6 +268,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Neĝo
 STR_012C_MESSAGE                                                :{WHITE}Mesaĝo
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Normo
 STR_012E_CANCEL                                                 :{BLACK}Nuligu
 STR_012F_OK                                                     :{BLACK}Bone
 STR_0130_RENAME                                                 :{BLACK}Renomu
@@ -378,6 +379,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Tuta kapablo po
 STR_SORT_BY_MAX_SPEED                                           :Maksimuma rapideco
 STR_SORT_BY_MODEL                                               :Tipo
 STR_SORT_BY_VALUE                                               :Valoro
+STR_SORT_BY_LENGTH                                              :Longo
 STR_SORT_BY_FACILITY                                            :Stacidoma tipo
 STR_SORT_BY_WAITING                                             :Valoro de atendanta ŝarĝo
 STR_SORT_BY_RATING_MAX                                          :Takso de ŝarĝo
@@ -768,6 +770,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C4_GAME_OPTIONS                                           :Ludaj opcioj
 STR_02C6_DIFFICULTY_SETTINGS                                    :Malfacilec-agordoj
 STR_NEWGRF_SETTINGS                                             :Agordoj de NewGRF
+STR_TRANSPARENCY_OPTIONS                                        :Ebloj por travidebleco
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Urbonomoj montriĝas
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Staciaj nomoj montriĝas
@@ -795,7 +798,6 @@ STR_02DD_SUBSIDIES                                              :Subvencioj
 STR_02DE_MAP_OF_WORLD                                           :Mondomapo
 STR_EXTRA_VIEW_PORT                                             :Plia videjo
 STR_SIGN_LIST                                                   :Afiŝa listo
-STR_TRANSPARENCY_OPTIONS                                        :Ebloj por travidebleco
 STR_02DF_TOWN_DIRECTORY                                         :Urbaro
 STR_TOWN_POPULATION                                             :{BLACK}Monda enloĝantaro: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Videjo {COMMA}
@@ -919,6 +921,7 @@ STR_CURR_SEK                                                    :Svedaj Kronoj (
 STR_CURR_YTL                                                    :Turkaj Liroj (YTL)
 STR_CURR_SKK                                                    :Slovakaj Korunoj (SKK)
 STR_CURR_BRL                                                    :Brazilaj Realoj (BRL)
+STR_CURR_EEK                                                    :Estona Krono (EEK)
 
 STR_CURR_CUSTOM                                                 :Alia...
 
@@ -1083,6 +1086,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zomi mapon
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Skroli mapon
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Malaktiva
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Mapskrolrada rapido: {ORANGE}{STRING}
+
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Aŭtomate paŭzu startante novan ludon: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Trajna maksimumo por ĉiu ludanto: {ORANGE}{STRING}
@@ -1156,6 +1161,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Iuj aŭ ĉiuj defaŭltaj prizorgintervaloj ne validas laŭ la agordoj! 5-90% kaj 30-800 tagoj validas
 
+
 STR_TEMPERATE_LANDSCAPE                                         :Modera landaspekto
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktikeca landaspekto
 STR_SUB_TROPICAL_LANDSCAPE                                      :Tropikeca landaspekto
@@ -1222,6 +1228,7 @@ STR_LANDINFO_CANAL                                              :Kanalo
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Ne povas konstrui kluzojn ĉi tie...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Konstruu kluzojn
 STR_LANDINFO_LOCK                                               :Kluzo
+
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...buo estas uzata
 
@@ -1308,6 +1315,10 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Enigu la
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientoj
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientoj surrete / maksimume{}Kompanioj surrete / maksimume
+
+
+
+
 STR_NETWORK_GAME_INFO                                           :{SILVER}LUDINFORMOJ
 STR_NETWORK_CLIENTS                                             :{SILVER}Klientoj:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Lingvo:  {WHITE}{STRING}
@@ -1334,12 +1345,12 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Agordu p
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protektu vian ludon per pasvorto por ne publike atingebligi ĝin
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Elektu mapon:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kiun mapon vi volas ludi?
-STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Klienta maksimumo:
-STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
 STR_NETWORK_LAN                                                 :Loka reto
 STR_NETWORK_INTERNET                                            :Interreto
 STR_NETWORK_LAN_INTERNET                                        :Loka reto / Interreto
 STR_NETWORK_INTERNET_ADVERTISE                                  :Interreto (reklamu)
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Klienta maksimumo:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Kompania maksimumo:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limu la servilon al certa kvanto da kompanioj
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Spektanta maksimumo:
@@ -1859,6 +1870,9 @@ STR_4828_REQUIRES                                               :{BLACK}Bezonas:
 STR_4829_REQUIRES                                               :{BLACK}Bezonas: {YELLOW}{STRING.n}{STRING}, {STRING.n}{STRING}, {STRING.n}{STRING}
 ############ range for requires ends
 
+############ range for produces starts
+############ range for produces ends
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Lastmonata produktado:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportiĝis)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centre en la ĉefvido vidu la industilokon
@@ -1972,7 +1986,6 @@ STR_SV_STNAME_UPPER                                             :Supra {STRING}
 STR_SV_STNAME_LOWER                                             :Malsupra {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterejo
 STR_SV_STNAME_FOREST                                            :Arbaro de {STRING}
-
 
 ############ end of savegame specific region!
 
@@ -2482,6 +2495,10 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trajno okupas la lokon
 
+
+
+
+
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Irante al {TOWN} Trajndeponejo
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Irante al {TOWN} Trajndeponejo, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Prizorgo ĉe {TOWN} Trajndeponejo
@@ -2596,6 +2613,8 @@ STR_TRAIN_START_NO_CATENARY                                     :Mankas ĉi-trak
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nova {STRING} nun haveblas!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nova {STRING} nun haveblas!  -  {ENGINE}
+
+
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vojveturilo okupas la lokon
@@ -2796,6 +2815,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elektu ŝ
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapablo: {GOLD}{STRING}{}{BLACK}Transformkosto: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ne povas reformi aviadilon...
 
+
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zepelina katastrofo en {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Vojveturilo detruita en 'UFO'-kolizio!
@@ -2808,6 +2828,7 @@ STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT
 STR_BRIBE_FAILED                                                :{WHITE}Via subaĉeta provo estas
 STR_BRIBE_FAILED_2                                              :{WHITE}malkovrita de regiona esploristo
 STR_BUILD_DATE                                                  :{BLACK}Kreite: {LTBLUE}{DATE_LONG}
+
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detala rendimento
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaloj
@@ -2888,6 +2909,8 @@ STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Ne trov
 STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Taŭga(j) GRF(oj) ŝarĝiĝis por mankaj dosieroj
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Manka(j) GRF-dosiero(j) malŝaltiĝis
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Mankas GRF-dosiero(j) por povi ŝarĝi la ludon
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Alia monunuo
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Interŝanĝa valoro: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3011,6 +3034,9 @@ STR_PURCHASE_INFO_ALL_TYPES                                     :Ĉiaj ŝarĝoj
 STR_PURCHASE_INFO_ALL_BUT                                       :Ĉio krom {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimuma Tiro: {GOLD}{FORCE}
 
+########### For showing numbers in widgets
+
+
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Generu
@@ -3109,10 +3135,27 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}(Ne)trav
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}(Ne)travideblu la pontoj
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}(Ne)travideblu aĵoj kiel lumturoj kaj antenoj, kaj eble estonte vidĝuaĵoj
 
+
 ##### Mass Order
 
 
 
 
 
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
 ########
