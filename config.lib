@@ -637,9 +637,9 @@ check_params() {
 	detect_pspconfig
 	detect_libtimidity
 
-	if [ "$with_direct_music" = "1" ] || [ "$with_direct_music" = "2" ]; then
+	if [ "$with_direct_music" != "0" ]; then
 		if [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ]; then
-			if [ "$with_direct_music" = "2" ]; then
+			if [ "$with_direct_music" != "1" ]; then
 				log 1 "configure: error: direct-music is only supported on Win32 targets"
 				exit 1
 			fi
@@ -1613,7 +1613,7 @@ check_direct_music() {
 	rm -f direct_music.test.c direct_music.test
 
 	if [ "$res" != "0" ]; then
-		if [ "$with_direct_music" = "2" ]; then
+		if [ "$with_direct_music" != "1" ]; then
 			log 1 "configure: error: direct-music is not available on this system"
 			exit 1
 		fi
