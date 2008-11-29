@@ -2,7 +2,7 @@
 ##ownname Indonesian
 ##isocode id_ID
 ##winlangid 0x0421
-##plural 0
+##plural 1
 
 #
 
@@ -101,6 +101,13 @@ STR_QUANTITY_MAIZE                                              :{WEIGHT} tepung
 STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
 STR_QUANTITY_DIAMONDS                                           :{COMMA} tas intan
 STR_QUANTITY_FOOD                                               :{WEIGHT} makanan
+STR_QUANTITY_PAPER                                              :{WEIGHT}  kertas
+STR_QUANTITY_WATER                                              :{VOLUME} air
+STR_QUANTITY_WHEAT                                              :{WEIGHT}  gandum
+STR_QUANTITY_RUBBER                                             :{VOLUME} karet
+STR_QUANTITY_SUGAR                                              :{WEIGHT} gula
+STR_QUANTITY_COLA                                               :{VOLUME} cola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} Harum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} kopi toffee
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
@@ -137,6 +144,7 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}KT
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MB
+STR_ABBREV_NONE                                                 :{TINYFONT}TANPA
 STR_ABBREV_ALL                                                  :{TINYFONT}SM
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
@@ -264,6 +272,15 @@ STR_0130_RENAME                                                 :{BLACK}Ubah nam
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Nama yang didefinisikan terlalu banyak
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nama ini sudah digunakan
 
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...dimiliki oleh {STRING}
 STR_013C_CARGO                                                  :{BLACK}Muatan
@@ -282,6 +299,7 @@ STR_MULTIPLAYER                                                 :{BLACK}Bermain 
 STR_SCENARIO_EDITOR                                             :{BLACK}Editor Skenario
 
 STR_MAPSIZE                                                     :{BLACK}Ukuran Peta:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Pilihan permainan
 
 STR_0150_SOMEONE                                                :seseorang{SKIP}{SKIP}
@@ -289,6 +307,7 @@ STR_0151_MAP_OF_WORLD                                           :Peta Dunia
 STR_0152_TOWN_DIRECTORY                                         :Daftar Kota
 STR_0153_SUBSIDIES                                              :Pembiayaan
 
+STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Metrik
 STR_UNITS_SI                                                    :Standar Internasional
 
@@ -314,7 +333,11 @@ STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton gaya
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafik keuntungan operasional
@@ -324,6 +347,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafik Kinerja
 STR_0158_COMPANY_VALUE_GRAPH                                    :Grafik Aset Perusahaan
 STR_0159_CARGO_PAYMENT_RATES                                    :Daftar biaya angkutan
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Tabel Perusahaan
+STR_PERFORMANCE_DETAIL_MENU                                     :Detail tingkat performa
 ############ range for menu ends
 
 STR_015B_OPENTTD                                                :{WHITE}Tentang OpenTTD
@@ -331,8 +355,26 @@ STR_015C_SAVE_GAME                                              :Simpan permaina
 STR_015D_LOAD_GAME                                              :Baca Permainan
 STR_015E_QUIT_GAME                                              :Batalkan permainan
 STR_015F_QUIT                                                   :Keluar
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}Apakah anda yakin untuk membatalkan permainan saat ini?
 STR_0161_QUIT_GAME                                              :{WHITE}Batalkan Permainan
+STR_SORT_ORDER_TIP                                              :{BLACK}Pilih modus pengurutan (menurun/menaik)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Pilih kriteria pengurutan
+STR_SORT_BY                                                     :{BLACK}SUrutkan
 
+STR_SORT_BY_POPULATION                                          :{BLACK}Populasi
+STR_SORT_BY_PRODUCTION                                          :Produksi
+STR_SORT_BY_TYPE                                                :Jenis
+STR_SORT_BY_DROPDOWN_NAME                                       :Nama
+STR_SORT_BY_DATE                                                :{BLACK}Tanggal
+STR_SORT_BY_NUMBER                                              :Nomer
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Keuntungan tahun lalu
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Keuntungan Tahun Ini
+STR_SORT_BY_AGE                                                 :Usia
+STR_SORT_BY_MAX_SPEED                                           :Kecepatan Maks.
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Nilai
+STR_SORT_BY_LENGTH                                              :Panjang
+STR_SORT_BY_LIFE_TIME                                           :Sisa masa pakai
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1884,6 +1926,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 ########### String for New Landscape Generator
 
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Tindakan ini menyebabkan level kesulitan menjadi bebas
 
 
 ########### String for new airports

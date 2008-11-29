@@ -278,6 +278,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Zu viele
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Gewählter Name existiert bereits
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -2832,8 +2833,9 @@ STR_8824_DELETE                                                 :{BLACK}Löschen
 STR_8826_GO_TO                                                  :{BLACK}Fahre nach
 STR_REFIT                                                       :{BLACK}Umrüsten
 STR_REFIT_TIP                                                   :{BLACK}Frachtart auswählen, auf die umgerüstet werden soll. Strg+Klick, um einen Umrüstungsauftrag wieder zu entfernen
-STR_REFIT_ORDER                                                 :(umrüsten auf {STRING})
-STR_STOP_ORDER                                                  :(Stop)
+STR_REFIT_ORDER                                                 :(auf {STRING} umrüsten)
+STR_REFIT_STOP_ORDER                                            :(auf {STRING} umrüsten und stoppen)
+STR_STOP_ORDER                                                  :(Stopp)
 STR_TIMETABLE_VIEW                                              :{BLACK}Fahrplan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zur Fahrplanansicht wechseln
 STR_ORDER_VIEW                                                  :{BLACK}Aufträge
@@ -2943,6 +2945,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Dieses Fahrzeug
 STR_TIMETABLE_TOTAL_TIME                                        :Dieser Fahrplan benötigt {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Dieser Fahrplan benötigt mindestens {STRING} (nicht alle geplant)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Erfassen
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fahrpan automatisch an die Werte der nächste Fahrt anpassen (Mit Strg+Klick wird veruscht die aktuellen Wartezeiten beizubehalten)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Fahrzeug ist im Weg
@@ -3234,6 +3237,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Das Laden von {
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :NewGRF Fehler: 'Unknown Action 0 property.'
 STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versucht, eine ungültige ID zu verwenden.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält kaputte Sprites. Diese werden als rote Fragezeichen (?) dargestellt.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ausgewählte Voreinstellung laden
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Speichern

@@ -335,6 +335,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Definov�
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Zvolené jméno se už používá
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unixu
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -3007,7 +3008,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Vozidlo jede {S
 STR_TIMETABLE_TOTAL_TIME                                        :Tento jízdní řád bude trvat {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Tento jízdní řád bude trvat nejméně {STRING} (vozidla mimo jízdní řád)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Automaticky
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Vyplnit jízdní řád automaticky hodnotami z další jízdy (kliknutím s CTRL se hra pokusí zachovat čekací doby)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Automaticky vyplň rozvrh hodnotami z následující cesty (CTRL-klik pro vyčkávání nějaké doby)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silniční vozidlo v cestě

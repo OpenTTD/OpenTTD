@@ -377,7 +377,7 @@ STR_0151_MAP_OF_WORLD                                           :Világtérkép
 STR_0152_TOWN_DIRECTORY                                         :Városlista
 STR_0153_SUBSIDIES                                              :Támogatások
 
-STR_UNITS_IMPERIAL                                              :Brit
+STR_UNITS_IMPERIAL                                              :Angolszász
 STR_UNITS_METRIC                                                :Metrikus
 STR_UNITS_SI                                                    :SI
 
@@ -3549,7 +3549,7 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Tényle
 STR_PROGRESS                                                    :{WHITE}{NUM}% kész
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Térkép létrehozása
-STR_TREE_GENERATION                                             :{BLACK}Fák generálás
+STR_TREE_GENERATION                                             :{BLACK}Fák generálása
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Világítótornyok létrehozása
 STR_CLEARING_TILES                                              :{BLACK}Durva és köves területek generálása
 STR_SETTINGUP_GAME                                              :{BLACK}Játék beállítása
@@ -3572,9 +3572,9 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Kicsi
 STR_CITY_AIRPORT                                                :{BLACK}Városi
-STR_METRO_AIRPORT                                               :{BLACK}Nagyvárosi reptér
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Nemzetközi reptér
-STR_COMMUTER_AIRPORT                                            :{BLACK}Bejáró
+STR_METRO_AIRPORT                                               :{BLACK}Nagyvárosi
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Nemzetközi
+STR_COMMUTER_AIRPORT                                            :{BLACK}Elővárosi
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinentális
 STR_HELIPORT                                                    :{BLACK}Helileszálló
 STR_HELIDEPOT                                                   :{BLACK}Helihangár
@@ -3583,7 +3583,7 @@ STR_HELISTATION                                                 :{BLACK}Heliáll
 STR_SMALL_AIRPORTS                                              :{BLACK}Kis repterek
 STR_LARGE_AIRPORTS                                              :{BLACK}Nagy repterek
 STR_HUB_AIRPORTS                                                :{BLACK}Központi repterek
-STR_HELIPORTS                                                   :{BLACK}Helikopter repterek
+STR_HELIPORTS                                                   :{BLACK}Helikopter-állomások
 
 ############ Tooltip measurment
 

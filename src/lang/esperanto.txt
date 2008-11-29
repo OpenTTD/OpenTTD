@@ -1122,6 +1122,7 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktivig
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permesu aĉetadon de dividaĵoj en aliaj kompanioj
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tirante metu signalojn je ĉiuj: {ORANGE}{STRING} kvadrado(j)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Aŭtomate konstruu semaforojn antaŭ: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :ĉiom
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}La urbaspekto "sen pliaj vojoj" ne validas en la scenarkreilo
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Elektu urbvojan aspekton: {ORANGE}{STRING}
@@ -1130,6 +1131,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :defaŭlte
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :pli bonaj vojoj
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :kvadrataro de 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :kvadrataro de 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :hazarda
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Loko de ĉefa ilbreto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Maldekstre
@@ -1161,6 +1163,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Iuj aŭ ĉiuj defaŭltaj prizorgintervaloj ne validas laŭ la agordoj! 5-90% kaj 30-800 tagoj validas
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(malrekomenda)
 
 STR_TEMPERATE_LANDSCAPE                                         :Modera landaspekto
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktikeca landaspekto
@@ -1229,6 +1232,7 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Ne povas
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Konstruu kluzojn
 STR_LANDINFO_LOCK                                               :Kluzo
 
+STR_LANDINFO_RIVER                                              :Rivero
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...buo estas uzata
 
@@ -1317,7 +1321,10 @@ STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientoj
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientoj surrete / maksimume{}Kompanioj surrete / maksimume
 
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Dato
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Aktuala dato
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Jaroj
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}LUDINFORMOJ
 STR_NETWORK_CLIENTS                                             :{SILVER}Klientoj:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1345,12 +1352,15 @@ STR_NETWORK_SET_PASSWORD                                        :{BLACK}Agordu p
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protektu vian ludon per pasvorto por ne publike atingebligi ĝin
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Elektu mapon:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kiun mapon vi volas ludi?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Loka reto
 STR_NETWORK_INTERNET                                            :Interreto
 STR_NETWORK_LAN_INTERNET                                        :Loka reto / Interreto
 STR_NETWORK_INTERNET_ADVERTISE                                  :Interreto (reklamu)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} client{P "" s}
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Klienta maksimumo:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} kompanio{P "" j}
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Kompania maksimumo:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limu la servilon al certa kvanto da kompanioj
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Spektanta maksimumo:
@@ -1367,6 +1377,37 @@ STR_NETWORK_LANG_ANY                                            :Ajna
 STR_NETWORK_LANG_ENGLISH                                        :Angla
 STR_NETWORK_LANG_GERMAN                                         :Germana
 STR_NETWORK_LANG_FRENCH                                         :Franca
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazila
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgara
+STR_NETWORK_LANG_CZECH                                          :Ĉeĥa
+STR_NETWORK_LANG_DANISH                                         :Dana
+STR_NETWORK_LANG_DUTCH                                          :Nederlanda
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finna
+STR_NETWORK_LANG_HUNGARIAN                                      :Hungara
+STR_NETWORK_LANG_ICELANDIC                                      :Islanda
+STR_NETWORK_LANG_ITALIAN                                        :Itala
+STR_NETWORK_LANG_JAPANESE                                       :Japana
+STR_NETWORK_LANG_KOREAN                                         :Korea
+STR_NETWORK_LANG_LITHUANIAN                                     :Litova
+STR_NETWORK_LANG_NORWEGIAN                                      :Norvega
+STR_NETWORK_LANG_POLISH                                         :Pola
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugala
+STR_NETWORK_LANG_ROMANIAN                                       :Rumana
+STR_NETWORK_LANG_RUSSIAN                                        :Rusa
+STR_NETWORK_LANG_SLOVAK                                         :Slovaka
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovena
+STR_NETWORK_LANG_SPANISH                                        :Hispana
+STR_NETWORK_LANG_SWEDISH                                        :Sveda
+STR_NETWORK_LANG_TURKISH                                        :Turka
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukraina
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrikansa
+STR_NETWORK_LANG_CROATIAN                                       :Kroata
+STR_NETWORK_LANG_CATALAN                                        :Kataluna
+STR_NETWORK_LANG_ESTONIAN                                       :Estona
+STR_NETWORK_LANG_GALICIAN                                       :Galica
+STR_NETWORK_LANG_GREEK                                          :Greka
+STR_NETWORK_LANG_LATVIAN                                        :Latva
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Atendejo por plurludantaj ludoj

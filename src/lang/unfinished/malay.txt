@@ -8,3 +8,599 @@
 
 ##id 0x0000
 STR_NULL                                                        :
+STR_000F_PASSENGERS                                             :Penumpang
+STR_0010_COAL                                                   :Arang
+STR_0012_OIL                                                    :Minyak
+STR_0013_LIVESTOCK                                              :Ternakan
+STR_0014_GOODS                                                  :Barangan
+STR_0016_WOOD                                                   :Kayu
+STR_0018_STEEL                                                  :Keluli
+STR_001C_FRUIT                                                  :Buah-buahan
+STR_001D_DIAMONDS                                               :Berlian
+STR_001E_FOOD                                                   :Makanan
+STR_001F_PAPER                                                  :Kertas
+STR_0020_GOLD                                                   :Emas
+STR_0021_WATER                                                  :Air
+STR_0023_RUBBER                                                 :Getah
+STR_0024_SUGAR                                                  :Gula
+STR_0025_TOYS                                                   :Mainan
+STR_0026_CANDY                                                  :Gula-gula
+STR_0027_COLA                                                   :Cola
+STR_0029_BUBBLES                                                :Buih
+STR_002B_BATTERIES                                              :Bateri
+STR_002C_PLASTIC                                                :Plastik
+STR_002D_FIZZY_DRINKS                                           :Minuman Bergas
+STR_002F_PASSENGER                                              :Penumpang
+STR_0030_COAL                                                   :Arang
+STR_0032_OIL                                                    :Minyak
+STR_0033_LIVESTOCK                                              :Ternakan
+STR_0034_GOODS                                                  :Barangan
+STR_0036_WOOD                                                   :Kayu Balak
+STR_0038_STEEL                                                  :Keluli
+STR_003C_FRUIT                                                  :Buah-buahan
+STR_003D_DIAMOND                                                :Berlian
+STR_003E_FOOD                                                   :Makanan
+STR_003F_PAPER                                                  :Kertas
+STR_0040_GOLD                                                   :Emas
+STR_0041_WATER                                                  :Air
+STR_0043_RUBBER                                                 :Getah
+STR_0044_SUGAR                                                  :Gula
+STR_0045_TOY                                                    :Mainan
+STR_0046_CANDY                                                  :Gula-gula
+STR_0047_COLA                                                   :Kola
+STR_0049_BUBBLE                                                 :Buih
+STR_004B_BATTERY                                                :Bateri
+STR_004C_PLASTIC                                                :Plastik
+STR_004D_FIZZY_DRINK                                            :Minuman Bergas
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}MAP-{STRING}
+STR_00B7_VERSION                                                :{BLACK}OpenTTD versi {REV}
+
+STR_00D1_DARK_BLUE                                              :Biru Gelap
+STR_00D2_PALE_GREEN                                             :Hijau Pucat
+STR_00D4_YELLOW                                                 :Kuning
+STR_00D5_RED                                                    :Merah
+STR_00D6_LIGHT_BLUE                                             :Biru Muda
+STR_00D7_GREEN                                                  :Hijau
+STR_00D8_DARK_GREEN                                             :Hijau Gelap
+STR_00D9_BLUE                                                   :Biru
+STR_00DA_CREAM                                                  :Krim
+STR_00DC_PURPLE                                                 :Ungu
+STR_00DD_ORANGE                                                 :Jingga
+STR_00DE_BROWN                                                  :Perang
+STR_00DF_GREY                                                   :Kelabu
+STR_00E0_WHITE                                                  :Putih
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Terlalu banyak kenderaan dalam permainan
+STR_00E6_VEHICLES                                               :Kenderaan
+STR_00E7_INDUSTRIES                                             :Industri
+STR_00E9_VEGETATION                                             :Tumbuhan
+STR_00EA_OWNERS                                                 :Pemilik
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Keretapi
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Kapal
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Kapal Terbang
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Stesen Janakuasa
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Hutan
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Ladang
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Bekalan Air
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Stesen Keretapi
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}TPokok
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Batu
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}Air
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Tidak Ada Pemilik
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Bandar
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Industri
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Salji
+STR_012C_MESSAGE                                                :{WHITE}Utusan
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}Batal
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Nama dipilih telah dipakai
+
+
+STR_013B_OWNED_BY                                               :{WHITE}...dimiliki oleh {STRING}
+STR_013D_INFORMATION                                            :{BLACK}Maklumat
+STR_013E_CAPACITIES                                             :{BLACK}Kapaciti
+
+
+STR_0151_MAP_OF_WORLD                                           :Peta Dunia
+STR_0153_SUBSIDIES                                              :Subsidi
+
+
+
+
+
+
+
+
+
+############ range for menu starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf keuntungan operasi
+STR_0159_CARGO_PAYMENT_RATES                                    :Bayaran Kargo
+############ range for menu ends
+
+STR_015B_OPENTTD                                                :{WHITE}Tentang OpenTTD
+
+
+############ range for months starts
+STR_0162_JAN                                                    :Jan
+STR_0163_FEB                                                    :Feb
+STR_0164_MAR                                                    :Mac
+STR_0165_APR                                                    :Apr
+STR_0166_MAY                                                    :Mei
+STR_0167_JUN                                                    :Jun
+STR_0168_JUL                                                    :Jul
+STR_0169_AUG                                                    :Ogos
+STR_016B_OCT                                                    :Okt
+STR_016C_NOV                                                    :Nov
+STR_016D_DEC                                                    :Dis
+############ range for months ends
+
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Bina landasan keretapi
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Bina lapangan kapal terbang
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Tumbuh pokok, letak papan tanda dll.
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+STR_019C_ROAD_VEHICLE                                           :Kenderaan Jalan
+STR_019D_AIRCRAFT                                               :Kapal Terbang
+STR_019E_SHIP                                                   :Kapal
+STR_019F_TRAIN                                                  :Keretapi
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} menjadi sangat usang
+
+############ range for days starts
+STR_01AC_1ST                                                    :Pertama
+STR_01AD_2ND                                                    :Kedua
+STR_01AE_3RD                                                    :Ketiga
+STR_01AF_4TH                                                    :Keempat
+STR_01B0_5TH                                                    :Kelima
+STR_01B1_6TH                                                    :Keenam
+STR_01B2_7TH                                                    :ketujuh
+STR_01B3_8TH                                                    :Kelapan
+STR_01B4_9TH                                                    :Kesembilan
+STR_01B5_10TH                                                   :Kesepuluh
+STR_01B6_11TH                                                   :Kesebelas
+STR_01B7_12TH                                                   :Kedua belas
+STR_01B8_13TH                                                   :Ketiga belas
+STR_01B9_14TH                                                   :Keempat Belas
+STR_01BA_15TH                                                   :Kelima belas
+STR_01BB_16TH                                                   :Keenam belas
+STR_01BC_17TH                                                   :Ketujuh belas
+STR_01BD_18TH                                                   :Kelapan belas
+STR_01BE_19TH                                                   :Kesembilan belas
+############ range for days ends
+
+
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Kargo yang diterima: {LTBLUE}
+
+STR_01D3_SOUND_MUSIC                                            :Bunyi/musik
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Tunjukkan tingkap bunyi/musik
+STR_01D5_ALL                                                    :{TINYFONT}Semua
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Cara Lama
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Utusan/laporan berita terakhir
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ketibaan kenderaan di stesen pemain
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ketibaan kenderaan di stesen pesaing
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kemalangan
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Maklumat syarikat
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Perubahan ekonomi
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Kenderaan baru
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Penukaran pada penerimaan kargo
+STR_020E_SUBSIDIES                                              :{YELLOW}Subsidi
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Maklumat umum
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...terlalu jauh daripada destinasi sebelumnya
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0234_NEW_TOWN                                               :{BLACK}Bandar Baru
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Binakan bandar baru
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Tidak boleh membina bandar di sini...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...terlalu hampir kepada hujung peta
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...terlalu hampir kepada bandar lain
+STR_0240_COAL_MINE                                              :{BLACK}Lombong Arang
+STR_0241_POWER_STATION                                          :{BLACK}Stesen Janakuasa
+STR_0242_SAWMILL                                                :{BLACK}Kilang papan
+STR_0243_FOREST                                                 :{BLACK}Hutan
+STR_0246_FACTORY                                                :{BLACK}Kilang
+STR_02A1_SMALL                                                  :{BLACK}Kecil
+STR_02A2_MEDIUM                                                 :{BLACK}Sederhana
+STR_02A3_LARGE                                                  :{BLACK}Besar
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Pilih saiz bandar
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Saiz bandar
+
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tunjukkan utusan atau laporan berita terakhir
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+
+############ range for menu starts
+############ range ends here
+
+############ range for menu starts
+STR_02D9_ABOUT_OPENTTD                                          :Tentang 'OpenTTD'
+############ range ends here
+
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Tunjukkan subsidi
+STR_02DD_SUBSIDIES                                              :Subsidi
+STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
+
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unit kewangan
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02EB_TOWN_NAMES                                             :{BLACK}Nama bandar
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Pilih tema untuk nama bandar
+
+STR_02F8_EVERY_3_MONTHS                                         :Setiap 3 bulan
+STR_02F9_EVERY_6_MONTHS                                         :Setiap 6 bulan
+STR_02FA_EVERY_12_MONTHS                                        :Setiap 12 bulan
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}Kos: {CURRENCY}
+STR_0801_COST                                                   :{RED}Kos: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Kos Jangkaan: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Untung Jangkaan: {CURRENCY}
+STR_080A_ROCKS                                                  :Batu
+STR_080D_GRASS                                                  :Rumput
+STR_080F_SNOW_COVERED_LAND                                      :Tanah diliputi salji
+
+##id 0x1000
+STR_1021_RAILROAD_TRACK                                         :Landasan keretapi
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Depot keretapi
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...kawasan sudah dimiliki oleh syarikat lain
+
+
+
+##id 0x1800
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Pembinaan Jalan
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Pilihkan Jambatan Jalan
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientasi Depot Kenderaan Jalan
+STR_1814_ROAD                                                   :Jalan
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :Jalan berlampu
+STR_1816_TREE_LINED_ROAD                                        :Jalan dibarisi pokok
+STR_1817_ROAD_VEHICLE_DEPOT                                     :Depot kenderaan jalan
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Simpangan jalan/landasan
+
+##id 0x2000
+STR_2000_TOWNS                                                  :{WHITE}Bandar
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
+STR_2005                                                        :{WHITE}{TOWN}
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} majlis tempatan tidak membenarkannya
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Tukar nama bandar
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Penumpang bulan lalu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :Bangunan pejabat tinggi
+STR_2010_OFFICE_BLOCK                                           :Bangunan pejabat
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :Bangunan pangsapuri kecil
+STR_2012_CHURCH                                                 :Gereja
+STR_2013_LARGE_OFFICE_BLOCK                                     :Bangunan pejabat besar
+STR_2014_TOWN_HOUSES                                            :Rumah
+STR_2015_HOTEL                                                  :Hotel
+STR_2018_PARK                                                   :Taman
+STR_2019_OFFICE_BLOCK                                           :Bangunan pejabat
+STR_201C_WAREHOUSE                                              :Gudang
+STR_201D_OFFICE_BLOCK                                           :Bangunan pejabat
+STR_201E_STADIUM                                                :Stadium
+STR_201F_OLD_HOUSES                                             :Rumah usang
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Majlis tempatan
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} majlis tempatan
+STR_2025_SUBSIDIES                                              :{WHITE}Subsidi
+STR_2038_FLATS                                                  :Pangsapuri
+STR_203C_THEATER                                                :Panggung Wayang
+STR_203D_STADIUM                                                :Stadium
+STR_203E_OFFICES                                                :Pejabat
+STR_203F_HOUSES                                                 :Rumah
+STR_2040_CINEMA                                                 :Panggung Wayang
+STR_2041_SHOPPING_MALL                                          :Pusat beli-belah
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Kempen iklan kecil
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Kempen iklan sederhana
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Kempen iklan besar
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Membeli hak penangkutan esklusif
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (sedang dibina)
+
+
+##id 0x2800
+STR_2802_TREES                                                  :{WHITE}Pokok
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...kawasan yang tidak sesuai
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Tidak boleh menanam pokok di sini...
+STR_2806                                                        :{WHITE}{SIGN}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...terlalu banyak papan tanda
+STR_280A_SIGN                                                   :Papan tanda
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Gubarkan teks papan tanda
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Sila pilihkan jenis pokok untuk ditanam
+STR_280E_TREES                                                  :Pokok
+STR_280F_RAINFOREST                                             :Hutan rimba
+
+##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Pilihan Stesen Keretapi
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Pilihan Lapangan Kapal Terbang
+STR_3002_ORIENTATION                                            :{BLACK}Orentasi
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Bilangan landasan
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Panjang platform
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+
+STR_3033_ACCEPTS                                                :{BLACK}Terima
+
+############ range for rating starts
+############ range for rating ends
+
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} tidak lagi menerima {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+
+############ end of savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+
+##id 0xB000
+
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### For showing numbers in widgets
+
+
+########### String for New Landscape Generator
+
+
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########

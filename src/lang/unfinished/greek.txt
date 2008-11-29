@@ -1161,6 +1161,8 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Αλλαγή τιμής ρύθμισης
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Κάποια ή όλα τα προεπιλεγμένα διαστήματα επισκευών παρακάτω δεν είναι συμβατά με την επιλεγμένη ρύθμιση! 5-90% και 30-800 μέρες είναι τα αποδεκτά
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
 
 STR_TEMPERATE_LANDSCAPE                                         :Συγκρατημένο τοπίο
 STR_SUB_ARCTIC_LANDSCAPE                                        :Πολικό τοπίο
@@ -1210,32 +1212,50 @@ STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Είστ
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Πολλές τυχαίες πόλεις
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Κάλυψη του χάρτη με τυχαία τοποθετημένες πόλεις
 STR_MANY_RANDOM_INDUSTRIES                                      :Πολλές τυχαίες βιομηχανίες
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Γέμισε τον χάρτη με τυχαίες τοποθετημένες βιομηχανίες
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Δεν γίνεται να δημιουργηθούν βιομηχανίες...
 
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Επιπεδοποίηση γης
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Δέντρα τυχαίου τύπου
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Βάλε δέντρα τυχαίου τύπου
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ
+STR_BUILD_CANALS_TIP                                            :{BLACK}Δημιουργία καναλιών.
 STR_LANDINFO_CANAL                                              :Κανάλι
 
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Δεν μπορούν να τοποθετηθούν ποτάμια εδώ...
+STR_LANDINFO_RIVER                                              :Ποτάμι
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...σημαδούρα σε χρήση
 
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Δεν μπορεί να διαλειθεί μέρος του σταθμού...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Δεν γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Μετατρέψτε/Αλλάξτε τον τύπο της γραμμής
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Σύρε την μηχανή του τρένου για να διαγραφεί ολόκληρο το τρένο
 
 STR_DRAG_DROP                                                   :{BLACK}Έλξη & πτώση
 STR_STATION_DRAG_DROP                                           :{BLACK}Φτιάξε ένα σταθμό χρησιμοποιόντας έλξη & πτώση
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Επέλεξε τον τύπο του σταθμού προς χτίσιμο
 
 
 
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Βιομηχανίες
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Ονόματα βιομηχανιών - click στο ονομα για κεντράρισμα στην βιομηχανία
 
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...πολύ κοντά σε άλλη βιομηχανία
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Αναπροσαρμογή τρένου για μεταφορά διαφορετικού φορτίου
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Αναπροσαρμογή τρένου
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
 
+TEMP_AI_ACTIVATED                                               :{WHITE}Προσοχή: ο νέος AI είναι ακόμα alpha!Προσωρινώς, μονο φορτηγά και λεωφορεία λειτουργούν!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Προσοχή; Η εφαρμογή είναι ακόμα πειραματική (χρησιμοποιείται ο νεος AI).
 
 ############ network gui strings
 

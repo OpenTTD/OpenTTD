@@ -2892,24 +2892,25 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Zawsze do
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Obsluga jesli wymagana
 STR_ORDER_DROP_HALT_DEPOT                                       :Zatrzymaj
 
-STR_ORDER_CONDITIONAL                                           :Skok warunkowego rozkazu
+STR_ORDER_CONDITIONAL                                           :Warunkowy skok poleceń
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dane pojazdu wykorzystane w warunku
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Jak porównać dane pojazdu z zadaną wartością
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Wartość do porównania z danymi pojazdu
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Podaj wartość do porównania
-STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Załadowanie procentowo
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Procent załadowania
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Niezawodność
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Prędkość maksymalna
 STR_ORDER_CONDITIONAL_AGE                                       :Wiek pojazdu (lata)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Wymaga obslugi
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Zawsze
-STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :jest rowny
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nii jest rowny
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :jest mniejszy niz
-STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :jest mniejszy badz rowny
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :jest wiecej niz
-STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :jest wiecej badz rowny
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :jest prawda
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :jest falszem
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :jest równy
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :różny od
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mniejszy niż
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mniejszy lub równy
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :większy niż
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :większy lub równy
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :prawda
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :fałsz
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
 STR_CONDITIONAL_UNCONDITIONAL                                   :Skocz do rozkazu {COMMA}
 STR_CONDITIONAL_NUM                                             :Skocz do rozkazu {COMMA} kiedy {STRING} {STRING} {COMMA}
