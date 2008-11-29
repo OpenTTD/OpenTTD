@@ -156,7 +156,7 @@ static void GetAvailableVideoMode(int *w, int *h)
 	uint delta;
 
 	// all modes available?
-	if (_all_modes) return;
+	if (_all_modes || _num_resolutions == 0) return;
 
 	// is the wanted mode among the available modes?
 	for (i = 0; i != _num_resolutions; i++) {
@@ -213,8 +213,10 @@ static bool CreateMainSurface(int w, int h)
 
 	// DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK
 	newscreen = SDL_CALL SDL_SetVideoMode(w, h, bpp, SDL_SWSURFACE | SDL_HWPALETTE | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
-	if (newscreen == NULL)
+	if (newscreen == NULL) {
+		DEBUG(driver, 0, "SDL: Couldn't allocate a window to draw on");
 		return false;
+	}
 
 	_screen.width = newscreen->w;
 	_screen.height = newscreen->h;

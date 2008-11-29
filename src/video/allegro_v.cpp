@@ -20,6 +20,12 @@
 #include "allegro_v.h"
 #include <allegro.h>
 
+#ifdef _DEBUG
+/* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
+ * be triggered, so rereplace the signals and make the debugger userful. */
+#include <signal.h>
+#endif
+
 static FVideoDriver_Allegro iFVideoDriver_Allegro;
 
 static BITMAP *_allegro_screen;
@@ -154,6 +160,9 @@ static void GetVideoModes()
 
 static void GetAvailableVideoMode(int *w, int *h)
 {
+	/* No video modes, so just try it and see where it ends */
+	if (_num_resolutions == 0) return;
+
 	/* is the wanted mode among the available modes? */
 	for (int i = 0; i != _num_resolutions; i++) {
 		if (*w == _resolutions[i].width && *h == _resolutions[i].height) return;
@@ -179,21 +188,23 @@ static bool CreateMainSurface(int w, int h)
 	if (bpp == 0) usererror("Can't use a blitter that blits 0 bpp for normal visuals");
 	set_color_depth(bpp);
 
-#if defined(DOS)
-	/* Force DOS builds to ALWAYS use full screen as
-	 * it can't do windowed. */
-	_fullscreen = true;
-#endif
-
-	GetVideoModes();
 	GetAvailableVideoMode(&w, &h);
-	if (set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, w, h, 0, 0) != 0) return false;
+	if (set_gfx_mode(_fullscreen ? GFX_AUTODETECT_FULLSCREEN : GFX_AUTODETECT_WINDOWED, w, h, 0, 0) != 0) {
+		DEBUG(driver, 0, "Allegro: Couldn't allocate a window to draw on");
+		return false;
+	}
 
-	_allegro_screen = create_bitmap(w, h);
-	_screen.width = w;
-	_screen.height = h;
-	_screen.pitch = ((byte*)screen->line[1] - (byte*)screen->line[0]) / (bitmap_color_depth(screen) / 8);
+	/* The size of the screen might be bigger than the part we can actually draw on!
+	 * So calculate the size based on the top, bottom, left and right */
+	_allegro_screen = create_bitmap_ex(bpp, screen->cr - screen->cl, screen->cb - screen->ct);
+	_screen.width = _allegro_screen->w;
+	_screen.height = _allegro_screen->h;
+	_screen.pitch = ((byte*)screen->line[1] - (byte*)screen->line[0]) / (bpp / 8);
 
+	/* Initialise the screen so we don't blit garbage to the screen */
+	memset(_allegro_screen->line[0], 0, _screen.height * _screen.pitch);
+
+	/* Set the mouse at the place where we expect it */
 	poll_mouse();
 	_cursor.pos.x = mouse_x;
 	_cursor.pos.y = mouse_y;
@@ -393,6 +404,20 @@ const char *VideoDriver_Allegro::Start(const char * const *parm)
 	install_mouse();
 	install_keyboard();
 
+#if defined _DEBUG
+/* Allegro replaces SEGV/ABRT signals meaning that the debugger will never
+ * be triggered, so rereplace the signals and make the debugger userful. */
+	signal(SIGABRT, NULL);
+	signal(SIGSEGV, NULL);
+#endif
+
+#if defined(DOS)
+	/* Force DOS builds to ALWAYS use full screen as
+	 * it can't do windowed. */
+	_fullscreen = true;
+#endif
+
+	GetVideoModes();
 	CreateMainSurface(_cur_resolution.width, _cur_resolution.height);
 	MarkWholeScreenDirty();
 	set_close_button_callback(HandleExitGameRequest);
