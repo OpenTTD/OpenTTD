@@ -324,7 +324,7 @@ STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gln
@@ -550,11 +550,14 @@ STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Kedatan
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kecelakaan / bencana
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informasi Perusahaan
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Perubahan ekonomi
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Perubahan pada produk industri lainnya
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Saran / informasi pada kendaraan perusahaan
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Kendaraan baru
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Perubahan angkutan yang diterima
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidi
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informasi umum
+STR_MESSAGES_ALL                                                :{YELLOW}Atur semua jenis pesan menjadi : Mati / Ringkas / Penuh
+STR_MESSAGE_SOUND                                               :{YELLOW}Mainkan suara untuk berita yang diringkas
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...terlalu jauh dari tujuan sebelumnya
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Perusahaan tertinggi yang mencapai {NUM}{}({STRING} Level)
 STR_0212                                                        :{BIGFONT}{COMMA}.
@@ -565,6 +568,8 @@ STR_0216_CAPITALIST                                             :Kapitalis
 STR_0217_MAGNATE                                                :Jutawan
 STR_0218_MOGUL                                                  :Maharaja
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon abad ini
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} mencapai status '{STRING}' !
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} dari {COMPANY} mencapai status '{STRING}' !
 STR_021F                                                        :{BLUE}{COMMA}
@@ -578,6 +583,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Kurangi 
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Buat wilayah secara acak
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Kembalikan lansekap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Kembalikan lansekap
+STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK} Hapus semua kekayaan para pemain dari peta
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Apakah anda yakin untuk menghapus semua kekayaan para pemain ?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Pertumbuhan Lansekap
 STR_022F_TOWN_GENERATION                                        :{BLACK}Pertumbuhan Kota
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Pertumbuhan Industri
@@ -590,6 +597,8 @@ STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...terla
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...terlalu dekat dengan kota lain
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...tempat tidak mencukupi
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...terlalu banyak kota
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Tidak dapat membuat satu kota pun
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...tidak ada lagi ruang tersisa dalam peta
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Tambahkan ukuran kota
 STR_023C_EXPAND                                                 :{BLACK}Memperluas
 STR_023D_RANDOM_TOWN                                            :{BLACK}Kota acak
@@ -599,6 +608,7 @@ STR_0240_COAL_MINE                                              :{BLACK}Tambang 
 STR_0241_POWER_STATION                                          :{BLACK}Stasiun Pembangkit
 STR_0242_SAWMILL                                                :{BLACK}Penggergajian Kayu
 STR_0243_FOREST                                                 :{BLACK}Hutan
+STR_0244_OIL_REFINERY                                           :{BLACK}Kilang Minyak
 STR_0245_OIL_RIG                                                :{BLACK}Penambangan minyak lepas pantai
 STR_0246_FACTORY                                                :{BLACK}Pabrik
 STR_0247_STEEL_MILL                                             :{BLACK}Pengolahan Baja
@@ -674,6 +684,8 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Meletakk
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Meletakkan Mercusuar
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Meletakkan Pemancar
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Menentukan wilayah gurun {} Klik dan tahan CTRL untuk menghapusnya
+STR_CREATE_LAKE                                                 :{BLACK}Membuat areal perairan .{}Membuat sebuah kanal, kecuali jika CTRL ditekan pada level yang sejajar dengan laut, maka air akan memenuhi permukaan
+STR_CREATE_RIVER                                                :{BLACK}Membuat Sungai
 STR_0290_DELETE                                                 :{BLACK}Hapus
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hapus kota ini habis
 STR_0292_SAVE_SCENARIO                                          :Simpan Skenario
@@ -685,6 +697,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Simpan, 
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Baca Skenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Simpan Skenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Mainkan Skenario
+STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Apakah anda yakin akan keluar dari skenario ini ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Keluar Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Mundurkan tanggal mulai sejauh 1 tahun
@@ -693,11 +706,14 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...akhir
 STR_02A1_SMALL                                                  :{BLACK}Kecil
 STR_02A2_MEDIUM                                                 :{BLACK}Sedang
 STR_02A3_LARGE                                                  :{BLACK}Besar
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Kota
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Pilih ukuran kota
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Ukuran kota:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tampilkan pesar atau laporan berita terakhir
+STR_OFF                                                         :Mati
+STR_SUMMARY                                                     :Ringkasan
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Daftar kota
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Desain nama kendaraan
@@ -1643,7 +1659,7 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}Kendaraa
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Kereta terlalu panjang
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Kereta hanya dapat diubah ketika berhenti di dalam depot
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Kereta{P "" s}
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Kereta Api
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Kereta Api Baru
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Monorail Baru
@@ -1720,7 +1736,7 @@ STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tidak da
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kendaraan dalam perjalanan
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Kendaraan Darat{P "" s}
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Kendaraan Darat
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Depot Kendaraan Darat
 STR_9004_NEW_VEHICLES                                           :{BLACK}Kendaraan Baru
@@ -1767,7 +1783,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Tidak dapat membuat pelabuhan disini...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Depot Kapal
 STR_9804_NEW_SHIPS                                              :{BLACK}Kapal Baru
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Kapal{P "" s}
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Kapal
 STR_9808_NEW_SHIPS                                              :{WHITE}Kapal Baru
 STR_9809_BUILD_SHIP                                             :{BLACK}Membuat Kapal
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kapal harus berhenti di depot

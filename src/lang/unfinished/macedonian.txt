@@ -9,7 +9,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Надвор од работ на мапата
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Преблиску до работ на мапата
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Преблизу до работ на мапата
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недоволно средства - потребни {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
@@ -421,6 +421,9 @@ STR_016C_NOV                                                    :Ное
 STR_016D_DEC                                                    :Дек
 ############ range for months ends
 
+STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Паузирај ја играта
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Зачувај ја играта, напушти, излези
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Прикажи листа на станиците на компанијата
@@ -444,6 +447,8 @@ STR_0184_BUILD_AIRPORTS                                         :{BLACK}Град
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Засадување на дрва, местење знаци итн.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Информација за земјишна област
 STR_0187_OPTIONS                                                :{BLACK}Опции
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Не може да се смени интервалот за сервисирање...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Затвори го прозорецот
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Наслов на прозорец - влечи тука за да го поместиш прозорецот
@@ -461,6 +466,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Вклу
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Годинашна заработка: {CURRENCY} (лани: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} година{P "" s} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} година{P "" s} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Патно возило
@@ -554,6 +561,34 @@ STR_01F1_SAVE                                                   :{TINYFONT}{BLAC
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Тековен програм на музика
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Избери програм со сите песни
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избери 'old style music' програм
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Зачувај поставки за музика
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Вклучи/исклучи мешање за програм
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Прикажи диалог за избор на песна
+STR_01FE_DIFFICULTY                                             :{BLACK}Тежина ({STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Последната порака/вест
+STR_0201_MESSAGE_SETTINGS                                       :Поставки за пораки
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Типови на пораки:
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пристигнување на прво возило на твојата станица
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пристигнување на прво возило на конкурентска станица
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Несреќи/хаварии
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Информации за компанијата
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Промена во економијата
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Совет/информации за возилата од компанијата
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Нови возила
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Промени во прием на товар
+STR_020E_SUBSIDIES                                              :{YELLOW}Субвенции
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Општи информации
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}..предалеку од претходната дестинација
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Топ компании што постигнаа {NUM}{}({STRING} Ниво)
+STR_0212                                                        :{BIGFONT}{COMMA}.
+STR_0213_BUSINESSMAN                                            :Бизнисмен
+STR_0215_INDUSTRIALIST                                          :Индустриалист
+STR_0216_CAPITALIST                                             :Капиталист
+STR_0218_MOGUL                                                  :Могул
+STR_0219_TYCOON_OF_THE_CENTURY                                  :Тајкун на векот
+STR_021F                                                        :{BLUE}{COMMA}
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 
 
 ############ range for menu starts
@@ -581,17 +616,27 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 
+STR_AUTOSAVE_1_MONTH                                            :Секој месец
+STR_AUTOSAVE_FAILED                                             :{WHITE}Автоматското снимање неуспешно
 
 
 
+STR_BAGS                                                        :вреќи
 
 
 
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Авионот {COMMA} има премалку наредби
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Авионот {COMMA} има празна наредба
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Авионот {COMMA} има дупло-исти наредби
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Авионот {COMMA} има непостоечка станица во наредбите
 # end of order system
 
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автоматската обнова неуспешна за авионот {COMMA}{}{STRING}
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ниту едно правило за автоматска промена не е применето.
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(лимит на пари)
 
 
 
@@ -620,12 +665,14 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Изгради пруга користејки 'Авто-пруга' мод
 
 
 
 
 
 
+STR_BUILD_CANALS_TIP                                            :{BLACK}Гради канали.
 
 
 
@@ -687,14 +734,20 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 ##### PNG-MAP-Loader
 
 
+STR_BMPMAP_ERROR                                                :{WHITE}Не може да се вчита пејсажот од BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...не може да се конвертира типот на слика.
 
 ##id 0x0800
 
 ##id 0x1000
+STR_ALREADY_LEVELLED                                            :{WHITE}... веќе рамно
 
 
 
 ##id 0x1800
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Изгради пат користејки 'Авто-пат' мод
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Изгради трамвајска линија користејки 'Авто-трам' мод
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Изгради трамвајска станица за патници
 
 ##id 0x2000
 
@@ -710,6 +763,7 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 ##id 0x3800
+STR_AQUEDUCT                                                    :Водовод
 
 ##id 0x4000
 
@@ -723,6 +777,9 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 ##id 0x5000
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Краевите на мостот не се на иста висина
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Мостот е пренизок за теренот
+STR_BRIDGE_TUBULAR_SILICON                                      :Цилиндричен, Силиконски
 
 ##id 0x5800
 
@@ -744,6 +801,7 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 ##id 0x7000
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} авион
 
 
 
@@ -758,6 +816,7 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Шински возила
 
 
 
@@ -766,20 +825,98 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 ##id 0x9000
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Капацитет: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 
 
 ##id 0x9800
 
+STR_BUILD_AQUEDUCT                                              :{BLACK}Изгради водовод
+STR_983C_REFIT_SHIP                                             :{BLACK}Пренамени брод
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Одбери тип на товар што ќе го носи бродот
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Пренамени го бродот за да носи од одбележаниот тип на товар
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Одбери тип на товар за носење:
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нов капацитет: {GOLD}{CARGO}{}{BLACK}Пренамената чини: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Не може да се пренамени бродот...
 
 ##id 0xA000
+STR_A000_AIRPORTS                                               :{WHITE}Аеродроми
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Не може да се изгради аеродром на оваа локација...
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Авионска гаража
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Нов авион
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Нов авион
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Направи авион
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Не може да се направи авионот...
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Авион
+STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Details)
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Старост: {LTBLUE}{STRING}{BLACK}   Трошок за оперирање: {LTBLUE}{CURRENCY}/година
+STR_A00E_MAX_SPEED                                              :{BLACK}Макс. брзина: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Профит оваа година: {LTBLUE}{CURRENCY}  (минатата година: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Сигурност: {LTBLUE}{COMMA}%  {BLACK}Кварови од последното сервисирање до сега: {LTBLUE}{COMMA}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Изградба: {LTBLUE}{NUM}{BLACK} Вредност: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Не може да се прати авионот во гаража...
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Авионот {COMMA} чека во гаражата
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Авион на патот
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Не може да сопре/тргне авионот...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Авионот е во лет
+STR_A019_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{CARGO}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Авионот мора да се сопре во хангар
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не може да се продаде авионот...
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Изградба на аеродром
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Изгради аеродром
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авион - кликни на авионот за информации
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Направи нов авион (може само во аеродром со хангар)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Авион - кликни на авионот за информации
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Направи нов авион
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Повлечи го авионот со глушецот овде за да го продадеш
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Позиционирај го хангарот на центар
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Листа за селекција од авиони - кликни на авионот за информации
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Направи авион од селектираниот тип
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Моментална активност на авионот - кликни овде за стоп/старт на авионот
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Прикажи ги наредбите на авионот
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Прикажи го авионот на средина
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Прати го авионот во хангар. CTRL+клик ќе го прати само на сервис
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Прикажи детали за авионот
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Макс. брзина: {VELOCITY}{}Капацитет: {COMMA} патници, {COMMA} торби пошта{}Трошок за оперирање: {CURRENCY}/година
 
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Име на авионот
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Не може да се именува авионот...
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Име на авионот
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Градска прослава . . .{}Првиот авион пристигна на {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Авионска несреќа!{}{COMMA} загинати во пожарот на {STATION}
+STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
+STR_A037_RENAME                                                 :{BLACK}Преименувај
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Преименувај го типот на авиони
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Преименувај го типот на авиони
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Не може да се преименува типот на авиони...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Пренамени авион за да може да пренесува друг вид на товар
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Пренамени)
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Пренамени авион
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Одбери тип на товар за авионот
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Пренамени го авионот за да носи од одбележаниот тип на товар
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Одбери тип на товар:
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нов капацитет: {GOLD}{STRING}{}{BLACK}Пренамената чини: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не може да се пренамени авионот...
 
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Цепелинска несреќа на {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Возило уништено при судир со 'НЛО'!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Експлозија на рафинерија во близина на {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Фабрика уништена под сомнителни околности во близина на {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'НЛО' приземјено во близина на {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Штета предизвикана од рудник за јаглен во близина на {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Поплави!{}Најмалку {COMMA} исчезнати лица, се претпоставува дека се загинати!
+
+STR_BRIBE_FAILED                                                :{WHITE}Твојот обид за поткуп беше
+STR_BRIBE_FAILED_2                                              :{WHITE}разоткриен од локалната инспекција
+STR_BUILD_DATE                                                  :{BLACK}Изградба: {LTBLUE}{DATE_LONG}
 
 
-
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
@@ -789,6 +926,7 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Возот '{VEHICLE}' сопстевеност на '{COMPANY}' има невалидна должина. Проблемот е веројатно предизвикан од нови графички фајлови. Играта може да се десинхронизира или да падне.
 
 
 
@@ -802,6 +940,7 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 
 
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Авионот е недостапен
 
 
 
@@ -847,6 +986,7 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избе
 
 ########
 
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Изгради
 
 ############ Face formatting
 ########

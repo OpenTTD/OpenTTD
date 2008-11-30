@@ -1337,7 +1337,7 @@ STR_WAYPOINT                                                    :{WHITE}Čvoriš
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Odaberi vrstu čvorišta
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} vlak{P " a ova}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} vlak{P "" a ova}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Promijeni ime čvorišta

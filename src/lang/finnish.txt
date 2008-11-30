@@ -2104,7 +2104,7 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Maata ei
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunneli pitää tuhota ensin.
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Silta pitää tuhota ensin.
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Ei voi aloittaa ja lopettaa samasta paikkasta.
-STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Sillan päät eivät ole samalla korkeustasolla
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Sillan päät eivät ole samalla korkeudella
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Silta on liian matalalla maastoa varten
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Alku- ja päätepisteen pitää olla linjassa.
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Tontti on sopimaton tunnelinsuulle.

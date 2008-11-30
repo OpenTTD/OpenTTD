@@ -953,8 +953,29 @@ STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}مشکلات مالی باعث شد {STRING} تعطیلی فوری خود را اعلام کند!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}کمبود درختان مجاور {STRING} باعث شد که تعطیلی فوری خود را اعلام کننند!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} افزایش تولید داشت!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}رگه ی جدیدی از زغال در {INDUSTRY} پیدا شده!{}تولید این معدن دو برابر شد!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}مخزن جدیدی از نفت در مجاورت {INDUSTRY}پیدا شده!{}در نتیجه تولید خود را دو برابر کردند!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}پیشرفت روش مزرعه داری در {INDUSTRY} باعث شد تولید این مزرعه دو برابر شود!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}تولید {INDUSTRY} 50% کاهش یافت
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...فقط در حاشیه ی نقشه ساخته می شود
 
 ##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}قطار در تونل است
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}اول باید تونل خراب شود
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}اول باید پل خراب شود
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE} محل شروع و پایاننمی توانند در یک نقطه باشند
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}محل شروع پایان باید در یک خط باشند
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}محل برای شروع تونل نا مناسب است
+STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_5012_WOODEN                                                 :چوبی
+STR_5014_TUBULAR_STEEL                                          :لوله ای،فولادی
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE} اینجا نمی شود پل ساخت
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE} اینجا نمی شود تونل ساخت
+STR_5017_RAILROAD_TUNNEL                                        :تونل راه آهن
+STR_5018_ROAD_TUNNEL                                            :تونل ماشین رو
+STR_501F_WOODEN_RAIL_BRIDGE                                     :پل راه آهن چوبی
+STR_5025_WOODEN_ROAD_BRIDGE                                     :پل ماشین رو چوبی
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :پل لوله ای راه آهن
 
 ##id 0x5800
 

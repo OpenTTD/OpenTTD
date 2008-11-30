@@ -2535,9 +2535,13 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Enloĝantoj festas . . .{}Unua trajno alvenas ĉe {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaloj)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trajno okupas la lokon
+STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
+
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 
 
-
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Ĉiam
 
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Irante al {TOWN} Trajndeponejo

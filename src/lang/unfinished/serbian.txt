@@ -3,8 +3,8 @@
 ##isocode sr_YU
 ##winlangid 0x7c1a
 ##plural 0
-##case ih a ova ca ci ka ća va ao u om im e ke on ona to
 ##gender muški ženski srednji
+##case ih a ova ca ci ka ća va ao u om im e ke on ona to
 
 #
 
@@ -13,10 +13,12 @@ STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Krajnja ivica mape
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Preblizu ivici mape
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nedovoljno novca - potrebno {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebno ravno tlo
 STR_0008_WAITING                                                :{BLACK}Äeka: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} na putu iz {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Prihvata: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prihvata: {GOLD}
 STR_000E                                                        :
@@ -60,6 +62,7 @@ STR_0033_LIVESTOCK                                              :Stoka
 STR_0034_GOODS                                                  :Roba
 STR_0035_GRAIN                                                  :Åœito
 STR_0036_WOOD                                                   :Drvo
+STR_0037_IRON_ORE                                               :Ruda Gvožđa
 STR_0038_STEEL                                                  :Äelik
 STR_0039_VALUABLES                                              :Roba Od Vrednosti
 STR_003A_COPPER_ORE                                             :Ruda Bakra
@@ -420,6 +423,7 @@ STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Dolazak
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Udesi/Katastrofe
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informacije o kompaniji
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Promene u ekonomiji
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Izveštaj / Informacije o vozilima kompanije
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nova vozila
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Promene u prihvatanju tovara
 STR_020E_SUBSIDIES                                              :{YELLOW}Ponude
@@ -435,6 +439,7 @@ STR_0217_MAGNATE                                                :Magnat
 STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tajkun Veka
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} postiže status '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} od {COMPANY} postigao '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor Scenarija

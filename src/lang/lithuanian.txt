@@ -970,6 +970,7 @@ STR_CURR_SEK                                                    :Svedijos kronos
 STR_CURR_YTL                                                    :Turkijos liros (YTL)
 STR_CURR_SKK                                                    :Slovakijos kronos (SKK)
 STR_CURR_BRL                                                    :Brazilijos realai (BRL)
+STR_CURR_EEK                                                    :Estijos kronos (EEK)
 
 STR_CURR_CUSTOM                                                 :Kita...
 
@@ -1092,8 +1093,14 @@ STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nauji n
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Automobiliu vilkstine (su kvantavimo efektu): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Slinkti vaizdą pelei esant prie krašto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Leisti papirkinėti miesto valdžią: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Leisti pirkti išskirtines transporto teises: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Leisti siųsti pinigus kitoms kompanijoms: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nestandartines stoteles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Krovinių svorio daugiklis skirtas imituoti prikrautus traukinius: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Lėktuvų greičio daugiklis: {ORANGE}1 / {STRING}
+STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Leisti pravažiuojamas stoteles viduryje miesto kelio: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Leisti statyti susiliečiančias stoteles: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Leisti kelis NewGRF transporto pr. rinkinius vienu metu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Visada leisti statyti mazus oro uotus: {ORANGE}{STRING}
 
@@ -1133,23 +1140,43 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. s
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Remontuoti malunsparnius automatiskai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Susieti kraštovaizdžio įrankių juostą su bėgių/kelių/vandens/orouostų įrankių juostomis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Priešinga slinkties kryptis: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Tolydi žemėlapio slinktis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Rodyti matavimo pastabą, kai naudojami įvairūs statybų įrankiai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Rodyti kompanijos ženklus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Jokių
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Savo kompanijos
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Visų kompanijų
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Rašyti komandai naudojant <ĮVESTI> (ENTER): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Pelės rutuliuko funkcija: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Artinti žemėlapį
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Žemėlapio slinktis
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :išjungta
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Žemėlapio slinties greitis: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatinė pauzė paleidžiant naują žaidimą: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Naudoti pagerintą automobilių sąrašą: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Išjungta
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Nuosava įmonė
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Visos įmonės
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Naudotį krovimo indikatorius: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Išjungta
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Savo įmonės
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Visų įmonių
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Leisti sudaryti laikinius tvarkaraščius: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Rodyti laiką tvarkaraštyje užuot dienas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Numatytoji bėgių rūšis (po žaidimo paleidimo): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Paprasti bėgiai
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrifikuoti bėgiai
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Vienbėgis geležinkelis
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :„Maglev“
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Vienbėgis
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Magnetinės levitacijos
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Pirmas galimas
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Paskutinis galimas
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Dažiausiai naudojamas
-STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Rodyti rezervuotus bėgius: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Paskutinis įmanomas
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Dažniausiai naudojamas
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Parodyti užimtus bėgius: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Rodyti statymo įrankius, kai nėra tinkamų transporto priemonių: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Rodyti statybos įrankius kai nėra atitinkamo transporto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. traukiniu vienam zaidejui: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. automobiliu zaidejui: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks. lektuvu zaidejui: {ORANGE}{STRING}
@@ -1182,20 +1209,23 @@ STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Tolygi 
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Leisti pirkti kitų kompanijų akcijas
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tempiant, kopijuoti šviesoforus kas: {ORANGE}{STRING} langel{P į lius lių}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automatiškai pastatyti semaforus prieš: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Įjungti šviesaforų langą: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Pagal nutylėjimą statomas šviesaforų tipas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Paprasti šviesaforai
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Krypties šviesaforai
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Vienos krypties šviesaforai
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Pasirinkimui skirti šviesaforų tipai: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Tik paprasti šviesaforai
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Tik krypties šviesaforai
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Visi
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Įgalinti signalų vartotojų sąsają: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signalai pagal nutylėjimą: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blokiniai signalai (tradiciniai)
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Kelio signalai
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Vienpusiai kelio signalai
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Pereiti tam tikrus signalų tipus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Tik tradicinių signalų
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Kelio signalų
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Visus
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :pagrindinis
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Miestų sandara ''Be kelių'' negalioja scenarijaus redaktoriuje
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Nustatyti miestų kelių rūšis: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :Be kelių
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :numatytas
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :geresni keliai
-STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 tinklelis
-STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 tinklelis
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 laukeliai
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 laukeliai
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :atsitiktinis
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pagrindines irankiu juostos pozicija: {ORANGE}{STRING}
@@ -1204,8 +1234,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centruoti
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Desineje
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Langu persidengimo atstumas: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Langų kibumo atsumas: {ORANGE}disabled
-STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Miesto augimo tempas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Neauga
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Miestų augimo greitis: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Joks
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lėtas
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Vidutinis
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Greitas
@@ -1701,25 +1731,46 @@ STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vyksta k
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Kelio tiesimas
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Pasirinkite tilto tipą
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Čia tiesti kelio negalima...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Čia neįmanoma statyti tramvajaus...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Šio kelio pašalinti negalima...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Neįmanoma pašalinti tramvajaus...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Automobilių garažo padėtis
+STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Tramvajaus depo orientacija
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Čia automomobilių garažo statyti negalima...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE} Čia neįmanoma statyti depo...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Čia autobusų stotelės statyti negalima...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Čia sunkvezimiu pakrovimo aikstelės statyti negalima...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Neįmanoma statyti keleivinio tramvajaus stotelės...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Neįmanoma statyti krovininio tramvajaus stotelės...
 STR_180A_ROAD_CONSTRUCTION                                      :Kelių tiesimas
+STR_TRAMWAY_CONSTRUCTION                                        :Tramvajaus gamyba
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Tiesti kelią
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Statyti kelio sekciją naudojantis automatine sistema
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Statyti tramvajaus liniją
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Statyti tramvajaus bėgius naudojantis automatine sistema
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Statyti automobilių garažą (automoilių pirkimui ir remontui)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Statyti tramvajaus depą (skirtą statyti ir aptarnauti tramvajus)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Statyti autobusų stotelę
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Statyti sunkvežimių pakrovimo aikštelę
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Statyti keleivinio tramvajaus stotelę
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Statyti krovininio tramvajaus stotelę
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Statyti tiltą automobiliams
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Statyti tramvajaus tiltą
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Statyti tunelį automobiliams
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Statyti tramvajaus tunelį
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Įjungti/Išjungti vienpusio kelio statymo rėžimą
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Kelių konstrukcijų statyba/šalinimas
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Pasirink automobilių garažo padėtį
+STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Pasirinkti tramvajų depo orientaciją
 STR_1814_ROAD                                                   :Kelias
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Kelias su žibintais
 STR_1816_TREE_LINED_ROAD                                        :Trijuostis kelias
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Automobilių garažas
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Geležinkelio pervaža
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Neįmanoma statyti autobuso stotelės...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Neįmanoma griauti sunkvežimių stotelės...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Neįmanoma griauti keleivinio tramvajaus stotelės...
+STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Neįmanoma griauti krovininio tramvajaus stotelės...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Miestai
@@ -1730,6 +1781,7 @@ STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHIT
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Pirmiau reikia nugriauti pastatą
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Miestas)
 STR_2006_POPULATION                                             :{BLACK}Populiacija: {ORANGE}{COMMA}{BLACK}  Namų skaičius: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Pervardinti miestą
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Miesto pervardinti negalima...
@@ -1837,6 +1889,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Čia že
 STR_280A_SIGN                                                   :Ženklas
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Redaguoti ženklo teksta
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Ženklo pavadinimo keisti negalima...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Neįmanoma naikinti ženklo...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Pasirinkite norimų sodintį medžių tipą
 STR_280E_TREES                                                  :Medžiai
 STR_280F_RAINFOREST                                             :Atogrąžų miškas
@@ -1884,8 +1937,12 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} jau priima {STRING} ir {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Autobuso stotelės padėtis
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Sunkvezimio pakrovimo aiksteles orientacija
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Kelivinio tramvajaus stotelės orientacija
+STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}Krovininio tramvajaus orientacija
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Pirmiausia turi nugriauti autobusu stotele
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Pirmiausia turi nugriauti sunkvezimiu pakrovimo aikstele
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}Privalu sunaikinti keleivinio tramvajaus stotelę
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}Privalu sunaikinti keleivinio tramvajaus stotelę
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stoteles
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nieko -
