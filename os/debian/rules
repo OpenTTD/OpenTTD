@@ -36,7 +36,7 @@ clean:
 	# We check for Makefile presence, because clean is called at the
 	# start of the build process (before configure) where we don't
 	# have a Makefile yet.
-	[ ! -f Makefile ] || $(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) mrproper
 
 	dh_clean
 
