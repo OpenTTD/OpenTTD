@@ -1210,7 +1210,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Leginkább használt
-STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányút jelzése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányszakasz foglaltságának jelzése: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Akkor is mutasd az eszköztárat, ha nem építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
@@ -2849,7 +2849,7 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}A kijel�
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Fejlett utasítás elhelyezése
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi jtp.
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Legközelebbi depóba
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Legközelebbi hangár
 STR_ORDER_NEAREST_DEPOT                                         :a legközelebbi
 STR_ORDER_NEAREST_HANGAR                                        :a legközelebbi hangárba

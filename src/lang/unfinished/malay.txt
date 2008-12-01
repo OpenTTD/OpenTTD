@@ -452,11 +452,31 @@ STR_3033_ACCEPTS                                                :{BLACK}Terima
 
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} tidak lagi menerima {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} tidak lagi menerima {STRING} or {STRING}
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...kawasan tidak sesuai
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Terlalu rapat dengan perlabuhan lain
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Perlabuhan mesti dirobohkan dahulu
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Pilihkan bilangan platform untuk stesen keretapi
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Pilihkan panjang stesen keretapi
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Tengahkan pandangan utama kepada lokasi stesen
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Tukarkan nama stesen
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Tunjukkan senarai kargo yang diterima
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Pilih saiz/jenis lapangan kapal terbang
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305E_RAILROAD_STATION                                       :Stesen keretapi
+STR_3060_AIRPORT                                                :Lapangan kapal terbang
+STR_3062_BUS_STATION                                            :Stesen bas
+STR_3063_SHIP_DOCK                                              :Perlabuhan kapal
+STR_3068_DOCK                                                   :{WHITE}Perlabuhan
 
 
 ##id 0x3800
+STR_3804_WATER                                                  :Air
+STR_3806_SHIP_DEPOT                                             :Depot kapal
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Tidak boleh dibina atas air
 
 ##id 0x4000
+STR_4003_DELETE                                                 :{BLACK}Padam
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
 
 ##id 0x4800
 
