@@ -311,6 +311,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Per daug
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Pasirinktas vardas jau naudojamas
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -1628,6 +1629,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privačiai] {S
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privačiai] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Visiems] :
 STR_NETWORK_CHAT_ALL                                            :[Visiems] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Įveskite tekstą internetiniam čatui
 STR_NETWORK_NAME_CHANGE                                         :pakeite savo varda i
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serveris uzsidare
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Serveris persikrauna...{}Prasau palaukti...
@@ -1674,6 +1676,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Numatoma
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Numatomos pajamos: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Žemės lygio čia paaukštinti negalima...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Žemės lygio čia pažeminti negalima...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Negalima nukasti čia žemės...
 STR_080A_ROCKS                                                  :Akmenys
 STR_080B_ROUGH_LAND                                             :Nelygi žemė
 STR_080C_BARE_LAND                                              :Lygi žemė
@@ -1688,9 +1691,11 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Neįmano
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Kasinėjimai apgadins tunelį
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Jau siekia jūros lygį
 STR_1004_TOO_HIGH                                               :{WHITE}Per aukstai
+STR_ALREADY_LEVELLED                                            :{WHITE}... jau plokščia
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Netinkamas bėgis
 STR_1007_ALREADY_BUILT                                          :{WHITE}...jau pastatyta
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Pirmiau pašalinkite geležinkelio bėgius
+STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Kelias vienpusis ar užblokuotas
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Geležinkelio statyba
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifikuoto Gelezinkelio Statyba
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Vienbėgio geležinkelio statyba
@@ -1722,6 +1727,17 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ši �
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gelezinkelio begiai su paprastais sviesoforais
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gelezinkelio begiai su pre-sviesoforais
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gelezinkelio begiai su exit-sviesoforais
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :geležinkelio bėgiai su kombo signalais
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Geležinkelis su krypties šviesoforais
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Geležinkelis su vienpusiais krypties signalais
+STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Geležinkelis su paprastais ir pre-signalais
+STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Geležinkelis su paprastais ir išėjimo signalais
+STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Geležinkelis su paprastais ir kombo-signalais
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Geležinkelis su paprastais ir krypties signalais
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Geležinkelis su paprastais ir vienpusiais kelio signalais
+STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Geležinkelis su pre- ir išėjimo signalais
+STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Geležinkelis su pre- ir kombo- signalais
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Geležinkelis su pre- ir krypties signalais
 
 
 
@@ -1767,6 +1783,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Kelias su žibi
 STR_1816_TREE_LINED_ROAD                                        :Trijuostis kelias
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Automobilių garažas
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Geležinkelio pervaža
+STR_TRAMWAY                                                     :Tramvajus
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Neįmanoma statyti autobuso stotelės...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Neįmanoma griauti sunkvežimių stotelės...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Neįmanoma griauti keleivinio tramvajaus stotelės...

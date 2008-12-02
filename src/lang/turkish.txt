@@ -16,8 +16,10 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Yerin düzleştirilmesi lazım
 STR_0008_WAITING                                                :{BLACK}Bekleyen: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} çıkış noktası {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}İstenen: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}İstenen: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Sağladıkları: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Yolcu
 STR_0010_COAL                                                   :Kömür
@@ -267,6 +269,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Karlı
 STR_012C_MESSAGE                                                :{WHITE}Mesaj
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Varsayılan
 STR_012E_CANCEL                                                 :{BLACK}İptal
 STR_012F_OK                                                     :{BLACK}Tamam
 STR_0130_RENAME                                                 :{BLACK}Yeni ad
@@ -274,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Çok faz
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Seçilen isim kullanımda
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -377,6 +381,8 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Her kargo için
 STR_SORT_BY_MAX_SPEED                                           :En yüksek hız
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Fiyat
+STR_SORT_BY_LENGTH                                              :Uzunluk
+STR_SORT_BY_LIFE_TIME                                           :Kalan ömür
 STR_SORT_BY_FACILITY                                            :İstasyon türü
 STR_SORT_BY_WAITING                                             :Bekleyen kargo değeri
 STR_SORT_BY_RATING_MAX                                          :Kargo reytingi
@@ -484,6 +490,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Temizlem
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Temizleme fiyatı: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Yok
 STR_01A7_OWNER                                                  :{BLACK}Sahibi: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Yolun sahibi: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Tramvayın sahibi: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Demiryolunun sahibi: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Belediyesi: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Hiçbiri
 STR_01AA_NAME                                                   :{BLACK}İsim
@@ -585,9 +594,13 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oyuncun
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Rakibin durağına ilk aracın gelişi
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar / felaketler
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Şirket bilgisi
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Fabrikaların açılışı
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Fabrikaların kapanışı
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi değişimleri
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Şirket tarafından hizmet verilen fabrikaların üretim değişiklikleri
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Rakiplerin hizmet ettiği fabrikalardaki üretim değişiklikleri
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Diğer fabrikalardaki üretim değişiklikleri
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Şirketin araçları hakkında tavsiye / bilgi
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Yeni araçlar
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Kargo isteğindeki değişiklik
 STR_020E_SUBSIDIES                                              :{YELLOW}İhaleler
@@ -769,6 +782,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Seçenekler
 STR_02C6_DIFFICULTY_SETTINGS                                    :Zorluk Ayarları
+STR_MENU_CONFIG_PATCHES                                         :Gelişmiş ayarlar
 STR_NEWGRF_SETTINGS                                             :Newgrf ayarları
 STR_TRANSPARENCY_OPTIONS                                        :Şeffaflık seçenekleri
 STR_GAMEOPTMENU_0A                                              :
@@ -922,6 +936,7 @@ STR_CURR_SEK                                                    :İsveç Kronasi
 STR_CURR_YTL                                                    :Türk Lirasi (YTL)
 STR_CURR_SKK                                                    :Slovak Korunasi (SKK)
 STR_CURR_BRL                                                    :Brezilya Reali (BRL)
+STR_CURR_EEK                                                    :Estonya Kronu (EEK)
 
 STR_CURR_CUSTOM                                                 :Özel...
 
@@ -977,6 +992,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Talimat 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Talimat listesi kopyalanamiyor...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Paylaşılmış talimat sonu - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Tren {COMMA} devam edecek bir yol bulamıyor.
 STR_TRAIN_IS_LOST                                               :{WHITE}Train {COMMA} yolunu bulamıyor.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Train {COMMA} aracının geçen seneki kârı {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Avrupa Birliği Karar Aldı!{}{}Artık ülkemizde para birimi olarak Euro kullanılacak!
@@ -1006,8 +1022,12 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Şu taş
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Şu gemi yenilenemedi: {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Şu uçak yenilenemedi: {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tren {COMMA} değiştirildikten sonra uzadı
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Hiçbir otomatik değiştirme/yenileme kuralı uygulanmadı.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(para yetmedi)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Gelişmiş Ayarlar
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Gelişmiş ayarları görüntüle
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Gelişmiş Ayarlar
 
 STR_CONFIG_PATCHES_OFF                                          :Kapalı
 STR_CONFIG_PATCHES_ON                                           :Açık
@@ -1035,6 +1055,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Aynı t
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Durum çubuğunda uzun tarih göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Sinyalizasyon sürüş yönünde olsun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Sene sonunda ekonomik durumu göster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Yeni emirler için 'durmaksızın' varsayılır: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Karayolu taşıtları kuyruğa girsin (içiçe geçerek): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Fare kenardayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}
@@ -1045,6 +1066,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Ağır 
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Uçak hızı çarpanı: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Şehiriçi yollara durak yapmak izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Bitişik istasyonlar izinli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Birden çok NewGRF lokomotif setini aktifleştir: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimanı her zaman etkin: {ORANGE}{STRING}
 
@@ -1156,6 +1178,9 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Diğer 
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bu tarihten önce ışık yerine semafor kullan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Sinyal arayüzünü etkinleştir: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Varsayılan sinyal tipi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blok sinyalleri
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Hepsi
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Senaryo düzenleyicisinde "yolsuz" şehir seçeneği kullanılamaz
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Şehir yol yerleşimini seç: {ORANGE}{STRING}
@@ -1164,6 +1189,7 @@ STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :varsayılan
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :daha iyi yollar
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :rastgele
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Ana araç çubuğu pozisyonu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Sol
@@ -1218,6 +1244,7 @@ STR_CHEATS                                                      :{WHITE}Hileler
 STR_CHEATS_TIP                                                  :{BLACK}Onay kutuları bu hilenin daha önce kullanılıp kullanmadığını bildirir.
 STR_CHEATS_WARNING                                              :{BLACK}Uyarı! Rakiplerine ihanet etmek üzeresin. Böyle bir davranışı sonsuza dek unutmayacaklarını akılda tut.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Parayı {CURRENCY} kadar arttır
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Oynanan şirket: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Sihirli buldözer (normalde silinemeyen binaları siler): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tüneller kesişebilir: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Duraklama zamanında inşaat yap: {ORANGE}{STRING}
@@ -1276,6 +1303,8 @@ STR_CANT_BUILD_LOCKS                                            :{WHITE}Buraya k
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Kilit yap
 STR_LANDINFO_LOCK                                               :Kilit
 
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Burada nehirler yapamazsınız...
+STR_LANDINFO_RIVER                                              :Nehir
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...samandıra kullanımda!
 
@@ -1322,6 +1351,7 @@ STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrikal
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} (%{COMMA} tasindi)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Fabrika adları - görüntüyü fabrikada merkezlemek için adına tıklayın
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...başka bir fabrikaya çok yakın
 
@@ -1354,6 +1384,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}İsim
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Oyunun ismi
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Dil, sunucu sürümü, vb.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Seçmek için listeden bir oyun tıklayın
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Geçen sefer katıldığınız sunucu:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Son oynadığınız sunucuya katılmak için tıklayın
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Sunucu bul
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Sunucu bulmak için bir agi ara
@@ -1365,8 +1397,15 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Oyuncular
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Bağlı oyuncular / en fazla oyuncu
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Harita ebadı
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Oyunun harita ebadı{}Alana göre sıralamak için tıklayın
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}Tarih
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Güncel tarih
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}Yıl
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}Oyunda geçen{}yıl sayısı
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}OYUN BİLGİSİ
 STR_NETWORK_CLIENTS                                             :{SILVER}İstemciler:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1536,6 +1575,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ilginç paket a
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :yanlış düzeltme
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :isim kullanımda
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :yanlış oyun-parola
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :DoCommand için yanlış company-id
 STR_NETWORK_ERR_CLIENT_KICKED                                   :sunucu tarafından atıldı
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :hile yapmaya çalıştı
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :sunucu dolu
@@ -1598,6 +1638,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Beklenen
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Beklenen Gelir: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Burası yükseltilemez...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Burası alçaltılamaz...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Burada toprağı düzleyemezsiniz...
 STR_080A_ROCKS                                                  :Kayalar
 STR_080B_ROUGH_LAND                                             :Engebeli arazi
 STR_080C_BARE_LAND                                              :Çıplak arazi
@@ -1612,6 +1653,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}İmkansi
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Kazı tünele hasar verebilir
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Zaten deniz seviyesinde
 STR_1004_TOO_HIGH                                               :{WHITE}Çok yüksek
+STR_ALREADY_LEVELLED                                            :{WHITE}... zaten düz
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Uygun ray yok
 STR_1007_ALREADY_BUILT                                          :{WHITE}...zaten yapıldı
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Önce ray kaldırılmalı
@@ -2674,6 +2716,7 @@ STR_ORDER_SHIP_DEPOT                                            :Tershane
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
+
 
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Yükleme yüzdesi
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Güvenilirlik

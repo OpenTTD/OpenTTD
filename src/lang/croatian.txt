@@ -24,6 +24,7 @@ STR_000D_ACCEPTS                                                :{BLACK}Prihvać
 STR_SUPPLIES                                                    :{BLACK}Zalihe: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :putnici
+STR_000F_PASSENGERS.gen                                         :putnika
 STR_0010_COAL                                                   :ugljen
 STR_0011_MAIL                                                   :pošta
 STR_0012_OIL                                                    :nafta
@@ -56,6 +57,7 @@ STR_002C_PLASTIC                                                :plastika
 STR_002D_FIZZY_DRINKS                                           :gazirana pića
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :putnik
+STR_002F_PASSENGER.aku                                          :putnika
 STR_0030_COAL                                                   :ugljen
 STR_0031_MAIL                                                   :pošta
 STR_0032_OIL                                                    :nafta
@@ -631,7 +633,7 @@ STR_0223_LAND_GENERATION                                        :{WHITE}Stvaranj
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Povećaj područje koje će biti povišeno/sniženo
-STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Smanji podrčje koje će biti povišeno/sniženo
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Smanji područje koje će biti povišeno/sniženo
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Napravi nasumično zemljište
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Poništi krajolik
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Poništi krajolik
@@ -981,6 +983,7 @@ STR_NO_ORDERS                                                   :{LTBLUE}Nema na
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Nema naredbi, {VELOCITY}
 
 STR_PASSENGERS                                                  :putnici
+STR_PASSENGERS.gen                                              :putnika
 STR_BAGS                                                        :vreće
 STR_TONS                                                        :tone
 STR_LITERS                                                      :litre
@@ -1666,7 +1669,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Previsok
 STR_ALREADY_LEVELLED                                            :{WHITE}... već je sravnjeno
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nije prikladno za želježnicku prugu
 STR_1007_ALREADY_BUILT                                          :{WHITE}...već izgrađeno
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najprije moraš ukloniti željezničku prugu
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najprije je potrebno ukloniti željezničku prugu
 STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Cesta je jednosmjerna ili je blokirana
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Izgradnja željeznice
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Izgradnja elektrificirane željeznice
@@ -1722,7 +1725,7 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Najprije
 
 
 ##id 0x1800
-STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Najprije moraš ukloniti cestu
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Najprije je potrebno ukloniti cestu
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Cestovni radovi u tijeku
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Izgradnja ceste
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Izgradnja tramvaja
@@ -2759,7 +2762,7 @@ STR_ORDER_ROAD_DEPOT                                            :Spremište cest
 STR_ORDER_SHIP_DEPOT                                            :Spremište brodova
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
-STR_GO_TO_HANGAR                                                :{STRING} {STATION} Spremište
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Idi neprekidno
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Servisiraj prema potrebi
@@ -3135,7 +3138,7 @@ STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Izgradi 
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Trenutna radnja zrakoplova - klikni ovdje kako bi zaustavio/pokrenuo zrakoplov
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Pokaži naredbe zrakoplova
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK} Centrirajte glavni prozor na lokaciju zrakoplova
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Pošalji avion u hangar. CTRL+klik će samo servisirati
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Pošalji zrakoplov u hangar. CTRL+klik će samo servisirati
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Pokaži detalje zrakoplova
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Trošak: {CURRENCY} Maks. brzina: {VELOCITY}{}Nosivost: {COMMA} putnika, {COMMA} poštanskih vreća{}Trošak uporabe {CURRENCY}/god
 

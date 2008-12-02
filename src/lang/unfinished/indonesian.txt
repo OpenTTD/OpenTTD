@@ -375,6 +375,16 @@ STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Nilai
 STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Sisa masa pakai
+STR_SORT_BY_RATING_MAX                                          :Rating Cargo
+STR_ENGINE_SORT_ENGINE_ID                                       :IDMesin (klasik)
+STR_ENGINE_SORT_COST                                            :Biaya
+STR_ENGINE_SORT_POWER                                           :Daya
+STR_ENGINE_SORT_INTRO_DATE                                      :Tanggal Peluncuran
+STR_ENGINE_SORT_RUNNING_COST                                    :Biaya Operasional
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Daya/Biaya Operasional
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasitas pengangkutan
+STR_NO_WAITING_CARGO                                            :{BLACK}Tidak ada barang yang sedang menunggu
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pilih semua fasilitas
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -818,14 +828,44 @@ STR_7                                                           :{BLACK}7
 
 
 
+STR_MONTH_SEP                                                   :September
+STR_MONTH_OCT                                                   :Oktober
+STR_MONTH_NOV                                                   :November
+STR_MONTH_DEC                                                   :Desember
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Menuju ke {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Menuju ke {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Blm ada perintah
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Blm ada perintah, {VELOCITY}
 
+STR_PASSENGERS                                                  :penumpang
+STR_BAGS                                                        :karung
+STR_TONS                                                        :ton
+STR_LITERS                                                      :liter
+STR_ITEMS                                                       :unit
+STR_CRATES                                                      :krat
+STR_RES_OTHER                                                   :lainnya
+STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Tidak dapat menyamakan perintah...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Tidak dapat menduplikasi perintah...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Akhir Perintah Bersama - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}Kerta {COMMA} tidak menemukan arah jalur selanjutnya
+STR_TRAIN_IS_LOST                                               :{WHITE}Kereta {COMMA} kehilangan arah.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Train {COMMA} tahun lalu menghasilkan  {CURRENCY}
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Perastuan Moneter Eropa{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Kereta {COMMA} memliki perintah yang terlalu sedikit
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Kereta {COMMA} mempunyai perintah yang salah
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Kereta {COMMA} mempunyai perintah ganda
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Kereta {COMMA} disuruh menuju stasiun yang tidak ada
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Kendaraan {COMMA} memiliki perintah yang terlalu sedikit
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Kendaraan {COMMA} mempunyai perintah yang salah
 # end of order system
 
 
@@ -1942,6 +1982,22 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 ########### String for New Landscape Generator
 
+STR_RANDOM                                                      :{BLACK}Pengacakan
+STR_RANDOM_HELP                                                 :{BLACK}Ganti angka umpan pengacakan untuk menghasilkan dataran
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Level Lautan:
+STR_SMOOTHNESS                                                  :{BLACK}Kehalusan:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Tunjukkan tinggi garis:
+STR_DATE                                                        :{BLACK}Tanggal:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Jumlah Kota:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Jumlah industri:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Move the snow line height one up
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ganti Tahun Permulaan
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Peringatan Skala
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Ukuran: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Membuat Peta ...
+STR_GENERATION_ABORT                                            :{BLACK}Batalkan
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Membatalkan Pembuatan Peta
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Tindakan ini menyebabkan level kesulitan menjadi bebas
 
 
@@ -1971,6 +2027,12 @@ STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Tindakan
 
 
 ############ Face formatting
+STR_FACE_AFRICAN                                                :{BLACK}Orang Afrika
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pilih wajah afrika
+STR_FACE_YES                                                    :Ya
+STR_FACE_NO                                                     :Tanpa
+STR_FACE_HAIR                                                   :Rambut:
+STR_FACE_HAIR_TIP                                               :{BLACK}Ganti model rambut
 ########
 
 ############ signal GUI

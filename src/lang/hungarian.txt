@@ -2090,79 +2090,79 @@ STR_SAVE_OSKTITLE                                               :{BLACK}Add meg 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}...{STRING} van az útban
 STR_4801                                                        :{WHITE}{INDUSTRY}
-STR_4802_COAL_MINE                                              :szénbánya
+STR_4802_COAL_MINE                                              :Szénbánya
 STR_4802_COAL_MINE.t                                            :szénbányát
-STR_4803_POWER_STATION                                          :erőmű
+STR_4803_POWER_STATION                                          :Erőmű
 STR_4803_POWER_STATION.t                                        :erőművet
-STR_4804_SAWMILL                                                :fűrésztelep
+STR_4804_SAWMILL                                                :Fűrésztelep
 STR_4804_SAWMILL.t                                              :fűrésztelepet
-STR_4805_FOREST                                                 :erdő
+STR_4805_FOREST                                                 :Erdő
 STR_4805_FOREST.t                                               :erdőt
-STR_4806_OIL_REFINERY                                           :olajfinomító
+STR_4806_OIL_REFINERY                                           :Olajfinomító
 STR_4806_OIL_REFINERY.t                                         :olajfinomítót
-STR_4807_OIL_RIG                                                :olajfúró torony
+STR_4807_OIL_RIG                                                :Olajfúró torony
 STR_4807_OIL_RIG.t                                              :olajfúró tornyot
-STR_4808_FACTORY                                                :gyár
+STR_4808_FACTORY                                                :Gyár
 STR_4808_FACTORY.t                                              :gyárat
-STR_4809_PRINTING_WORKS                                         :nyomda
+STR_4809_PRINTING_WORKS                                         :Nyomda
 STR_4809_PRINTING_WORKS.t                                       :nyomdát
-STR_480A_STEEL_MILL                                             :acélöntő
+STR_480A_STEEL_MILL                                             :Acélöntő
 STR_480A_STEEL_MILL.t                                           :acélöntőt
-STR_480B_FARM                                                   :farm
+STR_480B_FARM                                                   :Farm
 STR_480B_FARM.t                                                 :farmot
-STR_480C_COPPER_ORE_MINE                                        :rézércbánya
+STR_480C_COPPER_ORE_MINE                                        :Rézércbánya
 STR_480C_COPPER_ORE_MINE.t                                      :rézércbányát
-STR_480D_OIL_WELLS                                              :olajkút
+STR_480D_OIL_WELLS                                              :Olajkút
 STR_480D_OIL_WELLS.t                                            :olajkútat
-STR_480E_BANK                                                   :bank
+STR_480E_BANK                                                   :Bank
 STR_480E_BANK.t                                                 :bankot
-STR_480F_FOOD_PROCESSING_PLANT                                  :konzervgyár
+STR_480F_FOOD_PROCESSING_PLANT                                  :Konzervgyár
 STR_480F_FOOD_PROCESSING_PLANT.t                                :konzervgyárat
-STR_4810_PAPER_MILL                                             :papírgyár
+STR_4810_PAPER_MILL                                             :Papírgyár
 STR_4810_PAPER_MILL.t                                           :papírgyárat
-STR_4811_GOLD_MINE                                              :aranybánya
+STR_4811_GOLD_MINE                                              :Aranybánya
 STR_4811_GOLD_MINE.t                                            :aranybányát
-STR_4812_BANK                                                   :bank
+STR_4812_BANK                                                   :Bank
 STR_4812_BANK.t                                                 :bankot
-STR_4813_DIAMOND_MINE                                           :gyémántbánya
+STR_4813_DIAMOND_MINE                                           :Gyémántbánya
 STR_4813_DIAMOND_MINE.t                                         :gyémántbányát
-STR_4814_IRON_ORE_MINE                                          :vasércbánya
+STR_4814_IRON_ORE_MINE                                          :Vasércbánya
 STR_4814_IRON_ORE_MINE.t                                        :vasércbányát
-STR_4815_FRUIT_PLANTATION                                       :gyümölcsültetvény
+STR_4815_FRUIT_PLANTATION                                       :Gyümölcsültetvény
 STR_4815_FRUIT_PLANTATION.t                                     :gyümölcsültetvényt
-STR_4816_RUBBER_PLANTATION                                      :gumifa ültetvény
+STR_4816_RUBBER_PLANTATION                                      :Gumifa ültetvény
 STR_4816_RUBBER_PLANTATION.t                                    :gumiültetvényt
-STR_4817_WATER_SUPPLY                                           :vízforrás
+STR_4817_WATER_SUPPLY                                           :Vízforrás
 STR_4817_WATER_SUPPLY.t                                         :vízforrást
-STR_4818_WATER_TOWER                                            :víztorony
+STR_4818_WATER_TOWER                                            :Víztorony
 STR_4818_WATER_TOWER.t                                          :víztornyot
-STR_4819_FACTORY                                                :gyár
+STR_4819_FACTORY                                                :Gyár
 STR_4819_FACTORY.t                                              :gyárat
-STR_481A_FARM                                                   :farm
+STR_481A_FARM                                                   :Farm
 STR_481A_FARM.t                                                 :farmot
-STR_481B_LUMBER_MILL                                            :favágó
+STR_481B_LUMBER_MILL                                            :Favágó
 STR_481B_LUMBER_MILL.t                                          :favágót
-STR_481C_COTTON_CANDY_FOREST                                    :vattacukor-erdő
+STR_481C_COTTON_CANDY_FOREST                                    :Vattacukor-erdő
 STR_481C_COTTON_CANDY_FOREST.t                                  :vattacukor-erdőt
-STR_481D_CANDY_FACTORY                                          :cukorkagyár
+STR_481D_CANDY_FACTORY                                          :Cukorkagyár
 STR_481D_CANDY_FACTORY.t                                        :cukorkagyárat
-STR_481E_BATTERY_FARM                                           :elemfarm
+STR_481E_BATTERY_FARM                                           :Elemfarm
 STR_481E_BATTERY_FARM.t                                         :elemfarmot
-STR_481F_COLA_WELLS                                             :kólakút
+STR_481F_COLA_WELLS                                             :Kólakút
 STR_481F_COLA_WELLS.t                                           :kólakútat
-STR_4820_TOY_SHOP                                               :játékbolt
+STR_4820_TOY_SHOP                                               :Játékbolt
 STR_4820_TOY_SHOP.t                                             :játékboltot
-STR_4821_TOY_FACTORY                                            :játékgyár
+STR_4821_TOY_FACTORY                                            :Játékgyár
 STR_4821_TOY_FACTORY.t                                          :játékgyárat
-STR_4822_PLASTIC_FOUNTAINS                                      :műanyagforrás
+STR_4822_PLASTIC_FOUNTAINS                                      :Műanyagforrás
 STR_4822_PLASTIC_FOUNTAINS.t                                    :műanyagforrást
-STR_4823_FIZZY_DRINK_FACTORY                                    :üdítőital-gyár
+STR_4823_FIZZY_DRINK_FACTORY                                    :Üdítőital-gyár
 STR_4823_FIZZY_DRINK_FACTORY.t                                  :üdítőital-gyárat
-STR_4824_BUBBLE_GENERATOR                                       :buborékgenerátor
+STR_4824_BUBBLE_GENERATOR                                       :Buborékgenerátor
 STR_4824_BUBBLE_GENERATOR.t                                     :buborékgenerátort
-STR_4825_TOFFEE_QUARRY                                          :tejkaramella fejtő
+STR_4825_TOFFEE_QUARRY                                          :Tejkaramella fejtő
 STR_4825_TOFFEE_QUARRY.t                                        :tejkaramella fejtőt
-STR_4826_SUGAR_MINE                                             :cukorbánya
+STR_4826_SUGAR_MINE                                             :Cukorbánya
 STR_4826_SUGAR_MINE.t                                           :cukorbányát
 
 ############ range for requires starts
