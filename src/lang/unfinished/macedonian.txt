@@ -589,6 +589,7 @@ STR_0218_MOGUL                                                  :Могул
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Тајкун на векот
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Не може да се направи град
 
 
 ############ range for menu starts
@@ -672,6 +673,7 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Изгр
 
 
 
+STR_CANT_BUILD_CANALS                                           :{WHITE}Не може да се направи канал овде...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Гради канали.
 
 
@@ -746,8 +748,12 @@ STR_ALREADY_LEVELLED                                            :{WHITE}... ве
 
 ##id 0x1800
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Изгради пат користејки 'Авто-пат' мод
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Изгради трамвајски дел
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Изгради трамвајска линија користејки 'Авто-трам' мод
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Изгради трамвајска гаража (за изградба и сервис на трамваи)
 STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Изгради трамвајска станица за патници
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Изгради трамвајски мост
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Изгради трамвајски тунел
 
 ##id 0x2000
 
@@ -930,6 +936,7 @@ STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Возо
 
 
 
+STR_BUS                                                         :{BLACK}{BUS}
 
 
 
@@ -992,6 +999,9 @@ STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Изгр
 ########
 
 ############ signal GUI
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Влез сигнализација (електрика){}Зелено е се додека има барем еден зелен излез-сигнал во продолжението на траката, во спротивно е црвено.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Излез Сигнализација (електрика){}Се однесува на ист начин како блок-сигналот, но потребно е да ја има точната боја на влезен и комбо пресигнал.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Комбо-Сигнал (електрика){}Комбо сигнализацијата има функција и на обете влезна и како излезна сигнализација. Ова овозможува да се направи голема мрежа од пре-сигнализација.
 ########
 
 ############ on screen keyboard

@@ -583,15 +583,44 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Izbor im
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Sačuvaj prilagođena imena nacrta vozila
 
 ############ range for menu starts
+STR_02C4_GAME_OPTIONS                                           :Opcije u igri
+STR_02C6_DIFFICULTY_SETTINGS                                    :Podešavanje težine
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Prikazana imena naselja
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Prikazana imena stanica
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Prikazani znakovi
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}Puna animacija
+STR_02D2_FULL_DETAIL                                            :{SETX 12}Svi detalji
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Providne zgrade
 ############ range ends here
 
 ############ range for menu starts
+STR_02D5_LAND_BLOCK_INFO                                        :Informacija o zemljištu
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screenshot (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'-u
 ############ range ends here
 
+STR_02DB_OFF                                                    :{BLACK}Isključeno
+STR_02DA_ON                                                     :{BLACK}Uključeno
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Prikaži ponude
+STR_02DD_SUBSIDIES                                              :Ponude
+STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
+STR_02DF_TOWN_DIRECTORY                                         :Spisak gradova
 
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valuta
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Izbor valute
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Drumska vozila
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Izaberi stranu puta kojom ce se kretati drumska vozila
+STR_02E9_DRIVE_ON_LEFT                                          :Vozi levom stranom
+STR_02EA_DRIVE_ON_RIGHT                                         :Vozi desnom stranom
+STR_02EB_TOWN_NAMES                                             :{BLACK}Imena gradova
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Izaberi stil imena gradova
 
+STR_02F4_AUTOSAVE                                               :{BLACK}Automacko čuvanje igre
 
 ############ range for menu starts
 ############ range ends here

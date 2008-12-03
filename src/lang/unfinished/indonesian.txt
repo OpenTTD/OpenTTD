@@ -102,10 +102,13 @@ STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-b
 STR_QUANTITY_DIAMONDS                                           :{COMMA} tas intan
 STR_QUANTITY_FOOD                                               :{WEIGHT} makanan
 STR_QUANTITY_PAPER                                              :{WEIGHT}  kertas
+STR_QUANTITY_GOLD                                               :{COMMA} karung emas
 STR_QUANTITY_WATER                                              :{VOLUME} air
 STR_QUANTITY_WHEAT                                              :{WEIGHT}  gandum
 STR_QUANTITY_RUBBER                                             :{VOLUME} karet
 STR_QUANTITY_SUGAR                                              :{WEIGHT} gula
+STR_QUANTITY_TOYS                                               :{COMMA} mainan
+STR_QUANTITY_SWEETS                                             :{COMMA} karung manisan
 STR_QUANTITY_COLA                                               :{VOLUME} cola
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} Harum manis
 STR_QUANTITY_BUBBLES                                            :{COMMA} gelembung
@@ -113,6 +116,7 @@ STR_QUANTITY_TOFFEE                                             :{WEIGHT} kopi t
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterai
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastik
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} minuman berdesis
+STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}PN
 STR_ABBREV_COAL                                                 :{TINYFONT}BB
 STR_ABBREV_MAIL                                                 :{TINYFONT}SR
@@ -145,7 +149,7 @@ STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MB
 STR_ABBREV_NONE                                                 :{TINYFONT}TANPA
-STR_ABBREV_ALL                                                  :{TINYFONT}SM
+STR_ABBREV_ALL                                                  :{TINYFONT}Semua
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Peta - {STRING}
@@ -364,6 +368,7 @@ STR_SORT_BY                                                     :{BLACK}SUrutkan
 STR_SORT_BY_POPULATION                                          :{BLACK}Populasi
 STR_SORT_BY_PRODUCTION                                          :Produksi
 STR_SORT_BY_TYPE                                                :Jenis
+STR_SORT_BY_TRANSPORTED                                         :Terkirim
 STR_SORT_BY_DROPDOWN_NAME                                       :Nama
 STR_SORT_BY_DATE                                                :{BLACK}Tanggal
 STR_SORT_BY_NUMBER                                              :Nomer
@@ -866,8 +871,13 @@ STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Kereta {
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Kereta {COMMA} disuruh menuju stasiun yang tidak ada
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Kendaraan {COMMA} memiliki perintah yang terlalu sedikit
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Kendaraan {COMMA} mempunyai perintah yang salah
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Pesawat {COMMA} terlalu sedikit jadwal order
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Pesawat {COMMA} tanpa order
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Pesawat {COMMA} duplikasi order
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Pesawat {COMMA} salah order stasiun
 # end of order system
 
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Otomatis perbaharui gagal pada pesawat {COMMA}{}{STRING}
 
 
 
@@ -1368,6 +1378,7 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Bayar se
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manajer)
 STR_7038_INAUGURATED                                            :{GOLD}Dilantik: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Kendaraan:
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} pesawat
 STR_7042_NONE                                                   :{WHITE}Kosong
 STR_7043_FACE_SELECTION                                         :{WHITE}Pilihan Wajah
 STR_7044_MALE                                                   :{BLACK}Pria
@@ -1934,6 +1945,12 @@ STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Ubah nam
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Tidak dapat mengubah nama tipe pesawat...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reparasi kapal kargo untuk membawa barang jenis lain
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Reparasi)
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Reparasi pesawat
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pilih tipe barang untuk dibawa pesawat
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reparasi pesawat untuk membawa tipe barang yang dipilih
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pilih tipe barang untuk dibawa
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Kapasitas baru: {GOLD}{STRING}{}{BLACK}Biaya reparasi: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Tidak dapat reparasi pesawat...
 
 
 ##id 0xB000
@@ -1963,6 +1980,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Pesawat tidak tersedia
 
 
 
@@ -2015,18 +2033,41 @@ STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Tindakan
 
 
 ##### Mass Order
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Hapus semua kendaraan
+
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Kereta
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} Kendaraan
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Kapal
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Pesawat
+STR_GROUP_RENAME_CAPTION                                        :{BLACK}Ganti nama grup
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Ganti kendaraan pada grup "{GROUP}"
+
+STR_GROUP_CAN_T_CREATE                                          :{WHITE}Tidak data membuat grup...
+STR_GROUP_CAN_T_DELETE                                          :{WHITE}Tidak dapat menghapus grup ini...
 
 
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
-
-
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nama haruslah unik
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Lanjutkan sampai rambu berikutnya
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Kembali ke rambu sebelumnya
+STR_SIGN_OSKTITLE                                               :{BLACK}Masukkan nama rambu
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Danai
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Prospek
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Bangun
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Pilih jenis industri yang di inginkan dari daftar
 
 ############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Lebih Lanjut
 STR_FACE_AFRICAN                                                :{BLACK}Orang Afrika
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pilih wajah afrika
 STR_FACE_YES                                                    :Ya
@@ -2036,10 +2077,33 @@ STR_FACE_HAIR_TIP                                               :{BLACK}Ganti mo
 ########
 
 ############ signal GUI
+STR_SIGNAL_SELECTION                                            :{WHITE}Pemilihan Sinyal
+STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Tidak dapat mengubah sinyal ini...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinyal Blok (semaphore){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sinyal Masuk (semaphore){}Akan berwarna hijau jika, dan hanya jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada bagian jalur  berikutnya. Jika tidak, akan berwarna merah
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sinyal Keluar (semaphore){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaanya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Sinyal Kombo (semaphore){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sinyal Jalur (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard  bisa di lewati dari arah belakang.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Sinyal Jalur Searah (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak  bisa di lewati dari arah belakangnya.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sinyal Blok (elektris){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sinyal Masuk (elektris){}Akan berwarna hijau jika, dan hanya jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada bagian jalur  berikutnya. Jika tidak, akan berwarna merah
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinyal Keluar (elektris){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaanya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard  bisa di lewati dari arah belakang.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak  bisa di lewati dari arah belakangnya.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Konversi Sinyal{}Jika terpilih, klik pada sinyal yang telah ada, akan mengakibatkan sinyal berubah jenisnya, CTRL-click untuk mengubah secara berturut-turut.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Kerapatan Sinyal
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Kurangi kerapatan sinyal
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Tambahi kerapatan sinyal
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Ijinkan kota untuk mengatur tingkat kebisingan bandara : {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Batas kebisingan di kota : {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Tingkat Kebisingan: {GOLD}{COMMA}
 ########
