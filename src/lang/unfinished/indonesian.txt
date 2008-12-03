@@ -369,17 +369,22 @@ STR_SORT_BY_POPULATION                                          :{BLACK}Populasi
 STR_SORT_BY_PRODUCTION                                          :Produksi
 STR_SORT_BY_TYPE                                                :Jenis
 STR_SORT_BY_TRANSPORTED                                         :Terkirim
+STR_SORT_BY_NAME                                                :{BLACK}Nama
 STR_SORT_BY_DROPDOWN_NAME                                       :Nama
 STR_SORT_BY_DATE                                                :{BLACK}Tanggal
 STR_SORT_BY_NUMBER                                              :Nomer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Keuntungan tahun lalu
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Keuntungan Tahun Ini
 STR_SORT_BY_AGE                                                 :Usia
+STR_SORT_BY_RELIABILITY                                         :Kehandalan
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kapasitas Total tiap jenis muatan
 STR_SORT_BY_MAX_SPEED                                           :Kecepatan Maks.
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Nilai
 STR_SORT_BY_LENGTH                                              :Panjang
 STR_SORT_BY_LIFE_TIME                                           :Sisa masa pakai
+STR_SORT_BY_FACILITY                                            :Jenis Stasiun
+STR_SORT_BY_WAITING                                             :Nilai tunggu muatan
 STR_SORT_BY_RATING_MAX                                          :Rating Cargo
 STR_ENGINE_SORT_ENGINE_ID                                       :IDMesin (klasik)
 STR_ENGINE_SORT_COST                                            :Biaya
@@ -390,6 +395,20 @@ STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Daya/Biaya Oper
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasitas pengangkutan
 STR_NO_WAITING_CARGO                                            :{BLACK}Tidak ada barang yang sedang menunggu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pilih semua fasilitas
+STR_SELECT_ALL_TYPES                                            :{BLACK}Pilih semua jenis muatan (termasuk muatan tanpa sela)
+STR_AVAILABLE_TRAINS                                            :{BLACK}Kereta yang tersedia
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kendaraan yang tersedia
+STR_AVAILABLE_SHIPS                                             :{BLACK}Kapal yang tersedia
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pesawat yang tersedia
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lihat daftar mesin yang didesain untuk jenis kendaraan ini.
+STR_MANAGE_LIST                                                 :{BLACK}Atur Daftar
+STR_MANAGE_LIST_TIP                                             :{BLACK}Berikan perintah untuk semua kendaraan dalam daftar ini.
+STR_REPLACE_VEHICLES                                            :Ganti kendaraan
+STR_SEND_TRAIN_TO_DEPOT                                         :Kirim ke Bengkel
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Kirim ke Bengkel
+STR_SEND_SHIP_TO_DEPOT                                          :Kirim ke Galangan
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Kirim ke Hangar
+STR_SEND_FOR_SERVICING                                          :Kirim untuk di servis
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -437,10 +456,14 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Tidak dapat mengubah waktu servis
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Tutup window
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titel window - klik dan tahan disini untuk memindahkan window
+STR_STICKY_BUTTON                                               :{BLACK}Catat jendela ini agar tidak tertutup saat di beri perintah "Tutup Semua Jendela"
+STR_RESIZE_BUTTON                                               :{BLACK}Klik dan Geser untuk mengubah ukuran jendela ini.
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik disini untuk langsung mengarah ke folder asal simpan/buka saat ini.
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Runtuhkan bangunan, dll dalam area kotak
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Rendahkan sudut area
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Naikkan sudut area
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar  - naik-turunkan bar
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Batang Geser - Geser daftar ke kiri/kanan
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Tampilkan kontur tanah pada peta
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Tampilkan kendaraan dalam peta
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Tampilkan industri dalam peta
@@ -451,6 +474,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Tandai n
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Keuntungan tahun ini: {CURRENCY} (tahun lalu: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} tahun({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} tahun ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Kendaraan darat
@@ -465,6 +490,9 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Biaya un
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Biaya untuk membersihkan: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Pemilik: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Pemilik Jalan: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}Pemilik Rel Trem: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Pemilik Rel Kereta: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Pemerintah setempat: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Kosong
 STR_01AA_NAME                                                   :{BLACK}Nama
@@ -550,6 +578,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Pilih 'K
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Hapus program saat ini (hanya Kustom 1 atau Kustom 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Simpan aturan musik
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik pada musik track untuk menambah pada program sekarang (hanya Kustom 1 atau Kustom 2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik pada track musik untuk menghapusnya dari program saat ini. (Bebas1 atau Bebas2 saja)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Tandai acak program
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Tampilkan window track musik pilihan
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik pada servis untuk memindahkan industri/kota ke tengah
@@ -557,6 +586,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}Tingkat 
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Pesan terakhir/laporan berita
 STR_0201_MESSAGE_SETTINGS                                       :Pengaturan pesan
+STR_MESSAGE_HISTORY_MENU                                        :Pesan Lampau
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Tampilkan Pesan terakhir/laporan berita, tampilkan pilihan pesan
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Pilihan Pesan
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Jenis Pesan
@@ -564,7 +594,11 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Kedatan
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Kedatangan kendaraan pertama pada stasiun lawan
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kecelakaan / bencana
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informasi Perusahaan
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Pembukaan Industri Baru
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Penutupan Industri
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Perubahan ekonomi
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Perubahan produksi pada industri yang ditangani oleh perusahaan kita
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Perubahan produksi pada industri yang ditangani oleh para pesaing
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Perubahan pada produk industri lainnya
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Saran / informasi pada kendaraan perusahaan
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Kendaraan baru
@@ -575,6 +609,7 @@ STR_MESSAGES_ALL                                                :{YELLOW}Atur se
 STR_MESSAGE_SOUND                                               :{YELLOW}Mainkan suara untuk berita yang diringkas
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...terlalu jauh dari tujuan sebelumnya
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Perusahaan tertinggi yang mencapai {NUM}{}({STRING} Level)
+STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabel Liga Perusahaan {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Pemilik Bisnis
 STR_0214_ENTREPRENEUR                                           :Pengusaha
@@ -705,6 +740,7 @@ STR_0290_DELETE                                                 :{BLACK}Hapus
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Hapus kota ini habis
 STR_0292_SAVE_SCENARIO                                          :Simpan Skenario
 STR_0293_LOAD_SCENARIO                                          :Baca Skenario
+STR_MENU_LOAD_HEIGHTMAP                                         :Buka heightmap
 STR_0294_QUIT_EDITOR                                            :Keluar editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Keluar
@@ -712,6 +748,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Simpan, 
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Baca Skenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Simpan Skenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Mainkan Skenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Mainkan Heightmap
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Mulai permainan baru, menggunakan heightmap sebagai datarannya
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Apakah anda yakin akan keluar dari skenario ini ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Keluar Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
@@ -729,6 +767,7 @@ STR_02B6                                                        :{STRING}  -  {S
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tampilkan pesar atau laporan berita terakhir
 STR_OFF                                                         :Mati
 STR_SUMMARY                                                     :Ringkasan
+STR_FULL                                                        :Penuh
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Daftar kota
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Desain nama kendaraan
@@ -739,20 +778,28 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Simpan n
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Pilih desain nama kendaraan
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Simpan kustomisasi desain nama kendaraan
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opsi Permainan
 STR_02C6_DIFFICULTY_SETTINGS                                    :Pengaturan tingkat kesulitan
+STR_MENU_CONFIG_PATCHES                                         :Pengaturan Lanjut
+STR_NEWGRF_SETTINGS                                             :Pengaturan NewGRF (Grafik yang baru)
+STR_TRANSPARENCY_OPTIONS                                        :Pengaturan Transparansi
+STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Nama kota ditampilkan
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Nama stasiun ditampilkan
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Pengenal ditampilkan
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Tampilkan Penunjuk Arah
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animasi penuh
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detail penuh
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Bangunan tembus pandang
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparasikan plang stasiun
 ############ range ends here
 
 ############ range for menu starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informasi area daratan
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Hidup/matikan Layar Konsol
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ambil gambar (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Ambil gambar besar (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Tentang 'OpenTTD'
@@ -764,6 +811,7 @@ STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Tampilka
 STR_02DD_SUBSIDIES                                              :Subsidi
 STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
 STR_02DF_TOWN_DIRECTORY                                         :Daftar Kota
+STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Mata uang
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}

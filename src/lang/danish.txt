@@ -277,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}For mang
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Valgte navn bruges allerede
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -596,8 +597,10 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Selskab
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Åbning af industrier
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Lukning af industrier
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonomiændringer
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Produktionsændringer i industrier betjent af firmaet
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produktionsændringer for industrier forsynet af deltager(e)
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andre produktionsændringer for industri
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Råd / information om firmaets køretøjer
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køretøjer
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Ændring i accepteret gods
 STR_020E_SUBSIDIES                                              :{YELLOW}Tilskudsordninger
@@ -934,6 +937,7 @@ STR_CURR_SEK                                                    :Svenske Kroner 
 STR_CURR_YTL                                                    :Tyrkiske Lira (TRY)
 STR_CURR_SKK                                                    :Slovakiske Koruna (SKK)
 STR_CURR_BRL                                                    :Brasilianske Real (BRL)
+STR_CURR_EEK                                                    :Estiske Kroon (EEK)
 
 STR_CURR_CUSTOM                                                 :Brugerdefineret...
 
@@ -1247,6 +1251,7 @@ STR_CHEATS                                                      :{WHITE}Snydefun
 STR_CHEATS_TIP                                                  :{BLACK}Checkbokse viser, om du har brugt denne snydefunktion før
 STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er ved at forråde dine modstandere. Husk at dette vil blive husket i al evighed.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Forøg kassebeholdning med {CURRENCY}
+STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Spiller som firmaet: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magisk bulldozer (nedriv ting, som normalt ikke kan fjernes): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunneler kan krydse hinanden: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillad at bygge mens pause er aktiveret: {ORANGE}{STRING}
@@ -2828,6 +2833,8 @@ STR_8826_GO_TO                                                  :{BLACK}Gå til
 STR_REFIT                                                       :{BLACK}Ombyg
 STR_REFIT_TIP                                                   :{BLACK}Vælg hvilken lasttype der skal ombygges til i denne ordre. CTRL-klik for at fjerne ombygningsinstruktion
 STR_REFIT_ORDER                                                 :(Ombyg til {STRING})
+STR_REFIT_STOP_ORDER                                            :(Ombyg til {STRING} og stop)
+STR_STOP_ORDER                                                  :(Stop)
 STR_TIMETABLE_VIEW                                              :{BLACK}Køreplan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Skift til køreplan-visning
 STR_ORDER_VIEW                                                  :{BLACK}Ordrer
@@ -2937,6 +2944,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Dette transport
 STR_TIMETABLE_TOTAL_TIME                                        :Denne køreplan vil tage {STRING} at fuldføre
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Denne køreplan vil tage mindst {STRING} at fuldføre (ikke alt indført i køreplan)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-udfyld
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Udfyld automatisk tidsplanen med tider for den næste tur (CTRL-klik for at forsøge at bevare ventetider)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køretøj i vejen
@@ -3228,6 +3236,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Indlæsning af 
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uventet grafikelement.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ukendt Action 0 egenskab.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøg på brug af ugyldig ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} indeholder en ødelagt sprite. Alle ødelagte sprites vil blive vist som et rødt spørgsmålstegm (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Indlæs den valgte forudindstilling
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Gem forudindstilling
@@ -3548,6 +3557,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klik for
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
