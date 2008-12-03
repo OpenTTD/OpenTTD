@@ -1627,12 +1627,12 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-size 
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}Cannot load landscape from PNG...
+STR_PNGMAP_ERROR                                                :{WHITE}Can't load landscape from PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...file not found.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...could not convert image type. 8 or 24-bit PNG image needed.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...something just went wrong. Sorry. (probably corrupted file)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Cannot load landscape from BMP...
+STR_BMPMAP_ERROR                                                :{WHITE}Can't load landscape from BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...could not convert image type.
 
 ##id 0x0800
@@ -2103,7 +2103,7 @@ STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Another 
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Unable to excavate land for other end of tunnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Must demolish tunnel first
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Must demolish bridge first
-STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Cannot start and end in the same spot
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Can't start and end in the same spot
 STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Bridge heads not at the same level
 STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Bridge is too low for the terrain
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Start and end must be in line
@@ -3262,7 +3262,7 @@ STR_NEWGRF_ADD_FILE                                             :{BLACK}Add to s
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Add the selected NewGRF file to your configuration
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Rescan files
 STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Update the list of available NewGRF files
-STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Cannot add file: duplicate GRF ID
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Can't add file: duplicate GRF ID
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Matching file not found
 STR_NEWGRF_DISABLED                                             :{RED}Disabled
@@ -3631,13 +3631,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Entry-Si
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exit-Signal (semaphore){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Signal (semaphore){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}One-way Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals cannot be passed from the back side.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}One-way Path Signal (semaphore){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Block Signal (electric){}This is the most basic type of signal, allowing only one train to be in the same block at the same time.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Entry-Signal (electric){}Green as long as there is one or more green exit-signal from the following section of track. Otherwise it shows red.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-Signal (electric){}Behaves in the same way as a block signal but is necessary to trigger the correct colour on entry & combo pre-signals.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (electric){}The combo signal simply acts as both an entry and exit signal. This allows you to build large "trees" of presignals.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. Standard path signals can be passed from the back side.
-STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals cannot be passed from the back side.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}One-way Path Signal (electric){}A path signal allows more than one train to enter a signal block at the same time, if the train can reserve a path to a safe stopping point. One-way path signals can't be passed from the back side.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Convert{}When selected, clicking an existing signal will convert it to the selected signal type and variant, CTRL-click will toggle the existing variant.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Dragging signal density
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Decrease dragging signal density
