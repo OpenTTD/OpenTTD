@@ -1045,7 +1045,7 @@ STR_NO_ORDERS                                                   :{LTBLUE}Nincs m
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Nincs menetrend, {VELOCITY}
 
 STR_PASSENGERS                                                  :utas
-STR_BAGS                                                        :táska
+STR_BAGS                                                        :csomag
 STR_TONS                                                        :tonna
 STR_LITERS                                                      :liter
 STR_ITEMS                                                       :darab

@@ -396,11 +396,11 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasitas penga
 STR_NO_WAITING_CARGO                                            :{BLACK}Tidak ada barang yang sedang menunggu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pilih semua fasilitas
 STR_SELECT_ALL_TYPES                                            :{BLACK}Pilih semua jenis muatan (termasuk muatan tanpa sela)
-STR_AVAILABLE_TRAINS                                            :{BLACK}Kereta yang tersedia
-STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kendaraan yang tersedia
-STR_AVAILABLE_SHIPS                                             :{BLACK}Kapal yang tersedia
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pesawat yang tersedia
-STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lihat daftar mesin yang didesain untuk jenis kendaraan ini.
+STR_AVAILABLE_TRAINS                                            :{BLACK}Kereta api tersedia
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kendaraan tersedia
+STR_AVAILABLE_SHIPS                                             :{BLACK}Kapal tersedia
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pesawat tersedia
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lihat daftar desain mesin yang tersedia untuk kendaraan tipe ini
 STR_MANAGE_LIST                                                 :{BLACK}Atur Daftar
 STR_MANAGE_LIST_TIP                                             :{BLACK}Berikan perintah untuk semua kendaraan dalam daftar ini.
 STR_REPLACE_VEHICLES                                            :Ganti kendaraan
@@ -856,6 +856,9 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Biaya industri 
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Biaya industri baru
+STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya dapat dibangun di kota
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...hanya dapat dibangun di area hutan hujan
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...hanya dapat dibangun di area gurun
@@ -866,21 +869,94 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Pengambi
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Beli tanah untuk digunakan pada masa depan
 STR_032F_AUTOSAVE                                               :{RED}SIMPAN OTOMATIS
+STR_SAVING_GAME                                                 :{RED}*  *  MENYIMPAN PERMAINAN  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Penyimpanan sedang berlangsung,{}mohon tunggu hingga selesai
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Pilih program 'gaya music Ezy Street'
 
 STR_6                                                           :{BLACK}6
 STR_7                                                           :{BLACK}7
 
 ############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Inggris (Orisinal)
+STR_TOWNNAME_FRENCH                                             :Perancis
+STR_TOWNNAME_GERMAN                                             :Jerman
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Inggris (Tambahan)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Amerika-Latin
+STR_TOWNNAME_SWEDISH                                            :Swedia
+STR_TOWNNAME_DUTCH                                              :Jerman
+STR_TOWNNAME_FINNISH                                            :Finlandia
+STR_TOWNNAME_POLISH                                             :Polandia
+STR_TOWNNAME_SLOVAKISH                                          :Slovakia
+STR_TOWNNAME_NORWEGIAN                                          :Norwegia
+STR_TOWNNAME_HUNGARIAN                                          :Hungaria
+STR_TOWNNAME_AUSTRIAN                                           :Austria
+STR_TOWNNAME_ROMANIAN                                           :Romania
+STR_TOWNNAME_CZECH                                              :Czechnya
+STR_TOWNNAME_SWISS                                              :Swiss
+STR_TOWNNAME_DANISH                                             :Denmark
+STR_TOWNNAME_TURKISH                                            :Turki
+STR_TOWNNAME_ITALIAN                                            :Italia
+STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of townname region
 
+STR_CURR_GBP                                                    :Poundsterling (£)
+STR_CURR_USD                                                    :Dollars ($)
+STR_CURR_EUR                                                    :Euro (€)
+STR_CURR_YEN                                                    :Yen (¥)
+STR_CURR_ATS                                                    :Shilling Austria (ATS)
+STR_CURR_BEF                                                    :Franc Belgia  (BEF)
+STR_CURR_CHF                                                    :Franc Swiss (CHF)
+STR_CURR_CZK                                                    :Koruna Czech (CZK)
+STR_CURR_DEM                                                    :Deutschmark (DEM)
+STR_CURR_DKK                                                    :Krone Denmark (DKK)
+STR_CURR_ESP                                                    :Peseta (ESP)
+STR_CURR_FIM                                                    :Markka Finlandia  (FIM)
+STR_CURR_FRF                                                    :Franc (FRF)
+STR_CURR_GRD                                                    :Drachma Yunani (GRD)
+STR_CURR_HUF                                                    :Forint Hungaria (HUF)
+STR_CURR_ISK                                                    :Krona Islandia (ISK)
+STR_CURR_ITL                                                    :Lira Italian (ITL)
+STR_CURR_NLG                                                    :Guilder Jerman (NLG)
+STR_CURR_NOK                                                    :Krone Norwegia (NOK)
+STR_CURR_PLN                                                    :Zloty Polandia (PLN)
+STR_CURR_ROL                                                    :Leu Romania (ROL)
+STR_CURR_RUR                                                    :Rubles Rusia (RUR)
+STR_CURR_SIT                                                    :Tolar Slovenia (SIT)
+STR_CURR_SEK                                                    :Krona Swedia (SEK)
+STR_CURR_YTL                                                    :Lira Turki (YTL)
+STR_CURR_SKK                                                    :Koruna Slovakia (SKK)
+STR_CURR_BRL                                                    :Real Brazilia (BRL)
+STR_CURR_EEK                                                    :Krooni Estonia (EEK)
 
+STR_CURR_CUSTOM                                                 :Atur sendiri...
 
+STR_OPTIONS_LANG                                                :{BLACK}Bahasa
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Pilih antar muka bahasa yang akan dipergunakan
 
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Layar Penuh
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Klik cek box ini untuk memainkan OpenTTD dalam layar penuh
+STR_FULLSCREEN_FAILED                                           :{WHITE}Modus layar penuh gagal
 
+STR_OPTIONS_RES                                                 :{BLACK}Resolusi Layar
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_RES_TIP                                             :{BLACK}Pilih resolusi layar yang diinginkan
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format tangkapan layar
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Pilih format hasil tangkapan layar
 
+STR_AUTOSAVE_1_MONTH                                            :Setiap bulan
+STR_AUTOSAVE_FAILED                                             :{WHITE}Simpan otomatis gagal
 
+STR_MONTH_JAN                                                   :Januari
+STR_MONTH_FEB                                                   :Februari
+STR_MONTH_MAR                                                   :Maret
+STR_MONTH_APR                                                   :April
+STR_MONTH_MAY                                                   :Mei
+STR_MONTH_JUN                                                   :Juni
+STR_MONTH_JUL                                                   :Juli
+STR_MONTH_AUG                                                   :Agustus
 STR_MONTH_SEP                                                   :September
 STR_MONTH_OCT                                                   :Oktober
 STR_MONTH_NOV                                                   :November
@@ -926,6 +1002,67 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Pesawat 
 # end of order system
 
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Otomatis perbaharui gagal pada pesawat {COMMA}{}{STRING}
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Tidak ada perintah otomatis memperbaharui yang dilakukan.
+STR_AUTOREPLACE_MONEY_LIMIT                                     :(batas uang)
+
+
+
+
+
+
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Semua Perusahaan
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Fungsi tombol scroll mouse: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Perbesar Peta
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Geser Peta
+STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Non-aktif
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kelipatan Penggeseran Peta: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}emulasikan klik kanan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Non-aktifkan
+
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Selalu hentikan sementara permainan saat memulai : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Pergunakan daftar kendaraan tingkat lanjut: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Non-aktifkan
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Perusahaan sendiri
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Semua perusahaan
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Gunakan indikator pemuatan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Non-aktifkan
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Perusahaan sendiri
+STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Semua perusahaan
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aktifkan tabel penghitung waktu untuk kendaraan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Tunjukkan tabel penghitung waktu dalam satuan tik , bukan satuan hari: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Jenis rel asal (setelah permainan baru/memuat permainan): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Rel normal
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Rel listrik
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorel
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Awal tersedia
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Mutakhir
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Perlihatkan jalur yang akan terpakai: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Perlihatkan alat pembangun jika tidak ada kendaraan yang tersedia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. kereta tiap pemain: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks.  kendaraan tiap pemain: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks. pesawat tiap pemain: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks. kapal tiap pemain: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Non-aktifkan kereta pemain komputer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Non-aktifkan kendaraan pemain komputer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Non-aktifkan peswat pemain komputer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Non-aktifkan kapal pemain komputer: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktifkan Kecerdasan baru (tahap alfa): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Ijinkan kecerdasan pada modus banyak pemain(uji coba): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard jangka servis berkala untuk kereta: {ORANGE}{STRING} hari/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard jangka servis berkala untuk kereta: {ORANGE}Non-aktif
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Standard jangka servis berkala untuk kendaraan: {ORANGE}{STRING} hari/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard jangka servis berkala untuk kendaraan: {ORANGE}Non-aktif
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Standard jangka servis berkala untuk pesawat: {ORANGE}{STRING} hari/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard jangka servis berkala untuk pesawat: {ORANGE}Non-aktif
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard jangka servis berkala untuk kapal: {ORANGE}{STRING} hari/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard jangka servis berkala untuk kapal: {ORANGE}Non-aktif
 
 
 
@@ -941,30 +1078,30 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Otomatis
 
 
 
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Tidak dapat mengganti nama sinyal jalur...
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Tidak dapat membuat sinyal jalur kereta disini...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Tidak dapat menghapus sinyal jalur kereta disini...
+
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Buat jalur kereta menggunakan mode Autorail
 
 
 
 
 
 
+STR_CANT_BUILD_CANALS                                           :{WHITE}Tidak dapat membangun kanal disini...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Membangun kanal.
+
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Tidak dapat membangun lock disini...
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Membangun lock
+
+STR_CANT_PLACE_RIVERS                                           :{WHITE}Tidak dapat menempatkan sungai disini...
+
+STR_BUOY_IS_IN_USE                                              :{WHITE}...rambu sedang digunakan!
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Tidak dapat menghapus bagian dari stasiun...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Tidak dapat mengubah tipe rel disini...
 
 
 
@@ -1021,6 +1158,7 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Otomatis
 ##### PNG-MAP-Loader
 
 
+STR_BMPMAP_ERROR                                                :{WHITE}Tidak dapat memuat lansekap dari BMP...
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Biaya: {CURRENCY}
@@ -1045,6 +1183,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Kombinas
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Penggalian akan merusak terowongan
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Telah sama dengan ketinggian laut
 STR_1004_TOO_HIGH                                               :{WHITE}Terlalu tinggi
+STR_ALREADY_LEVELLED                                            :{WHITE}... telah rata
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tidak tersedia rel yang sesuai
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Harus menghapus rel terlebih dahulu
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Pembangun Rel Kereta
@@ -1088,11 +1227,19 @@ STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Tidak da
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Tidak dapat membangun gerbong stasiun...
 STR_180A_ROAD_CONSTRUCTION                                      :Pembangunan jalan
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Membangun bagian jalan
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Buat jalan menggunakan mode Autoroad
+STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Membangun jalur trem
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Buat jalur trem menggunakan mode Autotram
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Membangun depot kendaraan (untuk membuat dan memperbaiki kendaraan)
+STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Membangun depot trem (untuk membuat dan perbaikan kendaraan)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Membangun stasiun bus
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Membangun gerbong bongkar muat
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Membangun stasion trem penumpang
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Membangun stasiun trem
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Membangun jembatan
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Membangun jembatan trem
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Membangun terowongan
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Membangun terowongan trem
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Tandai buat/hapus untuk pembangunan jalan
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Pilih arah depot kendaraan
 STR_1814_ROAD                                                   :Jalan
@@ -1229,6 +1376,7 @@ STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu 
 
 
 ##id 0x3800
+STR_AQUEDUCT                                                    :Pipa air
 
 ##id 0x4000
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}SImpan permainan saat ini, gunakan nama yang terpilih
@@ -1266,6 +1414,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tidak da
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Terowongan harus dihancurkan terlebih dahulu
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Jembatan harus dihancurkan terlebih dahulu
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Tidak dapat awal dan akhir pada spot yang sama
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Ujung jembatan tidak pada level yang sama
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Jembatan lebih rendah dari daratan
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Awal dan akhir harus segaris
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lokasi tidak sesuai untuk jalur masuk terowongan
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -1276,6 +1426,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :Suspensi, Beton
 STR_5012_WOODEN                                                 :Kayu
 STR_5013_CONCRETE                                               :Beton
 STR_5014_TUBULAR_STEEL                                          :Pipa, Baja
+STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silicon
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Tidak dapat membangun jembatan disini...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tidak dapat membangun terowongan disini...
 STR_5017_RAILROAD_TUNNEL                                        :Terowongan Kereta
@@ -1763,6 +1914,7 @@ STR_881B_TRAINS                                                 :{WHITE}{COMPANY
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Kereta Api Baru
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Monorail Baru
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Maglev Baru
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rel Kereta
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Buat Kendaraan
 STR_8820_RENAME                                                 :{BLACK}Ubah Nama
@@ -1870,6 +2022,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Arahkan 
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Daftar pilihan kendaraan - klik pada kendaraan untuk menampilkan informasi
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Membuat kendaraan yang dipilih
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Harga: {CURRENCY}{}Kecepatan: {VELOCITY}{}Biaya Operasional: {CURRENCY}/yr{}Kapasitas: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitas: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nama kendaraan
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Tidak dapat menamai kendaraan...
@@ -1924,6 +2078,7 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Tidak da
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Kapal pertama tiba di {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Menempatkan rambu yang dapat digunakan sebagai petunjuk jalan
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Tidak dapat menempatkan rambu disini...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Membangun pipa air
 STR_9836_RENAME                                                 :{BLACK}Ubah Nama
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Ubah nama tipe kapal
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Ubah nama tipe kapal
@@ -2002,7 +2157,15 @@ STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Tidak da
 
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Bencana Zeppelin di {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Kendaraan hancur pada kecelakaan 'UFO'!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Kilang minyak meledak didekat {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Pabrik hancur pada hubungan pendek di dekat {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' mendarat di dekat {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Tambang batubara mengalami kerusakan di dekat{TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Banjir!{}At least {COMMA} hilang, diduga meninggal akibat banjir!
 
+STR_BUILD_DATE                                                  :{BLACK}Dibuat: {LTBLUE}{DATE_LONG}
 
 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
@@ -2015,9 +2178,11 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Kereta api '{VEHICLE}' milik '{COMPANY}' memiliki ukuran yang tidak sesuai. Hal ini mungkin disebabkan oleh masalah dengan NewGRFs. Permainan mungkin akan rusak atau hang.
 
 
 
+STR_BUS                                                         :{BLACK}{BUS}
 
 
 
@@ -2135,7 +2300,7 @@ STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sinyal J
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Sinyal Jalur Searah (semaphore){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak  bisa di lewati dari arah belakangnya.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sinyal Blok (elektris){}Ini adalah jenis sinyal yang umum, hanya memperbolehkan satu kereta berada pada satu blok yang sama dalam waktu yang sama.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sinyal Masuk (elektris){}Akan berwarna hijau jika, dan hanya jika ada satu atau lebih Sinyal Keluar yang berwarna hijau pada bagian jalur  berikutnya. Jika tidak, akan berwarna merah
-STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinyal Keluar (elektris){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaanya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinyal Keluar (elektris){}Cara kerjanya sama dengan Sinyal Blok, akan tetapi penggunaannya lebih ditujukan untuk menghasilkan warna yang benar pada Sinyal Masuk dan Sinyal Kombo
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinyal Kombo (elektris){}Sinyal Kombo berfungsi ganda, sebagai Sinyal Masuk sekaligus Sinyal keluar. Sehingga kita bisa membuat rangkaian sinyal-sinyal
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinyal Jalur (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur standard  bisa di lewati dari arah belakang.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Sinyal Jalur Searah (elektris){}Sinyal jalur dapat digunakan untuk memperbolehkan kereta memasuki sinyal blok pada saat yang sama, jika kereta bisa berbalik jalur ke area pemberhentian yang aman . Sinyal jalur searah tidak  bisa di lewati dari arah belakangnya.
