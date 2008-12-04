@@ -1,0 +1,11 @@
+##name Hebrew
+##ownname Hebrew
+##isocode he_IL
+##winlangid 0x040d
+##plural 0
+##textdir rtl
+
+#
+
+##id 0x0000
+STR_NULL                                                        :
