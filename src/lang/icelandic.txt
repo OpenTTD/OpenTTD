@@ -867,6 +867,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Fjármagna nýj
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fjármagna nýjan iðnað
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...aðeins hægt að byggja í bæjum
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...aðeins hægt að byggja á regnskógasvæðum
@@ -1180,6 +1181,7 @@ STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Þegar 
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Nota skilti í stað ljósa fyrir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Virkja valmynd lestarljósa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Ljósagerð sem skal byggja sem sjálfgildi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :venjuleg
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Brautar ljós
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Ein-stefnu ljós
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allt
@@ -1693,12 +1695,20 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Lestarteinn me�
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Lestarteinn með forljósum
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Lestarteinn með útljósum
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Járnbrautarspor með fjölljósum
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Járnbrautarteinar með háþróuðum skiltum
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Járnbrautarteinar með háþróuðum einstefnuskiltum
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Járbrautarspor með venjulegum ljósum og forljósum
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Járnbrautarspor með venjulegum ljósum og útgangsljósum
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Járnbrautarspor með venjulegum ljósum og fjölljósum
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Járnbrautarteinar með venjulegum og háþróuðum skiltum
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Járnbrautarteinar með venjulegum skiltum og háþróuðum einstefnuskiltum
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Járnbrautarspor með for- og útgangsljósum
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Járnbrautarspor með for- og fjölljósum
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Járnbrautarteinar með for- og háþróuðum skiltum
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Járnbrautarteinar með forskiltum og háþróuðum einstefnuskiltum
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Járnbrautarspor með útgangs- og fjölljósum
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Járnbrautarteinar með útgöngu- og háþróuðum skiltum
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Járnbrautarteinar með útgönguskiltum og háþróuðum einstefnuskiltum
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Verður að fjarlægja járnbrautarstöð fyrst
 
 
@@ -2747,7 +2757,10 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Fara alltaf
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Þjónusta ef þarf
 STR_ORDER_DROP_HALT_DEPOT                                       :Stoppa
 
+STR_ORDER_CONDITIONAL                                           :Skilyrðisbundin hunsun skipana
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Gögn farartækis sem skilyrði byggja á
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Samanburður gagna farartækis við gefið gildi
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Gildið sem bera á við gögn farartækis
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Skrifa skal tölu til að bera saman við
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Hleðsluhlutfall
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Áreiðanleiki

@@ -1143,6 +1143,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :En eskisi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :En yenisi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :En çok kullanılan
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Ayrılan rayları göster: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Hiç uygun araç olmasa da inşa araçlarını göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
@@ -1180,6 +1181,11 @@ STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bu tari
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Sinyal arayüzünü etkinleştir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Varsayılan sinyal tipi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blok sinyalleri
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Yol sinyalleri
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Tek yön yol sinyalleri
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Sinyal tipleri arasında dön: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Yalnızca blok sinyalleri
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Yalnızca yol sinyalleri
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Hepsi
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Senaryo düzenleyicisinde "yolsuz" şehir seçeneği kullanılamaz
@@ -1690,12 +1696,22 @@ STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Normal sinyalli
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Ön-sinayalli ray
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Çıkış-sinyalli ray
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Birleşik sinyalli ray
+STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Yol sinyalleri olan demiryolu
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Tek yön yol sinyalleri olan demiryolu
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Normal ve ön sinyalli ray
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Normal ve çıkış sinyalli ray
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Normal ve birleşik sinyalli ray
+STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Blok ve yol sinyalleri olan demiryolu
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Blok ve tek yön sinyalleri olan demiryolu
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Ön ve Çıkış sinyalli ray
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Ön ve birleşik sinyalli ray
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Ön- ve yol sinyalleri olan demiryolu
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Ön- ve tek yön sinyalleri olan demiryolu
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Çıkış ve birleşik sinyalli ray
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Çıkış- ve yol sinyalleri olan demiryolu
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Çıkış- ve tek yön sinyalleri olan demiryolu
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Karışık- ve yol sinyalleri olan demiryolu
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Karışık- ve tek yön sinyalleri olan demiryolu
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tren istasyonu kaldırılmalı
 
 
@@ -1745,6 +1761,7 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Lambali yol
 STR_1816_TREE_LINED_ROAD                                        :Ağaçli yol
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Araba garı
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Hemzemin geçit
+STR_TRAMWAY                                                     :Tramvay
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Otobüs durağı kaldırılamaz...
 STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Kamyon durağı kaldırılamaz...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Yolcu tramvayı istasyonu kaldırılamıyor...
@@ -1868,6 +1885,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Buraya t
 STR_280A_SIGN                                                   :Tabela
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Tabelayı değiştir
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Tabela adı değiştirilemiyor...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Tabelayı silemezsiniz...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Dikilecek ağaç türünü seçin
 STR_280E_TREES                                                  :Ağaçlar
 STR_280F_RAINFOREST                                             :Yağmur Ormanı
@@ -2249,6 +2267,7 @@ STR_HOSTILE                                                     :Katı
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Company {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Yeni Surat
 STR_7005_COLOR_SCHEME                                           :{BLACK}Renkler
 STR_7006_COLOR_SCHEME                                           :{GOLD}Renk:
@@ -2686,12 +2705,19 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Kutlama Yapıldı . . .{} {STATION} istasyonuna ilk kez tren geldi!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detaylar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Yolda tren var
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_NON_STOP                                              :{BLACK}Durmaksızın
+STR_ORDER_GO_TO                                                 :Git
+STR_ORDER_GO_NON_STOP_TO                                        :Durmaksızın git
 STR_ORDER_GO_VIA                                                :Üzerinden git
 STR_ORDER_GO_NON_STOP_VIA                                       :Durmadan üzerinden git
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Herhangi bir kargoyu tam doldur
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Mümkünse yükle
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Tüm kargoyu yükle
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :Her kargoyu yükle
 STR_ORDER_DROP_NO_LOADING                                       :Yükleme yapma
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Tümünü boşalt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Kabul edilirse yükle
 STR_ORDER_DROP_UNLOAD                                           :Tümünü boşalt
 STR_ORDER_DROP_TRANSFER                                         :Aktar
@@ -2701,8 +2727,17 @@ STR_ORDER_FULL_LOAD_ANY                                         :(Her kargoyu ta
 STR_ORDER_NO_LOAD                                               :(Yükleme yapma)
 STR_ORDER_UNLOAD                                                :(Kargoyu boşalt ve al)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Boşalt ve tam yüklemeyi bekle)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Boşalt ve herhangi bir tam dolduruşu)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Boşalt ve boş kal)
 STR_ORDER_TRANSFER                                              :(Aktar ve kargoyu al)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(Aktar ve tam dolduruşu bekle)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Aktar ve herhangi bir tam dolduruşu bekle)
+STR_ORDER_TRANSFER_NO_LOAD                                      :(Aktar ve boş ayrıl)
+STR_ORDER_NO_UNLOAD                                             :(Boşaltma ve kargo al)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Boşaltma ve tam dolduruşu bekle)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Boşaltma ve herhangi bir tam dolduruşu bekle)
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Seçili emrin doldurma davranışını değiştir
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Seçili emrin boşaltma davranışını değiştir
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Gelişmiş talimat ekle
@@ -2710,6 +2745,8 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :En yakın gara 
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :En yakın hangara git
 STR_ORDER_NEAREST_DEPOT                                         :en yakın
 STR_ORDER_NEAREST_HANGAR                                        :en yakın Hangar
+STR_ORDER_SERVICE_AT                                            :Burada bakıma gir
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Durmaksızın bakıma gir
 STR_ORDER_TRAIN_DEPOT                                           :Tren Garı
 STR_ORDER_ROAD_DEPOT                                            :Araba Garajı
 STR_ORDER_SHIP_DEPOT                                            :Tershane
@@ -2717,15 +2754,35 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Her zaman git
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Gerekiyorsa bakıma gir
+STR_ORDER_DROP_HALT_DEPOT                                       :Dur
 
+STR_ORDER_CONDITIONAL                                           :Duruma göre dallan
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dallanmanın temel alacağı araç verisi
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Araç verisinin verilen değerle nasıl karşılaştırılacağı
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Araç verisi ile karşılaştırılacak değer
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Karşılaştırma yapılacak değeri giriniz
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Yükleme yüzdesi
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Güvenilirlik
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Azami hız
 STR_ORDER_CONDITIONAL_AGE                                       :Araç yaşı (yıl)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Bakım gerektirir
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Her zaman
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :eşittir
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :farklıdır
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :küçüktür
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :küçük eşit
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :büyüktür
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :büyük eşit
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :doğrudur
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :yanlıştır
 STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Emre sıçra {COMMA}
+STR_CONDITIONAL_NUM                                             :{COMMA} no'lu emre {STRING} {STRING} {COMMA} sağlandığında sıçra
+STR_CONDITIONAL_TRUE_FALSE                                      :{COMMA} nolu emre {STRING} {STRING} sağlandığında sıçra
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Sefer yok
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Gezi (zamanlı değil)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING} için gezi
 STR_TIMETABLE_STAY_FOR                                          :{STRING} için bekle
@@ -2739,6 +2796,7 @@ STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} 
 
 STR_INVALID_ORDER                                               :{RED} (Hatalı talimat)
 
+STR_UNKNOWN_STATION                                             :bilinmeyen istasyon
 STR_8812_EMPTY                                                  :{LTBLUE}Boş
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} - {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} geldiği yer: {STATION} (x{NUM})
@@ -2769,9 +2827,11 @@ STR_8826_GO_TO                                                  :{BLACK}Git
 STR_REFIT                                                       :{BLACK}Modifiye
 STR_REFIT_TIP                                                   :{BLACK}Bu talimatta değiştirilecek kargo türünü seçin. Değiştirmeyi kaldırmak için CTRL ile tıklayın
 STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
+STR_STOP_ORDER                                                  :(Dur)
 STR_TIMETABLE_VIEW                                              :{BLACK}Zaman çizelgesi
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zaman tablosu görünümüne geç
 STR_ORDER_VIEW                                                  :{BLACK}Talimatlar
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Emir görünümüne geç
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Talimatlar)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Talimatların Sonu - -
 STR_SERVICE                                                     :{BLACK}Bakım
@@ -2780,6 +2840,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Değeri: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Yükleme / Boşaltma
+STR_LEAVING                                                     :{LTBLUE}Ayrılıyor
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Tren garda durdurulmalı
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Tren gara gönderilemiyor...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Çok fazla talimat var
@@ -2849,12 +2910,14 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Tren yen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tren yeniden adlandırılamaz...
 STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
 STR_RESET_LATENESS                                              :{BLACK}Gecikme sayacını sıfırla
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Frenliyor
 STR_TRAIN_STOPPING_VEL                                          :{RED}Frenliyor, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Uyumsuz ray türleri
 STR_TRAIN_NO_POWER                                              :{RED}Elektrik yok
 STR_TRAIN_START_NO_CATENARY                                     :Bu rayda elektrik olmadiği için bu tren çalışamaz
+STR_TRAIN_STUCK                                                 :{ORANGE}Boş yol bekleniyor
 
 STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} artık kullanılabilir!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
@@ -2873,6 +2936,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Bu araç {STRIN
 STR_TIMETABLE_TOTAL_TIME                                        :Bu zaman çizelgesinin bitmesi {STRING} sürecek
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Bu zaman çizelgesinin bitmesi en az {STRING} sürecek (tamamı hesaplanmadı)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatik doldur
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Zaman tablosunu bir sonraki yolculuktaki değerlerle otomatik doldur (Bekleme sürelerini tutmak için CTRL ile tıklanır)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Yolda araba var
@@ -3136,6 +3200,8 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Toplam p
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Ayarları
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf ayarları
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Uygula
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palet değiştir
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Seçili NewGRF'nin paletini değiştir.{}Bu işlemi bu NewGRF'nin grafikleri oyun içerisinde pembe görünüyorsa yapın.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parametreler
 STR_NEWGRF_TIP                                                  :{BLACK}Yüklediğiniz tüm Newgrf'lerin listesi. Ayarları değiştirmek için bir sete tıklayın
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yüklenmiş newgrf dosyası yok! Newgrf yüklemek için kılavuza başvurun
@@ -3158,6 +3224,10 @@ STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF dosyası çeviri için yapılmış
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Çok fazla NewGRF yüklendi.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :{STRING} adlı NewGRF'yi {STRING} ile birlikte kullanmak senkronizasyon sorunu oluşturabilir.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmeyen sprayt.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanımı denemesi
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir sprayt içeriyor. Tüm bozuk spraytlar kırmızı bir soru işareti (?) olarak görünecektir.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Seçili seçkiyi yükle
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Seçkiyi kaydet
@@ -3193,8 +3263,11 @@ STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Eksik do
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Eksik GRF dosyaları etkisizleştirildi
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Oyunu yüklemek için gerekli olan GRF dosyaları eksik
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik GRF dosyası
+STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Devam ettırme OpenTTD'yi çökertebilir. Takip eden çökmeler için hata rapor etmeyiniz.{}Gerçekten devam ettirmek istiyor musunuz?
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' için hangar içinde değilken araç uzunluğunu değiştirir.
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3352,6 +3425,7 @@ STR_START_DATE_QUERY_CAPT                                       :{WHITE}Başlang
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Şehir planlama uyarısı
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}"Başka karayolu yok" şeklindeki kasaba yerleşimi tavsiye edilmez. Oluşturmaya devam edilsin mi?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Yükseklik haritası adı:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Boyut: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Harita oluşturuluyor...
@@ -3424,6 +3498,7 @@ STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}İstasyo
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Köprüler için şeffaflık
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Antenler ve deniz fenerleri için şeffaflık
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparan yükleme göstergesi
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Nesneleri şeffaf değil görünmez yap
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}%{NUM}{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}%{NUM}{UPARROW}
@@ -3470,6 +3545,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Bu grubu
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3544,6 +3620,8 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Sinyal s
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :"1234567890*-\qwertyuıopğüasdfghjklşi,'  zxcvbnmöç. .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :"!'^+%&/()=?_|QWERTYUIOPĞÜASDFGHJKLŞİ;"  ZXCVBNMÖÇ: .
 ########
 
 ############ town controlled noise level

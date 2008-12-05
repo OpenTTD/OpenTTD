@@ -613,25 +613,41 @@ STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tunjukka
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 
 ############ range for menu starts
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animasi penuh
+STR_02D2_FULL_DETAIL                                            :{SETX 12}Perincian penuh
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Bangunan-bangunan telus
 ############ range ends here
 
 ############ range for menu starts
+STR_CONSOLE_SETTING                                             :Togolkan konsol
 STR_02D9_ABOUT_OPENTTD                                          :Tentang 'OpenTTD'
 ############ range ends here
 
+STR_02DB_OFF                                                    :{BLACK}Mati
+STR_02DA_ON                                                     :{BLACK}Hidup
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Tunjukkan subsidi
 STR_02DD_SUBSIDIES                                              :Subsidi
 STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
+STR_SIGN_LIST                                                   :Senarai isyarat
+STR_02DF_TOWN_DIRECTORY                                         :Direktori bandar
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unit kewangan
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_MEASURING_UNITS                                             :{BLACK}Ukuran unit
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Kenderaan tanah
+STR_02E9_DRIVE_ON_LEFT                                          :Memandu di kiri
+STR_02EA_DRIVE_ON_RIGHT                                         :Memandu di kanan
 STR_02EB_TOWN_NAMES                                             :{BLACK}Nama bandar
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Pilih tema untuk nama bandar
 
+STR_02F4_AUTOSAVE                                               :{BLACK}Simpanan automatik
+STR_02F7_OFF                                                    :Matikan
 STR_02F8_EVERY_3_MONTHS                                         :Setiap 3 bulan
 STR_02F9_EVERY_6_MONTHS                                         :Setiap 6 bulan
 STR_02FA_EVERY_12_MONTHS                                        :Setiap 12 bulan
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Mulakan permainan baru
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Papar pilihan permainan
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Papar pilihan kesukaran
 STR_0304_QUIT                                                   :{BLACK}Keluar
@@ -650,10 +666,12 @@ STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya boleh dibina di bandar
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...hanya boleh dibina di kawasan hutan
+STR_0319_PAUSED                                                 :{YELLOW}* *  DIHENTIKAN  *  *
 
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Beli tanah untuk kegunaan masa hadapan
 STR_SAVING_GAME                                                 :{RED}*  *  SIMPAN PERMAINAN  *  *
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Pilih program 'Muzik gaya Ezy Street'
 
 STR_6                                                           :{BLACK}6
 STR_7                                                           :{BLACK}7
@@ -682,6 +700,15 @@ STR_TOWNNAME_ITALIAN                                            :Italian
 STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of townname region
 
+STR_CURR_GBP                                                    :Paun (£)
+STR_CURR_USD                                                    :Dolar ($)
+STR_CURR_EUR                                                    :Euro (€)
+STR_CURR_YEN                                                    :Yen (¥)
+STR_CURR_ATS                                                    :Syiling Austria (ATS)
+STR_CURR_DEM                                                    :Mark Jerman (DEM)
+STR_CURR_FIM                                                    :Markka Finland (FIM)
+STR_CURR_FRF                                                    :Franc (FRF)
+STR_CURR_RUR                                                    :Ruble Rusia (RUR)
 
 
 STR_OPTIONS_LANG                                                :{BLACK}Bahasa
@@ -709,15 +736,21 @@ STR_MONTH_OCT                                                   :Oktober
 STR_MONTH_NOV                                                   :November
 STR_MONTH_DEC                                                   :Desember
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Menuju ke {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Menuju ke {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Tiada perintah
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Tiada perintah, {VELOCITY}
 
 STR_PASSENGERS                                                  :penumpang
 STR_BAGS                                                        :beg
 STR_TONS                                                        :tan
 STR_LITERS                                                      :liter
+STR_ITEMS                                                       :barangan
 STR_CRATES                                                      :peti
 STR_RES_OTHER                                                   :lain
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 
 
@@ -853,11 +886,18 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukark
 ############ Leave those lines in this order!!
 
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes dimuat turun setakat ini
 
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan jumlah wang anda hendak memberikan
 
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Kata laluan salah
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Anda telah ditendang keluar daripada permainan ini
 
+STR_NETWORK_ERR_LEFT                                            :telah meninggalkan permainan
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :tidak boleh memuatkan peta
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :sambungan terhilang
 ############ End of leave-in-this-order
 
 

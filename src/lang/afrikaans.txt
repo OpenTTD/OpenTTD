@@ -278,6 +278,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Te veel 
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Gekiesde naam alreeds in gebruik
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -3603,7 +3604,11 @@ STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein ver
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
 ############ town controlled noise level
+STR_NOISE_IN_TOWN                                               :{BLACK}Geraaas limit in dorp: {ORANGE}{COMMA}{BLACK}  Maks: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Geraas gegenereer: {GOLD}{COMMA}
 ########
