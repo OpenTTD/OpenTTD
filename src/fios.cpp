@@ -226,7 +226,7 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 			strecpy(d_name, FS2OTTD(dirent->d_name), lastof(d_name));
 
 			/* found file must be directory, but not '.' or '..' */
-			if (FiosIsValidFile(_fios_path, dirent, &sb) && (sb.st_mode & S_IFDIR) &&
+			if (FiosIsValidFile(_fios_path, dirent, &sb) && S_ISDIR(sb.st_mode) &&
 					(!FiosIsHiddenFile(dirent) || strncasecmp(d_name, PERSONAL_DIR, strlen(d_name)) == 0) &&
 					strcmp(d_name, ".") != 0 && strcmp(d_name, "..") != 0) {
 				fios = _fios_items.Append();
@@ -259,7 +259,7 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 			char *t;
 			strecpy(d_name, FS2OTTD(dirent->d_name), lastof(d_name));
 
-			if (!FiosIsValidFile(_fios_path, dirent, &sb) || !(sb.st_mode & S_IFREG) || FiosIsHiddenFile(dirent)) continue;
+			if (!FiosIsValidFile(_fios_path, dirent, &sb) || !S_ISREG(sb.st_mode) || FiosIsHiddenFile(dirent)) continue;
 
 			/* File has no extension, skip it */
 			if ((t = strrchr(d_name, '.')) == NULL) continue;
