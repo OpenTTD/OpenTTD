@@ -35,7 +35,7 @@ STR_0019_VALUABLES                                              :Barang berharga
 STR_001A_COPPER_ORE                                             :Biji Tembaga
 STR_001B_MAIZE                                                  :Jagung
 STR_001C_FRUIT                                                  :Buah-buahan
-STR_001D_DIAMONDS                                               :Permata
+STR_001D_DIAMONDS                                               :Berlian
 STR_001E_FOOD                                                   :Makanan
 STR_001F_PAPER                                                  :Kertas
 STR_0020_GOLD                                                   :Emas
@@ -169,7 +169,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Keluar
 STR_00C8_YES                                                    :{BLACK}Ya
 STR_00C9_NO                                                     :{BLACK}Tidak
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Anda yakin akan keluar dari OpenTTD dan kembali ke {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Anda yakin ingin keluar dari OpenTTD dan kembali ke {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -196,7 +196,7 @@ STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Terlalu 
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Lokasi
-STR_00E5_CONTOURS                                               :Sekeliling
+STR_00E5_CONTOURS                                               :Kontur
 STR_00E6_VEHICLES                                               :Kendaraan
 STR_00E7_INDUSTRIES                                             :Industri
 STR_00E8_ROUTES                                                 :Rute
@@ -213,14 +213,14 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Kereta Api
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Angkutan darat
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Angkutan Jalan Raya
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Kapal
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Pesawat Udara
-STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Jalur angkutan
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Pesawat
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Jalur Transportasi
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Tambang Batubara
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Stasiun Pembangkit
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Hutan
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Penggergajian kayu
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Penggergajian Kayu
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Kilang Minyak
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Pertanian
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Pabrik
@@ -229,11 +229,11 @@ STR_0102_OIL_WELLS                                              :{BLACK}{TINYFON
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Tambang Biji Besi
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Pengolahan Baja
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Pengolahan Kertas
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Pabrik Kertas
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Tambang Emas
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Industri Pengolahan Pangan
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Tambang Permata
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Tambang Biji Tembaga
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Tambang Berlian
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Tambang Tembaga
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Perkebunan Buah-buahan
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Perkebunan Karet
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Sumber Air
@@ -242,7 +242,7 @@ STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFON
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Hutan Harum Manis
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Pabrik Manisan
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Perkebunan Baterai
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Sumber Cola
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Sumur Cola
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Toko Mainan
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Pabrik Mainan
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Pancuran Plastik
@@ -816,7 +816,9 @@ STR_TOWN_POPULATION                                             :{BLACK}Populasi
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Mata uang
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Mata uang pilihan
+STR_MEASURING_UNITS                                             :{BLACK}Satuan pengukuran
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Pilihan satuan pengukuran
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Angkutan darat
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Pilih sisi angkutan darat berkendara
@@ -852,6 +854,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Pilih ga
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Biayai pembangunan industri baru atau daftar semua industri
 
 ############ range for menu starts
+STR_INDUSTRY_DIR                                                :Direktori Industri
 STR_0313_FUND_NEW_INDUSTRY                                      :Biaya industri baru
 ############ range ends here
 
@@ -882,6 +885,7 @@ STR_TOWNNAME_FRENCH                                             :Perancis
 STR_TOWNNAME_GERMAN                                             :Jerman
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Inggris (Tambahan)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Amerika-Latin
+STR_TOWNNAME_SILLY                                              :Konyol
 STR_TOWNNAME_SWEDISH                                            :Swedia
 STR_TOWNNAME_DUTCH                                              :Jerman
 STR_TOWNNAME_FINNISH                                            :Finlandia
@@ -1006,6 +1010,20 @@ STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Tidak ad
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(batas uang)
 
 
+STR_CONFIG_PATCHES_OFF                                          :Tidak
+STR_CONFIG_PATCHES_ON                                           :Ya
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Tampilkan kecepatan di status bar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Boleh mendirikan bangunan di lereng dan pantai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Ijinkan menggusur lebih banyak lagi jalan/jembatan kota, dsb: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan membuat rangkaian gerbong yang sangat panjang: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktifkan akselerasi realistis pada kereta api: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Kereta api dan kapal tidak boleh berbelok 90 derajat: {ORANGE}{STRING} {LTBLUE} (tidak dengan NTP)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan suatu stasiun kereta api: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Aktifkan algoritma pemuatan tingkat lanjut : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Memuat secara bertahap: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Penerimaan muatan pada suatu stasiun hanya jika dibutuhkan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Ijinkan membangun jembatan yang sangat panjang: {ORANGE}{STRING}
 
 
 
@@ -1064,12 +1082,62 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard jangka servis berkala untuk kapal: {ORANGE}{STRING} hari/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard jangka servis berkala untuk kapal: {ORANGE}Non-aktif
 
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Akhiri game pada: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ekonomi stabil (more, smaller changes)
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Perbolehkan membeli saham perusahaan lain
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ketika menarik, tempatkan sinyal setiap: {ORANGE}{STRING} kotak
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Gunakan sinyal semaphore sebelum: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Gunakan antarmuka sinyal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Asali sinyal yang dibangun: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Sinyal blok
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Sinyal dua arah
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Sinyal satu arah
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Putar ke jenis sinyal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Hanya sinyal blok
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Hanya sinyal biasa
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Semua
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Kota yang "tidak memiliki jalan" tidak diperbolehkan dalam editor skenario
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Pilih tata jalan kota: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :Tidak memiliki jalan
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :Asali
+STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lebih baik
+STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :kotak 2x2
+STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :kotak 3x3
+STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :acak
 
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posisi kotak alat utama: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Kiri
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Tengah
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Kanan
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Lekatkan jendela pada: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pelekatan jendela: {ORANGE}dimatikan
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Kecepatan pertumbuhan kota: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Tak ada
+STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Pelan
+STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
+STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Cepat
+STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Sangat cepat
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporsi desa yang akan menjadi kota: {ORANGE}1 berbanding {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporsi desa yang akan menjadi kota: {ORANGE}Tidak ada
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Ukuran kota-kota awal: {ORANGE}{STRING}
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Hapus elemen jalan yang aneh saat membangun
 
+STR_CONFIG_PATCHES_GUI                                          :{BLACK}Antaramuka
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruksi
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Kendaraan
+STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stasiun
+STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomi
+STR_CONFIG_PATCHES_AI                                           :{BLACK}Kompetitor
 
+STR_CONFIG_PATCHES_DISABLED                                     :dimatikan
+STR_CONFIG_PATCHES_INT32                                        :{NUM}
+STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
+STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ganti nilai tetapan
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Beberapa atau semua interval servis dibawah ini tidak diperbolehkan!  Hanya 5-90% dan 30-800 hari yang diperbolehkan
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Penjari jejak untuk kereta: {ORANGE}{STRING}
 
 
 
@@ -1122,12 +1190,68 @@ STR_CANT_CONVERT_RAIL                                           :{WHITE}Tidak da
 
 
 
+STR_NETWORK_START_DATE                                          :{SILVER}Tanggal mulai:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Tanggal sekarang:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}Tertutup dengan kata kunci!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
+STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER PENUH
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSI TIDAK SESUAI
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF TIDAK SESUAI
+
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Bermain gabung
 
 
 
-
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nama Permainan:
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Atur kata kunci
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Lindungi permainan ini dengan kata kunci jika anda tidak ingin membiarkannya terbuka untuk umum
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Pilih peta:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Peta mana yang akan dimainkan?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :Internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Bahasa pembicaraan:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Agar pemain lain mengetahui bahasa apa yang digunakan pada sever
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Segala bahasa
+STR_NETWORK_LANG_ENGLISH                                        :Inggris
+STR_NETWORK_LANG_GERMAN                                         :Jerman
+STR_NETWORK_LANG_FRENCH                                         :Perancis
+STR_NETWORK_LANG_BRAZILIAN                                      :Brazil
+STR_NETWORK_LANG_BULGARIAN                                      :Bulgaria
+STR_NETWORK_LANG_CHINESE                                        :China
+STR_NETWORK_LANG_CZECH                                          :Czech
+STR_NETWORK_LANG_DANISH                                         :Denmark
+STR_NETWORK_LANG_DUTCH                                          :Jerman
+STR_NETWORK_LANG_ESPERANTO                                      :Esperanto
+STR_NETWORK_LANG_FINNISH                                        :Finlandia
+STR_NETWORK_LANG_HUNGARIAN                                      :Hungaria
+STR_NETWORK_LANG_ICELANDIC                                      :Islandia
+STR_NETWORK_LANG_ITALIAN                                        :Italia
+STR_NETWORK_LANG_JAPANESE                                       :Jepang
+STR_NETWORK_LANG_KOREAN                                         :Korea
+STR_NETWORK_LANG_LITHUANIAN                                     :Lithuania
+STR_NETWORK_LANG_NORWEGIAN                                      :Norwegia
+STR_NETWORK_LANG_POLISH                                         :Polandia
+STR_NETWORK_LANG_PORTUGUESE                                     :Portugis
+STR_NETWORK_LANG_ROMANIAN                                       :Rumania
+STR_NETWORK_LANG_RUSSIAN                                        :Russia
+STR_NETWORK_LANG_SLOVAK                                         :Slovakia
+STR_NETWORK_LANG_SLOVENIAN                                      :Slovenia
+STR_NETWORK_LANG_SPANISH                                        :Spanyol
+STR_NETWORK_LANG_SWEDISH                                        :Swedia
+STR_NETWORK_LANG_TURKISH                                        :Turki
+STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainia
+STR_NETWORK_LANG_AFRIKAANS                                      :Afrika
+STR_NETWORK_LANG_CROATIAN                                       :Kroasia
+STR_NETWORK_LANG_CATALAN                                        :Catalan
+STR_NETWORK_LANG_ESTONIAN                                       :Estonia
+STR_NETWORK_LANG_GALICIAN                                       :Galisia
+STR_NETWORK_LANG_GREEK                                          :Yunani
+STR_NETWORK_LANG_LATVIAN                                        :Latvia
 ############ End of leave-in-this-order
 
 

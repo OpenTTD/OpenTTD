@@ -555,6 +555,7 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}تصئی
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}خرید زمین برای استفاده های بعدی
 STR_032F_AUTOSAVE                                               :{RED}ذخیره اتوماتیک
 
+STR_6                                                           :{BLACK}6
 
 ############ start of townname region
 ############ end of townname region
@@ -976,8 +977,16 @@ STR_5018_ROAD_TUNNEL                                            :تونل ماش
 STR_501F_WOODEN_RAIL_BRIDGE                                     :پل راه آهن چوبی
 STR_5025_WOODEN_ROAD_BRIDGE                                     :پل ماشین رو چوبی
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :پل لوله ای راه آهن
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :پل جاده ای لوله ای
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}چیزی در مسیر قرار گرفته
+STR_5802_LIGHTHOUSE                                             :فانوس دریایی
+STR_5803_COMPANY_HEADQUARTERS                                   :ساختمان اصلی شرکت
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}ساختمان اصلی شرکت در مسیر قرار گرفته است
+STR_5805_COMPANY_OWNED_LAND                                     :زمین خریداری شده
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}نمی توان این ناحیه را خرید
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE} قبلا توسط شرکت خریداری شده
 
 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
@@ -988,11 +997,21 @@ STR_5027_TUBULAR_RAIL_BRIDGE                                    :پل لوله �
 ############ end of savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}سطح سختی
 
 ############ range for difficulty levels starts
+STR_6801_EASY                                                   :{BLACK}ساده
+STR_6802_MEDIUM                                                 :{BLACK}متوسط
+STR_6803_HARD                                                   :{BLACK}سخت
+STR_6804_CUSTOM                                                 :{BLACK}انتخابی
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}زمان شروع به بازی رقبا: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}تعداد شهر ها: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}تعداد کارخانه ها: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY}
 ############ range for difficulty settings ends
 
 

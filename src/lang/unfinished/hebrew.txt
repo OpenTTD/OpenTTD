@@ -1,16 +1,24 @@
 ##name Hebrew
-##ownname Hebrew
+##ownname עברית
 ##isocode he_IL
 ##winlangid 0x040d
 ##plural 0
 ##textdir rtl
+##gender m f
 
 #
 
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}מחוץ לשטח המפה
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}קרוב מדי לקצה המפה
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}אין מספיק כסף - צריך {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}דרושה אדמה שטוחה
+STR_0008_WAITING                                                :{BLACK}מחכים: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000C_ACCEPTS                                                :{BLACK}מקבל: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}מקבל: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :נוסעים
 STR_0010_COAL                                                   :פחם
@@ -28,7 +36,7 @@ STR_001B_MAIZE                                                  :שעורה
 STR_001C_FRUIT                                                  :פירות
 STR_001D_DIAMONDS                                               :יהלומים
 STR_001E_FOOD                                                   :מזון
-STR_001F_PAPER                                                  :ניייר
+STR_001F_PAPER                                                  :נייר
 STR_0020_GOLD                                                   :זהב
 STR_0021_WATER                                                  :מים
 STR_0022_WHEAT                                                  :חיטה
@@ -40,7 +48,9 @@ STR_0027_COLA                                                   :קולה
 STR_0028_COTTON_CANDY                                           :שערות סבתא
 STR_0029_BUBBLES                                                :בועות
 STR_002A_TOFFEE                                                 :טופי
-STR_002B_BATTERIES                                              :בטריות
+STR_002B_BATTERIES                                              :סוללות
+STR_002C_PLASTIC                                                :פלסטיק
+STR_002D_FIZZY_DRINKS                                           :משקאות מוגזים
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}לא מסוגל לעשות זאת
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}לא מסוגל להרוס אזור זה
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}זכיות יוצרים מקוריות {COPYRIGHT} כריס סויר 1995,כול הזכיות שמורות
@@ -233,16 +243,94 @@ STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}תראה
 
 
 
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...מותר רק אחד בכל עיר
+STR_0288_PLANT_TREES                                            :{BLACK}שתול עצים
+STR_0289_PLACE_SIGN                                             :{BLACK}מקם שלט
+STR_028A_RANDOM_TREES                                           :{BLACK}עצים אקראיים
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}שתול עצים אקראית בכל המפה
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}מקם אזורים סלעיים במפה
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}מקם מיגדלור
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}מקם משדר
+STR_CREATE_RIVER                                                :{BLACK}מקם נחלים.
+STR_0290_DELETE                                                 :{BLACK}מחק
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}מחק את כל העיר
+STR_0292_SAVE_SCENARIO                                          :שמור סצנריו
+STR_0293_LOAD_SCENARIO                                          :פתח סצנריו
+STR_0294_QUIT_EDITOR                                            :צא מהעורך
+STR_0296_QUIT                                                   :יציאה
+STR_0298_LOAD_SCENARIO                                          :{WHITE}פתח סצנריו
+STR_0299_SAVE_SCENARIO                                          :{WHITE}שמור סצנריו
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...ניתן לבנות בערים עם אוכלוסיה של לפחות 1200 איש
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...קצוות הגשר צריכים להיות על הקרקע
+STR_02A1_SMALL                                                  :{BLACK}קטן
+STR_02A2_MEDIUM                                                 :{BLACK}בינוני
+STR_02A3_LARGE                                                  :{BLACK}גדול
+STR_SCENARIO_EDITOR_CITY                                        :{BLACK}עיר
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}בחר את גודל העיר
+STR_02A5_TOWN_SIZE                                              :{YELLOW}גודל העיר:
 
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}הצג הודעה או חדשות אחרונים
+STR_OFF                                                         :כבוי
+STR_SUMMARY                                                     :תמצית
+STR_FULL                                                        :מלא
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :רשימת הערים
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :ברירת מחדל
+STR_02BF_CUSTOM                                                 :אחר
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
+STR_02C4_GAME_OPTIONS                                           :אפשרויות המשחק
+STR_02C6_DIFFICULTY_SETTINGS                                    :הגדרות קושי
+STR_MENU_CONFIG_PATCHES                                         :הגדרות מתקדמות
+STR_TRANSPARENCY_OPTIONS                                        :אפשרויות שקיפות
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}אנימציה מלאה
+STR_02D2_FULL_DETAIL                                            :{SETX 12}פרטים מלאים
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}בניינים שקופים
 ############ range ends here
 
 ############ range for menu starts
+STR_CONSOLE_SETTING                                             :פתח/סגור קונסולה
+STR_02D7_SCREENSHOT_CTRL_S                                      :צילום מסך (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :צילום מסך ענק (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD                                          :אודות 'OpenTTD'
 ############ range ends here
 
+STR_02DB_OFF                                                    :{BLACK}כבוי
+STR_02DA_ON                                                     :{BLACK}דלוק
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}הצג סובסידיות
+STR_02DD_SUBSIDIES                                              :סובסידיות
+STR_02DE_MAP_OF_WORLD                                           :מפת העולם
+STR_SIGN_LIST                                                   :רשימת שלטים
+STR_02DF_TOWN_DIRECTORY                                         :רשימת ערים
+STR_TOWN_POPULATION                                             :{BLACK}אוכלוסיית העולם: {COMMA}
 
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}מטבע
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}בחירת מטבע
+STR_MEASURING_UNITS                                             :{BLACK}יחידות מדידה
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}בחירת יחידות מדידה
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}כלי רכב בכבישים
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}בחר את צד הכביש בו יסעו כלי הרכב
+STR_02E9_DRIVE_ON_LEFT                                          :סע בצד שמאל
+STR_02EA_DRIVE_ON_RIGHT                                         :סע בצד ימין
+STR_02EB_TOWN_NAMES                                             :{BLACK}שמות הערים
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}בחר סגנון של שמות הערים
 
+STR_02F4_AUTOSAVE                                               :{BLACK}שמירה אוטומטית
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}בחר פרק זמן בין שמירות אוטומטיות
+STR_02F7_OFF                                                    :כבוי
+STR_02F8_EVERY_3_MONTHS                                         :כל 3 חודשים
+STR_02F9_EVERY_6_MONTHS                                         :כל 6 חודשים
+STR_02FA_EVERY_12_MONTHS                                        :כל 12 חודשים
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}התחל משחק חדש
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}טען משחק שמור
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}צור מפה/סצנריו מותאמים אישית
 
 ############ range for menu starts
 ############ range ends here
@@ -255,24 +343,98 @@ STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}תראה
 ############ end of townname region
 
 
+STR_CURR_CUSTOM                                                 :אחר...
 
+STR_OPTIONS_LANG                                                :{BLACK}שפה
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_LANG_TIP                                            :{BLACK}בחר את שפת הממשק
 
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}מסך מלא
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}סמן תיבה זו כדי לשחק OpenTTD על כל המסך
 
+STR_OPTIONS_RES                                                 :{BLACK}רזלוציית המסך
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_RES_TIP                                             :{BLACK}בחר את רזולוציית המסך
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}פורמט צילום המסך
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}בחר את הפורמט של צילום המסך
 
+STR_AUTOSAVE_1_MONTH                                            :כל חודש
+STR_AUTOSAVE_FAILED                                             :{WHITE}שמירה אוטומטית נכשלה
 
+STR_MONTH_JAN                                                   :ינואר
+STR_MONTH_FEB                                                   :פברואר
+STR_MONTH_MAR                                                   :מרץ
+STR_MONTH_APR                                                   :אפריל
+STR_MONTH_MAY                                                   :מאי
+STR_MONTH_JUN                                                   :יוני
+STR_MONTH_JUL                                                   :יולי
+STR_MONTH_AUG                                                   :אוגוסט
+STR_MONTH_SEP                                                   :ספטמבר
+STR_MONTH_OCT                                                   :אוקטובר
+STR_MONTH_NOV                                                   :נובמבר
+STR_MONTH_DEC                                                   :דצמבר
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}פונה אל {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}פונה אל {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}אין הוראות
+STR_NO_ORDERS_VEL                                               :{LTBLUE}אין הוראות, {VELOCITY}
 
+STR_PASSENGERS                                                  :נוסעים
+STR_BAGS                                                        :שקים
+STR_TONS                                                        :טונות
+STR_LITERS                                                      :ליטרים
+STR_ITEMS                                                       :פריטים
+STR_CRATES                                                      :ארגזים
+STR_RES_OTHER                                                   :אחר
+STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}לא ניתן לשתף הוראות...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}לא ניתן להעתיק הוראות...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - סוף של הוראות משותפות - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}רכבת {COMMA} לא יכולה למצוא דרך להמשיך בה.
+STR_TRAIN_IS_LOST                                               :{WHITE}רכבת {COMMA} אבודה.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}רווח של רכבת {COMMA} בשנה האחרונה היה{CURRENCY}
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}לרכבת {COMMA} יש מעט מידי הוראות בלוח זמנים
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}לרכבת {COMMA} יש הוראה בטלה
+STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}לרכבת {COMMA} יש הוראות כפולות
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}לרכבת {COMMA} יש תחנה בטלה בהוראות
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}לרכב {COMMA} יש מעט מידי הוראות
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}לרכב {COMMA} יש הוראה בטלה
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}לרכב {COMMA} יש הוראות כפולות
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}לרכב {COMMA} יש תחנה בטלה בהוראות
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}לאונייה {COMMA} יש מעט מידי הוראות
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}לאונייה {COMMA} יש הוראה בטלה
+STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}לאונייה {COMMA} יש הוראות כפולות
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}לאונייה {COMMA} יש תחנה בטלה בהוראות
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}לכלי טיס {COMMA} יש מעט מידי הוראות
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}לכלי טיס {COMMA} יש הוראה בטלה
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}לכלי טיס {COMMA} יש הוראות כפולות
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}לכלי טיס {COMMA} יש תחנה בטלה בהוראות
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}חידוש רכבת {COMMA} נכשל{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}חידוש רכב {COMMA} נכשל{}{STRING}
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}חידוש אונייה {COMMA} נכשל{}{STRING}
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}חידוש כלי טיס {COMMA} נכשל{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}רכבת {COMMA} ארוכה מידי אחרי ההחלפה
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}אין כללים להחלפה/חידוש אוטומטיים.
 
+STR_CONFIG_PATCHES                                              :{BLACK}הגדרות מתקדמות
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}הצג הגדרות מתקדמות
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}הגדרות מתקדמות
 
+STR_CONFIG_PATCHES_OFF                                          :כבוי
+STR_CONFIG_PATCHES_ON                                           :דלוק
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}הצג את מהירות כלי הרכב בשורת המצב: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}אפשר לבנות על מידרונות וחופים: {ORANGE}{STRING}
 
 
 
@@ -325,30 +487,105 @@ STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}תראה
 
 
 
+STR_NETWORK_ADD_SERVER                                          :{BLACK}הוסף שרת
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}מוסיף שרת לרשימה שתמיד יבדק למשחקים פעילים.
+STR_NETWORK_ENTER_IP                                            :{BLACK}הזן את הכתובת של השרת
+
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}לקוחות
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}לקוחות מחוברים / מקסימום לקוחות{}חברות מחוברות / מקסימום חברות
+
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}גודל המפה
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}גודל המפה במשחק{}לחץ למיון לפי שטח
+
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}תאריך
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}תאריך נוכחי
+
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}שנים
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}מספר שנים{}המשחק נמשך
+
+STR_NETWORK_GAME_INFO                                           :{SILVER}מידע על המשחק
+STR_NETWORK_CLIENTS                                             :{SILVER}לקוחות:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}שפה:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}גודל המפה:  {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}גרסת השרת:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}כתובת השרת:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_START_DATE                                          :{SILVER}תאריך התחלה:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}תאריך נוכחי:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}מוגן בסיסמה!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}שרת מנותק
+STR_NETWORK_SERVER_FULL                                         :{SILVER}שרת מלא
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}גרסה לא תואמת
+
+STR_NETWORK_JOIN_GAME                                           :{BLACK}הצטרף למשחק
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}התחל משחק רב-משתתפים חדש
+
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}שם המשחק:
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}הזן שם למשחק רשת
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}קבע סיסמה
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}הגן על המשחק שלך עם סיסמה אם אתה לא רוצה שהוא יהיה זמין לכולם
+STR_NETWORK_SELECT_MAP                                          :{BLACK}בחר מפה:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}באיזה מפה אתה רוצה לשחק?
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :אינטרנט
+STR_NETWORK_LAN_INTERNET                                        :LAN / אינטרנט
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} לקוח{P "" ות}
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}מקסימום לקוחות:
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} חבר{P ה ות}
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}מקסימום חברות:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}הגבל את השרת למספר מסויים של חברות
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}שפת דיבור:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}שחקנים אחרים ידעו איו שפה מדוברת בשרת
+STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}התחל משחק
+STR_NETWORK_LOAD_GAME                                           :{BLACK}טען משחק
+
+############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :כלשהו
+STR_NETWORK_LANG_ENGLISH                                        :אנגלית
+STR_NETWORK_LANG_GERMAN                                         :גרמנית
+STR_NETWORK_LANG_FRENCH                                         :צרפתית
+STR_NETWORK_LANG_BULGARIAN                                      :בולגרית
+STR_NETWORK_LANG_CHINESE                                        :סינית
+STR_NETWORK_LANG_CZECH                                          :צ'כית
+STR_NETWORK_LANG_ESPERANTO                                      :אספרנטו
+STR_NETWORK_LANG_FINNISH                                        :פינית
+STR_NETWORK_LANG_HUNGARIAN                                      :הונגרית
+STR_NETWORK_LANG_ITALIAN                                        :איטלקית
+STR_NETWORK_LANG_JAPANESE                                       :יפנית
+STR_NETWORK_LANG_KOREAN                                         :קוריאנית
+STR_NETWORK_LANG_NORWEGIAN                                      :נורבגית
+STR_NETWORK_LANG_POLISH                                         :פולנית
+STR_NETWORK_LANG_PORTUGUESE                                     :פורטוגזית
+STR_NETWORK_LANG_ROMANIAN                                       :רומנית
+STR_NETWORK_LANG_RUSSIAN                                        :רוסית
+STR_NETWORK_LANG_SWEDISH                                        :שבדית
+STR_NETWORK_LANG_TURKISH                                        :טורקית
+STR_NETWORK_LANG_UKRAINIAN                                      :אוקראינית
+STR_NETWORK_LANG_CROATIAN                                       :קרואטית
+############ End of leave-in-this-order
 
 
+STR_NETWORK_REFRESH                                             :{BLACK}רענן שרת
 
 
-
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}שם החברה:  {WHITE}{STRING}
+STR_NETWORK_VALUE                                               :{SILVER}ערך החברה:  {WHITE}{CURRENCY}
 
 
 
 ############ Leave those lines in this order!!
-############ End of leave-in-this-order
-
-
-
-
-
-
-
-############ Leave those lines in this order!!
 
 ############ End of leave-in-this-order
 
+STR_NETWORK_DISCONNECT                                          :{BLACK}התנתק
 
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}שרת מוגן. הזן סיסמה
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}חברה מוגנת. הזן סיסמה
 
 
 ############ Leave those lines in this order!!
@@ -459,6 +696,7 @@ STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}תראה
 
 
 
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
 

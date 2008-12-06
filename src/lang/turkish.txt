@@ -867,6 +867,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Yeni fabrika a�
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Yeni fabrika aç
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...sadece şehirlere yapılabilir
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...sadece yağmur ormanlarına yapılabilir
@@ -1273,6 +1274,7 @@ STR_WAYPOINT                                                    :{WHITE}Yerimi
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Yerimi türü seç
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} Tren
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Yerimi adını değiştir
@@ -1712,6 +1714,7 @@ STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Çıkış- ve y
 STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Çıkış- ve tek yön sinyalleri olan demiryolu
 STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Karışık- ve yol sinyalleri olan demiryolu
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Karışık- ve tek yön sinyalleri olan demiryolu
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ön ve tek yön sinyalli ray
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tren istasyonu kaldırılmalı
 
 
@@ -1988,6 +1991,7 @@ STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}İmalath
 STR_3804_WATER                                                  :Su
 STR_3805_COAST_OR_RIVERBANK                                     :Sahil veya göl kenarı
 STR_3806_SHIP_DEPOT                                             :Tersane
+STR_AQUEDUCT                                                    :Su kemeri
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Suya yapılamaz
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Önce kanal kaldırılmalı
 
@@ -2736,6 +2740,7 @@ STR_ORDER_TRANSFER_NO_LOAD                                      :(Aktar ve boş 
 STR_ORDER_NO_UNLOAD                                             :(Boşaltma ve kargo al)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Boşaltma ve tam dolduruşu bekle)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Boşaltma ve herhangi bir tam dolduruşu bekle)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Seçili emrin durma davranışını değiştir
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Seçili emrin doldurma davranışını değiştir
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Seçili emrin boşaltma davranışını değiştir
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
@@ -2786,6 +2791,7 @@ STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Sefer 
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Gezi (zamanlı değil)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}{STRING} için gezi
 STR_TIMETABLE_STAY_FOR                                          :{STRING} için bekle
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :ve şuraya sefer yap: {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} gün
 STR_TIMETABLE_TICKS                                             :{COMMA} birim
 
@@ -2827,6 +2833,7 @@ STR_8826_GO_TO                                                  :{BLACK}Git
 STR_REFIT                                                       :{BLACK}Modifiye
 STR_REFIT_TIP                                                   :{BLACK}Bu talimatta değiştirilecek kargo türünü seçin. Değiştirmeyi kaldırmak için CTRL ile tıklayın
 STR_REFIT_ORDER                                                 :(Moifiye ile > {STRING})
+STR_REFIT_STOP_ORDER                                            :(Kargo tipini {STRING} yap ve dur)
 STR_STOP_ORDER                                                  :(Dur)
 STR_TIMETABLE_VIEW                                              :{BLACK}Zaman çizelgesi
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Zaman tablosu görünümüne geç
@@ -2910,6 +2917,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Tren yen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Tren yeniden adlandırılamaz...
 STR_CLEAR_TIME                                                  :{BLACK}Zamanı Temizle
 STR_RESET_LATENESS                                              :{BLACK}Gecikme sayacını sıfırla
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Yolimi adını değiştir
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Frenliyor
@@ -3206,6 +3214,7 @@ STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parametr
 STR_NEWGRF_TIP                                                  :{BLACK}Yüklediğiniz tüm Newgrf'lerin listesi. Ayarları değiştirmek için bir sete tıklayın
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yüklenmiş newgrf dosyası yok! Newgrf yüklemek için kılavuza başvurun
 STR_NEWGRF_FILENAME                                             :{BLACK}Dosya adı: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Palet: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Çalışan bir oyunu değiştirmek üzeresiniz; bu OpenTTD'yi çökertebilir.{}Emin misiniz?
@@ -3265,7 +3274,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Oyunu y�
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Eksik GRF dosyası
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Devam ettırme OpenTTD'yi çökertebilir. Takip eden çökmeler için hata rapor etmeyiniz.{}Gerçekten devam ettirmek istiyor musunuz?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}NewGRF '{0:STRING}' davranışı muhtemelen senkron kaybı ve/veya çakılmalara neden olacak.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}'{1:ENGINE}' için hangar içinde değilken araç uzunluğunu değiştirir.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}'{VEHICLE}' adlı tren '{COMPANY}' şirketine ait olup uzunluğu geçersizdir. Muhtemelen NewGRF'lerle ilgili bir problemden kaynaklanıyor. Oyun senkron kaybına uğrayabilir ya da çakılabilir.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Oyun tramvay desteği olmayan bir sürümde kaydedilmiş. Tüm tramvaylar kaldırılmıştır.
 
@@ -3497,6 +3508,7 @@ STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Fabrikal
 STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}İstasyonlar, garajlar tershaneler vb. için şeffaflık
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Köprüler için şeffaflık
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Antenler ve deniz fenerleri için şeffaflık
+STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Tren elektrik hatları için şeffaflığı aç/kapat. CTRL ile tıklayarak kilitlenir.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Transparan yükleme göstergesi
 STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Nesneleri şeffaf değil görünmez yap
 
@@ -3614,6 +3626,19 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Kravatı
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Sinyal Seçimi
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Buradaki sinyaller dönüştürülemez...
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Blok Sinyali (semafor){}Bu en temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Giriş-Sinyali (semafor){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Çıkış Sinyali (semafor){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Karışık Sinyal (semafor){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu büyük ön sinyal "ağaçları" yapmanızı sağlar.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Tek Yön Yol Sinyali (semafor){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez.
+STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Blok Sinyali (elektrikli){}En temel sinyal tipidir, bir blok içinde aynı anda yalnız bir tren bulunmasına izin verir.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Giriş-Sinyali (elektrikli){}Yolun devam eden bölümünde en az bir yeşil çıkış sinyali olduğu sürece yeşil yanar. Aksi halde kırmızı yanar.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Çıkış Sinyali (elektrikli){}Blok sinyali ile aynı şekilde çalışır ancak giriş ve karışık ön sinyaller ile doğru rengi tetiklemek gerekmektedir.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Karışık Sinyal (elektrikli){}Karışık sinyal hem giriş hem de çıkış sinyali gibi davranır. Bu büyük ön sinyal "ağaçları" yapmanızı sağlar.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Standart yol sinyalleri arka taraftan geçişe izin verir.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Tek Yön Yol Sinyali (elektrikli){}Yol sinyali, gelen tren güvenli bir durma noktasına yol ayırabiliyor ise bir sinyal bloğuna aynı anda birden fazla trenin girmesine izin verir. Tek yön yol sinyalleri arka taraftan geçişe izin vermez.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sinyal Dönüştür{}Seçildiğinde, tıklama var olan sinyali seçili sinyal tür ve alt türüne çevirir, CTRL ile tıklama mevcut alt türü değiştirir.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sinyal sürükleme yoğunluğu
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Sinyal sürükleme yoğunluğunu azalt
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Sinyal sürükleme yoğunluğunu arttır
@@ -3625,4 +3650,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :"!'^+%&/()=?_|Q
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Kasabalar tarafından kontrol edilen havaalanı gürültü seviyesine izin ver: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Kasabadaki gürültü sınırı: {ORANGE}{COMMA}{BLACK}  En fazla: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Üretilen gürültü: {GOLD}{COMMA}
 ########

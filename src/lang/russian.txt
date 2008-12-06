@@ -279,6 +279,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Слиш
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Выбранное имя уже используется
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix/Linux
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
