@@ -157,7 +157,7 @@ detect_params() {
 		optarg=`expr "x$p" : 'x[^=]*=\(.*\)'`
 
 		case "$p" in
-			--help | -h)                  showhelp; exit 0;;
+			--help | -h | -?)             showhelp; exit 0;;
 
 			--config-log)                 prev_p="config_log";;
 			--config-log=*)               config_log="$optarg";;
