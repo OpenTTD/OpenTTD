@@ -1209,7 +1209,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Egysínű
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Leginkább használt
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Legutoljára használt
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányszakasz foglaltságának jelzése: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Akkor is mutasd az eszköztárat, ha nem építhető semmi róla: {ORANGE}{STRING}

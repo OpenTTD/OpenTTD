@@ -1,5 +1,5 @@
 ##name Indonesian
-##ownname Indonesian
+##ownname Bahasa Indonesia
 ##isocode id_ID
 ##winlangid 0x0421
 ##plural 1
@@ -1138,6 +1138,7 @@ STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ganti ni
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Beberapa atau semua interval servis dibawah ini tidak diperbolehkan!  Hanya 5-90% dan 30-800 hari yang diperbolehkan
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Penjari jejak untuk kereta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :{RED}(Not recommended)
 
 
 
@@ -1173,20 +1174,78 @@ STR_CANT_CONVERT_RAIL                                           :{WHITE}Tidak da
 
 
 
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktifkan semua
 
+STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Buat tambang batubara
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Tanam Hutan
+STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Buat Pengeboran Minyak Lepas Pantai
+STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Danai Peternakan
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Buat Tambang Bijih Tembaga
+STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Gali Minyak
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Bangun Tambang Emas
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Bangun Tambang Intan
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Bangun Tambang Bijih Besi
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Danai Perkebunan Buah
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Danai Perkebunan Karet
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Danai Pengeboran Air
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Tanam Hutan Harum Manis
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Danai Peternakan Baterai
+STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Gali Kola
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Danai Plastik Mancur
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Bangun Generator Gelembung
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Danai Pertambangan Toffee
+STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Bangun Tambang Gula
 
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industri
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW} ({COMMA}% terkirim)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW} ({COMMA}%/{COMMA}% terkirim)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}Nama industri - klik di nama untuk mengetengahkan industri
 
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...terlalu dekat ke industri lain
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Ubah gerbong untuk membawa tipe kargo lain
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Ubah gerbong
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pilih tipe kargo
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ubah lokomotif untuk membawa kargo terpilih
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Tak bisa merenovasi gerbong...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Interval servis dalam persen: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ganti produksi
 
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Selamat datang di AI yang sedang dibangun. Jika mengalami masalah, buat cetakan layar dan kirimkan ke forum
+TEMP_AI_ACTIVATED                                               :{WHITE}Perhatian: AI baru ini masih dalam tahap alpha, hanya bekerja untuk truk dan bus.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Perhatian: Masih dalam tahap percobaan (menggunakan AI baru).
 
 ############ network gui strings
 
 
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Nama pemain:
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Ini adalah nama yang akan terlihat oleh pemain lain
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Masukkan nama
+STR_NETWORK_CONNECTION                                          :{BLACK}Koneksi:
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Pilih jalur internet atau jalur jaringan lokal (LAN).
 
+STR_NETWORK_START_SERVER                                        :{BLACK}Mulai pelayan
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Mulai melayani
 
+STR_NETWORK_GAME_NAME                                           :{BLACK}Nama
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Bahasa, versi server, dll.
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klik permainan dari daftar untuk memilih
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}Pelayan yang diikuti dulu:
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Klik untuk memilih pelayan yang dulu dimainkan
 
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Cari pelayan
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Cari jaringan dari pelayan
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Tambah pelayan
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Tambah pelayan yang selalu dicek keaktifannya
+STR_NETWORK_ENTER_IP                                            :{BLACK}Masukkan alamat inang
 
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klien
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klien daring / klien maks.{}Perusahaan daring / perusahaan maks.
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Ukuran peta
 
 
 
@@ -1497,20 +1556,76 @@ STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu 
 ############ range for rating starts
 ############ range for rating ends
 
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Pelabuhan harus dihancurkan terlebih dahulu
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Pilih panjang stasiun kereta api
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Ganti nama stasiun
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Tampilkan daftar muatan yang bisa diterima
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
+STR_305E_RAILROAD_STATION                                       :Stasiun Kereta Api
+STR_305F_AIRCRAFT_HANGAR                                        :Hangar Pesawat
+STR_3060_AIRPORT                                                :Bandar Udara
+STR_3062_BUS_STATION                                            :Terminal Bus
+STR_3063_SHIP_DOCK                                              :Pelabuhan Kapal
+STR_3068_DOCK                                                   :{WHITE}Pelabuhan
 
+STR_UNDEFINED                                                   :(belum terdefinisi)
 
 ##id 0x3800
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...harus dibangun di atas air
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Tidak dapat membangun galangan kapal disini...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Tentukan arah galangan kapal
+STR_3804_WATER                                                  :Air
+STR_3806_SHIP_DEPOT                                             :Galangan Kapal
 STR_AQUEDUCT                                                    :Pipa air
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Tidak dapat membnagnu di atas air
 
 ##id 0x4000
+STR_4002_SAVE                                                   :{BLACK}Simpan
+STR_4003_DELETE                                                 :{BLACK}Hapus
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte bebas
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Tidak dapat membaca drive
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}SImpan permainan saat ini, gunakan nama yang terpilih
 
 ##id 0x4800
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :Tambang Batubara
+STR_4803_POWER_STATION                                          :Pembangkit Listrik
+STR_4804_SAWMILL                                                :Penggergajian Kayu
+STR_4805_FOREST                                                 :Hutan
+STR_4806_OIL_REFINERY                                           :Kilang Minyak
+STR_4807_OIL_RIG                                                :Anjungan Lepas Pantai
+STR_4808_FACTORY                                                :Pabrik
+STR_4809_PRINTING_WORKS                                         :Percetakan
+STR_480A_STEEL_MILL                                             :Pabrik Lebur Baja
+STR_480B_FARM                                                   :Persawahan
+STR_480C_COPPER_ORE_MINE                                        :Tambang bijih tembaga
+STR_480D_OIL_WELLS                                              :Sumur minyak
+STR_480E_BANK                                                   :Bank
+STR_480F_FOOD_PROCESSING_PLANT                                  :Pabrik Pengolahan Pangan
+STR_4810_PAPER_MILL                                             :Pabrik Kertas
+STR_4811_GOLD_MINE                                              :Tambang Emas
+STR_4812_BANK                                                   :Bank
+STR_4813_DIAMOND_MINE                                           :Tambang Intan
+STR_4814_IRON_ORE_MINE                                          :Tambang Bijih Besi
+STR_4815_FRUIT_PLANTATION                                       :Perkebunan Buah
+STR_4816_RUBBER_PLANTATION                                      :Perkebunan Karet
+STR_4817_WATER_SUPPLY                                           :Sumber Air
+STR_4818_WATER_TOWER                                            :Tandon Air
+STR_4819_FACTORY                                                :Pabrik
+STR_481A_FARM                                                   :Persawahan
+STR_481B_LUMBER_MILL                                            :Pabrik Kayu Gelondongan
 
 ############ range for requires starts
+STR_4827_REQUIRES                                               :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Membutuhkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Muatan yang sedang menunggu di proses:
+STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
 ############ range for produces ends
 
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Arahkan pandangan pada lokasi industri

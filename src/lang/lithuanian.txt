@@ -2410,6 +2410,8 @@ STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Keleivinis Vagonas (Garinis)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Keleivinis Vagonas (Dyzelinis)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Keleivinis Vagonas (Elektrinis)
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :Keleivinis vagonas (vienbėgis)
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :Keleivinis vagonas ("Maglev")
 STR_LIVERY_FREIGHT_WAGON                                        :Vagonas
 STR_LIVERY_BUS                                                  :Autobusas
 STR_LIVERY_TRUCK                                                :Krovininis
@@ -2418,6 +2420,8 @@ STR_LIVERY_FREIGHT_SHIP                                         :Freight Laivas
 STR_LIVERY_HELICOPTER                                           :Sraigtasparnis
 STR_LIVERY_SMALL_PLANE                                          :Mazas orlaivis
 STR_LIVERY_LARGE_PLANE                                          :Didelis Orlaivis
+STR_LIVERY_PASSENGER_TRAM                                       :Keleivinis tramvajus
+STR_LIVERY_FREIGHT_TRAM                                         :Krovininis tramvajus
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Rodyti pagrinidines spalvu parinktis
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Rodyti traukiniu spalvas
@@ -2699,6 +2703,26 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} T
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai džiūgauja. . .{}Pirmas traukinys atvažiavo į {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detales)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Traukinys kelyje
+STR_ORDER_NON_STOP                                              :{BLACK}Nesustoti
+STR_ORDER_GO_TO                                                 :Važiuoti į
+STR_ORDER_GO_NON_STOP_TO                                        :Važiuoti nesustojant į
+STR_ORDER_GO_VIA                                                :Važiuoti per
+STR_ORDER_GO_NON_STOP_VIA                                       :Važiuoti nesustojant per
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Pilnai prikrovus bet ko
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Krauti jei įmanoma
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Pilnai prisikrauti viską
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Pilnai prisikrauti bet kokį krovinį
+STR_ORDER_DROP_NO_LOADING                                       :Nesikrauti
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Iškrauti viską
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Iškrauti jei priima
+STR_ORDER_DROP_UNLOAD                                           :Iškrauti viską
+STR_ORDER_DROP_TRANSFER                                         :Perkelti krovinį
+STR_ORDER_DROP_NO_UNLOADING                                     :Neiškrauti
+STR_ORDER_FULL_LOAD                                             :(Pilanai pasikrauti)
+STR_ORDER_FULL_LOAD_ANY                                         :(Pilnai pasikrauti, bet kurio krovinio)
+STR_ORDER_NO_LOAD                                               :(Nepakrauti)
+STR_ORDER_UNLOAD                                                :(Iškrauti ir pasiimti krovinį)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iškrauti ir laukti pilno krovinio)
 
 
 

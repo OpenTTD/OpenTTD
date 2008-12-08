@@ -2036,7 +2036,7 @@ STR_480A_STEEL_MILL                                             :Çelik Fabrikas
 STR_480B_FARM                                                   :Çiftliği
 STR_480C_COPPER_ORE_MINE                                        :Bakır Madeni
 STR_480D_OIL_WELLS                                              :Petrol Kuyuları
-STR_480E_BANK                                                   :Bankası
+STR_480E_BANK                                                   :Banka
 STR_480F_FOOD_PROCESSING_PLANT                                  :Yemek Fabrikası
 STR_4810_PAPER_MILL                                             :Kağıt Fabrikası
 STR_4811_GOLD_MINE                                              :Altın Madeni
@@ -2058,7 +2058,7 @@ STR_4820_TOY_SHOP                                               :Oyuncakçısı
 STR_4821_TOY_FACTORY                                            :Oyuncak Fabrikası
 STR_4822_PLASTIC_FOUNTAINS                                      :Plastik Fıskiyesi
 STR_4823_FIZZY_DRINK_FACTORY                                    :İçecek Fabrikası
-STR_4824_BUBBLE_GENERATOR                                       :Balon Yapıcısi
+STR_4824_BUBBLE_GENERATOR                                       :Balon Yapıcısı
 STR_4825_TOFFEE_QUARRY                                          :Bonbon Madeni
 STR_4826_SUGAR_MINE                                             :Şeker Madeni
 
@@ -2076,7 +2076,7 @@ STR_4828_PRODUCES                                               :{BLACK}Üretir:
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Geçen ayki üretim:
-STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} (%{COMMA} tasindi)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} (%{COMMA} taşındı)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Fabrikaya git
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Yeni bir {STRING}, {TOWN} şehri yakınlarında kuruldu!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Yeni bir {STRING}, {TOWN} şehri yakınlarında kuruldu!

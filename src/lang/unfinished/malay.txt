@@ -769,8 +769,13 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Melaran
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Membenarkan bina jambatan panjang: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lain
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Membolehkan berbilang set enjin NewGRF: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Selalu membenarkan lapangan terbang yang kecil: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Memperingatkan jika satu kereta api hilang jalan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :tidak
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ya, tetapi kecuali kenderaan rencat
 
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Pusingan jam
 
@@ -875,6 +880,12 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukark
 
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Mana-mana
+STR_NETWORK_LANG_ENGLISH                                        :Inggeris
+STR_NETWORK_LANG_GERMAN                                         :Jerman
+STR_NETWORK_LANG_FRENCH                                         :Perancis
+STR_NETWORK_LANG_CHINESE                                        :Cina
+STR_NETWORK_LANG_DUTCH                                          :Belanda
 ############ End of leave-in-this-order
 
 
@@ -933,20 +944,44 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...kawas
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Pembinaan Jalan
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Pilihkan Jambatan Jalan
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientasi Depot Kenderaan Jalan
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}Bina stesen bas
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Bina ruang punggah lori
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Bina stesen trem penumpang
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Build freight tram station
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bina jambatan jalan raya
+STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Bina jambatan trem
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bina terowong jalan raya
+STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Bina terowong trem
+STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Hidupkan/Matikan jalan raya sehala
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Togol bina/buang untuk pembinaan jalan raya
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Togol bina/buang untuk pembinaan landasan trem
 STR_1814_ROAD                                                   :Jalan
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Jalan berlampu
 STR_1816_TREE_LINED_ROAD                                        :Jalan dibarisi pokok
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depot kenderaan jalan
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Simpangan jalan/landasan
+STR_TRAMWAY                                                     :Landasan trem
+STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Tidak boleh membuang stesen bas...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Tidak boleh membuang stesen lori...
+STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Tidak boleh membuang stesen trem penumpang...
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Bandar
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
 STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Bangunan mesti diruntuhkan dahulu
 STR_2005                                                        :{WHITE}{TOWN}
+STR_CITY                                                        :{WHITE}{TOWN} (Bandar raya)
+STR_2006_POPULATION                                             :{BLACK}Penduduk: {ORANGE}{COMMA}{BLACK}  Rumah: {ORANGE}{COMMA}
+STR_2007_RENAME_TOWN                                            :Namakan Bandar
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Tidak boleh menamakan semula bandar...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} majlis tempatan tidak membenarkannya
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Nama Bandar-bandar - klik nama bandar untuk pandang ke pusat bandar
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Tukar nama bandar
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Penumpang bulan lalu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Suart bulan lepas: {ORANGE}{COMMA}{BLACK}  mak: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Bangunan pejabat tinggi
 STR_2010_OFFICE_BLOCK                                           :Bangunan pejabat
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :Bangunan pangsapuri kecil
@@ -954,15 +989,21 @@ STR_2012_CHURCH                                                 :Gereja
 STR_2013_LARGE_OFFICE_BLOCK                                     :Bangunan pejabat besar
 STR_2014_TOWN_HOUSES                                            :Rumah
 STR_2015_HOTEL                                                  :Hotel
+STR_2016_STATUE                                                 :Patung
 STR_2018_PARK                                                   :Taman
 STR_2019_OFFICE_BLOCK                                           :Bangunan pejabat
+STR_201A_SHOPS_AND_OFFICES                                      :Kedai dan pejabat
+STR_201B_MODERN_OFFICE_BUILDING                                 :Bangunan pejabat moden
 STR_201C_WAREHOUSE                                              :Gudang
 STR_201D_OFFICE_BLOCK                                           :Bangunan pejabat
 STR_201E_STADIUM                                                :Stadium
 STR_201F_OLD_HOUSES                                             :Rumah usang
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Majlis tempatan
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} majlis tempatan
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Penarafan syarikat pengangkutan:
+STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidi
+STR_202D_UNTIL                                                  :{YELLOW}, sehingga {DATE_SHORT})
 STR_2038_FLATS                                                  :Pangsapuri
 STR_203C_THEATER                                                :Panggung Wayang
 STR_203D_STADIUM                                                :Stadium

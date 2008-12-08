@@ -1,0 +1,11 @@
+##name Thai
+##ownname Thai
+##isocode th_TH
+##winlangid 0x041e
+##plural 0
+##textdir ltr
+
+#
+
+##id 0x0000
+STR_NULL                                                        :

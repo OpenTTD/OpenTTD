@@ -14,11 +14,13 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}מחוץ
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}קרוב מדי לקצה המפה
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}אין מספיק כסף - צריך {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}דרושה אדמה שטוחה
 STR_0008_WAITING                                                :{BLACK}מחכים: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000C_ACCEPTS                                                :{BLACK}מקבל: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}מקבל: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}מספק: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :נוסעים
 STR_0010_COAL                                                   :פחם
@@ -32,7 +34,7 @@ STR_0017_IRON_ORE                                               :עפרת ברז
 STR_0018_STEEL                                                  :פלדה
 STR_0019_VALUABLES                                              :מוצרי ערך
 STR_001A_COPPER_ORE                                             :עפרת נחושת
-STR_001B_MAIZE                                                  :שעורה
+STR_001B_MAIZE                                                  :תירס
 STR_001C_FRUIT                                                  :פירות
 STR_001D_DIAMONDS                                               :יהלומים
 STR_001E_FOOD                                                   :מזון
@@ -51,6 +53,69 @@ STR_002A_TOFFEE                                                 :טופי
 STR_002B_BATTERIES                                              :סוללות
 STR_002C_PLASTIC                                                :פלסטיק
 STR_002D_FIZZY_DRINKS                                           :משקאות מוגזים
+STR_002E                                                        :
+STR_002F_PASSENGER                                              :נוסע
+STR_0030_COAL                                                   :פחם
+STR_0031_MAIL                                                   :דואר
+STR_0032_OIL                                                    :נפט
+STR_0033_LIVESTOCK                                              :בקר
+STR_0034_GOODS                                                  :מוצרים
+STR_0035_GRAIN                                                  :חיטה
+STR_0036_WOOD                                                   :עץ
+STR_0037_IRON_ORE                                               :עפרת ברזל
+STR_0038_STEEL                                                  :פלדה
+STR_0039_VALUABLES                                              :מוצרי ערך
+STR_003A_COPPER_ORE                                             :עפרת נחושת
+STR_003B_MAIZE                                                  :תירס
+STR_003C_FRUIT                                                  :פרי
+STR_003D_DIAMOND                                                :יהלום
+STR_003E_FOOD                                                   :מזון
+STR_003F_PAPER                                                  :נייר
+STR_0040_GOLD                                                   :זהב
+STR_0041_WATER                                                  :מים
+STR_0042_WHEAT                                                  :חיטה
+STR_0043_RUBBER                                                 :גומי
+STR_0044_SUGAR                                                  :סוכר
+STR_0045_TOY                                                    :צעצוע
+STR_0046_CANDY                                                  :ממתק
+STR_0047_COLA                                                   :קולה
+STR_0048_COTTON_CANDY                                           :שערות סבתא
+STR_0049_BUBBLE                                                 :בועה
+STR_004A_TOFFEE                                                 :טופי
+STR_004B_BATTERY                                                :סוללה
+STR_004C_PLASTIC                                                :פלסטיק
+STR_004D_FIZZY_DRINK                                            :משקה מוגז
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{P 0 נוסע ""} {COMMA} {P "" נוסעים}
+STR_QUANTITY_COAL                                               :{WEIGHT} של פחם
+STR_QUANTITY_MAIL                                               :{P 0 שק ""} {COMMA} {P "" שקים} של דואר
+STR_QUANTITY_OIL                                                :{VOLUME} של נפט
+STR_QUANTITY_GOODS                                              :{P 0 ארגז ""} {COMMA} {P "" ארגזים} של מוצרים
+STR_QUANTITY_GRAIN                                              :{WEIGHT} של חיטה
+STR_QUANTITY_WOOD                                               :{WEIGHT} של עצים
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} של עפרת ברזל
+STR_QUANTITY_STEEL                                              :{WEIGHT} של פלדה
+STR_QUANTITY_VALUABLES                                          :{P 0 שק ""} {COMMA} {P "" שקים} של מוצרי ערך
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} של עפרת נחושת
+STR_QUANTITY_MAIZE                                              :{WEIGHT} של תירס
+STR_QUANTITY_FRUIT                                              :{WEIGHT} של פירות
+STR_QUANTITY_DIAMONDS                                           :{P 0 שק ""} {COMMA} {P "" שקים} של יהלומים
+STR_QUANTITY_FOOD                                               :{WEIGHT} של מזון
+STR_QUANTITY_PAPER                                              :{WEIGHT} של נייר
+STR_QUANTITY_GOLD                                               :{P 0 שק ""} {COMMA} {P "" שקים} של זהב
+STR_QUANTITY_WATER                                              :{VOLUME} של מים
+STR_QUANTITY_WHEAT                                              :{WEIGHT} של חיטה
+STR_QUANTITY_RUBBER                                             :{VOLUME} של גומי
+STR_QUANTITY_SUGAR                                              :{WEIGHT} של סוכר
+STR_QUANTITY_TOYS                                               :{P 0 צעצוע ""} {COMMA} {P "" צעצועים}
+STR_QUANTITY_SWEETS                                             :{P 0 שק ""} {COMMA} {P "" שקים} של ממתקים
+STR_QUANTITY_COLA                                               :{VOLUME} של קולה
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} של שערות סבתא
+STR_QUANTITY_BUBBLES                                            :{P 0 בועה ""} {COMMA} {P "" בועות}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} של טופי
+STR_QUANTITY_BATTERIES                                          :{P 0 סוללה ""} {COMMA} {P "" סוללות}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} של פלסטיק
+STR_ABBREV_NOTHING                                              :
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}לא מסוגל לעשות זאת
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}לא מסוגל להרוס אזור זה
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}זכיות יוצרים מקוריות {COPYRIGHT} כריס סויר 1995,כול הזכיות שמורות
@@ -93,7 +158,7 @@ STR_00E5_CONTOURS                                               :תארים
 STR_00E6_VEHICLES                                               :כלי רכב
 STR_00E7_INDUSTRIES                                             :תעשיות
 STR_00E8_ROUTES                                                 :דרכים
-STR_00E9_VEGETATION                                             :צמיחה
+STR_00E9_VEGETATION                                             :צמחייה
 STR_00EA_OWNERS                                                 :בעלים
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}כבישים
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}מסילות
@@ -243,6 +308,50 @@ STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}תראה
 
 
 
+STR_01FE_DIFFICULTY                                             :{BLACK}קושי ({STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}הגעת רכב לתחנה של מתחרה
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}תאונות / אסונות
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}מידע על חברות
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}פתיחת תעשיות
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}סגירת תעשיות
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}שינויים בכלכלה
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}שינויים ביצור של תעשיות בשירות החברה
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}שינויים ביצור של תעשיות בשירות המתחרה/ים
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}שינויים ביצור שאר התעשיות
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}עצות / מידע על כלי רכב של החברה
+STR_020C_NEW_VEHICLES                                           :{YELLOW}רכב חדש
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}שינויים במשאים המתקבלים
+STR_020E_SUBSIDIES                                              :{YELLOW}סובסידיות
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}מידע כללי
+STR_0213_BUSINESSMAN                                            :איש עסקים
+STR_0214_ENTREPRENEUR                                           :יזם
+STR_0215_INDUSTRIALIST                                          :תעשיין
+STR_0216_CAPITALIST                                             :קפיטליסט
+STR_0219_TYCOON_OF_THE_CENTURY                                  :טיקון של המדינה
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} הגיעה למעמד '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} של {COMPANY} הגיע לדרגת '{STRING}'!
+STR_021F                                                        :{BLUE}{COMMA}
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}עורך סצנריו
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}צור אדמה אקראית
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}אפס נוף
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}אפס נוף
+STR_0234_NEW_TOWN                                               :{BLACK}עיר חדשה
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}בנה עיר חדשה
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}לא ניתן לבנות כאן עיר...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...קרוב מידי לקצה המפה
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...קרוב מידי לעיר אחרת
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...אזור לא מתאים
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...יותר מידי ערים
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}לא ניתן לבנות שום ערים
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...אין יותר מקום על המפה
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}הגדל את העיר
+STR_023C_EXPAND                                                 :{BLACK}הרחב
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...מותר רק אחד בכל עיר
 STR_0288_PLANT_TREES                                            :{BLACK}שתול עצים
 STR_0289_PLACE_SIGN                                             :{BLACK}מקם שלט

@@ -2,6 +2,9 @@
 ##ownname Frysk
 ##isocode fy_NL
 ##winlangid 0x0462
+##plural 0
+
+#
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -742,7 +745,17 @@ STR_7                                                           :{BLACK}7
 
 
 
+
+
+
+
+
+
 ############ network gui strings
+
+
+
+
 
 
 
@@ -1067,14 +1080,17 @@ STR_4817_WATER_SUPPLY                                           :Wetterbron
 STR_4818_WATER_TOWER                                            :Wettertoer
 STR_4819_FACTORY                                                :Fabryk
 STR_481A_FARM                                                   :Buorkerij
+STR_481B_LUMBER_MILL                                            :Houtseachmole
 STR_481C_COTTON_CANDY_FOREST                                    :Sûkerspinnebosk
 STR_481D_CANDY_FACTORY                                          :Snobbersguodfabryk
 STR_481E_BATTERY_FARM                                           :Batterijebuorkerij
-STR_481F_COLA_WELLS                                             :Colabron
+STR_481F_COLA_WELLS                                             :Kolabron
 STR_4820_TOY_SHOP                                               :Boartersguodwinkel
 STR_4821_TOY_FACTORY                                            :Boartersguodfabryk
 STR_4822_PLASTIC_FOUNTAINS                                      :Plestikfontein
+STR_4823_FIZZY_DRINK_FACTORY                                    :Frisdrinkenfabryk
 STR_4824_BUBBLE_GENERATOR                                       :Bubbelgenerator
+STR_4825_TOFFEE_QUARRY                                          :Toffemyn
 STR_4826_SUGAR_MINE                                             :Sûkermyn
 
 ############ range for requires starts
@@ -1083,29 +1099,74 @@ STR_4828_REQUIRES                                               :{BLACK}Nedich: 
 STR_4829_REQUIRES                                               :{BLACK}Nedich: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
 ############ range for requires ends
 
+############ range for produces starts
+STR_4827_PRODUCES                                               :{BLACK}Produseart: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Produseart: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+############ range for produces ends
+
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksje lêste moanne:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% transportearre)
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Sintrear haadskerm op lokaasje yndustry
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nij {STRING} yn oanbou by {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nij {STRING} oanplante {TOWN}!
 STR_482F_COST                                                   :{BLACK}Kostet: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Kin dit type yndustry hjir net boue...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...bosk kin allinich boppe snieline boud wurde
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} ferkondigt drigende slúting!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Troch problemen mei de oanfier ferkondigt {STRING} drigende slúting!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Troch in tekoart oan beammen ferkondigt {STRING} drigende slúting!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} hellet produksje oan!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nije koalier fûn by {INDUSTRY}!{}Produksje wurdt ferwachte te ferdûbelje!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nije oaljereserves fûn by {INDUSTRY}!{}Produksje wurdt ferwachte te ferdûbelje!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Troch ferbetterede metoden wurdt de produskje fan {INDUSTRY} te ferdûbelje!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT} Produksje fan {INDUSTRY} giet omleech mei 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Troch in insektenpleach by {INDUSTRY}!{}Produksje giet omleech mei 50%
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kin allinich pleatse wurde by de rân fan'e kaart
 
 ##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Trein yn'e tunnel
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Auto yn'e tunnel
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Oare tunnel yn't plak
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kin net grûn foar it oare ein fan'e tunnel ôfgraavje
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunnel mat earst fuorthelle wurde
-STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Brêge mat earst fuorthelle wurde
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Brêge moat earst fuorthelle wurde
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Begjin en ein kin net op itselde plak wêze
-STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Begjin en ein mat yn ien lijn wêze
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Begjin en ein moatte op ien lijn wêze
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Plak net geskikt foar tunnelyngong
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :Hingbrêge, Stiel
+STR_500F_GIRDER_STEEL                                           :Brêge mei balken, Stiel
+STR_5010_CANTILEVER_STEEL                                       :Fakwurkbrêge, Stiel
+STR_5011_SUSPENSION_CONCRETE                                    :Hingbrêge, Beton
 STR_5012_WOODEN                                                 :Hout
 STR_5013_CONCRETE                                               :Beton
 STR_5014_TUBULAR_STEEL                                          :Buis, Stiel
-STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Kin hjir gjin brêge bouwe...
-STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Kin hjir gjin tunnel bouwe...
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Kin hjir gjin brêge boue...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Kin hjir gjin tunnel boue...
 STR_5017_RAILROAD_TUNNEL                                        :Spoartunnel
+STR_5018_ROAD_TUNNEL                                            :Tunnel
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Stielen spoarfakwurkbrêge
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Stielen brêge mei balken
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Stielen spoarfakwurkbrêge
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Fersterke betonnen spoarhingbrêge
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Houten spoarbrêge
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betonnen spoarbrêge
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Stielen hingbrêge
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Stielen brêge mei balken
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Stielen fakwurkbrêge
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Fersterke betonnen hingbrêge
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Houten brêge
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betonnen brêge
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Buis Spoarbrêge
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Buis Brêge
 
 ##id 0x5800
-STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objekt yn it paad
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objekt yn't plak
 STR_5801_TRANSMITTER                                            :Sendmast
 STR_5802_LIGHTHOUSE                                             :Fjoertoer
+STR_5803_COMPANY_HEADQUARTERS                                   :Haadkantoar Bedriuw
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...haadkantoar bedriuw yn't plak
+STR_5805_COMPANY_OWNED_LAND                                     :Lân fan bedriuw
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Kin dit stikje lân net keapje...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...it is al fan dy!
 
@@ -1118,21 +1179,33 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...it is
 ############ end of savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Swierichheid
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Maklik
 STR_6802_MEDIUM                                                 :{BLACK}Gewoan
+STR_6803_HARD                                                   :{BLACK}Dreech
+STR_6804_CUSTOM                                                 :{BLACK}Selsmakke
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimum oantal tsjinstanders: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Tsjinstander begjint: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Oantal stêden: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Oantal yndustrieen: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Oantal yndustrieën: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimale rinte: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Hichte rinte: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Ûnderhâldskosten fan fiertúchen: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Konstruksjesnelhyd fan tsjinstanders: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Yntelliginsje fan tsjinstanders: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Fiertúch hawwe pech: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Subsydzje fermannichfâldiger: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Konstruksjekosten: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Terreinsoart: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Oantal seeën/marren: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomy: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Draaie fan trein: {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}Rampen: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :Gjin
@@ -1141,8 +1214,8 @@ STR_6817_NORMAL                                                 :Gewoan
 STR_6818_HIGH                                                   :Heech
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
-STR_681B_VERY_SLOW                                              :Hiel dreech
-STR_681C_SLOW                                                   :Dreech
+STR_681B_VERY_SLOW                                              :Traach
+STR_681C_SLOW                                                   :Stadich
 STR_681D_MEDIUM                                                 :Gewoan
 STR_681E_FAST                                                   :Hurd
 STR_681F_VERY_FAST                                              :Hiel hurd
@@ -1158,60 +1231,225 @@ STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
 STR_682A_VERY_FLAT                                              :Hiel Flak
 STR_682B_FLAT                                                   :Flak
+STR_682C_HILLY                                                  :Heuvelachtich
 STR_682D_MOUNTAINOUS                                            :Bergachtich
+STR_682E_STEADY                                                 :Stabyl
 STR_682F_FLUCTUATING                                            :Wikseljend
 STR_6830_IMMEDIATE                                              :Fuortendaliks
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 moannen nei spyler
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 moannen nei spyler
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 moannen nei spyler
-STR_6836_OFF                                                    :Ut
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Oan ein fan'e line en op stasjons
+STR_6835_AT_END_OF_LINE_ONLY                                    :Allinich oan ein fan'e line
+STR_6836_OFF                                                    :Út
 STR_6837_ON                                                     :Oan
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Lit hi-scorekaart sjen
 
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Bedriuw {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nei Gesicht
 STR_7005_COLOR_SCHEME                                           :{BLACK}Kleurenskema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Kleurenskema:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nei Kleurenskema
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finansieen {BLACK}{COMPANYNUM}
+STR_7008_COMPANY_NAME                                           :{BLACK}Bedriuwsnamme
+STR_7009_PRESIDENT_NAME                                         :{BLACK}Namme fan Direkteur
+STR_700A_COMPANY_NAME                                           :Bedriuwsnamme
+STR_700B_PRESIDENT_S_NAME                                       :Namme fan Direkteur
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Kin bedriuwsnamme net feroarje...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Kin namme fan direkteur net feroarje
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finansieën {BLACK}{COMPANYNUM}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Utjeften/Ynkomsten
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Konstruksje
+STR_7012_NEW_VEHICLES                                           :{GOLD}Nije faartúchen
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Trein Ûnderhâldskosten
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Auto's Ûnderhâldskosten
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Fleantúch Ûnderhâldskosten
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Skip Ûnderhâldskosten
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Ûnderhâld fan besittingen
 STR_7018_TRAIN_INCOME                                           :{GOLD}Ynkomsten Treinen
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ynkomsten Auto's
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ynkomsten Fleantúgen
 STR_701B_SHIP_INCOME                                            :{GOLD}Ynkomsten Skepen
-STR_701C_LOAN_INTEREST                                          :{GOLD}Rinte Liening
+STR_701C_LOAN_INTEREST                                          :{GOLD}Rinte fan Liening
 STR_701D_OTHER                                                  :{GOLD}Oaren
 STR_701E                                                        :{BLACK}-{CURRENCY}
 STR_701F                                                        :{BLACK}+{CURRENCY}
 STR_7020_TOTAL                                                  :{WHITE}Totaal:
 STR_7021                                                        :{COMPANY} {COMPANYNUM}
-STR_7022_INCOME_GRAPH                                           :{WHITE}Ynkomsten Grafyk
+STR_7022_INCOME_GRAPH                                           :{WHITE}Ynkomstengrafyk
 STR_7024                                                        :{COMMA}
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Winstgrafyk
+STR_7026_BANK_BALANCE                                           :{WHITE}Jild
 STR_7027_LOAN                                                   :{WHITE}Liening
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}Lien {SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Betelje {SKIP}{SKIP}{CURRENCY} werom
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maksmaal tasteane liening is {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kin net mear jild liene
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...gjin liening werom te betelje
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} nedich
-STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kin liening net werombetelje
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kin liening net werombetelje...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selektear nei gesicht foar de bedriuwslieder
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Feroarje de bedriuwskleuren
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Feroarje de namme fan de direkteur
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Feroarje de bedriuwsnamme
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klik op it ferlangde kleurenskema
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Lien mear jild
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betelje in diel fan de liening werom
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Bedriuwslieder)
 STR_7038_INAUGURATED                                            :{GOLD}Oprjochte: {WHITE}{NUM}
+STR_7039_VEHICLES                                               :{GOLD}Fiertúchen:
 STR_7042_NONE                                                   :{WHITE}Gjin
+STR_7043_FACE_SELECTION                                         :{WHITE}Gesicthseleksje
 STR_7044_MALE                                                   :{BLACK}Man
 STR_7045_FEMALE                                                 :{BLACK}Frou
 STR_7046_NEW_FACE                                               :{BLACK}Nei Gesicht
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Nije gesichtseleksje annulearje
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Akseptear nije gesichtseleksje
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Selektear manlike gesichten
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Selektear froulike gesichten
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Meistje willekeurich nij gesicht
 STR_704C_KEY                                                    :{BLACK}Kaai
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Lit kaai foar grafyk sjen
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Kaai foar bedriuwsgrafiken
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klik hjir om te bedriuwstagong foar grafyk oan of út te sette
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Stiks fracht ôflevere
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Bedriuwsprestaasjeweardering (maksimale weardering=1000)
+STR_7052_COMPANY_VALUES                                         :{WHITE}Bedriuwswearden
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Bedriuwskompetysjetabel
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportbedriuw yn'e problemen!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} sil ôfkocht wurde of fallyt ferkleare wurde wannear prestaasjes net ferbetterje
+STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Direkteur)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportbedriuw fuseare!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING} is ferkocht  oan{STRING} foar {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Wy sykje in transportbedriuw om ús bedriuw oer te nimmen.{}{}Wolsto {COMPANY} foar {CURRENCY} keapje?
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Fallyt!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} is slúten troch skuldeaskers en alles is ferkocht!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nij transportbedriuw oprjochte!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} begjint te boue by {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Kin bedriuw net keapje...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Frachtbetellingshichtes
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Deien ûnderweis
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Betelling foar levering fan 10 ienheiden (of 10,000 liter) fracht oer in ôfstân fan 20 hokskes
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Set grafyk foar frachttype oan/út
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Inzjenieur
+STR_7067_TRAFFIC_MANAGER                                        :Ferkearsbehearder
+STR_7068_TRANSPORT_COORDINATOR                                  :Transportcoördinator
+STR_7069_ROUTE_SUPERVISOR                                       :Rûteûnderhâlder
+STR_706A_DIRECTOR                                               :Bestjoerder
+STR_706B_CHIEF_EXECUTIVE                                        :Direkteur
+STR_706C_CHAIRMAN                                               :Foarsitter
+STR_706D_PRESIDENT                                              :President
+STR_706E_TYCOON                                                 :Tycoon
+STR_706F_BUILD_HQ                                               :{BLACK}Bou haadkantoar
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Bou haadkantoar / sjoch haadkantoar
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kin gjin haadkantoar boue
+STR_7072_VIEW_HQ                                                :{BLACK}Sjoch haadkantoar
+STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Resesje!{}{}Finansieel eksperts binne bang foar it minste fanwegen de minne ekonomy!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Resesje foarby!{}{}Opgong yn hannel jout fertrouwen oan yndustry en de ekonomy wurdt better!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Wikselje tusken lytse/grutte skermgrutte
+STR_7076_COMPANY_VALUE                                          :{GOLD}Bedriuwswearde: {WHITE}{CURRENCY}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Keapje 25% oandielen fan bedriuw
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Ferkeapje 25% oandielen fan bedriuw
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Keapje 25% oandielen fan dit bedriuw
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Ferkeapje 25% oandielen fan dit bedriuw
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kin net 25% oandielen fan dit bedriuw keapje...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kin net 25% oandielen fan dit bedriuw ferkeapje...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% besit fan {COMPANY})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING} is oernaam troch {STRING}!
 
 
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Steam)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Steam)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (Steam)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Steam)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (Steam)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Diesel)
+STR_800C_DASH_DIESEL                                            :'Dash' (Diesel)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Diesel)
+STR_800E_UU_37_DIESEL                                           :UU '37' (Diesel)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Diesel)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (Diesel)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (Diesel)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Diesel)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Diesel)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Diesel)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Diesel)
+STR_8016_SH_125_DIESEL                                          :SH '125' (Diesel)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (Elektrysk)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elektrysk)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elektrysk)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elektrysk)
+STR_801B_PASSENGER_CAR                                          :Passazjierswein
+STR_801C_MAIL_VAN                                               :Postwein
+STR_801D_COAL_CAR                                               :Koalwein
+STR_801E_OIL_TANKER                                             :Oaljetenker
+STR_801F_LIVESTOCK_VAN                                          :Feewein
+STR_8020_GOODS_VAN                                              :Guodswein
+STR_8021_GRAIN_HOPPER                                           :Nôtwein
+STR_8022_WOOD_TRUCK                                             :Houtwein
+STR_8023_IRON_ORE_HOPPER                                        :Izerertswein
+STR_8024_STEEL_TRUCK                                            :Stielwein
+STR_8025_ARMORED_VAN                                            :Ferstarke Wein
+STR_8026_FOOD_VAN                                               :Itenswein
+STR_8027_PAPER_TRUCK                                            :Papierwein
+STR_8028_COPPER_ORE_HOPPER                                      :Koperertswein
+STR_8029_WATER_TANKER                                           :Wettertenker
+STR_802A_FRUIT_TRUCK                                            :Fruitwein
+STR_802B_RUBBER_TRUCK                                           :Rubberwein
+STR_802C_SUGAR_TRUCK                                            :Sûkerwein
+STR_802D_COTTON_CANDY_HOPPER                                    :Sûkerspinwein
+STR_802E_TOFFEE_HOPPER                                          :Toffeewein
+STR_802F_BUBBLE_VAN                                             :Bubbelwein
+STR_8030_COLA_TANKER                                            :Kolatenker
+STR_8031_CANDY_VAN                                              :Snobbersguodswein
+STR_8032_TOY_VAN                                                :Boartersguodswein
+STR_8033_BATTERY_TRUCK                                          :Batterijwein
+STR_8034_FIZZY_DRINK_TRUCK                                      :Frisdrinkenwein
+STR_8035_PLASTIC_TRUCK                                          :Plestikwein
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Elektrysk)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elektrysk)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Passazjierswein
+STR_803A_MAIL_VAN                                               :Postwein
+STR_803B_COAL_CAR                                               :Koalwein
+STR_803C_OIL_TANKER                                             :Oaljetenker
+STR_803D_LIVESTOCK_VAN                                          :Feewein
+STR_803E_GOODS_VAN                                              :Guodswein
+STR_803F_GRAIN_HOPPER                                           :Nôtwein
+STR_8040_WOOD_TRUCK                                             :Houtwein
+STR_8041_IRON_ORE_HOPPER                                        :Izerertswein
+STR_8042_STEEL_TRUCK                                            :Stielwein
+STR_8043_ARMORED_VAN                                            :Ferstarke Wein
+STR_8044_FOOD_VAN                                               :Itenswein
+STR_8045_PAPER_TRUCK                                            :Papierwein
+STR_8046_COPPER_ORE_HOPPER                                      :Koperertswein
+STR_8047_WATER_TANKER                                           :Wettertenker
+STR_8048_FRUIT_TRUCK                                            :Fruitwein
+STR_8049_RUBBER_TRUCK                                           :Rubberwein
+STR_804A_SUGAR_TRUCK                                            :Sûkerwein
 
 ##id 0x8800
+
+
+
+
+
+
 
 
 
@@ -1231,12 +1469,16 @@ STR_704C_KEY                                                    :{BLACK}Kaai
 ##id 0xA000
 
 
+
 ##id 0xB000
+
 
 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
+
 
 
 
@@ -1269,6 +1511,9 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+########### For showing numbers in widgets
+
+
 ########### String for New Landscape Generator
 
 
@@ -1284,3 +1529,28 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ########
 
 
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########
