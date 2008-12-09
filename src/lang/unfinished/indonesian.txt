@@ -158,7 +158,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}Pesan
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Pesan dari {STRING}
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Awas!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tidak dapat melakukan ini....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak dapat menghapus area ini....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak dapat membersihkan area ini....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hak Cipta asli {COPYRIGHT} 1995 Chris Sawyer, Hak Cipta dilindungi
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versi {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 Tim OpenTTD
@@ -215,10 +215,10 @@ STR_00F4_500M                                                   :{BLACK}{TINYFON
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Kereta Api
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Angkutan Jalan Raya
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Kapal
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Pesawat
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Pesawat Udara
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Jalur Transportasi
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Tambang Batubara
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Stasiun Pembangkit
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Stasiun Pembangkit Listrik
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Hutan
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Penggergajian Kayu
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Kilang Minyak
@@ -248,7 +248,7 @@ STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFON
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Pancuran Plastik
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Pabrik Minuman Berdesis
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Generator Gelembung
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Tambang Toffee
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Pabrik Kue Toffee
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Tambang Gula
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Station Kereta
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Terminal bongkar muat
@@ -1174,6 +1174,7 @@ STR_CANT_CONVERT_RAIL                                           :{WHITE}Tidak da
 
 
 
+STR_FAST_FORWARD                                                :{BLACK}Percepat jalannya permainan
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktifkan semua
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Buat tambang batubara
@@ -1348,6 +1349,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Biaya: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Pendapatan: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Pendapatan: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Memindahkan/Mentransfer: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Memindahkan/Mentransfer: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Perkiraan Pendapatan {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Perkiraan Pendapatan: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Tidak dapat menaikkan tanah disini
@@ -1626,8 +1629,12 @@ STR_4829_REQUIRES                                               :{BLACK}Membutuh
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Muatan yang sedang menunggu di proses:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
+STR_4827_PRODUCES                                               :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}
+STR_4828_PRODUCES                                               :{BLACK}Menghasilkan: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
 ############ range for produces ends
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksi bulan lalu:
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} (Terangkut {COMMA}%)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Arahkan pandangan pada lokasi industri
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT} {STRING} baru sedang dibangun di dekat {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT} {STRING} baru sedang ditanam di dekat {TOWN}!
@@ -1644,6 +1651,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produksi menurun hingga 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Serangan serangga menyebabkan malapetaka pada {INDUSTRY}!{}Produksi menurun hingga 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...hanya dapat diletakkan didekat batas peta
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produksi {STRING} di {INDUSTRY} meningkat {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produksi {STRING} di {INDUSTRY} menurun {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Kereta Api sedang di dalam terowongan
@@ -1699,7 +1708,31 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...anda 
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
+STR_SV_UNNAMED                                                  :Blm ada nama
+STR_SV_TRAIN_NAME                                               :Kereta Api {COMMA}
+STR_SV_ROADVEH_NAME                                             :Kendaraan {COMMA}
+STR_SV_SHIP_NAME                                                :Kapal {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Pesawat {COMMA}
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Utara
+STR_SV_STNAME_SOUTH                                             :{STRING} Selatan
+STR_SV_STNAME_EAST                                              :{STRING} Timur
+STR_SV_STNAME_WEST                                              :{STRING} Barat
+STR_SV_STNAME_CENTRAL                                           :{STRING} Pusat
+STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
+STR_SV_STNAME_HALT                                              :{STRING} Halte
+STR_SV_STNAME_VALLEY                                            :Lembah {STRING}
+STR_SV_STNAME_HEIGHTS                                           :Puncak {STRING}
+STR_SV_STNAME_WOODS                                             :{STRING} Kayu
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Danau
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Exchange
+STR_SV_STNAME_AIRPORT                                           :Bandara {STRING}
+STR_SV_STNAME_OILFIELD                                          :Ladang Minyak {STRING}
+STR_SV_STNAME_MINES                                             :Tambang {STRING}
+STR_SV_STNAME_DOCKS                                             :Pelabuhan {STRING}
+STR_SV_STNAME_BUOY_1                                            :{STRING} Buoy 1
 
 ############ end of savegame specific region!
 
@@ -2134,6 +2167,16 @@ STR_8802_DETAILS                                                :{WHITE}{VEHICLE
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Kereta dalam perjalanan
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_ORDER_DROP_TRANSFER                                         :Transfer
+STR_ORDER_DROP_NO_UNLOADING                                     :Jangan diturunkan
+STR_ORDER_FULL_LOAD                                             :(Muat Penuh - semua)
+STR_ORDER_FULL_LOAD_ANY                                         :(Muat Penuh - salah satu)
+STR_ORDER_NO_LOAD                                               :(Jangat muat)
+STR_ORDER_UNLOAD                                                :(Turunkan dan ambil muatan)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(Turunkan dan tunggu hingga semua muatan penuh)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Turunkan dan tunggu hingga salah satu muatan penuh)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(Turunkan dan biarkan kosong)
+STR_ORDER_TRANSFER                                              :(Transfer dan ambil muatan)
 
 
 
@@ -2143,6 +2186,7 @@ STR_8805                                                        :{RIGHTARROW}{SE
 
 STR_8812_EMPTY                                                  :{LTBLUE}Kosong
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} dari {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} dari {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Kereta {COMMA} sedang menunggu di depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Kendaraan Baru
 STR_8816                                                        :{BLACK}-
@@ -2469,6 +2513,10 @@ STR_GENERATION_WORLD                                            :{WHITE}Membuat 
 STR_GENERATION_ABORT                                            :{BLACK}Batalkan
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Membatalkan Pembuatan Peta
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Tindakan ini menyebabkan level kesulitan menjadi bebas
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Turunkan satu tingkat tinggi permukaan tanah
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Naikkan satu tingkat tinggi permukaan tanah
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Rubah ketinggian permukaan tanah
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Ketinggian permukaan tanah:
 
 
 ########### String for new airports
@@ -2481,6 +2529,7 @@ STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Tindakan
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}Memindahkan/Mentransfer Nilai: {LTBLUE}{CURRENCY}
 
 
 

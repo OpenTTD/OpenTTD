@@ -1,11 +1,681 @@
 ##name Thai
 ##ownname Thai
 ##isocode th_TH
-##winlangid 0x041e
-##plural 0
+##winlangid 0x41e
+##plural 1
 ##textdir ltr
 
 #
 
 ##id 0x0000
 STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}อยู่นอกขอบแผนที่
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}ใกล้กับขอบแผนที่เกินไป
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}มีเงินไม่พอ - ต้องการอีก {CURRENCY}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}ต้องใช้พื้นที่ราบ
+STR_0008_WAITING                                                :{BLACK}กำลังรอ: {WHITE}{STRING}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} ถ่ายมาจาก {STATION})
+STR_000C_ACCEPTS                                                :{BLACK}กำลังต้องการ: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}กำลังต้องการ: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}ผลิต: {GOLD}
+STR_000F_PASSENGERS                                             :ผู้โดยสาร
+STR_0010_COAL                                                   :ถ่านหิน
+STR_0011_MAIL                                                   :ไปรษณีย์
+STR_0012_OIL                                                    :น้ำมัน
+STR_0013_LIVESTOCK                                              :ปศุสัตว์
+STR_0014_GOODS                                                  :สินค้า
+STR_0015_GRAIN                                                  :ข้าว
+STR_0016_WOOD                                                   :ไม้
+STR_0017_IRON_ORE                                               :แร่เหล็ก
+STR_0018_STEEL                                                  :เหล็กกล้า
+STR_0019_VALUABLES                                              :เงินตรา
+STR_001A_COPPER_ORE                                             :แร่ทองแดง
+STR_001B_MAIZE                                                  :ข้าวโพด
+STR_001C_FRUIT                                                  :ผลไม้
+STR_001D_DIAMONDS                                               :เพชร
+STR_001E_FOOD                                                   :อาหาร
+STR_001F_PAPER                                                  :กระดาษ
+STR_0020_GOLD                                                   :ทองคำ
+STR_0021_WATER                                                  :น้ำดื่ม
+STR_0022_WHEAT                                                  :ข้าวสาลี
+STR_0023_RUBBER                                                 :ยางพารา
+STR_0024_SUGAR                                                  :น้ำตาล
+STR_0025_TOYS                                                   :ของเล่น
+STR_0026_CANDY                                                  :ขนมหวาน
+STR_0027_COLA                                                   :น้ำโคล่า
+STR_0028_COTTON_CANDY                                           :ขนมสายไหม
+STR_0029_BUBBLES                                                :ฟอง
+STR_002A_TOFFEE                                                 :ลูกอม
+STR_002B_BATTERIES                                              :ุถ่านไฟฉาย
+STR_002C_PLASTIC                                                :พลาสติก
+STR_002D_FIZZY_DRINKS                                           :น้ำอัดลมหรรษา
+STR_002F_PASSENGER                                              :ผู้โดยสาร
+STR_0030_COAL                                                   :ถ่านหิน
+STR_0031_MAIL                                                   :ไปรษณีย์
+STR_0032_OIL                                                    :น้ำมัน
+STR_0033_LIVESTOCK                                              :ปศุสัตว์
+STR_0034_GOODS                                                  :สินค้า
+STR_0035_GRAIN                                                  :ข้าว
+STR_0036_WOOD                                                   :ไม้
+STR_0037_IRON_ORE                                               :แร่เหล็ก
+STR_0038_STEEL                                                  :เหล็กกล้า
+STR_0039_VALUABLES                                              :เงินตรา
+STR_003A_COPPER_ORE                                             :แร่ทองแดง
+STR_003B_MAIZE                                                  :ข้าวโพด
+STR_003C_FRUIT                                                  :ผลไม้
+STR_003D_DIAMOND                                                :เพชร
+STR_003E_FOOD                                                   :อาหาร
+STR_003F_PAPER                                                  :กระดาษ
+STR_0040_GOLD                                                   :ทองคำ
+STR_0041_WATER                                                  :น้ำดื่ม
+STR_0042_WHEAT                                                  :ข้าวสาลี
+STR_0043_RUBBER                                                 :ยางพารา
+STR_0044_SUGAR                                                  :น้ำตาล
+STR_0045_TOY                                                    :ของเล่น
+STR_0046_CANDY                                                  :ขนมหวาน
+STR_0047_COLA                                                   :น้ำโคล่า
+STR_0048_COTTON_CANDY                                           :ขนมสายไหม
+STR_0049_BUBBLE                                                 :ฟอง
+STR_004A_TOFFEE                                                 :ลูกอม
+STR_004B_BATTERY                                                :ถ่านไฟฉาย
+STR_004C_PLASTIC                                                :พลาสติก
+STR_004D_FIZZY_DRINK                                            :น้ำอัดลมหรรษา
+STR_QUANTITY_PASSENGERS                                         :ผู้โดยสาร {COMMA} คน
+STR_QUANTITY_COAL                                               :ถ่านหิน {WEIGHT}
+STR_QUANTITY_MAIL                                               :ไปรษณียภัณฑ์ {COMMA} ถุง
+STR_QUANTITY_OIL                                                :น้ำมัน {VOLUME}
+STR_QUANTITY_LIVESTOCK                                          :ปศุสัตว์ {COMMA} ตัว
+STR_QUANTITY_GOODS                                              :สินค้า {COMMA} ลัง
+STR_QUANTITY_GRAIN                                              :ข้าว {WEIGHT}
+STR_QUANTITY_WOOD                                               :ไม้ {WEIGHT}
+STR_QUANTITY_IRON_ORE                                           :แร่เหล็ก {WEIGHT}
+STR_QUANTITY_STEEL                                              :เหล็กกล้า {WEIGHT}
+STR_QUANTITY_VALUABLES                                          :เงินตรา {COMMA} ถุง
+STR_QUANTITY_COPPER_ORE                                         :แร่ทองแดง {WEIGHT}
+STR_QUANTITY_MAIZE                                              :ข้าวโพด {WEIGHT}
+STR_QUANTITY_FRUIT                                              :ผลไม้ {WEIGHT}
+STR_QUANTITY_DIAMONDS                                           :เพชร {COMMA} ถุง
+STR_QUANTITY_FOOD                                               :อาหาร {WEIGHT}
+STR_QUANTITY_PAPER                                              :กระดาษ {WEIGHT}
+STR_QUANTITY_GOLD                                               :ทองคำ {COMMA} ถุง
+STR_QUANTITY_WATER                                              :น้ำ {VOLUME}
+STR_QUANTITY_WHEAT                                              :ข้าวสาลี {WEIGHT}
+STR_QUANTITY_RUBBER                                             :ยางพารา {VOLUME}
+STR_QUANTITY_SUGAR                                              :น้ำตาล {WEIGHT}
+STR_QUANTITY_TOYS                                               :ของเล่น {COMMA} ชิ้น
+STR_QUANTITY_SWEETS                                             :ขนมหวาน {COMMA} ถุง
+STR_QUANTITY_COLA                                               :น้ำโคล่า {VOLUME}
+STR_QUANTITY_CANDYFLOSS                                         :ขนมสายไหม {WEIGHT}
+STR_QUANTITY_BUBBLES                                            :ฟอง {COMMA} ลูก
+STR_QUANTITY_TOFFEE                                             :ลูกอม {WEIGHT}
+STR_QUANTITY_BATTERIES                                          :ุ่ถ่านไฟฉาย {COMMA} ก้อน
+STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME}
+STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}คน
+STR_ABBREV_COAL                                                 :{TINYFONT}ถ่าน
+STR_ABBREV_MAIL                                                 :{TINYFONT}จดหมาย
+STR_ABBREV_OIL                                                  :{TINYFONT}น้ำมัน
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}เนื้อ
+STR_ABBREV_GOODS                                                :{TINYFONT}สินค้า
+STR_ABBREV_GRAIN                                                :{TINYFONT}ข้าว
+STR_ABBREV_WOOD                                                 :{TINYFONT}ไม้
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}แร่
+STR_ABBREV_STEEL                                                :{TINYFONT}เหล็ก
+STR_ABBREV_VALUABLES                                            :{TINYFONT}เงิน
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}ทองแดง
+STR_ABBREV_MAIZE                                                :{TINYFONT}ข้าวโพด
+STR_ABBREV_FRUIT                                                :{TINYFONT}ผลไม้
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}เพชร
+STR_ABBREV_FOOD                                                 :{TINYFONT}อาหาร
+STR_ABBREV_PAPER                                                :{TINYFONT}กระดาษ
+STR_ABBREV_GOLD                                                 :{TINYFONT}ทอง
+STR_ABBREV_WATER                                                :{TINYFONT}น้ำ
+STR_ABBREV_WHEAT                                                :{TINYFONT}ข้าว
+STR_ABBREV_RUBBER                                               :{TINYFONT}ยาง
+STR_ABBREV_SUGAR                                                :{TINYFONT}น้ำตาล
+STR_ABBREV_TOYS                                                 :{TINYFONT}ของเล่น
+STR_ABBREV_SWEETS                                               :{TINYFONT}ขนม
+STR_ABBREV_COLA                                                 :{TINYFONT}โคล่า
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}สายไหม
+STR_ABBREV_BUBBLES                                              :{TINYFONT}ฟอง
+STR_ABBREV_TOFFEE                                               :{TINYFONT}ลูกอม
+STR_ABBREV_BATTERIES                                            :{TINYFONT}ถ่าน
+STR_ABBREV_PLASTIC                                              :{TINYFONT}พลาสติก
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}น้ำอัดลม
+STR_ABBREV_NONE                                                 :{TINYFONT}ว่าง
+STR_ABBREV_ALL                                                  :{TINYFONT}ทั้งหมด
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}แผนที่ - {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}การตั้งค่าของเกม
+STR_00B2_MESSAGE                                                :{YELLOW}ข้อความ
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}ข้อความจาก {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}คำเตือน!
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}ไม่สามารถทำได้....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}ไม่สามารถทำให้พื้นที่นี้โล่งได้....
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}ลิขสิทธิ์เดิม {COPYRIGHT} ค.ศ.1995 ของคริส ซอว์เยอร์, สงวนลิขสิทธิ์ แปลโดย ภาคภูมิ เวทย์วิทยานุวัฒน์
+STR_00B7_VERSION                                                :{BLACK}OpenTTD รุ่นที่ {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}ลิขสิทธิ์ OpenTTD {COPYRIGHT}2002-2008 ของ The OpenTTD team
+STR_TRANSLATED_BY                                               :{BLACK}  ผู้แปล - ภาคภูมิ เวทย์วิทยานุวัฒน์ davidvetbook@hotmail.com
+
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}ออก
+STR_00C8_YES                                                    :{BLACK}ใช่
+STR_00C9_NO                                                     :{BLACK}ไม่
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}คุณแน่ใจว่าจะออกจากเกม OpenTTD แล้วกลับสู่ {STRING}?
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :ไม่มีอะไร
+STR_00D1_DARK_BLUE                                              :สีกรมท่า
+STR_00D2_PALE_GREEN                                             :สีเขียวอ่อน
+STR_00D3_PINK                                                   :สีชมพู
+STR_00D4_YELLOW                                                 :สีเหลือง
+STR_00D5_RED                                                    :สีแดง
+STR_00D6_LIGHT_BLUE                                             :สีฟ้าอ่อน
+STR_00D7_GREEN                                                  :สีเขียว
+STR_00D8_DARK_GREEN                                             :สีเขียวเข้ม
+STR_00D9_BLUE                                                   :สีฟ้า
+STR_00DA_CREAM                                                  :สีครีม
+STR_00DB_MAUVE                                                  :สีม่วงอ่อน
+STR_00DC_PURPLE                                                 :สีม่วง
+STR_00DD_ORANGE                                                 :สีส้ม
+STR_00DE_BROWN                                                  :สีน้ำตาล
+STR_00DF_GREY                                                   :สีเทา
+STR_00E0_WHITE                                                  :สีขาว
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}ขณะนี้มียานยนต์มากเกินไปแล้วในเกม
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}ที่ตั้ง
+STR_00E5_CONTOURS                                               :โครงร่าง
+STR_00E6_VEHICLES                                               :ยานยนต์
+STR_00E7_INDUSTRIES                                             :อุตสาหกรรม
+STR_00E8_ROUTES                                                 :เส้นทาง
+STR_00E9_VEGETATION                                             :ภาวะหยุดนิ่ง
+STR_00EA_OWNERS                                                 :เจ้าของ
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}ถนน
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}รางรถไฟ
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}สถานีขนส่ง/สนามบิน/ท่าเรือ
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}สิ่งก่อสร้าง/อุตสาหกรรม
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}ยานยนต์
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100เมตร
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200เมตร
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300เมตร
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400เมตร
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500เมตร
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}รถไฟ
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}รถยนต์
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}เรือ
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}อากาศยาน
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}เส้นทางการขนส่ง
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}เหมืองถ่านหิน
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}โรงไฟฟ้า
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}ป่าปลูก
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}โรงเลื่อย
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}โรงกลั่นน้ำมัน
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}บ้านนา
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}โรงงาน
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}โรงพิมพ์
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}บ่อน้ำมัน
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}เหมืองเหล็ก
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}โรงถลุงเหล็ก
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}ธนาคาร
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}โรงกระดาษ
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}เหมืองทอง
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}โรงงานแปรรูปอาหาร
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}เหมืองเพชร
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}เหมืองทองแดง
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}สวนผลไม้
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}สวนยางพารา
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}โรงประปา
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}หอส่งน้ำ
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}โรงไม้
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}ป่าสายไหม
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}โรงงานขนมหวาน
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}ไร่ถ่านไฟฉาย
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}บ่อโคล่า
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}ร้านขายของเล่น
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}โรงงานของเล่น
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}บ่อพลาสติก
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}โรงงานน้ำอัดลมหรรษา
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}โรงงานเป่าฟอง
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}เหมืองทอฟฟี่
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}เหมืองน้ำตาล
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}สถานีรถไฟ
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}สถานีถ่ายของรถบรรทุก
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}ป้ายรถเมล์
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}สนามบิน/จุดจอดเฮลิคอปเตอร์
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}ท่าเรือ
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}พื้นลูกรัง
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}พื้นหญ้า
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}ที่ดินเปล่า
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}ทุ่งนา
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}ต้นไม้
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}หิน
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}ผืนน้ำ
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}ไม่มีเจ้าของ
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}เมือง
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}อุตสาหกรรม
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}ทะเลทราย
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}หิมะ
+STR_012C_MESSAGE                                                :{WHITE}ข้อความ
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}ยกเลิก
+STR_012F_OK                                                     :{BLACK}ตกลง
+STR_0130_RENAME                                                 :{BLACK}เปลี่ยนชื่อ
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}บัญญัติหลายชื่อมากเกินไป
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}ชื่อที่เลือกมีได้ใช้ไปแล้ว
+
+
+STR_013B_OWNED_BY                                               :{WHITE}...เป็นของ {STRING}
+STR_013C_CARGO                                                  :{BLACK}สินค้า
+STR_013D_INFORMATION                                            :{BLACK}ข้อมูล
+STR_013E_CAPACITIES                                             :{BLACK}ปริมาณที่รับได้
+STR_013F_CAPACITY                                               :{BLACK}ความจุ: {LTBLUE}{CARGO}
+STR_0140_NEW_GAME                                               :{BLACK}เริ่มเกม
+STR_0141_LOAD_GAME                                              :{BLACK}เปิดเกมเดิม
+
+STR_0148_GAME_OPTIONS                                           :{BLACK}ตั้งค่าเกม
+
+STR_0150_SOMEONE                                                :บางคน{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                           :แผนที่โลก
+STR_0152_TOWN_DIRECTORY                                         :ทำเนียบชื่อเมือง
+STR_0153_SUBSIDIES                                              :โครงการที่เงินอุดหนุน
+
+
+
+
+
+
+
+
+
+############ range for menu starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :กราฟแสดงกำไร
+STR_0155_INCOME_GRAPH                                           :กราฟแสดงรายได้
+STR_0156_DELIVERED_CARGO_GRAPH                                  :กราฟแสดงปริมาณสินค้าได้ส่งแล้ว
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :กราฟแสดงประวัติผลประกอบการ
+STR_0158_COMPANY_VALUE_GRAPH                                    :กราฟแสดงมูลค่าบริษัท
+STR_0159_CARGO_PAYMENT_RATES                                    :อัตราผลตอบแทนของสินค้า
+STR_015A_COMPANY_LEAGUE_TABLE                                   :ตารางแสดงอันดับบริษัท
+############ range for menu ends
+
+STR_015B_OPENTTD                                                :{WHITE}เกี่ยวกับ OpenTTD
+STR_015C_SAVE_GAME                                              :บันทึกเกม
+STR_015D_LOAD_GAME                                              :เปิดเกมเดิม
+STR_015E_QUIT_GAME                                              :เลิกเล่น
+STR_015F_QUIT                                                   :ออกเกม
+STR_0161_QUIT_GAME                                              :{WHITE}เลิกเล่น
+
+
+############ range for months starts
+STR_0162_JAN                                                    :ม.ค.
+STR_0163_FEB                                                    :ก.พ.
+STR_0164_MAR                                                    :มี.ค.
+STR_0165_APR                                                    :เม.ย.
+STR_0166_MAY                                                    :พ.ค.
+STR_0167_JUN                                                    :มิ.ย.
+STR_0168_JUL                                                    :ก.ค.
+STR_0169_AUG                                                    :ส.ค.
+STR_016A_SEP                                                    :ก.ย.
+STR_016B_OCT                                                    :ต.ค.
+STR_016C_NOV                                                    :พ.ย.
+STR_016D_DEC                                                    :ธ.ค.
+############ range for months ends
+
+STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_0170                                                        :{TINYFONT}{STRING}-
+STR_0171_PAUSE_GAME                                             :{BLACK}พักเกม
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}บันทึกเกมและออก
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}แสดงบัญชีสถานีขนส่งของบริษัท
+STR_0174_DISPLAY_MAP                                            :{BLACK}แสดงจุดสังเกตแผนที่และป้าย
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}แสดงแผนที่และทำเนียบชื่อเมือง
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}แสดงทำเนียบชื่อเมือง
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}แสดงข้อมูลทางการเงินของบริษัท
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}แสดงข้อมูลทั่วไปของบริษัท
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}แสดงกราฟทั้งหลาย
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}แสดงตารางอันดับบริษัท
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}แสดงบัญชีรถไฟของบริษัท
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}แสดงบัญชีรถยนต์ของบริษัท
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}แสดงบัญชีเรือของบริษัท
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}แสดงบัญชีอากาศยานของบริษัท
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}ขยายภาพให้ใหญ่ขึ้น
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}ย่อภาพให้เล็กลง
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}สร้างรางรถไฟ
+STR_0182_BUILD_ROADS                                            :{BLACK}สร้างถนน
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}สร้างท่าเรือ
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}สร้างสนามบิน
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}ปลูกต้นไม้ ปักป้าย ฯลฯ
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}แสดงข้อมูลของที่ดิน
+STR_0187_OPTIONS                                                :{BLACK}ตั้งค่า
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}ไม่สามารถเปลี่ยนระยะเวลาการซ่อมบำรุง...
+STR_018B_CLOSE_WINDOW                                           :{BLACK}ปิดหน้าต่าง
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}หัวของหน้าต่าง - สามารถคลิกค้างลากเพื่อเลื่อนหน้าต่าง
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}ทำลายสิ่งก่อสร้าง ฯลฯ ในพื้นที่ช่องนั้น
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}ขุดส่วนมุมของที่ดินให้ต่ำลง
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}ถมส่วนมุมของที่ดินให้สูงขึ้น
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}แถบเลื่อน - ใช้เลื่อนบัญชีขึ้นลง
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}แสดงโครงร่างของพื้นดินบนแผนที่
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}แสดงยานยนต์บนแผนที่
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}แสดงอุตสาหกรรมบนแผนที่
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days starts
+############ range for days ends
+
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+
+############ end of savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+
+##id 0xB000
+
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### For showing numbers in widgets
+
+
+########### String for New Landscape Generator
+
+
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########

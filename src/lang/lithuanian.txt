@@ -2726,6 +2726,11 @@ STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iškrauti ir l
 
 
 
+STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia taisymo
+STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visada
+STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yra lygu su
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nelygus su
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mažiau negu
 
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kursas i {TOWN} depa

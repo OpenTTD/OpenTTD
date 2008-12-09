@@ -378,6 +378,8 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade tota
 STR_SORT_BY_MAX_SPEED                                           :Velocidade máxima
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
+STR_SORT_BY_LENGTH                                              :Comprimento
+STR_SORT_BY_LIFE_TIME                                           :Restante tempo de vida
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Avaliação de carga
@@ -485,6 +487,8 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Custo pa
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Custo para limpar: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Proprietário: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Dono da estrada: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}Dono da linha férrea: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoridade local: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nenhum
 STR_01AA_NAME                                                   :{BLACK}Nome
@@ -586,6 +590,8 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada do primeiro veículo à estação de um oponente
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acidentes / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informações da empresa
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Abertura de indústrias
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Fecho de indústrias
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Alterações económicas
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Mudanças na produção das industrias servidas pelo(s) oponentes
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Mudanças na produção de outras industrias

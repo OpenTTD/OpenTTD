@@ -663,7 +663,7 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Céginf
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Új gazdasági épületek megjelenése
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Gazdasági épületek bezárása
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Gazdasági változások
-STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Termelésváltozások  a vállalatod által kiszolgált gazdasági létesítményeknél
+STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Termelésváltozások a vállalatod által kiszolgált gazdasági létesítményeknél
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Termelésváltozások a konkurenseid által kiszolgált gazdasági létesítményeknél
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Más ipari termelési változások
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}A vállalat járműveire vonatkozó ötletek / információk
@@ -2532,14 +2532,14 @@ STR_LIVERY_LARGE_PLANE                                          :Nagy repülőg�
 STR_LIVERY_PASSENGER_TRAM                                       :Utasszállító villamos
 STR_LIVERY_FREIGHT_TRAM                                         :Teherszállító villamos
 
-STR_LIVERY_GENERAL_TIP                                          :{BLACK}Általános szinsémák mutatása
-STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vonat szinsémák mutatása
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mutasd a közúti járművek szinsémáit
-STR_LIVERY_SHIP_TIP                                             :{BLACK}Hajó szinsémák mutatása
-STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Repülőgép szinsémák mutatása
-STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Válassz egy elsődleges szint a kiválasztott sémához
-STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Válassz egy másodlagos szint a kiválasztott sémához
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Válassz megváltoztatandó szinsémát, vagy szinsémákat a CTRL+kattintással. Kattints a dobozra a szinséma használat váltásához.
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Általános színsémák mutatása
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vonat színsémák mutatása
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mutasd a közúti járművek színsémáit
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Hajó színsémák mutatása
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Repülőgép színsémák mutatása
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Válassz egy elsődleges színt a kiválasztott sémához
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Válassz egy másodlagos színt a kiválasztott sémához
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Válassz megváltoztatandó színsémát, vagy színsémákat CTRL+kattintással. Kattints a dobozra a színséma használat váltásához.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Gőz)
@@ -2917,7 +2917,7 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Csak a j
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} vonatai - {COMMA}
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Új vasúti járművek
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Új villamosított vasúti járművek
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Új vasúti járművek
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Új egysínű járművek
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Új MagLev járművek
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vasúti járművek

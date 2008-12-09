@@ -1,5 +1,5 @@
 ##name Arabic (Egypt)
-##ownname Arabic
+##ownname Arabic (Egypt)
 ##isocode ar_EG
 ##winlangid 0x0c01
 ##plural 0
@@ -9,3 +9,641 @@
 
 ##id 0x0000
 STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}خارج حدود الخريطة
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}قريب جدا من حافة الخريطة
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}الرصيد لا يكفي - يلزمك {CURRENCY}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}يجب ان تكون الأرض مستوية
+STR_0008_WAITING                                                :{BLACK}انتظار: {WHITE}{STRING}
+STR_000C_ACCEPTS                                                :{BLACK}يقبل: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}يقبل: {GOLD}
+STR_000F_PASSENGERS                                             :ركاب
+STR_0010_COAL                                                   :فحم
+STR_0011_MAIL                                                   :بريد
+STR_0012_OIL                                                    :نفط
+STR_0013_LIVESTOCK                                              :مواشي
+STR_0014_GOODS                                                  :بضائع
+STR_0015_GRAIN                                                  :حبوب
+STR_0016_WOOD                                                   :خشب
+STR_0017_IRON_ORE                                               :برادة حديد
+STR_0018_STEEL                                                  :حديد
+STR_0019_VALUABLES                                              :مدخرات
+STR_001A_COPPER_ORE                                             :منجم نحاس
+STR_001B_MAIZE                                                  :ذرة
+STR_001C_FRUIT                                                  :فواكة
+STR_001D_DIAMONDS                                               :جواهر
+STR_001E_FOOD                                                   :طعام
+STR_001F_PAPER                                                  :ورق
+STR_0020_GOLD                                                   :ذهب
+STR_0021_WATER                                                  :ماء
+STR_0022_WHEAT                                                  :قمح
+STR_0023_RUBBER                                                 :مطاط
+STR_0024_SUGAR                                                  :سكر
+STR_0025_TOYS                                                   :العاب
+STR_0026_CANDY                                                  :حلويات
+STR_0027_COLA                                                   :كولا
+STR_0028_COTTON_CANDY                                           :الحلاوة القطنية
+STR_0029_BUBBLES                                                :فقاعات
+STR_002A_TOFFEE                                                 :توفي
+STR_002B_BATTERIES                                              :بطاريات
+STR_002C_PLASTIC                                                :بلاستيك
+STR_002D_FIZZY_DRINKS                                           :شراب مخفوق
+STR_002F_PASSENGER                                              :ركاب
+STR_0030_COAL                                                   :فحم
+STR_0031_MAIL                                                   :بريد
+STR_0032_OIL                                                    :نفط
+STR_0033_LIVESTOCK                                              :مواشي
+STR_0034_GOODS                                                  :بضائع
+STR_0035_GRAIN                                                  :حبوب
+STR_0036_WOOD                                                   :خشب
+STR_0037_IRON_ORE                                               :برادة حديد
+STR_0038_STEEL                                                  :حديد
+STR_0039_VALUABLES                                              :مقتنيات ثمينة
+STR_003A_COPPER_ORE                                             :برادة نحاس
+STR_003B_MAIZE                                                  :ذرة
+STR_003C_FRUIT                                                  :فواكة
+STR_003D_DIAMOND                                                :جواهر
+STR_003E_FOOD                                                   :طعام
+STR_003F_PAPER                                                  :اوراق
+STR_0040_GOLD                                                   :ذهب
+STR_0041_WATER                                                  :ماء
+STR_0042_WHEAT                                                  :قمح
+STR_0043_RUBBER                                                 :مطاط
+STR_0044_SUGAR                                                  :سكر
+STR_0045_TOY                                                    :لعبة
+STR_0046_CANDY                                                  :حلويات
+STR_0047_COLA                                                   :كولا
+STR_0048_COTTON_CANDY                                           :حلاوة قطنية
+STR_0049_BUBBLE                                                 :فقاعات
+STR_004A_TOFFEE                                                 :توفي
+STR_004B_BATTERY                                                :بطاريات
+STR_004C_PLASTIC                                                :بلاستيك
+STR_004D_FIZZY_DRINK                                            :مشروبات نخفوقة
+STR_00B0_MAP                                                    :{WHITE}الخريطة- {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}خيارات
+STR_00B2_MESSAGE                                                :{YELLOW}رسالة
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}لا يمكن تنفيذة....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}لا يمكن ازالتة ....
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}الحقوق الأصلية {COPYRIGHT} كريس سوير 1995 , جميع الحقوق محفوظة
+STR_00B7_VERSION                                                :{BLACK}النسخة المفتوحة رقم {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}النسخة المفتوحة {COPYRIGHT}2002-2008 فريق النسخة المفتوحة
+
+STR_00C7_QUIT                                                   :{WHITE}انهاء
+STR_00C8_YES                                                    :{BLACK}نعم
+STR_00C9_NO                                                     :{BLACK}لا
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}هل تود اغلاق النسخة المفتوحة و العودة لـ {STRING}?
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :فارغ
+STR_00D1_DARK_BLUE                                              :ازرق غامق
+STR_00D2_PALE_GREEN                                             :اخضر فاتح
+STR_00D3_PINK                                                   :وردي
+STR_00D4_YELLOW                                                 :اصفر
+STR_00D5_RED                                                    :احمر
+STR_00D6_LIGHT_BLUE                                             :سماوي
+STR_00D7_GREEN                                                  :اخضر
+STR_00D8_DARK_GREEN                                             :اخضر غامق
+STR_00D9_BLUE                                                   :ازرق
+STR_00DA_CREAM                                                  :كريمي
+STR_00DB_MAUVE                                                  :موف
+STR_00DC_PURPLE                                                 :زهري
+STR_00DD_ORANGE                                                 :برتقالي
+STR_00DE_BROWN                                                  :بني
+STR_00DF_GREY                                                   :رمادي
+STR_00E0_WHITE                                                  :ابيض
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}العربات كثيرة جدا في اللعبة
+STR_00E5_CONTOURS                                               :عداد
+STR_00E6_VEHICLES                                               :عربات
+STR_00E7_INDUSTRIES                                             :مصانع
+STR_00E8_ROUTES                                                 :طرق
+STR_00E9_VEGETATION                                             :نبات
+STR_00EA_OWNERS                                                 :ملاك
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}شوارع
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}سكة القطار
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}محطات/مطارات/موانئ
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}مباني/مصانع
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}عربات
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 م
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 م
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300م
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 م
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 م
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}قطارات
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}عربات
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}سفن
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}طائرات
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}طرق النقل
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}منجم فحم
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}محطة طاقة
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}غابة
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}منجرة خشب
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}محطة تكريرالنفط
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}مزرعة
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}مصنع
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}مطبعة
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}بئر نفط
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}منجم برادة الحديد
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}مصنع حديد
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}بنك
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}مصنع ورق
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}منجم ذهب
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}معمل تحضير الطعام
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}منجم جواهر
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}منجم برادة النحاس
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}مزرعة فواكة
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}مزرعة مطاط
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}بئر ماء
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}برج ماء
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}منشرة خشب
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}غابة شجر القطن
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}مصنع حلويات
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}بئر كولا
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}محل بيع الألعاب
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}مصنع الألعاب
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}معمل بلاستيك
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}مصنع مخفوق العصير
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}مولد الفقاقيع
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}معمل توفي
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}قصب السكر
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}محطة قطار
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}محطة بضائع سيارات
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}محطة باصات
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}مطار
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}مرفء
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}هضاب
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}ارض عشبية
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}ارض جرداء
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}حقول
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}اشجار
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}صخور
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}مياة
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}غير مملوكة
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}مدن
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}مصانع
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}صحراء
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}ثلج
+STR_012C_MESSAGE                                                :{WHITE}رسالة
+STR_012E_CANCEL                                                 :{BLACK}الغاء
+STR_012F_OK                                                     :{BLACK}موافق
+STR_0130_RENAME                                                 :{BLACK}اعادة تسمية
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}الاسماء المعرفة كثيرة جدا
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}الاسم المختار مستعمل من قبل
+
+
+STR_013C_CARGO                                                  :{BLACK}بضاعة شحن
+STR_013D_INFORMATION                                            :{BLACK}معلومات
+STR_013E_CAPACITIES                                             :{BLACK}السعة
+STR_013F_CAPACITY                                               :{BLACK}سعة: {LTBLUE}{CARGO}
+STR_0140_NEW_GAME                                               :{BLACK}لعبة جديدة
+STR_0141_LOAD_GAME                                              :{BLACK}تحميل
+
+STR_0148_GAME_OPTIONS                                           :{BLACK}خيارات اللعبة
+
+STR_0150_SOMEONE                                                :شخص ما{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                           :خارطة العالم
+STR_0152_TOWN_DIRECTORY                                         :دليل المدن
+STR_0153_SUBSIDIES                                              :عروض
+
+
+
+
+
+
+
+
+
+############ range for menu starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :مخطط التشغيل
+STR_0155_INCOME_GRAPH                                           :مخطط الارباح
+STR_0156_DELIVERED_CARGO_GRAPH                                  :مخطط البضاعة المشحونة
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :مخطط الأداء
+STR_0158_COMPANY_VALUE_GRAPH                                    :مخطط قيمة الشركات
+STR_0159_CARGO_PAYMENT_RATES                                    :معدل تكلفة النقل
+STR_015A_COMPANY_LEAGUE_TABLE                                   :ترتيب الشركات
+############ range for menu ends
+
+STR_015B_OPENTTD                                                :{WHITE}حول النسخة المفتوحة
+STR_015C_SAVE_GAME                                              :حفظ
+STR_015D_LOAD_GAME                                              :تحميل
+STR_015E_QUIT_GAME                                              :ترك اللعبة
+STR_015F_QUIT                                                   :خروج
+STR_0161_QUIT_GAME                                              :{WHITE}ترك اللعبة
+
+
+############ range for months starts
+STR_0162_JAN                                                    :يناير
+STR_0163_FEB                                                    :فبراير
+STR_0164_MAR                                                    :مارس
+STR_0165_APR                                                    :ابريل
+STR_0166_MAY                                                    :مايو
+STR_0167_JUN                                                    :يونيو
+STR_0168_JUL                                                    :يوليو
+STR_0169_AUG                                                    :اغسطس
+STR_016A_SEP                                                    :سبتمبر
+STR_016B_OCT                                                    :اكتوبر
+STR_016C_NOV                                                    :نوفمبر
+STR_016D_DEC                                                    :ديسمبر
+############ range for months ends
+
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}حفظ/اغلاق/خروج
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}عرض محطات الشركة
+STR_0174_DISPLAY_MAP                                            :{BLACK}عرض الخريطة, لقطات اضافية , العلامات
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}عرض الخريطة, دليل المدن
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}عرض دليل المدن
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}عرض السجل المالي للشركة
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}عرض معلومات الشركة
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}عرض المخططات
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}عرض جدول ترتيب الشركات
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}عرض قطارات الشركة
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}عرض عربات الشركة
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}عرض سفن الشركة
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}عرض طائرات الشركة
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}تكبير الصورة
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}تصغير الصورة
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}انشاء سكة حديد
+STR_0182_BUILD_ROADS                                            :{BLACK}انشاء شارع
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}انشاء مرفء سفن
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}انشاء مطار
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}زراعة شجر, علامات و اشارات ...
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}معلومات مناطق الخريطة
+STR_0187_OPTIONS                                                :{BLACK}خيارات
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}لا يمكن تغيير فترات الصيانة
+STR_018B_CLOSE_WINDOW                                           :{BLACK}اغلاق الاطار
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}عنوان الطار- اسحب لتحريك الاطار
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}هدم المباني و غيرها
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}خفض ركن الارض
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}رفع ركن الارض
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}شريط العرض- فوق /تحت
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}عرض عداد الارض على الخريطة
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}عرض المركبات على الخريطة
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}عرض المصانع على الخريطة
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}عرض الطرق على الخريطة
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}عرض المزارع على الخريطة
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}عرض ملاك الاراضي على الخريطة
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}عرض/اخفاء اسماء المدن
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}دخل السنة الحالية: {CURRENCY} (السنة السابقة: {CURRENCY})
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+STR_019C_ROAD_VEHICLE                                           :مركبات
+STR_019D_AIRCRAFT                                               :طائرات
+STR_019E_SHIP                                                   :سفن
+STR_019F_TRAIN                                                  :قطارات
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} يحتاج تبديل
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} اصبحت قديمة جدا
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA}قديمة جدا وتحتاج تبديل على فورا
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}معلومات ارض
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}تكلفة الازالة {LTBLUE}غير متاح
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}تكلفة الازالة {LTBLUE}{CURRENCY}
+STR_01A6_N_A                                                    :غير متاح
+STR_01A9_NONE                                                   :فارغ
+STR_01AA_NAME                                                   :{BLACK}اسم
+
+############ range for days starts
+STR_01AC_1ST                                                    :الأول
+STR_01AD_2ND                                                    :الثاني
+STR_01AE_3RD                                                    :الثالث
+STR_01AF_4TH                                                    :الرابع
+STR_01B0_5TH                                                    :الخامس
+STR_01B1_6TH                                                    :السادس
+STR_01B2_7TH                                                    :السابع
+STR_01B3_8TH                                                    :الثامن
+STR_01B4_9TH                                                    :التاسع
+STR_01B5_10TH                                                   :العاشر
+STR_01B6_11TH                                                   :الحادي عشر
+STR_01B7_12TH                                                   :الثاني عشر
+STR_01B8_13TH                                                   :الثالث عشر
+STR_01B9_14TH                                                   :الرابع عشر
+STR_01BA_15TH                                                   :الخامس عشر
+STR_01BB_16TH                                                   :السادس عشر
+STR_01BC_17TH                                                   :السابع عشر
+STR_01BD_18TH                                                   :الثامن عشر
+STR_01BE_19TH                                                   :التاسع عشر
+############ range for days ends
+
+
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}الشحنة المقبولة: {LTBLUE}
+
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}صندوق الموسيقى
+STR_01D3_SOUND_MUSIC                                            :الموسيقى/الصوت
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}عرض اطار الصوت/الموسيقى
+STR_01D5_ALL                                                    :{TINYFONT}الكل
+STR_01D6_OLD_STYLE                                              :{TINYFONT}النمط القديم
+STR_01D7_NEW_STYLE                                              :{TINYFONT}النمط الجديد
+STR_01D8_EZY_STREET                                             :{TINYFONT}شارع از
+STR_01D9_CUSTOM_1                                               :{TINYFONT}معدل1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}معدل2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}مستوى الصوت
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}مؤثرات الصوت
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}مرتفع.  .  .  .  .   .منخفض
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}تجاوز للمسار السابق
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}تجاوز للمسار التالي
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}ايقاف الموسيقى
+
+
+############ range for menu starts
+############ range ends here
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+
+############ end of savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+
+##id 0xB000
+
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### For showing numbers in widgets
+
+
+########### String for New Landscape Generator
+
+
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########
