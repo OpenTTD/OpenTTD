@@ -10,10 +10,10 @@
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Harita kenarında
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Sınıra çok yakın
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Para Yetersiz - şu kadar gerekli: {CURRENCY}
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Para yetersiz - gerekli miktar: {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Yerin düzleştirilmesi lazım
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zeminin düzleştirilmesi lazım
 STR_0008_WAITING                                                :{BLACK}Bekleyen: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} çıkış noktası {STATION})
@@ -40,13 +40,13 @@ STR_001E_FOOD                                                   :Yiyecek
 STR_001F_PAPER                                                  :Kağıt
 STR_0020_GOLD                                                   :Altın
 STR_0021_WATER                                                  :Su
-STR_0022_WHEAT                                                  :Un
+STR_0022_WHEAT                                                  :Buğday
 STR_0023_RUBBER                                                 :Kauçuk
 STR_0024_SUGAR                                                  :Şeker
 STR_0025_TOYS                                                   :Oyuncak
 STR_0026_CANDY                                                  :Tatlı
 STR_0027_COLA                                                   :Kola
-STR_0028_COTTON_CANDY                                           :Pamukhelva
+STR_0028_COTTON_CANDY                                           :Pamuk helva
 STR_0029_BUBBLES                                                :Balon
 STR_002A_TOFFEE                                                 :Bonbon
 STR_002B_BATTERIES                                              :Pil
@@ -72,13 +72,13 @@ STR_003E_FOOD                                                   :Yiyecek
 STR_003F_PAPER                                                  :Kağıt
 STR_0040_GOLD                                                   :Altın
 STR_0041_WATER                                                  :Su
-STR_0042_WHEAT                                                  :Un
+STR_0042_WHEAT                                                  :Buğday
 STR_0043_RUBBER                                                 :Kauçuk
 STR_0044_SUGAR                                                  :Şeker
 STR_0045_TOY                                                    :Oyuncak
 STR_0046_CANDY                                                  :Tatlı
 STR_0047_COLA                                                   :Kola
-STR_0048_COTTON_CANDY                                           :Pamukhelva
+STR_0048_COTTON_CANDY                                           :Pamuk helva
 STR_0049_BUBBLE                                                 :Balon
 STR_004A_TOFFEE                                                 :Bonbon
 STR_004B_BATTERY                                                :Pil
@@ -155,11 +155,11 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Harita - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Seçenekler
 STR_00B2_MESSAGE                                                :{YELLOW}Mesaj
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj: {STRING}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mesaj (gönderen {STRING})
 STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Uyarı!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Yapılamaz....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Burası temizlenemez....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orjinal kopyalama hakkı {COPYRIGHT} 1995 Chris Sawyer, Her Hakkı Saklıdır
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Bu alan temizlenemez....
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orijinal kopyalama hakkı {COPYRIGHT} 1995 Chris Sawyer, Her hakkı saklıdır
 STR_00B7_VERSION                                                :{BLACK}OpenTTD sürüm {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 OpenTTD takımı
 STR_TRANSLATED_BY                                               :{BLACK}  Çevirenler -
@@ -223,9 +223,9 @@ STR_00FC_FOREST                                                 :{BLACK}{TINYFON
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Keresteci
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Petrol Rafinerisi
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Çiftlik
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabrika
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}İmalathane
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Basımevi
-STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Petrol Kuyuları
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Petrol Kuyusu
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Demir Madeni
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Çelik Fabrikası
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
@@ -242,7 +242,7 @@ STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFON
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Pamukhelva Ormanı
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Tatlı Fabrikası
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Pil Çiftliği
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kola Kuyuları
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kola Kuyusu
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Oyuncakçı
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Oyuncak Fabrikası
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastik Fıskiyesi
@@ -250,14 +250,14 @@ STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFON
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Balon Yapıcı
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Bonbon Madeni
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Şeker Madeni
-STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Tren istasyonu
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Tren İstasyonu
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Kamyon Yükleme Yeri
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Otobüs Durağı
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Havalimanı/Heliport
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Havalimanı/Helikopter Pisti
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}İskele
-STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Engebeli Yer
-STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Çimlik Yer
-STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Çıplak Yer
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Engebeli Zemin
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Çim Zemin
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Çıplak Zemin
 STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Meralar
 STR_0124_TREES                                                  :{BLACK}{TINYFONT}Ağaçlar
 STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Kayalar
@@ -308,8 +308,8 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Seçenek
 
 STR_0150_SOMEONE                                                :birisi{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Dünya haritası
-STR_0152_TOWN_DIRECTORY                                         :Şehir Listesi
-STR_0153_SUBSIDIES                                              :İhaleler
+STR_0152_TOWN_DIRECTORY                                         :Şehir listesi
+STR_0153_SUBSIDIES                                              :Sübvansiyon
 
 STR_UNITS_IMPERIAL                                              :Amerikan
 STR_UNITS_METRIC                                                :Metrik
@@ -344,23 +344,23 @@ STR_UNITS_FORCE_METRIC                                          :{COMMA} ton
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Kar grafiği
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Karlılık grafiği
 STR_0155_INCOME_GRAPH                                           :Gelir grafiği
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Taşınan kargo grafiği
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Performans tarihi grafiği
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Başarı geçmişi grafiği
 STR_0158_COMPANY_VALUE_GRAPH                                    :Şirket değeri grafiği
 STR_0159_CARGO_PAYMENT_RATES                                    :Kargo ödeme tablosu
-STR_015A_COMPANY_LEAGUE_TABLE                                   :Şirketler ligi
+STR_015A_COMPANY_LEAGUE_TABLE                                   :Şirketler ligi tablosu
 STR_PERFORMANCE_DETAIL_MENU                                     :Ayrıntılı Performans
 ############ range for menu ends
 
-STR_015B_OPENTTD                                                :{WHITE}OpenTTD Hakkinda
+STR_015B_OPENTTD                                                :{WHITE}OpenTTD Hakkında
 STR_015C_SAVE_GAME                                              :Kaydet
 STR_015D_LOAD_GAME                                              :Yükle
-STR_015E_QUIT_GAME                                              :Bitir
+STR_015E_QUIT_GAME                                              :Ana menüye dön
 STR_015F_QUIT                                                   :Çıkış
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}Oyunu bitirmek istediğinizden emin misiniz?
-STR_0161_QUIT_GAME                                              :{WHITE}Oyunu Bitir
+STR_0161_QUIT_GAME                                              :{WHITE}Ana Menüye Dön
 STR_SORT_ORDER_TIP                                              :{BLACK}Sıralama türü seçin (azalan/artan)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sıralama kriteri seçin
 STR_SORT_BY                                                     :{BLACK}Sırala
@@ -428,49 +428,49 @@ STR_016D_DEC                                                    :Ara
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
-STR_0171_PAUSE_GAME                                             :{BLACK}Duraklat
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Kaydet, bitir, çık
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Şirket istasyonlarının listesini göster
+STR_0171_PAUSE_GAME                                             :{BLACK}Oyunu durdur
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Kaydet, ana menüye dön, çık
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Şirkete ait istasyonları listele
 STR_0174_DISPLAY_MAP                                            :{BLACK}Haritayı göster
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Haritayı, şehir listesini göster
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Şehir listesini göster
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Şirket ekonomisini göster
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Genel şirket bilgisi göster
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Şirketin ekonomik durumunu göster
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Şirketin genel durumunu göster
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Grafikleri göster
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Şirket ligini göster
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tren listesini göster
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Karayolu taşıtı listesini göster
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Gemi listesini göster
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Uçak listesini göster
-STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Yaklaş
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Şirketler ligini göster
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Şirkete ait trenleri listele
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Şirkete ait karayolu taşıtlarını listele
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Şirkete ait gemileri listele
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Şirkete ait uçakları listele
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Yakınlaş
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Uzaklaş
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Ray yapımı
-STR_0182_BUILD_ROADS                                            :{BLACK}Yol yapımı
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Tren rayı yapımı
+STR_0182_BUILD_ROADS                                            :{BLACK}Karayolu yapımı
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}İskele yapımı
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Havalimanı yapımı
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Ağac dik, tabela koy vs.
-STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Yer bilgisi
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Ağaç dik, tabela koy vs.
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Arazi bilgisi
 STR_0187_OPTIONS                                                :{BLACK}Seçenekler
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
-STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Servis gecikmesini değiştiremiyor...
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Servis aralığı değiştirilemiyor...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Pencereyi kapat
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Pencere başlığı - pencereyi götürmek için sürükle
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Pencere başlığı - pencereyi hareket ettirmek için sürükle
 STR_STICKY_BUTTON                                               :{BLACK}'Tüm pencereleri kapat' tuşuyla kapanmasın
 STR_RESIZE_BUTTON                                               :{BLACK}Pencereyi boyutlandirmak için tıklayıp sürükle
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Su anki varsayılan kayıt/yükleme dizinine gitmek için tıklayın
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Bir karedeki binaları vb. yık
-STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Bir köşeyi alçalt
-STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Bir köşeyi yükselt
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Kaydırma çubuğu - listeyi aşağı/yukarı kaydır
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Bir arazi üzerinde bulunan binaları ve benzeri yapıları yık
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Araziyi alçalt
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Araziyi yükselt
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Kaydırma çubuğu - listeyi aşağı/yukarı kaydırır
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Kaydırma çubuğu - listeyi sağa/sola kaydır
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Haritanın anahatlarını göster
-STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Haritada araçları göster
-STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Haritada fabrikaları göster
-STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Haritada taşıma rotalarını göster
-STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Haritada bitkileri göster
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Haritada arsa sahiplerini göster
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Haritada şehir isimlerini aç/kapa
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Harita üzerinde eşyükselti eğrilerini göster
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Harita üzerinde araçları göster
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Harita üzerinde fabrikaları göster
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Harita üzerinde taşıma rotalarını göster
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Harita üzerinde bitki örtüsünü göster
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Harita üzerinde arazi sahiplerini göster
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Harita üzerinde şehir isimlerini göster/gizle
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Bu seneki kâr: {CURRENCY} (geçen sene: {CURRENCY})
 
 ############ range for service numbers starts
@@ -482,10 +482,10 @@ STR_019C_ROAD_VEHICLE                                           :Karayolu taşı
 STR_019D_AIRCRAFT                                               :Uçak
 STR_019E_SHIP                                                   :Gemi
 STR_019F_TRAIN                                                  :Tren
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} eskidi
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} eskiyor
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} çok eskidi
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} çok eskidi, artık hurdaya ayrılması gerekiyor
-STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Yer Bilgisi
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Arazi Bilgisi
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Temizleme fiyatı: {LTBLUE}Yok
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Temizleme fiyatı: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Yok
@@ -551,36 +551,36 @@ STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFON
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}Düşük  '  '  ' '  '  '  Yüksek
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Önceki şarkı
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Sonraki şarkı
-STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Müziği kes
-STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Müziği çal
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Müziği kapat
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Müziği başlat
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Sesi ayarlamak için sürükleyin
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Sarki{SETX 88}Başlığı
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Şarkı{SETX 88}Başlığı
 STR_01E9_SHUFFLE                                                :{TINYFONT}Rastgele
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
-STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Müzik Programi Seçimi
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Müzik Program Seçimi
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Parça Listesi
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Temizle
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Kaydet
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Şu anki program
-STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}'tüm şarkılar' programını seç
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}'eski stil' programını seç
-STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}'yeni stil' programını seç
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Şu anki müzik programı
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}'Tüm şarkılar' programını seç
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}'Eski stil' programını seç
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}'Yeni stil' programını seç
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}'Özel 1' (kullanıcı-tanımlı) programı seç
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}'Özel 2' (kullanıcı-tanımlı) programı seç
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Şimdiki programı temizle (Sadece özel1 ve özel2 için)
-STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Müzik ayarlarıni kaydet
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Su anki programa eklenecek müzige tıklayın (Sadece özel1 ve özel2 için)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Şimdiki programı temizle (Sadece Özel1 ve Özel2 için)
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Müzik ayarlarını kaydet
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Şu anki programa eklenecek parçayı seçin (Sadece Özel1 ve Özel2 için)
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kullanilan programdan kaldırilacak müzige tıklayın(Custom1 veya Custom2 için geçerli)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Rastgele programı aç/kapa
-STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Şarki seçim penceresini göster
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Şarkı seçim penceresini göster
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Görüntüyü ortalamak için servisi tıklayın
 STR_01FE_DIFFICULTY                                             :{BLACK}Zorluk ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
@@ -596,15 +596,15 @@ STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Şirket bilgisi
 STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Fabrikaların açılışı
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Fabrikaların kapanışı
-STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi değişimleri
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomideki değişimler
 STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Şirket tarafından hizmet verilen fabrikaların üretim değişiklikleri
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Rakiplerin hizmet ettiği fabrikalardaki üretim değişiklikleri
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Diğer fabrikalardaki üretim değişiklikleri
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Şirketin araçları hakkında tavsiye / bilgi
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Yeni araçlar
-STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Kargo isteğindeki değişiklik
-STR_020E_SUBSIDIES                                              :{YELLOW}İhaleler
-STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Genel bilgiler
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Kargo isteğindeki değişiklikler
+STR_020E_SUBSIDIES                                              :{YELLOW}Sübvansiyonlar
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Genel bilgi
 STR_MESSAGES_ALL                                                :{YELLOW}Tüm mesajlar (kapalı/özet/tam)
 STR_MESSAGE_SOUND                                               :{YELLOW}Özet geçerken ses çıkar
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...önceki hedeften çok uzak
@@ -621,16 +621,16 @@ STR_0219_TYCOON_OF_THE_CENTURY                                  :Asrın En Büy�
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} '{STRING}' ünvanını kazandı!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} - {COMPANY} '{STRING}' unvanını kazandı!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} - {COMPANY} '{STRING}' ünvanını kazandı!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Senaryo Editörü
-STR_0223_LAND_GENERATION                                        :{WHITE}Yer Yapımı
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Senaryo Düzenleyicisi
+STR_0223_LAND_GENERATION                                        :{WHITE}Arazi Yapımı
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}yükseltme/alçaltma alanını arttır
-STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}yükseltme/alçaltma alanını arttır
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Rastgele harita yap
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Yükseltme/alçaltma alanını arttır
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Rastgele harita yarat
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Haritayı sıfırla
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Haritayı Sıfırla
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Haritada oyuncuya ait olan herşeyi sil
@@ -639,12 +639,12 @@ STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Harita y
 STR_022F_TOWN_GENERATION                                        :{BLACK}Şehir yapımı
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Fabrika yapımı
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Yol yapımı
-STR_0233_TOWN_GENERATION                                        :{WHITE}Şehir yapımı
+STR_0233_TOWN_GENERATION                                        :{WHITE}Şehir Yapımı
 STR_0234_NEW_TOWN                                               :{BLACK}Yeni Şehir
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Yeni şehir yap
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Yeni şehir yarat
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Buraya şehir yapılamıyor...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...haritanin kenarına çok yakın
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...başka bir şehre çok yakın
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...başka bir şehire çok yakın
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...yer uygun değil
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...çok fazla şehir var
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Şehir kurulamaz
@@ -652,7 +652,7 @@ STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...harit
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Şehrin boyutunu büyült
 STR_023C_EXPAND                                                 :{BLACK}Genişlet
 STR_023D_RANDOM_TOWN                                            :{BLACK}Rastgele Şehir
-STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Rastgele bir yere şehir yap
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Rastgele bir yerde şehir yarat
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Fabrika Yapımı
 STR_0240_COAL_MINE                                              :{BLACK}Kömür Madeni
 STR_0241_POWER_STATION                                          :{BLACK}Elektrik Santrali
@@ -677,7 +677,7 @@ STR_0253_WATER_SUPPLY                                           :{BLACK}Su Kayna
 STR_0254_WATER_TOWER                                            :{BLACK}Su Kulesi
 STR_0255_DIAMOND_MINE                                           :{BLACK}Gümüs Madeni
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Bakır Madeni
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Pamukhelva Ormanı
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Pamuk helva Ormanı
 STR_0258_CANDY_FACTORY                                          :{BLACK}Tatlı Fabrikası
 STR_0259_BATTERY_FARM                                           :{BLACK}Pil Çiftliği
 STR_025A_COLA_WELLS                                             :{BLACK}Kola Kuyusu
@@ -693,26 +693,26 @@ STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Elektrik
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Keresteci Yap
 STR_0265_PLANT_FOREST                                           :{BLACK}Orman Yap
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Petrol Rafinerisi Yap
-STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Petrol Platformu Yap (Haritanın köselerine yapılabilir)
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Petrol Platformu Yap (Yalnızca haritanın kenarlarına yapılabilir)
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Fabrika Yap
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Çelik Fabrikası Yap
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Çiftlik Yap
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Demir Mdeni Yap
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Demir Madeni Yap
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Petrol Kuyusu Aç
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Banka Kur (Nüfusu 1200'den fazla olan şehirlerde kurulabilir)
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Banka Kur (Yalnızca nüfusu 1200'den fazla olan şehirlerde kurulabilir)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Kağıt Fabrikası Yap
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Yemek Fabrikası Yap
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Basımevi Yap
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Altın Madeni Yap
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Banka Kur (Sadece şehirlerde kurulabilir)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Oduncu Yap (yagmurormanlarından odun yapar)
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Banka Kur (Yalnızca şehirlerde kurulabilir)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Oduncu Yap (yağmur ormanlarını keserek odun üretmek için)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Mehve Bahçesi Aç
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Kauçuk Bahçesi Yap
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Su Kaynağı Yap
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Su Kulesi Yap (Sadece şehirlere yapılabilir)
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Su Kulesi Yap (Yalnızca şehirlere yapılabilir)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Elmas Madeni Yap
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bakır Mdeni Yap
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Pamukhelva Ormanı Yap
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bakır Madeni Yap
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Pamuk Helva Ormanı Yap
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Tatlı Fabrikası Yap
 STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Pil Çiftliği Kur
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Kola Kuyusu Aç
@@ -724,38 +724,38 @@ STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Balon Ya
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bonbon Madeni Aç
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Şeker Madeni Aç
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Buraya {STRING} yapılamaz...
-STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...önce şehir yapılmali
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...her şehirde bir tane olabilir
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...önce şehir yapılmalı
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...her şehirde yalnızca bir tane olabilir
 STR_0288_PLANT_TREES                                            :{BLACK}Ağaç dik
-STR_0289_PLACE_SIGN                                             :{BLACK}Tabela Koy
-STR_028A_RANDOM_TREES                                           :{BLACK}Rastgele ağaçlar
+STR_0289_PLACE_SIGN                                             :{BLACK}Tabela koy
+STR_028A_RANDOM_TREES                                           :{BLACK}Rastgele Ağaç
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Haritaya rastgele ağaç dik
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Haritaya kayalik koy
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Deniz feneri koy
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Verici koy
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Çöl yap, kaldırmak için CTRL'ye basılı tut
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Çöl yap.{}Kaldırmak için CTRL'ye basılı tut
 STR_CREATE_LAKE                                                 :{BLACK}Su alanını belirle.{}Deniz seviyesinde CTRL tuşu basılı olmadığı sürece kanal yapar, basılıysa etraftakileri su altında bırakır
 STR_CREATE_RIVER                                                :{BLACK}Irmak oluştur.
 STR_0290_DELETE                                                 :{BLACK}Sil
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Sehri tamamen sil
-STR_0292_SAVE_SCENARIO                                          :Kaydet
-STR_0293_LOAD_SCENARIO                                          :Yükle
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Bu şehri tamamen sil
+STR_0292_SAVE_SCENARIO                                          :Senaryoyu kaydet
+STR_0293_LOAD_SCENARIO                                          :Senaryoyu yükle
 STR_MENU_LOAD_HEIGHTMAP                                         :Yükseklik haritası yükle
-STR_0294_QUIT_EDITOR                                            :Editörden Çık
+STR_0294_QUIT_EDITOR                                            :Editörden çık
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Oyundan Çık
-STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Senaryo kaydet, senaryo yükle, editörden çık, oyundan çık
-STR_0298_LOAD_SCENARIO                                          :{WHITE}Senaryo Yükle
-STR_0299_SAVE_SCENARIO                                          :{WHITE}Senaryo Kaydet
-STR_029A_PLAY_SCENARIO                                          :{BLACK}Senaryo Oyna
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Senaryoyu kaydet, senaryoyu yükle, editörden çık, oyundan çık
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Senaryoyu Yükle
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Senaryoyu Kaydet
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Senaryoyu Oyna
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Yükseklik Haritası Oyna
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Yükseklik haritasını kullanarak yeni oyun başlat
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Bu senaryodan çıkmak istediğinizden emin misiniz ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Editörden Çık
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...nüfusu en az 1200 olan şehirlere yapılabilir
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Başlama yılını düşür
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Başlama yılını arttır
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...köprünün uçları karada olmalı
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...yalnızca nüfusu en az 1200 olan şehirlere yapılabilir
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Başlangıç tarihini 1 yıl gerilet
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Başlangıç tarihini 1 yıl ilerlet
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...köprünün her iki ucu da karada olmalı
 STR_02A1_SMALL                                                  :{BLACK}Küçük
 STR_02A2_MEDIUM                                                 :{BLACK}Orta
 STR_02A3_LARGE                                                  :{BLACK}Büyük
@@ -770,13 +770,13 @@ STR_SUMMARY                                                     :Özet
 STR_FULL                                                        :Tam
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Şehir listesi
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Araç isimleri
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Araç dizayn isimleri
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Varsayılan
 STR_02BF_CUSTOM                                                 :Özel
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Özel isimleri kaydet
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Araç isimleri seçimi
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Özelleştirilmiş araç isimlerini kaydet
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Araç dizayn isimleri seçimi
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Özelleştirilmiş araç dizayn isimlerini kaydet
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
@@ -790,9 +790,9 @@ STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Şehir
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}İstasyon isimlerini göster
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Tabelaları göster
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Yolimlerini göster
-STR_02D0_FULL_ANIMATION                                         :{SETX 12}Tam hareketli
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}Tüm animasyonlar
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Tam detay
-STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparan binalar
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Şeffaf binalar
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparan istasyon tabelaları
 ############ range ends here
 
@@ -807,8 +807,8 @@ STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' Hakk�
 
 STR_02DB_OFF                                                    :{BLACK}Kapalı
 STR_02DA_ON                                                     :{BLACK}Açık
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}İhaleleri göster
-STR_02DD_SUBSIDIES                                              :İhaleler
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Sübvansiyonları göster
+STR_02DD_SUBSIDIES                                              :Sübvansiyonlar
 STR_02DE_MAP_OF_WORLD                                           :Dünya haritası
 STR_EXTRA_VIEW_PORT                                             :Ekstra görünüm
 STR_SIGN_LIST                                                   :Tabela listesi
@@ -839,12 +839,12 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Otokayde
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Otokaydetme aralığını seçin
 STR_02F7_OFF                                                    :Kapalı
-STR_02F8_EVERY_3_MONTHS                                         :3 ay
-STR_02F9_EVERY_6_MONTHS                                         :6 ay
-STR_02FA_EVERY_12_MONTHS                                        :12 ay
+STR_02F8_EVERY_3_MONTHS                                         :Her 3 ay
+STR_02F9_EVERY_6_MONTHS                                         :Her 6 ay
+STR_02FA_EVERY_12_MONTHS                                        :Her 12 ay
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Yeni oyuna başla
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Oyun yükle
-STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kendi dünyani/senoryonu yap
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Kendi dünyani/senoryonu yarat
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Tek kişilik bir oyun seçin
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}2-8 oyunculu bir oyun seçin
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Seçenekleri göster
@@ -853,35 +853,35 @@ STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Özel bi
 STR_0304_QUIT                                                   :{BLACK}Çıkış
 STR_0305_QUIT_OPENTTD                                           :{BLACK}'OpenTTD' den çık
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...sadece şehirde yapılabilir
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...yalnızca şehirlerde yapılabilir
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}'ılıman' yer stilini seç
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}'soğuk' yer stilini seç
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}'tropik' yer stilini seç
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}'oyuncak' yer stilini seç
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Yeni bir fabrika aç
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Yeni fabrika kur veya tüm fabrikaları listele
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Fabrika Listesi
-STR_0313_FUND_NEW_INDUSTRY                                      :Yeni fabrika aç
+STR_0313_FUND_NEW_INDUSTRY                                      :Yeni fabrika kur
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Yeni fabrika aç
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...sadece şehirlere yapılabilir
-STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...sadece yağmur ormanlarına yapılabilir
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...sadece çöllere yapılabilir
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...yalnızca şehirlerde yapılabilir
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...yalnızca yağmur ormanlarında yapılabilir
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...yalnızca çöllerde yapılabilir
 STR_0319_PAUSED                                                 :{YELLOW}* *  DURAKLATILDI  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Ekran görüntüsü '{STRING}' olarak kaydedildi
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekran görüntüsü alınamadı!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Gelecek için arazi al
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Gelecekte kullanım için arazi satın al
 STR_032F_AUTOSAVE                                               :{RED}OTOKAYDET
 STR_SAVING_GAME                                                 :{RED}*  *  KAYDEDiYOR  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Kayıt işlemi sürüyor,{}lütfen bitene kadar bekleyin!
-STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Sokagi stili muzik' programını seç
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}'Ezy Sokagi stili müzik' programını seç
 
 STR_6                                                           :{BLACK}6
 STR_7                                                           :{BLACK}7
@@ -1642,25 +1642,25 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Gelir: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Gönder: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Gönder: {CURRENCY}
-STR_0805_ESTIMATED_COST                                         :{WHITE}Beklenen Gider: {CURRENCY}
-STR_0807_ESTIMATED_INCOME                                       :{WHITE}Beklenen Gelir: {CURRENCY}
-STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Burası yükseltilemez...
-STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Burası alçaltılamaz...
+STR_0805_ESTIMATED_COST                                         :{WHITE}Tahmini Gider: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Tahmini Gelir: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Burada arazi yükseltilemez...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Burada arazi alçaltılamaz...
 STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Burada toprağı düzleyemezsiniz...
 STR_080A_ROCKS                                                  :Kayalar
 STR_080B_ROUGH_LAND                                             :Engebeli arazi
 STR_080C_BARE_LAND                                              :Çıplak arazi
-STR_080D_GRASS                                                  :Otlak
+STR_080D_GRASS                                                  :Çim
 STR_080E_FIELDS                                                 :Mera
 STR_080F_SNOW_COVERED_LAND                                      :Karlı arazi
 STR_0810_DESERT                                                 :Çöl
 
 ##id 0x1000
-STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Arazi meyilli
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Arazi yanlış yöne doğru meyilli
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}İmkansiz ray birleşimi
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Kazı tünele hasar verebilir
-STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Zaten deniz seviyesinde
-STR_1004_TOO_HIGH                                               :{WHITE}Çok yüksek
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}... zaten deniz seviyesinde
+STR_1004_TOO_HIGH                                               :{WHITE}... çok yüksek
 STR_ALREADY_LEVELLED                                            :{WHITE}... zaten düz
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Uygun ray yok
 STR_1007_ALREADY_BUILT                                          :{WHITE}...zaten yapıldı
@@ -1669,14 +1669,14 @@ STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Yol tek 
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Demiryolu Yapımı
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrikli Ray Yapımı
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monoray Yapımı
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev Yapımı
-STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Tren köprüsü seç
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Maglev Yapımı
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Tren Köprüsü Seç
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Buraya tren garı yapılamıyor...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Buraya tren istasyonu yapılamıyor...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Buraya sinyal yapılamıyor...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Buraya ray yapılamıyor...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Ray kaldırılamıyor...
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Sinyaller kaldırılamıyor...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Buradan ray kaldırılamıyor...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Buradan sinyaller kaldırılamıyor...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Tren Garı Yönü
 STR_1015_RAILROAD_CONSTRUCTION                                  :Demiryolu yapımı
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrikli Ray Yapımı
@@ -1726,16 +1726,16 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Yol Yap�
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tramvay Yapımı
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Köprü Seç
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...tek yönlü yollar kesişemez
-STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Yol yapılamıyor...
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Yol buraya yapılamıyor...
 STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Buraya tramvay yapılamaz...
-STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Yol kaldırılamıyor...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Yol buradan kaldırılamıyor...
 STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Tramvay kaldırılamaz...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Garaj Yönü
 STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Tramvay Garı Yönü
-STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Buraya Garaj yapılamaz...
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Buraya garaj yapılamaz...
 STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Buraya tramvay garı yapılamaz...
-STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Otobüs durağı yapılamaz...
-STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kamyon durağı yapılamaz...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Otobüs durağı yapılamıyor...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kamyon durağı yapılamıyor...
 STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Yolcu tramvayı istasyonu yapılamaz...
 STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Yük tramvayı istasyonu yapılamaz...
 STR_180A_ROAD_CONSTRUCTION                                      :Yol yapımı
@@ -1744,7 +1744,7 @@ STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Yol böl
 STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Otoyol modunu kullanarak yol yap
 STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Tramvay yolu yap
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Otoray modunu kullanarak tramvay yolu yap
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Garaj yap (araç alımı ve bakımlar için)
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Garaj yap (araç alımı ve bakımı için)
 STR_BUILD_TRAM_VEHICLE_DEPOT                                    :{BLACK}Tramvay garı yap (araç alımı ve tamiri için)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Otobüs durağı yap
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Kamyon yükleme bölgesi yap
@@ -1784,8 +1784,8 @@ STR_CITY                                                        :{WHITE}{TOWN} (
 STR_2006_POPULATION                                             :{BLACK}Nüfus: {ORANGE}{COMMA}{BLACK}  Ev: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :İsim değiştir
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}İsim değiştirilemiyor...
-STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} belediyesi izin vermiyor
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Şehir isimleri - şehre bakmak için ismine tıklayın
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} belediyesi buna izin vermiyor
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Şehir isimleri - şehre bakmak için ismine tıkla
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Ana görüntüyü şehrin üzerine ortala
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Şehrin ismini değiştir
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Geçen ayki yolcular: {ORANGE}{COMMA}{BLACK}  mak: {ORANGE}{COMMA}
@@ -1810,27 +1810,27 @@ STR_201F_OLD_HOUSES                                             :Eski evler
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Belediye
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Belediye hakkında bilgi göster
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} belediyesi
-STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Taşıma şirketi reytingleri:
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Taşıma şirketi değerlendirmeleri:
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
-STR_2025_SUBSIDIES                                              :{WHITE}İhaleler
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Beklenen ihaleler:
+STR_2025_SUBSIDIES                                              :{WHITE}Sübvansiyonlar
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Teklif edilmiş sübvansiyonlar:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} {STRING} -> {STRING}
-STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
+STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT} tarihinden itibaren)
 STR_202A_NONE                                                   :{ORANGE}Yok
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Verilen ihaleler:
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Verilen sübvansiyonlar:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} {STATION} -> {STATION}{YELLOW} ({COMPANY}
-STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}İhale zamanı doldu: {}{}{STRING} {STRING} -> {STRING} artık fazla gelir getirmeyecek.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}İhale geri çekildi:{}{}{STRING} servisi {STATION} -> {STATION} arasında fazla gelir getirmeyecek.
+STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT} tarihine kadar)
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Sübvansiyon zamanı doldu: {}{}{STRING} {STRING} -> {STRING} artık fazla gelir getirmeyecek.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Sübvansiyon geri çekildi:{}{}{STRING} servisi {STATION} -> {STATION} arasında fazla gelir getirmeyecek.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Servis ihalesi önerildi: {}{} ilk {STRING} servisi {STRING} -> {STRING} arasında belediyeden prim alacak!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}İhale {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca %50 fazla gelir sağlayacak!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}İhale {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca iki kat fazla gelir sağlayacak!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}İhale {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca üç kat fazla gelir sağlayacak!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}İhale {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca dört kat fazla gelir sağlayacak!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca %50 fazla gelir sağlayacak!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca iki kat fazla gelir sağlayacak!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca üç kat fazla gelir sağlayacak!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca dört kat fazla gelir sağlayacak!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} belediyesi bu şehir için başka havalimanına izin vermiyor
 STR_2036_COTTAGES                                               :Kulübe
 STR_2037_HOUSES                                                 :Evler
-STR_2038_FLATS                                                  :Apartman
+STR_2038_FLATS                                                  :Daireler
 STR_2039_TALL_OFFICE_BLOCK                                      :Yüksek ofis binasi
 STR_203A_SHOPS_AND_OFFICES                                      :Dükkan ve ofisler
 STR_203B_SHOPS_AND_OFFICES                                      :Dükkan ve ofisler
@@ -1847,10 +1847,10 @@ STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Yapılab
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Küçük reklam kampanyası
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Orta reklam kampanyası
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Büyük reklam kampanyası
-STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Yol tamirleri için para bağışla
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Bölgesel yol tamiratı için para bağışla
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Şirket sahibinin heykelini dik
 STR_204B_FUND_NEW_BUILDINGS                                     :Yeni binalar yapılması için para ver
-STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Ulaşım haklarını satın al
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Ayrıcalıklı nakliyat haklarını satın al
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Belediyeye rüşvet ver
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için duvarlara poster yapıştır.{}  Fiyat: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Müsteri çekmek için radyoya reklam ver.{}  Fiyat: {CURRENCY}
@@ -1858,7 +1858,7 @@ STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Yol tamirleri için belediyeye bağış yap. 6 ay boyunca şehrin yolları kullanılamaz.{}  Fiyat: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Şirket sahibinin heykelini dik.{} Fiyatı: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Şehirde ticari binaların yapımı için bağış yap.{}  Fiyatı: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Bir yıllık nakliyat haklarını satın al. Belediye sadece senin şirkete izin verir.{} Fiyat: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Bir yıllık ayrıcalıklı nakliyat haklarını satın al. Belediye şehirde sadece senin şirketine yolcu ve kargo taşıma izni verir.{} Fiyat: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Yakalanma riskini göze alarak belediyeye rüşvet ver.{}  Fiyat: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK} {TOWN} şehrinde trafik durdu!{}{} {STRING} şirketinin yol yapım çalışmaları başladı!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}

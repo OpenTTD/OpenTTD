@@ -214,10 +214,22 @@ STR_0156_DELIVERED_CARGO_GRAPH                                  :Livrita kargajo
 ############ range for months starts
 ############ range for months ends
 
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Montrar transport-voyi ad la mapo
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Montrar vejetado ad la mapo
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Montrar proprietanti ad la mapo
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Montrar nam-urbi ad la mapo
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profito to yaro: {CURRENCY} (lasta yaro: {CURRENCY})
 
 ############ range for service numbers starts
 ############ range for service numbers ends
 
+STR_019C_ROAD_VEHICLE                                           :Voy-vehili
+STR_019D_AIRCRAFT                                               :Aeroplani
+STR_019E_SHIP                                                   :Bateli
+STR_019F_TRAIN                                                  :Treni
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} divenas olda
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} divenas tre olda
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} divenas tre olda ed bezonas urja remplasigar
 
 ############ range for days starts
 ############ range for days ends

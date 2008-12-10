@@ -2180,7 +2180,17 @@ STR_ORDER_TRANSFER                                              :(Transfer dan a
 
 
 
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :adalah benar
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :adalah salah
+STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
+STR_CONDITIONAL_UNCONDITIONAL                                   :Lompat ke perintah {COMMA}
+STR_CONDITIONAL_NUM                                             :Lompat ke perintah {COMMA} jika {STRING} {STRING} {COMMA}
+STR_CONDITIONAL_TRUE_FALSE                                      :Lompat ke perintah {COMMA} jika {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Blm berjalan
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Berjalan (blm bisa diukur waktunya)
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Perjalanan menuju {STRING}
+STR_TIMETABLE_STAY_FOR                                          :dan tinggal selama {STRING}
 
 
 

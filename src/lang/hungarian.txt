@@ -1469,7 +1469,7 @@ STR_NETWORK_ENTER_IP                                            :{BLACK}Írd be 
 
 STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliens
-STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliens online / kliens max
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliens online / kliens max{}Cég online / cég max
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Térkép méret
