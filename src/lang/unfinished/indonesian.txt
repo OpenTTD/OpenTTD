@@ -2180,20 +2180,19 @@ STR_ORDER_TRANSFER                                              :(Transfer dan a
 
 
 
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :adalah benar
-STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :adalah salah
-STR_CONDITIONAL_VALUE                                           :{SKIP}{BLACK}{COMMA}
-STR_CONDITIONAL_UNCONDITIONAL                                   :Lompat ke perintah {COMMA}
-STR_CONDITIONAL_NUM                                             :Lompat ke perintah {COMMA} jika {STRING} {STRING} {COMMA}
-STR_CONDITIONAL_TRUE_FALSE                                      :Lompat ke perintah {COMMA} jika {STRING} {STRING}
 
-STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Blm berjalan
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Berjalan (blm bisa diukur waktunya)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Perjalanan menuju {STRING}
-STR_TIMETABLE_STAY_FOR                                          :dan tinggal selama {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :lalu menuju ke  {STRING}
+STR_TIMETABLE_DAYS                                              :{COMMA} hari
+STR_TIMETABLE_TICKS                                             :{COMMA} tik
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Menuju ke Depo Kereta api di {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Menuju ke Depo Kereta api di {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Perbaikan di Depo Kereta api {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Perbaikan di Depo Kereta api {TOWN}, {VELOCITY}
 
+STR_INVALID_ORDER                                               :{RED} (Perintah keliru)
 
+STR_UNKNOWN_STATION                                             :stasiun tidak dikenal
 STR_8812_EMPTY                                                  :{LTBLUE}Kosong
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} dari {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} dari {STATION} (x{NUM})
@@ -2205,34 +2204,53 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Kereta h
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Kereta Api
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Kereta Api Baru
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Kereta api listrik baru
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Monorail Baru
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Maglev Baru
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rel Kereta
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Buat Kendaraan
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}duplikatkan kendaraan
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan memberi perintah bersama
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan darat yang ingin ditirukan, baik didalam maupun diluar depot.Ctrl-klik akan memberi perintah bersama
+STR_CLONE_TRAIN                                                 :{BLACK}Duplikatkan kereta api
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan memberi perintah bersama
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta api yang sama persis. Klik tombol ini lalu klik kereta api yang ingin ditirukan baik didalam maupun diluar depot. the Ctrl-klik akan memberi perintah bersama
 STR_8820_RENAME                                                 :{BLACK}Ubah Nama
 STR_8823_SKIP                                                   :{BLACK}Lewati
 STR_8824_DELETE                                                 :{BLACK}Hapus
 STR_8826_GO_TO                                                  :{BLACK}Menuju
+STR_REFIT                                                       :{BLACK}Susun Ulang
+STR_STOP_ORDER                                                  :(Berhenti)
+STR_TIMETABLE_VIEW                                              :{BLACK}Tabel Waktu
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Lihat Tabel Waktu
+STR_ORDER_VIEW                                                  :{BLACK}Perintah
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Batas Order - -
+STR_SERVICE                                                     :{BLACK}Perbaikan
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Tidak dapat membangun kendaraan...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Buatan: {LTBLUE}{NUM}{BLACK} Harga: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Harga: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Bongkar / Muat
+STR_LEAVING                                                     :{LTBLUE}Meninggalkan
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Kereta harus diberhentikan di dalam depo
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Tidak dapat mengirim kereta ke depot...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Tidak cukup tempat untuk order
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Order terlalu banyak
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Tidak dapat menambah order baru...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Tidak dapat menghapus order ini...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Tidak dapat mengubah order ini...
+STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Tidak bisa memindah perintah ini ...
+STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Tidak bisa melewatkan perintah terpilih...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Tidak dapat memindahkan kendaraan...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Mesin di belakang selalu ikut bagian depannya
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Tidak dapat menjual kendaraan...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Tidak menemukan rute menuju depot terdekat
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Tidak dapat menghentikan dan menjalankan kereta...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Waktu servis: {LTBLUE}{COMMA}hari{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Jangka waktu perbaikan: {LTBLUE}{COMMA}%{BLACK}   Perbaikan terakhir: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta Api - klik pada kereta untuk melihat informasi
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Membuat kereta baru (membutuhkan depot kereta)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta Api - klik untuk info kereta., drag kendaraan untuk menambah atau menghapus dari kereta
@@ -2254,10 +2272,12 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Menguran
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Tampilkan detail muatan yang diangkut
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Tampilkan detail dari kereta api
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Tampilkan kapasitas setiap kendaraan
+STR_SHOW_TOTAL_CARGO                                            :{BLACK}Tampilkan kapasistas total kereta api, dipisahkan oleh jenis muatan
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Daftar order - klik pada order untuk menandainya. CTRL + klik ke stasiun
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Lewati order saat ini, dan lanjutkan berikutnya. CTRL + klik lewati pada order yang dipilih
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Hapus order yang ditandai
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Masukkan order baru sebelum order yang ditandai, atau tambahkan pada akhir daftar
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Biaya: {CURRENCY} Berat: {WEIGHT_S}{}Kecepatan: {VELOCITY}  Daya: {POWER}{}Biaya Operasional: {CURRENCY}/yr{}Kapasitas: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Rusak
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/thn
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Keuntungan tahun ini: {LTBLUE}{CURRENCY}  (tahun lalu: {CURRENCY})

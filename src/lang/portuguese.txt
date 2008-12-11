@@ -781,7 +781,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Opções do Jogo
 STR_02C6_DIFFICULTY_SETTINGS                                    :Configurações de dificuldade
-STR_MENU_CONFIG_PATCHES                                         :Definições Avançadas
+STR_MENU_CONFIG_PATCHES                                         :Opções Avançadas
 STR_NEWGRF_SETTINGS                                             :Definições Newgrf
 STR_TRANSPARENCY_OPTIONS                                        :Opções de Transparência
 STR_GAMEOPTMENU_0A                                              :
@@ -936,6 +936,7 @@ STR_CURR_SEK                                                    :Coroa Sueca (SE
 STR_CURR_YTL                                                    :Lira Turca (YTL)
 STR_CURR_SKK                                                    :Koruna Eslovaco (SKK)
 STR_CURR_BRL                                                    :Real Brasileiro (BRL)
+STR_CURR_EEK                                                    :Coroa Estoniana (EEK)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
 
@@ -1021,6 +1022,7 @@ STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}A auto-r
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}A auto-renovação do barco {COMMA} falhou{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}A auto-renovação da aeronave {COMMA} falhou{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Combóio {COMMA} ficou demasiado longo após substituição
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Sem regras de substituição/renovação.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite de dinheiro)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Opções Avançadas
@@ -1053,6 +1055,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Indúst
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostrar sempre a data completa na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostrar sinais no lado da circulação: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Mostrar janela das finanças no fim do ano: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}New orders are 'non-stop' by default: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Fila de veículos de estrada (com efeitos de quantidade): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Deslocar janela quando o rato está na borda do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
@@ -1387,7 +1390,7 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}Nome
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nome do jogo
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Idioma, versão do servidor, etc.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Clique num jogo da lista para o seleccionar
-STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}O Servidor ao que se juntaste a última vez:
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}O Servidor ao que te juntaste a última vez:
 STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}Clique para indicar o servidor que jogaste a última vez
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Localizar servidor
@@ -1402,6 +1405,7 @@ STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Clientes
 
 STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
 STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}Tomanho do mapa
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}Tamanho do mapa{}Click para ordenar por área
 
 STR_NETWORK_DATE_CAPTION                                        :{BLACK}Data
 STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}Date de hoje
@@ -1488,10 +1492,13 @@ STR_NETWORK_LANG_SPANISH                                        :Espanhol
 STR_NETWORK_LANG_SWEDISH                                        :Sueco
 STR_NETWORK_LANG_TURKISH                                        :Turco
 STR_NETWORK_LANG_UKRAINIAN                                      :Ucraniano
+STR_NETWORK_LANG_AFRIKAANS                                      :Dialecto Africano Afrikaans
 STR_NETWORK_LANG_CROATIAN                                       :Croata
 STR_NETWORK_LANG_CATALAN                                        :Catalão
+STR_NETWORK_LANG_ESTONIAN                                       :Estónio
+STR_NETWORK_LANG_GALICIAN                                       :Galego
 STR_NETWORK_LANG_GREEK                                          :grego
-STR_NETWORK_LANG_LATVIAN                                        :letão
+STR_NETWORK_LANG_LATVIAN                                        :Letão
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sala de espera de jogo multi-jogador
@@ -1574,6 +1581,7 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :recebido um pac
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :revisão incorrecta
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nome já está a ser utilizado
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :palavra-chave do jogo está incorrecta
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :ID da empresa errado na aplicação de rede
 STR_NETWORK_ERR_CLIENT_KICKED                                   :avisado pelo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :estava a tentar usar batota
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheio
@@ -1589,6 +1597,7 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] Para {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
 STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Introduza a mensagem para os outros jogadores
 STR_NETWORK_NAME_CHANGE                                         :mudou o nome dele/dela para
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} O servidor fechou a sessão
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servidor está a reiniciar...{}Por favor espere...
@@ -1635,6 +1644,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Custo Es
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Lucro Estimado: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Não é possível levantar terreno aqui...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Não é possível baixar terreno aqui...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Não é possível nivelar o terreno aqui...
 STR_080A_ROCKS                                                  :Rochas
 STR_080B_ROUGH_LAND                                             :Terreno Irregular
 STR_080C_BARE_LAND                                              :Terreno Deserto
@@ -1649,6 +1659,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combina�
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}A escavação estragaria o túnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Já está ao nível do mar
 STR_1004_TOO_HIGH                                               :{WHITE}Demasiado alto
+STR_ALREADY_LEVELLED                                            :{WHITE}... já plano
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo de linha não apropriado
 STR_1007_ALREADY_BUILT                                          :{WHITE}...já construído
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Deverá remover a linha férrea primeiro
@@ -1695,6 +1706,7 @@ STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Estrada de ferr
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Carris com pré-sinais e sinais de saída
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Carris com pré-sinais e sinais combinados
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Carris com sinais de saída e combinados
+STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Linha férrea com sinais multi- e de sentido único
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preciso remover a estação primeiro
 
 
@@ -2689,6 +2701,7 @@ STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detalhes)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Comboio no caminho
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Sem paragens
 STR_ORDER_GO_TO                                                 :Ir para
 STR_ORDER_GO_NON_STOP_TO                                        :Ir, sem paragens, para
@@ -2738,11 +2751,16 @@ STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRIN
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vai sempre
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Serviço caso necessário
 STR_ORDER_DROP_HALT_DEPOT                                       :Pare
 
 STR_ORDER_CONDITIONAL                                           :Saltar ordem condicionalmente
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Dados de veículo para ida à base
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Como comparar os dados do veículo com o parâmetro passado
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}O parâmetros para comparar os dados do veículo
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Introduza um valor para comparar
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Percentagem de carga
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Fiabilidade
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Velocidade máximo
 STR_ORDER_CONDITIONAL_AGE                                       :Idade de veículo (anos)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Requer manutenção
@@ -2760,9 +2778,11 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Pula para ordem
 STR_CONDITIONAL_NUM                                             :Pula para ordem {COMMA} quando {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Pula para ordem {COMMA} quando {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Não viaja
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Viagem (sem programação)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Viajar durante {STRING}
 STR_TIMETABLE_STAY_FOR                                          :e ficar durante {STRING}
+STR_TIMETABLE_AND_TRAVEL_FOR                                    :e viaja para {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} dia{P "" s}
 STR_TIMETABLE_TICKS                                             :{COMMA} tic{P "" s}
 
@@ -2910,6 +2930,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Este veículo e
 STR_TIMETABLE_TOTAL_TIME                                        :Este horário vai levar {STRING} a completar
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Este horário vai levar pelo menos {STRING} a completar (nem tudo está programado)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto pr.
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Preencher o horário automáticamente com os valores da próxima viagem (CTRL-click para tentar manter os tempos de espera)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veículo de estrada no caminho
@@ -2978,6 +2999,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Não é 
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccione o tipo de carga para o veículo
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Construção de canais
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Construção de canais
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Canais
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Não é possível construir doca aqui...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Depósito Naval
 STR_9804_NEW_SHIPS                                              :{BLACK}Novos Barcos
@@ -3030,6 +3054,8 @@ STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Não é 
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro barco chega a {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Bóia de posição, que pode ser usada para marcar pontos de rota adicionais
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Não é possível posicionar bóia aqui...
+STR_BUILD_AQUEDUCT                                              :{BLACK}Contruir canal
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Não é possível contruir o canal aqui...
 STR_9836_RENAME                                                 :{BLACK}Renomear
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Renomear tipo de barco
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Renomear tipo de barco
@@ -3129,6 +3155,9 @@ STR_BRIBE_FAILED                                                :{WHITE}A sua te
 STR_BRIBE_FAILED_2                                              :{WHITE}descoberta por um investigador regional
 STR_BUILD_DATE                                                  :{BLACK}Construído: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Tipo de Estação: {LTBLUE}{STRING}
+STR_TILEDESC_STATION_TYPE                                       :{BLACK}Tipo de Estação: {LTBLUE}{STRING}
+STR_TILEDESC_NEWGRF_NAME                                        :{BLACK}NewGRF: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Detalhes de rendimentos
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detalhes
@@ -3162,10 +3191,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Definições NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Alternar palete
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Alternar a palete do NewGRF seleccionado.{}Alternar quando os gráficos deste NewGRF aparecerem cor-de-rosa no jogo
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros
 STR_NEWGRF_TIP                                                  :{BLACK}Lista de todos os conjuntos Newgrf que instalou. Clique num conjunto para alterar as definições.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem ficheiros newgrf actualmente instalados! Por favor consulte o manual para instruções sobre instalar novos gráficos.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do ficheiro: {SILVER}{STRING}
+STR_NEWGRF_PALETTE                                              :{BLACK}Palete: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Vai alterar um jogo em andamento; o OpenTTD pode terminar abruptamente.{}Tem a certeza que quer continuar?
@@ -3183,7 +3215,18 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} necessita da versão {STRING} ou superior do OpenTTD.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :O ficheiro GRF foi desenhado para traduzir
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Demasiados NewGRFs carregados.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Carregar {STRING} como NewGRF estático com {STRING} pode causar perda de sincronismo.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Rotina inesperada.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade da Acção 0 desconhecida.
+STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém uma rotina corrompida. As rotinas corrompidas serão assinaladas com um ponto de interrogação (?) vermelho.
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carregar a predefinição seleccionada
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvar predefinição
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Salve a lista como predefinição
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Introduza nome para a predefinição
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Apagar predefinição
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Apagar a predefinição seleccionada
 STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Adicionar um ficheiro NewGRF à lista
 STR_NEWGRF_REMOVE                                               :{BLACK}Remover
@@ -3214,7 +3257,9 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m)
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) GRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode causar problemas ao OpenTTD. Não envie informações sobre este tipo de problemas.{}Deseja realmente sair da pausa?
 
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}O jogo foi salvo numa versão sem suporte a eléctricos.Todos os eléctricos foram removidos.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de troca: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3445,6 +3490,7 @@ STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Comutar 
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Comutar transparência para estruturas como faróis-terrestres e antenas (talvez, no futuro, para embelezamentos)
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Comutar transparência para catenária. CTRL+clique para fechar.
 STR_TRANSPARENT_LOADING_DESC                                    :{BLACK}Alterar transparência para indicadores de carga
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Definir objectos como invisíveis em vez de transparentes
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
@@ -3500,6 +3546,7 @@ STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}Nome dev
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}Ir para o próximo sinal
 STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Ir para o sinal anterior
+STR_SIGN_OSKTITLE                                               :{BLACK}Introduza um nome para o sinal
 
 ########
 
@@ -3563,10 +3610,13 @@ STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Sinal No
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Sinal de Entrada (semáforo){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Sinal de Saída (semáforo){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pre-sinais de entrada e combinado.
 STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Sinal Combinado (semáforo){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pre-sinais.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Sinal (semáforo){}Os sianis permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Sinais de sentido único (semáforo){}Os sianis permitem que vários comboios utilizem a mesma linha desde que consigam chegar aos seus destinos em segurança. Os comboios apenas podem passar no sentido dos semáforos.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Sinal Normal(eléctrico){}Os sinais são necessarios para evitar que os comboios choquem nas linhas ferroviárias com mais de um comboio.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sinal de Entrada (eléctrico){}Verde enquanto existir um ou mais sinais de saída verdes no seguimento da linha. De outro modo ficará vermelho.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinal de Saída (eléctrico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pre-sinais de entrada e combinado.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinal Combinado (eléctrico){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pre-sinais.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinal (eléctrico){}Os sinais permitem que vários comboios entrem na mesma linha ao mesmo tempo, desde que consigam chegar ao seu destino em segurança.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Converter Sinal{}Quando seleccionado, ao fazer clique em um sinal existente este será convertido no tipo e variante de sinal seleccionado, CTRL-clique irá comutar a variante existente.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densidade de sinais
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuir densidade de sinais
@@ -3577,4 +3627,6 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumentar
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permitir que a cidade controle o nível de ruído dos aeroportos: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Limite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 ########

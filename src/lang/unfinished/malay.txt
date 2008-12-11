@@ -383,6 +383,7 @@ STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Papar di
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Papar maklumat kewangan syarikat
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Papar maklumat umum syarikat
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Papar graf
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Paparkan jadual liga syarikat
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Papar senarai keretapi syarikat
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Papar senarai kenderaan syarikat
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Papar senarai kapal syarikat
@@ -398,7 +399,10 @@ STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Maklumat
 STR_0187_OPTIONS                                                :{BLACK}Pilihan
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Tidak boleh tukar jarak waktu perkhidmatan...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Tutup window
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Tajuk tetingkap -  seret ini untuk pindahkan tetingkap
+STR_RESIZE_BUTTON                                               :{BLACK}Klik dan seret untuk mensaizkan tetingkap
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Runtuhkan bangunan dll. atas sebuah tanah
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Rendahkan hujung tanah
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Meninggikan hujung tanah
@@ -494,15 +498,18 @@ STR_01E7                                                        :{DKGREEN}{TINYF
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Tajuk {SETX 88}Trek
 STR_01E9_SHUFFLE                                                :{TINYFONT}Kocok
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Pilihan program muzik
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Indeks Trek
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Bersih
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Simpan
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Program trek muzik semasa
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Pilih program 'semua trek'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Pilih program 'muzik gaya lama'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Pilih program 'muzik gaya baru'
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Simpan seting muzik
 STR_01FE_DIFFICULTY                                             :{BLACK}Kesukaran ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Utusan/laporan berita terakhir
@@ -858,6 +865,9 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukark
 
 
 
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Bina Lombong Bijih Besi
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Tumbuh Hutan Gula Kapas
+STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Menggerudi untuk Kola
 
 
 
@@ -878,6 +888,13 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukark
 
 
 
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Pilih peta:
+STR_NETWORK_LAN_INTERNET_COMBO                                  :{BLACK}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :Internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (iklankan)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM} pelanggan
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Mana-mana
@@ -934,6 +951,10 @@ STR_080D_GRASS                                                  :Rumput
 STR_080F_SNOW_COVERED_LAND                                      :Tanah diliputi salji
 
 ##id 0x1000
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Bina stesen kereta api
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Bina isyarat kereta api
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bina jambatan kereta api
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Bina terowong kereta api
 STR_1021_RAILROAD_TRACK                                         :Landasan keretapi
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Depot keretapi
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...kawasan sudah dimiliki oleh syarikat lain
