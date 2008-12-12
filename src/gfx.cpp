@@ -242,8 +242,8 @@ void DrawBox(int x, int y, int dx1, int dy1, int dx2, int dy2, int dx3, int dy3)
 #if !defined(WITH_ICU)
 static void HandleBiDiAndArabicShapes(char *text, const char *lastof) {}
 #else
-#include "unicode/ubidi.h"
-#include "unicode/ushape.h"
+#include <unicode/ubidi.h>
+#include <unicode/ushape.h>
 
 /**
  * Function to be able to handle right-to-left text and Arabic chars properly.
