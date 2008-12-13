@@ -2178,6 +2178,7 @@ STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Turunkan dan t
 STR_ORDER_UNLOAD_NO_LOAD                                        :(Turunkan dan biarkan kosong)
 STR_ORDER_TRANSFER                                              :(Transfer dan ambil muatan)
 
+STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
 
 
@@ -2542,6 +2543,7 @@ STR_HEIGHTMAP_SIZE                                              :{BLACK}Ukuran: 
 STR_GENERATION_WORLD                                            :{WHITE}Membuat Peta ...
 STR_GENERATION_ABORT                                            :{BLACK}Batalkan
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Membatalkan Pembuatan Peta
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Anda yakin ingin membatalkan pembuatan peta?
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Tindakan ini menyebabkan level kesulitan menjadi bebas
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Turunkan satu tingkat tinggi permukaan tanah
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Naikkan satu tingkat tinggi permukaan tanah

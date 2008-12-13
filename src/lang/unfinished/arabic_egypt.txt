@@ -1557,11 +1557,27 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}هذه �
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 
+STR_SV_STNAME_BUOY_3                                            :{STRING} العوامة 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} العوامة 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} العوامة 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} العوامة 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} العوامة 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} العوامة 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} العوامة 9
+STR_SV_STNAME_ANNEXE                                            :{STRING} ملحق
+STR_SV_STNAME_SIDINGS                                           :{STRING} تحويلات
+STR_SV_STNAME_BRANCH                                            :{STRING} متفرع
+STR_SV_STNAME_UPPER                                             :فوق {STRING}
+STR_SV_STNAME_LOWER                                             :تحت {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} مهبط هيلوكبتر
+STR_SV_STNAME_FOREST                                            :{STRING} غابة
+STR_SV_STNAME_FALLBACK                                          :{STRING}محطة #{NUM}
 
 ############ end of savegame specific region!
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}مستوى الصعوبة
+STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}حفظ
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}سهل
@@ -1585,10 +1601,14 @@ STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}مضا�
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}تكلفة البناء: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}نوع التضاريس: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}مقدار البحار/ البحيرات: {ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}الاقتصاد: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}عكس القطارات: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}الكوارث: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}موقف البلدية من تغيير التضاريس{ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_NONE                                                        :بدون
+STR_NUM_VERY_LOW                                                :منخفض جدا
 STR_6816_LOW                                                    :قليل
 STR_6817_NORMAL                                                 :طبيعي
 STR_6818_HIGH                                                   :عالي
@@ -1599,6 +1619,7 @@ STR_681C_SLOW                                                   :بطيء
 STR_681D_MEDIUM                                                 :متوسط
 STR_681E_FAST                                                   :سريع
 STR_681F_VERY_FAST                                              :سريع جدا
+STR_VERY_LOW                                                    :منخفض
 STR_6820_LOW                                                    :قليل
 STR_6821_MEDIUM                                                 :متوسط
 STR_6822_HIGH                                                   :كثير
@@ -1624,9 +1645,13 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :نهاية ال
 STR_6836_OFF                                                    :بدون
 STR_6837_ON                                                     :السماح
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}عرض النقاط العليا
+STR_PERMISSIVE                                                  :متساهل
+STR_TOLERANT                                                    :متقبل
+STR_HOSTILE                                                     :معاد
 
 ##id 0x7000
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :شركة {COMMA}
 STR_7004_NEW_FACE                                               :{BLACK}وجة جديد
 STR_7005_COLOR_SCHEME                                           :{BLACK}اللون
 STR_7006_COLOR_SCHEME                                           :{GOLD}اللون
@@ -1662,6 +1687,7 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}الرسم البياني لتشغيل
 STR_7026_BANK_BALANCE                                           :{WHITE}صافي السيولة
 STR_7027_LOAN                                                   :{WHITE}قرض
+STR_MAX_LOAN                                                    :{WHITE}اقصى حد للقرض: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}اقتراض{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}تسديد{SKIP}{SKIP}{CURRENCY}
@@ -1670,6 +1696,7 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}بلغت
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}... لا يوجد دين للسداد
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} مطلوب
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}لا يمكن تسديد الدين
+STR_INSUFFICIENT_FUNDS                                          :{WHITE}لا يمكن التخلي عن النقود المعطاة من البنك على سبيل الاعارة ...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}اختر وجة جديد للمدير
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}غير الوان مركبات الشركة
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}غير اسم المدير
@@ -1680,6 +1707,10 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}اعاد
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}يفتتح: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}العربات:
+STR_TRAINS                                                      :{WHITE}{COMMA} قطار
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA}عربة
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} طائرة
+STR_SHIPS                                                       :{WHITE}{COMMA} سفينة
 STR_7042_NONE                                                   :{WHITE}بدون
 STR_7043_FACE_SELECTION                                         :{WHITE}اختيار الوجة
 STR_7044_MALE                                                   :{BLACK}رجل
@@ -1701,12 +1732,17 @@ STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}ترتي
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}الشركة في مأزق!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} سوف تباع قريبا او يعلن افلاسها ان لم يتحسن ادائها قريبا!!
 STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Manager)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}مدمج الشركات
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{STRING}  بيعت لـ : {STRING} بقيمة: {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}نحن نبحث عن شركة لتشتري شركتنا. {}{} عل ترغب في شراء {COMPANY} بـ {CURRENCY}؟
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}افلاس!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} اغلقت من قبل الدائنين و بيعت كل الأصول !!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}تم اطلاق شركة نقل جديدة!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING}بدأت العمل قرب {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}لا يمكن شراء الشركة ...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}النسبة التنازلية لقيمة نقل البضائع
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}يوم في النقل
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}الدخل من نقل 10 وحدات (او 10,000 لتر) من البضاعة مسافة 20 مربع
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}اظهار / اخفاء الشحن
@@ -1722,8 +1758,18 @@ STR_706D_PRESIDENT                                              :ملك
 STR_706E_TYCOON                                                 :امبراطور
 STR_706F_BUILD_HQ                                               :{BLACK}بناء نقر الشركة الرئيسي
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}بناء / عرض مبنى الشركة الرئيسي
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}اعادة بناء مقر الشركة بمكان آخر و بتكلفة 1% من قيمة الشركة.
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}لا يمكن بناء مبنى الشركة الئيسي ...
 STR_7072_VIEW_HQ                                                :{BLACK}عرض مبنى الشركة الئيسي
+STR_RELOCATE_HQ                                                 :{BLACK}اعادة بناء مقر الشركة
+STR_COMPANY_PASSWORD                                            :{BLACK}كلمة المرور
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}احم شركتك بكلمة مرور خاصة لمنع الوصول الغير مسموح من اللاعبين الآخرين.
+STR_SET_COMPANY_PASSWORD                                        :{BLACK}ادخل كلمة المرور
+STR_COMPANY_PASSWORD_CANCEL                                     :{BLACK}لا تحفظ كلمة المرور المدخلة
+STR_COMPANY_PASSWORD_OK                                         :{BLACK}اعط الشركة كلمة المرور الجديدة
+STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}كلمة مرور الشركة
+STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}كلمة مرور الشركة القياسية
+STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}استخدم هذه الكلمة كقياسية لكل الشركات الجديدة
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}ركود اقتصادي!{}{}خبراء الأقتصاد خائفون من ركود اقتصادي وشيك
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}الركود انتهى!{}{}العودة للصعود في الاقتصاد اعطى الثقة في قوة الاقتصاد
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}تبديل حجم الاطار كبير / صغير
@@ -1735,7 +1781,25 @@ STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}بيع 2
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}لا يمكن شراء 25% من اسهم الشركة ...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}لا يمكن بيع 25% من اسهم الشركة ...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% مملوكة بواسطة {COMPANY})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{STRING}تم الاستحواذ عليها بواسطة {STRING}!
+STR_PROTECTED                                                   :{WHITE}هذه الشركة ليست عريقة بقدر كافي لمشاركة الأسهم ...
 
+STR_LIVERY_DEFAULT                                              :الزي القياسي
+STR_LIVERY_STEAM                                                :محرك بخاري
+STR_LIVERY_DIESEL                                               :محرك ديزل
+STR_LIVERY_ELECTRIC                                             :محرك كهربائي
+STR_LIVERY_MONORAIL                                             :محرك احادي
+STR_LIVERY_MAGLEV                                               :محرك ممغنط
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :حافلة ركاب - بخارية
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :حافلة ركاب - ديزل
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :عربة ركاب - كهربائية
+STR_LIVERY_PASSENGER_WAGON_MONORAIL                             :عربة ركاب - احادية
+STR_LIVERY_PASSENGER_WAGON_MAGLEV                               :عربة كاب - ممغنطة
+STR_LIVERY_FREIGHT_WAGON                                        :عربة شحن
+STR_LIVERY_BUS                                                  :باص
+STR_LIVERY_TRUCK                                                :لوري
+STR_LIVERY_PASSENGER_SHIP                                       :عبارة ركاب
+STR_LIVERY_FREIGHT_SHIP                                         :سفينة شحن
 
 
 ##id 0x8000
@@ -2048,20 +2112,186 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}لا ي�
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}لا يمكن ايجاد طريق للورشة
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}لا يمكن ايقاف / تشغيل القطار
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}فترات الصيانة: {LTBLUE}{COMMA} يوم {BLACK} اخر صيانة: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}القطارات - اضغط على القطار للتفاصيل
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}بناء قطار جديد )يحتاج ورشة قطارات).
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}قطارات - اضغط على القطار للمعلومات, اسحب العربة لاضافتها / حذفها من القطار
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}بناء عربات قطار جديدة
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}اسحب عربات القطار الى هنا لبيعها
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}وسط الشاشة الرئيسية على ورشة صيانة القطارات
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}قائمة اختيار القطارات - اضغط على العربة لعرض معلوماتها
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}شراء العربة الموضحة
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}اعادة تسمية نوع عربة القطار
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}حركة القطار الحالية - اضغط هنا لايقاف / تشغيل القطار
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}عرض اوامر القطار
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}ضع القطار في مركز شاشة العرض
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK} ارسل القطار للورشة - مفتاح التحكم (كنترول) + الضغط سيرسله لصيانة فقط
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}اجبر القطار على التحرك بدون انتظار الاشارة الخضراء
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}عكس اتجاة القطار
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}عرض معلومات القطار
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}زيادة فترات الصيانة
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}انقاص فترات الصيانة
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}عرض معلومات الشحنة
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}عرض معلومات العربات
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}عرض السعة لكل عربة
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}قائمة الاوامر - اضغط على الامر لختيارة. مفتاح التحكم (كنترول) + الضغط لتوجة للمحطة
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}تخطى الامر الحالي, وابد بالتالي. مفتاح التحكم (كنترول) +الضغط يتخطى للامر المختار
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}حذف الامر المختار
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}اضافة امر قبل الامر المختار, او لاخر الاوامر
+STR_885C_BROKEN_DOWN                                            :{RED} متعطل
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذه السنة: {LTBLUE}{CURRENCY} )السنة السابقة{CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA}%  {BLACK} مرات التعطيل منذ الصيانة السابقة: {LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED} متوقف
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}لا يمكن السماح للقطار بالعبور من الاشارة في وضع الخطر
+STR_8863_CRASHED                                                :{RED}تحطم!
 
+STR_8865_NAME_TRAIN                                             :{WHITE}اسم القطار
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}لا يمكن تسمية القطار ...
+STR_8867_NAME_TRAIN                                             :{BLACK} اسم القطار
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}تحطم قطار! {}{COMMA} مات في حريق بعد الحادث
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}لا يمكن عكس اتجاة القطار...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}اعادة تسمية عربات القطار
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}لا يمكن اعادة تسمية عربات القطار ...
 
 
 
 
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}العربة في الطريق
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA}عربة
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} ورشة صيانة العربات
+STR_9004_NEW_VEHICLES                                           :{BLACK}عربات جديدة
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}عربات جديدة
+STR_9007_BUILD_VEHICLE                                          :{BLACK}شراء عربة
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}لا يمكن شراء عربة ...
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} )التفاصيل(
+STR_900E_MAX_SPEED                                              :{BLACK}السرعة القصوى: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذة السنة: {LTBLUE}{CURRENCY} (السنة الماضية{CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA}% {BLACK}عدد مرات التوقف من الصيانة السابقة: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}تاريخ الشراء: {LTBLUE}{NUM}{BLACK}القيمة: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... يجب ان يوقف داخل ورشة الصيانة.
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}لا يمكن بيع العربة...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}لا يمكن ايقاف / تشغيل العربة
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}العربة {COMMA} تنتظر في الورشة
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}لا يمكن ارسال العربة الى ورشة الصيانة
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}لم يتم العثور على ورشة قريبة من العربة
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}العربات - اضغط على العربة لعرض المعلومات
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}شراء عربات جديدة (بحاجة الى ورشة صانة عربات).
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}حركة العربة الحالية - اضغط هنا لايقاف / تشغيل العربة
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}عرض اوامر العربة
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}وضع العربة في مركز شاشة العرض
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}ارسل العربة الى الورشة. مفتاح التحكم (كنترول) + الضغط ترسل للصيانة فقط
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}اجبر العربة لدوان للخلف
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}عرض معلومات العربة
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}العربات - اضغط على المركبة لعرض معلوماتها
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}شراء عربات جديدة
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}اسحب العربة هنا لبيعها
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}ضع ورشة الصيانة في وسط الشاشة
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}قائمة اختيار العربات - اضغط على العربة لاظهار معلوماتها
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}شراء العربة
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}التكلفة: {CURRENCY}{}السرعة: {VELOCITY}{}تكلفة التشغيل: {CURRENCY}/ سنة{}السعة {CARGO}
 
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}تسمية العربة
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}لا يمكن تسمية العربة
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}تسمية العربة
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}يحتفل الأهالي ..............{}بوصول اول باص للمحطة ...{STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}الأهالي يحتفلون ......... {}بوصول اول عربة الى .. {STATION}!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
 
 
 ##id 0x9800
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}لا يمكن بناء مرفء هنا ...
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}حوض صيانة السفن
+STR_9804_NEW_SHIPS                                              :{BLACK}سفين جديدة
+STR_9808_NEW_SHIPS                                              :{WHITE}سفن جديدة
+STR_9809_BUILD_SHIP                                             :{BLACK}شراء سفينة
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}يجب ان تكون السفينة متوقفة في حوض الصيانة
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}لا يمكن بيع السفينة ......
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}لا يمكن شراء السفينة...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}سفينة في الطريق
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (التفاصيل)
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}    التكلفة التشغيلية: {LTBLUE}{CURRENCY}/ سنة
+STR_9813_MAX_SPEED                                              :{BLACK}السرعة القصوى:  {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذة السنة: {LTBLUE}{CURRENCY} (السنة الماضية: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA} %   {BLACK}الأعطال منذ آخر صيانة: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK} سنة الشراء: {LTBLUE}{NUM}{BLACK} القيمة: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}لا يمكن توقيف/ تشغيل السفينة ...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}لا يمكن ارسال السفينة الى حوض الصيانة ...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}لا يمكن ايجاد حوض صيانة قريب
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}السفينة {COMMA}تنتظر في الحوض
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}بناء مرفء سفن
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}بناء حوض سفن - لشراء/ بيع/ صيانة السفن -
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}السفن - اضغط على السفينة للتفاصيل
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}شراء سفينة جديدة
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}اسحب السفينة هنا لبيعها
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}وضع حوض السفن في مركز الشاشة
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}السفن - اضغط على السفينة للتفاصيل
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}شراء سفينة جديدة - يتطلب وجود حوض صيانة
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}قائمة اختيار السفن - اضغط على السفينة للتفاصيل
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}شراء السفينة المختارة
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}امر السفينة الحالي - اضغط لايقاف / تشغيل السفينة
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}عرض اوامر السفينة
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}عرض السفينة في مركز الشاشة
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}ارسال السفينة الى حوض الصيانة. اضغط مفتاح التحكم (كنترول) + الضغط لارسالة للصيانة فقط
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}عرض تفاصيل السفينة
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}التكلفة: {CURRENCY} السرعة القصوى: {VELOCITY}{} السعة: {CARGO}{}تكلفة التشغيل: {CURRENCY}/ سنة
+STR_982F_NAME_SHIP                                              :{BLACK}تسمية السفينة
 
+STR_9831_NAME_SHIP                                              :{WHITE}تسمية السفينة
+STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}لا يمكن تسمية السفينة ...
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}المواطنون يحتفلون ..... {}بوصول اول سفينة الى {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}وضع عوامة - يمكن استخدامها نقطة عبور
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}لا يمكن وضع عوامة هنا
+STR_9836_RENAME                                                 :{BLACK}تسمية
+STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}اعادة تسمية نوع السفينة
+STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}اعادة تسمية نوع السفينة
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}لا يمكن اعادة تسمية نوع السفينة
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}تغيير نوع الحمولة للسفينة
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} )تغيير(
+STR_983C_REFIT_SHIP                                             :{BLACK}تغيير الحمولة للسفينة
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}اختر نوع الحمولة للسفينة
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}غير للحمولة المختارة
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}اختر نوع الحمولة ...
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}السعة الجديدة:  {GOLD}{CARGO}{}{BLACK}تكلفة التغيير:  {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}لا يمكن التغيير ....
+STR_9842_REFITTABLE                                             :)قابل لتغيير(
 
 ##id 0xA000
+STR_A000_AIRPORTS                                               :{WHITE}مطارات
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}لا يمكن بناء مطار هنا ...
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} هنقر طائرات
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}طائرة جديدة
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}طائرة جديدة
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}شراء طائرة
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}لا يمكن شراء الطائرة
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} طائرة
+STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (الأوامر)
+STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (تفاصيل)
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}    تكلفة التشغيل: {LTBLUE}{CURRENCY} / سنة
+STR_A00E_MAX_SPEED                                              :{BLACK} السرعة القصوى: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذه السنة: {LTBLUE}{CURRENCY}   (السنة الماضية: {CURRENCY}(
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA} %  {BLACK}الاعطال من آخر فترة صيانة: {LTBLUE}{COMMA}
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}سنة الشراء:  {LTBLUE}{NUM}{BLACK} القيمة: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}لا يمكن ارسال الطائرة لهنقر الصيانة
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}الطائرة {COMMA} تنتظر في هنجر الصيانة
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}طائرة في الطريق
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}لا يمكن توقيف / تشغيل الطائرة
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}الطائرة تقوم بالطيران الآن
+STR_A019_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO} ،  {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}يجب ان تكون الطائرة متوقفة في الهنقر
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}لا يمكن بيع الطائرة
+STR_A01D_AIRPORT_CONSTRUCTION                                   :بناء المطار
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}مطار كبير
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}الطائرات - اضغط على الطائرة للمعلومات
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}شراء طائرة جديدة - يحتاج لهنقر طائرات
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}طائرة - اضغط على طائرة ما لتفاصيل
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}شراء طائرة جديدة
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}اسحب الطائرة هنا لبيعها
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}وضع الهنقر في مركز الشاشة
 
 
 
