@@ -28,6 +28,7 @@
 #include "rail.h"
 #include "settings_type.h"
 #include "aircraft.h"
+#include "core/smallvec_type.hpp"
 #include <map>
 
 
@@ -1086,15 +1087,14 @@ struct ListOrderChange {
 	EngineID target;
 };
 
-static std::list<ListOrderChange> _list_order_changes;
+static SmallVector<ListOrderChange, 16> _list_order_changes;
 
 void AlterVehicleListOrder(EngineID engine, EngineID target)
 {
 	/* Add the list order change to a queue */
-	ListOrderChange loc;
-	loc.engine = engine;
-	loc.target = target;
-	_list_order_changes.push_back(loc);
+	ListOrderChange *loc = _list_order_changes.Append();
+	loc->engine = engine;
+	loc->target = target;
 }
 
 void CommitVehicleListOrderChanges()
@@ -1103,8 +1103,8 @@ void CommitVehicleListOrderChanges()
 	typedef std::map<uint16, Engine*> ListPositionMap;
 	ListPositionMap lptr_map;
 
-	std::list<ListOrderChange>::iterator it;
-	for (it = _list_order_changes.begin(); it != _list_order_changes.end(); ++it) {
+	const ListOrderChange *end = _list_order_changes.End();
+	for (const ListOrderChange *it = _list_order_changes.Begin(); it != end; ++it) {
 		EngineID engine = it->engine;
 		EngineID target = it->target;
 
@@ -1139,5 +1139,5 @@ void CommitVehicleListOrderChanges()
 	}
 
 	/* Clear out the queue */
-	_list_order_changes.clear();
+	_list_order_changes.Reset();
 }

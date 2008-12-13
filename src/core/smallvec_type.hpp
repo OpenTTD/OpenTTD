@@ -45,6 +45,17 @@ public:
 	}
 
 	/**
+	 * Remove all items from the list and free allocated memory.
+	 */
+	void Reset()
+	{
+		this->items = 0;
+		this->capacity = 0;
+		free(data);
+		data = NULL;
+	}
+
+	/**
 	 * Compact the list down to the smallest block size boundary.
 	 */
 	FORCEINLINE void Compact()
