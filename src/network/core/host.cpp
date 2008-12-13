@@ -139,6 +139,9 @@ static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // Win3
 }
 
 #else /* not HAVE_GETIFADDRS */
+
+#include "../../string_func.h"
+
 static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // !GETIFADDRS implementation
 {
 	SOCKET sock = socket(AF_INET, SOCK_DGRAM, 0);
