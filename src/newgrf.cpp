@@ -3842,7 +3842,7 @@ static void CfgApply(byte *buf, size_t len)
 		grfmsg(8, "CfgApply: Applying %u bytes from parameter 0x%02X at offset 0x%04X", param_size, param_num, offset);
 
 		bool carry = false;
-		for (i = 0; i < param_size; i++) {
+		for (i = 0; i < param_size && offset + i < num; i++) {
 			uint32 value = GetParamVal(param_num + i / 4, NULL);
 			/* Reset carry flag for each iteration of the variable (only really
 			 * matters if param_size is greater than 4) */
