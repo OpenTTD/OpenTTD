@@ -1213,7 +1213,8 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 
 	const int days1 = cs->transit_days[0];
 	const int days2 = cs->transit_days[1];
-	const int days_over_days1 = transit_days - days1;
+	const int days_over_days1 = max(   transit_days - days1, 0);
+	const int days_over_days2 = max(days_over_days1 - days2, 0);
 
 	/*
 	 * The time factor is calculated based on the time it took
@@ -1225,16 +1226,7 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, C
 	 *  - linear decreasing with time with a slope of -2 for slow transports
 	 *
 	 */
-	int time_factor;
-	if (days_over_days1 <= 0) {
-		time_factor = MAX_TIME_FACTOR;
-	} else if (days_over_days1 <= days2) {
-		time_factor = MAX_TIME_FACTOR - days_over_days1;
-	} else {
-		time_factor = MAX_TIME_FACTOR - 2 * days_over_days1 + days2;
-	}
-
-	if (time_factor < MIN_TIME_FACTOR) time_factor = MIN_TIME_FACTOR;
+	const int time_factor = max(MAX_TIME_FACTOR - days_over_days1 - days_over_days2, MIN_TIME_FACTOR);
 
 	return BigMulS(dist * time_factor * num_pieces, _cargo_payment_rates[cargo_type], 21);
 }
