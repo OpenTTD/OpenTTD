@@ -1603,6 +1603,10 @@ static void LoadUnloadVehicle(Vehicle *v, int *cargo_left)
 		if (v->cargo_cap == 0) continue;
 
 		byte load_amount = EngInfo(v->engine_type)->load_amount;
+
+		/* The default loadamount for mail is 1/4 of the load amount for passengers */
+		if (v->type == VEH_AIRCRAFT && !IsNormalAircraft(v)) load_amount = (load_amount + 3) / 4;
+
 		if (_settings_game.order.gradual_loading && HasBit(EngInfo(v->engine_type)->callbackmask, CBM_VEHICLE_LOAD_AMOUNT)) {
 			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
 			if (cb_load_amount != CALLBACK_FAILED && GB(cb_load_amount, 0, 8) != 0) load_amount = GB(cb_load_amount, 0, 8);

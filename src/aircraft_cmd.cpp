@@ -342,6 +342,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->max_speed = avi->max_speed;
 		v->acceleration = avi->acceleration;
 		v->engine_type = p1;
+		u->engine_type = p1;
 
 		v->subtype = (avi->subtype & AIR_CTOL ? AIR_AIRCRAFT : AIR_HELICOPTER);
 		v->UpdateDeltaXY(INVALID_DIR);
@@ -427,6 +428,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			Vehicle *w = vl[2];
 
 			w = new (w) Aircraft();
+			w->engine_type = p1;
 			w->direction = DIR_N;
 			w->owner = _current_company;
 			w->x_pos = v->x_pos;

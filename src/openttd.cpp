@@ -2593,6 +2593,16 @@ bool AfterLoadGame()
 		}
 	}
 
+	if (CheckSavegameVersion(103)) {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			/* Set engine_type of shadow and rotor */
+			if (v->type == VEH_AIRCRAFT && !IsNormalAircraft(v)) {
+				v->engine_type = v->First()->engine_type;
+			}
+		}
+	}
+
 	GamelogPrintDebug(1);
 
 	return InitializeWindowsAndCaches();
