@@ -1087,9 +1087,9 @@ static CommandCost CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1,
 	if (sigtype > SIGTYPE_LAST) return CMD_ERROR;
 
 	/* copy the signal-style of the first rail-piece if existing */
-	if (HasSignals(tile)) {
+	if (HasSignalOnTrack(tile, track)) {
 		signals = GetPresentSignals(tile) & SignalOnTrack(track);
-		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */
+		assert(signals != 0);
 
 		/* copy signal/semaphores style (independent of CTRL) */
 		semaphores = GetSignalVariant(tile, track) != SIG_ELECTRIC;
