@@ -277,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}自定�
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}选定的名字已经被用了
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -936,6 +937,7 @@ STR_CURR_SEK                                                    :瑞典克郎 (S
 STR_CURR_YTL                                                    :土耳其里拉 (YTL)
 STR_CURR_SKK                                                    :斯洛伐克克郎 (SKK)
 STR_CURR_BRL                                                    :巴西里亚伊 (BRL)
+STR_CURR_EEK                                                    :爱沙尼亚克鲁恩(EEK)
 
 STR_CURR_CUSTOM                                                 :自定义……
 
@@ -1644,6 +1646,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}预计�
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}预计收入：{CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}不能提高这里的地面……
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}不能降低这里的地面……
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}无法在此处变更地形...
 STR_080A_ROCKS                                                  :岩石
 STR_080B_ROUGH_LAND                                             :荒地
 STR_080C_BARE_LAND                                              :土地
@@ -1658,6 +1661,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}不可�
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}挖掘将破坏隧道
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}已经是海平面了
 STR_1004_TOO_HIGH                                               :{WHITE}太高了
+STR_ALREADY_LEVELLED                                            :{WHITE}... 已经平了
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}没有合适的铁轨
 STR_1007_ALREADY_BUILT                                          :{WHITE}已经建好了……
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}必须先拆除铁轨
@@ -2755,6 +2759,9 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} 机棚
 
+STR_ORDER_DROP_SERVICE_DEPOT                                    :若需要则维护
+STR_ORDER_DROP_HALT_DEPOT                                       :停留
+
 STR_ORDER_CONDITIONAL                                           :条件性命令跳过
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳过所需的车辆数据值
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}如何比较车辆数据值与所给数据
@@ -2825,6 +2832,8 @@ STR_8826_GO_TO                                                  :{BLACK}前往
 STR_REFIT                                                       :{BLACK}改装
 STR_REFIT_TIP                                                   :{BLACK}选择要在调度计划中改装的货物类型。CTRL+单击可以去掉说明。
 STR_REFIT_ORDER                                                 :(改装为 {STRING})
+STR_REFIT_STOP_ORDER                                            :(依{STRING}整修并停留)
+STR_STOP_ORDER                                                  :(停留)
 STR_TIMETABLE_VIEW                                              :{BLACK}时间表
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}切换到时间表视图
 STR_ORDER_VIEW                                                  :{BLACK}命令

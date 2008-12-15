@@ -561,20 +561,28 @@ STR_01F1_SAVE                                                   :{TINYFONT}{BLAC
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Тековен програм на музика
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Избери програм со сите песни
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избери 'old style music' програм
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Избери програм „нов стил на музика“
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Избери 'Сопствен 1' (кориснички дефиниран) програм
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Избери 'Сопствен 2' (кориснички дефиниран) програм
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Исчисти го тековниот програм (само Сопствен1 или Сопствен2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Зачувај поставки за музика
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Кликни на песна за да ја додадеш во тековниот програм (само Сопствен1 или Сопствен2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Вклучи/исклучи мешање за програм
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Прикажи диалог за избор на песна
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Кликни на сервис за да се центрира погледот на индустријата/градот
 STR_01FE_DIFFICULTY                                             :{BLACK}Тежина ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Последната порака/вест
 STR_0201_MESSAGE_SETTINGS                                       :Поставки за пораки
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Прикажи последна порака/вест, прикажи опции за пораки
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Опции за пораки
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Типови на пораки:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пристигнување на прво возило на твојата станица
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пристигнување на првото возило на станицата на играчот
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Пристигнување на прво возило на конкурентска станица
-STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Несреќи/хаварии
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Несреќи / хаварии
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Информации за компанијата
-STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Промена во економијата
-STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Совет/информации за возилата од компанијата
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Промени во економијата
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Совет / информации за возилата на компанијата
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Нови возила
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Промени во прием на товар
 STR_020E_SUBSIDIES                                              :{YELLOW}Субвенции
@@ -583,13 +591,79 @@ STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}..пре
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Топ компании што постигнаа {NUM}{}({STRING} Ниво)
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Бизнисмен
+STR_0214_ENTREPRENEUR                                           :Претпријатие
 STR_0215_INDUSTRIALIST                                          :Индустриалист
 STR_0216_CAPITALIST                                             :Капиталист
+STR_0217_MAGNATE                                                :Магнат
 STR_0218_MOGUL                                                  :Могул
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Тајкун на векот
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} постигна статус на '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} од {COMPANY} постигна статус на'{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Сценарио Едитор
+STR_0223_LAND_GENERATION                                        :{WHITE}Генерирање на терен
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Зголеми површина на област за спуштање/подигање
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Намали површина на област за спуштање/подигање
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Генерирај случаен терен
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Ресетирај го теренот
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Ресетирај го теренот
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Генерирање на терен
+STR_022F_TOWN_GENERATION                                        :{BLACK}Генерирање на градови
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Генерирање на индустрии
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Конструирање на патишта
+STR_0233_TOWN_GENERATION                                        :{WHITE}Генерирање на градови
+STR_0234_NEW_TOWN                                               :{BLACK}Нов Град
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Конструирај нов град
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Овде не може да се изгради град...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...премногу блиску до крајот на мапата
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...премногу блиску до друг град
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...несоодветно место
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...премногу градови
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Не може да се направи град
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Зголеми го градот
+STR_023C_EXPAND                                                 :{BLACK}Рашири
+STR_023D_RANDOM_TOWN                                            :{BLACK}Случаен Град
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Игради град на случајна локација
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Генерирање на индустрија
+STR_0240_COAL_MINE                                              :{BLACK}Рудник за Јаглен
+STR_0241_POWER_STATION                                          :{BLACK}Електрана
+STR_0242_SAWMILL                                                :{BLACK}Пилана
+STR_0243_FOREST                                                 :{BLACK}Шума
+STR_0244_OIL_REFINERY                                           :{BLACK}Нафтна Рафинерија
+STR_0245_OIL_RIG                                                :{BLACK}Нафтна Платформа
+STR_0246_FACTORY                                                :{BLACK}Фабрика
+STR_0247_STEEL_MILL                                             :{BLACK}Фабрика за Челик
+STR_0248_FARM                                                   :{BLACK}Фарма
+STR_0249_IRON_ORE_MINE                                          :{BLACK}Рудник за Железна Руда
+STR_024A_OIL_WELLS                                              :{BLACK}Нафтен Извор
+STR_024B_BANK                                                   :{BLACK}Банка
+STR_024C_PAPER_MILL                                             :{BLACK}Индустрија за Хартија
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Плантажа за Преработка на Храна
+STR_024E_PRINTING_WORKS                                         :{BLACK}Печатница
+STR_024F_GOLD_MINE                                              :{BLACK}Рудник за Злато
+STR_0250_LUMBER_MILL                                            :{BLACK}Пилана за дрва
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Овошна плантажа
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Плантажа за Гума
+STR_0253_WATER_SUPPLY                                           :{BLACK}Резервоар за Вода
+STR_0254_WATER_TOWER                                            :{BLACK}Кула за Вода
+STR_0255_DIAMOND_MINE                                           :{BLACK}Рудник за Дијаманти
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}Рудник за Бакарна Руда
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Шума со суровина за колачиња
+STR_0258_CANDY_FACTORY                                          :{BLACK}Фабрика за слатко
+STR_0259_BATTERY_FARM                                           :{BLACK}Фарма за батерии
+STR_025A_COLA_WELLS                                             :{BLACK}Извор за Кола
+STR_025B_TOY_SHOP                                               :{BLACK}Продавница за Играчки
+STR_025C_TOY_FACTORY                                            :{BLACK}Фабрика за Играчки
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Фонтани со пластика
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Фабрика за газирани пијалоци
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Генератор на меурчиња
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}Ископина на карамели
+STR_0261_SUGAR_MINE                                             :{BLACK}Рудник за шеќер
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Конструирај Рудник за Јаглен
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Конструирај Електрана
 
 
 ############ range for menu starts

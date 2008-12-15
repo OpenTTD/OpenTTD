@@ -937,6 +937,7 @@ STR_CURR_SEK                                                    :瑞典克朗 (S
 STR_CURR_YTL                                                    :土耳其里拉 (YTL)
 STR_CURR_SKK                                                    :斯洛伐克克朗 (SKK)
 STR_CURR_BRL                                                    :巴西里拉 (BRL)
+STR_CURR_EEK                                                    :愛沙尼亞克魯恩(EEK)
 
 STR_CURR_CUSTOM                                                 :自訂...
 
@@ -1645,6 +1646,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}預估�
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}預估收入：{CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}無法提昇土地...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}無法降低土地...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}無法變更此處地形...
 STR_080A_ROCKS                                                  :石頭
 STR_080B_ROUGH_LAND                                             :粗地
 STR_080C_BARE_LAND                                              :裸地
@@ -1659,6 +1661,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}不合�
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}挖掘工作會摧毀隧道
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}已到海平面
 STR_1004_TOO_HIGH                                               :{WHITE}太高
+STR_ALREADY_LEVELLED                                            :{WHITE}... 已經平了
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}沒有適合的鐵路軌道
 STR_1007_ALREADY_BUILT                                          :{WHITE}...已經建了
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}必須先移除鐵路
@@ -2756,6 +2759,8 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} 機棚
 
+STR_ORDER_DROP_SERVICE_DEPOT                                    :若需要則維護
+STR_ORDER_DROP_HALT_DEPOT                                       :停留
 
 STR_ORDER_CONDITIONAL                                           :條件式跳躍指令
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}跳躍指令依據
@@ -2936,6 +2941,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :此交通工具
 STR_TIMETABLE_TOTAL_TIME                                        :此時刻表跑完全程需時 {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :此時刻表跑完全程至少需時 {STRING} (此表尚未完成)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自動製表
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}以下站火舞價值自動填充時間表 (按住CTRL-點擊以維持等待時間)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}前方有汽車
