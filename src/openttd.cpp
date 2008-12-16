@@ -2593,7 +2593,7 @@ bool AfterLoadGame()
 		}
 	}
 
-	if (CheckSavegameVersion(103)) {
+	if (CheckSavegameVersion(104)) {
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			/* Set engine_type of shadow and rotor */
