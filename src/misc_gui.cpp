@@ -1068,7 +1068,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	QueryStringWindow(uint16 size, const WindowDesc *desc, Window *parent) : QueryStringBaseWindow(size, desc)
 	{
 		this->parent = parent;
-		SetBit(_no_scroll, SCROLL_EDIT);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -1142,7 +1141,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			this->parent = NULL; // so parent doesn't try to delete us again
 			parent->OnQueryTextFinished(NULL);
 		}
-		ClrBit(_no_scroll, SCROLL_EDIT);
 	}
 };
 
@@ -1443,7 +1441,6 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		};
 
 		SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
-		SetBit(_no_scroll, SCROLL_SAVE);
 
 		/* Use an array to define what will be the current file type being handled
 		 * by current file mode */
@@ -1505,7 +1502,6 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 			if (_pause_game >= 0) DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		}
 		FiosFreeSavegameList();
-		ClrBit(_no_scroll, SCROLL_SAVE);
 	}
 
 	virtual void OnPaint()

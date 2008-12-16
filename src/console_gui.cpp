@@ -153,7 +153,7 @@ struct IConsoleWindow : Window
 	IConsoleWindow(const WindowDesc *desc) : Window(desc)
 	{
 		_iconsole_mode = ICONSOLE_OPENED;
-		SetBit(_no_scroll, SCROLL_CON); // override cursor arrows; the gamefield will not scroll
+		_no_scroll++; // override cursor arrows; the gamefield will not scroll
 
 		this->height = _screen.height / 3;
 		this->width  = _screen.width;
@@ -162,7 +162,7 @@ struct IConsoleWindow : Window
 	~IConsoleWindow()
 	{
 		_iconsole_mode = ICONSOLE_CLOSED;
-		ClrBit(_no_scroll, SCROLL_CON);
+		_no_scroll--;
 	}
 
 	virtual void OnPaint()

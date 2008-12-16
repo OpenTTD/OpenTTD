@@ -277,7 +277,6 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 0);
 
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, this->height);
-		SetBit(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
 
 		_chat_tab_completion_active = false;
 
@@ -287,7 +286,6 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	~NetworkChatWindow ()
 	{
 		InvalidateWindowData(WC_NEWS_WINDOW, 0, 0);
-		ClrBit(_no_scroll, SCROLL_CHAT);
 	}
 
 	/**

@@ -199,18 +199,12 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 
 	SignWindow(const WindowDesc *desc, const Sign *si) : QueryStringBaseWindow(MAX_LENGTH_SIGN_NAME_BYTES, desc)
 	{
-		SetBit(_no_scroll, SCROLL_EDIT);
 		this->caption = STR_280B_EDIT_SIGN_TEXT;
 		this->afilter = CS_ALPHANUMERAL;
 		this->LowerWidget(QUERY_EDIT_SIGN_WIDGET_TEXT);
 
 		UpdateSignEditWindow(si);
 		this->FindWindowPlacementAndResize(desc);
-	}
-
-	~SignWindow()
-	{
-		ClrBit(_no_scroll, SCROLL_EDIT);
 	}
 
 	void UpdateSignEditWindow(const Sign *si)

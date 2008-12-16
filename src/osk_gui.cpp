@@ -66,7 +66,6 @@ struct OskWindow : public Window {
 		/* make a copy in case we need to reset later */
 		this->orig_str_buf = strdup(this->qs->text.buf);
 
-		SetBit(_no_scroll, SCROLL_EDIT);
 		/* Not needed by default. */
 		this->DisableWidget(OSK_WIDGET_SPECIAL);
 

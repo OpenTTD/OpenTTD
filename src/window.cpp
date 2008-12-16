@@ -461,7 +461,13 @@ Window::~Window()
 	if (this->viewport != NULL) DeleteWindowViewport(this);
 
 	this->SetDirty();
-	free(this->widget);
+
+	if (this->widget != NULL) {
+		for (const Widget *wi = this->widget; wi->type != WWT_LAST; wi++) {
+			if (wi->type == WWT_EDITBOX) _no_scroll--;
+		}
+		free(this->widget);
+	}
 }
 
 /**
@@ -690,6 +696,10 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
 		w->widget = MallocT<Widget>(index);
 		memcpy(w->widget, widget, sizeof(*w->widget) * index);
 		w->widget_count = index - 1;
+
+		for (const Widget *wi = w->widget; wi->type != WWT_LAST; wi++) {
+			if (wi->type == WWT_EDITBOX) _no_scroll++;
+		}
 	} else {
 		w->widget = NULL;
 		w->widget_count = 0;
