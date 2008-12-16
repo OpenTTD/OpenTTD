@@ -72,6 +72,8 @@ Engine::Engine(VehicleType type, EngineID base)
 	if (base >= _engine_counts[type]) {
 		/* Mark engine as valid anyway */
 		this->info.climates = 0x80;
+		/* Set model life to maximum to make wagons available */
+		this->info.base_life = 0xFF;
 		return;
 	}
 
@@ -86,6 +88,10 @@ Engine::Engine(VehicleType type, EngineID base)
 			this->u.rail = _orig_rail_vehicle_info[base];
 			this->image_index = this->u.rail.image_index;
 			this->info.string_id = STR_8000_KIRBY_PAUL_TANK_STEAM + base;
+
+			/* Set the default model life of original wagons to "infinite" */
+			if (this->u.rail.railveh_type == RAILVEH_WAGON) this->info.base_life = 0xFF;
+
 			break;
 
 		case VEH_ROAD:
@@ -195,7 +201,7 @@ static void CalcEngineReliability(Engine *e)
 	uint age = e->age;
 
 	/* Check for early retirement */
-	if (e->company_avail != 0 && !_settings_game.vehicle.never_expire_vehicles) {
+	if (e->company_avail != 0 && !_settings_game.vehicle.never_expire_vehicles && e->info.base_life != 0xFF) {
 		int retire_early = e->info.retire_early;
 		uint retire_early_max_age = max(0, e->duration_phase_1 + e->duration_phase_2 - retire_early * 12);
 		if (retire_early != 0 && age >= retire_early_max_age) {
@@ -208,7 +214,7 @@ static void CalcEngineReliability(Engine *e)
 	if (age < e->duration_phase_1) {
 		uint start = e->reliability_start;
 		e->reliability = age * (e->reliability_max - start) / e->duration_phase_1 + start;
-	} else if ((age -= e->duration_phase_1) < e->duration_phase_2 || _settings_game.vehicle.never_expire_vehicles) {
+	} else if ((age -= e->duration_phase_1) < e->duration_phase_2 || _settings_game.vehicle.never_expire_vehicles || e->info.base_life == 0xFF) {
 		/* We are at the peak of this engines life. It will have max reliability.
 		 * This is also true if the engines never expire. They will not go bad over time */
 		e->reliability = e->reliability_max;
@@ -264,11 +270,7 @@ void StartupEngines()
 
 		e->reliability_spd_dec = ei->decay_speed << 2;
 
-		if (IsWagon(e->index)) {
-			e->age = 0xFFFF;
-		} else {
-			CalcEngineReliability(e);
-		}
+		CalcEngineReliability(e);
 
 		e->lifelength = ei->lifelength + _settings_game.vehicle.extend_vehicle_life;
 

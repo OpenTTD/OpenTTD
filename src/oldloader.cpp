@@ -1347,13 +1347,7 @@ static const OldChunks engine_chunk[] = {
 static bool LoadOldEngine(LoadgameState *ls, int num)
 {
 	Engine *e = GetTempDataEngine(num);
-	if (!LoadChunk(ls, e, engine_chunk)) return false;
-
-	/* Make sure wagons are marked as do-not-age */
-	if ((num >= 27 && num < 54) || (num >= 57 && num < 84) || (num >= 89 && num < 116))
-		e->age = 0xFFFF;
-
-	return true;
+	return LoadChunk(ls, e, engine_chunk);
 }
 
 static bool LoadOldEngineName(LoadgameState *ls, int num)
