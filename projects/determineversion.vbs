@@ -82,45 +82,32 @@ Function DetermineSVNVersion()
 	Set WshShell = CreateObject("WScript.Shell")
 	On Error Resume Next
 
+	revision = 0
+
 	' Try TortoiseSVN
 	' Get the directory where TortoiseSVN (should) reside(s)
 	Dim sTortoise
 	' First, try with 32-bit architecture
 	sTortoise = ReadRegistryKey("HKLM", "SOFTWARE\TortoiseSVN", "Directory", 32)
-	If sTortoise = Nothing Then
+	If sTortoise = "" Then
 		' No 32-bit version of TortoiseSVN installed, try 64-bit version (doesn't hurt on 32-bit machines, it returns nothing or is ignored)
 		sTortoise = ReadRegistryKey("HKLM", "SOFTWARE\TortoiseSVN", "Directory", 64)
 	End If
 
 	' If TortoiseSVN is installed, try to get the revision number
-	If sTortoise <> Nothing Then
-		Dim file
-		' Write some "magic" to a temporary file so we can acquire the svn revision/state
-		Set file = FSO.CreateTextFile("tsvn_tmp", -1, 0)
-		file.WriteLine "r$WCREV$"
-		file.WriteLine "$WCURL$"
-		file.WriteLine "$WCMODS?2:0$"
-		file.WriteLine "$WCREV$"
-		file.Close
-		Set oExec = WshShell.Exec(sTortoise & "\bin\SubWCRev.exe ../src tsvn_tmp tsvn_tmp")
-		' Wait till the application is finished ...
-		Do
-			OExec.StdOut.ReadLine()
-		Loop While Not OExec.StdOut.atEndOfStream
-
-		Set file = FSO.OpenTextFile("tsvn_tmp", 1, 0, 0)
-		version = file.ReadLine
-		url = file.ReadLine
-		modified = file.ReadLine
-		revision = file.ReadLine
-		file.Close
-
-		Set file = FSO.GetFile("tsvn_tmp")
-		file.Delete
+	If sTortoise <> "" Then
+		Dim SubWCRev
+		Set SubWCRev = WScript.CreateObject("SubWCRev.object")
+		SubWCRev.GetWCInfo FSO.GetAbsolutePathName("../src"), 0, 0
+		revision = SubWCRev.Revision
+		version = "r" & revision
+		modified = 0
+		if SubWCRev.HasModifications then modified = 2
+		url = SubWCRev.Url
 	End If
 
 	' Looks like there is no TortoiseSVN installed either. Then we don't know it.
-	If InStr(version, "$") Then
+	If revision = 0 Then
 		' Reset error and version
 		Err.Clear
 		version = "norev000"
