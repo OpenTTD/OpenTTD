@@ -1660,6 +1660,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Kombinas
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Penggalian akan merusak terowongan
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Telah sama dengan ketinggian laut
 STR_1004_TOO_HIGH                                               :{WHITE}Terlalu tinggi
+STR_ALREADY_LEVELLED                                            :{WHITE}... sudah rata
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tidak tersedia rel yang sesuai
 STR_1007_ALREADY_BUILT                                          :{WHITE}...sudah dibangun
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Harus memindahkan/membongkar rel kereta api terlebih dahulu
@@ -2269,6 +2270,7 @@ STR_HOSTILE                                                     :Bermusuhan
 ##id 0x7000
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
+STR_7002_COMPANY                                                :(Perusahaan {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Wajah Baru
 STR_7005_COLOR_SCHEME                                           :{BLACK}Warna tema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Warna tema:
@@ -2756,6 +2758,9 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Hangar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Selalu jalan
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis jika diperlukan
+STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
 
 STR_ORDER_CONDITIONAL                                           :Kondisi melompati perintah tujuan
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data kendaraan darat untuk melompat
@@ -2827,6 +2832,7 @@ STR_8826_GO_TO                                                  :{BLACK}Pergi ke
 STR_REFIT                                                       :{BLACK}Renovasi
 STR_REFIT_TIP                                                   :{BLACK}Pilih tipe kargo/muatan yang akan disusun dalam perintah/tujuan ini. Kontrol klik untuk menghilangkan perintah susun kembali
 STR_REFIT_ORDER                                                 :(Susun kembali ke {STRING})
+STR_REFIT_STOP_ORDER                                            :(Mnegisi ke {STRING} dan berhenti)
 STR_STOP_ORDER                                                  :(Berhenti)
 STR_TIMETABLE_VIEW                                              :{BLACK}Jadwal Keberangkatan
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Berpindah ke pandangan jadwal keberangkatan
@@ -3174,6 +3180,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Kendaraan:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasiun:
@@ -3228,6 +3235,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Memuat {STRING}
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :"Sprite"/peri tidak diharapkan.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Aksi tidak diketahui properti 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba untuk menggunakan ID yang tidak sah.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Baca kembali setingan terdahulu yang terpilih
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Simpan aturan terdahulu
@@ -3548,6 +3556,7 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Klik unt
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 

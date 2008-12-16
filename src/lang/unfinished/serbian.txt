@@ -3,8 +3,8 @@
 ##isocode sr_YU
 ##winlangid 0x7c1a
 ##plural 0
-##gender muški ženski srednji
 ##case ih a ova ca ci ka ća va ao u om im e ke on ona to
+##gender muški ženski srednji
 
 #
 
@@ -85,6 +85,14 @@ STR_004A_TOFFEE                                                 :Karamela
 STR_004B_BATTERY                                                :Baterija
 STR_004C_PLASTIC                                                :Plastika
 STR_004D_FIZZY_DRINK                                            :Gazirano PiÄe
+STR_QUANTITY_PASSENGERS                                         :{COMMA} putnik{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} nad ugalj
+STR_QUANTITY_MAIL                                               :{COMMA} torba{P "" s} nad pošta
+STR_QUANTITY_OIL                                                :{VOLUME} nad ulje
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} stavka{P "" s} nad stoka
+STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" s} nad robu
+STR_QUANTITY_GRAIN                                              :{WEIGHT} nad zrno
+STR_QUANTITY_WOOD                                               :{WEIGHT} of drvo
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -621,10 +629,18 @@ STR_02EC                                                        :{BLACK}{SKIP}{S
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Izaberi stil imena gradova
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Automacko čuvanje igre
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Izabrati viseigra igrač nad 2-8 igrač
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Pokazati igra opcije
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Pokazati teškoća opcije
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Trzaj jedan nov igra, koristeći jedan prilagođen scenarij
+STR_0304_QUIT                                                   :{BLACK}Napustiti
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Napustiti 'OpenTTD'
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 
 ############ range for menu starts
 ############ range ends here
 
+STR_0319_PAUSED                                                 :{YELLOW}* * PAUZA * *
 
 
 
@@ -752,6 +768,7 @@ STR_02F4_AUTOSAVE                                               :{BLACK}Automack
 
 
 ##id 0x1800
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tramvaj Konstrukcija
 
 ##id 0x2000
 
@@ -879,6 +896,8 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 ########### String for New Landscape Generator
 
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Svet stvaranje
+STR_WORLD_GENERATION                                            :{BLACK}Svet stvaranje
 
 
 ########### String for new airports

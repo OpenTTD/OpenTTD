@@ -374,6 +374,26 @@ STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}แส�
 
 
 
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}การสร้างแหล่งอุตสาหกรรม
+STR_0240_COAL_MINE                                              :{BLACK}เหมืองถ่านดิน
+STR_0241_POWER_STATION                                          :{BLACK}โรงไฟฟ้า
+STR_0242_SAWMILL                                                :{BLACK}โรงเลื่อย
+STR_0243_FOREST                                                 :{BLACK}ป่าปลูก
+STR_0244_OIL_REFINERY                                           :{BLACK}โรงกลั่นน้ำมัน
+STR_0245_OIL_RIG                                                :{BLACK}แท่นขุดน้ำมัน
+STR_0246_FACTORY                                                :{BLACK}โรงงาน
+STR_0247_STEEL_MILL                                             :{BLACK}โรงถลุงเหล็ก
+STR_0248_FARM                                                   :{BLACK}บ้านไร่
+STR_0249_IRON_ORE_MINE                                          :{BLACK}เหมืองแร่เหล็ก
+STR_024A_OIL_WELLS                                              :{BLACK}บ่อน้ำมัน
+STR_024B_BANK                                                   :{BLACK}ธนาคาร
+STR_024C_PAPER_MILL                                             :{BLACK}โรงงานกระดาษ
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}โรงงานผลิตอาหาร
+STR_024E_PRINTING_WORKS                                         :{BLACK}โรงพิมพ์
+STR_024F_GOLD_MINE                                              :{BLACK}เหมืองทอง
+STR_0250_LUMBER_MILL                                            :{BLACK}โรงไม้
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}สวนผลไม้
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}สวนยางพารา
 
 
 ############ range for menu starts

@@ -116,8 +116,8 @@ STR_ABBREV_GRAIN                                                :{TINYFONT}حب�
 STR_ABBREV_WOOD                                                 :{TINYFONT}خشب
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}برادة حديد
 STR_ABBREV_STEEL                                                :{TINYFONT}حديد
-STR_ABBREV_VALUABLES                                            :{TINYFONT}م.ثمينة
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}ب.نحاس
+STR_ABBREV_VALUABLES                                            :{TINYFONT}ممتلكات ثمينة
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}خام النحاس
 STR_ABBREV_MAIZE                                                :{TINYFONT}ذرة
 STR_ABBREV_FRUIT                                                :{TINYFONT}فواكة
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}جواهر
@@ -130,12 +130,13 @@ STR_ABBREV_RUBBER                                               :{TINYFONT}مط�
 STR_ABBREV_SUGAR                                                :{TINYFONT}سكر
 STR_ABBREV_TOYS                                                 :{TINYFONT}العاب
 STR_ABBREV_SWEETS                                               :{TINYFONT}حلويات
+STR_ABBREV_COLA                                                 :{TINYFONT}كولا
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}سكر نبات
 STR_ABBREV_BUBBLES                                              :{TINYFONT}فقاعات
 STR_ABBREV_TOFFEE                                               :{TINYFONT}توفي
 STR_ABBREV_BATTERIES                                            :{TINYFONT}بطاريات
 STR_ABBREV_PLASTIC                                              :{TINYFONT}بلاستيك
-STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ش.مخفوق
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}شراب مخفوق
 STR_ABBREV_NONE                                                 :{TINYFONT}لا شيء
 STR_ABBREV_ALL                                                  :{TINYFONT}الكل
 STR_00B0_MAP                                                    :{WHITE}الخريطة- {STRING}
@@ -858,6 +859,7 @@ STR_CURR_CZK                                                    :كرونا تش
 STR_CURR_DEM                                                    :مارك الماني (DEM)
 STR_CURR_DKK                                                    :كرونا دنمركي
 STR_CURR_ESP                                                    :بيستا (ESP)
+STR_CURR_FIM                                                    :ماركا فنلندي(FIM)
 STR_CURR_FRF                                                    :فرنك (FRF)
 STR_CURR_GRD                                                    :دراخما يونانية (GRD)
 STR_CURR_HUF                                                    :فورنت هنغاري (HUF)
@@ -971,6 +973,7 @@ STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}الس�
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}السماح باعادة بناء التلال تحت المباني, الطرق, الخ .-الانحدار الذاتي- {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}السماح ببناء قطارات طويلة جدا{ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}تفعيل التسارع الواقعي للقطارات: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية 90:  {ORANGE}{STRING} {LTBLUE} (not with NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض:  {ORANGE}{STRING}
@@ -980,24 +983,37 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}الت�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}أوصل الحموله للمحطه إذا كان هناك حاجة فقط: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}السمح ببناء جسور طويلة جداً:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}السماح بأمر الذهاب للورشة: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}طريقة بناء المصانع الأولية يدوية : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :بدون
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :ككل المصانع الأخرى
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :تنقيب
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}السماح بوجود اكثر من مصنع من نفس النوع في المدينة الواحدة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}من الممكن بناء مصانع من نفس النوع بجوار بعض:  {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}استخدام التاريخ الطويل في لوحة العرض دائما: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}اظهار الاشارات على جهة السائق: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}أعرض نافذة المالية في آخر السنه: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}الامر الجديد - بدون توقف - قياسيا: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}تسلسل عربات الطريق - بالتأثير الكمي :  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}حرك الشاشة عندما تكون المؤشر على الحافة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}السماح برشوة السلطات االمحليه: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}السماح بشراء حقوق النقل الحصري: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}السماح بتحويل المال للشركات الأخرى: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}محطات غير متساوية: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}مضاعفة وزن الشحنة لمحاكاة القطارات الثقيلة: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}معامل السرعة للطائرة : {ORANGE} 1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}السماح للعربات العبور خلال المواقف المملوكة داخل المدن {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}السماح ببناء محطات متلاصقة{ORANGE}{STRING}
 STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}السماح بتعدد محركات NewGFR {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}السمح دائما بالمطارات الصغيرة: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}عرض تحذير عندما يضيع قطار: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}استعراض اوامر العربات: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :لا
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :نعم, بستثناء العربات المتوقفة
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :لكل العربات
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}عرض اشعار عندما يكون دخل القطار سالبا: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}المركبات لا تنتهي صلاحيتها ابدا : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}جدد العربات عندما تصبح قديمة
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}التجديد التلقائي عندما تكون العربة {ORANGE}{STRING}{LTBLUE}شهر قبل / بعد العمر الافتراضي.
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}التجديد التلقائي عند توفر السيولة الدنيا للتجديد: {ORANGE}{STRING}
@@ -1007,36 +1023,55 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}أعر�
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}مولد الأرض:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :الأصلي
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :مرتفعات منزلقة
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}المسافة القصزى لمحطات التكرير من الحافة: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}ارتفاع خط الثلج: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE} خشونة التضاريس (سفر التكوين فقط ) :  ({ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :ناعم جدا
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :ناعم
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :خشن
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :خشن جدا
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}طريقة وضع الاشجار: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :بدون
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :الأصلي
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :المحسن
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}اتجاة خريطة المرتفعات: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :عكس عقارب الساعة
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :مع عقارب الساعة
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}الأرتفاع الأعلى في محرر الخريطة لسطح المستوي: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}أكبر توسع للمحطه:  {ORANGE}{STRING} {RED}تحذير: الإعدادات العاليه تبطئ اللعبه
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}صيانة الهيلوكبتر في مهبطها تلقائيا: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}اربط اداة التضاريس الى اداة السكة /الطرق / اموانئ / المطارات{ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}عكس تحريك الشاشة : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}تحريك سلس في نوافذ المشاهدة: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}عرض المقاسات عند استخدام ادوات البناء المختلفة: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}عرض لون و شعار الشركة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :بدون
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :شركتك الخاصة
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :كل الشركات
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}تفضيل الدردشة  <ENTER> : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}وظيفة عجلة التحريك: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :تصغير تكبير الخريطة
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :تحريك الخريطة
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :عدم استخدام
+STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}سرعة تحريك الخريطة: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :لالأوامر
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}محاكاة الزر الأيمن : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :الأوامر
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :للتحكم
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :عدم استخدام
 
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}ايقاف اللعبة تلقائيا عند بدأ لعبة جديدة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}استخدام قائمة العربات المطورة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :بدون
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :لشركتك
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :كل الشركات
+STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}تفعيل مؤشر التحميل:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :بدون
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :لشركتك
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :كل الشركات
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}تمكين جدولة اعمال المركبات: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}عرض جدولة الأعمال بالمهام بدلا من الأيام: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}سكة الحديد القياسية (بعد بدأ لعبة جديدة او تحميل لعبة) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :السكة العادية
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :السكة الكهربائية
@@ -1045,8 +1080,13 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :السكة ال
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :القديم
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :الجديد
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :الأكثر استخداما
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}اظهار الطرق المحجوزة: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}عرض ادوات البناء عندما لا توجد مركبات متاحة بعد: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}الحد الأعلى لعدد القطارات لكل لاعب: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}الحد الأعلى لعدد العربات لكل لاعب: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}الحد الأعلى لعدد الطائرات لكل لاعب: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}الحد الأعلى لعدد السفن لكل لاعب: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}حذر القطارات على الكمبيوتر: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}حظر العربات على الكمبيوتر: {ORANGE}{STRING}
@@ -1056,10 +1096,16 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}حظر 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}تمكين الذكاء الصناعي - الفا: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}السماح بالذكاء الصناعي في اللعبة المتعددة اللاعبين (تجريبي): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}فترات الصيانة القياسية للقطارات: {ORANGE}{STRING} يوم / %
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}فترة الصيانة القياسية للقطارات{ORANGE}غير مفعل
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}فترات الصيانة القياسية للطائرات : {ORANGE}{STRING}يوم / %
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}فترة الصيانة القياسية للعربات{ORANGE} غير مفعلة
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}فترات الصيانة القياسية للطائرات : {ORANGE}{STRING}يوم / %
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE} فترات الصيانة القياسية للطائرات {ORANGE}غير مفعل
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}فترات الصيانة القياسية للسفن: {ORANGE}{STRING} يوم / %
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}فترات الصيانة القياسية للسفن {ORANGE}غير مفعل
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}الغاء الصيانة عندما يكون التعطيل للمركبات غير مفعل: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}السماح بتحديد سرعة العربات: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}تعطيل سكة القطار الكهربائي:  {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}الاخبار الملونة تظهر في: {ORANGE}{STRING}
@@ -1068,6 +1114,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}انه�
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}السماح بأقتصاد ثابت )تغيرات صغيرة اكثر)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}السماح بشراء حصص من الشركات المنافسة
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}عندما تسحب او توضع الاشارات كل: {ORANGE}{STRING} مربع
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}اتاحة  استخدام الأشارات بالأعلام قبل : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}السماح باستخدام اشارات واجهة المستخدم الرسومية: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}نوع الاشارة الذي يبنى قياسيا: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :اشارات التوقف
@@ -1079,6 +1126,7 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :اشارات ا
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :الكل
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}تصميم المدن "لا مزيد من الطرق" غير مقبول في محرر الخريطة
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}اختر شكل الطرق بالمدينة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :لا مزيد من الطرق
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :قياسي
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :طرق افضل
@@ -1117,6 +1165,8 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}عدل قيمة التغيير
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE} بعض او كل فترات الخدمة القياسية غير متوافقة مع الخيارات ! 5-90% و 30-800 يوم متاحة
 
+STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}موجد الطريق (قصاص الطريق) للقطارات: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}موجد الطريق (قصاص الأثر) للعربات: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :الأصلي{RED}ليس مستحسن
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :أصلي{BLUE}(مستحسن)
 
@@ -1142,7 +1192,9 @@ STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}متو�
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}متوجه ل {WAYPOINT}, {VELOCITY}
 
 STR_GO_TO_WAYPOINT                                              :أذهب من خلال{WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :توجة بشكل بدون توقف خلال {WAYPOINT}
 
+STR_LANDINFO_WAYPOINT                                           :نقطة عبور
 
 
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
@@ -1183,22 +1235,51 @@ STR_LANDINFO_RIVER                                              :نهر
 
 STR_BUOY_IS_IN_USE                                              :{WHITE} ... العوامة تستخدم
 
+STR_LANDINFO_COORDS                                             :{BLACK}الأحداثيات: {LTBLUE}{NUM}x{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}لا يمكن حذف جزء من المحطة ...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}لا يمكن تحويل سكة القطار هنا ...
+STR_CONVERT_RAIL_TIP                                            :{BLACK}حول / طور سكة القطار
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}أسحب محرك القطار إلى هنا لبيع القطار كاملا
 
 STR_DRAG_DROP                                                   :{BLACK}أسحب وأفلت
 
 STR_FAST_FORWARD                                                :{BLACK}سرع اللعبه
+STR_MESSAGE_HISTORY                                             :{WHITE}الرسائل السابقة
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}قائمة بآخر الاخبار
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}تعطيل الكل
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}تفعيل الكل
 
+STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}بناء منجم فحم
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}زراعة مزرعة
+STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}بناء مصفاة نفط
+STR_CONSTRUCT_FARM_TIP                                          :{BLACK}تمويل مزرعة
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}بناء منجم برادة نحاس
+STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}حفر للنفط
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}بناء منجم ذهب
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}بناء منجم جواهر
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}بناء منجم برادة حديد
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}تمويل مزرعة فواكة
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}تمويل مزرعة مطاط
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}تمويل مصدر مياة
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}زراعة مزرعة قطن
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}مول مزرعة بطاريات
+STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}حفر للكولا
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}تمويل مصنع بلاستيك
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}بناء مولد فقاعات
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}تمويل معمل توفي
+STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}بناء منجم سكر
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}صناعات
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}){YELLOW}({COMMA}% صدرت)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}{STRING}/{CARGO}{STRING}){YELLOW}({COMMA}%/{COMMA}% صدرت)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
+STR_INDUSTRYDIR_LIST_CAPTION                                    :{BLACK}اسماء المصانع - اضغط على اسم لتوسيط الشاشة علية
 
-STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}قريب من مصنع آخر
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}قريب جدا من مصنع آخر
 
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}فترات الصيانة بالنسبة المئوية : {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج
 
 
@@ -1208,6 +1289,8 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيي
 
 
 
+STR_NETWORK_ADD_SERVER                                          :{BLACK}اضف خادم - سيرفر
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}اضف خادم (سيرفر) و الذي سوف يفحص اذا كان هناك لعبة قيد التشغيل حاليا
 
 
 
@@ -1236,6 +1319,12 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيي
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[فريق]
+STR_NETWORK_CHAT_COMPANY                                        :[فريق]{STRING} : {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[خاص]:
+STR_NETWORK_CHAT_CLIENT                                         :[خاص] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[الكل]:
+STR_NETWORK_CHAT_ALL                                            :[الكل] {STRING}: {GRAY}{STRING}
 
 
 
@@ -1244,17 +1333,22 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيي
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}عرض الخريطة س: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}طول الخريطة ص: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
 
 
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}لايمكن تحويل نوع الصورة...
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}تكلفة: {CURRENCY}
 STR_0801_COST                                                   :{RED}تكلفة: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}الدخل: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}الدخل: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}التحويل: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}حول: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}التكلفة التقديرية {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}الدخل التقديري: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}لا يمكن رفع الأرض هنا
@@ -1305,6 +1399,7 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}اختر
 STR_1021_RAILROAD_TRACK                                         :سكة القطار
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :ورشة صيانة القطار
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...المنطقة مملوكة لشركة منافسة
+STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}يجب ازالة محطة القطار اولا
 
 
 
@@ -1312,6 +1407,7 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...ال�
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}يجب ازالة الطريق اولا
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}بناء الطرق
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}اختر الجسر المناسب
+STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... الطريق موحد الأتجاة لا يمكن ان يحتوي على تقاطع
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}لايمكن وضع طريق هنا ...
 STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}لا يمكن بناء سكة ترام هنا ...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}لايمكن ازالة الطريق من هنا ...
@@ -1440,6 +1536,7 @@ STR_INDUSTRY                                                    :{INDUSTRY}
 STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
 
 ##id 0x2800
+STR_LANDSCAPING                                                 :تصميم الخريطة
 STR_2800_PLANT_TREES                                            :زراعة اشجار
 STR_2801_PLACE_SIGN                                             :وضع علامات
 STR_2802_TREES                                                  :{WHITE} اشجار
@@ -1501,6 +1598,8 @@ STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}اتجا
 STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}اتجاة محطة الترام للبضائع
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}يجب هدم محطة الباصات اولا
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}يجب هدم محطة التحميل اولا
+STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}يجب هدم محطة ركاب الترام
+STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}يجب هدم محطة شحن الترام اولا
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}-  بدون  -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}... الموقع غير مناسب
@@ -1543,6 +1642,7 @@ STR_3805_COAST_OR_RIVERBANK                                     :ساحل او �
 STR_3806_SHIP_DEPOT                                             :حوض صيانة للسفن
 STR_AQUEDUCT                                                    :قناة مائية
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE} ... لا يمكن بنائة على الماء
+STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}يجب هدم القتاة اولا
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE} اللعبة حغظ
@@ -1555,6 +1655,10 @@ STR_4007_GAME_SAVE_FAILED                                       :{WHITE}فشل �
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}لم يتمكن من حذف الملف
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE} فشل فتح اللعبة {}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :خطأ داخلي: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :لعبة محفوطة غير صالحة{STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :اللعبة حفظت بنسخة احدث
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :لا يمكن قراءة الملف
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :لايمكن قراءة الملف
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}قائمة بالاقراص - المجلدات - الملفات المخزنة
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}السم المختار لحفظ اللعبة
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}حذف اللعبة المحفوظة حاليا
@@ -1562,6 +1666,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}احفظ
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}اختر توع اللعبة الجديدة
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}اختر نموذج اللعب (اخضر) , نماذج معدة مسبقا(ازرق ) ، او لعبة جديدة عشوائيا.
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :ولد لعبة جديدة عشوائيا
+STR_LOAD_HEIGHTMAP                                              :{WHITE}حمل خريطة مرتفعات
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} على الطريق
@@ -1611,6 +1716,7 @@ STR_4829_REQUIRES                                               :{BLACK}يحتا
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}البضاعة تنتظر التعامل معها:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
 STR_4827_PRODUCES                                               :{BLACK}ينتج {YELLOW}{STRING}{STRING}
 STR_4828_PRODUCES                                               :{BLACK}ينتج: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
@@ -1653,6 +1759,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :تعليق, ا�
 STR_5012_WOODEN                                                 :خشبي
 STR_5013_CONCRETE                                               :اسمنتي
 STR_5014_TUBULAR_STEEL                                          :انبوبي, حديدي
+STR_BRIDGE_TUBULAR_SILICON                                      :أنبوبي،سيلكون
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}لا يمكن بناء جسر هنا ...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}لا يمكن بناء نفق هنا ...
 STR_5017_RAILROAD_TUNNEL                                        :نفق سكة القطار
@@ -1934,8 +2041,18 @@ STR_LIVERY_PASSENGER_SHIP                                       :عبارة رك
 STR_LIVERY_FREIGHT_SHIP                                         :سفينة شحن
 STR_LIVERY_HELICOPTER                                           :هيلوكبتر
 STR_LIVERY_SMALL_PLANE                                          :طائرة صغيرة
+STR_LIVERY_LARGE_PLANE                                          :طائرة  كبيرة
 STR_LIVERY_PASSENGER_TRAM                                       :ترام ركاب
+STR_LIVERY_FREIGHT_TRAM                                         :عربة ترام للشحن
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}اظهر اللون العام
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}اظهر لون القطائرات
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}اظهر لون العربات النمطي
+STR_LIVERY_SHIP_TIP                                             :{BLACK}اظهر لون السفن
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}اظهر ألوان الطائرات
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}اختر اللون الأساسي
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}اختر اللون الثانوي
+STR_LIVERY_PANEL_TIP                                            :{BLACK}اختر اللون, أو مفتاح كنترول لاكثر من لون. اضغط على الصندوق لفتح/ قفل الالوان.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :كربي باول -بخاري
@@ -2153,6 +2270,8 @@ STR_80D3_YATE_CARGO_SHIP                                        :ناقلة يا
 STR_80D4_BAKEWELL_CARGO_SHIP                                    :ناقلة باكويل
 STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :ناقلة مايتي
 STR_80D6_POWERNAUT_CARGO_SHIP                                   :ناقلة بور
+STR_80D7_SAMPSON_U52                                            :سامسون 52
+STR_80D8_COLEMAN_COUNT                                          :كولمان كونت
 STR_80DA_YATE_HAUGAN                                            :نفاثة هوقان
 STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :باكويل كوست 3
 STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :باكويل لكيت 8
@@ -2193,18 +2312,20 @@ STR_80FE_GURU_X2_HELICOPTER                                     :قورو اكس
 STR_80FF_POWERNAUT_HELICOPTER                                   :باور هيلوكبتر
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}رسالة من المصنعين
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}قد صممنا موديل جديد من  {STRING} - هل ترغب في استخدام سنة حصري لهذه المركبة, لنستطيع تقييمها للأستخدام العام
-STR_8102_RAILROAD_LOCOMOTIVE                                    :سكة قطار
-STR_8103_ROAD_VEHICLE                                           :طريق عربات
+STR_8102_RAILROAD_LOCOMOTIVE                                    :قاطرة سكة حديد
+STR_8103_ROAD_VEHICLE                                           :مركبة
 STR_8104_AIRCRAFT                                               :طائرة
 STR_8105_SHIP                                                   :سفينة
-STR_8106_MONORAIL_LOCOMOTIVE                                    :سكة قطار احادية
-STR_8107_MAGLEV_LOCOMOTIVE                                      :سكة قطار ممغنطة
+STR_8106_MONORAIL_LOCOMOTIVE                                    :قاطرة سكة قطار احادية
+STR_8107_MAGLEV_LOCOMOTIVE                                      :قاطرة سكة قطار ممغنطة
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} ورشة صيانة قطارات
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT} ... المواطنون يحتفلون{} اول قطار وصل في {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} تفاصيل
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}قطار في الطريق
+STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
@@ -2240,7 +2361,9 @@ STR_TIMETABLE_DAYS                                              :{COMMA}يوم
 STR_TIMETABLE_TICKS                                             :{COMMA} علامة
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}متوجه لمستودع قطارات {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}متوجة الى مستودع {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}صيانة في مستودع قطار {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE} صيانة في مستودع  {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (أمر خاطئ)
 
@@ -2254,7 +2377,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}القط
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}يمكن تعديل القطارعندما يكون متوقف في ورشة الصيانة
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA}قطار
 
-STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}شراء عربات قطار
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}عربات قطار جديدة
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}عربات قطار احادي جديدة
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}عربات قطار ممغنط جديدة
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}عربات قطار
@@ -2275,6 +2398,7 @@ STR_882A_END_OF_ORDERS                                          :{SETX 10}- - ن
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}لايمكن بناء عربات سكة حديد ...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}بني: {LTBLUE}{NUM}{BLACK} تكلفة: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK} تكلفة: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}تحميل / تفريغ
 STR_LEAVING                                                     :{LTBLUE}يرحل
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}لا يمكن ارسال القطار الى الورشة
@@ -2317,6 +2441,7 @@ STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}تخطى
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}حذف الامر المختار
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}اضافة امر قبل الامر المختار, او لاخر الاوامر
 STR_885C_BROKEN_DOWN                                            :{RED} متعطل
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}   تكلفة التشغيل: {LTBLUE}{CURRENCY}/سنة
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذه السنة: {LTBLUE}{CURRENCY} )السنة السابقة{CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA}%  {BLACK} مرات التعطيل منذ الصيانة السابقة: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED} متوقف
@@ -2344,12 +2469,14 @@ STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}لا ي�
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}العربة في الطريق
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA}عربة
+STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} ورشة صيانة العربات
 STR_9004_NEW_VEHICLES                                           :{BLACK}عربات جديدة
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}عربات جديدة
 STR_9007_BUILD_VEHICLE                                          :{BLACK}شراء عربة
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}لا يمكن شراء عربة ...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} )التفاصيل(
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}   تكلفة التشغيل: {LTBLUE}{CURRENCY}/سنة
 STR_900E_MAX_SPEED                                              :{BLACK}السرعة القصوى: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذة السنة: {LTBLUE}{CURRENCY} (السنة الماضية{CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA}% {BLACK}عدد مرات التوقف من الصيانة السابقة: {LTBLUE}{COMMA}
@@ -2360,7 +2487,9 @@ STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}لا ي�
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}لا يمكن ايقاف / تشغيل العربة
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}العربة {COMMA} تنتظر في الورشة
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}متوجه لمستودع {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}متوجة الى مستودع{TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}صيانة في مستودع {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE} صيانة في مستودع{TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}لا يمكن ارسال العربة الى ورشة الصيانة
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}لم يتم العثور على ورشة قريبة من العربة
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}العربات - اضغط على العربة لعرض المعلومات
@@ -2379,7 +2508,9 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}قائم
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}شراء العربة
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}التكلفة: {CURRENCY}{}السرعة: {VELOCITY}{}تكلفة التشغيل: {CURRENCY}/ سنة{}السعة {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}السعة: {LTBLUE}
+STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM}العربات {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}تسمية العربة
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}لا يمكن تسمية العربة
@@ -2390,9 +2521,14 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}المواطنون يحتفلون . . . {}بوصول اول عربة ترام لمحطة  {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}لايمكن للعربة أن تدور للخلف...
+STR_9034_RENAME                                                 :{BLACK}أعد التسمية
 
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :بناء ممرات مائيه
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}بناء ممرات مائيه
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}ممرات مائية
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}لا يمكن بناء مرفء هنا ...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN}حوض صيانة السفن
 STR_9804_NEW_SHIPS                                              :{BLACK}سفين جديدة
@@ -2405,6 +2541,7 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}يجب �
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}لا يمكن بيع السفينة ......
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}لا يمكن شراء السفينة...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}سفينة في الطريق
+STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (التفاصيل)
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}    التكلفة التشغيلية: {LTBLUE}{CURRENCY}/ سنة
 STR_9813_MAX_SPEED                                              :{BLACK}السرعة القصوى:  {LTBLUE}{VELOCITY}
@@ -2416,7 +2553,9 @@ STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}لا ي�
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}لا يمكن ارسال السفينة الى حوض الصيانة ...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}لا يمكن ايجاد حوض صيانة قريب
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}متوجه لمستودع سفن{TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}تتجة الى حوض {TOWN}للسفن, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}صيانة في مستودع سفن  {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}صيانة في حوض{TOWN}للسفن, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}السفينة {COMMA}تنتظر في الحوض
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}بناء مرفء سفن
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}بناء حوض سفن - لشراء/ بيع/ صيانة السفن -
@@ -2460,7 +2599,7 @@ STR_9842_REFITTABLE                                             :)قابل لت�
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}مطارات
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}لا يمكن بناء مطار هنا ...
-STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} هنقر طائرات
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} حظيرة طائرات
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}طائرة جديدة
 STR_CLONE_AIRCRAFT                                              :{BLACK}نسخ الطائرة
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}هذا سوف يشتري طائرة مطابقة للمختارة. مفتاح التحكم كنترول + الضغط سوف يتشارك بالاوامر.
@@ -2469,6 +2608,7 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}طائر
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}شراء طائرة
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}لا يمكن شراء الطائرة
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} طائرة
+STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (الأوامر)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (تفاصيل)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}العمر: {LTBLUE}{STRING}{BLACK}    تكلفة التشغيل: {LTBLUE}{CURRENCY} / سنة
@@ -2476,31 +2616,33 @@ STR_A00E_MAX_SPEED                                              :{BLACK} الس�
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}الدخل هذه السنة: {LTBLUE}{CURRENCY}   (السنة الماضية: {CURRENCY}(
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}الصلاحية: {LTBLUE}{COMMA} %  {BLACK}الاعطال من آخر فترة صيانة: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}سنة الشراء:  {LTBLUE}{NUM}{BLACK} القيمة: {LTBLUE}{CURRENCY}
-STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}لا يمكن ارسال الطائرة لهنقر الصيانة
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}لا يمكن ارسال الطائرة لحظيرةالصيانة
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}متوجه لحظيرة {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}تتوجة الى حظيرة {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}صيانه في حظيرة  {STATION}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}الطائرة {COMMA} تنتظر في هنجر الصيانة
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}الصيانة في حظيرة {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}الطائرة {COMMA} تنتظر في حظيرةالصيانة
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}طائرة في الطريق
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}لا يمكن توقيف / تشغيل الطائرة
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}الطائرة تقوم بالطيران الآن
 STR_A019_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO} ،  {CARGO}
 STR_A01A_CAPACITY                                               :{BLACK}السعة: {LTBLUE}{CARGO}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}يجب ان تكون الطائرة متوقفة في الهنقر
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}يجب ان تكون الطائرة متوقفة في الحظيرة
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}لا يمكن بيع الطائرة
 STR_A01D_AIRPORT_CONSTRUCTION                                   :بناء المطار
-STR_A01E_BUILD_AIRPORT                                          :{BLACK}مطار كبير
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}بناء مطار
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}الطائرات - اضغط على الطائرة للمعلومات
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}شراء طائرة جديدة - يحتاج لهنقر طائرات
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}شراء طائرة جديدة - يحتاج لحظيرة طائرات
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}طائرة - اضغط على طائرة ما لتفاصيل
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}شراء طائرة جديدة
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}اسحب الطائرة هنا لبيعها
-STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}وضع الهنقر في مركز الشاشة
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}وضع الحظيرة في مركز الشاشة
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}قائمة اختيار الطائرات - اضغط على الطائرة للتفاصيل
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}اشتر الطائرة المختارة
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}وضع الطائرة الحالي - اضغط هنا لايقاف / تشغيل الطائرة
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}عرض اوامر الطائرة
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}وضع الطائرة في مركز الشاشة
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}ارسل الطائرة الى هنقر الصيانة - مفتاح التحكم (كنترول) + الضغط يرسلها للصيانة فقط
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}ارسل الطائرة الى حظيرة الصيانة - مفتاح التحكم (كنترول) + الضغط يرسلها للصيانة فقط
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}عرض تفاصيل الطائرة
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}التكلفة: {CURRENCY}السرعة القصوى: {VELOCITY}{}السعة: {COMMA} راكب, {COMMA}طرود ريد: {}التكلفة التشغيلية: {CURRENCY} / سنة
 
@@ -2509,8 +2651,10 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}لا ي�
 STR_A032_NAME_AIRCRAFT                                          :{BLACK} تسمية الطائرة
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}الأهالي يحتفلون . . . {}بوصول أول طائرة الى {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}تحطم طائرة !{}{COMMA}ماتوا في الحريق بمطار {STATION}
+STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}اعادة تسمية
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}اعادة تسمية نوع الطائرة
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}اعادة تسمية نوع الطائرة
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}لا يمكن اعادة تسمية نوع الطائرة ....
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}غير نوع الحمولة الى نوع آخر
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} غيرت الحمولة
@@ -2531,6 +2675,7 @@ STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}الخمود في منجم الفحم يتسبب في سلسلة انفجارات قرب {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}فيضانات !{}على الأقل {COMMA} مفقودين او في عداد الأموات بعد فيضانات عارمة !
 
+STR_BRIBE_FAILED_2                                              :{WHITE}أكتشفت من مقبل اللمحققين المحلين
 STR_BUILD_DATE                                                  :{BLACK}بني: {LTBLUE}{DATE_LONG}
 
 
@@ -2544,10 +2689,17 @@ STR_BUILD_DATE                                                  :{BLACK}بني: 
 
 
 
+STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}اللعبة حفظت بنسخة لا تدعم الترام. كل ما يتعلق بالترام حذف.
 
 STR_CURRENCY_WINDOW                                             :{WHITE}عمله مخصصه
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}معامل التبديل: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}فاصل:
+STR_CURRENCY_PREFIX                                             :{LTBLUE}رمز البداية:
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}رمز اللاحق:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}حول إلى يورو : {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}حول إلى يورو : {ORANGE}أبدا
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}عرض: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}غير الخيارات الاختيارة
 
 STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
@@ -2564,6 +2716,10 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}بع ج�
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}بع جميع السفن الموجودة في المستودع
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}بع جميع الطائرات في الحظيرة
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}عرض قائمة بالقطارات في المستودع
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}عرض قائمة العربات التابعة لهذة الورشة بالترتيب
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}عرض قائمة بالسفن في حوض الصيانة
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}عرض قائمة بالطائرات التابعة لهذا المطار في اي هنجر
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}بدل جميع القطارات في المستودع آليا
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}بدل جميع المركبات في المستودع آلياً
@@ -2576,12 +2732,17 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}الطا
 STR_ENGINES                                                     :محركات
 
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}اضغط هنا لتشغيل كل القطارات المتوقفة داخل المستودع
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}اضغط هنا لتشغيل كل العربات المتوقفة داخل المستودع
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}اضغط هنا لتشغيل كل السفن المتوقفة داخل المستودع
 
 
 
 
 ############ Lists rail types
 
+STR_ELRAIL_VEHICLES                                             :سكة حديد كهربائية
+STR_MONORAIL_VEHICLES                                           :عربات احادية السكة
 STR_MAGLEV_VEHICLES                                             :مركبات ممغنطة
 
 ############ End of list of rail types
@@ -2594,23 +2755,47 @@ STR_MAGLEV_VEHICLES                                             :مركبات م
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}ولد
+STR_LAND_GENERATOR                                              :{BLACK}مولد الخريطة:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}اتجاة خريطة المرتفعات:
 STR_DATE                                                        :{BLACK}التاريخ:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}تحذير
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}اعادة تحجيم الخريطة المصدر كثيرا غير مستحسن. هل تريد اكمال توليد الخريطة؟
+STR_HEIGHTMAP_NAME                                              :{BLACK}اسم خريطة المرتفعات:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}الحجم: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}توليد الخريطة
 STR_GENERATION_ABORT                                            :{BLACK}ألغي
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}ايقاف توليد الخريطة
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}هل انت متأكد بأنك ترغبب في ايقاف توليد الخريطة؟
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_CLEARING_TILES                                              :{BLACK}مولد المناطق الخشنة والصخرية
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}هذا التغيير سيحول مستوى الصعوبة الى اختياري
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}حرك ارتفاع الأرض المنبسطة واحد للاسفل
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}حرك ارتفاع الأرض المنبسطة واحد للأعلى
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}غير ارتفاع الارض المنبسطة
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}ارتفاع الأرض المنبسطة
 
 
 ########### String for new airports
 STR_CITY_AIRPORT                                                :{BLACK}مدينة
+STR_METRO_AIRPORT                                               :{BLACK}مطار متروبوليتان
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}مطار دولي
 STR_COMMUTER_AIRPORT                                            :{BLACK}مطار محلي
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}مطار قاري
+STR_HELIPORT                                                    :{BLACK}مهبط طائرة عمودية
+STR_HELIDEPOT                                                   :{BLACK}حظيرة طائرة عمودية
+STR_HELISTATION                                                 :{BLACK}محطة طيران عمودي
 
 STR_LARGE_AIRPORTS                                              :{BLACK}مطارات كبيرة
+STR_HUB_AIRPORTS                                                :{BLACK}محور مطارات
+STR_HELIPORTS                                                   :{BLACK}مطار طيران عمودي
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK} الطول: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}المساحة: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}الطول: {NUM}{}فرق الارتفاع: {NUM} م
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}المساحة: {NUM} x {NUM}{}فرق الارتفاع{NUM} م
 
 ############ Date formatting
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
@@ -2619,7 +2804,9 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 
 ########
 
+STR_FEEDER_CARGO_VALUE                                          :{BLACK}مقدار التحويل: {LTBLUE}{CURRENCY}
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}هذا طريق مملوك للمدينه
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}... اتجاة الطريق خاطئ
 
 
 
@@ -2635,37 +2822,54 @@ STR_GROUP_DEFAULT_ROADS                                         :لاتنتمي 
 STR_GROUP_DEFAULT_SHIPS                                         :مركبة لاتنتمي لأي مجموعة
 STR_GROUP_DEFAULT_AIRCRAFTS                                     :طائرة لاتنتمي لأي مجموعة
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :اضافة عربات مشتركة
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :أزل جميع المركبات
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA}قطار
+STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} - {COMMA} العربات
+STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} السفن
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} طائرة
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}إعادة تسمية مجموعة
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}بدل المركبات لـ  "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}لايمكن إنشاء مجموعة
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}لايمكن حذف المجموعة
 STR_GROUP_CAN_T_RENAME                                          :{WHITE}لايمكن إعادة تسمية المجموعة
 STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES                             :{WHITE}لايمكن إزالة جميع المركبات من هذه المجموعة
+STR_GROUP_CAN_T_ADD_VEHICLE                                     :{WHITE}لا يمكن اضافة المركبة للمجموعة ...
+STR_GROUP_CAN_T_ADD_SHARED_VEHICLE                              :{WHITE}لا يمكن اضافة مركبات مشتركة للمجموعة ...
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}المجموعات: اضغط على اي مجموعة لعرض المركبات التابعة لها
 STR_GROUP_CREATE_TIP                                            :{BLACK}أضغط لإنشاء مجموعة
 STR_GROUP_DELETE_TIP                                            :{BLACK}أحذف المجموعة المختارة
 STR_GROUP_RENAME_TIP                                            :{BLACK}أعد تسمية المجموعة المختارة
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}اضغط لحماية المجموعة من التغيير الكلي للعربات
 
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
 
+STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}السم يجب ان يكون فريدا - غير مستخدم
 
 #### Improved sign GUI
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}مول
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}بناء
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}اختر المصنع المناسب من القائمة
 
 ############ Face formatting
 STR_FACE_ADVANCED                                               :{BLACK}متقدم
 STR_FACE_ADVANCED_TIP                                           :{BLACK}إختيار وجه متقدم
 STR_FACE_SIMPLE                                                 :{BLACK}بسيط
+STR_FACE_SIMPLE_TIP                                             :{BLACK}اختيار الوجة المبسط
 STR_FACE_LOAD                                                   :{BLACK}حمل
 STR_FACE_LOAD_TIP                                               :{BLACK}حمل الوجه المفضل
 STR_FACE_LOAD_DONE                                              :{WHITE}وجهك المفضل تم تحميله من ملف التكوين الخاص بـ OpenTTD.
+STR_FACE_FACECODE                                               :{BLACK}رقم وجة اللاعب
+STR_FACE_FACECODE_TIP                                           :{BLACK}عرض او تغيير رقم الوجة
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}عرض او تغيير رقم وجة اللاعب
+STR_FACE_FACECODE_ERR                                           :{WHITE}لا نتمكن من تغيير رقم الوجة. - يجب ان يكون من 0 الى 4,294,967,295 !
 STR_FACE_SAVE                                                   :{BLACK}حفظ
 STR_FACE_SAVE_TIP                                               :{BLACK}حفظ الوجه المفضل
 STR_FACE_SAVE_DONE                                              :{WHITE}هذا الوجه سيحفظ كالمفضل في ملف تكوين الخاص بـ Open TTD.
@@ -2714,10 +2918,14 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}اشار
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}اشارة مزدوجة (كهربائية) {} الاشارة المزدوجة تعمل للدخول و الخروج. فهي تسمح لك بعمل شجرة كبيرة من الاشارات.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}اشارة طريق (كهربائية){}تسمح بمرور اكثر من قطار في القسم التالي اذا كان القطار يستطيع  الوصول الى نقطة آمنة. يمكن تخطي الاشارة بالاتجاهين.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}اشارة الاتجاة الواحد (كهربائية){}اشارة طريق تسمح باكثر من قطار يدخل في القسم التالي في نفس الوقت, اذا كان القطار يستطيع الوصول الى نقطة آمنة. لا يمكن تخطي اشارة الاتجاة الواحد من الخلف.
+STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}سرعة السحب
+STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}تقليل سرعة السحب
+STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}زيادة سرعة السحب
 ########
 
 ############ on screen keyboard
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم في ضجيج المطارات: {ORANGE}{STRING}
 ########

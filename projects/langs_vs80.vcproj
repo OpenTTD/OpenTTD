@@ -62,6 +62,21 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath="..\src\lang\arabic_egypt.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating arabic_egypt language file"
+					CommandLine="..\objs\strgen\strgen.exe -s ..\src\lang -d ..\bin\lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					AdditionalDependencies=""
+					Outputs="..\bin\lang\arabic_egypt.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath="..\src\lang\brazilian_portuguese.txt"
 			>
 			<FileConfiguration

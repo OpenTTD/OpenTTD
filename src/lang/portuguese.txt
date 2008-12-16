@@ -2980,6 +2980,7 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construi
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Custo: {CURRENCY}{}Velocidade: {VELOCITY}{}Custo de circulação: {CURRENCY}/ano{}Capacidade: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Capacidade: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veículo{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
@@ -3264,6 +3265,7 @@ STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Falta(m)
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Ficheiro(s) GRF em falta
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Sair da pausa pode causar problemas ao OpenTTD. Não envie informações sobre este tipo de problemas.{}Deseja realmente sair da pausa?
 
+STR_NEWGRF_BROKEN                                               :{WHITE}Os ficheiros NewGRF '{0:STRING}' podem causar erros e/ou perda de sincronismo da aplicação.
 STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Modifica o comprimento do veículo para '{1:ENGINE}' quando fora do depósito.
 STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}O Comboio '{VEHICLE}' pertencente a '{COMPANY}' tem um comprimento inválido. Possivelmente devido a problemas com os novos NewGRFs. Podem ocorrer erros de sincronização e a aplicação pode terminar.
 
