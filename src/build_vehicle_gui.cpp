@@ -566,8 +566,6 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 /* Draw road vehicle specific details */
 static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const RoadVehicleInfo *rvi)
 {
-	bool refittable = (EngInfo(engine_number)->refit_mask != 0);
-
 	/* Purchase cost - Max speed */
 	SetDParam(0, GetEngineProperty(engine_number, 0x11, rvi->cost_factor) * (_price.roadveh_base >> 3) >> 5);
 	SetDParam(1, rvi->max_speed * 10 / 32);
@@ -580,7 +578,7 @@ static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const R
 	y += 10;
 
 	/* Cargo type + capacity */
-	return DrawCargoCapacityInfo(x, y, engine_number, VEH_ROAD, refittable);
+	return DrawCargoCapacityInfo(x, y, engine_number, VEH_ROAD, IsEngineRefittable(engine_number));
 }
 
 /* Draw ship specific details */
@@ -595,7 +593,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 	/* Cargo type + capacity */
 	SetDParam(0, svi->cargo_type);
 	SetDParam(1, GetEngineProperty(engine_number, 0x0D, svi->capacity));
-	SetDParam(2, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
+	SetDParam(2, IsEngineRefittable(engine_number) ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, TC_FROMSTRING);
 	y += 10;
 
@@ -654,15 +652,13 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 	const Engine *e = GetEngine(engine_number);
 	YearMonthDay ymd;
 	ConvertDateToYMD(e->intro_date, &ymd);
-	bool refitable = false;
+	bool refittable = IsEngineRefittable(engine_number);
 
 	switch (e->type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN: {
 			const RailVehicleInfo *rvi = RailVehInfo(engine_number);
-			uint capacity = GetEngineProperty(engine_number, 0x14, rvi->capacity);
-
-			refitable = (EngInfo(engine_number)->refit_mask != 0) && (capacity > 0);
+			refittable &= GetEngineProperty(engine_number, 0x14, rvi->capacity) > 0;
 
 			if (rvi->railveh_type == RAILVEH_WAGON) {
 				y = DrawRailWagonPurchaseInfo(x, y, engine_number, rvi);
@@ -671,7 +667,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			}
 
 			/* Cargo type + capacity, or N/A */
-			int new_y = DrawCargoCapacityInfo(x, y, engine_number, VEH_TRAIN, refitable);
+			int new_y = DrawCargoCapacityInfo(x, y, engine_number, VEH_TRAIN, refittable);
 
 			if (new_y == y) {
 				SetDParam(0, CT_INVALID);
@@ -685,16 +681,12 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 		}
 		case VEH_ROAD:
 			y = DrawRoadVehPurchaseInfo(x, y, engine_number, RoadVehInfo(engine_number));
-			refitable = true;
 			break;
-		case VEH_SHIP: {
-			const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
-			y = DrawShipPurchaseInfo(x, y, engine_number, svi);
-			refitable = svi->refittable;
-		} break;
+		case VEH_SHIP:
+			y = DrawShipPurchaseInfo(x, y, engine_number, ShipVehInfo(engine_number));
+			break;
 		case VEH_AIRCRAFT:
 			y = DrawAircraftPurchaseInfo(x, y, engine_number, AircraftVehInfo(engine_number));
-			refitable = true;
 			break;
 	}
 
@@ -714,7 +706,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 	/* Additional text from NewGRF */
 	y += ShowAdditionalText(x, y, w, engine_number);
-	if (refitable) y += ShowRefitOptionsList(x, y, w, engine_number);
+	if (refittable) y += ShowRefitOptionsList(x, y, w, engine_number);
 
 	return y;
 }

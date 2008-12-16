@@ -559,6 +559,32 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company)
 	return true;
 }
 
+/**
+ * Check if an engine is refittable.
+ * @param engine index of the engine to check.
+ * @return true if the engine is refittable.
+ */
+bool IsEngineRefittable(EngineID engine)
+{
+	/* check if it's an engine that is in the engine array */
+	if (!IsEngineIndex(engine)) return false;
+
+	const Engine *e = GetEngine(engine);
+
+	if (e->type == VEH_SHIP && !e->u.ship.refittable) return false;
+
+	const EngineInfo *ei = &e->info;
+	if (ei->refit_mask == 0) return false;
+
+	/* Are there suffixes?
+	 * Note: This does not mean the suffixes are actually available for every consist at any time. */
+	if (HasBit(ei->callbackmask, CBM_VEHICLE_CARGO_SUFFIX)) return true;
+
+	/* Is there any cargo except the default cargo? */
+	CargoID default_cargo = GetEngineCargoType(engine);
+	return default_cargo != CT_INVALID && ei->refit_mask != 1U << default_cargo;
+}
+
 /** Get the default cargo type for a certain engine type
  * @param engine The ID to get the cargo for
  * @return The cargo type. CT_INVALID means no cargo capacity

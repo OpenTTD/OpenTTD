@@ -1666,16 +1666,16 @@ static const uint32 _vehicle_command_translation_table[][4] = {
 /** Checks whether the vehicle may be refitted at the moment.*/
 static bool IsVehicleRefitable(const Vehicle *v)
 {
-	/* Why is this so different for different vehicles?
-	 * Does maybe work one solution for all?
-	 */
-	switch (v->type) {
-		case VEH_TRAIN:    return false;
-		case VEH_ROAD:     return EngInfo(v->engine_type)->refit_mask != 0 && v->IsStoppedInDepot();
-		case VEH_SHIP:     return ShipVehInfo(v->engine_type)->refittable && v->IsStoppedInDepot();
-		case VEH_AIRCRAFT: return v->IsStoppedInDepot();
-		default: NOT_REACHED();
-	}
+	if (!v->IsStoppedInDepot()) return false;
+
+	do {
+		/* Skip this vehicle if it has no capacity */
+		if (v->cargo_cap == 0) continue;
+
+		if (IsEngineRefittable(v->engine_type)) return true;
+	} while ((v->type == VEH_TRAIN || v->type == VEH_ROAD) && (v = v->Next()) != NULL);
+
+	return false;
 }
 
 struct VehicleViewWindow : Window {
@@ -1858,20 +1858,6 @@ struct VehicleViewWindow : Window {
 		if (v->type == VEH_TRAIN) {
 			this->SetWidgetDisabledState(VVW_WIDGET_FORCE_PROCEED, !is_localcompany);
 			this->SetWidgetDisabledState(VVW_WIDGET_TURN_AROUND, !is_localcompany);
-
-			/* Cargo refit button is disabled, until we know we can enable it below. */
-
-			if (is_localcompany) {
-				/* See if any vehicle can be refitted */
-				for (const Vehicle *u = v; u != NULL; u = u->Next()) {
-					if (EngInfo(u->engine_type)->refit_mask != 0 ||
-							(RailVehInfo(v->engine_type)->railveh_type != RAILVEH_WAGON && v->cargo_cap != 0)) {
-						this->EnableWidget(VVW_WIDGET_REFIT_VEH);
-						/* We have a refittable carriage, bail out */
-						break;
-					}
-				}
-			}
 		}
 
 		/* draw widgets & caption */
