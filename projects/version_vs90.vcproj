@@ -25,7 +25,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Determining version number"
-				CommandLine="&quot;$(InputDir)/determineversion.vbs&quot;"
+				CommandLine="cscript &quot;$(InputDir)/determineversion.vbs&quot;"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
