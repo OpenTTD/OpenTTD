@@ -387,17 +387,17 @@ detect_params() {
 
 			--* | -*)
 				if [ "$ignore_extra_parameters" = "0" ]; then
-					echo "Unknown option $p"
+					log 1 "Unknown option $p"
 					exit 1
 				else
-					echo "Unknown option $p ignored"
+					log 1 "Unknown option $p ignored"
 				fi
 				;;
 		esac
 	done
 
 	if [ -n "$prev_p" ]; then
-		echo "configure: error: missing argument to --$prev_p"
+		log 1 "configure: error: missing argument to --$prev_p"
 		exit 1
 	fi
 
@@ -437,38 +437,38 @@ check_params() {
 
 	# Endian only allows AUTO, LE and, BE
 	if [ -z "`echo $endian | egrep '^(AUTO|LE|BE|PREPROCESSOR)$'`" ]; then
-		echo "configure: error: invalid option --endian=$endian"
-		echo " Available options are: --endian=[AUTO|LE|BE]"
+		log 1 "configure: error: invalid option --endian=$endian"
+		log 1 " Available options are: --endian=[AUTO|LE|BE]"
 		exit 1
 	fi
 	if [ "$endian" = "PREPROCESSOR" ] && [ "$os" != "OSX" ]; then
-		echo "configure: error: invalid option --endian=$endian"
-		echo " PREPROCESSOR is only available for OSX"
+		log 1 "configure: error: invalid option --endian=$endian"
+		log 1 " PREPROCESSOR is only available for OSX"
 		exit 1
 	fi
 	# OS only allows DETECT, UNIX, OSX, FREEBSD, OPENBSD, MORPHOS, BEOS, SUNOS, CYGWIN, MINGW, OS2, DOS, WINCE, and PSP
 	if [ -z "`echo $os | egrep '^(DETECT|UNIX|OSX|FREEBSD|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE|PSP)$'`" ]; then
-		echo "configure: error: invalid option --os=$os"
-		echo " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE|PSP]"
+		log 1 "configure: error: invalid option --os=$os"
+		log 1 " Available options are: --os=[DETECT|UNIX|OSX|FREEBSD|OPENBSD|NETBSD|HPUX|MORPHOS|BEOS|SUNOS|CYGWIN|MINGW|OS2|DOS|WINCE|PSP]"
 		exit 1
 	fi
 	# cpu_type can be either 32 or 64
 	if [ -z "`echo $cpu_type | egrep '^(32|64|DETECT)$'`" ]; then
-		echo "configure: error: invalid option --cpu-type=$cpu_type"
-		echo " Available options are: --cpu-type[=DETECT|32|64]"
+		log 1 "configure: error: invalid option --cpu-type=$cpu_type"
+		log 1 " Available options are: --cpu-type[=DETECT|32|64]"
 		exit 1
 	fi
 	# enable_debug should be between 0 and 4
 	if [ -z "`echo $enable_debug | egrep '^[0123]$'`" ]; then
-		echo "configure: error: invalid option --enable-debug=$enable_debug"
-		echo " Available options are: --enable-debug[=0123]"
+		log 1 "configure: error: invalid option --enable-debug=$enable_debug"
+		log 1 " Available options are: --enable-debug[=0123]"
 		exit 1
 	fi
 
 	# enable_desync_debug should be between 0 and 3
 	if [ -z "`echo $enable_desync_debug | egrep '^[012]$'`" ]; then
-		echo "configure: error: invalid option --enable-desync-debug=$enable_desync_debug"
-		echo " Available options are: --enable-desync-debug[=012]"
+		log 1 "configure: error: invalid option --enable-desync-debug=$enable_desync_debug"
+		log 1 " Available options are: --enable-desync-debug[=012]"
 		exit 1
 	fi
 
@@ -1559,7 +1559,7 @@ check_windres() {
 check_strip() {
 	if [ "$os" = "OS2" ]; then
 		# OS2 via gcc is a bit weird.. stripping HAS to be done via emxbind, which is via gcc directly
-		echo "checking host strip... using gcc -s option"
+		log 1 "checking host strip... using gcc -s option"
 	elif [ "$os" = "OSX" ]; then
 		# Most targets have -V in strip, to see if they exists... OSX doesn't.. so execute something
 		echo "int main(int argc, char *argv[]) { }" > strip.test.c
@@ -2618,7 +2618,7 @@ generate_menu_item() {
 		s~!!MENU_GROUP!!~$menu_group~g;
 		s~!!MENU_NAME!!~$menu_name~g
 	"
-	echo "Generating menu item..."
+	log 1 "Generating menu item..."
 	mkdir -p media
 	< $ROOT_DIR/media/openttd.desktop.in sed "$MENU_REPLACE" > media/openttd.desktop
 }
@@ -2629,7 +2629,7 @@ generate_main() {
 	make_sed
 
 	# Create the main Makefile
-	echo "Generating Makefile..."
+	log 1 "Generating Makefile..."
 	echo "# Auto-generated file from 'Makefile.in' -- DO NOT EDIT" > Makefile
 	< $ROOT_DIR/Makefile.in sed "$SRC_REPLACE" >> Makefile
 	cp $ROOT_DIR/Makefile.bundle.in Makefile.bundle
@@ -2656,7 +2656,7 @@ generate_lang() {
 	# Create the language file
 	mkdir -p $LANG_OBJS_DIR
 
-	echo "Generating lang/Makefile..."
+	log 1 "Generating lang/Makefile..."
 	echo "# Auto-generated file from 'Makefile.lang.in' -- DO NOT EDIT" > $LANG_OBJS_DIR/Makefile
 	< $ROOT_DIR/Makefile.lang.in sed "$SRC_REPLACE" >> $LANG_OBJS_DIR/Makefile
 	echo "DIRS += $LANG_OBJS_DIR" >> Makefile.am
@@ -2671,7 +2671,7 @@ generate_src_normal() {
 	# Create the source file
 	mkdir -p $SRC_OBJS_DIR
 
-	echo "Generating $2/Makefile..."
+	log 1 "Generating $2/Makefile..."
 	echo "# Auto-generated file from 'Makefile.src.in' -- DO NOT EDIT" > $SRC_OBJS_DIR/Makefile
 	< $ROOT_DIR/Makefile.src.in sed "$SRC_REPLACE" >> $SRC_OBJS_DIR/Makefile
 	echo "DIRS += $SRC_OBJS_DIR" >> Makefile.am
