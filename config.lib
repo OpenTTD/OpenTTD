@@ -860,13 +860,13 @@ check_params() {
 			revision="`cat $ROOT_DIR/version`"
 
 			log 1 "checking revision... $revision"
-		elif [ -d "$ROOT_DIR/.svn" ] && [ -n "`svn help`" ]; then
+		elif [ -d "$ROOT_DIR/.svn" ] && [ -n "`svn help 2>/dev/null`" ]; then
 			revision=""
 			log 1 "checking revision... svn detection"
-		elif [ -d "$ROOT_DIR/.git" ] && [ -n "`git help`" ]; then
+		elif [ -d "$ROOT_DIR/.git" ] && [ -n "`git help 2>/dev/null`" ]; then
 			revision=""
 			log 1 "checking revision... git detection"
-		elif [ -d "$ROOT_DIR/.hg" ] && [ -n "`hg help`" ]; then
+		elif [ -d "$ROOT_DIR/.hg" ] && [ -n "`hg help 2>/dev/null`" ]; then
 			revision=""
 			log 1 "checking revision... hg detection"
 		else
