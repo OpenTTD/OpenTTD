@@ -93,6 +93,21 @@ STR_QUANTITY_LIVESTOCK                                          :{COMMA} stavka{
 STR_QUANTITY_GOODS                                              :{COMMA} sanduk{P "" s} nad robu
 STR_QUANTITY_GRAIN                                              :{WEIGHT} nad zrno
 STR_QUANTITY_WOOD                                               :{WEIGHT} of drvo
+STR_QUANTITY_PAPER                                              :{WEIGHT} nad papir
+STR_QUANTITY_GOLD                                               :{COMMA} torba{P "" s} nad zlato
+STR_QUANTITY_WATER                                              :{VOLUME} nad voda
+STR_QUANTITY_WHEAT                                              :{WEIGHT} nad pšenica
+STR_QUANTITY_RUBBER                                             :{VOLUME} nad guma
+STR_QUANTITY_SUGAR                                              :{WEIGHT} nad zasladiti
+STR_QUANTITY_TOYS                                               :{COMMA} igračka{P "" s}
+STR_QUANTITY_SWEETS                                             :{COMMA} torba{P "" s} nad slatkiši
+STR_QUANTITY_COLA                                               :{VOLUME} nad kola
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} nad candyfloss
+STR_QUANTITY_BUBBLES                                            :{COMMA} balončić{P "" s}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} nad karamela
+STR_QUANTITY_BATTERIES                                          :{COMMA} lupati{P y ies}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} nad plastika
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA}
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -926,6 +941,16 @@ STR_WORLD_GENERATION                                            :{BLACK}Svet stv
 
 
 ############ Face formatting
+STR_FACE_NOSE_TIP                                               :{BLACK}Promena nos
+STR_FACE_LIPS                                                   :Usna:
+STR_FACE_MOUSTACHE                                              :Brk:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Promena usna ili brk
+STR_FACE_CHIN                                                   :Brada:
+STR_FACE_CHIN_TIP                                               :{BLACK}Promena brada
+STR_FACE_JACKET                                                 :Jakna:
+STR_FACE_JACKET_TIP                                             :{BLACK}Promena jakna
+STR_FACE_COLLAR                                                 :Ovratnik:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Promena ovratnik
 ########
 
 ############ signal GUI

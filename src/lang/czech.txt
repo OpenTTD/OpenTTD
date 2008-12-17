@@ -289,7 +289,7 @@ STR_0104_STEEL_MILL                                             :{BLACK}{TINYFON
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banka
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Papírna
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Důl na zlato
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Továrna na zpracování potravin
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Potravinářský závod
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantový důl
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Důl na měděnou rudu
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Ovocná plantáž
@@ -725,7 +725,7 @@ STR_0249_IRON_ORE_MINE                                          :{BLACK}Důl na 
 STR_024A_OIL_WELLS                                              :{BLACK}Ropný vrt
 STR_024B_BANK                                                   :{BLACK}Banka
 STR_024C_PAPER_MILL                                             :{BLACK}Papírna
-STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Továrna na zpracování potravin
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Potravinářský závod
 STR_024E_PRINTING_WORKS                                         :{BLACK}Tiskárna
 STR_024F_GOLD_MINE                                              :{BLACK}Důl na zlato
 STR_0250_LUMBER_MILL                                            :{BLACK}Pila
@@ -2095,7 +2095,7 @@ STR_480B_FARM                                                   :Farma
 STR_480C_COPPER_ORE_MINE                                        :Důl na měděnou rudu
 STR_480D_OIL_WELLS                                              :Ropný vrt
 STR_480E_BANK                                                   :Banka
-STR_480F_FOOD_PROCESSING_PLANT                                  :Továrna na zpracování jídla
+STR_480F_FOOD_PROCESSING_PLANT                                  :Potravinářský závod
 STR_4810_PAPER_MILL                                             :Papírna
 STR_4811_GOLD_MINE                                              :Zlatý důl
 STR_4812_BANK                                                   :Banka

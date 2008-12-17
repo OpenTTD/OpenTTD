@@ -251,7 +251,7 @@ STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFON
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}태피 채취장
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}설탕 광산
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}철도역
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}트럭 대기소
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}트럭 적하장
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}버스 정류장
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}공항/헬리포트
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}항만

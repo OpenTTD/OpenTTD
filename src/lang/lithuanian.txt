@@ -2888,6 +2888,8 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Rodyti a
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Automobiliu pasirinkimo sarasas - paspausk ant automobilio jei nori detalesnes informacijos
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Isigyti pazymeta automobili
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kaina: {CURRENCY}{}Greitis: {VELOCITY}{}Eksploatavimo kaina: {CURRENCY}/met{}Talpa: {CARGO}
+STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pavadinti automobili
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Automobilio pavadinti nepavyko...
@@ -3334,14 +3336,43 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Sritis: 
 ########
 
 
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Nustatyti objektus nematomais vietoje permatomų
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
+STR_GROUP_NAME_FORMAT                                           :Grupė {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
+STR_GROUP_ALL_TRAINS                                            :Visi traukiniai
+STR_GROUP_ALL_ROADS                                             :Visi automobiliai
+STR_GROUP_ALL_SHIPS                                             :Visi laivai
+STR_GROUP_ALL_AIRCRAFTS                                         :Visi lėktuvai
+STR_GROUP_DEFAULT_TRAINS                                        :Nesugrupuoti traukiniai
+STR_GROUP_DEFAULT_ROADS                                         :Nesugrupuoti automobiliai
+STR_GROUP_DEFAULT_SHIPS                                         :Nesugrupuoti laivai
+STR_GROUP_DEFAULT_AIRCRAFTS                                     :Nesugrupuoti lėktuvai
+STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
+STR_GROUP_ADD_SHARED_VEHICLE                                    :Įkelti bendras transporto priemones
+STR_GROUP_REMOVE_ALL_VEHICLES                                   :Iškelti visas transporto priemones
 
 
 
+STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Grupės - Spragtelk ant grupės jai priklausančių transporto priemonių peržiūrai
+STR_GROUP_CREATE_TIP                                            :{BLACK}Spragtelk, kad sukurti grupę
+STR_GROUP_DELETE_TIP                                            :{BLACK}Pašalinti pasirinktą grupę
+STR_GROUP_RENAME_TIP                                            :{BLACK}Pervadinti pasirinktą grupę
 
+STR_COMPANY_NAME                                                :{COMPANY}
+STR_ENGINE_NAME                                                 :{ENGINE}
+STR_GROUP_NAME                                                  :{GROUP}
 STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
+STR_SIGN_NAME                                                   :{SIGN}
+STR_VEHICLE_NAME                                                :{VEHICLE}
 
 
 #### Improved sign GUI
@@ -3349,9 +3380,57 @@ STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}Eiti pri
 
 ########
 
+STR_FUND_NEW_INDUSTRY                                           :{BLACK}Finansuoti
 STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Perspektyva
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Statyti
+STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Pasirink norimą industriją iš sąrašo
 
 ############ Face formatting
+STR_FACE_ADVANCED                                               :{BLACK}Plačiau
+STR_FACE_ADVANCED_TIP                                           :{BLACK}Platesnis veido pasirinkimas.
+STR_FACE_SIMPLE                                                 :{BLACK}Paprastas
+STR_FACE_SIMPLE_TIP                                             :{BLACK}Paprastas veido pasirinkimas.
+STR_FACE_LOAD                                                   :{BLACK}Atverti
+STR_FACE_LOAD_TIP                                               :{BLACK}Atverti mėgstamą veidą
+STR_FACE_LOAD_DONE                                              :{WHITE}Tavo mėgstamas veidas sėkmingai įkeltas iš OpenTTD config failo.
+STR_FACE_FACECODE                                               :{BLACK}Žaidėjo veido nr.
+STR_FACE_FACECODE_TIP                                           :{BLACK}Tikrinti ir/arba nustatyti žaidėjo veido numerį
+STR_FACE_FACECODE_CAPTION                                       :{WHITE}Tikrinti ir/arba nustatyti žaidėjo veido numerį
+STR_FACE_FACECODE_SET                                           :{WHITE}Naujas veido numeris sėkmingai nustatytas.
+STR_FACE_FACECODE_ERR                                           :{WHITE}Negalėjau nustatyti veido numerio - turi būti skaičius tarp 0 ir 4,294,967,295!
+STR_FACE_SAVE                                                   :{BLACK}Išsaugoti
+STR_FACE_SAVE_TIP                                               :{BLACK}Išsaugoti mėgstamą veidą
+STR_FACE_SAVE_DONE                                              :{WHITE}Šis veidas bus išsaugotas kaip tavo mėgstamas OpenTTD config faile.
+STR_FACE_EUROPEAN                                               :{BLACK}Europietiškas
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Pasirinkti europietiškus veidus
+STR_FACE_AFRICAN                                                :{BLACK}Afrikietiškas
+STR_FACE_SELECT_AFRICAN                                         :{BLACK}Pasirinkti afrikietiškus veidus
+STR_FACE_YES                                                    :Taip
+STR_FACE_NO                                                     :Ne
+STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Įjungti ūsus arba auskarą
+STR_FACE_HAIR                                                   :Plaukai:
+STR_FACE_HAIR_TIP                                               :{BLACK}Keisti plaukus
+STR_FACE_EYEBROWS                                               :Antakiai:
+STR_FACE_EYEBROWS_TIP                                           :{BLACK}Keisti antakius
+STR_FACE_EYECOLOUR                                              :Akių spalva:
+STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Keisti akių spalvą
+STR_FACE_GLASSES                                                :Akiniai:
+STR_FACE_GLASSES_TIP                                            :{BLACK}Įjungti akinius
+STR_FACE_GLASSES_TIP_2                                          :{BLACK}Keisti akinius
+STR_FACE_NOSE                                                   :Nosis:
+STR_FACE_NOSE_TIP                                               :{BLACK}Keisti nosį
+STR_FACE_LIPS                                                   :Lūpos:
+STR_FACE_MOUSTACHE                                              :Ūsai:
+STR_FACE_LIPS_MOUSTACHE_TIP                                     :{BLACK}Pakeisti lūpas arba ūsus
+STR_FACE_CHIN                                                   :Smakras:
+STR_FACE_CHIN_TIP                                               :{BLACK}Pakeisti smakrą
+STR_FACE_JACKET                                                 :Švarkas:
+STR_FACE_JACKET_TIP                                             :{BLACK}Pakeisti švarką
+STR_FACE_COLLAR                                                 :Apykaklė:
+STR_FACE_COLLAR_TIP                                             :{BLACK}Pakeisti apykaklę
+STR_FACE_TIE                                                    :Kaklaraištis:
+STR_FACE_EARRING                                                :Auskaras:
+STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Pakeisti kaklaraištį arba auskarą
 ########
 
 ############ signal GUI
