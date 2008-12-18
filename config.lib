@@ -574,8 +574,8 @@ check_params() {
 		log 1 "checking dedicated... found"
 
 		if [ "$enable_network" = "0" ]; then
-			log 1 "WARNING: compiling a dedicated server without network is pointless"
-			sleep 5
+			log 1 "configure: error: building a dedicated server without network support is pointless"
+			exit 1
 		fi
 	else
 		if [ "$os" = "MINGW" ] || [ "$os" = "CYGWIN" ] || [ "$os" = "WINCE" ]; then
@@ -585,11 +585,9 @@ check_params() {
 		fi
 
 		if [ -z "$allegro_config" ] && [ -z "$sdl_config" ] && [ "$with_cocoa" = 0 ] && [ "$os" != "MINGW" ] && [ "$os" != "CYGWIN" ] && [ "$os" != "WINCE" ]; then
-			log 1 "WARNING: no video driver found, building dedicated only"
-			enable_dedicated="1"
-			sleep 1
-
-			log 1 "checking dedicated... found"
+			log 1 "configure: error: no video driver development files found"
+			log 1 " If you want a dedicated server use --enable-dedicated as parameter"
+			exit 1
 		else
 			log 1 "checking dedicated... not selected"
 		fi
@@ -619,6 +617,7 @@ check_params() {
 		log 1 "checking assert... disabled"
 	fi
 
+	pre_detect_with_zlib=$with_zlib
 	detect_zlib
 
 	if [ "$with_zlib" = "0" ] || [ -z "$zlib" ]; then
@@ -626,8 +625,13 @@ check_params() {
 		log 1 "WARNING: OpenTTD doesn't require zlib, but it does mean many features (like"
 		log 1 "WARNING: loading most savegames/scenarios, joining most servers, loading"
 		log 1 "WARNING: heightmaps, using PNG or using fonts, ...) will be disabled."
-		log 1 "WARNING: We strongly suggest you to install zlib."
-		sleep 5
+		if [ "$pre_detect_with_zlib" = "0" ]; then
+			log 1 "WARNING: We strongly suggest you to install zlib."
+		else
+			log 1 "configure: error: no zlib detected"
+			log 1 " If you want to compile without zlib use --without-zlib as parameter"
+			exit
+		fi
 	fi
 
 	detect_png
