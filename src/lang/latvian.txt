@@ -187,10 +187,10 @@ STR_00D6_LIGHT_BLUE                                             :Gaiši zils
 STR_00D7_GREEN                                                  :Zaļš
 STR_00D8_DARK_GREEN                                             :Tumši zaļš
 STR_00D9_BLUE                                                   :Zils
-STR_00DA_CREAM                                                  :Krema krāsa
+STR_00DA_CREAM                                                  :Krēma krāsa
 STR_00DB_MAUVE                                                  :Gaišsārti violets
 STR_00DC_PURPLE                                                 :Purpurs
-STR_00DD_ORANGE                                                 :Oranžš
+STR_00DD_ORANGE                                                 :Oranžs
 STR_00DE_BROWN                                                  :Brūns
 STR_00DF_GREY                                                   :Pelēks
 STR_00E0_WHITE                                                  :Balts
@@ -1374,7 +1374,7 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Brīdin�
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Vairāk spēlētāju režīms
 
-STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spelçtâja vârds:
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spēlētāja vārds:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Šis vārds, pēc kura jūs pazīs citi spēlētāji
 STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Ievadiet savu vārdu
 STR_NETWORK_CONNECTION                                          :{BLACK}Savienojums:
@@ -2636,11 +2636,11 @@ STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught bur
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow burbuļu pārvadātājs
 STR_80CC_MPS_OIL_TANKER                                         :MPS naftas tankeris
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. naftas tankeris
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Pasažieru Pramis
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Pasažieru Pramis
-STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Pasažieru Pramis
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Pasažieru Pramis
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Pasažieru Prāmis
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Pasažieru Prāmis
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Kuteris uz gaisa spilvena
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Pasažieru Prāmis
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Pasažieru Prāmis
 STR_80D3_YATE_CARGO_SHIP                                        :Yate kravas kuģis
 STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell kravas kuģis
 STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover kravas kuģis
@@ -2683,14 +2683,14 @@ STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
 STR_80FA_FLASHBANG_X1                                           :Flashbang X1
 STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
 STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzzer
-STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
-STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
-STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helikopters
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helikopters
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helikopters
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Ziņojums no transporta ražotāja
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Mēs esam tikko izstrādājuši jauno {STRING} - vai jūs būtu ieinteresēti iegūt ekskluzīvas tiesības izmantot šo transportu uz vienu ganu, lai mēs varēt to notestēt pirms tas kļūst pieejams visiem?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :dzelzceļa lokomotīve
 STR_8103_ROAD_VEHICLE                                           :mašīna
-STR_8104_AIRCRAFT                                               :lidmaðîna
+STR_8104_AIRCRAFT                                               :lidmašīna
 STR_8105_SHIP                                                   :kuģis
 STR_8106_MONORAIL_LOCOMOTIVE                                    :viensliežu lokomotīve
 STR_8107_MAGLEV_LOCOMOTIVE                                      :magnētiskā lokomotīve
@@ -2750,6 +2750,8 @@ STR_ORDER_SERVICE_AT                                            :Apkalpot
 
 STR_UNKNOWN_STATION                                             :nezināma stacija
 STR_8812_EMPTY                                                  :{LTBLUE}Tukšs
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} no {STATION}
+STR_8815_NEW_VEHICLES                                           :{BLACK}Jauni transportlīdzekļi
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vilciens ir pārāk garš
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vilcienus ir iespējams pārveidot tikai tad, kad tie ir apstādināti depo
@@ -2762,15 +2764,46 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Dzelzce�
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Būvēt Satiksmes Līdzekli
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonēt Satiksmes Līdzekli
+STR_8820_RENAME                                                 :{BLACK}Pārsaukt
+STR_8823_SKIP                                                   :{BLACK}Izlaist
+STR_8824_DELETE                                                 :{BLACK}Izdzēst
+STR_8826_GO_TO                                                  :{BLACK}Doties uz
 STR_REFIT_ORDER                                                 :(Nomainīt uz {STRING})
 STR_REFIT_STOP_ORDER                                            :(Nomainīt uz {STRING} un apstāties)
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Rīkojumi)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Rīkojumu beigas - -
 STR_SERVICE                                                     :{BLACK}Serviss
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}  Uzbūvēts: {LTBLUE}{NUM}{BLACK} Vērtība: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{ENGINE}{BLACK}   Vērtība: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Iekraušana / Izkraušana
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vilciens ja'apsta'dina kad tas ierodas depo
-STR_8861_STOPPED                                                :{RED}Stoppets
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Nevar aizsūtīt vilcienu uz depo...
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE} Pārāk daudz rīkojumu
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nevar ielikt jaunu rīkojumu...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Šo rīkojumu nevar izdzēst...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Šo rīkojumu nevar pārveidot...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Transporta līdzekli nevar pārvietot...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nevar atrast ceļu uz vietējo depo
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nevar apturēt/startēt vilcienu...
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Apkopes intervāls: {LTBLUE}{COMMA}dienas{BLACK}   Pēdējā apkope: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vilcieni - uzspied uz vilciena priekš informācijas
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Būvēt jaunus vilcienus (nepieciešams vilcienu depo)
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Parādīt vilciena rīkojumus
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Rādīt vilciena informāciju
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Palielināt apkopes intervālu
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Samazināt apkopes intervālu
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Ievietot jaunu rīkojumu pirms atzīmētā rīkojuma, vai saraksta beigās
+STR_885C_BROKEN_DOWN                                            :{RED}Salūzis
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY}  (pērn: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Uzticamība: {LTBLUE}{COMMA}%  {BLACK}Bojājumi kopš pēdējās apkopes: {LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED}Apstādināts
+STR_8863_CRASHED                                                :{RED}Cietis avārijā!
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Nosaukt vilcienu
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nevar nosaukt vilcienu...
 STR_8867_NAME_TRAIN                                             :{BLACK}Nosaukt vilcienu
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vilciena avārija!{}{COMMA} mirušie
 STR_CLEAR_TIME                                                  :{BLACK}Notīrīt laiku
 STR_RESET_LATENESS                                              :{BLACK}Nomest kavējuma skaitītāju
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
@@ -2781,12 +2814,27 @@ STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOIN
 
 ##id 0x9000
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9012_CAPACITY                                               :{BLACK}Capacitâte: {LTBLUE}{CARGO}
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Autotransporta depo
+STR_9004_NEW_VEHICLES                                           :{BLACK}Jauni transporta līdzekļi
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Informācija)
+STR_900E_MAX_SPEED                                              :{BLACK}Maksimālais ātrums: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY}  (pērn: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Uzticamība: {LTBLUE}{COMMA}%  {BLACK}Bojājumi kopš pēdējās apkopes: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Uzbūvēts: {LTBLUE}{NUM}{BLACK} Vērtība: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...jābūt apstādinātam depo iekšpusē
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Autotransports {COMMA} gaida depo
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nevar aizsūtīt uz depo
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nevar atrast vietējo depo
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Atrums: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Pilsētnieki svin . . .{}Pirmais autobuss ierodas {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Pilsētnieki svin . . .{}Pirmā kravas automašīna ierodas {STATION}!
 STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Pilsoņi līksmo . . .{}Pirmais pasažieru tramvajs ierodas {STATION}!
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Pilsoņi līksmo . . .{}Pirmais kravas tramvajs ierodas {STATION}!
-STR_9034_RENAME                                                 :{BLACK}Pârsaukt
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Autotransporta avārija!{}Vadītājs mirst uzreiz pēc sadursmes ar vilcienu.
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Autotransporta avārija!{}{COMMA} mirst pēc sadursmes ar vilcienu
+STR_9034_RENAME                                                 :{BLACK}Pārsaukt
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Nomainīt ceļu transportalīdzekļa kravas veidu
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Nomainīt ceļu transportalīdzekli
@@ -2794,6 +2842,9 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Nomainī
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nav iespējams nomainīt ceļu transportalīdzekli
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Ūdensceļu celtniecība
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Ūdensceļu celtniecība
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Ūdensceļi
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Nevar uzbūvēt ostu šeit
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Kuģu depo
 STR_9804_NEW_SHIPS                                              :{BLACK}Jauni kuģi
@@ -2808,23 +2859,89 @@ STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kuģis i
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaļas)
 STR_9813_MAX_SPEED                                              :{BLACK}Maksimālais ātrums: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY}  (pērn: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Uzticamība: {LTBLUE}{COMMA}%  {BLACK}Bojājumi kopš pēdējās apkopes: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Uzbūvēts: {LTBLUE}{NUM}{BLACK} Vērtība: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kuģi nevar aizsūtīt uz depo...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nevar atrast tuvējo depo
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Kuģis {COMMA} gaida ostā
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Uzbûvet jauno kuìi
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Būvēt kuģu piestātni
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Būvēt kuģu depo
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kuģi - uzspied uz kuģa priekš informācijas
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Uzbūvēt jaunu kuģi
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kuģi - uzspied uz kuģa priekš informācijas
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Būvēt jaunus kuģus (nepieciešams kuģu depo)
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Rādīt kuģa rīkojumus
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Rādīt kuģa informāciju
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Izmaksas: {CURRENCY} Maksimālais ātrums: {VELOCITY}{}Ietilpība: {CARGO}{}Servisa izmaksas: {CURRENCY}/gadā
+STR_982F_NAME_SHIP                                              :{BLACK}Nosaukt kuģi
 
+STR_9831_NAME_SHIP                                              :{WHITE}Nosaukt kuģi
 STR_9836_RENAME                                                 :{BLACK}Pârsaukt
 
 ##id 0xA000
 STR_CLONE_AIRCRAFT                                              :{BLACK}Klonēt lidaparātu
 STR_A00A                                                        :{WHITE}{VEHICLE}
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nav iespējams apturēt/palaist lidaparātu...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lidaparāts pašreiz lido
+STR_A019_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Ietilpība: {LTBLUE}{CARGO}
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lidaparātu var apturēt angārā
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nav iespējams pārdot lidaparātu...
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Lodostas būve
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Būvēt lidostu
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lidaparāts - klikot uz lidaparāta lai iegūtu informāciju
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Būvēt jaunu lidaparātu (nepieciešama lidosta ar angāru)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lidaparāts - klikot uz lidaparāta lai iegūtu informāciju
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Būvēt jaunu lidaparātu
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Pārvilkt lidaparātu uz šejieni lai to pārdotu
+STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrēt galveno skatu uz angāru
+STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lidaparātu izvēles saraksts - klikot lai iegūtu informāciju
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Būvēt izvēlēto lidaparātu
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Tekošā lidaparāta darbība - klikot šeit lai apturētu/palaistu lidaparātu
+STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Parādīt lidaparāta komandas
+STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrēt galveno skatu uz lidaparātu
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Sūtīt lidaparātu un angāru. CTRL + klik veiks tikai apkopi
+STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Pārādīt lidaparāta informāciju
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Maks. ātrums: {VELOCITY}{}Ietilpība: {COMMA} pasažieri, {COMMA} pasts{}Izmaksas: {CURRENCY}/gadā
 
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nosaukt lidaparātu
+STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nevar nosaukt lidaparātu...
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nosaukt lidaparātu
+STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Iedzīvotāji svin svētkus . . .{}Pirmais lidaparāts ierodas {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Lidmašīna nogāzusies!{}{COMMA} iet bojā ugunī {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lidmaðînas avârija!{}Lidmaðînai pietrûka degviela, {COMMA} nogalinâti!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Pârsaukt
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Pārsaukt lidaparāta veidu
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Pārsaukt lidaparāta veidu
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Nevar pārsaukt lidaparāta veidu...
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Pārbūvēt lidaparātu citam kravas veidam
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Pārbūvēt)
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Pārbūvēt lidaparātu
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izvēlieties kādu kravas veidu lidaparāts pārvadās
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Pārbūvēt lidaparātu lai pārvadātu izvēlēto kravas veidu
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Izvēlieties kravas veidu pārvadājumiem:
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Jauna ietilpība: {GOLD}{STRING}{}{BLACK}Pārbūves izmaksas: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nav iespējams pārbūvēt lidaparātu...
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Laiku saraksts)
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Dirižabļa nelaimes gadījums {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Mašīna gājusi bojā satriecoties ar UFO!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Naftas rūpnīcas sprādziens netālu no {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Netālu no {TOWN} mīlainos apstākļos iznīcināta rūpnīca!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' nosēžas netālu no {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Ogļu raktuves iebrukšana atstāj bojājumu joslu netālu no {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Plūdi!{}Vismaz {COMMA} pazuduši bez vēsts, iespējams gājuši bojā plūdos!
 
+STR_BRIBE_FAILED                                                :{WHITE}Jūsu mēģinājumu piekukuļot
+STR_BRIBE_FAILED_2                                              :{WHITE}atklājis reģionālais izmeklētājs
+STR_BUILD_DATE                                                  :{BLACK}Uzbūvēts: {LTBLUE}{DATE_LONG}
 
+STR_TILEDESC_STATION_CLASS                                      :{BLACK}Pieturas klase: {LTBLUE}{STRING}
 
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detaïas
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})

@@ -2022,6 +2022,13 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Ατύχημα με ζέπελιν στο {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Road vehicle destroyed in 'UFO' collision!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Έκρηξη διυλιστηρίου κοντά στο  {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Εργοστάσιο καταστράφηκε κάτω από ύποπτες συνθήκες κοντά στο {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}Α.Τ.Ι.Α. προσγειώθηκε κοντά στο {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Κατάρρευση ανθρακωρυχείου αφήνει καταστροφικό ρήγμα κοντά στο {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Πλημμύρα!{}Τουλάχιστον {COMMA} αγνοούμενοι, το πιθανότερο νεκροί μετά από μεγάλη πλημμύρα!
 
 
 

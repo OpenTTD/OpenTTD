@@ -107,18 +107,20 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} balonč
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} nad karamela
 STR_QUANTITY_BATTERIES                                          :{COMMA} lupati{P y ies}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} nad plastika
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} uzavreo piti{P "" s}
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcije u Igri
 STR_00B2_MESSAGE                                                :{YELLOW}Poruka
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Poruka od {STRING}
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Oprez!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne moÅŸe ovo...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne moÅŸe da se oÄisti ovaj deo...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originalno autorsko pravo {COPYRIGHT} 1995 Chris Sawyer, Sva prava saÄuvana.
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzija {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD tim
+STR_TRANSLATED_BY                                               :{BLACK}  Prevodilac(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -225,21 +227,41 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sneg
 STR_012C_MESSAGE                                                :{WHITE}Poruka
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Propust
 STR_012E_CANCEL                                                 :{BLACK}OtkaÅŸi
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Preimenuj
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}PreviÅ¡e imena definisano
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Izabrano ime je veÄ u upotrebi
 
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...pripada {STRING}
 STR_013C_CARGO                                                  :{BLACK}Tovar
 STR_013D_INFORMATION                                            :{BLACK}Informacija
 STR_013E_CAPACITIES                                             :{BLACK}Kapaciteti
+STR_TOTAL_CARGO                                                 :{BLACK}Zbir Tovar
 STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO} (x{NUM})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Zbir tovar kapacitet nad ova trenirati:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nova Igra
 STR_0141_LOAD_GAME                                              :{BLACK}UÄitaj Igru
+STR_SINGLE_PLAYER                                               :{BLACK}Sam igrač
+STR_MULTIPLAYER                                                 :{BLACK}Mreža igra
+STR_SCENARIO_EDITOR                                             :{BLACK}Scenarij Urednik
 
+STR_MAPSIZE                                                     :{BLACK}Karta veličina:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Opcije u Igri
 
 STR_0150_SOMEONE                                                :neko{SKIP}{SKIP}
@@ -247,8 +269,16 @@ STR_0151_MAP_OF_WORLD                                           :Mapa Sveta
 STR_0152_TOWN_DIRECTORY                                         :Imenik Naselja
 STR_0153_SUBSIDIES                                              :Ponude
 
+STR_UNITS_IMPERIAL                                              :Carski
+STR_UNITS_METRIC                                                :Metrički
+STR_UNITS_SI                                                    :SI
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} milja na sat
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} kilometar na sat
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}ks
+STR_UNITS_POWER_METRIC                                          :{COMMA}ks
 
 
 
@@ -786,6 +816,15 @@ STR_0319_PAUSED                                                 :{YELLOW}* * PAU
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tramvaj Konstrukcija
 
 ##id 0x2000
+STR_2042_DO_IT                                                  :{BLACK}Činiti to
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Akcija raspoloživ:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Malen reklamni kampanja
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Sredina reklamni kampanja
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Velik reklamni kampanja
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Fond meštanin cesta rekonsrtuiranje
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Graditi statua nad društvo vlasnik
+STR_204B_FUND_NEW_BUILDINGS                                     :Fond nov zgrade
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Kupiti isključuje prevoz prava
 
 
 ##id 0x2800

@@ -581,10 +581,13 @@ STR_0253_WATER_SUPPLY                                           :{BLACK}Bekalan 
 STR_0254_WATER_TOWER                                            :{BLACK}Menara Air
 STR_0255_DIAMOND_MINE                                           :{BLACK}Lombong Berlian
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Lombong Bijih Besi
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Hutan Gula Kapas
+STR_0258_CANDY_FACTORY                                          :{BLACK}Kilang gula-gula
 STR_025A_COLA_WELLS                                             :{BLACK}Perigi Kola
 STR_025B_TOY_SHOP                                               :{BLACK}Kedai Permainan
 STR_025C_TOY_FACTORY                                            :{BLACK}Kilang Permainan
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Pancutan Plastik
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Kilang air bergas
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Bina Lombong Arang Batu
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Bina Stesen Janakuasa
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Bina Kilang Papan
@@ -609,7 +612,20 @@ STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Menyalur
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bina Tangki Air (Hanya boleh dibina di bandar)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bina Lombong Berilian
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bina Lombong Tembaga
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bina Kilang Gula-gula
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Bina Kedai Permainan
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bina Kilang Mainan
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Tidak boleh bina {STRING} di sini...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...mesti membangunkan bandar dahulu
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...hanya satu dibenarkan untuk setiap bandar
+STR_0288_PLANT_TREES                                            :{BLACK}Tanam pokok
+STR_0289_PLACE_SIGN                                             :{BLACK}Letak tanda
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Letak rumah api
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Letak alat pemancar
+STR_0290_DELETE                                                 :{BLACK}Buang
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Buang bandar ini sepenuhnya
+STR_0294_QUIT_EDITOR                                            :Hentikan penyunting
+STR_0296_QUIT                                                   :Berhenti
 STR_02A1_SMALL                                                  :{BLACK}Kecil
 STR_02A2_MEDIUM                                                 :{BLACK}Sederhana
 STR_02A3_LARGE                                                  :{BLACK}Besar
@@ -1154,7 +1170,12 @@ STR_4004                                                        :{COMPANY}, {DAT
 
 
 ##id 0xA000
+STR_A019_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapasiti: {LTBLUE}{CARGO}
+STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bina Lapangan Terbang
 
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nama kapal terbang
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nama kapal terbang
 
 
 ##id 0xB000
@@ -1184,11 +1205,28 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Menggantikan: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Kenderaan tidak boleh didapati sekarang
+STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Kenderaan tidak boleh didapati sekarang
+STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Kapal tidak boleh didapati sekarang
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Kapal terbang tidak boleh didapati sekarang
 
+STR_ENGINES                                                     :Enjin
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klik untuk menghentikan semua kereta api di dalam depot
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik untuk menghentikan semua kenderaan di dalam depot
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klik untuk menghentikan semua kapal di dalam depot
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klik untuk menghentikan semua kapal terbang di dalam hangar
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klik untuk memulakan semua kereta api di dalam depot
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik untuk memulakan semua kenderaan di dalam depot
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klik untuk memulakan semua kapal di dalam depot
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klik untuk memulakan semua kapal terbang di dalam hangar
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klik untuk menghentikan semua kenderaan di dalam senarai
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klik untuk memulakan semua kenderaan di dalam senarai
 
+STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 
 
 ############ Lists rail types

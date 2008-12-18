@@ -276,6 +276,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Tro da n
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}La elektita nomo jam uziĝas
 
 STR_OSNAME_WINDOWS                                              :Vindozo
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unikso
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -2662,6 +2663,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ne povas inversigi direkton de trajno...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomu trajnan veturiltipon
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Ne povas renomi trajnan veturiltipon...
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Haltiĝas
 STR_TRAIN_STOPPING_VEL                                          :{RED}Haltiĝas, {VELOCITY}
@@ -2717,7 +2719,11 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centre v
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vojveturilelektan liston - alklaku veturilon por informoj
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Kreu la elektitan vojveturilon
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosto: {CURRENCY}{}Rapideco: {VELOCITY}{}Irkosto: po {CURRENCY} jare{}Kapablo: {CARGO}
+STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapacito: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} veturilo{P "" j}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nomu vojveturilon
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ne povas nomi vojveturilon...
@@ -3099,6 +3105,9 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimum
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
@@ -3204,13 +3213,17 @@ STR_PERCENT_UP                                                  :{WHITE}{NUM}%{U
 STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
 STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
 STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :Group {COMMA}
+STR_GROUP_TINY_NAME                                             :{TINYFONT}{GROUP}
 STR_GROUP_ALL_TRAINS                                            :Ĉiuj trajnoj
 STR_GROUP_ALL_SHIPS                                             :Ĉiuj ŝipoj
 STR_GROUP_TINY_NUM                                              :{TINYFONT}{COMMA}
 
+STR_GROUP_TRAINS_CAPTION                                        :{WHITE}{GROUP} - {COMMA} Trajno{P "" j}
+STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flugmaŝino
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Renomu grupon
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Ne eblas krei grupon...
@@ -3223,6 +3236,7 @@ STR_GROUP_RENAME_TIP                                            :{BLACK}Renomu l
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 STR_SIGN_NAME                                                   :{SIGN}
 STR_VEHICLE_NAME                                                :{VEHICLE}
 
@@ -3244,6 +3258,7 @@ STR_FACE_HAIR                                                   :Hararo:
 STR_FACE_HAIR_TIP                                               :{BLACK}Ŝanĝu hararon
 STR_FACE_EYECOLOUR                                              :Okula koloro:
 STR_FACE_EYECOLOUR_TIP                                          :{BLACK}Ŝanĝu okulan koloron
+STR_FACE_GLASSES                                                :Okulvitroj:
 STR_FACE_NOSE                                                   :Nazo:
 STR_FACE_LIPS                                                   :Lipoj:
 STR_FACE_MOUSTACHE                                              :Liphararo:

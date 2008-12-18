@@ -86,7 +86,9 @@ STR_004B_BATTERY                                                :بطاريات
 STR_004C_PLASTIC                                                :بلاستيك
 STR_004D_FIZZY_DRINK                                            :مشروبات نخفوقة
 STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA}راكب
 STR_QUANTITY_COAL                                               :{WEIGHT} من الفحم
+STR_QUANTITY_MAIL                                               :{COMMA} صندوق من البريد
 STR_QUANTITY_OIL                                                :{VOLUME} من النفط
 STR_QUANTITY_GRAIN                                              :{WEIGHT} من الحبوب
 STR_QUANTITY_WOOD                                               :{WEIGHT} من الخشب
@@ -1343,7 +1345,9 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيي
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}تعدد اللاعبين
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}أسم اللاعب
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}هذا الآسم الذي ستعرف به في اللعبة
 STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}أدخل أسمك
+STR_NETWORK_CONNECTION                                          :{BLACK}اتصال
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}أختر بين لعبة على الإنترنت أو الشبكة المحلية (LAN)
 
 STR_NETWORK_START_SERVER                                        :{BLACK}أبدأ الخادم
@@ -1378,6 +1382,7 @@ STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}عدد �
 STR_NETWORK_GAME_INFO                                           :{SILVER}معلومات اللعبة
 STR_NETWORK_CLIENTS                                             :{SILVER}عملاء: {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}اللغة:   {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}مجموعة المربعات: {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}حجم الخريطة:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}نسخة الخادم:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}عنوان الخادم:  {WHITE}{STRING} : {NUM}
@@ -1387,6 +1392,7 @@ STR_NETWORK_PASSWORD                                            :{SILVER}كلم�
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}الخادم غير موجود
 STR_NETWORK_SERVER_FULL                                         :{SILVER}الخادم ممتلئ
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}النسخة غير متطابقة
+STR_NETWORK_GRF_MISMATCH                                        :{SILVER} عدم توافق NewGFR
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}أنضم للعبة
 
@@ -1397,15 +1403,29 @@ STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}أسم �
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}أسم اللعبة سيظهر للآخرين في قائمة تعدد اللاعبين
 STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}أدخل أسم اللعبة للشبكة
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}ضع كلمة سر
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}احم لعبتك برقم سري حتى لا تصبح لعبتك مفتوحة للجميع
+STR_NETWORK_SELECT_MAP                                          :{BLACK}اختر خريطة:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}في أي خريطة تود ان تلعب؟
+STR_NETWORK_LAN                                                 :شبكة محلية
+STR_NETWORK_INTERNET                                            :انترنت
+STR_NETWORK_LAN_INTERNET                                        :شبكة محلية / انترنت
+STR_NETWORK_INTERNET_ADVERTISE                                  :انترنت (دعاية)
+STR_NETWORK_CLIENTS_SELECT                                      :{BLACK}{SKIP}{SKIP}{NUM}عميل
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}اقصى عدد عملاء:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}أختر أقصى عدد للعملاء
+STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}شركة
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}أقصى عدد شركات:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}حدد العدد الاقصى للشركات في هذا الخادم
+STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM}مشاهد
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}أقصى عدد مشاهدين:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}حدد عدد المشاهدين لهذا الخادم
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}اللغة المتحدثة:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}اللاعبين الآخرين سيعرفون اللغة المتحدثة
 STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}أبدأ اللعبة
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}ابدأ لعبة شبكة جديدة من خريطة عشوائية او سيناريو.
 STR_NETWORK_LOAD_GAME                                           :{BLACK}حمل اللعبة
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}استعادة لعبة متعددة اللاعبين سابقة (تأكد من الربط باللاعب الصحيح).
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :أي
@@ -1448,6 +1468,7 @@ STR_NETWORK_LANG_LATVIAN                                        :اللاتفي�
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}ردهة تعدد اللاعبين
 
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}التحضير لالانضمام الى: {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}قائمة بالشركات الموجودة باللعبة ، يمكنك الإنضمام لشركة أو تأسيس واحدة
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}شركة جديدة
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}أنشئ شركة جديدة
@@ -1461,6 +1482,7 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}حدث �
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}معلومات الشركة
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}أسم الشركة:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}افتتاح: {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}قيمة الشركة:   {WHITE}{CURRENCY}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}الرصيد الحالي:   {WHITE}{CURRENCY}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}دخل السنة الماضية:  {WHITE}{CURRENCY}
@@ -1474,6 +1496,7 @@ STR_NETWORK_CONNECTING                                          :{WHITE}إتصا
 
 ############ Leave those lines in this order!!
 STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) إتصال..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6)تصريح الدخول...
 STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) إنتظار..
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) تحميل الخريطة..
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) معالجة البيانات..
@@ -1482,6 +1505,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) ت
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}جلب معلومات اللعبة..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}جلب معلومات الشركة..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}انتظار اللاعبين السابقين
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} كيلوبايت محملة حتى لآن
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}فصل
@@ -1494,9 +1518,15 @@ STR_NETWORK_CLIENT_LIST                                         :{WHITE}قائم
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} لايوجد أجهزة شبكة
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} لايوجد ألعاب شبكة
 STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} الخادم لم يجب على الطلب
+STR_NETWORK_ERR_NEWGRF_MISMATCH                                 :{WHITE} لم يتم الربط بسبب عدم توافق NewGFR
+STR_NETWORK_ERR_DESYNC                                          :{WHITE}فشل تحديث البيانات
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} انقطع الاتصال بلعبة الشبكة
 STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} لايمكن تحميل اللعبة المخزنة
 STR_NETWORK_ERR_SERVER_START                                    :{WHITE} لايمكن بدء الخادم
 STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} لايمكن الإتصال
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} الاتصال رقم # {NUM}انهى الوقت المتاح للربط
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} حدث خطأ في البروتوكول و انقطع الاتصال
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE}نسخة اللاعب غير مطابقة لنسخة الخادم
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} رقم سري خاطئ
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} الخادم ممتلئ
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} أنت ممنوع من هذا الخادم
@@ -1506,11 +1536,19 @@ STR_NETWORK_ERR_CHEATER                                         :{WHITE} الغ�
 STR_NETWORK_ERR_LEFT                                            :ترك اللعبة
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :خطاء عام
+STR_NETWORK_ERR_CLIENT_DESYNC                                   :خطأ في DESYNC
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :لايمكن تحميل الخريطة
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :فقد الإتصال
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :خطاء في البروتكول
+STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH                          :عدم توافق في NewGFR
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :غير مصرح
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :استلمت معلومات غريبة
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :اصدار خاطئ
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :الأسم مستخدم
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :رقم سري خطاء
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :رقم سري خاطئ
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :اسم الشركة خاطئ في الشبكة
+STR_NETWORK_ERR_CLIENT_KICKED                                   :طردت من الخادم
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :كان يحاول استخدام سر للغش
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :خادم ممتلئ
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :أنضم للعبة
@@ -1522,10 +1560,19 @@ STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[خاص]:
 STR_NETWORK_CHAT_CLIENT                                         :[خاص] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[الكل]:
 STR_NETWORK_CHAT_ALL                                            :[الكل] {STRING}: {GRAY}{STRING}
+STR_NETWORK_NAME_CHANGE                                         :قاد بغيير اسمة الى:
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}اقفل الخادم الجلسة
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} يتم بدأ الخادم من جديد ... {} الرجاء الأنتظار
+
+STR_NETWORK_SERVER                                              :خادم
+STR_NETWORK_SPECTATORS                                          :المشاهدين
+
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :تحدث مع الكل
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :تحدث لشركة
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :رسالة خاصة
 
 
-
-
+STR_NETWORK_SEND                                                :{BLACK}ارسل
 
 ############ end network gui strings
 
@@ -1827,6 +1874,7 @@ STR_3068_DOCK                                                   :{WHITE}مرفء
 STR_3069_BUOY                                                   :عوامة
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... عوامة في الطريق
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... المحطة واسعة جدا
+STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}منع المحطات الغير منتظمة ...
 
 
 ##id 0x3800
@@ -2524,14 +2572,44 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}قطار
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}بدون توقف
+STR_ORDER_GO_TO                                                 :اذهب الى
+STR_ORDER_GO_NON_STOP_TO                                        :اذهب بدون توقف الى
+STR_ORDER_GO_VIA                                                :التوجة خلال
+STR_ORDER_GO_NON_STOP_VIA                                       :اذهب بدون توقف من خلال
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :حمل اذا كان متاح
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :حمل البضائع كاملة
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :حمل بالكامل اي نوع من البضائع
+STR_ORDER_DROP_NO_LOADING                                       :عدم التحميل
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :حمل الشحنة اذا كانت مقبولة
+STR_ORDER_DROP_UNLOAD                                           :نزل الشحنة بالكامل
+STR_ORDER_DROP_TRANSFER                                         :حول البضائع
+STR_ORDER_DROP_NO_UNLOADING                                     :عدم انزال الشحنة
+STR_ORDER_FULL_LOAD                                             :(تحميل بالكامل)
+STR_ORDER_FULL_LOAD_ANY                                         :(حمل اي بضاعة بالكامل)
+STR_ORDER_NO_LOAD                                               :(عدم التحميل)
+STR_ORDER_NO_UNLOAD                                             :(عدم انزال الشحنة و تحميل غيرها)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(عدم انزال الشحنة و الانتظار للحمولة القصوى)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(  عدم انزال الشحنة و الانتظار للحمولة القصوى لاي شحنة)
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}ادخل امر متقدم
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :اذهب الى اقرب مستودع صيانة
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :اذهب الى اقرب حظيرة صيانة
+STR_ORDER_NEAREST_DEPOT                                         :الأقرب
+STR_ORDER_NEAREST_HANGAR                                        :الحظيرة الأقرب
+STR_ORDER_ROAD_DEPOT                                            :مستودع العربات
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} حظيرة
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :الذهاب دائما
+STR_ORDER_DROP_SERVICE_DEPOT                                    :الصيانة عند الحاجة
 STR_ORDER_DROP_HALT_DEPOT                                       :توقف
 
+STR_ORDER_CONDITIONAL                                           :امر انتقال شرطي
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}كيف تقارن معلومات العربة لخاصية معينة.
+STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}القيمة التي يتم مقارنة العربة معها
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}ادخل قيمة للمقارنة معها
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :نسبة التحميل
 STR_ORDER_CONDITIONAL_RELIABILITY                               :الصلاحية
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :السرعة القصوى
@@ -2577,6 +2655,7 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}يمكن
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA}قطار
 
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}عربات قطار جديدة
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}عربات قطار كهربائية جديدة
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}عربات قطار احادي جديدة
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}عربات قطار ممغنط جديدة
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}عربات قطار
@@ -2659,6 +2738,8 @@ STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}غير �
 
 STR_INCOMPATIBLE_RAIL_TYPES                                     :نوع سكة حديد متعارض
 
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}جديد {STRING}الآن متاحة !
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}جديد {STRING} الآن متاح ! - {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE} لا يمكن بيع العربة المحطمة ...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}لا يمكن اعادة العربة المحطمة ...
@@ -2721,6 +2802,7 @@ STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}العربة تحطمت !{}السائق توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}العربة تحطمت !{}{COMMA} توفي في شعلة الحريق بعد الاصطدام بقطار
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}لايمكن للعربة أن تدور للخلف...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}لا يمكن انعطاف العربات المكونة من اكثر من وحدة.
 STR_9034_RENAME                                                 :{BLACK}أعد التسمية
 
 
@@ -2881,12 +2963,55 @@ STR_BUILD_DATE                                                  :{BLACK}بني: 
 ############ Those following lines need to be in this order!!
 ############ End of order list
 
+STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}نفذ التغييرات
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}فتح/اغلاق اللوحة
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}فتح / اغلاق لوحة NewGRF المختارة.{} افعل هذا عندما تكون الرسومات الجديدة وردية اللون.
+STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}اضبط الاعدادات
+STR_NEWGRF_TIP                                                  :{BLACK}قائمة بمجموعات NewGRF المسجلة. اضغط على مجموعة ما لتغيير اعداداتها.
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}لا يوجد ملفات GRF مضافة. لاضافة ملفات الرجاء قراءة التلعليمات المرفقة مع الملف لتنصيب الرسوم الجديدة.
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRFمعرف : {SILVER}{STRING}
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}ان على وشك ان تحدث تغييرات في لعبة شغالة؛ قد يتسبب في توقف OpenTTD.{} هل انت متأكد تماما من هذا؟
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :تم تصميم ملف GRF بغرض الترجمة
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}فتح مجموعة الاعدادات المسجلة
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}حفظ مجموعة الاعدادات
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}حفظ القائمة الحالية كمجموعة  اعدادات
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}ادخل اسم للمجموعة المسجلة
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}حذفمجموعة  الاعدادات المسجلة
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}حذف مجموعة الاعدادات الحالية
+STR_NEWGRF_ADD                                                  :{BLACK} اضف
+STR_NEWGRF_ADD_TIP                                              :{BLACK}اضافة ملفات NewGFR الى القائمة
+STR_NEWGRF_REMOVE                                               :{BLACK}ازالة
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}ازالة ملف NewGRF من القائمة
+STR_NEWGRF_MOVEUP                                               :{BLACK}تحريك للأعلى
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}حرك الملف المختار الى الأعلى
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}تحريك للأسفل
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}حرك الملف المختار الى الاسفل في القائمة
+STR_NEWGRF_FILE_TIP                                             :{BLACK}قائمة ملفات NewGRF المركبة. اضغط على الملف لتغييرة.
+STR_NEWGRF_PARAMETER                                            :{BLACK}الاعدادات: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}ادخل اعدادات NewGRF
+STR_NEWGRF_NO_INFO                                              :{BLACK}لا يوجد معلومات متاحة
 
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}ملفات NewGFR المتاحة
+STR_NEWGRF_ADD_FILE                                             :{BLACK}اضف الى الخيارات
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}اضف ملف NewGFR المختار الى اعداداتك الخاصة
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}اعادة كشف للملفات
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}تحديث قائمة NewGRF المتاحة
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}لا يمكن اضافة الملف: نسخة سابقة منه مضافة
 
+STR_NEWGRF_NOT_FOUND                                            :{RED}لم يتم العثور على الملف المقترن
+STR_NEWGRF_DISABLED                                             :{RED}معطل
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}الملف المطابق غير موجود (ملف متوافق من NewGRFحمل)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}تم تحميل ملف GFR مطابق بدلا من المفقود
+STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}تم تعطيل ملف GRF المفقود
+STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}ملف GRF مفقود, لا يمكن فتح اللعبة.
+STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}ملف NewGRF مفقود
 
+STR_NEWGRF_BROKEN                                               :{WHITE}حركات NewGFR '{0:STRING}'قد تتسبب في اخطاء او توقف للعبة
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}يغير طول العربة من '{1:ENGINE}' عندما تكون داخل المستودع
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}اللعبة حفظت بنسخة لا تدعم الترام. كل ما يتعلق بالترام حذف.
 
@@ -2926,6 +3051,8 @@ STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}بدل �
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}بدل جميع الطائرات في الحظيرة آلياً
 
 
+STR_NOT_REPLACING                                               :{BLACK}لم يتم التبديل
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}لم يتم اختيار اي عربة
 STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}الطائرة غير متاحة
 
 STR_ENGINES                                                     :محركات
@@ -2937,6 +3064,7 @@ STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}اضغط
 
 
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}فشل امر تغيير الحمولة {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -2957,6 +3085,8 @@ STR_GENERATE                                                    :{WHITE}ولد
 STR_LAND_GENERATOR                                              :{BLACK}مولد الخريطة:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}اتجاة خريطة المرتفعات:
 STR_DATE                                                        :{BLACK}التاريخ:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}عدد المدن:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}عدد المصانع:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}تحذير
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}اعادة تحجيم الخريطة المصدر كثيرا غير مستحسن. هل تريد اكمال توليد الخريطة؟
@@ -3051,6 +3181,7 @@ STR_GROUP_NAME                                                  :{GROUP}
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}السم يجب ان يكون فريدا - غير مستخدم
 
 #### Improved sign GUI
+STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}توجة الى العلامة التالية
 
 ########
 
@@ -3128,4 +3259,5 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}زياد
 
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم في ضجيج المطارات: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}حدود الضوضاء داخل المدن: {ORANGE}{COMMA}{BLACK} القصوى: {ORANGE}{COMMA}
 ########

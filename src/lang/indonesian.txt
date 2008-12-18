@@ -197,7 +197,7 @@ STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Lokasi
 STR_00E5_CONTOURS                                               :Kontur
-STR_00E6_VEHICLES                                               :Kendaraan darat
+STR_00E6_VEHICLES                                               :Kendaraan
 STR_00E7_INDUSTRIES                                             :Industri
 STR_00E8_ROUTES                                                 :Rute
 STR_00E9_VEGETATION                                             :Vegetasi
@@ -311,7 +311,7 @@ STR_0151_MAP_OF_WORLD                                           :Peta Dunia
 STR_0152_TOWN_DIRECTORY                                         :Daftar Kota
 STR_0153_SUBSIDIES                                              :Pembiayaan
 
-STR_UNITS_IMPERIAL                                              :Kekaisaran
+STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Metrik
 STR_UNITS_SI                                                    :Standar Internasional
 
@@ -439,7 +439,7 @@ STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Tampilka
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Tampilkan grafik
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Tampilkan daftar perusahaan
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar kereta api perusahaan
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar kendaraan darat perusahaan
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar bus/truk perusahaan
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar kapal perusahaan
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar pesawat udara perusahaan
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Perbesar tampilan
@@ -478,7 +478,7 @@ STR_AGE                                                         :{COMMA} tahun (
 STR_AGE_RED                                                     :{RED}{COMMA} tahun ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Kendaraan darat
+STR_019C_ROAD_VEHICLE                                           :Bus/truk
 STR_019D_AIRCRAFT                                               :Pesawat udara
 STR_019E_SHIP                                                   :Kapal Laut
 STR_019F_TRAIN                                                  :Kereta Api
@@ -755,7 +755,7 @@ STR_029C_QUIT_EDITOR                                            :{WHITE}Keluar E
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya dapat dibangun pada kota dengan populasi paling sedikit 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Mundurkan tanggal mulai sejauh 1 tahun
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Majukan tanggal mulai sejauh 1 tahun
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...akhir kedua jembatan harus berada di daratan
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}... kedua ujung jembatan harus berada di daratan
 STR_02A1_SMALL                                                  :{BLACK}Kecil
 STR_02A2_MEDIUM                                                 :{BLACK}Sedang
 STR_02A3_LARGE                                                  :{BLACK}Besar
@@ -770,12 +770,12 @@ STR_SUMMARY                                                     :Ringkasan
 STR_FULL                                                        :Penuh
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Daftar kota
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Desain nama kendaraan darat
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Desain nama kendaraan
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Standar
 STR_02BF_CUSTOM                                                 :Kustom
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Simpan nama Kustom
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Pilih desain nama kendaraan darat
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Pilih desain nama kendaraan
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Simpan kustomisasi desain nama kendaraan
 
 STR_CHECKMARK                                                   :{CHECKMARK}
@@ -783,7 +783,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C4_GAME_OPTIONS                                           :Pilihan Permainan
 STR_02C6_DIFFICULTY_SETTINGS                                    :Pengaturan tingkat kesulitan
 STR_MENU_CONFIG_PATCHES                                         :Pengaturan Lanjut
-STR_NEWGRF_SETTINGS                                             :Pengaturan NewGRF (Grafik yang baru)
+STR_NEWGRF_SETTINGS                                             :Pengaturan NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Pengaturan Transparansi
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Nama kota ditampilkan
@@ -826,9 +826,9 @@ STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Mata uan
 STR_MEASURING_UNITS                                             :{BLACK}Satuan pengukuran
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Pilihan satuan pengukuran
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Angkutan darat
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Bus/truk
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Pilih sisi angkutan darat saat berkendara
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Pilih lajur yang dilalui bus/truk
 STR_02E9_DRIVE_ON_LEFT                                          :Berkendara di sebelah kiri
 STR_02EA_DRIVE_ON_RIGHT                                         :Berkendara di sebelah kanan
 STR_02EB_TOWN_NAMES                                             :{BLACK}Nama kota
@@ -1026,16 +1026,16 @@ STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Kereta A
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Tidak ada peraturan memperbaharui secara/peremajaan otomatis yang diterapkan
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(batas uang)
 
-STR_CONFIG_PATCHES                                              :{BLACK}Pengaturan lanjutan/menengah
+STR_CONFIG_PATCHES                                              :{BLACK}Pengaturan lanjutan
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Pengaturan lanjutan/menengah untuk Tampilan
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Pengaturan lanjutan/menengah
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Pengaturan lanjutan
 
 STR_CONFIG_PATCHES_OFF                                          :Tidak
 STR_CONFIG_PATCHES_ON                                           :Ya
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Tampilkan kecepatan di status bar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Boleh mendirikan bangunan di lereng dan pantai: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Perbolehkan membentuk secara bertingkat dibawah bangunan, jalur kereta, dsb. (autoslope): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Perbolehkan ukuran cakupan/jangkauan wilayah lebih realistik: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Ijinkan pembangunan di lereng dan pantai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Ijinkan penumpukan formasi dibawah bangunan, jalur kereta, dsb. (autoslope): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Ijinkan ukuran jangkauan wilayah lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Perbolehkan menggusur lebih banyak lagi jalan/jembatan kota, dsb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan membuat rangkaian gerbong yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktifkan akselerasi realistis pada kereta api: {ORANGE}{STRING}
@@ -1058,15 +1058,15 @@ STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Tampilk
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Tampilkan jendela keuangan pada akhir tahun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Tujuan baru adalah 'non-stop' secara default: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kendaraan Darat "queueing" (dengan efek kuantum): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}"Pan window" saat tetikus ada di tepi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Perbolehakn menyuap pada penguasa setempat: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Perbolehkan membeli ijin pengelolaan transportasi secara ekslusif: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Perbolehkan mengirim uang kepada perusahaan-perusahaan lain: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Geser tampilan saat mouse ada di tepi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Ijinkan kolusi pada penguasa setempat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Ijinkan pembelian hak ekslusif pengelolaan transportasi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Ijinkan pengiriman uang ke perusahaan lain: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Stasiun tidak seragam: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Nilai pengali dari pengangkutan untuk mensimulasikan kereta api yang berat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Faktor keceptatan dari Pesawat Udara: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Perbolehkan pengemusi untuk berhenti melalui/melintasi jalan-jalan yang dimiliki oleh kota: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Perbolehkan membangun berdampingan dengan stasiun: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Ijinkam membangun stasiun berdampingan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Aktifkan pengaturan mesin NewGRF lebih dari satu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Selalu perbolehkan membangun airport ukuran kecil: {ORANGE}{STRING}
@@ -1077,10 +1077,10 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ya, tetapi tidak termasuk kendaraan yang diberhentikan
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :semua kendaraan
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ingatkan jika salah satu pendapatan/pemasukan dari kereta api menjadi negatif.: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Masa berlaku kendaraan darat tidak pernah habis: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kendaraan tidak pernah kadaluarsa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Peremajaan secara otomatis kendaraan yang telah tua.
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}}Peremajaan secara otomatis kendaraan yang {ORANGE}{STRING}{LTBLUE} bulan sebelum/sesudah usia maksimum
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimum peremajaan secara otomatis membutuhkan uang untuk Peremajaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimal uang yang dibutuhkan untuk peremajaan secara otomatis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Selang waktu dari pesan kesalahan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Tampilkan populasi kota di label nama kota: {ORANGE}{STRING}
 
@@ -1089,7 +1089,7 @@ STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Asli
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Jarak maks. Dari tepi untuk Kilang Minyak {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Ketinggian garis salju: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Kekasaran dari daratan(hanya TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Kekasaran daratan(hanya TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sangat halus
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Halus
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kasar
@@ -1126,9 +1126,9 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrol-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Non-aktifkan
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Selalu hentikan sementara permainan saat memulai : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Pergunakan daftar kendaraan tingkat lanjut: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gunakan daftar kendaraan tingkat lanjut: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Non-aktifkan
-STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Perusahaan milik sendiri
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Perusahaan sendiri
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Semua perusahaan
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Pergunakan indikator pemuatan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Non-aktifkan
@@ -1139,10 +1139,10 @@ STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Tunjukk
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Jenis rel asal (setelah permainan baru/memuat permainan): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Rel normal
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Rel berlistrik
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorel/Rel Tunggal
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorel
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Awal tersedia
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakhir kalinya
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Tersedia pertama
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakhir
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Tampilkan jalur yang akan terpakai: {ORANGE}{STRING}
 
@@ -1152,10 +1152,10 @@ STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks.  
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks. pesawat tiap pemain: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks. kapal tiap pemain: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Non-aktifkan kereta pemain komputer: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Non-aktifkan kendaraan pemain komputer: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Non-aktifkan pesawat udara pemain komputer: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Non-aktifkan kapal pemain komputer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Non-aktifkan kereta bagi pemain komputer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Non-aktifkan kendaraan darat bagi pemain komputer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Non-aktifkan pesawat bagi pemain komputer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Non-aktifkan kapal bagi pemain komputer: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktifkan Kecerdasan baru (tahap alfa): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Ijinkan kecerdasan buatan/AI pada modus banyak pemain(uji coba): {ORANGE}{STRING}
@@ -1169,24 +1169,24 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard jangka servis berkala untuk kapal: {ORANGE}{STRING} hari/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard jangka servis berkala untuk kapal: {ORANGE}Non-aktif
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Non-aktifkan perbaikan saat berhenti di atur ke tidak: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktifkan batas kecepatan kendaraan darat "wagon": {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktifkan batas kecepatan gerbong: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Non-aktifkan rel listrik: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Berita-berita berwarna tampil di: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Berita berwarna tampil pada: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Tahun mulai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Akhiri game pada: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktifkan pertumbuhan ekonomi yang stabil (lebih, sedikit terjadi perubahan)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Perbolehkan membeli saham perusahaan lain
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Ijinkan pembelian saham perusahaan lain
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ketika menarik, tempatkan sinyal setiap: {ORANGE}{STRING} kotak
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Gunakan sinyal semaphore sebelum: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Aktifkan antarmuka sinyal: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipe sinyal yang dibangun sesuai aslinya: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Sinyal blok
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Lebih Lanjut
-STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Sinyal satu arah
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Putar ke jenis sinyal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipe sinyal standar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Sinyal Blok
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Sinyal Jalur
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Sinyal jalur satu arah
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Pergantian jenis sinyal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Hanya sinyal blok
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Hanya sinyal biasa
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Hanya sinyal jalur
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Semua
 
 STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Kota yang "tidak memiliki jalan" tidak diperbolehkan dalam editor skenario
@@ -1212,15 +1212,15 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Cepat
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Sangat cepat
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporsi desa yang akan menjadi kota: {ORANGE}1 berbanding {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporsi desa yang akan menjadi kota: {ORANGE}Tidak ada
-STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Pengali ukuran kota awal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Faktor kali ukuran kota awal: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Buang elemen jalan yang aneh saat membangun
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Antaramuka
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruksi
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Kendaraan darat
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Kendaraan
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stasiun
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomi
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Kompetitor/Pesaing
+STR_CONFIG_PATCHES_AI                                           :{BLACK}Kompetitor
 
 STR_CONFIG_PATCHES_DISABLED                                     :Non-aktifkan
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1233,7 +1233,7 @@ STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pencari
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :{RED}(Tidak direkomendasikan)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pencari jejak untuk kendaraan darat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pencari jejak untuk bus/truk: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Orisinil {RED}(Not recommended)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Direkomendasikan)
@@ -1525,7 +1525,7 @@ STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Keseimb
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Pemasukan pendapatan tahun terakhir:  {WHITE}{CURRENCY}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Performa:  {WHITE}{NUM}
 
-STR_NETWORK_VEHICLES                                            :{SILVER}Kendaraan darat:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_VEHICLES                                            :{SILVER}Kendaraan:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_STATIONS                                            :{SILVER}Stasiun:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}Para pemain:  {WHITE}{STRING}
 
@@ -1733,7 +1733,7 @@ STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Tidak da
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Arah Depot kendaraan
 STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Orientasi Depot Trem
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tidak dapat membangun depot kendaraan disini...
-STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Tidak dapat membangun depot  kendaraan darat trem disini...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Tidak dapat membangun depo trem disini...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Tidak dapat membangunstasiun bus...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Tidak dapat membangun gerbong stasiun...
 STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Tidak dapat membangun stasiun trem disini...
@@ -2098,7 +2098,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Kereta Api sedang di dalam terowongan
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Kendaraan darat sedang di dalam terowongan
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Bus/truk sedang di dalam terowongan
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Bersinggungan dengan terowongan lain
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tidak dapat menyesuaikan kemiringan tanah di ujung terowongan
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Harus menghancurkan terowongan terlebih dahul
@@ -2134,7 +2134,7 @@ STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Jembatan jalan 
 STR_5025_WOODEN_ROAD_BRIDGE                                     :Jembatan jalan kayu
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Jembatan jalan beton
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :jembatan rel berbentuk tabung
-STR_5028_TUBULAR_ROAD_BRIDGE                                    :jembatan jalan darat berbentuk tabung
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :jembatan berbentuk tabung
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objek diperjalanan
@@ -2151,7 +2151,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...anda 
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
 STR_SV_EMPTY                                                    :
-STR_SV_UNNAMED                                                  :Tidak bernama
+STR_SV_UNNAMED                                                  :Tanpa nama
 STR_SV_TRAIN_NAME                                               :Kereta Api {COMMA}
 STR_SV_ROADVEH_NAME                                             :Kendaraan Darat {COMMA}
 STR_SV_SHIP_NAME                                                :Kapal Laut {COMMA}
@@ -2212,10 +2212,10 @@ STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Jumlah 
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Jumlah industri: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimum jumlah pinjaman: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Tingkat suku bunga awal: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Biaya operasional kendaraan darat: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Biaya operasional kendaraan: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Kecepatan membangun konstruksi dari para pesaing: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}kecerdasan para pesaing: {ORANGE}{STRING}
-STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}kendaraan darat berhenti karena rusak: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Bus/truk mogok : {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Pengali besarnya subsidi: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Biaya untuk membangun: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tipe Tanah Lapang: {ORANGE}{STRING}
@@ -2288,7 +2288,7 @@ STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Konstruksi
 STR_7012_NEW_VEHICLES                                           :{GOLD}Kendaraan Baru
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Biaya Operasional Kereta Api
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Biaya Operasional Kendaraan darat
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Biaya Operasional Bus/truk
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Biaya Operasional Pesawat Udara
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Biaya Operasional Kapal Laut
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Perawatan Properti
@@ -2326,8 +2326,8 @@ STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klik pad
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Tambah jumlah pinjaman
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Bayar sebagian pinjaman
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manajer)
-STR_7038_INAUGURATED                                            :{GOLD}telah Dilantik: {WHITE}{NUM}
-STR_7039_VEHICLES                                               :{GOLD}Kendaraan darat:
+STR_7038_INAUGURATED                                            :{GOLD}Dilantik : {WHITE}{NUM}
+STR_7039_VEHICLES                                               :{GOLD}Kendaraan:
 STR_TRAINS                                                      :{WHITE}{COMMA} kereta api
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} kendaraan darat
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} pesawat
@@ -2431,7 +2431,7 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trem Gerbong Ba
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Tampilkan skema warna umum
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Tampilkan skema warna kereta api
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Tampilkan skema warna kendaraan darat
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Tampilkan skema warna bus/truk
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Tampilkan skema warna kapal laut
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Tampilkan skema warna pesawat udara
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Pilih warna utama untuk skema terpilih
@@ -2698,7 +2698,7 @@ STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helic
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Pesan dari pembuat kendaraan
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Kami telah mendisain {STRING} baru - apakah anda tertarik secara eksklusif mempergunakan kendaraan ini, sehingga kami dapat melihat bagaimana kemampuannya sebelum dibuat untuk ketersediaan secara universal?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotif kereta api
-STR_8103_ROAD_VEHICLE                                           :kendaraan darat
+STR_8103_ROAD_VEHICLE                                           :Bus/truk
 STR_8104_AIRCRAFT                                               :pesawat udara
 STR_8105_SHIP                                                   :kapal laut
 STR_8106_MONORAIL_LOCOMOTIVE                                    :lokomotif monorail/rel tunggal
@@ -2764,14 +2764,14 @@ STR_ORDER_DROP_SERVICE_DEPOT                                    :Servis jika dip
 STR_ORDER_DROP_HALT_DEPOT                                       :Berhenti
 
 STR_ORDER_CONDITIONAL                                           :Kondisi melompati perintah tujuan
-STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data kendaraan darat untuk melompat
+STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}Data kendaraan untuk melompat
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Bagaimana untuk membandingkan data kendaraan ke nilai yang diberikan
 STR_ORDER_CONDITIONAL_VALUE_TOOLTIP                             :{BLACK}Nilai untuk membandingkan data kendaraan
 STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Measukkan nilai untuk membandingkan
 STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Persentasi muatan
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Kehandalan
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Kecepatan maksimum
-STR_ORDER_CONDITIONAL_AGE                                       :Usia Kendaraan darat (tahun)
+STR_ORDER_CONDITIONAL_AGE                                       :Usia Kendaraan (tahun)
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Membutuhkan perbaikkan
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Selalu
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :adalah sama dengan
@@ -2822,7 +2822,7 @@ STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rel Kere
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Membuat Kendaraan
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}duplikatkan kendaraan
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan memberi perintah bersama
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan darat yang ingin ditirukan, baik didalam maupun diluar depot.Ctrl-klik akan memberi perintah bersama
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin ditirukan, baik didalam maupun diluar depot.Ctrl-klik akan memberi perintah bersama
 STR_CLONE_TRAIN                                                 :{BLACK}Duplikatkan kereta api
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan memberi perintah bersama
 STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta api yang sama persis. Klik tombol ini lalu klik kereta api yang ingin ditirukan baik didalam maupun diluar depot. the Ctrl-klik akan memberi perintah bersama
@@ -2931,8 +2931,8 @@ STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Berita {STRING} Sekarang tersedia!  -  {ENGINE}
 
-STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Tidak dapat menjual Kendaraan darat yang telah dihancurkan...
-STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Tidak dapat menyusun ulang Kendaraan darat yang telah dihancurkan...
+STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Tidak dapat menjual kendaraan yang telah dihancurkan...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Tidak dapat menyusun ulang kendaraan yang telah dihancurkan...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Tidak dapat membuat jadwal keberangkatan kendaraan...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Kendaran darat hanya dapat menunggu di stasiun
@@ -2947,14 +2947,14 @@ STR_TIMETABLE_AUTOFILL                                          :{BLACK}Mengisi 
 STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi Jadwal keberangkatan secara Otomatis dengan nilai dari perjalanan terdahulu
 
 ##id 0x9000
-STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kendaraan darat dalam perjalanan
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bus/truk sedang berjalan
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Kendaraan Darat
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Depot Kendaraan Darat
 STR_9004_NEW_VEHICLES                                           :{BLACK}Kendaraan Baru
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Kendaraan Darat Baru
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Membuat Kendaraan
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tidak dapat membuat kendaraan darat...
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tidak dapat membuat bus/truk...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/yr
 STR_900E_MAX_SPEED                                              :{BLACK}Kecepatan Maks.: {LTBLUE}{VELOCITY}
@@ -2962,30 +2962,30 @@ STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Keuntung
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Kehandalan: {LTBLUE}{COMMA}%  {BLACK}Kerusakan sejak servis terakhir: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Buatan: {LTBLUE}{NUM}{BLACK} Harga: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}
-STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...harus dihentikan didalam depot kendaraan darat
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...harus dihentikan didalam depo bus/truk
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Tidak dapat menjual kendaraan...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Tidak dapat menghentikan / menjalankan kendaraan...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Kendaraan darat {COMMA} menanti di depot
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Bus/truk {COMMA} menanti di depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Menuju ke {TOWN} Depot Jalan
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Menuju ke {TOWN} Depot Jalan, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Perbaikkan di {TOWN} Depot Jalan
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Perbaikkan di {TOWN} Depot Jalan, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Tidak dapat mengirim kendaraan ke depot...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Tidak dapat menemukan depot terdekat
-STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Kendaraan darat - klik pada kendaraan untuk menampilkan informasi
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Membuat kendaraan baru (membutuhkan depot kendaraan darat)
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Bus/truk - klik pada kendaraan untuk menampilkan informasi
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Membuat bus/truk baru (membutuhkan depo bus/truk)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Kegiatan kendaraan saat ini - klik disini untuk menghentikan / menjalankan kendaraan
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Tampilkan order kendaraan
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Arahkan pandangan pada lokasi kendaraan
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Kirim kendaraan ke depot. CTRL + klik hanya akan memerintahkan servis
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Paksa kendaraan untuk berbalik arah
-STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Tampilkan detail kendaraan darat
-STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Kendaraan darat - klik pada kendaraan untuk informasi
-STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Membuat kendaraan darat baru
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Tampilkan detail bus/truk
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Kendaraan - klik pada kendaraan untuk informasi
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Membuat bus/truk baru
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Drag kendaraan ke sini untuk menjualnya
-STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Arahkan pandangan pada lokasi depot kendaraan darat
-STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Daftar pilihan kendaraan darat- klik pada kendaraan untuk menampilkan informasi
-STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Membuat kendaraan darat yang dipilih/disorot
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Arahkan pandangan pada lokasi depo bus/truk
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Daftar pilihan bus/truk - klik pada kendaraan untuk menampilkan informasi
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Membuat bus/truk yang dipilih
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Harga: {CURRENCY}{}Kecepatan: {VELOCITY}{}Biaya Operasional: {CURRENCY}/yr{}Kapasitas: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitas: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
@@ -3005,9 +3005,9 @@ STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Tidak dapat mebuat kendaraan untuk berputar...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Tidak dapat memutar kendaraan yang terdiri dari beberapa unit
 STR_9034_RENAME                                                 :{BLACK}Ganti Nama
-STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Ganti nama jenis kendaraan darat
-STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Ganti nama jenis kendaraan darat
-STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Tidak bisa mengganti nama jenis kendaraan darat
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Ganti nama jenis bus/truk
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Ganti nama jenis bus/truk
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Tidak bisa mengganti nama jenis bus/truk
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Karoseri ulang kendaraan darat untuk jenis muatan yang berbeda
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Renovasi kendaraan darat
@@ -3194,7 +3194,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Kekayaan
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Hutang:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Jumlah kendaraan; termasuk angkutan darat, kereta api, kapal dan pesawat
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Jumlah kendaraan; termasuk bus/truk, kereta api, kapal dan pesawat
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Jumlah dari bagian-bagian stasiun. Setiap bagian dari stasiun (misal: stasiun kereta api, pemberhentian Bus, airport) dihitung, meskipun mereka dihubungkan menjadi satu kesatuan stasiun
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Keuntungan dari kendaraan dan pendapatan terendah (semua kendaraan yang usianya tidak melebihi 2 tahun)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Banyaknya uang tunai yang dihasilkan dalam satu bulan dengan keuntungan terendah pada 1/4 tahun terakhir
@@ -3205,8 +3205,8 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Banyakny
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Banyaknya uang perusahaan ini yang digunakan untuk membayar pinjaman
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total Nilai Keluar dari nilai-nilai yang mungin
 
-STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Pengaturan NewGRF (Grafik yang baru)
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Pengaturan NewGRF (Grafik yang baru)
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Pengaturan NewGRF
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Pengaturan NewGRF
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Terapkan Perubahan
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}"Toggle"/Tandai "palette"/papan cat
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}"Toggle"/Tandai "palette"/papan cat dari NewGRFterpilih.{}Lakukan ini ketika grafis dari NewGRF ini terlihat berwarna merah muda di dalam permainan
@@ -3310,21 +3310,21 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Yang ber
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Tampilkan semua kedaraan yang berbagi perintah/tujuan pada skedul ini.
 
 ### depot strings
-STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda akan menjual semua kendaraan darat anda di depot. Anda yakin?
+STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}Anda akan menjual semua kendaraan di depo. Anda yakin?
 STR_DEPOT_WRONG_DEPOT_TYPE                                      :Salah pada tipe bengkel
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Jual kereta api di depot
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Jual kendaraan darat di depot
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Jual semua kendaraan di depo
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Jual kapal laut di depot
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Jual pesawat udara di depot
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Ambil satu daftar dari semua kereta api dengan depot ini beserta perintah/tujuannya.
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Ambil satu daftar dari semua kendaraan darat dengan depot ini beserta perintah/tujuannya.
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Mendaftar semua bus/truk dari depo ini beserta perintahnya.
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Ambil satu daftar dari semua kapal laut dengan depot ini beserta perintah/tujuannya.
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Ambil satu daftar dari semua Pesawat Udara dengan depot ini beserta perintah/tujuannya.
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Penggantian secara otomatis semua kereta di dalam depot
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Penggantian secara otomatis semua kendaraan darat di dalam depot
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Penggantian secara otomatis semua bus/truk di dalam depo
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Penggantian secara otomatis semua kapal laut di dalam depot
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Penggantian secara otomatis semua Pesawat Udara di dalam depot
 
@@ -3358,17 +3358,17 @@ STR_ENGINES                                                     :Mesin-mesin
 STR_WAGONS                                                      :Gerbong-gerbong
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klik untuk menghentikan semua kereta api ke dalam depot
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik untuk menghentikan semua kendaraan darat  ke dalam depot
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik untuk menghentikan semua kendaraan dalam depo
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klik untuk menghentikan semua kapal laut ke dalam depot
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klik untuk menghentikan semua Pesawat Udara ke dalam hangar
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klik untuk menjalankan semua kereta api ke dalam depot
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik untuk menjalankan semua kendaraan darat ke dalam depot
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik untuk menjalankan semua kendaraan dalam depo
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klik untuk menjalankan semua kapal laut ke dalam depot
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klik untuk menjalankan semua Pesawat Udara ke dalam hangar
 
-STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klik untuk menghentikan semua kendaraan darat yang ada dalam daftar
-STR_MASS_START_LIST_TIP                                         :{BLACK}Klik untuk menjalankan semua kendaraan darat yang ada dalam daftar
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klik untuk menghentikan semua kendaraan dalam daftar
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klik untuk menjalankan semua kendaraan dalam daftar
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda

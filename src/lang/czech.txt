@@ -31,9 +31,11 @@ STR_0010_COAL.big                                               :Uhlí
 STR_0011_MAIL                                                   :pošta
 STR_0011_MAIL.big                                               :Pošta
 STR_0011_MAIL.gen                                               :pošty
+STR_0011_MAIL.acc                                               :poštu
 STR_0012_OIL                                                    :ropa
 STR_0012_OIL.big                                                :Ropa
 STR_0012_OIL.gen                                                :ropy
+STR_0012_OIL.acc                                                :ropu
 STR_0013_LIVESTOCK                                              :dobytek
 STR_0013_LIVESTOCK.big                                          :Dobytek
 STR_0013_LIVESTOCK.gen                                          :dobytka
@@ -47,6 +49,7 @@ STR_0016_WOOD.gen                                               :dřeva
 STR_0017_IRON_ORE                                               :železná ruda
 STR_0017_IRON_ORE.big                                           :Železná ruda
 STR_0017_IRON_ORE.gen                                           :železné rudy
+STR_0017_IRON_ORE.acc                                           :železnou rudu
 STR_0018_STEEL                                                  :ocel
 STR_0018_STEEL.big                                              :Ocel
 STR_0018_STEEL.gen                                              :oceli
@@ -56,8 +59,10 @@ STR_0019_VALUABLES.gen                                          :cenin
 STR_001A_COPPER_ORE                                             :měděná ruda
 STR_001A_COPPER_ORE.big                                         :Měděná ruda
 STR_001A_COPPER_ORE.gen                                         :měděné rudy
+STR_001A_COPPER_ORE.acc                                         :měděnou rudu
 STR_001B_MAIZE                                                  :kukuřice
 STR_001B_MAIZE.big                                              :Kukuřice
+STR_001B_MAIZE.acc                                              :kukuřici
 STR_001C_FRUIT                                                  :ovoce
 STR_001C_FRUIT.big                                              :Ovoce
 STR_001D_DIAMONDS                                               :diamanty
@@ -75,8 +80,10 @@ STR_0020_GOLD.gen                                               :zlata
 STR_0021_WATER                                                  :voda
 STR_0021_WATER.big                                              :Voda
 STR_0021_WATER.gen                                              :vody
+STR_0021_WATER.acc                                              :vodu
 STR_0022_WHEAT                                                  :pšenice
 STR_0022_WHEAT.big                                              :Pšenice
+STR_0022_WHEAT.acc                                              :pšenici
 STR_0023_RUBBER                                                 :kaučuk
 STR_0023_RUBBER.big                                             :Kaučuk
 STR_0023_RUBBER.gen                                             :kaučuku
@@ -92,9 +99,11 @@ STR_0026_CANDY.gen                                              :bonbonů
 STR_0027_COLA                                                   :kola
 STR_0027_COLA.big                                               :Kola
 STR_0027_COLA.gen                                               :koly
+STR_0027_COLA.acc                                               :kolu
 STR_0028_COTTON_CANDY                                           :cukrová vata
 STR_0028_COTTON_CANDY.big                                       :Cukrová vata
 STR_0028_COTTON_CANDY.gen                                       :cukrové vaty
+STR_0028_COTTON_CANDY.acc                                       :cukrovou vatu
 STR_0029_BUBBLES                                                :bubliny
 STR_0029_BUBBLES.big                                            :Bubliny
 STR_0029_BUBBLES.gen                                            :bublin
@@ -110,6 +119,7 @@ STR_002C_PLASTIC.gen                                            :plastu
 STR_002D_FIZZY_DRINKS                                           :limonáda
 STR_002D_FIZZY_DRINKS.big                                       :Limonáda
 STR_002D_FIZZY_DRINKS.gen                                       :limonád
+STR_002D_FIZZY_DRINKS.acc                                       :limonádu
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :cestujících
 STR_0030_COAL                                                   :uhlí
@@ -175,34 +185,34 @@ STR_QUANTITY_BATTERIES                                          :{COMMA} bateri{
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastu
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} limonád{P a y ""}
 STR_ABBREV_NOTHING                                              :
-STR_ABBREV_PASSENGERS                                           :{TINYFONT}CS
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}CE
 STR_ABBREV_COAL                                                 :{TINYFONT}UH
-STR_ABBREV_MAIL                                                 :{TINYFONT}PT
-STR_ABBREV_OIL                                                  :{TINYFONT}RP
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}DB
+STR_ABBREV_MAIL                                                 :{TINYFONT}PO
+STR_ABBREV_OIL                                                  :{TINYFONT}RO
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}DO
 STR_ABBREV_GOODS                                                :{TINYFONT}ZB
 STR_ABBREV_GRAIN                                                :{TINYFONT}ZR
 STR_ABBREV_WOOD                                                 :{TINYFONT}DŘ
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}ŽR
 STR_ABBREV_STEEL                                                :{TINYFONT}OC
-STR_ABBREV_VALUABLES                                            :{TINYFONT}CN
-STR_ABBREV_COPPER_ORE                                           :{TINYFONT}MD
+STR_ABBREV_VALUABLES                                            :{TINYFONT}CE
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}MR
 STR_ABBREV_MAIZE                                                :{TINYFONT}KU
 STR_ABBREV_FRUIT                                                :{TINYFONT}OV
-STR_ABBREV_DIAMONDS                                             :{TINYFONT}DM
-STR_ABBREV_FOOD                                                 :{TINYFONT}JD
-STR_ABBREV_PAPER                                                :{TINYFONT}PR
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}DI
+STR_ABBREV_FOOD                                                 :{TINYFONT}JÍ
+STR_ABBREV_PAPER                                                :{TINYFONT}PA
 STR_ABBREV_GOLD                                                 :{TINYFONT}ZL
-STR_ABBREV_WATER                                                :{TINYFONT}VD
+STR_ABBREV_WATER                                                :{TINYFONT}VO
 STR_ABBREV_WHEAT                                                :{TINYFONT}PŠ
 STR_ABBREV_RUBBER                                               :{TINYFONT}KA
 STR_ABBREV_SUGAR                                                :{TINYFONT}CU
 STR_ABBREV_TOYS                                                 :{TINYFONT}HR
 STR_ABBREV_SWEETS                                               :{TINYFONT}BO
-STR_ABBREV_COLA                                                 :{TINYFONT}KL
+STR_ABBREV_COLA                                                 :{TINYFONT}KO
 STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}CV
 STR_ABBREV_BUBBLES                                              :{TINYFONT}BU
-STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
+STR_ABBREV_TOFFEE                                               :{TINYFONT}KA
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}LI
@@ -292,7 +302,7 @@ STR_0107_GOLD_MINE                                              :{BLACK}{TINYFON
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Potravinářský závod
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Diamantový důl
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Důl na měděnou rudu
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Ovocná plantáž
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Ovocný sad
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kaučuková plantáž
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Zdroj vody
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vodojem
@@ -729,7 +739,7 @@ STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Potravin
 STR_024E_PRINTING_WORKS                                         :{BLACK}Tiskárna
 STR_024F_GOLD_MINE                                              :{BLACK}Důl na zlato
 STR_0250_LUMBER_MILL                                            :{BLACK}Pila
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Ovocná plantáž
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Ovocný sad
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kaučuková plantáž
 STR_0253_WATER_SUPPLY                                           :{BLACK}Zdroj vody
 STR_0254_WATER_TOWER                                            :{BLACK}Vodojem
@@ -759,12 +769,12 @@ STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Postavit
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Postavit ropný vrt
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (lze vybudovat jen ve městech s populací vetší než 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Postavit papírnu
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Postavit továrnu na zpracování potravin
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Postavit potravinářský závod
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Postavit tiskárnu
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Postavit zlatý důl
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit banku (lze vybudovat pouze ve městech)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Postavit pilu (mýtí stromy v pralese a produkuje dřevo)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Vysadit ovocnou plantáž
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Založit ovocný sad
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Vysadit kaučukovou plantáž
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Navrtat studnu
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Postavit vodojem (lze budovat pouze ve městech)
@@ -1402,7 +1412,7 @@ STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Vyvrtat 
 STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Postavit zlatý důl
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Postavit diamantový důl
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Postavit důl na železnou rudu
-STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Založit ovocnou plantáž
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Založit ovocný sad
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Založit kaučukovou plantáž
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Vyvrtat studnu
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Vysadit cukrovou vatu
@@ -1988,10 +1998,10 @@ STR_303C_OUTSTANDING                                            :Úžasné
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} už dále nepřijímá {STRING}
-STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} už dále nepřijímá {STRING} nebo {STRING}
-STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} nyní přijímá {STRING}
-STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} nyní přijímá {STRING} a {STRING}
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} už dále nepřijímá {STRING.acc}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} už dále nepřijímá {STRING.acc} nebo {STRING.acc}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} nyní přijímá {STRING.acc}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} nyní přijímá {STRING.acc} a {STRING.acc}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientace autobusové zastávky.
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientace nákladové rampy
 STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}Orientace tramvajové stanice pro cestující
@@ -2101,7 +2111,7 @@ STR_4811_GOLD_MINE                                              :Zlatý důl
 STR_4812_BANK                                                   :Banka
 STR_4813_DIAMOND_MINE                                           :Diamantový důl
 STR_4814_IRON_ORE_MINE                                          :Důl na železnou rudu
-STR_4815_FRUIT_PLANTATION                                       :Ovocná plantáž
+STR_4815_FRUIT_PLANTATION                                       :Ovocný sad
 STR_4816_RUBBER_PLANTATION                                      :Kaučuková plantáž
 STR_4817_WATER_SUPPLY                                           :Zdroj vody
 STR_4818_WATER_TOWER                                            :Vodojem
@@ -2121,9 +2131,9 @@ STR_4825_TOFFEE_QUARRY                                          :Karamelolom
 STR_4826_SUGAR_MINE                                             :Cukerný důl
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}{STRING}
-STR_4828_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
-STR_4829_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING}{STRING}, {STRING}{STRING}, {STRING}{STRING}
+STR_4827_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING.acc}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}
+STR_4829_REQUIRES                                               :{BLACK}Vyžaduje: {YELLOW}{STRING.acc}{STRING}, {STRING.acc}{STRING}, {STRING.acc}{STRING}
 ############ range for requires ends
 
 ############ range for produces starts

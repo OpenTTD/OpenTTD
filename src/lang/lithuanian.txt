@@ -2890,6 +2890,7 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Isigyti 
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kaina: {CURRENCY}{}Greitis: {VELOCITY}{}Eksploatavimo kaina: {CURRENCY}/met{}Talpa: {CARGO}
 STR_BARE_CARGO                                                  :{CARGO}
 STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pavadinti automobili
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Automobilio pavadinti nepavyko...
@@ -3048,6 +3049,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pasirink 
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nauja talpa: {GOLD}{STRING}{}{BLACK}Pakeitimo kaina: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Negalima pakeisti krovinio tipo...
 
+STR_TIMETABLE_TITLE                                             :{WHITE}{VEHICLE} (Tvarkaraštis)
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT} Dirizablio katastrofa {STATION}!
@@ -3103,6 +3105,19 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5suma: {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jūs norite atlikti pakeitimus veikiančiam žaidimui: OpenTTD gali pakibti.{}Ar jūs tikrai norite tai atlikti?
 
+STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
+STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} neveiks su TTDPatch versija nurodyta pagal OpenTTD.
+STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} skirtas {STRING} TTD versijai.
+STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} yra pritaikytas naudojimui su {STRING}
+STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Neteisingas parametras {STRING}: parametras {STRING} ({NUM})
+STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} turi būti įkeltas prieš {STRING}.
+STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} turi būti įkeltas po {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} reikalauja OpenTTD versijos {STRING} ar naujesnės.
+STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF failas, kurį turėjo išversti
+STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Per daug NewGRF'ų įkelta.
+STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Įkėlimas {STRING} kaip statinio NewGRF su {STRING} gali sukelti desinchronizacija.
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nenumatytas spraitas.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} turi sugadintą spraitą. Visi sugadinti spraitai bus rodomi kaip raudoni klaustukai (?).
 
 STR_NEWGRF_ADD                                                  :{BLACK}Pridėti
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Pridėti Papild. grafikos failą į sąrašą
