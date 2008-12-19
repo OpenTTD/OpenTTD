@@ -3690,7 +3690,7 @@ static void AiStateRemoveStation(Company *c)
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == _current_company && !in_use[st->index] &&
 				( (st->bus_stops != NULL && (tile = st->bus_stops->xy) != 0) ||
-					(st->truck_stops != NULL && (tile = st->truck_stops->xy)) != 0 ||
+					(st->truck_stops != NULL && (tile = st->truck_stops->xy) != 0) ||
 					(tile = st->train_tile) != 0 ||
 					(tile = st->dock_tile) != 0 ||
 					(tile = st->airport_tile) != 0)) {
