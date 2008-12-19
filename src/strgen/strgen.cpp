@@ -90,12 +90,12 @@ static byte _lang_textdir;
 static uint16 _lang_winlangid;
 #define MAX_NUM_GENDER 8
 static char _genders[MAX_NUM_GENDER][16];
-static int _numgenders;
+static uint _numgenders;
 
 // contains the name of all cases.
 #define MAX_NUM_CASES 50
 static char _cases[MAX_NUM_CASES][16];
-static int _numcases;
+static uint _numcases;
 
 // for each plural value, this is the number of plural forms.
 static const byte _plural_form_counts[] = { 2, 1, 2, 3, 3, 3, 3, 3, 4, 2 };
@@ -108,7 +108,7 @@ struct CmdPair {
 };
 
 struct ParsedCommandStruct {
-	int np;
+	uint np;
 	CmdPair pairs[32];
 	const CmdStruct *cmd[32]; // ordered by param #
 };
@@ -704,7 +704,7 @@ static void ExtractCommandString(ParsedCommandStruct* p, const char* s, bool war
 
 		if (ar->consumes) {
 			if (argno != -1) argidx = argno;
-			if (argidx < 0 || argidx >= lengthof(p->cmd)) error("invalid param idx %d", argidx);
+			if (argidx < 0 || (uint)argidx >= lengthof(p->cmd)) error("invalid param idx %d", argidx);
 			if (p->cmd[argidx] != NULL && p->cmd[argidx] != ar) error("duplicate param idx %d", argidx);
 
 			p->cmd[argidx++] = ar;
@@ -741,7 +741,7 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 {
 	ParsedCommandStruct templ;
 	ParsedCommandStruct lang;
-	int i, j;
+	uint i, j;
 	bool result = true;
 
 	ExtractCommandString(&templ, b, true);
@@ -1073,7 +1073,7 @@ static int TranslateArgumentIdx(int argidx)
 {
 	int i, sum;
 
-	if (argidx < 0 || argidx >= lengthof(_cur_pcs.cmd))
+	if (argidx < 0 || (uint)argidx >= lengthof(_cur_pcs.cmd))
 		error("invalid argidx %d", argidx);
 
 	for (i = sum = 0; i < argidx; i++) {
