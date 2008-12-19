@@ -278,6 +278,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Hay dema
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}O nome elixido xa está en uso
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -3236,6 +3237,7 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Cargar {STRING}
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inesperado.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propiedade Action 0 descoñecida.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Intento de usar un ID inválido.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contén un sprite corrupto. Tódolos sprites corruptos mostraránse coma una interrogación vermella (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carga la programación seleccionada
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Grabar programación

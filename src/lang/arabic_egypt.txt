@@ -90,6 +90,8 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA}راكب
 STR_QUANTITY_COAL                                               :{WEIGHT} من الفحم
 STR_QUANTITY_MAIL                                               :{COMMA} صندوق من البريد
 STR_QUANTITY_OIL                                                :{VOLUME} من النفط
+STR_QUANTITY_LIVESTOCK                                          :{COMMA}رأس من الماشية
+STR_QUANTITY_GOODS                                              :{COMMA}قفص من المؤنة
 STR_QUANTITY_GRAIN                                              :{WEIGHT} من الحبوب
 STR_QUANTITY_WOOD                                               :{WEIGHT} من الخشب
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} من برادة الحديد
@@ -97,16 +99,21 @@ STR_QUANTITY_STEEL                                              :{WEIGHT} من �
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} من برادة النحاس
 STR_QUANTITY_MAIZE                                              :{WEIGHT} من الذرة
 STR_QUANTITY_FRUIT                                              :{WEIGHT} من الفواكة
+STR_QUANTITY_DIAMONDS                                           :{COMMA}كيس من الجواهر
 STR_QUANTITY_FOOD                                               :{WEIGHT} من الطعام
 STR_QUANTITY_PAPER                                              :{WEIGHT} من الورق
+STR_QUANTITY_GOLD                                               :{COMMA}كيس من الذهب
 STR_QUANTITY_WATER                                              :{VOLUME} من المياة
 STR_QUANTITY_WHEAT                                              :{WEIGHT} من القمح
 STR_QUANTITY_RUBBER                                             :{VOLUME} من المطاط
 STR_QUANTITY_SUGAR                                              :{WEIGHT} من السكر
 STR_QUANTITY_COLA                                               :{VOLUME} من الكولا
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} من الحلاوة القطنية
+STR_QUANTITY_BUBBLES                                            :{COMMA}فقاعات
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} من التوفي
+STR_QUANTITY_BATTERIES                                          :{COMMA}بطاريات
 STR_QUANTITY_PLASTIC                                            :{VOLUME}من البلاستيك
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA}الشراب المخفوق
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}راكب
 STR_ABBREV_COAL                                                 :{TINYFONT}فحم
@@ -1583,6 +1590,9 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}طول 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}... الملف غير موجود.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}... لا يمكن تحويل صيغة الملف.مطلوب ملف PNG . 8 او 24 - بت
+STR_PNGMAP_ERR_MISC                                             :{WHITE}حدث خطأ ما ... للاسف ! (قد يكون ملف تالف).
 
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}لايمكن تحويل نوع الصورة...
 
@@ -1839,6 +1849,7 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION}الآن تقبل {STRING} و {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE} اتجاة محطة الباصات
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}اتجاة محطة التحميل للعربات
+STR_PASSENGER_TRAM_STATION_ORIENTATION                          :{WHITE}اتجاة محطة الترام
 STR_CARGO_TRAM_STATION_ORIENT                                   :{WHITE}اتجاة محطة الترام للبضائع
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}يجب هدم محطة الباصات اولا
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}يجب هدم محطة التحميل اولا
@@ -2576,10 +2587,12 @@ STR_ORDER_GO_TO                                                 :اذهب الى
 STR_ORDER_GO_NON_STOP_TO                                        :اذهب بدون توقف الى
 STR_ORDER_GO_VIA                                                :التوجة خلال
 STR_ORDER_GO_NON_STOP_VIA                                       :اذهب بدون توقف من خلال
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}تحميل كامل لأي بضاعة
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :حمل اذا كان متاح
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :حمل البضائع كاملة
 STR_ORDER_DROP_FULL_LOAD_ANY                                    :حمل بالكامل اي نوع من البضائع
 STR_ORDER_DROP_NO_LOADING                                       :عدم التحميل
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}تنزيل الشحنة
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :حمل الشحنة اذا كانت مقبولة
 STR_ORDER_DROP_UNLOAD                                           :نزل الشحنة بالكامل
 STR_ORDER_DROP_TRANSFER                                         :حول البضائع
@@ -2587,9 +2600,20 @@ STR_ORDER_DROP_NO_UNLOADING                                     :عدم انزا
 STR_ORDER_FULL_LOAD                                             :(تحميل بالكامل)
 STR_ORDER_FULL_LOAD_ANY                                         :(حمل اي بضاعة بالكامل)
 STR_ORDER_NO_LOAD                                               :(عدم التحميل)
+STR_ORDER_UNLOAD                                                :(التنزيل و تحميل الشحنة)
+STR_ORDER_UNLOAD_FULL_LOAD                                      :(التنزيل و الانتظار الى الحمولة كاملة)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(التنزيل و انتظار اي شحنة لتمتلئ اولا)
+STR_ORDER_UNLOAD_NO_LOAD                                        :(التنزيل  المغادرة فارغ)
+STR_ORDER_TRANSFER                                              :(تنزيل و اخذ حمولة)
+STR_ORDER_TRANSFER_FULL_LOAD                                    :(توصيل شحنة و الانتظار للحمولة الكاملة)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(توصيل شحنة و الانتظار لأي بضاعة تمتلئ اولا)
+STR_ORDER_TRANSFER_NO_LOAD                                      :)التوصيل و االمغادرة فارغ)
 STR_ORDER_NO_UNLOAD                                             :(عدم انزال الشحنة و تحميل غيرها)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(عدم انزال الشحنة و الانتظار للحمولة القصوى)
 STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(  عدم انزال الشحنة و الانتظار للحمولة القصوى لاي شحنة)
+STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}غير سلوك التوقف لالأمر المختار
+STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}غير سلوك امر التحميل المختار
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}غير سلوك التنزيل للامر المختار
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}ادخل امر متقدم
@@ -2597,7 +2621,11 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :اذهب الى
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :اذهب الى اقرب حظيرة صيانة
 STR_ORDER_NEAREST_DEPOT                                         :الأقرب
 STR_ORDER_NEAREST_HANGAR                                        :الحظيرة الأقرب
+STR_ORDER_SERVICE_AT                                            :الصيانة في
+STR_ORDER_SERVICE_NON_STOP_AT                                   :الصيانة بدون توقف في
+STR_ORDER_TRAIN_DEPOT                                           :مستودع قطار
 STR_ORDER_ROAD_DEPOT                                            :مستودع العربات
+STR_ORDER_SHIP_DEPOT                                            :حوض صيانة السفن
 STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} حظيرة
@@ -2671,6 +2699,8 @@ STR_8820_RENAME                                                 :{BLACK}اعاد
 STR_8823_SKIP                                                   :{BLACK}تجاوز
 STR_8824_DELETE                                                 :{BLACK}حذف
 STR_8826_GO_TO                                                  :{BLACK}اذهب الى
+STR_ORDER_VIEW                                                  :{BLACK}الأوامر
+STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}حول الى عرض الاوامر
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} )اوامر)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - نهاية الاوامر - -
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}لايمكن بناء عربات سكة حديد ...
@@ -2932,6 +2962,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}لا ي�
 STR_A032_NAME_AIRCRAFT                                          :{BLACK} تسمية الطائرة
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}الأهالي يحتفلون . . . {}بوصول أول طائرة الى {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}تحطم طائرة !{}{COMMA}ماتوا في الحريق بمطار {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}تحطم طائرة ! {}انتهى الوقود من الطائرة, {COMMA}توفي اثر الحادث !
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}اعادة تسمية
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}اعادة تسمية نوع الطائرة
@@ -2960,8 +2991,33 @@ STR_BRIBE_FAILED_2                                              :{WHITE}أكتش
 STR_BUILD_DATE                                                  :{BLACK}بني: {LTBLUE}{DATE_LONG}
 
 
+STR_PERFORMANCE_DETAIL                                          :{WHITE}التقييم المفصل
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}تفاصيل
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}العربات:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}المحطات:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}المكسب الادنى:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}الدخل الأقل:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}الدخل الاعلى:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}نقلت:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}الشحن:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}السيولة المالية:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}الدين:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}المجموع:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}عدد العربات, وتشمل عربات الطريق,و القطارات,و السفن و الطائرات.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}كل انواع المحطات (محطة قطار, موقف باص, مطار, الخ) حتى لو كانت مرتبطة ببعضها كمحطة واحدة
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}دخل المركبات ذات الدخل الادنى (لكل العربات اكثر من سنتين في الخدمة).د
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}ادنى دخل تم تحقيقة في شهر واحد من الشهور الاثنى عشر الماضية
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}اعلى مكاسب تم تحقيقها في شهر واحد من الاثنى عشر شهرا الماضية
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}الوحدات التي نقلت الاثنى عشر شهرا الماضية
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}عدد انواع الشحن الي تم نقلها في الربع الأخير
+STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}السيولة المالية المتوفرة للشركة في البنك.
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}مقدار الدين الذي اخذته هذه الشركة
+STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}مجموع النقاط من المجموع الكلي الممكن
 
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}نفذ التغييرات
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}فتح/اغلاق اللوحة
@@ -3075,6 +3131,22 @@ STR_MAGLEV_VEHICLES                                             :مركبات م
 ############ End of list of rail types
 
 
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}التكلفة: {GOLD}{CURRENCY}{BLACK} الوزن: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}السرعة: {GOLD}{VELOCITY}{BLACK}    الطاقة: {GOLD}{POWER}
+STR_PURCHASE_INFO_SPEED                                         :{BLACK}السرعة: {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}تكلفة التشغيل: {GOLD}{CURRENCY}/ سنة
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}السعة: {GOLD}{CARGO} {STRING}
+STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}تصميم: {GOLD}{NUM}{BLACK} العمر الافتراضي: {GOLD}{COMMA} سنة
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}الاعتمادية القصوى: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_COST                                          :{BLACK}التكلفة: {GOLD}{CURRENCY}
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}الوزن: {GOLD}{WEIGHT_S}   ({WEIGHT_S})
+STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}التكلفة: {GOLD}{CURRENCY}{BLACK} السرعة : {GOLD}{VELOCITY}
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}السعة: {GOLD}{COMMA}راكب , {COMMA}طرد بريدي
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}العربات ذات الطاقة: {GOLD}+{POWER}{BLACK} الوزن: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}يمكن تعديلها الى: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :كل انواع الحمولة
+STR_PURCHASE_INFO_ALL_BUT                                       :الكل الا {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}تأثير الجذب القصى: {GOLD}{FORCE}
 
 ########### For showing numbers in widgets
 
@@ -3084,6 +3156,7 @@ STR_MAGLEV_VEHICLES                                             :مركبات م
 STR_GENERATE                                                    :{WHITE}ولد
 STR_LAND_GENERATOR                                              :{BLACK}مولد الخريطة:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}اتجاة خريطة المرتفعات:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}مستوى البحر
 STR_DATE                                                        :{BLACK}التاريخ:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}عدد المدن:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}عدد المصانع:
@@ -3096,8 +3169,10 @@ STR_GENERATION_WORLD                                            :{WHITE}تولي
 STR_GENERATION_ABORT                                            :{BLACK}ألغي
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}ايقاف توليد الخريطة
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}هل انت متأكد بأنك ترغبب في ايقاف توليد الخريطة؟
+STR_PROGRESS                                                    :{WHITE}{NUM}% انتهى
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_CLEARING_TILES                                              :{BLACK}مولد المناطق الخشنة والصخرية
+STR_PREPARING_GAME                                              :{BLACK}يتك تجهيز اللعبة
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}هذا التغيير سيحول مستوى الصعوبة الى اختياري
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}حرك ارتفاع الأرض المنبسطة واحد للاسفل
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}حرك ارتفاع الأرض المنبسطة واحد للأعلى
@@ -3138,6 +3213,12 @@ STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}هذا �
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}... اتجاة الطريق خاطئ
 
 
+STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}
+STR_PERCENT_DOWN_SMALL                                          :{TINYFONT}{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_DOWN                                                :{WHITE}{NUM}%{DOWNARROW}
+STR_PERCENT_UP_DOWN_SMALL                                       :{TINYFONT}{WHITE}{NUM}%{UPARROW}{DOWNARROW}
+STR_PERCENT_UP_DOWN                                             :{WHITE}{NUM}%{UPARROW}{DOWNARROW}
 
 ##### Mass Order
 STR_GROUP_NAME_FORMAT                                           :مجموعة{COMMA}
@@ -3177,11 +3258,13 @@ STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}اضغط
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
 STR_GROUP_NAME                                                  :{GROUP}
+STR_PRESIDENT_NAME                                              :{PRESIDENTNAME}
 
 STR_NAME_MUST_BE_UNIQUE                                         :{WHITE}السم يجب ان يكون فريدا - غير مستخدم
 
 #### Improved sign GUI
 STR_NEXT_SIGN_TOOLTIP                                           :{BLACK}توجة الى العلامة التالية
+STR_PREVIOUS_SIGN_TOOLTIP                                       :{BLACK}توجة الى الاشارة السابقة
 
 ########
 
@@ -3255,6 +3338,8 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}زياد
 ########
 
 ############ on screen keyboard
+STR_OSK_KEYBOARD_LAYOUT                                         :ذ1234567890-=ضصثقفغعهخحجدشسيبلاتنمكطئءؤرلاىةوزظ
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ذ1234567890-=ضصثقفغعهخحجدشسيبلاتنمكطئءؤرلاىةوزظ
 ########
 
 ############ town controlled noise level

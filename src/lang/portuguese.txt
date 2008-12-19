@@ -1067,6 +1067,7 @@ STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multipl
 STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Factor de velocidade de aviões: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Permitir estações de passagem em estradas das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Permitir construção de estações adjacentes: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Utilizar múltiplos conjuntos NewGRF de veículos: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1706,8 +1707,14 @@ STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Estrada de ferr
 STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Estrada de ferro com obstrução e faróis de mão única
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Carris com pré-sinais e sinais de saída
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Carris com pré-sinais e sinais combinados
+STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Linha férrea com pré-sinais e sinais de trajecto
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Linha férrea com pré-sinais e sinais de sentido único
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Carris com sinais de saída e combinados
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Linha férrea com sinais de saída e de trajecto
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Linha férrea com sinais de saída e de sentido único
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Linha férrea com conjunto de sinais e sinais de trajecto
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Linha férrea com sinais multi- e de sentido único
+STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Linha férrea com sinais de trajecto e de sentido único
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}É preciso remover a estação primeiro
 
 
@@ -2826,6 +2833,7 @@ STR_8826_GO_TO                                                  :{BLACK}Ir Para
 STR_REFIT                                                       :{BLACK}Converter
 STR_REFIT_TIP                                                   :{BLACK}Seleccionar o tipo de carga a converter nesta ordem. Pressionar Ctrl e botão-esquerdo do rato para remover instrução de conversão
 STR_REFIT_ORDER                                                 :(Converter para {STRING})
+STR_REFIT_STOP_ORDER                                            :(Mudar para {STRING} e parar)
 STR_STOP_ORDER                                                  :(Parar)
 STR_TIMETABLE_VIEW                                              :{BLACK}Horário
 STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Mudar para a vista de horário
@@ -2909,6 +2917,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renomear
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Não é possível renomear tipo de veículo ferroviário...
 STR_CLEAR_TIME                                                  :{BLACK}Apagar Tempo
 STR_RESET_LATENESS                                              :{BLACK}Apagar Contad. Atraso
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Mudar o nome do ponto de passagem
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}A Parar
@@ -3628,6 +3637,7 @@ STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Sinal de
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Sinal de Saída (eléctrico){}Funciona da mesma forma que o sinal normal mas é necessário para conseguir a cor correcta nos pre-sinais de entrada e combinado.
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Sinal Combinado (eléctrico){}O sinal combinado funciona como um sinal de entrada e de saída. Este permite construir grandes "árvores" de pre-sinais.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Sinal (eléctrico){}Os sinais permitem que vários comboios entrem na mesma linha ao mesmo tempo, desde que consigam chegar ao seu destino em segurança.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Um sinal de sentido único (electric){}Um sinal de trajecto permite que mais de um comboio passe ao mesmo tempo um sinal se, o comboio conseguir reservar um caminho para onde posteriormente possa parar sem prejudicar o seguinte. Sinais de um único sentido não podem ser passados no sentido contrário.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Converter Sinal{}Quando seleccionado, ao fazer clique em um sinal existente este será convertido no tipo e variante de sinal seleccionado, CTRL-clique irá comutar a variante existente.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Densidade de sinais
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Diminuir densidade de sinais

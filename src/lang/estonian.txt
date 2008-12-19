@@ -1697,6 +1697,7 @@ STR_0805_ESTIMATED_COST                                         :{WHITE}Eeldatav
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Eeldatavad tulud: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Siin ei saa maad kõrgendada...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Siin ei saa maad madaldada...
+STR_CAN_T_LEVEL_LAND_HERE                                       :{WHITE}Ei saa maad siin tasandada...
 STR_080A_ROCKS                                                  :Kaljud
 STR_080B_ROUGH_LAND                                             :Konarlik maa
 STR_080C_BARE_LAND                                              :Lage maa
@@ -1711,6 +1712,7 @@ STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Teostama
 STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Kaevandamine kahjustaks tunnelit
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Juba jõutud meretasemeni
 STR_1004_TOO_HIGH                                               :{WHITE}Liiga kõrge
+STR_ALREADY_LEVELLED                                            :{WHITE}... juba tasane
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Sobiv rongitee puudub
 STR_1007_ALREADY_BUILT                                          :{WHITE}...juba ehitatud
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rööbastee tuleb eelnevalt lammutada
@@ -2808,6 +2810,7 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} angaar
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Alati mine
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Hoolda, kui vaja
 STR_ORDER_DROP_HALT_DEPOT                                       :Peatu
 
