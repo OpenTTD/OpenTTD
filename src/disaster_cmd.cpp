@@ -774,7 +774,7 @@ static void Disaster_Zeppeliner_Init()
 		if (st->airport_tile != 0 &&
 				st->airport_type <= 1 &&
 				IsHumanCompany(st->owner)) {
-			x = (TileX(st->xy) + 2) * TILE_SIZE;
+			x = (TileX(st->airport_tile) + 2) * TILE_SIZE;
 			break;
 		}
 	}
