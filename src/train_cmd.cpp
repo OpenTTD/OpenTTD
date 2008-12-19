@@ -3136,9 +3136,6 @@ static bool CheckReverseTrain(Vehicle *v)
 		return false;
 	}
 
-	TrainTrackFollowerData fd;
-	FillWithStationData(&fd, v);
-
 	uint reverse_best = 0;
 
 	assert(v->u.rail.track);
@@ -3175,6 +3172,9 @@ static bool CheckReverseTrain(Vehicle *v)
 
 		default:
 		case VPF_NTP: { /* NTP */
+			TrainTrackFollowerData fd;
+			FillWithStationData(&fd, v);
+
 			int i = _search_directions[FindFirstTrack(v->u.rail.track)][DirToDiagDir(v->direction)];
 
 			int best_track = -1;
