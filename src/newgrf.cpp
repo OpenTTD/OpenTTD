@@ -2277,8 +2277,8 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 			case 0x1D:
 			case 0x1E: {
 					uint32 multiples = grf_load_dword(&buf);
-					indsp->input_cargo_multiplier[prop - 0x1C][0] = GB(multiples, 0, 15);
-					indsp->input_cargo_multiplier[prop - 0x1C][1] = GB(multiples, 15, 15);
+					indsp->input_cargo_multiplier[prop - 0x1C][0] = GB(multiples, 0, 16);
+					indsp->input_cargo_multiplier[prop - 0x1C][1] = GB(multiples, 16, 16);
 				} break;
 
 			case 0x1F: // Industry name
