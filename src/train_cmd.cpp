@@ -2936,7 +2936,10 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	 * for a path and no look-ahead is necessary. This also avoids a
 	 * problem with depot orders not part of the order list when the
 	 * order list itself is empty. */
-	if (!v->current_order.IsType(OT_GOTO_DEPOT) && (v->tile == v->dest_tile || (v->current_order.IsType(OT_GOTO_STATION) && IsRailwayStationTile(v->tile) && v->current_order.GetDestination() == GetStationIndex(v->tile)))) {
+	if (!v->current_order.IsType(OT_GOTO_DEPOT) && (
+			v->current_order.IsType(OT_GOTO_STATION) ?
+			IsRailwayStationTile(v->tile) && v->current_order.GetDestination() == GetStationIndex(v->tile) :
+			v->tile == v->dest_tile)) {
 		orders.SwitchToNextOrder();
 	}
 
