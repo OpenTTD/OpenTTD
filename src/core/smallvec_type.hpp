@@ -81,6 +81,58 @@ public:
 	}
 
 	/**
+	 * Search for the first occurence of an item.
+	 * The '!=' operator of T is used for comparison.
+	 * @param item Item to search for
+	 * @return The position of the item, or End() when not present
+	 */
+	FORCEINLINE const T *Find(const T &item) const
+	{
+		const T *pos = this->Begin();
+		const T *end = this->End();
+		while (pos != end && *pos != item) pos++;
+		return pos;
+	}
+
+	/**
+	 * Search for the first occurence of an item.
+	 * The '!=' operator of T is used for comparison.
+	 * @param item Item to search for
+	 * @return The position of the item, or End() when not present
+	 */
+	FORCEINLINE T *Find(const T &item)
+	{
+		T *pos = this->Begin();
+		const T *end = this->End();
+		while (pos != end && *pos != item) pos++;
+		return pos;
+	}
+
+	/**
+	 * Tests whether a item is present in the vector.
+	 * The '!=' operator of T is used for comparison.
+	 * @param item Item to test for
+	 * @return true iff the item is present
+	 */
+	FORCEINLINE bool Contains(const T &item) const
+	{
+		return this->Find(item) != this->End();
+	}
+
+	/**
+	 * Tests whether a item is present in the vector, and appends it to the end if not.
+	 * The '!=' operator of T is used for comparison.
+	 * @param item Item to test for
+	 * @return true iff the item is was already present
+	 */
+	FORCEINLINE bool Include(const T &item)
+	{
+		bool is_member = this->Contains(item);
+		if (!is_member) *this->Append() = item;
+		return is_member;
+	}
+
+	/**
 	 * Get the number of items in the list.
 	 */
 	FORCEINLINE uint Length() const
