@@ -66,7 +66,7 @@ endif
 ifdef MAN_DIR
 	$(Q)mkdir -p "$(BUNDLE_DIR)/man/"
 	$(Q)cp "$(ROOT_DIR)/docs/openttd.6"       "$(BUNDLE_DIR)/man/"
-	$(Q)gzip "$(BUNDLE_DIR)/man/openttd.6"
+	$(Q)gzip -9 "$(BUNDLE_DIR)/man/openttd.6"
 endif
 	$(Q)cp "$(ROOT_DIR)/media/openttd.32.xpm" "$(BUNDLE_DIR)/media/"
 	$(Q)cp "$(ROOT_DIR)/media/openttd."*.png  "$(BUNDLE_DIR)/media/"
