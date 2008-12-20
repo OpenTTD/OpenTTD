@@ -217,7 +217,13 @@ public:
 	char *name;              ///< Name of vehicle
 
 	TileIndex tile;          ///< Current tile index
-	TileIndex dest_tile;     ///< Heading for this tile
+
+	/**
+	 * Heading for this tile.
+	 * For airports and train stations this tile does not necessarily belong to the destination station,
+	 * but it can be used for heuristical purposes to estimate the distance.
+	 */
+	TileIndex dest_tile;
 
 	Money profit_this_year;        ///< Profit this year << 8, low 8 bits are fract
 	Money profit_last_year;        ///< Profit last year << 8, low 8 bits are fract
