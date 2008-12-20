@@ -13,6 +13,7 @@
 
 #include "queue.h"
 #include "tile_type.h"
+#include "track_type.h"
 
 //#define AYSTAR_DEBUG
 enum {
@@ -30,7 +31,7 @@ enum{
 
 struct AyStarNode {
 	TileIndex tile;
-	int direction;
+	Trackdir direction;
 	uint user_data[2];
 };
 

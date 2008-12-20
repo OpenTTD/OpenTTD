@@ -121,7 +121,7 @@ AyStar *new_AyStar_AiPathFinder(int max_tiles_around, Ai_PathFinderInfo *PathFin
 
 	// Set the start node
 	start_node.parent = NULL;
-	start_node.node.direction = 0;
+	start_node.node.direction = INVALID_TRACKDIR;
 	start_node.node.user_data[0] = 0;
 
 	// Now we add all the starting tiles
@@ -150,7 +150,7 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 
 	// Set the start node
 	start_node.parent = NULL;
-	start_node.node.direction = 0;
+	start_node.node.direction = INVALID_TRACKDIR;
 	start_node.node.user_data[0] = 0;
 	start_node.node.tile = PathFinderInfo->start_tile_tl;
 
@@ -300,7 +300,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 			// The tile can be connected
 			aystar->neighbours[aystar->num_neighbours].tile = atile;
 			aystar->neighbours[aystar->num_neighbours].user_data[0] = 0;
-			aystar->neighbours[aystar->num_neighbours++].direction = 0;
+			aystar->neighbours[aystar->num_neighbours++].direction = INVALID_TRACKDIR;
 		}
 	}
 
@@ -333,7 +333,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 				// We can build a bridge here.. add him to the neighbours
 				aystar->neighbours[aystar->num_neighbours].tile = new_tile;
 				aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_BRIDGE + (dir << 8);
-				aystar->neighbours[aystar->num_neighbours++].direction = 0;
+				aystar->neighbours[aystar->num_neighbours++].direction = INVALID_TRACKDIR;
 				// We can only have 12 neighbours, and we need 1 left for tunnels
 				if (aystar->num_neighbours == 11) break;
 			}
@@ -349,7 +349,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 			if (CmdSucceeded(ret) && IsInclinedSlope(tileh)) {
 				aystar->neighbours[aystar->num_neighbours].tile = _build_tunnel_endtile;
 				aystar->neighbours[aystar->num_neighbours].user_data[0] = AI_PATHFINDER_FLAG_TUNNEL + (dir << 8);
-				aystar->neighbours[aystar->num_neighbours++].direction = 0;
+				aystar->neighbours[aystar->num_neighbours++].direction = INVALID_TRACKDIR;
 			}
 		}
 	}
