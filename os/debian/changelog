@@ -5,6 +5,17 @@ openttd (0.7~svn-1) UNRELEASED; urgency=low
 
  -- Matthijs Kooijman <matthijs@stdin.nl>  Wed, 03 Sep 2008 18:56:04 +0200
 
+openttd (0.6.3-1) unstable; urgency=low
+
+  [ Matthijs Kooijman ]
+  * New upstream release.
+
+  [ Jordi Mallach ]
+  * Add Spanish Debconf template translation, after fixing its corrupted
+    encoding.
+
+ -- Jordi Mallach <jordi@debian.org>  Thu, 02 Oct 2008 16:59:03 +0200
+
 openttd (0.6.2-1) unstable; urgency=low
 
   * New upstream release.

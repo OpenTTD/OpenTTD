@@ -2258,43 +2258,43 @@
 
 0.1.3 (2004-03-18)
 ------------------------------------------------------------------------
-- Fixed message options window
-- Fixed company takeover/purchase
+- Fix: message options window
+- Fix: company takeover/purchase
 - Feature: Improved mouse scroll zooming
-- Fixed station code so it's not possible to steal another player's temporarily deleted station
-- Fixed subsidy owner bug when deleting station
-- Fixed crash when deleting a bridge with a train on it
+- Fix: station code so it's not possible to steal another player's temporarily deleted station
+- Fix: subsidy owner bug when deleting station
+- Fix: crash when deleting a bridge with a train on it
 - Feature: Larger stations and possibility to join stations
-- Fixed missing candy initial cargo payment values
-- Fixed Goods and Food/FizzyDrinks subsidies
-- Fixed graphical glitch in subsidies window
-- Take over company dialog was not shown properly
-- Fixed crash if player windows were open while the company went bankrupt
-- Fixed train slowness on hills
+- Fix: missing candy initial cargo payment values
+- Fix: goods and Food/FizzyDrinks subsidies
+- Fix: graphical glitch in subsidies window
+- Fix: take over company dialog was not shown properly
+- Fix: crash if player windows were open while the company went bankrupt
+- Fix: train slowness on hills
 - Feature: swedish town names (patch by glottis)
 - Feature: more currencies
-- Better window resizing/zooming
-- Added goto road vehicle depot for road vehicle orders
-- Possibility to use either semaphores or signals (Ctrl key)
-- Limited the scrolling rate for year selector in scenario editor
+- Feature: better window resizing/zooming
+- Feature: added goto road vehicle depot for road vehicle orders
+- Feature: possibility to use either semaphores or signals (Ctrl key)
+- Feature: limited the scrolling rate for year selector in scenario editor
 
 
 0.1.2 (2004-03-15)
 ------------------------------------------------------------------------
-- Mouse wheel can be used to zoom in out on win32 (ludde)
-- Implemented some support for resizing the window dynamically in win32 (ludde)
-- Fixed tunnel mouse icon for maglev and monorail
+- Feature: mouse wheel can be used to zoom in out on win32
+- Feature: implemented some support for resizing the window dynamically in win32
+- Fix: tunnel mouse icon for maglev and monorail
 
 
 0.1.1 (2004-03-14)
 ------------------------------------------------------------------------
-- Preliminary presignal support
-- Added external MIDI driver for unix version (by robertnorris)
-- Added DirectMusic driver for Win32 version
-- Fixed problem where directories weren't displayed under Linux (by Markus)
-- Center windows properly in higher resolutions
-- Added "build tracks on slopes" feature
-- Fixed colors in map window for routes
-- Command line -g flag now optionally takes a game to load
-- Fixed road drive side
-- Fixed "Fund road construction" not clickable when unavailable
+- Feature: Preliminary presignal support
+- Add: external MIDI driver for unix version (by robertnorris)
+- Add: DirectMusic driver for Win32 version
+- Fix: problem where directories weren't displayed under Linux (by Markus)
+- Feature: Center windows properly in higher resolutions
+- Add: "build tracks on slopes" feature
+- Fix: colors in map window for routes
+- Feature: Command line -g flag now optionally takes a game to load
+- Fix: road drive side
+- Fix: "Fund road construction" not clickable when unavailable

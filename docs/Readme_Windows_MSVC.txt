@@ -20,7 +20,7 @@ downloading; mostly because the DirectX SDK and Platform SDK are about
 500MB each.
 Download the following files:
 
-	* openttd-useful.zip (http://sf.net/project/showfiles.php?group_id=103924&package_id=114307)
+	* openttd-useful.zip (http://binaries.openttd.org/extra/openttd-useful/)
 	* DirectX 8.1 SDK (http://neuron.tuke.sk/~mizanin/eng/Dx81sdk-include-lib.rar) (or alternatively the latest DirectX SDK from Microsoft)
 	* MS Windows Platform SDK (http://www.microsoft.com/downloads/details.aspx?FamilyId=A55B6B43-E24F-4EA3-A93E-40C0EC4F68E5&displaylang=en)
 	* afxres.h (http://www-d0.fnal.gov/d0dist/dist/packages/d0ve/devel/windows/AFXRES.H)
@@ -29,8 +29,8 @@ Download the following files:
 
 You need an SVN-client to download the source from subversion:
 
-	* CLI Subversion (http://subversion.tigris.org/servlets/ProjectDocumentList?folderID=91)
-	* GUI TortoiseSVN (http://tortoisesvn.tigris.org/download.html)
+	* CLI Subversion (http://subversion.tigris.org/)
+	* GUI TortoiseSVN (http://tortoisesvn.tigris.org/)
 
 
 2) INCLUDES AND LIBRARIES

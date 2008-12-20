@@ -309,10 +309,17 @@ DOS:
   will be generated that does not need cwsdpmi.exe by adding the cswdstub.exe
   to the created OpenTTD binary.
 
+The following libraries are used by OpenTTD for:
+  - libSDL/liballegro: hardware access (video, sound, mouse)
+  - zlib: (de)compressing of savegames
+  - libpng: making screenshots and loading heightmaps
+  - libfreetype: loading generic fonts and rendering them
+  - libfontconfig: searching for fonts, resolving font names to actual fonts
+  - libicu: handling of right-to-left scripts (e.g. Arabic and Persian)
 
 8.0) Translating:
 ---- -------------------
-See http://www.openttd.org/translating.php for up-to-date information.
+See http://www.openttd.org/development for up-to-date information.
 
 The use of the online Translator service, located at
 http://translator2.openttd.org/, is highly encouraged. For a username/password
@@ -335,7 +342,7 @@ Here are some translation guidelines which you should follow closely.
 ---- -------------------
 So, now that you've notified the development team about your intention to
 translate (You did, right? Of course you did.) you can pick up english.txt
-(found in the SVN repository under /lang) and translate.
+(found in the SVN repository under /src/lang) and translate.
 
 You must change the first two lines of the file appropriately:
 
@@ -407,7 +414,8 @@ The OpenTTD team (in alphabetical order):
   Christoph Elsenhans (frosch)   - General coding
   Loïc Guilloux (glx)            - General coding
   Jaroslav Mazanec (KUDr)        - YAPG (Yet Another Pathfinder God) ;)
-  Jonathan Coome (Maedhros)      - High priest of the newGRF Temple
+  Jonathan Coome (Maedhros)      - High priest of the NewGRF Temple
+  Michael Lutz (michi_cc)        - Path based signals
   Attila Bán (MiHaMiX)           - WebTranslator, Nightlies, Wiki and bugtracker host
   Owen Rudge (orudge)            - Forum host, OS/2 port
   Peter Nelson (peter1138)       - Spiritual descendant from newGRF gods

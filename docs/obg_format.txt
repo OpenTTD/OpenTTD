@@ -14,7 +14,7 @@
 ; - `openttd -h` lists all graphics replacements sets it found to be correct
 ; - `openttd -d grf=1` shows warnings/errors when parsing an .obg file
 ; - `openttd -I <name>` starts OpenTTD with the given set (case sensitive)
-; - adding `graphics_set = <name>` to the misc section of openttd.cfg makes
+; - adding `graphicsset = <name>` to the misc section of openttd.cfg makes
 ;   OpenTTD start with that graphics set by default
 ; - there is a command line tool for all platforms called md5sum that can
 ;   create the MD5 checksum you need.
