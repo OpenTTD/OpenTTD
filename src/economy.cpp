@@ -47,6 +47,7 @@
 #include "autoreplace_func.h"
 #include "company_gui.h"
 #include "signs_base.h"
+#include "core/smallvec_type.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -82,6 +83,8 @@ static inline uint32 BigMulSU(const uint32 a, const uint32 b, const uint8 shift)
 {
 	return (uint32)((uint64)a * (uint64)b >> shift);
 }
+
+typedef SmallVector<Industry *, 16> SmallIndustryList;
 
 /* Score info */
 const ScoreInfo _score_info[] = {
@@ -1284,8 +1287,9 @@ static bool FindIndustryToDeliver(TileIndex ind_tile, void *user_data)
  * @param st The station that accepted the cargo
  * @param cargo_type Type of cargo delivered
  * @param nun_pieces Amount of cargo delivered
+ * @param industry_set The destination industry will be inserted into this set
  */
-static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int num_pieces)
+static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int num_pieces, SmallIndustryList *industry_set)
 {
 	if (st->rect.IsEmpty()) return;
 
@@ -1320,28 +1324,13 @@ static void DeliverGoodsToIndustry(const Station *st, CargoID cargo_type, int nu
 	 */
 	if (CircularTileSearch(&start_tile, 2 * max_radius + 1, FindIndustryToDeliver, &callback_data)) {
 		Industry *best = callback_data.ind;
-		const IndustrySpec *indspec = callback_data.indspec;
 		uint accepted_cargo_index = callback_data.cargo_index;
-		assert(best != NULL && indspec != NULL);
-		uint16 callback = indspec->callback_flags;
+		assert(best != NULL);
 
-		best->was_cargo_delivered = true;
-		best->last_cargo_accepted_at = _date;
+		/* Insert the industry into industry_set, if not yet contained */
+		if (industry_set != NULL) industry_set->Include(best);
 
-		if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
-			best->incoming_cargo_waiting[accepted_cargo_index] = min(num_pieces + best->incoming_cargo_waiting[accepted_cargo_index], 0xFFFF);
-			if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) {
-				IndustryProductionCallback(best, 0);
-			} else {
-				InvalidateWindow(WC_INDUSTRY_VIEW, best->index);
-			}
-		} else {
-			best->produced_cargo_waiting[0] = min(best->produced_cargo_waiting[0] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][0] / 256), 0xFFFF);
-			best->produced_cargo_waiting[1] = min(best->produced_cargo_waiting[1] + (num_pieces * indspec->input_cargo_multiplier[accepted_cargo_index][1] / 256), 0xFFFF);
-		}
-
-		TriggerIndustry(best, INDUSTRY_TRIGGER_RECEIVED_CARGO);
-		StartStopIndustryTileAnimation(best, IAT_INDUSTRY_RECEIVED_CARGO);
+		best->incoming_cargo_waiting[accepted_cargo_index] = min(num_pieces + best->incoming_cargo_waiting[accepted_cargo_index], 0xFFFF);
 	}
 }
 
@@ -1411,7 +1400,17 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 	return false;
 }
 
-static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit)
+/**
+ * Delivers goods to industries/towns and calculates the payment
+ * @param num_pieces amount of cargo delivered
+ * @param source Originstation of the cargo
+ * @param dest Station the cargo has been unloaded
+ * @param source_tile The origin of the cargo for distance calculation
+ * @param days_in_transit Travel time
+ * @param industry_set The delivered industry will be inserted into this set, if not yet contained
+ * The cargo is just added to the stockpile of the industry. It is due to the caller to trigger the industry's production machinery
+ */
+static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, StationID dest, TileIndex source_tile, byte days_in_transit, SmallIndustryList *industry_set)
 {
 	bool subsidised;
 	Station *s_from, *s_to;
@@ -1439,7 +1438,7 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	if (cs->town_effect == TE_WATER) s_to->town->new_act_water += num_pieces;
 
 	/* Give the goods to the industry. */
-	DeliverGoodsToIndustry(s_to, cargo_type, num_pieces);
+	DeliverGoodsToIndustry(s_to, cargo_type, num_pieces, industry_set);
 
 	/* Determine profit */
 	profit = GetTransportedGoodsIncome(num_pieces, DistanceManhattan(source_tile, s_to->xy), days_in_transit, cargo_type);
@@ -1455,6 +1454,41 @@ static Money DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	}
 
 	return profit;
+}
+
+/**
+ * Inform the industry about just delivered cargo
+ * DeliverGoodsToIndustry() silently incremented incoming_cargo_waiting, now it is time to do something with the new cargo.
+ * @param i The industry to process
+ */
+static void TriggerIndustryProduction(Industry *i)
+{
+	const IndustrySpec *indspec = GetIndustrySpec(i->type);
+	uint16 callback = indspec->callback_flags;
+
+	i->was_cargo_delivered = true;
+	i->last_cargo_accepted_at = _date;
+
+	if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL) || HasBit(callback, CBM_IND_PRODUCTION_256_TICKS)) {
+		if (HasBit(callback, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) {
+			IndustryProductionCallback(i, 0);
+		} else {
+			InvalidateWindow(WC_INDUSTRY_VIEW, i->index);
+		}
+	} else {
+		for (uint cargo_index = 0; cargo_index < lengthof(i->incoming_cargo_waiting); cargo_index++) {
+			uint cargo_waiting = i->incoming_cargo_waiting[cargo_index];
+			if (cargo_waiting == 0) continue;
+
+			i->produced_cargo_waiting[0] = min(i->produced_cargo_waiting[0] + (cargo_waiting * indspec->input_cargo_multiplier[cargo_index][0] / 256), 0xFFFF);
+			i->produced_cargo_waiting[1] = min(i->produced_cargo_waiting[1] + (cargo_waiting * indspec->input_cargo_multiplier[cargo_index][1] / 256), 0xFFFF);
+
+			i->incoming_cargo_waiting[cargo_index] = 0;
+		}
+	}
+
+	TriggerIndustry(i, INDUSTRY_TRIGGER_RECEIVED_CARGO);
+	StartStopIndustryTileAnimation(i, IAT_INDUSTRY_RECEIVED_CARGO);
 }
 
 /**
@@ -1482,6 +1516,10 @@ void VehiclePayment(Vehicle *front_v)
 	/* Start unloading in at the first possible moment */
 	front_v->load_unload_time_rem = 1;
 
+	/* Collect delivered industries */
+	static SmallIndustryList industry_set;
+	industry_set.Clear();
+
 	for (Vehicle *v = front_v; v != NULL; v = v->Next()) {
 		/* No cargo to unload */
 		if (v->cargo_cap == 0 || v->cargo.Empty() || front_v->current_order.GetUnloadType() & OUFB_NO_UNLOAD) continue;
@@ -1505,7 +1543,7 @@ void VehiclePayment(Vehicle *front_v)
 				st->time_since_unload = 0;
 
 				/* handle end of route payment */
-				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit);
+				Money profit = DeliverGoods(cp->count, v->cargo_type, cp->source, last_visited, cp->source_xy, cp->days_in_transit, &industry_set);
 				cp->paid_for = true;
 				route_profit   += profit; // display amount paid for final route delivery, A-D of a chain A-B-C-D
 				vehicle_profit += profit - cp->feeder_share;                    // whole vehicle is not payed for transfers picked up earlier
@@ -1533,6 +1571,12 @@ void VehiclePayment(Vehicle *front_v)
 			}
 		}
 		v->cargo.InvalidateCache();
+	}
+
+	/* Call the production machinery of industries only once for every vehicle chain */
+	const Industry *const *isend = industry_set.End();
+	for (Industry **iid = industry_set.Begin(); iid != isend; iid++) {
+		TriggerIndustryProduction(*iid);
 	}
 
 	if (virtual_profit > 0) {
