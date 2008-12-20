@@ -325,18 +325,6 @@ static void FixOldTowns()
 	}
 }
 
-static void FixOldStations()
-{
-	Station *st;
-
-	FOR_ALL_STATIONS(st) {
-		/* Check if we need to swap width and height for the station */
-		if (st->train_tile != 0 && GetRailStationAxis(st->train_tile) != AXIS_X) {
-			Swap(st->trainst_w, st->trainst_h);
-		}
-	}
-}
-
 static StringID *_old_vehicle_names = NULL;
 
 static void FixOldVehicles()
@@ -614,7 +602,6 @@ static bool LoadOldCargoPaymentRate(LoadgameState *ls, int num)
 	return true;
 }
 
-static uint8  _old_platforms;
 static uint   _current_station_id;
 static uint16 _waiting_acceptance;
 static uint8  _cargo_source;
@@ -659,8 +646,7 @@ static const OldChunks station_chunk[] = {
 	OCL_SVAR(   OC_TILE, Station, train_tile ),
 	OCL_SVAR(   OC_TILE, Station, airport_tile ),
 	OCL_SVAR(   OC_TILE, Station, dock_tile ),
-
-	OCL_VAR (  OC_UINT8,   1, &_old_platforms ),
+	OCL_SVAR(  OC_UINT8, Station, trainst_w ),
 
 	OCL_NULL( 1 ),         ///< sort-index, no longer in use
 	OCL_NULL( 2 ),         ///< sign-width, no longer in use
@@ -700,14 +686,6 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 		return false;
 
 	if (st->IsValid()) {
-		if (st->train_tile) {
-			/* Calculate the trainst_w and trainst_h */
-			uint w = GB(_old_platforms, 3, 3);
-			uint h = GB(_old_platforms, 0, 3);
-			st->trainst_w = w;
-			st->trainst_h = h;
-		}
-
 		st->town    = GetTown(REMAP_TOWN_IDX(_old_town_index));
 		st->string_id = RemapOldStringID(_old_string_id);
 	}
@@ -1692,7 +1670,6 @@ static bool LoadOldMain(LoadgameState *ls)
 
 	/* Fix the game to be compatible with OpenTTD */
 	FixOldTowns();
-	FixOldStations();
 	FixOldVehicles();
 
 	/* We have a new difficulty setting */

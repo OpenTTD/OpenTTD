@@ -3420,16 +3420,6 @@ static void Load_STNS()
 		Station *st = new (index) Station();
 
 		SaveLoad_STNS(st);
-
-		/* this means it's an oldstyle savegame without support for nonuniform stations */
-		if (st->train_tile != 0 && st->trainst_h == 0) {
-			uint w = GB(st->trainst_w, 4, 4);
-			uint h = GB(st->trainst_w, 0, 4);
-
-			if (GetRailStationAxis(st->train_tile) != AXIS_X) Swap(w, h);
-			st->trainst_w = w;
-			st->trainst_h = h;
-		}
 	}
 
 	/* This is to ensure all pointers are within the limits of _stations_size */

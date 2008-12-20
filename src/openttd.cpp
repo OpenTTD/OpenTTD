@@ -1326,6 +1326,26 @@ bool AfterLoadGame()
 
 	if (CheckSavegameVersion(98)) GamelogGRFAddList(_grfconfig);
 
+	/* in very old versions, size of train stations was stored differently */
+	if (CheckSavegameVersion(2)) {
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (st->train_tile != 0 && st->trainst_h == 0) {
+				extern SavegameType _savegame_type;
+				uint n = _savegame_type == SGT_OTTD ? 4 : 3; // OTTD uses 4 bits per dimensions, TTD 3 bits
+				uint w = GB(st->trainst_w, n, n);
+				uint h = GB(st->trainst_w, 0, n);
+
+				if (GetRailStationAxis(st->train_tile) != AXIS_X) Swap(w, h);
+
+				st->trainst_w = w;
+				st->trainst_h = h;
+
+				assert(GetStationIndex(st->train_tile + TileDiffXY(w - 1, h - 1)) == st->index);
+			}
+		}
+	}
+
 	/* in version 2.1 of the savegame, town owner was unified. */
 	if (CheckSavegameVersionOldStyle(2, 1)) ConvertTownOwner();
 
