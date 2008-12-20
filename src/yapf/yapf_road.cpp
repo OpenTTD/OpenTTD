@@ -85,7 +85,7 @@ public:
 
 			const Vehicle *v = Yapf().GetVehicle();
 			// we have reached the vehicle's destination - segment should end here to avoid target skipping
-			if (v->current_order.IsType(OT_GOTO_STATION) && tile == v->dest_tile) break;
+			if (Yapf().PfDetectDestinationTile(tile, trackdir)) break;
 
 			// stop if we have just entered the depot
 			if (IsRoadDepotTile(tile) && trackdir == DiagDirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
@@ -153,6 +153,11 @@ public:
 		return bDest;
 	}
 
+	FORCEINLINE bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
+	{
+		return IsRoadDepotTile(tile);
+	}
+
 	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
 	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
@@ -193,6 +198,11 @@ public:
 	{
 		bool bDest = (n.m_segment_last_tile == m_destTile) && ((m_destTrackdirs & TrackdirToTrackdirBits(n.m_segment_last_td)) != TRACKDIR_BIT_NONE);
 		return bDest;
+	}
+
+	FORCEINLINE bool PfDetectDestinationTile(TileIndex tile, Trackdir trackdir)
+	{
+		return tile == m_destTile && ((m_destTrackdirs & TrackdirToTrackdirBits(trackdir)) != TRACKDIR_BIT_NONE);
 	}
 
 	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
