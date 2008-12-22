@@ -807,9 +807,9 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			* Other client(s)/server:
 			* _local_company/_network_playas: what they play as
 			* cid = requested company/company of joining client */
-			uint16 cid = p2; // ClientID
+			ClientIndex cid = (ClientIndex)p2;
 
-			/* Has the network client a correct ClientID? */
+			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
 			if (cid >= MAX_CLIENT_INFO) return CommandCost();
 
@@ -823,7 +823,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (_network_server) {
 					NetworkClientInfo *ci = &_network_client_info[cid];
 					ci->client_playas = COMPANY_SPECTATOR;
-					NetworkUpdateClientInfo(ci->client_index);
+					NetworkUpdateClientInfo(ci->client_id);
 				} else if (_local_company == COMPANY_SPECTATOR) {
 					_network_playas = COMPANY_SPECTATOR;
 				}
@@ -859,7 +859,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				* DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 				NetworkClientInfo *ci = &_network_client_info[cid];
 				ci->client_playas = c->index;
-				NetworkUpdateClientInfo(ci->client_index);
+				NetworkUpdateClientInfo(ci->client_id);
 
 				if (IsValidCompanyID(ci->client_playas)) {
 					CompanyID company_backup = _local_company;

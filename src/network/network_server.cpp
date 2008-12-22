@@ -46,14 +46,14 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkTCPSocketHandler
 	// Packet: SERVER_CLIENT_INFO
 	// Function: Sends info about a client
 	// Data:
-	//    uint16:  The index of the client (always unique on a server. 1 = server)
+	//    uint32:  The identifier of the client (always unique on a server. 1 = server, 0 is invalid)
 	//    uint8:  As which company the client is playing
 	//    String: The name of the client
 	//
 
-	if (ci->client_index != NETWORK_EMPTY_INDEX) {
+	if (ci->client_id != INVALID_CLIENT_ID) {
 		Packet *p = NetworkSend_Init(PACKET_SERVER_CLIENT_INFO);
-		p->Send_uint16(ci->client_index);
+		p->Send_uint32(ci->client_id);
 		p->Send_uint8 (ci->client_playas);
 		p->Send_string(ci->client_name);
 
@@ -165,11 +165,11 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 				if (error == NETWORK_ERROR_NOT_AUTHORIZED || error == NETWORK_ERROR_NOT_EXPECTED || error == NETWORK_ERROR_WRONG_REVISION)
 					error = NETWORK_ERROR_ILLEGAL_PACKET;
 
-				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->index, error);
+				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, error);
 			}
 		}
 	} else {
-		DEBUG(net, 1, "Client %d made an error and has been disconnected. Reason: '%s'", cs->index, str);
+		DEBUG(net, 1, "Client %d made an error and has been disconnected. Reason: '%s'", cs->client_id, str);
 	}
 
 	cs->has_quit = true;
@@ -236,7 +236,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	// Packet: SERVER_WELCOME
 	// Function: The client is joined and ready to receive his map
 	// Data:
-	//    uint16:  Own ClientID
+	//    uint32:  Own Client identifier
 	//
 
 	Packet *p;
@@ -249,7 +249,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	_network_game_info.clients_on++;
 
 	p = NetworkSend_Init(PACKET_SERVER_WELCOME);
-	p->Send_uint16(cs->index);
+	p->Send_uint32(cs->client_id);
 	p->Send_uint32(_settings_game.game_creation.generation_seed);
 	p->Send_string(_settings_client.network.network_id);
 	cs->Send_Packet(p);
@@ -260,7 +260,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, DEREF_CLIENT_INFO(new_cs));
 	}
 	// Also send the info of the server
-	SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX));
+	SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER));
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
@@ -402,7 +402,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 	}
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkTCPSocketHandler *cs, uint16 client_index)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkTCPSocketHandler *cs, ClientID client_id)
 {
 	//
 	// Packet: SERVER_JOIN
@@ -410,12 +410,12 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkTCPSocketHandler *cs, u
 	//     PACKET_CLIENT_MAP_OK) Mostly what directly follows is a
 	//     PACKET_SERVER_CLIENT_INFO
 	// Data:
-	//    uint16:  Client-Index
+	//    uint32:  Client-identifier
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_JOIN);
 
-	p->Send_uint16(client_index);
+	p->Send_uint32(client_id);
 
 	cs->Send_Packet(p);
 }
@@ -499,60 +499,60 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkTCPSocketHandler *cs
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, NetworkAction action, uint16 client_index, bool self_send, const char *msg)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, NetworkAction action, ClientID client_id, bool self_send, const char *msg)
 {
 	//
 	// Packet: SERVER_CHAT
 	// Function: Sends a chat-packet to the client
 	// Data:
 	//    uint8:  ActionID (see network_data.h, NetworkAction)
-	//    uint16:  Client-index
+	//    uint32:  Client-identifier
 	//    String: Message (max NETWORK_CHAT_LENGTH)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_CHAT);
 
 	p->Send_uint8 (action);
-	p->Send_uint16(client_index);
+	p->Send_uint32(client_id);
 	p->Send_bool  (self_send);
 	p->Send_string(msg);
 
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkTCPSocketHandler *cs, uint16 client_index, NetworkErrorCode errorno)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkTCPSocketHandler *cs, ClientID client_id, NetworkErrorCode errorno)
 {
 	//
 	// Packet: SERVER_ERROR_QUIT
 	// Function: One of the clients made an error and is quiting the game
 	//      This packet informs the other clients of that.
 	// Data:
-	//    uint16:  Client-index
+	//    uint32:  Client-identifier
 	//    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR_QUIT);
 
-	p->Send_uint16(client_index);
+	p->Send_uint32(client_id);
 	p->Send_uint8 (errorno);
 
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkTCPSocketHandler *cs, uint16 client_index, const char *leavemsg)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkTCPSocketHandler *cs, ClientID client_id, const char *leavemsg)
 {
 	//
 	// Packet: SERVER_ERROR_QUIT
 	// Function: A client left the game, and this packets informs the other clients
 	//      of that.
 	// Data:
-	//    uint16:  Client-index
+	//    uint32:  Client-identifier
 	//    String: leave-message
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_QUIT);
 
-	p->Send_uint16(client_index);
+	p->Send_uint32(client_id);
 	p->Send_string(leavemsg);
 
 	cs->Send_Packet(p);
@@ -800,7 +800,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 		FOR_ALL_CLIENTS(new_cs) {
 			if (new_cs->status > STATUS_AUTH) {
 				SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(new_cs, DEREF_CLIENT_INFO(cs));
-				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, cs->index);
+				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, cs->client_id);
 			}
 		}
 
@@ -808,7 +808,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 			/* Now pause the game till the client is in sync */
 			DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 
-			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (incoming client)", NETWORK_SERVER_INDEX);
+			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (incoming client)", CLIENT_ID_SERVER);
 		}
 	} else {
 		// Wrong status for this packet, give a warning to client, and close connection
@@ -825,18 +825,18 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
 {
 	byte flags = GetCommandFlags(cp->cmd);
 
-	if (flags & CMD_SERVER && ci->client_index != NETWORK_SERVER_INDEX) {
-		IConsolePrintF(CC_ERROR, "WARNING: server only command from client %d (IP: %s), kicking...", ci->client_index, GetClientIP(ci));
+	if (flags & CMD_SERVER && ci->client_id != CLIENT_ID_SERVER) {
+		IConsolePrintF(CC_ERROR, "WARNING: server only command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
 		return false;
 	}
 
 	if (flags & CMD_OFFLINE) {
-		IConsolePrintF(CC_ERROR, "WARNING: offline only command from client %d (IP: %s), kicking...", ci->client_index, GetClientIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: offline only command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
 		return false;
 	}
 
-	if (cp->cmd != CMD_COMPANY_CTRL && !IsValidCompanyID(cp->company) && ci->client_index != NETWORK_SERVER_INDEX) {
-		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_index, GetClientIP(ci));
+	if (cp->cmd != CMD_COMPANY_CTRL && !IsValidCompanyID(cp->company) && ci->client_id != CLIENT_ID_SERVER) {
+		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
 		return false;
 	}
 
@@ -879,7 +879,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	/* Check if cp->cmd is valid */
 	if (!IsValidCommand(cp->cmd)) {
-		IConsolePrintF(CC_ERROR, "WARNING: invalid command from client %d (IP: %s).", ci->client_index, GetClientIP(ci));
+		IConsolePrintF(CC_ERROR, "WARNING: invalid command from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		free(cp);
 		return;
@@ -977,7 +977,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
-			SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->index, errorno);
+			SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, errorno);
 		}
 	}
 
@@ -1006,7 +1006,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
-			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->index, str);
+			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->client_id, str);
 		}
 	}
 
@@ -1033,7 +1033,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 
 		if (_settings_client.network.pause_on_join) {
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", NETWORK_SERVER_INDEX);
+			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", CLIENT_ID_SERVER);
 		}
 
 		CheckMinActiveClients();
@@ -1050,7 +1050,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 
 
 
-void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const char *msg, uint16 from_index)
+void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const char *msg, ClientID from_id)
 {
 	NetworkTCPSocketHandler *cs;
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
@@ -1058,32 +1058,32 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 	switch (desttype) {
 	case DESTTYPE_CLIENT:
 		/* Are we sending to the server? */
-		if (dest == NETWORK_SERVER_INDEX) {
-			ci = NetworkFindClientInfoFromIndex(from_index);
+		if ((ClientID)dest == CLIENT_ID_SERVER) {
+			ci = NetworkFindClientInfoFromIndex(from_id);
 			/* Display the text locally, and that is it */
 			if (ci != NULL)
 				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, "%s", msg);
 		} else {
 			/* Else find the client to send the message to */
 			FOR_ALL_CLIENTS(cs) {
-				if (cs->index == dest) {
-					SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, false, msg);
+				if (cs->client_id == (ClientID)dest) {
+					SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg);
 					break;
 				}
 			}
 		}
 
 		// Display the message locally (so you know you have sent it)
-		if (from_index != dest) {
-			if (from_index == NETWORK_SERVER_INDEX) {
-				ci = NetworkFindClientInfoFromIndex(from_index);
-				ci_to = NetworkFindClientInfoFromIndex(dest);
+		if (from_id != (ClientID)dest) {
+			if (from_id == CLIENT_ID_SERVER) {
+				ci = NetworkFindClientInfoFromIndex(from_id);
+				ci_to = NetworkFindClientInfoFromIndex((ClientID)dest);
 				if (ci != NULL && ci_to != NULL)
 					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), true, ci_to->client_name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {
-					if (cs->index == from_index) {
-						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, dest, true, msg);
+					if (cs->client_id == from_id) {
+						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, (ClientID)dest, true, msg);
 						break;
 					}
 				}
@@ -1097,18 +1097,18 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		ci_to = NULL;
 		FOR_ALL_CLIENTS(cs) {
 			ci = DEREF_CLIENT_INFO(cs);
-			if (ci->client_playas == dest) {
-				SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, false, msg);
-				if (cs->index == from_index) show_local = false;
+			if (ci->client_playas == (CompanyID)dest) {
+				SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg);
+				if (cs->client_id == from_id) show_local = false;
 				ci_to = ci; // Remember a client that is in the company for company-name
 			}
 		}
 
-		ci = NetworkFindClientInfoFromIndex(from_index);
-		ci_own = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+		ci = NetworkFindClientInfoFromIndex(from_id);
+		ci_own = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
 		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
 			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, "%s", msg);
-			if (from_index == NETWORK_SERVER_INDEX) show_local = false;
+			if (from_id == CLIENT_ID_SERVER) show_local = false;
 			ci_to = ci_own;
 		}
 
@@ -1117,7 +1117,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 
 		// Display the message locally (so you know you have sent it)
 		if (ci != NULL && show_local) {
-			if (from_index == NETWORK_SERVER_INDEX) {
+			if (from_id == CLIENT_ID_SERVER) {
 				char name[NETWORK_NAME_LENGTH];
 				StringID str = IsValidCompanyID(ci_to->client_playas) ? STR_COMPANY_NAME : STR_NETWORK_SPECTATORS;
 				SetDParam(0, ci_to->client_playas);
@@ -1125,8 +1125,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci_own->client_playas), true, name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {
-					if (cs->index == from_index) {
-						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, ci_to->client_index, true, msg);
+					if (cs->client_id == from_id) {
+						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, ci_to->client_id, true, msg);
 					}
 				}
 			}
@@ -1138,9 +1138,9 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		/* fall-through to next case */
 	case DESTTYPE_BROADCAST:
 		FOR_ALL_CLIENTS(cs) {
-			SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, false, msg);
+			SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg);
 		}
-		ci = NetworkFindClientInfoFromIndex(from_index);
+		ci = NetworkFindClientInfoFromIndex(from_id);
 		if (ci != NULL)
 			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, "%s", msg);
 		break;
@@ -1157,7 +1157,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
 	DestType desttype = (DestType)p->Recv_uint8();
-	int dest = p->Recv_uint16();
+	int dest = p->Recv_uint32();
 	char msg[NETWORK_CHAT_LENGTH];
 
 	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
@@ -1170,10 +1170,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 		case NETWORK_ACTION_CHAT:
 		case NETWORK_ACTION_CHAT_CLIENT:
 		case NETWORK_ACTION_CHAT_COMPANY:
-			NetworkServerSendChat(action, desttype, dest, msg, cs->index);
+			NetworkServerSendChat(action, desttype, dest, msg, cs->client_id);
 			break;
 		default:
-			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_index, GetClientIP(ci));
+			IConsolePrintF(CC_ERROR, "WARNING: invalid chat action from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 			break;
 	}
@@ -1219,7 +1219,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 		if (NetworkFindName(client_name)) {
 			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", client_name);
 			strecpy(ci->client_name, client_name, lastof(ci->client_name));
-			NetworkUpdateClientInfo(ci->client_index);
+			NetworkUpdateClientInfo(ci->client_id);
 		}
 	}
 }
@@ -1235,15 +1235,15 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 	p->Recv_string(command, sizeof(command));
 
 	if (strcmp(pass, _settings_client.network.rcon_password) != 0) {
-		DEBUG(net, 0, "[rcon] wrong password from client-id %d", cs->index);
+		DEBUG(net, 0, "[rcon] wrong password from client-id %d", cs->client_id);
 		return;
 	}
 
-	DEBUG(net, 0, "[rcon] client-id %d executed: '%s'", cs->index, command);
+	DEBUG(net, 0, "[rcon] client-id %d executed: '%s'", cs->client_id, command);
 
-	_redirect_console_to_client = cs->index;
+	_redirect_console_to_client = cs->client_id;
 	IConsoleCmdExec(command);
-	_redirect_console_to_client = 0;
+	_redirect_console_to_client = INVALID_CLIENT_ID;
 	return;
 }
 
@@ -1369,7 +1369,7 @@ void NetworkPopulateCompanyInfo()
 		}
 	}
 
-	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+	ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
 	// Register local company (if not dedicated)
 	if (ci != NULL && IsValidCompanyID(ci->client_playas))
 		strecpy(_network_company_info[ci->client_playas].clients, ci->client_name, lastof(_network_company_info[ci->client_playas].clients));
@@ -1390,11 +1390,11 @@ void NetworkPopulateCompanyInfo()
 	}
 }
 
-// Send a packet to all clients with updated info about this client_index
-void NetworkUpdateClientInfo(uint16 client_index)
+// Send a packet to all clients with updated info about this client_id
+void NetworkUpdateClientInfo(ClientID client_id)
 {
 	NetworkTCPSocketHandler *cs;
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(client_index);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(client_id);
 
 	if (ci == NULL) return;
 
@@ -1436,7 +1436,7 @@ static void NetworkAutoCleanCompanies()
 	}
 
 	if (!_network_dedicated) {
-		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+		ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
 		if (IsValidCompanyID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
@@ -1494,7 +1494,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 			}
 		}
 		// Check if it is the same as the server-name
-		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+		ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
 		if (ci != NULL) {
 			if (strcmp(ci->client_name, new_name) == 0) found_name = false; // name already in use
 		}
@@ -1568,14 +1568,14 @@ void NetworkServer_Tick(bool send_frame)
 				if (lag > 3) {
 					// Client did still not report in after 4 game-day, drop him
 					//  (that is, the 3 of above, + 1 before any lag is counted)
-					IConsolePrintF(CC_ERROR,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->index);
+					IConsolePrintF(CC_ERROR,"Client #%d is dropped because the client did not respond for more than 4 game-days", cs->client_id);
 					NetworkCloseClient(cs);
 					continue;
 				}
 
 				// Report once per time we detect the lag
 				if (cs->lag_test == 0) {
-					IConsolePrintF(CC_WARNING,"[%d] Client #%d is slow, try increasing *net_frame_freq to a higher value!", _frame_counter, cs->index);
+					IConsolePrintF(CC_WARNING,"[%d] Client #%d is slow, try increasing *net_frame_freq to a higher value!", _frame_counter, cs->client_id);
 					cs->lag_test = 1;
 				}
 			} else {
@@ -1584,13 +1584,13 @@ void NetworkServer_Tick(bool send_frame)
 		} else if (cs->status == STATUS_PRE_ACTIVE) {
 			int lag = NetworkCalculateLag(cs);
 			if (lag > _settings_client.network.max_join_time) {
-				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->index, _settings_client.network.max_join_time);
+				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks for him to join", cs->client_id, _settings_client.network.max_join_time);
 				NetworkCloseClient(cs);
 			}
 		} else if (cs->status == STATUS_INACTIVE) {
 			int lag = NetworkCalculateLag(cs);
 			if (lag > 4 * DAY_TICKS) {
-				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->index, 4 * DAY_TICKS);
+				IConsolePrintF(CC_ERROR,"Client #%d is dropped because it took longer than %d ticks to start the joining process", cs->client_id, 4 * DAY_TICKS);
 				NetworkCloseClient(cs);
 			}
 		}
@@ -1628,12 +1628,12 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner)
 	/* The server has to handle all administrative issues, for example
 	 * updating and notifying all clients of what has happened */
 	NetworkTCPSocketHandler *cs;
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
 
 	/* The server has just changed from owner */
 	if (current_owner == ci->client_playas) {
 		ci->client_playas = new_owner;
-		NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+		NetworkUpdateClientInfo(CLIENT_ID_SERVER);
 	}
 
 	/* Find all clients that were in control of this company, and mark them as new_owner */
@@ -1641,7 +1641,7 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner)
 		ci = DEREF_CLIENT_INFO(cs);
 		if (current_owner == ci->client_playas) {
 			ci->client_playas = new_owner;
-			NetworkUpdateClientInfo(ci->client_index);
+			NetworkUpdateClientInfo(ci->client_id);
 		}
 	}
 }
@@ -1675,20 +1675,20 @@ void NetworkServerShowStatusToConsole()
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
-			cs->index, ci->client_name, status, lag,
+			cs->client_id, ci->client_name, status, lag,
 			ci->client_playas + (IsValidCompanyID(ci->client_playas) ? 1 : 0),
 			GetClientIP(ci), ci->unique_id);
 	}
 }
 
-void NetworkServerSendRcon(uint16 client_index, ConsoleColour colour_code, const char *string)
+void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const char *string)
 {
-	SEND_COMMAND(PACKET_SERVER_RCON)(NetworkFindClientStateFromIndex(client_index), colour_code, string);
+	SEND_COMMAND(PACKET_SERVER_RCON)(NetworkFindClientStateFromClientID(client_id), colour_code, string);
 }
 
-void NetworkServerSendError(uint16 client_index, NetworkErrorCode error)
+void NetworkServerSendError(ClientID client_id, NetworkErrorCode error)
 {
-	SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(client_index), error);
+	SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromClientID(client_id), error);
 }
 
 bool NetworkCompanyHasClients(CompanyID company)

@@ -1447,7 +1447,7 @@ static void ClientList_GiveMoney(byte client_no)
 static void ClientList_SpeakToClient(byte client_no)
 {
 	if (NetworkFindClientInfo(client_no) != NULL) {
-		ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, NetworkFindClientInfo(client_no)->client_index);
+		ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, NetworkFindClientInfo(client_no)->client_id);
 	}
 }
 
@@ -1488,7 +1488,7 @@ struct NetworkClientListPopupWindow : Window {
 		const NetworkClientInfo *ci = NetworkFindClientInfo(client_no);
 
 		int i = 0;
-		if (_network_own_client_index != ci->client_index) {
+		if (_network_own_client_id != ci->client_id) {
 			GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT, lastof(this->action[i]));
 			this->proc[i++] = &ClientList_SpeakToClient;
 		}
@@ -1500,7 +1500,7 @@ struct NetworkClientListPopupWindow : Window {
 		GetString(this->action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL, lastof(this->action[i]));
 		this->proc[i++] = &ClientList_SpeakToAll;
 
-		if (_network_own_client_index != ci->client_index) {
+		if (_network_own_client_id != ci->client_id) {
 			/* We are no spectator and the company we want to give money to is no spectator and money gifts are allowed */
 			if (IsValidCompanyID(_network_playas) && IsValidCompanyID(ci->client_playas) && _settings_game.economy.give_money) {
 				GetString(this->action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(this->action[i]));
@@ -1509,7 +1509,7 @@ struct NetworkClientListPopupWindow : Window {
 		}
 
 		/* A server can kick clients (but not himself) */
-		if (_network_server && _network_own_client_index != ci->client_index) {
+		if (_network_server && _network_own_client_id != ci->client_id) {
 			GetString(this->action[i], STR_NETWORK_CLIENTLIST_KICK, lastof(this->action[i]));
 			this->proc[i++] = &ClientList_Kick;
 
@@ -1684,7 +1684,7 @@ struct NetworkClientListWindow : Window
 				colour = TC_BLACK;
 			}
 
-			if (ci->client_index == NETWORK_SERVER_INDEX) {
+			if (ci->client_id == CLIENT_ID_SERVER) {
 				DrawString(4, y, STR_NETWORK_SERVER, colour);
 			} else {
 				DrawString(4, y, STR_NETWORK_CLIENT, colour);

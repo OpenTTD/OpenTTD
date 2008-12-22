@@ -43,6 +43,8 @@
 #include "table/strings.h"
 #include "../company_base.h"
 
+DECLARE_POSTFIX_INCREMENT(ClientID);
+
 bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
@@ -50,8 +52,8 @@ bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkServerGameInfo _network_game_info;
 NetworkCompanyInfo _network_company_info[MAX_COMPANIES];
 NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
-uint16 _network_own_client_index;
-uint16 _redirect_console_to_client;
+ClientID _network_own_client_id;
+ClientID _redirect_console_to_client;
 bool _network_need_advertise;
 uint32 _network_last_advertise_frame;
 uint8 _network_reconnect;
@@ -92,19 +94,19 @@ static SOCKET _listensocket;
 
 // The amount of clients connected
 static byte _network_clients_connected = 0;
-// The index counter for new clients (is never decreased)
-static uint16 _network_client_index = NETWORK_SERVER_INDEX + 1;
+// The identifier counter for new clients (is never decreased)
+static ClientID _network_client_id = CLIENT_ID_FIRST;
 
 /* Some externs / forwards */
 extern void StateGameLoop();
 
-// Function that looks up the CI for a given client-index
-NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
+// Function that looks up the CI for a given client-identifier
+NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientID client_id)
 {
 	NetworkClientInfo *ci;
 
 	for (ci = _network_client_info; ci != endof(_network_client_info); ci++) {
-		if (ci->client_index == client_index) return ci;
+		if (ci->client_id == client_id) return ci;
 	}
 
 	return NULL;
@@ -125,13 +127,13 @@ NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip)
 	return NULL;
 }
 
-// Function that looks up the CS for a given client-index
-NetworkTCPSocketHandler *NetworkFindClientStateFromIndex(uint16 client_index)
+// Function that looks up the CS for a given client-identifier
+NetworkTCPSocketHandler *NetworkFindClientStateFromClientID(ClientID client_id)
 {
 	NetworkTCPSocketHandler *cs;
 
 	for (cs = _clients; cs != endof(_clients); cs++) {
-		if (cs->index == client_index) return cs;
+		if (cs->client_id == client_id) return cs;
 	}
 
 	return NULL;
@@ -144,7 +146,7 @@ void NetworkGetClientName(char *client_name, size_t size, const NetworkTCPSocket
 	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 
 	if (ci->client_name[0] == '\0') {
-		snprintf(client_name, size, "Client #%4d", cs->index);
+		snprintf(client_name, size, "Client #%4d", cs->client_id);
 	} else {
 		ttd_strlcpy(client_name, ci->client_name, size);
 	}
@@ -361,13 +363,13 @@ void CheckMinActiveClients()
 
 		_min_active_clients_paused = true;
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", CLIENT_ID_SERVER);
 	} else {
 		if (!_min_active_clients_paused) return;
 
 		_min_active_clients_paused = false;
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", CLIENT_ID_SERVER);
 	}
 }
 
@@ -420,8 +422,8 @@ static NetworkTCPSocketHandler *NetworkAllocClient(SOCKET s)
 		NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 		memset(ci, 0, sizeof(*ci));
 
-		cs->index = _network_client_index++;
-		ci->client_index = cs->index;
+		cs->client_id = _network_client_id++;
+		ci->client_id = cs->client_id;
 		ci->client_playas = COMPANY_INACTIVE_CLIENT;
 		ci->join_date = _date;
 
@@ -441,7 +443,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 		return;
 	}
 
-	DEBUG(net, 1, "Closed client connection %d", cs->index);
+	DEBUG(net, 1, "Closed client connection %d", cs->client_id);
 
 	if (!cs->has_quit && _network_server && cs->status > STATUS_INACTIVE) {
 		// We did not receive a leave message from this client...
@@ -459,7 +461,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 		// Inform other clients of this... strange leaving ;)
 		FOR_ALL_CLIENTS(new_cs) {
 			if (new_cs->status > STATUS_AUTH && cs != new_cs) {
-				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->index, errorno);
+				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, errorno);
 			}
 		}
 	}
@@ -467,7 +469,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
 	if (cs->status == STATUS_PRE_ACTIVE && _settings_client.network.pause_on_join) {
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", CLIENT_ID_SERVER);
 	}
 
 	cs->Destroy();
@@ -493,8 +495,8 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 	// Reset the status of the last socket
 	cs->sock = INVALID_SOCKET;
 	cs->status = STATUS_INACTIVE;
-	cs->index = NETWORK_EMPTY_INDEX;
-	ci->client_index = NETWORK_EMPTY_INDEX;
+	cs->client_id = INVALID_CLIENT_ID;
+	ci->client_id = INVALID_CLIENT_ID;
 
 	CheckMinActiveClients();
 }
@@ -808,11 +810,11 @@ static void NetworkInitGameInfo()
 	_network_game_info.start_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 
 	// We use _network_client_info[MAX_CLIENT_INFO - 1] to store the server-data in it
-	//  The index is NETWORK_SERVER_INDEX ( = 1)
+	//  The client identifier is CLIENT_ID_SERVER ( = 1)
 	ci = &_network_client_info[MAX_CLIENT_INFO - 1];
 	memset(ci, 0, sizeof(*ci));
 
-	ci->client_index = NETWORK_SERVER_INDEX;
+	ci->client_id = CLIENT_ID_SERVER;
 	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : _local_company;
 
 	strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
@@ -840,7 +842,7 @@ bool NetworkServerStart()
 	_frame_counter_server = 0;
 	_frame_counter_max = 0;
 	_last_sync_frame = 0;
-	_network_own_client_index = NETWORK_SERVER_INDEX;
+	_network_own_client_id = CLIENT_ID_SERVER;
 
 	/* Non-dedicated server will always be company #1 */
 	if (!_network_dedicated) _network_playas = COMPANY_FIRST;

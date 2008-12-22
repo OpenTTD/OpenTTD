@@ -14,8 +14,8 @@ extern NetworkServerGameInfo _network_game_info;
 extern NetworkCompanyInfo _network_company_info[MAX_COMPANIES];
 extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 
-extern uint16 _network_own_client_index;
-extern uint16 _redirect_console_to_client;
+extern ClientID _network_own_client_id;
+extern ClientID _redirect_console_to_client;
 extern bool _network_need_advertise;
 extern uint32 _network_last_advertise_frame;
 extern uint8 _network_reconnect;
@@ -36,7 +36,7 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 void NetworkStartDebugLog(const char *hostname, uint16 port);
 void NetworkPopulateCompanyInfo();
 
-void NetworkUpdateClientInfo(uint16 client_index);
+void NetworkUpdateClientInfo(ClientID client_id);
 bool NetworkClientConnectGame(const char *host, uint16 port);
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg);
@@ -49,20 +49,20 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner);
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
 
-NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index);
+NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientID client_id);
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
 const char* GetClientIP(const NetworkClientInfo *ci);
 
-void NetworkServerSendRcon(uint16 client_index, ConsoleColour colour_code, const char *string);
-void NetworkServerSendError(uint16 client_index, NetworkErrorCode error);
-void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, uint16 from_index);
+void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const char *string);
+void NetworkServerSendError(ClientID client_id, NetworkErrorCode error);
+void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, ClientID from_id);
 
 void NetworkInitChatMessage();
 void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *message, ...);
 void NetworkUndrawChatMessage();
 void NetworkChatMessageDailyLoop();
 
-#define FOR_ALL_ACTIVE_CLIENT_INFOS(ci) for (ci = _network_client_info; ci != endof(_network_client_info); ci++) if (ci->client_index != NETWORK_EMPTY_INDEX)
+#define FOR_ALL_ACTIVE_CLIENT_INFOS(ci) for (ci = _network_client_info; ci != endof(_network_client_info); ci++) if (ci->client_id != INVALID_CLIENT_ID)
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_FUNC_H */

@@ -91,7 +91,7 @@ private:
 	Packet *packet_queue;     ///< Packets that are awaiting delivery
 	Packet *packet_recv;      ///< Partially received packet
 public:
-	uint16 index;             ///< Client index
+	ClientID client_id;       ///< Client identifier
 	uint32 last_frame;        ///< Last frame we have executed
 	uint32 last_frame_server; ///< Last frame the server has executed
 	byte lag_test;            ///< Byte used for lag-testing the client

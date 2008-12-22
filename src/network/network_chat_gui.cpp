@@ -259,7 +259,7 @@ static void SendChat(const char *buf, DestType type, int dest)
 	if (!_network_server) {
 		SEND_COMMAND(PACKET_CLIENT_CHAT)((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf);
 	} else {
-		NetworkServerSendChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, NETWORK_SERVER_INDEX);
+		NetworkServerSendChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, CLIENT_ID_SERVER);
 	}
 }
 
@@ -301,7 +301,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		/* First, try clients */
 		if (*item < MAX_CLIENT_INFO) {
 			/* Skip inactive clients */
-			while (_network_client_info[*item].client_index == NETWORK_EMPTY_INDEX && *item < MAX_CLIENT_INFO) (*item)++;
+			while (_network_client_info[*item].client_id == INVALID_CLIENT_ID && *item < MAX_CLIENT_INFO) (*item)++;
 			if (*item < MAX_CLIENT_INFO) return _network_client_info[*item].client_name;
 		}
 

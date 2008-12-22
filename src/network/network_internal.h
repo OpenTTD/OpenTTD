@@ -144,7 +144,7 @@ void CDECL NetworkTextMessage(NetworkAction action, ConsoleColour color, bool se
 void NetworkGetClientName(char *clientname, size_t size, const NetworkTCPSocketHandler *cs);
 uint NetworkCalculateLag(const NetworkTCPSocketHandler *cs);
 byte NetworkGetCurrentLanguageIndex();
-NetworkTCPSocketHandler *NetworkFindClientStateFromIndex(uint16 client_index);
+NetworkTCPSocketHandler *NetworkFindClientStateFromClientID(ClientID client_id);
 char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last);
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 

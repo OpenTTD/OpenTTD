@@ -20,18 +20,25 @@ enum {
 	 */
 	MAX_CLIENTS = MAX_COMPANIES + 3,
 
-	/** Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1 */
-	MAX_CLIENT_INFO = MAX_CLIENTS + 1,
-
 	/** Maximum number of internet interfaces supported. */
 	MAX_INTERFACES = 9,
 
 	/** How many vehicle/station types we put over the network */
 	NETWORK_VEHICLE_TYPES = 5,
 	NETWORK_STATION_TYPES = 5,
+};
 
-	NETWORK_SERVER_INDEX = 1,
-	NETWORK_EMPTY_INDEX  = 0,
+/** 'Unique' identifier to be given to clients */
+enum ClientID {
+	INVALID_CLIENT_ID = 0, ///< Client is not part of anything
+	CLIENT_ID_SERVER  = 1, ///< Servers always have this ID
+	CLIENT_ID_FIRST   = 2, ///< The first client ID
+};
+
+/** Indices into the client tables */
+enum ClientIndex {
+	/** Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1 */
+	MAX_CLIENT_INFO = MAX_CLIENTS + 1,
 };
 
 struct NetworkCompanyInfo {
@@ -50,7 +57,7 @@ struct NetworkCompanyInfo {
 };
 
 struct NetworkClientInfo {
-	uint16 client_index;                            ///< Index of the client (same as ClientState->index)
+	ClientID client_id;                             ///< Client identifier (same as ClientState->client_id)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];   ///< Name of the client
 	byte client_lang;                               ///< The language of the client
 	CompanyID client_playas;                        ///< As which company is this client playing (CompanyID)

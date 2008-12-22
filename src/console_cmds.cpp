@@ -372,7 +372,7 @@ DEF_CONSOLE_CMD(ConBan)
 {
 	NetworkClientInfo *ci;
 	const char *banip = NULL;
-	uint32 index;
+	ClientID client_id;
 
 	if (argc == 0) {
 		IConsoleHelp("Ban a client from a network game. Usage: 'ban <ip | client-id>'");
@@ -384,24 +384,24 @@ DEF_CONSOLE_CMD(ConBan)
 	if (argc != 2) return false;
 
 	if (strchr(argv[1], '.') == NULL) { // banning with ID
-		index = atoi(argv[1]);
-		ci = NetworkFindClientInfoFromIndex(index);
+		client_id = (ClientID)atoi(argv[1]);
+		ci = NetworkFindClientInfoFromIndex(client_id);
 	} else { // banning IP
 		ci = NetworkFindClientInfoFromIP(argv[1]);
 		if (ci == NULL) {
 			banip = argv[1];
-			index = (uint32)-1;
+			client_id = (ClientID)-1;
 		} else {
-			index = ci->client_index;
+			client_id = ci->client_id;
 		}
 	}
 
-	if (index == NETWORK_SERVER_INDEX) {
+	if (client_id == CLIENT_ID_SERVER) {
 		IConsoleError("Silly boy, you can not ban yourself!");
 		return true;
 	}
 
-	if (index == 0 || (ci == NULL && index != (uint32)-1)) {
+	if (client_id == INVALID_CLIENT_ID || (ci == NULL && client_id != (ClientID)-1)) {
 		IConsoleError("Invalid client");
 		return true;
 	}
@@ -409,13 +409,13 @@ DEF_CONSOLE_CMD(ConBan)
 	if (ci != NULL) {
 		IConsolePrint(CC_DEFAULT, "Client banned");
 		banip = GetClientIP(ci);
-		NetworkServerSendError(index, NETWORK_ERROR_KICKED);
+		NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
 	} else {
 		IConsolePrint(CC_DEFAULT, "Client not online, banned IP");
 	}
 
 	/* Add user to ban-list */
-	for (index = 0; index < lengthof(_network_ban_list); index++) {
+	for (uint index = 0; index < lengthof(_network_ban_list); index++) {
 		if (_network_ban_list[index] == NULL) {
 			_network_ban_list[index] = strdup(banip);
 			break;
@@ -555,7 +555,7 @@ DEF_CONSOLE_CMD(ConServerInfo)
 DEF_CONSOLE_CMD(ConKick)
 {
 	NetworkClientInfo *ci;
-	uint32 index;
+	ClientID client_id;
 
 	if (argc == 0) {
 		IConsoleHelp("Kick a client from a network game. Usage: 'kick <ip | client-id>'");
@@ -566,25 +566,25 @@ DEF_CONSOLE_CMD(ConKick)
 	if (argc != 2) return false;
 
 	if (strchr(argv[1], '.') == NULL) {
-		index = atoi(argv[1]);
-		ci = NetworkFindClientInfoFromIndex(index);
+		client_id = (ClientID)atoi(argv[1]);
+		ci = NetworkFindClientInfoFromIndex(client_id);
 	} else {
 		ci = NetworkFindClientInfoFromIP(argv[1]);
-		index = (ci == NULL) ? 0 : ci->client_index;
+		client_id = (ci == NULL) ? INVALID_CLIENT_ID : ci->client_id;
 	}
 
-	if (index == NETWORK_SERVER_INDEX) {
+	if (client_id == CLIENT_ID_SERVER) {
 		IConsoleError("Silly boy, you can not kick yourself!");
 		return true;
 	}
 
-	if (index == 0) {
+	if (client_id == INVALID_CLIENT_ID) {
 		IConsoleError("Invalid client");
 		return true;
 	}
 
 	if (ci != NULL) {
-		NetworkServerSendError(index, NETWORK_ERROR_KICKED);
+		NetworkServerSendError(client_id, NETWORK_ERROR_KICKED);
 	} else {
 		IConsoleError("Client not found");
 	}
@@ -623,7 +623,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 		IConsoleError("Cannot remove company: a client is connected to that company.");
 		return false;
 	}
-	const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+	const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
 	if (ci->client_playas == index) {
 		IConsoleError("Cannot remove company: the server is connected to that company.");
 		return true;
@@ -647,7 +647,7 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 
 	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
-		               ci->client_index, ci->client_name,
+		               ci->client_id, ci->client_name,
 		               ci->client_playas + (IsValidCompanyID(ci->client_playas) ? 1 : 0),
 		               GetClientIP(ci));
 	}
@@ -1132,7 +1132,7 @@ DEF_CONSOLE_CMD(ConSay)
 	if (!_network_server) {
 		NetworkClientSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], CLIENT_ID_SERVER);
 	}
 
 	return true;
@@ -1185,7 +1185,7 @@ DEF_CONSOLE_CMD(ConSayCompany)
 	if (!_network_server) {
 		NetworkClientSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2]);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2], NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, company_id, argv[2], CLIENT_ID_SERVER);
 	}
 
 	return true;
@@ -1204,7 +1204,7 @@ DEF_CONSOLE_CMD(ConSayClient)
 	if (!_network_server) {
 		NetworkClientSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2]);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], CLIENT_ID_SERVER);
 	}
 
 	return true;

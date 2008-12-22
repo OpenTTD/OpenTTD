@@ -38,7 +38,7 @@ void IConsoleInit()
 {
 	_iconsole_output_file = NULL;
 #ifdef ENABLE_NETWORK /* Initialize network only variables */
-	_redirect_console_to_client = 0;
+	_redirect_console_to_client = INVALID_CLIENT_ID;
 #endif
 
 	IConsoleGUIInit();
@@ -90,7 +90,7 @@ void IConsolePrint(ConsoleColour color_code, const char *string)
 {
 	char *str;
 #ifdef ENABLE_NETWORK
-	if (_redirect_console_to_client != 0) {
+	if (_redirect_console_to_client != INVALID_CLIENT_ID) {
 		/* Redirect the string to the client */
 		NetworkServerSendRcon(_redirect_console_to_client, color_code, string);
 		return;

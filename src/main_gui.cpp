@@ -55,7 +55,7 @@ void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (!_network_server) {
 		NetworkClientSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, NETWORK_SERVER_INDEX);
+		NetworkServerSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, CLIENT_ID_SERVER);
 	}
 #endif /* ENABLE_NETWORK */
 }
@@ -316,7 +316,7 @@ struct MainWindow : Window
 #ifdef ENABLE_NETWORK
 			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
 				if (_networking) {
-					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_id);
 					bool teamchat = false;
 
 					if (cio == NULL) break;
@@ -342,7 +342,7 @@ struct MainWindow : Window
 
 			case WKC_CTRL | WKC_RETURN: case WKC_CTRL | 'T': // send text to all team mates
 				if (_networking) {
-					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_id);
 					if (cio == NULL) break;
 
 					ShowNetworkChatQueryWindow(DESTTYPE_TEAM, cio->client_playas);

@@ -244,7 +244,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	// Data:
 	//    uint8:  ActionID (see network_data.h, NetworkAction)
 	//    uint8:  Destination Type (see network_data.h, DestType);
-	//    uint16: Destination Company/Client
+	//    uint32: Destination CompanyID/Client-identifier
 	//    String: Message (max NETWORK_CHAT_LENGTH)
 	//
 
@@ -252,7 +252,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 
 	p->Send_uint8 (action);
 	p->Send_uint8 (type);
-	p->Send_uint16(dest);
+	p->Send_uint32(dest);
 	p->Send_string(msg);
 	MY_CLIENT->Send_Packet(p);
 }
@@ -392,12 +392,12 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 }
 
 // This packet contains info about the client (playas and name)
-//  as client we save this in NetworkClientInfo, linked via 'index'
+//  as client we save this in NetworkClientInfo, linked via 'client_id'
 //  which is always an unique number on a server.
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 {
 	NetworkClientInfo *ci;
-	uint16 index = p->Recv_uint16();
+	ClientID client_id = (ClientID)p->Recv_uint32();
 	CompanyID playas = (CompanyID)p->Recv_uint8();
 	char name[NETWORK_NAME_LENGTH];
 
@@ -406,9 +406,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	/* Do we receive a change of data? Most likely we changed playas */
-	if (index == _network_own_client_index) _network_playas = playas;
+	if (client_id == _network_own_client_id) _network_playas = playas;
 
-	ci = NetworkFindClientInfoFromIndex(index);
+	ci = NetworkFindClientInfoFromIndex(client_id);
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
 			// Client name changed, display the change
@@ -426,10 +426,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 		return NETWORK_RECV_STATUS_OKAY;
 	}
 
-	// We don't have this index yet, find an empty index, and put the data there
-	ci = NetworkFindClientInfoFromIndex(NETWORK_EMPTY_INDEX);
+	// We don't have this client_id yet, find an empty client_id, and put the data there
+	ci = NetworkFindClientInfoFromIndex(INVALID_CLIENT_ID);
 	if (ci != NULL) {
-		ci->client_index = index;
+		ci->client_id = client_id;
 		ci->client_playas = playas;
 
 		strecpy(ci->client_name, name, lastof(ci->client_name));
@@ -530,7 +530,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)
 {
-	_network_own_client_index = p->Recv_uint16();
+	_network_own_client_id = (ClientID)p->Recv_uint32();
 
 	/* Initialize the password hash salting variables, even if they were previously. */
 	_password_game_seed = p->Recv_uint32();
@@ -717,11 +717,11 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	const NetworkClientInfo *ci = NULL, *ci_to;
 
 	NetworkAction action = (NetworkAction)p->Recv_uint8();
-	uint16 index = p->Recv_uint16();
+	ClientID client_id = (ClientID)p->Recv_uint32();
 	bool self_send = p->Recv_bool();
 	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
 
-	ci_to = NetworkFindClientInfoFromIndex(index);
+	ci_to = NetworkFindClientInfoFromIndex(client_id);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
 
 	/* Did we initiate the action locally? */
@@ -730,7 +730,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 			case NETWORK_ACTION_CHAT_CLIENT:
 				/* For speaking to client we need the client-name */
 				snprintf(name, sizeof(name), "%s", ci_to->client_name);
-				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+				ci = NetworkFindClientInfoFromIndex(_network_own_client_id);
 				break;
 
 			/* For speaking to company or giving money, we need the company-name */
@@ -742,7 +742,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				SetDParam(0, ci_to->client_playas);
 
 				GetString(name, str, lastof(name));
-				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+				ci = NetworkFindClientInfoFromIndex(_network_own_client_id);
 			} break;
 
 			default: NOT_REACHED(); break;
@@ -761,18 +761,17 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 {
 	char str[100];
-	uint16 index;
 	NetworkClientInfo *ci;
 
-	index = p->Recv_uint16();
+	ClientID client_id = (ClientID)p->Recv_uint32();
 	GetNetworkErrorMsg(str, (NetworkErrorCode)p->Recv_uint8(), lastof(str));
 
-	ci = NetworkFindClientInfoFromIndex(index);
+	ci = NetworkFindClientInfoFromIndex(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
 
 		// The client is gone, give the NetworkClientInfo free
-		ci->client_index = NETWORK_EMPTY_INDEX;
+		ci->client_id = INVALID_CLIENT_ID;
 	}
 
 	InvalidateWindow(WC_CLIENT_LIST, 0);
@@ -783,20 +782,19 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 {
 	char str[100];
-	uint16 index;
 	NetworkClientInfo *ci;
 
-	index = p->Recv_uint16();
+	ClientID client_id = (ClientID)p->Recv_uint32();
 	p->Recv_string(str, lengthof(str));
 
-	ci = NetworkFindClientInfoFromIndex(index);
+	ci = NetworkFindClientInfoFromIndex(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
 
 		// The client is gone, give the NetworkClientInfo free
-		ci->client_index = NETWORK_EMPTY_INDEX;
+		ci->client_id = INVALID_CLIENT_ID;
 	} else {
-		DEBUG(net, 0, "Unknown client (%d) is leaving the game", index);
+		DEBUG(net, 0, "Unknown client (%d) is leaving the game", client_id);
 	}
 
 	InvalidateWindow(WC_CLIENT_LIST, 0);
@@ -807,12 +805,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 {
-	uint16 index;
-	NetworkClientInfo *ci;
+	ClientID client_id = (ClientID)p->Recv_uint32();
 
-	index = p->Recv_uint16();
-
-	ci = NetworkFindClientInfoFromIndex(index);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(client_id);
 	if (ci != NULL)
 		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name, "");
 
@@ -940,7 +935,7 @@ void NetworkClientSendRcon(const char *password, const char *command)
 
 void NetworkUpdateClientName()
 {
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_id);
 
 	if (ci == NULL) return;
 
@@ -952,7 +947,7 @@ void NetworkUpdateClientName()
 			if (NetworkFindName(_settings_client.network.client_name)) {
 				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.client_name);
 				strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
-				NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+				NetworkUpdateClientInfo(CLIENT_ID_SERVER);
 			}
 		}
 	}

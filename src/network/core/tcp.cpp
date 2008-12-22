@@ -22,7 +22,7 @@ void NetworkTCPSocketHandler::Initialize()
 {
 	this->sock              = INVALID_SOCKET;
 
-	this->index             = 0;
+	this->client_id         = INVALID_CLIENT_ID;
 	this->last_frame        = 0;
 	this->last_frame_server = 0;
 	this->lag_test          = 0;
