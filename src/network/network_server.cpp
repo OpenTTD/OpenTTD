@@ -63,28 +63,14 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkTCPSocketHandler
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 {
-//
+	//
 	// Packet: SERVER_COMPANY_INFO
 	// Function: Sends info about the companies
 	// Data:
 	//
 
-	int i;
-
 	Company *company;
 	Packet *p;
-
-	byte active = ActiveCompanyCount();
-
-	if (active == 0) {
-		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
-
-		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
-		p->Send_uint8 (active);
-
-		cs->Send_Packet(p);
-		return;
-	}
 
 	NetworkPopulateCompanyInfo();
 
@@ -92,7 +78,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
 		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
-		p->Send_uint8 (active);
+		p->Send_bool  (true);
 		p->Send_uint8 (company->index);
 
 		p->Send_string(_network_company_info[company->index].company_name);
@@ -105,11 +91,11 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		/* Send 1 if there is a passord for the company else send 0 */
 		p->Send_bool(!StrEmpty(_network_company_info[company->index].password));
 
-		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
+		for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
 			p->Send_uint16(_network_company_info[company->index].num_vehicle[i]);
 		}
 
-		for (i = 0; i < NETWORK_STATION_TYPES; i++) {
+		for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
 			p->Send_uint16(_network_company_info[company->index].num_station[i]);
 		}
 
@@ -125,7 +111,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
 	p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
-	p->Send_uint8 (0);
+	p->Send_bool  (false);
 
 	cs->Send_Packet(p);
 }

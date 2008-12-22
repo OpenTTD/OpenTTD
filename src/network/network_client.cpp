@@ -352,21 +352,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_BANNED)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 {
-	byte company_info_version;
-	int i;
-
-	company_info_version = p->Recv_uint8();
+	byte company_info_version = p->Recv_uint8();
 
 	if (!MY_CLIENT->has_quit && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
-		byte total;
-		CompanyID current;
+		/* We have received all data... (there are no more packets coming) */
+		if (!p->Recv_bool()) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		total = p->Recv_uint8();
-
-		// There is no data at all..
-		if (total == 0) return NETWORK_RECV_STATUS_CLOSE_QUERY;
-
-		current = (Owner)p->Recv_uint8();
+		CompanyID current = (Owner)p->Recv_uint8();
 		if (current >= MAX_COMPANIES) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		p->Recv_string(_network_company_info[current].company_name, sizeof(_network_company_info[current].company_name));
@@ -376,9 +368,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		_network_company_info[current].income           = p->Recv_uint64();
 		_network_company_info[current].performance      = p->Recv_uint16();
 		_network_company_info[current].use_password     = p->Recv_bool();
-		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
+		for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++)
 			_network_company_info[current].num_vehicle[i] = p->Recv_uint16();
-		for (i = 0; i < NETWORK_STATION_TYPES; i++)
+		for (int i = 0; i < NETWORK_STATION_TYPES; i++)
 			_network_company_info[current].num_station[i] = p->Recv_uint16();
 
 		p->Recv_string(_network_company_info[current].clients, sizeof(_network_company_info[current].clients));
