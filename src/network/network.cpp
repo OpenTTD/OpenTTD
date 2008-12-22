@@ -36,8 +36,8 @@
 #include "../settings_type.h"
 #include "../landscape_type.h"
 #include "../rev.h"
+#include "../core/alloc_func.hpp"
 #ifdef DEBUG_DUMP_COMMANDS
-	#include "../core/alloc_func.hpp"
 	#include "../fileio_func.h"
 #endif /* DEBUG_DUMP_COMMANDS */
 #include "table/strings.h"
@@ -51,7 +51,7 @@ bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkServerGameInfo _network_game_info;
 NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
-NetworkCompanyState _network_company_states[MAX_COMPANIES];
+NetworkCompanyState *_network_company_states = NULL;
 ClientID _network_own_client_id;
 ClientID _redirect_console_to_client;
 bool _network_need_advertise;
@@ -675,6 +675,9 @@ static void NetworkClose()
 
 	_networking = false;
 	_network_server = false;
+
+	free(_network_company_states);
+	_network_company_states = NULL;
 }
 
 // Inits the network (cleans sockets and stuff)
@@ -691,7 +694,6 @@ static void NetworkInitialize()
 
 	// Clean the client_info memory
 	memset(&_network_client_info, 0, sizeof(_network_client_info));
-	memset(&_network_company_states, 0, sizeof(_network_company_states));
 
 	_sync_frame = 0;
 	_network_first_time = true;
@@ -709,10 +711,7 @@ void NetworkTCPQueryServer(const char* host, unsigned short port)
 	if (!_network_available) return;
 
 	NetworkDisconnect();
-
 	NetworkInitialize();
-
-	_network_server = false;
 
 	// Try to connect
 	_networking = NetworkConnect(host, port);
@@ -836,6 +835,7 @@ bool NetworkServerStart()
 	_network_udp_server = true;
 	_network_udp_server = _udp_server_socket->Listen(_network_server_bind_ip, _settings_client.network.server_port, false);
 
+	_network_company_states = CallocT<NetworkCompanyState>(MAX_COMPANIES);
 	_network_server = true;
 	_networking = true;
 	_frame_counter = 0;

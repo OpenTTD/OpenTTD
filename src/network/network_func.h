@@ -12,7 +12,7 @@
 
 extern NetworkServerGameInfo _network_game_info;
 extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
-extern NetworkCompanyState _network_company_states[MAX_COMPANIES];
+extern NetworkCompanyState *_network_company_states;
 
 extern ClientID _network_own_client_id;
 extern ClientID _redirect_console_to_client;
