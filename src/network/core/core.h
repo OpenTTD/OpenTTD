@@ -74,6 +74,7 @@ public:
 
 	void Send_GRFIdentifier(Packet *p, const GRFIdentifier *grf);
 	void Recv_GRFIdentifier(Packet *p, GRFIdentifier *grf);
+	void Send_CompanyInformation(Packet *p, const struct Company *c, const struct NetworkCompanyStats *stats);
 };
 
 #endif /* ENABLE_NETWORK */

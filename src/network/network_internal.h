@@ -91,8 +91,6 @@ enum NetworkLanguage {
 	NETLANG_COUNT
 };
 
-extern NetworkCompanyInfo _network_company_info[MAX_COMPANIES];
-
 extern uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 extern uint32 _frame_counter_max; // To where we may go with our clients
 

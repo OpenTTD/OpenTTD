@@ -11,8 +11,8 @@
 #include "../console_type.h"
 
 extern NetworkServerGameInfo _network_game_info;
-extern NetworkCompanyInfo _network_company_info[MAX_COMPANIES];
 extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
+extern NetworkCompanyState _network_company_states[MAX_COMPANIES];
 
 extern ClientID _network_own_client_id;
 extern ClientID _redirect_console_to_client;
@@ -34,7 +34,7 @@ void NetworkUDPGameLoop();
 void NetworkUDPCloseAll();
 void ParseConnectionString(const char **company, const char **port, char *connection_string);
 void NetworkStartDebugLog(const char *hostname, uint16 port);
-void NetworkPopulateCompanyInfo();
+void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
 bool NetworkClientConnectGame(const char *host, uint16 port);

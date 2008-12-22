@@ -69,40 +69,52 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	// Data:
 	//
 
+	/* Fetch the latest version of the stats */
+	NetworkCompanyStats company_stats[MAX_COMPANIES];
+	NetworkPopulateCompanyStats(company_stats);
+
+	/* Make a list of all clients per company */
+	char clients[MAX_COMPANIES][NETWORK_CLIENTS_LENGTH];
+	NetworkTCPSocketHandler *csi;
+	memset(clients, 0, sizeof(clients));
+
+	/* Add the local player (if not dedicated) */
+	const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
+	if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
+		strecpy(clients[ci->client_playas], ci->client_name, lastof(clients[ci->client_playas]));
+	}
+
+	FOR_ALL_CLIENTS(csi) {
+		char client_name[NETWORK_CLIENT_NAME_LENGTH];
+
+		NetworkGetClientName(client_name, sizeof(client_name), csi);
+
+		ci = DEREF_CLIENT_INFO(csi);
+		if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
+			if (!StrEmpty(clients[ci->client_playas])) {
+				strecat(clients[ci->client_playas], ", ", lastof(clients[ci->client_playas]));
+			}
+
+			strecat(clients[ci->client_playas], client_name, lastof(clients[ci->client_playas]));
+		}
+	}
+
+	/* Now send the data */
+
 	Company *company;
 	Packet *p;
-
-	NetworkPopulateCompanyInfo();
 
 	FOR_ALL_COMPANIES(company) {
 		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
 		p->Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
 		p->Send_bool  (true);
-		p->Send_uint8 (company->index);
+		cs->Send_CompanyInformation(p, company, &company_stats[company->index]);
 
-		p->Send_string(_network_company_info[company->index].company_name);
-		p->Send_uint32(_network_company_info[company->index].inaugurated_year);
-		p->Send_uint64(_network_company_info[company->index].company_value);
-		p->Send_uint64(_network_company_info[company->index].money);
-		p->Send_uint64(_network_company_info[company->index].income);
-		p->Send_uint16(_network_company_info[company->index].performance);
-
-		/* Send 1 if there is a passord for the company else send 0 */
-		p->Send_bool(!StrEmpty(_network_company_info[company->index].password));
-
-		for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
-			p->Send_uint16(_network_company_info[company->index].num_vehicle[i]);
-		}
-
-		for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
-			p->Send_uint16(_network_company_info[company->index].num_station[i]);
-		}
-
-		if (StrEmpty(_network_company_info[company->index].clients)) {
+		if (StrEmpty(clients[company->index])) {
 			p->Send_string("<none>");
 		} else {
-			p->Send_string(_network_company_info[company->index].clients);
+			p->Send_string(clients[company->index]);
 		}
 
 		cs->Send_Packet(p);
@@ -603,7 +615,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 	if (!StrEmpty(_settings_client.network.server_password)) {
 		SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
 	} else {
-		if (IsValidCompanyID(ci->client_playas) && _network_company_info[ci->client_playas].password[0] != '\0') {
+		if (IsValidCompanyID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
 			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
 		} else {
 			SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
@@ -681,7 +693,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	ci->client_lang = client_lang;
 
 	/* Make sure companies to which people try to join are not autocleaned */
-	if (IsValidCompanyID(playas)) _network_company_info[playas].months_empty = 0;
+	if (IsValidCompanyID(playas)) _network_company_states[playas].months_empty = 0;
 
 	if (_grfconfig == NULL) {
 		RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)(cs, NULL);
@@ -709,7 +721,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 
 		ci = DEREF_CLIENT_INFO(cs);
 
-		if (IsValidCompanyID(ci->client_playas) && _network_company_info[ci->client_playas].password[0] != '\0') {
+		if (IsValidCompanyID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
 			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
 			return;
 		}
@@ -720,7 +732,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 	} else if (cs->status == STATUS_AUTHORIZING && type == NETWORK_COMPANY_PASSWORD) {
 		ci = DEREF_CLIENT_INFO(cs);
 
-		if (strcmp(password, _network_company_info[ci->client_playas].password) != 0) {
+		if (strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
 			// Password is invalid
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 			return;
@@ -1180,7 +1192,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 	ci = DEREF_CLIENT_INFO(cs);
 
 	if (IsValidCompanyID(ci->client_playas)) {
-		strecpy(_network_company_info[ci->client_playas].password, password, lastof(_network_company_info[ci->client_playas].password));
+		strecpy(_network_company_states[ci->client_playas].password, password, lastof(_network_company_states[ci->client_playas].password));
 	}
 }
 
@@ -1281,54 +1293,18 @@ static NetworkServerPacket* const _network_server_packet[] = {
 // If this fails, check the array above with network_data.h
 assert_compile(lengthof(_network_server_packet) == PACKET_END);
 
-// This update the company_info-stuff
-void NetworkPopulateCompanyInfo()
+/**
+ * Populate the company stats.
+ * @param stats the stats to update
+ */
+void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 {
-	char password[NETWORK_PASSWORD_LENGTH];
-	const Company *c;
 	const Vehicle *v;
 	const Station *s;
-	NetworkTCPSocketHandler *cs;
-	const NetworkClientInfo *ci;
-	uint i;
-	uint16 months_empty;
 
-	for (CompanyID cid = COMPANY_FIRST; cid < MAX_COMPANIES; cid++) {
-		if (!IsValidCompanyID(cid)) memset(&_network_company_info[cid], 0, sizeof(NetworkCompanyInfo));
-	}
+	memset(stats, 0, sizeof(*stats) * MAX_COMPANIES);
 
-	FOR_ALL_COMPANIES(c) {
-		// Clean the info but not the password
-		strecpy(password, _network_company_info[c->index].password, lastof(password));
-		months_empty = _network_company_info[c->index].months_empty;
-		memset(&_network_company_info[c->index], 0, sizeof(NetworkCompanyInfo));
-		_network_company_info[c->index].months_empty = months_empty;
-		strecpy(_network_company_info[c->index].password, password, lastof(_network_company_info[c->index].password));
-
-		// Grap the company name
-		SetDParam(0, c->index);
-		GetString(_network_company_info[c->index].company_name, STR_COMPANY_NAME, lastof(_network_company_info[c->index].company_name));
-
-		// Check the income
-		if (_cur_year - 1 == c->inaugurated_year) {
-			// The company is here just 1 year, so display [2], else display[1]
-			for (i = 0; i < lengthof(c->yearly_expenses[2]); i++) {
-				_network_company_info[c->index].income -= c->yearly_expenses[2][i];
-			}
-		} else {
-			for (i = 0; i < lengthof(c->yearly_expenses[1]); i++) {
-				_network_company_info[c->index].income -= c->yearly_expenses[1][i];
-			}
-		}
-
-		// Set some general stuff
-		_network_company_info[c->index].inaugurated_year = c->inaugurated_year;
-		_network_company_info[c->index].company_value = c->old_economy[0].company_value;
-		_network_company_info[c->index].money = c->money;
-		_network_company_info[c->index].performance = c->old_economy[0].performance_history;
-	}
-
-	// Go through all vehicles and count the type of vehicles
+	/* Go through all vehicles and count the type of vehicles */
 	FOR_ALL_VEHICLES(v) {
 		if (!IsValidCompanyID(v->owner) || !v->IsPrimaryVehicle()) continue;
 		byte type = 0;
@@ -1339,39 +1315,19 @@ void NetworkPopulateCompanyInfo()
 			case VEH_SHIP: type = 4; break;
 			default: continue;
 		}
-		_network_company_info[v->owner].num_vehicle[type]++;
+		stats[v->owner].num_vehicle[type]++;
 	}
 
 	// Go through all stations and count the types of stations
 	FOR_ALL_STATIONS(s) {
 		if (IsValidCompanyID(s->owner)) {
-			NetworkCompanyInfo *npi = &_network_company_info[s->owner];
+			NetworkCompanyStats *npi = &stats[s->owner];
 
 			if (s->facilities & FACIL_TRAIN)      npi->num_station[0]++;
 			if (s->facilities & FACIL_TRUCK_STOP) npi->num_station[1]++;
 			if (s->facilities & FACIL_BUS_STOP)   npi->num_station[2]++;
 			if (s->facilities & FACIL_AIRPORT)    npi->num_station[3]++;
 			if (s->facilities & FACIL_DOCK)       npi->num_station[4]++;
-		}
-	}
-
-	ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
-	// Register local company (if not dedicated)
-	if (ci != NULL && IsValidCompanyID(ci->client_playas))
-		strecpy(_network_company_info[ci->client_playas].clients, ci->client_name, lastof(_network_company_info[ci->client_playas].clients));
-
-	FOR_ALL_CLIENTS(cs) {
-		char client_name[NETWORK_CLIENT_NAME_LENGTH];
-
-		NetworkGetClientName(client_name, sizeof(client_name), cs);
-
-		ci = DEREF_CLIENT_INFO(cs);
-		if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
-			if (!StrEmpty(_network_company_info[ci->client_playas].clients)) {
-				strecat(_network_company_info[ci->client_playas].clients, ", ", lastof(_network_company_info[ci->client_playas].clients));
-			}
-
-			strecat(_network_company_info[ci->client_playas].clients, client_name, lastof(_network_company_info[ci->client_playas].clients));
 		}
 	}
 }
@@ -1433,24 +1389,24 @@ static void NetworkAutoCleanCompanies()
 
 		if (!clients_in_company[c->index]) {
 			/* The company is empty for one month more */
-			_network_company_info[c->index].months_empty++;
+			_network_company_states[c->index].months_empty++;
 
 			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
-			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_info[c->index].months_empty > _settings_client.network.autoclean_unprotected && StrEmpty(_network_company_info[c->index].password)) {
+			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && StrEmpty(_network_company_states[c->index].password)) {
 				/* Shut the company down */
 				DoCommandP(0, 2, c->index, NULL, CMD_COMPANY_CTRL);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d", c->index + 1);
 			}
 			/* Is the company empty for autoclean_protected-months, and there is a protection? */
-			if (_settings_client.network.autoclean_protected != 0 && _network_company_info[c->index].months_empty > _settings_client.network.autoclean_protected && !StrEmpty(_network_company_info[c->index].password)) {
+			if (_settings_client.network.autoclean_protected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_protected && !StrEmpty(_network_company_states[c->index].password)) {
 				/* Unprotect the company */
-				_network_company_info[c->index].password[0] = '\0';
+				_network_company_states[c->index].password[0] = '\0';
 				IConsolePrintF(CC_DEFAULT, "Auto-removed protection from company #%d", c->index + 1);
-				_network_company_info[c->index].months_empty = 0;
+				_network_company_states[c->index].months_empty = 0;
 			}
 		} else {
 			/* It is not empty, reset the date */
-			_network_company_info[c->index].months_empty = 0;
+			_network_company_states[c->index].months_empty = 0;
 		}
 	}
 }

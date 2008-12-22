@@ -41,18 +41,15 @@ enum ClientIndex {
 	MAX_CLIENT_INFO = MAX_CLIENTS + 1,
 };
 
-struct NetworkCompanyInfo {
-	char company_name[NETWORK_COMPANY_NAME_LENGTH]; ///< Company name
-	char password[NETWORK_PASSWORD_LENGTH];         ///< The password for the company
-	Year inaugurated_year;                          ///< What year the company started in
-	Money company_value;                            ///< The company value
-	Money money;                                    ///< The amount of money the company has
-	Money income;                                   ///< How much did the company earned last year
-	uint16 performance;                             ///< What was his performance last month?
-	bool use_password;                              ///< Is there a password
+/** Simple calculated statistics of a company */
+struct NetworkCompanyStats {
 	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];      ///< How many vehicles are there of this type?
 	uint16 num_station[NETWORK_STATION_TYPES];      ///< How many stations are there of this type?
-	char clients[NETWORK_CLIENTS_LENGTH];           ///< The clients that control this company (Name1, name2, ..)
+};
+
+/** Some state information of a company, especially for servers */
+struct NetworkCompanyState {
+	char password[NETWORK_PASSWORD_LENGTH];         ///< The password for the company
 	uint16 months_empty;                            ///< How many months the company is empty
 };
 

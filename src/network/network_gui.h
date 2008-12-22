@@ -18,6 +18,21 @@ void ShowNetworkGameWindow();
 void ShowClientList();
 void ShowNetworkCompanyPasswordWindow(Window *parent);
 
+
+/** Company information stored at the client side */
+struct NetworkCompanyInfo : NetworkCompanyStats {
+	char company_name[NETWORK_COMPANY_NAME_LENGTH]; ///< Company name
+	Year inaugurated_year;                          ///< What year the company started in
+	Money company_value;                            ///< The company value
+	Money money;                                    ///< The amount of money the company has
+	Money income;                                   ///< How much did the company earned last year
+	uint16 performance;                             ///< What was his performance last month?
+	bool use_password;                              ///< Is there a password
+	char clients[NETWORK_CLIENTS_LENGTH];           ///< The clients that control this company (Name1, name2, ..)
+};
+
+NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company);
+
 #else /* ENABLE_NETWORK */
 /* Network function stubs when networking is disabled */
 

@@ -50,8 +50,8 @@ bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkServerGameInfo _network_game_info;
-NetworkCompanyInfo _network_company_info[MAX_COMPANIES];
 NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
+NetworkCompanyState _network_company_states[MAX_COMPANIES];
 ClientID _network_own_client_id;
 ClientID _redirect_console_to_client;
 bool _network_need_advertise;
@@ -691,7 +691,7 @@ static void NetworkInitialize()
 
 	// Clean the client_info memory
 	memset(&_network_client_info, 0, sizeof(_network_client_info));
-	memset(&_network_company_info, 0, sizeof(_network_company_info));
+	memset(&_network_company_states, 0, sizeof(_network_company_states));
 
 	_sync_frame = 0;
 	_network_first_time = true;

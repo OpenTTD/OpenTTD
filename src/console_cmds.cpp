@@ -1146,21 +1146,26 @@ DEF_CONSOLE_CMD(ConCompanies)
 		IConsoleHelp("List the in-game details of all clients connected to the server. Usage 'companies'");
 		return true;
 	}
-	NetworkPopulateCompanyInfo();
+	NetworkCompanyStats company_stats[MAX_COMPANIES];
+	NetworkPopulateCompanyStats(company_stats);
 
 	FOR_ALL_COMPANIES(c) {
-		char buffer[512];
+		/* Grab the company name */
+		char company_name[NETWORK_COMPANY_NAME_LENGTH];
+		SetDParam(0, c->index);
+		GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
 
-		const NetworkCompanyInfo *npi = &_network_company_info[c->index];
+		char buffer[512];
+		const NetworkCompanyStats *stats = &company_stats[c->index];
 
 		GetString(buffer, STR_00D1_DARK_BLUE + _company_colours[c->index], lastof(buffer));
 		IConsolePrintF(CC_INFO, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %" OTTD_PRINTF64 "d  Loan: %" OTTD_PRINTF64 "d  Value: %" OTTD_PRINTF64 "d  (T:%d, R:%d, P:%d, S:%d) %sprotected",
-			c->index + 1, buffer, npi->company_name, c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
-			/* trains      */ npi->num_vehicle[0],
-			/* lorry + bus */ npi->num_vehicle[1] + npi->num_vehicle[2],
-			/* planes      */ npi->num_vehicle[3],
-			/* ships       */ npi->num_vehicle[4],
-			/* protected   */ StrEmpty(npi->password) ? "un" : "");
+			c->index + 1, buffer, company_name, c->inaugurated_year, (int64)c->money, (int64)c->current_loan, (int64)CalculateCompanyValue(c),
+			/* trains      */ stats->num_vehicle[0],
+			/* lorry + bus */ stats->num_vehicle[1] + stats->num_vehicle[2],
+			/* planes      */ stats->num_vehicle[3],
+			/* ships       */ stats->num_vehicle[4],
+			/* protected   */ StrEmpty(_network_company_states[c->index].password) ? "un" : "");
 	}
 
 	return true;

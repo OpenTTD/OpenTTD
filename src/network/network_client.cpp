@@ -85,7 +85,7 @@ void HashCurrentCompanyPassword(const char *password)
 	strecpy(_password_server_unique_id, _settings_client.network.network_id, lastof(_password_server_unique_id));
 
 	const char *new_pw = GenerateCompanyPasswordHash(password);
-	strecpy(_network_company_info[_local_company].password, new_pw, lastof(_network_company_info[_local_company].password));
+	strecpy(_network_company_states[_local_company].password, new_pw, lastof(_network_company_states[_local_company].password));
 }
 
 
@@ -359,19 +359,22 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		CompanyID current = (Owner)p->Recv_uint8();
 		if (current >= MAX_COMPANIES) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		p->Recv_string(_network_company_info[current].company_name, sizeof(_network_company_info[current].company_name));
-		_network_company_info[current].inaugurated_year = p->Recv_uint32();
-		_network_company_info[current].company_value    = p->Recv_uint64();
-		_network_company_info[current].money            = p->Recv_uint64();
-		_network_company_info[current].income           = p->Recv_uint64();
-		_network_company_info[current].performance      = p->Recv_uint16();
-		_network_company_info[current].use_password     = p->Recv_bool();
-		for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++)
-			_network_company_info[current].num_vehicle[i] = p->Recv_uint16();
-		for (int i = 0; i < NETWORK_STATION_TYPES; i++)
-			_network_company_info[current].num_station[i] = p->Recv_uint16();
+		NetworkCompanyInfo *company_info = GetLobbyCompanyInfo(current);
+		if (company_info == NULL) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
-		p->Recv_string(_network_company_info[current].clients, sizeof(_network_company_info[current].clients));
+		p->Recv_string(company_info->company_name, sizeof(company_info->company_name));
+		company_info->inaugurated_year = p->Recv_uint32();
+		company_info->company_value    = p->Recv_uint64();
+		company_info->money            = p->Recv_uint64();
+		company_info->income           = p->Recv_uint64();
+		company_info->performance      = p->Recv_uint16();
+		company_info->use_password     = p->Recv_bool();
+		for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++)
+			company_info->num_vehicle[i] = p->Recv_uint16();
+		for (int i = 0; i < NETWORK_STATION_TYPES; i++)
+			company_info->num_station[i] = p->Recv_uint16();
+
+		p->Recv_string(company_info->clients, sizeof(company_info->clients));
 
 		InvalidateWindow(WC_NETWORK_WINDOW, 0);
 

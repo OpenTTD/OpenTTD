@@ -1136,18 +1136,6 @@ static void ShowNetworkStartServerWindow()
 	new NetworkStartServerWindow(&_network_start_server_window_desc);
 }
 
-static CompanyID NetworkLobbyFindCompanyIndex(byte pos)
-{
-	/* Scroll through all _network_company_info and get the 'pos' item that is not empty */
-	for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-		if (!StrEmpty(_network_company_info[i].company_name)) {
-			if (pos-- == 0) return i;
-		}
-	}
-
-	return COMPANY_FIRST;
-}
-
 /** Enum for NetworkLobbyWindow, referring to _network_lobby_window_widgets */
 enum NetworkLobbyWindowWidgets {
 	NLWW_CLOSE    =  0, ///< Close 'X' button
@@ -1163,6 +1151,7 @@ enum NetworkLobbyWindowWidgets {
 struct NetworkLobbyWindow : public Window {
 	CompanyID company;       ///< Select company
 	NetworkGameList *server; ///< Selected server
+	NetworkCompanyInfo company_info[MAX_COMPANIES];
 
 	NetworkLobbyWindow(const WindowDesc *desc, NetworkGameList *ngl) :
 			Window(desc), company(INVALID_COMPANY), server(ngl)
@@ -1170,6 +1159,18 @@ struct NetworkLobbyWindow : public Window {
 		this->vscroll.cap = 10;
 
 		this->FindWindowPlacementAndResize(desc);
+	}
+
+	CompanyID NetworkLobbyFindCompanyIndex(byte pos)
+	{
+		/* Scroll through all this->company_info and get the 'pos' item that is not empty */
+		for (CompanyID i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+			if (!StrEmpty(this->company_info[i].company_name)) {
+				if (pos-- == 0) return i;
+			}
+		}
+
+		return COMPANY_FIRST;
 	}
 
 	virtual void OnPaint()
@@ -1197,11 +1198,11 @@ struct NetworkLobbyWindow : public Window {
 				GfxFillRect(11, y - 1, 154, y + 10, 10); // show highlighted item with a different colour
 			}
 
-			DoDrawStringTruncated(_network_company_info[company].company_name, 13, y, TC_BLACK, 135 - 13);
-			if (_network_company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
+			DoDrawStringTruncated(this->company_info[company].company_name, 13, y, TC_BLACK, 135 - 13);
+			if (this->company_info[company].use_password != 0) DrawSprite(SPR_LOCK, PAL_NONE, 135, y);
 
 			/* If the company's income was positive puts a green dot else a red dot */
-			if (_network_company_info[company].income >= 0) income = true;
+			if (this->company_info[company].income >= 0) income = true;
 			DrawSprite(SPR_BLOT, income ? PALETTE_TO_GREEN : PALETTE_TO_RED, 145, y);
 
 			pos++;
@@ -1212,7 +1213,7 @@ struct NetworkLobbyWindow : public Window {
 		/* Draw info about selected company when it is selected in the left window */
 		GfxFillRect(174, 39, 403, 75, 157);
 		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, TC_FROMSTRING);
-		if (this->company != INVALID_COMPANY) {
+		if (this->company != INVALID_COMPANY && !StrEmpty(this->company_info[this->company].company_name)) {
 			const uint x = 183;
 			const uint trunc_width = this->widget[NLWW_DETAILS].right - x;
 			y = 80;
@@ -1224,47 +1225,47 @@ struct NetworkLobbyWindow : public Window {
 			DrawString(x, y, STR_NETWORK_CLIENTS, TC_GOLD);
 			y += 10;
 
-			SetDParamStr(0, _network_company_info[this->company].company_name);
+			SetDParamStr(0, this->company_info[this->company].company_name);
 			DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, TC_GOLD, trunc_width);
 			y += 10;
 
-			SetDParam(0, _network_company_info[this->company].inaugurated_year);
+			SetDParam(0, this->company_info[this->company].inaugurated_year);
 			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, TC_GOLD); // inauguration year
 			y += 10;
 
-			SetDParam(0, _network_company_info[this->company].company_value);
+			SetDParam(0, this->company_info[this->company].company_value);
 			DrawString(x, y, STR_NETWORK_VALUE, TC_GOLD); // company value
 			y += 10;
 
-			SetDParam(0, _network_company_info[this->company].money);
+			SetDParam(0, this->company_info[this->company].money);
 			DrawString(x, y, STR_NETWORK_CURRENT_BALANCE, TC_GOLD); // current balance
 			y += 10;
 
-			SetDParam(0, _network_company_info[this->company].income);
+			SetDParam(0, this->company_info[this->company].income);
 			DrawString(x, y, STR_NETWORK_LAST_YEARS_INCOME, TC_GOLD); // last year's income
 			y += 10;
 
-			SetDParam(0, _network_company_info[this->company].performance);
+			SetDParam(0, this->company_info[this->company].performance);
 			DrawString(x, y, STR_NETWORK_PERFORMANCE, TC_GOLD); // performance
 			y += 10;
 
-			SetDParam(0, _network_company_info[this->company].num_vehicle[0]);
-			SetDParam(1, _network_company_info[this->company].num_vehicle[1]);
-			SetDParam(2, _network_company_info[this->company].num_vehicle[2]);
-			SetDParam(3, _network_company_info[this->company].num_vehicle[3]);
-			SetDParam(4, _network_company_info[this->company].num_vehicle[4]);
+			SetDParam(0, this->company_info[this->company].num_vehicle[0]);
+			SetDParam(1, this->company_info[this->company].num_vehicle[1]);
+			SetDParam(2, this->company_info[this->company].num_vehicle[2]);
+			SetDParam(3, this->company_info[this->company].num_vehicle[3]);
+			SetDParam(4, this->company_info[this->company].num_vehicle[4]);
 			DrawString(x, y, STR_NETWORK_VEHICLES, TC_GOLD); // vehicles
 			y += 10;
 
-			SetDParam(0, _network_company_info[this->company].num_station[0]);
-			SetDParam(1, _network_company_info[this->company].num_station[1]);
-			SetDParam(2, _network_company_info[this->company].num_station[2]);
-			SetDParam(3, _network_company_info[this->company].num_station[3]);
-			SetDParam(4, _network_company_info[this->company].num_station[4]);
+			SetDParam(0, this->company_info[this->company].num_station[0]);
+			SetDParam(1, this->company_info[this->company].num_station[1]);
+			SetDParam(2, this->company_info[this->company].num_station[2]);
+			SetDParam(3, this->company_info[this->company].num_station[3]);
+			SetDParam(4, this->company_info[this->company].num_station[4]);
 			DrawString(x, y, STR_NETWORK_STATIONS, TC_GOLD); // stations
 			y += 10;
 
-			SetDParamStr(0, _network_company_info[this->company].clients);
+			SetDParamStr(0, this->company_info[this->company].clients);
 			DrawStringTruncated(x, y, STR_NETWORK_PLAYERS, TC_GOLD, trunc_width); // players
 		}
 	}
@@ -1306,6 +1307,8 @@ struct NetworkLobbyWindow : public Window {
 			case NLWW_REFRESH:  // Refresh
 				NetworkTCPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // company info
 				NetworkUDPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // general data
+				/* Clear the information so removed companies don't remain */
+				memset(this->company_info, 0, sizeof(company_info));
 				break;
 		}
 	}
@@ -1360,6 +1363,17 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 	NetworkUDPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // general data
 
 	new NetworkLobbyWindow(&_network_lobby_window_desc, ngl);
+}
+
+/**
+ * Get the company information of a given company to fill for the lobby.
+ * @param company the company to get the company info struct from.
+ * @return the company info struct to write the (downloaded) data to.
+ */
+NetworkCompanyInfo *GetLobbyCompanyInfo(CompanyID company)
+{
+	NetworkLobbyWindow *lobby = dynamic_cast<NetworkLobbyWindow*>(FindWindowById(WC_NETWORK_WINDOW, 0));
+	return (lobby != NULL && company < MAX_COMPANIES) ? &lobby->company_info[company] : NULL;
 }
 
 // The window below gives information about the connected clients

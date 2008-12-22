@@ -118,35 +118,15 @@ DEF_UDP_RECEIVE_COMMAND(Server, PACKET_UDP_CLIENT_DETAIL_INFO)
 	packet.Send_uint8 (NETWORK_COMPANY_INFO_VERSION);
 	packet.Send_uint8 (ActiveCompanyCount());
 
-	/* Fetch the latest version of everything */
-	NetworkPopulateCompanyInfo();
+	/* Fetch the latest version of the stats */
+	NetworkCompanyStats company_stats[MAX_COMPANIES];
+	NetworkPopulateCompanyStats(company_stats);
 
 	Company *company;
-	byte current = 0;
 	/* Go through all the companies */
 	FOR_ALL_COMPANIES(company) {
-		current++;
-
 		/* Send the information */
-		packet.Send_uint8 (current);
-
-		packet.Send_string(_network_company_info[company->index].company_name);
-		packet.Send_uint32(_network_company_info[company->index].inaugurated_year);
-		packet.Send_uint64(_network_company_info[company->index].company_value);
-		packet.Send_uint64(_network_company_info[company->index].money);
-		packet.Send_uint64(_network_company_info[company->index].income);
-		packet.Send_uint16(_network_company_info[company->index].performance);
-
-		/* Send 1 if there is a passord for the company else send 0 */
-		packet.Send_bool  (!StrEmpty(_network_company_info[company->index].password));
-
-		for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
-			packet.Send_uint16(_network_company_info[company->index].num_vehicle[i]);
-		}
-
-		for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
-			packet.Send_uint16(_network_company_info[company->index].num_station[i]);
-		}
+		this->Send_CompanyInformation(&packet, company, &company_stats[company->index]);
 	}
 
 	this->SendPacket(&packet, client_addr);
