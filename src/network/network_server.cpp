@@ -79,7 +79,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	memset(clients, 0, sizeof(clients));
 
 	/* Add the local player (if not dedicated) */
-	const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
+	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 	if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
 		strecpy(clients[ci->client_playas], ci->client_name, lastof(clients[ci->client_playas]));
 	}
@@ -258,7 +258,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, DEREF_CLIENT_INFO(new_cs));
 	}
 	// Also send the info of the server
-	SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER));
+	SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER));
 }
 
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
@@ -1057,7 +1057,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 	case DESTTYPE_CLIENT:
 		/* Are we sending to the server? */
 		if ((ClientID)dest == CLIENT_ID_SERVER) {
-			ci = NetworkFindClientInfoFromIndex(from_id);
+			ci = NetworkFindClientInfoFromClientID(from_id);
 			/* Display the text locally, and that is it */
 			if (ci != NULL)
 				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, "%s", msg);
@@ -1074,8 +1074,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		// Display the message locally (so you know you have sent it)
 		if (from_id != (ClientID)dest) {
 			if (from_id == CLIENT_ID_SERVER) {
-				ci = NetworkFindClientInfoFromIndex(from_id);
-				ci_to = NetworkFindClientInfoFromIndex((ClientID)dest);
+				ci = NetworkFindClientInfoFromClientID(from_id);
+				ci_to = NetworkFindClientInfoFromClientID((ClientID)dest);
 				if (ci != NULL && ci_to != NULL)
 					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), true, ci_to->client_name, "%s", msg);
 			} else {
@@ -1102,8 +1102,8 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 			}
 		}
 
-		ci = NetworkFindClientInfoFromIndex(from_id);
-		ci_own = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
+		ci = NetworkFindClientInfoFromClientID(from_id);
+		ci_own = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
 			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, "%s", msg);
 			if (from_id == CLIENT_ID_SERVER) show_local = false;
@@ -1138,7 +1138,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		FOR_ALL_CLIENTS(cs) {
 			SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg);
 		}
-		ci = NetworkFindClientInfoFromIndex(from_id);
+		ci = NetworkFindClientInfoFromClientID(from_id);
 		if (ci != NULL)
 			NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, "%s", msg);
 		break;
@@ -1336,7 +1336,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 void NetworkUpdateClientInfo(ClientID client_id)
 {
 	NetworkTCPSocketHandler *cs;
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(client_id);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 
 	if (ci == NULL) return;
 
@@ -1378,7 +1378,7 @@ static void NetworkAutoCleanCompanies()
 	}
 
 	if (!_network_dedicated) {
-		ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
+		ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 		if (IsValidCompanyID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
@@ -1436,7 +1436,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 			}
 		}
 		// Check if it is the same as the server-name
-		ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
+		ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 		if (ci != NULL) {
 			if (strcmp(ci->client_name, new_name) == 0) found_name = false; // name already in use
 		}
@@ -1570,7 +1570,7 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner)
 	/* The server has to handle all administrative issues, for example
 	 * updating and notifying all clients of what has happened */
 	NetworkTCPSocketHandler *cs;
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 
 	/* The server has just changed from owner */
 	if (current_owner == ci->client_playas) {

@@ -385,7 +385,7 @@ DEF_CONSOLE_CMD(ConBan)
 
 	if (strchr(argv[1], '.') == NULL) { // banning with ID
 		client_id = (ClientID)atoi(argv[1]);
-		ci = NetworkFindClientInfoFromIndex(client_id);
+		ci = NetworkFindClientInfoFromClientID(client_id);
 	} else { // banning IP
 		ci = NetworkFindClientInfoFromIP(argv[1]);
 		if (ci == NULL) {
@@ -567,7 +567,7 @@ DEF_CONSOLE_CMD(ConKick)
 
 	if (strchr(argv[1], '.') == NULL) {
 		client_id = (ClientID)atoi(argv[1]);
-		ci = NetworkFindClientInfoFromIndex(client_id);
+		ci = NetworkFindClientInfoFromClientID(client_id);
 	} else {
 		ci = NetworkFindClientInfoFromIP(argv[1]);
 		client_id = (ci == NULL) ? INVALID_CLIENT_ID : ci->client_id;
@@ -623,7 +623,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 		IConsoleError("Cannot remove company: a client is connected to that company.");
 		return false;
 	}
-	const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(CLIENT_ID_SERVER);
+	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 	if (ci->client_playas == index) {
 		IConsoleError("Cannot remove company: the server is connected to that company.");
 		return true;

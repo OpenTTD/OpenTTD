@@ -401,7 +401,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	/* Do we receive a change of data? Most likely we changed playas */
 	if (client_id == _network_own_client_id) _network_playas = playas;
 
-	ci = NetworkFindClientInfoFromIndex(client_id);
+	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
 			// Client name changed, display the change
@@ -420,7 +420,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	}
 
 	// We don't have this client_id yet, find an empty client_id, and put the data there
-	ci = NetworkFindClientInfoFromIndex(INVALID_CLIENT_ID);
+	ci = NetworkFindClientInfoFromClientID(INVALID_CLIENT_ID);
 	if (ci != NULL) {
 		ci->client_id = client_id;
 		ci->client_playas = playas;
@@ -714,7 +714,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	bool self_send = p->Recv_bool();
 	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
 
-	ci_to = NetworkFindClientInfoFromIndex(client_id);
+	ci_to = NetworkFindClientInfoFromClientID(client_id);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
 
 	/* Did we initiate the action locally? */
@@ -723,7 +723,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 			case NETWORK_ACTION_CHAT_CLIENT:
 				/* For speaking to client we need the client-name */
 				snprintf(name, sizeof(name), "%s", ci_to->client_name);
-				ci = NetworkFindClientInfoFromIndex(_network_own_client_id);
+				ci = NetworkFindClientInfoFromClientID(_network_own_client_id);
 				break;
 
 			/* For speaking to company or giving money, we need the company-name */
@@ -735,7 +735,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				SetDParam(0, ci_to->client_playas);
 
 				GetString(name, str, lastof(name));
-				ci = NetworkFindClientInfoFromIndex(_network_own_client_id);
+				ci = NetworkFindClientInfoFromClientID(_network_own_client_id);
 			} break;
 
 			default: NOT_REACHED(); break;
@@ -759,7 +759,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 	ClientID client_id = (ClientID)p->Recv_uint32();
 	GetNetworkErrorMsg(str, (NetworkErrorCode)p->Recv_uint8(), lastof(str));
 
-	ci = NetworkFindClientInfoFromIndex(client_id);
+	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
 
@@ -780,7 +780,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 	ClientID client_id = (ClientID)p->Recv_uint32();
 	p->Recv_string(str, lengthof(str));
 
-	ci = NetworkFindClientInfoFromIndex(client_id);
+	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
 
@@ -800,7 +800,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 {
 	ClientID client_id = (ClientID)p->Recv_uint32();
 
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(client_id);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL)
 		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name, "");
 
@@ -928,7 +928,7 @@ void NetworkClientSendRcon(const char *password, const char *command)
 
 void NetworkUpdateClientName()
 {
-	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_id);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(_network_own_client_id);
 
 	if (ci == NULL) return;
 

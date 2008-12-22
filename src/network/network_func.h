@@ -51,7 +51,7 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner);
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
 
-NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientID client_id);
+NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id);
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
 const char* GetClientIP(const NetworkClientInfo *ci);
 

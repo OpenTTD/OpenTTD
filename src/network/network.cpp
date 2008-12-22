@@ -101,7 +101,7 @@ static ClientID _network_client_id = CLIENT_ID_FIRST;
 extern void StateGameLoop();
 
 // Function that looks up the CI for a given client-identifier
-NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientID client_id)
+NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id)
 {
 	NetworkClientInfo *ci;
 
