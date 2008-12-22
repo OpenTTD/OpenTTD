@@ -2,7 +2,7 @@
 ##ownname עברית
 ##isocode he_IL
 ##winlangid 0x040d
-##plural 2
+##plural 0
 ##textdir rtl
 ##gender m f
 
@@ -1004,6 +1004,10 @@ STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}אפש�
 
 
 
+STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} רכבת{P "" s}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW                                                :{WAYPOINT}
 
 
 
@@ -1025,6 +1029,9 @@ STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}אפש�
 
 
 
+TEMP_AI_IN_PROGRESS                                             :{WHITE}ברוכים הבאים לא.מ החדש!אם אתה ניתקלים בבעיה,אנא תצלמו את המישחק ושימו אותו בפרום.
+TEMP_AI_ACTIVATED                                               :{WHITE}זהירות!ה א.מ עדיין בגרסת אלפא!בנתיים רק אוטובוסים ומאשיות פועלות!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}אזהרה.הא.מ עדיין תחת בניה!
 
 ############ network gui strings
 
@@ -1243,7 +1250,7 @@ STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}חייב
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}חייב למחוק את הכביש קודם
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}עבודות כביש בפעולה
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}בניית כבישים
-STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}בניה של מסילות חשמליות
+STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}בניה של רכבת קלה\חשמלית
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}בחירת גשר לכביש
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}... כביש חד סיטרי לא יכול להיות בצומת
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}לא ניתן לבנות כביש כאן...
@@ -1696,6 +1703,8 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 ########### String for New Landscape Generator
 
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}יצור עולם
+STR_WORLD_GENERATION                                            :{BLACK}יצור עולם
 
 
 ########### String for new airports

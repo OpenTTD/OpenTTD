@@ -2,7 +2,7 @@
 ##ownname Magyar
 ##isocode hu_HU
 ##winlangid 0x040e
-##plural 1
+##plural 2
 ##case t ba
 
 #
@@ -1105,25 +1105,25 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Életh�
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, stb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Vonatok valósághű gyorsulása: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}A vonatok és a hajók nem tesznek 90 fokos kanyart: {ORANGE}{STRING} {LTBLUE} (csak NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90°-os kanyart: {ORANGE}{STRING} {LTBLUE}(nem NTP-vel)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telepakolása (egyidejű helyett): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Csak akkor szállítson árut az állomásra, ha ott van rá kereslet: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Csak igény esetén kerüljön áru az állomásra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Nagyon hosszú hidak engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}'Menj a garázsba' engedélyezés a menetrendben: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Utólagos elsődleges-ipar létesítési módszer: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :semmilyen
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :biztos módszer
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :lehetséges mód
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Kézi nyersanyaglelőhely-létesítési módszer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nincs
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :mint általában
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :kutatás támogatása
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Több hasonló ipari épület egy városon belül: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Több ugyanolyan gyár építhető közel egymáshoz: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mindig teljes dátum a képernyőn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Jelzők a menetirány szerinti oldalon legyenek: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Pénzügyi összesítés minden év végén: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Minden új utasítás alapból 'non-stop': {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Közúti járművek sorbanállása (quantum effektektus): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Közúti járművek sorbanállása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ablakmozgatás, ha az egér a képernyő szélén van: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetősége: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Lehessen kizárólagos szállítási jogot venni: {ORANGE}{STRING}
@@ -1138,22 +1138,22 @@ STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Több N
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Mindig engedélyezze a kis repülőtereket: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Figyelmeztet ha a vonat eltévedt: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Járművek menetrendjének ellenőrzése: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nem
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :igen, de nem az álló járművekre
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Menetrend-ellenőrzés: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nincs
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :csak mozgó járművekre
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :minden járműre
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Figyelmeztetés, ha a vonat veszteséges: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Járművek sose avuljanak el: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Járművek sosem avulnak el: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatikusan felújítja a járművet ha elöregedik
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autom. járműfelújítás {ORANGE}{STRING}{LTBLUE} hónappal a max életkora előtt/után
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autom. megújításhoz szükséges min. pénz: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autom. felújításhoz szükséges min. pénz: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a lakosságot a feliratban: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Térkép generálás: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Eredeti
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Olajfinomítók max távolsága a szélektől {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Olajfinomítók max távolsága a szélektől: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}A terep durvasága (csak TerraGenesisnél) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
@@ -1174,7 +1174,7 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikop
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendező eszköztár megnyitása az építési eszköztárakkal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Egeres mozgáskor a táj a másik irányba mozdul el: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Finomított nézőpont-görgetés: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Területinformációk mutatása építési eszközök használatakor : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Területinformációk mutatása építési eszközök használatakor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Cégek járműveinek mutatása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Egyikét sem
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Csak a sajátét
@@ -1212,7 +1212,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhe
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Legutoljára használt
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányszakasz foglaltságának jelzése: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Akkor is mutasd az eszköztárat, ha nem építhető semmi róla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Eszköztár mutatása, még ha nem is építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármű játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maximum repülőgép játékosonként: {ORANGE}{STRING}
@@ -1250,7 +1250,7 @@ STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Alapér
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normál
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Fejlett (PBS)
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Egyirányú fejlett (PBS)
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Jelzők típusa átalakításkor : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Jelzők típusa átalakításkor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Csak normál
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Csak fejlett (PBS)
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Mind
@@ -3674,7 +3674,7 @@ STR_SIGN_OSKTITLE                                               :{BLACK}Felirat 
 ########
 
 STR_FUND_NEW_INDUSTRY                                           :{BLACK}Alapít
-STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Támogat
+STR_PROSPECT_NEW_INDUSTRY                                       :{BLACK}Kutatás
 STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Épít
 STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}Válaszd ki a megfelelő ipartípust a listából
 

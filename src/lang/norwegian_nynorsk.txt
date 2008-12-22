@@ -20,6 +20,7 @@ STR_0009                                                        :{WHITE}{CARGO}
 STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} på veg frå {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Godtek: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Godtek: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}Forsyningar: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Passasjerar
 STR_0010_COAL                                                   :Kol
@@ -269,6 +270,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Snø
 STR_012C_MESSAGE                                                :{WHITE}Melding
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}Standard
 STR_012E_CANCEL                                                 :{BLACK}Avbryt
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Gje nytt namn
@@ -381,6 +383,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maksimal fart
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Verdi
 STR_SORT_BY_LENGTH                                              :Lengde
+STR_SORT_BY_LIFE_TIME                                           :Gjenståande levetid
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Verdien av ventande last
 STR_SORT_BY_RATING_MAX                                          :Vurdering av last
@@ -488,6 +491,7 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for å fjerne:  {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Eigar: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}Veg eigar: {LTBLUE}{STRING}
 STR_TRAM_OWNER                                                  :{BLACK}Trikkeskjene-eigar: {LTBLUE}{STRING}
 STR_RAIL_OWNER                                                  :{BLACK}Jernbaneskjene-eigar: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokale styresmaktar: {LTBLUE}{STRING}
@@ -597,6 +601,7 @@ STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Økonom
 STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Produksjonsendringar i industriar betjent av firmaet
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Produksjonsendringar for industriar betente av konkurrent(ar)
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Produksonsendringar for andre industriar
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Råd / informasjon om firmaet's kjøretøy
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nye køyretøy
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Endringar i godtekne varer
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidiar
@@ -3134,6 +3139,9 @@ STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} Behøver OpenTTD versjon {STRING} eller betre.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fila den var laga for å omsetje
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :For mange NewGRF lasta
+STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Uforventa grafikk (sprite).
+STR_NEWGRF_ERROR_INVALID_ID                                     :Forsøk på å bruka ugyldig ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} inneheld ein øydelagt grafikk. All øydelagt grafikk vil bli vist som raude spørsmålsteikn (?).
 
 STR_NEWGRF_ADD                                                  :{BLACK}Legg til
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Legg ei ny NewGRF-fil til lista

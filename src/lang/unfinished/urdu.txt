@@ -1,0 +1,427 @@
+##name Urdu
+##ownname Urdu
+##isocode ur_PK
+##winlangid 0x0420
+##plural 0
+##textdir rtl
+
+#
+
+##id 0x0000
+STR_NULL                                                        :
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}نقشے کے کنارے سے باہر
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}نقشے کے کنارے سے زیادہ قریب
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}ناکافی پیسہ - {CURRENCY} مزید چاہیے
+STR_0004                                                        :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}ہموار زمین چاہیے
+STR_0008_WAITING                                                :{BLACK}منتظر: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} سے براستہ ہے {STATION})
+STR_000C_ACCEPTS                                                :{BLACK}منظور کرتا ہے: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}منظور کرتا ہے: {GOLD}
+STR_SUPPLIES                                                    :{BLACK}فراہم کرتا ہے: {GOLD}
+STR_000E                                                        :
+STR_000F_PASSENGERS                                             :مسافر
+STR_0010_COAL                                                   :کویلہ
+STR_0011_MAIL                                                   :ڈاک
+STR_0012_OIL                                                    :تیل
+STR_0013_LIVESTOCK                                              :مویشی
+STR_0014_GOODS                                                  :سامان تجارت
+STR_0015_GRAIN                                                  :گیہوں
+STR_0016_WOOD                                                   :لکڑی
+STR_0017_IRON_ORE                                               :خام لوہا
+STR_0018_STEEL                                                  :فولاد
+STR_0019_VALUABLES                                              :قیمتی اشیا
+STR_001A_COPPER_ORE                                             :خام تانبا
+STR_001B_MAIZE                                                  :مکی
+STR_001C_FRUIT                                                  :پھل
+STR_001D_DIAMONDS                                               :ہیرے
+STR_001E_FOOD                                                   :کھانا
+STR_001F_PAPER                                                  :کاغذ
+STR_0020_GOLD                                                   :سونا
+STR_0021_WATER                                                  :پانی
+STR_0022_WHEAT                                                  :گندم
+STR_0023_RUBBER                                                 :ربر
+STR_0024_SUGAR                                                  :چینی
+STR_0025_TOYS                                                   :کھلونے
+STR_0026_CANDY                                                  :مٹھایاں
+STR_0027_COLA                                                   :کولا
+STR_0028_COTTON_CANDY                                           :لچھا
+STR_0029_BUBBLES                                                :بلبلے
+STR_002A_TOFFEE                                                 :ٹافی
+STR_002B_BATTERIES                                              :بیٹریاں
+STR_002C_PLASTIC                                                :پلاسٹک
+STR_002D_FIZZY_DRINKS                                           :گیسی مشروب
+STR_002E                                                        :
+STR_002F_PASSENGER                                              :مسافر
+STR_0030_COAL                                                   :کویلہ
+STR_0031_MAIL                                                   :ڈاک
+STR_0032_OIL                                                    :تیل
+STR_0033_LIVESTOCK                                              :مویشی
+STR_0034_GOODS                                                  :سامان
+STR_0035_GRAIN                                                  :گیہوں
+STR_0036_WOOD                                                   :لکڑی
+STR_0037_IRON_ORE                                               :خام لوہا
+STR_0038_STEEL                                                  :فولاد
+STR_0039_VALUABLES                                              :نوادرات
+STR_003A_COPPER_ORE                                             :خام تانبا
+STR_003B_MAIZE                                                  :مکیی
+STR_003C_FRUIT                                                  :بھل
+STR_003D_DIAMOND                                                :ہیرا
+STR_003E_FOOD                                                   :کھانا
+STR_003F_PAPER                                                  :کاغذ
+STR_0040_GOLD                                                   :سونا
+STR_0041_WATER                                                  :پانی
+STR_0042_WHEAT                                                  :گندم
+STR_0043_RUBBER                                                 :ربر
+STR_0044_SUGAR                                                  :چینی
+STR_0045_TOY                                                    :کھلونا
+STR_0046_CANDY                                                  :مٹھایی
+STR_0047_COLA                                                   :کولا
+STR_0048_COTTON_CANDY                                           :لچھا
+STR_0049_BUBBLE                                                 :بلبلہ
+STR_004A_TOFFEE                                                 :ٹافی
+STR_004B_BATTERY                                                :بیٹری
+STR_004C_PLASTIC                                                :پلاسٹک
+STR_004D_FIZZY_DRINK                                            :گیسی مشروب
+STR_QUANTITY_NOTHING                                            :
+STR_QUANTITY_PASSENGERS                                         :{COMMA} مسافر{P "" s}
+STR_QUANTITY_COAL                                               :{WEIGHT} کویلہ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ range for menu starts
+############ range for menu ends
+
+
+
+############ range for months starts
+############ range for months ends
+
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days starts
+############ range for days ends
+
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+############ range for menu starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires starts
+############ range for requires ends
+
+############ range for produces starts
+############ range for produces ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using range 0x6000 for strings that are stored in the savegame
+############ These strings may never get a new id, or savegames will break!
+##id 0x6000
+
+
+############ end of savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+
+##id 0xB000
+
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### For showing numbers in widgets
+
+
+########### String for New Landscape Generator
+
+
+
+########### String for new airports
+
+
+############ Tooltip measurment
+
+
+############ Date formatting
+
+########
+
+
+
+
+##### Mass Order
+
+
+
+
+
+
+#### Improved sign GUI
+
+########
+
+
+############ Face formatting
+########
+
+############ signal GUI
+########
+
+############ on screen keyboard
+########
+
+############ town controlled noise level
+########

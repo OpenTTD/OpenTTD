@@ -30,7 +30,7 @@ STR_0013_LIVESTOCK                                              :مواشي
 STR_0014_GOODS                                                  :بضائع
 STR_0015_GRAIN                                                  :حبوب
 STR_0016_WOOD                                                   :خشب
-STR_0017_IRON_ORE                                               :برادة حديد
+STR_0017_IRON_ORE                                               :خام حديد
 STR_0018_STEEL                                                  :حديد
 STR_0019_VALUABLES                                              :مدخرات
 STR_001A_COPPER_ORE                                             :منجم نحاس
@@ -58,14 +58,14 @@ STR_002F_PASSENGER                                              :ركاب
 STR_0030_COAL                                                   :فحم
 STR_0031_MAIL                                                   :بريد
 STR_0032_OIL                                                    :نفط
-STR_0033_LIVESTOCK                                              :مواشي
+STR_0033_LIVESTOCK                                              :ماشية
 STR_0034_GOODS                                                  :بضائع
 STR_0035_GRAIN                                                  :حبوب
 STR_0036_WOOD                                                   :خشب
-STR_0037_IRON_ORE                                               :برادة حديد
+STR_0037_IRON_ORE                                               :خام الحديد
 STR_0038_STEEL                                                  :حديد
 STR_0039_VALUABLES                                              :مقتنيات ثمينة
-STR_003A_COPPER_ORE                                             :برادة نحاس
+STR_003A_COPPER_ORE                                             :خام نحاس
 STR_003B_MAIZE                                                  :ذرة
 STR_003C_FRUIT                                                  :فواكة
 STR_003D_DIAMOND                                                :جواهر
@@ -84,7 +84,7 @@ STR_0049_BUBBLE                                                 :فقاعات
 STR_004A_TOFFEE                                                 :توفي
 STR_004B_BATTERY                                                :بطاريات
 STR_004C_PLASTIC                                                :بلاستيك
-STR_004D_FIZZY_DRINK                                            :مشروبات نخفوقة
+STR_004D_FIZZY_DRINK                                            :مشروب مخفوق
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA}راكب
 STR_QUANTITY_COAL                                               :{WEIGHT} من الفحم
@@ -96,6 +96,7 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} من �
 STR_QUANTITY_WOOD                                               :{WEIGHT} من الخشب
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} من برادة الحديد
 STR_QUANTITY_STEEL                                              :{WEIGHT} من الحديد
+STR_QUANTITY_VALUABLES                                          :{COMMA}صندوق من المقتنيات الثمينة
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} من برادة النحاس
 STR_QUANTITY_MAIZE                                              :{WEIGHT} من الذرة
 STR_QUANTITY_FRUIT                                              :{WEIGHT} من الفواكة
@@ -107,6 +108,7 @@ STR_QUANTITY_WATER                                              :{VOLUME} من �
 STR_QUANTITY_WHEAT                                              :{WEIGHT} من القمح
 STR_QUANTITY_RUBBER                                             :{VOLUME} من المطاط
 STR_QUANTITY_SUGAR                                              :{WEIGHT} من السكر
+STR_QUANTITY_TOYS                                               :{COMMA}الألعاب
 STR_QUANTITY_COLA                                               :{VOLUME} من الكولا
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} من الحلاوة القطنية
 STR_QUANTITY_BUBBLES                                            :{COMMA}فقاعات
@@ -193,20 +195,20 @@ STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}العر
 STR_00E2                                                        :{BLACK}{COMMA}
 STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}الموقع
-STR_00E5_CONTOURS                                               :عداد
+STR_00E5_CONTOURS                                               :يحتوي على
 STR_00E6_VEHICLES                                               :عربات
 STR_00E7_INDUSTRIES                                             :مصانع
 STR_00E8_ROUTES                                                 :طرق
 STR_00E9_VEGETATION                                             :نبات
 STR_00EA_OWNERS                                                 :ملاك
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}شوارع
-STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}سكة القطار
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}محطات/مطارات/موانئ
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}مباني/مصانع
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT} سكة القطار
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}محطات / مطارات / موانئ
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}مباني / مصانع
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}عربات
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 م
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 م
-STR_00F2_300M                                                   :{BLACK}{TINYFONT}300م
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300 م
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 م
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 م
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}قطارات
@@ -214,27 +216,27 @@ STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFON
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}سفن
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}طائرات
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}طرق النقل
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}منجم فحم
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}محطة طاقة
-STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}غابة
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}منجرة خشب
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}محطة تكريرالنفط
-STR_00FF_FARM                                                   :{BLACK}{TINYFONT}مزرعة
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT} منجم فحم
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT} محطة طاقة
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT} غابة
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT} منجرة خشب
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT} محطة تكريرالنفط
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT} مزرعة
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}مصنع
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}مطبعة
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}بئر نفط
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}منجم برادة الحديد
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}منجم خام الحديد
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}مصنع حديد
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}بنك
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}مصنع ورق
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}منجم ذهب
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}معمل تحضير الطعام
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}منجم جواهر
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}منجم برادة النحاس
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}منجم خام النحاس
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}مزرعة فواكة
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}مزرعة مطاط
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}بئر ماء
-STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}برج ماء
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}بئر مياة
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}برج مياة
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}منشرة خشب
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}غابة شجر القطن
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}مصنع حلويات
@@ -243,12 +245,12 @@ STR_0113_COLA_WELLS                                             :{BLACK}{TINYFON
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}محل بيع الألعاب
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}مصنع الألعاب
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}معمل بلاستيك
-STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}مصنع مخفوق العصير
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}مصنع الشراب المخفوق
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}مولد الفقاقيع
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}معمل توفي
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}قصب السكر
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}محطة قطار
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}محطة بضائع سيارات
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}محطة بضائع لسيارات
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}محطة باصات
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}مطار
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}مرفء
@@ -283,18 +285,18 @@ STR_OSNAME_AMIGAOS                                              :أميقا
 STR_OSNAME_OS2                                                  :أو أس/2
 STR_OSNAME_SUNOS                                                :صن
 
-STR_013B_OWNED_BY                                               :{WHITE}مملوكة من قبل...{STRING}
+STR_013B_OWNED_BY                                               :{WHITE} مملوكة من قبل ... {STRING}
 STR_013C_CARGO                                                  :{BLACK}بضاعة شحن
 STR_013D_INFORMATION                                            :{BLACK}معلومات
-STR_013E_CAPACITIES                                             :{BLACK}السعة
+STR_013E_CAPACITIES                                             :{BLACK} السعة
 STR_TOTAL_CARGO                                                 :{BLACK}مجموع الحمولة
-STR_013F_CAPACITY                                               :{BLACK}سعة: {LTBLUE}{CARGO}
+STR_013F_CAPACITY                                               :{BLACK}  سعة  : {LTBLUE}{CARGO}
 STR_CAPACITY_MULT                                               :{BLACK}السعة: {LTBLUE}{CARGO} (x{NUM})
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}الحمولة القصوى لهذا القطار:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}لعبة جديدة
-STR_0141_LOAD_GAME                                              :{BLACK}تحميل
+STR_0141_LOAD_GAME                                              :{BLACK} تحميل
 STR_SINGLE_PLAYER                                               :{BLACK}لاعب واحد
 STR_MULTIPLAYER                                                 :{BLACK}لعب جماعي
 STR_SCENARIO_EDITOR                                             :{BLACK}محرر الخريطة
@@ -303,7 +305,7 @@ STR_MAPSIZE                                                     :{BLACK}حجم �
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}خيارات اللعبة
 
-STR_0150_SOMEONE                                                :شخص ما{SKIP}{SKIP}
+STR_0150_SOMEONE                                                :شخص ما {SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :خارطة العالم
 STR_0152_TOWN_DIRECTORY                                         :دليل المدن
 STR_0153_SUBSIDIES                                              :عروض
@@ -348,7 +350,7 @@ STR_PERFORMANCE_DETAIL_MENU                                     :تقييم أد
 STR_015B_OPENTTD                                                :{WHITE}حول النسخة المفتوحة
 STR_015C_SAVE_GAME                                              :حفظ
 STR_015D_LOAD_GAME                                              :تحميل
-STR_015E_QUIT_GAME                                              :ترك اللعبة
+STR_015E_QUIT_GAME                                              :اغلاق اللعبة
 STR_015F_QUIT                                                   :خروج
 STR_ABANDON_GAME_QUERY                                          :{YELLOW}هل انت متأكد انك تود ترك هذة اللعبة و اغلاقها؟
 STR_0161_QUIT_GAME                                              :{WHITE}ترك اللعبة
@@ -417,7 +419,7 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}ايقاف اللعبة
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}حفظ/اغلاق/خروج
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK} حفظ / اغلاق / خروج
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}عرض محطات الشركة
 STR_0174_DISPLAY_MAP                                            :{BLACK}عرض الخريطة, لقطات اضافية , العلامات
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}عرض الخريطة, دليل المدن
@@ -432,18 +434,18 @@ STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}عرض �
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}عرض طائرات الشركة
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}تكبير الصورة
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}تصغير الصورة
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}انشاء سكة حديد
-STR_0182_BUILD_ROADS                                            :{BLACK}انشاء شارع
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}انشاء مرفء سفن
-STR_0184_BUILD_AIRPORTS                                         :{BLACK}انشاء مطار
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}زراعة شجر, علامات و اشارات ...
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}ادوات بناء سكة حديد
+STR_0182_BUILD_ROADS                                            :{BLACK}ادوات بناء الطرق
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}ادوات السفن
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}ادوات المطار
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}زراعة شجر, علامات و اشارات  ...
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}معلومات مناطق الخريطة
 STR_0187_OPTIONS                                                :{BLACK}خيارات
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}لا يمكن تغيير فترات الصيانة
 STR_018B_CLOSE_WINDOW                                           :{BLACK}اغلاق الاطار
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}عنوان الطار- اسحب لتحريك الاطار
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}عنوان الاطار- اسحب لتحريك الاطار
 STR_STICKY_BUTTON                                               :{BLACK}خصص هذا الاطار بان يبقى مفتوح عند اغلاق كافة الاطارات
 STR_RESIZE_BUTTON                                               :{BLACK}اضغط واسحب لتعديل حجم الاطار
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}اضغط هنا لتوجة الى دليل الحفظ/الفتح القياسي
@@ -452,14 +454,14 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}خفض �
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}رفع ركن الارض
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}شريط العرض- فوق /تحت
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}عمود التحريك - يمين/يسار
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}عرض عداد الارض على الخريطة
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}عرض التضاريس على الخريطة
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}عرض المركبات على الخريطة
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}عرض المصانع على الخريطة
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}عرض الطرق على الخريطة
-STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}عرض المزارع على الخريطة
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}عرض الشجر على الخريطة
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}عرض ملاك الاراضي على الخريطة
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}عرض/اخفاء اسماء المدن
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}دخل السنة الحالية: {CURRENCY} (السنة السابقة: {CURRENCY})
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK} دخل السنة الحالية : {CURRENCY}  (  السنة السابقة  :  {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA}سنة ({COMMA})
@@ -470,12 +472,12 @@ STR_019C_ROAD_VEHICLE                                           :مركبات
 STR_019D_AIRCRAFT                                               :طائرات
 STR_019E_SHIP                                                   :سفن
 STR_019F_TRAIN                                                  :قطارات
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} يحتاج تبديل
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} اصبحت قديمة جدا
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA}قديمة جدا وتحتاج تبديل على فورا
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} يحتاج تبديل  {COMMA}
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}  اصبحت قديمة جدا  {COMMA}
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} قديمة جدا وتحتاج تبديل على الفور  {COMMA}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}معلومات ارض
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}تكلفة الازالة {LTBLUE}غير متاح
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}تكلفة الازالة {LTBLUE}{CURRENCY}
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK} تكلفة الازالة :  {LTBLUE} غير متاح
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}تكلفة الازالة :  {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :غير متاح
 STR_01A7_OWNER                                                  :{BLACK}المالك:  {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}مالك الطريق:  {LTBLUE}{STRING}
@@ -487,44 +489,44 @@ STR_01AA_NAME                                                   :{BLACK}اسم
 STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
-STR_01AC_1ST                                                    :الأول
-STR_01AD_2ND                                                    :الثاني
-STR_01AE_3RD                                                    :الثالث
-STR_01AF_4TH                                                    :الرابع
-STR_01B0_5TH                                                    :الخامس
-STR_01B1_6TH                                                    :السادس
-STR_01B2_7TH                                                    :السابع
-STR_01B3_8TH                                                    :الثامن
-STR_01B4_9TH                                                    :التاسع
-STR_01B5_10TH                                                   :العاشر
-STR_01B6_11TH                                                   :الحادي عشر
-STR_01B7_12TH                                                   :الثاني عشر
-STR_01B8_13TH                                                   :الثالث عشر
-STR_01B9_14TH                                                   :الرابع عشر
-STR_01BA_15TH                                                   :الخامس عشر
-STR_01BB_16TH                                                   :السادس عشر
-STR_01BC_17TH                                                   :السابع عشر
-STR_01BD_18TH                                                   :الثامن عشر
-STR_01BE_19TH                                                   :التاسع عشر
-STR_01BF_20TH                                                   :العشرون
-STR_01C0_21ST                                                   :الواحد و العشرون
-STR_01C1_22ND                                                   :الثاني و العشرون
-STR_01C2_23RD                                                   :الثالث والعشرون
-STR_01C3_24TH                                                   :الرابع و العشرون
-STR_01C4_25TH                                                   :الخامس و العشرون
-STR_01C5_26TH                                                   :السادس و العشرون
-STR_01C6_27TH                                                   :السابع و العشرون
-STR_01C7_28TH                                                   :الثامن و العشرون
-STR_01C8_29TH                                                   :التاسع و العشرون
-STR_01C9_30TH                                                   :الثلاثون
-STR_01CA_31ST                                                   :الواحد والثلاثون
+STR_01AC_1ST                                                    :1
+STR_01AD_2ND                                                    :2
+STR_01AE_3RD                                                    :3
+STR_01AF_4TH                                                    :4
+STR_01B0_5TH                                                    :5
+STR_01B1_6TH                                                    :6
+STR_01B2_7TH                                                    :7
+STR_01B3_8TH                                                    :8
+STR_01B4_9TH                                                    :9
+STR_01B5_10TH                                                   :10
+STR_01B6_11TH                                                   :11
+STR_01B7_12TH                                                   :12
+STR_01B8_13TH                                                   :13
+STR_01B9_14TH                                                   :14
+STR_01BA_15TH                                                   :15
+STR_01BB_16TH                                                   :16
+STR_01BC_17TH                                                   :17
+STR_01BD_18TH                                                   :18
+STR_01BE_19TH                                                   :19
+STR_01BF_20TH                                                   :20
+STR_01C0_21ST                                                   :21
+STR_01C1_22ND                                                   :22
+STR_01C2_23RD                                                   :23
+STR_01C3_24TH                                                   :24
+STR_01C4_25TH                                                   :25
+STR_01C5_26TH                                                   :26
+STR_01C6_27TH                                                   :27
+STR_01C7_28TH                                                   :28
+STR_01C8_29TH                                                   :29
+STR_01C9_30TH                                                   :30
+STR_01CA_31ST                                                   :31
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}الشحنة المقبولة: {LTBLUE}
 
-STR_01D1_8                                                      :({COMMA}/8 {STRING})
+STR_01D1_8                                                      :({COMMA} /8  {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}صندوق الموسيقى
 STR_01D3_SOUND_MUSIC                                            :الموسيقى/الصوت
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}عرض اطار الصوت/الموسيقى
@@ -547,9 +549,9 @@ STR_01E4_0                                                      :{DKGREEN}{TINYF
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}-----
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}مسار{SETX 88}عنوان
-STR_01E9_SHUFFLE                                                :{TINYFONT}عشوائي
-STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}برنامج
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT} مسار  {SETX 88} عنوان
+STR_01E9_SHUFFLE                                                :{TINYFONT} عشوائي
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK} برنامج
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}برنامج اختيار الموسيقى
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
@@ -570,7 +572,7 @@ STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}اضغط
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}تشغيل / ايقاف العشوائي
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}اظهار اطار اختيار الموسيقى
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}اضغط على الخدمة لتوسيط الخريطة على المصنع/المدينة
-STR_01FE_DIFFICULTY                                             :{BLACK}صعب ({STRING})
+STR_01FE_DIFFICULTY                                             :{BLACK} مستوى الصعوبة ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :الرسالة الأخيرة/التقرير الجديد
 STR_0201_MESSAGE_SETTINGS                                       :اعدادات الرسائل
@@ -596,7 +598,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}معل�
 STR_MESSAGES_ALL                                                :{YELLOW}تعديل كل الرسائل الى: ايقاف/ مختصر /كامل
 STR_MESSAGE_SOUND                                               :{YELLOW}اصدار صوت عند عرض رسالة جديدة
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}بعيد جدا من محطة/علامة الوصول السابقة
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}الشركات الكبرى التي وصلت لـ {NUM}{}({STRING} Level)
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}الشركات الكبرى التي وصلت لـ {NUM}{}({STRING} مستوى)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}ترتيب الشركات {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :رجل اعمال
@@ -612,8 +614,8 @@ STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} لـ {COMPANY} منجزات '{STRING}' وضع!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}النسخة المفتوحة
-STR_0222_SCENARIO_EDITOR                                        :{YELLOW}مهندس الخريطة
-STR_0223_LAND_GENERATION                                        :{WHITE}منشأ المسطحات الأرضية
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}محرر الخريطة
+STR_0223_LAND_GENERATION                                        :{WHITE}بناء المسطحات الأرضية
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}زيادة ارتفاع و انخفاض المسطحات الأرضية
@@ -623,11 +625,11 @@ STR_022B_RESET_LANDSCAPE                                        :{BLACK}اعاد
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}اعادة المسطحات الأرضية الى وضعها السابق
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}ازالة ممتلكات اللاعبين من الخريطة
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}هل انت متأكد من ازالة ممتلكات اللاعبين من الخريطة
-STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}منشأ المسطحات الأرضية
-STR_022F_TOWN_GENERATION                                        :{BLACK}منشأ المدن
-STR_0230_INDUSTRY_GENERATION                                    :{BLACK}منشأ المصانع
-STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}اعادة سفلتت الطرق
-STR_0233_TOWN_GENERATION                                        :{WHITE}منشأ المدن
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}بناء المسطحات الأرضية
+STR_022F_TOWN_GENERATION                                        :{BLACK}بناء المدن
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}بناء المصانع
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}بناء الطرق
+STR_0233_TOWN_GENERATION                                        :{WHITE}بناء المدن
 STR_0234_NEW_TOWN                                               :{BLACK}مدينة جديدة
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}انشاء مدينة جديدة
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}لا يمكن انشاء مدينة هنا
@@ -641,7 +643,7 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}زياد
 STR_023C_EXPAND                                                 :{BLACK}توسيع المدينة
 STR_023D_RANDOM_TOWN                                            :{BLACK}مدينة عشوائية
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}بناء مدينة في مكان عشوائي
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}منشأ المصانع
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}بناء المصانع
 STR_0240_COAL_MINE                                              :{BLACK}منجم فحم
 STR_0241_POWER_STATION                                          :{BLACK}محطة طاقة
 STR_0242_SAWMILL                                                :{BLACK}منجرة خشب
@@ -651,7 +653,7 @@ STR_0245_OIL_RIG                                                :{BLACK}بئر �
 STR_0246_FACTORY                                                :{BLACK}مصنع
 STR_0247_STEEL_MILL                                             :{BLACK}مصنع حديد
 STR_0248_FARM                                                   :{BLACK}مزرعة
-STR_0249_IRON_ORE_MINE                                          :{BLACK}منجم برادة الحديد
+STR_0249_IRON_ORE_MINE                                          :{BLACK}منجم خام الحديد
 STR_024A_OIL_WELLS                                              :{BLACK}بئر نفط
 STR_024B_BANK                                                   :{BLACK}بنك
 STR_024C_PAPER_MILL                                             :{BLACK}مصنع ورق
@@ -662,9 +664,9 @@ STR_0250_LUMBER_MILL                                            :{BLACK}معمل
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}مزرعة فواكة
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}مزرعة مطاط
 STR_0253_WATER_SUPPLY                                           :{BLACK}مصدر مياة
-STR_0254_WATER_TOWER                                            :{BLACK}برج ماء
+STR_0254_WATER_TOWER                                            :{BLACK}برج مياة
 STR_0255_DIAMOND_MINE                                           :{BLACK}منجم جواهر
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}منجم برادة النحاس
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}منجم خام النحاس
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}غابة القطن
 STR_0258_CANDY_FACTORY                                          :{BLACK}مصنع حلويات
 STR_0259_BATTERY_FARM                                           :{BLACK}مزرعة البطاريات
@@ -672,45 +674,45 @@ STR_025A_COLA_WELLS                                             :{BLACK}بئر �
 STR_025B_TOY_SHOP                                               :{BLACK}محل العاب
 STR_025C_TOY_FACTORY                                            :{BLACK}مصنع العاب
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}مجسمات بلاستيكية
-STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}مصنع المشروب المخفوق
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}مصنع مشروب مخفوق
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}مولد الفقاعات
 STR_0260_TOFFEE_QUARRY                                          :{BLACK}معمل التوفي
 STR_0261_SUGAR_MINE                                             :{BLACK}قصب السكر
-STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}أنشاء منجم فحم
-STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}أنشاء محطة طاقة
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}أنشاء منجرة خشب
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK} بناء منجم فحم
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}بناء محطة طاقة
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}بناء منجرة خشب
 STR_0265_PLANT_FOREST                                           :{BLACK}زراعة غابة
-STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}أنشاء مصفاة تكرير نفط
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}بناء مصفاة تكرير نفط
 STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}انشاء بئر نفط بحري( يبنى بجانب حدود الخريطة فقط)
-STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}انشاء مصنع
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}انشاء مصنع حديد
-STR_026A_CONSTRUCT_FARM                                         :{BLACK}انشاء مزرعة
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}انشاء منجم برادة الحديد
-STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}انشاء بئر نفط
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}انشاء بنك (للمدن التي يزيد عدد سكانها عن 1200 نسمة)
-STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}انشاء مصنع ورق
-STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}انشاء معمل انتاج الطعام
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}انشاء مطبعة ورق
-STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}انشاء منجم ذهب
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}انشاء بنك (يبنى في المدن فقط)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}انشاء معمل خشب (لتصفية خشب الغابات الممطرة و المنتجات الخشبية)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}بناء مصنع
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}بناء مصنع حديد
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}زرع مزرعة
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}بناء منجم خام الحديد
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}بناء بئر نفط
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}بناء بنك (للمدن التي يزيد عدد سكانها عن 1200 نسمة)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}بناء مصنع ورق
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}بناء معمل انتاج الطعام
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}بناء مطبعة ورق
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}بناء منجم ذهب
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}ابناء بنك (يبنى في المدن فقط)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}بناء معمل خشب (لتصفية خشب الغابات الممطرة و المنتجات الخشبية)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}زرع مزرعة فواكة
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}زرع مزرعة مطاط
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}انشاء مصدر مياة
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}انشاء برج ماء (يبنى داخل المدن فقط)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}انشاء منجم جواهر
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}انشاء منجم برادة النحاس
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}بناء مصدر مياة
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}بناء برج ماء (يبنى داخل المدن فقط)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}بناء منجم جواهر
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}بناء منجم برادة النحاس
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}زرع مزرعة قطن
-STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}انشاء مصنع حلويات
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}نشاء مزرعة بطاريات
-STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}انشاء بئر كولا
-STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}انشاء محل العاب
-STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}انشاء مصنع العاب
-STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}انشاء معمل بلاستيك
-STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}انشاء مصنع المشروبات المخفوقة
-STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}انشاء مولد الفقاعات
-STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}انشاء معمل توفي
-STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}انشاء حقل قصب سكر
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}بناء مصنع حلويات
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}بناء مزرعة بطاريات
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}بناء بئر كولا
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}بناء محل العاب
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}بناء مصنع العاب
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}بناء معمل بلاستيك
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}بناء مصنع المشروبات المخفوقة
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}بناء مولد الفقاعات
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}بناء معمل توفي
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}بناء حقل قصب سكر
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}لايمكن انشاء {STRING} هنا...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...يجب بناء مدينة اولا
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...يسمح بواحد في المدينة فقط
@@ -724,8 +726,8 @@ STR_028E_PLACE_TRANSMITTER                                      :{BLACK}وضع �
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}عرف منطقة صحراوية. {}اضغط بشكل متواصل مفتاح كنترول لأزالتها
 STR_CREATE_LAKE                                                 :{BLACK}عرف منطقة البحر.{} انشأ قناة, يجب الضغط المتواصل على مفتاح كنترول عند مستوى البحر والا طمرت المياة الاجزاء المجاورة
 STR_CREATE_RIVER                                                :{BLACK}انشاء انهار
-STR_0290_DELETE                                                 :{BLACK}الغاء
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}الغاء المدينة كليا
+STR_0290_DELETE                                                 :{BLACK}حذف
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}حذف المدينة كليا
 STR_0292_SAVE_SCENARIO                                          :حفظ الخريطة
 STR_0293_LOAD_SCENARIO                                          :فتح خريطة
 STR_MENU_LOAD_HEIGHTMAP                                         :فتح خريطة مرتفعات
@@ -761,15 +763,15 @@ STR_02BB_TOWN_DIRECTORY                                         :دليل الم
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}اسماء نماذج العربات
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :قياسي
-STR_02BF_CUSTOM                                                 :اختاري
+STR_02BF_CUSTOM                                                 :اختياري
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}حفظ الأسماء الأختيارية
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}اختيار اسماء نماذج العربات
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}حفظ نماذج اسماء المركبات الأختياري
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}حفظ نماذج اسماء العربات الأختياري
 
 STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :خيارات اللعبة
-STR_02C6_DIFFICULTY_SETTINGS                                    :صعب
+STR_02C6_DIFFICULTY_SETTINGS                                    :خيارات الصعوبة
 STR_MENU_CONFIG_PATCHES                                         :اعدادات متقدمة
 STR_NEWGRF_SETTINGS                                             :إعدادات جرافيك جديده
 STR_TRANSPARENCY_OPTIONS                                        :خيارات الشفافية
@@ -787,8 +789,8 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}اسم
 STR_02D5_LAND_BLOCK_INFO                                        :معلومات مربع في الخريطة
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :توقل كونسول
-STR_02D7_SCREENSHOT_CTRL_S                                      :صورة من الشاشة(Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :صورة كبيرة  من الشاشة (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :صورة من الشاشة  ( Ctrl-S )
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :صورة كبيرة  لكامل الخريطة ( Ctrl-G )
 STR_02D9_ABOUT_OPENTTD                                          :حول 'OpenTTD'
 ############ range ends here
 
@@ -815,7 +817,7 @@ STR_02E4                                                        :{BLACK}{SKIP}{S
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}اختيار وحدات القياس
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}العربات البرية
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}اختار الجانب الذي يجلس فية سائق المركبة
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}اختار الجانب الذي تسير فيه المركبات
 STR_02E9_DRIVE_ON_LEFT                                          :القيادة على اليسار
 STR_02EA_DRIVE_ON_RIGHT                                         :القيادة على اليمين
 STR_02EB_TOWN_NAMES                                             :{BLACK}اسماء المدن
@@ -830,7 +832,7 @@ STR_02F8_EVERY_3_MONTHS                                         :كل 3 اشهر
 STR_02F9_EVERY_6_MONTHS                                         :كل 6 اشهر
 STR_02FA_EVERY_12_MONTHS                                        :كل سنة
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}بدأ لعبة جديدة
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}تحميل لعبة جديدة
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}تحميل لعبة محفوظة
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}انشاء خريطة عالم خاصة
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}اختار لعبة للاعب فردي
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}اختار لعبة من 2-8 لاعبين
@@ -845,14 +847,14 @@ STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}اختي
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}اختيار المناطق الصحراوية
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}اختيار المناطق الصحراوية
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}اختيار نمط الألعاب
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}مول انشاء مصنع / عرض كل المصانع
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}موّل انشاء مصنع / عرض كل المصانع
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :دليل المصانع
-STR_0313_FUND_NEW_INDUSTRY                                      :مول بناء مصنع
+STR_0313_FUND_NEW_INDUSTRY                                      :موّل بناء مصنع
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}مول بناء مصنع جديد
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}موّل بناء مصنع جديد
 STR_JUST_STRING                                                 :{STRING}
 STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
@@ -861,7 +863,7 @@ STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... يم
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...يمكن بنائة في المناطق الصحراوية فقط
 STR_0319_PAUSED                                                 :{YELLOW}* *  متوقف  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}صورة من الشاشة حفظت بنجاح كا '{STRING}'
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}صورة من الشاشة حفظت بنجاح باسم:  '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}لم يتم حفظ الصورة
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}شاء ارض للأستخدام المستقبلي
@@ -1642,14 +1644,14 @@ STR_1015_RAILROAD_CONSTRUCTION                                  :بناء سكة
 STR_1016_MONORAIL_CONSTRUCTION                                  :بناء سكة قطار احادية
 STR_1017_MAGLEV_CONSTRUCTION                                    :بناء سكة قطار ممغنطة
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}بناء سكة حديد
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}بناء ورشة قطارات (لصيانة و شراء /  بيع القطارات(
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}بناء ورشة قطارات  -   لصيانة و شراء /  بيع القطارات
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}بناء محطة قطار
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}بناء اشارة سكة قطار
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}بناء جسر قطارات
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}بناء نفق قطار
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}تناوب بناء/ازالة سكك واشارات القطارات
-STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Toggle buildبناء الجسور - اختر الجسر المفضل لديك لبنائة
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}اخترؤاتجاة ورشة صيانة القطارات
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}بناء الجسور - اختر الجسر المفضل لديك لبنائة
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}اختر اتجاة ورشة صيانة القطارات
 STR_1021_RAILROAD_TRACK                                         :سكة القطار
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :ورشة صيانة القطار
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...المنطقة مملوكة لشركة منافسة
@@ -1669,7 +1671,7 @@ STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}لا ي�
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}اتجاة ورشة الصيانة
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}لا يمكن بناء الورشة هنا ...
 STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}لا يمكن بناء ورشة ترام هنا ...
-STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}لا يمكن بناء محطة باص ات هنا ...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}لا يمكن بناء محطة باصات هنا ...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}لا يمكن بناء محطة تحميل عربات هنا ...
 STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}لا يمكن بناء محطة ركاب هنا ...
 STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}لا يمكن بناء محطة ترام هنا ...
@@ -1689,7 +1691,7 @@ STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}بناء
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}بناء نفق للعربات
 STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}بناء نفق ترام
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}تناوب بناء/ ازالة الطرق
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}اختيار اتجاة ورشة صيانة العربات
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}اختر اتجاة ورشة صيانة العربات
 STR_1814_ROAD                                                   :طريق
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :طريق مضاء
 STR_1816_TREE_LINED_ROAD                                        :طريق مرصوف بالشجر
@@ -1702,10 +1704,12 @@ STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}لا ي�
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}مدن/ بلدات
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}يجب هدم المبنى اولا
 STR_2005                                                        :{WHITE}{TOWN}
 STR_CITY                                                        :{WHITE}{TOWN} - مدينة -
-STR_2006_POPULATION                                             :{BLACK}السكان: {ORANGE}{COMMA}{BLACK}  المنازل: {ORANGE}{COMMA}
+STR_2006_POPULATION                                             :{BLACK}السكان:  {ORANGE}{COMMA}{BLACK}   المنازل:     {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :اعادة تسمية
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}لايمكن اعادة تسمية المدينة ...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}بلدية المدينة ترفض السماح بهذا
@@ -1714,7 +1718,7 @@ STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}وسط �
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}تغيير اسم المدينة
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}الركاب الشهر الماضي: {ORANGE}{COMMA}{BLACK}  الأقصى: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}طرود البريد الشهر الماضي: {ORANGE}{COMMA}{BLACK}  الأقصى: {ORANGE}{COMMA}
-STR_200F_TALL_OFFICE_BLOCK                                      :مبنى مكاتب مرتفع
+STR_200F_TALL_OFFICE_BLOCK                                      :مبنى مكاتب عالي
 STR_2010_OFFICE_BLOCK                                           :مبنى مكاتب
 STR_2011_SMALL_BLOCK_OF_FLATS                                   :مبنى شقق صغيرة
 STR_2012_CHURCH                                                 :دار عبادة
@@ -1733,12 +1737,13 @@ STR_201E_STADIUM                                                :استاد ري
 STR_201F_OLD_HOUSES                                             :منازل قديمة
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}بلدية المدينة
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}عرض معلومات البلدية
-STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}البلدية
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE} بلدية {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}تقييم اداء الشركات
 STR_2024                                                        :{YELLOW}{COMPANY} {COMPANYNUM}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}العروض
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}العروض المتاحة للخدمة:
-STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} من {STRING} الى {STRING}
+STR_2028_BY                                                     :{YELLOW} الى {DATE_SHORT}
 STR_202A_NONE                                                   :{ORANGE}بدون
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}العروض المأخوذة
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} من {STATION} الى {STATION}{YELLOW} ({COMPANY}
@@ -2699,6 +2704,7 @@ STR_8820_RENAME                                                 :{BLACK}اعاد
 STR_8823_SKIP                                                   :{BLACK}تجاوز
 STR_8824_DELETE                                                 :{BLACK}حذف
 STR_8826_GO_TO                                                  :{BLACK}اذهب الى
+STR_REFIT                                                       :{BLACK}اعادة تهيئة
 STR_ORDER_VIEW                                                  :{BLACK}الأوامر
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}حول الى عرض الاوامر
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} )اوامر)
@@ -2719,6 +2725,7 @@ STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}لا ي�
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}لا يمكن تخطي الأمر الحالي ...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}لا يمكن تخطي الأمر المختار ...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}لا يمكن تحريك العربة ...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}المحرك الخلفي دائما سيتبع الامامي
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}لا يمكن بيع العربات
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}لا يمكن ايجاد طريق للورشة
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}لا يمكن ايقاف / تشغيل القطار
@@ -2996,6 +3003,7 @@ STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}تفاص
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}العربات:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}المحطات:
@@ -3109,6 +3117,7 @@ STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}بدل �
 
 STR_NOT_REPLACING                                               :{BLACK}لم يتم التبديل
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}لم يتم اختيار اي عربة
+STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}العربة غير متاحة
 STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}الطائرة غير متاحة
 
 STR_ENGINES                                                     :محركات
@@ -3154,6 +3163,11 @@ STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}تأثي
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}ولد
+STR_RANDOM                                                      :{BLACK}عشوائي
+STR_RANDOM_HELP                                                 :{BLACK}غير المرجع العشوائي لتوليد تضاريس الخريطة
+STR_RANDOM_SEED                                                 :{BLACK}مرجع عشوائي
+STR_RANDOM_SEED_HELP                                            :{BLACK}اضغط لادخال مرجع عشوائي
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}ادخل مرجع عشوائي
 STR_LAND_GENERATOR                                              :{BLACK}مولد الخريطة:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}اتجاة خريطة المرتفعات:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}مستوى البحر
