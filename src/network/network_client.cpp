@@ -956,4 +956,22 @@ void NetworkClientSetPassword(const char *password)
 	SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(password);
 }
 
+/**
+ * Tell whether the client has team members where he/she can chat to.
+ * @param cio client to check members of.
+ * @return true if there is at least one team member.
+ */
+bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
+{
+	/* Only companies actually playing can speak to team. Eg spectators cannot */
+	if (!_settings_client.gui.prefer_teamchat || !IsValidCompanyID(cio->client_playas)) return false;
+
+	const NetworkClientInfo *ci;
+	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+		if (ci->client_playas == cio->client_playas && ci != cio) return true;
+	}
+
+	return false;
+}
+
 #endif /* ENABLE_NETWORK */

@@ -41,6 +41,7 @@ bool NetworkClientConnectGame(const char *host, uint16 port);
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg);
 void NetworkClientSetPassword(const char *password);
+bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
 
 /*** Commands ran by the server ***/
 void NetworkServerMonthlyLoop();

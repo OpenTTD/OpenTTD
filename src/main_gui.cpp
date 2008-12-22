@@ -317,22 +317,9 @@ struct MainWindow : Window
 			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
 				if (_networking) {
 					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_id);
-					bool teamchat = false;
-
 					if (cio == NULL) break;
 
-					/* Only companies actually playing can speak to team. Eg spectators cannot */
-					if (_settings_client.gui.prefer_teamchat && IsValidCompanyID(cio->client_playas)) {
-						const NetworkClientInfo *ci;
-						FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
-							if (ci->client_playas == cio->client_playas && ci != cio) {
-								teamchat = true;
-								break;
-							}
-						}
-					}
-
-					ShowNetworkChatQueryWindow(teamchat ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
+					ShowNetworkChatQueryWindow(NetworkClientPreferTeamChat(cio) ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
 				}
 				break;
 
