@@ -79,14 +79,12 @@ static const char *GenerateCompanyPasswordHash(const char *password)
 /**
  * Hash the current company password; used when the server 'company' sets his/her password.
  */
-void HashCurrentCompanyPassword()
+void HashCurrentCompanyPassword(const char *password)
 {
-	if (StrEmpty(_network_company_info[_local_company].password)) return;
-
 	_password_game_seed = _settings_game.game_creation.generation_seed;
 	strecpy(_password_server_unique_id, _settings_client.network.network_id, lastof(_password_server_unique_id));
 
-	const char *new_pw = GenerateCompanyPasswordHash(_network_company_info[_local_company].password);
+	const char *new_pw = GenerateCompanyPasswordHash(password);
 	strecpy(_network_company_info[_local_company].password, new_pw, lastof(_network_company_info[_local_company].password));
 }
 
@@ -950,9 +948,9 @@ void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const 
 	SEND_COMMAND(PACKET_CLIENT_CHAT)(action, type, dest, msg);
 }
 
-void NetworkClientSetPassword()
+void NetworkClientSetPassword(const char *password)
 {
-	SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(_network_company_info[_local_company].password);
+	SEND_COMMAND(PACKET_CLIENT_SET_PASSWORD)(password);
 }
 
 #endif /* ENABLE_NETWORK */

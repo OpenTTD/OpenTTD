@@ -1210,14 +1210,14 @@ DEF_CONSOLE_CMD(ConSayClient)
 	return true;
 }
 
-extern void HashCurrentCompanyPassword();
+extern void HashCurrentCompanyPassword(const char *password);
 
 /* Also use from within company_gui to change the password graphically */
 bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 {
 	if (argc == 0) {
-		if (!IsValidCompanyID(_local_company)) return true; // dedicated server
-		IConsolePrintF(CC_WARNING, "Current value for 'company_pw': %s", _network_company_info[_local_company].password);
+		IConsoleHelp("Change the password of your company. Usage: 'company_pw \"<password>\"'");
+		IConsoleHelp("Use \"*\" to disable the password.");
 		return true;
 	}
 
@@ -1230,15 +1230,13 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 
 	if (strcmp(argv[0], "*") == 0) argv[0][0] = '\0';
 
-	strecpy(_network_company_info[_local_company].password, argv[0], lastof(_network_company_info[_local_company].password));
-
 	if (!_network_server) {
-		NetworkClientSetPassword();
+		NetworkClientSetPassword(argv[0]);
 	} else {
-		HashCurrentCompanyPassword();
+		HashCurrentCompanyPassword(argv[0]);
 	}
 
-	IConsolePrintF(CC_WARNING, "'company_pw' changed to:  %s", _network_company_info[_local_company].password);
+	IConsolePrintF(CC_WARNING, "'company_pw' changed to:  %s", argv[0]);
 
 	return true;
 }
