@@ -638,19 +638,12 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 DEF_CONSOLE_CMD(ConNetworkClients)
 {
-	NetworkClientInfo *ci;
-
 	if (argc == 0) {
 		IConsoleHelp("Get a list of connected clients including their ID, name, company-id, and IP. Usage: 'clients'");
 		return true;
 	}
 
-	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
-		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
-		               ci->client_id, ci->client_name,
-		               ci->client_playas + (IsValidCompanyID(ci->client_playas) ? 1 : 0),
-		               GetClientIP(ci));
-	}
+	NetworkPrintClients();
 
 	return true;
 }

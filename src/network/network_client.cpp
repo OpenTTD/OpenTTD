@@ -974,4 +974,19 @@ bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
 	return false;
 }
 
+/**
+ * Print all the clients to the console
+ */
+void NetworkPrintClients()
+{
+	NetworkClientInfo *ci;
+	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
+				ci->client_id,
+				ci->client_name,
+				ci->client_playas + (IsValidCompanyID(ci->client_playas) ? 1 : 0),
+				GetClientIP(ci));
+	}
+}
+
 #endif /* ENABLE_NETWORK */
