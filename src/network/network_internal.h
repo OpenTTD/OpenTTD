@@ -91,6 +91,8 @@ enum NetworkLanguage {
 	NETLANG_COUNT
 };
 
+extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
+
 extern uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 extern uint32 _frame_counter_max; // To where we may go with our clients
 

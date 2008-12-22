@@ -821,7 +821,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* A new company could not be created, revert to being a spectator */
 			if (c == NULL) {
 				if (_network_server) {
-					NetworkClientInfo *ci = &_network_client_info[cid];
+					NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(cid);
 					ci->client_playas = COMPANY_SPECTATOR;
 					NetworkUpdateClientInfo(ci->client_id);
 				} else if (_local_company == COMPANY_SPECTATOR) {
@@ -857,7 +857,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
 				* server-side in network_server.c:838, function
 				* DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
-				NetworkClientInfo *ci = &_network_client_info[cid];
+				NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(cid);
 				ci->client_playas = c->index;
 				NetworkUpdateClientInfo(ci->client_id);
 

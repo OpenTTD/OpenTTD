@@ -11,7 +11,6 @@
 #include "../console_type.h"
 
 extern NetworkServerGameInfo _network_game_info;
-extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 extern NetworkCompanyState *_network_company_states;
 
 extern ClientID _network_own_client_id;
@@ -51,6 +50,7 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner);
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
 
+NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index);
 NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id);
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
 const char* GetClientIP(const NetworkClientInfo *ci);

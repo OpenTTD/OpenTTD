@@ -100,7 +100,21 @@ static ClientID _network_client_id = CLIENT_ID_FIRST;
 /* Some externs / forwards */
 extern void StateGameLoop();
 
-// Function that looks up the CI for a given client-identifier
+/**
+ * Return the CI given it's raw index
+ * @param index the index to search for
+ * @return return a pointer to the corresponding NetworkClientInfo struct
+ */
+NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index)
+{
+	return &_network_client_info[index];
+}
+
+/**
+ * Return the CI given it's client-identifier
+ * @param client_id the ClientID to search for
+ * @return return a pointer to the corresponding NetworkClientInfo struct or NULL when not found
+ */
 NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id)
 {
 	NetworkClientInfo *ci;
@@ -112,9 +126,11 @@ NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id)
 	return NULL;
 }
 
-/** Return the CI for a given IP
+/**
+ * Return the CI for a given IP
  * @param ip IP of the client we are looking for. This must be in string-format
- * @return return a pointer to the corresponding NetworkClientInfo struct or NULL on failure */
+ * @return return a pointer to the corresponding NetworkClientInfo struct or NULL when not found
+ */
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip)
 {
 	NetworkClientInfo *ci;
@@ -127,7 +143,11 @@ NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip)
 	return NULL;
 }
 
-// Function that looks up the CS for a given client-identifier
+/**
+ * Return the client state given it's client-identifier
+ * @param client_id the ClientID to search for
+ * @return return a pointer to the corresponding NetworkTCPSocketHandler struct or NULL when not found
+ */
 NetworkTCPSocketHandler *NetworkFindClientStateFromClientID(ClientID client_id)
 {
 	NetworkTCPSocketHandler *cs;
