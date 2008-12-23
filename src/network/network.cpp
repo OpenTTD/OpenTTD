@@ -163,9 +163,9 @@ NetworkTCPSocketHandler *NetworkFindClientStateFromClientID(ClientID client_id)
 //  if the user did not send it yet, Client #<no> is used.
 void NetworkGetClientName(char *client_name, size_t size, const NetworkTCPSocketHandler *cs)
 {
-	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+	const NetworkClientInfo *ci = cs->GetInfo();
 
-	if (ci->client_name[0] == '\0') {
+	if (StrEmpty(ci->client_name)) {
 		snprintf(client_name, size, "Client #%4d", cs->client_id);
 	} else {
 		ttd_strlcpy(client_name, ci->client_name, size);
@@ -174,11 +174,11 @@ void NetworkGetClientName(char *client_name, size_t size, const NetworkTCPSocket
 
 byte NetworkSpectatorCount()
 {
-	NetworkTCPSocketHandler *cs;
+	const NetworkClientInfo *ci;
 	byte count = 0;
 
-	FOR_ALL_CLIENTS(cs) {
-		if (DEREF_CLIENT_INFO(cs)->client_playas == COMPANY_SPECTATOR) count++;
+	FOR_ALL_CLIENT_INFOS(ci) {
+		if (ci->client_playas == COMPANY_SPECTATOR) count++;
 	}
 
 	return count;
@@ -360,11 +360,10 @@ char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
 /* Count the number of active clients connected */
 static uint NetworkCountActiveClients()
 {
-	NetworkTCPSocketHandler *cs;
+	const NetworkClientInfo *ci;
 	uint count = 0;
 
-	FOR_ALL_CLIENTS(cs) {
-		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+	FOR_ALL_CLIENT_INFOS(ci) {
 		if (IsValidCompanyID(ci->client_playas)) count++;
 	}
 
@@ -439,7 +438,7 @@ static NetworkTCPSocketHandler *NetworkAllocClient(SOCKET s)
 	cs->last_frame_server = _frame_counter;
 
 	if (_network_server) {
-		NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+		NetworkClientInfo *ci = cs->GetInfo();
 		memset(ci, 0, sizeof(*ci));
 
 		cs->client_id = _network_client_id++;
@@ -495,7 +494,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 	cs->Destroy();
 
 	// Close the gap in the client-list
-	ci = DEREF_CLIENT_INFO(cs);
+	ci = cs->GetInfo();
 
 	if (_network_server) {
 		// We just lost one client :(
@@ -617,7 +616,7 @@ static void NetworkAcceptClients()
 		//  the client stays inactive
 		cs->status = STATUS_INACTIVE;
 
-		DEREF_CLIENT_INFO(cs)->client_ip = sin.sin_addr.s_addr; // Save the IP of the client
+		cs->GetInfo()->client_ip = sin.sin_addr.s_addr; // Save the IP of the client
 	}
 }
 

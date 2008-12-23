@@ -967,7 +967,7 @@ bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
 	if (!_settings_client.gui.prefer_teamchat || !IsValidCompanyID(cio->client_playas)) return false;
 
 	const NetworkClientInfo *ci;
-	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+	FOR_ALL_CLIENT_INFOS(ci) {
 		if (ci->client_playas == cio->client_playas && ci != cio) return true;
 	}
 
@@ -979,8 +979,8 @@ bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
  */
 void NetworkPrintClients()
 {
-	NetworkClientInfo *ci;
-	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+	const NetworkClientInfo *ci;
+	FOR_ALL_CLIENT_INFOS(ci) {
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  company: %1d  IP: %s",
 				ci->client_id,
 				ci->client_name,

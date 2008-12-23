@@ -110,6 +110,13 @@ public:
 	bool IsPacketQueueEmpty();
 
 	Packet *Recv_Packet(NetworkRecvStatus *status);
+
+	inline NetworkClientInfo *GetInfo() const
+	{
+		extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
+		extern NetworkTCPSocketHandler _clients[MAX_CLIENTS];
+		return &_network_client_info[this - _clients];
+	}
 };
 
 #endif /* ENABLE_NETWORK */

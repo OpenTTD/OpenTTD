@@ -1419,7 +1419,7 @@ static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 {
 	const NetworkClientInfo *ci;
 
-	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+	FOR_ALL_CLIENT_INFOS(ci) {
 		if (client_no == 0) return ci;
 		client_no--;
 	}
@@ -1659,7 +1659,7 @@ struct NetworkClientListWindow : Window
 		const NetworkClientInfo *ci;
 
 		/* Should be replaced with a loop through all clients */
-		FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+		FOR_ALL_CLIENT_INFOS(ci) {
 			num++;
 		}
 
@@ -1689,7 +1689,7 @@ struct NetworkClientListWindow : Window
 
 		int y = CLNWND_OFFSET;
 
-		FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+		FOR_ALL_CLIENT_INFOS(ci) {
 			TextColour colour;
 			if (this->selected_item == i++) { // Selected item, highlight it
 				GfxFillRect(1, y, 248, y + CLNWND_ROWSIZE - 1, 0);

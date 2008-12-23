@@ -89,7 +89,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 		NetworkGetClientName(client_name, sizeof(client_name), csi);
 
-		ci = DEREF_CLIENT_INFO(csi);
+		ci = csi->GetInfo();
 		if (ci != NULL && IsValidCompanyID(ci->client_playas)) {
 			if (!StrEmpty(clients[ci->client_playas])) {
 				strecat(clients[ci->client_playas], ", ", lastof(clients[ci->client_playas]));
@@ -255,7 +255,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 		// Transmit info about all the active clients
 	FOR_ALL_CLIENTS(new_cs) {
 		if (new_cs != cs && new_cs->status > STATUS_AUTH)
-			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, DEREF_CLIENT_INFO(new_cs));
+			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, new_cs->GetInfo());
 	}
 	// Also send the info of the server
 	SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER));
@@ -609,7 +609,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED)
 		return;
 	}
 
-	NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+	NetworkClientInfo *ci = cs->GetInfo();
 
 	/* We now want a password from the client else we do not allow him in! */
 	if (!StrEmpty(_settings_client.network.server_password)) {
@@ -685,7 +685,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 		return;
 	}
 
-	ci = DEREF_CLIENT_INFO(cs);
+	ci = cs->GetInfo();
 
 	strecpy(ci->client_name, name, lastof(ci->client_name));
 	strecpy(ci->unique_id, unique_id, lastof(ci->unique_id));
@@ -719,7 +719,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 			return;
 		}
 
-		ci = DEREF_CLIENT_INFO(cs);
+		ci = cs->GetInfo();
 
 		if (IsValidCompanyID(ci->client_playas) && !StrEmpty(_network_company_states[ci->client_playas].password)) {
 			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
@@ -730,7 +730,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 		SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 		return;
 	} else if (cs->status == STATUS_AUTHORIZING && type == NETWORK_COMPANY_PASSWORD) {
-		ci = DEREF_CLIENT_INFO(cs);
+		ci = cs->GetInfo();
 
 		if (strcmp(password, _network_company_states[ci->client_playas].password) != 0) {
 			// Password is invalid
@@ -797,7 +797,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 
 		FOR_ALL_CLIENTS(new_cs) {
 			if (new_cs->status > STATUS_AUTH) {
-				SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(new_cs, DEREF_CLIENT_INFO(cs));
+				SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(new_cs, cs->GetInfo());
 				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, cs->client_id);
 			}
 		}
@@ -873,7 +873,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return;
 	}
 
-	ci = DEREF_CLIENT_INFO(cs);
+	ci = cs->GetInfo();
 
 	/* Check if cp->cmd is valid */
 	if (!IsValidCommand(cp->cmd)) {
@@ -1094,7 +1094,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		/* Find all clients that belong to this company */
 		ci_to = NULL;
 		FOR_ALL_CLIENTS(cs) {
-			ci = DEREF_CLIENT_INFO(cs);
+			ci = cs->GetInfo();
 			if (ci->client_playas == (CompanyID)dest) {
 				SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg);
 				if (cs->client_id == from_id) show_local = false;
@@ -1160,7 +1160,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 
 	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
 
-	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+	const NetworkClientInfo *ci = cs->GetInfo();
 	switch (action) {
 		case NETWORK_ACTION_GIVE_MONEY:
 			if (!IsValidCompanyID(ci->client_playas)) break;
@@ -1189,7 +1189,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 	const NetworkClientInfo *ci;
 
 	p->Recv_string(password, sizeof(password));
-	ci = DEREF_CLIENT_INFO(cs);
+	ci = cs->GetInfo();
 
 	if (IsValidCompanyID(ci->client_playas)) {
 		strecpy(_network_company_states[ci->client_playas].password, password, lastof(_network_company_states[ci->client_playas].password));
@@ -1208,7 +1208,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	NetworkClientInfo *ci;
 
 	p->Recv_string(client_name, sizeof(client_name));
-	ci = DEREF_CLIENT_INFO(cs);
+	ci = cs->GetInfo();
 
 	if (cs->has_quit) return;
 
@@ -1362,7 +1362,6 @@ static void NetworkCheckRestartMap()
            (and item 1. happens a year later) */
 static void NetworkAutoCleanCompanies()
 {
-	NetworkTCPSocketHandler *cs;
 	const NetworkClientInfo *ci;
 	const Company *c;
 	bool clients_in_company[MAX_COMPANIES];
@@ -1372,8 +1371,7 @@ static void NetworkAutoCleanCompanies()
 	memset(clients_in_company, 0, sizeof(clients_in_company));
 
 	/* Detect the active companies */
-	FOR_ALL_CLIENTS(cs) {
-		ci = DEREF_CLIENT_INFO(cs);
+	FOR_ALL_CLIENT_INFOS(ci) {
 		if (IsValidCompanyID(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
 
@@ -1415,7 +1413,6 @@ static void NetworkAutoCleanCompanies()
 //  and it returns true if that succeeded.
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 {
-	NetworkTCPSocketHandler *new_cs;
 	bool found_name = false;
 	byte number = 0;
 	char original_name[NETWORK_CLIENT_NAME_LENGTH];
@@ -1427,8 +1424,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 		const NetworkClientInfo *ci;
 
 		found_name = true;
-		FOR_ALL_CLIENTS(new_cs) {
-			ci = DEREF_CLIENT_INFO(new_cs);
+		FOR_ALL_CLIENT_INFOS(ci) {
 			if (strcmp(ci->client_name, new_name) == 0) {
 				// Name already in use
 				found_name = false;
@@ -1569,7 +1565,6 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner)
 {
 	/* The server has to handle all administrative issues, for example
 	 * updating and notifying all clients of what has happened */
-	NetworkTCPSocketHandler *cs;
 	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 
 	/* The server has just changed from owner */
@@ -1579,8 +1574,7 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner)
 	}
 
 	/* Find all clients that were in control of this company, and mark them as new_owner */
-	FOR_ALL_CLIENTS(cs) {
-		ci = DEREF_CLIENT_INFO(cs);
+	FOR_ALL_CLIENT_INFOS(ci) {
 		if (current_owner == ci->client_playas) {
 			ci->client_playas = new_owner;
 			NetworkUpdateClientInfo(ci->client_id);
@@ -1612,7 +1606,7 @@ void NetworkServerShowStatusToConsole()
 	NetworkTCPSocketHandler *cs;
 	FOR_ALL_CLIENTS(cs) {
 		int lag = NetworkCalculateLag(cs);
-		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+		const NetworkClientInfo *ci = cs->GetInfo();
 		const char* status;
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
@@ -1635,10 +1629,8 @@ void NetworkServerSendError(ClientID client_id, NetworkErrorCode error)
 
 bool NetworkCompanyHasClients(CompanyID company)
 {
-	const NetworkTCPSocketHandler *cs;
 	const NetworkClientInfo *ci;
-	FOR_ALL_CLIENTS(cs) {
-		ci = DEREF_CLIENT_INFO(cs);
+	FOR_ALL_CLIENT_INFOS(ci) {
 		if (ci->client_playas == company) return true;
 	}
 	return false;
