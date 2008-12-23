@@ -34,9 +34,9 @@ enum {
 	ADVERTISE_RETRY_TIMES     =     3  // give up readvertising after this much failed retries
 };
 
-NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
-NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
-NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
+NetworkUDPSocketHandler *_udp_client_socket = NULL; ///< udp client socket
+NetworkUDPSocketHandler *_udp_server_socket = NULL; ///< udp server socket
+NetworkUDPSocketHandler *_udp_master_socket = NULL; ///< udp master socket
 
 ///*** Communication with the masterserver ***/
 
@@ -537,6 +537,8 @@ void NetworkUDPAdvertise()
 
 void NetworkUDPInitialize()
 {
+	assert(_udp_client_socket == NULL && _udp_server_socket == NULL && _udp_master_socket == NULL);
+
 	_udp_client_socket = new ClientNetworkUDPSocketHandler();
 	_udp_server_socket = new ServerNetworkUDPSocketHandler();
 	_udp_master_socket = new MasterNetworkUDPSocketHandler();
@@ -552,6 +554,9 @@ void NetworkUDPShutdown()
 	delete _udp_client_socket;
 	delete _udp_server_socket;
 	delete _udp_master_socket;
+	_udp_client_socket = NULL;
+	_udp_server_socket = NULL;
+	_udp_master_socket = NULL;
 }
 
 #endif /* ENABLE_NETWORK */

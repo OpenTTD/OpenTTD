@@ -684,8 +684,6 @@ static void NetworkInitialize()
 	_network_first_time = true;
 
 	_network_reconnect = 0;
-
-	NetworkUDPInitialize();
 }
 
 // Query a server to fetch his game-info
@@ -1189,6 +1187,7 @@ void NetworkStartUp()
 
 	memset(&_network_game_info, 0, sizeof(_network_game_info));
 
+	NetworkUDPInitialize();
 	NetworkInitialize();
 	DEBUG(net, 3, "[core] network online, multiplayer available");
 	NetworkFindBroadcastIPs(_broadcast_list, MAX_INTERFACES);
