@@ -572,7 +572,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			case SLE_VAR_STRBQ:seprintf(buf, lastof(buf), "\"%s\"", (char*)ptr); break;
 			case SLE_VAR_STR:  strcpy(buf, *(char**)ptr); break;
 			case SLE_VAR_STRQ: seprintf(buf, "\"%s\"", lastof(buf), *(char**)ptr); break;
-			case SLE_VAR_CHAR: seprintf(buf, "\"%c\"", lastof(buf), *(char*)ptr); break;
+			case SLE_VAR_CHAR: buf[0] = *(char*)ptr; buf[1] = '\0'; break;
 			default: NOT_REACHED();
 			}
 			break;
