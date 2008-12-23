@@ -1639,13 +1639,13 @@ static void PopupClientList(int client_no, int x, int y)
  */
 struct NetworkClientListWindow : Window
 {
-	byte selected_item;
-	byte selected_y;
+	int selected_item;
+	int selected_y;
 
 	NetworkClientListWindow(const WindowDesc *desc, WindowNumber window_number) :
 			Window(desc, window_number),
-			selected_item(0),
-			selected_y(255)
+			selected_item(-1),
+			selected_y(0)
 	{
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -1660,7 +1660,7 @@ struct NetworkClientListWindow : Window
 
 		/* Should be replaced with a loop through all clients */
 		FOR_ALL_CLIENT_INFOS(ci) {
-			num++;
+			if (ci->client_playas != COMPANY_INACTIVE_CLIENT) num++;
 		}
 
 		num *= CLNWND_ROWSIZE;
@@ -1716,7 +1716,7 @@ struct NetworkClientListWindow : Window
 	virtual void OnClick(Point pt, int widget)
 	{
 		/* Show the popup with option */
-		if (this->selected_item != 255) {
+		if (this->selected_item != -1) {
 			PopupClientList(this->selected_item, pt.x + this->left, pt.y + this->top);
 		}
 	}
@@ -1726,7 +1726,7 @@ struct NetworkClientListWindow : Window
 		/* -1 means we left the current window */
 		if (pt.y == -1) {
 			this->selected_y = 0;
-			this->selected_item = 255;
+			this->selected_item = -1;
 			this->SetDirty();
 			return;
 		}
@@ -1738,7 +1738,7 @@ struct NetworkClientListWindow : Window
 		if (pt.y > CLNWND_OFFSET) {
 			this->selected_item = (pt.y - CLNWND_OFFSET) / CLNWND_ROWSIZE;
 		} else {
-			this->selected_item = 255;
+			this->selected_item = -1;
 		}
 
 		/* Repaint */
