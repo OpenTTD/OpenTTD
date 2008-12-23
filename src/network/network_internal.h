@@ -148,7 +148,7 @@ NetworkClientSocket *NetworkFindClientStateFromClientID(ClientID client_id);
 char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last);
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 
-#define DEREF_CLIENT(i) (&_clients[i])
+#define GetNetworkClientSocket(i) (&_clients[i])
 
 // Macros to make life a bit more easier
 #define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)

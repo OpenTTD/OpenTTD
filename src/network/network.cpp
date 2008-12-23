@@ -318,7 +318,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket* cs)
 		SEND_COMMAND(PACKET_CLIENT_ERROR)(errorno);
 
 		// Dequeue all commands before closing the socket
-		DEREF_CLIENT(0)->Send_Packets();
+		GetNetworkClientSocket(0)->Send_Packets();
 	}
 
 	_switch_mode = SM_MENU;
@@ -431,7 +431,7 @@ static NetworkClientSocket *NetworkAllocClient(SOCKET s)
 		client_no = _network_clients_connected++;
 	}
 
-	cs = DEREF_CLIENT(client_no);
+	cs = GetNetworkClientSocket(client_no);
 	cs->Initialize();
 	cs->sock = s;
 	cs->last_frame = _frame_counter;
@@ -501,7 +501,7 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 		if (cs->status >= STATUS_AUTH) _network_game_info.clients_on--;
 		_network_clients_connected--;
 
-		while ((cs + 1) != DEREF_CLIENT(MAX_CLIENTS) && (cs + 1)->sock != INVALID_SOCKET) {
+		while ((cs + 1) != GetNetworkClientSocket(MAX_CLIENTS) && (cs + 1)->sock != INVALID_SOCKET) {
 			*cs = *(cs + 1);
 			*ci = *(ci + 1);
 			cs++;
@@ -1043,7 +1043,7 @@ static bool NetworkDoClientLoop()
 				NetworkError(STR_NETWORK_ERR_DESYNC);
 				DebugDumpCommands("ddc:serr:%d;%d\n", _date, _date_fract);
 				DEBUG(net, 0, "Sync error detected!");
-				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, DEREF_CLIENT(0));
+				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, GetNetworkClientSocket(0));
 				return false;
 			}
 

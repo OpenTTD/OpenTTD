@@ -34,7 +34,7 @@
 
 
 // So we don't make too much typos ;)
-#define MY_CLIENT DEREF_CLIENT(0)
+#define MY_CLIENT GetNetworkClientSocket(0)
 
 static uint32 last_ack_frame;
 
