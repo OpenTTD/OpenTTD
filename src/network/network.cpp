@@ -107,7 +107,7 @@ extern void StateGameLoop();
  */
 NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index)
 {
-	return &_network_client_info[index];
+	return IsValidNetworkClientInfoIndex(index) ? GetNetworkClientInfo(index) : NULL;
 }
 
 /**

@@ -64,7 +64,5 @@ void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *messa
 void NetworkUndrawChatMessage();
 void NetworkChatMessageDailyLoop();
 
-#define FOR_ALL_CLIENT_INFOS(ci) for (ci = _network_client_info; ci != endof(_network_client_info); ci++) if (ci->client_id != INVALID_CLIENT_ID)
-
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_FUNC_H */

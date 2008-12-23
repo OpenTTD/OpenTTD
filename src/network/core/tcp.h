@@ -113,9 +113,8 @@ public:
 
 	inline NetworkClientInfo *GetInfo() const
 	{
-		extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 		extern NetworkClientSocket _clients[MAX_CLIENTS];
-		return &_network_client_info[this - _clients];
+		return GetNetworkClientInfo(this - _clients);
 	}
 };
 

@@ -53,15 +53,7 @@ struct NetworkCompanyState {
 	uint16 months_empty;                            ///< How many months the company is empty
 };
 
-struct NetworkClientInfo {
-	ClientID client_id;                             ///< Client identifier (same as ClientState->client_id)
-	char client_name[NETWORK_CLIENT_NAME_LENGTH];   ///< Name of the client
-	byte client_lang;                               ///< The language of the client
-	CompanyID client_playas;                        ///< As which company is this client playing (CompanyID)
-	uint32 client_ip;                               ///< IP-address of the client (so he can be banned)
-	Date join_date;                                 ///< Gamedate the client has joined
-	char unique_id[NETWORK_UNIQUE_ID_LENGTH];       ///< Every play sends an unique id so we can indentify him
-};
+struct NetworkClientInfo;
 
 enum NetworkPasswordType {
 	NETWORK_GAME_PASSWORD,

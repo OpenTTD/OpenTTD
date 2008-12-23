@@ -36,6 +36,7 @@
 #include "network/network.h"
 #include "network/network_func.h"
 #include "network/network_gui.h"
+#include "network/network_base.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

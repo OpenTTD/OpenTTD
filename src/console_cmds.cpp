@@ -12,6 +12,7 @@
 #include "variables.h"
 #include "network/network.h"
 #include "network/network_func.h"
+#include "network/network_base.h"
 #include "command_func.h"
 #include "settings_func.h"
 #include "fios.h"

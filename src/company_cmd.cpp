@@ -14,6 +14,7 @@
 #include "command_func.h"
 #include "network/network.h"
 #include "network/network_func.h"
+#include "network/network_base.h"
 #include "variables.h"
 #include "cheat_func.h"
 #include "ai/ai.h"

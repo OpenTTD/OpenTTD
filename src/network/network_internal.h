@@ -9,6 +9,7 @@
 
 #include "network.h"
 #include "network_func.h"
+#include "network_base.h"
 #include "core/os_abstraction.h"
 #include "core/core.h"
 #include "core/config.h"
@@ -90,8 +91,6 @@ enum NetworkLanguage {
 	NETLANG_LATVIAN,
 	NETLANG_COUNT
 };
-
-extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
 
 extern uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 extern uint32 _frame_counter_max; // To where we may go with our clients
