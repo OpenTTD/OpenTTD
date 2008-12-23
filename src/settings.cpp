@@ -1234,7 +1234,7 @@ const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
 	/* Saved patch variables. */
 	/* Do not ADD or REMOVE something in this "difficulty.XXX" table or before it. It breaks savegame compatability. */
-	 SDT_CONDVAR(GameSettings, difficulty.max_no_competitors,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      7,  1, STR_NULL,                                  DifficultyChange),
+	 SDT_CONDVAR(GameSettings, difficulty.max_no_competitors,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,0,MAX_COMPANIES-1,1,STR_NULL,                                  DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.competitor_start_time,     SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      3,  1, STR_6830_IMMEDIATE,                        DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.number_towns,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      3,  1, STR_NUM_VERY_LOW,                          DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.number_industries,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     4,     0,      4,  1, STR_NONE,                                  DifficultyChange),

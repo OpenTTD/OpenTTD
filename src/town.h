@@ -122,7 +122,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	uint16 noise_reached;
 
 	/* Which companies have a statue? */
-	byte statues;
+	CompanyMask statues;
 
 	/* Company ratings as well as a mask that determines which companies have a rating. */
 	CompanyMask have_ratings;

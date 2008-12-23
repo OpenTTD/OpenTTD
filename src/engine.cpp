@@ -315,7 +315,7 @@ static CompanyID GetBestCompany(uint8 pp)
 	const Company *c;
 	int32 best_hist;
 	CompanyID best_company;
-	uint mask = 0;
+	CompanyMask mask = 0;
 
 	do {
 		best_hist = -1;

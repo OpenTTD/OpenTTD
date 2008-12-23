@@ -66,7 +66,7 @@ struct GraphLegendWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (!IsInsideMM(widget, 3, 11)) return;
+		if (!IsInsideMM(widget, 3, MAX_COMPANIES + 3)) return;
 
 		ToggleBit(_legend_excluded_companies, widget - 3);
 		this->ToggleWidgetLoweredState(widget);
@@ -859,7 +859,7 @@ struct PerformanceRatingDetailWindow : Window {
 private:
 	enum PerformanteRatingWidgets {
 		PRW_COMPANY_FIRST = 13,
-		PRW_COMPANY_LAST  = 20,
+		PRW_COMPANY_LAST  = PRW_COMPANY_FIRST + MAX_COMPANIES - 1,
 	};
 
 public:
