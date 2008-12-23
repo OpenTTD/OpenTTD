@@ -122,10 +122,6 @@ extern uint8 _network_advertise_retries;
 // following externs are instantiated at network.cpp
 extern CommandPacket *_local_command_queue;
 
-// Here we keep track of the clients
-//  (and the client uses [0] for his own communication)
-extern NetworkClientSocket _clients[MAX_CLIENTS];
-
 void NetworkTCPQueryServer(const char* host, unsigned short port);
 
 void NetworkAddServer(const char *b);
@@ -147,8 +143,6 @@ NetworkClientSocket *NetworkFindClientStateFromClientID(ClientID client_id);
 char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last);
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 
-#define GetNetworkClientSocket(i) (&_clients[i])
-
 // Macros to make life a bit more easier
 #define DEF_CLIENT_RECEIVE_COMMAND(type) NetworkRecvStatus NetworkPacketReceive_ ## type ## _command(Packet *p)
 #define DEF_CLIENT_SEND_COMMAND(type) void NetworkPacketSend_ ## type ## _command()
@@ -159,8 +153,6 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 
 #define SEND_COMMAND(type) NetworkPacketSend_ ## type ## _command
 #define RECEIVE_COMMAND(type) NetworkPacketReceive_ ## type ## _command
-
-#define FOR_ALL_CLIENT_SOCKETS(cs) for (cs = _clients; cs != endof(_clients) && cs->IsConnected(); cs++)
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_INTERNAL_H */

@@ -111,12 +111,26 @@ public:
 
 	Packet *Recv_Packet(NetworkRecvStatus *status);
 
+	inline bool IsValid() const { return this->IsConnected(); }
 	inline NetworkClientInfo *GetInfo() const
 	{
 		extern NetworkClientSocket _clients[MAX_CLIENTS];
 		return GetNetworkClientInfo(this - _clients);
 	}
 };
+
+// Here we keep track of the clients
+//  (and the client uses [0] for his own communication)
+extern NetworkClientSocket _clients[MAX_CLIENTS];
+#define GetNetworkClientSocket(i) (&_clients[i])
+
+static inline bool IsValidNetworkClientSocketIndex(ClientIndex index)
+{
+	return (uint)index < MAX_CLIENTS && GetNetworkClientSocket(index)->IsValid();
+}
+
+#define FOR_ALL_CLIENT_SOCKETS_FROM(d, start) for (d = GetNetworkClientSocket(start); d != GetNetworkClientSocket(MAX_CLIENTS); d++) if (d->IsValid())
+#define FOR_ALL_CLIENT_SOCKETS(d) FOR_ALL_CLIENT_SOCKETS_FROM(d, 0)
 
 #endif /* ENABLE_NETWORK */
 
