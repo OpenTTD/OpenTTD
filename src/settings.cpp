@@ -1487,7 +1487,7 @@ const SettingDesc _patch_settings[] = {
 	  SDTC_VAR(network.max_clients,           SLE_UINT8, S, NO,    10,     2, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.max_spectators,        SLE_UINT8, S, NO,    10,     0, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.restart_game_year,     SLE_INT32, S,D0|NO|NC,0, MIN_YEAR, MAX_YEAR, 1, STR_NULL,                                       NULL),
-	  SDTC_VAR(network.min_active_clients,    SLE_UINT8, S, NO,     0,     0,        10,   0, STR_NULL,                                       UpdateMinActiveClients),
+	  SDTC_VAR(network.min_active_clients,    SLE_UINT8, S, NO,     0,     0, MAX_CLIENTS, 0, STR_NULL,                                       UpdateMinActiveClients),
 	SDTC_OMANY(network.server_lang,           SLE_UINT8, S, NO,     0,    35, "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN", STR_NULL, NULL),
 	 SDTC_BOOL(network.reload_cfg,                       S, NO, false,                        STR_NULL,                                       NULL),
 	  SDTC_STR(network.last_host,              SLE_STRB, S,  0, "0.0.0.0",                    STR_NULL,                                       NULL),

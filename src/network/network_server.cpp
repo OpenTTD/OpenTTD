@@ -1414,10 +1414,10 @@ static void NetworkAutoCleanCompanies()
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 {
 	bool found_name = false;
-	byte number = 0;
+	uint number = 0;
 	char original_name[NETWORK_CLIENT_NAME_LENGTH];
 
-	// We use NETWORK_CLIENT_NAME_LENGTH in here, because new_name is really a pointer
+	/* We use NETWORK_CLIENT_NAME_LENGTH in here, because new_name is really a pointer */
 	ttd_strlcpy(original_name, new_name, NETWORK_CLIENT_NAME_LENGTH);
 
 	while (!found_name) {
@@ -1426,22 +1426,22 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 		found_name = true;
 		FOR_ALL_CLIENT_INFOS(ci) {
 			if (strcmp(ci->client_name, new_name) == 0) {
-				// Name already in use
+				/* Name already in use */
 				found_name = false;
 				break;
 			}
 		}
-		// Check if it is the same as the server-name
+		/* Check if it is the same as the server-name */
 		ci = NetworkFindClientInfoFromClientID(CLIENT_ID_SERVER);
 		if (ci != NULL) {
 			if (strcmp(ci->client_name, new_name) == 0) found_name = false; // name already in use
 		}
 
 		if (!found_name) {
-			// Try a new name (<name> #1, <name> #2, and so on)
+			/* Try a new name (<name> #1, <name> #2, and so on) */
 
-			// Stop if we tried for more than 50 times..
-			if (number++ > 50) break;
+			/* Something's really wrong when there're more names than clients */
+			if (number++ > MAX_CLIENTS) break;
 			snprintf(new_name, NETWORK_CLIENT_NAME_LENGTH, "%s #%d", original_name, number);
 		}
 	}
