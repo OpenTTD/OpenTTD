@@ -16,30 +16,25 @@
 #include "tcp.h"
 
 #include "table/strings.h"
+#include "../../oldpool_func.h"
 
-/** Very ugly temporary hack !!! */
-void NetworkClientSocket::Initialize()
+/** Make very sure the preconditions given in network_type.h are actually followed */
+assert_compile(MAX_CLIENT_SLOTS == (MAX_CLIENT_SLOTS >> NCI_BITS_PER_POOL_BLOCK) << NCI_BITS_PER_POOL_BLOCK);
+assert_compile(MAX_CLIENT_SLOTS > MAX_CLIENTS);
+
+typedef ClientIndex NetworkClientSocketID;
+DEFINE_OLD_POOL_GENERIC(NetworkClientSocket, NetworkClientSocket);
+
+NetworkClientSocket::NetworkClientSocket(ClientID client_id)
 {
 	this->sock              = INVALID_SOCKET;
-
-	this->client_id         = INVALID_CLIENT_ID;
-	this->last_frame        = 0;
-	this->last_frame_server = 0;
-	this->lag_test          = 0;
-
+	this->client_id         = client_id;
 	this->status            = STATUS_INACTIVE;
-	this->has_quit          = false;
-	this->writable          = false;
-
-	this->packet_queue      = NULL;
-	this->packet_recv       = NULL;
-
-	this->command_queue     = NULL;
 }
 
-void NetworkClientSocket::Destroy()
+NetworkClientSocket::~NetworkClientSocket()
 {
-	closesocket(this->sock);
+	if (this->sock != INVALID_SOCKET) closesocket(this->sock);
 	this->writable = false;
 	this->has_quit = true;
 
@@ -57,6 +52,10 @@ void NetworkClientSocket::Destroy()
 		free(this->command_queue);
 		this->command_queue = p;
 	}
+
+	this->sock = INVALID_SOCKET;
+	this->client_id = INVALID_CLIENT_ID;
+	this->status = STATUS_INACTIVE;
 }
 
 /**

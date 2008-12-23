@@ -301,8 +301,13 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		/* First, try clients */
 		if (*item < MAX_CLIENT_SLOTS) {
 			/* Skip inactive clients */
-			while (GetNetworkClientInfo(*item)->client_id == INVALID_CLIENT_ID && *item < MAX_CLIENT_SLOTS) (*item)++;
-			if (*item < MAX_CLIENT_SLOTS) return GetNetworkClientInfo(*item)->client_name;
+			NetworkClientInfo *ci;
+			FOR_ALL_CLIENT_INFOS_FROM(ci, *item + 1) break;
+			if (ci != NULL) {
+				*item = ci->index;
+				return ci->client_name;
+			}
+			*item = MAX_CLIENT_SLOTS;
 		}
 
 		/* Then, try townnames */

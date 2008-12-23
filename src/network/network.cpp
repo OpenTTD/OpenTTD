@@ -42,15 +42,18 @@
 #endif /* DEBUG_DUMP_COMMANDS */
 #include "table/strings.h"
 #include "../company_base.h"
+#include "../oldpool_func.h"
 
 DECLARE_POSTFIX_INCREMENT(ClientID);
+
+typedef ClientIndex NetworkClientInfoID;
+DEFINE_OLD_POOL_GENERIC(NetworkClientInfo, NetworkClientInfo);
 
 bool _network_server;     ///< network-server is active
 bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkServerGameInfo _network_game_info;
-NetworkClientInfo _network_client_info[MAX_CLIENT_SLOTS];
 NetworkCompanyState *_network_company_states = NULL;
 ClientID _network_own_client_id;
 ClientID _redirect_console_to_client;
@@ -82,12 +85,6 @@ CommandPacket *_local_command_queue;
 extern NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
 extern NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
 extern NetworkUDPSocketHandler *_udp_master_socket; ///< udp master socket
-
-// Here we keep track of the clients
-//  (and the client uses [0] for his own communication)
-NetworkClientSocket _clients[MAX_CLIENTS];
-
-
 
 // The listen socket for the server
 static SOCKET _listensocket;
@@ -316,9 +313,6 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket* cs)
 	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL &&
 			res != NETWORK_RECV_STATUS_SERVER_BANNED) {
 		SEND_COMMAND(PACKET_CLIENT_ERROR)(errorno);
-
-		// Dequeue all commands before closing the socket
-		GetNetworkClientSocket(0)->Send_Packets();
 	}
 
 	_switch_mode = SM_MENU;
@@ -419,30 +413,24 @@ void ParseConnectionString(const char **company, const char **port, char *connec
 //   Used both by the server and the client
 static NetworkClientSocket *NetworkAllocClient(SOCKET s)
 {
-	NetworkClientSocket *cs;
-	byte client_no = 0;
-
 	if (_network_server) {
 		// Can we handle a new client?
 		if (_network_clients_connected >= MAX_CLIENTS) return NULL;
 		if (_network_game_info.clients_on >= _settings_client.network.max_clients) return NULL;
 
 		// Register the login
-		client_no = _network_clients_connected++;
+		_network_clients_connected++;
 	}
 
-	cs = GetNetworkClientSocket(client_no);
-	cs->Initialize();
+	NetworkClientSocket *cs = new NetworkClientSocket(INVALID_CLIENT_ID);
 	cs->sock = s;
 	cs->last_frame = _frame_counter;
 	cs->last_frame_server = _frame_counter;
 
 	if (_network_server) {
-		NetworkClientInfo *ci = cs->GetInfo();
-		memset(ci, 0, sizeof(*ci));
-
 		cs->client_id = _network_client_id++;
-		ci->client_id = cs->client_id;
+		NetworkClientInfo *ci = new NetworkClientInfo(cs->client_id);
+		cs->SetInfo(ci);
 		ci->client_playas = COMPANY_INACTIVE_CLIENT;
 		ci->join_date = _date;
 
@@ -455,12 +443,7 @@ static NetworkClientSocket *NetworkAllocClient(SOCKET s)
 // Close a connection
 void NetworkCloseClient(NetworkClientSocket *cs)
 {
-	NetworkClientInfo *ci;
-	// Socket is already dead
-	if (cs->sock == INVALID_SOCKET) {
-		cs->has_quit = true;
-		return;
-	}
+	assert(cs->sock != INVALID_SOCKET);
 
 	DEBUG(net, 1, "Closed client connection %d", cs->client_id);
 
@@ -491,31 +474,16 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", CLIENT_ID_SERVER);
 	}
 
-	cs->Destroy();
-
-	// Close the gap in the client-list
-	ci = cs->GetInfo();
-
 	if (_network_server) {
 		// We just lost one client :(
 		if (cs->status >= STATUS_AUTH) _network_game_info.clients_on--;
 		_network_clients_connected--;
 
-		while ((cs + 1) != GetNetworkClientSocket(MAX_CLIENTS) && (cs + 1)->sock != INVALID_SOCKET) {
-			*cs = *(cs + 1);
-			*ci = *(ci + 1);
-			cs++;
-			ci++;
-		}
-
 		InvalidateWindow(WC_CLIENT_LIST, 0);
 	}
 
-	// Reset the status of the last socket
-	cs->sock = INVALID_SOCKET;
-	cs->status = STATUS_INACTIVE;
-	cs->client_id = INVALID_CLIENT_ID;
-	ci->client_id = INVALID_CLIENT_ID;
+	delete cs->GetInfo();
+	delete cs;
 
 	CheckMinActiveClients();
 }
@@ -697,22 +665,20 @@ static void NetworkClose()
 
 	free(_network_company_states);
 	_network_company_states = NULL;
+
+	_NetworkClientSocket_pool.CleanPool();
+	_NetworkClientInfo_pool.CleanPool();
 }
 
 // Inits the network (cleans sockets and stuff)
 static void NetworkInitialize()
 {
-	NetworkClientSocket *cs;
-
 	_local_command_queue = NULL;
 
-	// Clean all client-sockets
-	for (cs = _clients; cs != &_clients[MAX_CLIENTS]; cs++) {
-		cs->Initialize();
-	}
-
-	// Clean the client_info memory
-	memset(&_network_client_info, 0, sizeof(_network_client_info));
+	_NetworkClientSocket_pool.CleanPool();
+	_NetworkClientSocket_pool.AddBlockToPool();
+	_NetworkClientInfo_pool.CleanPool();
+	_NetworkClientInfo_pool.AddBlockToPool();
 
 	_sync_frame = 0;
 	_network_first_time = true;
@@ -817,8 +783,6 @@ bool NetworkClientConnectGame(const char *host, uint16 port)
 
 static void NetworkInitGameInfo()
 {
-	NetworkClientInfo *ci;
-
 	if (StrEmpty(_settings_client.network.server_name)) {
 		snprintf(_settings_client.network.server_name, sizeof(_settings_client.network.server_name), "Unnamed Server");
 	}
@@ -827,12 +791,7 @@ static void NetworkInitGameInfo()
 	_network_game_info.clients_on = _network_dedicated ? 0 : 1;
 	_network_game_info.start_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 
-	// We use _network_client_info[MAX_CLIENT_SLOTS - 1] to store the server-data in it
-	//  The client identifier is CLIENT_ID_SERVER ( = 1)
-	ci = &_network_client_info[MAX_CLIENT_SLOTS - 1];
-	memset(ci, 0, sizeof(*ci));
-
-	ci->client_id = CLIENT_ID_SERVER;
+	NetworkClientInfo *ci = new NetworkClientInfo(CLIENT_ID_SERVER);
 	ci->client_playas = _network_dedicated ? COMPANY_SPECTATOR : _local_company;
 
 	strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));

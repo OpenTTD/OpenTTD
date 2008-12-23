@@ -420,23 +420,15 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	}
 
 	// We don't have this client_id yet, find an empty client_id, and put the data there
-	for (int i = 0; i < MAX_CLIENT_SLOTS; i++) {
-		ci = GetNetworkClientInfo(i);
-		if (!ci->IsValid()) break;
-	}
-	if (ci != GetNetworkClientInfo(MAX_CLIENT_SLOTS)) {
-		ci->client_id = client_id;
-		ci->client_playas = playas;
+	ci = new NetworkClientInfo(client_id);
+	ci->client_playas = playas;
+	if (client_id == _network_own_client_id) MY_CLIENT->SetInfo(ci);
 
-		strecpy(ci->client_name, name, lastof(ci->client_name));
+	strecpy(ci->client_name, name, lastof(ci->client_name));
 
-		InvalidateWindow(WC_CLIENT_LIST, 0);
+	InvalidateWindow(WC_CLIENT_LIST, 0);
 
-		return NETWORK_RECV_STATUS_OKAY;
-	}
-
-	// Here the program should never ever come.....
-	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
@@ -765,9 +757,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
-
-		// The client is gone, give the NetworkClientInfo free
-		ci->client_id = INVALID_CLIENT_ID;
+		delete ci;
 	}
 
 	InvalidateWindow(WC_CLIENT_LIST, 0);
@@ -786,9 +776,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
-
-		// The client is gone, give the NetworkClientInfo free
-		ci->client_id = INVALID_CLIENT_ID;
+		delete ci;
 	} else {
 		DEBUG(net, 0, "Unknown client (%d) is leaving the game", client_id);
 	}

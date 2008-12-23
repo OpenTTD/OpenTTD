@@ -13,12 +13,18 @@
 #include "core/game.h"
 
 enum {
+	/** How many clients can we have */
+	MAX_CLIENTS = 255,
+
+	/** The number of bits per pool client block */
+	NCI_BITS_PER_POOL_BLOCK = 3, // => 8 items per block
 	/**
-	 * How many clients can we have? Like.. MAX_COMPANIES is the amount of
-	 *  companies that can really play.. so.. a max of 3 spectators.. gives us..
-	 *  MAX_COMPANIES + 3
+	 * The number of slots; must be a multiple of (1 << NCI_BITS_PER_POOL_BLOCK)
+	 * and be at least 1 more than MAX_CLIENTS. It must furthermore be less than
+	 * or equal to 256 as client indices (sent over the network) are 8 bits.
+	 * It needs 1 more for the dedicated server.
 	 */
-	MAX_CLIENTS = MAX_COMPANIES + 3,
+	MAX_CLIENT_SLOTS = 256,
 
 	/** Maximum number of internet interfaces supported. */
 	MAX_INTERFACES = 9,
@@ -36,10 +42,7 @@ enum ClientID {
 };
 
 /** Indices into the client tables */
-enum ClientIndex {
-	/** Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1. This due to the (dedicated) server taking one slot. */
-	MAX_CLIENT_SLOTS = MAX_CLIENTS + 1,
-};
+typedef uint8 ClientIndex;
 
 /** Simple calculated statistics of a company */
 struct NetworkCompanyStats {

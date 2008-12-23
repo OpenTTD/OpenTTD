@@ -84,12 +84,17 @@ enum ClientStatus {
 	STATUS_ACTIVE,     ///< The client is active within in the game
 };
 
+
+class NetworkClientSocket;
+DECLARE_OLD_POOL(NetworkClientSocket, NetworkClientSocket, NCI_BITS_PER_POOL_BLOCK, MAX_CLIENT_SLOTS >> NCI_BITS_PER_POOL_BLOCK);
+
 /** Base socket handler for all TCP sockets */
-class NetworkClientSocket : public NetworkSocketHandler {
+class NetworkClientSocket : public PoolItem<NetworkClientSocket, ClientIndex, &_NetworkClientSocket_pool>, public NetworkSocketHandler {
 /* TODO: rewrite into a proper class */
 private:
 	Packet *packet_queue;     ///< Packets that are awaiting delivery
 	Packet *packet_recv;      ///< Partially received packet
+	NetworkClientInfo *info;  ///< Client info related to this socket
 public:
 	ClientID client_id;       ///< Client identifier
 	uint32 last_frame;        ///< Last frame we have executed
@@ -102,8 +107,6 @@ public:
 	CommandPacket *command_queue; ///< The command-queue awaiting delivery
 
 	NetworkRecvStatus CloseConnection();
-	void Initialize();
-	void Destroy();
 
 	void Send_Packet(Packet *packet);
 	bool Send_Packets();
@@ -111,26 +114,23 @@ public:
 
 	Packet *Recv_Packet(NetworkRecvStatus *status);
 
-	inline bool IsValid() const { return this->IsConnected(); }
-	inline NetworkClientInfo *GetInfo() const
-	{
-		extern NetworkClientSocket _clients[MAX_CLIENTS];
-		return GetNetworkClientInfo(this - _clients);
-	}
-};
+	NetworkClientSocket(ClientID client_id = INVALID_CLIENT_ID);
+	~NetworkClientSocket();
 
-// Here we keep track of the clients
-//  (and the client uses [0] for his own communication)
-extern NetworkClientSocket _clients[MAX_CLIENTS];
-#define GetNetworkClientSocket(i) (&_clients[i])
+	inline bool IsValid() const { return this->IsConnected(); }
+	inline void SetInfo(NetworkClientInfo *info) { assert(info != NULL && this->info == NULL); this->info = info; }
+	inline NetworkClientInfo *GetInfo() const { return this->info; }
+};
 
 static inline bool IsValidNetworkClientSocketIndex(ClientIndex index)
 {
-	return (uint)index < MAX_CLIENTS && GetNetworkClientSocket(index)->IsValid();
+	return (uint)index < GetNetworkClientSocketPoolSize() && GetNetworkClientSocket(index)->IsValid();
 }
 
-#define FOR_ALL_CLIENT_SOCKETS_FROM(d, start) for (d = GetNetworkClientSocket(start); d != GetNetworkClientSocket(MAX_CLIENTS); d++) if (d->IsValid())
+#define FOR_ALL_CLIENT_SOCKETS_FROM(d, start) for (d = (start < GetNetworkClientSocketPoolSize() ? GetNetworkClientSocket(start) : NULL); d != NULL; d = (d->index + 1U < GetNetworkClientSocketPoolSize()) ? GetNetworkClientSocket(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_CLIENT_SOCKETS(d) FOR_ALL_CLIENT_SOCKETS_FROM(d, 0)
+
+typedef NetworkClientSocket NetworkTCPSocketHandler;
 
 #endif /* ENABLE_NETWORK */
 
