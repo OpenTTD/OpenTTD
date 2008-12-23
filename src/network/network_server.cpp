@@ -84,7 +84,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		strecpy(clients[ci->client_playas], ci->client_name, lastof(clients[ci->client_playas]));
 	}
 
-	FOR_ALL_CLIENTS(csi) {
+	FOR_ALL_CLIENT_SOCKETS(csi) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 		NetworkGetClientName(client_name, sizeof(client_name), csi);
@@ -156,7 +156,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
 
-		FOR_ALL_CLIENTS(new_cs) {
+		FOR_ALL_CLIENT_SOCKETS(new_cs) {
 			if (new_cs->status > STATUS_AUTH && new_cs != cs) {
 				// Some errors we filter to a more general error. Clients don't have to know the real
 				//  reason a joining failed.
@@ -253,7 +253,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	cs->Send_Packet(p);
 
 		// Transmit info about all the active clients
-	FOR_ALL_CLIENTS(new_cs) {
+	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs != cs && new_cs->status > STATUS_AUTH)
 			SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, new_cs->GetInfo());
 	}
@@ -275,7 +275,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 	Packet *p;
 
 	// Count how many clients are waiting in the queue
-	FOR_ALL_CLIENTS(new_cs) {
+	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status == STATUS_MAP_WAIT) waiting++;
 	}
 
@@ -367,7 +367,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 					bool new_map_client = false;
 					// Check if there is a client waiting for receiving the map
 					//  and start sending him the map
-					FOR_ALL_CLIENTS(new_cs) {
+					FOR_ALL_CLIENT_SOCKETS(new_cs) {
 						if (new_cs->status == STATUS_MAP_WAIT) {
 							// Check if we already have a new client to send the map to
 							if (!new_map_client) {
@@ -759,7 +759,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 	}
 
 	// Check if someone else is receiving the map
-	FOR_ALL_CLIENTS(new_cs) {
+	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status == STATUS_MAP) {
 			// Tell the new client to wait
 			cs->status = STATUS_MAP_WAIT;
@@ -795,7 +795,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 		cs->last_frame = _frame_counter;
 		cs->last_frame_server = _frame_counter;
 
-		FOR_ALL_CLIENTS(new_cs) {
+		FOR_ALL_CLIENT_SOCKETS(new_cs) {
 			if (new_cs->status > STATUS_AUTH) {
 				SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(new_cs, cs->GetInfo());
 				SEND_COMMAND(PACKET_SERVER_JOIN)(new_cs, cs->client_id);
@@ -927,7 +927,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	// Queue the command for the clients (are send at the end of the frame
 	//   if they can handle it ;))
-	FOR_ALL_CLIENTS(new_cs) {
+	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status >= STATUS_MAP) {
 			// Callbacks are only send back to the client who sent them in the
 			//  first place. This filters that out.
@@ -973,7 +973,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
 
-	FOR_ALL_CLIENTS(new_cs) {
+	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
 			SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, errorno);
 		}
@@ -1002,7 +1002,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 
 	NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
 
-	FOR_ALL_CLIENTS(new_cs) {
+	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status > STATUS_AUTH) {
 			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->client_id, str);
 		}
@@ -1063,7 +1063,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), false, ci->client_name, "%s", msg);
 		} else {
 			/* Else find the client to send the message to */
-			FOR_ALL_CLIENTS(cs) {
+			FOR_ALL_CLIENT_SOCKETS(cs) {
 				if (cs->client_id == (ClientID)dest) {
 					SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg);
 					break;
@@ -1079,7 +1079,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				if (ci != NULL && ci_to != NULL)
 					NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), true, ci_to->client_name, "%s", msg);
 			} else {
-				FOR_ALL_CLIENTS(cs) {
+				FOR_ALL_CLIENT_SOCKETS(cs) {
 					if (cs->client_id == from_id) {
 						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, (ClientID)dest, true, msg);
 						break;
@@ -1093,7 +1093,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 														// on the client who did sent it.
 		/* Find all clients that belong to this company */
 		ci_to = NULL;
-		FOR_ALL_CLIENTS(cs) {
+		FOR_ALL_CLIENT_SOCKETS(cs) {
 			ci = cs->GetInfo();
 			if (ci->client_playas == (CompanyID)dest) {
 				SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg);
@@ -1122,7 +1122,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 				GetString(name, str, lastof(name));
 				NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci_own->client_playas), true, name, "%s", msg);
 			} else {
-				FOR_ALL_CLIENTS(cs) {
+				FOR_ALL_CLIENT_SOCKETS(cs) {
 					if (cs->client_id == from_id) {
 						SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, ci_to->client_id, true, msg);
 					}
@@ -1135,7 +1135,7 @@ void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, co
 		DEBUG(net, 0, "[server] received unknown chat destination type %d. Doing broadcast instead", desttype);
 		/* fall-through to next case */
 	case DESTTYPE_BROADCAST:
-		FOR_ALL_CLIENTS(cs) {
+		FOR_ALL_CLIENT_SOCKETS(cs) {
 			SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_id, false, msg);
 		}
 		ci = NetworkFindClientInfoFromClientID(from_id);
@@ -1340,7 +1340,7 @@ void NetworkUpdateClientInfo(ClientID client_id)
 
 	if (ci == NULL) return;
 
-	FOR_ALL_CLIENTS(cs) {
+	FOR_ALL_CLIENT_SOCKETS(cs) {
 		SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, ci);
 	}
 }
@@ -1497,7 +1497,7 @@ void NetworkServer_Tick(bool send_frame)
 
 	// Now we are done with the frame, inform the clients that they can
 	//  do their frame!
-	FOR_ALL_CLIENTS(cs) {
+	FOR_ALL_CLIENT_SOCKETS(cs) {
 		// Check if the speed of the client is what we can expect from a client
 		if (cs->status == STATUS_ACTIVE) {
 			// 1 lag-point per day
@@ -1604,7 +1604,7 @@ void NetworkServerShowStatusToConsole()
 	};
 
 	NetworkTCPSocketHandler *cs;
-	FOR_ALL_CLIENTS(cs) {
+	FOR_ALL_CLIENT_SOCKETS(cs) {
 		int lag = NetworkCalculateLag(cs);
 		const NetworkClientInfo *ci = cs->GetInfo();
 		const char* status;

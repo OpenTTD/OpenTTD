@@ -80,7 +80,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 		c.callback = 0;
 		/* And we queue it for delivery to the clients */
 		NetworkTCPSocketHandler *cs;
-		FOR_ALL_CLIENTS(cs) {
+		FOR_ALL_CLIENT_SOCKETS(cs) {
 			if (cs->status > STATUS_MAP_WAIT) NetworkAddCommandQueue(cs, &c);
 		}
 		return;

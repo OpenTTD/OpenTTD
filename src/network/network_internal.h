@@ -161,7 +161,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 #define SEND_COMMAND(type) NetworkPacketSend_ ## type ## _command
 #define RECEIVE_COMMAND(type) NetworkPacketReceive_ ## type ## _command
 
-#define FOR_ALL_CLIENTS(cs) for (cs = _clients; cs != endof(_clients) && cs->IsConnected(); cs++)
+#define FOR_ALL_CLIENT_SOCKETS(cs) for (cs = _clients; cs != endof(_clients) && cs->IsConnected(); cs++)
 
 #endif /* ENABLE_NETWORK */
 #endif /* NETWORK_INTERNAL_H */

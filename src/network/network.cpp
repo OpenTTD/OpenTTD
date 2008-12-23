@@ -119,7 +119,7 @@ NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id)
 {
 	NetworkClientInfo *ci;
 
-	for (ci = _network_client_info; ci != endof(_network_client_info); ci++) {
+	FOR_ALL_CLIENT_INFOS(ci) {
 		if (ci->client_id == client_id) return ci;
 	}
 
@@ -136,7 +136,7 @@ NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip)
 	NetworkClientInfo *ci;
 	uint32 ip_number = inet_addr(ip);
 
-	for (ci = _network_client_info; ci != endof(_network_client_info); ci++) {
+	FOR_ALL_CLIENT_INFOS(ci) {
 		if (ci->client_ip == ip_number) return ci;
 	}
 
@@ -152,7 +152,7 @@ NetworkTCPSocketHandler *NetworkFindClientStateFromClientID(ClientID client_id)
 {
 	NetworkTCPSocketHandler *cs;
 
-	for (cs = _clients; cs != endof(_clients); cs++) {
+	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (cs->client_id == client_id) return cs;
 	}
 
@@ -478,7 +478,7 @@ void NetworkCloseClient(NetworkTCPSocketHandler *cs)
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
 
 		// Inform other clients of this... strange leaving ;)
-		FOR_ALL_CLIENTS(new_cs) {
+		FOR_ALL_CLIENT_SOCKETS(new_cs) {
 			if (new_cs->status > STATUS_AUTH && cs != new_cs) {
 				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, errorno);
 			}
@@ -669,7 +669,7 @@ static void NetworkClose()
 {
 	NetworkTCPSocketHandler *cs;
 
-	FOR_ALL_CLIENTS(cs) {
+	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (!_network_server) {
 			SEND_COMMAND(PACKET_CLIENT_QUIT)("leaving");
 			cs->Send_Packets();
@@ -891,7 +891,7 @@ void NetworkReboot()
 {
 	if (_network_server) {
 		NetworkTCPSocketHandler *cs;
-		FOR_ALL_CLIENTS(cs) {
+		FOR_ALL_CLIENT_SOCKETS(cs) {
 			SEND_COMMAND(PACKET_SERVER_NEWGAME)(cs);
 			cs->Send_Packets();
 		}
@@ -905,7 +905,7 @@ void NetworkDisconnect()
 {
 	if (_network_server) {
 		NetworkTCPSocketHandler *cs;
-		FOR_ALL_CLIENTS(cs) {
+		FOR_ALL_CLIENT_SOCKETS(cs) {
 			SEND_COMMAND(PACKET_SERVER_SHUTDOWN)(cs);
 			cs->Send_Packets();
 		}
@@ -929,7 +929,7 @@ static bool NetworkReceive()
 	FD_ZERO(&read_fd);
 	FD_ZERO(&write_fd);
 
-	FOR_ALL_CLIENTS(cs) {
+	FOR_ALL_CLIENT_SOCKETS(cs) {
 		FD_SET(cs->sock, &read_fd);
 		FD_SET(cs->sock, &write_fd);
 	}
@@ -949,7 +949,7 @@ static bool NetworkReceive()
 	if (_network_server && FD_ISSET(_listensocket, &read_fd)) NetworkAcceptClients();
 
 	// read stuff from clients
-	FOR_ALL_CLIENTS(cs) {
+	FOR_ALL_CLIENT_SOCKETS(cs) {
 		cs->writable = !!FD_ISSET(cs->sock, &write_fd);
 		if (FD_ISSET(cs->sock, &read_fd)) {
 			if (_network_server) {
@@ -977,7 +977,7 @@ static bool NetworkReceive()
 static void NetworkSend()
 {
 	NetworkTCPSocketHandler *cs;
-	FOR_ALL_CLIENTS(cs) {
+	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (cs->writable) {
 			cs->Send_Packets();
 
