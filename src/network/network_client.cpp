@@ -420,8 +420,11 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	}
 
 	// We don't have this client_id yet, find an empty client_id, and put the data there
-	ci = NetworkFindClientInfoFromClientID(INVALID_CLIENT_ID);
-	if (ci != NULL) {
+	for (int i = 0; i < MAX_CLIENT_SLOTS; i++) {
+		ci = GetNetworkClientInfo(i);
+		if (!ci->IsValid()) break;
+	}
+	if (ci != GetNetworkClientInfo(MAX_CLIENT_SLOTS)) {
 		ci->client_id = client_id;
 		ci->client_playas = playas;
 

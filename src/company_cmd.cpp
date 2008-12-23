@@ -813,7 +813,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
 			NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(cid);
-			if (ci != NULL) return CommandCost();
+			if (ci == NULL) return CommandCost();
 
 			/* Delete multiplayer progress bar */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
