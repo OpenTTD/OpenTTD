@@ -23,16 +23,16 @@ struct NetworkClientInfo {
 
 static NetworkClientInfo *GetNetworkClientInfo(int ci)
 {
-	extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
+	extern NetworkClientInfo _network_client_info[MAX_CLIENT_SLOTS];
 	return &_network_client_info[ci];
 }
 
 static inline bool IsValidNetworkClientInfoIndex(ClientIndex index)
 {
-	return (uint)index < MAX_CLIENT_INFO && GetNetworkClientInfo(index)->IsValid();
+	return (uint)index < MAX_CLIENT_SLOTS && GetNetworkClientInfo(index)->IsValid();
 }
 
-#define FOR_ALL_CLIENT_INFOS_FROM(d, start) for (ci = GetNetworkClientInfo(start); ci != GetNetworkClientInfo(MAX_CLIENT_INFO); ci++) if (ci->IsValid())
+#define FOR_ALL_CLIENT_INFOS_FROM(d, start) for (ci = GetNetworkClientInfo(start); ci != GetNetworkClientInfo(MAX_CLIENT_SLOTS); ci++) if (ci->IsValid())
 #define FOR_ALL_CLIENT_INFOS(d) FOR_ALL_CLIENT_INFOS_FROM(d, 0)
 
 #endif /* ENABLE_NETWORK */

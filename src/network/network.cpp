@@ -50,7 +50,7 @@ bool _network_available;  ///< is network mode available?
 bool _network_dedicated;  ///< are we a dedicated server?
 bool _is_network_server;  ///< Does this client wants to be a network-server?
 NetworkServerGameInfo _network_game_info;
-NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
+NetworkClientInfo _network_client_info[MAX_CLIENT_SLOTS];
 NetworkCompanyState *_network_company_states = NULL;
 ClientID _network_own_client_id;
 ClientID _redirect_console_to_client;
@@ -827,9 +827,9 @@ static void NetworkInitGameInfo()
 	_network_game_info.clients_on = _network_dedicated ? 0 : 1;
 	_network_game_info.start_date = ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1);
 
-	// We use _network_client_info[MAX_CLIENT_INFO - 1] to store the server-data in it
+	// We use _network_client_info[MAX_CLIENT_SLOTS - 1] to store the server-data in it
 	//  The client identifier is CLIENT_ID_SERVER ( = 1)
-	ci = &_network_client_info[MAX_CLIENT_INFO - 1];
+	ci = &_network_client_info[MAX_CLIENT_SLOTS - 1];
 	memset(ci, 0, sizeof(*ci));
 
 	ci->client_id = CLIENT_ID_SERVER;

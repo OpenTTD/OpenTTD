@@ -299,19 +299,19 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		static char chat_tab_temp_buffer[64];
 
 		/* First, try clients */
-		if (*item < MAX_CLIENT_INFO) {
+		if (*item < MAX_CLIENT_SLOTS) {
 			/* Skip inactive clients */
-			while (GetNetworkClientInfo(*item)->client_id == INVALID_CLIENT_ID && *item < MAX_CLIENT_INFO) (*item)++;
-			if (*item < MAX_CLIENT_INFO) return GetNetworkClientInfo(*item)->client_name;
+			while (GetNetworkClientInfo(*item)->client_id == INVALID_CLIENT_ID && *item < MAX_CLIENT_SLOTS) (*item)++;
+			if (*item < MAX_CLIENT_SLOTS) return GetNetworkClientInfo(*item)->client_name;
 		}
 
 		/* Then, try townnames */
 		/* Not that the following assumes all town indices are adjacent, ie no
 		* towns have been deleted. */
-		if (*item <= (uint)MAX_CLIENT_INFO + GetMaxTownIndex()) {
+		if (*item <= (uint)MAX_CLIENT_SLOTS + GetMaxTownIndex()) {
 			const Town *t;
 
-			FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {
+			FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_SLOTS) {
 				/* Get the town-name via the string-system */
 				SetDParam(0, t->index);
 				GetString(chat_tab_temp_buffer, STR_TOWN, lastof(chat_tab_temp_buffer));

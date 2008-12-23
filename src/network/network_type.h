@@ -37,8 +37,8 @@ enum ClientID {
 
 /** Indices into the client tables */
 enum ClientIndex {
-	/** Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1 */
-	MAX_CLIENT_INFO = MAX_CLIENTS + 1,
+	/** Do not change this next line. It should _ALWAYS_ be MAX_CLIENTS + 1. This due to the (dedicated) server taking one slot. */
+	MAX_CLIENT_SLOTS = MAX_CLIENTS + 1,
 };
 
 /** Simple calculated statistics of a company */
