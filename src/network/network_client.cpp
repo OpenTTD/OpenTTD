@@ -901,7 +901,7 @@ void NetworkClient_Connected()
 }
 
 // Reads the packets from the socket-stream, if available
-NetworkRecvStatus NetworkClient_ReadPackets(NetworkTCPSocketHandler *cs)
+NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientSocket *cs)
 {
 	Packet *p;
 	NetworkRecvStatus res = NETWORK_RECV_STATUS_OKAY;

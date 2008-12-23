@@ -33,14 +33,14 @@
 
 // This file handles all the server-commands
 
-static void NetworkHandleCommandQueue(NetworkTCPSocketHandler* cs);
+static void NetworkHandleCommandQueue(NetworkClientSocket* cs);
 
 // **********
 // Sending functions
-//   DEF_SERVER_SEND_COMMAND has parameter: NetworkTCPSocketHandler *cs
+//   DEF_SERVER_SEND_COMMAND has parameter: NetworkClientSocket *cs
 // **********
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkTCPSocketHandler *cs, NetworkClientInfo *ci)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkClientSocket *cs, NetworkClientInfo *ci)
 {
 	//
 	// Packet: SERVER_CLIENT_INFO
@@ -75,7 +75,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 	/* Make a list of all clients per company */
 	char clients[MAX_COMPANIES][NETWORK_CLIENTS_LENGTH];
-	NetworkTCPSocketHandler *csi;
+	NetworkClientSocket *csi;
 	memset(clients, 0, sizeof(clients));
 
 	/* Add the local player (if not dedicated) */
@@ -128,7 +128,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, NetworkErrorCode error)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientSocket *cs, NetworkErrorCode error)
 {
 	//
 	// Packet: SERVER_ERROR
@@ -147,7 +147,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 
 	// Only send when the current client was in game
 	if (cs->status > STATUS_AUTH) {
-		NetworkTCPSocketHandler *new_cs;
+		NetworkClientSocket *new_cs;
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
@@ -179,7 +179,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkTCPSocketHandler *cs, 
 	NetworkCloseClient(cs);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkTCPSocketHandler *cs)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkClientSocket *cs)
 {
 	//
 	// Packet: PACKET_SERVER_CHECK_NEWGRFS
@@ -207,7 +207,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHECK_NEWGRFS)(NetworkTCPSocketHandl
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkTCPSocketHandler *cs, NetworkPasswordType type)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_NEED_PASSWORD)(NetworkClientSocket *cs, NetworkPasswordType type)
 {
 	//
 	// Packet: SERVER_NEED_PASSWORD
@@ -238,7 +238,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WELCOME)
 	//
 
 	Packet *p;
-	NetworkTCPSocketHandler *new_cs;
+	NetworkClientSocket *new_cs;
 
 	// Invalid packet when status is AUTH or higher
 	if (cs->status >= STATUS_AUTH) return;
@@ -271,7 +271,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 	//    uint8:  Clients awaiting map
 	//
 	int waiting = 0;
-	NetworkTCPSocketHandler *new_cs;
+	NetworkClientSocket *new_cs;
 	Packet *p;
 
 	// Count how many clients are waiting in the queue
@@ -363,7 +363,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 				fclose(file_pointer);
 
 				{
-					NetworkTCPSocketHandler *new_cs;
+					NetworkClientSocket *new_cs;
 					bool new_map_client = false;
 					// Check if there is a client waiting for receiving the map
 					//  and start sending him the map
@@ -400,7 +400,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 	}
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkTCPSocketHandler *cs, ClientID client_id)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_JOIN)(NetworkClientSocket *cs, ClientID client_id)
 {
 	//
 	// Packet: SERVER_JOIN
@@ -466,7 +466,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkTCPSocketHandler *cs, CommandPacket *cp)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, CommandPacket *cp)
 {
 	//
 	// Packet: SERVER_COMMAND
@@ -497,7 +497,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkTCPSocketHandler *cs
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, NetworkAction action, ClientID client_id, bool self_send, const char *msg)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkClientSocket *cs, NetworkAction action, ClientID client_id, bool self_send, const char *msg)
 {
 	//
 	// Packet: SERVER_CHAT
@@ -518,7 +518,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CHAT)(NetworkTCPSocketHandler *cs, N
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkTCPSocketHandler *cs, ClientID client_id, NetworkErrorCode errorno)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkClientSocket *cs, ClientID client_id, NetworkErrorCode errorno)
 {
 	//
 	// Packet: SERVER_ERROR_QUIT
@@ -537,7 +537,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR_QUIT)(NetworkTCPSocketHandler 
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkTCPSocketHandler *cs, ClientID client_id, const char *leavemsg)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_QUIT)(NetworkClientSocket *cs, ClientID client_id, const char *leavemsg)
 {
 	//
 	// Packet: SERVER_ERROR_QUIT
@@ -582,7 +582,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME)
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkTCPSocketHandler *cs, uint16 color, const char *command)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint16 color, const char *command)
 {
 	Packet *p = NetworkSend_Init(PACKET_SERVER_RCON);
 
@@ -593,7 +593,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkTCPSocketHandler *cs, u
 
 // **********
 // Receiving functions
-//   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkTCPSocketHandler *cs, Packet *p
+//   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientSocket *cs, Packet *p
 // **********
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMPANY_INFO)
@@ -749,7 +749,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 {
-	NetworkTCPSocketHandler *new_cs;
+	NetworkClientSocket *new_cs;
 
 	// The client was never joined.. so this is impossible, right?
 	//  Ignore the packet, give the client a warning, and close his connection
@@ -777,7 +777,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 	// Client has the map, now start syncing
 	if (cs->status == STATUS_DONE_MAP && !cs->has_quit) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
-		NetworkTCPSocketHandler *new_cs;
+		NetworkClientSocket *new_cs;
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
@@ -847,7 +847,7 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
  */
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 {
-	NetworkTCPSocketHandler *new_cs;
+	NetworkClientSocket *new_cs;
 	const NetworkClientInfo *ci;
 	byte callback;
 
@@ -954,7 +954,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 {
 	// This packets means a client noticed an error and is reporting this
 	//  to us. Display the error and report it to the other clients
-	NetworkTCPSocketHandler *new_cs;
+	NetworkClientSocket *new_cs;
 	char str[100];
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 	NetworkErrorCode errorno = (NetworkErrorCode)p->Recv_uint8();
@@ -986,7 +986,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 {
 	// The client wants to leave. Display this and report it to the other
 	//  clients.
-	NetworkTCPSocketHandler *new_cs;
+	NetworkClientSocket *new_cs;
 	char str[100];
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
@@ -1050,7 +1050,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 
 void NetworkServerSendChat(NetworkAction action, DestType desttype, int dest, const char *msg, ClientID from_id)
 {
-	NetworkTCPSocketHandler *cs;
+	NetworkClientSocket *cs;
 	const NetworkClientInfo *ci, *ci_own, *ci_to;
 
 	switch (desttype) {
@@ -1246,7 +1246,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 }
 
 // The layout for the receive-functions by the server
-typedef void NetworkServerPacket(NetworkTCPSocketHandler *cs, Packet *p);
+typedef void NetworkServerPacket(NetworkClientSocket *cs, Packet *p);
 
 
 // This array matches PacketType. At an incoming
@@ -1335,7 +1335,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats)
 // Send a packet to all clients with updated info about this client_id
 void NetworkUpdateClientInfo(ClientID client_id)
 {
-	NetworkTCPSocketHandler *cs;
+	NetworkClientSocket *cs;
 	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 
 	if (ci == NULL) return;
@@ -1450,7 +1450,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 }
 
 // Reads a packet from the stream
-bool NetworkServer_ReadPackets(NetworkTCPSocketHandler *cs)
+bool NetworkServer_ReadPackets(NetworkClientSocket *cs)
 {
 	Packet *p;
 	NetworkRecvStatus res;
@@ -1468,7 +1468,7 @@ bool NetworkServer_ReadPackets(NetworkTCPSocketHandler *cs)
 }
 
 // Handle the local command-queue
-static void NetworkHandleCommandQueue(NetworkTCPSocketHandler* cs)
+static void NetworkHandleCommandQueue(NetworkClientSocket* cs)
 {
 	CommandPacket *cp;
 
@@ -1483,7 +1483,7 @@ static void NetworkHandleCommandQueue(NetworkTCPSocketHandler* cs)
 // This is called every tick if this is a _network_server
 void NetworkServer_Tick(bool send_frame)
 {
-	NetworkTCPSocketHandler *cs;
+	NetworkClientSocket *cs;
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
 	bool send_sync = false;
 #endif
@@ -1603,7 +1603,7 @@ void NetworkServerShowStatusToConsole()
 		"active"
 	};
 
-	NetworkTCPSocketHandler *cs;
+	NetworkClientSocket *cs;
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		int lag = NetworkCalculateLag(cs);
 		const NetworkClientInfo *ci = cs->GetInfo();

@@ -85,7 +85,7 @@ enum ClientStatus {
 };
 
 /** Base socket handler for all TCP sockets */
-class NetworkTCPSocketHandler : public NetworkSocketHandler {
+class NetworkClientSocket : public NetworkSocketHandler {
 /* TODO: rewrite into a proper class */
 private:
 	Packet *packet_queue;     ///< Packets that are awaiting delivery
@@ -114,7 +114,7 @@ public:
 	inline NetworkClientInfo *GetInfo() const
 	{
 		extern NetworkClientInfo _network_client_info[MAX_CLIENT_INFO];
-		extern NetworkTCPSocketHandler _clients[MAX_CLIENTS];
+		extern NetworkClientSocket _clients[MAX_CLIENTS];
 		return &_network_client_info[this - _clients];
 	}
 };

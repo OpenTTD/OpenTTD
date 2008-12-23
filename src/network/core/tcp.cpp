@@ -18,7 +18,7 @@
 #include "table/strings.h"
 
 /** Very ugly temporary hack !!! */
-void NetworkTCPSocketHandler::Initialize()
+void NetworkClientSocket::Initialize()
 {
 	this->sock              = INVALID_SOCKET;
 
@@ -37,7 +37,7 @@ void NetworkTCPSocketHandler::Initialize()
 	this->command_queue     = NULL;
 }
 
-void NetworkTCPSocketHandler::Destroy()
+void NetworkClientSocket::Destroy()
 {
 	closesocket(this->sock);
 	this->writable = false;
@@ -67,7 +67,7 @@ void NetworkTCPSocketHandler::Destroy()
  * @return the new status
  * TODO: needs to be splitted when using client and server socket packets
  */
-NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection()
+NetworkRecvStatus NetworkClientSocket::CloseConnection()
 {
 	NetworkCloseClient(this);
 
@@ -90,7 +90,7 @@ NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection()
  * if the OS-network-buffer is full)
  * @param packet the packet to send
  */
-void NetworkTCPSocketHandler::Send_Packet(Packet *packet)
+void NetworkClientSocket::Send_Packet(Packet *packet)
 {
 	Packet *p;
 	assert(packet != NULL);
@@ -116,7 +116,7 @@ void NetworkTCPSocketHandler::Send_Packet(Packet *packet)
  *      data right now (full network-buffer, it happens ;))
  *   3) sending took too long
  */
-bool NetworkTCPSocketHandler::Send_Packets()
+bool NetworkClientSocket::Send_Packets()
 {
 	ssize_t res;
 	Packet *p;
@@ -165,7 +165,7 @@ bool NetworkTCPSocketHandler::Send_Packets()
  * @param status the variable to store the status into
  * @return the received packet (or NULL when it didn't receive one)
  */
-Packet *NetworkTCPSocketHandler::Recv_Packet(NetworkRecvStatus *status)
+Packet *NetworkClientSocket::Recv_Packet(NetworkRecvStatus *status)
 {
 	ssize_t res;
 	Packet *p;
@@ -244,7 +244,7 @@ Packet *NetworkTCPSocketHandler::Recv_Packet(NetworkRecvStatus *status)
 	return p;
 }
 
-bool NetworkTCPSocketHandler::IsPacketQueueEmpty()
+bool NetworkClientSocket::IsPacketQueueEmpty()
 {
 	return this->packet_queue == NULL;
 }

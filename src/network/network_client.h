@@ -19,7 +19,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name);
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK);
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command);
 
-NetworkRecvStatus NetworkClient_ReadPackets(NetworkTCPSocketHandler *cs);
+NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientSocket *cs);
 void NetworkClient_Connected();
 
 #endif /* ENABLE_NETWORK */

@@ -16,7 +16,7 @@
 #include "../company_func.h"
 
 // Add a command to the local command queue
-void NetworkAddCommandQueue(NetworkTCPSocketHandler *cs, CommandPacket *cp)
+void NetworkAddCommandQueue(NetworkClientSocket *cs, CommandPacket *cp)
 {
 	CommandPacket* new_cp = MallocT<CommandPacket>(1);
 
@@ -79,7 +79,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 		/* Only the local client (in this case, the server) gets the callback */
 		c.callback = 0;
 		/* And we queue it for delivery to the clients */
-		NetworkTCPSocketHandler *cs;
+		NetworkClientSocket *cs;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
 			if (cs->status > STATUS_MAP_WAIT) NetworkAddCommandQueue(cs, &c);
 		}
