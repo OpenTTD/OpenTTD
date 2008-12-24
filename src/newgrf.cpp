@@ -4549,7 +4549,7 @@ static void ParamSet(byte *buf, size_t len)
 			/* Read another GRF File's parameter */
 			const GRFFile *file = GetFileByGRFID(data);
 			GRFConfig *c = GetGRFConfig(data);
-			if (c != NULL && HasBit(c->status, GCF_STATIC) && !HasBit(_cur_grfconfig->status, GCF_STATIC) && _networking) {
+			if (c != NULL && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur_grfconfig->flags, GCF_STATIC) && _networking) {
 				/* Disable the read GRF if it is a static NewGRF. */
 				DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);
 				src1 = 0;
