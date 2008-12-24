@@ -637,7 +637,7 @@ STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}Buang se
 STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}Apakah anda yakin untuk menghapus semua kekayaan para pemain ?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Pertumbuhan Lansekap
 STR_022F_TOWN_GENERATION                                        :{BLACK}Pertumbuhan Kota
-STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Pertumbuhan Industri
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Membuat Industri
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Pembangunan Jalan
 STR_0233_TOWN_GENERATION                                        :{WHITE}Pertumbuhan Kota
 STR_0234_NEW_TOWN                                               :{BLACK}Kota baru
@@ -653,7 +653,7 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Tambah u
 STR_023C_EXPAND                                                 :{BLACK}Memperluas
 STR_023D_RANDOM_TOWN                                            :{BLACK}Kota secara acak
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Membangun kota di lokasi secara acak
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Pertumbuhan Industri
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Membuat Industri
 STR_0240_COAL_MINE                                              :{BLACK}Tambang Batubara
 STR_0241_POWER_STATION                                          :{BLACK}Pembangkit Listrik
 STR_0242_SAWMILL                                                :{BLACK}Penggergajian Kayu
@@ -829,8 +829,8 @@ STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Pilihan 
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Bus/truk
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Pilih lajur yang dilalui bus/truk
-STR_02E9_DRIVE_ON_LEFT                                          :Berkendara di sebelah kiri
-STR_02EA_DRIVE_ON_RIGHT                                         :Berkendara di sebelah kanan
+STR_02E9_DRIVE_ON_LEFT                                          :Berkendara di lajur kiri
+STR_02EA_DRIVE_ON_RIGHT                                         :Berkendara di lajur kanan
 STR_02EB_TOWN_NAMES                                             :{BLACK}Nama kota
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Pilih model nama kota
@@ -1248,14 +1248,14 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Lansekap 'Sub T
 STR_TOYLAND_LANDSCAPE                                           :Lansekap 'Taman Bermain'
 
 STR_CHEATS                                                      :{WHITE}Kode Curang
-STR_CHEATS_TIP                                                  :{BLACK}"Checkboxes" mengindikasikan jika anda telah menggunakan kode curang ini sebelumnya
-STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan menghianati para pesaing yang menjadi temanmu. Menyinggung harga diri tersebut akan terus tersimpan dalam ingatan untuk selamanya.
-STR_CHEAT_MONEY                                                 :{LTBLUE}Uang ditambah oleh {CURRENCY}
+STR_CHEATS_TIP                                                  :{BLACK}Daftar cek ini mengindikasikan bahwa anda telah menggunakan kode curang ini sebelumnya
+STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan menghianati para pesaing lainya. Ingat, tindakan ini akan terus teringat untuk selamanya.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Memainkan sebagai pemain: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (membersihkan industri, yang tidak dapat dipindahkan): {ORANGE}{STRING}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunel mungkin saling bersilangan/tumpang tindih: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Membangun saat dalam mode "PAUSE": {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat Udara tidak akan mengalami kecelakaan (frequently) pada airport kecil: {ORANGE} {STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (untuk industri dan obyek yang tak dapat dipindahkan): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Membangun saat mode "BERHENTI": {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat tidak akan sering kecelakaan pada bandara kecil: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Pindah/Ganti iklim: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ganti tanggal: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktifkan modifikasi nilai produksi: {ORANGE}{STRING}
@@ -1784,7 +1784,7 @@ STR_CITY                                                        :{WHITE}{TOWN} (
 STR_2006_POPULATION                                             :{BLACK}Populasi: {ORANGE}{COMMA}{BLACK}  Rumah: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Ubah nama Kota
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Tidak dapat mengubah nama kota...
-STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Pemkot {TOWN} setempat tidak mengijinkan anda melakukan ini
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Pemkot {TOWN} tidak mengijinkan anda melakukan ini
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Nama Kota - Klik pada nama untuk memindahkan ke tengah
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Arahkan pandangan pada lokasi kota
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Ubah nama kota
@@ -1827,7 +1827,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidi diberikan kepada {COMPANY}!{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} akan dibayar dua kali lipat hingga tahun depan!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidi diberikan kepada {COMPANY}!{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} akan dibayar tiga kali lipat hingga tahun depan!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidi diberikan kepada {COMPANY}!{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} akan dibayar empat kali lipat hingga tahun depan!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Pemkot {TOWN}  menolak pemberian izin pembangunan bandara lain di kota ini
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Pemkot {TOWN} menolak pemberian izin pembangunan bandara lain di kota ini
 STR_2036_COTTAGES                                               :Pondok
 STR_2037_HOUSES                                                 :Rumah
 STR_2038_FLATS                                                  :Apartemen
@@ -1871,7 +1871,7 @@ STR_205C_PIGGY_BANK                                             :Bank-Piggy
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{1:STRING}{0:TOWN}
+STR_INDUSTRY_FORMAT                                             :{1:STRING} {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -1916,7 +1916,7 @@ STR_3030_RENAME_STATION_LOADING                                 :Ubah nama stasi
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Tidak dapat mengganti nama stasiun...
 STR_3032_RATINGS                                                :{BLACK}Peringkat
 STR_3033_ACCEPTS                                                :{BLACK}Menerima
-STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Peringkat lokal dari pelayanan transportasi:
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Peringkat layanan transportasi (lokal):
 
 ############ range for rating starts
 STR_3035_APPALLING                                              :Mengerikan
@@ -2022,7 +2022,7 @@ STR_LOAD_HEIGHTMAP                                              :{WHITE}Buka pet
 STR_SAVE_OSKTITLE                                               :{BLACK}Masukkan nama dari permainan tersimpan
 
 ##id 0x4800
-STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} dalam perjalanan/sedang dalam proses
+STR_4800_IN_THE_WAY                                             :terhalang {WHITE}{STRING}
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Tambang Batubara
 STR_4803_POWER_STATION                                          :Stasiun Pembangkit Listrik
@@ -2078,10 +2078,10 @@ STR_4828_PRODUCES                                               :{BLACK}Menghasi
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksi bulan kemarin
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% terkirim)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Arahkan pandangan pada lokasi industri
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT} {STRING} baru sedang dibangun di dekat {TOWN}!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Sedang dibangun {STRING} baru di dekat {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT} {STRING} baru sedang ditanam di dekat {TOWN}!
 STR_482F_COST                                                   :{BLACK}Biaya: {YELLOW}{CURRENCY}
-STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tidak dapat membangun industri tipe ini disini...
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tidak dapat membangun industri ini disini...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...hutan hanya dapat ditanam diatas batas salju
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} mengumumkan akan segera ditutup!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Masalah suplay mengakibatkan {STRING} mengumumkan akan segera ditutup!
@@ -2089,11 +2089,11 @@ STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Produksi {INDUSTRY} meningkat!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Lapisan batu bara baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Cadangan minyak baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Peningkatan metode pertanian pada{INDUSTRY} diperkirakan produksi akan meningkat dua kali lipat!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}produksi {INDUSTRY} menurun hingga 50%
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Peningkatan metode pertanian pada {INDUSTRY} diperkirakan produksi akan meningkat dua kali lipat!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Produksi {INDUSTRY} menurun hingga 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Serangan serangga menyebabkan malapetaka pada {INDUSTRY}!{}Produksi menurun hingga 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...hanya dapat diletakkan didekat batas peta
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produksi {STRING}  di {INDUSTRY} meningkat hingga {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produksi {STRING} di {INDUSTRY} meningkat hingga {COMMA}%!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produksi {STRING} di {INDUSTRY} turun hingga {COMMA}%!
 
 ##id 0x5000
@@ -2137,11 +2137,11 @@ STR_5027_TUBULAR_RAIL_BRIDGE                                    :jembatan rel be
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :jembatan berbentuk tabung
 
 ##id 0x5800
-STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objek diperjalanan
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}terhalang obyek
 STR_5801_TRANSMITTER                                            :Pemancar
 STR_5802_LIGHTHOUSE                                             :Mercusuar
 STR_5803_COMPANY_HEADQUARTERS                                   :Kantor Utama Perusahaan
-STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...kantor utama perusahaan di perjalanan
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...terhalang kantor pusat perusahaan
 STR_5805_COMPANY_OWNED_LAND                                     :Tanah milik Perusahaan
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Tidak dapat membeli area ini
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...anda sudah memilikinya!
@@ -2167,8 +2167,8 @@ STR_SV_STNAME_TRANSFER                                          :{STRING} Transf
 STR_SV_STNAME_HALT                                              :Halte {STRING}
 STR_SV_STNAME_VALLEY                                            :Lembah {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Puncak {STRING}
-STR_SV_STNAME_WOODS                                             :{STRING}Timur Laut
-STR_SV_STNAME_LAKESIDE                                          :{STRING}Barat Laut
+STR_SV_STNAME_WOODS                                             :{STRING} Timur Laut
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Barat Laut
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Express
 STR_SV_STNAME_AIRPORT                                           :Bandara {STRING}
 STR_SV_STNAME_OILFIELD                                          :{STRING} Kota minyak
@@ -2361,7 +2361,7 @@ STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Kami men
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bangkrut!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} telah ditutup oleh pemilik modal dan segala asetnya dijual!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT} Perusahaan transportasi baru didirikan!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} mulai dibangun di dekat {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} memulai pembangunan di dekat {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Tidak dapat membeli perusahaan...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Tingkat tarif biaya angkutan
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Hari transit
@@ -2708,7 +2708,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :lokomotif magle
 STR_8800_TRAIN_DEPOT                                            :{WHITE} Depo Kereta {TOWN}
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Kereta Api pertama tiba di {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
-STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Kereta Api dalam perjalanan
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Kereta sedang berjalan
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}Non-stop
@@ -2746,8 +2746,8 @@ STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ubah mod
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Masukkan perintah berikutnya
-STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Pergi ke depo terdekat
-STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Pergi ke hangar terdekat
+STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Depo terdekat
+STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Hangar terdekat
 STR_ORDER_NEAREST_DEPOT                                         :Depo Terdekat
 STR_ORDER_NEAREST_HANGAR                                        :Hangar terdekat
 STR_ORDER_SERVICE_AT                                            :Perbaikkan di
@@ -2788,8 +2788,8 @@ STR_CONDITIONAL_NUM                                             :Lompat ke perin
 STR_CONDITIONAL_TRUE_FALSE                                      :Lompat ke perintah {COMMA} jika {2:STRING} {1:STRING}
 
 STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Tidak berjalan
-STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Berjalan (tidak masuk daftar jadwal waktu)
-STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Berjalan ke {STRING}
+STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Perjalanan belum terjadwal
+STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Berjalan selama {STRING}
 STR_TIMETABLE_STAY_FOR                                          :dan tinggal selama {STRING}
 STR_TIMETABLE_AND_TRAVEL_FOR                                    :dan berjalan selama {STRING}
 STR_TIMETABLE_DAYS                                              :{COMMA} hari
@@ -2879,7 +2879,7 @@ STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aksi ker
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Tampilkan perintah kereta
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Arahkan tampilan pada lokasi kereta
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Kirim kereta ke depo. CTRL+klik hanya akan memerintahkan servis
-STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Paksa kereta untuk berjalan tanpa menunggu sinyal
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Paksa kereta terus berjalan tanpa menunggu sinyal
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Balikkan arah kereta api
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Tampilkan informasi kereta
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Menambah jarak waktu servis
@@ -2939,12 +2939,12 @@ STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Kendaran
 STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Kendaraan ini tidak  berhenti pada stasiun ini.
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Ubah Durasi
 STR_TIMETABLE_STATUS_ON_TIME                                    :Kendaraan ini berjalan tepat waktu
-STR_TIMETABLE_STATUS_LATE                                       :Kendaraaan ini berjalan  terlambat {STRING}
+STR_TIMETABLE_STATUS_LATE                                       :Kendaraaan ini berjalan terlambat {STRING}
 STR_TIMETABLE_STATUS_EARLY                                      :Kendaraaan ini berjalan  lebih awal {STRING}
-STR_TIMETABLE_TOTAL_TIME                                        :Total durasi perjalanan akan komplet pada {STRING}
-STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Total durasi perjalanan akan memakan waktu kurang lebih {STRING} untuk terpenuhi (blm semuanya terjadwal)
+STR_TIMETABLE_TOTAL_TIME                                        :Total durasi seluruh perjalanan akan memakan waktu {STRING}
+STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Total durasi seluruh perjalanan akan memakan waktu kurang lebih {STRING} untuk terpenuhi (blm semuanya terjadwal)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi Jadwal keberangkatan secara Otomatis dengan nilai dari perjalanan terdahulu
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis dari perjalanan berikutnya (Ctrl-Klik agar waktu tinggalnya tetap)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bus/truk sedang berjalan
@@ -3031,7 +3031,7 @@ STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk me
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kapal Laut harus berhenti di galangan
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Tidak dapat menjual kapal...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Tidak dapat membuat kapal...
-STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kapal Laut dalam perjalanan
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kapal sedang berjalan
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Usia: {LTBLUE}{STRING}{BLACK}   Biaya Operasional: {LTBLUE}{CURRENCY}/thn
@@ -3113,7 +3113,7 @@ STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Menuju 
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Perbaikkan di Hangar {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Perbaikkan di Hangar {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Pesawat {COMMA} menanti di hangar pesawat
-STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Pesawat Udara dalam perjalanan
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Pesawat sedang berjalan
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Tidak dapat menghentikan / menjalankan pesawat...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Pesawat dalam penerbangan
 STR_A019_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}, {CARGO}
@@ -3165,7 +3165,7 @@ STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Kilang minyak meledak didekat {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Pabrik hancur akibat hubungan pendek arus listik di dekat {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' mendarat di dekat {TOWN}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Tambang batubara mengalami kerusakan di dekat{TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Tambang batubara mengalami kerusakan di dekat {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Banjir!{}Sedikitnya {COMMA} hilang, diduga meninggal akibat banjir!
 
 STR_BRIBE_FAILED                                                :{WHITE}Usaha anda untuk menyuap telah

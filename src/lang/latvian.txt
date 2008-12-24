@@ -88,31 +88,31 @@ STR_004C_PLASTIC                                                :Plastmasas
 STR_004D_FIZZY_DRINK                                            :Burbuļūdens
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasažieru
-STR_QUANTITY_COAL                                               :{WEIGHT} tonnu ogļu
+STR_QUANTITY_COAL                                               :{WEIGHT} ogļu
 STR_QUANTITY_MAIL                                               :{COMMA} pasta maisu
 STR_QUANTITY_OIL                                                :{VOLUME} naftas
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} liellopu
 STR_QUANTITY_GOODS                                              :{COMMA} preču kastes
-STR_QUANTITY_GRAIN                                              :{WEIGHT} tonnu graudu
-STR_QUANTITY_WOOD                                               :{WEIGHT} tonnu kokmateriālu
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} tonnu dzelzsrūdas
-STR_QUANTITY_STEEL                                              :{WEIGHT} tonnu tērauda
+STR_QUANTITY_GRAIN                                              :{WEIGHT} graudu
+STR_QUANTITY_WOOD                                               :{WEIGHT} kokmateriālu
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} dzelzsrūdas
+STR_QUANTITY_STEEL                                              :{WEIGHT} tērauda
 STR_QUANTITY_VALUABLES                                          :{COMMA} maisu ar vērtspapīriem
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} tonnu vara rūdas
-STR_QUANTITY_MAIZE                                              :{WEIGHT} tonnu kukurūzas
-STR_QUANTITY_FRUIT                                              :{WEIGHT} tonnu augļu
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} vara rūdas
+STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurūzas
+STR_QUANTITY_FRUIT                                              :{WEIGHT} augļu
 STR_QUANTITY_DIAMONDS                                           :{COMMA} maisi ar dimantiem
-STR_QUANTITY_FOOD                                               :{WEIGHT} tonnu pārtikas preču
-STR_QUANTITY_PAPER                                              :{WEIGHT} tonnu papīra
+STR_QUANTITY_FOOD                                               :{WEIGHT} pārtikas preču
+STR_QUANTITY_PAPER                                              :{WEIGHT} papīra
 STR_QUANTITY_GOLD                                               :{COMMA} zelta maisu
 STR_QUANTITY_WATER                                              :{VOLUME} ūdens
-STR_QUANTITY_WHEAT                                              :{WEIGHT} tonnu kviešu
-STR_QUANTITY_RUBBER                                             :{VOLUME} tonnu gumijas
-STR_QUANTITY_SUGAR                                              :{WEIGHT} tonnu cukura
+STR_QUANTITY_WHEAT                                              :{WEIGHT} kviešu
+STR_QUANTITY_RUBBER                                             :{VOLUME} gumijas
+STR_QUANTITY_SUGAR                                              :{WEIGHT} cukura
 STR_QUANTITY_TOYS                                               :{COMMA} rotaļlietu
 STR_QUANTITY_SWEETS                                             :{COMMA} saldumu maisu
 STR_QUANTITY_COLA                                               :{VOLUME} kolas
-STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} tonnu cukurvates
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} cukurvates
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbuļi
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} īrisa konfekšu
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterijas
@@ -342,7 +342,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P 
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ mārciņasf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnu spēks
+STR_UNITS_FORCE_METRIC                                          :{COMMA} tonspēka
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu starts
@@ -896,7 +896,7 @@ STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Anglijas (papil
 STR_TOWNNAME_LATIN_AMERICAN                                     :Latīņ-Amerikas
 STR_TOWNNAME_SILLY                                              :Jocīgi
 STR_TOWNNAME_SWEDISH                                            :Zviedrijas
-STR_TOWNNAME_DUTCH                                              :Da'nijas
+STR_TOWNNAME_DUTCH                                              :Dānijas
 STR_TOWNNAME_FINNISH                                            :Somijas
 STR_TOWNNAME_POLISH                                             :Polijas
 STR_TOWNNAME_SLOVAKISH                                          :Slovākijas
@@ -982,7 +982,7 @@ STR_NO_ORDERS_VEL                                               :{LTBLUE}Nav rī
 
 STR_PASSENGERS                                                  :pasažieri
 STR_BAGS                                                        :maisi
-STR_TONS                                                        :tonnas
+STR_TONS                                                        :tonnu
 STR_LITERS                                                      :litri
 STR_ITEMS                                                       :lietas
 STR_CRATES                                                      :kastes
@@ -1050,9 +1050,9 @@ STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Transpo
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Aļaut ļoti garu tiltu celtniecību: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Atļaut "doties uz depo" komandu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Pašrocīgā primāro rūpniecības objektu būvniecības metode: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nekas
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :nav
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :kā citas industrijas
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīgs
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :ienesīga
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Atļaut vairākas līdzīgas rūpnīcas vienā pilsētā : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Viena veida rūpnīcas var būvēt tuvu vienu otrai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vienmēr rādīt garu datumu statusa joslā: {ORANGE}{STRING}
@@ -1108,9 +1108,9 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Augstum
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. staciju izkaisijums: {ORANGE}{STRING} {RED}Piezīme: Augsts līmenis palēlina spēli
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automātiski apkalpot helikopterus heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Sasaitē ainavas rīkjoslu ar dzelzceļa/ceļa/ūdens/lidostu rīkjoslu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pretējš pārtīšana virziens: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pretējs pārtīšanas virziens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Plūstoša skatpunkta pārbīde: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, kad tiek izmantoti dažādi celniecības rīki: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Rādīt mērījumu rīkjoslu, izmantojot celtniecības rīkus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Parādīt kompānijas ģildes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nav
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Paša uzņēmums
@@ -1124,8 +1124,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Peles r
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Labā klikšķa emulēšana: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommand-klik
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrol-klik
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgts
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Nopauzēt sākot jaunu spēli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Lietot speciālo transporta līdzekļu sarakstu: {ORANGE}{STRING}
@@ -1180,6 +1180,7 @@ STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Pabeidz
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ieslēgt lēzenas izmaiņas ekonomikā
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citām kompānijām
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Velkot, izvietot semaforus katras: {ORANGE}{STRING} šūnas
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automātiski būvēt semaforus pirms: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ieslēgt signālu grafisko lietotāju saskarni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Noklusētais signālu veids: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Bloka signāli
@@ -1341,7 +1342,7 @@ STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Būvēt 
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Veikt naftas urbumu
 STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Būvēt zelta raktuvi
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Būvēt dimantu raktuvi
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Būvēt dzelzs rūdas raktuvi
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Būvēt dzelzsrūdas raktuvi
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Finansēt augļu koku plantāciju
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Finansēt gumijkoku plantāciju
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Finansēt ūdens ieguvi
@@ -2076,7 +2077,7 @@ STR_4828_PRODUCES                                               :{BLACK}Ražo: {
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Iepriekšējā mēnesī saražots:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% aizvests)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Iecentrēt galveno skatu uz rūpnīcu
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Tiek būvēts jauns {STRING} netālu no {TOWN}!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Tiek būvēta jauna {STRING} netālu no {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Jauns {STRING} tiek stādīts netālu no {TOWN}!
 STR_482F_COST                                                   :{BLACK}Izmaksā: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Šeit nevar būvēt šī tipa rūpnīcu...
@@ -2240,7 +2241,7 @@ STR_VERY_LOW                                                    :Ļoti zems
 STR_6820_LOW                                                    :Zems
 STR_6821_MEDIUM                                                 :Vidējs
 STR_6822_HIGH                                                   :Augsts
-STR_6823_NONE                                                   :Nekas
+STR_6823_NONE                                                   :Nav
 STR_6824_REDUCED                                                :Samazināta
 STR_6825_NORMAL                                                 :Normāla
 STR_6826_X1_5                                                   :x1.5
@@ -2749,9 +2750,12 @@ STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Braukt uz tuvā
 STR_ORDER_NEAREST_DEPOT                                         :tuvākais
 STR_ORDER_NEAREST_HANGAR                                        :tuvākais angārs
 STR_ORDER_SERVICE_AT                                            :Apkalpot
+STR_ORDER_SERVICE_NON_STOP_AT                                   :Bez apstājas apkope
 STR_ORDER_TRAIN_DEPOT                                           :Vilcienu depo
 STR_ORDER_ROAD_DEPOT                                            :Ceļu transporta depo
 STR_ORDER_SHIP_DEPOT                                            :Kuģu depo
+STR_GO_TO_DEPOT                                                 :{STRING} {TOWN} {STRING}
+STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} Angārs
 
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vienmēr doties
@@ -2776,6 +2780,7 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Lekt uz rīkoju
 STR_CONDITIONAL_NUM                                             :Lekt uz rīkojumu nr. {COMMA}, kad {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Lekt uz rīkojumu nr. {COMMA}, kad {STRING} {STRING}
 
+STR_TIMETABLE_DAYS                                              :{COMMA} dien{P a as u}
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Dodas uz {TOWN} vilcienu depo
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Dodas uz {TOWN} vilcienu depo, {VELOCITY}
@@ -2897,6 +2902,8 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Nesaderīgi sli
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Nevar pārdot iznīcinātu transporta līdzekli...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Nevar pārveidot iznīcinātu transporta līdzekli...
 
+STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportl. var gaidīt tikai stacijās
+STR_TIMETABLE_NOT_STOPPING_HERE                                 :{WHITE}Šis transportl. šajā stacijā nestāsies
 STR_TIMETABLE_CHANGE_TIME                                       :{BLACK}Mainīt laiku
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Auto-aizpildīšana
 
@@ -2909,7 +2916,7 @@ STR_9004_NEW_VEHICLES                                           :{BLACK}Jauni tr
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Jauni transportl.
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Būvēt transportl.
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nevar uzbūvēt transportl. ...
-STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Info)
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Informācija)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vecums: {LTBLUE}{STRING}{BLACK}   Darbības izdevumi: {LTBLUE}{CURRENCY}/gadā
 STR_900E_MAX_SPEED                                              :{BLACK}Maks. ātrums: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Peļņa šogad: {LTBLUE}{CURRENCY}  (pērn: {CURRENCY})

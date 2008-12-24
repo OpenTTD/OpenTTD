@@ -1748,11 +1748,13 @@ STR_202A_NONE                                                   :{ORANGE}بدو�
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}العروض المأخوذة
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} من {STATION} الى {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, حتى {DATE_SHORT})
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}تم سحب العرض{}{}{STRING}الخدمة من: {STATION}الى {STATION} لم تعد معروضة
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}العرض قد اعطي لـ{COMPANY}!{}{}{STRING}للخدمة من :  {STATION}الى  {STATION} سوف يعطي 50% ارباح للسنة القادمة
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}العرض قد اعطي لـ{COMPANY}!{}{}{STRING}للخدمة من :  {STATION}الى  {STATION} سوف يعطي ضعف الدخل  للسنة القادمة
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}العرض قد اعطي لـ{COMPANY}!{}{}{STRING}للخدمة من :  {STATION}الى  {STATION} سوف يعطي 3 اضعاف الدخل للسنة القادمة
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}العرض قد اعطي لـ{COMPANY}!{}{}{STRING}للخدمة من :  {STATION}الى  {STATION} سوف يعطي اربعة اضعاف الدخل للسنة القادمة
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT} اعلان عن انتهاء عرض {}{} نقل {STRING} من {STRING} الى {STRING} لن يعطي ارباح اضافية بعد الآن .
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}  تم سحب العرض {}{} النقل {STRING} من {STATION} الى {STATION} لم يعد معروض
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}اعلان عن عرض {}{} نقل اول {STRING} من {STRING} الى {STRING} سوف يعطي زيادة ارباح في السنة القادمة.
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT} العرض قد اعطي لـ {COMPANY}!{}{} نقل {STRING} من {STATION} الى  {STATION} سوف يعطي زيادة 50% ارباح للسنة القادمة
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT} العرض قد اعطي لـ {COMPANY}!{}{} نقل {STRING} من {STATION} الى  {STATION} سوف يعطي ضعف الدخل  للسنة القادمة
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}شركة {COMPANY} قد فازت بالعرض{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي 3 اضعاف الدخل للسنة القادمة
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT} شركة {COMPANY} قد فازت بالعرض !{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي اربعة اضعاف الدخل للسنة القادمة
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}البلدية ترفض بناء مطار آخر في هذه المدينة
 STR_2036_COTTAGES                                               :اكواخ
 STR_2037_HOUSES                                                 :منازل
@@ -1773,7 +1775,7 @@ STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}الخي
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :حملة دعائية صغيرة
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :حملة دعائية متوسطة
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :حملة دعائية كبيرة
-STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :مول صيانة عامة للطرق
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :موّل صيانة عامة للطرق
 STR_204A_BUILD_STATUE_OF_COMPANY                                :بناء مجسم لمالك الشركة
 STR_204B_FUND_NEW_BUILDINGS                                     :مول انشاء مباني جديدة
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :اشتري حقوق النقل الحصرية للمدينة
@@ -1784,7 +1786,9 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} بناء مجسم تقديرا للشركة في اعمال النقل. {} التكلفة {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} مول بناء مباني تجارية جديدة في المدينة. {}التكلفة {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} اشتري حقوق النقل لسنة كاملة في هذة المدينة و المصانع التابعة لها. البلدية سوف تسمح للركاب و البضائع باستخدام محطاتك فقط. {}التكلفة: {CURRENCY}
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK} فوضى طرق عارمة في مدينة {TOWN}!{}{}اعادة ترميم الطرق مولت من قبل شركة {STRING}{} تجلي ستة أشهر من الشقاء لعربات الطريق.
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING}(تحت الانشاء)
 STR_2059_IGLOO                                                  :مبنى قباني
 STR_205A_TEPEES                                                 :خيم
@@ -1832,8 +1836,8 @@ STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}يجب �
 
 STR_3030_RENAME_STATION_LOADING                                 :اعادة تسمية المحطة
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}لا يمكن اعادة التسمية
-STR_3032_RATINGS                                                :{BLACK}قياس الكفائة
-STR_3033_ACCEPTS                                                :{BLACK}يقبل
+STR_3032_RATINGS                                                :{BLACK}معدل النقل
+STR_3033_ACCEPTS                                                :{BLACK}يستقبل
 STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}التقييم المحلي لخدمات النقل:
 
 ############ range for rating starts
@@ -1860,7 +1864,8 @@ STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}يجب �
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}يجب هدم محطة التحميل اولا
 STR_MUST_DEMOLISH_PASSENGER_TRAM_STATION                        :{WHITE}يجب هدم محطة ركاب الترام
 STR_MUST_DEMOLISH_CARGO_TRAM_STATION                            :{WHITE}يجب هدم محطة شحن الترام اولا
-STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_3048_STATIONS                                               :{WHITE}محطات شركة  {COMPANY} - {COMMA} محطة
+STR_3049_0                                                      :{YELLOW}{STATION}  {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}-  بدون  -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}... الموقع غير مناسب
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}قريب جدا من مرفء آخر
@@ -1869,14 +1874,14 @@ STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}اختر
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}اختر عدد المسارات للمحطة
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}اختر طول المحطة
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}اختر اتجاة محطة الباصات
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}اختر اتجاة محطة التحميل للعربات
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}اختر اتجاة محطة تحميل العربات
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}وسط الشاشة على موقع المحطة
-STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}اظهار تقييم المحطة
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}اظهار معدل النقل للمحطة
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}غير اسم المحطة
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}عرض لائحة بالبضائع المقبولة
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}اسم المحطة - اضغط على اسم المحطة لتوسيطها في الشاشة
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}اختر حجم / نوع المطار
-STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305C_0                                                      :{STATION}  {STATIONFEATURES}
 STR_305E_RAILROAD_STATION                                       :محطة قطارات
 STR_305F_AIRCRAFT_HANGAR                                        :حظيرة طائرات
 STR_3060_AIRPORT                                                :مطار
@@ -1888,7 +1893,7 @@ STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}لا ت�
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}وضح منطقة التغطية
 STR_3068_DOCK                                                   :{WHITE}مرفء
 STR_3069_BUOY                                                   :عوامة
-STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... عوامة في الطريق
+STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... عوامة في المسار
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... المحطة واسعة جدا
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}منع المحطات الغير منتظمة ...
 
@@ -1906,14 +1911,15 @@ STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE} ... ل�
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}يجب هدم القتاة اولا
 
 ##id 0x4000
-STR_4000_SAVE_GAME                                              :{WHITE} اللعبة حغظ
-STR_4001_LOAD_GAME                                              :{WHITE}فنح
+STR_4000_SAVE_GAME                                              :{WHITE}حفظ اللعبة
+STR_4001_LOAD_GAME                                              :{WHITE}فتح
 STR_4002_SAVE                                                   :{BLACK}حفظ
 STR_4003_DELETE                                                 :{BLACK}حذف
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA}   ميجا بايت متاحة
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}لا يمكن قرائة القرص
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}فشل حفظ اللعبة{}{STRING}
-STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}لم يتمكن من حذف الملف
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}لا يمكن حذف الملف
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE} فشل فتح اللعبة {}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :خطأ داخلي: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :لعبة محفوطة غير صالحة{STRING}
@@ -1921,10 +1927,10 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :اللعبة ح
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :لا يمكن قراءة الملف
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :لايمكن قراءة الملف
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}قائمة بالاقراص - المجلدات - الملفات المخزنة
-STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}السم المختار لحفظ اللعبة
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}الاسم المختار حاليا لحفظ اللعبة
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}حذف اللعبة المحفوظة حاليا
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}احفظ اللعبة الحالية، بواسطة الاسم المختار
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}اختر توع اللعبة الجديدة
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}اختر نوع اللعبة الجديدة
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}اختر نموذج اللعب (اخضر) , نماذج معدة مسبقا(ازرق ) ، او لعبة جديدة عشوائيا.
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :ولد لعبة جديدة عشوائيا
 STR_LOAD_HEIGHTMAP                                              :{WHITE}حمل خريطة مرتفعات
@@ -1950,7 +1956,7 @@ STR_4810_PAPER_MILL                                             :مصنع ورق
 STR_4811_GOLD_MINE                                              :منجم ذهب
 STR_4812_BANK                                                   :بنك
 STR_4813_DIAMOND_MINE                                           :منجم جواهر
-STR_4814_IRON_ORE_MINE                                          :منجم برادة الحديد
+STR_4814_IRON_ORE_MINE                                          :منجم خام الحديد
 STR_4815_FRUIT_PLANTATION                                       :مزرعة فواكة
 STR_4816_RUBBER_PLANTATION                                      :مزرعة مطاط
 STR_4817_WATER_SUPPLY                                           :مصدر مياة
@@ -1966,12 +1972,12 @@ STR_4820_TOY_SHOP                                               :محل العا
 STR_4821_TOY_FACTORY                                            :مصنع العاب
 STR_4822_PLASTIC_FOUNTAINS                                      :مشغولات بلاستيكية
 STR_4823_FIZZY_DRINK_FACTORY                                    :مصنع الشراب المخفوق
-STR_4824_BUBBLE_GENERATOR                                       :مولد الفقاعات
+STR_4824_BUBBLE_GENERATOR                                       :مولد فقاعات
 STR_4825_TOFFEE_QUARRY                                          :معمل توفي
 STR_4826_SUGAR_MINE                                             :قصب سكر
 
 ############ range for requires starts
-STR_4827_REQUIRES                                               :{BLACK}يحتاج {YELLOW}{STRING}{STRING}
+STR_4827_REQUIRES                                               :{BLACK}يحتاج:  {YELLOW}{STRING} {STRING}
 STR_4828_REQUIRES                                               :{BLACK}يحتاج: {YELLOW}{STRING}{STRING}، {STRING}{STRING}
 STR_4829_REQUIRES                                               :{BLACK}يحتاج: {YELLOW}{STRING}{STRING}, {STRING}{STRING} , {STRING}{STRING}
 ############ range for requires ends
@@ -1979,31 +1985,33 @@ STR_4829_REQUIRES                                               :{BLACK}يحتا
 ############ range for produces starts
 STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}البضاعة تنتظر التعامل معها:
 STR_INDUSTRY_WINDOW_WAITING_STOCKPILE_CARGO                     :{YELLOW}{CARGO}{STRING}{BLACK}
-STR_4827_PRODUCES                                               :{BLACK}ينتج {YELLOW}{STRING}{STRING}
-STR_4828_PRODUCES                                               :{BLACK}ينتج: {YELLOW}{STRING}{STRING}, {STRING}{STRING}
+STR_4827_PRODUCES                                               :{BLACK}ينتج:  {YELLOW}{STRING} {STRING}
+STR_4828_PRODUCES                                               :{BLACK}ينتج: {YELLOW}{STRING} {STRING}, {STRING} {STRING}
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}الأنتاج الشهر الماضي:
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}%المنقول)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}وسط الشاشة على المصنع
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}جديد {STRING}تحت الانشاء قرب {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}جديدة: {STRING}يتم تجهيزها قرب {TOWN}!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}{STRING} جديد تحت الانشاء قرب {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT} {STRING} جديدة يتم تجهيزها قرب  {TOWN}!
 STR_482F_COST                                                   :{BLACK}التكلفة: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}لا بمكن بناء المصنع هنا ...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... يمكن زراعة الغابة فوق خط الثلج فقط
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING}يعلن الاغلاق الفوري
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}تسبب نقص في الامدادات الى الاغلاق الفوري ل {STRING}
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT} النقص في الشجر بالجوار ادى الى الاغلاق الفوري ل {STRING}.
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY}يزيد الانتاج!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}وجد نواة فحم في {INDUSTRY}!{}يتوقع مضاعفة الانتاج
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}وجد مستودع جوفي للنفط في {INDUSTRY}!{}يتوقع ان يتضاعف الانتاج
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}استحدثت طرق جديدة للزراعة في {INDUSTRY}يتوقع ان يتضاعف الانتاج
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} انخفض الانتاج بواقع 50% .
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}عدوى من الحشرات تسببت بخسائر قي {INDUSTRY}!{} يتوقع ان يهبط الأنتاج بمقدار 50%.
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}استحدثت طرق جديدة للزراعة في {INDUSTRY}{} يتوقع ان يتضاعف الانتاج
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT} انخفض الانتاج بواقع 50 % في {INDUSTRY}
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT} عدوى من الحشرات في{INDUSTRY}!{} تسببت في نقص الانتاج ب 50 %.
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}... يمكن بنائة على اطراف الخريطة فقط
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} الإنتاج في  {INDUSTRY} زاد  {COMMA}%!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING}الإنتاج في {INDUSTRY} نقص{COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}القطار قي النفق
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}القطار في النفق
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}العربة في النفق
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}نفق آخر في مسار هذا النفق
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}لا يمكن تعديل الأرض في نهاية النفق
@@ -2118,9 +2126,9 @@ STR_681D_MEDIUM                                                 :متوسط
 STR_681E_FAST                                                   :سريع
 STR_681F_VERY_FAST                                              :سريع جدا
 STR_VERY_LOW                                                    :منخفض
-STR_6820_LOW                                                    :قليل
+STR_6820_LOW                                                    :بسيط
 STR_6821_MEDIUM                                                 :متوسط
-STR_6822_HIGH                                                   :كثير
+STR_6822_HIGH                                                   :عالي
 STR_6823_NONE                                                   :بدون
 STR_6824_REDUCED                                                :قليل
 STR_6825_NORMAL                                                 :طبيعي
@@ -2135,14 +2143,14 @@ STR_682D_MOUNTAINOUS                                            :جبال
 STR_682E_STEADY                                                 :ثابت
 STR_682F_FLUCTUATING                                            :متقلب
 STR_6830_IMMEDIATE                                              :مباشرة
-STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 اشهر بعد اللاعب
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 اشهر بعد اللاعب
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 اشهر بعد اللاعب
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :بعد اللاعب بثلاثة اشهر
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :بعد اللاعب بستة اشهر
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :بعد اللاعب بتسعة اشهر
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :في نهاية الطريق, والمحطات
 STR_6835_AT_END_OF_LINE_ONLY                                    :نهاية الطريق فقط
 STR_6836_OFF                                                    :بدون
 STR_6837_ON                                                     :السماح
-STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}عرض النقاط العليا
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}عرض النتائج العليا
 STR_PERMISSIVE                                                  :متساهل
 STR_TOLERANT                                                    :متقبل
 STR_HOSTILE                                                     :معاد
@@ -2184,8 +2192,8 @@ STR_7022_INCOME_GRAPH                                           :{WHITE}الرس
 STR_CURRCOMPACT                                                 :{CURRCOMPACT}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}الرسم البياني لتشغيل
-STR_7026_BANK_BALANCE                                           :{WHITE}صافي السيولة
-STR_7027_LOAN                                                   :{WHITE}قرض
+STR_7026_BANK_BALANCE                                           :{WHITE}السيولة المتاحة
+STR_7027_LOAN                                                   :{WHITE}القرض
 STR_MAX_LOAN                                                    :{WHITE}اقصى حد للقرض: {BLACK}{CURRENCY}
 STR_7028                                                        :{BLACK}{CURRENCY}
 STR_7029_BORROW                                                 :{BLACK}اقتراض{SKIP}{SKIP}{CURRENCY}

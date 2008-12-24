@@ -127,6 +127,7 @@ STR_ABBREV_GRAIN                                                :{TINYFONT}חי�
 STR_ABBREV_WOOD                                                 :{TINYFONT}עץ
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}עופרת ברזל
 STR_ABBREV_STEEL                                                :{TINYFONT}ברזל
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}מנהל כללי
 STR_ABBREV_MAIZE                                                :{TINYFONT}תירס
 STR_ABBREV_FRUIT                                                :{TINYFONT}פירות
 STR_ABBREV_DIAMONDS                                             :{TINYFONT}יהולומים
@@ -309,9 +310,11 @@ STR_UNITS_METRIC                                                :מטר
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} קמ"ש
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} קמ"ש
+STR_UNITS_VELOCITY_SI                                           :{COMMA} מטר\שניה
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}כ"ס
 STR_UNITS_POWER_METRIC                                          :{COMMA}כ"ס
+STR_UNITS_POWER_SI                                              :{COMMA}קילו וואט
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}טון
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}טון
@@ -321,10 +324,15 @@ STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} טו{P 
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} טו{P "נות" "ן"}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} ק"ג
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}גלון
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}³מטר
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} גלו{P "נים" "ן"}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} ליטר {P "" "ים"}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ³מטר
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ ליברה פיט
+STR_UNITS_FORCE_SI                                              :{COMMA} קילו ניוטן
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :גרף הכנסות מעבודה
@@ -389,6 +397,7 @@ STR_REPLACE_VEHICLES                                            :החלף כלי
 STR_SEND_TRAIN_TO_DEPOT                                         :שלח רכבת למוסך
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :שלח כלי רכב למוסך
 STR_SEND_SHIP_TO_DEPOT                                          :שלח אוניה למוסך
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :שלך כלי תעופה להנגר
 STR_SEND_FOR_SERVICING                                          :שלח לטיפול
 
 ############ range for months starts
@@ -595,6 +604,7 @@ STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}עורך סצנריו
+STR_0223_LAND_GENERATION                                        :{WHITE}יצירת טופוגרפיה
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}צור אדמה אקראית
@@ -625,12 +635,14 @@ STR_0240_COAL_MINE                                              :{BLACK}מכרה
 STR_0241_POWER_STATION                                          :{BLACK}תחנת חשמל
 STR_0242_SAWMILL                                                :{BLACK}מנסרה
 STR_0243_FOREST                                                 :{BLACK}יער
+STR_0244_OIL_REFINERY                                           :{BLACK}מזקקת נפט
 STR_0246_FACTORY                                                :{BLACK}מפעל
 STR_0247_STEEL_MILL                                             :{BLACK}מפעל לייצור מתכת
 STR_0248_FARM                                                   :{BLACK}חווה
 STR_0249_IRON_ORE_MINE                                          :{BLACK}מכרה ברזל
 STR_024A_OIL_WELLS                                              :{BLACK}בארות נפט
 STR_024B_BANK                                                   :{BLACK}בנק
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}מפעל מזון
 STR_024F_GOLD_MINE                                              :{BLACK}מכרה זהב
 STR_0253_WATER_SUPPLY                                           :{BLACK}הספקת מים
 STR_0254_WATER_TOWER                                            :{BLACK}מגדל מים
@@ -1629,6 +1641,30 @@ STR_5014_TUBULAR_STEEL                                          :צינורי, �
 
 
 ##id 0x8000
+STR_801B_PASSENGER_CAR                                          :קרונית נוסעים
+STR_801C_MAIL_VAN                                               :משאית דואר
+STR_801D_COAL_CAR                                               :משאית פחם
+STR_801E_OIL_TANKER                                             :מיכלית נפט
+STR_8024_STEEL_TRUCK                                            :משאית להובלת ברזל
+STR_8025_ARMORED_VAN                                            :משאית משוריינת
+STR_8026_FOOD_VAN                                               :משאית להובלת אוכל
+STR_8027_PAPER_TRUCK                                            :משאית להובלת נייר
+STR_8029_WATER_TANKER                                           :מיכלית מים
+STR_802A_FRUIT_TRUCK                                            :משאית פירות
+STR_802B_RUBBER_TRUCK                                           :משיאת הובלת גומי
+STR_802C_SUGAR_TRUCK                                            :משאית הובלה סוכר
+STR_802F_BUBBLE_VAN                                             :משאית מסטיקים
+STR_8030_COLA_TANKER                                            :מכלית קולה
+STR_8031_CANDY_VAN                                              :משאית ממתקים
+STR_8032_TOY_VAN                                                :משאית צעצועים
+STR_8033_BATTERY_TRUCK                                          :משאית סוללות
+STR_8034_FIZZY_DRINK_TRUCK                                      :משאית משקאות מוגזים
+STR_8035_PLASTIC_TRUCK                                          :משאית פלסטיק
+STR_803A_MAIL_VAN                                               :משאית דואר
+STR_803B_COAL_CAR                                               :משאית פחם
+STR_803C_OIL_TANKER                                             :מכלית נפט
+STR_803D_LIVESTOCK_VAN                                          :קרון הובלת חיות
+STR_8040_WOOD_TRUCK                                             :משאית עציים
 
 ##id 0x8800
 
