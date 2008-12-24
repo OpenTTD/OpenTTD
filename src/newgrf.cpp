@@ -3883,7 +3883,6 @@ static void DisableStaticNewGRFInfluencingNonStaticNewGRFs(GRFConfig *c)
 	c->error->message  = STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC;
 
 	ClearTemporaryNewGRFData(GetFileByGRFID(c->grfid));
-	_skip_sprites = -1;
 }
 
 /* Action 0x07 */
