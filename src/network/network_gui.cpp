@@ -1189,6 +1189,8 @@ struct NetworkLobbyWindow : public Window {
 		SetDParamStr(0, gi->server_name);
 		this->DrawWidgets();
 
+		SetVScrollCount(this, gi->companies_on);
+
 		/* Draw company list */
 		pos = this->vscroll.pos;
 		while (pos < gi->companies_on) {
@@ -1207,7 +1209,7 @@ struct NetworkLobbyWindow : public Window {
 
 			pos++;
 			y += NET_PRC__SIZE_OF_ROW;
-			if (pos >= this->vscroll.cap) break;
+			if (pos >= this->vscroll.pos + this->vscroll.cap) break;
 		}
 
 		/* Draw info about selected company when it is selected in the left window */

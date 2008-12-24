@@ -2621,6 +2621,23 @@ bool AfterLoadGame()
 				v->engine_type = v->First()->engine_type;
 			}
 		}
+
+		/* More companies ... */
+		Company *c;
+		FOR_ALL_COMPANIES(c) {
+			if (c->bankrupt_asked == 0xFF) c->bankrupt_asked = 0xFFFF;
+		}
+
+		Engine *e;
+		FOR_ALL_ENGINES(e) {
+			if (e->company_avail == 0xFF) e->company_avail = 0xFFFF;
+		}
+
+		Town *t;
+		FOR_ALL_TOWNS(t) {
+			if (t->have_ratings == 0xFF) t->have_ratings = 0xFFFF;
+			for (uint i = 8; i != MAX_COMPANIES; i++) t->ratings[i] = RATING_INITIAL;
+		}
 	}
 
 	GamelogPrintDebug(1);

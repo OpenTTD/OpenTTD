@@ -82,7 +82,7 @@ struct GraphLegendWindow : Window {
 static const Widget _graph_legend_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   249,     0,    13, STR_704E_KEY_TO_COMPANY_GRAPHS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,   113, 0x0,                            STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   249,    14,   195, 0x0,                            STR_NULL},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    16,    27, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    28,    39, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    40,    51, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
@@ -91,11 +91,18 @@ static const Widget _graph_legend_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    76,    87, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,    88,    99, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   100,   111, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   112,   123, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   124,   135, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   136,   147, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   148,   159, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   160,   171, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   172,   183, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,   247,   184,   195, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _graph_legend_desc = {
-	WDP_AUTO, WDP_AUTO, 250, 114, 250, 114,
+	WDP_AUTO, WDP_AUTO, 250, 198, 250, 198,
 	WC_GRAPH_LEGEND, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_graph_legend_widgets,
@@ -832,15 +839,15 @@ public:
 
 
 static const Widget _company_league_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,  0, 13, STR_00C5,                      STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 387,  0, 13, STR_7053_COMPANY_LEAGUE_TABLE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX, RESIZE_NONE,  COLOUR_GREY, 388, 399,  0, 13, STR_NULL,                      STR_STICKY_BUTTON},
-{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 399, 14, 96, 0x0,                           STR_NULL},
+{   WWT_CLOSEBOX, RESIZE_NONE,  COLOUR_GREY,   0,  10,  0,  13, STR_00C5,                      STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_NONE,  COLOUR_GREY,  11, 387,  0,  13, STR_7053_COMPANY_LEAGUE_TABLE, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX, RESIZE_NONE,  COLOUR_GREY, 388, 399,  0,  13, STR_NULL,                      STR_STICKY_BUTTON},
+{      WWT_PANEL, RESIZE_NONE,  COLOUR_GREY,   0, 399, 14, 166, 0x0,                           STR_NULL},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _company_league_desc = {
-	WDP_AUTO, WDP_AUTO, 400, 97, 400, 97,
+	WDP_AUTO, WDP_AUTO, 400, 167, 400, 167,
 	WC_COMPANY_LEAGUE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_company_league_widgets,
@@ -896,7 +903,7 @@ public:
 	virtual void OnPaint()
 	{
 		byte x;
-		uint16 y = 14;
+		uint16 y = 27;
 		int total_score = 0;
 		int color_done, color_notdone;
 
@@ -952,7 +959,7 @@ public:
 			}
 
 			x = (i == company) ? 1 : 0;
-			DrawCompanyIcon(i, i * 37 + 13 + x, 16 + x);
+			DrawCompanyIcon(i, (i % 8) * 37 + 13 + x, (i < 8 ? 0 : 13) + 16 + x);
 		}
 
 		/* The colors used to show how the progress is going */
@@ -1053,18 +1060,18 @@ CompanyID PerformanceRatingDetailWindow::company = INVALID_COMPANY;
 static const Widget _performance_rating_detail_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    14,    27, 0x0,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    14,    40, 0x0,                    STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    28,    47, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    48,    67, 0x0,                    STR_PERFORMANCE_DETAIL_STATIONS_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    68,    87, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    88,   107, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   108,   127, 0x0,                    STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   128,   147, 0x0,                    STR_PERFORMANCE_DETAIL_DELIVERED_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   148,   167, 0x0,                    STR_PERFORMANCE_DETAIL_CARGO_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   168,   187, 0x0,                    STR_PERFORMANCE_DETAIL_MONEY_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   188,   207, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TIP},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   208,   227, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    41,    60, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    61,    80, 0x0,                    STR_PERFORMANCE_DETAIL_STATIONS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,    81,   100, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   101,   120, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   121,   140, 0x0,                    STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   141,   160, 0x0,                    STR_PERFORMANCE_DETAIL_DELIVERED_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   161,   180, 0x0,                    STR_PERFORMANCE_DETAIL_CARGO_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   181,   200, 0x0,                    STR_PERFORMANCE_DETAIL_MONEY_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   201,   220, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TIP},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   298,   221,   240, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TIP},
 
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
@@ -1074,11 +1081,18 @@ static const Widget _performance_rating_detail_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   261,   297,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     2,    38,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    39,    75,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,    76,   112,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   113,   149,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   150,   186,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   187,   223,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,   224,   260,    27,    39, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _performance_rating_detail_desc = {
-	WDP_AUTO, WDP_AUTO, 299, 228, 299, 228,
+	WDP_AUTO, WDP_AUTO, 299, 241, 299, 241,
 	WC_PERFORMANCE_DETAIL, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_performance_rating_detail_widgets,

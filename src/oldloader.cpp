@@ -466,10 +466,10 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR( OC_UINT16, Town, ratings[6] ),
 	OCL_SVAR( OC_UINT16, Town, ratings[7] ),
 
-	/* XXX - This is pretty odd.. we read 32bit, but only write 8bit.. sure there is
+	/* XXX - This is pretty odd.. we read 32bit, but only write 16bit.. sure there is
 	nothing changed ? ? */
-	OCL_SVAR( OC_FILE_U32 | OC_VAR_U8, Town, have_ratings ),
-	OCL_SVAR( OC_FILE_U32 | OC_VAR_U8, Town, statues ),
+	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Town, have_ratings ),
+	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Town, statues ),
 	OCL_NULL( 2 ),         ///< num_houses,        no longer in use
 	OCL_SVAR(  OC_UINT8, Town, time_until_rebuild ),
 	OCL_SVAR(  OC_UINT8, Town, growth_rate ),

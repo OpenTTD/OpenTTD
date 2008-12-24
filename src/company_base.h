@@ -28,7 +28,7 @@ struct CompanyEconomyEntry {
  * otherwise more (or less) companies will be allowed to be
  * created than what MAX_COMPANIES specifies!
  */
-DECLARE_OLD_POOL(Company, Company, 1, MAX_COMPANIES >> 1)
+DECLARE_OLD_POOL(Company, Company, 1, (MAX_COMPANIES + 1) >> 1)
 
 struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 	Company(uint16 name_1 = 0, bool is_ai = false);
@@ -86,7 +86,7 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 
 static inline bool IsValidCompanyID(CompanyID company)
 {
-	return (uint)company < GetCompanyPoolSize() && GetCompany(company)->IsValid();
+	return company < MAX_COMPANIES && (uint)company < GetCompanyPoolSize() && GetCompany(company)->IsValid();
 }
 
 #define FOR_ALL_COMPANIES_FROM(d, start) for (d = GetCompany(start); d != NULL; d = (d->index + 1U < GetCompanyPoolSize()) ? GetCompany(d->index + 1U) : NULL) if (d->IsValid())

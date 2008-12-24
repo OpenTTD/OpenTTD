@@ -15,7 +15,7 @@ enum Owner {
 	 * companies, above, they are special, computer controlled 'companies' */
 	OWNER_BEGIN     = 0x00, ///< First owner
 	COMPANY_FIRST   = 0x00, ///< First company, same as owner
-	MAX_COMPANIES   = 0x08, ///< Maximum number of companies
+	MAX_COMPANIES   = 0x0F, ///< Maximum number of companies
 	OWNER_TOWN      = 0x0F, ///< A town owns the tile, or a town is expanding
 	OWNER_NONE      = 0x10, ///< The tile has no ownership
 	OWNER_WATER     = 0x11, ///< The tile/execution is done by "water"
@@ -44,7 +44,7 @@ typedef TinyEnumT<Owner> OwnerByte;
 typedef Owner CompanyID;
 typedef OwnerByte CompanyByte;
 
-typedef uint8 CompanyMask;
+typedef uint16 CompanyMask;
 
 struct Company;
 typedef uint32 CompanyManagerFace; ///< Company manager face bits, info see in company_manager_face.h

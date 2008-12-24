@@ -2682,14 +2682,18 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDSTR(Town, name,                  SLE_STR, 0, 84, SL_MAX_VERSION),
 
 	    SLE_VAR(Town, flags12,               SLE_UINT8),
-	    SLE_VAR(Town, statues,               SLE_UINT8),
+	SLE_CONDVAR(Town, statues,               SLE_FILE_U8  | SLE_VAR_U16, 0, 103),
+	SLE_CONDVAR(Town, statues,               SLE_UINT16,               104, SL_MAX_VERSION),
 
 	SLE_CONDNULL(1, 0, 1),                   ///< sort_index, no longer in use
 
-	    SLE_VAR(Town, have_ratings,          SLE_UINT8),
-	    SLE_ARR(Town, ratings,               SLE_INT16, 8),
+	SLE_CONDVAR(Town, have_ratings,          SLE_FILE_U8  | SLE_VAR_U16, 0, 103),
+	SLE_CONDVAR(Town, have_ratings,          SLE_UINT16,               104, SL_MAX_VERSION),
+	SLE_CONDARR(Town, ratings,               SLE_INT16, 8,               0, 103),
+	SLE_CONDARR(Town, ratings,               SLE_INT16, MAX_COMPANIES, 104, SL_MAX_VERSION),
 	/* failed bribe attempts are stored since savegame format 4 */
-	SLE_CONDARR(Town, unwanted,              SLE_INT8, 8, 4, SL_MAX_VERSION),
+	SLE_CONDARR(Town, unwanted,              SLE_INT8,  8,               4, 103),
+	SLE_CONDARR(Town, unwanted,              SLE_INT8,  MAX_COMPANIES, 104, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town, max_pass,              SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
 	SLE_CONDVAR(Town, max_mail,              SLE_FILE_U16 | SLE_VAR_U32, 0, 8),

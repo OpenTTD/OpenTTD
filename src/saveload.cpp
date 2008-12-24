@@ -37,7 +37,7 @@
 
 #include "table/strings.h"
 
-extern const uint16 SAVEGAME_VERSION = 103;
+extern const uint16 SAVEGAME_VERSION = 104;
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 
