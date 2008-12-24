@@ -917,7 +917,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		 * spectator, but that is not allowed any commands. So do an impersonation. The drawback
 		 * of this is that the first company's last_built_tile is also updated... */
 		cp->company = OWNER_BEGIN;
-		cp->p2 = cs->index; // XXX - UGLY! p2 is mis-used to get the client-id in CmdCompanyCtrl
+		cp->p2 = cs->client_id;
 	}
 
 	// The frame can be executed in the same frame as the next frame-packet

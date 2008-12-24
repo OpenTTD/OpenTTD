@@ -808,11 +808,11 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			* Other client(s)/server:
 			* _local_company/_network_playas: what they play as
 			* cid = requested company/company of joining client */
-			ClientIndex cid = (ClientIndex)p2;
+			ClientID cid = (ClientID)p2;
 
 			/* Has the network client a correct ClientIndex? */
 			if (!(flags & DC_EXEC)) return CommandCost();
-			NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(cid);
+			NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(cid);
 			if (ci == NULL) return CommandCost();
 
 			/* Delete multiplayer progress bar */
