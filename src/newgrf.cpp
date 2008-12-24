@@ -4796,7 +4796,10 @@ static void FeatureTownName(byte *buf, size_t len)
 			if (!check_length(len, 1, "FeatureTownName: style name")) return;
 			const char *name = grf_load_string(&buf, len);
 			len -= strlen(name) + 1;
-			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, TranslateTTDPatchCodes(grfid, name));
+
+			char *lang_name = TranslateTTDPatchCodes(grfid, name);
+			grfmsg(6, "FeatureTownName: lang 0x%X -> '%s'", lang, lang_name);
+			free(lang_name);
 
 			townname->name[nb_gen] = AddGRFString(grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 
