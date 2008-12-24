@@ -65,7 +65,7 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 	byte num_valid_stat_ent;
 
 	byte quarters_of_bankrupcy;
-	byte bankrupt_asked; ///< which companies were asked about buying it?
+	CompanyMask bankrupt_asked; ///< which companies were asked about buying it?
 	int16 bankrupt_timeout;
 	Money bankrupt_value;
 

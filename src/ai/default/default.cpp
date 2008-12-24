@@ -3889,10 +3889,10 @@ static void AiHandleTakeover(Company *c)
 		if (IsHumanCompany(_current_company)) return;
 	}
 
-	if (c->bankrupt_asked == 255) return;
+	if (c->bankrupt_asked == MAX_UVALUE(CompanyMask)) return;
 
 	{
-		uint asked = c->bankrupt_asked;
+		CompanyMask asked = c->bankrupt_asked;
 		Company *company, *best_company = NULL;
 		int32 best_val = -1;
 
@@ -3909,7 +3909,7 @@ static void AiHandleTakeover(Company *c)
 
 		// Asked all companies?
 		if (best_val == -1) {
-			c->bankrupt_asked = 255;
+			c->bankrupt_asked = MAX_UVALUE(CompanyMask);
 			return;
 		}
 

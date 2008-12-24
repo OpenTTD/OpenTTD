@@ -564,7 +564,7 @@ static void CompanyCheckBankrupt(Company *c)
 				 * is no THE-END, otherwise mark the client as spectator to make sure
 				 * he/she is no long in control of this company */
 				if (!_networking) {
-					c->bankrupt_asked = 0xFF;
+					c->bankrupt_asked = MAX_UVALUE(CompanyMask);
 					c->bankrupt_timeout = 0x456;
 					break;
 				}
