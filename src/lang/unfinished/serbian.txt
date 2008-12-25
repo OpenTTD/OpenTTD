@@ -693,40 +693,9 @@ STR_0319_PAUSED                                                 :{YELLOW}* * PAU
 ############ start of townname region
 ############ end of townname region
 
-STR_CURR_YEN                                                    :Jen (¥)
-STR_CURR_ATS                                                    :Austrijski Šiling (ATS)
-STR_CURR_BEF                                                    :Belgijski Franak (BEF)
-STR_CURR_CHF                                                    :Švajcarac Franak (CHF)
-STR_CURR_CZK                                                    :Čeh Koruna (CZK)
-STR_CURR_DEM                                                    :Deutschmark (DEM)
-STR_CURR_DKK                                                    :Days Krone (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
-STR_CURR_FIM                                                    :Finac Oznaka (FIO)
-STR_CURR_FRF                                                    :Franak (FRF)
-STR_CURR_GRD                                                    :Grk Drahma (GRD)
-STR_CURR_HUF                                                    :Mađarski Forint (MAF)
-STR_CURR_ISK                                                    :Islandski Kruna (ISK)
-STR_CURR_ITL                                                    :Talijanski Lira (ITL)
-STR_CURR_NLG                                                    :Holanđanin Obrtnički ceh (NLG)
-STR_CURR_NOK                                                    :Norveški Kruna (NOK)
-STR_CURR_PLN                                                    :Sjaj Zloty (PLN)
-STR_CURR_ROL                                                    :Rumunj Leu (ROL)
-STR_CURR_RUR                                                    :Rus Rublja (RUR)
-STR_CURR_SIT                                                    :Slovenac Tolar (SIT)
-STR_CURR_SEK                                                    :Švedski Kruna (SEK)
-STR_CURR_YTL                                                    :Turski Lira (YTL)
-STR_CURR_SKK                                                    :Slovak Koruna (SKK)
-STR_CURR_BRL                                                    :Brazilski Stvarnost (BRL)
-STR_CURR_EEK                                                    :Estonac Krooni (EEK)
 
-STR_CURR_CUSTOM                                                 :Običaj...
 
-STR_OPTIONS_LANG                                                :{BLACK}Govor
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Izabrati određeni član dodirni točke jezik za korist
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Napunjenzastrti
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Provjeriti ova boksovati ka igra OpenTTD napunjenzastrti moda
 
 
 
