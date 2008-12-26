@@ -363,25 +363,12 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 	}
 
 	{
-		int num_train = 0;
-		int num_road = 0;
-		int num_ship = 0;
-		int num_aircraft = 0;
+		FreeUnitIDGenerator unitidgen[] = {
+			FreeUnitIDGenerator(VEH_TRAIN, new_owner), FreeUnitIDGenerator(VEH_ROAD,     new_owner),
+			FreeUnitIDGenerator(VEH_SHIP,  new_owner), FreeUnitIDGenerator(VEH_AIRCRAFT, new_owner)
+		};
+
 		Vehicle *v;
-
-		/*  Determine Ids for the new vehicles */
-		FOR_ALL_VEHICLES(v) {
-			if (v->owner == new_owner) {
-				switch (v->type) {
-					case VEH_TRAIN:    if (IsFrontEngine(v)) num_train++; break;
-					case VEH_ROAD:     if (IsRoadVehFront(v)) num_road++; break;
-					case VEH_SHIP:     num_ship++; break;
-					case VEH_AIRCRAFT: if (IsNormalAircraft(v)) num_aircraft++; break;
-					default: break;
-				}
-			}
-		}
-
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == old_owner && IsCompanyBuildableVehicleType(v->type)) {
 				if (new_owner == INVALID_OWNER) {
@@ -391,13 +378,7 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 					v->colormap = PAL_NONE;
 					v->group_id = DEFAULT_GROUP;
 					if (IsEngineCountable(v)) GetCompany(new_owner)->num_engines[v->engine_type]++;
-					switch (v->type) {
-						case VEH_TRAIN:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
-						case VEH_ROAD:     if (IsRoadVehFront(v)) v->unitnumber = ++num_road; break;
-						case VEH_SHIP:     v->unitnumber = ++num_ship; break;
-						case VEH_AIRCRAFT: if (IsNormalAircraft(v)) v->unitnumber = ++num_aircraft; break;
-						default: NOT_REACHED();
-					}
+					if (v->IsPrimaryVehicle()) v->unitnumber = unitidgen[v->type].NextID();
 				}
 			}
 		}

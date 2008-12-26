@@ -647,6 +647,28 @@ static inline bool IsValidVehicleID(uint index)
 	return index < GetVehiclePoolSize() && GetVehicle(index)->IsValid();
 }
 
+
+/** Generates sequence of free UnitID numbers */
+struct FreeUnitIDGenerator {
+	bool *cache;  ///< array of occupied unit id numbers
+	UnitID maxid; ///< maximum ID at the moment of constructor call
+	UnitID curid; ///< last ID returned ; 0 if none
+
+	/** Initializes the structure. Vehicle unit numbers are supposed not to change after
+	 * struct initialization, except after each call to this->NextID() the returned value
+	 * is assigned to a vehicle.
+	 * @param type type of vehicle
+	 * @param owner owner of vehicles
+	 */
+	FreeUnitIDGenerator(VehicleType type, CompanyID owner);
+
+	/** Returns next free UnitID. Supposes the last returned value was assigned to a vehicle. */
+	UnitID NextID();
+
+	/** Releases allocated memory */
+	~FreeUnitIDGenerator() { free(this->cache); }
+};
+
 /* Returns order 'index' of a vehicle or NULL when it doesn't exists */
 static inline Order *GetVehicleOrder(const Vehicle *v, int index)
 {

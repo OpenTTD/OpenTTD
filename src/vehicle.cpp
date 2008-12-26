@@ -53,6 +53,7 @@
 #include "core/alloc_func.hpp"
 #include "core/smallmap_type.hpp"
 #include "vehiclelist.h"
+#include "core/mem_func.hpp"
 #include "depot_func.h"
 
 #include "table/sprites.h"
@@ -1867,51 +1868,47 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 	return _tile_type_procs[GetTileType(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
 }
 
-UnitID GetFreeUnitNumber(VehicleType type)
+FreeUnitIDGenerator::FreeUnitIDGenerator(VehicleType type, CompanyID owner) : cache(NULL), maxid(0), curid(0)
 {
-	UnitID max = 0;
-	const Vehicle *u;
-	static bool *cache = NULL;
-	static UnitID gmax = 0;
-
-	switch (type) {
-		case VEH_TRAIN:    max = _settings_game.vehicle.max_trains; break;
-		case VEH_ROAD:     max = _settings_game.vehicle.max_roadveh; break;
-		case VEH_SHIP:     max = _settings_game.vehicle.max_ships; break;
-		case VEH_AIRCRAFT: max = _settings_game.vehicle.max_aircraft; break;
-		default: NOT_REACHED();
+	/* Find maximum */
+	const Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == type && v->owner == owner) {
+			this->maxid = max<UnitID>(this->maxid, v->unitnumber);
+		}
 	}
 
-	if (max == 0) {
-		/* we can't build any of this kind of vehicle, so we just return 1 instead of looking for a free number
-		 * a max of 0 will cause the following code to write to a NULL pointer
-		 * We know that 1 is bigger than the max allowed vehicle number, so it's the same as returning something, that is too big
-		 */
-		return 1;
-	}
+	if (this->maxid == 0) return;
 
-	if (max > gmax) {
-		gmax = max;
-		free(cache);
-		cache = MallocT<bool>(max + 1);
-	}
+	this->maxid++; // so there is space for last item (with v->unitnumber == maxid)
+	this->maxid++; // this one will always be free (well, it will fail when there are 65535 units, so this overflows)
 
-	/* Clear the cache */
-	memset(cache, 0, (max + 1) * sizeof(*cache));
+	this->cache = MallocT<bool>(this->maxid);
+
+	MemSetT(this->cache, 0, this->maxid);
 
 	/* Fill the cache */
-	FOR_ALL_VEHICLES(u) {
-		if (u->type == type && u->owner == _current_company && u->unitnumber != 0 && u->unitnumber <= max)
-			cache[u->unitnumber] = true;
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == type && v->owner == owner) {
+			this->cache[v->unitnumber] = true;
+		}
 	}
+}
 
-	/* Find the first unused unit number */
-	UnitID unit = 1;
-	for (; unit <= max; unit++) {
-		if (!cache[unit]) break;
-	}
+UnitID FreeUnitIDGenerator::NextID()
+{
+	if (this->maxid <= this->curid) return ++this->curid;
 
-	return unit;
+	while (this->cache[++this->curid]) { } // it will stop, we reserved more space than needed
+
+	return this->curid;
+}
+
+UnitID GetFreeUnitNumber(VehicleType type)
+{
+	FreeUnitIDGenerator gen(type, _current_company);
+
+	return gen.NextID();
 }
 
 
