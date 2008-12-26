@@ -1551,7 +1551,7 @@ const char *GetSaveLoadErrorString()
 static void SaveFileError()
 {
 	SetDParamStr(0, GetSaveLoadErrorString());
-	ShowErrorMessage(STR_012D, STR_NULL, 0, 0);
+	ShowErrorMessage(STR_JUST_RAW_STRING, STR_NULL, 0, 0);
 	SaveFileDone();
 }
 
@@ -1603,8 +1603,8 @@ static SaveOrLoadResult SaveFileToDisk(bool threaded)
 		AbortSaveLoad();
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
-		ShowInfo(GetSaveLoadErrorString());
-		DEBUG(sl, 0, GetSaveLoadErrorString());
+		/* Skip the "color" character */
+		DEBUG(sl, 0, GetSaveLoadErrorString() + 3);
 
 		if (threaded) {
 			SetAsyncSaveFinish(SaveFileError);
@@ -1803,7 +1803,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		if (_sl.excpt_uninit != NULL) _sl.excpt_uninit();
 
 		/* Skip the "color" character */
-		ShowInfoF(GetSaveLoadErrorString() + 3);
+		DEBUG(sl, 0, GetSaveLoadErrorString() + 3);
 
 		/* A saver/loader exception!! reinitialize all variables to prevent crash! */
 		return (mode == SL_LOAD) ? SL_REINIT : SL_ERROR;
