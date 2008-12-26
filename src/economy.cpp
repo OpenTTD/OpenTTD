@@ -490,7 +490,8 @@ static void CompanyCheckBankrupt(Company *c)
 	cni->FillData(c);
 
 	switch (c->quarters_of_bankrupcy) {
-		default:
+		case 0:
+		case 1:
 			free(cni);
 			break;
 
@@ -523,7 +524,18 @@ static void CompanyCheckBankrupt(Company *c)
 			}
 			/* Else, falltrue to case 4... */
 		}
-		case 4: {
+		default:
+		case 4:
+			if (!_networking && _local_company == c->index) {
+				/* If we are in offline mode, leave the company playing. Eg. there
+				 * is no THE-END, otherwise mark the client as spectator to make sure
+				 * he/she is no long in control of this company. However... when you
+				 * join another company (cheat) the "unowned" company can bankrupt. */
+				c->bankrupt_asked = MAX_UVALUE(CompanyMask);
+				c->bankrupt_timeout = 0x456;
+				break;
+			}
+
 			/* Close everything the owner has open */
 			DeleteCompanyWindows(c->index);
 
@@ -533,28 +545,16 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParamStr(2, cni->company_name);
 			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
 
-			if (IsHumanCompany(c->index)) {
-				/* XXX - If we are in offline mode, leave the company playing. Eg. there
-				 * is no THE-END, otherwise mark the client as spectator to make sure
-				 * he/she is no long in control of this company */
-				if (!_networking) {
-					c->bankrupt_asked = MAX_UVALUE(CompanyMask);
-					c->bankrupt_timeout = 0x456;
-					break;
-				}
+			/* Remove the company */
+			ChangeNetworkOwner(c->index, COMPANY_SPECTATOR);
+			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
 
-				ChangeNetworkOwner(c->index, COMPANY_SPECTATOR);
+			/* Register the company as not-active */
+			if (!IsHumanCompany(c->index) && (!_networking || _network_server) && _ai.enabled) {
+				AI_CompanyDied(c->index);
 			}
 
-			/* Remove the company */
-			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
-			/* Register the company as not-active */
-
-			if (!IsHumanCompany(c->index) && (!_networking || _network_server) && _ai.enabled)
-				AI_CompanyDied(c->index);
-
 			delete c;
-		}
 	}
 }
 
