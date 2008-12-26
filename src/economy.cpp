@@ -385,10 +385,6 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == old_owner && IsCompanyBuildableVehicleType(v->type)) {
 				if (new_owner == INVALID_OWNER) {
-					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
-					DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
-
 					if (v->Previous() == NULL) delete v;
 				} else {
 					v->owner = new_owner;

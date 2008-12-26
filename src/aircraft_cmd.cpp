@@ -462,11 +462,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 static void DoDeleteAircraft(Vehicle *v)
 {
-	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-	InvalidateWindow(WC_COMPANY, v->owner);
-	DeleteDepotHighlightOfVehicle(v);
 	delete v;
-	InvalidateWindowClassesData(WC_AIRCRAFT_LIST, 0);
 }
 
 /** Sell an aircraft.

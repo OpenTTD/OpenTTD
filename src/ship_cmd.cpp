@@ -863,11 +863,6 @@ CommandCost CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
 
 	if (flags & DC_EXEC) {
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClassesData(WC_SHIPS_LIST, 0);
-		InvalidateWindow(WC_COMPANY, v->owner);
-		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-		DeleteDepotHighlightOfVehicle(v);
 		delete v;
 	}
 

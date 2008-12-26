@@ -53,6 +53,7 @@
 #include "core/alloc_func.hpp"
 #include "core/smallmap_type.hpp"
 #include "vehiclelist.h"
+#include "depot_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -668,8 +669,17 @@ void Vehicle::PreDestructor()
 		InvalidateWindowData(WC_VEHICLE_DEPOT, this->tile);
 	}
 
+	if (this->IsPrimaryVehicle()) {
+		DeleteWindowById(WC_VEHICLE_VIEW, this->index);
+		DeleteWindowById(WC_VEHICLE_DETAILS, this->index);
+		DeleteWindowById(WC_VEHICLE_ORDERS, this->index);
+		InvalidateWindow(WC_COMPANY, this->owner);
+	}
+	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type), 0);
+
 	this->cargo.Truncate(0);
 	DeleteVehicleOrders(this);
+	DeleteDepotHighlightOfVehicle(this);
 
 	extern void StopGlobalFollowVehicle(const Vehicle *v);
 	StopGlobalFollowVehicle(this);

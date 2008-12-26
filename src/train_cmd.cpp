@@ -1418,7 +1418,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				cost.AddCost(-rear->value);
 				if (flags & DC_EXEC) {
 					UnlinkWagon(rear, first);
-					DeleteDepotHighlightOfVehicle(rear);
 					delete rear;
 				}
 			}
@@ -1467,7 +1466,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			cost.AddCost(-v->value);
 			if (flags & DC_EXEC) {
 				first = UnlinkWagon(v, first);
-				DeleteDepotHighlightOfVehicle(v);
 				delete v;
 
 				/* 4 If the second wagon was an engine, update it to front_engine
@@ -1521,7 +1519,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 							if (flags & DC_EXEC) {
 								first = UnlinkWagon(rear, first);
-								DeleteDepotHighlightOfVehicle(rear);
 								delete rear;
 							}
 						}
@@ -1534,7 +1531,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				cost.AddCost(-v->value);
 				if (flags & DC_EXEC) {
 					first = UnlinkWagon(v, first);
-					DeleteDepotHighlightOfVehicle(v);
 					delete v;
 				}
 			}
@@ -3934,11 +3930,7 @@ static void DeleteLastWagon(Vehicle *v)
 	for (; v->Next() != NULL; v = v->Next()) u = v;
 	u->SetNext(NULL);
 
-	if (first == v) {
-		/* Removing front vehicle (the last to go) */
-		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-		InvalidateWindow(WC_COMPANY, v->owner);
-	} else {
+	if (first != v) {
 		/* Recalculate cached train properties */
 		TrainConsistChanged(first, false);
 		/* Update the depot window if the first vehicle is in depot -
@@ -3947,10 +3939,6 @@ static void DeleteLastWagon(Vehicle *v)
 			InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
 		}
 	}
-
-	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-
-	MarkSingleVehicleDirty(v);
 
 	/* 'v' shouldn't be accessed after it has been deleted */
 	TrackBits trackbits = v->u.rail.track;

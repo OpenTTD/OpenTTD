@@ -344,12 +344,6 @@ CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
 
 	if (flags & DC_EXEC) {
-		// Invalidate depot
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
-		InvalidateWindow(WC_COMPANY, v->owner);
-		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-		DeleteDepotHighlightOfVehicle(v);
 		delete v;
 	}
 
@@ -537,14 +531,7 @@ static void DeleteLastRoadVeh(Vehicle *v)
 	for (; v->Next() != NULL; v = v->Next()) u = v;
 	u->SetNext(NULL);
 
-	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
-
-	InvalidateWindowClassesData(WC_ROADVEH_LIST, 0);
-	InvalidateWindow(WC_COMPANY, v->owner);
-
 	if (IsTileType(v->tile, MP_STATION)) ClearCrashedStation(v);
-
-	MarkSingleVehicleDirty(v);
 
 	delete v;
 }
