@@ -938,6 +938,7 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 		if (v == NULL) return NULL;
 
 		if (IsTrainWagon(v)) SetFreeWagon(v);
+		first->SetNext(NULL);
 
 		return v;
 	}
@@ -4392,7 +4393,7 @@ void Train::Tick()
 			TrainLocoHandler(this, true);
 	} else if (IsFreeWagon(this) && HASBITS(this->vehstatus, VS_CRASHED)) {
 		/* Delete flooded standalone wagon chain */
-		if (++this->u.rail.crash_anim_pos >= 4400) DeleteVehicleChain(this);
+		if (++this->u.rail.crash_anim_pos >= 4400) delete this;
 	}
 }
 

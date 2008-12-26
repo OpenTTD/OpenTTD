@@ -383,35 +383,13 @@ void ChangeOwnershipOfCompanyItems(Owner old_owner, Owner new_owner)
 		}
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner == old_owner && IsInsideMM(v->type, VEH_TRAIN, VEH_AIRCRAFT + 1)) {
+			if (v->owner == old_owner && IsCompanyBuildableVehicleType(v->type)) {
 				if (new_owner == INVALID_OWNER) {
 					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
 					DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
 
-					if (v->IsPrimaryVehicle() || (v->type == VEH_TRAIN && IsFreeWagon(v))) {
-						switch (v->type) {
-							default: NOT_REACHED();
-
-							case VEH_TRAIN: {
-								Vehicle *u = v;
-								do {
-									Vehicle *next = GetNextVehicle(u);
-									delete u;
-									u = next;
-								} while (u != NULL);
-							} break;
-
-							case VEH_ROAD:
-							case VEH_SHIP:
-								delete v;
-								break;
-
-							case VEH_AIRCRAFT:
-								DeleteVehicleChain(v);
-								break;
-						}
-					}
+					if (v->Previous() == NULL) delete v;
 				} else {
 					v->owner = new_owner;
 					v->colormap = PAL_NONE;

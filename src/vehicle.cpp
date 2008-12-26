@@ -671,13 +671,6 @@ void Vehicle::PreDestructor()
 	this->cargo.Truncate(0);
 	DeleteVehicleOrders(this);
 
-	/* Now remove any artic part. This will trigger an other
-	 *  destroy vehicle, which on his turn can remove any
-	 *  other artic parts. */
-	if ((this->type == VEH_TRAIN && EngineHasArticPart(this)) || (this->type == VEH_ROAD && RoadVehHasArticPart(this))) {
-		delete this->Next();
-	}
-
 	extern void StopGlobalFollowVehicle(const Vehicle *v);
 	StopGlobalFollowVehicle(this);
 }
@@ -688,7 +681,15 @@ Vehicle::~Vehicle()
 
 	if (CleaningPool()) return;
 
+	/* sometimes, eg. for disaster vehicles, when company bankrupts, when removing crashed/flooded vehicles,
+	 * it may happen that vehicle chain is deleted when visible */
+	if (!(this->vehstatus & VS_HIDDEN)) MarkSingleVehicleDirty(this);
+
+	Vehicle *v = this->Next();
 	this->SetNext(NULL);
+
+	delete v;
+
 	UpdateVehiclePosHash(this, INVALID_COORD, 0);
 	this->next_hash = NULL;
 	this->next_new_hash = NULL;
@@ -696,24 +697,6 @@ Vehicle::~Vehicle()
 	DeleteVehicleNews(this->index, INVALID_STRING_ID);
 
 	new (this) InvalidVehicle();
-}
-
-/**
- * Deletes all vehicles in a chain.
- * @param v The first vehicle in the chain.
- */
-void DeleteVehicleChain(Vehicle *v)
-{
-	assert(v->First() == v);
-
-	do {
-		Vehicle *u = v;
-		/* sometimes, eg. for disaster vehicles, when company bankrupts, when removing crashed/flooded vehicles,
-		 * it may happen that vehicle chain is deleted when visible */
-		if (!(v->vehstatus & VS_HIDDEN)) MarkSingleVehicleDirty(v);
-		v = v->Next();
-		delete u;
-	} while (v != NULL);
 }
 
 /**

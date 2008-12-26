@@ -148,7 +148,7 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 
 static void DeleteDisasterVeh(Vehicle *v)
 {
-	DeleteVehicleChain(v);
+	delete v;
 }
 
 static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
