@@ -51,6 +51,7 @@
 #include "animated_tile_func.h"
 #include "effectvehicle_base.h"
 #include "core/alloc_func.hpp"
+#include "core/smallmap_type.hpp"
 #include "vehiclelist.h"
 
 #include "table/sprites.h"
@@ -715,41 +716,35 @@ void DeleteVehicleChain(Vehicle *v)
 	} while (v != NULL);
 }
 
-/** head of the linked list to tell what vehicles that visited a depot in a tick */
-static Vehicle* _first_veh_in_depot_list;
+/**
+ * List of vehicles that should check for autoreplace this tick.
+ * Mapping of vehicle -> leave depot immediatelly after autoreplace.
+ */
+typedef SmallMap<Vehicle *, bool, 4> AutoreplaceMap;
+static AutoreplaceMap _vehicles_to_autoreplace;
 
 /** Adds a vehicle to the list of vehicles, that visited a depot this tick
  * @param *v vehicle to add
  */
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
-	/* We need to set v->leave_depot_instantly as we have no control of it's contents at this time.
-	 * Vehicle should stop in the depot if it was in 'stopping' state - train intered depot while slowing down. */
-	if (((v->current_order.GetDepotActionType() & ODATFB_HALT) && v->current_order.IsType(OT_GOTO_DEPOT)) ||
-			(v->vehstatus & VS_STOPPED)) {
-		/* we keep the vehicle in the depot since the user ordered it to stay */
-		v->vehstatus |= VS_STOPPED; // needed for refitting
-		v->leave_depot_instantly = false;
-	} else {
-		/* the vehicle do not plan on stopping in the depot, so we stop it to ensure that it will not reserve the path
-		 * out of the depot before we might autoreplace it to a different engine. The new engine would not own the reserved path
-		 * we store that we stopped the vehicle, so autoreplace can start it again */
-		v->vehstatus |= VS_STOPPED;
-		v->leave_depot_instantly = true;
-	}
+	/* Vehicle should stop in the depot if it was in 'stopping' state or
+	 * when the vehicle is ordered to halt in the depot. */
+	_vehicles_to_autoreplace[v] = !(v->vehstatus & VS_STOPPED) &&
+			(!v->current_order.IsType(OT_GOTO_DEPOT) ||
+			 !(v->current_order.GetDepotActionType() & ODATFB_HALT));
 
-	if (_first_veh_in_depot_list == NULL) {
-		_first_veh_in_depot_list = v;
-	} else {
-		Vehicle *w = _first_veh_in_depot_list;
-		while (w->depot_list != NULL) w = w->depot_list;
-		w->depot_list = v;
-	}
+	/* We ALWAYS set the stopped state. Even when the vehicle does not plan on
+	 * stopping in the depot, so we stop it to ensure that it will not reserve
+	 * the path out of the depot before we might autoreplace it to a different
+	 * engine. The new engine would not own the reserved path we store that we
+	 * stopped the vehicle, so autoreplace can start it again */
+	v->vehstatus |= VS_STOPPED;
 }
 
 void CallVehicleTicks()
 {
-	_first_veh_in_depot_list = NULL; // now we are sure it's initialized at the start of each tick
+	_vehicles_to_autoreplace.Clear();
 
 	Station *st;
 	FOR_ALL_STATIONS(st) LoadUnloadStation(st);
@@ -778,70 +773,57 @@ void CallVehicleTicks()
 		}
 	}
 
-	/* now we handle all the vehicles that entered a depot this tick */
-	v = _first_veh_in_depot_list;
-	if (v != NULL) {
-		while (v != NULL) {
-			/* Autoreplace needs the current company set as the vehicle owner */
-			_current_company = v->owner;
+	for (AutoreplaceMap::iterator it = _vehicles_to_autoreplace.Begin(); it != _vehicles_to_autoreplace.End(); it++) {
+		v = it->first;
+		/* Autoreplace needs the current company set as the vehicle owner */
+		_current_company = v->owner;
 
-			/* Buffer v->depot_list and clear it.
-			 * Autoreplace might clear this so it has to be buffered. */
-			Vehicle *w = v->depot_list;
-			v->depot_list = NULL; // it should always be NULL at the end of each tick
+		/* Start vehicle if we stopped them in VehicleEnteredDepotThisTick()
+		 * We need to stop them between VehicleEnteredDepotThisTick() and here or we risk that
+		 * they are already leaving the depot again before being replaced. */
+		if (it->second) v->vehstatus &= ~VS_STOPPED;
 
-			/* Start vehicle if we stopped them in VehicleEnteredDepotThisTick()
-			 * We need to stop them between VehicleEnteredDepotThisTick() and here or we risk that
-			 * they are already leaving the depot again before being replaced. */
-			if (v->leave_depot_instantly) {
-				v->leave_depot_instantly = false;
-				v->vehstatus &= ~VS_STOPPED;
-			}
+		/* Store the position of the effect as the vehicle pointer will become invalid later */
+		int x = v->x_pos;
+		int y = v->y_pos;
+		int z = v->z_pos;
 
-			/* Store the position of the effect as the vehicle pointer will become invalid later */
-			int x = v->x_pos;
-			int y = v->y_pos;
-			int z = v->z_pos;
+		const Company *c = GetCompany(_current_company);
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->engine_renew_money));
+		CommandCost res = DoCommand(0, v->index, 0, DC_EXEC, CMD_AUTOREPLACE_VEHICLE);
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->engine_renew_money));
 
-			const Company *c = GetCompany(_current_company);
-			SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, (Money)c->engine_renew_money));
-			CommandCost res = DoCommand(0, v->index, 0, DC_EXEC, CMD_AUTOREPLACE_VEHICLE);
-			if (res.Succeeded()) v = NULL; // no longer valid
-			SubtractMoneyFromCompany(CommandCost(EXPENSES_NEW_VEHICLES, -(Money)c->engine_renew_money));
+		if (!IsLocalCompany()) continue;
 
-			if (IsLocalCompany()) {
-				if (res.Succeeded()) {
-					ShowCostOrIncomeAnimation(x, y, z, res.GetCost());
-				} else {
-					StringID error_message = res.GetErrorMessage();
-
-					if (error_message != STR_AUTOREPLACE_NOTHING_TO_DO && error_message != INVALID_STRING_ID) {
-						if (error_message == STR_0003_NOT_ENOUGH_CASH_REQUIRES) error_message = STR_AUTOREPLACE_MONEY_LIMIT;
-
-						StringID message;
-						if (error_message == STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
-							message = error_message;
-						} else {
-							switch (v->type) {
-								case VEH_TRAIN:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
-								case VEH_ROAD:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
-								case VEH_SHIP:     message = STR_SHIP_AUTORENEW_FAILED;        break;
-								case VEH_AIRCRAFT: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
-								default: NOT_REACHED();
-							}
-						}
-
-						SetDParam(0, v->unitnumber);
-						SetDParam(1, error_message);
-						AddNewsItem(message, NS_ADVICE, v->index, 0);
-					}
-				}
-			}
-
-			v = w;
+		if (res.Succeeded()) {
+			ShowCostOrIncomeAnimation(x, y, z, res.GetCost());
+			continue;
 		}
-		_current_company = OWNER_NONE;
+
+		StringID error_message = res.GetErrorMessage();
+		if (error_message == STR_AUTOREPLACE_NOTHING_TO_DO || error_message == INVALID_STRING_ID) continue;
+
+		if (error_message == STR_0003_NOT_ENOUGH_CASH_REQUIRES) error_message = STR_AUTOREPLACE_MONEY_LIMIT;
+
+		StringID message;
+		if (error_message == STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
+			message = error_message;
+		} else {
+			switch (v->type) {
+				case VEH_TRAIN:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
+				case VEH_ROAD:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
+				case VEH_SHIP:     message = STR_SHIP_AUTORENEW_FAILED;        break;
+				case VEH_AIRCRAFT: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
+				default: NOT_REACHED();
+			}
+		}
+
+		SetDParam(0, v->unitnumber);
+		SetDParam(1, error_message);
+		AddNewsItem(message, NS_ADVICE, v->index, 0);
 	}
+
+	_current_company = OWNER_NONE;
 }
 
 /** Check if a given engine type can be refitted to a given cargo
@@ -1612,7 +1594,7 @@ void VehicleEnterDepot(Vehicle *v)
 			CommandCost cost = DoCommand(v->tile, v->index, t.GetRefitCargo() | t.GetRefitSubtype() << 8, DC_EXEC, GetCmdRefitVeh(v));
 
 			if (CmdFailed(cost)) {
-				v->leave_depot_instantly = false; // We ensure that the vehicle stays in the depot
+				_vehicles_to_autoreplace[v] = false;
 				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */
 					SetDParam(0, _vehicle_type_names[v->type]);
@@ -2432,6 +2414,8 @@ static void Save_VEHS()
 /** Will be called when vehicles need to be loaded. */
 void Load_VEHS()
 {
+	_vehicles_to_autoreplace.Reset();
+
 	int index;
 	Vehicle *v;
 

@@ -212,8 +212,6 @@ public:
 	friend void AfterLoadVehicles(bool clear_te_id);              ///< So we can set the previous and first pointers while loading
 	friend bool LoadOldVehicle(LoadgameState *ls, int num);       ///< So we can set the proper next pointer while loading
 
-	Vehicle *depot_list;     ///< NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
-
 	char *name;              ///< Name of vehicle
 
 	TileIndex tile;          ///< Current tile index
@@ -308,8 +306,6 @@ public:
 	VehicleOrderID cur_order_index; ///< The index to the current order
 
 	Order *orders;                  ///< Pointer to the first order for this vehicle
-
-	bool leave_depot_instantly;     ///< NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 
 	byte vehicle_flags;             ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 	uint16 load_unload_time_rem;
