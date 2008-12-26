@@ -146,11 +146,6 @@ static void InitializeDisasterVehicle(Vehicle *v, int x, int y, byte z, Directio
 	MarkSingleVehicleDirty(v);
 }
 
-static void DeleteDisasterVeh(Vehicle *v)
-{
-	delete v;
-}
-
 static void SetDisasterVehiclePos(Vehicle *v, int x, int y, byte z)
 {
 	Vehicle *u;
@@ -241,7 +236,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			}
 		}
 
-		if (v->y_pos >= ((int)MapSizeY() + 9) * TILE_SIZE - 1) DeleteDisasterVeh(v);
+		if (v->y_pos >= ((int)MapSizeY() + 9) * TILE_SIZE - 1) delete v;
 		return;
 	}
 
@@ -259,7 +254,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		}
 
 		SetDisasterVehiclePos(v, v->x_pos, v->y_pos, v->z_pos);
-		DeleteDisasterVeh(v);
+		delete v;
 		return;
 	}
 
@@ -338,12 +333,12 @@ static void DisasterTick_Ufo(Vehicle *v)
 			}
 		}
 
-		DeleteDisasterVeh(v);
+		delete v;
 	} else {
 		/* Target a vehicle */
 		u = GetVehicle(v->dest_tile);
 		if (u->type != VEH_ROAD || !IsRoadVehFront(u)) {
-			DeleteDisasterVeh(v);
+			delete v;
 			return;
 		}
 
@@ -382,7 +377,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		if (v->age > 50) {
 			CreateEffectVehicleRel(v, 0, 7, 8, EV_EXPLOSION_LARGE);
 			SndPlayVehicleFx(SND_12_EXPLOSION, v);
-			DeleteDisasterVeh(v);
+			delete v;
 		}
 	}
 }
@@ -417,7 +412,7 @@ static void DisasterTick_Airplane(Vehicle *v)
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
 	if (gp.x < (-10 * TILE_SIZE)) {
-		DeleteDisasterVeh(v);
+		delete v;
 		return;
 	}
 
@@ -490,7 +485,7 @@ static void DisasterTick_Helicopter(Vehicle *v)
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
 	if (gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1) {
-		DeleteDisasterVeh(v);
+		delete v;
 		return;
 	}
 
@@ -611,7 +606,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 
 		u = new DisasterVehicle();
 		if (u == NULL) {
-			DeleteDisasterVeh(v);
+			delete v;
 			return;
 		}
 
@@ -671,7 +666,7 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
 	if (gp.x > (int)MapSizeX() * TILE_SIZE + 9 * TILE_SIZE - 1) {
-		DeleteDisasterVeh(v);
+		delete v;
 		return;
 	}
 
@@ -683,7 +678,7 @@ static void DisasterTick_Big_Ufo_Destroyer(Vehicle *v)
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);
 		SndPlayVehicleFx(SND_12_EXPLOSION, u);
 
-		DeleteDisasterVeh(u);
+		delete u;
 
 		for (i = 0; i != 80; i++) {
 			uint32 r = Random();

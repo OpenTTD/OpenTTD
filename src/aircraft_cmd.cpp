@@ -460,11 +460,6 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-static void DoDeleteAircraft(Vehicle *v)
-{
-	delete v;
-}
-
 /** Sell an aircraft.
  * @param tile unused
  * @param flags for command type
@@ -486,9 +481,7 @@ CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	CommandCost ret(EXPENSES_NEW_VEHICLES, -v->value);
 
 	if (flags & DC_EXEC) {
-		// Invalidate depot
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		DoDeleteAircraft(v);
+		delete v;
 	}
 
 	return ret;
@@ -1235,9 +1228,7 @@ static void HandleCrashedAircraft(Vehicle *v)
 			CLRBITS(st->airport_flags, RUNWAY_IN2_block);    // intercontinental
 		}
 
-		MarkSingleVehicleDirty(v);
-
-		DoDeleteAircraft(v);
+		delete v;
 	}
 }
 
