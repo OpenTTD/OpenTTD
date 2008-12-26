@@ -475,7 +475,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} מאד ישנה וצריכה החלפה בדחיפות
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}מידע על אדמה ואיזור
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}מחיר למחיקה: {LTBLUE}לא זמין
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}מחיר למחיקה: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}מחיר למחיקה: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :לא זמין
 STR_01A7_OWNER                                                  :{BLACK}בעלים: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}בעלי הכביש: {LTBLUE}{STRING}

@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} is heel erg oud aan het worden en is aan vervanging toe
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landinformatie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Sloopkosten: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Sloopkosten: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :(geen)
 STR_01A7_OWNER                                                  :{BLACK}Eigenaar: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Weg eigenaar: {LTBLUE}{STRING}

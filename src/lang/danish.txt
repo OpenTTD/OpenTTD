@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er alt for gammel og bør udskiftes straks
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landområde-information
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for at rydde: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for at rydde: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for at rydde: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Ejer: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Ejer af vej: {LTBLUE}{STRING}

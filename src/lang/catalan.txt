@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} s'està envellint molt i necessita substitució urgent
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informació del terreny
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost de neteja: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost de neteja: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost de neteja: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propietari: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Propietari de la carretera: {LTBLUE}{STRING}

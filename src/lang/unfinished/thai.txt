@@ -386,7 +386,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} เก่ามากแล้ว และควรเปลี่ยนใหม่ในทันที
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}ข้อมูลที่ดิน
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}ไม่สามารถทำได้
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :ไม่กำหนด
 STR_01A7_OWNER                                                  :{BLACK}เจ้าของ: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}อาณาบริเวณ: {LTBLUE}{STRING}

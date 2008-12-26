@@ -479,7 +479,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} е многу застарено и потребна е итна замена
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информации за земјишна област
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Цена за чистење: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за чистење: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за чистење: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Сопственик: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Локална власт: {LTBLUE}{STRING}

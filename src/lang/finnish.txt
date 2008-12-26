@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} on todella vanha ja täytyy korvata pikaisesti.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-aluetiedot
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistuksen hinta: {LTBLUE}-
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen hinta: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen hinta: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :-
 STR_01A7_OWNER                                                  :{BLACK}Omistaja: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Tien omistaja: {LTBLUE}{STRING}

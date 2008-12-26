@@ -489,7 +489,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} kļūst ļoti vecs un ir steidzami jānomaina
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Zemes laukuma informācija
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Izmaksas nolīdzināšanai: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Izmaksas nolīdzināšanai: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Izmaksas nolīdzināšanai: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Nav
 STR_01A7_OWNER                                                  :{BLACK}Īpašnieks: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Ceļa īpašnieks: {LTBLUE}{STRING}

@@ -488,7 +488,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} ist völlig veraltet und sollte ersetzt werden
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gebietsinformation
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Räumungskosten: {LTBLUE}k.A.
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Räumungskosten: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Räumungskosten: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :k.A.
 STR_01A7_OWNER                                                  :{BLACK}Eigentümer: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Straßenbesitzer: {LTBLUE}{STRING}

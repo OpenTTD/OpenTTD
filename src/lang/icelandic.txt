@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er að eldast um of og þarfnast nauðsynlega endurnýjunar
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landsvæðisupplýsingar
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnaður við hreinsun: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnaður við hreinsun: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnaður við hreinsun: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Enginn
 STR_01A7_OWNER                                                  :{BLACK}Eigandi: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Eigandi vegs: {LTBLUE}{STRING}

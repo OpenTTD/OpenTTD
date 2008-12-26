@@ -486,7 +486,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}{COMMA}は老朽化により、緊急に交換する必要があります。
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地域情報
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}破壊費用：{LTBLUE}破壊不可
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}破壊費用：{LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}破壊費用：{RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}所有者：{LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}道路の所有者: {LTBLUE}{STRING}

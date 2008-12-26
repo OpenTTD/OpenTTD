@@ -488,7 +488,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er veldig gamal og må bytast ut snøggast råd
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasjon om felt
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for å fjerne: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for å fjerne:  {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for å fjerne: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Eigar: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Veg eigar: {LTBLUE}{STRING}

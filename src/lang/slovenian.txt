@@ -529,7 +529,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} postaja zelo zastarelo in{}nujno potrebuje zamenjavo
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacije o zemljišču
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za čiščenje: {LTBLUE}Ni na voljo
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za čiščenje: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za čiščenje: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Ni na voljo
 STR_01A7_OWNER                                                  :{BLACK}Lastnik: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Lastnik ceste: {LTBLUE}{STRING}

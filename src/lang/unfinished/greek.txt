@@ -488,7 +488,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}Το {ST
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}Το {STRING} {COMMA} παλιώνει πολύ και χρειάζεται επειγόντωςαντικατάσταση
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Πληροφορίες Περιοχής Εδάφους
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Κόστος καθαρισμού: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Κόστος καθαρισμού: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Μ/Δ
 STR_01A7_OWNER                                                  :{BLACK}Ιδιοκτήτης: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Ιδιοκτήτης της Οδός: {LTBLUE}{STRING}

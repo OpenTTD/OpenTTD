@@ -551,7 +551,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} je velmi star{G ý á é} a potrebuje vymenit
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informácie o pozemku
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Náklady na odstránenie: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Náklady na odstránenie: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Náklady na odstránenie: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Neznáme
 STR_01A7_OWNER                                                  :{BLACK}Vlastník: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Vlastník cesty: {LTBLUE}{STRING}

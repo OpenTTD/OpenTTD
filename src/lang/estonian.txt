@@ -541,7 +541,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} on saanud väga vanaks ja vajab kohest asendamist
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-ala andmed
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhastustasu: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhastustasu: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhastustasu: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :puudub
 STR_01A7_OWNER                                                  :{BLACK}Omanik: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Maantee omanik: {LTBLUE}{STRING}

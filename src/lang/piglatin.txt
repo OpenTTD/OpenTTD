@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} isway ettinggay eryvay oldway andway urgentlyway eedsnay eplacingray
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Andlay Areaway Informationway
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Ostcay otay earclay: {LTBLUE}Nay/Away
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Ostcay otay earclay: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Ostcay otay earclay: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Nay/Away
 STR_01A7_OWNER                                                  :{BLACK}Ownerway: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Oadray ownerway: {LTBLUE}{STRING}

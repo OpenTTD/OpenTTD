@@ -489,7 +489,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} е вече много стар и спешно се нуждае от подмяна
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информация за земята
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Цена за изчистване: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за изчистване: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за изчистване: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Не се предлага
 STR_01A7_OWNER                                                  :{BLACK}Собственик: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Собственик на шосето: {LTBLUE}{STRING}

@@ -338,7 +338,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} begjint hiel âld te wurden en mat sa fluch mooglik ferfong wurde
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Lân Gebiet Ynformaasje
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kosten om leech te meitsjen: {LTBLUE}N/B
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kosten om leech te meitsjen: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kosten om leech te meitsjen: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/B
 STR_01A7_OWNER                                                  :{BLACK}Eigner: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Gemiente: {LTBLUE}{STRING}

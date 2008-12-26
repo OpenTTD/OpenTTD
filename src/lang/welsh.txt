@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} yn hynod o hen erbyn hyn ac mae angen ei ddisodli
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gwybodath Ardal Tir
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Côst i'w glirio: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Côst i'w glirio {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Côst i'w glirio: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Perchennog: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Perchennog ffordd: {LTBLUE}{STRING}

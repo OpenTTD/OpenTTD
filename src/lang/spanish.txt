@@ -488,7 +488,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} se está volviendo demasiado viejo y requiere de ser reemplazado urgentemente
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Información sobre el terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Coste de desbroce: {LTBLUE}N/D
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coste de desbroce: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coste de desbroce: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propietario: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Propietario de la carretera: {LTBLUE}{STRING}

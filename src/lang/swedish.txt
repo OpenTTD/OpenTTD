@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} börjar bli väldigt gammal och måste bytas ut
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Markinformation
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnad att röja: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnad att röja: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnad att röja: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Otillgänglig
 STR_01A7_OWNER                                                  :{BLACK}Ägare: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Vägens ägare: {LTBLUE}{STRING}

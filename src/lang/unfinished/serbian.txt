@@ -374,7 +374,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} postaje vrlo star i zahteva hitnu zamenu
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija o Okolini Tla
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}KoÅ¡ta da se oÄisti : {LTBLUE}Nije Dostupno
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}KoÅ¡ta da se oÄisti: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}KoÅ¡ta da se oÄisti: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Nije Dostupno
 STR_01A7_OWNER                                                  :{BLACK}Vlasnik: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokalna vlast: {LTBLUE}{STRING}

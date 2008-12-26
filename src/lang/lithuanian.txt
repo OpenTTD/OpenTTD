@@ -521,7 +521,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} labai paseno ir būtinai turi būti pakeistas
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija apie žemės plotą
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Išvalymo kaina: {LTBLUE}NĖRA
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Išvalymo kaina: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Išvalymo kaina: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :NĖRA
 STR_01A7_OWNER                                                  :{BLACK}Savininkas: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Kelio savininkas: {LTBLUE}{STRING}

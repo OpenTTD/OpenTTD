@@ -553,7 +553,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} nagyon öreg és sürgősen ki kell cserélni
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Terület-információ
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}{LTBLUE}Nem lehet lerombolni
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}A megtisztítás költsége: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}A megtisztítás költsége: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Nincs
 STR_01A7_OWNER                                                  :{BLACK}Tulajdonos: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Az út tulajdonosa: {LTBLUE}{STRING}

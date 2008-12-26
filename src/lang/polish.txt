@@ -540,7 +540,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} jest bardzo stary i natychmiast wymaga wymiany
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacja o terenie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koszt czyszczenia: {LTBLUE}N/D
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koszt czyszczenia: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koszt czyszczenia: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Brak
 STR_01A7_OWNER                                                  :{BLACK}Właściciel: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Wlasciciel drogi: {LTBLUE}{STRING}

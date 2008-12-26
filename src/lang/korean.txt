@@ -487,7 +487,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA}의 수명이 다되어 긴급 교체가 필요합니다.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}이 지역의 지형 정보
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}초기화 가격: {LTBLUE}없음
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}초기화 가격: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}초기화 가격: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :없음
 STR_01A7_OWNER                                                  :{BLACK}소유주: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}도로 소유주: {LTBLUE}{STRING}

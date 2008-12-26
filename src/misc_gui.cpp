@@ -156,11 +156,17 @@ public:
 			line_nr++;
 		}
 
-		/* Cost to clear */
+		/* Cost to clear/revenue when cleared */
 		StringID str = STR_01A4_COST_TO_CLEAR_N_A;
 		if (CmdSucceeded(costclear)) {
-			SetDParam(0, costclear.GetCost());
-			str = STR_01A5_COST_TO_CLEAR;
+			Money cost = costclear.GetCost();
+			if (cost < 0) {
+				cost = -cost; // Negate negative cost to a positive revenue
+				str = STR_REVENUE_WHEN_CLEARED;
+			} else {
+				str = STR_01A5_COST_TO_CLEAR;
+			}
+			SetDParam(0, cost);
 		}
 		GetString(this->landinfo_data[line_nr], str, lastof(this->landinfo_data[line_nr]));
 		line_nr++;

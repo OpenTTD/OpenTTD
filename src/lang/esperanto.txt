@@ -485,7 +485,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} ege malnoviĝas kaj bezonas esti ŝanĝata
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landregionaj informoj
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Forviŝkosto: {LTBLUE}ne eblas
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Forviŝkosto: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Forviŝkosto: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Posedanto: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokaj estroj: {LTBLUE}{STRING}

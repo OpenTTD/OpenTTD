@@ -488,7 +488,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} word baie oud en kort dringende vervanging
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gebied informasie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koste om skoon te maak: {LTBLUE}N/A
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koste om skoon te maak: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koste om skoon te maak: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Eienaar: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Pad eienaar: {LTBLUE}{STRING}
