@@ -685,9 +685,11 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, st, station_chunk))
 		return false;
 
-	if (st->IsValid()) {
+	if (st->xy != 0) {
 		st->town    = GetTown(REMAP_TOWN_IDX(_old_town_index));
 		st->string_id = RemapOldStringID(_old_string_id);
+	} else {
+		st->xy = INVALID_TILE;
 	}
 
 	return true;

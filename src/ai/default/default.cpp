@@ -3689,11 +3689,11 @@ static void AiStateRemoveStation(Company *c)
 	// Go through all stations and delete those that aren't in use
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == _current_company && !in_use[st->index] &&
-				( (st->bus_stops != NULL && (tile = st->bus_stops->xy) != 0) ||
-					(st->truck_stops != NULL && (tile = st->truck_stops->xy) != 0) ||
-					(tile = st->train_tile) != 0 ||
-					(tile = st->dock_tile) != 0 ||
-					(tile = st->airport_tile) != 0)) {
+				( (st->bus_stops != NULL && (tile = st->bus_stops->xy) != INVALID_TILE) ||
+					(st->truck_stops != NULL && (tile = st->truck_stops->xy) != INVALID_TILE) ||
+					(tile = st->train_tile) != INVALID_TILE ||
+					(tile = st->dock_tile) != INVALID_TILE ||
+					(tile = st->airport_tile) != INVALID_TILE)) {
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}
 	}

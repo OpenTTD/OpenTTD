@@ -771,7 +771,7 @@ static void Disaster_Zeppeliner_Init()
 	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->airport_tile != 0 &&
+		if (st->airport_tile != INVALID_TILE &&
 				st->airport_type <= 1 &&
 				IsHumanCompany(st->owner)) {
 			x = (TileX(st->airport_tile) + 2) * TILE_SIZE;

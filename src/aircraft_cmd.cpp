@@ -632,7 +632,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
 	const Station *st = GetStation(v->current_order.GetDestination());
 	/* only goto depot if the target airport has terminals (eg. it is airport) */
-	if (st->IsValid() && st->airport_tile != 0 && st->Airport()->terminals != NULL) {
+	if (st->IsValid() && st->airport_tile != INVALID_TILE && st->Airport()->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
 		v->current_order.MakeGoToDepot(st->index, ODTFB_SERVICE);
@@ -946,8 +946,8 @@ static byte AircraftGetEntryPoint(const Vehicle *v, const AirportFTAClass *apc)
 
 	if (IsValidStationID(v->u.air.targetairport)) {
 		const Station *st = GetStation(v->u.air.targetairport);
-		/* Make sure we don't go to 0,0 if the airport has been removed. */
-		tile = (st->airport_tile != 0) ? st->airport_tile : st->xy;
+		/* Make sure we don't go to INVALID_TILE if the airport has been removed. */
+		tile = (st->airport_tile != INVALID_TILE) ? st->airport_tile : st->xy;
 	}
 
 	int delta_x = v->x_pos - TileX(tile) * TILE_SIZE;
@@ -977,17 +977,16 @@ static bool AircraftController(Vehicle *v)
 
 	/* NULL if station is invalid */
 	const Station *st = IsValidStationID(v->u.air.targetairport) ? GetStation(v->u.air.targetairport) : NULL;
-	/* 0 if there is no station */
-	TileIndex tile = 0;
+	/* INVALID_TILE if there is no station */
+	TileIndex tile = INVALID_TILE;
 	if (st != NULL) {
-		tile = st->airport_tile;
-		if (tile == 0) tile = st->xy;
+		tile = (st->airport_tile != INVALID_TILE) ? st->airport_tile : st->xy;
 	}
 	/* DUMMY if there is no station or no airport */
-	const AirportFTAClass *afc = tile == 0 ? GetAirport(AT_DUMMY) : st->Airport();
+	const AirportFTAClass *afc = tile == INVALID_TILE ? GetAirport(AT_DUMMY) : st->Airport();
 
-	/* prevent going to 0,0 if airport is deleted. */
-	if (st == NULL || st->airport_tile == 0) {
+	/* prevent going to INVALID_TILE if airport is deleted. */
+	if (st == NULL || st->airport_tile == INVALID_TILE) {
 		/* Jump into our "holding pattern" state machine if possible */
 		if (v->u.air.pos >= afc->nofelements) {
 			v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, afc);
@@ -1156,7 +1155,7 @@ static bool AircraftController(Vehicle *v)
 		if ((amd->flag & AMED_HOLD) && (z > 150)) z--;
 
 		if (amd->flag & AMED_LAND) {
-			if (st->airport_tile == 0) {
+			if (st->airport_tile == INVALID_TILE) {
 				/* Airport has been removed, abort the landing procedure */
 				v->u.air.state = FLYING;
 				UpdateAircraftCache(v);
@@ -1666,7 +1665,7 @@ static void AircraftEventHandler_Flying(Vehicle *v, const AirportFTAClass *apc)
 
 	/* runway busy or not allowed to use this airstation, circle */
 	if (apc->flags & (v->subtype == AIR_HELICOPTER ? AirportFTAClass::HELICOPTERS : AirportFTAClass::AIRPLANES) &&
-			st->airport_tile != 0 &&
+			st->airport_tile != INVALID_TILE &&
 			(st->owner == OWNER_NONE || st->owner == v->owner)) {
 		// {32,FLYING,NOTHING_block,37}, {32,LANDING,N,33}, {32,HELILANDING,N,41},
 		// if it is an airplane, look for LANDING, for helicopter HELILANDING
@@ -2107,7 +2106,7 @@ Station *GetTargetAirportIfValid(const Vehicle *v)
 
 	Station *st = GetStation(sid);
 
-	return st->airport_tile == 0 ? NULL : st;
+	return st->airport_tile == INVALID_TILE ? NULL : st;
 }
 
 /** need to be called to load aircraft from old version */

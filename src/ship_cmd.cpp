@@ -237,7 +237,7 @@ TileIndex Ship::GetOrderStationLocation(StationID station)
 	if (station == this->last_station_visited) this->last_station_visited = INVALID_STATION;
 
 	const Station *st = GetStation(station);
-	if (st->dock_tile != 0) {
+	if (st->dock_tile != INVALID_TILE) {
 		return TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
 	} else {
 		this->cur_order_index++;

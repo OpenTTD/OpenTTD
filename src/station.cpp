@@ -42,7 +42,7 @@ Station::Station(TileIndex tile)
 	DEBUG(station, cDebugCtorLevel, "I+%3d", index);
 
 	xy = tile;
-	airport_tile = dock_tile = train_tile = 0;
+	airport_tile = dock_tile = train_tile = INVALID_TILE;
 	bus_stops = truck_stops = NULL;
 	had_vehicle_of_type = 0;
 	time_since_load = 255;
@@ -97,7 +97,7 @@ Station::~Station()
 	/* Remove all news items */
 	DeleteStationNews(this->index);
 
-	xy = 0;
+	xy = INVALID_TILE;
 
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		goods[c].cargo.Truncate(0);
@@ -161,8 +161,7 @@ void Station::MarkTilesDirty(bool cargo_change) const
 	TileIndex tile = train_tile;
 	int w, h;
 
-	/* XXX No station is recorded as 0, not INVALID_TILE... */
-	if (tile == 0) return;
+	if (tile == INVALID_TILE) return;
 
 	/* cargo_change is set if we're refreshing the tiles due to cargo moving
 	 * around. */
@@ -255,13 +254,13 @@ uint Station::GetCatchmentRadius() const
 	uint ret = CA_NONE;
 
 	if (_settings_game.station.modified_catchment) {
-		if (this->bus_stops    != NULL) ret = max<uint>(ret, CA_BUS);
-		if (this->truck_stops  != NULL) ret = max<uint>(ret, CA_TRUCK);
-		if (this->train_tile   != 0)    ret = max<uint>(ret, CA_TRAIN);
-		if (this->dock_tile    != 0)    ret = max<uint>(ret, CA_DOCK);
-		if (this->airport_tile != 0)    ret = max<uint>(ret, this->Airport()->catchment);
+		if (this->bus_stops    != NULL)         ret = max<uint>(ret, CA_BUS);
+		if (this->truck_stops  != NULL)         ret = max<uint>(ret, CA_TRUCK);
+		if (this->train_tile   != INVALID_TILE) ret = max<uint>(ret, CA_TRAIN);
+		if (this->dock_tile    != INVALID_TILE) ret = max<uint>(ret, CA_DOCK);
+		if (this->airport_tile != INVALID_TILE) ret = max<uint>(ret, this->Airport()->catchment);
 	} else {
-		if (this->bus_stops != NULL || this->truck_stops != NULL || this->train_tile != 0 || this->dock_tile != 0 || this->airport_tile != 0) {
+		if (this->bus_stops != NULL || this->truck_stops != NULL || this->train_tile != INVALID_TILE || this->dock_tile != INVALID_TILE || this->airport_tile != INVALID_TILE) {
 			ret = CA_UNMODIFIED;
 		}
 	}
@@ -469,7 +468,7 @@ RoadStop::~RoadStop()
 
 	DEBUG(ms, cDebugCtorLevel , "I- at %d[0x%x]", xy, xy);
 
-	xy = 0;
+	xy = INVALID_TILE;
 }
 
 /** Checks whether there is a free bay in this road stop */

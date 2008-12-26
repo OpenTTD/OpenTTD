@@ -4447,7 +4447,7 @@ void Train::OnNewDay()
 		/* update destination */
 		if (this->current_order.IsType(OT_GOTO_STATION)) {
 			TileIndex tile = GetStation(this->current_order.GetDestination())->train_tile;
-			if (tile != 0) this->dest_tile = tile;
+			if (tile != INVALID_TILE) this->dest_tile = tile;
 		}
 
 		if (this->running_ticks != 0) {

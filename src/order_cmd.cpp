@@ -1377,13 +1377,13 @@ static TileIndex GetStationTileForVehicle(const Vehicle* v, const Station* st)
 	switch (v->type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:     return st->train_tile;
-		case VEH_AIRCRAFT:  return CanAircraftUseStation(v->engine_type, st) ? st->airport_tile : 0;
+		case VEH_AIRCRAFT:  return CanAircraftUseStation(v->engine_type, st) ? st->airport_tile : INVALID_TILE;
 		case VEH_SHIP:      return st->dock_tile;
 		case VEH_ROAD:
 			if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
-				return (st->bus_stops != NULL) ? st->bus_stops->xy : 0;
+				return (st->bus_stops != NULL) ? st->bus_stops->xy : INVALID_TILE;
 			} else {
-				return (st->truck_stops != NULL) ? st->truck_stops->xy : 0;
+				return (st->truck_stops != NULL) ? st->truck_stops->xy : INVALID_TILE;
 			}
 	}
 }
@@ -1430,7 +1430,7 @@ void CheckOrders(const Vehicle* v)
 				TileIndex required_tile = GetStationTileForVehicle(v, st);
 
 				n_st++;
-				if (required_tile == 0) problem_type = 3;
+				if (required_tile == INVALID_TILE) problem_type = 3;
 			}
 		}
 
@@ -1763,7 +1763,7 @@ bool ProcessOrders(Vehicle *v)
 
 	/* If it is unchanged, keep it. */
 	if (order->Equals(v->current_order) && (v->type == VEH_AIRCRAFT || v->dest_tile != 0) &&
-			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || GetStation(order->GetDestination())->dock_tile != 0)) {
+			(v->type != VEH_SHIP || !order->IsType(OT_GOTO_STATION) || GetStation(order->GetDestination())->dock_tile != INVALID_TILE)) {
 		return false;
 	}
 

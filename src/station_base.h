@@ -58,14 +58,14 @@ struct RoadStop : PoolItem<RoadStop, RoadStopID, &_RoadStop_pool> {
 	byte             num_vehicles;          ///< Number of vehicles currently slotted to this stop
 	struct RoadStop  *next;                 ///< Next stop of the given type at this station
 
-	RoadStop(TileIndex tile = 0);
+	RoadStop(TileIndex tile = INVALID_TILE);
 	virtual ~RoadStop();
 
 	/**
 	 * Determines whether a road stop exists
 	 * @return true if and only is the road stop exists
 	 */
-	inline bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 
 	/* For accessing status */
 	bool HasFreeBay() const;
@@ -120,7 +120,7 @@ public:
 
 	const AirportFTAClass *Airport() const
 	{
-		if (airport_tile == 0) return GetAirport(AT_DUMMY);
+		if (airport_tile == INVALID_TILE) return GetAirport(AT_DUMMY);
 		return GetAirport(airport_type);
 	}
 
@@ -171,7 +171,7 @@ public:
 
 	static const int cDebugCtorLevel = 5;
 
-	Station(TileIndex tile = 0);
+	Station(TileIndex tile = INVALID_TILE);
 	virtual ~Station();
 
 	void AddFacility(byte new_facility_bit, TileIndex facil_xy);
@@ -198,7 +198,7 @@ public:
 	 * Determines whether a station exists
 	 * @return true if and only is the station exists
 	 */
-	inline bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 
 	uint GetCatchmentRadius() const;
 };

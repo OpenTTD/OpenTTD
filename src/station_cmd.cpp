@@ -573,19 +573,19 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	uint old_acc = GetAcceptanceMask(st);
 
 	/* Put all the tiles that span an area in the table. */
-	if (st->train_tile != 0) {
+	if (st->train_tile != INVALID_TILE) {
 		MergePoint(&rect, st->train_tile);
 		MergePoint(&rect, st->train_tile + TileDiffXY(st->trainst_w - 1, st->trainst_h - 1));
 	}
 
-	if (st->airport_tile != 0) {
+	if (st->airport_tile != INVALID_TILE) {
 		const AirportFTAClass *afc = st->Airport();
 
 		MergePoint(&rect, st->airport_tile);
 		MergePoint(&rect, st->airport_tile + TileDiffXY(afc->size_x - 1, afc->size_y - 1));
 	}
 
-	if (st->dock_tile != 0) {
+	if (st->dock_tile != INVALID_TILE) {
 		MergePoint(&rect, st->dock_tile);
 		if (IsDockTile(st->dock_tile)) {
 			MergePoint(&rect, st->dock_tile + TileOffsByDiagDir(GetDockDirection(st->dock_tile)));
@@ -986,7 +986,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		if (st->owner != _current_company)
 			return_cmd_error(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION);
 
-		if (st->train_tile != 0) {
+		if (st->train_tile != INVALID_TILE) {
 			/* check if we want to expanding an already existing station? */
 			if (_is_old_ai_company || !_settings_game.station.join_stations)
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
@@ -1177,7 +1177,7 @@ restart:
 			}
 		}
 	} else {
-		tile = 0;
+		tile = INVALID_TILE;
 	}
 
 	st->trainst_w = w;
@@ -1281,7 +1281,7 @@ CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1
 			}
 
 			/* if we deleted the whole station, delete the train facility. */
-			if (st->train_tile == 0) {
+			if (st->train_tile == INVALID_TILE) {
 				st->facilities &= ~FACIL_TRAIN;
 				InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
 				UpdateStationVirtCoordDirty(st);
@@ -1348,7 +1348,7 @@ static CommandCost RemoveRailroadStation(Station *st, TileIndex tile, uint32 fla
 	if (flags & DC_EXEC) {
 		st->rect.AfterRemoveRect(st, st->train_tile, st->trainst_w, st->trainst_h);
 
-		st->train_tile = 0;
+		st->train_tile = INVALID_TILE;
 		st->trainst_w = st->trainst_h = 0;
 		st->facilities &= ~FACIL_TRAIN;
 
@@ -1803,7 +1803,7 @@ void UpdateAirportsNoise()
 	FOR_ALL_TOWNS(t) t->noise_reached = 0;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->airport_tile != 0) {
+		if (st->airport_tile != INVALID_TILE) {
 			st->town->noise_reached += GetAirportNoiseLevelForTown(GetAirport(st->airport_type), st->town->xy, st->airport_tile);
 		}
 	}
@@ -1881,7 +1881,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (!st->rect.BeforeAddRect(tile, w, h, StationRect::ADD_TEST)) return CMD_ERROR;
 
-		if (st->airport_tile != 0) {
+		if (st->airport_tile != INVALID_TILE) {
 			return_cmd_error(STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT);
 		}
 	} else {
@@ -1991,7 +1991,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
 
 		st->rect.AfterRemoveRect(st, tile, w, h);
 
-		st->airport_tile = 0;
+		st->airport_tile = INVALID_TILE;
 		st->facilities &= ~FACIL_AIRPORT;
 
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_PLANES);
@@ -2087,7 +2087,7 @@ static CommandCost RemoveBuoy(Station *st, uint32 flags)
 	if (!(flags & DC_BANKRUPT) && !EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		st->dock_tile = 0;
+		st->dock_tile = INVALID_TILE;
 		/* Buoys are marked in the Station struct by this flag. Yes, it is this
 		 * braindead.. */
 		st->facilities &= ~FACIL_DOCK;
@@ -2178,7 +2178,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				tile + ToTileIndexDiff(_dock_tileoffs_chkaround[direction]),
 				_dock_w_chk[direction], _dock_h_chk[direction], StationRect::ADD_TEST)) return CMD_ERROR;
 
-		if (st->dock_tile != 0) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
+		if (st->dock_tile != INVALID_TILE) return_cmd_error(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK);
 	} else {
 		/* allocate and initialize new station */
 		/* allocate and initialize new station */
@@ -2234,7 +2234,7 @@ static CommandCost RemoveDock(Station *st, uint32 flags)
 
 		MarkTileDirtyByTile(tile2);
 
-		st->dock_tile = 0;
+		st->dock_tile = INVALID_TILE;
 		st->facilities &= ~FACIL_DOCK;
 
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
@@ -3050,7 +3050,7 @@ void BuildOilRig(TileIndex tile)
 	st->truck_stops = NULL;
 	st->airport_tile = tile;
 	st->dock_tile = tile;
-	st->train_tile = 0;
+	st->train_tile = INVALID_TILE;
 	st->had_vehicle_of_type = 0;
 	st->time_since_load = 255;
 	st->time_since_unload = 255;
@@ -3080,8 +3080,8 @@ void DeleteOilRig(TileIndex tile)
 	MakeWaterKeepingClass(tile, OWNER_NONE);
 	MarkTileDirtyByTile(tile);
 
-	st->dock_tile = 0;
-	st->airport_tile = 0;
+	st->dock_tile = INVALID_TILE;
+	st->airport_tile = INVALID_TILE;
 	st->facilities &= ~(FACIL_AIRPORT | FACIL_DOCK);
 	st->airport_flags = 0;
 
