@@ -166,6 +166,9 @@ Industry::~Industry()
 		} END_TILE_LOOP(tile_cur, 42, 42, this->xy - TileDiff(21, 21))
 	}
 
+	/* don't let any disaster vehicle target invalid industry */
+	ReleaseDisastersTargetingIndustry(this->index);
+
 	DecIndustryTypeCount(this->type);
 
 	DeleteSubsidyWithIndustry(this->index);

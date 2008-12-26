@@ -238,6 +238,8 @@ const IndustryTileSpec *GetIndustryTileSpec(IndustryGfx gfx);  ///< Array of ind
 void ResetIndustries();
 void PlantRandomFarmField(const Industry *i);
 
+void ReleaseDisastersTargetingIndustry(IndustryID);
+
 /* writable arrays of specs */
 extern IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 extern IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];

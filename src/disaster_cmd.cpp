@@ -1063,6 +1063,22 @@ void StartupDisasters()
 	ResetDisasterDelay();
 }
 
+/** Marks all disasters targeting this industry in such a way
+ * they won't call GetIndustry(v->dest_tile) on invalid industry anymore.
+ * @param i deleted industry
+ */
+void ReleaseDisastersTargetingIndustry(IndustryID i)
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		/* primary disaster vehicles that have chosen target */
+		if (v->type == VEH_DISASTER && (v->subtype == ST_Airplane || v->subtype == ST_Helicopter)) {
+			/* if it has chosen target, and it is this industry (yes, dest_tile is IndustryID here), set order to "leaving map peacefully" */
+			if (v->current_order.GetDestination() > 0 && v->dest_tile == i) v->current_order.SetDestination(3);
+		}
+	}
+}
+
 void DisasterVehicle::UpdateDeltaXY(Direction direction)
 {
 	this->x_offs        = -1;
