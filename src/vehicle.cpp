@@ -1862,7 +1862,7 @@ Trackdir GetVehicleTrackdir(const Vehicle *v)
  * @return Some meta-data over the to be entered tile.
  * @see VehicleEnterTileStatus to see what the bits in the return value mean.
  */
-uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
+VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y)
 {
 	return _tile_type_procs[GetTileType(tile)]->vehicle_enter_tile_proc(v, tile, x, y);
 }

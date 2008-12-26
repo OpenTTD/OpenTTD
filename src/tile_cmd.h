@@ -152,6 +152,7 @@ struct TileTypeProcs {
 extern const TileTypeProcs * const _tile_type_procs[16];
 
 TrackStatus GetTileTrackStatus(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side = INVALID_DIAGDIR);
+VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void AnimateTile(TileIndex tile);
