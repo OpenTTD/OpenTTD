@@ -374,6 +374,7 @@ core/mem_func.hpp
 core/overflowsafe_type.hpp
 core/random_func.cpp
 core/random_func.hpp
+core/smallmap_type.hpp
 core/smallvec_type.hpp
 core/sort_func.hpp
 

@@ -48,7 +48,7 @@
 #include "functions.h"
 #include "animated_tile_func.h"
 #include "date_func.h"
-#include <map>
+#include "core/smallmap_type.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -2504,14 +2504,14 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 }
 
 static bool _town_rating_test = false;
-std::map<const Town *, int> _town_test_ratings;
+SmallMap<const Town *, int, 4> _town_test_ratings;
 
 void SetTownRatingTestMode(bool mode)
 {
 	static int ref_count = 0;
 	if (mode) {
 		if (ref_count == 0) {
-			_town_test_ratings.clear();
+			_town_test_ratings.Clear();
 		}
 		ref_count++;
 	} else {
@@ -2524,9 +2524,9 @@ void SetTownRatingTestMode(bool mode)
 static int GetRating(const Town *t)
 {
 	if (_town_rating_test) {
-		std::map<const Town *, int>::iterator it = _town_test_ratings.find(t);
-		if (it != _town_test_ratings.end()) {
-			return (*it).second;
+		SmallMap<const Town *, int>::iterator it = _town_test_ratings.Find(t);
+		if (it != _town_test_ratings.End()) {
+			return it->second;
 		}
 	}
 	return t->ratings[_current_company];

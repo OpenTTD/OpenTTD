@@ -1708,6 +1708,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\core\smallmap_type.hpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\core\smallvec_type.hpp"
 				>
 			</File>

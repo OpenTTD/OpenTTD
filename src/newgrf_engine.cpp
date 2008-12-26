@@ -28,8 +28,7 @@
 #include "rail.h"
 #include "settings_type.h"
 #include "aircraft.h"
-#include "core/smallvec_type.hpp"
-#include <map>
+#include "core/smallmap_type.hpp"
 
 
 int _traininfo_vehicle_pitch = 0;
@@ -1093,7 +1092,7 @@ void AlterVehicleListOrder(EngineID engine, EngineID target)
 void CommitVehicleListOrderChanges()
 {
 	/* List position to Engine map */
-	typedef std::map<uint16, Engine*> ListPositionMap;
+	typedef SmallMap<uint16, Engine *, 16> ListPositionMap;
 	ListPositionMap lptr_map;
 
 	const ListOrderChange *end = _list_order_changes.End();
@@ -1120,7 +1119,8 @@ void CommitVehicleListOrderChanges()
 			uint16 target_position = target_e->list_position;
 
 			bool moving = false;
-			for (ListPositionMap::iterator it = lptr_map.begin(); it != lptr_map.end(); ++it) {
+			const ListPositionMap::Pair *end = lptr_map.End();
+			for (ListPositionMap::Pair *it = lptr_map.Begin(); it != end; ++it) {
 				if (it->first == target_position) moving = true;
 				if (moving) it->second->list_position++;
 			}
@@ -1128,7 +1128,7 @@ void CommitVehicleListOrderChanges()
 			source_e->list_position = target_position;
 		}
 
-		lptr_map.clear();
+		lptr_map.Clear();
 	}
 
 	/* Clear out the queue */
