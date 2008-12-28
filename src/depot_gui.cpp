@@ -104,28 +104,28 @@ static const Widget _depot_widgets[] = {
 
 
 static const WindowDesc _train_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 36, 27, 36, 27,
+	WDP_AUTO, WDP_AUTO, 36, 27, 362, 123,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
 };
 
 static const WindowDesc _road_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 36, 27, 36, 27,
+	WDP_AUTO, WDP_AUTO, 36, 27, 316, 97,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
 };
 
 static const WindowDesc _ship_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 36, 27, 36, 27,
+	WDP_AUTO, WDP_AUTO, 36, 27, 306, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
 };
 
 static const WindowDesc _aircraft_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 36, 27, 36, 27,
+	WDP_AUTO, WDP_AUTO, 36, 27, 332, 99,
 	WC_VEHICLE_DEPOT, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -244,10 +244,13 @@ struct DepotWindow : Window {
 	VehicleList vehicle_list;
 	VehicleList wagon_list;
 
-	DepotWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
+	DepotWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc, tile)
 	{
 		this->sel = INVALID_VEHICLE;
 		this->generate_list = true;
+
+		this->caption_color = GetTileOwner(tile);
+		this->CreateDepotListWindow(type);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -1042,24 +1045,18 @@ static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
  */
 void ShowDepotWindow(TileIndex tile, VehicleType type)
 {
-	DepotWindow *w;
+	if (BringWindowToFrontById(WC_VEHICLE_DEPOT, tile) != NULL) return;
 
+	const WindowDesc *desc;
 	switch (type) {
 		default: NOT_REACHED();
-		case VEH_TRAIN:
-			w = AllocateWindowDescFront<DepotWindow>(&_train_depot_desc, tile); break;
-		case VEH_ROAD:
-			w = AllocateWindowDescFront<DepotWindow>(&_road_depot_desc, tile); break;
-		case VEH_SHIP:
-			w = AllocateWindowDescFront<DepotWindow>(&_ship_depot_desc, tile); break;
-		case VEH_AIRCRAFT:
-			w = AllocateWindowDescFront<DepotWindow>(&_aircraft_depot_desc, tile); break;
+		case VEH_TRAIN:    desc = &_train_depot_desc;    break;
+		case VEH_ROAD:     desc = &_road_depot_desc;     break;
+		case VEH_SHIP:     desc = &_ship_depot_desc;     break;
+		case VEH_AIRCRAFT: desc = &_aircraft_depot_desc; break;
 	}
 
-	if (w == NULL) return;
-
-	w->caption_color = GetTileOwner(tile);
-	w->CreateDepotListWindow(type);
+	new DepotWindow(desc, tile, type);
 }
 
 /** Removes the highlight of a vehicle in a depot window
