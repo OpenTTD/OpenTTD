@@ -284,8 +284,8 @@ void IncreaseDate()
 	if (_cur_year == _settings_client.gui.semaphore_build_before) ResetSignalVariant();
 
 	/* check if we reached end of the game */
-	if (_cur_year == _settings_client.gui.ending_year) {
-			ShowEndGameChart();
+	if (_cur_year == ORIGINAL_END_YEAR) {
+		ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
 	} else if (_cur_year == MAX_YEAR + 1) {
 		Vehicle *v;

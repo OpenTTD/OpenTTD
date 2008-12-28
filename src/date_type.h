@@ -22,6 +22,8 @@
 
 /** The minimum starting year/base year of the original TTD */
 #define ORIGINAL_BASE_YEAR 1920
+/** The original ending year */
+#define ORIGINAL_END_YEAR 2051
 /** The maximum year of the original TTD */
 #define ORIGINAL_MAX_YEAR 2090
 

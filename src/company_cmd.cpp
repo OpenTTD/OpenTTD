@@ -1092,9 +1092,6 @@ void LoadFromHighScore()
 		}
 		fclose(fp);
 	}
-
-	/* Initialize end of game variable (when to show highscore chart) */
-	_settings_client.gui.ending_year = 2051;
 }
 
 /* Save/load of companies */

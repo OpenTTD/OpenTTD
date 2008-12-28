@@ -68,7 +68,6 @@ struct GUISettings {
 	uint8  scrollwheel_multiplier;           ///< how much 'wheel' per incoming event from the OS?
 	bool   pause_on_newgame;                 ///< whether to start new games paused or not
 	bool   enable_signal_gui;                ///< show the signal GUI when the signal button is pressed
-	Year   ending_year;                      ///< end of the game (just show highscore)
 	Year   colored_news_year;                ///< when does newspaper become colored?
 	bool   timetable_in_ticks;               ///< whether to show the timetable in ticks rather than days
 	bool   bridge_pillars;                   ///< show bridge pillars for high bridges

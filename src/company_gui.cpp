@@ -1542,7 +1542,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow
 
 		this->SetupHighScoreEndWindow(&x, &y);
 
-		SetDParam(0, _settings_client.gui.ending_year);
+		SetDParam(0, ORIGINAL_END_YEAR);
 		SetDParam(1, this->window_number + STR_6801_EASY);
 		DrawStringMultiCenter(x + (640 / 2), y + 62, !_networking ? STR_0211_TOP_COMPANIES_WHO_REACHED : STR_TOP_COMPANIES_NETWORK_GAME, 500);
 

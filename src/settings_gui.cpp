@@ -655,7 +655,6 @@ static const char *_patches_economy[] = {
 	"economy.exclusive_rights",
 	"economy.give_money",
 	"gui.colored_news_year",
-	"gui.ending_year",
 	"economy.smooth_economy",
 	"economy.allow_shares",
 	"economy.town_layout",

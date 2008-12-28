@@ -363,6 +363,7 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 		 * 32-bit variable
 		 * TODO: Support 64-bit settings/variables */
 		switch (GetVarMemType(sd->save.conv)) {
+			case SLE_VAR_NULL: return;
 			case SLE_VAR_BL:
 			case SLE_VAR_I8:
 			case SLE_VAR_U8:
@@ -1325,7 +1326,7 @@ const SettingDesc _patch_settings[] = {
 	     SDT_VAR(GameSettings, game_creation.snow_line_height,       SLE_UINT8,                     0, 0,     7,     2,      13, 0, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,        NULL),
 	    SDTC_VAR(              gui.colored_news_year,                SLE_INT32,                     0,NC,  2000,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_PATCHES_COLORED_NEWS_YEAR,      NULL),
 	     SDT_VAR(GameSettings, game_creation.starting_year,          SLE_INT32,                     0,NC,  1950,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_PATCHES_STARTING_YEAR,          NULL),
-	    SDTC_VAR(              gui.ending_year,                      SLE_INT32,                    0,NC|NO,2051,MIN_YEAR,MAX_YEAR,1,STR_CONFIG_PATCHES_ENDING_YEAR,            NULL),
+	SDT_CONDNULL(                                                            4,  0, 104),
 	    SDT_BOOL(GameSettings, economy.smooth_economy,                                              0, 0,  true,                    STR_CONFIG_PATCHES_SMOOTH_ECONOMY,         NULL),
 	    SDT_BOOL(GameSettings, economy.allow_shares,                                                0, 0, false,                    STR_CONFIG_PATCHES_ALLOW_SHARES,           NULL),
 	 SDT_CONDVAR(GameSettings, economy.town_growth_rate,             SLE_UINT8, 54, SL_MAX_VERSION, 0, MS,    2,     0,       4, 0, STR_CONFIG_PATCHES_TOWN_GROWTH,            NULL),
