@@ -68,8 +68,6 @@ NetworkClientSocket::~NetworkClientSocket()
  */
 NetworkRecvStatus NetworkClientSocket::CloseConnection()
 {
-	NetworkCloseClient(this);
-
 	/* Clients drop back to the main menu */
 	if (!_network_server && _networking) {
 		_switch_mode = SM_MENU;
@@ -80,6 +78,7 @@ NetworkRecvStatus NetworkClientSocket::CloseConnection()
 		return NETWORK_RECV_STATUS_CONN_LOST;
 	}
 
+	NetworkCloseClient(this);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
