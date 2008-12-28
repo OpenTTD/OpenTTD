@@ -1174,7 +1174,6 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Elektri
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Renkli gazete şu senede çıksın: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Başlangıç tarihi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Bitiş tarihi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Yüzeysel ekonomi (daha çok ve küçük çapta değişiklikler)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Diğer şirketlerin hisseleri alınabilsin
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy

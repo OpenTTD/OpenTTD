@@ -1240,7 +1240,6 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Villamo
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Játék befejezésének az éve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Egyenletes gazdaság (több, kisebb változás)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Másik cégekből részvényt lehet vásárolni
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Amikor megragadom helyezzen jelzőket minden {ORANGE}{STRING}. mezőre

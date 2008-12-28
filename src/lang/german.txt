@@ -1175,7 +1175,6 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Deaktiv
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Farbige Nachrichten erscheinen ab: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Spiel beenden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Feinere Wirtschaft aktivieren (mehrere, kleinere Veränderungen)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Erlaube Anteile an anderen Firmen zu kaufen
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Errichte Signale alle {ORANGE}{STRING} Felder beim Ziehen mit der Maus
