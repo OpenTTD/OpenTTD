@@ -330,9 +330,7 @@ static CommandCost CopyHeadSpecificThings(Vehicle *old_head, Vehicle *new_head, 
 	if (cost.Succeeded() && old_head != new_head && (flags & DC_EXEC) != 0) {
 		/* Copy vehicle name */
 		if (old_head->name != NULL) {
-			_cmd_text = old_head->name;
-			DoCommand(0, new_head->index, 0, DC_EXEC | DC_AUTOREPLACE, CMD_RENAME_VEHICLE);
-			_cmd_text = NULL;
+			DoCommand(0, new_head->index, 0, DC_EXEC | DC_AUTOREPLACE, CMD_RENAME_VEHICLE, old_head->name);
 		}
 
 		/* Copy other things which cannot be copied by a command and which shall not stay resetted from the build vehicle command */
@@ -607,7 +605,7 @@ static CommandCost ReplaceChain(Vehicle **chain, uint32 flags, bool wagon_remova
  * @param p1 Index of vehicle
  * @param p2 not used
  */
-CommandCost CmdAutoreplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdAutoreplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES, 0);
 	bool nothing_to_do = true;

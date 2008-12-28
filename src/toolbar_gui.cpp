@@ -238,7 +238,7 @@ static void ToolbarPauseClick(Window *w)
 {
 	if (_networking && !_network_server) return; // only server can pause the game
 
-	if (DoCommandP(0, _pause_game ? 0 : 1, 0, NULL, CMD_PAUSE)) SndPlayFx(SND_15_BEEP);
+	if (DoCommandP(0, _pause_game ? 0 : 1, 0, CMD_PAUSE)) SndPlayFx(SND_15_BEEP);
 }
 
 /* --- Fast forwarding --- */

@@ -94,8 +94,7 @@ public:
 	{
 		if (str == NULL) return;
 
-		_cmd_text = str;
-		DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME), NULL, str);
 	}
 
 };

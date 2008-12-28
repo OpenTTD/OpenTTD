@@ -24,7 +24,6 @@
 
 #include "table/strings.h"
 
-const char *_cmd_text = NULL;
 StringID _error_message;
 
 /**
@@ -36,7 +35,7 @@ StringID _error_message;
  *
  * @param yyyy The desired function name of the new command handler function.
  */
-#define DEF_COMMAND(yyyy) CommandCost yyyy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+#define DEF_COMMAND(yyyy) CommandCost yyyy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 
 DEF_COMMAND(CmdBuildRailroadTrack);
 DEF_COMMAND(CmdRemoveRailroadTrack);
@@ -382,20 +381,17 @@ static int _docommand_recursive = 0;
  * @param p1 Additional data for the command (for the #CommandProc)
  * @param p2 Additional data for the command (for the #CommandProc)
  * @param flags Flags for the command and how to execute the command
- * @param procc The command-id to execute (a value of the CMD_* enums)
+ * @param cmd The command-id to execute (a value of the CMD_* enums)
  * @see CommandProc
  */
-CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc)
+CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, const char *text)
 {
 	CommandCost res;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (!IsValidTile(tile)) {
-		_cmd_text = NULL;
-		return CMD_ERROR;
-	}
+	if (!IsValidTile(tile)) return CMD_ERROR;
 
-	CommandProc *proc = _command_proc_table[procc].proc;
+	CommandProc *proc = _command_proc_table[cmd].proc;
 
 	if (_docommand_recursive == 0) _error_message = INVALID_STRING_ID;
 
@@ -404,7 +400,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 	/* only execute the test call if it's toplevel, or we're not execing. */
 	if (_docommand_recursive == 1 || !(flags & DC_EXEC) ) {
 		SetTownRatingTestMode(true);
-		res = proc(tile, flags & ~DC_EXEC, p1, p2);
+		res = proc(tile, flags & ~DC_EXEC, p1, p2, text);
 		SetTownRatingTestMode(false);
 		if (CmdFailed(res)) {
 			res.SetGlobalErrorMessage();
@@ -421,32 +417,29 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 
 		if (!(flags & DC_EXEC)) {
 			_docommand_recursive--;
-			_cmd_text = NULL;
 			return res;
 		}
 	}
 
 	/* Execute the command here. All cost-relevant functions set the expenses type
 	 * themselves to the cost object at some point */
-	res = proc(tile, flags, p1, p2);
+	res = proc(tile, flags, p1, p2, text);
 	if (CmdFailed(res)) {
 		res.SetGlobalErrorMessage();
 error:
 		_docommand_recursive--;
-		_cmd_text = NULL;
 		return CMD_ERROR;
 	}
 
 	/* if toplevel, subtract the money. */
 	if (--_docommand_recursive == 0 && !(flags & DC_BANKRUPT)) {
 		SubtractMoneyFromCompany(res);
-		/* XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of company */
+		/* XXX - Old AI hack which doesn't use DoCommandP; update last build coord of company */
 		if (tile != 0 && IsValidCompanyID(_current_company)) {
 			GetCompany(_current_company)->last_build_coordinate = tile;
 		}
 	}
 
-	_cmd_text = NULL;
 	return res;
 }
 
@@ -473,12 +466,13 @@ Money GetAvailableMoneyForCommand()
  * @param tile The tile to perform a command on (see #CommandProc)
  * @param p1 Additional data for the command (see #CommandProc)
  * @param p2 Additional data for the command (see #CommandProc)
- * @param callback A callback function to call after the command is finished
  * @param cmd The command to execute (a CMD_* value)
+ * @param callback A callback function to call after the command is finished
+ * @param text The text to pass
  * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
  * @return true if the command succeeded, else false
  */
-bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd, bool my_cmd)
+bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, bool my_cmd)
 {
 	CommandCost res, res2;
 	CommandProc *proc;
@@ -490,10 +484,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	int y = TileY(tile) * TILE_SIZE;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (!IsValidTile(tile)) {
-		_cmd_text = NULL;
-		return false;
-	}
+	if (!IsValidTile(tile)) return false;
 
 	assert(_docommand_recursive == 0);
 
@@ -505,7 +496,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	 * is/can be a spectator but as the server it can do anything */
 	if (_current_company == COMPANY_SPECTATOR && !_network_server) {
 		if (my_cmd) ShowErrorMessage(_error_message, error_part1, x, y);
-		_cmd_text = NULL;
 		return false;
 	}
 
@@ -515,10 +505,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	/* get pointer to command handler */
 	assert((cmd & 0xFF) < lengthof(_command_proc_table));
 	proc = _command_proc_table[cmd & 0xFF].proc;
-	if (proc == NULL) {
-		_cmd_text = NULL;
-		return false;
-	}
+	if (proc == NULL) return false;
 
 	if (GetCommandFlags(cmd) & CMD_AUTO) flags |= DC_AUTO;
 
@@ -550,7 +537,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 			(cmd & 0xFF) != CMD_PAUSE) {
 		/* estimate the cost. */
 		SetTownRatingTestMode(true);
-		res = proc(tile, flags, p1, p2);
+		res = proc(tile, flags, p1, p2, text);
 		SetTownRatingTestMode(false);
 		if (CmdFailed(res)) {
 			res.SetGlobalErrorMessage();
@@ -560,7 +547,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 		}
 
 		_docommand_recursive = 0;
-		_cmd_text = NULL;
 		ClearStorageChanges(false);
 		return false;
 	}
@@ -569,7 +555,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	if (!((cmd & CMD_NO_TEST_IF_IN_NETWORK) && _networking)) {
 		/* first test if the command can be executed. */
 		SetTownRatingTestMode(true);
-		res = proc(tile, flags, p1, p2);
+		res = proc(tile, flags, p1, p2, text);
 		SetTownRatingTestMode(false);
 		if (CmdFailed(res)) {
 			res.SetGlobalErrorMessage();
@@ -590,15 +576,14 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
 		CompanyID bck = _local_company;
 		if (_network_dedicated || (_network_server && bck == COMPANY_SPECTATOR)) _local_company = COMPANY_FIRST;
-		NetworkSend_Command(tile, p1, p2, cmd, callback);
+		NetworkSend_Command(tile, p1, p2, cmd, callback, text);
 		if (_network_dedicated || (_network_server && bck == COMPANY_SPECTATOR)) _local_company = bck;
 		_docommand_recursive = 0;
-		_cmd_text = NULL;
 		ClearStorageChanges(false);
 		return true;
 	}
 #endif /* ENABLE_NETWORK */
-	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd, _cmd_text);
+	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd, text);
 
 	/* update last build coordinate of company. */
 	if (tile != 0 && IsValidCompanyID(_current_company)) {
@@ -607,7 +592,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
-	res2 = proc(tile, flags | DC_EXEC, p1, p2);
+	res2 = proc(tile, flags | DC_EXEC, p1, p2, text);
 
 	/* If notest is on, it means the result of the test can be different than
 	 *  the real command.. so ignore the test */
@@ -637,7 +622,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_docommand_recursive = 0;
 
 	if (callback) callback(true, tile, p1, p2);
-	_cmd_text = NULL;
 	ClearStorageChanges(true);
 	return true;
 
@@ -651,7 +635,6 @@ callb_err:
 	_docommand_recursive = 0;
 
 	if (callback) callback(false, tile, p1, p2);
-	_cmd_text = NULL;
 	ClearStorageChanges(false);
 	return false;
 }

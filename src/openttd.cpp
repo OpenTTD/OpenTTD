@@ -737,7 +737,7 @@ static void MakeNewGameDone()
 
 	SetLocalCompany(COMPANY_FIRST);
 	_current_company = _local_company;
-	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, CMD_SET_AUTOREPLACE);
 
 	InitializeRailGUI();
 
@@ -829,7 +829,7 @@ static void StartScenario()
 
 	SetLocalCompany(COMPANY_FIRST);
 	_current_company = _local_company;
-	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, (_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4, _settings_client.gui.autorenew_money, CMD_SET_AUTOREPLACE);
 
 	MarkWholeScreenDirty();
 }
@@ -937,7 +937,7 @@ void SwitchMode(int new_mode)
 				* company #1 (eg 0) or in the case of a dedicated server a spectator */
 				SetLocalCompany(_network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST);
 				/* Decrease pause counter (was increased from opening load dialog) */
-				DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+				DoCommandP(0, 0, 0, CMD_PAUSE);
 #ifdef ENABLE_NETWORK
 				if (_network_server) {
 					snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Loaded game)", _file_to_saveload.title);

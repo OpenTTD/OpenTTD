@@ -564,7 +564,7 @@ static void MaybeStartNewCompany()
 			)) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
-		DoCommandP(0, 1, 0, NULL, CMD_COMPANY_CTRL);
+		DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
 	}
 
 	/* The next AI starts like the difficulty setting said, with +2 month max */
@@ -645,7 +645,7 @@ void CompaniesYearlyLoop()
  * if p1 = 5, then
  * - p2 = enable renew_keep_length
  */
-CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidCompanyID(_current_company)) return CMD_ERROR;
 
@@ -788,7 +788,7 @@ void CompanyNewsInformation::FillData(const Company *c, const Company *other)
  * @arg - network_server.c:838 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)@n
  * @arg - network_client.c:536 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP) from where the map has been received
  */
-CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (flags & DC_EXEC) _current_company = OWNER_NONE;
 
@@ -848,6 +848,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					(_settings_client.gui.autorenew << 15 ) | (_settings_client.gui.autorenew_months << 16) | 4,
 					_settings_client.gui.autorenew_money,
 					CMD_SET_AUTOREPLACE,
+					NULL,
 					NULL
 				);
 
@@ -876,9 +877,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					* TODO: Perhaps this could be improved by when the client is ready
 					* with joining to let it send itself the command, and not the server?
 					* For example in network_client.c:534? */
-					_cmd_text = ci->client_name;
 					_local_company = ci->client_playas;
-					NetworkSend_Command(0, 0, 0, CMD_RENAME_PRESIDENT, NULL);
+					NetworkSend_Command(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name);
 					_local_company = company_backup;
 				}
 			}

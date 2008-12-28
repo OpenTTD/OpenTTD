@@ -164,7 +164,7 @@ static void _GenerateWorld(void *arg)
 
 		if (_network_dedicated) DEBUG(net, 0, "Map generated, starting game");
 
-		if (_settings_client.gui.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		if (_settings_client.gui.pause_on_newgame && _game_mode == GM_NORMAL) DoCommandP(0, 1, 0, CMD_PAUSE);
 	} catch (...) {
 		_generating_world = false;
 		throw;

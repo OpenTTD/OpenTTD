@@ -483,7 +483,7 @@ DEF_CONSOLE_CMD(ConPauseGame)
 	}
 
 	if (_pause_game == 0) {
-		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		DoCommandP(0, 1, 0, CMD_PAUSE);
 		IConsolePrint(CC_DEFAULT, "Game paused.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already paused.");
@@ -500,7 +500,7 @@ DEF_CONSOLE_CMD(ConUnPauseGame)
 	}
 
 	if (_pause_game != 0) {
-		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		DoCommandP(0, 0, 0, CMD_PAUSE);
 		IConsolePrint(CC_DEFAULT, "Game unpaused.");
 	} else {
 		IConsolePrint(CC_DEFAULT, "Game is already unpaused.");
@@ -631,7 +631,7 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	}
 
 	/* It is safe to remove this company */
-	DoCommandP(0, 2, index, NULL, CMD_COMPANY_CTRL);
+	DoCommandP(0, 2, index, CMD_COMPANY_CTRL);
 	IConsolePrint(CC_DEFAULT, "Company deleted.");
 
 	return true;

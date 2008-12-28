@@ -323,7 +323,7 @@ void GenerateTrees()
  * @param p1 tree type, -1 means random.
  * @param p2 end tile of area-drag
  */
-CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPlantTree(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	StringID msg = INVALID_STRING_ID;
 	CommandCost cost(EXPENSES_OTHER);

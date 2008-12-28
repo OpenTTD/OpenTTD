@@ -1653,7 +1653,7 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
  * @param p2 seed to use for variable 8F
  * @return index of the newly create industry, or CMD_ERROR if it failed
  */
-CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	const IndustrySpec *indspec = GetIndustrySpec(GB(p1, 0, 16));
 	const Industry *ind = NULL;

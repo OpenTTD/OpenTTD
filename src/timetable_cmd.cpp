@@ -51,7 +51,7 @@ static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time
  *                      Travelling time if p1 bit 25 is set.
  * - p2 = (bit 16-31) - Waiting time if p1 bit 25 is set
  */
-CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
@@ -109,7 +109,7 @@ CommandCost CmdChangeTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * @param p1 Various bitstuffed elements
  * - p1 = (bit  0-15) - Vehicle with the orders to change.
  */
-CommandCost CmdSetVehicleOnTime(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetVehicleOnTime(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 
@@ -137,7 +137,7 @@ CommandCost CmdSetVehicleOnTime(TileIndex tile, uint32 flags, uint32 p1, uint32 
  * - p2 = (bit 0) - Set to 1 to enable, 0 to disable autofill.
  * - p2 = (bit 1) - Set to 1 to preserve waiting times in non-destructive mode
  */
-CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!_settings_game.order.timetabling) return CMD_ERROR;
 

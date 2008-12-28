@@ -264,7 +264,7 @@ uint16 AircraftDefaultCargoCapacity(CargoID cid, const AircraftVehicleInfo *avi)
  * @param p2 unused
  * return result of operation.  Could be cost, error
  */
-CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_AIRCRAFT_NOT_AVAILABLE);
 
@@ -467,7 +467,7 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 unused
  * @return result of operation.  Error or sold value
  */
-CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
@@ -515,7 +515,7 @@ bool Aircraft::FindClosestDepot(TileIndex *location, DestinationID *destination,
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
  * @return o if everything went well
  */
-CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
@@ -543,7 +543,7 @@ CommandCost CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uin
  * - p2 = (bit 16) - refit only this vehicle (ignored)
  * @return cost of refit or error
  */
-CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	byte new_subtype = GB(p2, 8, 8);
 

@@ -254,7 +254,7 @@ public:
 			}
 
 			case TWA_EXECUTE:
-				DoCommandP(this->town->xy, this->window_number, this->sel_index, NULL, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+				DoCommandP(this->town->xy, this->window_number, this->sel_index, CMD_DO_TOWN_ACTION | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 				break;
 		}
 	}
@@ -404,8 +404,7 @@ public:
 	{
 		if (str == NULL) return;
 
-		_cmd_text = str;
-		DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN), NULL, str);
 	}
 };
 
@@ -667,7 +666,7 @@ static void PlaceProc_Town(TileIndex tile)
 {
 	uint32 size = min(_scengen_town_size, (int)TSM_CITY);
 	uint32 mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
-	DoCommandP(tile, size, mode, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
+	DoCommandP(tile, size, mode, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
 }
 
 static const Widget _scen_edit_town_gen_widgets[] = {

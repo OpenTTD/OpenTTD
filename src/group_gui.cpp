@@ -513,14 +513,14 @@ public:
 			}
 
 			case GRP_WIDGET_CREATE_GROUP: // Create a new group
-				DoCommandP(0, this->vehicle_type, 0, NULL, CMD_CREATE_GROUP | CMD_MSG(STR_GROUP_CAN_T_CREATE));
+				DoCommandP(0, this->vehicle_type, 0, CMD_CREATE_GROUP | CMD_MSG(STR_GROUP_CAN_T_CREATE));
 				break;
 
 			case GRP_WIDGET_DELETE_GROUP: { // Delete the selected group
 				GroupID group = this->group_sel;
 				this->group_sel = ALL_GROUP;
 
-				DoCommandP(0, group, 0, NULL, CMD_DELETE_GROUP | CMD_MSG(STR_GROUP_CAN_T_DELETE));
+				DoCommandP(0, group, 0, CMD_DELETE_GROUP | CMD_MSG(STR_GROUP_CAN_T_DELETE));
 				break;
 			}
 
@@ -547,7 +547,7 @@ public:
 				DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 													| (1 << 6)
 													| (widget == GRP_WIDGET_START_ALL ? (1 << 5) : 0)
-													| this->vehicle_type, NULL, CMD_MASS_START_STOP);
+													| this->vehicle_type, CMD_MASS_START_STOP);
 
 				break;
 			}
@@ -556,7 +556,7 @@ public:
 				if (IsValidGroupID(this->group_sel)) {
 					const Group *g = GetGroup(this->group_sel);
 
-					DoCommandP(0, this->group_sel, !g->replace_protection, NULL, CMD_SET_GROUP_REPLACE_PROTECTION);
+					DoCommandP(0, this->group_sel, !g->replace_protection, CMD_SET_GROUP_REPLACE_PROTECTION);
 				}
 				break;
 		}
@@ -567,7 +567,7 @@ public:
 		switch (widget) {
 			case GRP_WIDGET_ALL_VEHICLES: // All vehicles
 			case GRP_WIDGET_DEFAULT_VEHICLES: // Ungrouped vehicles
-				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
+				DoCommandP(0, DEFAULT_GROUP, this->vehicle_sel, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
 
 				this->vehicle_sel = INVALID_VEHICLE;
 
@@ -589,7 +589,7 @@ public:
 
 				if (id_g >= this->groups.Length()) return;
 
-				DoCommandP(0, this->groups[id_g]->index, vindex, NULL, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
+				DoCommandP(0, this->groups[id_g]->index, vindex, CMD_ADD_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_VEHICLE));
 
 				break;
 			}
@@ -625,8 +625,7 @@ public:
 	{
 		if (str == NULL) return;
 
-		_cmd_text = str;
-		DoCommandP(0, this->group_sel, 0, NULL, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME));
+		DoCommandP(0, this->group_sel, 0, CMD_RENAME_GROUP | CMD_MSG(STR_GROUP_CAN_T_RENAME), NULL, str);
 	}
 
 	virtual void OnResize(Point new_size, Point delta)
@@ -655,21 +654,21 @@ public:
 					case GALF_SERVICE: // Send for servicing
 						DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
 									| DEPOT_MASS_SEND
-									| DEPOT_SERVICE, NULL, GetCmdSendToDepot(this->vehicle_type));
+									| DEPOT_SERVICE, GetCmdSendToDepot(this->vehicle_type));
 						break;
 					case GALF_DEPOT: // Send to Depots
 						DoCommandP(0, this->group_sel, ((IsAllGroupID(this->group_sel) ? VLW_STANDARD : VLW_GROUP_LIST) & VLW_MASK)
-									| DEPOT_MASS_SEND, NULL, GetCmdSendToDepot(this->vehicle_type));
+									| DEPOT_MASS_SEND, GetCmdSendToDepot(this->vehicle_type));
 						break;
 					case GALF_ADD_SHARED: // Add shared Vehicles
 						assert(IsValidGroupID(this->group_sel));
 
-						DoCommandP(0, this->group_sel, this->vehicle_type, NULL, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
+						DoCommandP(0, this->group_sel, this->vehicle_type, CMD_ADD_SHARED_VEHICLE_GROUP | CMD_MSG(STR_GROUP_CAN_T_ADD_SHARED_VEHICLE));
 						break;
 					case GALF_REMOVE_ALL: // Remove all Vehicles from the selected group
 						assert(IsValidGroupID(this->group_sel));
 
-						DoCommandP(0, this->group_sel, this->vehicle_type, NULL, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
+						DoCommandP(0, this->group_sel, this->vehicle_type, CMD_REMOVE_ALL_VEHICLES_GROUP | CMD_MSG(STR_GROUP_CAN_T_REMOVE_ALL_VEHICLES));
 						break;
 					default: NOT_REACHED();
 				}

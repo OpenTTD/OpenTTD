@@ -215,11 +215,11 @@ struct CompanyFinancesWindow : Window {
 			break;
 
 			case CFW_WIDGET_INCREASE_LOAN: /* increase loan */
-				DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
+				DoCommandP(0, 0, _ctrl_pressed, CMD_INCREASE_LOAN | CMD_MSG(STR_702C_CAN_T_BORROW_ANY_MORE_MONEY));
 				break;
 
 			case CFW_WIDGET_REPAY_LOAN: /* repay loan */
-				DoCommandP(0, 0, _ctrl_pressed, NULL, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
+				DoCommandP(0, 0, _ctrl_pressed, CMD_DECREASE_LOAN | CMD_MSG(STR_702F_CAN_T_REPAY_LOAN));
 				break;
 		}
 	}
@@ -485,7 +485,7 @@ public:
 
 				/* If clicking on the left edge, toggle using the livery */
 				if (pt.x < 10) {
-					DoCommandP(0, j | (2 << 8), !GetCompany((CompanyID)this->window_number)->livery[j].in_use, NULL, CMD_SET_COMPANY_COLOR);
+					DoCommandP(0, j | (2 << 8), !GetCompany((CompanyID)this->window_number)->livery[j].in_use, CMD_SET_COMPANY_COLOR);
 				}
 
 				if (_ctrl_pressed) {
@@ -503,7 +503,7 @@ public:
 	{
 		for (LiveryScheme scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 			if (HasBit(this->sel, scheme)) {
-				DoCommandP(0, scheme | (widget == SCLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), index, NULL, CMD_SET_COMPANY_COLOR);
+				DoCommandP(0, scheme | (widget == SCLW_WIDGET_PRI_COL_DROPDOWN ? 0 : 256), index, CMD_SET_COMPANY_COLOR);
 			}
 		}
 	}
@@ -879,7 +879,7 @@ public:
 			/* Toggle size, advanced/simple face selection */
 			case SCMFW_WIDGET_TOGGLE_LARGE_SMALL:
 			case SCMFW_WIDGET_TOGGLE_LARGE_SMALL_BUTTON: {
-				DoCommandP(0, 0, this->face, NULL, CMD_SET_COMPANY_MANAGER_FACE);
+				DoCommandP(0, 0, this->face, CMD_SET_COMPANY_MANAGER_FACE);
 
 				/* Backup some data before deletion */
 				int oldtop = this->top;     ///< current top position of the window before closing it
@@ -896,7 +896,7 @@ public:
 
 			/* OK button */
 			case SCMFW_WIDGET_ACCEPT:
-				DoCommandP(0, 0, this->face, NULL, CMD_SET_COMPANY_MANAGER_FACE);
+				DoCommandP(0, 0, this->face, CMD_SET_COMPANY_MANAGER_FACE);
 				/* Fall-Through */
 
 			/* Cancel button */
@@ -1287,11 +1287,11 @@ struct CompanyWindow : Window
 				break;
 
 			case CW_WIDGET_BUY_SHARE:
-				DoCommandP(0, this->window_number, 0, NULL, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
+				DoCommandP(0, this->window_number, 0, CMD_BUY_SHARE_IN_COMPANY | CMD_MSG(STR_707B_CAN_T_BUY_25_SHARE_IN_THIS));
 				break;
 
 			case CW_WIDGET_SELL_SHARE:
-				DoCommandP(0, this->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
+				DoCommandP(0, this->window_number, 0, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
 				break;
 
 #ifdef ENABLE_NETWORK
@@ -1310,7 +1310,7 @@ struct CompanyWindow : Window
 
 	virtual void OnPlaceObject(Point pt, TileIndex tile)
 	{
-		if (DoCommandP(tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
+		if (DoCommandP(tile, 0, 0, CMD_BUILD_COMPANY_HQ | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
 			ResetObjectToPlace();
 			this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // this button can now behave as a normal push button
 			this->RaiseButtons();
@@ -1325,16 +1325,15 @@ struct CompanyWindow : Window
 	{
 		if (str == NULL) return;
 
-		_cmd_text = str;
 		switch (this->query_widget) {
 			default: NOT_REACHED();
 
 			case CW_WIDGET_PRESIDENT_NAME:
-				DoCommandP(0, 0, 0, NULL, CMD_RENAME_PRESIDENT | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT));
+				DoCommandP(0, 0, 0, CMD_RENAME_PRESIDENT | CMD_MSG(STR_700D_CAN_T_CHANGE_PRESIDENT), NULL, str);
 				break;
 
 			case CW_WIDGET_COMPANY_NAME:
-				DoCommandP(0, 0, 0, NULL, CMD_RENAME_COMPANY | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
+				DoCommandP(0, 0, 0, CMD_RENAME_COMPANY | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME), NULL, str);
 				break;
 		}
 	}
@@ -1384,7 +1383,7 @@ struct BuyCompanyWindow : Window {
 				break;
 
 			case 4:
-				DoCommandP(0, this->window_number, 0, NULL, CMD_BUY_COMPANY | CMD_MSG(STR_7060_CAN_T_BUY_COMPANY));
+				DoCommandP(0, this->window_number, 0, CMD_BUY_COMPANY | CMD_MSG(STR_7060_CAN_T_BUY_COMPANY));
 				break;
 		}
 	}
@@ -1456,7 +1455,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 	EndGameWindow(const WindowDesc *desc) : EndGameHighScoreBaseWindow(desc)
 	{
 		/* Pause in single-player to have a look at the highscore at your own leisure */
-		if (!_networking) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		if (!_networking) DoCommandP(0, 1, 0, CMD_PAUSE);
 
 		this->background_img = SPR_TYCOON_IMG1_BEGIN;
 
@@ -1484,7 +1483,7 @@ struct EndGameWindow : EndGameHighScoreBaseWindow {
 
 	~EndGameWindow()
 	{
-		if (!_networking) DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // unpause
+		if (!_networking) DoCommandP(0, 0, 0, CMD_PAUSE); // unpause
 		ShowHighscoreTable(this->window_number, this->rank);
 	}
 
@@ -1518,7 +1517,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow
 	HighScoreWindow(const WindowDesc *desc, int difficulty, int8 ranking) : EndGameHighScoreBaseWindow(desc)
 	{
 		/* pause game to show the chart */
-		if (!_networking) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		if (!_networking) DoCommandP(0, 1, 0, CMD_PAUSE);
 
 		/* Close all always on-top windows to get a clean screen */
 		if (_game_mode != GM_MENU) HideVitalWindows();
@@ -1533,7 +1532,7 @@ struct HighScoreWindow : EndGameHighScoreBaseWindow
 	{
 		if (_game_mode != GM_MENU) ShowVitalWindows();
 
-		if (!_networking) DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // unpause
+		if (!_networking) DoCommandP(0, 0, 0, CMD_PAUSE); // unpause
 	}
 
 	virtual void OnPaint()

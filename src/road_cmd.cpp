@@ -65,7 +65,7 @@ bool RoadVehiclesAreBuilt()
  * @param p1 the side of the road; 0 = left side and 1 = right side
  * @param p2 unused
  */
-CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Check boundaries and you can only change this if NO vehicles have been built yet,
 	 * except in the intro-menu where of course it's always possible to do so. */
@@ -382,7 +382,7 @@ static CommandCost RemoveRoad(TileIndex tile, uint32 flags, RoadBits pieces, Roa
  *           bit 4..5 road type
  * @param p2 unused
  */
-CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	RoadType rt = (RoadType)GB(p1, 4, 2);
 	if (!IsValidRoadType(rt)) return CMD_ERROR;
@@ -476,7 +476,7 @@ static CommandCost CheckRoadSlope(Slope tileh, RoadBits *pieces, RoadBits existi
  *           bit 6..7 disallowed directions to toggle
  * @param p2 the town that is building the road (0 if not applicable)
  */
-CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -719,7 +719,7 @@ do_clear:;
  * - p2 = (bit 3 + 4) - road type
  * - p2 = (bit 5) - set road direction
  */
-CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	bool had_bridge = false;
@@ -805,7 +805,7 @@ CommandCost CmdBuildLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32
  * - p2 = (bit 2) - direction: 0 = along x-axis, 1 = along y-axis (p2 & 4)
  * - p2 = (bit 3 + 4) - road type
  */
-CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -870,7 +870,7 @@ CommandCost CmdRemoveLongRoad(TileIndex end_tile, uint32 flags, uint32 p1, uint3
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	DiagDirection dir = Extract<DiagDirection, 0>(p1);
 	RoadType rt = (RoadType)GB(p1, 2, 2);

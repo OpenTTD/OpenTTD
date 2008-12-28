@@ -15,7 +15,7 @@ struct AICommand {
 	uint32 tile;
 	uint32 p1;
 	uint32 p2;
-	uint32 procc;
+	uint32 cmd;
 	CommandCallback *callback;
 
 	char *text;
@@ -47,8 +47,8 @@ void AI_CompanyDied(CompanyID company);
 void AI_RunGameLoop();
 void AI_Initialize();
 void AI_Uninitialize();
-CommandCost AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
-CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc, CommandCallback* callback);
+CommandCost AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc, const char *text = NULL);
+CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc, CommandCallback* callback, const char *text = NULL);
 
 /** Is it allowed to start a new AI.
  * This function checks some boundries to see if we should launch a new AI.

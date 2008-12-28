@@ -53,29 +53,21 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
 /**
  * Execute a command
  */
-CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc);
+CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, const char *text = NULL);
 
 /**
  * Execute a network safe DoCommand function
  */
-bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd, bool my_cmd = true);
+bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback = NULL, const char *text = NULL, bool my_cmd = true);
 
 #ifdef ENABLE_NETWORK
 
 /**
  * Send a command over the network
  */
-void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
+void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text);
 #endif /* ENABLE_NETWORK */
 
-/**
- * Text, which gets sent with a command
- *
- * This variable contains a string (be specific a pointer of the first
- * char of this string) which will be send with a command. This is
- * used for user input data like names or chat messages.
- */
-extern const char *_cmd_text;
 extern Money _additional_cash_required;
 extern StringID _error_message;
 

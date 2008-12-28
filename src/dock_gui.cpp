@@ -47,17 +47,17 @@ void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceDocks_Dock(TileIndex tile)
 {
-	DoCommandP(tile, _ctrl_pressed, 0, CcBuildDocks, CMD_BUILD_DOCK | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE));
+	DoCommandP(tile, _ctrl_pressed, 0, CMD_BUILD_DOCK | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE), CcBuildDocks);
 }
 
 static void PlaceDocks_Depot(TileIndex tile)
 {
-	DoCommandP(tile, _ship_depot_direction, 0, CcBuildDocks, CMD_BUILD_SHIP_DEPOT | CMD_MSG(STR_3802_CAN_T_BUILD_SHIP_DEPOT));
+	DoCommandP(tile, _ship_depot_direction, 0, CMD_BUILD_SHIP_DEPOT | CMD_MSG(STR_3802_CAN_T_BUILD_SHIP_DEPOT), CcBuildDocks);
 }
 
 static void PlaceDocks_Buoy(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_BUOY | CMD_MSG(STR_9835_CAN_T_POSITION_BUOY_HERE));
+	DoCommandP(tile, 0, 0, CMD_BUILD_BUOY | CMD_MSG(STR_9835_CAN_T_POSITION_BUOY_HERE), CcBuildDocks);
 }
 
 static void PlaceDocks_BuildCanal(TileIndex tile)
@@ -67,7 +67,7 @@ static void PlaceDocks_BuildCanal(TileIndex tile)
 
 static void PlaceDocks_BuildLock(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CcBuildDocks, CMD_BUILD_LOCK | CMD_MSG(STR_CANT_BUILD_LOCKS));
+	DoCommandP(tile, 0, 0, CMD_BUILD_LOCK | CMD_MSG(STR_CANT_BUILD_LOCKS), CcBuildDocks);
 }
 
 static void PlaceDocks_BuildRiver(TileIndex tile)
@@ -217,16 +217,16 @@ struct BuildDocksToolbarWindow : Window {
 				case DDSP_BUILD_BRIDGE:
 					ResetObjectToPlace();
 					extern void CcBuildBridge(bool success, TileIndex tile, uint32 p1, uint32 p2);
-					DoCommandP(end_tile, start_tile, TRANSPORT_WATER << 15, CcBuildBridge, CMD_BUILD_BRIDGE | CMD_MSG(STR_CAN_T_BUILD_AQUEDUCT_HERE));
+					DoCommandP(end_tile, start_tile, TRANSPORT_WATER << 15, CMD_BUILD_BRIDGE | CMD_MSG(STR_CAN_T_BUILD_AQUEDUCT_HERE), CcBuildBridge);
 
 				case DDSP_DEMOLISH_AREA:
 					GUIPlaceProcDragXY(select_proc, start_tile, end_tile);
 					break;
 				case DDSP_CREATE_WATER:
-					DoCommandP(end_tile, start_tile, (_game_mode == GM_EDITOR ? _ctrl_pressed : 0), CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS));
+					DoCommandP(end_tile, start_tile, (_game_mode == GM_EDITOR ? _ctrl_pressed : 0), CMD_BUILD_CANAL | CMD_MSG(STR_CANT_BUILD_CANALS), CcBuildCanal);
 					break;
 				case DDSP_CREATE_RIVER:
-					DoCommandP(end_tile, start_tile, 2, CcBuildCanal, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_PLACE_RIVERS));
+					DoCommandP(end_tile, start_tile, 2, CMD_BUILD_CANAL | CMD_MSG(STR_CANT_PLACE_RIVERS), CcBuildCanal);
 					break;
 
 				default: break;

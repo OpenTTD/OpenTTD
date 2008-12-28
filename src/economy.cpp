@@ -1886,7 +1886,7 @@ extern int GetAmountOwnedBy(const Company *c, Owner owner);
  * @param p1 company to buy the shares from
  * @param p2 unused
  */
-CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_OTHER);
 
@@ -1931,7 +1931,7 @@ CommandCost CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32
  * @param p1 company to sell the shares from
  * @param p2 unused
  */
-CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Check if selling shares is allowed (protection against modified clients) */
 	/* Cannot sell own shares */
@@ -1964,7 +1964,7 @@ CommandCost CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint3
  * @param p1 company to buy up
  * @param p2 unused
  */
-CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CompanyID cid = (CompanyID)p1;
 

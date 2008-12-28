@@ -1055,17 +1055,18 @@ struct BuildVehicleWindow : Window {
 					switch (this->vehicle_type) {
 						default: NOT_REACHED();
 						case VEH_TRAIN:
-							DoCommandP(this->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco,
-										CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+							DoCommandP(this->window_number, sel_eng, 0,
+									CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE),
+									(RailVehInfo(sel_eng)->railveh_type == RAILVEH_WAGON) ? CcBuildWagon : CcBuildLoco);
 							break;
 						case VEH_ROAD:
-							DoCommandP(this->window_number, sel_eng, 0, CcBuildRoadVeh, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
+							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE), CcBuildRoadVeh);
 							break;
 						case VEH_SHIP:
-							DoCommandP(this->window_number, sel_eng, 0, CcBuildShip, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
+							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP), CcBuildShip);
 							break;
 						case VEH_AIRCRAFT:
-							DoCommandP(this->window_number, sel_eng, 0, CcBuildAircraft, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
+							DoCommandP(this->window_number, sel_eng, 0, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT), CcBuildAircraft);
 							break;
 					}
 				}
@@ -1151,7 +1152,6 @@ struct BuildVehicleWindow : Window {
 		if (str == NULL) return;
 
 		StringID err_str = STR_NULL;
-		_cmd_text = str;
 		switch (this->vehicle_type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:    err_str = STR_886B_CAN_T_RENAME_TRAIN_VEHICLE; break;
@@ -1159,7 +1159,7 @@ struct BuildVehicleWindow : Window {
 			case VEH_SHIP:     err_str = STR_9839_CAN_T_RENAME_SHIP_TYPE;     break;
 			case VEH_AIRCRAFT: err_str = STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE; break;
 		}
-		DoCommandP(0, this->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(err_str));
+		DoCommandP(0, this->rename_engine, 0, CMD_RENAME_ENGINE | CMD_MSG(err_str), NULL, str);
 	}
 
 	virtual void OnDropdownSelect(int widget, int index)

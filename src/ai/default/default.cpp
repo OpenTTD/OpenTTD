@@ -320,7 +320,7 @@ static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 	if (bak->order == NULL) return;
 
 	for (uint i = 0; !bak->order[i].IsType(OT_NOTHING); i++) {
-		if (!DoCommandP(0, v->index + (i << 16), bak->order[i].Pack(), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
+		if (!DoCommandP(0, v->index + (i << 16), bak->order[i].Pack(), CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 	}
 }

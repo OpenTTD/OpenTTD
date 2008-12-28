@@ -1467,7 +1467,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		/* pause is only used in single-player, non-editor mode, non-menu mode. It
 		 * will be unpaused in the WE_DESTROY event handler. */
 		if (_game_mode != GM_MENU && !_networking && _game_mode != GM_EDITOR) {
-			if (_pause_game >= 0) DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+			if (_pause_game >= 0) DoCommandP(0, 1, 0, CMD_PAUSE);
 		}
 
 		BuildFileList();
@@ -1505,7 +1505,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 	{
 		/* pause is only used in single-player, non-editor mode, non menu mode */
 		if (!_networking && _game_mode != GM_EDITOR && _game_mode != GM_MENU) {
-			if (_pause_game >= 0) DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+			if (_pause_game >= 0) DoCommandP(0, 0, 0, CMD_PAUSE);
 		}
 		FiosFreeSavegameList();
 	}

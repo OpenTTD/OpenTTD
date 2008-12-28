@@ -91,7 +91,7 @@ struct EnginePreviewWindow : Window {
 	{
 		switch (widget) {
 			case 4:
-				DoCommandP(0, this->window_number, 0, NULL, CMD_WANT_ENGINE_PREVIEW);
+				DoCommandP(0, this->window_number, 0, CMD_WANT_ENGINE_PREVIEW);
 				/* Fallthrough */
 			case 3:
 				delete this;

@@ -63,8 +63,6 @@ void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void HandleOnEditText(const char *str)
 {
-	_cmd_text = str;
-
 	switch (_rename_what) {
 #ifdef ENABLE_NETWORK
 	case 3: { // Give money, you can only give money in excess of loan
@@ -74,7 +72,7 @@ void HandleOnEditText(const char *str)
 		uint32 money_c = Clamp(ClampToI32(money), 0, 20000000); // Clamp between 20 million and 0
 
 		/* Give 'id' the money, and substract it from ourself */
-		DoCommandP(0, money_c, _rename_id, CcGiveMoney, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS));
+		DoCommandP(0, money_c, _rename_id, CMD_GIVE_MONEY | CMD_MSG(STR_INSUFFICIENT_FUNDS), CcGiveMoney, str);
 	} break;
 #endif /* ENABLE_NETWORK */
 		default: NOT_REACHED();
@@ -271,7 +269,7 @@ struct MainWindow : Window
 #ifdef ENABLE_NETWORK
 				if (!_networking || !_network_server || !_settings_client.network.server_advertise)
 #endif /* ENABLE_NETWORK */
-					DoCommandP(0, 10000000, 0, NULL, CMD_MONEY_CHEAT);
+					DoCommandP(0, 10000000, 0, CMD_MONEY_CHEAT);
 				break;
 
 			case '2' | WKC_ALT: // Update the coordinates of all station signs

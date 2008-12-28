@@ -40,7 +40,7 @@ void CcBuildAirport(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceAirport(TileIndex tile)
 {
-	DoCommandP(tile, _selected_airport_type, _ctrl_pressed, CcBuildAirport, CMD_BUILD_AIRPORT | CMD_NO_WATER | CMD_MSG(STR_A001_CAN_T_BUILD_AIRPORT_HERE));
+	DoCommandP(tile, _selected_airport_type, _ctrl_pressed, CMD_BUILD_AIRPORT | CMD_NO_WATER | CMD_MSG(STR_A001_CAN_T_BUILD_AIRPORT_HERE), CcBuildAirport);
 }
 
 

@@ -40,8 +40,7 @@ static void AI_DequeueCommands(CompanyID company)
 	while ((com = entry_com) != NULL) {
 		_current_company = company;
 
-		_cmd_text = com->text;
-		DoCommandP(com->tile, com->p1, com->p2, com->callback, com->procc);
+		DoCommandP(com->tile, com->p1, com->p2, com->cmd, com->callback, com->text);
 
 		/* Free item */
 		entry_com = com->next;
@@ -54,7 +53,7 @@ static void AI_DequeueCommands(CompanyID company)
  * Needed for SP; we need to delay DoCommand with 1 tick, because else events
  *  will make infinite loops (AIScript).
  */
-static void AI_PutCommandInQueue(CompanyID company, TileIndex tile, uint32 p1, uint32 p2, uint32 procc, CommandCallback* callback)
+static void AI_PutCommandInQueue(CompanyID company, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback* callback, const char *text = NULL)
 {
 	AICommand *com;
 
@@ -75,43 +74,30 @@ static void AI_PutCommandInQueue(CompanyID company, TileIndex tile, uint32 p1, u
 	com->tile  = tile;
 	com->p1    = p1;
 	com->p2    = p2;
-	com->procc = procc;
+	com->cmd = cmd;
 	com->callback = callback;
 	com->next  = NULL;
-	com->text  = NULL;
-
-	/* Copy the cmd_text, if needed */
-	if (_cmd_text != NULL) {
-		com->text = strdup(_cmd_text);
-		_cmd_text = NULL;
-	}
+	com->text  = text == NULL ? NULL : strdup(text);
 }
 
 /**
  * Executes a raw DoCommand for the AI.
  */
-CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc, CommandCallback* callback)
+CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, CommandCallback* callback, const char *text)
 {
 	CompanyID old_local_company;
 	CommandCost res;
-	const char* tmp_cmdtext;
 
 	/* If you enable DC_EXEC with DC_QUERY_COST you are a really strange
 	 *   person.. should we check for those funny jokes?
 	 */
 
-	/* The test already resets _cmd_text, so backup the pointer */
-	tmp_cmdtext = _cmd_text;
-
 	/* First, do a test-run to see if we can do this */
-	res = DoCommand(tile, p1, p2, flags & ~DC_EXEC, procc);
+	res = DoCommand(tile, p1, p2, flags & ~DC_EXEC, cmd, text);
 	/* The command failed, or you didn't want to execute, or you are quering, return */
 	if (CmdFailed(res) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST)) {
 		return res;
 	}
-
-	/* Restore _cmd_text */
-	_cmd_text = tmp_cmdtext;
 
 	/* NetworkSend_Command needs _local_company to be set correctly, so
 	 * adjust it, and put it back right after the function */
@@ -122,14 +108,14 @@ CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, u
 	/* Send the command */
 	if (_networking) {
 		/* Network is easy, send it to his handler */
-		NetworkSend_Command(tile, p1, p2, procc, callback);
+		NetworkSend_Command(tile, p1, p2, cmd, callback, text);
 	} else {
 #else
 	{
 #endif
 		/* If we execute BuildCommands directly in SP, we have a big problem with events
 		 *  so we need to delay is for 1 tick */
-		AI_PutCommandInQueue(_current_company, tile, p1, p2, procc, callback);
+		AI_PutCommandInQueue(_current_company, tile, p1, p2, cmd, callback, text);
 	}
 
 	/* Set _local_company back */
@@ -139,9 +125,9 @@ CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, u
 }
 
 
-CommandCost AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 procc)
+CommandCost AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, const char *text)
 {
-	return AI_DoCommandCc(tile, p1, p2, flags, procc, NULL);
+	return AI_DoCommandCc(tile, p1, p2, flags, cmd, NULL, text);
 }
 
 

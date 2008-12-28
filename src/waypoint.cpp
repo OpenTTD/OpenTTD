@@ -190,7 +190,7 @@ void AfterLoadWaypoints()
  * @todo When checking for the tile slope,
  * distingush between "Flat land required" and "land sloped in wrong direction"
  */
-CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Waypoint *wp;
 	Slope tileh;
@@ -352,7 +352,7 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
  * @param p2 unused
  * @return cost of operation or error
  */
-CommandCost CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	return RemoveTrainWaypoint(tile, flags, true);
 }
@@ -379,18 +379,18 @@ static bool IsUniqueWaypointName(const char *name)
  * @param p2 unused
  * @return cost of operation or error
  */
-CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidWaypointID(p1)) return CMD_ERROR;
 
 	Waypoint *wp = GetWaypoint(p1);
 	if (!CheckOwnership(wp->owner)) return CMD_ERROR;
 
-	bool reset = StrEmpty(_cmd_text);
+	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_WAYPOINT_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueWaypointName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (strlen(text) >= MAX_LENGTH_WAYPOINT_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueWaypointName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
@@ -399,7 +399,7 @@ CommandCost CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		if (reset) {
 			MakeDefaultWaypointName(wp); // sets wp->name = NULL
 		} else {
-			wp->name = strdup(_cmd_text);
+			wp->name = strdup(text);
 		}
 
 		UpdateWaypointSign(wp);

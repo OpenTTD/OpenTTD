@@ -375,13 +375,13 @@ void CheckMinActiveClients()
 		if (_min_active_clients_paused) return;
 
 		_min_active_clients_paused = true;
-		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		DoCommandP(0, 1, 0, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", CLIENT_ID_SERVER);
 	} else {
 		if (!_min_active_clients_paused) return;
 
 		_min_active_clients_paused = false;
-		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		DoCommandP(0, 0, 0, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", CLIENT_ID_SERVER);
 	}
 }
@@ -470,7 +470,7 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
 	if (cs->status == STATUS_PRE_ACTIVE && _settings_client.network.pause_on_join) {
-		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		DoCommandP(0, 0, 0, CMD_PAUSE);
 		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", CLIENT_ID_SERVER);
 	}
 
@@ -1057,8 +1057,7 @@ void NetworkGameLoop()
 		while (f != NULL && !feof(f)) {
 			if (cp != NULL && _date == next_date && _date_fract == next_date_fract) {
 				_current_company = cp->company;
-				_cmd_text = cp->text;
-				DoCommandP(cp->tile, cp->p1, cp->p2, NULL, cp->cmd);
+				DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd, NULL, cp->text);
 				free(cp);
 				cp = NULL;
 			}

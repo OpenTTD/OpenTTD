@@ -949,8 +949,7 @@ struct StationViewWindow : public Window {
 	{
 		if (str == NULL) return;
 
-		_cmd_text = str;
-		DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION), NULL, str);
 	}
 
 	virtual void OnResize(Point new_size, Point delta)

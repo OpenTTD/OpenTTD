@@ -31,7 +31,7 @@
  * @param p1 unused
  * @param p2 face bitmasked
  */
-CommandCost CmdSetCompanyManagerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetCompanyManagerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CompanyManagerFace cmf = (CompanyManagerFace)p2;
 
@@ -52,7 +52,7 @@ CommandCost CmdSetCompanyManagerFace(TileIndex tile, uint32 flags, uint32 p1, ui
  * p1 bits 8-9 set in use state or first/second colour
  * @param p2 new colour for vehicles, property, etc.
  */
-CommandCost CmdSetCompanyColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetCompanyColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (p2 >= 16) return CMD_ERROR; // max 16 colours
 
@@ -132,7 +132,7 @@ CommandCost CmdSetCompanyColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * @param p2 when 0: loans LOAN_INTERVAL
  *           when 1: loans the maximum loan permitting money (press CTRL),
  */
-CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Company *c = GetCompany(_current_company);
 
@@ -171,7 +171,7 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 when 0: pays back LOAN_INTERVAL
  *           when 1: pays back the maximum loan permitting money (press CTRL),
  */
-CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Company *c = GetCompany(_current_company);
 
@@ -222,19 +222,19 @@ static bool IsUniqueCompanyName(const char *name)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdRenameCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
-	bool reset = StrEmpty(_cmd_text);
+	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_COMPANY_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueCompanyName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (strlen(text) >= MAX_LENGTH_COMPANY_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueCompanyName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
 		Company *c = GetCompany(_current_company);
 		free(c->name);
-		c->name = reset ? NULL : strdup(_cmd_text);
+		c->name = reset ? NULL : strdup(text);
 		MarkWholeScreenDirty();
 	}
 
@@ -261,13 +261,13 @@ static bool IsUniquePresidentName(const char *name)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdRenamePresident(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenamePresident(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
-	bool reset = StrEmpty(_cmd_text);
+	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_PRESIDENT_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniquePresidentName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (strlen(text) >= MAX_LENGTH_PRESIDENT_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniquePresidentName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
@@ -277,14 +277,13 @@ CommandCost CmdRenamePresident(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		if (reset) {
 			c->president_name = NULL;
 		} else {
-			c->president_name = strdup(_cmd_text);
+			c->president_name = strdup(text);
 
 			if (c->name_1 == STR_SV_UNNAMED && c->name == NULL) {
 				char buf[80];
 
-				snprintf(buf, lengthof(buf), "%s Transport", _cmd_text);
-				_cmd_text = buf;
-				DoCommand(0, 0, 0, DC_EXEC, CMD_RENAME_COMPANY);
+				snprintf(buf, lengthof(buf), "%s Transport", text);
+				DoCommand(0, 0, 0, DC_EXEC, CMD_RENAME_COMPANY, buf);
 			}
 		}
 
@@ -302,7 +301,7 @@ CommandCost CmdRenamePresident(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  */
 static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
 {
-	DoCommandP(0, confirmed ? 0 : 1, 0, NULL, CMD_PAUSE);
+	DoCommandP(0, confirmed ? 0 : 1, 0, CMD_PAUSE);
 }
 
 /** Pause/Unpause the game (server-only).
@@ -314,7 +313,7 @@ static void AskUnsafeUnpauseCallback(Window *w, bool confirmed)
  * @param p1 0 = decrease pause counter; 1 = increase pause counter
  * @param p2 unused
  */
-CommandCost CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (flags & DC_EXEC) {
 		_pause_game += (p1 == 0) ? -1 : 1;
@@ -350,7 +349,7 @@ CommandCost CmdPause(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 the amount of money to receive (if negative), or spend (if positive)
  * @param p2 unused
  */
-CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 #ifndef _DEBUG
 	if (_networking) return CMD_ERROR;
@@ -367,7 +366,7 @@ CommandCost CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 the amount of money to transfer; max 20.000.000
  * @param p2 the company to transfer the money to
  */
-CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!_settings_game.economy.give_money) return CMD_ERROR;
 

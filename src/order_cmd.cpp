@@ -332,7 +332,7 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
  *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
  * @param p2 packed order to insert
  */
-CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	VehicleID veh   = GB(p1,  0, 16);
@@ -613,7 +613,7 @@ static CommandCost DecloneOrder(Vehicle *dst, uint32 flags)
  * @param p1 the ID of the vehicle
  * @param p2 the order to delete (max 255)
  */
-CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	VehicleID veh_id = p1;
@@ -703,7 +703,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 The ID of the vehicle which order is skipped
  * @param p2 the selected order to which we want to skip
  */
-CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	VehicleID veh_id = p1;
@@ -743,7 +743,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @note The target order will move one place down in the orderlist
  *  if you move the order upwards else it'll move it one place down
  */
-CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleID veh = p1;
 	VehicleOrderID moving_order = GB(p2,  0, 16);
@@ -847,7 +847,7 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *  - p2 = (bit 0 -  3) - what data to modify (@see ModifyOrderFlags)
  *  - p2 = (bit 4 - 15) - the data to modify
  */
-CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleOrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
 	VehicleID veh          = GB(p1,  0, 16);
@@ -1064,7 +1064,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * - p1 = (bit 16-31) - source vehicle to clone orders from, if any (none for CO_UNSHARE)
  * @param p2 mode of cloning: CO_SHARE, CO_COPY, or CO_UNSHARE
  */
-CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *dst;
 	VehicleID veh_src = GB(p1, 16, 16);
@@ -1190,7 +1190,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *   - bit 8-15 Cargo subtype
  *   - bit 16-23 number of order to modify
  */
-CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	const Vehicle *v;
 	Order *order;
@@ -1285,14 +1285,11 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 {
 	/* If we have a custom name, process that */
-	if (bak->name != NULL) {
-		_cmd_text = bak->name;
-		DoCommandP(0, v->index, 0, NULL, CMD_RENAME_VEHICLE);
-	}
+	if (bak->name != NULL) DoCommandP(0, v->index, 0, CMD_RENAME_VEHICLE, NULL, bak->name);
 
 	/* If we had shared orders, recover that */
 	if (bak->clone != INVALID_VEHICLE) {
-		DoCommandP(0, v->index | (bak->clone << 16), CO_SHARE, NULL, CMD_CLONE_ORDER);
+		DoCommandP(0, v->index | (bak->clone << 16), CO_SHARE, CMD_CLONE_ORDER);
 	} else {
 
 		/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
@@ -1304,14 +1301,14 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 			/* Conditional orders need to have their destination to be valid on insertion. */
 			if (o.IsType(OT_CONDITIONAL)) o.SetConditionSkipToOrder(0);
 
-			if (!DoCommandP(0, v->index + (i << 16), o.Pack(), NULL,
+			if (!DoCommandP(0, v->index + (i << 16), o.Pack(),
 					CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
 				break;
 			}
 
 			/* Copy timetable if enabled */
 			if (_settings_game.order.timetabling && !DoCommandP(0, v->index | (i << 16) | (1 << 25),
-					o.wait_time << 16 | o.travel_time, NULL,
+					o.wait_time << 16 | o.travel_time,
 					CMD_CHANGE_TIMETABLE | CMD_NO_TEST_IF_IN_NETWORK)) {
 				break;
 			}
@@ -1321,7 +1318,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 		for (uint i = 0; bak->order[i].IsValid(); i++) {
 			if (!bak->order[i].IsType(OT_CONDITIONAL)) continue;
 
-			if (!DoCommandP(0, v->index + (i << 16), MOF_LOAD | (bak->order[i].GetConditionSkipToOrder() << 4), NULL,
+			if (!DoCommandP(0, v->index + (i << 16), MOF_LOAD | (bak->order[i].GetConditionSkipToOrder() << 4),
 					CMD_MODIFY_ORDER | CMD_NO_TEST_IF_IN_NETWORK)) {
 				break;
 			}
@@ -1329,10 +1326,10 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
 	}
 
 	/* Restore vehicle order-index and service interval */
-	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16) , NULL, CMD_RESTORE_ORDER_INDEX);
+	DoCommandP(0, v->index, bak->orderindex | (bak->service_interval << 16) , CMD_RESTORE_ORDER_INDEX);
 
 	/* Restore vehicle group */
-	DoCommandP(0, bak->group, v->index, NULL, CMD_ADD_VEHICLE_GROUP);
+	DoCommandP(0, bak->group, v->index, CMD_ADD_VEHICLE_GROUP);
 }
 
 /** Restore the current order-index of a vehicle and sets service-interval.
@@ -1349,7 +1346,7 @@ void RestoreVehicleOrders(const Vehicle *v, const BackuppedOrders *bak)
  * If we do want to backup/restore it, just add UnitID uid to BackuppedOrders, and
  * restore it as parameter 'y' (ugly hack I know) for example. "v->unitnumber = y;"
  */
-CommandCost CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	VehicleOrderID cur_ord = GB(p2,  0, 16);

@@ -32,7 +32,7 @@ void NetworkAddCommandQueue(NetworkClientSocket *cs, CommandPacket *cp)
 }
 
 // Prepare a DoCommand to be send over the network
-void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback)
+void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text)
 {
 	CommandPacket c;
 
@@ -53,7 +53,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 		c.callback = 0; // _callback_table[0] == NULL
 	}
 
-	strecpy(c.text, (_cmd_text != NULL) ? _cmd_text : "", lastof(c.text));
+	strecpy(c.text, (text != NULL) ? text : "", lastof(c.text));
 
 	if (_network_server) {
 		/* If we are the server, we queue the command in our 'special' queue.
@@ -96,7 +96,6 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 void NetworkExecuteCommand(CommandPacket *cp)
 {
 	_current_company = cp->company;
-	_cmd_text = cp->text;
 	/* cp->callback is unsigned. so we don't need to do lower bounds checking. */
 	if (cp->callback > _callback_table_count) {
 		DEBUG(net, 0, "Received out-of-bounds callback (%d)", cp->callback);
@@ -105,7 +104,7 @@ void NetworkExecuteCommand(CommandPacket *cp)
 
 	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
 
-	DoCommandP(cp->tile, cp->p1, cp->p2, _callback_table[cp->callback], cp->cmd | CMD_NETWORK_COMMAND, cp->my_cmd);
+	DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd | CMD_NETWORK_COMMAND, _callback_table[cp->callback], cp->text, cp->my_cmd);
 }
 
 #endif /* ENABLE_NETWORK */

@@ -223,7 +223,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
  * @param p2 direction; eg up (non-zero) or down (zero)
  * @return error or cost of terraforming
  */
-CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Make an extra check for map-bounds cause we add tiles to the originating tile */
 	if (tile + TileDiffXY(1, 1) >= MapSize()) return CMD_ERROR;
@@ -347,7 +347,7 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 height difference; eg raise (+1), lower (-1) or level (0)
  * @return  error or cost of terraforming
  */
-CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (p1 >= MapSize()) return CMD_ERROR;
 

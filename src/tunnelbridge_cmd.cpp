@@ -186,7 +186,7 @@ bool CheckBridge_Stuff(BridgeType bridge_type, uint bridge_len, uint32 flags)
  * - p2 = (bit  8-14) - rail type or road types.
  * - p2 = (bit 15-16) - transport type.
  */
-CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	BridgeType bridge_type;
 	RailType railtype = INVALID_RAILTYPE;
@@ -473,7 +473,7 @@ not_valid_below:;
  * @param p1 railtype or roadtypes. bit 9 set means road tunnel
  * @param p2 unused
  */
-CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	TileIndexDiff delta;
 	TileIndex end_tile;

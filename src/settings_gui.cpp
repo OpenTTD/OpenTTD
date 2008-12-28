@@ -277,7 +277,7 @@ struct GameOptionsWindow : Window {
 
 			case GAMEOPT_ROADSIDE_BTN: // Road side
 				if (this->opt->vehicle.road_side != index) { // only change if setting changed
-					DoCommandP(0, index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+					DoCommandP(0, index, 0, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 					MarkWholeScreenDirty();
 				}
 				break;
@@ -547,12 +547,12 @@ public:
 					int32 cur_val = (int32)ReadValue(GetVariableAddress(opt_ptr, &sd->save), sd->save.conv);
 					/* if setting has changed, change it */
 					if (new_val != cur_val) {
-						DoCommandP(0, i + btn, new_val, NULL, CMD_CHANGE_PATCH_SETTING);
+						DoCommandP(0, i + btn, new_val, CMD_CHANGE_PATCH_SETTING);
 					}
 				}
 
 				GetPatchFromName("difficulty.diff_level", &i);
-				DoCommandP(0, i, this->opt_mod_temp.difficulty.diff_level, NULL, CMD_CHANGE_PATCH_SETTING);
+				DoCommandP(0, i, this->opt_mod_temp.difficulty.diff_level, CMD_CHANGE_PATCH_SETTING);
 				delete this;
 				/* If we are in the editor, we should reload the economy.
 				 * This way when you load a game, the max loan and interest rate

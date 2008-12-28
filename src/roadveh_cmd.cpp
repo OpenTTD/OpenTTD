@@ -173,7 +173,7 @@ void RoadVehUpdateCache(Vehicle *v)
  * @param p1 bus/truck type being built (engine)
  * @param p2 unused
  */
-CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost;
 	Vehicle *v;
@@ -325,7 +325,7 @@ bool RoadVehicle::IsStoppedInDepot() const
  * @param p1 vehicle ID to be sold
  * @param p2 unused
  */
-CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 
@@ -430,7 +430,7 @@ bool RoadVehicle::FindClosestDepot(TileIndex *location, DestinationID *destinati
  * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
  * - p2 bit 8-10 - VLW flag (for mass goto depot)
  */
-CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
@@ -453,7 +453,7 @@ CommandCost CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint3
  * @param p1 vehicle ID to turn
  * @param p2 unused
  */
-CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 
@@ -2005,7 +2005,7 @@ void RoadVehiclesYearlyLoop()
  * - p2 = (bit 16) - refit only this vehicle
  * @return cost of refit or error
  */
-CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Vehicle *v;
 	CommandCost cost(EXPENSES_ROADVEH_RUN);

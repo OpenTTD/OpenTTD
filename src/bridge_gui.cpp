@@ -94,7 +94,7 @@ private:
 	void BuildBridge(uint8 i)
 	{
 		DoCommandP(this->end_tile, this->start_tile, this->type | this->bridges->Get(i)->index,
-				CcBuildBridge, CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE));
+					CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
 	}
 
 	/** Sort the builable bridges */

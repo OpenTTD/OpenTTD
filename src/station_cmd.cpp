@@ -913,7 +913,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  * - p2 = (bit  8-15) - custom station class
  * - p2 = (bit 16-23) - custom station id
  */
-CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Does the authority allow this? */
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org)) return CMD_ERROR;
@@ -1192,7 +1192,7 @@ restart:
  * @param p1 start_tile
  * @param p2 unused
  */
-CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	TileIndex start = p1 == 0 ? tile : p1;
 
@@ -1394,7 +1394,7 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station *st)
  *           bit 2..4: the roadtypes
  *           bit 5: allow stations directly adjacent to other stations.
  */
-CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	bool type = HasBit(p2, 0);
 	bool is_drive_through = HasBit(p2, 1);
@@ -1608,7 +1608,7 @@ static CommandCost RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
  * @param p1 not used
  * @param p2 bit 0: 0 for Bus stops, 1 for truck stops
  */
-CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Make sure the specified tile is a road stop of the correct type */
 	if (!IsTileType(tile, MP_STATION) || !IsRoadStop(tile) || (uint32)GetRoadStopType(tile) != GB(p2, 0, 1)) return CMD_ERROR;
@@ -1816,7 +1816,7 @@ void UpdateAirportsNoise()
  * @param p1 airport type, @see airport.h
  * @param p2 (bit 0) - allow airports directly adjacent to other airports.
  */
-CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	bool airport_upgrade = true;
 
@@ -2013,7 +2013,7 @@ static CommandCost RemoveAirport(Station *st, uint32 flags)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsWaterTile(tile) || tile == 0) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
@@ -2123,7 +2123,7 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
  * @param p1 (bit 0) - allow docks directly adjacent to other docks.
  * @param p2 unused
  */
-CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	DiagDirection direction = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_304B_SITE_UNSUITABLE);
@@ -2865,23 +2865,23 @@ static bool IsUniqueStationName(const char *name)
  * @param p1 station ID that is to be renamed
  * @param p2 unused
  */
-CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidStationID(p1)) return CMD_ERROR;
 
 	Station *st = GetStation(p1);
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
-	bool reset = StrEmpty(_cmd_text);
+	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_STATION_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueStationName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (strlen(text) >= MAX_LENGTH_STATION_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueStationName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
 		free(st->name);
-		st->name = reset ? NULL : strdup(_cmd_text);
+		st->name = reset ? NULL : strdup(text);
 
 		UpdateStationVirtCoord(st);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 1);

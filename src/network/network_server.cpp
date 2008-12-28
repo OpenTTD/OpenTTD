@@ -804,7 +804,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 
 		if (_settings_client.network.pause_on_join) {
 			/* Now pause the game till the client is in sync */
-			DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+			DoCommandP(0, 1, 0, CMD_PAUSE);
 
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (incoming client)", CLIENT_ID_SERVER);
 		}
@@ -1030,7 +1030,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 		cs->status = STATUS_ACTIVE;
 
 		if (_settings_client.network.pause_on_join) {
-			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+			DoCommandP(0, 0, 0, CMD_PAUSE);
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", CLIENT_ID_SERVER);
 		}
 
@@ -1392,7 +1392,7 @@ static void NetworkAutoCleanCompanies()
 			/* Is the company empty for autoclean_unprotected-months, and is there no protection? */
 			if (_settings_client.network.autoclean_unprotected != 0 && _network_company_states[c->index].months_empty > _settings_client.network.autoclean_unprotected && StrEmpty(_network_company_states[c->index].password)) {
 				/* Shut the company down */
-				DoCommandP(0, 2, c->index, NULL, CMD_COMPANY_CTRL);
+				DoCommandP(0, 2, c->index, CMD_COMPANY_CTRL);
 				IConsolePrintF(CC_DEFAULT, "Auto-cleaned company #%d", c->index + 1);
 			}
 			/* Is the company empty for autoclean_protected-months, and there is a protection? */

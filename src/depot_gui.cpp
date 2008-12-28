@@ -165,7 +165,7 @@ static void TrainDepotMoveVehicle(const Vehicle *wagon, VehicleID sel, const Veh
 
 	if (wagon == v) return;
 
-	DoCommandP(v->tile, v->index + ((wagon == NULL ? INVALID_VEHICLE : wagon->index) << 16), _ctrl_pressed ? 1 : 0, NULL, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_8837_CAN_T_MOVE_VEHICLE));
+	DoCommandP(v->tile, v->index + ((wagon == NULL ? INVALID_VEHICLE : wagon->index) << 16), _ctrl_pressed ? 1 : 0, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_8837_CAN_T_MOVE_VEHICLE));
 }
 
 /* Array to hold the block sizes
@@ -545,7 +545,7 @@ struct DepotWindow : Window {
 					case VEH_AIRCRAFT: command = CMD_START_STOP_VEHICLE | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT);     break;
 					default: NOT_REACHED(); command = 0;
 				}
-				DoCommandP(v->tile, v->index, 0, NULL, command);
+				DoCommandP(v->tile, v->index, 0, command);
 			} break;
 
 			default: NOT_REACHED();
@@ -577,7 +577,7 @@ struct DepotWindow : Window {
 			default: return;
 		}
 
-		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle, CMD_CLONE_VEHICLE | error_str);
+		DoCommandP(this->window_number, v->index, _ctrl_pressed ? 1 : 0, CMD_CLONE_VEHICLE | error_str, CcCloneVehicle);
 
 		ResetObjectToPlace();
 	}
@@ -802,7 +802,7 @@ struct DepotWindow : Window {
 
 			case DEPOT_WIDGET_STOP_ALL:
 			case DEPOT_WIDGET_START_ALL:
-				DoCommandP(this->window_number, 0, this->type | (widget == DEPOT_WIDGET_START_ALL ? (1 << 5) : 0), NULL, CMD_MASS_START_STOP);
+				DoCommandP(this->window_number, 0, this->type | (widget == DEPOT_WIDGET_START_ALL ? (1 << 5) : 0), CMD_MASS_START_STOP);
 				break;
 
 			case DEPOT_WIDGET_SELL_ALL:
@@ -832,7 +832,7 @@ struct DepotWindow : Window {
 				break;
 
 			case DEPOT_WIDGET_AUTOREPLACE:
-				DoCommandP(this->window_number, this->type, 0, NULL, CMD_DEPOT_MASS_AUTOREPLACE);
+				DoCommandP(this->window_number, this->type, 0, CMD_DEPOT_MASS_AUTOREPLACE);
 				break;
 
 		}
@@ -951,7 +951,7 @@ struct DepotWindow : Window {
 					if (this->GetVehicleFromDepotWndPt(pt.x, pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
 						sel != INVALID_VEHICLE) {
 						if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
-							DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
+							DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
 						} else if (gdvp.wagon == NULL || gdvp.wagon->index != sel) {
 							TrainDepotMoveVehicle(gdvp.wagon, sel, gdvp.head);
 						} else if (gdvp.head != NULL && IsFrontEngine(gdvp.head)) {
@@ -996,7 +996,7 @@ struct DepotWindow : Window {
 						default: NOT_REACHED(); command = 0;
 					}
 
-					if (!DoCommandP(v->tile, v->index, sell_cmd, NULL, command) && is_engine) _backup_orders_tile = 0;
+					if (!DoCommandP(v->tile, v->index, sell_cmd, command) && is_engine) _backup_orders_tile = 0;
 				}
 				break;
 			default:
@@ -1032,7 +1032,7 @@ static void DepotSellAllConfirmationCallback(Window *win, bool confirmed)
 		DepotWindow *w = (DepotWindow*)win;
 		TileIndex tile = w->window_number;
 		byte vehtype = w->type;
-		DoCommandP(tile, vehtype, 0, NULL, CMD_DEPOT_SELL_ALL_VEHICLES);
+		DoCommandP(tile, vehtype, 0, CMD_DEPOT_SELL_ALL_VEHICLES);
 	}
 }
 

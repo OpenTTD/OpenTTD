@@ -356,9 +356,10 @@ enum {
  * @param flags Flags for the command, from the DC_* enumeration
  * @param p1 Additional data for the command
  * @param p2 Additional data for the command
+ * @param text Additional text
  * @return The CommandCost of the command, which can be succeeded or failed.
  */
-typedef CommandCost CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2);
+typedef CommandCost CommandProc(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text);
 
 /**
  * Define a command with the flags which belongs to it.

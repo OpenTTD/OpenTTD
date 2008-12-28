@@ -190,7 +190,7 @@ void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_wate
  * @param p1 bit 0 depot orientation (Axis)
  * @param p2 unused
  */
-CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	TileIndex tile2;
 
@@ -354,7 +354,7 @@ static CommandCost RemoveShiplift(TileIndex tile, uint32 flags)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	DiagDirection dir = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
 	if (dir == INVALID_DIAGDIR) return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
@@ -371,7 +371,7 @@ CommandCost CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 start tile of stretch-dragging
  * @param p2 specifies canal (0), water (1) or river (2); last two can only be built in scenario editor
  */
-CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 	int size_x, size_y;

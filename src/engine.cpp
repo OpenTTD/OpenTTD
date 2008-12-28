@@ -378,7 +378,7 @@ void EnginesDailyLoop()
  * @param p1 engine-prototype offered
  * @param p2 unused
  */
-CommandCost CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdWantEnginePreview(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Engine *e;
 
@@ -493,15 +493,15 @@ static bool IsUniqueEngineName(const char *name)
  * @param p1 engine ID to rename
  * @param p2 unused
  */
-CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsEngineIndex(p1)) return CMD_ERROR;
 
-	bool reset = StrEmpty(_cmd_text);
+	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_ENGINE_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueEngineName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (strlen(text) >= MAX_LENGTH_ENGINE_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueEngineName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
@@ -519,7 +519,7 @@ CommandCost CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 			}
 		} else {
-			e->name = strdup(_cmd_text);
+			e->name = strdup(text);
 			_vehicle_design_names |= 3;
 		}
 

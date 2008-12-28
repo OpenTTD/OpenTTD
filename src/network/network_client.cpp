@@ -620,7 +620,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 				 * the server will give us a client-id and let us in */
 				_network_join_status = NETWORK_JOIN_STATUS_REGISTERING;
 				ShowJoinStatusWindow();
-				NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL);
+				NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL);
 			}
 		} else {
 			// take control over an existing company

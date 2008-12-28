@@ -1534,7 +1534,7 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
  * @param p1 size of the town (0 = small, 1 = medium, 2 = large)
  * @param p2 size mode (@see TownSizeMode)
  */
-CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Only in the scenario editor */
 	if (_game_mode != GM_EDITOR) return CMD_ERROR;
@@ -2110,22 +2110,22 @@ static bool IsUniqueTownName(const char *name)
  * @param p1 town ID to rename
  * @param p2 unused
  */
-CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidTownID(p1)) return CMD_ERROR;
 
-	bool reset = StrEmpty(_cmd_text);
+	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_TOWN_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueTownName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (strlen(text) >= MAX_LENGTH_TOWN_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueTownName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
 		Town *t = GetTown(p1);
 
 		free(t->name);
-		t->name = reset ? NULL : strdup(_cmd_text);
+		t->name = reset ? NULL : strdup(text);
 
 		UpdateTownVirtCoord(t);
 		InvalidateWindowData(WC_TOWN_DIRECTORY, 0, 1);
@@ -2314,7 +2314,7 @@ extern uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
  * @param p1 town to do the action at
  * @param p2 action to perform, @see _town_action_proc for the list of available actions
  */
-CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidTownID(p1) || p2 > lengthof(_town_action_proc)) return CMD_ERROR;
 

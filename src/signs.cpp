@@ -98,7 +98,7 @@ static void MarkSignDirty(Sign *si)
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Try to locate a new sign */
 	if (!Sign::CanAllocateItem()) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
@@ -130,14 +130,13 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2 unused
  * @return 0 if succesfull, otherwise CMD_ERROR
  */
-CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidSignID(p1)) return CMD_ERROR;
 
-	/* If _cmd_text 0 means the new text for the sign is non-empty.
-	 * So rename the sign. If it is empty, it has no name, so delete it */
-	if (!StrEmpty(_cmd_text)) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_SIGN_NAME_BYTES) return CMD_ERROR;
+	/* Rename the signs when empty, otherwise remove it */
+	if (!StrEmpty(text)) {
+		if (strlen(text) >= MAX_LENGTH_SIGN_NAME_BYTES) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			Sign *si = GetSign(p1);
@@ -145,7 +144,7 @@ CommandCost CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Delete the old name */
 			free(si->name);
 			/* Assign the new one */
-			si->name = strdup(_cmd_text);
+			si->name = strdup(text);
 			si->owner = _current_company;
 
 			/* Update; mark sign dirty twice, because it can either becom longer, or shorter */
@@ -191,7 +190,7 @@ void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
  */
 void PlaceProc_Sign(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CcPlaceSign, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE));
+	DoCommandP(tile, 0, 0, CMD_PLACE_SIGN | CMD_MSG(STR_2809_CAN_T_PLACE_SIGN_HERE), CcPlaceSign);
 }
 
 /**

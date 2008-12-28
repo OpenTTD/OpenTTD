@@ -88,7 +88,7 @@ extern CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags
  * @param p1 unused
  * @param p2 unused
  */
-CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	Company *c = GetCompany(_current_company);
 	CommandCost cost(EXPENSES_PROPERTY);
@@ -122,7 +122,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param p2 unused
  * @return error of cost of operation
  */
-CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost cost(EXPENSES_CONSTRUCTION);
 
@@ -149,7 +149,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
  * @param p2 unused
  * @return error or cost of operation
  */
-CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsOwnedLandTile(tile)) return CMD_ERROR;
 	if (!CheckTileOwnership(tile) && _current_company != OWNER_WATER) return CMD_ERROR;

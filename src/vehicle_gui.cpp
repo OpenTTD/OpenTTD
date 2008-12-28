@@ -393,9 +393,9 @@ struct RefitWindow : public Window {
 							case VEH_SHIP:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
 							case VEH_AIRCRAFT: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
 						}
-						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, NULL, command)) delete this;
+						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8, command)) delete this;
 					} else {
-						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8 | this->order << 16, NULL, CMD_ORDER_REFIT)) delete this;
+						if (DoCommandP(v->tile, v->index, this->cargo->cargo | this->cargo->subtype << 8 | this->order << 16, CMD_ORDER_REFIT)) delete this;
 					}
 				}
 				break;
@@ -1063,7 +1063,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 
 			case VLW_WIDGET_STOP_ALL:
 			case VLW_WIDGET_START_ALL:
-				DoCommandP(0, GB(this->window_number, 16, 16), (this->window_number & VLW_MASK) | (1 << 6) | (widget == VLW_WIDGET_START_ALL ? (1 << 5) : 0) | this->vehicle_type, NULL, CMD_MASS_START_STOP);
+				DoCommandP(0, GB(this->window_number, 16, 16), (this->window_number & VLW_MASK) | (1 << 6) | (widget == VLW_WIDGET_START_ALL ? (1 << 5) : 0) | this->vehicle_type, CMD_MASS_START_STOP);
 				break;
 		}
 	}
@@ -1084,13 +1084,11 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 					case 1: /* Send for servicing */
 						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
 							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND | DEPOT_SERVICE,
-							NULL,
 							GetCmdSendToDepot(this->vehicle_type));
 						break;
 					case 2: /* Send to Depots */
 						DoCommandP(0, GB(this->window_number, 16, 16) /* StationID or OrderID (depending on VLW) */,
 							(this->window_number & VLW_MASK) | DEPOT_MASS_SEND,
-							NULL,
 							GetCmdSendToDepot(this->vehicle_type));
 						break;
 
@@ -1497,7 +1495,7 @@ struct VehicleDetailsWindow : Window {
 				mod = GetServiceIntervalClamped(mod + v->service_interval);
 				if (mod == v->service_interval) return;
 
-				DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
+				DoCommandP(v->tile, v->index, mod, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			} break;
 
 			case VLD_WIDGET_DETAILS_CARGO_CARRIED:
@@ -1530,8 +1528,7 @@ struct VehicleDetailsWindow : Window {
 
 		if (str == NULL) return;
 
-		_cmd_text = str;
-		DoCommandP(0, this->window_number, 0, NULL, CMD_RENAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]));
+		DoCommandP(0, this->window_number, 0, CMD_RENAME_VEHICLE | CMD_MSG(_name_vehicle_error[GetVehicle(this->window_number)->type]), NULL, str);
 	}
 
 	virtual void OnResize(Point new_size, Point delta)
@@ -1952,7 +1949,7 @@ struct VehicleViewWindow : Window {
 
 		switch (widget) {
 			case VVW_WIDGET_START_STOP_VEH: // start stop
-				DoCommandP(v->tile, v->index, 0, NULL,
+				DoCommandP(v->tile, v->index, 0,
 										_vehicle_command_translation_table[VCT_CMD_START_STOP][v->type]);
 				break;
 			case VVW_WIDGET_CENTER_MAIN_VIEH: {/* center main view */
@@ -1966,7 +1963,7 @@ struct VehicleViewWindow : Window {
 			} break;
 
 			case VVW_WIDGET_GOTO_DEPOT: // goto hangar
-				DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL,
+				DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0,
 					_vehicle_command_translation_table[VCT_CMD_GOTO_DEPOT][v->type]);
 				break;
 			case VVW_WIDGET_REFIT_VEH: // refit
@@ -1983,17 +1980,18 @@ struct VehicleViewWindow : Window {
 				ShowVehicleDetailsWindow(v);
 				break;
 			case VVW_WIDGET_CLONE_VEH: // clone vehicle
-				DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneVehicle,
-										_vehicle_command_translation_table[VCT_CMD_CLONE_VEH][v->type]);
+				DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0,
+										_vehicle_command_translation_table[VCT_CMD_CLONE_VEH][v->type],
+										CcCloneVehicle);
 				break;
 			case VVW_WIDGET_TURN_AROUND: // turn around
 				assert(v->type == VEH_TRAIN || v->type == VEH_ROAD);
-				DoCommandP(v->tile, v->index, 0, NULL,
+				DoCommandP(v->tile, v->index, 0,
 										_vehicle_command_translation_table[VCT_CMD_TURN_AROUND][v->type]);
 				break;
 			case VVW_WIDGET_FORCE_PROCEED: // force proceed
 				assert(v->type == VEH_TRAIN);
-				DoCommandP(v->tile, v->index, 0, NULL, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL));
+				DoCommandP(v->tile, v->index, 0, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL));
 				break;
 		}
 	}

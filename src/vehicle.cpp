@@ -1081,7 +1081,7 @@ void AgeVehicle(Vehicle *v)
  * @param p2 bit 0: Shall the start/stop newgrf callback be evaluated (only valid with DC_AUTOREPLACE for network safety)
  * @return result of operation.  Nothing if everything went well
  */
-CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Disable the effect of p2 bit 0, when DC_AUTOREPLACE is not set */
 	if ((flags & DC_AUTOREPLACE) == 0) SetBit(p2, 0);
@@ -1154,7 +1154,7 @@ CommandCost CmdStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
  *   - bit 6 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
  *   - bit 8-11 Vehicle List Window type (ignored unless bit 1 is set)
  */
-CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
 	CommandCost return_value = CMD_ERROR;
@@ -1204,7 +1204,7 @@ CommandCost CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uin
  * @param p1 Vehicle type
  * @param p2 unused
  */
-CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
 
@@ -1241,7 +1241,7 @@ CommandCost CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uin
  * @param p1 Type of vehicle
  * @param p2 If bit 0 is set, then either replace all or nothing (instead of replacing until money runs out)
  */
-CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleList list;
 	CommandCost cost = CommandCost(EXPENSES_NEW_VEHICLES);
@@ -1293,7 +1293,7 @@ CommandCost CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uin
  * @param p1 the original vehicle's index
  * @param p2 1 = shared orders, else copied orders
  */
-CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	CommandCost total_cost(EXPENSES_NEW_VEHICLES);
 	uint32 build_argument = 2;
@@ -1666,23 +1666,23 @@ static bool IsUniqueVehicleName(const char *name)
  * @param p1 vehicle ID to name
  * @param p2 unused
  */
-CommandCost CmdRenameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p1);
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
-	bool reset = StrEmpty(_cmd_text);
+	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_VEHICLE_NAME_BYTES) return CMD_ERROR;
-		if (!(flags & DC_AUTOREPLACE) && !IsUniqueVehicleName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (strlen(text) >= MAX_LENGTH_VEHICLE_NAME_BYTES) return CMD_ERROR;
+		if (!(flags & DC_AUTOREPLACE) && !IsUniqueVehicleName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
 		free(v->name);
-		v->name = reset ? NULL : strdup(_cmd_text);
+		v->name = reset ? NULL : strdup(text);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 1);
 		MarkWholeScreenDirty();
 	}
@@ -1697,7 +1697,7 @@ CommandCost CmdRenameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 vehicle ID that is being service-interval-changed
  * @param p2 new service interval
  */
-CommandCost CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */
 

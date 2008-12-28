@@ -370,19 +370,19 @@ public:
 			}
 
 			case RVW_WIDGET_TRAIN_WAGONREMOVE_TOGGLE: /* toggle renew_keep_length */
-				DoCommandP(0, 5, GetCompany(_local_company)->renew_keep_length ? 0 : 1, NULL, CMD_SET_AUTOREPLACE);
+				DoCommandP(0, 5, GetCompany(_local_company)->renew_keep_length ? 0 : 1, CMD_SET_AUTOREPLACE);
 				break;
 
 			case RVW_WIDGET_START_REPLACE: { /* Start replacing */
 				EngineID veh_from = this->sel_engine[0];
 				EngineID veh_to = this->sel_engine[1];
-				DoCommandP(0, 3 + (this->sel_group << 16) , veh_from + (veh_to << 16), NULL, CMD_SET_AUTOREPLACE);
+				DoCommandP(0, 3 + (this->sel_group << 16) , veh_from + (veh_to << 16), CMD_SET_AUTOREPLACE);
 				this->SetDirty();
 			} break;
 
 			case RVW_WIDGET_STOP_REPLACE: { /* Stop replacing */
 				EngineID veh_from = this->sel_engine[0];
-				DoCommandP(0, 3 + (this->sel_group << 16), veh_from + (INVALID_ENGINE << 16), NULL, CMD_SET_AUTOREPLACE);
+				DoCommandP(0, 3 + (this->sel_group << 16), veh_from + (INVALID_ENGINE << 16), CMD_SET_AUTOREPLACE);
 				this->SetDirty();
 			} break;
 

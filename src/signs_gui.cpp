@@ -180,8 +180,7 @@ void ShowSignList()
 static bool RenameSign(SignID index, const char *text)
 {
 	bool remove = StrEmpty(text);
-	_cmd_text = text;
-	DoCommandP(0, index, 0, NULL, CMD_RENAME_SIGN | (StrEmpty(text) ? CMD_MSG(STR_CAN_T_DELETE_SIGN) : CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME)));
+	DoCommandP(0, index, 0, CMD_RENAME_SIGN | (StrEmpty(text) ? CMD_MSG(STR_CAN_T_DELETE_SIGN) : CMD_MSG(STR_280C_CAN_T_CHANGE_SIGN_NAME)), NULL, text);
 	return remove;
 }
 

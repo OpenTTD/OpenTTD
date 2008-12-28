@@ -926,19 +926,19 @@ static int32 CheckInterval(int32 p1)
 
 static int32 EngineRenewUpdate(int32 p1)
 {
-	DoCommandP(0, 0, _settings_client.gui.autorenew, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, 0, _settings_client.gui.autorenew, CMD_SET_AUTOREPLACE);
 	return 0;
 }
 
 static int32 EngineRenewMonthsUpdate(int32 p1)
 {
-	DoCommandP(0, 1, _settings_client.gui.autorenew_months, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, 1, _settings_client.gui.autorenew_months, CMD_SET_AUTOREPLACE);
 	return 0;
 }
 
 static int32 EngineRenewMoneyUpdate(int32 p1)
 {
-	DoCommandP(0, 2, _settings_client.gui.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
+	DoCommandP(0, 2, _settings_client.gui.autorenew_money, CMD_SET_AUTOREPLACE);
 	return 0;
 }
 
@@ -1857,7 +1857,7 @@ static const SettingDesc *GetSettingDescription(uint index)
  * The new value is properly clamped to its minimum/maximum when setting
  * @see _patch_settings
  */
-CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	const SettingDesc *sd = GetSettingDescription(p1);
 
@@ -1921,7 +1921,7 @@ bool SetPatchValue(uint index, int32 value)
 
 	/* send non-company-based settings over the network */
 	if (!_networking || (_networking && _network_server)) {
-		return DoCommandP(0, index, value, NULL, CMD_CHANGE_PATCH_SETTING);
+		return DoCommandP(0, index, value, CMD_CHANGE_PATCH_SETTING);
 	}
 	return false;
 }

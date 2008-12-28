@@ -80,7 +80,7 @@ void InitializeGroup(void)
  * @param p1   vehicle type
  * @param p2   unused
  */
-CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleType vt = (VehicleType)p1;
 	if (!IsCompanyBuildableVehicleType(vt)) return CMD_ERROR;
@@ -106,7 +106,7 @@ CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  *      - p1 bit 0-15 : GroupID
  * @param p2   unused
  */
-CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
@@ -168,25 +168,25 @@ static bool IsUniqueGroupName(const char *name)
  *   - p1 bit 0-15 : GroupID
  * @param p2   unused
  */
-CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 
 	Group *g = GetGroup(p1);
 	if (g->owner != _current_company) return CMD_ERROR;
 
-	bool reset = StrEmpty(_cmd_text);
+	bool reset = StrEmpty(text);
 
 	if (!reset) {
-		if (strlen(_cmd_text) >= MAX_LENGTH_GROUP_NAME_BYTES) return CMD_ERROR;
-		if (!IsUniqueGroupName(_cmd_text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
+		if (strlen(text) >= MAX_LENGTH_GROUP_NAME_BYTES) return CMD_ERROR;
+		if (!IsUniqueGroupName(text)) return_cmd_error(STR_NAME_MUST_BE_UNIQUE);
 	}
 
 	if (flags & DC_EXEC) {
 		/* Delete the old name */
 		free(g->name);
 		/* Assign the new one */
-		g->name = reset ? NULL : strdup(_cmd_text);
+		g->name = reset ? NULL : strdup(text);
 
 		InvalidateWindowData(GetWindowClassForVehicleType(g->vehicle_type), (g->vehicle_type << 11) | VLW_GROUP_LIST | _current_company);
 	}
@@ -203,7 +203,7 @@ CommandCost CmdRenameGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p2   vehicle to add to a group
  *   - p2 bit 0-15 : VehicleID
  */
-CommandCost CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	GroupID new_g = p1;
 
@@ -250,7 +250,7 @@ CommandCost CmdAddVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  *  - p1 bit 0-15 : GroupID
  * @param p2   type of vehicles
  */
-CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleType type = (VehicleType)p2;
 	if (!IsValidGroupID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
@@ -268,7 +268,7 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, ui
 
 				/* For each shared vehicles add it to the group */
 				for (Vehicle *v2 = v->FirstShared(); v2 != NULL; v2 = v2->NextShared()) {
-					if (v2->group_id != id_g) CmdAddVehicleGroup(tile, flags, id_g, v2->index);
+					if (v2->group_id != id_g) CmdAddVehicleGroup(tile, flags, id_g, v2->index, text);
 				}
 			}
 		}
@@ -287,7 +287,7 @@ CommandCost CmdAddSharedVehicleGroup(TileIndex tile, uint32 flags, uint32 p1, ui
  * - p1 bit 0-15 : GroupID
  * @param p2   type of vehicles
  */
-CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	VehicleType type = (VehicleType)p2;
 	if (!IsValidGroupID(p1) || !IsCompanyBuildableVehicleType(type)) return CMD_ERROR;
@@ -305,7 +305,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, u
 				if (v->group_id != old_g) continue;
 
 				/* Add The Vehicle to the default group */
-				CmdAddVehicleGroup(tile, flags, DEFAULT_GROUP, v->index);
+				CmdAddVehicleGroup(tile, flags, DEFAULT_GROUP, v->index, text);
 			}
 		}
 
@@ -324,7 +324,7 @@ CommandCost CmdRemoveAllVehiclesGroup(TileIndex tile, uint32 flags, uint32 p1, u
  * @param p2
  * - p2 bit 0    : 1 to set or 0 to clear protection.
  */
-CommandCost CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+CommandCost CmdSetGroupReplaceProtection(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	if (!IsValidGroupID(p1)) return CMD_ERROR;
 

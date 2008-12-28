@@ -43,7 +43,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (found != NULL) {
 		found = GetLastVehicleInChain(found);
 		/* put the new wagon at the end of the loco. */
-		DoCommandP(0, _new_vehicle_id | (found->index << 16), 0, NULL, CMD_MOVE_RAIL_VEHICLE);
+		DoCommandP(0, _new_vehicle_id | (found->index << 16), 0, CMD_MOVE_RAIL_VEHICLE);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
 	}
 }
