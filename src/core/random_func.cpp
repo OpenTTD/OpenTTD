@@ -41,8 +41,8 @@ void SetRandomSeed(uint32 seed)
 
 uint32 DoRandom(int line, const char *file)
 {
-	if (_networking && (DEREF_CLIENT(0)->status != STATUS_INACTIVE || !_network_server)) {
-		printf("Random [%d/%d] %s:%d\n",_frame_counter, (byte)_current_company, file, line);
+	if (_networking && (GetNetworkClientSocket(0)->status != STATUS_INACTIVE || !_network_server)) {
+		printf("Random [%d/%d] %s:%d\n", _frame_counter, (byte)_current_company, file, line);
 	}
 
 	return _random.Next();
