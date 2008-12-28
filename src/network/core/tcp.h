@@ -127,7 +127,7 @@ static inline bool IsValidNetworkClientSocketIndex(ClientIndex index)
 	return (uint)index < GetNetworkClientSocketPoolSize() && GetNetworkClientSocket(index)->IsValid();
 }
 
-#define FOR_ALL_CLIENT_SOCKETS_FROM(d, start) for (d = (start < GetNetworkClientSocketPoolSize() ? GetNetworkClientSocket(start) : NULL); d != NULL; d = (d->index + 1U < GetNetworkClientSocketPoolSize()) ? GetNetworkClientSocket(d->index + 1U) : NULL) if (d->IsValid())
+#define FOR_ALL_CLIENT_SOCKETS_FROM(d, start) for (d = GetNetworkClientSocket(start); d != NULL; d = (d->index + 1U < GetNetworkClientSocketPoolSize()) ? GetNetworkClientSocket(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_CLIENT_SOCKETS(d) FOR_ALL_CLIENT_SOCKETS_FROM(d, 0)
 
 typedef NetworkClientSocket NetworkTCPSocketHandler;
