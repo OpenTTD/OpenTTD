@@ -490,6 +490,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informazioni sull'area di terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costo di demolizione: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costo di demolizione: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Ricavo da demolizione: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Proprietario: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Proprietario strada: {LTBLUE}{STRING}

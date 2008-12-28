@@ -488,6 +488,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}이 지역의 지형 정보
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}초기화 가격: {LTBLUE}없음
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}초기화 가격: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}제거시 들어오는 환불금: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :없음
 STR_01A7_OWNER                                                  :{BLACK}소유주: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}도로 소유주: {LTBLUE}{STRING}
@@ -1142,7 +1143,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전기 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :모노레일
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :자기부상
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 가능한 것
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :마지막으로 사용 가능한 것
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :최신 기술의 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :가장 많이 사용한 것
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}예약된 트랙 보이기: {ORANGE}{STRING}
 
@@ -3207,8 +3208,8 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}산출 �
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF 설정
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF 설정
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}변경사항 적용
-STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}팔레트 전환
-STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}선택하신 NewGRF의 팔레트를 전환합니다.{}게임에서 이 NewGRF이 분홍색으로 보일때 이 기능을 사용하십시오.
+STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}팔레트 바꾸기
+STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}NewGRF의 팔레트를 바꿉니다.{}게임에서 그래픽이 분홍색으로 보일때 이 기능을 사용하십시오.
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}파라미터 설정
 STR_NEWGRF_TIP                                                  :{BLACK}당신이 설치한 NewGRF의 모든 목록입니다. 설정을 변경하려면 클릭하세요
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}NewGRF 파일이 설치되어 있지 않습니다! NewGRF 설치 방법에 대한 매뉴얼을 참고해주십시오

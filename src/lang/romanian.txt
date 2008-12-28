@@ -488,6 +488,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informatii teren
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costul demolării: {LTBLUE}nu este cazul
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costul demolării: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Incasari dupa curatare: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :nu este cazul
 STR_01A7_OWNER                                                  :{BLACK}Proprietar: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Proprietar al drumului: {LTBLUE}{STRING}

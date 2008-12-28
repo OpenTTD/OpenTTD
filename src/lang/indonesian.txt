@@ -29,12 +29,12 @@ STR_0013_LIVESTOCK                                              :Ternak
 STR_0014_GOODS                                                  :Barang jadi
 STR_0015_GRAIN                                                  :Gandum
 STR_0016_WOOD                                                   :Kayu
-STR_0017_IRON_ORE                                               :Biji besi
+STR_0017_IRON_ORE                                               :Bijih besi
 STR_0018_STEEL                                                  :Baja
 STR_0019_VALUABLES                                              :Barang berharga
-STR_001A_COPPER_ORE                                             :Biji Tembaga
+STR_001A_COPPER_ORE                                             :Bijih Tembaga
 STR_001B_MAIZE                                                  :Jagung
-STR_001C_FRUIT                                                  :Buah-buahan
+STR_001C_FRUIT                                                  :Buah
 STR_001D_DIAMONDS                                               :Berlian
 STR_001E_FOOD                                                   :Makanan
 STR_001F_PAPER                                                  :Kertas
@@ -61,12 +61,12 @@ STR_0033_LIVESTOCK                                              :Ternak
 STR_0034_GOODS                                                  :Barang jadi
 STR_0035_GRAIN                                                  :Gandum
 STR_0036_WOOD                                                   :Kayu
-STR_0037_IRON_ORE                                               :Biji besi
+STR_0037_IRON_ORE                                               :Bijih besi
 STR_0038_STEEL                                                  :Baja
 STR_0039_VALUABLES                                              :Barang berharga
-STR_003A_COPPER_ORE                                             :Biji Tembaga
+STR_003A_COPPER_ORE                                             :Bijih Tembaga
 STR_003B_MAIZE                                                  :Jagung
-STR_003C_FRUIT                                                  :Buah-buahan
+STR_003C_FRUIT                                                  :Buah
 STR_003D_DIAMOND                                                :Permata
 STR_003E_FOOD                                                   :Makanan
 STR_003F_PAPER                                                  :Kertas
@@ -93,10 +93,10 @@ STR_QUANTITY_LIVESTOCK                                          :{COMMA} ekor te
 STR_QUANTITY_GOODS                                              :{COMMA} peti barang jadi
 STR_QUANTITY_GRAIN                                              :{WEIGHT} gandum
 STR_QUANTITY_WOOD                                               :{WEIGHT} kayu
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} biji besi
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} bijih besi
 STR_QUANTITY_STEEL                                              :{WEIGHT} baja
-STR_QUANTITY_VALUABLES                                          :{COMMA} tas benda berharga
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} biji tembaga
+STR_QUANTITY_VALUABLES                                          :{COMMA} kantong barang berharga
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} bijih tembaga
 STR_QUANTITY_MAIZE                                              :{WEIGHT} tepung jagung
 STR_QUANTITY_FRUIT                                              :{WEIGHT} buah-buahan
 STR_QUANTITY_DIAMONDS                                           :{COMMA} karung intan
@@ -149,7 +149,7 @@ STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MB
 STR_ABBREV_NONE                                                 :{TINYFONT}TANPA
-STR_ABBREV_ALL                                                  :{TINYFONT}Semua
+STR_ABBREV_ALL                                                  :{TINYFONT}SMA
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Peta - {STRING}
@@ -233,8 +233,8 @@ STR_0106_PAPER_MILL                                             :{BLACK}{TINYFON
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Tambang Emas
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Industri Pengolahan Pangan
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Tambang Berlian
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Tambang Tembaga
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Perkebunan Buah-buahan
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Tambang Biji Tembaga
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Perkebunan Buah
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Perkebunan Karet
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Sumber Air
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Menara Air
@@ -488,6 +488,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasi area daratan
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Biaya penghancuran: {LTBLUE}tidak ada
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Biaya penghancuran: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Nilai jual kembali: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :-kosong-
 STR_01A7_OWNER                                                  :{BLACK}Pemilik: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Pemilik Jalan: {LTBLUE}{STRING}
@@ -676,7 +677,7 @@ STR_0252_RUBBER_PLANTATION                                      :{BLACK}Perkebun
 STR_0253_WATER_SUPPLY                                           :{BLACK}Sumber Air
 STR_0254_WATER_TOWER                                            :{BLACK}Menara Air
 STR_0255_DIAMOND_MINE                                           :{BLACK}Tambang Permata
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Tambang Biji Tembaga
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}Tambang Bijih Tembaga
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Hutan Harum Manis
 STR_0258_CANDY_FACTORY                                          :{BLACK}Pabrik Manisan
 STR_0259_BATTERY_FARM                                           :{BLACK}Pertanian Baterai
@@ -697,7 +698,7 @@ STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Membangu
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Membangun Pabrik
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Membangun Pengolahan Baja
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Membangun Pertanian
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Membangun Tambang Biji Besi
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Membangun Tambang Bijih Besi
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Membangun Sumur Minyak
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Membangun Bank (Hanya dapat dilakukan pada kota dengan populasi diatas 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Membangun Pengolahan Kertas
@@ -706,12 +707,12 @@ STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Membangu
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Membangun Tambang Emas
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Membangun Bank (Hanya dapat dilakukan di kota)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Membangun pengolahan Kayu (untuk mengolah hasil hutan dan menghasilkan Kayu)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Menanam Perkebunan Buah-buahan
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Menanam Perkebunan Buah
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Menanam Perkebunan Karet
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Membangun Sumber Air
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Membangun Menara Air (Hanya dapat dilakukan di kota)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Membangun Tambang Permata
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Membangun Tambang Biji Tembaga
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Membangun Tambang Bijih Tembaga
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Menanam Hutan Harum Manis
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Membangun Pabrik Manisan
 STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Membangun Pertanian Baterai
@@ -1034,20 +1035,20 @@ STR_CONFIG_PATCHES_OFF                                          :Tidak
 STR_CONFIG_PATCHES_ON                                           :Ya
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Tampilkan kecepatan di status bar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Ijinkan pembangunan di lereng dan pantai: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Ijinkan pembentukan slop dibawah bangunan, jalur kereta, dsb. : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Ijinkan pembentukan slop dibawah bangunan, rel, dsb. : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Ijinkan ukuran jangkauan wilayah lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Ijinkan menggusur lebih banyak jalan/jembatan kota, dsb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan membuat rangkaian gerbong yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktifkan akselerasi realistis pada kereta api: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Kereta api dan kapal dilarang belok 90 derajat: {ORANGE}{STRING} {LTBLUE} (tidak dengan NTP)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan suatu stasiun kereta api: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Kereta dan kapal dilarang belok 90 derajat: {ORANGE}{STRING} {LTBLUE} (tidak dengan NTP)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan stasiun kereta api: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gunakan algoritma pengangkutan terbaru : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Angkut secara bertahap: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Penerimaan kargo pada suatu stasiun hanya jika dibutuhkan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Menerima kargo di suatu stasiun hanya jika dibutuhkan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Ijinkan membangun jembatan yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Perbolehkan pergi ke depo: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode pembangunaan Industri primer secara manual: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Metode pembangunan Industri primer : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :tidak ada
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :seperti industri lainnya
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :lebih prospektif
@@ -1063,20 +1064,20 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Ijinkan
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Ijinkan pembelian hak ekslusif pengelolaan transportasi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Ijinkan pengiriman uang ke perusahaan lain: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Stasiun tidak seragam: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Faktor kali pengangkutan untuk mensimulasikan kereta yang berat: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Faktor kecepatan dari Pesawat Udara: {ORANGE}1 / {STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Faktor kali muatan untuk simulasi kereta yang berat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Faktor kecepatan pesawat: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Ijinkan terminal drive-thru pada jalan milik kota: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Ijinkan membangun stasiun berdampingan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Aktifkan beberapa pengaturan mesin NewGRF : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Selalu ijinkan membangun bandara kecil: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Ingatkan jika kereta api tersesat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Ingatkan jika kereta tersesat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Tinjau perintah kendaraan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ya, tetapi selain kendaraan yang berhenti
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :semua kendaraan
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ingatkan jika salah satu kereta api berpendapatan negatif.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ingatkan jika ada kereta berpendapatan negatif.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kendaraan tidak pernah kadaluarsa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Perbarui otomatis kendaraan yang telah tua.
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}}Perbarui otomatis kendaraan {ORANGE}{STRING}{LTBLUE} bulan sblm/sesudah usia maks.
@@ -1084,7 +1085,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimal
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durasi pesan kesalahan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Tampilkan populasi kota di label nama kota: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Pembangkit permukaan daratan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Pembangkit dataran: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Asli
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Jarak maks. Kilang Minyak Dari tepi{ORANGE}{STRING}
@@ -1099,16 +1100,16 @@ STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Tidak ada
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Orisinil
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Telah ditingkatkan
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Perputaran peta Heightmap: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Berlawan arah jarum jam
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Searah jarum jam
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Melawan arah jam
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Searah jam
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Tinggi dataran pada peta skenario datar : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} {RED}Peringatan: semakin tinggi semakin lambat
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} {RED}Peringatan: Makin tinggi, Makin lambat
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Perbaikan helikopter di helipad secara otomatis: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Sambungkan toolbar Landsekap ke toolbar rel/jalan/air/airport: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tampilkan toolbar Landsekap bersama toolbar rel/jalan/air/bandara: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Berbalik Arah: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Pergeseran pandangan viewport secara halus: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Tampilkan info ukuran ketika menggunakan  peralatan untuk membangun: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Tampilkan ukuran ketika menggunakan alat pembangun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Tampilkan warna perusahaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Tidak ada
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Perusahaan milik sendiri
@@ -1132,11 +1133,11 @@ STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Perusahaan send
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Semua perusahaan
 STR_CONFIG_PATCHES_LOADING_INDICATORS                           :{LTBLUE}Tampilkan indikator pengangkutan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :Non-aktif
-STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Perusahaan milik sendiri
+STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Perusahaan sendiri
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Semua perusahaan
-STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aktifkan tabel penghitung waktu untuk kendaraan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Tunjukkan tabel penghitung waktu dalam satuan tik , bukan satuan hari: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Jenis rel standar (saat baru bermain/memuat permainan): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aktifkan penjadwalan untuk kendaraan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Penjadwalan menggunakan satuan titik , bukan satuan hari: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Jenis rel saat baru bermain/memuat permainan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Rel normal
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Rel berlistrik
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorel
@@ -1146,7 +1147,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakh
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Tampilkan jalur yang akan terpakai: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Tampilkan alat pembangun jika tidak ada kendaraan yang tersedia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Tampilkan toolbar meski kendaraan belum tersedia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. kereta tiap pemain: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. bus/truk tiap pemain: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks. pesawat tiap pemain: {ORANGE}{STRING}
@@ -1209,7 +1210,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Pelan
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Cepat
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Sangat cepat
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporsi desa yang akan menjadi kota: {ORANGE}1 berbanding {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporsi desa yang akan menjadi kota: {ORANGE}1 banding {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporsi desa yang akan menjadi kota: {ORANGE}Tidak ada
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Faktor kali ukuran kota awal: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Buang elemen jalan yang aneh saat membangun
@@ -1429,10 +1430,10 @@ STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER 
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSI TIDAK SESUAI
 STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF TIDAK SESUAI
 
-STR_NETWORK_JOIN_GAME                                           :{BLACK}Gabung dalam permainan
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Bergabung
 
 
-STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Mulai baru untuk permaianan secara "multiplayer"
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Mulai permainan bersama baru
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nama Permainan:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Nama permainan akan ditampilkan kepada pemain lainnya didalam Menu seleksi dari "multiplayer game"
@@ -1510,7 +1511,7 @@ STR_NETWORK_NEW_COMPANY                                         :{BLACK}Perusaha
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ciptakan satu perusahaan baru
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Nonton permainan
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Menonton permainan sebagai penonton
-STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Gabungkan/bergabung dengan perusahaan
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Bergabung dengan perusahaan
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Membantu untuk mengatur perusahaan ini
 STR_NETWORK_REFRESH                                             :{BLACK}"Refresh"/segarkan server
 STR_NETWORK_REFRESH_TIP                                         :{BLACK}"Refresh"/segarkan infonya server
@@ -1821,7 +1822,7 @@ STR_202C_FROM_TO                                                :{ORANGE}{STRING
 STR_202D_UNTIL                                                  :{YELLOW}, hingga {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Penawaran subsidi berakhir:{}{}Jasa transportasi {STRING} dari {STRING} ke {STRING} mulai sekarang tidak lagi mendapat subsidi.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidi selesai:{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} tidak lagi mendapat subsidi.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Penawaran subsidi:{}{}Transportasi {STRING} pertama dari {STRING} ke {STRING} akan mendapat subsidi selama setahun dari pemkot setempat!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Penawaran subsidi:{}{}Jasa transportasi {STRING} pertama dari {STRING} ke {STRING} akan mendapat subsidi selama setahun dari pemkot setempat!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidi diberikan kepada {COMPANY}!{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} akan dibayar 50% lebih banyak hingga tahun depan!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidi diberikan kepada {COMPANY}!{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} akan dibayar dua kali lipat hingga tahun depan!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidi diberikan kepada {COMPANY}!{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} akan dibayar tiga kali lipat hingga tahun depan!
@@ -2007,7 +2008,7 @@ STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Tidak ma
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Gagal membuka permainan{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Kesalahan Internal: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Berkas simpanan permainan rusak - {STRING}
-STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Berkas Simpanan permainan dibuat dari versi yang lebih baru
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Berkas simpanan dibuat dari versi yang lebih baru
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Berkas tidak terbaca
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Berkas tidak dapat ditulisi
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Daftar dari "drive", direktori dan file/berkas permainan tersimpan
@@ -2033,7 +2034,7 @@ STR_4808_FACTORY                                                :Pabrik
 STR_4809_PRINTING_WORKS                                         :Percetakan
 STR_480A_STEEL_MILL                                             :Pabrik Lebur Pengolahan Baja
 STR_480B_FARM                                                   :Pertanian
-STR_480C_COPPER_ORE_MINE                                        :Tambang Biji Tembaga
+STR_480C_COPPER_ORE_MINE                                        :Tambang Bijih Tembaga
 STR_480D_OIL_WELLS                                              :Sumur minyak
 STR_480E_BANK                                                   :Bank
 STR_480F_FOOD_PROCESSING_PLANT                                  :Pabrik Pengolahan Makanan
@@ -2041,8 +2042,8 @@ STR_4810_PAPER_MILL                                             :Pabrik Pengolah
 STR_4811_GOLD_MINE                                              :Tambang Emas
 STR_4812_BANK                                                   :Bank
 STR_4813_DIAMOND_MINE                                           :Tambang Permata
-STR_4814_IRON_ORE_MINE                                          :Tambang Biji Besi
-STR_4815_FRUIT_PLANTATION                                       :Perkebunan Buah-buahan
+STR_4814_IRON_ORE_MINE                                          :Tambang Bijih Besi
+STR_4815_FRUIT_PLANTATION                                       :Perkebunan Buah
 STR_4816_RUBBER_PLANTATION                                      :Perkebunan Karet
 STR_4817_WATER_SUPPLY                                           :Sumber Air
 STR_4818_WATER_TOWER                                            :Menara Air
@@ -2077,17 +2078,17 @@ STR_4828_PRODUCES                                               :{BLACK}Menghasi
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksi bulan kemarin
 STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{STRING}{BLACK} ({COMMA}% terkirim)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Arahkan pandangan pada lokasi industri
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Sedang dibangun {STRING} baru di dekat {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT} {STRING} baru sedang ditanam di dekat {TOWN}!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ada pembangunan {STRING} baru di dekat {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}{STRING} baru sedang ditanam di dekat {TOWN}!
 STR_482F_COST                                                   :{BLACK}Biaya: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tidak dapat membangun industri ini disini...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...hutan hanya dapat ditanam diatas batas salju
-STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} mengumumkan akan segera ditutup!
-STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Masalah suplay mengakibatkan {STRING} mengumumkan akan segera ditutup!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Ketiadaan pepohonan didekatnya menyebabkan {STRING} mengumumkan akan segera ditutup!
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING} akan segera ditutup!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{STRING} akan segera ditutup karena kekurangan suplai!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Ketiadaan pepohonan didekatnya menyebabkan {STRING} akan segera ditutup!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Produksi {INDUSTRY} meningkat!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Lapisan batu bara baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Cadangan minyak baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Lapisan baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Cadangan baru ditemukan pada {INDUSTRY}!{}Produksi diperkirakan akan meningkat dua kali lipat!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Peningkatan metode pertanian pada {INDUSTRY} diperkirakan produksi akan meningkat dua kali lipat!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Produksi {INDUSTRY} menurun hingga 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Serangan serangga menyebabkan malapetaka pada {INDUSTRY}!{}Produksi menurun hingga 50%
@@ -2271,7 +2272,7 @@ STR_HOSTILE                                                     :Bermusuhan
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{COMPANYNUM}
 STR_7002_COMPANY                                                :(Perusahaan {COMMA})
-STR_7004_NEW_FACE                                               :{BLACK}Wajah Baru
+STR_7004_NEW_FACE                                               :{BLACK}Ganti Wajah
 STR_7005_COLOR_SCHEME                                           :{BLACK}Warna tema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Warna tema:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Warna tema baru
@@ -2335,7 +2336,7 @@ STR_7042_NONE                                                   :{WHITE}Tidak pu
 STR_7043_FACE_SELECTION                                         :{WHITE}Pilihan Wajah
 STR_7044_MALE                                                   :{BLACK}Pria
 STR_7045_FEMALE                                                 :{BLACK}Wanita
-STR_7046_NEW_FACE                                               :{BLACK}Wajah Baru
+STR_7046_NEW_FACE                                               :{BLACK}Ganti Wajah
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Batalkan pemilihan wajah baru
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Terima pilihan wajah baru
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Pilih wajah pria
@@ -2359,7 +2360,7 @@ STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Kami mencari perusahaan transporasi untuk mengambil alih perusahaan kami.{}{}Anda ingin membeli {COMPANY} senilai {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bangkrut!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{STRING} telah ditutup oleh pemilik modal dan segala asetnya dijual!
-STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT} Perusahaan transportasi baru didirikan!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Perusahaan baru telah didirikan!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{STRING} memulai pembangunan di dekat {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Tidak dapat membeli perusahaan...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Daftar tarif kargo
@@ -2380,8 +2381,8 @@ STR_706F_BUILD_HQ                                               :{BLACK}Kantor P
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Membangun kantor pusat perusahaan / melihat kantor pusat
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Membangun kembali kantor pusat perusahaan di tempat lain dengan 1% ongkos dari nilai perusahaan
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Tidak dapat membangun kantor pusat perusahaan...
-STR_7072_VIEW_HQ                                                :{BLACK}Lihat Kantor Pusat (HQ)
-STR_RELOCATE_HQ                                                 :{BLACK}Relokasi Kantor Pusat (HQ)
+STR_7072_VIEW_HQ                                                :{BLACK}Lokasi Kantor
+STR_RELOCATE_HQ                                                 :{BLACK}Relokasi Kantor
 STR_COMPANY_PASSWORD                                            :{BLACK}Kata Sandi
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Kata Sandi-Melindungi perusahaanmu dari pemakai yang tidak bewenang untuk bergabung.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Atur Kata Sandi Perusahaan
@@ -2806,7 +2807,7 @@ STR_8812_EMPTY                                                  :{LTBLUE}Kosong
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} dari {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} dari {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Kereta {COMMA} sedang menunggu di depo
-STR_8815_NEW_VEHICLES                                           :{BLACK}Kereta Baru
+STR_8815_NEW_VEHICLES                                           :{BLACK}Buat Kendaraan
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Kereta api terlalu panjang
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Kereta api hanya dapat diubah ketika berhenti di dalam depo
@@ -2819,12 +2820,12 @@ STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Maglev B
 STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Semua Kereta
 
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Membuat Kendaraan
-STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Duplikat
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Gandakan
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Untuk membuat kendaraan yang sama persis. Ctrl-klik akan memberi perintah bersama
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin ditirukan, baik didalam maupun diluar depo.Ctrl-klik akan memberi perintah bersama
-STR_CLONE_TRAIN                                                 :{BLACK}Duplikat
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Untuk membuat kendaraan yang sama persis. Klik tombol ini lalu klik kendaraan yang ingin digandakan, baik didalam maupun diluar depo.Ctrl-klik akan memberi perintah bersama
+STR_CLONE_TRAIN                                                 :{BLACK}Gandakan
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Untuk membuat kereta api yang sama persis termasuk gerbongnya. Ctrl-klik akan memberi perintah bersama
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta  yang ingin ditirukan baik didalam maupun diluar depo. the Ctrl-klik akan memberi perintah bersama
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Untuk membuat kereta yang sama persis. Klik tombol ini lalu klik kereta yang ingin digandakan baik didalam maupun diluar depo. the Ctrl-klik akan memberi perintah bersama
 STR_8820_RENAME                                                 :{BLACK}Ubah Nama
 STR_8823_SKIP                                                   :{BLACK}Lewati
 STR_8824_DELETE                                                 :{BLACK}Hapus
@@ -2890,7 +2891,7 @@ STR_SHOW_TOTAL_CARGO                                            :{BLACK}Tampilka
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Daftar perintah - klik pada perintah untuk menandainya. CTRL + klik ke stasiun
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Lewati perintah saat ini, dan lanjutkan berikutnya. CTRL + klik lewati perintah yang dipilih
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Hapus perintah terpilih
-STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Masukkan perintah baru sebelum perintah yang diterpilih, atau tambahkan pada akhir daftar
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Masukkan perintah baru sebelum perintah yang terpilih, atau tambahkan pada akhir daftar
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Daftar Jadwal Keberangkatan - Klik salah satu tujuan untuk memilihnya.
 STR_TIMETABLE_WAIT_TIME_TOOLTIP                                 :{BLACK}Ubah jumlah waktu yang seharusnya dibutuhkan, pada tujuan yang terpilih
 STR_TIMETABLE_CLEAR_TIME_TOOLTIP                                :{BLACK}Hapus jumlah waktu pada tujuan yang terpilih
@@ -2926,9 +2927,9 @@ STR_TRAIN_NO_POWER                                              :{RED}Tidak ada 
 STR_TRAIN_START_NO_CATENARY                                     :Jalur ini mengalami kekurangan "catenary" sehingga kereta api tidak dapat dijalankan
 STR_TRAIN_STUCK                                                 :{ORANGE}Menunggu sampai jalur bebas
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Berita {STRING} Sekarang tersedia!
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}{STRING} jenis baru telah diluncurkan!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
-STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Berita {STRING} Sekarang tersedia!  -  {ENGINE}
+STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}{STRING} jenis baru telah diluncurkan!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Tidak dapat menjual kendaraan yang telah dihancurkan...
 STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Tidak dapat menyusun ulang kendaraan yang telah dihancurkan...
@@ -2943,7 +2944,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :Kendaraaan ini 
 STR_TIMETABLE_TOTAL_TIME                                        :Total durasi seluruh perjalanan akan memakan waktu {STRING}
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :Total durasi seluruh perjalanan akan memakan waktu kurang lebih {STRING} untuk terpenuhi (blm semuanya terjadwal)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Otomatis
-STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis dari perjalanan berikutnya (Ctrl-Klik agar waktu tinggalnya tetap)
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadwal keberangkatan secara otomatis dari perjalanan berikutnya (Ctrl-klik agar waktu tinggalnya tetap)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bus/truk sedang berjalan
@@ -3024,7 +3025,7 @@ STR_9804_NEW_SHIPS                                              :{BLACK}Kapal Ba
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Kapal
 STR_9808_NEW_SHIPS                                              :{WHITE}Kapal Baru
 STR_9809_BUILD_SHIP                                             :{BLACK}Membuat Kapal
-STR_CLONE_SHIP                                                  :{BLACK}Gandakan kapal
+STR_CLONE_SHIP                                                  :{BLACK}Gandakan
 STR_CLONE_SHIP_INFO                                             :{BLACK}Untuk menggandakan satu unit kapal laut. Kontrol-klik akan berbagi perintah/tujuan
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal Laut. Klik tombol ini dan kemudian pada satu kapal laut di dalam atau diluar galangan. Kontrol-klik akan berbagi perintah/tujuan
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kapal Laut harus berhenti di galangan
@@ -3091,7 +3092,7 @@ STR_A000_AIRPORTS                                               :{WHITE}Bandara
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Tidak dapat membangun bandara disini...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar Pesawat Udara
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Pesawat Udara Baru
-STR_CLONE_AIRCRAFT                                              :{BLACK}Gandakan pesawat udara
+STR_CLONE_AIRCRAFT                                              :{BLACK}Gandakan
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat Udara. Kontrol-klik akan berbagi perintah/tujuannya
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat Udara. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik akan berbagi perintah/tujuannya
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Pesawat Udara Baru
@@ -3122,7 +3123,7 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Tidak da
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Konstruksi Bandara
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Membangun bandara
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat Udara - klik pada pesawat untuk informasi
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Membuat pesawat udara baru (dibutuhkan bandara dengan hangar)
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Membuat pesawat udara baru (membutuhkan bandara dengan hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat Udara - klik pada pesawat untuk informasi
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Membuat pesawat udara baru
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag pesawat kesini untuk menjualnya

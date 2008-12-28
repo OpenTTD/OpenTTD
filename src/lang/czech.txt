@@ -29,13 +29,13 @@ STR_000F_PASSENGERS.gen                                         :cestujících
 STR_0010_COAL                                                   :uhlí
 STR_0010_COAL.big                                               :Uhlí
 STR_0011_MAIL                                                   :pošta
+STR_0011_MAIL.acc                                               :poštu
 STR_0011_MAIL.big                                               :Pošta
 STR_0011_MAIL.gen                                               :pošty
-STR_0011_MAIL.acc                                               :poštu
 STR_0012_OIL                                                    :ropa
+STR_0012_OIL.acc                                                :ropu
 STR_0012_OIL.big                                                :Ropa
 STR_0012_OIL.gen                                                :ropy
-STR_0012_OIL.acc                                                :ropu
 STR_0013_LIVESTOCK                                              :dobytek
 STR_0013_LIVESTOCK.big                                          :Dobytek
 STR_0013_LIVESTOCK.gen                                          :dobytka
@@ -47,9 +47,9 @@ STR_0016_WOOD                                                   :dřevo
 STR_0016_WOOD.big                                               :Dřevo
 STR_0016_WOOD.gen                                               :dřeva
 STR_0017_IRON_ORE                                               :železná ruda
+STR_0017_IRON_ORE.acc                                           :železnou rudu
 STR_0017_IRON_ORE.big                                           :Železná ruda
 STR_0017_IRON_ORE.gen                                           :železné rudy
-STR_0017_IRON_ORE.acc                                           :železnou rudu
 STR_0018_STEEL                                                  :ocel
 STR_0018_STEEL.big                                              :Ocel
 STR_0018_STEEL.gen                                              :oceli
@@ -57,12 +57,12 @@ STR_0019_VALUABLES                                              :ceniny
 STR_0019_VALUABLES.big                                          :Ceniny
 STR_0019_VALUABLES.gen                                          :cenin
 STR_001A_COPPER_ORE                                             :měděná ruda
+STR_001A_COPPER_ORE.acc                                         :měděnou rudu
 STR_001A_COPPER_ORE.big                                         :Měděná ruda
 STR_001A_COPPER_ORE.gen                                         :měděné rudy
-STR_001A_COPPER_ORE.acc                                         :měděnou rudu
 STR_001B_MAIZE                                                  :kukuřice
-STR_001B_MAIZE.big                                              :Kukuřice
 STR_001B_MAIZE.acc                                              :kukuřici
+STR_001B_MAIZE.big                                              :Kukuřice
 STR_001C_FRUIT                                                  :ovoce
 STR_001C_FRUIT.big                                              :Ovoce
 STR_001D_DIAMONDS                                               :diamanty
@@ -78,12 +78,12 @@ STR_0020_GOLD                                                   :zlato
 STR_0020_GOLD.big                                               :Zlato
 STR_0020_GOLD.gen                                               :zlata
 STR_0021_WATER                                                  :voda
+STR_0021_WATER.acc                                              :vodu
 STR_0021_WATER.big                                              :Voda
 STR_0021_WATER.gen                                              :vody
-STR_0021_WATER.acc                                              :vodu
 STR_0022_WHEAT                                                  :pšenice
-STR_0022_WHEAT.big                                              :Pšenice
 STR_0022_WHEAT.acc                                              :pšenici
+STR_0022_WHEAT.big                                              :Pšenice
 STR_0023_RUBBER                                                 :kaučuk
 STR_0023_RUBBER.big                                             :Kaučuk
 STR_0023_RUBBER.gen                                             :kaučuku
@@ -97,13 +97,13 @@ STR_0026_CANDY                                                  :bonbony
 STR_0026_CANDY.big                                              :Bonbony
 STR_0026_CANDY.gen                                              :bonbonů
 STR_0027_COLA                                                   :kola
+STR_0027_COLA.acc                                               :kolu
 STR_0027_COLA.big                                               :Kola
 STR_0027_COLA.gen                                               :koly
-STR_0027_COLA.acc                                               :kolu
 STR_0028_COTTON_CANDY                                           :cukrová vata
+STR_0028_COTTON_CANDY.acc                                       :cukrovou vatu
 STR_0028_COTTON_CANDY.big                                       :Cukrová vata
 STR_0028_COTTON_CANDY.gen                                       :cukrové vaty
-STR_0028_COTTON_CANDY.acc                                       :cukrovou vatu
 STR_0029_BUBBLES                                                :bubliny
 STR_0029_BUBBLES.big                                            :Bubliny
 STR_0029_BUBBLES.gen                                            :bublin
@@ -117,9 +117,9 @@ STR_002C_PLASTIC                                                :plast
 STR_002C_PLASTIC.big                                            :Plast
 STR_002C_PLASTIC.gen                                            :plastu
 STR_002D_FIZZY_DRINKS                                           :limonáda
+STR_002D_FIZZY_DRINKS.acc                                       :limonádu
 STR_002D_FIZZY_DRINKS.big                                       :Limonáda
 STR_002D_FIZZY_DRINKS.gen                                       :limonád
-STR_002D_FIZZY_DRINKS.acc                                       :limonádu
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :cestujících
 STR_0030_COAL                                                   :uhlí
@@ -170,7 +170,7 @@ STR_QUANTITY_FRUIT                                              :{WEIGHT} ovoce
 STR_QUANTITY_DIAMONDS                                           :{COMMA} pyt{P el le lů} diamantů
 STR_QUANTITY_FOOD                                               :{WEIGHT} jídla
 STR_QUANTITY_PAPER                                              :{WEIGHT} papíru
-STR_QUANTITY_GOLD                                               :{COMMA} balík{P "" y ů}
+STR_QUANTITY_GOLD                                               :{COMMA} balík{P "" y ů} zlata
 STR_QUANTITY_WATER                                              :{VOLUME} vody
 STR_QUANTITY_WHEAT                                              :{WEIGHT} pšenice
 STR_QUANTITY_RUBBER                                             :{VOLUME} kaučuku
@@ -556,6 +556,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informace o uzemí
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za vyčištění: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za vyčištění: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Příjem za odklizení: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Vlastník: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Majitel silnice: {LTBLUE}{STRING}
@@ -2042,7 +2043,7 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Zvýrazn
 STR_3068_DOCK                                                   :{WHITE}Přístav
 STR_3069_BUOY                                                   :Bójka
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... bójka v cestě
-STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... stanice je příliš rozložitá
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... stanice je příliš rozlehlá
 STR_NONUNIFORM_STATIONS_DISALLOWED                              :{WHITE}... nejednolité stanice nejsou povoleny
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podržením CTRL můžeš označit více položek
 

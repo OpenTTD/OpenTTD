@@ -489,6 +489,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Information sur le Terrain
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Coût du balayage: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coût du balayage: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Revenu du balayage: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propriétaire: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Propriétaire de la route: {LTBLUE}{STRING}
