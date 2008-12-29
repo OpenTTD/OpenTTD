@@ -735,7 +735,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				ci = NetworkFindClientInfoFromClientID(_network_own_client_id);
 			} break;
 
-			default: NOT_REACHED(); break;
+			default: return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 		}
 	} else {
 		/* Display message from somebody else */
