@@ -6033,6 +6033,24 @@ static void AfterLoadGRFs()
 
 void LoadNewGRF(uint load_index, uint file_index)
 {
+	/* In case of networking we need to "sync" the start values
+	 * so all NewGRFs are loaded equally. For this we use the
+	 * start date of the game and we set the counters, etc. to
+	 * 0 so they're the same too. */
+	Date date            = _date;
+	Year year            = _cur_year;
+	DateFract date_fract = _date_fract;
+	uint16 tick_counter  = _tick_counter;
+	byte display_opt     = _display_opt;
+
+	if (_networking) {
+		_cur_year     = _settings_game.game_creation.starting_year;
+		_date         = ConvertYMDToDate(_cur_year, 0, 1);
+		_date_fract   = 0;
+		_tick_counter = 0;
+		_display_opt  = 0;
+	}
+
 	InitializeGRFSpecial();
 
 	ResetNewGRFData();
@@ -6086,6 +6104,13 @@ void LoadNewGRF(uint load_index, uint file_index)
 
 	/* Call any functions that should be run after GRFs have been loaded. */
 	AfterLoadGRFs();
+
+	/* Now revert back to the original situation */
+	_cur_year     = year;
+	_date         = date;
+	_date_fract   = date_fract;
+	_tick_counter = tick_counter;
+	_display_opt  = display_opt;
 }
 
 bool HasGrfMiscBit(GrfMiscBit bit)
