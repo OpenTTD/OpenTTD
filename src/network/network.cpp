@@ -184,68 +184,34 @@ byte NetworkSpectatorCount()
 // This puts a text-message to the console, or in the future, the chat-box,
 //  (to keep it all a bit more general)
 // If 'self_send' is true, this is the client who is sending the message
-void CDECL NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str, ...)
+void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str, int64 data)
 {
-	char buf[1024];
-	va_list va;
 	const int duration = 10; // Game days the messages stay visible
-	char message[1024];
-	char temp[1024];
 
-	va_start(va, str);
-	vsnprintf(buf, lengthof(buf), str, va);
-	va_end(va);
-
+	StringID strid;
 	switch (action) {
 		case NETWORK_ACTION_SERVER_MESSAGE:
+			/* Ignore invalid messages */
+			if (data >= NETWORK_SERVER_MESSAGE_END) return;
+
+			strid = STR_NETWORK_SERVER_MESSAGE;
 			color = CC_DEFAULT;
-			snprintf(message, sizeof(message), "*** %s", buf);
+			data = STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS + data;
 			break;
-		case NETWORK_ACTION_JOIN:
-			color = CC_DEFAULT;
-			GetString(temp, STR_NETWORK_CLIENT_JOINED, lastof(temp));
-			snprintf(message, sizeof(message), "*** %s %s", name, temp);
-			break;
-		case NETWORK_ACTION_LEAVE:
-			color = CC_DEFAULT;
-			GetString(temp, STR_NETWORK_ERR_LEFT, lastof(temp));
-			snprintf(message, sizeof(message), "*** %s %s (%s)", name, temp, buf);
-			break;
-		case NETWORK_ACTION_GIVE_MONEY:
-			if (self_send) {
-				SetDParamStr(0, name);
-				SetDParam(1, atoi(buf));
-				GetString(temp, STR_NETWORK_GAVE_MONEY_AWAY, lastof(temp));
-				snprintf(message, sizeof(message), "*** %s", temp);
-			} else {
-				SetDParam(0, atoi(buf));
-				GetString(temp, STR_NETWORK_GIVE_MONEY, lastof(temp));
-				snprintf(message, sizeof(message), "*** %s %s", name, temp);
-			}
-			break;
-		case NETWORK_ACTION_NAME_CHANGE:
-			GetString(temp, STR_NETWORK_NAME_CHANGE, lastof(temp));
-			snprintf(message, sizeof(message), "*** %s %s %s", name, temp, buf);
-			break;
-		case NETWORK_ACTION_CHAT_COMPANY:
-			SetDParamStr(0, name);
-			SetDParamStr(1, buf);
-			GetString(temp, self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY, lastof(temp));
-			strecpy(message, temp, lastof(message));
-			break;
-		case NETWORK_ACTION_CHAT_CLIENT:
-			SetDParamStr(0, name);
-			SetDParamStr(1, buf);
-			GetString(temp, self_send ? STR_NETWORK_CHAT_TO_CLIENT : STR_NETWORK_CHAT_CLIENT, lastof(temp));
-			strecpy(message, temp, lastof(message));
-			break;
-		default:
-			SetDParamStr(0, name);
-			SetDParamStr(1, buf);
-			GetString(temp, STR_NETWORK_CHAT_ALL, lastof(temp));
-			strecpy(message, temp, lastof(message));
-			break;
+		case NETWORK_ACTION_JOIN:           strid = STR_NETWORK_CLIENT_JOINED; break;
+		case NETWORK_ACTION_LEAVE:          strid = STR_NETWORK_CLIENT_LEFT; break;
+		case NETWORK_ACTION_NAME_CHANGE:    strid = STR_NETWORK_NAME_CHANGE; break;
+		case NETWORK_ACTION_GIVE_MONEY:     strid = self_send ? STR_NETWORK_GAVE_MONEY_AWAY : STR_NETWORK_GIVE_MONEY;   break;
+		case NETWORK_ACTION_CHAT_COMPANY:   strid = self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY; break;
+		case NETWORK_ACTION_CHAT_CLIENT:    strid = self_send ? STR_NETWORK_CHAT_TO_CLIENT  : STR_NETWORK_CHAT_CLIENT;  break;
+		default:                            strid = STR_NETWORK_CHAT_ALL;	break;
 	}
+
+	char message[1024];
+	SetDParamStr(0, name);
+	SetDParamStr(1, str);
+	SetDParam(2, data);
+	GetString(message, strid, lastof(message));
 
 	DebugDumpCommands("ddc:cmsg:%d;%d;%s\n", _date, _date_fract, message);
 	IConsolePrintF(color, "%s", message);
@@ -320,11 +286,12 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket* cs)
 	_networking = false;
 }
 
-/** Retrieve a string representation of an internal error number
- * @param buf buffer where the error message will be stored
+/**
+ * Retrieve the string id of an internal error number
  * @param err NetworkErrorCode
- * @return returns a pointer to the error message (buf) */
-char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
+ * @return the StringID
+ */
+StringID GetNetworkErrorMsg(NetworkErrorCode err)
 {
 	/* List of possible network errors, used by
 	 * PACKET_SERVER_ERROR and PACKET_CLIENT_ERROR */
@@ -348,7 +315,7 @@ char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
 
 	if (err >= (ptrdiff_t)lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
 
-	return GetString(buf, network_error_strings[err], last);
+	return err;
 }
 
 /* Count the number of active clients connected */
@@ -376,13 +343,13 @@ void CheckMinActiveClients()
 
 		_min_active_clients_paused = true;
 		DoCommandP(0, 1, 0, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", CLIENT_ID_SERVER);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS);
 	} else {
 		if (!_min_active_clients_paused) return;
 
 		_min_active_clients_paused = false;
 		DoCommandP(0, 0, 0, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", CLIENT_ID_SERVER);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS);
 	}
 }
 
@@ -449,21 +416,17 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 
 	if (!cs->has_quit && _network_server && cs->status > STATUS_INACTIVE) {
 		// We did not receive a leave message from this client...
-		NetworkErrorCode errorno = NETWORK_ERROR_CONNECTION_LOST;
-		char str[100];
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientSocket *new_cs;
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		GetNetworkErrorMsg(str, errorno, lastof(str));
-
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, "%s", str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, client_name, NULL, STR_NETWORK_ERR_CLIENT_CONNECTION_LOST);
 
 		// Inform other clients of this... strange leaving ;)
 		FOR_ALL_CLIENT_SOCKETS(new_cs) {
 			if (new_cs->status > STATUS_AUTH && cs != new_cs) {
-				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, errorno);
+				SEND_COMMAND(PACKET_SERVER_ERROR_QUIT)(new_cs, cs->client_id, NETWORK_ERROR_CONNECTION_LOST);
 			}
 		}
 	}
@@ -471,7 +434,7 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
 	if (cs->status == STATUS_PRE_ACTIVE && _settings_client.network.pause_on_join) {
 		DoCommandP(0, 0, 0, CMD_PAUSE);
-		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", CLIENT_ID_SERVER);
+		NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL);
 	}
 
 	if (_network_server) {
@@ -635,11 +598,14 @@ static bool NetworkListen()
 // Close all current connections
 static void NetworkClose()
 {
+	/* The pool is already empty, so we already closed the connections */
+	if (GetNetworkClientSocketPoolSize() == 0) return;
+
 	NetworkClientSocket *cs;
 
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_QUIT)("leaving");
+			SEND_COMMAND(PACKET_CLIENT_QUIT)();
 			cs->Send_Packets();
 		}
 		NetworkCloseClient(cs);

@@ -257,7 +257,7 @@ static void SendChat(const char *buf, DestType type, int dest)
 {
 	if (StrEmpty(buf)) return;
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_CHAT)((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf);
+		SEND_COMMAND(PACKET_CLIENT_CHAT)((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, 0);
 	} else {
 		NetworkServerSendChat((NetworkAction)(NETWORK_ACTION_CHAT + type), type, dest, buf, CLIENT_ID_SERVER);
 	}

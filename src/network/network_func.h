@@ -38,7 +38,7 @@ void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 void NetworkUpdateClientInfo(ClientID client_id);
 bool NetworkClientConnectGame(const char *host, uint16 port);
 void NetworkClientSendRcon(const char *password, const char *command);
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg);
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);
 void NetworkClientSetPassword(const char *password);
 bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio);
 void NetworkPrintClients();
@@ -57,7 +57,7 @@ const char* GetClientIP(const NetworkClientInfo *ci);
 
 void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const char *string);
 void NetworkServerSendError(ClientID client_id, NetworkErrorCode error);
-void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, ClientID from_id);
+void NetworkServerSendChat(NetworkAction action, DestType type, int dest, const char *msg, ClientID from_id, int64 data = 0);
 
 void NetworkInitChatMessage();
 void CDECL NetworkAddChatMessage(uint16 color, uint8 duration, const char *message, ...);

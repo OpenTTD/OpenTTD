@@ -135,12 +135,12 @@ void NetworkAddCommandQueue(NetworkClientSocket *cs, CommandPacket *cp);
 
 // from network.c
 void NetworkCloseClient(NetworkClientSocket *cs);
-void CDECL NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str, ...);
+void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_send, const char *name, const char *str = "", int64 data = 0);
 void NetworkGetClientName(char *clientname, size_t size, const NetworkClientSocket *cs);
 uint NetworkCalculateLag(const NetworkClientSocket *cs);
 byte NetworkGetCurrentLanguageIndex();
 NetworkClientSocket *NetworkFindClientStateFromClientID(ClientID client_id);
-char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last);
+StringID GetNetworkErrorMsg(NetworkErrorCode err);
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 
 // Macros to make life a bit more easier

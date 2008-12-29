@@ -234,7 +234,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 }
 
 // Send a chat-packet over the network
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType type, int dest, const char *msg)
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
 {
 	//
 	// Packet: CLIENT_CHAT
@@ -244,6 +244,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	//    uint8:  Destination Type (see network_data.h, DestType);
 	//    uint32: Destination CompanyID/Client-identifier
 	//    String: Message (max NETWORK_CHAT_LENGTH)
+	//    uint64: Some arbitrary number
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_CHAT);
@@ -252,6 +253,8 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	p->Send_uint8 (type);
 	p->Send_uint32(dest);
 	p->Send_string(msg);
+	p->Send_uint64(data);
+
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -299,17 +302,15 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name)
 }
 
 // Send an quit-packet over the network
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)(const char *leavemsg)
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_QUIT)()
 {
 	//
 	// Packet: CLIENT_QUIT
 	// Function: The client is quiting the game
 	// Data:
-	//    String: leave-message
 	//
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_QUIT);
 
-	p->Send_string(leavemsg);
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -405,7 +406,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	if (ci != NULL) {
 		if (playas == ci->client_playas && strcmp(name, ci->client_name) != 0) {
 			// Client name changed, display the change
-			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", name);
+			NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, name);
 		} else if (playas != ci->client_playas) {
 			// The client changed from client-player..
 			// Do not display that for now
@@ -708,6 +709,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	ClientID client_id = (ClientID)p->Recv_uint32();
 	bool self_send = p->Recv_bool();
 	p->Recv_string(msg, NETWORK_CHAT_LENGTH);
+	int64 data = p->Recv_uint64();
 
 	ci_to = NetworkFindClientInfoFromClientID(client_id);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
@@ -742,21 +744,17 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	}
 
 	if (ci != NULL)
-		NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), self_send, name, "%s", msg);
+		NetworkTextMessage(action, (ConsoleColour)GetDrawStringCompanyColor(ci->client_playas), self_send, name, msg, data);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 {
-	char str[100];
-	NetworkClientInfo *ci;
-
 	ClientID client_id = (ClientID)p->Recv_uint32();
-	GetNetworkErrorMsg(str, (NetworkErrorCode)p->Recv_uint8(), lastof(str));
 
-	ci = NetworkFindClientInfoFromClientID(client_id);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, NULL, GetNetworkErrorMsg((NetworkErrorCode)p->Recv_uint8()));
 		delete ci;
 	}
 
@@ -767,15 +765,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_QUIT)
 {
-	char str[100];
 	NetworkClientInfo *ci;
 
 	ClientID client_id = (ClientID)p->Recv_uint32();
-	p->Recv_string(str, lengthof(str));
 
 	ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL) {
-		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, "%s", str);
+		NetworkTextMessage(NETWORK_ACTION_LEAVE, CC_DEFAULT, false, ci->client_name, NULL, STR_NETWORK_CLIENT_LEAVING);
 		delete ci;
 	} else {
 		DEBUG(net, 0, "Unknown client (%d) is leaving the game", client_id);
@@ -793,7 +789,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_JOIN)
 
 	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
 	if (ci != NULL)
-		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name, "");
+		NetworkTextMessage(NETWORK_ACTION_JOIN, CC_DEFAULT, false, ci->client_name);
 
 	InvalidateWindow(WC_CLIENT_LIST, 0);
 
@@ -929,7 +925,7 @@ void NetworkUpdateClientName()
 			SEND_COMMAND(PACKET_CLIENT_SET_NAME)(_settings_client.network.client_name);
 		} else {
 			if (NetworkFindName(_settings_client.network.client_name)) {
-				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, "%s", _settings_client.network.client_name);
+				NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, false, ci->client_name, _settings_client.network.client_name);
 				strecpy(ci->client_name, _settings_client.network.client_name, lastof(ci->client_name));
 				NetworkUpdateClientInfo(CLIENT_ID_SERVER);
 			}
@@ -937,9 +933,9 @@ void NetworkUpdateClientName()
 	}
 }
 
-void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg)
+void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data)
 {
-	SEND_COMMAND(PACKET_CLIENT_CHAT)(action, type, dest, msg);
+	SEND_COMMAND(PACKET_CLIENT_CHAT)(action, type, dest, msg, data);
 }
 
 void NetworkClientSetPassword(const char *password)

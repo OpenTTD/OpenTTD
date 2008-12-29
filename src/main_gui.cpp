@@ -49,14 +49,15 @@ void CcGiveMoney(bool success, TileIndex tile, uint32 p1, uint32 p2)
 #ifdef ENABLE_NETWORK
 	if (!success || !_settings_game.economy.give_money) return;
 
-	char msg[20];
 	/* Inform the company of the action of one of it's clients (controllers). */
-	snprintf(msg, sizeof(msg), "%d", p1);
+	char msg[64];
+	SetDParam(0, p2);
+	GetString(msg, STR_COMPANY_NAME, lastof(msg));
 
 	if (!_network_server) {
-		NetworkClientSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg);
+		NetworkClientSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, p1);
 	} else {
-		NetworkServerSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, CLIENT_ID_SERVER);
+		NetworkServerSendChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, p2, msg, CLIENT_ID_SERVER, p1);
 	}
 #endif /* ENABLE_NETWORK */
 }
