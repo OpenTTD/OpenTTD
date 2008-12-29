@@ -1111,13 +1111,13 @@ struct CustomCurrencyWindow : Window {
 						if (_custom_currency.rate > 1) _custom_currency.rate--;
 						this->click = 1 << (line * 2 + 0);
 					} else {
-						if (_custom_currency.rate < 5000) _custom_currency.rate++;
+						if (_custom_currency.rate < UINT16_MAX) _custom_currency.rate++;
 						this->click = 1 << (line * 2 + 1);
 					}
 				} else { // enter text
 					SetDParam(0, _custom_currency.rate);
 					str = STR_CONFIG_PATCHES_INT32;
-					len = 4;
+					len = 5;
 					afilter = CS_NUMERAL;
 				}
 				break;
@@ -1152,18 +1152,16 @@ struct CustomCurrencyWindow : Window {
 			case CUSTCURR_TO_EURO:
 				if (IsInsideMM(x, 10, 30)) { // clicked buttons
 					if (x < 20) {
-						_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ?
-							CF_NOEURO : _custom_currency.to_euro - 1;
+						_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ? CF_NOEURO : _custom_currency.to_euro - 1;
 						this->click = 1 << (line * 2 + 0);
 					} else {
-						_custom_currency.to_euro =
-							Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
+						_custom_currency.to_euro = Clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
 						this->click = 1 << (line * 2 + 1);
 					}
 				} else { // enter text
 					SetDParam(0, _custom_currency.to_euro);
 					str = STR_CONFIG_PATCHES_INT32;
-					len = 4;
+					len = 7;
 					afilter = CS_NUMERAL;
 				}
 				break;
@@ -1184,7 +1182,7 @@ struct CustomCurrencyWindow : Window {
 
 		switch (this->query_widget) {
 			case CUSTCURR_EXCHANGERATE:
-				_custom_currency.rate = Clamp(atoi(str), 1, 5000);
+				_custom_currency.rate = Clamp(atoi(str), 1, UINT16_MAX);
 				break;
 
 			case CUSTCURR_SEPARATOR: /* Thousands seperator */
