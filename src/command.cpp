@@ -583,7 +583,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		return true;
 	}
 #endif /* ENABLE_NETWORK */
-	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd, text);
+	DEBUG(desync, 1, "cmd: %08x; %08x; %1x; %06x; %08x; %08x; %04x; %s\n", _date, _date_fract, (int)_current_company, tile, p1, p2, cmd & ~CMD_NETWORK_COMMAND, text);
 
 	/* update last build coordinate of company. */
 	if (tile != 0 && IsValidCompanyID(_current_company)) {

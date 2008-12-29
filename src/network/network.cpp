@@ -213,7 +213,7 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_sen
 	SetDParam(2, data);
 	GetString(message, strid, lastof(message));
 
-	DebugDumpCommands("ddc:cmsg:%d;%d;%s\n", _date, _date_fract, message);
+	DEBUG(desync, 1, "msg: %d; %d; %s\n", _date, _date_fract, message);
 	IConsolePrintF(color, "%s", message);
 	NetworkAddChatMessage(color, duration, "%s", message);
 }
@@ -964,7 +964,7 @@ static bool NetworkDoClientLoop()
 			if (_sync_seed_1 != _random.state[0]) {
 #endif
 				NetworkError(STR_NETWORK_ERR_DESYNC);
-				DebugDumpCommands("ddc:serr:%d;%d\n", _date, _date_fract);
+				DEBUG(desync, 1, "sync_err: %d; %d\n", _date, _date_fract);
 				DEBUG(net, 0, "Sync error detected!");
 				NetworkClientError(NETWORK_RECV_STATUS_DESYNC, GetNetworkClientSocket(0));
 				return false;
@@ -1032,10 +1032,10 @@ void NetworkGameLoop()
 
 			char buff[4096];
 			if (fgets(buff, lengthof(buff), f) == NULL) break;
-			if (strncmp(buff, "ddc:cmd:", 8) != 0) continue;
+			if (strncmp(buff, "cmd: ", 8) != 0) continue;
 			cp = MallocT<CommandPacket>(1);
 			int company;
-			sscanf(&buff[8], "%d;%d;%d;%d;%d;%d;%d;%s", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
+			sscanf(&buff[8], "%d; %d; %d; %d; %d; %d; %d; %s", &next_date, &next_date_fract, &company, &cp->tile, &cp->p1, &cp->p2, &cp->cmd, cp->text);
 			cp->company = (CompanyID)company;
 		}
 #endif /* DEBUG_DUMP_COMMANDS */

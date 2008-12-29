@@ -10,6 +10,7 @@
 #include "debug.h"
 #include "string_func.h"
 #include "network/core/core.h"
+#include "fileio_func.h"
 
 #if defined(ENABLE_NETWORK)
 SOCKET _debug_socket = INVALID_SOCKET;
@@ -31,6 +32,7 @@ int _debug_freetype_level;
 int _debug_sl_level;
 int _debug_station_level;
 int _debug_gamelog_level;
+int _debug_desync_level;
 
 
 struct DebugLevel {
@@ -56,6 +58,7 @@ struct DebugLevel {
 	DEBUG_LEVEL(sl),
 	DEBUG_LEVEL(station),
 	DEBUG_LEVEL(gamelog),
+	DEBUG_LEVEL(desync),
 	};
 #undef DEBUG_LEVEL
 
@@ -71,7 +74,7 @@ static void debug_print(const char *dbg, const char *buf)
 		send(_debug_socket, buf2, (int)strlen(buf2), 0);
 	} else
 #endif /* ENABLE_NETWORK */
-	{
+	if (strcmp(dbg, "desync") != 0) {
 #if defined(WINCE)
 		/* We need to do OTTD2FS twice, but as it uses a static buffer, we need to store one temporary */
 		TCHAR tbuf[512];
@@ -81,6 +84,12 @@ static void debug_print(const char *dbg, const char *buf)
 		fprintf(stderr, "dbg: [%s] %s\n", dbg, buf);
 #endif
 		IConsoleDebug(dbg, buf);
+	} else {
+		static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
+		if (f == NULL) return;
+
+		fprintf(f, "%s", buf);
+		fflush(f);
 	}
 }
 
@@ -168,20 +177,3 @@ const char *GetDebugString()
 
 	return dbgstr;
 }
-
-#ifdef DEBUG_DUMP_COMMANDS
-#include "fileio_func.h"
-
-void CDECL DebugDumpCommands(const char *s, ...)
-{
-	static FILE *f = FioFOpenFile("commands-out.log", "wb", AUTOSAVE_DIR);
-	if (f == NULL) return;
-
-	va_list va;
-	va_start(va, s);
-	vfprintf(f, s, va);
-	va_end(va);
-
-	fflush(f);
-}
-#endif /* DEBUG_DUMP_COMMANDS */

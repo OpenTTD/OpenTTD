@@ -15,9 +15,7 @@
 #include "vehicle_base.h"
 #include "debug.h"
 #include "rail_gui.h"
-#ifdef DEBUG_DUMP_COMMANDS
 #include "saveload.h"
-#endif
 
 Year      _cur_year;
 Month     _cur_month;
@@ -244,12 +242,12 @@ void IncreaseDate()
 
 	/* yes, call various monthly loops */
 	if (_game_mode != GM_MENU) {
-#ifdef DEBUG_DUMP_COMMANDS
-		char name[MAX_PATH];
-		snprintf(name, lengthof(name), "dmp_cmds_%d.sav", _date);
-		SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
-		DebugDumpCommands("ddc:save:%s\n", name);
-#endif /* DUMP_COMMANDS */
+		if (_debug_desync_level > 2) {
+			char name[MAX_PATH];
+			snprintf(name, lengthof(name), "dmp_cmds_%08x_%08x.sav", _settings_game.game_creation.generation_seed, _date);
+			SaveOrLoad(name, SL_SAVE, AUTOSAVE_DIR);
+		}
+
 		if (_settings_client.gui.autosave != 0 && (_cur_month % _autosave_months[_settings_client.gui.autosave]) == 0) {
 			_do_autosave = true;
 			RedrawAutosave();

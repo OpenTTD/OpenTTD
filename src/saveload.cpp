@@ -1687,6 +1687,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 		/* General tactic is to first save the game to memory, then use an available writer
 		 * to write it to file, either in threaded mode if possible, or single-threaded */
 		if (mode == SL_SAVE) { /* SAVE game */
+			DEBUG(desync, 1, "save: %s\n", filename);
 			fmt = GetSavegameFormat("memory"); // write to memory
 
 			_sl.write_bytes = fmt->writer;
@@ -1714,7 +1715,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 			}
 		} else { /* LOAD game */
 			assert(mode == SL_LOAD);
-			DebugDumpCommands("ddc:load:%s\n", filename);
+			DEBUG(desync, 1, "load: %s\n", filename);
 
 			if (fread(hdr, sizeof(hdr), 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE);
 

@@ -48,6 +48,7 @@
 	extern int _debug_sl_level;
 	extern int _debug_station_level;
 	extern int _debug_gamelog_level;
+	extern int _debug_desync_level;
 
 	void CDECL debug(const char *dbg, ...);
 #endif /* NO_DEBUG_MESSAGES */
@@ -100,17 +101,5 @@ const char *GetDebugString();
 
 void ShowInfo(const char *str);
 void CDECL ShowInfoF(const char *str, ...);
-
-#ifdef DEBUG_DUMP_COMMANDS
-	void CDECL DebugDumpCommands(const char *s, ...);
-#else /* DEBUG_DUMP_COMMANDS */
-	/* when defined as an empty function with variable argument list,
-	 * it can't be inlined - so define it as an empty macro */
-	#if defined(__GNUC__) && (__GNUC__ < 3)
-		#define DebugDumpCommands(s, args...)
-	#else
-		#define DebugDumpCommands(s, ...)
-	#endif
-#endif /* DEBUG_DUMP_COMMANDS */
 
 #endif /* DEBUG_H */

@@ -102,8 +102,6 @@ void NetworkExecuteCommand(CommandPacket *cp)
 		cp->callback = 0;
 	}
 
-	DebugDumpCommands("ddc:cmd:%d;%d;%d;%d;%d;%d;%d;%s\n", _date, _date_fract, (int)cp->company, cp->tile, cp->p1, cp->p2, cp->cmd, cp->text);
-
 	DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd | CMD_NETWORK_COMMAND, _callback_table[cp->callback], cp->text, cp->my_cmd);
 }
 

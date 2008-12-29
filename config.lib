@@ -1357,10 +1357,7 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DNDEBUG"
 	fi
 
-	if [ "$enable_desync_debug" = "1" ]; then
-		CFLAGS="$CFLAGS -DDEBUG_DUMP_COMMANDS"
-	fi
-	if [ "$enable_desync_debug" = "2" ]; then
+	if [ "$enable_desync_debug" != "0" ]; then
 		CFLAGS="$CFLAGS -DRANDOM_DEBUG"
 	fi
 
