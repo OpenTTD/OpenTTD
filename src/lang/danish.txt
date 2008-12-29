@@ -1546,7 +1546,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Afbryd forbindelse
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv det beløb, som du ønsker at give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Indtast kodeord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient liste
@@ -1569,7 +1568,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Du har 
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Du blev smidt ud af spillet
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Snyderi er ikke tilladt på denne server
 
-STR_NETWORK_ERR_LEFT                                            :har forladt spillet
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :generel fejl
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :synkroniseringsfejl
@@ -1587,9 +1585,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :smidt ud af ser
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvede at snyde
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er fuld
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :har tilsluttet sig spillet
-STR_NETWORK_GIVE_MONEY                                          :gav din virksomhed nogle penge ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :du gav {STRING} nogle penge ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Hold] :
 STR_NETWORK_CHAT_COMPANY                                        :[Hold] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Hold] Til {STRING}: {GRAY}{STRING}
@@ -1599,7 +1594,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {S
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
 STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Skriv tekst i netværks-chat
-STR_NETWORK_NAME_CHANGE                                         :har skiftet navn til
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serveren har lukket ned for dette spil
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Serveren genstarter...{}Vent venligst...
 

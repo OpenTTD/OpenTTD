@@ -1588,7 +1588,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odklopi
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vnesi količino denarja, ki ga podarjaš
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Strežnik je zaščiten.Vnesi geslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Podjetje je zaščiteno. Vnesi geslo
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam gostov
@@ -1611,7 +1610,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Izvrzen
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Brcnjen/a si bil/a iz igre
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Goljufanje ni dovoljeno na tem strežniku
 
-STR_NETWORK_ERR_LEFT                                            :zapušča igro
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :splošna napaka
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :desinhronizacijska napaka
@@ -1629,9 +1627,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :brcnjen od gost
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :je poskusil/a uporabiti goljufanje
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :gostitelj zaseden
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :se pridružuje igri
-STR_NETWORK_GIVE_MONEY                                          :je odstopil/a tvojemu podjetju nekaj denarja ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :dal/a si {STRING} nekaj denarja ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Skupina] :
 STR_NETWORK_CHAT_COMPANY                                        :[Skupina] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Skupina] Za {STRING}: {GRAY}{STRING}
@@ -1641,7 +1636,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Vsi] :
 STR_NETWORK_CHAT_ALL                                            :[Vsi] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Vpiši tekst za mrežni pogovor
-STR_NETWORK_NAME_CHANGE                                         :je spremenil/a svoje ime v
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Strežnik je zaprl sejo
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Strežnik se zaganja...{}Prosim počakaj...
 

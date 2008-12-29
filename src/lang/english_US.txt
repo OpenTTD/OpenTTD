@@ -1544,7 +1544,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Disconnect
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is protected. Enter password
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Client List
@@ -1567,7 +1566,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} You are
 STR_NETWORK_ERR_KICKED                                          :{WHITE} You are kicked out of the server
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheating is not allowed on this server
 
-STR_NETWORK_ERR_LEFT                                            :has left the game
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :general error
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :desync error
@@ -1585,9 +1583,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :kicked by serve
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :was trying to use a cheat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server full
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :has joined the game
-STR_NETWORK_GIVE_MONEY                                          :gave you some money ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :you gave {STRING} some money ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {GRAY}{STRING}
@@ -1597,7 +1592,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] To {S
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Enter text for network chat
-STR_NETWORK_NAME_CHANGE                                         :has changed his name to
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} The server closed the session
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} The server is restarting...{}Please wait...
 

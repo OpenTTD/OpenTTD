@@ -1546,7 +1546,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconnecta
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introdueix la quantitat de diners que vols obtenir
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegit. Entra la contrasenya
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Entra la contrasenya
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Llista de Clients
@@ -1569,7 +1568,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Estàs 
 STR_NETWORK_ERR_KICKED                                          :{WHITE} T'han fet fora del servidor
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} No es permet fer trampes en aquest servidor
 
-STR_NETWORK_ERR_LEFT                                            :ha deixat el joc
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :error general
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :error de desincronització
@@ -1587,9 +1585,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :tret pel servid
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :s'ha intentat utilitzar una trampa
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor ple
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :ha entrat al joc
-STR_NETWORK_GIVE_MONEY                                          :gave you some money ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :Has entregat {STRING} diners ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] a {STRING}: {GRAY}{STRING}
@@ -1599,7 +1594,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] a {ST
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Posa el text pel xat de xarxa
-STR_NETWORK_NAME_CHANGE                                         :ha canviat el seu nom a
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} El servidor ha tancat la sesió
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} El servidor està reiniciant...{}Espera un moment...
 

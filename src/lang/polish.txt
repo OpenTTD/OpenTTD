@@ -1633,7 +1633,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Rozłącz
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wprowadź ilość pieniędzy jaką chcesz przekazać
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer jest chroniony. Wprowadź hasło
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadź hasło
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista klientów
@@ -1656,7 +1655,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Masz za
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Zostałeś wyrzucony z serwera
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Ułatwienia są niedozwolone na tym serwerze
 
-STR_NETWORK_ERR_LEFT                                            :opuścił grę
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :błąd ogólny
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :błąd synchronizacji
@@ -1674,9 +1672,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :wyrzucony przez
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probował użyć ułatwień
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serwer jest pełny
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :przyłączył się do gry
-STR_NETWORK_GIVE_MONEY                                          :dał Ci trochę pieniędzy ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :przekazałeś {STRING} trochę pieniędzy ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Zespół] :
 STR_NETWORK_CHAT_COMPANY                                        :[Zespół] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespół] do {STRING}: {GRAY}{STRING}
@@ -1686,7 +1681,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] do {
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Wszyscy] :
 STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Wpisz tekst do chat'u
-STR_NETWORK_NAME_CHANGE                                         :zmienił/-a swoją nazwę na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serwer zamknął sesję
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Restart serwera...{}Proszę czekać...
 

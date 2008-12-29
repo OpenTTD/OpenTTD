@@ -1612,7 +1612,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK} Do sad 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odspoji
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesi količinu novca koju želiš dati
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Poslužitelj je zaštićen. Unesite zaporku
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tvrtka je zaštićena. Unesite zaporku
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Popis klijenata
@@ -1635,7 +1634,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Zabranj
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Izbačen si iz igre
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Na ovome poslužitelju varanje nije dopušteno
 
-STR_NETWORK_ERR_LEFT                                            :je napusti{G o la lo} igru
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :opća greška
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :greška u sinkronizaciji
@@ -1653,9 +1651,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :izbačen{G "" a
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :je pokuša{G o la lo} varati
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :poslužitelj je pun
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :se pridruži{G o la lo} igri
-STR_NETWORK_GIVE_MONEY                                          :je da{G o la lo} novac Vašoj tvrtki ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :da{G o la lo} si {STRING} novac ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Ekipa]:
 STR_NETWORK_CHAT_COMPANY                                        :[Ekipa] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Ekipa] Za {STRING}: {GRAY}{STRING}
@@ -1665,7 +1660,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatno] Za {
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Svima] :
 STR_NETWORK_CHAT_ALL                                            :[Svima] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Upišite tekst mrežnog razgovora
-STR_NETWORK_NAME_CHANGE                                         :je promjeni {G o la lo} svoje ime u
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Poslužitelj je zatvorio sesiju
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Poslužitelj se ponovno pokreće...{}Molimo pričekajte...
 

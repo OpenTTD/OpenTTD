@@ -1610,7 +1610,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit sa
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Napis sumu, ktoru chces poskytnut
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chraneny. Zadaj heslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Spolocnost je chranena. Zadaj heslo
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Zoznam klientov
@@ -1633,7 +1632,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Si zabl
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Bol si vyhodeny z hry
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Cheatovanie nie je povolene na tomto serveri
 
-STR_NETWORK_ERR_LEFT                                            :opustil hru
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :generalna chyba
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :chyba synchronizacie
@@ -1651,9 +1649,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :vyhodeny zo ser
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :sa pokusal cheatovat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server je plny
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :vstupil do hry
-STR_NETWORK_GIVE_MONEY                                          :ti poslal peniaze ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :poslal si {STRING} penazie ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tim] :
 STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRING}: {GRAY}{STRING}
@@ -1663,7 +1658,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre 
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Všetkým] :
 STR_NETWORK_CHAT_ALL                                            :[Všetkým] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Zadajte text pre sietový chat
-STR_NETWORK_NAME_CHANGE                                         :si zmenil meno na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server ukoncil relaciu
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server sa restartuje ...{}Cakajte prosim ...
 

@@ -1547,7 +1547,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}فصل
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}أدخل مبلغ المال المرسل
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}الخادم محمي، أدخل الرقم السر
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشركة محمية ، أدخل الرقم السري
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}قائمة العملاء
@@ -1570,7 +1569,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} أنت 
 STR_NETWORK_ERR_KICKED                                          :{WHITE} لقد طردت من اللعبة
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} الغش ليس مسموحا به في هذه اللعبة
 
-STR_NETWORK_ERR_LEFT                                            :ترك اللعبة
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :خطاء عام
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :خطأ في DESYNC
@@ -1588,9 +1586,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :طردت من �
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :كان يحاول استخدام سر للغش
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :خادم ممتلئ
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :أنضم للعبة
-STR_NETWORK_GIVE_MONEY                                          :أعطى شركتك مبلغ ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :أعطيت {STRING} مبلغ ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[فريق]
 STR_NETWORK_CHAT_COMPANY                                        :[فريق]{STRING} : {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[فريق] الى {STRING} : {GRAY}{STRING}
@@ -1600,7 +1595,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[خاص] الى
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[الكل]:
 STR_NETWORK_CHAT_ALL                                            :[الكل] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}ادخل نص للمحادثة
-STR_NETWORK_NAME_CHANGE                                         :قاد بغيير اسمة الى:
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}اقفل الخادم الجلسة
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} يتم بدأ الخادم من جديد ... {} الرجاء الأنتظار
 

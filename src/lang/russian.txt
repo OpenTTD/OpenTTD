@@ -1548,7 +1548,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Отключиться
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Сумма денег, которую хотите передать
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер защищен. Введите пароль
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компания защищена. Введите пароль
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Список клиентов
@@ -1571,7 +1570,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Вам 
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Вас выкинули из игры
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Чит-коды не разрешены на этом сервере
 
-STR_NETWORK_ERR_LEFT                                            :покинул игру
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :общая ошибка
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :ошибка синхронизации
@@ -1589,9 +1587,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :вас выки
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :попытался применить чит
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер переполнен
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :присоединился к игре
-STR_NETWORK_GIVE_MONEY                                          :перевел на счет вашей компании сумму ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :Вы перевели на счет {STRING} сумму ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
 STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Команде] {STRING}: {GRAY}{STRING}
@@ -1601,7 +1596,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] к
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всем] :
 STR_NETWORK_CHAT_ALL                                            :[Всем] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Введите текст для сетевого сообщения
-STR_NETWORK_NAME_CHANGE                                         :изменил свое имя на
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрыл сессию
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Сервер перезапускается...{}Пожалуйста, подождите...
 

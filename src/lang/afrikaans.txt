@@ -1538,7 +1538,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Loskoppel
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Invoeg die bedrag van geld jy wil gee
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Verskaffer is beskerm. Invoeg wagwoord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskappy is beskerm. Invoeg wagwoord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient Lys
@@ -1561,7 +1560,6 @@ STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Jy is v
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Jy is van die spel geskop
 STR_NETWORK_ERR_CHEATER                                         :{WHITE} Bedrieg is nie toegelaat op hierdie verskaffer
 
-STR_NETWORK_ERR_LEFT                                            :het die spel verlaat
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_GENERAL                                  :algemeen fout
 STR_NETWORK_ERR_CLIENT_DESYNC                                   :desync fout
@@ -1579,9 +1577,6 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :geskop by versk
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :het probeer om 'n bedreig te gebruik
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :verskaffer vol
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :het die speletjie verbind
-STR_NETWORK_GIVE_MONEY                                          :het vir u maatskappy geld gegee ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :u het vir {STRING} geld ({CURRENCY}) gegee
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Span] :
 STR_NETWORK_CHAT_COMPANY                                        :[Span] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Span] Na {STRING}: {GRAY}{STRING}
@@ -1591,7 +1586,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Privaat] Na {S
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}Tik woord in vir netwerk kominikasie
-STR_NETWORK_NAME_CHANGE                                         :het hy/sy naam verander na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Die verskaffer het die sessie toegemaak
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Die verskaffer is besig om te weerbegin...{}Wag asb...
 
