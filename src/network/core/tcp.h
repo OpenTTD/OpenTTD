@@ -130,8 +130,6 @@ static inline bool IsValidNetworkClientSocketIndex(ClientIndex index)
 #define FOR_ALL_CLIENT_SOCKETS_FROM(d, start) for (d = GetNetworkClientSocket(start); d != NULL; d = (d->index + 1U < GetNetworkClientSocketPoolSize()) ? GetNetworkClientSocket(d->index + 1U) : NULL) if (d->IsValid())
 #define FOR_ALL_CLIENT_SOCKETS(d) FOR_ALL_CLIENT_SOCKETS_FROM(d, 0)
 
-typedef NetworkClientSocket NetworkTCPSocketHandler;
-
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_CORE_TCP_H */
