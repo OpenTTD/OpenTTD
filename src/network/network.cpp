@@ -315,7 +315,7 @@ StringID GetNetworkErrorMsg(NetworkErrorCode err)
 
 	if (err >= (ptrdiff_t)lengthof(network_error_strings)) err = NETWORK_ERROR_GENERAL;
 
-	return err;
+	return network_error_strings[err];
 }
 
 /* Count the number of active clients connected */
