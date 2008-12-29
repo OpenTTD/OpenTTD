@@ -613,6 +613,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Інформація про ділянку
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Вартість очистки: {LTBLUE}неможливо
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Вартість очистки: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Дохід при очистці: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :немає
 STR_01A7_OWNER                                                  :{BLACK}Власник: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Власник дороги: {LTBLUE}{STRING}
@@ -1709,6 +1710,8 @@ STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :неправи�
 STR_NETWORK_ERR_CLIENT_KICKED                                   :відключено сервером від гри
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :спроба грати нечесно
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер переповнений
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
 STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {GRAY}{STRING}

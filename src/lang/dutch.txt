@@ -1381,7 +1381,7 @@ STR_NETWORK_MULTIPLAYER                                         :{WHITE}Netwerks
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spelernaam:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Dit is de naam waarmee andere spelers je herkennen
-STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Was is je naam
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}Vul je naam in
 STR_NETWORK_CONNECTION                                          :{BLACK}Verbinding:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Kies tussen een internet spel of een lokaal netwerk spel
 
@@ -1547,6 +1547,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Verbinding verbroken
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Geef de hoeveelheid geld die je wilt geven in
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is beveiligd. Voer wachtwoord in.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Bedrijf is beveiligd. Voer wachtwoord in.
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Spelers Lijst
@@ -1586,6 +1587,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :geschopt door s
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probeerde vals te spelen
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server is vol
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spel gepauzeerd (te weinig spelers)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spel hervat (genoeg spelers)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spel gepauzeerd (inkomende client)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spel hervat (client verbonden)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spel hervat (client kon geen verbinding maken)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :vertrekt
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} heeft zich bij het spel gevoegd
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} heeft het spel verlaten ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} heeft zijn/haar naam gewijzigd naar {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gaf je bedrijf {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Je gaf {2:CURRENCY} aan {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Aan {STRING}: {GRAY}{STRING}
@@ -1846,9 +1861,9 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Bouw standbeeld
 STR_204B_FUND_NEW_BUILDINGS                                     :Betaal nieuwe gebouwen
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Koop exclusieve transportrechten
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Koop de gemeenteraad om
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begin een kleine reclamecampagne, om meer passagiers en goederen naar je transportdiensten te trekken.{}  Kosten: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Begin een middelgrote advertentiecampagne, om meer passagiers en goederen naar je transportdiensten te trekken.{}  Kosten: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begin een grote advertentiecampagne, om meer passagiers en goederen naar je transportdiensten te trekken.{}  Kosten: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begin een kleine reclamecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}  Kosten: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Begin een middelgrote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}  Kosten: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Begin een grote advertentiecampagne, om meer passagiers en goederen naar jouw transportdiensten te trekken.{}  Kosten: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Betaal een vernieuwing van het wegdek. Veroorzaakt merkbare verstoring van het wegverkeer tot 6 maanden.{}  Kosten: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bouw een standbeeld ter ere van jouw bedrijf.{} Kosten: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betaal de bouw van nieuwe commerciële gebouwen in de stad.{}  Kosten: {CURRENCY}
@@ -3196,7 +3211,7 @@ STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Het hoev
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Het aantal eenheden aan goederen dat is bezorgd in de afgelopen vier kwartalen.
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Typen goederen dat zijn bezorgd in het laatste kwartaal.
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Hoeveelheid contant geld
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Heb je een hoge lening?
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}De hoeveelheid geld die dit bedrijf leent
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totaal aantal punten uit de mogelijke punten
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Instellingen

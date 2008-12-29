@@ -374,7 +374,7 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} postaje vrlo star i zahteva hitnu zamenu
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija o Okolini Tla
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}KoÅ¡ta da se oÄisti : {LTBLUE}Nije Dostupno
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}KoÅ¡ta da se oÄisti: {RED}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}KoÅ¡ta da se oÄisti: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Nije Dostupno
 STR_01A7_OWNER                                                  :{BLACK}Vlasnik: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokalna vlast: {LTBLUE}{STRING}
@@ -681,13 +681,29 @@ STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Trzaj je
 STR_0304_QUIT                                                   :{BLACK}Napustiti
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Napustiti 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...može samo da se gradi u varošovi
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Izabrati 'umerena zona' krajolik stil
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Izabrati 'sub-arktički' krajolik stil
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Izabrati 'sub-tropski' krajolik stil
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Izabrati 'igračka zemlja' krajolik stil
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fond građenje od novu industriju ili izabrati sve industrije
 
 ############ range for menu starts
+STR_0313_FUND_NEW_INDUSTRY                                      :Fond građenje od novu industriju
 ############ range ends here
 
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Fond građenje od novu industriju
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...može samo da se gradi u varošovi
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...može samo da se gradi u kisne sume
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...može samo da se gradi u pustinje
 STR_0319_PAUSED                                                 :{YELLOW}* * PAUZA * *
 
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Ekranska slika uspešno se snimilo kao '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekranska slika nije uspela!
 
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kupiti zemlju za budućnost korist
+STR_032F_AUTOSAVE                                               :{RED}AUTOSNIMLJENO
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izabrati 'Ezy Ulica stil muzika' program
 
 
 ############ start of townname region
@@ -792,6 +808,8 @@ STR_0319_PAUSED                                                 :{YELLOW}* * PAU
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 
 
 
@@ -807,8 +825,24 @@ STR_0319_PAUSED                                                 :{YELLOW}* * PAU
 
 
 ##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}Vrednost: {CURRENCY}
+STR_0801_COST                                                   :{RED}Vrednost: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Zarada: {CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}Zarada: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Predračunska Vrednost: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Predračunska Zarada: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Ne može da se digne zemlja ovde...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Ne može da se dublji zemlja ovde...
+STR_080A_ROCKS                                                  :Kameni
+STR_080B_ROUGH_LAND                                             :Grub zemlja
+STR_080C_BARE_LAND                                              :Prazna zemlja
+STR_080D_GRASS                                                  :Trava
+STR_080E_FIELDS                                                 :Polje
+STR_080F_SNOW_COVERED_LAND                                      :Snežna-prekrivana zemlja
+STR_0810_DESERT                                                 :Pustinja
 
 ##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Zemlja je na nagib u pogrešnu direkciju
 
 
 

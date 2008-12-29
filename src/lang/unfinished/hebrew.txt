@@ -380,6 +380,7 @@ STR_SORT_BY_RATING_MAX                                          :דירוג הס
 STR_ENGINE_SORT_ENGINE_ID                                       :מספר קטר
 STR_ENGINE_SORT_COST                                            :מחיר
 STR_ENGINE_SORT_POWER                                           :כח
+STR_ENGINE_SORT_INTRO_DATE                                      :תאריך התחלת ייצור
 STR_ENGINE_SORT_RUNNING_COST                                    :עלות הפעלה
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :כח/עלות הפעלה
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :קיבולת סחורה
@@ -423,6 +424,7 @@ STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}צא, ע
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}תראה רשימת התחנות
 STR_0174_DISPLAY_MAP                                            :{BLACK}הראה מפה,נקודת מבת נוספת או רשימת השלטים
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}תראה מפה,רשימת עיירות
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}הצג רשימת ערים
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}הצג מידע כספי של החברה
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}הצג מידע כללי של החברה
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}הצג גרפים
@@ -636,14 +638,20 @@ STR_0241_POWER_STATION                                          :{BLACK}תחנת
 STR_0242_SAWMILL                                                :{BLACK}מנסרה
 STR_0243_FOREST                                                 :{BLACK}יער
 STR_0244_OIL_REFINERY                                           :{BLACK}מזקקת נפט
+STR_0245_OIL_RIG                                                :{BLACK}אסדת קידוח
 STR_0246_FACTORY                                                :{BLACK}מפעל
 STR_0247_STEEL_MILL                                             :{BLACK}מפעל לייצור מתכת
 STR_0248_FARM                                                   :{BLACK}חווה
 STR_0249_IRON_ORE_MINE                                          :{BLACK}מכרה ברזל
 STR_024A_OIL_WELLS                                              :{BLACK}בארות נפט
 STR_024B_BANK                                                   :{BLACK}בנק
+STR_024C_PAPER_MILL                                             :{BLACK}בית-חרושת לנייר
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}מפעל מזון
+STR_024E_PRINTING_WORKS                                         :{BLACK}בית דפוס
 STR_024F_GOLD_MINE                                              :{BLACK}מכרה זהב
+STR_0250_LUMBER_MILL                                            :{BLACK}מנסרה
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}מטע פירות
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}מטע גומי
 STR_0253_WATER_SUPPLY                                           :{BLACK}הספקת מים
 STR_0254_WATER_TOWER                                            :{BLACK}מגדל מים
 STR_0255_DIAMOND_MINE                                           :{BLACK}מכרה יהלומים
@@ -664,6 +672,14 @@ STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}בנה �
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}בנה מנסרה
 STR_0265_PLANT_FOREST                                           :{BLACK}שטול עצים
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}בנה מפעל לזיקוק נפט
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}בנה אסדת קידוח (רק קרוב לצדדי המפה)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}בנה מפעל
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}בנה בית חרושת לייצור פלדה
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}בנה חווה
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}בנה מכרה ברזל
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}בנה בורות-נפט
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}בנה בנק (רק בערים שאוכלוסיותם מעל 1200 איש)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}בנה בית חרושת לנייר
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}בנה מכרה זהב
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}(בנה בנק (יכול להבנות רק ליד ערים
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}בנה מתקן הספקת מים
@@ -740,7 +756,7 @@ STR_TRANSPARENCY_OPTIONS                                        :אפשרויו�
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}שמות ערים שמוצגים
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}שמות תחנות שמוצגים
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}שלטים שמוצגים
-STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}נקודות דרך שמוצגות
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}נקודות ציון מוצגות
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}אנימציה מלאה
 STR_02D2_FULL_DETAIL                                            :{SETX 12}פרטים מלאים
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}בניינים שקופים
@@ -1014,7 +1030,11 @@ STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}אפש�
 
 
 
+STR_WAYPOINTNAME_CITY                                           :{TOWN}נקודות ציון
+STR_WAYPOINTNAME_CITY_SERIAL                                    :{TOWN} #{COMMA}נקות ציון
 
+STR_WAYPOINT                                                    :{WHITE}נקודת ציון
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}בחר את סוג נקודות הציון
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} רכבת{P "" s}
@@ -1163,7 +1183,10 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :נזרקת על
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :ניסית להשתמש בקודים
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :השרת מלא
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :הצטרף למשחק
+STR_NETWORK_NAME_CHANGE                                         :שינה את השם ל
 STR_NETWORK_GIVE_MONEY                                          :({CURRENCY}) נתן לחברה שלך כסף
 STR_NETWORK_GAVE_MONEY_AWAY                                     :נתת {STRING} כסף ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[קבוצה] :
@@ -1175,7 +1198,6 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[פרטי] ל {
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[לכולם] :
 STR_NETWORK_CHAT_ALL                                            :[לכולם] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}הקלד טקסט לצאט ברשת
-STR_NETWORK_NAME_CHANGE                                         :שינה את השם ל
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} השרת סגר את המשחק
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} השרת עושה הפעלה מחדש{}אנא המתן...
 
@@ -1677,6 +1699,7 @@ STR_8040_WOOD_TRUCK                                             :משאית עצ
 
 
 
+STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 
 
@@ -1721,6 +1744,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_WAGONS                                                      :קרונות
 
 
 
