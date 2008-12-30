@@ -934,9 +934,9 @@ void ShowInfo(const char *str)
 	} else {
 		bool old;
 #if defined(UNICODE)
-			/* We need to put the text in a seperate buffer because the default
-			 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
-			wchar_t help_msgW[4096];
+		/* We need to put the text in a seperate buffer because the default
+		 * buffer in MB_TO_WIDE might not be large enough (512 chars) */
+		wchar_t help_msgW[8192];
 #endif
 		ReleaseCapture();
 		_left_button_clicked =_left_button_down = false;

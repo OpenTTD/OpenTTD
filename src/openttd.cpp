@@ -84,6 +84,7 @@
 #include "water.h"
 
 #include <stdarg.h>
+#include <signal.h>
 
 #include "table/strings.h"
 
@@ -1309,8 +1310,51 @@ static bool InitializeWindowsAndCaches()
 	return true;
 }
 
+/**
+ * Signal handler used to give a user a more useful report for crashes during
+ * the savegame loading process; especially when there's problems with the
+ * NewGRFs that are required by the savegame.
+ * @param unused well... unused
+ */
+void CDECL HandleSavegameLoadCrash(int unused)
+{
+	char buffer[8192];
+	char *p = buffer;
+	p += seprintf(p, lastof(buffer),
+			"Loading your savegame caused OpenTTD to crash.\n"
+			"This is most likely caused by a missing NewGRF or a NewGRF that has been\n"
+			"loaded as replacement for a missing NewGRF. OpenTTD cannot easily\n"
+			"determine whether a replacement NewGRF is of a newer or older version.\n"
+			"It will load a NewGRF with the same GRF ID as the missing NewGRF. This\n"
+			"means that if the author makes incompatible NewGRFs with the same GRF ID\n"
+			"OpenTTD cannot magically do the right thing. In most cases OpenTTD will\n"
+			"load the savegame and not crash, but this is an exception.\n"
+			"Please load the savegame with the appropriate NewGRFs. When loading a\n"
+			"savegame still crashes when all NewGRFs are found you should file a\n"
+			"bug report. The missing NewGRFs are:\n");
+
+	for (GRFConfig *c = _grfconfig; c != NULL; c = c->next) {
+		if (HasBit(c->flags, GCF_COMPATIBLE)) {
+			char buf[40];
+			md5sumToString(buf, lastof(buf), c->md5sum);
+			p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s. Tried another NewGRF with same GRF ID\n", BSWAP32(c->grfid), c->filename, buf);
+		}
+		if (c->status == GCS_NOT_FOUND) {
+			char buf[40];
+			md5sumToString(buf, lastof(buf), c->md5sum);
+			p += seprintf(p, lastof(buffer), "NewGRF %08X (%s) not found; checksum %s\n", BSWAP32(c->grfid), c->filename, buf);
+		}
+	}
+
+	ShowInfo(buffer);
+}
+
 bool AfterLoadGame()
 {
+	typedef void (CDECL *SignalHandlerPointer)(int);
+	SignalHandlerPointer prev_segfault = signal(SIGSEGV, HandleSavegameLoadCrash);
+	SignalHandlerPointer prev_abort = signal(SIGABRT, HandleSavegameLoadCrash);
+
 	TileIndex map_size = MapSize();
 	Company *c;
 
@@ -1421,6 +1465,9 @@ bool AfterLoadGame()
 	GRFListCompatibility gcf_res = IsGoodGRFConfigList();
 	if (_networking && gcf_res != GLC_ALL_GOOD) {
 		SetSaveLoadError(STR_NETWORK_ERR_CLIENT_NEWGRF_MISMATCH);
+		/* Restore the signals */
+		signal(SIGSEGV, prev_segfault);
+		signal(SIGABRT, prev_abort);
 		return false;
 	}
 
@@ -1468,6 +1515,9 @@ bool AfterLoadGame()
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, UINT_MAX)) {
 		SetSaveLoadError(STR_NO_TOWN_IN_SCENARIO);
+		/* Restore the signals */
+		signal(SIGSEGV, prev_segfault);
+		signal(SIGABRT, prev_abort);
 		return false;
 	}
 
@@ -1529,6 +1579,9 @@ bool AfterLoadGame()
 						st = STATION_BUS;
 						SetStationGfx(t, gfx - 170 + GFX_TRUCK_BUS_DRIVETHROUGH_OFFSET);
 					} else {
+						/* Restore the signals */
+						signal(SIGSEGV, prev_segfault);
+						signal(SIGABRT, prev_abort);
 						return false;
 					}
 					SB(_m[t].m6, 3, 3, st);
@@ -2647,7 +2700,11 @@ bool AfterLoadGame()
 
 	GamelogPrintDebug(1);
 
-	return InitializeWindowsAndCaches();
+	bool ret = InitializeWindowsAndCaches();
+	/* Restore the signals */
+	signal(SIGSEGV, prev_segfault);
+	signal(SIGABRT, prev_abort);
+	return ret;
 }
 
 /** Reload all NewGRF files during a running game. This is a cut-down
