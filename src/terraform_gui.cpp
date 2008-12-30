@@ -123,7 +123,7 @@ bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_t
 			DoCommandP(end_tile, start_tile, (uint32)-1, CMD_LEVEL_LAND | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE), CcTerraform);
 			break;
 		case DDSP_LEVEL_AREA:
-			DoCommandP(end_tile, start_tile, 0, CMD_LEVEL_LAND | CMD_MSG(STR_CAN_T_LEVEL_LAND_HERE), CcPlaySound10);
+			DoCommandP(end_tile, start_tile, 0, CMD_LEVEL_LAND | CMD_MSG(STR_CAN_T_LEVEL_LAND_HERE), CcTerraform);
 			break;
 		case DDSP_CREATE_ROCKS:
 			GenerateRockyArea(end_tile, start_tile);
