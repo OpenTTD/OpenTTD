@@ -489,6 +489,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}معلومات ارض
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK} تكلفة الازالة :  {LTBLUE} غير متاح
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}تكلفة الازالة :  {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK} الدخل عند للتجديد:  {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :غير متاح
 STR_01A7_OWNER                                                  :{BLACK}المالك:  {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}مالك الطريق:  {LTBLUE}{STRING}
@@ -1547,6 +1548,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}فصل
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE} ادخل قدر المال الذي تود اعطائه
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}الخادم محمي، أدخل الرقم السر
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشركة محمية ، أدخل الرقم السري
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}قائمة العملاء
@@ -1586,6 +1588,15 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :طردت من �
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :كان يحاول استخدام سر للغش
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :خادم ممتلئ
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :اللعب متوقف - ليس هناك عدد لاعبين كافي
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :استعادة اللعب - عدد اللاعبين كافي
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :اللعب متوقف - ربط لاعب
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :الاستمرار باللعب - تم ربط اللاعب
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :الاستمرار باللعب - فشل ربط اللاعب
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :يغادر
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[فريق]
 STR_NETWORK_CHAT_COMPANY                                        :[فريق]{STRING} : {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[فريق] الى {STRING} : {GRAY}{STRING}
@@ -1819,8 +1830,8 @@ STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}اعلان عن عرض {}{} نقل اول {STRING} من {STRING} الى {STRING} سوف يعطي زيادة ارباح في السنة القادمة.
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT} العرض قد اعطي لـ {COMPANY}!{}{} نقل {STRING} من {STATION} الى  {STATION} سوف يعطي زيادة 50% ارباح للسنة القادمة
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT} العرض قد اعطي لـ {COMPANY}!{}{} نقل {STRING} من {STATION} الى  {STATION} سوف يعطي ضعف الدخل  للسنة القادمة
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}شركة {COMPANY} قد فازت بالعرض{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي 3 اضعاف الدخل للسنة القادمة
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT} شركة {COMPANY} قد فازت بالعرض !{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي اربعة اضعاف الدخل للسنة القادمة
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}شركة {COMPANY}  فازت بالعرض{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي 3 اضعاف الدخل للسنة القادمة
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT} شركة {COMPANY}  فازت بالعرض !{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي اربعة اضعاف الدخل للسنة القادمة
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}البلدية ترفض بناء مطار آخر في هذه المدينة
 STR_2036_COTTAGES                                               :اكواخ
 STR_2037_HOUSES                                                 :منازل
@@ -2649,6 +2660,7 @@ STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :ناقلة ما
 STR_80D6_POWERNAUT_CARGO_SHIP                                   :ناقلة بور
 STR_80D7_SAMPSON_U52                                            :سامسون 52
 STR_80D8_COLEMAN_COUNT                                          :كولمان كونت
+STR_80D9_FFP_DART                                               :سهم اف اف بي
 STR_80DA_YATE_HAUGAN                                            :نفاثة هوقان
 STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :باكويل كوست 3
 STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :باكويل لكيت 8

@@ -1544,6 +1544,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Koble frå
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Slå inn det beløpet du vil gi
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tenaren er beskytta. Skriv inn passord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskytta.  Skriv inn eit passord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste over klientar
@@ -1583,6 +1584,7 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :sparka ut av te
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :freista å jukse
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :tenaren er full
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Lag] :
