@@ -1114,6 +1114,9 @@ void CommitVehicleListOrderChanges()
 			}
 		}
 
+		/* std::map sorted by default, SmallMap does not */
+		lptr_map.SortByKey();
+
 		/* Get the target position, if it exists */
 		if (target_e != NULL) {
 			uint16 target_position = target_e->list_position;

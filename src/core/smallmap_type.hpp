@@ -96,6 +96,18 @@ struct SmallMap : SmallVector<SmallPair<T, U>, S> {
 		n->first = key;
 		return n->second;
 	}
+
+	FORCEINLINE void SortByKey()
+	{
+		qsort(this->Begin(), this->items, sizeof(Pair), KeySorter);
+	}
+
+	static int CDECL KeySorter(const void *a, const void *b)
+	{
+		const Pair *pa = (const Pair*)a;
+		const Pair *pb = (const Pair*)b;
+		return pa->first - pb->first;
+	}
 };
 
 #endif /* SMALLMAP_TYPE_HPP */
