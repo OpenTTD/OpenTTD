@@ -272,8 +272,13 @@ Function IsCachedVersion(ByVal version)
 	End If
 End Function
 
+Function CheckFile(filename)
+	CheckFile = FSO.FileExists(filename) And (FSO.GetFile(filename).DateLastModified >= FSO.GetFile(filename & ".in").DateLastModified)
+End Function
+
 Dim version
 version = DetermineSVNVersion
-If Not (IsCachedVersion(version) And FSO.FileExists("../src/rev.cpp") And FSO.FileExists("../src/ottdres.rc")) Then
+If Not (IsCachedVersion(version) And CheckFile("../src/rev.cpp") And CheckFile("../src/ottdres.rc")) Then
+	wscript.echo "update"
 	UpdateFiles version
 End If

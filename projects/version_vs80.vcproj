@@ -35,6 +35,10 @@
 	</References>
 	<Files>
 		<File
+			RelativePath="..\src\ottdres.rc.in"
+			>
+		</File>
+		<File
 			RelativePath="..\src\rev.cpp.in"
 			>
 		</File>
