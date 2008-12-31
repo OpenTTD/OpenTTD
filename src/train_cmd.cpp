@@ -938,7 +938,11 @@ static Vehicle *UnlinkWagon(Vehicle *v, Vehicle *first)
 		if (v == NULL) return NULL;
 
 		if (IsTrainWagon(v)) SetFreeWagon(v);
-		first->SetNext(NULL);
+
+		/* First can be an articulated engine, meaning GetNextVehicle() isn't
+		 * v->Next(). Thus set the next vehicle of the last articulated part
+		 * and the last articulated part is just before the next vehicle (v). */
+		v->Previous()->SetNext(NULL);
 
 		return v;
 	}
