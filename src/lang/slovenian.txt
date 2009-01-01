@@ -203,7 +203,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ni izved
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nemogoče čiščenje tega področja ...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Prvotne avtorske pravice {COPYRIGHT} 1995 Chris Sawyer, vse pravice pridržane
 STR_00B7_VERSION                                                :{BLACK}OpenTTD različica {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 ekipa OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 ekipa OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Prevod - NECROLYTE in prijatelji
 
 STR_00C5                                                        :{BLACK}{CROSS}

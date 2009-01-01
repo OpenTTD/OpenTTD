@@ -160,7 +160,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE} לא נ
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}לא ניתן להרוס אזור זה
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}זכיות יוצרים מקוריות {COPYRIGHT} כריס סויר 1995,כול הזכיות שמורות
 STR_00B7_VERSION                                                :{BLACK}OpenTTD גרסת ה {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 OpenTTD צוות
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD צוות
 STR_TRANSLATED_BY                                               :{BLACK}  מתרגמים
 
 STR_00C5                                                        :{BLACK}{CROSS}

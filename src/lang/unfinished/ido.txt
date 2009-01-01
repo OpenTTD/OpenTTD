@@ -73,7 +73,7 @@ STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sendajo
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne povas facas ca...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne povas netigas ca areo....
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versiono {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 La kruo OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 La kruo OpenTTD
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}

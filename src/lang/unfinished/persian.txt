@@ -73,7 +73,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}نمی�
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}این منطقه پاک نمی‌شود
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}

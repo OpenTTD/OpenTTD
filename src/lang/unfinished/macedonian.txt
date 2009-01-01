@@ -161,7 +161,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ова �
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Не може да се исчисти оваа област....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Оригинален copyright {COPYRIGHT} 1995 Chris Sawyer, Сите права се задржани
 STR_00B7_VERSION                                                :{BLACK}OpenTTD верзија {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 OpenTTD тимот
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD тимот
 STR_TRANSLATED_BY                                               :{BLACK}  Преведувач(и) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

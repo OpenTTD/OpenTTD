@@ -119,7 +119,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne moÅ�
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne moÅŸe da se oÄisti ovaj deo...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originalno autorsko pravo {COPYRIGHT} 1995 Chris Sawyer, Sva prava saÄuvana.
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzija {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD tim
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD tim
 STR_TRANSLATED_BY                                               :{BLACK}  Prevodilac(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}

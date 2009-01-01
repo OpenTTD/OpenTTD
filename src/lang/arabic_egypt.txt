@@ -162,7 +162,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}لا ي�
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}لا يمكن ازالتة ....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}الحقوق الأصلية {COPYRIGHT} كريس سوير 1995 , جميع الحقوق محفوظة
 STR_00B7_VERSION                                                :{BLACK}النسخة المفتوحة رقم {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}النسخة المفتوحة {COPYRIGHT}2002-2008 فريق النسخة المفتوحة
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}النسخة المفتوحة {COPYRIGHT}2002-2009 فريق النسخة المفتوحة
 STR_TRANSLATED_BY                                               :{BLACK} ترجمة -
 
 STR_00C5                                                        :{BLACK}{CROSS}

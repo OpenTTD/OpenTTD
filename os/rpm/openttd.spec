@@ -2,7 +2,7 @@
 #-------------------------------------------------------------------------------
 # spec file for the openttd rpm package
 #
-# Copyright (c) 2007-2008 The OpenTTD developers
+# Copyright (c) 2007-2009 The OpenTTD developers
 #
 # This file and all modifications and additions to the pristine
 # package are under the same license as the package itself

@@ -162,7 +162,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Αυτό
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Αυτή η περιοχή είναι αδύνατο να καθαριστεί...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Αρχικά Πνευματικά Δικαιώματα {COPYRIGHT} 1995 Chris Sawyer, Όλα τα δικαιώματα διατηρούνται
 STR_00B7_VERSION                                                :{BLACK}OpenTTD έκδοση {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Η ομάδα του OpenTTD
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 Η ομάδα του OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Μεταφραστής\ές -
 
 STR_00C5                                                        :{BLACK}{CROSS}

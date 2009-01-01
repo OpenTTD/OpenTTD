@@ -163,7 +163,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tā neva
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Šo laukumu nevar nolīdzināt...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orģinālās autortiesības {COPYRIGHT} 1995 Chris Sawyer, Visas tiesības rezervētas
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versija {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 OpenTTD grupa
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD grupa
 STR_TRANSLATED_BY                                               :{BLACK}  Tulkotājs(i) - Leo Selavo
 
 STR_00C5                                                        :{BLACK}{CROSS}
