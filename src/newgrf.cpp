@@ -5258,8 +5258,8 @@ static void InitializeGRFSpecial()
 
 	_ttdpatch_flags[3] =                                                 (0 << 0x00)  // newcargodistribution
 	                   |                                                 (1 << 0x01)  // windowsnap
-	                   |                                                 (0 << 0x02)  // townbuildnoroad
-	                   |                                                 (0 << 0x03)  // pathbasedsignalling. To enable if ever pbs is back
+	                   |  ((_settings_game.economy.town_layout == TL_NO_ROADS ? 1 : 0) << 0x02)  // townbuildnoroad
+	                   |                                                 (1 << 0x03)  // pathbasedsignalling
 	                   |                                                 (0 << 0x04)  // aichoosechance
 	                   |                                                 (1 << 0x05)  // resolutionwidth
 	                   |                                                 (1 << 0x06)  // resolutionheight
@@ -5281,7 +5281,8 @@ static void InitializeGRFSpecial()
 	                   |                                                 (1 << 0x16)  // shortrvs
 	                   |                                                 (1 << 0x17)  // articulatedrvs
 	                   |       ((_settings_game.vehicle.dynamic_engines ? 1 : 0) << 0x18)  // dynamic engines
-	                   |                                                 (1 << 0x1E); // variablerunningcosts
+	                   |                                                 (1 << 0x1E)  // variablerunningcosts
+	                   |                                                 (1 << 0x1F); // any switch is on
 }
 
 static void ResetCustomStations()
