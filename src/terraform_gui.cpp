@@ -10,6 +10,7 @@
 #include "company_base.h"
 #include "gui.h"
 #include "window_gui.h"
+#include "window_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "command_func.h"
@@ -328,16 +329,24 @@ static const WindowDesc _terraform_desc = {
 void ShowTerraformToolbar(Window *link)
 {
 	if (!IsValidCompanyID(_current_company)) return;
+
 	Window *w = AllocateWindowDescFront<TerraformToolbarWindow>(&_terraform_desc, 0);
-	if (w != NULL && link != NULL) {
-		/* Align the terraform toolbar under the main toolbar and put the linked
-		 * toolbar to left of it
-		 */
+	if (link == NULL) return;
+
+	if (w == NULL) {
+		w = FindWindowById(WC_SCEN_LAND_GEN, 0);
+	} else {
 		w->top = 22;
 		w->SetDirty();
-		link->left = w->left - link->width;
-		link->SetDirty();
 	}
+	if (w == NULL) return;
+
+	/* Align the terraform toolbar under the main toolbar and put the linked
+	 * toolbar to left of it
+	 */
+	link->top  = w->top;
+	link->left = w->left - link->width;
+	link->SetDirty();
 }
 
 static byte _terraform_size = 1;
