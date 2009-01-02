@@ -116,7 +116,7 @@ void GenerateVehicleSortList(VehicleList *list, VehicleType type, Owner owner, u
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->IsType(OT_GOTO_DEPOT) && order->GetDestination() == index) {
+						if (order->IsType(OT_GOTO_DEPOT) && !(order->GetDepotActionType() & ODATFB_NEAREST_DEPOT) && order->GetDestination() == index) {
 							*list->Append() = v;
 							break;
 						}
