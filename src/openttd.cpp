@@ -1110,9 +1110,7 @@ static void DoAutosave()
 #endif /* PSP */
 
 	if (_settings_client.gui.keep_all_autosave && _local_company != COMPANY_SPECTATOR) {
-		SetDParam(0, _local_company);
-		SetDParam(1, _date);
-		GetString(buf, STR_4004, lastof(buf));
+		GenerateDefaultSaveName(buf, lastof(buf));
 		strecat(buf, ".sav", lastof(buf));
 	} else {
 		/* generate a savegame name and number according to _settings_client.gui.max_num_autosaves */

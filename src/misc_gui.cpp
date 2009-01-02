@@ -1426,14 +1426,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 
 	void GenerateFileName()
 	{
-		/* Check if we are not a spectator who wants to generate a name..
-		 * Let's use the name of company #0 for now. */
-		const Company *c = GetCompany(IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
-
-		SetDParam(0, c->index);
-		SetDParam(1, _date);
-		GetString(this->edit_str_buf, STR_4004, &this->edit_str_buf[this->edit_str_size - 1]);
-		SanitizeFilename(this->edit_str_buf);
+		GenerateDefaultSaveName(this->edit_str_buf, &this->edit_str_buf[this->edit_str_size - 1]);
 	}
 
 	SaveLoadWindow(const WindowDesc *desc, SaveLoadDialogMode mode) : QueryStringBaseWindow(64, desc)

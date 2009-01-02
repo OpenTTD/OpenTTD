@@ -29,6 +29,8 @@
 #include "functions.h"
 #include "core/endian_func.hpp"
 #include "vehicle_base.h"
+#include "company_func.h"
+#include "date_func.h"
 #include "autoreplace_base.h"
 #include "statusbar_gui.h"
 #include "fileio_func.h"
@@ -1815,6 +1817,21 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode, Subdirectory sb)
 void DoExitSave()
 {
 	SaveOrLoad("exit.sav", SL_SAVE, AUTOSAVE_DIR);
+}
+
+/**
+ * Fill the buffer with the default name for a savegame *or* screenshot.
+ * @param buf the buffer to write to.
+ * @param last the last element in the buffer.
+ */
+void GenerateDefaultSaveName(char *buf, const char *last)
+{
+	/* Check if we are not a spectator who wants to generate a name..
+	 * Let's use the name of company #0 for now. */
+	SetDParam(0, IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
+	SetDParam(1, _date);
+	GetString(buf, STR_4004, last);
+	SanitizeFilename(buf);
 }
 
 #if 0
