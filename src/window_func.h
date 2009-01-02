@@ -35,7 +35,7 @@ void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_in
 void InvalidateWindow(WindowClass cls, WindowNumber number);
 void InvalidateWindowClasses(WindowClass cls);
 
-void DeleteWindowById(WindowClass cls, WindowNumber number);
+void DeleteWindowById(WindowClass cls, WindowNumber number, bool force = true);
 void DeleteWindowByClass(WindowClass cls);
 
 #endif /* WINDOW_FUNC_H */

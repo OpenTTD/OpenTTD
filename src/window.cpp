@@ -492,10 +492,16 @@ Window *FindWindowById(WindowClass cls, WindowNumber number)
  * Delete a window by its class and window number (if it is open).
  * @param cls Window class
  * @param number Number of the window within the window class
+ * @param force force deletion; if false don't delete when stickied
  */
-void DeleteWindowById(WindowClass cls, WindowNumber number)
+void DeleteWindowById(WindowClass cls, WindowNumber number, bool force)
 {
-	delete FindWindowById(cls, number);
+	Window *w = FindWindowById(cls, number);
+	if (force || w == NULL ||
+			(w->desc_flags & WDF_STICKY_BUTTON) == 0 ||
+			(w->flags4 & WF_STICKY) == 0) {
+		delete w;
+	}
 }
 
 /**

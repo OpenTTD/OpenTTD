@@ -33,6 +33,7 @@
 #include "order_func.h"
 #include "news_func.h"
 #include "aircraft.h"
+#include "vehicle_gui.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -87,6 +88,11 @@ Station::~Station()
 	InvalidateWindowData(WC_STATION_LIST, this->owner, 0);
 
 	DeleteWindowById(WC_STATION_VIEW, index);
+	WindowNumber wno = (index << 16) | VLW_STATION_LIST | this->owner;
+	DeleteWindowById(WC_TRAINS_LIST, wno | (VEH_TRAIN << 11));
+	DeleteWindowById(WC_ROADVEH_LIST, wno | (VEH_ROAD << 11));
+	DeleteWindowById(WC_SHIPS_LIST, wno | (VEH_SHIP << 11));
+	DeleteWindowById(WC_AIRCRAFT_LIST, wno | (VEH_AIRCRAFT << 11));
 
 	/* Now delete all orders that go to the station */
 	RemoveOrderFromAllVehicles(OT_GOTO_STATION, index);

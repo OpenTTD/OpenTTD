@@ -1293,6 +1293,10 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 			if (IsFrontEngine(src)) {
 				/* the vehicle was previously a loco. need to free the order list and delete vehicle windows etc. */
 				DeleteWindowById(WC_VEHICLE_VIEW, src->index);
+				DeleteWindowById(WC_VEHICLE_ORDERS, src->index);
+				DeleteWindowById(WC_VEHICLE_REFIT, src->index);
+				DeleteWindowById(WC_VEHICLE_DETAILS, src->index);
+				DeleteWindowById(WC_VEHICLE_TIMETABLE, src->index);
 				DeleteVehicleOrders(src);
 				RemoveVehicleFromGroup(src);
 			}
@@ -1402,6 +1406,10 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 	if (flags & DC_EXEC) {
 		if (v == first && IsFrontEngine(first)) {
 			DeleteWindowById(WC_VEHICLE_VIEW, first->index);
+			DeleteWindowById(WC_VEHICLE_ORDERS, first->index);
+			DeleteWindowById(WC_VEHICLE_REFIT, first->index);
+			DeleteWindowById(WC_VEHICLE_DETAILS, first->index);
+			DeleteWindowById(WC_VEHICLE_TIMETABLE, first->index);
 		}
 		InvalidateWindow(WC_VEHICLE_DEPOT, first->tile);
 		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);

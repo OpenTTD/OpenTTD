@@ -672,8 +672,10 @@ void Vehicle::PreDestructor()
 
 	if (this->IsPrimaryVehicle()) {
 		DeleteWindowById(WC_VEHICLE_VIEW, this->index);
-		DeleteWindowById(WC_VEHICLE_DETAILS, this->index);
 		DeleteWindowById(WC_VEHICLE_ORDERS, this->index);
+		DeleteWindowById(WC_VEHICLE_REFIT, this->index);
+		DeleteWindowById(WC_VEHICLE_DETAILS, this->index);
+		DeleteWindowById(WC_VEHICLE_TIMETABLE, this->index);
 		InvalidateWindow(WC_COMPANY, this->owner);
 	}
 	InvalidateWindowClassesData(GetWindowClassForVehicleType(this->type), 0);

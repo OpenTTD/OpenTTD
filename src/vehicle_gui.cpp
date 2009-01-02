@@ -1817,10 +1817,10 @@ struct VehicleViewWindow : Window {
 
 	~VehicleViewWindow()
 	{
-		DeleteWindowById(WC_VEHICLE_ORDERS, this->window_number);
-		DeleteWindowById(WC_VEHICLE_REFIT, this->window_number);
-		DeleteWindowById(WC_VEHICLE_DETAILS, this->window_number);
-		DeleteWindowById(WC_VEHICLE_TIMETABLE, this->window_number);
+		DeleteWindowById(WC_VEHICLE_ORDERS, this->window_number, false);
+		DeleteWindowById(WC_VEHICLE_REFIT, this->window_number, false);
+		DeleteWindowById(WC_VEHICLE_DETAILS, this->window_number, false);
+		DeleteWindowById(WC_VEHICLE_TIMETABLE, this->window_number, false);
 	}
 
 	virtual void OnPaint()
