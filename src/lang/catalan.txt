@@ -488,6 +488,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informació del terreny
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost de neteja: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Ingressos en netejar: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propietari: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Propietari de la carretera: {LTBLUE}{STRING}
@@ -1546,6 +1547,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconnecta
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Introdueix la quantitat de diners que vols donar
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor protegit. Entra la contrasenya
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa protegida. Entra la contrasenya
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Llista de Clients
@@ -1585,6 +1587,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :tret pel servid
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :s'ha intentat utilitzar una trampa
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor ple
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Joc en pausa (no hi ha prous jugadors)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Joc en marxa (hi ha prou jogadors)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Joc en pausa (connectant client)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Joc en marxa (client connectat)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Joc en marxa (el client no s'ha pogut connectar)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :deixant
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} s'ha unit al joc
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} ha deixat el joc ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ha canviat el seu nom a {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} ha donat a la teva companyia {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Has donat {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] a {STRING}: {GRAY}{STRING}

@@ -1597,6 +1597,11 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :الاستمر�
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :الاستمرار باللعب - فشل ربط اللاعب
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :يغادر
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} قد انضم للعبة
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} قد غادر اللعبة : - {2:STRING}-
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} قد غير اسمه / اسمها الى {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} اعطى شركتك : {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :***  انت اعطيت : {1:STRING}  {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[فريق]
 STR_NETWORK_CHAT_COMPANY                                        :[فريق]{STRING} : {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[فريق] الى {STRING} : {GRAY}{STRING}
@@ -2417,6 +2422,7 @@ STR_LIVERY_ELECTRIC                                             :محرك كهر
 STR_LIVERY_MONORAIL                                             :محرك احادي
 STR_LIVERY_MAGLEV                                               :محرك ممغنط
 STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :حافلة ركاب - بخارية
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :حافلة ركاب - ديزل
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :عربة ركاب - كهربائية
@@ -3220,6 +3226,7 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}لا ي�
 STR_NEWGRF_FILENAME                                             :{BLACK}ام الملف: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK} صحيفة : {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRFمعرف : {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}  : مجموع ام دي 5 {SILVER}{STRING}
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}ان على وشك ان تحدث تغييرات في لعبة شغالة؛ قد يتسبب في توقف OpenTTD.{} هل انت متأكد تماما من هذا؟
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}

@@ -123,7 +123,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tidak bo
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak boleh bersihkan kawasan....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hakcipta terpelihara{COPYRIGHT} 1995 Chris Sawyer, All rights reserved
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versi {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2008 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  Penterjemah -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -653,6 +653,7 @@ STR_02DD_SUBSIDIES                                              :Subsidi
 STR_02DE_MAP_OF_WORLD                                           :Peta Dunia
 STR_SIGN_LIST                                                   :Senarai isyarat
 STR_02DF_TOWN_DIRECTORY                                         :Direktori bandar
+STR_TOWN_POPULATION                                             :{BLACK}Populasi Dunia: {COMMA}
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unit kewangan
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -938,10 +939,11 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Kata laluan salah
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Anda telah ditendang keluar daripada permainan ini
 
-STR_NETWORK_ERR_LEFT                                            :telah meninggalkan permainan
 ############ Leave those lines in this order!!
 STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :tidak boleh memuatkan peta
 STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :sambungan terhilang
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
 
@@ -1127,7 +1129,13 @@ STR_4004                                                        :{COMPANY}, {DAT
 ############ WARNING, using range 0x6000 for strings that are stored in the savegame
 ############ These strings may never get a new id, or savegames will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
+STR_SV_TRAIN_NAME                                               :Keratapi {COMMA}
+STR_SV_SHIP_NAME                                                :Kapal {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :Pesawat Udara {COMMA}
 
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Utara
 
 ############ end of savegame specific region!
 
@@ -1269,6 +1277,7 @@ STR_SHORT_DATE                                                  :{WHITE}{DATE_TI
 
 
 ############ Face formatting
+STR_FACE_NO                                                     :Tidak
 ########
 
 ############ signal GUI

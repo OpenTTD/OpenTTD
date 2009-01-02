@@ -554,6 +554,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Terület-információ
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}{LTBLUE}Nem lehet lerombolni
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}A megtisztítás költsége: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Bevétel lerombolás esetén: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Nincs
 STR_01A7_OWNER                                                  :{BLACK}Tulajdonos: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Az út tulajdonosa: {LTBLUE}{STRING}
@@ -1612,6 +1613,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Megszakít
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Add meg a küldeni kívánt pénz mennyiségét
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerver jelszóval van védve. Írd be
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A cég jelszóval van védve. Írd be
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Kliens lista
@@ -1651,6 +1653,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :a szerver kirú
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :csalni próbált
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :a szerver megtelt
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Játék felfüggesztve (nincs elég játékos)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Játék elindítva (van elég játékos)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Játék felfüggesztve (kapcsolódó kliens)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Játék elindítva (a kliens sikeresen csatlakozott)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Játék elindítva (a kliens csatlakozása nem sikerült)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :kilépés
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} has joined the game
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} kilépett a játékból ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} nevet változtatott. Új neve: {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} a következő összeget utalta cégednek: {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** {1:STRING} cégnek sikeresen átutaltál {2:CURRENCY}-t
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Csapat] :
 STR_NETWORK_CHAT_COMPANY                                        :[Csapat] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Csapat] {STRING} számára: {GRAY}{STRING}

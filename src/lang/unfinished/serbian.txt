@@ -119,7 +119,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne moÅ�
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Ne moÅŸe da se oÄisti ovaj deo...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Originalno autorsko pravo {COPYRIGHT} 1995 Chris Sawyer, Sva prava saÄuvana.
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzija {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2009 OpenTTD tim
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD tim
 STR_TRANSLATED_BY                                               :{BLACK}  Prevodilac(s) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -373,8 +373,8 @@ STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING}
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} postaje vrlo star
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} postaje vrlo star i zahteva hitnu zamenu
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija o Okolini Tla
-STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}KoÅ¡ta da se oÄisti : {LTBLUE}Nije Dostupno
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}KoÅ¡ta da se oÄisti: {LTBLUE}{CURRENCY}
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Košta da se očisti : {LTBLUE}Nije Dostupno
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Košta da se očist: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :Nije Dostupno
 STR_01A7_OWNER                                                  :{BLACK}Vlasnik: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokalna vlast: {LTBLUE}{STRING}
@@ -863,11 +863,40 @@ STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Ne može
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Vozni Skladište Orijentisanje
 STR_1015_RAILROAD_CONSTRUCTION                                  :Pruga građenje
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorejel građenje
+STR_1017_MAGLEV_CONSTRUCTION                                    :Maglev voz građenje
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Graditi vozna pruga
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Graditi vozni skladište(za građenje i ispravno stanje od vozovi)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Graditi vozna služba
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Graditi vozni signali
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Graditi vozni most
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Graditi vozni tunel
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Ključ build/remove for railway track and signals
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Most izbor - klikni na vaše najbolji most da se gradi
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Izabrati vozni skladište orientacija
+STR_1021_RAILROAD_TRACK                                         :Vozna pruga
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Vozna skladište
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...zemlja je vlastit od druga kompanija
 
 
 
 ##id 0x1800
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Mora prvo da se skolni put
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Građenje Put
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Tramvaj Konstrukcija
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Izabrati most
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Ne može da se gradi put ovde...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Ne može da se skloni put odavde...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Drumsko Vozilo Skladište Orientacija
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne može da se gradi drumsko vozilo skladištet ovde...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Ne može da se gradi služba za avtobus...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Ne može da se gradi služba za kamione...
+STR_180A_ROAD_CONSTRUCTION                                      :Građenje od put
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Graditi izabran deo od put
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Graditi drumsko vozilo skladište (za građevina i popravljanje drumsko vozilo)
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}Graditi služba za avtobus
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Graditi luka utovara za kamion
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Graditi most
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Graditi tunel
 
 ##id 0x2000
 STR_2042_DO_IT                                                  :{BLACK}Činiti to

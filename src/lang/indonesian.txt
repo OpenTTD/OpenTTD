@@ -1106,7 +1106,7 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Tinggi 
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} {RED}Peringatan: Makin tinggi, Makin lambat
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Perbaikan helikopter di helipad secara otomatis: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tampilkan toolbar Landsekap bersama toolbar rel/jalan/air/bandara: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tempel toolbar Landsekap ke toolbar rel/jalan/air/bandara: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Berbalik Arah: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_SCROLLING                             :{LTBLUE}Pergeseran pandangan viewport secara halus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Tampilkan ukuran ketika menggunakan alat pembangun: {ORANGE}{STRING}
@@ -1452,10 +1452,10 @@ STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maksimum
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Pilih jumlah klien maksimal. Tidak semua slot harus diisi
 STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{SKIP}{SKIP}{NUM} Perusahaan
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maksimum perusahaan:
-STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Batasi "server" untuk jumlah perusahaan
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Batasi jumlah perusahaan pada server
 STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} Penonton
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksimum penonton:
-STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Batasi "server" untuk jumlah penonton
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Batasi jumlah penonton pada server
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Bahasa pembicaraan:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Agar pemain lain mengetahui bahasa apa yang digunakan pada sever
 STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1513,8 +1513,8 @@ STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Nonton p
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Menonton permainan sebagai penonton
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Bergabung dengan perusahaan
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Membantu untuk mengatur perusahaan ini
-STR_NETWORK_REFRESH                                             :{BLACK}"Refresh"/segarkan server
-STR_NETWORK_REFRESH_TIP                                         :{BLACK}"Refresh"/segarkan infonya server
+STR_NETWORK_REFRESH                                             :{BLACK}Cek server
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Periksa lagi  status server
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFO PERUSAHAAN
 
@@ -3010,7 +3010,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Terjadi tabrakan!{}Sopir truk meninggal dalam ledakan bola api setelah betabrakan dengan kereta
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan bola api setelah betabrakan dengan kereta
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrakan kereta
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Tidak dapat membalik arah kendaraan...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
 STR_9034_RENAME                                                 :{BLACK}Ganti Nama

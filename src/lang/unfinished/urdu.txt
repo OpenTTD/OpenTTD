@@ -183,9 +183,29 @@ STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFON
 
 
 ############ range for menu starts
+STR_0159_CARGO_PAYMENT_RATES                                    :سامان کی ادایگی کا تناسب
 ############ range for menu ends
 
+STR_015B_OPENTTD                                                :{WHITE}اوپن ٹی ٹی ڈی کے متعلق
+STR_015C_SAVE_GAME                                              :کھیل محفوظ کرو
+STR_015D_LOAD_GAME                                              :کھیل دوبارہ چڑھاو
+STR_015E_QUIT_GAME                                              :کھیل چھوڑ دو
+STR_015F_QUIT                                                   :باہر نکلو
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}کیا آپ کو یقین ہے کہ آپ اس کھیل کو چھوڑنا چاہ رہے ہیں؟
+STR_0161_QUIT_GAME                                              :{WHITE}کھیل چھوڑ دو
+STR_SORT_ORDER_TIP                                              :{BLACK} (ترتیب کا طریقہ منتخب کریں (کم ہوتا/بڑھتا
+STR_SORT_CRITERIA_TIP                                           :{BLACK}ترتیب کا طریقہ منتخب کریں
+STR_SORT_BY                                                     :{BLACK}سے ترتیب دو
 
+STR_SORT_BY_POPULATION                                          :{BLACK}آبادی
+STR_SORT_BY_PRODUCTION                                          :پیداوار
+STR_SORT_BY_TYPE                                                :طرز
+STR_SORT_BY_TRANSPORTED                                         :منتقل شدہ
+STR_SORT_BY_NAME                                                :{BLACK}نام
+STR_SORT_BY_DROPDOWN_NAME                                       :نام
+STR_SORT_BY_DATE                                                :{BLACK}تاریخ
+STR_SORT_BY_NUMBER                                              :تعداد
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
 
 ############ range for months starts
 ############ range for months ends
@@ -318,6 +338,8 @@ STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFON
 
 
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 

@@ -159,7 +159,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}ไม�
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}ไม่สามารถทำให้พื้นที่นี้โล่งได้....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}ลิขสิทธิ์เดิม {COPYRIGHT} ค.ศ.1995 ของ Chris Sawyer, สงวนลิขสิทธิ์
 STR_00B7_VERSION                                                :{BLACK}OpenTTD รุ่นที่ {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}ลิขสิทธิ์ OpenTTD {COPYRIGHT}2002-2009 ของ The OpenTTD team
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}ลิขสิทธิ์ OpenTTD {COPYRIGHT}2002-2008 ของ The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK}  ผู้แปล - ฉัตรชัย กฤชเศรษฐสกุล, ภาคภูมิ เวทย์วิทยานุวัฒน์
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -507,6 +507,8 @@ STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} จาก {COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}การสร้างแหล่งอุตสาหกรรม
 STR_0240_COAL_MINE                                              :{BLACK}เหมืองถ่านดิน
 STR_0241_POWER_STATION                                          :{BLACK}โรงไฟฟ้า
@@ -677,6 +679,8 @@ STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}รถ�
 
 
 
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 

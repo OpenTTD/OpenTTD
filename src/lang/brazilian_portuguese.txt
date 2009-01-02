@@ -489,6 +489,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informações do Terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Custo para limpar: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Custo para limpar: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Ganhos pela limpeza: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Proprietário: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Dono da estrada: {LTBLUE}{STRING}
@@ -1454,7 +1455,7 @@ STR_NETWORK_COMPANIES_SELECT                                    :{BLACK}{SKIP}{S
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de empresas:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para uma certa quantia de empresas
 STR_NETWORK_SPECTATORS_SELECT                                   :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{NUM} espectador{P "" es}
-STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max espectadores:
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Máx de espectadores:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita o servidor para um certa quantia de espectadores
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
@@ -1547,6 +1548,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconectar
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entre a quantia a ser dada
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servidor está protegido. Digite a senha
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Empresa está protegida. Digite a senha
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista de clientes
@@ -1586,6 +1588,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :expulso pelo se
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :estava tentando trapacear
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheio
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Jogo pausado (faltam jogadores)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Jogo des-pausado (jogadores suficientes)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Jogo pausado (cliente conectando)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Jogo des-pausado (cliente conectado)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Jogo des-pausado (cliente não se conectou)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :saindo
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} entrou no jogo
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} saiu do jogo ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} mudou seu nome para {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} deu à sua companhia{2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Você deu a {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipe] :
 STR_NETWORK_CHAT_COMPANY                                        :[Equipe] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipe] Para {STRING}: {GRAY}{STRING}
@@ -2637,7 +2653,7 @@ STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Caminhão de Pl
 STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Caminhão de Bolhas MightyMover
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Caminhão de Bolhas Powernaught
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Caminhão de Bolhas Wizzowow
-STR_80CC_MPS_OIL_TANKER                                         :Caminhão de Petróleo MPS
+STR_80CC_MPS_OIL_TANKER                                         :Petroleiro MPS
 STR_80CD_CS_INC_OIL_TANKER                                      :Petroleiro CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY                                    :Barco de Passageiros MPS
 STR_80CF_FFP_PASSENGER_FERRY                                    :Barco de Passageiros FFP
@@ -3014,7 +3030,7 @@ STR_9800_WATERWAYS_CONSTRUCTION                                 :Construção de
 STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Construção de hidrovias
 STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Hidrovias
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Impossível construir doca aqui...
-STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Depósito Naval
+STR_9803_SHIP_DEPOT                                             :{WHITE}Depósito Naval de {TOWN}
 STR_9804_NEW_SHIPS                                              :{BLACK}Novas Embarcações
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Embarcaç{P ão ões}
 STR_9808_NEW_SHIPS                                              :{WHITE}Novas Embarcações
@@ -3386,7 +3402,7 @@ STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocida
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Manutenção: {GOLD}{CURRENCY}/ano
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacidade: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Desenvolvida: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anos
-STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Confiabilidade Max.: {GOLD}{COMMA}%
+STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Confiabilidade Máx.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Custo: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
@@ -3395,7 +3411,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões 
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Adaptável para: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos as cargas
 STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {GOLD}
-STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Max. Tração : {GOLD}{FORCE}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Tração máx : {GOLD}{FORCE}
 
 ########### For showing numbers in widgets
 
