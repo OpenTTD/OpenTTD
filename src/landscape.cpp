@@ -519,9 +519,9 @@ void AnimateTile(TileIndex tile)
 	_tile_type_procs[GetTileType(tile)]->animate_tile_proc(tile);
 }
 
-void ClickTile(TileIndex tile)
+bool ClickTile(TileIndex tile)
 {
-	_tile_type_procs[GetTileType(tile)]->click_tile_proc(tile);
+	return _tile_type_procs[GetTileType(tile)]->click_tile_proc(tile);
 }
 
 void GetTileDesc(TileIndex tile, TileDesc *td)

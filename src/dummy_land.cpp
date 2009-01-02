@@ -54,9 +54,10 @@ static void TileLoop_Dummy(TileIndex tile)
 	/* not used */
 }
 
-static void ClickTile_Dummy(TileIndex tile)
+static bool ClickTile_Dummy(TileIndex tile)
 {
 	/* not used */
+	return false;
 }
 
 static void ChangeTileOwner_Dummy(TileIndex tile, Owner old_owner, Owner new_owner)

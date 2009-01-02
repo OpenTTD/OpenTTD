@@ -1986,11 +1986,12 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 }
 
 
-static void CheckClickOnLandscape(const ViewPort *vp, int x, int y)
+static bool CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 {
 	Point pt = TranslateXYToTileCoord(vp, x, y);
 
-	if (pt.x != -1) ClickTile(TileVirtXY(pt.x, pt.y));
+	if (pt.x != -1) return ClickTile(TileVirtXY(pt.x, pt.y));
+	return true;
 }
 
 
@@ -2018,21 +2019,23 @@ static OnVehicleClickProc* const _on_vehicle_click_proc[] = {
 	Nop  // Disaster vehicles
 };
 
-void HandleViewportClicked(const ViewPort *vp, int x, int y)
+bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 {
 	const Vehicle *v;
 
-	if (CheckClickOnTown(vp, x, y)) return;
-	if (CheckClickOnStation(vp, x, y)) return;
-	if (CheckClickOnSign(vp, x, y)) return;
-	if (CheckClickOnWaypoint(vp, x, y)) return;
+	if (CheckClickOnTown(vp, x, y)) return true;
+	if (CheckClickOnStation(vp, x, y)) return true;
+	if (CheckClickOnSign(vp, x, y)) return true;
+	if (CheckClickOnWaypoint(vp, x, y)) return true;
 	CheckClickOnLandscape(vp, x, y);
 
 	v = CheckClickOnVehicle(vp, x, y);
 	if (v != NULL) {
 		DEBUG(misc, 2, "Vehicle %d (index %d) at %p", v->unitnumber, v->index, v);
 		_on_vehicle_click_proc[v->type](v);
+		return true;
 	}
+	return CheckClickOnLandscape(vp, x, y);
 }
 
 Vehicle *CheckMouseOverVehicle()

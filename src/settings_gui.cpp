@@ -614,6 +614,7 @@ static const char *_patches_ui[] = {
 	"gui.default_rail_type",
 	"gui.always_build_infrastructure",
 	"gui.show_track_reservation",
+	"gui.left_mouse_btn_scrolling",
 };
 
 static const char *_patches_construction[] = {

@@ -1204,13 +1204,15 @@ static TrackStatus GetTileTrackStatus_Water(TileIndex tile, TransportType mode, 
 	return CombineTrackStatus(TrackBitsToTrackdirBits(ts), TRACKDIR_BIT_NONE);
 }
 
-static void ClickTile_Water(TileIndex tile)
+static bool ClickTile_Water(TileIndex tile)
 {
 	if (GetWaterTileType(tile) == WATER_TILE_DEPOT) {
 		TileIndex tile2 = GetOtherShipDepotTile(tile);
 
 		ShowDepotWindow(tile < tile2 ? tile : tile2, VEH_SHIP);
+		return true;
 	}
+	return false;
 }
 
 static void ChangeTileOwner_Water(TileIndex tile, Owner old_owner, Owner new_owner)

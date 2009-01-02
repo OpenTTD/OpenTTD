@@ -43,7 +43,7 @@ void AddChildSpriteScreen(SpriteID image, SpriteID pal, int x, int y, bool trans
 void StartSpriteCombine();
 void EndSpriteCombine();
 
-void HandleViewportClicked(const ViewPort *vp, int x, int y);
+bool HandleViewportClicked(const ViewPort *vp, int x, int y);
 void PlaceObject();
 void SetRedErrorSquare(TileIndex tile);
 void SetTileSelectSize(int w, int h);

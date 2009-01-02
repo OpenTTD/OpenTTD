@@ -1424,6 +1424,7 @@ const SettingDesc _patch_settings[] = {
 	 SDTC_BOOL(gui.autoscroll,                           S,  0, false,                        STR_CONFIG_PATCHES_AUTOSCROLL,                  NULL),
 	 SDTC_BOOL(gui.reverse_scroll,                       S,  0, false,                        STR_CONFIG_PATCHES_REVERSE_SCROLLING,           NULL),
 	 SDTC_BOOL(gui.smooth_scroll,                        S,  0, false,                        STR_CONFIG_PATCHES_SMOOTH_SCROLLING,            NULL),
+	 SDTC_BOOL(gui.left_mouse_btn_scrolling,             S,  0, false,                        STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING,    NULL),
 	 SDTC_BOOL(gui.measure_tooltip,                      S,  0, false,                        STR_CONFIG_PATCHES_MEASURE_TOOLTIP,             NULL),
 	  SDTC_VAR(gui.errmsg_duration,           SLE_UINT8, S,  0,     5,        0,       20, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION,             NULL),
 	  SDTC_VAR(gui.toolbar_pos,               SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_PATCHES_TOOLBAR_POS,                 v_PositionMainToolbar),

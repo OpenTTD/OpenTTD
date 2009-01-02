@@ -2332,12 +2332,12 @@ static TrackStatus GetTileTrackStatus_Track(TileIndex tile, TransportType mode, 
 	return CombineTrackStatus(TrackBitsToTrackdirBits(trackbits), red_signals);
 }
 
-static void ClickTile_Track(TileIndex tile)
+static bool ClickTile_Track(TileIndex tile)
 {
 	switch (GetRailTileType(tile)) {
-		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_TRAIN);            break;
-		case RAIL_TILE_WAYPOINT: ShowWaypointWindow(GetWaypointByTile(tile)); break;
-		default: break;
+		case RAIL_TILE_DEPOT:    ShowDepotWindow(tile, VEH_TRAIN);            return true;
+		case RAIL_TILE_WAYPOINT: ShowWaypointWindow(GetWaypointByTile(tile)); return true;
+		default: return false;
 	}
 }
 

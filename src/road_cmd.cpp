@@ -1430,9 +1430,12 @@ static void TileLoop_Road(TileIndex tile)
 	}
 }
 
-static void ClickTile_Road(TileIndex tile)
+static bool ClickTile_Road(TileIndex tile)
 {
-	if (IsRoadDepot(tile)) ShowDepotWindow(tile, VEH_ROAD);
+	if (!IsRoadDepot(tile)) return false;
+
+	ShowDepotWindow(tile, VEH_ROAD);
+	return true;
 }
 
 /* Converts RoadBits to TrackBits */

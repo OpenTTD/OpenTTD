@@ -310,9 +310,10 @@ get_out:;
 	} while (--i);
 }
 
-static void ClickTile_Clear(TileIndex tile)
+static bool ClickTile_Clear(TileIndex tile)
 {
 	/* not used */
+	return false;
 }
 
 static TrackStatus GetTileTrackStatus_Clear(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)

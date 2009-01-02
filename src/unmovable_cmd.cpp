@@ -355,9 +355,12 @@ static TrackStatus GetTileTrackStatus_Unmovable(TileIndex tile, TransportType mo
 	return 0;
 }
 
-static void ClickTile_Unmovable(TileIndex tile)
+static bool ClickTile_Unmovable(TileIndex tile)
 {
-	if (IsCompanyHQ(tile)) ShowCompany(GetTileOwner(tile));
+	if (!IsCompanyHQ(tile)) return false;
+
+	ShowCompany(GetTileOwner(tile));
+	return true;
 }
 
 

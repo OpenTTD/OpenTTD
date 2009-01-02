@@ -1581,7 +1581,7 @@ static bool HandleViewportScroll()
 
 	Window *w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
 
-	if (!(_right_button_down || scrollwheel_scrolling) || w == NULL) {
+	if (!(_right_button_down || scrollwheel_scrolling || (_settings_client.gui.left_mouse_btn_scrolling && _left_button_down)) || w == NULL) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		return true;
@@ -1595,7 +1595,7 @@ static bool HandleViewportScroll()
 	}
 
 	Point delta;
-	if (_settings_client.gui.reverse_scroll) {
+	if (_settings_client.gui.reverse_scroll || (_settings_client.gui.left_mouse_btn_scrolling && _left_button_down)) {
 		delta.x = -_cursor.delta.x;
 		delta.y = -_cursor.delta.y;
 	} else {
@@ -1915,7 +1915,12 @@ void MouseLoop(MouseClick click, int mousewheel)
 				}
 
 				if (_thd.place_mode == VHM_NONE) {
-					HandleViewportClicked(vp, x, y);
+					if (!HandleViewportClicked(vp, x, y) &&
+							!(w->flags4 & WF_DISABLE_VP_SCROLL) &&
+							_settings_client.gui.left_mouse_btn_scrolling) {
+						_scrolling_viewport = true;
+						_cursor.fix_at = false;
+					}
 				} else {
 					PlaceObject();
 				}

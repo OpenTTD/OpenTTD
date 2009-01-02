@@ -103,7 +103,7 @@ typedef TrackStatus GetTileTrackStatusProc(TileIndex tile, TransportType mode, u
  * @param b    Destination array of produced cargo
  */
 typedef void GetProducedCargoProc(TileIndex tile, CargoID *b);
-typedef void ClickTileProc(TileIndex tile);
+typedef bool ClickTileProc(TileIndex tile);
 typedef void AnimateTileProc(TileIndex tile);
 typedef void TileLoopProc(TileIndex tile);
 typedef void ChangeTileOwnerProc(TileIndex tile, Owner old_owner, Owner new_owner);
@@ -156,7 +156,7 @@ VehicleEnterTileStatus VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y
 void GetAcceptedCargo(TileIndex tile, AcceptedCargo ac);
 void ChangeTileOwner(TileIndex tile, Owner old_owner, Owner new_owner);
 void AnimateTile(TileIndex tile);
-void ClickTile(TileIndex tile);
+bool ClickTile(TileIndex tile);
 void GetTileDesc(TileIndex tile, TileDesc *td);
 
 #endif /* TILE_CMD_H */

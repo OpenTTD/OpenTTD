@@ -837,9 +837,10 @@ static void TileLoop_Industry(TileIndex tile)
 	}
 }
 
-static void ClickTile_Industry(TileIndex tile)
+static bool ClickTile_Industry(TileIndex tile)
 {
 	ShowIndustryViewWindow(GetIndustryIndex(tile));
+	return true;
 }
 
 static TrackStatus GetTileTrackStatus_Industry(TileIndex tile, TransportType mode, uint sub_mode, DiagDirection side)

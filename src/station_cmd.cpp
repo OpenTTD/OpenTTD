@@ -2569,13 +2569,14 @@ static void AnimateTile_Station(TileIndex tile)
 }
 
 
-static void ClickTile_Station(TileIndex tile)
+static bool ClickTile_Station(TileIndex tile)
 {
 	if (IsHangar(tile)) {
 		ShowDepotWindow(tile, VEH_AIRCRAFT);
 	} else {
 		ShowStationViewWindow(GetStationIndex(tile));
 	}
+	return true;
 }
 
 static VehicleEnterTileStatus VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)

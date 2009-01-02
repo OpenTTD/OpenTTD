@@ -1282,9 +1282,10 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 	}
 }
 
-static void ClickTile_TunnelBridge(TileIndex tile)
+static bool ClickTile_TunnelBridge(TileIndex tile)
 {
 	/* not used */
+	return false;
 }
 
 

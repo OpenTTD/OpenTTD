@@ -522,9 +522,10 @@ static void TileLoop_Town(TileIndex tile)
  * Dummy tile callback function for handling tile clicks in towns
  * @param tile unused
  */
-static void ClickTile_Town(TileIndex tile)
+static bool ClickTile_Town(TileIndex tile)
 {
 	/* not used */
+	return false;
 }
 
 static CommandCost ClearTile_Town(TileIndex tile, byte flags)
