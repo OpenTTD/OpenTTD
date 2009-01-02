@@ -626,7 +626,7 @@ struct BuildRailToolbarWindow : Window {
 
 	~BuildRailToolbarWindow()
 	{
-		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
 	}
 
 	void UpdateRemoveWidgetStatus(int clicked_widget)

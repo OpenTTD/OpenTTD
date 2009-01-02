@@ -415,7 +415,7 @@ struct BuildRoadToolbarWindow : Window {
 
 	~BuildRoadToolbarWindow()
 	{
-		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0);
+		if (_settings_client.gui.link_terraform_toolbar) DeleteWindowById(WC_SCEN_LAND_GEN, 0, false);
 	}
 
 	/**
