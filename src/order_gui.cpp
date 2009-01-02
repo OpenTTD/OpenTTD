@@ -1267,10 +1267,8 @@ static const WindowDesc _other_orders_desc = {
 
 void ShowOrdersWindow(const Vehicle *v)
 {
-	VehicleID veh = v->index;
-
-	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
-	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
+	DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
+	if (BringWindowToFrontById(WC_VEHICLE_ORDERS, v->index) != NULL) return;
 
 	if (v->owner != _local_company) {
 		new OrdersWindow(&_other_orders_desc, v);

@@ -1553,7 +1553,6 @@ static const WindowDesc _vehicle_details_desc = {
 static void ShowVehicleDetailsWindow(const Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
-	DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
 	AllocateWindowDescFront<VehicleDetailsWindow>(&_vehicle_details_desc, v->index);
 }
 
