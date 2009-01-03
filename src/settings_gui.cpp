@@ -583,6 +583,8 @@ void ShowGameDifficulty()
 	new GameDifficultyWindow();
 }
 
+static const int SETTING_HEIGHT = 11;         ///< Height of a single patch setting in the tree view
+
 static const char *_patches_ui[] = {
 	"gui.vehicle_speed",
 	"gui.status_long_date",
@@ -785,10 +787,10 @@ struct PatchesSelectionWindow : Window {
 		}
 
 		/* Resize the window to fit the largest patch tab */
-		ResizeWindowForWidget(this, PATCHSEL_OPTIONSPANEL, 0, patches_max * 11);
+		ResizeWindowForWidget(this, PATCHSEL_OPTIONSPANEL, 0, patches_max * SETTING_HEIGHT);
 
 		/* Recentre the window for the new size */
-		this->top = this->top - (patches_max * 11) / 2;
+		this->top = this->top - (patches_max * SETTING_HEIGHT) / 2;
 
 		this->LowerWidget(PATCHSEL_INTERFACE);
 
@@ -848,7 +850,7 @@ struct PatchesSelectionWindow : Window {
 				}
 			}
 			DrawString(30, y, (sdb->str) + disabled, TC_FROMSTRING);
-			y += 11;
+			y += SETTING_HEIGHT;
 		}
 	}
 
@@ -869,8 +871,8 @@ struct PatchesSelectionWindow : Window {
 				x = pt.x - 5;  // Shift x coordinate
 				if (x < 0) return;  // Clicked left of the entry
 
-				btn = y / 11;  // Compute which setting is selected
-				if (y % 11 > 9) return;  // Clicked too low at the setting
+				btn = y / SETTING_HEIGHT;  // Compute which setting is selected
+				if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
 				if (btn >= page->num) return;  // Clicked below the last setting of the page
 
 				sd = page->entries[btn].setting;
