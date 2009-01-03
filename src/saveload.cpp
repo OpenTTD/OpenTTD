@@ -1855,7 +1855,7 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 	SetDParam(2, _date);
 
 	/* Get the correct string (special string for when there's not company) */
-	GetString(buf, IsValidCompanyID(cid) ? STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME : STR_4004, last);
+	GetString(buf, !IsValidCompanyID(cid) ? STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME : STR_4004, last);
 	SanitizeFilename(buf);
 }
 
