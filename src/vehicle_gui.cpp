@@ -1926,7 +1926,7 @@ struct VehicleViewWindow : Window {
 					/* fall-through if aircraft. Does this even happen? */
 
 				default:
-					if (v->num_orders == 0) {
+					if (v->GetNumOrders() == 0) {
 						str = STR_NO_ORDERS + _settings_client.gui.vehicle_speed;
 						SetDParam(0, v->GetDisplaySpeed());
 					} else {

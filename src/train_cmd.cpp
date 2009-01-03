@@ -1454,7 +1454,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 
 							/* Copy orders (by sharing) */
 							new_f->orders          = first->orders;
-							new_f->num_orders      = first->num_orders;
+							new_f->num_orders      = first->GetNumOrders();
 							new_f->AddToShared(first);
 							DeleteVehicleOrders(first);
 
@@ -2360,7 +2360,7 @@ static void CheckNextTrainTile(Vehicle *v)
 	/* Exit if we are on a station tile and are going to stop. */
 	if (IsRailwayStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
 	/* Exit if the current order doesn't have a destination, but the train has orders. */
-	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION)) && v->num_orders > 0) return;
+	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION)) && v->GetNumOrders() > 0) return;
 
 	Trackdir td = GetVehicleTrackdir(v);
 
@@ -2853,7 +2853,7 @@ public:
 
 		do {
 			/* Wrap around. */
-			if (this->index >= this->v->num_orders) this->index = 0;
+			if (this->index >= this->v->GetNumOrders()) this->index = 0;
 
 			Order *order = GetVehicleOrder(this->v, this->index);
 			assert(order != NULL);

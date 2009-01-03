@@ -75,7 +75,7 @@ struct TimetableWindow : Window {
 
 		sel += this->vscroll.pos;
 
-		return (sel < v->num_orders * 2 && sel >= 0) ? sel : INVALID_ORDER;
+		return (sel < v->GetNumOrders() * 2 && sel >= 0) ? sel : INVALID_ORDER;
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -105,7 +105,7 @@ struct TimetableWindow : Window {
 				if (from == to) break; // no need to change anything
 
 				/* if from == INVALID_VEH_ORDER_ID, one order was added; if to == INVALID_VEH_ORDER_ID, one order was removed */
-				uint old_num_orders = this->vehicle->num_orders - (uint)(from == INVALID_VEH_ORDER_ID) + (uint)(to == INVALID_VEH_ORDER_ID);
+				uint old_num_orders = this->vehicle->GetNumOrders() - (uint)(from == INVALID_VEH_ORDER_ID) + (uint)(to == INVALID_VEH_ORDER_ID);
 
 				VehicleOrderID selected_order = (this->sel_index + 1) / 2;
 				if (selected_order == old_num_orders) selected_order = 0; // when last travel time is selected, it belongs to order 0
@@ -133,7 +133,7 @@ struct TimetableWindow : Window {
 				/* recompute new sel_index */
 				this->sel_index = 2 * selected_order - (int)travel;
 				/* travel time of first order needs special handling */
-				if (this->sel_index == -1) this->sel_index = this->vehicle->num_orders * 2 - 1;
+				if (this->sel_index == -1) this->sel_index = this->vehicle->GetNumOrders() * 2 - 1;
 			} break;
 		}
 	}
@@ -144,12 +144,12 @@ struct TimetableWindow : Window {
 		const Vehicle *v = this->vehicle;
 		int selected = this->sel_index;
 
-		SetVScrollCount(this, v->num_orders * 2);
+		SetVScrollCount(this, v->GetNumOrders() * 2);
 
 		if (v->owner == _local_company) {
 			bool disable = true;
 			if (selected != -1) {
-				const Order *order = GetVehicleOrder(v, ((selected + 1) / 2) % v->num_orders);
+				const Order *order = GetVehicleOrder(v, ((selected + 1) / 2) % v->GetNumOrders());
 				if (selected % 2 == 1) {
 					disable = order != NULL && order->IsType(OT_CONDITIONAL);
 				} else {
@@ -190,7 +190,7 @@ struct TimetableWindow : Window {
 
 				order_id++;
 
-				if (order_id >= v->num_orders) {
+				if (order_id >= v->GetNumOrders()) {
 					order = GetVehicleOrder(v, 0);
 					final_order = true;
 				} else {
@@ -249,7 +249,7 @@ struct TimetableWindow : Window {
 		uint order_number = (selected + 1) / 2;
 		uint is_journey   = (selected % 2 == 1) ? 1 : 0;
 
-		if (order_number >= v->num_orders) order_number = 0;
+		if (order_number >= v->GetNumOrders()) order_number = 0;
 
 		return v->index | (order_number << 16) | (is_journey << 24);
 	}
@@ -274,7 +274,7 @@ struct TimetableWindow : Window {
 				int selected = this->sel_index;
 				VehicleOrderID real = (selected + 1) / 2;
 
-				if (real >= v->num_orders) real = 0;
+				if (real >= v->GetNumOrders()) real = 0;
 
 				const Order *order = GetVehicleOrder(v, real);
 				StringID current = STR_EMPTY;

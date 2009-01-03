@@ -310,7 +310,7 @@ static TileIndex GetOrderLocation(const Order& o)
 static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle *v, int conditional_depth = 0)
 {
 	if (cur->IsType(OT_CONDITIONAL)) {
-		if (conditional_depth > v->num_orders) return 0;
+		if (conditional_depth > v->GetNumOrders()) return 0;
 
 		conditional_depth++;
 
@@ -464,7 +464,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 
 		case OT_CONDITIONAL: {
 			VehicleOrderID skip_to = new_order.GetConditionSkipToOrder();
-			if (skip_to != 0 && skip_to >= v->num_orders) return CMD_ERROR; // Always allow jumping to the first (even when there is no order).
+			if (skip_to != 0 && skip_to >= v->GetNumOrders()) return CMD_ERROR; // Always allow jumping to the first (even when there is no order).
 			if (new_order.GetConditionVariable() > OCV_END) return CMD_ERROR;
 
 			OrderConditionComparator occ = new_order.GetConditionComparator();
@@ -492,7 +492,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 		default: return CMD_ERROR;
 	}
 
-	if (sel_ord > v->num_orders) return CMD_ERROR;
+	if (sel_ord > v->GetNumOrders()) return CMD_ERROR;
 
 	if (!Order::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
@@ -563,7 +563,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 			if (sel_ord <= u->cur_order_index) {
 				uint cur = u->cur_order_index + 1;
 				/* Check if we don't go out of bound */
-				if (cur < u->num_orders)
+				if (cur < u->GetNumOrders())
 					u->cur_order_index = cur;
 			}
 			/* Update any possible open window of the vehicle */
@@ -580,7 +580,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 					order->SetConditionSkipToOrder(order_id + 1);
 				}
 				if (order_id == cur_order_id) {
-					order->SetConditionSkipToOrder((order_id + 1) % v->num_orders);
+					order->SetConditionSkipToOrder((order_id + 1) % v->GetNumOrders());
 				}
 			}
 			cur_order_id++;
@@ -627,7 +627,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* If we did not select an order, we maybe want to de-clone the orders */
-	if (sel_ord >= v->num_orders)
+	if (sel_ord >= v->GetNumOrders())
 		return DecloneOrder(v, flags);
 
 	order = GetVehicleOrder(v, sel_ord);
@@ -685,7 +685,7 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 					order->SetConditionSkipToOrder(max(order_id - 1, 0));
 				}
 				if (order_id == cur_order_id) {
-					order->SetConditionSkipToOrder((order_id + 1) % v->num_orders);
+					order->SetConditionSkipToOrder((order_id + 1) % v->GetNumOrders());
 				}
 			}
 			cur_order_id++;
@@ -714,7 +714,7 @@ CommandCost CmdSkipToOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 	v = GetVehicle(veh_id);
 
 	if (!CheckOwnership(v->owner) || sel_ord == v->cur_order_index ||
-			sel_ord >= v->num_orders || v->num_orders < 2) return CMD_ERROR;
+			sel_ord >= v->GetNumOrders() || v->GetNumOrders() < 2) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->cur_order_index = sel_ord;
@@ -755,8 +755,8 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Don't make senseless movements */
-	if (moving_order >= v->num_orders || target_order >= v->num_orders ||
-			moving_order == target_order || v->num_orders <= 1)
+	if (moving_order >= v->GetNumOrders() || target_order >= v->GetNumOrders() ||
+			moving_order == target_order || v->GetNumOrders() <= 1)
 		return CMD_ERROR;
 
 	Order *moving_one = GetVehicleOrder(v, moving_order);
@@ -861,7 +861,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Is it a valid order? */
-	if (sel_ord >= v->num_orders) return CMD_ERROR;
+	if (sel_ord >= v->GetNumOrders()) return CMD_ERROR;
 
 	Order *order = GetVehicleOrder(v, sel_ord);
 	switch (order->GetType()) {
@@ -945,7 +945,7 @@ CommandCost CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 			break;
 
 		case MOF_COND_DESTINATION:
-			if (data >= v->num_orders) return CMD_ERROR;
+			if (data >= v->GetNumOrders()) return CMD_ERROR;
 			break;
 	}
 
@@ -1102,7 +1102,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 				DeleteVehicleOrders(dst);
 
 				dst->orders = src->orders;
-				dst->num_orders = src->num_orders;
+				dst->num_orders = src->GetNumOrders();
 
 				/* Link this vehicle in the shared-list */
 				dst->AddToShared(src);
@@ -1147,7 +1147,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 			}
 
 			/* make sure there are orders available */
-			delta = dst->IsOrderListShared() ? src->num_orders + 1 : src->num_orders - dst->num_orders;
+			delta = dst->IsOrderListShared() ? src->GetNumOrders() + 1 : src->GetNumOrders() - dst->GetNumOrders();
 			if (!Order::CanAllocateItem(delta)) {
 				return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 			}
@@ -1166,7 +1166,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 					order_dst = &(*order_dst)->next;
 				}
 
-				dst->num_orders = src->num_orders;
+				dst->num_orders = src->GetNumOrders();
 
 				InvalidateVehicleOrder(dst, -1);
 
@@ -1358,7 +1358,7 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	/* Check the vehicle type and ownership, and if the service interval and order are in range */
 	if (!CheckOwnership(v->owner)) return CMD_ERROR;
-	if (serv_int != GetServiceIntervalClamped(serv_int) || cur_ord >= v->num_orders) return CMD_ERROR;
+	if (serv_int != GetServiceIntervalClamped(serv_int) || cur_ord >= v->GetNumOrders()) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->cur_order_index = cur_ord;
@@ -1432,7 +1432,7 @@ void CheckOrders(const Vehicle* v)
 		}
 
 		/* Check if the last and the first order are the same */
-		if (v->num_orders > 1) {
+		if (v->GetNumOrders() > 1) {
 			const Order* last = GetLastVehicleOrder(v);
 
 			if (v->orders->Equals(*last)) {
@@ -1657,7 +1657,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 			break;
 
 		case OT_CONDITIONAL: {
-			if (conditional_depth > v->num_orders) return false;
+			if (conditional_depth > v->GetNumOrders()) return false;
 
 			VehicleOrderID next_order = ProcessConditionalOrder(order, v);
 			if (next_order != INVALID_VEH_ORDER_ID) {
@@ -1670,7 +1670,7 @@ bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth)
 			}
 
 			/* Get the current order */
-			if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
+			if (v->cur_order_index >= v->GetNumOrders()) v->cur_order_index = 0;
 
 			const Order *order = GetVehicleOrder(v, v->cur_order_index);
 			v->current_order = *order;
@@ -1739,7 +1739,7 @@ bool ProcessOrders(Vehicle *v)
 	}
 
 	/* Get the current order */
-	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;
+	if (v->cur_order_index >= v->GetNumOrders()) v->cur_order_index = 0;
 
 	const Order *order = GetVehicleOrder(v, v->cur_order_index);
 

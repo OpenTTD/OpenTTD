@@ -393,7 +393,7 @@ private:
 	int OrderGetSel()
 	{
 		int num = this->selected_order;
-		return (num >= 0 && num < vehicle->num_orders) ? num : vehicle->num_orders;
+		return (num >= 0 && num < vehicle->GetNumOrders()) ? num : vehicle->GetNumOrders();
 	}
 
 	/**
@@ -419,7 +419,7 @@ private:
 
 		sel += this->vscroll.pos;
 
-		return (sel <= vehicle->num_orders && sel >= 0) ? sel : INVALID_ORDER;
+		return (sel <= vehicle->GetNumOrders() && sel >= 0) ? sel : INVALID_ORDER;
 	}
 
 	bool HandleOrderVehClick(const Vehicle *u)
@@ -433,7 +433,7 @@ private:
 
 		/* v is vehicle getting orders. Only copy/clone orders if vehicle doesn't have any orders yet
 		 * obviously if you press CTRL on a non-empty orders vehicle you know what you are doing */
-		if (this->vehicle->num_orders != 0 && _ctrl_pressed == 0) return false;
+		if (this->vehicle->GetNumOrders() != 0 && _ctrl_pressed == 0) return false;
 
 		if (DoCommandP(this->vehicle->tile, this->vehicle->index | (u->index << 16), _ctrl_pressed ? CO_SHARE : CO_COPY,
 			_ctrl_pressed ? CMD_CLONE_ORDER | CMD_MSG(STR_CANT_SHARE_ORDER_LIST) : CMD_CLONE_ORDER | CMD_MSG(STR_CANT_COPY_ORDER_LIST))) {
@@ -579,9 +579,9 @@ private:
 	{
 		/* Don't skip when there's nothing to skip */
 		if (_ctrl_pressed && w->vehicle->cur_order_index == w->OrderGetSel()) return;
-		if (w->vehicle->num_orders <= 1) return;
+		if (w->vehicle->GetNumOrders() <= 1) return;
 
-		DoCommandP(w->vehicle->tile, w->vehicle->index, _ctrl_pressed ? w->OrderGetSel() : ((w->vehicle->cur_order_index + 1) % w->vehicle->num_orders),
+		DoCommandP(w->vehicle->tile, w->vehicle->index, _ctrl_pressed ? w->OrderGetSel() : ((w->vehicle->cur_order_index + 1) % w->vehicle->GetNumOrders()),
 				CMD_SKIP_TO_ORDER | CMD_MSG(_ctrl_pressed ? STR_CAN_T_SKIP_TO_ORDER : STR_CAN_T_SKIP_ORDER));
 	}
 
@@ -596,7 +596,7 @@ private:
 		int selected = w->selected_order + (int)_networking;
 
 		if (DoCommandP(w->vehicle->tile, w->vehicle->index, w->OrderGetSel(), CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER))) {
-			w->selected_order = selected >= w->vehicle->num_orders ? -1 : selected;
+			w->selected_order = selected >= w->vehicle->GetNumOrders() ? -1 : selected;
 		}
 	}
 
@@ -692,7 +692,7 @@ public:
 	{
 		bool shared_orders = this->vehicle->IsOrderListShared();
 
-		SetVScrollCount(this, this->vehicle->num_orders + 1);
+		SetVScrollCount(this, this->vehicle->GetNumOrders() + 1);
 
 		int sel = OrderGetSel();
 		const Order *order = GetVehicleOrder(this->vehicle, sel);
@@ -703,11 +703,11 @@ public:
 			this->widget[ORDER_WIDGET_COND_COMPARATOR].data = _order_conditional_condition[order == NULL ? 0 : order->GetConditionComparator()];
 
 			/* skip */
-			this->SetWidgetDisabledState(ORDER_WIDGET_SKIP, this->vehicle->num_orders <= 1);
+			this->SetWidgetDisabledState(ORDER_WIDGET_SKIP, this->vehicle->GetNumOrders() <= 1);
 
 			/* delete */
 			this->SetWidgetDisabledState(ORDER_WIDGET_DELETE,
-					(uint)this->vehicle->num_orders + ((shared_orders || this->vehicle->num_orders != 0) ? 1 : 0) <= (uint)this->selected_order);
+					(uint)this->vehicle->GetNumOrders() + ((shared_orders || this->vehicle->GetNumOrders() != 0) ? 1 : 0) <= (uint)this->selected_order);
 
 			/* non-stop only for trains */
 			this->SetWidgetDisabledState(ORDER_WIDGET_NON_STOP,  (this->vehicle->type != VEH_TRAIN && this->vehicle->type != VEH_ROAD) || order == NULL);
@@ -836,7 +836,7 @@ public:
 
 				int sel = this->GetOrderFromPt(pt.y);
 
-				if (_ctrl_pressed && sel < this->vehicle->num_orders) {
+				if (_ctrl_pressed && sel < this->vehicle->GetNumOrders()) {
 					const Order *ord = GetVehicleOrder(this->vehicle, sel);
 					TileIndex xy = 0;
 
@@ -1022,7 +1022,7 @@ public:
 				int from_order = this->OrderGetSel();
 				int to_order = this->GetOrderFromPt(pt.y);
 
-				if (!(from_order == to_order || from_order == INVALID_ORDER || from_order > this->vehicle->num_orders || to_order == INVALID_ORDER || to_order > this->vehicle->num_orders) &&
+				if (!(from_order == to_order || from_order == INVALID_ORDER || from_order > this->vehicle->GetNumOrders() || to_order == INVALID_ORDER || to_order > this->vehicle->GetNumOrders()) &&
 						DoCommandP(this->vehicle->tile, this->vehicle->index, from_order | (to_order << 16), CMD_MOVE_ORDER | CMD_MSG(STR_CAN_T_MOVE_THIS_ORDER))) {
 					this->selected_order = -1;
 				}

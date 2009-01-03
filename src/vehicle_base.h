@@ -512,6 +512,12 @@ public:
 	 */
 	inline bool IsOrderListShared() const { return this->previous_shared != NULL || this->next_shared != NULL; };
 
+  /**
+	 * Get the number of orders this vehicle has.
+	 * @return the number of orders this vehicle has.
+	 */
+	inline VehicleOrderID GetNumOrders() const { return this->num_orders; }
+
 	/**
 	 * Copy certain configurations and statistics of a vehicle after successful autoreplace/renew
 	 * The function shall copy everything that cannot be copied by a command (like orders / group etc),
