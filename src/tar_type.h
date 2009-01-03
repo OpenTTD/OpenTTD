@@ -1,9 +1,9 @@
 /* $Id$ */
 
+/** @file tar_type.h Structs, typedefs and macros used for TAR file handling. */
+
 #ifndef TAR_TYPE_H
 #define TAR_TYPE_H
-
-/** @file tar_type.h Structs, typedefs and macros used for TAR file handling. */
 
 #include <map>
 #include <string>
