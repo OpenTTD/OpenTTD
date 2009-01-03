@@ -586,6 +586,7 @@ void ShowGameDifficulty()
 static const char *_patches_ui[] = {
 	"gui.vehicle_speed",
 	"gui.status_long_date",
+	"gui.date_format_in_default_names",
 	"gui.show_finances",
 	"gui.autoscroll",
 	"gui.reverse_scroll",
@@ -889,6 +890,7 @@ struct PatchesSelectionWindow : Window {
 
 					switch (sdb->cmd) {
 					case SDT_BOOLX: value ^= 1; break;
+					case SDT_ONEOFMANY:
 					case SDT_NUMX: {
 						/* Add a dynamic step-size to the scroller. In a maximum of
 							* 50-steps you should be able to get from min to max,

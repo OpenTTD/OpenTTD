@@ -1829,7 +1829,13 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 	/* Check if we are not a spectator who wants to generate a name..
 	 * Let's use the name of company #0 for now. */
 	SetDParam(0, IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
-	SetDParam(1, _date);
+	switch (_settings_client.gui.date_format_in_default_names) {
+		case 0: SetDParam(1, STR_JUST_DATE_LONG); break;
+		case 1: SetDParam(1, STR_JUST_DATE_TINY); break;
+		case 2: SetDParam(1, STR_JUST_DATE_ISO); break;
+		default: NOT_REACHED();
+	}
+	SetDParam(2, _date);
 	GetString(buf, STR_4004, last);
 	SanitizeFilename(buf);
 }

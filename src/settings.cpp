@@ -1418,6 +1418,7 @@ const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
 	/* Unsaved patch variables. */
 	SDTC_OMANY(gui.autosave,                  SLE_UINT8, S,  0, 1, 4, "off|monthly|quarterly|half year|yearly", STR_NULL,                     NULL),
+	SDTC_OMANY(gui.date_format_in_default_names,SLE_UINT8,S,MS, 0, 2, "long|short|iso",       STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES,   NULL),
 	 SDTC_BOOL(gui.vehicle_speed,                        S,  0,  true,                        STR_CONFIG_PATCHES_VEHICLESPEED,                NULL),
 	 SDTC_BOOL(gui.status_long_date,                     S,  0,  true,                        STR_CONFIG_PATCHES_LONGDATE,                    NULL),
 	 SDTC_BOOL(gui.show_finances,                        S,  0,  true,                        STR_CONFIG_PATCHES_SHOWFINANCES,                NULL),

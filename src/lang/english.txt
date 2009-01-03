@@ -1128,6 +1128,11 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 
 STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Left-click scrolling: {ORANGE}{STRING1}
 
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Use the {ORANGE}{STRING1}{LTBLUE} date format for savegame names.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Off
@@ -2011,7 +2016,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Save Gam
 STR_4001_LOAD_GAME                                              :{WHITE}Load Game
 STR_4002_SAVE                                                   :{BLACK}Save
 STR_4003_DELETE                                                 :{BLACK}Delete
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING1}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} free
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unable to read drive
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Game Save Failed{}{STRING}
@@ -3506,6 +3511,9 @@ STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 STR_DATE_ISO                                                    :{2:NUM}-{1:RAW_STRING}-{0:RAW_STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY}
