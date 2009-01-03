@@ -22,6 +22,11 @@
 
 #include "table/strings.h"
 
+/** The type of the last built rail bridge */
+static BridgeType _last_railbridge_type = 0;
+/** The type of the last built road bridge */
+static BridgeType _last_roadbridge_type = 0;
+
 /**
  * Carriage for the data we need if we want to build a bridge
  */
@@ -93,6 +98,11 @@ private:
 
 	void BuildBridge(uint8 i)
 	{
+		switch ((TransportType)(this->type >> 15)) {
+			case TRANSPORT_RAIL: _last_railbridge_type = this->bridges->Get(i)->index; break;
+			case TRANSPORT_ROAD: _last_roadbridge_type = this->bridges->Get(i)->index; break;
+			default: break;
+		}
 		DoCommandP(this->end_tile, this->start_tile, this->type | this->bridges->Get(i)->index,
 					CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
 	}
@@ -287,6 +297,25 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	 *      7..0 = type of bridge */
 	uint32 type = (transport_type << 15) | (road_rail_type << 8);
 
+	/* The bridge length without ramps. */
+	const uint bridge_len = GetTunnelBridgeLength(start, end);
+
+	/* If Ctrl is being pressed, check wether the last bridge built is available
+	 * If so, return this bridge type. Otherwise continue normally.
+	 * We store bridge types for each transport type, so we have to check for
+	 * the transport type beforehand.
+	 */
+	BridgeType last_bridge_type = 0;
+	switch (transport_type) {
+		case TRANSPORT_ROAD: last_bridge_type = _last_roadbridge_type; break;
+		case TRANSPORT_RAIL: last_bridge_type = _last_railbridge_type; break;
+		default: break; // water ways and air routes don't have bridge types
+	}
+	if (_ctrl_pressed && CheckBridge_Stuff(last_bridge_type, bridge_len)) {
+		DoCommandP(end, start, type | last_bridge_type, CMD_BUILD_BRIDGE | CMD_MSG(STR_5015_CAN_T_BUILD_BRIDGE_HERE), CcBuildBridge);
+		return;
+	}
+
 	/* only query bridge building possibility once, result is the same for all bridges!
 	 * returns CMD_ERROR on failure, and price on success */
 	StringID errmsg = INVALID_STRING_ID;
@@ -296,11 +325,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, TransportType transpo
 	if (CmdFailed(ret)) {
 		errmsg = _error_message;
 	} else {
-		/* check which bridges can be built
-		 * get absolute bridge length
-		 * length of the middle parts of the bridge */
-		const uint bridge_len = GetTunnelBridgeLength(start, end);
-		/* total length of bridge */
+		/* check which bridges can be built */
 		const uint tot_bridgedata_len = CalcBridgeLenCostFactor(bridge_len + 2);
 
 		bl = new GUIBridgeList();
