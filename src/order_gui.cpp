@@ -40,6 +40,7 @@ enum OrderWindowWidgets {
 	ORDER_WIDGET_CLOSEBOX = 0,
 	ORDER_WIDGET_CAPTION,
 	ORDER_WIDGET_TIMETABLE_VIEW,
+	ORDER_WIDGET_STICKY,
 	ORDER_WIDGET_ORDER_LIST,
 	ORDER_WIDGET_SCROLLBAR,
 	ORDER_WIDGET_SKIP,
@@ -1138,8 +1139,9 @@ public:
  */
 static const Widget _orders_train_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   385,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   325,   385,     0,    13, STR_TIMETABLE_VIEW,      STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
+	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   373,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   313,   373,     0,    13, STR_TIMETABLE_VIEW,      STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   374,   385,     0,    13, STR_NULL,                STR_STICKY_BUTTON},                   // ORDER_WIDGET_STICKY
 
 	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   373,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
 
@@ -1173,7 +1175,7 @@ static const Widget _orders_train_widgets[] = {
 static const WindowDesc _orders_train_desc = {
 	WDP_AUTO, WDP_AUTO, 386, 100, 386, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_orders_train_widgets,
 };
 
@@ -1182,8 +1184,9 @@ static const WindowDesc _orders_train_desc = {
  */
 static const Widget _orders_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   385,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   325,   385,     0,    13, STR_TIMETABLE_VIEW,      STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
+	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   373,     0,    13, STR_8829_ORDERS,         STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   313,   373,     0,    13, STR_TIMETABLE_VIEW,      STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   374,   385,     0,    13, STR_NULL,                STR_STICKY_BUTTON},                   // ORDER_WIDGET_STICKY
 
 	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   373,    14,    75, 0x0,                     STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
 
@@ -1217,7 +1220,7 @@ static const Widget _orders_widgets[] = {
 static const WindowDesc _orders_desc = {
 	WDP_AUTO, WDP_AUTO, 386, 100, 386, 100,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_orders_widgets,
 };
 
@@ -1226,8 +1229,9 @@ static const WindowDesc _orders_desc = {
  */
 static const Widget _other_orders_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,   COLOUR_GREY,     0,    10,     0,    13, STR_00C5,           STR_018B_CLOSE_WINDOW},               // ORDER_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   385,     0,    13, STR_8829_ORDERS,    STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   325,   385,     0,    13, STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
+	{    WWT_CAPTION,   RESIZE_RIGHT,  COLOUR_GREY,    11,   373,     0,    13, STR_8829_ORDERS,    STR_018C_WINDOW_TITLE_DRAG_THIS},     // ORDER_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,   RESIZE_LR,     COLOUR_GREY,   313,   373,     0,    13, STR_TIMETABLE_VIEW, STR_TIMETABLE_VIEW_TOOLTIP},          // ORDER_WIDGET_TIMETABLE_VIEW
+	{  WWT_STICKYBOX,   RESIZE_LR,     COLOUR_GREY,   374,   385,     0,    13, STR_NULL,           STR_STICKY_BUTTON},                   // ORDER_WIDGET_STICKY
 
 	{      WWT_PANEL,   RESIZE_RB,     COLOUR_GREY,     0,   373,    14,    75, 0x0,                STR_8852_ORDERS_LIST_CLICK_ON_ORDER}, // ORDER_WIDGET_ORDER_LIST
 
@@ -1261,13 +1265,14 @@ static const Widget _other_orders_widgets[] = {
 static const WindowDesc _other_orders_desc = {
 	WDP_AUTO, WDP_AUTO, 386, 88, 386, 88,
 	WC_VEHICLE_ORDERS, WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_other_orders_widgets,
 };
 
 void ShowOrdersWindow(const Vehicle *v)
 {
-	DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
+	DeleteWindowById(WC_VEHICLE_DETAILS, v->index, false);
+	DeleteWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
 	if (BringWindowToFrontById(WC_VEHICLE_ORDERS, v->index) != NULL) return;
 
 	if (v->owner != _local_company) {

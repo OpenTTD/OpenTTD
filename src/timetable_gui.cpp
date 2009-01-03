@@ -8,6 +8,7 @@
 #include "command_func.h"
 #include "gui.h"
 #include "window_gui.h"
+#include "window_func.h"
 #include "textbuf_gui.h"
 #include "cargotype.h"
 #include "strings_func.h"
@@ -366,5 +367,7 @@ static const WindowDesc _timetable_desc = {
 
 void ShowTimetableWindow(const Vehicle *v)
 {
+	DeleteWindowById(WC_VEHICLE_DETAILS, v->index, false);
+	DeleteWindowById(WC_VEHICLE_ORDERS, v->index, false);
 	AllocateWindowDescFront<TimetableWindow>(&_timetable_desc, v->index);
 }

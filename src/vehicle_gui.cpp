@@ -1202,6 +1202,7 @@ enum VehicleDetailsWindowWidgets {
 	VLD_WIDGET_CLOSEBOX = 0,
 	VLD_WIDGET_CAPTION,
 	VLD_WIDGET_RENAME_VEHICLE,
+	VLD_WIDGET_STICKY,
 	VLD_WIDGET_TOP_DETAILS,
 	VLD_WIDGET_INCREASE_SERVICING_INTERVAL,
 	VLD_WIDGET_DECREASE_SERVICING_INTERVAL,
@@ -1218,8 +1219,9 @@ enum VehicleDetailsWindowWidgets {
 /** Vehicle details widgets. */
 static const Widget _vehicle_details_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,   0,  10,   0,  13, STR_00C5,             STR_018B_CLOSE_WINDOW},                  // VLD_WIDGET_CLOSEBOX
-	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,  11, 364,   0,  13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},        // VLD_WIDGET_CAPTION
-	{ WWT_PUSHTXTBTN,     RESIZE_LR,  COLOUR_GREY, 365, 404,   0,  13, STR_01AA_NAME,        STR_NULL /* filled in later */},         // VLD_WIDGET_RENAME_VEHICLE
+	{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,  11, 352,   0,  13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},        // VLD_WIDGET_CAPTION
+	{ WWT_PUSHTXTBTN,     RESIZE_LR,  COLOUR_GREY, 353, 392,   0,  13, STR_01AA_NAME,        STR_NULL /* filled in later */},         // VLD_WIDGET_RENAME_VEHICLE
+	{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY, 393, 404,   0,  13, STR_NULL,             STR_STICKY_BUTTON},                      // VLD_WIDGET_STICKY
 	{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_GREY,   0, 404,  14,  55, 0x0,                  STR_NULL},                               // VLD_WIDGET_TOP_DETAILS
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 101, 106, STR_0188,             STR_884D_INCREASE_SERVICING_INTERVAL},   // VLD_WIDGET_INCREASE_SERVICING_INTERVAL
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_GREY,   0,  10, 107, 112, STR_0189,             STR_884E_DECREASE_SERVICING_INTERVAL},   // VLD_WIDGET_DECREASE_SERVICING_INTERVAL
@@ -1545,14 +1547,15 @@ struct VehicleDetailsWindow : Window {
 static const WindowDesc _vehicle_details_desc = {
 	WDP_AUTO, WDP_AUTO, 405, 113, 405, 113,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_details_widgets,
 };
 
 /** Shows the vehicle details window of the given vehicle. */
 static void ShowVehicleDetailsWindow(const Vehicle *v)
 {
-	DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
+	DeleteWindowById(WC_VEHICLE_ORDERS, v->index, false);
+	DeleteWindowById(WC_VEHICLE_TIMETABLE, v->index, false);
 	AllocateWindowDescFront<VehicleDetailsWindow>(&_vehicle_details_desc, v->index);
 }
 
