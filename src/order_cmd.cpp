@@ -412,8 +412,8 @@ bool OrderList::IsCompleteTimetable() const
 void OrderList::DebugCheckSanity() const
 {
 	VehicleOrderID check_num_orders = 0;
-	unsigned check_num_vehicles = 0;
-	unsigned check_timetable_duration = 0;
+	uint check_num_vehicles = 0;
+	uint check_timetable_duration = 0;
 
 	DEBUG(misc, 6, "Checking OrderList %hu for sanity...", this->index);
 
@@ -429,7 +429,7 @@ void OrderList::DebugCheckSanity() const
 		assert(v->orders.list == this);
 	}
 	assert(this->num_vehicles == check_num_vehicles);
-	DEBUG(misc, 6, "... detected %u orders, %u vehicles, %u ticks", (unsigned)this->num_orders,
+	DEBUG(misc, 6, "... detected %u orders, %u vehicles, %u ticks", (uint)this->num_orders,
 	      this->num_vehicles, this->timetable_duration);
 }
 

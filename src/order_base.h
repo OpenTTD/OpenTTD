@@ -263,10 +263,10 @@ private:
 
 	Order *first;                   ///< First order of the order list
 	VehicleOrderID num_orders;      ///< NOSAVE: How many orders there are in the list
-	unsigned num_vehicles;          ///< NOSAVE: Number of vehicles that share this order list
+	uint num_vehicles;              ///< NOSAVE: Number of vehicles that share this order list
 	Vehicle *first_shared;          ///< NOSAVE: pointer to the first vehicle in the shared order chain
 
-	unsigned timetable_duration;    ///< NOSAVE: Total duration of the order list
+	uint timetable_duration;        ///< NOSAVE: Total duration of the order list
 
 public:
 	/** Default constructor producing an invalid order list. */
@@ -344,7 +344,7 @@ public:
 	 * Return the number of vehicles that share this orders list
 	 * @return the count of vehicles that use this shared orders list
 	 */
-	inline unsigned GetNumVehicles() const { return this->num_vehicles; }
+	inline uint GetNumVehicles() const { return this->num_vehicles; }
 
 	/**
 	 * Checks whether a vehicle is part of the shared vehicle chain.
@@ -384,7 +384,7 @@ public:
 	 * Gets the total duration of the vehicles timetable or -1 is the timetable is not complete.
 	 * @return total timetable duration or -1 for incomplete timetables
 	 */
-	inline int GetTimetableTotalDuration() const { return this->IsCompleteTimetable() ? this->timetable_duration : -1; }
+	inline int GetTimetableTotalDuration() const { return this->IsCompleteTimetable() ? (int)this->timetable_duration : -1; }
 
 	/**
 	 * Gets the known duration of the vehicles timetable even if the timetable is not complete.

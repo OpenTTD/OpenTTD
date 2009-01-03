@@ -39,7 +39,7 @@ bool FiosIsRoot(const char *file)
 
 void FiosGetDrives()
 {
-	unsigned disk, disk2, save, total;
+	uint disk, disk2, save, total;
 
 #ifndef __INNOTEK_LIBC__
 	_dos_getdrive(&save); // save original drive
