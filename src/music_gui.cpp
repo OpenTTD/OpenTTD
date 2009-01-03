@@ -96,7 +96,7 @@ static void DoPlaySong()
 {
 	char filename[MAX_PATH];
 	FioFindFullPath(filename, lengthof(filename), GM_DIR,
-			origin_songs_specs[_music_wnd_cursong - 1].filename);
+			_origin_songs_specs[_music_wnd_cursong - 1].filename);
 	_music_driver->PlaySong(filename);
 }
 
@@ -114,7 +114,7 @@ static void SelectSongToPlay()
 	do {
 		/* We are now checking for the existence of that file prior
 		 * to add it to the list of available songs */
-		if (FioCheckFileExists(origin_songs_specs[_playlists[msf.playlist][i] - 1].filename, GM_DIR)) {
+		if (FioCheckFileExists(_origin_songs_specs[_playlists[msf.playlist][i] - 1].filename, GM_DIR)) {
 			_cur_playlist[j] = _playlists[msf.playlist][i];
 			j++;
 		}

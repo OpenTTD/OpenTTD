@@ -13,6 +13,6 @@ struct SongSpecs {
 	char song_name[64];
 };
 
-extern const SongSpecs origin_songs_specs[NUM_SONGS_AVAILABLE];
+extern const SongSpecs _origin_songs_specs[];
 
 #endif //MUSIC_H

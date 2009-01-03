@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "music.h"
 
-const SongSpecs origin_songs_specs[NUM_SONGS_AVAILABLE] = {
+const SongSpecs _origin_songs_specs[] = {
 	{"gm_tt00.gm", "Tycoon DELUXE Theme"},
 	{"gm_tt02.gm", "Easy Driver"},
 	{"gm_tt03.gm", "Little Red Diesel"},
@@ -29,3 +29,5 @@ const SongSpecs origin_songs_specs[NUM_SONGS_AVAILABLE] = {
 	{"gm_tt20.gm", "Jammit"},
 	{"gm_tt11.gm", "Hard Drivin'"},
 };
+
+assert_compile(NUM_SONGS_AVAILABLE == lengthof(_origin_songs_specs));

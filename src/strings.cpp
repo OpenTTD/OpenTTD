@@ -1189,7 +1189,7 @@ static char *GetSpecialNameString(char *buff, int ind, const int64 *argv, const 
 			return GenPresidentName(buff, GetInt32(&argv), last);
 
 		case 4: // song names
-			return strecpy(buff, origin_songs_specs[GetInt32(&argv) - 1].song_name, last);
+			return strecpy(buff, _origin_songs_specs[GetInt32(&argv) - 1].song_name, last);
 	}
 
 	/* town name? */
