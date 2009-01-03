@@ -17,12 +17,16 @@
 static void ChangeTimetable(Vehicle *v, VehicleOrderID order_number, uint16 time, bool is_journey)
 {
 	Order *order = GetVehicleOrder(v, order_number);
+	int delta;
 
 	if (is_journey) {
+		delta = time - order->travel_time;
 		order->travel_time = time;
 	} else {
+		delta = time - order->wait_time;
 		order->wait_time = time;
 	}
+	v->orders.list->UpdateOrderTimetable(delta);
 
 	for (v = v->FirstShared(); v != NULL; v = v->NextShared()) {
 		if (v->cur_order_index == order_number && v->current_order.Equals(*order)) {

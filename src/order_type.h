@@ -9,6 +9,7 @@
 
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef uint16 OrderID;
+typedef uint16 OrderListID;
 typedef uint16 DestinationID;
 
 enum {
@@ -149,5 +150,6 @@ enum {
 };
 
 struct Order;
+struct OrderList;
 
 #endif /* ORDER_TYPE_H */

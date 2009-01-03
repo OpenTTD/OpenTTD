@@ -39,7 +39,7 @@
 
 #include "table/strings.h"
 
-extern const uint16 SAVEGAME_VERSION = 104;
+extern const uint16 SAVEGAME_VERSION = 105;
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 
@@ -1367,6 +1367,7 @@ static uint ReferenceToInt(const void *obj, SLRefType rt)
 		case REF_ROADSTOPS: return ((const RoadStop*)obj)->index + 1;
 		case REF_ENGINE_RENEWS: return ((const EngineRenew*)obj)->index + 1;
 		case REF_CARGO_PACKET:  return ((const CargoPacket*)obj)->index + 1;
+		case REF_ORDERLIST:     return ((const   OrderList*)obj)->index + 1;
 		default: NOT_REACHED();
 	}
 
@@ -1399,6 +1400,10 @@ static void *IntToReference(uint index, SLRefType rt)
 	index--; // correct for the NULL index
 
 	switch (rt) {
+		case REF_ORDERLIST:
+			if (_OrderList_pool.AddBlockIfNeeded(index)) return GetOrderList(index);
+			error("Orders: failed loading savegame: too many order lists");
+
 		case REF_ORDER:
 			if (_Order_pool.AddBlockIfNeeded(index)) return GetOrder(index);
 			error("Orders: failed loading savegame: too many orders");

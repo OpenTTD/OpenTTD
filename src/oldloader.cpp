@@ -329,12 +329,9 @@ static StringID *_old_vehicle_names = NULL;
 
 static void FixOldVehicles()
 {
-	/* Check for shared orders, and link them correctly */
 	Vehicle* v;
 
 	FOR_ALL_VEHICLES(v) {
-		Vehicle *u;
-
 		v->name = CopyFromOldName(_old_vehicle_names[v->index]);
 
 		/* We haven't used this bit for stations for ages */
@@ -356,14 +353,7 @@ static void FixOldVehicles()
 			v->current_order.MakeDummy();
 		}
 
-		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
-			/* If a vehicle has the same orders, add the link to eachother
-			 * in both vehicles */
-			if (v->orders == u->orders) {
-				u->AddToShared(v);
-				break;
-			}
-		}
+		/* Shared orders are fixed in AfterLoadVehicles now */
 	}
 }
 
@@ -1144,7 +1134,7 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_VAR ( OC_UINT32,   1, &_old_order_ptr ),
 	OCL_VAR ( OC_UINT16,   1, &_old_order ),
 
-	OCL_SVAR(  OC_UINT8, Vehicle, num_orders ),
+	OCL_NULL ( 1 ), ///< num_orders, now calculated
 	OCL_SVAR(  OC_UINT8, Vehicle, cur_order_index ),
 	OCL_SVAR(   OC_TILE, Vehicle, dest_tile ),
 	OCL_SVAR( OC_UINT16, Vehicle, load_unload_time_rem ),
@@ -1250,7 +1240,7 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			 * we go over that limit something is very wrong. In that case
 			 * we just assume there are no orders for the vehicle.
 			 */
-			if (old_id < 5000) v->orders = GetOrder(old_id);
+			if (old_id < 5000) v->orders.old = GetOrder(old_id);
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 

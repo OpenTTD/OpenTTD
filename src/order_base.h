@@ -15,6 +15,7 @@
 #include "waypoint_type.h"
 
 DECLARE_OLD_POOL(Order, Order, 6, 1000)
+DECLARE_OLD_POOL(OrderList, OrderList, 4, 4000)
 
 /* If you change this, keep in mind that it is saved on 3 places:
  * - Load_ORDR, all the global orders
@@ -119,12 +120,6 @@ public:
 	void MakeConditional(VehicleOrderID order);
 
 	/**
-	 * Free a complete order chain.
-	 * @note do not use on "current_order" vehicle orders!
-	 */
-	void FreeChain();
-
-	/**
 	 * Gets the destination of this order.
 	 * @pre IsType(OT_GOTO_WAYPOINT) || IsType(OT_GOTO_DEPOT) || IsType(OT_GOTO_STATION).
 	 * @return the destination of the order.
@@ -207,6 +202,14 @@ public:
 
 	bool ShouldStopAtStation(const Vehicle *v, StationID station) const;
 
+	/** Checks if this order has travel_time and if needed wait_time set. */
+	inline bool IsCompletelyTimetabled() const
+	{
+		if (this->travel_time == 0 && !this->IsType(OT_CONDITIONAL)) return false;
+		if (this->wait_time == 0 && this->IsType(OT_GOTO_STATION) && !(this->GetNonStopType() & ONSF_NO_STOP_AT_DESTINATION_STATION)) return false;
+		return true;
+	}
+
 	/**
 	 * Assign the given order to this one.
 	 * @param other the data to copy (except next pointer).
@@ -250,11 +253,183 @@ static inline VehicleOrderID GetNumOrders()
 	return GetOrderPoolSize();
 }
 
+/** Shared order list linking together the linked list of orders and the list
+ *  of vehicles sharing this order list.
+ */
+struct OrderList : PoolItem<OrderList, OrderListID, &_OrderList_pool> {
+private:
+	friend void AfterLoadVehicles(bool part_of_load); ///< For instantiating the shared vehicle chain
+	friend const struct SaveLoad *GetOrderListDescription(); ///< Saving and loading of order lists.
+
+	Order *first;                   ///< First order of the order list
+	VehicleOrderID num_orders;      ///< NOSAVE: How many orders there are in the list
+	unsigned num_vehicles;          ///< NOSAVE: Number of vehicles that share this order list
+	Vehicle *first_shared;          ///< NOSAVE: pointer to the first vehicle in the shared order chain
+
+	unsigned timetable_duration;    ///< NOSAVE: Total duration of the order list
+
+public:
+	/** Default constructor producing an invalid order list. */
+	OrderList()
+		: first(NULL), num_orders(INVALID_VEH_ORDER_ID), num_vehicles(0), first_shared(NULL),
+		  timetable_duration(0) { }
+
+	/** Create an order list with the given order chain for the given vehicle.
+	 *  @param chain is the pointer to the first order of the order chain
+	 *  @param v is any vehicle of the shared order vehicle chain (does not need to be the first)
+	 */
+	OrderList(Order *chain, Vehicle *v);
+
+	/** Destructor. Invalidates OrderList for re-usage by the pool. */
+	~OrderList() { this->num_orders = INVALID_VEH_ORDER_ID; }
+
+	/** Checks, if this is a valid order list. */
+	inline bool IsValid() const { return this->num_orders != INVALID_VEH_ORDER_ID; }
+
+	/**
+	 * Get the first order of the order chain.
+	 * @return the first order of the chain.
+	 */
+	inline Order *GetFirstOrder() const { return this->first; }
+
+	/**
+	 * Get a certain order of the order chain.
+	 * @param index zero-based index of the order within the chain.
+	 * @return the order at position index.
+	 */
+	Order *GetOrderAt(int index) const;
+
+	/**
+	 * Get the last order of the order chain.
+	 * @return the last order of the chain.
+	 */
+	inline Order *GetLastOrder() const { return this->GetOrderAt(this->num_orders - 1); }
+
+	/**
+	 * Get number of orders in the order list.
+	 * @return number of orders in the chain. */
+	inline VehicleOrderID GetNumOrders() const { return this->num_orders; }
+
+	/**
+	 * Insert a new order into the order chain.
+	 * @param new_order is the order to insert into the chain.
+	 * @param index is the position where the order is supposed to be inserted. */
+	void InsertOrderAt(Order *new_order, int index);
+
+	/**
+	 * Remove an order from the order list and delete it.
+	 * @param index is the position of the order which is to be deleted.
+	 */
+	void DeleteOrderAt(int index);
+
+	/**
+	 * Move an order to another position within the order list.
+	 * @param from is the zero-based position of the order to move.
+	 * @param to is the zero-based position where the order is moved to. */
+	void MoveOrder(int from, int to);
+
+	/**
+	 * Is this a shared order list?
+	 * @return whether this order list is shared among multiple vehicles
+	 */
+	inline bool IsShared() const { return this->num_vehicles > 1; };
+
+	/**
+	 * Get the first vehicle of this vehicle chain.
+	 * @return the first vehicle of the chain.
+	 */
+	inline Vehicle *GetFirstSharedVehicle() const { return this->first_shared; }
+
+	/**
+	 * Return the number of vehicles that share this orders list
+	 * @return the count of vehicles that use this shared orders list
+	 */
+	inline unsigned GetNumVehicles() const { return this->num_vehicles; }
+
+	/**
+	 * Checks whether a vehicle is part of the shared vehicle chain.
+	 * @param v is the vehicle to search in the shared vehicle chain.
+	 */
+	bool IsVehicleInSharedOrdersList(const Vehicle *v) const;
+
+	/**
+	 * Gets the position of the given vehicle within the shared order vehicle list.
+	 * @param v is the vehicle of which to get the position
+	 * @return position of v within the shared vehicle chain.
+	 */
+	int GetPositionInSharedOrderList(const Vehicle *v) const;
+
+	/**
+	 * Adds the given vehicle to this shared order list.
+	 * @note This is supposed to be called after the vehicle has been inserted
+	 *       into the shared vehicle chain.
+	 * @param v vehicle to add to the list
+	 */
+	inline void AddVehicle(Vehicle *v) { ++this->num_vehicles; }
+
+	/**
+	 * Removes the vehicle from the shared order list.
+	 * @note This is supposed to be called when the vehicle is still in the chain
+	 * @param v vehicle to remove from the list
+	 */
+	void RemoveVehicle(Vehicle *v);
+
+	/**
+	 * Checks whether all orders of the list have a filled timetable.
+	 * @return whether all orders have a filled timetable.
+	 */
+	bool IsCompleteTimetable() const;
+
+	/**
+	 * Gets the total duration of the vehicles timetable or -1 is the timetable is not complete.
+	 * @return total timetable duration or -1 for incomplete timetables
+	 */
+	inline int GetTimetableTotalDuration() const { return this->IsCompleteTimetable() ? this->timetable_duration : -1; }
+
+	/**
+	 * Gets the known duration of the vehicles timetable even if the timetable is not complete.
+	 * @return known timetable duration
+	 */
+	inline int GetTimetableDurationIncomplete() const { return this->timetable_duration; }
+
+	/**
+	 * Must be called if an order's timetable is changed to update internal book keeping.
+	 * @param delta By how many ticks has the timetable duration changed
+	 */
+	void UpdateOrderTimetable(int delta) { this->timetable_duration += delta; }
+
+	/**
+	 * Must be called if the whole timetable is cleared to update internal book keeping.
+	 */
+	void ResetOrderTimetable() { this->timetable_duration = 0; }
+
+	/**
+	 * Free a complete order chain.
+	 * @param keep_orderlist If this is true only delete the orders, otherwise also delete the OrderList.
+	 * @note do not use on "current_order" vehicle orders!
+	 */
+	void FreeChain(bool keep_orderlist = false);
+
+	/**
+	 * Checks for internal consistency of order list. Triggers assertion if something is wrong.
+	 */
+	void DebugCheckSanity() const;
+};
+
+static inline bool IsValidOrderListID(uint index)
+{
+	return index < GetOrderListPoolSize() && GetOrderList(index)->IsValid();
+}
+
 #define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) if (order->IsValid())
 #define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
 
 
-#define FOR_VEHICLE_ORDERS(v, order) for (order = v->orders; order != NULL; order = order->next)
+#define FOR_VEHICLE_ORDERS(v, order) for (order = (v->orders.list == NULL) ? NULL : v->orders.list->GetFirstOrder(); order != NULL; order = order->next)
+
+
+#define FOR_ALL_ORDER_LISTS_FROM(ol, start) for (ol = GetOrderList(start); ol != NULL; ol = (ol->index + 1U < GetOrderListPoolSize()) ? GetOrderList(ol->index + 1U) : NULL) if (ol->IsValid())
+#define FOR_ALL_ORDER_LISTS(ol) FOR_ALL_ORDER_LISTS_FROM(ol, 0)
 
 /* (Un)pack routines */
 Order UnpackOldOrder(uint16 packed);

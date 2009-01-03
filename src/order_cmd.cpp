@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "debug.h"
 #include "order_base.h"
 #include "order_func.h"
 #include "airport.h"
@@ -41,6 +42,7 @@ TileIndex _backup_orders_tile;
 BackuppedOrders _backup_orders_data;
 
 DEFINE_OLD_POOL_GENERIC(Order, Order);
+DEFINE_OLD_POOL_GENERIC(OrderList, OrderList);
 
 void Order::Free()
 {
@@ -105,12 +107,6 @@ void Order::SetRefit(CargoID cargo, byte subtype)
 {
 	this->refit_cargo = cargo;
 	this->refit_subtype = subtype;
-}
-
-void Order::FreeChain()
-{
-	if (next != NULL) next->FreeChain();
-	delete this;
 }
 
 bool Order::Equals(const Order &other) const
@@ -249,22 +245,6 @@ void InvalidateVehicleOrder(const Vehicle *v, int data)
 
 /**
  *
- * Swap two orders
- *
- */
-static void SwapOrders(Order *order1, Order *order2)
-{
-	Order temp_order;
-
-	temp_order = *order1;
-	order1->AssignOrder(*order2);
-	order1->next = order2->next;
-	order2->AssignOrder(temp_order);
-	order2->next = temp_order.next;
-}
-
-/**
- *
  * Assign data to an order (from an other order)
  *   This function makes sure that the index is maintained correctly
  *
@@ -282,6 +262,176 @@ void Order::AssignOrder(const Order &other)
 	this->travel_time = other.travel_time;
 }
 
+
+OrderList::OrderList(Order *chain, Vehicle *v) :
+		first(chain), num_orders(0), num_vehicles(1), first_shared(v),
+		timetable_duration(0)
+{
+	for (Order *o = this->first; o != NULL; o = o->next) {
+		++this->num_orders;
+		this->timetable_duration += o->wait_time + o->travel_time;
+	}
+
+	for (Vehicle *u = v->PreviousShared(); u != NULL; u = u->PreviousShared()) {
+		++this->num_vehicles;
+		this->first_shared = u;
+	}
+
+	for (const Vehicle *u = v->NextShared(); u != NULL; u = u->NextShared()) ++this->num_vehicles;
+}
+
+void OrderList::FreeChain(bool keep_orderlist)
+{
+	Order *next;
+	for(Order *o = this->first; o != NULL; o = next) {
+		next = o->next;
+		delete o;
+	}
+
+	if (keep_orderlist) {
+		this->first = NULL;
+		this->num_orders = 0;
+		this->timetable_duration = 0;
+	} else {
+		delete this;
+	}
+}
+
+Order *OrderList::GetOrderAt(int index) const
+{
+	if (index < 0) return NULL;
+
+	Order *order = this->first;
+
+	while (order != NULL && index-- > 0)
+		order = order->next;
+
+	return order;
+}
+
+void OrderList::InsertOrderAt(Order *new_order, int index)
+{
+	if (this->first == NULL) {
+		this->first = new_order;
+	} else {
+		if (index == 0) {
+			/* Insert as first or only order */
+			new_order->next = this->first;
+			this->first = new_order;
+		} else if (index >= this->num_orders) {
+			/* index is after the last order, add it to the end */
+			this->GetLastOrder()->next = new_order;
+		} else {
+			/* Put the new order in between */
+			Order *order = this->GetOrderAt(index - 1);
+			new_order->next = order->next;
+			order->next = new_order;
+		}
+	}
+	++this->num_orders;
+	this->timetable_duration += new_order->wait_time + new_order->travel_time;
+}
+
+
+void OrderList::DeleteOrderAt(int index)
+{
+	if (index >= this->num_orders) return;
+
+	Order *to_remove;
+
+	if (index == 0) {
+		to_remove = this->first;
+		this->first = to_remove->next;
+	} else {
+		Order *prev = GetOrderAt(index - 1);
+		to_remove = prev->next;
+		prev->next = to_remove->next;
+	}
+	--this->num_orders;
+	this->timetable_duration -= (to_remove->wait_time + to_remove->travel_time);
+	delete to_remove;
+}
+
+void OrderList::MoveOrder(int from, int to)
+{
+	if (from >= this->num_orders || to >= this->num_orders || from == to) return;
+
+	Order *moving_one;
+
+	/* Take the moving order out of the pointer-chain */
+	if (from == 0) {
+		moving_one = this->first;
+		this->first = moving_one->next;
+	} else {
+		Order *one_before = GetOrderAt(from - 1);
+		moving_one = one_before->next;
+		one_before->next = moving_one->next;
+	}
+
+	/* Insert the moving_order again in the pointer-chain */
+	if (to == 0) {
+		moving_one->next = this->first;
+		this->first = moving_one;
+	} else {
+		Order *one_before = GetOrderAt(to - 1);
+		moving_one->next = one_before->next;
+		one_before->next = moving_one;
+	}
+}
+
+void OrderList::RemoveVehicle(Vehicle *v)
+{
+	--this->num_vehicles;
+	if (v == this->first_shared) this->first_shared = v->NextShared();
+}
+
+bool OrderList::IsVehicleInSharedOrdersList(const Vehicle *v) const
+{
+	for (const Vehicle *v_shared = this->first_shared; v_shared != NULL; v_shared = v_shared->NextShared()) {
+		if (v_shared == v) return true;
+	}
+
+	return false;
+}
+
+int OrderList::GetPositionInSharedOrderList(const Vehicle *v) const
+{
+	int count = 0;
+	for (const Vehicle *v_shared = v->PreviousShared(); v_shared != NULL; v_shared = v_shared->PreviousShared()) count++;
+	return count;
+}
+
+bool OrderList::IsCompleteTimetable() const
+{
+	for (Order *o = this->first; o != NULL; o = o->next) {
+		if (!o->IsCompletelyTimetabled()) return false;
+	}
+	return true;
+}
+
+void OrderList::DebugCheckSanity() const
+{
+	VehicleOrderID check_num_orders = 0;
+	unsigned check_num_vehicles = 0;
+	unsigned check_timetable_duration = 0;
+
+	DEBUG(misc, 6, "Checking OrderList %hu for sanity...", this->index);
+
+	for (const Order *o = this->first; o != NULL; o = o->next) {
+		++check_num_orders;
+		check_timetable_duration += o->wait_time + o->travel_time;
+	}
+	assert(this->num_orders == check_num_orders);
+	assert(this->timetable_duration == check_timetable_duration);
+
+	for (const Vehicle *v = this->first_shared; v != NULL; v = v->NextShared()) {
+		++check_num_vehicles;
+		assert(v->orders.list == this);
+	}
+	assert(this->num_vehicles == check_num_vehicles);
+	DEBUG(misc, 6, "... detected %u orders, %u vehicles, %u ticks", (unsigned)this->num_orders,
+	      this->num_vehicles, this->timetable_duration);
+}
 
 /**
  * Delete all news items regarding defective orders about a vehicle
@@ -315,7 +465,7 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
 		conditional_depth++;
 
 		int dist1 = GetOrderDistance(prev, GetVehicleOrder(v, cur->GetConditionSkipToOrder()), v, conditional_depth);
-		int dist2 = GetOrderDistance(prev, cur->next == NULL ? v->orders : cur->next, v, conditional_depth);
+		int dist2 = GetOrderDistance(prev, cur->next == NULL ? v->orders.list->GetFirstOrder() : cur->next, v, conditional_depth);
 		return max(dist1, dist2);
 	}
 
@@ -495,6 +645,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 	if (sel_ord > v->GetNumOrders()) return CMD_ERROR;
 
 	if (!Order::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
+	if (v->orders.list == NULL && !OrderList::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
 	if (v->type == VEH_SHIP && IsHumanCompany(v->owner) && _settings_game.pf.pathfinder_for_ships != VPF_NPF) {
 		/* Make sure the new destination is not too far away from the previous */
@@ -504,7 +655,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 		/* Find the last goto station or depot order before the insert location.
 		 * If the order is to be inserted at the beginning of the order list this
 		 * finds the last order in the list. */
-		for (const Order *o = v->orders; o != NULL; o = o->next) {
+		const Order *o;
+		FOR_VEHICLE_ORDERS(v, o) {
 			if (o->IsType(OT_GOTO_STATION) || o->IsType(OT_GOTO_DEPOT)) prev = o;
 			if (++n == sel_ord && prev != NULL) break;
 		}
@@ -521,42 +673,16 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 		new_o->AssignOrder(new_order);
 
 		/* Create new order and link in list */
-		if (v->orders == NULL) {
-			v->orders = new_o;
+		if (v->orders.list == NULL) {
+			v->orders.list = new OrderList(new_o, v);
 		} else {
-			/* Try to get the previous item (we are inserting above the
-			    selected) */
-			Order *order = GetVehicleOrder(v, sel_ord - 1);
-
-			if (order == NULL && GetVehicleOrder(v, sel_ord) != NULL) {
-				/* There is no previous item, so we are altering v->orders itself
-				    But because the orders can be shared, we copy the info over
-				    the v->orders, so we don't have to change the pointers of
-				    all vehicles */
-				SwapOrders(v->orders, new_o);
-				/* Now update the next pointers */
-				v->orders->next = new_o;
-			} else if (order == NULL) {
-				/* 'sel' is a non-existing order, add him to the end */
-				order = GetLastVehicleOrder(v);
-				order->next = new_o;
-			} else {
-				/* Put the new order in between */
-				new_o->next = order->next;
-				order->next = new_o;
-			}
+			v->orders.list->InsertOrderAt(new_o, sel_ord);
 		}
 
 		Vehicle *u = v->FirstShared();
 		DeleteOrderWarnings(u);
 		for (; u != NULL; u = u->NextShared()) {
-			/* Increase amount of orders */
-			u->num_orders++;
-
-			/* If the orderlist was empty, assign it */
-			if (u->orders == NULL) u->orders = v->orders;
-
-			assert(v->orders == u->orders);
+			assert(v->orders.list == u->orders.list);
 
 			/* If there is added an order before the current one, we need
 			to update the selected order */
@@ -634,37 +760,15 @@ CommandCost CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 	if (order == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (GetVehicleOrder(v, sel_ord - 1) == NULL) {
-			if (GetVehicleOrder(v, sel_ord + 1) != NULL) {
-				/* First item, but not the last, so we need to alter v->orders
-				    Because we can have shared order, we copy the data
-				    from the next item over the deleted */
-				order = GetVehicleOrder(v, sel_ord + 1);
-				SwapOrders(v->orders, order);
-			} else {
-				/* Last item, so clean the list */
-				v->orders = NULL;
-			}
-		} else {
-			GetVehicleOrder(v, sel_ord - 1)->next = order->next;
-		}
-
-		/* Give the item free */
-		delete order;
+		v->orders.list->DeleteOrderAt(sel_ord);
 
 		Vehicle *u = v->FirstShared();
 		DeleteOrderWarnings(u);
 		for (; u != NULL; u = u->NextShared()) {
-			u->num_orders--;
-
 			if (sel_ord < u->cur_order_index)
 				u->cur_order_index--;
 
-			/* If we removed the last order, make sure the shared vehicles
-			 * also set their orders to NULL */
-			if (v->orders == NULL) u->orders = NULL;
-
-			assert(v->orders == u->orders);
+			assert(v->orders.list == u->orders.list);
 
 			/* NON-stop flag is misused to see if a train is in a station that is
 			 * on his order list or not */
@@ -764,30 +868,7 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 	if (moving_one == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		/* Take the moving order out of the pointer-chain */
-		Order *one_before = GetVehicleOrder(v, moving_order - 1);
-		Order *one_past = GetVehicleOrder(v, moving_order + 1);
-
-		if (one_before == NULL) {
-			/* First order edit */
-			v->orders = moving_one->next;
-		} else {
-			one_before->next = moving_one->next;
-		}
-
-		/* Insert the moving_order again in the pointer-chain */
-		one_before = GetVehicleOrder(v, target_order - 1);
-		one_past = GetVehicleOrder(v, target_order);
-
-		moving_one->next = one_past;
-
-		if (one_before == NULL) {
-			/* first order edit */
-			SwapOrders(v->orders, moving_one);
-			v->orders->next = moving_one;
-		} else {
-			one_before->next = moving_one;
-		}
+		v->orders.list->MoveOrder(moving_order, target_order);
 
 		/* Update shared list */
 		Vehicle *u = v->FirstShared();
@@ -795,9 +876,6 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 		DeleteOrderWarnings(u);
 
 		for (; u != NULL; u = u->NextShared()) {
-			/* Update the first order */
-			if (u->orders != v->orders) u->orders = v->orders;
-
 			/* Update the current order */
 			if (u->cur_order_index == moving_order) {
 				u->cur_order_index = target_order;
@@ -807,7 +885,7 @@ CommandCost CmdMoveOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 				u->cur_order_index++;
 			}
 
-			assert(v->orders == u->orders);
+			assert(v->orders.list == u->orders.list);
 			/* Update any possible open window of the vehicle */
 			InvalidateVehicleOrder(u, moving_order | (target_order << 8));
 		}
@@ -1101,8 +1179,7 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 				/* If the destination vehicle had a OrderList, destroy it */
 				DeleteVehicleOrders(dst);
 
-				dst->orders = src->orders;
-				dst->num_orders = src->GetNumOrders();
+				dst->orders.list = src->orders.list;
 
 				/* Link this vehicle in the shared-list */
 				dst->AddToShared(src);
@@ -1148,25 +1225,30 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 
 			/* make sure there are orders available */
 			delta = dst->IsOrderListShared() ? src->GetNumOrders() + 1 : src->GetNumOrders() - dst->GetNumOrders();
-			if (!Order::CanAllocateItem(delta)) {
+			if (!Order::CanAllocateItem(delta) ||
+					((dst->orders.list == NULL || dst->IsOrderListShared()) && !OrderList::CanAllocateItem())) {
 				return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 			}
 
 			if (flags & DC_EXEC) {
 				const Order *order;
+				Order *first = NULL;
 				Order **order_dst;
 
-				/* If the destination vehicle had a OrderList, destroy it */
-				DeleteVehicleOrders(dst);
+				/* If the destination vehicle had an order list, destroy the chain but keep the OrderList */
+				DeleteVehicleOrders(dst, true);
 
-				order_dst = &dst->orders;
+				order_dst = &first;
 				FOR_VEHICLE_ORDERS(src, order) {
 					*order_dst = new Order();
 					(*order_dst)->AssignOrder(*order);
 					order_dst = &(*order_dst)->next;
 				}
-
-				dst->num_orders = src->GetNumOrders();
+				if (dst->orders.list == NULL) dst->orders.list = new OrderList(first, dst);
+				else {
+					assert(dst->orders.list->GetFirstOrder() == NULL);
+					new (dst->orders.list) OrderList(first, dst);
+				}
 
 				InvalidateVehicleOrder(dst, -1);
 
@@ -1435,13 +1517,18 @@ void CheckOrders(const Vehicle* v)
 		if (v->GetNumOrders() > 1) {
 			const Order* last = GetLastVehicleOrder(v);
 
-			if (v->orders->Equals(*last)) {
+			if (v->orders.list->GetFirstOrder()->Equals(*last)) {
 				problem_type = 2;
 			}
 		}
 
 		/* Do we only have 1 station in our order list? */
 		if (n_st < 2 && problem_type == -1) problem_type = 0;
+
+		assert(v->orders.list); // otherwise the check for v->FirstShared() != v would have been true
+#ifndef NDEBUG
+		v->orders.list->DebugCheckSanity();
+#endif
 
 		/* We don't have a problem */
 		if (problem_type < 0) return;
@@ -1530,20 +1617,19 @@ bool VehicleHasDepotOrders(const Vehicle *v)
  * Delete all orders from a vehicle
  *
  */
-void DeleteVehicleOrders(Vehicle *v)
+void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist)
 {
 	DeleteOrderWarnings(v);
 
 	if (v->IsOrderListShared()) {
 		/* Remove ourself from the shared order list. */
 		v->RemoveFromShared();
-	} else if (v->orders != NULL) {
+		v->orders.list = NULL;
+	} else if (v->orders.list != NULL) {
 		/* Remove the orders */
-		v->orders->FreeChain();
+		v->orders.list->FreeChain(keep_orderlist);
+		if (!keep_orderlist) v->orders.list = NULL;
 	}
-
-	v->orders = NULL;
-	v->num_orders = 0;
 }
 
 Date GetServiceIntervalClamped(uint index)
@@ -1807,6 +1893,9 @@ void InitializeOrders()
 	_Order_pool.CleanPool();
 	_Order_pool.AddBlockToPool();
 
+	_OrderList_pool.CleanPool();
+	_OrderList_pool.AddBlockToPool();
+
 	_backup_orders_tile = 0;
 }
 
@@ -1892,6 +1981,35 @@ static void Load_ORDR()
 	}
 }
 
+const SaveLoad *GetOrderListDescription() {
+static const SaveLoad _orderlist_desc[] = {
+	SLE_REF(OrderList, first,              REF_ORDER),
+	SLE_END()
+};
+	return _orderlist_desc;
+}
+
+static void Save_ORDL()
+{
+	OrderList *list;
+
+	FOR_ALL_ORDER_LISTS(list) {
+		SlSetArrayIndex(list->index);
+		SlObject(list, GetOrderListDescription());
+	}
+}
+
+static void Load_ORDL()
+{
+	int index;
+
+	while ((index = SlIterateArray()) != -1) {
+		OrderList *list = new (index) OrderList();
+		SlObject(list, GetOrderListDescription());
+	}
+}
+
 extern const ChunkHandler _order_chunk_handlers[] = {
-	{ 'ORDR', Save_ORDR, Load_ORDR, CH_ARRAY | CH_LAST},
+	{ 'ORDR', Save_ORDR, Load_ORDR, CH_ARRAY},
+	{ 'ORDL', Save_ORDL, Load_ORDL, CH_ARRAY | CH_LAST},
 };

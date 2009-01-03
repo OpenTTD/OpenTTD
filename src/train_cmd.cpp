@@ -1274,8 +1274,7 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 				if (!IsFrontEngine(src)) {
 					/* setting the type to 0 also involves setting up the orders field. */
 					SetFrontEngine(src);
-					assert(src->orders == NULL);
-					src->num_orders = 0;
+					assert(src->orders.list == NULL);
 
 					/* Decrease the engines number of the src engine_type */
 					if (!IsDefaultGroupID(src->group_id) && IsValidGroupID(src->group_id)) {
@@ -1453,8 +1452,7 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 							first->group_id        = DEFAULT_GROUP;
 
 							/* Copy orders (by sharing) */
-							new_f->orders          = first->orders;
-							new_f->num_orders      = first->GetNumOrders();
+							new_f->orders.list     = first->orders.list;
 							new_f->AddToShared(first);
 							DeleteVehicleOrders(first);
 

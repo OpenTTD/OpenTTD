@@ -34,7 +34,7 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination);
 void InvalidateVehicleOrder(const Vehicle *v, int data);
 bool VehicleHasDepotOrders(const Vehicle *v);
 void CheckOrders(const Vehicle*);
-void DeleteVehicleOrders(Vehicle *v);
+void DeleteVehicleOrders(Vehicle *v, bool keep_orderlist = false);
 bool ProcessOrders(Vehicle *v);
 bool UpdateOrderDest(Vehicle *v, const Order *order, int conditional_depth = 0);
 VehicleOrderID ProcessConditionalOrder(const Order *order, const Vehicle *v);

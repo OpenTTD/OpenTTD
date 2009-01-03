@@ -66,6 +66,7 @@ enum SLRefType {
 	REF_ROADSTOPS     = 5,
 	REF_ENGINE_RENEWS = 6,
 	REF_CARGO_PACKET  = 7,
+	REF_ORDERLIST     = 8,
 };
 
 #define SL_MAX_VERSION 255

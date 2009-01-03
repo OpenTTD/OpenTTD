@@ -2386,7 +2386,10 @@ bool AfterLoadGame()
 
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
-			if (v->orders != NULL && !v->orders->IsValid()) v->orders = NULL;
+			if (v->orders.list != NULL && v->orders.list->GetFirstOrder() != NULL && !v->orders.list->GetFirstOrder()->IsValid()) {
+				v->orders.list->FreeChain();
+				v->orders.list = NULL;
+			}
 
 			v->current_order.ConvertFromOldSavegame();
 			if (v->type == VEH_ROAD && v->IsPrimaryVehicle() && v->FirstShared() == v) {

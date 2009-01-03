@@ -59,6 +59,8 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
+#include <map>
+
 #define INVALID_COORD (0x7fffffff)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
 
@@ -221,7 +223,7 @@ void VehiclePositionChanged(Vehicle *v)
 }
 
 /** Called after load to update coordinates */
-void AfterLoadVehicles(bool clear_te_id)
+void AfterLoadVehicles(bool part_of_load)
 {
 	Vehicle *v;
 
@@ -232,7 +234,7 @@ void AfterLoadVehicles(bool clear_te_id)
 
 		v->UpdateDeltaXY(v->direction);
 
-		if (clear_te_id) v->fill_percent_te_id = INVALID_TE_ID;
+		if (part_of_load) v->fill_percent_te_id = INVALID_TE_ID;
 		v->first = NULL;
 		if (v->type == VEH_TRAIN) v->u.rail.first_engine = INVALID_ENGINE;
 		if (v->type == VEH_ROAD)  v->u.road.first_engine = INVALID_ENGINE;
@@ -240,18 +242,44 @@ void AfterLoadVehicles(bool clear_te_id)
 		v->cargo.InvalidateCache();
 	}
 
+	/* AfterLoadVehicles may also be called in case of NewGRF reload, in this
+	 * case we may not convert orders again. */
+	if (part_of_load) {
+		/* Create shared vehicle chain for very old games (pre 5,2) and create
+		 * OrderList from shared vehicle chains. For this to work correctly, the
+		 * following conditions must be fulfilled:
+		 * a) both next_shared and previous_shared are not set for pre 5,2 games
+		 * b) both next_shared and previous_shared are set for later games
+		 */
+		std::map<Order*, OrderList*> mapping;
+
+		FOR_ALL_VEHICLES(v) {
+			if (v->orders.old != NULL) {
+				if (CheckSavegameVersion(105)) { // Pre-105 didn't save an OrderList
+					if (mapping[v->orders.old] == NULL) {
+						/* This adds the whole shared vehicle chain for case b */
+						v->orders.list = mapping[v->orders.old] = new OrderList(v->orders.old, v);
+					} else {
+						v->orders.list = mapping[v->orders.old];
+						/* For old games (case a) we must create the shared vehicle chain */
+						if (CheckSavegameVersionOldStyle(5, 2)) {
+							v->AddToShared(v->orders.list->GetFirstSharedVehicle());
+						}
+					}
+				} else { // OrderList was saved as such, only recalculate not saved values
+					if (v->PreviousShared() == NULL) {
+						new (v->orders.list) OrderList(v->orders.list->GetFirstOrder(), v);
+					}
+				}
+			}
+		}
+	}
+
 	FOR_ALL_VEHICLES(v) {
 		/* Fill the first pointers */
 		if (v->Previous() == NULL) {
 			for (Vehicle *u = v; u != NULL; u = u->Next()) {
 				u->first = v;
-			}
-
-			/* Shared orders are only valid for first vehicles in chains. */
-			if (v->previous_shared == NULL) {
-				for (Vehicle *u = v; u != NULL; u = u->NextShared()) {
-					u->first_shared = v;
-				}
 			}
 		}
 	}
@@ -315,7 +343,6 @@ Vehicle::Vehicle()
 	this->group_id           = DEFAULT_GROUP;
 	this->fill_percent_te_id = INVALID_TE_ID;
 	this->first              = this;
-	this->first_shared       = this;
 	this->colormap           = PAL_NONE;
 }
 
@@ -2168,7 +2195,8 @@ static const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVAR(Vehicle, running_ticks,        SLE_UINT8,                   88, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, cur_order_index,      SLE_UINT8),
-	    SLE_VAR(Vehicle, num_orders,           SLE_UINT8),
+	/* num_orders is now part of OrderList and is not saved but counted */
+	SLE_CONDNULL(1,                                                          0, 104),
 
 	/* This next line is for version 4 and prior compatibility.. it temporarily reads
 	    type and flags (which were both 4 bits) into type. Later on this is
@@ -2189,7 +2217,8 @@ static const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, wait_time),      SLE_UINT16, 67, SL_MAX_VERSION),
 	SLE_CONDVARX(cpp_offsetof(Vehicle, current_order) + cpp_offsetof(Order, travel_time),    SLE_UINT16, 67, SL_MAX_VERSION),
 
-	    SLE_REF(Vehicle, orders,               REF_ORDER),
+	SLE_CONDREF(Vehicle, orders,               REF_ORDER,                   0, 104),
+	SLE_CONDREF(Vehicle, orders,               REF_ORDERLIST,             105, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Vehicle, age,                  SLE_FILE_U16 | SLE_VAR_I32,  0, 30),
 	SLE_CONDVAR(Vehicle, age,                  SLE_INT32,                  31, SL_MAX_VERSION),
@@ -2409,7 +2438,6 @@ void Load_VEHS()
 	_vehicles_to_autoreplace.Reset();
 
 	int index;
-	Vehicle *v;
 
 	_cargo_count = 0;
 
@@ -2455,22 +2483,6 @@ void Load_VEHS()
 
 		/* Advanced vehicle lists got added */
 		if (CheckSavegameVersion(60)) v->group_id = DEFAULT_GROUP;
-	}
-
-	/* Check for shared order-lists (we now use pointers for that) */
-	if (CheckSavegameVersionOldStyle(5, 2)) {
-		FOR_ALL_VEHICLES(v) {
-			Vehicle *u;
-
-			FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
-				/* If a vehicle has the same orders, add the link to eachother
-				 *  in both vehicles */
-				if (v->orders == u->orders) {
-					u->AddToShared(v);
-					break;
-				}
-			}
-		}
 	}
 }
 
@@ -2651,47 +2663,51 @@ void Vehicle::SetNext(Vehicle *next)
 
 void Vehicle::AddToShared(Vehicle *shared_chain)
 {
-	assert(!this->IsOrderListShared());
+	assert(this->previous_shared == NULL && this->next_shared == NULL);
+
+	if (!shared_chain->orders.list) {
+		assert(shared_chain->previous_shared == NULL);
+		assert(shared_chain->next_shared == NULL);
+		this->orders.list = shared_chain->orders.list = new OrderList(NULL, shared_chain);
+	}
 
 	this->next_shared     = shared_chain->next_shared;
 	this->previous_shared = shared_chain;
-	this->first_shared    = shared_chain->first_shared;
 
 	shared_chain->next_shared = this;
 
 	if (this->next_shared != NULL) this->next_shared->previous_shared = this;
+
+	shared_chain->orders.list->AddVehicle(this);
 }
 
 void Vehicle::RemoveFromShared()
 {
-	Vehicle *new_first;
+	/* Remember if we were first and the old window number before RemoveVehicle()
+	 * as this changes first if needed. */
+	bool were_first = (this->FirstShared() == this);
+	uint32 old_window_number = (this->FirstShared()->index << 16) | (this->type << 11) | VLW_SHARED_ORDERS | this->owner;
 
-	if (this->FirstShared() == this) {
-		/* We are the first shared one, so update all the first pointers of our next shared ones. */
-		new_first = this->NextShared();
-		for (Vehicle *u = new_first; u != NULL; u = u->NextShared()) {
-			u->first_shared = new_first;
-		}
-	} else {
+	this->orders.list->RemoveVehicle(this);
+
+	if (!were_first) {
 		/* We are not the first shared one, so only relink our previous one. */
-		new_first = this->FirstShared();
 		this->previous_shared->next_shared = this->NextShared();
 	}
 
 	if (this->next_shared != NULL) this->next_shared->previous_shared = this->previous_shared;
 
-	uint32 old_window_number = (this->FirstShared()->index << 16) | (this->type << 11) | VLW_SHARED_ORDERS | this->owner;
 
-	if (new_first->NextShared() == NULL) {
+	if (this->orders.list->GetNumVehicles() == 1) {
 		/* When there is only one vehicle, remove the shared order list window. */
 		DeleteWindowById(GetWindowClassForVehicleType(this->type), old_window_number);
-		InvalidateVehicleOrder(new_first, 0);
-	} else if (this->FirstShared() == this) {
-		/* If we were the first one, update to the new first one. */
-		InvalidateWindowData(GetWindowClassForVehicleType(this->type), old_window_number, (new_first->index << 16) | (1 << 15));
+		InvalidateVehicleOrder(this->FirstShared(), 0);
+	} else if (were_first) {
+		/* If we were the first one, update to the new first one.
+		 * Note: FirstShared() is already the new first */
+		InvalidateWindowData(GetWindowClassForVehicleType(this->type), old_window_number, (this->FirstShared()->index << 16) | (1 << 15));
 	}
 
-	this->first_shared    = this;
 	this->next_shared     = NULL;
 	this->previous_shared = NULL;
 }

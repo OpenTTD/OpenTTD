@@ -194,7 +194,7 @@ DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 /* Some declarations of functions, so we can make them friendly */
 struct SaveLoad;
 extern const SaveLoad *GetVehicleDescription(VehicleType vt);
-extern void AfterLoadVehicles(bool clear_te_id);
+extern void AfterLoadVehicles(bool part_of_load);
 struct LoadgameState;
 extern bool LoadOldVehicle(LoadgameState *ls, int num);
 
@@ -206,10 +206,9 @@ private:
 
 	Vehicle *next_shared;     ///< pointer to the next vehicle that shares the order
 	Vehicle *previous_shared; ///< NOSAVE: pointer to the previous vehicle in the shared order chain
-	Vehicle *first_shared;    ///< NOSAVE: pointer to the first vehicle in the shared order chain
 public:
 	friend const SaveLoad *GetVehicleDescription(VehicleType vt); ///< So we can use private/protected variables in the saveload code
-	friend void AfterLoadVehicles(bool clear_te_id);              ///< So we can set the previous and first pointers while loading
+	friend void AfterLoadVehicles(bool part_of_load);              ///< So we can set the previous and first pointers while loading
 	friend bool LoadOldVehicle(LoadgameState *ls, int num);       ///< So we can set the proper next pointer while loading
 
 	char *name;              ///< Name of vehicle
@@ -302,10 +301,12 @@ public:
 
 	byte vehstatus;                 ///< Status
 	Order current_order;            ///< The current order (+ status, like: loading)
-	VehicleOrderID num_orders;      ///< How many orders there are in the list
 	VehicleOrderID cur_order_index; ///< The index to the current order
 
-	Order *orders;                  ///< Pointer to the first order for this vehicle
+	union {
+		OrderList *list;              ///< Pointer to the order list for this vehicle
+		Order     *old;               ///< Only used during conversion of old save games
+	} orders;
 
 	byte vehicle_flags;             ///< Used for gradual loading and other miscellaneous things (@see VehicleFlags enum)
 	uint16 load_unload_time_rem;
@@ -482,6 +483,12 @@ public:
 
 
 	/**
+	 * Get the first order of the vehicles order list.
+	 * @return first order of order list.
+	 */
+	inline Order *GetFirstOrder() const { return (this->orders.list == NULL) ? NULL : this->orders.list->GetFirstOrder(); }
+
+	/**
 	 * Adds this vehicle to a shared vehicle chain.
 	 * @param shared_chain a vehicle of the chain with shared vehicles.
 	 * @pre !this->IsOrderListShared()
@@ -494,29 +501,34 @@ public:
 	void RemoveFromShared();
 
 	/**
-	 * Get the next vehicle of this vehicle.
-	 * @note articulated parts are also counted as vehicles.
-	 * @return the next vehicle or NULL when there isn't a next vehicle.
+	 * Get the next vehicle of the shared vehicle chain.
+	 * @return the next shared vehicle or NULL when there isn't a next vehicle.
 	 */
 	inline Vehicle *NextShared() const { return this->next_shared; }
+
+	/**
+	 * Get the previous vehicle of the shared vehicle chain
+	 * @return the previous shared vehicle or NULL when there isn't a previous vehicle.
+	 */
+	inline Vehicle *PreviousShared() const { return this->previous_shared; }
 
 	/**
 	 * Get the first vehicle of this vehicle chain.
 	 * @return the first vehicle of the chain.
 	 */
-	inline Vehicle *FirstShared() const { return this->first_shared; }
+	inline Vehicle *FirstShared() const { return (this->orders.list == NULL) ? NULL : this->orders.list->GetFirstSharedVehicle(); }
 
 	/**
 	 * Check if we share our orders with another vehicle.
 	 * @return true if there are other vehicles sharing the same order
 	 */
-	inline bool IsOrderListShared() const { return this->previous_shared != NULL || this->next_shared != NULL; };
+	inline bool IsOrderListShared() const { return this->orders.list != NULL && this->orders.list->IsShared(); }
 
-  /**
+	/**
 	 * Get the number of orders this vehicle has.
 	 * @return the number of orders this vehicle has.
 	 */
-	inline VehicleOrderID GetNumOrders() const { return this->num_orders; }
+	inline VehicleOrderID GetNumOrders() const { return (this->orders.list == NULL) ? 0 : this->orders.list->GetNumOrders(); }
 
 	/**
 	 * Copy certain configurations and statistics of a vehicle after successful autoreplace/renew
@@ -676,34 +688,14 @@ struct FreeUnitIDGenerator {
 };
 
 /* Returns order 'index' of a vehicle or NULL when it doesn't exists */
-static inline Order *GetVehicleOrder(const Vehicle *v, int index)
-{
-	Order *order = v->orders;
-
-	if (index < 0) return NULL;
-
-	while (order != NULL && index-- > 0)
-		order = order->next;
-
-	return order;
-}
+static inline Order *GetVehicleOrder(const Vehicle *v, int index) { return (v->orders.list == NULL) ? NULL : v->orders.list->GetOrderAt(index); }
 
 /**
  * Returns the last order of a vehicle, or NULL if it doesn't exists
  * @param v Vehicle to query
  * @return last order of a vehicle, if available
  */
-static inline Order *GetLastVehicleOrder(const Vehicle *v)
-{
-	Order *order = v->orders;
-
-	if (order == NULL) return NULL;
-
-	while (order->next != NULL)
-		order = order->next;
-
-	return order;
-}
+static inline Order *GetLastVehicleOrder(const Vehicle *v) { return (v->orders.list == NULL) ? NULL : v->orders.list->GetLastOrder(); }
 
 /**
  * Returns the Trackdir on which the vehicle is currently located.
