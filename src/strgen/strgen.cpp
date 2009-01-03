@@ -479,6 +479,7 @@ static const CmdStruct _cmd_structs[] = {
 	{"DATE_TINY",  EmitSingleChar, SCC_DATE_TINY, 1, 0},
 	{"DATE_SHORT", EmitSingleChar, SCC_DATE_SHORT, 1, 0},
 	{"DATE_LONG",  EmitSingleChar, SCC_DATE_LONG, 1, 0},
+	{"DATE_ISO",   EmitSingleChar, SCC_DATE_ISO, 1, 0},
 
 	{"SKIP", EmitSingleChar, SCC_SKIP, 1, 0},
 

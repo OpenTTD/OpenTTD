@@ -284,7 +284,7 @@ static char *FormatMonthAndYear(char *buff, Date date, const char *last)
 	return FormatString(buff, GetStringPtr(STR_DATE_SHORT), args, 0, last);
 }
 
-static char *FormatTinyDate(char *buff, Date date, const char *last)
+static char *FormatTinyOrISODate(char *buff, Date date, StringID str, const char *last)
 {
 	YearMonthDay ymd;
 	ConvertDateToYMD(date, &ymd);
@@ -296,7 +296,7 @@ static char *FormatTinyDate(char *buff, Date date, const char *last)
 	snprintf(month, lengthof(month), "%02i", ymd.month + 1);
 
 	int64 args[3] = { (int64)(size_t)day, (int64)(size_t)month, ymd.year };
-	return FormatString(buff, GetStringPtr(STR_DATE_TINY), args, 0, last);
+	return FormatString(buff, GetStringPtr(str), args, 0, last);
 }
 
 static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, Money number, bool compact, const char *last)
@@ -714,7 +714,12 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			}
 
 			case SCC_DATE_TINY: { // {DATE_TINY}
-				buff = FormatTinyDate(buff, GetInt32(&argv), last);
+				buff = FormatTinyOrISODate(buff, GetInt32(&argv), STR_DATE_TINY, last);
+				break;
+			}
+
+			case SCC_DATE_ISO: { // {DATE_ISO}
+				buff = FormatTinyOrISODate(buff, GetInt32(&argv), STR_DATE_ISO, last);
 				break;
 			}
 

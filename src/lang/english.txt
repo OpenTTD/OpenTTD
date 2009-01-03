@@ -3504,6 +3504,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {N
 STR_DATE_TINY                                                   :{RAW_STRING}-{RAW_STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:RAW_STRING}-{0:RAW_STRING}
 
 ########
 
