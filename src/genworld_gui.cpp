@@ -373,10 +373,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				this->SetDirty();
 				break;
 
-			case GLAND_RANDOM_EDITBOX: // edit box for random seed
-				ShowOnScreenKeyboard(this, GLAND_RANDOM_EDITBOX, 0, 0);
-				break;
-
 			case GLAND_GENERATE_BUTTON: // Generate
 				_settings_game = _settings_newgame;
 

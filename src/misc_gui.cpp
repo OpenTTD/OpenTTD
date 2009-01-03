@@ -1061,6 +1061,11 @@ void QueryStringBaseWindow::DrawEditBox(int wid)
 	this->QueryString::DrawEditBox(this, wid);
 }
 
+void QueryStringBaseWindow::OnOpenOSKWindow(int wid)
+{
+	ShowOnScreenKeyboard(this, wid, 0, 0);
+}
+
 enum QueryStringWidgets {
 	QUERY_STR_WIDGET_TEXT = 3,
 	QUERY_STR_WIDGET_DEFAULT,
@@ -1103,10 +1108,6 @@ struct QueryStringWindow : public QueryStringBaseWindow
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case QUERY_STR_WIDGET_TEXT:
-				ShowOnScreenKeyboard(this, QUERY_STR_WIDGET_TEXT, QUERY_STR_WIDGET_CANCEL, QUERY_STR_WIDGET_OK);
-				break;
-
 			case QUERY_STR_WIDGET_DEFAULT:
 				this->text.buf[0] = '\0';
 				/* Fallthrough */
@@ -1138,6 +1139,11 @@ struct QueryStringWindow : public QueryStringBaseWindow
 			case HEBR_CANCEL: delete this; break; // close window, abandon changes
 		}
 		return state;
+	}
+
+	virtual void OnOpenOSKWindow(int wid)
+	{
+		ShowOnScreenKeyboard(this, wid, QUERY_STR_WIDGET_CANCEL, QUERY_STR_WIDGET_OK);
 	}
 
 	~QueryStringWindow()
@@ -1593,10 +1599,6 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 				}
 				break;
 			}
-
-			case 10: // edit box
-				ShowOnScreenKeyboard(this, widget, 0, 0);
-				break;
 
 			case 11: case 12: // Delete, Save game
 				break;

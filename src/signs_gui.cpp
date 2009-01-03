@@ -278,10 +278,6 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 				break;
 			}
 
-			case QUERY_EDIT_SIGN_WIDGET_TEXT:
-				ShowOnScreenKeyboard(this, widget, QUERY_EDIT_SIGN_WIDGET_CANCEL, QUERY_EDIT_SIGN_WIDGET_OK);
-				break;
-
 			case QUERY_EDIT_SIGN_WIDGET_DELETE:
 				/* Only need to set the buffer to null, the rest is handled as the OK button */
 				RenameSign(this->cur_sign, "");
@@ -318,6 +314,11 @@ struct SignWindow : QueryStringBaseWindow, SignList {
 	virtual void OnMouseLoop()
 	{
 		this->HandleEditBox(QUERY_EDIT_SIGN_WIDGET_TEXT);
+	}
+
+	virtual void OnOpenOSKWindow(int wid)
+	{
+		ShowOnScreenKeyboard(this, wid, QUERY_EDIT_SIGN_WIDGET_CANCEL, QUERY_EDIT_SIGN_WIDGET_OK);
 	}
 };
 

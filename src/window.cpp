@@ -24,6 +24,7 @@
 #include "window_func.h"
 #include "tilehighlight_func.h"
 #include "network/network.h"
+#include "querystring_gui.h"
 
 #include "table/sprites.h"
 
@@ -184,6 +185,13 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {
 			ScrollbarClickHandler(w, wi, x, y);
+		} else if (wi->type == WWT_EDITBOX)	{
+			/* Open the OSK window if clicked on an edit box */
+			QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow*>(w);
+			if (qs != NULL) {
+				const int widget_index = wi - w->widget;
+				qs->OnOpenOSKWindow(widget_index);
+			}
 		}
 
 		if (w->desc_flags & WDF_STD_BTN) {

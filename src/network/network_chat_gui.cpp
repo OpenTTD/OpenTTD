@@ -448,10 +448,6 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case 2:
-				ShowOnScreenKeyboard(this, 2, 0, 3);
-				break;
-
 			case 3: /* Send */
 				SendChat(this->text.buf, this->dtype, this->dest);
 			/* FALLTHROUGH */
@@ -484,6 +480,11 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			}
 		}
 		return state;
+	}
+
+	virtual void OnOpenOSKWindow(int wid)
+	{
+		ShowOnScreenKeyboard(this, wid, 0, 3);
 	}
 };
 

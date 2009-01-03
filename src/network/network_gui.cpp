@@ -473,10 +473,6 @@ public:
 	{
 		this->field = widget;
 		switch (widget) {
-			case NGWW_CLIENT:
-				ShowOnScreenKeyboard(this, NGWW_CLIENT, 0, 0);
-				break;
-
 			case NGWW_CANCEL: // Cancel button
 				DeleteWindowById(WC_NETWORK_WINDOW, 0);
 				break;
@@ -915,10 +911,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 			case NSSW_CLOSE:  // Close 'X'
 			case NSSW_CANCEL: // Cancel button
 				ShowNetworkGameWindow();
-				break;
-
-			case NSSW_GAMENAME:
-				ShowOnScreenKeyboard(this, NSSW_GAMENAME, 0, 0);
 				break;
 
 			case NSSW_SETPWD: // Set password button
@@ -1907,10 +1899,6 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 				this->ToggleWidgetLoweredState(NCPWW_SAVE_AS_DEFAULT_PASSWORD);
 				this->SetDirty();
 				break;
-
-			case NCPWW_PASSWORD:
-				ShowOnScreenKeyboard(this, NCPWW_PASSWORD, NCPWW_CANCEL, NCPWW_OK);
-				break;
 		}
 	}
 
@@ -1934,6 +1922,11 @@ struct NetworkCompanyPasswordWindow : public QueryStringBaseWindow {
 				break;
 		}
 		return state;
+	}
+
+	virtual void OnOpenOSKWindow(int wid)
+	{
+		ShowOnScreenKeyboard(this, wid, NCPWW_CANCEL, NCPWW_OK);
 	}
 };
 
