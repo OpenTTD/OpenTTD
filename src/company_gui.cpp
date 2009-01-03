@@ -1180,10 +1180,10 @@ struct CompanyWindow : Window
 		this->SetWidgetHiddenState(CW_WIDGET_COLOR_SCHEME,   !local);
 		this->SetWidgetHiddenState(CW_WIDGET_PRESIDENT_NAME, !local);
 		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_NAME,   !local);
-		this->widget[CW_WIDGET_BUILD_VIEW_HQ].data = (local && c->location_of_HQ == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
-		if (local && c->location_of_HQ != 0) this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
-		this->SetWidgetDisabledState(CW_WIDGET_BUILD_VIEW_HQ, !local && c->location_of_HQ == 0);
-		this->SetWidgetHiddenState(CW_WIDGET_RELOCATE_HQ,      !local || c->location_of_HQ == 0);
+		this->widget[CW_WIDGET_BUILD_VIEW_HQ].data = (local && c->location_of_HQ == INVALID_TILE) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
+		if (local && c->location_of_HQ != INVALID_TILE) this->widget[CW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
+		this->SetWidgetDisabledState(CW_WIDGET_BUILD_VIEW_HQ, !local && c->location_of_HQ == INVALID_TILE);
+		this->SetWidgetHiddenState(CW_WIDGET_RELOCATE_HQ,      !local || c->location_of_HQ == INVALID_TILE);
 		this->SetWidgetHiddenState(CW_WIDGET_BUY_SHARE,        local);
 		this->SetWidgetHiddenState(CW_WIDGET_SELL_SHARE,       local);
 		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
@@ -1263,7 +1263,7 @@ struct CompanyWindow : Window
 
 			case CW_WIDGET_BUILD_VIEW_HQ: {
 				TileIndex tile = GetCompany((CompanyID)this->window_number)->location_of_HQ;
-				if (tile == 0) {
+				if (tile == INVALID_TILE) {
 					if ((byte)this->window_number != _local_company) return;
 					SetObjectToPlaceWnd(SPR_CURSOR_HQ, PAL_NONE, VHM_RECT, this);
 					SetTileSelectSize(2, 2);

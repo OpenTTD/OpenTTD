@@ -53,7 +53,7 @@ HighScore _highscore_table[5][5]; // 4 difficulty-settings (+ network); top 5
 
 DEFINE_OLD_POOL_GENERIC(Company, Company)
 
-Company::Company(uint16 name_1, bool is_ai) : name_1(name_1), is_ai(is_ai)
+Company::Company(uint16 name_1, bool is_ai) : name_1(name_1), location_of_HQ(INVALID_TILE), is_ai(is_ai)
 {
 	for (uint j = 0; j < 4; j++) this->share_owners[j] = COMPANY_SPECTATOR;
 }

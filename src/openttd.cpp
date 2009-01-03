@@ -1446,13 +1446,21 @@ bool AfterLoadGame()
 	/* From this point the old names array is cleared. */
 	ResetOldNames();
 
-	/* no station is determined by 'tile == INVALID_TILE' now (instead of '0') */
-	if (CheckSavegameVersion(105)) {
+	if (CheckSavegameVersion(106)) {
+		/* no station is determined by 'tile == INVALID_TILE' now (instead of '0') */
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->airport_tile == 0) st->airport_tile = INVALID_TILE;
 			if (st->dock_tile    == 0) st->dock_tile    = INVALID_TILE;
 			if (st->train_tile   == 0) st->train_tile   = INVALID_TILE;
+		}
+
+		/* the same applies to Company::location_of_HQ */
+		Company *c;
+		FOR_ALL_COMPANIES(c) {
+			if (c->location_of_HQ == 0 || (CheckSavegameVersion(4) && c->location_of_HQ == 0xFFFF)) {
+				c->location_of_HQ = INVALID_TILE;
+			}
 		}
 	}
 

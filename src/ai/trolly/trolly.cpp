@@ -106,7 +106,7 @@ static void AiNew_State_WakeUp(Company *c)
 {
 	assert(_companies_ainew[c->index].state == AI_STATE_WAKE_UP);
 	// First, check if we have a HQ
-	if (c->location_of_HQ == 0) {
+	if (c->location_of_HQ == INVALID_TILE) {
 		// We have no HQ yet, build one on a random place
 		// Random till we found a place for it!
 		// TODO: this should not be on a random place..

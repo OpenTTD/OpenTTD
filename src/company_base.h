@@ -56,7 +56,7 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 
 	uint32 cargo_types; ///< which cargo types were transported the last year
 
-	TileIndex location_of_HQ;
+	TileIndex location_of_HQ; ///< northern tile of HQ ; INVALID_TILE when there is none
 	TileIndex last_build_coordinate;
 
 	OwnerByte share_owners[4];

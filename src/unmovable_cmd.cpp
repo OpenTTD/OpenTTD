@@ -51,7 +51,7 @@ static CommandCost DestroyCompanyHQ(CompanyID cid, uint32 flags)
 		DoClearSquare(t + TileDiffXY(0, 1));
 		DoClearSquare(t + TileDiffXY(1, 0));
 		DoClearSquare(t + TileDiffXY(1, 1));
-		c->location_of_HQ = 0; // reset HQ position
+		c->location_of_HQ = INVALID_TILE; // reset HQ position
 		InvalidateWindow(WC_COMPANY, cid);
 	}
 
@@ -64,7 +64,7 @@ void UpdateCompanyHQ(Company *c, uint score)
 	byte val;
 	TileIndex tile = c->location_of_HQ;
 
-	if (tile == 0) return;
+	if (tile == INVALID_TILE) return;
 
 	(val = 0, score < 170) ||
 	(val++, score < 350) ||
@@ -96,7 +96,7 @@ CommandCost CmdBuildCompanyHQ(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	cost = CheckFlatLandBelow(tile, 2, 2, flags, 0, NULL);
 	if (CmdFailed(cost)) return cost;
 
-	if (c->location_of_HQ != 0) { // Moving HQ
+	if (c->location_of_HQ != INVALID_TILE) { // Moving HQ
 		cost.AddCost(DestroyCompanyHQ(_current_company, flags));
 	}
 

@@ -1015,13 +1015,11 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 	 * was always 893288 pounds. In the newer versions this is correct,
 	 * but correct for those oldies
 	 * Ps: this also means that if you had exact 893288 pounds, you will go back
-	 * to 10000.. this is a very VERY small chance ;) */
+	 * to 100000.. this is a very VERY small chance ;) */
 	if (c->money == 893288) c->money = c->current_loan = 100000;
 
 	_company_colours[num] = c->colour;
 	c->inaugurated_year -= ORIGINAL_BASE_YEAR;
-	if (c->location_of_HQ == 0xFFFF)
-		c->location_of_HQ = 0;
 
 	/* State 20 for AI companies is sell vehicle. Since the AI struct is not
 	 * really figured out as of now, _companies_ai[c->index].cur_veh; needed for 'sell vehicle'
