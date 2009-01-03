@@ -867,32 +867,28 @@ struct PatchesSelectionWindow : Window {
 	{
 		switch (widget) {
 			case PATCHSEL_OPTIONSPANEL: {
-				const PatchPage *page = &_patches_page[this->page];
-				const SettingDesc *sd;
-				void *var;
-				int32 value;
-				int x, y;
-				byte btn;
-
-				y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
+				int y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
 				if (y < 0) return;  // Clicked above first entry
 
-				x = pt.x - SETTINGTREE_LEFT_OFFSET;  // Shift x coordinate
+				int x = pt.x - SETTINGTREE_LEFT_OFFSET;  // Shift x coordinate
 				if (x < 0) return;  // Clicked left of the entry
 
-				btn = y / SETTING_HEIGHT;  // Compute which setting is selected
+				byte btn = y / SETTING_HEIGHT;  // Compute which setting is selected
 				if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
+
+				const PatchPage *page = &_patches_page[this->page];
+
 				if (btn >= page->num) return;  // Clicked below the last setting of the page
 
-				sd = page->entries[btn].setting;
+				const SettingDesc *sd = page->entries[btn].setting;
 
 				/* return if action is only active in network, or only settable by server */
 				if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
 				if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
 				if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
 
-				var = GetVariableAddress(patches_ptr, &sd->save);
-				value = (int32)ReadValue(var, sd->save.conv);
+				void *var = GetVariableAddress(patches_ptr, &sd->save);
+				int32 value = (int32)ReadValue(var, sd->save.conv);
 
 				/* clicked on the icon on the left side. Either scroller or bool on/off */
 				if (x < 21) {
