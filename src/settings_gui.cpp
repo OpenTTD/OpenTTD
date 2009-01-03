@@ -818,7 +818,7 @@ struct PatchesSelectionWindow : Window {
 
 		int x = SETTINGTREE_LEFT_OFFSET;
 		int y = SETTINGTREE_TOP_OFFSET;
-		for (uint i = vscroll.pos; i != page->num && i < vscroll.pos + vscroll.cap; i++) {
+		for (uint i = vscroll.pos; i != page->num && vscroll.pos + vscroll.cap - i > 0; i++) {
 			const SettingDesc *sd = page->entries[i].setting;
 			DrawPatch(patches_ptr, sd, x, y, this->click - (i * 2));
 			y += SETTING_HEIGHT;

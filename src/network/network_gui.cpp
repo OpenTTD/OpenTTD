@@ -629,7 +629,7 @@ public:
 				case WKC_PAGEDOWN:
 					/* scroll down a page */
 					if (this->server == NULL) return ES_HANDLED;
-					this->list_pos = (this->list_pos + this->vscroll.cap > this->servers.Length() - 1) ? this->servers.Length() - 1 : this->list_pos + this->vscroll.cap;
+					this->list_pos = min(this->list_pos + this->vscroll.cap, (int)this->servers.Length() - 1);
 					break;
 				case WKC_HOME:
 					/* jump to beginning */
