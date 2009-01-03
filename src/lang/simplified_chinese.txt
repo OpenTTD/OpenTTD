@@ -1993,7 +1993,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}保存�
 STR_4001_LOAD_GAME                                              :{WHITE}读取存档
 STR_4002_SAVE                                                   :{BLACK}保存
 STR_4003_DELETE                                                 :{BLACK}删除
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte(s) 可用
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}不能读取驱动器
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}保存游戏失败{}{STRING}

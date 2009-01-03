@@ -2080,7 +2080,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Zapisz g
 STR_4001_LOAD_GAME                                              :{WHITE}Wczytaj grę
 STR_4002_SAVE                                                   :{BLACK}Zapisz
 STR_4003_DELETE                                                 :{BLACK}Usuń
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB wolnego miejsca
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nie można odczytać napędu
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Nie można zapisać gry{}{STRING}

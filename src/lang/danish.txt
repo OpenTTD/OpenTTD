@@ -1993,7 +1993,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Gem spil
 STR_4001_LOAD_GAME                                              :{WHITE}Hent spil
 STR_4002_SAVE                                                   :{BLACK}Gem
 STR_4003_DELETE                                                 :{BLACK}Slet
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes fri
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikke læse drevet
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Fejl under gemning af spil{}{STRING}

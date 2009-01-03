@@ -1993,7 +1993,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Spara sp
 STR_4001_LOAD_GAME                                              :{WHITE}Ladda spel
 STR_4002_SAVE                                                   :{BLACK}Spara
 STR_4003_DELETE                                                 :{BLACK}Ta bort
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} ledigt
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan inte läsa från disk
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Sparandet av spelet misslyckades{}{STRING}

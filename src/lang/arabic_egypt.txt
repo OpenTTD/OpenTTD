@@ -2010,7 +2010,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}حفظ �
 STR_4001_LOAD_GAME                                              :{WHITE}فتح
 STR_4002_SAVE                                                   :{BLACK}حفظ
 STR_4003_DELETE                                                 :{BLACK}حذف
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA}   ميجا بايت متاحة
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}لا يمكن قرائة القرص
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}فشل حفظ اللعبة{}{STRING}

@@ -2075,7 +2075,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Játék 
 STR_4001_LOAD_GAME                                              :{WHITE}Játék betöltése
 STR_4002_SAVE                                                   :{BLACK}Ment
 STR_4003_DELETE                                                 :{BLACK}Töröl
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabájt szabad
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nem olvasható a meghajtó
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}A mentés nem sikerült{}{STRING}

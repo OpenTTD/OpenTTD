@@ -2009,7 +2009,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Simpan P
 STR_4001_LOAD_GAME                                              :{WHITE}Buka Permainan
 STR_4002_SAVE                                                   :{BLACK}Simpan
 STR_4003_DELETE                                                 :{BLACK}Hapus
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte bebas
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Tidak dapat membaca drive
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Penyimpanan Game gagal{}{STRING}

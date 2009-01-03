@@ -2036,7 +2036,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Shrani i
 STR_4001_LOAD_GAME                                              :{WHITE}Naloži igro
 STR_4002_SAVE                                                   :{BLACK}Shrani
 STR_4003_DELETE                                                 :{BLACK}Izbriši
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabajt{P "" a i ov} prosto
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemogoče branje pogona
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Shranjevanje igre ni uspelo{}{STRING}

@@ -2016,7 +2016,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Išsaugo
 STR_4001_LOAD_GAME                                              :{WHITE}Įkelti žaidimą
 STR_4002_SAVE                                                   :{BLACK}Išsaugoti
 STR_4003_DELETE                                                 :{BLACK}Šalinti
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mb laisva
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Negali pasiekti disko
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Zaidimo issaugoti nepavyko{}{STRING}

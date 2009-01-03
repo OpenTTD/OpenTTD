@@ -1957,7 +1957,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}ゲー�
 STR_4001_LOAD_GAME                                              :{WHITE}ゲームを開く
 STR_4002_SAVE                                                   :{BLACK}保存
 STR_4003_DELETE                                                 :{BLACK}削除
-STR_4004                                                        :{COMPANY}、{DATE_LONG}
+STR_4004                                                        :{COMPANY}、{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB 使用可能
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}ドライブが読み込めません
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}ゲームの保存に失敗しました{}{STRING}

@@ -1994,7 +1994,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Grabar P
 STR_4001_LOAD_GAME                                              :{WHITE}Cargar Partida
 STR_4002_SAVE                                                   :{BLACK}Grabar
 STR_4003_DELETE                                                 :{BLACK}Borrar
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} libre{P "" s}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}No se pode lee-la unidade
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Grabación da partida fallida{}{STRING}

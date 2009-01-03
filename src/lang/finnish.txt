@@ -2009,7 +2009,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Tallenna
 STR_4001_LOAD_GAME                                              :{WHITE}Lataa peli
 STR_4002_SAVE                                                   :{BLACK}Tallenna
 STR_4003_DELETE                                                 :{BLACK}Poista
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megatavu{P "" a} vapaana
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Asemaa ei voi lukea.
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Tallennus epäonnistui.{}{STRING}

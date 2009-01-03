@@ -2062,7 +2062,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Uložit 
 STR_4001_LOAD_GAME                                              :{WHITE}Otevřít hru
 STR_4002_SAVE                                                   :{BLACK}Uložit
 STR_4003_DELETE                                                 :{BLACK}Smazat
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB voln{P ý é ých}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemohu číst z jednotky
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Uložení hry selhalo{}{STRING}

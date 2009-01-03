@@ -1992,7 +1992,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Lagre sp
 STR_4001_LOAD_GAME                                              :{WHITE}Last inn spel
 STR_4002_SAVE                                                   :{BLACK}Lagre
 STR_4003_DELETE                                                 :{BLACK}Slett
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte ledig
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikkje lese frå disk
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spelet mislukkast{}{STRING}

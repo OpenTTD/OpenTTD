@@ -2134,7 +2134,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Збер
 STR_4001_LOAD_GAME                                              :{WHITE}Завантажити гру
 STR_4002_SAVE                                                   :{BLACK}Зберегти
 STR_4003_DELETE                                                 :{BLACK}Видалити
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" и ""}  вільно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Неможливо прочитати пристрій
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри{}{STRING}

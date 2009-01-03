@@ -1995,7 +1995,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Сохр
 STR_4001_LOAD_GAME                                              :{WHITE}Загрузить игру
 STR_4002_SAVE                                                   :{BLACK}Сохранить
 STR_4003_DELETE                                                 :{BLACK}Удалить
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Мб свободно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Не удалось прочитать диск
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Невозможно сохранить игру{}{STRING}

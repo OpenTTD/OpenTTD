@@ -1993,7 +1993,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Avesay A
 STR_4001_LOAD_GAME                                              :{WHITE}Oadlay Amegay
 STR_4002_SAVE                                                   :{BLACK}Avesay
 STR_4003_DELETE                                                 :{BLACK}Eleteday
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} egabyte{P "" s}may eefray
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unableway otay eadray ivedray
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Amegay Avesay Ailedfay{}{STRING}

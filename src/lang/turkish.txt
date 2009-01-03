@@ -2009,7 +2009,7 @@ STR_4000_SAVE_GAME                                              :{WHITE}Kaydet
 STR_4001_LOAD_GAME                                              :{WHITE}Yükle
 STR_4002_SAVE                                                   :{BLACK}Kaydet
 STR_4003_DELETE                                                 :{BLACK}Sil
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4004                                                        :{COMPANY}, {STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB bos
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Sürücü okunamıyor
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Oyun kaydedilemedi{}{STRING}
