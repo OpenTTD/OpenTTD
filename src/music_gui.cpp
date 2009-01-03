@@ -118,7 +118,7 @@ static void SelectSongToPlay()
 			_cur_playlist[j] = _playlists[msf.playlist][i];
 			j++;
 		}
-	} while (_playlists[msf.playlist][i++] != 0 && j < lengthof(_cur_playlist) - 1);
+	} while (_playlists[msf.playlist][++i] != 0 && j < lengthof(_cur_playlist) - 1);
 
 	/* Do not shuffle when on the intro-start window, as the song to play has to be the original TTD Theme*/
 	if (msf.shuffle && _game_mode != GM_MENU) {
