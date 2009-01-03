@@ -573,6 +573,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\highscore.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\highscore_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\ini.cpp"
 				>
 			</File>
@@ -1066,6 +1074,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\heightmap.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\highscore.h"
 				>
 			</File>
 			<File

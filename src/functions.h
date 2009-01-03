@@ -48,8 +48,6 @@ void MarkAllViewportsDirty(int left, int top, int right, int bottom);
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost);
 void ShowFeederIncomeAnimation(int x, int y, int z, Money cost);
 
-void ShowHighscoreTable(int difficulty, int8 rank);
-
 void AskExitGame();
 void AskExitToGameMenu();
 

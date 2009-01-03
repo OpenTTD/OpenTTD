@@ -60,6 +60,7 @@
 #include "functions.h"
 #include "elrail_func.h"
 #include "rev.h"
+#include "highscore.h"
 
 #include "newgrf.h"
 #include "newgrf_config.h"

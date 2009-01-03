@@ -32,6 +32,8 @@ genworld.cpp
 gfx.cpp
 gfxinit.cpp
 heightmap.cpp
+highscore.cpp
+highscore_gui.cpp
 ini.cpp
 landscape.cpp
 map.cpp
@@ -200,6 +202,7 @@ group_gui.h
 group_type.h
 gui.h
 heightmap.h
+highscore.h
 industry.h
 industry_type.h
 ini_type.h
