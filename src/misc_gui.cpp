@@ -1046,7 +1046,7 @@ void QueryString::DrawEditBox(Window *w, int wid)
 	_cur_dpi = old_dpi;
 }
 
-int QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state)
+HandleEditBoxResult QueryStringBaseWindow::HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state)
 {
 	return this->QueryString::HandleEditBoxKey(this, wid, key, keycode, state);
 }

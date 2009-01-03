@@ -66,7 +66,7 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 
 	void DrawEditBox(int wid);
 	void HandleEditBox(int wid);
-	int HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
+	HandleEditBoxResult HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
 	virtual void OnOpenOSKWindow(int wid);
 };
 
