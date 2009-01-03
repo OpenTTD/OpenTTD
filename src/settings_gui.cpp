@@ -849,7 +849,7 @@ struct PatchesSelectionWindow : Window {
 					SetDParam(1, value);
 				}
 			}
-			DrawString(30, y, (sdb->str) + disabled, TC_FROMSTRING);
+			DrawString(x + 25, y, (sdb->str) + disabled, TC_FROMSTRING);
 			y += SETTING_HEIGHT;
 		}
 	}
