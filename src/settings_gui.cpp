@@ -752,6 +752,9 @@ enum PatchesSelectionWidgets {
 };
 
 struct PatchesSelectionWindow : Window {
+	static const int SETTINGTREE_LEFT_OFFSET; ///< Position of left edge of patch values
+	static const int SETTINGTREE_TOP_OFFSET;  ///< Position of top edge of patch values
+
 	static GameSettings *patches_ptr;  ///< Pointer to the game settings being displayed and modified
 	static int patches_max;  ///< Maximal number of patches on a single page
 
@@ -761,6 +764,13 @@ struct PatchesSelectionWindow : Window {
 
 	PatchesSelectionWindow(const WindowDesc *desc) : Window(desc)
 	{
+		/* Check that the widget doesn't get moved without adapting the constant as well.
+		 *  - SETTINGTREE_LEFT_OFFSET should be 5 pixels to the right of the left edge of the panel
+		 *  - SETTINGTREE_TOP_OFFSET should be 5 pixels below the top edge of the panel
+		 */
+		assert(this->widget[PATCHSEL_OPTIONSPANEL].left + 5 == SETTINGTREE_LEFT_OFFSET);
+		assert(this->widget[PATCHSEL_OPTIONSPANEL].top + 5 == SETTINGTREE_TOP_OFFSET);
+
 		static bool first_time = true;
 
 		patches_ptr = (_game_mode == GM_MENU) ? &_settings_newgame : &_settings_game;
@@ -799,15 +809,14 @@ struct PatchesSelectionWindow : Window {
 
 	virtual void OnPaint()
 	{
-		int x, y;
 		const PatchPage *page = &_patches_page[this->page];
 		uint i;
 
 		/* Set up selected category */
 		this->DrawWidgets();
 
-		x = 5;
-		y = 47;
+		int x = SETTINGTREE_LEFT_OFFSET;
+		int y = SETTINGTREE_TOP_OFFSET;
 		for (i = 0; i != page->num; i++) {
 			const SettingDesc *sd = page->entries[i].setting;
 			const SettingDescBase *sdb = &sd->desc;
@@ -865,10 +874,10 @@ struct PatchesSelectionWindow : Window {
 				int x, y;
 				byte btn;
 
-				y = pt.y - 46 - 1;  // Shift y coordinate
+				y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
 				if (y < 0) return;  // Clicked above first entry
 
-				x = pt.x - 5;  // Shift x coordinate
+				x = pt.x - SETTINGTREE_LEFT_OFFSET;  // Shift x coordinate
 				if (x < 0) return;  // Clicked left of the entry
 
 				btn = y / SETTING_HEIGHT;  // Compute which setting is selected
@@ -977,6 +986,8 @@ struct PatchesSelectionWindow : Window {
 };
 
 GameSettings *PatchesSelectionWindow::patches_ptr = NULL;
+const int PatchesSelectionWindow::SETTINGTREE_LEFT_OFFSET = 5;
+const int PatchesSelectionWindow::SETTINGTREE_TOP_OFFSET = 47;
 int PatchesSelectionWindow::patches_max = 0;
 
 static const Widget _patches_selection_widgets[] = {
