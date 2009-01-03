@@ -43,7 +43,7 @@ Depot::~Depot()
 
 	/* Delete the depot-window */
 	DeleteWindowById(WC_VEHICLE_DEPOT, this->xy);
-	this->xy = 0;
+	this->xy = INVALID_TILE;
 }
 
 void InitializeDepots()

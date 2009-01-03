@@ -554,7 +554,7 @@ public:
 			while (i < this->towns.Length()) {
 				const Town *t = this->towns[i];
 
-				assert(t->xy);
+				assert(t->xy != INVALID_TILE);
 
 				SetDParam(0, t->index);
 				SetDParam(1, t->population);
@@ -601,7 +601,7 @@ public:
 				if (id_v >= this->towns.Length()) return; // click out of town bounds
 
 				const Town *t = this->towns[id_v];
-				assert(t->xy);
+				assert(t->xy != INVALID_TILE);
 				if (_ctrl_pressed) {
 					ShowExtraViewPortWindow(t->xy);
 				} else {

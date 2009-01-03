@@ -1313,7 +1313,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 			if (cs->town_effect == TE_PASSENGERS || cs->town_effect == TE_MAIL) {
 				xy = GetTown(s->from)->xy;
 			} else {
-				xy = (GetIndustry(s->from))->xy;
+				xy = GetIndustry(s->from)->xy;
 			}
 			if (DistanceMax(xy, from->xy) > 9) continue;
 

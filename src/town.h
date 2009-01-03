@@ -179,12 +179,12 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 	/**
 	 * Creates a new town
 	 */
-	Town(TileIndex tile = 0);
+	Town(TileIndex tile = INVALID_TILE);
 
 	/** Destroy the town */
 	~Town();
 
-	inline bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 
 	void InitializeLayout();
 

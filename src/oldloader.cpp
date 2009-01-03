@@ -490,7 +490,12 @@ static const OldChunks town_chunk[] = {
 };
 static bool LoadOldTown(LoadgameState *ls, int num)
 {
-	return LoadChunk(ls, new (num) Town(), town_chunk);
+	Town *t = new (num) Town();
+	if (!LoadChunk(ls, t, town_chunk)) return false;
+
+	if (t->xy == 0) t->xy = INVALID_TILE;
+
+	return true;
 }
 
 static uint16 _old_order;
@@ -545,10 +550,13 @@ static const OldChunks depot_chunk[] = {
 
 static bool LoadOldDepot(LoadgameState *ls, int num)
 {
-	if (!LoadChunk(ls, new (num) Depot(), depot_chunk)) return false;
+	Depot *d = new (num) Depot();
+	if (!LoadChunk(ls, d, depot_chunk)) return false;
 
-	if (IsValidDepotID(num)) {
+	if (d->xy != 0) {
 		GetDepot(num)->town_index = REMAP_TOWN_IDX(_old_town_index);
+	} else {
+		d->xy = INVALID_TILE;
 	}
 
 	return true;
@@ -732,9 +740,11 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	Industry *i = new (num) Industry();
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
-	if (i->IsValid()) {
+	if (i->xy != 0) {
 		i->town = GetTown(REMAP_TOWN_IDX(_old_town_index));
 		IncIndustryTypeCount(i->type);
+	} else {
+		i->xy = INVALID_TILE;
 	}
 
 	return true;

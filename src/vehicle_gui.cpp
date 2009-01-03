@@ -1037,7 +1037,7 @@ struct VehicleListWindow : public BaseVehicleListWindow {
 			} break;
 
 			case VLW_WIDGET_AVAILABLE_VEHICLES:
-				ShowBuildVehicleWindow(0, this->vehicle_type);
+				ShowBuildVehicleWindow(INVALID_TILE, this->vehicle_type);
 				break;
 
 			case VLW_WIDGET_MANAGE_VEHICLES_DROPDOWN: {

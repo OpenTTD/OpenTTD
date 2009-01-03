@@ -797,7 +797,7 @@ struct BuildVehicleWindow : Window {
 	EngineID rename_engine;
 	GUIEngineList eng_list;
 
-	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc, tile == 0 ? (int)type : tile)
+	BuildVehicleWindow(const WindowDesc *desc, TileIndex tile, VehicleType type) : Window(desc, tile == INVALID_TILE ? (int)type : tile)
 	{
 		this->vehicle_type = type;
 		int vlh = GetVehicleListHeight(this->vehicle_type);
@@ -810,7 +810,7 @@ struct BuildVehicleWindow : Window {
 		this->resize.width  = this->width;
 		this->resize.height = this->height;
 
-		this->caption_color = (tile != 0) ? GetTileOwner(tile) : _local_company;
+		this->caption_color = (tile != INVALID_TILE) ? GetTileOwner(tile) : _local_company;
 
 		this->sel_engine      = INVALID_ENGINE;
 		this->regenerate_list = false;
@@ -821,15 +821,15 @@ struct BuildVehicleWindow : Window {
 		switch (type) {
 			default: NOT_REACHED();
 			case VEH_TRAIN:
-				this->filter.railtype = (tile == 0) ? RAILTYPE_END : GetRailType(tile);
+				this->filter.railtype = (tile == INVALID_TILE) ? RAILTYPE_END : GetRailType(tile);
 				break;
 			case VEH_ROAD:
-				this->filter.roadtypes = (tile == 0) ? ROADTYPES_ALL : GetRoadTypes(tile);
+				this->filter.roadtypes = (tile == INVALID_TILE) ? ROADTYPES_ALL : GetRoadTypes(tile);
 			case VEH_SHIP:
 				break;
 			case VEH_AIRCRAFT:
 				this->filter.flags =
-					tile == 0 ? AirportFTAClass::ALL : GetStationByTile(tile)->Airport()->flags;
+					tile == INVALID_TILE ? AirportFTAClass::ALL : GetStationByTile(tile)->Airport()->flags;
 				break;
 		}
 		this->SetupWindowStrings(type);
@@ -1194,10 +1194,10 @@ static const WindowDesc _build_vehicle_desc = {
 void ShowBuildVehicleWindow(TileIndex tile, VehicleType type)
 {
 	/* We want to be able to open both Available Train as Available Ships,
-	 *  so if tile == 0 (Available XXX Window), use 'type' as unique number.
+	 *  so if tile == INVALID_TILE (Available XXX Window), use 'type' as unique number.
 	 *  As it always is a low value, it won't collide with any real tile
 	 *  number. */
-	uint num = (tile == 0) ? (int)type : tile;
+	uint num = (tile == INVALID_TILE) ? (int)type : tile;
 
 	assert(IsCompanyBuildableVehicleType(type));
 

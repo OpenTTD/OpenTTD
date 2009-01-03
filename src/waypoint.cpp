@@ -460,7 +460,7 @@ Waypoint::~Waypoint()
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, this->index);
 
 	RedrawWaypointSign(this);
-	this->xy = 0;
+	this->xy = INVALID_TILE;
 }
 
 /**

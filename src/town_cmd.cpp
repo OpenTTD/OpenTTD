@@ -65,7 +65,7 @@ DEFINE_OLD_POOL_GENERIC(Town, Town)
 
 Town::Town(TileIndex tile)
 {
-	if (tile != 0) _total_towns++;
+	if (tile != INVALID_TILE) _total_towns++;
 	this->xy = tile;
 }
 
@@ -115,7 +115,7 @@ Town::~Town()
 
 	MarkWholeScreenDirty();
 
-	this->xy = 0;
+	this->xy = INVALID_TILE;
 
 	UpdateNearestTownForRoadTiles(false);
 }

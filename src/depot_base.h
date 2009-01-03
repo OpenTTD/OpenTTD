@@ -16,10 +16,10 @@ struct Depot : PoolItem<Depot, DepotID, &_Depot_pool> {
 	TileIndex xy;
 	TownID town_index;
 
-	Depot(TileIndex xy = 0) : xy(xy) {}
+	Depot(TileIndex xy = INVALID_TILE) : xy(xy) {}
 	~Depot();
 
-	inline bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 };
 
 static inline bool IsValidDepotID(DepotID index)

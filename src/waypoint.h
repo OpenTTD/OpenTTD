@@ -33,10 +33,10 @@ struct Waypoint : PoolItem<Waypoint, WaypointID, &_Waypoint_pool> {
 
 	byte deleted;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 
-	Waypoint(TileIndex tile = 0);
+	Waypoint(TileIndex tile = INVALID_TILE);
 	~Waypoint();
 
-	inline bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 };
 
 static inline bool IsValidWaypointID(WaypointID index)

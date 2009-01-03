@@ -140,7 +140,7 @@ Industry::~Industry()
 	/* Industry can also be destroyed when not fully initialized.
 	 * This means that we do not have to clear tiles either. */
 	if (this->width == 0) {
-		this->xy = 0;
+		this->xy = INVALID_TILE;
 		return;
 	}
 
@@ -174,7 +174,7 @@ Industry::~Industry()
 	DeleteSubsidyWithIndustry(this->index);
 	DeleteWindowById(WC_INDUSTRY_VIEW, this->index);
 	InvalidateWindowData(WC_INDUSTRY_DIRECTORY, 0, 0);
-	this->xy = 0;
+	this->xy = INVALID_TILE;
 }
 
 static void IndustryDrawSugarMine(const TileInfo *ti)

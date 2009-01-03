@@ -132,10 +132,10 @@ struct Industry : PoolItem<Industry, IndustryID, &_Industry_pool> {
 
 	PersistentStorage psa;              ///< Persistent storage for NewGRF industries.
 
-	Industry(TileIndex tile = 0) : xy(tile) {}
+	Industry(TileIndex tile = INVALID_TILE) : xy(tile) {}
 	~Industry();
 
-	inline bool IsValid() const { return this->xy != 0; }
+	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 };
 
 struct IndustryTileTable {

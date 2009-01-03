@@ -838,7 +838,7 @@ public:
 
 				if (_ctrl_pressed && sel < this->vehicle->GetNumOrders()) {
 					const Order *ord = GetVehicleOrder(this->vehicle, sel);
-					TileIndex xy = 0;
+					TileIndex xy = INVALID_TILE;
 
 					switch (ord->GetType()) {
 						case OT_GOTO_STATION:  xy = GetStation(ord->GetDestination())->xy ; break;
@@ -851,7 +851,7 @@ public:
 							break;
 					}
 
-					if (xy != 0) ScrollMainWindowToTile(xy);
+					if (xy != INVALID_TILE) ScrollMainWindowToTile(xy);
 					return;
 				}
 
