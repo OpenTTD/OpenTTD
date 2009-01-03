@@ -1826,9 +1826,21 @@ void DoExitSave()
  */
 void GenerateDefaultSaveName(char *buf, const char *last)
 {
-	/* Check if we are not a spectator who wants to generate a name..
-	 * Let's use the name of company #0 for now. */
-	SetDParam(0, IsValidCompanyID(_local_company) ? _local_company : COMPANY_FIRST);
+	/* Check if we have a name for this map, which is the name of the first
+	 * available company. When there's no company available we'll use
+	 * 'Spectator' as "company" name. */
+	CompanyID cid = _local_company;
+	if (!IsValidCompanyID(cid)) {
+		const Company *c;
+		FOR_ALL_COMPANIES(c) {
+			cid = c->index;
+			break;
+		}
+	}
+
+	SetDParam(0, cid);
+
+	/* Insert current date */
 	switch (_settings_client.gui.date_format_in_default_names) {
 		case 0: SetDParam(1, STR_JUST_DATE_LONG); break;
 		case 1: SetDParam(1, STR_JUST_DATE_TINY); break;
@@ -1836,7 +1848,9 @@ void GenerateDefaultSaveName(char *buf, const char *last)
 		default: NOT_REACHED();
 	}
 	SetDParam(2, _date);
-	GetString(buf, STR_4004, last);
+
+	/* Get the correct string (special string for when there's not company) */
+	GetString(buf, IsValidCompanyID(cid) ? STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME : STR_4004, last);
 	SanitizeFilename(buf);
 }
 

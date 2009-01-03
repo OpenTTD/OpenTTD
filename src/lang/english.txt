@@ -2017,6 +2017,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Load Gam
 STR_4002_SAVE                                                   :{BLACK}Save
 STR_4003_DELETE                                                 :{BLACK}Delete
 STR_4004                                                        :{COMPANY}, {STRING1}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Spectator, {SKIP}{STRING1}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} free
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unable to read drive
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Game Save Failed{}{STRING}
