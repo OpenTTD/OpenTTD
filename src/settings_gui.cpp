@@ -750,7 +750,7 @@ enum PatchesSelectionWidgets {
 };
 
 struct PatchesSelectionWindow : Window {
-	static GameSettings *patches_ptr;
+	static GameSettings *patches_ptr;  ///< Pointer to the game settings being displayed and modified
 	static int patches_max;  ///< Maximal number of patches on a single page
 
 	int page;

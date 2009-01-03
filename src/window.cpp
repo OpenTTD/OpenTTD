@@ -2236,6 +2236,13 @@ int PositionMainToolbar(Window *w)
 	return w->left;
 }
 
+/**
+ * Set the number of items of the vertical scrollbar.
+ *
+ * Function also updates the position of the scrollbar if necessary.
+ * @param w   Window containing the vertical scrollbar
+ * @param num New number of items
+ */
 void SetVScrollCount(Window *w, int num)
 {
 	w->vscroll.count = num;
@@ -2244,6 +2251,13 @@ void SetVScrollCount(Window *w, int num)
 	if (num < w->vscroll.pos) w->vscroll.pos = num;
 }
 
+/**
+ * Set the number of items of the second vertical scrollbar.
+ *
+ * Function also updates the position of the scrollbar if necessary.
+ * @param w   Window containing the second vertical scrollbar
+ * @param num New number of items
+ */
 void SetVScroll2Count(Window *w, int num)
 {
 	w->vscroll2.count = num;
@@ -2252,6 +2266,13 @@ void SetVScroll2Count(Window *w, int num)
 	if (num < w->vscroll2.pos) w->vscroll2.pos = num;
 }
 
+/**
+ * Set the number of items of the horizontal scrollbar.
+ *
+ * Function also updates the position of the scrollbar if necessary.
+ * @param w   Window containing the horizontal scrollbar
+ * @param num New number of items
+ */
 void SetHScrollCount(Window *w, int num)
 {
 	w->hscroll.count = num;
