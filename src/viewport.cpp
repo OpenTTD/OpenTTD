@@ -1649,10 +1649,10 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
 	if (top >= vp->virtual_height) return;
 
 	SetDirtyBlocks(
-		UnScaleByZoom(left, vp->zoom) + vp->left,
-		UnScaleByZoom(top, vp->zoom) + vp->top,
-		UnScaleByZoom(right, vp->zoom) + vp->left,
-		UnScaleByZoom(bottom, vp->zoom) + vp->top
+		UnScaleByZoomLower(left, vp->zoom) + vp->left,
+		UnScaleByZoomLower(top, vp->zoom) + vp->top,
+		UnScaleByZoom(right, vp->zoom) + vp->left + 1,
+		UnScaleByZoom(bottom, vp->zoom) + vp->top + 1
 	);
 }
 
