@@ -1126,6 +1126,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :커맨드 + 클
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :컨트롤 + 클릭
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :끄기
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}마우스 왼쪽 버튼으로 스크롤: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}{ORANGE}{STRING}{LTBLUE} 날짜 형식을 세이브 이름으로 사용합니다.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :길게 (31st Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :짧게 (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}새 게임을 시작할 때 자동으로 일시정지: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}진보된 차량 목록 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :끄기
@@ -3502,7 +3509,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}넓이: 
 STR_DATE_TINY                                                   :{2:NUM}.{1:STRING}.{0:STRING}
 STR_DATE_SHORT                                                  :{1:NUM}년 {0:STRING}
 STR_DATE_LONG                                                   :{2:NUM}년 {1:STRING}월 {0:STRING}일
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}환승 단위: {LTBLUE}{CURRENCY}

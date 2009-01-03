@@ -18,6 +18,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}דרושה אדמה שטוחה
 STR_0008_WAITING                                                :{BLACK}מחכים: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} בדרך מ {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}מקבל: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}מקבל: {GOLD}
 STR_SUPPLIES                                                    :{BLACK}מספק: {GOLD}
@@ -90,6 +91,7 @@ STR_QUANTITY_PASSENGERS                                         :{P 0 נוסע "
 STR_QUANTITY_COAL                                               :{WEIGHT} של פחם
 STR_QUANTITY_MAIL                                               :{P 0 שק ""} {COMMA} {P "" שקים} של דואר
 STR_QUANTITY_OIL                                                :{VOLUME} של נפט
+STR_QUANTITY_LIVESTOCK                                          :{P 0 פריט ""} {COMMA} {P "" פריטים} של בקר
 STR_QUANTITY_GOODS                                              :{P 0 ארגז ""} {COMMA} {P "" ארגזים} של מוצרים
 STR_QUANTITY_GRAIN                                              :{WEIGHT} של חיטה
 STR_QUANTITY_WOOD                                               :{WEIGHT} של עצים
@@ -454,6 +456,7 @@ STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}הרוס
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}הנמך פינה של אדמה
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}הגבהה פינה של אדמה
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}כפתור גלילה - גלילה של רשימות למעלה\למטה
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}פס הגלילה - גלילה של רשימות ימינה\שמאלה
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}הראה מתאר אדמה במפה
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}הראה כלי רכב במפה
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}הראה מפעלים במפה
@@ -478,6 +481,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}מידע על אדמה ואיזור
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}מחיר למחיקה: {LTBLUE}לא זמין
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}מחיר למחיקה: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}ההכנסה אחרי שפונה: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :לא זמין
 STR_01A7_OWNER                                                  :{BLACK}בעלים: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}בעלי הכביש: {LTBLUE}{STRING}
@@ -533,6 +537,7 @@ STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}הצג �
 STR_01D5_ALL                                                    :{TINYFONT}הכל
 STR_01D6_OLD_STYLE                                              :{TINYFONT}סגנון ישן
 STR_01D7_NEW_STYLE                                              :{TINYFONT}סגנון חדש
+STR_01D8_EZY_STREET                                             :{TINYFONT}רחוב אזי
 STR_01D9_CUSTOM_1                                               :{TINYFONT}מותאם אישית 1
 STR_01DA_CUSTOM_2                                               :{TINYFONT}מותאם אישית 2
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}ווליום מוזיקה
@@ -558,11 +563,19 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}תוכנית- '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}מחק
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}שמור
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}התוכנית הנוכחית של השירים
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}בחר בתוכנית 'כל השירים'
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}בחר בתוכנית 'מוזיקה בסגנון ישן'
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}בחר בתוכנית 'מוזיקה בסגנון חדש'
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}בחר בתוכנית 'מותאמת 1' (מוגדר על ידי המשתמש)
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}בחר בתוכנית 'מותאמת 2' (מוגדר על ידי המשתמש)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}מחק תוכנית נוכחית (מותאמת1 או מותאמת2 בלבד)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}שמור הגדרות מוזיקה
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}(לחץ כאן כדי להוסיף לתוכנית הנוחכית(מותאם אישית1 או מותאם אישית 2 בלבד
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}(לחץ על רצועה כדי להסיר אותה מהתוכנית הנוחכית(מותאם אישית 1 או מותאם אישית 2 בלבד
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}שנה מצב של עירבוב תוכניות פועל\כבוי
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}הראה את חלון בחירת המוזיקה
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}לחץ על שירות כדי למקד השקפה על עיר\תעשייה
 STR_01FE_DIFFICULTY                                             :{BLACK}קושי ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :הודעה האחרונה\חדשות אחרונות
@@ -609,6 +622,8 @@ STR_0222_SCENARIO_EDITOR                                        :{YELLOW}עור�
 STR_0223_LAND_GENERATION                                        :{WHITE}יצירת טופוגרפיה
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}הרחב שטח אדמה כדי להנמיך\להרים
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}הפחת שטח אדמה כדי להנמיך\להרים
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}צור אדמה אקראית
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}אפס נוף
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}אפס נוף
@@ -680,8 +695,13 @@ STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}בנה �
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}בנה בורות-נפט
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}בנה בנק (רק בערים שאוכלוסיותם מעל 1200 איש)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}בנה בית חרושת לנייר
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}בנה מפעל מזון
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}בנה בית דפוס
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}בנה מכרה זהב
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}(בנה בנק (יכול להבנות רק ליד ערים
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}בנה מנסרת עץ (כדי לפנות יערות גשם ולייצר עץ)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}שתול מטע פירות
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}שתול מטע גומי
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}בנה מתקן הספקת מים
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}(בנה מגדל מים(יכול להבנות רק ליד ערים
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}בנה מכרה יהלומים
@@ -708,17 +728,21 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}מקם �
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}מקם מיגדלור
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}מקם משדר
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}הגדר אזור מדברי.{} לחץ והחזק CRTL כדי להסיר אותו
+STR_CREATE_LAKE                                                 :{BLACK}הגדר את שטח המים.{}הכן תעלה, אלה אם כן CTRL לחוץ בגובה הים, ואז זה יציף את הסביבה במקום
 STR_CREATE_RIVER                                                :{BLACK}מקם נחלים.
 STR_0290_DELETE                                                 :{BLACK}מחק
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}מחק את כל העיר
 STR_0292_SAVE_SCENARIO                                          :שמור סצנריו
 STR_0293_LOAD_SCENARIO                                          :פתח סצנריו
+STR_MENU_LOAD_HEIGHTMAP                                         :טען מפת גובה
 STR_0294_QUIT_EDITOR                                            :צא מהעורך
 STR_0296_QUIT                                                   :יציאה
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}שמור שלב, טען שלב, צא מעורך השלבים, צא
 STR_0298_LOAD_SCENARIO                                          :{WHITE}פתח סצנריו
 STR_0299_SAVE_SCENARIO                                          :{WHITE}שמור סצנריו
 STR_029A_PLAY_SCENARIO                                          :{BLACK}שחק בשלב
+STR_PLAY_HEIGHTMAP                                              :{BLACK}שחק במפת גובה
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}התחל משחק חדש בשימוש מפת גובה כנוף.
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}?האם אתה בטוח שברצונך לצאת משלב זה
 STR_029C_QUIT_EDITOR                                            :{WHITE}צא מהעורך
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...ניתן לבנות בערים עם אוכלוסיה של לפחות 1200 איש
@@ -752,6 +776,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C4_GAME_OPTIONS                                           :אפשרויות המשחק
 STR_02C6_DIFFICULTY_SETTINGS                                    :הגדרות קושי
 STR_MENU_CONFIG_PATCHES                                         :הגדרות מתקדמות
+STR_NEWGRF_SETTINGS                                             :הגדרות GRF חדש
 STR_TRANSPARENCY_OPTIONS                                        :אפשרויות שקיפות
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}שמות ערים שמוצגים
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}שמות תחנות שמוצגים
@@ -777,9 +802,13 @@ STR_02DA_ON                                                     :{BLACK}דלוק
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}הצג סובסידיות
 STR_02DD_SUBSIDIES                                              :סובסידיות
 STR_02DE_MAP_OF_WORLD                                           :מפת העולם
+STR_EXTRA_VIEW_PORT                                             :השקפה נוספת
 STR_SIGN_LIST                                                   :רשימת שלטים
 STR_02DF_TOWN_DIRECTORY                                         :רשימת ערים
 STR_TOWN_POPULATION                                             :{BLACK}אוכלוסיית העולם: {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}השקפה {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}העתק להשקפה
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}העתק את המיקום של ההשקפה הכלל-עולמית להשקפה זאת
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}מטבע
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -822,6 +851,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}'בחר 
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}ממן בניה של מפעל חדש או הצג את רשימת כל המפעלים
 
 ############ range for menu starts
+STR_INDUSTRY_DIR                                                :ספריית תעשיות
 STR_0313_FUND_NEW_INDUSTRY                                      :ממן מפעל חדש
 ############ range ends here
 
@@ -841,6 +871,7 @@ STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}קנה �
 STR_032F_AUTOSAVE                                               :{RED}שמירה אוטומטית
 STR_SAVING_GAME                                                 :{RED}*  *  שומר משחק  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}!שמירה מתבצעת,{} אנא המתן עד לסיום השמירה
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}בחר בתוכנית 'מוזיקה בסגנון רחוב אזי'
 
 STR_6                                                           :{BLACK}6
 STR_7                                                           :{BLACK}7
@@ -1008,6 +1039,8 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}:(כל�
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}אפשר נתינת שוחד לערים מקומיים {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}אפשר קנייה של אפשריות הובלה בלעדיים : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}אפשר שלחת כספים לחברות אחרות: {ORANGE}{STRING}
+
+
 
 
 

@@ -227,7 +227,7 @@ STR_0100_FACTORY                                                :{BLACK}{TINYFON
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Percetakan
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Ladang Minyak
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Tambang Biji Besi
-STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Pengolahan Baja
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Peleburan Baja
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Bank
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Pabrik Kertas
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Tambang Emas
@@ -438,7 +438,7 @@ STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Tampilka
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Tampilkan informasi umum perusahaan
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Tampilkan grafik
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Tampilkan daftar perusahaan
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar kereta api perusahaan
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar kereta perusahaan
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar bus/truk perusahaan
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar kapal perusahaan
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar pesawat udara perusahaan
@@ -662,7 +662,7 @@ STR_0243_FOREST                                                 :{BLACK}Hutan
 STR_0244_OIL_REFINERY                                           :{BLACK}Kilang Minyak
 STR_0245_OIL_RIG                                                :{BLACK}Pengeboran minyak lepas pantai
 STR_0246_FACTORY                                                :{BLACK}Pabrik
-STR_0247_STEEL_MILL                                             :{BLACK}Pabrik Lebur Baja
+STR_0247_STEEL_MILL                                             :{BLACK}Pabrik Peleburan Baja
 STR_0248_FARM                                                   :{BLACK}Pertanian
 STR_0249_IRON_ORE_MINE                                          :{BLACK}Tambang Bijih Tembaga
 STR_024A_OIL_WELLS                                              :{BLACK}Sumur Minyak
@@ -696,7 +696,7 @@ STR_0265_PLANT_FOREST                                           :{BLACK}Menanam 
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Membangun Kilang Minyak
 STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Membangun Pengeboran Minyak lepas pantai (hanya dapat dibangun di dekat batas peta)
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Membangun Pabrik
-STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Membangun Pengolahan Baja
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Membangun Peleburan Baja
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Membangun Pertanian
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Membangun Tambang Bijih Besi
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Membangun Sumur Minyak
@@ -1007,8 +1007,8 @@ STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Kereta a
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Kereta api {COMMA} disuruh menuju stasiun yang tidak ada
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Bus/truk {COMMA} memiliki perintah yang terlalu sedikit
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Bus/truk {COMMA} mempunyai perintah yang salah
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Bus/truk {COMMA} mempunyai tujuan/perintah yang sama
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Bus/truk {COMMA} mempunyai tujuan/perintah ke stasiun/terminal/depo/pelabuhan yang tidak benar
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Bus/truk {COMMA} mempunyai perintah yang sama
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Bus/truk {COMMA} mempunyai perintah ke terminal yang salah
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Kapal Laut {COMMA} memiliki terlalu sedikit tujuan/perintah di dalam jadwalnya
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Kapal Laut {COMMA} mempunyai tujuan/perintah yang kosong.
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Kapal Laut {COMMA} mempunyai tujuan/perintah yang ganda
@@ -1020,7 +1020,7 @@ STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Pesawat 
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Peremajaan secara otomatis gagal pada kereta api {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Peremajaan secara otomatis gagal pada bus/truk {COMMA}{}{STRING}
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Peremajaan otomatis gagal pada bus/truk {COMMA}{}{STRING}
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Peremajaan secara otomatis gagal pada kapal laut {COMMA}{}{STRING}
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Otomatis perbaharui gagal pada pesawat {COMMA}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Kereta Api {COMMA} sudah terlalu tua sejak penggantian
@@ -1125,6 +1125,8 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulasi
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Perintah-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrol-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Non-aktifkan
+
+
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Selalu hentikan sementara permainan saat memulai : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gunakan daftar kendaraan tingkat lanjut: {ORANGE}{STRING}
@@ -1284,7 +1286,7 @@ STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Rubah re
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Tidak dapat membuat sinyal jalur kereta disini...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Tidak dapat menghapus sinyal jalur kereta disini...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Membangun jalur kereta menggunakan mode Rel Otomatis
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Membangun rel kereta menggunakan mode Rel Otomatis
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...disana tidak ada kota dalam skenario ini
 
@@ -1673,7 +1675,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Terlalu 
 STR_ALREADY_LEVELLED                                            :{WHITE}... sudah rata
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tidak tersedia rel yang sesuai
 STR_1007_ALREADY_BUILT                                          :{WHITE}...sudah dibangun
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Harus memindahkan/membongkar rel kereta api terlebih dahulu
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Harus memindahkan/membongkar rel kereta terlebih dahulu
 STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Jalan satu arah atau ada yang menghalangi
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Pembangun Rel Kereta
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Konstruksi Kereta Rel Listrik
@@ -1697,11 +1699,11 @@ STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Membangu
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Membangun sinyal kereta
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Membangun Jembatan rel
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Membangun terowongan kereta
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}"Toggle"/Tandai bangun/hapus untuk jalur kereta dan sinyal
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Membangun/bongkar rel kereta dan sinyal
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Pilihan jembatan - Klik pada jembatan yang ingin anda bangun
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Pilih arah depo kereta
 STR_1021_RAILROAD_TRACK                                         :Jalur rel
-STR_1023_RAILROAD_TRAIN_DEPOT                                   :Depo rel kereta api
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Depo kereta api
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...area ini dimiliki oleh perusahaan lain
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Rel dengan sinyal blok
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Rel dengan sinyal muka
@@ -1765,7 +1767,7 @@ STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Membangu
 STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Membangun terowongan trem
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktif/Non Aktifkan jalan satu arah
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}"Toggle"/Tandai bangun/hapus untuk pembangunan jalan
-STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}"Toggle"/Tandai bangun/bongkar untuk konstruksi jalan trem
+STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Membangun/bongkar  konstruksi rel trem
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Pilih arah bengkel kendaraan
 STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Pilih arah depo trem
 STR_1814_ROAD                                                   :Jalan
@@ -1775,7 +1777,7 @@ STR_1817_ROAD_VEHICLE_DEPOT                                     :Depo Kendaraan 
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Persimpangan jalan/rel
 STR_TRAMWAY                                                     :Jalur Trem
 STR_CAN_T_REMOVE_BUS_STATION                                    :{WHITE}Tidak dapat membongkar stasiun Bus...
-STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Tidak dapat mebongkar stasiun truk...
+STR_CAN_T_REMOVE_TRUCK_STATION                                  :{WHITE}Tidak dapat membongkar stasiun truk...
 STR_CAN_T_REMOVE_PASSENGER_TRAM_STATION                         :{WHITE}Tidak dapat membongkar stasiun trem...
 STR_CAN_T_REMOVE_CARGO_TRAM_STATION                             :{WHITE}Tidak dapat membongkar stasiun kargo trem...
 
@@ -1914,7 +1916,7 @@ STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}bergande
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu banyak stasiun di kota ini
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu banyak stasiun/area bongkar muat
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Terlalu banyak pemberhentian Bus
-STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Terlalu banyak stasiun truk
+STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Terlalu banyak terminal truk
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Terlalu dekat dengan stasiun/area bongkar muat lainnya
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Harus menghancurkan jalur rel stasiun terlebih dahul
@@ -2041,7 +2043,7 @@ STR_4806_OIL_REFINERY                                           :Kilang Minyak
 STR_4807_OIL_RIG                                                :Pengeboran minyak lepas pantai
 STR_4808_FACTORY                                                :Pabrik
 STR_4809_PRINTING_WORKS                                         :Percetakan
-STR_480A_STEEL_MILL                                             :Pabrik Lebur Pengolahan Baja
+STR_480A_STEEL_MILL                                             :Pabrik Peleburan Baja
 STR_480B_FARM                                                   :Pertanian
 STR_480C_COPPER_ORE_MINE                                        :Tambang Bijih Tembaga
 STR_480D_OIL_WELLS                                              :Sumur minyak
@@ -2573,16 +2575,16 @@ STR_8079_PLODDYPHUT_MKII_BUS                                    :Bus Ploddyphut 
 STR_807A_PLODDYPHUT_MKIII_BUS                                   :Bus Ploddyphut MkIII
 STR_807B_BALOGH_COAL_TRUCK                                      :Truk Batubara Balogh
 STR_807C_UHL_COAL_TRUCK                                         :Truk Batubara Uhl
-STR_807D_DW_COAL_TRUCK                                          :Truk Batubara "DW"
-STR_807E_MPS_MAIL_TRUCK                                         :Truk Dokumen "MPS"
-STR_807F_REYNARD_MAIL_TRUCK                                     :Truk Dokumen "Reynard"
-STR_8080_PERRY_MAIL_TRUCK                                       :Truk Dokumen "Perry"
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Truk Dokumen "MightyMover"
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Truk Dokumen "Powernaught"
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Truk Dokumen "Wizzowow"
-STR_8084_WITCOMBE_OIL_TANKER                                    :Truk Tangki minyak "Witcombe"
-STR_8085_FOSTER_OIL_TANKER                                      :Truk Tangki minyak "Foster"
-STR_8086_PERRY_OIL_TANKER                                       :Truk Tangki minyak "Perry"
+STR_807D_DW_COAL_TRUCK                                          :Truk Batubara DW
+STR_807E_MPS_MAIL_TRUCK                                         :Truk Dokumen MPS
+STR_807F_REYNARD_MAIL_TRUCK                                     :Truk Dokumen Reynard
+STR_8080_PERRY_MAIL_TRUCK                                       :Truk Dokumen Perry
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Truk Dokumen MightyMover
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Truk Dokumen Powernaught
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Truk Dokumen Wizzowow
+STR_8084_WITCOMBE_OIL_TANKER                                    :Truk Tangki minyak Witcombe
+STR_8085_FOSTER_OIL_TANKER                                      :Truk Tangki minyak Foster
+STR_8086_PERRY_OIL_TANKER                                       :Truk Tangki minyak Perry
 STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Truk Ternak Talbott
 STR_8088_UHL_LIVESTOCK_VAN                                      :Truk Ternak Uhl
 STR_8089_FOSTER_LIVESTOCK_VAN                                   :Truk Ternak Foster
@@ -2762,7 +2764,7 @@ STR_ORDER_NEAREST_HANGAR                                        :Hangar terdekat
 STR_ORDER_SERVICE_AT                                            :Perbaikkan di
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Perbaikkan non-stop di
 STR_ORDER_TRAIN_DEPOT                                           :Depo Kereta Api
-STR_ORDER_ROAD_DEPOT                                            :Depo Bus/truk
+STR_ORDER_ROAD_DEPOT                                            :Bengkel Bus/truk
 STR_ORDER_SHIP_DEPOT                                            :Galangan Kapal
 STR_GO_TO_DEPOT                                                 :{0:STRING} {2:STRING} {1:TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{0:STRING} {2:STRING} {1:STRING}
@@ -2872,19 +2874,19 @@ STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Bagian b
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Tidak dapat menjual kendaraan...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Tidak menemukan rute menuju depo terdekat
-STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Tidak dapat menghentikan dan menjalankan kereta...
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Tidak dapat menghentikan/menjalankan kereta...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} hari{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Jangka waktu servis: {LTBLUE}{COMMA} %{BLACK}   Servis terakhir: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta - klik pada kereta untuk melihat informasi
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Membuat kereta baru (membutuhkan depo kereta)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta Api - klik untuk info kereta., drag kendaraan untuk menambah atau menghapus dari kereta
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Membuat kereta api baru
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Drag kereta api ke sini untuk menjualnya
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Membuat kereta baru
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Drag kereta ke sini untuk menjualnya
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Arahkan pandangan utama pada lokasi depo kereta
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Daftar pilihan kereta api - klik pada kereta untuk menampilkan informasi
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}MEmbuat kereta sesuai pilihan
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Ubah nama jenis kereta api
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aksi kereta saat ini - klik disini untuk menjalankan / menghentikan kereta
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aksi kereta saat ini - klik disini untuk menjalankan/menghentikan kereta
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Tampilkan perintah kereta
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Arahkan tampilan pada lokasi kereta
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Kirim kereta ke depo. CTRL+klik hanya akan memerintahkan servis
@@ -2959,7 +2961,7 @@ STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Isi jadw
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bus/truk sedang berjalan
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Bus/truk
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Depo Bus/truk
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Bengkel Bus/truk
 STR_9004_NEW_VEHICLES                                           :{BLACK}Kendaraan Baru
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Bus/truk Baru
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Membuat Kendaraan
@@ -3009,7 +3011,7 @@ STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Truk pertama tiba di {STATION}!
 STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Terjadi tabrakan!{}Sopir truk meninggal dalam ledakan bola api setelah betabrakan dengan kereta
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrakan kereta
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Tidak dapat membalik arah kendaraan...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit

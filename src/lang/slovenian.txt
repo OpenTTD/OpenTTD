@@ -530,6 +530,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacije o zemljišču
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za čiščenje: {LTBLUE}Ni na voljo
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za čiščenje: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Dohodek ob čiščenju: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Ni na voljo
 STR_01A7_OWNER                                                  :{BLACK}Lastnik: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Lastnik ceste: {LTBLUE}{STRING}
@@ -1167,6 +1168,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ukaz-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrola-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Izklop
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Premik slike z levim klikom: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Uporabi {ORANGE}{STRING}{LTBLUE} format datuma za imena shranjevanja igre.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dolg (31st Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kratek (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Avtomatsko pavziraj ob zagonu nove igre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Uporabi napreden seznam vozil: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Izklop
@@ -1588,6 +1596,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odklopi
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vpiši znesek denarja za darovanje
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Strežnik je zaščiten.Vnesi geslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Podjetje je zaščiteno. Vnesi geslo
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam gostov
@@ -1627,6 +1636,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :brcnjen od gost
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :je poskusil/a uporabiti goljufanje
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :gostitelj zaseden
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Igra v pavzi (ni dovolj igralcev)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Igra obnovljena (dovolj igralcev)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Igra v pavzi (povezovanje gosta)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Igra obnovljena (gost povezan)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Igra obnovljena (gost se ni uspel priključiti)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :zapušča
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} pristopa k igri
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} odstopa od igre ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} je opravil/a spremembo imena v {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} je podarilo tvojemu podjetju {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Podjetju {1:STRING} je bil podarjen znesek {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Skupina] :
 STR_NETWORK_CHAT_COMPANY                                        :[Skupina] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Skupina] Za {STRING}: {GRAY}{STRING}
@@ -2037,6 +2060,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Naloži 
 STR_4002_SAVE                                                   :{BLACK}Shrani
 STR_4003_DELETE                                                 :{BLACK}Izbriši
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Gledalec, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabajt{P "" a i ov} prosto
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemogoče branje pogona
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Shranjevanje igre ni uspelo{}{STRING}
@@ -3566,7 +3590,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Območje
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Prenesi kredite: {LTBLUE}{CURRENCY}

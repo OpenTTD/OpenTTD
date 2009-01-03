@@ -13,6 +13,7 @@ STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}อย�
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}ใกล้กับขอบแผนที่เกินไป
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}มีเงินไม่พอ - ต้องการอีก {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY}
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}ต้องใช้พื้นที่ราบ
 STR_0008_WAITING                                                :{BLACK}กำลังรอ: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
@@ -84,6 +85,7 @@ STR_004A_TOFFEE                                                 :ลูกอม
 STR_004B_BATTERY                                                :ถ่านไฟฉาย
 STR_004C_PLASTIC                                                :พลาสติก
 STR_004D_FIZZY_DRINK                                            :น้ำอัดลมหรรษา
+STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :ผู้โดยสาร {COMMA} คน
 STR_QUANTITY_COAL                                               :ถ่านหิน {WEIGHT}
 STR_QUANTITY_MAIL                                               :ไปรษณียภัณฑ์ {COMMA} ถุง
@@ -115,6 +117,7 @@ STR_QUANTITY_TOFFEE                                             :ลูกอม
 STR_QUANTITY_BATTERIES                                          :ุ่ถ่านไฟฉาย {COMMA} ก้อน
 STR_QUANTITY_PLASTIC                                            :พลาสติก {VOLUME}
 STR_QUANTITY_FIZZY_DRINKS                                       :น้ำอัดลมหรรษา {COMMA} ชุด
+STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}คน
 STR_ABBREV_COAL                                                 :{TINYFONT}ถ่าน
 STR_ABBREV_MAIL                                                 :{TINYFONT}จดหมาย
@@ -267,21 +270,40 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}หิมะ
 STR_012C_MESSAGE                                                :{WHITE}ข้อความ
 STR_012D                                                        :{WHITE}{STRING}
+STR_DEFAULT                                                     :{BLACK}ค่าปกติ
 STR_012E_CANCEL                                                 :{BLACK}ยกเลิก
 STR_012F_OK                                                     :{BLACK}ตกลง
 STR_0130_RENAME                                                 :{BLACK}เปลี่ยนชื่อ
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}บัญญัติหลายชื่อมากเกินไป
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}มีชื่อนี้ซ้ำอยู่แล้ว
 
+STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
+STR_OSNAME_UNIX                                                 :Unix
+STR_OSNAME_OSX                                                  :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
+STR_OSNAME_SUNOS                                                :SunOS
 
 STR_013B_OWNED_BY                                               :{WHITE}...เป็นของ {STRING}
 STR_013C_CARGO                                                  :{BLACK}สินค้า
 STR_013D_INFORMATION                                            :{BLACK}ข้อมูล
 STR_013E_CAPACITIES                                             :{BLACK}ปริมาณที่รับได้
 STR_013F_CAPACITY                                               :{BLACK}ความจุ: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}ความจุ: {LTBLUE}{CARGO} (x{NUM})
+STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}ความจุสินค้าทั้งหมดของรถไฟขบวนนี้:
+STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}เริ่มเกมใหม่
 STR_0141_LOAD_GAME                                              :{BLACK}เปิดเกมเดิม
+STR_SINGLE_PLAYER                                               :{BLACK}เล่นคนเดียว
+STR_MULTIPLAYER                                                 :{BLACK}เล่นหลายคน
+STR_SCENARIO_EDITOR                                             :{BLACK}โปรแกรมแก้ฉาก
 
+STR_MAPSIZE                                                     :{BLACK}ขนาดแผนที่:
+STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}ตั้งค่าเกม
 
 STR_0150_SOMEONE                                                :บางคน{SKIP}{SKIP}
@@ -289,13 +311,35 @@ STR_0151_MAP_OF_WORLD                                           :แผนที
 STR_0152_TOWN_DIRECTORY                                         :ทำเนียบชื่อเมือง
 STR_0153_SUBSIDIES                                              :โครงการที่มีเงินทุนสนับสนุน
 
+STR_UNITS_IMPERIAL                                              :ระบบอังกฤษ
+STR_UNITS_METRIC                                                :ระบบเมตริก
+STR_UNITS_SI                                                    :ระบบเอสไอ
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} ไมล์/ชม.
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} กม./ชม.
+STR_UNITS_VELOCITY_SI                                           :{COMMA} ม./วิ.
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA} แรงม้า
+STR_UNITS_POWER_METRIC                                          :{COMMA} แรงม้า
+STR_UNITS_POWER_SI                                              :{COMMA} กิโลวัตต์
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA} ตัน
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA} ตัน
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA} กิโลกรัม
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ตัน
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ตัน
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} กิโลกรัม
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} แกลลอน
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} ลิตร
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} ลบ.ม.
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} แกลลอน
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} ลิตร
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ลูกบาศก์เมตร
 
+STR_UNITS_FORCE_SI                                              :{COMMA} กิโลนิวตัน
 
 ############ range for menu starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :กราฟแสดงผลประกอบการ
@@ -312,8 +356,30 @@ STR_015C_SAVE_GAME                                              :บันทึ
 STR_015D_LOAD_GAME                                              :เปิดเกมเดิม
 STR_015E_QUIT_GAME                                              :เลิกเล่น
 STR_015F_QUIT                                                   :ออกจากเกม
+STR_ABANDON_GAME_QUERY                                          :{YELLOW}แน่ใจนะว่าจะเลิกเล่นเกมนี้?
 STR_0161_QUIT_GAME                                              :{WHITE}เลิกเล่น
+STR_SORT_BY                                                     :{BLACK}เรียงตาม
 
+STR_SORT_BY_POPULATION                                          :{BLACK}ประชากร
+STR_SORT_BY_TYPE                                                :ประเภท
+STR_SORT_BY_NAME                                                :{BLACK}ชื่อ
+STR_SORT_BY_DROPDOWN_NAME                                       :ชื่อ
+STR_SORT_BY_DATE                                                :{BLACK}วันที่
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :กำไรปีที่แล้ว
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :กำไรปีนี้
+STR_SORT_BY_AGE                                                 :อายุ
+STR_SORT_BY_MAX_SPEED                                           :ความเร็วสูงสุด
+STR_SORT_BY_MODEL                                               :รุ่น
+STR_SORT_BY_VALUE                                               :มูลค่า
+STR_SORT_BY_LENGTH                                              :ความยาว
+STR_SORT_BY_LIFE_TIME                                           :อายุการใช้งานคงเหลือ
+STR_SORT_BY_FACILITY                                            :ประเภทสถานี
+STR_ENGINE_SORT_COST                                            :ราคา
+STR_ENGINE_SORT_INTRO_DATE                                      :วันเปิดตัวจำหน่าย
+STR_SEND_TRAIN_TO_DEPOT                                         :ส่งเข้าอู่ซ่อมบำรุง
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :ส่งเข้าอู่ซ่อมรถ
+STR_SEND_SHIP_TO_DEPOT                                          :ส่งเข้าอู่ต่อเรือ
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :ส่งเข้าโรงเก็บเครื่องบิน
 
 ############ range for months starts
 STR_0162_JAN                                                    :ม.ค.
@@ -375,6 +441,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}เป�
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}กำไรของปีนี้: {CURRENCY} (ปีที่ผ่านมา: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} ปี ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} ปี ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :รถยนต์
@@ -386,9 +454,12 @@ STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} เก่ามากแล้ว และควรเปลี่ยนใหม่ในทันที
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}ข้อมูลที่ดิน
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}ไม่สามารถทำได้
-STR_01A5_COST_TO_CLEAR                                          :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}{CURRENCY}
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {RED}{CURRENCY}
 STR_01A6_N_A                                                    :ไม่กำหนด
 STR_01A7_OWNER                                                  :{BLACK}เจ้าของ: {LTBLUE}{STRING}
+STR_ROAD_OWNER                                                  :{BLACK}เจ้าของถนน: {LTBLUE}{STRING}
+STR_TRAM_OWNER                                                  :{BLACK}เจ้าของทางรถราง: {LTBLUE}{STRING}
+STR_RAIL_OWNER                                                  :{BLACK}เจ้าของรางรถไฟ: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}อาณาบริเวณ: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :ไม่มี
 STR_01AA_NAME                                                   :{BLACK}ชื่อ
@@ -480,6 +551,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}ระ�
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :ข้อความล่าสุด/รายงานข่าว
 STR_0201_MESSAGE_SETTINGS                                       :กำหนดการแสดงข้อความ
+STR_MESSAGE_HISTORY_MENU                                        :ูข้อความย้อนหลัง
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}แสดงข้อความล่าสุด/รายงานข่าว, แสดงตัวเลือกข้อความ
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}ตัวเลือกข้อความ
 STR_0205_MESSAGE_TYPES                                          :{BLACK}รูปแบบข้อความ:
@@ -503,12 +575,35 @@ STR_0216_CAPITALIST                                             :นักลง
 STR_0217_MAGNATE                                                :เจ้าสัว
 STR_0218_MOGUL                                                  :ผู้มีอำนาจ
 STR_0219_TYCOON_OF_THE_CENTURY                                  :นักธุรกิจผู้ร่ำรวยและมีอิทธิพลมากแห่งศตวรรษ
+STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
+STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} จาก {COMPANY} ได้ก้าวไปสู่ขั้น '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}โปรแกรมสร้างฉาก
+STR_0223_LAND_GENERATION                                        :{WHITE}สร้างแผ่นดิน
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}เพิ่มพื้นที่ในการปรับระดับแผ่นดิน
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}ลดพื้นที่ในการปรับระดับแผ่นดิน
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}สร้างแผ่นดินแบบสุ่ม
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}ยกเลิกภูมิทัศน์ทังหมด
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}ยกเลิกภูมิทัศน์ทังหมด
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}สร้างภูมิทัศน์
+STR_022F_TOWN_GENERATION                                        :{BLACK}สร้างเมือง
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}สร้างอุตสาหกรรม
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}ก่อสร้างถนน
+STR_0233_TOWN_GENERATION                                        :{WHITE}สร้างเมือง
+STR_0234_NEW_TOWN                                               :{BLACK}เมืองใหม่
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}ก่อสร้างเมืองใหม่
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}ไม่สามารถสร้างเมืองที่นี่ได้...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...ติดกับขอบแผนที่มากเกินไป
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...ใกล้กับเมืองอื่นมากเกินไป
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...พื้นที่นั้นไม่เหมาะสม
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...มีเมืองมากเกินไป
+STR_CANNOT_GENERATE_TOWN                                        :{WHITE}ไม่สามารถสร้างเมืองใดได้อีก
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...มีพื้นที่บนแผนที่ไม่มากพอ
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}การสร้างแหล่งอุตสาหกรรม
 STR_0240_COAL_MINE                                              :{BLACK}เหมืองถ่านดิน
 STR_0241_POWER_STATION                                          :{BLACK}โรงไฟฟ้า
@@ -598,6 +693,8 @@ STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}รถ�
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}รถไฟ {COMMA} มีสถานที่ที่ต้องไปที่ได้ยกเลิกแล้ว
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}รถไฟ {COMMA} มีสถานที่ที่ต้องไปซ้ำกัน
 # end of order system
+
+
 
 
 

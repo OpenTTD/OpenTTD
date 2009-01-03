@@ -1127,6 +1127,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Commande-clic
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl-clic
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Désactivé
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Défilement par clic gauche: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Utiliser le format de date {ORANGE}{STRING}{LTBLUE} pour les noms de sauvegarde.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31 Déc 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :court (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatique en début de nouvelle partie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utiliser la liste de véhicules avancée: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Désactivé
@@ -1795,7 +1802,7 @@ STR_2006_POPULATION                                             :{BLACK}Populati
 STR_2007_RENAME_TOWN                                            :Renommer Ville
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Impossible de renommer la ville...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}La municipalité de {TOWN} refuse cette opération
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Noms des villes - Cliquer sur un nom pour défiler à l'emplacement
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Noms des villes - Cliquer sur un nom pour centrer la vue sur la ville
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer la vue sur la ville
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Renommer la ville
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagers le mois dernier : {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -2011,6 +2018,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Charger 
 STR_4002_SAVE                                                   :{BLACK}Sauvegarder
 STR_4003_DELETE                                                 :{BLACK}Supprimer
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Spectateur, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mo libre{P "" s}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossible d'accéder au disque
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}La sauvegarde à échoué{}{STRING}
@@ -3503,7 +3511,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Région:
 STR_DATE_TINY                                                   :{STRING}/{STRING}/{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Crédits de transfert: {LTBLUE}{CURRENCY}

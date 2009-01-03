@@ -1127,6 +1127,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :الأوامر
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :للتحكم
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :عدم استخدام
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}تصفح بالزر الايسر: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE} استخدم {ORANGE}{STRING}{LTBLUE} نمط التاريخ لاسم اللعبة المحفوظة
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :طويل - 31 ديسمبر 2009
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :قصير - 31 - 12 - 2008
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ايزو 31-12-2008
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}ايقاف اللعبة تلقائيا عند بدأ لعبة جديدة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}استخدام قائمة العربات المطورة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :بدون
@@ -2011,6 +2018,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}فتح
 STR_4002_SAVE                                                   :{BLACK}حفظ
 STR_4003_DELETE                                                 :{BLACK}حذف
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :المشاهدين, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA}   ميجا بايت متاحة
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}لا يمكن قرائة القرص
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}فشل حفظ اللعبة{}{STRING}
@@ -3503,7 +3511,10 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}المس
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}مقدار التحويل: {LTBLUE}{CURRENCY}

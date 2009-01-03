@@ -1251,6 +1251,9 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Комманд-
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-клік
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Відкл.
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Прокрутка по лівому кліку: {ORANGE}{STRING}
+
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Використовувати покращений список транспорту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :відкл.
@@ -1672,7 +1675,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Роз'єднання
 
-STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введіть суму грошей, які Ви хочете отримати
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введіть суму грошей, яку Ви хочете віддати
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер захищено паролем. Введіть пароль
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанія захищена паролем. Введіть пароль
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Список клієнтів
@@ -1714,11 +1717,11 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер п
 ############ End of leave-in-this-order
 STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Гру призупинено(недостатньо гравців)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Гру призупинено(достатньо гравців)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Гру призупинено(приєднується клієнт)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Гру продовжено(клієнт приєднався)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Гру продовжено(клієнту не вдалося приєднатися)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Гру призупинено (недостатньо гравців)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Гру продовжено (достатньо гравців)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Гру призупинено (приєднується клієнт)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Гру продовжено (клієнт приєднався)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Гру продовжено (клієнту не вдалося приєднатися)
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :виходжу...
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} приєднався до гри

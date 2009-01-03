@@ -1212,6 +1212,9 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Wyłączona
 
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatycznie włącz pauzę przy rozpoczęciu nowej gry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Używaj zaawansowanej listy pojazdów: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Nie używaj
@@ -1672,6 +1675,14 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :wyrzucony przez
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probował użyć ułatwień
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serwer jest pełny
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Gra zatrzymana (za mało graczy)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Gra wznowiona (wystarczająca ilość graczy)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Gra zatrzymana (łączenie klienta)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Gra wznowiona (klient połączony)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Gra wznowiona (nieudane połączenie klienta)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :opuszczanie
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Zespół] :
 STR_NETWORK_CHAT_COMPANY                                        :[Zespół] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespół] do {STRING}: {GRAY}{STRING}
@@ -3616,6 +3627,9 @@ STR_DATE_TINY                                                   :{STRING}-{STRIN
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Wartość transferu: {LTBLUE}{CURRENCY}
