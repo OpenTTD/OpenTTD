@@ -218,6 +218,7 @@ mixer.h
 music.h
 namegen_func.h
 network/network.h
+network/network_base.h
 network/network_client.h
 network/network_func.h
 network/network_gamelist.h

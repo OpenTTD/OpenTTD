@@ -1141,6 +1141,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\network\network_base.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\network_client.h"
 				>
 			</File>
