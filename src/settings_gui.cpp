@@ -585,6 +585,26 @@ void ShowGameDifficulty()
 
 static const int SETTING_HEIGHT = 11;         ///< Height of a single patch setting in the tree view
 
+/** Data structure describing a single patch in a tab */
+struct PatchEntry {
+	const SettingDesc *setting; ///< Setting description of the patch
+	uint index;                 ///< Index of the setting in the settings table
+};
+
+/**
+ * Data structure describing one page of patches in the patch settings window.
+ *
+ * The names of the patches to display are statically defined, and from this
+ * information, a dynamic array (with length \a num) of PatchEntry entries is
+ * constructed.
+ */
+struct PatchPage {
+	const char **names;  ///< Static list of strings with patch names that are settable from the tab
+	PatchEntry *entries; ///< Array of patch entries of the page. Initially \c NULL, filled in at run time
+	byte num;            ///< Number of entries on the page (statically filled).
+};
+
+
 static const char *_patches_ui[] = {
 	"gui.vehicle_speed",
 	"gui.status_long_date",
@@ -711,25 +731,6 @@ static const char *_patches_vehicles[] = {
 	"vehicle.dynamic_engines",
 };
 
-/** Data structure describing a single patch in a tab */
-struct PatchEntry {
-	const SettingDesc *setting; ///< Setting description of the patch
-	uint index;                 ///< Index of the setting in the settings table
-};
-
-/**
- * Data structure describing one page of patches in the patch settings window.
- *
- * The names of the patches to display are statically defined, and from this
- * information, a dynamic array (with length \a num) of PatchEntry entries is
- * constructed.
- */
-struct PatchPage {
-	const char **names;  ///< Static list of strings with patch names that are settable from the tab
-	PatchEntry *entries; ///< Array of patch entries of the page. Initially \c NULL, filled in at run time
-	byte num;            ///< Number of entries on the page (statically filled).
-};
-
 /** Array of pages (tabs), where each page holds a number of advanced settings. */
 static PatchPage _patches_page[] = {
 	{_patches_ui,           NULL, lengthof(_patches_ui)},
@@ -743,6 +744,8 @@ static PatchPage _patches_page[] = {
 /** Widget numbers of config patches window */
 enum PatchesSelectionWidgets {
 	PATCHSEL_OPTIONSPANEL = 3, ///< Panel widget containing the option lists
+	PATCHSEL_SCROLLBAR,        ///< Scrollbar
+	PATCHSEL_RESIZE,           ///< Resize button
 	PATCHSEL_INTERFACE,        ///< Button 'Interface'
 	PATCHSEL_CONSTRUCTION,     ///< Button 'Construction'
 	PATCHSEL_VEHICLES,         ///< Button 'Vehicles'
@@ -756,7 +759,6 @@ struct PatchesSelectionWindow : Window {
 	static const int SETTINGTREE_TOP_OFFSET;  ///< Position of top edge of patch values
 
 	static GameSettings *patches_ptr;  ///< Pointer to the game settings being displayed and modified
-	static int patches_max;  ///< Maximal number of patches on a single page
 
 	int page;
 	int entry;
@@ -777,14 +779,9 @@ struct PatchesSelectionWindow : Window {
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {
-			PatchPage *page;
-			for (page = &_patches_page[0]; page != endof(_patches_page); page++) {
-				uint i;
-
-				if (patches_max < page->num) patches_max = page->num;
-
+			for (PatchPage *page = &_patches_page[0]; page != endof(_patches_page); page++) {
 				page->entries = MallocT<PatchEntry>(page->num);
-				for (i = 0; i != page->num; i++) {
+				for (uint i = 0; i != page->num; i++) {
 					uint index;
 					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
 					assert(sd != NULL);
@@ -796,13 +793,17 @@ struct PatchesSelectionWindow : Window {
 			first_time = false;
 		}
 
-		/* Resize the window to fit the largest patch tab */
-		ResizeWindowForWidget(this, PATCHSEL_OPTIONSPANEL, 0, patches_max * SETTING_HEIGHT);
+		this->page = 0;
+		this->vscroll.pos = 0;
+		this->vscroll.cap = (this->widget[PATCHSEL_OPTIONSPANEL].bottom - this->widget[PATCHSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
+		SetVScrollCount(this, _patches_page[page].num);
 
-		/* Recentre the window for the new size */
-		this->top = this->top - (patches_max * SETTING_HEIGHT) / 2;
+		this->resize.step_height = SETTING_HEIGHT;
+		this->resize.height = this->height;
+		this->resize.step_width = 1;
+		this->resize.width = this->width;
 
-		this->LowerWidget(PATCHSEL_INTERFACE);
+		this->LowerWidget(page + PATCHSEL_INTERFACE); // Depress button of currently selected page
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -810,14 +811,13 @@ struct PatchesSelectionWindow : Window {
 	virtual void OnPaint()
 	{
 		const PatchPage *page = &_patches_page[this->page];
-		uint i;
 
 		/* Set up selected category */
 		this->DrawWidgets();
 
 		int x = SETTINGTREE_LEFT_OFFSET;
 		int y = SETTINGTREE_TOP_OFFSET;
-		for (i = 0; i != page->num; i++) {
+		for (uint i = vscroll.pos; i != page->num && i < vscroll.pos + vscroll.cap; i++) {
 			const SettingDesc *sd = page->entries[i].setting;
 			DrawPatch(patches_ptr, sd, x, y, this->click - (i * 2));
 			y += SETTING_HEIGHT;
@@ -878,7 +878,7 @@ struct PatchesSelectionWindow : Window {
 				int x = pt.x - SETTINGTREE_LEFT_OFFSET;  // Shift x coordinate
 				if (x < 0) return;  // Clicked left of the entry
 
-				byte btn = y / SETTING_HEIGHT;  // Compute which setting is selected
+				byte btn = this->vscroll.pos + y / SETTING_HEIGHT;  // Compute which setting is selected
 				if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
 
 				const PatchPage *page = &_patches_page[this->page];
@@ -958,6 +958,7 @@ struct PatchesSelectionWindow : Window {
 				this->RaiseWidget(this->page + PATCHSEL_INTERFACE);
 				this->page = widget - PATCHSEL_INTERFACE;
 				this->LowerWidget(this->page + PATCHSEL_INTERFACE);
+				SetVScrollCount(this, _patches_page[page].num);
 				DeleteWindowById(WC_QUERY_STRING, 0);
 				this->SetDirty();
 				break;
@@ -984,32 +985,39 @@ struct PatchesSelectionWindow : Window {
 			this->SetDirty();
 		}
 	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / SETTING_HEIGHT;
+		SetVScrollCount(this, _patches_page[page].num);
+	}
 };
 
 GameSettings *PatchesSelectionWindow::patches_ptr = NULL;
 const int PatchesSelectionWindow::SETTINGTREE_LEFT_OFFSET = 5;
 const int PatchesSelectionWindow::SETTINGTREE_TOP_OFFSET = 47;
-int PatchesSelectionWindow::patches_max = 0;
 
 static const Widget _patches_selection_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_MAUVE,    11,   369,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_MAUVE,     0,   369,    14,    41, 0x0,                             STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_MAUVE,     0,   369,    42,    50, 0x0,                             STR_NULL}, // PATCHSEL_OPTIONSPANEL
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   381,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_MAUVE,     0,   381,    14,    41, 0x0,                             STR_NULL},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   369,    42,   215, 0x0,                             STR_NULL}, // PATCHSEL_OPTIONSPANEL
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   370,   381,    42,   203, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST}, // PATCHSEL_SCROLLBAR
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   370,   381,   204,   215, 0x0,                             STR_RESIZE_BUTTON}, // PATCHSEL_RESIZE
 
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,    96,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL}, // PATCHSEL_INTERFACE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   97,   183,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL}, // PATCHSEL_CONSTRUCTION
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  184,   270,    16,    27, STR_CONFIG_PATCHES_VEHICLES,     STR_NULL}, // PATCHSEL_VEHICLES
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  271,   357,    16,    27, STR_CONFIG_PATCHES_STATIONS,     STR_NULL}, // PATCHSEL_STATIONS
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,    96,    28,    39, STR_CONFIG_PATCHES_ECONOMY,      STR_NULL}, // PATCHSEL_ECONOMY
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   97,   183,    28,    39, STR_CONFIG_PATCHES_AI,           STR_NULL}, // PATCHSEL_COMPETITORS
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,   100,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL}, // PATCHSEL_INTERFACE
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  101,   191,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL}, // PATCHSEL_CONSTRUCTION
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  192,   283,    16,    27, STR_CONFIG_PATCHES_VEHICLES,     STR_NULL}, // PATCHSEL_VEHICLES
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  284,   375,    16,    27, STR_CONFIG_PATCHES_STATIONS,     STR_NULL}, // PATCHSEL_STATIONS
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,   100,    28,    39, STR_CONFIG_PATCHES_ECONOMY,      STR_NULL}, // PATCHSEL_ECONOMY
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  101,   191,    28,    39, STR_CONFIG_PATCHES_AI,           STR_NULL}, // PATCHSEL_COMPETITORS
 {   WIDGETS_END},
 };
 
 static const WindowDesc _patches_selection_desc = {
-	WDP_CENTER, WDP_CENTER, 370, 51, 370, 51,
+	WDP_CENTER, WDP_CENTER, 382, 216, 382, 425,
 	WC_GAME_OPTIONS, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_patches_selection_widgets,
 };
 
