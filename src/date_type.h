@@ -46,10 +46,14 @@ typedef int32  Year;
 typedef uint8  Month;
 typedef uint8  Day;
 
+/**
+ * Data structure to convert between Date and triplet (year, month, and day).
+ * @see ConvertDateToYMD(), ConvertYMDToDate()
+ */
 struct YearMonthDay {
-	Year  year;
-	Month month; ///< 0 - 11
-	Day   day;   ///< 1 - 31
+	Year  year;   ///< Year (0...)
+	Month month;  ///< Month (0..11)
+	Day   day;    ///< Day (1..31)
 };
 
 static const Year INVALID_YEAR = -1;

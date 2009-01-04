@@ -52,8 +52,8 @@ void BuildOilRig(TileIndex tile);
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
-int _total_industries;                      //general counter
-uint16 _industry_counts[NUM_INDUSTRYTYPES]; // Number of industries per type ingame
+int _total_industries;                      ///< General counter
+uint16 _industry_counts[NUM_INDUSTRYTYPES]; ///< Number of industries per type ingame
 
 IndustrySpec _industry_specs[NUM_INDUSTRYTYPES];
 IndustryTileSpec _industry_tile_specs[NUM_INDUSTRYTILES];

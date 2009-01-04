@@ -17,9 +17,9 @@
 #include "rail_gui.h"
 #include "saveload.h"
 
-Year      _cur_year;
-Month     _cur_month;
-Date      _date;
+Year      _cur_year;   ///< Current year, starting at 0
+Month     _cur_month;  ///< Current month (0..11)
+Date      _date;       ///< Current date in days (day counter)
 DateFract _date_fract;
 
 
