@@ -831,7 +831,7 @@ public:
 		for (uint i = BRSW_STATION_NE; i < BRSW_LT_OFF; i++) this->widget[i].tooltips = _road_type_infos[_cur_roadtype].picker_tooltip[rs];
 
 		this->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
-		this->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
+		this->LowerWidget(_settings_client.gui.station_show_coverage + BRSW_LT_OFF);
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -839,7 +839,7 @@ public:
 	{
 		this->DrawWidgets();
 
-		if (_station_show_coverage) {
+		if (_settings_client.gui.station_show_coverage) {
 			int rad = _settings_game.station.modified_catchment ? CA_TRUCK /* = CA_BUS */ : CA_UNMODIFIED;
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 		} else {
@@ -887,9 +887,9 @@ public:
 
 			case BRSW_LT_OFF:
 			case BRSW_LT_ON:
-				this->RaiseWidget(_station_show_coverage + BRSW_LT_OFF);
-				_station_show_coverage = (widget != BRSW_LT_OFF);
-				this->LowerWidget(_station_show_coverage + BRSW_LT_OFF);
+				this->RaiseWidget(_settings_client.gui.station_show_coverage + BRSW_LT_OFF);
+				_settings_client.gui.station_show_coverage = (widget != BRSW_LT_OFF);
+				this->LowerWidget(_settings_client.gui.station_show_coverage + BRSW_LT_OFF);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;

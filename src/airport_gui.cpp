@@ -175,8 +175,8 @@ public:
 
 	AirportPickerWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
-		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
+		this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
+		this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 		this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 
 		if (_settings_game.economy.station_noise_level) {
@@ -214,7 +214,7 @@ public:
 
 		int rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;
 
-		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
+		if (_settings_client.gui.station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		this->DrawWidgets();
 
@@ -250,9 +250,9 @@ public:
 				break;
 
 			case BAW_BTN_DONTHILIGHT: case BAW_BTN_DOHILIGHT:
-				_station_show_coverage = (widget != BAW_BTN_DONTHILIGHT);
-				this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_station_show_coverage);
-				this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _station_show_coverage);
+				_settings_client.gui.station_show_coverage = (widget != BAW_BTN_DONTHILIGHT);
+				this->SetWidgetLoweredState(BAW_BTN_DONTHILIGHT, !_settings_client.gui.station_show_coverage);
+				this->SetWidgetLoweredState(BAW_BTN_DOHILIGHT, _settings_client.gui.station_show_coverage);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;

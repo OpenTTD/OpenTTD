@@ -330,7 +330,7 @@ private:
 public:
 	BuildDocksStationWindow(const WindowDesc *desc, Window *parent) : PickerWindowBase(desc, parent)
 	{
-		this->LowerWidget(_station_show_coverage + BDSW_LT_OFF);
+		this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -340,7 +340,7 @@ public:
 
 		this->DrawWidgets();
 
-		if (_station_show_coverage) {
+		if (_settings_client.gui.station_show_coverage) {
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 		} else {
 			SetTileSelectSize(1, 1);
@@ -360,9 +360,9 @@ public:
 		switch (widget) {
 			case BDSW_LT_OFF:
 			case BDSW_LT_ON:
-				this->RaiseWidget(_station_show_coverage + BDSW_LT_OFF);
-				_station_show_coverage = (widget != BDSW_LT_OFF);
-				this->LowerWidget(_station_show_coverage + BDSW_LT_OFF);
+				this->RaiseWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
+				_settings_client.gui.station_show_coverage = (widget != BDSW_LT_OFF);
+				this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
 				break;

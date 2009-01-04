@@ -83,6 +83,10 @@ struct GUISettings {
 	bool   show_track_reservation;           ///< highlight reserved tracks.
 	uint8  default_signal_type;              ///< the signal type to build by default.
 	uint8  cycle_signal_types;               ///< what signal types to cycle with the build signal tool.
+	byte   station_numtracks;                ///< the number of platforms to default on for rail stations
+	byte   station_platlength;               ///< the platform length, in tiles, for rail stations
+	bool   station_dragdrop;                 ///< whether drag and drop is enabled for stations
+	bool   station_show_coverage;            ///< whether to highlight coverage area
 
 	uint16 console_backlog_timeout;          ///< the minimum amount of time items should be in the console backlog before they will be removed in ~3 seconds granularity.
 	uint16 console_backlog_length;           ///< the minimum amount of items in the console backlog before items will be removed.

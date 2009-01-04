@@ -32,8 +32,6 @@
 #include "table/strings.h"
 #include "table/sprites.h"
 
-bool _station_show_coverage;
-
 /**
  * Draw small boxes of cargo amount and ratings data at the given
  * coordinates. If amount exceeds 576 units, it is shown 'full', same
