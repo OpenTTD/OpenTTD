@@ -6,7 +6,6 @@
 #include <math.h>
 #include "openttd.h"
 #include "clear_map.h"
-#include "clear_map.h"
 #include "variables.h"
 #include "void_map.h"
 #include "tgp.h"

@@ -29,7 +29,6 @@
 #include "widgets/dropdown_func.h"
 #include "textbuf_gui.h"
 #include "string_func.h"
-#include "depot_base.h"
 #include "tilehighlight_func.h"
 #include "network/network.h"
 

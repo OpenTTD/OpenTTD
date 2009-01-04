@@ -8,7 +8,6 @@
 #include "order_base.h"
 #include "order_func.h"
 #include "airport.h"
-#include "order_base.h"
 #include "waypoint.h"
 #include "command_func.h"
 #include "company_func.h"

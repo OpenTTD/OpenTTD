@@ -23,7 +23,6 @@
 #include "vehicle_func.h"
 #include "company_func.h"
 #include "order_func.h"
-#include "depot_base.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"
 #include "vehiclelist.h"

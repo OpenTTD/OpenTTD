@@ -12,7 +12,6 @@
 #include "timetable.h"
 #include "depot_func.h"
 #include "news_func.h"
-#include "aircraft.h"
 #include "airport.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"

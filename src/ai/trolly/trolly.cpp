@@ -33,7 +33,6 @@
 #include "../../engine_func.h"
 #include "../../engine_base.h"
 #include "../../gui.h"
-#include "../../depot_base.h"
 #include "../../vehicle_base.h"
 #include "../../vehicle_func.h"
 #include "../../date_func.h"

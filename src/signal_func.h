@@ -8,7 +8,6 @@
 #include "track_type.h"
 #include "tile_type.h"
 #include "direction_type.h"
-#include "track_type.h"
 #include "company_type.h"
 
 /**

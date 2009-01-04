@@ -7,7 +7,6 @@
 #include "../strings_type.h"
 #include "../window_gui.h"
 #include "../strings_func.h"
-#include "../strings_type.h"
 #include "../gfx_func.h"
 #include "../window_func.h"
 #include "../core/math_func.hpp"
