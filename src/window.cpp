@@ -1776,13 +1776,6 @@ static int _input_events_this_tick = 0;
  */
 static void HandleAutoscroll()
 {
-	if (_input_events_this_tick != 0) {
-		/* HandleAutoscroll is called only once per GameLoop() - so we can clear the counter here */
-		_input_events_this_tick = 0;
-		/* there were some inputs this tick, don't scroll ??? */
-		return;
-	}
-
 	if (_settings_client.gui.autoscroll && _game_mode != GM_MENU && !IsGeneratingWorld()) {
 		int x = _cursor.pos.x;
 		int y = _cursor.pos.y;
@@ -2020,6 +2013,15 @@ void HandleMouseEvents()
 void InputLoop()
 {
 	HandleKeyScrolling();
+
+	if (_input_events_this_tick != 0) {
+		/* The input loop is called only once per GameLoop() - so we can clear the counter here */
+		_input_events_this_tick = 0;
+		/* there were some inputs this tick, don't scroll ??? */
+		return;
+	}
+
+	/* HandleMouseEvents was already called for this tick */
 	HandleMouseEvents();
 	HandleAutoscroll();
 }
