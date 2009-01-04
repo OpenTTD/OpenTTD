@@ -12,10 +12,12 @@ typedef uint16 OrderID;
 typedef uint16 OrderListID;
 typedef uint16 DestinationID;
 
-enum {
-	INVALID_VEH_ORDER_ID = 0xFF,
-};
+/** Invalid vehicle order index (sentinel) */
+static const VehicleOrderID INVALID_VEH_ORDER_ID = 0xFF;
+/** Last valid VehicleOrderID. */
+static const VehicleOrderID MAX_VEH_ORDER_ID     = INVALID_VEH_ORDER_ID - 1;
 
+/** Invalid order (sentinel) */
 static const OrderID INVALID_ORDER = 0xFFFF;
 
 /* Order types */

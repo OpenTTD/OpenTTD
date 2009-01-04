@@ -567,6 +567,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 
 	if (sel_ord > v->GetNumOrders()) return CMD_ERROR;
 
+	if (v->GetNumOrders() >= MAX_VEH_ORDER_ID) return_cmd_error(STR_8832_TOO_MANY_ORDERS);
 	if (!Order::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 	if (v->orders.list == NULL && !OrderList::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
