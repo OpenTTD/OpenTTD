@@ -483,6 +483,9 @@ STR_019C_ROAD_VEHICLE                                           :Véhicule routi
 STR_019D_AIRCRAFT                                               :Aéronef
 STR_019E_SHIP                                                   :Navire
 STR_019F_TRAIN                                                  :Train
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} devient vieux
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} devient très vieux
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} devient très vieux et doit être remplacé d'urgence
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Information sur le Terrain
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Coût du balayage: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coût du balayage: {RED}{CURRENCY}
@@ -992,12 +995,20 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossib
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossible de copier les ordres...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fin des ordres partagés - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ne trouve pas de chemin pour continuer.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} est perdu.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Union Monétaire Européenne !{}{}L'Euro est introduit en tant que monnaie unique pour les transactions dans votre pays !
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} a trop peu d'ordres dans son itinéraire
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} a un ordre vide
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} a des ordres en double
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} a une station invalide dans ses ordres
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Le renouvellement automatique de {VEHICLE} a échoué {}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} est trop long après remplacement
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Aucune règles de remplacement/renouvellement automatique appliquées.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite d'argent)
 
@@ -1051,6 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Vérifi
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :non
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :de tous, sauf ceux stoppés
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de tous les véhicules
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Alerte en cas de profit négatif pour un véhicule: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Les véhicules n'expirent jamais: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Renouveler automatiquement les véhicules quand ils sont vieux
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renouveler les véhicules {ORANGE}{STRING}{LTBLUE} mois avant/après l'âge maximum
@@ -1117,6 +1129,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Propre compagni
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Toutes les compagnies
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activer les horaires pour les véhicules: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Afficher l'horaire en ticks plutôt qu'en jours: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Création rapide des ordres de véhicule: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Type de rail par défaut (après nouvelle partie/chargement): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Rail normal
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Rail électrifié
@@ -2796,6 +2809,7 @@ STR_UNKNOWN_STATION                                             :station inconnu
 STR_8812_EMPTY                                                  :{LTBLUE}Vide
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} est en attente au dépôt
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nouveaux véhicules
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Train trop long
@@ -2954,6 +2968,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacit�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...doit être à l'arrêt dans un dépôt routier
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossible de vendre le véhicule...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossible de démarrer/stopper le véhicule...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} est en attente au dépôt
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}En route pour le dépôt de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}En route pour le dépôt de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Entretien au dépôt de {TOWN}
@@ -3035,6 +3050,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}En rout
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}En route pour le dépôt naval de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Entretien au dépôt naval de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Entretien au dépôt naval de {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} est en attente au dépôt
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construire un port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construire un dépôt naval (pour construire et entretenir les navires)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navires - cliquer sur un navire pour informations
@@ -3099,6 +3115,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}En rout
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}En route pour le hangar de {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Entretien au hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Entretien au hangar de {STATION} , {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} est en attente au hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aéronef présent
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Impossible d'arrêter/démarrer aéronef...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}L'aéronef est en vol
@@ -3359,6 +3376,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Cliquer 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}L'échec du réaménagement a stoppé {VEHICLE}
 
 ############ Lists rail types
 

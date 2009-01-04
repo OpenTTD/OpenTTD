@@ -369,6 +369,9 @@ STR_019C_ROAD_VEHICLE                                           :Motorno vozilo
 STR_019D_AIRCRAFT                                               :Letelica
 STR_019E_SHIP                                                   :Brod
 STR_019F_TRAIN                                                  :Voz
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} postaje star
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} postaje vrlo star
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} postaje vrlo star i zahteva hitnu zamenu
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija o Okolini Tla
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Košta da se očisti : {LTBLUE}Nije Dostupno
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Košta da se očist: {RED}{CURRENCY}
@@ -771,6 +774,8 @@ STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izabrati
 
 
 
+
+
 ############ network gui strings
 
 
@@ -867,7 +872,7 @@ STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Graditi 
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Graditi vozni signali
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Graditi vozni most
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Graditi vozni tunel
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Ključ build/remove for railway track and signals
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Ključ građenje/očisti za vozne pruge i signale
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Most izbor - klikni na vaše najbolji most da se gradi
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Izabrati vozni skladište orientacija
 STR_1021_RAILROAD_TRACK                                         :Vozna pruga
@@ -894,8 +899,39 @@ STR_180D_BUILD_BUS_STATION                                      :{BLACK}Graditi 
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Graditi luka utovara za kamion
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Graditi most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Graditi tunel
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Ključ građenje/očisti za put
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Izabrati drumsko vozilo skladište orijentisanje
+STR_1814_ROAD                                                   :Put
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :Put sa semafori
+STR_1816_TREE_LINED_ROAD                                        :Put sa drveće
+STR_1817_ROAD_VEHICLE_DEPOT                                     :Drumsko vozilo skladište
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Put/pruge presecanje
 
 ##id 0x2000
+STR_2000_TOWNS                                                  :{WHITE}Gradovi
+STR_2002                                                        :{TINYFONT}{BLACK}{SIGN}
+STR_2002_WHITE                                                  :{TINYFONT}{WHITE}{SIGN}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Zgrada mora da se prvo sruši
+STR_2005                                                        :{WHITE}{TOWN}
+STR_2006_POPULATION                                             :{BLACK}Ljudstvo: {ORANGE}{COMMA}{BLACK}  Kuće: {ORANGE}{COMMA}
+STR_2007_RENAME_TOWN                                            :Preimenovati Grad
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Ne može preimenovati grad...
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokalna autoriet na daje da so ovo radi
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Gradske imene - klikni na ime da centriraš
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centriraj glavni izgled na mesto od grad
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Promeni ime od grad
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Putnici zadnji mesec: {ORANGE}{COMMA}{BLACK}  najveći: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Pošta zadnji mesec {ORANGE}{COMMA}{BLACK}  najveći: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :Visoka radionica
+STR_2010_OFFICE_BLOCK                                           :Radionica
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :Male blagoste
+STR_2012_CHURCH                                                 :Crkva
+STR_2013_LARGE_OFFICE_BLOCK                                     :Velika radionica
+STR_2014_TOWN_HOUSES                                            :Gradna kuća
+STR_2015_HOTEL                                                  :Hotel
+STR_2016_STATUE                                                 :Statua
+STR_2017_FOUNTAIN                                               :Fontana
+STR_2018_PARK                                                   :Park
 STR_2042_DO_IT                                                  :{BLACK}Činiti to
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Akcija raspoloživ:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Malen reklamni kampanja

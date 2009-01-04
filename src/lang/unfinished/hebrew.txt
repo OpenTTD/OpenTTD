@@ -129,6 +129,7 @@ STR_ABBREV_GRAIN                                                :{TINYFONT}חי�
 STR_ABBREV_WOOD                                                 :{TINYFONT}עץ
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}עופרת ברזל
 STR_ABBREV_STEEL                                                :{TINYFONT}ברזל
+STR_ABBREV_VALUABLES                                            :{TINYFONT}מ"ע
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}מנהל כללי
 STR_ABBREV_MAIZE                                                :{TINYFONT}תירס
 STR_ABBREV_FRUIT                                                :{TINYFONT}פירות
@@ -308,9 +309,11 @@ STR_0151_MAP_OF_WORLD                                           :מפת עולם
 STR_0152_TOWN_DIRECTORY                                         :נתוני הערים
 STR_0153_SUBSIDIES                                              :סובסדיות
 
-STR_UNITS_METRIC                                                :מטר
+STR_UNITS_IMPERIAL                                              :אימפריאל
+STR_UNITS_METRIC                                                :מטרית
+STR_UNITS_SI                                                    :השיטה הבינלאומית
 
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} קמ"ש
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} מייל לשעה
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} קמ"ש
 STR_UNITS_VELOCITY_SI                                           :{COMMA} מטר\שניה
 
@@ -318,22 +321,24 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}כ"ס
 STR_UNITS_POWER_METRIC                                          :{COMMA}כ"ס
 STR_UNITS_POWER_SI                                              :{COMMA}קילו וואט
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}טון
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}טון
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}ט'
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}ט'
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}ק"ג
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} טו{P "נות" "ן"}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} טו{P "נות" "ן"}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} ק"ג
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}גלון
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}³מטר
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}גל'
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}ל'
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}מ'³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} גלו{P "נים" "ן"}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} ליטר {P "" "ים"}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} ³מטר
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ ליברה פיט
+STR_UNITS_FORCE_METRIC                                          :{COMMA}ניוטון
 STR_UNITS_FORCE_SI                                              :{COMMA} קילו ניוטן
 
 ############ range for menu starts
@@ -1003,6 +1008,9 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}אנפ�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}מסור סחורה לתחנה רק כאשר יש ביקוש: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}אפשר בניה של גשרים ארוכים מאד: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}:'אפשר הוראות 'לך למוסך {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :בכלל לא
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :כמו שאר התעשיות
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :חיפוש אחר התעשיות
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}:תעשיות מאותו הסוג יכולים להבנות אחד ליד השני {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}תמיד תראה תאריך מלא בסגל הסטטוס: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}הראה רמזורים בצד הנהיגה: {ORANGE}{STRING}
@@ -1012,9 +1020,30 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}:(כל�
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}אפשר נתינת שוחד לערים מקומיים {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}אפשר קנייה של אפשריות הובלה בלעדיים : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}אפשר שלחת כספים לחברות אחרות: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}הכפלת משקל מטען כדי לחקות רכבות כבדות: {ORANGE}{STRING}
 
 
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}חידוש עצמי של כלי רכב כשהוא נהיה ישן
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}חידוש עצמי של כלי רכב כשהוא {ORANGE}{STRING}{LTBLUE} חודשים לפני\אחרי הגיל המקסימלי.
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}סכום הכסף המינימלי הנדרש בשביל חידוש: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}משך הצגת הודעת שגיאה: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}הראה את אוכלוסיית העיר בתוך תוית השם של העיר: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}יוצר אדמה: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :מקורי
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :בורא הקרקע
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}מרחק מקסימלי של מפעל זיקוק נפט מקצה המפה {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}גובה קו השלג: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}רמת חספוס השטח (בבורא האדמה בלבד) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :חלק מאוד
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :חלק
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :מחוספס
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :מחוספס מאוד
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}אלגוריתם של נוטע העצים: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :בכלל לא
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :מקורי
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :משופר
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}סיבוב מפת גובה: {ORANGE}{STRING}
 
 
 
@@ -1517,7 +1546,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...מצ�
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...התחנה גדולה מידי
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}לחץ והחזק מקש קונטרל כדי לבחור יותר מפריט אחד
 
-STR_UNDEFINED                                                   :(סטרינג לא ידוע)
+STR_UNDEFINED                                                   :(מחרוזת לא ידועה)
 STR_STAT_CLASS_DFLT                                             :תחנת בחירת מחדל
 STR_STAT_CLASS_WAYP                                             :נקודות דרך
 
@@ -1697,6 +1726,7 @@ STR_8040_WOOD_TRUCK                                             :משאית עצ
 
 
 
+STR_UNKNOWN_STATION                                             :תחנה לא ידועה
 
 
 
@@ -1765,6 +1795,7 @@ STR_WAGONS                                                      :קרונות
 ########### String for New Landscape Generator
 
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}יצור עולם
+STR_TREE_PLACER                                                 :{BLACK}אלגוריתם העצים:
 STR_WORLD_GENERATION                                            :{BLACK}יצור עולם
 
 

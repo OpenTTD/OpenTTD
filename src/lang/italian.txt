@@ -1118,6 +1118,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Propria compagn
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Tutte le compagnie
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Abilita la definizione di tabelle orarie per i veicoli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra le tabelle orarie in tick piuttosto che in giorni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Creazione rapida degli ordini dei veicoli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Ferrovia predefinita (a inizio/ripresa partita): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Ferrovia normale
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Ferrovia elettr.
@@ -1991,6 +1992,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Carica p
 STR_4002_SAVE                                                   :{BLACK}Salva
 STR_4003_DELETE                                                 :{BLACK}Elimina
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Spettatore, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte liber{P o i}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossibile leggere dall'unità
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvataggio fallito{}{STRING}

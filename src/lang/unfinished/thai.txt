@@ -449,6 +449,9 @@ STR_019C_ROAD_VEHICLE                                           :รถยนต
 STR_019D_AIRCRAFT                                               :อากาศยาน
 STR_019E_SHIP                                                   :เรือ
 STR_019F_TRAIN                                                  :รถไฟ
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} เริ่มเก่าแล้ว
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} เก่ามากแล้ว
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} เก่ามากแล้ว และควรเปลี่ยนใหม่ในทันที
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}ข้อมูลที่ดิน
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {LTBLUE}ไม่สามารถทำได้
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}ราคาค่าทำพื้นที่ให้โล่ง: {RED}{CURRENCY}
@@ -630,7 +633,29 @@ STR_0252_RUBBER_PLANTATION                                      :{BLACK}สว�
 ############ range ends here
 
 
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}การเลือกสกุลเงิน
+STR_MEASURING_UNITS                                             :{BLACK}หน่วยในการวัด
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}การเลือกหน่วยในการวัด
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}ยานยนต์
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E9_DRIVE_ON_LEFT                                          :ขับชิดซ้าย
+STR_02EA_DRIVE_ON_RIGHT                                         :ขับชิดขวา
+STR_02EB_TOWN_NAMES                                             :{BLACK}ชื่อเมือง
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}เลือกรูปแบบของชื่อเมือง
 
+STR_02F4_AUTOSAVE                                               :{BLACK}บันทึกเกมอัตโนมัติ
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F7_OFF                                                    :ปิด
+STR_02F8_EVERY_3_MONTHS                                         :ทุก 3 เดือน
+STR_02F9_EVERY_6_MONTHS                                         :ทุก 6 เดือน
+STR_02FA_EVERY_12_MONTHS                                        :ทุก 12 เดือน
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}เริ่มเกมใหม่
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}เปิดเกมที่บันทึกไว้
+STR_0304_QUIT                                                   :{BLACK}ออก
+STR_0305_QUIT_OPENTTD                                           :{BLACK}ออกจากเกม 'OpenTTD'
 
 ############ range for menu starts
 ############ range ends here
@@ -679,6 +704,8 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}ไม�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}ไม่สามารถคัดลอกรายการสถานที่ได้
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - สิ้นสุดรายการที่ใช้ร่วมกัน - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}รถไฟ {COMMA} ไม่สามารถหาทางไปต่อได้.
+STR_TRAIN_IS_LOST                                               :{WHITE}รถไฟ {COMMA} กำลังหลงทาง.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}เงินสกุลยูโรเริ่มใช้แล้ว!{}{}สหภาพยุโรปได้เริ่มใช้เงินสกุลเดียวกันแล้ว นั่นคือเงินสกุลยูโร รวมถึงในประเทศนี้ตั้งแต่วันนี้เป็นต้นไป!
 
 # Start of order review system.

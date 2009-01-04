@@ -482,6 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :Voertuig
 STR_019D_AIRCRAFT                                               :Vliegtuig
 STR_019E_SHIP                                                   :Schip
 STR_019F_TRAIN                                                  :Trein
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} is oud aan het worden
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} is erg oud aan het worden
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} is erg oud aan het worden en moet nodig vervangen worden
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landinformatie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Sloopkosten: {LTBLUE}niet mogelijk
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Sloopkosten: {RED}{CURRENCY}
@@ -991,12 +994,20 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan orde
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan orderlijst niet kopiëren...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Einde gedeelde orders - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is verdwaald.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} heeft te weinig orders
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} heeft een lege order
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} heeft dubbele orders
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} heeft een ongeldig station in de orders
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automatisch vernieuwen mislukt bij {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} is te lang na het vervangen
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Geen automatischvervang/vernieuw regels opgegeven.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(onvoldoende geld)
 
@@ -1094,12 +1105,13 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Uit
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Kaart muiswiel snelheid: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Rechts-klik emulatie: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Opdracht-klik
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Uit
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Linkermuisknop scrollen: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Gebruik het {ORANGE}{STRING}{LTBLUE} datumformaat voor savegame namen.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Gebruik {ORANGE}{STRING}{LTBLUE} datumformaat voor savegame namen.
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lang (31e dec 2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
@@ -1115,6 +1127,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eigen bedrijf
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle bedrijven
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Activeer dienstregeling voor voertuigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Toon dienstregeling in tikken ipv in dagen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Snel voertuig orders maken: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standaard spoorsoort (bij nieuw of opgeslagen spel): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normaal  spoor
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrisch spoor
@@ -2794,6 +2807,7 @@ STR_UNKNOWN_STATION                                             :onbekend statio
 STR_8812_EMPTY                                                  :{LTBLUE}Leeg
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} van {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} van {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} wacht in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nieuwe voertuigen
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trein te lang
@@ -2952,6 +2966,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...moet gestopt zijn binnen een wegvoertuig depot
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan dit wegvoertuig niet verkopen...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan wegvoertuig niet starten of stoppen...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} wacht in depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Op weg naar {TOWN} Weg Depot
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Op weg naar {TOWN} Weg Depot, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Onderhoud bij {TOWN} Weg Depot
@@ -3033,6 +3048,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Op weg 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Op weg naar {TOWN} Scheepswerf, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Onderhoud bij {TOWN} Scheepswerf
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Onderhoud bij {TOWN} Scheepswerf, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} wacht in depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bouw haven
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bouw scheepswerf (om schepen te bouwen en te repareren)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schepen - klik op schip voor informatie
@@ -3097,6 +3113,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op weg 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op weg naar {STATION} Hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Onderhoud bij {STATION} Hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Onderhoud bij {STATION} Hangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} wacht in vliegtuighangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in de weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan vliegtuig niet stoppen/starten...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Vliegtuig is in de lucht
@@ -3357,6 +3374,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klik om 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Order ombouwen mislukt gestopt {VEHICLE}
 
 ############ Lists rail types
 
