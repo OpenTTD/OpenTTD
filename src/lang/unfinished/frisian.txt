@@ -1047,7 +1047,6 @@ STR_4000_SAVE_GAME                                              :{WHITE}Spul Ops
 STR_4001_LOAD_GAME                                              :{WHITE}Spul Lade
 STR_4002_SAVE                                                   :{BLACK}Opslaan
 STR_4003_DELETE                                                 :{BLACK}Fuortsmite
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Koe net fan 'e skiif lêze
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Opslaan Mislearre{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kin triem net fuortsmite

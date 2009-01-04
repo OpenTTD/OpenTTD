@@ -885,7 +885,6 @@ STR_4000_SAVE_GAME                                              :{WHITE}ذخیر
 STR_4001_LOAD_GAME                                              :{WHITE}ادامه ی بازی
 STR_4002_SAVE                                                   :{BLACK}ذخیره
 STR_4003_DELETE                                                 :{BLACK}حذف
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} free
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}درایو خوانده می شود
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}بازی ذخیره نشد{}{STRING}

@@ -1107,7 +1107,6 @@ STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Tidak
 
 ##id 0x4000
 STR_4003_DELETE                                                 :{BLACK}Padam
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
 
 ##id 0x4800
 

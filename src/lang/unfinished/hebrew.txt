@@ -1191,10 +1191,6 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :השרת מלא
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
-STR_NETWORK_CLIENT_JOINED                                       :הצטרף למשחק
-STR_NETWORK_NAME_CHANGE                                         :שינה את השם ל
-STR_NETWORK_GIVE_MONEY                                          :({CURRENCY}) נתן לחברה שלך כסף
-STR_NETWORK_GAVE_MONEY_AWAY                                     :נתת {STRING} כסף ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[קבוצה] :
 STR_NETWORK_CHAT_COMPANY                                        :[קבוצה] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[קובץ] To {STRING}: {GRAY}{STRING}
@@ -1541,7 +1537,6 @@ STR_4000_SAVE_GAME                                              :{WHITE}שמור
 STR_4001_LOAD_GAME                                              :{WHITE}טען משחק
 STR_4002_SAVE                                                   :{BLACK}שמור
 STR_4003_DELETE                                                 :{BLACK}מחק
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK} פנויים {COMMA} מגבייטים
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}לא ניתן לקרוא מהדיסק
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}שמירת המשחק נכשלה{}{STRING}
