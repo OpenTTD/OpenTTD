@@ -1047,7 +1047,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}列車�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :切
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を取り除く）
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :入（すべての車両）
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}列車の損益が赤字となったときは報告：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}車両の購入可能期限がない：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}車両が古くなるとき自動交換
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高使用年数の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換

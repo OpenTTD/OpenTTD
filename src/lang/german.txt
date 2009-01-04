@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Fahrpl√
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nein
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, aber ohne gestoppte Fahrzeuge
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :f√ºr alle Fahrzeuge
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warnung anzeigen, wenn ein Zug negative Einnahmen hat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Fahrzeuge veralten nie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Fahrzeug erneuern, wenn es veraltet
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Erneuere Fahrzeug {ORANGE}{STRING}{LTBLUE} Monate vor/nach Maximalalter

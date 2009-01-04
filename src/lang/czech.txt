@@ -1118,7 +1118,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Obnoven
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ano, kromě zastavených vozidel (v depu)
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ano, u všech vozidel
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varovat, pokud vlak prodělává: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozidlům se nikdy nezastaví výroba ('nezastarají'): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky nahradit dopravní prostředek, když zestárne
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před nebo po dosažení nejvyššího stáří

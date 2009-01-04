@@ -1175,7 +1175,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Пок�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ні
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :так, крім зупиненого транспорту
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :усього транспорту
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Повідомляти, якщо поїзд приносить збитки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не старіє: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автооновлення старого транспорту
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Автооновлення транспорту через {ORANGE}{STRING}{LTBLUE} міс. до/після макс.віку

@@ -1051,7 +1051,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Пре�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :изключен
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :включен, но без спрените ПС
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :включен
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждение при загуба от влак: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}ПС не губят валидност: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Подновяване на остарели ПС
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Подновяване {ORANGE}{STRING}{LTBLUE} месеца преди/след амортизацията на ПС

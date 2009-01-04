@@ -1116,7 +1116,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pregled
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, ali isključi zaustavljena vozila
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :od svih vozila
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Upozori ako je prihod vlaka negativan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila ne zastarjevaju: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatski zamijeni vozilo kada postane staro
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automatski obnovi vozilo {ORANGE}{STRING}{LTBLUE} mjeseci prije/poslije maksimalne starosti

@@ -1025,7 +1025,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Επα�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :όχι
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ναι, αλλά εξαιρούνται τα σταματημένα οχήματα
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :από όλα τα οχήματα
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Προειδοποίηση όταν τα έσοδα ενός τρένου είναι αρνητικά: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Τα οχήματα δεν λήγουν ποτέ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα παλιώνει
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Αυτόματη Ανανέωση όταν ένα όχημα είναι {ORANGE}{STRING}{LTBLUE} μήνες πρίν/μετά την μέγιστη ηληκία

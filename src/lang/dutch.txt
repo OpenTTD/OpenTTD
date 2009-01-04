@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Herzie 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit gestopte voertuigen uit
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :van alle voertuigen
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Waarschuw als het inkomen van een trein negatief is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Voertuigen verlopen nooit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Vernieuw voertuig automatisch wanneer deze oud wordt
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maanden voor/na max. leeftijd

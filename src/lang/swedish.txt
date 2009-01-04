@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Granska
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ja, på alla fordon
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varna om ett tågs inkomst är negativ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Fordon blir aldrig gamla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Förnya fordon automatiskt när dom blir gamla
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månader före/efter maximal ålder

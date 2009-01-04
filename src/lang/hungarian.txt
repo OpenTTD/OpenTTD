@@ -1116,7 +1116,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Menetre
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nincs
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :csak mozgó járművekre
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :minden járműre
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Figyelmeztetés, ha a vonat veszteséges: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Járművek sosem avulnak el: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatikusan felújítja a járművet ha elöregedik
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autom. járműfelújítás {ORANGE}{STRING}{LTBLUE} hónappal a max életkora előtt/után

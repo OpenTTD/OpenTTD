@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}檢查�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :否
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :是，不過停止的交通工具例外
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :所有交通工具
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}於列車虧損時發出警告：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}運輸工具永不過期：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE} 交通工具自動翻新
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}當交通工具在使用年限 {ORANGE}{STRING}{LTBLUE} 個月前/後自動更新

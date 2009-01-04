@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Inspise
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men utelat stoppa køyretøy
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :av alle køyretøy
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Åtvar dersom eit tog går med underskot: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køyretøy utgår aldri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Forny køyretøy automatisk når det vert gamalt
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Forny køyretøy automatisk når det er  {ORANGE}{STRING}{LTBLUE} månader før/etter maks alder

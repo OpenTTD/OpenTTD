@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Revisa 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :si, excepte vehicles parats
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :per a tots els vehicles
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avisa si els ingressos dels trens són negatius: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Els vehicles mai caduquen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenova el vehicle quan sigui vell
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenova el vehicle quan tingui {ORANGE}{STRING}{LTBLUE} mesos abans/després antig. max.

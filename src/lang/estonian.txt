@@ -1101,7 +1101,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Sõiduk
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :jah, kuid jäta välja seisatud veovahendid
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :kõikidest veovahenditest
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Hoiatatakse kahjumlikest rongidest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Sõidukid ei aegu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Vananenud sõidukite automaatne uuendamine
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Uuenda {ORANGE}{STRING}{LTBLUE} kuud enne/pärast veovahendi suurimat vanust

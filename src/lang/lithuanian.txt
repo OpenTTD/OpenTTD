@@ -1083,7 +1083,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Perziur
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :taip, bet isskyrus sustabdytas tr. pr.
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :visu tr. priemoniu
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Perspeti, jei traukinio pajamos neigiamos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Tr. priemones niekada nepasensta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatiškai atnaujinti tr. priemonę, kai ji pasensta
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automatiskai atnaujinti tr. pr. {ORANGE}{STRING}{LTBLUE} men. iki/po maks. amziaus

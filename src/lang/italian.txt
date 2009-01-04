@@ -1052,7 +1052,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Control
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :No
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sì, ma escludi i veicoli fermi
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Per tutti i veicoli
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avvisa se i guadagni di un treno sono in negativo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}I veicoli non diventano mai obsoleti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova un veicolo quando diventa vecchio
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo quando è {ORANGE}{STRING}{LTBLUE} mesi fuori età massima

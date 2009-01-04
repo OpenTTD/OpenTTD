@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}检查�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :不检查
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :检查，不包括停运的车辆
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :检查，所有车辆
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}当列车收入为负时警告：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}车辆永不报废：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}当车辆报废时自动更新：
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}当车辆在报废前/后 {ORANGE}{STRING}{LTBLUE} 个月时自动更新

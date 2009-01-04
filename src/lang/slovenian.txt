@@ -1092,7 +1092,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pregled
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, toda izloči ustavljena vozila
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :vseh vozil
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Opozori, če je dobiček vlaka negativen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila nikoli ne dotrajajo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Samoobnovi vozila, ko se postarajo
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Samoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesecev pred/po največji starosti

@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Eviewra
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :onay
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :esyay, utbay excludeway oppedstay ehiclesvay
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ofway allway ehiclesvay
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Arnway ifway away ain'stray incomeway isway egativenay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ehiclesvay evernay expireway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenewway ehiclevay enwhay itway etsgay oldway
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenewway enwhay ehicevay isway {ORANGE}{STRING}{LTBLUE} onthsmay eforebay/afterway axmay ageway

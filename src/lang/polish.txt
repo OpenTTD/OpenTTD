@@ -1136,7 +1136,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Kontrol
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :tak, ale wyklucz zatrzymane
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :wszystkich pojazdów
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ostrzegaj, jeśli pociąg przynosi straty: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Pojazdy nigdy nie są wycofywane: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autoodnawianie pojazdów gdy stają się stare
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoodnowienie następuje {ORANGE}{STRING}{LTBLUE} miesięcy przed/po maks. wieku

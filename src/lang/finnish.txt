@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Tarkist
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :kyllä, mutta ei pysäytetyille
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :kaikille ajoneuvoille
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varoita, jos junan tuotto on negatiivinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ajoneuvot eivät vanhene: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Itseuudista ajoneuvo, kun se vanhenee
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Itseuudista {ORANGE}{STRING}{LTBLUE} kuukautta ennen/jälkeen enimmäisiän

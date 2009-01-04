@@ -1051,7 +1051,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pārska
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nē
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :jā, izņemot apstādinātos transportus
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :visiem transporta līdzekļiem
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Brīdināt, ja vilciena ienākumi ir negatīvi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transporta līdzekļi nekad nemirst: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automātiski atjaunot transportl., kad tie kļuvuši veci
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automātiski atjaunot transportl. {ORANGE}{STRING}{LTBLUE} mēnešus pirms/pēc maks. vecuma

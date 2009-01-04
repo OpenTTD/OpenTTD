@@ -1021,7 +1021,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Atentu 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :jes, escepte de haltigitaj veturiloj
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de ĉiuj veturiloj
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avertu se trajno negative enspezas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veturiloj neniam eluziĝas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Aŭtomate anstataŭu veturilon se malnoviĝas
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Anstataŭu {ORANGE}{STRING}{LTBLUE} monatojn antaŭ/post pleja veturilaĝo

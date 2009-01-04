@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Adolygu
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :na
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :iawn, ond hepgor cerbydau sydd wedi'i stopio
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :o bob cerbyd
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Rhybuddio os yw incwm trên yn negyddol: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nid yw cerbydau'n darfod: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Awtoadnewyddu cerbyd pan aiff yn hen
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Awtoadnewyddu cerbyd {ORANGE}{STRING}{LTBLUE} mis cyn ei oedran eithaf

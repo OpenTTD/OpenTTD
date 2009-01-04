@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Verific
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :pentru toate vehiculele
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avertizare in cazul in care un tren are profit negativ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehiculele nu expiră niciodată: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Înnoire automată pentru vehiculele învechite
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Înnoire automată cu {ORANGE}{STRING}{LTBLUE} luni înainte de/după atingerea vechimii max.

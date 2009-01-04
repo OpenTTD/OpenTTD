@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Arac ta
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :hayır
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :evet, ama durmuş araçlar hariç
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :tüm araçlar için
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Tren para kaybediyorsa uyar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Eski araçlar sürekli üretilsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Araç eskiyince otomatik olarak yenile
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Araç ömrüne su kadar ay yaklaşınca yenile: {ORANGE}{STRING}{LTBLUE}

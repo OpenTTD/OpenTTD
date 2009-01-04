@@ -1051,7 +1051,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Revisar
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :si, pero excluye los detenidos
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de todos los vehículos
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avisar si los ingresos de un tren son negativos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Los vehículos nunca caducan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Renovación automática de vehículos cuando se vuelven viejos
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Renovación aut. si tiene {ORANGE}{STRING}{LTBLUE} meses antes/después edad máx.

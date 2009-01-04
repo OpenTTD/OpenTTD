@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Fara yf
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :allra nema kyrrstæðra farartækja
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :allra farartækja
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Gera viðvart ef lest skilar ekki hagnaði: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Farartæki úreldast aldrei: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Uppfæra faratæki sjálfvirkt þegar þau eldast
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Sjálfvirk uppfæring {ORANGE}{STRING}{LTBLUE} {P mánuði mánuðum} fyrir/eftir hámarksaldur

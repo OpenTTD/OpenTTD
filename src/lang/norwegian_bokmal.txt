@@ -1049,7 +1049,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Inspise
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men ekskluder stoppede kjøretøy
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :av alle kjøretøy
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog går i underskudd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kjøretøy utgår aldri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Bytt automatisk ut kjøretøy når det blir gammelt:
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny når kjøretøy er {ORANGE}{STRING}{LTBLUE}{NBSP}måneder før/etter maks alder

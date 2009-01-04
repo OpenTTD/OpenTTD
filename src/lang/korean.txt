@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}차량�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :아니요
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :예 (정지된 차량 제외)
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :예 (모든 차량)
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}열차 수입이 적자일 때 경고 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}옛날 차량이 사라지지 않고 계속 만들 수 있게 함 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}차량이 오래되면 자동 교체
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}차량이 최고수명의 {ORANGE}{STRING}{LTBLUE}개월 전/후이면 자동 교체

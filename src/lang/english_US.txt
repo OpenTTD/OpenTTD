@@ -1047,7 +1047,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Review 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :yes, but exclude stopped vehicles
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :of all vehicles
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warn if a train's income is negative: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehicles never expire: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenew vehicle when it gets old
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age

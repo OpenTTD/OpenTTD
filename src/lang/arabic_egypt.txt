@@ -1051,7 +1051,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}است�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :لا
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :نعم, بستثناء العربات المتوقفة
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :لكل العربات
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}عرض اشعار عندما يكون دخل القطار سالبا: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}المركبات لا تنتهي صلاحيتها ابدا : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}جدد العربات عندما تصبح قديمة
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}التجديد التلقائي عندما تكون العربة {ORANGE}{STRING}{LTBLUE}شهر قبل / بعد العمر الافتراضي.

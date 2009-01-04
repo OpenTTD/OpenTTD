@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Tinjau 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ya, tetapi selain kendaraan yang berhenti
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :semua kendaraan
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ingatkan jika ada kereta berpendapatan negatif.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kendaraan tidak pernah kadaluarsa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Perbarui otomatis kendaraan yang telah tua.
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}}Perbarui otomatis kendaraan {ORANGE}{STRING}{LTBLUE} bulan sblm/sesudah usia maks.

@@ -1050,7 +1050,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Analisa
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de todos os veículos
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avisar se o lucro de um comboio for negativo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veículos nunca expiram: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Auto-renovação de veículos quando ficam velhos
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máx.

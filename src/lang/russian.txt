@@ -1051,7 +1051,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Про�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :не проверять
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :у всех запущенных
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :у всех
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, если поезд убыточный: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не будет выходить из эксплутации: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автоозамена изношенного транспорта
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING}{LTBLUE} месяц{P "" а ев} после истечения срока службы
