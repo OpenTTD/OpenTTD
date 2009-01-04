@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Karayolu taşı
 STR_019D_AIRCRAFT                                               :Uçak
 STR_019E_SHIP                                                   :Gemi
 STR_019F_TRAIN                                                  :Tren
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} eskiyor
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} çok eskidi
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} çok eskidi, artık hurdaya ayrılması gerekiyor
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Arazi Bilgisi
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Temizleme fiyatı: {LTBLUE}Yok
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Temizleme fiyatı: {RED}{CURRENCY}
@@ -994,36 +991,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Talimat 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Talimat listesi kopyalanamiyor...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Paylaşılmış talimat sonu - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Tren {COMMA} devam edecek bir yol bulamıyor.
-STR_TRAIN_IS_LOST                                               :{WHITE}Train {COMMA} yolunu bulamıyor.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Train {COMMA} aracının geçen seneki kârı {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Avrupa Birliği Karar Aldı!{}{}Artık ülkemizde para birimi olarak Euro kullanılacak!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Train {COMMA} çok az talimat almış
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Train {COMMA} geçersiz bir talimat almış
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Train {COMMA} çifte talimat almış
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Train {COMMA} talimatlarında geçersiz bir istasyon adı var
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Araba {COMMA} çok az talimat almış
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Araba {COMMA} geçersiz bir talimat almış
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Araba {COMMA} çifte talimat almış
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Araba {COMMA} talimatlarında geçersiz bir istasyon adı var
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Ship {COMMA} çok az talimat almış
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ship {COMMA} geçersiz bir talimat almış
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA} çifte talimat almış
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ship {COMMA} talimatlarında geçersiz bir istasyon adı var
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aircraft {COMMA} çok az talimat almış
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aircraft {COMMA} geçersiz bir talimat almış
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aircraft {COMMA} çifte talimat almış
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aircraft {COMMA} talimatlarında geçersiz bir istasyon adı var
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Şu tren yenilenemedi: {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Şu taşıt yenilenemedi: {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Şu gemi yenilenemedi: {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Şu uçak yenilenemedi: {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tren {COMMA} değiştirildikten sonra uzadı
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Hiçbir otomatik değiştirme/yenileme kuralı uygulanmadı.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(para yetmedi)
 
@@ -2815,7 +2788,6 @@ STR_UNKNOWN_STATION                                             :bilinmeyen ista
 STR_8812_EMPTY                                                  :{LTBLUE}Boş
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} - {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} geldiği yer: {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tren {COMMA} garda bekliyor
 STR_8815_NEW_VEHICLES                                           :{BLACK}Yeni Araç
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren çok uzun
@@ -2974,7 +2946,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...bir araba garajında duruyor olmalı
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Araba satılamıyor...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Araba başlayamıyor/duramıyor...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Araba {COMMA} garajda bekliyor
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} Garajina gidiyor
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} Garajina gidiyor, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Garajinda Bakıma Gir
@@ -3056,7 +3027,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Gidiyor
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Gidiyor: {TOWN} Tersanesi, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Tersanesinde Bakım
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Tersanesinde Bakım, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Gemi {COMMA} tersanede bekliyor
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}İskele yap
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Tersane yap (gemi yapmak ve bakımları için)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Gemiler - bilgi için gemiye tıkla
@@ -3121,7 +3091,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATIO
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION} Hangarına gidiyor, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION} Hangarında Bakım
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION} Hangarında Bakım, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Uçak {COMMA} hangarda bekliyor
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Yolda uçak var
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Uçak durdurulamaz/başlatılamaz...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Şu an uçusta
@@ -3382,7 +3351,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Listedek
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Talimat değiştirme başarısız durduruldu {STRING} {COMMA}
 
 ############ Lists rail types
 

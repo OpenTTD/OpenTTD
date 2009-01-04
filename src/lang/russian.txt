@@ -484,9 +484,6 @@ STR_019C_ROAD_VEHICLE                                           :Автотра�
 STR_019D_AIRCRAFT                                               :Воздушный транспорт
 STR_019E_SHIP                                                   :Корабль
 STR_019F_TRAIN                                                  :Поезд
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} устарел
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} сильно устарел
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} сильно устарел и требует замены
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информация об участке земли
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Чтобы очистить, надо: {LTBLUE}(нет данных)
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Чтобы очистить, надо: {RED}{CURRENCY}
@@ -995,36 +992,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Нево
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Невозможно скопировать список заданий
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Конец общих заданий - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Поезд {COMMA} не может найти путь для продолжения движения.
-STR_TRAIN_IS_LOST                                               :{WHITE}Поезд {COMMA} заблудился
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Доход поезда {COMMA} за прошлый год составил {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Только одно задание у поезда {COMMA}
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}У поезда {COMMA} нет заданий
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}У поезда {COMMA} дублируются задания
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}У поезда {COMMA} неправильное место назначения
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Только одно задание в списке заданий для авто {COMMA}
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}У авто {COMMA} нет заданий
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}У автомобиля {COMMA} дублируются задания
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Неправильное задание в списке заданий у автомашины {COMMA}
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Только одно задание в списке заданий для корабля {COMMA}
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}У корабля {COMMA} нет заданий
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}У корабля {COMMA} дублируются задания
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}У корабля {COMMA} неправильное место назначения
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Слишком мало заданий у {COMMA}
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}У авиатранспорта {COMMA} нет заданий
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}У авиатранспорта {COMMA} дублируются задания
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}У авиатранспорта {COMMA} неправильное место назначения
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Ошибка автообновления для поезда {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Ошибка автообновления для автотранспорта {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Ошибка автообновления для корабля {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Ошибка автообновления для самолета {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поезд {COMMA} слишком длинный после автозамены
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Нельзя применить правила автозамены/обновления.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(денег мало)
 
@@ -2812,7 +2785,6 @@ STR_UNKNOWN_STATION                                             :неизвес�
 STR_8812_EMPTY                                                  :{LTBLUE}Пусто
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} из {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} из {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Поезд {COMMA} ждет в депо
 STR_8815_NEW_VEHICLES                                           :{BLACK}Новый транспорт
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поезд слишком длинный
@@ -2971,7 +2943,6 @@ STR_9012_CAPACITY                                               :{BLACK}Емко
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...должен быть остановлен в гараже
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Невозможно продать автомобиль...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Невозможно остановить/пустить автомобиль...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Машина {COMMA} ждет в гараже
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Следует в Гараж {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Следует в гараж {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Обслуж. в гараже {TOWN}
@@ -3053,7 +3024,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Сле�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Следует в док {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Обслуж. в доке {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Обслуж. в доке {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Корабль {COMMA} ожидает в доке
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Построить пристань
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Построить док (для строительства и обслуживания кораблей)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Корабли - нажмите для получения справки
@@ -3118,7 +3088,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Лет�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Следует в Ангар {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Обслуж. в ангаре {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Обслуж. в ангаре {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Транспорт {COMMA} ждет в ангаре
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}ОН ЛЕТИТ!
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Невозможно остановить/запустить авиатранспорт...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Самолет в полете
@@ -3379,7 +3348,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Нажм
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} Мет{P ка ки ок}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Ошибка задания переоборудования {STRING} {COMMA}
 
 ############ Lists rail types
 

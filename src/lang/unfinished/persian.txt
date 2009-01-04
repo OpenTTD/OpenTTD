@@ -274,7 +274,6 @@ STR_019C_ROAD_VEHICLE                                           :ماشین
 STR_019D_AIRCRAFT                                               :هواپیما
 STR_019E_SHIP                                                   :کشتی
 STR_019F_TRAIN                                                  :قطار
-STR_01A0_IS_GETTING_OLD                                         :در حال کهنه شدن است{WHITE}{STRING} {COMMA}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}اطلاعات زمین
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}هزینه پاک کردن: {LTBLUE}0
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}هزینه پاک کردن: {RED}{CURRENCY}

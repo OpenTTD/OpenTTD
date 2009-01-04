@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Kjøretøy
 STR_019D_AIRCRAFT                                               :Fly
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Tog
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} er gammel
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} er veldig gammel
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er veldig gammel og må byttes ut snarest
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasjon om felt
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Fjerningskostnad: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Fjerningskostnad: {RED}{CURRENCY}
@@ -993,36 +990,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordreliste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordre - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Tog {COMMA} kan ikke finne en vei til å fortsette.
-STR_TRAIN_IS_LOST                                               :{WHITE}Tog {COMMA} har kjørt seg vill.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Tog {COMMA}s fortjeneste sist år var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeisk valutunion!{}{} Euro er introdusert som den utelukkede valuttaen for hverdagslige forretninger i landet ditt!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrer i kjøreplanen
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har en tom ordre
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har to like ordrer
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig stasjon i ordrene
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Kjøretøy {COMMA} har for få ordre i kjøreplanen
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Kjøretøy {COMMA} har en tom ordre
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Kjøretøy {COMMA} har to like ordrer
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Kjøretøy {COMMA} har en ugyldig stasjon i ordrene
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skip {COMMA} har for få ordrer i kjøreplanen
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skip {COMMA} har en tom ordre
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA} har to like ordrer
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skip {COMMA} har en ugyldig stasjon i ordrene
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Fly {COMMA} har for få ordrer i kjøreplanen
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Fly {COMMA} har en tom ordre
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COMMA} har to like ordrer
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig stasjon i ordrene
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoforny feilet på tog {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autoforny feilet på kjøretøy {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autoforny feilet på skip {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autoforny feilet på fly {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Toget {COMMA} er for langt etter erstatting
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ingen auto erstatt/fornyelse regler er satt.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengegrense)
 
@@ -2799,7 +2772,6 @@ STR_UNKNOWN_STATION                                             :ukjent stasjon
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} fra {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} fra {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA} venter i togstallen
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye tog/vogner
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
@@ -2958,7 +2930,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...må være stoppet i en garasje
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke selge kjøretøy...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke starte/stoppe kjøretøy...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Kjøretøy {COMMA} er i garasjen
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Er på vei til {TOWN} garasje
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Er på vei til {TOWN} garasje, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Vedlikehold ved {TOWN} garasje
@@ -3040,7 +3011,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Er på 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Er på vei mot {TOWN} skipsdepot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Vedlikehold ved {TOWN} skipsdepot
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Vedlikehold ved {TOWN} skipsdepot, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA} venter i depotet
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bygg havn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bygg skipsdepot (trengs for bygging og vedlikehold av skip)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - trykk på skip for mer informasjon
@@ -3105,7 +3075,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Er på 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Er på vei til {STATION} hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Vedlikehold ved {STATION} hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Vedlikehold ved {STATION} hangar, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Fly {COMMA} venter i hangaren
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Det er et fly i veien
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte flyet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
@@ -3366,7 +3335,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klikk fo
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Ombygningsordre stoppet pga. en feil {STRING} {COMMA}
 
 ############ Lists rail types
 

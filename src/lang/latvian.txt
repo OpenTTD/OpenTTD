@@ -484,9 +484,6 @@ STR_019C_ROAD_VEHICLE                                           :Autotransports
 STR_019D_AIRCRAFT                                               :Lidaparāts
 STR_019E_SHIP                                                   :Kuģis
 STR_019F_TRAIN                                                  :Vilciens
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} kļūst vecs
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} kļūst ļoti vecs
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} kļūst ļoti vecs un ir steidzami jānomaina
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Zemes laukuma informācija
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Izmaksas nolīdzināšanai: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Izmaksas nolīdzināšanai: {RED}{CURRENCY}
@@ -995,36 +992,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nevar da
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nevar kopēt rīkojumu sarakstu...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Dalīto rīkojumu beigas - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Vilciens {COMMA} nevar atrast ceļu, kur braukt tālāk.
-STR_TRAIN_IS_LOST                                               :{WHITE}Vilciens {COMMA} ir apmaldījies.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Vilciens {COMMA} pagājušogad radīja {CURRENCY} zaudējumus
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Eiropas naudas apvienība!{}{}Eiro ir ieviests, kā vienīgā valūta jūsu valstī!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vilcienam {COMMA} nav pietiekos'i daudz uzdevumu
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Vilcienam {COMMA} ir tuks's uzdevums
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Vilcienam {COMMA} ir dubults uzdevums
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Vilcienam {COMMA} ir nepareiza stacija ta' uzdevumos
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Auto {COMMA} ir pārāk maz rīkojumu
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Auto {COMMA} ir tukšs rīkojums
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Auto {COMMA} ir dubulti rīkojumi
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Auto {COMMA} ir nepareiza stacija rīkojumos
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Kuģim {COMMA} ir pārāk maz rīkojumu
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Kuģim {COMMA} ir tukšs rīkojums
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Kuģim {COMMA} ir dubulti rīkojumi
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Kuģim {COMMA} ir nepareizs rīkojums
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Lidaparātam nr. {COMMA} ir pārāk maz rīkojumu sarakstā
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Lidaparātam nr. {COMMA} ir tukšs rīkojums
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lidmašīnai nr. {COMMA} ir vienādi rīkojumi
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lidaparātam nr. {COMMA} ir neesošs punkts tā rīkojumos
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Vilciena autoatjaunošana neizdevās {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobiļa autoatjaunošana neizdevās {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Kuģa atjaunošana neizdevās {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lidaparāta atjaunošana neizdevās {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vilciens {COMMA} ir pa'ra'k gars' pe'c aizvietos'anas
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automātiskā aizvietošana/atjaunošana neatļauta.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(naudas limits)
 
@@ -2919,7 +2892,6 @@ STR_9012_CAPACITY                                               :{BLACK}Ietilpī
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...jābūt apstādinātam depo iekšpusē
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Transportl. nevar pārdot...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Transportl. nevar apstādināt/palaist...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Transportl. {COMMA} gaida depo
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Dodas uz {TOWN} depo
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Dodas uz {TOWN} depo, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Apkope {TOWN} depo
@@ -2998,7 +2970,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Dodas u
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Dodas uz {TOWN} kuģu depo, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Apkope {TOWN} kuģu depo
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Apkope {TOWN} kuģu depo, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Kuģis {COMMA} gaida ostā
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Būvēt kuģu piestātni
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Būvēt kuģu depo (kuģu būvēšanai un apkopei)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kuģi - uzspied uz kuģa priekš informācijas
@@ -3061,7 +3032,6 @@ STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Lidapar�
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Dodas uz {STATION} angāru
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Apkope {STATION} angārā
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Apkope {STATION} angārā, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lidaparāts nr. {COMMA} gaida lidostas angārā
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lidaparāts ceļā
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nav iespējams apturēt/palaist lidaparātu...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lidaparāts pašreiz lido

@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :자동차
 STR_019D_AIRCRAFT                                               :항공기
 STR_019E_SHIP                                                   :선박
 STR_019F_TRAIN                                                  :열차
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA}의 수명이 다되어 갑니다.
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA}의 수명이 다되어 갑니다.
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA}의 수명이 다되어 긴급 교체가 필요합니다.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}이 지역의 지형 정보
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}초기화 가격: {LTBLUE}없음
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}초기화 가격: {RED}{CURRENCY}
@@ -994,36 +991,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}경로�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}경로를 복사할 수 없습니다...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 공유된 경로의 끝 - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}열차 {COMMA}가 진행할 경로를 찾을 수 없습니다.
-STR_TRAIN_IS_LOST                                               :{WHITE}열차 {COMMA}의 다음 목적지를 찾을 수 없습니다!
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}열차 {COMMA}의 작년 수입이 {CURRENCY} 였습니다.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}유로화가 당신 나라의 일상 거래에서의 유일한 화폐 단위가 되었습니다!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}열차 {COMMA}에 경로가 너무 없습니다. 조금 더 지정해주세요.
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}열차 {COMMA}에 빈 경로가 있습니다.
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}열차 {COMMA}에 중복된 경로가 있습니다.
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}열차 {COMMA}에 잘못된 경로가 있습니다.
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}자동차 {COMMA}(은)는 경로가 너무 적습니다.
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}자동차 {COMMA}에 빈 경로가 있습니다.
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}자동차 {COMMA}에 중복된 경로가 있습니다.
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}자동차 {COMMA}에 잘못된 경로가 있습니다.
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}선박 {COMMA}(은)는 경로가 너무 적습니다.
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}선박 {COMMA}에 빈 경로가 있습니다.
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}선박 {COMMA}에 중복된 경로가 있습니다.
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}선박 {COMMA}에 잘못된 경로가 있습니다.
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}항공기 {COMMA}(은)는 경로가 너무 적습니다.
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}항공기 {COMMA}에 빈 경로가 있습니다.
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}항공기 {COMMA}에 중복된 경로가 있습니다.
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}항공기 {COMMA}에 잘못된 경로가 있습니다.
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}열차 {COMMA}의 자동 교체 실패{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}자동차 {COMMA}의 자동 교체 실패{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}선박 {COMMA}의 자동 교체 실패{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}항공기 {COMMA}의 자동 교체 실패{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}열차 {COMMA}의 교체 시기가 되었습니다.
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}자동대체/갱신 규칙이 적용되지 않았습니다.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
 
@@ -2822,7 +2795,6 @@ STR_UNKNOWN_STATION                                             :알수없는 �
 STR_8812_EMPTY                                                  :{LTBLUE}비어있음
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (출발지: {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}열차 {COMMA}이/가 차량기지에서 대기중
 STR_8815_NEW_VEHICLES                                           :{BLACK}새 열차
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}열차가 너무 깁니다!
@@ -2981,7 +2953,6 @@ STR_9012_CAPACITY                                               :{BLACK}수송�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...차고 안에서 정지해있어야 합니다!
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}자동차를 팔 수 없습니다...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}자동차를 운행/정지시킬 수 없습니다...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}자동차 {COMMA}이/가 차고에서 대기중입니다.
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} 차고로 가는 중
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} 차고로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 차고로 점검하러 가는중
@@ -3063,7 +3034,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN} 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN} 정박소로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중 ({VELOCITY})
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}선박 {COMMA}이/가 정박소에서 대기중입니다
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}항구 건설
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}정박소 만들기 (선박 제작 및 점검용)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
@@ -3128,7 +3098,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATIO
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}공항 격납고로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중 ({VELOCITY})
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}항공기 {COMMA}이/가 격납고에서 대기중입니다
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}중간에 항공기가 있습니다
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}항공기가 운항중입니다
@@ -3389,7 +3358,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}이 목�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 수정 실패로 인한 정지 {STRING} {COMMA} ??
 
 ############ Lists rail types
 

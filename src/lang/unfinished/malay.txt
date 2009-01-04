@@ -424,9 +424,6 @@ STR_019C_ROAD_VEHICLE                                           :Kenderaan Jalan
 STR_019D_AIRCRAFT                                               :Kapal Terbang
 STR_019E_SHIP                                                   :Kapal
 STR_019F_TRAIN                                                  :Keretapi
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} hampir tua
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} menjadi sangat usang
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} semakin tua dan perlu menukankan dengan segera
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maklumat Kawasan Tanah
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Harga untuk membersihkan: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Harga untuk membersihkan: {RED}{CURRENCY}

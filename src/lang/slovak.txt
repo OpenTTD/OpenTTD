@@ -546,9 +546,6 @@ STR_019C_ROAD_VEHICLE                                           :{G=m}Automobil
 STR_019D_AIRCRAFT                                               :{G=s}Lietadlo
 STR_019E_SHIP                                                   :{G=z}Lod
 STR_019F_TRAIN                                                  :{G=m}Vlak
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} je star{G ý á é}
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} je velmi star{G ý á é}
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} je velmi star{G ý á é} a potrebuje vymenit
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informácie o pozemku
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Náklady na odstránenie: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Náklady na odstránenie: {RED}{CURRENCY}
@@ -1057,36 +1054,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemozno 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemozno kopirovat zoznam prikazov ...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec zdielanych prikazov - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Vlak {COMMA} nevie nasjt cestu pre pokracovanie.
-STR_TRAIN_IS_LOST                                               :{WHITE}Vlak {COMMA} sa stratil.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Zisk vlaku {COMMA} za posledny rok bol {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europska Menova Unia!{}{}Euro bolo uvedene ako hlavna mena pre bezne pouzivanie v tejto krajine.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vlak {COMMA} ma malo prikazov
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Vlak {COMMA} ma prazdny prikaz
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Vlak {COMMA} ma zdvojene prikazy
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Vlak {COMMA} ma neplatnu stanicu v prikazoch
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Vozidlo {COMMA} ma malo prikazov
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Vozidlo {COMMA} ma prazdny prikaz
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Vozidlo {COMMA} ma zdvojene prikazy
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Vozidlo {COMMA} ma neplatnu stanicu v prikazoch
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Lod {COMMA} ma malo prikazov
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Lod {COMMA} ma prazdny prikaz
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Lod {COMMA} ma zdvojene prikazy
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Lod {COMMA} ma neplatnu stanicu v prikazoch
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Lietadlo {COMMA} ma malo prikazov
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Lietadlo {COMMA} ma prazdny prikaz
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lietadlo {COMMA} ma zdvojene prikazy
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lietadlo {COMMA} ma neplatnu stanicu v prikazoch
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Zlyhalo obnovenie vlaku {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Zlyhalo obnovenie automobilu {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Zlyhalo obnovenie lode {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Zlyhalo obnovenie lietadla {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po vymene prilis dlhy
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Neboli využité žiadne pravidlá pre obnovu.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finacny limit)
 
@@ -2863,7 +2836,6 @@ STR_UNKNOWN_STATION                                             :neznáma stanic
 STR_8812_EMPTY                                                  :{LTBLUE}Prazdny
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} caka v depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je prilis dlhy
@@ -3022,7 +2994,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapacita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musi byt zastaveny v garazi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemozno predat automobil ...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno zastavit/spustit automobil ...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobil {COMMA} caka v garazi
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Smeruje do {TOWN} garaze
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}smeruje do {TOWN} garaze, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servis v garazi {TOWN}
@@ -3104,7 +3075,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Smeruje
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Smeruje do {TOWN} lodenice, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis v lodenici {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis v lodenici {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Lod {COMMA} caka v lodenici
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit lodenicu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodenicu (pre vyrobu a opravy lodi)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lode - kliknut pre informacie
@@ -3169,7 +3139,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Smeruje
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Smeruje do {STATION} hangaru, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Servis v hangari {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servis v hangari {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lietadlo {COMMA} caka v hangare
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lietadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemozno zastavit/spustit lietadlo ...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lietadlo je vo vzduchu
@@ -3430,7 +3399,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknite
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Zlyhala prestavba {STRING} {COMMA}
 
 ############ Lists rail types
 

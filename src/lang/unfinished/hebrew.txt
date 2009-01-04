@@ -475,9 +475,6 @@ STR_019C_ROAD_VEHICLE                                           :מכונית
 STR_019D_AIRCRAFT                                               :מטוס
 STR_019E_SHIP                                                   :אוניה
 STR_019F_TRAIN                                                  :רכבת
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} ישנה
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} מאד ישנה
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} מאד ישנה וצריכה החלפה בדחיפות
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}מידע על אדמה ואיזור
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}מחיר למחיקה: {LTBLUE}לא זמין
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}מחיר למחיקה: {RED}{CURRENCY}
@@ -979,35 +976,11 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}לא נ�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}לא ניתן להעתיק הוראות...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - סוף של הוראות משותפות - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}רכבת {COMMA} לא יכולה למצוא דרך להמשיך בה.
-STR_TRAIN_IS_LOST                                               :{WHITE}רכבת {COMMA} אבודה.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}רווח של רכבת {COMMA} בשנה האחרונה היה{CURRENCY}
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}לרכבת {COMMA} יש מעט מידי הוראות בלוח זמנים
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}לרכבת {COMMA} יש הוראה שגוייה
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}לרכבת {COMMA} יש הוראות כפולות
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}לרכבת {COMMA} יש תחנה שגוייה בהוראות
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}לרכב {COMMA} יש מעט מידי הוראות
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}לרכב {COMMA} יש הוראה שגוייה
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}לרכב {COMMA} יש הוראות כפולות
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}לרכב {COMMA} יש תחנה שגוייה בהוראות
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}לאונייה {COMMA} יש מעט מידי הוראות
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}לאונייה {COMMA} יש הוראה שגוייה
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}לאונייה {COMMA} יש הוראות כפולות
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}לאונייה {COMMA} יש תחנה שגוייה בהוראות
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}לכלי טיס {COMMA} יש מעט מידי הוראות
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}לכלי טיס {COMMA} יש הוראה שוגייה
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}לכלי טיס {COMMA} יש הוראות כפולות
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}לכלי טיס {COMMA} יש תחנה שגוייה בהוראות
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}חידוש רכבת {COMMA} נכשל{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}חידוש רכב {COMMA} נכשל{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}חידוש אונייה {COMMA} נכשל{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}חידוש כלי טיס {COMMA} נכשל{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}רכבת {COMMA} ארוכה מידי אחרי ההחלפה
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}אין כללים להחלפה/חידוש אוטומטיים.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(הגבלת כסף)
 

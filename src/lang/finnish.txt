@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Ajoneuvo
 STR_019D_AIRCRAFT                                               :Lentokone
 STR_019E_SHIP                                                   :Laiva
 STR_019F_TRAIN                                                  :Juna
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} vanhenee.
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} on todella vanha.
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} on todella vanha ja täytyy korvata pikaisesti.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-aluetiedot
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistuksen hinta: {LTBLUE}-
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen hinta: {RED}{CURRENCY}
@@ -994,36 +991,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Aikataul
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Aikataulua ei voi kopioida...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - jaetun aikataulun loppu - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Juna {COMMA} ei löydä reittiä.
-STR_TRAIN_IS_LOST                                               :{WHITE}Juna {COMMA} on eksynyt.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Junan {COMMA} tuotto viime vuonna oli {CURRENCY}.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopan unionin talous- ja rahaliitto!{}{}Euro otetaan käyttöön maan ainoaksi valuutaksi päivittäisiin liiketapahtumiin!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Junan {COMMA} aikataulussa on liian vähän pysähdyksiä.
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Junan {COMMA} aikataulussa on epäkelpo pysähdys.
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Junan {COMMA} määräyksissä on kaksi kertaa sama kohta.
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Junan {COMMA} käskyissä on virheellinen asema.
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Ajoneuvon {COMMA} aikataulussa on liian vähän pysähdyksiä.
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Ajoneuvon {COMMA} aikataulussa on epäkelpo pysähdys.
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Ajoneuvon {COMMA} määräyksissä on kaksi kertaa sama kohta.
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Ajoneuvon {COMMA} käskyissä on laiton asema.
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Laivan {COMMA} aikataulussa on liian vähän pysähdyksiä.
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Laivan {COMMA} aikataulussa on epäkelpo pysähdys.
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Laivan {COMMA} määräyksissä on kaksi kertaa sama kohta.
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Laivan {COMMA} käskyissä on laiton asema.
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Lentokoneen {COMMA} aikataulussa on liian vähän pysähdyksiä.
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Lentokoneen {COMMA} aikataulussa on epäkelpo pysähdys.
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lentokoneen {COMMA} määräyksissä on kaksi kertaa sama kohta.
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lentokoneen {COMMA} käskyissä on laiton asema.
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Junan {COMMA} itseuudistus epäonnistui{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Ajoneuvon {COMMA} itseuudistus epäonnistui{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivan {COMMA} itseuudistus epäonnistui{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lentokoneen {COMMA} itseuudistus epäonnistui{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Juna {COMMA} kasvaisi liian pitkäksi
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ei käytössä olevia itsekorvaus- tai itseuudistussääntöjä
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahoitusraja)
 
@@ -2815,7 +2788,6 @@ STR_UNKNOWN_STATION                                             :tuntematon asem
 STR_8812_EMPTY                                                  :{LTBLUE}Tyhjä
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} asemalta {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} asemalta {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Juna {COMMA} odottaa veturitallilla
 STR_8815_NEW_VEHICLES                                           :{BLACK}Uusia liikennevälineitä
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Juna on liian pitkä.
@@ -2974,7 +2946,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...sen pitää olla pysähtyneenä huoltoasemalle.
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi myydä...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ajoneuvoa ei voi pysäyttää/laitta liikkeelle...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Ajoneuvo {COMMA} odottaa huoltoasemalla.
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suuntana huoltoasema, {TOWN}.
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Huolto {TOWN} Varikko
@@ -3056,7 +3027,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Suuntan
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Suuntana telakka, {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Huolto{TOWN} Telakka
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Huolto {TOWN} Telakka, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laiva {COMMA} odottaa telakalla.
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Rakenna satama
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Rakenna telakka (laivojen rakentamista ja huoltamista varten).
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laivat - napsauta laivaa saadaksesi tietoja.
@@ -3121,7 +3091,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suuntan
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suuntana lentokonehalli, {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Huolto {STATION} Halli
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Huolto {STATION} Halli, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lentokone {COMMA} odottaa lentokonehallissa.
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lentokone on tiellä.
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Lentokonetta ei voi pysäyttää/laittaa liikkeelle...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lentokone on lennossa.
@@ -3382,7 +3351,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Käynnis
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Käskyn uudelleensovitus pysähtyi virheeseen {STRING} {COMMA}
 
 ############ Lists rail types
 

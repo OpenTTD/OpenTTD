@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Oadray ehicleva
 STR_019D_AIRCRAFT                                               :Aircraftway
 STR_019E_SHIP                                                   :Ipshay
 STR_019F_TRAIN                                                  :Aintray
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} isway ettinggay oldway
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} isway ettinggay eryvay oldway
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} isway ettinggay eryvay oldway andway urgentlyway eedsnay eplacingray
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Andlay Areaway Informationway
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Ostcay otay earclay: {LTBLUE}Nay/Away
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Ostcay otay earclay: {RED}{CURRENCY}
@@ -994,36 +991,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}An'tcay 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}An'tcay opycay orderway istlay...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Endway ofway Aredshay Ordersway - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Aintray {COMMA} an'tcay indfay away athpay otay ontinuecay.
-STR_TRAIN_IS_LOST                                               :{WHITE}Aintray {COMMA} isway ostlay.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Aintray {COMMA}'say ofitpray astlay earyay asway {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeanway Onetarymay Unionway!{}{}Ethay Euroway isway introducedway asway ethay olesay urrencycay orfay everydayway ansactionstray inway ouryay ountrycay!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Aintray {COMMA} ashay ootay ewfay ordersway inway ethay eduleschay
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Aintray {COMMA} ashay away oidvay orderway
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Aintray {COMMA} ashay uplicateday ordersway
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Aintray {COMMA} ashay anway invalidway ationstay inway itsway ordersway
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Oadray Ehiclevay {COMMA} ashay ootay ewfay ordersway inway ethay eduleschay
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Oadray Ehiclevay {COMMA} ashay away oidvay orderway
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Oadray Ehiclevay {COMMA} ashay uplicateday ordersway
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Oadray Ehiclevay {COMMA} ashay anway invalidway ationstay inway itsway ordersway
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Ipshay {COMMA} ashay ootay ewfay ordersway inway ethay eduleschay
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ipshay {COMMA} ashay away oidvay orderway
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ipshay {COMMA} ashay uplicateday ordersway
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ipshay {COMMA} ashay anway invalidway ationstay inway itsway ordersway
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aircraftway {COMMA} ashay ootay ewfay ordersway inway ethay eduleschay
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aircraftway {COMMA} ashay away oidvay orderway
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aircraftway {COMMA} ashay uplicateday ordersway
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aircraftway {COMMA} ashay anway invalidway ationstay inway itsway ordersway
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenewway ailedfay onway aintray {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenewway ailedfay onway oadray ehiclevay {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenewway ailedfay onway ipshay {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenewway ailedfay onway aircraftway {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Aintray {COMMA} isway ootay onglay afterway eplacementray
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Onay autoreplaceway/enewray ulesray appliedway.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(oneymay imitlay)
 
@@ -2823,7 +2796,6 @@ STR_UNKNOWN_STATION                                             :unknownway atio
 STR_8812_EMPTY                                                  :{LTBLUE}Emptyway
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} omfray {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} omfray {STATION} (xay{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Aintray {COMMA} isway aitingway inway epotday
 STR_8815_NEW_VEHICLES                                           :{BLACK}Ewnay Ehiclesvay
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Aintray ootay onglay
@@ -2982,7 +2954,6 @@ STR_9012_CAPACITY                                               :{BLACK}Apacityc
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...ustmay ebay oppedstay insideway away oadray ehiclevay epotday
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}An'tcay ellsay oadray ehiclevay...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}An'tcay opstay/artstay oadray ehiclevay...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Oadray ehiclevay {COMMA} isway aitingway inway epotday
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Eadinghay orfay {TOWN} Oadray Epotday
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Eadinghay orfay {TOWN} Oadray Epotday, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Ervicesay atway {TOWN} Oadray Epotday
@@ -3064,7 +3035,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Eadingh
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Eadinghay orfay {TOWN} Ipshay Epotday, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Ervicesay atway {TOWN} Ipshay Epotday
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Ervicesay atway {TOWN} Ipshay Epotday, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Ipshay {COMMA} isway aitingway inway epotday
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Uildbay ipshay ockday
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Uildbay ipshay epotday (orfay uildingbay andway ervicingsay ipsshay)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ipsshay - ickclay onway ipshay orfay informationway
@@ -3129,7 +3099,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Eadingh
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Eadinghay orfay {STATION} Angarhay, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Ervicesay atway {STATION} Angarhay
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Ervicesay atway {STATION} Angarhay, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aircraftway {COMMA} isway aitingway inway ethay aircraftway angarhay
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aircraftway inway ethay ayway
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}An'tcay opstay/artstay aircraftway...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aircraftway isway inway ightflay
@@ -3390,7 +3359,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Ickclay 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Ignsay Istlay - {COMMA} Ign{P "" s}say
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Orderway efitray ailurefay oppedstay {STRING} {COMMA}
 
 ############ Lists rail types
 

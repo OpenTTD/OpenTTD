@@ -474,9 +474,6 @@ STR_019C_ROAD_VEHICLE                                           :Патно во
 STR_019D_AIRCRAFT                                               :Летало
 STR_019E_SHIP                                                   :Брод
 STR_019F_TRAIN                                                  :Воз
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} застарува
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} е многу застарено
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} е многу застарено и потребна е итна замена
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информации за земјишна област
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Цена за чистење: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за чистење: {RED}{CURRENCY}
@@ -703,13 +700,8 @@ STR_BAGS                                                        :вреќи
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Авионот {COMMA} има премалку наредби
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Авионот {COMMA} има празна наредба
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Авионот {COMMA} има дупло-исти наредби
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Авионот {COMMA} има непостоечка станица во наредбите
 # end of order system
 
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автоматската обнова неуспешна за авионот {COMMA}{}{STRING}
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ниту едно правило за автоматска промена не е применето.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(лимит на пари)
 
@@ -937,7 +929,6 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Проф
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Сигурност: {LTBLUE}{COMMA}%  {BLACK}Кварови од последното сервисирање до сега: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   Изградба: {LTBLUE}{NUM}{BLACK} Вредност: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Не може да се прати авионот во гаража...
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Авионот {COMMA} чека во гаражата
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Авион на патот
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Не може да сопре/тргне авионот...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Авионот е во лет

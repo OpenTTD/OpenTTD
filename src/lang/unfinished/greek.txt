@@ -483,9 +483,6 @@ STR_019C_ROAD_VEHICLE                                           :Όχημα δρ
 STR_019D_AIRCRAFT                                               :Αεροσκάφος
 STR_019E_SHIP                                                   :Πλοίο
 STR_019F_TRAIN                                                  :Τρένο
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}Το {STRING} {COMMA} παλιώνει
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}Το {STRING} {COMMA} παλιώνει πολύ
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}Το {STRING} {COMMA} παλιώνει πολύ και χρειάζεται επειγόντωςαντικατάσταση
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Πληροφορίες Περιοχής Εδάφους
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Κόστος καθαρισμού: {RED}{CURRENCY}
@@ -984,36 +981,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Αδύν
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Αδύνατο να αντιγραφεί η λίστα οδηγιών...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Τέλος Μοιρασμένων Οδηγιών - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}το τρένο {COMMA} δεν μπορεί να βρει διαδρομή για να συνεχίσει
-STR_TRAIN_IS_LOST                                               :{WHITE}Το τραίνο {COMMA} Χάθηκε
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Τα κέρδη του Τρένου {COMMA}το προηγούμενο έτος ήταν {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Το τραίνο {COMMA} έχει τόσες λίγες οδηγίες
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Το τρένο {COMMA} έχει κενές εντολές
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Το τρένο {COMMA} έχει διπλές εντολές
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Το τρένο {COMMA} έχει έναν λανθασμένο σταθμό στις οδηγίες του
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Το Οδικό όχημα {COMMA} έχει τόσες λίγες οδηγίες
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Το Όχημα {COMMA} έχει μία κενή εντολή
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Το Όχημα {COMMA} έχει διπλές εντολές
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Το Όχημα {COMMA} έχε έναν λανθασμένο σταθμό στις οδηγίες του
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Το πλοίο {COMMA} έχει τόσες λίγες οδηγίες
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Το Πλοίο {COMMA} έχει μία κενή οδηγία
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Το Πλοίο {COMMA} έχει διπλές οδηγίες
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Το Πλοίο {COMMA} έχει έναν λανθασμένο σταθμό στις οδηγίες του
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Το αεροσκάφος {COMMA} has too few orders in the schedule
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Το Αεροσκάφος {COMMA} έχει μία κενή οδηγία
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Το Αεροσκάφος {COMMA} έχει διπλές οδηγίες
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Το Αεροσκάφος {COMMA} έχει ένα λανθασμένο σταθμό στις οδηγίες του
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο τρένο {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο όχημα {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο πλοίο {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Η Αυτόματη Ανανέωση απέτυχε στο αεροσκάφος {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Το τρένο {COMMA} είναι πολύ μακρύ μετά την αντικατάσταση
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(χρηματικό όριο)
 
 

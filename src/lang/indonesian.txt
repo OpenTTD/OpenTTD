@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Bus/truk
 STR_019D_AIRCRAFT                                               :Pesawat
 STR_019E_SHIP                                                   :Kapal Laut
 STR_019F_TRAIN                                                  :Kereta Api
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} telah menua
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} sudah sangat tua
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} sudah sangat tua dan perlu segera diganti
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasi area daratan
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Biaya penghancuran: {LTBLUE}tidak ada
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Biaya penghancuran: {RED}{CURRENCY}
@@ -994,36 +991,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Tidak da
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Tidak dapat meniru perintah...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Akhir Perintah Bersama - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Kereta Api {COMMA} tidak menemukan arah jalur selanjutnya
-STR_TRAIN_IS_LOST                                               :{WHITE}Kereta api {COMMA} kehilangan arah.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Kereta Api {COMMA} tahun lalu menghasilkan  {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Persatuan Moneter Eropa{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Kereta api {COMMA} memliki perintah yang terlalu sedikit
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Kereta api {COMMA} mempunyai perintah yang salah
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Kereta api {COMMA} mempunyai perintah ganda
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Kereta api {COMMA} disuruh menuju stasiun yang tidak ada
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Bus/truk {COMMA} memiliki perintah yang terlalu sedikit
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Bus/truk {COMMA} mempunyai perintah yang salah
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Bus/truk {COMMA} mempunyai perintah yang sama
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Bus/truk {COMMA} mempunyai perintah ke terminal yang salah
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Kapal Laut {COMMA} memiliki terlalu sedikit tujuan/perintah di dalam jadwalnya
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Kapal Laut {COMMA} mempunyai tujuan/perintah yang kosong.
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Kapal Laut {COMMA} mempunyai tujuan/perintah yang ganda
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Kapal Laut {COMMA} mempunyai tujuan/perintah ke stasiun/terminal/depo/pelabuhan yang tidak benar
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Pesawat {COMMA}memiliki perintah terlalu sedikit pada jadwalnya
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Pesawat {COMMA} memiliki perintah yang hilang
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Pesawat {COMMA} memiliki perintah yang sama
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Pesawat {COMMA} memiliki perintah menuju bandara yang tidak ada
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Peremajaan secara otomatis gagal pada kereta api {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Peremajaan otomatis gagal pada bus/truk {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Peremajaan secara otomatis gagal pada kapal laut {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Otomatis perbaharui gagal pada pesawat {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Kereta Api {COMMA} sudah terlalu tua sejak penggantian
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Tidak ada aturan peremajaan otomatis yang digunakan
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(batas uang)
 
@@ -2817,7 +2790,6 @@ STR_UNKNOWN_STATION                                             :stasiun tidak d
 STR_8812_EMPTY                                                  :{LTBLUE}Kosong
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} dari {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} dari {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Kereta {COMMA} sedang menunggu di depo
 STR_8815_NEW_VEHICLES                                           :{BLACK}Buat Kendaraan
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Kereta api terlalu panjang
@@ -2976,7 +2948,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...harus dihentikan didalam bengkel bus/truk
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Tidak dapat menjual kendaraan...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Tidak dapat menghentikan/menjalankan kendaraan...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Bus/truk {COMMA} menanti di bengkel
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Menuju ke bengkel {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Menuju ke Bengkel {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servis di Bengkel {TOWN}
@@ -3058,7 +3029,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Menuju 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Menuju ke Galangan Kapal {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis di Galangan Kapal {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis di Galangan Kapal {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Kapal {COMMA} menanti di Galangan
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Membangun pelabuhan
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Membangun Galangan Kapal (untuk membuat dan memperbaiki kapal)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal laut - klik pada kapal untuk menampilkan informasi
@@ -3123,7 +3093,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Menuju 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Menuju ke hangar di {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Perbaikkan di Hangar {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Perbaikkan di Hangar {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Pesawat {COMMA} menanti di hangar pesawat
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Pesawat sedang berjalan
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Tidak dapat menghentikan / menjalankan pesawat...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Pesawat dalam penerbangan
@@ -3384,7 +3353,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klik unt
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Perintah Atur_Muatan gagal memberhentikan {STRING} {COMMA}
 
 ############ Lists rail types
 

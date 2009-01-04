@@ -550,9 +550,6 @@ STR_019C_ROAD_VEHICLE                                           :Silniční vozi
 STR_019D_AIRCRAFT                                               :Letadlo
 STR_019E_SHIP                                                   :Loď
 STR_019F_TRAIN                                                  :Vlak
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} je staré
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} je velmi staré
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} je velmi staré a potřebuje nahradit
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informace o uzemí
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za vyčištění: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za vyčištění: {RED}{CURRENCY}
@@ -1062,36 +1059,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemůžu
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemůžu kopírovat seznam příkazů...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Konec sdílených příkazů - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Vlak {COMMA} nemůže najít cestu.
-STR_TRAIN_IS_LOST                                               :{WHITE}Vlak {COMMA} je ztracen.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Zisk vlaku {COMMA} za poslední rok byl {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Evropská měnová unie{}{}Euro se v této zemi stalo jedinou měnou pro každodenní obchodní transakce!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vlak {COMMA} má příliš málo příkazů
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Vlak {COMMA} nemá žádné příkazy
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Vlak {COMMA} má zdvojené příkazy
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Vlak {COMMA} má v příkazech neplatnou stanici
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Silniční vozidlo {COMMA} má příliš málo příkazů
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Silniční vozidlo {COMMA} nemá žádné příkazy
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Silniční vozidlo {COMMA} má zdvojené příkazy
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Silniční vozidlo {COMMA} má v příkazech neplatnou stanici
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Loď {COMMA} má příliš málo příkazů
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Loď {COMMA} nemá žádné příkazy
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Loď {COMMA} má zdvojené příkazy
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Loď {COMMA} má v příkazech neplatnou stanici
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Letadlo {COMMA} má příliš málo příkazů
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Letadlo {COMMA} nemá žádné příkazy
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Letadlo {COMMA} má zdvojené příkazy
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Letadlo {COMMA} má v příkazech neplatnou stanici
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Obnovení vlaku {COMMA} selhalo{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Obnovení silničního vozidla {COMMA} selhalo{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Obnovení lodi {COMMA} selhalo{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Obnovení letadla {COMMA} selhalo{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Vlak {COMMA} je po výměně moc dlouhý
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Žádné pravidlo pro výměnu vozidel se nepoužilo.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finanční limit)
 
@@ -2874,7 +2847,6 @@ STR_UNKNOWN_STATION                                             :neznámá stani
 STR_8812_EMPTY                                                  :{LTBLUE}Prázdný
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} čeká v depu
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nová vozidla
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Příliš dlouhý vlak
@@ -3033,7 +3005,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapacita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musí být zastaven v garáži
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silniční vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemohu zastavit/rozjet silniční vozidlo...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Silniční vozidlo {COMMA} čeká v garáži
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Míří do garáže {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Míří do garáže {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Údržba v silničním depu {TOWN}
@@ -3115,7 +3086,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Jedu do
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Míří do depa {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Údržba v lodním depu {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Údržba v lodním depu {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Loď {COMMA} čeká v depu
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit přístavní molo
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodní depo (na nákup a servis lodí)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lodě - informace získáš klepnutím na jméno lodi
@@ -3180,7 +3150,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Jedu do
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Jedu do hangáru {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Údržba v hangáru {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Údržba v hangáru {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Letadlo {COMMA} čeká v hangáru
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letadlo v cestě
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemohu rozjet/zastavit letadlo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Letadlo letí
@@ -3441,7 +3410,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknut�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Selhání refitu příkazu zastavilo {STRING} {COMMA}
 
 ############ Lists rail types
 

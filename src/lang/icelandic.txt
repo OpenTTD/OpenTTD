@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Bifreið
 STR_019D_AIRCRAFT                                               :Flugvél
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Lest
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} er að eldast
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} er að eldast um of
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} er að eldast um of og þarfnast nauðsynlega endurnýjunar
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landsvæðisupplýsingar
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnaður við hreinsun: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnaður við hreinsun: {RED}{CURRENCY}
@@ -993,36 +990,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Get ekki
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Get ekki afritað áætlun...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Endi sameiginlegra skipana - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Lest {COMMA} finnur ekki leið til áframhalds.
-STR_TRAIN_IS_LOST                                               :{WHITE}Lest {COMMA} er týnd.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Hagnaður lestar {COMMA} á síðasta ári var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Gjaldeyrissameining í Evrópu!{}{}Evran er nú eini gjaldeyririnn fyrir öll viðskipti í þínu landi!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Lest {COMMA} hefur of fáar skipanir á áætluninni
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Lest {COMMA} hefur tóma skipun
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Lest {COMMA} hefur tvöfaldar skipanir
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Lest {COMMA} hefur ógilda stöð í áætluninni
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Bifreið {COMMA} hefur of fáar skipanir á áætluninni
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Bifreið {COMMA} hefur tóma skipun
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Bifreið {COMMA} hefur tvöfaldar skipanir
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Bifreið {COMMA} hefur ógilda stöð í áætluninni
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skip {COMMA} hefur of fáar skipanir á áætluninni
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skip {COMMA} hefur tóma skipun
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skip {COMMA} hefur tvöfaldar skipanir
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skip {COMMA} hefur ógilda stöð í áætluninni
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Flugvél {COMMA} hefur of fáar skipanir á áætluninni
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Flugvél {COMMA} hefur tóma skipun
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Flugvél {COMMA} hefur tvöfaldar skipanir
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Flugvél {COMMA} hefur ógilda stöð í áætluninni
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Sjálfvirk uppfæring lestar {COMMA} mistókst{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Sjálfvirk uppfæring bifreiðar {COMMA} mistókst{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Sjálfvirk uppfæring skips {COMMA} mistókst{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvirk uppfæring flugvélar {COMMA} mistókst{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Lest {COMMA} er of löng eftir endurnýjun
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Engar reglur um sjálfvirk umskipti/endurnýjun virkar
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(takmarkað fjármagn)
 
@@ -2791,7 +2764,6 @@ STR_UNKNOWN_STATION                                             :óþekkt stöð
 STR_8812_EMPTY                                                  :{LTBLUE}Tómt
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} frá {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} frá {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Lest {COMMA} bíður í skýli
 STR_8815_NEW_VEHICLES                                           :{BLACK}Ný faratæki
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Lestin er of löng
@@ -2948,7 +2920,6 @@ STR_9012_CAPACITY                                               :{BLACK}Burðarg
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...verður að stöðvast í bifreiðaskýli
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Get ekki selt bifreið...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Get ekki stöðvað/ræst bifreið...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Bifreið {COMMA} bíður nú í skýli
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Er á leið til bifreiðaskýlis {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Er á leið til bifreiðaskýlis {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} bifreiðaskýli
@@ -3030,7 +3001,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Stefnir
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Stefnir að {TOWN} slippi, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Viðhald í {TOWN} slippi
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Viðhald í {TOWN} slippi, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA} bíður í slippi
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byggja höfn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Reisa slipp (til að smíða og viðhalda skipum)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - smelltu á skip fyrir nánari upplýsingar
@@ -3095,7 +3065,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Stefnir
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Stefnir á {STATION} flugskýli, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Viðhald í {STATION} flugskýli
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Viðhald í {STATION} flugskýli, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugvél {COMMA} bíður í flugskýli
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugvél er fyrir
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Get ekki stöðvað/ræst flugvél...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}flugvélin er á flugi
@@ -3344,7 +3313,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Smelltu 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {STRING} {COMMA}
 
 ############ Lists rail types
 

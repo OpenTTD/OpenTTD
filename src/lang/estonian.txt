@@ -536,9 +536,6 @@ STR_019C_ROAD_VEHICLE                                           :Sõiduk
 STR_019D_AIRCRAFT                                               :Õhusõiduk
 STR_019E_SHIP                                                   :Laev
 STR_019F_TRAIN                                                  :Rong
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} on vanaks muutumas
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} on saamas väga vanaks
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} on saanud väga vanaks ja vajab kohest asendamist
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-ala andmed
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhastustasu: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhastustasu: {RED}{CURRENCY}
@@ -1045,36 +1042,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Sihtpunk
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Sihtpunktide nimekirja ei saa kopeerida...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Jagatud sihtpunktide lõpp - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Rong {COMMA} ei saa jätkamise suunda tuvastada.
-STR_TRAIN_IS_LOST                                               :{WHITE}Rong {COMMA} on eksinud.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Rongi {COMMA} eelmise aasta kasum oli {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopa rahaliit!{}{}Nüüdsest on riigi igapäevaseks käiberahaks Euro!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Rongi {COMMA} sõidugraafikus on liiga vähe sihtpunkte
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Rongil {COMMA} on tühistatud käsklus
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Rongil {COMMA} on mõni sihtpunktidest topelt
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Rongi {COMMA} plaanis on kehtetuid jaamu
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Mootorsõiduki {COMMA} sõidugraafik sisaldab liiga vähe sihtpunkte
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Mootorsõiduki {COMMA} sõidugraafik sisaldab kehtetuid sihtpunkte
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Mootorsõidukil {COMMA} on mõni sihtpunkt on topelt
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Mootorsõiduki {COMMA} sõidugraafik sisaldab olematut jaama
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Laeval {COMMA} on plaanis liiga vähe sihtpunkte
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Laeval {COMMA} on kehtetuid sihtpunkte
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Laeval {COMMA} on mõni sihtpunkt on topelt
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Laeva {COMMA} plaanis on kehtetuid jaamu
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Õhusõiduki {COMMA} sõidugraafikus on liiga vähe sihtpunkte
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Õhusõidukil {COMMA} on sõidugraafikus kehtetu sihtpunkt
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Õhusõidukil {COMMA} on topeltsihtpunkte
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Õhusõiduki {COMMA} sõidugraafikus on kehtetu jaam
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rongi {COMMA} automaatne uuendamine nurjus{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Mootorsõiduki {COMMA} automaatne uuendamine nurjus{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laeva {COMMA} automaatne uuendamine nurjus{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Õhusõiduki iseuuendamine nurjus{COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Rong {COMMA} on pärast asendust liiga pikk
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automaatse asendamise/uuendamise reegleid ei ole rakendatud
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahapiirang)
 
@@ -2850,7 +2823,6 @@ STR_UNKNOWN_STATION                                             :tundmatu jaam
 STR_8812_EMPTY                                                  :{LTBLUE}Tühi
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} jaamast {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} jaamast {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Rong {COMMA} on depoos ootel
 STR_8815_NEW_VEHICLES                                           :{BLACK}Uus rong
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Rong on liiga pikk
@@ -3007,7 +2979,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kandevõ
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...peab garaaþis olema
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ei saa veokit müüa...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ei saa veokit peatada, ega startida...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Veok {COMMA} ootab garaaþi
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suundub {TOWN} garaaþi
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suundub {TOWN} garaaþi, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Hooldus linna {TOWN} depoos
@@ -3089,7 +3060,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Suundub
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Suundub linna {TOWN} laevaremonditehasesse, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Hooldus linna {TOWN} laevaremonditehases.
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Hooldus linna {TOWN} laevaremonditehases, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laev {COMMA} ootab sadamas
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Ehita laevadokk
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Ehita laevaremonditehas (laevade ehitamiseks ja hoolduseks)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laevad - info saamiseks klõpsa laevale
@@ -3154,7 +3124,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suundub
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suundub {STATION} angaari, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Hooldus linna {STATION} angaaris
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Hooldus linna {STATION} angaaris, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lennuk {COMMA} ootab angaaris
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lennuk on teel
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ei saa lennukit peatada/käivitada...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lennuk on õhus
@@ -3414,7 +3383,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Vajuta, 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Tellimuse ümberseadistus peatas {STRING} {COMMA}
 
 ############ Lists rail types
 

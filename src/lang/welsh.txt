@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Mae Cerbyd Ffor
 STR_019D_AIRCRAFT                                               :Mae Awyren
 STR_019E_SHIP                                                   :Mae Llong
 STR_019F_TRAIN                                                  :Mae Trên
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} yn hen erbyn hyn
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} yn hen iawn erbyn hyn
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} yn hynod o hen erbyn hyn ac mae angen ei ddisodli
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gwybodath Ardal Tir
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Côst i'w glirio: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Côst i'w glirio: {RED}{CURRENCY}
@@ -993,36 +990,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Does dim
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Does dim modd copïo'r rhestr gorchmynion...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Diwedd y Gorchmynion sydd wedi'u Rhannu - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Ni all Trên {COMMA} ganfod llwybr er mwyn parhau.
-STR_TRAIN_IS_LOST                                               :{WHITE}Mae Trên {COMMA} ar goll.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Elw Trên {COMMA} y flwyddyn ddiwethaf oedd {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Arian Sengl Ewropeaidd!{}{}Cafodd yr Ewro ei gyflwyno fel unig arian cyfred eich gwlad!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Does gan Trên {COMMA} ddim digon o orchmynion yn ei restr
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Mae gan Trên {COMMA} orchymyn gwag
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Mae gan Trên {COMMA} orchmynion dyblyg
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Mae gan Trên {COMMA} orsaf annilys yn ei restr orchmynion
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Does gan Cerbyd Ffordd {COMMA} ddim digon o orchmynion yn ei restr
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Mae gan Cerbyd Ffordd {COMMA} orchymyn gwag
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Mae gan Cerbyd Ffordd {COMMA} orchmynion dyblyg
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Mae gan Cerbyd Ffordd {COMMA} orsaf annilys yn ei restr orchmynion
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Does gan Llong {COMMA} ddim digon o orchmynion yn ei restr
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Mae gan Llong {COMMA} orchymyn gwag
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Mae gan Llong {COMMA} orchmynion dyblyg
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Mae gan Llong {COMMA} orsaf annilys yn ei restr orchmynion
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Does gan Awyren {COMMA} ddim digon o orchmynion yn ei restr
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Mae gan Awyren {COMMA} orchymyn gwag
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Mae gan Awyren {COMMA} orchmynion dyblyg
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Mae gan Awyren {COMMA} orsaf annilys yn ei restr orchmynion
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Methodd yr Awtoadnewyddu ar drên {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Methodd yr Awtoadnewyddu ar gerbyd ffordd {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Methodd yr Awtoadnewyddu ar long {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Methodd yr Awtoadnewyddu ar awyren {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Mae Trên {COMMA} yn rhy hir wedi iddo gael ei ddisodli
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ni weithredwyd unrhyw reolau awtogyfnewid/adnewydd.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(terfyn arian)
 
@@ -2788,7 +2761,6 @@ STR_UNKNOWN_STATION                                             :gorsaf anhysbys
 STR_8812_EMPTY                                                  :{LTBLUE}Gwag
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} o {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} o {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Mae Trên {COMMA} yn disgwyl yn y depo
 STR_8815_NEW_VEHICLES                                           :{BLACK}Cerbyd Newydd
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Mae'r Trên yn rhy hir
@@ -2945,7 +2917,6 @@ STR_9012_CAPACITY                                               :{BLACK}Gallu cl
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...rhaid iddo fod wedi'i stopio mewn depo cerbyd ffordd
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Methu gwerthu cerbyd ffordd...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Methu stop/start cerbyd ffordd...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Ffordd cerbyd {COMMA} yn disgwyl mewn depo
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Mynd am Ddepo Ffordd {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Mynd am Ddepo Ffordd {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Mynd am wasanaeth Ddepo Ffordd {TOWN}
@@ -3027,7 +2998,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Mynd am
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Mynd am Ddepo Llong{TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Mynd am wasanaeth i Ddepo Llong {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Mynd am wasanaeth i Depo Llong {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Llong {COMMA} yn disgwyl yn nepo
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Adeiladu doc llongau
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Adeiladu depo llongau  (ar gyfer adeiladu a rhoi gwasanaeth i longau)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Llongau - cliciwch ar long am wybodaeth
@@ -3092,7 +3062,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Mynd am
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Mynd am Awyrendy {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Mynd am wasanaeth i Awyrendy {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Mynd am wasanaeth i Awyrendy {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Mae Awyren {COMMA} yn disgwyl yr awyrendy
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Awyren yn y ffordd
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Methu stopio/cychwyn awyren...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}mae'r awyren yn hedfan
@@ -3311,7 +3280,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clicio i
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Rhestr Arwyddion - {COMMA} Arwydd{P "" ion}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Methodd y gorchymyn i ailffitio {STRING} {COMMA}
 
 ############ Lists rail types
 

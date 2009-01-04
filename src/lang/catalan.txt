@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Vehicle
 STR_019D_AIRCRAFT                                               :Avió
 STR_019E_SHIP                                                   :Vaixell
 STR_019F_TRAIN                                                  :Tren
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} s'està envellint
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} s'està envellint molt
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} s'està envellint molt i necessita substitució urgent
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informació del terreny
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost de neteja: {RED}{CURRENCY}
@@ -994,36 +991,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No es po
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No es pot copiar la llista d'ordres...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi d'Ordres Compartides - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}El Tren {COMMA} no pot trobar el camí per poder continuar.
-STR_TRAIN_IS_LOST                                               :{WHITE}El tren {COMMA} s'ha perdut.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}El benefici del tren {COMMA} el darrer any ha estat de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Unió Monetària Europea!{}{}S'introdueix l'Euro com a moneda única per les transaccions diàries del teu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tren {COMMA} té massa poques ordres a la planificació
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tren {COMMA} té una ordre buida
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tren {COMMA} té ordres duplicades
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tren {COMMA} té una estació incorrecta en les ordres
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Vehicle {COMMA} té massa poques ordres a la planificació
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Vehicle {COMMA} té una ordre buida
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Vehicle {COMMA} té ordres duplicades
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Vehicle {COMMA} té una estació incorrecta en les ordres
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Vaixell {COMMA} té massa poques ordres a la planificació
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Vaixell {COMMA} té una ordre buida
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Vaixell {COMMA} té ordres duplicades
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Vaixell {COMMA} té una estació incorrecta en les ordres
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}L'avió {COMMA} té massa poques ordres a la planificació
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}L'avió {COMMA} té una ordre buida
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}L'avió {COMMA} té ordres duplicades
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}L'avió {COMMA} té una estació incorrecta a les ordres
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenovació ha fallat al tren {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenovació ha fallat a l'automòbil {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovació ha fallat al vaixell {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}L'autorenovació ha fallat en l'avió {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}El tren {COMMA} és massa llarg després del canvi
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No s'han aplicat normes d'autosubstitució/renovació.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(límit de diners)
 
@@ -2815,7 +2788,6 @@ STR_UNKNOWN_STATION                                             :estació descon
 STR_8812_EMPTY                                                  :{LTBLUE}Buit
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} procedent{P "" s} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} des de {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tren {COMMA} en espera en cotxeres
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nous Vehicles
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren massa llarg
@@ -2974,7 +2946,6 @@ STR_9012_CAPACITY                                               :{BLACK}Capacita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...s'ha de parar dins d'una cotxera
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No pots vendre l'automòbil...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No es pot parar/arrencar l'automòbil...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehicle {COMMA} esperant en cotxera
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Cap a la cotxera de {TOWN}.
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisió a la cotxera de {TOWN}
@@ -3056,7 +3027,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Cap a l
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Cap a la drassana de{TOWN}, a {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Revisió a la drassana de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la drassana de {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Vaixell {COMMA} esperant en drassana
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construeix un port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construeix una drassana (per construir i revisar vaixells)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per més informació
@@ -3121,7 +3091,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Cap a l'hangar de {STATION}, a {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Revisió a l'hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Revisió a l'hangar de {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}L'avió {COMMA} està esperant a l'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Avió al camí
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No es pot parar/arrencar l'avió...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}L'avió està volant
@@ -3382,7 +3351,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clica pe
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Ordre de remodelar fallida ha parat {STRING} {COMMA}
 
 ############ Lists rail types
 

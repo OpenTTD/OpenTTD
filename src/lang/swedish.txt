@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Vägfordon
 STR_019D_AIRCRAFT                                               :Flygplan
 STR_019E_SHIP                                                   :Skepp
 STR_019F_TRAIN                                                  :Tåg
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} börjar bli gammal
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} börjar bli väldigt gammal
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} börjar bli väldigt gammal och måste bytas ut
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Markinformation
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnad att röja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnad att röja: {RED}{CURRENCY}
@@ -993,36 +990,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan inte
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan inte kopiera orderlistan...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delade order - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Tåg {COMMA} hittar inte en väg att fortsätta på.
-STR_TRAIN_IS_LOST                                               :{WHITE}Tåg {COMMA} är vilse
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Förra året fölorade Tåg {COMMA}  {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeiska Valutasystemet!{}{}Euron introduceras och ditt land går över till den som dess enda valuta!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tåg {COMMA} har för få destinationer
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tåg {COMMA} har en bruten destination
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tåg {COMMA} har dubblerade destinationer
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tåg {COMMA} har en felaktig station ibland destinationerna
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Vägfordon {COMMA} har för få destinationer
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Vägfordon {COMMA} har en bruten destination
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Vägfordon {COMMA} har dubblerade destinationer
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Vägfordon {COMMA} har en felaktig station ibland destinationerna
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skepp {COMMA} har för få destinationer
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skepp {COMMA} har en bruten destination
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skepp {COMMA} har dubblerade destinationer
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skepp {COMMA} har en felaktig station ibland destinationerna
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Flygplan {COMMA} har för få destinationer
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Flygplan {COMMA} har en bruten destination
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Flygplan {COMMA} har dubblerade destinationer
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Flygplan {COMMA} har en felaktig station ibland destinationerna
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatiska förnyandet av tåg {COMMA} misslyckades{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatiska förnyandet av vägfordon {COMMA} misslyckades{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatiska förnyandet av skepp {COMMA} misslyckades{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatiska förnyandet av flygplan {COMMA} misslyckades{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tåg {COMMA} är för långt efter förnyandet
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Förnyar ej fordon automatiskt
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengagräns)
 
@@ -2799,7 +2772,6 @@ STR_UNKNOWN_STATION                                             :okänd station
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} från {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} från {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tåg {COMMA} väntar i depå
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nytt fordon
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tåg för långt
@@ -2958,7 +2930,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapacite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...måste stoppas inuti ett bussgarage
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan inte sälja vägfordon...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan inte stoppa/starta vägfordon...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vägfordon {COMMA} väntar i depån
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}På väg mot {TOWN}s vägdepå
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN}s vägdepå i {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service vid {TOWN}s vägdepå
@@ -3040,7 +3011,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}På vä
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN}s Skeppsdepå i {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service vid {TOWN}s skeppsdepå
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service vid {TOWN}s skeppsdepå, i{VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skepp {COMMA} väntar i depå
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bygg hamn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bygg skeppsdepå (för byggnad och lagning av skepp)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skepp - klicka på skepp för information
@@ -3105,7 +3075,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}På vä
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}På väg mot {STATION}s hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service vid {STATION}s hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service vid {STATION}s hangar i {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flygplan {COMMA} väntar i flygplanshangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flygplan i vägen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan inte stoppa/starta flygplan...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flygplan är i luften
@@ -3366,7 +3335,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klicka f
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Misslyckande av anpassning stoppat {STRING} {COMMA}
 
 ############ Lists rail types
 

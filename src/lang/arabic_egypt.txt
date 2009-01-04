@@ -483,9 +483,6 @@ STR_019C_ROAD_VEHICLE                                           :مركبات
 STR_019D_AIRCRAFT                                               :طائرات
 STR_019E_SHIP                                                   :سفن
 STR_019F_TRAIN                                                  :قطارات
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} يحتاج تبديل  {COMMA}
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING}  اصبحت قديمة جدا  {COMMA}
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} قديمة جدا وتحتاج تبديل على الفور  {COMMA}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}معلومات ارض
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK} تكلفة الازالة :  {LTBLUE} غير متاح
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}تكلفة الازالة :  {RED}{CURRENCY}
@@ -995,36 +992,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}لا ي�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}لا يمكن نسخ قائمة الأوامر
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - نهاية الأوامر المشتركة - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}القطار {COMMA}لا يجد سكة للمواصلة.
-STR_TRAIN_IS_LOST                                               :{WHITE}القطار{COMMA} تائة.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}القطار {COMMA}دخل السنة السابقة {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}العملة الموحدة للدول الأوربية! {}{}تم اعتماد العملة الأوربية الموحدة - اليورو - للمعاملات اليومية في دولتك!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}القطار{COMMA}لدية اوامر قليلة جدا في جدولة
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}القطار{COMMA}لدية امر غير صالح
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}القطار{COMMA}لدية اوامر مكررة
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}القطار{COMMA} لدية محطة غير صالحة في قائمة الأوامر
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}العربة{COMMA}لديها اوامر قليلة في جدولها
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}العربة{COMMA}لديها امر غير صالح
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}العربة{COMMA}لديها اوامر مكررة
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}العربة{COMMA}لديها محطة غير صالحة في قائمة الأوامر
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}السفينة{COMMA}ليس لديها اوامر كافية
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}السفينة{COMMA}لديها امر غير صالح
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}السفينة{COMMA}لديها اوامر مكررة
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}السفينة{COMMA}لديها محطة خاطئة في قائمة الأوامر
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}الطائرة{COMMA}ليس لديها اوامر كافية
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}الطائرة{COMMA}لديها امر غير صالح
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}الطائرة{COMMA}لديها اوامر مكررة
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}الطائرة{COMMA}لديها محطة غير صالحة في قائمة الأوامر
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}التجديد التلقائي فشل للقطار {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}التجديد التلقائي فشل للعربة {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}التجديد التلقائي فشل للسفينة {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}التجديد التلقائي فشل للطائرة {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}القطار {COMMA}طويل جدا بعد التغيير
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}لا يوجد نظام مطبق للتبديل/ التجديد
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(حدود التكلفة للتبديل)
 
@@ -2824,7 +2797,6 @@ STR_UNKNOWN_STATION                                             :محطة غير
 STR_8812_EMPTY                                                  :{LTBLUE}فارغ
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} الى {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} من{STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}قطار {COMMA} ينتظر في ورشة الصيانة
 STR_8815_NEW_VEHICLES                                           :{BLACK}عربات جديدة
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}القطار طويل جدا
@@ -2983,7 +2955,6 @@ STR_9012_CAPACITY                                               :{BLACK}السع
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... يجب ان يوقف داخل ورشة الصيانة.
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}لا يمكن بيع العربة...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}لا يمكن ايقاف / تشغيل العربة
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}العربة {COMMA} تنتظر في الورشة
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}متوجه لورشة {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}متوجة الى ورشة {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}صيانة في ورشة {TOWN}
@@ -3065,7 +3036,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}متو�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}تتجة الى حوض {TOWN}للسفن, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}صيانة في حوض سفن  {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}صيانة في حوض{TOWN}للسفن, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}السفينة {COMMA}تنتظر في الحوض
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}بناء مرفء سفن
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}بناء حوض سفن - لشراء/ بيع/ صيانة السفن -
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}السفن - اضغط على السفينة للتفاصيل
@@ -3130,7 +3100,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}متو�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}تتوجة الى حظيرة {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}صيانه في حظيرة  {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}الصيانة في حظيرة {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}الطائرة {COMMA} تنتظر في حظيرةالصيانة
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}طائرة في الطريق
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}لا يمكن توقيف / تشغيل الطائرة
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}الطائرة تقوم بالطيران الآن
@@ -3391,7 +3360,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}اضغط
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}قائمة العلامات -  {COMMA} علامة
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}فشل امر تغيير الحمولة {STRING} {COMMA}
 
 ############ Lists rail types
 

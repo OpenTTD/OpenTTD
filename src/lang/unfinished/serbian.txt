@@ -369,9 +369,6 @@ STR_019C_ROAD_VEHICLE                                           :Motorno vozilo
 STR_019D_AIRCRAFT                                               :Letelica
 STR_019E_SHIP                                                   :Brod
 STR_019F_TRAIN                                                  :Voz
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} postaje star
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} postaje vrlo star
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} postaje vrlo star i zahteva hitnu zamenu
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija o Okolini Tla
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Košta da se očisti : {LTBLUE}Nije Dostupno
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Košta da se očist: {RED}{CURRENCY}

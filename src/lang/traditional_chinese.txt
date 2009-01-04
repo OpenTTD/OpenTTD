@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :車輛
 STR_019D_AIRCRAFT                                               :飛機
 STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA}使用年限將近
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA}使用年限已過
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA}使用年限已過必須替換
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}土地資訊
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}整地花費：{LTBLUE}不適用
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}整地花費：{RED}{CURRENCY}
@@ -993,36 +990,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}無法�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}無法複製指令清單...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共享指令結束 - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}列車 {COMMA} 找不到路徑繼續行駛
-STR_TRAIN_IS_LOST                                               :{WHITE}列車 {COMMA} 迷路了
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}列車 {COMMA}上一年盈利為 {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}歐洲貨幣統一！{}{}你的國家已採用歐元作為唯一的交易貨幣了！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}列車 {COMMA} 指令不足
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}列車 {COMMA} 其中一個指令無效
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}列車 {COMMA} 指令重覆
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}列車 {COMMA} 指令中車站不存在
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}車輛 {COMMA} 指令不足
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}車輛 {COMMA} 其中一個指令無效
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}車輛 {COMMA} 指令重覆
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}車輛 {COMMA} 指令中的車站不存在
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}船舶 {COMMA} 指令不足
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}船舶 {COMMA} 其中一個指令無效
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}船舶 {COMMA} 指令重覆
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}船舶 {COMMA} 指令中碼頭不存在
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}飛機 {COMMA} 指令不足
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}飛機 {COMMA} 其中一個指令無效
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}飛機 {COMMA} 指令重覆
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}飛機 {COMMA} 日程表中機場不存在
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}列車 {COMMA} 自動翻新失敗{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}車輛 {COMMA} 自動翻新失敗{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}船舶 {COMMA} 自動翻新失敗{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飛機 {COMMA} 自動翻新失敗{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}替換後列車 {COMMA} 過長
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}無自動替換/翻新的規則可套用
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(金錢限制)
 
@@ -2798,7 +2771,6 @@ STR_UNKNOWN_STATION                                             :未知車站
 STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} 來自 {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} 來自 {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}列車 {COMMA} 已在機廠待命
 STR_8815_NEW_VEHICLES                                           :{BLACK}購買新交通工具
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}列車太長
@@ -2955,7 +2927,6 @@ STR_9012_CAPACITY                                               :{BLACK}容量�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...必須停在車庫内
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}無法出售車輛...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}無法停止/起動車輛...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}車輛 {COMMA} 已在車庫内待命
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}正前往 {TOWN} 車庫
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}正前往 {TOWN} 車庫，{VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}在 {TOWN} 車庫維護中
@@ -3037,7 +3008,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正前�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正前往 {TOWN} 船塢，{VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船塢維護中
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船塢維護中，{VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}船舶 {COMMA} 已在船塢待命
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}興建碼頭
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}興建船塢 (用以購買/維護船舶)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船舶 - 點選船舶可看到詳細資料
@@ -3102,7 +3072,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}正前�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正前往 {STATION} 機棚，{VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}在 {STATION} 機棚維護中
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}在 {STATION} 機棚維護中，{VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}飛機 {COMMA} 已在機棚待命
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}前方有飛機
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}無法停止/起動飛機...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}飛機正在飛行中
@@ -3362,7 +3331,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}點選�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}標誌清單 - 標誌 {COMMA} 個
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}改造指令失敗使得 {STRING} {COMMA}
 
 ############ Lists rail types
 

@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :Autovehicolul
 STR_019D_AIRCRAFT                                               :Aeronava
 STR_019E_SHIP                                                   :Nava
 STR_019F_TRAIN                                                  :Trenul
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} este vechi
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} este foarte vechi
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} este foarte vechi si trebuie înlocuit urgent
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informatii teren
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costul demolării: {LTBLUE}nu este cazul
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costul demolării: {RED}{CURRENCY}
@@ -994,36 +991,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nu se po
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nu pot copia lista de comenzi...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Sfârşitul comenzilor sincronizate - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Trenul {COMMA} nu poate gasi o cale pentru continuare.
-STR_TRAIN_IS_LOST                                               :{WHITE}Trenul {COMMA} s-a rãtãcit.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Profitul trenului {COMMA} a fost anul trecut de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Uniunea Monetară Europeană!{}{}Euro este introdus în ţară ca monedă unică de folosinţă în tranzacţiile zilnice!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trenul {COMMA} are prea putine comenzi în listã
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trenul {COMMA} are o comandă nulă
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trenul {COMMA} are comenzi repetate
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trenul {COMMA} are o statie inexistentã în comenzi
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Autovehiculul {COMMA} are prea putine comenzi în listã
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Autovehiculul {COMMA} are o comandă nulă
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Autovehiculul {COMMA} are comenzi duplicat
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Autovehiculul {COMMA} are o statie inexistentã în comenzi
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Nava {COMMA} are prea putine comenzi în listã
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Nava {COMMA} are o comandă nulă
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Nava {COMMA} are comenzi repetate
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Nava {COMMA} are o statie inexistentã în comenzi
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aeronava {COMMA} are prea puţine comenzi în listă
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aeronava {COMMA} are o comandă nulă
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aeronava {COMMA} are comenzi repetate
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronava {COMMA} are o staţie inexistentă în comenzi
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Înnoirea trenului {COMMA} a esuat{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Înnoirea autovehiculului {COMMA} a esuat{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Înnoirea navei {COMMA} a esuat{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Înnoirea automată a aeronavei {COMMA} a eşuat{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trenul {COMMA} este prea lung dupa inlocuire
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nicio regula autoinlocuire/reinnoire aplicata.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(fonduri limitate)
 
@@ -2815,7 +2788,6 @@ STR_UNKNOWN_STATION                                             :statie necunosc
 STR_8812_EMPTY                                                  :{LTBLUE}Gol
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de la {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de la {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trenul {COMMA} aşteaptă în depou
 STR_8815_NEW_VEHICLES                                           :{BLACK}Vehicule noi
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren prea lung
@@ -2974,7 +2946,6 @@ STR_9012_CAPACITY                                               :{BLACK}Capacita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...trebuie oprit într-o autobază
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nu se poate vinde autovehiculul...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nu se poate opri/porni autovehiculul...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Autovehiculul {COMMA} staţionează la autobază
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Merge la Autobaza {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Merge la Autobaza {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service la Autobaza {TOWN}
@@ -3056,7 +3027,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Merge l
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Merge la Santierul {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service la Santierul Naval {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service la Santierul Naval {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Nava {COMMA} este staţionată în şantier
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construieşte port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construcţie şantier naval (pentru construirea şi repararea navelor)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Nave - clic pe o navă pentru informaţii
@@ -3121,7 +3091,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Merge l
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Merge la Hangarul {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service la Hangarul {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service la Hangarul {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronava {COMMA} staţionează în hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronavă în cale
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nu se poate opri/porni aeronava...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronava se află în zbor
@@ -3382,7 +3351,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Apasa pe
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Comanda oprirea rearanjarilor esuate {STRING} {COMMA}
 
 ############ Lists rail types
 

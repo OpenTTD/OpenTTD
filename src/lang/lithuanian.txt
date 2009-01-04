@@ -516,9 +516,6 @@ STR_019C_ROAD_VEHICLE                                           :Automobilis
 STR_019D_AIRCRAFT                                               :Lėktuvas
 STR_019E_SHIP                                                   :Laivas
 STR_019F_TRAIN                                                  :Traukinys
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} sensta
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} labai paseno
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} labai paseno ir būtinai turi būti pakeistas
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija apie žemės plotą
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Išvalymo kaina: {LTBLUE}NĖRA
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Išvalymo kaina: {RED}{CURRENCY}
@@ -1027,36 +1024,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Uzduociu
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Uzduociu saraso kopijuoti negalima...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Bendru uzduociu pabaiga - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Traukinys {COMMA} negali rasti reikalingo kelio
-STR_TRAIN_IS_LOST                                               :{WHITE}Traukinys {COMMA} pasimete.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Traukinio {COMMA} pelnas praeitais metais buvo {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Bendras Europos sajungos piniginis vienetas - Euras!{}{}Nuo siol Euras tampa pagrindine valiuta kasdieniniuose atsiskaitymuose!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Traukinys {COMMA} turi per mazai uzduociu
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Traukinys {COMMA} neturi uzduociu
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Traukinys {COMMA} turi kelias vienodas uzduotis
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Traukinio {COMMA} uzduociu sarase yra netinkamu stoteliu
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Automobilis {COMMA} turi per mazai uzduociu
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Automobilis {COMMA} neturi uzduociu
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Automobilis {COMMA} turi kelias vienodas uzduotis
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Automobilio {COMMA} uzduociu sarase yra netinkamu stoteliu
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Laivas {COMMA} turi per mazai uzduociu
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Laivas {COMMA} neturi uzduociu
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Laivas {COMMA} turi kelias vienodas uzduotis
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Laivo {COMMA} uzduociu sarase yra netinkamu stoteliu
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Lektuvas {COMMA} turi per mazai uzduociu
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Lektuvas {COMMA} neturi uzduociu
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Lektuvas {COMMA} turi kelias vienodas uzduotis
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Lektuvo {COMMA} uzduociu sarase yra netinkamu stoteliu
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Traukinio {COMMA} automatiskai atnaujinti nepavyko{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automobilio {COMMA} automatiskai atnaujinti nepavyko{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laivo {COMMA} automatinis atnaujimimas nepavyko{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Lektuvo {COMMA} automatinis atnaujimimas nepavyko{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Traukinys {COMMA} yra per ilgas po atnaujinimo
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nėra automatinio atnaujinimo taisyklių
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pinigu limitas)
 
@@ -2748,7 +2721,6 @@ STR_INVALID_ORDER                                               :{RED} (Neteisin
 STR_8812_EMPTY                                                  :{LTBLUE}Tuscias
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} is {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iš {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Traukinys {COMMA} laukia depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Naujos tr. priemones
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Traukinys per ilgas
@@ -2871,7 +2843,6 @@ STR_9012_CAPACITY                                               :{BLACK}Talpa: {
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...automobilis turi buti sustabdytas garaze
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Automobilio parduoti negalima...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Automobilio sustabdyti/paleisti negalima...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobilis {COMMA} laukia garaze
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Uzduotis: {TOWN} garazas
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Uzduotis: {TOWN} garazas, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Masinu Depe
@@ -2946,7 +2917,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Kursas:
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Kursas: {TOWN} laivu depas, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Laivu Depe
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisas {TOWN} Laivu Depe, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laivas laukia depe: {COMMA}
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Statyti laivu doka
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Statyti laivu depa (nauju laivu isigijimui, remontui)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laivai - paspausk ant laivo, jei nori daugiau informacijos
@@ -3009,7 +2979,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Kursas:
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Kursas: {STATION} angarasangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Sevisas {STATION} Angare
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servisas{STATION} Angare, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lektuvas {COMMA} laukia angare
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lektuvas dabar skrenda
@@ -3242,7 +3211,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Paspausk
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zenklu sarasas - {COMMA} Zenklai
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Klaida pakeitimo metu {STRING} {COMMA}
 
 ############ Lists rail types
 

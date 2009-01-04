@@ -482,9 +482,6 @@ STR_019C_ROAD_VEHICLE                                           :汽车
 STR_019D_AIRCRAFT                                               :飞机
 STR_019E_SHIP                                                   :船只
 STR_019F_TRAIN                                                  :火车
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} 即将进入报废年限
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} 即将进入报废年限
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} 已经进入报废年限，必须马上更新
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地块信息
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}清除费用：{LTBLUE}无
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}清除费用：{RED}{CURRENCY}
@@ -993,36 +990,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}不能�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}不能复制调度计划……
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共享调度计划结束 - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}火车 {COMMA} 找不到道了。
-STR_TRAIN_IS_LOST                                               :{WHITE}列车 {COMMA} 迷路了。
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}列车 {COMMA} 去年的利润是 {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}列车 {COMMA} 的调度计划太少，无法运行。
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}列车 {COMMA} 的调度计划为空。
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}列车 {COMMA} 的调度计划中有重复的项目。
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}列车 {COMMA} 的调度计划中有无法到达的车站。
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}汽车 {COMMA} 的调度计划太少，无法运行。
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}汽车 {COMMA} 的调度计划为空。
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}汽车 {COMMA} 的调度计划中有重复的项目。
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}汽车 {COMMA} 的调度计划中有无法到达的车站。
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}船只 {COMMA} 的调度计划太少，无法运行。
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}船只 {COMMA} 的调度计划为空。
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}船只 {COMMA} 的调度计划中有重复的项目。
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}船只 {COMMA} 的调度计划中有无法到达的码头。
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}飞机 {COMMA} 的调度计划太少，无法运行。
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}飞机 {COMMA} 的调度计划为空。
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}飞机 {COMMA} 的调度计划中有重复的项目。
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}飞机 {COMMA} 的调度计划中有无法到达的机场。
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}列车 {COMMA} 自动更新失败{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}汽车 {COMMA} 自动更新失败{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}轮船 {COMMA} 自动更新失败{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}飞机 {COMMA} 自动更新失败{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}列车 {COMMA} 在自动升级后过长！
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}当前无车辆更新进行中.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(现金不够)
 
@@ -2798,7 +2771,6 @@ STR_UNKNOWN_STATION                                             :未知车站
 STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (来自 {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (来自 {STATION} (x{NUM}))
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}列车 {COMMA} 正在车库中待命
 STR_8815_NEW_VEHICLES                                           :{BLACK}购买列车
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}列车过长
@@ -2956,7 +2928,6 @@ STR_9012_CAPACITY                                               :{BLACK}装载�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...必须完全停在一个车库中
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}不能出售汽车...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}不能停止/启动汽车...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}汽车 {COMMA} 正在车库中等候命令
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}正在前往 {TOWN} 车库
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 车库保养
@@ -3038,7 +3009,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正在�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正在前往 {TOWN} 船坞，{VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船坞保养
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船坞保养，{VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}船只 {COMMA} 正在船坞中待命
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}建造码头
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}建造船坞 (可以购买或保养船只)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船只 - 点击可以查看详细信息
@@ -3103,7 +3073,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}正在�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正在前往 {STATION} 的机库，{VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}正在 {STATION} 的机库保养
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}正在 {STATION} 的机库保养，{VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}飞机 {COMMA} 正在机库待命
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}指定位置有飞机
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}不能启动/停止飞机
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}飞机正在飞行
@@ -3363,7 +3332,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}点击�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} Sign
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}调度计划改装失败 {STRING} {COMMA}
 
 ############ Lists rail types
 

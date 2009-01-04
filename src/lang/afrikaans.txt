@@ -483,9 +483,6 @@ STR_019C_ROAD_VEHICLE                                           :Pad voertuig
 STR_019D_AIRCRAFT                                               :Vliegtuig
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Trein
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} word oud
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} word baie oud
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} word baie oud en kort dringende vervanging
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gebied informasie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koste om skoon te maak: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koste om skoon te maak: {RED}{CURRENCY}
@@ -993,36 +990,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan nie 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan nie opdrag lys kopie nie...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Einde van Gedeel Opdrae - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Trein {COMMA} can nie 'n pad vind om voort te gaan nie.
-STR_TRAIN_IS_LOST                                               :{WHITE}Trein {COMMA} is verloor.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Trein {COMMA} se profyt verlede jaar was {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europees Geldelik Samesmelting!{}{}Die Euro is ingevoer as die enigste koers vir daagliks transaksies in u land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trein {COMMA} het te paar opdrae in die skedule
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trein {COMMA} het 'n leemte opdrag
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trein {COMMA} het dupliseer opdrae
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trein {COMMA} het 'n ongeldig stasie in sy opdrae
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Pad Voertuig {COMMA} het te paar opdrae in die skedule
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Pad Voertuig {COMMA} het 'n leemte opdrag
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Pad voertuig {COMMA} het dupliseer opdrae
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Pad Voertuig {COMMA} het 'n ongeldig stasie in sy opdrae
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skip {COMMA} het te paar opdrae in die skedule
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skip {COMMA} het 'n leemte oprdag
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skip {COMMA} het dupliseer opdrae
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skip {COMMA} het 'n ongeldig stasie in sy opdrae
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Vliegtuig {COMMA} het te min opdrae in die opgawe
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}vliegtuig {COMMA} het 'n leemte opdrag
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Vliegtuig {COMMA} het duplikaat opdrae
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Vliegtuig {COMMA} hen 'n ongeldig stasie in sy opdrae
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Outohernu misluk op trien {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Outohernu misluk op pad voertuig {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Outohernu misluk op skip {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Outohernuwe misluk op vliegtuig {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Trein {COMMA} is te lank na vervang
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}geen outo-vervang/hernu reëls toegepas nie
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(geld perk)
 
@@ -2790,7 +2763,6 @@ STR_UNKNOWN_STATION                                             :onbekende stasi
 STR_8812_EMPTY                                                  :{LTBLUE}Leë
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} vanaf {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} van {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trein {COMMA} wag in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuwe Voertuie
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trein te lank
@@ -2946,7 +2918,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasiti
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...moet gestop binne 'n pad voertuig depot wees
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan nie pad voertuig verkoop nie
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kani nie pad voertuig stop/aanskakel nie...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Pad voertuig {COMMA} wag in depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Op pad na {TOWN} Pad Depot
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Pad Depot, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Diens by {TOWN} Pad Depot
@@ -3028,7 +2999,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Op pad 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Skip Depot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Diens by {TOWN} Skip Depot
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Diens by {TOWN} Skip Depot, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA} wag in depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bou skip werf
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bou skip depot (vir opbou en diens van skepe)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skepe - kliek op skeep vir inligting
@@ -3093,7 +3063,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op pad 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op pad na {STATION} Hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Diens by {STATION} Hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Diens by {STATION} Hangar, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Vliegtuig {COMMA} wag in die vliegtuig hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in die pad
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan nie vliegtuig stop/aanskakel nie...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Vliegtuig is opvlug
@@ -3341,7 +3310,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliek om
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Teken Lys - {COMMA} Teken{P "" s}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Opdrag herstel mislukking gestop {STRING} {COMMA}
 
 ############ Lists rail types
 

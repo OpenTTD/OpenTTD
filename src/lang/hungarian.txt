@@ -548,9 +548,6 @@ STR_019C_ROAD_VEHICLE                                           :közúti járm�
 STR_019D_AIRCRAFT                                               :repülőgép
 STR_019E_SHIP                                                   :hajó
 STR_019F_TRAIN                                                  :vonat
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} kezd elöregedni
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} kezd nagyon elöregedni
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} nagyon öreg és sürgősen ki kell cserélni
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Terület-információ
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}{LTBLUE}Nem lehet lerombolni
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}A megtisztítás költsége: {RED}{CURRENCY}
@@ -1060,36 +1057,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nem lehe
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nem lehet másolni a menetrendet...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Megosztott menetrend vége - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}A(z) {COMMA}. vonat  nem talál megfelelő utat a továbbhaladáshoz.
-STR_TRAIN_IS_LOST                                               :{WHITE}{COMMA}. vonat eltévedt.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}{COMMA}. vonat profitja az elmúlt évben: {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Európai Pénzügyi Únió!{}{}Az Euro bevezetésre került mint egyedüli valuta a mindennapi pénzügyi tranzakciókra az országodban!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}A(z) {COMMA}. vonatnak túl rövid a menetrendje
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}A(z) {COMMA}. vonatnak üres a menetrendje
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}A(z) {COMMA}. vonatnak duplikált utasításai vannak
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}A(z) {COMMA}. vonatnak nemlétező állomás van a menetrendjében
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}A(z) {COMMA}. közúti járműnek túl kevés a teendője
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}A(z) {COMMA}. közúti járműnek nincs teendője
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}A(z) {COMMA}. közúti járműnek duplikált utasításai vannak
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}A(z) {COMMA}. közúti járműnek nemlétező állomás van a menetrendjében
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}A(z) {COMMA}. hajónak túl rövid a menetrendje
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}A(z) {COMMA}. hajónak üres a menetrendje
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}A(z) {COMMA}. hajónak duplikált utasításai vannak
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}A(z) {COMMA}. hajónak nemlétező állomás van a menetrendjében
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}A(z) {COMMA}. repülőnek túl rövid a menetrendje
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}A(z) {COMMA}. repülőnek üres a menetrendje
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}A(z) {COMMA}. repülőnek duplikált utasitásai vannak
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}A(z) {COMMA}. repülőnek nemlétező állomás van a menetrendjében
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automata járműfelújítás sikertelen a(z) {COMMA}. vonaton{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automata felújítás sikertelen a(z) {COMMA}. közúti járművön{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatikus felújítás sikertelen a(z) {COMMA}. hajón{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew sikertelen a(z) {COMMA}. repülőn{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}A {COMMA}. vonat túl hosszú a csere után
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nincsenek automata járműfelújítási szabályok alkalmazva.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pénzlimit)
 
@@ -2925,7 +2898,6 @@ STR_UNKNOWN_STATION                                             :ismeretlen áll
 STR_8812_EMPTY                                                  :{LTBLUE}Üres
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} {STATION} állomásról
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} {STATION} állomásról (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{COMMA}. vonat a járműtelepen várakozik
 STR_8815_NEW_VEHICLES                                           :{BLACK}Új járművek
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Túl hosszú a vonat
@@ -3084,7 +3056,6 @@ STR_9012_CAPACITY                                               :{BLACK}Kapacit�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...garázsban kellene állnia ehhez
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nem adhatod el a közúti járművet...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nem indíthatod el/ állíthatod meg a közúti járművet...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{COMMA}. közúti jármű a garázsban várakozik
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Úton {TOWN} garázsába
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} garázsába, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Javítás {TOWN} garázsában
@@ -3166,7 +3137,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Úton {
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} dokkjába, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Javítás {TOWN} dokkjában
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Javítás {TOWN} dokkjában, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{COMMA}. hajó a dokkban várakozik
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Kikötő építése
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Dokk építése (hajók vételére és karbantartására)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Hajók - kattints egy hajóra az adataihoz
@@ -3231,7 +3201,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Úton {
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Úton {STATION} hangárjába, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Javítás {STATION} hangárjában
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Javítás {STATION} hangárjában, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{COMMA}. repülőgép a hangárban várakozik
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Repülőgép van az útban
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nem indíthatod el/ állíthatod meg a repülőgépet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}... a levegőben van
@@ -3492,7 +3461,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kattints
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Átalakítási hiba miatt megállt: {STRING} {COMMA}
 
 ############ Lists rail types
 

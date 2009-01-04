@@ -535,9 +535,6 @@ STR_019C_ROAD_VEHICLE                                           :Samochód
 STR_019D_AIRCRAFT                                               :Samolot
 STR_019E_SHIP                                                   :Statek
 STR_019F_TRAIN                                                  :Pociąg
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} jest stary
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} jest bardzo stary
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} jest bardzo stary i natychmiast wymaga wymiany
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacja o terenie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koszt czyszczenia: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koszt czyszczenia: {RED}{CURRENCY}
@@ -1080,36 +1077,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nie moż
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nie można skopiować listy poleceń...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec współdzielonych poleceń - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Pociag {COMMA} nie moze znalezc dalszej drogi.
-STR_TRAIN_IS_LOST                                               :{WHITE}Pociąg {COMMA} zabłądził.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Pociąg {COMMA} zarobił w zeszłym roku {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europejska Unia Monetarna!{}{}Euro zostało wprowadzone jako jedyna waluta do wszystkich transakcji w twoim kraju!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Pociąg {COMMA} ma za mało poleceń w rozkładzie
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Pociąg {COMMA} ma puste polecenie
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Pociąg {COMMA} ma zduplikowane polecenia
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Pociąg {COMMA} ma nieodpowiednią stację w rozkładzie
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Samochód {COMMA} ma za mało poleceń w rozkładzie
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Samochód {COMMA} ma puste polecenie
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Samochód {COMMA} ma zduplikowane polecenia
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Samochód {COMMA} ma nieodpowiednią stację w rozkładzie
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Statek {COMMA} ma za mało poleceń w rozkładzie
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Statek {COMMA} ma puste polecenie
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Statek {COMMA} ma zduplikowane polecenia
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Statek {COMMA} ma nieodpowiednią stację w rozkładzie
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Samolot {COMMA} ma za mało poleceń w rozkładzie
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Samolot {COMMA} ma puste polecenie
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Samolot {COMMA} ma zduplikowane polecenia
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Samolot {COMMA} ma nieodpowiednią stację w rozkładzie
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Błąd autoodnowienia pociągu {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Błąd autoodnowienia samochodu {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Błąd autoodnowienia statku {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Błąd autoodnowienia samolotu {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Pociąg {COMMA} jest za długi po zamianie
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Brak regul autozastepowania/odnawiania.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limit funduszy)
 
@@ -2939,7 +2912,6 @@ STR_UNKNOWN_STATION                                             :Nieznana stacja
 STR_8812_EMPTY                                                  :{LTBLUE}Pusty
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Pociąg {COMMA} czeka w zajezdni
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nowe pojazdy
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Pociąg jest zbyt długi
@@ -3098,7 +3070,6 @@ STR_9012_CAPACITY                                               :{BLACK}Pojemno�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...musi być zatrzymany w zajezdni samochodowej
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nie można sprzedać samochodu...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nie można zatrzymać/ruszyć samochodu...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Samochód {COMMA} czeka w zajezdni
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Zmierza do zajezdni sam. w {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Zmierza do zajezdni sam. w {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Serwisuj w Zajezdni w {TOWN}
@@ -3180,7 +3151,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Zmierza
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Zmierza do stoczni w {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Serwisuj w Stoczni w {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Serwisuj w Stoczni w {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Statek {COMMA} czeka w stoczni
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Budowa portu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Budowa stoczni (do budowy i serwisowania statków)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Statki - kliknij aby uzyskać informacje o statku
@@ -3245,7 +3215,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Zmierza
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Zmierza do hangaru w {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Serwisuj w Hangarze na {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Serwisuj w Hangarze na {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Samolot  {COMMA} czeka w hangarze
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Samolot jest na drodze
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nie można zatrzymać/ruszyć samolotu
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Samolot jest w locie
@@ -3506,7 +3475,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknij 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Niepowodzenie zadania przebudowy zatrzymało {STRING} {COMMA}
 
 ############ Lists rail types
 

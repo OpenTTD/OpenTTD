@@ -483,9 +483,6 @@ STR_019C_ROAD_VEHICLE                                           :{G=m}Automóvel
 STR_019D_AIRCRAFT                                               :{G=f}Aeronave
 STR_019E_SHIP                                                   :{G=m}Embarcação
 STR_019F_TRAIN                                                  :{G=m}Trem
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} está ficando velho
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} está ficando muito velho
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} está ficando muito velho e precisa ser substituído urgentemente
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informações do Terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Custo para limpar: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Custo para limpar: {RED}{CURRENCY}
@@ -995,36 +992,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossí
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossível copiar a lista de ordens...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fim de Ordens Compartilhadas - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}O Trem {COMMA} não consegue encontrar uma via livre.
-STR_TRAIN_IS_LOST                                               :{WHITE}O trem {COMMA} está perdido.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}O lucro do trem {COMMA} no último ano foi de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}União Monetária Europeia!{}{} O Euro é introduzido como moeda única para todas as transações no seu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Trem {COMMA} possui poucas ordens definidas
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Trem {COMMA} possui uma ordem inválida
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Trem {COMMA} possui ordens duplicadas
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Trem {COMMA} possui uma estação inválida em suas ordens
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Automóvel {COMMA} possui poucas ordens definidas
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Automóvel {COMMA} possui uma ordem inválida
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Automóvel {COMMA} possui ordens duplicadas
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Automóvel {COMMA} possui uma estação inválida em suas ordens
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Embarcação {COMMA} possui poucas ordens definidas
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Embarcação {COMMA} possui uma ordem inválida
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Embarcação {COMMA} possui ordens duplicadas
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Embarcação {COMMA} possui uma estação inválida nas suas ordens
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aeronave {COMMA} possui poucas ordens definidas
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aeronave {COMMA} possui uma ordem inválida
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aeronave {COMMA} possui ordens duplicadas
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aeronave {COMMA} possui uma estação inválida em suas ordens
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Falha na auto-renovação do trem {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Falha na auto-renovação do automóvel {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Falha na auto-renovação da embarcação {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Falha na auto-renovação da aeronave {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O trem {COMMA} ficará muito longo após a substituição
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Regras de autosubstituição/renovação não estão ativadas.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite de dinheiro)
 
@@ -2823,7 +2796,6 @@ STR_UNKNOWN_STATION                                             :estação desco
 STR_8812_EMPTY                                                  :{LTBLUE}Vazio
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trem {COMMA} está aguardando no depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Novos Veículos
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trem muito longo
@@ -2982,7 +2954,6 @@ STR_9012_CAPACITY                                               :{BLACK}Capacida
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve estar parado dentro de uma garagem
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossível vender automóvel...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossível iniciar/parar automóvel...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automóvel {COMMA} está aguardando na garagem
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Indo para a garagem de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Indo para a garagem de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Manutenção na garagem de {TOWN}
@@ -3064,7 +3035,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Indo pa
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Indo para o depósito naval {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Manutenção no depósito naval de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenção no depósito naval de {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Embarcação {COMMA} está aguardando no depósito naval
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir doca naval
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir depósito naval (para criação e manutenção de embarcações)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Embarcações - clique numa embarcação para informações
@@ -3129,7 +3099,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Indo pa
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Indo para o hangar de {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Manutenção no Hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Manutenção no Hangar de {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronave {COMMA} está aguardando no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave no caminho
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Impossível iniciar/parar aeronave...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronave está em voo
@@ -3390,7 +3359,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clique p
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Falha na parada de ordem de adaptação {STRING} {COMMA}
 
 ############ Lists rail types
 

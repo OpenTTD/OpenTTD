@@ -607,9 +607,6 @@ STR_019C_ROAD_VEHICLE                                           :Авто
 STR_019D_AIRCRAFT                                               :Літак
 STR_019E_SHIP                                                   :Корабель
 STR_019F_TRAIN                                                  :Поїзд
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} старіє
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} вже дуже старий
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} вже дуже старий і терміново потребує заміни
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Інформація про ділянку
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Вартість очистки: {LTBLUE}неможливо
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Вартість очистки: {RED}{CURRENCY}
@@ -1119,36 +1116,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Немо
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Неможливо скопіювати список завдань...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Кінець наказів - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Поїзд {COMMA} не може знайти шлях.
-STR_TRAIN_IS_LOST                                               :{WHITE}Поїзд {COMMA} заблукав.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Поїзд {COMMA} торік приніс прибуток {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Європейська грошова одиниця!{}{}У вашій країні введено євро - єдину валюту для розрахунків!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Поїзд {COMMA} не має завдань
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Поїзд {COMMA} має пустий наказ
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Поїзд {COMMA} має подвійні накази
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Поїзд {COMMA} має в наказі невірну станцію
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Авто {COMMA} не має завдань
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Авто {COMMA} має пустий наказ
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Авто {COMMA} має подвійні накази
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Авто {COMMA} має в наказі невірну станцію
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Корабель {COMMA} не має завдань
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Корабель {COMMA} має пустий наказ
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Корабель {COMMA} має подвійні накази
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Корабель {COMMA} має в наказі невірну станцію
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Літак {COMMA} не має завдань
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Літак {COMMA} має пустий наказ
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Літак {COMMA} має подвійні накази
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Літак {COMMA} має в маршруті невірну станцію
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Помилка автооновлення поїзда {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Помилка автооновлення авто {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Помилка автооновлення корабля {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Помилка автооновлення літака {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Поїзд {COMMA} дуже довгий після оновлення
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Правила автозаміни/оновлення не примінялись.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(бракує коштів)
 
@@ -2980,7 +2953,6 @@ STR_UNKNOWN_STATION                                             :невідом�
 STR_8812_EMPTY                                                  :{LTBLUE}порожній
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} з {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} з {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Поїзд {COMMA} чекає в депо
 STR_8815_NEW_VEHICLES                                           :{BLACK}Новий транспорт
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поїзд дуже довгий
@@ -3139,7 +3111,6 @@ STR_9012_CAPACITY                                               :{BLACK}Міст
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...авто повинно стояти в депо
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Неможливо продати авто...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Неможливо зупинити авто...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Авто {COMMA} чекає в депо
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Прямує до {TOWN} дорожного депо
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} дорожного депо, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Техогляд в  {TOWN} дорожному депо
@@ -3221,7 +3192,6 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Пря�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} корабельного депо, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Техогляд в {TOWN} корабельному депо
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Техогляд в {TOWN} корабельному депо, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Корабель {COMMA} чекає в депо
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Будувати док
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Будувати корабельне депо
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Кораблі - натисніть для інформації
@@ -3286,7 +3256,6 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Лет�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Техогляд в {STATION} ангарі
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Техогляд в {STATION} ангарі, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Літак {COMMA} чекає в ангарі
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Літак на шляху
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Неможливо зупинити літак...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Літак у польоті
@@ -3547,7 +3516,6 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Нати
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Переобладнання аварійно зупинене {STRING} {COMMA}
 
 ############ Lists rail types
 
