@@ -1580,6 +1580,15 @@ Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size)
 	do {
 		/* Generate a tile index not too close from the edge */
 		TileIndex tile = RandomTile();
+		switch (_settings_game.economy.town_layout) {
+			case TL_2X2_GRID:
+				tile = TileXY(TileX(tile) - TileX(tile) % 3, TileY(tile) - TileY(tile) % 3);
+				break;
+			case TL_3X3_GRID:
+				tile = TileXY(TileX(tile) & ~3, TileY(tile) & ~3);
+				break;
+			default: break;
+		}
 		if (DistanceFromEdge(tile) < 20) continue;
 
 		/* Make sure the tile is plain */
