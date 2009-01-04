@@ -716,16 +716,10 @@ void CallVehicleTicks()
 		if (error_message == STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT) {
 			message = error_message;
 		} else {
-			switch (v->type) {
-				case VEH_TRAIN:    message = STR_TRAIN_AUTORENEW_FAILED;       break;
-				case VEH_ROAD:     message = STR_ROADVEHICLE_AUTORENEW_FAILED; break;
-				case VEH_SHIP:     message = STR_SHIP_AUTORENEW_FAILED;        break;
-				case VEH_AIRCRAFT: message = STR_AIRCRAFT_AUTORENEW_FAILED;    break;
-				default: NOT_REACHED();
-			}
+			message = STR_VEHICLE_AUTORENEW_FAILED;
 		}
 
-		SetDParam(0, v->unitnumber);
+		SetDParam(0, v->index);
 		SetDParam(1, error_message);
 		AddNewsItem(message, NS_ADVICE, v->index, 0);
 	}
@@ -950,13 +944,6 @@ void CheckVehicleBreakdown(Vehicle *v)
 	}
 }
 
-static const StringID _vehicle_type_names[4] = {
-	STR_019F_TRAIN,
-	STR_019C_ROAD_VEHICLE,
-	STR_019E_SHIP,
-	STR_019D_AIRCRAFT,
-};
-
 static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 {
 	if (v->owner != _local_company) return;
@@ -964,8 +951,7 @@ static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
 	/* Do not show getting-old message if autorenew is active (and it can replace the vehicle) */
 	if (GetCompany(v->owner)->engine_renew && GetEngine(v->engine_type)->company_avail != 0) return;
 
-	SetDParam(0, _vehicle_type_names[v->type]);
-	SetDParam(1, v->unitnumber);
+	SetDParam(0, v->index);
 	AddNewsItem(msg, NS_ADVICE, v->index, 0);
 }
 
@@ -1504,8 +1490,7 @@ void VehicleEnterDepot(Vehicle *v)
 				_vehicles_to_autoreplace[v] = false;
 				if (v->owner == _local_company) {
 					/* Notify the user that we stopped the vehicle */
-					SetDParam(0, _vehicle_type_names[v->type]);
-					SetDParam(1, v->unitnumber);
+					SetDParam(0, v->index);
 					AddNewsItem(STR_ORDER_REFIT_FAILED, NS_ADVICE, v->index, 0);
 				}
 			} else if (v->owner == _local_company && cost.GetCost() != 0) {
@@ -1532,7 +1517,7 @@ void VehicleEnterDepot(Vehicle *v)
 					default: NOT_REACHED(); string = STR_EMPTY; // Set the string to something to avoid a compiler warning
 				}
 
-				SetDParam(0, v->unitnumber);
+				SetDParam(0, v->index);
 				AddNewsItem(string, NS_ADVICE, v->index, 0);
 			}
 		}

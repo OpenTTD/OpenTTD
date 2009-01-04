@@ -482,9 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :Road vehicle
 STR_019D_AIRCRAFT                                               :Aircraft
 STR_019E_SHIP                                                   :Ship
 STR_019F_TRAIN                                                  :Train
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} is getting old
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} is getting very old
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} is getting very old and urgently needs replacing
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} is getting old
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} is getting very old
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} is getting very old and urgently needs replacing
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Land Area Information
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost to clear: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost to clear: {RED}{CURRENCY}
@@ -994,36 +994,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Can't sh
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Can't copy order list...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - End of Shared Orders - -
 
-STR_TRAIN_IS_STUCK                                              :{WHITE}Train {COMMA} can't find a path to continue.
-STR_TRAIN_IS_LOST                                               :{WHITE}Train {COMMA} is lost.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Train {COMMA}'s profit last year was {CURRENCY}
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} can't find a path to continue.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is lost.
+STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}{VEHICLE}'s profit last year was {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Train {COMMA} has too few orders in the schedule
-STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Train {COMMA} has a void order
-STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Train {COMMA} has duplicate orders
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Train {COMMA} has an invalid station in its orders
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Road Vehicle {COMMA} has too few orders in the schedule
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Road Vehicle {COMMA} has a void order
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Road Vehicle {COMMA} has duplicate orders
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Road Vehicle {COMMA} has an invalid station in its orders
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Ship {COMMA} has too few orders in the schedule
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ship {COMMA} has a void order
-STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA} has duplicate orders
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ship {COMMA} has an invalid station in its orders
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aircraft {COMMA} has too few orders in the schedule
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aircraft {COMMA} has a void order
-STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aircraft {COMMA} has duplicate orders
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aircraft {COMMA} has an invalid station in its orders
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} has too few orders in the schedule
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} has a void order
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} has duplicate orders
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} has an invalid station in its orders
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenew failed on train {COMMA}{}{STRING}
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenew failed on road vehicle {COMMA}{}{STRING}
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenew failed on ship {COMMA}{}{STRING}
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenew failed on aircraft {COMMA}{}{STRING}
-STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Train {COMMA} is too long after replacement
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autorenew failed on {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} is too long after replacement
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No autoreplace/renew rules applied.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
 
@@ -2824,7 +2809,7 @@ STR_UNKNOWN_STATION                                             :unknown station
 STR_8812_EMPTY                                                  :{LTBLUE}Empty
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} from {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} from {STATION} (x{NUM})
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Train {COMMA} is waiting in depot
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} is waiting in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}New Vehicles
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Train too long
@@ -2983,7 +2968,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacity
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...must be stopped inside a road vehicle depot
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Can't sell road vehicle...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Can't stop/start road vehicle...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Road vehicle {COMMA} is waiting in depot
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} is waiting in depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Heading for {TOWN} Road Depot
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Heading for {TOWN} Road Depot, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service at {TOWN} Road Depot
@@ -3065,7 +3050,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Heading
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Heading for {TOWN} Ship Depot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service at {TOWN} Ship Depot
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service at {TOWN} Ship Depot, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Ship {COMMA} is waiting in depot
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} is waiting in depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Build ship dock
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Build ship depot (for building and servicing ships)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ships - click on ship for information
@@ -3130,7 +3115,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Heading
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Heading for {STATION} Hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service at {STATION} Hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service at {STATION} Hangar, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aircraft {COMMA} is waiting in the aircraft hangar
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} is waiting in the aircraft hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aircraft in the way
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Can't stop/start aircraft...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aircraft is in flight
@@ -3391,7 +3376,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Click to
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {STRING} {COMMA}
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {VEHICLE}
 
 ############ Lists rail types
 

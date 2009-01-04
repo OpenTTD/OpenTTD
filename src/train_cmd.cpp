@@ -2970,7 +2970,7 @@ static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir
 				SetBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 				/* and notify user about the event */
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
-					SetDParam(0, v->unitnumber);
+					SetDParam(0, v->index);
 					AddNewsItem(
 						STR_TRAIN_IS_LOST,
 						NS_ADVICE,
@@ -4310,7 +4310,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 			if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK) && v->load_unload_time_rem > 2 * _settings_game.pf.wait_for_pbs_path * DAY_TICKS) {
 				/* Show message to player. */
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
-					SetDParam(0, v->unitnumber);
+					SetDParam(0, v->index);
 					AddNewsItem(
 						STR_TRAIN_IS_STUCK,
 						NS_ADVICE,
@@ -4480,7 +4480,7 @@ void TrainsYearlyLoop()
 			/* show warning if train is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
 			if (_settings_client.gui.train_income_warn && v->owner == _local_company && v->age >= 730 && v->GetDisplayProfitThisYear() < 0) {
 				SetDParam(1, v->GetDisplayProfitThisYear());
-				SetDParam(0, v->unitnumber);
+				SetDParam(0, v->index);
 				AddNewsItem(
 					STR_TRAIN_IS_UNPROFITABLE,
 					NS_ADVICE,

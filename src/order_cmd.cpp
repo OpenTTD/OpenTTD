@@ -364,10 +364,10 @@ void OrderList::DebugCheckSanity() const
  */
 static void DeleteOrderWarnings(const Vehicle* v)
 {
-	DeleteVehicleNews(v->index, STR_TRAIN_HAS_TOO_FEW_ORDERS  + v->type * 4);
-	DeleteVehicleNews(v->index, STR_TRAIN_HAS_VOID_ORDER      + v->type * 4);
-	DeleteVehicleNews(v->index, STR_TRAIN_HAS_DUPLICATE_ENTRY + v->type * 4);
-	DeleteVehicleNews(v->index, STR_TRAIN_HAS_INVALID_ENTRY   + v->type * 4);
+	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_TOO_FEW_ORDERS);
+	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_VOID_ORDER);
+	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_DUPLICATE_ENTRY);
+	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_INVALID_ENTRY);
 }
 
 
@@ -1457,10 +1457,10 @@ void CheckOrders(const Vehicle* v)
 		/* We don't have a problem */
 		if (problem_type < 0) return;
 
-		message = STR_TRAIN_HAS_TOO_FEW_ORDERS + (v->type << 2) + problem_type;
+		message = STR_VEHICLE_HAS_TOO_FEW_ORDERS + problem_type;
 		//DEBUG(misc, 3, "Triggered News Item for vehicle %d", v->index);
 
-		SetDParam(0, v->unitnumber);
+		SetDParam(0, v->index);
 		AddNewsItem(
 			message,
 			NS_ADVICE,
