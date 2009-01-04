@@ -639,12 +639,23 @@ static void AddInflation(bool check_year = true)
 static void CompaniesPayInterest()
 {
 	const Company *c;
-	int interest = _economy.interest_rate * 54;
 
 	FOR_ALL_COMPANIES(c) {
 		_current_company = c->index;
 
-		SubtractMoneyFromCompany(CommandCost(EXPENSES_LOAN_INT, (Money)BigMulSU(c->current_loan, interest, 16)));
+		/* Over a year the paid interest should be "loan * interest percentage",
+		 * but... as that number is likely not dividable by 12 (pay each month),
+		 * one needs to account for that in the monthly fee calculations.
+		 * To easily calculate what one should pay "this" month, you calculate
+		 * what (total) should have been paid up to this month and you substract
+		 * whatever has been paid in the previous months. This will mean one month
+		 * it'll be a bit more and the other it'll be a bit less than the average
+		 * monthly fee, but on average it will be exact. */
+		Money yearly_fee = c->current_loan * _economy.interest_rate / 100;
+		Money up_to_previous_month = yearly_fee * _cur_month / 12;
+		Money up_to_this_month = yearly_fee * (_cur_month + 1) / 12;
+
+		SubtractMoneyFromCompany(CommandCost(EXPENSES_LOAN_INT, up_to_this_month - up_to_previous_month));
 
 		SubtractMoneyFromCompany(CommandCost(EXPENSES_OTHER, _price.station_value >> 2));
 	}
