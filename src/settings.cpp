@@ -1444,7 +1444,7 @@ const SettingDesc _patch_settings[] = {
 	 SDTC_BOOL(gui.enable_signal_gui,                    S,  0, false,                        STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI,           CloseSignalGUI),
 	  SDTC_VAR(gui.drag_signals_density,      SLE_UINT8, S,  0,     4,        1,       20, 0, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,        DragSignalsDensityChanged),
 	  SDTC_VAR(gui.semaphore_build_before,    SLE_INT32, S, NC,  1975, MIN_YEAR, MAX_YEAR, 1, STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE, ResetSignalVariant),
-	 SDTC_BOOL(gui.train_income_warn,                    S,  0,  true,                        STR_CONFIG_PATCHES_WARN_INCOME_LESS,            NULL),
+	 SDTC_BOOL(gui.vehicle_income_warn,                  S,  0,  true,                        STR_CONFIG_PATCHES_WARN_INCOME_LESS,            NULL),
 	  SDTC_VAR(gui.order_review_system,       SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_PATCHES_ORDER_REVIEW,                NULL),
 	 SDTC_BOOL(gui.lost_train_warn,                      S,  0,  true,                        STR_CONFIG_PATCHES_WARN_LOST_TRAIN,             NULL),
 	 SDTC_BOOL(gui.autorenew,                            S,  0, false,                        STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,           EngineRenewUpdate),

@@ -731,20 +731,6 @@ void Ship::Tick()
 	ShipController(this);
 }
 
-
-void ShipsYearlyLoop()
-{
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_SHIP) {
-			v->profit_last_year = v->profit_this_year;
-			v->profit_this_year = 0;
-			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		}
-	}
-}
-
 /** Build a ship.
  * @param tile tile of depot where ship is built
  * @param flags type of operation

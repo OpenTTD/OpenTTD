@@ -2231,3 +2231,29 @@ void StopAllVehicles()
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 }
+
+void VehiclesYearlyLoop()
+{
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		if (v->IsPrimaryVehicle()) {
+			/* show warning if vehicle is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
+			if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company && v->age >= 730) {
+				Money profit = v->GetDisplayProfitThisYear();
+				if (profit < 0) {
+					SetDParam(0, v->index);
+					SetDParam(1, profit);
+					AddNewsItem(
+						STR_VEHICLE_IS_UNPROFITABLE,
+						NS_ADVICE,
+						v->index,
+						0);
+				}
+			}
+
+			v->profit_last_year = v->profit_this_year;
+			v->profit_this_year = 0;
+			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		}
+	}
+}

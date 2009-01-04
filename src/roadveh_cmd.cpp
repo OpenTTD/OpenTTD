@@ -1981,20 +1981,6 @@ void RoadVehicle::OnNewDay()
 	InvalidateWindowClasses(WC_ROADVEH_LIST);
 }
 
-
-void RoadVehiclesYearlyLoop()
-{
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_ROAD) {
-			v->profit_last_year = v->profit_this_year;
-			v->profit_this_year = 0;
-			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		}
-	}
-}
-
 /** Refit a road vehicle to the specified cargo type
  * @param tile unused
  * @param flags operation to perform

@@ -654,19 +654,6 @@ void Aircraft::OnNewDay()
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
-void AircraftYearlyLoop()
-{
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_AIRCRAFT && IsNormalAircraft(v)) {
-			v->profit_last_year = v->profit_this_year;
-			v->profit_this_year = 0;
-			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		}
-	}
-}
-
 static void AgeAircraftCargo(Vehicle *v)
 {
 	if (_age_cargo_skip_counter != 0) return;

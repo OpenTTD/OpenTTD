@@ -165,10 +165,7 @@ extern void IndustryMonthlyLoop();
 extern void StationMonthlyLoop();
 
 extern void CompaniesYearlyLoop();
-extern void TrainsYearlyLoop();
-extern void RoadVehiclesYearlyLoop();
-extern void AircraftYearlyLoop();
-extern void ShipsYearlyLoop();
+extern void VehiclesYearlyLoop();
 extern void TownsYearlyLoop();
 
 extern void ShowEndGameChart();
@@ -270,10 +267,7 @@ void IncreaseDate()
 
 	/* yes, call various yearly loops */
 	CompaniesYearlyLoop();
-	TrainsYearlyLoop();
-	RoadVehiclesYearlyLoop();
-	AircraftYearlyLoop();
-	ShipsYearlyLoop();
+	VehiclesYearlyLoop();
 	TownsYearlyLoop();
 #ifdef ENABLE_NETWORK
 	if (_network_server) NetworkServerYearlyLoop();

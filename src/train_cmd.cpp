@@ -4471,31 +4471,6 @@ void Train::OnNewDay()
 	}
 }
 
-void TrainsYearlyLoop()
-{
-	Vehicle *v;
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && IsFrontEngine(v)) {
-			/* show warning if train is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
-			if (_settings_client.gui.train_income_warn && v->owner == _local_company && v->age >= 730 && v->GetDisplayProfitThisYear() < 0) {
-				SetDParam(1, v->GetDisplayProfitThisYear());
-				SetDParam(0, v->index);
-				AddNewsItem(
-					STR_TRAIN_IS_UNPROFITABLE,
-					NS_ADVICE,
-					v->index,
-					0);
-			}
-
-			v->profit_last_year = v->profit_this_year;
-			v->profit_this_year = 0;
-			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-		}
-	}
-}
-
-
 void InitializeTrains()
 {
 	_age_cargo_skip_counter = 1;

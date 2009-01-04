@@ -996,7 +996,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - En
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} can't find a path to continue.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is lost.
-STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}{VEHICLE}'s profit last year was {CURRENCY}
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}'s profit last year was {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
 
 # Start of order review system.
@@ -1062,7 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Review 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :yes, but exclude stopped vehicles
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :of all vehicles
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warn if a train's income is negative: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warn if a vehicle's income is negative: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehicles never expire: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenew vehicle when it gets old
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenew when vehicle is {ORANGE}{STRING1}{LTBLUE} months before/after max age
