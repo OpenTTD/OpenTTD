@@ -708,7 +708,7 @@ static const char *_patches_vehicles[] = {
 	"pf.pathfinder_for_trains",
 	"pf.pathfinder_for_roadvehs",
 	"pf.pathfinder_for_ships",
-	"gui.train_income_warn",
+	"gui.vehicle_income_warn",
 	"gui.order_review_system",
 	"vehicle.never_expire_vehicles",
 	"gui.lost_train_warn",
