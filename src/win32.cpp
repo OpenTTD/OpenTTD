@@ -5,7 +5,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "debug.h"
-#include "saveload.h"
+#include "saveload/saveload.h"
 #include "gfx_func.h"
 #include "textbuf_gui.h"
 #include "fileio_func.h"

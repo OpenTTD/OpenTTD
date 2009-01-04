@@ -99,6 +99,11 @@ void UpdateAirplanesOnNewStation(const Station *st);
  */
 void UpdateAircraftCache(Vehicle *v);
 
+void AircraftLeaveHangar(Vehicle *v);
+void AircraftNextAirportPos_and_Order(Vehicle *v);
+void SetAircraftPosition(Vehicle *v, int x, int y, int z);
+byte GetAircraftFlyingAltitude(const Vehicle *v);
+
 /**
  * This class 'wraps' Vehicle; you do not actually instantiate this class.
  * You create a Vehicle using AllocateVehicle, so it is added to the pool

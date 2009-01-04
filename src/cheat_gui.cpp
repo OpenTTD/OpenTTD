@@ -10,7 +10,7 @@
 #include "company_func.h"
 #include "gfx_func.h"
 #include "date_func.h"
-#include "saveload.h"
+#include "saveload/saveload.h"
 #include "window_gui.h"
 #include "newgrf.h"
 #include "settings_type.h"

@@ -4,7 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "saveload.h"
+#include "saveload/saveload.h"
 #include "core/alloc_func.hpp"
 #include "core/bitmath_func.hpp"
 #include "core/math_func.hpp"
@@ -13,12 +13,14 @@
 #include "string_func.h"
 #include "settings_type.h"
 #include "newgrf_config.h"
-#include <string.h>
-#include <stdarg.h>
 #include "gamelog.h"
+#include "gamelog_internal.h"
 #include "console_func.h"
 #include "debug.h"
 #include "rev.h"
+
+#include <string.h>
+#include <stdarg.h>
 
 extern const uint16 SAVEGAME_VERSION;  ///< current savegame version
 
@@ -28,79 +30,11 @@ extern uint32 _ttdp_version;     ///< version of TTDP savegame (if applicable)
 extern uint16 _sl_version;       ///< the major savegame version identifier
 extern byte   _sl_minor_version; ///< the minor savegame version, DO NOT USE!
 
-/** Type of logged change */
-enum GamelogChangeType {
-	GLCT_MODE,        ///< Scenario editor x Game, different landscape
-	GLCT_REVISION,    ///< Changed game revision string
-	GLCT_OLDVER,      ///< Loaded from savegame without logged data
-	GLCT_PATCH,       ///< Non-networksafe patch value changed
-	GLCT_GRFADD,      ///< Removed GRF
-	GLCT_GRFREM,      ///< Added GRF
-	GLCT_GRFCOMPAT,   ///< Loading compatible GRF
-	GLCT_GRFPARAM,    ///< GRF parameter changed
-	GLCT_GRFMOVE,     ///< GRF order changed
-	GLCT_GRFBUG,      ///< GRF bug triggered
-	GLCT_END,         ///< So we know how many GLCTs are there
-	GLCT_NONE = 0xFF, ///< In savegames, end of list
-};
-
-
-/** Contains information about one logged change */
-struct LoggedChange {
-	GamelogChangeType ct; ///< Type of change logged in this struct
-	union {
-		struct {
-			byte mode;       ///< new game mode - Editor x Game
-			byte landscape;  ///< landscape (temperate, arctic, ...)
-		} mode;
-		struct {
-			char text[NETWORK_REVISION_LENGTH]; ///< revision string, _openttd_revision
-			uint32 newgrf;   ///< _openttd_newgrf_version
-			uint16 slver;    ///< _sl_version
-			byte modified;   ///< _openttd_revision_modified
-		} revision;
-		struct {
-			uint32 type;     ///< type of savegame, @see SavegameType
-			uint32 version;  ///< major and minor version OR ttdp version
-		} oldver;
-		GRFIdentifier grfadd;    ///< ID and md5sum of added GRF
-		struct {
-			uint32 grfid;    ///< ID of removed GRF
-		} grfrem;
-		GRFIdentifier grfcompat; ///< ID and new md5sum of changed GRF
-		struct {
-			uint32 grfid;    ///< ID of GRF with changed parameters
-		} grfparam;
-		struct {
-			uint32 grfid;    ///< ID of moved GRF
-			int32 offset;    ///< offset, positive = move down
-		} grfmove;
-		struct {
-			char *name;      ///< name of the patch
-			int32 oldval;    ///< old value
-			int32 newval;    ///< new value
-		} patch;
-		struct {
-			uint64 data;     ///< additional data
-			uint32 grfid;    ///< ID of problematic GRF
-			byte bug;        ///< type of bug, @see enum GRFBugs
-		} grfbug;
-	};
-};
-
-
-/** Contains information about one logged action that caused at least one logged change */
-struct LoggedAction {
-	LoggedChange *change; ///< First logged change in this action
-	uint32 changes;       ///< Number of changes in this action
-	GamelogActionType at; ///< Type of action
-	uint16 tick;          ///< Tick when it happened
-};
 
 static GamelogActionType _gamelog_action_type = GLAT_NONE; ///< action to record if anything changes
 
-static LoggedAction *_gamelog_action = NULL; ///< first logged action
-static uint _gamelog_actions         = 0;    ///< number of actions
+LoggedAction *_gamelog_action = NULL;        ///< first logged action
+uint _gamelog_actions         = 0;           ///< number of actions
 static LoggedAction *_current_action = NULL; ///< current action we are logging, NULL when there is no action active
 
 
@@ -728,155 +662,3 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 	free(ol);
 	free(nl);
 }
-
-
-static const SaveLoad _glog_action_desc[] = {
-	SLE_VAR(LoggedAction, tick,              SLE_UINT16),
-	SLE_END()
-};
-
-static const SaveLoad _glog_mode_desc[] = {
-	SLE_VAR(LoggedChange, mode.mode,         SLE_UINT8),
-	SLE_VAR(LoggedChange, mode.landscape,    SLE_UINT8),
-	SLE_END()
-};
-
-static const SaveLoad _glog_revision_desc[] = {
-	SLE_ARR(LoggedChange, revision.text,     SLE_UINT8,  NETWORK_REVISION_LENGTH),
-	SLE_VAR(LoggedChange, revision.newgrf,   SLE_UINT32),
-	SLE_VAR(LoggedChange, revision.slver,    SLE_UINT16),
-	SLE_VAR(LoggedChange, revision.modified, SLE_UINT8),
-	SLE_END()
-};
-
-static const SaveLoad _glog_oldver_desc[] = {
-	SLE_VAR(LoggedChange, oldver.type,       SLE_UINT32),
-	SLE_VAR(LoggedChange, oldver.version,    SLE_UINT32),
-	SLE_END()
-};
-
-static const SaveLoad _glog_patch_desc[] = {
-	SLE_STR(LoggedChange, patch.name,        SLE_STR,    128),
-	SLE_VAR(LoggedChange, patch.oldval,      SLE_INT32),
-	SLE_VAR(LoggedChange, patch.newval,      SLE_INT32),
-	SLE_END()
-};
-
-static const SaveLoad _glog_grfadd_desc[] = {
-	SLE_VAR(LoggedChange, grfadd.grfid,      SLE_UINT32    ),
-	SLE_ARR(LoggedChange, grfadd.md5sum,     SLE_UINT8,  16),
-	SLE_END()
-};
-
-static const SaveLoad _glog_grfrem_desc[] = {
-	SLE_VAR(LoggedChange, grfrem.grfid,      SLE_UINT32),
-	SLE_END()
-};
-
-static const SaveLoad _glog_grfcompat_desc[] = {
-	SLE_VAR(LoggedChange, grfcompat.grfid,   SLE_UINT32    ),
-	SLE_ARR(LoggedChange, grfcompat.md5sum,  SLE_UINT8,  16),
-	SLE_END()
-};
-
-static const SaveLoad _glog_grfparam_desc[] = {
-	SLE_VAR(LoggedChange, grfparam.grfid,    SLE_UINT32),
-	SLE_END()
-};
-
-static const SaveLoad _glog_grfmove_desc[] = {
-	SLE_VAR(LoggedChange, grfmove.grfid,     SLE_UINT32),
-	SLE_VAR(LoggedChange, grfmove.offset,    SLE_INT32),
-	SLE_END()
-};
-
-static const SaveLoad _glog_grfbug_desc[] = {
-	SLE_VAR(LoggedChange, grfbug.data,       SLE_UINT64),
-	SLE_VAR(LoggedChange, grfbug.grfid,      SLE_UINT32),
-	SLE_VAR(LoggedChange, grfbug.bug,        SLE_UINT8),
-	SLE_END()
-};
-
-static const SaveLoad *_glog_desc[] = {
-	_glog_mode_desc,
-	_glog_revision_desc,
-	_glog_oldver_desc,
-	_glog_patch_desc,
-	_glog_grfadd_desc,
-	_glog_grfrem_desc,
-	_glog_grfcompat_desc,
-	_glog_grfparam_desc,
-	_glog_grfmove_desc,
-	_glog_grfbug_desc,
-};
-
-assert_compile(lengthof(_glog_desc) == GLCT_END);
-
-static void Load_GLOG()
-{
-	assert(_gamelog_action == NULL);
-	assert(_gamelog_actions == 0);
-
-	GamelogActionType at;
-	while ((at = (GamelogActionType)SlReadByte()) != GLAT_NONE) {
-		_gamelog_action = ReallocT(_gamelog_action, _gamelog_actions + 1);
-		LoggedAction *la = &_gamelog_action[_gamelog_actions++];
-
-		la->at = at;
-
-		SlObject(la, _glog_action_desc); // has to be saved after 'DATE'!
-		la->change = NULL;
-		la->changes = 0;
-
-		GamelogChangeType ct;
-		while ((ct = (GamelogChangeType)SlReadByte()) != GLCT_NONE) {
-			la->change = ReallocT(la->change, la->changes + 1);
-
-			LoggedChange *lc = &la->change[la->changes++];
-			/* for SLE_STR, pointer has to be valid! so make it NULL */
-			memset(lc, 0, sizeof(*lc));
-			lc->ct = ct;
-
-			assert((uint)ct < GLCT_END);
-
-			SlObject(lc, _glog_desc[ct]);
-		}
-	}
-}
-
-static void Save_GLOG()
-{
-	const LoggedAction *laend = &_gamelog_action[_gamelog_actions];
-	size_t length = 0;
-
-	for (const LoggedAction *la = _gamelog_action; la != laend; la++) {
-		const LoggedChange *lcend = &la->change[la->changes];
-		for (LoggedChange *lc = la->change; lc != lcend; lc++) {
-			assert((uint)lc->ct < lengthof(_glog_desc));
-			length += SlCalcObjLength(lc, _glog_desc[lc->ct]) + 1;
-		}
-		length += 4;
-	}
-	length++;
-
-	SlSetLength(length);
-
-	for (LoggedAction *la = _gamelog_action; la != laend; la++) {
-		SlWriteByte(la->at);
-		SlObject(la, _glog_action_desc);
-
-		const LoggedChange *lcend = &la->change[la->changes];
-		for (LoggedChange *lc = la->change; lc != lcend; lc++) {
-			SlWriteByte(lc->ct);
-			assert((uint)lc->ct < GLCT_END);
-			SlObject(lc, _glog_desc[lc->ct]);
-		}
-		SlWriteByte(GLCT_NONE);
-	}
-	SlWriteByte(GLAT_NONE);
-}
-
-
-extern const ChunkHandler _gamelog_chunk_handlers[] = {
-	{ 'GLOG', Save_GLOG, Load_GLOG, CH_RIFF | CH_LAST }
-};

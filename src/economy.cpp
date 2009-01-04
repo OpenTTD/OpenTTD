@@ -9,7 +9,6 @@
 #include "company_base.h"
 #include "company_func.h"
 #include "command_func.h"
-#include "saveload.h"
 #include "industry.h"
 #include "industry_map.h"
 #include "town.h"
@@ -767,7 +766,7 @@ void SetPriceBaseMultiplier(uint price, byte factor)
  * Initialize the variables that will maintain the daily industry change system.
  * @param init_counter specifies if the counter is required to be initialized
  */
-static void StartupIndustryDailyChanges(bool init_counter)
+void StartupIndustryDailyChanges(bool init_counter)
 {
 	uint map_size = MapLogX() + MapLogY();
 	/* After getting map size, it needs to be scaled appropriately and divided by 31,
@@ -1119,37 +1118,6 @@ static void SubsidyMonthlyHandler()
 no_add:;
 	if (modified)
 		InvalidateWindow(WC_SUBSIDIES_LIST, 0);
-}
-
-static const SaveLoad _subsidies_desc[] = {
-	    SLE_VAR(Subsidy, cargo_type, SLE_UINT8),
-	    SLE_VAR(Subsidy, age,        SLE_UINT8),
-	SLE_CONDVAR(Subsidy, from,       SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
-	SLE_CONDVAR(Subsidy, from,       SLE_UINT16,                5, SL_MAX_VERSION),
-	SLE_CONDVAR(Subsidy, to,         SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
-	SLE_CONDVAR(Subsidy, to,         SLE_UINT16,                5, SL_MAX_VERSION),
-	SLE_END()
-};
-
-static void Save_SUBS()
-{
-	int i;
-	Subsidy *s;
-
-	for (i = 0; i != lengthof(_subsidies); i++) {
-		s = &_subsidies[i];
-		if (s->cargo_type != CT_INVALID) {
-			SlSetArrayIndex(i);
-			SlObject(s, _subsidies_desc);
-		}
-	}
-}
-
-static void Load_SUBS()
-{
-	int index;
-	while ((index = SlIterateArray()) != -1)
-		SlObject(&_subsidies[index], _subsidies_desc);
 }
 
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type)
@@ -1994,54 +1962,3 @@ CommandCost CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 	}
 	return CommandCost(EXPENSES_OTHER, c->bankrupt_value);
 }
-
-/** Prices */
-static void SaveLoad_PRIC()
-{
-	int vt = CheckSavegameVersion(65) ? (SLE_FILE_I32 | SLE_VAR_I64) : SLE_INT64;
-	SlArray(&_price,      NUM_PRICES, vt);
-	SlArray(&_price_frac, NUM_PRICES, SLE_UINT16);
-}
-
-/** Cargo payment rates */
-static void SaveLoad_CAPR()
-{
-	uint num_cargo = CheckSavegameVersion(55) ? 12 : NUM_CARGO;
-	int vt = CheckSavegameVersion(65) ? (SLE_FILE_I32 | SLE_VAR_I64) : SLE_INT64;
-	SlArray(&_cargo_payment_rates,      num_cargo, vt);
-	SlArray(&_cargo_payment_rates_frac, num_cargo, SLE_UINT16);
-}
-
-static const SaveLoad _economy_desc[] = {
-	SLE_CONDVAR(Economy, max_loan,                      SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
-	SLE_CONDVAR(Economy, max_loan,                      SLE_INT64,                  65, SL_MAX_VERSION),
-	SLE_CONDVAR(Economy, max_loan_unround,              SLE_FILE_I32 | SLE_VAR_I64,  0, 64),
-	SLE_CONDVAR(Economy, max_loan_unround,              SLE_INT64,                  65, SL_MAX_VERSION),
-	SLE_CONDVAR(Economy, max_loan_unround_fract,        SLE_UINT16,                 70, SL_MAX_VERSION),
-	    SLE_VAR(Economy, fluct,                         SLE_INT16),
-	    SLE_VAR(Economy, interest_rate,                 SLE_UINT8),
-	    SLE_VAR(Economy, infl_amount,                   SLE_UINT8),
-	    SLE_VAR(Economy, infl_amount_pr,                SLE_UINT8),
-	SLE_CONDVAR(Economy, industry_daily_change_counter, SLE_UINT32,                102, SL_MAX_VERSION),
-	    SLE_END()
-};
-
-/** Economy variables */
-static void Save_ECMY()
-{
-	SlObject(&_economy, _economy_desc);
-}
-
-/** Economy variables */
-static void Load_ECMY()
-{
-	SlObject(&_economy, _economy_desc);
-	StartupIndustryDailyChanges(CheckSavegameVersion(102));  // old savegames will need to be initialized
-}
-
-extern const ChunkHandler _economy_chunk_handlers[] = {
-	{ 'PRIC', SaveLoad_PRIC, SaveLoad_PRIC, CH_RIFF | CH_AUTO_LENGTH},
-	{ 'CAPR', SaveLoad_CAPR, SaveLoad_CAPR, CH_RIFF | CH_AUTO_LENGTH},
-	{ 'SUBS', Save_SUBS,     Load_SUBS,     CH_ARRAY},
-	{ 'ECMY', Save_ECMY,     Load_ECMY,     CH_RIFF | CH_LAST},
-};

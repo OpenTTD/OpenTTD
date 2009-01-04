@@ -82,9 +82,6 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *apc);
 static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *apc);
 static void CrashAirplane(Vehicle *v);
 
-void AircraftNextAirportPos_and_Order(Vehicle *v);
-static byte GetAircraftFlyingAltitude(const Vehicle *v);
-
 static const SpriteID _aircraft_sprite[] = {
 	0x0EB5, 0x0EBD, 0x0EC5, 0x0ECD,
 	0x0ED5, 0x0EDD, 0x0E9D, 0x0EA5,
@@ -727,7 +724,7 @@ static void HelicopterTickHandler(Vehicle *v)
 	EndVehicleMove(u);
 }
 
-static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
+void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 {
 	v->x_pos = x;
 	v->y_pos = y;
@@ -883,7 +880,7 @@ static int UpdateAircraftSpeed(Vehicle *v, uint speed_limit = SPEED_LIMIT_NONE, 
  * @param v The vehicle. Should be an aircraft
  * @returns Altitude in pixel units
  */
-static byte GetAircraftFlyingAltitude(const Vehicle *v)
+byte GetAircraftFlyingAltitude(const Vehicle *v)
 {
 	/* Make sure Aircraft fly no lower so that they don't conduct
 	 * CFITs (controlled flight into terrain)
@@ -1433,7 +1430,7 @@ void AircraftNextAirportPos_and_Order(Vehicle *v)
 	v->u.air.pos = v->u.air.previous_pos = AircraftGetEntryPoint(v, apc);
 }
 
-static void AircraftLeaveHangar(Vehicle *v)
+void AircraftLeaveHangar(Vehicle *v)
 {
 	v->cur_speed = 0;
 	v->subspeed = 0;
@@ -2094,42 +2091,6 @@ Station *GetTargetAirportIfValid(const Vehicle *v)
 	Station *st = GetStation(sid);
 
 	return st->airport_tile == INVALID_TILE ? NULL : st;
-}
-
-/** need to be called to load aircraft from old version */
-void UpdateOldAircraft()
-{
-	/* set airport_flags to 0 for all airports just to be sure */
-	Station *st;
-	FOR_ALL_STATIONS(st) {
-		st->airport_flags = 0; // reset airport
-	}
-
-	Vehicle *v_oldstyle;
-	FOR_ALL_VEHICLES(v_oldstyle) {
-	/* airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
-	 * skip those */
-		if (v_oldstyle->type == VEH_AIRCRAFT && IsNormalAircraft(v_oldstyle)) {
-			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
-			if (v_oldstyle->vehstatus & VS_STOPPED && v_oldstyle->u.air.state == 0) {
-				v_oldstyle->u.air.state = HANGAR;
-				continue;
-			}
-
-			AircraftLeaveHangar(v_oldstyle); // make airplane visible if it was in a depot for example
-			v_oldstyle->vehstatus &= ~VS_STOPPED; // make airplane moving
-			v_oldstyle->u.air.state = FLYING;
-			AircraftNextAirportPos_and_Order(v_oldstyle); // move it to the entry point of the airport
-			GetNewVehiclePosResult gp = GetNewVehiclePos(v_oldstyle);
-			v_oldstyle->tile = 0; // aircraft in air is tile=0
-
-			/* correct speed of helicopter-rotors */
-			if (v_oldstyle->subtype == AIR_HELICOPTER) v_oldstyle->Next()->Next()->cur_speed = 32;
-
-			/* set new position x,y,z */
-			SetAircraftPosition(v_oldstyle, gp.x, gp.y, GetAircraftFlyingAltitude(v_oldstyle));
-		}
-	}
 }
 
 /**

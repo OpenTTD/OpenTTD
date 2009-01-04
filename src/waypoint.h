@@ -12,6 +12,7 @@
 #include "station_type.h"
 #include "town_type.h"
 #include "viewport_type.h"
+#include "date_type.h"
 
 DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)
 
@@ -63,8 +64,6 @@ CommandCost RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove);
 Station *ComposeWaypointStation(TileIndex tile);
 void ShowWaypointWindow(const Waypoint *wp);
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype);
-void FixOldWaypoints();
 void UpdateAllWaypointSigns();
-void AfterLoadWaypoints();
 
 #endif /* WAYPOINT_H */

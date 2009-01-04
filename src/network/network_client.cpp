@@ -12,7 +12,7 @@
 #include "network_client.h"
 #include "network_gamelist.h"
 #include "network_gui.h"
-#include "../saveload.h"
+#include "../saveload/saveload.h"
 #include "../command_func.h"
 #include "../console_func.h"
 #include "../variables.h"

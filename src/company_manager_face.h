@@ -7,6 +7,8 @@
 
 #include "core/random_func.hpp"
 #include "core/bitmath_func.hpp"
+#include "table/sprites.h"
+#include "company_type.h"
 
 /** The gender/race combinations that we have faces for */
 enum GenderEthnicity {
@@ -228,7 +230,6 @@ static inline SpriteID GetCompanyManagerFaceSprite(CompanyManagerFace cmf, Compa
 }
 
 void DrawCompanyManagerFace(CompanyManagerFace face, int color, int x, int y);
-CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32 face);
 bool IsValidCompanyManagerFace(CompanyManagerFace cmf);
 
 #endif /* COMPANY_MANAGER_FACE_H */

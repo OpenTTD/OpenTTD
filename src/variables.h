@@ -33,10 +33,6 @@ VARDEF uint _next_competitor_start;
 /* Determines how often to run the tree loop */
 VARDEF byte _trees_tick_ctr;
 
-/* Keep track of current game position */
-VARDEF int _saved_scrollpos_x;
-VARDEF int _saved_scrollpos_y;
-
 /* NOSAVE: Used in palette animations only, not really important. */
 VARDEF int _palette_animation_counter;
 

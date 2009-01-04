@@ -194,7 +194,6 @@ DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 /* Some declarations of functions, so we can make them friendly */
 struct SaveLoad;
 extern const SaveLoad *GetVehicleDescription(VehicleType vt);
-extern void AfterLoadVehicles(bool part_of_load);
 struct LoadgameState;
 extern bool LoadOldVehicle(LoadgameState *ls, int num);
 
@@ -711,5 +710,7 @@ static inline Order *GetLastVehicleOrder(const Vehicle *v) { return (v->orders.l
 Trackdir GetVehicleTrackdir(const Vehicle* v);
 
 void CheckVehicle32Day(Vehicle *v);
+
+static const int32 INVALID_COORD = 0x7fffffff;
 
 #endif /* VEHICLE_BASE_H */

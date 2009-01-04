@@ -121,7 +121,7 @@ extern GRFLoadedFeatures _loaded_newgrf_features;
 
 void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);
-void ReloadNewGRFData(); // in openttd.cpp
+void ReloadNewGRFData(); // in saveload/afterload.cpp
 
 void CDECL grfmsg(int severity, const char *str, ...);
 

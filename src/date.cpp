@@ -15,7 +15,7 @@
 #include "vehicle_base.h"
 #include "debug.h"
 #include "rail_gui.h"
-#include "saveload.h"
+#include "saveload/saveload.h"
 
 Year      _cur_year;   ///< Current year, starting at 0
 Month     _cur_month;  ///< Current month (0..11)

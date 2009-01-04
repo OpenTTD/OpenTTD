@@ -645,10 +645,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\oldloader.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\oldpool.cpp"
 				>
 			</File>
@@ -686,10 +682,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\road.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload.cpp"
 				>
 			</File>
 			<File
@@ -1041,6 +1033,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\gamelog_internal.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\genworld.h"
 				>
 			</File>
@@ -1354,10 +1350,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\roadveh.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload.h"
 				>
 			</File>
 			<File
@@ -2002,6 +1994,122 @@
 			</File>
 			<File
 				RelativePath=".\..\src\water_cmd.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Save/Load handlers"
+			>
+			<File
+				RelativePath=".\..\src\saveload\afterload.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\ai_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\animated_tile_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\autoreplace_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\cargopacket_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\cheat_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\company_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\depot_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\economy_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\engine_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\gamelog_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\group_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\industry_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\map_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\misc_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\newgrf_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\oldloader.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\order_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\saveload.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\saveload.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\saveload_internal.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\signs_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\station_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\strings_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\subsidy_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\town_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\vehicle_sl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\saveload\waypoint_sl.cpp"
 				>
 			</File>
 		</Filter>

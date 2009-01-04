@@ -13,31 +13,34 @@
  * <li>repeat this until everything is done, and flush any remaining output to file
  * </ol>
  */
-#include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "station_base.h"
-#include "thread.h"
-#include "town.h"
-#include "saveload.h"
-#include "network/network.h"
-#include "variables.h"
-#include "window_func.h"
-#include "strings_func.h"
-#include "gfx_func.h"
-#include "core/alloc_func.hpp"
-#include "functions.h"
-#include "core/endian_func.hpp"
-#include "vehicle_base.h"
-#include "company_func.h"
-#include "date_func.h"
-#include "autoreplace_base.h"
-#include "statusbar_gui.h"
-#include "fileio_func.h"
-#include <list>
-#include "gamelog.h"
+#include "../stdafx.h"
+#include "../openttd.h"
+#include "../debug.h"
+#include "../station_base.h"
+#include "../thread.h"
+#include "../town.h"
+#include "../network/network.h"
+#include "../variables.h"
+#include "../window_func.h"
+#include "../strings_func.h"
+#include "../gfx_func.h"
+#include "../core/alloc_func.hpp"
+#include "../functions.h"
+#include "../core/endian_func.hpp"
+#include "../vehicle_base.h"
+#include "../company_func.h"
+#include "../date_func.h"
+#include "../autoreplace_base.h"
+#include "../statusbar_gui.h"
+#include "../fileio_func.h"
+#include "../gamelog.h"
 
 #include "table/strings.h"
+
+#include "saveload.h"
+#include "saveload_internal.h"
+
+#include <list>
 
 extern const uint16 SAVEGAME_VERSION = 105;
 
@@ -1069,7 +1072,7 @@ static void SlLoadChunks()
  *******************************************/
 #define LZO_SIZE 8192
 
-#include "minilzo.h"
+#include "../minilzo.h"
 
 static size_t ReadLZO()
 {
@@ -1157,8 +1160,8 @@ static void UninitNoComp()
  ********** START OF MEMORY CODE (in ram)****
  ********************************************/
 
-#include "table/sprites.h"
-#include "gui.h"
+#include "../table/sprites.h"
+#include "../gui.h"
 
 struct ThreadedSave {
 	uint count;
@@ -1298,6 +1301,7 @@ static void UninitWriteZlib()
 
 /* these define the chunks */
 extern const ChunkHandler _gamelog_chunk_handlers[];
+extern const ChunkHandler _map_chunk_handlers[];
 extern const ChunkHandler _misc_chunk_handlers[];
 extern const ChunkHandler _name_chunk_handlers[];
 extern const ChunkHandler _cheat_chunk_handlers[] ;
@@ -1313,6 +1317,7 @@ extern const ChunkHandler _sign_chunk_handlers[];
 extern const ChunkHandler _station_chunk_handlers[];
 extern const ChunkHandler _industry_chunk_handlers[];
 extern const ChunkHandler _economy_chunk_handlers[];
+extern const ChunkHandler _subsidy_chunk_handlers[];
 extern const ChunkHandler _animated_tile_chunk_handlers[];
 extern const ChunkHandler _newgrf_chunk_handlers[];
 extern const ChunkHandler _group_chunk_handlers[];
@@ -1321,6 +1326,7 @@ extern const ChunkHandler _autoreplace_chunk_handlers[];
 
 static const ChunkHandler * const _chunk_handlers[] = {
 	_gamelog_chunk_handlers,
+	_map_chunk_handlers,
 	_misc_chunk_handlers,
 	_name_chunk_handlers,
 	_cheat_chunk_handlers,
@@ -1331,6 +1337,7 @@ static const ChunkHandler * const _chunk_handlers[] = {
 	_order_chunk_handlers,
 	_industry_chunk_handlers,
 	_economy_chunk_handlers,
+	_subsidy_chunk_handlers,
 	_engine_chunk_handlers,
 	_town_chunk_handlers,
 	_sign_chunk_handlers,
@@ -1501,7 +1508,6 @@ static const SaveLoadFormat *GetSavegameFormat(const char *s)
 /* actual loader/saver function */
 void InitializeGame(uint size_x, uint size_y, bool reset_date);
 extern bool AfterLoadGame();
-extern void SaveViewportBeforeSaveGame();
 extern bool LoadOldSaveGame(const char *file);
 
 /** Small helper function to close the to be loaded savegame an signal error */

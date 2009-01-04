@@ -34,53 +34,6 @@ static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];
 
 HouseOverrideManager _house_mngr(NEW_HOUSE_OFFSET, HOUSE_MAX, INVALID_HOUSE_ID);
 
-/**
- * Check and update town and house values.
- *
- * Checked are the HouseIDs. Updated are the
- * town population the number of houses per
- * town, the town radius and the max passengers
- * of the town.
- */
-void UpdateHousesAndTowns()
-{
-	Town *town;
-	InitializeBuildingCounts();
-
-	/* Reset town population and num_houses */
-	FOR_ALL_TOWNS(town) {
-		town->population = 0;
-		town->num_houses = 0;
-	}
-
-	for (TileIndex t = 0; t < MapSize(); t++) {
-		HouseID house_id;
-
-		if (!IsTileType(t, MP_HOUSE)) continue;
-
-		house_id = GetHouseType(t);
-		if (!GetHouseSpecs(house_id)->enabled && house_id >= NEW_HOUSE_OFFSET) {
-			/* The specs for this type of house are not available any more, so
-			 * replace it with the substitute original house type. */
-			house_id = _house_mngr.GetSubstituteID(house_id);
-			SetHouseType(t, house_id);
-		}
-
-		town = GetTownByTile(t);
-		IncreaseBuildingCount(town, house_id);
-		if (IsHouseCompleted(t)) town->population += GetHouseSpecs(house_id)->population;
-
-		/* Increase the number of houses for every house, but only once. */
-		if (GetHouseNorthPart(house_id) == 0) town->num_houses++;
-	}
-
-	/* Update the population and num_house dependant values */
-	FOR_ALL_TOWNS(town) {
-		UpdateTownRadius(town);
-		UpdateTownMaxPass(town);
-	}
-}
-
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid)
 {
 	/* Start from 1 because 0 means that no class has been assigned. */

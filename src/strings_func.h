@@ -68,7 +68,4 @@ struct StringIDCompare
 
 void CheckForMissingGlyphsInLoadedLanguagePack();
 
-StringID RemapOldStringID(StringID s);
-char *CopyFromOldName(StringID id);
-
 #endif /* STRINGS_TYPE_H */

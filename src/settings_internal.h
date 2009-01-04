@@ -5,7 +5,7 @@
 #ifndef SETTINGS_INTERNAL_H
 #define SETTINGS_INTERNAL_H
 
-#include "saveload.h"
+#include "saveload/saveload.h"
 #include "settings_type.h"
 
 /** Convention/Type of settings. This is then further specified if necessary

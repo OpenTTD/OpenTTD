@@ -13,6 +13,7 @@
 #include "strings_type.h"
 #include "sprite.h"
 #include "direction_type.h"
+#include "newgrf.h"
 
 enum StationClassID {
 	STAT_CLASS_BEGIN = 0,    ///< the lowest valid value

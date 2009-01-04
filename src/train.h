@@ -287,9 +287,6 @@ static inline Vehicle *GetPrevUnit(const Vehicle *v)
 	return w;
 }
 
-void ConvertOldMultiheadToNew();
-void ConnectMultiheadedTrains();
-
 void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2);
 

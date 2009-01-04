@@ -362,7 +362,6 @@ extern int _cleared_town_rating;
 void ResetHouses();
 
 void ClearTownHouse(Town *t, TileIndex tile);
-void AfterLoadTown();
 void UpdateTownMaxPass(Town *t);
 void UpdateTownRadius(Town *t);
 bool CheckIfAuthorityAllows(TileIndex tile);

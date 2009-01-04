@@ -9,7 +9,7 @@
 #include "landscape.h"
 #include "newgrf.h"
 #include "newgrf_text.h"
-#include "saveload.h"
+#include "saveload/saveload.h"
 #include "tile_map.h"
 #include "gui.h"
 #include "window_gui.h"

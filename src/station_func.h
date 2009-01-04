@@ -25,7 +25,6 @@ StationSet FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod);
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord();
 
-void AfterLoadStations();
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
 

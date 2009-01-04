@@ -15,6 +15,5 @@ void DrawWaterClassGround(const struct TileInfo *ti);
 void DrawShoreTile(Slope tileh);
 
 void MakeWaterKeepingClass(TileIndex tile, Owner o);
-void SetWaterClassDependingOnSurroundings(TileIndex t, bool include_invalid_water_class);
 
 #endif /* WATER_H */

@@ -10,7 +10,6 @@
 #include "../../rail_type.h"
 
 void AiDoGameLoop(Company *c);
-void SaveLoad_AI(CompanyID company);
 
 struct AiBuildRec {
 	TileIndex spec_tile;

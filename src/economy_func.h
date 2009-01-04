@@ -34,6 +34,7 @@ Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode);
 void DeleteSubsidyWithTown(TownID index);
 void DeleteSubsidyWithIndustry(IndustryID index);
 void DeleteSubsidyWithStation(StationID index);
+void StartupIndustryDailyChanges(bool init_counter);
 
 Money GetTransportedGoodsIncome(uint num_pieces, uint dist, byte transit_days, CargoID cargo_type);
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount);

@@ -7,6 +7,7 @@
 
 #include "town_type.h"
 #include "newgrf_callbacks.h"
+#include "tile_cmd.h"
 
 /**
  * Makes class IDs unique to each GRF file.
@@ -25,8 +26,6 @@ struct HouseClassMapping {
 	uint32 grfid;     ////< The GRF ID of the file this class belongs to
 	uint8  class_id;  ////< The class id within the grf file
 };
-
-void UpdateHousesAndTowns();
 
 HouseClassID AllocateHouseClassID(byte grf_class_id, uint32 grfid);
 

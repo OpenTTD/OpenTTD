@@ -431,7 +431,4 @@ static inline bool IsValidOrderListID(uint index)
 #define FOR_ALL_ORDER_LISTS_FROM(ol, start) for (ol = GetOrderList(start); ol != NULL; ol = (ol->index + 1U < GetOrderListPoolSize()) ? GetOrderList(ol->index + 1U) : NULL) if (ol->IsValid())
 #define FOR_ALL_ORDER_LISTS(ol) FOR_ALL_ORDER_LISTS_FROM(ol, 0)
 
-/* (Un)pack routines */
-Order UnpackOldOrder(uint16 packed);
-
 #endif /* ORDER_H */

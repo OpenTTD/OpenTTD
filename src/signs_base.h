@@ -7,6 +7,7 @@
 
 #include "signs_type.h"
 #include "viewport_type.h"
+#include "tile_type.h"
 #include "oldpool.h"
 
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)

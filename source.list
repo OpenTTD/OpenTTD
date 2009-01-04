@@ -50,7 +50,6 @@ network/network_gamelist.cpp
 network/network_server.cpp
 network/network_udp.cpp
 npf.cpp
-oldloader.cpp
 oldpool.cpp
 openttd.cpp
 os_timer.cpp
@@ -66,7 +65,6 @@ queue.cpp
 rail.cpp
 rev.cpp
 road.cpp
-saveload.cpp
 screenshot.cpp
 #if SDL
 	sdl.cpp
@@ -193,6 +191,7 @@ fios.h
 fontcache.h
 functions.h
 gamelog.h
+gamelog_internal.h
 genworld.h
 gfx_func.h
 gfx_type.h
@@ -272,7 +271,6 @@ road_gui.h
 road_internal.h
 road_type.h
 roadveh.h
-saveload.h
 screenshot.h
 sdl.h
 sound/sdl_s.h
@@ -451,6 +449,36 @@ tree_cmd.cpp
 tunnelbridge_cmd.cpp
 unmovable_cmd.cpp
 water_cmd.cpp
+
+# Save/Load handlers
+saveload/afterload.cpp
+saveload/ai_sl.cpp
+saveload/animated_tile_sl.cpp
+saveload/autoreplace_sl.cpp
+saveload/cargopacket_sl.cpp
+saveload/cheat_sl.cpp
+saveload/company_sl.cpp
+saveload/depot_sl.cpp
+saveload/economy_sl.cpp
+saveload/engine_sl.cpp
+saveload/gamelog_sl.cpp
+saveload/group_sl.cpp
+saveload/industry_sl.cpp
+saveload/map_sl.cpp
+saveload/misc_sl.cpp
+saveload/newgrf_sl.cpp
+saveload/oldloader.cpp
+saveload/order_sl.cpp
+saveload/saveload.cpp
+saveload/saveload.h
+saveload/saveload_internal.h
+saveload/signs_sl.cpp
+saveload/station_sl.cpp
+saveload/strings_sl.cpp
+saveload/subsidy_sl.cpp
+saveload/town_sl.cpp
+saveload/vehicle_sl.cpp
+saveload/waypoint_sl.cpp
 
 # Tables
 table/ai_rail.h

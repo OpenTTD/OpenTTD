@@ -29,7 +29,6 @@
 #include "settings_internal.h"
 #include "command_func.h"
 #include "console_func.h"
-#include "saveload.h"
 #include "npf.h"
 #include "yapf/yapf.h"
 #include "newgrf.h"
