@@ -635,6 +635,7 @@ static const char *_patches_ui[] = {
 	"gui.advanced_vehicle_list",
 	"gui.loading_indicators",
 	"gui.timetable_in_ticks",
+	"gui.quick_goto",
 	"gui.default_rail_type",
 	"gui.always_build_infrastructure",
 	"gui.show_track_reservation",

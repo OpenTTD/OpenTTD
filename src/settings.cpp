@@ -1439,6 +1439,7 @@ const SettingDesc _patch_settings[] = {
 	 SDTC_BOOL(gui.pause_on_newgame,                     S,  0, false,                        STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME,           NULL),
 	  SDTC_VAR(gui.advanced_vehicle_list,     SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS,      NULL),
 	 SDTC_BOOL(gui.timetable_in_ticks,                   S,  0, false,                        STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS,          NULL),
+	 SDTC_BOOL(gui.quick_goto,                           S,  0, false,                        STR_CONFIG_PATCHES_QUICKGOTO,                   NULL),
 	  SDTC_VAR(gui.loading_indicators,        SLE_UINT8, S, MS,     1,        0,        2, 0, STR_CONFIG_PATCHES_LOADING_INDICATORS,          RedrawScreen),
 	  SDTC_VAR(gui.default_rail_type,         SLE_UINT8, S, MS,     4,        0,        6, 0, STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE,           NULL),
 	 SDTC_BOOL(gui.enable_signal_gui,                    S,  0, false,                        STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI,           CloseSignalGUI),

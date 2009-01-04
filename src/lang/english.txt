@@ -1144,6 +1144,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Own company
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :All companies
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Quick creation of vehicle orders: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Default rail type (after new game/game load): {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal Rail
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrified Rail

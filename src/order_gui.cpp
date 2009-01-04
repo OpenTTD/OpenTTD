@@ -305,6 +305,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				if (v->type == VEH_TRAIN && IsTileOwner(tile, _local_company)) {
 					if (IsRailDepot(tile)) {
 						order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
+						if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 						if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 						return order;
 					}
@@ -314,6 +315,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			case MP_ROAD:
 				if (IsRoadDepot(tile) && v->type == VEH_ROAD && IsTileOwner(tile, _local_company)) {
 					order.MakeGoToDepot(GetDepotByTile(tile)->index, ODTFB_PART_OF_ORDERS);
+					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 					return order;
 				}
@@ -323,6 +325,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				if (v->type != VEH_AIRCRAFT) break;
 				if (IsHangar(tile) && IsTileOwner(tile, _local_company)) {
 					order.MakeGoToDepot(GetStationIndex(tile), ODTFB_PART_OF_ORDERS);
+					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					return order;
 				}
 				break;
@@ -333,6 +336,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 					TileIndex tile2 = GetOtherShipDepotTile(tile);
 
 					order.MakeGoToDepot(GetDepotByTile(tile < tile2 ? tile : tile2)->index, ODTFB_PART_OF_ORDERS);
+					if (_ctrl_pressed) order.SetDepotOrderType((OrderDepotTypeFlags)(order.GetDepotOrderType() ^ ODTFB_SERVICE));
 					return order;
 				}
 
@@ -346,7 +350,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			v->type == VEH_TRAIN &&
 			IsTileOwner(tile, _local_company)) {
 		order.MakeGoToWaypoint(GetWaypointByTile(tile)->index);
-		if (_settings_client.gui.new_nonstop) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
+		if (_settings_client.gui.new_nonstop != _ctrl_pressed) order.SetNonStopType(ONSF_NO_STOP_AT_ANY_STATION);
 		return order;
 	}
 
@@ -363,6 +367,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			(facil = FACIL_TRUCK_STOP, 1);
 			if (st->facilities & facil) {
 				order.MakeGoToStation(st_index);
+				if (_ctrl_pressed) order.SetLoadType(OLF_FULL_LOAD_ANY);
 				if (_settings_client.gui.new_nonstop && (v->type == VEH_TRAIN || v->type == VEH_ROAD)) order.SetNonStopType(ONSF_NO_STOP_AT_INTERMEDIATE_STATIONS);
 				return order;
 			}
@@ -631,6 +636,18 @@ public:
 		this->resize.step_height = 10;
 		this->selected_order = -1;
 		this->vehicle = v;
+
+		if (_settings_client.gui.quick_goto) {
+			/* If there are less than 2 station, make Go To active. */
+			int station_orders = 0;
+			const Order *order;
+			FOR_VEHICLE_ORDERS(v, order) {
+				if (order->IsType(OT_GOTO_STATION)) station_orders++;
+			}
+
+			if (station_orders < 2) OrderClick_Goto(this, 0);
+		}
+
 		if (_settings_game.order.timetabling) {
 			this->widget[ORDER_WIDGET_CAPTION].right -= 61;
 		} else {
@@ -1071,7 +1088,8 @@ public:
 			if (!cmd.IsValid()) return;
 
 			if (DoCommandP(this->vehicle->tile, this->vehicle->index + (this->OrderGetSel() << 16), cmd.Pack(), CMD_INSERT_ORDER | CMD_MSG(STR_8833_CAN_T_INSERT_NEW_ORDER))) {
-				ResetObjectToPlace();
+				/* With quick goto the Go To button stays active */
+				if (!_settings_client.gui.quick_goto) ResetObjectToPlace();
 			}
 		}
 	}

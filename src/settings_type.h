@@ -72,6 +72,7 @@ struct GUISettings {
 	bool   enable_signal_gui;                ///< show the signal GUI when the signal button is pressed
 	Year   colored_news_year;                ///< when does newspaper become colored?
 	bool   timetable_in_ticks;               ///< whether to show the timetable in ticks rather than days
+	bool   quick_goto;                       ///< Allow quick access to 'goto button' in vehicle orders window
 	bool   bridge_pillars;                   ///< show bridge pillars for high bridges
 	bool   auto_euro;                        ///< automatically switch to euro in 2002
 	byte   drag_signals_density;             ///< many signals density
