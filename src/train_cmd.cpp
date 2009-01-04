@@ -2849,6 +2849,8 @@ public:
 	{
 		++this->index;
 
+		int conditional_depth = 0;
+
 		do {
 			/* Wrap around. */
 			if (this->index >= this->v->GetNumOrders()) this->index = 0;
@@ -2866,8 +2868,10 @@ public:
 					UpdateOrderDest(this->v, order);
 					return true;
 				case OT_CONDITIONAL: {
+					if (conditional_depth > this->v->GetNumOrders()) return false;
 					VehicleOrderID next = ProcessConditionalOrder(order, this->v);
 					if (next != INVALID_VEH_ORDER_ID) {
+						conditional_depth++;
 						this->index = next;
 						/* Don't increment next, so no break here. */
 						continue;
