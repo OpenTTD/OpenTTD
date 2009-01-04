@@ -39,5 +39,5 @@ void Load_SUBS()
 }
 
 extern const ChunkHandler _subsidy_chunk_handlers[] = {
-	{ 'SUBS', Save_SUBS,     Load_SUBS,     CH_ARRAY},
+	{ 'SUBS', Save_SUBS,     Load_SUBS,     CH_ARRAY | CH_LAST},
 };

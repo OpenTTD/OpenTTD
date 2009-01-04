@@ -245,5 +245,5 @@ extern const ChunkHandler _map_chunk_handlers[] = {
 	{ 'M3HI', Save_MAP4,     Load_MAP4,     CH_RIFF },
 	{ 'MAP5', Save_MAP5,     Load_MAP5,     CH_RIFF },
 	{ 'MAPE', Save_MAP6,     Load_MAP6,     CH_RIFF },
-	{ 'MAP7', Save_MAP7,     Load_MAP7,     CH_RIFF },
+	{ 'MAP7', Save_MAP7,     Load_MAP7,     CH_RIFF | CH_LAST },
 };
