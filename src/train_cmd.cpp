@@ -1941,6 +1941,10 @@ static void ReverseTrainDirection(Vehicle *v)
 			/* Do not wait for a way out when we're still loading */
 			MarkTrainAsStuck(v);
 		}
+	} else if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
+		/* A train not inside a PBS block can't be stuck. */
+		ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
+		v->load_unload_time_rem = 0;
 	}
 }
 
