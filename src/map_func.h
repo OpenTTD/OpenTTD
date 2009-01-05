@@ -394,6 +394,11 @@ typedef bool TestTileOnSearchProc(TileIndex tile, void *user_data);
 bool CircularTileSearch(TileIndex *tile, uint size, TestTileOnSearchProc proc, void *user_data);
 
 /**
+ * Searches for some cirumstances of a tile around a given rectangle with a helper function.
+ */
+bool CircularTileSearch(TileIndex *tile, uint radius, uint w, uint h, TestTileOnSearchProc proc, void *user_data);
+
+/**
  * Get a random tile out of a given seed.
  * @param r the random 'seed'
  * @return a valid tile
