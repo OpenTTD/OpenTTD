@@ -3136,7 +3136,10 @@ bool TryPathReserve(Vehicle *v, bool mark_as_stuck, bool first_tile_okay)
 		return false;
 	}
 
-	if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	if (HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
+		v->load_unload_time_rem = 0;
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+	}
 	ClrBit(v->u.rail.flags, VRF_TRAIN_STUCK);
 	return true;
 }
