@@ -411,7 +411,10 @@ Note: Do not alter the following parts of the file:
 8.3) Previewing:
 ---- -------------------
 In order to view the translation in the game, you need to compile your language
-file with the strgen utility, which is now bundled with the game.
+file with the strgen utility. You can download the precompiled strgen from:
+http://www.openttd.org/download-strgen
+To compile it yourself just take the normal OpenTTD sources and build that.
+During the build process the strgen utility will be made.
 
 strgen is a command-line utility. It takes the language filename as parameter.
 Example:

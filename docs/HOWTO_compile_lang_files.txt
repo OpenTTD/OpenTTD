@@ -7,8 +7,9 @@ you have downloaded english.txt, the master language file, for. While this is
 not always true, namely when changes in the code have not touched language
 files, your safest bet is to assume this 'limitation'.
 As a first step you need to compile strgen. This is as easy as typing
-'make strgen'. You can also download a precompiled binary from a release,
-nightly, etc.
+'make strgen'. You can download the precompile strgen from:
+http://www.openttd.org/download-strgen
+
 strgen takes as argument a txt file and translates it to a lng file, allowing
 it to be used inside OpenTTD. strgen needs the master language file
 english.txt to work. Below are some examples of strgen usage.
