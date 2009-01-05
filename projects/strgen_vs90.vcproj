@@ -44,6 +44,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="/MP"
 				Optimization="1"
 				FavorSizeOrSpeed="2"
 				PreprocessorDefinitions="STRGEN;WIN32;_DEBUG;_CONSOLE"
