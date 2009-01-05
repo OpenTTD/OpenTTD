@@ -16,7 +16,7 @@ STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Vlak land nodig
 STR_0008_WAITING                                                :{BLACK}Wachtend: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} opweg van {STATION})
+STR_EN_ROUTE_FROM                                               :{YELLOW}({SHORTCARGO} op weg van {STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepteert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepteert: {GOLD}
 STR_SUPPLIES                                                    :{BLACK}Bied aan: {GOLD}
@@ -595,12 +595,12 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste 
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste voertuig bij concurrerend station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukken/rampen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Bedrijfsinformatie
-STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Openen van industriën
-STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Sluiten van industriën
+STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Openen van industrieën
+STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Sluiten van industrieën
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Veranderingen in de economie
 STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Productie wijzigingen van bedrijven bezocht door het bedrijf
-STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Productie veranderingen van industriën bezocht door tegenstander(s)
-STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andere productie aanpassingen van industriën
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Productie veranderingen van industrieën bezocht door tegenstander(s)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Andere productie aanpassingen van industrieën
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Advies / informatie over bedrijfsvoertuigen
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nieuwe voertuigen
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Verandering geaccepteerde goederen
@@ -735,7 +735,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Plaats s
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Plaats vuurtoren
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Plaats radiomast
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definieer woestijngebied.{}Gebruik CTRL om het te verwijderen
-STR_CREATE_LAKE                                                 :{BLACK}Definiëer water gebied.{}Maak een kanaal, tenzij CTRL wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
+STR_CREATE_LAKE                                                 :{BLACK}Definieer water gebied.{}Maak een kanaal, tenzij CTRL wordt vastgehouden op zee niveau, dan zal de omgeving overstromen
 STR_CREATE_RIVER                                                :{BLACK}Maak rivier.
 STR_0290_DELETE                                                 :{BLACK}Verwijder
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Verwijder deze hele stad
@@ -996,6 +996,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ei
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan geen route vinden om verder te gaan.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is verdwaald.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Winst van {VEHICLE} was vorig jaar {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
 
 # Start of order review system.
@@ -1026,7 +1027,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Zeer la
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbied schepen en treinen om 90 graden te draaien: {ORANGE}{STRING} {LTBLUE} (Vereist NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verbeterde laad algorithme: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verbeterde laad algoritme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Voertuigen geleidelijk laden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Lading alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
@@ -1061,6 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Herzie 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit gestopte voertuigen uit
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :van alle voertuigen
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Waarschuw als inkomsten van voertuig negatief zijn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Voertuigen verlopen nooit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Vernieuw voertuig automatisch wanneer deze oud wordt
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maanden voor/na max. leeftijd
@@ -1169,7 +1171,7 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Beginja
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Vloeiende economie inschakelen (meer, kleinere veranderingen)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Sta het kopen van aandelen toe
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Bij slepen, plaats seinen elke: {ORANGE}{STRING} tegel(s)
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch semaphore seinen voor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Plaats automatisch semafoor seinen voor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Activeer sein GUI: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Seintype die standaard moet worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Normaal
@@ -1987,7 +1989,7 @@ STR_STAT_CLASS_WAYP                                             :Controleposten
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Bouw scheepswerf
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...moet op water gebouwd worden
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Kan scheepswerf hier niet bouwen...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecteer scheepswerf orientatie
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecteer scheepswerf oriëntatie
 STR_3804_WATER                                                  :Water
 STR_3805_COAST_OR_RIVERBANK                                     :Kust of rivierbed
 STR_3806_SHIP_DEPOT                                             :Scheepswerf
@@ -2746,7 +2748,7 @@ STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Verander
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Verander het ontlaad-gedrag van de geselecteerde order
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
-STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Voeg een geadvanceerde order toe
+STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}Voeg een geavanceerde order toe
 STR_ORDER_GO_TO_NEAREST_DEPOT                                   :Ga naar dichtstbijzijnde depot
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :Ga naar dichtstbijzijnde hangar
 STR_ORDER_NEAREST_DEPOT                                         :het dichtstbijzijnde
@@ -2776,7 +2778,7 @@ STR_ORDER_CONDITIONAL_AGE                                       :Voertuigleeftij
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Heeft onderhoud nodig
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Altijd
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :is gelijk aan
-STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is niet gelijjk aan
+STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :is niet gelijk aan
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :is minder dan
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :is minder of gelijk aan
 STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :is meer dan
@@ -2884,7 +2886,7 @@ STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Forceer 
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Keer trein om
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Toon trein details
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Vergroot reparatie-interval
-STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Verklein reparatieinterval
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Verklein reparatie-interval
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Laat details zien van vervoerde goederen
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Laat details zien van treinvoertuigen
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Laat de mogelijkheden van elk voertuig zien
@@ -2907,7 +2909,7 @@ STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst di
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Gestopt
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan trein niet het signaal laten passeren bij gevaar...
-STR_8863_CRASHED                                                :{RED}Gecrashed!
+STR_8863_CRASHED                                                :{RED}Gecrasht!
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Hernoem trein
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kan trein niet zo noemen...
@@ -3010,7 +3012,7 @@ STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernoem 
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernoem wegvoertuigtype
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan wegvoertuigtype niet hernoemen...
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Verbouw het wegvoertuig om een andere lading the vervoeren
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Verbouw het wegvoertuig om een andere lading te vervoeren
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Verbouw wegvoertuig
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Verbouw wegvoertuig om geselecteerd vrachttype te vervoeren
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan wegvoertuig niet verbouwen
@@ -3339,7 +3341,7 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Start he
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het Vervangen
 STR_NOT_REPLACING                                               :{BLACK}Niet aan het vervangen
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Geen voertuig geselecteerd
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecteer het type locmotief om te vervangen
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecteer het type locomotief om te vervangen
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecteer een nieuw type locomotief die je wil gebruiken om het links geselecteerde type locomotief te vervangen
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief niet wil vervangen
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Klik op deze knop als je de aan de linkerkant geselecteerde locomotief wil vervangen met die aan de rechterkant
@@ -3509,8 +3511,8 @@ STR_TRANSPARENCY_TOOLB                                          :{WHITE}Doorzich
 STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Wissel doorzichtigheid voor stationsnamen
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Wissel doorzichtigheid voor bomen
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Wissel doorzichtigheid voor huizen
-STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wissel doorzichtigheid voor industriën
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots, waypoints en bovenleiding
+STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Wissel doorzichtigheid voor industrieën
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Wissel doorzichtigheid voor gebouwen zoals stations, depots, controleposten en bovenleiding
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Wissel doorzichtigheid voor bruggen
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Wissel doorzichtigheid voor structuren zoals vuurtoren en antennes, in de toekomst misschien voor eyecandy
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Doorzichtigheid voor bovenleiding. CTRL+klik voor onthouden.
@@ -3587,7 +3589,7 @@ STR_FACE_SIMPLE                                                 :{BLACK}Eenvoudi
 STR_FACE_SIMPLE_TIP                                             :{BLACK}Eenvoudige gezichtskeuze.
 STR_FACE_LOAD                                                   :{BLACK}Laden
 STR_FACE_LOAD_TIP                                               :{BLACK}Laad favoriet gezicht
-STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicfht op geladen van het OpenTTD configuratie bestand.
+STR_FACE_LOAD_DONE                                              :{WHITE}Je favoriete gezicht op geladen van het OpenTTD configuratie bestand.
 STR_FACE_FACECODE                                               :{BLACK}Speler gezichtsnummer.
 STR_FACE_FACECODE_TIP                                           :{BLACK}Bekijk en/of bewaar spelers gezichtsnummer
 STR_FACE_FACECODE_CAPTION                                       :{WHITE}Bekijken en/of bewaar gezichtnummer
@@ -3597,14 +3599,14 @@ STR_FACE_SAVE                                                   :{BLACK}Opslaan
 STR_FACE_SAVE_TIP                                               :{BLACK}Sla favoriet gezicht op
 STR_FACE_SAVE_DONE                                              :{WHITE}Dit gezicht wordt zal worden opgeslagen als jouw favoriet in het OpenTTD configuratie bestand.
 STR_FACE_EUROPEAN                                               :{BLACK}Europeaan
-STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Kies europeaan gezicht
+STR_FACE_SELECT_EUROPEAN                                        :{BLACK}Kies europeaans gezicht
 STR_FACE_AFRICAN                                                :{BLACK}Africaan
 STR_FACE_SELECT_AFRICAN                                         :{BLACK}Kies africaans gezicht
 STR_FACE_YES                                                    :Ja
 STR_FACE_NO                                                     :Nee
 STR_FACE_MOUSTACHE_EARRING_TIP                                  :{BLACK}Activeer snor of oorbel
 STR_FACE_HAIR                                                   :Haar:
-STR_FACE_HAIR_TIP                                               :{BLACK}Varander haar
+STR_FACE_HAIR_TIP                                               :{BLACK}Verander haar
 STR_FACE_EYEBROWS                                               :Wenkbrauwen:
 STR_FACE_EYEBROWS_TIP                                           :{BLACK}Verander wenkbrauwen
 STR_FACE_EYECOLOUR                                              :Kleur ogen
@@ -3631,10 +3633,10 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Verander
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}Sein keuze
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Kan sein hier niet ombouwen...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standaard sein (semaphore){}Seinen zijn nodig om te voorkomen dat treinen botsen bij een netwerk met meer dan een trein.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Ingangssein (semaphore){}Groen zolang als er een of meer groene exitseinen zijn volgend na dit sein. Anders is deze rood.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exitsein (semaphore){}Gedraagt zich hetzelfde als een gewoon sein, maar is nodig om ingangs- en combo-voor-seinen te sturen.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Sein (semaphore){}Het combo sein gedraagt zicht als zowel Ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Standaard sein (semafoor){}Seinen zijn nodig om te voorkomen dat treinen botsen bij een netwerk met meer dan een trein.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Ingangssein (semafoor){}Groen zolang als er een of meer groene exitseinen zijn volgend na dit sein. Anders is deze rood.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Exitsein (semafoor){}Gedraagt zich hetzelfde als een gewoon sein, maar is nodig om ingangs- en combo-voor-seinen te sturen.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Combo-Sein (semafoor){}Het combo sein gedraagt zicht als zowel Ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Geavanceerde seinen (semaphoor){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Geavanceerde seinen kunnen van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Eenrichtings geavanceerde seinen (semaphoor){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings geavanceerde seinen kunnen niet van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standaard sein (electric){}Seinen zijn nodig om te voorkomen dat treinen botsen bij netwerken met meer dan een trein.
@@ -3643,7 +3645,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Exit-sei
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-sein (electric){}Het combo sein gedraagt zicht als zowel ingangs- als exit-sein. Zo kun je grote netwerken van voorseinen maken.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Geavanceerde seinen (elektrisch){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Geavanceerde seinen kunnen van achteren worden gepasseerd.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Eenrichtings geavanceerde seinen (elektrisch){}Een geavanceerd sein laat het toe meer dan een trein op een seinblok tegelijk, als de trein een route kan reserveren naar een veilige stopplaats. Eenrichtings geavanceerde seinen kunnen niet van achteren worden gepasseerd.
-STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein ombouwen{}Wanneer geselecteerd, door te klikken op een bestaand seintype, zal het sein worden omgebouwd naar het geselecteerde seintype en varianten, CTRL-klik schakeld tussen de bestaande varianten.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Sein ombouwen{}Wanneer geselecteerd, door te klikken op een bestaand seintype, zal het sein worden omgebouwd naar het geselecteerde seintype en varianten, CTRL-klik schakelt tussen de bestaande varianten.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Sleep sein dichtheid
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Verklein gesleepte sein dichtheid
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Vergroot gesleepte sein dichtheid

@@ -483,6 +483,9 @@ STR_019C_ROAD_VEHICLE                                           :Køyretøy
 STR_019D_AIRCRAFT                                               :Fly
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :To
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} er gammal
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} er veldig gammal
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} er veldig gammal, og må bytast ut snarast
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasjon om felt
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for å fjerne: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for å fjerne: {RED}{CURRENCY}
@@ -992,10 +995,15 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikkj
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikkje kopiere ordreliste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordrar - -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} har køyrt seg vill.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}'s forteneste i fjor var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeisk valutaunion!{}{} Euro er introdusert som den einaste gjeldande valuta for kvadagslege forretningar i landet ditt.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} har for få ordrar i køyreplanen
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} har ein ugyldig ordre
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} har to like ordrar
 # end of order system
 
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ingen autoutbyting-/fornyingsreglar lagt til.
@@ -1096,6 +1104,8 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Høgrek
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontroll klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
+
+
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}

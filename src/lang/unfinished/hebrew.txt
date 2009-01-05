@@ -1046,9 +1046,17 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :משופר
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}סיבוב מפת גובה: {ORANGE}{STRING}
 
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :כבוי
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}גלילה בלחיצה שמאלית: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}השתמש {ORANGE}{STRING}{LTBLUE} במבנה התאריך בשביל שמות קבצי השמירה.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :ארוך (דצמבר 31 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :קצר (12-31-2008)
 
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}עצור משחק אוטומטית אחרי התחלת משחק חדש: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}השתמש ברשימת כלי הרכב המתקדמת: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :כבוי
 
 
 

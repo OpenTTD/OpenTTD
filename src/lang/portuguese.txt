@@ -482,6 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :Veículo de est
 STR_019D_AIRCRAFT                                               :Aeronave
 STR_019E_SHIP                                                   :Barco
 STR_019F_TRAIN                                                  :Comboio
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} está a ficar velho
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} está a ficar muito velho
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} está a ficar muito velho e urgentemente necessita de substituição
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informações do Terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Custo para limpar: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Custo para limpar: {RED}{CURRENCY}
@@ -991,10 +994,14 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Não é 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Não é possível copiar a lista de ordens...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fim de Ordens Partilhadas - -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} está perdido.
+STR_VEHICLE_IS_UNPROFITABLE                                     :O lucro do veículo {WHITE}{VEHICLE} foi de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}União Monetária Europeia!{}{}O Euro é introduzido como moeda única para todas as transacções no seu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} tem poucas ordens no horário
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} tem uma ordem inválida no seu horário
 # end of order system
 
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Sem regras de substituição/renovação.
@@ -1097,6 +1104,8 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulaç
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Clique para comando
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique para controlo
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
+
+
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automática ao iniciar um novo jogo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}

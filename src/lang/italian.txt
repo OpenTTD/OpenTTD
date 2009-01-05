@@ -484,6 +484,9 @@ STR_019C_ROAD_VEHICLE                                           :Automezzo
 STR_019D_AIRCRAFT                                               :Aeromobile
 STR_019E_SHIP                                                   :Nave
 STR_019F_TRAIN                                                  :Treno
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} sta invecchiando
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} sta invecchiando molto
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} sta invecchiando molto e richiede urgentemente sostituzione
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informazioni sull'area di terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costo di demolizione: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costo di demolizione: {RED}{CURRENCY}
@@ -993,12 +996,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossib
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossibile copiare la lista degli ordini...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fine degli ordini condivisi - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} non trova un percorso per proseguire
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} si è perso
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Il profitto di {VEHICLE} per l'anno scorso è stato {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Unione Monetaria Europea!{}{}È stato introdotto l'Euro come unica moneta per le transazioni quotidiane nel nostro Paese!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} non ha abbastanza ordini pianificati
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} ha un ordine vuoto
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} ha alcuni ordini duplicati
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} ha una stazione non valida nei suoi ordini
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Rinnovo automatico di {VEHICLE}{}{STRING} fallito
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} è diventato troppo lungo dopo la sostituzione
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Nessuna regola di rimpiazzo/rinnovo automatico applicata.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite denaro)
 
@@ -1052,6 +1064,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Control
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :No
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sì, ma escludi i veicoli fermi
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Per tutti i veicoli
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avvisa se il profitto di un veicolo è in negativo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}I veicoli non diventano mai obsoleti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova un veicolo quando diventa vecchio
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo quando è {ORANGE}{STRING}{LTBLUE} mesi fuori età massima
@@ -2798,6 +2811,7 @@ STR_UNKNOWN_STATION                                             :stazione sconos
 STR_8812_EMPTY                                                  :{LTBLUE}Vuoto
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} da {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} da {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} ha raggiunto il deposito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuovi veicoli
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Treno troppo lungo
@@ -2956,6 +2970,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacit�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve essere fermo nel deposito automezzi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossibile vendere l'automezzo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossibile fermare/avviare l'automezzo...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ha raggiunto il deposito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Diretto al Deposito di {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Diretto al Deposito di {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Manutenzione al Deposito di {TOWN}
@@ -3037,6 +3052,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Diretto
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Diretto al Deposito di {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Manutenzione al Deposito di {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenzione al Deposito di {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} ha raggiunto il deposito
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Costruisce un molo per le navi
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Costruisce un deposito navale (per costruire e manutenere le navi)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navi - fare clic su una nave per informazioni
@@ -3101,6 +3117,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Diretto
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Diretto all'Hangar di {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Manutenzione all'Hangar di {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Manutenzione all'Hangar di {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} ha raggiunto l'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeromobile di mezzo
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Impossibile fermare/avviare l'aeromobile...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}L'aeromobile è in volo
@@ -3361,6 +3378,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Fare cli
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Elenco cartelli - {COMMA} cartell{P o i}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Il fallito riadattamento ha fermato {VEHICLE}
 
 ############ Lists rail types
 

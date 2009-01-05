@@ -94,10 +94,10 @@ STR_QUANTITY_LIVESTOCK                                          :{COMMA}رأس �
 STR_QUANTITY_GOODS                                              :{COMMA}قفص من المؤنة
 STR_QUANTITY_GRAIN                                              :{WEIGHT} من الحبوب
 STR_QUANTITY_WOOD                                               :{WEIGHT} من الخشب
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} من برادة الحديد
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} من خام الحديد
 STR_QUANTITY_STEEL                                              :{WEIGHT} من الحديد
 STR_QUANTITY_VALUABLES                                          :{COMMA}صندوق من المقتنيات الثمينة
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} من برادة النحاس
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} من خام النحاس
 STR_QUANTITY_MAIZE                                              :{WEIGHT} من الذرة
 STR_QUANTITY_FRUIT                                              :{WEIGHT} من الفواكة
 STR_QUANTITY_DIAMONDS                                           :{COMMA}كيس من الجواهر
@@ -126,7 +126,7 @@ STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ما�
 STR_ABBREV_GOODS                                                :{TINYFONT}بضائع
 STR_ABBREV_GRAIN                                                :{TINYFONT}حبوب
 STR_ABBREV_WOOD                                                 :{TINYFONT}خشب
-STR_ABBREV_IRON_ORE                                             :{TINYFONT}برادة حديد
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}خام حديد
 STR_ABBREV_STEEL                                                :{TINYFONT}حديد
 STR_ABBREV_VALUABLES                                            :{TINYFONT}ممتلكات ثمينة
 STR_ABBREV_COPPER_ORE                                           :{TINYFONT}خام النحاس
@@ -483,6 +483,9 @@ STR_019C_ROAD_VEHICLE                                           :مركبات
 STR_019D_AIRCRAFT                                               :طائرات
 STR_019E_SHIP                                                   :سفن
 STR_019F_TRAIN                                                  :قطار
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} اصبحت قديمة
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} اصبحت قديمة جدا
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} قديمة جدا وتحتاج الى استبدال فوري
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}معلومات ارض
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK} تكلفة الازالة :  {LTBLUE} غير متاح
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}تكلفة الازالة :  {RED}{CURRENCY}
@@ -619,8 +622,8 @@ STR_0218_MOGUL                                                  :ملك التج
 STR_0219_TYCOON_OF_THE_CENTURY                                  :امبراطور القرن
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}. {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} منجزات '{STRING}' وضع
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} لـ {COMPANY} منجزات '{STRING}' وضع!
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}حققت شركة {COMPANY}  بجدارة'{STRING}'
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}حقق {PRESIDENTNAME}مدير شركة  {COMPANY}  '{STRING}' بجدارة
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}النسخة المفتوحة
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}محرر الخريطة
@@ -710,7 +713,7 @@ STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}زرع �
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}بناء مصدر مياة
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}بناء برج ماء (يبنى داخل المدن فقط)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}بناء منجم جواهر
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}بناء منجم برادة النحاس
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}بناء منجم خام النحاس
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}زرع مزرعة قطن
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}بناء مصنع حلويات
 STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}بناء مزرعة بطاريات
@@ -992,12 +995,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}لا ي�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}لا يمكن نسخ قائمة الأوامر
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - نهاية الأوامر المشتركة - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} لا يستطيع ايجاد طريق للمواصلة
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} تائه
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} دخل العربة السنة السابقة {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}العملة الموحدة للدول الأوربية! {}{}تم اعتماد العملة الأوربية الموحدة - اليورو - للمعاملات اليومية في دولتك!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} لديها اوامر قليلة جدا في جدولها
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} لديها امر غير صالح
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} لديها امر مكرر
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} لديها محطة غير صالحة في القائمة
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}  فشل تطبيق الاستبدال الذاتي ل{VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} طويل جدا بعد الاستبدال
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}لا يوجد نظام مطبق للتبديل/ التجديد
 STR_AUTOREPLACE_MONEY_LIMIT                                     :- حدود التكلفة للتبديل -
 
@@ -1051,6 +1063,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}است�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :لا
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :نعم, بستثناء العربات المتوقفة
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :لكل العربات
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE} حذر عندما يكون الدخل سالبا : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}المركبات لا تنتهي صلاحيتها ابدا : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}جدد العربات عندما تصبح قديمة
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}التجديد التلقائي عندما تكون العربة {ORANGE}{STRING}{LTBLUE}شهر قبل / بعد العمر الافتراضي.
@@ -1117,6 +1130,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :لشركتك
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :كل الشركات
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}تمكين جدولة اعمال المركبات: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}عرض جدولة الأعمال بالمهام بدلا من الأيام: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE} انشاء اوامر بسرعة : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}سكة الحديد القياسية -بعد بدأ لعبة جديدة او تحميل لعبة- : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :السكة العادية
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :السكة الكهربائية
@@ -1319,11 +1333,11 @@ STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}بناء
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}زراعة مزرعة
 STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}بناء مصفاة نفط
 STR_CONSTRUCT_FARM_TIP                                          :{BLACK}تمويل مزرعة
-STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}بناء منجم برادة نحاس
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}بناء منجم خام نحاس
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}حفر للنفط
 STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}بناء منجم ذهب
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}بناء منجم جواهر
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}بناء منجم برادة حديد
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}بناء منجم خام حديد
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}تمويل مزرعة فواكة
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}تمويل مزرعة مطاط
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}تمويل مصدر مياة
@@ -2024,7 +2038,7 @@ STR_4808_FACTORY                                                :مصنع
 STR_4809_PRINTING_WORKS                                         :معمل طباعة
 STR_480A_STEEL_MILL                                             :مصنع حديد
 STR_480B_FARM                                                   :مزرعة
-STR_480C_COPPER_ORE_MINE                                        :منجم برادة النحاس
+STR_480C_COPPER_ORE_MINE                                        :منجم خام النحاس
 STR_480D_OIL_WELLS                                              :ابار نفط
 STR_480E_BANK                                                   :بنك
 STR_480F_FOOD_PROCESSING_PLANT                                  :معمل تحضير الطعام
@@ -2076,7 +2090,7 @@ STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... يم
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{STRING}يعلن الاغلاق الفوري
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}تسبب نقص في الامدادات الى الاغلاق الفوري ل {STRING}
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT} النقص في الشجر بالجوار ادى الى الاغلاق الفوري ل {STRING}.
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY}يزيد الانتاج!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} يزيد الانتاج
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}وجد نواة فحم في {INDUSTRY}!{}يتوقع مضاعفة الانتاج
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}وجد مستودع جوفي للنفط في {INDUSTRY}!{}يتوقع ان يتضاعف الانتاج
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}استحدثت طرق جديدة للزراعة في {INDUSTRY}{} يتوقع ان يتضاعف الانتاج
@@ -2464,12 +2478,12 @@ STR_801F_LIVESTOCK_VAN                                          :عربة موا
 STR_8020_GOODS_VAN                                              :حاوية بضائع
 STR_8021_GRAIN_HOPPER                                           :حاوية حبوب
 STR_8022_WOOD_TRUCK                                             :عربة اخشاب
-STR_8023_IRON_ORE_HOPPER                                        :حاوية برادة حديد
+STR_8023_IRON_ORE_HOPPER                                        :حاوية خام حديد
 STR_8024_STEEL_TRUCK                                            :عربة حديد
 STR_8025_ARMORED_VAN                                            :حاوية مدرعة
 STR_8026_FOOD_VAN                                               :حاوية طعام
 STR_8027_PAPER_TRUCK                                            :عربة اوراق
-STR_8028_COPPER_ORE_HOPPER                                      :حاوية برادة النحاس
+STR_8028_COPPER_ORE_HOPPER                                      :حاوية خام النحاس
 STR_8029_WATER_TANKER                                           :حزان مياة
 STR_802A_FRUIT_TRUCK                                            :حاوية فواكة
 STR_802B_RUBBER_TRUCK                                           :حاوية مطاط
@@ -2494,12 +2508,12 @@ STR_803D_LIVESTOCK_VAN                                          :عربة موا
 STR_803E_GOODS_VAN                                              :حاوية بضائع
 STR_803F_GRAIN_HOPPER                                           :حاوية حبوب
 STR_8040_WOOD_TRUCK                                             :عربة خشب
-STR_8041_IRON_ORE_HOPPER                                        :حاوية برادة حديد
+STR_8041_IRON_ORE_HOPPER                                        :حاوية خام حديد
 STR_8042_STEEL_TRUCK                                            :عربة حديد
 STR_8043_ARMORED_VAN                                            :حاوية مدرعة
 STR_8044_FOOD_VAN                                               :عربة طعام
 STR_8045_PAPER_TRUCK                                            :عربة اوراق
-STR_8046_COPPER_ORE_HOPPER                                      :حاوية برادة نحاس
+STR_8046_COPPER_ORE_HOPPER                                      :حاوية خام نحاس
 STR_8047_WATER_TANKER                                           :خزان مياة
 STR_8048_FRUIT_TRUCK                                            :عربة فواكة
 STR_8049_RUBBER_TRUCK                                           :عربة مطاط
@@ -2526,12 +2540,12 @@ STR_805D_LIVESTOCK_VAN                                          :عربة ماش
 STR_805E_GOODS_VAN                                              :حاوية بضائع
 STR_805F_GRAIN_HOPPER                                           :حاوية حبوب
 STR_8060_WOOD_TRUCK                                             :عربة خشب
-STR_8061_IRON_ORE_HOPPER                                        :عربة برادة حديد
+STR_8061_IRON_ORE_HOPPER                                        :عربة خام حديد
 STR_8062_STEEL_TRUCK                                            :عربة حديد
 STR_8063_ARMORED_VAN                                            :عربة مصفحة
 STR_8064_FOOD_VAN                                               :حاوية طعام
 STR_8065_PAPER_TRUCK                                            :عربة اوراق
-STR_8066_COPPER_ORE_HOPPER                                      :حاوية برادة نحاس
+STR_8066_COPPER_ORE_HOPPER                                      :حاوية خام نحاس
 STR_8067_WATER_TANKER                                           :خزان مياة
 STR_8068_FRUIT_TRUCK                                            :عربة فواكة
 STR_8069_RUBBER_TRUCK                                           :حاوية مطاط
@@ -2576,9 +2590,9 @@ STR_808F_GOSS_GRAIN_TRUCK                                       :عربة قوز
 STR_8090_WITCOMBE_WOOD_TRUCK                                    :عربة ويتكوم للخشب
 STR_8091_FOSTER_WOOD_TRUCK                                      :عربة فوستر للخشب
 STR_8092_MORELAND_WOOD_TRUCK                                    :عربة موريلان للخشب
-STR_8093_MPS_IRON_ORE_TRUCK                                     :عربة ام بي اس لبرادة الحديد
-STR_8094_UHL_IRON_ORE_TRUCK                                     :عربة يو اتش ال لبرادة الحديد
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :عربة شبي لبرادة الحديد
+STR_8093_MPS_IRON_ORE_TRUCK                                     :عربة ام بي اس لخام الحديد
+STR_8094_UHL_IRON_ORE_TRUCK                                     :عربة يو اتش ال لخام الحديد
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :عربة شبي لخام الحديد
 STR_8096_BALOGH_STEEL_TRUCK                                     :عربة بالو للحديد
 STR_8097_UHL_STEEL_TRUCK                                        :عربة ية اتش ال للحديد
 STR_8098_KELLING_STEEL_TRUCK                                    :عربة كيلي للحديد
@@ -2591,9 +2605,9 @@ STR_809E_CHIPPY_FOOD_VAN                                        :عربة شبي
 STR_809F_UHL_PAPER_TRUCK                                        :عربة يو اتش ال للاوراق
 STR_80A0_BALOGH_PAPER_TRUCK                                     :عربة بالو للاوراق
 STR_80A1_MPS_PAPER_TRUCK                                        :عربة ام بي اس للاوراق
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :عربة ام بي اس لبرادة النحاس
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :عربة ام بي اس لخام النحاس
 STR_80A3_UHL_COPPER_ORE_TRUCK                                   :عربة يو اتش ال لرادة النحاس
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :عربة قوس لبرادة النحاس
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :عربة قوس لخام النحاس
 STR_80A5_UHL_WATER_TANKER                                       :وايت يو اتش ال للمياة
 STR_80A6_BALOGH_WATER_TANKER                                    :عربة بالو للمياة
 STR_80A7_MPS_WATER_TANKER                                       :عربة ام بي اس للمياة
@@ -2796,6 +2810,7 @@ STR_UNKNOWN_STATION                                             :محطة غير
 STR_8812_EMPTY                                                  :{LTBLUE}فارغ
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} الى {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} من{STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} ينتظر في المستودع
 STR_8815_NEW_VEHICLES                                           :{BLACK}عربات جديدة
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}القطار طويل جدا
@@ -2954,6 +2969,7 @@ STR_9012_CAPACITY                                               :{BLACK}السع
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... يجب ان يوقف داخل ورشة الصيانة.
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}لا يمكن بيع العربة...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}لا يمكن ايقاف / تشغيل العربة
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} تنتظر في المستودع
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}متوجه لورشة {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}متوجة الى ورشة {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}صيانة في ورشة {TOWN}
@@ -3035,6 +3051,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}متو�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}تتجة الى حوض {TOWN}للسفن, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}صيانة في حوض سفن  {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}صيانة في حوض{TOWN}للسفن, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} تنتظر في حوض السفن
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}بناء مرفء سفن
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}بناء حوض سفن - لشراء/ بيع/ صيانة السفن -
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}السفن - اضغط على السفينة للتفاصيل
@@ -3099,6 +3116,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}متو�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}تتوجة الى حظيرة {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}صيانه في حظيرة  {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}الصيانة في حظيرة {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} تنتظر في الحظيرة
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}طائرة في الطريق
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}لا يمكن توقيف / تشغيل الطائرة
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}الطائرة تقوم بالطيران الآن
@@ -3359,6 +3377,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}اضغط
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}قائمة العلامات -  {COMMA} علامة
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE} امر الاستبدال توقف {VEHICLE}
 
 ############ Lists rail types
 

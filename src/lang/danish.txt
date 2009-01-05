@@ -485,6 +485,7 @@ STR_019F_TRAIN                                                  :Tog
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landområde-information
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for at rydde: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for at rydde: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Indtægt ved rydning: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Ejer: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Ejer af vej: {LTBLUE}{STRING}
@@ -990,12 +991,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordreliste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delt ordreliste - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan ikke finde en rute at fortsætte ad.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} er gået tabt.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}s indtjening sidste år var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europæisk fællesvaluta!{}{}Euroen er introduceret som eneste betalingsmiddel i dit land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} har for få ordrer i ordrelisten
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} har en ugyldig ordre
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} har dublerede ordrer
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} har en ugyldig station i sine ordrer
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automatisk fornyelse mislykkedes for {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} er blevet for langt efter udskiftning
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ingen autoudskiftning/-fornyelse foretaget.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(ikke penge nok)
 
@@ -1049,6 +1059,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Kontrol
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Nej
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men udelad stoppede køretøjer
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :af alle køretøjer
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et køretøjs indtjening er negativ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køretøjernes levealder udløber aldrig: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automatisk fornyelse af køretøjer når de bliver gamle
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Forny automatisk køretøj {ORANGE}{STRING}{LTBLUE} md. før/efter maks. alder
@@ -1097,6 +1108,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommandoklik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontrolklik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Fra
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Venstreklik-scrolling: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Brug {ORANGE}{STRING}{LTBLUE}-datoformatet til navne på gemte spil.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Sæt automatisk på pause når nyt spil startes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Brug avanceret køretøjsliste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Fra
@@ -1108,6 +1126,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eget firma
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle firmaer
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Slå køreplaner for transportmidler til: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis køreplan i tik i stedet for dage: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Hurtig oprettelse af køretøjsordrer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard skinnetype (efter nyt spil/hentet spil): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal jernbane
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrificeret jernbane
@@ -1518,6 +1537,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Afbryd forbindelse
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv beløbet du vil give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveren er beskyttet. Indtast kodeord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Selskabet er beskyttet. Indtast kodeord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient liste
@@ -1557,6 +1577,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :smidt ud af ser
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvede at snyde
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er fuld
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spil på pause (for få spillere)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spil ikke længere på pause (nok spillere igen)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spil på pause (tilslutter klient)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spil ikke længere på pause (klient tilsluttet)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spil ikke længere på pause (klient kunne ikke tilsluttes)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :forlader
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} har tilsluttet sig spillet
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} har forladt spillet ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} har ændret sit navn til {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gav dit firma {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Du gav {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Hold] :
 STR_NETWORK_CHAT_COMPANY                                        :[Hold] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Hold] Til {STRING}: {GRAY}{STRING}
@@ -1966,6 +2000,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Hent spi
 STR_4002_SAVE                                                   :{BLACK}Gem
 STR_4003_DELETE                                                 :{BLACK}Slet
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Tilskuer, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes fri
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikke læse drevet
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Fejl under gemning af spil{}{STRING}
@@ -2771,6 +2806,7 @@ STR_UNKNOWN_STATION                                             :ukendt station
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} fra {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} fra {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} venter i remisen
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye køretøjer
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
@@ -2896,7 +2932,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Ny {STRING} er nu tilgængelig!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan ikke sælge ødelagt køretøj...
-STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kan ikke ændre ødelagt køretøj...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kan ikke ombygge ødelagt køretøj...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan ikke lave køreplan for transportmiddel...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Transportmidler kan kun vente ved stationer.
@@ -2929,6 +2965,7 @@ STR_9012_CAPACITY                                               :{BLACK}Kapacite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal være stoppet inde i et værksted først
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge køretøj...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte køretøj...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter på værkstedet
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Kører til {TOWN} værksted
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Kører til {TOWN} værksted, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service på {TOWN} værksted
@@ -3010,6 +3047,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Sejler 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Sejler til {TOWN} skibsdok, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service i {TOWN} skibsdok
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service i {TOWN} skibsdok, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} venter i skibsdokken
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byg havn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Byg skibsdok (til bygning og servicering af skibe)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skibe - klik på et skib for information
@@ -3074,6 +3112,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Flyver 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Flyver til {STATION} hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service i {STATION} hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service i {STATION} hangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} venter i hangaren
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fly i vejen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte fly...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
@@ -3334,6 +3373,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klik for
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste over skilte - {COMMA} Skilt{P "" e}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Ombygningsordre stoppet pga. fejl {VEHICLE}
 
 ############ Lists rail types
 
@@ -3453,7 +3493,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areal: {
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Værdi af overført gods: {LTBLUE}{CURRENCY}

@@ -482,6 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :Kjøretøy
 STR_019D_AIRCRAFT                                               :Fly
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Tog
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} begynner å bli gammel
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} begynner å bli veldig gammel
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} begynner å bli veldig gammel, og bør byttes ut snarest
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasjon om felt
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Fjerningskostnad: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Fjerningskostnad: {RED}{CURRENCY}
@@ -642,7 +645,7 @@ STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Grunnleg
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan ikke grunnlegge by her...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...for nært kanten av kartet
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...for nært en annen by
-STR_0239_SITE_UNSUITABLE                                        :{WHITE}...feltet er uskikket
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...feltet er uegnet
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...for mange byer
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan ikke bygge byer
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...der er ikke mer plass på kartet
@@ -696,13 +699,13 @@ STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Bygg sme
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Bygg gård
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Bygg jerngruve
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Bygg oljebrønn
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bygg bank (kan kun bygges i byer med flere enn 1200 innbyggere)
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bygg bank (kan kun bygges i byer med mer enn 1200 innbyggere)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Bygg papirfabrikk
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Bygg matforedlingsfabrikk
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Bygg trykkeri
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Bygg gullgruve
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bygg bank (kan kun bygges i byer)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bygg sagbruk (fjerner regnskog og produserer tømmer)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Bygg sagbruk (hugger regnskog og produserer tømmer)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Plant fruktplantasje
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Plant gummiplantasje
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Bygg vannreservoar
@@ -749,9 +752,9 @@ STR_PLAY_HEIGHTMAP                                              :{BLACK}Spill h�
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start et nytt spill, bruk et høydekart som landskap
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Er du sikker på du vil forlate dette scenariet?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avslutt redigeringsprogrammet
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer med mer en 1200 innbyggere
-STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen tilbake et år
-STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen frem et år
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer med mer enn 1200 innbyggere
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen tilbake ett år
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Flytt startdatoen frem ett år
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...broens ender må være på land
 STR_02A1_SMALL                                                  :{BLACK}Liten
 STR_02A2_MEDIUM                                                 :{BLACK}Middels
@@ -826,8 +829,8 @@ STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Oppmåli
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Kjøreretning
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Velg kjøreretning
-STR_02E9_DRIVE_ON_LEFT                                          :Kjør på venstre side
-STR_02EA_DRIVE_ON_RIGHT                                         :Kjør på høyre side
+STR_02E9_DRIVE_ON_LEFT                                          :Venstrekjøring
+STR_02EA_DRIVE_ON_RIGHT                                         :Høyrekjøring
 STR_02EB_TOWN_NAMES                                             :{BLACK}Bynavn
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Velg bynavntype
@@ -842,7 +845,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Hver 12. måned
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start nytt spill
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Last inn et lagret spill
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Spesiallag en spillverden eller et scenario
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Velg énspiller-modus
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Velg enkeltspiller-modus
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Velg flerspiller-spill med 2-8 spillere
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Vis spillinnstillinger
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Vis vanskelighetsgrad
@@ -1096,6 +1099,8 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Høyrek
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando-klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl-klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
+
+
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatisk ved start av nytt spill: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk den avanserte kjøretøyslisten: {ORANGE}{STRING}
@@ -1557,6 +1562,8 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :sparket ut av t
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvde å jukse
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er full
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Lag] :
 STR_NETWORK_CHAT_COMPANY                                        :[Lag] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Lag] Til {STRING}: {GRAY}{STRING}
@@ -1623,7 +1630,7 @@ STR_0810_DESERT                                                 :Ørken
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Landet heller i feil retning
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Umulig kombinasjon av spor
-STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Utgraving vil skade tunnel
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Utgraving ville skadet tunnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Allerede på havnivå
 STR_1004_TOO_HIGH                                               :{WHITE}For høyt
 STR_ALREADY_LEVELLED                                            :{WHITE}... allerede flatt
@@ -1653,7 +1660,7 @@ STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Bygg jer
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Bygg signallykter
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bygg jernbanebro
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Bygg jernbanetunnel
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Velg mellom bygging/fjerning for jernbanespor og signallykter
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Velg mellom bygging og fjerning for jernbanespor og signallykter
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brovalg - trykk på broen du vil ha for å bygge den.
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Velg togstallens retning
 STR_1021_RAILROAD_TRACK                                         :Jernbanespor

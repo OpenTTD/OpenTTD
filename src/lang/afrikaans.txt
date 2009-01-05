@@ -483,6 +483,9 @@ STR_019C_ROAD_VEHICLE                                           :Pad voertuig
 STR_019D_AIRCRAFT                                               :Vliegtuig
 STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Trein
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} raak oud.
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} raak baie oud.
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} raak baie oud en benodig dringende vervanging.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Land gebied informasie
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Koste om skoon te maak: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Koste om skoon te maak: {RED}{CURRENCY}
@@ -990,12 +993,18 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan nie 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan nie opdrag lys kopie nie...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Einde van Gedeel Opdrae - -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is verlore.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} se wins was verlede jaar {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europees Geldelik Samesmelting!{}{}Die Euro is ingevoer as die enigste koers vir daagliks transaksies in u land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} het te min bevele in skedule
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} het 'n leë bevel
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} het duplikaat bevele
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automatiese hernuwing het misluk met {VEHICLE}{}{STRING}
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}geen outo-vervang/hernu reëls toegepas nie
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(geld perk)
 
@@ -1466,6 +1475,7 @@ STR_NETWORK_LANG_SWEDISH                                        :Swedish
 STR_NETWORK_LANG_TURKISH                                        :Turkish
 STR_NETWORK_LANG_UKRAINIAN                                      :Ukrainian
 STR_NETWORK_LANG_AFRIKAANS                                      :Afrikaans
+STR_NETWORK_LANG_GREEK                                          :Grieks
 ############ End of leave-in-this-order
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multispeler spel tuiste
@@ -1512,6 +1522,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Loskoppel
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Sleutel die bedrag geld in wat u wil gee
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Verskaffer is beskerm. Invoeg wagwoord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Maatskappy is beskerm. Invoeg wagwoord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klient Lys

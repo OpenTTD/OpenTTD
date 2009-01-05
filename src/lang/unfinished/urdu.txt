@@ -206,6 +206,15 @@ STR_SORT_BY_DROPDOWN_NAME                                       :نام
 STR_SORT_BY_DATE                                                :{BLACK}تاریخ
 STR_SORT_BY_NUMBER                                              :تعداد
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سال کا منافع
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :سامان کی گنجایش
+STR_NO_WAITING_CARGO                                            :{BLACK}کسی قسم کا کویی سامان انتظار نہیں کر رہا ہے
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}تمام سہولتوں کا انتخاب کرو
+STR_AVAILABLE_TRAINS                                            :{BLACK}دستیاب ریل گاڑیاں
+STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}دستیاب گاڑیاں
+STR_AVAILABLE_SHIPS                                             :{BLACK}دستیاب کشتیاں
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}دستیاب ہوایی جہاز
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}اس قسم کی گاڑیوں کےلیے دستیاب انجنوں کی فہرست دیکھو
+STR_MANAGE_LIST                                                 :{BLACK}فہرست کا انتظام کرو
 
 ############ range for months starts
 ############ range for months ends
@@ -257,6 +266,8 @@ STR_SORT_BY_PROFIT_LAST_YEAR                                    :پچھلے سا
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
+
+
 
 
 
