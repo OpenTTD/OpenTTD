@@ -3734,12 +3734,12 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255 - 100;
-							if (++v->load_unload_time_rem < _settings_game.pf.wait_oneway_signal * 20) return;
+							if (_settings_game.pf.wait_oneway_signal == 255 || ++v->load_unload_time_rem < _settings_game.pf.wait_oneway_signal * 20) return;
 						} else if (HasSignalOnTrackdir(gp.new_tile, i)) {
 							v->cur_speed = 0;
 							v->subspeed = 0;
 							v->progress = 255 - 10;
-							if (++v->load_unload_time_rem < _settings_game.pf.wait_twoway_signal * 73) {
+							if (_settings_game.pf.wait_twoway_signal == 255 || ++v->load_unload_time_rem < _settings_game.pf.wait_twoway_signal * 73) {
 								DiagDirection exitdir = TrackdirToExitdir(i);
 								TileIndex o_tile = TileAddByDiagDir(gp.new_tile, exitdir);
 
