@@ -364,7 +364,12 @@ static StringID GenerateStationName(Station *st, TileIndex tile, int flag)
 }
 #undef M
 
-static Station *GetClosestStationFromTile(TileIndex tile)
+/**
+ * Find the closest deleted station of the current company
+ * @param tile the tile to search from.
+ * @return the closest station or NULL if too far.
+ */
+static Station *GetClosestDeletedStation(TileIndex tile)
 {
 	uint threshold = 8;
 	Station *best_station = NULL;
@@ -978,7 +983,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	}
 
 	/* See if there is a deleted station close to us. */
-	if (st == NULL) st = GetClosestStationFromTile(tile_org);
+	if (st == NULL) st = GetClosestDeletedStation(tile_org);
 
 	if (st != NULL) {
 		/* Reuse an existing station. */
@@ -1457,8 +1462,8 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
 
-	/* Find a station close to us */
-	if (st == NULL) st = GetClosestStationFromTile(tile);
+	/* Find a deleted station close to us */
+	if (st == NULL) st = GetClosestDeletedStation(tile);
 
 	/* give us a road stop in the list, and check if something went wrong */
 	if (!RoadStop::CanAllocateItem()) return_cmd_error(type ? STR_TOO_MANY_TRUCK_STOPS : STR_TOO_MANY_BUS_STOPS);
@@ -1870,8 +1875,8 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 		st = NULL;
 	}
 
-	/* Find a station close to us */
-	if (st == NULL) st = GetClosestStationFromTile(tile);
+	/* Find a deleted station close to us */
+	if (st == NULL) st = GetClosestDeletedStation(tile);
 
 	if (st != NULL) {
 		if (st->owner != _current_company) {
@@ -2165,8 +2170,8 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
 
-	/* Find a station close to us */
-	if (st == NULL) st = GetClosestStationFromTile(tile);
+	/* Find a deleted station close to us */
+	if (st == NULL) st = GetClosestDeletedStation(tile);
 
 	if (st != NULL) {
 		if (st->owner != _current_company) {
