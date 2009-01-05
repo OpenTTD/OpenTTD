@@ -179,10 +179,26 @@ bool TryReserveRailTrack(TileIndex tile, Track t)
 /** Follow a reservation starting from a specific tile to the end. */
 static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Trackdir trackdir, bool ignore_oneway = false)
 {
+	TileIndex start_tile = tile;
+	Trackdir  start_trackdir = trackdir;
+
+	/* Start track not reserved? This can happen if two trains
+	 * are on the same tile. The reservation on the next tile
+	 * is not ours in this case, so exit. */
+	if (!HasReservedTracks(tile, TrackToTrackBits(TrackdirToTrack(trackdir)))) return PBSTileInfo(tile, trackdir, false);
+
 	/* Do not disallow 90 deg turns as the setting might have changed between reserving and now. */
 	CFollowTrackRail ft(o, rts);
+
+	/* If the start tile is in a station, we need to skip to the platform
+	 * end and use that as the tile for the loop test because the track
+	 * follower will skip to there in the actual loop as well. */
+	if (IsRailwayStationTile(start_tile) && ft.Follow(start_tile, start_trackdir) && ft.m_tiles_skipped > 0) {
+		start_tile = ft.m_new_tile;
+	}
+
 	while (ft.Follow(tile, trackdir)) {
-		TrackdirBits reserved = (TrackdirBits)(ft.m_new_td_bits & (GetReservedTrackbits(ft.m_new_tile) * 0x101));
+		TrackdirBits reserved = ft.m_new_td_bits & TrackBitsToTrackdirBits(GetReservedTrackbits(ft.m_new_tile));
 
 		/* No reservation --> path end found */
 		if (reserved == TRACKDIR_BIT_NONE) break;
@@ -197,6 +213,8 @@ static PBSTileInfo FollowReservation(Owner o, RailTypes rts, TileIndex tile, Tra
 		tile = ft.m_new_tile;
 		trackdir = new_trackdir;
 
+		/* Loop encountered? */
+		if (tile == start_tile && trackdir == start_trackdir) break;
 		/* Depot tile? Can't continue. */
 		if (IsRailDepotTile(tile)) break;
 		/* Non-pbs signal? Reservation can't continue. */
