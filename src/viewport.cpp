@@ -1666,10 +1666,9 @@ static void MarkViewportDirty(const ViewPort *vp, int left, int top, int right, 
  */
 void MarkAllViewportsDirty(int left, int top, int right, int bottom)
 {
-	Window **wz;
-
-	FOR_ALL_WINDOWS(wz) {
-		ViewPort *vp = (*wz)->viewport;
+	Window *w;
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		ViewPort *vp = w->viewport;
 		if (vp != NULL) {
 			assert(vp->width != 0);
 			MarkViewportDirty(vp, left, top, right, bottom);

@@ -541,7 +541,8 @@ extern Window *_z_windows[];
 extern Window **_last_z_window;
 
 /** Iterate over all windows */
-#define FOR_ALL_WINDOWS(wz) for (wz = _z_windows; wz != _last_z_window; wz++)
+#define FOR_ALL_WINDOWS_FROM_BACK(w) for (Window **wz = _z_windows; wz != _last_z_window && (w = *wz) != NULL; wz++)
+#define FOR_ALL_WINDOWS_FROM_FRONT(w) for (Window **wz = _last_z_window; wz != _z_windows && (w = *--wz) != NULL;)
 
 /**
  * Disable scrolling of the main viewport when an input-window is active.

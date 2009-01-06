@@ -211,12 +211,11 @@ void SndCopyToPool()
  */
 static void SndPlayScreenCoordFx(SoundFx sound, int left, int right, int top, int bottom)
 {
-	Window* const *wz;
-
 	if (msf.effect_vol == 0) return;
 
-	FOR_ALL_WINDOWS(wz) {
-		const ViewPort *vp = (*wz)->viewport;
+	const Window *w;
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		const ViewPort *vp = w->viewport;
 
 		if (vp != NULL &&
 				left < vp->virtual_left + vp->virtual_width && right > vp->virtual_left &&
