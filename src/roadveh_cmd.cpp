@@ -625,7 +625,7 @@ static void RoadVehCrash(Vehicle *v)
 	SndPlayVehicleFx(SND_12_EXPLOSION, v);
 }
 
-static void RoadVehCheckTrainCrash(Vehicle *v)
+static bool RoadVehCheckTrainCrash(Vehicle *v)
 {
 	for (Vehicle *u = v; u != NULL; u = u->Next()) {
 		if (u->u.road.state == RVSB_WORMHOLE) continue;
@@ -636,9 +636,11 @@ static void RoadVehCheckTrainCrash(Vehicle *v)
 
 		if (HasVehicleOnPosXY(v->x_pos, v->y_pos, u, EnumCheckRoadVehCrashTrain)) {
 			RoadVehCrash(v);
-			return;
+			return true;
 		}
 	}
+
+	return false;
 }
 
 static void HandleBrokenRoadVeh(Vehicle *v)
@@ -812,35 +814,39 @@ static void RoadVehArrivesAt(const Vehicle* v, Station* st)
 	}
 }
 
-static bool RoadVehAccelerate(Vehicle *v)
+static int RoadVehAccelerate(Vehicle *v)
 {
-	uint spd = v->cur_speed + 1 + (v->u.road.overtaking != 0 ? 1 : 0);
-	byte t;
+	uint oldspeed = v->cur_speed;
+	uint accel = 256 + (v->u.road.overtaking != 0 ? 256 : 0);
+	uint spd = v->subspeed + accel;
 
-	/* Clamp */
-	spd = min(spd, v->max_speed);
-	if (v->u.road.state == RVSB_WORMHOLE && !(v->vehstatus & VS_HIDDEN)) {
-		spd = min(spd, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
+	v->subspeed = (uint8)spd;
+
+	int tempmax = v->max_speed;
+	if (v->cur_speed > v->max_speed) {
+		tempmax = v->cur_speed - (v->cur_speed / 10) - 1;
 	}
 
-	/* updates statusbar only if speed have changed to save CPU time */
-	if (spd != v->cur_speed) {
-		v->cur_speed = spd;
+	v->cur_speed = spd = Clamp(v->cur_speed + ((int)spd >> 8), 0, tempmax);
+
+	/* Apply bridge speed limit */
+	if (v->u.road.state == RVSB_WORMHOLE && !(v->vehstatus & VS_HIDDEN)) {
+		v->cur_speed = min(v->cur_speed, GetBridgeSpec(GetBridgeType(v->tile))->speed * 2);
+	}
+
+	/* Update statusbar only if speed has changed to save CPU time */
+	if (oldspeed != v->cur_speed) {
 		if (_settings_client.gui.vehicle_speed) {
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
 	}
 
-	/* Decrease somewhat when turning */
-	if (!(v->direction & 1)) spd = spd * 3 >> 2;
+	/* Speed is scaled in the same manner as for trains. @see train_cmd.cpp */
+	int scaled_spd = spd * 3 >> 2;
 
-	if (spd == 0) return false;
-
-	if ((byte)++spd == 0) return true;
-
-	v->progress = (t = v->progress) - (byte)spd;
-
-	return (t < v->progress);
+	scaled_spd += v->progress;
+	v->progress = 0;
+	return scaled_spd;
 }
 
 static Direction RoadVehGetNewDirection(const Vehicle* v, int x, int y)
@@ -1831,12 +1837,26 @@ static void RoadVehController(Vehicle *v)
 
 	if (v->IsInDepot() && RoadVehLeaveDepot(v, true)) return;
 
-	/* Check if vehicle needs to proceed, return if it doesn't */
-	if (!RoadVehAccelerate(v)) return;
+	/* Check how far the vehicle needs to proceed */
+	int j = RoadVehAccelerate(v);
 
-	for (Vehicle *prev = NULL; v != NULL; prev = v, v = v->Next()) {
-		if (!IndividualRoadVehicleController(v, prev)) break;
+	int adv_spd = (v->direction & 1) ? 192 : 256;
+	while (j >= adv_spd) {
+		j -= adv_spd;
+
+		Vehicle *u = v;
+		for (Vehicle *prev = NULL; u != NULL; prev = u, u = u->Next()) {
+			if (!IndividualRoadVehicleController(u, prev)) break;
+		}
+
+		/* 192 spd used for going straight, 256 for going diagonally. */
+		adv_spd = (v->direction & 1) ? 192 : 256;
+
+		/* Test for a collision, but only if another movement will occur. */
+		if (j >= adv_spd && RoadVehCheckTrainCrash(v)) break;
 	}
+
+	if (v->progress == 0) v->progress = j;
 }
 
 static void AgeRoadVehCargo(Vehicle *v)

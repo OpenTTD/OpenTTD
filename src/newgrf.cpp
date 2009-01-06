@@ -104,6 +104,7 @@ enum {
 struct GRFTempEngineData {
 	uint16 cargo_allowed;
 	uint16 cargo_disallowed;
+	uint8 rv_max_speed;      ///< Temporary storage of RV prop 15, maximum speed in mph/0.8
 };
 
 static GRFTempEngineData *_gted;
@@ -790,12 +791,15 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 
 			case 0x13: // Power in 10hp
 			case 0x14: // Weight in 1/4 tons
-			case 0x15: // Speed in mph*0.8
 				/** @todo Support for road vehicles realistic power
 				 * computations (called rvpower in TTDPatch) is just
 				 * missing in OTTD yet. --pasky */
 				grf_load_byte(&buf);
 				ret = CIR_UNHANDLED;
+				break;
+
+			case 0x15: // Speed in mph/0.8
+				_gted[e->index].rv_max_speed = grf_load_byte(&buf);
 				break;
 
 			case 0x16: // Cargos available for refitting
@@ -6026,6 +6030,14 @@ static void AfterLoadGRFs()
 
 	/* Load old shore sprites in new position, if they were replaced by ActionA */
 	ActivateOldShore();
+
+	Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) {
+		if (_gted[e->index].rv_max_speed != 0) {
+			/* Set RV maximum speed from the mph/0.8 unit value */
+			e->u.road.max_speed = _gted[e->index].rv_max_speed * 4;
+		}
+	}
 
 	/* Deallocate temporary loading data */
 	free(_gted);

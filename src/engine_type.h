@@ -96,7 +96,7 @@ struct RoadVehicleInfo {
 	byte running_cost;
 	byte running_cost_class;
 	SoundFxByte sfx;
-	byte max_speed;
+	uint16 max_speed;        ///< Maximum speed in mph/3.2 units
 	byte capacity;
 	CargoID cargo_type;
 };
