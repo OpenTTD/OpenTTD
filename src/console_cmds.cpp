@@ -1449,7 +1449,7 @@ void IConsoleStdLibRegister()
 	IConsoleAliasRegister("autoclean_protected",   "patch autoclean_protected %+");
 	IConsoleAliasRegister("autoclean_unprotected", "patch autoclean_unprotected %+");
 	IConsoleAliasRegister("restart_game_year",     "patch restart_game_year %+");
-	IConsoleAliasRegister("min_players",           "patch min_clients %+");
+	IConsoleAliasRegister("min_players",           "patch min_active_clients %+");
 	IConsoleAliasRegister("reload_cfg",            "patch reload_cfg %+");
 #endif /* ENABLE_NETWORK */
 
