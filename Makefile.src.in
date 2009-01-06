@@ -48,6 +48,7 @@ RES      := $(shell mkdir -p $(BIN_DIR) $(sort $(dir $(OBJS))))
 
 # Make sure endian_target.h is reasable as if it was in the src/ dir
 CFLAGS += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR)
+CFLAGS_MAKEDEP += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR)
 
 ENDIAN_TARGETS := endian_target.h $(ENDIAN_CHECK)
 
