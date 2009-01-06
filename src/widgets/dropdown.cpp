@@ -374,11 +374,11 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
  */
 void HideDropDownMenu(Window *pw)
 {
-	Window **wz;
-	FOR_ALL_WINDOWS(wz) {
-		if ((*wz)->window_class != WC_DROPDOWN_MENU) continue;
+	Window *w;
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		if (w->window_class != WC_DROPDOWN_MENU) continue;
 
-		DropdownWindow *dw = dynamic_cast<DropdownWindow*>(*wz);
+		DropdownWindow *dw = dynamic_cast<DropdownWindow*>(w);
 		if (pw->window_class == dw->parent_wnd_class &&
 				pw->window_number == dw->parent_wnd_num) {
 			delete dw;
