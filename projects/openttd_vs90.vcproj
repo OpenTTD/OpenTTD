@@ -525,10 +525,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\widgets\dropdown.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\economy.cpp"
 				>
 			</File>
@@ -962,14 +958,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\driver.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\widgets\dropdown_func.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\widgets\dropdown_type.h"
 				>
 			</File>
 			<File
@@ -1902,6 +1890,22 @@
 			</File>
 			<File
 				RelativePath=".\..\src\waypoint_gui.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Widgets"
+			>
+			<File
+				RelativePath=".\..\src\widgets\dropdown.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\dropdown_func.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\widgets\dropdown_type.h"
 				>
 			</File>
 		</Filter>

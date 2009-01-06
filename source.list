@@ -19,7 +19,6 @@ debug.cpp
 dedicated.cpp
 depot.cpp
 driver.cpp
-widgets/dropdown.cpp
 economy.cpp
 effectvehicle.cpp
 elrail.cpp
@@ -173,8 +172,6 @@ direction_func.h
 direction_type.h
 music/dmusic.h
 driver.h
-widgets/dropdown_func.h
-widgets/dropdown_type.h
 economy_func.h
 economy_type.h
 effectvehicle_base.h
@@ -424,6 +421,11 @@ transparency_gui.cpp
 tree_gui.cpp
 vehicle_gui.cpp
 waypoint_gui.cpp
+
+# Widgets
+widgets/dropdown.cpp
+widgets/dropdown_func.h
+widgets/dropdown_type.h
 
 # Command handlers
 aircraft_cmd.cpp
