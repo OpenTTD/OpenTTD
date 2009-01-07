@@ -1429,6 +1429,7 @@ const SettingDesc _patch_settings[] = {
 	  SDTC_VAR(gui.errmsg_duration,           SLE_UINT8, S,  0,     5,        0,       20, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION,             NULL),
 	  SDTC_VAR(gui.toolbar_pos,               SLE_UINT8, S, MS,     0,        0,        2, 0, STR_CONFIG_PATCHES_TOOLBAR_POS,                 v_PositionMainToolbar),
 	  SDTC_VAR(gui.window_snap_radius,        SLE_UINT8, S, D0,    10,        1,       32, 0, STR_CONFIG_PATCHES_SNAP_RADIUS,                 NULL),
+	  SDTC_VAR(gui.window_soft_limit,         SLE_UINT8, S, D0,    20,        5,      255, 1, STR_CONFIG_PATCHES_SOFT_LIMIT,                  NULL),
 	 SDTC_BOOL(gui.population_in_label,                  S,  0,  true,                        STR_CONFIG_PATCHES_POPULATION_IN_LABEL,         PopulationInLabelActive),
 	 SDTC_BOOL(gui.link_terraform_toolbar,               S,  0, false,                        STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,      NULL),
 	  SDTC_VAR(gui.liveries,                  SLE_UINT8, S, MS,     2,        0,        2, 0, STR_CONFIG_PATCHES_LIVERIES,                    RedrawScreen),

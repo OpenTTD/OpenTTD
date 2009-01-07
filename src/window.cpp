@@ -31,13 +31,10 @@
 static Point _drag_delta; ///< delta between mouse cursor and upper left corner of dragged window
 static Window *_mouseover_last_w = NULL; ///< Window of the last MOUSEOVER event
 
-/**
- * List of windows opened at the screen.
- * Uppermost window is at  _z_windows[_last_z_window - 1],
- * bottom window is at _z_windows[0]
- */
-Window *_z_windows[MAX_NUMBER_OF_WINDOWS];
-Window **_last_z_window; ///< always points to the next free space in the z-array
+/** List of windows opened at the screen sorted from the front. */
+Window *_z_front_window = NULL;
+/** List of windows opened at the screen sorted from the back. */
+Window *_z_back_window  = NULL;
 
 byte _no_scroll;
 Point _cursorpos_drag_start;
@@ -286,24 +283,20 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 }
 
 /**
- * Generate repaint events for the visible part of window *wz within the rectangle.
+ * Generate repaint events for the visible part of window w within the rectangle.
  *
  * The function goes recursively upwards in the window stack, and splits the rectangle
  * into multiple pieces at the window edges, so obscured parts are not redrawn.
  *
- * @param wz Pointer into window stack, pointing at the window that needs to be repainted
+ * @param w Window that needs to be repainted
  * @param left Left edge of the rectangle that should be repainted
  * @param top Top edge of the rectangle that should be repainted
  * @param right Right edge of the rectangle that should be repainted
  * @param bottom Bottom edge of the rectangle that should be repainted
  */
-static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right, int bottom)
+static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 {
-	Window* const *vz = wz;
-
-	while (++vz != _last_z_window) {
-		const Window *v = *vz;
-
+	for (const Window *v = w->z_front; v != NULL; v = v->z_front) {
 		if (right > v->left &&
 				bottom > v->top &&
 				left < v->left + v->width &&
@@ -312,26 +305,26 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 			int x;
 
 			if (left < (x = v->left)) {
-				DrawOverlappedWindow(wz, left, top, x, bottom);
-				DrawOverlappedWindow(wz, x, top, right, bottom);
+				DrawOverlappedWindow(w, left, top, x, bottom);
+				DrawOverlappedWindow(w, x, top, right, bottom);
 				return;
 			}
 
 			if (right > (x = v->left + v->width)) {
-				DrawOverlappedWindow(wz, left, top, x, bottom);
-				DrawOverlappedWindow(wz, x, top, right, bottom);
+				DrawOverlappedWindow(w, left, top, x, bottom);
+				DrawOverlappedWindow(w, x, top, right, bottom);
 				return;
 			}
 
 			if (top < (x = v->top)) {
-				DrawOverlappedWindow(wz, left, top, right, x);
-				DrawOverlappedWindow(wz, left, x, right, bottom);
+				DrawOverlappedWindow(w, left, top, right, x);
+				DrawOverlappedWindow(w, left, x, right, bottom);
 				return;
 			}
 
 			if (bottom > (x = v->top + v->height)) {
-				DrawOverlappedWindow(wz, left, top, right, x);
-				DrawOverlappedWindow(wz, left, x, right, bottom);
+				DrawOverlappedWindow(w, left, top, right, x);
+				DrawOverlappedWindow(w, left, x, right, bottom);
 				return;
 			}
 
@@ -343,12 +336,12 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
 	DrawPixelInfo *dp = _cur_dpi;
 	dp->width = right - left;
 	dp->height = bottom - top;
-	dp->left = left - (*wz)->left;
-	dp->top = top - (*wz)->top;
+	dp->left = left - w->left;
+	dp->top = top - w->top;
 	dp->pitch = _screen.pitch;
 	dp->dst_ptr = BlitterFactoryBase::GetCurrentBlitter()->MoveTo(_screen.dst_ptr, left, top);
 	dp->zoom = ZOOM_LVL_NORMAL;
-	(*wz)->OnPaint();
+	w->OnPaint();
 }
 
 /**
@@ -361,7 +354,7 @@ static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right
  */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 {
-	const Window *w;
+	Window *w;
 	DrawPixelInfo bk;
 	_cur_dpi = &bk;
 
@@ -371,7 +364,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 				left < w->left + w->width &&
 				top < w->top + w->height) {
 			/* Window w intersects with the rectangle => needs repaint */
-			DrawOverlappedWindow(wz, left, top, right, bottom);
+			DrawOverlappedWindow(w, left, top, right, bottom);
 		}
 	}
 }
@@ -408,24 +401,6 @@ static Window *FindChildWindow(const Window *w)
 	return NULL;
 }
 
-/** Find the z-value of a window. A window must already be open
- * or the behaviour is undefined but function should never fail
- * @param w window to query Z Position
- * @return Pointer into the window-list at the position of \a w
- */
-Window **FindWindowZPosition(const Window *w)
-{
-	const Window *v;
-
-	FOR_ALL_WINDOWS_FROM_BACK(v) {
-		if (v == w) return wz;
-	}
-
-	DEBUG(misc, 3, "Window (cls %d, number %d) is not open, probably removed by recursive calls",
-		w->window_class, w->window_number);
-	return NULL;
-}
-
 /**
  * Delete all children a window might have in a head-recursive manner
  */
@@ -456,10 +431,16 @@ Window::~Window()
 	 * by moving all windows after it one to the left. This must be
 	 * done before removing the child so we cannot cause recursion
 	 * between the deletion of the parent and the child. */
-	Window **wz = FindWindowZPosition(this);
-	if (wz == NULL) return;
-	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
-	_last_z_window--;
+	if (this->z_front == NULL) {
+		_z_front_window = this->z_back;
+	} else {
+		this->z_front->z_back = this->z_back;
+	}
+	if (this->z_back == NULL) {
+		_z_back_window  = this->z_front;
+	} else {
+		this->z_back->z_front = this->z_front;
+	}
 
 	this->DeleteChildWindows();
 
@@ -580,7 +561,7 @@ void ChangeWindowOwner(Owner old_owner, Owner new_owner)
 	}
 }
 
-static void BringWindowToFront(const Window *w);
+static void BringWindowToFront(Window *w);
 
 /** Find a window and make it the top-window on the screen. The window
  * gets a white border for a brief period of time to visualize its "activation"
@@ -622,58 +603,36 @@ static inline bool IsVitalWindow(const Window *w)
  * @param w window that is put into the foreground
  * @return pointer to the window, the same as the input pointer
  */
-static void BringWindowToFront(const Window *w)
+static void BringWindowToFront(Window *w)
 {
-	Window **wz = FindWindowZPosition(w);
-	Window **vz = _last_z_window;
+	Window *v = _z_front_window;
 
 	/* Bring the window just below the vital windows */
-	do {
-		if (--vz < _z_windows) return;
-	} while (IsVitalWindow(*vz));
+	for (; v != NULL && v != w && IsVitalWindow(v); v = v->z_back) { }
 
-	if (wz == vz) return; // window is already in the right position
-	assert(wz < vz);
+	if (v == NULL || w == v) return; // window is already in the right position
 
-	Window *tempz = *wz;
-	memmove(wz, wz + 1, (byte*)vz - (byte*)wz);
-	*vz = tempz;
+	/* w cannot be at the top already! */
+	assert(w != _z_front_window);
+
+	if (w->z_back == NULL) {
+		_z_back_window = w->z_front;
+	} else {
+		w->z_back->z_front = w->z_front;
+	}
+	w->z_front->z_back = w->z_back;
+
+	w->z_front = v->z_front;
+	w->z_back = v;
+
+	if (v->z_front == NULL) {
+		_z_front_window = w;
+	} else {
+		v->z_front->z_back = w;
+	}
+	v->z_front = w;
 
 	w->SetDirty();
-}
-
-/** We have run out of windows, so find a suitable candidate for replacement.
- * Keep all important windows intact. These are
- * - Main window (gamefield), Toolbar, Statusbar (always on)
- * - News window, Chatbar (when on)
- * - Any sticked windows since we wanted to keep these
- * @return w pointer to the window that is going to be deleted
- */
-static Window *FindDeletableWindow()
-{
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w) && !(w->flags4 & WF_STICKY)) {
-			return w;
-		}
-	}
-	return NULL;
-}
-
-/** A window must be freed, and all are marked as important windows. Ease the
- * restriction a bit by allowing to delete sticky windows. Keep important/vital
- * windows intact (Main window, Toolbar, Statusbar, News Window, Chatbar)
- * Start finding an appropiate candidate from the lowest z-values (bottom)
- * @see FindDeletableWindow()
- * @return w Pointer to the window that is being deleted
- */
-static Window *ForceFindDeletableWindow()
-{
-	Window *w;
-	FOR_ALL_WINDOWS_FROM_BACK(w) {
-		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w)) return w;
-	}
-	NOT_REACHED();
 }
 
 /**
@@ -723,13 +682,6 @@ static void AssignWidgetToWindow(Window *w, const Widget *widget)
 void Window::Initialize(int x, int y, int min_width, int min_height,
 				WindowClass cls, const Widget *widget, int window_number)
 {
-	/* We have run out of windows, close one and use that as the place for our new one */
-	if (_last_z_window == endof(_z_windows)) {
-		Window *w = FindDeletableWindow();
-		if (w == NULL) w = ForceFindDeletableWindow();
-		delete w;
-	}
-
 	/* Set up window properties */
 	this->window_class = cls;
 	this->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
@@ -753,19 +705,37 @@ void Window::Initialize(int x, int y, int min_width, int min_height,
 		* XXX - Yes, ugly, probably needs something like w->always_on_top flag
 		* to implement correctly, but even then you need some kind of distinction
 		* between on-top of chat/news and status windows, because these conflict */
-	Window **wz = _last_z_window;
-	if (wz != _z_windows && this->window_class != WC_SEND_NETWORK_MSG && this->window_class != WC_HIGHSCORE && this->window_class != WC_ENDSCREEN) {
-		if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) wz--;
-		if (FindWindowById(WC_STATUS_BAR, 0)       != NULL) wz--;
-		if (FindWindowById(WC_NEWS_WINDOW, 0)      != NULL) wz--;
-		if (FindWindowById(WC_SEND_NETWORK_MSG, 0) != NULL) wz--;
+	Window *w = _z_front_window;
+	if (w != NULL && this->window_class != WC_SEND_NETWORK_MSG && this->window_class != WC_HIGHSCORE && this->window_class != WC_ENDSCREEN) {
+		if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) w = w->z_back;
+		if (FindWindowById(WC_STATUS_BAR, 0)       != NULL) w = w->z_back;
+		if (FindWindowById(WC_NEWS_WINDOW, 0)      != NULL) w = w->z_back;
+		if (FindWindowById(WC_SEND_NETWORK_MSG, 0) != NULL) w = w->z_back;
 
-		assert(wz >= _z_windows);
-		if (wz != _last_z_window) memmove(wz + 1, wz, (byte*)_last_z_window - (byte*)wz);
+		if (w == NULL) {
+			_z_back_window->z_front = this;
+			this->z_back = _z_back_window;
+			_z_back_window = this;
+		} else {
+			if (w->z_front == NULL) {
+				_z_front_window = this;
+			} else {
+				this->z_front = w->z_front;
+				w->z_front->z_back = this;
+			}
+
+			this->z_back = w;
+			w->z_front = this;
+		}
+	} else {
+		this->z_back = _z_front_window;
+		if (_z_front_window != NULL) {
+			_z_front_window->z_front = this;
+		} else {
+			_z_back_window = this;
+		}
+		_z_front_window = this;
 	}
-
-	*wz = this;
-	_last_z_window++;
 }
 
 /**
@@ -1109,7 +1079,8 @@ void InitWindowSystem()
 {
 	IConsoleClose();
 
-	_last_z_window = _z_windows;
+	_z_back_window = NULL;
+	_z_front_window = NULL;
 	_mouseover_last_w = NULL;
 	_no_scroll = 0;
 	_scrolling_viewport = 0;
@@ -1120,7 +1091,7 @@ void InitWindowSystem()
  */
 void UnInitWindowSystem()
 {
-	while (_last_z_window != _z_windows) delete _z_windows[0];
+	while (_z_front_window != NULL) delete _z_front_window;
 }
 
 /**
@@ -1601,7 +1572,7 @@ static bool HandleViewportScroll()
  * modal-popup; function returns a false and child window gets a white border
  * @param w Window to bring on-top
  * @return false if the window has an active modal child, true otherwise */
-static bool MaybeBringWindowToFront(const Window *w)
+static bool MaybeBringWindowToFront(Window *w)
 {
 	bool bring_to_front = false;
 
@@ -1612,10 +1583,7 @@ static bool MaybeBringWindowToFront(const Window *w)
 		return true;
 	}
 
-	Window * const *wz = FindWindowZPosition(w);
-	for (Window * const *uz = wz; ++uz != _last_z_window;) {
-		Window *u = *uz;
-
+	for (Window *u = w->z_front; u != NULL; u = u->z_front) {
 		/* A modal child will prevent the activation of the parent window */
 		if (u->parent == w && (u->desc_flags & WDF_MODAL)) {
 			u->flags4 |= WF_WHITE_BORDER_MASK;
@@ -1973,10 +1941,36 @@ void HandleMouseEvents()
 }
 
 /**
+ * Check the soft limit of deletable (non vital, non sticky) windows.
+ */
+static void CheckSoftLimit()
+{
+	if (_settings_client.gui.window_soft_limit == 0) return;
+
+	for (;;) {
+		uint deletable_count = 0;
+		Window *w, *last_deletable = NULL;
+		FOR_ALL_WINDOWS_FROM_FRONT(w) {
+			if (w->window_class == WC_MAIN_WINDOW || IsVitalWindow(w) || (w->flags4 & WF_STICKY)) continue;
+
+			last_deletable = w;
+			deletable_count++;
+		}
+
+		/* We've ot reached the soft limit yet */
+		if (deletable_count <= _settings_client.gui.window_soft_limit) break;
+
+		assert(last_deletable != NULL);
+		delete last_deletable;
+	}
+}
+
+/**
  * Regular call from the global game loop
  */
 void InputLoop()
 {
+	CheckSoftLimit();
 	HandleKeyScrolling();
 
 	if (_input_events_this_tick != 0) {

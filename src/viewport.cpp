@@ -217,38 +217,36 @@ void InitializeWindowViewport(Window *w, int x, int y,
 
 static Point _vp_move_offs;
 
-static void DoSetViewportPosition(Window* const *wz, int left, int top, int width, int height)
+static void DoSetViewportPosition(const Window *w, int left, int top, int width, int height)
 {
 
-	for (; wz != _last_z_window; wz++) {
-		const Window *w = *wz;
-
+	for (; w != NULL; w = w->z_front) {
 		if (left + width > w->left &&
 				w->left + w->width > left &&
 				top + height > w->top &&
 				w->top + w->height > top) {
 
 			if (left < w->left) {
-				DoSetViewportPosition(wz, left, top, w->left - left, height);
-				DoSetViewportPosition(wz, left + (w->left - left), top, width - (w->left - left), height);
+				DoSetViewportPosition(w, left, top, w->left - left, height);
+				DoSetViewportPosition(w, left + (w->left - left), top, width - (w->left - left), height);
 				return;
 			}
 
 			if (left + width > w->left + w->width) {
-				DoSetViewportPosition(wz, left, top, (w->left + w->width - left), height);
-				DoSetViewportPosition(wz, left + (w->left + w->width - left), top, width - (w->left + w->width - left) , height);
+				DoSetViewportPosition(w, left, top, (w->left + w->width - left), height);
+				DoSetViewportPosition(w, left + (w->left + w->width - left), top, width - (w->left + w->width - left) , height);
 				return;
 			}
 
 			if (top < w->top) {
-				DoSetViewportPosition(wz, left, top, width, (w->top - top));
-				DoSetViewportPosition(wz, left, top + (w->top - top), width, height - (w->top - top));
+				DoSetViewportPosition(w, left, top, width, (w->top - top));
+				DoSetViewportPosition(w, left, top + (w->top - top), width, height - (w->top - top));
 				return;
 			}
 
 			if (top + height > w->top + w->height) {
-				DoSetViewportPosition(wz, left, top, width, (w->top + w->height - top));
-				DoSetViewportPosition(wz, left, top + (w->top + w->height - top), width , height - (w->top + w->height - top));
+				DoSetViewportPosition(w, left, top, width, (w->top + w->height - top));
+				DoSetViewportPosition(w, left, top + (w->top + w->height - top), width , height - (w->top + w->height - top));
 				return;
 			}
 
@@ -334,7 +332,7 @@ static void SetViewportPosition(Window *w, int x, int y)
 		i = top + height - _screen.height;
 		if (i >= 0) height -= i;
 
-		if (height > 0) DoSetViewportPosition(FindWindowZPosition(w) + 1, left, top, width, height);
+		if (height > 0) DoSetViewportPosition(w->z_front, left, top, width, height);
 	}
 }
 

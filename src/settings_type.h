@@ -57,6 +57,7 @@ struct GUISettings {
 	uint8  default_rail_type;                ///< the default rail type for the rail GUI
 	uint8  toolbar_pos;                      ///< position of toolbars, 0=left, 1=center, 2=right
 	uint8  window_snap_radius;               ///< windows snap at each other if closer than this
+	uint8  window_soft_limit;                ///< soft limit of maximum number of non-stickied non-vital windows (0 = no limit)
 	bool   always_build_infrastructure;      ///< always allow building of infrastructure, even when you do not have the vehicles for it
 	byte   autosave;                         ///< how often should we do autosaves?
 	bool   keep_all_autosave;                ///< name the autosave in a different way

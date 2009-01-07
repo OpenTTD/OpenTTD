@@ -226,6 +226,8 @@ public:
 	uint32 desc_flags;     ///< Window/widgets default flags setting, @see WindowDefaultFlag
 
 	Window *parent;        ///< Parent window
+	Window *z_front;       ///< The window in front of us in z-order
+	Window *z_back;        ///< The window behind us in z-order
 
 	void HandleButtonClick(byte widget);
 
@@ -537,12 +539,12 @@ void GuiShowTooltips(StringID str, uint paramcount = 0, const uint64 params[] = 
 int GetWidgetFromPos(const Window *w, int x, int y);
 
 /* window.cpp */
-extern Window *_z_windows[];
-extern Window **_last_z_window;
+extern Window *_z_front_window;
+extern Window *_z_back_window;
 
 /** Iterate over all windows */
-#define FOR_ALL_WINDOWS_FROM_BACK(w) for (Window **wz = _z_windows; wz != _last_z_window && (w = *wz) != NULL; wz++)
-#define FOR_ALL_WINDOWS_FROM_FRONT(w) for (Window **wz = _last_z_window; wz != _z_windows && (w = *--wz) != NULL;)
+#define FOR_ALL_WINDOWS_FROM_BACK(w)  for (w = _z_back_window;  w != NULL; w = w->z_front)
+#define FOR_ALL_WINDOWS_FROM_FRONT(w) for (w = _z_front_window; w != NULL; w = w->z_back)
 
 /**
  * Disable scrolling of the main viewport when an input-window is active.
@@ -568,7 +570,6 @@ enum SpecialMouseMode {
 };
 
 Window *GetCallbackWnd();
-Window **FindWindowZPosition(const Window *w);
 
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);
 

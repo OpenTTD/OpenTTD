@@ -1197,6 +1197,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Right
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING1} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Window soft limit (non-sticky): {ORANGE}disabled
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Town growth speed: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :None
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Slow
