@@ -277,7 +277,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 
 				u->spritenum = rvi_artic->image_index;
 				u->cargo_type = rvi_artic->cargo_type;
-				u->cargo_cap = rvi_artic->capacity;
+				u->cargo_cap = rvi_artic->capacity;  // Callback 36 is called when the consist is finished
 
 				SetArticulatedPart(u);
 			} break;
@@ -296,7 +296,7 @@ void AddArticulatedParts(Vehicle **vl, VehicleType type)
 
 				u->spritenum = rvi_artic->image_index;
 				u->cargo_type = rvi_artic->cargo_type;
-				u->cargo_cap = rvi_artic->capacity;
+				u->cargo_cap = rvi_artic->capacity;  // Callback 36 is called when the consist is finished
 
 				SetRoadVehArticPart(u);
 			} break;

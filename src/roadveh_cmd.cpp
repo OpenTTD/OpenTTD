@@ -274,9 +274,14 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 		v->vehicle_flags = 0;
 		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
 
-		v->cargo_cap = GetVehicleProperty(v, 0x0F, rvi->capacity);
+		v->cargo_cap = rvi->capacity;
 
 		AddArticulatedParts(vl, VEH_ROAD);
+
+		/* Call callback 36s after the whole consist has been constructed */
+		for (Vehicle *u = v; u != NULL; u = u->Next()) {
+			u->cargo_cap = GetVehicleProperty(u, 0x0F, u->cargo_cap);
+		}
 
 		VehiclePositionChanged(v);
 
