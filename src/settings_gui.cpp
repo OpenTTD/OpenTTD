@@ -923,6 +923,7 @@ struct PatchesSelectionWindow : Window {
 						if (x >= 10) {
 							value += step;
 							if (value > sdb->max) value = sdb->max;
+							if (value < sdb->min) value = sdb->min; // skip between "disabled" and minimum
 						} else {
 							value -= step;
 							if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
