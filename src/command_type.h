@@ -341,6 +341,7 @@ enum {
 	CMD_SERVER  = 0x1, ///< the command can only be initiated by the server
 	CMD_OFFLINE = 0x2, ///< the command cannot be executed in a multiplayer game; single-player only
 	CMD_AUTO    = 0x4, ///< set the DC_AUTO flag on this command
+	CMD_NO_TEST = 0x8, ///< the command's output may differ between test and execute due to town rating changes etc.
 };
 
 /**

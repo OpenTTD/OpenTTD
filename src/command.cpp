@@ -227,7 +227,7 @@ static const Command _command_proc_table[] = {
 	{CmdBuildRoadStop,                CMD_AUTO}, /* CMD_BUILD_ROAD_STOP */
 	{CmdRemoveRoadStop,                      0}, /* CMD_REMOVE_ROAD_STOP */
 	{CmdBuildLongRoad,                CMD_AUTO}, /* CMD_BUILD_LONG_ROAD */
-	{CmdRemoveLongRoad,               CMD_AUTO}, /* CMD_REMOVE_LONG_ROAD */
+	{CmdRemoveLongRoad, CMD_NO_TEST | CMD_AUTO}, /* CMD_REMOVE_LONG_ROAD; towns may disallow removing road bits (as they are connected) in test, but in exec they're removed and thus removing is allowed. */
 	{CmdBuildRoad,                           0}, /* CMD_BUILD_ROAD */
 	{CmdRemoveRoad,                          0}, /* CMD_REMOVE_ROAD */
 	{CmdBuildRoadDepot,               CMD_AUTO}, /* CMD_BUILD_ROAD_DEPOT */
@@ -305,13 +305,13 @@ static const Command _command_proc_table[] = {
 	{CmdOrderRefit,                          0}, /* CMD_ORDER_REFIT */
 	{CmdCloneOrder,                          0}, /* CMD_CLONE_ORDER */
 
-	{CmdClearArea,                           0}, /* CMD_CLEAR_AREA */
+	{CmdClearArea,                 CMD_NO_TEST}, /* CMD_CLEAR_AREA; destroying multi-tile houses makes town rating differ between test and execution */
 
 	{CmdMoneyCheat,                CMD_OFFLINE}, /* CMD_MONEY_CHEAT */
 	{CmdBuildCanal,                   CMD_AUTO}, /* CMD_BUILD_CANAL */
 	{CmdCompanyCtrl,                         0}, /* CMD_COMPANY_CTRL */
 
-	{CmdLevelLand,                    CMD_AUTO}, /* CMD_LEVEL_LAND */
+	{CmdLevelLand,      CMD_NO_TEST | CMD_AUTO}, /* CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once */
 
 	{CmdRefitRailVehicle,                    0}, /* CMD_REFIT_RAIL_VEHICLE */
 	{CmdRestoreOrderIndex,                   0}, /* CMD_RESTORE_ORDER_INDEX */
@@ -323,7 +323,7 @@ static const Command _command_proc_table[] = {
 	{CmdGiveMoney,                           0}, /* CMD_GIVE_MONEY */
 	{CmdChangePatchSetting,         CMD_SERVER}, /* CMD_CHANGE_PATCH_SETTING */
 	{CmdSetAutoReplace,                      0}, /* CMD_SET_AUTOREPLACE */
-	{CmdCloneVehicle,                        0}, /* CMD_CLONE_VEHICLE */
+	{CmdCloneVehicle,              CMD_NO_TEST}, /* CMD_CLONE_VEHICLE; NewGRF callbacks influence building and refitting making it impossible to correctly estimate the cost */
 	{CmdStartStopVehicle,                    0}, /* CMD_START_STOP_VEHICLE */
 	{CmdMassStartStopVehicle,                0}, /* CMD_MASS_START_STOP */
 	{CmdAutoreplaceVehicle,                  0}, /* CMD_AUTOREPLACE_VEHICLE */
@@ -474,22 +474,18 @@ Money GetAvailableMoneyForCommand()
  */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text, bool my_cmd)
 {
-	CommandCost res, res2;
-	CommandProc *proc;
-	uint32 flags;
-	bool notest;
-	StringID error_part1;
-
-	int x = TileX(tile) * TILE_SIZE;
-	int y = TileY(tile) * TILE_SIZE;
+	assert(_docommand_recursive == 0);
 
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (!IsValidTile(tile)) return false;
 
-	assert(_docommand_recursive == 0);
+	CommandCost res, res2;
+
+	int x = TileX(tile) * TILE_SIZE;
+	int y = TileY(tile) * TILE_SIZE;
 
 	_error_message = INVALID_STRING_ID;
-	error_part1 = GB(cmd, 16, 16);
+	StringID error_part1 = GB(cmd, 16, 16);
 	_additional_cash_required = 0;
 
 	/** Spectator has no rights except for the (dedicated) server which
@@ -499,35 +495,21 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 		return false;
 	}
 
-	flags = 0;
-	if (cmd & CMD_NO_WATER) flags |= DC_NO_WATER;
-
 	/* get pointer to command handler */
 	byte cmd_id = cmd & CMD_ID_MASK;
 	assert(cmd_id < lengthof(_command_proc_table));
-	proc = _command_proc_table[cmd_id].proc;
+
+	CommandProc *proc = _command_proc_table[cmd_id].proc;
 	if (proc == NULL) return false;
 
-	if (GetCommandFlags(cmd) & CMD_AUTO) flags |= DC_AUTO;
+	/* Flags get send to the DoCommand */
+	uint32 flags = 0;
+	/* Command flags are used internally */
+	uint cmd_flags = GetCommandFlags(cmd);
+	if (cmd & CMD_NO_WATER) flags |= DC_NO_WATER;
+	if (cmd_flags & CMD_AUTO) flags |= DC_AUTO;
 
-	/* Some commands have a different output in dryrun than the realrun
-	 *  e.g.: if you demolish a whole town, the dryrun would say okay.
-	 *  but by really destroying, your rating drops and at a certain point
-	 *  it will fail. so res and res2 are different
-	 * CMD_REMOVE_LONG_ROAD: This command has special local authority
-	 * restrictions which may cause the test run to fail (the previous
-	 * road fragments still stay there and the town won't let you
-	 * disconnect the road system), but the exec will succeed and this
-	 * fact will trigger an assertion failure. --pasky
-	 * CMD_CLONE_VEHICLE: Both building new vehicles and refitting them can be
-	 * influenced by newgrf callbacks, which makes it impossible to accurately
-	 * estimate the cost of cloning a vehicle. */
-
-	notest =
-		cmd_id == CMD_CLEAR_AREA ||
-		cmd_id == CMD_LEVEL_LAND ||
-		cmd_id == CMD_REMOVE_LONG_ROAD ||
-		cmd_id == CMD_CLONE_VEHICLE;
+	bool notest = (cmd_flags & CMD_NO_TEST) != 0;
 
 	_docommand_recursive = 1;
 
