@@ -375,7 +375,7 @@ public:
 		}
 
 		/* If an industry has been built, just reset the cursor and the system */
-		if (success) ResetObjectToPlace();
+		if (success && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	}
 
 	virtual void OnTick()

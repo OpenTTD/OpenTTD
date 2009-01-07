@@ -142,7 +142,7 @@ void CcRailDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 		DiagDirection dir = (DiagDirection)p2;
 
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
-		ResetObjectToPlace();
+		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 
 		tile += TileOffsByDiagDir(dir);
 
@@ -174,8 +174,8 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
-		/* Only close the station builder window if the default station is chosen. */
-		if (_railstation.station_class == STAT_CLASS_DFLT && _railstation.station_type == 0) ResetObjectToPlace();
+		/* Only close the station builder window if the default station and non persistent building is chosen. */
+		if (_railstation.station_class == STAT_CLASS_DFLT && _railstation.station_type == 0 && !_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	}
 }
 
@@ -256,7 +256,7 @@ void CcBuildRailTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
-		ResetObjectToPlace();
+		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	} else {
 		SetRedErrorSquare(_build_tunnel_endtile);
 	}
@@ -707,7 +707,7 @@ struct BuildRailToolbarWindow : Window {
 			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
-					ResetObjectToPlace();
+					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_RAIL, _cur_railtype);
 					break;
 

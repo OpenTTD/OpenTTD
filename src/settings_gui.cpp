@@ -639,6 +639,7 @@ static const char *_patches_ui[] = {
 	"gui.quick_goto",
 	"gui.default_rail_type",
 	"gui.always_build_infrastructure",
+	"gui.persistent_buildingtools",
 	"gui.show_track_reservation",
 	"gui.left_mouse_btn_scrolling",
 };

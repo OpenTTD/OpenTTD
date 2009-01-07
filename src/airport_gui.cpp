@@ -34,7 +34,7 @@ void CcBuildAirport(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_1F_SPLAT, tile);
-		ResetObjectToPlace();
+		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	}
 }
 

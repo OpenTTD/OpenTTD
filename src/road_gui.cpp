@@ -118,7 +118,7 @@ void CcBuildRoadTunnel(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
-		ResetObjectToPlace();
+		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 	} else {
 		SetRedErrorSquare(_build_tunnel_endtile);
 	}
@@ -191,7 +191,7 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) {
 		DiagDirection dir = (DiagDirection)GB(p1, 0, 2);
 		SndPlayTileFx(SND_1F_SPLAT, tile);
-		ResetObjectToPlace();
+		if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 		BuildRoadOutsideStation(tile, dir);
 		/* For a drive-through road stop build connecting road for other entrance */
 		if (HasBit(p2, 1)) BuildRoadOutsideStation(tile, ReverseDiagDir(dir));
@@ -579,7 +579,7 @@ struct BuildRoadToolbarWindow : Window {
 			switch (select_proc) {
 				default: NOT_REACHED();
 				case DDSP_BUILD_BRIDGE:
-					ResetObjectToPlace();
+					if (!_settings_client.gui.persistent_buildingtools) ResetObjectToPlace();
 					ShowBuildBridgeWindow(start_tile, end_tile, TRANSPORT_ROAD, RoadTypeToRoadTypes(_cur_roadtype));
 					break;
 
