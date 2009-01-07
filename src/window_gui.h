@@ -203,6 +203,11 @@ public:
 	Window(const WindowDesc *desc, WindowNumber number = 0);
 
 	virtual ~Window();
+	/* Don't allow arrays; arrays of Windows are pointless as you need
+	 * to destruct them all at the same time too, which is kinda hard. */
+	FORCEINLINE void *operator new[](size_t size) { NOT_REACHED(); }
+	/* Don't free the window directly; it corrupts the linked list when iterating */
+	FORCEINLINE void operator delete(void *ptr, size_t size) {}
 
 	uint16 flags4;              ///< Window flags, @see WindowFlags
 	WindowClass window_class;   ///< Window class
@@ -543,8 +548,10 @@ extern Window *_z_front_window;
 extern Window *_z_back_window;
 
 /** Iterate over all windows */
-#define FOR_ALL_WINDOWS_FROM_BACK(w)  for (w = _z_back_window;  w != NULL; w = w->z_front)
-#define FOR_ALL_WINDOWS_FROM_FRONT(w) for (w = _z_front_window; w != NULL; w = w->z_back)
+#define FOR_ALL_WINDOWS_FROM_BACK_FROM(w, start)  for (w = start; w != NULL; w = w->z_front) if (w->window_class != WC_INVALID)
+#define FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, start) for (w = start; w != NULL; w = w->z_back) if (w->window_class != WC_INVALID)
+#define FOR_ALL_WINDOWS_FROM_BACK(w)  FOR_ALL_WINDOWS_FROM_BACK_FROM(w, _z_back_window)
+#define FOR_ALL_WINDOWS_FROM_FRONT(w) FOR_ALL_WINDOWS_FROM_FRONT_FROM(w, _z_front_window)
 
 /**
  * Disable scrolling of the main viewport when an input-window is active.

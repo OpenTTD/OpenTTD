@@ -219,8 +219,7 @@ static Point _vp_move_offs;
 
 static void DoSetViewportPosition(const Window *w, int left, int top, int width, int height)
 {
-
-	for (; w != NULL; w = w->z_front) {
+	FOR_ALL_WINDOWS_FROM_BACK_FROM(w, w) {
 		if (left + width > w->left &&
 				w->left + w->width > left &&
 				top + height > w->top &&

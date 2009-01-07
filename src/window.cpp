@@ -296,7 +296,8 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
  */
 static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 {
-	for (const Window *v = w->z_front; v != NULL; v = v->z_front) {
+	const Window *v;
+	FOR_ALL_WINDOWS_FROM_BACK_FROM(v, w->z_front) {
 		if (right > v->left &&
 				bottom > v->top &&
 				left < v->left + v->width &&
@@ -427,21 +428,6 @@ Window::~Window()
 	/* Prevent Mouseover() from resetting mouse-over coordinates on a non-existing window */
 	if (_mouseover_last_w == this) _mouseover_last_w = NULL;
 
-	/* Find the window in the z-array, and effectively remove it
-	 * by moving all windows after it one to the left. This must be
-	 * done before removing the child so we cannot cause recursion
-	 * between the deletion of the parent and the child. */
-	if (this->z_front == NULL) {
-		_z_front_window = this->z_back;
-	} else {
-		this->z_front->z_back = this->z_back;
-	}
-	if (this->z_back == NULL) {
-		_z_back_window  = this->z_front;
-	} else {
-		this->z_back->z_front = this->z_front;
-	}
-
 	this->DeleteChildWindows();
 
 	if (this->viewport != NULL) DeleteWindowViewport(this);
@@ -454,6 +440,8 @@ Window::~Window()
 		}
 		free(this->widget);
 	}
+
+	this->window_class = WC_INVALID;
 }
 
 /**
@@ -1091,7 +1079,17 @@ void InitWindowSystem()
  */
 void UnInitWindowSystem()
 {
-	while (_z_front_window != NULL) delete _z_front_window;
+	Window *w;
+	FOR_ALL_WINDOWS_FROM_FRONT(w) delete w;
+
+	for (w = _z_front_window; w != NULL; /* nothing */) {
+		Window *to_del = w;
+		w = w->z_back;
+		free(to_del);
+	}
+
+	_z_front_window = NULL;
+	_z_back_window = NULL;
 }
 
 /**
@@ -1583,7 +1581,8 @@ static bool MaybeBringWindowToFront(Window *w)
 		return true;
 	}
 
-	for (Window *u = w->z_front; u != NULL; u = u->z_front) {
+	Window *u;
+	FOR_ALL_WINDOWS_FROM_BACK_FROM(u, w->z_front) {
 		/* A modal child will prevent the activation of the parent window */
 		if (u->parent == w && (u->desc_flags & WDF_MODAL)) {
 			u->flags4 |= WF_WHITE_BORDER_MASK;
@@ -1972,6 +1971,30 @@ void InputLoop()
 {
 	CheckSoftLimit();
 	HandleKeyScrolling();
+
+	/* Do the actual free of the deleted windows. */
+	for (Window *v = _z_front_window; v != NULL; /* nothing */) {
+		Window *w = v;
+		v = v->z_back;
+
+		if (w->window_class != WC_INVALID) continue;
+
+		/* Find the window in the z-array, and effectively remove it
+		 * by moving all windows after it one to the left. This must be
+		 * done before removing the child so we cannot cause recursion
+		 * between the deletion of the parent and the child. */
+		if (w->z_front == NULL) {
+			_z_front_window = w->z_back;
+		} else {
+			w->z_front->z_back = w->z_back;
+		}
+		if (w->z_back == NULL) {
+			_z_back_window  = w->z_front;
+		} else {
+			w->z_back->z_front = w->z_front;
+		}
+		free(w);
+	}
 
 	if (_input_events_this_tick != 0) {
 		/* The input loop is called only once per GameLoop() - so we can clear the counter here */
