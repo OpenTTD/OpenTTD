@@ -839,6 +839,11 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
 		return false;
 	}
 
+	if ((cp->cmd & CMD_FLAGS_MASK) != 0) {
+		IConsolePrintF(CC_ERROR, "WARNING: invalid command flag from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
+		return false;
+	}
+
 	return true;
 }
 

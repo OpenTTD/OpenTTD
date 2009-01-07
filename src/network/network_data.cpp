@@ -34,6 +34,8 @@ void NetworkAddCommandQueue(NetworkClientSocket *cs, CommandPacket *cp)
 // Prepare a DoCommand to be send over the network
 void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text)
 {
+	assert((cmd & CMD_FLAG_MASK) == 0);
+
 	CommandPacket c;
 
 	c.company = _local_company;

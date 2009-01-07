@@ -560,7 +560,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
 		CompanyID bck = _local_company;
 		if (_network_dedicated || (_network_server && bck == COMPANY_SPECTATOR)) _local_company = COMPANY_FIRST;
-		NetworkSend_Command(tile, p1, p2, cmd, callback, text);
+		NetworkSend_Command(tile, p1, p2, cmd & ~CMD_FLAGS_MASK, callback, text);
 		if (_network_dedicated || (_network_server && bck == COMPANY_SPECTATOR)) _local_company = bck;
 		_docommand_recursive = 0;
 		ClearStorageChanges(false);

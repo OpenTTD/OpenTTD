@@ -685,6 +685,24 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 	cp->my_cmd   = p->Recv_bool();
 	cp->next     = NULL;
 
+	if (!IsValidCommand(cp->cmd)) {
+		IConsolePrintF(CC_ERROR, "WARNING: invalid command from server, dropping...");
+		free(cp);
+		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
+
+	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) {
+		IConsolePrintF(CC_ERROR, "WARNING: offline only command from server, dropping...");
+		free(cp);
+		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
+
+	if ((cp->cmd & CMD_FLAGS_MASK) != 0) {
+		IConsolePrintF(CC_ERROR, "WARNING: invalid command flag from server, dropping...");
+		free(cp);
+		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
+
 	// The server did send us this command..
 	//  queue it in our own queue, so we can handle it in the upcoming frame!
 
