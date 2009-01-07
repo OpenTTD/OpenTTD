@@ -1157,7 +1157,7 @@ STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Brautar ljós
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Ein-stefnu ljós
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allt
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vegaskipulagið „ekki fleiri vegi“ er ekki gilt við landslagsgerð
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vegaskipulagið "ekki fleiri vegi" er ekki gilt við landslagsgerð
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vegaskipulag bæja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :ekki fleiri vegi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :sjálfgefið
@@ -3374,7 +3374,7 @@ STR_START_DATE_QUERY_CAPT                                       :{WHITE}Breyta u
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Stærð hæðarlínukorts
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ekki er mælt með því að breyta stærð grunnkorts of mikið. Viltu halda áfram?
 STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Vegaskipulagsaðvörun
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Vegaskipulagið „ekki fleiri vegi“ er óráðlegt. Halda myndun áfram?
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Vegaskipulagið "ekki fleiri vegi" er óráðlegt. Halda myndun áfram?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nafn hæðarlínukorts:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Stærð: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Skapa heim...
@@ -3477,7 +3477,7 @@ STR_GROUP_ROADVEH_CAPTION                                       :{WHITE}{GROUP} 
 STR_GROUP_SHIPS_CAPTION                                         :{WHITE}{GROUP} - {COMMA} Skip
 STR_GROUP_AIRCRAFTS_CAPTION                                     :{WHITE}{GROUP} - {COMMA} Flugvél{P "" ar}
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}Endurnefna hóp
-STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Skipta út farartækjum í „{GROUP}“
+STR_GROUP_REPLACE_CAPTION                                       :{WHITE}Skipta út farartækjum í "{GROUP}"
 
 STR_GROUP_CAN_T_CREATE                                          :{WHITE}Get ekki búið til hóp...
 STR_GROUP_CAN_T_DELETE                                          :{WHITE}Get ekki eytt þessum hópi...
@@ -3567,11 +3567,11 @@ STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Get ekki
 STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}Hefðbundin merki{}Merki eru nauðsynleg til að koma í veg fyrir að lestir lendi í árekstri.
 STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}Komumerki{}Hleypir í gegn uns ekkert frámerki er eftir opið.
 STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}Frámerki{}Virkar eins og hefðbundið merki en er nauðsynlegt til að fá rétta virkni fyrir komu- og fjölmerki.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Fjölmerki{}Fjölmerkin virka bæði sem komu- og frámerki sem gerir þér kleyft að hanna stór „tré“ af formerkjum.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Fjölmerki{}Fjölmerkin virka bæði sem komu- og frámerki sem gerir þér kleyft að hanna stór "tré" af formerkjum.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Hefðbundin ljós{}Ljós eru nauðsynleg til að koma í veg fyrir að lestir lendi í árekstri.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Komuljós{}Hleypir í gegn uns ekkert fráljós er lengur grænt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Fráljós{}Virkar eins og hefðbundið ljós en er naðusynlegt til að fá rétta virkni fyrir komu- og fjölljós.
-STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Fjölljós{}Fjölljósið virkar bæði sem komu- og fráljós sem gerir þér kleyft að hanna stór „tré“ af forljósum.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Fjölljós{}Fjölljósið virkar bæði sem komu- og fráljós sem gerir þér kleyft að hanna stór "tré" af forljósum.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Breyting ljósa{}Þegar valið þá breytist merki sem til er fyrir í valda gerð og tegund. CTRL-smellur mun rúlla í gegnum núverandi tegund.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Þéttleiki dreginna ljósa
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minnka þéttleika dreginna ljósa

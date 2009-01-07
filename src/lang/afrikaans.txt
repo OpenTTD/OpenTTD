@@ -1799,7 +1799,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Diens subsidie toeken aan {COMPANY}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou dubbel pryse vir die volgende jaar betaal!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Diens subsidie toeken aan {COMPANY}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou driemaal pryse vir die volgende jaar betaal!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Diens subsidie toeken aan {COMPANY}!{}{}{STRING} diens van {STATION} tot {STATION} sal nou viervoud pryse vir die volgende jaar betaal!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} plaaslike raad weier om nog ‘n lighawe te bou in hierdie stad
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} plaaslike raad weier om nog 'n lighawe te bou in hierdie stad
 STR_2036_COTTAGES                                               :Kothuise
 STR_2037_HOUSES                                                 :Huise
 STR_2038_FLATS                                                  :Woonstelle
@@ -2235,7 +2235,6 @@ STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Op die einde va
 STR_6835_AT_END_OF_LINE_ONLY                                    :Slegs op die ende van die lyn
 STR_6836_OFF                                                    :Af
 STR_6837_ON                                                     :Aan
-STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Wys ho�telling tabel
 STR_PERMISSIVE                                                  :Permissief
 STR_TOLERANT                                                    :Toelaatbaar
 STR_HOSTILE                                                     :Vyandelik
@@ -2342,7 +2341,6 @@ STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Skakel g
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Ingenieur
 STR_7067_TRAFFIC_MANAGER                                        :Verkeer Bestuurder
-STR_7068_TRANSPORT_COORDINATOR                                  :Vervoer Ko�eerder
 STR_7069_ROUTE_SUPERVISOR                                       :Roete Opsiener
 STR_706A_DIRECTOR                                               :Direkteur
 STR_706B_CHIEF_EXECUTIVE                                        :Hoofbestuursleier
@@ -2363,7 +2361,6 @@ STR_COMPANY_PASSWORD_OK                                         :{BLACK}Gee die 
 STR_COMPANY_PASSWORD_CAPTION                                    :{WHITE}Maatskappy wagwoord
 STR_MAKE_DEFAULT_COMPANY_PASSWORD                               :{BLACK}Voorbepaalde maatskappy wagwoord
 STR_MAKE_DEFAULT_COMPANY_PASSWORD_TIP                           :{BLACK}Gebruik die maatskapy wagwoord as die standaard vir nuwe maatskappye
-STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}W�eld Insinking!{}{}Finansieel eksperte vrees ergste as ekonomie inmekaar sak!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Insinking Oor!{}{}Oplewing in sake gee vertroue na nywerhede as ekonomie versterk!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Tokkel groot/klein venster groote
 STR_7076_COMPANY_VALUE                                          :{GOLD}Maatskappy waarde: {WHITE}{CURRENCY}
@@ -2668,7 +2665,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Heliko
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helikopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helikopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Boodskap van voertuig fabrikant
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Ons het sopas ‘n nuwe {STRING} ontwerp, sal jy belangstel om hierdie voertuig eksklusief vir ‘n jaar te gebruik. Hierdie word gedoen om te kyk hoe die voertuig doen voordat hy wereld wyd in produksie gesit word?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Ons het sopas 'n nuwe {STRING} ontwerp, sal jy belangstel om hierdie voertuig eksklusief vir 'n jaar te gebruik. Hierdie word gedoen om te kyk hoe die voertuig doen voordat hy wereld wyd in produksie gesit word?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :spoorweg lokomotief
 STR_8103_ROAD_VEHICLE                                           :pad voertuig
 STR_8104_AIRCRAFT                                               :vliegtuig
@@ -3180,7 +3177,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Lêer na
 STR_NEWGRF_PALETTE                                              :{BLACK}Pallet: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jy is besig om veranderings op ‘n tans gebruikte speletjie te doen. Dit kan OpenTTD beskadig. {}Is jy heeltemal seker ?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jy is besig om veranderings op 'n tans gebruikte speletjie te doen. Dit kan OpenTTD beskadig. {}Is jy heeltemal seker ?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Waarskuwing: {SILVER}{STRING}
