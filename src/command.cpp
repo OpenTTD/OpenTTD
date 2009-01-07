@@ -350,7 +350,7 @@ static const Command _command_proc_table[] = {
  */
 bool IsValidCommand(uint32 cmd)
 {
-	cmd &= 0xFF;
+	cmd &= CMD_ID_MASK;
 
 	return
 		cmd < lengthof(_command_proc_table) &&
@@ -358,7 +358,7 @@ bool IsValidCommand(uint32 cmd)
 }
 
 /*!
- * This function mask the parameter with 0xFF and returns
+ * This function mask the parameter with CMD_ID_MASK and returns
  * the flags which belongs to the given command.
  *
  * @param cmd The integer value of the command
@@ -368,7 +368,7 @@ byte GetCommandFlags(uint32 cmd)
 {
 	assert(IsValidCommand(cmd));
 
-	return _command_proc_table[cmd & 0xFF].flags;
+	return _command_proc_table[cmd & CMD_ID_MASK].flags;
 }
 
 static int _docommand_recursive = 0;
@@ -503,8 +503,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	if (cmd & CMD_NO_WATER) flags |= DC_NO_WATER;
 
 	/* get pointer to command handler */
-	assert((cmd & 0xFF) < lengthof(_command_proc_table));
-	proc = _command_proc_table[cmd & 0xFF].proc;
+	byte cmd_id = cmd & CMD_ID_MASK;
+	assert(cmd_id < lengthof(_command_proc_table));
+	proc = _command_proc_table[cmd_id].proc;
 	if (proc == NULL) return false;
 
 	if (GetCommandFlags(cmd) & CMD_AUTO) flags |= DC_AUTO;
@@ -521,11 +522,12 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	 * CMD_CLONE_VEHICLE: Both building new vehicles and refitting them can be
 	 * influenced by newgrf callbacks, which makes it impossible to accurately
 	 * estimate the cost of cloning a vehicle. */
+
 	notest =
-		(cmd & 0xFF) == CMD_CLEAR_AREA ||
-		(cmd & 0xFF) == CMD_LEVEL_LAND ||
-		(cmd & 0xFF) == CMD_REMOVE_LONG_ROAD ||
-		(cmd & 0xFF) == CMD_CLONE_VEHICLE;
+		cmd_id == CMD_CLEAR_AREA ||
+		cmd_id == CMD_LEVEL_LAND ||
+		cmd_id == CMD_REMOVE_LONG_ROAD ||
+		cmd_id == CMD_CLONE_VEHICLE;
 
 	_docommand_recursive = 1;
 
@@ -534,7 +536,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 			_shift_pressed &&
 			IsLocalCompany() &&
 			!(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR)) &&
-			(cmd & 0xFF) != CMD_PAUSE) {
+			cmd_id != CMD_PAUSE) {
 		/* estimate the cost. */
 		SetTownRatingTestMode(true);
 		res = proc(tile, flags, p1, p2, text);

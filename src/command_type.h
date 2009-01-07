@@ -328,6 +328,8 @@ enum {
 	CMD_NETWORK_COMMAND       = 0x0800, ///< execute the command without sending it on the network
 	CMD_NO_TEST_IF_IN_NETWORK = 0x1000, ///< When enabled, the command will bypass the no-DC_EXEC round if in network
 	CMD_SHOW_NO_ERROR         = 0x2000, ///< do not show the error message
+	CMD_FLAGS_MASK            = 0xFF00, ///< mask for all command flags
+	CMD_ID_MASK               = 0x00FF, ///< mask for the command ID
 };
 
 /**
