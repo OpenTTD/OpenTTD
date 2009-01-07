@@ -296,7 +296,7 @@ STR_CAPACITY_MULT                                               :{BLACK}Capacita
 STR_TOTAL_CAPACITY_TEXT                                         :{BLACK}Càrrega total (capacitat) d'aquest tren:
 STR_TOTAL_CAPACITY                                              :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
-STR_0140_NEW_GAME                                               :{BLACK}Joc Nou
+STR_0140_NEW_GAME                                               :{BLACK}Nou Joc
 STR_0141_LOAD_GAME                                              :{BLACK}Carrega un Joc
 STR_SINGLE_PLAYER                                               :{BLACK}Jugador individual
 STR_MULTIPLAYER                                                 :{BLACK}Multijugador
@@ -482,6 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :Vehicle
 STR_019D_AIRCRAFT                                               :Avió
 STR_019E_SHIP                                                   :Vaixell
 STR_019F_TRAIN                                                  :Tren
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} s'està fent vell
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} s'està fent molt vell
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} s'està fent molt vell i necessita ser substituït urgentment
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informació del terreny
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost de neteja: {RED}{CURRENCY}
@@ -540,7 +543,7 @@ STR_01D3_SOUND_MUSIC                                            :So/música
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostra la finestra de so/música
 STR_01D5_ALL                                                    :{TINYFONT}Tot
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Estil Antic
-STR_01D7_NEW_STYLE                                              :{TINYFONT}Estil Nou
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Nouy Estil
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
 STR_01D9_CUSTOM_1                                               :{TINYFONT}Opcional 1
 STR_01DA_CUSTOM_2                                               :{TINYFONT}Opcional 2
@@ -991,12 +994,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No es po
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No es pot copiar la llista d'ordres...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi d'Ordres Compartides - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} no pot trobar un camir per on continuar.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} està perdut.
+STR_VEHICLE_IS_UNPROFITABLE                                     :El benefici del {WHITE}{VEHICLE} l'any passat va ser de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Unió Monetària Europea!{}{}S'introdueix l'Euro com a moneda única per les transaccions diàries del teu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} té massa poques ordres a l'agenda
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} té una ordre buida
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} té ordres duplicades
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} té una estació invàlida en les seves ordres
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}L'autorenovació ha fallat en el {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} és massa llarg després de la substitució
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No s'han aplicat normes d'autosubstitució/renovació.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(límit de diners)
 
@@ -1050,6 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Revisa 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :si, excepte vehicles parats
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :per a tots els vehicles
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avisa si el benefici del vehicle és negatiu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Els vehicles mai caduquen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenova el vehicle quan sigui vell
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenova el vehicle quan tingui {ORANGE}{STRING}{LTBLUE} mesos abans/després antig. max.
@@ -1105,7 +1118,7 @@ STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :llarga (31st De
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :curta (31-12-2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
-STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un joc nou: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Posa en pausa automàticament en començar un nou joc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Utilitza la llista de vehicles avançada: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Inactiu
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Pròpia companyia
@@ -1116,6 +1129,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Pròpia company
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Totes les companyies
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Habilita horaris dels vehicles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra horaris en marques enlloc de dies: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Creació ràpida d'ordres per a vehicles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipus de via predeterminada (en un joc nou/joc desat): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Via Normal
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Via Electrificada
@@ -2795,6 +2809,7 @@ STR_UNKNOWN_STATION                                             :estació descon
 STR_8812_EMPTY                                                  :{LTBLUE}Buit
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} procedent{P "" s} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} des de {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} està esperant a la cotxera
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nous Vehicles
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren massa llarg
@@ -2915,7 +2930,7 @@ STR_TRAIN_NO_POWER                                              :{RED}Sense ener
 STR_TRAIN_START_NO_CATENARY                                     :Aquesta via no té catenària, el tren no pot arrencar
 STR_TRAIN_STUCK                                                 :{ORANGE}Esperant una ruta lliure
 
-STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nou {STRING} disponible!
+STR_NEW_VEHICLE_NOW_AVAILABLE                                   :{BLACK}{BIGFONT}Nou/Nova {STRING} disponible!
 STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT}{ENGINE}
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nou/Nova {STRING} disponible!  -  {ENGINE}
 
@@ -2953,6 +2968,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...s'ha de parar dins d'una cotxera
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No pots vendre l'automòbil...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No es pot parar/arrencar l'automòbil...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} està esperant a la cotxera
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Cap a la cotxera de {TOWN}.
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisió a la cotxera de {TOWN}
@@ -3034,6 +3050,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Cap a l
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Cap a la drassana de{TOWN}, a {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Revisió a la drassana de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la drassana de {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} està esperant a la drassana
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construeix un port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construeix una drassana (per construir i revisar vaixells)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per més informació
@@ -3041,7 +3058,7 @@ STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construe
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrossega el vaixell fins aquí per vendre'l
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la pantalla principal en la situació de la drassana
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per més informació
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construeix nous vaixells (necessites una drassana)
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construeix nous vaixells (necessita una drassana)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per més informació
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construeix el vaixell seleccionat
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Accions sobre el vaixell actual - clica aquí per parar/arrencar el vaixell
@@ -3098,6 +3115,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Cap a l'hangar de {STATION}, a {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Revisió a l'hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Revisió a l'hangar de {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} està esperant a l'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Avió al camí
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No es pot parar/arrencar l'avió...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}L'avió està volant
@@ -3108,7 +3126,7 @@ STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No es po
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construcció d'Aeroport
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construeix un aeroport
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per més informació
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construeix nous avions (necessites un aeroport amb hangar)
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construeix nous avions (necessita un aeroport amb hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Avió - clica sobre l'avió per més informació
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construeix nous avions
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'avió fins aquí per vendre'l
@@ -3358,6 +3376,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clica pe
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}L'ordre de remodelació fallida ha parat el {VEHICLE}
 
 ############ Lists rail types
 

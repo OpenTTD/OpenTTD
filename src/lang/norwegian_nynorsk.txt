@@ -1676,13 +1676,16 @@ STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbanespor me
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbanespor med ut-signal
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med kombinasjonssignal
 STR_RAILROAD_TRACK_WITH_PBSSIGNALS                              :Togspor med vegsignal
+STR_RAILROAD_TRACK_WITH_NOENTRYSIGNALS                          :Togspor med envegs vegsignal
 STR_RAILROAD_TRACK_WITH_NORMAL_PRESIGNALS                       :Jernbanespor med normale- og pre-signal
 STR_RAILROAD_TRACK_WITH_NORMAL_EXITSIGNALS                      :Jernbanespor med normale- og exit-spor
 STR_RAILROAD_TRACK_WITH_NORMAL_COMBOSIGNALS                     :Jernbane med vanlege og kombinasjonssignal
 STR_RAILROAD_TRACK_WITH_NORMAL_PBSSIGNALS                       :Togspor med blokkerings- og vegsignal
+STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Togspor med blokkerings- og envegs vegsignal
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Jernbanespor med pre- og exit-signal
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Jernbane med pre- og kombinasjonssignal
 STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Togspor med inngangs- og vegsignal
+STR_RAILROAD_TRACK_WITH_PRE_NOENTRYSIGNALS                      :Togspor med inngangs- og envegs vegsignal
 STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Jernbane med utgangs- og kombinasjonssignal
 STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Togspor med utgangs- og vegsignal
 STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Togspor med utgangs- og einvegs vegsignal
@@ -2690,8 +2693,10 @@ STR_ORDER_GO_TO                                                 :Køyr til
 STR_ORDER_GO_NON_STOP_TO                                        :Køyr utan stopp til
 STR_ORDER_GO_VIA                                                :Køyr om
 STR_ORDER_GO_NON_STOP_VIA                                       :Køyr utan stopp om
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Last fullt, uavhengig av kva det er
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Last dersom tilgjengeleg
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :Last fullt av all last
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Last fullt, uavhengig av kva det er
 STR_ORDER_DROP_NO_LOADING                                       :Ikkje last
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Last av alt
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Last av dersom godtatt
@@ -2757,6 +2762,7 @@ STR_CONDITIONAL_UNCONDITIONAL                                   :Hopp til rekkje
 STR_CONDITIONAL_NUM                                             :Hopp til rekkjefølgje {COMMA} når {STRING} {STRING} {COMMA}
 STR_CONDITIONAL_TRUE_FALSE                                      :Hopp til rekkjefølgje {COMMA} når {STRING} {STRING}
 
+STR_TIMETABLE_NO_TRAVEL                                         :{SETX 30}Ingen reise
 STR_TIMETABLE_TRAVEL_NOT_TIMETABLED                             :{SETX 30}Reis (ikke på rutetabell)
 STR_TIMETABLE_TRAVEL_FOR                                        :{SETX 30}Reis i  {STRING}
 STR_TIMETABLE_STAY_FOR                                          :stå i {STRING}
@@ -3598,6 +3604,8 @@ STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Standard
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}In-Signal (elektrisk){}Grøn så lenge det er eit eller fleir grønne ut signal fra den følgande seksjonen. Ellers synar det raudt.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Ut-Signal (elektrisk){}Verker på samme måte som vanlege signal, men er naudsynt for å gje rett farge på in og combo pre-signal
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Combo-Signal (elektrisk){}Verker som både inn og ut signaler og gjer det moglegheit til å lage store "tre" av presignal
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Vegsignal (elektrisk){}(semaphore){}Eit vegsignal tillet meir enn eitt tog å entre signalblokka på same tid, om toget kan reservere ei rute til ein trygg plass å stoppe på. Standard vegsignal kan passerast frå baksida.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Einvegs vegsignal (elektrisk){}(semaphore){}Eit vegsignal tillet meir enn eitt tog å entre signalblokka på same tid, om toget kan reservere ei rute til ein trygg plass å stoppe på. Einvegs vegsignal kan ikkje passerast frå baksida.
 STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signal Konvertering{}Klikk på eit signal for å endra det til valde type, CTRL-klikk  skifter mellom forskjellige variantar.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Tettleik for dra og slepp signalbygging
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Minsk tettleik for dra og slepp signalbygging

@@ -872,6 +872,16 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 
 ##id 0x8000
+STR_8091_FOSTER_WOOD_TRUCK                                      :รถบรรทุกไม้รุ่นฟอสเตอร์
+STR_8092_MORELAND_WOOD_TRUCK                                    :รถบรรทุกไม้รุ่นมัวร์แลนด์
+STR_8093_MPS_IRON_ORE_TRUCK                                     :รถบรรทุกแร่เหล็กรุ่นเอ็มพีเอส
+STR_8094_UHL_IRON_ORE_TRUCK                                     :รถบรรทุกแร่เหล็กรุ่นยูเอชแอล
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :รถบรรทุกแร่เหล็กรุ่นชิปปี้
+STR_8096_BALOGH_STEEL_TRUCK                                     :รถบรรทุกเหล็กกล้ารุ่นบัลล๊อก
+STR_8097_UHL_STEEL_TRUCK                                        :รถบรรทุกเหล็กกล้ารุ่นยูเอชแอล
+STR_8098_KELLING_STEEL_TRUCK                                    :รถบรรทุกเหล็กกล้ารุ่นเคลลิ่ง
+STR_8099_BALOGH_ARMORED_TRUCK                                   :รถหุ้มเกราะรุ่นบัลล๊อก
+STR_809A_UHL_ARMORED_TRUCK                                      :รถหุ้มเกราะรุ่นยูเอชแอล
 
 ##id 0x8800
 

@@ -482,6 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :Ajoneuvo
 STR_019D_AIRCRAFT                                               :Lentokone
 STR_019E_SHIP                                                   :Laiva
 STR_019F_TRAIN                                                  :Juna
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} on tulossa vanhaksi
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi ja on uusimisen tarpeessa
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-aluetiedot
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistuksen hinta: {LTBLUE}-
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen hinta: {RED}{CURRENCY}
@@ -991,12 +994,19 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Aikataul
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Aikataulua ei voi kopioida...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - jaetun aikataulun loppu - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ei löydä reittiä päämäärään.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} on eksynyt.
+STR_VEHICLE_IS_UNPROFITABLE                                     :Kulkuneuvon {WHITE}{VEHICLE} tulos viime vuonna oli {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Euroopan unionin talous- ja rahaliitto!{}{}Euro otetaan käyttöön maan ainoaksi valuutaksi päivittäisiin liiketapahtumiin!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on liian vähän käskyjä
+STR_VEHICLE_HAS_VOID_ORDER                                      :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on epäkelpo käsky
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on virheellinen asema
 # end of order system
 
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} on liian pitkä korvaamisen jälkeen
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ei käytössä olevia itsekorvaus- tai itseuudistussääntöjä
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahoitusraja)
 
@@ -1050,6 +1060,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Tarkist
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :kyllä, mutta ei pysäytetyille
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :kaikille ajoneuvoille
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varoita, jos kulkuneuvon tulos on negatiivinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ajoneuvot eivät vanhene: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Itseuudista ajoneuvo, kun se vanhenee
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Itseuudista {ORANGE}{STRING}{LTBLUE} kuukautta ennen/jälkeen enimmäisiän
@@ -1116,6 +1127,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Oma yhtiö
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Kaikki yhtiöt
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Aikataulut ajoneuvoille: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Näytä aikataulu tickseissä päivien sijaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Nopea kulkuneuvon käskyjen luominen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Oletusraidetyyppi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Tavallinen raide
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Sähköraide
@@ -2795,6 +2807,7 @@ STR_UNKNOWN_STATION                                             :tuntematon asem
 STR_8812_EMPTY                                                  :{LTBLUE}Tyhjä
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} asemalta {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} asemalta {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} odottaa varikolla
 STR_8815_NEW_VEHICLES                                           :{BLACK}Uusia liikennevälineitä
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Juna on liian pitkä.
@@ -2953,6 +2966,7 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...sen pitää olla pysähtyneenä huoltoasemalle.
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi myydä...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ajoneuvoa ei voi pysäyttää/laitta liikkeelle...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} odottaa varikolla
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suuntana huoltoasema, {TOWN}.
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Huolto {TOWN} Varikko
@@ -3098,6 +3112,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suuntan
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suuntana lentokonehalli, {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Huolto {STATION} Halli
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Huolto {STATION} Halli, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} odottaa lentokonehallissa
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lentokone on tiellä.
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Lentokonetta ei voi pysäyttää/laittaa liikkeelle...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lentokone on lennossa.

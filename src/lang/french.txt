@@ -997,6 +997,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ne trouve pas de chemin pour continuer.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} est perdu.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Le profit de {VEHICLE} l'an dernier était {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Union Monétaire Européenne !{}{}L'Euro est introduit en tant que monnaie unique pour les transactions dans votre pays !
 
 # Start of order review system.
@@ -1139,6 +1140,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Premier disponi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Dernier disponible
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Le plus utilisé
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Afficher les voies réservées: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Conserver les outils de construction actifs après usage: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Afficher les outils de construction quand aucun véhicule approprié n'est disponible: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
@@ -1197,6 +1199,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrée
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :À droite
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Rayon d'attraction des fenêtres : {ORANGE}inactif
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Limite du nombre de fenêtres (non-ineffaçables): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limite du nombre de fenêtres (non-ineffaçables): {ORANGE}désactivée
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Vitesse de croissance des villes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Aucune
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lente

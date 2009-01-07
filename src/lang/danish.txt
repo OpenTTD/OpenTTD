@@ -482,6 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :Vejkøretøj
 STR_019D_AIRCRAFT                                               :Fly
 STR_019E_SHIP                                                   :Skib
 STR_019F_TRAIN                                                  :Tog
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} er gammel
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} er meget gammel
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} er meget gammel, og må udskiftes omgående
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Landområde-information
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Pris for at rydde: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Pris for at rydde: {RED}{CURRENCY}

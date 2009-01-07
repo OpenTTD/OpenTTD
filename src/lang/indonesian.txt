@@ -482,6 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :Bus/truk
 STR_019D_AIRCRAFT                                               :Pesawat
 STR_019E_SHIP                                                   :Kapal Laut
 STR_019F_TRAIN                                                  :Kereta Api
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} mulai menua
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} sudah sangat tua
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} sudah sangat tua dan perlu segera diganti
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasi area daratan
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Biaya penghancuran: {LTBLUE}tidak ada
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Biaya penghancuran: {RED}{CURRENCY}
@@ -991,10 +994,17 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Tidak da
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Tidak dapat meniru perintah...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Akhir Perintah Bersama - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} tidak menemukan arah selanjutnya.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} kehilangan arah.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Tahun lalu {VEHICLE} merugi sebanyak {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Persatuan Moneter Eropa{}{}Euro, diperkenalkan sebagai satu-satunya mata uang untuk bertransaksi di negara anda!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Daftar perintah {VEHICLE} terlalu sedikit
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} memiliki perintah yang terabaikan
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} memiliki perintah yang sama atau ganda
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} memiliki stasion yang salah pada perintahnya
 # end of order system
 
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Peremajaan {VEHICLE}{}{STRING} gagal
@@ -1052,6 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Tinjau 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :tidak
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ya, tetapi selain kendaraan yang berhenti
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :semua kendaraan
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ingatkan jika ada kendaraan yg merugi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kendaraan tidak pernah kadaluarsa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Perbarui otomatis kendaraan yang telah tua.
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}}Perbarui otomatis kendaraan {ORANGE}{STRING}{LTBLUE} bulan sblm/sesudah usia maks.
@@ -2957,6 +2968,7 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...harus dihentikan didalam bengkel bus/truk
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Tidak dapat menjual kendaraan...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Tidak dapat menghentikan/menjalankan kendaraan...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} sedang menunggu di bengkel
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Menuju ke bengkel {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Menuju ke Bengkel {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servis di Bengkel {TOWN}
@@ -3038,6 +3050,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Menuju 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Menuju ke Galangan Kapal {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis di Galangan Kapal {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis di Galangan Kapal {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} sedang menunggu di galangan
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Membangun pelabuhan
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Membangun Galangan Kapal (untuk membuat dan memperbaiki kapal)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal laut - klik pada kapal untuk menampilkan informasi
@@ -3102,6 +3115,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Menuju 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Menuju ke hangar di {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Perbaikkan di Hangar {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Perbaikkan di Hangar {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} sedang menunggu di hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Pesawat sedang berjalan
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Tidak dapat menghentikan / menjalankan pesawat...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Pesawat dalam penerbangan
@@ -3362,6 +3376,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klik unt
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Perintah Ubah_Kargo, gagal menghentikan {VEHICLE}
 
 ############ Lists rail types
 

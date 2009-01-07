@@ -993,12 +993,20 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordreliste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordre - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE}Venter på ledig rute
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}s inntekt i fjord var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeisk valutunion!{}{} Euro er introdusert som den utelukkede valuttaen for hverdagslige forretninger i landet ditt!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} har for få ordre i ordrelisten
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} har en tom ordre
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} har doble ordre
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} har en ugyldig stasjon i ordrelisten
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Kunne ikke autofornye {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} er for lang etter utskifting
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ingen auto erstatt/fornyelse regler er satt.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(pengegrense)
 
@@ -1052,6 +1060,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Inspise
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men ekskluder stoppede kjøretøy
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :av alle kjøretøy
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et kjøretøys profitt er negative:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kjøretøy utgår aldri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Bytt automatisk ut kjøretøy når det blir gammelt:
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny når kjøretøy er {ORANGE}{STRING}{LTBLUE}{NBSP}måneder før/etter maks alder
@@ -1100,7 +1109,12 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando-klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl-klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Venstre-klikk scrolling: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk  {ORANGE}{STRING}{LTBLUE} datoformatet i navn til lagringsfil
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lang (31. Des 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pause automatisk ved start av nytt spill: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk den avanserte kjøretøyslisten: {ORANGE}{STRING}
@@ -1113,6 +1127,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eget firma
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle firmaer
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Slå på tidstabeller for kjøretøyer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Vis tidstabell i antall tikk heller enn i dager: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Rask opprettelse av kjøretøyordre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Standard jernbanetype: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Vanlig jernbane
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Elektrisk jernbane
@@ -1523,6 +1538,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Koble fra
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Skriv inn hvor mye penger du øsnker å gi
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Tjeneren er beskyttet. Skriv inn passord
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firmaet er beskyttet. Skriv inn passord
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste over klienter
@@ -1562,8 +1578,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :sparket ut av t
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvde å jukse
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er full
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spill satt på pause (for få spillere)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spill gjennopptatt (nok spillere)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spill satt på pause (klient kobler seg til)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spill gjennopptatt (klient koblet til)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spill gjenopptatt (klient kunne ikke koble seg til)
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :forlater
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} har blitt med i spillet
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} har forlatt spillet ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} har forandret sitt navn til {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gav {2:CURRENCY} til ditt firma
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Du gav {2:CURRENCY} til {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Lag] :
 STR_NETWORK_CHAT_COMPANY                                        :[Lag] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Lag] Til {STRING}: {GRAY}{STRING}
@@ -1819,7 +1847,7 @@ STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Handling
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Liten reklamekampanje
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Middels stor reklamekampanje
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Stor reklamekampanje
-STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Finansier lokal ombygging av veinettet
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Finansier ombygging av byens veinett
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Bygg statue av firmaets grunnlegger
 STR_204B_FUND_NEW_BUILDINGS                                     :Finansier nye bygninger
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Kjøp eksklusive transportrettigheter
@@ -1828,7 +1856,7 @@ STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Start en middels stor lokal reklamekampanje for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}  Koster: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Start en stor lokal reklamekampanje for å tiltrekke deg flere passasjerer og mer varer til dine transporttjenester.{}  Koster: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finansier ombygging av det lokale veinettet. Fører til veiproblemer i seks måneder.{}  Koster: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bygg en statue for å ære firmaet.{} Cost: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bygg en statue for å ære firmaet.{} Koster: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finasier byggingen av nye forretningsbygninger i byen .{}  Koster: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Kjøp et års ekslusive transportrettigheter i byen. Bystyret vil kun tillate passasjerer og varer å bruke dine transporttjenester.{} Koster: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestikk bystyret til å forbedre vurderingen av firmaet, men du riskerer å bli bøtlagt hvis du blir oppdaget.{}  Koster: {CURRENCY}
@@ -1852,7 +1880,7 @@ STR_2800_PLANT_TREES                                            :Plant trær
 STR_2801_PLACE_SIGN                                             :Plasser skilt
 STR_2802_TREES                                                  :{WHITE}Trær
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...det er allerede et tre her
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...upassende område
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...uegnet område
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Kan ikke plante trær her...
 STR_2806                                                        :{WHITE}{SIGN}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...for mange skilt
@@ -1885,7 +1913,7 @@ STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}For nær
 STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Må rive eksisterende flyplass først
 
 STR_3030_RENAME_STATION_LOADING                                 :Endre navnet til stasjon/lasteterminal
-STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Kan ikke endre navnet til stasjonen...
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Kan ikke endre stasjonens navn...
 STR_3032_RATINGS                                                :{BLACK}Vurderinger
 STR_3033_ACCEPTS                                                :{BLACK}Aksepterer
 STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Lokal vurdering av transporttjenester:
@@ -1929,7 +1957,7 @@ STR_SELECT_PASSENGER_TRAM_STATION_ORIENTATION                   :{BLACK}Velg ret
 STR_SELECT_CARGO_TRAM_STATION_ORIENTATION                       :{BLACK}Velg retning på trikkestasjon for frakt
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Sentrer bildet på stasjonen
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Vis stasjonsvurdering
-STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Endre navnet til stasjonen
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Endre stasjonens navn
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Vis liste over godtatte varer
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Stasjonsnavn - Trykk på navnet for å sentrere bildet på stasjonen
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Velg størrelse/type flyplass
@@ -1973,11 +2001,12 @@ STR_4001_LOAD_GAME                                              :{WHITE}Last inn
 STR_4002_SAVE                                                   :{BLACK}Lagre
 STR_4003_DELETE                                                 :{BLACK}Slett
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Tilskuer, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte ledig
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikke lese fra disk
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spillet mislyktes{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan ikke slette fil
-STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Feil ved fremhenting av spill{}{STRING}
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Feil ved lasting av spill{}{STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Intern feil: {STRING}
 STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Ødelagt lagret spill - {STRING}
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spillet er lagret i en nyere versjon
@@ -2292,9 +2321,9 @@ STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kan ikke
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Kan ikke gi vekk penger som er lånt fra banken...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Velg nytt utsende på sjefen
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Endre firmafarge
-STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Endre navnet til sjefen
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Endre sjefens navn
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Endre firmanavnet
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Trykk på fargen du har valgt
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Trykk på fargen du ønsker
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Øk størrelsen på lånet
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Betal tilbake en del av lånet
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Sjef)
@@ -2778,6 +2807,7 @@ STR_UNKNOWN_STATION                                             :ukjent stasjon
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} fra {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} fra {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} venter i togstallen
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye tog/vogner
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
@@ -2936,6 +2966,7 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...må være stoppet i en garasje
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke selge kjøretøy...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke starte/stoppe kjøretøy...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} venter i garasjen
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Er på vei til {TOWN} garasje
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Er på vei til {TOWN} garasje, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Vedlikehold ved {TOWN} garasje
@@ -2972,7 +3003,7 @@ STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Borgerne jubler . . .{}Første frakttrikk ankommer {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} dør etter kollisjon med tog
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikke snu...
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikke snu kjøretøy...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke snu kjøretøy som består av flere deler
 STR_9034_RENAME                                                 :{BLACK}Endre navn
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endre navnet til kjøretøytypen
@@ -2986,9 +3017,9 @@ STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke
 STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Velg en type varer som kjøretøyet skal lastes med
 
 ##id 0x9800
-STR_9800_WATERWAYS_CONSTRUCTION                                 :Vannvei konstruksjon
-STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Vannvei konstruksjon
-STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Vannvei
+STR_9800_WATERWAYS_CONSTRUCTION                                 :Kanal konstruksjon
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}Kanal konstruksjon
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}Kanal
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan ikke bygge havn her...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} skipsdepot
 STR_9804_NEW_SHIPS                                              :{BLACK}Nye skip
@@ -3017,6 +3048,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Er på 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Er på vei mot {TOWN} skipsdepot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Vedlikehold ved {TOWN} skipsdepot
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Vedlikehold ved {TOWN} skipsdepot, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} venter i depotet
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bygg havn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bygg skipsdepot (trengs for bygging og vedlikehold av skip)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - trykk på skip for mer informasjon
@@ -3081,6 +3113,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Er på 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Er på vei til {STATION} hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Vedlikehold ved {STATION} hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Vedlikehold ved {STATION} hangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} venter i hangaren
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Det er et fly i veien
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte flyet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
@@ -3460,7 +3493,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Område:
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}
