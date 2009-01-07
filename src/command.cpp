@@ -517,7 +517,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	if (!IsGeneratingWorld() &&
 			_shift_pressed &&
 			IsLocalCompany() &&
-			!(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR)) &&
+			!(cmd & CMD_NETWORK_COMMAND) &&
 			cmd_id != CMD_PAUSE) {
 		/* estimate the cost. */
 		SetTownRatingTestMode(true);
