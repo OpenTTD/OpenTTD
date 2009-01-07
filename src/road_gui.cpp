@@ -200,7 +200,7 @@ void CcRoadDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRoad_Depot(TileIndex tile)
 {
-	DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0, CMD_BUILD_ROAD_DEPOT | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_depot), CcRoadDepot);
+	DoCommandP(tile, _cur_roadtype << 2 | _road_depot_orientation, 0, CMD_BUILD_ROAD_DEPOT | CMD_MSG(_road_type_infos[_cur_roadtype].err_depot), CcRoadDepot);
 }
 
 static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
@@ -219,7 +219,7 @@ static void PlaceRoad_BusStation(TileIndex tile)
 	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, ROADSTOP_BUS, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_BUS]), CcPlaySound1D);
 	} else {
-		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | ROADSTOP_BUS, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[ROADSTOP_BUS]));
+		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | ROADSTOP_BUS, CMD_BUILD_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[ROADSTOP_BUS]));
 	}
 }
 
@@ -228,7 +228,7 @@ static void PlaceRoad_TruckStation(TileIndex tile)
 	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, ROADSTOP_TRUCK, CMD_REMOVE_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_station[ROADSTOP_TRUCK]), CcPlaySound1D);
 	} else {
-		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | ROADSTOP_TRUCK, CMD_BUILD_ROAD_STOP | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[ROADSTOP_TRUCK]));
+		PlaceRoadStop(tile, (_ctrl_pressed << 5) | RoadTypeToRoadTypes(_cur_roadtype) << 2 | ROADSTOP_TRUCK, CMD_BUILD_ROAD_STOP | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_station[ROADSTOP_TRUCK]));
 	}
 }
 
@@ -598,8 +598,8 @@ struct BuildRoadToolbarWindow : Window {
 
 					DoCommandP(end_tile, start_tile, _place_road_flag | (_cur_roadtype << 3) | (_one_way_button_clicked << 5),
 						(_ctrl_pressed || _remove_button_clicked) ?
-						CMD_REMOVE_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
-						CMD_BUILD_LONG_ROAD | CMD_NO_WATER | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road), CcPlaySound1D);
+						CMD_REMOVE_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_remove_road) :
+						CMD_BUILD_LONG_ROAD | CMD_MSG(_road_type_infos[_cur_roadtype].err_build_road), CcPlaySound1D);
 					break;
 			}
 		}

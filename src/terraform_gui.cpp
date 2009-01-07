@@ -155,7 +155,7 @@ void CcPlaySound1E(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 static void PlaceProc_BuyLand(TileIndex tile)
 {
-	DoCommandP(tile, 0, 0, CMD_PURCHASE_LAND_AREA | CMD_NO_WATER | CMD_MSG(STR_5806_CAN_T_PURCHASE_THIS_LAND), CcPlaySound1E);
+	DoCommandP(tile, 0, 0, CMD_PURCHASE_LAND_AREA | CMD_MSG(STR_5806_CAN_T_PURCHASE_THIS_LAND), CcPlaySound1E);
 }
 
 void PlaceProc_DemolishArea(TileIndex tile)

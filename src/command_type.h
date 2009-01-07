@@ -324,7 +324,6 @@ enum {
  * This enumeration defines some flags which are binary-or'ed on a command.
  */
 enum {
-	CMD_NO_WATER              = 0x0400, ///< dont build on water
 	CMD_NETWORK_COMMAND       = 0x0800, ///< execute the command without sending it on the network
 	CMD_NO_TEST_IF_IN_NETWORK = 0x1000, ///< When enabled, the command will bypass the no-DC_EXEC round if in network
 	CMD_SHOW_NO_ERROR         = 0x2000, ///< do not show the error message
@@ -338,10 +337,11 @@ enum {
  * This enumeration defines flags for the _command_proc_table.
  */
 enum {
-	CMD_SERVER  = 0x1, ///< the command can only be initiated by the server
-	CMD_OFFLINE = 0x2, ///< the command cannot be executed in a multiplayer game; single-player only
-	CMD_AUTO    = 0x4, ///< set the DC_AUTO flag on this command
-	CMD_NO_TEST = 0x8, ///< the command's output may differ between test and execute due to town rating changes etc.
+	CMD_SERVER   = 0x01, ///< the command can only be initiated by the server
+	CMD_OFFLINE  = 0x02, ///< the command cannot be executed in a multiplayer game; single-player only
+	CMD_AUTO     = 0x04, ///< set the DC_AUTO flag on this command
+	CMD_NO_TEST  = 0x08, ///< the command's output may differ between test and execute due to town rating changes etc.
+	CMD_NO_WATER = 0x10, ///< set the DC_NO_WATER flag on this command
 };
 
 /**

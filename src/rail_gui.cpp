@@ -81,8 +81,8 @@ static void GenericPlaceRail(TileIndex tile, int cmd)
 {
 	DoCommandP(tile, _cur_railtype, cmd,
 		_remove_button_clicked ?
-		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) | CMD_NO_WATER :
-		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK) | CMD_NO_WATER,
+		CMD_REMOVE_SINGLE_RAIL | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
+		CMD_BUILD_SINGLE_RAIL | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK),
 		CcPlaySound1E
 	);
 }
@@ -125,7 +125,7 @@ static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
 	if (GetRailTileType(tile) != RAIL_TILE_NORMAL) return;
 	if ((GetTrackBits(tile) & GB(extra, 8, 8)) == 0) return;
 
-	DoCommandP(tile, _cur_railtype, extra & 0xFF, CMD_BUILD_SINGLE_RAIL | CMD_NO_WATER);
+	DoCommandP(tile, _cur_railtype, extra & 0xFF, CMD_BUILD_SINGLE_RAIL);
 }
 
 /** Additional pieces of track to add at the entrance of a depot. */
@@ -157,7 +157,7 @@ void CcRailDepot(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void PlaceRail_Depot(TileIndex tile)
 {
 	DoCommandP(tile, _cur_railtype, _build_depot_direction,
-		CMD_BUILD_TRAIN_DEPOT | CMD_NO_WATER | CMD_MSG(STR_100E_CAN_T_BUILD_TRAIN_DEPOT),
+		CMD_BUILD_TRAIN_DEPOT | CMD_MSG(STR_100E_CAN_T_BUILD_TRAIN_DEPOT),
 		CcRailDepot);
 }
 
@@ -191,7 +191,7 @@ static void PlaceRail_Station(TileIndex tile)
 		DoCommandP(tile,
 				_railstation.orientation | (_settings_client.gui.station_numtracks << 8) | (_settings_client.gui.station_platlength << 16) | (_ctrl_pressed << 24),
 				_cur_railtype | (_railstation.station_class << 8) | (_railstation.station_type << 16),
-				CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation);
+				CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation);
 	}
 }
 
@@ -514,8 +514,8 @@ static void DoRailroadTrack(int mode)
 {
 	DoCommandP(TileVirtXY(_thd.selstart.x, _thd.selstart.y), TileVirtXY(_thd.selend.x, _thd.selend.y), _cur_railtype | (mode << 4),
 		_remove_button_clicked ?
-		CMD_REMOVE_RAILROAD_TRACK | CMD_NO_WATER | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
-		CMD_BUILD_RAILROAD_TRACK  | CMD_NO_WATER | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
+		CMD_REMOVE_RAILROAD_TRACK | CMD_MSG(STR_1012_CAN_T_REMOVE_RAILROAD_TRACK) :
+		CMD_BUILD_RAILROAD_TRACK  | CMD_MSG(STR_1011_CAN_T_BUILD_RAILROAD_TRACK)
 	);
 }
 
@@ -572,8 +572,8 @@ static void HandleAutoSignalPlacement()
 		TileVirtXY(thd->selend.x, thd->selend.y),
 		p2,
 		_remove_button_clicked ?
-			CMD_REMOVE_SIGNAL_TRACK | CMD_NO_WATER | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
-			CMD_BUILD_SIGNAL_TRACK  | CMD_NO_WATER | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE),
+			CMD_REMOVE_SIGNAL_TRACK | CMD_MSG(STR_1013_CAN_T_REMOVE_SIGNALS_FROM) :
+			CMD_BUILD_SIGNAL_TRACK  | CMD_MSG(STR_1010_CAN_T_BUILD_SIGNALS_HERE),
 		CcPlaySound1E);
 }
 
@@ -878,7 +878,7 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	DoCommandP(TileXY(sx, sy),
 			_railstation.orientation | (w << 8) | (h << 16) | (_ctrl_pressed << 24),
 			_cur_railtype | (_railstation.station_class << 8) | (_railstation.station_type << 16),
-			CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation);
+			CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation);
 }
 
 struct BuildRailStationWindow : public PickerWindowBase {
