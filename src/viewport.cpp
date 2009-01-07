@@ -1994,30 +1994,6 @@ static bool CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 }
 
 
-static void SafeShowTrainViewWindow(const Vehicle* v)
-{
-	if (!IsFrontEngine(v)) v = v->First();
-	ShowVehicleViewWindow(v);
-}
-
-static void SafeShowRoadVehViewWindow(const Vehicle *v)
-{
-	if (!IsRoadVehFront(v)) v = v->First();
-	ShowVehicleViewWindow(v);
-}
-
-static void Nop(const Vehicle *v) {}
-
-typedef void OnVehicleClickProc(const Vehicle *v);
-static OnVehicleClickProc* const _on_vehicle_click_proc[] = {
-	SafeShowTrainViewWindow,
-	SafeShowRoadVehViewWindow,
-	ShowVehicleViewWindow,
-	ShowVehicleViewWindow,
-	Nop, // Special vehicles
-	Nop  // Disaster vehicles
-};
-
 bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 {
 	const Vehicle *v;
@@ -2031,7 +2007,7 @@ bool HandleViewportClicked(const ViewPort *vp, int x, int y)
 	v = CheckClickOnVehicle(vp, x, y);
 	if (v != NULL) {
 		DEBUG(misc, 2, "Vehicle %d (index %d) at %p", v->unitnumber, v->index, v);
-		_on_vehicle_click_proc[v->type](v);
+		if (IsCompanyBuildableVehicleType(v)) ShowVehicleViewWindow(v->First());
 		return true;
 	}
 	return CheckClickOnLandscape(vp, x, y);
