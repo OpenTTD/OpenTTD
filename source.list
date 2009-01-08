@@ -523,6 +523,8 @@ ai/trolly/shared.cpp
 ai/trolly/trolly.cpp
 
 # Blitters
+#if DEDICATED
+#else
 blitter/32bpp_anim.cpp
 blitter/32bpp_anim.hpp
 blitter/32bpp_base.cpp
@@ -539,6 +541,7 @@ blitter/8bpp_optimized.cpp
 blitter/8bpp_optimized.hpp
 blitter/8bpp_simple.cpp
 blitter/8bpp_simple.hpp
+#end
 blitter/base.hpp
 blitter/factory.hpp
 blitter/null.cpp
@@ -644,11 +647,13 @@ yapf/yapf_road.cpp
 yapf/yapf_ship.cpp
 
 # Video
+video/dedicated_v.cpp
+video/null_v.cpp
+#if DEDICATED
+#else
 #if ALLEGRO
 	video/allegro_v.cpp
 #end
-video/dedicated_v.cpp
-video/null_v.cpp
 #if SDL
 	video/sdl_v.cpp
 #end
@@ -658,15 +663,18 @@ video/null_v.cpp
 #if WINCE
 	video/win32_v.cpp
 #end
+#end
 
 # Music
+music/null_m.cpp
+#if DEDICATED
+#else
 #if ALLEGRO
 	music/allegro_m.cpp
 #end
 #if DIRECTMUSIC
 	music/dmusic.cpp
 #end
-music/null_m.cpp
 #if WIN32
 	music/win32_m.cpp
 #else
@@ -687,17 +695,21 @@ music/null_m.cpp
 #if LIBTIMIDITY
 	music/libtimidity.cpp
 #end
+#end
 
 # Sound
+sound/null_s.cpp
+#if DEDICATED
+#else
 #if ALLEGRO
 	sound/allegro_s.cpp
 #end
-sound/null_s.cpp
 #if SDL
 	sound/sdl_s.cpp
 #end
 #if WIN32
 	sound/win32_s.cpp
+#end
 #end
 
 #if OSX
