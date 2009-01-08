@@ -436,10 +436,14 @@ int ttd_main(int argc, char *argv[])
 		case 'b': free(blitter); blitter = strdup(mgo.opt); break;
 #if defined(ENABLE_NETWORK)
 		case 'D':
-			strcpy(musicdriver, "null");
-			strcpy(sounddriver, "null");
-			strcpy(videodriver, "dedicated");
-			strcpy(blitter, "null");
+			free(musicdriver);
+			free(sounddriver);
+			free(videodriver);
+			free(blitter);
+			musicdriver = strdup("null");
+			sounddriver = strdup("null");
+			videodriver = strdup("dedicated");
+			blitter = strdup("null");
 			dedicated = true;
 			if (mgo.opt != NULL) {
 				/* Use the existing method for parsing (openttd -n).
