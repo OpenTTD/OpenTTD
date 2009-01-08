@@ -1028,6 +1028,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permett
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permettre les accélérations réalistes pour les trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et navires les virages à 90° : {ORANGE}{STRING} {LTBLUE} (pas avec NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Joindre les gares juxtaposées: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permettre de joindre une station non adjacente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Utiliser l'algorithme amélioré de chargement : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Charger les véhicules graduellement: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
@@ -1722,6 +1723,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Rails avec des 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Rails avec des signaux combinés et de chemin à sens unique
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rails avec des signaux de chemin et de chemin à sens unique
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Vous devez d'abord retirer la gare
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construire une station séparée
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Joindre une station
 
 
 

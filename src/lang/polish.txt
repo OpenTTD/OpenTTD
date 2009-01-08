@@ -1080,15 +1080,18 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nie moż
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nie można skopiować listy poleceń...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec współdzielonych poleceń - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nie potrafi znaleźć trasy, aby kontynuować.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} zgubił się.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europejska Unia Monetarna!{}{}Euro zostało wprowadzone jako jedyna waluta do wszystkich transakcji w twoim kraju!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} ma za dużo rozkazów w rozkładzie
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} ma podwojony rozkaz
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} ma nieprawiodłową stację w rozkazach
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autoodnowa zawiodła przy {VEHICLE}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} jest za długi po wymianie
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Brak regul autozastepowania/odnawiania.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limit funduszy)

@@ -1003,9 +1003,11 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 # DON'T ADD OR REMOVE LINES HERE
 STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on liian vähän käskyjä
 STR_VEHICLE_HAS_VOID_ORDER                                      :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on epäkelpo käsky
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Ajoneuvolla {VEHICLE} on toistuvia määräyksiä
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :Kulkuneuvon {WHITE}{VEHICLE} aikataulussa on virheellinen asema
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automaattinen korvaus epäonnistui ajoneuvolle {VEHICLE}{}{STRING}
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} on liian pitkä korvaamisen jälkeen
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ei käytössä olevia itsekorvaus- tai itseuudistussääntöjä
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(rahoitusraja)
@@ -1025,6 +1027,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erittä
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Junat kiihdyttävät realistisesti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Junat ja laivat: ei 90-asteen käännöksiä: {ORANGE}{STRING} {LTBLUE} (vaatii: NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli ei-vierekkäisten asemien yhdistäminen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Käytä kehittyneempää lastausalgoritmia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Lataa kulkuneuvot vähitellen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflaatio: {ORANGE}{STRING}
@@ -1137,6 +1140,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Ensimmäinen
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Viimeinen
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Yleisin
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Näytä varatut radat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Pidä rakennustyökalut aktiivisina käytön jälkeen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Näytä rakennustyökalut, kun sopivaa ajoneuvoa ei ole: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaaja: {ORANGE}{STRING}
@@ -1195,6 +1199,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :keskellä
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :oikea
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}{STRING} piks.
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ikkunan kiinniottosäde: {ORANGE}pois päältä
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnittyvä): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Ikkunoiden rajoitus (ei-kiinnittyvä): {ORANGE}pois käytöstä
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Kaupunkien kasvunopeus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ei kasvua
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Hidas
@@ -1716,6 +1722,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Rautatieraiteet
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Rautatieraiteet yhdistelmä- ja yksisuuntaisopastimilla
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rautatieraiteet reitti- ja yksisuuntaisopastimilla
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Poista asema ensin
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Rakenna erillinen asema
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Liitä asema
 
 
 
@@ -3048,6 +3056,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Suuntan
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Suuntana telakka, {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Huolto{TOWN} Telakka
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Huolto {TOWN} Telakka, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} odottaa varikolla
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Rakenna satama
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Rakenna telakka (laivojen rakentamista ja huoltamista varten).
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laivat - napsauta laivaa saadaksesi tietoja.
@@ -3373,6 +3382,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Käynnis
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Sovituskomento virhe pysäytti ajoneuvon {VEHICLE}
 
 ############ Lists rail types
 

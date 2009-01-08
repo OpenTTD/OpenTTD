@@ -484,9 +484,13 @@ STR_019C_ROAD_VEHICLE                                           :Автобус/
 STR_019D_AIRCRAFT                                               :Самолет
 STR_019E_SHIP                                                   :Кораб
 STR_019F_TRAIN                                                  :Влак
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} започва да остарява
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} е много остаряло
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} е прекалено остаряло и спешно има нужда от замяна
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информация за земята
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Цена за изчистване: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за изчистване: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Приход от изчистване: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Не се предлага
 STR_01A7_OWNER                                                  :{BLACK}Собственик: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Собственик на шосето: {LTBLUE}{STRING}
@@ -992,12 +996,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Не м�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Не може да се копира списъка от задачи...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Край на Споделения пътен лист - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} не може да намери път за да продължи.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} се е загубил.
+STR_VEHICLE_IS_UNPROFITABLE                                     :Прихода на {WHITE}{VEHICLE} миналата година е бил {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Европейски монетарен съюз!{}{}Еврото е прието като национална валута за всекидневни транзакции страната!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} има прекалено малко задачи
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} има празна задача
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} има дублирани задачи
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} има невалидна спирка в задачите
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE} Неуспешна автоматична замяна на  {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} е прекалено дълъг след замяната
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Не са открити правила за автоматично подновяване/замяна
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(ограничени средства)
 
@@ -1051,6 +1064,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Пре�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :изключен
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :включен, но без спрените ПС
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :включен
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждение ако превозното средство е на загуба: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}ПС не губят валидност: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Подновяване на остарели ПС
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Подновяване {ORANGE}{STRING}{LTBLUE} месеца преди/след амортизацията на ПС
@@ -1099,6 +1113,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команда-
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол-щракане
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Изключен
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Скролиране с ляв бутон: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Използвай {ORANGE}{STRING}{LTBLUE} формат на датата за имена на записаните игри.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :дълъг (31st Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :къс (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Игрите започват в пауза: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Разширен списък на ПС: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :изключен
@@ -1110,6 +1131,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :само за �
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :за всички компании
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Времеслужене на ПС: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Разписанието в цикли вместо дни: {ORANGE}{STRING.n}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Бързо създаване на задачите на превозните средства: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Стандартни релси: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :нормални релси
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :електрифицирани релси
@@ -1119,6 +1141,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :първите 
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :последните налични
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :най-използваните
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Покажи запазените линии/пътища: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Запази инстументите активни след употреба: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Строене при липса на подходящи ПС: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. брой влакове на играч: {ORANGE}{STRING}
@@ -1177,6 +1200,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :център
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :дясно
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Прилепване на прозорците: {ORANGE}{STRING} пиксел{P "" а}
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилепване на прозорците: {ORANGE}изключено
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Ограничение на прозореца (без залепване): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Ограничение на прозореца (без залепване): {ORANGE}изключено
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Скорост на разтеж на града: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Никаква
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Бавна
@@ -1520,6 +1545,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Изключване
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Въведете количеството пари, което искате да дадете
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сървъра е защитен. Въведете парола
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанията е защитена. Въведете парола
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Списък с играчите
@@ -1559,6 +1585,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :изхрърл�
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :се опита да използва измама
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сървърът е пълен
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Играта е на пауза (няма достатъчно играчи)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Играта продължава (отново има достатъчно играчи)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Играта е на пауза (свързва се нов играч)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Играта продължава (новият играч се свърза)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Играта продължава (новият играч не успя да се свърже)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :напускам
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} се присъедини към играта
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} напусна играта ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} си промени името на {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} изпрати {2:CURRENCY} на твоята компания
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ти даде {2:CURRENCY} на {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] До {STRING}: {GRAY}{STRING}
@@ -1968,6 +2008,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Отва
 STR_4002_SAVE                                                   :{BLACK}Запази
 STR_4003_DELETE                                                 :{BLACK}Изтрий
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Наблюдател, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" а} свободно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Не може да прочете диска
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Запазването на играта е неуспешно{}{STRING}
@@ -2773,6 +2814,7 @@ STR_UNKNOWN_STATION                                             :неизвес�
 STR_8812_EMPTY                                                  :{LTBLUE}Празен
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} от {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} от {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} чака в депото
 STR_8815_NEW_VEHICLES                                           :{BLACK}Нови ПС
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Влакът е прекалено дълъг
@@ -2931,6 +2973,7 @@ STR_9012_CAPACITY                                               :{BLACK}Капа
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...трябва да бъде спряно в сервиз за коли
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Не може да продаде колата...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Не може да пусне/спре колата...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чака в депото
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Отиващ към Автодепото на {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Отиващ към Автодепото на {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}На ремонт в Автодепото на {TOWN}
@@ -3012,6 +3055,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Оти�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Отиващ към Корабното депо на {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}На ремонт в Корабното депо на {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}На ремонт в Корабното депо на {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} чака в депото
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Създай Пристанище
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Създай Корабно Депо (за закупуване и обслужване на кораби)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Кораби - натисни върху кораб за инфорамция
@@ -3076,6 +3120,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Оти�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Отиващ към Хангара на летище {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}На ремонт в Хангара на летище {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}На ремонт в Хангара на летище {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} чака в хангара
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Самолет на пътя
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Не може да спре/пусне самолет...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Самолета е във въздуха
@@ -3336,6 +3381,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Стар
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Списък с табели - {COMMA} Табел{P а и}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Провалена задача за преоборудване спря {VEHICLE}
 
 ############ Lists rail types
 
@@ -3348,7 +3394,7 @@ STR_MAGLEV_VEHICLES                                             :Маглев в
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цема: {GOLD}{CURRENCY}{BLACK} Тегло: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Тегло: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорост: {GOLD}{VELOCITY}{BLACK}   Мощност: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорост: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Разход: {GOLD}{CURRENCY}/год.
@@ -3455,7 +3501,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Площ
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Сума за преместване: {LTBLUE}{CURRENCY}

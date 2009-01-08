@@ -1293,7 +1293,7 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Proses L
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Permukaan tanah
 
 
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Tipe Pepohonan secara acak
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Tanam pohon scr acak
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Tempatkan tipe Tumbuhan secara acak
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Tidak dapat membangun kanal disini...

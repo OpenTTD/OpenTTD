@@ -607,6 +607,9 @@ STR_019C_ROAD_VEHICLE                                           :Авто
 STR_019D_AIRCRAFT                                               :Літак
 STR_019E_SHIP                                                   :Корабель
 STR_019F_TRAIN                                                  :Поїзд
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} зістарився
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} дуже зістарився
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} зістарився і негайно потребує заміни
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Інформація про ділянку
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Вартість очистки: {LTBLUE}неможливо
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Вартість очистки: {RED}{CURRENCY}
@@ -1116,12 +1119,17 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Немо
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Неможливо скопіювати список завдань...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Кінець наказів - -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} загубився.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Європейська грошова одиниця!{}{}У вашій країні введено євро - єдину валюту для розрахунків!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} немає завдань
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} має невірну станцію в завданні
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Помилка оновлення {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} дуже довгий після оновлення
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Правила автозаміни/оновлення не примінялись.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(бракує коштів)
 
@@ -1225,6 +1233,9 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Відкл.
 
 STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Прокрутка по лівому кліку: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Використовувати {ORANGE}{STRING}{LTBLUE} формат дати для збереження гри.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автоматично ставити паузу при старті нової гри: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Використовувати покращений список транспорту: {ORANGE}{STRING}
@@ -1237,6 +1248,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Власна к
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Усі компанії
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Дозволити розклад руху для транспорту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Показувати розклад в одиницях, а не в днях: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Швидке створення списку завдань: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип колії за замовчанням (при новій грі/завантаженні): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Звичайна колія
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Електрична колія
@@ -1246,6 +1258,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Перша з �
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Остання з доступних
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Найчастіше використовувана
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Показувати резервні шляхи: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Залишити інстументи активними після використання: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показувати засоби будівництва, коли нема відповідного транспорту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
@@ -2110,6 +2123,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Зава
 STR_4002_SAVE                                                   :{BLACK}Зберегти
 STR_4003_DELETE                                                 :{BLACK}Видалити
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Спостерігач, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" и ""}  вільно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Неможливо прочитати пристрій
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри{}{STRING}
@@ -2952,6 +2966,7 @@ STR_UNKNOWN_STATION                                             :невідом�
 STR_8812_EMPTY                                                  :{LTBLUE}порожній
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} з {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} з {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} чакає в депо
 STR_8815_NEW_VEHICLES                                           :{BLACK}Новий транспорт
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поїзд дуже довгий
@@ -3110,6 +3125,7 @@ STR_9012_CAPACITY                                               :{BLACK}Міст
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...авто повинно стояти в депо
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Неможливо продати авто...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Неможливо зупинити авто...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} чакає в депо
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Прямує до {TOWN} дорожного депо
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} дорожного депо, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Техогляд в  {TOWN} дорожному депо
@@ -3191,6 +3207,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Пря�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} корабельного депо, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Техогляд в {TOWN} корабельному депо
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Техогляд в {TOWN} корабельному депо, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} чакає в депо
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Будувати док
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Будувати корабельне депо
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Кораблі - натисніть для інформації
@@ -3255,6 +3272,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Лет�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Техогляд в {STATION} ангарі
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Техогляд в {STATION} ангарі, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} чакає в ангарі
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Літак на шляху
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Неможливо зупинити літак...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Літак у польоті
@@ -3635,6 +3653,9 @@ STR_DATE_TINY                                                   :{STRING}-{STRIN
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Плата за трансфер: {LTBLUE}{CURRENCY}

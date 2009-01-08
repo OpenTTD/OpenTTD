@@ -482,6 +482,9 @@ STR_019C_ROAD_VEHICLE                                           :자동차
 STR_019D_AIRCRAFT                                               :항공기
 STR_019E_SHIP                                                   :선박
 STR_019F_TRAIN                                                  :열차
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE}(이)가 오래되었습니다
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE}(이)가 너무 오래되었습니다
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE}(이)가 너무 오래되어 교체가 시급합니다
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}이 지역의 지형 정보
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}초기화 가격: {LTBLUE}없음
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}초기화 가격: {RED}{CURRENCY}
@@ -991,12 +994,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}경로�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}경로를 복사할 수 없습니다...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 공유된 경로의 끝 - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE}(이)가 계속 진행할 경로를 찾을 수 없습니다.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE}(이)가 길을 잃었습니다.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}의 작년 수익이 {CURRENCY} 입니다.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}유럽 화폐단위 통일!{}{}유로화가 당신 나라의 일상 거래에서의 유일한 화폐 단위가 되었습니다!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE}에 경로가 너무 적습니다
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE}에 빈 경로가 지정되어 있습니다
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE}에 중복된 경로가 지정되어 있습니다
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE}에 잘못된 경로가 지정되어 있습니다
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}{VEHICLE}의 자동교체에 실패하였습니다{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE}(이)가 교체 이후 너무 오래되었습니다
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}자동대체/갱신 규칙이 적용되지 않았습니다.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(자금 제한)
 
@@ -1050,6 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}차량�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :아니요
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :예 (정지된 차량 제외)
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :예 (모든 차량)
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}차량의 수입이 적자일때 경고하기: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}옛날 차량이 사라지지 않고 계속 만들 수 있게 함 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}차량이 오래되면 자동 교체
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}차량이 최고수명의 {ORANGE}{STRING}{LTBLUE}개월 전/후이면 자동 교체
@@ -1116,6 +1129,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :소유한 회�
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :모든 회사
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}자동 차량 경로 지정: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}철도 형식 기본값 설정 (게임 시작/로드 후): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :보통 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전기 철도
@@ -1125,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :처음 사용 �
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :최신 기술의 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :가장 많이 사용한 것
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}예약된 트랙 보이기: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}건설 도구를 사용 후 계속 유지: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}적절한 사용 가능한 차량이 없을 경우 건설 도구 표시: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
@@ -1183,6 +1198,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :가운데
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :오른쪽
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}윈도우 자동 결합(가까이 옮기면 자석처럼 붙는 기능) : {ORANGE}{STRING} 픽셀
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}윈도우 자동 결합 : {ORANGE}사용불가
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}부드러운 윈도우 경계: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}부드러운 윈도우 경계: {ORANGE}사용 안함
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}마을 성장 속도: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :없음
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :느림
@@ -1989,6 +2006,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}게임 �
 STR_4002_SAVE                                                   :{BLACK}저장
 STR_4003_DELETE                                                 :{BLACK}파일 삭제
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :관전자, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mb 남음
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}드라이브를 읽을 수 없음
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}게임 저장 실패{}{STRING}
@@ -2794,6 +2812,7 @@ STR_UNKNOWN_STATION                                             :알수없는 �
 STR_8812_EMPTY                                                  :{LTBLUE}비어있음
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (출발지: {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (출발지: {STATION}) (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE}(이)가 차량기지에 있습니다
 STR_8815_NEW_VEHICLES                                           :{BLACK}새 열차
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}열차가 너무 깁니다!
@@ -2952,6 +2971,7 @@ STR_9012_CAPACITY                                               :{BLACK}수송�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...차고 안에서 정지해있어야 합니다!
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}자동차를 팔 수 없습니다...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}자동차를 운행/정지시킬 수 없습니다...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE}(이)가 차고에 있습니다
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} 차고로 가는 중
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} 차고로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 차고로 점검하러 가는중
@@ -3033,6 +3053,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}{TOWN} 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}{TOWN} 정박소로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} 정박소로 점검하러 가는 중 ({VELOCITY})
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE}(이)가 정박소에 있습니다
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}항구 건설
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}정박소 만들기 (선박 제작 및 점검용)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}선박 - 선박의 정보를 보려면 클릭하세요
@@ -3097,6 +3118,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATIO
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION}공항 격납고로 가는 중 ({VELOCITY})
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION}공항 격납고로 점검하러 가는 중 ({VELOCITY})
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE}(이)가 격납고에 있습니다
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}중간에 항공기가 있습니다
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}항공기를 운행/중지시킬 수 없습니다...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}항공기가 운항중입니다
@@ -3357,6 +3379,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}이 목�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}팻말 목록 - 팻말 {COMMA}개
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}경로 수리에 실패하여 {VEHICLE}(이)가 멈췄습니다
 
 ############ Lists rail types
 

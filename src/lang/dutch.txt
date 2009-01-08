@@ -1062,7 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Herzie 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit gestopte voertuigen uit
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :van alle voertuigen
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Waarschuw als inkomsten van voertuig negatief zijn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Waarschuw als inkomsten van voertuig negatief is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Voertuigen verlopen nooit: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Vernieuw voertuig automatisch wanneer deze oud wordt
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Vernieuw voertuig automatisch {ORANGE}{STRING}{LTBLUE} maanden voor/na max. leeftijd
@@ -1139,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Eerst beschikba
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Laatst beschikbare
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Meest gebruikte
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Toon gereserveerd spoor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hou bouw-tools actief na gebruik: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Geef bouwgereedschap weer wanneer geen geschikte voertuigen beschikbaar zijn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
@@ -1197,6 +1198,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midden
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Rechts
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Vaste plaats venster radius: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vaste plaats venster radius: {ORANGE}uit
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Venster soft limiet (niet-sticky): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Venster soft limiet (niet-sticky): {ORANGE}uit
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Groeisnelheid steden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Niet
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Langzaam

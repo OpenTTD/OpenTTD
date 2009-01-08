@@ -488,6 +488,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informasjon om felt
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Fjerningskostnad: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Fjerningskostnad: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Utbytte når fjernet: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Eier: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Vei eier: {LTBLUE}{STRING}
@@ -994,6 +995,7 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordre - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE}Venter på ledig rute
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} har kjørt seg vill
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}s inntekt i fjord var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeisk valutunion!{}{} Euro er introdusert som den utelukkede valuttaen for hverdagslige forretninger i landet ditt!
 
@@ -1137,6 +1139,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Først tilgjeng
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Sist tilgjengelig
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest brukt
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vis reserverte spor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}La byggingsverktøy være aktiv etter bruk: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis byggingsverktøy når det ikke er noen tilgjengelige kjøretøy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per spiller: {ORANGE}{STRING}
