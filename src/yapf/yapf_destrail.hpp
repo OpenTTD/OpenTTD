@@ -119,6 +119,9 @@ protected:
 	{
 		const Station* st = GetStation(station);
 
+		/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
+		if (!IsValidTile(st->train_tile)) return st->xy;
+
 		uint x = TileX(st->train_tile) + st->trainst_w / 2;
 		uint y = TileY(st->train_tile) + st->trainst_h / 2;
 		// return the tile of our target coordinates

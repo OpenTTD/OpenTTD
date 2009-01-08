@@ -101,6 +101,9 @@ static TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 {
 	const Station* st = GetStation(station);
 
+	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
+	if (!IsValidTile(st->train_tile)) return st->xy;
+
 	uint minx = TileX(st->train_tile);  // topmost corner of station
 	uint miny = TileY(st->train_tile);
 	uint maxx = minx + st->trainst_w - 1; // lowermost corner of station
