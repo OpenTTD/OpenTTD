@@ -29,5 +29,6 @@ bool IsEngineBuildable(EngineID engine, VehicleType type, CompanyID company);
 bool IsEngineRefittable(EngineID engine);
 CargoID GetEngineCargoType(EngineID engine);
 void SetCachedEngineCounts();
+void SetYearEngineAgingStops();
 
 #endif /* ENGINE_H */

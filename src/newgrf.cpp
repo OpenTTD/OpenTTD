@@ -6039,6 +6039,8 @@ static void AfterLoadGRFs()
 		}
 	}
 
+	SetYearEngineAgingStops();
+
 	/* Deallocate temporary loading data */
 	free(_gted);
 	_grm_sprites.clear();

@@ -32,10 +32,9 @@
 
 DEFINE_OLD_POOL_GENERIC(Engine, Engine)
 
-enum {
-	YEAR_ENGINE_AGING_STOPS = 2050,
-};
-
+/** Year that engine aging stops. Engines will not reduce in reliability
+ * and no more engines will be introduced */
+Year _year_engine_aging_stops;
 
 /** Number of engines of each vehicle type in original engine data */
 const uint8 _engine_counts[4] = {
@@ -231,11 +230,32 @@ static void CalcEngineReliability(Engine *e)
 	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 }
 
+void SetYearEngineAgingStops()
+{
+	/* Determine last engine aging year, default to 2050 as previously. */
+	_year_engine_aging_stops = 2050;
+
+	const Engine *e;
+	FOR_ALL_ENGINES(e) {
+		const EngineInfo *ei = &e->info;
+
+		/* Exclude certain engines */
+		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) continue;
+		if (e->type == VEH_TRAIN && e->u.rail.railveh_type == RAILVEH_WAGON) continue;
+
+		/* Base year ending date on half the model life */
+		YearMonthDay ymd;
+		ConvertDateToYMD(ei->base_intro + (ei->lifelength * 366) / 2, &ymd);
+
+		_year_engine_aging_stops = max(_year_engine_aging_stops, ymd.year);
+	}
+}
+
 void StartupEngines()
 {
 	Engine *e;
 	/* Aging of vehicles stops, so account for that when starting late */
-	const Date aging_date = min(_date, ConvertYMDToDate(YEAR_ENGINE_AGING_STOPS, 0, 1));
+	const Date aging_date = min(_date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
 
 	FOR_ALL_ENGINES(e) {
 		const EngineInfo *ei = &e->info;
@@ -336,7 +356,7 @@ static CompanyID GetBestCompany(uint8 pp)
 
 void EnginesDailyLoop()
 {
-	if (_cur_year >= YEAR_ENGINE_AGING_STOPS) return;
+	if (_cur_year >= _year_engine_aging_stops) return;
 
 	Engine *e;
 	FOR_ALL_ENGINES(e) {
@@ -447,7 +467,7 @@ static void NewVehicleAvailable(Engine *e)
 
 void EnginesMonthlyLoop()
 {
-	if (_cur_year < YEAR_ENGINE_AGING_STOPS) {
+	if (_cur_year < _year_engine_aging_stops) {
 		Engine *e;
 		FOR_ALL_ENGINES(e) {
 			/* Age the vehicle */
