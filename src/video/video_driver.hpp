@@ -34,7 +34,7 @@ public:
 };
 
 extern VideoDriver *_video_driver;
-extern char _ini_videodriver[32];
+extern char *_ini_videodriver;
 extern int _num_resolutions;
 extern Dimension _resolutions[32];
 extern Dimension _cur_resolution;

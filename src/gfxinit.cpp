@@ -34,7 +34,7 @@ const byte *_palette_remap = NULL;
 /** Palette map to go from the _use_palette to the !_use_palette */
 const byte *_palette_reverse_remap = NULL;
 
-char _ini_graphics_set[32];
+char *_ini_graphics_set;
 
 /** Structure holding filename and MD5 information about a single file */
 struct MD5File {

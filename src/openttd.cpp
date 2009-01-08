@@ -391,7 +391,11 @@ int ttd_main(int argc, char *argv[])
 {
 	int i;
 	const char *optformat;
-	char musicdriver[32], sounddriver[32], videodriver[32], blitter[32], graphics_set[32];
+	char *musicdriver = NULL;
+	char *sounddriver = NULL;
+	char *videodriver = NULL;
+	char *blitter = NULL;
+	char *graphics_set = NULL;
 	Dimension resolution = {0, 0};
 	Year startyear = INVALID_YEAR;
 	uint generation_seed = GENERATE_NEW_SEED;
@@ -404,8 +408,6 @@ int ttd_main(int argc, char *argv[])
 	char *dedicated_host = NULL;
 	uint16 dedicated_port = 0;
 #endif /* ENABLE_NETWORK */
-
-	musicdriver[0] = sounddriver[0] = videodriver[0] = blitter[0] = graphics_set[0] = '\0';
 
 	_game_mode = GM_MENU;
 	_switch_mode = SM_MENU;
@@ -427,11 +429,11 @@ int ttd_main(int argc, char *argv[])
 
 	while ((i = MyGetOpt(&mgo)) != -1) {
 		switch (i) {
-		case 'I': strecpy(graphics_set, mgo.opt, lastof(graphics_set)); break;
-		case 'm': strecpy(musicdriver, mgo.opt, lastof(musicdriver)); break;
-		case 's': strecpy(sounddriver, mgo.opt, lastof(sounddriver)); break;
-		case 'v': strecpy(videodriver, mgo.opt, lastof(videodriver)); break;
-		case 'b': strecpy(blitter, mgo.opt, lastof(blitter)); break;
+		case 'I': free(graphics_set); graphics_set = strdup(mgo.opt); break;
+		case 'm': free(musicdriver); musicdriver = strdup(mgo.opt); break;
+		case 's': free(sounddriver); sounddriver = strdup(mgo.opt); break;
+		case 'v': free(videodriver); videodriver = strdup(mgo.opt); break;
+		case 'b': free(blitter); blitter = strdup(mgo.opt); break;
 #if defined(ENABLE_NETWORK)
 		case 'D':
 			strcpy(musicdriver, "null");
@@ -531,11 +533,27 @@ int ttd_main(int argc, char *argv[])
 
 
 	/* override config? */
-	if (!StrEmpty(graphics_set)) strecpy(_ini_graphics_set, graphics_set, lastof(_ini_graphics_set));
-	if (!StrEmpty(musicdriver)) strecpy(_ini_musicdriver, musicdriver, lastof(_ini_musicdriver));
-	if (!StrEmpty(sounddriver)) strecpy(_ini_sounddriver, sounddriver, lastof(_ini_sounddriver));
-	if (!StrEmpty(videodriver)) strecpy(_ini_videodriver, videodriver, lastof(_ini_videodriver));
-	if (!StrEmpty(blitter))     strecpy(_ini_blitter, blitter, lastof(_ini_blitter));
+	if (!StrEmpty(graphics_set)) {
+		free(_ini_graphics_set);
+		_ini_graphics_set = graphics_set;
+	}
+	if (!StrEmpty(musicdriver)) {
+		free(_ini_musicdriver);
+		_ini_musicdriver = musicdriver;
+	}
+	if (!StrEmpty(sounddriver)) {
+		free(_ini_sounddriver);
+		_ini_sounddriver = sounddriver;
+	}
+	if (!StrEmpty(videodriver)) {
+		free(_ini_videodriver);
+		_ini_videodriver = videodriver;
+	}
+	if (!StrEmpty(blitter)) {
+		free(_ini_blitter);
+		_ini_blitter = blitter;
+	}
+
 	if (resolution.width != 0) { _cur_resolution = resolution; }
 	if (startyear != INVALID_YEAR) _settings_newgame.game_creation.starting_year = startyear;
 	if (generation_seed != GENERATE_NEW_SEED) _settings_newgame.game_creation.generation_seed = generation_seed;
