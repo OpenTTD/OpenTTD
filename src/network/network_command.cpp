@@ -93,16 +93,6 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 }
 
 /**
- * Execute a DoCommand we received from the network
- * @param cp the command to execute
- */
-static void NetworkExecuteCommand(CommandPacket *cp)
-{
-	_current_company = cp->company;
-	DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd | CMD_NETWORK_COMMAND, cp->callback, cp->text, cp->my_cmd);
-}
-
-/**
  * Execute all commands on the local command queue that ought to be executed this frame.
  */
 void NetworkExecuteLocalCommandQueue()
@@ -119,10 +109,13 @@ void NetworkExecuteLocalCommandQueue()
 			error("[net] Trying to execute a packet in the past!");
 		}
 
-		/* We can execute this command */
-		NetworkExecuteCommand(_local_command_queue);
-
 		CommandPacket *cp = _local_command_queue;
+
+		/* We can execute this command */
+		_current_company = cp->company;
+		cp->cmd |= CMD_NETWORK_COMMAND;
+		DoCommandP(cp, cp->my_cmd);
+
 		_local_command_queue = _local_command_queue->next;
 		free(cp);
 	}

@@ -54,11 +54,13 @@ static const CommandCost CMD_ERROR = CommandCost(INVALID_STRING_ID);
  * Execute a command
  */
 CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, const char *text = NULL);
+CommandCost DoCommand(const CommandContainer *container, uint32 flags);
 
 /**
  * Execute a network safe DoCommand function
  */
 bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback = NULL, const char *text = NULL, bool my_cmd = true);
+bool DoCommandP(const CommandContainer *container, bool my_cmd = true);
 
 #ifdef ENABLE_NETWORK
 

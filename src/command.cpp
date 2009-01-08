@@ -373,6 +373,19 @@ byte GetCommandFlags(uint32 cmd)
 
 static int _docommand_recursive = 0;
 
+/**
+ * Shorthand for calling the long DoCommand with a container.
+ *
+ * @param container Container with (almost) all information
+ * @param flags Flags for the command and how to execute the command
+ * @see CommandProc
+ * @return the cost
+ */
+CommandCost DoCommand(const CommandContainer *container, uint32 flags)
+{
+	return DoCommand(container->tile, container->p1, container->p2, flags, container->cmd, container->text);
+}
+
 /*!
  * This function executes a given command with the parameters from the #CommandProc parameter list.
  * Depending on the flags parameter it execute or test a command.
@@ -383,6 +396,7 @@ static int _docommand_recursive = 0;
  * @param flags Flags for the command and how to execute the command
  * @param cmd The command-id to execute (a value of the CMD_* enums)
  * @see CommandProc
+ * @return the cost
  */
 CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, const char *text)
 {
@@ -455,6 +469,17 @@ Money GetAvailableMoneyForCommand()
 	CompanyID company = _current_company;
 	if (!IsValidCompanyID(company)) return INT64_MAX;
 	return GetCompany(company)->money;
+}
+
+/**
+ * Shortcut for the long DoCommandP when having a container with the data.
+ * @param container the container with information.
+ * @param my_cmd indicator if the command is from a company or server (to display error messages for a user)
+ * @return true if the command succeeded, else false
+ */
+bool DoCommandP(const CommandContainer *container, bool my_cmd)
+{
+	return DoCommandP(container->tile, container->p1, container->p2, container->cmd, container->callback, container->text, my_cmd);
 }
 
 /*!
