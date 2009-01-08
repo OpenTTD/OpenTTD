@@ -694,6 +694,16 @@ public:
 		this->vehicle_sel = INVALID_VEHICLE;
 		this->InvalidateWidget(GRP_WIDGET_LIST_VEHICLE);
 	}
+
+	/**
+	 * Tests whether a given vehicle is selected in the window, and unselects it if necessary.
+	 * Called when the vehicle is deleted.
+	 * @param vehicle Vehicle that is going to be deleted
+	 */
+	void UnselectVehicle(VehicleID vehicle)
+	{
+		if (this->vehicle_sel == vehicle) ResetObjectToPlace();
+	}
 };
 
 
@@ -712,3 +722,22 @@ void ShowCompanyGroup(CompanyID company, VehicleType vehicle_type)
 	WindowNumber num = (vehicle_type << 11) | VLW_GROUP_LIST | company;
 	AllocateWindowDescFront<VehicleGroupWindow>(&_group_desc, num);
 }
+
+/**
+ * Removes the highlight of a vehicle in a group window
+ * @param *v Vehicle to remove all highlights from
+ */
+void DeleteGroupHighlightOfVehicle(const Vehicle *v)
+{
+	VehicleGroupWindow *w;
+
+	/* If we haven't got any vehicles on the mouse pointer, we haven't got any highlighted in any group windows either
+	 * If that is the case, we can skip looping though the windows and save time
+	 */
+	if (_special_mouse_mode != WSM_DRAGDROP) return;
+
+	VehicleType vehicle_type = v->type;
+	w = dynamic_cast<VehicleGroupWindow *>(FindWindowById(GetWindowClassForVehicleType(vehicle_type), (vehicle_type << 11) | VLW_GROUP_LIST | v->owner));
+	if (w != NULL) w->UnselectVehicle(v->index);
+}
+

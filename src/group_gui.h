@@ -8,5 +8,6 @@
 #include "vehicle_type.h"
 
 void ShowCompanyGroup(CompanyID company, VehicleType veh);
+void DeleteGroupHighlightOfVehicle(const Vehicle *v);
 
 #endif /* GROUP_GUI_H */

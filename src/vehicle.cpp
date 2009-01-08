@@ -32,6 +32,7 @@
 #include "newgrf_station.h"
 #include "newgrf_text.h"
 #include "group.h"
+#include "group_gui.h"
 #include "order_func.h"
 #include "strings_func.h"
 #include "zoom_func.h"
@@ -571,6 +572,7 @@ void Vehicle::PreDestructor()
 		GetCompany(this->owner)->num_engines[this->engine_type]--;
 		if (this->owner == _local_company) InvalidateAutoreplaceWindow(this->engine_type, this->group_id);
 
+		DeleteGroupHighlightOfVehicle(this);
 		if (IsValidGroupID(this->group_id)) GetGroup(this->group_id)->num_engines[this->engine_type]--;
 		if (this->IsPrimaryVehicle()) DecreaseGroupNumVehicle(this->group_id);
 	}
