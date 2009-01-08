@@ -15,11 +15,6 @@
 #include "window_type.h"
 #include "tile_type.h"
 
-/**
- * The maximum number of windows that can be opened.
- */
-static const int MAX_NUMBER_OF_WINDOWS = 25;
-
 /* How the resize system works:
     First, you need to add a WWT_RESIZEBOX to the widgets, and you need
      to add the flag WDF_RESIZABLE to the window. Now the window is ready
