@@ -104,6 +104,8 @@ Station::~Station()
 
 	xy = INVALID_TILE;
 
+	InvalidateWindowData(WC_SELECT_STATION, 0, 0);
+
 	for (CargoID c = 0; c < NUM_CARGO; c++) {
 		goods[c].cargo.Truncate(0);
 	}

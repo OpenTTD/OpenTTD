@@ -908,23 +908,24 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
  * @param tile_org starting position of station dragging/placement
  * @param flags operation to perform
  * @param p1 various bitstuffed elements
- * - p1 = (bit  0)    - orientation (Axis)
+ * - p1 = (bit  0- 3) - railtype (p1 & 0xF)
+ * - p1 = (bit  4)    - orientation (Axis)
  * - p1 = (bit  8-15) - number of tracks
  * - p1 = (bit 16-23) - platform length
  * - p1 = (bit 24)    - allow stations directly adjacent to other stations.
  * @param p2 various bitstuffed elements
- * - p2 = (bit  0- 3) - railtype (p2 & 0xF)
- * - p2 = (bit  8-15) - custom station class
- * - p2 = (bit 16-23) - custom station id
+ * - p2 = (bit  0- 7) - custom station class
+ * - p2 = (bit  8-15) - custom station id
+ * - p2 = (bit 16-31) - station ID to join (INVALID_STATION if build new one)
  */
 CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Does the authority allow this? */
 	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org)) return CMD_ERROR;
-	if (!ValParamRailtype((RailType)(p2 & 0xF))) return CMD_ERROR;
+	if (!ValParamRailtype((RailType)(p1 & 0xF))) return CMD_ERROR;
 
 	/* unpack parameters */
-	Axis axis = Extract<Axis, 0>(p1);
+	Axis axis = Extract<Axis, 4>(p1);
 	uint numtracks = GB(p1,  8, 8);
 	uint plat_len  = GB(p1, 16, 8);
 
@@ -936,6 +937,11 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		h_org = plat_len;
 		w_org = numtracks;
 	}
+
+	StationID station_to_join = GB(p2, 16, 16);
+	bool distant_join = (station_to_join != INVALID_STATION);
+
+	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
 
 	if (h_org > _settings_game.station.station_spread || w_org > _settings_game.station.station_spread) return CMD_ERROR;
 
@@ -959,7 +965,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 	if (_settings_game.station.adjacent_stations) {
 		if (est != INVALID_STATION) {
-			if (HasBit(p1, 24)) {
+			if (HasBit(p1, 24) && est != station_to_join) {
 				/* You can't build an adjacent station over the top of one that
 				 * already exists. */
 				return_cmd_error(STR_MUST_REMOVE_RAILWAY_STATION_FIRST);
@@ -981,6 +987,9 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		st = GetStationAround(tile_org, w_org, h_org, est);
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
+
+	/* Distant join */
+	if (st == NULL && distant_join) st = GetStation(station_to_join);
 
 	/* See if there is a deleted station close to us. */
 	if (st == NULL) st = GetClosestDeletedStation(tile_org);
@@ -1017,10 +1026,10 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 	}
 
 	/* Check if the given station class is valid */
-	if (GB(p2, 8, 8) >= GetNumStationClasses()) return CMD_ERROR;
+	if (GB(p2, 0, 8) >= GetNumStationClasses()) return CMD_ERROR;
 
 	/* Check if we can allocate a custom stationspec to this station */
-	const StationSpec *statspec = GetCustomStationSpec((StationClassID)GB(p2, 8, 8), GB(p2, 16, 8));
+	const StationSpec *statspec = GetCustomStationSpec((StationClassID)GB(p2, 0, 8), GB(p2, 8, 8));
 	int specindex = AllocateSpecToStation(statspec, st, flags & DC_EXEC);
 	if (specindex == -1) return CMD_ERROR;
 
@@ -1090,7 +1099,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 					}
 				}
 
-				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, (RailType)GB(p2, 0, 4));
+				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, (RailType)GB(p1, 0, 4));
 				SetCustomStationSpecIndex(tile, specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
 				SetStationAnimationFrame(tile, 0);
@@ -1126,6 +1135,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 		st->MarkTilesDirty(false);
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
+		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_TRAINS);
 	}
@@ -1397,6 +1407,7 @@ static RoadStop **FindRoadStopSpot(bool truck_station, Station *st)
  *           bit 1: 0 for normal, 1 for drive-through
  *           bit 2..4: the roadtypes
  *           bit 5: allow stations directly adjacent to other stations.
+ *           bit 16..31: station ID to join (INVALID_STATION if build new one)
  */
 CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -1405,6 +1416,10 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 	bool build_over_road  = is_drive_through && IsNormalRoadTile(tile);
 	bool town_owned_road  = false;
 	RoadTypes rts = (RoadTypes)GB(p2, 2, 3);
+	StationID station_to_join = GB(p2, 16, 16);
+	bool distant_join = (station_to_join != INVALID_STATION);
+
+	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
 
 	if (!AreValidRoadTypes(rts) || !HasRoadTypesAvail(_current_company, rts)) return CMD_ERROR;
 
@@ -1462,6 +1477,9 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
 
+	/* Distant join */
+	if (st == NULL && distant_join) st = GetStation(station_to_join);
+
 	/* Find a deleted station close to us */
 	if (st == NULL) st = GetClosestDeletedStation(tile);
 
@@ -1518,6 +1536,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
+		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_ROADVEHS);
 	}
@@ -1818,11 +1837,17 @@ void UpdateAirportsNoise()
  * @param tile tile where airport will be built
  * @param flags operation to perform
  * @param p1 airport type, @see airport.h
- * @param p2 (bit 0) - allow airports directly adjacent to other airports.
+ * @param p2 various bitstuffed elements
+ * - p2 = (bit     0) - allow airports directly adjacent to other airports.
+ * - p2 = (bit 16-31) - station ID to join (INVALID_STATION if build new one)
  */
 CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	bool airport_upgrade = true;
+	StationID station_to_join = GB(p2, 16, 16);
+	bool distant_join = (station_to_join != INVALID_STATION);
+
+	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
 
 	/* Check if a valid, buildable airport was chosen for construction */
 	if (p1 > lengthof(_airport_sections) || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
@@ -1874,6 +1899,9 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 	} else {
 		st = NULL;
 	}
+
+	/* Distant join */
+	if (st == NULL && distant_join) st = GetStation(station_to_join);
 
 	/* Find a deleted station close to us */
 	if (st == NULL) st = GetClosestDeletedStation(tile);
@@ -1940,6 +1968,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
+		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_PLANES);
 
@@ -2125,10 +2154,15 @@ static const byte _dock_h_chk[4] = { 1, 2, 1, 2 };
  * @param tile tile where dock will be built
  * @param flags operation to perform
  * @param p1 (bit 0) - allow docks directly adjacent to other docks.
- * @param p2 unused
+ * @param p2 bit 16-31: station ID to join (INVALID_STATION if build new one)
  */
 CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
+	StationID station_to_join = GB(p2, 16, 16);
+	bool distant_join = (station_to_join != INVALID_STATION);
+
+	if (distant_join && (!_settings_game.station.distant_join_stations || !IsValidStationID(station_to_join))) return CMD_ERROR;
+
 	DiagDirection direction = GetInclinedSlopeDirection(GetTileSlope(tile, NULL));
 	if (direction == INVALID_DIAGDIR) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	direction = ReverseDiagDir(direction);
@@ -2169,6 +2203,9 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 				_dock_w_chk[direction], _dock_h_chk[direction], INVALID_STATION);
 		if (st == CHECK_STATIONS_ERR) return CMD_ERROR;
 	}
+
+	/* Distant join */
+	if (st == NULL && distant_join) st = GetStation(station_to_join);
 
 	/* Find a deleted station close to us */
 	if (st == NULL) st = GetClosestDeletedStation(tile);
@@ -2212,6 +2249,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
+		InvalidateWindowData(WC_SELECT_STATION, 0, 0);
 		InvalidateWindowData(WC_STATION_LIST, st->owner, 0);
 		InvalidateWindowWidget(WC_STATION_VIEW, st->index, SVW_SHIPS);
 	}

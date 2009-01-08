@@ -1654,7 +1654,7 @@ static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBloc
 				ret = DoCommand(c, railtype, p->attr, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_TRAIN_DEPOT);
 			} else {
 				// Station
-				ret = DoCommand(c, (p->attr & 1) | (p->attr >> 4) << 8 | (p->attr >> 1 & 7) << 16, railtype, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_RAILROAD_STATION);
+				ret = DoCommand(c, (railtype & 0x0f) | (p->attr & 1) << 4 | (p->attr >> 4) << 8 | (p->attr >> 1 & 7) << 16, (INVALID_STATION << 16), flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_RAILROAD_STATION);
 			}
 
 			if (CmdFailed(ret)) return CMD_ERROR;
@@ -2679,10 +2679,10 @@ static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBloc
 		} else if (p->mode == 1) {
 			if (_want_road_truck_station) {
 				// Truck station
-				ret = DoCommand(c, p->attr, ROADTYPES_ROAD << 2 | ROADSTOP_TRUCK, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
+				ret = DoCommand(c, p->attr, ROADTYPES_ROAD << 2 | ROADSTOP_TRUCK | INVALID_STATION << 16, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
 			} else {
 				// Bus station
-				ret = DoCommand(c, p->attr, ROADTYPES_ROAD << 2 | ROADSTOP_BUS, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
+				ret = DoCommand(c, p->attr, ROADTYPES_ROAD << 2 | ROADSTOP_BUS | INVALID_STATION << 16, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_ROAD_STOP);
 			}
 clear_town_stuff:;
 
@@ -3405,7 +3405,7 @@ static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultB
 
 	for (; p->mode == 0; p++) {
 		if (!HasBit(avail_airports, p->attr)) return CMD_ERROR;
-		ret = DoCommand(TILE_MASK(tile + ToTileIndexDiff(p->tileoffs)), p->attr, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_AIRPORT);
+		ret = DoCommand(TILE_MASK(tile + ToTileIndexDiff(p->tileoffs)), p->attr, INVALID_STATION << 16, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_AIRPORT);
 		if (CmdFailed(ret)) return CMD_ERROR;
 		total_cost.AddCost(ret);
 	}

@@ -43,12 +43,12 @@ bool AiNew_Build_CompanyHQ(Company *c, TileIndex tile)
 CommandCost AiNew_Build_Station(Company *c, byte type, TileIndex tile, byte length, byte numtracks, byte direction, byte flag)
 {
 	if (type == AI_TRAIN)
-		return AI_DoCommand(tile, direction + (numtracks << 8) + (length << 16), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
+		return AI_DoCommand(tile, (direction << 4) + (numtracks << 8) + (length << 16), INVALID_STATION << 16, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_RAILROAD_STATION);
 
 	if (type == AI_BUS)
-		return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | ROADSTOP_BUS, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+		return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | ROADSTOP_BUS | INVALID_STATION << 16, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 
-	return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | ROADSTOP_TRUCK, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
+	return AI_DoCommand(tile, direction, ROADTYPES_ROAD << 2 | ROADSTOP_TRUCK | INVALID_STATION << 16, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_STOP);
 }
 
 

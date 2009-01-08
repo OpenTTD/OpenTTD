@@ -5,6 +5,8 @@
 #ifndef STATION_GUI_H
 #define STATION_GUI_H
 
+#include "command_type.h"
+
 /** Enum for CompanyStations, referring to _company_stations_widgets */
 enum StationListWidgets {
 	SLW_CLOSEBOX       =  0, ///< Close 'X' button
@@ -56,5 +58,7 @@ enum StationCoverageType {
 
 int DrawStationCoverageAreaText(int sx, int sy, StationCoverageType sct, int rad, bool supplies);
 void CheckRedrawStationCoverage(const Window *w);
+
+void ShowSelectStationIfNeeded(CommandContainer cmd, int w, int h);
 
 #endif /* STATION_GUI_H */

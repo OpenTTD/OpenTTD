@@ -1309,6 +1309,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDBOOL(GameSettings, construction.road_stop_on_town_road,             47, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD,      NULL),
 	SDT_CONDBOOL(GameSettings, station.adjacent_stations,                       62, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_ADJACENT_STATIONS,      NULL),
 	SDT_CONDBOOL(GameSettings, economy.station_noise_level,                     96, SL_MAX_VERSION, 0, 0, false,                    STR_CONFIG_PATCHES_NOISE_LEVEL,            InvalidateTownViewWindow),
+	SDT_CONDBOOL(GameSettings, station.distant_join_stations,                  106, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS,  NULL),
 
 	    SDT_BOOL(GameSettings, economy.inflation,                                                   0, 0,  true,                    STR_CONFIG_PATCHES_INFLATION,              NULL),
 	     SDT_VAR(GameSettings, construction.raw_industry_construction, SLE_UINT8,                   0,MS,     0,     0,       2, 0, STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD, InvalidateBuildIndustryWindow),

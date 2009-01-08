@@ -188,10 +188,15 @@ static void PlaceRail_Station(TileIndex tile)
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED, DDSP_BUILD_STATION);
 		VpSetPlaceSizingLimit(_settings_game.station.station_spread);
 	} else {
-		DoCommandP(tile,
-				_railstation.orientation | (_settings_client.gui.station_numtracks << 8) | (_settings_client.gui.station_platlength << 16) | (_ctrl_pressed << 24),
-				_cur_railtype | (_railstation.station_class << 8) | (_railstation.station_type << 16),
-				CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation);
+		uint32 p1 = _cur_railtype | _railstation.orientation << 4 | _settings_client.gui.station_numtracks << 8 | _settings_client.gui.station_platlength << 16 | _ctrl_pressed << 24;
+		uint32 p2 = _railstation.station_class | _railstation.station_type << 8 | INVALID_STATION << 16;
+
+		int w = _settings_client.gui.station_numtracks;
+		int h = _settings_client.gui.station_platlength;
+		if (!_railstation.orientation) Swap(w, h);
+
+		CommandContainer cmdcont = { tile, p1, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
+		ShowSelectStationIfNeeded(cmdcont, w, h);
 	}
 }
 
@@ -753,6 +758,7 @@ struct BuildRailToolbarWindow : Window {
 		delete FindWindowById(WC_BUILD_SIGNAL, 0);
 		delete FindWindowById(WC_BUILD_STATION, 0);
 		delete FindWindowById(WC_BUILD_DEPOT, 0);
+		delete FindWindowById(WC_SELECT_STATION, 0);
 	}
 
 	virtual void OnPlacePresize(Point pt, TileIndex tile)
@@ -873,12 +879,13 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	if (sy > ey) Swap(sy, ey);
 	w = ex - sx + 1;
 	h = ey - sy + 1;
-	if (_railstation.orientation == AXIS_X) Swap(w, h);
 
-	DoCommandP(TileXY(sx, sy),
-			_railstation.orientation | (w << 8) | (h << 16) | (_ctrl_pressed << 24),
-			_cur_railtype | (_railstation.station_class << 8) | (_railstation.station_type << 16),
-			CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation);
+	if (_railstation.orientation == AXIS_X) Swap(w, h);
+	uint32 p1 = _cur_railtype | _railstation.orientation << 4 | _ctrl_pressed << 24;
+	uint32 p2 = _railstation.station_class | _railstation.station_type << 8 | INVALID_STATION << 16;
+
+	CommandContainer cmdcont = { TileXY(sx, sy), p1 | w << 8 | h << 16, p2, CMD_BUILD_RAILROAD_STATION | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION), CcStation, "" };
+	ShowSelectStationIfNeeded(cmdcont, w, h);
 }
 
 struct BuildRailStationWindow : public PickerWindowBase {
@@ -993,6 +1000,11 @@ public:
 		}
 	}
 
+	virtual ~BuildRailStationWindow()
+	{
+		DeleteWindowById(WC_SELECT_STATION, 0);
+	}
+
 	virtual void OnPaint()
 	{
 		bool newstations = _railstation.newstations;
@@ -1094,6 +1106,7 @@ public:
 				this->LowerWidget(_railstation.orientation + BRSW_PLATFORM_DIR_X);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
+				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
 
 			case BRSW_PLATFORM_NUM_1:
@@ -1127,6 +1140,7 @@ public:
 				this->LowerWidget(_settings_client.gui.station_platlength + BRSW_PLATFORM_LEN_BEGIN);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
+				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
 			}
 
@@ -1161,6 +1175,7 @@ public:
 				this->LowerWidget(_settings_client.gui.station_platlength + BRSW_PLATFORM_LEN_BEGIN);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
+				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
 			}
 
@@ -1194,6 +1209,7 @@ public:
 				this->SetWidgetLoweredState(_settings_client.gui.station_platlength + BRSW_PLATFORM_LEN_BEGIN, !_settings_client.gui.station_dragdrop);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
+				DeleteWindowById(WC_SELECT_STATION, 0);
 			} break;
 
 			case BRSW_HIGHLIGHT_OFF:
@@ -1230,6 +1246,7 @@ public:
 
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
+				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
 			}
 		}
@@ -1250,6 +1267,7 @@ public:
 
 		SndPlayFx(SND_15_BEEP);
 		this->SetDirty();
+		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 
 	virtual void OnTick()

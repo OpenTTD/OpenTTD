@@ -40,7 +40,11 @@ void CcBuildAirport(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceAirport(TileIndex tile)
 {
-	DoCommandP(tile, _selected_airport_type, _ctrl_pressed, CMD_BUILD_AIRPORT | CMD_MSG(STR_A001_CAN_T_BUILD_AIRPORT_HERE), CcBuildAirport);
+	uint32 p2 = _ctrl_pressed;
+	SB(p2, 16, 16, INVALID_STATION); // no station to join
+
+	CommandContainer cmdcont = { tile, _selected_airport_type, p2, CMD_BUILD_AIRPORT | CMD_MSG(STR_A001_CAN_T_BUILD_AIRPORT_HERE), CcBuildAirport, "" };
+	ShowSelectStationIfNeeded(cmdcont, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE);
 }
 
 
@@ -124,6 +128,7 @@ struct BuildAirToolbarWindow : Window {
 		this->RaiseButtons();
 
 		delete FindWindowById(WC_BUILD_STATION, 0);
+		delete FindWindowById(WC_SELECT_STATION, 0);
 	}
 };
 
@@ -184,6 +189,11 @@ public:
 		}
 
 		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual ~AirportPickerWindow()
+	{
+		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 
 	virtual void OnPaint()
@@ -247,6 +257,7 @@ public:
 				this->LowerWidget(_selected_airport_type + BAW_SMALL_AIRPORT);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
+				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
 
 			case BAW_BTN_DONTHILIGHT: case BAW_BTN_DOHILIGHT:

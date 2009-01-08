@@ -25,6 +25,13 @@
 #include "gfx_func.h"
 #include "widgets/dropdown_func.h"
 #include "newgrf_cargo.h"
+#include "map_func.h"
+#include "settings_type.h"
+#include "tile_map.h"
+#include "station_map.h"
+#include "tilehighlight_func.h"
+#include "core/smallvec_type.hpp"
+#include "core/smallmap_type.hpp"
 #include "string_func.h"
 #include "company_base.h"
 #include "sortlist_type.h"
@@ -973,4 +980,267 @@ static const WindowDesc _station_view_desc = {
 void ShowStationViewWindow(StationID station)
 {
 	AllocateWindowDescFront<StationViewWindow>(&_station_view_desc, station);
+}
+
+static SmallVector<StationID, 8> _stations_nearby_list;
+static SmallMap<TileIndex, StationID, 8> _deleted_stations_nearby;
+
+/** Context for FindStationsNearby */
+struct FindNearbyStationContext {
+	TileIndex tile; ///< Base tile of station to be built
+	uint      w;    ///< Width of station to be built
+	uint      h;    ///< Height of station to be built
+};
+
+/**
+ * Add station on this tile to _stations_nearby_list if it's fully within the
+ * station spread.
+ * @param tile Tile just being checked
+ * @param user_data Pointer to FindNearbyStationContext context
+ */
+static bool AddNearbyStation(TileIndex tile, void *user_data)
+{
+	FindNearbyStationContext *ctx = (FindNearbyStationContext *)user_data;
+
+	/* First check if there was a deleted station here */
+	SmallPair<TileIndex, StationID> *dst = _deleted_stations_nearby.Find(tile);
+	if (dst != _deleted_stations_nearby.End()) {
+		_stations_nearby_list.Include(dst->second);
+		return false;
+	}
+
+	/* Check if own station and if we stay within station spread */
+	if (!IsTileType(tile, MP_STATION)) return false;
+
+	StationID sid = GetStationIndex(tile);
+	Station *st = GetStation(sid);
+	if (st->owner != _local_company || _stations_nearby_list.Contains(sid)) return false;
+
+	if (st->rect.BeforeAddRect(ctx->tile, ctx->w, ctx->h, StationRect::ADD_TEST)) {
+		*_stations_nearby_list.Append() = sid;
+	}
+
+	return false; // We want to include *all* nearby stations
+}
+
+/**
+ * Circulate around the to-be-built station to find stations we could join.
+ * Make sure that only stations are returned where joining wouldn't exceed
+ * station spread and are our own station.
+ * @param tile Base tile of the to-be-built station
+ * @param w Width of the to-be-built station
+ * @param h Height of the to-be-built station
+ * @param distant_join Search for adjacent stations (false) or stations fully
+ *                     within station spread
+ **/
+static const Station *FindStationsNearby(TileIndex tile, int w, int h, bool distant_join)
+{
+	FindNearbyStationContext ctx;
+	ctx.tile = tile;
+	ctx.w = w;
+	ctx.h = h;
+
+	_stations_nearby_list.Clear();
+	_deleted_stations_nearby.Clear();
+
+	/* Check the inside, to return, if we sit on another station */
+	BEGIN_TILE_LOOP(t, w, h, tile)
+		if (t < MapSize() && IsTileType(t, MP_STATION)) return GetStationByTile(t);
+	END_TILE_LOOP(t, w, h, tile)
+
+	/* Look for deleted stations */
+	const Station *st;
+	FOR_ALL_STATIONS(st) {
+		if (st->facilities == 0 && st->owner == _local_company) {
+			/* Include only within station spread (yes, it is strictly less than) */
+			if (max(DistanceMax(tile, st->xy), DistanceMax(TILE_ADDXY(tile, w - 1, h - 1), st->xy)) < _settings_game.station.station_spread) {
+				_deleted_stations_nearby.Insert(st->xy, st->index);
+
+				/* Add the station when it's within where we're going to build */
+				if (IsInsideBS(TileX(st->xy), TileX(ctx.tile), ctx.w) &&
+						IsInsideBS(TileY(st->xy), TileY(ctx.tile), ctx.h)) {
+					AddNearbyStation(st->xy, &ctx);
+				}
+			}
+		}
+	}
+
+	/* Only search tiles where we have a chance to stay within the station spread.
+	 * The complete check needs to be done in the callback as we don't know the
+	 * extent of the found station, yet. */
+	if (distant_join && min(w, h) >= _settings_game.station.station_spread) return NULL;
+	uint max_dist = distant_join ? _settings_game.station.station_spread - min(w, h) : 1;
+
+	tile = TILE_ADD(ctx.tile, TileOffsByDir(DIR_N));
+	CircularTileSearch(&tile, max_dist, w, h, AddNearbyStation, &ctx);
+
+	return NULL;
+}
+
+enum JoinStationWidgets {
+	JSW_WIDGET_CLOSEBOX = 0,
+	JSW_WIDGET_CAPTION,
+	JSW_PANEL,
+	JSW_SCROLLBAR,
+	JSW_EMPTY,
+	JSW_RESIZEBOX,
+};
+
+static const Widget _select_station_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE, COLOUR_DARK_GREEN,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT, COLOUR_DARK_GREEN,    11,   199,     0,    13, STR_SELECT_STATION_TO_JOIN,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,     RESIZE_RB, COLOUR_DARK_GREEN,     0,   187,    14,    79, 0x0,                             STR_NULL},
+{  WWT_SCROLLBAR,    RESIZE_LRB, COLOUR_DARK_GREEN,   188,   199,    14,    79, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB, COLOUR_DARK_GREEN,     0,   187,    80,    91, 0x0,                             STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB, COLOUR_DARK_GREEN,   188,   199,    80,    91, 0x0,                             STR_RESIZE_BUTTON},
+{   WIDGETS_END},
+};
+
+struct SelectStationWindow : Window {
+	CommandContainer select_station_cmd; ///< Command to build new station
+	TileIndex tile; ///< Base tile of new station
+	int size_x;     ///< Size in x direction of new station
+	int size_y;     ///< Size in y direction of new station
+
+	SelectStationWindow(const WindowDesc *desc, CommandContainer cmd) :
+		Window(desc, 0),
+		select_station_cmd(cmd),
+		tile(TileVirtXY(_thd.pos.x, _thd.pos.y)),
+		size_x(_thd.size.x / TILE_SIZE),
+		size_y(_thd.size.y / TILE_SIZE)
+	{
+		this->vscroll.cap = 6;
+		this->resize.step_height = 10;
+		_thd.lock_pos = true;
+		_thd.lock_size = true;
+
+		FindStationsNearby(this->tile, this->size_x, this->size_y, true);
+
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	~SelectStationWindow()
+	{
+		_thd.lock_pos = false;
+		_thd.lock_size = false;
+	}
+
+	virtual void OnPaint()
+	{
+		SetVScrollCount(this, _stations_nearby_list.Length() + 1);
+
+		this->DrawWidgets();
+
+		uint y = 17;
+		if (this->vscroll.pos == 0) {
+			DrawStringTruncated(3, y, STR_CREATE_SPLITTED_STATION, TC_FROMSTRING, this->widget[JSW_PANEL].right - 5);
+			y += 10;
+		}
+
+		for (uint i = max<uint>(1, this->vscroll.pos); i <= _stations_nearby_list.Length(); ++i, y += 10) {
+			/* Don't draw anything if it extends past the end of the window. */
+			if (i - this->vscroll.pos >= this->vscroll.cap) break;
+
+			const Station *st = GetStation(_stations_nearby_list[i - 1]);
+			SetDParam(0, st->index);
+			SetDParam(1, st->facilities);
+			DrawStringTruncated(3, y, STR_3049_0, TC_FROMSTRING, this->widget[JSW_PANEL].right - 5);
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		if (widget != JSW_PANEL) return;
+
+		uint32 st_index = (pt.y - 16) / 10 + this->vscroll.pos;
+		bool distant_join = (st_index > 0);
+		if (distant_join) st_index--;
+
+		if (distant_join && st_index >= _stations_nearby_list.Length()) return;
+
+		/* Insert station to be joined into stored command */
+		SB(this->select_station_cmd.p2, 16, 16,
+		   (distant_join ? _stations_nearby_list[st_index] : INVALID_STATION));
+
+		/* Execute stored Command */
+		DoCommandP(&this->select_station_cmd);
+
+		/* Close Window; this might cause double frees! */
+		DeleteWindowById(WC_SELECT_STATION, 0);
+	}
+
+	virtual void OnTick()
+	{
+		if (_thd.dirty & 2) {
+			_thd.dirty &= ~2;
+			this->SetDirty();
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap = (this->widget[JSW_PANEL].bottom - this->widget[JSW_PANEL].top) / 10;
+	}
+
+	virtual void OnInvalidateData(int data)
+	{
+		FindStationsNearby(this->tile, this->size_x, this->size_y, true);
+		this->SetDirty();
+	}
+};
+
+static const WindowDesc _select_station_desc = {
+	WDP_AUTO, WDP_AUTO, 200, 92, 200, 182,
+	WC_SELECT_STATION, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
+	_select_station_widgets,
+};
+
+
+/**
+ * Check whether we need to show the station selection window.
+ * @param cmd Command to build the station.
+ * @param w Width of the to-be-built station
+ * @param h Height of the to-be-built station
+ * @return whether we need to show the station selection window.
+ */
+static bool StationJoinerNeeded(CommandContainer cmd, int w, int h)
+{
+	if (CmdFailed(DoCommand(&cmd, DC_NO_WATER | DC_AUTO))) return false;
+
+	/* Only show selection if distant join is enabled in the settings */
+	if (!_settings_game.station.distant_join_stations) return false;
+
+	/* If a window is already opened, we always return true */
+	if (FindWindowById(WC_SELECT_STATION, 0) != NULL) return true;
+
+	/* only show the popup, if we press ctrl */
+	if (!_ctrl_pressed) return false;
+
+	/* First test for adjacent station */
+	FindStationsNearby(cmd.tile, w, h, false);
+	int neighbour_station_count = _stations_nearby_list.Length();
+	/* Now test for stations fully within station spread */
+	const Station *st = FindStationsNearby(cmd.tile, w, h, true);
+	if (_settings_game.station.adjacent_stations) {
+		return (neighbour_station_count == 0 || _stations_nearby_list.Length() > 1) && st == NULL;
+	} else {
+		return neighbour_station_count == 0 && _stations_nearby_list.Length() > 0 && st == NULL;
+	}
+}
+
+/**
+ * Show the station selection window when needed. If not, build the station.
+ * @param cmd Command to build the station.
+ * @param w Width of the to-be-built station
+ * @param h Height of the to-be-built station
+ */
+void ShowSelectStationIfNeeded(CommandContainer cmd, int w, int h)
+{
+	if (StationJoinerNeeded(cmd, w, h)) {
+		if (BringWindowToFrontById(WC_SELECT_STATION, 0)) return;
+		new SelectStationWindow(&_select_station_desc, cmd);
+	} else {
+		DoCommandP(&cmd);
+	}
 }

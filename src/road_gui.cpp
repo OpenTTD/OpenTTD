@@ -206,12 +206,14 @@ static void PlaceRoad_Depot(TileIndex tile)
 static void PlaceRoadStop(TileIndex tile, uint32 p2, uint32 cmd)
 {
 	uint32 p1 = _road_station_picker_orientation;
+	SB(p2, 16, 16, INVALID_STATION); // no station to join
 
 	if (p1 >= DIAGDIR_END) {
 		SetBit(p2, 1); // It's a drive-through stop
 		p1 -= DIAGDIR_END; // Adjust picker result to actual direction
 	}
-	DoCommandP(tile, p1, p2, cmd, CcRoadDepot);
+	CommandContainer cmdcont = { tile, p1, p2, cmd, CcRoadDepot, "" };
+	ShowSelectStationIfNeeded(cmdcont, 1, 1);
 }
 
 static void PlaceRoad_BusStation(TileIndex tile)
@@ -528,6 +530,7 @@ struct BuildRoadToolbarWindow : Window {
 		delete FindWindowById(WC_BUS_STATION, 0);
 		delete FindWindowById(WC_TRUCK_STATION, 0);
 		delete FindWindowById(WC_BUILD_DEPOT, 0);
+		delete FindWindowById(WC_SELECT_STATION, 0);
 	}
 
 	virtual void OnPlaceDrag(ViewportPlaceMethod select_method, ViewportDragDropSelectionProcess select_proc, Point pt)
@@ -835,6 +838,11 @@ public:
 		this->FindWindowPlacementAndResize(desc);
 	}
 
+	virtual ~BuildRoadStationWindow()
+	{
+		DeleteWindowById(WC_SELECT_STATION, 0);
+	}
+
 	virtual void OnPaint()
 	{
 		this->DrawWidgets();
@@ -883,6 +891,7 @@ public:
 				this->LowerWidget(_road_station_picker_orientation + BRSW_STATION_NE);
 				SndPlayFx(SND_15_BEEP);
 				this->SetDirty();
+				DeleteWindowById(WC_SELECT_STATION, 0);
 				break;
 
 			case BRSW_LT_OFF:

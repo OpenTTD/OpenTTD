@@ -671,6 +671,7 @@ static const char *_patches_stations[] = {
 	"order.gradual_loading",
 	"construction.road_stop_on_town_road",
 	"station.adjacent_stations",
+	"station.distant_join_stations",
 	"economy.station_noise_level",
 };
 

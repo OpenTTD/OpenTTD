@@ -47,7 +47,11 @@ void CcBuildCanal(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceDocks_Dock(TileIndex tile)
 {
-	DoCommandP(tile, _ctrl_pressed, 0, CMD_BUILD_DOCK | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE), CcBuildDocks);
+	uint32 p2 = INVALID_STATION << 16; // no station to join
+
+	/* tile is always the land tile, so need to evaluate _thd.pos */
+	CommandContainer cmdcont = { tile, _ctrl_pressed, p2, CMD_BUILD_DOCK | CMD_MSG(STR_9802_CAN_T_BUILD_DOCK_HERE), CcBuildDocks, "" };
+	ShowSelectStationIfNeeded(cmdcont, _thd.size.x / TILE_SIZE, _thd.size.y / TILE_SIZE);
 }
 
 static void PlaceDocks_Depot(TileIndex tile)
@@ -240,6 +244,7 @@ struct BuildDocksToolbarWindow : Window {
 
 		delete FindWindowById(WC_BUILD_STATION, 0);
 		delete FindWindowById(WC_BUILD_DEPOT, 0);
+		delete FindWindowById(WC_SELECT_STATION, 0);
 	}
 
 	virtual void OnPlacePresize(Point pt, TileIndex tile_from)
@@ -332,6 +337,11 @@ public:
 	{
 		this->LowerWidget(_settings_client.gui.station_show_coverage + BDSW_LT_OFF);
 		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual ~BuildDocksStationWindow()
+	{
+		DeleteWindowById(WC_SELECT_STATION, 0);
 	}
 
 	virtual void OnPaint()

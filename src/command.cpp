@@ -383,7 +383,7 @@ static int _docommand_recursive = 0;
  */
 CommandCost DoCommand(const CommandContainer *container, uint32 flags)
 {
-	return DoCommand(container->tile, container->p1, container->p2, flags, container->cmd, container->text);
+	return DoCommand(container->tile, container->p1, container->p2, flags, container->cmd & CMD_ID_MASK, container->text);
 }
 
 /*!
