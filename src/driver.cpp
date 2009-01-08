@@ -25,7 +25,7 @@ char *_ini_musicdriver;
 
 char *_ini_blitter;
 
-static const char* GetDriverParam(const char* const* parm, const char* name)
+const char* GetDriverParam(const char* const* parm, const char* name)
 {
 	size_t len;
 

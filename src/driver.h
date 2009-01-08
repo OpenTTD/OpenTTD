@@ -10,6 +10,7 @@
 #include "string_func.h"
 #include <map>
 
+const char *GetDriverParam(const char * const *parm, const char *name);
 bool GetDriverParamBool(const char * const *parm, const char *name);
 int GetDriverParamInt(const char * const *parm, const char *name, int def);
 
