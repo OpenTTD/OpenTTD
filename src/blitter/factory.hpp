@@ -79,6 +79,9 @@ public:
 	 */
 	static Blitter *SelectBlitter(const char *name)
 	{
+#if defined(DEDICATED)
+		const char *default_blitter = "null";
+#else
 		const char *default_blitter = "8bpp-optimized";
 
 #if defined(WITH_COCOA)
@@ -90,6 +93,7 @@ public:
 			default_blitter = "32bpp-anim";
 		}
 #endif /* defined(WITH_COCOA) */
+#endif /* defined(DEDICATED) */
 		if (GetBlitters().size() == 0) return NULL;
 		const char *bname = (StrEmpty(name)) ? default_blitter : name;
 
