@@ -205,7 +205,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK)
 }
 
 // Send a command packet to the server
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(const CommandPacket *cp)
 {
 	//
 	// Packet: CLIENT_COMMAND
@@ -221,14 +221,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 	//
 
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_COMMAND);
-
-	p->Send_uint8 (cp->company);
-	p->Send_uint32(cp->cmd);
-	p->Send_uint32(cp->p1);
-	p->Send_uint32(cp->p2);
-	p->Send_uint32((uint32)cp->tile);
-	p->Send_string(cp->text);
-	p->Send_uint8 (cp->callback);
+	MY_CLIENT->Send_Command(p, cp);
 
 	MY_CLIENT->Send_Packet(p);
 }
@@ -674,29 +667,13 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 {
 	CommandPacket cp;
-	cp.company  = (CompanyID)p->Recv_uint8();
-	cp.cmd      = p->Recv_uint32();
-	cp.p1       = p->Recv_uint32();
-	cp.p2       = p->Recv_uint32();
-	cp.tile     = p->Recv_uint32();
-	p->Recv_string(cp.text, sizeof(cp.text));
-	cp.callback = p->Recv_uint8();
+	const char *err = MY_CLIENT->Recv_Command(p, &cp);
 	cp.frame    = p->Recv_uint32();
 	cp.my_cmd   = p->Recv_bool();
 	cp.next     = NULL;
 
-	if (!IsValidCommand(cp.cmd)) {
-		IConsolePrintF(CC_ERROR, "WARNING: invalid command from server, dropping...");
-		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	}
-
-	if (GetCommandFlags(cp.cmd) & CMD_OFFLINE) {
-		IConsolePrintF(CC_ERROR, "WARNING: offline only command from server, dropping...");
-		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
-	}
-
-	if ((cp.cmd & CMD_FLAGS_MASK) != 0) {
-		IConsolePrintF(CC_ERROR, "WARNING: invalid command flag from server, dropping...");
+	if (err != NULL) {
+		IConsolePrintF(CC_ERROR, "WARNING: %s from server, dropping...", err);
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 

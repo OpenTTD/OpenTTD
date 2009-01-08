@@ -16,6 +16,8 @@
 #include "core/packet.h"
 #include "core/tcp.h"
 
+#include "../command_type.h"
+
 /**
  * If this line is enable, every frame will have a sync test
  *  this is not needed in normal games. Normal is like 1 sync in 100
@@ -129,6 +131,16 @@ void UpdateNetworkGameWindow(bool unselect);
 bool IsNetworkCompatibleVersion(const char *version);
 
 /* From network_command.cpp */
+/**
+ * Everything we need to know about a command to be able to execute it.
+ */
+struct CommandPacket : CommandContainer {
+	CommandPacket *next; ///< the next command packet (if in queue)
+	CompanyByte company; ///< company that is executing the command
+	uint32 frame;        ///< the frame in which this packet is executed
+	bool my_cmd;         ///< did the command originate from "me"
+};
+
 void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs = NULL);
 void NetworkExecuteLocalCommandQueue();
 void NetworkFreeLocalCommandQueue();

@@ -389,4 +389,16 @@ struct Command {
  */
 typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
+/**
+ * Structure for buffering the build command when selecting a station to join.
+ */
+struct CommandContainer {
+	TileIndex tile;            ///< tile command being executed on
+	uint32 p1;                 ///< parameter p1
+	uint32 p2;                 ///< parameter p2
+	uint32 cmd;                ///< command being executed
+	CommandCallback *callback; ///< any callback function executed upon successful completion of the command
+	char text[80];             ///< possible text sent for name changes etc
+};
+
 #endif /* COMMAND_TYPE_H */

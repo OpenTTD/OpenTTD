@@ -54,22 +54,13 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 	assert((cmd & CMD_FLAGS_MASK) == 0);
 
 	CommandPacket c;
-	c.company = _local_company;
-	c.next    = NULL;
-	c.tile    = tile;
-	c.p1      = p1;
-	c.p2      = p2;
-	c.cmd     = cmd;
-
-	c.callback = 0;
-	while (c.callback < _callback_table_count && _callback_table[c.callback] != callback) {
-		c.callback++;
-	}
-
-	if (c.callback == _callback_table_count) {
-		DEBUG(net, 0, "Unknown callback. (Pointer: %p) No callback sent", callback);
-		c.callback = 0; // _callback_table[0] == NULL
-	}
+	c.company  = _local_company;
+	c.next     = NULL;
+	c.tile     = tile;
+	c.p1       = p1;
+	c.p2       = p2;
+	c.cmd      = cmd;
+	c.callback = callback;
 
 	strecpy(c.text, (text != NULL) ? text : "", lastof(c.text));
 
@@ -81,6 +72,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 		 *   which gives about the same speed as most clients.
 		 */
 		c.frame = _frame_counter_max + 1;
+		c.my_cmd = true;
 
 		NetworkAddCommandQueue(c);
 
@@ -107,13 +99,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 static void NetworkExecuteCommand(CommandPacket *cp)
 {
 	_current_company = cp->company;
-	/* cp->callback is unsigned. so we don't need to do lower bounds checking. */
-	if (cp->callback > _callback_table_count) {
-		DEBUG(net, 0, "Received out-of-bounds callback (%d)", cp->callback);
-		cp->callback = 0;
-	}
-
-	DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd | CMD_NETWORK_COMMAND, _callback_table[cp->callback], cp->text, cp->my_cmd);
+	DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd | CMD_NETWORK_COMMAND, cp->callback, cp->text, cp->my_cmd);
 }
 
 /**
@@ -153,6 +139,58 @@ void NetworkFreeLocalCommandQueue()
 		_local_command_queue = _local_command_queue->next;
 		free(p);
 	}
+}
+
+/**
+ * Receives a command from the network.
+ * @param p the packet to read from.
+ * @param cp the struct to write the data to.
+ * @return an error message. When NULL there has been no error.
+ */
+const char *NetworkClientSocket::Recv_Command(Packet *p, CommandPacket *cp)
+{
+	cp->company = (CompanyID)p->Recv_uint8();
+	cp->cmd     = p->Recv_uint32();
+	cp->p1      = p->Recv_uint32();
+	cp->p2      = p->Recv_uint32();
+	cp->tile    = p->Recv_uint32();
+	p->Recv_string(cp->text, lengthof(cp->text));
+
+	byte callback = p->Recv_uint8();
+
+	if (!IsValidCommand(cp->cmd))               return "invalid command";
+	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) return "offline only command";
+	if ((cp->cmd & CMD_FLAGS_MASK) != 0)        return "invalid command flag";
+	if (callback > _callback_table_count)       return "invalid callback";
+
+	cp->callback = _callback_table[callback];
+	return NULL;
+}
+
+/**
+ * Sends a command over the network.
+ * @param p the packet to send it in.
+ * @param cp the packet to actually send.
+ */
+void NetworkClientSocket::Send_Command(Packet *p, const CommandPacket *cp)
+{
+	p->Send_uint8 (cp->company);
+	p->Send_uint32(cp->cmd);
+	p->Send_uint32(cp->p1);
+	p->Send_uint32(cp->p2);
+	p->Send_uint32(cp->tile);
+	p->Send_string(cp->text);
+
+	byte callback = 0;
+	while (callback < _callback_table_count && _callback_table[callback] != cp->callback) {
+		callback++;
+	}
+
+	if (callback == _callback_table_count) {
+		DEBUG(net, 0, "Unknown callback. (Pointer: %p) No callback sent", callback);
+		callback = 0; // _callback_table[0] == NULL
+	}
+	p->Send_uint8 (callback);
 }
 
 #endif /* ENABLE_NETWORK */

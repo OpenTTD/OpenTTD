@@ -12,7 +12,6 @@
 #include "os_abstraction.h"
 #include "core.h"
 #include "packet.h"
-#include "../../tile_type.h"
 
 /**
  * Enum with all types of UDP packets.
@@ -59,18 +58,7 @@ enum {
 };
 
 /** Packet that wraps a command */
-struct CommandPacket {
-	CommandPacket *next; ///< the next command packet (if in queue)
-	CompanyByte company; ///< company that is executing the command
-	uint32 cmd;        ///< command being executed
-	uint32 p1;         ///< parameter p1
-	uint32 p2;         ///< parameter p2
-	TileIndex tile;    ///< tile command being executed on
-	char text[80];     ///< possible text sent for name changes etc
-	uint32 frame;      ///< the frame in which this packet is executed
-	byte callback;     ///< any callback function executed upon successful completion of the command
-	bool my_cmd;       ///< did the command originate from "me"
-};
+struct CommandPacket;
 
 /** Status of a client */
 enum ClientStatus {
@@ -120,6 +108,9 @@ public:
 	inline bool IsValid() const { return this->IsConnected(); }
 	inline void SetInfo(NetworkClientInfo *info) { assert(info != NULL && this->info == NULL); this->info = info; }
 	inline NetworkClientInfo *GetInfo() const { return this->info; }
+
+	const char *Recv_Command(Packet *p, CommandPacket *cp);
+	void Send_Command(Packet *p, const CommandPacket *cp);
 };
 
 static inline bool IsValidNetworkClientSocketIndex(ClientIndex index)

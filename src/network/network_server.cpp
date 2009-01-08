@@ -467,7 +467,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SYNC)
 	cs->Send_Packet(p);
 }
 
-DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, CommandPacket *cp)
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, const CommandPacket *cp)
 {
 	//
 	// Packet: SERVER_COMMAND
@@ -485,13 +485,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMMAND)(NetworkClientSocket *cs, Co
 
 	Packet *p = NetworkSend_Init(PACKET_SERVER_COMMAND);
 
-	p->Send_uint8 (cp->company);
-	p->Send_uint32(cp->cmd);
-	p->Send_uint32(cp->p1);
-	p->Send_uint32(cp->p2);
-	p->Send_uint32(cp->tile);
-	p->Send_string(cp->text);
-	p->Send_uint8 (cp->callback);
+	cs->Send_Command(p, cp);
 	p->Send_uint32(cp->frame);
 	p->Send_bool  (cp->my_cmd);
 
@@ -815,38 +809,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 	}
 }
 
-/** Enforce the command flags.
- * Eg a server-only command can only be executed by a server, etc.
- * @param cp the commandpacket that is going to be checked
- * @param ci client information for debugging output to console
- */
-static bool CheckCommandFlags(CommandPacket cp, const NetworkClientInfo *ci)
-{
-	byte flags = GetCommandFlags(cp.cmd);
-
-	if (flags & CMD_SERVER && ci->client_id != CLIENT_ID_SERVER) {
-		IConsolePrintF(CC_ERROR, "WARNING: server only command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
-		return false;
-	}
-
-	if (flags & CMD_OFFLINE) {
-		IConsolePrintF(CC_ERROR, "WARNING: offline only command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
-		return false;
-	}
-
-	if (cp.cmd != CMD_COMPANY_CTRL && !IsValidCompanyID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
-		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
-		return false;
-	}
-
-	if ((cp.cmd & CMD_FLAGS_MASK) != 0) {
-		IConsolePrintF(CC_ERROR, "WARNING: invalid command flag from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
-		return false;
-	}
-
-	return true;
-}
-
 /** The client has done a command and wants us to handle it
  * @param *cs the connected client that has sent the command
  * @param *p the packet in which the command was sent
@@ -863,27 +825,27 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	}
 
 	CommandPacket cp;
-	cp.company = (CompanyID)p->Recv_uint8();
-	cp.cmd     = p->Recv_uint32();
-	cp.p1      = p->Recv_uint32();
-	cp.p2      = p->Recv_uint32();
-	cp.tile    = p->Recv_uint32();
-	p->Recv_string(cp.text, lengthof(cp.text));
-
-	byte callback = p->Recv_uint8();
+	const char *err = cs->Recv_Command(p, &cp);
 
 	if (cs->has_quit) return;
 
 	const NetworkClientInfo *ci = cs->GetInfo();
 
-	/* Check if cp->cmd is valid */
-	if (!IsValidCommand(cp.cmd)) {
-		IConsolePrintF(CC_ERROR, "WARNING: invalid command from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
+	if (err != NULL) {
+		IConsolePrintF(CC_ERROR, "WARNING: %s from client %d (IP: %s).", err, ci->client_id, GetClientIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		return;
 	}
 
-	if (!CheckCommandFlags(cp, ci)) {
+
+	if (GetCommandFlags(cp.cmd) & CMD_SERVER && ci->client_id != CLIENT_ID_SERVER) {
+		IConsolePrintF(CC_ERROR, "WARNING: server only command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
+		return;
+	}
+
+	if (cp.cmd != CMD_COMPANY_CTRL && !IsValidCompanyID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
+		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
 		return;
 	}
@@ -922,19 +884,21 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	cp.frame = _frame_counter_max + 1;
 	cp.next  = NULL;
 
+	CommandCallback *callback = cp.callback;
+
 	// Queue the command for the clients (are send at the end of the frame
 	//   if they can handle it ;))
 	FOR_ALL_CLIENT_SOCKETS(new_cs) {
 		if (new_cs->status >= STATUS_MAP) {
 			// Callbacks are only send back to the client who sent them in the
 			//  first place. This filters that out.
-			cp.callback = (new_cs != cs) ? 0 : callback;
+			cp.callback = (new_cs != cs) ? NULL : callback;
 			cp.my_cmd = (new_cs == cs);
 			NetworkAddCommandQueue(cp, new_cs);
 		}
 	}
 
-	cp.callback = 0;
+	cp.callback = NULL;
 	cp.my_cmd = false;
 	NetworkAddCommandQueue(cp);
 }
