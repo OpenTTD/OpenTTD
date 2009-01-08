@@ -15,7 +15,6 @@ struct MusicFileSettings {
 	byte custom_2[33];
 	bool playing;
 	bool shuffle;
-	char extmidi[80];
 };
 
 struct FileEntry {

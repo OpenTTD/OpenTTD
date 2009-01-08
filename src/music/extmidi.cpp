@@ -17,10 +17,18 @@
 #include <sys/stat.h>
 #include <errno.h>
 
+#ifndef EXTERNAL_PLAYER
+#define EXTERNAL_PLAYER "timidity"
+#endif
+
 static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
 
 const char* MusicDriver_ExtMidi::Start(const char* const * parm)
 {
+	const char *command = GetDriverParam(parm, "cmd");
+	if (StrEmpty(command)) command = EXTERNAL_PLAYER;
+
+	this->command = strdup(command);
 	this->song[0] = '\0';
 	this->pid = -1;
 	return NULL;
@@ -28,6 +36,7 @@ const char* MusicDriver_ExtMidi::Start(const char* const * parm)
 
 void MusicDriver_ExtMidi::Stop()
 {
+	free(command);
 	this->song[0] = '\0';
 	this->DoStop();
 }
@@ -68,9 +77,9 @@ void MusicDriver_ExtMidi::DoPlay()
 			d = open("/dev/null", O_RDONLY);
 			if (d != -1 && dup2(d, 1) != -1 && dup2(d, 2) != -1) {
 				#if defined(MIDI_ARG)
-					execlp(msf.extmidi, "extmidi", MIDI_ARG, this->song, (char*)0);
+					execlp(this->command, "extmidi", MIDI_ARG, this->song, (char*)0);
 				#else
-					execlp(msf.extmidi, "extmidi", this->song, (char*)0);
+					execlp(this->command, "extmidi", this->song, (char*)0);
 				#endif
 			}
 			_exit(1);

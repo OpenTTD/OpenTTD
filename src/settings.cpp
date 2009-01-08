@@ -1127,10 +1127,6 @@ static int32 UpdateRconPassword(int32 p1)
 
 /* End - Callback Functions */
 
-#ifndef EXTERNAL_PLAYER
-#define EXTERNAL_PLAYER "timidity"
-#endif
-
 static const SettingDesc _music_settings[] = {
 	 SDT_VAR(MusicFileSettings, playlist,   SLE_UINT8, S, 0,   0, 0,   5, 1,  STR_NULL, NULL),
 	 SDT_VAR(MusicFileSettings, music_vol,  SLE_UINT8, S, 0, 127, 0, 127, 1,  STR_NULL, NULL),
@@ -1139,7 +1135,6 @@ static const SettingDesc _music_settings[] = {
 	SDT_LIST(MusicFileSettings, custom_2,   SLE_UINT8, S, 0, NULL,            STR_NULL, NULL),
 	SDT_BOOL(MusicFileSettings, playing,               S, 0, true,            STR_NULL, NULL),
 	SDT_BOOL(MusicFileSettings, shuffle,               S, 0, false,           STR_NULL, NULL),
-	 SDT_STR(MusicFileSettings, extmidi,     SLE_STRB, S, 0, EXTERNAL_PLAYER, STR_NULL, NULL),
 	 SDT_END()
 };
 

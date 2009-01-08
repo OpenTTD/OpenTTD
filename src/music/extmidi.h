@@ -9,6 +9,7 @@
 
 class MusicDriver_ExtMidi: public MusicDriver {
 private:
+	char *command;
 	char song[MAX_PATH];
 	pid_t pid;
 
