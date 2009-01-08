@@ -1,6 +1,6 @@
 /* $Id$ */
 
-/** @file network_data.cpp Command handling over network connections. */
+/** @file network_command.cpp Command handling over network connections. */
 
 #ifdef ENABLE_NETWORK
 
