@@ -1072,7 +1072,6 @@ void DeleteDepotHighlightOfVehicle(const Vehicle *v)
 
 	w = dynamic_cast<DepotWindow*>(FindWindowById(WC_VEHICLE_DEPOT, v->tile));
 	if (w != NULL) {
-		w->sel = INVALID_VEHICLE;
-		ResetObjectToPlace();
+		if (w->sel == v->index) ResetObjectToPlace();
 	}
 }
