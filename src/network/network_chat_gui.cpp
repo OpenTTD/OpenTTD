@@ -263,14 +263,22 @@ static void SendChat(const char *buf, DestType type, int dest)
 	}
 }
 
-
 struct NetworkChatWindow : public QueryStringBaseWindow {
+private:
+	enum NetWorkChatWidgets {
+		NWCW_CLOSE,
+		NWCW_BACKGROUND,
+		NWCW_TEXTBOX,
+		NWCW_SENDBUTTON,
+	};
+
+public:
 	DestType dtype;
 	int dest;
 
 	NetworkChatWindow (const WindowDesc *desc, DestType type, int dest) : QueryStringBaseWindow(NETWORK_CHAT_LENGTH, desc)
 	{
-		this->LowerWidget(2);
+		this->LowerWidget(NWCW_TEXTBOX);
 		this->dtype   = type;
 		this->dest    = dest;
 		this->afilter = CS_ALPHANUMERAL;
@@ -441,23 +449,23 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 		this->DrawWidgets();
 
 		assert((uint)this->dtype < lengthof(chat_captions));
-		DrawStringRightAligned(this->widget[2].left - 2, this->widget[2].top + 1, chat_captions[this->dtype], TC_BLACK);
-		this->DrawEditBox(2);
+		DrawStringRightAligned(this->widget[NWCW_TEXTBOX].left - 2, this->widget[NWCW_TEXTBOX].top + 1, chat_captions[this->dtype], TC_BLACK);
+		this->DrawEditBox(NWCW_TEXTBOX);
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case 3: /* Send */
-				SendChat(this->text.buf, this->dtype, this->dest);
+			/* Send */
+			case NWCW_SENDBUTTON: SendChat(this->text.buf, this->dtype, this->dest);
 			/* FALLTHROUGH */
-			case 0: /* Cancel */ delete this; break;
+			case NWCW_CLOSE: /* Cancel */ delete this; break;
 		}
 	}
 
 	virtual void OnMouseLoop()
 	{
-		this->HandleEditBox(2);
+		this->HandleEditBox(NWCW_TEXTBOX);
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
@@ -467,7 +475,7 @@ struct NetworkChatWindow : public QueryStringBaseWindow {
 			ChatTabCompletion();
 		} else {
 			_chat_tab_completion_active = false;
-			switch (this->HandleEditBoxKey(2, key, keycode, state)) {
+			switch (this->HandleEditBoxKey(NWCW_TEXTBOX, key, keycode, state)) {
 				default: NOT_REACHED();
 				case HEBR_EDITING: {
 					Window *osk = FindWindowById(WC_OSK, 0);
