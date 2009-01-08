@@ -673,47 +673,36 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_SYNC)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 {
-	CommandPacket *cp = MallocT<CommandPacket>(1);
-	cp->company  = (CompanyID)p->Recv_uint8();
-	cp->cmd      = p->Recv_uint32();
-	cp->p1       = p->Recv_uint32();
-	cp->p2       = p->Recv_uint32();
-	cp->tile     = p->Recv_uint32();
-	p->Recv_string(cp->text, sizeof(cp->text));
-	cp->callback = p->Recv_uint8();
-	cp->frame    = p->Recv_uint32();
-	cp->my_cmd   = p->Recv_bool();
-	cp->next     = NULL;
+	CommandPacket cp;
+	cp.company  = (CompanyID)p->Recv_uint8();
+	cp.cmd      = p->Recv_uint32();
+	cp.p1       = p->Recv_uint32();
+	cp.p2       = p->Recv_uint32();
+	cp.tile     = p->Recv_uint32();
+	p->Recv_string(cp.text, sizeof(cp.text));
+	cp.callback = p->Recv_uint8();
+	cp.frame    = p->Recv_uint32();
+	cp.my_cmd   = p->Recv_bool();
+	cp.next     = NULL;
 
-	if (!IsValidCommand(cp->cmd)) {
+	if (!IsValidCommand(cp.cmd)) {
 		IConsolePrintF(CC_ERROR, "WARNING: invalid command from server, dropping...");
-		free(cp);
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 
-	if (GetCommandFlags(cp->cmd) & CMD_OFFLINE) {
+	if (GetCommandFlags(cp.cmd) & CMD_OFFLINE) {
 		IConsolePrintF(CC_ERROR, "WARNING: offline only command from server, dropping...");
-		free(cp);
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 
-	if ((cp->cmd & CMD_FLAGS_MASK) != 0) {
+	if ((cp.cmd & CMD_FLAGS_MASK) != 0) {
 		IConsolePrintF(CC_ERROR, "WARNING: invalid command flag from server, dropping...");
-		free(cp);
 		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
 
 	// The server did send us this command..
 	//  queue it in our own queue, so we can handle it in the upcoming frame!
-
-	if (_local_command_queue == NULL) {
-		_local_command_queue = cp;
-	} else {
-		// Find last packet
-		CommandPacket *c = _local_command_queue;
-		while (c->next != NULL) c = c->next;
-		c->next = cp;
-	}
+	NetworkAddCommandQueue(cp);
 
 	return NETWORK_RECV_STATUS_OKAY;
 }

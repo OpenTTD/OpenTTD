@@ -94,6 +94,7 @@ enum NetworkLanguage {
 
 extern uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 extern uint32 _frame_counter_max; // To where we may go with our clients
+extern uint32 _frame_counter;
 
 extern uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
 
@@ -119,9 +120,6 @@ extern uint16 _network_udp_broadcast;
 
 extern uint8 _network_advertise_retries;
 
-// following externs are instantiated at network.cpp
-extern CommandPacket *_local_command_queue;
-
 void NetworkTCPQueryServer(const char* host, unsigned short port);
 
 void NetworkAddServer(const char *b);
@@ -130,8 +128,10 @@ void UpdateNetworkGameWindow(bool unselect);
 
 bool IsNetworkCompatibleVersion(const char *version);
 
-void NetworkExecuteCommand(CommandPacket *cp);
-void NetworkAddCommandQueue(NetworkClientSocket *cs, CommandPacket *cp);
+/* From network_command.cpp */
+void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs = NULL);
+void NetworkExecuteLocalCommandQueue();
+void NetworkFreeLocalCommandQueue();
 
 // from network.c
 void NetworkCloseClient(NetworkClientSocket *cs);

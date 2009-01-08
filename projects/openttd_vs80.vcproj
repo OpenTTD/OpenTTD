@@ -628,7 +628,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\network\network_data.cpp"
+				RelativePath=".\..\src\network\network_command.cpp"
 				>
 			</File>
 			<File

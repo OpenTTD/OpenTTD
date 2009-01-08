@@ -44,7 +44,7 @@ music.cpp
 namegen.cpp
 network/network.cpp
 network/network_client.cpp
-network/network_data.cpp
+network/network_command.cpp
 network/network_gamelist.cpp
 network/network_server.cpp
 network/network_udp.cpp

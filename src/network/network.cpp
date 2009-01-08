@@ -64,6 +64,7 @@ char *_network_host_list[10];
 char *_network_ban_list[25];
 uint32 _frame_counter_server; // The frame_counter of the server, if in network-mode
 uint32 _frame_counter_max; // To where we may go with our clients
+uint32 _frame_counter;
 uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
 uint32 _broadcast_list[MAX_INTERFACES + 1];
 uint32 _network_server_bind_ip;
@@ -78,9 +79,6 @@ uint8 _network_advertise_retries;
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
 assert_compile((int)NETWORK_COMPANY_NAME_LENGTH == MAX_LENGTH_COMPANY_NAME_BYTES);
-
-// global variables (declared in network_data.h)
-CommandPacket *_local_command_queue;
 
 extern NetworkUDPSocketHandler *_udp_client_socket; ///< udp client socket
 extern NetworkUDPSocketHandler *_udp_server_socket; ///< udp server socket
@@ -619,13 +617,6 @@ static void NetworkClose()
 	}
 	NetworkUDPCloseAll();
 
-	/* Free all queued commands */
-	while (_local_command_queue != NULL) {
-		CommandPacket *p = _local_command_queue;
-		_local_command_queue = _local_command_queue->next;
-		free(p);
-	}
-
 	_networking = false;
 	_network_server = false;
 
@@ -639,8 +630,6 @@ static void NetworkClose()
 // Inits the network (cleans sockets and stuff)
 static void NetworkInitialize()
 {
-	_local_command_queue = NULL;
-
 	_NetworkClientSocket_pool.CleanPool();
 	_NetworkClientSocket_pool.AddBlockToPool();
 	_NetworkClientInfo_pool.CleanPool();
@@ -912,46 +901,11 @@ static void NetworkSend()
 	}
 }
 
-// Handle the local-command-queue
-static void NetworkHandleLocalQueue()
-{
-	CommandPacket *cp, **cp_prev;
-
-	cp_prev = &_local_command_queue;
-
-	while ( (cp = *cp_prev) != NULL) {
-
-		// The queue is always in order, which means
-		// that the first element will be executed first.
-		if (_frame_counter < cp->frame) break;
-
-		if (_frame_counter > cp->frame) {
-			// If we reach here, it means for whatever reason, we've already executed
-			// past the command we need to execute.
-			error("[net] Trying to execute a packet in the past!");
-		}
-
-		// We can execute this command
-		NetworkExecuteCommand(cp);
-
-		*cp_prev = cp->next;
-		free(cp);
-	}
-
-	// Just a safety check, to be removed in the future.
-	// Make sure that no older command appears towards the end of the queue
-	// In that case we missed executing it. This will never happen.
-	for (cp = _local_command_queue; cp; cp = cp->next) {
-		assert(_frame_counter < cp->frame);
-	}
-
-}
-
 static bool NetworkDoClientLoop()
 {
 	_frame_counter++;
 
-	NetworkHandleLocalQueue();
+	NetworkExecuteLocalCommandQueue();
 
 	StateGameLoop();
 
@@ -1050,7 +1004,7 @@ void NetworkGameLoop()
 			send_frame = true;
 		}
 
-		NetworkHandleLocalQueue();
+		NetworkExecuteLocalCommandQueue();
 
 		// Then we make the frame
 		StateGameLoop();

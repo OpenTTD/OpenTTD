@@ -15,29 +15,45 @@
 #include "../date_func.h"
 #include "../company_func.h"
 
-// Add a command to the local command queue
-void NetworkAddCommandQueue(NetworkClientSocket *cs, CommandPacket *cp)
+/** Local queue of packets */
+static CommandPacket *_local_command_queue = NULL;
+
+/**
+ * Add a command to the local or client socket command queue,
+ * based on the socket.
+ * @param cp the command packet to add
+ * @param cs the socket to send to (NULL = locally)
+ */
+void NetworkAddCommandQueue(CommandPacket cp, NetworkClientSocket *cs)
 {
-	CommandPacket* new_cp = MallocT<CommandPacket>(1);
+	CommandPacket *new_cp = MallocT<CommandPacket>(1);
+	*new_cp = cp;
 
-	*new_cp = *cp;
+	CommandPacket **begin = (cs == NULL ? &_local_command_queue : &cs->command_queue);
 
-	if (cs->command_queue == NULL) {
-		cs->command_queue = new_cp;
+	if (*begin == NULL) {
+		*begin = new_cp;
 	} else {
-		CommandPacket *c = cs->command_queue;
+		CommandPacket *c = *begin;
 		while (c->next != NULL) c = c->next;
 		c->next = new_cp;
 	}
 }
 
-// Prepare a DoCommand to be send over the network
+/**
+ * Prepare a DoCommand to be send over the network
+ * @param tile The tile to perform a command on (see #CommandProc)
+ * @param p1 Additional data for the command (see #CommandProc)
+ * @param p2 Additional data for the command (see #CommandProc)
+ * @param cmd The command to execute (a CMD_* value)
+ * @param callback A callback function to call after the command is finished
+ * @param text The text to pass
+ */
 void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text)
 {
 	assert((cmd & CMD_FLAGS_MASK) == 0);
 
 	CommandPacket c;
-
 	c.company = _local_company;
 	c.next    = NULL;
 	c.tile    = tile;
@@ -66,24 +82,14 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 		 */
 		c.frame = _frame_counter_max + 1;
 
-		CommandPacket *new_cp = MallocT<CommandPacket>(1);
-		*new_cp = c;
-		new_cp->my_cmd = true;
-		if (_local_command_queue == NULL) {
-			_local_command_queue = new_cp;
-		} else {
-			/* Find last packet */
-			CommandPacket *cp = _local_command_queue;
-			while (cp->next != NULL) cp = cp->next;
-			cp->next = new_cp;
-		}
+		NetworkAddCommandQueue(c);
 
 		/* Only the local client (in this case, the server) gets the callback */
 		c.callback = 0;
 		/* And we queue it for delivery to the clients */
 		NetworkClientSocket *cs;
 		FOR_ALL_CLIENT_SOCKETS(cs) {
-			if (cs->status > STATUS_MAP_WAIT) NetworkAddCommandQueue(cs, &c);
+			if (cs->status > STATUS_MAP_WAIT) NetworkAddCommandQueue(c, cs);
 		}
 		return;
 	}
@@ -94,8 +100,11 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 	SEND_COMMAND(PACKET_CLIENT_COMMAND)(&c);
 }
 
-// Execute a DoCommand we received from the network
-void NetworkExecuteCommand(CommandPacket *cp)
+/**
+ * Execute a DoCommand we received from the network
+ * @param cp the command to execute
+ */
+static void NetworkExecuteCommand(CommandPacket *cp)
 {
 	_current_company = cp->company;
 	/* cp->callback is unsigned. so we don't need to do lower bounds checking. */
@@ -105,6 +114,45 @@ void NetworkExecuteCommand(CommandPacket *cp)
 	}
 
 	DoCommandP(cp->tile, cp->p1, cp->p2, cp->cmd | CMD_NETWORK_COMMAND, _callback_table[cp->callback], cp->text, cp->my_cmd);
+}
+
+/**
+ * Execute all commands on the local command queue that ought to be executed this frame.
+ */
+void NetworkExecuteLocalCommandQueue()
+{
+	while (_local_command_queue != NULL) {
+
+		/* The queue is always in order, which means
+		 * that the first element will be executed first. */
+		if (_frame_counter < _local_command_queue->frame) break;
+
+		if (_frame_counter > _local_command_queue->frame) {
+			/* If we reach here, it means for whatever reason, we've already executed
+			 * past the command we need to execute. */
+			error("[net] Trying to execute a packet in the past!");
+		}
+
+		/* We can execute this command */
+		NetworkExecuteCommand(_local_command_queue);
+
+		CommandPacket *cp = _local_command_queue;
+		_local_command_queue = _local_command_queue->next;
+		free(cp);
+	}
+}
+
+/**
+ * Free the local command queue.
+ */
+void NetworkFreeLocalCommandQueue()
+{
+	/* Free all queued commands */
+	while (_local_command_queue != NULL) {
+		CommandPacket *p = _local_command_queue;
+		_local_command_queue = _local_command_queue->next;
+		free(p);
+	}
 }
 
 #endif /* ENABLE_NETWORK */

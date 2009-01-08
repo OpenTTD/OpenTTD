@@ -817,12 +817,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 
 /** Enforce the command flags.
  * Eg a server-only command can only be executed by a server, etc.
- * @param *cp the commandpacket that is going to be checked
- * @param *ci client information for debugging output to console
+ * @param cp the commandpacket that is going to be checked
+ * @param ci client information for debugging output to console
  */
-static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *ci)
+static bool CheckCommandFlags(CommandPacket cp, const NetworkClientInfo *ci)
 {
-	byte flags = GetCommandFlags(cp->cmd);
+	byte flags = GetCommandFlags(cp.cmd);
 
 	if (flags & CMD_SERVER && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrintF(CC_ERROR, "WARNING: server only command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
@@ -834,12 +834,12 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
 		return false;
 	}
 
-	if (cp->cmd != CMD_COMPANY_CTRL && !IsValidCompanyID(cp->company) && ci->client_id != CLIENT_ID_SERVER) {
+	if (cp.cmd != CMD_COMPANY_CTRL && !IsValidCompanyID(cp.company) && ci->client_id != CLIENT_ID_SERVER) {
 		IConsolePrintF(CC_ERROR, "WARNING: spectator issueing command from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
 		return false;
 	}
 
-	if ((cp->cmd & CMD_FLAGS_MASK) != 0) {
+	if ((cp.cmd & CMD_FLAGS_MASK) != 0) {
 		IConsolePrintF(CC_ERROR, "WARNING: invalid command flag from client %d (IP: %s), kicking...", ci->client_id, GetClientIP(ci));
 		return false;
 	}
@@ -854,8 +854,6 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 {
 	NetworkClientSocket *new_cs;
-	const NetworkClientInfo *ci;
-	byte callback;
 
 	// The client was never joined.. so this is impossible, right?
 	//  Ignore the packet, give the client a warning, and close his connection
@@ -864,34 +862,29 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		return;
 	}
 
-	CommandPacket *cp = MallocT<CommandPacket>(1);
-	cp->company = (CompanyID)p->Recv_uint8();
-	cp->cmd     = p->Recv_uint32();
-	cp->p1      = p->Recv_uint32();
-	cp->p2      = p->Recv_uint32();
-	cp->tile    = p->Recv_uint32();
-	p->Recv_string(cp->text, lengthof(cp->text));
+	CommandPacket cp;
+	cp.company = (CompanyID)p->Recv_uint8();
+	cp.cmd     = p->Recv_uint32();
+	cp.p1      = p->Recv_uint32();
+	cp.p2      = p->Recv_uint32();
+	cp.tile    = p->Recv_uint32();
+	p->Recv_string(cp.text, lengthof(cp.text));
 
-	callback = p->Recv_uint8();
+	byte callback = p->Recv_uint8();
 
-	if (cs->has_quit) {
-		free(cp);
-		return;
-	}
+	if (cs->has_quit) return;
 
-	ci = cs->GetInfo();
+	const NetworkClientInfo *ci = cs->GetInfo();
 
 	/* Check if cp->cmd is valid */
-	if (!IsValidCommand(cp->cmd)) {
+	if (!IsValidCommand(cp.cmd)) {
 		IConsolePrintF(CC_ERROR, "WARNING: invalid command from client %d (IP: %s).", ci->client_id, GetClientIP(ci));
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
-		free(cp);
 		return;
 	}
 
 	if (!CheckCommandFlags(cp, ci)) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_KICKED);
-		free(cp);
 		return;
 	}
 
@@ -899,11 +892,10 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	 * to match the company in the packet. If it doesn't, the client has done
 	 * something pretty naughty (or a bug), and will be kicked
 	 */
-	if (!(cp->cmd == CMD_COMPANY_CTRL && cp->p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp->company) {
+	if (!(cp.cmd == CMD_COMPANY_CTRL && cp.p1 == 0 && ci->client_playas == COMPANY_NEW_COMPANY) && ci->client_playas != cp.company) {
 		IConsolePrintF(CC_ERROR, "WARNING: client %d (IP: %s) tried to execute a command as company %d, kicking...",
-		               ci->client_playas + 1, GetClientIP(ci), cp->company + 1);
+		               ci->client_playas + 1, GetClientIP(ci), cp.company + 1);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
-		free(cp);
 		return;
 	}
 
@@ -912,24 +904,23 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	 * is prohibited. Pretty ugly and should be redone together with its function.
 	 * @see CmdCompanyCtrl()
 	 */
-	if (cp->cmd == CMD_COMPANY_CTRL) {
-		if (cp->p1 != 0) {
+	if (cp.cmd == CMD_COMPANY_CTRL) {
+		if (cp.p1 != 0) {
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
-			free(cp);
 			return;
 		}
 
 		/* XXX - Execute the command as a valid company. Normally this would be done by a
 		 * spectator, but that is not allowed any commands. So do an impersonation. The drawback
 		 * of this is that the first company's last_built_tile is also updated... */
-		cp->company = OWNER_BEGIN;
-		cp->p2 = cs->client_id;
+		cp.company = OWNER_BEGIN;
+		cp.p2 = cs->client_id;
 	}
 
 	// The frame can be executed in the same frame as the next frame-packet
 	//  That frame just before that frame is saved in _frame_counter_max
-	cp->frame = _frame_counter_max + 1;
-	cp->next  = NULL;
+	cp.frame = _frame_counter_max + 1;
+	cp.next  = NULL;
 
 	// Queue the command for the clients (are send at the end of the frame
 	//   if they can handle it ;))
@@ -937,23 +928,15 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		if (new_cs->status >= STATUS_MAP) {
 			// Callbacks are only send back to the client who sent them in the
 			//  first place. This filters that out.
-			cp->callback = (new_cs != cs) ? 0 : callback;
-			cp->my_cmd = (new_cs == cs);
-			NetworkAddCommandQueue(new_cs, cp);
+			cp.callback = (new_cs != cs) ? 0 : callback;
+			cp.my_cmd = (new_cs == cs);
+			NetworkAddCommandQueue(cp, new_cs);
 		}
 	}
 
-	cp->callback = 0;
-	cp->my_cmd = false;
-	// Queue the command on the server
-	if (_local_command_queue == NULL) {
-		_local_command_queue = cp;
-	} else {
-		// Find last packet
-		CommandPacket *c = _local_command_queue;
-		while (c->next != NULL) c = c->next;
-		c->next = cp;
-	}
+	cp.callback = 0;
+	cp.my_cmd = false;
+	NetworkAddCommandQueue(cp);
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)

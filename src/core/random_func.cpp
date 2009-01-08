@@ -36,7 +36,6 @@ void SetRandomSeed(uint32 seed)
 
 #ifdef RANDOM_DEBUG
 #include "../network/network_internal.h"
-#include "../variables.h" /* _frame_counter */
 #include "../company_func.h"
 
 uint32 DoRandom(int line, const char *file)
