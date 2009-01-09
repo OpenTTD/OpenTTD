@@ -1594,6 +1594,8 @@ void UpdateViewportPosition(Window *w)
 		const Vehicle* veh = GetVehicle(w->viewport->follow_vehicle);
 		Point pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 
+		w->viewport->scrollpos_x = pt.x;
+		w->viewport->scrollpos_y = pt.y;
 		SetViewportPosition(w, pt.x, pt.y);
 	} else {
 		/* Ensure the destination location is within the map */
