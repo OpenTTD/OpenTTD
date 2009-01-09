@@ -582,7 +582,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			 * B - current wagon to next wagon, 0 if wagon is last
 			 * T - previous wagon to next wagon, 0 in an S-bend
 			 */
-			if (v->type != VEH_TRAIN) return 0;
+			if (v->type != VEH_TRAIN && v->type != VEH_ROAD) return 0;
 
 			const Vehicle *u_p = v->Previous();
 			const Vehicle *u_n = v->Next();
