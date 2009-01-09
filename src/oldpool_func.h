@@ -44,6 +44,7 @@ template<typename T, typename Tid, OldMemoryPool<T> *Tpool> T *PoolItem<T, Tid, 
 template<typename T, typename Tid, OldMemoryPool<T> *Tpool> bool PoolItem<T, Tid, Tpool>::CanAllocateItem(uint count)
 {
 	uint last_minus_one = Tpool->GetSize() - 1;
+	uint orig_count = count;
 
 	for (T *t = Tpool->Get(Tpool->first_free_index); count > 0 && t != NULL; t = ((uint)t->index < last_minus_one) ? Tpool->Get(t->index + 1U) : NULL) {
 		if (!t->IsValid()) count--;
@@ -52,7 +53,7 @@ template<typename T, typename Tid, OldMemoryPool<T> *Tpool> bool PoolItem<T, Tid
 	if (count == 0) return true;
 
 	/* Check if we can add a block to the pool */
-	if (Tpool->AddBlockToPool()) return CanAllocateItem(count);
+	if (Tpool->AddBlockToPool()) return CanAllocateItem(orig_count);
 
 	return false;
 }
