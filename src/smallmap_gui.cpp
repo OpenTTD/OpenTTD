@@ -1159,6 +1159,7 @@ public:
 				/* set this view to same location. Based on the center, adjusting for zoom */
 				w->viewport->dest_scrollpos_x =  x - (w->viewport->virtual_width -  this->viewport->virtual_width) / 2;
 				w->viewport->dest_scrollpos_y =  y - (w->viewport->virtual_height - this->viewport->virtual_height) / 2;
+				w->viewport->follow_vehicle   = INVALID_VEHICLE;
 			} break;
 
 			case EVW_VIEW_TO_MAIN: { // inverse location button (move this view to same spot as main view) 'Copy Location'
