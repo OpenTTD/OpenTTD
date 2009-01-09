@@ -126,6 +126,10 @@ struct StatusBarWindow : Window {
 			case SBI_SAVELOAD_FINISH: this->saving = false; break;
 			case SBI_SHOW_TICKER:     this->ticker_scroll    = 360; break;
 			case SBI_SHOW_REMINDER:   this->reminder_timeout =  91; break;
+			case SBI_NEWS_DELETED:
+				this->ticker_scroll    = -1280; // reset ticker ...
+				this->reminder_timeout =     0; // ... and reminder
+				break;
 		}
 	}
 

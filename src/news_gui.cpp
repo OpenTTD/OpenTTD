@@ -449,7 +449,8 @@ static bool ReadyForNextItem()
 /** Move to the next news item */
 static void MoveToNextItem()
 {
-	DeleteWindowById(WC_NEWS_WINDOW, 0);
+	InvalidateWindowData(WC_STATUS_BAR, 0, SBI_NEWS_DELETED); // invalidate the statusbar
+	DeleteWindowById(WC_NEWS_WINDOW, 0); // close the newspapers window if shown
 	_forced_news = NULL;
 
 	/* if we're not at the last item, then move on */
@@ -526,13 +527,9 @@ void AddNewsItem(StringID string, NewsSubtype subtype, uint data_a, uint data_b,
 /** Delete a news item from the queue */
 static void DeleteNewsItem(NewsItem *ni)
 {
-	if (_forced_news == ni) {
-		/* about to remove the currently forced item; skip to next */
-		MoveToNextItem();
-	}
-
-	if ((_current_news == ni) && (FindWindowById(WC_NEWS_WINDOW, 0) != NULL)) {
-		/* about to remove the currently displayed item; also skip */
+	if (_forced_news == ni || _current_news == ni) {
+		/* about to remove the currently forced item (shown as newspapers) ||
+		 * about to remove the currently displayed item (newspapers, ticker, or just a reminder) */
 		MoveToNextItem();
 	}
 
