@@ -608,7 +608,7 @@ public:
 		EventState state = ES_NOT_HANDLED;
 
 		/* handle up, down, pageup, pagedown, home and end */
- 		if (keycode == WKC_UP || keycode == WKC_DOWN || keycode == WKC_PAGEUP || keycode == WKC_PAGEDOWN || keycode == WKC_HOME || keycode == WKC_END) {
+		if (keycode == WKC_UP || keycode == WKC_DOWN || keycode == WKC_PAGEUP || keycode == WKC_PAGEDOWN || keycode == WKC_HOME || keycode == WKC_END) {
 			if (this->servers.Length() == 0) return ES_HANDLED;
 			switch (keycode) {
 				case WKC_UP:
@@ -642,15 +642,15 @@ public:
 				default: break;
 			}
 
- 			this->server = this->servers[this->list_pos];
+			this->server = this->servers[this->list_pos];
 
- 			/* scroll to the new server if it is outside the current range */
- 			this->ScrollToSelectedServer();
+			/* scroll to the new server if it is outside the current range */
+			this->ScrollToSelectedServer();
 
- 			/* redraw window */
- 			this->SetDirty();
- 			return ES_HANDLED;
- 		}
+			/* redraw window */
+			this->SetDirty();
+			return ES_HANDLED;
+		}
 
 		if (this->field != NGWW_CLIENT) {
 			if (this->server != NULL) {

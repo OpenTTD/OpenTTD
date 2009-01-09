@@ -202,7 +202,7 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_sen
 		case NETWORK_ACTION_GIVE_MONEY:     strid = self_send ? STR_NETWORK_GAVE_MONEY_AWAY : STR_NETWORK_GIVE_MONEY;   break;
 		case NETWORK_ACTION_CHAT_COMPANY:   strid = self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY; break;
 		case NETWORK_ACTION_CHAT_CLIENT:    strid = self_send ? STR_NETWORK_CHAT_TO_CLIENT  : STR_NETWORK_CHAT_CLIENT;  break;
-		default:                            strid = STR_NETWORK_CHAT_ALL;	break;
+		default:                            strid = STR_NETWORK_CHAT_ALL; break;
 	}
 
 	char message[1024];

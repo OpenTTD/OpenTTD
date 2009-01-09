@@ -1457,9 +1457,9 @@ const SettingDesc _patch_settings[] = {
 	 SDTC_BOOL(gui.show_track_reservation,               S,  0, false,                        STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION,      RedrawScreen),
 	  SDTC_VAR(gui.default_signal_type,       SLE_UINT8, S, MS,     0,        0,        2, 1, STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE,         NULL),
 	  SDTC_VAR(gui.cycle_signal_types,        SLE_UINT8, S, MS,     0,        0,        2, 1, STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES,          NULL),
- 	  SDTC_VAR(gui.station_numtracks,         SLE_UINT8, S,  0,     1,        1,        7, 0, STR_NULL,                                       NULL),
- 	  SDTC_VAR(gui.station_platlength,        SLE_UINT8, S,  0,     5,        1,        7, 0, STR_NULL,                                       NULL),
- 	 SDTC_BOOL(gui.station_dragdrop,                     S,  0,  true,                        STR_NULL,                                       NULL),
+	  SDTC_VAR(gui.station_numtracks,         SLE_UINT8, S,  0,     1,        1,        7, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(gui.station_platlength,        SLE_UINT8, S,  0,     5,        1,        7, 0, STR_NULL,                                       NULL),
+	 SDTC_BOOL(gui.station_dragdrop,                     S,  0,  true,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.station_show_coverage,                S,  0, false,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.persistent_buildingtools,             S,  0, false,                        STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS,    NULL),
 

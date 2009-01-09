@@ -182,7 +182,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {
 			ScrollbarClickHandler(w, wi, x, y);
-		} else if (wi->type == WWT_EDITBOX)	{
+		} else if (wi->type == WWT_EDITBOX) {
 			/* Open the OSK window if clicked on an edit box */
 			QueryStringBaseWindow *qs = dynamic_cast<QueryStringBaseWindow*>(w);
 			if (qs != NULL) {

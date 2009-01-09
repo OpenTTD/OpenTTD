@@ -1606,7 +1606,7 @@ static void MarkTrainAsStuck(Vehicle *v)
 	if (!HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
 		/* It is the first time the problem occured, set the "train stuck" flag. */
 		SetBit(v->u.rail.flags, VRF_TRAIN_STUCK);
-		v->load_unload_time_rem	= 0;
+		v->load_unload_time_rem = 0;
 
 		/* Stop train */
 		v->cur_speed = 0;
@@ -4359,7 +4359,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		SetLastSpeed(v, v->cur_speed);
 	}
 
-	if (v->progress == 0) v->progress = j;	// Save unused spd for next time, if TrainController didn't set progress
+	if (v->progress == 0) v->progress = j; // Save unused spd for next time, if TrainController didn't set progress
 }
 
 
