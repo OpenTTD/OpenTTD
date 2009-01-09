@@ -1771,6 +1771,68 @@ static ChangeInfoResult GlobalVarChangeInfo(uint gvid, int numinfo, int prop, by
 	return ret;
 }
 
+static ChangeInfoResult GlobalVarReserveInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
+{
+	byte *buf = *bufp;
+	ChangeInfoResult ret = CIR_SUCCESS;
+
+	for (int i = 0; i < numinfo; i++) {
+		switch (prop) {
+			case 0x08: // Cost base factor
+				grf_load_byte(&buf);
+				break;
+
+			case 0x09: { // Cargo Translation Table
+				if (i == 0) {
+					if (gvid != 0) {
+						grfmsg(1, "ReserveChangeInfo: Cargo translation table must start at zero");
+						return CIR_INVALID_ID;
+					}
+
+					free(_cur_grffile->cargo_list);
+					_cur_grffile->cargo_max = numinfo;
+					_cur_grffile->cargo_list = MallocT<CargoLabel>(numinfo);
+				}
+
+				CargoLabel cl = grf_load_dword(&buf);
+				_cur_grffile->cargo_list[i] = BSWAP32(cl);
+				break;
+			}
+
+			case 0x0A: // Currency display names
+			case 0x0C: // Currency options
+			case 0x0F: // Euro introduction dates
+				grf_load_word(&buf);
+				break;
+
+			case 0x0B: // Currency multipliers
+			case 0x0D: // Currency prefix symbol
+			case 0x0E: // Currency suffix symbol
+				grf_load_dword(&buf);
+				break;
+
+			case 0x10: // Snow line height table
+				buf += SNOW_LINE_MONTHS * SNOW_LINE_DAYS;
+				break;
+
+			case 0x11: { // GRF match for engine allocation
+				uint32 s = grf_load_dword(&buf);
+				uint32 t = grf_load_dword(&buf);
+				SetNewGRFOverride(s, t);
+				break;
+			}
+
+			default:
+				ret = CIR_UNKNOWN;
+				break;
+		}
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
+
 static ChangeInfoResult CargoChangeInfo(uint cid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -2319,6 +2381,33 @@ static ChangeInfoResult IndustriesChangeInfo(uint indid, int numinfo, int prop, 
 	return ret;
 }
 
+static bool HandleChangeInfoResult(const char *caller, ChangeInfoResult cir, uint8 feature, uint8 property)
+{
+	switch (cir) {
+		default: NOT_REACHED();
+
+		case CIR_SUCCESS:
+			return false;
+
+		case CIR_UNHANDLED:
+			grfmsg(1, "%s: Ignoring property 0x%02X of feature 0x%02X (not implemented)", caller, property, feature);
+			return false;
+
+		case CIR_UNKNOWN:
+			grfmsg(0, "%s: Unknown property 0x%02X of feature 0x%02X, disabling", caller, property, feature);
+			/* Fall through */
+
+		case CIR_INVALID_ID:
+			/* No debug message for an invalid ID, as it has already been output */
+			_skip_sprites = -1;
+			_cur_grfconfig->status = GCS_DISABLED;
+			_cur_grfconfig->error  = CallocT<GRFError>(1);
+			_cur_grfconfig->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+			_cur_grfconfig->error->message  = (cir == CIR_INVALID_ID) ? STR_NEWGRF_ERROR_INVALID_ID : STR_NEWGRF_ERROR_UNKNOWN_PROPERTY;
+			return true;
+	}
+}
+
 /* Action 0x00 */
 static void FeatureChangeInfo(byte *buf, size_t len)
 {
@@ -2372,27 +2461,7 @@ static void FeatureChangeInfo(byte *buf, size_t len)
 		uint8 prop = grf_load_byte(&buf);
 
 		ChangeInfoResult cir = handler[feature](engine, numinfo, prop, &buf, bufend - buf);
-		switch (cir) {
-			case CIR_SUCCESS:
-				break;
-
-			case CIR_UNHANDLED:
-				grfmsg(1, "FeatureChangeInfo: Ignoring property 0x%02X of feature 0x%02X (not implemented)", prop, feature);
-				break;
-
-			case CIR_UNKNOWN:
-				grfmsg(0, "FeatureChangeInfo: Unknown property 0x%02X of feature 0x%02X, disabling", prop, feature);
-				/* Fall through */
-
-			case CIR_INVALID_ID:
-				/* No debug message for an invalid ID, as it has already been output */
-				_skip_sprites = -1;
-				_cur_grfconfig->status = GCS_DISABLED;
-				_cur_grfconfig->error  = CallocT<GRFError>(1);
-				_cur_grfconfig->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
-				_cur_grfconfig->error->message  = (cir == CIR_INVALID_ID) ? STR_NEWGRF_ERROR_INVALID_ID : STR_NEWGRF_ERROR_UNKNOWN_PROPERTY;
-				return;
-		}
+		if (HandleChangeInfoResult("FeatureChangeInfo", cir, feature, prop)) return;
 	}
 }
 
@@ -2436,43 +2505,20 @@ static void ReserveChangeInfo(byte *buf, size_t len)
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
-		bool ignoring = false;
+		ChangeInfoResult cir = CIR_SUCCESS;
 
 		switch (feature) {
 			default: NOT_REACHED();
 			case GSF_CARGOS:
-				ignoring = CargoChangeInfo(index, numinfo, prop, &buf, bufend - buf);
+				cir = CargoChangeInfo(index, numinfo, prop, &buf, bufend - buf);
 				break;
+
 			case GSF_GLOBALVAR:
-				switch (prop) {
-					case 0x09: // Cargo Translation Table
-						if (index != 0) {
-							grfmsg(1, "ReserveChangeInfo: Cargo translation table must start at zero");
-							return;
-						}
-
-						free(_cur_grffile->cargo_list);
-						_cur_grffile->cargo_max = numinfo;
-						_cur_grffile->cargo_list = MallocT<CargoLabel>(numinfo);
-
-						for (uint i = 0; i < numinfo; i++) {
-							CargoLabel cl = grf_load_dword(&buf);
-							_cur_grffile->cargo_list[i] = BSWAP32(cl);
-						}
-						break;
-
-					case 0x11: // GRF match for engine allocation
-						for (uint i = 0; i < numinfo; i++) {
-							uint32 s = grf_load_dword(&buf);
-							uint32 t = grf_load_dword(&buf);
-							SetNewGRFOverride(s, t);
-						}
-						break;
-				}
+				cir = GlobalVarReserveInfo(index, numinfo, prop, &buf, bufend - buf);
 				break;
 		}
 
-		if (ignoring) grfmsg(2, "ReserveChangeInfo: Ignoring property 0x%02X (not implemented)", prop);
+		if (HandleChangeInfoResult("ReserveChangeInfo", cir, feature, prop)) return;
 	}
 }
 
