@@ -939,7 +939,7 @@ void ShowInfo(const char *str)
 		wchar_t help_msgW[8192];
 #endif
 		ReleaseCapture();
-		_left_button_clicked =_left_button_down = false;
+		_left_button_clicked = _left_button_down = false;
 
 		old = MyShowCursor(true);
 		if (MessageBox(GetActiveWindow(), MB_TO_WIDE_BUFFER(str, help_msgW, lengthof(help_msgW)), _T("OpenTTD"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {

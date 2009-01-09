@@ -575,7 +575,7 @@ void ShowEstimatedCostOrIncome(Money cost, int x, int y)
 
 void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 {
-	Point pt = RemapCoords(x,y,z);
+	Point pt = RemapCoords(x, y, z);
 	StringID msg = STR_0801_COST;
 
 	if (cost < 0) {
@@ -588,7 +588,7 @@ void ShowCostOrIncomeAnimation(int x, int y, int z, Money cost)
 
 void ShowFeederIncomeAnimation(int x, int y, int z, Money cost)
 {
-	Point pt = RemapCoords(x,y,z);
+	Point pt = RemapCoords(x, y, z);
 
 	SetDParam(0, cost);
 	AddTextEffect(STR_FEEDER, pt.x, pt.y, 0x250, TE_RISING);

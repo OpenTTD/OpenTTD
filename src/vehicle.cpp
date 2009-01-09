@@ -860,7 +860,7 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 	y = ScaleByZoom(y, vp->zoom) + vp->virtual_top;
 
 	FOR_ALL_VEHICLES(v) {
-		if ((v->vehstatus & (VS_HIDDEN|VS_UNCLICKABLE)) == 0 &&
+		if ((v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0 &&
 				x >= v->left_coord && x <= v->right_coord &&
 				y >= v->top_coord && y <= v->bottom_coord) {
 
@@ -958,7 +958,7 @@ void AgeVehicle(Vehicle *v)
 	if (v->age < 65535) v->age++;
 
 	int age = v->age - v->max_age;
-	if (age == 366*0 || age == 366*1 || age == 366*2 || age == 366*3 || age == 366*4) v->reliability_spd_dec <<= 1;
+	if (age == 366 * 0 || age == 366 * 1 || age == 366 * 2 || age == 366 * 3 || age == 366 * 4) v->reliability_spd_dec <<= 1;
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 

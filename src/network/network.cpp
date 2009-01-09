@@ -1036,7 +1036,7 @@ static void NetworkGenerateUniqueId()
 {
 	Md5 checksum;
 	uint8 digest[16];
-	char hex_output[16*2 + 1];
+	char hex_output[16 * 2 + 1];
 	char coding_string[NETWORK_NAME_LENGTH];
 	int di;
 

@@ -180,7 +180,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 		if ((in && vp->zoom == ZOOM_LVL_MIN) || (!in && vp->zoom == ZOOM_LVL_MAX))
 			return;
 
-		Point pt = GetTileZoomCenterWindow(in,w);
+		Point pt = GetTileZoomCenterWindow(in, w);
 		if (pt.x != -1) {
 			ScrollWindowTo(pt.x, pt.y, w, true);
 

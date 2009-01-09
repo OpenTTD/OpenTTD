@@ -270,14 +270,14 @@ static void DoSetViewportPosition(const Window *w, int left, int top, int width,
 			left += xo;
 			width -= xo;
 		} else if (xo < 0) {
-			RedrawScreenRect(left+width+xo, top, left+width, top + height);
+			RedrawScreenRect(left + width + xo, top, left + width, top + height);
 			width += xo;
 		}
 
 		if (yo > 0) {
-			RedrawScreenRect(left, top, width+left, top + yo);
+			RedrawScreenRect(left, top, width + left, top + yo);
 		} else if (yo < 0) {
-			RedrawScreenRect(left, top + height + yo, width+left, top + height);
+			RedrawScreenRect(left, top + height + yo, width + left, top + height);
 		}
 	}
 }
@@ -364,7 +364,7 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
 static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 {
 	Point pt;
-	int a,b;
+	int a, b;
 	uint z;
 
 	if ( (uint)(x -= vp->left) >= (uint)vp->width ||
@@ -376,8 +376,8 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	x = (ScaleByZoom(x, vp->zoom) + vp->virtual_left) >> 2;
 	y = (ScaleByZoom(y, vp->zoom) + vp->virtual_top) >> 1;
 
-	a = y-x;
-	b = y+x;
+	a = y - x;
+	b = y + x;
 
 	/* we need to move variables in to the valid range, as the
 	 * GetTileZoomCenterWindow() function can call here with invalid x and/or y,

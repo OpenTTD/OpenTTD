@@ -64,7 +64,7 @@ CommandCost AiNew_Build_Bridge(Company *c, TileIndex tile_a, TileIndex tile_b, b
 	// Find a good bridgetype (the best money can buy)
 	bridge_len = GetTunnelBridgeLength(tile_a, tile_b);
 	type = type2 = 0;
-	for (bridge_type = MAX_BRIDGES-1; bridge_type >= 0; bridge_type--) {
+	for (bridge_type = MAX_BRIDGES - 1; bridge_type >= 0; bridge_type--) {
 		if (CheckBridge_Stuff(bridge_type, bridge_len)) {
 			type2 = type;
 			type = bridge_type;
@@ -142,7 +142,7 @@ CommandCost AiNew_Build_RoutePart(Company *c, Ai_PathFinderInfo *PathFinderInfo,
 		if (route_extra[part - 1] == 0 && route_extra[part] == 0) {
 			while (route_extra[part] == 0) {
 				// Get the current direction
-				dir = AiNew_GetRailDirection(route[part-1], route[part], route[part+1]);
+				dir = AiNew_GetRailDirection(route[part - 1], route[part], route[part + 1]);
 				// Is it the same as the last one?
 				if (old_dir != -1 && old_dir != dir) break;
 				old_dir = dir;
@@ -191,10 +191,10 @@ CommandCost AiNew_Build_RoutePart(Company *c, Ai_PathFinderInfo *PathFinderInfo,
 		// Keep it doing till we go an other way
 		// EnsureNoVehicleOnGround makes sure we don't build on a tile where a vehicle is. This way
 		//  it will wait till the vehicle is gone..
-		if (route_extra[part-1] == 0 && route_extra[part] == 0 && (flag != DC_EXEC || EnsureNoVehicleOnGround(route[part]))) {
+		if (route_extra[part - 1] == 0 && route_extra[part] == 0 && (flag != DC_EXEC || EnsureNoVehicleOnGround(route[part]))) {
 			while (route_extra[part] == 0 && (flag != DC_EXEC || EnsureNoVehicleOnGround(route[part]))) {
 				// Get the current direction
-				dir = AiNew_GetRoadDirection(route[part-1], route[part], route[part+1]);
+				dir = AiNew_GetRoadDirection(route[part - 1], route[part], route[part + 1]);
 				// Is it the same as the last one?
 				if (old_dir != -1 && old_dir != dir) break;
 				old_dir = dir;

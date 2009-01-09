@@ -88,10 +88,10 @@ struct VkMapping {
 
 static const VkMapping _vk_mapping[] = {
 	/* Pageup stuff + up/down */
-	AM(VK_PRIOR,VK_DOWN, WKC_PAGEUP, WKC_DOWN),
+	AM(VK_PRIOR, VK_DOWN, WKC_PAGEUP, WKC_DOWN),
 	/* Map letters & digits */
-	AM('A','Z','A','Z'),
-	AM('0','9','0','9'),
+	AM('A', 'Z', 'A', 'Z'),
+	AM('0', '9', '0', '9'),
 
 	AS(VK_ESCAPE,   WKC_ESC),
 	AS(VK_PAUSE,    WKC_PAUSE),
@@ -169,7 +169,7 @@ static void ClientSizeChanged(int w, int h)
 // It allows you to redraw the screen from within the MSVC debugger
 int RedrawScreenDebug()
 {
-	HDC dc,dc2;
+	HDC dc, dc2;
 	static int _fooctr;
 	HBITMAP old_bmp;
 	HPALETTE old_palette;

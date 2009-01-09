@@ -3401,7 +3401,7 @@ static void AiStateAirportStuff(Company *c)
 static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
 {
 	uint32 avail_airports = GetValidAirports();
-	CommandCost ret,total_cost(EXPENSES_CONSTRUCTION);
+	CommandCost ret, total_cost(EXPENSES_CONSTRUCTION);
 
 	for (; p->mode == 0; p++) {
 		if (!HasBit(avail_airports, p->attr)) return CMD_ERROR;

@@ -59,12 +59,12 @@ static const Widget _smallmap_widgets[] = {
 static int _smallmap_industry_count;
 
 /** Macro for ordinary entry of LegendAndColor */
-#define MK(a,b) {a, b, INVALID_INDUSTRYTYPE, true, false, false}
+#define MK(a, b) {a, b, INVALID_INDUSTRYTYPE, true, false, false}
 /** Macro for end of list marker in arrays of LegendAndColor */
 #define MKEND() {0, STR_NULL, INVALID_INDUSTRYTYPE, true, true, false}
 /** Macro for break marker in arrays of LegendAndColor.
  * It will have valid data, though */
-#define MS(a,b) {a, b, INVALID_INDUSTRYTYPE, true, false, true}
+#define MS(a, b) {a, b, INVALID_INDUSTRYTYPE, true, false, true}
 
 /** Structure for holding relevant data for legends in small map */
 struct LegendAndColour {
@@ -144,7 +144,7 @@ static const LegendAndColour _legend_land_owners[] = {
 
 /** Allow room for all industries, plus a terminator entry
  * This is required in order to have the indutry slots all filled up */
-static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES+1];
+static LegendAndColour _legend_from_industries[NUM_INDUSTRYTYPES + 1];
 /* For connecting industry type to position in industries list(small map legend) */
 static uint _industry_to_list_pos[NUM_INDUSTRYTYPES];
 
@@ -583,7 +583,7 @@ public:
 	{
 		Blitter *blitter = BlitterFactoryBase::GetCurrentBlitter();
 		DrawPixelInfo *old_dpi;
-		int dx,dy, x, y, x2, y2;
+		int dx, dy, x, y, x2, y2;
 		void *ptr;
 		int tile_x;
 		int tile_y;
@@ -755,7 +755,7 @@ public:
 			Point pt;
 
 			/* Find main viewport. */
-			vp = FindWindowById(WC_MAIN_WINDOW,0)->viewport;
+			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
 			pt = RemapCoords(this->scroll_x, this->scroll_y, 0);
 
