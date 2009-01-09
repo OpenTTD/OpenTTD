@@ -609,22 +609,23 @@ static EffectTickProc * const _effect_tick_procs[] = {
 
 Vehicle *CreateEffectVehicle(int x, int y, int z, EffectVehicleType type)
 {
+	if (!Vehicle::CanAllocateItem()) return NULL;
+
 	Vehicle *v = new EffectVehicle();
-	if (v != NULL) {
-		v->subtype = type;
-		v->x_pos = x;
-		v->y_pos = y;
-		v->z_pos = z;
-		v->tile = 0;
-		v->UpdateDeltaXY(INVALID_DIR);
-		v->vehstatus = VS_UNCLICKABLE;
+	v->subtype = type;
+	v->x_pos = x;
+	v->y_pos = y;
+	v->z_pos = z;
+	v->tile = 0;
+	v->UpdateDeltaXY(INVALID_DIR);
+	v->vehstatus = VS_UNCLICKABLE;
 
-		_effect_init_procs[type](v);
+	_effect_init_procs[type](v);
 
-		VehiclePositionChanged(v);
-		BeginVehicleMove(v);
-		EndVehicleMove(v);
-	}
+	VehiclePositionChanged(v);
+	BeginVehicleMove(v);
+	EndVehicleMove(v);
+
 	return v;
 }
 

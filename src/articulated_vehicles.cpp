@@ -17,6 +17,10 @@ uint CountArticulatedParts(EngineID engine_type, bool purchase_window)
 {
 	if (!HasBit(EngInfo(engine_type)->callbackmask, CBM_VEHICLE_ARTIC_ENGINE)) return 0;
 
+	/* If we can't allocate a vehicle now, we can't allocate it in the command
+	 * either, so it doesn't matter how many articulated parts there are. */
+	if (!Vehicle::CanAllocateItem()) return 0;
+
 	Vehicle *v = NULL;;
 	if (!purchase_window) {
 		v = new InvalidVehicle();

@@ -242,17 +242,13 @@ byte VehicleRandomBits()
 
 /* static */ bool Vehicle::AllocateList(Vehicle **vl, int num)
 {
+	if (!Vehicle::CanAllocateItem(num)) return false;
+	if (vl == NULL) return true;
+
 	uint counter = _Vehicle_pool.first_free_index;
 
 	for (int i = 0; i != num; i++) {
-		Vehicle *v = AllocateRaw(counter);
-
-		if (v == NULL) return false;
-		v = new (v) InvalidVehicle();
-
-		if (vl != NULL) {
-			vl[i] = v;
-		}
+		vl[i] = new (AllocateRaw(counter)) InvalidVehicle();
 		counter++;
 	}
 

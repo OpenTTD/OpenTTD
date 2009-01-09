@@ -1576,6 +1576,8 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 
 Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size)
 {
+	if (!Town::CanAllocateItem()) return NULL;
+
 	do {
 		/* Generate a tile index not too close from the edge */
 		TileIndex tile = RandomTile();
@@ -1603,7 +1605,6 @@ Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size)
 
 		/* Allocate a town struct */
 		Town *t = new Town(tile);
-		if (t == NULL) break;
 
 		DoCreateTown(t, tile, townnameparts, mode, size);
 		return t;

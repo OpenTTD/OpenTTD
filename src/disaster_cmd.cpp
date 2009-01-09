@@ -562,7 +562,6 @@ static void DisasterTick_Helicopter_Rotors(Vehicle *v)
 static void DisasterTick_Big_Ufo(Vehicle *v)
 {
 	byte z;
-	Vehicle *u, *w;
 	Town *t;
 	TileIndex tile;
 	TileIndex tile_org;
@@ -588,6 +587,7 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 
 		v->current_order.SetDestination(2);
 
+		Vehicle *u;
 		FOR_ALL_VEHICLES(u) {
 			if (u->type == VEH_TRAIN || u->type == VEH_ROAD) {
 				if (Delta(u->x_pos, v->x_pos) + Delta(u->y_pos, v->y_pos) <= 12 * TILE_SIZE) {
@@ -604,17 +604,16 @@ static void DisasterTick_Big_Ufo(Vehicle *v)
 			v->tile,
 			0);
 
-		u = new DisasterVehicle();
-		if (u == NULL) {
+		if (!Vehicle::CanAllocateItem(2)) {
 			delete v;
 			return;
 		}
+		u = new DisasterVehicle();
 
 		InitializeDisasterVehicle(u, -6 * TILE_SIZE, v->y_pos, 135, DIR_SW, ST_Big_Ufo_Destroyer);
 		u->u.disaster.big_ufo_destroyer_target = v->index;
 
-		w = new DisasterVehicle();
-		if (w == NULL) return;
+		Vehicle *w = new DisasterVehicle();
 
 		u->SetNext(w);
 		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, ST_Big_Ufo_Destroyer_Shadow);
@@ -756,14 +755,13 @@ typedef void DisasterInitProc();
  * otherwise crashes on a random tile */
 static void Disaster_Zeppeliner_Init()
 {
-	Vehicle *v = new DisasterVehicle(), *u;
-	Station *st;
-	int x;
+	if (!Vehicle::CanAllocateItem(2)) return;
 
-	if (v == NULL) return;
+	Vehicle *v = new DisasterVehicle();
+	Station *st;
 
 	/* Pick a random place, unless we find a small airport */
-	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
+	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	FOR_ALL_STATIONS(st) {
 		if (st->airport_tile != INVALID_TILE &&
@@ -776,13 +774,11 @@ static void Disaster_Zeppeliner_Init()
 
 	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_Zeppeliner);
 
-	/* Allocate shadow too? */
-	u = new DisasterVehicle();
-	if (u != NULL) {
-		v->SetNext(u);
-		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Zeppeliner_Shadow);
-		u->vehstatus |= VS_SHADOW;
-	}
+	/* Allocate shadow */
+	Vehicle *u = new DisasterVehicle();
+	v->SetNext(u);
+	InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Zeppeliner_Shadow);
+	u->vehstatus |= VS_SHADOW;
 }
 
 
@@ -790,35 +786,29 @@ static void Disaster_Zeppeliner_Init()
  * until it locates a road vehicle which it targets and then destroys */
 static void Disaster_Small_Ufo_Init()
 {
-	Vehicle *v = new DisasterVehicle(), *u;
-	int x;
+	if (!Vehicle::CanAllocateItem(2)) return;
 
-	if (v == NULL) return;
-
-	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
+	Vehicle *v = new DisasterVehicle();
+	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	InitializeDisasterVehicle(v, x, 0, 135, DIR_SE, ST_Small_Ufo);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
-	/* Allocate shadow too? */
-	u = new DisasterVehicle();
-	if (u != NULL) {
-		v->SetNext(u);
-		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Small_Ufo_Shadow);
-		u->vehstatus |= VS_SHADOW;
-	}
+	/* Allocate shadow */
+	Vehicle *u = new DisasterVehicle();
+	v->SetNext(u);
+	InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, ST_Small_Ufo_Shadow);
+	u->vehstatus |= VS_SHADOW;
 }
 
 
 /* Combat airplane which destroys an oil refinery */
 static void Disaster_Airplane_Init()
 {
-	Industry *i, *found;
-	Vehicle *v, *u;
-	int x, y;
+	if (!Vehicle::CanAllocateItem(2)) return;
 
-	found = NULL;
+	Industry *i, *found = NULL;
 
 	FOR_ALL_INDUSTRIES(i) {
 		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_AIRPLANE_ATTACKS) &&
@@ -829,32 +819,27 @@ static void Disaster_Airplane_Init()
 
 	if (found == NULL) return;
 
-	v = new DisasterVehicle();
-	if (v == NULL) return;
+	Vehicle *v = new DisasterVehicle();
 
 	/* Start from the bottom (south side) of the map */
-	x = (MapSizeX() + 9) * TILE_SIZE - 1;
-	y = TileY(found->xy) * TILE_SIZE + 37;
+	int x = (MapSizeX() + 9) * TILE_SIZE - 1;
+	int y = TileY(found->xy) * TILE_SIZE + 37;
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_NE, ST_Airplane);
 
-	u = new DisasterVehicle();
-	if (u != NULL) {
-		v->SetNext(u);
-		InitializeDisasterVehicle(u, x, y, 0, DIR_SE, ST_Airplane_Shadow);
-		u->vehstatus |= VS_SHADOW;
-	}
+	Vehicle *u = new DisasterVehicle();
+	v->SetNext(u);
+	InitializeDisasterVehicle(u, x, y, 0, DIR_SE, ST_Airplane_Shadow);
+	u->vehstatus |= VS_SHADOW;
 }
 
 
 /** Combat helicopter that destroys a factory */
 static void Disaster_Helicopter_Init()
 {
-	Industry *i, *found;
-	Vehicle *v, *u, *w;
-	int x, y;
+	if (!Vehicle::CanAllocateItem(3)) return;
 
-	found = NULL;
+	Industry *i, *found = NULL;
 
 	FOR_ALL_INDUSTRIES(i) {
 		if ((GetIndustrySpec(i->type)->behaviour & INDUSTRYBEH_CHOPPER_ATTACKS) &&
@@ -865,26 +850,21 @@ static void Disaster_Helicopter_Init()
 
 	if (found == NULL) return;
 
-	v = new DisasterVehicle();
-	if (v == NULL) return;
+	Vehicle *v = new DisasterVehicle();
 
-	x = -16 * TILE_SIZE;
-	y = TileY(found->xy) * TILE_SIZE + 37;
+	int x = -16 * TILE_SIZE;
+	int y = TileY(found->xy) * TILE_SIZE + 37;
 
 	InitializeDisasterVehicle(v, x, y, 135, DIR_SW, ST_Helicopter);
 
-	u = new DisasterVehicle();
-	if (u != NULL) {
-		v->SetNext(u);
-		InitializeDisasterVehicle(u, x, y, 0, DIR_SW, ST_Helicopter_Shadow);
-		u->vehstatus |= VS_SHADOW;
+	Vehicle *u = new DisasterVehicle();
+	v->SetNext(u);
+	InitializeDisasterVehicle(u, x, y, 0, DIR_SW, ST_Helicopter_Shadow);
+	u->vehstatus |= VS_SHADOW;
 
-		w = new DisasterVehicle();
-		if (w != NULL) {
-			u->SetNext(w);
-			InitializeDisasterVehicle(w, x, y, 140, DIR_SW, ST_Helicopter_Rotors);
-		}
-	}
+	Vehicle *w = new DisasterVehicle();
+	u->SetNext(w);
+	InitializeDisasterVehicle(w, x, y, 140, DIR_SW, ST_Helicopter_Rotors);
 }
 
 
@@ -892,40 +872,34 @@ static void Disaster_Helicopter_Init()
  * down by a combat airplane, destroying the surroundings */
 static void Disaster_Big_Ufo_Init()
 {
-	Vehicle *v = new DisasterVehicle(), *u;
-	int x, y;
+	if (!Vehicle::CanAllocateItem(2)) return;
 
-	if (v == NULL) return;
+	Vehicle *v = new DisasterVehicle();
+	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
+	int y = MapMaxX() * TILE_SIZE - 1;
 
-	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
-
-	y = MapMaxX() * TILE_SIZE - 1;
 	InitializeDisasterVehicle(v, x, y, 135, DIR_NW, ST_Big_Ufo);
 	v->dest_tile = TileXY(MapSizeX() / 2, MapSizeY() / 2);
 	v->age = 0;
 
-	/* Allocate shadow too? */
-	u = new DisasterVehicle();
-	if (u != NULL) {
-		v->SetNext(u);
-		InitializeDisasterVehicle(u, x, y, 0, DIR_NW, ST_Big_Ufo_Shadow);
-		u->vehstatus |= VS_SHADOW;
-	}
+	/* Allocate shadow */
+	Vehicle *u = new DisasterVehicle();
+	v->SetNext(u);
+	InitializeDisasterVehicle(u, x, y, 0, DIR_NW, ST_Big_Ufo_Shadow);
+	u->vehstatus |= VS_SHADOW;
 }
 
 
 /* Curious submarine #1, just floats around */
 static void Disaster_Small_Submarine_Init()
 {
+	if (!Vehicle::CanAllocateItem()) return;
+
 	Vehicle *v = new DisasterVehicle();
-	int x, y;
+	int y;
 	Direction dir;
-	uint32 r;
-
-	if (v == NULL) return;
-
-	r = Random();
-	x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
+	uint32 r = Random();
+	int x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
 	if (HasBit(r, 31)) {
 		y = MapMaxX() * TILE_SIZE - TILE_SIZE / 2 - 1;
@@ -942,15 +916,13 @@ static void Disaster_Small_Submarine_Init()
 /* Curious submarine #2, just floats around */
 static void Disaster_Big_Submarine_Init()
 {
+	if (!Vehicle::CanAllocateItem()) return;
+
 	Vehicle *v = new DisasterVehicle();
-	int x, y;
+	int y;
 	Direction dir;
-	uint32 r;
-
-	if (v == NULL) return;
-
-	r = Random();
-	x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
+	uint32 r = Random();
+	int x = TileX(r) * TILE_SIZE + TILE_SIZE / 2;
 
 	if (HasBit(r, 31)) {
 		y = MapMaxX() * TILE_SIZE - TILE_SIZE / 2 - 1;

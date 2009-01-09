@@ -755,7 +755,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 
 	unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_SHIP);
 
-	if (!Vehicle::AllocateList(NULL, 1) || unit_num > _settings_game.vehicle.max_ships)
+	if (!Vehicle::CanAllocateItem() || unit_num > _settings_game.vehicle.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {

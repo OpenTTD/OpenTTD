@@ -3070,13 +3070,12 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 
 void BuildOilRig(TileIndex tile)
 {
-	Station *st = new Station(tile);
-
-	if (st == NULL) {
+	if (!Station::CanAllocateItem()) {
 		DEBUG(misc, 0, "Can't allocate station for oilrig at 0x%X, reverting to oilrig only", tile);
 		return;
 	}
 
+	Station *st = new Station(tile);
 	st->town = ClosestTownFromTile(tile, UINT_MAX);
 	st->sign.width_1 = 0;
 
