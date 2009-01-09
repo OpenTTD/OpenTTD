@@ -514,7 +514,7 @@ static const BubbleMovement * const _bubble_movement[] = {
 
 static void BubbleTick(Vehicle *v)
 {
-	uint et;
+	uint anim_state;
 
 	v->progress++;
 	if ((v->progress & 3) != 0) return;
@@ -533,12 +533,12 @@ static void BubbleTick(Vehicle *v)
 		} else {
 			v->spritenum = 6;
 		}
-		et = 0;
+		anim_state = 0;
 	} else {
-		et = v->engine_type + 1;
+		anim_state = v->u.effect.animation_state + 1;
 	}
 
-	const BubbleMovement *b = &_bubble_movement[v->spritenum - 1][et];
+	const BubbleMovement *b = &_bubble_movement[v->spritenum - 1][anim_state];
 
 	if (b->y == 4 && b->x == 0) {
 		EndVehicleMove(v);
@@ -551,21 +551,21 @@ static void BubbleTick(Vehicle *v)
 			v->spritenum = 5;
 			SndPlayVehicleFx(SND_2F_POP, v);
 		}
-		et = 0;
+		anim_state = 0;
 	}
 
 	if (b->y == 4 && b->x == 2) {
 		TileIndex tile;
 
-		et++;
+		anim_state++;
 		SndPlayVehicleFx(SND_31_EXTRACT, v);
 
 		tile = TileVirtXY(v->x_pos, v->y_pos);
 		if (IsTileType(tile, MP_INDUSTRY) && GetIndustryGfx(tile) == GFX_BUBBLE_CATCHER) AddAnimatedTile(tile);
 	}
 
-	v->engine_type = et;
-	b = &_bubble_movement[v->spritenum - 1][et];
+	v->u.effect.animation_state = anim_state;
+	b = &_bubble_movement[v->spritenum - 1][anim_state];
 
 	v->x_pos += b->x;
 	v->y_pos += b->y;
