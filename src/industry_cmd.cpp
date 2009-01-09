@@ -1264,7 +1264,8 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				refused_slope |= IsSlopeRefused(tileh, its->slopes_refused);
 			}
 
-			if (ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) {
+			if ((ind_behav & (INDUSTRYBEH_ONLY_INTOWN | INDUSTRYBEH_TOWN1200_MORE)) || // Tile must be a house
+					((ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) && IsTileType(cur_tile, MP_HOUSE))) { // Tile is allowed to be a house (and it is a house)
 				if (!IsTileType(cur_tile, MP_HOUSE)) {
 					_error_message = STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 					return false;
@@ -1277,7 +1278,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				_current_company = old_company;
 
 				if (not_clearable) return false;
-			} else if ((ind_behav & INDUSTRYBEH_ONLY_NEARTOWN) == 0 || !IsTileType(cur_tile, MP_HOUSE)) {
+			} else {
 				/* Clear the tiles as OWNER_TOWN to not affect town rating, and to not clear protected buildings */
 				CompanyID old_company = _current_company;
 				_current_company = OWNER_TOWN;
