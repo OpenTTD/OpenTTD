@@ -370,8 +370,7 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 			case SLE_VAR_U16:
 			case SLE_VAR_I32: {
 				/* Override the minimum value. No value below sdb->min, except special value 0 */
-				int32 min = ((sdb->flags & SGF_0ISDISABLED) && val <= sdb->min) ? 0 : sdb->min;
-				val = Clamp(val, min, sdb->max);
+				if (!(sdb->flags & SGF_0ISDISABLED) || val != 0) val = Clamp(val, sdb->min, sdb->max);
 			} break;
 			case SLE_VAR_U32: {
 				/* Override the minimum value. No value below sdb->min, except special value 0 */

@@ -854,7 +854,7 @@ struct PatchesSelectionWindow : Window {
 			value = (int32)ReadValue(var, sd->save.conv);
 
 			/* Draw [<][>] boxes for settings of an integer-type */
-			DrawArrowButtons(x, y, COLOUR_YELLOW, state, (editable && value != sdb->min), (editable && value != sdb->max));
+			DrawArrowButtons(x, y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && value != sdb->max);
 
 			disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
 			if (disabled) {
