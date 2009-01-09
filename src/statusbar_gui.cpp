@@ -68,10 +68,25 @@ struct StatusBarWindow : Window {
 	int ticker_scroll;
 	int reminder_timeout;
 
+	enum {
+		TICKER_START   =   360, ///< initial value of the ticker counter (scrolling news)
+		TICKER_STOP    = -1280, ///< scrolling is finished when counter reaches this value
+		REMINDER_START =    91, ///< initial value of the reminder counter (right dot on the right)
+		REMINDER_STOP  =     0, ///< reminder disappears when counter reaches this value
+		COUNTER_STEP   =     2, ///< this is subtracted from active counters every tick
+	};
+
+	enum StatusbarWidget {
+		SBW_LEFT,   ///< left part of the statusbar; date is shown there
+		SBW_MIDDLE, ///< middle part; current news or company name or *** SAVING *** or *** PAUSED ***
+		SBW_RIGHT,  ///< right part; bank balance
+	};
+
 	StatusBarWindow(const WindowDesc *desc) : Window(desc)
 	{
 		CLRBITS(this->flags4, WF_WHITE_BORDER_MASK);
-		this->ticker_scroll = -1280;
+		this->ticker_scroll    =   TICKER_STOP;
+		this->reminder_timeout = REMINDER_STOP;
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -87,35 +102,35 @@ struct StatusBarWindow : Window {
 		if (c != NULL) {
 			/* Draw company money */
 			SetDParam(0, c->money);
-			DrawStringCentered(this->widget[2].left + 70, 1, STR_0004, TC_FROMSTRING);
+			DrawStringCentered(this->widget[SBW_RIGHT].left + 70, 1, STR_0004, TC_FROMSTRING);
 		}
 
 		/* Draw status bar */
 		if (this->saving) { // true when saving is active
-			DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING);
+			DrawStringCenteredTruncated(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_SAVING_GAME, TC_FROMSTRING);
 		} else if (_do_autosave) {
-			DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING);
+			DrawStringCenteredTruncated(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_032F_AUTOSAVE, TC_FROMSTRING);
 		} else if (_pause_game) {
-			DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING);
-		} else if (this->ticker_scroll > -1280 && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
+			DrawStringCenteredTruncated(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_0319_PAUSED, TC_FROMSTRING);
+		} else if (this->ticker_scroll > TICKER_STOP && FindWindowById(WC_NEWS_WINDOW, 0) == NULL && _statusbar_news_item.string_id != 0) {
 			/* Draw the scrolling news text */
-			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[1].right - this->widget[1].left - 2)) {
-				this->ticker_scroll = -1280;
+			if (!DrawScrollingStatusText(&_statusbar_news_item, this->ticker_scroll, this->widget[SBW_MIDDLE].right - this->widget[SBW_MIDDLE].left - 2)) {
+				this->ticker_scroll = TICKER_STOP;
 				if (c != NULL) {
 					/* This is the default text */
 					SetDParam(0, c->index);
-					DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
+					DrawStringCenteredTruncated(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_02BA, TC_FROMSTRING);
 				}
 			}
 		} else {
 			if (c != NULL) {
 				/* This is the default text */
 				SetDParam(0, c->index);
-				DrawStringCenteredTruncated(this->widget[1].left + 1, this->widget[1].right - 1, 1, STR_02BA, TC_FROMSTRING);
+				DrawStringCenteredTruncated(this->widget[SBW_MIDDLE].left + 1, this->widget[SBW_MIDDLE].right - 1, 1, STR_02BA, TC_FROMSTRING);
 			}
 		}
 
-		if (this->reminder_timeout > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, this->widget[1].right - 11, 2);
+		if (this->reminder_timeout > 0) DrawSprite(SPR_BLOT, PALETTE_TO_RED, this->widget[SBW_MIDDLE].right - 11, 2);
 	}
 
 	virtual void OnInvalidateData(int data)
@@ -124,11 +139,11 @@ struct StatusBarWindow : Window {
 			default: NOT_REACHED();
 			case SBI_SAVELOAD_START:  this->saving = true;  break;
 			case SBI_SAVELOAD_FINISH: this->saving = false; break;
-			case SBI_SHOW_TICKER:     this->ticker_scroll    = 360; break;
-			case SBI_SHOW_REMINDER:   this->reminder_timeout =  91; break;
+			case SBI_SHOW_TICKER:     this->ticker_scroll    =   TICKER_START; break;
+			case SBI_SHOW_REMINDER:   this->reminder_timeout = REMINDER_START; break;
 			case SBI_NEWS_DELETED:
-				this->ticker_scroll    = -1280; // reset ticker ...
-				this->reminder_timeout =     0; // ... and reminder
+				this->ticker_scroll    =   TICKER_STOP; // reset ticker ...
+				this->reminder_timeout = REMINDER_STOP; // ... and reminder
 				break;
 		}
 	}
@@ -136,8 +151,8 @@ struct StatusBarWindow : Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case 1: ShowLastNewsMessage(); break;
-			case 2: if (_local_company != COMPANY_SPECTATOR) ShowCompanyFinances(_local_company); break;
+			case SBW_MIDDLE: ShowLastNewsMessage(); break;
+			case SBW_RIGHT:  if (_local_company != COMPANY_SPECTATOR) ShowCompanyFinances(_local_company); break;
 			default: ResetObjectToPlace();
 		}
 	}
@@ -146,16 +161,16 @@ struct StatusBarWindow : Window {
 	{
 		if (_pause_game) return;
 
-		if (this->ticker_scroll > -1280) { // Scrolling text
-			this->ticker_scroll -= 2;
-			this->InvalidateWidget(1);
+		if (this->ticker_scroll > TICKER_STOP) { // Scrolling text
+			this->ticker_scroll -= COUNTER_STEP;
+			this->InvalidateWidget(SBW_MIDDLE);
 		}
 
-		if (this->reminder_timeout > 0) { // Red blot to show there are new unread newsmessages
-			this->reminder_timeout -= 2;
-		} else if (this->reminder_timeout < 0) {
-			this->reminder_timeout = 0;
-			this->InvalidateWidget(1);
+		if (this->reminder_timeout > REMINDER_STOP) { // Red blot to show there are new unread newsmessages
+			this->reminder_timeout -= COUNTER_STEP;
+		} else if (this->reminder_timeout < REMINDER_STOP) {
+			this->reminder_timeout = REMINDER_STOP;
+			this->InvalidateWidget(SBW_MIDDLE);
 		}
 	}
 };
@@ -180,7 +195,7 @@ static WindowDesc _main_status_desc = {
 bool IsNewsTickerShown()
 {
 	const StatusBarWindow *w = dynamic_cast<StatusBarWindow*>(FindWindowById(WC_STATUS_BAR, 0));
-	return w != NULL && w->ticker_scroll > -1280;
+	return w != NULL && w->ticker_scroll > StatusBarWindow::TICKER_STOP;
 }
 
 void ShowStatusBar()
