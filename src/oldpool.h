@@ -211,6 +211,7 @@ struct PoolItem {
 	/**
 	 * An overriden version of new that allocates memory on the pool.
 	 * @param size the size of the variable (unused)
+	 * @pre CanAllocateItem()
 	 * @return the memory that is 'allocated'
 	 */
 	void *operator new(size_t size)
@@ -282,7 +283,8 @@ private:
 protected:
 	/**
 	 * Allocate a pool item; possibly allocate a new block in the pool.
-	 * @return the allocated pool item (or NULL when the pool is full).
+	 * @pre CanAllocateItem()
+	 * @return the allocated pool item.
 	 */
 	static inline T *AllocateRaw()
 	{
@@ -292,7 +294,8 @@ protected:
 	/**
 	 * Allocate a pool item; possibly allocate a new block in the pool.
 	 * @param first the first pool item to start searching
-	 * @return the allocated pool item (or NULL when the pool is full).
+	 * @pre CanAllocateItem()
+	 * @return the allocated pool item.
 	 */
 	static inline T *AllocateRaw(uint &first)
 	{
@@ -342,7 +345,8 @@ public:
 	OldMemoryPool<type> _##name##_pool( \
 		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
 		PoolNewBlock<type, &_##name##_pool>, PoolCleanBlock<type, &_##name##_pool>); \
-		template type *PoolItem<type, type##ID, &_##name##_pool>::AllocateSafeRaw(uint &first);
+		template type *PoolItem<type, type##ID, &_##name##_pool>::AllocateSafeRaw(uint &first); \
+		template bool PoolItem<type, type##ID, &_##name##_pool>::CanAllocateItem(uint count);
 
 
 #define STATIC_OLD_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \

@@ -11,7 +11,8 @@
  * Allocate a pool item; possibly allocate a new block in the pool.
  * @param first the first pool item to start searching
  * @pre first <= Tpool->GetSize()
- * @return the allocated pool item (or NULL when the pool is full).
+ * @pre CanAllocateItem()
+ * @return the allocated pool item
  */
 template<typename T, typename Tid, OldMemoryPool<T> *Tpool> T *PoolItem<T, Tid, Tpool>::AllocateSafeRaw(uint &first)
 {
@@ -31,7 +32,8 @@ template<typename T, typename Tid, OldMemoryPool<T> *Tpool> T *PoolItem<T, Tid, 
 	/* Check if we can add a block to the pool */
 	if (Tpool->AddBlockToPool()) return AllocateRaw(first);
 
-	return NULL;
+	/* One should *ALWAYS* be sure to have enough space before making vehicles! */
+	NOT_REACHED();
 }
 
 /**
