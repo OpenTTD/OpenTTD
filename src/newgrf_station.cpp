@@ -693,16 +693,22 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
 
 	if (statspec == NULL || st == NULL) return 0;
 
-	/* Check if this spec has already been allocated */
-	for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {
-		if (st->speclist[i].spec == statspec) return i;
-	}
-
 	for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {
 		if (st->speclist[i].spec == NULL && st->speclist[i].grfid == 0) break;
 	}
 
-	if (i == MAX_SPECLIST) return -1;
+	if (i == MAX_SPECLIST) {
+		/* As final effort when the spec list is already full...
+		 * try to find the same spec and return that one. This might
+		 * result in slighty "wrong" (as per specs) looking stations,
+		 * but it's fairly unlikely that one reaches the limit anyways.
+		 */
+		for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {
+			if (st->speclist[i].spec == statspec) return i;
+		}
+
+		return -1;
+	}
 
 	if (exec) {
 		if (i >= st->num_specs) {

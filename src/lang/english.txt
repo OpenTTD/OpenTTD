@@ -1912,6 +1912,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Too clos
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Adjoins more than one existing station/loading area
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Too many stations/loading areas in this town
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Too many stations/loading areas
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Too many railway station parts
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Too many bus stops
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Too many lorry stations
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Too close to another station/loading area
