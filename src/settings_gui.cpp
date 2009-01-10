@@ -989,22 +989,26 @@ uint PatchPage::Draw(GameSettings *patches_ptr, int base_x, int base_y, uint fir
 }
 
 
-static PatchEntry _patches_ui[] = {
+static PatchEntry _patches_ui_display[] = {
 	PatchEntry("gui.vehicle_speed"),
 	PatchEntry("gui.status_long_date"),
 	PatchEntry("gui.date_format_in_default_names"),
-	PatchEntry("gui.show_finances"),
+	PatchEntry("gui.population_in_label"),
+	PatchEntry("gui.measure_tooltip"),
+	PatchEntry("gui.loading_indicators"),
+	PatchEntry("gui.liveries"),
+	PatchEntry("gui.show_track_reservation"),
+};
+/** Display options sub-page */
+static PatchPage _patches_ui_display_page = {_patches_ui_display, lengthof(_patches_ui_display)};
+
+static PatchEntry _patches_ui_interaction[] = {
 	PatchEntry("gui.autoscroll"),
 	PatchEntry("gui.reverse_scroll"),
 	PatchEntry("gui.smooth_scroll"),
-	PatchEntry("gui.errmsg_duration"),
-	PatchEntry("gui.toolbar_pos"),
-	PatchEntry("gui.measure_tooltip"),
 	PatchEntry("gui.window_snap_radius"),
 	PatchEntry("gui.window_soft_limit"),
-	PatchEntry("gui.population_in_label"),
 	PatchEntry("gui.link_terraform_toolbar"),
-	PatchEntry("gui.liveries"),
 	PatchEntry("gui.prefer_teamchat"),
 	/* While the horizontal scrollwheel scrolling is written as general code, only
 	 *  the cocoa (OSX) driver generates input for it.
@@ -1015,47 +1019,67 @@ static PatchEntry _patches_ui[] = {
 	/* We might need to emulate a right mouse button on mac */
 	PatchEntry("gui.right_mouse_btn_emulation"),
 #endif
+	PatchEntry("gui.left_mouse_btn_scrolling"),
+};
+/** Interaction sub-page */
+static PatchPage _patches_ui_interaction_page = {_patches_ui_interaction, lengthof(_patches_ui_interaction)};
+
+static PatchEntry _patches_ui[] = {
+	PatchEntry(&_patches_ui_display_page, STR_CONFIG_PATCHES_DISPLAY_OPTIONS),
+	PatchEntry(&_patches_ui_interaction_page, STR_CONFIG_PATCHES_INTERACTION),
+	PatchEntry("gui.show_finances"),
+	PatchEntry("gui.errmsg_duration"),
+	PatchEntry("gui.toolbar_pos"),
 	PatchEntry("gui.pause_on_newgame"),
 	PatchEntry("gui.advanced_vehicle_list"),
-	PatchEntry("gui.loading_indicators"),
 	PatchEntry("gui.timetable_in_ticks"),
 	PatchEntry("gui.quick_goto"),
 	PatchEntry("gui.default_rail_type"),
 	PatchEntry("gui.always_build_infrastructure"),
 	PatchEntry("gui.persistent_buildingtools"),
-	PatchEntry("gui.show_track_reservation"),
-	PatchEntry("gui.left_mouse_btn_scrolling"),
 };
 /** Interface subpage */
 static PatchPage _patches_ui_page = {_patches_ui, lengthof(_patches_ui)};
 
-static PatchEntry _patches_construction[] = {
-	PatchEntry("construction.build_on_slopes"),
-	PatchEntry("construction.autoslope"),
-	PatchEntry("construction.extra_dynamite"),
-	PatchEntry("construction.longbridges"),
+static PatchEntry _patches_construction_signals[] = {
 	PatchEntry("construction.signal_side"),
-	PatchEntry("station.always_small_airport"),
 	PatchEntry("gui.enable_signal_gui"),
 	PatchEntry("gui.drag_signals_density"),
-	PatchEntry("game_creation.oil_refinery_limit"),
 	PatchEntry("gui.semaphore_build_before"),
 	PatchEntry("gui.default_signal_type"),
 	PatchEntry("gui.cycle_signal_types"),
 };
+/** Signals subpage */
+static PatchPage _patches_construction_signals_page = {_patches_construction_signals, lengthof(_patches_construction_signals)};
+
+static PatchEntry _patches_construction[] = {
+	PatchEntry(&_patches_construction_signals_page, STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS),
+	PatchEntry("construction.build_on_slopes"),
+	PatchEntry("construction.autoslope"),
+	PatchEntry("construction.extra_dynamite"),
+	PatchEntry("construction.longbridges"),
+	PatchEntry("station.always_small_airport"),
+	PatchEntry("game_creation.oil_refinery_limit"),
+};
 /** Construction sub-page */
 static PatchPage _patches_construction_page = {_patches_construction, lengthof(_patches_construction)};
 
-static PatchEntry _patches_stations[] = {
-	PatchEntry("station.join_stations"),
+static PatchEntry _patches_stations_cargo[] = {
 	PatchEntry("order.improved_load"),
+	PatchEntry("order.gradual_loading"),
 	PatchEntry("order.selectgoods"),
+};
+/** Cargo handling sub-page */
+static PatchPage _patches_stations_cargo_page = {_patches_stations_cargo, lengthof(_patches_stations_cargo)};
+
+static PatchEntry _patches_stations[] = {
+	PatchEntry(&_patches_stations_cargo_page, STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING),
+	PatchEntry("station.join_stations"),
 	PatchEntry("gui.new_nonstop"),
 	PatchEntry("station.nonuniform_stations"),
 	PatchEntry("station.station_spread"),
 	PatchEntry("order.serviceathelipad"),
 	PatchEntry("station.modified_catchment"),
-	PatchEntry("order.gradual_loading"),
 	PatchEntry("construction.road_stop_on_town_road"),
 	PatchEntry("station.adjacent_stations"),
 	PatchEntry("station.distant_join_stations"),
@@ -1064,27 +1088,37 @@ static PatchEntry _patches_stations[] = {
 /** Stations sub-page */
 static PatchPage _patches_stations_page = {_patches_stations, lengthof(_patches_stations)};
 
-static PatchEntry _patches_economy[] = {
-	PatchEntry("economy.inflation"),
-	PatchEntry("construction.raw_industry_construction"),
-	PatchEntry("economy.multiple_industry_per_town"),
-	PatchEntry("economy.same_industry_close"),
+static PatchEntry _patches_economy_towns[] = {
 	PatchEntry("economy.bribe"),
 	PatchEntry("economy.exclusive_rights"),
-	PatchEntry("economy.give_money"),
-	PatchEntry("gui.colored_news_year"),
-	PatchEntry("economy.smooth_economy"),
-	PatchEntry("economy.allow_shares"),
 	PatchEntry("economy.town_layout"),
 	PatchEntry("economy.mod_road_rebuild"),
 	PatchEntry("economy.town_growth_rate"),
 	PatchEntry("economy.larger_towns"),
 	PatchEntry("economy.initial_city_size"),
 };
+/** Towns sub-page */
+static PatchPage _patches_economy_towns_page = {_patches_economy_towns, lengthof(_patches_economy_towns)};
+
+static PatchEntry _patches_economy_industries[] = {
+	PatchEntry("construction.raw_industry_construction"),
+	PatchEntry("economy.multiple_industry_per_town"),
+	PatchEntry("economy.same_industry_close"),
+};
+/** Industries sub-page */
+static PatchPage _patches_economy_industries_page = {_patches_economy_industries, lengthof(_patches_economy_industries)};
+
+static PatchEntry _patches_economy[] = {
+	PatchEntry(&_patches_economy_towns_page, STR_CONFIG_PATCHES_ECONOMY_TOWNS),
+	PatchEntry(&_patches_economy_industries_page, STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES),
+	PatchEntry("economy.inflation"),
+	PatchEntry("gui.colored_news_year"),
+	PatchEntry("economy.smooth_economy"),
+};
 /** Economy sub-page */
 static PatchPage _patches_economy_page = {_patches_economy, lengthof(_patches_economy)};
 
-static PatchEntry _patches_ai[] = {
+static PatchEntry _patches_ai_npc[] = {
 	PatchEntry("ai.ainew_active"),
 	PatchEntry("ai.ai_in_multiplayer"),
 	PatchEntry("ai.ai_disable_veh_train"),
@@ -1092,38 +1126,70 @@ static PatchEntry _patches_ai[] = {
 	PatchEntry("ai.ai_disable_veh_aircraft"),
 	PatchEntry("ai.ai_disable_veh_ship"),
 };
+/** Computer players sub-page */
+static PatchPage _patches_ai_npc_page = {_patches_ai_npc, lengthof(_patches_ai_npc)};
+
+static PatchEntry _patches_ai[] = {
+	PatchEntry(&_patches_ai_npc_page, STR_CONFIG_PATCHES_AI_NPC),
+	PatchEntry("economy.give_money"),
+	PatchEntry("economy.allow_shares"),
+};
 /** AI sub-page */
 static PatchPage _patches_ai_page = {_patches_ai, lengthof(_patches_ai)};
 
-static PatchEntry _patches_vehicles[] = {
-	PatchEntry("vehicle.realistic_acceleration"),
-	PatchEntry("pf.forbid_90_deg"),
-	PatchEntry("vehicle.mammoth_trains"),
-	PatchEntry("order.gotodepot"),
-	PatchEntry("pf.roadveh_queue"),
+static PatchEntry _patches_vehicles_routing[] = {
 	PatchEntry("pf.pathfinder_for_trains"),
+	PatchEntry("pf.forbid_90_deg"),
 	PatchEntry("pf.pathfinder_for_roadvehs"),
+	PatchEntry("pf.roadveh_queue"),
 	PatchEntry("pf.pathfinder_for_ships"),
-	PatchEntry("gui.vehicle_income_warn"),
-	PatchEntry("gui.order_review_system"),
-	PatchEntry("vehicle.never_expire_vehicles"),
-	PatchEntry("gui.lost_train_warn"),
+};
+/** Autorenew sub-page */
+static PatchPage _patches_vehicles_routing_page = {_patches_vehicles_routing, lengthof(_patches_vehicles_routing)};
+
+static PatchEntry _patches_vehicles_autorenew[] = {
 	PatchEntry("gui.autorenew"),
 	PatchEntry("gui.autorenew_months"),
 	PatchEntry("gui.autorenew_money"),
-	PatchEntry("vehicle.max_trains"),
-	PatchEntry("vehicle.max_roadveh"),
-	PatchEntry("vehicle.max_aircraft"),
-	PatchEntry("vehicle.max_ships"),
+};
+/** Autorenew sub-page */
+static PatchPage _patches_vehicles_autorenew_page = {_patches_vehicles_autorenew, lengthof(_patches_vehicles_autorenew)};
+
+static PatchEntry _patches_vehicles_servicing[] = {
 	PatchEntry("vehicle.servint_ispercent"),
 	PatchEntry("vehicle.servint_trains"),
 	PatchEntry("vehicle.servint_roadveh"),
 	PatchEntry("vehicle.servint_ships"),
 	PatchEntry("vehicle.servint_aircraft"),
 	PatchEntry("order.no_servicing_if_no_breakdowns"),
+};
+/** Servicing sub-page */
+static PatchPage _patches_vehicles_servicing_page = {_patches_vehicles_servicing, lengthof(_patches_vehicles_servicing)};
+
+static PatchEntry _patches_vehicles_trains[] = {
+	PatchEntry("vehicle.realistic_acceleration"),
+	PatchEntry("vehicle.mammoth_trains"),
+	PatchEntry("gui.vehicle_income_warn"),
+	PatchEntry("gui.lost_train_warn"),
 	PatchEntry("vehicle.wagon_speed_limits"),
 	PatchEntry("vehicle.disable_elrails"),
 	PatchEntry("vehicle.freight_trains"),
+};
+/** Trains sub-page */
+static PatchPage _patches_vehicles_trains_page = {_patches_vehicles_trains, lengthof(_patches_vehicles_trains)};
+
+static PatchEntry _patches_vehicles[] = {
+	PatchEntry(&_patches_vehicles_routing_page, STR_CONFIG_PATCHES_VEHICLES_ROUTING),
+	PatchEntry(&_patches_vehicles_autorenew_page, STR_CONFIG_PATCHES_VEHICLES_AUTORENEW),
+	PatchEntry(&_patches_vehicles_servicing_page, STR_CONFIG_PATCHES_VEHICLES_SERVICING),
+	PatchEntry(&_patches_vehicles_trains_page, STR_CONFIG_PATCHES_VEHICLES_TRAINS),
+	PatchEntry("order.gotodepot"),
+	PatchEntry("gui.order_review_system"),
+	PatchEntry("vehicle.never_expire_vehicles"),
+	PatchEntry("vehicle.max_trains"),
+	PatchEntry("vehicle.max_roadveh"),
+	PatchEntry("vehicle.max_aircraft"),
+	PatchEntry("vehicle.max_ships"),
 	PatchEntry("vehicle.plane_speed"),
 	PatchEntry("order.timetabling"),
 	PatchEntry("vehicle.dynamic_engines"),

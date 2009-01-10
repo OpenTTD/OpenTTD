@@ -1218,6 +1218,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vehicle
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stations
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economy
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Competitors
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Display options
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaction
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Cargo handling
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Computer players
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autorenew
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servicing
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Routing
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Trains
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Towns
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
 STR_CONFIG_PATCHES_DISABLED                                     :disabled
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
