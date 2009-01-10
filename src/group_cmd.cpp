@@ -149,12 +149,9 @@ CommandCost CmdDeleteGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 static bool IsUniqueGroupName(const char *name)
 {
 	const Group *g;
-	char buf[512];
 
 	FOR_ALL_GROUPS(g) {
-		SetDParam(0, g->index);
-		GetString(buf, STR_GROUP_NAME, lastof(buf));
-		if (strcmp(buf, name) == 0) return false;
+		if (g->name != NULL && strcmp(g->name, name) == 0) return false;
 	}
 
 	return true;

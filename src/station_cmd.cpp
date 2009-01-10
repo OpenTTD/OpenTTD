@@ -2895,12 +2895,9 @@ static void UpdateStationWaiting(Station *st, CargoID type, uint amount)
 static bool IsUniqueStationName(const char *name)
 {
 	const Station *st;
-	char buf[512];
 
 	FOR_ALL_STATIONS(st) {
-		SetDParam(0, st->index);
-		GetString(buf, STR_STATION, lastof(buf));
-		if (strcmp(buf, name) == 0) return false;
+		if (st->name != NULL && strcmp(st->name, name) == 0) return false;
 	}
 
 	return true;

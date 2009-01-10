@@ -336,12 +336,9 @@ CommandCost CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint
 static bool IsUniqueWaypointName(const char *name)
 {
 	const Waypoint *wp;
-	char buf[512];
 
 	FOR_ALL_WAYPOINTS(wp) {
-		SetDParam(0, wp->index);
-		GetString(buf, STR_WAYPOINT_RAW, lastof(buf));
-		if (strcmp(buf, name) == 0) return false;
+		if (wp->name != NULL && strcmp(wp->name, name) == 0) return false;
 	}
 
 	return true;

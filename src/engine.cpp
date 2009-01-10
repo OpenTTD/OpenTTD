@@ -493,13 +493,10 @@ void EnginesMonthlyLoop()
 
 static bool IsUniqueEngineName(const char *name)
 {
-	char buf[512];
-
 	const Engine *e;
+
 	FOR_ALL_ENGINES(e) {
-		SetDParam(0, e->index);
-		GetString(buf, STR_ENGINE_NAME, lastof(buf));
-		if (strcmp(buf, name) == 0) return false;
+		if (e->name != NULL && strcmp(e->name, name) == 0) return false;
 	}
 
 	return true;

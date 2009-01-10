@@ -205,12 +205,9 @@ CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 static bool IsUniqueCompanyName(const char *name)
 {
 	const Company *c;
-	char buf[512];
 
 	FOR_ALL_COMPANIES(c) {
-		SetDParam(0, c->index);
-		GetString(buf, STR_COMPANY_NAME, lastof(buf));
-		if (strcmp(buf, name) == 0) return false;
+		if (c->name != NULL && strcmp(c->name, name) == 0) return false;
 	}
 
 	return true;
@@ -244,12 +241,9 @@ CommandCost CmdRenameCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 static bool IsUniquePresidentName(const char *name)
 {
 	const Company *c;
-	char buf[512];
 
 	FOR_ALL_COMPANIES(c) {
-		SetDParam(0, c->index);
-		GetString(buf, STR_PRESIDENT_NAME, lastof(buf));
-		if (strcmp(buf, name) == 0) return false;
+		if (c->president_name != NULL && strcmp(c->president_name, name) == 0) return false;
 	}
 
 	return true;

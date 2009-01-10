@@ -1525,32 +1525,9 @@ void VehicleEnterDepot(Vehicle *v)
 static bool IsUniqueVehicleName(const char *name)
 {
 	const Vehicle *v;
-	char buf[512];
 
 	FOR_ALL_VEHICLES(v) {
-		switch (v->type) {
-			case VEH_TRAIN:
-				if (!IsTrainEngine(v)) continue;
-				break;
-
-			case VEH_ROAD:
-				if (!IsRoadVehFront(v)) continue;
-				break;
-
-			case VEH_AIRCRAFT:
-				if (!IsNormalAircraft(v)) continue;
-				break;
-
-			case VEH_SHIP:
-				break;
-
-			default:
-				continue;
-		}
-
-		SetDParam(0, v->index);
-		GetString(buf, STR_VEHICLE_NAME, lastof(buf));
-		if (strcmp(buf, name) == 0) return false;
+		if (v->name != NULL && strcmp(v->name, name) == 0) return false;
 	}
 
 	return true;

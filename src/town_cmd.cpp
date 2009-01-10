@@ -2103,12 +2103,9 @@ void ClearTownHouse(Town *t, TileIndex tile)
 static bool IsUniqueTownName(const char *name)
 {
 	const Town *t;
-	char buf[512];
 
 	FOR_ALL_TOWNS(t) {
-		SetDParam(0, t->index);
-		GetString(buf, STR_TOWN, lastof(buf));
-		if (strcmp(buf, name) == 0) return false;
+		if (t->name != NULL && strcmp(t->name, name) == 0) return false;
 	}
 
 	return true;
