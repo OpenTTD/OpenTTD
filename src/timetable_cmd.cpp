@@ -153,11 +153,13 @@ CommandCost CmdAutofillTimetable(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 	if (flags & DC_EXEC) {
 		if (HasBit(p2, 0)) {
-			/* Start autofilling the timetable, which clears all the current
-			 * timings and clears the "timetable has started" bit. */
+			/* Start autofilling the timetable, which clears the
+			 * "timetable has started" bit. Times are not cleared anymore, but are
+			 * overwritten when the order is reached now. */
 			SetBit(v->vehicle_flags, VF_AUTOFILL_TIMETABLE);
 			ClrBit(v->vehicle_flags, VF_TIMETABLE_STARTED);
 
+			/* Overwrite waiting times only if they got longer */
 			if (HasBit(p2, 1)) SetBit(v->vehicle_flags, VF_AUTOFILL_PRES_WAIT_TIME);
 
 			v->lateness_counter = 0;
