@@ -3652,6 +3652,12 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 {
 	Vehicle *prev;
 
+	if (v->current_order.IsType(OT_LEAVESTATION)) {
+		v->current_order.Free();
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		return;
+	}
+
 	/* For every vehicle after and including the given vehicle */
 	for (prev = v->Previous(); v != nomove; prev = v, v = v->Next()) {
 		DiagDirection enterdir = DIAGDIR_BEGIN;
@@ -3680,9 +3686,6 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 					if (HasBit(r, VETS_ENTERED_STATION)) {
 						/* The new position is the end of the platform */
 						TrainEnterStation(v, r >> VETS_STATION_ID_OFFSET);
-					} else if (v->current_order.IsType(OT_LEAVESTATION)) {
-						v->current_order.Free();
-						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 					}
 				}
 			} else {
