@@ -1212,12 +1212,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proport
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial city size multiplier: {ORANGE}{STRING1}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Remove absurd road-elements during the road construction
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construction
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vehicles
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stations
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economy
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Competitors
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interface
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Construction
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vehicles
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stations
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economy
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Competitors
 
 STR_CONFIG_PATCHES_DISABLED                                     :disabled
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
