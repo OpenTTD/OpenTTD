@@ -498,8 +498,8 @@ table/genland.h
 table/industry_land.h
 table/landscape_sprite.h
 table/namegen.h
-table/palettes.h
 table/palette_convert.h
+table/palettes.h
 table/railtypes.h
 table/road_land.h
 table/roadveh_movement.h
@@ -598,6 +598,36 @@ tunnelbridge_map.h
 unmovable_map.h
 void_map.h
 water_map.h
+
+# Save Load Code
+saveload/afterload.cpp
+saveload/ai_sl.cpp
+saveload/animated_tile_sl.cpp
+saveload/autoreplace_sl.cpp
+saveload/cargopacket_sl.cpp
+saveload/cheat_sl.cpp
+saveload/company_sl.cpp
+saveload/depot_sl.cpp
+saveload/economy_sl.cpp
+saveload/engine_sl.cpp
+saveload/gamelog_sl.cpp
+saveload/group_sl.cpp
+saveload/industry_sl.cpp
+saveload/map_sl.cpp
+saveload/misc_sl.cpp
+saveload/newgrf_sl.cpp
+saveload/oldloader.cpp
+saveload/order_sl.cpp
+saveload/saveload.cpp
+saveload/saveload.h
+saveload/saveload_internal.h
+saveload/signs_sl.cpp
+saveload/station_sl.cpp
+saveload/strings_sl.cpp
+saveload/subsidy_sl.cpp
+saveload/town_sl.cpp
+saveload/vehicle_sl.cpp
+saveload/waypoint_sl.cpp
 
 # Misc
 misc/array.hpp
