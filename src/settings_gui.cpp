@@ -1269,103 +1269,102 @@ struct PatchesSelectionWindow : Window {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		switch (widget) {
-			case PATCHSEL_OPTIONSPANEL: {
-				int y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
-				if (y < 0) return;  // Clicked above first entry
+		if (widget != PATCHSEL_OPTIONSPANEL) return;
 
-				byte btn = this->vscroll.pos + y / SETTING_HEIGHT;  // Compute which setting is selected
-				if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
+		int y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
+		if (y < 0) return;  // Clicked above first entry
 
-				uint cur_row = 0;
-				PatchEntry *pe = _patches_main_page.FindEntry(btn, &cur_row);
+		byte btn = this->vscroll.pos + y / SETTING_HEIGHT;  // Compute which setting is selected
+		if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
 
-				if (pe == NULL) return;  // Clicked below the last setting of the page
+		uint cur_row = 0;
+		PatchEntry *pe = _patches_main_page.FindEntry(btn, &cur_row);
 
-				int x = pt.x - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
-				if (x < 0) return;  // Clicked left of the entry
+		if (pe == NULL) return;  // Clicked below the last setting of the page
 
-				if ((pe->flags & PEF_KIND_MASK) == PEF_SUBTREE_KIND) {
-					pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
+		int x = pt.x - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
+		if (x < 0) return;  // Clicked left of the entry
 
-					SetVScrollCount(this, _patches_main_page.Length());
-					this->SetDirty();
-					return;
-				}
+		if ((pe->flags & PEF_KIND_MASK) == PEF_SUBTREE_KIND) {
+			pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
 
-				assert((pe->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
-				const SettingDesc *sd = pe->d.entry.setting;
+			SetVScrollCount(this, _patches_main_page.Length());
+			this->SetDirty();
+			return;
+		}
 
-				/* return if action is only active in network, or only settable by server */
-				if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
-				if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
-				if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
+		assert((pe->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+		const SettingDesc *sd = pe->d.entry.setting;
 
-				void *var = GetVariableAddress(patches_ptr, &sd->save);
-				int32 value = (int32)ReadValue(var, sd->save.conv);
+		/* return if action is only active in network, or only settable by server */
+		if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
+		if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
+		if ((sd->desc.flags & SGF_NO_NETWORK) && _networking) return;
 
-				/* clicked on the icon on the left side. Either scroller or bool on/off */
-				if (x < 21) {
-					const SettingDescBase *sdb = &sd->desc;
-					int32 oldvalue = value;
+		void *var = GetVariableAddress(patches_ptr, &sd->save);
+		int32 value = (int32)ReadValue(var, sd->save.conv);
 
-					switch (sdb->cmd) {
-					case SDT_BOOLX: value ^= 1; break;
-					case SDT_ONEOFMANY:
-					case SDT_NUMX: {
-						/* Add a dynamic step-size to the scroller. In a maximum of
-							* 50-steps you should be able to get from min to max,
-							* unless specified otherwise in the 'interval' variable
-							* of the current patch. */
-						uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
-						if (step == 0) step = 1;
+		/* clicked on the icon on the left side. Either scroller or bool on/off */
+		if (x < 21) {
+			const SettingDescBase *sdb = &sd->desc;
+			int32 oldvalue = value;
 
-						/* don't allow too fast scrolling */
-						if ((this->flags4 & WF_TIMEOUT_MASK) > WF_TIMEOUT_TRIGGER) {
-							_left_button_clicked = false;
-							return;
-						}
+			switch (sdb->cmd) {
+				case SDT_BOOLX: value ^= 1; break;
+				case SDT_ONEOFMANY:
+				case SDT_NUMX: {
+					/* Add a dynamic step-size to the scroller. In a maximum of
+					 * 50-steps you should be able to get from min to max,
+					 * unless specified otherwise in the 'interval' variable
+					 * of the current patch. */
+					uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
+					if (step == 0) step = 1;
 
-						/* Increase or decrease the value and clamp it to extremes */
-						if (x >= 10) {
-							value += step;
-							if (value > sdb->max) value = sdb->max;
-							if (value < sdb->min) value = sdb->min; // skip between "disabled" and minimum
-						} else {
-							value -= step;
-							if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
-						}
-
-						/* Set up scroller timeout for numeric values */
-						if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
-							if (this->clicked_entry != NULL) { // Release previous buttons if any
-								this->clicked_entry->SetButtons(0);
-							}
-							this->clicked_entry = pe;
-							this->clicked_entry->SetButtons((x >= 10) ? PEF_RIGHT_DEPRESSED : PEF_LEFT_DEPRESSED);
-							this->flags4 |= WF_TIMEOUT_BEGIN;
-							_left_button_clicked = false;
-						}
-					} break;
-					default: NOT_REACHED();
+					/* don't allow too fast scrolling */
+					if ((this->flags4 & WF_TIMEOUT_MASK) > WF_TIMEOUT_TRIGGER) {
+						_left_button_clicked = false;
+						return;
 					}
 
-					if (value != oldvalue) {
-						SetPatchValue(pe->d.entry.index, value);
-						this->SetDirty();
+					/* Increase or decrease the value and clamp it to extremes */
+					if (x >= 10) {
+						value += step;
+						if (value > sdb->max) value = sdb->max;
+						if (value < sdb->min) value = sdb->min; // skip between "disabled" and minimum
+					} else {
+						value -= step;
+						if (value < sdb->min) value = (sdb->flags & SGF_0ISDISABLED) ? 0 : sdb->min;
 					}
-				} else {
-					/* only open editbox for types that its sensible for */
-					if (sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
-						/* Show the correct currency-translated value */
-						if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
 
-						this->valuewindow_entry = pe;
-						SetDParam(0, value);
-						ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
+					/* Set up scroller timeout for numeric values */
+					if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
+						if (this->clicked_entry != NULL) { // Release previous buttons if any
+							this->clicked_entry->SetButtons(0);
+						}
+						this->clicked_entry = pe;
+						this->clicked_entry->SetButtons((x >= 10) ? PEF_RIGHT_DEPRESSED : PEF_LEFT_DEPRESSED);
+						this->flags4 |= WF_TIMEOUT_BEGIN;
+						_left_button_clicked = false;
 					}
-				}
-			} break;
+				} break;
+
+				default: NOT_REACHED();
+			}
+
+			if (value != oldvalue) {
+				SetPatchValue(pe->d.entry.index, value);
+				this->SetDirty();
+			}
+		} else {
+			/* only open editbox for types that its sensible for */
+			if (sd->desc.cmd != SDT_BOOLX && !(sd->desc.flags & SGF_MULTISTRING)) {
+				/* Show the correct currency-translated value */
+				if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
+
+				this->valuewindow_entry = pe;
+				SetDParam(0, value);
+				ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
+			}
 		}
 	}
 
