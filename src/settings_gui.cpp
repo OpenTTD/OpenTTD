@@ -635,6 +635,7 @@ struct PatchEntry {
 	void SetButtons(byte new_val);
 
 	uint Length() const;
+	PatchEntry *FindEntry(uint row, uint *cur_row);
 };
 
 /** Data structure describing one page of patches in the patch settings window. */
@@ -645,6 +646,7 @@ struct PatchPage {
 	void Init(byte level = 0);
 
 	uint Length() const;
+	PatchEntry *FindEntry(uint row, uint *cur_row) const;
 };
 
 
@@ -713,7 +715,7 @@ void PatchEntry::SetButtons(byte new_val)
 /** Return numbers of rows needed to display the entry */
 uint PatchEntry::Length() const
 {
-	switch(this->flags & PEF_KIND_MASK) {
+	switch (this->flags & PEF_KIND_MASK) {
 		case PEF_SETTING_KIND:
 			return 1;
 		case PEF_SUBTREE_KIND:
@@ -722,6 +724,33 @@ uint PatchEntry::Length() const
 			return 1 + this->d.sub.page->Length(); // 1 extra row for the title
 		default: NOT_REACHED();
 	}
+}
+
+/**
+ * Find patch entry at row \a row_num
+ * @param row_num Index of entry to return
+ * @param cur_row Current row number
+ * @return The requested patch entry or \c NULL if it not found
+ */
+PatchEntry *PatchEntry::FindEntry(uint row_num, uint *cur_row)
+{
+	if (row_num == *cur_row) return this;
+
+	switch (this->flags & PEF_KIND_MASK) {
+		case PEF_SETTING_KIND:
+			(*cur_row)++;
+			break;
+		case PEF_SUBTREE_KIND:
+			(*cur_row)++; // add one for row containing the title
+			if (this->d.sub.folded) {
+				break;
+			}
+
+			/* sub-page is visible => search it too */
+			return this->d.sub.page->FindEntry(row_num, cur_row);
+		default: NOT_REACHED();
+	}
+	return NULL;
 }
 
 
@@ -746,6 +775,25 @@ uint PatchPage::Length() const
 		length += this->entries[field].Length();
 	}
 	return length;
+}
+
+/**
+ * Find the patch entry at row number \a row_num
+ * @param row_num Index of entry to return
+ * @param cur_row Variable used for keeping track of the current row number. Should point to memory initialized to \c 0 when first called.
+ * @return The requested patch entry or \c NULL if it does not exist
+ */
+PatchEntry *PatchPage::FindEntry(uint row_num, uint *cur_row) const
+{
+	PatchEntry *pe = NULL;
+
+	for (uint field = 0; field < this->num; field++) {
+		pe = this->entries[field].FindEntry(row_num, cur_row);
+		if (pe != NULL) {
+			break;
+		}
+	}
+	return pe;
 }
 
 
@@ -1026,11 +1074,13 @@ struct PatchesSelectionWindow : Window {
 				if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
 
 				const PatchPage *page = &_patches_page[this->page];
+				uint cur_row = 0;
+				PatchEntry *pe = page->FindEntry(btn, &cur_row);
 
-				if (btn >= page->Length()) return;  // Clicked below the last setting of the page
+				if (pe == NULL) return;  // Clicked below the last setting of the page
 
-				assert((page->entries[btn].flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
-				const SettingDesc *sd = page->entries[btn].d.entry.setting;
+				assert((pe->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+				const SettingDesc *sd = pe->d.entry.setting;
 
 				/* return if action is only active in network, or only settable by server */
 				if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
@@ -1077,7 +1127,7 @@ struct PatchesSelectionWindow : Window {
 							if (this->clicked_entry != NULL) { // Release previous buttons if any
 								this->clicked_entry->SetButtons(0);
 							}
-							this->clicked_entry = &page->entries[btn];
+							this->clicked_entry = pe;
 							this->clicked_entry->SetButtons((x >= 10) ? PEF_RIGHT_DEPRESSED : PEF_LEFT_DEPRESSED);
 							this->flags4 |= WF_TIMEOUT_BEGIN;
 							_left_button_clicked = false;
@@ -1087,7 +1137,7 @@ struct PatchesSelectionWindow : Window {
 					}
 
 					if (value != oldvalue) {
-						SetPatchValue(page->entries[btn].d.entry.index, value);
+						SetPatchValue(pe->d.entry.index, value);
 						this->SetDirty();
 					}
 				} else {
@@ -1096,7 +1146,7 @@ struct PatchesSelectionWindow : Window {
 						/* Show the correct currency-translated value */
 						if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
 
-						this->valuewindow_entry = &page->entries[btn];
+						this->valuewindow_entry = pe;
 						SetDParam(0, value);
 						ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
 					}
