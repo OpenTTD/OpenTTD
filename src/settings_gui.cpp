@@ -636,6 +636,11 @@ struct PatchEntry {
 
 	uint Length() const;
 	PatchEntry *FindEntry(uint row, uint *cur_row);
+
+	void Draw(GameSettings *patches_ptr, int x, int y);
+
+private:
+	void DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int x, int y, int state);
 };
 
 /** Data structure describing one page of patches in the patch settings window. */
@@ -751,6 +756,70 @@ PatchEntry *PatchEntry::FindEntry(uint row_num, uint *cur_row)
 		default: NOT_REACHED();
 	}
 	return NULL;
+}
+
+/**
+ * Draw setting value (button + text + current value)
+ * @param patches_ptr Pointer to current values of all settings
+ * @param x           Left-most position in window/panel to start drawing
+ * @param y           Upper-most position in window/panel to start drawing
+ */
+void PatchEntry::Draw(GameSettings *patches_ptr, int x, int y)
+{
+	assert((this->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+	DrawPatch(patches_ptr, this->d.entry.setting, x, y, (this->flags & PEF_BUTTONS_MASK));
+}
+
+/**
+ * Private function to draw setting value (button + text + current value)
+ * @param patches_ptr Pointer to current values of all settings
+ * @param sd          Pointer to value description of setting to draw
+ * @param x           Left-most position in window/panel to start drawing
+ * @param y           Upper-most position in window/panel to start drawing
+ * @param state       State of the left + right arrow buttons to draw for the setting
+ */
+void PatchEntry::DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int x, int y, int state)
+{
+	const SettingDescBase *sdb = &sd->desc;
+	const void *var = GetVariableAddress(patches_ptr, &sd->save);
+	bool editable = true;
+	bool disabled = false;
+
+	/* We do not allow changes of some items when we are a client in a networkgame */
+	if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) editable = false;
+	if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
+	if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
+
+	if (sdb->cmd == SDT_BOOLX) {
+		static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
+		/* Draw checkbox for boolean-value either on/off */
+		bool on = (*(bool*)var);
+
+		DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
+		SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
+	} else {
+		int32 value;
+
+		value = (int32)ReadValue(var, sd->save.conv);
+
+		/* Draw [<][>] boxes for settings of an integer-type */
+		DrawArrowButtons(x, y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && value != sdb->max);
+
+		disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
+		if (disabled) {
+			SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
+		} else {
+			if (sdb->flags & SGF_CURRENCY) {
+				SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
+			} else if (sdb->flags & SGF_MULTISTRING) {
+				SetDParam(0, sdb->str + value + 1);
+			} else {
+				SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_PATCHES_INT32 : STR_7024);
+			}
+			SetDParam(1, value);
+		}
+	}
+	DrawString(x + 25, y, (sdb->str) + disabled, TC_FROMSTRING);
 }
 
 
@@ -1008,56 +1077,9 @@ struct PatchesSelectionWindow : Window {
 		int x = SETTINGTREE_LEFT_OFFSET;
 		int y = SETTINGTREE_TOP_OFFSET;
 		for (uint i = this->vscroll.pos; i != page->Length() && this->vscroll.pos + this->vscroll.cap - i > 0; i++) {
-			assert((page->entries[i].flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
-			const SettingDesc *sd = page->entries[i].d.entry.setting;
-			int state = page->entries[i].flags & PEF_BUTTONS_MASK;
-			DrawPatch(patches_ptr, sd, x, y, state);
+			page->entries[i].Draw(patches_ptr, x, y);
 			y += SETTING_HEIGHT;
 		}
-	}
-
-	void DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int x, int y, int state)
-	{
-		const SettingDescBase *sdb = &sd->desc;
-		const void *var = GetVariableAddress(patches_ptr, &sd->save);
-		bool editable = true;
-		bool disabled = false;
-
-		/* We do not allow changes of some items when we are a client in a networkgame */
-		if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) editable = false;
-		if ((sdb->flags & SGF_NETWORK_ONLY) && !_networking) editable = false;
-		if ((sdb->flags & SGF_NO_NETWORK) && _networking) editable = false;
-
-		if (sdb->cmd == SDT_BOOLX) {
-			static const int _bool_ctabs[2][2] = {{9, 4}, {7, 6}};
-			/* Draw checkbox for boolean-value either on/off */
-			bool on = (*(bool*)var);
-
-			DrawFrameRect(x, y, x + 19, y + 8, _bool_ctabs[!!on][!!editable], on ? FR_LOWERED : FR_NONE);
-			SetDParam(0, on ? STR_CONFIG_PATCHES_ON : STR_CONFIG_PATCHES_OFF);
-		} else {
-			int32 value;
-
-			value = (int32)ReadValue(var, sd->save.conv);
-
-			/* Draw [<][>] boxes for settings of an integer-type */
-			DrawArrowButtons(x, y, COLOUR_YELLOW, state, editable && value != (sdb->flags & SGF_0ISDISABLED ? 0 : sdb->min), editable && value != sdb->max);
-
-			disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
-			if (disabled) {
-				SetDParam(0, STR_CONFIG_PATCHES_DISABLED);
-			} else {
-				if (sdb->flags & SGF_CURRENCY) {
-					SetDParam(0, STR_CONFIG_PATCHES_CURRENCY);
-				} else if (sdb->flags & SGF_MULTISTRING) {
-					SetDParam(0, sdb->str + value + 1);
-				} else {
-					SetDParam(0, (sdb->flags & SGF_NOCOMMA) ? STR_CONFIG_PATCHES_INT32 : STR_7024);
-				}
-				SetDParam(1, value);
-			}
-		}
-		DrawString(x + 25, y, (sdb->str) + disabled, TC_FROMSTRING);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1078,6 +1100,14 @@ struct PatchesSelectionWindow : Window {
 				PatchEntry *pe = page->FindEntry(btn, &cur_row);
 
 				if (pe == NULL) return;  // Clicked below the last setting of the page
+
+				if ((pe->flags & PEF_KIND_MASK) == PEF_SUBTREE_KIND) {
+					pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
+
+					SetVScrollCount(this, _patches_page[this->page].Length());
+					this->SetDirty();
+					return;
+				}
 
 				assert((pe->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
 				const SettingDesc *sd = pe->d.entry.setting;
