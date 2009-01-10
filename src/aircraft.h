@@ -34,29 +34,6 @@ static inline bool IsNormalAircraft(const Vehicle *v)
 	return v->subtype <= AIR_AIRCRAFT;
 }
 
-/** Checks if an aircraft can use the station in question
- * @param engine The engine to test
- * @param st The station
- * @return true if the aircraft can use the station
- */
-static inline bool CanAircraftUseStation(EngineID engine, const Station *st)
-{
-	const AirportFTAClass *apc = st->Airport();
-	const AircraftVehicleInfo *avi = AircraftVehInfo(engine);
-
-	return (apc->flags & (avi->subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS)) != 0;
-}
-
-/** Checks if an aircraft can use the station at the tile in question
- * @param engine The engine to test
- * @param tile The tile where the station is
- * @return true if the aircraft can use the station
- */
-static inline bool CanAircraftUseStation(EngineID engine, TileIndex tile)
-{
-	return CanAircraftUseStation(engine, GetStationByTile(tile));
-}
-
 /**
  * Calculates cargo capacity based on an aircraft's passenger
  * and mail capacities.

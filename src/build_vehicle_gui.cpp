@@ -987,6 +987,8 @@ struct BuildVehicleWindow : Window {
 
 		this->eng_list.Clear();
 
+		const Station *st = GetStation(this->window_number);
+
 		/* Make list of all available planes.
 		* Also check to see if the previously selected plane is still available,
 		* and if not, reset selection to INVALID_ENGINE. This could be the case
@@ -996,7 +998,7 @@ struct BuildVehicleWindow : Window {
 			EngineID eid = e->index;
 			if (!IsEngineBuildable(eid, VEH_AIRCRAFT, _local_company)) continue;
 			/* First VEH_END window_numbers are fake to allow a window open for all different types at once */
-			if (!this->listview_mode && !CanAircraftUseStation(eid, this->window_number)) continue;
+			if (!this->listview_mode && !CanVehicleUseStation(eid, st)) continue;
 
 			*this->eng_list.Append() = eid;
 			if (eid == this->sel_engine) sel_id = eid;

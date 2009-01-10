@@ -2255,3 +2255,55 @@ void VehiclesYearlyLoop()
 		}
 	}
 }
+
+
+/**
+ * Can this station be used by the given engine type?
+ * @param engine_type the type of vehicles to test
+ * @param st the station to test for
+ * @return true if and only if the vehicle of the type can use this station.
+ * @note For road vehicles the Vehicle is needed to determine whether it can
+ *       use the station. This function will return true for road vehicles
+ *       when at least one of the facilities is available.
+ */
+bool CanVehicleUseStation(EngineID engine_type, const Station *st)
+{
+	assert(IsEngineIndex(engine_type));
+	const Engine *e = GetEngine(engine_type);
+
+	switch (e->type) {
+		case VEH_TRAIN:
+			return (st->facilities & FACIL_TRAIN) != 0;
+
+		case VEH_ROAD:
+			/* For road vehicles we need the vehicle to know whether it can actually
+			 * use the station, but if it doesn't have facilities for RVs it is
+			 * certainly not possible that the station can be used. */
+			return (st->facilities & (FACIL_BUS_STOP | FACIL_TRUCK_STOP)) != 0;
+
+		case VEH_SHIP:
+			return (st->facilities & FACIL_DOCK) != 0;
+
+		case VEH_AIRCRAFT:
+			return (st->facilities & FACIL_AIRPORT) != 0 &&
+					(st->Airport()->flags & (e->u.air.subtype & AIR_CTOL ? AirportFTAClass::AIRPLANES : AirportFTAClass::HELICOPTERS)) != 0;
+
+		default:
+			return false;
+	}
+}
+
+/**
+ * Can this station be used by the given vehicle?
+ * @param v the vehicle to test
+ * @param st the station to test for
+ * @return true if and only if the vehicle can use this station.
+ */
+bool CanVehicleUseStation(const Vehicle *v, const Station *st)
+{
+	if (v->type == VEH_ROAD) {
+		return (st->facilities & (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? FACIL_BUS_STOP : FACIL_TRUCK_STOP)) != 0;
+	}
+
+	return CanVehicleUseStation(v->engine_type, st);
+}

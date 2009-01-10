@@ -425,35 +425,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 
 			const Station *st = GetStation(new_order.GetDestination());
 
-			if (st->owner != OWNER_NONE && !CheckOwnership(st->owner)) {
-				return CMD_ERROR;
-			}
-
-			switch (v->type) {
-				case VEH_TRAIN:
-					if (!(st->facilities & FACIL_TRAIN)) return CMD_ERROR;
-					break;
-
-				case VEH_ROAD:
-					if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
-						if (!(st->facilities & FACIL_BUS_STOP)) return CMD_ERROR;
-					} else {
-						if (!(st->facilities & FACIL_TRUCK_STOP)) return CMD_ERROR;
-					}
-					break;
-
-				case VEH_SHIP:
-					if (!(st->facilities & FACIL_DOCK)) return CMD_ERROR;
-					break;
-
-				case VEH_AIRCRAFT:
-					if (!(st->facilities & FACIL_AIRPORT) || !CanAircraftUseStation(v->engine_type, st)) {
-						return CMD_ERROR;
-					}
-					break;
-
-				default: return CMD_ERROR;
-			}
+			if (st->owner != OWNER_NONE && !CheckOwnership(st->owner)) return CMD_ERROR;
+			if (!CanVehicleUseStation(v, st)) return CMD_ERROR;
 
 			/* Non stop not allowed for non-trains. */
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
@@ -481,9 +454,8 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 					const Station *st = GetStation(new_order.GetDestination());
 
 					if (!CheckOwnership(st->owner) ||
-							!(st->facilities & FACIL_AIRPORT) ||
-							st->Airport()->nof_depots == 0 ||
-							!CanAircraftUseStation(v->engine_type, st)) {
+							!CanVehicleUseStation(v, st) ||
+							st->Airport()->nof_depots == 0) {
 						return CMD_ERROR;
 					}
 				} else {
@@ -1376,17 +1348,14 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32
 
 static TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 {
+	if (!CanVehicleUseStation(v, st)) return INVALID_TILE;
+
 	switch (v->type) {
 		default: NOT_REACHED();
 		case VEH_TRAIN:     return st->train_tile;
-		case VEH_AIRCRAFT:  return CanAircraftUseStation(v->engine_type, st) ? st->airport_tile : INVALID_TILE;
+		case VEH_AIRCRAFT:  return st->airport_tile;
 		case VEH_SHIP:      return st->dock_tile;
-		case VEH_ROAD:
-			if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
-				return (st->bus_stops != NULL) ? st->bus_stops->xy : INVALID_TILE;
-			} else {
-				return (st->truck_stops != NULL) ? st->truck_stops->xy : INVALID_TILE;
-			}
+		case VEH_ROAD:      return IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? st->bus_stops->xy : st->truck_stops->xy;
 	}
 }
 

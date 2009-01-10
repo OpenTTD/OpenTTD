@@ -171,4 +171,7 @@ extern const Vehicle *_place_clicked_vehicle;
 extern VehicleID _new_vehicle_id;
 extern uint16 _returned_refit_capacity;
 
+bool CanVehicleUseStation(EngineID engine_type, const struct Station *st);
+bool CanVehicleUseStation(const Vehicle *v, const struct Station *st);
+
 #endif /* VEHICLE_FUNC_H */
