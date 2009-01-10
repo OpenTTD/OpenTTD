@@ -633,6 +633,8 @@ struct PatchEntry {
 
 	void Init(byte level, bool last_field);
 	void SetButtons(byte new_val);
+
+	uint Length() const;
 };
 
 /** Data structure describing one page of patches in the patch settings window. */
@@ -641,6 +643,8 @@ struct PatchPage {
 	byte num;            ///< Number of entries on the page (statically filled).
 
 	void Init(byte level = 0);
+
+	uint Length() const;
 };
 
 
@@ -706,6 +710,20 @@ void PatchEntry::SetButtons(byte new_val)
 	this->flags = (this->flags & ~PEF_BUTTONS_MASK) | new_val;
 }
 
+/** Return numbers of rows needed to display the entry */
+uint PatchEntry::Length() const
+{
+	switch(this->flags & PEF_KIND_MASK) {
+		case PEF_SETTING_KIND:
+			return 1;
+		case PEF_SUBTREE_KIND:
+			if (this->d.sub.folded) return 1; // Only displaying the title
+
+			return 1 + this->d.sub.page->Length(); // 1 extra row for the title
+		default: NOT_REACHED();
+	}
+}
+
 
 /* == PatchPage methods == */
 
@@ -718,6 +736,16 @@ void PatchPage::Init(byte level)
 	for (uint field = 0; field < this->num; field++) {
 		this->entries[field].Init(level, field + 1 == num);
 	}
+}
+
+/** Return number of rows needed to display the whole page */
+uint PatchPage::Length() const
+{
+	uint length = 0;
+	for (uint field = 0; field < this->num; field++) {
+		length += this->entries[field].Length();
+	}
+	return length;
 }
 
 
@@ -909,7 +937,7 @@ struct PatchesSelectionWindow : Window {
 		this->clicked_entry = NULL; // No numeric patch setting buttons are depressed
 		this->vscroll.pos = 0;
 		this->vscroll.cap = (this->widget[PATCHSEL_OPTIONSPANEL].bottom - this->widget[PATCHSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
-		SetVScrollCount(this, _patches_page[this->page].num);
+		SetVScrollCount(this, _patches_page[this->page].Length());
 
 		this->resize.step_height = SETTING_HEIGHT;
 		this->resize.height = this->height;
@@ -930,7 +958,7 @@ struct PatchesSelectionWindow : Window {
 
 		int x = SETTINGTREE_LEFT_OFFSET;
 		int y = SETTINGTREE_TOP_OFFSET;
-		for (uint i = this->vscroll.pos; i != page->num && this->vscroll.pos + this->vscroll.cap - i > 0; i++) {
+		for (uint i = this->vscroll.pos; i != page->Length() && this->vscroll.pos + this->vscroll.cap - i > 0; i++) {
 			assert((page->entries[i].flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
 			const SettingDesc *sd = page->entries[i].d.entry.setting;
 			int state = page->entries[i].flags & PEF_BUTTONS_MASK;
@@ -998,7 +1026,7 @@ struct PatchesSelectionWindow : Window {
 
 				const PatchPage *page = &_patches_page[this->page];
 
-				if (btn >= page->num) return;  // Clicked below the last setting of the page
+				if (btn >= page->Length()) return;  // Clicked below the last setting of the page
 
 				assert((page->entries[btn].flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
 				const SettingDesc *sd = page->entries[btn].d.entry.setting;
@@ -1079,7 +1107,7 @@ struct PatchesSelectionWindow : Window {
 				this->RaiseWidget(this->page + PATCHSEL_INTERFACE);
 				this->page = widget - PATCHSEL_INTERFACE;
 				this->LowerWidget(this->page + PATCHSEL_INTERFACE);
-				SetVScrollCount(this, _patches_page[this->page].num);
+				SetVScrollCount(this, _patches_page[this->page].Length());
 				DeleteWindowById(WC_QUERY_STRING, 0);
 				this->SetDirty();
 				break;
@@ -1114,7 +1142,7 @@ struct PatchesSelectionWindow : Window {
 	virtual void OnResize(Point new_size, Point delta)
 	{
 		this->vscroll.cap += delta.y / SETTING_HEIGHT;
-		SetVScrollCount(this, _patches_page[this->page].num);
+		SetVScrollCount(this, _patches_page[this->page].Length());
 	}
 };
 
