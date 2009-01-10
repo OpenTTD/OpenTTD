@@ -4140,6 +4140,16 @@ static void GRFInfo(byte *buf, size_t len)
 	uint32 grfid     = grf_load_dword(&buf);
 	const char *name = grf_load_string(&buf, len - 6);
 
+	if (_cur_stage < GLS_RESERVE && _cur_grfconfig->status != GCS_UNKNOWN) {
+		_cur_grfconfig->status = GCS_DISABLED;
+		_cur_grfconfig->error  = CallocT<GRFError>(1);
+		_cur_grfconfig->error->severity = STR_NEWGRF_ERROR_MSG_FATAL;
+		_cur_grfconfig->error->message  = STR_NEWGRF_ERROR_MULTIPLE_ACTION_8;
+
+		_skip_sprites = -1;
+		return;
+	}
+
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->grf_version = version;
 	_cur_grfconfig->status = _cur_stage < GLS_RESERVE ? GCS_INITIALISED : GCS_ACTIVATED;
