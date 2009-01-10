@@ -633,6 +633,7 @@ struct PatchEntry {
 	PatchEntry(PatchPage *sub, StringID title);
 
 	void Init(byte level, bool last_field);
+	void FoldAll();
 	void SetButtons(byte new_val);
 
 	uint Length() const;
@@ -650,6 +651,7 @@ struct PatchPage {
 	byte num;            ///< Number of entries on the page (statically filled).
 
 	void Init(byte level = 0);
+	void FoldAll();
 
 	uint Length() const;
 	PatchEntry *FindEntry(uint row, uint *cur_row) const;
@@ -708,6 +710,23 @@ void PatchEntry::Init(byte level, bool last_field)
 		default: NOT_REACHED();
 	}
 }
+
+/** Recursively close all folds of sub-pages */
+void PatchEntry::FoldAll()
+{
+	switch(this->flags & PEF_KIND_MASK) {
+		case PEF_SETTING_KIND:
+			break;
+
+		case PEF_SUBTREE_KIND:
+			this->d.sub.folded = true;
+			this->d.sub.page->FoldAll();
+			break;
+
+		default: NOT_REACHED();
+	}
+}
+
 
 /**
  * Set the button-depressed flags (#PEF_LEFT_DEPRESSED and #PEF_RIGHT_DEPRESSED) to a specified value
@@ -900,6 +919,14 @@ void PatchPage::Init(byte level)
 {
 	for (uint field = 0; field < this->num; field++) {
 		this->entries[field].Init(level, field + 1 == num);
+	}
+}
+
+/** Recursively close all folds of sub-pages */
+void PatchPage::FoldAll()
+{
+	for (uint field = 0; field < this->num; field++) {
+		this->entries[field].FoldAll();
 	}
 }
 
@@ -1149,6 +1176,8 @@ struct PatchesSelectionWindow : Window {
 		if (first_time) {
 			_patches_main_page.Init();
 			first_time = false;
+		} else {
+			_patches_main_page.FoldAll(); // Close all sub-pages
 		}
 
 		this->valuewindow_entry = NULL; // No patch entry for which a entry window is opened
@@ -1320,7 +1349,7 @@ static const Widget _patches_selection_widgets[] = {
 };
 
 static const WindowDesc _patches_selection_desc = {
-	WDP_CENTER, WDP_CENTER, 412, 188, 412, 397,
+	WDP_CENTER, WDP_CENTER, 412, 188, 450, 397,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_patches_selection_widgets,
