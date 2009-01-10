@@ -3670,6 +3670,7 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 				} else {
 					/* Not inside depot */
 
+					/* Reverse when we are at the end of the track already, do not move to the new position */
 					if (IsFrontEngine(v) && !TrainCheckIfLineEnds(v)) return;
 
 					uint32 r = VehicleEnterTile(v, gp.new_tile, gp.x, gp.y);
@@ -3677,11 +3678,9 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 						goto invalid_rail;
 					}
 					if (HasBit(r, VETS_ENTERED_STATION)) {
+						/* The new position is the end of the platform */
 						TrainEnterStation(v, r >> VETS_STATION_ID_OFFSET);
-						return;
-					}
-
-					if (v->current_order.IsType(OT_LEAVESTATION)) {
+					} else if (v->current_order.IsType(OT_LEAVESTATION)) {
 						v->current_order.Free();
 						InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 					}
