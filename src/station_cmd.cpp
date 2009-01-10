@@ -1099,7 +1099,11 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 					}
 				}
 
+				byte old_specindex = IsTileType(tile, MP_STATION) ? GetCustomStationSpecIndex(tile) : 0;
 				MakeRailStation(tile, st->owner, st->index, axis, layout & ~1, (RailType)GB(p1, 0, 4));
+				/* Free the spec if we overbuild something */
+				DeallocateSpecFromStation(st, old_specindex);
+
 				SetCustomStationSpecIndex(tile, specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
 				SetStationAnimationFrame(tile, 0);
