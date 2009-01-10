@@ -1093,6 +1093,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriás
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Vonatok valósághű gyorsulása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90°-os kanyart: {ORANGE}{STRING} {LTBLUE}(nem NTP-vel)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Járművek egymás utáni telepakolása (egyidejű helyett): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Járművek fokozatos rakodása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Infláció: {ORANGE}{STRING}
@@ -1205,6 +1206,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhet�
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Legutoljára használt
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányszakasz foglaltságának jelzése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Építő eszközös aktívak maradnak használat után: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Eszköztár mutatása, még ha nem is építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
@@ -1263,6 +1265,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Középen
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Jobbra
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}{STRING} képpont
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}letiltva
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Nem zárolt ablakok maximális száma: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Nem zárolt ablakok maximális száma: {ORANGE}nincs korlát
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Település növekedési sebessége: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Nincs
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lassú
@@ -1783,6 +1787,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Vasúti pálya 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Vasúti pálya egy- és kétirányú fejlett jelzőkkel
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Vasúti pálya egy- és kétirányú fejlett jelzőkkel
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Előbb a vasútállomást le kell rombolni
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Különálló állomás építése
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Állomás egyesítése
 
 
 

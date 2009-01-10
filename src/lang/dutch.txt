@@ -1027,6 +1027,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Zeer la
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbied schepen en treinen om 90 graden te draaien: {ORANGE}{STRING} {LTBLUE} (Vereist NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Niet direct aaneensluitende stations samenvoegen toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verbeterde laad algoritme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Voertuigen geleidelijk laden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatie: {ORANGE}{STRING}
@@ -1720,6 +1721,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Treinrails met 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Treinrails met combo- en eenrichtings geavanceerde seinen
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Treinrails met geavanceerde en eenrichtings geavanceerde seinen
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Treinstation moet eerst verwijderd worden
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Bouw een losstaand station
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Station samenvoegen
 
 
 
@@ -2863,6 +2866,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan deze
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kan deze order niet verplaatsen...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan huidige order niet overslaan...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan geselecteerde order niet overslaan...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}voertuig kan niet naar alle stations
+STR_CAN_T_ADD_ORDER                                             :{WHITE}voertuig kan niet naar dat station
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}een voertuig die deze order deelt kan niet naar dat station
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan voertuig niet verplaatsen...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}De achterste locomotief zal altijd het voorste deel volgen
 STR_8838_N_A                                                    :NVT.{SKIP}

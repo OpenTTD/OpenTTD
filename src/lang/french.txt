@@ -1219,6 +1219,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Véhicu
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stations
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economie
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Compétiteurs
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Options d'affichage
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaction
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaux
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Gestion des cargaisons
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Joueurs de l'ordinateur
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Renouvellement automatique
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Entretien
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Routage
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Trains
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Villes
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
 STR_CONFIG_PATCHES_DISABLED                                     :inactif
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1912,6 +1923,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Trop pr�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Adjacent à plus d'une gare à la fois
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Trop de gares dans cette ville
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Trop de gares
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Trop de parties de gare
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Trop d'arrêts d'autobus
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Trop d'aires de chargement
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Trop près d'une autre gare
@@ -2867,6 +2879,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Impossib
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Impossible de déplacer cet ordre...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Impossible de sauter l'ordre courant...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Impossible de sauter l'ordre sélectionné...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}le véhicule ne peut pas aller dans toutes les stations
+STR_CAN_T_ADD_ORDER                                             :{WHITE}le véhicule ne peut pas aller dans cette station
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}un véhicule partageant cet ordre ne peut pas aller dans cette station
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Impossible de déplacer le véhicule...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}L'engin de queue suivra toujours sa contre-partie avant
 STR_8838_N_A                                                    :N/D{SKIP}

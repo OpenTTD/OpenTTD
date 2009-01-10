@@ -1028,6 +1028,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}الس�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}تفعيل التسارع الواقعي للقطارات: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة :  {ORANGE}{STRING} {LTBLUE} (not with NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض:  {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}أستخدام خوارزمية التحميل المحسنه: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}تحميل القطارات بالتدريج:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}التضخم: {ORANGE}{STRING}
@@ -1140,6 +1141,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :القديم
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :الجديد
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :الأكثر استخداما
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}اظهار الطرق المحجوزة: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE} ابقاء ادوات البناء فعالة بعد استخدامها: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}عرض ادوات البناء عندما لا توجد مركبات متاحة بعد: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}الحد الأعلى لعدد القطارات لكل لاعب: {ORANGE}{STRING}
@@ -1718,6 +1720,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :سكة قطار
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :سكة قطار مع اشارة مزدوجة و اشارة طريق واحد
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :سكة قطار مع اشارة مسار و اتجاة موحد
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}يجب ازالة محطة القطار اولا
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW} بناء محطة مفصلة
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK} اربط المحطات
 
 
 

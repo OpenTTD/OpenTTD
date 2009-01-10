@@ -1106,6 +1106,7 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Clique para con
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Desligado
 
 
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausa automática ao iniciar um novo jogo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usar a lista avançada de veículos: {ORANGE}{STRING}
@@ -1990,6 +1991,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Abrir Jo
 STR_4002_SAVE                                                   :{BLACK}Guardar
 STR_4003_DELETE                                                 :{BLACK}Eliminar
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Espectador, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes livres
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Não é possível ler unidade
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Falha ao Guardar Jogo{}{STRING}
@@ -3477,7 +3479,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Créditos de Transferência: {LTBLUE}{CURRENCY}

@@ -550,6 +550,9 @@ STR_019C_ROAD_VEHICLE                                           :Silniční vozi
 STR_019D_AIRCRAFT                                               :Letadlo
 STR_019E_SHIP                                                   :Loď
 STR_019F_TRAIN                                                  :Vlak
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} zastarává
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} silně zastarává
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} silně zastarává a nutně potřebuje nahradit
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informace o uzemí
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za vyčištění: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za vyčištění: {RED}{CURRENCY}
@@ -855,7 +858,7 @@ STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Zobrazení jmen měst
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Zobrazení jmen stanic
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Zobrazení popisku
-STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Zobrazení směrování
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Zobrazení stavědel
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plné animace
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plné detaily
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Průhledné budovy
@@ -1059,12 +1062,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemůžu
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemůžu kopírovat seznam příkazů...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Konec sdílených příkazů - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nemůže najít cestu.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} se ztratil/a/o.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} loni prodělal/a/o {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Evropská měnová unie{}{}Euro se v této zemi stalo jedinou měnou pro každodenní obchodní transakce!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} má příliš málo příkazů
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} nemá žádné příkazy
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} má zdvojené příkazy
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} má v příkazech neplatnou stanici
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Obnovení selhalo pro {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} je po výměně moc dlouhý
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Žádné pravidlo pro výměnu vozidel se nepoužilo.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finanční limit)
 
@@ -1083,6 +1095,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Povolit
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Zapnout realistické zrychlování vlaků: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING} {LTBLUE} (nefunguje s NTP (New Train Pathfinder), zastaralým hledačem cesty)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Spojovat stanice postavené vedle sebe: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Umožnit spojení nesousedících stanic: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Použít vylepšený algoritmus nakládání: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Nakládat vozidla postupně: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflace: {ORANGE}{STRING}
@@ -1118,6 +1131,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Obnoven
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ano, kromě zastavených vozidel (v depu)
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ano, u všech vozidel
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varovat, pokud vozidlo prodělává: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozidlům se nikdy nezastaví výroba ('nezastarají'): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticky nahradit dopravní prostředek, když zestárne
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} měsíců před nebo po dosažení nejvyššího stáří
@@ -1166,6 +1180,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command + klikn
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control + kliknutí
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :vypnutá
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Posouvání levým tlačítkem: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Pro jméno uložené hry použít {ORANGE}{STRING}{LTBLUE} formát.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dlouhý (31. pro 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátký (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Zastavit automaticky hru při začínání nové hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Používat pokročilý seznam vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :ne
@@ -1177,6 +1198,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :u vlastní spol
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :u všech společností
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Povolit jízdní řády vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazit jízdní řády v cyklech místo ve dnech: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Rychlejší zadávání příkazů pro vozidla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Výchozí druh kolejí (v nové hře/po načtení hry): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :normální koleje
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :elektrifikované koleje
@@ -1186,6 +1208,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :první dostupn�
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :poslední dostupný
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :nejpoužívanější
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vyznačovat rezervovanou trať: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Nevypínat po použití nástroje pro výstavbu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje pro budování i bez dostupných vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaků na hráče: {ORANGE}{STRING}
@@ -1244,6 +1267,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :uprostřed
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :vpravo
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Okno se přichytí k druhému, když je blíž než: {ORANGE}vypnuto
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Omezit počet zavíratelných oken na: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Omezit počet zavíratelných oken na: {ORANGE}vypnuto
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Rychlost růstu měst: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :nulová
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :pomalá
@@ -1310,18 +1335,18 @@ STR_WAYPOINTNAME_CITY_SERIAL                                    :Směrování {T
 STR_LANDINFO_WAYPOINT                                           :Směrování
 
 STR_WAYPOINT                                                    :{WHITE}Směrování
-STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ směrování
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ stavědla
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_LIST                                      :{WHITE}{WAYPOINT} - {COMMA} vlak{P "" y ů}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
 STR_WAYPOINT_RAW                                                :{WAYPOINT}
-STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Přejmenovat směrování
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Přejmenovat stavědlo
 
-STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nemohu přejmenovat směrování...
-STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Postavit na trati směrování
-STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Zde nelze postavit směrování...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Zde nelze zbourat směrování...
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Nemohu přejmenovat stavědlo...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Postavit na trati stavědlo
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Zde nelze postavit stavědlo...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Zde nelze zbourat stavědlo...
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Budovat koleje použitím režimu Autokoleje
 
@@ -1586,6 +1611,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit se
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Napiš částku, kterou chceš poskytnout
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chráněný. Napiš heslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Společnost je chráněná. Napiš heslo
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam hráčů
@@ -1625,6 +1651,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :vyhozen servere
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :se pokoušel podvádět
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :na serveru je plno
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Hra pozastavena (není dost hráčů)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Hra spuštěna (dostatek hráčů)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Hra pozastavena (hráč se připojuje)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Hra spuštěna (hráč připojen)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Hra pozastavena (hráčovi se nepovedlo připojit)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :odpojování
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} jde hrát
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} opouští hru ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} si mění jméno na {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} poslal(a) tvé společnosti {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dal(a) jsi {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tým] :
 STR_NETWORK_CHAT_COMPANY                                        :[Tým] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Tým] pro {STRING}: {GRAY}{STRING}
@@ -1749,6 +1789,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Koleje s cestov
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Koleje s cestovým (kombinovaným) a jednosměrným dokonalejším (PBS) návěstidlem
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Koleje s dokonalejším (PBS) a jednosměrným dokonalejším návěstidlem
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je nejprve nutno odstranit stanici
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Postavit samostatnou stanici
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Spojování stanic
 
 
 
@@ -1937,6 +1979,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Příli�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Spojuje více jak jedno existující nádraží nebo nákladovou rampu...
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Příliš mnoho nádraží nebo nákladových ramp v tomto městě
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Příliš mnoho nádraží nebo nákladových ramp
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Příliš mnoho staničních částí
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Příliš mnoho autobusových zastávek
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Příliš mnoho zastávek nákladních automobilů
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Příliš blízko k jinému nádraží nebo nákladové rampě
@@ -2034,6 +2077,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Otevří
 STR_4002_SAVE                                                   :{BLACK}Uložit
 STR_4003_DELETE                                                 :{BLACK}Smazat
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Pozorovatel, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB voln{P ý é ých}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nemohu číst z jednotky
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Uložení hry selhalo{}{STRING}
@@ -2845,6 +2889,7 @@ STR_UNKNOWN_STATION                                             :neznámá stani
 STR_8812_EMPTY                                                  :{LTBLUE}Prázdný
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} čeká v depu
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nová vozidla
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Příliš dlouhý vlak
@@ -2896,6 +2941,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemohu t
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nelze přesunout tento příkaz...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nelze přeskočit současný příkaz...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nelze přeskočit na označený příkaz...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}prostředek se nedostane do všech stanic
+STR_CAN_T_ADD_ORDER                                             :{WHITE}do této stanice se prostředek nedostane
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}do této stanice se prostředek sdílející tento příkaz nedostane
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemohu přesunout vozidlo...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadní stroj vždy doprovází svůj protějšek vepředu
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2955,7 +3003,7 @@ STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Přejmen
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nemohu přejmenovat typ železničního vozidla...
 STR_CLEAR_TIME                                                  :{BLACK}Smazat čas
 STR_RESET_LATENESS                                              :{BLACK}Zapomenout zpoždění
-STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Přejmenovat směrování
+STR_CHANGE_WAYPOINT_NAME                                        :{BLACK}Přejmenovat stavědlo
 STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOINT}
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
@@ -3003,6 +3051,7 @@ STR_9012_CAPACITY                                               :{BLACK}Kapacita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musí být zastaven v garáži
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silniční vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemohu zastavit/rozjet silniční vozidlo...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čeká v depu
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Míří do garáže {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Míří do garáže {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Údržba v silničním depu {TOWN}
@@ -3084,6 +3133,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Jedu do
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Míří do depa {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Údržba v lodním depu {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Údržba v lodním depu {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} čeká v depu
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit přístavní molo
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodní depo (na nákup a servis lodí)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lodě - informace získáš klepnutím na jméno lodi
@@ -3105,7 +3155,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Přejmen
 STR_9831_NAME_SHIP                                              :{WHITE}Přejemnovat loď
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nelze přejmenovat loď...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První loď přistála v {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Umístit bójku, kterou lze použít jako směrování
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Umístit bójku použitelnou pro navádění
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Zde nelze umístit bójku...
 STR_BUILD_AQUEDUCT                                              :{BLACK}Postavit akvadukt
 STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Tady není možné postavit akvadukt...
@@ -3148,6 +3198,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Jedu do
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Jedu do hangáru {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Údržba v hangáru {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Údržba v hangáru {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} čeká v hangáru
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letadlo v cestě
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemohu rozjet/zastavit letadlo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Letadlo letí
@@ -3408,6 +3459,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknut�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisků - {COMMA} popis{P ek ky ků}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Kvůli selhání příkazu na změnu nákladu stojí {VEHICLE}
 
 ############ Lists rail types
 
@@ -3527,7 +3579,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: 
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Podíl za převoz: {LTBLUE}{CURRENCY}
@@ -3539,7 +3595,7 @@ STR_TRANSPARENT_SIGNS_DESC                                      :{BLACK}Změna p
 STR_TRANSPARENT_TREES_DESC                                      :{BLACK}Změna průhlednosti stromů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_HOUSES_DESC                                     :{BLACK}Změna průhlednosti domů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_INDUSTRIES_DESC                                 :{BLACK}Změna průhlednosti továren. Nastavení se zamkne CTRL+kliknutím.
-STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, dep a směrování. Nastavení se zamkne kliknutím s CTRL.
+STR_TRANSPARENT_BUILDINGS_DESC                                  :{BLACK}Změna průhlednosti postavitelných objektů, jako stanic, dep a stavědel. Nastavení se zamkne kliknutím s CTRL.
 STR_TRANSPARENT_BRIDGES_DESC                                    :{BLACK}Změna průhlednosti mostů. Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_STRUCTURES_DESC                                 :{BLACK}Změna průhlednosti staveb jako majáků, vysílačů a doplňků (v budoucnosti). Nastavení se zamkne CTRL+kliknutím.
 STR_TRANSPARENT_CATENARY_DESC                                   :{BLACK}Změna průhlednosti elektrifikace. Nastavení se zamkne CTRL+kliknutím.

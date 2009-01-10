@@ -483,6 +483,9 @@ STR_019C_ROAD_VEHICLE                                           :{G=m}Automóvel
 STR_019D_AIRCRAFT                                               :{G=f}Aeronave
 STR_019E_SHIP                                                   :{G=m}Embarcação
 STR_019F_TRAIN                                                  :{G=m}Trem
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} está ficando velho
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} está ficando muito velho
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} está ficando muito velho e necessita ser substituído
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informações do Terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Custo para limpar: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Custo para limpar: {RED}{CURRENCY}
@@ -992,12 +995,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossí
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossível copiar a lista de ordens...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fim de Ordens Compartilhadas - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} não pode encontrar um caminho para seguir
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} está perdido
+STR_VEHICLE_IS_UNPROFITABLE                                     :O lucro de {WHITE}{VEHICLE}, no ano passado foi de {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}União Monetária Europeia!{}{} O Euro é introduzido como moeda única para todas as transações no seu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} tem poucas ordens na lista de paradas
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} tem uma ordem inválida
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} tem ordens duplicadas
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} tem uma estação inválida na lista de paradas
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autosubstituição falhou com {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} fica grande demais para ser substituído
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Regras de autosubstituição/renovação não estão ativadas.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(limite de dinheiro)
 
@@ -1016,6 +1028,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Ativar aceleração realista para trens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir trens e embarcações girar em angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (requer NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unir estações ferroviárias construídas juntas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitie unir estações não adjacentes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Carregar veículos gradualmente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflação: {ORANGE}{STRING}
@@ -1051,6 +1064,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Analisa
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :de todos os veículos
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avisar se o lucro de um veículo se torna negativo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Veículos nunca expiram: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Auto-renovação de veículos quando ficam velhos
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Auto-renovação do veículo {ORANGE}{STRING}{LTBLUE} meses antes/depois da idade máx.
@@ -1117,6 +1131,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Própria empres
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Todas as empresas
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Ativar plano de horário para veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Exibir plano de horário em tiques ao invés de dias: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Criar rapidamente ordens para um veículo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Tipo padrão de ferrovia (ao criar ou carregar um jogo): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Trilho Normal
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Trilho Elétrico
@@ -1126,6 +1141,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Primeiro dispon
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último disponível
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Exibir vias reservadas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Manter a barra de construção aberta: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Exibe ferramentas de construção na falta de veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
@@ -1184,6 +1200,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Direita
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Raio de atração de janelas: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atração de janelas: {ORANGE}desativado
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Limitar a janela (soft limit): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limitar a janela (soft limit): {ORANGE}desativado
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Velocidade de crescimento de cidade: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Devagar
@@ -1704,6 +1722,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ferrovia com si
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ferrovia com sinais combo e sinais avançados de mão única
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ferrovia com sinais avançados e de mão única
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Deve remover a estação de trem antes
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Construir uma estação separada
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Unir estações
 
 
 
@@ -1989,6 +2009,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Abrir Jo
 STR_4002_SAVE                                                   :{BLACK}Salvar
 STR_4003_DELETE                                                 :{BLACK}Remover
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Espectador, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes livres
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Incapaz de ler unidade
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Falha ao Salvar Jogo{}{STRING}
@@ -2794,6 +2815,7 @@ STR_UNKNOWN_STATION                                             :estação desco
 STR_8812_EMPTY                                                  :{LTBLUE}Vazio
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} está aguardando no depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Novos Veículos
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trem muito longo
@@ -2952,6 +2974,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacida
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve estar parado dentro de uma garagem
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossível vender automóvel...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossível iniciar/parar automóvel...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} está aguardando no depósito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Indo para a garagem de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Indo para a garagem de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Manutenção na garagem de {TOWN}
@@ -3033,6 +3056,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Indo pa
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Indo para o depósito naval {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Manutenção no depósito naval de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenção no depósito naval de {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} está aguardando no depósito
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir doca naval
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir depósito naval (para criação e manutenção de embarcações)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Embarcações - clique numa embarcação para informações
@@ -3097,6 +3121,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Indo pa
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Indo para o hangar de {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Manutenção no Hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Manutenção no Hangar de {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} está aguardando no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave no caminho
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Impossível iniciar/parar aeronave...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronave está em voo
@@ -3357,6 +3382,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clique p
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Placas - {COMMA} Placa{P "" s}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}{VEHICLE} parou após ser readaptado.
 
 ############ Lists rail types
 

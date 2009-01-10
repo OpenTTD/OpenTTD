@@ -1029,6 +1029,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Мно�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Реалистично ускоряване на влаковете: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Забрана 90 градусови завои: {ORANGE}{STRING.f}{LTBLUE} (трябва NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Обединяване на гари построени една до друга: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Позволено е присъединяването на станции, които не се допират: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Подобрен алгоритъм за зареждане: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Постепенно зареждане на автомобилите: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инфлация: {ORANGE}{STRING}
@@ -1722,6 +1723,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Релсов п
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Релсов път със смесени и еднопосочни знаци
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Релсов път с двупосочни и еднопосочни знаци
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Железопътната гара трябва да бъде премахната първо
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Направи отделна станция
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Присъедини станцията
 
 
 

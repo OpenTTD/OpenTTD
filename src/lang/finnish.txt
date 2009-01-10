@@ -1218,6 +1218,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Ajoneuv
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Asemat
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Talous
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Kilpailijat
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Näyttöasetukset
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Vuorovaikutus
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Opastimet
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Rahdin käsittely
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Tietokonepelaajat
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Automaattinen uudistus
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Huoltokäynnit
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Reititys
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Junat
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Kaupungit
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Laitokset
 
 STR_CONFIG_PATCHES_DISABLED                                     :pois käytöstä
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1911,6 +1922,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Liian l�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Liitä yhteen useampi asema/lastausalue.
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Liian monta asemaa ja lastausaluetta kaupungissa.
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Liian monta asemaa ja lastausaluetta.
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Rautatieasema on jakautunut liian moneen osaan
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Liian monta linja-autopysäkkiä.
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Liian monta lastauslaituria.
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Liian lähellä toista asemaa tai lastausaluetta.
@@ -2866,6 +2878,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Pysähdy
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Tätä riviä ei voi siirtää.
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Tätä riviä ei voi ohittaa.
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Tähän riviin ei voi siirtyä.
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}kulkuneuvo ei pääse kaikille asemille
+STR_CAN_T_ADD_ORDER                                             :{WHITE}kulkuneuvo ei pääse tälle asemalle
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}kulkuneuvo, jonka kanssa aikataulu on jaettu, ei pääse tälle asemalle
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Liikennevälinettä ei voi poistaa...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Moottorivaunun takaosa seuraa aina etuosaansa
 STR_8838_N_A                                                    :-{SKIP}

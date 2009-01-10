@@ -1027,6 +1027,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Aktiver
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktiver realistisk acceleration af tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING} {LTBLUE} (skal bruge NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Brug forbedret indlæsnings algoritme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Last køretøjer gradvist: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
@@ -1139,6 +1140,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Første tilgæn
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Sidste tilgængelige
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mest anvendte
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vis reserverede spor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hold byggeværktøjer aktive efter brug: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Vis byggeværktøjer hvis ingen passende transportmidler er tilgængelige: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. antal tog per spiller: {ORANGE}{STRING}
@@ -1717,6 +1719,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Jernbane med ko
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Jernbane med kombi- og ensrettede avancerede signaler
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Jernbane med avancerede og ensrettede avancerede signaler
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Jernbanestation skal fjernes først
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Byg en separat station
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Sammenkæd station
 
 
 

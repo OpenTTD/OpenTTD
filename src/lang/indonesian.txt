@@ -35,7 +35,7 @@ STR_0019_VALUABLES                                              :Barang berharga
 STR_001A_COPPER_ORE                                             :Bijih Tembaga
 STR_001B_MAIZE                                                  :Jagung
 STR_001C_FRUIT                                                  :Buah
-STR_001D_DIAMONDS                                               :Berlian
+STR_001D_DIAMONDS                                               :Intan
 STR_001E_FOOD                                                   :Makanan
 STR_001F_PAPER                                                  :Kertas
 STR_0020_GOLD                                                   :Emas
@@ -67,7 +67,7 @@ STR_0039_VALUABLES                                              :Barang berharga
 STR_003A_COPPER_ORE                                             :Bijih Tembaga
 STR_003B_MAIZE                                                  :Jagung
 STR_003C_FRUIT                                                  :Buah
-STR_003D_DIAMOND                                                :Permata
+STR_003D_DIAMOND                                                :Intan
 STR_003E_FOOD                                                   :Makanan
 STR_003F_PAPER                                                  :Kertas
 STR_0040_GOLD                                                   :Emas
@@ -156,7 +156,7 @@ STR_00B0_MAP                                                    :{WHITE}Peta - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Pilihan permainan
 STR_00B2_MESSAGE                                                :{YELLOW}Pesan
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Pesan dari {STRING}
-STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Awas!
+STR_POPUP_CAUTION_CAPTION                                       :{WHITE}Peringatan!
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Tidak dapat melakukan ini....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Tidak dapat membersihkan area ini....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Hak Cipta asli {COPYRIGHT} 1995 Chris Sawyer, Hak Cipta dilindungi
@@ -215,7 +215,7 @@ STR_00F4_500M                                                   :{BLACK}{TINYFON
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Kereta Api
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Angkutan Jalan Raya
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Kapal
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Pesawat Udara
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Pesawat
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Jalur Transportasi
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Tambang Batubara
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Stasiun Pembangkit Listrik
@@ -232,7 +232,7 @@ STR_0105_BANK                                                   :{BLACK}{TINYFON
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Pabrik Kertas
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Tambang Emas
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Industri Pengolahan Pangan
-STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Tambang Berlian
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Tambang Intan
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Tambang Biji Tembaga
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Perkebunan Buah
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Perkebunan Karet
@@ -399,7 +399,7 @@ STR_SELECT_ALL_TYPES                                            :{BLACK}Pilih se
 STR_AVAILABLE_TRAINS                                            :{BLACK}Kereta api tersedia
 STR_AVAILABLE_ROAD_VEHICLES                                     :{BLACK}Kendaraan tersedia
 STR_AVAILABLE_SHIPS                                             :{BLACK}Kapal tersedia
-STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pesawat Udara tersedia
+STR_AVAILABLE_AIRCRAFT                                          :{BLACK}Pesawat tersedia
 STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Lihat daftar desain mesin yang tersedia untuk kendaraan tipe ini
 STR_MANAGE_LIST                                                 :{BLACK}Atur Daftar
 STR_MANAGE_LIST_TIP                                             :{BLACK}Kirim perintah untuk semua kendaraan dalam daftar ini.
@@ -441,7 +441,7 @@ STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Tampilka
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar kereta perusahaan
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar bus/truk perusahaan
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar kapal perusahaan
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar pesawat udara perusahaan
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Tampilkan daftar pesawat perusahaan
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Perbesar tampilan
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Perkecil tampilan
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Membangun rel kereta
@@ -480,7 +480,7 @@ STR_AGE_RED                                                     :{RED}{COMMA} ta
 
 STR_019C_ROAD_VEHICLE                                           :Bus/truk
 STR_019D_AIRCRAFT                                               :Pesawat
-STR_019E_SHIP                                                   :Kapal Laut
+STR_019E_SHIP                                                   :Kapal
 STR_019F_TRAIN                                                  :Kereta Api
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} mulai menua
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} sudah sangat tua
@@ -676,7 +676,7 @@ STR_0251_FRUIT_PLANTATION                                       :{BLACK}Perkebun
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Perkebunan Karet
 STR_0253_WATER_SUPPLY                                           :{BLACK}Sumber Air
 STR_0254_WATER_TOWER                                            :{BLACK}Menara Air
-STR_0255_DIAMOND_MINE                                           :{BLACK}Tambang Permata
+STR_0255_DIAMOND_MINE                                           :{BLACK}Tambang Intan
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Tambang Bijih Tembaga
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Hutan Harum Manis
 STR_0258_CANDY_FACTORY                                          :{BLACK}Pabrik Manisan
@@ -711,7 +711,7 @@ STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Menanam 
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Menanam Perkebunan Karet
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Membangun Sumber Air
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Membangun Menara Air (Hanya dapat dilakukan di kota)
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Membangun Tambang Permata
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Membangun Tambang Intan
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Membangun Tambang Bijih Tembaga
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Menanam Hutan Harum Manis
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Membangun Pabrik Manisan
@@ -783,7 +783,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Pilihan Permainan
 STR_02C6_DIFFICULTY_SETTINGS                                    :Pengaturan tingkat kesulitan
-STR_MENU_CONFIG_PATCHES                                         :Pengaturan Lanjut
+STR_MENU_CONFIG_PATCHES                                         :Pengaturan lanjutan
 STR_NEWGRF_SETTINGS                                             :Pengaturan NewGRF
 STR_TRANSPARENCY_OPTIONS                                        :Pengaturan Transparansi
 STR_GAMEOPTMENU_0A                                              :
@@ -1027,6 +1027,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktifkan akselerasi realistis pada kereta api: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Kereta dan kapal dilarang belok 90 derajat: {ORANGE}{STRING} {LTBLUE} (tidak dengan NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan stasiun kereta api: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ijinkan menggabung stasiun meski tdk menempel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gunakan algoritma pengangkutan terbaru : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Angkut secara bertahap: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasi: {ORANGE}{STRING}
@@ -1139,6 +1140,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Tersedia pertam
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakhir
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Tampilkan jalur yang akan terpakai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Keep building tools active after usage: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Tampilkan toolbar meski kendaraan belum tersedia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. kereta tiap pemain: {ORANGE}{STRING}
@@ -1182,7 +1184,7 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Hanya sinyal bl
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Hanya sinyal jalur
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Semua
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Kota yang tidak "memiliki jalan" tidak diperbolehkan dalam editor skenario
+STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Kota yang "tidak memiliki jalan"  dalam editor skenario tidak sah
 STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Pilih tata jalan kota: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :Tidak memiliki jalan
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :Asli
@@ -1197,6 +1199,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Tengah
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Kanan
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Lekatkan jendela pada: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pelekatan jendela: {ORANGE}dimatikan
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Window soft limit (non-sticky): {ORANGE}disabled
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Kecepatan pertumbuhan kota: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Tidak tumbuh
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Pelan
@@ -1679,7 +1683,7 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Tidak da
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Tidak dapat menghapus jalur rel dari sini
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Tidak dapat menghapus sinyal dari sini
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Arah Depo Kereta Api
-STR_1015_RAILROAD_CONSTRUCTION                                  :Pembangunan Jalan
+STR_1015_RAILROAD_CONSTRUCTION                                  :Pembangunan Rel
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Konstruksi Kereta Rel Listrik
 STR_1016_MONORAIL_CONSTRUCTION                                  :Pembangunan Monorail/Rel tunggal
 STR_1017_MAGLEV_CONSTRUCTION                                    :Pembangunan Maglev
@@ -1717,11 +1721,13 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Jalur rel keret
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Rel dengan sinyal campuran dan jalan satu arah
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Rel dengan sinyal jalan dan sinyal jalan satu arah
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Harus menghapus stasiun dulu
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Pisahkan stasiun
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Gabung stasiun
 
 
 
 ##id 0x1800
-STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Harus memindahkan/membongkar jalan terlebih dahulu
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Harus membongkar jalan terlebih dahulu
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Jalan sedang dikerjakan
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Pembangunan Jalan
 STR_WHITE_TRAMWAY_CONSTRUCTION                                  :{WHITE}Konstruksi Jalan Trem
@@ -1729,8 +1735,8 @@ STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Pilih Je
 STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION                        :{WHITE}...jalan satu arah tak bisa memiliki simpangan
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tidak dapat membangun jalan disini...
 STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Tidak dapat membangun jalan trem disini...
-STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Tidak dapat menghapus jalan dari sini...
-STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Tidak dapat memindahkan/membongkar jalan trem disini...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Tidak dapat membongkar jalan di sini...
+STR_CAN_T_REMOVE_TRAMWAY_FROM                                   :{WHITE}Tidak dapat membongkar jalan trem disini...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Arah Depo kendaraan
 STR_TRAM_DEPOT_ORIENTATION                                      :{WHITE}Orientasi Depo Trem
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tidak dapat membangun bengkel disini...
@@ -1742,7 +1748,7 @@ STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Tidak da
 STR_180A_ROAD_CONSTRUCTION                                      :Pembangunan jalan
 STR_TRAMWAY_CONSTRUCTION                                        :Pembangunan Jalur Tram
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Membangun bagian jalan
-STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Membangun jalan menggunakan mode "Autoroad"/jalan otomatis
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Membangun jalan menggunakan modus otomatis
 STR_BUILD_TRAMWAY_SECTION                                       :{BLACK}Membangun jalur trem
 STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Membuat jalur trem menggunakan mode Autotram
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Membangun bengkel (untuk membuat dan memperbaiki kendaraan)
@@ -1756,13 +1762,13 @@ STR_BUILD_TRAMWAY_BRIDGE                                        :{BLACK}Membangu
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Membangun terowongan
 STR_BUILD_TRAMWAY_TUNNEL                                        :{BLACK}Membangun terowongan trem
 STR_TOGGLE_ONE_WAY_ROAD                                         :{BLACK}Aktif/Non Aktifkan jalan satu arah
-STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}"Toggle"/Tandai bangun/hapus untuk pembangunan jalan
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Bangun/Bongkar konstruksi jalanan
 STR_TOGGLE_BUILD_REMOVE_FOR_TRAMWAYS                            :{BLACK}Membangun/bongkar  konstruksi rel trem
 STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Pilih arah bengkel kendaraan
 STR_SELECT_TRAM_VEHICLE_DEPOT                                   :{BLACK}Pilih arah depo trem
 STR_1814_ROAD                                                   :Jalan
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Jalan raya dengan lampu
-STR_1816_TREE_LINED_ROAD                                        :Pohon - batas jalan
+STR_1816_TREE_LINED_ROAD                                        :Jalan berbatas pohon
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Depo Kendaraan Darat
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Persimpangan jalan/rel
 STR_TRAMWAY                                                     :Jalur Trem
@@ -1910,8 +1916,8 @@ STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Terlalu 
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Terlalu dekat dengan stasiun/area bongkar muat lainnya
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Harus menghancurkan jalur rel stasiun terlebih dahul
-STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Terlalu dekat dengan bandara udara lainnya
-STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Harus menghancurkan bandara udara terlebih dahulu
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Terlalu dekat dengan bandara lainnya
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Harus menghancurkan bandara terlebih dahulu
 
 STR_3030_RENAME_STATION_LOADING                                 :Ubah nama stasiun/area bongkar muat
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Tidak dapat mengganti nama stasiun...
@@ -1965,11 +1971,11 @@ STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Pilih mo
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Stasiun Kereta Api
-STR_305F_AIRCRAFT_HANGAR                                        :Hangar Pesawat Udara
-STR_3060_AIRPORT                                                :Bandar Udara
+STR_305F_AIRCRAFT_HANGAR                                        :Hangar Pesawat
+STR_3060_AIRPORT                                                :Bandara
 STR_3061_TRUCK_LOADING_AREA                                     :Area bongkar muat truk
 STR_3062_BUS_STATION                                            :Terminal Bus
-STR_3063_SHIP_DOCK                                              :Pelabuhan Kapal Laut
+STR_3063_SHIP_DOCK                                              :Pelabuhan
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Soroti area yang dapat dilayani dari lokasi yang hendak dibangun
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Jangan soroti area yang dapat dilayani dari lokasi yang hendak dibangun
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Jangkauan layanan
@@ -1985,13 +1991,13 @@ STR_STAT_CLASS_DFLT                                             :Stasiun asli/"d
 STR_STAT_CLASS_WAYP                                             :Penunjuk Arah
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientasi Depo Kapal Laut
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientasi Galangan
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...harus dibangun di atas air
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Tidak dapat membangun galangan kapal disini...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Pilih arah galangan kapal
 STR_3804_WATER                                                  :Air
 STR_3805_COAST_OR_RIVERBANK                                     :Pantai atau tepi sungai
-STR_3806_SHIP_DEPOT                                             :Galangan Kapal Laut
+STR_3806_SHIP_DEPOT                                             :Galangan Kapal
 STR_AQUEDUCT                                                    :Saluran air dari beton
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Tidak dapat membangun di atas air
 STR_MUST_DEMOLISH_CANAL_FIRST                                   :{WHITE}Harus menghancurkan kanal terlebih dahulu
@@ -2043,7 +2049,7 @@ STR_480F_FOOD_PROCESSING_PLANT                                  :Pabrik Pengolah
 STR_4810_PAPER_MILL                                             :Pabrik Pengolahan Kertas
 STR_4811_GOLD_MINE                                              :Tambang Emas
 STR_4812_BANK                                                   :Bank
-STR_4813_DIAMOND_MINE                                           :Tambang Permata
+STR_4813_DIAMOND_MINE                                           :Tambang Intan
 STR_4814_IRON_ORE_MINE                                          :Tambang Bijih Besi
 STR_4815_FRUIT_PLANTATION                                       :Perkebunan Buah
 STR_4816_RUBBER_PLANTATION                                      :Perkebunan Karet
@@ -2156,7 +2162,7 @@ STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Tanpa nama
 STR_SV_TRAIN_NAME                                               :Kereta Api {COMMA}
 STR_SV_ROADVEH_NAME                                             :Bus/truk {COMMA}
-STR_SV_SHIP_NAME                                                :Kapal Laut {COMMA}
+STR_SV_SHIP_NAME                                                :Kapal {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Pesawat {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
@@ -2291,7 +2297,7 @@ STR_7011_CONSTRUCTION                                           :{GOLD}Konstruks
 STR_7012_NEW_VEHICLES                                           :{GOLD}Beli Kendaraan Baru
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Biaya Ops. Kereta Api
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Biaya Ops. Bus/truk
-STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Biaya Ops. Pesawat Udara
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Biaya Ops. Pesawat
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Biaya Ops. Kapal Laut
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Perawatan Properti
 STR_7018_TRAIN_INCOME                                           :{GOLD}Pendapatan Kereta Api
@@ -2333,7 +2339,7 @@ STR_7039_VEHICLES                                               :{GOLD}Kendaraan
 STR_TRAINS                                                      :{WHITE}{COMMA} kereta api
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} bus/truk
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} pesawat
-STR_SHIPS                                                       :{WHITE}{COMMA} kapal laut
+STR_SHIPS                                                       :{WHITE}{COMMA} kapal
 STR_7042_NONE                                                   :{WHITE}Tidak punya
 STR_7043_FACE_SELECTION                                         :{WHITE}Pilihan Wajah
 STR_7044_MALE                                                   :{BLACK}Pria
@@ -2434,8 +2440,8 @@ STR_LIVERY_FREIGHT_TRAM                                         :Trem Barang
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Tampilkan skema warna umum
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Tampilkan skema warna kereta api
 STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Tampilkan skema warna bus/truk
-STR_LIVERY_SHIP_TIP                                             :{BLACK}Tampilkan skema warna kapal laut
-STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Tampilkan skema warna pesawat udara
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Tampilkan skema warna kapal
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Tampilkan skema warna pesawat
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Pilih warna utama untuk skema terpilih
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Pilih warna kedua untuk skema terpilih
 STR_LIVERY_PANEL_TIP                                            :{BLACK}Pilih skema warna untuk diganti, atau banyak skema dengan CTRL+klik. Klik pada kotak untuk berganti dari skema warna yang digunakan
@@ -2702,7 +2708,7 @@ STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Kami tela
 STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotif kereta api
 STR_8103_ROAD_VEHICLE                                           :Bus/truk
 STR_8104_AIRCRAFT                                               :pesawat
-STR_8105_SHIP                                                   :kapal laut
+STR_8105_SHIP                                                   :kapal
 STR_8106_MONORAIL_LOCOMOTIVE                                    :lokomotif monorel
 STR_8107_MAGLEV_LOCOMOTIVE                                      :lokomotif maglev
 
@@ -2881,7 +2887,7 @@ STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aksi ker
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Tampilkan perintah kereta
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Arahkan tampilan pada lokasi kereta
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Kirim kereta ke depo. CTRL+klik hanya akan memerintahkan servis
-STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Paksa kereta terus berjalan tanpa menunggu sinyal
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Paksa kereta terus berjalan tanpa menunggu sinyal hijau
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Balikkan arah kereta api
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Tampilkan informasi kereta
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Menambah jarak waktu servis
@@ -3003,7 +3009,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_CITIZENS_CELEBRATE_FIRST_PASSENGER_TRAM                     :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Penumpang pertama tiba di {STATION}!
 STR_CITIZENS_CELEBRATE_FIRST_CARGO_TRAM                         :{BLACK}{BIGFONT}Masyarakat bergembira . . .{}Trem Barang pertama tiba di {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Terjadi tabrakan!{}Seorang sopir meninggal dalam ledakan setelah ditabrak kereta
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrakan kereta
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Terjadi tabrakan!{}{COMMA} orang meninggal dalam ledakan setelah ditabrak kereta
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Tidak dapat membalik arah kendaraan...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Tidak dapat membalik arah kendaraan yang terdiri dari beberapa unit
 STR_9034_RENAME                                                 :{BLACK}Ganti Nama
@@ -3028,9 +3034,9 @@ STR_9805_SHIPS                                                  :{WHITE}{COMPANY
 STR_9808_NEW_SHIPS                                              :{WHITE}Kapal Baru
 STR_9809_BUILD_SHIP                                             :{BLACK}Membuat Kapal
 STR_CLONE_SHIP                                                  :{BLACK}Gandakan
-STR_CLONE_SHIP_INFO                                             :{BLACK}Untuk menggandakan satu unit kapal laut. Kontrol-klik akan berbagi perintah/tujuan
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal Laut. Klik tombol ini dan kemudian pada satu kapal laut di dalam atau diluar galangan. Kontrol-klik akan berbagi perintah/tujuan
-STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kapal Laut harus berhenti di galangan
+STR_CLONE_SHIP_INFO                                             :{BLACK}Untuk menggandakan satu unit kapal. Kontrol-klik akan berbagi perintah
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Untuk menggandakan satu unit Kapal . Klik tombol ini dan kemudian pada satu kapal di dalam atau diluar galangan. Kontrol-klik akan berbagi perintah
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Kapal harus berhenti di galangan
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Tidak dapat menjual kapal...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Tidak dapat membuat kapal...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Kapal sedang berjalan
@@ -3052,13 +3058,13 @@ STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis 
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} sedang menunggu di galangan
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Membangun pelabuhan
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Membangun Galangan Kapal (untuk membuat dan memperbaiki kapal)
-STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal laut - klik pada kapal untuk menampilkan informasi
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Membuat kapal baru
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Drag kapal kesini untuk menjualnya
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Arahkan pandangan pada lokasi Galangan Kapal
-STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal laut - klik pada kapal untuk menampilkan informasi
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Kapal - klik pada kapal untuk menampilkan informasi
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Membuat kapal baru (membutuhkan Galangan Kapal)
-STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Daftar pilihan kapal laut - klik pada kapal untuk informasi
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Daftar kapal - klik pada kapal untuk informasi
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Buat kapal yang dipilih
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Aksi kapal saat ini - klik disini untuk menghentikan / menjalankan kapal
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Tampilkan perintah kapal
@@ -3092,15 +3098,15 @@ STR_9842_REFITTABLE                                             :(kargo dapat di
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Bandara
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Tidak dapat membangun bandara disini...
-STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar Pesawat Udara
-STR_A003_NEW_AIRCRAFT                                           :{BLACK}Pesawat Udara Baru
+STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar Pesawat
+STR_A003_NEW_AIRCRAFT                                           :{BLACK}Buat Pesawat
 STR_CLONE_AIRCRAFT                                              :{BLACK}Gandakan
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat Udara. Kontrol-klik akan berbagi perintah/tujuannya
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat Udara. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik akan berbagi perintah/tujuannya
-STR_A005_NEW_AIRCRAFT                                           :{WHITE}Pesawat Udara Baru
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Untuk menggandakan satu unit Pesawat. Kontrol-klik akan berbagi perintah
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Untuk menggandakan satu unit Pesawat. Klik tombol ini dan kemudian pada satu Pesawat Udara didalam atau diluar hangar. Kontrol-klik akan berbagi perintah/tujuannya
+STR_A005_NEW_AIRCRAFT                                           :{WHITE}Buat Pesawat
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Buat Pesawat
-STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Tidak dapat membuat pesawat udara...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Pesawat Udara
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Tidak dapat membuat pesawat ...
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Pesawat
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detail)
@@ -3120,18 +3126,18 @@ STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Tidak da
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Pesawat dalam penerbangan
 STR_A019_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}, {CARGO}
 STR_A01A_CAPACITY                                               :{BLACK}Kapasitas: {LTBLUE}{CARGO}
-STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Pesawat Udara harus berhenti di hangar
+STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Pesawat harus berhenti di hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Tidak dapat menjual pesawat...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Konstruksi Bandara
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Membangun bandara
-STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat Udara - klik pada pesawat untuk informasi
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Membuat pesawat udara baru (membutuhkan bandara dengan hangar)
-STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat Udara - klik pada pesawat untuk informasi
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Membuat pesawat udara baru
+STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat - klik pada pesawat untuk informasi
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Membuat pesawat baru (membutuhkan bandara dengan hangar)
+STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Pesawat - klik pada pesawat untuk informasi
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Membuat pesawat baru
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag pesawat kesini untuk menjualnya
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Arahkan pandangan ke lokasi hangar
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Daftar pilihan Pesawat - Klik pada pesawat untuk informasi
-STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Membuat pesawat udara yang dipilih
+STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Membuat pesawat yang dipilih
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Aksi pesawat saat ini - klik disini untuk menghentikan / menjalankan pesawat
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Tampilkan order pesawat
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Arahkan pandangan pada lokasi pesawat
@@ -3213,13 +3219,13 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Terapkan
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Tandai palet
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}Tandai palet NewGRF terpilih.{}Lakukan ini ketika grafis NewGRF ini terlihat berwarna merah muda di dalam permainan
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Atur parameter
-STR_NEWGRF_TIP                                                  :{BLACK}Daftar semua Set Newgrf yang telah diatur dan anda pasang. Klik set/aturan untuk merubah setingan
+STR_NEWGRF_TIP                                                  :{BLACK}Daftar semua berkas Newgrf yang terpasang. Klik salah satu untuk mengganti pengaturan
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Tidak ada berkas Newgrf yang terpasang! Mohon meninjau instruksi dari buku manual tentang cara untuk memasang grafik
 STR_NEWGRF_FILENAME                                             :{BLACK}Nama File: {SILVER}{STRING}
 STR_NEWGRF_PALETTE                                              :{BLACK}Palet/warna: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda berusaha membuat beberapa perubahan dalam permainan yang sedang berjalan; Hal ini dapat membuat OpenTTD mengalami crash.{}Anda sangat yakin dalam hal ini?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda berusaha membuat perubahan pada permainan yang sedang berjalan;Ini dapat membuat OpenTTD mengalami crash.{}Anda sangat yakin dalam hal ini?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Peringatan: {SILVER}{STRING}
@@ -3241,18 +3247,18 @@ STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggun
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?).
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Baca kembali setingan terdahulu yang terpilih
-STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Simpan aturan terdahulu
-STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Simpan daftar ini sebagai setingan terdahulu
-STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Masukkan nama untuk setingan terdahulu
-STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Hapus setingan terdahulu
-STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Hapus setingan terdahulu yang saat ini terpilih
+STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Simpan
+STR_NEWGRF_PRESET_SAVE_TIP                                      :{BLACK}Simpan daftar ini dalam daftar aturan
+STR_NEWGRF_PRESET_SAVE_QUERY                                    :{BLACK}Masukkan nama
+STR_NEWGRF_PRESET_DELETE                                        :{BLACK}Hapus
+STR_NEWGRF_PRESET_DELETE_TIP                                    :{BLACK}Hapus daftar aturan yang terpilih
 STR_NEWGRF_ADD                                                  :{BLACK}Tambahkan
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Tambahkan berkas NewGRF ke dalam daftar
 STR_NEWGRF_REMOVE                                               :{BLACK}Buang
 STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Buang berkas NewGRF yang terpilih dari daftar
-STR_NEWGRF_MOVEUP                                               :{BLACK}Pindahkan keatas
+STR_NEWGRF_MOVEUP                                               :{BLACK}Keatas
 STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian atas daftar
-STR_NEWGRF_MOVEDOWN                                             :{BLACK}Pindahkan kebawah
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Kebawah
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Pindahkan berkas NewGRF yang terpilih kebagian bawah daftar
 STR_NEWGRF_FILE_TIP                                             :{BLACK}Daftar berkas NewGRF yang diinstal. Klik satu berkas untuk melakukan perubahan pada parameter-parameternya
 STR_NEWGRF_PARAMETER                                            :{BLACK}Parameter: {SILVER}{STRING}
@@ -3503,7 +3509,7 @@ STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Nilai Transfer: {LTBLUE}{CURRENCY}
-STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...ini jalan milik kota
+STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...jalan ini milik kota
 STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...menghadap pada arah yang salah
 
 STR_TRANSPARENCY_TOOLB                                          :{WHITE}Pengaturan Transparasi
