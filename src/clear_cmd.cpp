@@ -25,7 +25,7 @@
 
 static CommandCost ClearTile_Clear(TileIndex tile, byte flags)
 {
-	static const Money* clear_price_table[] = {
+	static const Money *clear_price_table[] = {
 		&_price.clear_grass,
 		&_price.clear_roughland,
 		&_price.clear_rocks,

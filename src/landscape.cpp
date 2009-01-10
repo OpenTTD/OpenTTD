@@ -329,7 +329,7 @@ void GetSlopeZOnEdge(Slope tileh, DiagDirection edge, int *z1, int *z2)
  * @param z returns the z of the foundation slope. (Can be NULL, if not needed)
  * @return The slope on top of the foundation.
  */
-Slope GetFoundationSlope(TileIndex tile, uint* z)
+Slope GetFoundationSlope(TileIndex tile, uint *z)
 {
 	Slope tileh = GetTileSlope(tile, z);
 	Foundation f = _tile_type_procs[GetTileType(tile)]->get_foundation_proc(tile, tileh);

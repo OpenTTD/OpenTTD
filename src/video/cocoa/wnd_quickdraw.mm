@@ -154,7 +154,7 @@ public:
 	virtual void MakeDirty(int left, int top, int width, int height);
 	virtual void UpdatePalette(uint first_color, uint num_colors);
 
-	virtual uint ListModes(OTTD_Point* modes, uint max_modes);
+	virtual uint ListModes(OTTD_Point *modes, uint max_modes);
 
 	virtual bool ChangeResolution(int w, int h);
 
@@ -165,7 +165,7 @@ public:
 	virtual void *GetPixelBuffer() { return pixel_buffer; }
 
 	/* Convert local coordinate to window server (CoreGraphics) coordinate */
-	virtual CGPoint PrivateLocalToCG(NSPoint* p);
+	virtual CGPoint PrivateLocalToCG(NSPoint *p);
 
 	virtual NSPoint GetMouseLocation(NSEvent *event);
 	virtual bool MouseIsInsideView(NSPoint *pt);
@@ -462,8 +462,8 @@ bool WindowQuickdrawSubdriver::SetVideoMode(int width, int height)
 
 void WindowQuickdrawSubdriver::Blit32ToView32(int left, int top, int right, int bottom)
 {
-	const uint32* src   = (uint32*)pixel_buffer;
-	uint32*       dst   = (uint32*)window_buffer;
+	const uint32 *src   = (uint32*)pixel_buffer;
+	uint32       *dst   = (uint32*)window_buffer;
 	uint          width = window_width;
 	uint          pitch = window_pitch / 4;
 	int y;
@@ -479,9 +479,9 @@ void WindowQuickdrawSubdriver::Blit32ToView32(int left, int top, int right, int 
 
 void WindowQuickdrawSubdriver::BlitIndexedToView32(int left, int top, int right, int bottom)
 {
-	const uint32* pal   = palette32;
-	const uint8*  src   = (uint8*)pixel_buffer;
-	uint32*       dst   = (uint32*)window_buffer;
+	const uint32 *pal   = palette32;
+	const uint8  *src   = (uint8*)pixel_buffer;
+	uint32       *dst   = (uint32*)window_buffer;
 	uint          width = window_width;
 	uint          pitch = window_pitch / 4;
 	int x;
@@ -496,9 +496,9 @@ void WindowQuickdrawSubdriver::BlitIndexedToView32(int left, int top, int right,
 
 void WindowQuickdrawSubdriver::BlitIndexedToView16(int left, int top, int right, int bottom)
 {
-	const uint16* pal   = palette16;
-	const uint8*  src   = (uint8*)pixel_buffer;
-	uint16*       dst   = (uint16*)window_buffer;
+	const uint16 *pal   = palette16;
+	const uint8  *src   = (uint8*)pixel_buffer;
+	uint16       *dst   = (uint16*)window_buffer;
 	uint          width = window_width;
 	uint          pitch = window_pitch / 2;
 	int x;
@@ -541,7 +541,7 @@ void WindowQuickdrawSubdriver::DrawResizeIcon()
 	switch (device_depth) {
 		case 32:
 			for (y = 0; y < _resize_icon_height; y++) {
-				uint32* trg = (uint32*)window_buffer + (yoff + y) * window_pitch / 4 + xoff;
+				uint32 *trg = (uint32*)window_buffer + (yoff + y) * window_pitch / 4 + xoff;
 
 				for (x = 0; x < _resize_icon_width; x++, trg++) {
 					if (_resize_icon[y * _resize_icon_width + x]) *trg = 0xff000000;
@@ -550,7 +550,7 @@ void WindowQuickdrawSubdriver::DrawResizeIcon()
 			break;
 		case 16:
 			for (y = 0; y < _resize_icon_height; y++) {
-				uint16* trg = (uint16*)window_buffer + (yoff + y) * window_pitch / 2 + xoff;
+				uint16 *trg = (uint16*)window_buffer + (yoff + y) * window_pitch / 2 + xoff;
 
 				for (x = 0; x < _resize_icon_width; x++, trg++) {
 					if (_resize_icon[y * _resize_icon_width + x]) *trg = 0x0000;
@@ -681,7 +681,7 @@ void WindowQuickdrawSubdriver::UpdatePalette(uint first_color, uint num_colors)
 	num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
-uint WindowQuickdrawSubdriver::ListModes(OTTD_Point* modes, uint max_modes)
+uint WindowQuickdrawSubdriver::ListModes(OTTD_Point *modes, uint max_modes)
 {
 	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, buffer_depth);
 }
@@ -701,7 +701,7 @@ bool WindowQuickdrawSubdriver::ChangeResolution(int w, int h)
 }
 
 /* Convert local coordinate to window server (CoreGraphics) coordinate */
-CGPoint WindowQuickdrawSubdriver::PrivateLocalToCG(NSPoint* p)
+CGPoint WindowQuickdrawSubdriver::PrivateLocalToCG(NSPoint *p)
 {
 	CGPoint cgp;
 
@@ -740,7 +740,7 @@ void WindowQuickdrawSubdriver::SetPortAlphaOpaque()
 	if (device_depth != 32)
 		return;
 
-	uint32* pixels = (uint32*)window_buffer;
+	uint32 *pixels = (uint32*)window_buffer;
 	uint32  pitch  = window_pitch / 4;
 	int x, y;
 

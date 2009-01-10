@@ -49,7 +49,7 @@ struct SignList {
 	}
 
 	/** Sort signs by their name */
-	static int CDECL SignNameSorter(const Sign* const *a, const Sign* const *b)
+	static int CDECL SignNameSorter(const Sign * const *a, const Sign * const *b)
 	{
 		static char buf_cache[64];
 		char buf[64];

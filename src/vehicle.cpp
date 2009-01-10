@@ -150,7 +150,7 @@ bool Vehicle::NeedsAutomaticServicing() const
 	return NeedsServicing();
 }
 
-StringID VehicleInTheWayErrMsg(const Vehicle* v)
+StringID VehicleInTheWayErrMsg(const Vehicle *v)
 {
 	switch (v->type) {
 		case VEH_TRAIN:    return STR_8803_TRAIN_IN_THE_WAY;
@@ -530,7 +530,7 @@ const Vehicle *GetLastVehicleInChain(const Vehicle *v)
 	return v;
 }
 
-uint CountVehiclesInChain(const Vehicle* v)
+uint CountVehiclesInChain(const Vehicle *v)
 {
 	uint count = 0;
 	do count++; while ((v = v->Next()) != NULL);

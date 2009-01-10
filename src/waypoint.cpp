@@ -43,7 +43,7 @@ DEFINE_OLD_POOL_GENERIC(Waypoint, Waypoint)
 /**
  * Update the sign for the waypoint
  * @param wp Waypoint to update sign */
-static void UpdateWaypointSign(Waypoint* wp)
+static void UpdateWaypointSign(Waypoint *wp)
 {
 	Point pt = RemapCoords2(TileX(wp->xy) * TILE_SIZE, TileY(wp->xy) * TILE_SIZE);
 	SetDParam(0, wp->index);
@@ -53,7 +53,7 @@ static void UpdateWaypointSign(Waypoint* wp)
 /**
  * Redraw the sign of a waypoint
  * @param wp Waypoint to redraw sign */
-static void RedrawWaypointSign(const Waypoint* wp)
+static void RedrawWaypointSign(const Waypoint *wp)
 {
 	MarkAllViewportsDirty(
 		wp->sign.left - 6,
@@ -78,7 +78,7 @@ void UpdateAllWaypointSigns()
  * Set the default name for a waypoint
  * @param wp Waypoint to work on
  */
-static void MakeDefaultWaypointName(Waypoint* wp)
+static void MakeDefaultWaypointName(Waypoint *wp)
 {
 	uint32 used = 0; // bitmap of used waypoint numbers, sliding window with 'next' as base
 	uint32 next = 0; // first waypoint number in the bitmap
@@ -227,7 +227,7 @@ CommandCost CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint3
 		}
 		wp->owner = owner;
 
-		const StationSpec* statspec;
+		const StationSpec *statspec;
 
 		bool reserved = HasBit(GetTrackReservation(tile), AxisToTrack(axis));
 		MakeRailWaypoint(tile, owner, axis, GetRailType(tile), wp->index);

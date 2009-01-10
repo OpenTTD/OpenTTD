@@ -367,7 +367,7 @@ void UpdateTownRadius(Town *t);
 bool CheckIfAuthorityAllows(TileIndex tile);
 Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
-HouseZonesBits GetTownRadiusGroup(const Town* t, TileIndex tile);
+HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 
 /**

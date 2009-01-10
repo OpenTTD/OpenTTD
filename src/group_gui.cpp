@@ -150,7 +150,7 @@ private:
 	}
 
 	/** Sort the groups by their name */
-	static int CDECL GroupNameSorter(const Group* const *a, const Group* const *b)
+	static int CDECL GroupNameSorter(const Group * const *a, const Group * const *b)
 	{
 		static const Group *last_group[2] = { NULL, NULL };
 		static char         last_name[2][64] = { "", "" };

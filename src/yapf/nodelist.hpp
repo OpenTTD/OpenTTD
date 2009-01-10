@@ -55,7 +55,7 @@ public:
 	/** return number of closed nodes */
 	FORCEINLINE int ClosedCount() {return m_closed.Count();}
 	/** allocate new data item from m_arr */
-	FORCEINLINE Titem_* CreateNewNode()
+	FORCEINLINE Titem_ *CreateNewNode()
 	{
 		if (m_new_node == NULL) m_new_node = &m_arr.Add();
 		return m_new_node;
@@ -80,7 +80,7 @@ public:
 			m_new_node = NULL;
 	}
 	/** return the best open node */
-	FORCEINLINE Titem_* GetBestOpenNode()
+	FORCEINLINE Titem_ *GetBestOpenNode()
 	{
 		if (!m_open_queue.IsEmpty()) {
 			Titem_& item = m_open_queue.GetHead();
@@ -89,7 +89,7 @@ public:
 		return NULL;
 	}
 	/** remove and return the best open node */
-	FORCEINLINE Titem_* PopBestOpenNode()
+	FORCEINLINE Titem_ *PopBestOpenNode()
 	{
 		if (!m_open_queue.IsEmpty()) {
 			Titem_& item = m_open_queue.PopHead();
@@ -99,9 +99,9 @@ public:
 		return NULL;
 	}
 	/** return the open node specified by a key or NULL if not found */
-	FORCEINLINE Titem_* FindOpenNode(const Key& key)
+	FORCEINLINE Titem_ *FindOpenNode(const Key& key)
 	{
-		Titem_* item = m_open.Find(key);
+		Titem_ *item = m_open.Find(key);
 		return item;
 	}
 	/** remove and return the open node specified by a key */
@@ -119,9 +119,9 @@ public:
 		m_closed.Push(item);
 	}
 	/** return the closed node specified by a key or NULL if not found */
-	FORCEINLINE Titem_* FindClosedNode(const Key& key)
+	FORCEINLINE Titem_ *FindClosedNode(const Key& key)
 	{
-		Titem_* item = m_closed.Find(key);
+		Titem_ *item = m_closed.Find(key);
 		return item;
 	}
 

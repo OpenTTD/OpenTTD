@@ -29,7 +29,7 @@ protected:
 		new_block_proc(new_block_proc), clean_block_proc(clean_block_proc), current_blocks(0),
 		total_items(0), cleaning_pool(false), item_size(item_size), first_free_index(0), blocks(NULL) {}
 
-	const char* name;     ///< Name of the pool (just for debugging)
+	const char *name;           ///< Name of the pool (just for debugging)
 
 	const uint max_blocks;      ///< The max amount of blocks this pool can have
 	const uint block_size_bits; ///< The size of each block in bits
@@ -326,7 +326,7 @@ public:
 
 
 #define OLD_POOL_ACCESSORS(name, type) \
-	static inline type* Get##name(uint index) { return _##name##_pool.Get(index);  } \
+	static inline type *Get##name(uint index) { return _##name##_pool.Get(index);  } \
 	static inline uint Get##name##PoolSize()  { return _##name##_pool.GetSize(); }
 
 

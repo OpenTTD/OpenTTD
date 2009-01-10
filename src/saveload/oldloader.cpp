@@ -331,7 +331,7 @@ static StringID *_old_vehicle_names = NULL;
 
 static void FixOldVehicles()
 {
-	Vehicle* v;
+	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
 		v->name = CopyFromOldName(_old_vehicle_names[v->index]);

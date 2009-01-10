@@ -41,7 +41,7 @@ static const WaterDrawTileStruct _shipdepot_display_seq_4[] = {
 	END(0)
 };
 
-static const WaterDrawTileStruct* const _shipdepot_display_seq[] = {
+static const WaterDrawTileStruct * const _shipdepot_display_seq[] = {
 	_shipdepot_display_seq_1,
 	_shipdepot_display_seq_2,
 	_shipdepot_display_seq_3,
@@ -132,7 +132,7 @@ static const WaterDrawTileStruct _shiplift_display_seq_3t[] = {
 	END(8)
 };
 
-static const WaterDrawTileStruct* const _shiplift_display_seq[] = {
+static const WaterDrawTileStruct * const _shiplift_display_seq[] = {
 	_shiplift_display_seq_0,
 	_shiplift_display_seq_1,
 	_shiplift_display_seq_2,

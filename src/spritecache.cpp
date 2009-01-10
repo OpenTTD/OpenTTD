@@ -132,9 +132,9 @@ bool SpriteExists(SpriteID id)
 	return !(GetSpriteCache(id)->file_pos == 0 && GetSpriteCache(id)->file_slot == 0);
 }
 
-void* AllocSprite(size_t);
+void *AllocSprite(size_t);
 
-static void* ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
+static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 {
 	uint8 file_slot = sc->file_slot;
 	size_t file_pos = sc->file_pos;
@@ -247,7 +247,7 @@ static void* ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 				num -= i;
 				for (; i > 0; --i) *dest++ = FioReadByte();
 			} else {
-				const byte* rel = dest - (((i & 7) << 8) | FioReadByte());
+				const byte *rel = dest - (((i & 7) << 8) | FioReadByte());
 				i = -(i >> 3);
 				num -= i;
 				for (; i > 0; --i) *dest++ = *rel++;
@@ -320,7 +320,7 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 
 #define S_FREE_MASK 1
 
-static inline MemBlock* NextBlock(MemBlock* block)
+static inline MemBlock *NextBlock(MemBlock *block)
 {
 	return (MemBlock*)((byte*)block + (block->size & ~S_FREE_MASK));
 }
@@ -328,7 +328,7 @@ static inline MemBlock* NextBlock(MemBlock* block)
 static size_t GetSpriteCacheUsage()
 {
 	size_t tot_size = 0;
-	MemBlock* s;
+	MemBlock *s;
 
 	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
 		if (!(s->size & S_FREE_MASK)) tot_size += s->size;
@@ -376,7 +376,7 @@ static void CompactSpriteCache()
 
 	for (s = _spritecache_ptr; s->size != 0;) {
 		if (s->size & S_FREE_MASK) {
-			MemBlock* next = NextBlock(s);
+			MemBlock *next = NextBlock(s);
 			MemBlock temp;
 			SpriteID i;
 
@@ -412,7 +412,7 @@ static void DeleteEntryFromSpriteCache()
 {
 	SpriteID i;
 	uint best = UINT_MAX;
-	MemBlock* s;
+	MemBlock *s;
 	int cur_lru;
 
 	DEBUG(sprite, 3, "DeleteEntryFromSpriteCache, inuse=%d", GetSpriteCacheUsage());
@@ -446,7 +446,7 @@ static void DeleteEntryFromSpriteCache()
 	}
 }
 
-void* AllocSprite(size_t mem_req)
+void *AllocSprite(size_t mem_req)
 {
 	mem_req += sizeof(MemBlock);
 
@@ -455,7 +455,7 @@ void* AllocSprite(size_t mem_req)
 	mem_req = Align(mem_req, sizeof(uint32));
 
 	for (;;) {
-		MemBlock* s;
+		MemBlock *s;
 
 		for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s)) {
 			if (s->size & S_FREE_MASK) {
@@ -487,7 +487,7 @@ void* AllocSprite(size_t mem_req)
 const void *GetRawSprite(SpriteID sprite, SpriteType type)
 {
 	SpriteCache *sc;
-	void* p;
+	void *p;
 
 	assert(sprite < _spritecache_items);
 

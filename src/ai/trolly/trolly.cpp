@@ -214,8 +214,8 @@ static void AiNew_State_ActionDone(Company *c)
 static bool AiNew_Check_City_or_Industry(Company *c, int ic, byte type)
 {
 	if (type == AI_CITY) {
-		const Town* t = GetTown(ic);
-		const Station* st;
+		const Town *t = GetTown(ic);
+		const Station *st;
 		uint count = 0;
 		int j = 0;
 
@@ -274,8 +274,8 @@ static bool AiNew_Check_City_or_Industry(Company *c, int ic, byte type)
 		return true;
 	}
 	if (type == AI_INDUSTRY) {
-		const Industry* i = GetIndustry(ic);
-		const Station* st;
+		const Industry *i = GetIndustry(ic);
+		const Station *st;
 		int count = 0;
 		int j = 0;
 
@@ -434,8 +434,8 @@ static void AiNew_State_LocateRoute(Company *c)
 		 */
 
 		if (_companies_ainew[c->index].from_type == AI_CITY && _companies_ainew[c->index].tbt == AI_BUS) {
-			const Town* town_from = GetTown(_companies_ainew[c->index].from_ic);
-			const Town* town_temp = GetTown(_companies_ainew[c->index].temp);
+			const Town *town_from = GetTown(_companies_ainew[c->index].from_ic);
+			const Town *town_temp = GetTown(_companies_ainew[c->index].temp);
 			uint distance = DistanceManhattan(town_from->xy, town_temp->xy);
 			int max_cargo;
 
@@ -461,8 +461,8 @@ static void AiNew_State_LocateRoute(Company *c)
 				return;
 			}
 		} else if (_companies_ainew[c->index].tbt == AI_TRUCK) {
-			const Industry* ind_from = GetIndustry(_companies_ainew[c->index].from_ic);
-			const Industry* ind_temp = GetIndustry(_companies_ainew[c->index].temp);
+			const Industry *ind_from = GetIndustry(_companies_ainew[c->index].from_ic);
+			const Industry *ind_temp = GetIndustry(_companies_ainew[c->index].temp);
 			bool found = false;
 			int max_cargo = 0;
 			uint i;
@@ -729,7 +729,7 @@ static void AiNew_State_FindPath(Company *c)
 	if (_companies_ainew[c->index].temp == -1) {
 		// Init path_info
 		if (_companies_ainew[c->index].from_tile == AI_STATION_RANGE) {
-			const Industry* i = GetIndustry(_companies_ainew[c->index].from_ic);
+			const Industry *i = GetIndustry(_companies_ainew[c->index].from_ic);
 
 			// For truck routes we take a range around the industry
 			_companies_ainew[c->index].path_info.start_tile_tl = i->xy - TileDiffXY(1, 1);
@@ -742,7 +742,7 @@ static void AiNew_State_FindPath(Company *c)
 		}
 
 		if (_companies_ainew[c->index].to_tile == AI_STATION_RANGE) {
-			const Industry* i = GetIndustry(_companies_ainew[c->index].to_ic);
+			const Industry *i = GetIndustry(_companies_ainew[c->index].to_ic);
 
 			_companies_ainew[c->index].path_info.end_tile_tl = i->xy - TileDiffXY(1, 1);
 			_companies_ainew[c->index].path_info.end_tile_br = i->xy + TileDiffXY(i->width + 1, i->height + 1);
@@ -1299,7 +1299,7 @@ static void AiNew_State_CheckAllVehicles(Company *c)
 // Using the technique simular to the original AI
 //   Keeps things logical
 // It really should be in the same order as the AI_STATE's are!
-static AiNew_StateFunction* const _ainew_state[] = {
+static AiNew_StateFunction * const _ainew_state[] = {
 	NULL,
 	AiNew_State_FirstTime,
 	AiNew_State_Nothing,

@@ -49,7 +49,7 @@ void MusicDriver_Win32::SetVolume(byte vol)
 	SetEvent(_midi.wait_obj);
 }
 
-static MCIERROR CDECL MidiSendCommand(const TCHAR* cmd, ...)
+static MCIERROR CDECL MidiSendCommand(const TCHAR *cmd, ...)
 {
 	va_list va;
 	TCHAR buf[512];

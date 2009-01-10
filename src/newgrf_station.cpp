@@ -731,7 +731,7 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
  * @param specindex Index of the custom station within the Station's spec list.
  * @return Indicates whether the StationSpec was deallocated.
  */
-void DeallocateSpecFromStation(Station* st, byte specindex)
+void DeallocateSpecFromStation(Station *st, byte specindex)
 {
 	/* specindex of 0 (default) is never freeable */
 	if (specindex == 0) return;
@@ -844,7 +844,7 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 const StationSpec *GetStationSpec(TileIndex t)
 {
-	const Station* st;
+	const Station *st;
 	uint specindex;
 
 	if (!IsCustomStationSpecIndex(t)) return NULL;
@@ -859,7 +859,7 @@ const StationSpec *GetStationSpec(TileIndex t)
  * XXX This could be cached (during build) in the map array to save on all the dereferencing */
 bool IsStationTileBlocked(TileIndex tile)
 {
-	const StationSpec* statspec = GetStationSpec(tile);
+	const StationSpec *statspec = GetStationSpec(tile);
 
 	return statspec != NULL && HasBit(statspec->blocked, GetStationGfx(tile));
 }
@@ -868,7 +868,7 @@ bool IsStationTileBlocked(TileIndex tile)
  * XXX This could be cached (during build) in the map array to save on all the dereferencing */
 bool IsStationTileElectrifiable(TileIndex tile)
 {
-	const StationSpec* statspec = GetStationSpec(tile);
+	const StationSpec *statspec = GetStationSpec(tile);
 
 	return
 		statspec == NULL ||

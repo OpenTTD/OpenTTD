@@ -533,7 +533,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 #if !defined(WINCE)
 		case WM_SIZING: {
-			RECT* r = (RECT*)lParam;
+			RECT *r = (RECT*)lParam;
 			RECT r2;
 			int w, h;
 

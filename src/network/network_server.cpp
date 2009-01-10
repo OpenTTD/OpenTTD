@@ -33,7 +33,7 @@
 
 // This file handles all the server-commands
 
-static void NetworkHandleCommandQueue(NetworkClientSocket* cs);
+static void NetworkHandleCommandQueue(NetworkClientSocket *cs);
 
 // **********
 // Sending functions
@@ -1205,7 +1205,7 @@ typedef void NetworkServerPacket(NetworkClientSocket *cs, Packet *p);
 //  packet it is matches against this array
 //  and that way the right function to handle that
 //  packet is found.
-static NetworkServerPacket* const _network_server_packet[] = {
+static NetworkServerPacket * const _network_server_packet[] = {
 	NULL, /*PACKET_SERVER_FULL,*/
 	NULL, /*PACKET_SERVER_BANNED,*/
 	RECEIVE_COMMAND(PACKET_CLIENT_JOIN),
@@ -1420,7 +1420,7 @@ bool NetworkServer_ReadPackets(NetworkClientSocket *cs)
 }
 
 // Handle the local command-queue
-static void NetworkHandleCommandQueue(NetworkClientSocket* cs)
+static void NetworkHandleCommandQueue(NetworkClientSocket *cs)
 {
 	CommandPacket *cp;
 
@@ -1534,7 +1534,7 @@ void NetworkServerChangeOwner(Owner current_owner, Owner new_owner)
 	}
 }
 
-const char* GetClientIP(const NetworkClientInfo* ci)
+const char *GetClientIP(const NetworkClientInfo *ci)
 {
 	struct in_addr addr;
 
@@ -1544,7 +1544,7 @@ const char* GetClientIP(const NetworkClientInfo* ci)
 
 void NetworkServerShowStatusToConsole()
 {
-	static const char* const stat_str[] = {
+	static const char * const stat_str[] = {
 		"inactive",
 		"authorizing",
 		"authorized",
@@ -1559,7 +1559,7 @@ void NetworkServerShowStatusToConsole()
 	FOR_ALL_CLIENT_SOCKETS(cs) {
 		int lag = NetworkCalculateLag(cs);
 		const NetworkClientInfo *ci = cs->GetInfo();
-		const char* status;
+		const char *status;
 
 		status = (cs->status < (ptrdiff_t)lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(CC_INFO, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",

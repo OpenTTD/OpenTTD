@@ -23,7 +23,7 @@
 
 static FMusicDriver_ExtMidi iFMusicDriver_ExtMidi;
 
-const char* MusicDriver_ExtMidi::Start(const char* const * parm)
+const char *MusicDriver_ExtMidi::Start(const char * const * parm)
 {
 	const char *command = GetDriverParam(parm, "cmd");
 	if (StrEmpty(command)) command = EXTERNAL_PLAYER;
@@ -41,7 +41,7 @@ void MusicDriver_ExtMidi::Stop()
 	this->DoStop();
 }
 
-void MusicDriver_ExtMidi::PlaySong(const char* filename)
+void MusicDriver_ExtMidi::PlaySong(const char *filename)
 {
 	strecpy(this->song, filename, lastof(this->song));
 	this->DoStop();

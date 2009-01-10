@@ -104,7 +104,7 @@ SpriteID Ship::GetImage(Direction direction) const
 	return _ship_sprites[spritenum] + direction;
 }
 
-static const Depot* FindClosestShipDepot(const Vehicle* v)
+static const Depot *FindClosestShipDepot(const Vehicle *v)
 {
 	if (_settings_game.pf.pathfinder_for_ships == VPF_NPF) { /* NPF is used */
 		Trackdir trackdir = GetVehicleTrackdir(v);
@@ -117,8 +117,8 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 
 	/* OPF or YAPF - find the closest depot */
 
-	const Depot* depot;
-	const Depot* best_depot = NULL;
+	const Depot *depot;
+	const Depot *best_depot = NULL;
 	uint best_dist = UINT_MAX;
 
 	FOR_ALL_DEPOTS(depot) {
@@ -340,7 +340,7 @@ static CommandCost EstimateShipCost(EngineID engine_type)
 	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->cost_factor) * (_price.ship_base >> 3) >> 5);
 }
 
-static void ShipArrivesAt(const Vehicle* v, Station* st)
+static void ShipArrivesAt(const Vehicle *v, Station *st)
 {
 	/* Check if station was ever visited before */
 	if (!(st->had_vehicle_of_type & HVOT_SHIP)) {
@@ -443,10 +443,10 @@ bad:;
 	return best_bird_dist;
 }
 
-static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypes railtypes)
+static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, Owner owner, RailTypes railtypes)
 {
 
-	void* perf = NpfBeginInterval();
+	void *perf = NpfBeginInterval();
 	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, ignore_start_tile, target, type, 0, owner, railtypes);
 	int t = NpfEndInterval(perf);
 	DEBUG(yapf, 4, "[NPFW] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);

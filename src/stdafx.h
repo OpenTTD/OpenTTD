@@ -229,7 +229,7 @@
 		#define strncasecmp strnicmp
 	#endif
 
-	void SetExceptionString(const char* s, ...);
+	void SetExceptionString(const char *s, ...);
 
 	#if defined(NDEBUG) && defined(WITH_ASSERT)
 		#undef assert

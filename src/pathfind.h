@@ -74,7 +74,7 @@ enum PathfindFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(PathfindFlags)
 
-void FollowTrack(TileIndex tile, PathfindFlags flags, TransportType tt, uint sub_type, DiagDirection direction, TPFEnumProc* enum_proc, TPFAfterProc* after_proc, void* data);
-void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data);
+void FollowTrack(TileIndex tile, PathfindFlags flags, TransportType tt, uint sub_type, DiagDirection direction, TPFEnumProc *enum_proc, TPFAfterProc *after_proc, void *data);
+void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagDirection direction, NTPEnumProc *enum_proc, void *data);
 
 #endif /* PATHFIND_H */

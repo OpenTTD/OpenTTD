@@ -72,7 +72,7 @@ static void SkipToPrevSong()
 
 static void SkipToNextSong()
 {
-	byte* b = _cur_playlist;
+	byte *b = _cur_playlist;
 	byte t;
 
 	t = b[0];
@@ -219,7 +219,7 @@ public:
 
 	virtual void OnPaint()
 	{
-		const byte* p;
+		const byte *p;
 		uint i;
 		int y;
 

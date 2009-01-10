@@ -150,7 +150,7 @@ protected:
 	}
 
 	/** Sort servers by name. */
-	static int CDECL NGameNameSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	static int CDECL NGameNameSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
 		return strcasecmp((*a)->info.server_name, (*b)->info.server_name);
 	}
@@ -158,7 +158,7 @@ protected:
 	/** Sort servers by the amount of clients online on a
 	 * server. If the two servers have the same amount, the one with the
 	 * higher maximum is preferred. */
-	static int CDECL NGameClientSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	static int CDECL NGameClientSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
 		/* Reverse as per default we are interested in most-clients first */
 		int r = (*a)->info.clients_on - (*b)->info.clients_on;
@@ -170,7 +170,7 @@ protected:
 	}
 
 	/** Sort servers by map size */
-	static int CDECL NGameMapSizeSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	static int CDECL NGameMapSizeSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
 		/* Sort by the area of the map. */
 		int r = ((*a)->info.map_height) * ((*a)->info.map_width) - ((*b)->info.map_height) * ((*b)->info.map_width);
@@ -180,14 +180,14 @@ protected:
 	}
 
 	/** Sort servers by current date */
-	static int CDECL NGameDateSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	static int CDECL NGameDateSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
 		int r = (*a)->info.game_date - (*b)->info.game_date;
 		return (r != 0) ? r : NGameClientSorter(a, b);
 	}
 
 	/** Sort servers by the number of days the game is running */
-	static int CDECL NGameYearsSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	static int CDECL NGameYearsSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
 		int r = (*a)->info.game_date - (*a)->info.start_date - (*b)->info.game_date + (*b)->info.start_date;
 		return (r != 0) ? r : NGameDateSorter(a, b);
@@ -195,7 +195,7 @@ protected:
 
 	/** Sort servers by joinability. If both servers are the
 	 * same, prefer the non-passworded server first. */
-	static int CDECL NGameAllowedSorter(NetworkGameList* const *a, NetworkGameList* const *b)
+	static int CDECL NGameAllowedSorter(NetworkGameList * const *a, NetworkGameList * const *b)
 	{
 		/* The servers we do not know anything about (the ones that did not reply) should be at the bottom) */
 		int r = StrEmpty((*a)->info.server_revision) - StrEmpty((*b)->info.server_revision);

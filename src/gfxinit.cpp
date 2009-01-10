@@ -131,7 +131,7 @@ void LoadSpritesIndexed(int file_index, uint *sprite_id, const SpriteID *index_t
 	}
 }
 
-static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int file_index)
+static void LoadGrfIndexed(const char *filename, const SpriteID *index_tbl, int file_index)
 {
 	uint sprite_id = 0;
 

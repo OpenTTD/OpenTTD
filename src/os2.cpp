@@ -162,7 +162,7 @@ void ShowOSErrorBox(const char *buf, bool system)
 	WinTerminate(hab);
 }
 
-int CDECL main(int argc, char* argv[])
+int CDECL main(int argc, char *argv[])
 {
 	SetRandomSeed(time(NULL));
 
@@ -184,13 +184,13 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 
 	if (WinOpenClipbrd(hab))
 	{
-		const char* text = (const char*)WinQueryClipbrdData(hab, CF_TEXT);
+		const char *text = (const char*)WinQueryClipbrdData(hab, CF_TEXT);
 
 		if (text != NULL)
 		{
 			uint length = 0;
 			uint width = 0;
-			const char* i;
+			const char *i;
 
 			for (i = text; IsValidAsciiChar(*i); i++)
 			{

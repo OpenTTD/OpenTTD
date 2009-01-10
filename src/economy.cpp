@@ -186,7 +186,7 @@ int UpdateCompanyRatingAndValue(Company *c, bool update)
 	/* Count stations */
 	{
 		uint num = 0;
-		const Station* st;
+		const Station *st;
 
 		FOR_ALL_STATIONS(st) {
 			if (st->owner == owner) num += CountBits(st->facilities);
@@ -856,7 +856,7 @@ Money GetPriceByIndex(uint8 index)
 }
 
 
-Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode)
+Pair SetupSubsidyDecodeParam(const Subsidy *s, bool mode)
 {
 	TileIndex tile;
 	TileIndex tile2;
@@ -1033,7 +1033,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 static bool CheckSubsidyDuplicate(Subsidy *s)
 {
-	const Subsidy* ss;
+	const Subsidy *ss;
 
 	for (ss = _subsidies; ss != endof(_subsidies); ss++) {
 		if (s != ss &&

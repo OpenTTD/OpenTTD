@@ -231,7 +231,7 @@ void cocoaSetupAutoreleasePool();
 void cocoaReleaseAutoreleasePool();
 #endif
 
-int CDECL main(int argc, char* argv[])
+int CDECL main(int argc, char *argv[])
 {
 	int ret;
 

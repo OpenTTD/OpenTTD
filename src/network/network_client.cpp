@@ -820,7 +820,7 @@ typedef NetworkRecvStatus NetworkClientPacket(Packet *p);
 //  packet it is matches against this array
 //  and that way the right function to handle that
 //  packet is found.
-static NetworkClientPacket* const _network_client_packet[] = {
+static NetworkClientPacket * const _network_client_packet[] = {
 	RECEIVE_COMMAND(PACKET_SERVER_FULL),
 	RECEIVE_COMMAND(PACKET_SERVER_BANNED),
 	NULL, /*PACKET_CLIENT_JOIN,*/

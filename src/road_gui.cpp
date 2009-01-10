@@ -374,7 +374,7 @@ static void BuildRoadClick_Remove(Window *w)
 }
 
 /** Array with the handlers of the button-clicks for the road-toolbar */
-static OnButtonClick* const _build_road_button_proc[] = {
+static OnButtonClick * const _build_road_button_proc[] = {
 	BuildRoadClick_X_Dir,
 	BuildRoadClick_Y_Dir,
 	BuildRoadClick_AutoRoad,

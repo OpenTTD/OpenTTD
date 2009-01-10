@@ -77,7 +77,7 @@ struct OTTD_QuartzGammaTable {
 
 
 
-uint QZ_ListModes(OTTD_Point* modes, uint max_modes, CGDirectDisplayID display_id, int display_depth)
+uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth)
 {
 	CFArrayRef mode_list;
 	CFIndex num_modes;
@@ -170,8 +170,8 @@ class FullscreenSubdriver: public CocoaSubdriver {
 	int                display_height;
 	int                display_depth;
 	int                screen_pitch;
-	void*              screen_buffer;
-	void*              pixel_buffer;
+	void              *screen_buffer;
+	void              *pixel_buffer;
 
 	CGDirectDisplayID  display_id;         /* 0 == main display (only support single display) */
 	CFDictionaryRef    cur_mode;           /* current mode of the display */
@@ -187,7 +187,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 	 * Fade the display from normal to black
 	 * Save gamma tables for fade back to normal
 	 */
-	uint32 FadeGammaOut(OTTD_QuartzGammaTable* table)
+	uint32 FadeGammaOut(OTTD_QuartzGammaTable *table)
 	{
 		CGGammaValue redTable[QZ_GAMMA_TABLE_SIZE];
 		CGGammaValue greenTable[QZ_GAMMA_TABLE_SIZE];
@@ -232,7 +232,7 @@ class FullscreenSubdriver: public CocoaSubdriver {
 	/* Fade the display from black to normal
 	 * Restore previously saved gamma values
 	 */
-	uint32 FadeGammaIn(const OTTD_QuartzGammaTable* table)
+	uint32 FadeGammaIn(const OTTD_QuartzGammaTable *table)
 	{
 		CGGammaValue redTable[QZ_GAMMA_TABLE_SIZE];
 		CGGammaValue greenTable[QZ_GAMMA_TABLE_SIZE];
@@ -470,8 +470,8 @@ public:
 
 	virtual void Draw()
 	{
-		const uint8* src   = (uint8*) pixel_buffer;
-		uint8* dst         = (uint8*) screen_buffer;
+		const uint8 *src   = (uint8*) pixel_buffer;
+		uint8 *dst         = (uint8*) screen_buffer;
 		uint pitch         = screen_pitch;
 		uint width         = display_width;
 		uint num_dirty     = num_dirty_rects;
@@ -536,7 +536,7 @@ public:
 		CGDisplaySetPalette(display_id, palette);
 	}
 
-	virtual uint ListModes(OTTD_Point* modes, uint max_modes)
+	virtual uint ListModes(OTTD_Point *modes, uint max_modes)
 	{
 		return QZ_ListModes(modes, max_modes, display_id, display_depth);
 	}
@@ -579,7 +579,7 @@ public:
 		Convert local coordinate to window server (CoreGraphics) coordinate.
 		In fullscreen mode this just means copying the coords.
 	*/
-	virtual CGPoint PrivateLocalToCG(NSPoint* p)
+	virtual CGPoint PrivateLocalToCG(NSPoint *p)
 	{
 		CGPoint cgp;
 

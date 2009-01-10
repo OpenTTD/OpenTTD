@@ -98,8 +98,8 @@ class WindowQuartzSubdriver: public CocoaSubdriver {
 
 	int buffer_depth;
 
-	void* pixel_buffer;
-	void* image_buffer;
+	void *pixel_buffer;
+	void *image_buffer;
 
 	OTTD_QuartzWindow *window;
 
@@ -113,8 +113,8 @@ public:
 	bool active;
 	bool setup;
 
-	OTTD_QuartzView* qzview;
-	CGContextRef 	 cgcontext;
+	OTTD_QuartzView *qzview;
+	CGContextRef cgcontext;
 
 private:
 	void GetDeviceInfo();
@@ -139,7 +139,7 @@ public:
 	virtual void MakeDirty(int left, int top, int width, int height);
 	virtual void UpdatePalette(uint first_color, uint num_colors);
 
-	virtual uint ListModes(OTTD_Point* modes, uint max_modes);
+	virtual uint ListModes(OTTD_Point *modes, uint max_modes);
 
 	virtual bool ChangeResolution(int w, int h);
 
@@ -150,7 +150,7 @@ public:
 	virtual void *GetPixelBuffer() { return buffer_depth == 8 ? pixel_buffer : image_buffer; }
 
 	/* Convert local coordinate to window server (CoreGraphics) coordinate */
-	virtual CGPoint PrivateLocalToCG(NSPoint* p);
+	virtual CGPoint PrivateLocalToCG(NSPoint *p);
 
 	virtual NSPoint GetMouseLocation(NSEvent *event);
 	virtual bool MouseIsInsideView(NSPoint *pt);
@@ -335,7 +335,7 @@ static CGColorSpaceRef QZ_GetCorrectColorSpace()
 	CGImageRef    fullImage;
 	CGImageRef    clippedImage;
 	NSRect        rect;
-	const NSRect* dirtyRects;
+	const NSRect *dirtyRects;
 	int           dirtyRectCount;
 	int           n;
 	CGRect        clipRect;
@@ -537,9 +537,9 @@ bool WindowQuartzSubdriver::SetVideoMode(int width, int height)
 
 void WindowQuartzSubdriver::BlitIndexedToView32(int left, int top, int right, int bottom)
 {
-	const uint32* pal   = palette;
-	const uint8*  src   = (uint8*)pixel_buffer;
-	uint32*       dst   = (uint32*)image_buffer;
+	const uint32 *pal   = palette;
+	const uint8  *src   = (uint8*)pixel_buffer;
+	uint32       *dst   = (uint32*)image_buffer;
 	uint          width = window_width;
 	uint          pitch = window_width;
 	int x;
@@ -658,7 +658,7 @@ void WindowQuartzSubdriver::UpdatePalette(uint first_color, uint num_colors)
 	num_dirty_rects = MAX_DIRTY_RECTS;
 }
 
-uint WindowQuartzSubdriver::ListModes(OTTD_Point* modes, uint max_modes)
+uint WindowQuartzSubdriver::ListModes(OTTD_Point *modes, uint max_modes)
 {
 	return QZ_ListModes(modes, max_modes, kCGDirectMainDisplay, buffer_depth);
 }
@@ -678,7 +678,7 @@ bool WindowQuartzSubdriver::ChangeResolution(int w, int h)
 }
 
 /* Convert local coordinate to window server (CoreGraphics) coordinate */
-CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint* p)
+CGPoint WindowQuartzSubdriver::PrivateLocalToCG(NSPoint *p)
 {
 	CGPoint cgp;
 
@@ -718,7 +718,7 @@ bool WindowQuartzSubdriver::MouseIsInsideView(NSPoint *pt)
  */
 void WindowQuartzSubdriver::SetPortAlphaOpaque()
 {
-	uint32* pixels = (uint32*)image_buffer;
+	uint32 *pixels = (uint32*)image_buffer;
 	uint32  pitch  = window_width;
 	int x, y;
 

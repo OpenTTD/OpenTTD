@@ -51,7 +51,7 @@ static void CALLBACK waveOutProc(HWAVEOUT hwo, UINT uMsg, DWORD_PTR dwInstance,
 	}
 }
 
-const char *SoundDriver_Win32::Start(const char* const* parm)
+const char *SoundDriver_Win32::Start(const char * const *parm)
 {
 	WAVEFORMATEX wfex;
 	wfex.wFormatTag = WAVE_FORMAT_PCM;

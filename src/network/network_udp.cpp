@@ -425,7 +425,7 @@ void NetworkUDPSearchGame()
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
 }
 
-void NetworkUDPQueryServer(const char* host, unsigned short port, bool manually)
+void NetworkUDPQueryServer(const char *host, unsigned short port, bool manually)
 {
 	struct sockaddr_in out_addr;
 	NetworkGameList *item;

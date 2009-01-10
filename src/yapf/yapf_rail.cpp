@@ -188,7 +188,7 @@ public:
 	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 't';}
 
-	static bool stFindNearestDepotTwoWay(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
+	static bool stFindNearestDepotTwoWay(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex *depot_tile, bool *reversed)
 	{
 		Tpf pf1;
 		bool result1 = pf1.FindNearestDepotTwoWay(v, t1, td1, t2, td2, max_distance, reverse_penalty, depot_tile, reversed);
@@ -207,7 +207,7 @@ public:
 		return result1;
 	}
 
-	FORCEINLINE bool FindNearestDepotTwoWay(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
+	FORCEINLINE bool FindNearestDepotTwoWay(const Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex *depot_tile, bool *reversed)
 	{
 		// set origin and destination nodes
 		Yapf().SetOrigin(t1, td1, t2, td2, reverse_penalty, true);
@@ -307,7 +307,7 @@ public:
 		this->SetReservationTarget(pNode, pNode->GetLastTile(), pNode->GetLastTrackdir());
 
 		/* Walk through the path back to the origin. */
-		Node* pPrev = NULL;
+		Node *pPrev = NULL;
 		while (pNode->m_parent != NULL) {
 			pPrev = pNode;
 			pNode = pNode->m_parent;
@@ -401,7 +401,7 @@ public:
 
 			// path was found or at least suggested
 			// walk through the path back to the origin
-			Node* pPrev = NULL;
+			Node *pPrev = NULL;
 			while (pNode->m_parent != NULL) {
 				pPrev = pNode;
 				pNode = pNode->m_parent;
@@ -502,7 +502,7 @@ Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
 	return td_ret;
 }
 
-bool YapfCheckReverseTrain(const Vehicle* v)
+bool YapfCheckReverseTrain(const Vehicle *v)
 {
 	/* last wagon */
 	const Vehicle *last_veh = GetLastVehicleInChain(v);

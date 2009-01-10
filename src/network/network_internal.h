@@ -122,7 +122,7 @@ extern uint16 _network_udp_broadcast;
 
 extern uint8 _network_advertise_retries;
 
-void NetworkTCPQueryServer(const char* host, unsigned short port);
+void NetworkTCPQueryServer(const char *host, unsigned short port);
 
 void NetworkAddServer(const char *b);
 void NetworkRebuildHostList();

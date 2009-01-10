@@ -180,7 +180,7 @@ void ResetCurrencies(bool preserve_custom)
  * Build a list of currency names StringIDs to use in a dropdown list
  * @return Pointer to a (static) array of StringIDs
  */
-StringID* BuildCurrencyDropdown()
+StringID *BuildCurrencyDropdown()
 {
 	/* Allow room for all currencies, plus a terminator entry */
 	static StringID names[NUM_CURRENCY + 1];

@@ -71,7 +71,7 @@ int8 SaveHighScoreValue(const Company *c)
 }
 
 /** Sort all companies given their performance */
-static int CDECL HighScoreSorter(const Company* const *a, const Company* const *b)
+static int CDECL HighScoreSorter(const Company * const *a, const Company * const *b)
 {
 	return (*b)->old_economy[0].performance_history - (*a)->old_economy[0].performance_history;
 }
@@ -97,7 +97,7 @@ int8 SaveHighScoreValueNetwork()
 
 		/* Copy over Top5 companies */
 		for (i = 0; i < lengthof(_highscore_table[LAST_HS_ITEM]) && i < count; i++) {
-			HighScore* hs = &_highscore_table[LAST_HS_ITEM][i];
+			HighScore *hs = &_highscore_table[LAST_HS_ITEM][i];
 
 			SetDParam(0, cl[i]->index);
 			SetDParam(1, cl[i]->index);

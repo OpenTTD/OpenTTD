@@ -47,7 +47,7 @@ void ViewportAddVehicles(DrawPixelInfo *dpi);
 
 SpriteID GetRotorImage(const Vehicle *v);
 
-StringID VehicleInTheWayErrMsg(const Vehicle* v);
+StringID VehicleInTheWayErrMsg(const Vehicle *v);
 bool HasVehicleOnTunnelBridge(TileIndex tile, TileIndex endtile, const Vehicle *ignore = NULL);
 
 void DecreaseVehicleValue(Vehicle *v);

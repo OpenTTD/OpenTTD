@@ -11,7 +11,7 @@
 #include "dbg_helpers.h"
 
 /** Trackdir & TrackdirBits short names. */
-static const char* trackdir_names[] = {
+static const char *trackdir_names[] = {
 	"NE", "SE", "UE", "LE", "LS", "RS", "rne", "rse",
 	"SW", "NW", "UW", "LW", "LN", "RN", "rsw", "rnw",
 };
@@ -34,7 +34,7 @@ CStrA ValueStr(TrackdirBits td_bits)
 
 
 /** DiagDirection short names. */
-static const char* diagdir_names[] = {
+static const char *diagdir_names[] = {
 	"NE", "SE", "SW", "NW",
 };
 
@@ -48,7 +48,7 @@ CStrA ValueStr(DiagDirection dd)
 
 
 /** SignalType short names. */
-static const char* signal_type_names[] = {
+static const char *signal_type_names[] = {
 	"NORMAL", "ENTRY", "EXIT", "COMBO", "PBS", "NOENTRY",
 };
 

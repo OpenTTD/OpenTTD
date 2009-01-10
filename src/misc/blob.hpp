@@ -101,7 +101,7 @@ protected:
 	}
 
 	/** initialize blob by attaching it to the given header followed by data */
-	FORCEINLINE void Init(CHdr* hdr)
+	FORCEINLINE void Init(CHdr *hdr)
 	{
 		ptr_u.m_pHdr_1 = &hdr[1];
 	}
@@ -144,13 +144,13 @@ public:
 	};
 
 	/** return pointer to the first byte of data - non-const version */
-	FORCEINLINE bitem_t* RawData()
+	FORCEINLINE bitem_t *RawData()
 	{
 		return ptr_u.m_pData;
 	}
 
 	/** return pointer to the first byte of data - const version */
-	FORCEINLINE const bitem_t* RawData() const
+	FORCEINLINE const bitem_t *RawData() const
 	{
 		return ptr_u.m_pData;
 	}
@@ -218,7 +218,7 @@ public:
 
 	/** Reallocate if there is no free space for num_bytes bytes.
 	*  @return pointer to the new data to be added */
-	FORCEINLINE bitem_t* MakeRawFreeSpace(bsize_t num_bytes)
+	FORCEINLINE bitem_t *MakeRawFreeSpace(bsize_t num_bytes)
 	{
 		assert(num_bytes >= 0);
 		bsize_t new_size = RawSize() + num_bytes;
@@ -228,9 +228,9 @@ public:
 
 	/** Increase RawSize() by num_bytes.
 	*  @return pointer to the new data added */
-	FORCEINLINE bitem_t* GrowRawSize(bsize_t num_bytes)
+	FORCEINLINE bitem_t *GrowRawSize(bsize_t num_bytes)
 	{
-		bitem_t* pNewData = MakeRawFreeSpace(num_bytes);
+		bitem_t *pNewData = MakeRawFreeSpace(num_bytes);
 		RawSizeRef() += num_bytes;
 		return pNewData;
 	}
@@ -255,7 +255,7 @@ public:
 		// ask allocation policy for some reasonable block size
 		bsize_t alloc_size = AllocPolicy(min_alloc_size);
 		// allocate new block
-		CHdr* pNewHdr = RawAlloc(alloc_size);
+		CHdr *pNewHdr = RawAlloc(alloc_size);
 		// setup header
 		pNewHdr->m_size = RawSize();
 		pNewHdr->m_max_size = alloc_size - (sizeof(CHdr) + Ttail_reserve);
@@ -263,7 +263,7 @@ public:
 		if (RawSize() > 0)
 			memcpy(pNewHdr + 1, ptr_u.m_pData, pNewHdr->m_size);
 		// replace our block with new one
-		CHdr* pOldHdr = &Hdr();
+		CHdr *pOldHdr = &Hdr();
 		Init(pNewHdr);
 		if (old_max_size > 0)
 			RawFree(pOldHdr);
@@ -289,13 +289,13 @@ public:
 	}
 
 	/** all allocation should happen here */
-	static FORCEINLINE CHdr* RawAlloc(bsize_t num_bytes)
+	static FORCEINLINE CHdr *RawAlloc(bsize_t num_bytes)
 	{
 		return (CHdr*)MallocT<byte>(num_bytes);
 	}
 
 	/** all deallocations should happen here */
-	static FORCEINLINE void RawFree(CHdr* p)
+	static FORCEINLINE void RawFree(CHdr *p)
 	{
 		free(p);
 	}
@@ -370,26 +370,26 @@ public:
 	}
 
 	/** Return pointer to the first data item - non-const version */
-	FORCEINLINE Titem* Data()
+	FORCEINLINE Titem *Data()
 	{
 		return (Titem*)Tbase::RawData();
 	}
 
 	/** Return pointer to the first data item - const version */
-	FORCEINLINE const Titem* Data() const
+	FORCEINLINE const Titem *Data() const
 	{
 		return (const Titem*)Tbase::RawData();
 	}
 
 	/** Return pointer to the idx-th data item - non-const version */
-	FORCEINLINE Titem* Data(bsize_t idx)
+	FORCEINLINE Titem *Data(bsize_t idx)
 	{
 		CheckIdx(idx);
 		return (Data() + idx);
 	}
 
 	/** Return pointer to the idx-th data item - const version */
-	FORCEINLINE const Titem* Data(bsize_t idx) const
+	FORCEINLINE const Titem *Data(bsize_t idx) const
 	{
 		CheckIdx(idx);
 		return (Data() + idx);
@@ -419,22 +419,22 @@ public:
 		bsize_t old_size = Size();
 		if (old_size > 0) {
 			// destroy removed items;
-			Titem* pI_last_to_destroy = Data(0);
-			for (Titem* pI = Data(old_size - 1); pI >= pI_last_to_destroy; pI--) pI->~Titem_();
+			Titem *pI_last_to_destroy = Data(0);
+			for (Titem *pI = Data(old_size - 1); pI >= pI_last_to_destroy; pI--) pI->~Titem_();
 		}
 		Tbase::Free();
 	}
 
 	/** Grow number of data items in Blob by given number - doesn't construct items */
-	FORCEINLINE Titem* GrowSizeNC(bsize_t num_items)
+	FORCEINLINE Titem *GrowSizeNC(bsize_t num_items)
 	{
 		return (Titem*)Tbase::GrowRawSize(num_items * Titem_size);
 	}
 
 	/** Grow number of data items in Blob by given number - constructs new items (using Titem_'s default constructor) */
-	FORCEINLINE Titem* GrowSizeC(bsize_t num_items)
+	FORCEINLINE Titem *GrowSizeC(bsize_t num_items)
 	{
-		Titem* pI = GrowSizeNC(num_items);
+		Titem *pI = GrowSizeNC(num_items);
 		for (bsize_t i = num_items; i > 0; i--, pI++) new (pI) Titem();
 	}
 
@@ -446,34 +446,34 @@ public:
 		assert(num_items <= old_size);
 		bsize_t new_size = (num_items <= old_size) ? (old_size - num_items) : 0;
 		// destroy removed items;
-		Titem* pI_last_to_destroy = Data(new_size);
-		for (Titem* pI = Data(old_size - 1); pI >= pI_last_to_destroy; pI--) pI->~Titem();
+		Titem *pI_last_to_destroy = Data(new_size);
+		for (Titem *pI = Data(old_size - 1); pI >= pI_last_to_destroy; pI--) pI->~Titem();
 		// remove them
 		Tbase::ReduceRawSize(num_items * Titem_size);
 	}
 
 	/** Append one data item at the end (calls Titem_'s default constructor) */
-	FORCEINLINE Titem* AppendNew()
+	FORCEINLINE Titem *AppendNew()
 	{
 		Titem& dst = *GrowSizeNC(1); // Grow size by one item
-		Titem* pNewItem = new (&dst) Titem(); // construct the new item by calling in-place new operator
+		Titem *pNewItem = new (&dst) Titem(); // construct the new item by calling in-place new operator
 		return pNewItem;
 	}
 
 	/** Append the copy of given item at the end of Blob (using copy constructor) */
-	FORCEINLINE Titem* Append(const Titem& src)
+	FORCEINLINE Titem *Append(const Titem& src)
 	{
 		Titem& dst = *GrowSizeNC(1); // Grow size by one item
-		Titem* pNewItem = new (&dst) Titem(src); // construct the new item by calling in-place new operator with copy ctor()
+		Titem *pNewItem = new (&dst) Titem(src); // construct the new item by calling in-place new operator with copy ctor()
 		return pNewItem;
 	}
 
 	/** Add given items (ptr + number of items) at the end of blob */
-	FORCEINLINE Titem* Append(const Titem* pSrc, bsize_t num_items)
+	FORCEINLINE Titem *Append(const Titem *pSrc, bsize_t num_items)
 	{
-		Titem* pDst = GrowSizeNC(num_items);
-		Titem* pDstOrg = pDst;
-		Titem* pDstEnd = pDst + num_items;
+		Titem *pDst = GrowSizeNC(num_items);
+		Titem *pDstOrg = pDst;
+		Titem *pDstEnd = pDst + num_items;
 		while (pDst < pDstEnd) new (pDst++) Titem(*(pSrc++));
 		return pDstOrg;
 	}
@@ -483,14 +483,14 @@ public:
 	{
 		CheckIdx(idx);
 		// destroy removed item
-		Titem* pRemoved = Data(idx);
+		Titem *pRemoved = Data(idx);
 		RemoveBySwap(pRemoved);
 	}
 
 	/** Remove item given by pointer replacing it by the last item and reducing the size by one */
-	FORCEINLINE void RemoveBySwap(Titem* pItem)
+	FORCEINLINE void RemoveBySwap(Titem *pItem)
 	{
-		Titem* pLast = Data(Size() - 1);
+		Titem *pLast = Data(Size() - 1);
 		assert(pItem >= Data() && pItem <= pLast);
 		// move last item to its new place
 		if (pItem != pLast) {
@@ -505,7 +505,7 @@ public:
 
 	/** Ensures that given number of items can be added to the end of Blob. Returns pointer to the
 	*  first free (unused) item */
-	FORCEINLINE Titem* MakeFreeSpace(bsize_t num_items)
+	FORCEINLINE Titem *MakeFreeSpace(bsize_t num_items)
 	{
 		return (Titem*)Tbase::MakeRawFreeSpace(num_items * Titem_size);
 	}

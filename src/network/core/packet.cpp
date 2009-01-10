@@ -124,7 +124,7 @@ void Packet::Send_uint64(uint64 data)
  *  the string + '\0'. No size-byte or something.
  * @param data   the string to send
  */
-void Packet::Send_string(const char* data)
+void Packet::Send_string(const char *data)
 {
 	assert(data != NULL);
 	/* The <= *is* valid due to the fact that we are comparing sizes and not the index. */

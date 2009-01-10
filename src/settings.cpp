@@ -844,7 +844,7 @@ static int32 Ai_In_Multiplayer_Warning(int32 p1)
 
 static int32 PopulationInLabelActive(int32 p1)
 {
-	Town* t;
+	Town *t;
 
 	FOR_ALL_TOWNS(t) UpdateTownVirtCoord(t);
 

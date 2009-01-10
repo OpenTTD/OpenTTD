@@ -13,15 +13,15 @@
 
 struct Queue;
 typedef bool Queue_PushProc(Queue *q, void *item, int priority);
-typedef void* Queue_PopProc(Queue *q);
-typedef bool Queue_DeleteProc(Queue *q, void* item, int priority);
+typedef void *Queue_PopProc(Queue *q);
+typedef bool Queue_DeleteProc(Queue *q, void *item, int priority);
 typedef void Queue_ClearProc(Queue *q, bool free_values);
 typedef void Queue_FreeProc(Queue *q, bool free_values);
 
 struct InsSortNode {
 	void *item;
 	int priority;
-	InsSortNode* next;
+	InsSortNode *next;
 };
 
 struct BinaryHeapNode {

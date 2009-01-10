@@ -572,7 +572,7 @@ void OffsetGroundSprite(int x, int y)
 static void AddCombinedSprite(SpriteID image, SpriteID pal, int x, int y, byte z, const SubSprite *sub)
 {
 	Point pt = RemapCoords(x, y, z);
-	const Sprite* spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
+	const Sprite *spr = GetSprite(image & SPRITE_MASK, ST_NORMAL);
 
 	if (pt.x + spr->x_offs >= _vd.dpi.left + _vd.dpi.width ||
 			pt.x + spr->x_offs + spr->width <= _vd.dpi.left ||
@@ -1591,7 +1591,7 @@ void UpdateViewportPosition(Window *w)
 	const ViewPort *vp = w->viewport;
 
 	if (w->viewport->follow_vehicle != INVALID_VEHICLE) {
-		const Vehicle* veh = GetVehicle(w->viewport->follow_vehicle);
+		const Vehicle *veh = GetVehicle(w->viewport->follow_vehicle);
 		Point pt = MapXYZToViewport(vp, veh->x_pos, veh->y_pos, veh->z_pos);
 
 		w->viewport->scrollpos_x = pt.x;

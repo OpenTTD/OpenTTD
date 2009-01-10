@@ -149,7 +149,7 @@ protected:
 	}
 
 	/** Sort stations by their name */
-	static int CDECL StationNameSorter(const Station* const *a, const Station* const *b)
+	static int CDECL StationNameSorter(const Station * const *a, const Station * const *b)
 	{
 		static char buf_cache[64];
 		char buf[64];
@@ -167,13 +167,13 @@ protected:
 	}
 
 	/** Sort stations by their type */
-	static int CDECL StationTypeSorter(const Station* const *a, const Station* const *b)
+	static int CDECL StationTypeSorter(const Station * const *a, const Station * const *b)
 	{
 		return (*a)->facilities - (*b)->facilities;
 	}
 
 	/** Sort stations by their waiting cargo */
-	static int CDECL StationWaitingSorter(const Station* const *a, const Station* const *b)
+	static int CDECL StationWaitingSorter(const Station * const *a, const Station * const *b)
 	{
 		Money diff = 0;
 
@@ -187,7 +187,7 @@ protected:
 	}
 
 	/** Sort stations by their rating */
-	static int CDECL StationRatingMaxSorter(const Station* const *a, const Station* const *b)
+	static int CDECL StationRatingMaxSorter(const Station * const *a, const Station * const *b)
 	{
 		byte maxr1 = 0;
 		byte maxr2 = 0;

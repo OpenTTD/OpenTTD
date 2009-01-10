@@ -46,7 +46,7 @@ struct NPFFindStationOrTileData {
 	TileIndex dest_coords;   ///< An indication of where the station is, for heuristic purposes, or the target tile
 	StationID station_index; ///< station index we're heading for, or INVALID_STATION when we're heading for a tile
 	bool      reserve_path;  ///< Indicates whether the found path should be reserved
-	const Vehicle* v;        ///< The vehicle we are pathfinding for
+	const Vehicle *v;        ///< The vehicle we are pathfinding for
 };
 
 /* Indices into AyStar.userdata[] */
@@ -89,12 +89,12 @@ struct NPFFoundTargetData {
 /* Will search from the given tile and direction, for a route to the given
  * station for the given transport type. See the declaration of
  * NPFFoundTargetData above for the meaning of the result. */
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
+NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
 
 /* Will search as above, but with two start nodes, the second being the
  * reverse. Look at the NPF_FLAG_REVERSE flag in the result node to see which
  * direction was taken (NPFGetBit(result.node, NPF_FLAG_REVERSE)) */
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
+NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes);
 
 /* Will search a route to the closest depot. */
 
@@ -128,7 +128,7 @@ void NPFFillWithOrderData(NPFFindStationOrTileData *fstd, Vehicle *v, bool reser
 /**
  * Returns the current value of the given flag on the given AyStarNode.
  */
-static inline bool NPFGetFlag(const AyStarNode* node, NPFNodeFlag flag)
+static inline bool NPFGetFlag(const AyStarNode *node, NPFNodeFlag flag)
 {
 	return HasBit(node->user_data[NPF_NODE_FLAGS], flag);
 }
@@ -136,7 +136,7 @@ static inline bool NPFGetFlag(const AyStarNode* node, NPFNodeFlag flag)
 /**
  * Sets the given flag on the given AyStarNode to the given value.
  */
-static inline void NPFSetFlag(AyStarNode* node, NPFNodeFlag flag, bool value)
+static inline void NPFSetFlag(AyStarNode *node, NPFNodeFlag flag, bool value)
 {
 	if (value)
 		SetBit(node->user_data[NPF_NODE_FLAGS], flag);

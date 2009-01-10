@@ -363,13 +363,13 @@ public:
 		return true;
 	}
 
-	static Depot* stFindNearestDepot(const Vehicle* v, TileIndex tile, Trackdir td)
+	static Depot *stFindNearestDepot(const Vehicle *v, TileIndex tile, Trackdir td)
 	{
 		Tpf pf;
 		return pf.FindNearestDepot(v, tile, td);
 	}
 
-	FORCEINLINE Depot* FindNearestDepot(const Vehicle* v, TileIndex tile, Trackdir td)
+	FORCEINLINE Depot *FindNearestDepot(const Vehicle *v, TileIndex tile, Trackdir td)
 	{
 		// set origin and destination nodes
 		Yapf().SetOrigin(tile, TrackdirToTrackdirBits(td));
@@ -383,7 +383,7 @@ public:
 		Node *n = Yapf().GetBestNode();
 		TileIndex depot_tile = n->m_segment_last_tile;
 		assert(IsRoadDepotTile(depot_tile));
-		Depot* ret = GetDepotByTile(depot_tile);
+		Depot *ret = GetDepotByTile(depot_tile);
 		return ret;
 	}
 };
@@ -444,7 +444,7 @@ uint YapfRoadVehDistanceToTile(const Vehicle *v, TileIndex tile)
 	return dist;
 }
 
-Depot* YapfFindNearestRoadDepot(const Vehicle *v)
+Depot *YapfFindNearestRoadDepot(const Vehicle *v)
 {
 	TileIndex tile = v->tile;
 	Trackdir trackdir = GetVehicleTrackdir(v);
@@ -458,13 +458,13 @@ Depot* YapfFindNearestRoadDepot(const Vehicle *v)
 	}
 
 	// default is YAPF type 2
-	typedef Depot* (*PfnFindNearestDepot)(const Vehicle*, TileIndex, Trackdir);
+	typedef Depot *(*PfnFindNearestDepot)(const Vehicle*, TileIndex, Trackdir);
 	PfnFindNearestDepot pfnFindNearestDepot = &CYapfRoadAnyDepot2::stFindNearestDepot;
 
 	// check if non-default YAPF type should be used
 	if (_settings_game.pf.yapf.disable_node_optimization)
 		pfnFindNearestDepot = &CYapfRoadAnyDepot1::stFindNearestDepot; // Trackdir, allow 90-deg
 
-	Depot* ret = pfnFindNearestDepot(v, tile, trackdir);
+	Depot *ret = pfnFindNearestDepot(v, tile, trackdir);
 	return ret;
 }

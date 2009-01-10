@@ -207,7 +207,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFla
  */
 void Window::DrawWidgets() const
 {
-	const DrawPixelInfo* dpi = _cur_dpi;
+	const DrawPixelInfo *dpi = _cur_dpi;
 
 	for (uint i = 0; i < this->widget_count; i++) {
 		const Widget *wi = &this->widget[i];

@@ -1664,7 +1664,7 @@ static void DrawTrackFence_WE_2(const TileInfo *ti)
 }
 
 
-static void DrawTrackDetails(const TileInfo* ti)
+static void DrawTrackDetails(const TileInfo *ti)
 {
 	switch (GetRailGroundType(ti->tile)) {
 		case RAIL_GROUND_FENCE_NW:     DrawTrackFence_NW(ti);    break;
@@ -1705,7 +1705,7 @@ static void DrawTrackDetails(const TileInfo* ti)
  * @param ti TileInfo
  * @param track TrackBits to draw
  */
-static void DrawTrackBits(TileInfo* ti, TrackBits track)
+static void DrawTrackBits(TileInfo *ti, TrackBits track)
 {
 	/* SubSprite for drawing the track halftile of 'three-corners-raised'-sloped rail sprites. */
 	static const int INF = 1000; // big number compared to tilesprite size
@@ -1918,8 +1918,8 @@ static void DrawTile_Track(TileInfo *ti)
 		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails);
 	} else {
 		/* draw depot/waypoint */
-		const DrawTileSprites* dts;
-		const DrawTileSeqStruct* dtss;
+		const DrawTileSprites *dts;
+		const DrawTileSeqStruct *dtss;
 		uint32 relocation;
 		SpriteID pal = PAL_NONE;
 
@@ -1954,7 +1954,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 			if (statspec != NULL) {
 				/* emulate station tile - open with building */
-				const Station* st = ComposeWaypointStation(ti->tile);
+				const Station *st = ComposeWaypointStation(ti->tile);
 				uint gfx = 2;
 
 				if (HasBit(statspec->callbackmask, CBM_STATION_SPRITE_LAYOUT)) {
@@ -2039,7 +2039,7 @@ default_waypoint:
 }
 
 
-static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStruct* dtss, uint32 offset)
+static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStruct *dtss, uint32 offset)
 {
 	SpriteID palette = COMPANY_SPRITE_COLOR(_local_company);
 
@@ -2054,7 +2054,7 @@ static void DrawTileSequence(int x, int y, SpriteID ground, const DrawTileSeqStr
 
 void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 {
-	const DrawTileSprites* dts = &_depot_gfx_table[dir];
+	const DrawTileSprites *dts = &_depot_gfx_table[dir];
 	SpriteID image = dts->ground.sprite;
 	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
 
@@ -2065,7 +2065,7 @@ void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype)
 {
 	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
-	const DrawTileSprites* dts = &_waypoint_gfx_table[AXIS_X];
+	const DrawTileSprites *dts = &_waypoint_gfx_table[AXIS_X];
 
 	DrawTileSequence(x, y, dts->ground.sprite + offset, dts->seq, 0);
 }

@@ -376,7 +376,7 @@ void IConsoleAliasRegister(const char *name, const char *cmd)
  */
 IConsoleAlias *IConsoleAliasGet(const char *name)
 {
-	IConsoleAlias* item;
+	IConsoleAlias *item;
 
 	for (item = _iconsole_aliases; item != NULL; item = item->next) {
 		if (strcmp(item->name, name) == 0) return item;

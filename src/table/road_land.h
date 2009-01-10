@@ -210,7 +210,7 @@ static const DrawRoadTileStruct _road_display_datas2_30[] = {
 #undef MAKELINE
 #undef ENDLINE
 
-static const DrawRoadTileStruct* const _roadside_none[] = {
+static const DrawRoadTileStruct * const _roadside_none[] = {
 	_roadside_nothing, _roadside_nothing,
 	_roadside_nothing, _roadside_nothing,
 	_roadside_nothing, _roadside_nothing,
@@ -221,7 +221,7 @@ static const DrawRoadTileStruct* const _roadside_none[] = {
 	_roadside_nothing, _roadside_nothing
 };
 
-static const DrawRoadTileStruct* const _roadside_lamps[] = {
+static const DrawRoadTileStruct * const _roadside_lamps[] = {
 	_roadside_nothing,
 	_roadside_nothing,
 	_roadside_nothing,
@@ -240,7 +240,7 @@ static const DrawRoadTileStruct* const _roadside_lamps[] = {
 	_roadside_nothing,
 };
 
-static const DrawRoadTileStruct* const _roadside_trees[] = {
+static const DrawRoadTileStruct * const _roadside_trees[] = {
 	_roadside_nothing,
 	_roadside_nothing,
 	_roadside_nothing,
@@ -260,7 +260,7 @@ static const DrawRoadTileStruct* const _roadside_trees[] = {
 	_roadside_nothing,
 };
 
-static const DrawRoadTileStruct* const * const _road_display_table[] = {
+static const DrawRoadTileStruct * const * const _road_display_table[] = {
 	_roadside_none,
 	_roadside_none,
 	_roadside_none,

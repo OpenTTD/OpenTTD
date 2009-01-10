@@ -602,8 +602,8 @@ static bool QZ_PollEvent()
 			} /* else: deltaY was 0.0 and we don't want to do anything */
 
 			/* Set the scroll count for scrollwheel scrolling */
-			_cursor.h_wheel -= (int)([ event deltaX ]* 5 * _settings_client.gui.scrollwheel_multiplier);
-			_cursor.v_wheel -= (int)([ event deltaY ]* 5 * _settings_client.gui.scrollwheel_multiplier);
+			_cursor.h_wheel -= (int)([ event deltaX ] * 5 * _settings_client.gui.scrollwheel_multiplier);
+			_cursor.v_wheel -= (int)([ event deltaY ] * 5 * _settings_client.gui.scrollwheel_multiplier);
 			break;
 
 		default:

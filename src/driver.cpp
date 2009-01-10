@@ -25,7 +25,7 @@ char *_ini_musicdriver;
 
 char *_ini_blitter;
 
-const char* GetDriverParam(const char* const* parm, const char* name)
+const char *GetDriverParam(const char * const *parm, const char *name)
 {
 	size_t len;
 
@@ -33,7 +33,7 @@ const char* GetDriverParam(const char* const* parm, const char* name)
 
 	len = strlen(name);
 	for (; *parm != NULL; parm++) {
-		const char* p = *parm;
+		const char *p = *parm;
 
 		if (strncmp(p, name, len) == 0) {
 			if (p[len] == '=')  return p + len + 1;
@@ -43,14 +43,14 @@ const char* GetDriverParam(const char* const* parm, const char* name)
 	return NULL;
 }
 
-bool GetDriverParamBool(const char* const* parm, const char* name)
+bool GetDriverParamBool(const char * const *parm, const char *name)
 {
 	return GetDriverParam(parm, name) != NULL;
 }
 
-int GetDriverParamInt(const char* const* parm, const char* name, int def)
+int GetDriverParamInt(const char * const *parm, const char *name, int def)
 {
-	const char* p = GetDriverParam(parm, name);
+	const char *p = GetDriverParam(parm, name);
 	return p != NULL ? atoi(p) : def;
 }
 

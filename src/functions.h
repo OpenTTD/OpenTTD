@@ -53,7 +53,7 @@ void AskExitToGameMenu();
 
 void RedrawAutosave();
 
-int ttd_main(int argc, char* argv[]);
+int ttd_main(int argc, char *argv[]);
 void HandleExitGameRequest();
 
 #endif /* FUNCTIONS_H */

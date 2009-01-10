@@ -21,13 +21,13 @@
 static FMusicDriver_DMusic iFMusicDriver_DMusic;
 
 /** the performance object controls manipulation of the segments */
-static IDirectMusicPerformance* performance = NULL;
+static IDirectMusicPerformance *performance = NULL;
 
 /** the loader object can load many types of DMusic related files */
-static IDirectMusicLoader* loader = NULL;
+static IDirectMusicLoader *loader = NULL;
 
 /** the segment object is where the MIDI data is stored for playback */
-static IDirectMusicSegment* segment = NULL;
+static IDirectMusicSegment *segment = NULL;
 
 static bool seeking = false;
 
@@ -43,7 +43,7 @@ static const char ole_files[] =
 #undef M
 
 struct ProcPtrs {
-	unsigned long (WINAPI * CoCreateInstance)(REFCLSID rclsid, LPUNKNOWN pUnkOuter, DWORD dwClsContext, REFIID riid, LPVOID* ppv);
+	unsigned long (WINAPI * CoCreateInstance)(REFCLSID rclsid, LPUNKNOWN pUnkOuter, DWORD dwClsContext, REFIID riid, LPVOID *ppv);
 	HRESULT (WINAPI * CoInitialize)(LPVOID pvReserved);
 	void (WINAPI * CoUninitialize)();
 };
@@ -140,7 +140,7 @@ void MusicDriver_DMusic::Stop()
 }
 
 
-void MusicDriver_DMusic::PlaySong(const char* filename)
+void MusicDriver_DMusic::PlaySong(const char *filename)
 {
 	/* set up the loader object info */
 	DMUS_OBJECTDESC obj_desc;

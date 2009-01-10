@@ -12,10 +12,10 @@
  * Insertion Sorter
  */
 
-static void InsSort_Clear(Queue* q, bool free_values)
+static void InsSort_Clear(Queue *q, bool free_values)
 {
-	InsSortNode* node = q->data.inssort.first;
-	InsSortNode* prev;
+	InsSortNode *node = q->data.inssort.first;
+	InsSortNode *prev;
 
 	while (node != NULL) {
 		if (free_values) free(node->item);
@@ -26,14 +26,14 @@ static void InsSort_Clear(Queue* q, bool free_values)
 	q->data.inssort.first = NULL;
 }
 
-static void InsSort_Free(Queue* q, bool free_values)
+static void InsSort_Free(Queue *q, bool free_values)
 {
 	q->clear(q, free_values);
 }
 
-static bool InsSort_Push(Queue* q, void* item, int priority)
+static bool InsSort_Push(Queue *q, void *item, int priority)
 {
-	InsSortNode* newnode = MallocT<InsSortNode>(1);
+	InsSortNode *newnode = MallocT<InsSortNode>(1);
 
 	if (newnode == NULL) return false;
 	newnode->item = item;
@@ -43,7 +43,7 @@ static bool InsSort_Push(Queue* q, void* item, int priority)
 		newnode->next = q->data.inssort.first;
 		q->data.inssort.first = newnode;
 	} else {
-		InsSortNode* node = q->data.inssort.first;
+		InsSortNode *node = q->data.inssort.first;
 		while (node != NULL) {
 			if (node->next == NULL || node->next->priority >= priority) {
 				newnode->next = node->next;
@@ -56,10 +56,10 @@ static bool InsSort_Push(Queue* q, void* item, int priority)
 	return true;
 }
 
-static void* InsSort_Pop(Queue* q)
+static void *InsSort_Pop(Queue *q)
 {
-	InsSortNode* node = q->data.inssort.first;
-	void* result;
+	InsSortNode *node = q->data.inssort.first;
+	void *result;
 
 	if (node == NULL) return NULL;
 	result = node->item;
@@ -69,12 +69,12 @@ static void* InsSort_Pop(Queue* q)
 	return result;
 }
 
-static bool InsSort_Delete(Queue* q, void* item, int priority)
+static bool InsSort_Delete(Queue *q, void *item, int priority)
 {
 	return false;
 }
 
-void init_InsSort(Queue* q)
+void init_InsSort(Queue *q)
 {
 	q->push = InsSort_Push;
 	q->pop = InsSort_Pop;
@@ -99,7 +99,7 @@ void init_InsSort(Queue* q)
  *  q->data.binaryheap.elements[i - 1] every time, we use this define. */
 #define BIN_HEAP_ARR(i) q->data.binaryheap.elements[((i) - 1) >> BINARY_HEAP_BLOCKSIZE_BITS][((i) - 1) & BINARY_HEAP_BLOCKSIZE_MASK]
 
-static void BinaryHeap_Clear(Queue* q, bool free_values)
+static void BinaryHeap_Clear(Queue *q, bool free_values)
 {
 	/* Free all items if needed and free all but the first blocks of memory */
 	uint i;
@@ -131,7 +131,7 @@ static void BinaryHeap_Clear(Queue* q, bool free_values)
 	q->data.binaryheap.blocks = 1;
 }
 
-static void BinaryHeap_Free(Queue* q, bool free_values)
+static void BinaryHeap_Free(Queue *q, bool free_values)
 {
 	uint i;
 
@@ -143,7 +143,7 @@ static void BinaryHeap_Free(Queue* q, bool free_values)
 	free(q->data.binaryheap.elements);
 }
 
-static bool BinaryHeap_Push(Queue* q, void* item, int priority)
+static bool BinaryHeap_Push(Queue *q, void *item, int priority)
 {
 #ifdef QUEUE_DEBUG
 	printf("[BinaryHeap] Pushing an element. There are %d elements left\n", q->data.binaryheap.size);
@@ -194,7 +194,7 @@ static bool BinaryHeap_Push(Queue* q, void* item, int priority)
 	return true;
 }
 
-static bool BinaryHeap_Delete(Queue* q, void* item, int priority)
+static bool BinaryHeap_Delete(Queue *q, void *item, int priority)
 {
 	uint i = 0;
 
@@ -253,9 +253,9 @@ static bool BinaryHeap_Delete(Queue* q, void* item, int priority)
 	return true;
 }
 
-static void* BinaryHeap_Pop(Queue* q)
+static void *BinaryHeap_Pop(Queue *q)
 {
-	void* result;
+	void *result;
 
 #ifdef QUEUE_DEBUG
 	printf("[BinaryHeap] Popping an element. There are %d elements left\n", q->data.binaryheap.size);
@@ -271,7 +271,7 @@ static void* BinaryHeap_Pop(Queue* q)
 	return result;
 }
 
-void init_BinaryHeap(Queue* q, uint max_size)
+void init_BinaryHeap(Queue *q, uint max_size)
 {
 	assert(q != NULL);
 	q->push = BinaryHeap_Push;
@@ -298,7 +298,7 @@ void init_BinaryHeap(Queue* q, uint max_size)
  * Hash
  */
 
-void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets)
+void init_Hash(Hash *h, Hash_HashProc *hash, uint num_buckets)
 {
 	/* Allocate space for the Hash, the buckets and the bucket flags */
 	uint i;
@@ -319,20 +319,20 @@ void init_Hash(Hash* h, Hash_HashProc* hash, uint num_buckets)
 }
 
 
-void delete_Hash(Hash* h, bool free_values)
+void delete_Hash(Hash *h, bool free_values)
 {
 	uint i;
 
 	/* Iterate all buckets */
 	for (i = 0; i < h->num_buckets; i++) {
 		if (h->buckets_in_use[i]) {
-			HashNode* node;
+			HashNode *node;
 
 			/* Free the first value */
 			if (free_values) free(h->buckets[i].value);
 			node = h->buckets[i].next;
 			while (node != NULL) {
-				HashNode* prev = node;
+				HashNode *prev = node;
 
 				node = node->next;
 				/* Free the value */
@@ -351,7 +351,7 @@ void delete_Hash(Hash* h, bool free_values)
 }
 
 #ifdef HASH_STATS
-static void stat_Hash(const Hash* h)
+static void stat_Hash(const Hash *h)
 {
 	uint used_buckets = 0;
 	uint max_collision = 0;
@@ -363,7 +363,7 @@ static void stat_Hash(const Hash* h)
 	for (i = 0; i < h->num_buckets; i++) {
 		uint collision = 0;
 		if (h->buckets_in_use[i]) {
-			const HashNode* node;
+			const HashNode *node;
 
 			used_buckets++;
 			for (node = &h->buckets[i]; node != NULL; node = node->next) collision++;
@@ -401,7 +401,7 @@ static void stat_Hash(const Hash* h)
 }
 #endif
 
-void clear_Hash(Hash* h, bool free_values)
+void clear_Hash(Hash *h, bool free_values)
 {
 	uint i;
 
@@ -412,14 +412,14 @@ void clear_Hash(Hash* h, bool free_values)
 	/* Iterate all buckets */
 	for (i = 0; i < h->num_buckets; i++) {
 		if (h->buckets_in_use[i]) {
-			HashNode* node;
+			HashNode *node;
 
 			h->buckets_in_use[i] = false;
 			/* Free the first value */
 			if (free_values) free(h->buckets[i].value);
 			node = h->buckets[i].next;
 			while (node != NULL) {
-				HashNode* prev = node;
+				HashNode *prev = node;
 
 				node = node->next;
 				if (free_values) free(prev->value);
@@ -437,10 +437,10 @@ void clear_Hash(Hash* h, bool free_values)
  * bucket, or NULL if it is empty. prev can also be NULL, in which case it is
  * not used for output.
  */
-static HashNode* Hash_FindNode(const Hash* h, uint key1, uint key2, HashNode** prev_out)
+static HashNode *Hash_FindNode(const Hash *h, uint key1, uint key2, HashNode** prev_out)
 {
 	uint hash = h->hash(key1, key2);
-	HashNode* result = NULL;
+	HashNode *result = NULL;
 
 #ifdef HASH_DEBUG
 	debug("Looking for %u, %u", key1, key2);
@@ -459,8 +459,8 @@ static HashNode* Hash_FindNode(const Hash* h, uint key1, uint key2, HashNode** p
 #endif
 	/* Check all other nodes */
 	} else {
-		HashNode* prev = h->buckets + hash;
-		HashNode* node;
+		HashNode *prev = h->buckets + hash;
+		HashNode *node;
 
 		for (node = prev->next; node != NULL; node = node->next) {
 			if (node->key1 == key1 && node->key2 == key2) {
@@ -481,11 +481,11 @@ static HashNode* Hash_FindNode(const Hash* h, uint key1, uint key2, HashNode** p
 	return result;
 }
 
-void* Hash_Delete(Hash* h, uint key1, uint key2)
+void *Hash_Delete(Hash *h, uint key1, uint key2)
 {
-	void* result;
-	HashNode* prev; // Used as output var for below function call
-	HashNode* node = Hash_FindNode(h, key1, key2, &prev);
+	void *result;
+	HashNode *prev; // Used as output var for below function call
+	HashNode *node = Hash_FindNode(h, key1, key2, &prev);
 
 	if (node == NULL) {
 		/* not found */
@@ -496,7 +496,7 @@ void* Hash_Delete(Hash* h, uint key1, uint key2)
 		/* Save the value */
 		result = node->value;
 		if (node->next != NULL) {
-			HashNode* next = node->next;
+			HashNode *next = node->next;
 			/* Copy the second to the first */
 			*node = *next;
 			/* Free the second */
@@ -525,14 +525,14 @@ void* Hash_Delete(Hash* h, uint key1, uint key2)
 }
 
 
-void* Hash_Set(Hash* h, uint key1, uint key2, void* value)
+void *Hash_Set(Hash *h, uint key1, uint key2, void *value)
 {
-	HashNode* prev;
-	HashNode* node = Hash_FindNode(h, key1, key2, &prev);
+	HashNode *prev;
+	HashNode *node = Hash_FindNode(h, key1, key2, &prev);
 
 	if (node != NULL) {
 		/* Found it */
-		void* result = node->value;
+		void *result = node->value;
 
 		node->value = value;
 		return result;
@@ -556,9 +556,9 @@ void* Hash_Set(Hash* h, uint key1, uint key2, void* value)
 	return NULL;
 }
 
-void* Hash_Get(const Hash* h, uint key1, uint key2)
+void *Hash_Get(const Hash *h, uint key1, uint key2)
 {
-	HashNode* node = Hash_FindNode(h, key1, key2, NULL);
+	HashNode *node = Hash_FindNode(h, key1, key2, NULL);
 
 #ifdef HASH_DEBUG
 	debug("Found node: %p", node);
@@ -566,7 +566,7 @@ void* Hash_Get(const Hash* h, uint key1, uint key2)
 	return (node != NULL) ? node->value : NULL;
 }
 
-uint Hash_Size(const Hash* h)
+uint Hash_Size(const Hash *h)
 {
 	return h->size;
 }

@@ -63,7 +63,7 @@ struct CFixedSizeArrayT {
 	FORCEINLINE void Clear()
 	{
 		// walk through all allocated items backward and destroy them
-		for (Titem* pItem = &m_items[Size() - 1]; pItem >= m_items; pItem--) {
+		for (Titem *pItem = &m_items[Size() - 1]; pItem >= m_items; pItem--) {
 			pItem->~Titem_();
 		}
 		// number of items become zero

@@ -68,7 +68,7 @@ static struct {
 	WriterProc *write_bytes;             ///< savegame writer function
 	ReaderProc *read_bytes;              ///< savegame loader function
 
-	const ChunkHandler* const *chs;      ///< the chunk of data that is being processed atm (vehicles, signs, etc.)
+	const ChunkHandler * const *chs;     ///< the chunk of data that is being processed atm (vehicles, signs, etc.)
 
 	/* When saving/loading savegames, they are always saved to a temporary memory-place
 	 * to be flushed to file (save) or to final place (load) when full. */
@@ -696,8 +696,8 @@ void SlArray(void *array, size_t length, VarType conv)
 }
 
 
-static uint ReferenceToInt(const void* obj, SLRefType rt);
-static void* IntToReference(uint index, SLRefType rt);
+static uint ReferenceToInt(const void *obj, SLRefType rt);
+static void *IntToReference(uint index, SLRefType rt);
 
 
 /**
@@ -1014,7 +1014,7 @@ static void SlSaveChunk(const ChunkHandler *ch)
 static void SlSaveChunks()
 {
 	const ChunkHandler *ch;
-	const ChunkHandler* const *chsc;
+	const ChunkHandler * const *chsc;
 	uint p;
 
 	for (p = 0; p != CH_NUM_PRI_LEVELS; p++) {

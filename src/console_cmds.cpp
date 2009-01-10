@@ -215,7 +215,7 @@ DEF_CONSOLE_CMD(ConSaveConfig)
 	return true;
 }
 
-static const FiosItem* GetFiosItem(const char* file)
+static const FiosItem *GetFiosItem(const char *file)
 {
 	_saveload_mode = SLD_LOAD_GAME;
 	BuildFileList();
@@ -759,7 +759,7 @@ extern bool CloseConsoleLogIfActive();
 
 DEF_CONSOLE_CMD(ConScript)
 {
-	extern FILE* _iconsole_output_file;
+	extern FILE *_iconsole_output_file;
 
 	if (argc == 0) {
 		IConsoleHelp("Start or stop logging console output to a file. Usage: 'script <filename>'");

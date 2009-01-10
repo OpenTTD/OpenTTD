@@ -53,7 +53,7 @@ bool NetworkServerStart();
 NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index);
 NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id);
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
-const char* GetClientIP(const NetworkClientInfo *ci);
+const char *GetClientIP(const NetworkClientInfo *ci);
 
 void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const char *string);
 void NetworkServerSendError(ClientID client_id, NetworkErrorCode error);

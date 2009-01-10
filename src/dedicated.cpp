@@ -32,7 +32,7 @@ void DedicatedFork()
 			exit(1);
 
 		case 0: { // We're the child
-			FILE* f;
+			FILE *f;
 
 			/* Open the log-file to log all stuff too */
 			f = fopen(_log_file, "a");

@@ -160,7 +160,7 @@ static int NetworkFindBroadcastIPsInternal(uint32 *broadcast, int limit) // !GET
 	const char *buf_end = buf + ifconf.ifc_len;
 	int index = 0;
 	for (const char *p = buf; p < buf_end && index != limit;) {
-		const struct ifreq* req = (const struct ifreq*)p;
+		const struct ifreq *req = (const struct ifreq*)p;
 
 		if (req->ifr_addr.sa_family == AF_INET) {
 			struct ifreq r;

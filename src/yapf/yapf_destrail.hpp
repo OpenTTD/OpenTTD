@@ -117,7 +117,7 @@ protected:
 
 	static TileIndex CalcStationCenterTile(StationID station)
 	{
-		const Station* st = GetStation(station);
+		const Station *st = GetStation(station);
 
 		/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
 		if (!IsValidTile(st->train_tile)) return st->xy;
@@ -129,7 +129,7 @@ protected:
 	}
 
 public:
-	void SetDestination(const Vehicle* v)
+	void SetDestination(const Vehicle *v)
 	{
 		switch (v->current_order.GetType()) {
 			case OT_GOTO_STATION:

@@ -51,7 +51,7 @@ struct CPerformanceTimer
 
 struct CPerfStartReal
 {
-	CPerformanceTimer* m_pperf;
+	CPerformanceTimer *m_pperf;
 
 	FORCEINLINE CPerfStartReal(CPerformanceTimer& perf) : m_pperf(&perf) {if (m_pperf != NULL) m_pperf->Start();}
 	FORCEINLINE ~CPerfStartReal() {Stop();}

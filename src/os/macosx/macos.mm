@@ -30,7 +30,7 @@ void ToggleFullScreen(bool fs);
 static char *GetOSString()
 {
 	static char buffer[175];
-	const char* CPU;
+	const char *CPU;
 	char OS[20];
 	char newgrf[125];
 	long sysVersion;
@@ -75,8 +75,8 @@ static char *GetOSString()
 
 	// make a list of used newgrf files
 /*	if (_first_grffile != NULL) {
-		char* n = newgrf;
-		const GRFFile* file;
+		char *n = newgrf;
+		const GRFFile *file;
 
 		for (file = _first_grffile; file != NULL; file = file->next) {
 			n = strecpy(n, " ", lastof(newgrf));
@@ -99,16 +99,16 @@ static char *GetOSString()
 
 #ifdef WITH_SDL
 
-void ShowMacDialog(const char* title, const char* message, const char* buttonLabel)
+void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
 	NSRunAlertPanel([NSString stringWithCString: title], [NSString stringWithCString: message], [NSString stringWithCString: buttonLabel], nil, nil);
 }
 
 #elif defined WITH_COCOA
 
-void CocoaDialog(const char* title, const char* message, const char* buttonLabel);
+void CocoaDialog(const char *title, const char *message, const char *buttonLabel);
 
-void ShowMacDialog(const char* title, const char* message, const char* buttonLabel)
+void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
 	CocoaDialog(title, message, buttonLabel);
 }
@@ -116,16 +116,16 @@ void ShowMacDialog(const char* title, const char* message, const char* buttonLab
 
 #else
 
-void ShowMacDialog(const char* title, const char* message, const char* buttonLabel)
+void ShowMacDialog(const char *title, const char *message, const char *buttonLabel)
 {
 	fprintf(stderr, "%s: %s\n", title, message);
 }
 
 #endif
 
-void ShowMacAssertDialog(const char* function, const char* file, const int line, const char* expression)
+void ShowMacAssertDialog(const char *function, const char *file, const int line, const char *expression)
 {
-	const char* buffer =
+	const char *buffer =
 		[[NSString stringWithFormat:@
 			"An assertion has failed and OpenTTD must quit.\n"
 			"%s in %s (line %d)\n"
@@ -147,7 +147,7 @@ void ShowMacAssertDialog(const char* function, const char* file, const int line,
 
 void ShowMacErrorDialog(const char *error)
 {
-	const char* buffer =
+	const char *buffer =
 		[[NSString stringWithFormat:@
 			"Please update to the newest version of OpenTTD\n"
 			"If the problem presists, please report this to\n"
@@ -166,9 +166,9 @@ void ShowMacErrorDialog(const char *error)
 const char *GetCurrentLocale(const char *)
 {
 	static char retbuf[32] = { '\0' };
-	NSUserDefaults* defs = [NSUserDefaults standardUserDefaults];
-	NSArray* languages = [defs objectForKey:@"AppleLanguages"];
-	NSString* preferredLang = [languages objectAtIndex:0];
+	NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+	NSArray *languages = [defs objectForKey:@"AppleLanguages"];
+	NSString *preferredLang = [languages objectAtIndex:0];
 	/* preferredLang is either 2 or 5 characters long ("xx" or "xx_YY"). */
 
 	/* Since Apple introduced encoding to CString in OSX 10.4 we have to make a few conditions

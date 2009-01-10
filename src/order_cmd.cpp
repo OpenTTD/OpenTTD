@@ -361,7 +361,7 @@ void OrderList::DebugCheckSanity() const
  * another order gets added), but assume the company will notice the problems,
  * when (s)he's changing the orders.
  */
-static void DeleteOrderWarnings(const Vehicle* v)
+static void DeleteOrderWarnings(const Vehicle *v)
 {
 	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_TOO_FEW_ORDERS);
 	DeleteVehicleNews(v->index, STR_VEHICLE_HAS_VOID_ORDER);
@@ -1374,7 +1374,7 @@ CommandCost CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32
 }
 
 
-static TileIndex GetStationTileForVehicle(const Vehicle* v, const Station* st)
+static TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 {
 	switch (v->type) {
 		default: NOT_REACHED();
@@ -1396,7 +1396,7 @@ static TileIndex GetStationTileForVehicle(const Vehicle* v, const Station* st)
  * Check the orders of a vehicle, to see if there are invalid orders and stuff
  *
  */
-void CheckOrders(const Vehicle* v)
+void CheckOrders(const Vehicle *v)
 {
 	/* Does the user wants us to check things? */
 	if (_settings_client.gui.order_review_system == 0) return;
@@ -1428,7 +1428,7 @@ void CheckOrders(const Vehicle* v)
 			}
 			/* Does station have a load-bay for this vehicle? */
 			if (order->IsType(OT_GOTO_STATION)) {
-				const Station* st = GetStation(order->GetDestination());
+				const Station *st = GetStation(order->GetDestination());
 				TileIndex required_tile = GetStationTileForVehicle(v, st);
 
 				n_st++;
@@ -1438,7 +1438,7 @@ void CheckOrders(const Vehicle* v)
 
 		/* Check if the last and the first order are the same */
 		if (v->GetNumOrders() > 1) {
-			const Order* last = GetLastVehicleOrder(v);
+			const Order *last = GetLastVehicleOrder(v);
 
 			if (v->orders.list->GetFirstOrder()->Equals(*last)) {
 				problem_type = 2;

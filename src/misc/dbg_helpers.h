@@ -59,7 +59,7 @@ inline typename ArrayT<T>::item_t ItemAtT(E idx, T &t, typename ArrayT<T>::item_
 * or t_unk when index is out of bounds.
 */
 template <typename E, typename T>
-inline CStrA ComposeNameT(E value, T &t, const char* t_unk, E val_inv, const char* name_inv)
+inline CStrA ComposeNameT(E value, T &t, const char *t_unk, E val_inv, const char *name_inv)
 {
 	CStrA out;
 	if (value == val_inv) {
@@ -123,7 +123,7 @@ struct DumpTarget {
 
 	static size_t& LastTypeId();
 	CStrA GetCurrentStructName();
-	bool FindKnownName(size_t type_id, const void* ptr, CStrA &name);
+	bool FindKnownName(size_t type_id, const void *ptr, CStrA &name);
 
 	void WriteIndent();
 

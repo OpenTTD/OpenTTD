@@ -86,7 +86,7 @@ DECLARE_ENUM_AS_BIT_SET(EndSegmentReasonBits);
 
 inline CStrA ValueStr(EndSegmentReasonBits bits)
 {
-	static const char* end_segment_reason_names[] = {
+	static const char *end_segment_reason_names[] = {
 		"DEAD_END", "RAIL_TYPE", "INFINITE_LOOP", "SEGMENT_TOO_LONG", "CHOICE_FOLLOWS",
 		"DEPOT", "WAYPOINT", "STATION",
 		"PATH_TOO_LONG", "FIRST_TWO_WAY_RED", "LOOK_AHEAD_END", "TARGET_REACHED"
@@ -109,7 +109,7 @@ struct CYapfRailSegment
 	TileIndex              m_last_signal_tile;
 	Trackdir               m_last_signal_td;
 	EndSegmentReasonBits   m_end_segment_reason;
-	CYapfRailSegment*      m_hash_next;
+	CYapfRailSegment      *m_hash_next;
 
 	FORCEINLINE CYapfRailSegment(const CYapfRailSegmentKey& key)
 		: m_key(key)
@@ -124,8 +124,8 @@ struct CYapfRailSegment
 
 	FORCEINLINE const Key& GetKey() const {return m_key;}
 	FORCEINLINE TileIndex GetTile() const {return m_key.GetTile();}
-	FORCEINLINE CYapfRailSegment* GetHashNext() {return m_hash_next;}
-	FORCEINLINE void SetHashNext(CYapfRailSegment* next) {m_hash_next = next;}
+	FORCEINLINE CYapfRailSegment *GetHashNext() {return m_hash_next;}
+	FORCEINLINE void SetHashNext(CYapfRailSegment *next) {m_hash_next = next;}
 
 	void Dump(DumpTarget &dmp) const
 	{
@@ -159,7 +159,7 @@ struct CYapfRailNodeT
 	} flags_u;
 	SignalType        m_last_red_signal_type;
 
-	FORCEINLINE void Set(CYapfRailNodeT* parent, TileIndex tile, Trackdir td, bool is_choice)
+	FORCEINLINE void Set(CYapfRailNodeT *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
 		base::Set(parent, tile, td, is_choice);
 		m_segment = NULL;

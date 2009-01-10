@@ -41,7 +41,7 @@ struct SmallStackSafeStackAlloc {
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	FORCEINLINE operator T* ()
+	FORCEINLINE operator T *()
 	{
 		return data;
 	}
@@ -50,7 +50,7 @@ struct SmallStackSafeStackAlloc {
 	 * Gets a pointer to the data stored in this wrapper.
 	 * @return the pointer.
 	 */
-	FORCEINLINE T* operator -> ()
+	FORCEINLINE T *operator -> ()
 	{
 		return data;
 	}
@@ -60,7 +60,7 @@ struct SmallStackSafeStackAlloc {
 	 * @note needed because endof does not work properly for pointers.
 	 * @return the 'endof' pointer.
 	 */
-	FORCEINLINE T* EndOf()
+	FORCEINLINE T *EndOf()
 	{
 #if !defined(__NDS__)
 		return endof(data);

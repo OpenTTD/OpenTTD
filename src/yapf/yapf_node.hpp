@@ -56,7 +56,7 @@ struct CYapfNodeT {
 		m_estimate = 0;
 	}
 
-	FORCEINLINE Node* GetHashNext() {return m_hash_next;}
+	FORCEINLINE Node *GetHashNext() {return m_hash_next;}
 	FORCEINLINE void SetHashNext(Node *pNext) {m_hash_next = pNext;}
 	FORCEINLINE TileIndex GetTile() const {return m_key.m_tile;}
 	FORCEINLINE Trackdir GetTrackdir() const {return m_key.m_td;}

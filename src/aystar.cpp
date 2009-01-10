@@ -28,7 +28,7 @@ int _aystar_stats_closed_size;
 
 // This looks in the Hash if a node exists in ClosedList
 //  If so, it returns the PathNode, else NULL
-static PathNode* AyStarMain_ClosedList_IsInList(AyStar *aystar, const AyStarNode *node)
+static PathNode *AyStarMain_ClosedList_IsInList(AyStar *aystar, const AyStarNode *node)
 {
 	return (PathNode*)Hash_Get(&aystar->ClosedListHash, node->tile, node->direction);
 }

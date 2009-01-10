@@ -481,7 +481,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x40: // Get length of consist
 		case 0x41: // Get length of same consecutive wagons
 			{
-				const Vehicle* u;
+				const Vehicle *u;
 				byte chain_before = 0;
 				byte chain_after  = 0;
 
@@ -904,7 +904,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
  * @param v The wagon to check
  * @return true if it is using an override, false otherwise
  */
-bool UsesWagonOverride(const Vehicle* v)
+bool UsesWagonOverride(const Vehicle *v)
 {
 	assert(v->type == VEH_TRAIN);
 	return v->u.rail.cached_override != NULL;

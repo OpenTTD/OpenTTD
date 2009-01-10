@@ -370,7 +370,7 @@ static int TruncateString(char *str, int maxw)
  *
  * @return Actual width of the (possibly) truncated string in pixels
  */
-static inline int TruncateStringID(StringID src, char *dest, int maxw, const char* last)
+static inline int TruncateStringID(StringID src, char *dest, int maxw, const char *last)
 {
 	GetString(dest, src, last);
 	return TruncateString(dest, maxw);

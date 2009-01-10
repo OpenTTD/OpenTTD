@@ -326,7 +326,7 @@ static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 
 static void AiHandleReplaceTrain(Company *c)
 {
-	const Vehicle* v = _companies_ai[c->index].cur_veh;
+	const Vehicle *v = _companies_ai[c->index].cur_veh;
 	BackuppedOrders orderbak;
 	EngineID veh;
 
@@ -356,7 +356,7 @@ static void AiHandleReplaceTrain(Company *c)
 
 static void AiHandleReplaceRoadVeh(Company *c)
 {
-	const Vehicle* v = _companies_ai[c->index].cur_veh;
+	const Vehicle *v = _companies_ai[c->index].cur_veh;
 	BackuppedOrders orderbak;
 	EngineID veh;
 
@@ -385,7 +385,7 @@ static void AiHandleReplaceRoadVeh(Company *c)
 
 static void AiHandleReplaceAircraft(Company *c)
 {
-	const Vehicle* v = _companies_ai[c->index].cur_veh;
+	const Vehicle *v = _companies_ai[c->index].cur_veh;
 	BackuppedOrders orderbak;
 	EngineID veh;
 
@@ -417,9 +417,9 @@ static void AiHandleReplaceShip(Company *c)
 	/* Ships are not implemented in this (broken) AI */
 }
 
-typedef EngineID CheckReplaceProc(const Company *c, const Vehicle* v);
+typedef EngineID CheckReplaceProc(const Company *c, const Vehicle *v);
 
-static CheckReplaceProc* const _veh_check_replace_proc[] = {
+static CheckReplaceProc * const _veh_check_replace_proc[] = {
 	AiChooseTrainToReplaceWith,
 	AiChooseRoadVehToReplaceWith,
 	AiChooseShipToReplaceWith,
@@ -427,7 +427,7 @@ static CheckReplaceProc* const _veh_check_replace_proc[] = {
 };
 
 typedef void DoReplaceProc(Company *c);
-static DoReplaceProc* const _veh_do_replace_proc[] = {
+static DoReplaceProc * const _veh_do_replace_proc[] = {
 	AiHandleReplaceTrain,
 	AiHandleReplaceRoadVeh,
 	AiHandleReplaceShip,
@@ -436,7 +436,7 @@ static DoReplaceProc* const _veh_do_replace_proc[] = {
 
 static void AiStateCheckReplaceVehicle(Company *c)
 {
-	const Vehicle* v = _companies_ai[c->index].cur_veh;
+	const Vehicle *v = _companies_ai[c->index].cur_veh;
 
 	if (!v->IsValid() ||
 			v->owner != _current_company ||
@@ -451,7 +451,7 @@ static void AiStateCheckReplaceVehicle(Company *c)
 
 static void AiStateDoReplaceVehicle(Company *c)
 {
-	const Vehicle* v = _companies_ai[c->index].cur_veh;
+	const Vehicle *v = _companies_ai[c->index].cur_veh;
 
 	_companies_ai[c->index].state = AIS_VEH_LOOP;
 	// vehicle is not owned by the company anymore, something went very wrong.
@@ -483,8 +483,8 @@ static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 {
 	uint i;
 	CargoID cargo;
-	const Subsidy* s;
-	Industry* from;
+	const Subsidy *s;
+	Industry *from;
 	TileIndex to_xy;
 
 	// initially error
@@ -509,13 +509,13 @@ static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 	fr->from = from = GetIndustry(s->from);
 
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
-		Town* to_tow = GetTown(s->to);
+		Town *to_tow = GetTown(s->to);
 
 		if (to_tow->population < (cargo == CT_FOOD ? 200U : 900U)) return; // error
 		fr->to = to_tow;
 		to_xy = to_tow->xy;
 	} else {
-		Industry* to_ind = GetIndustry(s->to);
+		Industry *to_ind = GetIndustry(s->to);
 
 		fr->to = to_ind;
 		to_xy = to_ind->xy;
@@ -527,7 +527,7 @@ static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 static void AiFindSubsidyPassengerRoute(FoundRoute *fr)
 {
 	uint i;
-	const Subsidy* s;
+	const Subsidy *s;
 	Town *from, *to;
 
 	// initially error
@@ -554,7 +554,7 @@ static void AiFindSubsidyPassengerRoute(FoundRoute *fr)
 
 static void AiFindRandomIndustryRoute(FoundRoute *fr)
 {
-	Industry* i;
+	Industry *i;
 	uint32 r;
 	CargoID cargo;
 
@@ -578,7 +578,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 
 	if (cargo != CT_GOODS && cargo != CT_FOOD) {
 		// pick a dest, and see if it can receive
-		Industry* i2 = AiFindRandomIndustry();
+		Industry *i2 = AiFindRandomIndustry();
 		if (i2 == NULL || i == i2 ||
 				(i2->accepts_cargo[0] != cargo &&
 				i2->accepts_cargo[1] != cargo &&
@@ -590,7 +590,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 		fr->distance = DistanceManhattan(i->xy, i2->xy);
 	} else {
 		// pick a dest town, and see if it's big enough
-		Town* t = AiFindRandomTown();
+		Town *t = AiFindRandomTown();
 
 		if (t == NULL || t->population < (cargo == CT_FOOD ? 200U : 900U)) return;
 
@@ -601,8 +601,8 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 
 static void AiFindRandomPassengerRoute(FoundRoute *fr)
 {
-	Town* source;
-	Town* dest;
+	Town *source;
+	Town *dest;
 
 	// initially error
 	fr->distance = -1;
@@ -670,8 +670,8 @@ static bool AiCheckIfRouteIsGood(Company *c, FoundRoute *fr, byte bitmask)
 	}
 
 	if (fr->cargo == CT_PASSENGERS || fr->cargo == CT_MAIL) {
-		const Town* from = (const Town*)fr->from;
-		const Town* to   = (const Town*)fr->to;
+		const Town *from = (const Town*)fr->from;
+		const Town *to   = (const Town*)fr->to;
 
 		if (from->pct_pass_transported > 0x99 ||
 				to->pct_pass_transported > 0x99) {
@@ -684,7 +684,7 @@ static bool AiCheckIfRouteIsGood(Company *c, FoundRoute *fr, byte bitmask)
 			return false;
 		}
 	} else {
-		const Industry* i = (const Industry*)fr->from;
+		const Industry *i = (const Industry*)fr->from;
 
 		if (i->last_month_pct_transported[fr->cargo != i->produced_cargo[0]] > 0x99 ||
 				i->last_month_production[fr->cargo != i->produced_cargo[0]] == 0) {
@@ -1634,7 +1634,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 	return true;
 }
 
-static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData* p, RailType railtype, byte flag)
+static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData *p, RailType railtype, byte flag)
 {
 	CommandCost ret;
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
@@ -1733,7 +1733,7 @@ clear_town_stuff:;
 }
 
 // Returns rule and cost
-static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, byte p3, byte dir, byte cargo, RailType railtype, CommandCost* cost)
+static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, byte p3, byte dir, byte cargo, RailType railtype, CommandCost *cost)
 {
 	int i;
 	const AiDefaultRailBlock *p;
@@ -2545,7 +2545,7 @@ handle_nocash:
 	}
 
 	for (i = 0; _companies_ai[c->index].order_list_blocks[i] != 0xFF; i++) {
-		const AiBuildRec* aib = &_companies_ai[c->index].src + _companies_ai[c->index].order_list_blocks[i];
+		const AiBuildRec *aib = &_companies_ai[c->index].src + _companies_ai[c->index].order_list_blocks[i];
 		bool is_pass = (
 			_companies_ai[c->index].cargo_type == CT_PASSENGERS ||
 			_companies_ai[c->index].cargo_type == CT_MAIL ||
@@ -2578,11 +2578,11 @@ handle_nocash:
 
 static void AiStateDeleteRailBlocks(Company *c)
 {
-	const AiBuildRec* aib = &_companies_ai[c->index].src;
+	const AiBuildRec *aib = &_companies_ai[c->index].src;
 	uint num = _companies_ai[c->index].num_build_rec;
 
 	do {
-		const AiDefaultBlockData* b;
+		const AiDefaultBlockData *b;
 
 		if (aib->cur_building_rule == 255) continue;
 		for (b = _default_rail_track_data[aib->cur_building_rule]->data; b->mode != 4; b++) {
@@ -2718,7 +2718,7 @@ clear_town_stuff:;
 // Make sure the blocks are not too close to each other
 static bool AiCheckBlockDistances(Company *c, TileIndex tile)
 {
-	const AiBuildRec* aib = &_companies_ai[c->index].src;
+	const AiBuildRec *aib = &_companies_ai[c->index].src;
 	uint num = _companies_ai[c->index].num_build_rec;
 
 	do {
@@ -3280,7 +3280,7 @@ static void AiStateBuildRoadVehicles(Company *c)
 	}
 
 	for (i = 0; _companies_ai[c->index].order_list_blocks[i] != 0xFF; i++) {
-		const AiBuildRec* aib = &_companies_ai[c->index].src + _companies_ai[c->index].order_list_blocks[i];
+		const AiBuildRec *aib = &_companies_ai[c->index].src + _companies_ai[c->index].order_list_blocks[i];
 		bool is_pass = (
 			_companies_ai[c->index].cargo_type == CT_PASSENGERS ||
 			_companies_ai[c->index].cargo_type == CT_MAIL ||
@@ -3306,11 +3306,11 @@ static void AiStateBuildRoadVehicles(Company *c)
 
 static void AiStateDeleteRoadBlocks(Company *c)
 {
-	const AiBuildRec* aib = &_companies_ai[c->index].src;
+	const AiBuildRec *aib = &_companies_ai[c->index].src;
 	uint num = _companies_ai[c->index].num_build_rec;
 
 	do {
-		const AiDefaultBlockData* b;
+		const AiDefaultBlockData *b;
 
 		if (aib->cur_building_rule == 255) continue;
 		for (b = _road_default_block_data[aib->cur_building_rule]->data; b->mode != 4; b++) {
@@ -3325,7 +3325,7 @@ static void AiStateDeleteRoadBlocks(Company *c)
 
 static void AiStateAirportStuff(Company *c)
 {
-	const Station* st;
+	const Station *st;
 	int i;
 	AiBuildRec *aib;
 	byte rule;
@@ -3419,7 +3419,7 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 
 	for (; p->mode == 0; p++) {
 		TileIndex tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
-		const AirportFTAClass* airport = GetAirport(p->attr);
+		const AirportFTAClass *airport = GetAirport(p->attr);
 		uint w = airport->size_x;
 		uint h = airport->size_y;
 		uint rad = _settings_game.station.modified_catchment ? airport->catchment : (uint)CA_UNMODIFIED;

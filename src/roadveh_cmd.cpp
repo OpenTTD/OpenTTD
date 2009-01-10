@@ -366,9 +366,9 @@ static const DiagDirection _road_pf_directions[] = {
 	DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NW, DIAGDIR_SW, DIAGDIR_NW, DIAGDIR_NE, INVALID_DIAGDIR, INVALID_DIAGDIR
 };
 
-static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdir, uint length)
+static bool EnumRoadSignalFindDepot(TileIndex tile, void *data, Trackdir trackdir, uint length)
 {
-	RoadFindDepotData* rfdd = (RoadFindDepotData*)data;
+	RoadFindDepotData *rfdd = (RoadFindDepotData*)data;
 
 	tile += TileOffsByDiagDir(_road_pf_directions[trackdir]);
 
@@ -381,7 +381,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, Trackdir trackdi
 	return false;
 }
 
-static const Depot* FindClosestRoadDepot(const Vehicle* v)
+static const Depot *FindClosestRoadDepot(const Vehicle *v)
 {
 	switch (_settings_game.pf.pathfinder_for_roadvehs) {
 		case VPF_YAPF: /* YAPF */
@@ -707,7 +707,7 @@ TileIndex RoadVehicle::GetOrderStationLocation(StationID station)
 	}
 }
 
-static void StartRoadVehSound(const Vehicle* v)
+static void StartRoadVehSound(const Vehicle *v)
 {
 	if (!PlayVehicleSound(v, VSE_START)) {
 		SoundFx s = RoadVehInfo(v->engine_type)->sfx;
@@ -790,7 +790,7 @@ static Vehicle *RoadVehFindCloseTo(Vehicle *v, int x, int y, Direction dir)
 	return rvf.best;
 }
 
-static void RoadVehArrivesAt(const Vehicle* v, Station* st)
+static void RoadVehArrivesAt(const Vehicle *v, Station *st)
 {
 	if (IsCargoInClass(v->cargo_type, CC_PASSENGERS)) {
 		/* Check if station was ever visited before */
@@ -854,7 +854,7 @@ static int RoadVehAccelerate(Vehicle *v)
 	return scaled_spd;
 }
 
-static Direction RoadVehGetNewDirection(const Vehicle* v, int x, int y)
+static Direction RoadVehGetNewDirection(const Vehicle *v, int x, int y)
 {
 	static const Direction _roadveh_new_dir[] = {
 		DIR_N , DIR_NW, DIR_W , INVALID_DIR,
@@ -869,7 +869,7 @@ static Direction RoadVehGetNewDirection(const Vehicle* v, int x, int y)
 	return _roadveh_new_dir[y * 4 + x];
 }
 
-static Direction RoadVehGetSlidingDirection(const Vehicle* v, int x, int y)
+static Direction RoadVehGetSlidingDirection(const Vehicle *v, int x, int y)
 {
 	Direction new_dir = RoadVehGetNewDirection(v, x, y);
 	Direction old_dir = v->direction;
@@ -881,15 +881,15 @@ static Direction RoadVehGetSlidingDirection(const Vehicle* v, int x, int y)
 }
 
 struct OvertakeData {
-	const Vehicle* u;
-	const Vehicle* v;
+	const Vehicle *u;
+	const Vehicle *v;
 	TileIndex tile;
 	Trackdir trackdir;
 };
 
-static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void* data)
+static Vehicle *EnumFindVehBlockingOvertake(Vehicle *v, void *data)
 {
-	const OvertakeData* od = (OvertakeData*)data;
+	const OvertakeData *od = (OvertakeData*)data;
 
 	return
 		v->type == VEH_ROAD && v->First() == v && v != od->u && v != od->v ?
@@ -995,9 +995,9 @@ struct FindRoadToChooseData {
 	uint mindist;
 };
 
-static bool EnumRoadTrackFindDist(TileIndex tile, void* data, Trackdir trackdir, uint length)
+static bool EnumRoadTrackFindDist(TileIndex tile, void *data, Trackdir trackdir, uint length)
 {
-	FindRoadToChooseData* frd = (FindRoadToChooseData*)data;
+	FindRoadToChooseData *frd = (FindRoadToChooseData*)data;
 	uint dist = DistanceManhattan(tile, frd->dest);
 
 	if (dist <= frd->mindist) {
@@ -1009,10 +1009,10 @@ static bool EnumRoadTrackFindDist(TileIndex tile, void* data, Trackdir trackdir,
 	return false;
 }
 
-static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
+static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
 {
 
-	void* perf = NpfBeginInterval();
+	void *perf = NpfBeginInterval();
 	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, ignore_start_tile, target, type, sub_type, owner, railtypes);
 	int t = NpfEndInterval(perf);
 	DEBUG(yapf, 4, "[NPFR] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
@@ -1027,7 +1027,7 @@ static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Tra
  * @param enterdir the direction the vehicle enters the tile from
  * @return the Trackdir to take
  */
-static Trackdir RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir)
+static Trackdir RoadFindPathToDest(Vehicle *v, TileIndex tile, DiagDirection enterdir)
 {
 #define return_track(x) { best_track = (Trackdir)x; goto found_best_track; }
 
@@ -1662,7 +1662,7 @@ again:
 	if (IsRoadVehFront(v) && !IsInsideMM(v->u.road.state, RVSB_IN_ROAD_STOP, RVSB_IN_ROAD_STOP_END)) {
 		/* Vehicle is not in a road stop.
 		 * Check for another vehicle to overtake */
-		Vehicle* u = RoadVehFindCloseTo(v, x, y, new_dir);
+		Vehicle *u = RoadVehFindCloseTo(v, x, y, new_dir);
 
 		if (u != NULL) {
 			u = u->First();

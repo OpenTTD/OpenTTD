@@ -154,7 +154,7 @@ struct GRFText {
 			strcpy(text, text_);
 		}
 
-		void* operator new(size_t size, size_t extra)
+		void *operator new(size_t size, size_t extra)
 		{
 			return ::operator new(size + extra);
 		}

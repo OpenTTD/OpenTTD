@@ -164,7 +164,7 @@ public:
 	/** If path was found return the best node that has reached the destination. Otherwise
 	 *  return the best visited node (which was nearest to the destination).
 	 */
-	FORCEINLINE Node* GetBestNode()
+	FORCEINLINE Node *GetBestNode()
 	{
 		return (m_pBestDestNode != NULL) ? m_pBestDestNode : m_pBestIntermediateNode;
 	}
@@ -193,7 +193,7 @@ public:
 	}
 
 	/** add multiple nodes - direct children of the given node */
-	FORCEINLINE void AddMultipleNodes(Node* parent, const TrackFollower &tf)
+	FORCEINLINE void AddMultipleNodes(Node *parent, const TrackFollower &tf)
 	{
 		bool is_choice = (KillFirstBit(tf.m_new_td_bits) != TRACKDIR_BIT_NONE);
 		for (TrackdirBits rtds = tf.m_new_td_bits; rtds != TRACKDIR_BIT_NONE; rtds = KillFirstBit(rtds)) {
@@ -242,7 +242,7 @@ public:
 		}
 
 		// check new node against open list
-		Node* openNode = m_nodes.FindOpenNode(n.GetKey());
+		Node *openNode = m_nodes.FindOpenNode(n.GetKey());
 		if (openNode != NULL) {
 			// another node exists with the same key in the open list
 			// is it better than new one?
@@ -257,7 +257,7 @@ public:
 		}
 
 		// check new node against closed list
-		Node* closedNode = m_nodes.FindClosedNode(n.GetKey());
+		Node *closedNode = m_nodes.FindClosedNode(n.GetKey());
 		if (closedNode != NULL) {
 			// another node exists with the same key in the closed list
 			// is it better than new one?

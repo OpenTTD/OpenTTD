@@ -59,7 +59,7 @@
 #include "table/strings.h"
 #include "table/train_cmd.h"
 
-static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck);
+static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck);
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image);
 static TileIndex TrainApproachingCrossingTile(const Vehicle *v);
@@ -2615,7 +2615,7 @@ static const byte _pick_track_table[6] = {1, 3, 2, 2, 0, 0};
  * @param dest [out]
  * @return The best track the train should follow
  */
-static Track DoTrainPathfind(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool do_track_reservation, PBSTileInfo *dest)
+static Track DoTrainPathfind(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool do_track_reservation, PBSTileInfo *dest)
 {
 	Track best_track;
 
@@ -2809,7 +2809,7 @@ static PBSTileInfo ExtendTrainReservation(const Vehicle *v, TrackBits *new_track
  * @param override_tailtype Whether all physically compatible railtypes should be followed.
  * @return True if a path to a safe stopping tile could be reserved.
  */
-static bool TryReserveSafeTrack(const Vehicle* v, TileIndex tile, Trackdir td, bool override_tailtype)
+static bool TryReserveSafeTrack(const Vehicle *v, TileIndex tile, Trackdir td, bool override_tailtype)
 {
 	if (_settings_game.pf.pathfinder_for_trains == VPF_YAPF) {
 		return YapfRailFindNearestSafeTile(v, tile, td, override_tailtype);
@@ -2895,7 +2895,7 @@ public:
 };
 
 /* choose a track */
-static Track ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck)
+static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool force_res, bool *got_reservation, bool mark_stuck)
 {
 	Track best_track = INVALID_TRACK;
 	bool do_track_reservation = _settings_game.pf.reserve_paths || force_res;

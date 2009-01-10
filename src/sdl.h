@@ -5,7 +5,7 @@
 #ifndef SDL_H
 #define SDL_H
 
-const char* SdlOpen(uint32 x);
+const char *SdlOpen(uint32 x);
 void SdlClose(uint32 x);
 
 #ifdef WIN32

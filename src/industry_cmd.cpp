@@ -1350,7 +1350,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
  * This function tries to flatten out the land below an industry, without
  *  damaging the surroundings too much.
  */
-static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const IndustryTileTable* it, int type)
+static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const IndustryTileTable *it, int type)
 {
 	const int MKEND = -0x80;   // used for last element in an IndustryTileTable (see build_industry.h)
 	int max_x = 0;
@@ -1984,7 +1984,7 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 * service the industry, and 1 otherwise (only competitors can service the
 * industry)
 */
-int WhoCanServiceIndustry(Industry* ind)
+int WhoCanServiceIndustry(Industry *ind)
 {
 	/* Find all stations within reach of the industry */
 	StationSet stations = FindStationsAroundTiles(ind->xy, ind->width, ind->height);

@@ -42,7 +42,7 @@ public:
 	virtual void MakeDirty(int left, int top, int width, int height) = 0;
 	virtual void UpdatePalette(uint first_color, uint num_colors) = 0;
 
-	virtual uint ListModes(OTTD_Point* modes, uint max_modes) = 0;
+	virtual uint ListModes(OTTD_Point *modes, uint max_modes) = 0;
 
 	virtual bool ChangeResolution(int w, int h) = 0;
 
@@ -52,7 +52,7 @@ public:
 	virtual void *GetPixelBuffer() = 0;
 
 	/* Convert local coordinate to window server (CoreGraphics) coordinate */
-	virtual CGPoint PrivateLocalToCG(NSPoint* p) = 0;
+	virtual CGPoint PrivateLocalToCG(NSPoint *p) = 0;
 
 	virtual NSPoint GetMouseLocation(NSEvent *event) = 0;
 	virtual bool MouseIsInsideView(NSPoint *pt) = 0;
@@ -60,7 +60,7 @@ public:
 	virtual bool IsActive() = 0;
 };
 
-extern CocoaSubdriver* _cocoa_subdriver;
+extern CocoaSubdriver *_cocoa_subdriver;
 
 CocoaSubdriver *QZ_CreateFullscreenSubdriver(int width, int height, int bpp);
 
@@ -81,6 +81,6 @@ void QZ_GameLoop();
 void QZ_ShowMouse();
 void QZ_HideMouse();
 
-uint QZ_ListModes(OTTD_Point* modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
+uint QZ_ListModes(OTTD_Point *modes, uint max_modes, CGDirectDisplayID display_id, int display_depth);
 
 #endif /* VIDEO_COCOA_H */

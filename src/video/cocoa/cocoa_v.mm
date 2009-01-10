@@ -31,9 +31,9 @@ struct CPSProcessSerNum {
 	UInt32 hi;
 };
 
-extern "C" OSErr CPSGetCurrentProcess(CPSProcessSerNum* psn);
-extern "C" OSErr CPSEnableForegroundOperation(CPSProcessSerNum* psn, UInt32 _arg2, UInt32 _arg3, UInt32 _arg4, UInt32 _arg5);
-extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum* psn);
+extern "C" OSErr CPSGetCurrentProcess(CPSProcessSerNum *psn);
+extern "C" OSErr CPSEnableForegroundOperation(CPSProcessSerNum *psn, UInt32 _arg2, UInt32 _arg3, UInt32 _arg4, UInt32 _arg5);
+extern "C" OSErr CPSSetFrontProcess(CPSProcessSerNum *psn);
 
 /* Disables a warning. This is needed since the method exists but has been dropped from the header, supposedly as of 10.4. */
 #if (MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4)
@@ -74,7 +74,7 @@ static OTTDMain *_ottd_main;
 static bool _cocoa_video_started = false;
 static bool _cocoa_video_dialog = false;
 
-CocoaSubdriver* _cocoa_subdriver = NULL;
+CocoaSubdriver *_cocoa_subdriver = NULL;
 
 
 
@@ -147,9 +147,9 @@ static void setApplicationMenu()
 /* Create a window menu */
 static void setupWindowMenu()
 {
-	NSMenu* windowMenu;
-	NSMenuItem* windowMenuItem;
-	NSMenuItem* menuItem;
+	NSMenu *windowMenu;
+	NSMenuItem *windowMenuItem;
+	NSMenuItem *menuItem;
 
 	windowMenu = [[NSMenu alloc] initWithTitle:@"Window"];
 
@@ -392,7 +392,7 @@ bool VideoDriver_Cocoa::ToggleFullscreen(bool full_screen)
 
 
 /* This is needed since sometimes assert is called before the videodriver is initialized */
-void CocoaDialog(const char* title, const char* message, const char* buttonLabel)
+void CocoaDialog(const char *title, const char *message, const char *buttonLabel)
 {
 	bool wasstarted;
 

@@ -759,7 +759,7 @@ static CommandCost ClearTile_TunnelBridge(TileIndex tile, byte flags)
  * @param y Sprite Y position of front pillar.
  * @param z_bridge Absolute height of bridge bottom.
  */
-static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo* ti, Axis axis, bool drawfarpillar, int x, int y, int z_bridge)
+static void DrawBridgePillars(const PalSpriteID *psid, const TileInfo *ti, Axis axis, bool drawfarpillar, int x, int y, int z_bridge)
 {
 	/* Do not draw bridge pillars if they are invisible */
 	if (IsInvisibilitySet(TO_BRIDGES)) return;
@@ -1062,7 +1062,7 @@ static BridgePieces CalcBridgePiece(uint north, uint south)
 }
 
 
-void DrawBridgeMiddle(const TileInfo* ti)
+void DrawBridgeMiddle(const TileInfo *ti)
 {
 	/* Sectional view of bridge bounding boxes:
 	 *

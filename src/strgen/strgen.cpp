@@ -58,7 +58,7 @@ struct Case {
 
 static bool _masterlang;
 static bool _translated;
-static const char* _file = "(unknown file)";
+static const char *_file = "(unknown file)";
 static int _cur_line;
 static int _errors, _warnings, _show_todo;
 
@@ -136,7 +136,7 @@ static LangString *HashFind(const char *s)
 	int idx = _hash_head[HashStr(s)];
 
 	while (--idx >= 0) {
-		LangString* ls = _strings[idx];
+		LangString *ls = _strings[idx];
 
 		if (strcmp(ls->name, s) == 0) return ls;
 		idx = ls->hash_next;
@@ -278,8 +278,8 @@ static void EmitSetXY(char *buf, int value)
 
 bool ParseRelNum(char **buf, int *value)
 {
-	const char* s = *buf;
-	char* end;
+	const char *s = *buf;
+	char *end;
 	bool rel = false;
 	int v;
 
@@ -337,7 +337,7 @@ char *ParseWord(char **buf)
 // Forward declaration
 static int TranslateArgumentIdx(int arg);
 
-static void EmitWordList(const char* const* words, uint nw)
+static void EmitWordList(const char * const *words, uint nw)
 {
 	uint i;
 	uint j;
@@ -352,7 +352,7 @@ static void EmitWordList(const char* const* words, uint nw)
 static void EmitPlural(char *buf, int value)
 {
 	int argidx = _cur_argidx;
-	const char* words[5];
+	const char *words[5];
 	int nw = 0;
 
 	// Parse out the number, if one exists. Otherwise default to prev arg.
@@ -406,7 +406,7 @@ static void EmitGender(char *buf, int value)
 		PutUtf8(SCC_GENDER_INDEX);
 		PutByte(nw);
 	} else {
-		const char* words[8];
+		const char *words[8];
 
 		// This is a {G 0 foo bar two} command.
 		// If no relative number exists, default to +0
@@ -534,7 +534,7 @@ static const CmdStruct _cmd_structs[] = {
 
 static const CmdStruct *FindCmd(const char *s, int len)
 {
-	const CmdStruct* cs;
+	const CmdStruct *cs;
 
 	for (cs = _cmd_structs; cs != endof(_cmd_structs); cs++) {
 		if (strncmp(cs->cmd, s, len) == 0 && cs->cmd[len] == '\0') return cs;
@@ -659,10 +659,10 @@ static void HandlePragma(char *str)
 		}
 		_lang_winlangid = (uint16)langid;
 	} else if (!memcmp(str, "gender ", 7)) {
-		char* buf = str + 7;
+		char *buf = str + 7;
 
 		for (;;) {
-			const char* s = ParseWord(&buf);
+			const char *s = ParseWord(&buf);
 
 			if (s == NULL) break;
 			if (_numgenders >= MAX_NUM_GENDER) error("Too many genders, max %d", MAX_NUM_GENDER);
@@ -670,10 +670,10 @@ static void HandlePragma(char *str)
 			_numgenders++;
 		}
 	} else if (!memcmp(str, "case ", 5)) {
-		char* buf = str + 5;
+		char *buf = str + 5;
 
 		for (;;) {
-			const char* s = ParseWord(&buf);
+			const char *s = ParseWord(&buf);
 
 			if (s == NULL) break;
 			if (_numcases >= MAX_NUM_CASES) error("Too many cases, max %d", MAX_NUM_CASES);
@@ -685,7 +685,7 @@ static void HandlePragma(char *str)
 	}
 }
 
-static void ExtractCommandString(ParsedCommandStruct* p, const char* s, bool warnings)
+static void ExtractCommandString(ParsedCommandStruct *p, const char *s, bool warnings)
 {
 	char param[100];
 	int argno;
@@ -696,7 +696,7 @@ static void ExtractCommandString(ParsedCommandStruct* p, const char* s, bool war
 
 	for (;;) {
 		// read until next command from a.
-		const CmdStruct* ar = ParseCommandString(&s, param, &argno, &casei);
+		const CmdStruct *ar = ParseCommandString(&s, param, &argno, &casei);
 
 		if (ar == NULL) break;
 
@@ -859,7 +859,7 @@ static void HandleString(char *str, bool master)
 		}
 
 		if (casep != NULL) {
-			Case* c = MallocT<Case>(1);
+			Case *c = MallocT<Case>(1);
 
 			c->caseidx = ResolveCaseName(casep, strlen(casep));
 			c->string = strdup(s);
@@ -888,7 +888,7 @@ static void HandleString(char *str, bool master)
 			if (!CheckCommandsMatch(s, ent->english, str)) return;
 
 			if (casep != NULL) {
-				Case* c = MallocT<Case>(1);
+				Case *c = MallocT<Case>(1);
 
 				c->caseidx = ResolveCaseName(casep, strlen(casep));
 				c->string = strdup(s);
@@ -958,11 +958,11 @@ static void MakeHashOfStrings()
 	uint i;
 
 	for (i = 0; i != lengthof(_strings); i++) {
-		const LangString* ls = _strings[i];
+		const LangString *ls = _strings[i];
 
 		if (ls != NULL) {
-			const CmdStruct* cs;
-			const char* s;
+			const CmdStruct *cs;
+			const char *s;
 			char buf[256];
 			int argno;
 			int casei;
@@ -1180,9 +1180,9 @@ static void WriteLangfile(const char *filename)
 
 	for (i = 0; i != 32; i++) {
 		for (j = 0; j != in_use[i]; j++) {
-			const LangString* ls = _strings[(i << 11) + j];
-			const Case* casep;
-			const char* cmdp;
+			const LangString *ls = _strings[(i << 11) + j];
+			const Case *casep;
+			const char *cmdp;
 
 			// For undefined strings, just set that it's an empty string
 			if (ls == NULL) {
@@ -1218,7 +1218,7 @@ static void WriteLangfile(const char *filename)
 			_translated = _masterlang || (cmdp != ls->english);
 
 			if (casep != NULL) {
-				const Case* c;
+				const Case *c;
 				uint num;
 
 				// Need to output a case-switch.
@@ -1301,7 +1301,7 @@ static inline char *replace_pathsep(char *s)
 static inline char *replace_pathsep(char *s) { return s; }
 #endif
 
-int CDECL main(int argc, char* argv[])
+int CDECL main(int argc, char *argv[])
 {
 	char pathbuf[MAX_PATH];
 	const char *src_dir = ".";

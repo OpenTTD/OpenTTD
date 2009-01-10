@@ -294,7 +294,7 @@ byte FreightWagonMult(CargoID cargo);
 
 int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped);
 int CheckTrainStoppedInDepot(const Vehicle *v);
-void UpdateTrainAcceleration(Vehicle* v);
+void UpdateTrainAcceleration(Vehicle *v);
 void CheckTrainsLengths();
 
 void FreeTrainTrackReservation(const Vehicle *v, TileIndex origin = INVALID_TILE, Trackdir orig_td = INVALID_TRACKDIR);

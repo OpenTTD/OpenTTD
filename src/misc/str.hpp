@@ -19,19 +19,19 @@ struct CStrT : public CBlobT<Tchar>
 	typedef typename base::OnTransfer OnTransfer;  ///< temporary 'transfer ownership' object type
 
 	/** Construction from C zero ended string. */
-	FORCEINLINE CStrT(const Tchar* str = NULL)
+	FORCEINLINE CStrT(const Tchar *str = NULL)
 	{
 		AppendStr(str);
 	}
 
 	/** Construction from C string and given number of characters. */
-	FORCEINLINE CStrT(const Tchar* str, bsize_t num_chars) : base(str, num_chars)
+	FORCEINLINE CStrT(const Tchar *str, bsize_t num_chars) : base(str, num_chars)
 	{
 		base::FixTail();
 	}
 
 	/** Construction from C string determined by 'begin' and 'end' pointers. */
-	FORCEINLINE CStrT(const Tchar* str, const Tchar* end)
+	FORCEINLINE CStrT(const Tchar *str, const Tchar *end)
 		: base(str, end - str)
 	{
 		base::FixTail();
@@ -58,15 +58,15 @@ struct CStrT : public CBlobT<Tchar>
 	}
 
 	/** Grow the actual buffer and fix the trailing zero at the end. */
-	FORCEINLINE Tchar* GrowSizeNC(bsize_t count)
+	FORCEINLINE Tchar *GrowSizeNC(bsize_t count)
 	{
-		Tchar* ret = base::GrowSizeNC(count);
+		Tchar *ret = base::GrowSizeNC(count);
 		base::FixTail();
 		return ret;
 	}
 
 	/** Append zero-ended C string. */
-	FORCEINLINE void AppendStr(const Tchar* str)
+	FORCEINLINE void AppendStr(const Tchar *str)
 	{
 		if (str != NULL && str[0] != '\0') {
 			base::Append(str, (bsize_t)Api::StrLen(str));
@@ -84,7 +84,7 @@ struct CStrT : public CBlobT<Tchar>
 	}
 
 	/** Assignment from C string. */
-	FORCEINLINE CStrT& operator = (const Tchar* src)
+	FORCEINLINE CStrT& operator = (const Tchar *src)
 	{
 		base::Clear();
 		AppendStr(src);

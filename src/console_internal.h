@@ -114,7 +114,7 @@ IConsoleAlias *IConsoleAliasGet(const char *name);
 /* Variables */
 void IConsoleVarRegister(const char *name, void *addr, IConsoleVarTypes type, const char *help);
 void IConsoleVarStringRegister(const char *name, void *addr, uint32 size, const char *help);
-IConsoleVar* IConsoleVarGet(const char *name);
+IConsoleVar *IConsoleVarGet(const char *name);
 void IConsoleVarPrintGetValue(const IConsoleVar *var);
 void IConsoleVarPrintSetValue(const IConsoleVar *var);
 

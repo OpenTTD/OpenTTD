@@ -138,7 +138,7 @@ void MarkWholeScreenDirty();
 
 void GfxInitPalettes();
 
-bool FillDrawPixelInfo(DrawPixelInfo* n, int left, int top, int width, int height);
+bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height);
 
 /* window.cpp */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);

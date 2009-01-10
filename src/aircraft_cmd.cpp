@@ -769,7 +769,7 @@ void HandleAircraftEnterHangar(Vehicle *v)
 	SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 }
 
-static void PlayAircraftSound(const Vehicle* v)
+static void PlayAircraftSound(const Vehicle *v)
 {
 	if (!PlayVehicleSound(v, VSE_START)) {
 		SndPlayVehicleFx(AircraftVehInfo(v->engine_type)->sfx, v);
@@ -1874,7 +1874,7 @@ static bool AirportSetBlocks(Vehicle *v, const AirportFTA *current_pos, const Ai
 		 * checking, because it has been set by the airplane before */
 		if (current_pos->block == next->block) airport_flags ^= next->block;
 
-		Station* st = GetStation(v->u.air.targetairport);
+		Station *st = GetStation(v->u.air.targetairport);
 		if (HASBITS(st->airport_flags, airport_flags)) {
 			v->cur_speed = 0;
 			v->subspeed = 0;
@@ -1975,8 +1975,8 @@ static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *apc)
 
 	/* if there are more helicoptergroups, pick one, just as in AirportFindFreeTerminal() */
 	if (apc->helipads[0] > 1) {
-		const Station* st = GetStation(v->u.air.targetairport);
-		const AirportFTA* temp = apc->layout[v->u.air.pos].next;
+		const Station *st = GetStation(v->u.air.targetairport);
+		const AirportFTA *temp = apc->layout[v->u.air.pos].next;
 
 		while (temp != NULL) {
 			if (temp->heading == 255) {

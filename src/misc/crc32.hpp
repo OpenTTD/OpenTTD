@@ -11,18 +11,18 @@ struct CCrc32
 	static uint32 Calc(const void *pBuffer, int nCount)
 	{
 		uint32 crc = 0xffffffff;
-		const uint32* pTable = CrcTable();
+		const uint32 *pTable = CrcTable();
 
-		uint8* begin = (uint8*)pBuffer;
-		uint8* end = begin + nCount;
-		for(uint8* cur = begin; cur < end; cur++)
+		uint8 *begin = (uint8*)pBuffer;
+		uint8 *end = begin + nCount;
+		for(uint8 *cur = begin; cur < end; cur++)
 			crc = (crc >> 8) ^ pTable[cur[0] ^ (uint8)(crc & 0xff)];
 		crc ^= 0xffffffff;
 
 		return crc;
 	}
 
-	static const uint32* CrcTable()
+	static const uint32 *CrcTable()
 	{
 		static const uint32 Table[256] =
 		{

@@ -53,7 +53,7 @@ static void AI_DequeueCommands(CompanyID company)
  * Needed for SP; we need to delay DoCommand with 1 tick, because else events
  *  will make infinite loops (AIScript).
  */
-static void AI_PutCommandInQueue(CompanyID company, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback* callback, const char *text = NULL)
+static void AI_PutCommandInQueue(CompanyID company, TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback, const char *text = NULL)
 {
 	AICommand *com;
 
@@ -83,7 +83,7 @@ static void AI_PutCommandInQueue(CompanyID company, TileIndex tile, uint32 p1, u
 /**
  * Executes a raw DoCommand for the AI.
  */
-CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, CommandCallback* callback, const char *text)
+CommandCost AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32 cmd, CommandCallback *callback, const char *text)
 {
 	CompanyID old_local_company;
 	CommandCost res;

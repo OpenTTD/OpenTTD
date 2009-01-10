@@ -15,8 +15,8 @@ void InitializeCheats()
 bool CheatHasBeenUsed()
 {
 	/* Cannot use lengthof because _cheats is of type Cheats, not Cheat */
-	const Cheat* cht = (Cheat*)&_cheats;
-	const Cheat* cht_last = &cht[sizeof(_cheats) / sizeof(Cheat)];
+	const Cheat *cht = (Cheat*)&_cheats;
+	const Cheat *cht_last = &cht[sizeof(_cheats) / sizeof(Cheat)];
 
 	for (; cht != cht_last; cht++) {
 		if (cht->been_used) return true;

@@ -110,7 +110,7 @@ static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
 	return true;
 }
 
-static void TPFModeShip(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+static void TPFModeShip(TrackPathFinder *tpf, TileIndex tile, DiagDirection direction)
 {
 	assert(tpf->tracktype == TRANSPORT_WATER);
 
@@ -198,7 +198,7 @@ static inline bool CanAccessTileInDir(TileIndex tile, DiagDirection side, Transp
 	return true;
 }
 
-static void TPFModeNormal(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+static void TPFModeNormal(TrackPathFinder *tpf, TileIndex tile, DiagDirection direction)
 {
 	const TileIndex tile_org = tile;
 
@@ -396,7 +396,7 @@ static inline void HeapifyDown(NewTrackPathFinder *tpf)
 /** mark a tile as visited and store the length of the path.
  * if we already had a better path to this tile, return false.
  * otherwise return true. */
-static bool NtpVisit(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection dir, uint length)
+static bool NtpVisit(NewTrackPathFinder *tpf, TileIndex tile, DiagDirection dir, uint length)
 {
 	uint hash,head;
 	HashLink *link, *new_link;
@@ -538,7 +538,7 @@ static const byte _length_of_track[16] = {
  * Tile is the tile the train is at.
  * direction is the tile the train is moving towards. */
 
-static void NTPEnum(NewTrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
+static void NTPEnum(NewTrackPathFinder *tpf, TileIndex tile, DiagDirection direction)
 {
 	TrackBits bits, allbits;
 	Trackdir track;
@@ -788,7 +788,7 @@ start_at:
 
 
 /** new pathfinder for trains. better and faster. */
-void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagDirection direction, NTPEnumProc* enum_proc, void* data)
+void NewTrainPathfind(TileIndex tile, TileIndex dest, RailTypes railtypes, DiagDirection direction, NTPEnumProc *enum_proc, void *data)
 {
 	SmallStackSafeStackAlloc<NewTrackPathFinder, 1> tpf;
 

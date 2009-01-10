@@ -88,7 +88,7 @@ static uint NPFHash(uint key1, uint key2)
 	return ((part1 << NPF_HASH_HALFBITS | part2) + (NPF_HASH_SIZE * key2 / TRACKDIR_END)) % NPF_HASH_SIZE;
 }
 
-static int32 NPFCalcZero(AyStar* as, AyStarNode* current, OpenListNode* parent)
+static int32 NPFCalcZero(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	return 0;
 }
@@ -99,7 +99,7 @@ static int32 NPFCalcZero(AyStar* as, AyStarNode* current, OpenListNode* parent)
  */
 static TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 {
-	const Station* st = GetStation(station);
+	const Station *st = GetStation(station);
 
 	/* If the rail station is (temporarily) not present, use the station sign to drive near the station */
 	if (!IsValidTile(st->train_tile)) return st->xy;
@@ -125,10 +125,10 @@ static TileIndex CalcClosestStationTile(StationID station, TileIndex tile)
 /* Calcs the heuristic to the target station or tile. For train stations, it
  * takes into account the direction of approach.
  */
-static int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, OpenListNode* parent)
+static int32 NPFCalcStationOrTileHeuristic(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
-	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
-	NPFFoundTargetData* ftd = (NPFFoundTargetData*)as->user_path;
+	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
+	NPFFoundTargetData *ftd = (NPFFoundTargetData*)as->user_path;
 	TileIndex from = current->tile;
 	TileIndex to = fstd->dest_coords;
 	uint dist;
@@ -158,7 +158,7 @@ static int32 NPFCalcStationOrTileHeuristic(AyStar* as, AyStarNode* current, Open
 /* Fills AyStarNode.user_data[NPF_TRACKDIRCHOICE] with the chosen direction to
  * get here, either getting it from the current choice or from the parent's
  * choice */
-static void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
+static void NPFFillTrackdirChoice(AyStarNode *current, OpenListNode *parent)
 {
 	if (parent->path.parent == NULL) {
 		Trackdir trackdir = current->direction;
@@ -175,7 +175,7 @@ static void NPFFillTrackdirChoice(AyStarNode* current, OpenListNode* parent)
 /* Will return the cost of the tunnel. If it is an entry, it will return the
  * cost of that tile. If the tile is an exit, it will return the tunnel length
  * including the exit tile. Requires that this is a Tunnel tile */
-static uint NPFTunnelCost(AyStarNode* current)
+static uint NPFTunnelCost(AyStarNode *current)
 {
 	DiagDirection exitdir = TrackdirToExitdir(current->direction);
 	TileIndex tile = current->tile;
@@ -196,7 +196,7 @@ static inline uint NPFBridgeCost(AyStarNode *current)
 	return NPF_TILE_LENGTH * GetTunnelBridgeLength(current->tile, GetOtherBridgeEnd(current->tile));
 }
 
-static uint NPFSlopeCost(AyStarNode* current)
+static uint NPFSlopeCost(AyStarNode *current)
 {
 	TileIndex next = current->tile + TileOffsByDiagDir(TrackdirToExitdir(current->direction));
 
@@ -272,7 +272,7 @@ static void NPFMarkTile(TileIndex tile)
 #endif
 }
 
-static int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent)
+static int32 NPFWaterPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	/* TileIndex tile = current->tile; */
 	int32 cost = 0;
@@ -292,7 +292,7 @@ static int32 NPFWaterPathCost(AyStar* as, AyStarNode* current, OpenListNode* par
 }
 
 /* Determine the cost of this node, for road tracks */
-static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent)
+static int32 NPFRoadPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	TileIndex tile = current->tile;
 	int32 cost = 0;
@@ -336,7 +336,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 
 
 /* Determine the cost of this node, for railway tracks */
-static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* parent)
+static int32 NPFRailPathCost(AyStar *as, AyStarNode *current, OpenListNode *parent)
 {
 	TileIndex tile = current->tile;
 	Trackdir trackdir = current->direction;
@@ -451,7 +451,7 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 }
 
 /* Will find any depot */
-static int32 NPFFindDepot(AyStar* as, OpenListNode *current)
+static int32 NPFFindDepot(AyStar *as, OpenListNode *current)
 {
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
 	 * since checking the cache not that much faster than the actual check */
@@ -471,9 +471,9 @@ static int32 NPFFindSafeTile(AyStar *as, OpenListNode *current)
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */
-static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
+static int32 NPFFindStationOrTile(AyStar *as, OpenListNode *current)
 {
-	NPFFindStationOrTileData* fstd = (NPFFindStationOrTileData*)as->user_target;
+	NPFFindStationOrTileData *fstd = (NPFFindStationOrTileData*)as->user_target;
 	AyStarNode *node = &current->path.node;
 	TileIndex tile = node->tile;
 
@@ -496,7 +496,7 @@ static int32 NPFFindStationOrTile(AyStar* as, OpenListNode *current)
  * the second signal is returnd. If no suitable signal is present, the
  * last node of the path is returned.
  */
-static const PathNode* FindSafePosition(PathNode *path, const Vehicle *v)
+static const PathNode *FindSafePosition(PathNode *path, const Vehicle *v)
 {
 	/* If there is no signal, reserve the whole path. */
 	PathNode *sig = path;
@@ -532,9 +532,9 @@ static void ClearPathReservation(const PathNode *start, const PathNode *end)
  * AyStarNode[NPF_TRACKDIR_CHOICE]. If requested, path reservation
  * is done here.
  */
-static void NPFSaveTargetData(AyStar* as, OpenListNode* current)
+static void NPFSaveTargetData(AyStar *as, OpenListNode *current)
 {
-	NPFFoundTargetData* ftd = (NPFFoundTargetData*)as->user_path;
+	NPFFoundTargetData *ftd = (NPFFoundTargetData*)as->user_path;
 	ftd->best_trackdir = (Trackdir)current->path.node.user_data[NPF_TRACKDIR_CHOICE];
 	ftd->best_path_dist = current->g;
 	ftd->best_bird_dist = 0;
@@ -769,7 +769,7 @@ static TrackdirBits GetDriveableTrackdirBits(TileIndex dst_tile, Trackdir src_tr
  * entry and exit are neighbours. Will fill
  * AyStarNode.user_data[NPF_TRACKDIR_CHOICE] with an appropriate value, and
  * copy AyStarNode.user_data[NPF_NODE_FLAGS] from the parent */
-static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
+static void NPFFollowTrack(AyStar *aystar, OpenListNode *current)
 {
 	/* We leave src_tile on track src_trackdir in direction src_exitdir */
 	Trackdir src_trackdir = current->path.node.direction;
@@ -860,7 +860,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		}
 		{
 			/* We've found ourselves a neighbour :-) */
-			AyStarNode* neighbour = &aystar->neighbours[i];
+			AyStarNode *neighbour = &aystar->neighbours[i];
 			neighbour->tile = dst_tile;
 			neighbour->direction = dst_trackdir;
 			/* Save user data */
@@ -882,7 +882,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
  * multiple targets that are spread around, we should perform a breadth first
  * search by specifiying CalcZero as our heuristic.
  */
-static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, bool ignore_start_tile1, AyStarNode* start2, bool ignore_start_tile2, NPFFindStationOrTileData* target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, TransportType type, uint sub_type, Owner owner, RailTypes railtypes, uint reverse_penalty)
+static NPFFoundTargetData NPFRouteInternal(AyStarNode *start1, bool ignore_start_tile1, AyStarNode *start2, bool ignore_start_tile2, NPFFindStationOrTileData *target, AyStar_EndNodeCheck target_proc, AyStar_CalculateH heuristic_proc, TransportType type, uint sub_type, Owner owner, RailTypes railtypes, uint reverse_penalty)
 {
 	int r;
 	NPFFoundTargetData result;
@@ -945,7 +945,7 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, bool ignore_start
 	return result;
 }
 
-NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
+NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir trackdir1, bool ignore_start_tile1, TileIndex tile2, Trackdir trackdir2, bool ignore_start_tile2, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
 {
 	AyStarNode start1;
 	AyStarNode start2;
@@ -962,7 +962,7 @@ NPFFoundTargetData NPFRouteToStationOrTileTwoWay(TileIndex tile1, Trackdir track
 	return NPFRouteInternal(&start1, ignore_start_tile1, (IsValidTile(tile2) ? &start2 : NULL), ignore_start_tile2, target, NPFFindStationOrTile, NPFCalcStationOrTileHeuristic, type, sub_type, owner, railtypes, 0);
 }
 
-NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData* target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
+NPFFoundTargetData NPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, bool ignore_start_tile, NPFFindStationOrTileData *target, TransportType type, uint sub_type, Owner owner, RailTypes railtypes)
 {
 	return NPFRouteToStationOrTileTwoWay(tile, trackdir, ignore_start_tile, INVALID_TILE, INVALID_TRACKDIR, false, target, type, sub_type, owner, railtypes);
 }
@@ -1007,7 +1007,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	NPFFoundTargetData result;
 	NPFFindStationOrTileData target;
 	AyStarNode start;
-	Depot* current;
+	Depot *current;
 	Depot *depot;
 
 	init_InsSort(&depots);

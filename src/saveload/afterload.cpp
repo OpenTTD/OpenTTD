@@ -730,7 +730,7 @@ bool AfterLoadGame()
 	}
 
 	if (CheckSavegameVersion(42)) {
-		Vehicle* v;
+		Vehicle *v;
 
 		for (TileIndex t = 0; t < map_size; t++) {
 			if (MayHaveBridgeAbove(t)) ClearBridgeMiddle(t);

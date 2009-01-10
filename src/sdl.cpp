@@ -99,7 +99,7 @@ static void SdlAbort(int sig)
 #endif
 
 
-const char* SdlOpen(uint32 x)
+const char *SdlOpen(uint32 x)
 {
 #ifdef DYNAMICALLY_LOADED_SDL
 	{

@@ -354,7 +354,7 @@ public:
 	 * Get a string 'representation' of the vehicle type.
 	 * @return the string representation.
 	 */
-	virtual const char* GetTypeString() const { return "base vehicle"; }
+	virtual const char *GetTypeString() const { return "base vehicle"; }
 
 	/**
 	 * Marks the vehicles to be redrawn and updates cached variables
@@ -707,7 +707,7 @@ static inline Order *GetLastVehicleOrder(const Vehicle *v) { return (v->orders.l
  * For other vehicles types, or vehicles with no clear trackdir (such as those
  * in depots), returns 0xFF.
  */
-Trackdir GetVehicleTrackdir(const Vehicle* v);
+Trackdir GetVehicleTrackdir(const Vehicle *v);
 
 void CheckVehicle32Day(Vehicle *v);
 

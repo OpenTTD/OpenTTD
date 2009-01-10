@@ -44,12 +44,12 @@ Trackdir YapfChooseRailTrack(const Vehicle *v, TileIndex tile, DiagDirection ent
  * @param tile   destination tile
  * @return       distance from origin tile to the destination (number of road tiles) or UINT_MAX if path not found
  */
-uint YapfRoadVehDistanceToTile(const Vehicle* v, TileIndex tile);
+uint YapfRoadVehDistanceToTile(const Vehicle *v, TileIndex tile);
 
 /** Used when user sends RV to the nearest depot or if RV needs servicing.
  * Returns the nearest depot (or NULL if depot was not found).
  */
-Depot* YapfFindNearestRoadDepot(const Vehicle *v);
+Depot *YapfFindNearestRoadDepot(const Vehicle *v);
 
 /** Used when user sends train to the nearest depot or if train needs servicing.
  * @param v            train that needs to go to some depot
@@ -64,7 +64,7 @@ Depot* YapfFindNearestRoadDepot(const Vehicle *v);
 bool YapfFindNearestRailDepotTwoWay(const Vehicle *v, int max_distance, int reverse_penalty, TileIndex *depot_tile, bool *reversed);
 
 /** Returns true if it is better to reverse the train before leaving station */
-bool YapfCheckReverseTrain(const Vehicle* v);
+bool YapfCheckReverseTrain(const Vehicle *v);
 
 /**
  * Try to extend the reserved path of a train to the nearest safe tile.
@@ -81,7 +81,7 @@ bool YapfRailFindNearestSafeTile(const Vehicle *v, TileIndex tile, Trackdir td, 
 void YapfNotifyTrackLayoutChange(TileIndex tile, Track track);
 
 /** performance measurement helpers */
-void* NpfBeginInterval();
+void *NpfBeginInterval();
 int NpfEndInterval(void *perf);
 
 

@@ -251,7 +251,7 @@ static void ServerStartError(const char *error)
 	NetworkError(STR_NETWORK_ERR_SERVER_START);
 }
 
-static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket* cs)
+static void NetworkClientError(NetworkRecvStatus res, NetworkClientSocket *cs)
 {
 	// First, send a CLIENT_ERROR to the server, so he knows we are
 	//  disconnection (and why!)
@@ -644,7 +644,7 @@ static void NetworkInitialize()
 // Query a server to fetch his game-info
 //  If game_info is true, only the gameinfo is fetched,
 //   else only the client_info is fetched
-void NetworkTCPQueryServer(const char* host, unsigned short port)
+void NetworkTCPQueryServer(const char *host, unsigned short port)
 {
 	if (!_network_available) return;
 

@@ -787,7 +787,7 @@ private:
 	}
 
 	/** Sort the company league by performance history */
-	static int CDECL PerformanceSorter(const Company* const *c1, const Company* const *c2)
+	static int CDECL PerformanceSorter(const Company * const *c1, const Company * const *c2)
 	{
 		return (*c2)->old_economy[1].performance_history - (*c1)->old_economy[1].performance_history;
 	}

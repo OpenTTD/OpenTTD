@@ -33,10 +33,10 @@ public:
 	typedef int CDECL SortFunction(const T*, const T*);
 
 protected:
-	SortFunction* const *func_list; ///< The sort criteria functions
-	SortListFlags flags;            ///< used to control sorting/resorting/etc.
-	uint8 sort_type;                ///< what criteria to sort on
-	uint16 resort_timer;            ///< resort list after a given amount of ticks if set
+	SortFunction * const *func_list; ///< The sort criteria functions
+	SortListFlags flags;             ///< used to control sorting/resorting/etc.
+	uint8 sort_type;                 ///< what criteria to sort on
+	uint16 resort_timer;             ///< resort list after a given amount of ticks if set
 
 	/**
 	 * Check if the list is sortable
@@ -207,7 +207,7 @@ public:
 	 *
 	 * @param n_funcs The pointer to the first sort func
 	 */
-	void SetSortFuncs(SortFunction* const* n_funcs)
+	void SetSortFuncs(SortFunction * const *n_funcs)
 	{
 		this->func_list = n_funcs;
 	}

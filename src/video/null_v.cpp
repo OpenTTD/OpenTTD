@@ -12,7 +12,7 @@
 
 static FVideoDriver_Null iFVideoDriver_Null;
 
-const char *VideoDriver_Null::Start(const char* const *parm)
+const char *VideoDriver_Null::Start(const char * const *parm)
 {
 	this->ticks = GetDriverParamInt(parm, "ticks", 1000);
 	_screen.width  = _screen.pitch = _cur_resolution.width;

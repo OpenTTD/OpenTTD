@@ -53,7 +53,7 @@ void ttd_strlcpy(char *dst, const char *src, size_t size)
 }
 
 
-char* strecat(char* dst, const char* src, const char* last)
+char *strecat(char *dst, const char *src, const char *last)
 {
 	assert(dst <= last);
 	while (*dst != '\0') {
@@ -65,7 +65,7 @@ char* strecat(char* dst, const char* src, const char* last)
 }
 
 
-char* strecpy(char* dst, const char* src, const char* last)
+char *strecpy(char *dst, const char *src, const char *last)
 {
 	assert(dst <= last);
 	while (dst != last && *src != '\0') {

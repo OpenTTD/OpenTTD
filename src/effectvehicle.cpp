@@ -331,7 +331,7 @@ static void BulldozerTick(Vehicle *v)
 {
 	v->progress++;
 	if ((v->progress & 7) == 0) {
-		const BulldozerMovement* b = &_bulldozer_movement[v->u.effect.animation_state];
+		const BulldozerMovement *b = &_bulldozer_movement[v->u.effect.animation_state];
 
 		BeginVehicleMove(v);
 

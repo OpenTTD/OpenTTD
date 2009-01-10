@@ -65,10 +65,10 @@ public:
 
 		Trackdir next_trackdir = INVALID_TRACKDIR; // this would mean "path not found"
 
-		Node* pNode = pf.GetBestNode();
+		Node *pNode = pf.GetBestNode();
 		if (pNode != NULL) {
 			// walk through the path back to the origin
-			Node* pPrevNode = NULL;
+			Node *pPrevNode = NULL;
 			while (pNode->m_parent != NULL) {
 				pPrevNode = pNode;
 				pNode = pNode->m_parent;

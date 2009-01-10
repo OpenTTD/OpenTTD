@@ -241,7 +241,7 @@ uint16 BuildBridgeWindow::last_size = 4;
 Listing BuildBridgeWindow::last_sorting = {false, 0};
 
 /* Availible bridge sorting functions */
-GUIBridgeList::SortFunction* const BuildBridgeWindow::sorter_funcs[] = {
+GUIBridgeList::SortFunction * const BuildBridgeWindow::sorter_funcs[] = {
 	&BridgeIndexSorter,
 	&BridgePriceSorter,
 	&BridgeSpeedSorter

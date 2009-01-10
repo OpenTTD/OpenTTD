@@ -10,7 +10,7 @@ struct CHashTableSlotT
 {
 	typedef typename Titem_::Key Key;          // make Titem_::Key a property of HashTable
 
-	Titem_*    m_pFirst;
+	Titem_ *m_pFirst;
 
 	CHashTableSlotT() : m_pFirst(NULL) {}
 
@@ -18,9 +18,9 @@ struct CHashTableSlotT
 	FORCEINLINE void Clear() {m_pFirst = NULL;}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - const version */
-	FORCEINLINE const Titem_* Find(const Key& key) const
+	FORCEINLINE const Titem_ *Find(const Key& key) const
 	{
-		for (const Titem_* pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
+		for (const Titem_ *pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
 				// we have found the item, return it
 				return pItem;
@@ -30,9 +30,9 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - non-const version */
-	FORCEINLINE Titem_* Find(const Key& key)
+	FORCEINLINE Titem_ *Find(const Key& key)
 	{
-		for (Titem_* pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
+		for (Titem_ *pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
 				// we have found the item, return it
 				return pItem;
@@ -57,12 +57,12 @@ struct CHashTableSlotT
 			item_to_remove.SetHashNext(NULL);
 			return true;
 		}
-		Titem_* pItem = m_pFirst;
+		Titem_ *pItem = m_pFirst;
 		while (true) {
 			if (pItem == NULL) {
 				return false;
 			}
-			Titem_* pNextItem = pItem->GetHashNext();
+			Titem_ *pNextItem = pItem->GetHashNext();
 			if (pNextItem == &item_to_remove) break;
 			pItem = pNextItem;
 		}
@@ -72,7 +72,7 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - remove and return item from a slot */
-	FORCEINLINE Titem_* Detach(const Key& key)
+	FORCEINLINE Titem_ *Detach(const Key& key)
 	{
 		// do we have any items?
 		if (m_pFirst == NULL) {
@@ -86,8 +86,8 @@ struct CHashTableSlotT
 			return &ret_item;
 		}
 		// find it in the following items
-		Titem_* pPrev = m_pFirst;
-		for (Titem_* pItem = m_pFirst->GetHashNext(); pItem != NULL; pPrev = pItem, pItem = pItem->GetHashNext()) {
+		Titem_ *pPrev = m_pFirst;
+		for (Titem_ *pItem = m_pFirst->GetHashNext(); pItem != NULL; pPrev = pItem, pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
 				// we have found the item, unlink and return it
 				pPrev->SetHashNext(pItem->GetHashNext());
@@ -133,8 +133,8 @@ protected:
 	 *  Titem contains pointer to the next item - GetHashNext(), SetHashNext() */
 	typedef CHashTableSlotT<Titem_> Slot;
 
-	Slot*  m_slots;     // here we store our data (array of blobs)
-	int    m_num_items; // item counter
+	Slot *m_slots;     // here we store our data (array of blobs)
+	int   m_num_items; // item counter
 
 public:
 	// default constructor
@@ -171,29 +171,29 @@ public:
 	FORCEINLINE void Clear() const {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
 
 	/** const item search */
-	const Titem_* Find(const Tkey& key) const
+	const Titem_ *Find(const Tkey& key) const
 	{
 		int hash = CalcHash(key);
 		const Slot& slot = m_slots[hash];
-		const Titem_* item = slot.Find(key);
+		const Titem_ *item = slot.Find(key);
 		return item;
 	}
 
 	/** non-const item search */
-	Titem_* Find(const Tkey& key)
+	Titem_ *Find(const Tkey& key)
 	{
 		int hash = CalcHash(key);
 		Slot& slot = m_slots[hash];
-		Titem_* item = slot.Find(key);
+		Titem_ *item = slot.Find(key);
 		return item;
 	}
 
 	/** non-const item search & optional removal (if found) */
-	Titem_* TryPop(const Tkey& key)
+	Titem_ *TryPop(const Tkey& key)
 	{
 		int hash = CalcHash(key);
 		Slot& slot = m_slots[hash];
-		Titem_* item = slot.Detach(key);
+		Titem_ *item = slot.Detach(key);
 		if (item != NULL) {
 			m_num_items--;
 		}
@@ -203,7 +203,7 @@ public:
 	/** non-const item search & removal */
 	Titem_& Pop(const Tkey& key)
 	{
-		Titem_* item = TryPop(key);
+		Titem_ *item = TryPop(key);
 		assert(item != NULL);
 		return *item;
 	}

@@ -5,9 +5,9 @@
 #ifndef  BINARYHEAP_HPP
 #define  BINARYHEAP_HPP
 
-//void* operator new (size_t size, void* p) {return p;}
+//void *operator new (size_t size, void *p) {return p;}
 #if defined(_MSC_VER) && (_MSC_VER >= 1400)
-//void operator delete (void* p, void* p2) {}
+//void operator delete (void *p, void *p2) {}
 #endif
 
 
@@ -36,7 +36,7 @@ public:
 private:
 	int                     m_size;     ///< Number of items in the heap
 	int                     m_max_size; ///< Maximum number of items the heap can hold
-	ItemPtr*                m_items;    ///< The heap item pointers
+	ItemPtr                *m_items;    ///< The heap item pointers
 
 public:
 	explicit CBinaryHeapT(int max_items = 102400)

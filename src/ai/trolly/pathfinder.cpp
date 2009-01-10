@@ -58,7 +58,7 @@ static bool IsRoad(TileIndex tile)
 // Check if the current tile is in our end-area
 static int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current)
 {
-	const Ai_PathFinderInfo* PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
+	const Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 
 	// It is not allowed to have a station on the end of a bridge or tunnel ;)
 	if (current->path.node.user_data[0] != 0) return AYSTAR_DONE;
@@ -171,7 +171,7 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 // The h-value, simple calculation
 static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
 {
-	const Ai_PathFinderInfo* PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
+	const Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
 	int r, r2;
 
 	if (PathFinderInfo->end_direction != AI_PATHFINDER_NO_DIRECTION) {

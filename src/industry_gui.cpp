@@ -643,7 +643,7 @@ public:
 	{
 		if (StrEmpty(str)) return;
 
-		Industry* i = GetIndustry(this->window_number);
+		Industry *i = GetIndustry(this->window_number);
 		int line = this->editbox_line;
 
 		i->production_rate[line] = ClampU(atoi(str), 0, 255);
@@ -786,7 +786,7 @@ protected:
 	}
 
 	/** Sort industries by name */
-	static int CDECL IndustryNameSorter(const Industry* const *a, const Industry* const *b)
+	static int CDECL IndustryNameSorter(const Industry * const *a, const Industry * const *b)
 	{
 		static char buf_cache[96];
 		static char buf[96];
@@ -804,14 +804,14 @@ protected:
 	}
 
 	/** Sort industries by type and name */
-	static int CDECL IndustryTypeSorter(const Industry* const *a, const Industry* const *b)
+	static int CDECL IndustryTypeSorter(const Industry * const *a, const Industry * const *b)
 	{
 		int r = (*a)->type - (*b)->type;
 		return (r == 0) ? IndustryNameSorter(a, b) : r;
 	}
 
 	/** Sort industries by production and name */
-	static int CDECL IndustryProductionSorter(const Industry* const *a, const Industry* const *b)
+	static int CDECL IndustryProductionSorter(const Industry * const *a, const Industry * const *b)
 	{
 		int r = 0;
 
@@ -828,7 +828,7 @@ protected:
 	}
 
 	/** Sort industries by transported cargo and name */
-	static int CDECL IndustryTransportedCargoSorter(const Industry* const *a, const Industry* const *b)
+	static int CDECL IndustryTransportedCargoSorter(const Industry * const *a, const Industry * const *b)
 	{
 		int r = GetCargoTransportedSortValue(*a) - GetCargoTransportedSortValue(*b);
 		return (r == 0) ? IndustryNameSorter(a, b) : r;
@@ -882,7 +882,7 @@ public:
 		int y = 28; // start of the list-widget
 
 		for (int n = this->vscroll.pos; n < max; ++n) {
-			const Industry* i = this->industries[n];
+			const Industry *i = this->industries[n];
 			const IndustrySpec *indsp = GetIndustrySpec(i->type);
 			byte p = 0;
 
@@ -970,7 +970,7 @@ Listing IndustryDirectoryWindow::last_sorting = {false, 0};
 const Industry *IndustryDirectoryWindow::last_industry = NULL;
 
 /* Availible station sorting functions */
-GUIIndustryList::SortFunction* const IndustryDirectoryWindow::sorter_funcs[] = {
+GUIIndustryList::SortFunction * const IndustryDirectoryWindow::sorter_funcs[] = {
 	&IndustryNameSorter,
 	&IndustryTypeSorter,
 	&IndustryProductionSorter,
