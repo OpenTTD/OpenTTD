@@ -584,7 +584,8 @@ void ShowGameDifficulty()
 	new GameDifficultyWindow();
 }
 
-static const int SETTING_HEIGHT = 11;         ///< Height of a single patch setting in the tree view
+static const int SETTING_HEIGHT = 11; ///< Height of a single setting in the tree view in pixels
+static const int LEVEL_WIDTH = 15;    ///< Indenting width of a sub-page in pixels
 
 /**
  * Flags for #PatchEntry
@@ -637,7 +638,7 @@ struct PatchEntry {
 	uint Length() const;
 	PatchEntry *FindEntry(uint row, uint *cur_row);
 
-	void Draw(GameSettings *patches_ptr, int x, int y);
+	uint Draw(GameSettings *patches_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last);
 
 private:
 	void DrawPatch(GameSettings *patches_ptr, const SettingDesc *sd, int x, int y, int state);
@@ -652,6 +653,8 @@ struct PatchPage {
 
 	uint Length() const;
 	PatchEntry *FindEntry(uint row, uint *cur_row) const;
+
+	uint Draw(GameSettings *patches_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row = 0, uint parent_last = 0) const;
 };
 
 
@@ -759,15 +762,79 @@ PatchEntry *PatchEntry::FindEntry(uint row_num, uint *cur_row)
 }
 
 /**
- * Draw setting value (button + text + current value)
+ * Draw a row in the settings panel.
+ *
+ * See PatchPage::Draw() for an explanation about how drawing is performed.
+ *
+ * The \a parent_last parameter ensures that the vertical lines at the left are
+ * only drawn when another entry follows, that it prevents output like
+ * \verbatim
+ *  |-- setting
+ *  |-- (-) - Title
+ *  |    |-- setting
+ *  |    |-- setting
+ * \endverbatim
+ * The left-most vertical line is not wanted. It is prevented by setting the
+ * appropiate bit in the \a parent_last parameter.
+ *
  * @param patches_ptr Pointer to current values of all settings
- * @param x           Left-most position in window/panel to start drawing
- * @param y           Upper-most position in window/panel to start drawing
+ * @param base_x      Left-most position in window/panel to start drawing \a first_row
+ * @param base_y      Upper-most position in window/panel to start drawing \a first_row
+ * @param first_row   First row number to draw
+ * @param max_row     Row-number to stop drawing (the row-number of the row below the last row to draw)
+ * @param cur_row     Current row number (internal variable)
+ * @param parent_last Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
+ * @return Row number of the next row to draw
  */
-void PatchEntry::Draw(GameSettings *patches_ptr, int x, int y)
+uint PatchEntry::Draw(GameSettings *patches_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last)
 {
-	assert((this->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
-	DrawPatch(patches_ptr, this->d.entry.setting, x, y, (this->flags & PEF_BUTTONS_MASK));
+	if (cur_row >= max_row) return cur_row;
+
+	int x = base_x;
+	int y = base_y;
+	if (cur_row >= first_row) {
+		int colour = _colour_gradient[COLOUR_ORANGE][4];
+		y = base_y + (cur_row - first_row) * SETTING_HEIGHT; // Compute correct y start position
+
+		/* Draw vertical for parent nesting levels */
+		for (uint lvl = 0; lvl < this->level; lvl++) {
+			if (!HasBit(parent_last, lvl)) GfxDrawLine(x + 4, y, x + 4, y + SETTING_HEIGHT - 1, colour);
+			x += LEVEL_WIDTH;
+		}
+		/* draw own |- prefix */
+		int halfway_y = y + SETTING_HEIGHT / 2;
+		int bottom_y = (flags & PEF_LAST_FIELD) ? halfway_y : y + SETTING_HEIGHT - 1;
+		GfxDrawLine(x + 4, y, x + 4, bottom_y, colour);
+		/* Small horizontal line from the last vertical line */
+		GfxDrawLine(x + 4, halfway_y, x + LEVEL_WIDTH - 4, halfway_y, colour);
+		x += LEVEL_WIDTH;
+	}
+
+	switch(this->flags & PEF_KIND_MASK) {
+		case PEF_SETTING_KIND:
+			if (cur_row >= first_row) {
+				DrawPatch(patches_ptr, this->d.entry.setting, x, y, this->flags & PEF_BUTTONS_MASK);
+			}
+			cur_row++;
+			break;
+		case PEF_SUBTREE_KIND:
+			if (cur_row >= first_row) {
+				DrawSprite((this->d.sub.folded ? SPR_CIRCLE_FOLDED : SPR_CIRCLE_UNFOLDED), PAL_NONE, x, y);
+				DrawString(x + 12, y, this->d.sub.title, TC_FROMSTRING);
+			}
+			cur_row++;
+			if (!this->d.sub.folded) {
+				if (this->flags & PEF_LAST_FIELD) {
+					assert(this->level < sizeof(parent_last));
+					SetBit(parent_last, this->level); // Add own last-field state
+				}
+
+				cur_row = this->d.sub.page->Draw(patches_ptr, base_x, base_y, first_row, max_row, cur_row, parent_last);
+			}
+			break;
+		default: NOT_REACHED();
+	}
+	return cur_row;
 }
 
 /**
@@ -863,6 +930,35 @@ PatchEntry *PatchPage::FindEntry(uint row_num, uint *cur_row) const
 		}
 	}
 	return pe;
+}
+
+/**
+ * Draw a selected part of the settings page.
+ *
+ * The scrollbar uses rows of the page, while the page data strucure is a tree of #PatchPage and #PatchEntry objects.
+ * As a result, the drawing routing traverses the tree from top to bottom, counting rows in \a cur_row until it reaches \a first_row.
+ * Then it enables drawing rows while traversing until \a max_row is reached, at which point drawing is terminated.
+ *
+ * @param patches_ptr Pointer to current values of all settings
+ * @param base_x      Left-most position in window/panel to start drawing of each setting row
+ * @param base_y      Upper-most position in window/panel to start drawing of row number \a first_row
+ * @param first_row   Number of first row to draw
+ * @param max_row     Row-number to stop drawing (the row-number of the row below the last row to draw)
+ * @param cur_row     Current row number (internal variable)
+ * @param parent_last Last-field booleans of parent page level (page level \e i sets bit \e i to 1 if it is its last field)
+ * @return Row number of the next row to draw
+ */
+uint PatchPage::Draw(GameSettings *patches_ptr, int base_x, int base_y, uint first_row, uint max_row, uint cur_row, uint parent_last) const
+{
+	if (cur_row >= max_row) return cur_row;
+
+	for (uint i = 0; i < this->num; i++) {
+		cur_row = this->entries[i].Draw(patches_ptr, base_x, base_y, first_row, max_row, cur_row, parent_last);
+		if (cur_row >= max_row) {
+			break;
+		}
+	}
+	return cur_row;
 }
 
 
@@ -1073,13 +1169,8 @@ struct PatchesSelectionWindow : Window {
 
 		/* Set up selected category */
 		this->DrawWidgets();
-
-		int x = SETTINGTREE_LEFT_OFFSET;
-		int y = SETTINGTREE_TOP_OFFSET;
-		for (uint i = this->vscroll.pos; i != page->Length() && this->vscroll.pos + this->vscroll.cap - i > 0; i++) {
-			page->entries[i].Draw(patches_ptr, x, y);
-			y += SETTING_HEIGHT;
-		}
+		page->Draw(patches_ptr, SETTINGTREE_LEFT_OFFSET, SETTINGTREE_TOP_OFFSET,
+						this->vscroll.pos, this->vscroll.pos + this->vscroll.cap);
 	}
 
 	virtual void OnClick(Point pt, int widget)
@@ -1089,9 +1180,6 @@ struct PatchesSelectionWindow : Window {
 				int y = pt.y - SETTINGTREE_TOP_OFFSET;  // Shift y coordinate
 				if (y < 0) return;  // Clicked above first entry
 
-				int x = pt.x - SETTINGTREE_LEFT_OFFSET;  // Shift x coordinate
-				if (x < 0) return;  // Clicked left of the entry
-
 				byte btn = this->vscroll.pos + y / SETTING_HEIGHT;  // Compute which setting is selected
 				if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
 
@@ -1100,6 +1188,9 @@ struct PatchesSelectionWindow : Window {
 				PatchEntry *pe = page->FindEntry(btn, &cur_row);
 
 				if (pe == NULL) return;  // Clicked below the last setting of the page
+
+				int x = pt.x - SETTINGTREE_LEFT_OFFSET - (pe->level + 1) * LEVEL_WIDTH;  // Shift x coordinate
+				if (x < 0) return;  // Clicked left of the entry
 
 				if ((pe->flags & PEF_KIND_MASK) == PEF_SUBTREE_KIND) {
 					pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
@@ -1233,11 +1324,11 @@ const int PatchesSelectionWindow::SETTINGTREE_TOP_OFFSET = 47;
 
 static const Widget _patches_selection_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   381,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_MAUVE,     0,   381,    14,    41, 0x0,                             STR_NULL},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   369,    42,   215, 0x0,                             STR_NULL}, // PATCHSEL_OPTIONSPANEL
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   370,   381,    42,   203, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST}, // PATCHSEL_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   370,   381,   204,   215, 0x0,                             STR_RESIZE_BUTTON}, // PATCHSEL_RESIZE
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   396,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_MAUVE,     0,   396,    14,    41, 0x0,                             STR_NULL},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   384,    42,   215, 0x0,                             STR_NULL}, // PATCHSEL_OPTIONSPANEL
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   385,   396,    42,   203, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST}, // PATCHSEL_SCROLLBAR
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   385,   396,   204,   215, 0x0,                             STR_RESIZE_BUTTON}, // PATCHSEL_RESIZE
 
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,   100,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL}, // PATCHSEL_INTERFACE
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  101,   191,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL}, // PATCHSEL_CONSTRUCTION
@@ -1249,7 +1340,7 @@ static const Widget _patches_selection_widgets[] = {
 };
 
 static const WindowDesc _patches_selection_desc = {
-	WDP_CENTER, WDP_CENTER, 382, 216, 382, 425,
+	WDP_CENTER, WDP_CENTER, 397, 216, 397, 425,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_patches_selection_widgets,

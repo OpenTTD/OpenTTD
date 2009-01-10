@@ -49,7 +49,7 @@ enum Sprites {
 
 	/* Extra graphic spritenumbers */
 	SPR_OPENTTD_BASE     = 4896,
-	OPENTTD_SPRITE_COUNT = 147,
+	OPENTTD_SPRITE_COUNT = 149,
 
 	/* Halftile-selection sprites */
 	SPR_HALFTILE_SELECTION_FLAT = SPR_OPENTTD_BASE,
@@ -72,6 +72,9 @@ enum Sprites {
 	SPR_SHARED_ORDERS_ICON = SPR_OPENTTD_BASE + 50,
 	SPR_PIN_UP             = SPR_OPENTTD_BASE + 51,   // pin icon
 	SPR_PIN_DOWN           = SPR_OPENTTD_BASE + 52,
+
+	SPR_CIRCLE_FOLDED      = SPR_OPENTTD_BASE + 147, // (+) icon
+	SPR_CIRCLE_UNFOLDED    = SPR_OPENTTD_BASE + 148, // (-) icon
 
 	/* on screen keyboard icons */
 	SPR_OSK_LEFT           = SPR_OPENTTD_BASE + 138,
