@@ -801,14 +801,14 @@ struct PatchesSelectionWindow : Window {
 		this->page = 0;
 		this->vscroll.pos = 0;
 		this->vscroll.cap = (this->widget[PATCHSEL_OPTIONSPANEL].bottom - this->widget[PATCHSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
-		SetVScrollCount(this, _patches_page[page].num);
+		SetVScrollCount(this, _patches_page[this->page].num);
 
 		this->resize.step_height = SETTING_HEIGHT;
 		this->resize.height = this->height;
 		this->resize.step_width = 1;
 		this->resize.width = this->width;
 
-		this->LowerWidget(page + PATCHSEL_INTERFACE); // Depress button of currently selected page
+		this->LowerWidget(this->page + PATCHSEL_INTERFACE); // Depress button of currently selected page
 
 		this->FindWindowPlacementAndResize(desc);
 	}
@@ -822,7 +822,7 @@ struct PatchesSelectionWindow : Window {
 
 		int x = SETTINGTREE_LEFT_OFFSET;
 		int y = SETTINGTREE_TOP_OFFSET;
-		for (uint i = vscroll.pos; i != page->num && vscroll.pos + vscroll.cap - i > 0; i++) {
+		for (uint i = this->vscroll.pos; i != page->num && this->vscroll.pos + this->vscroll.cap - i > 0; i++) {
 			const SettingDesc *sd = page->entries[i].setting;
 			DrawPatch(patches_ptr, sd, x, y, this->click - (i * 2));
 			y += SETTING_HEIGHT;
@@ -964,7 +964,7 @@ struct PatchesSelectionWindow : Window {
 				this->RaiseWidget(this->page + PATCHSEL_INTERFACE);
 				this->page = widget - PATCHSEL_INTERFACE;
 				this->LowerWidget(this->page + PATCHSEL_INTERFACE);
-				SetVScrollCount(this, _patches_page[page].num);
+				SetVScrollCount(this, _patches_page[this->page].num);
 				DeleteWindowById(WC_QUERY_STRING, 0);
 				this->SetDirty();
 				break;
@@ -995,7 +995,7 @@ struct PatchesSelectionWindow : Window {
 	virtual void OnResize(Point new_size, Point delta)
 	{
 		this->vscroll.cap += delta.y / SETTING_HEIGHT;
-		SetVScrollCount(this, _patches_page[page].num);
+		SetVScrollCount(this, _patches_page[this->page].num);
 	}
 };
 
