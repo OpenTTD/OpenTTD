@@ -1220,7 +1220,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Schimbă valoarea setării
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Unele sau toate din intervalurile de service alese sunt incompatibile cu setarea aleasa! Valorile valide sunt cuprinse intre 5-90% si 30-800 zile
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Algoritm de rutare pentru trenuri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nerecomandat)

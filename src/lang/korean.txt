@@ -1223,7 +1223,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}설정값 변경
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}아래 기본 점검간격의 일부 혹은 전체가 선택된 설정과 맞지 않습니다. 5-90%와 30-800일이 사용 가능합니다.
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}열차용 경로탐색: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(비추천)

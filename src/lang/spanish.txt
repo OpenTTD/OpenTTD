@@ -1203,7 +1203,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambiar valor de la opción
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguno o todos los intervalos de servicio por defecto mostrados son incompatibles con la configuración elegida! 5-90% y 30-800 días son válidos
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Pathfinder para trenes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(No recomendado)

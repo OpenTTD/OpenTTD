@@ -1223,7 +1223,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Verander waarde
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Sommige of alle van de standaard reparatie interval(len) hier onder zijn ongeldig met gekozen instelling! 5-90% en 30-800 dagen zijn geldig
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Routezoeker voor treinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Niet aanbevolen)

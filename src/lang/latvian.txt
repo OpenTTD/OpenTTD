@@ -1197,7 +1197,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Mainīt iestatījuma vērtību
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Daži vai visi apkalpošanas intervāli ir nesavietojami ar izvēlētajiem iestatījumiem! Der 5-90% un 30-800 dienas
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Vilcienu virziena meklētājs: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Nav ieteicams)

@@ -588,162 +588,172 @@ static const int SETTING_HEIGHT = 11;         ///< Height of a single patch sett
 
 /** Data structure describing a single patch in a tab */
 struct PatchEntry {
-	const SettingDesc *setting; ///< Setting description of the patch
+	const char *name;           ///< Name of the setting
+	const SettingDesc *setting; ///< Setting description of the setting
 	uint index;                 ///< Index of the setting in the settings table
+
+	PatchEntry(const char *nm);
 };
 
-/**
- * Data structure describing one page of patches in the patch settings window.
- *
- * The names of the patches to display are statically defined, and from this
- * information, a dynamic array (with length \a num) of PatchEntry entries is
- * constructed.
- */
+/** Data structure describing one page of patches in the patch settings window. */
 struct PatchPage {
-	const char **names;  ///< Static list of strings with patch names that are settable from the tab
-	PatchEntry *entries; ///< Array of patch entries of the page. Initially \c NULL, filled in at run time
+	PatchEntry *entries; ///< Array of patch entries of the page.
 	byte num;            ///< Number of entries on the page (statically filled).
 };
 
 
-static const char *_patches_ui[] = {
-	"gui.vehicle_speed",
-	"gui.status_long_date",
-	"gui.date_format_in_default_names",
-	"gui.show_finances",
-	"gui.autoscroll",
-	"gui.reverse_scroll",
-	"gui.smooth_scroll",
-	"gui.errmsg_duration",
-	"gui.toolbar_pos",
-	"gui.measure_tooltip",
-	"gui.window_snap_radius",
-	"gui.window_soft_limit",
-	"gui.population_in_label",
-	"gui.link_terraform_toolbar",
-	"gui.liveries",
-	"gui.prefer_teamchat",
+/* == PatchEntry methods == */
+
+/**
+ * Constructor for a single setting in the 'advanced settings' window
+ * @param nm Name of the setting in the setting table
+ */
+PatchEntry::PatchEntry(const char *nm)
+{
+	this->name = nm;
+	this->setting = NULL;
+	this->index = 0;
+}
+
+
+static PatchEntry _patches_ui[] = {
+	PatchEntry("gui.vehicle_speed"),
+	PatchEntry("gui.status_long_date"),
+	PatchEntry("gui.date_format_in_default_names"),
+	PatchEntry("gui.show_finances"),
+	PatchEntry("gui.autoscroll"),
+	PatchEntry("gui.reverse_scroll"),
+	PatchEntry("gui.smooth_scroll"),
+	PatchEntry("gui.errmsg_duration"),
+	PatchEntry("gui.toolbar_pos"),
+	PatchEntry("gui.measure_tooltip"),
+	PatchEntry("gui.window_snap_radius"),
+	PatchEntry("gui.window_soft_limit"),
+	PatchEntry("gui.population_in_label"),
+	PatchEntry("gui.link_terraform_toolbar"),
+	PatchEntry("gui.liveries"),
+	PatchEntry("gui.prefer_teamchat"),
 	/* While the horizontal scrollwheel scrolling is written as general code, only
 	 *  the cocoa (OSX) driver generates input for it.
 	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
-	"gui.scrollwheel_scrolling",
-	"gui.scrollwheel_multiplier",
+	PatchEntry("gui.scrollwheel_scrolling"),
+	PatchEntry("gui.scrollwheel_multiplier"),
 #ifdef __APPLE__
 	/* We might need to emulate a right mouse button on mac */
-	"gui.right_mouse_btn_emulation",
+	PatchEntry("gui.right_mouse_btn_emulation"),
 #endif
-	"gui.pause_on_newgame",
-	"gui.advanced_vehicle_list",
-	"gui.loading_indicators",
-	"gui.timetable_in_ticks",
-	"gui.quick_goto",
-	"gui.default_rail_type",
-	"gui.always_build_infrastructure",
-	"gui.persistent_buildingtools",
-	"gui.show_track_reservation",
-	"gui.left_mouse_btn_scrolling",
+	PatchEntry("gui.pause_on_newgame"),
+	PatchEntry("gui.advanced_vehicle_list"),
+	PatchEntry("gui.loading_indicators"),
+	PatchEntry("gui.timetable_in_ticks"),
+	PatchEntry("gui.quick_goto"),
+	PatchEntry("gui.default_rail_type"),
+	PatchEntry("gui.always_build_infrastructure"),
+	PatchEntry("gui.persistent_buildingtools"),
+	PatchEntry("gui.show_track_reservation"),
+	PatchEntry("gui.left_mouse_btn_scrolling"),
 };
 
-static const char *_patches_construction[] = {
-	"construction.build_on_slopes",
-	"construction.autoslope",
-	"construction.extra_dynamite",
-	"construction.longbridges",
-	"construction.signal_side",
-	"station.always_small_airport",
-	"gui.enable_signal_gui",
-	"gui.drag_signals_density",
-	"game_creation.oil_refinery_limit",
-	"gui.semaphore_build_before",
-	"gui.default_signal_type",
-	"gui.cycle_signal_types",
+static PatchEntry _patches_construction[] = {
+	PatchEntry("construction.build_on_slopes"),
+	PatchEntry("construction.autoslope"),
+	PatchEntry("construction.extra_dynamite"),
+	PatchEntry("construction.longbridges"),
+	PatchEntry("construction.signal_side"),
+	PatchEntry("station.always_small_airport"),
+	PatchEntry("gui.enable_signal_gui"),
+	PatchEntry("gui.drag_signals_density"),
+	PatchEntry("game_creation.oil_refinery_limit"),
+	PatchEntry("gui.semaphore_build_before"),
+	PatchEntry("gui.default_signal_type"),
+	PatchEntry("gui.cycle_signal_types"),
 };
 
-static const char *_patches_stations[] = {
-	"station.join_stations",
-	"order.improved_load",
-	"order.selectgoods",
-	"gui.new_nonstop",
-	"station.nonuniform_stations",
-	"station.station_spread",
-	"order.serviceathelipad",
-	"station.modified_catchment",
-	"order.gradual_loading",
-	"construction.road_stop_on_town_road",
-	"station.adjacent_stations",
-	"station.distant_join_stations",
-	"economy.station_noise_level",
+static PatchEntry _patches_stations[] = {
+	PatchEntry("station.join_stations"),
+	PatchEntry("order.improved_load"),
+	PatchEntry("order.selectgoods"),
+	PatchEntry("gui.new_nonstop"),
+	PatchEntry("station.nonuniform_stations"),
+	PatchEntry("station.station_spread"),
+	PatchEntry("order.serviceathelipad"),
+	PatchEntry("station.modified_catchment"),
+	PatchEntry("order.gradual_loading"),
+	PatchEntry("construction.road_stop_on_town_road"),
+	PatchEntry("station.adjacent_stations"),
+	PatchEntry("station.distant_join_stations"),
+	PatchEntry("economy.station_noise_level"),
 };
 
-static const char *_patches_economy[] = {
-	"economy.inflation",
-	"construction.raw_industry_construction",
-	"economy.multiple_industry_per_town",
-	"economy.same_industry_close",
-	"economy.bribe",
-	"economy.exclusive_rights",
-	"economy.give_money",
-	"gui.colored_news_year",
-	"economy.smooth_economy",
-	"economy.allow_shares",
-	"economy.town_layout",
-	"economy.mod_road_rebuild",
-	"economy.town_growth_rate",
-	"economy.larger_towns",
-	"economy.initial_city_size",
+static PatchEntry _patches_economy[] = {
+	PatchEntry("economy.inflation"),
+	PatchEntry("construction.raw_industry_construction"),
+	PatchEntry("economy.multiple_industry_per_town"),
+	PatchEntry("economy.same_industry_close"),
+	PatchEntry("economy.bribe"),
+	PatchEntry("economy.exclusive_rights"),
+	PatchEntry("economy.give_money"),
+	PatchEntry("gui.colored_news_year"),
+	PatchEntry("economy.smooth_economy"),
+	PatchEntry("economy.allow_shares"),
+	PatchEntry("economy.town_layout"),
+	PatchEntry("economy.mod_road_rebuild"),
+	PatchEntry("economy.town_growth_rate"),
+	PatchEntry("economy.larger_towns"),
+	PatchEntry("economy.initial_city_size"),
 };
 
-static const char *_patches_ai[] = {
-	"ai.ainew_active",
-	"ai.ai_in_multiplayer",
-	"ai.ai_disable_veh_train",
-	"ai.ai_disable_veh_roadveh",
-	"ai.ai_disable_veh_aircraft",
-	"ai.ai_disable_veh_ship",
+static PatchEntry _patches_ai[] = {
+	PatchEntry("ai.ainew_active"),
+	PatchEntry("ai.ai_in_multiplayer"),
+	PatchEntry("ai.ai_disable_veh_train"),
+	PatchEntry("ai.ai_disable_veh_roadveh"),
+	PatchEntry("ai.ai_disable_veh_aircraft"),
+	PatchEntry("ai.ai_disable_veh_ship"),
 };
 
-static const char *_patches_vehicles[] = {
-	"vehicle.realistic_acceleration",
-	"pf.forbid_90_deg",
-	"vehicle.mammoth_trains",
-	"order.gotodepot",
-	"pf.roadveh_queue",
-	"pf.pathfinder_for_trains",
-	"pf.pathfinder_for_roadvehs",
-	"pf.pathfinder_for_ships",
-	"gui.vehicle_income_warn",
-	"gui.order_review_system",
-	"vehicle.never_expire_vehicles",
-	"gui.lost_train_warn",
-	"gui.autorenew",
-	"gui.autorenew_months",
-	"gui.autorenew_money",
-	"vehicle.max_trains",
-	"vehicle.max_roadveh",
-	"vehicle.max_aircraft",
-	"vehicle.max_ships",
-	"vehicle.servint_ispercent",
-	"vehicle.servint_trains",
-	"vehicle.servint_roadveh",
-	"vehicle.servint_ships",
-	"vehicle.servint_aircraft",
-	"order.no_servicing_if_no_breakdowns",
-	"vehicle.wagon_speed_limits",
-	"vehicle.disable_elrails",
-	"vehicle.freight_trains",
-	"vehicle.plane_speed",
-	"order.timetabling",
-	"vehicle.dynamic_engines",
+static PatchEntry _patches_vehicles[] = {
+	PatchEntry("vehicle.realistic_acceleration"),
+	PatchEntry("pf.forbid_90_deg"),
+	PatchEntry("vehicle.mammoth_trains"),
+	PatchEntry("order.gotodepot"),
+	PatchEntry("pf.roadveh_queue"),
+	PatchEntry("pf.pathfinder_for_trains"),
+	PatchEntry("pf.pathfinder_for_roadvehs"),
+	PatchEntry("pf.pathfinder_for_ships"),
+	PatchEntry("gui.vehicle_income_warn"),
+	PatchEntry("gui.order_review_system"),
+	PatchEntry("vehicle.never_expire_vehicles"),
+	PatchEntry("gui.lost_train_warn"),
+	PatchEntry("gui.autorenew"),
+	PatchEntry("gui.autorenew_months"),
+	PatchEntry("gui.autorenew_money"),
+	PatchEntry("vehicle.max_trains"),
+	PatchEntry("vehicle.max_roadveh"),
+	PatchEntry("vehicle.max_aircraft"),
+	PatchEntry("vehicle.max_ships"),
+	PatchEntry("vehicle.servint_ispercent"),
+	PatchEntry("vehicle.servint_trains"),
+	PatchEntry("vehicle.servint_roadveh"),
+	PatchEntry("vehicle.servint_ships"),
+	PatchEntry("vehicle.servint_aircraft"),
+	PatchEntry("order.no_servicing_if_no_breakdowns"),
+	PatchEntry("vehicle.wagon_speed_limits"),
+	PatchEntry("vehicle.disable_elrails"),
+	PatchEntry("vehicle.freight_trains"),
+	PatchEntry("vehicle.plane_speed"),
+	PatchEntry("order.timetabling"),
+	PatchEntry("vehicle.dynamic_engines"),
 };
 
 /** Array of pages (tabs), where each page holds a number of advanced settings. */
 static PatchPage _patches_page[] = {
-	{_patches_ui,           NULL, lengthof(_patches_ui)},
-	{_patches_construction, NULL, lengthof(_patches_construction)},
-	{_patches_vehicles,     NULL, lengthof(_patches_vehicles)},
-	{_patches_stations,     NULL, lengthof(_patches_stations)},
-	{_patches_economy,      NULL, lengthof(_patches_economy)},
-	{_patches_ai,           NULL, lengthof(_patches_ai)},
+	{_patches_ui,           lengthof(_patches_ui)},
+	{_patches_construction, lengthof(_patches_construction)},
+	{_patches_vehicles,     lengthof(_patches_vehicles)},
+	{_patches_stations,     lengthof(_patches_stations)},
+	{_patches_economy,      lengthof(_patches_economy)},
+	{_patches_ai,           lengthof(_patches_ai)},
 };
 
 /** Widget numbers of config patches window */
@@ -785,10 +795,9 @@ struct PatchesSelectionWindow : Window {
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {
 			for (PatchPage *page = &_patches_page[0]; page != endof(_patches_page); page++) {
-				page->entries = MallocT<PatchEntry>(page->num);
 				for (uint i = 0; i != page->num; i++) {
 					uint index;
-					const SettingDesc *sd = GetPatchFromName(page->names[i], &index);
+					const SettingDesc *sd = GetPatchFromName(page->entries[i].name, &index);
 					assert(sd != NULL);
 
 					page->entries[i].setting = sd;

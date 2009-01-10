@@ -1223,7 +1223,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Angechay ettingsay aluevay
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Omesay orway allway ofway ethay efaultday ervicesay intervalway(say) elowbay areway incompatibleway ithway ethay osenchay ettingsay! 5-90% andway 30-800 aysday areway alidvay
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Athfinderpay orfay ainstray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Otnay Ecommendedray)

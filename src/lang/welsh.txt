@@ -1198,7 +1198,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Newid gwerth gosodiad
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}mae rhai o'r cyfnodau rhwng gwasanaeth isod yn anghydnaws gyda'r gosodiadau a ddewiswyd! Mae 5-90% a 30-800 diwrnod yn ddilys
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS                        :{LTBLUE}Llwybrwr ar gyfer trenau: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :NTP {RED}(Ni argymhellir)

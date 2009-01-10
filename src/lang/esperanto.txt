@@ -1140,7 +1140,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Iuj aŭ ĉiuj defaŭltaj prizorgintervaloj ne validas laŭ la agordoj! 5-90% kaj 30-800 tagoj validas
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(malrekomenda)
 

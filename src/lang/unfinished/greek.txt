@@ -1130,7 +1130,6 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Αλλαγή τιμής ρύθμισης
-STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Κάποια ή όλα τα προεπιλεγμένα διαστήματα επισκευών παρακάτω δεν είναι συμβατά με την επιλεγμένη ρύθμιση! 5-90% και 30-800 μέρες είναι τα αποδεκτά
 
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
