@@ -987,7 +987,7 @@ struct BuildVehicleWindow : Window {
 
 		this->eng_list.Clear();
 
-		const Station *st = GetStation(this->window_number);
+		const Station *st = this->listview_mode ? NULL : GetStationByTile(this->window_number);
 
 		/* Make list of all available planes.
 		* Also check to see if the previously selected plane is still available,
