@@ -2542,122 +2542,6 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="Save Load Code"
-			>
-			<File
-				RelativePath=".\..\src\saveload\afterload.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\ai_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\animated_tile_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\autoreplace_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\cargopacket_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\cheat_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\company_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\depot_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\economy_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\engine_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\gamelog_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\group_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\industry_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\map_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\misc_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\newgrf_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\oldloader.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\order_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\saveload.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\saveload.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\saveload_internal.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\signs_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\station_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\strings_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\subsidy_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\town_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\vehicle_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\waypoint_sl.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="Misc"
 			>
 			<File
@@ -2857,11 +2741,11 @@
 			Name="Music"
 			>
 			<File
-				RelativePath=".\..\src\music\dmusic.cpp"
+				RelativePath=".\..\src\music\null_m.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\music\null_m.cpp"
+				RelativePath=".\..\src\music\dmusic.cpp"
 				>
 			</File>
 			<File
