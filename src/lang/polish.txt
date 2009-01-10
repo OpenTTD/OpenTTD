@@ -1290,12 +1290,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ilość
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Początkowy mnożnik rozmiarów metropolii: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Usuwaj absurdalne fragmenty ulicy podczas rekonstrukcji dróg
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfejs
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstrukcje
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Pojazdy
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stacje
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomia
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Zawodnicy
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfejs
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstrukcje
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Pojazdy
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stacje
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomia
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Zawodnicy
 
 STR_CONFIG_PATCHES_DISABLED                                     :niedostępne
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

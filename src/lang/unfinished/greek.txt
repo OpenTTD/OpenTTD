@@ -1118,12 +1118,12 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Δεξιά
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ακτίνα επικόλλησης παραθύρου: {ORANGE}απενεργοποιημένο
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Σύστημα Διεπαφής
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Κατασκευή
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Οχήματα
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Σταθμοί
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Οικονομία
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Ανταγωνιστές
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Σύστημα Διεπαφής
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Κατασκευή
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Οχήματα
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Σταθμοί
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Οικονομία
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Ανταγωνιστές
 
 STR_CONFIG_PATCHES_DISABLED                                     :απενεργοποιημένο
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

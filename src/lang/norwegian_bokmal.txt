@@ -1209,12 +1209,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel t
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Innledende bystørrelse multiplikator: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Fjern absurde veielementer under veikonstruksjon
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Grensesnitt
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruksjon
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Kjøretøy
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Statsjoner
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Økonomi
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Motstandere
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Grensesnitt
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruksjon
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Kjøretøy
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Statsjoner
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Økonomi
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Motstandere
 
 STR_CONFIG_PATCHES_DISABLED                                     :slått av
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

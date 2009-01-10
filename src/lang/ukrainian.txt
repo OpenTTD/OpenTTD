@@ -1328,12 +1328,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Кіл�
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Початковий коефіцієнт розміру міст: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Прибрати безглузді елементи доріг під час будівництва доріг
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Вигляд
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Споруди
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Транспорт
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Станції
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Економіка
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Конкуренти
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Вигляд
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Споруди
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Транспорт
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Станції
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Економіка
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Конкуренти
 
 STR_CONFIG_PATCHES_DISABLED                                     :вимкнено
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

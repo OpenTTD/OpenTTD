@@ -1209,12 +1209,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}نسب�
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}مضاعف المدن المبدئي: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}ازالة العوالق اثناء ترميم الطرق
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}النظام البيني
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}البناء
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}المركبات
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}المحطات
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}الأقتصاد
-STR_CONFIG_PATCHES_AI                                           :{BLACK}المتنافسين
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}النظام البيني
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}البناء
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}المركبات
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}المحطات
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}الأقتصاد
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}المتنافسين
 
 STR_CONFIG_PATCHES_DISABLED                                     :غير مفعل
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

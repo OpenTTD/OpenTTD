@@ -1255,12 +1255,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Podíl 
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Činitel základní velikosti města: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Odstraňovat nesmyslné prvky vozovky při výstavbě silnic
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Ovládaní
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Výstavba
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Dop. prostředky
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stanice
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomika
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Konkurenti
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Ovládaní
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Výstavba
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Dop. prostředky
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stanice
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomika
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Konkurenti
 
 STR_CONFIG_PATCHES_DISABLED                                     :vypnuto
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

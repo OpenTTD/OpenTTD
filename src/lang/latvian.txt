@@ -1185,12 +1185,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ciematu
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Sākotnējais pilsētas lieluma daudzkārtnis: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Novākt absurdus ceļa elementus, ceļu būves laikā
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Saskarne
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Būvniecība
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Transportlīdzekļi
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stacijas
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomika
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Pretiniekis
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Saskarne
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Būvniecība
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Transportlīdzekļi
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stacijas
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomika
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Pretiniekis
 
 STR_CONFIG_PATCHES_DISABLED                                     :atspējots
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

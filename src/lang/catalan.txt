@@ -1212,12 +1212,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporc
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador de mida de ciutat inicial: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Treu els elements de carretera absurds durant la reconstrucció de carretera
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interficie
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcció
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vehicles
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Estacions
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economia
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Competidors
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interficie
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Construcció
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vehicles
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Estacions
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economia
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Competidors
 
 STR_CONFIG_PATCHES_DISABLED                                     :desactivat
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

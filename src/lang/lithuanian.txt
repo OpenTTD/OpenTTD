@@ -1217,12 +1217,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Miestel
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Pradinis miestų dydžio daugiklis: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Panaikinti beprasmius kelio elementus kelių statybos metu
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Vaizdas
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstrukcijos
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Tr. priemones
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stoteles
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomika
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Priešininkai
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Vaizdas
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstrukcijos
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Tr. priemones
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stoteles
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomika
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Priešininkai
 
 STR_CONFIG_PATCHES_DISABLED                                     :išjungta
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

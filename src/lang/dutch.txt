@@ -1211,12 +1211,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Verhoud
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Stad groei indicator: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Verwijder rare weg-elementen tijdens het herbouwen van de weg
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Constructie
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Voertuigen
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stations
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economie
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Tegenstanders
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interface
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Constructie
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Voertuigen
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stations
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economie
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Tegenstanders
 
 STR_CONFIG_PATCHES_DISABLED                                     :uitgeschakeld
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

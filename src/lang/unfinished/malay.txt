@@ -831,11 +831,11 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Cepat
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Sangat cepat
 
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Pembinaan
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Kenderaan
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stesen
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomi
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Pesaing
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Pembinaan
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Kenderaan
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stesen
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomi
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Pesaing
 
 
 

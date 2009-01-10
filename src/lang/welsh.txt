@@ -1186,12 +1186,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Cyfran 
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Lluosydd cychwynol maint dinas: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Dileu ffyrdd disynnwyr wrth adeiladu ffyrdd
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Rhyngwyneb
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Adeiladu
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Cerbydau
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Gorsafoedd
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economi
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Cystadleuwyr
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Rhyngwyneb
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Adeiladu
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Cerbydau
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Gorsafoedd
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economi
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Cystadleuwyr
 
 STR_CONFIG_PATCHES_DISABLED                                     :analluogwyd
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

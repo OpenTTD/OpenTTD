@@ -1238,12 +1238,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Linnade
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Algne linna suuruse kordaja: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Eemalda teedeehituse ajal esinevad tarbetud elemendid
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Välimus
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Ehitamine
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Sõidukid
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Jaamad
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Majandus
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Konkurendid
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Välimus
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Ehitamine
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Sõidukid
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Jaamad
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Majandus
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Konkurendid
 
 STR_CONFIG_PATCHES_DISABLED                                     :väljas
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

@@ -1208,12 +1208,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Propors
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Faktor kali ukuran kota awal: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Buang elemen jalan yang aneh saat membangun
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Antaramuka
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruksi
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Kendaraan
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stasiun
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomi
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Pesaing
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Antaramuka
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruksi
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Kendaraan
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stasiun
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomi
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Pesaing
 
 STR_CONFIG_PATCHES_DISABLED                                     :Non-aktifkan
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

@@ -1274,12 +1274,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Dupla g
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Kezdeti városméret-szorzó: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Abszurd útrészletek automatikus eltávolítása (városi tul. utakon)
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Megjelenítés
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Építkezés
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Járművek
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Állomások
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Gazdaság
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Ellenfelek
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Megjelenítés
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Építkezés
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Járművek
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Állomások
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Gazdaság
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Ellenfelek
 
 STR_CONFIG_PATCHES_DISABLED                                     :kikapcsolva
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

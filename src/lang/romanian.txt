@@ -1208,12 +1208,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proport
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicator initial dimensiune oras: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Elimina elementele de drum absurde pe durata constructiei drumului
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaţă
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcţie
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vehicule
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Statii
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economie
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Concurenti
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfaţă
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Construcţie
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vehicule
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Statii
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economie
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Concurenti
 
 STR_CONFIG_PATCHES_DISABLED                                     :dezactivat
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

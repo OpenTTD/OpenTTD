@@ -1213,12 +1213,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Сър�
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Множител за големината на града: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Премахни абсурдни пътни-елементи по пътниат строеж
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Строене
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Автомобили
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Станции
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Икономика
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Съперници
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Интерфейс
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Строене
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Автомобили
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Станции
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Икономика
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Съперници
 
 STR_CONFIG_PATCHES_DISABLED                                     :изключено
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

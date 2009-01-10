@@ -1186,12 +1186,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel a
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial stadsstorleks multiplikator: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Ta bort absurda väg-element under vägkonstruktion
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Gränssnitt
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruktion
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Fordon
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stationer
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomi
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Motståndare
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Gränssnitt
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruktion
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Fordon
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stationer
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomi
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Motståndare
 
 STR_CONFIG_PATCHES_DISABLED                                     :Avaktiverat
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

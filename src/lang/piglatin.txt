@@ -1211,12 +1211,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oportio
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initialway itycay izesay ultipliermay: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaceway
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Onstructioncay
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Ehiclesvay
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Ationsstay
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economyway
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Ompetitorscay
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfaceway
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Onstructioncay
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Ehiclesvay
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Ationsstay
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economyway
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Ompetitorscay
 
 STR_CONFIG_PATCHES_DISABLED                                     :isabledday
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

@@ -1208,12 +1208,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Şehir 
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Birincil şehir büyüklüğü çarpanı: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Yol yapımı sırasında gerçekçi olmayan yerleri kaldır
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Arayüz
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}İnşaat
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Araçlar
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}İstasyonlar
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomi
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Rakipler
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Arayüz
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}İnşaat
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Araçlar
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}İstasyonlar
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomi
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Rakipler
 
 STR_CONFIG_PATCHES_DISABLED                                     :kapalı
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

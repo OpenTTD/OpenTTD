@@ -1253,12 +1253,12 @@ STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Omjer g
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Početni množitelj veličine grada: {ORANGE}{STRING}
 STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Ukloni apsurdne cestovne elemente tijekom konstrukcije prometnica
 
-STR_CONFIG_PATCHES_GUI                                          :{BLACK}Sučelje
-STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Izgradnja
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vozila
-STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Postaje
-STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomija
-STR_CONFIG_PATCHES_AI                                           :{BLACK}Suparnici
+STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Sučelje
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Izgradnja
+STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vozila
+STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Postaje
+STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomija
+STR_CONFIG_PATCHES_AI                                           :{ORANGE}Suparnici
 
 STR_CONFIG_PATCHES_DISABLED                                     :onemogućeno
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
