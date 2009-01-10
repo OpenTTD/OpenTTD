@@ -586,19 +586,53 @@ void ShowGameDifficulty()
 
 static const int SETTING_HEIGHT = 11;         ///< Height of a single patch setting in the tree view
 
-/** Data structure describing a single patch in a tab */
-struct PatchEntry {
+/** Flags for #PatchEntry */
+enum PatchEntryFlags {
+	PEF_LAST_FIELD = 0x04, ///< This entry is the last one in a (sub-)page
+
+	/* Entry kind */
+	PEF_SETTING_KIND = 0x10, ///< Entry kind: Entry is a setting
+	PEF_SUBTREE_KIND = 0x20, ///< Entry kind: Entry is a sub-tree
+	PEF_KIND_MASK    = (PEF_SETTING_KIND | PEF_SUBTREE_KIND), ///< Bit-mask for fetching entry kind
+};
+
+struct PatchPage; // Forward declaration
+
+/** Data fields for a sub-page (#PEF_SUBTREE_KIND kind)*/
+struct PatchEntrySubtree {
+	PatchPage *page; ///< Pointer to the sub-page
+	bool folded;     ///< Sub-page is folded (not visible except for its title)
+	StringID title;  ///< Title of the sub-page
+};
+
+/** Data fields for a single setting (#PEF_SETTING_KIND kind) */
+struct PatchEntrySetting {
 	const char *name;           ///< Name of the setting
 	const SettingDesc *setting; ///< Setting description of the setting
 	uint index;                 ///< Index of the setting in the settings table
+};
+
+/** Data structure describing a single patch in a tab */
+struct PatchEntry {
+	byte flags; ///< Flags of the patch entry. @see PatchEntryFlags
+	byte level; ///< Nesting level of this patch entry
+	union {
+		PatchEntrySetting entry; ///< Data fields if entry is a setting
+		PatchEntrySubtree sub;   ///< Data fields if entry is a sub-page
+	} d; ///< Data fields for each kind
 
 	PatchEntry(const char *nm);
+	PatchEntry(PatchPage *sub, StringID title);
+
+	void Init(byte level, bool last_field);
 };
 
 /** Data structure describing one page of patches in the patch settings window. */
 struct PatchPage {
 	PatchEntry *entries; ///< Array of patch entries of the page.
 	byte num;            ///< Number of entries on the page (statically filled).
+
+	void Init(byte level = 0);
 };
 
 
@@ -610,9 +644,61 @@ struct PatchPage {
  */
 PatchEntry::PatchEntry(const char *nm)
 {
-	this->name = nm;
-	this->setting = NULL;
-	this->index = 0;
+	this->flags = PEF_SETTING_KIND;
+	this->level = 0;
+	this->d.entry.name = nm;
+	this->d.entry.setting = NULL;
+	this->d.entry.index = 0;
+}
+
+/**
+ * Constructor for a sub-page in the 'advanced settings' window
+ * @param sub   Sub-page
+ * @param title Title of the sub-page
+ */
+PatchEntry::PatchEntry(PatchPage *sub, StringID title)
+{
+	this->flags = PEF_SUBTREE_KIND;
+	this->level = 0;
+	this->d.sub.page = sub;
+	this->d.sub.folded = true;
+	this->d.sub.title = title;
+}
+
+/**
+ * Initialization of a patch entry
+ * @param level      Page nesting level of this entry
+ * @param last_field Boolean indicating this entry is the last at the (sub-)page
+ */
+void PatchEntry::Init(byte level, bool last_field)
+{
+	this->level = level;
+	if (last_field) this->flags |= PEF_LAST_FIELD;
+
+	switch (this->flags & PEF_KIND_MASK) {
+		case PEF_SETTING_KIND:
+			this->d.entry.setting = GetPatchFromName(this->d.entry.name, &this->d.entry.index);
+			assert(this->d.entry.setting != NULL);
+			break;
+		case PEF_SUBTREE_KIND:
+			this->d.sub.page->Init(level + 1);
+			break;
+		default: NOT_REACHED();
+	}
+}
+
+
+/* == PatchPage methods == */
+
+/**
+ * Initialization of an entire setting page
+ * @param level Nesting level of this page (internal variable, do not provide a value for it when calling)
+ */
+void PatchPage::Init(byte level)
+{
+	for (uint field = 0; field < this->num; field++) {
+		this->entries[field].Init(level, field + 1 == num);
+	}
 }
 
 
@@ -795,14 +881,7 @@ struct PatchesSelectionWindow : Window {
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {
 			for (PatchPage *page = &_patches_page[0]; page != endof(_patches_page); page++) {
-				for (uint i = 0; i != page->num; i++) {
-					uint index;
-					const SettingDesc *sd = GetPatchFromName(page->entries[i].name, &index);
-					assert(sd != NULL);
-
-					page->entries[i].setting = sd;
-					page->entries[i].index = index;
-				}
+				page->Init();
 			}
 			first_time = false;
 		}
@@ -832,7 +911,8 @@ struct PatchesSelectionWindow : Window {
 		int x = SETTINGTREE_LEFT_OFFSET;
 		int y = SETTINGTREE_TOP_OFFSET;
 		for (uint i = this->vscroll.pos; i != page->num && this->vscroll.pos + this->vscroll.cap - i > 0; i++) {
-			const SettingDesc *sd = page->entries[i].setting;
+			assert((page->entries[i].flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+			const SettingDesc *sd = page->entries[i].d.entry.setting;
 			DrawPatch(patches_ptr, sd, x, y, this->click - (i * 2));
 			y += SETTING_HEIGHT;
 		}
@@ -899,7 +979,8 @@ struct PatchesSelectionWindow : Window {
 
 				if (btn >= page->num) return;  // Clicked below the last setting of the page
 
-				const SettingDesc *sd = page->entries[btn].setting;
+				assert((page->entries[btn].flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+				const SettingDesc *sd = page->entries[btn].d.entry.setting;
 
 				/* return if action is only active in network, or only settable by server */
 				if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
@@ -952,7 +1033,7 @@ struct PatchesSelectionWindow : Window {
 					}
 
 					if (value != oldvalue) {
-						SetPatchValue(page->entries[btn].index, value);
+						SetPatchValue(page->entries[btn].d.entry.index, value);
 						this->SetDirty();
 					}
 				} else {
@@ -990,13 +1071,14 @@ struct PatchesSelectionWindow : Window {
 	{
 		if (!StrEmpty(str)) {
 			const PatchEntry *pe = &_patches_page[this->page].entries[this->entry];
-			const SettingDesc *sd = pe->setting;
+			assert((pe->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+			const SettingDesc *sd = pe->d.entry.setting;
 			int32 value = atoi(str);
 
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 
-			SetPatchValue(pe->index, value);
+			SetPatchValue(pe->d.entry.index, value);
 			this->SetDirty();
 		}
 	}
