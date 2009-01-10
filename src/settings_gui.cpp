@@ -1003,13 +1003,14 @@ static PatchEntry _patches_ui_display[] = {
 static PatchPage _patches_ui_display_page = {_patches_ui_display, lengthof(_patches_ui_display)};
 
 static PatchEntry _patches_ui_interaction[] = {
-	PatchEntry("gui.autoscroll"),
-	PatchEntry("gui.reverse_scroll"),
-	PatchEntry("gui.smooth_scroll"),
 	PatchEntry("gui.window_snap_radius"),
 	PatchEntry("gui.window_soft_limit"),
 	PatchEntry("gui.link_terraform_toolbar"),
 	PatchEntry("gui.prefer_teamchat"),
+	PatchEntry("gui.autoscroll"),
+	PatchEntry("gui.reverse_scroll"),
+	PatchEntry("gui.smooth_scroll"),
+	PatchEntry("gui.left_mouse_btn_scrolling"),
 	/* While the horizontal scrollwheel scrolling is written as general code, only
 	 *  the cocoa (OSX) driver generates input for it.
 	 *  Since it's also able to completely disable the scrollwheel will we display it on all platforms anyway */
@@ -1019,7 +1020,6 @@ static PatchEntry _patches_ui_interaction[] = {
 	/* We might need to emulate a right mouse button on mac */
 	PatchEntry("gui.right_mouse_btn_emulation"),
 #endif
-	PatchEntry("gui.left_mouse_btn_scrolling"),
 };
 /** Interaction sub-page */
 static PatchPage _patches_ui_interaction_page = {_patches_ui_interaction, lengthof(_patches_ui_interaction)};
@@ -1037,6 +1037,7 @@ static PatchEntry _patches_ui[] = {
 	PatchEntry("gui.default_rail_type"),
 	PatchEntry("gui.always_build_infrastructure"),
 	PatchEntry("gui.persistent_buildingtools"),
+	PatchEntry("gui.colored_news_year"),
 };
 /** Interface subpage */
 static PatchPage _patches_ui_page = {_patches_ui, lengthof(_patches_ui)};
@@ -1059,7 +1060,6 @@ static PatchEntry _patches_construction[] = {
 	PatchEntry("construction.extra_dynamite"),
 	PatchEntry("construction.longbridges"),
 	PatchEntry("station.always_small_airport"),
-	PatchEntry("game_creation.oil_refinery_limit"),
 };
 /** Construction sub-page */
 static PatchPage _patches_construction_page = {_patches_construction, lengthof(_patches_construction)};
@@ -1075,15 +1075,14 @@ static PatchPage _patches_stations_cargo_page = {_patches_stations_cargo, length
 static PatchEntry _patches_stations[] = {
 	PatchEntry(&_patches_stations_cargo_page, STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING),
 	PatchEntry("station.join_stations"),
-	PatchEntry("gui.new_nonstop"),
 	PatchEntry("station.nonuniform_stations"),
-	PatchEntry("station.station_spread"),
-	PatchEntry("order.serviceathelipad"),
-	PatchEntry("station.modified_catchment"),
-	PatchEntry("construction.road_stop_on_town_road"),
 	PatchEntry("station.adjacent_stations"),
 	PatchEntry("station.distant_join_stations"),
+	PatchEntry("station.station_spread"),
 	PatchEntry("economy.station_noise_level"),
+	PatchEntry("station.modified_catchment"),
+	PatchEntry("order.serviceathelipad"),
+	PatchEntry("construction.road_stop_on_town_road"),
 };
 /** Stations sub-page */
 static PatchPage _patches_stations_page = {_patches_stations, lengthof(_patches_stations)};
@@ -1104,6 +1103,7 @@ static PatchEntry _patches_economy_industries[] = {
 	PatchEntry("construction.raw_industry_construction"),
 	PatchEntry("economy.multiple_industry_per_town"),
 	PatchEntry("economy.same_industry_close"),
+	PatchEntry("game_creation.oil_refinery_limit"),
 };
 /** Industries sub-page */
 static PatchPage _patches_economy_industries_page = {_patches_economy_industries, lengthof(_patches_economy_industries)};
@@ -1112,7 +1112,6 @@ static PatchEntry _patches_economy[] = {
 	PatchEntry(&_patches_economy_towns_page, STR_CONFIG_PATCHES_ECONOMY_TOWNS),
 	PatchEntry(&_patches_economy_industries_page, STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES),
 	PatchEntry("economy.inflation"),
-	PatchEntry("gui.colored_news_year"),
 	PatchEntry("economy.smooth_economy"),
 };
 /** Economy sub-page */
@@ -1169,7 +1168,6 @@ static PatchPage _patches_vehicles_servicing_page = {_patches_vehicles_servicing
 static PatchEntry _patches_vehicles_trains[] = {
 	PatchEntry("vehicle.realistic_acceleration"),
 	PatchEntry("vehicle.mammoth_trains"),
-	PatchEntry("gui.vehicle_income_warn"),
 	PatchEntry("gui.lost_train_warn"),
 	PatchEntry("vehicle.wagon_speed_limits"),
 	PatchEntry("vehicle.disable_elrails"),
@@ -1184,7 +1182,9 @@ static PatchEntry _patches_vehicles[] = {
 	PatchEntry(&_patches_vehicles_servicing_page, STR_CONFIG_PATCHES_VEHICLES_SERVICING),
 	PatchEntry(&_patches_vehicles_trains_page, STR_CONFIG_PATCHES_VEHICLES_TRAINS),
 	PatchEntry("order.gotodepot"),
+	PatchEntry("gui.new_nonstop"),
 	PatchEntry("gui.order_review_system"),
+	PatchEntry("gui.vehicle_income_warn"),
 	PatchEntry("vehicle.never_expire_vehicles"),
 	PatchEntry("vehicle.max_trains"),
 	PatchEntry("vehicle.max_roadveh"),
