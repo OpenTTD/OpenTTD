@@ -999,6 +999,8 @@ static PatchEntry _patches_ui[] = {
 	PatchEntry("gui.show_track_reservation"),
 	PatchEntry("gui.left_mouse_btn_scrolling"),
 };
+/** Interface subpage */
+static PatchPage _patches_ui_page = {_patches_ui, lengthof(_patches_ui)};
 
 static PatchEntry _patches_construction[] = {
 	PatchEntry("construction.build_on_slopes"),
@@ -1014,6 +1016,8 @@ static PatchEntry _patches_construction[] = {
 	PatchEntry("gui.default_signal_type"),
 	PatchEntry("gui.cycle_signal_types"),
 };
+/** Construction sub-page */
+static PatchPage _patches_construction_page = {_patches_construction, lengthof(_patches_construction)};
 
 static PatchEntry _patches_stations[] = {
 	PatchEntry("station.join_stations"),
@@ -1030,6 +1034,8 @@ static PatchEntry _patches_stations[] = {
 	PatchEntry("station.distant_join_stations"),
 	PatchEntry("economy.station_noise_level"),
 };
+/** Stations sub-page */
+static PatchPage _patches_stations_page = {_patches_stations, lengthof(_patches_stations)};
 
 static PatchEntry _patches_economy[] = {
 	PatchEntry("economy.inflation"),
@@ -1048,6 +1054,8 @@ static PatchEntry _patches_economy[] = {
 	PatchEntry("economy.larger_towns"),
 	PatchEntry("economy.initial_city_size"),
 };
+/** Economy sub-page */
+static PatchPage _patches_economy_page = {_patches_economy, lengthof(_patches_economy)};
 
 static PatchEntry _patches_ai[] = {
 	PatchEntry("ai.ainew_active"),
@@ -1057,6 +1065,8 @@ static PatchEntry _patches_ai[] = {
 	PatchEntry("ai.ai_disable_veh_aircraft"),
 	PatchEntry("ai.ai_disable_veh_ship"),
 };
+/** AI sub-page */
+static PatchPage _patches_ai_page = {_patches_ai, lengthof(_patches_ai)};
 
 static PatchEntry _patches_vehicles[] = {
 	PatchEntry("vehicle.realistic_acceleration"),
@@ -1091,28 +1101,26 @@ static PatchEntry _patches_vehicles[] = {
 	PatchEntry("order.timetabling"),
 	PatchEntry("vehicle.dynamic_engines"),
 };
+/** Vehicles sub-page */
+static PatchPage _patches_vehicles_page = {_patches_vehicles, lengthof(_patches_vehicles)};
 
-/** Array of pages (tabs), where each page holds a number of advanced settings. */
-static PatchPage _patches_page[] = {
-	{_patches_ui,           lengthof(_patches_ui)},
-	{_patches_construction, lengthof(_patches_construction)},
-	{_patches_vehicles,     lengthof(_patches_vehicles)},
-	{_patches_stations,     lengthof(_patches_stations)},
-	{_patches_economy,      lengthof(_patches_economy)},
-	{_patches_ai,           lengthof(_patches_ai)},
+static PatchEntry _patches_main[] = {
+	PatchEntry(&_patches_ui_page,           STR_CONFIG_PATCHES_GUI),
+	PatchEntry(&_patches_construction_page, STR_CONFIG_PATCHES_CONSTRUCTION),
+	PatchEntry(&_patches_vehicles_page,     STR_CONFIG_PATCHES_VEHICLES),
+	PatchEntry(&_patches_stations_page,     STR_CONFIG_PATCHES_STATIONS),
+	PatchEntry(&_patches_economy_page,      STR_CONFIG_PATCHES_ECONOMY),
+	PatchEntry(&_patches_ai_page,           STR_CONFIG_PATCHES_AI),
 };
+
+/** Main page, holding all advanced settings */
+static PatchPage _patches_main_page = {_patches_main, lengthof(_patches_main)};
 
 /** Widget numbers of config patches window */
 enum PatchesSelectionWidgets {
-	PATCHSEL_OPTIONSPANEL = 3, ///< Panel widget containing the option lists
+	PATCHSEL_OPTIONSPANEL = 2, ///< Panel widget containing the option lists
 	PATCHSEL_SCROLLBAR,        ///< Scrollbar
 	PATCHSEL_RESIZE,           ///< Resize button
-	PATCHSEL_INTERFACE,        ///< Button 'Interface'
-	PATCHSEL_CONSTRUCTION,     ///< Button 'Construction'
-	PATCHSEL_VEHICLES,         ///< Button 'Vehicles'
-	PATCHSEL_STATIONS,         ///< Button 'Stations'
-	PATCHSEL_ECONOMY,          ///< Button 'Economy'
-	PATCHSEL_COMPETITORS       ///< Button 'Competitors'
 };
 
 struct PatchesSelectionWindow : Window {
@@ -1121,7 +1129,6 @@ struct PatchesSelectionWindow : Window {
 
 	static GameSettings *patches_ptr;  ///< Pointer to the game settings being displayed and modified
 
-	int page;
 	PatchEntry *valuewindow_entry; ///< If non-NULL, pointer to patch setting for which a value-entering window has been opened
 	PatchEntry *clicked_entry; ///< If non-NULL, pointer to a clicked numeric patch setting (with a depressed left or right button)
 
@@ -1140,36 +1147,28 @@ struct PatchesSelectionWindow : Window {
 
 		/* Build up the dynamic settings-array only once per OpenTTD session */
 		if (first_time) {
-			for (PatchPage *page = &_patches_page[0]; page != endof(_patches_page); page++) {
-				page->Init();
-			}
+			_patches_main_page.Init();
 			first_time = false;
 		}
 
-		this->page = 0;
 		this->valuewindow_entry = NULL; // No patch entry for which a entry window is opened
 		this->clicked_entry = NULL; // No numeric patch setting buttons are depressed
 		this->vscroll.pos = 0;
 		this->vscroll.cap = (this->widget[PATCHSEL_OPTIONSPANEL].bottom - this->widget[PATCHSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
-		SetVScrollCount(this, _patches_page[this->page].Length());
+		SetVScrollCount(this, _patches_main_page.Length());
 
 		this->resize.step_height = SETTING_HEIGHT;
 		this->resize.height = this->height;
 		this->resize.step_width = 1;
 		this->resize.width = this->width;
 
-		this->LowerWidget(this->page + PATCHSEL_INTERFACE); // Depress button of currently selected page
-
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
 	{
-		const PatchPage *page = &_patches_page[this->page];
-
-		/* Set up selected category */
 		this->DrawWidgets();
-		page->Draw(patches_ptr, SETTINGTREE_LEFT_OFFSET, SETTINGTREE_TOP_OFFSET,
+		_patches_main_page.Draw(patches_ptr, SETTINGTREE_LEFT_OFFSET, SETTINGTREE_TOP_OFFSET,
 						this->vscroll.pos, this->vscroll.pos + this->vscroll.cap);
 	}
 
@@ -1183,9 +1182,8 @@ struct PatchesSelectionWindow : Window {
 				byte btn = this->vscroll.pos + y / SETTING_HEIGHT;  // Compute which setting is selected
 				if (y % SETTING_HEIGHT > SETTING_HEIGHT - 2) return;  // Clicked too low at the setting
 
-				const PatchPage *page = &_patches_page[this->page];
 				uint cur_row = 0;
-				PatchEntry *pe = page->FindEntry(btn, &cur_row);
+				PatchEntry *pe = _patches_main_page.FindEntry(btn, &cur_row);
 
 				if (pe == NULL) return;  // Clicked below the last setting of the page
 
@@ -1195,7 +1193,7 @@ struct PatchesSelectionWindow : Window {
 				if ((pe->flags & PEF_KIND_MASK) == PEF_SUBTREE_KIND) {
 					pe->d.sub.folded = !pe->d.sub.folded; // Flip 'folded'-ness of the sub-page
 
-					SetVScrollCount(this, _patches_page[this->page].Length());
+					SetVScrollCount(this, _patches_main_page.Length());
 					this->SetDirty();
 					return;
 				}
@@ -1273,16 +1271,6 @@ struct PatchesSelectionWindow : Window {
 					}
 				}
 			} break;
-
-			case PATCHSEL_INTERFACE: case PATCHSEL_CONSTRUCTION: case PATCHSEL_VEHICLES:
-			case PATCHSEL_STATIONS:  case PATCHSEL_ECONOMY:      case PATCHSEL_COMPETITORS:
-				this->RaiseWidget(this->page + PATCHSEL_INTERFACE);
-				this->page = widget - PATCHSEL_INTERFACE;
-				this->LowerWidget(this->page + PATCHSEL_INTERFACE);
-				SetVScrollCount(this, _patches_page[this->page].Length());
-				DeleteWindowById(WC_QUERY_STRING, 0);
-				this->SetDirty();
-				break;
 		}
 	}
 
@@ -1314,33 +1302,25 @@ struct PatchesSelectionWindow : Window {
 	virtual void OnResize(Point new_size, Point delta)
 	{
 		this->vscroll.cap += delta.y / SETTING_HEIGHT;
-		SetVScrollCount(this, _patches_page[this->page].Length());
+		SetVScrollCount(this, _patches_main_page.Length());
 	}
 };
 
 GameSettings *PatchesSelectionWindow::patches_ptr = NULL;
 const int PatchesSelectionWindow::SETTINGTREE_LEFT_OFFSET = 5;
-const int PatchesSelectionWindow::SETTINGTREE_TOP_OFFSET = 47;
+const int PatchesSelectionWindow::SETTINGTREE_TOP_OFFSET = 19;
 
 static const Widget _patches_selection_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   396,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,  RESIZE_RIGHT,  COLOUR_MAUVE,     0,   396,    14,    41, 0x0,                             STR_NULL},
-{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   384,    42,   215, 0x0,                             STR_NULL}, // PATCHSEL_OPTIONSPANEL
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   385,   396,    42,   203, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST}, // PATCHSEL_SCROLLBAR
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   385,   396,   204,   215, 0x0,                             STR_RESIZE_BUTTON}, // PATCHSEL_RESIZE
-
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,   100,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL}, // PATCHSEL_INTERFACE
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  101,   191,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL}, // PATCHSEL_CONSTRUCTION
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  192,   283,    16,    27, STR_CONFIG_PATCHES_VEHICLES,     STR_NULL}, // PATCHSEL_VEHICLES
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  284,   375,    16,    27, STR_CONFIG_PATCHES_STATIONS,     STR_NULL}, // PATCHSEL_STATIONS
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,   10,   100,    28,    39, STR_CONFIG_PATCHES_ECONOMY,      STR_NULL}, // PATCHSEL_ECONOMY
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_YELLOW,  101,   191,    28,    39, STR_CONFIG_PATCHES_AI,           STR_NULL}, // PATCHSEL_COMPETITORS
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,    11,   411,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,     0,   399,    14,   187, 0x0,                             STR_NULL}, // PATCHSEL_OPTIONSPANEL
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,   400,   411,    14,   175, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST}, // PATCHSEL_SCROLLBAR
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,   400,   411,   176,   187, 0x0,                             STR_RESIZE_BUTTON}, // PATCHSEL_RESIZE
 {   WIDGETS_END},
 };
 
 static const WindowDesc _patches_selection_desc = {
-	WDP_CENTER, WDP_CENTER, 397, 216, 397, 425,
+	WDP_CENTER, WDP_CENTER, 412, 188, 412, 397,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_patches_selection_widgets,
