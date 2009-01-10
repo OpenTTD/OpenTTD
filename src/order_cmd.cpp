@@ -356,6 +356,19 @@ void OrderList::DebugCheckSanity() const
 }
 
 /**
+ * Checks whether the order goes to a station or not, i.e. whether the
+ * destination is a station
+ * @param v the vehicle to check for
+ * @param o the order to check
+ * @return true if the destination is a station
+ */
+static inline bool OrderGoesToStation(const Vehicle *v, const Order *o)
+{
+	return o->IsType(OT_GOTO_STATION) ||
+			(v->type == VEH_AIRCRAFT && o->IsType(OT_GOTO_DEPOT) && !(o->GetDepotActionType() & ODATFB_NEAREST_DEPOT));
+}
+
+/**
  * Delete all news items regarding defective orders about a vehicle
  * This could kill still valid warnings (for example about void order when just
  * another order gets added), but assume the company will notice the problems,
@@ -426,7 +439,11 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 			const Station *st = GetStation(new_order.GetDestination());
 
 			if (st->owner != OWNER_NONE && !CheckOwnership(st->owner)) return CMD_ERROR;
-			if (!CanVehicleUseStation(v, st)) return CMD_ERROR;
+
+			if (!CanVehicleUseStation(v, st)) return_cmd_error(STR_CAN_T_ADD_ORDER);
+			for (Vehicle *u = v->FirstShared(); u != NULL; u = u->NextShared()) {
+				if (!CanVehicleUseStation(u, st)) return_cmd_error(STR_CAN_T_ADD_ORDER_SHARED);
+			}
 
 			/* Non stop not allowed for non-trains. */
 			if (new_order.GetNonStopType() != ONSF_STOP_EVERYWHERE && v->type != VEH_TRAIN && v->type != VEH_ROAD) return CMD_ERROR;
@@ -1070,6 +1087,15 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 			/* Is the vehicle already in the shared list? */
 			if (src->FirstShared() == dst->FirstShared()) return CMD_ERROR;
 
+			const Order *order;
+
+			FOR_VEHICLE_ORDERS(src, order) {
+				if (OrderGoesToStation(dst, order) &&
+						!CanVehicleUseStation(dst, GetStation(order->GetDestination()))) {
+					return_cmd_error(STR_CAN_T_COPY_SHARE_ORDER);
+				}
+			}
+
 			if (flags & DC_EXEC) {
 				/* If the destination vehicle had a OrderList, destroy it */
 				DeleteVehicleOrders(dst);
@@ -1098,23 +1124,13 @@ CommandCost CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, co
 			if (!CheckOwnership(src->owner) || dst->type != src->type || dst == src)
 				return CMD_ERROR;
 
-			/* Trucks can't copy all the orders from busses (and visa versa) */
-			if (src->type == VEH_ROAD) {
-				const Order *order;
-				TileIndex required_dst = INVALID_TILE;
-
-				FOR_VEHICLE_ORDERS(src, order) {
-					if (order->IsType(OT_GOTO_STATION)) {
-						const Station *st = GetStation(order->GetDestination());
-						if (IsCargoInClass(dst->cargo_type, CC_PASSENGERS)) {
-							if (st->bus_stops != NULL) required_dst = st->bus_stops->xy;
-						} else {
-							if (st->truck_stops != NULL) required_dst = st->truck_stops->xy;
-						}
-						/* This station has not the correct road-bay, so we can't copy! */
-						if (required_dst == INVALID_TILE)
-							return CMD_ERROR;
-					}
+			/* Trucks can't copy all the orders from busses (and visa versa),
+			 * and neither can helicopters and aircarft. */
+			const Order *order;
+			FOR_VEHICLE_ORDERS(src, order) {
+				if (OrderGoesToStation(dst, order) &&
+						!CanVehicleUseStation(dst, GetStation(order->GetDestination()))) {
+					return_cmd_error(STR_CAN_T_COPY_SHARE_ORDER);
 				}
 			}
 
