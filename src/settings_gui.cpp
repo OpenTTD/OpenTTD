@@ -586,8 +586,15 @@ void ShowGameDifficulty()
 
 static const int SETTING_HEIGHT = 11;         ///< Height of a single patch setting in the tree view
 
-/** Flags for #PatchEntry */
+/**
+ * Flags for #PatchEntry
+ * @note The #PEF_BUTTONS_MASK matches expectations of the formal parameter 'state' of #DrawArrowButtons
+ */
 enum PatchEntryFlags {
+	PEF_LEFT_DEPRESSED  = 0x01, ///< Of a numeric patch entry, the left button is depressed
+	PEF_RIGHT_DEPRESSED = 0x02, ///< Of a numeric patch entry, the right button is depressed
+	PEF_BUTTONS_MASK = (PEF_LEFT_DEPRESSED | PEF_RIGHT_DEPRESSED), ///< Bit-mask for button flags
+
 	PEF_LAST_FIELD = 0x04, ///< This entry is the last one in a (sub-)page
 
 	/* Entry kind */
@@ -625,6 +632,7 @@ struct PatchEntry {
 	PatchEntry(PatchPage *sub, StringID title);
 
 	void Init(byte level, bool last_field);
+	void SetButtons(byte new_val);
 };
 
 /** Data structure describing one page of patches in the patch settings window. */
@@ -685,6 +693,17 @@ void PatchEntry::Init(byte level, bool last_field)
 			break;
 		default: NOT_REACHED();
 	}
+}
+
+/**
+ * Set the button-depressed flags (#PEF_LEFT_DEPRESSED and #PEF_RIGHT_DEPRESSED) to a specified value
+ * @param new_val New value for the button flags
+ * @see PatchEntryFlags
+ */
+void PatchEntry::SetButtons(byte new_val)
+{
+	assert((new_val & ~PEF_BUTTONS_MASK) == 0); // Should not touch any flags outside the buttons
+	this->flags = (this->flags & ~PEF_BUTTONS_MASK) | new_val;
 }
 
 
@@ -863,7 +882,7 @@ struct PatchesSelectionWindow : Window {
 
 	int page;
 	int entry;
-	int click;
+	PatchEntry *clicked_entry; ///< If non-NULL, pointer to a clicked numeric patch setting (with a depressed left or right button)
 
 	PatchesSelectionWindow(const WindowDesc *desc) : Window(desc)
 	{
@@ -887,6 +906,7 @@ struct PatchesSelectionWindow : Window {
 		}
 
 		this->page = 0;
+		this->clicked_entry = NULL; // No numeric patch setting buttons are depressed
 		this->vscroll.pos = 0;
 		this->vscroll.cap = (this->widget[PATCHSEL_OPTIONSPANEL].bottom - this->widget[PATCHSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
 		SetVScrollCount(this, _patches_page[this->page].num);
@@ -913,7 +933,8 @@ struct PatchesSelectionWindow : Window {
 		for (uint i = this->vscroll.pos; i != page->num && this->vscroll.pos + this->vscroll.cap - i > 0; i++) {
 			assert((page->entries[i].flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
 			const SettingDesc *sd = page->entries[i].d.entry.setting;
-			DrawPatch(patches_ptr, sd, x, y, this->click - (i * 2));
+			int state = page->entries[i].flags & PEF_BUTTONS_MASK;
+			DrawPatch(patches_ptr, sd, x, y, state);
 			y += SETTING_HEIGHT;
 		}
 	}
@@ -1024,7 +1045,11 @@ struct PatchesSelectionWindow : Window {
 
 						/* Set up scroller timeout for numeric values */
 						if (value != oldvalue && !(sd->desc.flags & SGF_MULTISTRING)) {
-							this->click = btn * 2 + 1 + ((x >= 10) ? 1 : 0);
+							if (this->clicked_entry != NULL) { // Release previous buttons if any
+								this->clicked_entry->SetButtons(0);
+							}
+							this->clicked_entry = &page->entries[btn];
+							this->clicked_entry->SetButtons((x >= 10) ? PEF_RIGHT_DEPRESSED : PEF_LEFT_DEPRESSED);
 							this->flags4 |= WF_TIMEOUT_BEGIN;
 							_left_button_clicked = false;
 						}
@@ -1063,8 +1088,11 @@ struct PatchesSelectionWindow : Window {
 
 	virtual void OnTimeout()
 	{
-		this->click = 0;
-		this->SetDirty();
+		if (this->clicked_entry != NULL) { // On timeout, release any depressed buttons
+			this->clicked_entry->SetButtons(0);
+			this->clicked_entry = NULL;
+			this->SetDirty();
+		}
 	}
 
 	virtual void OnQueryTextFinished(char *str)
