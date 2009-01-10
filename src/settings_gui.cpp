@@ -909,7 +909,7 @@ struct PatchesSelectionWindow : Window {
 	static GameSettings *patches_ptr;  ///< Pointer to the game settings being displayed and modified
 
 	int page;
-	int entry;
+	PatchEntry *valuewindow_entry; ///< If non-NULL, pointer to patch setting for which a value-entering window has been opened
 	PatchEntry *clicked_entry; ///< If non-NULL, pointer to a clicked numeric patch setting (with a depressed left or right button)
 
 	PatchesSelectionWindow(const WindowDesc *desc) : Window(desc)
@@ -934,6 +934,7 @@ struct PatchesSelectionWindow : Window {
 		}
 
 		this->page = 0;
+		this->valuewindow_entry = NULL; // No patch entry for which a entry window is opened
 		this->clicked_entry = NULL; // No numeric patch setting buttons are depressed
 		this->vscroll.pos = 0;
 		this->vscroll.cap = (this->widget[PATCHSEL_OPTIONSPANEL].bottom - this->widget[PATCHSEL_OPTIONSPANEL].top - 8) / SETTING_HEIGHT;
@@ -1095,7 +1096,7 @@ struct PatchesSelectionWindow : Window {
 						/* Show the correct currency-translated value */
 						if (sd->desc.flags & SGF_CURRENCY) value *= _currency->rate;
 
-						this->entry = btn;
+						this->valuewindow_entry = &page->entries[btn];
 						SetDParam(0, value);
 						ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
 					}
@@ -1126,15 +1127,15 @@ struct PatchesSelectionWindow : Window {
 	virtual void OnQueryTextFinished(char *str)
 	{
 		if (!StrEmpty(str)) {
-			const PatchEntry *pe = &_patches_page[this->page].entries[this->entry];
-			assert((pe->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
-			const SettingDesc *sd = pe->d.entry.setting;
+			assert(this->valuewindow_entry != NULL);
+			assert((this->valuewindow_entry->flags & PEF_KIND_MASK) == PEF_SETTING_KIND);
+			const SettingDesc *sd = this->valuewindow_entry->d.entry.setting;
 			int32 value = atoi(str);
 
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
 
-			SetPatchValue(pe->d.entry.index, value);
+			SetPatchValue(this->valuewindow_entry->d.entry.index, value);
 			this->SetDirty();
 		}
 	}
