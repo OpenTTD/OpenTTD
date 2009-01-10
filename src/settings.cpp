@@ -902,23 +902,19 @@ static int32 UpdateConsists(int32 p1)
 /* Check service intervals of vehicles, p1 is value of % or day based servicing */
 static int32 CheckInterval(int32 p1)
 {
-	bool warning;
-	const VehicleSettings *ptc = (_game_mode == GM_MENU) ? &_settings_newgame.vehicle : &_settings_game.vehicle;
+	VehicleSettings *ptc = (_game_mode == GM_MENU) ? &_settings_newgame.vehicle : &_settings_game.vehicle;
 
 	if (p1) {
-		warning = ( (IsInsideMM(ptc->servint_trains,   5, 90 + 1) || ptc->servint_trains   == 0) &&
-								(IsInsideMM(ptc->servint_roadveh,  5, 90 + 1) || ptc->servint_roadveh  == 0) &&
-								(IsInsideMM(ptc->servint_aircraft, 5, 90 + 1) || ptc->servint_aircraft == 0) &&
-								(IsInsideMM(ptc->servint_ships,    5, 90 + 1) || ptc->servint_ships    == 0) );
+		ptc->servint_trains   = 50;
+		ptc->servint_roadveh  = 50;
+		ptc->servint_aircraft = 50;
+		ptc->servint_ships    = 50;
 	} else {
-		warning = ( (IsInsideMM(ptc->servint_trains,   30, 800 + 1) || ptc->servint_trains   == 0) &&
-								(IsInsideMM(ptc->servint_roadveh,  30, 800 + 1) || ptc->servint_roadveh  == 0) &&
-								(IsInsideMM(ptc->servint_aircraft, 30, 800 + 1) || ptc->servint_aircraft == 0) &&
-								(IsInsideMM(ptc->servint_ships,    30, 800 + 1) || ptc->servint_ships    == 0) );
+		ptc->servint_trains   = 150;
+		ptc->servint_roadveh  = 150;
+		ptc->servint_aircraft = 360;
+		ptc->servint_ships    = 100;
 	}
-
-	if (!warning)
-		ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE, 0, 0);
 
 	return InValidateDetailsWindow(0);
 }
@@ -1282,7 +1278,7 @@ const SettingDesc _patch_settings[] = {
 	     SDT_VAR(GameSettings, vehicle.max_roadveh,                 SLE_UINT16,                     0, 0,   500,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_ROADVEH,            RedrawScreen),
 	     SDT_VAR(GameSettings, vehicle.max_aircraft,                SLE_UINT16,                     0, 0,   200,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_AIRCRAFT,           RedrawScreen),
 	     SDT_VAR(GameSettings, vehicle.max_ships,                   SLE_UINT16,                     0, 0,   300,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_SHIPS,              RedrawScreen),
-	    SDT_BOOL(GameSettings, vehicle.servint_ispercent,                                           0, 0, false,                    STR_CONFIG_PATCHES_SERVINT_ISPERCENT,      CheckInterval),
+	    SDT_BOOL(GameSettings, vehicle.servint_ispercent,                                           0,NN, false,                    STR_CONFIG_PATCHES_SERVINT_ISPERCENT,      CheckInterval),
 	     SDT_VAR(GameSettings, vehicle.servint_trains,              SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_TRAINS,         InValidateDetailsWindow),
 	     SDT_VAR(GameSettings, vehicle.servint_roadveh,             SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_ROADVEH,        InValidateDetailsWindow),
 	     SDT_VAR(GameSettings, vehicle.servint_ships,               SLE_UINT16,                     0,D0,   360,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_SHIPS,          InValidateDetailsWindow),
