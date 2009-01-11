@@ -480,10 +480,10 @@ STR_AGE                                                         :{COMMA} ann{P o
 STR_AGE_RED                                                     :{RED}{COMMA} ann{P o i} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Automezzo
-STR_019D_AIRCRAFT                                               :Aeromobile
-STR_019E_SHIP                                                   :Nave
 STR_019F_TRAIN                                                  :Treno
+STR_019C_ROAD_VEHICLE                                           :Automezzo
+STR_019E_SHIP                                                   :Nave
+STR_019D_AIRCRAFT                                               :Aeromobile
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} sta invecchiando
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} sta invecchiando molto
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} sta invecchiando molto e richiede urgentemente sostituzione
@@ -1021,7 +1021,7 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Impostaz
 STR_CONFIG_PATCHES_OFF                                          :No
 STR_CONFIG_PATCHES_ON                                           :Si
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostra velocità veicoli sulla barra di stato: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consenti la costruzione sui pendii e coste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consenti la costruzione su pendii e coste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Consenti rimodellazione terreno sotto a edifici, rotaie, etc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Consenti aree di copertura più realistiche: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade, ponti, etc. delle città: {ORANGE}{STRING}
@@ -1033,13 +1033,13 @@ STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Consent
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa l'algoritmo di caricamento migliorato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Carica i veicoli gradualmente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflazione: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Scarica le merci in una stazione solo se richieste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Scarica il carico in una stazione solo se richiesto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Consenti la costruzione di ponti molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Consenti gli ordini 'Vai al deposito': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD             :{LTBLUE}Costruzione delle industrie primarie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :Non permessa
 STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :Come le altre industrie
-STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Prospezione
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :Previa prospezione
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Consenti più industrie dello stesso tipo nella stessa città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Consenti la costruzione di industrie uguali anche molto vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostra sempre la data lunga nella barra di stato: {ORANGE}{STRING}
@@ -1064,7 +1064,7 @@ STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avvisa 
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Controlla gli ordini dei veicoli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :No
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sì, ma escludi i veicoli fermi
-STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Per tutti i veicoli
+STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Sì, per tutti i veicoli
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avvisa se il profitto di un veicolo è in negativo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}I veicoli non diventano mai obsoleti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova un veicolo quando diventa vecchio
@@ -1104,8 +1104,8 @@ STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propria compagn
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tutte le compagnie
 STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Chatta con la squadra premento INVIO: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLLING                        :{LTBLUE}Funzione della rotellina: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom della mappa
-STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scorri la mappa
+STR_CONFIG_PATCHES_SCROLLWHEEL_ZOOM                             :Zoom mappa
+STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Scorrimento mappa
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Off
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Velocità rotellina mappa: {ORANGE}{STRING}
 
@@ -1135,7 +1135,7 @@ STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Mostra 
 STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Creazione rapida degli ordini dei veicoli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Ferrovia predefinita (a inizio/ripresa partita): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Ferrovia normale
-STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Ferrovia elettr.
+STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Ferrovia elettrificata
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MONORAIL                   :Monorotaia
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :La prima disponibile
@@ -1175,7 +1175,7 @@ STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Anno di
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Abilita economia fluida (cambiamenti piccoli e frequenti)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permetti l'acquisto di azioni di altre compagnie
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascinando il cursore, piazza i segnali ogni: {ORANGE}{STRING} quadrato/i
-STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Costruisci automaticamente i semafori prima del: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Costruisci segnali semaforici prima del: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Abilita l'interfaccia di selezione segnali: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Tipo di segnale predefinito: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Segnale di blocco
@@ -1220,6 +1220,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Veicoli
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stazioni
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economia
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Avversari
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Visualizzazione
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interazione
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Segnali
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Gestione dei carichi
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Giocatori controllati dal computer
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Rinnovo automatico
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Manutenzione
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Instradamento
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Treni
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Città
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industrie
 
 STR_CONFIG_PATCHES_DISABLED                                     :disabilitato
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1913,6 +1924,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Troppo v
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Farebbe parte di due o più stazioni/aree di carico
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Troppe stazioni/aree di carico in questa città
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Troppe stazioni/aree di carico
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Stazione composta da troppe parti
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Troppe stazioni degli autobus
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Troppe aree di carico per camion
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Troppo vicino ad un'altra stazione/area di carico
@@ -2868,6 +2880,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Impossib
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Impossibile spostare questo ordine...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Impossibile saltare l'ordine corrente...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Impossibile saltare all'ordine selezionato...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}il veicolo non può utilizzare tutte le stazioni
+STR_CAN_T_ADD_ORDER                                             :{WHITE}il veicolo non può utilizzare questa stazione
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}un veicolo che condivide l'ordine non può utilizzare questa stazione
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Impossibile spostare il veicolo...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}La locomotiva di coda segue sempre quella di testa
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -3247,6 +3262,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inatteso
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Proprietà sconosciuta per l'azione 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativo di utilizzare un ID non valido.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contiene degli sprite corrotti. Tutti gli sprite corrotti saranno mostrati come punti interrogativi (?) rossi.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contiene occorrenze multiple dell'azione 8.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carica il profilo selezionato
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salva profilo

@@ -479,10 +479,10 @@ STR_AGE                                                         :{COMMA}سنة (
 STR_AGE_RED                                                     :{RED}{COMMA}سنة ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :مركبات
-STR_019D_AIRCRAFT                                               :طائرات
-STR_019E_SHIP                                                   :سفن
 STR_019F_TRAIN                                                  :قطار
+STR_019C_ROAD_VEHICLE                                           :مركبات
+STR_019E_SHIP                                                   :سفن
+STR_019D_AIRCRAFT                                               :طائرات
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} اصبحت قديمة
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} اصبحت قديمة جدا
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} قديمة جدا وتحتاج الى استبدال فوري
@@ -1200,6 +1200,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :متوسط
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :يمين
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}قطر اللقطة للاطار: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}قطر اللقطة للاطار:  {ORANGE}غير مفعل
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة -  : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE} حدود نعومة النوافذ - غير ملتصقة - : {ORANGE} غير مفعل
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}سرعة نمو المدينه:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :بدون
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :بطيء
@@ -1217,6 +1219,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}الم�
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}المحطات
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}الأقتصاد
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}المتنافسين
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE} عرض الخيارات
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE} التفاعل
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE} الاشارات
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE} طريقة التحميل
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE} لاعبين الكمبيوتر
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE} التجديد التلقائي
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE} الصيانة
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE} المسارات
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE} قطارات
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE} مدن
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE} مصانع
 
 STR_CONFIG_PATCHES_DISABLED                                     :غير مفعل
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1910,6 +1923,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE} قري�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}جاور اكثر من محطة موجودة مسبقا
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE} الكثير من المحطات في هذة المدينة
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE} الكثير من المحطات واماكن التحميل
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE} قطاعات المحطة كثيرة جدا
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}محطات توقف الباصات كثيرة جدا
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}محطات تحميل العربات كثيرة جدا
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}قريب جدا من محطة موجودة
@@ -2865,6 +2879,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}لا ي�
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}لا يمكن حذف هذا الامر ...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}لا يمكن تخطي الأمر الحالي ...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}لا يمكن تخطي الأمر المختار ...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE} العربة لا تستطيع الوصول الى كل المحطات
+STR_CAN_T_ADD_ORDER                                             :{WHITE} العربة لا تستطيع الوصول للمحطة
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE} العربة المشتركة لا تستطيع الوصول للمحطة
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}لا يمكن تحريك العربة ...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}المحرك الخلفي دائما سيتبع الامامي
 STR_8838_N_A                                                    :غير متاح {SKIP}
@@ -3244,6 +3261,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :خطأ غير �
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :طلب غير معروف 0  بدون خصائص
 STR_NEWGRF_ERROR_INVALID_ID                                     :محاولة استخدام ID معرف غير معروف .
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} يحتوي على خصائص غير صالحة. جميع الخصائص الغير صالحة سوف يشار لها بعلامة استفهام حمراء.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :يحتوي على اوامر متعددة - 8 مدخلات
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}فتح مجموعة الاعدادات المسجلة
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}حفظ مجموعة الاعدادات

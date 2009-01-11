@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} ja{P ar
 STR_AGE_RED                                                     :{RED}{COMMA} ja{P ar ren} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Voertuig
-STR_019D_AIRCRAFT                                               :Vliegtuig
-STR_019E_SHIP                                                   :Schip
 STR_019F_TRAIN                                                  :Trein
+STR_019C_ROAD_VEHICLE                                           :Voertuig
+STR_019E_SHIP                                                   :Schip
+STR_019D_AIRCRAFT                                               :Vliegtuig
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} is oud aan het worden
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} is erg oud aan het worden
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} is erg oud aan het worden en moet nodig vervangen worden
@@ -1218,6 +1218,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Voertui
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stations
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economie
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Tegenstanders
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Weergave opties
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interactie
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Seinen
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Vrachtafhandeling
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Computer spelers
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Automatisch vervangen
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Reparaties
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Routebepaling
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Treinen
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Steden
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industrieën
 
 STR_CONFIG_PATCHES_DISABLED                                     :uitgeschakeld
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1911,6 +1922,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te dicht
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Voegt meer dan één bestaand (laad)station samen
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations in de buurt van deze stad
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Te veel treinstationsonderdelen
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Te veel bushaltes
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Te veel vrachtwagenstations
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Te dicht bij een andere (laad)station
@@ -3248,6 +3260,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Onverwachte tek
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende aktie 0 waarde.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Poging tot gebruik ongeldig ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bevat een ongeldige sprite. Alle ongeldige sprites worden getoond als een rood vraagteken (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Bevat meerdere 'Action 8' elementen.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laad de geselecteerd voorkeursinstelling
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Bewaar voorkeursinstelling

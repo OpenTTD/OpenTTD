@@ -479,10 +479,13 @@ STR_AGE                                                         :{COMMA} χρό�
 STR_AGE_RED                                                     :{RED}{COMMA} χρόν{P ος ια} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Όχημα δρόμου
-STR_019D_AIRCRAFT                                               :Αεροσκάφος
-STR_019E_SHIP                                                   :Πλοίο
 STR_019F_TRAIN                                                  :Τρένο
+STR_019C_ROAD_VEHICLE                                           :Όχημα δρόμου
+STR_019E_SHIP                                                   :Πλοίο
+STR_019D_AIRCRAFT                                               :Αεροσκάφος
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} πάλιωσε
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} πάλιωσε πολύ
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} πάλιωσε πολύ και χρειάζεται επειγόντως αλλαγή
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Πληροφορίες Περιοχής Εδάφους
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Κόστος καθαρισμού: {RED}{CURRENCY}
@@ -596,6 +599,7 @@ STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Ένα�
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Κλείνουν οι βιομηχανίες
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Οικονομικές αλλαγές
 STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Αλλαγή της Παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρεία
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Συμβουλή / πληροφορίες για τα εταιρικά οχήματα
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Νέα οχήματα
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Αλλαγές στην αποδοχή φορτίου
 STR_020E_SUBSIDIES                                              :{YELLOW}Επιχορηγήσεις
@@ -729,6 +733,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Τοπο
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Τοποθέτηση φάρου
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Τοποθέτηση αναμεταδότη
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Ορίστε περιοχή ερήμου.{}Πατήστε και κρατήστε το CTRL για αφαίρεση
+STR_CREATE_RIVER                                                :{BLACK}Τοποθέτισε ποτάμια
 STR_0290_DELETE                                                 :{BLACK}Διαγραφή
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Πλήρης διαγραφή πόλεως
 STR_0292_SAVE_SCENARIO                                          :Απποθήκευση σεναρίου
@@ -775,6 +780,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu starts
 STR_02C4_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
+STR_MENU_CONFIG_PATCHES                                         :Προχωριμένες ρυθμίσεις
 STR_NEWGRF_SETTINGS                                             :Ρυθμίσεις NewGRF
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ονόματα πόλεων που εμφανίζονται
@@ -981,6 +987,8 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Αδύν
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Αδύνατο να αντιγραφεί η λίστα οδηγιών...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Τέλος Μοιρασμένων Οδηγιών - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} χάθηκε
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 
 # Start of order review system.
@@ -1069,6 +1077,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Ταχ�
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
+
+
 
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :όχι
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :όχι
@@ -1275,6 +1285,8 @@ STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :το όνομα
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :λάθος κωδικός
 STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :λάθος company-id στο DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :Kicked απο τον server
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 
 

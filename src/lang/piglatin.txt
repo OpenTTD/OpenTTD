@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} ear{P "
 STR_AGE_RED                                                     :{RED}{COMMA} ear{P "" s}yay ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Oadray ehiclevay
-STR_019D_AIRCRAFT                                               :Aircraftway
-STR_019E_SHIP                                                   :Ipshay
 STR_019F_TRAIN                                                  :Aintray
+STR_019C_ROAD_VEHICLE                                           :Oadray ehiclevay
+STR_019E_SHIP                                                   :Ipshay
+STR_019D_AIRCRAFT                                               :Aircraftway
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} isway ettinggay oldway
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} isway ettinggay eryvay oldway
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} isway ettinggay eryvay oldway andway urgentlyway eedsnay eplacingray
@@ -1218,6 +1218,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Ehicles
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Ationsstay
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economyway
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Ompetitorscay
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Isplayday optionsway
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interactionway
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Ignalssay
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Argocay andlinghay
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Omputercay ayersplay
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autorenewway
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Ervicingsay
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Outingray
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Ainstray
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Ownstay
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industriesway
 
 STR_CONFIG_PATCHES_DISABLED                                     :isabledday
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1911,6 +1922,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Ootay os
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Adjoinsway oremay anthay oneway existingway ationstay/oadinglay areaway
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Ootay anymay ationsstay/oadinglay areasway inway isthay owntay
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Ootay anymay ationsstay/oadinglay areasway
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Ootay anymay ailwayray ationstay artspay
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Ootay anymay usbay opsstay
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Ootay anymay orrylay ationsstay
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Ootay oseclay otay anotherway ationstay/oadinglay areaway
@@ -2866,6 +2878,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}An'tcay 
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}An'tcay ovemay isthay orderway...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}An'tcay ipskay urrentcay orderway...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}An'tcay ipskay otay electedsay orderway...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}ehiclevay an'tcay ogay otay allway ationsstay
+STR_CAN_T_ADD_ORDER                                             :{WHITE}ehiclevay an'tcay ogay otay atthay ationstay
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}away ehiclevay aringshay isthay orderway an'tcay ogay otay atthay ationstay
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}An'tcay ovemay ehiclevay...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Ethay earray engineway illway alwaysway ollowfay itsway ontfray ounterpartcay
 STR_8838_N_A                                                    :Nay/Away{SKIP}
@@ -3245,6 +3260,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpectedway i
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknownway Actionway 0 opertypray.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attemptway otay useway invalidway IDWAY.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} ontainscay away orruptcay itespray. Allway orruptcay itesspray illway ebay ownshay asway away edray estionquay arkmay (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Ontainscay ultiplemay Actionway 8 entriesway.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Oadlay ethay electedsay esetpray
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Avesay esetpray

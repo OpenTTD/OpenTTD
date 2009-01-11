@@ -544,10 +544,10 @@ STR_AGE                                                         :{COMMA} év ({C
 STR_AGE_RED                                                     :{RED}{COMMA} év ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :közúti jármű
-STR_019D_AIRCRAFT                                               :repülőgép
-STR_019E_SHIP                                                   :hajó
 STR_019F_TRAIN                                                  :vonat
+STR_019C_ROAD_VEHICLE                                           :közúti jármű
+STR_019E_SHIP                                                   :hajó
+STR_019D_AIRCRAFT                                               :repülőgép
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} elöregedett
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} nagyon elöregedett
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} nagyon elöregedett, sürgősen le kell cserélni
@@ -1284,6 +1284,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Jármű
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Állomások
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Gazdaság
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Ellenfelek
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Megjelenítési beállítások
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Irányítás
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Jelzők
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Áru kezelés
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Számítógép által vezérelt ellenfelek
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Automata felújítás
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Szervíz
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Útvonalkeresés
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Vonatok
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Városok
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Ipar
 
 STR_CONFIG_PATCHES_DISABLED                                     :kikapcsolva
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1977,6 +1988,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Túl kö
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Több állomással/rakodóhellyel érintkezik
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Túl sok állomás/rakodóhely van ebben a városban
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Túl sok az állomás/rakodóhely
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Túl sok vasútállomás darab
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Túl sok buszmegálló
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Túl sok kamion megálló
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Túl közel van egy másik állomáshoz/rakodóhelyhez
@@ -2969,6 +2981,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nem mód
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Úticél mozgatása nem lehetséges...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nem lehet átugrani a jelenlegi úticélt...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nem lehet a kiválasztott úticélra ugrani...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}a jármű nem mehet az összes állomásra
+STR_CAN_T_ADD_ORDER                                             :{WHITE}a jármű nem tud a megadott állomásra menni
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}egy jármű, amivel meg van osztva ez az utasítás, nem tud a megadott állomásra menni
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nem mozgathatod a járművet...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}A mozdony első felének mindig elöl kell lennie
 STR_8838_N_A                                                    :Nincs{SKIP}
@@ -3348,6 +3363,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Váratlan sprit
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Ismeretlen "Action 0" tulajdonság
 STR_NEWGRF_ERROR_INVALID_ID                                     :Érvénytelen ID-használati kisérlet.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} hibás sprite-ot tartalmaz. Minden hibás sprite piros kérdőjellel (?) kerül jelölésre.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Túl sok Action 8 bejegyzést tartalmaz.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Kiválasztott lista betöltése
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Lista mentése

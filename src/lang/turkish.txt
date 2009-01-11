@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} sene ({
 STR_AGE_RED                                                     :{RED}{COMMA} sene ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Karayolu taşıtı
-STR_019D_AIRCRAFT                                               :Uçak
-STR_019E_SHIP                                                   :Gemi
 STR_019F_TRAIN                                                  :Tren
+STR_019C_ROAD_VEHICLE                                           :Karayolu taşıtı
+STR_019E_SHIP                                                   :Gemi
+STR_019D_AIRCRAFT                                               :Uçak
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} eskiyor
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} çok eskidi
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} çok eskiyor ve acilen değiştirilmesi gerekiyor
@@ -1027,6 +1027,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Çok uz
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Gerçekçi tren hızlanması: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING} {LTBLUE} (NPF gerektirir)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yan yana yapılan tren istasyonlarını birleştir: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Doğrudan bitişik olmayan istasyonları birleştirme izni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Geliştirilmiş yükleme algoritması kullan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Araçlar yavaş yavaş dolsun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Enflasyon: {ORANGE}{STRING}
@@ -1139,6 +1140,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :En eskisi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :En yenisi
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :En çok kullanılan
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Ayrılan rayları göster: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Yapı araçlarını kullanımdan sonra aktif tut: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Hiç uygun araç olmasa da inşa araçlarını göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
@@ -1197,6 +1199,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Orta
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Sağ
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}{STRING} piksel
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pencere yapışma yarıçapı: {ORANGE}kapalı
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Pencere soft sınırı (yapşkan olmayan): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Pencere soft sınırı (yapşkan olmayan): {ORANGE}kapalı
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Şehirlerin genişleme hızı: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Hiçbiri
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Yavaş
@@ -1214,6 +1218,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Araçla
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}İstasyonlar
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Rakipler
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Görüntü seçenekleri
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Etkileşim
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyaller
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Kargo idaresi
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Bilgisayar oyuncuları
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Otomatik yenileme
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Bakımlar
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Yönlenme
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Trenler
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Şehirler
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Endüstri
 
 STR_CONFIG_PATCHES_DISABLED                                     :kapalı
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1717,6 +1732,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Karışık- ve 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Karışık- ve tek yön sinyalleri olan demiryolu
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ön ve tek yön sinyalli ray
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Önce tren istasyonu kaldırılmalı
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Ayrı bir istasyon inşa et
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}İstasyonu birleştir
 
 
 
@@ -1905,6 +1922,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Başka t
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Birden fazla istasyona bitişik
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Bu şehirde çok fazla istasyon var
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Haritada çok fazla istasyon var
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Çok fazla demiryolu istasyon parçası var
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Çok fazla durak var
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Çok fazla kamyon yükleme yeri var
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Başka bir istasyona çok yakın
@@ -2860,6 +2878,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Bu talim
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Talimat taşınamıyor...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Talimat atlanamıyor...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Seçili talimata atlanamıyor...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}araç tüm istasyonlara gidemiyor
+STR_CAN_T_ADD_ORDER                                             :{WHITE}araç bu istasyona gidemiyor
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}bu emri paylaşan bir araç bu istasyona gidemiyor
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Araç hareket edemiyor...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Arkadaki lokomotif daima önündekini takip edecek
 STR_8838_N_A                                                    :yok{SKIP}
@@ -3239,6 +3260,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Beklenmeyen spr
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Bilinmeyen Action 0 özelliği.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Geçersiz ID kullanımı denemesi
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} bozuk bir sprayt içeriyor. Tüm bozuk spraytlar kırmızı bir soru işareti (?) olarak görünecektir.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Birden fazla Action 8 girişi içeriyor.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Seçili seçkiyi yükle
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Seçkiyi kaydet

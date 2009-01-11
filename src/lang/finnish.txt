@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} vuo{P s
 STR_AGE_RED                                                     :{RED}{COMMA} vuo{P si tta} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Ajoneuvo
-STR_019D_AIRCRAFT                                               :Lentokone
-STR_019E_SHIP                                                   :Laiva
 STR_019F_TRAIN                                                  :Juna
+STR_019C_ROAD_VEHICLE                                           :Ajoneuvo
+STR_019E_SHIP                                                   :Laiva
+STR_019D_AIRCRAFT                                               :Lentokone
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} on tulossa vanhaksi
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} on tulossa hyvin vanhaksi ja on uusimisen tarpeessa
@@ -3260,6 +3260,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Odottamaton spr
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Tuntematon Action 0 -ominaisuus.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Virheellisen ID:n käyttöyritys.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sisältää korruptoituneen spriten. Kaikki korruptoituneet spritet näkyvät punaisina kysymysmerkkeinä (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sisältää useamman Action 8 -kohdan.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Lataa valittu valmislista
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Tallenna valmislistaksi

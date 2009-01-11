@@ -520,10 +520,13 @@ STR_AGE                                                         :{COMMA} let{P o
 STR_AGE_RED                                                     :{RED}{COMMA} let{P o i a ""} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Cestno vozilo
-STR_019D_AIRCRAFT                                               :Letalo
-STR_019E_SHIP                                                   :Ladja
 STR_019F_TRAIN                                                  :Vlak
+STR_019C_ROAD_VEHICLE                                           :Cestno vozilo
+STR_019E_SHIP                                                   :Ladja
+STR_019D_AIRCRAFT                                               :Letalo
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} se stara
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} podlega iztrošenosti
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} nima več zanesljivosti in nujno potrebuje zamenjavo
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacije o zemljišču
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cena za čiščenje: {LTBLUE}Ni na voljo
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cena za čiščenje: {RED}{CURRENCY}
@@ -1033,12 +1036,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Ni mogo�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Ni mogoče skopirati urnika ...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Konec ukazov v skupni rabi - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} ne najde poti za nadaljevanje.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} je izgubljen.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} povzroča izgubo. Lanski dobiček je bil {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Evropska denarna združitev!{}{}Evro je uveden kot edina valuta za trgovske transakcije v državi!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} ima premalo ukazov na urniku
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} ima prazen ukaz
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} ima podvojene ukaze
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} ima eno neveljavno postajo na urniku
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Samoobnova ni uspela na {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} je predolgo po zamenjavi
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ni samoobnovitvenih pravil.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(denarna meja)
 
@@ -1057,6 +1069,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Omogoč
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Omogoči bolj resnične pospeške vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90-stopinjske zavoje: {ORANGE}{STRING} {LTBLUE} (potrebuje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Združi železniške postaje, ki si stojijo blizu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dovoli združevanje postaj, ki niso v dotiku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uporabi izboljšan algoritem polnjenja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Postopno polni vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacija: {ORANGE}{STRING}
@@ -1092,6 +1105,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pregled
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, toda izloči ustavljena vozila
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :vseh vozil
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Opozori, če je prihodek vozila negativen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vozila nikoli ne dotrajajo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Samoobnovi vozila, ko se postarajo
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Samoobnovi, ko je vozilo {ORANGE}{STRING}{LTBLUE} mesecev pred/po največji starosti
@@ -1158,6 +1172,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Lastno podjetje
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Vsa podjetja
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Omogoči časovne tabele vozil: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Prikaz časovnih tabel v pikah namesto dneh: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Hitro ustvarjanje ukazov vozila: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Privzeta vrsta železnice (ob zagonu nove igre): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normalna železnica
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrificirana železnica
@@ -1167,6 +1182,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Prvi/a/o/ na iz
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Zadnji/a/o/ na izbiro
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Najbolj uporabljan/a/o
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Prikaz posebnih tirov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Ohrani orodja za gradnjo aktivna po uporabi: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Prikaz gradbenih orodij, ko ni primernih vozil na izbiro: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Največ vlakov na igralca: {ORANGE}{STRING}
@@ -1225,6 +1241,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Sredina
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Desno
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radij lepljenja oken: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radij lepljenja oken: {ORANGE}onemogočeno
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Mehki mejnik oken (nelepljiva): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Mehki mejnik oken (nelepljiva): {ORANGE}izklopljen
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Hitrost rasti mesta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Brez
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Počasi
@@ -1242,6 +1260,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Postaje
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomija
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Tekmeci
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Prikaži možnosti
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaktivnost
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Upravljanje tovora
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Računalniški igralci
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Samoobnova
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servisiranje
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Usmerjanje
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Vlaki
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Mesta
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
 
 STR_CONFIG_PATCHES_DISABLED                                     :onemogočeno
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1745,6 +1774,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Železnica s ko
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Železnica s kombiniranimi in enosmernimi naprednimi signali
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Železnica z naprednimi in enosmernimi naprednimi signali
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Najprej moraš odstraniti železniško postajo
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Izgradnja ločene postaje
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Združi postaje
 
 
 
@@ -1934,6 +1965,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Preblizu
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Združi dve ali več postaj
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Preveč postaj v tem mestu
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Preveč postaj na zemljevidu
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Preveč delov železniške postaje
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Preveč avtobusnih postaj
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Preveč tovornih postaj
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Preblizu druge postaje
@@ -2874,6 +2906,7 @@ STR_UNKNOWN_STATION                                             :neznana postaja
 STR_8812_EMPTY                                                  :{LTBLUE}Prazen
 STR_8813_FROM                                                   :Tovor {LTBLUE}{CARGO} iz postaje {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} iz {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} čaka v garaži
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nova vozila
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je predolg
@@ -2925,6 +2958,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ni mogo�
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Ni možen premik tega ukaza...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nemogoč preskok trenutnega ukaza...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nemogoč preskok na izbran ukaz...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}vozilo ne more do vseh postaj
+STR_CAN_T_ADD_ORDER                                             :{WHITE}vozilo ne more do tiste postaje
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}vozilo, ki ima skupni ukaz, ne more do tiste postaje
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ni mogoče premakniti vozila ...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadnja lokomotiva vedno sledi prvi
 STR_8838_N_A                                                    :Ni na voljo{SKIP}
@@ -3032,6 +3068,7 @@ STR_9012_CAPACITY                                               :{BLACK}Zmogljiv
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE} ... mora biti ustavljen v garaži
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ni mogoče prodati cestnega vozila...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ni mogoče ustaviti/zagnati cestnega vozila ...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaka v garaži
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Pelje v {TOWN} cestno garažo
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Pelje v {TOWN} cestno garažo, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Na servisiranje v {TOWN} cestno garažo
@@ -3113,6 +3150,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Pelje v
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Pelje v {TOWN} ladijsko garažo, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Gre na servis v {TOWN} ladijsko garažo
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Gre na servis v {TOWN} ladijsko garažo, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} čaka v ladjedelnici
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Zgradi ladijski dok
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Zgradi ladjedelnico (za izgradnjo in servisiranje ladij)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ladje - klikni na ladjo za informacije
@@ -3177,6 +3215,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Na poti
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Na poti v {STATION} hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Gre na servis v {STATION} hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Gre na servis v {STATION} hangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} čaka v letališkem hangarju
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letalo v napoto
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ni mogoče ustaviti/zagnati letala ...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Letalo v letu
@@ -3301,6 +3340,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepričakovana 
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznan ukaz 0 lastnosti.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Poskus uporabe neveljavnega ID-ja.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} vsebuje eno poškodovano sličico. Vse poškodovane sličice se bodo prikazale kot rdeči vprašaji (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Vsebuje večkratne Action 8 vnose.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Naloži izbrano prednastavitev
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Shrani prednastavitev
@@ -3437,6 +3477,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klikni z
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam oznak - {COMMA} oznak{P a i e ""}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Neuspeli ukaz za predelavo ustavljen {VEHICLE}
 
 ############ Lists rail types
 

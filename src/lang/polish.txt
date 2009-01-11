@@ -531,10 +531,10 @@ STR_AGE                                                         :{COMMA} {P rok 
 STR_AGE_RED                                                     :{RED}{COMMA} {P rok lata lat} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Samochód
-STR_019D_AIRCRAFT                                               :Samolot
-STR_019E_SHIP                                                   :Statek
 STR_019F_TRAIN                                                  :Pociąg
+STR_019C_ROAD_VEHICLE                                           :Samochód
+STR_019E_SHIP                                                   :Statek
+STR_019D_AIRCRAFT                                               :Samolot
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} starzeje się
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} bardzo się starzeje
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} bardzo się starzeje i potrzebuje natychmiastowej wymiany
@@ -1296,6 +1296,15 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Pojazdy
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stacje
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomia
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Zawodnicy
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Wyświetl opcje
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Oddziaływanie
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Sygnały
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Gracze komputerowi
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autoodnowa
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Serwisowanie
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Pociągi
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Miasteczka
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Fabryki
 
 STR_CONFIG_PATCHES_DISABLED                                     :niedostępne
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1798,6 +1807,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Tor kolejowy z 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Tor kolejowy z sygnałami mieszanymi- i trasy jednokierunkowej
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Tor kolejowy z sygnałami trasy i trasy jednokierunkowej
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Należy najpierw usunąć stację kolejową
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Zbuduj oddzielną stację
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Połącz stację
 
 
 

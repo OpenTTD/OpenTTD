@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} any{P "
 STR_AGE_RED                                                     :{RED}{COMMA} any{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Vehicle
-STR_019D_AIRCRAFT                                               :Avió
-STR_019E_SHIP                                                   :Vaixell
 STR_019F_TRAIN                                                  :Tren
+STR_019C_ROAD_VEHICLE                                           :Vehicle
+STR_019E_SHIP                                                   :Vaixell
+STR_019D_AIRCRAFT                                               :Avió
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} s'està fent vell
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} s'està fent molt vell
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} s'està fent molt vell i necessita ser substituït urgentment
@@ -1218,6 +1218,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vehicle
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Estacions
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economia
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Competidors
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Opcions de pantalla
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interacció
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Senyals
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulació de la càrrega
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Jugadors de l'ordenador
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autorenovació
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Revisions
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Recorreguts
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Trens
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Pobles
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Indústries
 
 STR_CONFIG_PATCHES_DISABLED                                     :desactivat
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1911,6 +1922,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Massa a 
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Fusiona més d'una estació/àrea de càrrega existent
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Hi ha massa estacions/àrees de càrrega en aquesta població
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Massa estacions/àrees de càrrega
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Hi ha massa parts d'estacions de tren
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Massa parades d'autobús
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Masses estacions de càrrega
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Massa a prop d'una altra estació/àrea de càrrega
@@ -2866,6 +2878,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}No es po
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Impossible moure aquesta ordre...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Impossible saltar l'ordre actual...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Impossible saltar l'ordre seleccionada...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}el vehicle no pot anar a totes les estacions
+STR_CAN_T_ADD_ORDER                                             :{WHITE}el vehicle no pot anar a aquesta estació
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}un vehicle que comparteix aquesta ordre no pot anar a aquesta estació
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}No es pot moure el vehicle...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}La màquina posterior sempre ha de seguir la seva parella davantera
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -3245,6 +3260,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite no esper
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Acció desconeguda 0 atributs.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Intenta utilitzar una ID invàlida.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} conté un sprite corrupte. Tots els sprites corruptes seran mostrats amb un interrogant vermell (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conté múltiples accións 8 entrades.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carrega la predefinició seleccionada
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Desa predefinició

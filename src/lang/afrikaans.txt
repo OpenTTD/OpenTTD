@@ -479,10 +479,10 @@ STR_AGE                                                         :{COMMA} ja{P ar
 STR_AGE_RED                                                     :{RED}{COMMA} ja{P ar re} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Pad voertuig
-STR_019D_AIRCRAFT                                               :Vliegtuig
-STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :Trein
+STR_019C_ROAD_VEHICLE                                           :Pad voertuig
+STR_019E_SHIP                                                   :Skip
+STR_019D_AIRCRAFT                                               :Vliegtuig
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} raak oud.
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} raak baie oud.
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} raak baie oud en benodig dringende vervanging.
@@ -938,6 +938,7 @@ STR_CURR_SEK                                                    :Swedish Krona (
 STR_CURR_YTL                                                    :Turkish Lira (YTL)
 STR_CURR_SKK                                                    :Slovak Koruna (SKK)
 STR_CURR_BRL                                                    :Brazilian Real (BRL)
+STR_CURR_EEK                                                    :Estonian Krooni (EEK)
 
 STR_CURR_CUSTOM                                                 :Gebruiklike...
 
@@ -1026,6 +1027,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Ontsper
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Ontsper realistiese versnelling vir treine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbied triene en skepe om 90 graad draaie te maak: {ORANGE}{STRING} {LTBLUE} (benodig NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}sluit aan trein stasies gebou naby mekaar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Laat toe dat stasies lanks mekaar gebind kan word: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verebeterde laai algoritme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Laai voertuie geleidelik: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflasie: {ORANGE}{STRING}
@@ -1113,6 +1115,7 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Af
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Gebruik die {ORANGE}{STRING}{LTBLUE} datum formaat vir gestoorde spel name.
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :lank (31ste Des 2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Outomaties pouse wanneer om te begin 'n nuwe speletjie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Gebruik die voorloopende voertuiglys: {ORANGE}{STRING}
@@ -1209,6 +1212,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Voertui
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stasies
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomie
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Mededingers
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Skerm opsies
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaksie
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Seine
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Goedere hantering
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Rekenaar spelers
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Outo hernu
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Diens
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Roete
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Treine
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Dorpe
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Nywerhede
 
 STR_CONFIG_PATCHES_DISABLED                                     :gestrem
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1570,6 +1584,9 @@ STR_NETWORK_ERR_CLIENT_CHEATER                                  :het probeer om 
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :verskaffer vol
 ############ End of leave-in-this-order
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Speletjie gepoos (not enough players)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Speletjie ongepoos (genoeg spelers)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Speletjie gepoos (konnekteer kliënt)
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} het by die spel aangesluit
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} het die spel verlaat ({2:STRING})
@@ -2839,6 +2856,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Die opdr
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kan nie opdrag beweeg nie...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan nie huidige opdrag sprong nie...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan nie verkieste opdrag sprong nie...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}voertuig kan nie na al die stasies toe gaan
+STR_CAN_T_ADD_ORDER                                             :{WHITE}voertuig kan nie na daardie stasie toe gaan
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}'n voertuig wat heirdie opdrag deel kan nie na daadie stasie toe gaan
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan nie voertuig beweeg nie...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Die agterste motor sal altyd die voorste motor volg
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2913,6 +2933,7 @@ STR_NEW_VEHICLE_TYPE                                            :{BLACK}{BIGFONT
 STR_NEW_VEHICLE_NOW_AVAILABLE_WITH_TYPE                         :{BLACK}Nuwe {STRING} nou beskikbaar!  -  {ENGINE}
 
 STR_CAN_T_SELL_DESTROYED_VEHICLE                                :{WHITE}Kan nie vernietige voertuig verkoop nie...
+STR_CAN_T_REFIT_DESTROYED_VEHICLE                               :{WHITE}Kan nie vernietigte voertuig aanpas nie...
 
 STR_CAN_T_TIMETABLE_VEHICLE                                     :{WHITE}Kan nie rooster voertuig nie...
 STR_TIMETABLE_ONLY_WAIT_AT_STATIONS                             :{WHITE}Voertuie gan slegs by stasies wag.
@@ -3214,6 +3235,7 @@ STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Onbekende Aksie
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pooging om onvoldoende ID te gebruik.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} het 'n korrupte "sprite". Alle korrupte "sprites" sal gewys word as 'n rooi vraag teken (?).
 
+STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Laai die gekose voorafstel
 STR_NEWGRF_ADD                                                  :{BLACK}Voeg
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg 'n NewGRF na die lys
 STR_NEWGRF_REMOVE                                               :{BLACK}Verwyder

@@ -479,10 +479,10 @@ STR_AGE                                                         :{COMMA} an{P ""
 STR_AGE_RED                                                     :{RED}{COMMA} an{P "" nées} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Véhicule routier
-STR_019D_AIRCRAFT                                               :Aéronef
-STR_019E_SHIP                                                   :Navire
 STR_019F_TRAIN                                                  :Train
+STR_019C_ROAD_VEHICLE                                           :Véhicule routier
+STR_019E_SHIP                                                   :Navire
+STR_019D_AIRCRAFT                                               :Aéronef
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} devient vieux
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} devient très vieux
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} devient très vieux et doit être remplacé d'urgence
@@ -1223,7 +1223,7 @@ STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Options
 STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaction
 STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaux
 STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Gestion des cargaisons
-STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Joueurs de l'ordinateur
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Intelligence Articielle
 STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Renouvellement automatique
 STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Entretien
 STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Routage
@@ -3261,6 +3261,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite inattend
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriété d'Action 0 inconnue.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentative d'utilisation d'un ID invalide.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contient un sprite corrompu. Tous les sprites corrompus seront remplacés par un point d'interrogation rouge (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contient plusieurs Action 8.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Charger la liste sélectionnée
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Sauver la liste

@@ -512,10 +512,10 @@ STR_AGE                                                         :{COMMA} metai (
 STR_AGE_RED                                                     :{RED}{COMMA} metai ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Automobilis
-STR_019D_AIRCRAFT                                               :Lėktuvas
-STR_019E_SHIP                                                   :Laivas
 STR_019F_TRAIN                                                  :Traukinys
+STR_019C_ROAD_VEHICLE                                           :Automobilis
+STR_019E_SHIP                                                   :Laivas
+STR_019D_AIRCRAFT                                               :Lėktuvas
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacija apie žemės plotą
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Išvalymo kaina: {LTBLUE}NĖRA
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Išvalymo kaina: {RED}{CURRENCY}
@@ -1128,6 +1128,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Žemėl
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Išjungta
 
+
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatinė pauzė paleidžiant naują žaidimą: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Naudoti pagerintą automobilių sąrašą: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Išjungta
@@ -1586,6 +1588,15 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :ismestas server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :bande sukciauti
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveris pilnas
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Žaidimas sustabdytas (trūksta žaidėjų)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Žaidimas veikia (Užtenka žaidėjų)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Žaidimas sustabdytas (Prijungiamas klientas)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Žaidimas veikia (Klientas pajungtas)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Žaidimas tęsiamas (Klientas neprisijungė)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :išeinama
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} prisijungė prie žaidimo
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Komandai] :
 STR_NETWORK_CHAT_COMPANY                                        :[Komandai] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Komandai] {STRING}: {GRAY}{STRING}
@@ -1702,9 +1713,15 @@ STR_RAILROAD_TRACK_WITH_NORMAL_NOENTRYSIGNALS                   :Geležinkelis s
 STR_RAILROAD_TRACK_WITH_PRE_EXITSIGNALS                         :Geležinkelis su pre- ir išėjimo signalais
 STR_RAILROAD_TRACK_WITH_PRE_COMBOSIGNALS                        :Geležinkelis su pre- ir kombo- signalais
 STR_RAILROAD_TRACK_WITH_PRE_PBSSIGNALS                          :Geležinkelis su pre- ir krypties signalais
+STR_RAILROAD_TRACK_WITH_EXIT_COMBOSIGNALS                       :Geležinkelis su išėjimo ir kombo- šviesoforais
+STR_RAILROAD_TRACK_WITH_EXIT_PBSSIGNALS                         :Geležinkelis su išėjimo ir krypties šviesoforais
+STR_RAILROAD_TRACK_WITH_EXIT_NOENTRYSIGNALS                     :Geležinkelis su išėjimo ir vienpusiais krypties šviesoforais
+STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Bėgiai su kombo ir krypties signalais
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Bėgiai su combo- ir vienpusiais krypties signalais
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Bėgiai su krypties ir vienpusiais krypties šviesoforais
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Pašalinkite stotelę prieš tęsdami!
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Statyti perskirtą stotį
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Sujunkti stotį
 
 
 
@@ -1993,6 +2010,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Negali p
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Zaidimo issaugoti nepavyko{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Failo ištrinti nepavyko
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Zaidimo atverti nepavyko{}{STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_INTERNAL_ERROR                   :Vidinė klaida: {STRING}
+STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sugadintas išsaugotas žaidimas - {STRING}
+STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Išsaugotas žaidimas iš naujesnės versijos
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Neįmanoma perskaityti failo
+STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Neįmanoma įrašyti failo
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Diskų, katalogų ir išsaugotu žaidimų sąrašas
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Pasirinktas žaidimas
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Ištrinti pasirinktą žaidimą
@@ -2001,6 +2023,7 @@ STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Pasirink
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Pasirinkite scenarijų (žalia spalva), nustatytą žaidimą (mėlyna), ar atsitiktinį naują žaidimą
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Sukurti atsitiktinį naują žaidimą
 STR_LOAD_HEIGHTMAP                                              :{WHITE}Atverti aukščių žemėlapį
+STR_SAVE_OSKTITLE                                               :{BLACK}Įveskite Išsaugomo žaidimo vardą
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} kelyje
@@ -2050,6 +2073,7 @@ STR_4829_REQUIRES                                               :{BLACK}Reikalau
 ############ range for requires ends
 
 ############ range for produces starts
+STR_INDUSTRY_WINDOW_WAITING_FOR_PROCESSING                      :{BLACK}Krovinys, kuris bus perdirbtas:
 ############ range for produces ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Praėjusio mėnesio produkcija:
@@ -2700,6 +2724,7 @@ STR_ORDER_NO_LOAD                                               :(Nepakrauti)
 STR_ORDER_UNLOAD                                                :(Iškrauti ir pasiimti krovinį)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iškrauti ir laukti pilno krovinio)
 
+STR_ORDER_NEAREST_HANGAR                                        :artimiausias Angaras
 
 
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia taisymo

@@ -546,10 +546,10 @@ STR_AGE                                                         :{COMMA} {P rok 
 STR_AGE_RED                                                     :{RED}{COMMA} {P rok roky let} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Silniční vozidlo
-STR_019D_AIRCRAFT                                               :Letadlo
-STR_019E_SHIP                                                   :Loď
 STR_019F_TRAIN                                                  :Vlak
+STR_019C_ROAD_VEHICLE                                           :Silniční vozidlo
+STR_019E_SHIP                                                   :Loď
+STR_019D_AIRCRAFT                                               :Letadlo
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} zastarává
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} silně zastarává
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} silně zastarává a nutně potřebuje nahradit
@@ -1286,6 +1286,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Dop. pr
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stanice
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Konkurenti
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Zobrazení
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Chování
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Návěstidla
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Náklad
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Umělá inteligence
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Obnovování
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servis
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Směrování
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Vlaky
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Města
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Průmysl
 
 STR_CONFIG_PATCHES_DISABLED                                     :vypnuto
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -3323,6 +3334,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Nepředpokláda
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznámá vlastnost Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokus o použití neplatného ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškozený sprite. Všechny takové se zobrazí jako červený otazník (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje víc GRF akcí 8.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrát vybranou předvolbu
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit předvolbu
