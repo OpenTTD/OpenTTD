@@ -3652,12 +3652,6 @@ static void TrainController(Vehicle *v, Vehicle *nomove, bool update_image)
 {
 	Vehicle *prev;
 
-	if (v->current_order.IsType(OT_LEAVESTATION)) {
-		v->current_order.Free();
-		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
-		return;
-	}
-
 	/* For every vehicle after and including the given vehicle */
 	for (prev = v->Previous(); v != nomove; prev = v, v = v->Next()) {
 		DiagDirection enterdir = DIAGDIR_BEGIN;
@@ -4334,6 +4328,12 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 			v->load_unload_time_rem = 0;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		}
+	}
+
+	if (v->current_order.IsType(OT_LEAVESTATION)) {
+		v->current_order.Free();
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
+		return;
 	}
 
 	int j = UpdateTrainSpeed(v);
