@@ -16,6 +16,7 @@
 #include "spriteloader/png.hpp"
 #endif /* WITH_PNG */
 #include "blitter/factory.hpp"
+#include "core/math_func.hpp"
 
 #include "table/sprites.h"
 
@@ -42,6 +43,10 @@ static inline SpriteCache *GetSpriteCache(uint index)
 	return &_spritecache[index];
 }
 
+static inline bool IsMapgenSpriteID(SpriteID sprite)
+{
+	return IsInsideMM(sprite, 4845, 4882);
+}
 
 static SpriteCache *AllocateSpriteCache(uint index)
 {
@@ -100,27 +105,26 @@ void SkipSpriteData(byte type, uint16 num)
 
 /**
  * Read the sprite header data and then skip the real payload.
- * @return true if the sprite is a pseudo sprite.
+ * @return type of sprite; ST_INVALID if the sprite is a pseudo- or unusable sprite
  */
-static bool ReadSpriteHeaderSkipData()
+static SpriteType ReadSpriteHeaderSkipData()
 {
 	uint16 num = FioReadWord();
-	byte type;
 
-	if (num == 0) return false;
+	if (num == 0) return ST_INVALID;
 
-	type = FioReadByte();
+	byte type = FioReadByte();
 	if (type == 0xFF) {
 		FioSkipBytes(num);
 		/* Some NewGRF files have "empty" pseudo-sprites which are 1
 		 * byte long. Catch these so the sprites won't be displayed. */
-		return num != 1;
+		return (num == 1) ? ST_INVALID : ST_RECOLOUR;
 	}
 
 	FioSkipBytes(7);
 	SkipSpriteData(type, num - 8);
 
-	return true;
+	return ST_NORMAL;
 }
 
 /* Check if the given Sprite ID exists */
@@ -139,16 +143,10 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 	uint8 file_slot = sc->file_slot;
 	size_t file_pos = sc->file_pos;
 
+	assert(IsMapgenSpriteID(id) == (sprite_type == ST_MAPGEN));
+	assert(sc->type == sprite_type);
+
 	DEBUG(sprite, 9, "Load sprite %d", id);
-
-	if (!SpriteExists(id)) {
-		DEBUG(sprite, 1, "Tried to load non-existing sprite #%d. Probable cause: Wrong/missing NewGRFs", id);
-
-		/* SPR_IMG_QUERY is a BIG FAT RED ? */
-		id = SPR_IMG_QUERY;
-		file_slot = GetSpriteCache(SPR_IMG_QUERY)->file_slot;
-		file_pos  = GetSpriteCache(SPR_IMG_QUERY)->file_pos;
-	}
 
 	if (sprite_type == ST_NORMAL && BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 32) {
 #ifdef WITH_PNG
@@ -159,8 +157,6 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 		if (sprite_loader.LoadSprite(&sprite, file_slot, sc->id, sprite_type)) {
 			sc->ptr = BlitterFactoryBase::GetCurrentBlitter()->Encode(&sprite, &AllocSprite);
 			free(sprite.data);
-
-			sc->type = sprite_type;
 
 			return sc->ptr;
 		}
@@ -179,16 +175,10 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 	/* Read the size and type */
 	int num  = FioReadWord();
 	byte type = FioReadByte();
-	/* Type 0xFF indicates either a colormap or some other non-sprite info */
-	if (type == 0xFF) {
-		if (sprite_type != ST_RECOLOUR) {
-			static byte warning_level = 0;
-			DEBUG(sprite, warning_level, "Tried to load recolour sprite #%d as a real sprite. Probable cause: NewGRF interference", id);
-			warning_level = 6;
-			if (id == SPR_IMG_QUERY) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a recolour-sprite?");
-			return (void*)GetRawSprite(SPR_IMG_QUERY, ST_NORMAL);
-		}
 
+	/* Type 0xFF indicates either a colormap or some other non-sprite info */
+	assert((type == 0xFF) == (sprite_type == ST_RECOLOUR));
+	if (type == 0xFF) {
 		/* "Normal" recolour sprites are ALWAYS 257 bytes. Then there is a small
 		 * number of recolour sprites that are 17 bytes that only exist in DOS
 		 * GRFs which are the same as 257 byte recolour sprites, but with the last
@@ -197,7 +187,6 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 		byte *dest = (byte *)AllocSprite(max(RECOLOUR_SPRITE_SIZE, num));
 
 		sc->ptr = dest;
-		sc->type = sprite_type;
 
 		if (_palette_remap_grf[sc->file_slot]) {
 			byte *dest_tmp = AllocaM(byte, max(RECOLOUR_SPRITE_SIZE, num));
@@ -216,6 +205,7 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 
 		return sc->ptr;
 	}
+
 	/* Ugly hack to work around the problem that the old landscape
 	 *  generator assumes that those sprites are stored uncompressed in
 	 *  the memory, and they are only read directly by the code, never
@@ -225,7 +215,6 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 	 * Ugly: yes. Other solution: no. Blame the original author or
 	 *  something ;) The image should really have been a data-stream
 	 *  (so type = 0xFF basicly). */
-	assert((id >= 4845 && id <= 4881) == (sprite_type == ST_MAPGEN));
 	if (sprite_type == ST_MAPGEN) {
 		uint height = FioReadByte();
 		uint width  = FioReadWord();
@@ -259,17 +248,10 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 		return sc->ptr;
 	}
 
-	if (sprite_type == ST_RECOLOUR) {
-		static byte warning_level = 0;
-		DEBUG(sprite, warning_level, "Tried to load real sprite #%d as a recolour sprite. Probable cause: NewGRF interference", id);
-		warning_level = 6;
-		return (void*)GetRawSprite(id, ST_NORMAL);
-	}
+	assert(sprite_type == ST_NORMAL);
 
 	SpriteLoaderGrf sprite_loader;
 	SpriteLoader::Sprite sprite;
-
-	sc->type = sprite_type;
 
 	if (!sprite_loader.LoadSprite(&sprite, file_slot, file_pos, sprite_type)) {
 		if (id == SPR_IMG_QUERY) usererror("Okay... something went horribly wrong. I couldn't load the fallback sprite. What should I do?");
@@ -284,22 +266,30 @@ static void *ReadSprite(SpriteCache *sc, SpriteID id, SpriteType sprite_type)
 
 bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 {
-	SpriteCache *sc;
 	size_t file_pos = FioGetPos();
 
-	if (!ReadSpriteHeaderSkipData()) return false;
+	SpriteType type = ReadSpriteHeaderSkipData();
+
+	if (type == ST_INVALID) return false;
 
 	if (load_index >= MAX_SPRITES) {
 		usererror("Tried to load too many sprites (#%d; max %d)", load_index, MAX_SPRITES);
 	}
 
-	sc = AllocateSpriteCache(load_index);
+	bool is_mapgen = IsMapgenSpriteID(load_index);
+
+	if (is_mapgen) {
+		if (type != ST_NORMAL) usererror("Uhm, would you be so kind not to load a NewGRF that changes the type of the map generator sprites?");
+		type = ST_MAPGEN;
+	}
+
+	SpriteCache *sc = AllocateSpriteCache(load_index);
 	sc->file_slot = file_slot;
 	sc->file_pos = file_pos;
 	sc->ptr = NULL;
 	sc->lru = 0;
 	sc->id = file_sprite_id;
-	sc->type = ST_NORMAL;
+	sc->type = type;
 
 	return true;
 }
@@ -483,23 +473,68 @@ void *AllocSprite(size_t mem_req)
 	}
 }
 
+/** Handles the case when a sprite of different type is requested than is present in the SpriteCache.
+ * For ST_FONT sprites, it is normal. In other cases, default sprite is loaded instead.
+ * @param sprite ID of loaded sprite
+ * @param requested requested sprite type
+ * @param available available sprite type
+ * @return fallback sprite
+ * @note this function will do usererror() in the case the fallback sprite isn't available */
+static const void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteType available)
+{
+	static const char *sprite_types[] = {
+		"normal",        // ST_NORMAL
+		"map generator", // ST_MAPGEN
+		"character",     // ST_FONT
+		"recolour",      // ST_RECOLOUR
+	};
+
+	if (requested == ST_FONT && available == ST_NORMAL) return GetRawSprite(sprite, ST_NORMAL);
+
+	static byte warning_level = 0;
+	DEBUG(sprite, warning_level, "Tried to load %s sprite #%d as a %s sprite. Probable cause: NewGRF interference", sprite_types[available], sprite, sprite_types[requested]);
+	warning_level = 6;
+
+	switch (requested) {
+		case ST_NORMAL:
+			if (sprite == SPR_IMG_QUERY) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'query' sprite a non-normal sprite?");
+			/* FALLTHROUGH */
+		case ST_FONT:
+			return GetRawSprite(SPR_IMG_QUERY, ST_NORMAL);
+		case ST_RECOLOUR:
+			if (sprite == PALETTE_TO_DARK_BLUE) usererror("Uhm, would you be so kind not to load a NewGRF that makes the 'PALETTE_TO_DARK_BLUE' sprite a non-remap sprite?");
+			return GetRawSprite(PALETTE_TO_DARK_BLUE, ST_RECOLOUR);
+		case ST_MAPGEN:
+			/* this shouldn't happen, overriding of ST_MAPGEN sprites is checked in LoadNextSprite()
+			 * (the only case the check fails is when these sprites weren't even loaded...) */
+		default:
+			NOT_REACHED();
+	}
+}
 
 const void *GetRawSprite(SpriteID sprite, SpriteType type)
 {
-	SpriteCache *sc;
-	void *p;
+	assert(IsMapgenSpriteID(sprite) == (type == ST_MAPGEN));
+	assert(type < ST_INVALID);
 
-	assert(sprite < _spritecache_items);
+	if (!SpriteExists(sprite)) {
+		DEBUG(sprite, 1, "Tried to load non-existing sprite #%d. Probable cause: Wrong/missing NewGRFs", sprite);
 
-	sc = GetSpriteCache(sprite);
+		/* SPR_IMG_QUERY is a BIG FAT RED ? */
+		sprite = SPR_IMG_QUERY;
+	}
+
+	SpriteCache *sc = GetSpriteCache(sprite);
+
+	if (sc->type != type) return HandleInvalidSpriteRequest(sprite, type, sc->type);
 
 	/* Update LRU */
 	sc->lru = ++_sprite_lru_counter;
 
-	p = sc->ptr;
+	void *p = sc->ptr;
 
 	/* Load the sprite, if it is not loaded, yet */
-	if (p == NULL || sc->type != type) p = ReadSprite(sc, sprite, type);
+	if (p == NULL) p = ReadSprite(sc, sprite, type);
 
 	return p;
 }
