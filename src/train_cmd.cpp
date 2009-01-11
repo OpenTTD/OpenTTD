@@ -2847,11 +2847,12 @@ public:
 
 	/**
 	 * Set the current vehicle order to the next order in the order list.
+	 * @param skip_first Shall the first (i.e. active) order be skipped?
 	 * @return True if a suitable next order could be found.
 	 */
-	bool SwitchToNextOrder()
+	bool SwitchToNextOrder(bool skip_first)
 	{
-		++this->index;
+		if (skip_first) ++this->index;
 
 		int conditional_depth = 0;
 
@@ -2951,11 +2952,13 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 	 * for a path and no look-ahead is necessary. This also avoids a
 	 * problem with depot orders not part of the order list when the
 	 * order list itself is empty. */
-	if (!v->current_order.IsType(OT_GOTO_DEPOT) && (
+	if (v->current_order.IsType(OT_LEAVESTATION)) {
+		orders.SwitchToNextOrder(false);
+	} else if (v->current_order.IsType(OT_LOADING) || (!v->current_order.IsType(OT_GOTO_DEPOT) && (
 			v->current_order.IsType(OT_GOTO_STATION) ?
 			IsRailwayStationTile(v->tile) && v->current_order.GetDestination() == GetStationIndex(v->tile) :
-			v->tile == v->dest_tile)) {
-		orders.SwitchToNextOrder();
+			v->tile == v->dest_tile))) {
+		orders.SwitchToNextOrder(true);
 	}
 
 	if (res_dest.tile != INVALID_TILE && !res_dest.okay) {
@@ -3032,7 +3035,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 		}
 
 		/* Get next order with destination. */
-		if (orders.SwitchToNextOrder()) {
+		if (orders.SwitchToNextOrder(true)) {
 			PBSTileInfo cur_dest;
 			DoTrainPathfind(v, next_tile, exitdir, reachable, NULL, true, &cur_dest);
 			if (cur_dest.tile != INVALID_TILE) {
