@@ -31,6 +31,7 @@ struct SpriteCache {
 	uint16 file_slot;
 	int16 lru;
 	SpriteType type; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
+	bool warned;     ///< True iff the user has been warned about incorrect use of this sprite
 };
 
 
@@ -290,6 +291,7 @@ bool LoadNextSprite(int load_index, byte file_slot, uint file_sprite_id)
 	sc->lru = 0;
 	sc->id = file_sprite_id;
 	sc->type = type;
+	sc->warned = false;
 
 	return true;
 }
@@ -305,6 +307,7 @@ void DupSprite(SpriteID old_spr, SpriteID new_spr)
 	scnew->ptr = NULL;
 	scnew->id = scold->id;
 	scnew->type = scold->type;
+	scnew->warned = false;
 }
 
 
@@ -480,7 +483,7 @@ void *AllocSprite(size_t mem_req)
  * @param available available sprite type
  * @return fallback sprite
  * @note this function will do usererror() in the case the fallback sprite isn't available */
-static const void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteType available)
+static const void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType requested, SpriteCache *sc)
 {
 	static const char *sprite_types[] = {
 		"normal",        // ST_NORMAL
@@ -489,11 +492,12 @@ static const void *HandleInvalidSpriteRequest(SpriteID sprite, SpriteType reques
 		"recolour",      // ST_RECOLOUR
 	};
 
+	SpriteType available = sc->type;
 	if (requested == ST_FONT && available == ST_NORMAL) return GetRawSprite(sprite, ST_NORMAL);
 
-	static byte warning_level = 0;
+	byte warning_level = sc->warned ? 6 : 0;
+	sc->warned = true;
 	DEBUG(sprite, warning_level, "Tried to load %s sprite #%d as a %s sprite. Probable cause: NewGRF interference", sprite_types[available], sprite, sprite_types[requested]);
-	warning_level = 6;
 
 	switch (requested) {
 		case ST_NORMAL:
@@ -526,7 +530,7 @@ const void *GetRawSprite(SpriteID sprite, SpriteType type)
 
 	SpriteCache *sc = GetSpriteCache(sprite);
 
-	if (sc->type != type) return HandleInvalidSpriteRequest(sprite, type, sc->type);
+	if (sc->type != type) return HandleInvalidSpriteRequest(sprite, type, sc);
 
 	/* Update LRU */
 	sc->lru = ++_sprite_lru_counter;
