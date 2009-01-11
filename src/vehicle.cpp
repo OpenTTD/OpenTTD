@@ -2278,9 +2278,7 @@ bool CanVehicleUseStation(EngineID engine_type, const Station *st)
  */
 bool CanVehicleUseStation(const Vehicle *v, const Station *st)
 {
-	if (v->type == VEH_ROAD) {
-		return (st->facilities & (IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? FACIL_BUS_STOP : FACIL_TRUCK_STOP)) != 0;
-	}
+	if (v->type == VEH_ROAD) return st->GetPrimaryRoadStop(v) != NULL;
 
 	return CanVehicleUseStation(v->engine_type, st);
 }

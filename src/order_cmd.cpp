@@ -1371,7 +1371,7 @@ static TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
 		case VEH_TRAIN:     return st->train_tile;
 		case VEH_AIRCRAFT:  return st->airport_tile;
 		case VEH_SHIP:      return st->dock_tile;
-		case VEH_ROAD:      return IsCargoInClass(v->cargo_type, CC_PASSENGERS) ? st->bus_stops->xy : st->truck_stops->xy;
+		case VEH_ROAD:      return st->GetPrimaryRoadStop(v)->xy;
 	}
 }
 
