@@ -2445,9 +2445,14 @@ static void UpdateTownUnwanted(Town *t)
 	}
 }
 
-bool CheckIfAuthorityAllows(TileIndex tile)
+/**
+ * Checks whether the local authority allows construction of a new station (rail, road, airport, dock) on the given tile
+ * @param tile The tile where the station shall be constructed.
+ * @param flags Command flags. DC_NO_TOWN_RATING is tested.
+ */
+bool CheckIfAuthorityAllowsNewStation(TileIndex tile, uint32 flags)
 {
-	if (!IsValidCompanyID(_current_company)) return true;
+	if (!IsValidCompanyID(_current_company) || (flags & DC_NO_TOWN_RATING)) return true;
 
 	Town *t = ClosestTownFromTile(tile, _settings_game.economy.dist_local_authority);
 	if (t == NULL) return true;

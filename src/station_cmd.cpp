@@ -921,7 +921,7 @@ static void GetStationLayout(byte *layout, int numtracks, int plat_len, const St
 CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Does the authority allow this? */
-	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile_org)) return CMD_ERROR;
+	if (!CheckIfAuthorityAllowsNewStation(tile_org, flags)) return CMD_ERROR;
 	if (!ValParamRailtype((RailType)(p1 & 0xF))) return CMD_ERROR;
 
 	/* unpack parameters */
@@ -1437,7 +1437,7 @@ CommandCost CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 	/* Road bits in the wrong direction */
 	if (build_over_road && (GetAllRoadBits(tile) & ((Axis)p1 == AXIS_X ? ROAD_Y : ROAD_X)) != 0) return_cmd_error(STR_DRIVE_THROUGH_ERROR_DIRECTION);
 
-	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
+	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
 
 	RoadTypes cur_rts = IsNormalRoadTile(tile) ? GetRoadTypes(tile) : ROADTYPES_NONE;
 	uint num_roadbits = 0;
@@ -1856,7 +1856,7 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 	/* Check if a valid, buildable airport was chosen for construction */
 	if (p1 > lengthof(_airport_sections) || !HasBit(GetValidAirports(), p1)) return CMD_ERROR;
 
-	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) {
+	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) {
 		return CMD_ERROR;
 	}
 
@@ -2174,7 +2174,7 @@ CommandCost CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 	/* Docks cannot be placed on rapids */
 	if (IsWaterTile(tile)) return_cmd_error(STR_304B_SITE_UNSUITABLE);
 
-	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
+	if (!CheckIfAuthorityAllowsNewStation(tile, flags)) return CMD_ERROR;
 
 	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
