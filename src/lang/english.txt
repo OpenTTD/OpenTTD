@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} year{P 
 STR_AGE_RED                                                     :{RED}{COMMA} year{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Road vehicle
-STR_019D_AIRCRAFT                                               :Aircraft
-STR_019E_SHIP                                                   :Ship
 STR_019F_TRAIN                                                  :Train
+STR_019C_ROAD_VEHICLE                                           :Road vehicle
+STR_019E_SHIP                                                   :Ship
+STR_019D_AIRCRAFT                                               :Aircraft
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} is getting old
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} is getting very old
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} is getting very old and urgently needs replacing

@@ -253,13 +253,6 @@ public:
 
 	virtual void OnPaint()
 	{
-		static const StringID _vehicle_type_names[] = {
-			STR_019F_TRAIN,
-			STR_019C_ROAD_VEHICLE,
-			STR_019E_SHIP,
-			STR_019D_AIRCRAFT
-		};
-
 		if (this->update_left || this->update_right) this->GenerateLists();
 
 		Company *c = GetCompany(_local_company);
@@ -287,7 +280,7 @@ public:
 										!EngineHasReplacementForCompany(c, selected_id[0], selected_group));
 
 		/* now the actual drawing of the window itself takes place */
-		SetDParam(0, _vehicle_type_names[this->window_number]);
+		SetDParam(0, STR_019F_TRAIN + this->window_number);
 
 		if (this->window_number == VEH_TRAIN) {
 			/* set on/off for renew_keep_length */
