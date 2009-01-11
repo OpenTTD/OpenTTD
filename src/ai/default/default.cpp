@@ -1634,7 +1634,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 	return true;
 }
 
-static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData *p, RailType railtype, byte flag)
+static CommandCost AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData *p, RailType railtype, uint32 flag)
 {
 	CommandCost ret;
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
@@ -2622,7 +2622,7 @@ static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, by
 }
 
 static bool _want_road_truck_station;
-static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag);
+static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, uint32 flag);
 
 // Returns rule and cost
 static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo, CommandCost *cost)
@@ -2643,7 +2643,7 @@ static int AiFindBestDefaultRoadBlock(TileIndex tile, byte direction, byte cargo
 	return -1;
 }
 
-static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
+static CommandCost AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData *p, uint32 flag)
 {
 	CommandCost ret;
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
@@ -2908,7 +2908,7 @@ static bool AiCheckRoadFinished(Company *c)
 }
 
 
-static bool AiBuildRoadHelper(TileIndex tile, int flags, int type)
+static bool AiBuildRoadHelper(TileIndex tile, uint32 flags, int type)
 {
 	static const RoadBits _road_bits[] = {
 		ROAD_X,
@@ -3398,7 +3398,7 @@ static void AiStateAirportStuff(Company *c)
 	_companies_ai[c->index].state_counter = 0;
 }
 
-static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, byte flag)
+static CommandCost AiDoBuildDefaultAirportBlock(TileIndex tile, const AiDefaultBlockData *p, uint32 flag)
 {
 	uint32 avail_airports = GetValidAirports();
 	CommandCost ret, total_cost(EXPENSES_CONSTRUCTION);
