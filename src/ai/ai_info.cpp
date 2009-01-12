@@ -180,6 +180,7 @@ AIInfo::~AIInfo()
 	/* Free all allocated strings */
 	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
 		free((char *)(*it).name);
+		free((char *)(*it).description);
 	}
 	this->config_list.clear();
 }
