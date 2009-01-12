@@ -1129,8 +1129,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Förbju
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Förbjud flygplan för datorn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Förbjud skepp för datorn: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Dator med ny AI (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillåt AI i multiplayer (expermientellt): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard serviceintervall för tåg: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard serviceintervall för tåg: {ORANGE}av
@@ -1341,9 +1339,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ej a
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Visa serviceintervall i procent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ändra produktion
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Välkommen till denna nya AI, under uppbyggnad. Du kan räkna med att det finns problem med den. När något sådant händer, ta en skärmdump och lägg ut den på forumet. Mycket nöje!
-TEMP_AI_ACTIVATED                                               :{WHITE}Varning: den nya AI:n är fortfarande i alpha-stadiet! Just nu funkar bara vägfordon!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Varning: implementeringen är fortfarande experimentell (vid användandet den nya AI:n). Vänligen rapportera alla problem till truelight@openttd.org.
 
 ############ network gui strings
 

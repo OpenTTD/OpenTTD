@@ -1155,8 +1155,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Disabil
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disabilita aeromobili dell'IA: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disabilita navi dell'IA: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Abilita la nuova IA (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permetti le IA nelle partite multigiocatore (sperimentale): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervallo manutenzione predefinito treni: {ORANGE}{STRING} giorni/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervallo manutenzione predefinito treni: {ORANGE}Disabilitato
@@ -1380,9 +1378,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossib
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Gli intervalli di manutenzione sono in percentuale: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Benvenuti nella nuova IA, in sviluppo. Se si incontrano dei problemi, fare uno screenshot e inviarlo sul forum.
-TEMP_AI_ACTIVATED                                               :{WHITE}Attenzione: la nuova IA è ancora in alpha! Attualmente funzionano solo camion e autobus!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Attenzione: l'implementazione è ancora sperimentale (utilizza la nuova IA).
 
 ############ network gui strings
 

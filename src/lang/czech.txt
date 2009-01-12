@@ -1221,8 +1221,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Zakáza
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakázat počítači letadla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Zakázat počítači lodě: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Nová umělá inteligence (AI) (alpha verze): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AIs v síťové hře (experimentální): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} dní
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}vypnuto
@@ -1446,9 +1444,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nelze p�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Intervaly servisů v procentech: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Změnit produkci
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Představujeme ti novou umělou inteligenci (pracovní). Není ještě OK, takže s ní jsou problémy. Kdykoli můžeš, udělej screenshot a přispěj s ním do fóra. Ať se ti líbí!
-TEMP_AI_ACTIVATED                                               :{WHITE}Pozor: tato nová umělá inteligence je ještě v alfa verzi (= nebyla moc testována)! Zatím umí pracovat jen se silničními vozidly!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Varování: tato funkce je stále experimentální (při použití nové umělé inteligence).
 
 ############ network gui strings
 

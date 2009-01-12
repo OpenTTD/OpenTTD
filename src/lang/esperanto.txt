@@ -1080,8 +1080,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Malebli
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Malebligu aviadilojn por la komputilo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Malebligu ŝipojn por la komputilo: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktivigu novan AI (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Komputilludantoj ĉe pluraj ludantoj (eksperimente): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}{STRING} tagoj/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}malaktiva
@@ -1268,9 +1266,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Ne povas
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Prizorgintervala procentaĵo: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Bonvenon al la novkreata AI. Se vi vidas problemojn, ekranfotu tion kaj metu ĝin en la forumon.
-TEMP_AI_ACTIVATED                                               :{WHITE}Atentu: la nova AI ankoraŭ estas alfaversia! Nur ŝarĝaŭtoj kaj busoj funkcias!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Atentu: implementado ankoraŭ estas eksperimenta (per nova AI). Bv raporti problemojn al truelight@openttd.org.
 
 ############ network gui strings
 

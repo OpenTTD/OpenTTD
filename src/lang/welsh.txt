@@ -1129,8 +1129,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Analluo
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Analluogi awyren ar gyfer y cyfrifiadur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Analluogi llongau ar gyfer y cyfrifiadur: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Galluogi AI newydd (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Caniatáu AIau mewn gemau amlchwaraewr (): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Cyfnod rhagosodedig rhwng gwasanaethau ar gyfer trenau: {ORANGE}disabled
@@ -1341,9 +1339,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Methu ai
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Dangos y cyfnod rhwng gwasanaethau mewn canrannau: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Newid cynnyrch
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Croeso i'r AI sy'n cael ei ddatblygu. Os dewch chi ar draws problem, cymrwch giplun a'i phostio ar y fforwm.
-TEMP_AI_ACTIVATED                                               :{WHITE}Rhybudd: statws alffa sydd i'r AI hwn! Ar hyn o bryd dim ond bysiau a lorïau sy'n gweithio!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Rhybudd: Arbrofol yw gweithrediad yr AI yn dal i fod. Adroddwch unrhyw broblem i truelight@openttd.org.
 
 ############ network gui strings
 

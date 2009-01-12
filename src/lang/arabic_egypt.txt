@@ -1154,8 +1154,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}حظر 
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}حظر الطائرات على الكمبيوتر: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}حظر السفن على الكمبيوتر: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}تمكين الذكاء الصناعي - الفا: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}السماح بالذكاء الصناعي في اللعبة المتعددة اللاعبين (تجريبي): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}فترات الصيانة القياسية للقطارات: {ORANGE}{STRING} يوم / %
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}فترة الصيانة القياسية للقطارات{ORANGE}غير مفعل
@@ -1379,9 +1377,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}لايم
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}فترات الصيانة بالنسبة المئوية : {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE} اهلا بك في اللعبة التي ما زالت قيد التطوير. اذا واجهتك مشكلة, الرجاء اخذ صورة لها و تحميلها على المنتدى.
-TEMP_AI_ACTIVATED                                               :{WHITE} تحذير:ة هذه النسخة المطورة مازالت في اصدارها التجريبي الأول! حاليا, العربات و الباصات تعمل فقط!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}تحذير: التطبيق مازال تحت التجربة - النظام جديد
 
 ############ network gui strings
 

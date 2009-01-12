@@ -1181,8 +1181,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Keela a
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Keela arvutile õhusõidukid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Arvuti ei tohi laevasid kasutada: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Lülita uus TI (AI) sisse (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Luba TI (AI) võrgumängus (TESTIMISEL!): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Vaikimisi hooldusintervall rongidele: {ORANGE}{STRING} päeva
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Rongide hooldusvahemik vaikimisi: {ORANGE}väljas
@@ -1392,9 +1390,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Ei ole v
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Hooldusvahemikud on protsentides: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Tootlikuse muutmine
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Tervitused uuele TI'le(AI). Töö selle kallal veel käib. Peaksite eeldama, et esineb probleeme. Kui juhtud tegema kuvatõmmise, siis postita see ka foorumisse. Edu!
-TEMP_AI_ACTIVATED                                               :{WHITE}Hoiatus: uus tehisintelligents on veel eelkatsetamisel! Hetkel töötavad ainult mootorsõidukid!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}TÄHELEPANU! Seda funksiooni veel teistitakse. Palun teata kõik probleemid sellega truelight@openttd.org.
 
 ############ network gui strings
 

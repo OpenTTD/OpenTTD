@@ -1193,8 +1193,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Zakazat
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakazat lietadla pre pocitac: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Zakazat lode pre pocitac: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Povolit nove AI (alpha verzia): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v multiplayeri (experimentalne): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Implicitný servisný interval pre vlaky: {ORANGE}{STRING} dní/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
@@ -1405,9 +1403,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemozno 
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servisne intervaly v percentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmenit produkciu
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Vitajte v novom AI. Mozete ocakavat problemy. Ak by nejake nastali urobte screenshot a poslite ho na forum.
-TEMP_AI_ACTIVATED                                               :{WHITE}Varovanie: toto nove AI je iba alpha verzia! Momentalne iba automobily funguju!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Varovanie: tato funkcia je stale experimentalna. Prosim ohlaste akekolvek problemy na truelight@openttd.org.
 
 ############ network gui strings
 

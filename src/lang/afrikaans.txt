@@ -1150,8 +1150,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Sper pa
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Sper vliegtuie vir rekenaar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Sper skepe vir rekenaar: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Ontsper nuwe AI (alpha) in staat: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Laattoe AIe in multispeler (eksperimentele): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Verstek diens pouse vir treine: {ORANGE}{STRING} dae/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Verstek diens pouse vir treine: {ORANGE}strem
@@ -1372,9 +1370,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}kan nie 
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Diens pouse is in persente: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander produksie
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Welkom by die nuwe ai onder ontwikkeling. Indien u ontmoet probleme, neem 'n skermskyf en pos dit in die forum.
-TEMP_AI_ACTIVATED                                               :{WHITE}Waarskuwing: die nuwe AI is nogsteeds alfa! Tans, slegs vragmotors en busse werk!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}waarskuwing: implementasie is steeds eksperimentele (gebruikend nuwe AI). asseblief rapporteer enige probleme na truelight@openttd.org.
 
 ############ network gui strings
 

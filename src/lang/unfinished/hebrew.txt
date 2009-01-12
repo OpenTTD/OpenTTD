@@ -1104,9 +1104,6 @@ STR_WAYPOINT_RAW                                                :{WAYPOINT}
 
 
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}ברוכים הבאים לא.מ החדש!אם אתה ניתקלים בבעיה,אנא תצלמו את המישחק ושימו אותו בפרום.
-TEMP_AI_ACTIVATED                                               :{WHITE}זהירות!ה א.מ עדיין בגרסת אלפא!בנתיים רק אוטובוסים ומאשיות פועלות!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}אזהרה.הא.מ עדיין תחת בניה!
 
 ############ network gui strings
 

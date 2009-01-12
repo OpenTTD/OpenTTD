@@ -1154,7 +1154,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Disable
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable aircraft for computer: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING1}
 
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING1} days/%

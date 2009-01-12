@@ -1152,8 +1152,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}컴퓨�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}새 인공지능(AI) 사용 (알파 버전) : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티 플레이어에서의 AI 허가 (실험적) : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}열차 기본 점검 간격: {ORANGE}사용불가
@@ -1366,9 +1364,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}열차�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}개발중인 새로운 인공지능(AI)에 오신 것을 환영합니다. 문제가 발생하면 스크린샷을 찍어 TTD포럼에 올려주십시오.
-TEMP_AI_ACTIVATED                                               :{WHITE}경고: 이 새로운 인공지능은 실험적입니다! 오직 버스와 트럭에만 적용될 것입니다.
-TEMP_AI_MULTIPLAYER                                             :{WHITE}경고: 아직 실험적인 기능입니다.
 
 ############ network gui strings
 

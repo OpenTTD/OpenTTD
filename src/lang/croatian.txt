@@ -1219,8 +1219,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Isklju�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Isključi zrakoplove za računalo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Isključi brodove za računalo: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Omogući novi AI (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Omogući AI u modu s više igrača (eksperimentalno): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}{STRING} dana/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}onemogućeno
@@ -1433,9 +1431,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nije mog
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servisni su intervali u postotcima: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promijeni proizvodnju
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Dobrodošli u novi AI pod razvojem. Ukoliko naiđete na probleme, napravite sliku ekrana i stavite ju na forum.
-TEMP_AI_ACTIVATED                                               :{WHITE}Upozorenje: ovaj novi AI još uvijek je alfa! Trenutno, samo kamioni i autobusi rade!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Upozorenje: implementacija je još uvijek pokusna (koristi novi AI). Molimo prijavite bilo kakav problem na truelight@openttd.org
 
 ############ network gui strings
 

@@ -1153,8 +1153,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Tietoko
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Tietokoneella ei ole lentokoneita: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Tietokoneella ei ole laivoja: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Ota käyttöön uusi AI (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Salli tekoälyt moninpelissä (kokeellinen): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Oletushuoltoväli junille: {ORANGE}{STRING} päivää
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Oletushuoltoväli junille: {ORANGE}pois päältä
@@ -1378,9 +1376,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Junaa ei
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Huoltovälit ovat prosentteina: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Aloita tuotanto
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Tervetuloa käyttämään uutta tekoälyä (kehitysversio). Ongelmia voi esiintyä, ja kun sellainen tulee vastaan, ota kuvankaappaus ja lähetä se keskustelualueelle. Pidä hauskaa!
-TEMP_AI_ACTIVATED                                               :{WHITE}Varoitus: uusi tekoäly on vielä alpha-koodia! Tällä hetkellä vain rekat ja linja-autot toimivat!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Varoitus: toteutus on edelleen kokeellinen (käyttää uutta tekoälyä). Ongelmailmoitukset: truelight@openttd.org.
 
 ############ network gui strings
 

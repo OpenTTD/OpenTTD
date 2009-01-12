@@ -1162,8 +1162,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Uždrau
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Uždrausti kompiuteriui lektuvus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Uždrausti kompiuteriui laivus: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Naujas dirbtinio intelekto algoritmas (testuojamas): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Naudoti DI (dirbtinį intelektą) žaidžiant tinkle (eksperimentinis): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Traukiniu remonto intervalas: {ORANGE}{STRING} (d. ar %)
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Traukiniu remonto intervalas: {ORANGE}isjungta
@@ -1374,9 +1372,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Negalima
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Remonto intervalas procentais: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Keisti produkciją
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Dirbtinio intelekto algoritmas pradeda darba. Jei iskils problemu - fotografuok ekrano vaizda ir konsultuokis forumuose. Sekmes!
-TEMP_AI_ACTIVATED                                               :{WHITE}Demesio: sis naujas dirbtinio intelekto algoritmas dar tik testuojamas! Siuo metu dirba tik su automobiliais!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Įspėjimas: realizacija dar eksperimentinė (naudojamas naujas Dirbtinis Intelektas). Apie iškilusias problemas praneškite truelight@openttd.org.
 
 ############ network gui strings
 

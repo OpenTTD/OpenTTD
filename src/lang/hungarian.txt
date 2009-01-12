@@ -1219,8 +1219,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Közút
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Repülőgépek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Hajók tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Új gépi ellenfél (csak buszt épít): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Számítógépes ellenfelek a hálózati játékokban (béta): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}{STRING} naponta
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}kikapcsolva
@@ -1444,9 +1442,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nem alak
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Termelés megváltoztatása
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Üdv, ez itt az új, fejlesztés alatt álló MI (AI). Előfordulhatnak gondok, problémák. Ha belefutsz egybe, kérlek készíts képernyőmentést és küld be a fórumra. Jó játékot!
-TEMP_AI_ACTIVATED                                               :{WHITE}Figyelem: az új MI (Al) fejlesztés alatt áll! Jelenleg csak a teherautók és a buszok működnek!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Figyelem: ez a funckió még béta állapotú (AI). A hibajelentéseket küldd légyszi a truelight@openttd.org címre.
 
 ############ network gui strings
 

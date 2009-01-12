@@ -1153,8 +1153,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Dezacti
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Dezactivează aeronavele pentru jucătorii controlaţi de PC: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Dezactivează navele pentru jucătorii controlaţi de PC: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Foloseste noul AI (versiune alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite AI în multiplayer (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}dezactivat
@@ -1367,9 +1365,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nu pot m
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service in procente: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Salut! Sunt noul algoritm AI, încã în teste. Dacã apar probleme, salveazã un screenshot si pune-l pe forum. Baftã!
-TEMP_AI_ACTIVATED                                               :{WHITE}Atentie: algoritmul AI este în stadiul alfa! Momentan este valabil doar pentru autovehicule!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Atentie: aceastã functiune este încã experimentalã. Vã rugãm sã raportati orice problemã la adresa truelight@openttd.org
 
 ############ network gui strings
 

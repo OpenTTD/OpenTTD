@@ -1134,8 +1134,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Desacti
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desactivar aeroplanos para el ordenador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desactivar barcos para el ordenador: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activar nueva IA (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IA en multijugador (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de despacho por defecto para trenes: {ORANGE}no
@@ -1346,9 +1344,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No se pu
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Intervalo de despachos en porcentajes: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Bienvenido a esta nueva IA, en progreso. Puede esperar problemas. Cuando los encuentres, haz una captura de pantalla y envíala al foro. Disfruta!
-TEMP_AI_ACTIVATED                                               :{WHITE}Atención: esta nueva IA está en fase alpha! Actualmente, solo los camiones y autobuses funcionan!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Atención: esta función es todavía experimental. Comunique cualquier problema a truelight@openttd.org.
 
 ############ network gui strings
 

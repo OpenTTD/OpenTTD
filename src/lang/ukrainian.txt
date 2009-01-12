@@ -1271,8 +1271,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Заб�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заборонити комп'ютеру будувати літаки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Заборонити комп'ютеру будувати кораблі: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Новий тип інтелекту (альфа-версія): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Включити інтелект при грі в мережі(тестовий): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}{STRING} дн/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}без тех.огляду
@@ -1483,9 +1481,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Немо
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Інтервал техогляду у відсотках: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Змінити виробництво
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Ласкаво просимо до тестування нового інтелекту. Якщо Ви помітили недолік, надішліть копію екрану у форум.
-TEMP_AI_ACTIVATED                                               :{WHITE}Попередження: цей новий інтелект все ще альфа-версія! Зараз задіяні лише вантажівки та автобуси!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Попередження: це все ще експериментальний інтелект. Будь-ласка повідомте про проблеми truelight@openttd.org.
 
 ############ network gui strings
 

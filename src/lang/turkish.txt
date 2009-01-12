@@ -1153,8 +1153,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Bilgisa
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Bilgisayar uçak kullanmasın: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Bilgisayar gemi kullanmasın: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Yeni yapay zekâ etkin (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Çok oyunculuda yapay zekâ olsun (denemede): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}kapalı
@@ -1378,9 +1376,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Modifiye
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servis gecikmeleri yüzde ile: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi değiştir
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Yeni yapay zekaya hoş geldiniz, henüz devam etmekte olan bir iş. Mutlaka sorunlar yaşayacaksınız. İlginç bir şey görürseniz fotosunu foruma göndermeyi unutmayın. Hadi iyi oyunlar!
-TEMP_AI_ACTIVATED                                               :{WHITE}Uyarı: Yeni yapay zeka henüz alfa sürümünde! Şu an sadece kamyonlar ve otobüsler çalışabilir!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Uyarı: Bu özellik henüz deneme aşamasındadır. Lütfen ilgili sorunlarınızı truelight@openttd.org adresine bildirin.
 
 ############ network gui strings
 

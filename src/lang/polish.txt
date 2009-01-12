@@ -1233,8 +1233,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Samocho
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Samoloty niedostępne dla komputera: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Statki niedostępne dla komputera: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Dostępne nowe AI (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Pozwól na AI w grze wieloosobowej (testowe): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Domyślny okres między serwis. dla pociągów: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Domyślny okres między serwis. dla pociągów: {ORANGE}niedostępne
@@ -1454,9 +1452,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nie moż
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Okres między serwisowaniami w procentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Witamy w nowym AI. Jeśli natkniesz się na problem, wykonaj zrzut ekranu i wyślij go na forum. Powodzenia!
-TEMP_AI_ACTIVATED                                               :{WHITE}Ostrzeżenie: nowe AI jest ciągle w wersji alpha! Obecnie działa tylko dla samochodów!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Uwaga: Ta funkcja jest ciągle w fazie testów. Proszę zgłaszać wszelkie problemy pod adresem truelight@openttd.org.
 
 ############ network gui strings
 

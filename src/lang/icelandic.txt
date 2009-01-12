@@ -1129,8 +1129,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Útilok
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Útiloka flugvélar fyrir tölvu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Útiloka skip fyrir tölvu: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Virkja nýja gervigreind (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Leyfa gervigreind í fjölspilunarleik (á tilraunastigi): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Tími milli viðhalds lesta: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Tími milli viðhalds lesta: {ORANGE}óvirkt
@@ -1338,9 +1336,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Get ekki
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Tími milli viðhalds farartækja sýndur í hundraðshlutum: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Breyta framleiðslu
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkomin/n í nýju gervigreindina, verk í vinnslu. Þú mátt búast við vandamálum, og þegar þau koma upp skaltu taktu skjámynd þegar og senda á spjallborðið. Njóttu!
-TEMP_AI_ACTIVATED                                               :{WHITE}Ath.: nýja gervigreindin er ennþá alfa! Í augnablikinu virka aðeins vörubílar og strætisvagnar!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Viðvörun: þessi eiginleiki er á tilraunastigi. Vinsamlegast tilkynnið vandamál tengd honum til truelight@openttd.org.
 
 ############ network gui strings
 

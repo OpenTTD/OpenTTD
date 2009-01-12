@@ -1129,8 +1129,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}不允�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}不允許電腦使用飛機：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}不允許電腦使用船舶：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}啟用新 AI (早期測試中)：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}允許多人連線時使用 AI (實驗中)：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}列車預設維護間隔：{ORANGE}{STRING} 天/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車預設維護間隔：{ORANGE}關閉
@@ -1341,9 +1339,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}無法�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}維護間隔以百分比計算：{ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}歡迎使用正在開發的新 AI。如果有任何問題，歡迎擷取畫面 放上討論區通知開發團隊
-TEMP_AI_ACTIVATED                                               :{WHITE}警告： 這個新 AI 還在早期測試中，目前僅於汽車上實作！
-TEMP_AI_MULTIPLAYER                                             :{WHITE}警告：新 AI 的實作仍在實驗中
 
 ############ network gui strings
 

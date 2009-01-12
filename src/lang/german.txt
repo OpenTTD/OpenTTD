@@ -1130,8 +1130,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Straße
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Flugzeuge für den Computer abschalten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Schiffe für den Computer abschalten: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktiviere neue KI (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaube KI im Mehrspielermodus (experimentell): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}{STRING} Tage/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}abgeschaltet
@@ -1342,9 +1340,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Zug kann
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Wartungsintervalle in Prozent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Willkommen bei der neuen KI. Fehlfunktionen können vorkommen. In diesem Falle bitten wir um einen Screenshot und einen Fehlerbericht im Forum. Viel Spaß!
-TEMP_AI_ACTIVATED                                               :{WHITE}Achtung: Die neue KI ist noch im Alpha-Stadium. Derzeit funktionieren nur Straßenfahrzeuge.
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Warnung: Diese Funktion ist noch im experimentellen Stadium. Probleme bitte an truelight@openttd.org melden.
 
 ############ network gui strings
 

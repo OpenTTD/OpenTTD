@@ -1152,8 +1152,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre 
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskinen i å bygge fly: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å bygge skip: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktiver ny kunstig intelligens (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat ny kunstig intelligens i flerspillermodus (eksperimentelt): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}{STRING} dager
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikeholdsintervall for tog: {ORANGE}deaktivert
@@ -1364,9 +1362,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikeholdsintervaller i prosent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til denne nye AI, under konstruksjon. Du kan vente deg problemer. Når du finner et problem, lag et skjermbilde av det og post det i forumet.
-TEMP_AI_ACTIVATED                                               :{WHITE}Advarsel: denne nye AI er fremdeles alfa! Akkurat nå virker kun lastebiler og busser!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Advarsel: dette er fortsatt eksperimentelt. Vennligst rapporter problemer til truelight@openttd.org.
 
 ############ network gui strings
 

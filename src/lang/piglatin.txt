@@ -1153,8 +1153,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Isabled
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Isableday aircraftway orfay omputercay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Isableday ipsshay orfay omputercay: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Enableway ewnay AIWAY (alphaway): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allowway AIsway inway ultiplayermay (experimentalway): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}{STRING} aysday/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}isabledday
@@ -1378,9 +1376,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}An'tcay 
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Ervicesay intervalsway areway inway ercentspay: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Angechay oductionpray
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Elcomeway otay ethay ewnay AIWAY underway evelopmentday. Ifway ouyay encounterway oblemspray, aketay away eenshotscray andway ostpay itway inway ethay orumfay.
-TEMP_AI_ACTIVATED                                               :{WHITE}Arningway: isthay ewnay AIWAY isway illstay alphaway! Urrentlycay, onlyway uckstray andway ussesbay orkway!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Arningway: implementationway isway illstay experimentalway (usingway ewnay AIWAY). Easeplay eportray anyway oblemspray otay uelighttray@openttdway.orgway.
 
 ############ network gui strings
 

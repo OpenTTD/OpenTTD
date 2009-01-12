@@ -1195,8 +1195,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Onemogo
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Onemogoči letala za računalnik: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Onemogoči ladje za računalnik: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Omogoči novo UI (alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Omogoči UI v večigralskem načinu (poskusno): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}onemogočeno
@@ -1420,9 +1418,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemogoč
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Obdobja servisiranja so v procentih: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Spremeni proizvodnjo
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Dobrodošli v razvojno UI. Če boste prišli do problemov, posnamite zaslonsko sliko in jo prilepite na forum.
-TEMP_AI_ACTIVATED                                               :{WHITE}Opozorilo: Nova UI je še vedno alfa različica! Zaenkrat delujejo samo tovornjaki in avtobusi!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Opozorilo:Izboljšava je še vedno testna (uporablja novo UI). Prosimo poročajte kakršne koli probleme na truelight@openttd.org.
 
 ############ network gui strings
 

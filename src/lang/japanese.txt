@@ -1127,8 +1127,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}コン�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}コンピュータは飛行機を使用しない：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}コンピュータは船舶を使用しない：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}新式 AI を使用（実験的）：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}マルチプレイヤーゲームで AI を許容（実験的）：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}切
@@ -1337,9 +1335,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}列車�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}修理間隔をパーセントで表示：{ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}開発中のAIへようこそ。問題があった場合は、スクリーンショットを取って、フォーラムに送ってください。
-TEMP_AI_ACTIVATED                                               :{WHITE}注意：AIはまだ実験中です！現在道路車両のみに対応しています。
-TEMP_AI_MULTIPLAYER                                             :{WHITE}注意：AIはまだ実験中です！問題があった場合は、（英語で）truelight@openttd.orgまでご一報ください。
 
 ############ network gui strings
 

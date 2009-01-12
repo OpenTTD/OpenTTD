@@ -1131,8 +1131,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Izslēg
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Izslēgt datoram lidaparātus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Izslēgt datoram kuģus: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Iespējot jauno mākslīgo intelektu (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Mākslīgais intelekts daudzlietotāju režīmā (eksperimentāls): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Noklusētais vilcienu apkalpošanas periods: {ORANGE}{STRING} dienas/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Noklusētais vilcienu apkalpošanas periods: {ORANGE}atspējots
@@ -1340,9 +1338,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nevar p�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Apkalpošanas intervāls procentos: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt produkciju
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Laipni lūgti jaunā MI izstrādē. Ja jums rodas kādas problēmas, tad sataisiet ekrānuzņēmumu un publicējiet to forumā.
-TEMP_AI_ACTIVATED                                               :{WHITE}Brīdinājums: jaunais MI ir joprojām alfa stadijā! Šobrīd darbojas tikai autotransports!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Brīdinājums: realizācija joprojām ir eksperimentāla (izmantojot jauno MI). Lūdzu, ziņojiet par problēmām uz truelight@openttd.org.
 
 ############ network gui strings
 

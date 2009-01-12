@@ -1153,8 +1153,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Non-akt
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Non-aktifkan pesawat bagi pemain komputer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Non-aktifkan kapal bagi pemain komputer: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktifkan Kecerdasan baru (tahap alfa): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Ijinkan kecerdasan pada modus banyak pemain(uji coba): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard jangka servis berkala kereta: {ORANGE}{STRING} hari/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard jangka servis berkala untuk kereta: {ORANGE}Non-aktif
@@ -1367,9 +1365,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Tidak da
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Jangka waktu servis dalam persen: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Selamat datang di AI yang sedang dibangun. Jika mengalami masalah, buat cetakan layar dan kirimkan ke forum
-TEMP_AI_ACTIVATED                                               :{WHITE}Peringatan: AI baru ini masih dalam tahap alpha, hanya bekerja untuk truk dan bus.
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Peringatan: Masih dalam tahap percobaan (menggunakan AI baru).
 
 ############ network gui strings
 

@@ -1153,8 +1153,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Deaktiv
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Slå den nye kunstige intelligents til (alpha): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillad AI i netværksspil (experimentiel): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard service interval for tog: {ORANGE}{STRING} dage/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard service interval for tog: {ORANGE}slået fra
@@ -1365,9 +1363,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til den nye kunstige intelligents, der er under udarbejdelse. Du kan forvente problemer. Når det sker, så lav et skærmbillede og sæt det på forummet.
-TEMP_AI_ACTIVATED                                               :{WHITE}Advarsel: den nye kunstige intelligents er i et tidligt stadie! Lige nu virker den kun med busser og lastbiler!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Advarsel: denne funktion er stadig eksperimentel. Rapporter venligst problemer til truelight@openttd.org.
 
 ############ network gui strings
 

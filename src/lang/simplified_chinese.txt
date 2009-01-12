@@ -1129,8 +1129,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}禁止�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}禁止电脑使用飞机：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}禁止电脑使用船只：{ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}启用新的人工智能 (测试)：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}在多用户游戏中启用人工智能 (试验)：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}火车的默认保养周期：{ORANGE}{STRING} 天/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}火车的默认保养周期：{ORANGE}禁用
@@ -1341,9 +1339,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}不能�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}保养周期(百分数)： {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}欢迎使用正在开发中的新人工智能，如果遇到问题请将截图贴在论坛中。
-TEMP_AI_ACTIVATED                                               :{WHITE}警告：人工智能还开测试阶段，仅能应用于汽车线路。
-TEMP_AI_MULTIPLAYER                                             :{WHITE}警告：自动建设还在试验阶段，如果遇到问题请联系truelight@openttd.org(英文)。
 
 ############ network gui strings
 

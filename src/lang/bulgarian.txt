@@ -1155,8 +1155,6 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Пре�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Премахване на летателните апарати за компютърния играч: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Премахване на корабите за компютърния играч: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Включване на нов АИ (алфа): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Позволяване на компютърни играчи в мултиплейър (експериментално): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}{STRING} дни/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}без сервиз
@@ -1369,9 +1367,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Прео
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Интервал на сервиз е в проценти: {ORANGE}{STRING.n}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Промяна на производство
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Добре дошли в новия АИ, който е още в процес на разработване. Ако срещнете проблеми, направете screenshot и го пуснете във форума.
-TEMP_AI_ACTIVATED                                               :{WHITE}Внимание: този нов АИ е все още alpha! Засега, само камионите и автобусите работят!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Внимание: имплементацията е все още експериментална (използва се новия АИ). Моля съобщете за всякаквипроблеми на truelight@openttd.org.
 
 ############ network gui strings
 
