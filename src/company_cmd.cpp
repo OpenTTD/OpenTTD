@@ -51,7 +51,7 @@ DEFINE_OLD_POOL_GENERIC(Company, Company)
 Company::Company(uint16 name_1, bool is_ai) : name_1(name_1), location_of_HQ(INVALID_TILE), is_ai(is_ai)
 {
 	for (uint j = 0; j < 4; j++) this->share_owners[j] = COMPANY_SPECTATOR;
-	this->is_noai = true;
+	this->is_noai = false;
 }
 
 Company::~Company()
