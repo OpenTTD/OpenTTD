@@ -448,10 +448,6 @@ error:
 	/* if toplevel, subtract the money. */
 	if (--_docommand_recursive == 0 && !(flags & DC_BANKRUPT)) {
 		SubtractMoneyFromCompany(res);
-		/* XXX - Old AI hack which doesn't use DoCommandP; update last build coord of company */
-		if (tile != 0 && IsValidCompanyID(_current_company)) {
-			GetCompany(_current_company)->last_build_coordinate = tile;
-		}
 	}
 
 	return res;

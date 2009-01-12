@@ -301,10 +301,9 @@ enum {
 	DC_QUERY_COST      = 0x004, ///< query cost only,  don't build.
 	DC_NO_WATER        = 0x008, ///< don't allow building on water
 	DC_NO_RAIL_OVERLAP = 0x010, ///< don't allow overlap of rails (used in buildrail)
-	DC_AI_BUILDING     = 0x020, ///< special building rules for AI
-	DC_NO_TOWN_RATING  = 0x040, ///< town rating does not disallow you from building
-	DC_BANKRUPT        = 0x080, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
-	DC_AUTOREPLACE     = 0x100, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
+	DC_NO_TOWN_RATING  = 0x020, ///< town rating does not disallow you from building
+	DC_BANKRUPT        = 0x040, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
+	DC_AUTOREPLACE     = 0x080, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
 };
 
 /**

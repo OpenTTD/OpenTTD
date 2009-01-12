@@ -923,8 +923,7 @@ static CommandCost ClearTile_Road(TileIndex tile, byte flags)
 		case ROAD_TILE_NORMAL: {
 			RoadBits b = GetAllRoadBits(tile);
 
-			/* Clear the road if only one piece is on the tile OR the AI tries
-			 * to clear town road OR we are not using the DC_AUTO flag */
+			/* Clear the road if only one piece is on the tile OR we are not using the DC_AUTO flag */
 			if ((CountBits(b) == 1 && GetRoadBits(tile, ROADTYPE_TRAM) == ROAD_NONE) || !(flags & DC_AUTO)) {
 				RoadTypes rts = GetRoadTypes(tile);
 				CommandCost ret(EXPENSES_CONSTRUCTION);

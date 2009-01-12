@@ -739,11 +739,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 
 		/* Prohibit building if
 		 *   1) The tile is "steep" (i.e. stretches two height levels)
-		 * -OR-
-		 *   2) The tile is non-flat if
-		 *     a) the company building is an "old-school" AI
-		 *   -OR-
-		 *     b) the build_on_slopes switch is disabled
+		 *   2) The tile is non-flat and the build_on_slopes switch is disabled
 		 */
 		if (IsSteepSlope(tileh) ||
 				((!_settings_game.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {

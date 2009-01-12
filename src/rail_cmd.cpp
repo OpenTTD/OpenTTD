@@ -783,10 +783,9 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 	/* Prohibit construction if
 	 * The tile is non-flat AND
-	 * 1) The AI is "old-school"
-	 * 2) build-on-slopes is disabled
-	 * 3) the tile is steep i.e. spans two height levels
-	 * 4) the exit points in the wrong direction
+	 * 1) build-on-slopes is disabled
+	 * 2) the tile is steep i.e. spans two height levels
+	 * 3) the exit points in the wrong direction
 	 */
 
 	if (tileh != SLOPE_FLAT && (
