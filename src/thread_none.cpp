@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "thread.h"
-#include "fiber.hpp"
 
 /* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
 {
@@ -22,21 +21,6 @@
 }
 
 /* static */ ThreadSemaphore *ThreadSemaphore::New()
-{
-	return NULL;
-}
-
-/* static */ Fiber *Fiber::New(FiberFunc proc, void *param)
-{
-	return NULL;
-}
-
-/* static */ Fiber *Fiber::AttachCurrent(void *param)
-{
-	return NULL;
-}
-
-/* static */ void *Fiber::GetCurrentFiberData()
 {
 	return NULL;
 }

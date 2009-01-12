@@ -81,7 +81,6 @@ tgp.cpp
 #if HAVE_THREAD
 	#if WIN32
 		thread_win32.cpp
-		fiber_win32.cpp
 	#else
 		#if OS2
 			thread_os2.cpp
@@ -92,7 +91,6 @@ tgp.cpp
 				thread_pthread.cpp
 			#end
 		#end
-		fiber_thread.cpp
 	#end
 #else
 	thread_none.cpp
@@ -181,7 +179,6 @@ engine_base.h
 engine_func.h
 engine_gui.h
 engine_type.h
-fiber.hpp
 fileio_func.h
 fileio_type.h
 fios.h

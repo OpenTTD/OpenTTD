@@ -737,10 +737,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\fiber_win32.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\tile_map.cpp"
 				>
 			</File>
@@ -994,10 +990,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\engine_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\fiber.hpp"
 				>
 			</File>
 			<File
