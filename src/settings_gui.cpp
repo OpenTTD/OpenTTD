@@ -1081,7 +1081,6 @@ static PatchEntry _patches_stations[] = {
 	PatchEntry("station.station_spread"),
 	PatchEntry("economy.station_noise_level"),
 	PatchEntry("station.modified_catchment"),
-	PatchEntry("order.serviceathelipad"),
 	PatchEntry("construction.road_stop_on_town_road"),
 };
 /** Stations sub-page */
@@ -1161,6 +1160,7 @@ static PatchEntry _patches_vehicles_servicing[] = {
 	PatchEntry("vehicle.servint_ships"),
 	PatchEntry("vehicle.servint_aircraft"),
 	PatchEntry("order.no_servicing_if_no_breakdowns"),
+	PatchEntry("order.serviceathelipad"),
 };
 /** Servicing sub-page */
 static PatchPage _patches_vehicles_servicing_page = {_patches_vehicles_servicing, lengthof(_patches_vehicles_servicing)};
