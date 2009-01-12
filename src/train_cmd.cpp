@@ -2362,7 +2362,7 @@ static void CheckNextTrainTile(Vehicle *v)
 	/* Exit if we are on a station tile and are going to stop. */
 	if (IsRailwayStationTile(v->tile) && v->current_order.ShouldStopAtStation(v, GetStationIndex(v->tile))) return;
 	/* Exit if the current order doesn't have a destination, but the train has orders. */
-	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION)) && v->GetNumOrders() > 0) return;
+	if ((v->current_order.IsType(OT_NOTHING) || v->current_order.IsType(OT_LEAVESTATION) || v->current_order.IsType(OT_LOADING)) && v->GetNumOrders() > 0) return;
 
 	Trackdir td = GetVehicleTrackdir(v);
 
