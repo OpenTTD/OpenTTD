@@ -213,7 +213,7 @@
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));
 
-	return AIObject::DoCommand(tile, -1, tile, CMD_PLANT_TREE);
+	return AIObject::DoCommand(tile, UINT_MAX, tile, CMD_PLANT_TREE);
 }
 
 /* static */ bool AITile::PlantTreeRectangle(TileIndex tile, uint width, uint height)
@@ -223,7 +223,7 @@
 	EnforcePrecondition(false, height >= 1 && height <= 20);
 	TileIndex end_tile = tile + ::TileDiffXY(width - 1, height - 1);
 
-	return AIObject::DoCommand(tile, -1, end_tile, CMD_PLANT_TREE);
+	return AIObject::DoCommand(tile, UINT_MAX, end_tile, CMD_PLANT_TREE);
 }
 
 /* static */ bool AITile::IsWithinTownInfluence(TileIndex tile, TownID town_id)

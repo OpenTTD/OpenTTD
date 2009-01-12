@@ -23,7 +23,7 @@ class BuildTreesWindow : public Window
 {
 	uint16 base;
 	uint16 count;
-	int tree_to_plant;
+	uint tree_to_plant;
 
 	enum BuildTreesWidgets {
 		BTW_CLOSE,
@@ -105,7 +105,7 @@ public:
 
 			case BTW_TYPE_RANDOM: // tree of random type.
 				if (HandlePlacePushButton(this, BTW_TYPE_RANDOM, SPR_CURSOR_TREE, VHM_RECT, NULL)) {
-					this->tree_to_plant = -1;
+					this->tree_to_plant = UINT_MAX;
 				}
 				break;
 
