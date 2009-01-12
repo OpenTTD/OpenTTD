@@ -2105,10 +2105,6 @@
 			Name="Tables"
 			>
 			<File
-				RelativePath=".\..\src\table\ai_rail.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\table\animcursors.h"
 				>
 			</File>

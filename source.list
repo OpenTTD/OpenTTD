@@ -477,7 +477,6 @@ saveload/vehicle_sl.cpp
 saveload/waypoint_sl.cpp
 
 # Tables
-table/ai_rail.h
 table/animcursors.h
 table/autorail.h
 table/bridge_land.h
