@@ -561,7 +561,6 @@ script/squirrel_std.hpp
 
 # AI Core
 ai/ai.hpp
-#if HAVE_THREAD
 ai/ai_config.cpp
 ai/ai_config.hpp
 ai/ai_core.cpp
@@ -674,7 +673,6 @@ ai/api/ai_townlist.cpp
 ai/api/ai_tunnel.cpp
 ai/api/ai_vehicle.cpp
 ai/api/ai_vehiclelist.cpp
-#end
 
 # Blitters
 #if DEDICATED
