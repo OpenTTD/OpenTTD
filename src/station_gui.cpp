@@ -1206,7 +1206,7 @@ static const WindowDesc _select_station_desc = {
  */
 static bool StationJoinerNeeded(CommandContainer cmd, int w, int h)
 {
-	if (CmdFailed(DoCommand(&cmd, DC_NO_WATER | DC_AUTO))) return false;
+	if (CmdFailed(DoCommand(&cmd, CommandFlagsToDCFlags(GetCommandFlags(cmd.cmd))))) return false;
 
 	/* Only show selection if distant join is enabled in the settings */
 	if (!_settings_game.station.distant_join_stations) return false;
