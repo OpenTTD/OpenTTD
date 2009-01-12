@@ -87,7 +87,7 @@ public:
 		if (!IsRunning()) return false;
 
 		/* For now we terminate by throwing an error, gives much cleaner cleanup */
-		throw 0;
+		throw OTTDThreadExitSignal();
 	}
 
 	/* virtual */ void Join()
@@ -128,7 +128,9 @@ private:
 	{
 		try {
 			m_proc(m_param);
+		} catch (OTTDThreadExitSignal) {
 		} catch (...) {
+			NOT_REACHED();
 		}
 	}
 };

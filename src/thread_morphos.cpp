@@ -153,7 +153,7 @@ public:
 
 		if (NewGetTaskAttrs(NULL, &msg, sizeof(struct OTTDThreadStartupMessage *), TASKINFOTYPE_STARTUPMSG, TAG_DONE) && msg != NULL) {
 			/* For now we terminate by throwing an error, gives much cleaner cleanup */
-			throw 0;
+			throw OTTDThreadExitSignal();
 		}
 
 		return true;
@@ -203,8 +203,10 @@ private:
 		if (NewGetTaskAttrs(NULL, &msg, sizeof(struct OTTDThreadStartupMessage *), TASKINFOTYPE_STARTUPMSG, TAG_DONE) && msg != NULL) {
 			try {
 				msg->func(msg->arg);
-			} catch(...) {
+			} catch(OTTDThreadExitSignal e) {
 				KPutStr("[Child] Returned to main()\n");
+			} catch(...) {
+				NOT_REACHED();
 			}
 		}
 

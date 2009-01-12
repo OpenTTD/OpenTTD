@@ -92,7 +92,7 @@ public:
 		if (!IsRunning()) return false;
 
 		/* For now we terminate by throwing an error, gives much cleaner cleanup */
-		throw 0;
+		throw OTTDThreadExitSignal();
 	}
 
 	/* virtual */ void Join()
@@ -137,7 +137,9 @@ private:
 		/* Call the proc of the creator to continue this thread */
 		try {
 			m_proc(m_param);
+		} catch (OTTDThreadExitSignal e) {
 		} catch (...) {
+			NOT_REACHED();
 		}
 
 		/* Notify threads waiting for our completion */

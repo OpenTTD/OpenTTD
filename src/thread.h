@@ -7,6 +7,8 @@
 
 typedef void (*OTTDThreadFunc)(void *);
 
+class OTTDThreadExitSignal { };
+
 /**
  * A Thread Object which works on all our supported OSes.
  */
