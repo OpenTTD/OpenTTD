@@ -617,6 +617,15 @@ check_params() {
 		log 1 "checking assert... disabled"
 	fi
 
+	SCRIPT_SRC_DIR="$ROOT_DIR/src/3rdparty/squirrel/include"
+	if [ ! -d "$SCRIPT_SRC_DIR" ]; then
+		log 1 "checking 3rdparty... NOT FOUND"
+		log 1 "ERROR: please make sure you have src/3rdparty/squirrel"
+		log 1 "ERROR: you can find the source at svn://svn.openttd.org/3rdparty/squirrel"
+		exit 1
+	fi
+	log 1 "checking 3rdparty... found"
+
 	pre_detect_with_zlib=$with_zlib
 	detect_zlib
 
@@ -1232,7 +1241,6 @@ make_cflags_and_ldflags() {
 	if [ "$cpu_type" = "64" ]; then
 		CFLAGS="$CFLAGS -D_SQ64"
 	fi
-	SCRIPT_SRC_DIR="$ROOT_DIR/src/3rdparty/squirrel/include"
 	CFLAGS="$CFLAGS -I$SCRIPT_SRC_DIR"
 	CFLAGS="$CFLAGS -DNO_GARBAGE_COLLECTOR"
 
