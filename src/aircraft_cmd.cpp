@@ -32,6 +32,7 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
+#include "ai/ai.hpp"
 #include "company_func.h"
 #include "settings_type.h"
 #include "order_func.h"
@@ -1338,6 +1339,8 @@ static void CrashAirplane(Vehicle *v)
 		newsitem = STR_A034_PLANE_CRASH_DIE_IN_FIREBALL;
 	}
 
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile));
+
 	AddNewsItem(newsitem,
 		NS_ACCIDENT_VEHICLE,
 		v->index,
@@ -1388,6 +1391,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 			v->index,
 			st->index
 		);
+		AI::NewEvent(v->owner, new AIEventStationFirstVehicle(st->index, v->index));
 	}
 
 	v->BeginLoading();

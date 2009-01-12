@@ -1,0 +1,28 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_list.hpp"
+
+namespace SQConvert {
+	/* Allow AIList to be used as Squirrel parameter */
+	template <> AIList *GetParam(ForceType<AIList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIList *)instance; }
+	template <> AIList &GetParam(ForceType<AIList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIList *)instance; }
+	template <> const AIList *GetParam(ForceType<const AIList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIList *)instance; }
+	template <> const AIList &GetParam(ForceType<const AIList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIList *)instance; }
+	template <> int Return<AIList *>(HSQUIRRELVM vm, AIList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIList", res, NULL, DefSQDestructorCallback<AIList>); return 1; }
+}; // namespace SQConvert
+
+void SQAIList_Register(Squirrel *engine) {
+	DefSQClass <AIList> SQAIList("AIList");
+	SQAIList.PreRegister(engine, "AIAbstractList");
+	SQAIList.AddConstructor<void (AIList::*)(), 1>(engine, "x");
+
+	SQAIList.DefSQStaticMethod(engine, &AIList::GetClassName, "GetClassName", 1, "x");
+
+	SQAIList.DefSQMethod(engine, &AIList::AddItem,    "AddItem",    3, "xii");
+	SQAIList.DefSQMethod(engine, &AIList::ChangeItem, "ChangeItem", 3, "xii");
+	SQAIList.DefSQMethod(engine, &AIList::RemoveItem, "RemoveItem", 2, "xi");
+	SQAIList.DefSQAdvancedMethod(engine, &AIList::_set, "_set");
+
+	SQAIList.PostRegister(engine);
+}

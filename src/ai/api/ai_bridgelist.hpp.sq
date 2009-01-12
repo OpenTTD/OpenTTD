@@ -1,0 +1,42 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_bridgelist.hpp"
+
+namespace SQConvert {
+	/* Allow AIBridgeList to be used as Squirrel parameter */
+	template <> AIBridgeList *GetParam(ForceType<AIBridgeList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBridgeList *)instance; }
+	template <> AIBridgeList &GetParam(ForceType<AIBridgeList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBridgeList *)instance; }
+	template <> const AIBridgeList *GetParam(ForceType<const AIBridgeList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBridgeList *)instance; }
+	template <> const AIBridgeList &GetParam(ForceType<const AIBridgeList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBridgeList *)instance; }
+	template <> int Return<AIBridgeList *>(HSQUIRRELVM vm, AIBridgeList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBridgeList", res, NULL, DefSQDestructorCallback<AIBridgeList>); return 1; }
+}; // namespace SQConvert
+
+void SQAIBridgeList_Register(Squirrel *engine) {
+	DefSQClass <AIBridgeList> SQAIBridgeList("AIBridgeList");
+	SQAIBridgeList.PreRegister(engine, "AIAbstractList");
+	SQAIBridgeList.AddConstructor<void (AIBridgeList::*)(), 1>(engine, "x");
+
+	SQAIBridgeList.DefSQStaticMethod(engine, &AIBridgeList::GetClassName, "GetClassName", 1, "x");
+
+	SQAIBridgeList.PostRegister(engine);
+}
+
+namespace SQConvert {
+	/* Allow AIBridgeList_Length to be used as Squirrel parameter */
+	template <> AIBridgeList_Length *GetParam(ForceType<AIBridgeList_Length *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBridgeList_Length *)instance; }
+	template <> AIBridgeList_Length &GetParam(ForceType<AIBridgeList_Length &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBridgeList_Length *)instance; }
+	template <> const AIBridgeList_Length *GetParam(ForceType<const AIBridgeList_Length *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBridgeList_Length *)instance; }
+	template <> const AIBridgeList_Length &GetParam(ForceType<const AIBridgeList_Length &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBridgeList_Length *)instance; }
+	template <> int Return<AIBridgeList_Length *>(HSQUIRRELVM vm, AIBridgeList_Length *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBridgeList_Length", res, NULL, DefSQDestructorCallback<AIBridgeList_Length>); return 1; }
+}; // namespace SQConvert
+
+void SQAIBridgeList_Length_Register(Squirrel *engine) {
+	DefSQClass <AIBridgeList_Length> SQAIBridgeList_Length("AIBridgeList_Length");
+	SQAIBridgeList_Length.PreRegister(engine, "AIAbstractList");
+	SQAIBridgeList_Length.AddConstructor<void (AIBridgeList_Length::*)(uint length), 2>(engine, "xi");
+
+	SQAIBridgeList_Length.DefSQStaticMethod(engine, &AIBridgeList_Length::GetClassName, "GetClassName", 1, "x");
+
+	SQAIBridgeList_Length.PostRegister(engine);
+}

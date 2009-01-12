@@ -32,7 +32,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 
-static StationClass _station_classes[STAT_CLASS_MAX];
+StationClass _station_classes[STAT_CLASS_MAX];
 
 enum {
 	MAX_SPECLIST = 255,

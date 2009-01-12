@@ -141,6 +141,9 @@ run-gdb: all
 run-prof: all
 	$(Q)cd !!BIN_DIR!! && ./!!TTD!! $(OPENTTD_ARGS) && gprof !!TTD!! | less
 
+regression: all
+	$(Q)cd !!BIN_DIR!! && sh ai/regression/run.sh
+
 %.o:
 	@for dir in $(SRC_DIRS); do \
 		$(MAKE) -C $$dir $(@:src/%=%); \

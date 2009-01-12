@@ -1,0 +1,28 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_date.hpp"
+
+namespace SQConvert {
+	/* Allow AIDate to be used as Squirrel parameter */
+	template <> AIDate *GetParam(ForceType<AIDate *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIDate *)instance; }
+	template <> AIDate &GetParam(ForceType<AIDate &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIDate *)instance; }
+	template <> const AIDate *GetParam(ForceType<const AIDate *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIDate *)instance; }
+	template <> const AIDate &GetParam(ForceType<const AIDate &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIDate *)instance; }
+	template <> int Return<AIDate *>(HSQUIRRELVM vm, AIDate *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIDate", res, NULL, DefSQDestructorCallback<AIDate>); return 1; }
+}; // namespace SQConvert
+
+void SQAIDate_Register(Squirrel *engine) {
+	DefSQClass <AIDate> SQAIDate("AIDate");
+	SQAIDate.PreRegister(engine);
+	SQAIDate.AddConstructor<void (AIDate::*)(), 1>(engine, "x");
+
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetClassName,   "GetClassName",   1, "x");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetCurrentDate, "GetCurrentDate", 1, "x");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetYear,        "GetYear",        2, "xi");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetMonth,       "GetMonth",       2, "xi");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetDayOfMonth,  "GetDayOfMonth",  2, "xi");
+	SQAIDate.DefSQStaticMethod(engine, &AIDate::GetDate,        "GetDate",        4, "xiii");
+
+	SQAIDate.PostRegister(engine);
+}

@@ -38,6 +38,7 @@
 #include "variables.h"
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
+#include "ai/ai.hpp"
 #include "settings_type.h"
 #include "order_func.h"
 #include "depot_base.h"
@@ -617,6 +618,8 @@ static void RoadVehCrash(Vehicle *v)
 
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile));
+
 	SetDParam(0, pass);
 	AddNewsItem(
 		(pass == 1) ?
@@ -803,6 +806,7 @@ static void RoadVehArrivesAt(const Vehicle *v, Station *st)
 				v->index,
 				st->index
 			);
+			AI::NewEvent(v->owner, new AIEventStationFirstVehicle(st->index, v->index));
 		}
 	} else {
 		/* Check if station was ever visited before */
@@ -815,6 +819,7 @@ static void RoadVehArrivesAt(const Vehicle *v, Station *st)
 				v->index,
 				st->index
 			);
+			AI::NewEvent(v->owner, new AIEventStationFirstVehicle(st->index, v->index));
 		}
 	}
 }

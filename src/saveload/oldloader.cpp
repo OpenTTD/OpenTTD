@@ -17,8 +17,7 @@
 #include "../debug.h"
 #include "../depot_base.h"
 #include "../newgrf_config.h"
-#include "../ai/ai.h"
-#include "../ai/default/default.h"
+#include "../ai/ai.hpp"
 #include "../zoom_func.h"
 #include "../functions.h"
 #include "../date_func.h"
@@ -805,145 +804,6 @@ static bool OldCompanyEconomy(LoadgameState *ls, int num)
 	return true;
 }
 
-static const OldChunks _company_ai_build_rec_chunk[] = {
-	OCL_SVAR(   OC_TILE, AiBuildRec, spec_tile ),
-	OCL_SVAR(   OC_TILE, AiBuildRec, use_tile ),
-	OCL_SVAR(  OC_UINT8, AiBuildRec, rand_rng ),
-	OCL_SVAR(  OC_UINT8, AiBuildRec, cur_building_rule ),
-	OCL_SVAR(  OC_UINT8, AiBuildRec, unk6 ),
-	OCL_SVAR(  OC_UINT8, AiBuildRec, unk7 ),
-	OCL_SVAR(  OC_UINT8, AiBuildRec, buildcmd_a ),
-	OCL_SVAR(  OC_UINT8, AiBuildRec, buildcmd_b ),
-	OCL_SVAR(  OC_UINT8, AiBuildRec, direction ),
-	OCL_SVAR(  OC_UINT8, AiBuildRec, cargo ),
-
-	OCL_NULL( 8 ),  ///< Junk...
-
-	OCL_END()
-};
-
-static bool OldLoadAIBuildRec(LoadgameState *ls, int num)
-{
-	Company *c = GetCompany(_current_company_id);
-
-	switch (num) {
-		case 0: return LoadChunk(ls, &_companies_ai[c->index].src,  _company_ai_build_rec_chunk);
-		case 1: return LoadChunk(ls, &_companies_ai[c->index].dst,  _company_ai_build_rec_chunk);
-		case 2: return LoadChunk(ls, &_companies_ai[c->index].mid1, _company_ai_build_rec_chunk);
-		case 3: return LoadChunk(ls, &_companies_ai[c->index].mid2, _company_ai_build_rec_chunk);
-	}
-
-	return false;
-}
-static const OldChunks _company_ai_chunk[] = {
-	OCL_SVAR(  OC_UINT8, CompanyAI, state ),
-	OCL_NULL( 1 ),         ///< Junk
-	OCL_SVAR(  OC_UINT8, CompanyAI, state_mode ),
-	OCL_SVAR( OC_UINT16, CompanyAI, state_counter ),
-	OCL_SVAR( OC_UINT16, CompanyAI, timeout_counter ),
-
-	OCL_CHUNK( 4, OldLoadAIBuildRec ),
-
-	OCL_NULL( 20 ),        ///< More junk
-
-	OCL_SVAR(  OC_UINT8, CompanyAI, cargo_type ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, num_wagons ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, build_kind ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, num_build_rec ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, num_loco_to_build ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, num_want_fullload ),
-
-	OCL_NULL( 14 ),        ///< Oh no more junk :|
-
-	OCL_NULL( 2 ),         ///< Loco-id, not used
-
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[0] ),
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[1] ),
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[2] ),
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[3] ),
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[4] ),
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[5] ),
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[6] ),
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[7] ),
-	OCL_SVAR( OC_UINT16, CompanyAI, wagon_list[8] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[0] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[1] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[2] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[3] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[4] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[5] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[6] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[7] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[8] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[9] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[10] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[11] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[12] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[13] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[14] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[15] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[16] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[17] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[18] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, order_list_blocks[19] ),
-
-	OCL_SVAR( OC_UINT16, CompanyAI, start_tile_a ),
-	OCL_SVAR( OC_UINT16, CompanyAI, start_tile_b ),
-	OCL_SVAR( OC_UINT16, CompanyAI, cur_tile_a ),
-	OCL_SVAR( OC_UINT16, CompanyAI, cur_tile_b ),
-
-	OCL_SVAR(  OC_UINT8, CompanyAI, start_dir_a ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, start_dir_b ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, cur_dir_a ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, cur_dir_b ),
-
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_tile_count ),
-
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[0] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[0] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[1] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[1] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[2] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[2] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[3] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[3] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[4] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[4] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[5] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[5] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[6] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[6] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[7] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[7] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[8] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[8] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[9] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[9] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[10] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[10] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[11] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[11] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[12] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[12] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[13] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[13] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[14] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[14] ),
-	OCL_SVAR(   OC_TILE, CompanyAI, banned_tiles[15] ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, banned_val[15] ),
-
-	OCL_SVAR(  OC_UINT8, CompanyAI, railtype_to_use ),
-	OCL_SVAR(  OC_UINT8, CompanyAI, route_type_mask ),
-
-	OCL_END()
-};
-
-static bool OldCompanyAI(LoadgameState *ls, int num)
-{
-	return LoadChunk(ls, &_companies_ai[_current_company_id], _company_ai_chunk);
-}
-
-uint8 ai_tick;
 static const OldChunks _company_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
 	OCL_SVAR( OC_UINT32, Company, name_2 ),
@@ -970,10 +830,10 @@ static const OldChunks _company_chunk[] = {
 	OCL_SVAR(                  OC_TILE, Company, last_build_coordinate ),
 	OCL_SVAR(                 OC_UINT8, Company, num_valid_stat_ent ),
 
-	OCL_CHUNK( 1, OldCompanyAI ),
+	OCL_NULL( 230 ),         // Old AI
 
 	OCL_SVAR(  OC_UINT8, Company, block_preview ),
-	 OCL_VAR(  OC_UINT8,   1, &ai_tick ),
+	OCL_NULL( 1 ),           // Old AI
 	OCL_SVAR(  OC_UINT8, Company, avail_railtypes ),
 	OCL_SVAR(   OC_TILE, Company, location_of_HQ ),
 	OCL_SVAR(  OC_UINT8, Company, share_owners[0] ),
@@ -1001,7 +861,6 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 
 	c->name_1 = RemapOldStringID(_old_string_id);
 	c->president_name_1 = RemapOldStringID(_old_string_id_2);
-	_companies_ai[_current_company_id].tick = ai_tick;
 
 	if (num == 0) {
 		/* If the first company has no name, make sure we call it UNNAMED */
@@ -1022,15 +881,6 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 
 	_company_colours[num] = c->colour;
 	c->inaugurated_year -= ORIGINAL_BASE_YEAR;
-
-	/* State 20 for AI companies is sell vehicle. Since the AI struct is not
-	 * really figured out as of now, _companies_ai[c->index].cur_veh; needed for 'sell vehicle'
-	 * is NULL and the function will crash. To fix this, just change the state
-	 * to some harmless state, like 'loop vehicle'; 1 */
-	if (!IsHumanCompany((CompanyID)num) && _companies_ai[c->index].state == 20) _companies_ai[c->index].state = 1;
-
-	if (c->is_ai && (!_networking || _network_server) && _ai.enabled)
-		AI_StartNewAI(c->index);
 
 	return true;
 }

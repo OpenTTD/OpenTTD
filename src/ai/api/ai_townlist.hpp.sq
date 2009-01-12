@@ -1,0 +1,23 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_townlist.hpp"
+
+namespace SQConvert {
+	/* Allow AITownList to be used as Squirrel parameter */
+	template <> AITownList *GetParam(ForceType<AITownList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITownList *)instance; }
+	template <> AITownList &GetParam(ForceType<AITownList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITownList *)instance; }
+	template <> const AITownList *GetParam(ForceType<const AITownList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITownList *)instance; }
+	template <> const AITownList &GetParam(ForceType<const AITownList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITownList *)instance; }
+	template <> int Return<AITownList *>(HSQUIRRELVM vm, AITownList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITownList", res, NULL, DefSQDestructorCallback<AITownList>); return 1; }
+}; // namespace SQConvert
+
+void SQAITownList_Register(Squirrel *engine) {
+	DefSQClass <AITownList> SQAITownList("AITownList");
+	SQAITownList.PreRegister(engine, "AIAbstractList");
+	SQAITownList.AddConstructor<void (AITownList::*)(), 1>(engine, "x");
+
+	SQAITownList.DefSQStaticMethod(engine, &AITownList::GetClassName, "GetClassName", 1, "x");
+
+	SQAITownList.PostRegister(engine);
+}

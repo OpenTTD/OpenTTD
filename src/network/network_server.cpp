@@ -664,7 +664,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 			}
 			break;
 		default: /* Join another company (companies 1-8 (index 0-7)) */
-			if (!IsValidCompanyID(playas)) {
+			if (!IsValidCompanyID(playas) || !IsHumanCompany(playas)) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_COMPANY_MISMATCH);
 				return;
 			}

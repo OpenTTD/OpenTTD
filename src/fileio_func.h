@@ -61,6 +61,8 @@ void AppendPathSeparator(char *buf, size_t buflen);
 void DeterminePaths(const char *exe);
 void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize);
 bool FileExists(const char *filename);
+const char *FioTarFirstDir(const char *tarname);
+void FioTarAddLink(const char *src, const char *dest);
 
 extern char *_personal_dir; ///< custom directory for personal settings, saves, newgrf, etc.
 

@@ -15,6 +15,7 @@ LANG_DIR     = !!LANG_DIR!!
 SRC_OBJS_DIR = !!SRC_OBJS_DIR!!
 LANG_OBJS_DIR= !!LANG_OBJS_DIR!!
 SRC_DIR      = !!SRC_DIR!!
+SCRIPT_SRC_DIR=!!SCRIPT_SRC_DIR!!
 MEDIA_DIR    = !!MEDIA_DIR!!
 TTD          = !!TTD!!
 STRGEN       = !!STRGEN!!
@@ -48,7 +49,7 @@ RES      := $(shell mkdir -p $(BIN_DIR) $(sort $(dir $(OBJS))))
 
 # Make sure endian_target.h is reasable as if it was in the src/ dir
 CFLAGS += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR)
-CFLAGS_MAKEDEP += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR)
+CFLAGS_MAKEDEP += -I $(SRC_OBJS_DIR) -I $(LANG_OBJS_DIR) -I $(SCRIPT_SRC_DIR)
 
 ENDIAN_TARGETS := endian_target.h $(ENDIAN_CHECK)
 
@@ -216,10 +217,10 @@ endif
 
 endif
 
-# Avoid problems with deps if a .h/.hpp file is deleted without the deps
+# Avoid problems with deps if a .h/.hpp/.hpp.sq file is deleted without the deps
 #  being updated. Now the Makefile continues, the deps are recreated
 #  and all will be fine.
-%.h %.hpp:
+%.h %.hpp %.hpp.sq:
 	@true
 
 

@@ -1,0 +1,69 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_town.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AITown::TownAction GetParam(ForceType<AITown::TownAction>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITown::TownAction)tmp; }
+	template <> int Return<AITown::TownAction>(HSQUIRRELVM vm, AITown::TownAction res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AITown::TownRating GetParam(ForceType<AITown::TownRating>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITown::TownRating)tmp; }
+	template <> int Return<AITown::TownRating>(HSQUIRRELVM vm, AITown::TownRating res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AITown to be used as Squirrel parameter */
+	template <> AITown *GetParam(ForceType<AITown *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITown *)instance; }
+	template <> AITown &GetParam(ForceType<AITown &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITown *)instance; }
+	template <> const AITown *GetParam(ForceType<const AITown *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITown *)instance; }
+	template <> const AITown &GetParam(ForceType<const AITown &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITown *)instance; }
+	template <> int Return<AITown *>(HSQUIRRELVM vm, AITown *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITown", res, NULL, DefSQDestructorCallback<AITown>); return 1; }
+}; // namespace SQConvert
+
+void SQAITown_Register(Squirrel *engine) {
+	DefSQClass <AITown> SQAITown("AITown");
+	SQAITown.PreRegister(engine);
+	SQAITown.AddConstructor<void (AITown::*)(), 1>(engine, "x");
+
+	SQAITown.DefSQConst(engine, AITown::TOWN_ACTION_ADVERTISE_SMALL,  "TOWN_ACTION_ADVERTISE_SMALL");
+	SQAITown.DefSQConst(engine, AITown::TOWN_ACTION_ADVERTISE_MEDIUM, "TOWN_ACTION_ADVERTISE_MEDIUM");
+	SQAITown.DefSQConst(engine, AITown::TOWN_ACTION_ADVERTISE_LARGE,  "TOWN_ACTION_ADVERTISE_LARGE");
+	SQAITown.DefSQConst(engine, AITown::TOWN_ACTION_ROAD_REBUILD,     "TOWN_ACTION_ROAD_REBUILD");
+	SQAITown.DefSQConst(engine, AITown::TOWN_ACTION_BUILD_STATUE,     "TOWN_ACTION_BUILD_STATUE");
+	SQAITown.DefSQConst(engine, AITown::TOWN_ACTION_FUND_BUILDINGS,   "TOWN_ACTION_FUND_BUILDINGS");
+	SQAITown.DefSQConst(engine, AITown::TOWN_ACTION_BUY_RIGHTS,       "TOWN_ACTION_BUY_RIGHTS");
+	SQAITown.DefSQConst(engine, AITown::TOWN_ACTION_BRIBE,            "TOWN_ACTION_BRIBE");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_NONE,             "TOWN_RATING_NONE");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_APPALLING,        "TOWN_RATING_APPALLING");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_VERY_POOR,        "TOWN_RATING_VERY_POOR");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_POOR,             "TOWN_RATING_POOR");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_MEDIOCRE,         "TOWN_RATING_MEDIOCRE");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_GOOD,             "TOWN_RATING_GOOD");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_VERY_GOOD,        "TOWN_RATING_VERY_GOOD");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_EXCELLENT,        "TOWN_RATING_EXCELLENT");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_OUTSTANDING,      "TOWN_RATING_OUTSTANDING");
+	SQAITown.DefSQConst(engine, AITown::INVALID_TOWN_RATING,          "INVALID_TOWN_RATING");
+
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetClassName,               "GetClassName",               1, "x");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetMaxTownID,               "GetMaxTownID",               1, "x");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetTownCount,               "GetTownCount",               1, "x");
+	SQAITown.DefSQStaticMethod(engine, &AITown::IsValidTown,                "IsValidTown",                2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetName,                    "GetName",                    2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetPopulation,              "GetPopulation",              2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetHouseCount,              "GetHouseCount",              2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetLocation,                "GetLocation",                2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetLastMonthProduction,     "GetLastMonthProduction",     3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetLastMonthTransported,    "GetLastMonthTransported",    3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetMaxProduction,           "GetMaxProduction",           3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::HasStatue,                  "HasStatue",                  2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetRoadReworkDuration,      "GetRoadReworkDuration",      2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetExclusiveRightsCompany,  "GetExclusiveRightsCompany",  2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetExclusiveRightsDuration, "GetExclusiveRightsDuration", 2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::IsActionAvailable,          "IsActionAvailable",          3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::PerformTownAction,          "PerformTownAction",          3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetRating,                  "GetRating",                  3, "xii");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetAllowedNoise,            "GetAllowedNoise",            2, "xi");
+
+	SQAITown.PostRegister(engine);
+}

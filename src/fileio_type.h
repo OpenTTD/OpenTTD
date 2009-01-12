@@ -19,6 +19,7 @@ enum Subdirectory {
 	GM_DIR,        ///< Subdirectory for all music
 	DATA_DIR,      ///< Subdirectory for all data (GRFs, sample.cat, intro game)
 	LANG_DIR,      ///< Subdirectory for all translation files
+	AI_DIR,        ///< Subdirectory for all AI files
 	NUM_SUBDIRS,   ///< Number of subdirectories
 	NO_DIRECTORY,  ///< A path without any base directory
 };

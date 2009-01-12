@@ -1,0 +1,59 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_abstractlist.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIAbstractList::SorterType GetParam(ForceType<AIAbstractList::SorterType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIAbstractList::SorterType)tmp; }
+	template <> int Return<AIAbstractList::SorterType>(HSQUIRRELVM vm, AIAbstractList::SorterType res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIAbstractList to be used as Squirrel parameter */
+	template <> AIAbstractList *GetParam(ForceType<AIAbstractList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIAbstractList *)instance; }
+	template <> AIAbstractList &GetParam(ForceType<AIAbstractList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIAbstractList *)instance; }
+	template <> const AIAbstractList *GetParam(ForceType<const AIAbstractList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIAbstractList *)instance; }
+	template <> const AIAbstractList &GetParam(ForceType<const AIAbstractList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIAbstractList *)instance; }
+	template <> int Return<AIAbstractList *>(HSQUIRRELVM vm, AIAbstractList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIAbstractList", res, NULL, DefSQDestructorCallback<AIAbstractList>); return 1; }
+}; // namespace SQConvert
+
+void SQAIAbstractList_Register(Squirrel *engine) {
+	DefSQClass <AIAbstractList> SQAIAbstractList("AIAbstractList");
+	SQAIAbstractList.PreRegister(engine);
+	SQAIAbstractList.AddConstructor<void (AIAbstractList::*)(), 1>(engine, "x");
+
+	SQAIAbstractList.DefSQConst(engine, AIAbstractList::SORT_BY_VALUE, "SORT_BY_VALUE");
+	SQAIAbstractList.DefSQConst(engine, AIAbstractList::SORT_BY_ITEM,  "SORT_BY_ITEM");
+
+	SQAIAbstractList.DefSQStaticMethod(engine, &AIAbstractList::GetClassName, "GetClassName", 1, "x");
+
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Clear,              "Clear",              1, "x");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::HasItem,            "HasItem",            2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Begin,              "Begin",              1, "x");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Next,               "Next",               1, "x");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::IsEmpty,            "IsEmpty",            1, "x");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::HasNext,            "HasNext",            1, "x");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Count,              "Count",              1, "x");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::GetValue,           "GetValue",           2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::SetValue,           "SetValue",           3, "xii");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::Sort,               "Sort",               3, "xib");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::AddList,            "AddList",            2, "xx");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::RemoveAboveValue,   "RemoveAboveValue",   2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::RemoveBelowValue,   "RemoveBelowValue",   2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::RemoveBetweenValue, "RemoveBetweenValue", 3, "xii");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::RemoveValue,        "RemoveValue",        2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::RemoveTop,          "RemoveTop",          2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::RemoveBottom,       "RemoveBottom",       2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::RemoveList,         "RemoveList",         2, "xx");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepAboveValue,     "KeepAboveValue",     2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepBelowValue,     "KeepBelowValue",     2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepBetweenValue,   "KeepBetweenValue",   3, "xii");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepValue,          "KeepValue",          2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepTop,            "KeepTop",            2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepBottom,         "KeepBottom",         2, "xi");
+	SQAIAbstractList.DefSQMethod(engine, &AIAbstractList::KeepList,           "KeepList",           2, "xx");
+	SQAIAbstractList.DefSQAdvancedMethod(engine, &AIAbstractList::_get,       "_get");
+	SQAIAbstractList.DefSQAdvancedMethod(engine, &AIAbstractList::_nexti,     "_nexti");
+	SQAIAbstractList.DefSQAdvancedMethod(engine, &AIAbstractList::Valuate,    "Valuate");
+
+	SQAIAbstractList.PostRegister(engine);
+}

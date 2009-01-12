@@ -15,7 +15,7 @@
 #include "network/network_func.h"
 #include "network/network_base.h"
 #include "variables.h"
-#include "ai/ai.h"
+#include "ai/ai.hpp"
 #include "company_manager_face.h"
 #include "group.h"
 #include "window_func.h"
@@ -31,8 +31,6 @@
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
-#include "ai/default/default.h"
-#include "ai/trolly/trolly.h"
 #include "road_func.h"
 #include "rail.h"
 #include "sprite.h"
@@ -53,6 +51,7 @@ DEFINE_OLD_POOL_GENERIC(Company, Company)
 Company::Company(uint16 name_1, bool is_ai) : name_1(name_1), location_of_HQ(INVALID_TILE), is_ai(is_ai)
 {
 	for (uint j = 0; j < 4; j++) this->share_owners[j] = COMPANY_SPECTATOR;
+	this->is_noai = true;
 }
 
 Company::~Company()
@@ -293,6 +292,7 @@ set_name:;
 			SetDParam(3, t->index);
 			AddNewsItem(STR_02B6, NS_COMPANY_NEW, c->last_build_coordinate, 0, cni);
 		}
+		AI::BroadcastNewEvent(new AIEventCompanyNew(c->index), c->index);
 		return;
 	}
 bad_town_name:;
@@ -429,9 +429,6 @@ Company *DoStartupNewCompany(bool is_ai)
 
 	Company *c = new Company(STR_SV_UNNAMED, is_ai);
 
-	memset(&_companies_ai[c->index], 0, sizeof(CompanyAI));
-	memset(&_companies_ainew[c->index], 0, sizeof(CompanyAiNew));
-
 	/* Make a color */
 	c->colour = GenerateCompanyColour();
 	ResetCompanyLivery(c);
@@ -439,7 +436,6 @@ Company *DoStartupNewCompany(bool is_ai)
 
 	c->money = c->current_loan = 100000;
 
-	_companies_ai[c->index].state = 5; // AIS_WANT_NEW_ROUTE
 	c->share_owners[0] = c->share_owners[1] = c->share_owners[2] = c->share_owners[3] = INVALID_OWNER;
 
 	c->avail_railtypes = GetCompanyRailtypes(c->index);
@@ -460,8 +456,7 @@ Company *DoStartupNewCompany(bool is_ai)
 	InvalidateWindow(WC_TOOLBAR_MENU, 0);
 	InvalidateWindow(WC_CLIENT_LIST, 0);
 
-	if (is_ai && (!_networking || _network_server) && _ai.enabled)
-		AI_StartNewAI(c->index);
+	if (is_ai && (!_networking || _network_server)) AI::StartNew(c->index);
 
 	c->num_engines = CallocT<uint16>(GetEnginePoolSize());
 
@@ -516,7 +511,7 @@ void OnTick_Companies()
 		Company *c = GetCompany((CompanyID)_cur_company_tick_index);
 		if (c->name_1 != 0) GenerateCompanyName(c);
 
-		if (AI_AllowNewAI() && _game_mode != GM_MENU && !--_next_competitor_start) {
+		if (AI::CanStartNew() && _game_mode != GM_MENU && !--_next_competitor_start) {
 			MaybeStartNewCompany();
 		}
 	}
@@ -829,25 +824,24 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 
 			c = GetCompany((CompanyID)p2);
 
-			/* Only allow removal of HUMAN companies */
-			if (IsHumanCompany(c->index)) {
-				/* Delete any open window of the company */
-				DeleteCompanyWindows(c->index);
+			/* Delete any open window of the company */
+			DeleteCompanyWindows(c->index);
+			CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
+			cni->FillData(c);
 
-				CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
-				cni->FillData(c);
+			/* Show the bankrupt news */
+			SetDParam(0, STR_705C_BANKRUPT);
+			SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
+			SetDParamStr(2, cni->company_name);
+			AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
 
-				/* Show the bankrupt news */
-				SetDParam(0, STR_705C_BANKRUPT);
-				SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
-				SetDParamStr(2, cni->company_name);
-				AddNewsItem(STR_02B6, NS_COMPANY_BANKRUPT, 0, 0, cni);
+			/* Remove the company */
+			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
+			if (!IsHumanCompany(c->index)) AI::Stop(c->index);
 
-				/* Remove the company */
-				ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
-
-				delete c;
-			}
+			CompanyID c_index = c->index;
+			delete c;
+			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
 		} break;
 
 		case 3: { /* Merge a company (#1) into another company (#2), elimination company #1 */

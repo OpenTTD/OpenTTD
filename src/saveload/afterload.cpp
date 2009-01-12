@@ -48,6 +48,7 @@
 #include "../company_func.h"
 #include "../command_func.h"
 #include "../road_cmd.h"
+#include "../ai/ai.hpp"
 
 #include "table/strings.h"
 
@@ -467,6 +468,14 @@ bool AfterLoadGame()
 
 	/* Update all vehicles */
 	AfterLoadVehicles(true);
+
+	/* Make sure there is an AI attached to an AI company */
+	{
+		Company *c;
+		FOR_ALL_COMPANIES(c) {
+			if (c->is_ai && c->ai_instance == NULL) AI::StartNew(c->index);
+		}
+	}
 
 	/* Update all waypoints */
 	if (CheckSavegameVersion(12)) FixOldWaypoints();

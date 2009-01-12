@@ -31,6 +31,8 @@
 #include "company_base.h"
 #include "settings_type.h"
 #include "gamelog.h"
+#include "ai/ai.hpp"
+#include "ai/ai_config.hpp"
 
 #ifdef ENABLE_NETWORK
 	#include "table/strings.h"
@@ -832,6 +834,129 @@ DEF_CONSOLE_CMD(ConRestart)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConListAI)
+{
+	char buf[4096];
+	char *p = &buf[0];
+	p = AI::GetConsoleList(p, lastof(buf));
+
+	p = &buf[0];
+	/* Print output line by line */
+	for (char *p2 = &buf[0]; *p2 != '\0'; p2++) {
+		if (*p2 == '\n') {
+			*p2 = '\0';
+			IConsolePrintF(CC_DEFAULT, "%s", p);
+			p = p2 + 1;
+		}
+	}
+
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConStartAI)
+{
+	if (argc == 0 || argc > 3) {
+		IConsoleHelp("Start a new AI. Usage: 'start_ai [<AI>] [<settings>]'");
+		IConsoleHelp("Start a new AI. If <AI> is given, it starts that specific AI (if found).");
+		IConsoleHelp("If <settings> is given, it is parsed and the AI settings are set to that.");
+		return true;
+	}
+
+	if (ActiveCompanyCount() == MAX_COMPANIES) {
+		IConsoleWarning("Can't start a new AI (no more free slots).");
+		return true;
+	}
+	if (_networking && !_network_server) {
+		IConsoleWarning("Only the server can start a new AI.");
+		return true;
+	}
+	if (_networking && !_settings_game.ai.ai_in_multiplayer) {
+		IConsoleWarning("AIs are not allowed in multiplayer by configuration.");
+		IConsoleWarning("Switch AI -> AI in multiplayer to True.");
+		return true;
+	}
+	if (!AI::CanStartNew()) {
+		IConsoleWarning("Can't start a new AI.");
+		return true;
+	}
+
+	int n = 0;
+	Company *c;
+	/* Find the next free slot */
+	FOR_ALL_COMPANIES(c) {
+		if (c->index != n) break;
+		n++;
+	}
+
+	AIConfig *config = AIConfig::GetConfig((CompanyID)n);
+	if (argc >= 2) {
+		class AIInfo *info = AI::GetCompanyInfo(argv[1]);
+		if (info == NULL) {
+			IConsoleWarning("Failed to load the specified AI");
+			return true;
+		}
+		config->ChangeAI(argv[1]);
+		if (argc == 3) {
+			config->StringToSettings(argv[2]);
+		}
+	} else {
+		config->ChangeAI(NULL);
+	}
+
+	/* Start a new AI company */
+	DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
+
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConStopAI)
+{
+	if (argc != 2) {
+		IConsoleHelp("Stop an AI. Usage: 'stop_ai <company-id>'");
+		IConsoleHelp("Stop the AI with the given company id. For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
+		return true;
+	}
+
+	if (_networking && !_network_server) {
+		IConsoleWarning("Only the server can stop an AI.");
+		return true;
+	}
+
+	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
+	if (!IsValidCompanyID(company_id)) {
+		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
+		return true;
+	}
+
+	if (IsHumanCompany(company_id)) {
+		IConsoleWarning("Company is not controlled by an AI.");
+		return true;
+	}
+
+	/* Now kill the company of the AI. */
+	DoCommandP(0, 2, company_id, CMD_COMPANY_CTRL);
+	IConsolePrint(CC_DEFAULT, "AI stopped, company deleted.");
+
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConRescanAI)
+{
+	if (argc == 0) {
+		IConsoleHelp("Rescan the AI dir for scripts. Usage: 'rescan_ai'");
+		return true;
+	}
+
+	if (_networking && !_network_server) {
+		IConsoleWarning("Only the server can rescan the AI dir for scripts.");
+		return true;
+	}
+
+	AI::Rescan();
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConGetSeed)
 {
 	if (argc == 0) {
@@ -1338,6 +1463,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("help",         ConHelp);
 	IConsoleCmdRegister("info_cmd",     ConInfoCmd);
 	IConsoleCmdRegister("info_var",     ConInfoVar);
+	IConsoleCmdRegister("list_ai",      ConListAI);
 	IConsoleCmdRegister("list_cmds",    ConListCommands);
 	IConsoleCmdRegister("list_vars",    ConListVariables);
 	IConsoleCmdRegister("list_aliases", ConListAliases);
@@ -1346,6 +1472,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("getseed",      ConGetSeed);
 	IConsoleCmdRegister("getdate",      ConGetDate);
 	IConsoleCmdRegister("quit",         ConExit);
+	IConsoleCmdRegister("rescan_ai",    ConRescanAI);
 	IConsoleCmdRegister("resetengines", ConResetEngines);
 	IConsoleCmdRegister("return",       ConReturn);
 	IConsoleCmdRegister("screenshot",   ConScreenShot);
@@ -1356,6 +1483,8 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("rm",           ConRemove);
 	IConsoleCmdRegister("save",         ConSave);
 	IConsoleCmdRegister("saveconfig",   ConSaveConfig);
+	IConsoleCmdRegister("start_ai",     ConStartAI);
+	IConsoleCmdRegister("stop_ai",      ConStopAI);
 	IConsoleCmdRegister("ls",           ConListFiles);
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);

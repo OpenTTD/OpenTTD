@@ -1,0 +1,94 @@
+/* $Id$ */
+
+/** @file ai_cargo.hpp Everything to query cargos. */
+
+#ifndef AI_CARGO_HPP
+#define AI_CARGO_HPP
+
+#include "ai_object.hpp"
+
+/**
+ * Class that handles all cargo related functions.
+ */
+class AICargo : public AIObject {
+public:
+	static const char *GetClassName() { return "AICargo"; }
+
+	/**
+	 * The classes of cargo (from newgrf_cargo.h).
+	 */
+	enum CargoClass {
+		CC_PASSENGERS   = 1 <<  0, ///< Passengers
+		CC_MAIL         = 1 <<  1, ///< Mail
+		CC_EXPRESS      = 1 <<  2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
+		CC_ARMOURED     = 1 <<  3, ///< Armoured cargo (Valuables, Gold, Diamonds)
+		CC_BULK         = 1 <<  4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
+		CC_PIECE_GOODS  = 1 <<  5, ///< Piece goods (Livestock, Wood, Steel, Paper)
+		CC_LIQUID       = 1 <<  6, ///< Liquids (Oil, Water, Rubber)
+		CC_REFRIGERATED = 1 <<  7, ///< Refrigerated cargo (Food, Fruit)
+		CC_HAZARDOUS    = 1 <<  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
+		CC_COVERED      = 1 <<  9, ///< Covered/Sheltered Freight (Transporation in Box Vans, Silo Wagons, etc.)
+	};
+
+	/**
+	 * The effects a cargo can have on a town.
+	 */
+	enum TownEffect {
+		TE_NONE       = 0, ///< This cargo has no effect on a town
+		TE_PASSENGERS = 1, ///< This cargo supplies passengers to a town
+		TE_MAIL       = 2, ///< This cargo supplies mail to a town
+		TE_GOODS      = 3, ///< This cargo supplies goods to a town
+		TE_WATER      = 4, ///< This cargo supplies water to a town
+		TE_FOOD       = 5, ///< This cargo supplies food to a town
+	};
+
+	/**
+	 * Checks whether the given cargo type is valid.
+	 * @param cargo_type The cargo to check.
+	 * @return True if and only if the cargo type is valid.
+	 */
+	static bool IsValidCargo(CargoID cargo_type);
+
+	/**
+	 * Gets the string representation of the cargo label.
+	 * @param cargo_type The cargo to get the string representation of.
+	 * @return The cargo label.
+	 * @note Never use this to check if it is a certain cargo. NewGRF can
+	 *  redefine all of the names.
+	 */
+	static const char *GetCargoLabel(CargoID cargo_type);
+
+	/**
+	 * Checks whether the give cargo is a freight or not.
+	 * @param cargo_type The cargo to check on.
+	 * @return True if and only if the cargo is freight.
+	 */
+	static bool IsFreight(CargoID cargo_type);
+
+	/**
+	 * Check if this cargo is in the requested cargo class.
+	 * @param cargo_type The cargo to check on.
+	 * @param cargo_class The class to check for.
+	 * @return True if and only if the cargo is in the cargo class.
+	 */
+	static bool HasCargoClass(CargoID cargo_type, CargoClass cargo_class);
+
+	/**
+	 * Get the effect this cargo has on a town.
+	 * @param cargo_type The cargo to check on.
+	 * @return The effect this cargo has on a town, or TE_NONE if it has no effect.
+	 */
+	static TownEffect GetTownEffect(CargoID cargo_type);
+
+	/**
+	 * Get the income for transporting a piece of cargo over the
+	 *   given distance within the specified time.
+	 * @param cargo_type The cargo to transport.
+	 * @param distance The distance the cargo travels from begin to end.
+	 * @param days_in_transit Amount of (game) days the cargo is in transit. The max value of this variable is 637. Any value higher returns the same as 637 would.
+	 * @return The amount of money that would be earned by this trip.
+	 */
+	static Money GetCargoIncome(CargoID cargo_type, uint32 distance, uint32 days_in_transit);
+};
+
+#endif /* AI_CARGO_HPP */

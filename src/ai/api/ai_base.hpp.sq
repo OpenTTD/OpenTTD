@@ -1,0 +1,29 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_base.hpp"
+
+namespace SQConvert {
+	/* Allow AIBase to be used as Squirrel parameter */
+	template <> AIBase *GetParam(ForceType<AIBase *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBase *)instance; }
+	template <> AIBase &GetParam(ForceType<AIBase &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBase *)instance; }
+	template <> const AIBase *GetParam(ForceType<const AIBase *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBase *)instance; }
+	template <> const AIBase &GetParam(ForceType<const AIBase &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBase *)instance; }
+	template <> int Return<AIBase *>(HSQUIRRELVM vm, AIBase *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBase", res, NULL, DefSQDestructorCallback<AIBase>); return 1; }
+}; // namespace SQConvert
+
+void SQAIBase_Register(Squirrel *engine) {
+	DefSQClass <AIBase> SQAIBase("AIBase");
+	SQAIBase.PreRegister(engine);
+	SQAIBase.AddConstructor<void (AIBase::*)(), 1>(engine, "x");
+
+	SQAIBase.DefSQStaticMethod(engine, &AIBase::GetClassName,  "GetClassName",  1, "x");
+	SQAIBase.DefSQStaticMethod(engine, &AIBase::Rand,          "Rand",          1, "x");
+	SQAIBase.DefSQStaticMethod(engine, &AIBase::RandItem,      "RandItem",      2, "xi");
+	SQAIBase.DefSQStaticMethod(engine, &AIBase::RandRange,     "RandRange",     2, "xi");
+	SQAIBase.DefSQStaticMethod(engine, &AIBase::RandRangeItem, "RandRangeItem", 3, "xii");
+	SQAIBase.DefSQStaticMethod(engine, &AIBase::Chance,        "Chance",        3, "xii");
+	SQAIBase.DefSQStaticMethod(engine, &AIBase::ChanceItem,    "ChanceItem",    4, "xiii");
+
+	SQAIBase.PostRegister(engine);
+}

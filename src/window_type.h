@@ -96,6 +96,7 @@ enum WindowClass {
 	WC_OSK,
 	WC_WAYPOINT_VIEW,
 	WC_SELECT_STATION,
+	WC_AI_DEBUG,
 
 	WC_INVALID = 0xFFFF
 };

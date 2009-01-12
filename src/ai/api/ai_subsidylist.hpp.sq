@@ -1,0 +1,23 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_subsidylist.hpp"
+
+namespace SQConvert {
+	/* Allow AISubsidyList to be used as Squirrel parameter */
+	template <> AISubsidyList *GetParam(ForceType<AISubsidyList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISubsidyList *)instance; }
+	template <> AISubsidyList &GetParam(ForceType<AISubsidyList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISubsidyList *)instance; }
+	template <> const AISubsidyList *GetParam(ForceType<const AISubsidyList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISubsidyList *)instance; }
+	template <> const AISubsidyList &GetParam(ForceType<const AISubsidyList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISubsidyList *)instance; }
+	template <> int Return<AISubsidyList *>(HSQUIRRELVM vm, AISubsidyList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AISubsidyList", res, NULL, DefSQDestructorCallback<AISubsidyList>); return 1; }
+}; // namespace SQConvert
+
+void SQAISubsidyList_Register(Squirrel *engine) {
+	DefSQClass <AISubsidyList> SQAISubsidyList("AISubsidyList");
+	SQAISubsidyList.PreRegister(engine, "AIAbstractList");
+	SQAISubsidyList.AddConstructor<void (AISubsidyList::*)(), 1>(engine, "x");
+
+	SQAISubsidyList.DefSQStaticMethod(engine, &AISubsidyList::GetClassName, "GetClassName", 1, "x");
+
+	SQAISubsidyList.PostRegister(engine);
+}

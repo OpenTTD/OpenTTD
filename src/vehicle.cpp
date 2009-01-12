@@ -51,6 +51,7 @@
 #include "depot_map.h"
 #include "animated_tile_func.h"
 #include "effectvehicle_base.h"
+#include "ai/ai.hpp"
 #include "core/alloc_func.hpp"
 #include "core/smallmap_type.hpp"
 #include "vehiclelist.h"
@@ -1518,6 +1519,7 @@ void VehicleEnterDepot(Vehicle *v)
 				SetDParam(0, v->index);
 				AddNewsItem(string, NS_ADVICE, v->index, 0);
 			}
+			AI::NewEvent(v->owner, new AIEventVehicleWaitingInDepot(v->index));
 		}
 	}
 }
@@ -2213,9 +2215,9 @@ void VehiclesYearlyLoop()
 	FOR_ALL_VEHICLES(v) {
 		if (v->IsPrimaryVehicle()) {
 			/* show warning if vehicle is not generating enough income last 2 years (corresponds to a red icon in the vehicle list) */
-			if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company && v->age >= 730) {
-				Money profit = v->GetDisplayProfitThisYear();
-				if (profit < 0) {
+			Money profit = v->GetDisplayProfitThisYear();
+			if (v->age >= 730 && profit < 0) {
+				if (_settings_client.gui.vehicle_income_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					SetDParam(1, profit);
 					AddNewsItem(
@@ -2224,6 +2226,7 @@ void VehiclesYearlyLoop()
 						v->index,
 						0);
 				}
+				AI::NewEvent(v->owner, new AIEventVehicleUnprofitable(v->index));
 			}
 
 			v->profit_last_year = v->profit_this_year;

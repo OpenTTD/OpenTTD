@@ -48,6 +48,7 @@
 #include "variables.h"
 #include "autoreplace_gui.h"
 #include "gfx_func.h"
+#include "ai/ai.hpp"
 #include "settings_type.h"
 #include "order_func.h"
 #include "newgrf_station.h"
@@ -1376,15 +1377,13 @@ CommandCost CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p
  * - p2 = 0: only sell the single dragged wagon/engine (and any belonging rear-engines)
  * - p2 = 1: sell the vehicle and all vehicles following it in the chain
  *           if the wagon is dragged, don't delete the possibly belonging rear-engine to some front
- * - p2 = 2: when selling attached locos, rearrange all vehicles after it to separate lines;
- *           all wagons of the same type will go on the same line. Used by the AI currently
  */
 CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Check if we deleted a vehicle window */
 	Window *w = NULL;
 
-	if (!IsValidVehicleID(p1) || p2 > 2) return CMD_ERROR;
+	if (!IsValidVehicleID(p1) || p2 > 1) return CMD_ERROR;
 
 	Vehicle *v = GetVehicle(p1);
 
@@ -1416,9 +1415,8 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 
 	CommandCost cost(EXPENSES_NEW_VEHICLES);
 	switch (p2) {
-		case 0: case 2: { /* Delete given wagon */
+		case 0: { /* Delete given wagon */
 			bool switch_engine = false;    // update second wagon to engine?
-			byte ori_subtype = v->subtype; // backup subtype of deleted wagon in case DeleteVehicle() changes
 
 			/* 1. Delete the engine, if it is dualheaded also delete the matching
 			 * rear engine of the loco (from the point of deletion onwards) */
@@ -1490,18 +1488,6 @@ CommandCost CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 					if (IsFrontEngine(first)) InvalidateWindow(WC_VEHICLE_REFIT, first->index);
 				}
 
-
-				/* (6.) Borked AI. If it sells an engine it expects all wagons lined
-				 * up on a new line to be added to the newly built loco. Replace it is.
-				 * Totally braindead cause building a new engine adds all loco-less
-				 * engines to its train anyways */
-				if (p2 == 2 && HasBit(ori_subtype, TS_FRONT)) {
-					for (v = first; v != NULL;) {
-						Vehicle *tmp = GetNextVehicle(v);
-						DoCommand(v->tile, v->index | INVALID_VEHICLE << 16, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
-						v = tmp;
-					}
-				}
 			}
 		} break;
 		case 1: { /* Delete wagon and all wagons after it given certain criteria */
@@ -2729,6 +2715,7 @@ static PBSTileInfo ExtendTrainReservation(const Vehicle *v, TrackBits *new_track
 		if (KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
 			/* Possible signal tile. */
 			if (HasOnewaySignalBlockingTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) break;
+			AI::NewEvent(v->owner, new AIEventVehicleLost(v->index));
 		}
 
 		if (no_90deg_turns) {
@@ -3352,6 +3339,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 			v->index,
 			st->index
 		);
+		AI::NewEvent(v->owner, new AIEventStationFirstVehicle(st->index, v->index));
 	}
 
 	v->BeginLoading();
@@ -3627,6 +3615,7 @@ static bool CheckTrainCollision(Vehicle *v)
 	/* any dead -> no crash */
 	if (tcc.num == 0) return false;
 
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile));
 	SetDParam(0, tcc.num);
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
 		NS_ACCIDENT_VEHICLE,

@@ -1,0 +1,72 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_event.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIEvent::AIEventType GetParam(ForceType<AIEvent::AIEventType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIEvent::AIEventType)tmp; }
+	template <> int Return<AIEvent::AIEventType>(HSQUIRRELVM vm, AIEvent::AIEventType res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIEvent to be used as Squirrel parameter */
+	template <> AIEvent *GetParam(ForceType<AIEvent *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEvent *)instance; }
+	template <> AIEvent &GetParam(ForceType<AIEvent &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEvent *)instance; }
+	template <> const AIEvent *GetParam(ForceType<const AIEvent *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEvent *)instance; }
+	template <> const AIEvent &GetParam(ForceType<const AIEvent &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEvent *)instance; }
+	template <> int Return<AIEvent *>(HSQUIRRELVM vm, AIEvent *res) { if (res == NULL) { sq_pushnull(vm); return 1; } Squirrel::CreateClassInstanceVM(vm, "AIEvent", res, NULL, DefSQDestructorCallback<AIEvent>); return 1; }
+}; // namespace SQConvert
+
+void SQAIEvent_Register(Squirrel *engine) {
+	DefSQClass <AIEvent> SQAIEvent("AIEvent");
+	SQAIEvent.PreRegister(engine);
+	SQAIEvent.AddConstructor<void (AIEvent::*)(AIEvent::AIEventType type), 2>(engine, "xi");
+
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_INVALID,                  "AI_ET_INVALID");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_TEST,                     "AI_ET_TEST");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_SUBSIDY_OFFER,            "AI_ET_SUBSIDY_OFFER");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_SUBSIDY_OFFER_EXPIRED,    "AI_ET_SUBSIDY_OFFER_EXPIRED");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_SUBSIDY_AWARDED,          "AI_ET_SUBSIDY_AWARDED");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_SUBSIDY_EXPIRED,          "AI_ET_SUBSIDY_EXPIRED");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_ENGINE_PREVIEW,           "AI_ET_ENGINE_PREVIEW");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_NEW,              "AI_ET_COMPANY_NEW");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_IN_TROUBLE,       "AI_ET_COMPANY_IN_TROUBLE");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_MERGER,           "AI_ET_COMPANY_MERGER");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_COMPANY_BANKRUPT,         "AI_ET_COMPANY_BANKRUPT");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_VEHICLE_CRASHED,          "AI_ET_VEHICLE_CRASHED");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_VEHICLE_LOST,             "AI_ET_VEHICLE_LOST");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_VEHICLE_WAITING_IN_DEPOT, "AI_ET_VEHICLE_WAITING_IN_DEPOT");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_VEHICLE_UNPROFITABLE,     "AI_ET_VEHICLE_UNPROFITABLE");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_INDUSTRY_OPEN,            "AI_ET_INDUSTRY_OPEN");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_INDUSTRY_CLOSE,           "AI_ET_INDUSTRY_CLOSE");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_ENGINE_AVAILABLE,         "AI_ET_ENGINE_AVAILABLE");
+	SQAIEvent.DefSQConst(engine, AIEvent::AI_ET_STATION_FIRST_VEHICLE,    "AI_ET_STATION_FIRST_VEHICLE");
+
+	SQAIEvent.DefSQStaticMethod(engine, &AIEvent::GetClassName, "GetClassName", 1, "x");
+
+	SQAIEvent.DefSQMethod(engine, &AIEvent::GetEventType, "GetEventType", 1, "x");
+
+	SQAIEvent.PostRegister(engine);
+}
+
+namespace SQConvert {
+	/* Allow AIEventController to be used as Squirrel parameter */
+	template <> AIEventController *GetParam(ForceType<AIEventController *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEventController *)instance; }
+	template <> AIEventController &GetParam(ForceType<AIEventController &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventController *)instance; }
+	template <> const AIEventController *GetParam(ForceType<const AIEventController *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEventController *)instance; }
+	template <> const AIEventController &GetParam(ForceType<const AIEventController &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventController *)instance; }
+	template <> int Return<AIEventController *>(HSQUIRRELVM vm, AIEventController *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventController", res, NULL, DefSQDestructorCallback<AIEventController>); return 1; }
+}; // namespace SQConvert
+
+void SQAIEventController_Register(Squirrel *engine) {
+	DefSQClass <AIEventController> SQAIEventController("AIEventController");
+	SQAIEventController.PreRegister(engine);
+	SQAIEventController.AddConstructor<void (AIEventController::*)(), 1>(engine, "x");
+
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::GetClassName,     "GetClassName",     1, "x");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::IsEventWaiting,   "IsEventWaiting",   1, "x");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::GetNextEvent,     "GetNextEvent",     1, "x");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::InsertEvent,      "InsertEvent",      2, "xx");
+	SQAIEventController.DefSQStaticMethod(engine, &AIEventController::FreeEventPointer, "FreeEventPointer", 1, "x");
+
+	SQAIEventController.PostRegister(engine);
+}

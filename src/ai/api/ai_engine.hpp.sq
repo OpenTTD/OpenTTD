@@ -1,0 +1,42 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_engine.hpp"
+
+namespace SQConvert {
+	/* Allow AIEngine to be used as Squirrel parameter */
+	template <> AIEngine *GetParam(ForceType<AIEngine *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEngine *)instance; }
+	template <> AIEngine &GetParam(ForceType<AIEngine &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEngine *)instance; }
+	template <> const AIEngine *GetParam(ForceType<const AIEngine *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEngine *)instance; }
+	template <> const AIEngine &GetParam(ForceType<const AIEngine &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEngine *)instance; }
+	template <> int Return<AIEngine *>(HSQUIRRELVM vm, AIEngine *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEngine", res, NULL, DefSQDestructorCallback<AIEngine>); return 1; }
+}; // namespace SQConvert
+
+void SQAIEngine_Register(Squirrel *engine) {
+	DefSQClass <AIEngine> SQAIEngine("AIEngine");
+	SQAIEngine.PreRegister(engine);
+	SQAIEngine.AddConstructor<void (AIEngine::*)(), 1>(engine, "x");
+
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetClassName,   "GetClassName",   1, "x");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsValidEngine,  "IsValidEngine",  2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetName,        "GetName",        2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetCargoType,   "GetCargoType",   2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanRefitCargo,  "CanRefitCargo",  3, "xii");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanPullCargo,   "CanPullCargo",   3, "xii");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetCapacity,    "GetCapacity",    2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetReliability, "GetReliability", 2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetMaxSpeed,    "GetMaxSpeed",    2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetPrice,       "GetPrice",       2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetMaxAge,      "GetMaxAge",      2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRunningCost, "GetRunningCost", 2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetVehicleType, "GetVehicleType", 2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsWagon,        "IsWagon",        2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::CanRunOnRail,   "CanRunOnRail",   3, "xii");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::HasPowerOnRail, "HasPowerOnRail", 3, "xii");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRoadType,    "GetRoadType",    2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetRailType,    "GetRailType",    2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::IsArticulated,  "IsArticulated",  2, "xi");
+	SQAIEngine.DefSQStaticMethod(engine, &AIEngine::GetPlaneType,   "GetPlaneType",   2, "xi");
+
+	SQAIEngine.PostRegister(engine);
+}

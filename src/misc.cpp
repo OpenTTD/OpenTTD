@@ -10,7 +10,7 @@
 #include "vehicle_gui.h"
 #include "variables.h"
 #include "cheat_func.h"
-#include "ai/ai.h"
+#include "ai/ai.hpp"
 #include "newgrf_house.h"
 #include "cargotype.h"
 #include "group.h"
@@ -26,6 +26,7 @@
 #include "core/alloc_type.hpp"
 #include "gamelog.h"
 #include "animated_tile_func.h"
+#include "settings_type.h"
 #include "tilehighlight_func.h"
 #include "core/bitmath_func.hpp"
 #include "network/network_func.h"
@@ -34,6 +35,7 @@
 #include "table/sprites.h"
 
 extern TileIndex _cur_tileloop_tile;
+extern void MakeNewgameSettingsLive();
 
 void InitializeVehicles();
 void InitializeWaypoints();
@@ -68,7 +70,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	_realtime_tick = 0;
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
-	_settings_game = _settings_newgame;
+	MakeNewgameSettingsLive();
 
 	if (reset_date) {
 		SetDate(ConvertYMDToDate(_settings_game.game_creation.starting_year, 0, 1));
@@ -101,7 +103,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	InitializeNPF();
 
 	InitializeCompanies();
-	AI_Initialize();
+	AI::Initialize();
 	InitializeCheats();
 
 	InitTextEffects();

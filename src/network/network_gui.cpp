@@ -1170,8 +1170,8 @@ struct NetworkLobbyWindow : public Window {
 		const NetworkGameInfo *gi = &this->server->info;
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
-		/* Join button is disabled when no company is selected */
-		this->SetWidgetDisabledState(NLWW_JOIN, this->company == INVALID_COMPANY);
+		/* Join button is disabled when no company is selected and for AI companies*/
+		this->SetWidgetDisabledState(NLWW_JOIN, this->company == INVALID_COMPANY || GetLobbyCompanyInfo(this->company)->ai);
 		/* Cannot start new company if there are too many */
 		this->SetWidgetDisabledState(NLWW_NEW, gi->companies_on >= gi->companies_max);
 		/* Cannot spectate if there are too many spectators */

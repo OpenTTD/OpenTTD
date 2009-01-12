@@ -9,6 +9,7 @@
 #include "town_type.h"
 #include "transport_type.h"
 #include "network/core/config.h"
+#include "company_type.h"
 
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
@@ -170,12 +171,12 @@ struct ConstructionSettings {
 
 /** Settings related to the AI. */
 struct AISettings {
-	bool   ainew_active;                     ///< is the new AI active?
 	bool   ai_in_multiplayer;                ///< so we allow AIs in multiplayer
 	bool   ai_disable_veh_train;             ///< disable types for AI
 	bool   ai_disable_veh_roadveh;           ///< disable types for AI
 	bool   ai_disable_veh_aircraft;          ///< disable types for AI
 	bool   ai_disable_veh_ship;              ///< disable types for AI
+	uint32 ai_max_opcode_till_suspend;       ///< max opcode calls till AI will suspend
 };
 
 /** Settings related to the old pathfinder. */
@@ -339,6 +340,7 @@ struct GameSettings {
 	GameCreationSettings game_creation;      ///< settings used during the creation of a game (map)
 	ConstructionSettings construction;       ///< construction of things in-game
 	AISettings           ai;                 ///< what may the AI do?
+	class AIConfig      *ai_config[MAX_COMPANIES]; ///< settings per company
 	PathfinderSettings   pf;                 ///< settings for all pathfinders
 	OrderSettings        order;              ///< settings related to orders
 	VehicleSettings      vehicle;            ///< options for vehicles

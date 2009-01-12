@@ -17,7 +17,7 @@
 #include "network/network_func.h"
 #include "variables.h"
 #include "vehicle_gui.h"
-#include "ai/ai.h"
+#include "ai/ai.hpp"
 #include "train.h"
 #include "roadveh.h"
 #include "aircraft.h"
@@ -480,6 +480,7 @@ static void CompanyCheckBankrupt(Company *c)
 			SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
 			SetDParamStr(2, cni->company_name);
 			AddNewsItem(STR_02B6, NS_COMPANY_TROUBLE, 0, 0, cni);
+			AI::BroadcastNewEvent(new AIEventCompanyInTrouble(c->index));
 			break;
 		case 3: {
 			/* XXX - In multiplayer, should we ask other companies if it wants to take
@@ -529,12 +530,11 @@ static void CompanyCheckBankrupt(Company *c)
 			ChangeNetworkOwner(c->index, COMPANY_SPECTATOR);
 			ChangeOwnershipOfCompanyItems(c->index, INVALID_OWNER);
 
-			/* Register the company as not-active */
-			if (!IsHumanCompany(c->index) && (!_networking || _network_server) && _ai.enabled) {
-				AI_CompanyDied(c->index);
-			}
+			if (!IsHumanCompany(c->index)) AI::Stop(c->index);
 
+			CompanyID c_index = c->index;
 			delete c;
+			AI::BroadcastNewEvent(new AIEventCompanyBankrupt(c_index));
 	}
 }
 
@@ -1065,6 +1065,7 @@ static void SubsidyMonthlyHandler()
 			AddNewsItem(STR_202E_OFFER_OF_SUBSIDY_EXPIRED, NS_SUBSIDIES, pair.a, pair.b);
 			s->cargo_type = CT_INVALID;
 			modified = true;
+			AI::BroadcastNewEvent(new AIEventSubsidyOfferExpired(s - _subsidies));
 		} else if (s->age == 2*12-1) {
 			st = GetStation(s->to);
 			if (st->owner == _local_company) {
@@ -1073,6 +1074,7 @@ static void SubsidyMonthlyHandler()
 			}
 			s->cargo_type = CT_INVALID;
 			modified = true;
+			AI::BroadcastNewEvent(new AIEventSubsidyExpired(s - _subsidies));
 		} else {
 			s->age++;
 		}
@@ -1109,6 +1111,7 @@ static void SubsidyMonthlyHandler()
 					s->age = 0;
 					pair = SetupSubsidyDecodeParam(s, 0);
 					AddNewsItem(STR_2030_SERVICE_SUBSIDY_OFFERED, NS_SUBSIDIES, pair.a, pair.b);
+					AI::BroadcastNewEvent(new AIEventSubsidyOffer(s - _subsidies));
 					modified = true;
 					break;
 				}
@@ -1326,6 +1329,7 @@ static bool CheckSubsidised(Station *from, Station *to, CargoID cargo_type)
 				NS_SUBSIDIES,
 				pair.a, pair.b
 			);
+			AI::BroadcastNewEvent(new AIEventSubsidyAwarded(s - _subsidies));
 
 			InvalidateWindow(WC_SUBSIDIES_LIST, 0);
 			return true;
@@ -1817,6 +1821,7 @@ static void DoAcquireCompany(Company *c)
 	Company *owner;
 	int i;
 	Money value;
+	CompanyID ci = c->index;
 
 	CompanyNewsInformation *cni = MallocT<CompanyNewsInformation>(1);
 	cni->FillData(c, GetCompany(_current_company));
@@ -1827,9 +1832,9 @@ static void DoAcquireCompany(Company *c)
 	SetDParamStr(3, cni->other_company_name);
 	SetDParam(4, c->bankrupt_value);
 	AddNewsItem(STR_02B6, NS_COMPANY_MERGER, 0, 0, cni);
+	AI::BroadcastNewEvent(new AIEventCompanyMerger(ci, _current_company));
 
 	/* original code does this a little bit differently */
-	CompanyID ci = c->index;
 	ChangeNetworkOwner(ci, _current_company);
 	ChangeOwnershipOfCompanyItems(ci, _current_company);
 
@@ -1847,6 +1852,8 @@ static void DoAcquireCompany(Company *c)
 		}
 	}
 	_current_company = old_company;
+
+	if (!IsHumanCompany(c->index)) AI::Stop(c->index);
 
 	DeleteCompanyWindows(ci);
 	InvalidateWindowClassesData(WC_TRAINS_LIST, 0);

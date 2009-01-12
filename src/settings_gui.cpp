@@ -1117,12 +1117,12 @@ static PatchEntry _patches_economy[] = {
 static PatchPage _patches_economy_page = {_patches_economy, lengthof(_patches_economy)};
 
 static PatchEntry _patches_ai_npc[] = {
-	PatchEntry("ai.ainew_active"),
 	PatchEntry("ai.ai_in_multiplayer"),
 	PatchEntry("ai.ai_disable_veh_train"),
 	PatchEntry("ai.ai_disable_veh_roadveh"),
 	PatchEntry("ai.ai_disable_veh_aircraft"),
 	PatchEntry("ai.ai_disable_veh_ship"),
+	PatchEntry("ai.ai_max_opcode_till_suspend"),
 };
 /** Computer players sub-page */
 static PatchPage _patches_ai_npc_page = {_patches_ai_npc, lengthof(_patches_ai_npc)};

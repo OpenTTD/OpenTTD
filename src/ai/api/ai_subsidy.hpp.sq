@@ -1,0 +1,32 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_subsidy.hpp"
+
+namespace SQConvert {
+	/* Allow AISubsidy to be used as Squirrel parameter */
+	template <> AISubsidy *GetParam(ForceType<AISubsidy *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISubsidy *)instance; }
+	template <> AISubsidy &GetParam(ForceType<AISubsidy &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISubsidy *)instance; }
+	template <> const AISubsidy *GetParam(ForceType<const AISubsidy *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AISubsidy *)instance; }
+	template <> const AISubsidy &GetParam(ForceType<const AISubsidy &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AISubsidy *)instance; }
+	template <> int Return<AISubsidy *>(HSQUIRRELVM vm, AISubsidy *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AISubsidy", res, NULL, DefSQDestructorCallback<AISubsidy>); return 1; }
+}; // namespace SQConvert
+
+void SQAISubsidy_Register(Squirrel *engine) {
+	DefSQClass <AISubsidy> SQAISubsidy("AISubsidy");
+	SQAISubsidy.PreRegister(engine);
+	SQAISubsidy.AddConstructor<void (AISubsidy::*)(), 1>(engine, "x");
+
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetClassName,      "GetClassName",      1, "x");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::IsValidSubsidy,    "IsValidSubsidy",    2, "xi");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::IsAwarded,         "IsAwarded",         2, "xi");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetAwardedTo,      "GetAwardedTo",      2, "xi");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetExpireDate,     "GetExpireDate",     2, "xi");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetCargoType,      "GetCargoType",      2, "xi");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::SourceIsTown,      "SourceIsTown",      2, "xi");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetSource,         "GetSource",         2, "xi");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::DestinationIsTown, "DestinationIsTown", 2, "xi");
+	SQAISubsidy.DefSQStaticMethod(engine, &AISubsidy::GetDestination,    "GetDestination",    2, "xi");
+
+	SQAISubsidy.PostRegister(engine);
+}

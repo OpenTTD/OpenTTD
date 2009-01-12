@@ -1,0 +1,23 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_railtypelist.hpp"
+
+namespace SQConvert {
+	/* Allow AIRailTypeList to be used as Squirrel parameter */
+	template <> AIRailTypeList *GetParam(ForceType<AIRailTypeList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRailTypeList *)instance; }
+	template <> AIRailTypeList &GetParam(ForceType<AIRailTypeList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRailTypeList *)instance; }
+	template <> const AIRailTypeList *GetParam(ForceType<const AIRailTypeList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRailTypeList *)instance; }
+	template <> const AIRailTypeList &GetParam(ForceType<const AIRailTypeList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRailTypeList *)instance; }
+	template <> int Return<AIRailTypeList *>(HSQUIRRELVM vm, AIRailTypeList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIRailTypeList", res, NULL, DefSQDestructorCallback<AIRailTypeList>); return 1; }
+}; // namespace SQConvert
+
+void SQAIRailTypeList_Register(Squirrel *engine) {
+	DefSQClass <AIRailTypeList> SQAIRailTypeList("AIRailTypeList");
+	SQAIRailTypeList.PreRegister(engine, "AIAbstractList");
+	SQAIRailTypeList.AddConstructor<void (AIRailTypeList::*)(), 1>(engine, "x");
+
+	SQAIRailTypeList.DefSQStaticMethod(engine, &AIRailTypeList::GetClassName, "GetClassName", 1, "x");
+
+	SQAIRailTypeList.PostRegister(engine);
+}

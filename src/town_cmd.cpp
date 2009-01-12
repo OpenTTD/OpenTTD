@@ -529,7 +529,7 @@ static bool ClickTile_Town(TileIndex tile)
 
 static CommandCost ClearTile_Town(TileIndex tile, byte flags)
 {
-	if ((flags & DC_AUTO) && !(flags & DC_AI_BUILDING)) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+	if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 	if (!CanDeleteHouse(tile)) return CMD_ERROR;
 
 	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));

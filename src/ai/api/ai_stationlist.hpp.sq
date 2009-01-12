@@ -1,0 +1,42 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_stationlist.hpp"
+
+namespace SQConvert {
+	/* Allow AIStationList to be used as Squirrel parameter */
+	template <> AIStationList *GetParam(ForceType<AIStationList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList *)instance; }
+	template <> AIStationList &GetParam(ForceType<AIStationList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList *)instance; }
+	template <> const AIStationList *GetParam(ForceType<const AIStationList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList *)instance; }
+	template <> const AIStationList &GetParam(ForceType<const AIStationList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList *)instance; }
+	template <> int Return<AIStationList *>(HSQUIRRELVM vm, AIStationList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList", res, NULL, DefSQDestructorCallback<AIStationList>); return 1; }
+}; // namespace SQConvert
+
+void SQAIStationList_Register(Squirrel *engine) {
+	DefSQClass <AIStationList> SQAIStationList("AIStationList");
+	SQAIStationList.PreRegister(engine, "AIAbstractList");
+	SQAIStationList.AddConstructor<void (AIStationList::*)(AIStation::StationType station_type), 2>(engine, "xi");
+
+	SQAIStationList.DefSQStaticMethod(engine, &AIStationList::GetClassName, "GetClassName", 1, "x");
+
+	SQAIStationList.PostRegister(engine);
+}
+
+namespace SQConvert {
+	/* Allow AIStationList_Vehicle to be used as Squirrel parameter */
+	template <> AIStationList_Vehicle *GetParam(ForceType<AIStationList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList_Vehicle *)instance; }
+	template <> AIStationList_Vehicle &GetParam(ForceType<AIStationList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList_Vehicle *)instance; }
+	template <> const AIStationList_Vehicle *GetParam(ForceType<const AIStationList_Vehicle *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStationList_Vehicle *)instance; }
+	template <> const AIStationList_Vehicle &GetParam(ForceType<const AIStationList_Vehicle &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStationList_Vehicle *)instance; }
+	template <> int Return<AIStationList_Vehicle *>(HSQUIRRELVM vm, AIStationList_Vehicle *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStationList_Vehicle", res, NULL, DefSQDestructorCallback<AIStationList_Vehicle>); return 1; }
+}; // namespace SQConvert
+
+void SQAIStationList_Vehicle_Register(Squirrel *engine) {
+	DefSQClass <AIStationList_Vehicle> SQAIStationList_Vehicle("AIStationList_Vehicle");
+	SQAIStationList_Vehicle.PreRegister(engine, "AIAbstractList");
+	SQAIStationList_Vehicle.AddConstructor<void (AIStationList_Vehicle::*)(VehicleID vehicle_id), 2>(engine, "xi");
+
+	SQAIStationList_Vehicle.DefSQStaticMethod(engine, &AIStationList_Vehicle::GetClassName, "GetClassName", 1, "x");
+
+	SQAIStationList_Vehicle.PostRegister(engine);
+}

@@ -24,6 +24,7 @@
 #include "string_func.h"
 #include "settings_type.h"
 #include "oldpool_func.h"
+#include "ai/ai.hpp"
 #include "core/alloc_func.hpp"
 #include "vehicle_func.h"
 
@@ -376,14 +377,10 @@ void EnginesDailyLoop()
 					continue;
 				}
 
-				if (!IsHumanCompany(best_company)) {
-					/* XXX - TTDBUG: TTD has a bug here ???? */
-					AcceptEnginePreview(i, best_company);
-				} else {
-					e->flags |= ENGINE_OFFER_WINDOW_OPEN;
-					e->preview_wait = 20;
-					if (IsInteractiveCompany(best_company)) ShowEnginePreviewWindow(i);
-				}
+				e->flags |= ENGINE_OFFER_WINDOW_OPEN;
+				e->preview_wait = 20;
+				AI::NewEvent(best_company, new AIEventEnginePreview(i));
+				if (IsInteractiveCompany(best_company)) ShowEnginePreviewWindow(i);
 			}
 		}
 	}
@@ -459,6 +456,8 @@ static void NewVehicleAvailable(Engine *e)
 		/* maybe make another road type available */
 		FOR_ALL_COMPANIES(c) SetBit(c->avail_roadtypes, HasBit(e->info.misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 	}
+
+	AI::BroadcastNewEvent(new AIEventEngineAvailable(index));
 
 	SetDParam(0, GetEngineCategoryName(index));
 	SetDParam(1, index);

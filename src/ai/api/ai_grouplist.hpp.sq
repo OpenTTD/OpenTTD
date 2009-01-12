@@ -1,0 +1,23 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_grouplist.hpp"
+
+namespace SQConvert {
+	/* Allow AIGroupList to be used as Squirrel parameter */
+	template <> AIGroupList *GetParam(ForceType<AIGroupList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroupList *)instance; }
+	template <> AIGroupList &GetParam(ForceType<AIGroupList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroupList *)instance; }
+	template <> const AIGroupList *GetParam(ForceType<const AIGroupList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroupList *)instance; }
+	template <> const AIGroupList &GetParam(ForceType<const AIGroupList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroupList *)instance; }
+	template <> int Return<AIGroupList *>(HSQUIRRELVM vm, AIGroupList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIGroupList", res, NULL, DefSQDestructorCallback<AIGroupList>); return 1; }
+}; // namespace SQConvert
+
+void SQAIGroupList_Register(Squirrel *engine) {
+	DefSQClass <AIGroupList> SQAIGroupList("AIGroupList");
+	SQAIGroupList.PreRegister(engine, "AIAbstractList");
+	SQAIGroupList.AddConstructor<void (AIGroupList::*)(), 1>(engine, "x");
+
+	SQAIGroupList.DefSQStaticMethod(engine, &AIGroupList::GetClassName, "GetClassName", 1, "x");
+
+	SQAIGroupList.PostRegister(engine);
+}

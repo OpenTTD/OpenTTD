@@ -25,6 +25,7 @@
 #include "settings_type.h"
 #include "newgrf_storage.h"
 #include "water.h"
+#include "blitter/factory.hpp"
 #include "tilehighlight_func.h"
 #include "saveload/saveload.h"
 
@@ -298,7 +299,7 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 		_gw.thread = NULL;
 	}
 
-	if (_network_dedicated ||
+	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0 ||
 	    (_gw.thread = ThreadObject::New(&_GenerateWorld, NULL)) == NULL) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;

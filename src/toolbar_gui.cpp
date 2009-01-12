@@ -37,6 +37,7 @@
 #include "functions.h"
 #include "console_gui.h"
 #include "news_gui.h"
+#include "ai/ai_gui.hpp"
 #include "tilehighlight_func.h"
 #include "rail.h"
 #include "widgets/dropdown_func.h"
@@ -702,7 +703,7 @@ static void MenuClickNewspaper(int index)
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, TBN_HELP, STR_02D5_LAND_BLOCK_INFO, 6);
+	PopupMainToolbMenu(w, TBN_HELP, STR_02D5_LAND_BLOCK_INFO, 7);
 }
 
 static void MenuClickSmallScreenshot()
@@ -720,9 +721,10 @@ static void MenuClickHelp(int index)
 	switch (index) {
 		case 0: PlaceLandBlockInfo();       break;
 		case 2: IConsoleSwitch();           break;
-		case 3: MenuClickSmallScreenshot(); break;
-		case 4: MenuClickWorldScreenshot(); break;
-		case 5: ShowAboutWindow();          break;
+		case 3: ShowAIDebugWindow();        break;
+		case 4: MenuClickSmallScreenshot(); break;
+		case 5: MenuClickWorldScreenshot(); break;
+		case 6: ShowAboutWindow();          break;
 	}
 }
 

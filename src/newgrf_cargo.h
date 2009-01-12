@@ -9,7 +9,7 @@
 #include "cargo_type.h"
 #include "gfx_type.h"
 
-enum {
+enum CargoClass {
 	CC_NOAVAILABLE  = 0,       ///< No cargo class has been specified
 	CC_PASSENGERS   = 1 <<  0, ///< Passengers
 	CC_MAIL         = 1 <<  1, ///< Mail

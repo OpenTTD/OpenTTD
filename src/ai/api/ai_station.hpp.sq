@@ -1,0 +1,69 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_station.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIStation::ErrorMessages GetParam(ForceType<AIStation::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIStation::ErrorMessages)tmp; }
+	template <> int Return<AIStation::ErrorMessages>(HSQUIRRELVM vm, AIStation::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIStation::StationType GetParam(ForceType<AIStation::StationType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIStation::StationType)tmp; }
+	template <> int Return<AIStation::StationType>(HSQUIRRELVM vm, AIStation::StationType res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIStation to be used as Squirrel parameter */
+	template <> AIStation *GetParam(ForceType<AIStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStation *)instance; }
+	template <> AIStation &GetParam(ForceType<AIStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStation *)instance; }
+	template <> const AIStation *GetParam(ForceType<const AIStation *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIStation *)instance; }
+	template <> const AIStation &GetParam(ForceType<const AIStation &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIStation *)instance; }
+	template <> int Return<AIStation *>(HSQUIRRELVM vm, AIStation *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIStation", res, NULL, DefSQDestructorCallback<AIStation>); return 1; }
+}; // namespace SQConvert
+
+void SQAIStation_Register(Squirrel *engine) {
+	DefSQClass <AIStation> SQAIStation("AIStation");
+	SQAIStation.PreRegister(engine);
+	SQAIStation.AddConstructor<void (AIStation::*)(), 1>(engine, "x");
+
+	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_BASE,                         "ERR_STATION_BASE");
+	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_TOO_LARGE,                    "ERR_STATION_TOO_LARGE");
+	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, "ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION");
+	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_TOO_MANY_STATIONS,            "ERR_STATION_TOO_MANY_STATIONS");
+	SQAIStation.DefSQConst(engine, AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    "ERR_STATION_TOO_MANY_STATIONS_IN_TOWN");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_TRAIN,                            "STATION_TRAIN");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_TRUCK_STOP,                       "STATION_TRUCK_STOP");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_BUS_STOP,                         "STATION_BUS_STOP");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_AIRPORT,                          "STATION_AIRPORT");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_DOCK,                             "STATION_DOCK");
+	SQAIStation.DefSQConst(engine, AIStation::STATION_ANY,                              "STATION_ANY");
+
+	AIError::RegisterErrorMap(STR_306C_STATION_TOO_SPREAD_OUT,       AIStation::ERR_STATION_TOO_LARGE);
+	AIError::RegisterErrorMap(STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT, AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
+	AIError::RegisterErrorMap(STR_3009_TOO_CLOSE_TO_ANOTHER_STATION, AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
+	AIError::RegisterErrorMap(STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK,    AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION);
+	AIError::RegisterErrorMap(STR_3008_TOO_MANY_STATIONS_LOADING,    AIStation::ERR_STATION_TOO_MANY_STATIONS);
+	AIError::RegisterErrorMap(STR_TOO_MANY_TRUCK_STOPS,              AIStation::ERR_STATION_TOO_MANY_STATIONS);
+	AIError::RegisterErrorMap(STR_TOO_MANY_BUS_STOPS,                AIStation::ERR_STATION_TOO_MANY_STATIONS);
+	AIError::RegisterErrorMap(STR_3007_TOO_MANY_STATIONS_LOADING,    AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN);
+
+	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_LARGE,                    "ERR_STATION_TOO_LARGE");
+	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION, "ERR_STATION_TOO_CLOSE_TO_ANOTHER_STATION");
+	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_MANY_STATIONS,            "ERR_STATION_TOO_MANY_STATIONS");
+	AIError::RegisterErrorMapString(AIStation::ERR_STATION_TOO_MANY_STATIONS_IN_TOWN,    "ERR_STATION_TOO_MANY_STATIONS_IN_TOWN");
+
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetClassName,               "GetClassName",               1, "x");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::IsValidStation,             "IsValidStation",             2, "xi");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetStationID,               "GetStationID",               2, "xi");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetName,                    "GetName",                    2, "xi");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::SetName,                    "SetName",                    3, "xis");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetLocation,                "GetLocation",                2, "xi");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoWaiting,            "GetCargoWaiting",            3, "xii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCargoRating,             "GetCargoRating",             3, "xii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetCoverageRadius,          "GetCoverageRadius",          2, "xi");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetDistanceManhattanToTile, "GetDistanceManhattanToTile", 3, "xii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, "xii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::IsWithinTownInfluence,      "IsWithinTownInfluence",      3, "xii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::HasStationType,             "HasStationType",             3, "xii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::HasRoadType,                "HasRoadType",                3, "xii");
+	SQAIStation.DefSQStaticMethod(engine, &AIStation::GetNearestTown,             "GetNearestTown",             2, "xi");
+
+	SQAIStation.PostRegister(engine);
+}

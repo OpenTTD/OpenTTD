@@ -41,6 +41,7 @@
 #include "settings_type.h"
 #include "order_func.h"
 #include "effectvehicle_func.h"
+#include "ai/ai.hpp"
 
 #include "table/strings.h"
 
@@ -353,6 +354,7 @@ static void ShipArrivesAt(const Vehicle *v, Station *st)
 			v->index,
 			st->index
 		);
+		AI::NewEvent(v->owner, new AIEventStationFirstVehicle(st->index, v->index));
 	}
 }
 

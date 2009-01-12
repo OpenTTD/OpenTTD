@@ -746,7 +746,7 @@ CommandCost CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint 
 		 *     b) the build_on_slopes switch is disabled
 		 */
 		if (IsSteepSlope(tileh) ||
-				((_is_old_ai_company || !_settings_game.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {
+				((!_settings_game.construction.build_on_slopes) && tileh != SLOPE_FLAT)) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 		}
 
@@ -1001,7 +1001,7 @@ CommandCost CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1,
 
 		if (st->train_tile != INVALID_TILE) {
 			/* check if we want to expanding an already existing station? */
-			if (_is_old_ai_company || !_settings_game.station.join_stations)
+			if (!_settings_game.station.join_stations)
 				return_cmd_error(STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD);
 			if (!CanExpandRailroadStation(st, finalvalues, axis))
 				return CMD_ERROR;
@@ -1764,7 +1764,7 @@ static const byte * const _airport_sections[] = {
  * @param tile TileIndex of northern tile of an airport (present or to-be-built), NOT the station tile
  * @return the noise that will be generated, according to distance
  */
-static uint8 GetAirportNoiseLevelForTown(const AirportFTAClass *afc, TileIndex town_tile, TileIndex tile)
+uint8 GetAirportNoiseLevelForTown(const AirportFTAClass *afc, TileIndex town_tile, TileIndex tile)
 {
 	struct TileIndexDistance {
 		TileIndex index;

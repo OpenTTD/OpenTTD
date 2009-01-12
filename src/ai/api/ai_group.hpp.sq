@@ -1,0 +1,46 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_group.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIGroup::GroupID GetParam(ForceType<AIGroup::GroupID>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIGroup::GroupID)tmp; }
+	template <> int Return<AIGroup::GroupID>(HSQUIRRELVM vm, AIGroup::GroupID res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIGroup to be used as Squirrel parameter */
+	template <> AIGroup *GetParam(ForceType<AIGroup *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroup *)instance; }
+	template <> AIGroup &GetParam(ForceType<AIGroup &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroup *)instance; }
+	template <> const AIGroup *GetParam(ForceType<const AIGroup *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGroup *)instance; }
+	template <> const AIGroup &GetParam(ForceType<const AIGroup &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGroup *)instance; }
+	template <> int Return<AIGroup *>(HSQUIRRELVM vm, AIGroup *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIGroup", res, NULL, DefSQDestructorCallback<AIGroup>); return 1; }
+}; // namespace SQConvert
+
+void SQAIGroup_Register(Squirrel *engine) {
+	DefSQClass <AIGroup> SQAIGroup("AIGroup");
+	SQAIGroup.PreRegister(engine);
+	SQAIGroup.AddConstructor<void (AIGroup::*)(), 1>(engine, "x");
+
+	SQAIGroup.DefSQConst(engine, AIGroup::ALL_GROUP,     "ALL_GROUP");
+	SQAIGroup.DefSQConst(engine, AIGroup::DEFAULT_GROUP, "DEFAULT_GROUP");
+	SQAIGroup.DefSQConst(engine, AIGroup::INVALID_GROUP, "INVALID_GROUP");
+
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetClassName,                "GetClassName",                1, "x");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::IsValidGroup,                "IsValidGroup",                2, "xi");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::CreateGroup,                 "CreateGroup",                 2, "xi");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::DeleteGroup,                 "DeleteGroup",                 2, "xi");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetVehicleType,              "GetVehicleType",              2, "xi");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::SetName,                     "SetName",                     3, "xis");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetName,                     "GetName",                     2, "xi");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::EnableAutoReplaceProtection, "EnableAutoReplaceProtection", 3, "xib");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetAutoReplaceProtection,    "GetAutoReplaceProtection",    2, "xi");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetNumEngines,               "GetNumEngines",               3, "xii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::MoveVehicle,                 "MoveVehicle",                 3, "xii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::EnableWagonRemoval,          "EnableWagonRemoval",          2, "xb");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::HasWagonRemoval,             "HasWagonRemoval",             1, "x");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::SetAutoReplace,              "SetAutoReplace",              4, "xiii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetEngineReplacement,        "GetEngineReplacement",        3, "xii");
+	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::StopAutoReplace,             "StopAutoReplace",             3, "xii");
+
+	SQAIGroup.PostRegister(engine);
+}

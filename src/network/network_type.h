@@ -48,6 +48,7 @@ typedef uint8 ClientIndex;
 struct NetworkCompanyStats {
 	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];      ///< How many vehicles are there of this type?
 	uint16 num_station[NETWORK_STATION_TYPES];      ///< How many stations are there of this type?
+	bool ai;                                        ///< Is this company an AI
 };
 
 /** Some state information of a company, especially for servers */

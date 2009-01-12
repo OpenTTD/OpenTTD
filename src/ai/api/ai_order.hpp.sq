@@ -1,0 +1,71 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_order.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIOrder::ErrorMessages GetParam(ForceType<AIOrder::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::ErrorMessages)tmp; }
+	template <> int Return<AIOrder::ErrorMessages>(HSQUIRRELVM vm, AIOrder::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIOrder::AIOrderFlags GetParam(ForceType<AIOrder::AIOrderFlags>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::AIOrderFlags)tmp; }
+	template <> int Return<AIOrder::AIOrderFlags>(HSQUIRRELVM vm, AIOrder::AIOrderFlags res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIOrder::OrderPosition GetParam(ForceType<AIOrder::OrderPosition>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIOrder::OrderPosition)tmp; }
+	template <> int Return<AIOrder::OrderPosition>(HSQUIRRELVM vm, AIOrder::OrderPosition res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIOrder to be used as Squirrel parameter */
+	template <> AIOrder *GetParam(ForceType<AIOrder *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIOrder *)instance; }
+	template <> AIOrder &GetParam(ForceType<AIOrder &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIOrder *)instance; }
+	template <> const AIOrder *GetParam(ForceType<const AIOrder *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIOrder *)instance; }
+	template <> const AIOrder &GetParam(ForceType<const AIOrder &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIOrder *)instance; }
+	template <> int Return<AIOrder *>(HSQUIRRELVM vm, AIOrder *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIOrder", res, NULL, DefSQDestructorCallback<AIOrder>); return 1; }
+}; // namespace SQConvert
+
+void SQAIOrder_Register(Squirrel *engine) {
+	DefSQClass <AIOrder> SQAIOrder("AIOrder");
+	SQAIOrder.PreRegister(engine);
+	SQAIOrder.AddConstructor<void (AIOrder::*)(), 1>(engine, "x");
+
+	SQAIOrder.DefSQConst(engine, AIOrder::ERR_ORDER_BASE,                                   "ERR_ORDER_BASE");
+	SQAIOrder.DefSQConst(engine, AIOrder::ERR_ORDER_TOO_MANY,                               "ERR_ORDER_TOO_MANY");
+	SQAIOrder.DefSQConst(engine, AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, "ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_NONE,                                        "AIOF_NONE");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_NON_STOP_INTERMEDIATE,                       "AIOF_NON_STOP_INTERMEDIATE");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_NON_STOP_DESTINATION,                        "AIOF_NON_STOP_DESTINATION");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_UNLOAD,                                      "AIOF_UNLOAD");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_TRANSFER,                                    "AIOF_TRANSFER");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_NO_UNLOAD,                                   "AIOF_NO_UNLOAD");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_FULL_LOAD,                                   "AIOF_FULL_LOAD");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_FULL_LOAD_ANY,                               "AIOF_FULL_LOAD_ANY");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_NO_LOAD,                                     "AIOF_NO_LOAD");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_SERVICE_IF_NEEDED,                           "AIOF_SERVICE_IF_NEEDED");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_NON_STOP_FLAGS,                              "AIOF_NON_STOP_FLAGS");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_UNLOAD_FLAGS,                                "AIOF_UNLOAD_FLAGS");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_LOAD_FLAGS,                                  "AIOF_LOAD_FLAGS");
+	SQAIOrder.DefSQConst(engine, AIOrder::AIOF_INVALID,                                     "AIOF_INVALID");
+	SQAIOrder.DefSQConst(engine, AIOrder::CURRENT_ORDER,                                    "CURRENT_ORDER");
+	SQAIOrder.DefSQConst(engine, AIOrder::INVALID_ORDER,                                    "INVALID_ORDER");
+
+	AIError::RegisterErrorMap(STR_8831_NO_MORE_SPACE_FOR_ORDERS,         AIOrder::ERR_ORDER_TOO_MANY);
+	AIError::RegisterErrorMap(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO, AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION);
+
+	AIError::RegisterErrorMapString(AIOrder::ERR_ORDER_TOO_MANY,                               "ERR_ORDER_TOO_MANY");
+	AIError::RegisterErrorMapString(AIOrder::ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION, "ERR_ORDER_TOO_FAR_AWAY_FROM_PREVIOUS_DESTINATION");
+
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetClassName,         "GetClassName",         1, "x");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::IsValidVehicleOrder,  "IsValidVehicleOrder",  3, "xii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ResolveOrderPosition, "ResolveOrderPosition", 3, "xii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AreOrderFlagsValid,   "AreOrderFlagsValid",   3, "xii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderCount,        "GetOrderCount",        2, "xi");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderDestination,  "GetOrderDestination",  3, "xii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::GetOrderFlags,        "GetOrderFlags",        3, "xii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::AppendOrder,          "AppendOrder",          4, "xiii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::InsertOrder,          "InsertOrder",          5, "xiiii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::RemoveOrder,          "RemoveOrder",          3, "xii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ChangeOrder,          "ChangeOrder",          4, "xiii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::MoveOrder,            "MoveOrder",            4, "xiii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::CopyOrders,           "CopyOrders",           3, "xii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::ShareOrders,          "ShareOrders",          3, "xii");
+	SQAIOrder.DefSQStaticMethod(engine, &AIOrder::UnshareOrders,        "UnshareOrders",        2, "xi");
+
+	SQAIOrder.PostRegister(engine);
+}

@@ -1,0 +1,52 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_cargo.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AICargo::CargoClass GetParam(ForceType<AICargo::CargoClass>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AICargo::CargoClass)tmp; }
+	template <> int Return<AICargo::CargoClass>(HSQUIRRELVM vm, AICargo::CargoClass res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AICargo::TownEffect GetParam(ForceType<AICargo::TownEffect>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AICargo::TownEffect)tmp; }
+	template <> int Return<AICargo::TownEffect>(HSQUIRRELVM vm, AICargo::TownEffect res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AICargo to be used as Squirrel parameter */
+	template <> AICargo *GetParam(ForceType<AICargo *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargo *)instance; }
+	template <> AICargo &GetParam(ForceType<AICargo &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargo *)instance; }
+	template <> const AICargo *GetParam(ForceType<const AICargo *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargo *)instance; }
+	template <> const AICargo &GetParam(ForceType<const AICargo &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargo *)instance; }
+	template <> int Return<AICargo *>(HSQUIRRELVM vm, AICargo *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargo", res, NULL, DefSQDestructorCallback<AICargo>); return 1; }
+}; // namespace SQConvert
+
+void SQAICargo_Register(Squirrel *engine) {
+	DefSQClass <AICargo> SQAICargo("AICargo");
+	SQAICargo.PreRegister(engine);
+	SQAICargo.AddConstructor<void (AICargo::*)(), 1>(engine, "x");
+
+	SQAICargo.DefSQConst(engine, AICargo::CC_PASSENGERS,   "CC_PASSENGERS");
+	SQAICargo.DefSQConst(engine, AICargo::CC_MAIL,         "CC_MAIL");
+	SQAICargo.DefSQConst(engine, AICargo::CC_EXPRESS,      "CC_EXPRESS");
+	SQAICargo.DefSQConst(engine, AICargo::CC_ARMOURED,     "CC_ARMOURED");
+	SQAICargo.DefSQConst(engine, AICargo::CC_BULK,         "CC_BULK");
+	SQAICargo.DefSQConst(engine, AICargo::CC_PIECE_GOODS,  "CC_PIECE_GOODS");
+	SQAICargo.DefSQConst(engine, AICargo::CC_LIQUID,       "CC_LIQUID");
+	SQAICargo.DefSQConst(engine, AICargo::CC_REFRIGERATED, "CC_REFRIGERATED");
+	SQAICargo.DefSQConst(engine, AICargo::CC_HAZARDOUS,    "CC_HAZARDOUS");
+	SQAICargo.DefSQConst(engine, AICargo::CC_COVERED,      "CC_COVERED");
+	SQAICargo.DefSQConst(engine, AICargo::TE_NONE,         "TE_NONE");
+	SQAICargo.DefSQConst(engine, AICargo::TE_PASSENGERS,   "TE_PASSENGERS");
+	SQAICargo.DefSQConst(engine, AICargo::TE_MAIL,         "TE_MAIL");
+	SQAICargo.DefSQConst(engine, AICargo::TE_GOODS,        "TE_GOODS");
+	SQAICargo.DefSQConst(engine, AICargo::TE_WATER,        "TE_WATER");
+	SQAICargo.DefSQConst(engine, AICargo::TE_FOOD,         "TE_FOOD");
+
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetClassName,   "GetClassName",   1, "x");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::IsValidCargo,   "IsValidCargo",   2, "xi");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetCargoLabel,  "GetCargoLabel",  2, "xi");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::IsFreight,      "IsFreight",      2, "xi");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::HasCargoClass,  "HasCargoClass",  3, "xii");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetTownEffect,  "GetTownEffect",  2, "xi");
+	SQAICargo.DefSQStaticMethod(engine, &AICargo::GetCargoIncome, "GetCargoIncome", 4, "xiii");
+
+	SQAICargo.PostRegister(engine);
+}

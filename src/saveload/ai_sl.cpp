@@ -1,79 +1,87 @@
 /* $Id$ */
 
-/** @file ai_sl.cpp Code handling saving and loading of old AI + new AI initialisation after game load */
+/** @file ai_sl.cpp Handles the saveload part of the AIs */
 
 #include "../stdafx.h"
-#include "../ai/ai.h"
-#include "../ai/default/default.h"
-
+#include "../openttd.h"
+#include "../company_base.h"
+#include "../company_func.h"
+#include "../debug.h"
 #include "saveload.h"
+#include "../settings_type.h"
+#include "../string_func.h"
+#include "../ai/ai.hpp"
+#include "../ai/ai_config.hpp"
 
-static const SaveLoad _company_ai_desc[] = {
-	    SLE_VAR(CompanyAI, state,             SLE_UINT8),
-	    SLE_VAR(CompanyAI, tick,              SLE_UINT8),
-	SLE_CONDVAR(CompanyAI, state_counter,     SLE_FILE_U16 | SLE_VAR_U32,  0, 12),
-	SLE_CONDVAR(CompanyAI, state_counter,     SLE_UINT32,                 13, SL_MAX_VERSION),
-	    SLE_VAR(CompanyAI, timeout_counter,   SLE_UINT16),
+static char _ai_saveload_ainame[64];
+static char _ai_company_convert_array[1024];
 
-	    SLE_VAR(CompanyAI, state_mode,        SLE_UINT8),
-	    SLE_VAR(CompanyAI, banned_tile_count, SLE_UINT8),
-	    SLE_VAR(CompanyAI, railtype_to_use,   SLE_UINT8),
-
-	    SLE_VAR(CompanyAI, cargo_type,        SLE_UINT8),
-	    SLE_VAR(CompanyAI, num_wagons,        SLE_UINT8),
-	    SLE_VAR(CompanyAI, build_kind,        SLE_UINT8),
-	    SLE_VAR(CompanyAI, num_build_rec,     SLE_UINT8),
-	    SLE_VAR(CompanyAI, num_loco_to_build, SLE_UINT8),
-	    SLE_VAR(CompanyAI, num_want_fullload, SLE_UINT8),
-
-	    SLE_VAR(CompanyAI, route_type_mask,   SLE_UINT8),
-
-	SLE_CONDVAR(CompanyAI, start_tile_a,      SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(CompanyAI, start_tile_a,      SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyAI, cur_tile_a,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(CompanyAI, cur_tile_a,        SLE_UINT32,                  6, SL_MAX_VERSION),
-	    SLE_VAR(CompanyAI, start_dir_a,       SLE_UINT8),
-	    SLE_VAR(CompanyAI, cur_dir_a,         SLE_UINT8),
-
-	SLE_CONDVAR(CompanyAI, start_tile_b,      SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(CompanyAI, start_tile_b,      SLE_UINT32,                  6, SL_MAX_VERSION),
-	SLE_CONDVAR(CompanyAI, cur_tile_b,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
-	SLE_CONDVAR(CompanyAI, cur_tile_b,        SLE_UINT32,                  6, SL_MAX_VERSION),
-	    SLE_VAR(CompanyAI, start_dir_b,       SLE_UINT8),
-	    SLE_VAR(CompanyAI, cur_dir_b,         SLE_UINT8),
-
-	    SLE_REF(CompanyAI, cur_veh,           REF_VEHICLE),
-
-	    SLE_ARR(CompanyAI, wagon_list,        SLE_UINT16, 9),
-	    SLE_ARR(CompanyAI, order_list_blocks, SLE_UINT8, 20),
-	    SLE_ARR(CompanyAI, banned_tiles,      SLE_UINT16, 16),
-
-	SLE_CONDNULL(64, 2, SL_MAX_VERSION),
+static const SaveLoad _ai_company[] = {
+	SLEG_STR(_ai_saveload_ainame,       SLE_STRB),
+	SLEG_STR(_ai_company_convert_array, SLE_STRB),
 	SLE_END()
 };
 
-static const SaveLoad _company_ai_build_rec_desc[] = {
-	SLE_CONDVAR(AiBuildRec, spec_tile,         SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(AiBuildRec, spec_tile,         SLE_UINT32,                 6, SL_MAX_VERSION),
-	SLE_CONDVAR(AiBuildRec, use_tile,          SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(AiBuildRec, use_tile,          SLE_UINT32,                 6, SL_MAX_VERSION),
-	    SLE_VAR(AiBuildRec, rand_rng,          SLE_UINT8),
-	    SLE_VAR(AiBuildRec, cur_building_rule, SLE_UINT8),
-	    SLE_VAR(AiBuildRec, unk6,              SLE_UINT8),
-	    SLE_VAR(AiBuildRec, unk7,              SLE_UINT8),
-	    SLE_VAR(AiBuildRec, buildcmd_a,        SLE_UINT8),
-	    SLE_VAR(AiBuildRec, buildcmd_b,        SLE_UINT8),
-	    SLE_VAR(AiBuildRec, direction,         SLE_UINT8),
-	    SLE_VAR(AiBuildRec, cargo,             SLE_UINT8),
-	SLE_END()
-};
-
-
-void SaveLoad_AI(CompanyID company)
+static void SaveReal_AIPL(int *index_ptr)
 {
-	CompanyAI *cai = &_companies_ai[company];
-	SlObject(cai, _company_ai_desc);
-	for (int i = 0; i != cai->num_build_rec; i++) {
-		SlObject(&cai->src + i, _company_ai_build_rec_desc);
+	CompanyID index = (CompanyID)*index_ptr;
+	AIConfig *config = AIConfig::GetConfig(index);
+
+	ttd_strlcpy(_ai_saveload_ainame, config->GetName(), lengthof(_ai_saveload_ainame));
+
+	_ai_company_convert_array[0] = '\0';
+	config->SettingsToString(_ai_company_convert_array, lengthof(_ai_company_convert_array));
+
+	SlObject(NULL, _ai_company);
+	/* If the AI was active, store his data too */
+	if (IsValidCompanyID(index) && !IsHumanCompany(index)) AI::Save(index);
+}
+
+static void Load_AIPL()
+{
+	/* Free all current data */
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		AIConfig::GetConfig(c)->ChangeAI(NULL);
+	}
+
+	CompanyID index;
+	while ((index = (CompanyID)SlIterateArray()) != (CompanyID)-1) {
+		AIConfig *config = AIConfig::GetConfig(index);
+		SlObject(NULL, _ai_company);
+
+		if (_ai_saveload_ainame[0] == '\0' || AI::GetCompanyInfo(_ai_saveload_ainame) == NULL) {
+			if (strcmp(_ai_saveload_ainame, "%_dummy") != 0) {
+				DEBUG(ai, 0, "The savegame has an AI by the name '%s' which is no longer available.", _ai_saveload_ainame);
+				DEBUG(ai, 0, "A random other AI will be loaded in its place.");
+			} else {
+				DEBUG(ai, 0, "The savegame had no AIs available at the time of saving.");
+				DEBUG(ai, 0, "A random available AI will be loaded now.");
+			}
+			config->ChangeAI(NULL);
+		} else {
+			config->ChangeAI(_ai_saveload_ainame);
+		}
+
+		config->StringToSettings(_ai_company_convert_array);
+
+		/* Start the AI directly if it was active in the savegame */
+		if (IsValidCompanyID(index) && !IsHumanCompany(index)) {
+			AI::StartNew(index);
+			AI::Load(index);
+		}
 	}
 }
+
+static void Save_AIPL()
+{
+	for (int i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
+		if (!AIConfig::GetConfig((CompanyID)i)->HasAI()) continue;
+
+		SlSetArrayIndex(i);
+		SlAutolength((AutolengthProc *)SaveReal_AIPL, &i);
+	}
+}
+
+extern const ChunkHandler _ai_chunk_handlers[] = {
+	{ 'AIPL', Save_AIPL, Load_AIPL, CH_ARRAY | CH_LAST},
+};

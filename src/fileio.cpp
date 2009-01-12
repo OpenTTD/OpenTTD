@@ -216,7 +216,8 @@ const char *_subdirs[NUM_SUBDIRS] = {
 	"scenario" PATHSEP "heightmap" PATHSEP,
 	"gm" PATHSEP,
 	"data" PATHSEP,
-	"lang" PATHSEP
+	"lang" PATHSEP,
+	"ai" PATHSEP,
 };
 
 const char *_searchpaths[NUM_SEARCHPATHS];
@@ -359,7 +360,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 	}
 
 	/* We can only use .tar in case of data-dir, and read-mode */
-	if (f == NULL && subdir == DATA_DIR && mode[0] == 'r') {
+	if (f == NULL && (subdir == DATA_DIR || subdir == AI_DIR) && mode[0] == 'r') {
 		static const uint MAX_RESOLVED_LENGTH = 2 * (100 + 100 + 155) + 1; // Enough space to hold two filenames plus link. See 'TarHeader'.
 		char resolved_name[MAX_RESOLVED_LENGTH];
 
@@ -466,6 +467,33 @@ char *BuildWithFullPath(const char *dir)
 	return dest;
 }
 
+const char *FioTarFirstDir(const char *tarname)
+{
+	TarList::iterator it = _tar_list.find(tarname);
+	if (it == _tar_list.end()) return NULL;
+	return (*it).second.dirname;
+}
+
+static void TarAddLink(const std::string &src, const std::string &dest)
+{
+	TarFileList::iterator dest_file = _tar_filelist.find(dest);
+	if (dest_file != _tar_filelist.end()) {
+		/* Link to file. Process the link like the destination file. */
+		_tar_filelist.insert(TarFileList::value_type(src, dest_file->second));
+	} else {
+		/* Destination file not found. Assume 'link to directory' */
+		/* Append PATHSEPCHAR to 'src' and 'dest' if needed */
+		const std::string src_path = ((*src.rbegin() == PATHSEPCHAR) ? src : src + PATHSEPCHAR);
+		const std::string dst_path = (dest.length() == 0 ? "" : ((*dest.rbegin() == PATHSEPCHAR) ? dest : dest + PATHSEPCHAR));
+		_tar_linklist.insert(TarLinkList::value_type(src_path, dst_path));
+	}
+}
+
+void FioTarAddLink(const char *src, const char *dest)
+{
+	TarAddLink(src, dest);
+}
+
 /**
  * Simplify filenames from tars.
  * Replace '/' by PATHSEPCHAR, and force 'name' to lowercase.
@@ -515,6 +543,7 @@ static bool TarListAddFile(const char *filename)
 
 	const char *dupped_filename = strdup(filename);
 	_tar_list[filename].filename = dupped_filename;
+	_tar_list[filename].dirname = NULL;
 
 	TarLinkList links; ///< Temporary list to collect links
 
@@ -649,6 +678,15 @@ static bool TarListAddFile(const char *filename)
 				break;
 			}
 
+			case '5': // directory
+				/* Convert to lowercase and our PATHSEPCHAR */
+				SimplifyFileName(name);
+
+				/* Store the first directory name we detect */
+				DEBUG(misc, 6, "Found dir in tar: %s", name);
+				if (_tar_list[filename].dirname == NULL) _tar_list[filename].dirname = strdup(name);
+				break;
+
 			default:
 				/* Ignore other types */
 				break;
@@ -675,18 +713,7 @@ static bool TarListAddFile(const char *filename)
 	for (TarLinkList::iterator link = links.begin(); link != links.end(); link++) {
 		const std::string &src = link->first;
 		const std::string &dest = link->second;
-
-		TarFileList::iterator dest_file = _tar_filelist.find(dest);
-		if (dest_file != _tar_filelist.end()) {
-			/* Link to file. Process the link like the destination file. */
-			_tar_filelist.insert(TarFileList::value_type(src, dest_file->second));
-		} else {
-			/* Destination file not found. Assume 'link to directory' */
-			/* Append PATHSEPCHAR to 'src' and 'dest' */
-			const std::string src_path = src + PATHSEPCHAR;
-			const std::string dst_path = (dest.length() == 0 ? "" : dest + PATHSEPCHAR);
-			_tar_linklist.insert(TarLinkList::value_type(src_path, dst_path));
-		}
+		TarAddLink(src, dest);
 	}
 
 	return true;
@@ -741,6 +768,8 @@ void ScanForTarFiles()
 	DEBUG(misc, 1, "Scanning for tars");
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioAppendDirectory(path, MAX_PATH, sp, DATA_DIR);
+		num += ScanPathForTarFiles(path, strlen(path));
+		FioAppendDirectory(path, MAX_PATH, sp, AI_DIR);
 		num += ScanPathForTarFiles(path, strlen(path));
 	}
 	DEBUG(misc, 1, "Scan complete, found %d files", num);

@@ -1,0 +1,477 @@
+/* $Id$ */
+
+/** @file ai_vehicle.hpp Everything to query and build vehicles. */
+
+#ifndef AI_VEHICLE_HPP
+#define AI_VEHICLE_HPP
+
+#include "ai_object.hpp"
+#include "ai_error.hpp"
+#include "ai_road.hpp"
+#include "ai_order.hpp"
+
+/**
+ * Class that handles all vehicle related functions.
+ */
+class AIVehicle : public AIObject {
+public:
+	static const char *GetClassName() { return "AIVehicle"; }
+
+	/**
+	 * All vehicle related error messages.
+	 */
+	enum ErrorMessages {
+		/** Base for vehicle related errors */
+		ERR_VEHICLE_BASE = AIError::ERR_CAT_VEHICLE << AIError::ERR_CAT_BIT_SIZE,
+
+		/** Too many vehicles in the game, can't build any more. */
+		ERR_VEHICLE_TOO_MANY,                   // [STR_00E1_TOO_MANY_VEHICLES_IN_GAME]
+
+		/** Vehicle is not available */
+		ERR_VEHICLE_NOT_AVAILABLE,              // [STR_AIRCRAFT_NOT_AVAILABLE, STR_ROAD_VEHICLE_NOT_AVAILABLE, STR_SHIP_NOT_AVAILABLE, STR_RAIL_VEHICLE_NOT_AVAILABLE]
+
+		/** Vehicle can't be build due to game settigns */
+		ERR_VEHICLE_BUILD_DISABLED,             // [STR_A008_CAN_T_BUILD_AIRCRAFT, STR_980D_CAN_T_BUILD_SHIP, STR_9009_CAN_T_BUILD_ROAD_VEHICLE, STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE]
+
+		/** Vehicle can't be build in the selected depot */
+		ERR_VEHICLE_WRONG_DEPOT,                // [STR_DEPOT_WRONG_DEPOT_TYPE]
+
+		/** Vehicle can't return to the depot */
+		ERR_VEHICLE_CANNOT_SEND_TO_DEPOT,       // [STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT, STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT, STR_9819_CAN_T_SEND_SHIP_TO_DEPOT, STR_A012_CAN_T_SEND_AIRCRAFT_TO]
+
+		/** Vehicle can't start / stop */
+		ERR_VEHICLE_CANNOT_START_STOP,          // [STR_883B_CAN_T_STOP_START_TRAIN, STR_9015_CAN_T_STOP_START_ROAD_VEHICLE, STR_9818_CAN_T_STOP_START_SHIP, STR_A016_CAN_T_STOP_START_AIRCRAFT]
+
+		/** Vehicle can't turn */
+		ERR_VEHICLE_CANNOT_TURN,                // [STR_8869_CAN_T_REVERSE_DIRECTION, STR_9033_CAN_T_MAKE_VEHICLE_TURN]
+
+		/** Vehicle can't be refit */
+		ERR_VEHICLE_CANNOT_REFIT,               // [STR_RAIL_CAN_T_REFIT_VEHICLE, STR_REFIT_ROAD_VEHICLE_CAN_T, STR_9841_CAN_T_REFIT_SHIP, STR_A042_CAN_T_REFIT_AIRCRAFT]
+
+		/** Vehicle is destroyed */
+		ERR_VEHICLE_IS_DESTROYED,               // [STR_CAN_T_REFIT_DESTROYED_VEHICLE, STR_CAN_T_SELL_DESTROYED_VEHICLE]
+
+		/** Vehicle is not in a depot */
+		ERR_VEHICLE_NOT_IN_DEPOT,               // [STR_A01B_AIRCRAFT_MUST_BE_STOPPED, STR_9013_MUST_BE_STOPPED_INSIDE, STR_TRAIN_MUST_BE_STOPPED, STR_980B_SHIP_MUST_BE_STOPPED_IN]
+
+		/** Vehicle is flying */
+		ERR_VEHICLE_IN_FLIGHT,                  // [STR_A017_AIRCRAFT_IS_IN_FLIGHT]
+
+		/** Vehicle is without power */
+		ERR_VEHCILE_NO_POWER,                   // [STR_TRAIN_START_NO_CATENARY]
+
+	};
+
+	/**
+	 * The type of a vehicle available in the game. Trams for example are
+	 *  road vehicles, as maglev is a rail vehicle.
+	 */
+	enum VehicleType {
+		/* Order IS important, as it now matches the internal state of the game for vehicle type */
+		VEHICLE_RAIL,           //!< Rail type vehicle.
+		VEHICLE_ROAD,           //!< Road type vehicle (bus / truck).
+		VEHICLE_WATER,          //!< Water type vehicle.
+		VEHICLE_AIR,            //!< Air type vehicle.
+		VEHICLE_INVALID = 0xFF, //!< Invalid vehicle type.
+	};
+
+	/**
+	 * The different states a vehicle can be in.
+	 */
+	enum VehicleState {
+		VS_RUNNING,        //!< The vehicle is currently running.
+		VS_STOPPED,        //!< The vehicle is stopped manually.
+		VS_IN_DEPOT,       //!< The vehicle is stopped in the depot.
+		VS_AT_STATION,     //!< The vehicle is stopped at a station and is currently loading or unloading.
+		VS_BROKEN,         //!< The vehicle has broken down and will start running again in a while.
+		VS_CRASHED,        //!< The vehicle is crashed (and will never run again).
+
+		VS_INVALID = 0xFF, //!< An invalid vehicle state.
+	};
+
+	/**
+	 * Checks whether the given vehicle is valid and owned by you.
+	 * @param vehicle_id The vehicle to check.
+	 * @return True if and only if the vehicle is valid.
+	 */
+	static bool IsValidVehicle(VehicleID vehicle_id);
+
+	/**
+	 * Get the number of wagons a vehicle has.
+	 * @param vehicle_id The vehicle to get the number of wagons from.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The number of wagons the vehicle has.
+	 */
+	static int32 GetNumWagons(VehicleID vehicle_id);
+
+	/**
+	 * Set the name of a vehicle.
+	 * @param vehicle_id The vehicle to set the name for.
+	 * @param name The name for the vehicle.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre 'name' must have at least one character.
+	 * @pre 'name' must have at most 30 characters.
+	 * @exception AIError::ERR_NAME_IS_NOT_UNIQUE
+	 * @return True if and only if the name was changed.
+	 */
+	static bool SetName(VehicleID vehicle_id, const char *name);
+
+	/**
+	 * Get the name of a vehicle.
+	 * @param vehicle_id The vehicle to get the name of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The name the vehicle has.
+	 */
+	static const char *GetName(VehicleID vehicle_id);
+
+	/**
+	 * Get the current location of a vehicle.
+	 * @param vehicle_id The vehicle to get the location of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The tile the vehicle is currently on.
+	 */
+	static TileIndex GetLocation(VehicleID vehicle_id);
+
+	/**
+	 * Get the engine-type of a vehicle.
+	 * @param vehicle_id The vehicle to get the engine-type of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The engine type the vehicle has.
+	 */
+	static EngineID GetEngineType(VehicleID vehicle_id);
+
+	/**
+	 * Get the engine-type of a wagon.
+	 * @param vehicle_id The vehicle to get the engine-type of.
+	 * @param wagon The wagon in the vehicle to get the engine-type of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre wagon < GetNumWagons(vehicle_id).
+	 * @return The engine type the vehicle has.
+	 */
+	static EngineID GetWagonEngineType(VehicleID vehicle_id, int wagon);
+
+	/**
+	 * Get the unitnumber of a vehicle.
+	 * @param vehicle_id The vehicle to get the unitnumber of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The unitnumber the vehicle has.
+	 */
+	static int32 GetUnitNumber(VehicleID vehicle_id);
+
+	/**
+	 * Get the current age of a vehicle.
+	 * @param vehicle_id The vehicle to get the age of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The current age the vehicle has.
+	 * @note The age is in days.
+	 */
+	static int32 GetAge(VehicleID vehicle_id);
+
+	/**
+	 * Get the current age of a second (or third, etc.) engine in a train vehicle.
+	 * @param vehicle_id The vehicle to get the age of.
+	 * @param wagon The wagon in the vehicle to get the age of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre wagon < GetNumWagons(vehicle_id).
+	 * @return The current age the vehicle has.
+	 * @note The age is in days.
+	 */
+	static int32 GetWagonAge(VehicleID vehicle_id, int wagon);
+
+	/**
+	 * Get the maximum age of a vehicle.
+	 * @param vehicle_id The vehicle to get the age of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The maximum age the vehicle has.
+	 * @note The age is in days.
+	 */
+	static int32 GetMaxAge(VehicleID vehicle_id);
+
+	/**
+	 * Get the age a vehicle has left (maximum - current).
+	 * @param vehicle_id The vehicle to get the age of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The age the vehicle has left.
+	 * @note The age is in days.
+	 */
+	static int32 GetAgeLeft(VehicleID vehicle_id);
+
+	/**
+	 * Get the current speed of a vehicle.
+	 * @param vehicle_id The vehicle to get the age of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The current speed of the vehicle.
+	 * @note Speed is in km/h.
+	 */
+	static int32 GetCurrentSpeed(VehicleID vehicle_id);
+
+	/**
+	 * Get the current state of a vehicle.
+	 * @param vehicle_id The vehicle to get the state of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The current state of the vehicle.
+	 */
+	static VehicleState GetState(VehicleID vehicle_id);
+
+	/**
+	 * Get the running cost of this vehicle.
+	 * @param vehicle_id The vehicle to get the age of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The running cost of the vehicle per year.
+	 * @note Cost is per year; divide by 364 to get per day.
+	 * @note This is not equal to AIEngine::GetRunningCost for Trains, because
+	 *   wagons and second engines can add up in the calculation too.
+	 */
+	static Money GetRunningCost(VehicleID vehicle_id);
+
+	/**
+	 * Get the current profit of a vehicle.
+	 * @param vehicle_id The vehicle to get the profit of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The current profit the vehicle has.
+	 */
+	static Money GetProfitThisYear(VehicleID vehicle_id);
+
+	/**
+	 * Get the profit of last year of a vehicle.
+	 * @param vehicle_id The vehicle to get the profit of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The profit the vehicle had last year.
+	 */
+	static Money GetProfitLastYear(VehicleID vehicle_id);
+
+
+	/**
+	 * Get the current value of a vehicle.
+	 * @param vehicle_id The vehicle to get the value of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The value the vehicle currently has (the amount you should get
+	 *  when you would sell the vehicle right now).
+	 */
+	static Money GetCurrentValue(VehicleID vehicle_id);
+
+	/**
+	 * Get the type of vehicle.
+	 * @param vehicle_id The vehicle to get the type of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return The vehicle type.
+	 */
+	static AIVehicle::VehicleType GetVehicleType(VehicleID vehicle_id);
+
+	/**
+	 * Get the RoadType of the vehicle.
+	 * @param vehicle_id The vehicle to get the RoadType of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre GetVehicleType(vehicle_id) == VEHICLE_ROAD.
+	 * @return The RoadType the vehicle has.
+	 */
+	static AIRoad::RoadType GetRoadType(VehicleID vehicle_id);
+
+	/**
+	 * Check if a vehicle is in a depot.
+	 * @param vehicle_id The vehicle to check.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return True if and only if the vehicle is in a depot.
+	 */
+	static bool IsInDepot(VehicleID vehicle_id);
+
+	/**
+	 * Check if a vehicle is in a depot and stopped.
+	 * @param vehicle_id The vehicle to check.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return True if and only if the vehicle is in a depot and stopped.
+	 */
+	static bool IsStoppedInDepot(VehicleID vehicle_id);
+
+	/**
+	 * Builds a vehicle with the given engine at the given depot.
+	 * @param depot The depot where the vehicle will be build.
+	 * @param engine_id The engine to use for this vehicle.
+	 * @pre The tile at depot has a depot that can build the engine and
+	 *   is owned by you.
+	 * @pre IsValidEngine(engine_id).
+	 * @exception AIVehicle::ERR_VEHICLE_TOO_MANY
+	 * @exception AIVehicle::ERR_VEHICLE_BUILD_DISABLED
+	 * @exception AIVehicle::ERR_VEHICLE_WRONG_DEPOT
+	 * @return The VehicleID of the new vehicle, or an invalid VehicleID when
+	 *   it failed. Check the return value using IsValidVehicle. In test-mode
+	 *   0 is returned if it was successful; any other value indicates failure.
+	 * @note In Test Mode it means you can't assign orders yet to this vehicle,
+	 *   as the vehicle isn't really built yet. Build it for real first before
+	 *   assigning orders.
+	 */
+	static VehicleID BuildVehicle(TileIndex depot, EngineID engine_id);
+
+	/**
+	 * Clones a vehicle at the given depot, copying or cloning it's orders.
+	 * @param depot The depot where the vehicle will be build.
+	 * @param vehicle_id The vehicle to use as example for the new vehicle.
+	 * @param share_orders Should the orders be copied or shared?
+	 * @pre The tile 'depot' has a depot on it, allowing 'vehicle_id'-type vehicles.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @exception AIVehicle::ERR_VEHICLE_TOO_MANY
+	 * @exception AIVehicle::ERR_VEHICLE_BUILD_DISABLED
+	 * @exception AIVehicle::ERR_VEHICLE_WRONG_DEPOT
+	 * @return The VehicleID of the new vehicle, or an invalid VehicleID when
+	 *   it failed. Check the return value using IsValidVehicle. In test-mode
+	 *   0 is returned if it was successful; any other value indicates failure.
+	 */
+	static VehicleID CloneVehicle(TileIndex depot, VehicleID vehicle_id, bool share_orders);
+
+	/**
+	 * Move a wagon after another wagon.
+	 * @param source_vehicle_id The vehicle to move a wagon away from.
+	 * @param source_wagon The wagon in source_vehicle to move.
+	 * @param move_attached_wagons Also move all wagons attached to the wagon to move.
+	 * @param dest_vehicle_id The vehicle to move the wagon to, or -1 to create a new vehicle.
+	 * @param dest_wagon The wagon in dest_vehicle to place source_wagon after.
+	 * @pre IsValidVehicle(source_vehicle_id).
+	 * @pre source_wagon < GetNumWagons(source_vehicle_id).
+	 * @pre dest_vehicle_id == -1 || (IsValidVehicle(dest_vehicle_id) && dest_wagon < GetNumWagons(dest_vehicle_id)).
+	 * @pre GetVehicleType(source_vehicle_id) == VEHICLE_RAIL.
+	 * @pre dest_vehicle_id == -1 || GetVehicleType(dest_vehicle_id) == VEHICLE_RAIL.
+	 * @return Whether or not moving the wagon(s) succeeded.
+	 */
+	static bool MoveWagon(VehicleID source_vehicle_id, int source_wagon, bool move_attached_wagons, int dest_vehicle_id, int dest_wagon);
+
+	/**
+	 * Gets the capacity of the given vehicle when refited to the given cargo type.
+	 * @param vehicle_id The vehicle to refit.
+	 * @param cargo The cargo to refit to.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre AICargo::IsValidCargo(cargo).
+	 * @pre You must own the vehicle.
+	 * @pre The vehicle must be stopped in the depot.
+	 * @return The capacity the vehicle will have when refited.
+	 */
+	static int GetRefitCapacity(VehicleID vehicle_id, CargoID cargo);
+
+	/**
+	 * Refits a vehicle to the given cargo type.
+	 * @param vehicle_id The vehicle to refit.
+	 * @param cargo The cargo to refit to.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre AICargo::IsValidCargo(cargo).
+	 * @pre You must own the vehicle.
+	 * @pre The vehicle must be stopped in the depot.
+	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_REFIT
+	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
+	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
+	 * @return True if and only if the refit succeeded.
+	 */
+	static bool RefitVehicle(VehicleID vehicle_id, CargoID cargo);
+
+	/**
+	 * Sells the given vehicle.
+	 * @param vehicle_id The vehicle to sell.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre You must own the vehicle.
+	 * @pre The vehicle must be stopped in the depot.
+	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
+	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
+	 * @return True if and only if the vehicle has been sold.
+	 */
+	static bool SellVehicle(VehicleID vehicle_id);
+
+	/**
+	 * Sells the given wagon from the vehicle.
+	 * @param vehicle_id The vehicle to sell a wagon from.
+	 * @param wagon The wagon to sell.
+	 * @param sell_attached_wagons Sell all wagons attached to the one we want to sell.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre wagon < GetNumWagons(vehicle_id).
+	 * @pre You must own the vehicle.
+	 * @pre The vehicle must be stopped in the depot.
+	 * @exception AIVehicle::ERR_VEHICLE_IS_DESTROYED
+	 * @exception AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT
+	 * @return True if and only if the wagon(s) has been sold.
+	 */
+	static bool SellWagon(VehicleID vehicle_id, int wagon, bool sell_attached_wagons);
+
+	/**
+	 * Sends the given vehicle to a depot.
+	 * @param vehicle_id The vehicle to send to a depot.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_SEND_TO_DEPOT
+	 * @return True if and only if the vehicle has been sent to a depot.
+	 */
+	static bool SendVehicleToDepot(VehicleID vehicle_id);
+
+	/**
+	 * Starts or stops the given vehicle depending on the current state.
+	 * @param vehicle_id The vehicle to start/stop.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @exception AIVehicle::ERR_VEHICLE_CANNOT_START_STOP
+	 * @exception (For aircraft only): AIVehicle::ERR_VEHICLE_IN_FLIGHT
+	 * @exception (For trains only): AIVehicle::ERR_VEHICLE_NO_POWER
+	 * @return True if and only if the vehicle has been started or stopped.
+	 */
+	static bool StartStopVehicle(VehicleID vehicle_id);
+
+	/**
+	 * Skips the current order of the given vehicle.
+	 * @param vehicle_id The vehicle to skip the order for.
+	 * @param order_position The selected order to which we want to skip.
+	 * @pre IsValidVehicleOrder(vehicle_id, order_position).
+	 * @return True if and only if the order has been skipped.
+	 */
+	static bool SkipToVehicleOrder(VehicleID vehicle_id, AIOrder::OrderPosition order_position);
+
+	/**
+	 * Turn the given vehicle so it'll drive the other way.
+	 * @param vehicle_id The vehicle to turn.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre GetVehicleType(vehicle_id) == VEHICLE_ROAD || GetVehicleType(vehicle_id) == VEHICLE_RAIL.
+	 * @return True if and only if the vehicle has started to turn.
+	 * @note Vehicles cannot always be reversed. For example busses and trucks need to be running
+	 *  and not be inside a depot.
+	 */
+	static bool ReverseVehicle(VehicleID vehicle_id);
+
+	/**
+	 * Get the maximum amount of a specific cargo the given vehicle can transport.
+	 * @param vehicle_id The vehicle to get the capacity of.
+	 * @param cargo The cargo to get the capacity for.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre AICargo::IsValidCargo(cargo).
+	 * @return The maximum amount of the given cargo the vehicle can transport.
+	 */
+	static int32 GetCapacity(VehicleID vehicle_id, CargoID cargo);
+
+	/**
+	 * Get the length of a the total vehicle in 1/16's of a tile.
+	 * @param vehicle_id The vehicle to get the length of.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre GetVehicleType(vehicle_id) == AIVehicle.VEHICLE_ROAD || GetVehicleType(vehicle_id) == AIVehicle.VEHICLE_RAIL.
+	 * @return The length of the engine.
+	 */
+	static int GetLength(VehicleID vehicle_id);
+
+	/**
+	 * Get the amount of a specific cargo the given vehicle transports.
+	 * @param vehicle_id The vehicle to get the load amount of.
+	 * @param cargo The cargo to get the load amount for.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre AICargo::IsValidCargo(cargo).
+	 * @return The amount of the given cargo the vehicle currently transports.
+	 */
+	static int32 GetCargoLoad(VehicleID vehicle_id, CargoID cargo);
+
+	/**
+	 * Get the group of a given vehicle.
+	 * @param vehicle_id The vehicle to get the group from.
+	 * @return The group of the given vehicle.
+	 */
+	static GroupID GetGroupID(VehicleID vehicle_id);
+
+	/**
+	 * Check if the vehicle is articulated.
+	 * @param vehicle_id The vehicle to check.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @pre GetVehicleType(vehicle_id) == VEHICLE_ROAD || GetVehicleType(vehicle_id) == VEHICLE_RAIL.
+	 * @return True if the vehicle is articulated.
+	 */
+	static bool IsArticulated(VehicleID vehicle_id);
+};
+
+#endif /* AI_VEHICLE_HPP */

@@ -1,0 +1,23 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_industrytypelist.hpp"
+
+namespace SQConvert {
+	/* Allow AIIndustryTypeList to be used as Squirrel parameter */
+	template <> AIIndustryTypeList *GetParam(ForceType<AIIndustryTypeList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIIndustryTypeList *)instance; }
+	template <> AIIndustryTypeList &GetParam(ForceType<AIIndustryTypeList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIIndustryTypeList *)instance; }
+	template <> const AIIndustryTypeList *GetParam(ForceType<const AIIndustryTypeList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIIndustryTypeList *)instance; }
+	template <> const AIIndustryTypeList &GetParam(ForceType<const AIIndustryTypeList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIIndustryTypeList *)instance; }
+	template <> int Return<AIIndustryTypeList *>(HSQUIRRELVM vm, AIIndustryTypeList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIIndustryTypeList", res, NULL, DefSQDestructorCallback<AIIndustryTypeList>); return 1; }
+}; // namespace SQConvert
+
+void SQAIIndustryTypeList_Register(Squirrel *engine) {
+	DefSQClass <AIIndustryTypeList> SQAIIndustryTypeList("AIIndustryTypeList");
+	SQAIIndustryTypeList.PreRegister(engine, "AIAbstractList");
+	SQAIIndustryTypeList.AddConstructor<void (AIIndustryTypeList::*)(), 1>(engine, "x");
+
+	SQAIIndustryTypeList.DefSQStaticMethod(engine, &AIIndustryTypeList::GetClassName, "GetClassName", 1, "x");
+
+	SQAIIndustryTypeList.PostRegister(engine);
+}

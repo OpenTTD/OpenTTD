@@ -11,12 +11,13 @@
 /** The define of a TarList. */
 struct TarListEntry {
 	const char *filename;
+	const char *dirname;
 
 	/* MSVC goes copying around this struct after initialisation, so it tries
 	 * to free filename, which isn't set at that moment... but because it
 	 * initializes the variable with garbage, it's going to segfault. */
-	TarListEntry() : filename(NULL) {}
-	~TarListEntry() { free((void*)this->filename); }
+	TarListEntry() : filename(NULL), dirname(NULL) {}
+	~TarListEntry() { free((void*)this->filename); free((void*)this->dirname); }
 };
 
 struct TarFileListEntry {

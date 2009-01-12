@@ -25,6 +25,8 @@
 
 #include "table/strings.h"
 
+GroupID _new_group_id;
+
 /**
  * Update the num engines of a groupID. Decrease the old one and increase the new one
  * @note called in SetTrainGroupID and UpdateTrainGroupID
@@ -90,6 +92,8 @@ CommandCost CmdCreateGroup(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 		Group *g = new Group(_current_company);
 		g->replace_protection = false;
 		g->vehicle_type = vt;
+
+		_new_group_id = g->index;
 
 		InvalidateWindowData(GetWindowClassForVehicleType(vt), (vt << 11) | VLW_GROUP_LIST | _current_company);
 	}

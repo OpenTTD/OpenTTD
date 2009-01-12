@@ -64,6 +64,9 @@
 #include "station_func.h"
 #include "settings_func.h"
 #include "ini_type.h"
+#include "ai/ai.hpp"
+#include "ai/ai_config.hpp"
+#include "ai/ai_info.hpp"
 
 #include "table/strings.h"
 
@@ -827,21 +830,6 @@ static int32 v_PositionMainToolbar(int32 p1)
 	return 0;
 }
 
-static int32 AiNew_PatchActive_Warning(int32 p1)
-{
-	if (p1 == 1) ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_ACTIVATED, 0, 0);
-	return 0;
-}
-
-static int32 Ai_In_Multiplayer_Warning(int32 p1)
-{
-	if (p1 == 1) {
-		ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_MULTIPLAYER, 0, 0);
-		_settings_game.ai.ainew_active = true;
-	}
-	return 0;
-}
-
 static int32 PopulationInLabelActive(int32 p1)
 {
 	Town *t;
@@ -1330,12 +1318,13 @@ const SettingDesc _patch_settings[] = {
 	 SDT_CONDVAR(GameSettings, economy.initial_city_size,            SLE_UINT8, 56, SL_MAX_VERSION, 0, 0,     2,     1,      10, 1, STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER,   NULL),
 	SDT_CONDBOOL(GameSettings, economy.mod_road_rebuild,                        77, SL_MAX_VERSION, 0, 0, false,                    STR_CONFIG_MODIFIED_ROAD_REBUILD,          NULL),
 
-	    SDT_BOOL(GameSettings, ai.ainew_active,                                                     0, 0, false,                    STR_CONFIG_PATCHES_AINEW_ACTIVE,           AiNew_PatchActive_Warning),
-	    SDT_BOOL(GameSettings, ai.ai_in_multiplayer,                                                0, 0, false,                    STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER,      Ai_In_Multiplayer_Warning),
+	SDT_CONDNULL(1, 0, 106), // previously ai-new setting.
+	    SDT_BOOL(GameSettings, ai.ai_in_multiplayer,                                                0, 0, true,                     STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER,      NULL),
 	    SDT_BOOL(GameSettings, ai.ai_disable_veh_train,                                             0, 0, false,                    STR_CONFIG_PATCHES_AI_BUILDS_TRAINS,       NULL),
 	    SDT_BOOL(GameSettings, ai.ai_disable_veh_roadveh,                                           0, 0, false,                    STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH,      NULL),
 	    SDT_BOOL(GameSettings, ai.ai_disable_veh_aircraft,                                          0, 0, false,                    STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT,     NULL),
 	    SDT_BOOL(GameSettings, ai.ai_disable_veh_ship,                                              0, 0, false,                    STR_CONFIG_PATCHES_AI_BUILDS_SHIPS,        NULL),
+	 SDT_CONDVAR(GameSettings, ai.ai_max_opcode_till_suspend,       SLE_UINT32,107, SL_MAX_VERSION, 0, NG, 10000, 5000,250000,2500, STR_CONFIG_PATCHES_AI_MAX_OPCODES,         NULL),
 
 	     SDT_VAR(GameSettings, vehicle.extend_vehicle_life,          SLE_UINT8,                     0, 0,     0,     0,     100, 0, STR_NULL,                                  NULL),
 	     SDT_VAR(GameSettings, economy.dist_local_authority,         SLE_UINT8,                     0, 0,    20,     5,      60, 0, STR_NULL,                                  NULL),
@@ -1635,6 +1624,32 @@ static void NewsDisplayLoadConfig(IniFile *ini, const char *grpname)
 	}
 }
 
+static void AILoadConfig(IniFile *ini, const char *grpname)
+{
+	IniGroup *group = ini->GetGroup(grpname);
+	IniItem *item;
+
+	/* Clean any configured AI */
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		AIConfig::GetConfig(c, true)->ChangeAI(NULL);
+	}
+
+	/* If no group exists, return */
+	if (group == NULL) return;
+
+	CompanyID c = COMPANY_FIRST;
+	for (item = group->item; c < MAX_COMPANIES && item != NULL; c++, item = item->next) {
+		AIConfig *config = AIConfig::GetConfig(c, true);
+
+		config->ChangeAI(item->name);
+		if (!config->HasAI()) {
+			if (strcmp(item->name, "none") != 0) DEBUG(ai, 0, "The AI by the name '%s' was no longer found, and removed from the list.", item->name);
+			continue;
+		}
+		config->StringToSettings(item->value);
+	}
+}
+
 /* Load a GRF configuration from the given group name */
 static GRFConfig *GRFLoadConfig(IniFile *ini, const char *grpname, bool is_static)
 {
@@ -1699,6 +1714,34 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 		value = (v == ND_OFF ? "off" : (v == ND_SUMMARY ? "summarized" : "full"));
 
 		group->GetItem(_news_type_data[i].name, true)->SetValue(value);
+	}
+}
+
+static void AISaveConfig(IniFile *ini, const char *grpname)
+{
+	IniGroup *group = ini->GetGroup(grpname);
+	IniItem **item;
+
+	if (group == NULL) return;
+	group->item = NULL;
+	item = &group->item;
+
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		AIConfig *config = AIConfig::GetConfig(c, true);
+		const char *name;
+		char value[1024];
+
+		if (config->HasAI()) {
+			config->SettingsToString(value, lengthof(value));
+			name = config->GetName();
+		} else {
+			value[0] = '\0';
+			name = "none";
+		}
+
+		*item = new IniItem(group, name);
+		(*item)->value = strdup(value);
+		item = &(*item)->next;
 	}
 }
 
@@ -1777,6 +1820,7 @@ void LoadFromConfig()
 	_grfconfig_newgame = GRFLoadConfig(ini, "newgrf", false);
 	_grfconfig_static  = GRFLoadConfig(ini, "newgrf-static", true);
 	NewsDisplayLoadConfig(ini, "news_display");
+	AILoadConfig(ini, "ai_players");
 	CheckDifficultyLevels();
 	delete ini;
 }
@@ -1795,6 +1839,7 @@ void SaveToConfig()
 	GRFSaveConfig(ini, "newgrf", _grfconfig_newgame);
 	GRFSaveConfig(ini, "newgrf-static", _grfconfig_static);
 	NewsDisplaySaveConfig(ini, "news_display");
+	AISaveConfig(ini, "ai_players");
 	SaveVersionInConfig(ini);
 	ini->SaveToDisk(_config_file);
 	delete ini;

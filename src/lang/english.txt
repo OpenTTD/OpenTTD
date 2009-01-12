@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 STR_02D5_LAND_BLOCK_INFO                                        :Land area information
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Toggle Console
+STR_AI_DEBUG_MENU                                               :AI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :About 'OpenTTD'
@@ -1155,6 +1156,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer (experimental): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING1} days/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
@@ -3675,6 +3677,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Kill the AI, reload the script, and restart the AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug window is only available for the server
 ########
 
 ############ town controlled noise level

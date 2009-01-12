@@ -45,6 +45,7 @@ enum glwp_modes {
 };
 
 extern void SwitchMode(int new_mode);
+extern void MakeNewgameSettingsLive();
 
 static inline void SetNewLandscapeType(byte landscape)
 {
@@ -230,7 +231,7 @@ void StartGeneratingLandscape(glwp_modes mode)
 	DeleteAllNonVitalWindows();
 
 	/* Copy all XXX_newgame to XXX when coming from outside the editor */
-	_settings_game = _settings_newgame;
+	MakeNewgameSettingsLive();
 	ResetGRFConfig(true);
 
 	SndPlayFx(SND_15_BEEP);
@@ -399,7 +400,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 				break;
 
 			case GLAND_GENERATE_BUTTON: // Generate
-				_settings_game = _settings_newgame;
+				MakeNewgameSettingsLive();
 
 				if (_settings_game.economy.town_layout == TL_NO_ROADS) {
 					ShowQuery(

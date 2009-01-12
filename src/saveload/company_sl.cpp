@@ -6,8 +6,7 @@
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../network/network.h"
-#include "../ai/ai.h"
-#include "../ai/trolly/trolly.h"
+#include "../ai/ai.hpp"
 #include "../company_manager_face.h"
 
 #include "saveload.h"
@@ -130,7 +129,8 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDARR(Company, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, 0, 1),
 	SLE_CONDARR(Company, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Company, is_ai,                 SLE_BOOL, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, is_ai,                 SLE_BOOL,                    2, SL_MAX_VERSION),
+	SLE_CONDVAR(Company, is_noai,               SLE_BOOL,                  107, SL_MAX_VERSION),
 	SLE_CONDNULL(1, 4, 99),
 
 	/* Engine renewal settings */
@@ -141,7 +141,7 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDVAR(Company, engine_renew_money,    SLE_UINT32,                 16, SL_MAX_VERSION),
 	SLE_CONDVAR(Company, renew_keep_length,     SLE_BOOL,                    2, SL_MAX_VERSION), // added with 16.1, but was blank since 2
 
-	/* reserve extra space in savegame here. (currently 63 bytes) */
+	/* Reserve extra space in savegame here. (currently 63 bytes) */
 	SLE_CONDNULL(63, 2, SL_MAX_VERSION),
 
 	SLE_END()
@@ -162,6 +162,51 @@ static const SaveLoad _company_economy_desc[] = {
 	SLE_END()
 };
 
+/* We do need to read this single value, as the bigger it gets, the more data is stored */
+struct CompanyOldAI {
+	uint8 num_build_rec;
+};
+
+static const SaveLoad _company_ai_desc[] = {
+	SLE_CONDNULL(2,  0, 106),
+	SLE_CONDNULL(2,  0, 12),
+	SLE_CONDNULL(4, 13, 106),
+	SLE_CONDNULL(8,  0, 106),
+	 SLE_CONDVAR(CompanyOldAI, num_build_rec, SLE_UINT8, 0, 106),
+	SLE_CONDNULL(3,  0, 106),
+
+	SLE_CONDNULL(2,  0,  5),
+	SLE_CONDNULL(4,  6, 106),
+	SLE_CONDNULL(2,  0,  5),
+	SLE_CONDNULL(4,  6, 106),
+	SLE_CONDNULL(2,  0, 106),
+
+	SLE_CONDNULL(2,  0,  5),
+	SLE_CONDNULL(4,  6, 106),
+	SLE_CONDNULL(2,  0,  5),
+	SLE_CONDNULL(4,  6, 106),
+	SLE_CONDNULL(2,  0, 106),
+
+	SLE_CONDNULL(2,  0, 68),
+	SLE_CONDNULL(4,  69, 106),
+
+	SLE_CONDNULL(18, 0, 106),
+	SLE_CONDNULL(20, 0, 106),
+	SLE_CONDNULL(32, 0, 106),
+
+	SLE_CONDNULL(64, 2, 106),
+	SLE_END()
+};
+
+static const SaveLoad _company_ai_build_rec_desc[] = {
+	SLE_CONDNULL(2, 0, 5),
+	SLE_CONDNULL(4, 6, 106),
+	SLE_CONDNULL(2, 0, 5),
+	SLE_CONDNULL(4, 6, 106),
+	SLE_CONDNULL(8, 0, 106),
+	SLE_END()
+};
+
 static const SaveLoad _company_livery_desc[] = {
 	SLE_CONDVAR(Livery, in_use,  SLE_BOOL,  34, SL_MAX_VERSION),
 	SLE_CONDVAR(Livery, colour1, SLE_UINT8, 34, SL_MAX_VERSION),
@@ -175,10 +220,15 @@ static void SaveLoad_PLYR(Company *c)
 
 	SlObject(c, _company_desc);
 
-	/* Write AI? */
-	if (!IsHumanCompany(c->index)) {
-		extern void SaveLoad_AI(CompanyID company);
-		SaveLoad_AI(c->index);
+	/* Keep backwards compatible for savegames, so load the old AI block */
+	if (!IsHumanCompany(c->index) && !c->is_noai) {
+		CompanyOldAI old_ai;
+		char nothing;
+
+		SlObject(&old_ai, _company_ai_desc);
+		for (i = 0; i != old_ai.num_build_rec; i++) {
+			SlObject(&nothing, _company_ai_build_rec_desc);
+		}
 	}
 
 	/* Write economy */
@@ -225,13 +275,7 @@ static void Load_PLYR()
 		Company *c = new (index) Company();
 		SaveLoad_PLYR(c);
 		_company_colours[index] = c->colour;
-
-		/* This is needed so an AI is attached to a loaded AI */
-		if (c->is_ai && (!_networking || _network_server) && _ai.enabled) {
-			/* Clear the memory of the new AI, otherwise we might be doing wrong things. */
-			memset(&_companies_ainew[index], 0, sizeof(CompanyAiNew));
-			AI_StartNewAI(c->index);
-		}
+		c->is_noai = true;
 	}
 }
 

@@ -92,4 +92,6 @@ void UpdateTrainGroupID(Vehicle *v);
 void RemoveVehicleFromGroup(const Vehicle *v);
 void RemoveAllGroupsForCompany(const CompanyID company);
 
+extern GroupID _new_group_id;
+
 #endif /* GROUP_H */

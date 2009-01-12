@@ -97,6 +97,9 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 	/* Try to locate a new sign */
 	if (!Sign::CanAllocateItem()) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
 
+	/* Check sign text length if any */
+	if (!StrEmpty(text) && strlen(text) >= MAX_LENGTH_SIGN_NAME_BYTES) return CMD_ERROR;
+
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
 		Sign *si = new Sign(_current_company);
@@ -106,6 +109,9 @@ CommandCost CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 		si->x = x;
 		si->y = y;
 		si->z = GetSlopeZ(x, y);
+		if (!StrEmpty(text)) {
+			si->name = strdup(text);
+		}
 		UpdateSignVirtCoords(si);
 		MarkSignDirty(si);
 		InvalidateWindowData(WC_SIGN_LIST, 0, 0);

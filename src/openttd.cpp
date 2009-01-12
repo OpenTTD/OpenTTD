@@ -44,7 +44,8 @@
 #include "signs_base.h"
 #include "signs_func.h"
 #include "waypoint.h"
-#include "ai/ai.h"
+#include "ai/ai.hpp"
+#include "ai/ai_config.hpp"
 #include "train.h"
 #include "yapf/yapf.h"
 #include "settings_func.h"
@@ -164,7 +165,7 @@ void CDECL ShowInfoF(const char *str, ...)
  */
 static void ShowHelp()
 {
-	char buf[4096];
+	char buf[8192];
 	char *p = buf;
 
 	p += seprintf(p, lastof(buf), "OpenTTD %s\n", _openttd_revision);
@@ -176,6 +177,7 @@ static void ShowHelp()
 		"  -s drv              = Set sound driver (see below) (param bufsize,hz)\n"
 		"  -m drv              = Set music driver (see below)\n"
 		"  -b drv              = Set the blitter to use (see below)\n"
+		"  -a ai               = Force use of specific AI (see below)\n"
 		"  -r res              = Set resolution (for instance 800x600)\n"
 		"  -h                  = Display this help text\n"
 		"  -t year             = Set starting year\n"
@@ -210,6 +212,11 @@ static void ShowHelp()
 
 	/* List the blitters */
 	p = BlitterFactoryBase::GetBlittersInfo(p, lastof(buf));
+
+	/* We need to initialize the AI, so it finds the AIs */
+	AI::Initialize();
+	p = AI::GetConsoleList(p, lastof(buf));
+	AI::Uninitialize(true);
 
 	/* ShowInfo put output to stderr, but version information should go
 	 * to stdout; this is the only exception */
@@ -321,7 +328,7 @@ static void InitializeDynamicVariables()
 static void ShutdownGame()
 {
 	/* stop the AI */
-	AI_Uninitialize();
+	AI::Uninitialize(false);
 
 	IConsoleFree();
 
@@ -380,6 +387,24 @@ static void LoadIntroGame()
 
 	/* Play main theme */
 	if (_music_driver->IsSongPlaying()) ResetMusic();
+}
+
+void MakeNewgameSettingsLive()
+{
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		if (_settings_game.ai_config[c] != NULL) {
+			delete _settings_game.ai_config[c];
+		}
+	}
+
+	_settings_game = _settings_newgame;
+
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		_settings_game.ai_config[c] = NULL;
+		if (_settings_newgame.ai_config[c] != NULL) {
+			_settings_game.ai_config[c] = new AIConfig(_settings_newgame.ai_config[c]);
+		}
+	}
 }
 
 byte _savegame_sort_order;
@@ -531,7 +556,9 @@ int ttd_main(int argc, char *argv[])
 		DedicatedFork();
 #endif
 
+	AI::Initialize();
 	LoadFromConfig();
+	AI::Uninitialize(true);
 	CheckConfig();
 	LoadFromHighScore();
 
@@ -666,7 +693,7 @@ int ttd_main(int argc, char *argv[])
 	if (_settings_newgame.difficulty.diff_level == 9) SetDifficultyLevel(0, &_settings_newgame.difficulty);
 
 	/* Make sure _settings is filled with _settings_newgame if we switch to a game directly */
-	if (_switch_mode != SM_NONE) _settings_game = _settings_newgame;
+	if (_switch_mode != SM_NONE) MakeNewgameSettingsLive();
 
 	/* initialize the ingame console */
 	IConsoleInit();
@@ -750,13 +777,16 @@ static void MakeNewGameDone()
 	SettingsDisableElrail(_settings_game.vehicle.disable_elrails);
 
 	/* In a dedicated server, the server does not play */
-	if (_network_dedicated) {
+	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0) {
 		SetLocalCompany(COMPANY_SPECTATOR);
+		IConsoleCmdExec("exec scripts/game_start.scr 0");
 		return;
 	}
 
 	/* Create a single company */
 	DoStartupNewCompany(false);
+
+	IConsoleCmdExec("exec scripts/game_start.scr 0");
 
 	SetLocalCompany(COMPANY_FIRST);
 	_current_company = _local_company;
@@ -909,7 +939,7 @@ void SwitchMode(int new_mode)
 				/* check if we should reload the config */
 				if (_settings_client.network.reload_cfg) {
 					LoadFromConfig();
-					_settings_game = _settings_newgame;
+					MakeNewgameSettingsLive();
 					ResetGRFConfig(false);
 				}
 				NetworkServerStart();
@@ -920,6 +950,8 @@ void SwitchMode(int new_mode)
 		}
 	}
 #endif /* ENABLE_NETWORK */
+	/* Make sure all AI controllers are gone at quiting game */
+	if (new_mode != SM_SAVE) AI::KillAll();
 
 	switch (new_mode) {
 		case SM_EDITOR: /* Switch to scenario editor */
@@ -959,6 +991,8 @@ void SwitchMode(int new_mode)
 				/* Update the local company for a loaded game. It is either always
 				* company #1 (eg 0) or in the case of a dedicated server a spectator */
 				SetLocalCompany(_network_dedicated ? COMPANY_SPECTATOR : COMPANY_FIRST);
+				/* Execute the game-start script */
+				IConsoleCmdExec("exec scripts/game_start.scr 0");
 				/* Decrease pause counter (was increased from opening load dialog) */
 				DoCommandP(0, 0, 0, CMD_PAUSE);
 #ifdef ENABLE_NETWORK
@@ -1112,7 +1146,7 @@ void StateGameLoop()
 		CallLandscapeTick();
 		ClearStorageChanges(true);
 
-		AI_RunGameLoop();
+		AI::GameLoop();
 
 		CallWindowTickEvent();
 		NewsLoop();

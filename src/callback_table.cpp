@@ -54,6 +54,7 @@ CommandCallback CcBuildShip;
 CommandCallback CcBuildWagon;
 CommandCallback CcBuildLoco;
 
+/* ai/ai_core.cpp */
 CommandCallback CcAI;
 
 CommandCallback *_callback_table[] = {

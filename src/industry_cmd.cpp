@@ -39,6 +39,7 @@
 #include "oldpool_func.h"
 #include "animated_tile_func.h"
 #include "effectvehicle_func.h"
+#include "ai/ai.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -432,7 +433,10 @@ static CommandCost ClearTile_Industry(TileIndex tile, byte flags)
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 
-	if (flags & DC_EXEC) delete i;
+	if (flags & DC_EXEC) {
+		AI::BroadcastNewEvent(new AIEventIndustryClose(i->index));
+		delete i;
+	}
 	return CommandCost(EXPENSES_CONSTRUCTION, indspec->GetRemovalCost());
 }
 
@@ -1712,6 +1716,7 @@ CommandCost CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 			SetDParam(1, ind->town->index);
 		}
 		AddNewsItem(indspec->new_industry_text, NS_INDUSTRY_OPEN, ind->xy, 0);
+		AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
 	}
 
 	return CommandCost(EXPENSES_OTHER, indspec->GetConstructionCost());
@@ -1912,8 +1917,8 @@ static void MaybeNewIndustry(void)
 	} else {
 		SetDParam(1, ind->town->index);
 	}
-	AddNewsItem(ind_spc->new_industry_text,
-		NS_INDUSTRY_OPEN, ind->xy, 0);
+	AddNewsItem(ind_spc->new_industry_text, NS_INDUSTRY_OPEN, ind->xy, 0);
+	AI::BroadcastNewEvent(new AIEventIndustryOpen(ind->index));
 }
 
 /**
@@ -2232,6 +2237,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		/* Compute news category */
 		if (closeit) {
 			ns = NS_INDUSTRY_CLOSE;
+			AI::BroadcastNewEvent(new AIEventIndustryClose(i->index));
 		} else {
 			switch (WhoCanServiceIndustry(i)) {
 				case 0: ns = NS_INDUSTRY_NOBODY;  break;

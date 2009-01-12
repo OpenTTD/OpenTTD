@@ -318,7 +318,7 @@ CommandCost CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p
 	} else {
 		/* Build a new bridge. */
 
-		bool allow_on_slopes = (!_is_old_ai_company && _settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
+		bool allow_on_slopes = (_settings_game.construction.build_on_slopes && transport_type != TRANSPORT_WATER);
 
 		/* Try and clear the start landscape */
 		ret = DoCommand(tile_start, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
@@ -454,7 +454,7 @@ not_valid_below:;
 	if (!(flags & DC_QUERY_COST) || (IsValidCompanyID(_current_company) && GetCompany(_current_company)->is_ai)) {
 		bridge_len += 2; // begin and end tiles/ramps
 
-		if (IsValidCompanyID(_current_company) && !_is_old_ai_company)
+		if (IsValidCompanyID(_current_company))
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		cost.AddCost((int64)bridge_len * _price.build_bridge * GetBridgeSpec(bridge_type)->price >> 8);

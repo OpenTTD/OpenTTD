@@ -39,6 +39,7 @@ bundle: all
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario/heightmap"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/media"
+	$(Q)mkdir -p "$(BUNDLE_DIR)/ai"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scripts"
 	$(Q)mkdir -p "$(TTD_DIR)"
 	$(Q)mkdir -p "$(DATA_DIR)"
@@ -74,6 +75,10 @@ endif
 ifdef MENU_DIR
 	$(Q)cp "$(ROOT_DIR)/media/openttd.desktop" "$(BUNDLE_DIR)/media/"
 	$(Q)cat "$(ROOT_DIR)/media/openttd.desktop" | sed s/=openttd/=$(BINARY_NAME)/g > "$(ROOT_DIR)/media/openttd.desktop.install"
+endif
+ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/ai/\"* 2>/dev/null`"; then echo 1; fi), 1)
+	$(Q)cp -R "$(BIN_DIR)/ai/"*               "$(BUNDLE_DIR)/ai/"
+	$(Q)find $(BUNDLE_DIR)/ai/ -depth -iname '*.svn' -exec rm -Rf {} \; || find $(BUNDLE_DIR)/ai/ -d -iname '*.svn' -exec rm -Rf {} \;
 endif
 ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/\"*.scn 2> /dev/null`"; then echo 1; fi), 1)
 	$(Q)cp "$(BIN_DIR)/scenario/"*.scn        "$(BUNDLE_DIR)/scenario/"

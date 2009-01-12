@@ -1,0 +1,47 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_tunnel.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AITunnel::ErrorMessages GetParam(ForceType<AITunnel::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITunnel::ErrorMessages)tmp; }
+	template <> int Return<AITunnel::ErrorMessages>(HSQUIRRELVM vm, AITunnel::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AITunnel to be used as Squirrel parameter */
+	template <> AITunnel *GetParam(ForceType<AITunnel *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITunnel *)instance; }
+	template <> AITunnel &GetParam(ForceType<AITunnel &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITunnel *)instance; }
+	template <> const AITunnel *GetParam(ForceType<const AITunnel *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITunnel *)instance; }
+	template <> const AITunnel &GetParam(ForceType<const AITunnel &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITunnel *)instance; }
+	template <> int Return<AITunnel *>(HSQUIRRELVM vm, AITunnel *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITunnel", res, NULL, DefSQDestructorCallback<AITunnel>); return 1; }
+}; // namespace SQConvert
+
+void SQAITunnel_Register(Squirrel *engine) {
+	DefSQClass <AITunnel> SQAITunnel("AITunnel");
+	SQAITunnel.PreRegister(engine);
+	SQAITunnel.AddConstructor<void (AITunnel::*)(), 1>(engine, "x");
+
+	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_BASE,                      "ERR_TUNNEL_BASE");
+	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER,     "ERR_TUNNEL_CANNOT_BUILD_ON_WATER");
+	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_START_SITE_UNSUITABLE,     "ERR_TUNNEL_START_SITE_UNSUITABLE");
+	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
+	SQAITunnel.DefSQConst(engine, AITunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
+
+	AIError::RegisterErrorMap(STR_3807_CAN_T_BUILD_ON_WATER,       AITunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER);
+	AIError::RegisterErrorMap(STR_500B_SITE_UNSUITABLE_FOR_TUNNEL, AITunnel::ERR_TUNNEL_START_SITE_UNSUITABLE);
+	AIError::RegisterErrorMap(STR_5003_ANOTHER_TUNNEL_IN_THE_WAY,  AITunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY);
+	AIError::RegisterErrorMap(STR_5005_UNABLE_TO_EXCAVATE_LAND,    AITunnel::ERR_TUNNEL_END_SITE_UNSUITABLE);
+
+	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_CANNOT_BUILD_ON_WATER,     "ERR_TUNNEL_CANNOT_BUILD_ON_WATER");
+	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_START_SITE_UNSUITABLE,     "ERR_TUNNEL_START_SITE_UNSUITABLE");
+	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY, "ERR_TUNNEL_ANOTHER_TUNNEL_IN_THE_WAY");
+	AIError::RegisterErrorMapString(AITunnel::ERR_TUNNEL_END_SITE_UNSUITABLE,       "ERR_TUNNEL_END_SITE_UNSUITABLE");
+
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::GetClassName,      "GetClassName",      1, "x");
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::IsTunnelTile,      "IsTunnelTile",      2, "xi");
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::GetOtherTunnelEnd, "GetOtherTunnelEnd", 2, "xi");
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::BuildTunnel,       "BuildTunnel",       3, "xii");
+	SQAITunnel.DefSQStaticMethod(engine, &AITunnel::RemoveTunnel,      "RemoveTunnel",      2, "xi");
+
+	SQAITunnel.PostRegister(engine);
+}

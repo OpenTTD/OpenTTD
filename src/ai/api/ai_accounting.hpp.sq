@@ -1,0 +1,26 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_accounting.hpp"
+
+namespace SQConvert {
+	/* Allow AIAccounting to be used as Squirrel parameter */
+	template <> AIAccounting *GetParam(ForceType<AIAccounting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIAccounting *)instance; }
+	template <> AIAccounting &GetParam(ForceType<AIAccounting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIAccounting *)instance; }
+	template <> const AIAccounting *GetParam(ForceType<const AIAccounting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIAccounting *)instance; }
+	template <> const AIAccounting &GetParam(ForceType<const AIAccounting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIAccounting *)instance; }
+	template <> int Return<AIAccounting *>(HSQUIRRELVM vm, AIAccounting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIAccounting", res, NULL, DefSQDestructorCallback<AIAccounting>); return 1; }
+}; // namespace SQConvert
+
+void SQAIAccounting_Register(Squirrel *engine) {
+	DefSQClass <AIAccounting> SQAIAccounting("AIAccounting");
+	SQAIAccounting.PreRegister(engine);
+	SQAIAccounting.AddConstructor<void (AIAccounting::*)(), 1>(engine, "x");
+
+	SQAIAccounting.DefSQStaticMethod(engine, &AIAccounting::GetClassName, "GetClassName", 1, "x");
+
+	SQAIAccounting.DefSQMethod(engine, &AIAccounting::GetCosts,   "GetCosts",   1, "x");
+	SQAIAccounting.DefSQMethod(engine, &AIAccounting::ResetCosts, "ResetCosts", 1, "x");
+
+	SQAIAccounting.PostRegister(engine);
+}

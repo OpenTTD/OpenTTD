@@ -70,6 +70,10 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 	Money bankrupt_value;
 
 	bool is_ai;
+	bool is_noai; ///< This is a NoAI player (for loading old savegames properly). Part of the NoAI 'hack' to retain savegame compatability with trunk
+
+	class AIInstance *ai_instance;
+	class AIInfo *ai_info;
 
 	Money yearly_expenses[3][EXPENSES_END];
 	CompanyEconomyEntry cur_economy;

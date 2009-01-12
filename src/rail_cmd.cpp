@@ -308,7 +308,7 @@ static CommandCost CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits ex
 
 	/* check track/slope combination */
 	if ((f_new == FOUNDATION_INVALID) ||
-			((f_new != FOUNDATION_NONE) && (!_settings_game.construction.build_on_slopes || _is_old_ai_company))) {
+			((f_new != FOUNDATION_NONE) && (!_settings_game.construction.build_on_slopes))) {
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
@@ -790,7 +790,6 @@ CommandCost CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 	 */
 
 	if (tileh != SLOPE_FLAT && (
-				_is_old_ai_company ||
 				!_settings_game.construction.build_on_slopes ||
 				IsSteepSlope(tileh) ||
 				!CanBuildDepotByTileh(dir, tileh)

@@ -59,8 +59,8 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\objs\langs"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WIN32_EXCEPTION_TRACKER;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;WITH_FREETYPE;WITH_ICU;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR=\&quot;OpenTTD\&quot;;WITH_ASSERT"
+				AdditionalIncludeDirectories="..\objs\langs;..\src\3rdparty\squirrel\include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WIN32_EXCEPTION_TRACKER;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;WITH_FREETYPE;WITH_ICU;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR=\&quot;OpenTTD\&quot;;NO_GARBAGE_COLLECTOR;WITH_ASSERT"
 				StringPooling="true"
 				ExceptionHandling="1"
 				RuntimeLibrary="0"
@@ -166,8 +166,8 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\objs\langs"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;WITH_FREETYPE;WITH_ICU;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR=\&quot;OpenTTD\&quot;"
+				AdditionalIncludeDirectories="..\objs\langs;..\src\3rdparty\squirrel\include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;WITH_FREETYPE;WITH_ICU;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR=\&quot;OpenTTD\&quot;;NO_GARBAGE_COLLECTOR"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -268,8 +268,8 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="2"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\objs\langs"
-				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WIN32_EXCEPTION_TRACKER;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;WITH_FREETYPE;WITH_ICU;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR=\&quot;OpenTTD\&quot;;WITH_ASSERT"
+				AdditionalIncludeDirectories="..\objs\langs;..\src\3rdparty\squirrel\include"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WIN32_EXCEPTION_TRACKER;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;WITH_FREETYPE;WITH_ICU;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR=\&quot;OpenTTD\&quot;;NO_GARBAGE_COLLECTOR;_SQ64;WITH_ASSERT"
 				StringPooling="true"
 				ExceptionHandling="1"
 				RuntimeLibrary="0"
@@ -376,8 +376,8 @@
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\objs\langs"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;WITH_FREETYPE;WITH_ICU;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR=\&quot;OpenTTD\&quot;"
+				AdditionalIncludeDirectories="..\objs\langs;..\src\3rdparty\squirrel\include"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;WITH_FREETYPE;WITH_ICU;ENABLE_NETWORK;WITH_PERSONAL_DIR;PERSONAL_DIR=\&quot;OpenTTD\&quot;;NO_GARBAGE_COLLECTOR;_SQ64"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
@@ -776,10 +776,6 @@
 			Name="Header Files"
 			>
 			<File
-				RelativePath=".\..\src\ai\ai.h"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\aircraft.h"
 				>
 			</File>
@@ -921,10 +917,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\video\dedicated_v.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\default\default.h"
 				>
 			</File>
 			<File
@@ -1541,10 +1533,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\transport_type.h"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\ai\trolly\trolly.h"
 				>
 			</File>
 			<File
@@ -2241,30 +2229,642 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="AI Files"
+			Name="Script"
 			>
 			<File
-				RelativePath=".\..\src\ai\ai.cpp"
+				RelativePath=".\..\src\script\squirrel.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\build.cpp"
+				RelativePath=".\..\src\script\squirrel.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\default\default.cpp"
+				RelativePath=".\..\src\script\squirrel_class.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\pathfinder.cpp"
+				RelativePath=".\..\src\script\squirrel_helper.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\shared.cpp"
+				RelativePath=".\..\src\script\squirrel_helper_type.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\ai\trolly\trolly.cpp"
+				RelativePath=".\..\src\script\squirrel_std.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\script\squirrel_std.hpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Squirrel"
+			>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqapi.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqbaselib.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqclass.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqcompiler.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqdebug.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqfuncstate.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqlexer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqmem.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqobject.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqstate.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\sqstdlib\sqstdaux.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqtable.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqvm.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Squirrel headers"
+			>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqarray.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqclass.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqclosure.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqcompiler.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqfuncproto.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqfuncstate.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqlexer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqobject.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqopcodes.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqpcheader.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqstate.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdaux.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdblob.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\sqstdlib\sqstdblobimpl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdio.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdmath.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\sqstdlib\sqstdstream.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdstring.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\include\sqstdsystem.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqstring.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqtable.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\include\squirrel.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\squserdata.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\squtils.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\3rdparty\squirrel\squirrel\sqvm.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="AI Core"
+			>
+			<File
+				RelativePath=".\..\src\ai\ai.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_config.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_config.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_core.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_gui.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_gui.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_info.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_info.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_info_dummy.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_instance.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_instance.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_scanner.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_scanner.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\ai_storage.hpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="AI API"
+			>
+			<File
+				RelativePath=".\..\src\ai\api\ai_abstractlist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_accounting.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_airport.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_base.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_bridge.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_bridgelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_cargo.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_cargolist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_company.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_controller.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_date.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_depotlist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_engine.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_enginelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_error.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_event.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_event_types.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_execmode.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_gamesettings.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_group.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_grouplist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_industry.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_industrylist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_industrytype.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_industrytypelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_list.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_log.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_map.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_marine.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_object.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_order.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_rail.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_railtypelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_road.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_sign.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_station.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_stationlist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_subsidy.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_subsidylist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_testmode.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_tile.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_tilelist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_town.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_townlist.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_tunnel.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_types.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_vehicle.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_vehiclelist.hpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="AI API Implementation"
+			>
+			<File
+				RelativePath=".\..\src\ai\api\ai_abstractlist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_accounting.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_airport.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_base.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_bridge.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_bridgelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_cargo.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_cargolist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_company.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_controller.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_date.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_depotlist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_engine.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_enginelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_error.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_event.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_event_types.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_execmode.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_gamesettings.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_group.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_grouplist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_industry.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_industrylist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_industrytype.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_industrytypelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_list.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_log.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_map.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_marine.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_object.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_order.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_rail.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_railtypelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_road.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_sign.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_station.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_stationlist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_subsidy.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_subsidylist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_testmode.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_tile.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_tilelist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_town.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_townlist.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_tunnel.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_vehicle.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\ai\api\ai_vehiclelist.cpp"
 				>
 			</File>
 		</Filter>

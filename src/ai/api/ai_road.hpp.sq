@@ -1,0 +1,73 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_road.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIRoad::ErrorMessages GetParam(ForceType<AIRoad::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::ErrorMessages)tmp; }
+	template <> int Return<AIRoad::ErrorMessages>(HSQUIRRELVM vm, AIRoad::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AIRoad::RoadType GetParam(ForceType<AIRoad::RoadType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIRoad::RoadType)tmp; }
+	template <> int Return<AIRoad::RoadType>(HSQUIRRELVM vm, AIRoad::RoadType res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIRoad to be used as Squirrel parameter */
+	template <> AIRoad *GetParam(ForceType<AIRoad *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRoad *)instance; }
+	template <> AIRoad &GetParam(ForceType<AIRoad &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRoad *)instance; }
+	template <> const AIRoad *GetParam(ForceType<const AIRoad *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIRoad *)instance; }
+	template <> const AIRoad &GetParam(ForceType<const AIRoad &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIRoad *)instance; }
+	template <> int Return<AIRoad *>(HSQUIRRELVM vm, AIRoad *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIRoad", res, NULL, DefSQDestructorCallback<AIRoad>); return 1; }
+}; // namespace SQConvert
+
+void SQAIRoad_Register(Squirrel *engine) {
+	DefSQClass <AIRoad> SQAIRoad("AIRoad");
+	SQAIRoad.PreRegister(engine);
+	SQAIRoad.AddConstructor<void (AIRoad::*)(), 1>(engine, "x");
+
+	SQAIRoad.DefSQConst(engine, AIRoad::ERR_ROAD_BASE,                                "ERR_ROAD_BASE");
+	SQAIRoad.DefSQConst(engine, AIRoad::ERR_ROAD_WORKS_IN_PROGRESS,                   "ERR_ROAD_WORKS_IN_PROGRESS");
+	SQAIRoad.DefSQConst(engine, AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       "ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION");
+	SQAIRoad.DefSQConst(engine, AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           "ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD");
+	SQAIRoad.DefSQConst(engine, AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, "ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS");
+	SQAIRoad.DefSQConst(engine, AIRoad::ROADTYPE_ROAD,                                "ROADTYPE_ROAD");
+	SQAIRoad.DefSQConst(engine, AIRoad::ROADTYPE_TRAM,                                "ROADTYPE_TRAM");
+	SQAIRoad.DefSQConst(engine, AIRoad::ROADTYPE_INVALID,                             "ROADTYPE_INVALID");
+
+	AIError::RegisterErrorMap(STR_ROAD_WORKS_IN_PROGRESS,               AIRoad::ERR_ROAD_WORKS_IN_PROGRESS);
+	AIError::RegisterErrorMap(STR_DRIVE_THROUGH_ERROR_DIRECTION,        AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION);
+	AIError::RegisterErrorMap(STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD,     AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD);
+	AIError::RegisterErrorMap(STR_ERR_ONEWAY_ROADS_CAN_T_HAVE_JUNCTION, AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS);
+
+	AIError::RegisterErrorMapString(AIRoad::ERR_ROAD_WORKS_IN_PROGRESS,                   "ERR_ROAD_WORKS_IN_PROGRESS");
+	AIError::RegisterErrorMapString(AIRoad::ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION,       "ERR_ROAD_DRIVE_THROUGH_WRONG_DIRECTION");
+	AIError::RegisterErrorMapString(AIRoad::ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD,           "ERR_ROAD_CANNOT_BUILD_ON_TOWN_ROAD");
+	AIError::RegisterErrorMapString(AIRoad::ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS, "ERR_ROAD_ONE_WAY_ROADS_CANNOT_HAVE_JUNCTIONS");
+
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::GetClassName,                   "GetClassName",                   1, "x");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::IsRoadTile,                     "IsRoadTile",                     2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::IsRoadDepotTile,                "IsRoadDepotTile",                2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::IsRoadStationTile,              "IsRoadStationTile",              2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::IsDriveThroughRoadStationTile,  "IsDriveThroughRoadStationTile",  2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::IsRoadTypeAvailable,            "IsRoadTypeAvailable",            2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::GetCurrentRoadType,             "GetCurrentRoadType",             1, "x");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::SetCurrentRoadType,             "SetCurrentRoadType",             2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::HasRoadType,                    "HasRoadType",                    3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::AreRoadTilesConnected,          "AreRoadTilesConnected",          3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::CanBuildConnectedRoadParts,     "CanBuildConnectedRoadParts",     5, "xiaii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::CanBuildConnectedRoadPartsHere, "CanBuildConnectedRoadPartsHere", 4, "xiii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::GetNeighbourRoadCount,          "GetNeighbourRoadCount",          2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::GetRoadDepotFrontTile,          "GetRoadDepotFrontTile",          2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::GetRoadStationFrontTile,        "GetRoadStationFrontTile",        2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::GetDriveThroughBackTile,        "GetDriveThroughBackTile",        2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoad,                      "BuildRoad",                      3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildOneWayRoad,                "BuildOneWayRoad",                3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadFull,                  "BuildRoadFull",                  3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildOneWayRoadFull,            "BuildOneWayRoadFull",            3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadDepot,                 "BuildRoadDepot",                 3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::BuildRoadStation,               "BuildRoadStation",               6, "xiibbb");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoad,                     "RemoveRoad",                     3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoadFull,                 "RemoveRoadFull",                 3, "xii");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoadDepot,                "RemoveRoadDepot",                2, "xi");
+	SQAIRoad.DefSQStaticMethod(engine, &AIRoad::RemoveRoadStation,              "RemoveRoadStation",              2, "xi");
+
+	SQAIRoad.PostRegister(engine);
+}

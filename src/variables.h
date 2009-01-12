@@ -38,8 +38,6 @@ VARDEF int _palette_animation_counter;
 
 VARDEF uint32 _realtime_tick;
 
-VARDEF bool _is_old_ai_company; // current company is an oldAI company? (enables a lot of cheats..)
-
 VARDEF bool _do_autosave;
 VARDEF int _autosave_ctr;
 

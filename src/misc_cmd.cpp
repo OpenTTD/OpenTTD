@@ -128,9 +128,10 @@ CommandCost CmdSetCompanyColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 /** Increase the loan of your company.
  * @param tile unused
  * @param flags operation to perform
- * @param p1 unused
+ * @param p1 amount to increase the loan with, multitude of LOAN_INTERVAL. Only used when p2 == 2.
  * @param p2 when 0: loans LOAN_INTERVAL
  *           when 1: loans the maximum loan permitting money (press CTRL),
+ *           when 2: loans the amount specified in p1
  */
 CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -145,10 +146,14 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 	switch (p2) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Take some extra loan
-			loan = (IsHumanCompany(_current_company) || _settings_game.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI;
+			loan = LOAN_INTERVAL;
 			break;
 		case 1: // Take a loan as big as possible
 			loan = _economy.max_loan - c->current_loan;
+			break;
+		case 2: // Take the given amount of loan
+			if ((((int32)p1 < LOAN_INTERVAL) || c->current_loan + (int32)p1 > _economy.max_loan || (p1 % LOAN_INTERVAL) != 0)) return CMD_ERROR;
+			loan = p1;
 			break;
 	}
 
@@ -167,9 +172,10 @@ CommandCost CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 /** Decrease the loan of your company.
  * @param tile unused
  * @param flags operation to perform
- * @param p1 unused
+ * @param p1 amount to decrease the loan with, multitude of LOAN_INTERVAL. Only used when p2 == 2.
  * @param p2 when 0: pays back LOAN_INTERVAL
  *           when 1: pays back the maximum loan permitting money (press CTRL),
+ *           when 2: pays back the amount specified in p1
  */
 CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
@@ -181,11 +187,15 @@ CommandCost CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 	switch (p2) {
 		default: return CMD_ERROR; // Invalid method
 		case 0: // Pay back one step
-			loan = min(c->current_loan, (Money)(IsHumanCompany(_current_company) || _settings_game.ai.ainew_active) ? LOAN_INTERVAL : LOAN_INTERVAL_OLD_AI);
+			loan = min(c->current_loan, (Money)LOAN_INTERVAL);
 			break;
 		case 1: // Pay back as much as possible
 			loan = max(min(c->current_loan, c->money), (Money)LOAN_INTERVAL);
 			loan -= loan % LOAN_INTERVAL;
+			break;
+		case 2: // Repay the given amount of loan
+			if ((p1 % LOAN_INTERVAL != 0) || ((int32)p1 < LOAN_INTERVAL)) return CMD_ERROR; // Invalid amount to loan
+			loan = p1;
 			break;
 	}
 

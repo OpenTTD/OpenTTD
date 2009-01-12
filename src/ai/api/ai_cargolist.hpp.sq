@@ -1,0 +1,61 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_cargolist.hpp"
+
+namespace SQConvert {
+	/* Allow AICargoList to be used as Squirrel parameter */
+	template <> AICargoList *GetParam(ForceType<AICargoList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargoList *)instance; }
+	template <> AICargoList &GetParam(ForceType<AICargoList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargoList *)instance; }
+	template <> const AICargoList *GetParam(ForceType<const AICargoList *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargoList *)instance; }
+	template <> const AICargoList &GetParam(ForceType<const AICargoList &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargoList *)instance; }
+	template <> int Return<AICargoList *>(HSQUIRRELVM vm, AICargoList *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargoList", res, NULL, DefSQDestructorCallback<AICargoList>); return 1; }
+}; // namespace SQConvert
+
+void SQAICargoList_Register(Squirrel *engine) {
+	DefSQClass <AICargoList> SQAICargoList("AICargoList");
+	SQAICargoList.PreRegister(engine, "AIAbstractList");
+	SQAICargoList.AddConstructor<void (AICargoList::*)(), 1>(engine, "x");
+
+	SQAICargoList.DefSQStaticMethod(engine, &AICargoList::GetClassName, "GetClassName", 1, "x");
+
+	SQAICargoList.PostRegister(engine);
+}
+
+namespace SQConvert {
+	/* Allow AICargoList_IndustryAccepting to be used as Squirrel parameter */
+	template <> AICargoList_IndustryAccepting *GetParam(ForceType<AICargoList_IndustryAccepting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargoList_IndustryAccepting *)instance; }
+	template <> AICargoList_IndustryAccepting &GetParam(ForceType<AICargoList_IndustryAccepting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargoList_IndustryAccepting *)instance; }
+	template <> const AICargoList_IndustryAccepting *GetParam(ForceType<const AICargoList_IndustryAccepting *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargoList_IndustryAccepting *)instance; }
+	template <> const AICargoList_IndustryAccepting &GetParam(ForceType<const AICargoList_IndustryAccepting &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargoList_IndustryAccepting *)instance; }
+	template <> int Return<AICargoList_IndustryAccepting *>(HSQUIRRELVM vm, AICargoList_IndustryAccepting *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargoList_IndustryAccepting", res, NULL, DefSQDestructorCallback<AICargoList_IndustryAccepting>); return 1; }
+}; // namespace SQConvert
+
+void SQAICargoList_IndustryAccepting_Register(Squirrel *engine) {
+	DefSQClass <AICargoList_IndustryAccepting> SQAICargoList_IndustryAccepting("AICargoList_IndustryAccepting");
+	SQAICargoList_IndustryAccepting.PreRegister(engine, "AIAbstractList");
+	SQAICargoList_IndustryAccepting.AddConstructor<void (AICargoList_IndustryAccepting::*)(IndustryID industry_id), 2>(engine, "xi");
+
+	SQAICargoList_IndustryAccepting.DefSQStaticMethod(engine, &AICargoList_IndustryAccepting::GetClassName, "GetClassName", 1, "x");
+
+	SQAICargoList_IndustryAccepting.PostRegister(engine);
+}
+
+namespace SQConvert {
+	/* Allow AICargoList_IndustryProducing to be used as Squirrel parameter */
+	template <> AICargoList_IndustryProducing *GetParam(ForceType<AICargoList_IndustryProducing *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargoList_IndustryProducing *)instance; }
+	template <> AICargoList_IndustryProducing &GetParam(ForceType<AICargoList_IndustryProducing &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargoList_IndustryProducing *)instance; }
+	template <> const AICargoList_IndustryProducing *GetParam(ForceType<const AICargoList_IndustryProducing *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AICargoList_IndustryProducing *)instance; }
+	template <> const AICargoList_IndustryProducing &GetParam(ForceType<const AICargoList_IndustryProducing &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AICargoList_IndustryProducing *)instance; }
+	template <> int Return<AICargoList_IndustryProducing *>(HSQUIRRELVM vm, AICargoList_IndustryProducing *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AICargoList_IndustryProducing", res, NULL, DefSQDestructorCallback<AICargoList_IndustryProducing>); return 1; }
+}; // namespace SQConvert
+
+void SQAICargoList_IndustryProducing_Register(Squirrel *engine) {
+	DefSQClass <AICargoList_IndustryProducing> SQAICargoList_IndustryProducing("AICargoList_IndustryProducing");
+	SQAICargoList_IndustryProducing.PreRegister(engine, "AIAbstractList");
+	SQAICargoList_IndustryProducing.AddConstructor<void (AICargoList_IndustryProducing::*)(IndustryID industry_id), 2>(engine, "xi");
+
+	SQAICargoList_IndustryProducing.DefSQStaticMethod(engine, &AICargoList_IndustryProducing::GetClassName, "GetClassName", 1, "x");
+
+	SQAICargoList_IndustryProducing.PostRegister(engine);
+}

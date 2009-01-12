@@ -1,0 +1,51 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_bridge.hpp"
+
+namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIBridge::ErrorMessages GetParam(ForceType<AIBridge::ErrorMessages>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIBridge::ErrorMessages)tmp; }
+	template <> int Return<AIBridge::ErrorMessages>(HSQUIRRELVM vm, AIBridge::ErrorMessages res) { sq_pushinteger(vm, (int32)res); return 1; }
+
+	/* Allow AIBridge to be used as Squirrel parameter */
+	template <> AIBridge *GetParam(ForceType<AIBridge *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBridge *)instance; }
+	template <> AIBridge &GetParam(ForceType<AIBridge &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBridge *)instance; }
+	template <> const AIBridge *GetParam(ForceType<const AIBridge *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIBridge *)instance; }
+	template <> const AIBridge &GetParam(ForceType<const AIBridge &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIBridge *)instance; }
+	template <> int Return<AIBridge *>(HSQUIRRELVM vm, AIBridge *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIBridge", res, NULL, DefSQDestructorCallback<AIBridge>); return 1; }
+}; // namespace SQConvert
+
+void SQAIBridge_Register(Squirrel *engine) {
+	DefSQClass <AIBridge> SQAIBridge("AIBridge");
+	SQAIBridge.PreRegister(engine);
+	SQAIBridge.AddConstructor<void (AIBridge::*)(), 1>(engine, "x");
+
+	SQAIBridge.DefSQConst(engine, AIBridge::ERR_BRIDGE_BASE,                     "ERR_BRIDGE_BASE");
+	SQAIBridge.DefSQConst(engine, AIBridge::ERR_BRIDGE_TYPE_UNAVAILABLE,         "ERR_BRIDGE_TYPE_UNAVAILABLE");
+	SQAIBridge.DefSQConst(engine, AIBridge::ERR_BRIDGE_CANNOT_END_IN_WATER,      "ERR_BRIDGE_CANNOT_END_IN_WATER");
+	SQAIBridge.DefSQConst(engine, AIBridge::ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT, "ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT");
+
+	AIError::RegisterErrorMap(STR_5015_CAN_T_BUILD_BRIDGE_HERE,  AIBridge::ERR_BRIDGE_TYPE_UNAVAILABLE);
+	AIError::RegisterErrorMap(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH, AIBridge::ERR_BRIDGE_CANNOT_END_IN_WATER);
+	AIError::RegisterErrorMap(STR_BRIDGEHEADS_NOT_SAME_HEIGHT,   AIBridge::ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT);
+
+	AIError::RegisterErrorMapString(AIBridge::ERR_BRIDGE_TYPE_UNAVAILABLE,         "ERR_BRIDGE_TYPE_UNAVAILABLE");
+	AIError::RegisterErrorMapString(AIBridge::ERR_BRIDGE_CANNOT_END_IN_WATER,      "ERR_BRIDGE_CANNOT_END_IN_WATER");
+	AIError::RegisterErrorMapString(AIBridge::ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT, "ERR_BRIDGE_HEADS_NOT_ON_SAME_HEIGHT");
+
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetClassName,      "GetClassName",      1, "x");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::IsValidBridge,     "IsValidBridge",     2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::IsBridgeTile,      "IsBridgeTile",      2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetName,           "GetName",           2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMaxSpeed,       "GetMaxSpeed",       2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetPrice,          "GetPrice",          3, "xii");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMaxLength,      "GetMaxLength",      2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetMinLength,      "GetMinLength",      2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetYearAvailable,  "GetYearAvailable",  2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::BuildBridge,       "BuildBridge",       5, "xiiii");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::RemoveBridge,      "RemoveBridge",      2, "xi");
+	SQAIBridge.DefSQStaticMethod(engine, &AIBridge::GetOtherBridgeEnd, "GetOtherBridgeEnd", 2, "xi");
+
+	SQAIBridge.PostRegister(engine);
+}

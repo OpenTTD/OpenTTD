@@ -1,0 +1,26 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_gamesettings.hpp"
+
+namespace SQConvert {
+	/* Allow AIGameSettings to be used as Squirrel parameter */
+	template <> AIGameSettings *GetParam(ForceType<AIGameSettings *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGameSettings *)instance; }
+	template <> AIGameSettings &GetParam(ForceType<AIGameSettings &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGameSettings *)instance; }
+	template <> const AIGameSettings *GetParam(ForceType<const AIGameSettings *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIGameSettings *)instance; }
+	template <> const AIGameSettings &GetParam(ForceType<const AIGameSettings &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIGameSettings *)instance; }
+	template <> int Return<AIGameSettings *>(HSQUIRRELVM vm, AIGameSettings *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIGameSettings", res, NULL, DefSQDestructorCallback<AIGameSettings>); return 1; }
+}; // namespace SQConvert
+
+void SQAIGameSettings_Register(Squirrel *engine) {
+	DefSQClass <AIGameSettings> SQAIGameSettings("AIGameSettings");
+	SQAIGameSettings.PreRegister(engine);
+	SQAIGameSettings.AddConstructor<void (AIGameSettings::*)(), 1>(engine, "x");
+
+	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::GetClassName,          "GetClassName",          1, "x");
+	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::IsValid,               "IsValid",               2, "xs");
+	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::GetValue,              "GetValue",              2, "xs");
+	SQAIGameSettings.DefSQStaticMethod(engine, &AIGameSettings::IsDisabledVehicleType, "IsDisabledVehicleType", 2, "xi");
+
+	SQAIGameSettings.PostRegister(engine);
+}

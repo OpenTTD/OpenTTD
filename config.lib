@@ -1228,6 +1228,14 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -DWITH_ZLIB"
 	fi
 
+	# 64bit machines need -D_SQ64
+	if [ "$cpu_type" = "64" ]; then
+		CFLAGS="$CFLAGS -D_SQ64"
+	fi
+	SCRIPT_SRC_DIR="$ROOT_DIR/src/3rdparty/squirrel/include"
+	CFLAGS="$CFLAGS -I$SCRIPT_SRC_DIR"
+	CFLAGS="$CFLAGS -DNO_GARBAGE_COLLECTOR"
+
 	if [ -n "$png_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_PNG"
 		CFLAGS="$CFLAGS `$png_config --cppflags --I_opts | tr '\n\r' '  '`"
@@ -2541,6 +2549,7 @@ make_sed() {
 		s~!!SRC_OBJS_DIR!!~$SRC_OBJS_DIR~g;
 		s~!!LANG_OBJS_DIR!!~$LANG_OBJS_DIR~g;
 		s~!!SRC_DIR!!~$SRC_DIR~g;
+		s~!!SCRIPT_SRC_DIR!!~$SCRIPT_SRC_DIR~g;
 		s~!!OSXAPP!!~$OSXAPP~g;
 		s~!!LANG_DIR!!~$LANG_DIR~g;
 		s~!!TTD!!~$TTD~g;

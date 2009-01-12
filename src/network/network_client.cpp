@@ -16,7 +16,6 @@
 #include "../command_func.h"
 #include "../console_func.h"
 #include "../variables.h"
-#include "../ai/ai.h"
 #include "../core/alloc_func.hpp"
 #include "../fileio_func.h"
 #include "../md5.h"
@@ -26,6 +25,7 @@
 #include "../company_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
+#include "../settings_type.h"
 #include "../rev.h"
 
 #include "table/strings.h"

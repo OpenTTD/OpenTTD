@@ -1,0 +1,23 @@
+/* $Id$ */
+/* THIS FILE IS AUTO-GENERATED; PLEASE DO NOT ALTER MANUALLY */
+
+#include "ai_testmode.hpp"
+
+namespace SQConvert {
+	/* Allow AITestMode to be used as Squirrel parameter */
+	template <> AITestMode *GetParam(ForceType<AITestMode *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITestMode *)instance; }
+	template <> AITestMode &GetParam(ForceType<AITestMode &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITestMode *)instance; }
+	template <> const AITestMode *GetParam(ForceType<const AITestMode *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITestMode *)instance; }
+	template <> const AITestMode &GetParam(ForceType<const AITestMode &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AITestMode *)instance; }
+	template <> int Return<AITestMode *>(HSQUIRRELVM vm, AITestMode *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AITestMode", res, NULL, DefSQDestructorCallback<AITestMode>); return 1; }
+}; // namespace SQConvert
+
+void SQAITestMode_Register(Squirrel *engine) {
+	DefSQClass <AITestMode> SQAITestMode("AITestMode");
+	SQAITestMode.PreRegister(engine);
+	SQAITestMode.AddConstructor<void (AITestMode::*)(), 1>(engine, "x");
+
+	SQAITestMode.DefSQStaticMethod(engine, &AITestMode::GetClassName, "GetClassName", 1, "x");
+
+	SQAITestMode.PostRegister(engine);
+}
