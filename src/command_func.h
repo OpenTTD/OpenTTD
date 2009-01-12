@@ -86,4 +86,17 @@ byte GetCommandFlags(uint32 cmd);
  */
 Money GetAvailableMoneyForCommand();
 
+/**
+ * Extracts the DC flags needed for DoCommand from the flags returned by GetCommandFlags
+ * @param cmd_flags Flags from GetCommandFlags
+ * @return flags for DoCommand
+ */
+static inline uint32 CommandFlagsToDCFlags(uint cmd_flags)
+{
+	uint32 flags = 0;
+	if (cmd_flags & CMD_NO_WATER) flags |= DC_NO_WATER;
+	if (cmd_flags & CMD_AUTO) flags |= DC_AUTO;
+	return flags;
+}
+
 #endif /* COMMAND_FUNC_H */

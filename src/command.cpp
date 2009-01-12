@@ -527,12 +527,10 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	CommandProc *proc = _command_proc_table[cmd_id].proc;
 	if (proc == NULL) return false;
 
-	/* Flags get send to the DoCommand */
-	uint32 flags = 0;
 	/* Command flags are used internally */
 	uint cmd_flags = GetCommandFlags(cmd);
-	if (cmd_flags & CMD_NO_WATER) flags |= DC_NO_WATER;
-	if (cmd_flags & CMD_AUTO) flags |= DC_AUTO;
+	/* Flags get send to the DoCommand */
+	uint32 flags = CommandFlagsToDCFlags(cmd_flags);
 
 	bool notest = (cmd_flags & CMD_NO_TEST) != 0;
 
