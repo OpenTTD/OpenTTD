@@ -202,7 +202,6 @@ bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const c
 		return false;
 	}
 
-	CompanyID old_company;
 	CommandCost res;
 
 	/* Set the default callback to return a true/false result of the DoCommand */
@@ -230,7 +229,7 @@ bool AIObject::DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint cmd, const c
 	if (_networking) {
 		/* NetworkSend_Command needs _local_company to be set correctly, so
 		 * adjust it, and put it back right after the function */
-		old_company = _local_company;
+		CompanyID old_company = _local_company;
 		_local_company = _current_company;
 		::NetworkSend_Command(tile, p1, p2, cmd, CcAI, text);
 		_local_company = old_company;
