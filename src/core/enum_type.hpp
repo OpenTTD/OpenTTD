@@ -74,8 +74,7 @@ template <typename Tenum_t> struct TinyEnumT;
 
 /** The general declaration of TinyEnumT<> (above) */
 template <typename Tenum_t>
-struct TinyEnumT
-{
+struct TinyEnumT {
 	typedef Tenum_t enum_type;                      ///< expose our enumeration type (i.e. Trackdir) to outside
 	typedef EnumPropsT<Tenum_t> Props;              ///< make easier access to our enumeration propeties
 	typedef typename Props::storage storage_type;   ///< small storage type
@@ -121,4 +120,31 @@ struct TinyEnumT
 	}
 };
 
-#endif /* HELPERS_HPP */
+
+/** Template of struct holding enum types (on most archs, enums are stored in an int32). No math operators are provided. */
+template <typename enum_type, typename storage_type>
+struct SimpleTinyEnumT {
+	storage_type m_val;  ///< here we hold the actual value in small (i.e. byte) form
+
+	/** Cast operator - invoked then the value is assigned to the storage_type */
+	FORCEINLINE operator enum_type () const
+	{
+		return (enum_type)this->m_val;
+	}
+
+	/** Assignment operator (from enum_type) */
+	FORCEINLINE SimpleTinyEnumT &operator = (enum_type e)
+	{
+		this->m_val = (storage_type)e;
+		return *this;
+	}
+
+	/** Assignment operator (from general uint) */
+	FORCEINLINE SimpleTinyEnumT &operator = (uint u)
+	{
+		this->m_val = (storage_type)u;
+		return *this;
+	}
+};
+
+#endif /* ENUM_TYPE_HPP */

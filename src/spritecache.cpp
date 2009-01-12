@@ -17,12 +17,14 @@
 #endif /* WITH_PNG */
 #include "blitter/factory.hpp"
 #include "core/math_func.hpp"
+#include "core/enum_type.hpp"
 
 #include "table/sprites.h"
 
 /* Default of 4MB spritecache */
 uint _sprite_cache_size = 4;
 
+typedef SimpleTinyEnumT<SpriteType, byte> SpriteTypeByte;
 
 struct SpriteCache {
 	void *ptr;
@@ -30,8 +32,8 @@ struct SpriteCache {
 	uint32 id;
 	uint16 file_slot;
 	int16 lru;
-	SpriteType type; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
-	bool warned;     ///< True iff the user has been warned about incorrect use of this sprite
+	SpriteTypeByte type; ///< In some cases a single sprite is misused by two NewGRFs. Once as real sprite and once as recolour sprite. If the recolour sprite gets into the cache it might be drawn as real sprite which causes enormous trouble.
+	bool warned;         ///< True iff the user has been warned about incorrect use of this sprite
 };
 
 
