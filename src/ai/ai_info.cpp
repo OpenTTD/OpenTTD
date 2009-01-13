@@ -206,6 +206,7 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 {
 	AIConfigItem config;
 	memset(&config, 0, sizeof(config));
+	config.max_value = 1;
 	int items = 0;
 
 	/* Read the table, and find all properties we care about */
@@ -277,9 +278,10 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 	sq_pop(vm, 1);
 
 	/* Make sure all properties are defined */
-	if (items != 0x1FF) {
+	uint mask = (config.flags & AICONFIG_BOOLEAN) ? 0x1F3 : 0x1FF;
+	if (items != mask) {
 		char error[1024];
-		snprintf(error, sizeof(error), "please define all properties of a setting");
+		snprintf(error, sizeof(error), "please define all properties of a setting (min/max not allowed for booleans)");
 		this->engine->ThrowError(error);
 		return SQ_ERROR;
 	}
