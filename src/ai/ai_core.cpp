@@ -235,7 +235,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 
 	/* Currently no AI can be started, check again in a year. */
-	return 12;
+	return 365;
 }
 
 /* static */ char *AI::GetConsoleList(char *p, const char *last)
