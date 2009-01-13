@@ -1102,12 +1102,12 @@ struct SelectStationWindow : Window {
 	int size_x;     ///< Size in x direction of new station
 	int size_y;     ///< Size in y direction of new station
 
-	SelectStationWindow(const WindowDesc *desc, CommandContainer cmd) :
+	SelectStationWindow(const WindowDesc *desc, CommandContainer cmd, int w, int h) :
 		Window(desc, 0),
 		select_station_cmd(cmd),
-		tile(TileVirtXY(_thd.pos.x, _thd.pos.y)),
-		size_x(_thd.size.x / TILE_SIZE),
-		size_y(_thd.size.y / TILE_SIZE)
+		tile(cmd.tile),
+		size_x(w),
+		size_y(h)
 	{
 		this->vscroll.cap = 6;
 		this->resize.step_height = 10;
@@ -1243,7 +1243,7 @@ void ShowSelectStationIfNeeded(CommandContainer cmd, int w, int h)
 {
 	if (StationJoinerNeeded(cmd, w, h)) {
 		if (BringWindowToFrontById(WC_SELECT_STATION, 0)) return;
-		new SelectStationWindow(&_select_station_desc, cmd);
+		new SelectStationWindow(&_select_station_desc, cmd, w, h);
 	} else {
 		DoCommandP(&cmd);
 	}
