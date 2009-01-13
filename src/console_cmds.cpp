@@ -890,12 +890,11 @@ DEF_CONSOLE_CMD(ConStartAI)
 
 	AIConfig *config = AIConfig::GetConfig((CompanyID)n);
 	if (argc >= 2) {
-		class AIInfo *info = AI::GetCompanyInfo(argv[1]);
-		if (info == NULL) {
+		config->ChangeAI(argv[1]);
+		if (!config->HasAI()) {
 			IConsoleWarning("Failed to load the specified AI");
 			return true;
 		}
-		config->ChangeAI(argv[1]);
 		if (argc == 3) {
 			config->StringToSettings(argv[2]);
 		}
