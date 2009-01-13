@@ -1226,16 +1226,11 @@ static bool StationJoinerNeeded(CommandContainer cmd, int w, int h)
 	/* Now check if we could build there */
 	if (CmdFailed(DoCommand(&cmd, CommandFlagsToDCFlags(GetCommandFlags(cmd.cmd))))) return false;
 
-	/* First test for adjacent station */
-	FindStationsNearby(cmd.tile, w, h, false);
-	int neighbour_station_count = _stations_nearby_list.Length();
-	/* Now test for stations fully within station spread */
-	const Station *st = FindStationsNearby(cmd.tile, w, h, true);
-	if (_settings_game.station.adjacent_stations) {
-		return (neighbour_station_count == 0 || _stations_nearby_list.Length() > 1) && st == NULL;
-	} else {
-		return neighbour_station_count == 0 && _stations_nearby_list.Length() > 0 && st == NULL;
-	}
+	/* Test for adjacent station or station below selection.
+	 * If adjacent-stations is disabled and we are building next to a station, do not show the selection window.
+	 * but join the other station immediatelly. */
+	const Station *st = FindStationsNearby(cmd.tile, w, h, false);
+	return st == NULL && (_settings_game.station.adjacent_stations || _stations_nearby_list.Length() == 0);
 }
 
 /**
