@@ -903,8 +903,6 @@ DEF_CONSOLE_CMD(ConStartAI)
 		if (argc == 3) {
 			config->StringToSettings(argv[2]);
 		}
-	} else {
-		config->ChangeAI(NULL);
 	}
 
 	/* Start a new AI company */
