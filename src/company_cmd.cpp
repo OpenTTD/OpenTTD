@@ -487,8 +487,6 @@ static void MaybeStartNewCompany()
 		 * Works fine for Multiplayer and Singleplayer */
 		DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
 	}
-
-	_next_competitor_start = AI::GetStartNextTime() * 30 * DAY_TICKS;
 }
 
 void InitializeCompanies()
@@ -508,7 +506,7 @@ void OnTick_Companies()
 	}
 
 	if (_next_competitor_start == 0) {
-		_next_competitor_start = AI::GetStartNextTime() * 30 * DAY_TICKS;
+		_next_competitor_start = AI::GetStartNextTime() * DAY_TICKS;
 	}
 
 	if (AI::CanStartNew() && _game_mode != GM_MENU && --_next_competitor_start == 0) {

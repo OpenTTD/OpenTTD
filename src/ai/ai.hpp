@@ -21,12 +21,12 @@ public:
 	 * The default months AIs start after eachother.
 	 */
 	enum StartNext {
-		START_NEXT_EASY   = 48,
-		START_NEXT_MEDIUM = 24,
-		START_NEXT_HARD   = 12,
+		START_NEXT_EASY   = 1461,
+		START_NEXT_MEDIUM = 730,
+		START_NEXT_HARD   = 365,
 		START_NEXT_MIN    = 0,
-		START_NEXT_MAX    = 120,
-		START_NEXT_DEVIATION = 2,
+		START_NEXT_MAX    = 3600,
+		START_NEXT_DEVIATION = 60,
 	};
 
 	/**
@@ -101,7 +101,7 @@ public:
 	static void Load(CompanyID company, int version);
 
 	/**
-	 * Get the number of months before the next AI should start.
+	 * Get the number of days before the next AI should start.
 	 */
 	static int GetStartNextTime();
 
