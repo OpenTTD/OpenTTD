@@ -5,6 +5,7 @@
 #include "../stdafx.h"
 #include "../openttd.h"
 #include "../settings_type.h"
+#include "../core/random_func.hpp"
 #include "ai.hpp"
 #include "ai_config.hpp"
 #include "ai_info.hpp"
@@ -20,6 +21,17 @@ void AIConfig::ChangeAI(const char *name, int version)
 		free((void*)(*it).first);
 	}
 	this->settings.clear();
+
+	if (_game_mode == GM_NORMAL && this->info != NULL) {
+		/* If we're in an existing game and the AI is changed, set all settings
+		 *  for the AI that have the random flag to a random value. */
+		for (AIConfigItemList::const_iterator it = this->info->GetConfigList()->begin(); it != this->info->GetConfigList()->end(); it++) {
+			if ((*it).flags & AICONFIG_RANDOM) {
+				this->SetSetting((*it).name, InteractiveRandomRange((*it).max_value - (*it).min_value) + (*it).min_value);
+			}
+		}
+	}
+
 }
 
 AIConfig::AIConfig(const AIConfig *config)
