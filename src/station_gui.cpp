@@ -1206,16 +1206,25 @@ static const WindowDesc _select_station_desc = {
  */
 static bool StationJoinerNeeded(CommandContainer cmd, int w, int h)
 {
-	if (CmdFailed(DoCommand(&cmd, CommandFlagsToDCFlags(GetCommandFlags(cmd.cmd))))) return false;
-
 	/* Only show selection if distant join is enabled in the settings */
 	if (!_settings_game.station.distant_join_stations) return false;
 
-	/* If a window is already opened, we always return true */
-	if (FindWindowById(WC_SELECT_STATION, 0) != NULL) return true;
+	/* If a window is already opened and we didn't ctrl-click,
+	 * return true (i.e. just flash the old window) */
+	Window *selection_window = FindWindowById(WC_SELECT_STATION, 0);
+	if (selection_window != NULL) {
+		if (!_ctrl_pressed) return true;
+
+		/* Abort current distant-join and start new one */
+		delete selection_window;
+		UpdateTileSelection();
+	}
 
 	/* only show the popup, if we press ctrl */
 	if (!_ctrl_pressed) return false;
+
+	/* Now check if we could build there */
+	if (CmdFailed(DoCommand(&cmd, CommandFlagsToDCFlags(GetCommandFlags(cmd.cmd))))) return false;
 
 	/* First test for adjacent station */
 	FindStationsNearby(cmd.tile, w, h, false);

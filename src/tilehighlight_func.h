@@ -24,6 +24,8 @@ void VpStartPlaceSizing(TileIndex tile, ViewportPlaceMethod method, ViewportDrag
 void VpSetPresizeRange(TileIndex from, TileIndex to);
 void VpSetPlaceSizingLimit(int limit);
 
+void UpdateTileSelection();
+
 extern PlaceProc *_place_proc;
 extern TileHighlightData _thd;
 

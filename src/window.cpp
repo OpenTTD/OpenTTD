@@ -1745,7 +1745,6 @@ enum MouseClick {
 	TIME_BETWEEN_DOUBLE_CLICK = 500, ///< Time between 2 left clicks before it becoming a double click, in ms
 };
 
-extern void UpdateTileSelection();
 extern bool VpHandlePlaceSizingDrag();
 
 static void ScrollMainViewport(int x, int y)

@@ -2116,7 +2116,6 @@ static HighLightStyle GetAutorailHT(int x, int y)
  * Also drawstyle is determined. Uses _thd.new.* as a buffer and calls SetSelectionTilesDirty() twice,
  * Once for the old and once for the new selection.
  * _thd is TileHighlightData, found in viewport.h
- * Called by MouseLoop() in windows.cpp
  */
 void UpdateTileSelection()
 {
