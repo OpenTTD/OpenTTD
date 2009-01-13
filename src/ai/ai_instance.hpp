@@ -87,9 +87,10 @@ public:
 	/**
 	 * Load data from a savegame and call the AI Load function if it
 	 *   exists.
-	 * @return True if the loading was successfull.
+	 * @param version The version of the AI when saving, or -1 if this was
+	 *  not the original AI saving the game.
 	 */
-	bool Load();
+	void Load(int version);
 
 	/**
 	 * Load and discard data from a savegame.

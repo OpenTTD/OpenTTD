@@ -74,7 +74,7 @@ public:
 	/**
 	 * Check if we can start this AI.
 	 */
-	bool AllowStartup();
+	bool CanLoadFromVersion(int version);
 
 	/**
 	 * Get the name of the dir this AI is in.

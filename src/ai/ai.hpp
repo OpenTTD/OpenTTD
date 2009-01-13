@@ -86,11 +86,11 @@ public:
 	/**
 	 * Load data for an AI from a savegame.
 	 */
-	static void Load(CompanyID company);
+	static void Load(CompanyID company, int version);
 
 	static char *GetConsoleList(char *p, const char *last);
 	static const AIInfoList *GetInfoList();
-	static AIInfo *GetCompanyInfo(const char *name);
+	static AIInfo *FindInfo(const char *name, int version);
 	static bool ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm);
 	static void Rescan();
 

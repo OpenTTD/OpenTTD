@@ -13,12 +13,14 @@
 #include "../ai/ai.hpp"
 #include "../ai/ai_config.hpp"
 
-static char _ai_saveload_ainame[64];
-static char _ai_company_convert_array[1024];
+static char _ai_saveload_name[64];
+static int  _ai_saveload_version;
+static char _ai_saveload_settings[1024];
 
 static const SaveLoad _ai_company[] = {
-	SLEG_STR(_ai_saveload_ainame,       SLE_STRB),
-	SLEG_STR(_ai_company_convert_array, SLE_STRB),
+	SLEG_STR(_ai_saveload_name,        SLE_STRB),
+	SLEG_STR(_ai_saveload_settings,    SLE_STRB),
+	SLEG_CONDVAR(_ai_saveload_version, SLE_UINT32, 108, SL_MAX_VERSION),
 	SLE_END()
 };
 
@@ -27,10 +29,11 @@ static void SaveReal_AIPL(int *index_ptr)
 	CompanyID index = (CompanyID)*index_ptr;
 	AIConfig *config = AIConfig::GetConfig(index);
 
-	ttd_strlcpy(_ai_saveload_ainame, config->GetName(), lengthof(_ai_saveload_ainame));
+	ttd_strlcpy(_ai_saveload_name, config->GetName(), lengthof(_ai_saveload_name));
+	_ai_saveload_version = config->GetVersion();
 
-	_ai_company_convert_array[0] = '\0';
-	config->SettingsToString(_ai_company_convert_array, lengthof(_ai_company_convert_array));
+	_ai_saveload_settings[0] = '\0';
+	config->SettingsToString(_ai_saveload_settings, lengthof(_ai_saveload_settings));
 
 	SlObject(NULL, _ai_company);
 	/* If the AI was active, store his data too */
@@ -47,27 +50,30 @@ static void Load_AIPL()
 	CompanyID index;
 	while ((index = (CompanyID)SlIterateArray()) != (CompanyID)-1) {
 		AIConfig *config = AIConfig::GetConfig(index);
+
+		_ai_saveload_version = -1;
 		SlObject(NULL, _ai_company);
 
-		if (_ai_saveload_ainame[0] == '\0' || AI::GetCompanyInfo(_ai_saveload_ainame) == NULL) {
-			if (strcmp(_ai_saveload_ainame, "%_dummy") != 0) {
-				DEBUG(ai, 0, "The savegame has an AI by the name '%s' which is no longer available.", _ai_saveload_ainame);
+		config->ChangeAI(_ai_saveload_name, _ai_saveload_version);
+		if (!config->HasAI()) {
+			if (strcmp(_ai_saveload_name, "%_dummy") != 0) {
+				DEBUG(ai, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
 				DEBUG(ai, 0, "A random other AI will be loaded in its place.");
 			} else {
 				DEBUG(ai, 0, "The savegame had no AIs available at the time of saving.");
 				DEBUG(ai, 0, "A random available AI will be loaded now.");
 			}
-			config->ChangeAI(NULL);
-		} else {
-			config->ChangeAI(_ai_saveload_ainame);
+			/* Make sure the AI doesn't get the saveload data, as he was not the
+			 *  writer of the saveload data in the first place */
+			_ai_saveload_version = -1;
 		}
 
-		config->StringToSettings(_ai_company_convert_array);
+		config->StringToSettings(_ai_saveload_settings);
 
 		/* Start the AI directly if it was active in the savegame */
 		if (IsValidCompanyID(index) && !IsHumanCompany(index)) {
 			AI::StartNew(index);
-			AI::Load(index);
+			AI::Load(index, _ai_saveload_version);
 		}
 	}
 }

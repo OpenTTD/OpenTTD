@@ -26,8 +26,10 @@ public:
 
 	/**
 	 * Set another AI to be loaded in this slot.
+	 * @param name The name of the AI.
+	 * @param version The version of the AI to load, or -1 of latest.
 	 */
-	void ChangeAI(const char *name);
+	void ChangeAI(const char *name, int version = -1);
 
 	/**
 	 * When ever the AI Scanner is reloaded, all infos become invalid. This

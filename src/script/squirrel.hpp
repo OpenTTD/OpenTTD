@@ -48,6 +48,7 @@ public:
 	friend class AIController;
 	friend class AIScanner;
 	friend class AIInstance;
+	friend class AIFileInfo;
 
 	Squirrel();
 	~Squirrel();

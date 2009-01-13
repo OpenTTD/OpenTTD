@@ -9,11 +9,11 @@
 #include "ai_config.hpp"
 #include "ai_info.hpp"
 
-void AIConfig::ChangeAI(const char *name)
+void AIConfig::ChangeAI(const char *name, int version)
 {
 	free((void *)this->name);
 	this->name = (name == NULL) ? NULL : strdup(name);
-	this->info = (name == NULL) ? NULL : AI::GetCompanyInfo(this->name);
+	this->info = (name == NULL) ? NULL : AI::FindInfo(this->name, version);
 	this->version = (info == NULL) ? -1 : info->GetVersion();
 
 	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end(); it++) {
@@ -45,7 +45,7 @@ AIInfo *AIConfig::GetInfo()
 
 bool AIConfig::ResetInfo()
 {
-	 this->info = AI::GetCompanyInfo(this->name);
+	 this->info = AI::FindInfo(this->name, this->version);
 	 return this->info != NULL;
 }
 

@@ -211,7 +211,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
-/* static */ void AI::Load(CompanyID company)
+/* static */ void AI::Load(CompanyID company, int version)
 {
 	if (!_networking || _network_server) {
 		assert(IsValidCompanyID(company));
@@ -219,7 +219,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 		CompanyID old_company = _current_company;
 		_current_company = company;
-		GetCompany(company)->ai_instance->Load();
+		GetCompany(company)->ai_instance->Load(version);
 		_current_company = old_company;
 	} else {
 		/* Read, but ignore, the load data */
@@ -237,9 +237,9 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	return AI::ai_scanner->GetAIInfoList();
 }
 
-/* static */ AIInfo *AI::GetCompanyInfo(const char *name)
+/* static */ AIInfo *AI::FindInfo(const char *name, int version)
 {
-	return AI::ai_scanner->FindAI(name);
+	return AI::ai_scanner->FindInfo(name, version);
 }
 
 /* static */ bool AI::ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm)

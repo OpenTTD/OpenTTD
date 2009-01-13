@@ -344,26 +344,10 @@ AIInfo *AIScanner::SelectRandomAI()
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; pos > 0; pos--) it++;
 	AIInfoList::iterator first_it = it;
-	AIInfo *i = (*it).second;
-
-	if (!i->AllowStartup()) {
-		/* We can't start this AI, try to find the next best */
-		do {
-			it++;
-			if (it == this->info_list.end()) it = this->info_list.begin();
-			/* Back at the beginning? We can't start an AI. */
-			if (first_it == it) {
-				DEBUG(ai, 0, "No suitable AI found, loading 'dummy' AI.");
-				return this->info_dummy;
-			}
-
-			i = (*it).second;
-		} while (!i->AllowStartup());
-	}
-	return i;
+	return (*it).second;
 }
 
-AIInfo *AIScanner::FindAI(const char *name)
+AIInfo *AIScanner::FindInfo(const char *name, int version)
 {
 	if (this->info_list.size() == 0) return NULL;
 	if (name == NULL) return NULL;
@@ -372,7 +356,7 @@ AIInfo *AIScanner::FindAI(const char *name)
 	for (; it != this->info_list.end(); it++) {
 		AIInfo *i = (*it).second;
 
-		if (strcasecmp(name, (*it).first) == 0 && i->AllowStartup()) {
+		if (strcasecmp(name, (*it).first) == 0 && i->CanLoadFromVersion(version)) {
 			return i;
 		}
 	}
@@ -386,8 +370,7 @@ char *AIScanner::GetAIConsoleList(char *p, const char *last)
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
 		AIInfo *i = (*it).second;
-		if (!i->AllowStartup()) continue;
-		p += seprintf(p, last, "%10s: %s\n", (*it).first, i->GetDescription());
+		p += seprintf(p, last, "%10s (v%d): %s\n", (*it).first, i->GetVersion(), i->GetDescription());
 	}
 	p += seprintf(p, last, "\n");
 

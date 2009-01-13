@@ -70,9 +70,26 @@ const char *AIFileInfo::GetInstanceName()
 	return this->instance_name;
 }
 
-bool AIFileInfo::AllowStartup()
+bool AIFileInfo::CanLoadFromVersion(int version)
 {
-	return true;
+	if (version == -1) return true;
+	if (!this->engine->MethodExists(*this->SQ_instance, "CanLoadFromVersion")) return true;
+
+	HSQUIRRELVM vm = this->engine->GetVM();
+	int top = sq_gettop(vm);
+
+	sq_pushobject(vm, *this->SQ_instance);
+	sq_pushstring(vm, OTTD2FS("CanLoadFromVersion"), -1);
+	sq_get(vm, -2);
+	sq_pushobject(vm, *this->SQ_instance);
+	sq_pushinteger(vm, version);
+	sq_call(vm, 2, SQTrue, SQFalse);
+
+	HSQOBJECT ret;
+	sq_getstackobj(vm, -1, &ret);
+
+	sq_settop(vm, top);
+	return sq_objtobool(&ret);
 }
 
 const char *AIFileInfo::GetDirName()

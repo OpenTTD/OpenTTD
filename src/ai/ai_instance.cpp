@@ -592,37 +592,38 @@ void AIInstance::Save()
 	LoadObjects(NULL);
 }
 
-bool AIInstance::Load()
+void AIInstance::Load(int version)
 {
-	HSQUIRRELVM vm = (this->engine == NULL) ? NULL : this->engine->GetVM();
+	if (this->engine == NULL || version == -1) {
+		LoadEmpty();
+		return;
+	}
+	HSQUIRRELVM vm = this->engine->GetVM();
 
 	SlObject(NULL, _ai_byte);
 	/* Check if there was anything saved at all. */
-	if (_ai_sl_byte == 0) return true;
+	if (_ai_sl_byte == 0) return;
 	AIObject::SetAllowDoCommand(false);
 
-	if (vm != NULL) {
-		/* Go to the instance-root */
-		sq_pushobject(vm, *this->instance);
-		/* Find the function-name inside the script */
-		sq_pushstring(vm, OTTD2FS("Load"), -1);
-		if (SQ_FAILED(sq_get(vm, -2))) sq_pushnull(vm);
-		sq_pushobject(vm, *this->instance);
-	}
+	/* Go to the instance-root */
+	sq_pushobject(vm, *this->instance);
+	/* Find the function-name inside the script */
+	sq_pushstring(vm, OTTD2FS("Load"), -1);
+	if (SQ_FAILED(sq_get(vm, -2))) sq_pushnull(vm);
+	sq_pushobject(vm, *this->instance);
+	sq_pushinteger(vm, version);
 
 	LoadObjects(vm);
 
-	if (this->engine != NULL) {
-		if (this->engine->MethodExists(*this->instance, "Load")) {
-			sq_call(vm, 2, SQFalse, SQFalse);
-		} else {
-			AILog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
-		}
+	if (this->engine->MethodExists(*this->instance, "Load")) {
+		sq_call(vm, 3, SQFalse, SQFalse);
+	} else {
+		AILog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
 	}
 
-	/* Pop 1) the object instance, 2) the function name, 3) the instance again, 4) the table. */
-	if (vm != NULL) sq_pop(vm, 4);
+	/* Pop 1) the object instance, 2) the function name, 3) the instance again, 4) the (null) result. */
+	sq_pop(vm, 4);
 
 	AIObject::SetAllowDoCommand(true);
-	return true;
+	return;
 }
