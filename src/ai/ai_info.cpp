@@ -295,6 +295,14 @@ const AIConfigItemList *AIInfo::GetConfigList()
 	return &this->config_list;
 }
 
+const AIConfigItem *AIInfo::GetConfigItem(const char *name)
+{
+	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {
+		if (strcmp((*it).name, name) == 0) return &(*it);
+	}
+	return NULL;
+}
+
 int AIInfo::GetSettingDefaultValue(const char *name)
 {
 	for (AIConfigItemList::iterator it = this->config_list.begin(); it != this->config_list.end(); it++) {

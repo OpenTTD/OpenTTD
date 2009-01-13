@@ -88,7 +88,12 @@ int AIConfig::GetSetting(const char *name)
 void AIConfig::SetSetting(const char *name, int value)
 {
 	/* You can only set ai specific settings if an AI is selected. */
-	assert(strcmp(name, "start_date") == 0 || this->info != NULL);
+	assert(this->info != NULL);
+
+	const AIConfigItem *config_item = this->info->GetConfigItem(name);
+	if (config_item == NULL) return;
+
+	value = Clamp(value, config_item->min_value, config_item->max_value);
 
 	SettingValueList::iterator it = this->settings.find(name);
 	if (it != this->settings.end()) {

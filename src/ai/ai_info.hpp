@@ -127,6 +127,11 @@ public:
 	const AIConfigItemList *GetConfigList();
 
 	/**
+	 * Get the description of a certain ai config option.
+	 */
+	const AIConfigItem *GetConfigItem(const char *name);
+
+	/**
 	 * Set a setting.
 	 */
 	SQInteger AddSetting(HSQUIRRELVM vm);
