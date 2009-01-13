@@ -14,6 +14,7 @@ void AIConfig::ChangeAI(const char *name)
 	free((void *)this->name);
 	this->name = (name == NULL) ? NULL : strdup(name);
 	this->info = (name == NULL) ? NULL : AI::GetCompanyInfo(this->name);
+	this->version = (info == NULL) ? -1 : info->GetVersion();
 
 	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end(); it++) {
 		free((void*)(*it).first);
@@ -21,12 +22,11 @@ void AIConfig::ChangeAI(const char *name)
 	this->settings.clear();
 }
 
-AIConfig::AIConfig(const AIConfig *config) :
-	name(NULL),
-	info(NULL)
+AIConfig::AIConfig(const AIConfig *config)
 {
 	this->name = (config->name == NULL) ? NULL : strdup(config->name);
 	this->info = config->info;
+	this->version = config->version;
 
 	for (SettingValueList::const_iterator it = config->settings.begin(); it != config->settings.end(); it++) {
 		this->settings[strdup((*it).first)] = (*it).second;
@@ -94,6 +94,11 @@ bool AIConfig::HasAI()
 const char *AIConfig::GetName()
 {
 	return this->name;
+}
+
+int AIConfig::GetVersion()
+{
+	return this->version;
 }
 
 void AIConfig::StringToSettings(const char *value)

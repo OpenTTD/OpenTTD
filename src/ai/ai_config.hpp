@@ -18,6 +18,7 @@ private:
 public:
 	AIConfig() :
 		name(NULL),
+		version(-1),
 		info(NULL)
 	{}
 	AIConfig(const AIConfig *config);
@@ -71,6 +72,11 @@ public:
 	const char *GetName();
 
 	/**
+	 * Get the version of the AI.
+	 */
+	int GetVersion();
+
+	/**
 	 * Convert a string which is stored in the config file or savegames to
 	 *  custom settings of this AI.
 	 */
@@ -84,6 +90,7 @@ public:
 
 private:
 	const char *name;
+	int version;
 	class AIInfo *info;
 	SettingValueList settings;
 };
