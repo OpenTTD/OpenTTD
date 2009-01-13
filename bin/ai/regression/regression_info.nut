@@ -1,3 +1,5 @@
+/* $Id$ */
+
 class Regression extends AIInfo {
 	function GetAuthor()      { return "OpenTTD NoAI Developers Team"; }
 	function GetName()        { return "Regression"; }

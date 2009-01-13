@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# $Id$
+
 # Arguments given? Show help text.
 if [ "$#" != "0" ]; then
 	cat <<EOF

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# $Id$
+
 cd `dirname $0`
 cc -o exe2coff exe2coff.c || exit
 cp $1 binary.exe || exit

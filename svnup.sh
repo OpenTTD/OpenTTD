@@ -1,4 +1,7 @@
 #!/bin/sh
+
+# $Id$
+
 # This script updates the svn source and displays log changes
 # This is only useful for users of CLI based SVN clients
 # Written by Bjarni
