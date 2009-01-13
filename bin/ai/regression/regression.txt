@@ -85,23 +85,23 @@
  abs( 21): 21
 
 --AIBase--
-  Rand():       -394267821
-  Rand():       -1103663825
-  Rand():       158728217
+  Rand():       -1668200967
+  Rand():       -1105242728
+  Rand():       -1077739811
   RandRange(0): 0
   RandRange(0): 0
   RandRange(0): 0
   RandRange(1): 0
   RandRange(1): 0
   RandRange(1): 0
-  RandRange(2): 1
+  RandRange(2): 0
   RandRange(2): 0
   RandRange(2): 1
   RandRange(9): 6
-  RandRange(9): 0
-  RandRange(9): 5
+  RandRange(9): 7
+  RandRange(9): 4
   Chance(1, 2): true
-  Chance(1, 2): true
+  Chance(1, 2): false
   Chance(1, 2): false
 
 --List--
@@ -417,144 +417,144 @@
     1098 => 46116
     1099 => 46158
   Randomize ListDump:
-    1 => -453900829
-    2 => -1311244773
-    1000 => -1189761104
-    1001 => -767645542
-    1002 => 1177121049
-    1003 => 530150361
-    1004 => -114394334
-    1005 => 1655826028
-    1006 => -634606345
-    1007 => -16200093
-    1008 => -1589979998
-    1009 => -931781688
-    1010 => -1612519575
-    1011 => 232355847
-    1012 => 1937567155
-    1013 => 293923071
-    1014 => 77413166
-    1015 => -996268195
-    1016 => 954454457
-    1017 => -2120647595
-    1018 => -1826344393
-    1019 => 1036590466
-    1020 => 1340694939
-    1021 => 1328898286
-    1022 => 1212995644
-    1023 => 212080778
-    1024 => -1116031315
-    1025 => 2059557569
-    1026 => -1351733639
-    1027 => -16225284
-    1028 => 12042907
-    1029 => -2118970966
-    1030 => -625495409
-    1031 => -803433375
-    1032 => 206484827
-    1033 => -1275117685
-    1034 => -1660494268
-    1035 => 439308575
-    1036 => 689118657
-    1037 => 18162819
-    1038 => 279178838
-    1039 => -811026766
-    1040 => -102146912
-    1041 => 761316313
-    1042 => -446973157
-    1043 => 1860931649
-    1044 => -936809412
-    1045 => 2009637934
-    1046 => 146746237
-    1047 => -1122456903
-    1048 => 496979353
-    1049 => 1330321624
-    1051 => 1221526431
-    1052 => 312894323
-    1053 => -1967316408
-    1054 => -306362667
-    1055 => 463694131
-    1056 => 1180912503
-    1057 => 962965831
-    1058 => -1686452466
-    1059 => 1770363784
-    1060 => -974655700
-    1061 => 1137105824
-    1062 => -1195585394
-    1063 => 814828850
-    1064 => -319033517
-    1065 => -1069246310
-    1066 => 730090633
-    1067 => -453449540
-    1068 => -1568189245
-    1069 => 1938098163
-    1070 => 582038708
-    1071 => -1513512696
-    1072 => 2023080545
-    1073 => 1451475423
-    1074 => 2115922500
-    1075 => 1714395178
-    1076 => -1794465095
-    1077 => 711436717
-    1078 => 2080995690
-    1079 => 1888980586
-    1080 => 1441996214
-    1081 => 2068563628
-    1082 => 1839052927
-    1083 => -1569187741
-    1084 => 1117258463
-    1085 => -373025294
-    1086 => 836256008
-    1087 => 894909721
-    1088 => 320878623
-    1089 => -324398855
-    1090 => -2069211627
-    1091 => 1181351335
-    1092 => 1628415271
-    1093 => 1998896274
-    1094 => 1296141199
-    1095 => 144363466
-    1096 => -2068665023
-    1097 => 301553896
-    1098 => -509674842
-    1099 => -1486885398
+    1 => 1906208613
+    2 => -247850154
+    1000 => 1473447397
+    1001 => -1572091528
+    1002 => -1461894323
+    1003 => -1966513355
+    1004 => -143123078
+    1005 => 1243503816
+    1006 => 731361243
+    1007 => -110249379
+    1008 => 1652302684
+    1009 => -1959331369
+    1010 => -200078348
+    1011 => -29799264
+    1012 => 1630721656
+    1013 => 959306175
+    1014 => 1527421791
+    1015 => 1259692483
+    1016 => -1289244298
+    1017 => -1572996668
+    1018 => -2069479746
+    1019 => -1819131606
+    1020 => -1007163964
+    1021 => -1185394870
+    1022 => -1471365065
+    1023 => 364354366
+    1024 => -1478084253
+    1025 => 405281367
+    1026 => -11170062
+    1027 => 156767750
+    1028 => 1288924796
+    1029 => 1796884876
+    1030 => -1947073702
+    1031 => -1999614238
+    1032 => -231292809
+    1033 => 966621566
+    1034 => -606766557
+    1035 => -1138727825
+    1036 => -749544262
+    1037 => 2004771271
+    1038 => 686734186
+    1039 => 923274744
+    1040 => -1672035149
+    1041 => -1642064950
+    1042 => 1363389551
+    1043 => -559500928
+    1044 => 1656196991
+    1045 => 1655354425
+    1046 => -1027156689
+    1047 => 1952644328
+    1048 => 1217870217
+    1049 => 242274100
+    1051 => 201816080
+    1052 => 2127464758
+    1053 => 446043650
+    1054 => -319728455
+    1055 => 204701002
+    1056 => -571265398
+    1057 => -1422217131
+    1058 => -391208397
+    1059 => -1822628371
+    1060 => -1499755350
+    1061 => -1422137641
+    1062 => 1621693134
+    1063 => -1428728134
+    1064 => -147587573
+    1065 => 681719500
+    1066 => 1172011190
+    1067 => -1834344882
+    1068 => 1157634586
+    1069 => 1902133676
+    1070 => -1967780161
+    1071 => -1618025531
+    1072 => -810220453
+    1073 => 1582854921
+    1074 => -410004643
+    1075 => 1159917159
+    1076 => -1377804984
+    1077 => -738843914
+    1078 => -1578756103
+    1079 => -464090986
+    1080 => 1711504679
+    1081 => 545330655
+    1082 => 379462570
+    1083 => 514511099
+    1084 => -1813251176
+    1085 => 1424958266
+    1086 => -825255131
+    1087 => 539054595
+    1088 => -1764192010
+    1089 => -1243277769
+    1090 => 2017874281
+    1091 => -1972353607
+    1092 => 1879761467
+    1093 => 1638986560
+    1094 => -1832287507
+    1095 => -492411882
+    1096 => 658940812
+    1097 => -1044199400
+    1098 => 1586504918
+    1099 => -125492611
   KeepTop(10):
-    1 => -453900829
-    2 => -1311244773
-    1000 => -1189761104
-    1001 => -767645542
-    1002 => 1177121049
-    1003 => 530150361
-    1004 => -114394334
-    1005 => 1655826028
-    1006 => -634606345
-    1007 => -16200093
+    1 => 1906208613
+    2 => -247850154
+    1000 => 1473447397
+    1001 => -1572091528
+    1002 => -1461894323
+    1003 => -1966513355
+    1004 => -143123078
+    1005 => 1243503816
+    1006 => 731361243
+    1007 => -110249379
   KeepBottom(8):
-    1000 => -1189761104
-    1001 => -767645542
-    1002 => 1177121049
-    1003 => 530150361
-    1004 => -114394334
-    1005 => 1655826028
-    1006 => -634606345
-    1007 => -16200093
+    1000 => 1473447397
+    1001 => -1572091528
+    1002 => -1461894323
+    1003 => -1966513355
+    1004 => -143123078
+    1005 => 1243503816
+    1006 => 731361243
+    1007 => -110249379
   RemoveBottom(2):
-    1000 => -1189761104
-    1001 => -767645542
-    1002 => 1177121049
-    1003 => 530150361
-    1004 => -114394334
-    1005 => 1655826028
+    1000 => 1473447397
+    1001 => -1572091528
+    1002 => -1461894323
+    1003 => -1966513355
+    1004 => -143123078
+    1005 => 1243503816
   RemoveTop(2):
-    1002 => 1177121049
-    1003 => 530150361
-    1004 => -114394334
-    1005 => 1655826028
+    1002 => -1461894323
+    1003 => -1966513355
+    1004 => -143123078
+    1005 => 1243503816
   RemoveList({1003, 1004}):
-    1002 => 1177121049
-    1005 => 1655826028
+    1002 => -1461894323
+    1005 => 1243503816
   KeepList({1003, 1004, 1005}):
-    1005 => 1655826028
+    1005 => 1243503816
   AddList({1005, 4000, 4001, 4002}):
     1005 => 1005
     4000 => 8000
@@ -639,11 +639,11 @@
   IsHangarTile():       true
   IsAirportTile():      true
   GetAirportType():     0
-  GetBankBalance():     199108
+  GetBankBalance():     198940
   RemoveAirport():      true
   IsHangarTile():       false
   IsAirportTile():      false
-  GetBankBalance():     298300
+  GetBankBalance():     297964
   BuildAirport():       true
 
 --Bridge--
@@ -868,8 +868,8 @@
     HasCargoClass():         true
     GetTownEffect():         1
     GetCargoIncome(0, 0):    0
-    GetCargoIncome(10, 10):  4
-    GetCargoIncome(100, 10): 40
+    GetCargoIncome(10, 10):  3
+    GetCargoIncome(100, 10): 39
     GetCargoIncome(10, 100): 3
   Cargo 1
     IsValidCargo():          true
@@ -1056,11 +1056,11 @@
   SetName():            false
   GetLastErrorString(): ERR_NAME_IS_NOT_UNIQUE
   GetName():                   Regression
-  GetPresidentName():          K. O'Donnell
+  GetPresidentName():          D. Watkins
   SetPresidentName():          true
   GetPresidentName():          Regression AI
-  GetCompanyValue():           355454
-  GetBankBalance():            455204
+  GetCompanyValue():           354852
+  GetBankBalance():            454602
   GetName():                   (null : 0x00000000)
   GetLoanAmount():             100000
   GetMaxLoanAmount():          300000
@@ -1069,13 +1069,13 @@
   SetLoanAmount(100):          false
   SetLoanAmount(10000):        true
   GetLastErrorString():        ERR_NONE
-  GetBankBalance():            365204
+  GetBankBalance():            364602
   GetLoanAmount():             10000
   SetMinimumLoanAmount(31337): true
-  GetBankBalance():            395204
+  GetBankBalance():            394602
   GetLoanAmount():             40000
   SetLoanAmount(10000):        true
-  GetBankBalance():            655204
+  GetBankBalance():            654602
   GetLoanAmount():             300000
   GetCompanyHQ():              -1
   BuildCompanyHQ():            true
@@ -1122,7 +1122,7 @@
     GetCargoType():     0
     CanRefitCargo():    false
     GetCapacity():      -1
-    GetReliability():   74
+    GetReliability():   75
     GetMaxSpeed():      64
     GetPrice():         22
     GetMaxAge():        5490
@@ -5101,7 +5101,7 @@
     GetLocation():     41929
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  72
+	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 3
@@ -5146,7 +5146,7 @@
     GetLocation():     27609
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  117
+	   GetLastMonthProduction():  115
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 8
@@ -5197,14 +5197,14 @@
     GetLocation():     51854
     GetProduction():   104
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  117
+	   GetLastMonthProduction():  126
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 16
     IsValidIndustry(): true
     GetName():         Kennville Coal Mine
     GetLocation():     11734
-    GetProduction():   96
+    GetProduction():   88
     IsCargoAccepted(): false
 	   GetLastMonthProduction():  99
 	   GetLastMonthTransported(): 0
@@ -5215,7 +5215,7 @@
     GetLocation():     13947
     GetProduction():   152
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  152
+	   GetLastMonthProduction():  171
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 18
@@ -5233,7 +5233,7 @@
     GetLocation():     57429
     GetProduction():   88
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  88
+	   GetLastMonthProduction():  99
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 20
@@ -5260,7 +5260,7 @@
     GetLocation():     27822
     GetProduction():   136
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  136
+	   GetLastMonthProduction():  153
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 23
@@ -5278,7 +5278,7 @@
     GetLocation():     17943
     GetProduction():   32
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  32
+	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 25
@@ -5338,7 +5338,7 @@
     GetLocation():     5659
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  50
+	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 34
@@ -5347,7 +5347,7 @@
     GetLocation():     36728
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  72
+	   GetLastMonthProduction():  64
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 35
@@ -5356,7 +5356,7 @@
     GetLocation():     14361
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  56
+	   GetLastMonthProduction():  63
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 36
@@ -5365,7 +5365,7 @@
     GetLocation():     36908
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  64
+	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 37
@@ -5374,7 +5374,7 @@
     GetLocation():     34237
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  96
+	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 38
@@ -5392,7 +5392,7 @@
     GetLocation():     25545
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  24
+	   GetLastMonthProduction():  30
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 40
@@ -5401,7 +5401,7 @@
     GetLocation():     47838
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  64
+	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 41
@@ -5419,7 +5419,7 @@
     GetLocation():     60866
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  72
+	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 43
@@ -5428,7 +5428,7 @@
     GetLocation():     41155
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  96
+	   GetLastMonthProduction():  108
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 44
@@ -5437,7 +5437,7 @@
     GetLocation():     19529
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  120
+	   GetLastMonthProduction():  135
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 45
@@ -5458,10 +5458,10 @@
     GetLocation():     59604
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  72
+	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
-	   GetLastMonthProduction():  40
+	   GetLastMonthProduction():  50
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 47
@@ -5470,10 +5470,10 @@
     GetLocation():     24366
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  56
+	   GetLastMonthProduction():  63
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
-	   GetLastMonthProduction():  24
+	   GetLastMonthProduction():  30
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 48
@@ -5497,7 +5497,7 @@
 	   GetLastMonthProduction():  90
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
-	   GetLastMonthProduction():  40
+	   GetLastMonthProduction():  50
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 50
@@ -5518,10 +5518,10 @@
     GetLocation():     23519
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  72
+	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
-	   GetLastMonthProduction():  48
+	   GetLastMonthProduction():  54
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 52
@@ -5533,7 +5533,7 @@
 	   GetLastMonthProduction():  126
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
-	   GetLastMonthProduction():  63
+	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 53
@@ -5542,10 +5542,10 @@
     GetLocation():     48206
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  50
+	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
-	   GetLastMonthProduction():  50
+	   GetLastMonthProduction():  40
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 54
@@ -5554,10 +5554,10 @@
     GetLocation():     24005
     GetProduction():   -1
     IsCargoAccepted(): false
-	   GetLastMonthProduction():  64
+	   GetLastMonthProduction():  72
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
-	   GetLastMonthProduction():  72
+	   GetLastMonthProduction():  81
 	   GetLastMonthTransported(): 0
 	   GetStockpiledCargo():      -1
   Industry 55
@@ -6036,8 +6036,8 @@
     18 => 112
     21 => 104
     15 => 104
-    16 => 96
     19 => 88
+    16 => 88
     23 => 80
 --IndustryList_CargoAccepting--
   Count():             8
@@ -6070,84 +6070,84 @@
     Id:                      9
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   823289
+    GetConstructionCost():   821934
     GetName():               Farm
     CanBuildIndustry():      false
     CanProspectIndustry():   false
     Id:                      5
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   823289
+    GetConstructionCost():   821934
     GetName():               Oil Rig
     CanBuildIndustry():      false
     CanProspectIndustry():   false
     Id:                      12
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   823289
+    GetConstructionCost():   821934
     GetName():               Bank
     CanBuildIndustry():      true
     CanProspectIndustry():   false
     Id:                      11
     IsRawIndustry():         true
     ProductionCanIncrease(): false
-    GetConstructionCost():   823289
+    GetConstructionCost():   821934
     GetName():               Oil Wells
     CanBuildIndustry():      false
     CanProspectIndustry():   false
     Id:                      1
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   774860
+    GetConstructionCost():   773585
     GetName():               Power Station
     CanBuildIndustry():      true
     CanProspectIndustry():   false
     Id:                      3
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   823289
+    GetConstructionCost():   821934
     GetName():               Forest
     CanBuildIndustry():      false
     CanProspectIndustry():   false
     Id:                      2
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   723203
+    GetConstructionCost():   722013
     GetName():               Sawmill
     CanBuildIndustry():      true
     CanProspectIndustry():   false
     Id:                      18
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   823289
+    GetConstructionCost():   821934
     GetName():               Iron Ore Mine
     CanBuildIndustry():      false
     CanProspectIndustry():   false
     Id:                      0
     IsRawIndustry():         true
     ProductionCanIncrease(): true
-    GetConstructionCost():   823289
+    GetConstructionCost():   821934
     GetName():               Coal Mine
     CanBuildIndustry():      false
     CanProspectIndustry():   false
     Id:                      8
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   694145
+    GetConstructionCost():   693003
     GetName():               Steel Mill
     CanBuildIndustry():      true
     CanProspectIndustry():   false
     Id:                      4
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   787774
+    GetConstructionCost():   786478
     GetName():               Oil Refinery
     CanBuildIndustry():      true
     CanProspectIndustry():   false
     Id:                      6
     IsRawIndustry():         false
     ProductionCanIncrease(): true
-    GetConstructionCost():   671545
+    GetConstructionCost():   670440
     GetName():               Factory
     CanBuildIndustry():      true
     CanProspectIndustry():   false
@@ -6185,7 +6185,7 @@
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     766678
+  GetBankBalance():     765887
   BuildWaterDepot():    true
   BuildDock():          true
   BuildBuoy():          true
@@ -6198,7 +6198,7 @@
   IsBuoyTile():         true
   IsLockTile():         true
   IsCanalTile():        true
-  GetBankBalance():     805921
+  GetBankBalance():     805063
   RemoveWaterDepot():   true
   RemoveDock():         true
   RemoveBuoy():         true
@@ -6209,7 +6209,7 @@
   IsBuoyTile():         false
   IsLockTile():         false
   IsCanalTile():        false
-  GetBankBalance():     855517
+  GetBankBalance():     854575
   BuildWaterDepot():    true
   BuildDock():          true
 
@@ -6619,7 +6619,7 @@
   HasTreeOnTile():      false
   IsFarmTile():         true
   IsRockTile():         true
-  IsRoughTile():        true
+  IsRoughTile():        false
   HasTreeOnTile():      true
   IsFarmTile():         false
   IsRockTile():         false
@@ -6629,7 +6629,7 @@
   PlantTree():          true
   HasTreeOnTile():      true
   PlantTree():          false
-  HasTreeOnTile():      true
+  HasTreeOnTile():      false
   PlantTreeRectangle(): true
   HasTreeOnTile():      true
 
@@ -7149,7 +7149,7 @@
   Town 0
     IsValidTown():   true
     GetName():       Planfield
-    GetPopulation(): 757
+    GetPopulation(): 787
     GetLocation():   15508
     GetHouseCount(): 30
     GetRating():     5
@@ -7219,7 +7219,7 @@
   Town 10
     IsValidTown():   true
     GetName():       Nuntfingburg
-    GetPopulation(): 737
+    GetPopulation(): 724
     GetLocation():   6446
     GetHouseCount(): 26
     GetRating():     5
@@ -7261,14 +7261,14 @@
   Town 16
     IsValidTown():   true
     GetName():       Kennville
-    GetPopulation(): 767
+    GetPopulation(): 780
     GetLocation():   17345
     GetHouseCount(): 33
     GetRating():     5
   Town 17
     IsValidTown():   true
     GetName():       Quartfingfield
-    GetPopulation(): 218
+    GetPopulation(): 203
     GetLocation():   24252
     GetHouseCount(): 13
     GetRating():     5
@@ -7296,7 +7296,7 @@
   Town 21
     IsValidTown():   true
     GetName():       Franinghead
-    GetPopulation(): 772
+    GetPopulation(): 802
     GetLocation():   9634
     GetHouseCount(): 27
     GetRating():     5
@@ -7306,7 +7306,7 @@
     GetPopulation(): 221
     GetLocation():   51891
     GetHouseCount(): 12
-    GetRating():     0
+    GetRating():     5
   Town 23
     IsValidTown():   true
     GetName():       Lardborough
@@ -7324,9 +7324,9 @@
   Town 25
     IsValidTown():   true
     GetName():       Grinnway
-    GetPopulation(): 563
+    GetPopulation(): 468
     GetLocation():   16433
-    GetHouseCount(): 15
+    GetHouseCount(): 14
     GetRating():     5
   Town 26
     IsValidTown():   true
@@ -7521,19 +7521,18 @@
     0 => 2
     15 => 1
   KeepAboveValue(500): done
-  Count():             11
+  Count():             10
   Population ListDump:
     7 => 1006
     12 => 982
     15 => 807
-    21 => 772
-    16 => 767
-    0 => 757
+    21 => 802
+    0 => 787
+    16 => 780
     23 => 752
-    10 => 737
+    10 => 724
     6 => 679
     24 => 668
-    25 => 563
   HasStatue():                     false
   GetRoadReworkDuration():         0
   GetExclusiveRightsCompany():     -1
@@ -7799,23 +7798,10 @@
         GetDestionation():    65535
         GetCargoType():       255
   GetNextEvent:          instance
-    GetEventType:        2
-      EventName:         SubsidyOffer
-      --Subsidy (4) --
-        IsValidSubsidy():     true
-        IsAwarded():          false
-        GetAwardedTo():       -1
-        GetExpireDate():      714414
-        SourceIsTown():       true
-        GetSource():          10
-        DestionationIsTown(): true
-        GetDestionation():    25
-        GetCargoType():       0
-  GetNextEvent:          instance
     GetEventType:        6
       Unknown Event
   GetNextEvent:          instance
-    GetEventType:        3
+    GetEventType:        6
       Unknown Event
   GetNextEvent:          instance
     GetEventType:        3
