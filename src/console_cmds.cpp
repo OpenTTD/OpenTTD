@@ -862,6 +862,11 @@ DEF_CONSOLE_CMD(ConStartAI)
 		return true;
 	}
 
+	if (_game_mode != GM_NORMAL) {
+		IConsoleWarning("AIs can only be managed in a game.");
+		return true;
+	}
+
 	if (ActiveCompanyCount() == MAX_COMPANIES) {
 		IConsoleWarning("Can't start a new AI (no more free slots).");
 		return true;
@@ -913,6 +918,11 @@ DEF_CONSOLE_CMD(ConStopAI)
 	if (argc != 2) {
 		IConsoleHelp("Stop an AI. Usage: 'stop_ai <company-id>'");
 		IConsoleHelp("Stop the AI with the given company id. For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
+		return true;
+	}
+
+	if (_game_mode != GM_NORMAL) {
+		IConsoleWarning("AIs can only be managed in a game.");
 		return true;
 	}
 
