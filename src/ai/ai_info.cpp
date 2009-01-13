@@ -207,7 +207,7 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 	AIConfigItem config;
 	memset(&config, 0, sizeof(config));
 	config.max_value = 1;
-	int items = 0;
+	uint items = 0;
 
 	/* Read the table, and find all properties we care about */
 	sq_pushnull(vm);
