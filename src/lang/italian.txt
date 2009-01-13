@@ -803,6 +803,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomi s
 STR_02D5_LAND_BLOCK_INFO                                        :Informazioni sull'area di terreno
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Apri/chiudi console
+STR_AI_DEBUG_MENU                                               :Debug IA
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (CTRL+S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Screenshot Gigante (CTRL+G)
 STR_02D9_ABOUT_OPENTTD                                          :Informazioni su 'OpenTTD'
@@ -1155,6 +1156,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Disabil
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disabilita aeromobili dell'IA: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disabilita navi dell'IA: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permetti le IA nelle partite multigiocatore: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}Max. opcode prima della sospensione della IA: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervallo manutenzione predefinito treni: {ORANGE}{STRING} giorni/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervallo manutenzione predefinito treni: {ORANGE}Disabilitato
@@ -1377,7 +1380,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Riadatta
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossibile riadattare il treno...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Gli intervalli di manutenzione sono in percentuale: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambia produzione
-
 
 ############ network gui strings
 
@@ -3672,6 +3674,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumenta 
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :\1234567890'ì qwertyuiopè+asdfghjklòàù<zxcvbnm,.- .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"£$%&/()=?^ QWERTYUIOPé*ASDFGHJKLç°§>ZXCVBNM;:_ .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Debug IA
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome della IA
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Ricarica IA
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Termina la IA, ricarica lo script, e riavvia la IA
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}La finestra di debug IA è disponibile soltanto per il server
 ########
 
 ############ town controlled noise level

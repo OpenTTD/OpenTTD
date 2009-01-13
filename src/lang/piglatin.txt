@@ -1027,7 +1027,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Enablew
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Enableway ealisticray accelerationway orfay ainstray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Orbidfay ainstray andway ipsshay otay akemay 90 egday urnstay: {ORANGE}{STRING} {LTBLUE} (equiresray NPFay)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Oinjay aintray ationsstay uiltbay extnay otay eachway otherway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allowway otay oinjay ationsstay otnay irectlyday adjacentway: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allowway otay oinjay ationsstay otnay irectlyday adjacentway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Useway improvedway oadinglay algorithmway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Oadlay ehiclesvay aduallygray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflationway: {ORANGE}{STRING}
@@ -1063,7 +1063,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Eviewra
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :onay
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :esyay, utbay excludeway oppedstay ehiclesvay
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ofway allway ehiclesvay
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Arnway ifway away ehicle'svay incomeway isway egativenay: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Arnway ifway away ehicle'svay incomeway isway egativenay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ehiclesvay evernay expireway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenewway ehiclevay enwhay itway etsgay oldway
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenewway enwhay ehicevay isway {ORANGE}{STRING}{LTBLUE} onthsmay eforebay/afterway axmay ageway
@@ -1112,9 +1112,9 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Ommandcay-ickcl
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ontrolcay-ickclay
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Offway
 
-STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Eftlay-ickclay ollingscray: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Eftlay-ickclay ollingscray: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Useway ethay {ORANGE}{STRING1}{LTBLUE} ateday ormatfay orfay avegamesay amesnay.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Useway ethay {ORANGE}{STRING}{LTBLUE} ateday ormatfay orfay avegamesay amesnay.
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :onglay (31stay Ecday 2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :ortshay (31-12-2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISOWAY (2008-12-31)
@@ -1130,7 +1130,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Ownway ompanyca
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Allway ompaniescay
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enableway imetablingtay orfay ehiclesvay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Owshay imetabletay inway ickstay atherray anthay aysday: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Ickquay eationcray ofway ehiclevay ordersway: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Ickquay eationcray ofway ehiclevay ordersway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Efaultday ailray ypetay (afterway ewnay amegay/amegay oadlay): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Ormalnay Ailray
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrifiedway Ailray
@@ -1140,7 +1140,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Irstfay availab
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Astlay availableway
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Ostmay usedway
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Owshay eservedray ackstray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Eepkay uildingbay oolstay activeway afterway usageway: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Eepkay uildingbay oolstay activeway afterway usageway: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Owshay uildingbay oolstay enwhay onay uitablesay ehiclesvay:{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Axmay ainstray erpay ayerplay: {ORANGE}{STRING}
@@ -1197,7 +1197,7 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Entrecay
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Ightray
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Indowway apsnay adiusray: {ORANGE}{STRING} pxay
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Indowway apsnay adiusray: {ORANGE}isabledday
-STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Indowway oftsay imitlay (onnay-ickystay): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Indowway oftsay imitlay (onnay-ickystay): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Indowway oftsay imitlay (onnay-ickystay): {ORANGE}isabledday
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Owntay owthgray eedspay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Onenay
@@ -1598,11 +1598,11 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Amegay unpaused
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Amegay unpausedway (ientclay ailedfay otay onnectcay)
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :eavinglay
-STR_NETWORK_CLIENT_JOINED                                       :*** {RAW_STRING} ashay oinedjay ethay amegay
-STR_NETWORK_CLIENT_LEFT                                         :*** {RAW_STRING} ashay eftlay ethay amegay ({2:STRING})
-STR_NETWORK_NAME_CHANGE                                         :*** {RAW_STRING} ashay angedchay ishay/erhay amenay otay {RAW_STRING}
-STR_NETWORK_GIVE_MONEY                                          :*** {RAW_STRING} avegay ouryay ompanycay {2:CURRENCY}
-STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ouyay avegay {1:RAW_STRING} {2:CURRENCY}
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} ashay oinedjay ethay amegay
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} ashay eftlay ethay amegay ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ashay angedchay ishay/erhay amenay otay {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} avegay ouryay ompanycay {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Ouyay avegay {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Eamtay] :
 STR_NETWORK_CHAT_COMPANY                                        :[Eamtay] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Eamtay] Otay {STRING}: {GRAY}{STRING}
@@ -2015,7 +2015,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Oadlay A
 STR_4002_SAVE                                                   :{BLACK}Avesay
 STR_4003_DELETE                                                 :{BLACK}Eleteday
 STR_4004                                                        :{COMPANY}, {STRING}
-STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Ectatorspay, {SKIP}{STRING1}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Ectatorspay, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} egabyte{P "" s}may eefray
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unableway otay eadray ivedray
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Amegay Avesay Ailedfay{}{STRING}
@@ -3512,7 +3512,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areaway:
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
-STR_DATE_ISO                                                    :{2:NUM}-{1:RAW_STRING}-{0:RAW_STRING}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}

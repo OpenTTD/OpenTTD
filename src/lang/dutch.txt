@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 STR_02D5_LAND_BLOCK_INFO                                        :Info over blok land
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Schakel console aan/uit
+STR_AI_DEBUG_MENU                                               :AI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Grote screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Over OpenTTD
@@ -1375,7 +1376,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bouw tre
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan trein niet ombouwen...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Reparatie intervallen zijn in percentages: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander productie
-
 
 ############ network gui strings
 
@@ -3670,6 +3670,10 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Vergroot
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}AI Debug
 ########
 
 ############ town controlled noise level

@@ -542,13 +542,17 @@ STR_AGE                                                         :{COMMA} rok{P "
 STR_AGE_RED                                                     :{RED}{COMMA} rok{P "" y ov} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :{G=m}Automobil
-STR_019D_AIRCRAFT                                               :{G=s}Lietadlo
-STR_019E_SHIP                                                   :{G=z}Lod
 STR_019F_TRAIN                                                  :{G=m}Vlak
+STR_019C_ROAD_VEHICLE                                           :{G=m}Automobil
+STR_019E_SHIP                                                   :{G=z}Lod
+STR_019D_AIRCRAFT                                               :{G=s}Lietadlo
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} zastaralo
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} je veľmi zastaralé
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} je veľmi zastaralé a urgentne potrebuje výmenu
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informácie o pozemku
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Náklady na odstránenie: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Náklady na odstránenie: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Zisk pri odstránení: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Neznáme
 STR_01A7_OWNER                                                  :{BLACK}Vlastník: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Vlastník cesty: {LTBLUE}{STRING}
@@ -1054,12 +1058,16 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemozno 
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemozno kopirovat zoznam prikazov ...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec zdielanych prikazov - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nemôže nájsť cestu pre pokračovanie.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europska Menova Unia!{}{}Euro bolo uvedene ako hlavna mena pre bezne pouzivanie v tejto krajine.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} má nesprávnu stanicu v zozname
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autoobnovenie zlyhalo u {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} je dlho po výmene
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Neboli využité žiadne pravidlá pre obnovu.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(finacny limit)
 
@@ -1078,6 +1086,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Umožni
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakom a lodiam otácanie o 90 st.: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Umoznit spajanie stanic: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Povoliť spájať stanice nepriamo hraničiace: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Pouzit vylepseny algoritmus nakladania: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Postupné nakladanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflácia: {ORANGE}{STRING}
@@ -1113,6 +1122,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Obnoven
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ano, okrem zastavenych vozidiel
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ano, u vsetkych vozidiel
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varovať, ak je vozidlo stratové: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Nikdy neprestat s vyrobou starych vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automaticka obnova dopravnych prostriedkov, ked su stare
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Obnovit vozidlo {ORANGE}{STRING}{LTBLUE} mesiacov pred/po dosiahnuti max. veku
@@ -1161,6 +1171,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Príkaz - klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control - klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Ziadna
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Skrolovať ľavým tlačidlom: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Použiť {ORANGE}{STRING}{LTBLUE} formát dátumu pre mená uložených hier.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :dlhý (31st Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :krátky (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automaticka pauza pri štarte novej hry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Použit vylepšený zoznam vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Vypnutý
@@ -1172,6 +1189,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :vlastná spoloc
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :všetky spolocnosti
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Používat cestovné poriadky pre vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zobrazovat cestovné poriadky v tikoch namiesto dní: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Rýchla tvorba cestovného poriadku vozidla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Predvolený typ kolají (v novej/nahranej hre): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :normálne
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :elektrifikované
@@ -1181,6 +1199,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :prvé dostupné
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :posledné dostupné
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :najpoužívanejšie
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Zobrazit rezervované trate: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Zachovať stavebné nástroje aktívne aj po použití: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje výstavby ak nie sú dostupné vhodné vozidlá: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
@@ -1193,6 +1212,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Zakazat
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakazat lietadla pre pocitac: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Zakazat lode pre pocitac: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v multiplayeri (experimentalne): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Implicitný servisný interval pre vlaky: {ORANGE}{STRING} dní/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
@@ -1237,6 +1257,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :v strede
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :vpravo
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Vzdialenost pre prichytenie okna: {ORANGE}{STRING} bodov
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Vzdialenost pre prichytenie okna: {ORANGE}vypnuté
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Jemný limit okna (nie dôležité): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Jemný limit okna (nie dôležité): {ORANGE}nepovolený
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Rozvoj miest: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :žiadny
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :pomalý
@@ -1254,6 +1276,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vozidl�
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stanice
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Konkurenti
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Možnosti zobrazenia
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interakcia
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signály
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Manipulácia s tovarom
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Počítačový hráči
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autoobnova
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servis
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Smerovanie
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Vlaky
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Mestá
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Priemysel
 
 STR_CONFIG_PATCHES_DISABLED                                     :zakazane
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1402,7 +1435,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prestava
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemozno prestavat vlak ...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servisne intervaly v percentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmenit produkciu
-
 
 ############ network gui strings
 
@@ -1576,6 +1608,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit sa
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Vložte čiastku ktorú chcete dať
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chraneny. Zadaj heslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Spolocnost je chranena. Zadaj heslo
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Zoznam klientov
@@ -1615,6 +1648,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :vyhodeny zo ser
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :sa pokusal cheatovat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server je plny
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Hra pozastavená (nedostatok hráčov)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Hra spustená (dostatok hráčov)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Hra pozastavená (pripája sa klient)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Hra spustená (klient sa pripojil)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Hra spustená (zlyhalo pripojenie klienta)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :odchádza
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} vstúpil do hry
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} opustil hru ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} zmenil jeho/jej meno na {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} dal ti spoločnosť {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Dal si {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tim] :
 STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRING}: {GRAY}{STRING}
@@ -1739,6 +1786,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Železničná t
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Železničná trasa s kombo a jednosmernými signálmi
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Železničná trať s obojstrannými a jednosmernými signálmi
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Je potrebné najprv odstránit železnicnú stanicu
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Postaviť oddelene stanicu
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Spojiť stanicu
 
 
 
@@ -1927,6 +1976,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Prilis b
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Susedi z viacerymi stanicami/vykladkami
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prilis vela stanic/vykladok v tomto meste
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prilis vela stanic/vykladok
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Veľa častí vlakovej stanice
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Prilis vela autobusovych zastavok
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Prilis vela zastavok nakladnych automobilov
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Prilis blizko inej stanice/vykladky
@@ -2024,6 +2074,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Nahrat h
 STR_4002_SAVE                                                   :{BLACK}Ulozit
 STR_4003_DELETE                                                 :{BLACK}Vymazat
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Pozorovateľ, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabajtov volnych
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Zariadenie je necitatelne
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ulozenie hry zlyhalo{}{STRING}
@@ -2829,6 +2880,7 @@ STR_UNKNOWN_STATION                                             :neznáma stanic
 STR_8812_EMPTY                                                  :{LTBLUE}Prazdny
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} z {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} čaká v depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je prilis dlhy
@@ -2880,6 +2932,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemozno 
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nie je možné presunút tento príkaz ...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nie je možné vynechat tento príkaz ...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nie je možné preskocit na vybraný príkaz ...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}vozidlo nemôže ísť do všetkých staníc
+STR_CAN_T_ADD_ORDER                                             :{WHITE}vozidlo nemôže ísť do stanice
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}vozidlo zdielajúce tento príkaz nemôže ísť do stanice
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemozno posuvat vozdlo ...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadný stroj vždy doprevádza svoj druhý stroj vpredu
 STR_8838_N_A                                                    :Nie je{SKIP}
@@ -2987,6 +3042,7 @@ STR_9012_CAPACITY                                               :{BLACK}Kapacita
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musi byt zastaveny v garazi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemozno predat automobil ...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno zastavit/spustit automobil ...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} čaká v depe
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Smeruje do {TOWN} garaze
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}smeruje do {TOWN} garaze, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servis v garazi {TOWN}
@@ -3068,6 +3124,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Smeruje
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Smeruje do {TOWN} lodenice, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis v lodenici {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis v lodenici {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} čaká v depe
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit lodenicu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodenicu (pre vyrobu a opravy lodi)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lode - kliknut pre informacie
@@ -3132,6 +3189,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Smeruje
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Smeruje do {STATION} hangaru, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Servis v hangari {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servis v hangari {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} čaká v leteckom hangári
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lietadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemozno zastavit/spustit lietadlo ...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lietadlo je vo vzduchu
@@ -3256,6 +3314,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočakávaný 
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Neznáma Akcia 0 nehnuteľnosti.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Požiadavka na neplatného ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} obsahuje poškodenú sprite. Všetky poškodené sprites budú zobrazované ako červený otáznik (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Obsahuje viacero akcií 8 položiek.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Nahrat vybraný zoznam
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Uložit zoznam
@@ -3392,6 +3451,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknite
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Príkaz zmeňiť tovar po zlyhaní zastavil {VEHICLE}
 
 ############ Lists rail types
 
@@ -3512,6 +3572,9 @@ STR_DATE_TINY                                                   :{STRING}-{STRIN
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer kredity: {LTBLUE}{CURRENCY}
@@ -3665,6 +3728,9 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
 ########
 
 ############ town controlled noise level

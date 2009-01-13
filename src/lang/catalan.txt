@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Signes
 STR_02D5_LAND_BLOCK_INFO                                        :Informació de l'àrea de terreny
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Canvia a cònsola
+STR_AI_DEBUG_MENU                                               :Depuració IA
 STR_02D7_SCREENSHOT_CTRL_S                                      :Còpia de Pantalla (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Còpia de Pantalla Gran (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Quant a 'OpenTTD'
@@ -1153,6 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Desacti
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desactiva els avions per l'ordinador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desactiva vaixells per l'ordinador: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Mermet IA en multijugador: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes abans de suspendre la IA: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}{STRING} dies/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Interval de manteniment per defecte dels trens: {ORANGE}desactivat
@@ -1375,7 +1378,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Remodela
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No es pot remodelar el tren...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Els intervals de manteniment estàn en percentatges: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Canvi de producció
-
 
 ############ network gui strings
 
@@ -3670,6 +3672,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Incremen
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Depuració IA
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nom de la IA
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarrega IA
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Mata la IA, recarrega l'script, i reinicia la IA
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}La finestra de depuració IA només està disponible pel servidor
 ########
 
 ############ town controlled noise level

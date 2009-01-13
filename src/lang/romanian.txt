@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} an{P ""
 STR_AGE_RED                                                     :{RED}{COMMA} an{P "" i} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Autovehicolul
-STR_019D_AIRCRAFT                                               :Aeronava
-STR_019E_SHIP                                                   :Nava
 STR_019F_TRAIN                                                  :Trenul
+STR_019C_ROAD_VEHICLE                                           :Autovehicolul
+STR_019E_SHIP                                                   :Nava
+STR_019D_AIRCRAFT                                               :Aeronava
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} este vechi
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} este foarte vechi
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} este foarte vechi şi trebuie înlocuit
@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Semne 
 STR_02D5_LAND_BLOCK_INFO                                        :Informaţii despre teren
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Consola On/Off
+STR_AI_DEBUG_MENU                                               :Depanare Inteligenta Artificială
 STR_02D7_SCREENSHOT_CTRL_S                                      :Capturează ecranul (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Capturează toată harta (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Despre 'OpenTTD'
@@ -1153,6 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Dezacti
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Dezactivează aeronavele pentru jucătorii controlaţi de PC: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Dezactivează navele pentru jucătorii controlaţi de PC: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite IA în multiplayer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}# de operaţii după care IA este suspendată: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}{STRING} zile
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}dezactivat
@@ -1216,6 +1219,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vehicul
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Statii
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economie
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Concurenti
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Setări vizuale
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interacţiune
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Semnale (semafoare)
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Operare marfă
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Jucatori virtuali
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Reînnoire automată
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Service
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Direcţionare
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Trenuri
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Oraşe
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industrii
 
 STR_CONFIG_PATCHES_DISABLED                                     :dezactivat
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1364,7 +1378,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Modific�
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nu pot modifica trenul...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Intervaluri de service in procente: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Schimba productia
-
 
 ############ network gui strings
 
@@ -1906,6 +1919,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Prea apr
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Este adiacentă mai multor staţii
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prea multe staţii în acest oraş
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prea multe staţii
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Staţia are prea multe componente
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Prea multe staţii de autobuz
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Prea multe staţii de camion
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Prea aproape de altă staţie
@@ -2861,6 +2875,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nu se po
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nu pot muta acest ordin...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nu pot renunta la comanda actuala...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nu pot sări la ordinul selectat...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}vehicolul nu poate ajunge la toate staţiile
+STR_CAN_T_ADD_ORDER                                             :{WHITE}vehicolul nu poate ajunge la acea staţie
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}un vehicol care are acest ordin nu poate ajunge la acea staţie
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nu se poate muta vehiculul...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Al doilea vagon+motor va avea mereu aceeasi destinatie ca si primul
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -3240,6 +3257,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Imagine neaşte
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Actiune necunoscuta proprietate 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Incercare de folosire a unui ID invalid
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING}Contine un sprite corupt. Toate sprite-urile corupte vor fi aratate ca si semne de intrebare (?) de culoare rosie.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Conţine multiple intrari "Acţiunea 8"
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Incarcă presetarea selectată
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvează presetare
@@ -3654,6 +3672,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Mareste 
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Depanare IA
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Numele Inteligenţei Artificiale
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Reîncarcă IA
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Opreşte IA, raîncarcă scriptul, apoi reporneşte IA
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Fereastra pentru depanare IA este disponibilă doar serverului
 ########
 
 ############ town controlled noise level

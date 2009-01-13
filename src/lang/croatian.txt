@@ -543,10 +543,10 @@ STR_AGE                                                         :{COMMA} godin{P
 STR_AGE_RED                                                     :{RED}{COMMA} godin{P a e a} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Cestovno vozilo
-STR_019D_AIRCRAFT                                               :Zrakoplov
-STR_019E_SHIP                                                   :Brod
 STR_019F_TRAIN                                                  :Vlak
+STR_019C_ROAD_VEHICLE                                           :Cestovno vozilo
+STR_019E_SHIP                                                   :Brod
+STR_019D_AIRCRAFT                                               :Zrakoplov
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} postaje star
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} postaje vrlo star
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} postaje vrlo star i hitno treba zamjenu
@@ -866,6 +866,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Prozir
 STR_02D5_LAND_BLOCK_INFO                                        :Podatci o zemljištu
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Otvori konzolu
+STR_AI_DEBUG_MENU                                               :AI Debugiranje
 STR_02D7_SCREENSHOT_CTRL_S                                      :Slika zaslona (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Ogromna slika zaslona (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
@@ -1219,6 +1220,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Isklju�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Isključi zrakoplove za računalo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Isključi brodove za računalo: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Dozvoli UI u mrežnoj igri: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#operativnih zahvata prije suspendiranja UI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}{STRING} dana/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Inicijalni servisni period za vlakove: {ORANGE}onemogućeno
@@ -1282,6 +1285,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vozila
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Postaje
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomija
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Suparnici
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Opcije prikaza
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interakcija
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signali
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Tretiranje tereta
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Računalni igrači
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Auto-obnavljanje
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servisiranje
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Rutanje
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Vlakovi
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Gradovi
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industrije
 
 STR_CONFIG_PATCHES_DISABLED                                     :onemogućeno
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1430,7 +1444,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prenamij
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nije moguće prenamijeniti vlak...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servisni su intervali u postotcima: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promijeni proizvodnju
-
 
 ############ network gui strings
 
@@ -1972,6 +1985,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Preblizu
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Spaja više od jedne postojeće postaje/terminala
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}U ovom gradu ima previše postaja/terminala
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Previše postaja/terminala
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Previše dijelova željezničke stanice
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Previše autobusnih postaja
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Previše kamionskih postaja
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Preblizu drugoj postaji/terminalu
@@ -2927,6 +2941,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nije mog
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nije moguće pomaknuti ovu naredbu...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Neije moguće preskočiti trenutnu naredbu...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nije moguće skočiti na odabranu naredbu...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}vozilo ne može doći do svih stanica
+STR_CAN_T_ADD_ORDER                                             :{WHITE}vozilo ne može doći do te stanice
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}vozilo koje dijeli ovu naredbu ne može doći do te stanice
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nije moguće ukloniti vozilo...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Stražnja lokomotiva će uvijek pratiti svog prednjeg dvojnika
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -3306,6 +3323,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Neočekivani gr
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nepoznato svojstvo Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Pokušaj uporabe neispravnog ID-a.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} sadrži neispravan grafički znak. Svi neispravni grafički znakovi bit će pokazani kao crveni upitnik (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Sadrži mnoge Action 8 unose.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Učitaj unaprijed odabrane postavke
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Spremi zadano postavljanje
@@ -3720,6 +3738,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Povećaj
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Debugiranje UI
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Ime UI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitaj UI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Ubij UI, ponovno učitaj skriptu i ponovno pokreni UI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}UI prozor za debugiranje je dozvoljen samo serveru
 ########
 
 ############ town controlled noise level

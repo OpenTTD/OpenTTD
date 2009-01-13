@@ -1233,6 +1233,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Samocho
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Samoloty niedostępne dla komputera: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Statki niedostępne dla komputera: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Pozwól na AI w grze wieloosobowej (testowe): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Domyślny okres między serwis. dla pociągów: {ORANGE}{STRING} dni
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Domyślny okres między serwis. dla pociągów: {ORANGE}niedostępne
@@ -1451,7 +1452,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Przebudu
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nie można przebudować pociągu...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Okres między serwisowaniami w procentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmiana produkcji
-
 
 ############ network gui strings
 
@@ -2989,6 +2989,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nie moż
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nie można przenieść tego zadania...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Nie można pominąć obecnego zadania...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Nie można przejść do wybranego zadania...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}pojazd nie może jechać do wszystkich stacji
+STR_CAN_T_ADD_ORDER                                             :{WHITE}pojazd nie może jechać do tej stacji
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}pojazd dzielący ten rozkaz nie może jechać do tej stacji
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nie można ruszyć pojazdem...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Tylna lokomotywa zawsze porusza się razem z przednią
 STR_8838_N_A                                                    :N/D{SKIP}
@@ -3780,6 +3783,9 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zwiększ
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
 ########
 
 ############ town controlled noise level

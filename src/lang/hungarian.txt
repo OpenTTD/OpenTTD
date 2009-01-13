@@ -867,6 +867,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Állom
 STR_02D5_LAND_BLOCK_INFO                                        :Terület-információ
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Átváltás Konzolra
+STR_AI_DEBUG_MENU                                               :MI nyomkövetés
 STR_02D7_SCREENSHOT_CTRL_S                                      :Képmentés (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Óriás képmentés (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Az  'OpenTTD'-ről
@@ -1206,7 +1207,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Első elérhet�
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhető
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Legutoljára használt
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányszakasz foglaltságának jelzése: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Építő eszközös aktívak maradnak használat után: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Építő eszközök aktívak maradnak használat után: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Eszköztár mutatása, még ha nem is építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
@@ -1219,6 +1220,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Közút
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Repülőgépek tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Hajók tiltása a gépi ellenfeleknek: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Számítógépes ellenfelek a hálózati játékokban (béta): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}MI felfüggesztéséhez szükséges opcode mennyiség: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}{STRING} naponta
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Alapértelmezett szervízelés vonatoknak: {ORANGE}kikapcsolva
@@ -1441,7 +1444,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}A vonat 
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nem alakíthatod át a vonatot...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Szervízintervallumok százalékban: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Termelés megváltoztatása
-
 
 ############ network gui strings
 
@@ -1983,7 +1985,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Túl kö
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Több állomással/rakodóhellyel érintkezik
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Túl sok állomás/rakodóhely van ebben a városban
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Túl sok az állomás/rakodóhely
-STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Túl sok vasútállomás darab
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Túl sok vasútállomás-rész
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Túl sok buszmegálló
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Túl sok kamion megálló
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Túl közel van egy másik állomáshoz/rakodóhelyhez
@@ -3773,6 +3775,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Automata
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :0123456789öüóqwertzuiopőúasdfghjkléáűíyxcvbnm,.- .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :§'"+!%/=()ÖÜÓQWERTZUIOPŐÚASDFGHJKLÉÁŰÍYXCVBNM?:_ .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}MI nyomkövetés
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}MI neve
+STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}MI kilövése, szkript újratöltése, MI újraindítása
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Az MI nyomkövetés ablak csak a szerver számára elérhető
 ########
 
 ############ town controlled noise level

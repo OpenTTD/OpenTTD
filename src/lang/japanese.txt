@@ -277,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}名称�
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}指定した名称はすでに使用中です
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -477,10 +478,13 @@ STR_AGE                                                         :{COMMA}年（{C
 STR_AGE_RED                                                     :{RED}{COMMA}年（{COMMA}年）
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :道路車両
-STR_019D_AIRCRAFT                                               :飛行機
-STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
+STR_019C_ROAD_VEHICLE                                           :道路車両
+STR_019E_SHIP                                                   :船舶
+STR_019D_AIRCRAFT                                               :飛行機
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} は古くなっています
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} はとても古くなっています
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} はとても古くなっていて、すばやく取り替えなければなりません。
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地域情報
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}破壊費用：{LTBLUE}破壊不可
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}破壊費用：{RED}{CURRENCY}
@@ -863,6 +867,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :新規産業の
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}新規産業の建設を出資
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...町内のみに建設できます
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...雨林地域のみに建設できます
@@ -988,10 +993,14 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}指令�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}指令リストをコピーできません...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共有指令の終了- -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} が迷っています。
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}昨年 {VEHICLE} の利益は {CURRENCY}。
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧州通貨統合！{}{}我が国はここからユーロを通貨として使用！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} は重複している指令があります。
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} の指令の中で、無効な駅があります。
 # end of order system
 
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE} 自動交換/更新の規則は適用されませんでした。
@@ -1047,6 +1056,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}列車�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :切
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :入（停止中の車両を取り除く）
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :入（すべての車両）
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}車両の利益が損失になってから警告を表示：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}車両の購入可能期限がない：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}車両が古くなるとき自動交換
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}車両が最高使用年数の {ORANGE}{STRING}{LTBLUE} ヶ月間前／後に自動交換
@@ -1095,6 +1105,12 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :コマンド＋
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :コントロール＋クリック
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :切
 
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}セーブ時{LTBLUE}に次のような日付のフォーマットを使用：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO 標準
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}新規ゲームを開始したときに自動的にポーズ：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}詳細の車両リストを使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :切
@@ -1115,6 +1131,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :最初の鉄道
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :最新の鉄道種類
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最も使われている鉄道種類
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}予約済みの線路を表示: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}ビルドのツールバーは使用後に表示したままにする：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}適当な車両がまだ購入不可能であっても、基礎の建設を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}一人のプレヤーの列車数上限：{ORANGE}{STRING}
@@ -1127,6 +1144,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}コン�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}コンピュータは飛行機を使用しない：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}コンピュータは船舶を使用しない：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}マルチプレイヤーゲームで AI を許容（実験的）：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}{STRING}日間／％
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車のデフォルトの修理間隔：{ORANGE}切
@@ -1188,6 +1206,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}車両
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}駅
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}経済
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}競争者
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}表示の設定
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}インターフェース
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}信号
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}貨物の取り扱い
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}コンピュータのプレヤー
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}自動リニュアル
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}修理
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}経路の計算
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}電車
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}市町村
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}産業
 
 STR_CONFIG_PATCHES_DISABLED                                     :切
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1277,6 +1306,7 @@ STR_BUILD_LOCKS_TIP                                             :{BLACK}水門�
 STR_LANDINFO_LOCK                                               :水門
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}ここに川を設置できません
+STR_LANDINFO_RIVER                                              :川
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}...ブイは使用中です！
 
@@ -1335,13 +1365,13 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}列車�
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}修理間隔をパーセントで表示：{ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}生産量を変更
 
-
 ############ network gui strings
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}多人数ゲーム
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}プレヤー名：
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}他人のプレヤーが見えるあなたの名前です
+STR_NETWORK_PLAYER_NAME_OSKTITLE                                :{BLACK}プレヤー名を入力
 STR_NETWORK_CONNECTION                                          :{BLACK}接続：
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}ローカルネットワークもしくはインターネット上のゲームを選択します
 
@@ -1352,6 +1382,8 @@ STR_NETWORK_GAME_NAME                                           :{BLACK}名前
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}ゲーム名
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}言語、サーババージョンなど
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}選択するにはリスト内のゲームをクリックします
+STR_NETWORK_LAST_JOINED_SERVER                                  :{BLACK}前回参加したサーバ：
+STR_NETWORK_CLICK_TO_SELECT_LAST                                :{BLACK}クリックして前回参加したサーバを選択します
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}サーバを検索
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}ネットワーク上のサーバを検索します
@@ -1363,8 +1395,15 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}クライアント
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}オンラインのクライアント人数／最高クライアント人数{}オンラインの会社数／最高会社数
 
+STR_NETWORK_MAP_SIZE_SHORT                                      :{BLACK}{COMMA}x{COMMA}
+STR_NETWORK_MAP_SIZE_CAPTION                                    :{BLACK}地図のサイズ
+STR_NETWORK_MAP_SIZE_CAPTION_TIP                                :{BLACK}ゲームの地図のサイズ{}クリックして地域によって並べ替えます
 
+STR_NETWORK_DATE_CAPTION                                        :{BLACK}日付
+STR_NETWORK_DATE_CAPTION_TIP                                    :{BLACK}ゲームの現在の日付を示します
 
+STR_NETWORK_YEARS_CAPTION                                       :{BLACK}実行年間
+STR_NETWORK_YEARS_CAPTION_TIP                                   :{BLACK}ゲームの起動から{}の年間
 
 STR_NETWORK_GAME_INFO                                           :{SILVER}ゲーム情報
 STR_NETWORK_CLIENTS                                             :{SILVER}クライアント：{WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
@@ -1388,6 +1427,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}新規�
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}ゲーム名：
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}他のプレヤーが見える多人数ゲームメニューに表示するゲーム名を指定します
+STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}ネットワークゲーム名を入力
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}パスワードを指定
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}ゲームをパスワードで保護することができます。正しいパスワードを入力しないと、接続できません。
 STR_NETWORK_SELECT_MAP                                          :{BLACK}地図を選択：
@@ -1444,6 +1484,11 @@ STR_NETWORK_LANG_SPANISH                                        :スペイン語
 STR_NETWORK_LANG_SWEDISH                                        :スウェーデン語
 STR_NETWORK_LANG_TURKISH                                        :トルコ語
 STR_NETWORK_LANG_UKRAINIAN                                      :ウクライナ語
+STR_NETWORK_LANG_AFRIKAANS                                      :アフリカーンス語
+STR_NETWORK_LANG_CROATIAN                                       :クロアチア語
+STR_NETWORK_LANG_CATALAN                                        :カタロニア語
+STR_NETWORK_LANG_ESTONIAN                                       :エストニア語
+STR_NETWORK_LANG_GALICIAN                                       :ガリシア語
 STR_NETWORK_LANG_GREEK                                          :ギリシア語
 STR_NETWORK_LANG_LATVIAN                                        :ラトビア語
 ############ End of leave-in-this-order
@@ -1492,6 +1537,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM}／
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}接続を解除
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}送金したい総額を入力
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}サーバへ接続するにはパスワードを入力してください
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}会社の経営に参加するにはパスワードを入力してください
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}クライアントリスト
@@ -1526,10 +1572,25 @@ STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :不明なパケ
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :対応していないバージョン
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :プレヤー名がすでに使用中
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :不正なパスワード
+STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :wrong company-id in DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :サーバに蹴られた
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :チートして試していた
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :サーバ満員
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :ゲームは一時停止（プレヤー人数不足）
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :ゲーム停止解除（プレヤー人数十分）
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :ゲームは一時停止（クライアントが接続中）
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :ゲーム停止解除（クライアントが接続済み）
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :ゲーム停止解除（クライアントの接続が失敗）
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :退出
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} は参加してきました
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} は退出してきました（{2:STRING}）
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} は名前を {STRING} に変更しました
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} は {2:CURRENCY} を送金してくれました
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** {1:STRING} に {2:CURRENCY} を送金しました
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :『チーム』：
 STR_NETWORK_CHAT_COMPANY                                        :『チーム』{STRING}：{GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :『チーム』{STRING}へ：{GRAY}{STRING}
@@ -1538,6 +1599,7 @@ STR_NETWORK_CHAT_CLIENT                                         :『秘密』{ST
 STR_NETWORK_CHAT_TO_CLIENT                                      :『秘密』{STRING}へ：{GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :『全員』：
 STR_NETWORK_CHAT_ALL                                            :『全員』{STRING}：{GRAY}{STRING}
+STR_NETWORK_CHAT_OSKTITLE                                       :{BLACK}チャットのメッセージを入力
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}サーバがセッションを終了しました
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}サーバが再起道中...{}しばらくお待ちください...
 
@@ -2634,6 +2696,7 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}�
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}町民の祝賀{}初列車が{STATION}駅に到着！
 STR_8802_DETAILS                                                :{WHITE}{VEHICLE}（詳細）
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}列車があります
+STR_ORDER_NON_STOP                                              :{BLACK}直行便
 STR_GO_TO_STATION                                               :{STRING} {STATION} {STRING}
 
 STR_ORDER_GO_TO_DROPDOWN_TOOLTIP                                :{BLACK}詳しい注文を挿入
@@ -3511,6 +3574,9 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}ドラ�
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
 ########
 
 ############ town controlled noise level

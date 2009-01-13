@@ -479,10 +479,10 @@ STR_AGE                                                         :{COMMA} ano{P "
 STR_AGE_RED                                                     :{RED}{COMMA} ano{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :{G=m}Automóvel
-STR_019D_AIRCRAFT                                               :{G=f}Aeronave
-STR_019E_SHIP                                                   :{G=m}Embarcação
 STR_019F_TRAIN                                                  :{G=m}Trem
+STR_019C_ROAD_VEHICLE                                           :{G=m}Automóvel
+STR_019E_SHIP                                                   :{G=m}Embarcação
+STR_019D_AIRCRAFT                                               :{G=f}Aeronave
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} está ficando velho
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} está ficando muito velho
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} está ficando muito velho e necessita ser substituído
@@ -1217,6 +1217,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Veícul
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Estações
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economia
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Oponentes
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Opções de visualização
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interação
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinais
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Manejo de carga
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Computadores
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autosubstituir
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Manutenção
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Rota
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Trens
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE} Cidades
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Indústrias
 
 STR_CONFIG_PATCHES_DISABLED                                     :desativado
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1365,7 +1376,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Adaptar 
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossível adaptar o trem...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Os intervalos de serviço são em percentagem: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Modificar produção
-
 
 ############ network gui strings
 
@@ -1907,6 +1917,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Muito pe
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Muito perto de uma estação/local de carga já existente
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/áreas de carga nesta cidade
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Muitas estações/áreas de carga
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}A estação já tem muitas partes
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Muitas estações de ônibus
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Muitos locais de carga
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Muito perto de outra estação/local de carga
@@ -2862,6 +2873,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Impossí
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Impossível mudar essa ordem
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Impossível pular a ordem atual...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Impossível pular à ordem selecionada...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}o veículo não pode chegar a todas as estações
+STR_CAN_T_ADD_ORDER                                             :{WHITE}o veículo não chega àquela estação
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}um veículo com essa mesma ordem não chega àquela estação
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Impossível mover veículo...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}A locomotiva traseira sempre deve seguir sua complementar frontal
 STR_8838_N_A                                                    :N/D{SKIP}
@@ -3241,6 +3255,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite não esp
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade Ação Desconhecida 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém um sprite corrupto. Todos os sprites corruptos serão exibidos como um "?" vermelho.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de Ação múltipla.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carrega o padrão selecionado
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Salvar padrão
@@ -3655,6 +3670,9 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Aumentar
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
 ########
 
 ############ town controlled noise level

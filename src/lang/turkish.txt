@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 STR_02D5_LAND_BLOCK_INFO                                        :Arazi bilgisi
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Konsol Aç/Kapa
+STR_AI_DEBUG_MENU                                               :YZ Hata Ayıklama
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekran Görüntüsü (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Dev Ekran Görüntüsü (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' Hakkında
@@ -1153,6 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Bilgisa
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Bilgisayar uçak kullanmasın: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Bilgisayar gemi kullanmasın: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Çok oyunculuda yapay zekâ olsun: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}YZ duraklatılmadan önceki opkod sayısı: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}{STRING} gün/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Trenler için varsayılan servis gecikmesi: {ORANGE}kapalı
@@ -1375,7 +1378,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Treni se
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Modifiye edilemiyor...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servis gecikmeleri yüzde ile: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Üretimi değiştir
-
 
 ############ network gui strings
 
@@ -3670,6 +3672,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Sinyal s
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :"1234567890*-\qwertyuıopğüasdfghjklşi,'  zxcvbnmöç. .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :"!'^+%&/()=?_|QWERTYUIOPĞÜASDFGHJKLŞİ;"  ZXCVBNMÖÇ: .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}YZ Hata Ayıklama
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}YZ adı
+STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
 ########
 
 ############ town controlled noise level

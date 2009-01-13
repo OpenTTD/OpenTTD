@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Läpin
 STR_02D5_LAND_BLOCK_INFO                                        :Maa-alueen tiedot
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Konsoli
+STR_AI_DEBUG_MENU                                               :Tekoälyn virheenjäljitys
 STR_02D7_SCREENSHOT_CTRL_S                                      :Kuvakaappaus (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Valtava kuvakaapp. (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Tietoja "OpenTTD":stä
@@ -1153,6 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Tietoko
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Tietokoneella ei ole lentokoneita: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Tietokoneella ei ole laivoja: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Salli tekoälyt moninpeleissä: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodet ennen tekoälyn pysäyttämistä: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Oletushuoltoväli junille: {ORANGE}{STRING} päivää
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Oletushuoltoväli junille: {ORANGE}pois päältä
@@ -1375,7 +1378,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Sovita j
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Junaa ei voi sovittaa...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Huoltovälit ovat prosentteina: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Aloita tuotanto
-
 
 ############ network gui strings
 
@@ -3670,6 +3672,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Suurenna
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :§1234567890+´ qwertyuiopå¨asdfghjklöä' zxcvbnm,.- .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :½!"#¤%&/()=?` QWERTYUIOPÅ^ASDFGHJKLÖÄ* ZXCVBNM;:_ .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Tekoälyn nimi
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Lopeta tekoäly, lataa skripti uudelleen ja käynnistä tekoäly uudelleen
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Tekoälyn virheenjäljitysikkuna on vain palvelimen käytettävissä
 ########
 
 ############ town controlled noise level

@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} tahun (
 STR_AGE_RED                                                     :{RED}{COMMA} tahun ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Bus/truk
-STR_019D_AIRCRAFT                                               :Pesawat
-STR_019E_SHIP                                                   :Kapal
 STR_019F_TRAIN                                                  :Kereta Api
+STR_019C_ROAD_VEHICLE                                           :Bus/truk
+STR_019E_SHIP                                                   :Kapal
+STR_019D_AIRCRAFT                                               :Pesawat
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} mulai menua
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} sudah sangat tua
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} sudah sangat tua dan perlu segera diganti
@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 STR_02D5_LAND_BLOCK_INFO                                        :Informasi area daratan
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Hidup/matikan Layar Konsol
+STR_AI_DEBUG_MENU                                               :AI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ambil gambar (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Ambil gambar besar (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Tentang 'OpenTTD'
@@ -1153,6 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Non-akt
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Non-aktifkan pesawat bagi pemain komputer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Non-aktifkan kapal bagi pemain komputer: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Ijinkan kecerdasan pada modus banyak pemain(uji coba): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard jangka servis berkala kereta: {ORANGE}{STRING} hari/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard jangka servis berkala untuk kereta: {ORANGE}Non-aktif
@@ -1216,6 +1219,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Kendara
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stasiun
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomi
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Pesaing
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Tampilkan Pilihan
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaksi
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyal
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Penanganan Kargo
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Pemain Komputer
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Peremajaan Otomatis
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servis
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Pengarahan
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Kereta
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Kota
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industri
 
 STR_CONFIG_PATCHES_DISABLED                                     :Non-aktifkan
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1246,7 +1260,7 @@ STR_CHEATS_TIP                                                  :{BLACK}Daftar c
 STR_CHEATS_WARNING                                              :{BLACK}Peringatan! Anda akan menghianati para pesaing lainya. Ingat, tindakan ini akan terus teringat untuk selamanya.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Tambah uang sebanyak {CURRENCY}
 STR_CHEAT_CHANGE_COMPANY                                        :{LTBLUE}Memainkan sebagai pemain: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (untuk industri dan obyek yang tak dapat dipindahkan): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Buldozer ajaib (hancurkan industri, mercu suar dsb): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Terowongan boleh menerobos terowongan lain: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Membangun saat mode "BERHENTI": {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Pesawat tidak akan sering kecelakaan pada bandara kecil: {ORANGE} {STRING}
@@ -1294,7 +1308,7 @@ STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Proses L
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Permukaan tanah
 
 
-STR_TREES_RANDOM_TYPE                                           :{BLACK}Tanam pohon scr acak
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Tanam pohon secara acak
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Tempatkan tipe Tumbuhan secara acak
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Tidak dapat membangun kanal disini...
@@ -1364,7 +1378,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ubah kar
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Tidak dapat mengubah kargo lokomotif...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Jangka waktu servis dalam persen: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Perubahan produksi
-
 
 ############ network gui strings
 
@@ -1906,6 +1919,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Terlalu 
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}bergandengan dengan lebih dari satu stasiun yang telah ada
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu banyak stasiun di kota ini
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Terlalu banyak stasiun/area bongkar muat
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Terlalu banyak bag. stasiun
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Terlalu banyak pemberhentian Bus
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Terlalu banyak terminal truk
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Terlalu dekat dengan stasiun/area bongkar muat lainnya
@@ -2861,6 +2875,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Tidak da
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Tidak dapat memindah perintah ini...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Tidak dapat melewatkan perintah terpakai...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Tidak dapat melewatkan perintah terpilih...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}Kendaraan tdk dpt menuju semua stasiun
+STR_CAN_T_ADD_ORDER                                             :{WHITE}kendaraan tdk dpt menuju stasiun tsb
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}kendaraan berperintah sama tdk dpt menuju stasiun tsb
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Tidak dapat memindahkan kendaraan...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Bagian belakang mesin akan selalu mengikuti bagian depannya
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -3240,6 +3257,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Sprite tidak di
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Aksi tidak diketahui properti 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mencoba menggunakan ID yang tidak sah.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} terdapat sprite yang rusak. Semua sprite rusak akan ditandai dengan tanda tanya merah (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Baca kembali setingan terdahulu yang terpilih
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Simpan
@@ -3654,6 +3672,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Tambah k
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Kill the AI, reload the script, and restart the AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug window is only available for the server
 ########
 
 ############ town controlled noise level

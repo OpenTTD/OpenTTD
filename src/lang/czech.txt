@@ -869,6 +869,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Průhl
 STR_02D5_LAND_BLOCK_INFO                                        :Informace o zemi
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Zobrazit nebo skrýt konzoli
+STR_AI_DEBUG_MENU                                               :Ladění AI
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Obrovský screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
@@ -1221,6 +1222,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Zakáza
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Zakázat počítači letadla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Zakázat počítači lodě: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Povolit AI v síťové hře: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}počet opkódů než se vypne AI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}{STRING} dní
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Základní servisní interval pro vlaky: {ORANGE}vypnuto
@@ -1443,7 +1446,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Přestav
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nelze přestavět vlak...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Intervaly servisů v procentech: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Změnit produkci
-
 
 ############ network gui strings
 
@@ -3744,6 +3746,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Zvýšit
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :"+ěščřžýáíé=-\qwertyuiopú)asdfghjklů'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~1234567890_+|QWERTYUIOP/(}}ASDFGHJKL:!  ZXCVBNM?:_ .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Ladění AI
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Název AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Obnovit AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zničit AI, znovu nahrát jeho skript a restartovat AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Okno na ladění AI je dostupné pouze na serveru
 ########
 
 ############ town controlled noise level
