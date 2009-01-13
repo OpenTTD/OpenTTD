@@ -23,6 +23,7 @@ struct AIConfigItem {
 	int easy_value;          //!< The default value on easy difficulty setting.
 	int medium_value;        //!< The default value on medium difficulty setting.
 	int hard_value;          //!< The default value on hard difficulty setting.
+	int random_deviation;    //!< The maximum random deviation from the default value.
 	AIConfigFlags flags;     //!< Flags for the configuration setting.
 };
 

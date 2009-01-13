@@ -154,12 +154,13 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	AIConfigItem config;
 	config.name = strdup("start_date");
 	config.description = strdup("The amount of months after the start of the last AI, this AI will start (give or take).");
-	config.min_value = 0;
-	config.max_value = 120;
+	config.min_value = AI::START_NEXT_MIN;
+	config.max_value = AI::START_NEXT_MAX;
 	config.easy_value   = AI::START_NEXT_EASY;
 	config.medium_value = AI::START_NEXT_MEDIUM;
 	config.hard_value   = AI::START_NEXT_HARD;
 	config.custom_value = AI::START_NEXT_MEDIUM;
+	config.random_deviation = AI::START_NEXT_DEVIATION;
 	config.flags = AICONFIG_NONE;
 	info->config_list.push_back(config);
 
@@ -256,6 +257,11 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 			sq_getinteger(vm, -1, &res);
 			config.hard_value = res;
 			items |= 0x040;
+		}  else if (strcmp(key, "random_deviation") == 0) {
+			SQInteger res;
+			sq_getinteger(vm, -1, &res);
+			config.random_deviation = res;
+			items |= 0x200;
 		} else if (strcmp(key, "custom_value") == 0) {
 			SQInteger res;
 			sq_getinteger(vm, -1, &res);
@@ -276,6 +282,17 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 		sq_pop(vm, 2);
 	}
 	sq_pop(vm, 1);
+
+	/* Don't allow both random_deviation and AICONFIG_RANDOM to
+	 * be set for the same config item. */
+	if ((items & 0x200) != 0 && (config.flags & AICONFIG_RANDOM) != 0) {
+		char error[1024];
+		snprintf(error, sizeof(error), "Setting both random_deviation and AICONFIG_RANDOM is not allowed");
+		this->engine->ThrowError(error);
+		return SQ_ERROR;
+	}
+	/* Reset the bit for random_deviation as it's optional. */
+	items &= ~0x200;
 
 	/* Make sure all properties are defined */
 	uint mask = (config.flags & AICONFIG_BOOLEAN) ? 0x1F3 : 0x1FF;

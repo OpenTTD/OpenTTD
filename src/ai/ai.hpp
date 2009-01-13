@@ -24,6 +24,9 @@ public:
 		START_NEXT_EASY   = 48,
 		START_NEXT_MEDIUM = 24,
 		START_NEXT_HARD   = 12,
+		START_NEXT_MIN    = 0,
+		START_NEXT_MAX    = 120,
+		START_NEXT_DEVIATION = 2,
 	};
 
 	/**

@@ -468,8 +468,7 @@ Company *DoStartupNewCompany(bool is_ai)
 
 void StartupCompanies()
 {
-	/* The AI starts like in the setting with +2 month max */
-	_next_competitor_start = _settings_game.difficulty.competitor_start_time * 90 * DAY_TICKS + RandomRange(60 * DAY_TICKS) + 1;
+	_next_competitor_start = 0;
 }
 
 static void MaybeStartNewCompany()
@@ -483,12 +482,7 @@ static void MaybeStartNewCompany()
 		if (c->is_ai) n++;
 	}
 
-	/* when there's a lot of computers in game, the probability that a new one starts is lower */
-	if (n < (uint)_settings_game.difficulty.max_no_competitors &&
-			n < (_network_server ?
-				InteractiveRandomRange(_settings_game.difficulty.max_no_competitors + 2) :
-				RandomRange(_settings_game.difficulty.max_no_competitors + 2)
-			)) {
+	if (n < (uint)_settings_game.difficulty.max_no_competitors) {
 		/* Send a command to all clients to start up a new AI.
 		 * Works fine for Multiplayer and Singleplayer */
 		DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
@@ -511,10 +505,14 @@ void OnTick_Companies()
 	if (IsValidCompanyID((CompanyID)_cur_company_tick_index)) {
 		Company *c = GetCompany((CompanyID)_cur_company_tick_index);
 		if (c->name_1 != 0) GenerateCompanyName(c);
+	}
 
-		if (AI::CanStartNew() && _game_mode != GM_MENU && !--_next_competitor_start) {
-			MaybeStartNewCompany();
-		}
+	if (_next_competitor_start == 0) {
+		_next_competitor_start = AI::GetStartNextTime() * 30 * DAY_TICKS;
+	}
+
+	if (AI::CanStartNew() && _game_mode != GM_MENU && --_next_competitor_start == 0) {
+		MaybeStartNewCompany();
 	}
 
 	_cur_company_tick_index = (_cur_company_tick_index + 1) % MAX_COMPANIES;

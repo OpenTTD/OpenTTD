@@ -64,6 +64,11 @@ public:
 	void SetSetting(const char *name, int value);
 
 	/**
+	 * Randomize all settings the AI requested to be randomized.
+	 */
+	void AddRandomDeviation();
+
+	/**
 	 * Is this config attached to an AI?
 	 */
 	bool HasAI();
