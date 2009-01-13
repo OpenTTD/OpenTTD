@@ -123,7 +123,9 @@
 	if (!IsValidIndustry(industry_id)) return -1;
 
 	Industry *ind = ::GetIndustry(industry_id);
-	return (int32)::FindStationsAroundTiles(ind->xy, ind->width, ind->height).Length();
+	StationList stations;
+	::FindStationsAroundTiles(ind->xy, ind->width, ind->height, &stations);
+	return (int32)stations.Length();
 }
 
 /* static */ int32 AIIndustry::GetDistanceManhattanToTile(IndustryID industry_id, TileIndex tile)

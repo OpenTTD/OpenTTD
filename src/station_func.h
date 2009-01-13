@@ -18,7 +18,7 @@
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 
 typedef SmallVector<Station*, 1> StationList;
-StationList FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod);
+void FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod, StationList *stations);
 
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord();
