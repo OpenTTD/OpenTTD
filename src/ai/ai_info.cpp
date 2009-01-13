@@ -153,7 +153,7 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 
 	AIConfigItem config;
 	config.name = strdup("start_date");
-	config.description = strdup("The amount of months after the start of the last AI, this AI will start (give or take).");
+	config.description = strdup("The amount of days after the start of the last AI, this AI will start (give or take).");
 	config.min_value = AI::START_NEXT_MIN;
 	config.max_value = AI::START_NEXT_MAX;
 	config.easy_value   = AI::START_NEXT_EASY;
@@ -161,6 +161,7 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	config.hard_value   = AI::START_NEXT_HARD;
 	config.custom_value = AI::START_NEXT_MEDIUM;
 	config.random_deviation = AI::START_NEXT_DEVIATION;
+	config.step_size = 30;
 	config.flags = AICONFIG_NONE;
 	info->config_list.push_back(config);
 
@@ -208,6 +209,7 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 	AIConfigItem config;
 	memset(&config, 0, sizeof(config));
 	config.max_value = 1;
+	config.step_size = 1;
 	uint items = 0;
 
 	/* Read the table, and find all properties we care about */
@@ -267,6 +269,10 @@ SQInteger AIInfo::AddSetting(HSQUIRRELVM vm)
 			sq_getinteger(vm, -1, &res);
 			config.custom_value = res;
 			items |= 0x080;
+		} else if (strcmp(key, "step_size") == 0) {
+			SQInteger res;
+			sq_getinteger(vm, -1, &res);
+			config.step_size = res;
 		} else if (strcmp(key, "flags") == 0) {
 			SQInteger res;
 			sq_getinteger(vm, -1, &res);
