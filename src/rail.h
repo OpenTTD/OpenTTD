@@ -23,6 +23,20 @@ enum RailTypeFlags {
 };
 DECLARE_ENUM_AS_BIT_SET(RailTypeFlags);
 
+/** Offsets from base sprite for fence sprites. These are in the order of
+ *  the sprites in the original data files.
+ */
+enum RailFenceOffset {
+	RFO_FLAT_X,
+	RFO_FLAT_Y,
+	RFO_FLAT_VERT,
+	RFO_FLAT_HORZ,
+	RFO_SLOPE_SW,
+	RFO_SLOPE_SE,
+	RFO_SLOPE_NE,
+	RFO_SLOPE_NW,
+};
+
 /** This struct contains all the info that is needed to draw and construct tracks.
  */
 struct RailtypeInfo {
