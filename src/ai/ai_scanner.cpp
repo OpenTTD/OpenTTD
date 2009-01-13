@@ -160,6 +160,8 @@ AIScanner::AIScanner()
 	this->engine->AddClassBegin("AILibrary");
 	this->engine->AddClassEnd();
 	this->engine->AddMethod("RegisterLibrary", &AILibrary::Constructor, 2, "tx");
+	this->engine->AddConst("AICONFIG_RANDOM", AICONFIG_RANDOM);
+	this->engine->AddConst("AICONFIG_BOOLEAN", AICONFIG_BOOLEAN);
 
 	/* Mark this class as global pointer */
 	this->engine->SetGlobalPointer(this);
