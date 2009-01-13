@@ -1,3 +1,4 @@
+/* $Id$ */
 
 #include <squirrel.h>
 #include "../stdafx.h"

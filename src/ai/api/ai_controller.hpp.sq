@@ -1,3 +1,5 @@
+/* $Id$ */
+
 #include "ai_controller.hpp"
 
 void SQAIController_Register(Squirrel *engine) {

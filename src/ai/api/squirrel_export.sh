@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# $Id$
+
 # This must be called from within the src/ai/api directory.
 
 if [ -z "$1" ]; then
