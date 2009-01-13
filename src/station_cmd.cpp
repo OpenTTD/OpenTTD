@@ -2940,9 +2940,9 @@ CommandCost CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
  *
  * @return: Set of found stations
  */
-StationSet FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod)
+StationList FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod)
 {
-	StationSet station_set;
+	StationList stations;
 
 	/* area to search = producer plus station catchment radius */
 	int max_rad = (_settings_game.station.modified_catchment ? MAX_CATCHMENT : CA_UNMODIFIED);
@@ -2989,11 +2989,11 @@ StationSet FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod)
 		/* Insert the station in the set. This will fail if it has
 		 * already been added.
 		 */
-		station_set.insert(st);
+		stations.Include(st);
 
 	END_TILE_LOOP(cur_tile, w, h, tile - TileDiffXY(max_rad, max_rad))
 
-	return station_set;
+	return stations;
 }
 
 uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
@@ -3003,8 +3003,8 @@ uint MoveGoodsToStation(TileIndex tile, int w, int h, CargoID type, uint amount)
 	uint best_rating1 = 0; // rating of st1
 	uint best_rating2 = 0; // rating of st2
 
-	StationSet all_stations = FindStationsAroundTiles(tile, w, h);
-	for (StationSet::iterator st_iter = all_stations.begin(); st_iter != all_stations.end(); ++st_iter) {
+	StationList all_stations = FindStationsAroundTiles(tile, w, h);
+	for (Station **st_iter = all_stations.Begin(); st_iter != all_stations.End(); ++st_iter) {
 		Station *st = *st_iter;
 
 		/* Is the station reserved exclusively for somebody else? */

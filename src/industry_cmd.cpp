@@ -1992,9 +1992,9 @@ static void CanCargoServiceIndustry(CargoID cargo, Industry *ind, bool *c_accept
 int WhoCanServiceIndustry(Industry *ind)
 {
 	/* Find all stations within reach of the industry */
-	StationSet stations = FindStationsAroundTiles(ind->xy, ind->width, ind->height);
+	StationList stations = FindStationsAroundTiles(ind->xy, ind->width, ind->height);
 
-	if (stations.size() == 0) return 0; // No stations found at all => nobody services
+	if (stations.Length() == 0) return 0; // No stations found at all => nobody services
 
 	const Vehicle *v;
 	int result = 0;
@@ -2030,7 +2030,7 @@ int WhoCanServiceIndustry(Industry *ind)
 				/* Same cargo produced by industry is dropped here => not serviced by vehicle v */
 				if ((o->GetUnloadType() & OUFB_UNLOAD) && !c_accepts) break;
 
-				if (stations.find(st) != stations.end()) {
+				if (stations.Contains(st)) {
 					if (v->owner == _local_company) return 2; // Company services industry
 					result = 1; // Competitor services industry
 				}

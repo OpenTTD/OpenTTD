@@ -13,14 +13,12 @@
 #include "tile_type.h"
 #include "cargo_type.h"
 #include "vehicle_type.h"
-#include <set>
+#include "core/smallvec_type.hpp"
 
 void ModifyStationRatingAround(TileIndex tile, Owner owner, int amount, uint radius);
 
-/** A set of stations (\c const \c Station* ) */
-typedef std::set<Station*, PoolItemIndexLess<Station> > StationSet;
-
-StationSet FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod);
+typedef SmallVector<Station*, 1> StationList;
+StationList FindStationsAroundTiles(TileIndex tile, int w_prod, int h_prod);
 
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord();
