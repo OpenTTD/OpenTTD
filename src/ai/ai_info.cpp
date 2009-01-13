@@ -156,10 +156,10 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	config.description = strdup("The amount of months after the start of the last AI, this AI will start (give or take).");
 	config.min_value = 0;
 	config.max_value = 120;
-	config.easy_value = 48;
-	config.medium_value = 24;
-	config.hard_value = 12;
-	config.custom_value = 24;
+	config.easy_value   = AI::START_NEXT_EASY;
+	config.medium_value = AI::START_NEXT_MEDIUM;
+	config.hard_value   = AI::START_NEXT_HARD;
+	config.custom_value = AI::START_NEXT_MEDIUM;
 	config.flags = AICONFIG_NONE;
 	info->config_list.push_back(config);
 

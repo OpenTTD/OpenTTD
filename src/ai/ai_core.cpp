@@ -227,6 +227,28 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
+/* static */ int AI::GetStartNextTime()
+{
+	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
+		if (IsValidCompanyID(c)) continue;
+
+		AIConfig *config = AIConfig::GetConfig(c);
+		if (config->HasAI()) return config->GetSetting("start_date");
+
+		/* No AI configured, so fall back to some defaults */
+		switch (_settings_game.difficulty.diff_level) {
+			case 0: return AI::START_NEXT_EASY;
+			case 1: return AI::START_NEXT_MEDIUM;
+			case 2: return AI::START_NEXT_HARD;
+			case 3: return AI::START_NEXT_MEDIUM;
+			default: NOT_REACHED();
+		}
+	}
+
+	/* Currently no AI can be started, check again in a year. */
+	return 12;
+}
+
 /* static */ char *AI::GetConsoleList(char *p, const char *last)
 {
 	return AI::ai_scanner->GetAIConsoleList(p, last);

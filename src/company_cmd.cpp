@@ -494,9 +494,7 @@ static void MaybeStartNewCompany()
 		DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
 	}
 
-	/* The next AI starts like the difficulty setting said, with +2 month max */
-	_next_competitor_start = _settings_game.difficulty.competitor_start_time * 90 * DAY_TICKS + 1;
-	_next_competitor_start += _network_server ? InteractiveRandomRange(60 * DAY_TICKS) : RandomRange(60 * DAY_TICKS);
+	_next_competitor_start = AI::GetStartNextTime() * 30 * DAY_TICKS;
 }
 
 void InitializeCompanies()

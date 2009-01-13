@@ -18,6 +18,15 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2);
 class AI {
 public:
 	/**
+	 * The default months AIs start after eachother.
+	 */
+	enum StartNext {
+		START_NEXT_EASY   = 48,
+		START_NEXT_MEDIUM = 24,
+		START_NEXT_HARD   = 12,
+	};
+
+	/**
 	 * Is it possible to start a new AI company?
 	 * @return True if a new AI company can be started.
 	 */
@@ -87,6 +96,11 @@ public:
 	 * Load data for an AI from a savegame.
 	 */
 	static void Load(CompanyID company, int version);
+
+	/**
+	 * Get the number of months before the next AI should start.
+	 */
+	static int GetStartNextTime();
 
 	static char *GetConsoleList(char *p, const char *last);
 	static const AIInfoList *GetInfoList();
