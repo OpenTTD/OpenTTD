@@ -1245,6 +1245,47 @@ static NetworkServerPacket * const _network_server_packet[] = {
 // If this fails, check the array above with network_data.h
 assert_compile(lengthof(_network_server_packet) == PACKET_END);
 
+void NetworkSocketHandler::Send_CompanyInformation(Packet *p, const Company *c, const NetworkCompanyStats *stats)
+{
+	/* Grab the company name */
+	char company_name[NETWORK_COMPANY_NAME_LENGTH];
+	SetDParam(0, c->index);
+	GetString(company_name, STR_COMPANY_NAME, lastof(company_name));
+
+	/* Get the income */
+	Money income = 0;
+	if (_cur_year - 1 == c->inaugurated_year) {
+		/* The company is here just 1 year, so display [2], else display[1] */
+		for (uint i = 0; i < lengthof(c->yearly_expenses[2]); i++) {
+			income -= c->yearly_expenses[2][i];
+		}
+	} else {
+		for (uint i = 0; i < lengthof(c->yearly_expenses[1]); i++) {
+			income -= c->yearly_expenses[1][i];
+		}
+	}
+
+	/* Send the information */
+	p->Send_uint8 (c->index);
+	p->Send_string(company_name);
+	p->Send_uint32(c->inaugurated_year);
+	p->Send_uint64(c->old_economy[0].company_value);
+	p->Send_uint64(c->money);
+	p->Send_uint64(income);
+	p->Send_uint16(c->old_economy[0].performance_history);
+
+	/* Send 1 if there is a passord for the company else send 0 */
+	p->Send_bool  (!StrEmpty(_network_company_states[c->index].password));
+
+	for (int i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
+		p->Send_uint16(stats->num_vehicle[i]);
+	}
+
+	for (int i = 0; i < NETWORK_STATION_TYPES; i++) {
+		p->Send_uint16(stats->num_station[i]);
+	}
+}
+
 /**
  * Populate the company stats.
  * @param stats the stats to update
@@ -1587,4 +1628,5 @@ bool NetworkCompanyHasClients(CompanyID company)
 	}
 	return false;
 }
+
 #endif /* ENABLE_NETWORK */
