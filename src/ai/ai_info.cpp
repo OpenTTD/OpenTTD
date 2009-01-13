@@ -89,7 +89,7 @@ bool AIFileInfo::CanLoadFromVersion(int version)
 	sq_getstackobj(vm, -1, &ret);
 
 	sq_settop(vm, top);
-	return sq_objtobool(&ret);
+	return sq_objtobool(&ret) != 0;
 }
 
 const char *AIFileInfo::GetDirName()
