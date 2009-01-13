@@ -8,12 +8,9 @@
 
 #include "../../stdafx.h"
 #include "../../debug.h"
-#include "../../string_func.h"
-#include "../../date_func.h"
 #include "os_abstraction.h"
 #include "core.h"
 #include "packet.h"
-#include "../network_func.h"
 
 
 #ifdef __MORPHOS__
