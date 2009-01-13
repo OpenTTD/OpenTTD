@@ -172,7 +172,7 @@ void Ship::OnNewDay()
 
 	if (this->running_ticks == 0) return;
 
-	CommandCost cost(EXPENSES_SHIP_RUN, GetVehicleProperty(this, 0x0F, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running * this->running_ticks / (364 * DAY_TICKS));
+	CommandCost cost(EXPENSES_SHIP_RUN, GetVehicleProperty(this, 0x0F, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
 
 	this->profit_this_year -= cost.GetCost();
 	this->running_ticks = 0;
@@ -795,7 +795,7 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 		e = GetEngine(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
-		v->max_age = e->lifelength * 366;
+		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
 		_new_vehicle_id = v->index;
 
 		v->name = NULL;

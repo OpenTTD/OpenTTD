@@ -286,7 +286,7 @@ public:
 	/**
 	 * Get the running cost of the offered engine.
 	 * @return The running cost of the vehicle per year.
-	 * @note Cost is per year; divide by 364 to get per day.
+	 * @note Cost is per year; divide by 365 to get per day.
 	 */
 	Money GetRunningCost();
 

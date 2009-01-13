@@ -246,7 +246,7 @@ void SetYearEngineAgingStops()
 
 		/* Base year ending date on half the model life */
 		YearMonthDay ymd;
-		ConvertDateToYMD(ei->base_intro + (ei->lifelength * 366) / 2, &ymd);
+		ConvertDateToYMD(ei->base_intro + (ei->lifelength * DAYS_IN_LEAP_YEAR) / 2, &ymd);
 
 		_year_engine_aging_stops = max(_year_engine_aging_stops, ymd.year);
 	}
@@ -475,7 +475,7 @@ void EnginesMonthlyLoop()
 				CalcEngineReliability(e);
 			}
 
-			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + 365)) {
+			if (!(e->flags & ENGINE_AVAILABLE) && _date >= (e->intro_date + DAYS_IN_YEAR)) {
 				/* Introduce it to all companies */
 				NewVehicleAvailable(e);
 			} else if (!(e->flags & (ENGINE_AVAILABLE|ENGINE_EXCLUSIVE_PREVIEW)) && _date >= e->intro_date) {

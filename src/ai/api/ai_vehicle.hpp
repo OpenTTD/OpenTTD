@@ -218,7 +218,7 @@ public:
 	 * @param vehicle_id The vehicle to get the age of.
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @return The running cost of the vehicle per year.
-	 * @note Cost is per year; divide by 364 to get per day.
+	 * @note Cost is per year; divide by 365 to get per day.
 	 * @note This is not equal to AIEngine::GetRunningCost for Trains, because
 	 *   wagons and second engines can add up in the calculation too.
 	 */

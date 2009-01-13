@@ -254,7 +254,7 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 		e = GetEngine(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
-		v->max_age = e->lifelength * 366;
+		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
 		_new_vehicle_id = v->index;
 
 		v->name = NULL;
@@ -2000,7 +2000,7 @@ void RoadVehicle::OnNewDay()
 	if (this->running_ticks == 0) return;
 
 	const RoadVehicleInfo *rvi = RoadVehInfo(this->engine_type);
-	CommandCost cost(EXPENSES_ROADVEH_RUN, rvi->running_cost * GetPriceByIndex(rvi->running_cost_class) * this->running_ticks / (364 * DAY_TICKS));
+	CommandCost cost(EXPENSES_ROADVEH_RUN, rvi->running_cost * GetPriceByIndex(rvi->running_cost_class) * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
 
 	this->profit_this_year -= cost.GetCost();
 	this->running_ticks = 0;

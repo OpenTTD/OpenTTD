@@ -959,15 +959,18 @@ void AgeVehicle(Vehicle *v)
 	if (v->age < 65535) v->age++;
 
 	int age = v->age - v->max_age;
-	if (age == 366 * 0 || age == 366 * 1 || age == 366 * 2 || age == 366 * 3 || age == 366 * 4) v->reliability_spd_dec <<= 1;
+	if (age == DAYS_IN_LEAP_YEAR * 0 || age == DAYS_IN_LEAP_YEAR * 1 ||
+			age == DAYS_IN_LEAP_YEAR * 2 || age == DAYS_IN_LEAP_YEAR * 3 || age == DAYS_IN_LEAP_YEAR * 4) {
+		v->reliability_spd_dec <<= 1;
+	}
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-	if (age == -366) {
+	if (age == -DAYS_IN_LEAP_YEAR) {
 		ShowVehicleGettingOld(v, STR_01A0_IS_GETTING_OLD);
 	} else if (age == 0) {
 		ShowVehicleGettingOld(v, STR_01A1_IS_GETTING_VERY_OLD);
-	} else if (age > 0 && (age % 366) == 0) {
+	} else if (age > 0 && (age % DAYS_IN_LEAP_YEAR) == 0) {
 		ShowVehicleGettingOld(v, STR_01A2_IS_GETTING_VERY_OLD_AND);
 	}
 }

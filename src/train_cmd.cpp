@@ -829,7 +829,7 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 			const Engine *e = GetEngine(p1);
 			v->reliability = e->reliability;
 			v->reliability_spd_dec = e->reliability_spd_dec;
-			v->max_age = e->lifelength * 366;
+			v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
 
 			v->name = NULL;
 			v->u.rail.railtype = rvi->railtype;
@@ -4456,7 +4456,7 @@ void Train::OnNewDay()
 
 		if (this->running_ticks != 0) {
 			/* running costs */
-			CommandCost cost(EXPENSES_TRAIN_RUN, this->GetRunningCost() * this->running_ticks / (364 * DAY_TICKS));
+			CommandCost cost(EXPENSES_TRAIN_RUN, this->GetRunningCost() * this->running_ticks / (DAYS_IN_YEAR  * DAY_TICKS));
 
 			this->profit_this_year -= cost.GetCost();
 			this->running_ticks = 0;

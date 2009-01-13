@@ -1514,7 +1514,7 @@ static bool LoadOldMain(LoadgameState *ls)
 	 * we will get a "new vehicle"-spree. */
 	Engine *e;
 	FOR_ALL_ENGINES(e) {
-		if (_date >= (e->intro_date + 365)) {
+		if (_date >= (e->intro_date + DAYS_IN_YEAR)) {
 			e->flags = (e->flags & ~ENGINE_EXCLUSIVE_PREVIEW) | ENGINE_AVAILABLE;
 			e->company_avail = (CompanyMask)-1;
 		}

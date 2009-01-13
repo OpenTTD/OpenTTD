@@ -186,7 +186,7 @@
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
-	return ::GetEngine(engine_id)->lifelength * 366;
+	return ::GetEngine(engine_id)->lifelength * DAYS_IN_LEAP_YEAR;
 }
 
 /* static */ Money AIEngine::GetRunningCost(EngineID engine_id)

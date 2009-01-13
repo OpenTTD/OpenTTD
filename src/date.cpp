@@ -84,35 +84,35 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 	 */
 
 	/* There are 97 leap years in 400 years */
-	Year yr = 400 * (date / (365 * 400 + 97));
-	int rem = date % (365 * 400 + 97);
+	Year yr = 400 * (date / (DAYS_IN_YEAR * 400 + 97));
+	int rem = date % (DAYS_IN_YEAR * 400 + 97);
 	uint16 x;
 
-	if (rem >= 365 * 100 + 25) {
+	if (rem >= DAYS_IN_YEAR * 100 + 25) {
 		/* There are 25 leap years in the first 100 years after
 		 * every 400th year, as every 400th year is a leap year */
 		yr  += 100;
-		rem -= 365 * 100 + 25;
+		rem -= DAYS_IN_YEAR * 100 + 25;
 
 		/* There are 24 leap years in the next couple of 100 years */
-		yr += 100 * (rem / (365 * 100 + 24));
-		rem = (rem % (365 * 100 + 24));
+		yr += 100 * (rem / (DAYS_IN_YEAR * 100 + 24));
+		rem = (rem % (DAYS_IN_YEAR * 100 + 24));
 	}
 
-	if (!IsLeapYear(yr) && rem >= 365 * 4) {
+	if (!IsLeapYear(yr) && rem >= DAYS_IN_YEAR * 4) {
 		/* The first 4 year of the century are not always a leap year */
 		yr  += 4;
-		rem -= 365 * 4;
+		rem -= DAYS_IN_YEAR * 4;
 	}
 
 	/* There is 1 leap year every 4 years */
-	yr += 4 * (rem / (365 * 4 + 1));
-	rem = rem % (365 * 4 + 1);
+	yr += 4 * (rem / (DAYS_IN_YEAR * 4 + 1));
+	rem = rem % (DAYS_IN_YEAR * 4 + 1);
 
 	/* The last (max 3) years to account for; the first one
 	 * can be, but is not necessarily a leap year */
-	while (rem >= (IsLeapYear(yr) ? 366 : 365)) {
-		rem -= IsLeapYear(yr) ? 366 : 365;
+	while (rem >= (IsLeapYear(yr) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR)) {
+		rem -= IsLeapYear(yr) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
 		yr++;
 	}
 
@@ -149,7 +149,7 @@ Date ConvertYMDToDate(Year year, Month month, Day day)
 	/* Account for the missing of the 29th of February in non-leap years */
 	if (!IsLeapYear(year) && days >= ACCUM_MAR) days--;
 
-	return year * 365 + nr_of_leap_years + days;
+	return year * DAYS_IN_YEAR + nr_of_leap_years + days;
 }
 
 /** Functions used by the IncreaseDate function */
@@ -284,7 +284,7 @@ void IncreaseDate()
 		uint days_this_year;
 
 		_cur_year--;
-		days_this_year = IsLeapYear(_cur_year) ? 366 : 365;
+		days_this_year = IsLeapYear(_cur_year) ? DAYS_IN_LEAP_YEAR : DAYS_IN_YEAR;
 		_date -= days_this_year;
 		FOR_ALL_VEHICLES(v) v->date_of_last_service -= days_this_year;
 

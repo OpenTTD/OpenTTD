@@ -104,7 +104,7 @@ RoadTypes GetCompanyRoadtypes(CompanyID company)
 		const EngineInfo *ei = &e->info;
 
 		if (HasBit(ei->climates, _settings_game.game_creation.landscape) &&
-				(HasBit(e->company_avail, company) || _date >= e->intro_date + 365)) {
+				(HasBit(e->company_avail, company) || _date >= e->intro_date + DAYS_IN_YEAR)) {
 			SetBit(rt, HasBit(ei->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD);
 		}
 	}

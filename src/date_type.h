@@ -11,7 +11,11 @@
  * 1 tick is approximately 30 ms.
  * 1 day is thus about 2 seconds (74 * 30 = 2220) on a machine that can run OpenTTD normally
  */
-#define DAY_TICKS 74
+enum {
+	DAY_TICKS = 74,          ///< ticks per day
+	DAYS_IN_YEAR = 365,      ///< days per year
+	DAYS_IN_LEAP_YEAR = 366, ///< sometimes, you need one day more...
+};
 
 /*
  * ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR and DAYS_TILL_ORIGINAL_BASE_YEAR are
@@ -31,7 +35,7 @@
  * The offset in days from the '_date == 0' till
  * 'ConvertYMDToDate(ORIGINAL_BASE_YEAR, 0, 1)'
  */
-#define DAYS_TILL_ORIGINAL_BASE_YEAR (365 * ORIGINAL_BASE_YEAR + ORIGINAL_BASE_YEAR / 4 - ORIGINAL_BASE_YEAR / 100 + ORIGINAL_BASE_YEAR / 400)
+#define DAYS_TILL_ORIGINAL_BASE_YEAR (DAYS_IN_YEAR * ORIGINAL_BASE_YEAR + ORIGINAL_BASE_YEAR / 4 - ORIGINAL_BASE_YEAR / 100 + ORIGINAL_BASE_YEAR / 400)
 
 /* The absolute minimum & maximum years in OTTD */
 #define MIN_YEAR 0

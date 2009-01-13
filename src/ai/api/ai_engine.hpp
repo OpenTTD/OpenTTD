@@ -117,7 +117,7 @@ public:
 	 * @param engine_id The engine to get the running cost of.
 	 * @pre IsValidEngine(engine_id).
 	 * @return The running cost of a vehicle per year.
-	 * @note Cost is per year; divide by 364 to get per day.
+	 * @note Cost is per year; divide by 365 to get per day.
 	 */
 	static Money GetRunningCost(EngineID engine_id);
 

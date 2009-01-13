@@ -124,7 +124,7 @@ void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 	SpriteID pal;
 
 	/* draw profit-based colored icons */
-	if (v->age <= 365 * 2) {
+	if (v->age <= DAYS_IN_YEAR * 2) {
 		pal = PALETTE_TO_GREY;
 	} else if (v->GetDisplayProfitLastYear() < 0) {
 		pal = PALETTE_TO_RED;
@@ -783,7 +783,7 @@ void BaseVehicleListWindow::DrawVehicleListItems(int x, VehicleID selected_vehic
 		if (v->IsInDepot()) {
 			str = STR_021F;
 		} else {
-			str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
+			str = (v->age > v->max_age - DAYS_IN_LEAP_YEAR) ? STR_00E3 : STR_00E2;
 		}
 
 		SetDParam(0, v->unitnumber);
@@ -1412,9 +1412,9 @@ struct VehicleDetailsWindow : Window {
 		this->DrawWidgets();
 
 		/* Draw running cost */
-		SetDParam(1, v->age / 366);
-		SetDParam(0, (v->age + 365 < v->max_age) ? STR_AGE : STR_AGE_RED);
-		SetDParam(2, v->max_age / 366);
+		SetDParam(1, v->age / DAYS_IN_LEAP_YEAR);
+		SetDParam(0, (v->age + DAYS_IN_YEAR < v->max_age) ? STR_AGE : STR_AGE_RED);
+		SetDParam(2, v->max_age / DAYS_IN_LEAP_YEAR);
 		SetDParam(3, v->GetDisplayRunningCost());
 		DrawString(2, 15, _vehicle_translation_table[VST_VEHICLE_AGE_RUNNING_COST_YR][v->type], TC_FROMSTRING);
 

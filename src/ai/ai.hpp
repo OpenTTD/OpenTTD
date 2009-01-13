@@ -6,6 +6,7 @@
 #define AI_HPP
 
 #include "api/ai_event_types.hpp"
+#include "../date_type.h"
 
 #ifndef AI_CONFIG_HPP
 struct ltstr { bool operator()(const char *s1, const char *s2) const { return strcmp(s1, s2) < 0; } };
@@ -21,9 +22,9 @@ public:
 	 * The default months AIs start after eachother.
 	 */
 	enum StartNext {
-		START_NEXT_EASY   = 1461,
-		START_NEXT_MEDIUM = 730,
-		START_NEXT_HARD   = 365,
+		START_NEXT_EASY   = DAYS_IN_YEAR * 3 + DAYS_IN_LEAP_YEAR,
+		START_NEXT_MEDIUM = DAYS_IN_YEAR * 2,
+		START_NEXT_HARD   = DAYS_IN_YEAR,
 		START_NEXT_MIN    = 1,
 		START_NEXT_MAX    = 3600,
 		START_NEXT_DEVIATION = 60,
