@@ -6161,8 +6161,8 @@
   GetTileIndex():   123
   GetTileIndex():   31488
   GetTileIndex():   0
-  GetTileIndex():   -257
-  GetTileIndex():   2570000
+  GetTileIndex():   -1
+  GetTileIndex():   -1
   IsValidTile(123): true
   GetTileX(124):    124
   GetTileY(124):    0
@@ -6225,12 +6225,12 @@
     Tile 45469
     Tile 45468
     Tile 45467
-    Tile 45466
-    Tile 45210
-    Tile 44954
-    Tile 44698
-    Tile 44442
-    Tile 44186
+    Tile 45211
+    Tile 44955
+    Tile 44699
+    Tile 44443
+    Tile 44187
+    Tile 43931
     Tile 43930
     Tile 43929
     Tile 43928
@@ -7229,7 +7229,7 @@
     GetPopulation(): 180
     GetLocation():   14935
     GetHouseCount(): 13
-    GetRating():     5
+    GetRating():     0
   Town 12
     IsValidTown():   true
     GetName():       Ginborough
@@ -7243,7 +7243,7 @@
     GetPopulation(): 310
     GetLocation():   9595
     GetHouseCount(): 14
-    GetRating():     5
+    GetRating():     0
   Town 14
     IsValidTown():   true
     GetName():       Prundinghall
@@ -7278,7 +7278,7 @@
     GetPopulation(): 262
     GetLocation():   10574
     GetHouseCount(): 13
-    GetRating():     5
+    GetRating():     0
   Town 19
     IsValidTown():   true
     GetName():       Mendingston
@@ -7299,7 +7299,7 @@
     GetPopulation(): 802
     GetLocation():   9634
     GetHouseCount(): 27
-    GetRating():     5
+    GetRating():     0
   Town 22
     IsValidTown():   true
     GetName():       Naborough
@@ -7590,12 +7590,12 @@
     GetLocation():       33417
     GetEngineType():     153
     GetUnitNumber():     1
-    GetAge():            0
+    GetAge():            1
     GetMaxAge():         5490
-    GetAgeLeft():        5490
+    GetAgeLeft():        5489
     GetCurrentSpeed():   4
     GetRunningCost():    14
-    GetProfitThisYear(): 0
+    GetProfitThisYear(): -1
     GetProfitLastYear(): 0
     GetCurrentValue():   466
     GetVehicleType():    1
@@ -7605,7 +7605,7 @@
     IsInDepot():         false
     GetNumWagons():      1
     GetWagonEngineType(): 153
-    GetWagonAge():       0
+    GetWagonAge():       1
     GetLength():         8
   GetOwner():           1
   BuildVehicle():       14
@@ -7663,11 +7663,11 @@
     14 => 1
     12 => 1
   Age ListDump:
+    14 => 1
+    13 => 1
+    12 => 1
     17 => 0
     16 => 0
-    14 => 0
-    13 => 0
-    12 => 0
   MaxAge ListDump:
     16 => 10980
     14 => 10980
@@ -7676,10 +7676,10 @@
     12 => 5490
   AgeLeft ListDump:
     16 => 10980
-    14 => 10980
+    14 => 10979
     17 => 7320
-    13 => 5490
-    12 => 5490
+    13 => 5489
+    12 => 5489
   CurrentSpeed ListDump:
     12 => 13
     17 => 0
@@ -7697,7 +7697,7 @@
     16 => 0
     14 => 0
     13 => 0
-    12 => 0
+    12 => -1
   ProfitLastYear ListDump:
     17 => 0
     16 => 0

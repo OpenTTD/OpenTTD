@@ -49,7 +49,7 @@ public:
 	 * @return The X-value.
 	 * @post Return value is always lower than GetMapSizeX().
 	 */
-	static uint32 GetTileX(TileIndex tile);
+	static int32 GetTileX(TileIndex tile);
 
 	/**
 	 * Gets the place along the SE/NW border (Y-value).
@@ -58,7 +58,7 @@ public:
 	 * @return The Y-value.
 	 * @post Return value is always lower than GetMapSizeY().
 	 */
-	static uint32 GetTileY(TileIndex tile);
+	static int32 GetTileY(TileIndex tile);
 
 	/**
 	 * Gets the TileIndex given a x,y-coordinate.
@@ -79,7 +79,7 @@ public:
 	 * @pre IsValidTile(tile_to).
 	 * @return The Manhattan distance between the tiles.
 	 */
-	static uint32 DistanceManhattan(TileIndex tile_from, TileIndex tile_to);
+	static int32 DistanceManhattan(TileIndex tile_from, TileIndex tile_to);
 
 	/**
 	 * Calculates the distance between two tiles via 1D calculation.
@@ -91,7 +91,7 @@ public:
 	 * @pre IsValidTile(tile_to).
 	 * @return The maximum distance between the tiles.
 	 */
-	static uint32 DistanceMax(TileIndex tile_from, TileIndex tile_to);
+	static int32 DistanceMax(TileIndex tile_from, TileIndex tile_to);
 
 	/**
 	 * The squared distance between the two tiles.
@@ -103,7 +103,7 @@ public:
 	 * @pre IsValidTile(tile_to).
 	 * @return The squared distance between the tiles.
 	 */
-	static uint32 DistanceSquare(TileIndex tile_from, TileIndex tile_to);
+	static int32 DistanceSquare(TileIndex tile_from, TileIndex tile_to);
 
 	/**
 	 * Calculates the shortest distance to the edge.
@@ -111,7 +111,7 @@ public:
 	 * @pre IsValidTile(tile).
 	 * @return The distances to the closest edge.
 	 */
-	static uint32 DistanceFromEdge(TileIndex tile);
+	static int32 DistanceFromEdge(TileIndex tile);
 };
 
 #endif /* AI_MAP_HPP */
