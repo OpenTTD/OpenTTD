@@ -73,7 +73,7 @@ const char *AIFileInfo::GetInstanceName()
 bool AIFileInfo::CanLoadFromVersion(int version)
 {
 	if (version == -1) return true;
-	if (!this->engine->MethodExists(*this->SQ_instance, "CanLoadFromVersion")) return true;
+	if (!this->engine->MethodExists(*this->SQ_instance, "CanLoadFromVersion")) return (version == this->GetVersion());
 
 	HSQUIRRELVM vm = this->engine->GetVM();
 	int top = sq_gettop(vm);
