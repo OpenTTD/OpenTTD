@@ -911,6 +911,43 @@ DEF_CONSOLE_CMD(ConStartAI)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConReloadAI)
+{
+	if (argc != 2) {
+		IConsoleHelp("Reload an AI. Usage: 'reload_ai <company-id>'");
+		IConsoleHelp("Reload the AI with the given company id. For company-id's, see the list of companies from the dropdown menu. Company 1 is 1, etc.");
+		return true;
+	}
+
+	if (_game_mode != GM_NORMAL) {
+		IConsoleWarning("AIs can only be managed in a game.");
+		return true;
+	}
+
+	if (_networking && !_network_server) {
+		IConsoleWarning("Only the server can reload an AI.");
+		return true;
+	}
+
+	CompanyID company_id = (CompanyID)(atoi(argv[1]) - 1);
+	if (!IsValidCompanyID(company_id)) {
+		IConsolePrintF(CC_DEFAULT, "Unknown company. Company range is between 1 and %d.", MAX_COMPANIES);
+		return true;
+	}
+
+	if (IsHumanCompany(company_id)) {
+		IConsoleWarning("Company is not controlled by an AI.");
+		return true;
+	}
+
+	/* First kill the company of the AI, then start a new one. This should start the current AI again */
+	DoCommandP(0, 2, company_id, CMD_COMPANY_CTRL);
+	DoCommandP(0, 1, 0, CMD_COMPANY_CTRL);
+	IConsolePrint(CC_DEFAULT, "AI reloaded.");
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConStopAI)
 {
 	if (argc != 2) {
@@ -1479,6 +1516,7 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("getseed",      ConGetSeed);
 	IConsoleCmdRegister("getdate",      ConGetDate);
 	IConsoleCmdRegister("quit",         ConExit);
+	IConsoleCmdRegister("reload_ai",    ConReloadAI);
 	IConsoleCmdRegister("rescan_ai",    ConRescanAI);
 	IConsoleCmdRegister("resetengines", ConResetEngines);
 	IConsoleCmdRegister("return",       ConReturn);
