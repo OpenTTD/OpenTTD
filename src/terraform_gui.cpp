@@ -114,7 +114,7 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile)
 {
 	/* When end_tile is MP_VOID, the DoCommandP checks will deny this command without any
-	 * user-visible reason. This happens when terraforming at the northern border. */
+	 * user-visible reason. This happens when terraforming at the southern border. */
 	if (TileX(end_tile) == MapMaxX()) end_tile += TileDiffXY(-1, 0);
 	if (TileY(end_tile) == MapMaxY()) end_tile += TileDiffXY(0, -1);
 
