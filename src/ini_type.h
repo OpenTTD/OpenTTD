@@ -64,6 +64,11 @@ struct IniGroup {
 	 * @return the requested item or NULL if not found.
 	 */
 	IniItem *GetItem(const char *name, bool create);
+
+	/**
+	 * Clear all items in the group
+	 */
+	void Clear();
 };
 
 /** The complete ini file. */

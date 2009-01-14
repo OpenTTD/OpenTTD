@@ -77,6 +77,13 @@ IniItem *IniGroup::GetItem(const char *name, bool create)
 	return new IniItem(this, name, len);
 }
 
+void IniGroup::Clear()
+{
+	delete this->item;
+	this->item = NULL;
+	this->last_item = &this->item;
+}
+
 IniFile::IniFile(const char **list_group_names) : group(NULL), comment(NULL), list_group_names(list_group_names)
 {
 	this->last_group = &this->group;

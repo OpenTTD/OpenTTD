@@ -639,7 +639,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 
 	if (proc == NULL && list == NULL) return;
 	if (group == NULL) return;
-	group->item = NULL;
+	group->Clear();
 
 	for (i = 0; i != len; i++) {
 		entry = (proc != NULL) ? proc(NULL, i) : list[i];
@@ -1720,11 +1720,9 @@ static void NewsDisplaySaveConfig(IniFile *ini, const char *grpname)
 static void AISaveConfig(IniFile *ini, const char *grpname)
 {
 	IniGroup *group = ini->GetGroup(grpname);
-	IniItem **item;
 
 	if (group == NULL) return;
-	group->item = NULL;
-	item = &group->item;
+	group->Clear();
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		AIConfig *config = AIConfig::GetConfig(c, true);
@@ -1739,9 +1737,8 @@ static void AISaveConfig(IniFile *ini, const char *grpname)
 			name = "none";
 		}
 
-		*item = new IniItem(group, name);
-		(*item)->value = strdup(value);
-		item = &(*item)->next;
+		IniItem *item = new IniItem(group, name, strlen(name));
+		item->SetValue(value);
 	}
 }
 
