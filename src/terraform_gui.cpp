@@ -113,6 +113,11 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
  **/
 bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile)
 {
+	/* When end_tile is MP_VOID, the DoCommandP checks will deny this command without any
+	 * user-visible reason. This happens when terraforming at the northern border. */
+	if (TileX(end_tile) == MapMaxX()) end_tile += TileDiffXY(-1, 0);
+	if (TileY(end_tile) == MapMaxY()) end_tile += TileDiffXY(0, -1);
+
 	switch (proc) {
 		case DDSP_DEMOLISH_AREA:
 			DoCommandP(end_tile, start_tile, 0, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA), CcPlaySound10);
