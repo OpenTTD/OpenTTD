@@ -756,6 +756,10 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 		return sq_throwerror(vm, _SC("parameter 2 has an invalid type (expected function)"));
 	}
 
+	/* Don't allow docommand from a Valuator, as we can't resume in
+	 *  mid-code */
+	AIObject::SetAllowDoCommand(false);
+
 	sq_addref(vm, &obj_func);
 
 	/* Read the params */
@@ -782,7 +786,10 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 		}
 
 		/* Call the function */
-		if (SQ_FAILED(sq_call(vm, nparam + 2, SQTrue, SQTrue))) return SQ_ERROR;
+		if (SQ_FAILED(sq_call(vm, nparam + 2, SQTrue, SQTrue))) {
+			AIObject::SetAllowDoCommand(true);
+			return SQ_ERROR;
+		}
 
 		/* Retreive the return value */
 		SQInteger value;
@@ -802,6 +809,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 				sq_release(vm, &obj_func);
 				for (int i = 0; i < nparam; i++) sq_release(vm, &obj_params[i]);
 
+				AIObject::SetAllowDoCommand(true);
 				return sq_throwerror(vm, _SC("return value of valuator is not valid (not integer/bool)"));
 			}
 		}
@@ -814,5 +822,7 @@ SQInteger AIAbstractList::Valuate(HSQUIRRELVM vm) {
 
 	sq_release(vm, &obj_func);
 	for (int i = 0; i < nparam; i++) sq_release(vm, &obj_params[i]);
+
+	AIObject::SetAllowDoCommand(true);
 	return 0;
 }
