@@ -14,7 +14,7 @@
 #include "core/core.h"
 #include "core/config.h"
 #include "core/packet.h"
-#include "core/tcp.h"
+#include "core/tcp_game.h"
 
 #include "../command_type.h"
 

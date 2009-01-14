@@ -776,6 +776,8 @@ network/core/packet.cpp
 network/core/packet.h
 network/core/tcp.cpp
 network/core/tcp.h
+network/core/tcp_game.cpp
+network/core/tcp_game.h
 network/core/udp.cpp
 network/core/udp.h
 

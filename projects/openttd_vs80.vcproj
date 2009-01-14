@@ -3232,6 +3232,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\network\core\tcp_game.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\tcp_game.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\core\udp.cpp"
 				>
 			</File>

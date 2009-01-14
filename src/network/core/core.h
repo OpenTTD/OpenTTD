@@ -43,7 +43,7 @@ public:
 	SOCKET sock;   ///< The socket currently connected to
 public:
 	/** Create a new unbound socket */
-	NetworkSocketHandler() { this->sock = INVALID_SOCKET; this->has_quit = false; }
+	NetworkSocketHandler(SOCKET s = INVALID_SOCKET) { this->sock = s; this->has_quit = false; }
 
 	/** Close the socket when distructing the socket handler */
 	virtual ~NetworkSocketHandler() { this->Close(); }
