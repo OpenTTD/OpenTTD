@@ -22,9 +22,9 @@ public:
 	 * The default months AIs start after eachother.
 	 */
 	enum StartNext {
-		START_NEXT_EASY   = DAYS_IN_YEAR * 3 + DAYS_IN_LEAP_YEAR,
-		START_NEXT_MEDIUM = DAYS_IN_YEAR * 2,
-		START_NEXT_HARD   = DAYS_IN_YEAR,
+		START_NEXT_EASY   = DAYS_IN_YEAR * 2,
+		START_NEXT_MEDIUM = DAYS_IN_YEAR,
+		START_NEXT_HARD   = DAYS_IN_YEAR / 2,
 		START_NEXT_MIN    = 1,
 		START_NEXT_MAX    = 3600,
 		START_NEXT_DEVIATION = 60,
