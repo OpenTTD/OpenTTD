@@ -133,7 +133,7 @@ void AIScanner::ScanAIDir()
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioAppendDirectory(buf, MAX_PATH, sp, AI_DIR);
 		if (FileExists(buf)) this->ScanDir(buf, false);
-		ttd_strlcat(buf, "library" PATHSEP, MAX_PATH);
+		FioAppendDirectory(buf, MAX_PATH, sp, AI_LIBRARY_DIR);
 		if (FileExists(buf)) this->ScanDir(buf, true);
 	}
 }

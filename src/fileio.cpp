@@ -218,6 +218,7 @@ const char *_subdirs[NUM_SUBDIRS] = {
 	"data" PATHSEP,
 	"lang" PATHSEP,
 	"ai" PATHSEP,
+	"ai" PATHSEP "library" PATHSEP,
 };
 
 const char *_searchpaths[NUM_SEARCHPATHS];
