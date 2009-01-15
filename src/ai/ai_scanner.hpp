@@ -30,11 +30,6 @@ public:
 	void SetDummyAI(class AIInfo *info) { this->info_dummy = info; }
 
 	/**
-	 * Remove an AI from the available list.
-	 */
-	void UnregisterAI(class AIInfo *info);
-
-	/**
 	 * Select a Random AI.
 	 */
 	class AIInfo *SelectRandomAI();
@@ -88,6 +83,7 @@ private:
 
 	AIInfo *info_dummy;
 	AIInfoList info_list;
+	AIInfoList info_single_list;
 	AILibraryList library_list;
 	class Squirrel *engine;
 	char main_script[1024];

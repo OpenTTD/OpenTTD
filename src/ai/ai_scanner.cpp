@@ -166,7 +166,17 @@ AIScanner::~AIScanner()
 {
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
+		free((void *)(*it).first);
 		delete (*it).second;
+	}
+	it = this->info_single_list.begin();
+	for (; it != this->info_single_list.end(); it++) {
+		free((void *)(*it).first);
+	}
+	AILibraryList::iterator lit = this->library_list.begin();
+	for (; lit != this->library_list.end(); lit++) {
+		free((void *)(*lit).first);
+		delete (*lit).second;
 	}
 
 	delete this->engine;
@@ -308,30 +318,32 @@ void AIScanner::RegisterAI(AIInfo *info)
 	}
 
 	this->info_list[strdup(ai_name)] = info;
-}
 
-void AIScanner::UnregisterAI(AIInfo *info)
-{
-	char ai_name[1024];
-	snprintf(ai_name, sizeof(ai_name), "%s.%d", info->GetInstanceName(), info->GetVersion());
-
-	this->info_list.erase(ai_name);
+	/* Add the AI to the 'unique' AI list, where only the highest version of the
+	 *  AI is registered. */
+	snprintf(ai_name, sizeof(ai_name), "%s", info->GetInstanceName());
+	strtolower(ai_name);
+	if (this->info_single_list.find(ai_name) == this->info_single_list.end()) {
+		this->info_single_list[strdup(ai_name)] = info;
+	} else if (this->info_single_list[strdup(ai_name)]->GetVersion() < info->GetVersion()) {
+		this->info_single_list[ai_name] = info;
+	}
 }
 
 AIInfo *AIScanner::SelectRandomAI()
 {
-	if (this->info_list.size() == 0) {
+	if (this->info_single_list.size() == 0) {
 		DEBUG(ai, 0, "No suitable AI found, loading 'dummy' AI.");
 		return this->info_dummy;
 	}
 
 	/* Find a random AI */
 	uint pos;
-	if (_networking) pos = InteractiveRandomRange((uint16)this->info_list.size());
-	else             pos =            RandomRange((uint16)this->info_list.size());
+	if (_networking) pos = InteractiveRandomRange((uint16)this->info_single_list.size());
+	else             pos =            RandomRange((uint16)this->info_single_list.size());
 
 	/* Find the Nth item from the array */
-	AIInfoList::iterator it = this->info_list.begin();
+	AIInfoList::iterator it = this->info_single_list.begin();
 	for (; pos > 0; pos--) it++;
 	AIInfoList::iterator first_it = it;
 	return (*it).second;
@@ -354,19 +366,7 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
 		strtolower(ai_name);
 
 		/* We want to load the latest version of this AI; so find it */
-		AIInfoList::iterator it = this->info_list.begin();
-		for (; it != this->info_list.end(); it++) {
-			char ai_name_compare[1024];
-			snprintf(ai_name_compare, sizeof(ai_name_compare), "%s", (*it).second->GetInstanceName());
-			strtolower(ai_name_compare);
-
-			if (strcasecmp(ai_name, ai_name_compare) == 0 && (*it).second->GetVersion() > version) {
-				version = (*it).second->GetVersion();
-				info = (*it).second;
-			}
-		}
-
-		if (info != NULL) return info;
+		if (this->info_single_list.find(ai_name) != this->info_single_list.end()) return this->info_single_list[ai_name];
 
 		/* If we didn't find a match AI, maybe the user included a version */
 		char *e = strrchr(name, '.');
