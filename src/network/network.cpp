@@ -511,7 +511,28 @@ static void NetworkAcceptClients()
 		for (i = 0; i < lengthof(_network_ban_list); i++) {
 			if (_network_ban_list[i] == NULL) continue;
 
-			if (sin.sin_addr.s_addr == inet_addr(_network_ban_list[i])) {
+			/* Check for CIDR separator */
+			char *chr_cidr = strchr(_network_ban_list[i], '/');
+			if (chr_cidr != NULL) {
+				int cidr = atoi(chr_cidr + 1);
+
+				/* Invalid CIDR, treat as single host */
+				if (cidr <= 0 || cidr > 32) cidr = 32;
+
+				/* Remove and then replace the / so that inet_addr() works on the IP portion */
+				*chr_cidr = '\0';
+				uint32 ban_ip = inet_addr(_network_ban_list[i]);
+				*chr_cidr = '/';
+
+				/* Convert CIDR to mask in network format */
+				uint32 mask = htonl(-(1 << (32 - cidr)));
+				if ((sin.sin_addr.s_addr & mask) == (ban_ip & mask)) banned = true;
+			} else {
+				/* No CIDR used, so just perform a simple IP test */
+				if (sin.sin_addr.s_addr == inet_addr(_network_ban_list[i])) banned = true;
+			}
+
+			if (banned) {
 				Packet p(PACKET_SERVER_BANNED);
 				p.PrepareToSend();
 
@@ -519,8 +540,6 @@ static void NetworkAcceptClients()
 
 				send(s, (const char*)p.buffer, p.size, 0);
 				closesocket(s);
-
-				banned = true;
 				break;
 			}
 		}
