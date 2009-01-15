@@ -35,7 +35,7 @@ public:
 	friend class AIInfo;
 	friend class AILibrary;
 
-	AIFileInfo() : author(NULL), name(NULL), description(NULL), date(NULL), instance_name(NULL) {};
+	AIFileInfo() : author(NULL), name(NULL), short_name(NULL), description(NULL), date(NULL), instance_name(NULL) {};
 	~AIFileInfo();
 
 	/**
@@ -47,6 +47,11 @@ public:
 	 * Get the Name of the AI.
 	 */
 	const char *GetName();
+
+	/**
+	 * Get the 4 character long short name of the AI.
+	 */
+	const char *GetShortName();
 
 	/**
 	 * Get the description of the AI.
@@ -106,6 +111,7 @@ private:
 	class AIScanner *base;
 	const char *author;
 	const char *name;
+	const char *short_name;
 	const char *description;
 	const char *date;
 	const char *instance_name;

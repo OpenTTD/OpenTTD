@@ -16,6 +16,7 @@ const SQChar dummy_script_info[] = _SC("                                        
 class DummyAI extends AIInfo {                                                                  \n\
   function GetAuthor()      { return \"OpenTTD NoAI Developers Team\"; }                        \n\
   function GetName()        { return \"DummyAI\"; }                                             \n\
+  function GetShortName()   { return \"DUMM\"; }                                                \n\
   function GetDescription() { return \"A Dummy AI that is loaded when your ai/ dir is empty\"; }\n\
   function GetVersion()     { return 1; }                                                       \n\
   function GetDate()        { return \"2008-07-26\"; }                                          \n\

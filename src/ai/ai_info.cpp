@@ -42,6 +42,12 @@ const char *AIFileInfo::GetName()
 	return this->name;
 }
 
+const char *AIFileInfo::GetShortName()
+{
+	if (this->short_name == NULL) this->short_name = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetShortName");
+	return this->short_name;
+}
+
 const char *AIFileInfo::GetDescription()
 {
 	if (this->description == NULL) this->description = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetDescription");
@@ -106,7 +112,7 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 {
 	if (!this->engine->MethodExists(*this->SQ_instance, name)) {
 		char error[1024];
-		snprintf(error, sizeof(error), "your AIFileInfo doesn't have the method '%s'", name);
+		snprintf(error, sizeof(error), "your info.nut/library.nut doesn't have the method '%s'", name);
 		this->engine->ThrowError(error);
 		*res = SQ_ERROR;
 	}
@@ -127,6 +133,7 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	/* Check if all needed fields are there */
 	info->CheckMethods(&res, "GetAuthor");
 	info->CheckMethods(&res, "GetName");
+	info->CheckMethods(&res, "GetShortName");
 	info->CheckMethods(&res, "GetDescription");
 	info->CheckMethods(&res, "GetVersion");
 	info->CheckMethods(&res, "GetDate");

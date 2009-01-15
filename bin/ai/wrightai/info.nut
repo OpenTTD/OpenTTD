@@ -3,6 +3,7 @@
 class WrightAI extends AIInfo {
 	function GetAuthor()      { return "OpenTTD NoAI Developers Team"; }
 	function GetName()        { return "WrightAI"; }
+	function GetShortName()   { return "WRAI"; }
 	function GetDescription() { return "A simple AI that tries to beat you with only aircrafts"; }
 	function GetVersion()     { return 2; }
 	function GetDate()        { return "2008-02-24"; }

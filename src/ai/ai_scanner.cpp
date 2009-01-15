@@ -308,6 +308,13 @@ void AIScanner::RegisterAI(AIInfo *info)
 {
 	const char *ai_name = info->GetDirName();
 
+	/* Check if GetShortName follows the rules */
+	if (strlen(info->GetShortName()) != 4) {
+		DEBUG(ai, 0, "The AI '%s' returned a string from GetShortName() which is not four characaters. Unable to load the AI.", info->GetDirName());
+		delete info;
+		return;
+	}
+
 	/* Check if we register twice; than the first always wins */
 	if (this->info_list.find(ai_name) != this->info_list.end()) {
 		/* In case they are not the same dir, give a warning */
