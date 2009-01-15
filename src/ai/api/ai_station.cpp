@@ -26,7 +26,7 @@
 
 /* static */ StationID AIStation::GetStationID(TileIndex tile)
 {
-	if (!::IsTileType(tile, MP_STATION)) return INVALID_STATION;
+	if (!::IsValidTile(tile) || !::IsTileType(tile, MP_STATION)) return INVALID_STATION;
 	return ::GetStationIndex(tile);
 }
 
