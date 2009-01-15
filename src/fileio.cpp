@@ -361,7 +361,7 @@ FILE *FioFOpenFile(const char *filename, const char *mode, Subdirectory subdir, 
 	}
 
 	/* We can only use .tar in case of data-dir, and read-mode */
-	if (f == NULL && (subdir == DATA_DIR || subdir == AI_DIR) && mode[0] == 'r') {
+	if (f == NULL && (subdir == DATA_DIR || subdir == AI_DIR || subdir == AI_LIBRARY_DIR) && mode[0] == 'r') {
 		static const uint MAX_RESOLVED_LENGTH = 2 * (100 + 100 + 155) + 1; // Enough space to hold two filenames plus link. See 'TarHeader'.
 		char resolved_name[MAX_RESOLVED_LENGTH];
 
@@ -771,6 +771,8 @@ void ScanForTarFiles()
 		FioAppendDirectory(path, MAX_PATH, sp, DATA_DIR);
 		num += ScanPathForTarFiles(path, strlen(path));
 		FioAppendDirectory(path, MAX_PATH, sp, AI_DIR);
+		num += ScanPathForTarFiles(path, strlen(path));
+		FioAppendDirectory(path, MAX_PATH, sp, AI_LIBRARY_DIR);
 		num += ScanPathForTarFiles(path, strlen(path));
 	}
 	DEBUG(misc, 1, "Scan complete, found %d files", num);

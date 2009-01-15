@@ -134,7 +134,9 @@ struct AIDebugWindow : public Window {
 		/* Draw the AI name */
 		AIInfo *info = GetCompany(ai_debug_company)->ai_info;
 		assert(info != NULL);
-		DoDrawString(info->GetName(), 7, 47, TC_BLACK);
+		char name[1024];
+		snprintf(name, sizeof(name), "%s (v%d)", info->GetName(), info->GetVersion());
+		DoDrawString(name, 7, 47, TC_BLACK);
 
 		CompanyID old_company = _current_company;
 		_current_company = ai_debug_company;

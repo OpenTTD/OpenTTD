@@ -60,14 +60,9 @@ public:
 	class Squirrel *GetEngine() { return this->engine; }
 
 	/**
-	 * Get the current script the ScanDir is looking at.
+	 * Get the current main script the ScanDir is currently tracking.
 	 */
-	const char *GetCurrentScript() { return this->current_script; }
-
-	/**
-	 * Get the directory of the current script the ScanDir is looking at.
-	 */
-	const char *GetCurrentDirName() { return this->current_dir; }
+	const char *GetMainScript() { return this->main_script; }
 
 	/**
 	 * Rescan the AI dir for scripts.
@@ -89,14 +84,13 @@ private:
 	 *  For library-scan, if a library is found, AILibrary is created, and the
 	 *    library is registered to the central system.
 	 */
-	void ScanDir(const char *dirname, bool library_dir, char *library_depth = NULL);
+	void ScanDir(const char *dirname, bool library_dir, bool library_recursive = false);
 
-	AIInfoList info_list;
 	AIInfo *info_dummy;
+	AIInfoList info_list;
 	AILibraryList library_list;
 	class Squirrel *engine;
-	char *current_script;
-	char *current_dir;
+	char main_script[1024];
 };
 
 #endif /* AI_SCANNER_HPP */

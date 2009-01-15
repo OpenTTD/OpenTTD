@@ -114,11 +114,11 @@ AIInstance::AIInstance(AIInfo *info) :
 	SQAIController_Register(this->engine);
 
 	/* Load and execute the script for this AI */
-	const char *script_name = info->GetScriptName();
-	if (strcmp(script_name, "%_dummy") == 0) {
+	const char *main_script = info->GetMainScript();
+	if (strcmp(main_script, "%_dummy") == 0) {
 		extern void AI_CreateAIDummy(HSQUIRRELVM vm);
 		AI_CreateAIDummy(this->engine->GetVM());
-	} else if (!this->engine->LoadScript(script_name)) {
+	} else if (!this->engine->LoadScript(main_script)) {
 		this->Died();
 		return;
 	}

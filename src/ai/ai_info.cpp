@@ -25,9 +25,13 @@ AIFileInfo::~AIFileInfo()
 	free((void *)this->description);
 	free((void *)this->date);
 	free((void *)this->instance_name);
-	free(this->script_name);
-	free(this->dir_name);
+	free(this->main_script);
 	free(this->SQ_instance);
+}
+
+AILibrary::~AILibrary()
+{
+	free((void *)this->category);
 }
 
 const char *AIFileInfo::GetAuthor()
@@ -98,14 +102,9 @@ bool AIFileInfo::CanLoadFromVersion(int version)
 	return sq_objtobool(&ret) != 0;
 }
 
-const char *AIFileInfo::GetDirName()
+const char *AIFileInfo::GetMainScript()
 {
-	return this->dir_name;
-}
-
-const char *AIFileInfo::GetScriptName()
-{
-	return this->script_name;
+	return this->main_script;
 }
 
 void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
@@ -145,8 +144,7 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	/* Abort if one method was missing */
 	if (res != 0) return res;
 
-	info->script_name = strdup(info->base->GetCurrentScript());
-	info->dir_name = strdup(info->base->GetCurrentDirName());
+	info->main_script = strdup(info->base->GetMainScript());
 
 	return 0;
 }

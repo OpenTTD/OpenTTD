@@ -84,14 +84,9 @@ public:
 	bool CanLoadFromVersion(int version);
 
 	/**
-	 * Get the name of the dir this AI is in.
+	 * Get the filename of the main.nut script.
 	 */
-	const char *GetDirName();
-
-	/**
-	 * Get the complete script name of this AI.
-	 */
-	const char *GetScriptName();
+	const char *GetMainScript();
 
 	/**
 	 * Check if a given method exists.
@@ -106,8 +101,7 @@ public:
 private:
 	class Squirrel *engine;
 	HSQOBJECT *SQ_instance;
-	char *script_name;
-	char *dir_name;
+	char *main_script;
 	class AIScanner *base;
 	const char *author;
 	const char *name;
@@ -156,6 +150,7 @@ private:
 class AILibrary : public AIFileInfo {
 public:
 	AILibrary() : AIFileInfo(), category(NULL) {};
+	~AILibrary();
 
 	/**
 	 * Create an AI, using this AIInfo as start-template.

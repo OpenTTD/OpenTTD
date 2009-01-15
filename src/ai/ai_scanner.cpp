@@ -22,16 +22,17 @@
 #include "ai_scanner.hpp"
 #include "api/ai_controller.hpp"
 
-void AIScanner::ScanDir(const char *dirname, bool library_dir, char *library_depth)
+void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_recursive)
 {
 	extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 	extern bool FiosIsHiddenFile(const struct dirent *ent);
 
+	char d_name[MAX_PATH];
+	char temp_script[1024];
 	struct stat sb;
 	struct dirent *dirent;
 	DIR *dir;
-	char d_name[MAX_PATH];
-	char script_name[MAX_PATH];
+
 	dir = ttd_opendir(dirname);
 	/* Dir not found, so do nothing */
 	if (dir == NULL) return;
@@ -45,81 +46,63 @@ void AIScanner::ScanDir(const char *dirname, bool library_dir, char *library_dep
 		if (strcmp(d_name, ".") == 0 || strcmp(d_name, "..") == 0) continue;
 		if (FiosIsHiddenFile(dirent) && strncasecmp(d_name, PERSONAL_DIR, strlen(d_name)) != 0) continue;
 
-		if (S_ISDIR(sb.st_mode)) {
-			/* Create the full-length script-name */
-			ttd_strlcpy(script_name, dirname, sizeof(script_name));
-			ttd_strlcat(script_name, d_name, sizeof(script_name));
-			ttd_strlcat(script_name, PATHSEP, sizeof(script_name));
+		/* Create the full length dirname */
+		ttd_strlcpy(temp_script, dirname, sizeof(temp_script));
+		ttd_strlcat(temp_script, d_name,  sizeof(temp_script));
 
-			if (library_dir && library_depth == NULL) {
-				ScanDir(script_name, library_dir, d_name);
+		if (S_ISDIR(sb.st_mode)) {
+			/* Libraries are always in a subdirectory of their category, so scan those */
+			if (library_scan && !library_recursive) {
+				ttd_strlcat(temp_script, PATHSEP, sizeof(temp_script));
+				ScanDir(temp_script, library_scan, true);
 				continue;
 			}
-		}
-		if (S_ISREG(sb.st_mode)) {
-			if (library_dir) continue;
-
+		} else if (S_ISREG(sb.st_mode)) {
+			/* Only .tar files are allowed */
 			char *ext = strrchr(d_name, '.');
 			if (ext == NULL || strcasecmp(ext, ".tar") != 0) continue;
+			/* .tar files are only allowed in the root of the library dir */
+			if (library_recursive) continue;
 
-			/* Create the full path to the tarfile */
-			char tarname[MAX_PATH];
-			ttd_strlcpy(tarname, dirname, sizeof(tarname));
-			ttd_strlcat(tarname, d_name, sizeof(tarname));
+			/* We always expect a directory in the TAR */
+			const char *first_dir = FioTarFirstDir(temp_script);
+			if (first_dir == NULL) continue;
 
-			/* Now the script-name starts with the first dir in the tar */
-			if (FioTarFirstDir(tarname) == NULL) continue;
-			ttd_strlcpy(script_name, "%aitar%", sizeof(tarname));
-			ttd_strlcat(script_name, FioTarFirstDir(tarname), sizeof(script_name));
-			FioTarAddLink(script_name, FioTarFirstDir(tarname));
-
-			/* The name of the AI is the name of the tar minus the .tar */
-			*ext = '\0';
+			ttd_strlcat(temp_script, PATHSEP, sizeof(temp_script));
+			ttd_strlcat(temp_script, first_dir, sizeof(temp_script));
+			FioTarAddLink(temp_script, first_dir);
+		} else {
+			/* Skip any other type of file */
+			continue;
 		}
 
-		if (!library_dir) {
-			/* We look for the file 'info.nut' inside the AI dir.. if it doesn't exists, it isn't an AI */
-			ttd_strlcat(script_name, "info.nut", sizeof(script_name));
-			if (FioCheckFileExists(script_name, AI_DIR)) {
-				char load_script[MAX_PATH];
-				ttd_strlcpy(load_script, script_name, sizeof(load_script));
+		/* Add an additional / where needed */
+		if (temp_script[strlen(temp_script) - 1] != PATHSEPCHAR) ttd_strlcat(temp_script, PATHSEP, sizeof(temp_script));
 
-				/* Remove the 'info.nut' part and replace it with 'main.nut' */
-				script_name[strlen(script_name) - 8] = '\0';
-				ttd_strlcat(script_name, "main.nut", sizeof(script_name));
+		if (!library_scan) {
+			char info_script[MAX_PATH];
+			ttd_strlcpy(info_script, temp_script, sizeof(info_script));
+			ttd_strlcpy(main_script, temp_script, sizeof(main_script));
 
-				DEBUG(ai, 6, "[script] Loading script '%s' for AI handling", load_script);
-				this->current_script = script_name;
-				this->current_dir = d_name;
-				this->engine->LoadScript(load_script);
-			}
+			/* Every AI should contain an 'info.nut' and 'main.nut' file; else it is not a valid AI */
+			ttd_strlcat(info_script, "info.nut", sizeof(info_script));
+			ttd_strlcat(main_script, "main.nut", sizeof(main_script));
+			if (!FioCheckFileExists(info_script, AI_DIR) || !FioCheckFileExists(main_script, AI_DIR)) continue;
+
+			DEBUG(ai, 6, "Loading AI at location '%s'", main_script);
+			this->engine->LoadScript(info_script);
 		} else {
-			/* We look for the file 'library.nut' inside the library dir.. */
-			ttd_strlcat(script_name, "library.nut", sizeof(script_name));
-			if (FioCheckFileExists(script_name, AI_DIR)) {
-				char load_script[MAX_PATH];
-				char dir_name[MAX_PATH];
-				char d_name_2[MAX_PATH];
-				/* In case the directory has a dot in it, ignore it, as that is the
-				 *  indicator for multiple versions of the same library */
-				ttd_strlcpy(d_name_2, d_name, sizeof(d_name_2));
-				char *e = strrchr(d_name_2, '.');
-				if (e != NULL) *e = '\0';
+			char library_script[MAX_PATH];
+			ttd_strlcpy(library_script, temp_script, sizeof(library_script));
+			ttd_strlcpy(main_script, temp_script, sizeof(main_script));
 
-				ttd_strlcpy(load_script, script_name, sizeof(load_script));
-				ttd_strlcpy(dir_name, library_depth, sizeof(dir_name));
-				ttd_strlcat(dir_name, ".", sizeof(dir_name));
-				ttd_strlcat(dir_name, d_name_2, sizeof(dir_name));
+			/* Every library should contain an 'library.nut' and 'main.nut' file; else it is not a valid library */
+			ttd_strlcat(library_script, "library.nut", sizeof(library_script));
+			ttd_strlcat(main_script, "main.nut", sizeof(main_script));
+			if (!FioCheckFileExists(library_script, AI_LIBRARY_DIR) || !FioCheckFileExists(main_script, AI_LIBRARY_DIR)) continue;
 
-				/* Remove the 'library.nut' part and replace it with 'main.nut' */
-				script_name[strlen(script_name) - 11] = '\0';
-				ttd_strlcat(script_name, "main.nut", sizeof(script_name));
-
-				DEBUG(ai, 6, "[script] Loading script '%s' for Squirrel library", load_script);
-				this->current_script = script_name;
-				this->current_dir = dir_name;
-				this->engine->LoadScript(load_script);
-			}
+			DEBUG(ai, 6, "Loading AI Library '%s' at location '%s'", main_script);
+			this->engine->LoadScript(library_script);
 		}
 	}
 	closedir(dir);
@@ -129,6 +112,9 @@ void AIScanner::ScanAIDir()
 {
 	char buf[MAX_PATH];
 	Searchpath sp;
+
+	extern void ScanForTarFiles();
+	ScanForTarFiles();
 
 	FOR_ALL_SEARCHPATHS(sp) {
 		FioAppendDirectory(buf, MAX_PATH, sp, AI_DIR);
@@ -140,28 +126,30 @@ void AIScanner::ScanAIDir()
 
 void AIScanner::RescanAIDir()
 {
-	extern void ScanForTarFiles();
-	ScanForTarFiles();
 	this->ScanAIDir();
 }
 
-AIScanner::AIScanner()
+AIScanner::AIScanner() :
+	info_dummy(NULL)
 {
 	this->engine = new Squirrel();
+	this->main_script[0] = '\0';
 
 	/* Create the AIInfo class, and add the RegisterAI function */
 	DefSQClass <AIInfo> SQAIInfo("AIInfo");
 	SQAIInfo.PreRegister(engine);
 	SQAIInfo.AddConstructor<void (AIInfo::*)(), 1>(engine, "x");
 	SQAIInfo.DefSQAdvancedMethod(this->engine, &AIInfo::AddSetting, "AddSetting");
+	SQAIInfo.DefSQConst(engine, AICONFIG_RANDOM, "AICONFIG_RANDOM");
+	SQAIInfo.DefSQConst(engine, AICONFIG_BOOLEAN, "AICONFIG_BOOLEAN");
 	SQAIInfo.PostRegister(engine);
 	this->engine->AddMethod("RegisterAI", &AIInfo::Constructor, 2, "tx");
+	this->engine->AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, 2, "tx");
+
 	/* Create the AILibrary class, and add the RegisterLibrary function */
 	this->engine->AddClassBegin("AILibrary");
 	this->engine->AddClassEnd();
 	this->engine->AddMethod("RegisterLibrary", &AILibrary::Constructor, 2, "tx");
-	this->engine->AddConst("AICONFIG_RANDOM", AICONFIG_RANDOM);
-	this->engine->AddConst("AICONFIG_BOOLEAN", AICONFIG_BOOLEAN);
 
 	/* Mark this class as global pointer */
 	this->engine->SetGlobalPointer(this);
@@ -170,9 +158,6 @@ AIScanner::AIScanner()
 	this->ScanAIDir();
 
 	/* Create the dummy AI */
-	this->engine->AddMethod("RegisterDummyAI", &AIInfo::DummyConstructor, 2, "tx");
-	this->current_script = (char *)"%_dummy";
-	this->current_dir = (char *)"%_dummy";
 	extern void AI_CreateAIInfoDummy(HSQUIRRELVM vm);
 	AI_CreateAIInfoDummy(this->engine->GetVM());
 }
@@ -181,8 +166,7 @@ AIScanner::~AIScanner()
 {
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
-		AIInfo *i = (*it).second;
-		delete i;
+		delete (*it).second;
 	}
 
 	delete this->engine;
@@ -193,6 +177,7 @@ bool AIScanner::ImportLibrary(const char *library, const char *class_name, int v
 	/* Internally we store libraries as 'library.version' */
 	char library_name[1024];
 	snprintf(library_name, sizeof(library_name), "%s.%d", library, version);
+	strtolower(library_name);
 
 	/* Check if the library + version exists */
 	AILibraryList::iterator iter = this->library_list.find(library_name);
@@ -204,7 +189,7 @@ bool AIScanner::ImportLibrary(const char *library, const char *class_name, int v
 		if (iter == this->library_list.end()) {
 			snprintf(error, sizeof(error), "couldn't find library '%s'", library);
 		} else {
-			snprintf(error, sizeof(error), "this AI is expecting library '%s' to be version %d, but the latest available is version %d", library, version, (*iter).second->GetVersion());
+			snprintf(error, sizeof(error), "couldn't find library '%s' version %d. The latest version available is %d", library, version, (*iter).second->GetVersion());
 		}
 		sq_throwerror(vm, OTTD2FS(error));
 		return false;
@@ -216,8 +201,7 @@ bool AIScanner::ImportLibrary(const char *library, const char *class_name, int v
 
 	char fake_class[1024];
 	int next_number;
-	/* Check if we already have this library loaded.. if so, fill fake_class
-	 *  with the class-name it is nested in */
+
 	if (!controller->LoadedLibrary(library_name, &next_number, &fake_class[0], sizeof(fake_class))) {
 		/* Create a new fake internal name */
 		snprintf(fake_class, sizeof(fake_class), "_internalNA%d", next_number);
@@ -227,7 +211,7 @@ bool AIScanner::ImportLibrary(const char *library, const char *class_name, int v
 		sq_pushstring(vm, OTTD2FS(fake_class), -1);
 		sq_newclass(vm, SQFalse);
 		/* Load the library */
-		if (!Squirrel::LoadScript(vm, (*iter).second->GetScriptName(), false)) {
+		if (!Squirrel::LoadScript(vm, (*iter).second->GetMainScript(), false)) {
 			char error[1024];
 			snprintf(error, sizeof(error), "there was a compile error when importing '%s' version %d", library, version);
 			sq_throwerror(vm, OTTD2FS(error));
@@ -277,54 +261,48 @@ bool AIScanner::ImportLibrary(const char *library, const char *class_name, int v
 
 void AIScanner::RegisterLibrary(AILibrary *library)
 {
-	const char *ai_name_without_version = library->GetDirName();
-	char ai_name[1024];
-	snprintf(ai_name, sizeof(ai_name), "%s.%d", library->GetDirName(), library->GetVersion());
+	char library_name[1024];
+	snprintf(library_name, sizeof(library_name), "%s.%s.%d", library->GetCategory(), library->GetInstanceName(), library->GetVersion());
+	strtolower(library_name);
 
-	/* Check if we register twice; than the first always wins */
-	if (this->library_list.find(ai_name) != this->library_list.end()) {
-		/* In case they are not the same dir, give a warning */
-		if (strcasecmp(library->GetScriptName(), this->library_list[ai_name]->GetScriptName()) != 0) {
-			DEBUG(ai, 0, "Registering two libraries with the same name");
-			DEBUG(ai, 0, "  1: %s", this->library_list[ai_name]->GetScriptName());
-			DEBUG(ai, 0, "  2: %s", library->GetScriptName());
-			DEBUG(ai, 0, "The first is taking precedence");
-		}
-		/* Delete the new AILibrary, as we will be using the old one */
+	if (this->library_list.find(library_name) != this->library_list.end()) {
+		/* This AI was already registered */
+		if (strcmp(this->library_list[library_name]->GetMainScript(), library->GetMainScript()) == 0) return;
+
+		DEBUG(ai, 0, "Registering two libraries with the same name and version");
+		DEBUG(ai, 0, "  1: %s", this->library_list[library_name]->GetMainScript());
+		DEBUG(ai, 0, "  2: %s", library->GetMainScript());
+		DEBUG(ai, 0, "The first is taking precedence.");
+
 		delete library;
 		return;
 	}
 
-	this->library_list[strdup(ai_name)] = library;
-	/* Insert the global name too, so we if the library is known at all */
-	if (this->library_list.find(ai_name_without_version) == this->library_list.end()) {
-		this->library_list[strdup(ai_name_without_version)] = library;
-	} else if (this->library_list[ai_name_without_version]->GetVersion() < library->GetVersion()) {
-		this->library_list[ai_name_without_version] = library;
-	}
+	this->library_list[strdup(library_name)] = library;
 }
 
 void AIScanner::RegisterAI(AIInfo *info)
 {
-	const char *ai_name = info->GetDirName();
+	char ai_name[1024];
+	snprintf(ai_name, sizeof(ai_name), "%s.%d", info->GetInstanceName(), info->GetVersion());
+	strtolower(ai_name);
 
 	/* Check if GetShortName follows the rules */
 	if (strlen(info->GetShortName()) != 4) {
-		DEBUG(ai, 0, "The AI '%s' returned a string from GetShortName() which is not four characaters. Unable to load the AI.", info->GetDirName());
+		DEBUG(ai, 0, "The AI '%s' returned a string from GetShortName() which is not four characaters. Unable to load the AI.", info->GetInstanceName());
 		delete info;
 		return;
 	}
 
-	/* Check if we register twice; than the first always wins */
 	if (this->info_list.find(ai_name) != this->info_list.end()) {
-		/* In case they are not the same dir, give a warning */
-		if (strcasecmp(info->GetScriptName(), this->info_list[ai_name]->GetScriptName()) != 0) {
-			DEBUG(ai, 0, "Registering two AIs with the same name");
-			DEBUG(ai, 0, "  1: %s", this->info_list[ai_name]->GetScriptName());
-			DEBUG(ai, 0, "  2: %s", info->GetScriptName());
-			DEBUG(ai, 0, "The first is taking precedence");
-		}
-		/* Delete the new AIInfo, as we will be using the old one */
+		/* This AI was already registered */
+		if (strcmp(this->info_list[ai_name]->GetMainScript(), info->GetMainScript()) == 0) return;
+
+		DEBUG(ai, 0, "Registering two AIs with the same name and version");
+		DEBUG(ai, 0, "  1: %s", this->info_list[ai_name]->GetMainScript());
+		DEBUG(ai, 0, "  2: %s", info->GetMainScript());
+		DEBUG(ai, 0, "The first is taking precedence.");
+
 		delete info;
 		return;
 	}
@@ -334,7 +312,10 @@ void AIScanner::RegisterAI(AIInfo *info)
 
 void AIScanner::UnregisterAI(AIInfo *info)
 {
-	this->info_list.erase(info->GetDirName());
+	char ai_name[1024];
+	snprintf(ai_name, sizeof(ai_name), "%s.%d", info->GetInstanceName(), info->GetVersion());
+
+	this->info_list.erase(ai_name);
 }
 
 AIInfo *AIScanner::SelectRandomAI()
@@ -356,21 +337,68 @@ AIInfo *AIScanner::SelectRandomAI()
 	return (*it).second;
 }
 
-AIInfo *AIScanner::FindInfo(const char *name, int version)
+AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
 {
 	if (this->info_list.size() == 0) return NULL;
-	if (name == NULL) return NULL;
+	if (nameParam == NULL) return NULL;
 
+	char ai_name[1024];
+	char name[1024];
+	ttd_strlcpy(name, nameParam, sizeof(name));
+
+	AIInfo *info = NULL;
+	int version = -1;
+
+	if (versionParam == -1) {
+		snprintf(ai_name, sizeof(ai_name), "%s", name);
+		strtolower(ai_name);
+
+		/* We want to load the latest version of this AI; so find it */
+		AIInfoList::iterator it = this->info_list.begin();
+		for (; it != this->info_list.end(); it++) {
+			char ai_name_compare[1024];
+			snprintf(ai_name_compare, sizeof(ai_name_compare), "%s", (*it).second->GetInstanceName());
+			strtolower(ai_name_compare);
+
+			if (strcasecmp(ai_name, ai_name_compare) == 0 && (*it).second->GetVersion() > version) {
+				version = (*it).second->GetVersion();
+				info = (*it).second;
+			}
+		}
+
+		if (info != NULL) return info;
+
+		/* If we didn't find a match AI, maybe the user included a version */
+		char *e = strrchr(name, '.');
+		if (e == NULL) return NULL;
+		*e = '\0';
+		e++;
+		versionParam = atoi(e);
+		/* Fall-through, like we were calling this function with a version */
+	}
+
+	/* Try to find a direct 'name.version' match */
+	snprintf(ai_name, sizeof(ai_name), "%s.%d", name, versionParam);
+	strtolower(ai_name);
+	if (this->info_list.find(ai_name) != this->info_list.end()) return this->info_list[ai_name];
+
+	/* See if there is a compatible AI which goes by that name, with the highest
+	 *  version which allows loading the requested version */
+	snprintf(ai_name, sizeof(ai_name), "%s", name);
+	strtolower(ai_name);
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
-		AIInfo *i = (*it).second;
+		char ai_name_compare[1024];
+		snprintf(ai_name_compare, sizeof(ai_name_compare), "%s", (*it).second->GetInstanceName());
+		strtolower(ai_name_compare);
 
-		if (strcasecmp(name, (*it).first) == 0 && i->CanLoadFromVersion(version)) {
-			return i;
+		if (strcasecmp(ai_name, ai_name_compare) == 0 && (*it).second->CanLoadFromVersion(versionParam) && (*it).second->GetVersion() > version) {
+			version = (*it).second->GetVersion();
+			info = (*it).second;
 		}
 	}
 
-	return NULL;
+	return info;
 }
 
 char *AIScanner::GetAIConsoleList(char *p, const char *last)
@@ -379,7 +407,7 @@ char *AIScanner::GetAIConsoleList(char *p, const char *last)
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
 		AIInfo *i = (*it).second;
-		p += seprintf(p, last, "%10s (v%d): %s\n", (*it).first, i->GetVersion(), i->GetDescription());
+		p += seprintf(p, last, "%10s (v%d): %s\n", i->GetInstanceName(), i->GetVersion(), i->GetDescription());
 	}
 	p += seprintf(p, last, "\n");
 
