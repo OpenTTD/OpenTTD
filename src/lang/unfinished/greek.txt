@@ -125,7 +125,7 @@ STR_ABBREV_OIL                                                  :{TINYFONT}OL
 STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
 STR_ABBREV_GOODS                                                :{TINYFONT}GD
 STR_ABBREV_GRAIN                                                :{TINYFONT}GR
-STR_ABBREV_WOOD                                                 :{TINYFONT}WD
+STR_ABBREV_WOOD                                                 :{TINYFONT}ΞΛ
 STR_ABBREV_IRON_ORE                                             :{TINYFONT}OR
 STR_ABBREV_STEEL                                                :{TINYFONT}ST
 STR_ABBREV_VALUABLES                                            :{TINYFONT}VL
@@ -1098,6 +1098,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Απε�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Απενεργοποίηση αεροσκαφών υπολογιστή: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Απενεργοποίηση πλοίων υπολογιστή: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Επιτρέπονται οι AI σε παιχνίδι για πολλούς παίκτες (πειραματικό): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}{STRING} μέρες/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Προεπιλεγμένο διάστημα επισκευών για τρένα: {ORANGE}απενεργοποιημένο
@@ -1232,7 +1233,6 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Αναπ
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Επιλογή τύπου φορτίου για να μεταφέρει το τρένο
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Δεν γίνεται να αναπροσαρμοστεί το τρένο...
 
-
 ############ network gui strings
 
 
@@ -1297,6 +1297,8 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :Kicked απο �
 ##### PNG-MAP-Loader
 
 
+STR_BMPMAP_ERROR                                                :{WHITE}Αδυναμία φόρτωσης τοπίου από ΒΜΡ...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...αδύνατη η μετατροπή τύπου εικόνας
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Κόστος: {CURRENCY}
@@ -1672,6 +1674,8 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Αδύν
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Πρέπει πρώτα να καταστραφεί το τούνελ
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Πρέπει πρώτα να καταστραφεί η γέφυρα
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Δεν γίνεται να ξεκινάει και να τελειώνει στο ίδιο σημείο
+STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Η γέφυρα δεν καταλήγει στο ίδιο επίπεδο
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Η γέφυρα είναι πολύ χαμηλά για το έδαφος
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Η αρχή και το τέλος πρέπει να είναι σε ευθεία
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -1682,6 +1686,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :Με αναρτ
 STR_5012_WOODEN                                                 :Ξύλινη
 STR_5013_CONCRETE                                               :Τσιμεντένια
 STR_5014_TUBULAR_STEEL                                          :Φυσούνα, Ατσάλινη
+STR_BRIDGE_TUBULAR_SILICON                                      :Σωλήνας, Σιλικόνη
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Αδύνατο να χτιστεί γέφυρα εδώ...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Αδύνατο να χτιστεί τούνελ εδώ...
 STR_5017_RAILROAD_TUNNEL                                        :Τούνελ σιδηρόδρομου
@@ -1846,6 +1851,7 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Αποπ
 STR_7037_PRESIDENT                                              :{WHITE}{PRESIDENTNAME}{}{GOLD}(Manager)
 STR_7038_INAUGURATED                                            :{GOLD}Εγκαινιασμένος: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Οχήματα:
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} αεροσκάφος
 STR_7042_NONE                                                   :{WHITE}Κανένα
 STR_7043_FACE_SELECTION                                         :{WHITE}Επιλογή Προσώπου
 STR_7044_MALE                                                   :{BLACK}Αρσενικό
@@ -1999,13 +2005,15 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Ατύχημα με ζέπελιν στο {STATION}!
-STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Road vehicle destroyed in 'UFO' collision!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Όχημα καταστράφηκε σε σύγκρουση με ΑΤΙΑ!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Έκρηξη διυλιστηρίου κοντά στο  {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Εργοστάσιο καταστράφηκε κάτω από ύποπτες συνθήκες κοντά στο {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}Α.Τ.Ι.Α. προσγειώθηκε κοντά στο {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Κατάρρευση ανθρακωρυχείου αφήνει καταστροφικό ρήγμα κοντά στο {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Πλημμύρα!{}Τουλάχιστον {COMMA} αγνοούμενοι, το πιθανότερο νεκροί μετά από μεγάλη πλημμύρα!
 
+STR_BRIBE_FAILED                                                :{WHITE}Η δωροδοκία σου έγινε
+STR_BRIBE_FAILED_2                                              :{WHITE}αντιληπτή από περιφερειακό επιθεωρητή
 
 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
@@ -2031,6 +2039,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 
 
 
+STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Αεροσκάφος μη διαθέσιμο
 
 
 
@@ -2084,6 +2093,9 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ########
 
 ############ on screen keyboard
+########
+
+############ AI GUI
 ########
 
 ############ town controlled noise level

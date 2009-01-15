@@ -277,6 +277,7 @@ STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Too many
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Chosen name already in use
 
 STR_OSNAME_WINDOWS                                              :Windows
+STR_OSNAME_DOS                                                  :DOS
 STR_OSNAME_UNIX                                                 :Unix
 STR_OSNAME_OSX                                                  :OS X
 STR_OSNAME_BEOS                                                 :BeOS
@@ -477,13 +478,17 @@ STR_AGE                                                         :{COMMA} year{P 
 STR_AGE_RED                                                     :{RED}{COMMA} year{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Road vehicle
-STR_019D_AIRCRAFT                                               :Aircraft
-STR_019E_SHIP                                                   :Ship
 STR_019F_TRAIN                                                  :Train
+STR_019C_ROAD_VEHICLE                                           :Road vehicle
+STR_019E_SHIP                                                   :Ship
+STR_019D_AIRCRAFT                                               :Aircraft
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} is getting old
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} is getting very old
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} is getting very old and urgently needs replacing
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Land Area Information
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost to clear: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost to clear: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Revenue when cleared: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Owner: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Road owner: {LTBLUE}{STRING}
@@ -796,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 STR_02D5_LAND_BLOCK_INFO                                        :Land area information
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Toggle Console
+STR_AI_DEBUG_MENU                                               :AI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Giant Screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :About 'OpenTTD'
@@ -933,6 +939,7 @@ STR_CURR_SEK                                                    :Swedish Krona (
 STR_CURR_YTL                                                    :Turkish Lira (YTL)
 STR_CURR_SKK                                                    :Slovak Koruna (SKK)
 STR_CURR_BRL                                                    :Brazilian Real (BRL)
+STR_CURR_EEK                                                    :Estonian Krooni (EEK)
 
 STR_CURR_CUSTOM                                                 :Custom...
 
@@ -988,12 +995,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Can't sh
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Can't copy order list...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - End of Shared Orders - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} can't find a path to continue.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} is lost.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}'s profit last year was {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}European Monetary Union!{}{}The Euro is introduced as the sole currency for everyday transactions in your country!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} has too few orders in the schedule
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} has a void order
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} has duplicate orders
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} has an invalid station in its orders
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Autorenew failed on {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} is too long after replacement
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}No autoreplace/renew rules applied.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(money limit)
 
@@ -1012,6 +1028,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Enable 
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Enable realistic acceleration for trains: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING} {LTBLUE} (requires NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allow joining stations not directly adjacent: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Load vehicles gradually: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
@@ -1047,6 +1064,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Review 
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :yes, but exclude stopped vehicles
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :of all vehicles
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warn if a vehicle's income is negative: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehicles never expire: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenew vehicle when it gets old
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
@@ -1095,6 +1113,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command-click
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Off
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Left-click scrolling: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Use the {ORANGE}{STRING}{LTBLUE} date format for savegame names.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :long (31st Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :short (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatically pause when starting a new game: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Use the advanced vehicle list: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Off
@@ -1106,6 +1131,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Own company
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :All companies
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Enable timetabling for vehicles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Show timetable in ticks rather than days: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Quick creation of vehicle orders: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Default rail type (after new game/game load): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Normal Rail
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Electrified Rail
@@ -1115,6 +1141,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :First available
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Last available
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Most used
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Show reserved tracks: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Keep building tools active after usage: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Show building tools when no suitable vehicles are available: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
@@ -1127,6 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Disable
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable aircraft for computer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer (experimental): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
@@ -1171,6 +1200,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Right
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Window soft limit (non-sticky): {ORANGE}disabled
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Town growth speed: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :None
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Slow
@@ -1188,6 +1219,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Vehicle
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stations
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Economy
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Competitors
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Display options
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaction
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signals
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Cargo handling
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Computer players
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Autorenew
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servicing
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Routing
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Trains
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Towns
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industries
 
 STR_CONFIG_PATCHES_DISABLED                                     :disabled
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1336,7 +1378,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Refit tr
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Can't refit train...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production
-
 
 ############ network gui strings
 
@@ -1510,6 +1551,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Disconnect
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enter the amount of money you want to give
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server is protected. Enter password
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Company is protected. Enter password
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Client List
@@ -1549,6 +1591,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :kicked by serve
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :was trying to use a cheat
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server full
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Game paused (not enough players)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Game unpaused (enough players)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Game paused (connecting client)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Game unpaused (client connected)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Game unpaused (client failed to connect)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :leaving
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} has joined the game
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} has left the game ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} has changed his/her name to {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gave your company {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** You gave {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {GRAY}{STRING}
@@ -1673,6 +1729,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Railroad track 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Railroad track with combo- and one-way path signals
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Railroad track with path and one-way path signals
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Must remove railway station first
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Build a separate station
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Join station
 
 
 
@@ -1861,6 +1919,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Too clos
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Adjoins more than one existing station/loading area
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Too many stations/loading areas in this town
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Too many stations/loading areas
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Too many railroad station parts
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Too many bus stops
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Too many truck stations
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Too close to another station/loading area
@@ -1958,6 +2017,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Load Gam
 STR_4002_SAVE                                                   :{BLACK}Save
 STR_4003_DELETE                                                 :{BLACK}Delete
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Spectator, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} free
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Unable to read drive
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Game Save Failed{}{STRING}
@@ -2763,6 +2823,7 @@ STR_UNKNOWN_STATION                                             :unknown station
 STR_8812_EMPTY                                                  :{LTBLUE}Empty
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} from {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} from {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} is waiting in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}New Vehicles
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Train too long
@@ -2814,6 +2875,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Can't mo
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Can't move this order...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Can't skip current order...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Can't skip to selected order...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}vehicle can't go to all stations
+STR_CAN_T_ADD_ORDER                                             :{WHITE}vehicle can't go to that station
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}a vehicle sharing this order can't go to that station
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Can't move vehicle...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}The rear engine will always follow its front counterpart
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2900,6 +2964,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :This vehicle is
 STR_TIMETABLE_TOTAL_TIME                                        :This timetable will take {STRING} to complete
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :This timetable will take at least {STRING} to complete (not all timetabled)
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}Autofill
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}Fill the timetable automatically with the values from the next journey (CTRL-click to try to keep waiting times)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Road vehicle in the way
@@ -2920,6 +2985,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacity
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...must be stopped inside a road vehicle depot
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Can't sell road vehicle...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Can't stop/start road vehicle...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} is waiting in depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Heading for {TOWN} Road Depot
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Heading for {TOWN} Road Depot, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service at {TOWN} Road Depot
@@ -3001,6 +3067,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Heading
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Heading for {TOWN} Ship Depot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service at {TOWN} Ship Depot
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service at {TOWN} Ship Depot, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} is waiting in depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Build ship dock
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Build ship depot (for building and servicing ships)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ships - click on ship for information
@@ -3065,6 +3132,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Heading
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Heading for {STATION} Hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service at {STATION} Hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service at {STATION} Hangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} is waiting in the aircraft hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aircraft in the way
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Can't stop/start aircraft...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aircraft is in flight
@@ -3188,6 +3256,8 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Loading {STRING
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unexpected sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Unknown Action 0 property.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Attempt to use invalid ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contains a corrupt sprite. All corrupt sprites will be shown as a red question mark (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contains multiple Action 8 entries.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Load the selected preset
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Save preset
@@ -3324,6 +3394,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Click to
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {VEHICLE}
 
 ############ Lists rail types
 
@@ -3443,7 +3514,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {N
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer Credits: {LTBLUE}{CURRENCY}
@@ -3597,6 +3672,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Kill the AI, reload the script, and restart the AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug window is only available for the server
 ########
 
 ############ town controlled noise level

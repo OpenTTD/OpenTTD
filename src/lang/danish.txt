@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} år ({C
 STR_AGE_RED                                                     :{RED}{COMMA} år ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Vejkøretøj
-STR_019D_AIRCRAFT                                               :Fly
-STR_019E_SHIP                                                   :Skib
 STR_019F_TRAIN                                                  :Tog
+STR_019C_ROAD_VEHICLE                                           :Vejkøretøj
+STR_019E_SHIP                                                   :Skib
+STR_019D_AIRCRAFT                                               :Fly
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} er gammel
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} er meget gammel
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} er meget gammel, og må udskiftes omgående
@@ -815,7 +815,7 @@ STR_EXTRA_VIEW_PORT                                             :Flere lokalitet
 STR_SIGN_LIST                                                   :Liste over skilte
 STR_02DF_TOWN_DIRECTORY                                         :Byoversigt
 STR_TOWN_POPULATION                                             :{BLACK}Verdens befolkning: {COMMA}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvinduer {COMMA}
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Lokalitetsvindue {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Gå til lokalitetsvindue
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Hent lokalitet fra global visning
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Hent fra lokalitetsvindue
@@ -1214,6 +1214,10 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Køret�
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stationer
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Modstandere
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Tog
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Byer
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industrier
 
 STR_CONFIG_PATCHES_DISABLED                                     :deaktiveret
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1362,7 +1366,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Ombyg to
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke ombygge toget...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion
-
 
 ############ network gui strings
 
@@ -3652,6 +3655,9 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Forøg t
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\qwertyuiop[]asdfghjkl;'  zxcvbnm,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
 ########
 
 ############ town controlled noise level

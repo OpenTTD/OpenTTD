@@ -1154,6 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Wegvoer
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Vliegtuigen voor de computer uitschakelen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Schepen voor de computer uitschakelen: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Laat computerspelers toe in netwerkspel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}aantal opcodes voordat computerspeler wordt gestopt: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standaard reparatie interval bij treinen: {ORANGE}{STRING} dagen
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standaard reparatie interval voor treinen: {ORANGE}uit
@@ -3674,6 +3676,10 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 
 ############ AI GUI
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Naam computerspeler
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}computerspeler Debug venster is alleen beschikbaar voor de server
 ########
 
 ############ town controlled noise level

@@ -802,6 +802,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomes 
 STR_02D5_LAND_BLOCK_INFO                                        :Informações do terreno
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Ativar/desativar console
+STR_AI_DEBUG_MENU                                               :Debug da I.A.
 STR_02D7_SCREENSHOT_CTRL_S                                      :Captura de tela (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Captura gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Sobre o OpenTTD...
@@ -1154,6 +1155,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Desativ
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Desativar aeronaves para o computador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Desativar embarcação para o computador: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IA em multiplayer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes antes da IA ser suspensa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}{STRING} dias
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de serviço predefinido para trens: {ORANGE}desativado
@@ -3673,6 +3676,11 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Debug da IA
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome da IA
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarregar IA
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Desativar a IA, recarregar o script e religar a IA
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Debug de IA só é acessível pelo servidor
 ########
 
 ############ town controlled noise level

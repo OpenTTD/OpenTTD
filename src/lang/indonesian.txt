@@ -1027,7 +1027,7 @@ STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Ijinkan
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan membuat rangkaian gerbong yang sangat panjang: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktifkan akselerasi realistis pada kereta api: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Kereta dan kapal dilarang belok 90 derajat: {ORANGE}{STRING} {LTBLUE} (tidak dengan NTP)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan stasiun kereta api: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan stasiun kereta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ijinkan menggabung stasiun meski tdk menempel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gunakan algoritma pengangkutan terbaru : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Angkut secara bertahap: {ORANGE}{STRING}
@@ -1067,7 +1067,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :semua kendaraan
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Ingatkan jika ada kendaraan yg merugi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kendaraan tidak pernah kadaluarsa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Perbarui otomatis kendaraan yang telah tua.
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}}Perbarui otomatis kendaraan {ORANGE}{STRING}{LTBLUE} bulan sblm/sesudah usia maks.
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Perbarui otomatis kendaraan {ORANGE}{STRING}{LTBLUE} bulan sblm/sesudah usia maks.
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimal dana tersedia untuk perbaruan otomatis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durasi pesan kesalahan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Tampilkan populasi kota di label nama kota: {ORANGE}{STRING}
@@ -1140,8 +1140,8 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MAGLEV                     :Maglev
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Tersedia pertama
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakhir
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
-STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Tampilkan jalur yang akan terpakai: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Keep building tools active after usage: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Sorot rel yang akan terpakai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Toolbar tetap aktif setelah dipakai: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Tampilkan toolbar meski kendaraan belum tersedia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. kereta tiap pemain: {ORANGE}{STRING}
@@ -1154,8 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Non-akt
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Non-aktifkan pesawat bagi pemain komputer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Non-aktifkan kapal bagi pemain komputer: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Ijinkan kecerdasan pada modus banyak pemain(uji coba): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes before AI is suspended: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Ijinkan kecerdasan pada modus banyak pemain: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcode AI sebelum dihentikan: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard jangka servis berkala kereta: {ORANGE}{STRING} hari/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard jangka servis berkala untuk kereta: {ORANGE}Non-aktif
@@ -1200,8 +1200,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Tengah
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Kanan
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Lekatkan jendela pada: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Pelekatan jendela: {ORANGE}dimatikan
-STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Window soft limit (non-sticky): {ORANGE}disabled
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Batas jumlah jendela (non-sticky): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Batas jumlah jendela (non-sticky): {ORANGE}tak ada
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Kecepatan pertumbuhan kota: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Tidak tumbuh
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Pelan
@@ -1224,7 +1224,7 @@ STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interak
 STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Sinyal
 STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Penanganan Kargo
 STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Pemain Komputer
-STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Peremajaan Otomatis
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Perbaruan Otomatis
 STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Servis
 STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Pengarahan
 STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Kereta
@@ -1242,13 +1242,13 @@ STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NTP                    :{RED}(Tidak dir
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_NPF                    :NPF
 STR_CONFIG_PATCHES_PATHFINDER_FOR_TRAINS_YAPF                   :YAPF {BLUE}(Recommended)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH                       :{LTBLUE}Pencari jejak untuk bus/truk: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Orisinil {RED}(Not recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_OPF                   :Orisinil {RED}(Tdk dianjurkan)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_NPF                   :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Direkomendasikan)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_ROADVEH_YAPF                  :YAPF {BLUE}(Dianjurkan)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS                         :{LTBLUE}Pencari jejak untuk kapal : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orisinil {BLUE}(Recommended)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_OPF                     :Orisinil {BLUE}(Dianjurkan)
 STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_NPF                     :NPF
-STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Tidak direkomendasikan)
+STR_CONFIG_PATCHES_PATHFINDER_FOR_SHIPS_YAPF                    :YAPF {RED}(Tdk dianjurkan)
 
 STR_TEMPERATE_LANDSCAPE                                         :Lansekap 'sederhana'
 STR_SUB_ARCTIC_LANDSCAPE                                        :Lansekap 'Sub Antartika'

@@ -479,10 +479,10 @@ STR_AGE                                                         :{COMMA} år ({C
 STR_AGE_RED                                                     :{RED}{COMMA} år ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Køyretøy
-STR_019D_AIRCRAFT                                               :Fly
-STR_019E_SHIP                                                   :Skip
 STR_019F_TRAIN                                                  :To
+STR_019C_ROAD_VEHICLE                                           :Køyretøy
+STR_019E_SHIP                                                   :Skip
+STR_019D_AIRCRAFT                                               :Fly
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} er gammal
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} er veldig gammal
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} er veldig gammal, og må bytast ut snarast
@@ -995,6 +995,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikkj
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikkje kopiere ordreliste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordrar - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} kan ikke finna ein veg å fortsette på
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} har køyrt seg vill.
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}'s forteneste i fjor var {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europeisk valutaunion!{}{} Euro er introdusert som den einaste gjeldande valuta for kvadagslege forretningar i landet ditt.
@@ -1004,6 +1005,7 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} har for få ordrar i køyreplanen
 STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} har ein ugyldig ordre
 STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} har to like ordrar
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} har ein ugyldig stasjon i påboda
 # end of order system
 
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Ingen autoutbyting-/fornyingsreglar lagt til.
@@ -1138,6 +1140,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Hindre 
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Hindre datamaskinen i å byggje fly: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Hindre datamaskinen i å byggje skip: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillat AI-spelarar i fleirspelarmodus (eksperimentelt): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard vedlikehaldsintervall for tog: {ORANGE}deaktivert
@@ -1346,7 +1349,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Bygg om 
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikkje byggje om lokomotiv...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Vedlikehaldsintervall er i prosent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Endre produksjon
-
 
 ############ network gui strings
 
@@ -1687,6 +1689,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Togspor med kob
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Togspor med kombinasjons- og einvegs vegsignal
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Togspor med vegsignal og einvegs vegsignal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Må fjerne togstasjon først
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Bygg ein seperat stasjon
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Spleisa stasjonen
 
 
 
@@ -1972,6 +1976,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Last inn
 STR_4002_SAVE                                                   :{BLACK}Lagre
 STR_4003_DELETE                                                 :{BLACK}Slett
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Tilskuar, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte ledig
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikkje lese frå disk
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spelet mislukkast{}{STRING}
@@ -2775,6 +2780,7 @@ STR_UNKNOWN_STATION                                             :ukjend stasjon
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} frå {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} frå {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} ventar i depoet
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye tog/vogner
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
@@ -2826,6 +2832,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikkj
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Kan ikkje flytte denne ordra
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Kan ikkje hoppa over gjeldande ordre
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Kan ikkje hoppa til valde ordre
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}kjøretøyet kan ikkje fara til alle stasjonane
+STR_CAN_T_ADD_ORDER                                             :{WHITE}kjøretøyet kan ikkje gå til den stasjonen
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}eit kjøretøy som delar denne påbodet kan ikkje gå til den stasjonen
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikkje flytte køyretøy...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Bakmaskinen vil alltid følgje det fremste motstykket
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2933,6 +2942,7 @@ STR_9012_CAPACITY                                               :{BLACK}Kapasite
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...må verte stoppa i ein garasje
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikkje selje køyretøy...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikkje starte/stoppe køyretøy...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ventar i depoet
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Er på veg til {TOWN} garasje
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Er på veg til {TOWN} garasje, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Vedlikehald ved {TOWN} garasje
@@ -2956,6 +2966,8 @@ STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bygg det
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kostnad: {CURRENCY}{}Fart: {VELOCITY}{}Driftskostnader: {CURRENCY}/år{}Kapasitet: {CARGO}
 STR_ARTICULATED_RV_CAPACITY                                     :{BLACK}Kapasitet: {LTBLUE}
 STR_BARE_CARGO                                                  :{CARGO}
+STR_DEPOT_VEHICLE_TOOLTIP                                       :{BLACK}{ENGINE}{STRING}
+STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kjøretøy{P "" s}{STRING}
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO} ({SHORTCARGO})
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Namngje køyretøy
@@ -3012,6 +3024,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Er på 
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Er på veg mot {TOWN} skipsdepot, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Vedlikehald ved {TOWN} skipsdepot
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Vedlikehald ved {TOWN} skipsdepot, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} ventar i depoet
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bygg hamn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bygg skipsdepot (trengst for bygging og vedlikehald av skip)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skip - trykk på skip for meir informasjon
@@ -3076,6 +3089,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Er på 
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Er på veg til {STATION} hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Vedlikehald ved {STATION} hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Vedlikehald ved {STATION} hangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} ventar i flyhangaret
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Det er eit fly i vegen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikkje stoppe/starte flyet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i lufta
@@ -3456,6 +3470,9 @@ STR_DATE_TINY                                                   :{STRING}-{STRIN
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Overfør kreditt: {LTBLUE}{CURRENCY}
@@ -3608,7 +3625,17 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Auk tett
 
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :|1234567890+\qwertyuiopå¨asdfghjkløæ'<zxcvbnm,.-
+STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Namnet til datamaskinspelaren
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Last datamaskinspelaren på ny
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Drep datamaskinspelaren, last skriptet på ny og starte om datamaskinspelaren
 ########
 
 ############ town controlled noise level
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillat byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
+STR_NOISE_IN_TOWN                                               :{BLACK}Grense for lydnivå i byen: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}Lyd generert: {GOLD}{COMMA}
 ########

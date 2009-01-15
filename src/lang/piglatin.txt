@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Anspar
 STR_02D5_LAND_BLOCK_INFO                                        :Andlay areaway informationway
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Oggletay Onsolecay
+STR_AI_DEBUG_MENU                                               :AIWAY Ebugday
 STR_02D7_SCREENSHOT_CTRL_S                                      :Eenshotscray (Ctrlay-Say)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Iantgay Eenshotscray (Ctrlay-Gay)
 STR_02D9_ABOUT_OPENTTD                                          :Aboutway 'OpenTTD'WAY
@@ -1153,6 +1154,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Isabled
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Isableday aircraftway orfay omputercay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Isableday ipsshay orfay omputercay: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allowway AIsway inway ultiplayermay: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodesway eforebay AIWAY isway uspendedsay: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}{STRING} aysday/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Efaultday ervicesay intervalway orfay ainstray: {ORANGE}isabledday
@@ -1375,7 +1378,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Efitray 
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}An'tcay efitray aintray...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Ervicesay intervalsway areway inway ercentspay: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Angechay oductionpray
-
 
 ############ network gui strings
 
@@ -3670,6 +3672,14 @@ STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Increase
 ############ on screen keyboard
 STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\ertyuiopqway[]asdfghjklway;'  zxcvbnmay,./ .
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|ERTYUIOPQWay{{}}ASDFGHJKLWAY:"  ZXCVBNMay<>? .
+########
+
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}AIWAY Ebugday
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Amenay ofway ethay AIWAY
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Eloadray AIWAY
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Illkay ethay AIWAY, eloadray ethay iptscray, andway estartray ethay AIWAY
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AIWAY Ebugday indowway isway onlyway availableway orfay ethay erversay
 ########
 
 ############ town controlled noise level

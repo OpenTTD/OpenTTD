@@ -1992,6 +1992,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Zbyt bli
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Przylega do więcej niż jednej stacji
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Za dużo stacji w tym mieście
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Za duzo stacji
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Za dużo części stacji kolejowej
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Za dużo przystankow autobusowych
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Za dużo  wiele stacji załadunku ciężarówek
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Zbyt  blisko innej stacji
@@ -3626,6 +3627,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obszar: 
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3786,6 +3788,9 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nazwa SI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
 ########
 
 ############ town controlled noise level
