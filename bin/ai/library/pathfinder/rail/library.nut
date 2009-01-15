@@ -8,6 +8,7 @@ class Rail extends AILibrary {
 	function GetVersion()     { return 1; }
 	function GetDate()        { return "2008-09-22"; }
 	function CreateInstance() { return "Rail"; }
+	function GetCategory()    { return "Pathfinder"; }
 }
 
 RegisterLibrary(Rail());

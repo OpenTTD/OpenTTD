@@ -8,6 +8,7 @@ class BinaryHeap extends AILibrary {
 	function GetVersion()     { return 1; }
 	function GetDate()        { return "2008-06-10"; }
 	function CreateInstance() { return "BinaryHeap"; }
+	function GetCategory()    { return "Queue"; }
 }
 
 RegisterLibrary(BinaryHeap());

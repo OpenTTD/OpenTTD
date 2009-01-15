@@ -8,6 +8,7 @@ class FibonacciHeap extends AILibrary {
 	function GetVersion()     { return 1; }
 	function GetDate()        { return "2008-08-22"; }
 	function CreateInstance() { return "FibonacciHeap"; }
+	function GetCategory()    { return "Queue"; }
 }
 
 RegisterLibrary(FibonacciHeap());

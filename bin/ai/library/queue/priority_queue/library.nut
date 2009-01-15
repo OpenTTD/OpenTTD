@@ -8,6 +8,7 @@ class PriorityQueue extends AILibrary {
 	function GetVersion()     { return 2; }
 	function GetDate()        { return "2008-06-10"; }
 	function CreateInstance() { return "PriorityQueue"; }
+	function GetCategory()    { return "Queue"; }
 }
 
 RegisterLibrary(PriorityQueue());

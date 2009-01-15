@@ -101,7 +101,7 @@ public:
 	/**
 	 * Process the creation of a FileInfo object.
 	 */
-	static SQInteger Constructor(HSQUIRRELVM vm, AIFileInfo *info);
+	static SQInteger Constructor(HSQUIRRELVM vm, AIFileInfo *info, bool library);
 
 private:
 	class Squirrel *engine;
@@ -155,12 +155,22 @@ private:
 
 class AILibrary : public AIFileInfo {
 public:
+	AILibrary() : AIFileInfo(), category(NULL) {};
+
 	/**
 	 * Create an AI, using this AIInfo as start-template.
 	 */
 	static SQInteger Constructor(HSQUIRRELVM vm);
 
 	static SQInteger Import(HSQUIRRELVM vm);
+
+	/**
+	 * Get the category this library is in.
+	 */
+	const char *GetCategory();
+
+private:
+	const char *category;
 };
 
 #endif /* AI_INFO */

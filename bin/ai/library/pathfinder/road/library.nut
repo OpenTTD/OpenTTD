@@ -8,6 +8,7 @@ class Road extends AILibrary {
 	function GetVersion()     { return 3; }
 	function GetDate()        { return "2008-06-18"; }
 	function CreateInstance() { return "Road"; }
+	function GetCategory()    { return "Pathfinder"; }
 }
 
 RegisterLibrary(Road());

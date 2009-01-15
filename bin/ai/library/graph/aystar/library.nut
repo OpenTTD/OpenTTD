@@ -8,6 +8,7 @@ class AyStar extends AILibrary {
 	function GetVersion()     { return 4; }
 	function GetDate()        { return "2008-06-11"; }
 	function CreateInstance() { return "AyStar"; }
+	function GetCategory()    { return "Graph"; }
 }
 
 RegisterLibrary(AyStar());

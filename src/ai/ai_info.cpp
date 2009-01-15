@@ -118,7 +118,7 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	}
 }
 
-/* static */ SQInteger AIFileInfo::Constructor(HSQUIRRELVM vm, AIFileInfo *info)
+/* static */ SQInteger AIFileInfo::Constructor(HSQUIRRELVM vm, AIFileInfo *info, bool library)
 {
 	SQInteger res = 0;
 
@@ -138,6 +138,9 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	info->CheckMethods(&res, "GetVersion");
 	info->CheckMethods(&res, "GetDate");
 	info->CheckMethods(&res, "CreateInstance");
+	if (library) {
+		info->CheckMethods(&res, "GetCategory");
+	}
 
 	/* Abort if one method was missing */
 	if (res != 0) return res;
@@ -155,7 +158,7 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	sq_getinstanceup(vm, 2, &instance, 0);
 	AIInfo *info = (AIInfo *)instance;
 
-	SQInteger res = AIFileInfo::Constructor(vm, info);
+	SQInteger res = AIFileInfo::Constructor(vm, info, false);
 	if (res != 0) return res;
 
 	AIConfigItem config;
@@ -191,7 +194,7 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	sq_getinstanceup(vm, 2, &instance, 0);
 	AIInfo *info = (AIInfo *)instance;
 
-	SQInteger res = AIFileInfo::Constructor(vm, info);
+	SQInteger res = AIFileInfo::Constructor(vm, info, false);
 	if (res != 0) return res;
 
 	/* Remove the link to the real instance, else it might get deleted by RegisterAI() */
@@ -356,13 +359,19 @@ int AIInfo::GetSettingDefaultValue(const char *name)
 	/* Create a new AIFileInfo */
 	AILibrary *library = new AILibrary();
 
-	SQInteger res = AIFileInfo::Constructor(vm, library);
+	SQInteger res = AIFileInfo::Constructor(vm, library, true);
 	if (res != 0) return res;
 
 	/* Register the Library to the base system */
 	library->base->RegisterLibrary(library);
 
 	return 0;
+}
+
+const char *AILibrary::GetCategory()
+{
+	if (this->category == NULL) this->category = this->engine->CallStringMethodStrdup(*this->SQ_instance, "GetCategory");
+	return this->category;
 }
 
 /* static */ SQInteger AILibrary::Import(HSQUIRRELVM vm)
