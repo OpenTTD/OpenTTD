@@ -176,11 +176,12 @@ public:
 		SetDParam(0, this->window_number);
 		this->DrawWidgets();
 
-		DrawString(2, 15, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
+		int y = this->widget[TWA_RATING_INFO].top + 1;
+
+		DrawString(2, y, STR_2023_TRANSPORT_COMPANY_RATINGS, TC_FROMSTRING);
+		y += 10;
 
 		/* Draw list of companies */
-		int y = 25;
-
 		const Company *c;
 		FOR_ALL_COMPANIES(c) {
 			if ((HasBit(this->town->have_ratings, c->index) || this->town->exclusivity == c->index)) {
@@ -209,7 +210,7 @@ public:
 				y += 10;
 			}
 		}
-		y = 107;
+		y = this->widget[TWA_COMMAND_LIST].top + 1;
 		int pos = this->vscroll.pos;
 
 		if (--pos < 0) {
@@ -229,7 +230,7 @@ public:
 		if (this->sel_index != -1) {
 			SetDParam(1, (_price.build_industry >> 8) * _town_action_costs[this->sel_index]);
 			SetDParam(0, STR_2046_SMALL_ADVERTISING_CAMPAIGN + this->sel_index);
-			DrawStringMultiLine(2, 159, STR_204D_INITIATE_A_SMALL_LOCAL + this->sel_index, 313);
+			DrawStringMultiLine(2, this->widget[TWA_ACTION_INFO].top + 1, STR_204D_INITIATE_A_SMALL_LOCAL + this->sel_index, 313);
 		}
 	}
 
@@ -240,7 +241,7 @@ public:
 	{
 		switch (widget) {
 			case TWA_COMMAND_LIST: {
-				int y = (pt.y - 0x6B) / 10;
+				int y = (pt.y - this->widget[TWA_COMMAND_LIST].top - 1) / 10;
 
 				if (!IsInsideMM(y, 0, 5)) return;
 
