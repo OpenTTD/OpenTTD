@@ -24,6 +24,8 @@
 #include "ai_storage.hpp"
 #include "ai_instance.hpp"
 
+#define DEFINE_SCRIPT_FILES
+
 /* Convert all AI related classes to Squirrel data.
  * Note: this line a marker in squirrel_export.sh. Do not change! */
 #include "api/ai_abstractlist.hpp.sq"
@@ -72,6 +74,8 @@
 #include "api/ai_tunnel.hpp.sq"
 #include "api/ai_vehicle.hpp.sq"
 #include "api/ai_vehiclelist.hpp.sq"
+
+#undef DEFINE_SCRIPT_FILES
 
 /* static */ AIInstance *AIInstance::current_instance = NULL;
 

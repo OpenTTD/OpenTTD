@@ -12,6 +12,12 @@
  */
 class AIMap : public AIObject {
 public:
+#ifdef DEFINE_SCRIPT_FILES
+	enum MapType {
+		TILE_INVALID = INVALID_TILE, //!< An invalid tile for every function.
+	};
+#endif /* DEFINE_SCRIPT_FILES */
+
 	static const char *GetClassName() { return "AIMap"; }
 
 	/**

@@ -4,6 +4,10 @@
 #include "ai_map.hpp"
 
 namespace SQConvert {
+	/* Allow enums to be used as Squirrel parameters */
+	template <> AIMap::MapType GetParam(ForceType<AIMap::MapType>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AIMap::MapType)tmp; }
+	template <> int Return<AIMap::MapType>(HSQUIRRELVM vm, AIMap::MapType res) { sq_pushinteger(vm, (int32)res); return 1; }
+
 	/* Allow AIMap to be used as Squirrel parameter */
 	template <> AIMap *GetParam(ForceType<AIMap *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIMap *)instance; }
 	template <> AIMap &GetParam(ForceType<AIMap &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIMap *)instance; }
@@ -16,6 +20,8 @@ void SQAIMap_Register(Squirrel *engine) {
 	DefSQClass <AIMap> SQAIMap("AIMap");
 	SQAIMap.PreRegister(engine);
 	SQAIMap.AddConstructor<void (AIMap::*)(), 1>(engine, "x");
+
+	SQAIMap.DefSQConst(engine, AIMap::TILE_INVALID, "TILE_INVALID");
 
 	SQAIMap.DefSQStaticMethod(engine, &AIMap::GetClassName,      "GetClassName",      1, "x");
 	SQAIMap.DefSQStaticMethod(engine, &AIMap::IsValidTile,       "IsValidTile",       2, "xi");
