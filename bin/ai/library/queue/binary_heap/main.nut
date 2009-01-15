@@ -5,7 +5,7 @@
  *  Peek and Pop always return the current lowest value in the list.
  *  Sort is done on insertion and on deletion.
  */
-class BinaryHeap
+class Binary_Heap
 {
 	_queue = null;
 	_count = 0;
@@ -55,7 +55,7 @@ class BinaryHeap
 	function Exists(item);
 };
 
-function BinaryHeap::Insert(item, priority)
+function Binary_Heap::Insert(item, priority)
 {
 	/* Append dummy entry */
 	_queue.append(0);
@@ -71,7 +71,7 @@ function BinaryHeap::Insert(item, priority)
 	return true;
 }
 
-function BinaryHeap::Pop()
+function Binary_Heap::Pop()
 {
 	if (_count == 0) return null;
 
@@ -86,19 +86,19 @@ function BinaryHeap::Pop()
 	return node[0];
 }
 
-function BinaryHeap::Peek()
+function Binary_Heap::Peek()
 {
 	if (_count == 0) return null;
 
 	return _queue[0][0];
 }
 
-function BinaryHeap::Count()
+function Binary_Heap::Count()
 {
 	return _count;
 }
 
-function BinaryHeap::Exists(item)
+function Binary_Heap::Exists(item)
 {
 	/* Brute-force find the item (there is no faster way, as we don't have the priority number) */
 	foreach (node in _queue) {
@@ -110,7 +110,7 @@ function BinaryHeap::Exists(item)
 
 
 
-function BinaryHeap::_BubbleDown()
+function Binary_Heap::_BubbleDown()
 {
 	if (_count == 0) return;
 

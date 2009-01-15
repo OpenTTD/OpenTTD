@@ -5,7 +5,7 @@
  *  Peek and Pop always return the current lowest value in the list.
  *  Sort is done on insertion only.
  */
-class PriorityQueue
+class Priority_Queue
 {
 	_queue = null;
 	_count = 0;
@@ -56,7 +56,7 @@ class PriorityQueue
 	function Exists(item);
 };
 
-function PriorityQueue::Insert(item, priority)
+function Priority_Queue::Insert(item, priority)
 {
 	/* Append dummy entry */
 	_queue.append(0);
@@ -82,7 +82,7 @@ function PriorityQueue::Insert(item, priority)
 	return true;
 }
 
-function PriorityQueue::Pop()
+function Priority_Queue::Pop()
 {
 	if (_count == 0) return null;
 
@@ -92,19 +92,19 @@ function PriorityQueue::Pop()
 	return node[0];
 }
 
-function PriorityQueue::Peek()
+function Priority_Queue::Peek()
 {
 	if (_count == 0) return null;
 
 	return _queue[_count - 1][0];
 }
 
-function PriorityQueue::Count()
+function Priority_Queue::Count()
 {
 	return _count;
 }
 
-function PriorityQueue::Exists(item)
+function Priority_Queue::Exists(item)
 {
 	/* Brute-force find the item (there is no faster way, as we don't have the priority number) */
 	foreach (node in _queue) {

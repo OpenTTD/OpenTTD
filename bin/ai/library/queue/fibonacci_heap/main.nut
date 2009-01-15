@@ -7,7 +7,7 @@
  *  Insert is implemented as a lazy insert, as it will simply add the new
  *  node to the root list. Sort is done on every Pop operation.
  */
-class FibonacciHeap {
+class Fibonacci_Heap {
 	_min = null;
 	_min_index = 0;
 	_min_priority = 0;
@@ -67,7 +67,7 @@ class FibonacciHeap {
 	function Exists(item);
 };
 
-function FibonacciHeap::Insert(item, priority) {
+function Fibonacci_Heap::Insert(item, priority) {
 	/* Create a new node instance to add to the heap. */
 	local node = Node();
 	/* Changing params is faster than using constructor values */
@@ -86,7 +86,7 @@ function FibonacciHeap::Insert(item, priority) {
 	_count++;
 }
 
-function FibonacciHeap::Pop() {
+function Fibonacci_Heap::Pop() {
 
 	if (_count == 0) return null;
 
@@ -150,16 +150,16 @@ function FibonacciHeap::Pop() {
 	return z.item;
 }
 
-function FibonacciHeap::Peek() {
+function Fibonacci_Heap::Peek() {
 	if (_count == 0) return null;
 	return _min.item;
 }
 
-function FibonacciHeap::Count() {
+function Fibonacci_Heap::Count() {
 	return _count;
 }
 
-function FibonacciHeap::Exists(item) {
+function Fibonacci_Heap::Exists(item) {
 	return ExistsIn(_root_list, item);
 }
 
@@ -169,7 +169,7 @@ function FibonacciHeap::Exists(item) {
  * @param item The item to search for.
  * @return True if the item is found, false otherwise.
  */
-function FibonacciHeap::ExistsIn(list, item) {
+function Fibonacci_Heap::ExistsIn(list, item) {
 
 	foreach (val in list) {
 		if (val.item == item) {
@@ -190,7 +190,7 @@ function FibonacciHeap::ExistsIn(list, item) {
 /**
  * Basic class the fibonacci heap is composed of.
  */
-class FibonacciHeap.Node {
+class Fibonacci_Heap.Node {
 	degree = null;
 	child = null;
 
