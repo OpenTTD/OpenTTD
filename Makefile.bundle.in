@@ -78,7 +78,7 @@ ifdef MENU_DIR
 endif
 ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/ai/\"* 2>/dev/null`"; then echo 1; fi), 1)
 	$(Q)cp -R "$(BIN_DIR)/ai/"*               "$(BUNDLE_DIR)/ai/"
-	$(Q)find $(BUNDLE_DIR)/ai/ -depth -iname '*.svn' -exec rm -Rf {} \; || find $(BUNDLE_DIR)/ai/ -d -iname '*.svn' -exec rm -Rf {} \;
+	$(Q)find $(BUNDLE_DIR)/ai/ -type d -iname '.svn' | xargs rm -Rf
 endif
 ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/\"*.scn 2> /dev/null`"; then echo 1; fi), 1)
 	$(Q)cp "$(BIN_DIR)/scenario/"*.scn        "$(BUNDLE_DIR)/scenario/"
