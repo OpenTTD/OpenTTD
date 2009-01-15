@@ -210,6 +210,14 @@ public:
 				y += 10;
 			}
 		}
+
+		if (y > this->widget[TWA_RATING_INFO].bottom) {
+			/* If the company list is too big to fit, mark ourself dirty and draw again. */
+			ResizeWindowForWidget(this, TWA_RATING_INFO, 0, y - this->widget[TWA_RATING_INFO].bottom);
+			this->SetDirty();
+			return;
+		}
+
 		y = this->widget[TWA_COMMAND_LIST].top + 1;
 		int pos = this->vscroll.pos;
 
