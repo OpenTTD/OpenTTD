@@ -40,7 +40,6 @@
 
 /* static */ TileIndex AIMap::GetTileIndex(uint32 x, uint32 y)
 {
-	if (x >= ::MapSizeX() || y >= MapSizeY()) return INVALID_TILE;
 	return ::TileXY(x, y);
 }
 
