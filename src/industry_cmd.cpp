@@ -2084,6 +2084,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 	bool standard = true;
 	bool suppress_message = false;
+	bool recalculate_multipliers = false; ///< reinitialize production_rate to match prod_level
 	/* don't use smooth economy for industries using production related callbacks */
 	bool smooth_economy = _settings_game.economy.smooth_economy &&
 	                      !(HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_256_TICKS) || HasBit(indspec->callback_flags, CBM_IND_PRODUCTION_CARGO_ARRIVAL)) && // production callbacks
@@ -2118,6 +2119,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 					break;
 				case 0xF:                         // Set production to third byte of register 0x100
 					i->prod_level = Clamp(GB(GetRegister(0x100), 16, 8), PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
+					recalculate_multipliers = true;
 					break;
 			}
 		}
@@ -2201,8 +2203,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	/* Increase if needed */
 	while (mul-- != 0 && i->prod_level < PRODLEVEL_MAXIMUM) {
 		i->prod_level = min(i->prod_level * 2, PRODLEVEL_MAXIMUM);
-		i->production_rate[0] = min(i->production_rate[0] * 2, 0xFF);
-		i->production_rate[1] = min(i->production_rate[1] * 2, 0xFF);
+		recalculate_multipliers = true;
 		if (str == STR_NULL) str = indspec->production_up_text;
 	}
 
@@ -2212,8 +2213,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			closeit = true;
 		} else {
 			i->prod_level = max(i->prod_level / 2, (int)PRODLEVEL_MINIMUM); // typecast to int required to please MSVC
-			i->production_rate[0] = (i->production_rate[0] + 1) / 2;
-			i->production_rate[1] = (i->production_rate[1] + 1) / 2;
+			recalculate_multipliers = true;
 			if (str == STR_NULL) str = indspec->production_down_text;
 		}
 	}
@@ -2224,7 +2224,15 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 			closeit = true;
 		} else {
 			i->prod_level = ClampU(i->prod_level + increment, PRODLEVEL_MINIMUM, PRODLEVEL_MAXIMUM);
+			recalculate_multipliers = true;
 		}
+	}
+
+	/* Recalculate production_rate
+	 * For non-smooth economy these should always be synchronized with prod_level */
+	if (recalculate_multipliers) {
+		i->production_rate[0] = min(indspec->production_rate[0] * i->prod_level / PRODLEVEL_DEFAULT, 0xFF);
+		i->production_rate[1] = min(indspec->production_rate[1] * i->prod_level / PRODLEVEL_DEFAULT, 0xFF);
 	}
 
 	/* Close if needed and allowed */
