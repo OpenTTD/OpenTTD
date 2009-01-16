@@ -882,8 +882,6 @@ extern void cocoaSetApplicationBundleDir();
 #else
 	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
 #endif
-
-	ScanForTarFiles();
 }
 #endif /* defined(WIN32) || defined(WINCE) */
 
@@ -952,6 +950,8 @@ void DeterminePaths(const char *exe)
 
 	free(save_dir);
 	free(autosave_dir);
+
+	ScanForTarFiles();
 }
 
 /**

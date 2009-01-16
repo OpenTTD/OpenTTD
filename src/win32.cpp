@@ -1045,7 +1045,6 @@ char *getcwd(char *buf, size_t size)
 
 void DetermineBasePaths(const char *exe)
 {
-	extern void ScanForTarFiles();
 	char tmp[MAX_PATH];
 	TCHAR path[MAX_PATH];
 #ifdef WITH_PERSONAL_DIR
@@ -1091,8 +1090,6 @@ void DetermineBasePaths(const char *exe)
 
 	_searchpaths[SP_INSTALLATION_DIR]       = NULL;
 	_searchpaths[SP_APPLICATION_BUNDLE_DIR] = NULL;
-
-	ScanForTarFiles();
 }
 
 /**
