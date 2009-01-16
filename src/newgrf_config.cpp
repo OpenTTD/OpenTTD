@@ -456,12 +456,12 @@ char *FindUnknownGRFName(uint32 grfid, uint8 *md5sum, bool create)
 
 
 /* Retrieve a NewGRF from the current config by its grfid */
-GRFConfig *GetGRFConfig(uint32 grfid)
+GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask)
 {
 	GRFConfig *c;
 
 	for (c = _grfconfig; c != NULL; c = c->next) {
-		if (c->grfid == grfid) return c;
+		if ((c->grfid & mask) == (grfid & mask)) return c;
 	}
 
 	return NULL;

@@ -3963,6 +3963,7 @@ static void SkipIf(byte *buf, size_t len)
 	}
 
 	switch (paramsize) {
+		case 8: cond_val = grf_load_dword(&buf); mask = grf_load_dword(&buf); break;
 		case 4: cond_val = grf_load_dword(&buf); mask = 0xFFFFFFFF; break;
 		case 2: cond_val = grf_load_word(&buf);  mask = 0x0000FFFF; break;
 		case 1: cond_val = grf_load_byte(&buf);  mask = 0x000000FF; break;
@@ -3988,7 +3989,7 @@ static void SkipIf(byte *buf, size_t len)
 	if (param == 0x88 && condtype != 0x0B && condtype != 0x0C) {
 		/* GRF ID checks */
 
-		GRFConfig *c = GetGRFConfig(cond_val);
+		GRFConfig *c = GetGRFConfig(cond_val, mask);
 
 		if (c != NULL && HasBit(c->flags, GCF_STATIC) && !HasBit(_cur_grfconfig->flags, GCF_STATIC) && c->status != GCS_DISABLED && _networking) {
 			DisableStaticNewGRFInfluencingNonStaticNewGRFs(c);

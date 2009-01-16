@@ -82,7 +82,7 @@ extern GRFConfig *_grfconfig_static;  ///< First item in list of static GRF set 
 
 void ScanNewGRFFiles();
 const GRFConfig *FindGRFConfig(uint32 grfid, const uint8 *md5sum = NULL);
-GRFConfig *GetGRFConfig(uint32 grfid);
+GRFConfig *GetGRFConfig(uint32 grfid, uint32 mask = 0xFFFFFFFF);
 GRFConfig **CopyGRFConfigList(GRFConfig **dst, const GRFConfig *src, bool init_only);
 void AppendStaticGRFConfigs(GRFConfig **dst);
 void AppendToGRFConfigList(GRFConfig **dst, GRFConfig *el);
