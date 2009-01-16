@@ -355,21 +355,18 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
 	if (nameParam == NULL) return NULL;
 
 	char ai_name[1024];
-	char name[1024];
-	ttd_strlcpy(name, nameParam, sizeof(name));
+	ttd_strlcpy(ai_name, nameParam, sizeof(ai_name));
+	strtolower(ai_name);
 
 	AIInfo *info = NULL;
 	int version = -1;
 
 	if (versionParam == -1) {
-		snprintf(ai_name, sizeof(ai_name), "%s", name);
-		strtolower(ai_name);
-
 		/* We want to load the latest version of this AI; so find it */
 		if (this->info_single_list.find(ai_name) != this->info_single_list.end()) return this->info_single_list[ai_name];
 
 		/* If we didn't find a match AI, maybe the user included a version */
-		char *e = strrchr(name, '.');
+		char *e = strrchr(ai_name, '.');
 		if (e == NULL) return NULL;
 		*e = '\0';
 		e++;
@@ -378,14 +375,13 @@ AIInfo *AIScanner::FindInfo(const char *nameParam, int versionParam)
 	}
 
 	/* Try to find a direct 'name.version' match */
-	snprintf(ai_name, sizeof(ai_name), "%s.%d", name, versionParam);
-	strtolower(ai_name);
-	if (this->info_list.find(ai_name) != this->info_list.end()) return this->info_list[ai_name];
+	char ai_name_tmp[1024];
+	snprintf(ai_name_tmp, sizeof(ai_name_tmp), "%s.%d", ai_name, versionParam);
+	strtolower(ai_name_tmp);
+	if (this->info_list.find(ai_name_tmp) != this->info_list.end()) return this->info_list[ai_name_tmp];
 
 	/* See if there is a compatible AI which goes by that name, with the highest
 	 *  version which allows loading the requested version */
-	snprintf(ai_name, sizeof(ai_name), "%s", name);
-	strtolower(ai_name);
 	AIInfoList::iterator it = this->info_list.begin();
 	for (; it != this->info_list.end(); it++) {
 		char ai_name_compare[1024];
