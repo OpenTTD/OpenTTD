@@ -362,7 +362,7 @@ static bool FillGraphicsSetDetails(GraphicsSet *graphics, IniFile *ini, const ch
 
 	fetch_metadata("shortname");
 	for (uint i = 0; item->value[i] != '\0' && i < 4; i++) {
-		graphics->shortname |= ((uint8)item->value[i]) << (32 - i * 8);
+		graphics->shortname |= ((uint8)item->value[i]) << (i * 8);
 	}
 
 	fetch_metadata("version");
