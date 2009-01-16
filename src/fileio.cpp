@@ -1087,8 +1087,11 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars)
 		FioAppendDirectory(path, MAX_PATH, sp, sd);
 		num += ScanPath(this, extension, path, strlen(path));
 	}
-	FOR_ALL_TARS(tar) {
-		num += ScanTar(this, extension, tar);
+
+	if (tars) {
+		FOR_ALL_TARS(tar) {
+			num += ScanTar(this, extension, tar);
+		}
 	}
 
 	return num;
