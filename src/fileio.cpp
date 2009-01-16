@@ -19,6 +19,7 @@
 #include <unistd.h>
 #endif
 #include <sys/stat.h>
+#include <algorithm>
 
 /*************************************************/
 /* FILE IO ROUTINES ******************************/
