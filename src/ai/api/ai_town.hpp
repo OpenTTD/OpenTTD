@@ -81,7 +81,7 @@ public:
 		TOWN_RATING_VERY_GOOD,    ///< The company got an very good rating in the town.
 		TOWN_RATING_EXCELLENT,    ///< The company got an excellent rating in the town.
 		TOWN_RATING_OUTSTANDING,  ///< The company got an outstanding rating in the town.
-		INVALID_TOWN_RATING = -1, ///< The town rating for invalid towns/companies.
+		TOWN_RATING_INVALID = -1, ///< The town rating for invalid towns/companies.
 	};
 
 	/**
@@ -228,7 +228,7 @@ public:
 	 * @param town_id The town to check.
 	 * @pre IsValidTown(town_id).
 	 * @return The company that has the exclusive rights. The value
-	 *         AICompany::INVALID_COMPANY means that there are currently no
+	 *         AICompany::COMPANY_INVALID means that there are currently no
 	 *         exclusive rights given out to anyone.
 	 */
 	static AICompany::CompanyID GetExclusiveRightsCompany(TownID town_id);
@@ -267,7 +267,7 @@ public:
 	 * @param town_id The town to get the rating for.
 	 * @param company_id The company to get the rating for.
 	 * @pre IsValidTown(town_id).
-	 * @pre AICompany.ResolveCompanyID(company) != AICompany::INVALID_COMPANY.
+	 * @pre AICompany.ResolveCompanyID(company) != AICompany::COMPANY_INVALID.
 	 * @return The rating as shown to humans.
 	 */
 	static TownRating GetRating(TownID town_id, AICompany::CompanyID company_id);

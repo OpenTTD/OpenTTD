@@ -68,11 +68,15 @@ public:
 	 */
 	enum VehicleType {
 		/* Order IS important, as it now matches the internal state of the game for vehicle type */
-		VEHICLE_RAIL,           //!< Rail type vehicle.
-		VEHICLE_ROAD,           //!< Road type vehicle (bus / truck).
-		VEHICLE_WATER,          //!< Water type vehicle.
-		VEHICLE_AIR,            //!< Air type vehicle.
-		VEHICLE_INVALID = 0xFF, //!< Invalid vehicle type.
+		VT_RAIL,           //!< Rail type vehicle.
+		VT_ROAD,           //!< Road type vehicle (bus / truck).
+		VT_WATER,          //!< Water type vehicle.
+		VT_AIR,            //!< Air type vehicle.
+		VT_INVALID = 0xFF, //!< Invalid vehicle type.
+
+#ifdef DEFINE_SCRIPT_FILES
+		VEHICLE_INVALID = -1, //!< Invalid VehicleID.
+#endif /* DEFINE_SCRIPT_FILES */
 	};
 
 	/**

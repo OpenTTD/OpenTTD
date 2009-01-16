@@ -10,6 +10,7 @@
 #include "../string_func.h"
 #include "../settings_type.h"
 #include "../company_base.h"
+#include "../vehicle_base.h"
 #include "../saveload/saveload.h"
 #include "table/strings.h"
 
@@ -18,13 +19,13 @@
 #include "../script/squirrel_helper.hpp"
 #include "../script/squirrel_class.hpp"
 #include "../script/squirrel_std.hpp"
+
+#define DEFINE_SCRIPT_FILES
+
 #include "ai.hpp"
-#include "api/ai_controller.hpp"
 #include "ai_info.hpp"
 #include "ai_storage.hpp"
 #include "ai_instance.hpp"
-
-#define DEFINE_SCRIPT_FILES
 
 /* Convert all AI related classes to Squirrel data.
  * Note: this line a marker in squirrel_export.sh. Do not change! */

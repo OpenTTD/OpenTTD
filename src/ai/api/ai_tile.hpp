@@ -75,7 +75,7 @@ public:
 		TRANSPORT_WATER   =  2, //!< Tile with navigable waterways.
 		TRANSPORT_AIR     =  3, //!< Tile with airport.
 
-		INVALID_TRANSPORT = -1, //!< Tile without any transport type.
+		TRANSPORT_INVALID = -1, //!< Tile without any transport type.
 	};
 
 	/**
@@ -222,7 +222,7 @@ public:
 	 * Get the owner of the tile.
 	 * @param tile The tile to get the owner from.
 	 * @pre AIMap::IsValidTile(tile).
-	 * @return The CompanyID of the owner of the tile, or INVALID_COMPANY if
+	 * @return The CompanyID of the owner of the tile, or COMPANY_INVALID if
 	 *  there is no owner (grass/industry/water tiles, etc.).
 	 */
 	static AICompany::CompanyID GetOwner(TileIndex tile);

@@ -146,9 +146,9 @@
 
 /* static */ AICompany::CompanyID AITile::GetOwner(TileIndex tile)
 {
-	if (!::IsValidTile(tile)) return AICompany::INVALID_COMPANY;
-	if (::IsTileType(tile, MP_HOUSE)) return AICompany::INVALID_COMPANY;
-	if (::IsTileType(tile, MP_INDUSTRY)) return AICompany::INVALID_COMPANY;
+	if (!::IsValidTile(tile)) return AICompany::COMPANY_INVALID;
+	if (::IsTileType(tile, MP_HOUSE)) return AICompany::COMPANY_INVALID;
+	if (::IsTileType(tile, MP_INDUSTRY)) return AICompany::COMPANY_INVALID;
 
 	return AICompany::ResolveCompanyID((AICompany::CompanyID)(byte)::GetTileOwner(tile));
 }

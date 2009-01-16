@@ -139,7 +139,7 @@
 
 /* static */ AICompany::CompanyID AITown::GetExclusiveRightsCompany(TownID town_id)
 {
-	if (!IsValidTown(town_id)) return AICompany::INVALID_COMPANY;
+	if (!IsValidTown(town_id)) return AICompany::COMPANY_INVALID;
 
 	return (AICompany::CompanyID)(int8)::GetTown(town_id)->exclusivity;
 }
@@ -170,9 +170,9 @@ extern uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
 
 /* static */ AITown::TownRating AITown::GetRating(TownID town_id, AICompany::CompanyID company_id)
 {
-	if (!IsValidTown(town_id)) return INVALID_TOWN_RATING;
+	if (!IsValidTown(town_id)) return TOWN_RATING_INVALID;
 	AICompany::CompanyID company = AICompany::ResolveCompanyID(company_id);
-	if (company == AICompany::INVALID_COMPANY) return INVALID_TOWN_RATING;
+	if (company == AICompany::COMPANY_INVALID) return TOWN_RATING_INVALID;
 
 	const Town *t = ::GetTown(town_id);
 	if (!HasBit(t->have_ratings, company)) return TOWN_RATING_NONE;

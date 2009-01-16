@@ -25,7 +25,7 @@
 
 /* static */ AICompany::CompanyID AISubsidy::GetAwardedTo(SubsidyID subsidy_id)
 {
-	if (!IsAwarded(subsidy_id)) return AICompany::INVALID_COMPANY;
+	if (!IsAwarded(subsidy_id)) return AICompany::COMPANY_INVALID;
 
 	return (AICompany::CompanyID)((byte)GetStation(_subsidies[subsidy_id].from)->owner);
 }

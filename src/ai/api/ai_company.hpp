@@ -16,17 +16,21 @@ public:
 
 	/** Different constants related to CompanyID. */
 	enum CompanyID {
-		INVALID_COMPANY = -1, //!< An invalid company.
-		FIRST_COMPANY   = 0, //!< The first available company.
-		LAST_COMPANY    = 7, //!< The last available company.
-		MY_COMPANY      = 8, //!< Constant that gets resolved to the correct company index for your company.
+		COMPANY_INVALID = -1, //!< An invalid company.
+
+#ifdef DEFINE_SCRIPT_FILES
+		COMPANY_FIRST   = 0, //!< The first available company.
+		COMPANY_LAST    = ::MAX_COMPANIES, //!< The last available company.
+#endif /* DEFINE_SCRIPT_FILES */
+
+		COMPANY_SELF    = 254, //!< Constant that gets resolved to the correct company index for your company.
 	};
 
 	/**
 	 * Resolved the given company index to the correct index for the company. If
-	 *  the company index was MY_COMPANY it will be resolved to the index of
+	 *  the company index was COMPANY_SELF it will be resolved to the index of
 	 *  your company. If the company with the given index does not exist it will
-	 *  return INVALID_COMPANY.
+	 *  return COMPANY_INVALID.
 	 * @param company The company index to resolve.
 	 * @return The resolved company index.
 	 */
@@ -62,7 +66,7 @@ public:
 	/**
 	 * Get the name of the given company.
 	 * @param company The company to get the name for.
-	 * @pre ResolveCompanyID(company) != INVALID_COMPANY
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
 	 * @return The name of the given company.
 	 */
 	static const char *GetName(CompanyID company);
@@ -79,7 +83,7 @@ public:
 	/**
 	 * Get the name of the president of the given company.
 	 * @param company The company to get the president's name for.
-	 * @pre ResolveCompanyID(company) != INVALID_COMPANY
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
 	 * @return The name of the president of the given company.
 	 */
 	static const char *GetPresidentName(CompanyID company);
@@ -130,7 +134,7 @@ public:
 	/**
 	 * Gets the current value of the given company.
 	 * @param company The company to get the company value of.
-	 * @pre ResolveCompanyID(company) != INVALID_COMPANY
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
 	 * @return The current value of the given company.
 	 */
 	static Money GetCompanyValue(CompanyID company);
@@ -138,7 +142,7 @@ public:
 	/**
 	 * Gets the bank balance. In other words, the amount of money the given company can spent.
 	 * @param company The company to get the bank balance of.
-	 * @pre ResolveCompanyID(company) != INVALID_COMPANY
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
 	 * @return The actual bank balance.
 	 */
 	static Money GetBankBalance(CompanyID company);
@@ -158,8 +162,8 @@ public:
 	/**
 	 * Return the location of a company's HQ.
 	 * @param company The company the get the HQ of.
-	 * @pre ResolveCompanyID(company) != INVALID_COMPANY.
-	 * @return The tile of the company's HQ, this tile is the most nothern tile of that HQ, or INVALID_TILE if there is no HQ yet.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
+	 * @return The tile of the company's HQ, this tile is the most nothern tile of that HQ, or TILE_INVALID if there is no HQ yet.
 	 */
 	static TileIndex GetCompanyHQ(CompanyID company);
 
@@ -173,7 +177,7 @@ public:
 	/**
 	 * Return whether autorenew is enabled for a company.
 	 * @param company The company to get the autorenew status of.
-	 * @pre ResolveCompanyID(company) != INVALID_COMPANY.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return True if autorenew is enabled.
 	 */
 	static bool GetAutoRenewStatus(CompanyID company);
@@ -188,7 +192,7 @@ public:
 	/**
 	 * Return the number of months before/after max age to autorenew an engine for a company.
 	 * @param company The company to get the autorenew months of.
-	 * @pre ResolveCompanyID(company) != INVALID_COMPANY.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The months before/after max age of engine.
 	 */
 	static int16 GetAutoRenewMonths(CompanyID company);
@@ -203,7 +207,7 @@ public:
 	/**
 	 * Return the minimum money needed to autorenew an engine for a company.
 	 * @param company The company to get the autorenew money of.
-	 * @pre ResolveCompanyID(company) != INVALID_COMPANY.
+	 * @pre ResolveCompanyID(company) != COMPANY_INVALID.
 	 * @return The minimum required money for autorenew to work.
 	 */
 	static uint32 GetAutoRenewMoney(CompanyID company);

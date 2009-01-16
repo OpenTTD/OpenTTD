@@ -14,7 +14,7 @@ class AIMap : public AIObject {
 public:
 #ifdef DEFINE_SCRIPT_FILES
 	enum MapType {
-		TILE_INVALID = INVALID_TILE, //!< An invalid tile for every function.
+		TILE_INVALID = INVALID_TILE, //!< Invalid TileIndex.
 	};
 #endif /* DEFINE_SCRIPT_FILES */
 

@@ -19,14 +19,14 @@
 
 /* static */ AICompany::CompanyID AICompany::ResolveCompanyID(AICompany::CompanyID company)
 {
-	if (company == MY_COMPANY) return (CompanyID)((byte)_current_company);
+	if (company == COMPANY_SELF) return (CompanyID)((byte)_current_company);
 
-	return ::IsValidCompanyID((::CompanyID)company) ? company : INVALID_COMPANY;
+	return ::IsValidCompanyID((::CompanyID)company) ? company : COMPANY_INVALID;
 }
 
 /* static */ bool AICompany::IsMine(AICompany::CompanyID company)
 {
-	return ResolveCompanyID(company) == ResolveCompanyID(MY_COMPANY);
+	return ResolveCompanyID(company) == ResolveCompanyID(COMPANY_SELF);
 }
 
 /* static */ bool AICompany::SetCompanyName(const char *name)
@@ -52,7 +52,7 @@
 /* static */ const char *AICompany::GetName(AICompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == INVALID_COMPANY) return NULL;
+	if (company == COMPANY_INVALID) return NULL;
 
 	static const int len = 64;
 	char *company_name = MallocT<char>(len);
@@ -75,7 +75,7 @@
 
 	static const int len = 64;
 	char *president_name = MallocT<char>(len);
-	if (company != INVALID_COMPANY) {
+	if (company != COMPANY_INVALID) {
 		::SetDParam(0, company);
 		::GetString(president_name, STR_PRESIDENT_NAME, &president_name[len - 1]);
 	} else {
@@ -88,7 +88,7 @@
 /* static */ Money AICompany::GetCompanyValue(AICompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == INVALID_COMPANY) return -1;
+	if (company == COMPANY_INVALID) return -1;
 
 	return ::CalculateCompanyValue(::GetCompany((CompanyID)company));
 }
@@ -96,7 +96,7 @@
 /* static */ Money AICompany::GetBankBalance(AICompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == INVALID_COMPANY) return -1;
+	if (company == COMPANY_INVALID) return -1;
 
 	return ::GetCompany((CompanyID)company)->money;
 }
@@ -121,7 +121,7 @@
 	EnforcePrecondition(false, loan >= 0);
 	EnforcePrecondition(false, (loan % GetLoanInterval()) == 0);
 	EnforcePrecondition(false, loan <= GetMaxLoanAmount());
-	EnforcePrecondition(false, (loan - GetLoanAmount() + GetBankBalance(MY_COMPANY)) >= 0);
+	EnforcePrecondition(false, (loan - GetLoanAmount() + GetBankBalance(COMPANY_SELF)) >= 0);
 
 	if (loan == GetLoanAmount()) return true;
 
@@ -154,7 +154,7 @@
 /* static */ TileIndex AICompany::GetCompanyHQ(CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == INVALID_COMPANY) return INVALID_TILE;
+	if (company == COMPANY_INVALID) return INVALID_TILE;
 
 	TileIndex loc = ::GetCompany((CompanyID)company)->location_of_HQ;
 	return (loc == 0) ? INVALID_TILE : loc;
@@ -168,7 +168,7 @@
 /* static */ bool AICompany::GetAutoRenewStatus(CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == INVALID_COMPANY) return false;
+	if (company == COMPANY_INVALID) return false;
 
 	return ::GetCompany((CompanyID)company)->engine_renew;
 }
@@ -181,7 +181,7 @@
 /* static */ int16 AICompany::GetAutoRenewMonths(CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == INVALID_COMPANY) return 0;
+	if (company == COMPANY_INVALID) return 0;
 
 	return ::GetCompany((CompanyID)company)->engine_renew_months;
 }
@@ -194,7 +194,7 @@
 /* static */ uint32 AICompany::GetAutoRenewMoney(CompanyID company)
 {
 	company = ResolveCompanyID(company);
-	if (company == INVALID_COMPANY) return 0;
+	if (company == COMPANY_INVALID) return 0;
 
 	return ::GetCompany((CompanyID)company)->engine_renew_money;
 }

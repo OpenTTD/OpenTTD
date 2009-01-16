@@ -54,7 +54,7 @@ void SQAITile_Register(Squirrel *engine) {
 	SQAITile.DefSQConst(engine, AITile::TRANSPORT_ROAD,    "TRANSPORT_ROAD");
 	SQAITile.DefSQConst(engine, AITile::TRANSPORT_WATER,   "TRANSPORT_WATER");
 	SQAITile.DefSQConst(engine, AITile::TRANSPORT_AIR,     "TRANSPORT_AIR");
-	SQAITile.DefSQConst(engine, AITile::INVALID_TRANSPORT, "INVALID_TRANSPORT");
+	SQAITile.DefSQConst(engine, AITile::TRANSPORT_INVALID, "TRANSPORT_INVALID");
 
 	AIError::RegisterErrorMap(STR_1003_ALREADY_AT_SEA_LEVEL, AITile::ERR_TILE_TOO_HIGH);
 	AIError::RegisterErrorMap(STR_1003_ALREADY_AT_SEA_LEVEL, AITile::ERR_TILE_TOO_LOW);

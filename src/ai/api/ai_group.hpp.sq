@@ -21,9 +21,9 @@ void SQAIGroup_Register(Squirrel *engine) {
 	SQAIGroup.PreRegister(engine);
 	SQAIGroup.AddConstructor<void (AIGroup::*)(), 1>(engine, "x");
 
-	SQAIGroup.DefSQConst(engine, AIGroup::ALL_GROUP,     "ALL_GROUP");
-	SQAIGroup.DefSQConst(engine, AIGroup::DEFAULT_GROUP, "DEFAULT_GROUP");
-	SQAIGroup.DefSQConst(engine, AIGroup::INVALID_GROUP, "INVALID_GROUP");
+	SQAIGroup.DefSQConst(engine, AIGroup::GROUP_ALL,     "GROUP_ALL");
+	SQAIGroup.DefSQConst(engine, AIGroup::GROUP_DEFAULT, "GROUP_DEFAULT");
+	SQAIGroup.DefSQConst(engine, AIGroup::GROUP_INVALID, "GROUP_INVALID");
 
 	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::GetClassName,                "GetClassName",                1, "x");
 	SQAIGroup.DefSQStaticMethod(engine, &AIGroup::IsValidGroup,                "IsValidGroup",                2, "xi");

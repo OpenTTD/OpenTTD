@@ -71,8 +71,8 @@ public:
 
 	/** Different constants related to the OrderPosition */
 	enum OrderPosition {
-		CURRENT_ORDER = 0xFF, //!< Constant that gets resolved to the current order.
-		INVALID_ORDER = -1,   //!< An invalid order.
+		ORDER_CURRENT = 0xFF, //!< Constant that gets resolved to the current order.
+		ORDER_INVALID = -1,   //!< An invalid order.
 	};
 
 	/**
@@ -88,7 +88,7 @@ public:
 	 * Resolves the given order index to the correct index for the given vehicle.
 	 *  If the order index was CURRENT_ORDER it will be resolved to the index of
 	 *  the current order (as shown in the order list). If the order with the
-	 *  given index does not exist it will return INVALID_ORDER.
+	 *  given index does not exist it will return ORDER_INVALID.
 	 * @param vehicle_id The vehicle to check the order index for.
 	 * @param order_position The order index to resolve.
 	 * @pre AIVehicle::IsValidVehicle(vehicle_id).

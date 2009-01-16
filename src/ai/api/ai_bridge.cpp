@@ -56,27 +56,27 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	EnforcePrecondition(false, start != end);
 	EnforcePrecondition(false, ::IsValidTile(start) && ::IsValidTile(end));
 	EnforcePrecondition(false, TileX(start) == TileX(end) || TileY(start) == TileY(end));
-	EnforcePrecondition(false, vehicle_type == AIVehicle::VEHICLE_ROAD || vehicle_type == AIVehicle::VEHICLE_RAIL || vehicle_type == AIVehicle::VEHICLE_WATER);
-	EnforcePrecondition(false, vehicle_type != AIVehicle::VEHICLE_RAIL || AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType()));
+	EnforcePrecondition(false, vehicle_type == AIVehicle::VT_ROAD || vehicle_type == AIVehicle::VT_RAIL || vehicle_type == AIVehicle::VT_WATER);
+	EnforcePrecondition(false, vehicle_type != AIVehicle::VT_RAIL || AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType()));
 
 	uint type = 0;
 	switch (vehicle_type) {
-		case AIVehicle::VEHICLE_ROAD:
+		case AIVehicle::VT_ROAD:
 			type |= (TRANSPORT_ROAD << 15);
 			type |= (RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType()) << 8);
 			break;
-		case AIVehicle::VEHICLE_RAIL:
+		case AIVehicle::VT_RAIL:
 			type |= (TRANSPORT_RAIL << 15);
 			type |= (AIRail::GetCurrentRailType() << 8);
 			break;
-		case AIVehicle::VEHICLE_WATER:
+		case AIVehicle::VT_WATER:
 			type |= (TRANSPORT_WATER << 15);
 			break;
 		default: NOT_REACHED();
 	}
 
 	/* For rail and water we do nothing special */
-	if (vehicle_type == AIVehicle::VEHICLE_RAIL || vehicle_type == AIVehicle::VEHICLE_WATER) {
+	if (vehicle_type == AIVehicle::VT_RAIL || vehicle_type == AIVehicle::VT_WATER) {
 		return AIObject::DoCommand(end, start, type | bridge_id, CMD_BUILD_BRIDGE);
 	}
 

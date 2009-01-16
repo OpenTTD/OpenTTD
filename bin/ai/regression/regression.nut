@@ -226,7 +226,7 @@ function Regression::Airport()
 		print("  GetAirportCoverageRadius(" + i + "): " + AIAirport.GetAirportCoverageRadius(i));
 	}
 
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 	print("  BuildAirport():       " + AIAirport.BuildAirport(32116, 0, true));
 	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32116));
 	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32116));
@@ -235,12 +235,12 @@ function Regression::Airport()
 	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32119));
 	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32119));
 	print("  GetAirportType():     " + AIAirport.GetAirportType(32119));
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 
 	print("  RemoveAirport():      " + AIAirport.RemoveAirport(32118));
 	print("  IsHangarTile():       " + AIAirport.IsHangarTile(32119));
 	print("  IsAirportTile():      " + AIAirport.IsAirportTile(32119));
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 	print("  BuildAirport():       " + AIAirport.BuildAirport(32116, 0, true));
 }
 
@@ -267,11 +267,11 @@ function Regression::Bridge()
 	print("  RemoveBridge():       " + AIBridge.RemoveBridge(33155));
 	print("  GetLastErrorString(): " + AIError.GetLastErrorString());
 	print("  GetOtherBridgeEnd():  " + AIBridge.GetOtherBridgeEnd(33160));
-	print("  BuildBridge():        " + AIBridge.BuildBridge(AIVehicle.VEHICLE_ROAD, 5, 33160, 33155));
+	print("  BuildBridge():        " + AIBridge.BuildBridge(AIVehicle.VT_ROAD, 5, 33160, 33155));
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33160));
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33155));
 	print("  GetOtherBridgeEnd():  " + AIBridge.GetOtherBridgeEnd(33160));
-	print("  BuildBridge():        " + AIBridge.BuildBridge(AIVehicle.VEHICLE_ROAD, 5, 33160, 33155));
+	print("  BuildBridge():        " + AIBridge.BuildBridge(AIVehicle.VT_ROAD, 5, 33160, 33155));
 	print("  GetLastErrorString(): " + AIError.GetLastErrorString());
 	print("  RemoveBridge():       " + AIBridge.RemoveBridge(33155));
 	print("  IsBridgeTile():       " + AIBridge.IsBridgeTile(33160));
@@ -401,12 +401,12 @@ function Regression::Company()
 		}
 	}
 
-	print("  GetName():                   " + AICompany.GetName(AICompany.MY_COMPANY));
-	print("  GetPresidentName():          " + AICompany.GetPresidentName(AICompany.MY_COMPANY));
+	print("  GetName():                   " + AICompany.GetName(AICompany.COMPANY_SELF));
+	print("  GetPresidentName():          " + AICompany.GetPresidentName(AICompany.COMPANY_SELF));
 	print("  SetPresidentName():          " + AICompany.SetPresidentName("Regression AI"));
-	print("  GetPresidentName():          " + AICompany.GetPresidentName(AICompany.MY_COMPANY));
-	print("  GetCompanyValue():           " + AICompany.GetCompanyValue(AICompany.MY_COMPANY));
-	print("  GetBankBalance():            " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetPresidentName():          " + AICompany.GetPresidentName(AICompany.COMPANY_SELF));
+	print("  GetCompanyValue():           " + AICompany.GetCompanyValue(AICompany.COMPANY_SELF));
+	print("  GetBankBalance():            " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 	print("  GetName():                   " + AICompany.GetName(240));
 	print("  GetLoanAmount():             " + AICompany.GetLoanAmount());
 	print("  GetMaxLoanAmount():          " + AICompany.GetMaxLoanAmount());
@@ -415,34 +415,34 @@ function Regression::Company()
 	print("  SetLoanAmount(100):          " + AICompany.SetLoanAmount(100));
 	print("  SetLoanAmount(10000):        " + AICompany.SetLoanAmount(10000));
 	print("  GetLastErrorString():        " + AIError.GetLastErrorString());
-	print("  GetBankBalance():            " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():            " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 	print("  GetLoanAmount():             " + AICompany.GetLoanAmount());
 	print("  SetMinimumLoanAmount(31337): " + AICompany.SetMinimumLoanAmount(31337));
-	print("  GetBankBalance():            " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():            " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 	print("  GetLoanAmount():             " + AICompany.GetLoanAmount());
 	print("  SetLoanAmount(10000):        " + AICompany.SetLoanAmount(AICompany.GetMaxLoanAmount()));
-	print("  GetBankBalance():            " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():            " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 	print("  GetLoanAmount():             " + AICompany.GetLoanAmount());
-	print("  GetCompanyHQ():              " + AICompany.GetCompanyHQ(AICompany.MY_COMPANY));
+	print("  GetCompanyHQ():              " + AICompany.GetCompanyHQ(AICompany.COMPANY_SELF));
 	print("  BuildCompanyHQ():            " + AICompany.BuildCompanyHQ(AIMap.GetTileIndex(127, 129)));
-	print("  GetCompanyHQ():              " + AICompany.GetCompanyHQ(AICompany.MY_COMPANY));
+	print("  GetCompanyHQ():              " + AICompany.GetCompanyHQ(AICompany.COMPANY_SELF));
 	print("  BuildCompanyHQ():            " + AICompany.BuildCompanyHQ(AIMap.GetTileIndex(129, 129)));
-	print("  GetCompanyHQ():              " + AICompany.GetCompanyHQ(AICompany.MY_COMPANY));
+	print("  GetCompanyHQ():              " + AICompany.GetCompanyHQ(AICompany.COMPANY_SELF));
 	print("  BuildCompanyHQ():            " + AICompany.BuildCompanyHQ(AIMap.GetTileIndex(129, 128)));
 	print("  GetLastErrorString():        " + AIError.GetLastErrorString());
-	print("  GetAutoRenewStatus();        " + AICompany.GetAutoRenewStatus(AICompany.MY_COMPANY));
+	print("  GetAutoRenewStatus();        " + AICompany.GetAutoRenewStatus(AICompany.COMPANY_SELF));
 	print("  SetAutoRenewStatus(true);    " + AICompany.SetAutoRenewStatus(true));
-	print("  GetAutoRenewStatus();        " + AICompany.GetAutoRenewStatus(AICompany.MY_COMPANY));
+	print("  GetAutoRenewStatus();        " + AICompany.GetAutoRenewStatus(AICompany.COMPANY_SELF));
 	print("  SetAutoRenewStatus(true);    " + AICompany.SetAutoRenewStatus(true));
 	print("  SetAutoRenewStatus(false);   " + AICompany.SetAutoRenewStatus(false));
-	print("  GetAutoRenewMonths();        " + AICompany.GetAutoRenewMonths(AICompany.MY_COMPANY));
+	print("  GetAutoRenewMonths();        " + AICompany.GetAutoRenewMonths(AICompany.COMPANY_SELF));
 	print("  SetAutoRenewMonths(-12);     " + AICompany.SetAutoRenewMonths(-12));
-	print("  GetAutoRenewMonths();        " + AICompany.GetAutoRenewMonths(AICompany.MY_COMPANY));
+	print("  GetAutoRenewMonths();        " + AICompany.GetAutoRenewMonths(AICompany.COMPANY_SELF));
 	print("  SetAutoRenewMonths(-12);     " + AICompany.SetAutoRenewMonths(-12));
 	print("  SetAutoRenewMonths(6);       " + AICompany.SetAutoRenewMonths(6));
-	print("  GetAutoRenewMoney();         " + AICompany.GetAutoRenewMoney(AICompany.MY_COMPANY));
+	print("  GetAutoRenewMoney();         " + AICompany.GetAutoRenewMoney(AICompany.COMPANY_SELF));
 	print("  SetAutoRenewMoney(200000);   " + AICompany.SetAutoRenewMoney(200000));
-	print("  GetAutoRenewMoney();         " + AICompany.GetAutoRenewMoney(AICompany.MY_COMPANY));
+	print("  GetAutoRenewMoney();         " + AICompany.GetAutoRenewMoney(AICompany.COMPANY_SELF));
 	print("  SetAutoRenewMoney(200000);   " + AICompany.SetAutoRenewMoney(200000));
 	print("  SetAutoRenewMoney(100000);   " + AICompany.SetAutoRenewMoney(100000));
 }
@@ -476,7 +476,7 @@ function Regression::Engine()
 
 function Regression::EngineList()
 {
-	local list = AIEngineList(AIVehicle.VEHICLE_ROAD);
+	local list = AIEngineList(AIVehicle.VT_ROAD);
 
 	print("");
 	print("--EngineList--");
@@ -533,19 +533,19 @@ function Regression::Group()
 {
 	print ("");
 	print("--Group--");
-	print("  SetAutoReplace():         " + AIGroup.SetAutoReplace(AIGroup.ALL_GROUP, 116, 117));
-	print("  GetEngineReplacement():   " + AIGroup.GetEngineReplacement(AIGroup.ALL_GROUP, 116));
-	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.ALL_GROUP, 116));
+	print("  SetAutoReplace():         " + AIGroup.SetAutoReplace(AIGroup.GROUP_ALL, 116, 117));
+	print("  GetEngineReplacement():   " + AIGroup.GetEngineReplacement(AIGroup.GROUP_ALL, 116));
+	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.GROUP_ALL, 116));
 	print("  AIRoad.BuildRoadDepot():  " + AIRoad.BuildRoadDepot(10000, 10001));
 	local vehicle = AIVehicle.BuildVehicle(10000, 116);
 	print("  AIVehicle.BuildVehicle(): " + vehicle);
-	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.ALL_GROUP, 116));
-	local group = AIGroup.CreateGroup(AIVehicle.VEHICLE_ROAD);
+	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.GROUP_ALL, 116));
+	local group = AIGroup.CreateGroup(AIVehicle.VT_ROAD);
 	print("  CreateGroup():            " + group);
 	print("  MoveVehicle():            " + AIGroup.MoveVehicle(group, vehicle));
 	print("  GetNumEngines():          " + AIGroup.GetNumEngines(group, 116));
-	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.ALL_GROUP, 116));
-	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.DEFAULT_GROUP, 116));
+	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.GROUP_ALL, 116));
+	print("  GetNumEngines():          " + AIGroup.GetNumEngines(AIGroup.GROUP_DEFAULT, 116));
 	print("  GetName():                " + AIGroup.GetName(0));
 	print("  GetName():                " + AIGroup.GetName(1));
 	print("  AIVehicle.SellVehicle():  " + AIVehicle.SellVehicle(vehicle));
@@ -815,7 +815,7 @@ function Regression::Marine()
 	print("  IsLockTile():         " + AIMarine.IsLockTile(32116));
 	print("  IsCanalTile():        " + AIMarine.IsCanalTile(32116));
 
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 	print("  BuildWaterDepot():    " + AIMarine.BuildWaterDepot(28479, false));
 	print("  BuildDock():          " + AIMarine.BuildDock(29253, true));
 	print("  BuildBuoy():          " + AIMarine.BuildBuoy(28481));
@@ -828,7 +828,7 @@ function Regression::Marine()
 	print("  IsBuoyTile():         " + AIMarine.IsBuoyTile(28481));
 	print("  IsLockTile():         " + AIMarine.IsLockTile(28487));
 	print("  IsCanalTile():        " + AIMarine.IsCanalTile(32127));
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 
 	print("  RemoveWaterDepot():   " + AIMarine.RemoveWaterDepot(28479));
 	print("  RemoveDock():         " + AIMarine.RemoveDock(29253));
@@ -840,7 +840,7 @@ function Regression::Marine()
 	print("  IsBuoyTile():         " + AIMarine.IsBuoyTile(28481));
 	print("  IsLockTile():         " + AIMarine.IsLockTile(28487));
 	print("  IsCanalTile():        " + AIMarine.IsCanalTile(32127));
-	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.MY_COMPANY));
+	print("  GetBankBalance():     " + AICompany.GetBankBalance(AICompany.COMPANY_SELF));
 
 	print("  BuildWaterDepot():    " + AIMarine.BuildWaterDepot(28479, false));
 	print("  BuildDock():          " + AIMarine.BuildDock(29253, true));
@@ -1414,7 +1414,7 @@ function Regression::Town()
 		print("    GetPopulation(): " + AITown.GetPopulation(i));
 		print("    GetLocation():   " + AITown.GetLocation(i));
 		print("    GetHouseCount(): " + AITown.GetHouseCount(i));
-		print("    GetRating():     " + AITown.GetRating(i, AICompany.MY_COMPANY));
+		print("    GetRating():     " + AITown.GetRating(i, AICompany.COMPANY_SELF));
 	}
 	print("  Valid Towns:       " + j);
 	print("  GetTownCount():    " + AITown.GetTownCount());
@@ -1478,7 +1478,7 @@ function Regression::Tunnel()
 	print("  IsTunnelTile():       " + AITunnel.IsTunnelTile(29050));
 	print("  RemoveTunnel():       " + AITunnel.RemoveTunnel(29050));
 	print("  GetOtherTunnelEnd():  " + AITunnel.GetOtherTunnelEnd(29050));
-	print("  BuildTunnel():        " + AITunnel.BuildTunnel(AIVehicle.VEHICLE_ROAD, 29050));
+	print("  BuildTunnel():        " + AITunnel.BuildTunnel(AIVehicle.VT_ROAD, 29050));
 	print("  GetOtherTunnelEnd():  " + AITunnel.GetOtherTunnelEnd(29050));
 	print("  IsTunnelTile():       " + AITunnel.IsTunnelTile(29050));
 	print("  IsTunnelTile():       " + AITunnel.IsTunnelTile(28026));
@@ -1486,8 +1486,8 @@ function Regression::Tunnel()
 	print("  IsTunnelTile():       " + AITunnel.IsTunnelTile(29050));
 
 	print("  --Errors--");
-	print("  BuildTunnel():        " + AITunnel.BuildTunnel(AIVehicle.VEHICLE_ROAD, 7529));
-	print("  BuildTunnel():        " + AITunnel.BuildTunnel(AIVehicle.VEHICLE_ROAD, 8043));
+	print("  BuildTunnel():        " + AITunnel.BuildTunnel(AIVehicle.VT_ROAD, 7529));
+	print("  BuildTunnel():        " + AITunnel.BuildTunnel(AIVehicle.VT_ROAD, 8043));
 	print("  GetLastErrorString(): " + AIError.GetLastErrorString());
 	print("  RemoveTunnel():       " + AITunnel.RemoveTunnel(7529));
 }
@@ -1503,20 +1503,20 @@ function Regression::Vehicle()
 	print("  IsValidVehicle(12):   " + AIVehicle.IsValidVehicle(12));
 	print("  ISValidVehicle(9999): " + AIVehicle.IsValidVehicle(9999));
 
-	local bank = AICompany.GetBankBalance(AICompany.MY_COMPANY);
+	local bank = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 
 	print("  BuildVehicle():       " + AIVehicle.BuildVehicle(33417, 153));
 	print("  IsValidVehicle(12):   " + AIVehicle.IsValidVehicle(12));
 	print("  CloneVehicle():       " + AIVehicle.CloneVehicle(33417, 12, true));
 
-	local bank_after = AICompany.GetBankBalance(AICompany.MY_COMPANY);
+	local bank_after = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 
 	print("  --Accounting--");
 	print("    GetCosts():         " + accounting.GetCosts());
 	print("    Should be:          " + (bank - bank_after));
 	print("    ResetCosts():       " + accounting.ResetCosts());
 
-	bank = AICompany.GetBankBalance(AICompany.MY_COMPANY);
+	bank = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 
 	print("  SellVehicle(13):      " + AIVehicle.SellVehicle(13));
 	print("  IsInDepot():          " + AIVehicle.IsInDepot(12));
@@ -1528,7 +1528,7 @@ function Regression::Vehicle()
 	print("  IsInDepot():          " + AIVehicle.IsInDepot(12));
 	print("  IsStoppedInDepot():   " + AIVehicle.IsStoppedInDepot(12));
 
-	bank_after = AICompany.GetBankBalance(AICompany.MY_COMPANY);
+	bank_after = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 
 	print("  --Accounting--");
 	print("    GetCosts():         " + accounting.GetCosts());

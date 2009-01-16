@@ -32,7 +32,7 @@ class WrightAI extends AIController {
  */
 function WrightAI::HasMoney(money)
 {
-	if (AICompany.GetBankBalance(AICompany.MY_COMPANY) + (AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount()) > money) return true;
+	if (AICompany.GetBankBalance(AICompany.COMPANY_SELF) + (AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount()) > money) return true;
 	return false;
 }
 
@@ -42,9 +42,9 @@ function WrightAI::HasMoney(money)
 function WrightAI::GetMoney(money)
 {
 	if (!this.HasMoney(money)) return;
-	if (AICompany.GetBankBalance(AICompany.MY_COMPANY) > money) return;
+	if (AICompany.GetBankBalance(AICompany.COMPANY_SELF) > money) return;
 
-	local loan = money - AICompany.GetBankBalance(AICompany.MY_COMPANY) + AICompany.GetLoanInterval() + AICompany.GetLoanAmount();
+	local loan = money - AICompany.GetBankBalance(AICompany.COMPANY_SELF) + AICompany.GetLoanInterval() + AICompany.GetLoanAmount();
 	loan = loan - loan % AICompany.GetLoanInterval();
 	AILog.Info("Need a loan to get " + money + ": " + loan);
 	AICompany.SetLoanAmount(loan);
@@ -109,10 +109,10 @@ function WrightAI::BuildAircraft(tile_1, tile_2)
 	local hangar = AIAirport.GetHangarOfAirport(tile_1);
 	local engine = null;
 
-	local engine_list = AIEngineList(AIVehicle.VEHICLE_AIR);
+	local engine_list = AIEngineList(AIVehicle.VT_AIR);
 
 	/* When bank balance < 300000, buy cheaper planes */
-	local balance = AICompany.GetBankBalance(AICompany.MY_COMPANY);
+	local balance = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 	engine_list.Valuate(AIEngine.GetPrice);
 	engine_list.KeepBelowValue(balance < 300000 ? 50000 : (balance < 1000000 ? 300000 : 1000000));
 
@@ -335,7 +335,7 @@ function WrightAI::Start()
 			i++;
 		}
 	}
-	this.name = AICompany.GetName(AICompany.MY_COMPANY);
+	this.name = AICompany.GetName(AICompany.COMPANY_SELF);
 	/* Say hello to the user */
 	AILog.Info("Welcome to WrightAI. I will be building airports all day long.");
 	AILog.Info("  - Minimum Town Size: " + GetSetting("min_town_size"));

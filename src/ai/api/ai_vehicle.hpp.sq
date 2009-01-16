@@ -38,10 +38,11 @@ void SQAIVehicle_Register(Squirrel *engine) {
 	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_NOT_IN_DEPOT,         "ERR_VEHICLE_NOT_IN_DEPOT");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHICLE_IN_FLIGHT,            "ERR_VEHICLE_IN_FLIGHT");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::ERR_VEHCILE_NO_POWER,             "ERR_VEHCILE_NO_POWER");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VEHICLE_RAIL,                     "VEHICLE_RAIL");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VEHICLE_ROAD,                     "VEHICLE_ROAD");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VEHICLE_WATER,                    "VEHICLE_WATER");
-	SQAIVehicle.DefSQConst(engine, AIVehicle::VEHICLE_AIR,                      "VEHICLE_AIR");
+	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_RAIL,                          "VT_RAIL");
+	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_ROAD,                          "VT_ROAD");
+	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_WATER,                         "VT_WATER");
+	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_AIR,                           "VT_AIR");
+	SQAIVehicle.DefSQConst(engine, AIVehicle::VT_INVALID,                       "VT_INVALID");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VEHICLE_INVALID,                  "VEHICLE_INVALID");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_RUNNING,                       "VS_RUNNING");
 	SQAIVehicle.DefSQConst(engine, AIVehicle::VS_STOPPED,                       "VS_STOPPED");

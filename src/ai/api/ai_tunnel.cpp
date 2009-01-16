@@ -60,11 +60,11 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 /* static */ bool AITunnel::BuildTunnel(AIVehicle::VehicleType vehicle_type, TileIndex start)
 {
 	EnforcePrecondition(false, ::IsValidTile(start));
-	EnforcePrecondition(false, vehicle_type == AIVehicle::VEHICLE_RAIL || vehicle_type == AIVehicle::VEHICLE_ROAD);
-	EnforcePrecondition(false, vehicle_type != AIVehicle::VEHICLE_RAIL || AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType()));
+	EnforcePrecondition(false, vehicle_type == AIVehicle::VT_RAIL || vehicle_type == AIVehicle::VT_ROAD);
+	EnforcePrecondition(false, vehicle_type != AIVehicle::VT_RAIL || AIRail::IsRailTypeAvailable(AIRail::GetCurrentRailType()));
 
 	uint type = 0;
-	if (vehicle_type == AIVehicle::VEHICLE_ROAD) {
+	if (vehicle_type == AIVehicle::VT_ROAD) {
 		type |= (TRANSPORT_ROAD << 9);
 		type |= RoadTypeToRoadTypes((::RoadType)AIObject::GetRoadType());
 	} else {
@@ -73,7 +73,7 @@ static void _DoCommandReturnBuildTunnel1(class AIInstance *instance)
 	}
 
 	/* For rail we do nothing special */
-	if (vehicle_type == AIVehicle::VEHICLE_RAIL) {
+	if (vehicle_type == AIVehicle::VT_RAIL) {
 		return AIObject::DoCommand(start, type, 0, CMD_BUILD_TUNNEL);
 	}
 

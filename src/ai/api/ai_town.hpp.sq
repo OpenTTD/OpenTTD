@@ -40,7 +40,7 @@ void SQAITown_Register(Squirrel *engine) {
 	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_VERY_GOOD,        "TOWN_RATING_VERY_GOOD");
 	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_EXCELLENT,        "TOWN_RATING_EXCELLENT");
 	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_OUTSTANDING,      "TOWN_RATING_OUTSTANDING");
-	SQAITown.DefSQConst(engine, AITown::INVALID_TOWN_RATING,          "INVALID_TOWN_RATING");
+	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_INVALID,          "TOWN_RATING_INVALID");
 
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetClassName,               "GetClassName",               1, "x");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetMaxTownID,               "GetMaxTownID",               1, "x");

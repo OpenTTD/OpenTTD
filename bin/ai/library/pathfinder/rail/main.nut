@@ -341,7 +341,7 @@ function Rail::_GetTunnelsBridges(last_node, cur_node, bridge_dir)
 	for (local i = 2; i < this._max_bridge_length; i++) {
 		local bridge_list = AIBridgeList_Length(i + 1);
 		local target = cur_node + i * (cur_node - last_node);
-		if (!bridge_list.IsEmpty() && AIBridge.BuildBridge(AIVehicle.VEHICLE_RAIL, bridge_list.Begin(), cur_node, target)) {
+		if (!bridge_list.IsEmpty() && AIBridge.BuildBridge(AIVehicle.VT_RAIL, bridge_list.Begin(), cur_node, target)) {
 			tiles.push([target, bridge_dir]);
 		}
 	}
@@ -353,7 +353,7 @@ function Rail::_GetTunnelsBridges(last_node, cur_node, bridge_dir)
 	local tunnel_length = AIMap.DistanceManhattan(cur_node, other_tunnel_end);
 	local prev_tile = cur_node + (cur_node - other_tunnel_end) / tunnel_length;
 	if (AITunnel.GetOtherTunnelEnd(other_tunnel_end) == cur_node && tunnel_length >= 2 &&
-			prev_tile == last_node && tunnel_length < _max_tunnel_length && AITunnel.BuildTunnel(AIVehicle.VEHICLE_RAIL, cur_node)) {
+			prev_tile == last_node && tunnel_length < _max_tunnel_length && AITunnel.BuildTunnel(AIVehicle.VT_RAIL, cur_node)) {
 		tiles.push([other_tunnel_end, bridge_dir]);
 	}
 	return tiles;

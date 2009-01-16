@@ -21,10 +21,10 @@ void SQAICompany_Register(Squirrel *engine) {
 	SQAICompany.PreRegister(engine);
 	SQAICompany.AddConstructor<void (AICompany::*)(), 1>(engine, "x");
 
-	SQAICompany.DefSQConst(engine, AICompany::INVALID_COMPANY, "INVALID_COMPANY");
-	SQAICompany.DefSQConst(engine, AICompany::FIRST_COMPANY,   "FIRST_COMPANY");
-	SQAICompany.DefSQConst(engine, AICompany::LAST_COMPANY,    "LAST_COMPANY");
-	SQAICompany.DefSQConst(engine, AICompany::MY_COMPANY,      "MY_COMPANY");
+	SQAICompany.DefSQConst(engine, AICompany::COMPANY_INVALID, "COMPANY_INVALID");
+	SQAICompany.DefSQConst(engine, AICompany::COMPANY_FIRST,   "COMPANY_FIRST");
+	SQAICompany.DefSQConst(engine, AICompany::COMPANY_LAST,    "COMPANY_LAST");
+	SQAICompany.DefSQConst(engine, AICompany::COMPANY_SELF,    "COMPANY_SELF");
 
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::GetClassName,         "GetClassName",         1, "x");
 	SQAICompany.DefSQStaticMethod(engine, &AICompany::ResolveCompanyID,     "ResolveCompanyID",     2, "xi");

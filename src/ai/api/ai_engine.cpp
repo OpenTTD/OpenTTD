@@ -79,7 +79,7 @@
 /* static */ bool AIEngine::CanPullCargo(EngineID engine_id, CargoID cargo_id)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VEHICLE_RAIL) return false;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
 	if (!AICargo::IsValidCargo(cargo_id)) return false;
 
 	return (::RailVehInfo(engine_id)->ai_passenger_only != 1) || AICargo::HasCargoClass(cargo_id, AICargo::CC_PASSENGERS);
@@ -225,13 +225,13 @@
 
 /* static */ AIVehicle::VehicleType AIEngine::GetVehicleType(EngineID engine_id)
 {
-	if (!IsValidEngine(engine_id)) return AIVehicle::VEHICLE_INVALID;
+	if (!IsValidEngine(engine_id)) return AIVehicle::VT_INVALID;
 
 	switch (::GetEngine(engine_id)->type) {
-		case VEH_ROAD:     return AIVehicle::VEHICLE_ROAD;
-		case VEH_TRAIN:    return AIVehicle::VEHICLE_RAIL;
-		case VEH_SHIP:     return AIVehicle::VEHICLE_WATER;
-		case VEH_AIRCRAFT: return AIVehicle::VEHICLE_AIR;
+		case VEH_ROAD:     return AIVehicle::VT_ROAD;
+		case VEH_TRAIN:    return AIVehicle::VT_RAIL;
+		case VEH_SHIP:     return AIVehicle::VT_WATER;
+		case VEH_AIRCRAFT: return AIVehicle::VT_AIR;
 		default: NOT_REACHED();
 	}
 }
@@ -239,7 +239,7 @@
 /* static */ bool AIEngine::IsWagon(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VEHICLE_RAIL) return false;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
 
 	return ::RailVehInfo(engine_id)->power == 0;
 }
@@ -247,7 +247,7 @@
 /* static */ bool AIEngine::CanRunOnRail(EngineID engine_id, AIRail::RailType track_rail_type)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VEHICLE_RAIL) return false;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
 	if (!AIRail::IsRailTypeAvailable(track_rail_type)) return false;
 
 	return ::IsCompatibleRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
@@ -256,7 +256,7 @@
 /* static */ bool AIEngine::HasPowerOnRail(EngineID engine_id, AIRail::RailType track_rail_type)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VEHICLE_RAIL) return false;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
 	if (!AIRail::IsRailTypeAvailable(track_rail_type)) return false;
 
 	return ::HasPowerOnRail((::RailType)::RailVehInfo(engine_id)->railtype, (::RailType)track_rail_type);
@@ -265,7 +265,7 @@
 /* static */ AIRoad::RoadType AIEngine::GetRoadType(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return AIRoad::ROADTYPE_INVALID;
-	if (GetVehicleType(engine_id) != AIVehicle::VEHICLE_ROAD) return AIRoad::ROADTYPE_INVALID;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_ROAD) return AIRoad::ROADTYPE_INVALID;
 
 	return HasBit(::EngInfo(engine_id)->misc_flags, EF_ROAD_TRAM) ? AIRoad::ROADTYPE_TRAM : AIRoad::ROADTYPE_ROAD;
 }
@@ -273,7 +273,7 @@
 /* static */ AIRail::RailType AIEngine::GetRailType(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return AIRail::RAILTYPE_INVALID;
-	if (GetVehicleType(engine_id) != AIVehicle::VEHICLE_RAIL) return AIRail::RAILTYPE_INVALID;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return AIRail::RAILTYPE_INVALID;
 
 	return (AIRail::RailType)(uint)::RailVehInfo(engine_id)->railtype;
 }
@@ -281,7 +281,7 @@
 /* static */ bool AIEngine::IsArticulated(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return false;
-	if (GetVehicleType(engine_id) != AIVehicle::VEHICLE_ROAD && GetVehicleType(engine_id) != AIVehicle::VEHICLE_RAIL) return false;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_ROAD && GetVehicleType(engine_id) != AIVehicle::VT_RAIL) return false;
 
 	return CountArticulatedParts(engine_id, true) != 0;
 }
@@ -289,7 +289,7 @@
 /* static */ AIAirport::PlaneType AIEngine::GetPlaneType(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return AIAirport::PT_INVALID;
-	if (GetVehicleType(engine_id) != AIVehicle::VEHICLE_AIR) return AIAirport::PT_INVALID;
+	if (GetVehicleType(engine_id) != AIVehicle::VT_AIR) return AIAirport::PT_INVALID;
 
 	return (AIAirport::PlaneType)::AircraftVehInfo(engine_id)->subtype;
 }

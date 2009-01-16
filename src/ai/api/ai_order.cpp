@@ -45,15 +45,15 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 
 /* static */ bool AIOrder::IsValidVehicleOrder(VehicleID vehicle_id, OrderPosition order_position)
 {
-	return AIVehicle::IsValidVehicle(vehicle_id) && order_position >= 0 && (order_position < ::GetVehicle(vehicle_id)->GetNumOrders() || order_position == CURRENT_ORDER);
+	return AIVehicle::IsValidVehicle(vehicle_id) && order_position >= 0 && (order_position < ::GetVehicle(vehicle_id)->GetNumOrders() || order_position == ORDER_CURRENT);
 }
 
 /* static */ AIOrder::OrderPosition AIOrder::ResolveOrderPosition(VehicleID vehicle_id, OrderPosition order_position)
 {
-	if (!AIVehicle::IsValidVehicle(vehicle_id)) return INVALID_ORDER;
+	if (!AIVehicle::IsValidVehicle(vehicle_id)) return ORDER_INVALID;
 
-	if (order_position == CURRENT_ORDER) return (AIOrder::OrderPosition)::GetVehicle(vehicle_id)->cur_order_index;
-	return (order_position >= 0 && order_position < ::GetVehicle(vehicle_id)->GetNumOrders()) ? order_position : INVALID_ORDER;
+	if (order_position == ORDER_CURRENT) return (AIOrder::OrderPosition)::GetVehicle(vehicle_id)->cur_order_index;
+	return (order_position >= 0 && order_position < ::GetVehicle(vehicle_id)->GetNumOrders()) ? order_position : ORDER_INVALID;
 }
 
 
@@ -87,7 +87,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 
 	const Order *order;
 	const Vehicle *v = ::GetVehicle(vehicle_id);
-	if (order_position == CURRENT_ORDER) {
+	if (order_position == ORDER_CURRENT) {
 		order = &v->current_order;
 	} else {
 		order = v->GetFirstOrder();
@@ -110,7 +110,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 	if (!IsValidVehicleOrder(vehicle_id, order_position)) return AIOF_INVALID;
 
 	const Order *order;
-	if (order_position == CURRENT_ORDER) {
+	if (order_position == ORDER_CURRENT) {
 		order = &::GetVehicle(vehicle_id)->current_order;
 	} else {
 		order = ::GetVehicle(vehicle_id)->GetFirstOrder();
@@ -144,7 +144,7 @@ static OrderType GetOrderTypeByTile(TileIndex t)
 /* static */ bool AIOrder::InsertOrder(VehicleID vehicle_id, OrderPosition order_position, TileIndex destination, AIOrder::AIOrderFlags order_flags)
 {
 	/* IsValidVehicleOrder is not good enough because it does not allow appending. */
-	if (order_position == CURRENT_ORDER) order_position = AIOrder::ResolveOrderPosition(vehicle_id, order_position);
+	if (order_position == ORDER_CURRENT) order_position = AIOrder::ResolveOrderPosition(vehicle_id, order_position);
 
 	EnforcePrecondition(false, AIVehicle::IsValidVehicle(vehicle_id));
 	EnforcePrecondition(false, order_position >= 0 && order_position <= ::GetVehicle(vehicle_id)->GetNumOrders());

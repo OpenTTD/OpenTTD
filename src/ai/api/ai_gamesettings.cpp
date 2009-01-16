@@ -29,10 +29,10 @@
 /* static */ bool AIGameSettings::IsDisabledVehicleType(AIVehicle::VehicleType vehicle_type)
 {
 	switch (vehicle_type) {
-		case AIVehicle::VEHICLE_RAIL:  return _settings_game.ai.ai_disable_veh_train;
-		case AIVehicle::VEHICLE_ROAD:  return _settings_game.ai.ai_disable_veh_roadveh;
-		case AIVehicle::VEHICLE_WATER: return _settings_game.ai.ai_disable_veh_ship;
-		case AIVehicle::VEHICLE_AIR:   return _settings_game.ai.ai_disable_veh_aircraft;
+		case AIVehicle::VT_RAIL:  return _settings_game.ai.ai_disable_veh_train;
+		case AIVehicle::VT_ROAD:  return _settings_game.ai.ai_disable_veh_roadveh;
+		case AIVehicle::VT_WATER: return _settings_game.ai.ai_disable_veh_ship;
+		case AIVehicle::VT_AIR:   return _settings_game.ai.ai_disable_veh_aircraft;
 		default:                       return true;
 	}
 }

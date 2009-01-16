@@ -23,7 +23,7 @@
 
 /* static */ AIGroup::GroupID AIGroup::CreateGroup(AIVehicle::VehicleType vehicle_type)
 {
-	if (!AIObject::DoCommand(0, (::VehicleType)vehicle_type, 0, CMD_CREATE_GROUP, NULL, &AIInstance::DoCommandReturnGroupID)) return INVALID_GROUP;
+	if (!AIObject::DoCommand(0, (::VehicleType)vehicle_type, 0, CMD_CREATE_GROUP, NULL, &AIInstance::DoCommandReturnGroupID)) return GROUP_INVALID;
 
 	/* In case of test-mode, we return GroupID 0 */
 	return (AIGroup::GroupID)0;
@@ -38,7 +38,7 @@
 
 /* static */ AIVehicle::VehicleType AIGroup::GetVehicleType(GroupID group_id)
 {
-	if (!IsValidGroup(group_id)) return AIVehicle::VEHICLE_INVALID;
+	if (!IsValidGroup(group_id)) return AIVehicle::VT_INVALID;
 
 	return (AIVehicle::VehicleType)((::VehicleType)::GetGroup(group_id)->vehicle_type);
 }
@@ -80,14 +80,14 @@
 
 /* static */ int32 AIGroup::GetNumEngines(GroupID group_id, EngineID engine_id)
 {
-	if (!IsValidGroup(group_id) && group_id != DEFAULT_GROUP && group_id != ALL_GROUP) return -1;
+	if (!IsValidGroup(group_id) && group_id != GROUP_DEFAULT && group_id != GROUP_ALL) return -1;
 
 	return GetGroupNumEngines(_current_company, group_id, engine_id);
 }
 
 /* static */ bool AIGroup::MoveVehicle(GroupID group_id, VehicleID vehicle_id)
 {
-	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == DEFAULT_GROUP);
+	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_DEFAULT);
 	EnforcePrecondition(false, AIVehicle::IsValidVehicle(vehicle_id));
 
 	return AIObject::DoCommand(0, group_id, vehicle_id, CMD_ADD_VEHICLE_GROUP);
@@ -107,7 +107,7 @@
 
 /* static */ bool AIGroup::SetAutoReplace(GroupID group_id, EngineID engine_id_old, EngineID engine_id_new)
 {
-	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == ALL_GROUP);
+	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_ALL);
 	EnforcePrecondition(false, AIEngine::IsValidEngine(engine_id_new));
 
 	return AIObject::DoCommand(0, 3 | (group_id << 16), (engine_id_new << 16) | engine_id_old, CMD_SET_AUTOREPLACE);
@@ -115,14 +115,14 @@
 
 /* static */ EngineID AIGroup::GetEngineReplacement(GroupID group_id, EngineID engine_id)
 {
-	if (!IsValidGroup(group_id) && group_id != ALL_GROUP) return ::INVALID_ENGINE;
+	if (!IsValidGroup(group_id) && group_id != GROUP_ALL) return ::INVALID_ENGINE;
 
 	return ::EngineReplacementForCompany(GetCompany(_current_company), engine_id, group_id);
 }
 
 /* static */ bool AIGroup::StopAutoReplace(GroupID group_id, EngineID engine_id)
 {
-	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == ALL_GROUP);
+	EnforcePrecondition(false, IsValidGroup(group_id) || group_id == GROUP_ALL);
 
 	return AIObject::DoCommand(0, 3 | (group_id << 16), (::INVALID_ENGINE << 16) | engine_id, CMD_SET_AUTOREPLACE);
 }

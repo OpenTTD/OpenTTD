@@ -7,6 +7,7 @@
 #include "ai_cargo.hpp"
 #include "ai_order.hpp"
 #include "ai_gamesettings.hpp"
+#include "ai_group.hpp"
 #include "../ai_instance.hpp"
 #include "../../openttd.h"
 #include "../../company_func.h"
@@ -323,21 +324,21 @@
 
 /* static */ AIVehicle::VehicleType AIVehicle::GetVehicleType(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return VEHICLE_INVALID;
+	if (!IsValidVehicle(vehicle_id)) return VT_INVALID;
 
 	switch (::GetVehicle(vehicle_id)->type) {
-		case VEH_ROAD:     return VEHICLE_ROAD;
-		case VEH_TRAIN:    return VEHICLE_RAIL;
-		case VEH_SHIP:     return VEHICLE_WATER;
-		case VEH_AIRCRAFT: return VEHICLE_AIR;
-		default:           return VEHICLE_INVALID;
+		case VEH_ROAD:     return VT_ROAD;
+		case VEH_TRAIN:    return VT_RAIL;
+		case VEH_SHIP:     return VT_WATER;
+		case VEH_AIRCRAFT: return VT_AIR;
+		default:           return VT_INVALID;
 	}
 }
 
 /* static */ AIRoad::RoadType AIVehicle::GetRoadType(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return AIRoad::ROADTYPE_INVALID;
-	if (GetVehicleType(vehicle_id) != VEHICLE_ROAD) return AIRoad::ROADTYPE_INVALID;
+	if (GetVehicleType(vehicle_id) != VT_ROAD) return AIRoad::ROADTYPE_INVALID;
 
 	return (AIRoad::RoadType)::GetVehicle(vehicle_id)->u.road.roadtype;
 }
@@ -370,7 +371,7 @@
 
 /* static */ GroupID AIVehicle::GetGroupID(VehicleID vehicle_id)
 {
-	if (!IsValidVehicle(vehicle_id)) return ::INVALID_GROUP;
+	if (!IsValidVehicle(vehicle_id)) return AIGroup::GROUP_INVALID;
 
 	return ::GetVehicle(vehicle_id)->group_id;
 }
@@ -378,7 +379,7 @@
 /* static */ bool AIVehicle::IsArticulated(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return false;
-	if (GetVehicleType(vehicle_id) != VEHICLE_ROAD && GetVehicleType(vehicle_id) != VEHICLE_RAIL) return false;
+	if (GetVehicleType(vehicle_id) != VT_ROAD && GetVehicleType(vehicle_id) != VT_RAIL) return false;
 
 	const Vehicle *v = ::GetVehicle(vehicle_id);
 	switch (v->type) {

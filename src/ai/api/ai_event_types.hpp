@@ -400,7 +400,7 @@ public:
 	 * Get the CompanyID of the company that has been bought.
 	 * @return The CompanyID of the company that has been bought.
 	 * @note: The value below is not valid anymore as CompanyID, and
-	 *  AICompany::ResolveCompanyID will return INVALID_COMPANY. It's
+	 *  AICompany::ResolveCompanyID will return COMPANY_COMPANY. It's
 	 *  only usefull if you're keeping track of company's yourself.
 	 */
 	AICompany::CompanyID GetOldCompanyID() { return old_owner; }
