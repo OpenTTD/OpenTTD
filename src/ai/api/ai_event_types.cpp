@@ -173,10 +173,10 @@ Money AIEventEnginePreview::GetRunningCost()
 AIVehicle::VehicleType AIEventEnginePreview::GetVehicleType()
 {
 	switch (::GetEngine(engine)->type) {
-		case VEH_ROAD:     return AIVehicle::VEHICLE_ROAD;
-		case VEH_TRAIN:    return AIVehicle::VEHICLE_RAIL;
-		case VEH_SHIP:     return AIVehicle::VEHICLE_WATER;
-		case VEH_AIRCRAFT: return AIVehicle::VEHICLE_AIR;
+		case VEH_ROAD:     return AIVehicle::VT_ROAD;
+		case VEH_TRAIN:    return AIVehicle::VT_RAIL;
+		case VEH_SHIP:     return AIVehicle::VT_WATER;
+		case VEH_AIRCRAFT: return AIVehicle::VT_AIR;
 		default: NOT_REACHED();
 	}
 }
