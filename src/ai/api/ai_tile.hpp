@@ -313,6 +313,24 @@ public:
 	static bool LowerTile(TileIndex tile, int32 slope);
 
 	/**
+	 * Level all tiles in the rectangle between start_tile and end_tile so they
+	 *  are at the same height. All tiles will be raised or lowered until
+	 *  they are at height AITile::GetHeight(start_tile).
+	 * @param start_tile One corner of the rectangle to level.
+	 * @param end_tile The opposite corner of the rectangle.
+	 * @pre start_tile < AIMap::GetMapSize().
+	 * @pre end_tile < AIMap::GetMapSize().
+	 * @exception AIError::ERR_AREA_NOT_CLEAR
+	 * @exception AIError::ERR_TOO_CLOSE_TO_EDGE
+	 * @return True if and only if the area was completely leveled.
+	 * @note Even if leveling some part fails, some other part may have been
+	 *  succesfully leveled already.
+	 * @note This function may return true in AITestMode, although it fails in
+	 *  AIExecMode.
+	 */
+	static bool LevelTiles(TileIndex start_tile, TileIndex end_tile);
+
+	/**
 	 * Destroy everything on the given tile.
 	 * @param tile The tile to demolish.
 	 * @pre AIMap::IsValidTile(tile).

@@ -202,6 +202,14 @@
 	return AIObject::DoCommand(tile, slope, 0, CMD_TERRAFORM_LAND);
 }
 
+/* static */ bool AITile::LevelTiles(TileIndex start_tile, TileIndex end_tile)
+{
+	EnforcePrecondition(false, ::IsValidTile(start_tile));
+	EnforcePrecondition(false, ::IsValidTile(end_tile));
+
+	return AIObject::DoCommand(end_tile, start_tile, 0, CMD_LEVEL_LAND);
+}
+
 /* static */ bool AITile::DemolishTile(TileIndex tile)
 {
 	EnforcePrecondition(false, ::IsValidTile(tile));

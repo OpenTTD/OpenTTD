@@ -87,6 +87,7 @@ void SQAITile_Register(Squirrel *engine) {
 	SQAITile.DefSQStaticMethod(engine, &AITile::GetDistanceSquareToTile,    "GetDistanceSquareToTile",    3, "xii");
 	SQAITile.DefSQStaticMethod(engine, &AITile::RaiseTile,                  "RaiseTile",                  3, "xii");
 	SQAITile.DefSQStaticMethod(engine, &AITile::LowerTile,                  "LowerTile",                  3, "xii");
+	SQAITile.DefSQStaticMethod(engine, &AITile::LevelTiles,                 "LevelTiles",                 3, "xii");
 	SQAITile.DefSQStaticMethod(engine, &AITile::DemolishTile,               "DemolishTile",               2, "xi");
 	SQAITile.DefSQStaticMethod(engine, &AITile::PlantTree,                  "PlantTree",                  2, "xi");
 	SQAITile.DefSQStaticMethod(engine, &AITile::PlantTreeRectangle,         "PlantTreeRectangle",         4, "xiii");
