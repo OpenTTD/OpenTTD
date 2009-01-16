@@ -475,8 +475,14 @@ const char *FioTarFirstDir(const char *tarname)
 	return (*it).second.dirname;
 }
 
-static void TarAddLink(const std::string &src, const std::string &dest)
+static void TarAddLink(const std::string &srcParam, const std::string &destParam)
 {
+	std::string src = srcParam;
+	std::string dest = destParam;
+	/* Tar internals assume lowercase */
+	std::transform(src.begin(), src.end(), src.begin(), tolower);
+	std::transform(dest.begin(), dest.end(), dest.begin(), tolower);
+
 	TarFileList::iterator dest_file = _tar_filelist.find(dest);
 	if (dest_file != _tar_filelist.end()) {
 		/* Link to file. Process the link like the destination file. */
