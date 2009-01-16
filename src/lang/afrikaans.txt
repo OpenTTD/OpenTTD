@@ -1534,7 +1534,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Haal spe
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Haal maatskappy informasie...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Klient{P "" e} voor jou
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes afgelaai dusver
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} afgelaai dusver
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Loskoppel
 
@@ -1998,7 +1998,7 @@ STR_4002_SAVE                                                   :{BLACK}Spaar
 STR_4003_DELETE                                                 :{BLACK}Uitvee
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Spektator, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} vry
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} vry
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan nie skyf lees nie
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Speletjie Spaar Misluk{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Onbekwaam om lêer te uitvee

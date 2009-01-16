@@ -1535,7 +1535,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter s
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter selskabsinfo..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} foran dig
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes hentet indtil videre
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} hentet indtil videre
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Afbryd forbindelse
 
@@ -2005,7 +2005,7 @@ STR_4002_SAVE                                                   :{BLACK}Gem
 STR_4003_DELETE                                                 :{BLACK}Slet
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Tilskuer, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes fri
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} fri
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikke læse drevet
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Fejl under gemning af spil{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan ikke slette fil

@@ -1536,7 +1536,6 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Свал
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Сваляне инфо за компанията..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} клиент{P "" и} срещу вас
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} кбайта свалено до момента
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Изключване
 
@@ -2006,7 +2005,7 @@ STR_4002_SAVE                                                   :{BLACK}Запа
 STR_4003_DELETE                                                 :{BLACK}Изтрий
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Наблюдател, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" а} свободно
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} свободно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Не може да прочете диска
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Запазването на играта е неуспешно{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Изтриването на файла е неуспешно

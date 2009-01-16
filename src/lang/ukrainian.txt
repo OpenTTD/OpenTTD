@@ -1650,7 +1650,6 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Запи
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Запит інформації про компанію..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} клієнт{P "" и ів} перед вами
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} кілобайт завантажено
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Роз'єднання
 
@@ -2118,7 +2117,6 @@ STR_4002_SAVE                                                   :{BLACK}Збер
 STR_4003_DELETE                                                 :{BLACK}Видалити
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Спостерігач, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" и ""}  вільно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Неможливо прочитати пристрій
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Неможливо стерти файл

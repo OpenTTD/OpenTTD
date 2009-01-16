@@ -1508,7 +1508,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}正在�
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}正在取得公司資訊..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}在您之前有 {NUM} 個用戶端
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kb 已下載
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} 已下載
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}斷線
 
@@ -1960,7 +1960,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}載入�
 STR_4002_SAVE                                                   :{BLACK}儲存
 STR_4003_DELETE                                                 :{BLACK}刪除
 STR_4004                                                        :{COMPANY}, {STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}空間尚有 {COMMA} MB
+STR_4005_BYTES_FREE                                             :{BLACK}空間尚有 {BYTES}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}無法讀取磁碟
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}遊戲儲存失敗{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}無法刪除檔案

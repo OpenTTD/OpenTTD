@@ -1549,7 +1549,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Recupero
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Recupero informazioni compagnie..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client in attesa
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbyte scaricati
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} scaricati
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Disconnetti
 
@@ -2020,7 +2020,7 @@ STR_4002_SAVE                                                   :{BLACK}Salva
 STR_4003_DELETE                                                 :{BLACK}Elimina
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Spettatore, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte liber{P o i}
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} liber{P o i}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossibile leggere dall'unità
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvataggio fallito{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossibile eliminare il file

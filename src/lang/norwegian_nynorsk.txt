@@ -1518,7 +1518,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hentar s
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hentar firmaoversikt..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ar} føre oss
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kB lasta ned så langt
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} lasta ned så langt
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Koble frå
 
@@ -1977,7 +1977,7 @@ STR_4002_SAVE                                                   :{BLACK}Lagre
 STR_4003_DELETE                                                 :{BLACK}Slett
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Tilskuar, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte ledig
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} ledig
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan ikkje lese frå disk
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Lagring av spelet mislukkast{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan ikkje slette fil

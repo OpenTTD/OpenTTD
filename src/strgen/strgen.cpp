@@ -489,6 +489,7 @@ static const CmdStruct _cmd_structs[] = {
 	// Numbers
 	{"COMMA", EmitSingleChar, SCC_COMMA, 1, 0}, // Number with comma
 	{"NUM",   EmitSingleChar, SCC_NUM,   1, 0}, // Signed number
+	{"BYTES", EmitSingleChar, SCC_BYTES, 1, 0}, // Unsigned number with "bytes", i.e. "1.02 MiB or 123 KiB"
 
 	{"CURRENCY",   EmitSingleChar, SCC_CURRENCY,    1, 0},
 

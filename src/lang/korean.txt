@@ -1533,7 +1533,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}게임 �
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}회사 정보 가져오는 중..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}명의 접속자가 앞에서 대기중입니다.
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} Kb 다운로드
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} 다운로드
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}접속 끊기
 
@@ -2001,7 +2001,7 @@ STR_4002_SAVE                                                   :{BLACK}저장
 STR_4003_DELETE                                                 :{BLACK}파일 삭제
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :관전자, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mb 남음
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} 남음
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}드라이브를 읽을 수 없음
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}게임 저장 실패{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}파일을 삭제할 수 없음

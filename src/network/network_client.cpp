@@ -556,8 +556,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 		_frame_counter = _frame_counter_server = _frame_counter_max = p->Recv_uint32();
 
-		_network_join_kbytes = 0;
-		_network_join_kbytes_total = p->Recv_uint32() / 1024;
+		_network_join_bytes = 0;
+		_network_join_bytes_total = p->Recv_uint32();
 
 		/* If the network connection has been closed due to loss of connection
 		 * or when _network_join_kbytes_total is 0, the join status window will
@@ -565,7 +565,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		 * that. If kbytes_total is 0, the packet must be malformed as a
 		 * savegame less than 1 kilobyte is practically impossible. */
 		if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
-		if (_network_join_kbytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+		if (_network_join_bytes_total == 0) return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 
 		_network_join_status = NETWORK_JOIN_STATUS_DOWNLOADING;
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
@@ -581,7 +581,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			return NETWORK_RECV_STATUS_SAVEGAME;
 		}
 
-		_network_join_kbytes = ftell(file_pointer) / 1024;
+		_network_join_bytes = ftell(file_pointer);
 		InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
 	}
 

@@ -1613,7 +1613,6 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Dohvaća
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Dohvaćanje podataka o tvrtki..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klijen{P t ta ata} {P je su je} prije Vas
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK} Do sad je preuzeto {NUM} / {NUM} kilobajta
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odspoji
 
@@ -2084,7 +2083,7 @@ STR_4002_SAVE                                                   :{BLACK}Spremi
 STR_4003_DELETE                                                 :{BLACK}Obriši
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Gledatelj, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabajt{P "" a a} slobod{P an na no}
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} slobod{P an na no}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ne mogu pročitati disk
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spremanje igre nije uspjelo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Ne mogu obrisati datoteku

@@ -1621,7 +1621,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Uzyskiwa
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Uzyskiwanie informacji o firmach..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" ów ów} chce się przyłączyć
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kB dotąd pobranych
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} dotąd pobranych
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Rozłącz
 
@@ -2091,7 +2091,7 @@ STR_4002_SAVE                                                   :{BLACK}Zapisz
 STR_4003_DELETE                                                 :{BLACK}Usuń
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Obserwator, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB wolnego miejsca
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} wolnego miejsca
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nie można odczytać napędu
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Nie można zapisać gry{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nie można usunąć pliku

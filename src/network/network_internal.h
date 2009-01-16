@@ -111,8 +111,8 @@ extern bool _network_first_time;
 // Vars needed for the join-GUI
 extern NetworkJoinStatus _network_join_status;
 extern uint8 _network_join_waiting;
-extern uint16 _network_join_kbytes;
-extern uint16 _network_join_kbytes_total;
+extern uint32 _network_join_bytes;
+extern uint32 _network_join_bytes_total;
 
 extern uint32 _network_last_host_ip;
 extern uint8 _network_reconnect;

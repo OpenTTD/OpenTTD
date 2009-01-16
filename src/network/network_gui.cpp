@@ -1765,8 +1765,8 @@ void ShowNetworkNeedPassword(NetworkPasswordType npt)
 // Vars needed for the join-GUI
 NetworkJoinStatus _network_join_status;
 uint8 _network_join_waiting;
-uint16 _network_join_kbytes;
-uint16 _network_join_kbytes_total;
+uint32 _network_join_bytes;
+uint32 _network_join_bytes_total;
 
 struct NetworkJoinStatusWindow : Window {
 	NetworkJoinStatusWindow(const WindowDesc *desc) : Window(desc)
@@ -1791,12 +1791,12 @@ struct NetworkJoinStatusWindow : Window {
 				progress = 15; // third stage is 15%
 				break;
 			case NETWORK_JOIN_STATUS_DOWNLOADING:
-				SetDParam(0, _network_join_kbytes);
-				SetDParam(1, _network_join_kbytes_total);
+				SetDParam(0, _network_join_bytes);
+				SetDParam(1, _network_join_bytes_total);
 				DrawStringCentered(125, 46, STR_NETWORK_CONNECTING_DOWNLOADING, TC_GREY);
 				/* Fallthrough */
 			default: /* Waiting is 15%, so the resting receivement of map is maximum 70% */
-				progress = 15 + _network_join_kbytes * (100 - 15) / _network_join_kbytes_total;
+				progress = 15 + _network_join_bytes * (100 - 15) / _network_join_bytes_total;
 		}
 
 		/* Draw nice progress bar :) */

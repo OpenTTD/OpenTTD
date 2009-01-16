@@ -1546,7 +1546,6 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}جلب �
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}جلب معلومات الشركة..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}انتظار اللاعبين السابقين
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} كيلوبايت محملة حتى لآن
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}فصل
 
@@ -2017,7 +2016,6 @@ STR_4002_SAVE                                                   :{BLACK}حفظ
 STR_4003_DELETE                                                 :{BLACK}حذف
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :المشاهدين, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA}   ميجا بايت متاحة
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}لا يمكن قرائة القرص
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}فشل حفظ اللعبة{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}لا يمكن حذف الملف

@@ -1509,7 +1509,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Descarga
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Descargando información da compañía..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} diante de ti
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes descargados
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} descargados
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconectar
 
@@ -1961,7 +1961,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Cargar P
 STR_4002_SAVE                                                   :{BLACK}Grabar
 STR_4003_DELETE                                                 :{BLACK}Borrar
 STR_4004                                                        :{COMPANY}, {STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} libre{P "" s}
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} libre{P "" s}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}No se pode lee-la unidade
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Grabación da partida fallida{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Non se pode borra-lo arquivo

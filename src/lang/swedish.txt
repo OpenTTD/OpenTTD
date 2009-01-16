@@ -1508,7 +1508,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hämtar 
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar företagsinfo..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} före oss
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbyte nerladdat hittills
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} nerladdat hittills
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Frånkopplad
 
@@ -1960,7 +1960,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Ladda sp
 STR_4002_SAVE                                                   :{BLACK}Spara
 STR_4003_DELETE                                                 :{BLACK}Ta bort
 STR_4004                                                        :{COMPANY}, {STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} ledigt
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} ledigt
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan inte läsa från disk
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Sparandet av spelet misslyckades{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan inte ta bort filen

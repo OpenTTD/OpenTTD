@@ -1559,7 +1559,6 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hangin m
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hangin ettevõtte infot...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i} sinu ees
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}Senini laaditud alla {NUM} / {NUM} kbaiti
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Katkesta
 
@@ -2011,7 +2010,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Laadi m�
 STR_4002_SAVE                                                   :{BLACK}Salvesta
 STR_4003_DELETE                                                 :{BLACK}Kustuta
 STR_4004                                                        :{COMPANY}, {STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabaiti{P "" i} vaba
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} vaba
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ei suuda kettalt lugeda
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Mängu salvestamine nurjus{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Faili ei saa kustutada

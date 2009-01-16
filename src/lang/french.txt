@@ -1548,7 +1548,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Rapatrie
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Rapatriement des infos sur la compagnie..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} avant vous
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} ko téléchargés
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} téléchargés
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Déconnecter
 
@@ -2019,7 +2019,7 @@ STR_4002_SAVE                                                   :{BLACK}Sauvegar
 STR_4003_DELETE                                                 :{BLACK}Supprimer
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Spectateur, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} Mo libre{P "" s}
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} libre{P "" s}
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossible d'accéder au disque
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}La sauvegarde à échoué{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossible de supprimer le fichier

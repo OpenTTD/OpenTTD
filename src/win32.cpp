@@ -843,7 +843,7 @@ bool FiosIsHiddenFile(const struct dirent *ent)
 	return (ent->dir->fd.dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) != 0;
 }
 
-bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
+bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 {
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
 	bool retval = false;
@@ -852,7 +852,7 @@ bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
 
 	_sntprintf(root, lengthof(root), _T("%c:") _T(PATHSEP), path[0]);
 	if (tot != NULL && GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
-		*tot = ((spc * bps) * (uint64)nfc) >> 20;
+		*tot = ((spc * bps) * (uint64)nfc);
 		retval = true;
 	}
 

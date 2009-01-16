@@ -1604,7 +1604,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Prijem i
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Prijem informacii o spolocnosti..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" e i} pred nami
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kB stiahnute
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} stiahnute
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit sa
 
@@ -2075,7 +2075,7 @@ STR_4002_SAVE                                                   :{BLACK}Ulozit
 STR_4003_DELETE                                                 :{BLACK}Vymazat
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Pozorovateľ, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabajtov volnych
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} volnych
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Zariadenie je necitatelne
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ulozenie hry zlyhalo{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Subor sa neda vymazat

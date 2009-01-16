@@ -1613,7 +1613,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Játéki
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Céginfó lekérése..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kliensre várunk, hogy befejezze
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kilobájt lett eddig letöltve
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} lett eddig letöltve
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Megszakít
 
@@ -2084,7 +2084,7 @@ STR_4002_SAVE                                                   :{BLACK}Ment
 STR_4003_DELETE                                                 :{BLACK}Töröl
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Megfigyelő, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabájt szabad
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} szabad
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Nem olvasható a meghajtó
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}A mentés nem sikerült{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Nem sikerült törölni a fájlt

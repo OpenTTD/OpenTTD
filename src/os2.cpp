@@ -87,7 +87,7 @@ void FiosGetDrives()
 #endif
 }
 
-bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
+bool FiosGetDiskFreeSpace(const char *path, uint64 *tot)
 {
 #ifndef __INNOTEK_LIBC__
 	struct diskfree_t free;
@@ -100,14 +100,14 @@ bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
 
 	return false;
 #else
-	uint32 free = 0;
+	uint64 free = 0;
 
 #ifdef HAS_STATVFS
 	{
 		struct statvfs s;
 
 		if (statvfs(path, &s) != 0) return false;
-		free = (uint64)s.f_frsize * s.f_bavail >> 20;
+		free = (uint64)s.f_frsize * s.f_bavail;
 	}
 #endif
 	if (tot != NULL) *tot = free;

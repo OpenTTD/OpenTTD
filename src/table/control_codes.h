@@ -66,6 +66,7 @@ enum StringControlCode {
 	SCC_COMMA,
 	SCC_NUM,
 	SCC_HEX,
+	SCC_BYTES,
 
 	SCC_STRING_ID,
 	SCC_RAW_STRING_POINTER,

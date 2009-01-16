@@ -1547,7 +1547,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Oyun bil
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Şirket bilgisi aliniyor..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} -> önünde olan oyuncular
-STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} KB indirildi
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} indirildi
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Bağlantıyı kes
 
@@ -2018,7 +2018,7 @@ STR_4002_SAVE                                                   :{BLACK}Kaydet
 STR_4003_DELETE                                                 :{BLACK}Sil
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Gözlemci, {SKIP}{STRING}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} MB bos
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} bos
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Sürücü okunamıyor
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Oyun kaydedilemedi{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Dosya silinemedi

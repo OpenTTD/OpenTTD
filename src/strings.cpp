@@ -264,6 +264,43 @@ static char *FormatHexNumber(char *buff, int64 number, const char *last)
 	return buff + seprintf(buff, last, "0x%x", (uint32)number);
 }
 
+/**
+ * Format a given number as a number of bytes with the SI prefix.
+ * @param buff   the buffer to write to
+ * @param number the number of bytes to write down
+ * @param last   the last element in the buffer
+ * @return till where we wrote
+ */
+static char *FormatBytes(char *buff, int64 number, const char *last)
+{
+	assert(number >= 0);
+
+	/*                         0    2^10   2^20   2^30   2^40   2^50   2^60 */
+	const char *siUnits[] = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB" };
+	int id = 1;
+	while (number >= 1024 * 1024) {
+		number /= 1024;
+		id++;
+	}
+
+	if (number < 1024) {
+		id = 0;
+		buff += seprintf(buff, last, "%i", (int)number);
+	} else if (number < 1024 * 10) {
+		buff += seprintf(buff, last, "%i.%02i", (int)number / 1024, (int)(number % 1024) * 100 / 1024);
+	} else if (number < 1024 * 100) {
+		buff += seprintf(buff, last, "%i.%01i", (int)number / 1024, (int)(number % 1024) * 10 / 1024);
+	} else {
+		assert(number < 1024 * 1024);
+		buff += seprintf(buff, last, "%i", (int)number / 1024);
+	}
+
+	assert(id < lengthof(siUnits));
+	buff += seprintf(buff, last, " %s", siUnits[id]);
+
+	return buff;
+}
+
 static char *FormatYmdString(char *buff, Date date, const char *last)
 {
 	YearMonthDay ymd;
@@ -818,6 +855,10 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 
 			case SCC_HEX: // {HEX}
 				buff = FormatHexNumber(buff, GetInt64(&argv), last);
+				break;
+
+			case SCC_BYTES: // {BYTES}
+				buff = FormatBytes(buff, GetInt64(&argv), last);
 				break;
 
 			case SCC_CURRENCY: // {CURRENCY}
@@ -1585,9 +1626,4 @@ void CheckForMissingGlyphsInLoadedLanguagePack()
 		ShowErrorMessage(INVALID_STRING_ID, STR_JUST_RAW_STRING, 0, 0);
 	}
 #endif
-
 }
-
-
-/* --- Handling of saving/loading string IDs from old savegames --- */
-

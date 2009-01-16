@@ -1388,7 +1388,7 @@ static void DrawFiosTexts(uint maxw)
 {
 	static const char *path = NULL;
 	static StringID str = STR_4006_UNABLE_TO_READ_DRIVE;
-	static uint32 tot = 0;
+	static uint64 tot = 0;
 
 	if (_fios_path_changed) {
 		str = FiosGetDescText(&path, &tot);
