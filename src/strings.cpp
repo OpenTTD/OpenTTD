@@ -277,7 +277,7 @@ static char *FormatBytes(char *buff, int64 number, const char *last)
 
 	/*                         0    2^10   2^20   2^30   2^40   2^50   2^60 */
 	const char *siUnits[] = { "B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB" };
-	int id = 1;
+	uint id = 1;
 	while (number >= 1024 * 1024) {
 		number /= 1024;
 		id++;
