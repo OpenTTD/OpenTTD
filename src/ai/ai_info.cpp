@@ -359,7 +359,10 @@ int AIInfo::GetSettingDefaultValue(const char *name)
 	AILibrary *library = new AILibrary();
 
 	SQInteger res = AIFileInfo::Constructor(vm, library, true);
-	if (res != 0) return res;
+	if (res != 0) {
+		delete library;
+		return res;
+	}
 
 	/* Register the Library to the base system */
 	library->base->RegisterLibrary(library);

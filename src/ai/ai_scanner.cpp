@@ -277,7 +277,10 @@ void AIScanner::RegisterLibrary(AILibrary *library)
 
 	if (this->library_list.find(library_name) != this->library_list.end()) {
 		/* This AI was already registered */
-		if (strcmp(this->library_list[library_name]->GetMainScript(), library->GetMainScript()) == 0) return;
+		if (strcmp(this->library_list[library_name]->GetMainScript(), library->GetMainScript()) == 0) {
+			delete library;
+			return;
+		}
 
 		DEBUG(ai, 0, "Registering two libraries with the same name and version");
 		DEBUG(ai, 0, "  1: %s", this->library_list[library_name]->GetMainScript());
@@ -306,7 +309,10 @@ void AIScanner::RegisterAI(AIInfo *info)
 
 	if (this->info_list.find(ai_name) != this->info_list.end()) {
 		/* This AI was already registered */
-		if (strcmp(this->info_list[ai_name]->GetMainScript(), info->GetMainScript()) == 0) return;
+		if (strcmp(this->info_list[ai_name]->GetMainScript(), info->GetMainScript()) == 0) {
+			delete info;
+			return;
+		}
 
 		DEBUG(ai, 0, "Registering two AIs with the same name and version");
 		DEBUG(ai, 0, "  1: %s", this->info_list[ai_name]->GetMainScript());
