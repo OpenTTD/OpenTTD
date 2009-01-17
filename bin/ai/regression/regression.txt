@@ -5035,18 +5035,6 @@
     123 => 347
     138 => 344
     135 => 337
---AyStar--
-  Fastest path:
-    Tile 10
-    Tile 9
-    Tile 8
-    Tile 7
-    Tile 6
-    Tile 5
-    Tile 4
-    Tile 3
-    Tile 2
-    Tile 1
 
 --Group--
   SetAutoReplace():         false
@@ -6213,206 +6201,6 @@
   BuildWaterDepot():    true
   BuildDock():          true
 
---PathFinder--
-  Road Between Towns:
-    Tile 46751
-    Tile 46495
-    Tile 46239
-    Tile 45983
-    Tile 45727
-    Tile 45471
-    Tile 45470
-    Tile 45469
-    Tile 45468
-    Tile 45467
-    Tile 45466
-    Tile 45210
-    Tile 44954
-    Tile 44698
-    Tile 44442
-    Tile 44186
-    Tile 43930
-    Tile 43929
-    Tile 43928
-    Tile 43927
-    Tile 43926
-    Tile 43925
-    Tile 43669
-    Tile 43413
-    Tile 43157
-    Tile 42901
-    Tile 42645
-    Tile 42389
-    Tile 42133
-    Tile 41877
-    Tile 41621
-    Tile 41365
-    Tile 41109
-    Tile 40853
-    Tile 40597
-    Tile 40341
-    Tile 40085
-    Tile 39829
-    Tile 39573
-    Tile 39317
-    Tile 39061
-    Tile 38805
-    Tile 38549
-    Tile 38293
-    Tile 38037
-    Tile 37781
-    Tile 37525
-    Tile 37269
-    Tile 37013
-    Tile 36757
-    Tile 36501
-    Tile 36245
-    Tile 35989
-    Tile 35733
-    Tile 35477
-    Tile 35221
-    Tile 34965
-    Tile 34709
-    Tile 34453
-    Tile 34197
-    Tile 33941
-    Tile 33685
-    Tile 33429
-    Tile 33173
-    Tile 32917
-    Tile 32661
-    Tile 32405
-    Tile 32149
-    Tile 31893
-    Tile 31637
-    Tile 31381
-    Tile 31125
-    Tile 30869
-    Tile 30613
-    Tile 30357
-    Tile 30101
-    Tile 29845
-    Tile 29589
-    Tile 29333
-    Tile 29077
-    Tile 28821
-    Tile 28565
-    Tile 28309
-    Tile 28053
-    Tile 27797
-    Tile 27541
-    Tile 27285
-    Tile 27029
-    Tile 26773
-    Tile 26517
-    Tile 26261
-    Tile 26005
-    Tile 25749
-    Tile 25493
-    Tile 25237
-    Tile 24981
-    Tile 24725
-    Tile 24469
-    Tile 24213
-    Tile 23957
-    Tile 23701
-    Tile 23445
-    Tile 23189
-    Tile 22933
-    Tile 22677
-    Tile 22421
-    Tile 22165
-    Tile 21909
-    Tile 21653
-    Tile 21397
-    Tile 21141
-    Tile 20885
-    Tile 20629
-    Tile 20373
-    Tile 20117
-    Tile 19861
-    Tile 19605
-    Tile 19349
-    Tile 19093
-    Tile 18837
-    Tile 18581
-    Tile 18325
-    Tile 18069
-    Tile 17813
-    Tile 17557
-    Tile 17301
-    Tile 17045
-    Tile 16789
-    Tile 16533
-    Tile 16277
-    Tile 16021
-    Tile 15765
-    Tile 15509
-    Tile 15508
-
---PriorityQueue--
-  Count(): 0
-  Peek():  (null : 0x00000000)
-  Pop():   (null : 0x00000000)
-  Count(): 9
-  Peek():  1
-  Pop():   1
-  Pop():   4
-  Pop():   3
-  Pop():   2
-  Pop():   1
-  Pop():   5
-  Pop():   6
-  Pop():   7
-  Pop():   8
-  Pop():   9
-  Pop():   10
-  Peek():  (null : 0x00000000)
-  Pop():   (null : 0x00000000)
-  Count(): 0
-
---BinaryHeap--
-  Count(): 0
-  Peek():  (null : 0x00000000)
-  Pop():   (null : 0x00000000)
-  Count(): 9
-  Peek():  1
-  Pop():   1
-  Pop():   3
-  Pop():   4
-  Pop():   2
-  Pop():   1
-  Pop():   5
-  Pop():   6
-  Pop():   7
-  Pop():   8
-  Pop():   9
-  Pop():   10
-  Peek():  (null : 0x00000000)
-  Pop():   (null : 0x00000000)
-  Count(): 0
-
---FibonacciHeap--
-  Count(): 0
-  Peek():  (null : 0x00000000)
-  Pop():   (null : 0x00000000)
-  Count(): 9
-  Peek():  1
-  Pop():   1
-  Pop():   4
-  Pop():   3
-  Pop():   2
-  Pop():   1
-  Pop():   5
-  Pop():   6
-  Pop():   7
-  Pop():   8
-  Pop():   9
-  Pop():   10
-  Peek():  (null : 0x00000000)
-  Pop():   (null : 0x00000000)
-  Count(): 0
-
 --Rail--
     IsRailTile():                  false
     BuildRailTrack():              true
@@ -6584,42 +6372,42 @@
   GetName(0):               Look, a station
   GetLocation(1):           29253
   GetLocation(1000):        -1
-  GetStationID(33411):      3
+  GetStationID(33411):      4
   GetStationID(34411):      65535
   GetCargoWaiting(0, 0):    0
   GetCargoWaiting(1000, 0): -1
   GetCargoWaiting(0, 1000): -1
-  GetStationID(33411):      3
+  GetStationID(33411):      4
   HasRoadType(3, TRAM):     false
-  HasRoadType(3, ROAD):     true
+  HasRoadType(3, ROAD):     false
   HasRoadType(33411, TRAM): false
   HasRoadType(33411, ROAD): true
-  HasStationType(3, BUS):   true
+  HasStationType(3, BUS):   false
   HasStationType(3, TRAIN): false
   GetCoverageRadius(BUS):   3
   GetCoverageRadius(TRUCK): 3
   GetCoverageRadius(TRAIN): 4
   GetNearestTown():         15
   GetNearestTown():         65535
-  GetNearestTown():         24
+  GetNearestTown():         10
 
 --StationList--
   Count():             2
   Location ListDump:
-    4 => 33421
-    3 => 33411
+    5 => 33421
+    4 => 33411
   CargoWaiting(0) ListDump:
+    5 => 0
     4 => 0
-    3 => 0
   CargoWaiting(1) ListDump:
+    5 => 0
     4 => 0
-    3 => 0
 
 --Tile--
   HasTreeOnTile():      false
   IsFarmTile():         true
   IsRockTile():         true
-  IsRoughTile():        false
+  IsRoughTile():        true
   HasTreeOnTile():      true
   IsFarmTile():         false
   IsRockTile():         false
@@ -7133,8 +6921,12 @@
     44351 => 1
 
 --TileList_StationType--
-  Count():             0
+  Count():             4
   Location ListDump:
+    33667 => 0
+    33415 => 0
+    33413 => 0
+    33411 => 0
 
 --Town--
   GetMaxTownID():    31
@@ -7152,14 +6944,14 @@
     GetPopulation(): 787
     GetLocation():   15508
     GetHouseCount(): 30
-    GetRating():     5
+    GetRating():     0
   Town 1
     IsValidTown():   true
     GetName():       Trenningville
-    GetPopulation(): 343
+    GetPopulation(): 243
     GetLocation():   46751
     GetHouseCount(): 17
-    GetRating():     5
+    GetRating():     0
   Town 2
     IsValidTown():   true
     GetName():       Tondston
@@ -7173,7 +6965,7 @@
     GetPopulation(): 176
     GetLocation():   41895
     GetHouseCount(): 11
-    GetRating():     5
+    GetRating():     0
   Town 4
     IsValidTown():   true
     GetName():       Wrundtown
@@ -7198,7 +6990,7 @@
   Town 7
     IsValidTown():   true
     GetName():       Hutfingford
-    GetPopulation(): 1006
+    GetPopulation(): 950
     GetLocation():   59234
     GetHouseCount(): 33
     GetRating():     0
@@ -7219,7 +7011,7 @@
   Town 10
     IsValidTown():   true
     GetName():       Nuntfingburg
-    GetPopulation(): 724
+    GetPopulation(): 737
     GetLocation():   6446
     GetHouseCount(): 26
     GetRating():     5
@@ -7229,7 +7021,7 @@
     GetPopulation(): 180
     GetLocation():   14935
     GetHouseCount(): 13
-    GetRating():     5
+    GetRating():     0
   Town 12
     IsValidTown():   true
     GetName():       Ginborough
@@ -7243,7 +7035,7 @@
     GetPopulation(): 310
     GetLocation():   9595
     GetHouseCount(): 14
-    GetRating():     5
+    GetRating():     0
   Town 14
     IsValidTown():   true
     GetName():       Prundinghall
@@ -7264,21 +7056,21 @@
     GetPopulation(): 780
     GetLocation():   17345
     GetHouseCount(): 33
-    GetRating():     5
+    GetRating():     0
   Town 17
     IsValidTown():   true
     GetName():       Quartfingfield
-    GetPopulation(): 203
+    GetPopulation(): 218
     GetLocation():   24252
     GetHouseCount(): 13
-    GetRating():     5
+    GetRating():     0
   Town 18
     IsValidTown():   true
     GetName():       Netfingbridge
     GetPopulation(): 262
     GetLocation():   10574
     GetHouseCount(): 13
-    GetRating():     5
+    GetRating():     0
   Town 19
     IsValidTown():   true
     GetName():       Mendingston
@@ -7299,18 +7091,18 @@
     GetPopulation(): 802
     GetLocation():   9634
     GetHouseCount(): 27
-    GetRating():     5
+    GetRating():     0
   Town 22
     IsValidTown():   true
     GetName():       Naborough
     GetPopulation(): 221
     GetLocation():   51891
     GetHouseCount(): 12
-    GetRating():     5
+    GetRating():     0
   Town 23
     IsValidTown():   true
     GetName():       Lardborough
-    GetPopulation(): 752
+    GetPopulation(): 652
     GetLocation():   59622
     GetHouseCount(): 27
     GetRating():     0
@@ -7324,10 +7116,10 @@
   Town 25
     IsValidTown():   true
     GetName():       Grinnway
-    GetPopulation(): 468
+    GetPopulation(): 563
     GetLocation():   16433
-    GetHouseCount(): 14
-    GetRating():     5
+    GetHouseCount(): 15
+    GetRating():     0
   Town 26
     IsValidTown():   true
     GetName():       Bedburg
@@ -7521,18 +7313,19 @@
     0 => 2
     15 => 1
   KeepAboveValue(500): done
-  Count():             10
+  Count():             11
   Population ListDump:
-    7 => 1006
     12 => 982
+    7 => 950
     15 => 807
     21 => 802
     0 => 787
     16 => 780
-    23 => 752
-    10 => 724
+    10 => 737
     6 => 679
     24 => 668
+    23 => 652
+    25 => 563
   HasStatue():                     false
   GetRoadReworkDuration():         0
   GetExclusiveRightsCompany():     -1
@@ -7758,53 +7551,45 @@
 --StationList_Vehicle--
   Count():             2
   Location ListDump:
-    4 => 33421
-    3 => 33411
+    5 => 33421
+    4 => 33411
   CargoWaiting(0) ListDump:
+    5 => 0
     4 => 0
-    3 => 0
   CargoWaiting(1) ListDump:
+    5 => 0
     4 => 0
-    3 => 0
   CargoRating(1) ListDump:
+    5 => 69
     4 => 69
-    3 => 69
   DistanceManhattanToTile(30000) ListDump:
-    4 => 106
-    3 => 96
+    5 => 106
+    4 => 96
   DistanceSquareToTile(30000) ListDump:
-    4 => 8818
-    3 => 7058
+    5 => 8818
+    4 => 7058
   IsWithinTownInfluence(0) ListDump:
+    5 => 0
     4 => 0
-    3 => 0
 
 --VehicleList_Station--
-  Count():             1
+  Count():             0
   Location ListDump:
-    12 => 33417
   foreach():
-    12 => 33417
 
   First Subsidy Test
       --Subsidy (0) --
-        IsValidSubsidy():     false
+        IsValidSubsidy():     true
         IsAwarded():          false
         GetAwardedTo():       -1
-        GetExpireDate():      -1
-        SourceIsTown():       false
-        GetSource():          65535
-        DestionationIsTown(): false
-        GetDestionation():    65535
-        GetCargoType():       255
+        GetExpireDate():      714080
+        SourceIsTown():       true
+        GetSource():          15
+        DestionationIsTown(): true
+        GetDestionation():    7
+        GetCargoType():       0
   GetNextEvent:          instance
     GetEventType:        6
-      Unknown Event
-  GetNextEvent:          instance
-    GetEventType:        6
-      Unknown Event
-  GetNextEvent:          instance
-    GetEventType:        3
       Unknown Event
   IsEventWaiting:        false
 ERROR: The AI died unexpectedly.

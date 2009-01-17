@@ -1,11 +1,5 @@
 /* $Id$ */
 
-import("queue.priority_queue", "PQ", 2);
-import("queue.binary_heap", "BH", 1);
-import("queue.fibonacci_heap", "FH", 1);
-import("graph.aystar", "AS", 4);
-import("pathfinder.road", "RPF", 3);
-
 class Regression extends AIController {
 	function Start();
 };
@@ -513,22 +507,6 @@ function estimate_callback(tile, direction, goals, self) { return goals[0] - til
 function neighbours_callback(path, cur_tile, self) { return [[cur_tile + 1, 1]]; }
 function check_direction_callback(tile, existing_direction, new_direction, self) { return false; }
 
-function Regression::Graph()
-{
-	print("--AyStar--");
-	print("  Fastest path:");
-	local as = AS(cost_callback, estimate_callback, neighbours_callback, check_direction_callback);
-
-	local path = false;
-	as.InitializePath([[1, 1]], [10]);
-	while (path == false) path = as.FindPath(5);
-
-	while (path != null) {
-		print("    Tile " + path.GetTile());
-		path = path.GetParent();
-	}
-}
-
 function Regression::Group()
 {
 	print ("");
@@ -924,66 +902,6 @@ function Regression::Order()
 	foreach (idx, val in list) {
 		print("    " + idx + " => " + val);
 	}
-}
-
-function Regression::Pathfinder()
-{
-	print("");
-	print("--PathFinder--");
-	print("  Road Between Towns:");
-
-	local pathfinder = RPF();
-
-	local path = false;
-	pathfinder.InitializePath([AITown.GetLocation(0)], [AITown.GetLocation(1)]);
-	while (path == false) path = pathfinder.FindPath(1000);
-
-	while (path != null) {
-		print("    Tile " + path.GetTile());
-		path = path.GetParent();
-	}
-}
-
-function Regression::QueueTest(queue)
-{
-	print("  Count(): " + queue.Count());
-	print("  Peek():  " + queue.Peek());
-	print("  Pop():   " + queue.Pop());
-	queue.Insert(6, 20);
-	queue.Insert(7, 40);
-	queue.Insert(2, 10);
-	queue.Insert(5, 15);
-	queue.Insert(8, 60);
-	queue.Insert(1,  5);
-	queue.Insert(3, 10);
-	queue.Insert(9, 90);
-	queue.Insert(4, 10);
-	print("  Count(): " + queue.Count());
-	print("  Peek():  " + queue.Peek());
-	for (local i = 4; i > 0; i--) {
-		print("  Pop():   " + queue.Pop());
-	}
-	queue.Insert(1, 5);
-	queue.Insert(10, 100);
-	for (local i = queue.Count(); i > 0; i--) {
-		print("  Pop():   " + queue.Pop());
-	}
-	print("  Peek():  " + queue.Peek());
-	print("  Pop():   " + queue.Pop());
-	print("  Count(): " + queue.Count());
-}
-
-function Regression::Queues()
-{
-	print("");
-	print("--PriorityQueue--");
-	QueueTest(PQ());
-	print("");
-	print("--BinaryHeap--");
-	QueueTest(BH());
-	print("");
-	print("--FibonacciHeap--");
-	QueueTest(FH());
 }
 
 function Regression::RailTypeList()
@@ -1710,15 +1628,12 @@ function Regression::Start()
 	this.Company();
 	this.Engine();
 	this.EngineList();
-	this.Graph();
 	this.Group();
 	this.Industry();
 	this.IndustryList();
 	this.IndustryTypeList();
 	this.Map();
 	this.Marine();
-	this.Pathfinder();
-	this.Queues();
 	this.Rail();
 	this.RailTypeList();
 	this.Road();
