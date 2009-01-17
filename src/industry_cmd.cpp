@@ -2082,7 +2082,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	StringID str = STR_NULL;
 	bool closeit = false;
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
-	bool standard = true;
+	bool standard = false;
 	bool suppress_message = false;
 	bool recalculate_multipliers = false; ///< reinitialize production_rate to match prod_level
 	/* don't use smooth economy for industries using production related callbacks */
@@ -2093,11 +2093,10 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 	byte mul = 0;
 	int8 increment = 0;
 
-	if (HasBit(indspec->callback_flags, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE)) {
+	bool callback_enabled = HasBit(indspec->callback_flags, monthly ? CBM_IND_MONTHLYPROD_CHANGE : CBM_IND_PRODUCTION_CHANGE);
+	if (callback_enabled) {
 		uint16 res = GetIndustryCallback(monthly ? CBID_INDUSTRY_MONTHLYPROD_CHANGE : CBID_INDUSTRY_PRODUCTION_CHANGE, 0, Random(), i, i->type, i->xy);
-		standard = false;
-		monthly = false; // smooth economy is disabled so we need to fake random industry production change to allow 'use standard' result
-		if (res != CALLBACK_FAILED) {
+		if (res != CALLBACK_FAILED) { // failed callback means "do nothing"
 			suppress_message = HasBit(res, 7);
 			/* Get the custom message if any */
 			if (HasBit(res, 8)) str = MapGRFStringID(indspec->grf_prop.grffile->grfid, GB(GetRegister(0x100), 0, 16));
@@ -2123,13 +2122,12 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 					break;
 			}
 		}
+	} else {
+		if (monthly != smooth_economy) return;
+		if (indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
 	}
 
-	if (standard && monthly != smooth_economy) return;
-
-	if (standard && indspec->life_type == INDUSTRYLIFE_BLACK_HOLE) return;
-
-	if (standard && (indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0) {
+	if (standard || (!callback_enabled && (indspec->life_type & (INDUSTRYLIFE_ORGANIC | INDUSTRYLIFE_EXTRACTIVE)) != 0)) {
 		/* decrease or increase */
 		bool only_decrease = (indspec->behaviour & INDUSTRYBEH_DONT_INCR_PROD) && _settings_game.game_creation.landscape == LT_TEMPERATE;
 
@@ -2194,7 +2192,7 @@ static void ChangeIndustryProduction(Industry *i, bool monthly)
 		}
 	}
 
-	if (standard && indspec->life_type & INDUSTRYLIFE_PROCESSING) {
+	if (!callback_enabled && indspec->life_type & INDUSTRYLIFE_PROCESSING) {
 		if ( (byte)(_cur_year - i->last_prod_year) >= 5 && Chance16(1, smooth_economy ? 180 : 2)) {
 			closeit = true;
 		}
