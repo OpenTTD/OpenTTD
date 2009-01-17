@@ -148,6 +148,7 @@ AIInstance::AIInstance(AIInfo *info) :
 
 AIInstance::~AIInstance()
 {
+	if (instance != NULL) this->engine->ReleaseObject(this->instance);
 	if (engine != NULL) delete this->engine;
 	delete this->storage;
 	delete this->controller;
@@ -246,7 +247,9 @@ void AIInstance::Died()
 	DEBUG(ai, 0, "The AI died unexpectedly.");
 	this->is_dead = true;
 
+	this->engine->ReleaseObject(this->instance);
 	delete this->engine;
+	this->instance = NULL;
 	this->engine = NULL;
 }
 
