@@ -1310,9 +1310,9 @@ TileIndex Aircraft::GetOrderStationLocation(StationID station)
 
 void Aircraft::MarkDirty()
 {
-		this->cur_image = this->GetImage(this->direction);
-		if (this->subtype == AIR_HELICOPTER) this->Next()->Next()->cur_image = GetRotorImage(this);
-		MarkSingleVehicleDirty(this);
+	this->cur_image = this->GetImage(this->direction);
+	if (this->subtype == AIR_HELICOPTER) this->Next()->Next()->cur_image = GetRotorImage(this);
+	MarkSingleVehicleDirty(this);
 }
 
 static void CrashAirplane(Vehicle *v)
