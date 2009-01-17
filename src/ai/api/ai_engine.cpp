@@ -25,7 +25,7 @@
 	return ::IsEngineIndex(engine_id) && HasBit(::GetEngine(engine_id)->company_avail, _current_company);
 }
 
-/* static */ const char *AIEngine::GetName(EngineID engine_id)
+/* static */ char *AIEngine::GetName(EngineID engine_id)
 {
 	if (!IsValidEngine(engine_id)) return NULL;
 

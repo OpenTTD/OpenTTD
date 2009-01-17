@@ -30,7 +30,7 @@
 	return ::IsValidTownID(town_id);
 }
 
-/* static */ const char *AITown::GetName(TownID town_id)
+/* static */ char *AITown::GetName(TownID town_id)
 {
 	if (!IsValidTown(town_id)) return NULL;
 	static const int len = 64;

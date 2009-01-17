@@ -40,7 +40,7 @@
 	return ::GetIndustrySpec(industry_type)->GetConstructionCost();
 }
 
-/* static */ const char *AIIndustryType::GetName(IndustryType industry_type)
+/* static */ char *AIIndustryType::GetName(IndustryType industry_type)
 {
 	if (!IsValidIndustryType(industry_type)) return NULL;
 	static const int len = 64;

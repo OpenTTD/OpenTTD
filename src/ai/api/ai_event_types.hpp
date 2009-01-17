@@ -254,7 +254,7 @@ public:
 	 * Get the name of the offered engine.
 	 * @return The name the engine has.
 	 */
-	const char *GetName();
+	char *GetName();
 
 	/**
 	 * Get the cargo-type of the offered engine. In case it can transport 2 cargos, it

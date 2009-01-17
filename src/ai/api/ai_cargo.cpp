@@ -15,7 +15,7 @@
 	return (cargo_type < NUM_CARGO && ::GetCargo(cargo_type)->IsValid());
 }
 
-/* static */ const char *AICargo::GetCargoLabel(CargoID cargo_type)
+/* static */ char *AICargo::GetCargoLabel(CargoID cargo_type)
 {
 	if (!IsValidCargo(cargo_type)) return NULL;
 	const CargoSpec *cargo = ::GetCargo(cargo_type);

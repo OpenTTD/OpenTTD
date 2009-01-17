@@ -120,7 +120,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	return AIObject::DoCommand(tile, 0, 0, CMD_LANDSCAPE_CLEAR);
 }
 
-/* static */ const char *AIBridge::GetName(BridgeID bridge_id)
+/* static */ char *AIBridge::GetName(BridgeID bridge_id)
 {
 	if (!IsValidBridge(bridge_id)) return NULL;
 

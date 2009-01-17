@@ -52,7 +52,7 @@
 	return AIObject::DoCommand(0, group_id, 0, CMD_RENAME_GROUP, name);
 }
 
-/* static */ const char *AIGroup::GetName(GroupID group_id)
+/* static */ char *AIGroup::GetName(GroupID group_id)
 {
 	if (!IsValidGroup(group_id)) return NULL;
 

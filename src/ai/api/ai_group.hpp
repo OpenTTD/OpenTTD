@@ -77,7 +77,7 @@ public:
 	 * @pre IsValidGroup(group_id).
 	 * @return The name the group has.
 	 */
-	static const char *GetName(GroupID group_id);
+	static char *GetName(GroupID group_id);
 
 	/**
 	 * Enable or disable autoreplace protected. If the protection is

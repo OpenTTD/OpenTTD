@@ -30,7 +30,7 @@
 	return ::GetStationIndex(tile);
 }
 
-/* static */ const char *AIStation::GetName(StationID station_id)
+/* static */ char *AIStation::GetName(StationID station_id)
 {
 	if (!IsValidStation(station_id)) return NULL;
 

@@ -33,7 +33,7 @@
 	return AIObject::DoCommand(0, sign_id, 0, CMD_RENAME_SIGN, name);
 }
 
-/* static */ const char *AISign::GetName(SignID sign_id)
+/* static */ char *AISign::GetName(SignID sign_id)
 {
 	if (!IsValidSign(sign_id)) return NULL;
 

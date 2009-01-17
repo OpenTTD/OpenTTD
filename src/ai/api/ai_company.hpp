@@ -61,7 +61,7 @@ public:
 	/**
 	 * Obsolete, use AICompany::GetName instead.
 	 */
-	static const char *GetCompanyName(CompanyID company);
+	static char *GetCompanyName(CompanyID company);
 
 	/**
 	 * Get the name of the given company.
@@ -69,7 +69,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
 	 * @return The name of the given company.
 	 */
-	static const char *GetName(CompanyID company);
+	static char *GetName(CompanyID company);
 
 	/**
 	 * Set the name of your president.
@@ -86,7 +86,7 @@ public:
 	 * @pre ResolveCompanyID(company) != COMPANY_INVALID
 	 * @return The name of the president of the given company.
 	 */
-	static const char *GetPresidentName(CompanyID company);
+	static char *GetPresidentName(CompanyID company);
 
 	/**
 	 * Sets the amount to loan.

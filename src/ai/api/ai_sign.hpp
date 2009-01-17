@@ -60,7 +60,7 @@ public:
 	 * @pre IsValidSign(sign_id).
 	 * @return The name of the sign.
 	 */
-	static const char *GetName(SignID sign_id);
+	static char *GetName(SignID sign_id);
 
 	/**
 	 * Gets the location of the sign.

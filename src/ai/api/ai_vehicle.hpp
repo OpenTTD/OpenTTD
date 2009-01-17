@@ -126,7 +126,7 @@ public:
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @return The name the vehicle has.
 	 */
-	static const char *GetName(VehicleID vehicle_id);
+	static char *GetName(VehicleID vehicle_id);
 
 	/**
 	 * Get the current location of a vehicle.

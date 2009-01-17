@@ -29,7 +29,7 @@ public:
 	 * @pre IsValidIndustryType(industry_type).
 	 * @return The name of an industry.
 	 */
-	static const char *GetName(IndustryType industry_type);
+	static char *GetName(IndustryType industry_type);
 
 	/**
 	 * Get a list of CargoID possible produced by this industry-type.

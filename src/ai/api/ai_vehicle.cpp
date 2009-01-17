@@ -227,7 +227,7 @@
 	return ::GetVehicle(vehicle_id)->unitnumber;
 }
 
-/* static */ const char *AIVehicle::GetName(VehicleID vehicle_id)
+/* static */ char *AIVehicle::GetName(VehicleID vehicle_id)
 {
 	if (!IsValidVehicle(vehicle_id)) return NULL;
 

@@ -43,13 +43,13 @@
 	return AIObject::DoCommand(0, 0, 0, CMD_RENAME_COMPANY, name);
 }
 
-/* static */ const char *AICompany::GetCompanyName(AICompany::CompanyID company)
+/* static */ char *AICompany::GetCompanyName(AICompany::CompanyID company)
 {
 	AILog::Error("AICompany::GetCompanyName is obsolete. Use AICompany::GetName instead.");
 	return AICompany::GetName(company);
 }
 
-/* static */ const char *AICompany::GetName(AICompany::CompanyID company)
+/* static */ char *AICompany::GetName(AICompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
 	if (company == COMPANY_INVALID) return NULL;
@@ -69,7 +69,7 @@
 	return AIObject::DoCommand(0, 0, 0, CMD_RENAME_PRESIDENT, name);
 }
 
-/* static */ const char *AICompany::GetPresidentName(AICompany::CompanyID company)
+/* static */ char *AICompany::GetPresidentName(AICompany::CompanyID company)
 {
 	company = ResolveCompanyID(company);
 

@@ -112,7 +112,7 @@ public:
 	 * @pre IsValidTown(town_id).
 	 * @return The name of the town.
 	 */
-	static const char *GetName(TownID town_id);
+	static char *GetName(TownID town_id);
 
 	/**
 	 * Gets the number of inhabitants in the town.

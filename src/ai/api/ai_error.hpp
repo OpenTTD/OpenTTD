@@ -134,7 +134,7 @@ public:
 	 * Get the last error in string format (for human readability).
 	 * @return An ErrorMessage enum item, as string.
 	 */
-	static const char *GetLastErrorString();
+	static char *GetLastErrorString();
 
 	/**
 	 * Get the error based on the OpenTTD StringID.

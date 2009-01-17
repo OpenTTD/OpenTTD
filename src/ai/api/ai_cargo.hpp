@@ -56,7 +56,7 @@ public:
 	 * @note Never use this to check if it is a certain cargo. NewGRF can
 	 *  redefine all of the names.
 	 */
-	static const char *GetCargoLabel(CargoID cargo_type);
+	static char *GetCargoLabel(CargoID cargo_type);
 
 	/**
 	 * Checks whether the give cargo is a freight or not.

@@ -70,7 +70,7 @@ public:
 	 * @pre IsValidStation(station_id).
 	 * @return The name of the station.
 	 */
-	static const char *GetName(StationID station_id);
+	static char *GetName(StationID station_id);
 
 	/**
 	 * Set the name this station.

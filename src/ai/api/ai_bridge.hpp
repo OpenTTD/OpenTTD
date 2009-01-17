@@ -57,7 +57,7 @@ public:
 	 * @pre IsValidBridge(bridge_id).
 	 * @return The name the bridge has.
 	 */
-	static const char *GetName(BridgeID bridge_id);
+	static char *GetName(BridgeID bridge_id);
 
 	/**
 	 * Get the maximum speed of a bridge (in km/h).

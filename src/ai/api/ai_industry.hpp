@@ -43,7 +43,7 @@ public:
 	 * @pre IsValidIndustry(industry_id).
 	 * @return The name of the industry.
 	 */
-	static const char *GetName(IndustryID industry_id);
+	static char *GetName(IndustryID industry_id);
 
 	/**
 	 * Gets the production of a cargo of the industry.

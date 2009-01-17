@@ -19,7 +19,7 @@ bool AIEventVehicleCrashed::CloneCrashedVehicle(TileIndex depot)
 	return false;
 }
 
-const char *AIEventEnginePreview::GetName()
+char *AIEventEnginePreview::GetName()
 {
 	static const int len = 64;
 	char *engine_name = MallocT<char>(len);

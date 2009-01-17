@@ -14,9 +14,9 @@ AIError::AIErrorMapString AIError::error_map_string = AIError::AIErrorMapString(
 	return AIObject::GetLastError();
 }
 
-/* static */ const char *AIError::GetLastErrorString()
+/* static */ char *AIError::GetLastErrorString()
 {
-	return (*error_map_string.find(AIError::GetLastError())).second;
+	return strdup((*error_map_string.find(AIError::GetLastError())).second);
 }
 
 /* static */ AIErrorType AIError::StringToError(StringID internal_string_id)

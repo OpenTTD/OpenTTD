@@ -31,7 +31,7 @@ public:
 	 * @pre IsValidEngine(engine_id).
 	 * @return The name the engine has.
 	 */
-	static const char *GetName(EngineID engine_id);
+	static char *GetName(EngineID engine_id);
 
 	/**
 	 * Get the cargo-type of an engine. In case it can transport 2 cargos, it

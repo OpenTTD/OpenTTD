@@ -27,7 +27,7 @@
 	return ::IsValidIndustryID(industry_id);
 }
 
-/* static */ const char *AIIndustry::GetName(IndustryID industry_id)
+/* static */ char *AIIndustry::GetName(IndustryID industry_id)
 {
 	if (!IsValidIndustry(industry_id)) return NULL;
 	static const int len = 64;
