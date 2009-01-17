@@ -45,6 +45,7 @@ namegen.cpp
 network/network.cpp
 network/network_client.cpp
 network/network_command.cpp
+network/network_content.cpp
 network/network_gamelist.cpp
 network/network_server.cpp
 network/network_udp.cpp
@@ -211,6 +212,7 @@ namegen_func.h
 network/network.h
 network/network_base.h
 network/network_client.h
+network/network_content.h
 network/network_func.h
 network/network_gamelist.h
 network/network_gui.h
@@ -391,6 +393,7 @@ main_gui.cpp
 misc_gui.cpp
 music_gui.cpp
 network/network_chat_gui.cpp
+network/network_content_gui.cpp
 network/network_gui.cpp
 newgrf_gui.cpp
 news_gui.cpp
@@ -776,6 +779,8 @@ network/core/packet.cpp
 network/core/packet.h
 network/core/tcp.cpp
 network/core/tcp.h
+network/core/tcp_content.cpp
+network/core/tcp_content.h
 network/core/tcp_game.cpp
 network/core/tcp_game.h
 network/core/udp.cpp

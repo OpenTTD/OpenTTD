@@ -111,7 +111,9 @@ public:
 	static AIInfo *FindInfo(const char *name, int version);
 	static bool ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm);
 	static void Rescan();
-
+#if defined(ENABLE_NETWORK)
+	static bool HasAI(const struct ContentInfo *ci, bool md5sum);
+#endif
 private:
 	static uint frame_counter;
 	static class AIScanner *ai_scanner;

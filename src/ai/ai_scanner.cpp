@@ -416,3 +416,141 @@ char *AIScanner::GetAIConsoleList(char *p, const char *last)
 
 	return p;
 }
+
+#if defined(ENABLE_NETWORK)
+#include "../network/network_content.h"
+#include "../md5.h"
+#include "../tar_type.h"
+
+/** Helper for creating a MD5sum of all files within of an AI. */
+struct AIFileChecksumCreator : FileScanner {
+	byte md5sum[16]; ///< The final md5sum
+
+	/**
+	 * Initialise the md5sum to be all zeroes,
+	 * so we can easily xor the data.
+	 */
+	AIFileChecksumCreator()
+	{
+		memset(this->md5sum, 0, sizeof(this->md5sum));
+	}
+
+	/* Add the file and calculate the md5 sum. */
+	virtual bool AddFile(const char *filename, size_t basepath_length)
+	{
+		Md5 checksum;
+		uint8 buffer[1024];
+		size_t len, size;
+		byte tmp_md5sum[16];
+
+		/* Open the file ... */
+		FILE *f = FioFOpenFile(filename, "rb", DATA_DIR, &size);
+		if (f == NULL) return false;
+
+		/* ... calculate md5sum... */
+		while ((len = fread(buffer, 1, (size > sizeof(buffer)) ? sizeof(buffer) : size, f)) != 0 && size != 0) {
+			size -= len;
+			checksum.Append(buffer, len);
+		}
+		checksum.Finish(tmp_md5sum);
+
+		FioFCloseFile(f);
+
+		/* ... and xor it to the overall md5sum. */
+		for (uint i = 0; i < sizeof(md5sum); i++) this->md5sum[i] ^= tmp_md5sum[i];
+
+		return true;
+	}
+};
+
+/**
+ * Check whether the AI given in info is the same as in ci based
+ * on the shortname and md5 sum.
+ * @param ci   the information to compare to
+ * @param md5sum whether to check the MD5 checksum
+ * @param info the AI to get the shortname and md5 sum from
+ * @return true iff they're the same
+ */
+static bool IsSameAI(const ContentInfo *ci, bool md5sum, AIFileInfo *info)
+{
+	uint32 id = 0;
+	const char *str = info->GetShortName();
+	for (int j = 0; j < 4 && *str != '\0'; j++, str++) id |= *str << (8 * j);
+
+	if (id != ci->unique_id) return false;
+	if (!md5sum) return true;
+
+	AIFileChecksumCreator checksum;
+	char path[MAX_PATH];
+	strecpy(path, info->GetMainScript(), lastof(path));
+	/* There'll always be at least 2 path separator characters in an AI's
+	 * main script name as the search algorithm requires the main script to
+	 * be in a subdirectory of the AI directory; so ai/<path>/main.nut. */
+	*strrchr(path, PATHSEPCHAR) = '\0';
+	*strrchr(path, PATHSEPCHAR) = '\0';
+	TarList::iterator iter = _tar_list.find(path);
+
+	if (iter != _tar_list.end()) {
+		/* The main script is in a tar file, so find all files that
+		 * are in the same tar and add them to the MD5 checksumming. */
+		TarFileList::iterator tar;
+		FOR_ALL_TARS(tar) {
+			/* Not in the same tar. */
+			if (tar->second.tar_filename != iter->first) continue;
+
+			/* Check the extension. */
+			const char *ext = strrchr(tar->first.c_str(), '.');
+			if (ext == NULL || strcasecmp(ext, ".nut") != 0) continue;
+
+			/* Create the full path name, */
+			seprintf(path, lastof(path), "%s%c%s", tar->second.tar_filename, PATHSEPCHAR, tar->first.c_str());
+			checksum.AddFile(path, 0);
+		}
+	} else {
+		/* Add the path sep char back when searching a directory, so we are
+		 * in the actual directory. */
+		path[strlen(path)] = PATHSEPCHAR;
+		checksum.Scan(".nut", path);
+	}
+
+	return memcmp(ci->md5sum, checksum.md5sum, sizeof(ci->md5sum)) == 0;
+}
+
+/**
+ * Check whether we have an AI (library) with the exact characteristics as ci.
+ * @param ci the characteristics to search on (shortname and md5sum)
+ * @param md5sum whether to check the MD5 checksum
+ * @return true iff we have an AI (library) matching.
+ */
+bool AIScanner::HasAI(const ContentInfo *ci, bool md5sum)
+{
+	switch (ci->type) {
+		case CONTENT_TYPE_AI:
+			for (AIInfoList::iterator it = this->info_list.begin(); it != this->info_list.end(); it++) {
+				if (IsSameAI(ci, md5sum, (*it).second)) return true;
+			}
+			return false;
+
+		case CONTENT_TYPE_AI_LIBRARY:
+			for (AILibraryList::iterator it = this->library_list.begin(); it != this->library_list.end(); it++) {
+				if (IsSameAI(ci, md5sum, (*it).second)) return true;
+			}
+			return false;
+
+		default:
+			NOT_REACHED();
+	}
+}
+
+/**
+ * Check whether we have an AI (library) with the exact characteristics as ci.
+ * @param ci the characteristics to search on (shortname and md5sum)
+ * @param md5sum whether to check the MD5 checksum
+ * @return true iff we have an AI (library) matching.
+ */
+/*static */ bool AI::HasAI(const ContentInfo *ci, bool md5sum)
+{
+	return AI::ai_scanner->HasAI(ci, md5sum);
+}
+
+#endif /* ENABLE_NETWORK */

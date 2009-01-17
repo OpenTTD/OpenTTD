@@ -543,3 +543,36 @@ char *GetGraphicsSetsList(char *p, const char *last)
 
 	return p;
 }
+
+#if defined(ENABLE_NETWORK)
+#include "network/network_content.h"
+
+/**
+ * Check whether we have an graphics with the exact characteristics as ci.
+ * @param ci the characteristics to search on (shortname and md5sum)
+ * @param md5sum whether to check the MD5 checksum
+ * @return true iff we have an graphics set matching.
+ */
+bool HasGraphicsSet(const ContentInfo *ci, bool md5sum)
+{
+	assert(ci->type == CONTENT_TYPE_BASE_GRAPHICS);
+	for (const GraphicsSet *g = _available_graphics_sets; g != NULL; g = g->next) {
+		if (g->found_grfs <= 1) continue;
+
+		if (g->shortname != ci->unique_id) continue;
+		if (!md5sum) return true;
+
+		byte md5[16];
+		memset(md5, 0, sizeof(md5));
+		for (uint i = 0; i < MAX_GFT; i++) {
+			for (uint j = 0; j < sizeof(md5); j++) {
+				md5[j] ^= g->files[i].hash[j];
+			}
+		}
+		if (memcmp(md5, ci->md5sum, sizeof(md5)) == 0) return true;
+	}
+
+	return false;
+}
+
+#endif /* ENABLE_NETWORK */

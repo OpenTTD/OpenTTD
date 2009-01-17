@@ -77,7 +77,7 @@ void UndrawMouseCursor();
 
 enum {
 	/* Size of the buffer used for drawing strings. */
-	DRAW_STRING_BUFFER = 1024,
+	DRAW_STRING_BUFFER = 2048,
 };
 
 void RedrawScreenRect(int left, int top, int right, int bottom);

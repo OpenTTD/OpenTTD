@@ -36,6 +36,7 @@ enum Searchpath {
 	SP_BINARY_DIR,                 ///< Search in the directory where the binary resides
 	SP_INSTALLATION_DIR,           ///< Search in the installation directory
 	SP_APPLICATION_BUNDLE_DIR,     ///< Search within the application bundle
+	SP_AUTODOWNLOAD_DIR,           ///< Search within the autodownload directory
 	NUM_SEARCHPATHS
 };
 

@@ -12,6 +12,7 @@
 #include "heightmap.h"
 #include "genworld.h"
 #include "network/network_gui.h"
+#include "network/network_content.h"
 #include "newgrf.h"
 #include "strings_func.h"
 #include "window_func.h"
@@ -24,8 +25,8 @@
 #include "table/sprites.h"
 
 static const Widget _select_game_widgets[] = {
-{     WWT_CAPTION,  RESIZE_NONE,  COLOUR_BROWN,    0,   335,    0,   13,  STR_0307_OPENTTD,           STR_NULL},
-{       WWT_PANEL,  RESIZE_NONE,  COLOUR_BROWN,    0,   335,   14,  194,  0x0,                        STR_NULL},
+{     WWT_CAPTION,  RESIZE_NONE,  COLOUR_BROWN,     0,  335,    0,   13,  STR_0307_OPENTTD,           STR_NULL},
+{       WWT_PANEL,  RESIZE_NONE,  COLOUR_BROWN,     0,  335,   14,  194,  0x0,                        STR_NULL},
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,   10,  167,   22,   33,  STR_0140_NEW_GAME,          STR_02FB_START_A_NEW_GAME},
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  168,  325,   22,   33,  STR_0141_LOAD_GAME,         STR_02FC_LOAD_A_SAVED_GAME},
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,   10,  167,   40,   51,  STR_029A_PLAY_SCENARIO,     STR_0303_START_A_NEW_GAME_USING},
@@ -43,7 +44,8 @@ static const Widget _select_game_widgets[] = {
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,   10,  167,  157,  168,  STR_CONFIG_PATCHES,         STR_CONFIG_PATCHES_TIP},
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  168,  325,  157,  168,  STR_NEWGRF_SETTINGS_BUTTON, STR_NULL},
 
-{  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  104,  231,  175,  186,  STR_0304_QUIT,              STR_0305_QUIT_OPENTTD},
+{  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,   10,  167,  175,  186,  STR_CONTENT_INTRO_BUTTON,   STR_CONTENT_INTRO_BUTTON_TIP},
+{  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  168,  325,  175,  186,  STR_0304_QUIT,              STR_0305_QUIT_OPENTTD},
 {     WIDGETS_END},
 };
 
@@ -70,6 +72,7 @@ private:
 		SGI_DIFFICULTIES,
 		SGI_PATCHES_OPTIONS,
 		SGI_GRF_SETTINGS,
+		SGI_CONTENT_DOWNLOAD,
 		SGI_EXIT,
 	};
 
@@ -123,6 +126,14 @@ public:
 			case SGI_DIFFICULTIES:    ShowGameDifficulty(); break;
 			case SGI_PATCHES_OPTIONS: ShowPatchesSelection(); break;
 			case SGI_GRF_SETTINGS:    ShowNewGRFSettings(true, true, false, &_grfconfig_newgame); break;
+			case SGI_CONTENT_DOWNLOAD:
+				if (!_network_available) {
+					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+				} else {
+					ShowNetworkContentListWindow();
+				}
+				break;
+
 			case SGI_EXIT:            HandleExitGameRequest(); break;
 		}
 	}

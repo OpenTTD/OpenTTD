@@ -18,6 +18,8 @@
 #include "gamelog.h"
 #include "settings_func.h"
 #include "widgets/dropdown_type.h"
+#include "network/network.h"
+#include "network/network_content.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -307,6 +309,7 @@ struct NewGRFWindow : public Window {
 		SNGRFS_SET_PARAMETERS,
 		SNGRFS_TOGGLE_PALETTE,
 		SNGRFS_APPLY_CHANGES,
+		SNGRFS_CONTENT_DOWNLOAD,
 		SNGRFS_RESIZE,
 	};
 
@@ -579,13 +582,34 @@ struct NewGRFWindow : public Window {
 				break;
 			}
 
-			case SNGRFS_TOGGLE_PALETTE: {
+			case SNGRFS_TOGGLE_PALETTE:
 				if (this->sel != NULL) {
 					this->sel->windows_paletted ^= true;
 					this->SetDirty();
 				}
 				break;
-			}
+
+			case SNGRFS_CONTENT_DOWNLOAD:
+				if (!_network_available) {
+					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+				} else {
+#if defined(ENABLE_NETWORK)
+				/* Only show the things in the current list, or everything when nothing's selected */
+					ContentVector cv;
+					for (const GRFConfig *c = this->list; c != NULL; c = c->next) {
+						ContentInfo *ci = new ContentInfo();
+						ci->type = CONTENT_TYPE_NEWGRF;
+						ci->state = ContentInfo::DOES_NOT_EXIST;
+						ttd_strlcpy(ci->name, c->name, lengthof(ci->name));
+						ci->unique_id = BSWAP32(c->grfid);
+						memcpy(ci->md5sum, c->md5sum, sizeof(ci->md5sum));
+						*cv.Append() = ci;
+					}
+					ShowNetworkContentListWindow(cv.Length() == 0 ? NULL : &cv, CONTENT_TYPE_NEWGRF);
+#endif
+				}
+				break;
+
 		}
 	}
 
@@ -658,10 +682,34 @@ struct NewGRFWindow : public Window {
 		this->SetupNewGRFWindow();
 	}
 
-	virtual void OnInvalidateData(int data = 0)
+	virtual void OnInvalidateData(int data)
 	{
-		this->preset = -1;
-		this->SetupNewGRFWindow();
+		switch (data) {
+			default: NOT_REACHED();
+			case 0:
+				this->preset = -1;
+				this->SetupNewGRFWindow();
+				break;
+
+			case 1:
+				/* Search the list for items that are now found and mark them as such. */
+				for (GRFConfig *c = this->list; c != NULL; c = c->next) {
+					if (c->status != GCS_NOT_FOUND) continue;
+
+					const GRFConfig *f = FindGRFConfig(c->grfid, c->md5sum);
+					if (f == NULL) continue;
+
+					free(c->filename);
+					free(c->name);
+					free(c->info);
+
+					c->filename  = f->filename == NULL ? NULL : strdup(f->filename);
+					c->name      = f->name == NULL ? NULL : strdup(f->name);;
+					c->info      = f->info == NULL ? NULL : strdup(f->info);;
+					c->status    = GCS_UNKNOWN;
+				}
+				break;
+		}
 	}
 };
 
@@ -681,16 +729,17 @@ static const Widget _newgrf_widgets[] = {
 {     WWT_MATRIX,    RESIZE_RB,  COLOUR_MAUVE,    0, 287,  46, 115, 0x501,                       STR_NEWGRF_FILE_TIP },              // SNGRFS_FILE_LIST
 {  WWT_SCROLLBAR,   RESIZE_LRB,  COLOUR_MAUVE,  288, 299,  46, 115, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST }, // SNGRFS_SCROLLBAR
 {      WWT_PANEL,   RESIZE_RTB,  COLOUR_MAUVE,    0, 299, 116, 238, STR_NULL,                    STR_NULL },                         // SNGRFS_NEWGRF_INFO
-{ WWT_PUSHTXTBTN,    RESIZE_TB,  COLOUR_MAUVE,    0,  95, 239, 250, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },                         // SNGRFS_SET_PARAMETERS
-{ WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,   96, 191, 239, 250, STR_NEWGRF_TOGGLE_PALETTE,   STR_NEWGRF_TOGGLE_PALETTE_TIP },    // SNGRFS_TOGGLE_PALETTE
-{ WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,  192, 287, 239, 250, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },                         // SNGRFS_APPLY_CHANGES
-{  WWT_RESIZEBOX,  RESIZE_LRTB,  COLOUR_MAUVE,  288, 299, 239, 250, 0x0,                         STR_RESIZE_BUTTON },                // SNGRFS_RESIZE
+{ WWT_PUSHTXTBTN,    RESIZE_TB,  COLOUR_MAUVE,    0,  99, 239, 250, STR_NEWGRF_SET_PARAMETERS,   STR_NULL },                         // SNGRFS_SET_PARAMETERS
+{ WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,  100, 199, 239, 250, STR_NEWGRF_TOGGLE_PALETTE,   STR_NEWGRF_TOGGLE_PALETTE_TIP },    // SNGRFS_TOGGLE_PALETTE
+{ WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,  200, 299, 239, 250, STR_NEWGRF_APPLY_CHANGES,    STR_NULL },                         // SNGRFS_APPLY_CHANGES
+{ WWT_PUSHTXTBTN,   RESIZE_RTB,  COLOUR_MAUVE,    0, 287, 251, 262, STR_CONTENT_INTRO_BUTTON,    STR_CONTENT_INTRO_BUTTON_TIP },     // SNGRFS_DOWNLOAD_CONTENT
+{  WWT_RESIZEBOX,  RESIZE_LRTB,  COLOUR_MAUVE,  288, 299, 251, 261, 0x0,                         STR_RESIZE_BUTTON },                // SNGRFS_RESIZE
 { WIDGETS_END },
 };
 
 /* Window definition of the manage newgrfs window */
 static const WindowDesc _newgrf_desc = {
-	WDP_CENTER, WDP_CENTER, 300, 251, 300, 251,
+	WDP_CENTER, WDP_CENTER, 300, 262, 300, 262,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,

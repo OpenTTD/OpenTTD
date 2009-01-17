@@ -632,6 +632,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\network\network_content.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\network_gamelist.cpp"
 				>
 			</File>
@@ -1121,6 +1125,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\network\network_client.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\network_content.h"
 				>
 			</File>
 			<File
@@ -1777,6 +1785,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\network\network_chat_gui.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\network_content_gui.cpp"
 				>
 			</File>
 			<File
@@ -3229,6 +3241,14 @@
 			</File>
 			<File
 				RelativePath=".\..\src\network\core\tcp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\tcp_content.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\tcp_content.h"
 				>
 			</File>
 			<File

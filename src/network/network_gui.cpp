@@ -11,6 +11,7 @@
 #include "../fios.h"
 #include "network_internal.h"
 #include "network_client.h"
+#include "network_content.h"
 #include "network_gui.h"
 #include "network_gamelist.h"
 #include "../gui.h"
@@ -76,7 +77,7 @@ enum {
  * @param unselect unselect the currently selected item */
 void UpdateNetworkGameWindow(bool unselect)
 {
-	InvalidateWindowData(WC_NETWORK_WINDOW, 0, unselect);
+	InvalidateWindowData(WC_NETWORK_WINDOW, 0, unselect ? 1 : 0);
 }
 
 /** Enum for NetworkGameWindow, referring to _network_game_window_widgets */
@@ -595,9 +596,36 @@ public:
 
 	virtual void OnInvalidateData(int data)
 	{
-		if (data != 0) {
-			this->server = NULL;
-			this->list_pos = SLP_INVALID;
+		switch (data) {
+			/* Remove the selection */
+			case 1:
+				this->server = NULL;
+				this->list_pos = SLP_INVALID;
+				break;
+
+			/* Reiterate the whole server list as we downloaded some files */
+			case 2:
+				for (NetworkGameList **iter = this->servers.Begin(); iter != this->servers.End(); iter++) {
+					NetworkGameList *item = *iter;
+					bool missing_grfs = false;
+					for (GRFConfig *c = item->info.grfconfig; c != NULL; c = c->next) {
+						if (c->status != GCS_NOT_FOUND) continue;
+
+						const GRFConfig *f = FindGRFConfig(c->grfid, c->md5sum);
+						if (f == NULL) {
+							missing_grfs = true;
+							continue;
+						}
+
+						c->filename  = f->filename;
+						c->name      = f->name;
+						c->info      = f->info;
+						c->status    = GCS_UNKNOWN;
+					}
+
+					if (!missing_grfs) item->info.compatible = item->info.version_compatible;
+				}
+				break;
 		}
 		this->servers.ForceRebuild();
 		this->SetDirty();

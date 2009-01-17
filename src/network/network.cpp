@@ -18,6 +18,7 @@
 #include "network_internal.h"
 #include "network_client.h"
 #include "network_server.h"
+#include "network_content.h"
 #include "network_udp.h"
 #include "network_gamelist.h"
 #include "core/udp.h"
@@ -964,6 +965,8 @@ static bool NetworkDoClientLoop()
 // We have to do some UDP checking
 void NetworkUDPGameLoop()
 {
+	NetworkContentLoop();
+
 	if (_network_udp_server) {
 		_udp_server_socket->ReceivePackets();
 		_udp_master_socket->ReceivePackets();

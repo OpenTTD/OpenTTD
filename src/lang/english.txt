@@ -3687,3 +3687,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Allow t
 STR_NOISE_IN_TOWN                                               :{BLACK}Noise limit in town: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Noise generated: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD is build without "zlib" support...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... downloading content is not possible!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Base graphics
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI library
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
+STR_CONTENT_TITLE                                               :{WHITE}Content downloading
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Type of the content
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name of the content
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Click on a line to see the details{}Click on the checkbox to select it for downloading
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Select all
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Mark all content to be downloaded
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Select updates
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Mark all content that is an update for existing content to be downloaded
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselect all
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Mark all content to be not downloaded
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Start downloading the selected content
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total download size: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}CONTENT INFO
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}You have not selected this to be downloaded
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}You have selected this to be downloaded
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}This dependency has been selected to be downloaded
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}You already have this
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}This content is unknown and cannot be downloaded in OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}This is a replacement for an exising {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{RAW_STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{RAW_STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Description: {WHITE}{RAW_STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{RAW_STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Download size: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Selected because of: {WHITE}{RAW_STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencies: {WHITE}{RAW_STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{RAW_STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Downloading content...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Requesting files...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Currently downloading {RAW_STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Download complete
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} of {BYTES} downloaded ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Could not connect to the content server...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Downloading failed...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connection lost
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... file not writable
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Could not decompress the downloaded file
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Check online content
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Check for new and updated content to download
+########

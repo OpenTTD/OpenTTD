@@ -64,6 +64,9 @@ public:
 	 */
 	void RescanAIDir();
 
+#if defined(ENABLE_NETWORK)
+  bool HasAI(const struct ContentInfo *ci, bool md5sum);
+#endif
 private:
 	typedef std::map<const char *, class AILibrary *, ltstr> AILibraryList;
 

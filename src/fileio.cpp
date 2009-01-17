@@ -518,7 +518,7 @@ static void SimplifyFileName(char *name)
 #endif
 }
 
-static bool TarListAddFile(const char *filename)
+bool TarListAddFile(const char *filename)
 {
 	/* The TAR-header, repeated for every file */
 	typedef struct TarHeader {
@@ -951,6 +951,27 @@ void DeterminePaths(const char *exe)
 	free(save_dir);
 	free(autosave_dir);
 
+	/* If we have network we make a directory for the autodownloading of content */
+	_searchpaths[SP_AUTODOWNLOAD_DIR] = str_fmt("%s%s", _personal_dir, "content_download" PATHSEP);
+#ifdef ENABLE_NETWORK
+	FioCreateDirectory(_searchpaths[SP_AUTODOWNLOAD_DIR]);
+
+	/* Create the directory for each of the types of content */
+	const Subdirectory dirs[] = { SCENARIO_DIR, HEIGHTMAP_DIR, DATA_DIR, AI_DIR, AI_LIBRARY_DIR };
+	for (uint i = 0; i < lengthof(dirs); i++) {
+		char *tmp = str_fmt("%s%s", _searchpaths[SP_AUTODOWNLOAD_DIR], FioGetSubdirectory(dirs[i]));
+		FioCreateDirectory(tmp);
+		free(tmp);
+	}
+#else /* ENABLE_NETWORK */
+	/* If we don't have networking, we don't need to make the directory. But
+	 * if it exists we keep it, otherwise remove it from the search paths. */
+	if (!FileExists(_searchpaths[SP_AUTODOWNLOAD_DIR]))  {
+		free((void*)_searchpaths[SP_AUTODOWNLOAD_DIR]);
+		_searchpaths[SP_AUTODOWNLOAD_DIR] = NULL;
+	}
+#endif /* ENABLE_NETWORK */
+
 	ScanForTarFiles();
 }
 
@@ -1096,4 +1117,19 @@ uint FileScanner::Scan(const char *extension, Subdirectory sd, bool tars)
 	}
 
 	return num;
+}
+
+/**
+ * Scan for files with the given extention in the given search path.
+ * @param extension the extension of files to search for.
+ * @param directory the sub directory to search in.
+ * @return the number of found files, i.e. the number of times that
+ *         AddFile returned true.
+ */
+uint FileScanner::Scan(const char *extension, const char *directory)
+{
+	char path[MAX_PATH];
+	strecpy(path, directory, lastof(path));
+	AppendPathSeparator(path, lengthof(path));
+	return ScanPath(this, extension, path, strlen(path));
 }
