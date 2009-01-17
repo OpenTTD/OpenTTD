@@ -247,7 +247,7 @@ void AIInstance::Died()
 	DEBUG(ai, 0, "The AI died unexpectedly.");
 	this->is_dead = true;
 
-	this->engine->ReleaseObject(this->instance);
+	if (this->instance != NULL) this->engine->ReleaseObject(this->instance);
 	delete this->engine;
 	this->instance = NULL;
 	this->engine = NULL;
