@@ -47,6 +47,7 @@
 	Company *c = GetCompany(company);
 
 	c->ai_info = info;
+	assert(c->ai_instance == NULL);
 	c->ai_instance = new AIInstance(info);
 
 	InvalidateWindowData(WC_AI_DEBUG, 0, -1);
