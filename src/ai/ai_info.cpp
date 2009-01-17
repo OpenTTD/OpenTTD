@@ -22,6 +22,7 @@ AIFileInfo::~AIFileInfo()
 	this->engine->ReleaseObject(this->SQ_instance);
 	free((void *)this->author);
 	free((void *)this->name);
+	free((void *)this->short_name);
 	free((void *)this->description);
 	free((void *)this->date);
 	free((void *)this->instance_name);
