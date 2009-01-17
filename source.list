@@ -12,7 +12,6 @@ cheat.cpp
 command.cpp
 console.cpp
 console_cmds.cpp
-console_gui.cpp
 currency.cpp
 date.cpp
 debug.cpp
@@ -32,7 +31,6 @@ gfx.cpp
 gfxinit.cpp
 heightmap.cpp
 highscore.cpp
-highscore_gui.cpp
 ini.cpp
 landscape.cpp
 map.cpp
@@ -381,12 +379,14 @@ bridge_gui.cpp
 build_vehicle_gui.cpp
 cheat_gui.cpp
 company_gui.cpp
+console_gui.cpp
 depot_gui.cpp
 dock_gui.cpp
 engine_gui.cpp
 genworld_gui.cpp
 graph_gui.cpp
 group_gui.cpp
+highscore_gui.cpp
 industry_gui.cpp
 intro_gui.cpp
 main_gui.cpp

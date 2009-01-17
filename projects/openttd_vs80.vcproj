@@ -500,10 +500,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\..\src\console_gui.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\..\src\currency.cpp"
 				>
 			</File>
@@ -577,10 +573,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\highscore.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\highscore_gui.cpp"
 				>
 			</File>
 			<File
@@ -1740,6 +1732,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\console_gui.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\depot_gui.cpp"
 				>
 			</File>
@@ -1761,6 +1757,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\group_gui.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\highscore_gui.cpp"
 				>
 			</File>
 			<File
