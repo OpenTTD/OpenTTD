@@ -2733,19 +2733,19 @@ STR_ORDER_GO_TO                                                 :Pergi ke
 STR_ORDER_GO_NON_STOP_TO                                        :Pergi non-stop ke
 STR_ORDER_GO_VIA                                                :Pergi lewat
 STR_ORDER_GO_NON_STOP_VIA                                       :Pergi non-stop lewat
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Muat penuh sembarang
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Muat jika ada
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :Muat penuh semua
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :Muat penuh sembarang
-STR_ORDER_DROP_NO_LOADING                                       :Tanpa memuat
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}Penuhi salah satu
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :Muat seadanya
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :Penuhi semua
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :Penuhi salah satu
+STR_ORDER_DROP_NO_LOADING                                       :Tidak memuat
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}Bongkar semua
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :Bongkar jika diterima
 STR_ORDER_DROP_UNLOAD                                           :Bongkar semua
 STR_ORDER_DROP_TRANSFER                                         :Transfer
 STR_ORDER_DROP_NO_UNLOADING                                     :Tidak membongkar
-STR_ORDER_FULL_LOAD                                             :(Muat Penuh)
-STR_ORDER_FULL_LOAD_ANY                                         :(Muat Penuh sembarang)
-STR_ORDER_NO_LOAD                                               :(Tidak Memuat)
+STR_ORDER_FULL_LOAD                                             :(Penuhi Semua)
+STR_ORDER_FULL_LOAD_ANY                                         :(Penuhi salah satu)
+STR_ORDER_NO_LOAD                                               :(Jangan Memuat)
 STR_ORDER_UNLOAD                                                :(Bongkar dan muat)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Bongkar dan muat sampai penuh semua)
 STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(Bongkar dan muat sampai ada yang penuh)
@@ -2754,9 +2754,9 @@ STR_ORDER_TRANSFER                                              :(Transfer dan m
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(Transfer dan muat sampai penuh semua)
 STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(Transfer dan muat sampai ada yang penuh)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(Transfer dan biarkan kosong)
-STR_ORDER_NO_UNLOAD                                             :(Tidak bongkar tapi muat)
-STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Tidak bongkar tapi muat sampai penuh)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Tidak bongkar tapi muat sampai ada yang penuh)
+STR_ORDER_NO_UNLOAD                                             :(Jangan bongkar tapi muat)
+STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(Jangan bongkar tapi muat sampai penuh)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(Jangan bongkar tapi muat sampai ada yang penuh)
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}Ubah model perintah berhenti pada tujuan terpilih
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}Ubah model pengangkutan pada tujuan terpilih
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}Ubah model pembongkaran pada tujuan terpilih
@@ -2769,7 +2769,7 @@ STR_ORDER_NEAREST_DEPOT                                         :Depo Terdekat
 STR_ORDER_NEAREST_HANGAR                                        :Hangar terdekat
 STR_ORDER_SERVICE_AT                                            :Perbaikkan di
 STR_ORDER_SERVICE_NON_STOP_AT                                   :Perbaikkan non-stop di
-STR_ORDER_TRAIN_DEPOT                                           :Depo Kereta Api
+STR_ORDER_TRAIN_DEPOT                                           :Depo Kereta
 STR_ORDER_ROAD_DEPOT                                            :Bengkel Bus/truk
 STR_ORDER_SHIP_DEPOT                                            :Galangan Kapal
 STR_GO_TO_DEPOT                                                 :{0:STRING} {2:STRING} {1:TOWN}
@@ -3237,7 +3237,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nama Fil
 STR_NEWGRF_PALETTE                                              :{BLACK}Palet/warna: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Anda berusaha membuat perubahan pada permainan yang sedang berjalan;Ini dapat membuat OpenTTD mengalami crash.{}Anda sangat yakin dalam hal ini?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Menerapkan perubahan pada permainan yang sedang berjalan dapat membuat OpenTTD menjadi macet.{}Apakah anda sangat yakin?
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Peringatan: {SILVER}{STRING}
@@ -3394,7 +3394,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klik unt
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Daftar tanda - {COMMA} Tanda
 
-STR_ORDER_REFIT_FAILED                                          :{WHITE}Perintah Ubah_Kargo, gagal menghentikan {VEHICLE}
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Gagal menghentikan {VEHICLE} untuk mengubah kargonya
 
 ############ Lists rail types
 
@@ -3419,7 +3419,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Berat: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Biaya: {GOLD}{CURRENCY}{BLACK} Kecepatan: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitas: {GOLD}{COMMA} penumpang, {COMMA} kantong dokumen
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Daya Gerbong: {GOLD}+{POWER}{BLACK} Berat: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Dapat di Atur_Muatan untuk: {GOLD}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Kargo dapat di ganti untuk: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Semua jenis kargo
 STR_PURCHASE_INFO_ALL_BUT                                       :Semua tapi tidak untuk {GOLD}
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Traksi Maks.: {GOLD}{FORCE}
@@ -3686,4 +3686,10 @@ STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debu
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Ijinkan kota mengatur tingkat kebisingan bandara : {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Batas kebisingan di kota : {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Tingkat Kebisingan: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

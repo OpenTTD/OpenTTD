@@ -843,6 +843,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Prosoj
 STR_02D5_LAND_BLOCK_INFO                                        :Informacije o terenu
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Vklopi/Izklopi konzolo
+STR_AI_DEBUG_MENU                                               :UI Čiščenje
 STR_02D7_SCREENSHOT_CTRL_S                                      :Zajemi sliko (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Zajemi celostno sliko (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
@@ -1195,6 +1196,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Onemogo
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Onemogoči letala za računalnik: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Onemogoči ladje za računalnik: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Dovoli UI v večigralskem načinu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#op-kode pred blokado UI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Privzeto obdobje servisiranja za vlake: {ORANGE}onemogočeno
@@ -1417,7 +1420,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Predelaj
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemogoča predelava vlaka...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Obdobja servisiranja so v procentih: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Spremeni proizvodnjo
-
 
 ############ network gui strings
 
@@ -3752,8 +3754,22 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}UI Čiščenje
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Ime UI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno naloži UI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Uniči UI, ponovno naloži skripto in ponovno zaženi UI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}okno UI čiščenja je na voljo samo za strežnik
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Omogoči mestni nadzor hrupa za letališča: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Meja hrupa v mestu: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Efektivni hrup: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

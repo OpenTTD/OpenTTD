@@ -1201,8 +1201,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Derecha
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Radio de snap de ventana: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radio de snap de ventana: {ORANGE}desactivado
-STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Límite blando ventana (no-sticky): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Límite blando ventana (no-sticky): {ORANGE}desactivado
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Límite de ventanas abiertas (no-ancladas): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Límite de ventanas abiertas (no-ancladas): {ORANGE}desactivado
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Velocidad crecimiento ciudad: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ninguna
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lenta
@@ -3687,4 +3687,10 @@ STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}La vent
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permitir a la ciudad controlar el nivel de ruidos de los aeropuertos: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Nivel de ruido en ciudad: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Ruido generado: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

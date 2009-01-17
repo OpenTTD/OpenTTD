@@ -445,10 +445,10 @@ STR_AGE                                                         :{COMMA} ปี 
 STR_AGE_RED                                                     :{RED}{COMMA} ปี ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :รถยนต์
-STR_019D_AIRCRAFT                                               :อากาศยาน
-STR_019E_SHIP                                                   :เรือ
 STR_019F_TRAIN                                                  :รถไฟ
+STR_019C_ROAD_VEHICLE                                           :รถยนต์
+STR_019E_SHIP                                                   :เรือ
+STR_019D_AIRCRAFT                                               :อากาศยาน
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} เริ่มเก่าแล้ว
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} เก่ามากแล้ว
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} เก่ามากแล้ว และควรเปลี่ยนใหม่ในทันที
@@ -662,9 +662,28 @@ STR_0305_QUIT_OPENTTD                                           :{BLACK}ออ�
 
 
 
+STR_SAVING_GAME                                                 :{RED}*  *  กำลังบันทึกเกม  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}ขณะนี้กำลังบันทึก,{}โปรดรอจนกว่าจะเสร็จ!
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}เลือกเพลงฟังรายการเพลง Ezy Street
 
+STR_6                                                           :{BLACK}6
+STR_7                                                           :{BLACK}7
 
 ############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :อังกฤษ (ดั้งเดิม)
+STR_TOWNNAME_FRENCH                                             :ฝรั่งเศส
+STR_TOWNNAME_GERMAN                                             :เยอรมัน
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :อังกฤษ (ตัวเสริม)
+STR_TOWNNAME_SILLY                                              :อังกฤษอย่างง่าย
+STR_TOWNNAME_SWEDISH                                            :สวีดิช
+STR_TOWNNAME_DUTCH                                              :ดัชต์
+STR_TOWNNAME_FINNISH                                            :ฟินน์
+STR_TOWNNAME_POLISH                                             :โปลิช
+STR_TOWNNAME_SLOVAKISH                                          :สโลวากิช
+STR_TOWNNAME_NORWEGIAN                                          :นอร์วิเจียน
+STR_TOWNNAME_HUNGARIAN                                          :ฮังกาเรียน
+STR_TOWNNAME_AUSTRIAN                                           :ออสเตรียน
+STR_TOWNNAME_ROMANIAN                                           :โรมาเนียน
 ############ end of townname region
 
 
@@ -711,7 +730,6 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 # end of order system
-
 
 
 
@@ -992,5 +1010,14 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

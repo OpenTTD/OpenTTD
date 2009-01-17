@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA}년 ({CO
 STR_AGE_RED                                                     :{RED}{COMMA}년 ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :자동차
-STR_019D_AIRCRAFT                                               :항공기
-STR_019E_SHIP                                                   :선박
 STR_019F_TRAIN                                                  :열차
+STR_019C_ROAD_VEHICLE                                           :자동차
+STR_019E_SHIP                                                   :선박
+STR_019D_AIRCRAFT                                               :항공기
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE}(이)가 오래되었습니다
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE}(이)가 너무 오래되었습니다
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE}(이)가 너무 오래되어 교체가 시급합니다
@@ -801,6 +801,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}투명
 STR_02D5_LAND_BLOCK_INFO                                        :지형 정보
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :콘솔 켜기/끄기
+STR_AI_DEBUG_MENU                                               :AI 디버그
 STR_02D7_SCREENSHOT_CTRL_S                                      :스크린 샷 (Ctrl+S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :거대 스크린샷 (Ctrl+G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD'에 대해서
@@ -1027,6 +1028,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}매우 
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}사실감있는 열차 가속 사용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (NPF 필요)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 붙어있지 않아도 같은 이름으로 역을 짓는 것을 허용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}향상된 수송 알고리즘 사용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}차량에 단계적으로 싣기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}인플레이션 (화폐가치하락) : {ORANGE}{STRING}
@@ -1040,9 +1042,9 @@ STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :답사
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}한 도시당 같은 종류의 산업시설의 중복 건설을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}같은 종류의 산업 시설이 가까이에 지어지는 것을 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}날짜를 일(日)단위까지 상세하게 표시 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호기를 통행 방식에 따라 다른 위치에 설치 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}신호기를 차량 통행 방향에 설치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}연말에 재정 창을 띄움 : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}새 경로는 기본으로 논스톱 처리: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}새 경로는 기본으로 직통 처리: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}(획기적 방법으로) 자동차를 대기하게 하기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}가장자리에 마우스를 가져가면 화면 움직이기 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}지역 당국에 뇌물을 주는 행위 허용 : {ORANGE}{STRING}
@@ -1141,7 +1143,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :가장 많이 �
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}예약된 트랙 보이기: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}건설 도구를 사용 후 계속 유지: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}적절한 사용 가능한 차량이 없을 경우 건설 도구 표시: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}차량 생산이 불가능할 때 건설 도구 표시: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}최대 열차 수: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}최대 자동차 수: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}최대 항공기 수: {ORANGE}{STRING}
@@ -1152,6 +1154,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}컴퓨�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨터의 항공기 사용을 허가하지 않음 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티플레이에서 AI를 허용: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}열차 기본 점검 간격: {ORANGE}사용불가
@@ -1161,7 +1164,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}항공�
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}항공기 기본 점검 간격: {ORANGE}사용불가
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}선박 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}선박 기본 점검 간격: {ORANGE}사용불가
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}고장이 나지 않게 설정되어있으면 점검 간격을 설정하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}고장이 없을시 점검하지 않음 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}전기 철도를 사용하지 않음 : {ORANGE}{STRING}
 
@@ -1176,7 +1179,7 @@ STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}기본�
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :일반 신호기
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :경로 신호기
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :일방통행 경로 신호기
-STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}신호기 종류를 통한 순환: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Ctrl+신호기 건설시 바뀌는 신호등 종류: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :일반 신호기만
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :경로 신호기만
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :모두
@@ -1215,6 +1218,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}차량
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}역
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}경제
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}경쟁자
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}디스플레이 옵션
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}조작 옵션
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}신호등
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}화물
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}컴퓨터 옵션
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}자동교체
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}점검
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}경로탐색
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}열차
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}도시
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}산업시설
 
 STR_CONFIG_PATCHES_DISABLED                                     :사용불가
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1256,8 +1270,8 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}산업�
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}{WAYPOINT}(으)로 향하는 중
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}{WAYPOINT}, {VELOCITY}(으)로 향하는 중
 
-STR_GO_TO_WAYPOINT                                              :[경유] {WAYPOINT}
-STR_GO_NON_STOP_TO_WAYPOINT                                     :[경유, 직통] {WAYPOINT}
+STR_GO_TO_WAYPOINT                                              :완행 경유 {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :직행 경유 {WAYPOINT}
 
 STR_WAYPOINTNAME_CITY                                           :웨이포인트 {TOWN}
 STR_WAYPOINTNAME_CITY_SERIAL                                    :웨이포인트 {TOWN} #{COMMA}
@@ -1363,7 +1377,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}선택�
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}열차를 개조할 수 없습니다...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}백분율에 의한 점검 주기: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}생산량 변경
-
 
 ############ network gui strings
 
@@ -1715,6 +1728,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :콤보 및 경�
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :콤보 및 일방통행 경로 신호기가 있는 철로
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :경로 및 일방통행 경로 신호기가 있는 철로
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}새 이름으로 정거장 만들기
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}같은 이름으로 정거장 만들기
 
 
 
@@ -2712,30 +2727,30 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}중간�
 STR_8804                                                        :{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {SETX 30}{STRING} {STRING}
 STR_ORDER_NON_STOP                                              :{BLACK}통과 설정
-STR_ORDER_GO_TO                                                 :[운행]
-STR_ORDER_GO_NON_STOP_TO                                        :직통
-STR_ORDER_GO_VIA                                                :경유
-STR_ORDER_GO_NON_STOP_VIA                                       :직통 경유
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}적재 옵션
-STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :적재 옵션
+STR_ORDER_GO_TO                                                 :완행
+STR_ORDER_GO_NON_STOP_TO                                        :직행
+STR_ORDER_GO_VIA                                                :완행 경유
+STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}한가지 이상의 화물 가득 싣기
+STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :가능한것만 적재
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :모든 화물을 가득 실음
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :화물 하나만 가득 실음
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :한가지 이상의 화물 가득 싣기
 STR_ORDER_DROP_NO_LOADING                                       :싣지 않기
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}하차 옵션
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :하차 옵션
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}모든 화물 하차
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :화물을 받는경우 하차
 STR_ORDER_DROP_UNLOAD                                           :모든 화물 하차
 STR_ORDER_DROP_TRANSFER                                         :환승
-STR_ORDER_DROP_NO_UNLOADING                                     :화물 하차 않음
+STR_ORDER_DROP_NO_UNLOADING                                     :화물을 하차시키지 않음
 STR_ORDER_FULL_LOAD                                             :(가득 실음)
-STR_ORDER_FULL_LOAD_ANY                                         :(화물 하나만 가득 실음)
+STR_ORDER_FULL_LOAD_ANY                                         :(한가지 이상의 화물 가득 싣기)
 STR_ORDER_NO_LOAD                                               :(싣지 않기)
 STR_ORDER_UNLOAD                                                :(화물 하차 후 적재)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(화물 하차 후 모든 화물을 싣고 출발)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(화물 하차 후 화물 하나만 가득 실음)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(화물 하차 후 한가지 이상의 화물 가득 싣기)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(화물 하차 후 빈 차로 출발)
 STR_ORDER_TRANSFER                                              :(환승 후 화물 받음)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(환승 후 모든 화물 적재)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(환승 후 화물 하나만 가득 실음)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(환승 후 한가지 이상의 화물 가득 싣기)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(환승 후 빈 차로 출발)
 STR_ORDER_NO_UNLOAD                                             :(내리지 않고 화물을 받음)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(내리지 않고 가득 찰 때까지 기다림)
@@ -2750,8 +2765,8 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :가까운 차�
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :가까운 격납고로
 STR_ORDER_NEAREST_DEPOT                                         :가까운
 STR_ORDER_NEAREST_HANGAR                                        :가까운 격납고
-STR_ORDER_SERVICE_AT                                            :[점검]
-STR_ORDER_SERVICE_NON_STOP_AT                                   :[점검, 직통]
+STR_ORDER_SERVICE_AT                                            :완행 점검
+STR_ORDER_SERVICE_NON_STOP_AT                                   :직행 점검
 STR_ORDER_TRAIN_DEPOT                                           :차량기지
 STR_ORDER_ROAD_DEPOT                                            :차고
 STR_ORDER_SHIP_DEPOT                                            :정박소
@@ -3653,8 +3668,22 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}AI 디버그
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI의 이름
+STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}AI를 종료시키고, 스크립트를 다시 불러와, AI를 재시작합니다
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI 디버그창은 오직 서버만 사용 가능합니다
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}도시가 공항에서 나오는 소음을 제한하도록 함: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}도시 소음 제한: {ORANGE}{COMMA}{BLACK}  최고: {ORANGE}{COMMA}
-STR_STATION_NOISE                                               :{BLACK}소음 원인: {GOLD}{COMMA}
+STR_STATION_NOISE                                               :{BLACK}발생 소음: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

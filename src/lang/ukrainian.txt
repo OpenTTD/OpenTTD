@@ -603,10 +603,10 @@ STR_AGE                                                         :{COMMA} р{P і
 STR_AGE_RED                                                     :{RED}{COMMA} р{P ік оки оків} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Авто
-STR_019D_AIRCRAFT                                               :Літак
-STR_019E_SHIP                                                   :Корабель
 STR_019F_TRAIN                                                  :Поїзд
+STR_019C_ROAD_VEHICLE                                           :Авто
+STR_019E_SHIP                                                   :Корабель
+STR_019D_AIRCRAFT                                               :Літак
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} зістарився
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} дуже зістарився
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} зістарився і негайно потребує заміни
@@ -926,6 +926,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Про
 STR_02D5_LAND_BLOCK_INFO                                        :Інформація про ділянку
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Вкл./відкл. консоль
+STR_AI_DEBUG_MENU                                               :Дебаг AI
 STR_02D7_SCREENSHOT_CTRL_S                                      :Копія екрану (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Копія всієї карти (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Про гру 'OpenTTD'
@@ -1119,12 +1120,16 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Немо
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Неможливо скопіювати список завдань...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Кінець наказів - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} не може знайти шлях.
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} загубився.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}: торішній прибуток склав {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Європейська грошова одиниця!{}{}У вашій країні введено євро - єдину валюту для розрахунків!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} має замало пунктів у розкладі
 STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} немає завдань
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} має пункти у розкладі, що повторюються
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} має невірну станцію в завданні
 # end of order system
 
@@ -1148,6 +1153,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Буд�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Реалістичне прискорення поїздів: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Поїздам і кораблям не повертати на 90 град.: {ORANGE}{STRING} {LTBLUE} (треба NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Будувати суміжні залізничні станції: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дозволити об'єднувати не безпосередньо суміжні станції: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Використовувати покращений алгоритм завантаження: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Завантажувати поступово: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Інфляція: {ORANGE}{STRING}
@@ -1183,6 +1189,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Пок�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ні
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :так, крім зупиненого транспорту
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :усього транспорту
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Попереджувати, якщо транспорт збитковий: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не старіє: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автооновлення старого транспорту
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Автооновлення транспорту через {ORANGE}{STRING}{LTBLUE} міс. до/після макс.віку
@@ -1234,6 +1241,7 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Відкл.
 STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Прокрутка по лівому кліку: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Використовувати {ORANGE}{STRING}{LTBLUE} формат дати для збереження гри.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :довгий (31 Гру 2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31-12-2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
@@ -1271,6 +1279,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Заб�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заборонити комп'ютеру будувати літаки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Заборонити комп'ютеру будувати кораблі: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes перез зупинкою AI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}{STRING} дн/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}без тех.огляду
@@ -1315,6 +1324,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :По центр
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Праворуч
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Радіус прилипання вікон: {ORANGE}{STRING} пікс.
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилипання вікон {ORANGE}вимкнено
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}М'який ліміт вікна (не прилипає): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}М'який ліміт вікна (не прилипає): {ORANGE}нема
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Швидкість росту міста: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Немає
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Повільна
@@ -1332,6 +1343,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Тра�
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Станції
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Економіка
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Конкуренти
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Параметри дісплея
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Взаємодія
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигнали
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Обробка вантажів
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Комп'ютерні гравці
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Автооновлення
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Обслуговування
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Маршрути
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Поїзди
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Міста
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Промисловість
 
 STR_CONFIG_PATCHES_DISABLED                                     :вимкнено
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1480,7 +1502,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Пере
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Неможливо переобладнати поїзд...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Інтервал техогляду у відсотках: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Змінити виробництво
-
 
 ############ network gui strings
 
@@ -1831,6 +1852,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Залізни�
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Залізнична колія з комбінованими і односторонніми розширеними сигналами
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Залізнична колія з розширеними і односторонніми розширеними сигналами
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Спочатку потрібно знести залізничну станцію
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Побудувати окрему станцію
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Об'єднати станцію
 
 
 
@@ -2019,6 +2042,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Дуже
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Граничить з іншою станцією
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Дуже багато станцій в цьому місті
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Дуже багато станцій
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Забагато частин залізничної станції
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Дуже багато зупинок
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Дуже багато вантажних станцій
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Дуже близько до іншої станції
@@ -3010,6 +3034,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Немо
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Не можна перемістити цей наказ...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Не можна пропустити цей наказ...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Не можна перейти до цього наказу...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}Транспорт не може йти на всі станції
+STR_CAN_T_ADD_ORDER                                             :{WHITE}Транспорт не може йти на цю станцію
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}Транспорт зі спільного розкладу не може йти на цю станцію
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Неможливо перемістити транспорт...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}задній потяг буде завжди йти за переднім
 STR_8838_N_A                                                    :немає{SKIP}
@@ -3389,6 +3416,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неочіку�
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Невідома властивість Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Спроба використання невірного ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} містить зіпсований спрайт. Усі зіпсовані спрайти будуть показані як червоний знак питання (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Містить багато записів Action 8.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Завантажити обрані настройки
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Записати настройки
@@ -3525,6 +3553,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Нати
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Збій заміни наказів зупинив {VEHICLE}
 
 ############ Lists rail types
 
@@ -3644,6 +3673,7 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Діля
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
 STR_JUST_DATE_TINY                                              :{DATE_TINY}
 STR_JUST_DATE_LONG                                              :{DATE_LONG}
@@ -3803,8 +3833,22 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\�
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|ЙЦУКЕНГШЩЗХЇФІВАПРОЛДЖЄ  ЯЧСМИТЬБЮ, .
 ########
 
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Дебаг AI
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Назва AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Вікно Дебаг AI доступно тільки серверу
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Дозволити залежний від міста рівень шуму для аеропортів: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Ліміт шуму в місті: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Генерований шум: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########
