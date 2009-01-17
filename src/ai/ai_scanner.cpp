@@ -179,6 +179,7 @@ AIScanner::~AIScanner()
 		delete (*lit).second;
 	}
 
+	delete this->info_dummy;
 	delete this->engine;
 }
 
@@ -331,7 +332,7 @@ void AIScanner::RegisterAI(AIInfo *info)
 	strtolower(ai_name);
 	if (this->info_single_list.find(ai_name) == this->info_single_list.end()) {
 		this->info_single_list[strdup(ai_name)] = info;
-	} else if (this->info_single_list[strdup(ai_name)]->GetVersion() < info->GetVersion()) {
+	} else if (this->info_single_list[ai_name]->GetVersion() < info->GetVersion()) {
 		this->info_single_list[ai_name] = info;
 	}
 }

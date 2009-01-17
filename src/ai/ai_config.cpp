@@ -55,7 +55,11 @@ AIConfig::AIConfig(const AIConfig *config)
 
 AIConfig::~AIConfig()
 {
-	this->ChangeAI(NULL);
+	free((void *)this->name);
+	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end(); it++) {
+		free((void*)(*it).first);
+	}
+	this->settings.clear();
 }
 
 AIInfo *AIConfig::GetInfo()
