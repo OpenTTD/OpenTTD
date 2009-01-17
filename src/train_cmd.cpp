@@ -2839,6 +2839,8 @@ public:
 	 */
 	bool SwitchToNextOrder(bool skip_first)
 	{
+		if (this->v->GetNumOrders() == 0) return false;
+
 		if (skip_first) ++this->index;
 
 		int conditional_depth = 0;
