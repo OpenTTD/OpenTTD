@@ -53,7 +53,7 @@ private:
 	uint downloaded_bytes; ///< Number of bytes downloaded
 
 	uint32 cur_id; ///< The current ID of the downloaded file
-	char name[32]; ///< The current name of the downloaded file
+	char name[48]; ///< The current name of the downloaded file
 
 public:
 	/**
@@ -142,14 +142,14 @@ public:
 		DrawStringCentered(this->width / 2, 35, STR_CONTENT_DOWNLOAD_PROGRESS_SIZE, TC_GREY);
 
 		if  (this->downloaded_bytes == this->total_bytes) {
-			DrawStringCentered(this->width / 2, 46, STR_CONTENT_DOWNLOAD_COMPLETE, TC_GREY);
+			DrawStringCentered(this->width / 2, 50, STR_CONTENT_DOWNLOAD_COMPLETE, TC_GREY);
 		} else if (!StrEmpty(this->name)) {
 			SetDParamStr(0, this->name);
 			SetDParam(1, this->downloaded_files);
 			SetDParam(2, this->total_files);
-			DrawStringCentered(this->width / 2, 46, STR_CONTENT_DOWNLOAD_FILE, TC_GREY);
+			DrawStringMultiCenter(this->width / 2, 50, STR_CONTENT_DOWNLOAD_FILE, this->width);
 		} else {
-			DrawStringCentered(this->width / 2, 46, STR_CONTENT_DOWNLOAD_INITIALISE, TC_GREY);
+			DrawStringCentered(this->width / 2, 50, STR_CONTENT_DOWNLOAD_INITIALISE, TC_GREY);
 		}
 	}
 
