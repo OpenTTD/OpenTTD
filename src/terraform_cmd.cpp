@@ -351,6 +351,8 @@ CommandCost CmdLevelLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 {
 	if (p1 >= MapSize()) return CMD_ERROR;
 
+	_terraform_err_tile = INVALID_TILE;
+
 	/* remember level height */
 	uint oldh = TileHeight(p1);
 
