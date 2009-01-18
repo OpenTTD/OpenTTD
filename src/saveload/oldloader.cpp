@@ -25,6 +25,7 @@
 #include "../variables.h"
 #include "../strings_func.h"
 #include "../effectvehicle_base.h"
+#include "../string_func.h"
 
 #include "table/strings.h"
 
@@ -1571,19 +1572,23 @@ bool LoadOldSaveGame(const char *file)
 	return true;
 }
 
-void GetOldSaveGameName(char *title, const char *path, const char *file)
+void GetOldSaveGameName(const char *path, const char *file, char *title, const char *last)
 {
 	char filename[MAX_PATH];
-	FILE *f;
+	char temp[HEADER_SIZE - 1];
 
 	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, file);
-	f = fopen(filename, "rb");
-	title[0] = '\0';
-	title[48] = '\0';
+	FILE *f = fopen(filename, "rb");
+	temp[0] = '\0';
+	temp[HEADER_SIZE - 2] = '\0';
 
 	if (f == NULL) return;
 
-	if (fread(title, 1, 48, f) != 48) snprintf(title, 48, "Corrupt file");
+	if (fread(temp, 1, HEADER_SIZE - 2, f) != HEADER_SIZE - 2) {
+		seprintf(title, last, "Corrupt file");
+	} else {
+		seprintf(title, last, temp);
+	}
 
 	fclose(f);
 }

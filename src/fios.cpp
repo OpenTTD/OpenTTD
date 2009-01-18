@@ -41,7 +41,7 @@ extern void FiosGetDrives();
 extern bool FiosGetDiskFreeSpace(const char *path, uint64 *tot);
 
 /* get the name of an oldstyle savegame */
-extern void GetOldSaveGameName(char *title, const char *path, const char *file);
+extern void GetOldSaveGameName(const char *path, const char *file, char *title, const char *last);
 
 /**
  * Compare two FiosItem's. Used with qsort when sorting the file list.
@@ -194,7 +194,7 @@ bool FileExists(const char *filename)
 #endif
 }
 
-typedef FiosType fios_getlist_callback_proc(SaveLoadDialogMode mode, const char *filename, const char *ext, char *title);
+typedef FiosType fios_getlist_callback_proc(SaveLoadDialogMode mode, const char *filename, const char *ext, char *title, const char *last);
 
 /** Create a list of the files in a directory, according to some arbitrary rule.
  *  @param mode The mode we are in. Some modes don't allow 'parent'.
@@ -265,7 +265,7 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
 			if ((t = strrchr(d_name, '.')) == NULL) continue;
 			fios_title[0] = '\0'; // reset the title;
 
-			FiosType type = callback_proc(mode, d_name, t, fios_title);
+			FiosType type = callback_proc(mode, d_name, t, fios_title, lastof(fios_title));
 			if (type != FIOS_TYPE_INVALID) {
 				fios = _fios_items.Append();
 				fios->mtime = sb.st_mtime;
@@ -298,11 +298,12 @@ static FiosItem *FiosGetFileList(SaveLoadDialogMode mode, fios_getlist_callback_
  * @param file Name of the file to check.
  * @param ext A pointer to the extension identifier inside file
  * @param title Buffer if a callback wants to lookup the title of the file; NULL to skip the lookup
+ * @param last Last available byte in buffer (to prevent buffer overflows); not used when title == NULL
  * @return a FIOS_TYPE_* type of the found file, FIOS_TYPE_INVALID if not a savegame
  * @see FiosGetFileList
  * @see FiosGetSavegameList
  */
-FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title)
+FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last)
 {
 	/* Show savegame files
 	 * .SAV OpenTTD saved game
@@ -314,7 +315,7 @@ FiosType FiosGetSavegameListCallback(SaveLoadDialogMode mode, const char *file, 
 	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
 		if (strcasecmp(ext, ".ss1") == 0 || strcasecmp(ext, ".sv1") == 0 ||
 				strcasecmp(ext, ".sv2") == 0) {
-			if (title != NULL) GetOldSaveGameName(title, _fios_path, file);
+			if (title != NULL) GetOldSaveGameName(_fios_path, file, title, last);
 			return FIOS_TYPE_OLDFILE;
 		}
 	}
@@ -348,11 +349,12 @@ void FiosGetSavegameList(SaveLoadDialogMode mode)
  * @param file Name of the file to check.
  * @param ext A pointer to the extension identifier inside file
  * @param title Buffer if a callback wants to lookup the title of the file
+ * @param last Last available byte in buffer (to prevent buffer overflows)
  * @return a FIOS_TYPE_* type of the found file, FIOS_TYPE_INVALID if not a scenario
  * @see FiosGetFileList
  * @see FiosGetScenarioList
  */
-static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title)
+static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last)
 {
 	/* Show scenario files
 	 * .SCN OpenTTD style scenario file
@@ -362,7 +364,7 @@ static FiosType FiosGetScenarioListCallback(SaveLoadDialogMode mode, const char 
 
 	if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO || mode == SLD_NEW_GAME) {
 		if (strcasecmp(ext, ".sv0") == 0 || strcasecmp(ext, ".ss0") == 0 ) {
-			GetOldSaveGameName(title, _fios_path, file);
+			GetOldSaveGameName(_fios_path, file, title, last);
 			return FIOS_TYPE_OLD_SCENARIO;
 		}
 	}
@@ -391,7 +393,7 @@ void FiosGetScenarioList(SaveLoadDialogMode mode)
 	FiosGetFileList(mode, &FiosGetScenarioListCallback);
 }
 
-static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title)
+static FiosType FiosGetHeightmapListCallback(SaveLoadDialogMode mode, const char *file, const char *ext, char *title, const char *last)
 {
 	/* Show heightmap files
 	 * .PNG PNG Based heightmap files
