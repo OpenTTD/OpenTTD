@@ -1602,7 +1602,10 @@ void GetOldSaveGameName(const char *path, const char *file, char *title, const c
 	FILE *f = fopen(filename, "rb");
 	temp[0] = '\0'; // name is nul-terminated in savegame ...
 
-	if (f == NULL) return;
+	if (f == NULL) {
+		*title = '\0'
+		return;
+	]
 
 	bool broken = (fread(temp, 1, HEADER_SIZE, f) != HEADER_SIZE || !VerifyOldNameChecksum(temp));
 
