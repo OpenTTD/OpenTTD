@@ -3689,6 +3689,36 @@ STR_STATION_NOISE                                               :{BLACK}Genereer
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD is gemaakt zonder "zlib" ondersteuning...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... niet mogelijk gegevens te downloaden
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Basis graphics
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI bibliotheek
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Hoogtemap
+STR_CONTENT_TITLE                                               :{WHITE}Er worden gegevens gedownload
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Type van de gegevens
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naam
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Naam van de gegevens
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Klik op een lijn voor details{}Gebruik het selectievak om te selecteren voor downloaden
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecteer alles
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Laat alle content downloaden
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecteer updates
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Markeer alle updates voor bestaande content om te downloaden
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecteer alles
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Laat alle content niet downloaden
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Start downloaden van geselecteerde gegevens
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Totale download grootte: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}GEGEVENS INFO
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Je hebt gekozen dit niet te downloaden
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Je hebt gekozen om dit te downloaden
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Deze afhankelijkheid is geselecteerd om te downloaden
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dit heb je al
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Deze gegevens zijn onbekend en kunnen niet gedownload worden in OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dit is een vervanging voor een bestaande {STRING}
 
 
 

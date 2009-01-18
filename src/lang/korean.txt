@@ -2731,10 +2731,10 @@ STR_ORDER_GO_TO                                                 :완행
 STR_ORDER_GO_NON_STOP_TO                                        :직행
 STR_ORDER_GO_VIA                                                :완행 경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}한가지 이상의 화물 가득 싣기
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}한개이상화물 가득 싣기
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :가능한것만 적재
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :모든 화물을 가득 실음
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :한가지 이상의 화물 가득 싣기
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :한개이상화물 가득 싣기
 STR_ORDER_DROP_NO_LOADING                                       :싣지 않기
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}모든 화물 하차
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :화물을 받는경우 하차
@@ -2742,7 +2742,7 @@ STR_ORDER_DROP_UNLOAD                                           :모든 화물 �
 STR_ORDER_DROP_TRANSFER                                         :환승
 STR_ORDER_DROP_NO_UNLOADING                                     :화물을 하차시키지 않음
 STR_ORDER_FULL_LOAD                                             :(가득 실음)
-STR_ORDER_FULL_LOAD_ANY                                         :(한가지 이상의 화물 가득 싣기)
+STR_ORDER_FULL_LOAD_ANY                                         :(한개이상화물 가득 싣기)
 STR_ORDER_NO_LOAD                                               :(싣지 않기)
 STR_ORDER_UNLOAD                                                :(화물 하차 후 적재)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(화물 하차 후 모든 화물을 싣고 출발)
@@ -2873,6 +2873,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}이 경�
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}이 경로를 옮길 수 없습니다...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}현재 경로를 건너 뛸 수 없습니다...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}선택한 경로로 건너 뛸 수 없습니다...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}차량이 모든 정거장에 갈 수 없습니다
+STR_CAN_T_ADD_ORDER                                             :{WHITE}차량이 그 정거장에 갈 수 없습니다.
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}경로를 공유하고 있는 차량이 그 정거장에 갈 수 없습니다.
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}차량을 옮길 수 없습니다...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}뒷쪽 기관차는 앞쪽것을 항상 따라다닐 것입니다.
 STR_8838_N_A                                                    :없음{SKIP}
@@ -3683,7 +3686,58 @@ STR_STATION_NOISE                                               :{BLACK}발생 �
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD는 "zlib"지원없이 만들어졌습니다.
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠 다운로드가 불가능합니다!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :기본 그래픽
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :인공지능
+STR_CONTENT_TYPE_AI_LIBRARY                                     :인공지능 라이브러리
+STR_CONTENT_TYPE_SCENARIO                                       :시나리오
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
+STR_CONTENT_TITLE                                               :{WHITE}컨텐츠 다운로드
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}종료
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}컨텐츠의 종류
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}이름
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}컨텐츠의 이름
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}항목을 클릭하면 자세히 볼 수 있습니다{}다운로드할 항목을 누르세요
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}모두 선택
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}모든 컨텐츠 선택
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}업데이트 선택
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}업데이트 항목이 있는 컨텐츠를 선택합니다
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}모두 선택해제
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}모든 컨텐츠를 선택해제합니다.
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}다운로드
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}선택한 컨텐츠 다운로드 시작
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}총 파일 크기: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}컨텐츠 정보
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}당신은 이것을 선택하지 않았습니다
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}당신은 이것을 선택했습니다
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}당신은 이미 가지고 있습니다
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 컨텐츠는 확인되지 않았으며, OpenTTD에서 받을 수 없습니다
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}으로 대체됩니다
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}이름: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}버젼: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}설명: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}주소: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}종류: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}파일 크기: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}다음에 종속됨: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}종속: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}태그: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}콘텐츠 다운로드...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}파일 요청중...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}현재 다운로드 {STRING} ({NUM} / {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}다운로드 완료
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} / {BYTES} 다운로드 ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}서버에 접속할 수 없습니다...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}다운로드 실패...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 접속 손실
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파일 쓰기 실패
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드파일을 압축해제할 수 없습니다
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}온라인 컨텐츠 체크
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}업데이트된 컨텐츠를 체크합니다
 ########

@@ -3689,7 +3689,58 @@ STR_STATION_NOISE                                               :{BLACK}Tingkat 
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD tidak mendukung "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... pengunduhan konten tidak dimungkinkan!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafis dasar
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Perpustakaan AI
+STR_CONTENT_TYPE_SCENARIO                                       :Skenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Peta Ketinggian
+STR_CONTENT_TITLE                                               :{WHITE}Mengunduh konten
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipe
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Jenis konten
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nama
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nama konten
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Klik pada baris untuk menampilkan detail{}Klik pada kotak cek untuk mengunduhnya
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Pilih semua
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Tandai semua konten untuk diunduh
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pembaruan
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Pilih semua konten yang tersedia pembaruannya untuk diunduh
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Hapus semua pilihan
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Tandai semua untuk tidak diunduh
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Unduh
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Mulai unduh konten terpilih
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total ukuran terunduh: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO KONTEN
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Anda tidak memilih ini untuk diunduh
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Anda memilih ini untuk diunduh
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dependensi ini terpilih untuk diunduh
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sudah dimiliki
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Konten tidak diketahui dan tidak dapat diunduh di OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ini adalah penggantian dari  {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nama: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versi: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Deskripsi: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipe: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Ukuran: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Terpilih karena: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Terkait dengan: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tag: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Mengunduh konten...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Meminta berkas...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Sedang mengunduh {STRING} ({NUM} dari {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Unduhan selesai
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} dari {BYTES} terunduh ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Tak dapat tersambung ke pelayan konten
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Gagal mengunduh...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... hubungan terputus
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... berkas tak dapat ditulisi
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Tak dapat mengembangkan file terunduh
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Cari konten daring
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Cari konten baru dan pembaruan untuk diunduh
 ########

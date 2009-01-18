@@ -3687,3 +3687,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Allowwa
 STR_NOISE_IN_TOWN                                               :{BLACK}Oisenay imitlay inway owntay: {ORANGE}{COMMA}{BLACK}  axmay: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Oisenay eneratedgay: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTDWAY isway uildbay ithoutway "ibzlay" upportsay...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ownloadingday ontentcay isway otnay ossiblepay!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Asebay aphicsgray
+STR_CONTENT_TYPE_NEWGRF                                         :EwGRFnay
+STR_CONTENT_TYPE_AI                                             :AIWAY
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AIWAY ibrarylay
+STR_CONTENT_TYPE_SCENARIO                                       :Enarioscay
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Eightmaphay
+STR_CONTENT_TITLE                                               :{WHITE}Ontentcay ownloadingday
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Ypetay
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Ypetay ofway ethay ontentcay
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Amenay
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Amenay ofway ethay ontentcay
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Ickclay onway away inelay otay eesay ethay etailsday{}Ickclay onway ethay eckboxchay otay electsay itway orfay ownloadingday
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Electsay allway
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Arkmay allway ontentcay otay ebay ownloadedday
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Electsay updatesway
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Arkmay allway ontentcay atthay isway anway updateway orfay existingway ontentcay otay ebay ownloadedday
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselectway allway
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Arkmay allway ontentcay otay ebay otnay ownloadedday
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Ownloadday
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Artstay ownloadingday ethay electedsay ontentcay
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Otaltay ownloadday izesay: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ONTENTCay INFOWAY
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Ouyay avehay otnay electedsay isthay otay ebay ownloadedday
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Ouyay avehay electedsay isthay otay ebay ownloadedday
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Isthay ependencyday ashay eenbay electedsay otay ebay ownloadedday
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ouyay alreadyway avehay isthay
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Isthay ontentcay isway unknownway andway annotcay ebay ownloadedday inway OpenTTDWAY
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Isthay isway away eplacementray orfay anway exisingway {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Amenay: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Ersionvay: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Escriptionday: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URLWAY: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Ypetay: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Ownloadday izesay: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Electedsay ecausebay ofway: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Ependenciesday: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Agstay: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ownloadingday ontentcay...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Equestingray ilesfay...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Urrentlycay ownloadingday {STRING} ({NUM} ofway {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Ownloadday ompletecay
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} ofway {BYTES} ownloadedday ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Ouldcay otnay onnectcay otay ethay ontentcay erversay...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Ownloadingday ailedfay...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... onnectioncay ostlay
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... ilefay otnay itablewray
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ouldcay otnay ecompressday ethay ownloadedday ilefay
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Eckchay onlineway ontentcay
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Eckchay orfay ewnay andway updatedway ontentcay otay ownloadday
+########

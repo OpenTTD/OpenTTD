@@ -1802,10 +1802,60 @@ STR_WAYPOINT_NAME                                               :{WHITE}{WAYPOIN
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}כלי רכב נמצא בדרך
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} כלי רכב{P "" s}
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} מוסך כלי רכב
+STR_9004_NEW_VEHICLES                                           :{BLACK}כלי רכב חדשים
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}כלי רכב חדשים
+STR_9007_BUILD_VEHICLE                                          :{BLACK}בנה כלי רכב
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}לא ניתן לבנות כלי רכב...
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (פרטים)
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}גיל: {LTBLUE}{STRING}{BLACK}   עלות תפעול: {LTBLUE}{CURRENCY}/שנה
+STR_900E_MAX_SPEED                                              :{BLACK}מהירות מקסימלית: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}רווח השנה: {LTBLUE}{CURRENCY}  (בשנה שעברה: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}אמינות: {LTBLUE}{COMMA}%  {BLACK}תקלות מאז הטיפול האחרון: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{ENGINE}{BLACK}   בנייה: {LTBLUE}{NUM}{BLACK} ערך: {LTBLUE}{CURRENCY}
+STR_9012_CAPACITY                                               :{BLACK}תכולה: {LTBLUE}{CARGO}
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...חייב לעצור בתוך מוסך לכלי רכב
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}לא ניתן למכור כלי רכב...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}לא ניתן לעצור\להמשיך בנסיעה...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} מחכה במוסך כלי הרכב
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}לא ניתן לשלוח את כלי הרכב למוסך...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}לא ניתן לאתר את מוסך כלי הרכב המקומי
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}כלי רכב - לחץ על כלי רכב למידע
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}בנה כלי רכב חדש (מצריך מוסך לכלי רכב)
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}מצב כלי רכב נוכחי - לחץ כאן לעצירה\המשך נסיעה
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}הצג את רשימת הפקודות
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}מקד את המסך הראשי על מיקומו של כלי הרכב
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}שלח את כלי הרכב למוסך. לחיצה על CTRL + click תבצע שירות בלבד
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}הכרח את כלי הרכב להסתובב
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}הצג את פרטי כלי הרכב
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}כלי רכב - לחץ על כלי רכב למידע
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}בנה כלי רכב חדש
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}גרור כלי רכב לכאן על מנת למכור אותו
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}מקד את החלון הראשי על מיקום מוסך כלי הרכב
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}רשימת כלי הרכב - בחר כלי רכב למידע
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}בנה כלי רכב מהסוג הנבחר
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}עלות: {CURRENCY}{}מהירות: {VELOCITY}{}עלות תפעול: {CURRENCY}/yr{}תכולה: {CARGO}
 
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}תן שם לכלי הרכב
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}לא ניתן לשנות את שם כלי הרכב
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}תן שם לכלי הרכב
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}תושבים חוגגים . . .{}אוטובוס ראשון מגיע אל{STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}תושבים חוגגים . . .{}משאית ראשונה מגיעה אל{STATION}!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}תאונת כלי רכב!{}נהג נהרג לאחר התנגשות ברכבת
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}תאונת כלי רכב!{}{COMMA} נהרגו לאחר התנגשות עם רכבת
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}לא ניתן לכפות על כלי הרכב להסתובב...
+STR_9034_RENAME                                                 :{BLACK}שנה שם
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}שנה את סוג כלי הרכב
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}שנה את שם סוג כלי הרכב
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}לא ניתן לשנות את שם סוג כלי הרכב
 
 
 ##id 0x9800
+STR_9800_WATERWAYS_CONSTRUCTION                                 :בניית דרכי מים
+STR_9801_WATERWAYS_CONSTRUCTION                                 :{WHITE}בניית דרכי מים
+STR_9801_WATERWAYS_CONSTRUCTION_SE                              :{WHITE}דרכי מים
 
 
 ##id 0xA000

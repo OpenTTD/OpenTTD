@@ -3688,3 +3688,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permett
 STR_NOISE_IN_TOWN                                               :{BLACK}Limite de nuisance pour la ville: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Bruit généré: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD est compilé sans "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... télécharger du contenu est impossible!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Graphiques de base
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Bibliothèque IA
+STR_CONTENT_TYPE_SCENARIO                                       :Scénario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Carte d'altitude
+STR_CONTENT_TITLE                                               :{WHITE}Téléchargement de contenu
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Type de contenu
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nom
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nom du contenu
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Cliquer sur une ligne pour voir les détails{}Cocher la case pour le sélectionner pour être télécharger
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Sélectionner tout
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marquer tous les contenus pour être téléchargés
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sélectionner les mises à jour
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marquer tous les contenus qui sont une mise à jour du contenu existant pour être téléchargés
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Désélectionner tout
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marquer tous les contenus pour ne pas être téléchargés
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Télécharger
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Démarrer le téléchargement du contenu choisi
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Taille de téléchargement total: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMATION DE CONTENU
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Vous n'avez pas sélectionné ceci pour être téléchargé
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Vous avez sélectionné ceci pour être téléchargé
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Cette dépendance a été sélectionnée pour être téléchargée
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Vous avez déjà ceci
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ce contenu est inconnu et ne peut pas être téléchargé dans OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ceci est un remplacement pour un {STRING} existant
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nom: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Description: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Taille: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Sélectionné à cause de: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dépendances: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Téléchargement du contenu...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Demande des fichiers...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Téléchargement de {STRING} ({NUM} sur {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Téléchargement terminé
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} sur {BYTES} téléchargés ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Connexion au serveur de contenu impossible...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Echec du téléchargement...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connexion perdue
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fichier non enregistrable
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossible de décompresser le fichier téléchargé
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Vérifier le contenu en ligne
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Vérifier les contenus à télécharger nouveaux et mis à jour
+########

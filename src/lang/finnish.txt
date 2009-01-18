@@ -3687,3 +3687,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Käytä
 STR_NOISE_IN_TOWN                                               :{BLACK}Meluraja kaupungissa: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Aiheutettu melu: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD on käännetty ilman "zlib" tukea...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... sisällön lataus ei ole mahdollista!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Perusgrafiikat
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :Tekoäly
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Tekoäly kirjasto
+STR_CONTENT_TYPE_SCENARIO                                       :Skenaario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Korkeuskartta
+STR_CONTENT_TITLE                                               :{WHITE}Sisällön lataus
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tyyppi
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Sisällön tyyppi
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nimi
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Sisällön nimi
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Klikkaa kohtaa nähdäkesi lisätiedot{}Klikkaa valintaruutua valitaksesi sen ladattavaksi
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Valitse kaikki
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Merkitse kaikki sisältö ladattavaksi
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse päivitykset
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Valitse kaikki sisältö, joka on päivitys nykyiseen sisältöön ladattavaksi
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Poista kaikesta sisällöstä valinta ladattavaksi
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Aloita valitun sisällön lataaminen
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Latausten koko: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}TIETOA SISÄLLÖSTÄ
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Et ole valinnut tätä ladattavaksi
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Olet valinnut tämän ladattavaksi
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Tämä vaatimus on valittu ladattavaksi
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sinulla on jo tämä
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Tämä sisältö on tuntematon, ja sitä ei voida ladata OpenTTD:ssä
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Tämä korvaa sisällön {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nimi: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versio: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Kuvaus: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tyyppi: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Latauksen koko: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Valittu seuraavan takia: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Vaatimukset: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Avainsanat: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Ladataan sisältöä...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Pyydetään tiedostoja...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Nyt ladataan {STRING} ({NUM}/{NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Lataus valmis
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES}/{BYTES} ladattu ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Ei voitu yhdistää sisältöpalvelimeen...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Lataus epäonnistui...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... yhteys katkesi
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... tiedostoa ei voitu kirjoittaa
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ei voitu purkaa ladattua tiedostoa
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Tarkista online-sisältö
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Tarkista uutta ja päivitettyä sisältöä ladattavaksi
+########

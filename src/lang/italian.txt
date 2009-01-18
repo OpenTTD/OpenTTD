@@ -3689,3 +3689,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Consent
 STR_NOISE_IN_TOWN                                               :{BLACK}Limite di rumore in città: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Rumore generato: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD non include il supporto "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... impossibile scaricare il contenuto!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :{G=f}Grafica base
+STR_CONTENT_TYPE_NEWGRF                                         :{G=m}NewGRF
+STR_CONTENT_TYPE_AI                                             :{G=f}IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :{G=f}Libreria IA
+STR_CONTENT_TYPE_SCENARIO                                       :{G=m}Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :{G=f}Heightmap
+STR_CONTENT_TITLE                                               :{WHITE}Download contenuti
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipo
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Tipo del contenuto
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nome
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nome del contenuto
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Fare clic su un elemento per visualizzarne i dettagli.{}Selezionare la casella di controllo per includere nel download.
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Seleziona tutti
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Include nel download tutti i contenuti
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleziona aggiornamenti
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Include nel download tutte le versioni aggiornate di contenuti esistenti
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deseleziona tutti
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Esclude dal download tutti gli elementi
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Scarica
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Avvia il download dei contenuti selezionati
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Dimensione totale download: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMAZIONI CONTENUTO
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Non incluso nel download
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Incluso nel download
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dipendenza inclusa nel download
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Già installato
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Contenuto sconosciuto: non può essere scaricato da OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Questo contenuto sostituisce un{G 0 "" a} {STRING} esistente
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nome: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versione: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descrizione: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipo: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Dimensione download: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Richiesto da: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dipendenze: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tag: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Download dei contenuti...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Richiesta file...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Download in corso di {STRING} ({NUM} di {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Download completato
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} su {BYTES} scaricati ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Impossibile connettersi al server contenuti...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Download fallito...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connessione persa
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... impossibile scrivere il file
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossibile decomprimere il file scaricato
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Controlla contenuti online
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Controlla l'esistenza di contenuti nuovi o aggiornati da scaricare
+########

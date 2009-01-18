@@ -3790,3 +3790,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Várost
 STR_NOISE_IN_TOWN                                               :{BLACK}Zajszint a városban: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Zajtermelés: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}Az OpenTTD "zlib" támogatás nélkül lett fordítva...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... nem lehet letölteni a tartalmat!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Alap grafika
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :MI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :MI könyvtár
+STR_CONTENT_TYPE_SCENARIO                                       :Térkép
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Magasságtérkép
+STR_CONTENT_TITLE                                               :{WHITE}Tartalom letöltés
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Típus
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}A tartalom típusa
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Név
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}A tartalom neve
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Kattints a sorra a részletek megjelenítéséhez{}Kattints a jelölőnégyzetbe letöltésre való kijelöléshez
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Összes kijelölése
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Az összes elérhető tartalom kijelölése letöltéshez
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Frissítések kijelölése
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Már meglévő tartalmakhoz az összes elérhető frissítés kijelölése letöltéshez
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Kijelölések megszüntetése
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Megszünteti az összes kijelölést
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Letöltés
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}A kijelölt tartalmak letöltésének megkezdése
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}A letöltés teljes mérete: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMÁCIÓ A KIVÁLASZTOTT TARTALOMRÓL
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Nem jelölted ki letöltésre
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Kijelölted letöltésre
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ez a függőség ki lett jelölve letöltésre
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Már rendelkezel ezzel a tartalommal
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ismeretlen tartalom, nem tölthető le az OpenTTD-hez
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ez a tartalom egy meglévő {STRING} helyettesítése
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Név: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Verzió: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Leírás: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Típus: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Letöltési méret: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Kijelölés oka: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Függőségek: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Címkék: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Tartalom letöltése...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Fájlok lekérése...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Jelenlegi letöltés: {STRING} ({NUM} / {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Letöltés befejezve
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} / {BYTES} letöltve ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}A tartalomszolgáltató szerver nem elérhető...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}A letöltés meghiúsult...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... a kapcsolat megszakadt
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... a fájl nem írható
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nem sikerült kicsomagolni a letöltött fájlt
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Letölthető tartalmak
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Új és frissített tartalmak megtekintése és letöltése
+########

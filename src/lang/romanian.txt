@@ -3687,3 +3687,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permite
 STR_NOISE_IN_TOWN                                               :{BLACK}Limita zgomotului în oraş: {ORANGE}{COMMA}{BLACK}  maxim: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Zgomot generat: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD a fost compilat fară suport "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... descărcarea resurselor nu este posibilă!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafică de bază
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Libarie IA
+STR_CONTENT_TYPE_SCENARIO                                       :Scenariu
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Hartă topografică
+STR_CONTENT_TITLE                                               :{WHITE}Descărcare resurse online
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tip
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Tipul resursei
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nume
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Numele resursei
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Click pe o linie pentru a vedea detaliile{}Bifează pentru a descărca
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selectează tot
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marchează toate resursele pentru descărcare
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selectează actualizările
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marchează toate resursele care sunt actualizări ale resurselor existente pentru descărcare
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselectează tot
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Deselectează toate resursele selectate
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarcă
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Porneşte descărcarea resurselor selectate
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total de descărcat: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO RESURSĂ
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Această resursă nu a fost selectată pentru descărcare
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Această resursă a fost selectată pentru descărcare
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Aceasă dependinţă a fost selectată pentru descărcare
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Deja ai această resursă
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Acestă resursă este necunoscută si nu poate fi descărcată in OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Acestă resursă este un înlocuitor pentru un/o {STRING} existent/ă
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nume: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versiune: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descriere: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}Pagină: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tip: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Mărime: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Delectat datorită: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependinţe: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etichete: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarc resursele...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Solicit fişierele...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Se descarcă {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descărcare completă
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} din {BYTES} descărcaţi ({NUM}%)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Conectare la server eşuată...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descărcare eşuată
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexiune pierdută
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fişierul nu poate fi scris
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Fişierul descărcat nu a putut fi decompresat
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Resurse online
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Verifică dacă există resurse noi sau actualizate pentru descărcare
+########

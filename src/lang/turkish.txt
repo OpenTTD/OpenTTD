@@ -3687,3 +3687,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Kasabal
 STR_NOISE_IN_TOWN                                               :{BLACK}Kasabadaki gürültü sınırı: {ORANGE}{COMMA}{BLACK}  En fazla: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Üretilen gürültü: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD "zlib" desteği olmadan derlenmiş...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... içerik indirmek mümkün değil!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Temel grafikler
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :YZ
+STR_CONTENT_TYPE_AI_LIBRARY                                     :YZ kütüphanesi
+STR_CONTENT_TYPE_SCENARIO                                       :Senaryo
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Yükseklik haritası
+STR_CONTENT_TITLE                                               :{WHITE}İçerik indirme
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tür
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}İçeriğin türü
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Ad
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}İçeriğin adı
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Ayrıntıları görmek için bir satıra tıklayın{}İndirmek için seçim kutucuğuna tıklayın
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Tümünü seç
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Tüm içeriği indirilmek üzere işaretle
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Güncellemeleri seç
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Mevcut içeriğin güncellemesi olan tüm içeriği indirilmek üzere işaretle
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Tümünden seçimi kaldır
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Tüm içeriği indirilmemek üzere işaretle
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}İndir
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Seçili içeriği indirmeye başla
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Toplam indirme boyutu: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}İÇERİK BİLGİSİ
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Bunu indirmek üzere seçmediniz
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Bunu indirmek üzere seçtiniz
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Bu bağımlılık indirilmek üzere seçildi
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Bu zaten var
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Bu içerik bilinmiyor ve OpenTTD'ye indirilemez
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Bu mevcut {STRING} için bir yenilemedir
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Ad: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Sürüm: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Tanım: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tür: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}İndirme boyutu: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seçildi çünkü: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Bağımlılıklar: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiketler: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}İçerik indiriliyor...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Dosyalar isteniyor...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Şu an indirilen {STRING} ({2:NUM} adedin {1:NUM}.si)
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}İndirme tamamlandı
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{1:BYTES} of {0:BYTES} downloaded ({2:NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}İçerik sunucusuna bağlanılamadı...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}İndirme başarısız...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... bağlantı koptu
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosya yazılabilir değil
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}İndirilen sıkıştırılmış dosya açılamadı
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Çevrimiçi içeriği kontol et
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
+########

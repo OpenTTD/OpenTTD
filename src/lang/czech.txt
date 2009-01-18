@@ -3761,3 +3761,60 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Umožni
 STR_NOISE_IN_TOWN                                               :{BLACK}Hlukový limit ve městě: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Vytvářený hluk: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD není zkompilován s knihovnou "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... takže nelze stahovat obsah!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Základní grafika
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Knihovna pro AI
+STR_CONTENT_TYPE_SCENARIO                                       :Scénář
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Výšková mapa
+STR_CONTENT_TITLE                                               :{WHITE}Stahování obsahu
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Druh
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Druh obsahu
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Název
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Název obsahu
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Detaily zobrazíš kliknutím na řádek{}Ke stažení ho vybereš kliknutím na zaškrtávací políčko
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Vybrat vše
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Označit všechen obsah ke stáhnutí
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vybrat vylepšené
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Označit všechen vylepšený/aktualizovaný obsah ke stáhnutí
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznačit vše
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Nestahovat nic
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Stáhnout
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Začít stahovat vybraný obsah
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Celková velikost dat: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMACE O OBSAHU
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Tohle nemáš vybráno ke stažení
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Tohle máš vybráno ke stažení
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ke stažení byla vybrána i tato závislost
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Tohle už máš
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Tento obsah je neznámý a nejde stáhnout do OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Tohle je náhrada za dosavadní {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Název: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Verze: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Popis: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Druh: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Velikost: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Vybráno kvůli: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Závislosti: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Klíčová slova: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Obsah se stahuje...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Žádá se o soubory...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Právě se stahuje {STRING} ({NUM} z {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Stahování dokončeno
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} z {BYTES} staženo ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nešlo se připojit k serveru s obsahem...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Stahování selhalo...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... spojení bylo ztraceno
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... do souboru nešlo zapsat
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nešlo rozbalit stažený soubor
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Nabídnout on-line obsah
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Ukázat, jaký nový nebo upravený obsah se dá stáhnout
+########

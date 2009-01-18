@@ -3798,3 +3798,24 @@ STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Zezwól
 STR_NOISE_IN_TOWN                                               :{BLACK}Limit hałasu w mieście: {ORANGE}{COMMA}{BLACK}  maksymalnie: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Wytwarzany hałas: {GOLD}{COMMA}
 ########
+
+############ Downloading of content from the central server
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafiki bazowe
+STR_CONTENT_TYPE_AI                                             :SI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteka SI
+STR_CONTENT_TYPE_SCENARIO                                       :Scenariusz
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa wysokościowa
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Typ
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nazwa
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Zaznacz wszystko
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznacz wszystko
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Już to posiadasz
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nazwa: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Wersja: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Typ: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagi: {WHITE}{STRING}
+
+
+
+########
