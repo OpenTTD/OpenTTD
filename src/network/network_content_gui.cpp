@@ -639,7 +639,10 @@ public:
 			case NCLWW_SELECT_UPDATE:
 				for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
 					ContentInfo *ci = *iter;
-					if (ci->state == ContentInfo::UNSELECTED && (widget == NCLWW_SELECT_ALL || ci->update)) ci->state = ContentInfo::SELECTED;
+					if (ci->state == ContentInfo::UNSELECTED && (widget == NCLWW_SELECT_ALL || ci->update)) {
+						ci->state = ContentInfo::SELECTED;
+						CheckDependencyState(ci);
+					}
 				}
 				this->SetDirty();
 				break;
@@ -647,6 +650,7 @@ public:
 			case NCLWW_UNSELECT:
 				for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
 					ContentInfo *ci = *iter;
+					/* No need to check dependencies; when everything's off nothing can depend */
 					if (ci->IsSelected()) ci->state = ContentInfo::UNSELECTED;
 				}
 				this->SetDirty();
