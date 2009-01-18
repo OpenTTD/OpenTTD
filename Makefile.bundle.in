@@ -39,7 +39,6 @@ bundle: all
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scenario/heightmap"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/media"
-	$(Q)mkdir -p "$(BUNDLE_DIR)/ai"
 	$(Q)mkdir -p "$(BUNDLE_DIR)/scripts"
 	$(Q)mkdir -p "$(TTD_DIR)"
 	$(Q)mkdir -p "$(DATA_DIR)"
@@ -75,10 +74,6 @@ endif
 ifdef MENU_DIR
 	$(Q)cp "$(ROOT_DIR)/media/openttd.desktop" "$(BUNDLE_DIR)/media/"
 	$(Q)cat "$(ROOT_DIR)/media/openttd.desktop" | sed s/=openttd/=$(BINARY_NAME)/g > "$(ROOT_DIR)/media/openttd.desktop.install"
-endif
-ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/ai/\"* 2>/dev/null`"; then echo 1; fi), 1)
-	$(Q)cp -R "$(BIN_DIR)/ai/"*               "$(BUNDLE_DIR)/ai/"
-	$(Q)find $(BUNDLE_DIR)/ai/ -type d -iname '.svn' | xargs rm -Rf
 endif
 ifeq ($(shell if test -n "`ls -l \"$(BIN_DIR)/scenario/\"*.scn 2> /dev/null`"; then echo 1; fi), 1)
 	$(Q)cp "$(BIN_DIR)/scenario/"*.scn        "$(BUNDLE_DIR)/scenario/"
@@ -155,7 +150,6 @@ install: bundle
 	$(Q)install -d "$(INSTALL_DATA_DIR)/data"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/lang"
 	$(Q)install -d "$(INSTALL_DATA_DIR)/scripts"
-	$(Q)for i in `find "$(BUNDLE_DIR)/ai" -type d -not -iregex '.*/\.svn.*' | sed "s~$(BUNDLE_DIR)~$(INSTALL_DATA_DIR)~"`; do install -d "$$i"; done
 	$(Q)install -d "$(INSTALL_DOC_DIR)"
 ifeq ($(TTD), openttd.exe)
 	$(Q)install -m 755 "$(BUNDLE_DIR)/$(TTD)" "$(INSTALL_BINARY_DIR)/${BINARY_NAME}.exe"
@@ -169,7 +163,6 @@ endif
 	$(Q)install -m 644 "$(BUNDLE_DIR)/"*.txt "$(INSTALL_DOC_DIR)"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/COPYING" "$(INSTALL_DOC_DIR)"
 	$(Q)install -m 644 "$(BUNDLE_DIR)/media/openttd.32.xpm" "$(INSTALL_ICON_DIR)/${BINARY_NAME}.32.xpm"
-	$(Q)for i in `find "$(BUNDLE_DIR)/ai" -type d -not -iregex '.*/\.svn.*'`; do if [ -n "`ls "$$i/"*.* 2>/dev/null`" ]; then install -m 664 "$$i/"*.* "`echo $$i | sed "s~$(BUNDLE_DIR)~$(INSTALL_DATA_DIR)~"`"; fi; done
 ifdef ICON_THEME_DIR
 	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)"
 	$(Q)install -d "$(INSTALL_ICON_THEME_DIR)/16x16/apps"
