@@ -62,7 +62,7 @@ public:
 	uint16 Recv_uint16();
 	uint32 Recv_uint32();
 	uint64 Recv_uint64();
-	void   Recv_string(char *buffer, size_t size);
+	void   Recv_string(char *buffer, size_t size, bool allow_newlines = false);
 };
 
 Packet *NetworkSend_Init(PacketType type);

@@ -53,7 +53,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 	p->Recv_string(ci->name, lengthof(ci->name));
 	p->Recv_string(ci->version, lengthof(ci->name));
 	p->Recv_string(ci->url, lengthof(ci->url));
-	p->Recv_string(ci->description, lengthof(ci->description));
+	p->Recv_string(ci->description, lengthof(ci->description),  true);
 
 	ci->unique_id = p->Recv_uint32();
 	for (uint j = 0; j < sizeof(ci->md5sum); j++) {

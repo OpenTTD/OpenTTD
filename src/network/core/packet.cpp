@@ -233,7 +233,7 @@ uint64 Packet::Recv_uint64()
 }
 
 /** Reads a string till it finds a '\0' in the stream */
-void Packet::Recv_string(char *buffer, size_t size)
+void Packet::Recv_string(char *buffer, size_t size, bool allow_newlines)
 {
 	PacketSize pos;
 	char *bufp = buffer;
@@ -253,7 +253,7 @@ void Packet::Recv_string(char *buffer, size_t size)
 	}
 	this->pos = pos;
 
-	str_validate(bufp);
+	str_validate(bufp, allow_newlines);
 }
 
 #endif /* ENABLE_NETWORK */
