@@ -600,7 +600,7 @@ struct NewGRFWindow : public Window {
 						ContentInfo *ci = new ContentInfo();
 						ci->type = CONTENT_TYPE_NEWGRF;
 						ci->state = ContentInfo::DOES_NOT_EXIST;
-						ttd_strlcpy(ci->name, c->name, lengthof(ci->name));
+						ttd_strlcpy(ci->name, c->name != NULL ? c->name : c->filename, lengthof(ci->name));
 						ci->unique_id = BSWAP32(c->grfid);
 						memcpy(ci->md5sum, c->md5sum, sizeof(ci->md5sum));
 						*cv.Append() = ci;
