@@ -1452,9 +1452,6 @@ static bool LoadOldMain(LoadgameState *ls)
 {
 	int i;
 
-	/* The first 49 is the name of the game + checksum, skip it */
-	fseek(ls->file, HEADER_SIZE, SEEK_SET);
-
 	DEBUG(oldloader, 3, "Reading main chunk...");
 	/* Load the biggest chunk */
 	_old_map3 = MallocT<byte>(OLD_MAP_SIZE * 2);
@@ -1540,6 +1537,28 @@ static bool LoadOldMain(LoadgameState *ls)
 	return true;
 }
 
+/**
+ * Verifies the title has a valid checksum
+ * @param title title and checksum
+ * @return true iff the title is valid
+ * @note the title (incl. checksum) has to be at least 49 (HEADER_SIZE) bytes long!
+ */
+static bool VerifyOldNameChecksum(char *title)
+{
+	uint16 sum = 0;
+	for (uint i = 0; i < HEADER_SIZE - 2; i++) {
+		sum += title[i];
+		sum = ROL(sum, 1);
+	}
+
+	sum ^= 0xAAAA; // computed checksum
+
+	uint16 sum2 = title[HEADER_SIZE - 2]; // checksum in file
+	SB(sum2, 8, 8, title[HEADER_SIZE - 1]);
+
+	return sum == sum2;
+}
+
 bool LoadOldSaveGame(const char *file)
 {
 	LoadgameState ls;
@@ -1556,10 +1575,12 @@ bool LoadOldSaveGame(const char *file)
 		return false;
 	}
 
-	/* Load the main chunk */
-	if (!LoadOldMain(&ls)) return false;
-
-	fclose(ls.file);
+	char temp[HEADER_SIZE];
+	if (fread(temp, 1, HEADER_SIZE, ls.file) != HEADER_SIZE || !VerifyOldNameChecksum(temp) || !LoadOldMain(&ls)) {
+		SetSaveLoadError(STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED);
+		fclose(ls.file);
+		return false;
+	}
 
 	/* Some old TTD(Patch) savegames could have buoys at tile 0
 	 * (without assigned station struct)
@@ -1575,20 +1596,20 @@ bool LoadOldSaveGame(const char *file)
 void GetOldSaveGameName(const char *path, const char *file, char *title, const char *last)
 {
 	char filename[MAX_PATH];
-	char temp[HEADER_SIZE - 1];
+	char temp[HEADER_SIZE];
 
 	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, file);
 	FILE *f = fopen(filename, "rb");
-	temp[0] = '\0';
-	temp[HEADER_SIZE - 2] = '\0';
+	temp[0] = '\0'; // name is nul-terminated in savegame ...
 
 	if (f == NULL) return;
 
-	if (fread(temp, 1, HEADER_SIZE - 2, f) != HEADER_SIZE - 2) {
-		seprintf(title, last, "Corrupt file");
-	} else {
-		seprintf(title, last, temp);
-	}
+	bool broken = (fread(temp, 1, HEADER_SIZE, f) != HEADER_SIZE || !VerifyOldNameChecksum(temp));
+
+	temp[HEADER_SIZE - 2] = '\0'; // ... but it's better to be sure
+
+	if (broken) title = strecpy(title, "(broken) ", last);
+	title = strecpy(title, temp, last);
 
 	fclose(f);
 }
