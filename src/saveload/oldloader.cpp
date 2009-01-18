@@ -1145,8 +1145,11 @@ static bool LoadOldSign(LoadgameState *ls, int num)
 	Sign *si = new (num) Sign();
 	if (!LoadChunk(ls, si, sign_chunk)) return false;
 
-	_old_string_id = RemapOldStringID(_old_string_id);
-	si->name = CopyFromOldName(_old_string_id);
+	if (_old_string_id != 0) {
+		_old_string_id = RemapOldStringID(_old_string_id);
+		si->name = CopyFromOldName(_old_string_id);
+		si->owner = OWNER_NONE;
+	}
 
 	return true;
 }

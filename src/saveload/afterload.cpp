@@ -206,14 +206,6 @@ static void UpdateVoidTiles()
 	for (i = 0; i < MapSizeX(); ++i) MakeVoid(MapSizeX() * MapMaxY() + i);
 }
 
-/* since savegame version 6.0 each sign has an "owner", signs without owner (from old games are set to 255) */
-static void UpdateSignOwner()
-{
-	Sign *si;
-
-	FOR_ALL_SIGNS(si) si->owner = OWNER_NONE;
-}
-
 static inline RailType UpdateRailType(RailType rt, RailType min)
 {
 	return rt >= min ? (RailType)(rt + 1): rt;
@@ -351,9 +343,6 @@ bool AfterLoadGame()
 	/* from version 4.2 of the savegame, currencies are in a different order */
 	if (CheckSavegameVersionOldStyle(4, 2)) UpdateCurrencies();
 
-	/* from version 6.1 of the savegame, signs have an "owner" */
-	if (CheckSavegameVersionOldStyle(6, 1)) UpdateSignOwner();
-
 	/* In old version there seems to be a problem that water is owned by
 	 * OWNER_NONE, not OWNER_WATER.. I can't replicate it for the current
 	 * (4.3) version, so I just check when versions are older, and then
@@ -391,14 +380,6 @@ bool AfterLoadGame()
 		FOR_ALL_WAYPOINTS(wp) {
 			wp->name = CopyFromOldName(wp->string);
 			wp->string = STR_EMPTY;
-		}
-
-		for (uint i = 0; i < GetSignPoolSize(); i++) {
-			/* invalid signs are determined by si->ower == INVALID_COMPANY now */
-			Sign *si = GetSign(i);
-			if (!si->IsValid() && si->name != NULL) {
-				si->owner = OWNER_NONE;
-			}
 		}
 	}
 

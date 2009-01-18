@@ -41,6 +41,15 @@ static void Load_SIGN()
 	while ((index = SlIterateArray()) != -1) {
 		Sign *si = new (index) Sign();
 		SlObject(si, _sign_desc);
+		/* Before version 6.1, signs didn't have owner.
+		 * Before version 83, invalid signs were determined by si->str == 0.
+		 * Before version 103, owner could be a bankrupted company.
+		 *  - we can't use IsValidCompany() now, so this is fixed in AfterLoadGame()
+		 * All signs that were saved are valid (including those with just 'Sign' and INVALID_OWNER).
+		 *  - so set owner to OWNER_NONE if needed (signs from pre-version 6.1 would be lost) */
+		if (CheckSavegameVersionOldStyle(6, 1) || (CheckSavegameVersion(83) && si->owner == INVALID_OWNER)) {
+			si->owner = OWNER_NONE;
+		}
 	}
 }
 
