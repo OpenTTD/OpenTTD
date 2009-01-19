@@ -70,6 +70,7 @@ void InitializeGame(uint size_x, uint size_y, bool reset_date)
 	_realtime_tick = 0;
 	_date_fract = 0;
 	_cur_tileloop_tile = 0;
+	_thd.redsq = INVALID_TILE;
 	MakeNewgameSettingsLive();
 
 	if (reset_date) {

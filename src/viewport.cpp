@@ -878,7 +878,7 @@ static void DrawAutorailSelection(const TileInfo *ti, uint autorail_type)
 static void DrawTileSelection(const TileInfo *ti)
 {
 	/* Draw a red error square? */
-	bool is_redsq = _thd.redsq != 0 && _thd.redsq == ti->tile;
+	bool is_redsq = _thd.redsq == ti->tile;
 	if (is_redsq) DrawTileSelectionRect(ti, PALETTE_TILE_RED_PULSATING);
 
 	/* no selection active? */
@@ -2085,8 +2085,8 @@ void SetRedErrorSquare(TileIndex tile)
 	_thd.redsq = tile;
 
 	if (tile != old) {
-		if (tile != 0) MarkTileDirtyByTile(tile);
-		if (old  != 0) MarkTileDirtyByTile(old);
+		if (tile != INVALID_TILE) MarkTileDirtyByTile(tile);
+		if (old  != INVALID_TILE) MarkTileDirtyByTile(old);
 	}
 }
 

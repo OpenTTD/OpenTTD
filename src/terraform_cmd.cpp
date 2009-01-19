@@ -165,10 +165,9 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 	if ((x <= 1) || (y <= 1) || (x >= MapMaxX() - 1) || (y >= MapMaxY() - 1)) {
 		/*
 		 * Determine a sensible error tile
-		 * Note: If x and y are both zero this will disable the error tile. (Tile 0 cannot be highlighted :( )
 		 */
-		if ((x == 1) && (y != 0)) x = 0;
-		if ((y == 1) && (x != 0)) y = 0;
+		if (x == 1) x = 0;
+		if (y == 1) y = 0;
 		_terraform_err_tile = TileXY(x, y);
 		return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 	}

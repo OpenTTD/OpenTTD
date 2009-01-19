@@ -505,7 +505,7 @@ public:
 
 	~ErrmsgWindow()
 	{
-		SetRedErrorSquare(0);
+		SetRedErrorSquare(INVALID_TILE);
 		extern StringID _switch_mode_errorstr;
 		_switch_mode_errorstr = INVALID_STRING_ID;
 	}
