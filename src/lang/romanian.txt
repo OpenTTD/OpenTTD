@@ -2028,6 +2028,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvare eronata
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Slavarea a fost facuta cu o versiune mai noua
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fisierul nu poate fi citit
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fisierul nu poate fi scris
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritatea datelor compromisă
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista de discuri, directoare şi fişiere cu jocuri salvate
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Numele selectat pentru un joc salvat
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Şterge jocul salvat selectat
@@ -3703,7 +3704,7 @@ STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Numele r
 STR_CONTENT_MATRIX_TIP                                          :{BLACK}Click pe o linie pentru a vedea detaliile{}Bifează pentru a descărca
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selectează tot
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marchează toate resursele pentru descărcare
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selectează actualizările
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. actualizări
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marchează toate resursele care sunt actualizări ale resurselor existente pentru descărcare
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselectează tot
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Deselectează toate resursele selectate

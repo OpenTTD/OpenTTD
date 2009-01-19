@@ -887,6 +887,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Przezr
 STR_02D5_LAND_BLOCK_INFO                                        :Info o terenie
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Przełącz konsolę
+STR_AI_DEBUG_MENU                                               :Odpluskwianie SI
 STR_02D7_SCREENSHOT_CTRL_S                                      :Zrzut ekranu (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Gigantyczny zrzut(Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Info o 'OpenTTD'

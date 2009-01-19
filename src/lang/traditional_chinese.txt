@@ -478,10 +478,10 @@ STR_AGE                                                         :{COMMA} 年 ({C
 STR_AGE_RED                                                     :{RED}{COMMA} 年 ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :車輛
-STR_019D_AIRCRAFT                                               :飛機
-STR_019E_SHIP                                                   :船舶
 STR_019F_TRAIN                                                  :列車
+STR_019C_ROAD_VEHICLE                                           :車輛
+STR_019E_SHIP                                                   :船舶
+STR_019D_AIRCRAFT                                               :飛機
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}土地資訊
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}整地花費：{LTBLUE}不適用
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}整地花費：{RED}{CURRENCY}
@@ -797,6 +797,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}半透
 STR_02D5_LAND_BLOCK_INFO                                        :土地資訊
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :切換主控台
+STR_AI_DEBUG_MENU                                               :AI 調試
 STR_02D7_SCREENSHOT_CTRL_S                                      :擷取畫面 (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :巨觀畫面擷取 (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :關於「OpenTTD」
@@ -990,12 +991,16 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}無法�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}無法複製指令清單...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共享指令結束 - -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} 迷路了
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}去年的利潤是 {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}歐洲貨幣統一！{}{}你的國家已採用歐元作為唯一的交易貨幣了！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE}的調度任務太少
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}無法自動更新 {VEHICLE}{}{STRING}
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}無自動替換/翻新的規則可套用
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(金錢限制)
 
@@ -1097,6 +1102,9 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command 鍵
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control 鍵
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :無
 
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際制式 (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}自動在開始新遊戲時暫停：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用進階交通工具清單： {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :無
@@ -1129,6 +1137,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}不允�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}不允許電腦使用飛機：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}不允許電腦使用船舶：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}聯機遊戲中允許電腦玩家: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}列車預設維護間隔：{ORANGE}{STRING} 天/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}列車預設維護間隔：{ORANGE}關閉
@@ -1190,6 +1199,7 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}交通�
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}車站
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}經濟
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}競爭對手
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}信號燈
 
 STR_CONFIG_PATCHES_DISABLED                                     :關閉
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1338,7 +1348,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}改造�
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}無法改造列車...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}維護間隔以百分比計算：{ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}修改產量
-
 
 ############ network gui strings
 
@@ -1550,6 +1559,8 @@ STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :DoCommand 內�
 STR_NETWORK_ERR_CLIENT_KICKED                                   :被伺服器踢除
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :想試著作弊
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :伺服器已滿
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[團隊]：
 STR_NETWORK_CHAT_COMPANY                                        :[團隊] {STRING}：{GRAY}{STRING}
@@ -3597,8 +3608,17 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}允許市鎮限制機場噪音：{ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}城鎮噪音限制：{ORANGE}{COMMA}{BLACK}  最大：{ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}產生噪音：{GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

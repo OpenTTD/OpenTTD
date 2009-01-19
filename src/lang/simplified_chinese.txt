@@ -478,10 +478,13 @@ STR_AGE                                                         :{COMMA} 年 ({C
 STR_AGE_RED                                                     :{RED}{COMMA} 年 ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :汽车
-STR_019D_AIRCRAFT                                               :飞机
-STR_019E_SHIP                                                   :船只
 STR_019F_TRAIN                                                  :火车
+STR_019C_ROAD_VEHICLE                                           :汽车
+STR_019E_SHIP                                                   :船只
+STR_019D_AIRCRAFT                                               :飞机
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} 即将退役.
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} 应当马上退役.
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} 应当马上退役并替换新车.
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地块信息
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}清除费用：{LTBLUE}无
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}清除费用：{RED}{CURRENCY}
@@ -797,6 +800,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}透明
 STR_02D5_LAND_BLOCK_INFO                                        :地块信息
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :切换到终端
+STR_AI_DEBUG_MENU                                               :AI 调试
 STR_02D7_SCREENSHOT_CTRL_S                                      :屏幕截图 (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :大型截图 (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :关于 'OpenTTD'
@@ -990,12 +994,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}不能�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}不能复制调度计划……
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共享调度计划结束 - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} 无法找到道路
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} 迷路了.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}去年的利润为 {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}欧元区成立！{}{}欧元将作为您公司的作为唯一货币！
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} 的调度计划太少
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE}的调度计划中有无效调度命令
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} 有重复调度命令
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE}的调度计划有无效的车站
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}无法自动更新 {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE}在更新后总长会过长
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}当前无车辆更新进行中.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(现金不够)
 
@@ -1049,6 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}检查�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :不检查
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :检查，不包括停运的车辆
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :检查，所有车辆
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}若线路亏损时发出提示: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}车辆永不报废：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}当车辆报废时自动更新：
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}当车辆在报废前/后 {ORANGE}{STRING}{LTBLUE} 个月时自动更新
@@ -1097,6 +1111,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :按住Command�
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :按住Ctrl点击
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :关闭
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}左击滚动: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}使用 {ORANGE}{STRING}{LTBLUE} 形式的文件名存档
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :完整时间 (2009年1月19日)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :英式时间 (19-1-2009)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :简短形式 (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}开始新游戏时自动暂停: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}使用高级车辆列表: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :关闭
@@ -1117,6 +1138,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :第一个可用
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :第后一个可用的
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}显示保留的轨道： {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}造建筑工具使用后仍选中: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}当没有合适的运输工具时显示建设工具: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家最大火车数量：{ORANGE}{STRING}
@@ -1129,6 +1151,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}禁止�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}禁止电脑使用飞机：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}禁止电脑使用船只：{ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}联机游戏时允许电脑玩家(AI): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}火车的默认保养周期：{ORANGE}{STRING} 天/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}火车的默认保养周期：{ORANGE}禁用
@@ -1190,6 +1213,16 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}车辆
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}车站
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}经济
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}竞争
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}显示选项
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}互动
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}信号灯
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}货物处理
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}电脑玩家
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}自动更新
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}维修
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}列车
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}城镇
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}工业设施
 
 STR_CONFIG_PATCHES_DISABLED                                     :禁用
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1338,7 +1371,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}让列�
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}不能改造列车……
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}保养周期(百分数)： {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变产量
-
 
 ############ network gui strings
 
@@ -1508,9 +1540,11 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}获取�
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}获取公司信息
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}您前面还有 {NUM} 个客户端
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} 已下载
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}断开
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}请输入您想赠与的资金数
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}服务器需要密码：
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司需要密码：
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}客户端列表
@@ -1550,6 +1584,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :被服务器踢
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :正在尝试作弊
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :服务器满员
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :游戏暂停 (玩家太少)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :游戏继续 (玩家数目达到要求)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :游戏暂停 (连接玩家)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :游戏继续 (玩家链入)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :游戏继续 (玩家链入失败)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :出发
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} 已加入游戏
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} 已离开游戏 ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} 已更改姓名为 {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 送您公司了 {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** 您送了 {2:CURRENCY} 给 {1:STRING}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[团队] :
 STR_NETWORK_CHAT_COMPANY                                        :[团队] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[团队] To {STRING}: {GRAY}{STRING}
@@ -1674,6 +1722,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :带有组合和
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :带有组合和单向高级信号灯的铁轨
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :带有高级和单向高级信号灯的铁轨
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}请先移除火车站
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}建造分体车站
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}合并车站
 
 
 
@@ -1862,6 +1912,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}距离�
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}与另一车站相连
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}这个城镇中的车站过多
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}车站过多
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}分体站台太多
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}公共汽车站过多
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}汽车货场过多
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}距离另一车站过近
@@ -1959,6 +2010,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}读取�
 STR_4002_SAVE                                                   :{BLACK}保存
 STR_4003_DELETE                                                 :{BLACK}删除
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :观众, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} 可用
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}不能读取驱动器
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}保存游戏失败{}{STRING}
@@ -1969,6 +2021,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :无法识别的
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :该存档是新版本的。当前版本无法读取。
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :文件无法读取
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :文件无法写入
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :数据完整性检查失败
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}驱动器、目录和游戏存档列表
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}保存当前游戏用的存档名字
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}删除选定的游戏存档
@@ -2761,6 +2814,7 @@ STR_UNKNOWN_STATION                                             :未知车站
 STR_8812_EMPTY                                                  :{LTBLUE}空
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} (来自 {STATION})
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} (来自 {STATION} (x{NUM}))
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} 正在车库待命
 STR_8815_NEW_VEHICLES                                           :{BLACK}购买列车
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}列车过长
@@ -2918,6 +2972,7 @@ STR_9012_CAPACITY                                               :{BLACK}装载�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...必须完全停在一个车库中
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}不能出售汽车...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}不能停止/启动汽车...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在车库待命
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}正在前往 {TOWN} 车库
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}正在前往 {TOWN} 车库，{VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 车库保养
@@ -2999,6 +3054,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正在�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正在前往 {TOWN} 船坞，{VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船坞保养
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船坞保养，{VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} 正在船坞待命
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}建造码头
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}建造船坞 (可以购买或保养船只)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船只 - 点击可以查看详细信息
@@ -3063,6 +3119,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}正在�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正在前往 {STATION} 的机库，{VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}正在 {STATION} 的机库保养
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}正在 {STATION} 的机库保养，{VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} 正在机库待命
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}指定位置有飞机
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}不能启动/停止飞机
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}飞机正在飞行
@@ -3441,7 +3498,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}面积�
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}转运评分： {LTBLUE}{CURRENCY}
@@ -3597,8 +3658,69 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}AI 调试
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI名称
+STR_AI_DEBUG_RELOAD                                             :{BLACK}重载 AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}关闭AI并重启AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI调试窗口只对服务器可用
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}允许城镇控制机场噪音: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}当前城镇噪音: {ORANGE}{COMMA}{BLACK}  最大: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}产生的噪音: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD 未装载 "zlib" 支持模块 ...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 无法下载zlib内容!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :基本GRF
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI 库
+STR_CONTENT_TYPE_SCENARIO                                       :场景
+STR_CONTENT_TYPE_HEIGHTMAP                                      :高度图
+STR_CONTENT_TITLE                                               :{WHITE}下载内容
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}类型
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}名称
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}内容名称
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}全选
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}选定所有扩展包
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}选择升级
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}选择所有扩展包更新
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}取消全选
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}取消全部选择
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}下载
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}下载选定的内容
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}总计下载大小: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}扩展包信息
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}您尚未选择下载该扩展包
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}您已选择需要下载的扩展包
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}您已经下载过该扩展包
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}该扩展包无法识别，OpenTTD无法下载该扩展包
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}该扩展包将会影响到当前使用的 {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}名称: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}版本: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}描述: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}链接: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}类型: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}大小: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}按 {WHITE}{STRING} 选择
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}标签: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下载中...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}正在发送请求...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}正在下载 {STRING} ({NUM} / {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}下载完毕
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}已下载 {BYTES} / {BYTES} ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}无法链接到下载服务器...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}下载失败...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 丢失链接
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 文件无法写入
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法解压该扩展包
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}在线查找扩展包
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}连接服务器并查找扩展包
 ########

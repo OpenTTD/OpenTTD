@@ -1377,7 +1377,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}لايم
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}فترات الصيانة بالنسبة المئوية : {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}تغيير الانتاج
 
-
 ############ network gui strings
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}تعدد اللاعبين
@@ -1546,6 +1545,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}جلب �
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}جلب معلومات الشركة..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM}انتظار اللاعبين السابقين
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} حمل حتى الان
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}فصل
 
@@ -2016,6 +2016,7 @@ STR_4002_SAVE                                                   :{BLACK}حفظ
 STR_4003_DELETE                                                 :{BLACK}حذف
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :المشاهدين, {SKIP}{STRING}
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} متاح
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}لا يمكن قرائة القرص
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}فشل حفظ اللعبة{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}لا يمكن حذف الملف
@@ -2025,6 +2026,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :لعبة محف
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :اللعبة حفظت بنسخة احدث
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :لا يمكن قراءة الملف
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :لايمكن قراءة الملف
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :فشل التحقق من سلامة البيانات
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}قائمة بالاقراص - المجلدات - الملفات المخزنة
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}الاسم المختار حاليا لحفظ اللعبة
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}حذف اللعبة المحفوظة حاليا
@@ -3669,8 +3671,44 @@ STR_OSK_KEYBOARD_LAYOUT                                         :ذ1234567890-=�
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :ذ1234567890-=ضصثقفغعهخحجدشسيبلاتنمكطئءؤرلاىةوزظ
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}السماح للمدن بالتحكم في ضجيج المطارات: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}حدود الضوضاء داخل المدن: {ORANGE}{COMMA}{BLACK} القصوى: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK} الضوضاء المتولدة: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE} النسخة المفتوحة بنيت بدون دعم zlib ...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE} تحميل محتويات zlib غير ممكن
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :الرسوميات الاساسية
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF رسوميات
+STR_CONTENT_TYPE_SCENARIO                                       :سناريو
+STR_CONTENT_TYPE_HEIGHTMAP                                      :خارطة المرتفعات
+STR_CONTENT_TITLE                                               :{WHITE} تحميل المحتوى
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK} نوع
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK} نوع المحتوى
+STR_CONTENT_NAME_CAPTION                                        :{BLACK} الاسم
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK} اسم المحتوى
+STR_CONTENT_MATRIX_TIP                                          :{BLACK} اضغط على الخط لرؤية التفاصيل. {} اضغط على مربع الاختيار لتحميل.
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK} اختيار الكل
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK} تحميل كامل المحتوى
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK} اختر التحديث
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK} ضع علامة على التحديثات للمحتويات الموجودة و التي سيتم تحميلها
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK} مسح الكل
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK} ضع علامة على المحتوى التي لن يتم تحميلها
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK} تحميل
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK} ابدأ تحميل المحتويات المختارة
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER} حجم البيانات  التي سيتم تحميلها: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER} معلومات المحتوى
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER} لم تختر هذا المحتوى لتحميل
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER} لقد اخترت هذا المحتوى ليتم تحميله
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER} هذا الدعم قد اختير للتحميل
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER} هذا المحتوى موجود لديك مسبقا
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER} المحتوى غير معروف و لن يتم تحميلة على النسخة المفتوحة
+
+
+
 ########

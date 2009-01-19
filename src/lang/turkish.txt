@@ -2028,6 +2028,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bozuk kayıtlı
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Kayıtlı oyun yeni bir sürümle yapılmış
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Dosya okunabilir değil
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Dosya yazılabilir değil
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Veri sağlamlık kontrolü başarısız
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Sürücü, klasör ve kayıtli oyun listesi
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Kaydetmek için kullanılacak dosya adı
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Seçili oyunu sil

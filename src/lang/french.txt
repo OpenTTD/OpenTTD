@@ -2029,6 +2029,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Sauvegarde corr
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Sauvegarde modifiée avec une version plus récente
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Fichier illisibble
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichier non modifiable
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Échec du contrôle d'intégrité des données
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste des disques, répertoires, et fichiers de sauvegarde
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom sélectionné pour la sauvegarde
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Supprime la sauvegarde sélectionnée

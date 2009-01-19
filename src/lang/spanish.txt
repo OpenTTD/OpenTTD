@@ -3688,7 +3688,28 @@ STR_STATION_NOISE                                               :{BLACK}Ruido ge
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nombre: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versión: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descripción: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipo: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Tamaño descarga: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionado por: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencias: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetas: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descargando contenido...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Solicitando ficheros...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Actualmente descargando {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descarga completada
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} de {BYTES} descargadas ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No es posible conectarse al servidor de contenidos...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descarga erronea...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conexión perdida
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fichero no escribible
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No ha sido posible descomprimir el fichero descargado
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Comprobar contenido online
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Comprobar si hay nuevos contenidos actualizados para descargar
 ########

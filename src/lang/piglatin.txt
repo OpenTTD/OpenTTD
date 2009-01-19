@@ -2028,6 +2028,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Okenbray avegam
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Avegamesay isway ademay ithway ewernay ersionvay
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Ilefay otnay eadableray
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ilefay otnay iteablewray
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Ataday integrityway eckchay ailedfay
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Istlay ofway ivesdray, irectoriesday andway avedsay-amegay ilesfay
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Urrentlycay electedsay amenay orfay avedsay-amegay
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Eleteday ethay urrentlycay electedsay avedsay-amegay

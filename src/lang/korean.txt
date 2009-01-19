@@ -1918,6 +1918,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}다른 �
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}1개 이상의 역을 인접시키십시오
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}이 도시에 너무 많은 역이 있습니다
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}역이 너무 많습니다
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}정거장 부품이 너무 많습니다
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}버스 정류장이 너무 많습니다
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}트럭 적하장이 너무 많습니다
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}다른 역과 너무 가깝습니다!
@@ -2026,6 +2027,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :손상된 세�
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :상위 버젼의 세이브 게임입니다
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :파일을 읽을 수 없습니다
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :파일을 쓸 수 없습니다
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :데이터를 완벽하게 체크하는데 실패
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}드라이프, 폴더, 저장된 게임 파일의 목록입니다
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}저장될 세이브 파일의 이름입니다.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}선택된 세이브 파일을 삭제합니다.

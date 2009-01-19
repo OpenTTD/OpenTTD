@@ -2096,6 +2096,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Poškozená hra
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Uložená hra je z novější verze
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Soubor je nečitelný
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Do souboru nelze zapisovat
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Kontrola integrity dat selhala
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Seznam jednotek, adresářů a uložených her
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Zvolené jméno uložené hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Smazat označenou uloženou hru

@@ -2028,6 +2028,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Viallinen talle
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Tallennus on tehty uudemalla versiolla
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Tiedostoa ei voi lukea
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Tiedostoa ei voi kirjoittaa
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Tietojen varmistustarkistus epäonnistui
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista asemista, hakemistoista ja tallennetuista peleistä.
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Valittu nimi pelitallenteelle.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Poista valittu pelitallenne.

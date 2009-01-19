@@ -452,7 +452,7 @@ STR_SORT_BY_LIFE_TIME                                           :Élettartamból
 STR_SORT_BY_FACILITY                                            :Állomás típus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
 STR_SORT_BY_RATING_MAX                                          :Várakozó rakomány
-STR_ENGINE_SORT_ENGINE_ID                                       :MozdonyID
+STR_ENGINE_SORT_ENGINE_ID                                       :JárműID
 STR_ENGINE_SORT_COST                                            :Ár
 STR_ENGINE_SORT_POWER                                           :Telj.
 STR_ENGINE_SORT_INTRO_DATE                                      :Bevezetési dátum
@@ -2094,6 +2094,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Hibás játék�
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :A játékállást újabb verzió mentette el
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :A fájl nem olvasható
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :A fájl nem írható
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Adat integritás hiba
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Meghajtók, könyvtárak és mentések listája
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}A mentés neve
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}A kijelölt mentés törlése
@@ -3678,7 +3679,7 @@ STR_GROUPS_CLICK_ON_GROUP_FOR_TIP                               :{BLACK}Csoporto
 STR_GROUP_CREATE_TIP                                            :{BLACK}Csoport létrehozásához kattints ide
 STR_GROUP_DELETE_TIP                                            :{BLACK}Kijelölt csoportosítás törlése
 STR_GROUP_RENAME_TIP                                            :{BLACK}Kijelölt csoport átnevezése
-STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Csoport automata csere alóli mentességének beállításához kattints ide
+STR_GROUP_REPLACE_PROTECTION_TIP                                :{BLACK}Csoport automata csere alóli mentességének beállításához katt.ide
 
 STR_COMPANY_NAME                                                :{COMPANY}
 STR_ENGINE_NAME                                                 :{ENGINE}
@@ -3808,7 +3809,7 @@ STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Összes 
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Az összes elérhető tartalom kijelölése letöltéshez
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Frissítések kijelölése
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Már meglévő tartalmakhoz az összes elérhető frissítés kijelölése letöltéshez
-STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Kijelölések megszüntetése
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Nincs kijelölés
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Megszünteti az összes kijelölést
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Letöltés
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}A kijelölt tartalmak letöltésének megkezdése
