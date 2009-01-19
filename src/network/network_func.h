@@ -36,7 +36,7 @@ void NetworkStartDebugLog(const char *hostname, uint16 port);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
-bool NetworkClientConnectGame(const char *host, uint16 port);
+void NetworkClientConnectGame(const char *host, uint16 port);
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);
 void NetworkClientSetPassword(const char *password);

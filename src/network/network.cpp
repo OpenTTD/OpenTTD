@@ -727,11 +727,11 @@ void NetworkRebuildHostList()
 }
 
 // Used by clients, to connect to a server
-bool NetworkClientConnectGame(const char *host, uint16 port)
+void NetworkClientConnectGame(const char *host, uint16 port)
 {
-	if (!_network_available) return false;
+	if (!_network_available) return;
 
-	if (port == 0) return false;
+	if (port == 0) return;
 
 	strecpy(_settings_client.network.last_host, host, lastof(_settings_client.network.last_host));
 	_settings_client.network.last_port = port;
@@ -750,8 +750,6 @@ bool NetworkClientConnectGame(const char *host, uint16 port)
 		// Connecting failed
 		NetworkError(STR_NETWORK_ERR_NOCONNECTION);
 	}
-
-	return _networking;
 }
 
 static void NetworkInitGameInfo()
