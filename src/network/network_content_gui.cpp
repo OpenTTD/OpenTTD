@@ -434,6 +434,7 @@ public:
 			this->HideWidget(NCLWW_SELECT_UPDATE);
 		}
 
+		SetVScrollCount(this, this->infos.Length());
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -759,6 +760,7 @@ public:
 		if (this->selected == NULL) this->selected = rci;
 
 		*this->infos.Append() = rci;
+		SetVScrollCount(this, this->infos.Length());
 
 		/* Incoming data means that we might need to reconsider dependencies */
 		for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
