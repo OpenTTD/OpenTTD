@@ -2195,14 +2195,12 @@ STR_6804_CUSTOM                                                 :{BLACK}カス�
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}競争者数の上限：{ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}競争者の開始遅延：{ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}市町村数：{ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}産業数：{ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}初期の最大借入金：{ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}初期の金利：{ORANGE}{COMMA}％
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}車両の運転費：{ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}競争者の建設速度：{ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}競争者の能力レベル：{ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}乗り物の故障：{ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}助成金のレベル：{ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}建設の価値：{ORANGE}{STRING}

@@ -2167,14 +2167,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Persoal
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Nº máximo de opoñentes: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Data de comezo dos opoñentes: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Nº de cidades: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Nº de industrias: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Crédito máximo inicial: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Taxa de interés inicial: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Coste de mantemento dos vehículos: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocidade de construcción dos opoñentes: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelixencia dos opoñentes: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Avarías nos vehículos: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Multiplicador de subsidio: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Costes de construcción: {ORANGE}{STRING}

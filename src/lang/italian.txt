@@ -2226,14 +2226,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Personal
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Numero massimo di avversari: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Partenza avversari: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Numero di città: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Numero di industrie: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Prestito massimo iniziale: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Tasso d'interesse iniziale: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Costi d'esercizio dei veicoli: {ORANGE}{STRING.mp}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocità di costruzione degli avversari: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelligenza degli avversari: {ORANGE}{STRING.fs}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Guasti dei veicoli: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Moltiplicatore sussidi: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Costi di costruzione: {ORANGE}{STRING.mp}

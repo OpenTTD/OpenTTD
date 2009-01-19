@@ -2224,14 +2224,12 @@ STR_6804_CUSTOM                                                 :{BLACK}Bebas
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Jumlah pesaing maksimal: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Pesaing mulai ada waktu: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Jumlah kota: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Jumlah industri: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Jumlah pinjaman maksimal: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Tingkat suku bunga awal: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Biaya operasional kendaraan: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Kecepatan para pesaing membangun: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}kecerdasan para pesaing: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Bus/truk mogok : {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Faktor kali angka subsidi: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Biaya pembangunan: {ORANGE}{STRING}

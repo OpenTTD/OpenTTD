@@ -1207,14 +1207,14 @@ static inline bool LoadOldSubsidy(LoadgameState *ls, int num)
 
 static const OldChunks game_difficulty_chunk[] = {
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, max_no_competitors ),
-	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, competitor_start_time ),
+	OCL_NULL( 2), // competitor_start_time
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, number_towns ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, number_industries ),
 	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, DifficultySettings, max_loan ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, initial_interest ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, vehicle_costs ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, competitor_speed ),
-	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, competitor_intelligence ),
+	OCL_NULL( 2), // competitor_intelligence
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, vehicle_breakdowns ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, subsidy_multiplier ),
 	OCL_SVAR( OC_FILE_U16 |  OC_VAR_U8, DifficultySettings, construction_cost ),

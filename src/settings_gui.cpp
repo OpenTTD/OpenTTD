@@ -457,8 +457,11 @@ public:
 		uint i;
 		const SettingDesc *sd = GetPatchFromName("difficulty.max_no_competitors", &i);
 		int y = GAMEDIFF_WND_TOP_OFFSET;
+		StringID str = STR_6805_MAXIMUM_NO_COMPETITORS;
 		for (i = 0; i < GAME_DIFFICULTY_NUM; i++, sd++) {
 			const SettingDescBase *sdb = &sd->desc;
+			/* skip deprecated difficulty options */
+			if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 			int32 value = (int32)ReadValue(GetVariableAddress(&this->opt_mod_temp, &sd->save), sd->save.conv);
 			bool editable = (_game_mode == GM_MENU || (sdb->flags & SGF_NEWGAME_ONLY) == 0);
 
@@ -469,9 +472,10 @@ public:
 
 			value += sdb->str;
 			SetDParam(0, value);
-			DrawString(30, y, STR_6805_MAXIMUM_NO_COMPETITORS + i, TC_FROMSTRING);
+			DrawString(30, y, str, TC_FROMSTRING);
 
 			y += GAMEDIFF_WND_ROWSIZE + 2; // space items apart a bit
+			str++;
 		}
 	}
 
@@ -489,7 +493,9 @@ public:
 				if (y < 0) return;
 
 				/* Get button from Y coord. */
-				const uint8 btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
+				uint8 btn = y / (GAMEDIFF_WND_ROWSIZE + 2);
+				if (btn >= 1) btn++; // Skip the deprecated option "competitor start time"
+				if (btn >= 8) btn++; // Skip the deprecated option "competitor intelligence"
 				if (btn >= GAME_DIFFICULTY_NUM || y % (GAMEDIFF_WND_ROWSIZE + 2) >= 9) return;
 
 				uint i;

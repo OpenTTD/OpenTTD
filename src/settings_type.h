@@ -14,14 +14,12 @@
 /** Settings related to the difficulty of the game */
 struct DifficultySettings {
 	byte   max_no_competitors;               ///< the number of competitors (AIs)
-	byte   competitor_start_time;            ///< how long to wait for the first competitors (AIs)
 	byte   number_towns;                     ///< the amount of towns
 	byte   number_industries;                ///< the amount of industries
 	uint32 max_loan;                         ///< the maximum initial loan
 	byte   initial_interest;                 ///< amount of interest (to pay over the loan)
 	byte   vehicle_costs;                    ///< amount of money spent on vehicle running cost
 	byte   competitor_speed;                 ///< the speed at which the AI builds
-	byte   competitor_intelligence;          ///< the competior's (AI) intelligence
 	byte   vehicle_breakdowns;               ///< likelihood of vehicles breaking down
 	byte   subsidy_multiplier;               ///< amount of subsidy
 	byte   construction_cost;                ///< how expensive is building

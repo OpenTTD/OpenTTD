@@ -951,14 +951,14 @@ static int32 DragSignalsDensityChanged(int32)
 
 /*
  * A: competitors
- * B: start time in months / 3
+ * B: competitor start time. Deprecated since savegame version 110.
  * C: town count (3 = high, 0 = very low)
  * D: industry count (4 = high, 0 = none)
  * E: inital loan (in GBP)
  * F: interest rate
  * G: running costs (0 = low, 2 = high)
  * H: construction speed of competitors (0 = very slow, 4 = very fast)
- * I: intelligence (0-2)
+ * I: competitor intelligence. Deprecated since savegame version 110.
  * J: breakdowns (0 = off, 2 = normal)
  * K: subsidy multiplier (0 = 1.5, 3 = 4.0)
  * L: construction cost (0-2)
@@ -971,10 +971,10 @@ static int32 DragSignalsDensityChanged(int32)
  * S: the difficulty level
  */
 static const DifficultySettings _default_game_diff[3] = { /*
-	 A, B, C, D,      E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S*/
-	{2, 2, 2, 4, 300000, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0}, ///< easy
-	{4, 1, 2, 3, 150000, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1}, ///< medium
-	{7, 0, 3, 3, 100000, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2, 2}, ///< hard
+	 A, C, D,      E, F, G, H, J, K, L, M, N, O, P, Q, R, S*/
+	{2, 2, 4, 300000, 2, 0, 2, 1, 2, 0, 1, 0, 0, 0, 0, 0, 0}, ///< easy
+	{4, 2, 3, 150000, 3, 1, 3, 2, 1, 1, 2, 1, 1, 1, 1, 1, 1}, ///< medium
+	{7, 3, 3, 100000, 4, 1, 3, 2, 0, 2, 3, 2, 1, 1, 1, 2, 2}, ///< hard
 };
 
 void SetDifficultyLevel(int mode, DifficultySettings *gm_opt)
@@ -1219,14 +1219,14 @@ const SettingDesc _patch_settings[] = {
 	/* Saved patch variables. */
 	/* Do not ADD or REMOVE something in this "difficulty.XXX" table or before it. It breaks savegame compatability. */
 	 SDT_CONDVAR(GameSettings, difficulty.max_no_competitors,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,0,MAX_COMPANIES-1,1,STR_NULL,                                  DifficultyChange),
-	 SDT_CONDVAR(GameSettings, difficulty.competitor_start_time,     SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      3,  1, STR_6830_IMMEDIATE,                        DifficultyChange),
+	SDT_CONDNULL(                                                            1, 97, 109),
 	 SDT_CONDVAR(GameSettings, difficulty.number_towns,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     0,      3,  1, STR_NUM_VERY_LOW,                          DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.number_industries,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     4,     0,      4,  1, STR_NONE,                                  DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.max_loan,                 SLE_UINT32, 97, SL_MAX_VERSION, 0,NG|CR,300000,100000,500000,50000,STR_NULL,                               DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.initial_interest,          SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     2,     2,      4,  1, STR_NULL,                                  DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.vehicle_costs,             SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      2,  1, STR_6820_LOW,                              DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.competitor_speed,          SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      4,  1, STR_681B_VERY_SLOW,                        DifficultyChange),
-	 SDT_CONDVAR(GameSettings, difficulty.competitor_intelligence,   SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     0,     0,      2,  1, STR_6820_LOW,                              DifficultyChange),
+	SDT_CONDNULL(                                                            1, 97, 109),
 	 SDT_CONDVAR(GameSettings, difficulty.vehicle_breakdowns,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     1,     0,      2,  1, STR_6823_NONE,                             DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.subsidy_multiplier,        SLE_UINT8, 97, SL_MAX_VERSION, 0, 0,     2,     0,      3,  1, STR_6826_X1_5,                             DifficultyChange),
 	 SDT_CONDVAR(GameSettings, difficulty.construction_cost,         SLE_UINT8, 97, SL_MAX_VERSION, 0,NG,     0,     0,      2,  1, STR_6820_LOW,                              DifficultyChange),
@@ -1554,6 +1554,8 @@ static void HandleOldDiffCustom(bool savegame)
 
 	for (uint i = 0; i < options_to_load; i++) {
 		const SettingDesc *sd = &_patch_settings[i];
+		/* Skip deprecated options */
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		void *var = GetVariableAddress(savegame ? &_settings_game : &_settings_newgame, &sd->save);
 		Write_ValidateSetting(var, sd, (int32)((i == 4 ? 1000 : 1) * _old_diff_custom[i]));
 	}

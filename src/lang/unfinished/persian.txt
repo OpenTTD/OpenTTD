@@ -1005,7 +1005,6 @@ STR_6804_CUSTOM                                                 :{BLACK}انتخ
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}حد اکثر تعداد رقبا :{ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}زمان شروع به بازی رقبا: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}تعداد شهر ها: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}تعداد کارخانه ها: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}حد اکثر وام اولیه: {ORANGE}{CURRENCY}

@@ -2211,14 +2211,12 @@ STR_6804_CUSTOM                                                 :{BLACK}спец
 
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Максимален брой конкуренти: {ORANGE}{COMMA}
-STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Конкурентите започват: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Брой на градовете: {ORANGE}{STRING.m}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Брой на индустриите: {ORANGE}{STRING.m}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Максимален начален заем: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Начална лихва: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Разходи по колите: {ORANGE}{STRING.p}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Скорост на строене на конкурентите: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Интелигентност на конкурентите: {ORANGE}{STRING.f}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Повреди на превозните средства: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Множител на субсидиите: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Цена на строителство: {ORANGE}{STRING.f}
