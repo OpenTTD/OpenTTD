@@ -381,6 +381,13 @@ static void PollEvent()
 		mouse_action = true;
 	}
 
+	static int prev_mouse_z = 0;
+	if (prev_mouse_z != mouse_z) {
+		_cursor.wheel = (prev_mouse_z - mouse_z) < 0 ? -1 : 1;
+		prev_mouse_z = mouse_z;
+		mouse_action = true;
+	}
+
 	if (mouse_action) HandleMouseEvents();
 
 	poll_keyboard();
