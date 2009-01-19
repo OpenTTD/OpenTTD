@@ -793,7 +793,7 @@ static const Widget _network_content_list_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   COLOUR_WHITE,         21,   110,    22,    33, STR_CONTENT_TYPE_CAPTION,           STR_CONTENT_TYPE_CAPTION_TIP},           // NCLWW_TYPE
 { WWT_PUSHTXTBTN,   RESIZE_RIGHT,  COLOUR_WHITE,        111,   191,    22,    33, STR_CONTENT_NAME_CAPTION,           STR_CONTENT_NAME_CAPTION_TIP},           // NCLWW_NAME
 
-{     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     8,   190,    34,   230, (14 << 8) | 1,                      STR_NETWORK_CLICK_GAME_TO_SELECT},       // NCLWW_MATRIX
+{     WWT_MATRIX,   RESIZE_RB,     COLOUR_LIGHT_BLUE,     8,   190,    34,   230, (14 << 8) | 1,                      STR_CONTENT_MATRIX_TIP},                 // NCLWW_MATRIX
 {  WWT_SCROLLBAR,   RESIZE_LRB,    COLOUR_LIGHT_BLUE,   191,   202,    22,   230, 0x0,                                STR_0190_SCROLL_BAR_SCROLLS_LIST},       // NCLWW_SCROLLBAR
 
 /* RIGHT SIDE */
