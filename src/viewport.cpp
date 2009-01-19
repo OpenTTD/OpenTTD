@@ -783,6 +783,8 @@ static void DrawSelectionSprite(SpriteID image, SpriteID pal, const TileInfo *ti
  */
 static void DrawTileSelectionRect(const TileInfo *ti, SpriteID pal)
 {
+	if (!IsValidTile(ti->tile)) return;
+
 	SpriteID sel;
 	if (IsHalftileSlope(ti->tileh)) {
 		Corner halftile_corner = GetHalftileSlopeCorner(ti->tileh);
@@ -971,8 +973,8 @@ static void ViewportAddLandscape()
 
 			ti.x = x_cur;
 			ti.y = y_cur;
-			if (0 <= x_cur && x_cur < (int)MapMaxX() * TILE_SIZE &&
-					0 <= y_cur && y_cur < (int)MapMaxY() * TILE_SIZE) {
+			if (0 <= x_cur && x_cur < (int)MapSizeX() * TILE_SIZE &&
+					0 <= y_cur && y_cur < (int)MapSizeY() * TILE_SIZE) {
 				TileIndex tile = TileVirtXY(x_cur, y_cur);
 
 				ti.tile = tile;
@@ -980,7 +982,7 @@ static void ViewportAddLandscape()
 				tt = GetTileType(tile);
 			} else {
 				ti.tileh = SLOPE_FLAT;
-				ti.tile = 0;
+				ti.tile = INVALID_TILE;
 				ti.z = 0;
 				tt = MP_VOID;
 			}
@@ -995,7 +997,7 @@ static void ViewportAddLandscape()
 			_vd.last_foundation_child[1] = NULL;
 
 			_tile_type_procs[tt]->draw_tile_proc(&ti);
-			DrawTileSelection(&ti);
+			if (ti.tile != INVALID_TILE) DrawTileSelection(&ti);
 		} while (--width_cur);
 
 		if ((direction ^= 1) != 0) {
