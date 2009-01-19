@@ -2311,7 +2311,71 @@ static TownActionProc *const _town_action_proc[] = {
 	TownActionBribe
 };
 
-extern uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
+enum TownActions {
+	TACT_NONE             = 0x00,
+
+	TACT_ADVERTISE_SMALL  = 0x01,
+	TACT_ADVERTISE_MEDIUM = 0x02,
+	TACT_ADVERTISE_LARGE  = 0x04,
+	TACT_ROAD_REBUILD     = 0x08,
+	TACT_BUILD_STATUE     = 0x10,
+	TACT_FOUND_BUILDINGS  = 0x20,
+	TACT_BUY_RIGHTS       = 0x40,
+	TACT_BRIBE            = 0x80,
+
+	TACT_ADVERTISE        = TACT_ADVERTISE_SMALL | TACT_ADVERTISE_MEDIUM | TACT_ADVERTISE_LARGE,
+	TACT_CONSTRUCTION     = TACT_ROAD_REBUILD | TACT_BUILD_STATUE | TACT_FOUND_BUILDINGS,
+	TACT_FUNDS            = TACT_BUY_RIGHTS | TACT_BRIBE,
+	TACT_ALL              = TACT_ADVERTISE | TACT_CONSTRUCTION | TACT_FUNDS,
+};
+
+DECLARE_ENUM_AS_BIT_SET(TownActions);
+
+/** Get a list of available actions to do at a town.
+ * @param nump if not NULL add put the number of available actions in it
+ * @param cid the company that is querying the town
+ * @param t the town that is queried
+ * @return bitmasked value of enabled actions
+ */
+uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t)
+{
+	int num = 0;
+	TownActions buttons = TACT_NONE;
+
+	/* Spectators and unwanted have no options */
+	if (cid != COMPANY_SPECTATOR && !(_settings_game.economy.bribe && t->unwanted[cid])) {
+
+		/* Things worth more than this are not shown */
+		Money avail = GetCompany(cid)->money + _price.station_value * 200;
+		Money ref = _price.build_industry >> 8;
+
+		/* Check the action bits for validity and
+		 * if they are valid add them */
+		for (uint i = 0; i != lengthof(_town_action_costs); i++) {
+			const TownActions cur = (TownActions)(1 << i);
+
+			/* Is the company not able to bribe ? */
+			if (cur == TACT_BRIBE && (!_settings_game.economy.bribe || t->ratings[cid] >= RATING_BRIBE_MAXIMUM))
+				continue;
+
+			/* Is the company not able to buy exclusive rights ? */
+			if (cur == TACT_BUY_RIGHTS && !_settings_game.economy.exclusive_rights)
+				continue;
+
+			/* Is the company not able to build a statue ? */
+			if (cur == TACT_BUILD_STATUE && HasBit(t->statues, cid))
+				continue;
+
+			if (avail >= _town_action_costs[i] * ref) {
+				buttons |= cur;
+				num++;
+			}
+		}
+	}
+
+	if (nump != NULL) *nump = num;
+	return buttons;
+}
 
 /** Do a town action.
  * This performs an action such as advertising, building a statue, funding buildings,

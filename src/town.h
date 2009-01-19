@@ -369,6 +369,7 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
 HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
+uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
 
 /**
  * Calculate a hash value from a tile position

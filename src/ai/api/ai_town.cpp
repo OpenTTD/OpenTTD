@@ -151,8 +151,6 @@
 	return ::GetTown(town_id)->exclusive_counter;
 }
 
-extern uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
-
 /* static */ bool AITown::IsActionAvailable(TownID town_id, TownAction town_action)
 {
 	if (!IsValidTown(town_id)) return false;
