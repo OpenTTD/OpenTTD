@@ -2029,6 +2029,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Partida guardad
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :La partida guardada ha sido realizada con una versión más nueva
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :No se puede leer fichero
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Fichero no escribible
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Comprobación de integridad de los datos fallida.
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listado de unidades, directorios y juegos guardados
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nombre seleccionado actualmente para el juego guardado
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Borrar el juego guardado seleccionado
@@ -3688,6 +3689,36 @@ STR_STATION_NOISE                                               :{BLACK}Ruido ge
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD está hecho sin soporte "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... ¡No es posible descargar contenido!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gráficos básicos
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Librería de IAs
+STR_CONTENT_TYPE_SCENARIO                                       :Escenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa de alturas
+STR_CONTENT_TITLE                                               :{WHITE}Descarga de contenido
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipo
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Tipo de contenido
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nombre
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nombre del contenido
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Pincha en una línea para ver los detalles{}Pincha en los cajetines para seleccionar las descargas
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Seleccionar todas
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marca todo el contenido para descarga
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleccionar actualizaciones
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca todo el contenido que es una actualización de contenido existente para descargar
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Desmarcar todas
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marca todo el contenido para no ser descargado
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descargar
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Comenzar a descargar el contenido seleccionado
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Tamaño total de la descarga: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMACIÓN DEL CONTENIDO
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}No has seleccionado esto para ser descargado
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Has seleccionado esto para ser descargado
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Esta dependencia ha sido seleccionada para ser descargada
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ya tienes esto
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Este contenido es desconocido y no puede ser descargado en OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Este es un sustituto de un {STRING} existente
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nombre: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versión: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descripción: {WHITE}{STRING}

@@ -3674,11 +3674,20 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :"!'^+%&/()=?_|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}YZ ayarları
 STR_AI_DEBUG                                                    :{WHITE}YZ Hata Ayıklama
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}YZ adı
 STR_AI_DEBUG_RELOAD                                             :{BLACK}YZ'yı baştan yükle
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}YZ'yı öldür, kodu tekrar yükle ve YZ'yı tekrar başlat
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}YZ Hata Ayıklama penceresi sadece sunucu içindir
+STR_AI_CONFIG_CAPTION                                           :{WHITE}YZ Yapılandırması
+STR_AI_CHANGE                                                   :{BLACK}YZ Seç
+STR_AI_CONFIGURE                                                :{BLACK}Yapılandır
+STR_AI_CHANGE_TIP                                               :{BLACK}Başka bir YZ yükle
+STR_AI_CONFIGURE_TIP                                            :{BLACK}YZ parametrelerini yapılandır
+STR_AI_LIST_TIP                                                 :{BLACK}Sonraki oyunda yüklenecek tüm YZ'ler
+STR_AI_LIST_CAPTION                                             :{WHITE}Mevcut YZ'ler
+STR_AI_AILIST_TIP                                               :{BLACK}YZ seçmek için bir tuşa basın
 ########
 
 ############ town controlled noise level

@@ -482,6 +482,9 @@ STR_019F_TRAIN                                                  :列車
 STR_019C_ROAD_VEHICLE                                           :車輛
 STR_019E_SHIP                                                   :船舶
 STR_019D_AIRCRAFT                                               :飛機
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} 即將退役
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} 應當馬上退役
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} 應當馬上退役并替換新車
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}土地資訊
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}整地花費：{LTBLUE}不適用
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}整地花費：{RED}{CURRENCY}
@@ -991,6 +994,7 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}無法�
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}無法複製指令清單...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - 共享指令結束 - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} 無法尋得路徑
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} 迷路了
 STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE}去年的利潤是 {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}歐洲貨幣統一！{}{}你的國家已採用歐元作為唯一的交易貨幣了！
@@ -998,9 +1002,13 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
 STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE}的調度任務太少
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} 有錯誤的計劃指令
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} 有重複的指令
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} 有無法到達的車站
 # end of order system
 
 STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}無法自動更新 {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} 將在替換後過長
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}無自動替換/翻新的規則可套用
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(金錢限制)
 
@@ -1054,6 +1062,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}檢查�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :否
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :是，不過停止的交通工具例外
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :所有交通工具
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}當收入為負時警告: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}運輸工具永不過期：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE} 交通工具自動翻新
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}當交通工具在使用年限 {ORANGE}{STRING}{LTBLUE} 個月前/後自動更新
@@ -1102,7 +1111,11 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Command 鍵
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control 鍵
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :無
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}左擊滑鼠滾動: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE} 存檔名稱使用 {ORANGE}{STRING}{LTBLUE} 時間制式
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :長文件名 (31st Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :短文件名 (31-12-2008)
 STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :國際制式 (2008-12-31)
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}自動在開始新遊戲時暫停：{ORANGE}{STRING}
@@ -1199,7 +1212,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}交通�
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}車站
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}經濟
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}競爭對手
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}顯示選項
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}互動
 STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}信號燈
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}裝貨
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}電腦玩家
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}自動更新
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}維修
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}線路
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}列車
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}城鎮
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}工業設施
 
 STR_CONFIG_PATCHES_DISABLED                                     :關閉
 STR_CONFIG_PATCHES_INT32                                        :{NUM}

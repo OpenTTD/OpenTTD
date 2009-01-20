@@ -480,13 +480,17 @@ STR_AGE                                                         :{COMMA} {P го
 STR_AGE_RED                                                     :{RED}{COMMA} {P год года лет} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Автотранспорт
-STR_019D_AIRCRAFT                                               :Воздушный транспорт
-STR_019E_SHIP                                                   :Корабль
 STR_019F_TRAIN                                                  :Поезд
+STR_019C_ROAD_VEHICLE                                           :Автотранспорт
+STR_019E_SHIP                                                   :Корабль
+STR_019D_AIRCRAFT                                               :Воздушный транспорт
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}Транспортное средство {VEHICLE} устарело
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}Транспортное средство {VEHICLE} сильно устарело
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}Транспортное средство {VEHICLE} очень сильно устарело и требует замены
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информация об участке земли
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Чтобы очистить, надо: {LTBLUE}(нет данных)
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Чтобы очистить, надо: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Выручка от продажи: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :нет данных
 STR_01A7_OWNER                                                  :{BLACK}Владелец: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Владелец дороги: {LTBLUE}{STRING}
@@ -799,6 +803,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Про
 STR_02D5_LAND_BLOCK_INFO                                        :Информация о земле
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Переключатель Консоли
+STR_AI_DEBUG_MENU                                               :Отладка AI
 STR_02D7_SCREENSHOT_CTRL_S                                      :Снимок экрана (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Полный снимок экрана (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Об игре
@@ -992,12 +997,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Нево
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Невозможно скопировать список заданий
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Конец общих заданий - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} не может найти путь для продолжения движения.
+STR_TRAIN_IS_LOST                                               :{WHITE}Транспортное средство {VEHICLE} заблудилось.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Доход ТС {VEHICLE} в прошлом году составил {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Создана зона евро!{}{}Теперь в вашей стране в качестве единой валюты используется евро!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}У ТС {VEHICLE} не хватает заданий
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}У ТС {VEHICLE} нет заданий
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}У ТС {VEHICLE} повторяющиеся задания
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}У ТС {VEHICLE} неправильное место назначения
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Ошибка автообновления для {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}ТС {VEHICLE} слишком длинное после замены
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Нельзя применить правила автозамены/обновления.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(денег мало)
 
@@ -1016,6 +1030,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Раз�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Включить реалистичное ускорение для поездов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить 90-градусные повороты на ж/д и море: {ORANGE}{STRING} {LTBLUE} (NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Объединять рядом построенные ж/д станции: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Разрешить объединение удаленных станций: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Использовать улучшенный алгоритм загрузки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Постепенная загрузка транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Включить инфляцию: {ORANGE}{STRING}
@@ -1051,6 +1066,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Про�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :не проверять
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :у всех запущенных
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :у всех
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать, если доход ТС отрицателен: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт не будет выходить из эксплутации: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автоозамена изношенного транспорта
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Замена через {ORANGE}{STRING}{LTBLUE} месяц{P "" а ев} после истечения срока службы
@@ -1099,6 +1115,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Команд.
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Контрол.
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Выкл.
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Скроллинг по "левому" клику: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Использовать {ORANGE}{STRING}{LTBLUE} формат даты для имен сохранений.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :длинный (31st Dec 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :короткий (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Автопауза в начале игры: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Использовать расширенный список транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Выкл.
@@ -1110,6 +1133,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Собств.
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Все комп.
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Использовать расписание для транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Показывать расписание в 'тиках', а не днях: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Быстрое создание заданий транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Тип рельс по умолчанию (после старта/загрузки игры): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :Обычные
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :Электро
@@ -1119,6 +1143,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :Перв. до�
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Посл. доступн.
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Наиб. исп.
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Показывать зарезервированные пути: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Не закрывать инструменты строительсва после использования: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показывать окно покупки когда нет доступного транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Максимальное количество поездов на игрока: {ORANGE}{STRING}
@@ -1131,6 +1156,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Не д
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Не допускать постройки авиатранспорта компьютером: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Не допускать постройки кораблей компьютером: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить AI в сетевой игре: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}не обслуживаются
@@ -1192,6 +1218,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Тра�
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Станции
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Экономика
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Конкуренты
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Опции экрана
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Взаимодействие
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Сигналы
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Перемещение грузов
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Комп. игроки
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Автообновление
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Обслуживание
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Маршруты
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Поезда
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Города
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Промышленность
 
 STR_CONFIG_PATCHES_DISABLED                                     :отключено
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1340,7 +1377,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Пере
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Не могу переоборудовать поезд...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Интервал обслуживания в процентах: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Изменить производительность
-
 
 ############ network gui strings
 
@@ -1510,9 +1546,11 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Полу
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Получение информации о компании..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}готовится присоединиться {NUM} клиентов
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK} загружено {BYTES} / {BYTES}
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Отключиться
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введите количество денег, которые вы хотите передать
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер защищен. Введите пароль
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компания защищена. Введите пароль
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Список клиентов
@@ -1552,6 +1590,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :вас выки
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :попытался применить чит
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер переполнен
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Пауза (нет игроков)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Игра запущена (есть игроки)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Пауза (подключение клиента)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Игра запущена (клиент подключился)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Игра запущена (клиент не смог подключиться)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :покинул
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} подключился к игре
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} покинул игру ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} изменил свое имя на {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} передал вашей компании {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Вы передали {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
 STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Команде] {STRING}: {GRAY}{STRING}
@@ -1676,6 +1728,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Ж/д пути 
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Ж/д пути с комбо и односторонними ПМС сигналами
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Ж/д пути с ПМС и односторонними ПМС сигналами
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Сначала удалите ЖД станцию
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Построить разделенную станцию
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Объединить станции
 
 
 
@@ -1864,6 +1918,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Слиш
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Присоединяется более чем к одной существующей станции
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Слишком много станций и остановок в этом городе. Переименуйте существующие.
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Слишком много станций и остановок
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Too many railway station parts
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Слишком много автобусных остановок
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Слишком много погрузочных станций
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Слишком близко к другой станции
@@ -1961,6 +2016,8 @@ STR_4001_LOAD_GAME                                              :{WHITE}Загр
 STR_4002_SAVE                                                   :{BLACK}Сохранить
 STR_4003_DELETE                                                 :{BLACK}Удалить
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Наблюдатель, {SKIP}{STRING}
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} свободно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Не удалось прочитать диск
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Невозможно сохранить игру{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Невозможно удалить файл
@@ -1970,6 +2027,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Нарушен�
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Сэйв сделан в более новой версии
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Файл не читается
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Незаписываемый файл
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Нарушена целостность
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список дисков, папок и сохраненных игр
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Выбранное имя для сохранения игры
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Удалить выбранную сохраненную игру
@@ -2774,6 +2832,7 @@ STR_UNKNOWN_STATION                                             :неизвес�
 STR_8812_EMPTY                                                  :{LTBLUE}Пусто
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} из {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} из {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} ждет в депо
 STR_8815_NEW_VEHICLES                                           :{BLACK}Новый транспорт
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поезд слишком длинный
@@ -2825,6 +2884,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Нево
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Не могу переместить это задание ...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Не могу пропустить это задание...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Не могу пропустить выделенное задание...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}ТС не может достигнуть всех станций
+STR_CAN_T_ADD_ORDER                                             :{WHITE}ТС не может достигнуть этой станции
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}ТС не может достигнуть этой станции
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Невозможно переместить трансп. средство...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Тыловой локомотив всегда следует за его передней частью
 STR_8838_N_A                                                    :отсутствует{SKIP}
@@ -2932,6 +2994,7 @@ STR_9012_CAPACITY                                               :{BLACK}Емко
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...должен быть остановлен в гараже
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Невозможно продать автомобиль...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Невозможно остановить/пустить автомобиль...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} ждет в гараже
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Следует в Гараж {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Следует в гараж {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Обслуж. в гараже {TOWN}
@@ -3013,6 +3076,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Сле�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Следует в док {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Обслуж. в доке {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Обслуж. в доке {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} ждет в доке
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Построить пристань
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Построить док (для строительства и обслуживания кораблей)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Корабли - нажмите для получения справки
@@ -3077,6 +3141,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Лет�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Следует в Ангар {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Обслуж. в ангаре {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Обслуж. в ангаре {STATION}, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} ждет в ангаре
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}ОН ЛЕТИТ!
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Невозможно остановить/запустить авиатранспорт...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Самолет в полете
@@ -3201,6 +3266,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Неверны�
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Неизвестное свойство для Action 0.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Используется неправильный ID.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} содержит неправильный спрайт. Все неправльные спрайты будут показаны красным знаком вопроса (?).
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Содержит несколько Action 8 действий.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Загрузить выбранный набор
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Сохранить набор
@@ -3337,6 +3403,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Нажм
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список меток - {COMMA} Мет{P ка ки ок}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Ошибка задания переоборудования {VEHICLE}
 
 ############ Lists rail types
 
@@ -3457,6 +3524,9 @@ STR_DATE_TINY                                                   :{STRING}.{STRIN
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Выручка перевозки: {LTBLUE}{CURRENCY}
@@ -3612,8 +3682,73 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+STR_AI_DEBUG                                                    :{WHITE}Отладка AI
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Имя AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезагрузить AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Удалить AI, перезагрузить скрипт и перезапустить AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Окно отладки AI доступно только для сервера
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Разрешить городам контролировать уровень шума для аэропортов: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Уровень шума в городе: {ORANGE}{COMMA}{BLACK}  макс: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Производимый шум: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD собрана без поддержки"zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... невозможна загрузка контента!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Основная графика
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Библиотека AI
+STR_CONTENT_TYPE_SCENARIO                                       :Сценарии
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Высотные карты
+STR_CONTENT_TITLE                                               :{WHITE}Загрузка контента
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тип
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Тип контента
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Имя
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Наименование контента
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Нажмите на строке для просмотра подробностей{}Отметьте чекбокс для загрузки
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Выбрать все
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Пометить весь контент для загрузки
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Выбрать апдейты
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Выбрать весь контент, требующий обновления для загрузки
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Снять выделение
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Ничего не загружать
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Скачать
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Начать загрузку выбранного контента
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Всего для загруки: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}ИНФОРМАЦИЯ О КОНТЕНТЕ
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Вы не выбрали этого для загрузки
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Вы выбрали это для загрузки
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Эта зависимость была выбрана для загрузки
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}У вас уже есть это
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Этот контент неизвестен и не может быть загружен для OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}это заменяет уже присутствующий {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Наименование: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версия: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Описание: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}Ссылка: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Тип: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Размер: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Выбрано, т.к.: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Зависимости: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Теги: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Загрузка контента...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Запрашиваем файлы...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Сейчас скачивается {STRING} ({NUM} из {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Загрузка завершена
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} из {BYTES} скачено ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не могу соединиться с сервером контента...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Ошибка загрузки...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... соединение утеряно
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... незаписываемый файл
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не могу распаковать скаченный файл
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Проверить онлайн-контент
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Проверить новый и обновленный контент для скачивания
 ########

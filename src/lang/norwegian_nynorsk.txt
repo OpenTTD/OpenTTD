@@ -1108,6 +1108,10 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Kontroll klikk
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Av
 
 
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Bruk {ORANGE}{STRING}{LTBLUE} datoformat for lagra spel.
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langt (31. des 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kort (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatisk pause når ein startar nytt spel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Bruk avansert køyretøyliste: {ORANGE}{STRING}
@@ -1201,6 +1205,11 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Køyret
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stasjonar
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Motstandarar
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Tog
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Byar
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Industriar
 
 STR_CONFIG_PATCHES_DISABLED                                     :slått av
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -3630,10 +3639,23 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Namnet til datamaskinspelaren
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Last datamaskinspelaren på ny
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Drep datamaskinspelaren, last skriptet på ny og starte om datamaskinspelaren
+STR_AI_ACCEPT                                                   :{BLACK}Godta
+STR_AI_CANCEL                                                   :{BLACK}Avbryt
+STR_AI_CLOSE                                                    :{BLACK}Lukk
+STR_AI_AUTHOR                                                   :Forfattar:
+STR_AI_VERSION                                                  :Versjon:
 ########
 
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillat byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Grense for lydnivå i byen: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Lyd generert: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_TYPE_SCENARIO                                       :Scenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Høgdekart
+
+
+
 ########

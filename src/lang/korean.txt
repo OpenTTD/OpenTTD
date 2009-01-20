@@ -1155,6 +1155,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}컴퓨�
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}컴퓨터의 선박 사용을 허가하지 않음 : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}멀티플레이에서 AI를 허용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}AI가 중지되기 전의 #opcodes: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}열차 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}열차 기본 점검 간격: {ORANGE}사용불가
@@ -1164,7 +1165,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}항공�
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}항공기 기본 점검 간격: {ORANGE}사용불가
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}선박 기본 점검 간격: {ORANGE}{STRING} 일/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}선박 기본 점검 간격: {ORANGE}사용불가
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}고장이 없을시 점검하지 않음 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}고장이 나지 않도록 설정되어 있을 때 점검을 비활성화 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}화물차 속도 제한 사용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}전기 철도를 사용하지 않음 : {ORANGE}{STRING}
 
@@ -1728,7 +1729,7 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :콤보 및 경�
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :콤보 및 일방통행 경로 신호기가 있는 철로
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :경로 및 일방통행 경로 신호기가 있는 철로
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}먼저 기차 정거장을 제거해야 합니다
-STR_CREATE_SPLITTED_STATION                                     :{YELLOW}새 이름으로 정거장 만들기
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}분리된 역을 새로 만들기
 STR_SELECT_STATION_TO_JOIN                                      :{BLACK}같은 이름으로 정거장 만들기
 
 
@@ -1918,7 +1919,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}다른 �
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}1개 이상의 역을 인접시키십시오
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}이 도시에 너무 많은 역이 있습니다
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}역이 너무 많습니다
-STR_TOO_MANY_STATION_SPECS                                      :{WHITE}정거장 부품이 너무 많습니다
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}정거장 조각이 너무 많습니다
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}버스 정류장이 너무 많습니다
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}트럭 적하장이 너무 많습니다
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}다른 역과 너무 가깝습니다!
@@ -2027,7 +2028,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :손상된 세�
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :상위 버젼의 세이브 게임입니다
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :파일을 읽을 수 없습니다
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :파일을 쓸 수 없습니다
-STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :데이터를 완벽하게 체크하는데 실패
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :데이터 무결성 검사 실패
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}드라이프, 폴더, 저장된 게임 파일의 목록입니다
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}저장될 세이브 파일의 이름입니다.
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}선택된 세이브 파일을 삭제합니다.
@@ -2731,10 +2732,10 @@ STR_ORDER_GO_TO                                                 :완행
 STR_ORDER_GO_NON_STOP_TO                                        :직행
 STR_ORDER_GO_VIA                                                :완행 경유
 STR_ORDER_GO_NON_STOP_VIA                                       :직행 경유
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}한개이상화물 가득 싣기
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}아무 화물이나 가득 싣기
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :가능한것만 적재
 STR_ORDER_DROP_FULL_LOAD_ALL                                    :모든 화물을 가득 실음
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :한개이상화물 가득 싣기
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :아무 화물이나 가득 싣기
 STR_ORDER_DROP_NO_LOADING                                       :싣지 않기
 STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}모든 화물 하차
 STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :화물을 받는경우 하차
@@ -2742,19 +2743,19 @@ STR_ORDER_DROP_UNLOAD                                           :모든 화물 �
 STR_ORDER_DROP_TRANSFER                                         :환승
 STR_ORDER_DROP_NO_UNLOADING                                     :화물을 하차시키지 않음
 STR_ORDER_FULL_LOAD                                             :(가득 실음)
-STR_ORDER_FULL_LOAD_ANY                                         :(한개이상화물 가득 싣기)
+STR_ORDER_FULL_LOAD_ANY                                         :(아무 화물이나 가득 싣기)
 STR_ORDER_NO_LOAD                                               :(싣지 않기)
 STR_ORDER_UNLOAD                                                :(화물 하차 후 적재)
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(화물 하차 후 모든 화물을 싣고 출발)
-STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(화물 하차 후 한가지 이상의 화물 가득 싣기)
+STR_ORDER_UNLOAD_FULL_LOAD_ANY                                  :(화물 하차 후 아무 화물이나 가득 싣기)
 STR_ORDER_UNLOAD_NO_LOAD                                        :(화물 하차 후 빈 차로 출발)
 STR_ORDER_TRANSFER                                              :(환승 후 화물 받음)
 STR_ORDER_TRANSFER_FULL_LOAD                                    :(환승 후 모든 화물 적재)
-STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(환승 후 한가지 이상의 화물 가득 싣기)
+STR_ORDER_TRANSFER_FULL_LOAD_ANY                                :(환승 후 아무 화물이나 가득 싣기)
 STR_ORDER_TRANSFER_NO_LOAD                                      :(환승 후 빈 차로 출발)
 STR_ORDER_NO_UNLOAD                                             :(내리지 않고 화물을 받음)
 STR_ORDER_NO_UNLOAD_FULL_LOAD                                   :(내리지 않고 가득 찰 때까지 기다림)
-STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(내리지 않고 특정 화물이 가득 찰 때까지 기다림)
+STR_ORDER_NO_UNLOAD_FULL_LOAD_ANY                               :(내리지 않고 아무 화물이나 가득 찰 때까지 기다림)
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}선택한 목적지에서의 정차 방식을 변경합니다
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}선택한 목적지에서의 화물 적재 방식을 변경합니다
 STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}선택한 목적지에서의 화물 하차 방식을 변경합니다
@@ -3255,6 +3256,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :예기치 않�
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :알수없는 액션 0 속성
 STR_NEWGRF_ERROR_INVALID_ID                                     :유효하지 않은 ID 사용 시도
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 에 손상된 스프라이트가 있습니다. 모든 손상된 스프라이트는 붉은 물음표(?)로 보일 것입니다.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Action 8 엔트리가 여러개 존재합니다.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}선택한 프리셋을 불러옵니다
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}프리셋 저장
@@ -3686,7 +3688,7 @@ STR_STATION_NOISE                                               :{BLACK}발생 �
 ########
 
 ############ Downloading of content from the central server
-STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD는 "zlib"지원없이 만들어졌습니다.
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD는 "zlib" 지원을 포함하지 않고 빌드되었습니다.
 STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... 콘텐츠 다운로드가 불가능합니다!
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :기본 그래픽
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
@@ -3736,7 +3738,7 @@ STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}서버�
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}다운로드 실패...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... 접속 손실
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... 파일 쓰기 실패
-STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드파일을 압축해제할 수 없습니다
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}다운로드한 파일의 압축을 풀 수 없습니다
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}온라인 컨텐츠 체크
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}업데이트된 컨텐츠를 체크합니다

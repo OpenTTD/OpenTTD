@@ -2028,6 +2028,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :El joc desat es
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :El joc desat està fet amb una versió més moderna
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :L'arxiu no es pot llegir l'arxiu
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :No es pot escriure a l'arxiu
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :El test d'integritat de dades ha fallat
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Llista de dispositius de disc, carpetes i arxius de jocs desats
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nom actualment seleccionat per joc desat
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Esborra el joc desat actualment seleccionat
@@ -3684,4 +3685,61 @@ STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}La fine
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permet a la ciutat controlar el nivell de soroll dels aeroports: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Límit de soroll a la ciutat: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Soroll generat: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD no es pot construir sense support "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... no és possible descarregar continguts!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Gràfics base
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :IA
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Llibreria IA
+STR_CONTENT_TYPE_SCENARIO                                       :Escenari
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Mapa d'alçades
+STR_CONTENT_TITLE                                               :{WHITE}Descàrregues de contingut
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipus
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Tipus de contingut
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nom
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nom del contingut
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Clica sobre la linia pr veure els detalls{}Clica sobre la casella per seleccionar-lo per descarregar
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecciona tot
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marca tots els continguts per a ser descarregats
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Selecciona actualitzacions
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Marca tots els continguts que siguin actualitzacions dels continguts a ser descarregats
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deselecciona tot
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Marca tots els continguts a no ser descarregats
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Descarrega
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Comença a descarregar el contingut seleccionat
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Mida de la descàrrega total: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO CONTINGUT
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}No has seleccionat això per a ser descarregat
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Has seleccionat això per a ser descarregat
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Aquesta dependència ha estat seleccionada per a ser descarregada
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ja tens això
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Aquest contingut és desconegut i no pot ser descarregat a OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Això és un substitut per a l'existent {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Nom: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versió: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Descripció: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tipus: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Mida de la Descàrrega: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Seleccionat a causa de: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencies: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Etiquetes: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Descarregant contingut...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Demanant arxius...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Actualment descarregant {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Descàrrega completa
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} of {BYTES} descarregats ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}No s'ha pogut connectar amb el servidor de continguts...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Descàrrega fallida...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... connecció perduda
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... fitxer no escrivible
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}No s'han pogut descomprimir els arxius descarregats
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Comprova contingut en linia
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Comprova si hi ha continguts nous i actualitzats per a descarregar
 ########

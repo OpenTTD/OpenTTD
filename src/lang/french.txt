@@ -3675,11 +3675,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    : 1234567890°+ 
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Paramètres IA
 STR_AI_DEBUG                                                    :{WHITE}Débogage d'IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nom de l'IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recharger IA
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Tuer l'IA, recharger le script et relancer l'IA
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}La fenêtre de débogage d'IA n'est disponible que pour le serveur
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuration IA
+STR_AI_CHANGE                                                   :{BLACK}Sélection IA
+STR_AI_CONFIGURE                                                :{BLACK}Configurer
+STR_AI_CHANGE_TIP                                               :{BLACK}Charger une autre IA
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Configurer les paramètres de l'IA
+STR_AI_LIST_TIP                                                 :{BLACK}Toutes les IA qui seront chargées pendant la prochaine partie
+STR_AI_LIST_CAPTION                                             :{WHITE}IAs disponibles
+STR_AI_AILIST_TIP                                               :{BLACK}Cliquer pour sélectionner une IA
+STR_AI_ACCEPT                                                   :{BLACK}Accepte
+STR_AI_ACCEPT_TIP                                               :{BLACK}Sélectionner l'IA en surbrillance
+STR_AI_CANCEL                                                   :{BLACK}Annuler
+STR_AI_CANCEL_TIP                                               :{BLACK}Ne pas modifier l'IA
+STR_AI_CLOSE                                                    :{BLACK}Fermer
+STR_AI_RESET                                                    :{BLACK}Réinitialiser
+STR_AI_HUMAN_PLAYER                                             :Joueur Humain
+STR_AI_RANDOM_AI                                                :IA aléatoire
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Paramètres IA
+STR_AI_AUTHOR                                                   :Auteur:
+STR_AI_VERSION                                                  :Version:
+STR_AI_DESCRIPTION                                              :Description:
 ########
 
 ############ town controlled noise level

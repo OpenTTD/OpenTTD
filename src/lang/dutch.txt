@@ -3674,11 +3674,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI instellingen
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Naam computerspeler
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Herlaad computerspeler
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Verwijder computerspeler, herlaad het script en herstart computerspeler
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}computerspeler Debug venster is alleen beschikbaar voor de server
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Configuratie
+STR_AI_CHANGE                                                   :{BLACK}Selecteer AI
+STR_AI_CONFIGURE                                                :{BLACK}Configureer
+STR_AI_CHANGE_TIP                                               :{BLACK}Laad andere AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Configureer de parameters van de AI
+STR_AI_LIST_TIP                                                 :{BLACK}Alle AI's die in het volgende spel geladen zullen worden
+STR_AI_LIST_CAPTION                                             :{WHITE}Beschikbare AI's
+STR_AI_AILIST_TIP                                               :{BLACK}Klik om een AI te selecteren
+STR_AI_ACCEPT                                                   :{BLACK}Accepteer
+STR_AI_ACCEPT_TIP                                               :{BLACK}Selecteer gemarkeerde AI
+STR_AI_CANCEL                                                   :{BLACK}Annuleren
+STR_AI_CANCEL_TIP                                               :{BLACK}Verander AI niet
+STR_AI_CLOSE                                                    :{BLACK}Sluit
+STR_AI_RESET                                                    :{BLACK}Herstel
+STR_AI_HUMAN_PLAYER                                             :Menselijke speler
+STR_AI_RANDOM_AI                                                :Willekeurige AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
+STR_AI_AUTHOR                                                   :Maker:
+STR_AI_VERSION                                                  :Versie:
+STR_AI_DESCRIPTION                                              :Omschrijving:
 ########
 
 ############ town controlled noise level

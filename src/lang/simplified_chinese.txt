@@ -488,6 +488,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}地块信息
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}清除费用：{LTBLUE}无
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}清除费用：{RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}清除时确认收入： {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :无
 STR_01A7_OWNER                                                  :{BLACK}属主：{LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}道路属主: {LTBLUE}{STRING}
@@ -1027,6 +1028,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}允许�
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}打开仿真的列车加速模式：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING} {LTBLUE} (需要 NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}将相邻的火车站进行整合：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}允许非毗邻站台合并：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}使用进阶的装货算法：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}装货时循序渐进：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}通货膨胀：{ORANGE}{STRING}
@@ -1129,6 +1131,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :玩家公司
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :全体公司
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}允许使用时间表: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}使用ticks而不是天为单位: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}快速创建车辆调度计划：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}默认铁路类型 (新建/读取游戏后): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :普通铁轨
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :电气化铁路
@@ -1152,6 +1155,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}禁止�
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}禁止电脑使用船只：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}联机游戏时允许电脑玩家(AI): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}AI挂起前的 #opcodes ： {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}火车的默认保养周期：{ORANGE}{STRING} 天/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}火车的默认保养周期：{ORANGE}禁用
@@ -1196,6 +1200,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :中央
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :右侧
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}窗口依附半径：{ORANGE}{STRING} 像素
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}窗口依附半径：{ORANGE}禁用
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}窗口软性限制（非粘滞）：  {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}窗口软性限制（非粘滞）： {ORANGE}禁止
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}城镇发展速度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :无
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :慢
@@ -1220,6 +1226,7 @@ STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}货物�
 STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}电脑玩家
 STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}自动更新
 STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}维修
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}经由
 STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}列车
 STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}城镇
 STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}工业设施
@@ -2768,6 +2775,7 @@ STR_GO_TO_DEPOT                                                 :{STRING} {TOWN}
 STR_GO_TO_NEAREST_DEPOT                                         :{STRING} {STRING} {STRING}
 STR_GO_TO_HANGAR                                                :{STRING} {STATION} 机棚
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :一直前进
 STR_ORDER_DROP_SERVICE_DEPOT                                    :若需要则维护
 STR_ORDER_DROP_HALT_DEPOT                                       :停留
 
@@ -2866,6 +2874,7 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}不能�
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}不能移动这条命令…
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}不能跳过当前命令…
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}不能跳转到选定的命令...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}车辆无法到达全部站点
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}不能移动这项调度计划……
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}尾部的列车引擎必须和头部的一起写作……
 STR_8838_N_A                                                    :N/A{SKIP}

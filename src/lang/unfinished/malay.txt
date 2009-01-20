@@ -148,6 +148,7 @@ STR_00D7_GREEN                                                  :Hijau
 STR_00D8_DARK_GREEN                                             :Hijau Gelap
 STR_00D9_BLUE                                                   :Biru
 STR_00DA_CREAM                                                  :Krim
+STR_00DB_MAUVE                                                  :Ungu Muda
 STR_00DC_PURPLE                                                 :Ungu
 STR_00DD_ORANGE                                                 :Jingga
 STR_00DE_BROWN                                                  :Perang
@@ -209,6 +210,7 @@ STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFON
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Pancutan Plastik
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Kilang Minuman Bergas
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Penjana Buih
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Kuari Tofi
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Lombong Gula
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Stesen Keretapi
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Tempat Pemunggahan Barang
@@ -378,6 +380,7 @@ STR_0170                                                        :{TINYFONT}{STRI
 STR_0171_PAUSE_GAME                                             :{BLACK}Henti Sebentar Permainan
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Simpan Permainan, Tinggalkan Permainan, Keluar
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Papar Senarai Stesen Syarikat
+STR_0174_DISPLAY_MAP                                            :{BLACK}Papar peta, pandangan lebih atau senarai tanda
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Papar Peta, direktori Bandar
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Papar direktori bandar
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Papar maklumat kewangan syarikat
@@ -406,6 +409,7 @@ STR_RESIZE_BUTTON                                               :{BLACK}Klik dan
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Runtuhkan bangunan dll. atas sebuah tanah
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Rendahkan hujung tanah
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Meninggikan hujung tanah
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Bar penatal - Menatal senarai atas/bawah
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Tunjukan bentuk muka bumi
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Tunjukkan kenderaan di peta
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Tunjukkan industri di peta
@@ -420,14 +424,17 @@ STR_AGE                                                         :{COMMA} tahun (
 STR_AGE_RED                                                     :{RED}{COMMA} tahun ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Kenderaan Jalan
-STR_019D_AIRCRAFT                                               :Kapal Terbang
-STR_019E_SHIP                                                   :Kapal
 STR_019F_TRAIN                                                  :Keretapi
+STR_019C_ROAD_VEHICLE                                           :Kenderaan Jalan
+STR_019E_SHIP                                                   :Kapal
+STR_019D_AIRCRAFT                                               :Kapal Terbang
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} menjadi semakin lama
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} menjadi terlalu lama
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} menjadi terlalu lama dan memerlukan penggantian dengan segera
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maklumat Kawasan Tanah
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Harga untuk membersihkan: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Harga untuk membersihkan: {RED}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :Tidak diperolehi
 STR_01A7_OWNER                                                  :{BLACK}Pemilik: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Pemilik jalan: {LTBLUE}{STRING}
 STR_TRAM_OWNER                                                  :{BLACK}Pemilik tramway: {LTBLUE}{STRING}
@@ -485,8 +492,11 @@ STR_01D8_EZY_STREET                                             :{TINYFONT}Loron
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Kekuatan muzik
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Kekuatan Kesan Bunyi
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Lompat ke lagu sebelumnya
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Lompat ke lagu seterusnya
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Henti muzik
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Main muzik
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Tarik pengelincir untuk penentuan muzik dan kesan bunyi
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -506,12 +516,20 @@ STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Program 
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Pilih program 'semua trek'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Pilih program 'muzik gaya lama'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Pilih program 'muzik gaya baru'
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Pilih program 'Custom 1' (pilihan pengguna)
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Pilih program 'Custom 2' (pilihan pengguna)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Batal progam semasa (Custom1 atau Custom2 sahaja)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Simpan seting muzik
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik atas trek muzik untuk menambahkan ke program semasa (Custom1 atau Custom2 sahaja)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Togol program kocok buka/tutup
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Paparkan tingkap pilihan trek muzik
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik di atas servis untuk mendapatkan pandangan tengah pada industri/bandar
 STR_01FE_DIFFICULTY                                             :{BLACK}Kesukaran ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Utusan/laporan berita terakhir
 STR_0201_MESSAGE_SETTINGS                                       :Seting mesej
 STR_MESSAGE_HISTORY_MENU                                        :Sejarah Pesanan
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Paparkan mesej akhir/repot berita, paparkan pilihan mesej
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Pilihan Pesanan
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Jenis Pesanan:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ketibaan kenderaan di stesen pemain
@@ -524,23 +542,40 @@ STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Perubah
 STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Pengubaran pengeluaran industri ditugas oleh syarikat
 STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Pengubaran pengeluaran industri ditugas oleh pesaingan
 STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Pengubaran pengeluaran industri lain
+STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Nasihat/informasi atas kenderaan syarikat
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Kenderaan baru
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Penukaran pada penerimaan kargo
 STR_020E_SUBSIDIES                                              :{YELLOW}Subsidi
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Maklumat umum
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...terlalu jauh daripada destinasi sebelumnya
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Syarikat-syarikat utama yang mencapai {NUM}{}({STRING} Level)
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Ahli perniagaan
+STR_0214_ENTREPRENEUR                                           :Usahawan
+STR_0215_INDUSTRIALIST                                          :Ahli perindustrian
+STR_0216_CAPITALIST                                             :Kapitalis
+STR_0217_MAGNATE                                                :Hartawan
+STR_0218_MOGUL                                                  :Mogul
+STR_0219_TYCOON_OF_THE_CENTURY                                  :Taikun abad semasa
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} mencapai status '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PRESIDENTNAME} dari {COMPANY} mencapai status '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Penyunting Senario
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Meningkatan penyebaran kawasan tanah untuk dinaikkan/diturunkan
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Menurunkan penyebaran kawasan tanah untuk dinaikkan/diturunkan
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Hasilkan secara rawak
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Membentuk lanskap semula
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Membentuk lanskap semula
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Pembentukan lanskap
+STR_022F_TOWN_GENERATION                                        :{BLACK}Pembentukan bandar
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Pembentukan industri
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Pembinaan jalan
+STR_0233_TOWN_GENERATION                                        :{WHITE}Pembentukan Bandar
 STR_0234_NEW_TOWN                                               :{BLACK}Bandar Baru
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Binakan bandar baru
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Tidak boleh membina bandar di sini...
@@ -580,11 +615,15 @@ STR_0255_DIAMOND_MINE                                           :{BLACK}Lombong 
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Lombong Bijih Besi
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Hutan Gula Kapas
 STR_0258_CANDY_FACTORY                                          :{BLACK}Kilang gula-gula
+STR_0259_BATTERY_FARM                                           :{BLACK}Ladang Bateri
 STR_025A_COLA_WELLS                                             :{BLACK}Perigi Kola
 STR_025B_TOY_SHOP                                               :{BLACK}Kedai Permainan
 STR_025C_TOY_FACTORY                                            :{BLACK}Kilang Permainan
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Pancutan Plastik
 STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Kilang air bergas
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Penjana Buih
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}Kuari Tofi
+STR_0261_SUGAR_MINE                                             :{BLACK}Lombong Gula
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Bina Lombong Arang Batu
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Bina Stesen Janakuasa
 STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Bina Kilang Papan
@@ -609,20 +648,43 @@ STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Menyalur
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bina Tangki Air (Hanya boleh dibina di bandar)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bina Lombong Berilian
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bina Lombong Tembaga
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Menanam Hutan Gula Kapas
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bina Kilang Gula-gula
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bina Ladang Bateri
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bina Telaga Cola
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Bina Kedai Permainan
 STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Bina Kilang Mainan
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Bina Pancutan Plastik
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Bina Kilang Air Bergas
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Bina Penjana Buih
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Bina Kuari Tofi
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Bina Lombong Gula
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Tidak boleh bina {STRING} di sini...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...mesti membangunkan bandar dahulu
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...hanya satu dibenarkan untuk setiap bandar
 STR_0288_PLANT_TREES                                            :{BLACK}Tanam pokok
 STR_0289_PLACE_SIGN                                             :{BLACK}Letak tanda
+STR_028A_RANDOM_TREES                                           :{BLACK}Pokok rawak
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Tanam pokok-pokok secara rawak atas lanskap
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Letak kawasan batu-batu atas lanskap
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Letak rumah api
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Letak alat pemancar
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Pilih kawasan gurun {}Tekan dan kekalkan CTRL untuk menanggalkannya
 STR_0290_DELETE                                                 :{BLACK}Buang
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Buang bandar ini sepenuhnya
+STR_0292_SAVE_SCENARIO                                          :Simpan senario
+STR_0293_LOAD_SCENARIO                                          :Muat Senario
 STR_0294_QUIT_EDITOR                                            :Hentikan penyunting
 STR_0296_QUIT                                                   :Berhenti
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Simpan senario, muat senario, Meninggal penyunting senario, Keluar
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Muat Senario
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Simpan Senario
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Main Senario
+STR_029C_QUIT_EDITOR                                            :{WHITE}Keluar dari Penyunting
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... hanya boleh dibina di bandar dengan populasi lebih atau sama dengan 1200
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pindah tarikh permulaan 1 tahun belakang
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pindah tarikh permulaan 1 tahun ke hadapan
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}... penghujung kedua-dua jambatan mesti berada atas tanah
 STR_02A1_SMALL                                                  :{BLACK}Kecil
 STR_02A2_MEDIUM                                                 :{BLACK}Sederhana
 STR_02A3_LARGE                                                  :{BLACK}Besar
@@ -631,15 +693,30 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Saiz ba
 
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Tunjukkan utusan atau laporan berita terakhir
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :Direktori Bandar
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}nama rekabentuk kenderaan
+STR_02BE_DEFAULT                                                :Fungsi lalai
+STR_02BF_CUSTOM                                                 :Custom
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Simpan nama custom
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Pilihan nama rekabentuk kenderaan
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Simpan nama rekabentuk kenderaan custom
 
 ############ range for menu starts
+STR_02C4_GAME_OPTIONS                                           :Pilihan permainan
+STR_02C6_DIFFICULTY_SETTINGS                                    :Tetapan kesukaran
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Paparkan nama bandar
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Paparkan nama stesyen
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Paparkan tanda
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animasi penuh
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Perincian penuh
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Bangunan-bangunan telus
 ############ range ends here
 
 ############ range for menu starts
+STR_02D5_LAND_BLOCK_INFO                                        :Informasi kawasan tanah
 STR_CONSOLE_SETTING                                             :Togolkan konsol
+STR_02D7_SCREENSHOT_CTRL_S                                      :Tangkap gambar skrin (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Tangkap gambar skrin besar (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Tentang 'OpenTTD'
 ############ range ends here
 
@@ -654,9 +731,11 @@ STR_TOWN_POPULATION                                             :{BLACK}Populasi
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unit kewangan
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Pilihan unit kewangan
 STR_MEASURING_UNITS                                             :{BLACK}Ukuran unit
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Kenderaan tanah
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Pilih laluan memandu kenderaan sebelah kiri atau kanan
 STR_02E9_DRIVE_ON_LEFT                                          :Memandu di kiri
 STR_02EA_DRIVE_ON_RIGHT                                         :Memandu di kanan
 STR_02EB_TOWN_NAMES                                             :{BLACK}Nama bandar
@@ -664,17 +743,28 @@ STR_02EC                                                        :{BLACK}{SKIP}{S
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Pilih tema untuk nama bandar
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Simpanan automatik
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Pilih tempoh untuk simpanan permainan automatik
 STR_02F7_OFF                                                    :Matikan
 STR_02F8_EVERY_3_MONTHS                                         :Setiap 3 bulan
 STR_02F9_EVERY_6_MONTHS                                         :Setiap 6 bulan
 STR_02FA_EVERY_12_MONTHS                                        :Setiap 12 bulan
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Mulakan permainan baru
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Muat permainan yang tersimpan
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Membentuk dunia permananan/senario custom
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Pilih permainan satu pemain
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Pilih permainan banyak pemain sebanyak 2-8 pemain
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Papar pilihan permainan
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Papar pilihan kesukaran
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Mulakan permainan baru, dengan mengunnakan senario custom
 STR_0304_QUIT                                                   :{BLACK}Keluar
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Keluar 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...Hanya boleh dibina di bandar
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Pilih lanskap 'khatulistiwa'
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK} Pilih lanskap 'sub-artik'
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Pilih lanskap 'sub-tropical'
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Pilih lanskap 'dunia permainan'
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Biaya pembangunan industri baru atau senarai semua industri
 
 ############ range for menu starts
 STR_INDUSTRY_DIR                                                :Direktori Industri
@@ -687,6 +777,7 @@ STR_JUST_RAW_STRING                                             :{STRING}
 STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...hanya boleh dibina di bandar
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...hanya boleh dibina di kawasan hutan
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...hanya boleh dibina di kawasan gurun
 STR_0319_PAUSED                                                 :{YELLOW}* *  DIHENTIKAN  *  *
 
 
@@ -807,6 +898,8 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Matikan
 
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Matikan
 
+
+
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Matikan
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OWN                   :Syarikat sendiri
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_ALL                   :Semua syarikat
@@ -882,7 +975,6 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Menukark
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Bina Lombong Bijih Besi
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Tumbuh Hutan Gula Kapas
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Menggerudi untuk Kola
-
 
 
 
@@ -1282,5 +1374,14 @@ STR_FACE_NO                                                     :Tidak
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

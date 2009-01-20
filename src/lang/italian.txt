@@ -2030,6 +2030,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Salvataggio dan
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Salvataggio creato con una versione più recente
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :File non leggibile
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :File non scrivibile
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Controllo integrità dati fallito
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Elenco delle unità, delle cartelle e dei file delle partite salvate
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome del salvataggio selezionato
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Elimina il salvataggio selezionato
@@ -3705,7 +3706,7 @@ STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nome del
 STR_CONTENT_MATRIX_TIP                                          :{BLACK}Fare clic su un elemento per visualizzarne i dettagli.{}Selezionare la casella di controllo per includere nel download.
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Seleziona tutti
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Include nel download tutti i contenuti
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Seleziona aggiornamenti
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. aggiornamenti
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Include nel download tutte le versioni aggiornate di contenuti esistenti
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Deseleziona tutti
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Esclude dal download tutti gli elementi
@@ -3741,6 +3742,6 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... conn
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... impossibile scrivere il file
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossibile decomprimere il file scaricato
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Controlla contenuti online
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Contenuti online
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Controlla l'esistenza di contenuti nuovi o aggiornati da scaricare
 ########

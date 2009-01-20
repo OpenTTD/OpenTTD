@@ -1059,10 +1059,15 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemozno 
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec zdielanych prikazov - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nemôže nájsť cestu pre pokračovanie.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} sa stratilo.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} zisk vozidla v minulom roku bol {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europska Menova Unia!{}{}Euro bolo uvedene ako hlavna mena pre bezne pouzivanie v tejto krajine.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} má veľmi málo príkazov v poriadku
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} má neplatný príkaz
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} má dvojité príkazy
 STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} má nesprávnu stanicu v zozname
 # end of order system
 
@@ -3729,10 +3734,41 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Meno AI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}Znovu načítať AI
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zrušiť AI, znovu načítať skript, a reštartovať AI
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug okno je dostupné len pre server
 ########
 
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Povolit mestom urcené hlukové limity pre letiská: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Hlukový limit v meste: {ORANGE}{COMMA}{BLACK}  max.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Vytváraný hluk: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD je skompilovené bez "zlib" podpory...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... stiahnutie obsahu nie je možné!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Základná grafika
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI knižnica
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Označené pretože: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Závislosti: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagy: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Sťahujem obsah...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Požadované súbory...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Práve sťahujem {STRING} ({NUM} z {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Sťahovanie dokončené
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} z {BYTES} stiahnuté ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nemôžem sa pripojiť na zdojový server...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Sťahovanie zlyhalo...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... spojenie stratené
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... súbor sa nedá zapísať
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nemôžem rozbaliť stiahnutý súbor
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Skontrolovať online obsah
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Skontrolovať nový a aktualizovaný obsah pre stiahnutie
 ########

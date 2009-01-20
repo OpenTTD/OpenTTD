@@ -3708,7 +3708,28 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER} لقد
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER} هذا الدعم قد اختير للتحميل
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER} هذا المحتوى موجود لديك مسبقا
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER} المحتوى غير معروف و لن يتم تحميلة على النسخة المفتوحة
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER} هذا استبدال للملف الموجود {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER} الاسم:  {WHITE} {STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER} النسخة: {WHITE} {STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER} الوصف : {WHITE} {STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER} عنوان النت: {WHITE} {STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER} النوع: {WHITE} {STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER} حجم التحميل: {WHITE} {BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER} اختير بسبب: {WHITE} {STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER} الاسم الرمزي: {WHITE} {STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE} يتم التحميل الان ...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE} يتم طلب الملفات ...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE} يتم تحميل {STRING}  - {NUM}  من {NUM}
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE} انتهى التحميل
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} من {BYTES}  {NUM} %
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE} لم يتم  الربط مع خادم المحتوى
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE} فشل التحميل ...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE} ... فقد الربط بالخادم
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE} ... لا يمكن الكتابة على الملف
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE} لم يتمكن من فك الضغط للملف المحمل
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK} ابحث عن المحتوى على الانتر نت
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK} ابحث عن محتوى جديد او تحديث
 ########

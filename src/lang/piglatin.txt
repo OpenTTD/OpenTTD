@@ -3674,11 +3674,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|E
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AIWAY ettingssay
 STR_AI_DEBUG                                                    :{WHITE}AIWAY Ebugday
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Amenay ofway ethay AIWAY
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Eloadray AIWAY
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Illkay ethay AIWAY, eloadray ethay iptscray, andway estartray ethay AIWAY
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AIWAY Ebugday indowway isway onlyway availableway orfay ethay erversay
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AIWAY Onfigurationcay
+STR_AI_CHANGE                                                   :{BLACK}Electsay AIWAY
+STR_AI_CONFIGURE                                                :{BLACK}Onfigurecay
+STR_AI_CHANGE_TIP                                               :{BLACK}Oadlay anotherway AIWAY
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Onfigurecay ethay arameterspay ofway ethay AIWAY
+STR_AI_LIST_TIP                                                 :{BLACK}Allway AIsway atthay illway ebay oadedlay inway ethay extnay amegay
+STR_AI_LIST_CAPTION                                             :{WHITE}Availableway AIsway
+STR_AI_AILIST_TIP                                               :{BLACK}Ickclay otay electsay anway AIWAY
+STR_AI_ACCEPT                                                   :{BLACK}Acceptway
+STR_AI_ACCEPT_TIP                                               :{BLACK}Electsay ighlightedhay AIWAY
+STR_AI_CANCEL                                                   :{BLACK}Ancelcay
+STR_AI_CANCEL_TIP                                               :{BLACK}On'tday angechay AIWAY
+STR_AI_CLOSE                                                    :{BLACK}Oseclay
+STR_AI_RESET                                                    :{BLACK}Esetray
+STR_AI_HUMAN_PLAYER                                             :Umanhay ayerplay
+STR_AI_RANDOM_AI                                                :Andomray AIWAY
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AIWAY Arameterspay
+STR_AI_AUTHOR                                                   :Authorway:
+STR_AI_VERSION                                                  :Ersionvay:
+STR_AI_DESCRIPTION                                              :Escriptionday:
 ########
 
 ############ town controlled noise level
