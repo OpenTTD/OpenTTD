@@ -11,6 +11,8 @@
 #include "../debug.h"
 #include "../newgrf_config.h"
 #include "../core/alloc_func.hpp"
+#include "../thread.h"
+#include "../string_func.h"
 #include "network_internal.h"
 #include "core/game.h"
 #include "network_udp.h"
@@ -18,6 +20,46 @@
 #include "network_gui.h"
 
 NetworkGameList *_network_game_list = NULL;
+
+ThreadMutex *_network_game_list_mutex = ThreadMutex::New();
+NetworkGameList *_network_game_delayed_insertion_list = NULL;
+
+/** Add a new item to the linked gamelist, but do it delayed in the next tick
+ * or so to prevent race conditions.
+ * @param item the item to add. Will be freed once added.
+ */
+void NetworkGameListAddItemDelayed(NetworkGameList *item)
+{
+	_network_game_list_mutex->BeginCritical();
+	item->next = _network_game_delayed_insertion_list;
+	_network_game_delayed_insertion_list = item;
+	_network_game_list_mutex->EndCritical();
+}
+
+/** Perform the delayed (thread safe) insertion into the game list */
+static void NetworkGameListHandleDelayedInsert()
+{
+	_network_game_list_mutex->BeginCritical();
+	while (_network_game_delayed_insertion_list != NULL) {
+		NetworkGameList *ins_item = _network_game_delayed_insertion_list;
+		_network_game_delayed_insertion_list = ins_item->next;
+
+		NetworkGameList *item = NetworkGameListAddItem(ins_item->ip, ins_item->port);
+
+		if (item != NULL) {
+			if (StrEmpty(item->info.server_name)) {
+				memset(&item->info, 0, sizeof(item->info));
+				strecpy(item->info.server_name, ins_item->info.server_name, lastof(item->info.server_name));
+				strecpy(item->info.hostname, ins_item->info.hostname, lastof(item->info.hostname));
+				item->online = false;
+			}
+			item->manually = ins_item->manually;
+			UpdateNetworkGameWindow(false);
+		}
+		free(ins_item);
+	}
+	_network_game_list_mutex->EndCritical();
+}
 
 /** Add a new item to the linked gamelist. If the IP and Port match
  * return the existing item instead of adding it again
@@ -36,8 +78,7 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 		prev_item = item;
 	}
 
-	item = MallocT<NetworkGameList>(1);
-	memset(item, 0, sizeof(*item));
+	item = CallocT<NetworkGameList>(1);
 	item->next = NULL;
 	item->ip = ip;
 	item->port = port;
@@ -91,6 +132,8 @@ enum {
 /** Requeries the (game) servers we have not gotten a reply from */
 void NetworkGameListRequery()
 {
+	NetworkGameListHandleDelayedInsert();
+
 	static uint8 requery_cnt = 0;
 
 	if (++requery_cnt < REQUERY_EVERY_X_GAMELOOPS) return;

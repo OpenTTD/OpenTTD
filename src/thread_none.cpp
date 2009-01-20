@@ -10,3 +10,15 @@
 	if (thread != NULL) *thread = NULL;
 	return false;
 }
+
+/** Mutex that doesn't do locking because it ain't needed when there're no threads */
+class ThreadMutex_None : ThreadMutex {
+public:
+	virtual void BeginCritical() {}
+	virtual void EndCritical() {}
+};
+
+/* static */ ThreadMutex *ThreadMutex::New()
+{
+	return new ThreadMutex_None;
+}

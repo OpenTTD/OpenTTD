@@ -83,3 +83,37 @@ private:
 	if (thread != NULL) *thread = to;
 	return true;
 }
+
+/**
+ * POSIX pthread version of ThreadMutex.
+ */
+class ThreadMutex_pthread : public ThreadMutex {
+private:
+	pthread_mutex_t mutex;
+
+public:
+	ThreadMutex_pthread()
+	{
+		pthread_mutex_init(&this->mutex, NULL);
+	}
+
+	/* virtual */ ~ThreadMutex_pthread()
+	{
+		pthread_mutex_destroy(&this->mutex);
+	}
+
+	/* virtual */ void BeginCritical()
+	{
+		pthread_mutex_lock(&this->mutex);
+	}
+
+	/* virtual */ void EndCritical()
+	{
+		pthread_mutex_unlock(&this->mutex);
+	}
+};
+
+/* static */ ThreadMutex *ThreadMutex::New()
+{
+	return new ThreadMutex_pthread();
+}

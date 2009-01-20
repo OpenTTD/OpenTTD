@@ -21,6 +21,7 @@ struct NetworkGameList {
 /** Game list of this client */
 extern NetworkGameList *_network_game_list;
 
+void NetworkGameListAddItemDelayed(NetworkGameList *item);
 NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port);
 void NetworkGameListRemoveItem(NetworkGameList *remove);
 void NetworkGameListRequery();

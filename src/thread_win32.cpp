@@ -93,3 +93,37 @@ private:
 	if (thread != NULL) *thread = to;
 	return true;
 }
+
+/**
+ * Win32 thread version of ThreadMutex.
+ */
+class ThreadMutex_Win32 : public ThreadMutex {
+private:
+	CRITICAL_SECTION critical_section;
+
+public:
+	ThreadMutex_Win32()
+	{
+		InitializeCriticalSection(&this->critical_section);
+	}
+
+	/* virtual */ ~ThreadMutex_Win32()
+	{
+		DeleteCriticalSection(&this->critical_section);
+	}
+
+	/* virtual */ void BeginCritical()
+	{
+		EnterCriticalSection(&this->critical_section);
+	}
+
+	/* virtual */ void EndCritical()
+	{
+		LeaveCriticalSection(&this->critical_section);
+	}
+};
+
+/* static */ ThreadMutex *ThreadMutex::New()
+{
+	return new ThreadMutex_Win32();
+}

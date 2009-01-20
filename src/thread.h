@@ -40,4 +40,27 @@ public:
 	static bool New(OTTDThreadFunc proc, void *param, ThreadObject **thread = NULL);
 };
 
+/**
+ * Cross-platform Mutex
+ */
+class ThreadMutex {
+public:
+	static ThreadMutex *New();
+
+	/**
+	 * Virtual Destructor to avoid compiler warnings.
+	 */
+	virtual ~ThreadMutex() {};
+
+	/**
+	 * Begin the critical section
+	 */
+	virtual void BeginCritical() = 0;
+
+	/**
+	 * End of the critical section
+	 */
+	virtual void EndCritical() = 0;
+};
+
 #endif /* THREAD_H */

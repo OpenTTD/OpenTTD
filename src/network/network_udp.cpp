@@ -20,13 +20,17 @@
 #include "../variables.h"
 #include "../newgrf_config.h"
 #include "../core/endian_func.hpp"
+#include "../core/alloc_func.hpp"
 #include "../string_func.h"
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../settings_type.h"
+#include "../thread.h"
 #include "../rev.h"
 
 #include "core/udp.h"
+
+ThreadMutex *_network_udp_mutex = ThreadMutex::New();
 
 enum {
 	ADVERTISE_NORMAL_INTERVAL = 30000, // interval between advertising in ticks (15 minutes)
@@ -352,9 +356,11 @@ void NetworkUDPCloseAll()
 {
 	DEBUG(net, 1, "[udp] closed listeners");
 
+	_network_udp_mutex->BeginCritical();
 	_udp_server_socket->Close();
 	_udp_master_socket->Close();
 	_udp_client_socket->Close();
+	_network_udp_mutex->EndCritical();
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
@@ -420,55 +426,66 @@ void NetworkUDPSearchGame()
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
 }
 
+/** Simpler wrapper struct for NetworkUDPQueryServerThread */
+struct NetworkUDPQueryServerInfo : NetworkAddress {
+	bool manually; ///< Did we connect manually or not?
+	NetworkUDPQueryServerInfo(const NetworkAddress &address, bool manually) :
+		NetworkAddress(address),
+		manually(manually)
+	{
+	}
+};
+
+/**
+ * Threaded part for resolving the IP of a server and querying it.
+ * @param pntr the NetworkUDPQueryServerInfo.
+ */
+void NetworkUDPQueryServerThread(void *pntr)
+{
+	NetworkUDPQueryServerInfo *info = (NetworkUDPQueryServerInfo*)pntr;
+
+	struct sockaddr_in out_addr;
+	out_addr.sin_family = AF_INET;
+	out_addr.sin_port = htons(info->GetPort());
+	out_addr.sin_addr.s_addr = info->GetIP();
+
+	/* Clear item in gamelist */
+	NetworkGameList *item = CallocT<NetworkGameList>(1);
+	item->ip = info->GetIP();
+	item->port = info->GetPort();
+	strecpy(item->info.server_name, info->GetHostname(), lastof(item->info.server_name));
+	strecpy(item->info.hostname, info->GetHostname(), lastof(item->info.hostname));
+	item->manually = info->manually;
+	NetworkGameListAddItemDelayed(item);
+
+	_network_udp_mutex->BeginCritical();
+	/* Init the packet */
+	Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
+	if (_udp_client_socket != NULL) _udp_client_socket->SendPacket(&p, &out_addr);
+	_network_udp_mutex->EndCritical();
+
+	delete info;
+}
+
 void NetworkUDPQueryServer(NetworkAddress address, bool manually)
 {
-	struct sockaddr_in out_addr;
-	NetworkGameList *item;
-
 	// No UDP-socket yet..
 	if (!_udp_client_socket->IsConnected()) {
 		if (!_udp_client_socket->Listen(0, 0, true)) return;
 	}
 
-	out_addr.sin_family = AF_INET;
-	out_addr.sin_port = htons(address.GetPort());
-	out_addr.sin_addr.s_addr = address.GetIP();
-
-	// Clear item in gamelist
-	item = NetworkGameListAddItem(address.GetIP(), address.GetPort());
-	if (item == NULL) return;
-
-	if (StrEmpty(item->info.server_name)) {
-		memset(&item->info, 0, sizeof(item->info));
-		strecpy(item->info.server_name, address.GetHostname(), lastof(item->info.server_name));
-		strecpy(item->info.hostname, address.GetHostname(), lastof(item->info.hostname));
-		item->online = false;
+	NetworkUDPQueryServerInfo *info = new NetworkUDPQueryServerInfo(address, manually);
+	if (address.IsResolved() || !ThreadObject::New(NetworkUDPQueryServerThread, info)) {
+		NetworkUDPQueryServerThread(info);
 	}
-	item->manually = manually;
-
-	// Init the packet
-	Packet p(PACKET_UDP_CLIENT_FIND_SERVER);
-	_udp_client_socket->SendPacket(&p, &out_addr);
-
-	UpdateNetworkGameWindow(false);
 }
 
-/* Remove our advertise from the master-server */
-void NetworkUDPRemoveAdvertise()
+void NetworkUDPRemoveAdvertiseThread(void *pntr)
 {
-	struct sockaddr_in out_addr;
-
-	/* Check if we are advertising */
-	if (!_networking || !_network_server || !_network_udp_server) return;
-
-	/* check for socket */
-	if (!_udp_master_socket->IsConnected()) {
-		if (!_udp_master_socket->Listen(_network_server_bind_ip, 0, false)) return;
-	}
-
 	DEBUG(net, 1, "[udp] removing advertise from master server");
 
 	/* Find somewhere to send */
+	struct sockaddr_in out_addr;
 	out_addr.sin_family = AF_INET;
 	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
 	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
@@ -478,15 +495,54 @@ void NetworkUDPRemoveAdvertise()
 	/* Packet is: Version, server_port */
 	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
 	p.Send_uint16(_settings_client.network.server_port);
-	_udp_master_socket->SendPacket(&p, &out_addr);
+
+	_network_udp_mutex->BeginCritical();
+	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr);
+	_network_udp_mutex->EndCritical();
+}
+
+/* Remove our advertise from the master-server */
+void NetworkUDPRemoveAdvertise()
+{
+	/* Check if we are advertising */
+	if (!_networking || !_network_server || !_network_udp_server) return;
+
+	/* check for socket */
+	if (!_udp_master_socket->IsConnected()) {
+		if (!_udp_master_socket->Listen(_network_server_bind_ip, 0, false)) return;
+	}
+
+	if (!ThreadObject::New(NetworkUDPRemoveAdvertiseThread, NULL)) {
+		NetworkUDPRemoveAdvertiseThread(NULL);
+	}
+}
+
+void NetworkUDPAdvertiseThread(void *pntr)
+{
+	/* Find somewhere to send */
+	struct sockaddr_in out_addr;
+	out_addr.sin_family = AF_INET;
+	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
+	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
+
+	DEBUG(net, 1, "[udp] advertising to master server");
+
+	/* Send the packet */
+	Packet p(PACKET_UDP_SERVER_REGISTER);
+	/* Packet is: WELCOME_MESSAGE, Version, server_port */
+	p.Send_string(NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
+	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
+	p.Send_uint16(_settings_client.network.server_port);
+
+	_network_udp_mutex->BeginCritical();
+	if (_udp_master_socket != NULL) _udp_master_socket->SendPacket(&p, &out_addr);
+	_network_udp_mutex->EndCritical();
 }
 
 /* Register us to the master server
      This function checks if it needs to send an advertise */
 void NetworkUDPAdvertise()
 {
-	struct sockaddr_in out_addr;
-
 	/* Check if we should send an advertise */
 	if (!_networking || !_network_server || !_network_udp_server || !_settings_client.network.server_advertise)
 		return;
@@ -514,44 +570,37 @@ void NetworkUDPAdvertise()
 	_network_advertise_retries--;
 	_network_last_advertise_frame = _frame_counter;
 
-	/* Find somewhere to send */
-	out_addr.sin_family = AF_INET;
-	out_addr.sin_port = htons(NETWORK_MASTER_SERVER_PORT);
-	out_addr.sin_addr.s_addr = NetworkResolveHost(NETWORK_MASTER_SERVER_HOST);
-
-	DEBUG(net, 1, "[udp] advertising to master server");
-
-	/* Send the packet */
-	Packet p(PACKET_UDP_SERVER_REGISTER);
-	/* Packet is: WELCOME_MESSAGE, Version, server_port */
-	p.Send_string(NETWORK_MASTER_SERVER_WELCOME_MESSAGE);
-	p.Send_uint8 (NETWORK_MASTER_SERVER_VERSION);
-	p.Send_uint16(_settings_client.network.server_port);
-	_udp_master_socket->SendPacket(&p, &out_addr);
+	if (!ThreadObject::New(NetworkUDPAdvertiseThread, NULL)) {
+		NetworkUDPAdvertiseThread(NULL);
+	}
 }
 
 void NetworkUDPInitialize()
 {
 	assert(_udp_client_socket == NULL && _udp_server_socket == NULL && _udp_master_socket == NULL);
 
+	_network_udp_mutex->BeginCritical();
 	_udp_client_socket = new ClientNetworkUDPSocketHandler();
 	_udp_server_socket = new ServerNetworkUDPSocketHandler();
 	_udp_master_socket = new MasterNetworkUDPSocketHandler();
 
 	_network_udp_server = false;
 	_network_udp_broadcast = 0;
+	_network_udp_mutex->EndCritical();
 }
 
 void NetworkUDPShutdown()
 {
 	NetworkUDPCloseAll();
 
+	_network_udp_mutex->BeginCritical();
 	delete _udp_client_socket;
 	delete _udp_server_socket;
 	delete _udp_master_socket;
 	_udp_client_socket = NULL;
 	_udp_server_socket = NULL;
 	_udp_master_socket = NULL;
+	_network_udp_mutex->EndCritical();
 }
 
 #endif /* ENABLE_NETWORK */
