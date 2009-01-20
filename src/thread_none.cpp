@@ -5,22 +5,8 @@
 #include "stdafx.h"
 #include "thread.h"
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
+/* static */ bool ThreadObject::New(OTTDThreadFunc proc, void *param, ThreadObject **thread)
 {
-	return NULL;
-}
-
-/* static */ ThreadObject *ThreadObject::AttachCurrent()
-{
-	return NULL;
-}
-
-/* static */ uint ThreadObject::CurrentId()
-{
-	return -1;
-}
-
-/* static */ ThreadSemaphore *ThreadSemaphore::New()
-{
-	return NULL;
+	if (thread != NULL) *thread = NULL;
+	return false;
 }

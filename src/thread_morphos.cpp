@@ -59,12 +59,14 @@ private:
 	APTR m_thr;                  ///< System thread identifier.
 	struct MsgPort *m_replyport;
 	struct OTTDThreadStartupMessage m_msg;
+	bool self_destruct;
 
 public:
 	/**
 	 * Create a sub process and start it, calling proc(param).
 	 */
-	ThreadObject_MorphOS(OTTDThreadFunc proc, void *param) : m_thr(0)
+	ThreadObject_MorphOS(OTTDThreadFunc proc, void *param, self_destruct) :
+		m_thr(0), self_destruct(self_destruct)
 	{
 		struct Task *parent;
 
@@ -108,36 +110,8 @@ public:
 		}
 	}
 
-	/**
-	 * Create a thread and attach current thread to it.
-	 */
-	ThreadObject_MorphOS() : m_thr(0)
-	{
-		m_thr = FindTask(NULL);
-	}
-
 	/* virtual */ ~ThreadObject_MorphOS()
 	{
-	}
-
-	/* virtual */ bool IsRunning()
-	{
-		return m_thr != 0;
-	}
-
-	/* virtual */ bool WaitForStop()
-	{
-		/* You can't wait on yourself */
-		assert(!IsCurrent());
-		/* If the thread is not running, waiting is over */
-		if (!IsRunning()) return true;
-
-		WaitPort(m_replyport);
-
-		GetMsg(m_replyport);
-		DeleteMsgPort(m_replyport);
-
-		return true;
 	}
 
 	/* virtual */ bool Exit()
@@ -146,8 +120,6 @@ public:
 
 		/* You can only exit yourself */
 		assert(IsCurrent());
-		/* If the thread is not running, we are already closed */
-		if (!IsRunning()) return false;
 
 		KPutStr("[Child] Aborting...\n");
 
@@ -180,11 +152,6 @@ public:
 		return FindTask(NULL) == m_thr;
 	}
 
-	/* virtual */ uint GetId()
-	{
-		return (uint)m_thr;
-	}
-
 private:
 	/**
 	 * On thread creation, this function is called, which calls the real startup
@@ -212,56 +179,14 @@ private:
 
 		/*  Quit the child, exec.library will reply the startup msg internally. */
 		KPutStr("[Child] Done.\n");
+
+		if (self_destruct) delete this;
 	}
 };
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
+/* static */ bool ThreadObject::New(OTTDThreadFunc proc, void *param, ThreadObject **thread)
 {
-	return new ThreadObject_MorphOS(proc, param);
-}
-
-/* static */ ThreadObject *ThreadObject::AttachCurrent()
-{
-	return new ThreadObject_MorphOS();
-}
-
-/* static */ uint ThreadObject::CurrentId()
-{
-	return (uint) FindTask(NULL);
-}
-
-
-/**
- * MorphOS version of ThreadSemaphore.
- */
-class ThreadSemaphore_MorphOS : public ThreadSemaphore {
-private:
-	struct SignalSemaphore m_sem;
-
-public:
-	ThreadSemaphore_MorphOS()
-	{
-		InitSemaphore(&m_sem);
-	}
-
-	/* virtual */ ~ThreadSemaphore_MorphOS()
-	{
-
-	}
-
-	/* virtual */ void Set()
-	{
-		/* Check if semaphore count is really important there. */
-		ReleaseSemaphore(&m_sem);
-	}
-
-	/* virtual */ void Wait()
-	{
-		ObtainSemaphore(&m_sem);
-	}
-};
-
-/* static */ ThreadSemaphore *ThreadSemaphore::New()
-{
-	return new ThreadSemaphore_MorphOS();
+	ThreadObject *to = new ThreadObject_MorphOS(proc, param, thread == NULL);
+	if (thread != NULL) *thread = to;
+	return true;
 }

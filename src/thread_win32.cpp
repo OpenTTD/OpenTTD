@@ -15,77 +15,39 @@
  */
 class ThreadObject_Win32 : public ThreadObject {
 private:
-	uint     m_id_thr;
-	HANDLE   m_h_thr;
-	OTTDThreadFunc m_proc;
-	void     *m_param;
-	bool     m_attached;
+	HANDLE thread;       ///< System thread identifier.
+	uint id;             ///< Thread identifier.
+	OTTDThreadFunc proc; ///< External thread procedure.
+	void *param;         ///< Parameter for the external thread procedure.
+	bool self_destruct;  ///< Free ourselves when done?
 
 public:
 	/**
 	 * Create a win32 thread and start it, calling proc(param).
 	 */
-	ThreadObject_Win32(OTTDThreadFunc proc, void *param) :
-		m_id_thr(0),
-		m_h_thr(NULL),
-		m_proc(proc),
-		m_param(param),
-		m_attached(false)
+	ThreadObject_Win32(OTTDThreadFunc proc, void *param, bool self_destruct) :
+		thread(NULL),
+		id(0),
+		proc(proc),
+		param(param),
+		self_destruct(self_destruct)
 	{
-		m_h_thr = (HANDLE)_beginthreadex(NULL, 0, &stThreadProc, this, CREATE_SUSPENDED, &m_id_thr);
-		if (m_h_thr == NULL) return;
-		ResumeThread(m_h_thr);
-	}
-
-	/**
-	 * Create a win32 thread and attach current thread to it.
-	 */
-	ThreadObject_Win32() :
-		m_id_thr(0),
-		m_h_thr(NULL),
-		m_proc(NULL),
-		m_param(NULL),
-		m_attached(false)
-	{
-		BOOL ret = DuplicateHandle(GetCurrentProcess(), GetCurrentThread(), GetCurrentProcess(), &m_h_thr, 0, FALSE, DUPLICATE_SAME_ACCESS);
-		if (!ret) return;
-		m_id_thr = GetCurrentThreadId();
+		this->thread = (HANDLE)_beginthreadex(NULL, 0, &stThreadProc, this, CREATE_SUSPENDED, &this->id);
+		if (this->thread == NULL) return;
+		ResumeThread(this->thread);
 	}
 
 	/* virtual */ ~ThreadObject_Win32()
 	{
-		if (m_h_thr != NULL) {
-			CloseHandle(m_h_thr);
-			m_h_thr = NULL;
+		if (this->thread != NULL) {
+			CloseHandle(this->thread);
+			this->thread = NULL;
 		}
-	}
-
-	/* virtual */ bool IsRunning()
-	{
-		if (m_h_thr == NULL) return false;
-		DWORD exit_code = 0;
-		if (!GetExitCodeThread(m_h_thr, &exit_code)) return false;
-		return (exit_code == STILL_ACTIVE);
-	}
-
-	/* virtual */ bool WaitForStop()
-	{
-		/* You can't wait on yourself */
-		assert(!IsCurrent());
-		/* If the thread is not running, waiting is over */
-		if (!IsRunning()) return true;
-
-		DWORD res = WaitForSingleObject(m_h_thr, INFINITE);
-		return res == WAIT_OBJECT_0;
 	}
 
 	/* virtual */ bool Exit()
 	{
-		/* You can only exit yourself */
-		assert(IsCurrent());
-		/* If the thread is not running, we are already closed */
-		if (!IsRunning()) return false;
-
+		assert(GetCurrentThreadId() == this->id);
 		/* For now we terminate by throwing an error, gives much cleaner cleanup */
 		throw OTTDThreadExitSignal();
 	}
@@ -93,20 +55,8 @@ public:
 	/* virtual */ void Join()
 	{
 		/* You cannot join yourself */
-		assert(!IsCurrent());
-
-		WaitForSingleObject(m_h_thr, INFINITE);
-	}
-
-	/* virtual */ bool IsCurrent()
-	{
-		DWORD id_cur = GetCurrentThreadId();
-		return id_cur == m_id_thr;
-	}
-
-	/* virtual */ uint GetId()
-	{
-		return m_id_thr;
+		assert(GetCurrentThreadId() != this->id);
+		WaitForSingleObject(this->thread, INFINITE);
 	}
 
 private:
@@ -127,60 +77,19 @@ private:
 	void ThreadProc()
 	{
 		try {
-			m_proc(m_param);
+			this->proc(this->param);
 		} catch (OTTDThreadExitSignal) {
 		} catch (...) {
 			NOT_REACHED();
 		}
+
+		if (self_destruct) delete this;
 	}
 };
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
+/* static */ bool ThreadObject::New(OTTDThreadFunc proc, void *param, ThreadObject **thread)
 {
-	return new ThreadObject_Win32(proc, param);
-}
-
-/* static */ ThreadObject* ThreadObject::AttachCurrent()
-{
-	return new ThreadObject_Win32();
-}
-
-/* static */ uint ThreadObject::CurrentId()
-{
-	return GetCurrentThreadId();
-}
-
-
-/**
- * Win32 thread version of ThreadSemaphore.
- */
-class ThreadSemaphore_Win32 : public ThreadSemaphore {
-private:
-	HANDLE m_handle;
-
-public:
-	ThreadSemaphore_Win32()
-	{
-		m_handle = ::CreateEvent(NULL, FALSE, FALSE, NULL);
-	}
-
-	/* virtual */ ~ThreadSemaphore_Win32()
-	{
-		::CloseHandle(m_handle);
-	}
-
-	/* virtual */ void Set()
-	{
-		::SetEvent(m_handle);
-	}
-
-	/* virtual */ void Wait()
-	{
-		::WaitForSingleObject(m_handle, INFINITE);
-	}
-};
-
-/* static */ ThreadSemaphore *ThreadSemaphore::New()
-{
-	return new ThreadSemaphore_Win32();
+	ThreadObject *to = new ThreadObject_Win32(proc, param, thread == NULL);
+	if (thread != NULL) *thread = to;
+	return true;
 }

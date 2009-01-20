@@ -300,7 +300,7 @@ void GenerateWorld(GenerateWorldMode mode, uint size_x, uint size_y)
 	}
 
 	if (BlitterFactoryBase::GetCurrentBlitter()->GetScreenDepth() == 0 ||
-	    (_gw.thread = ThreadObject::New(&_GenerateWorld, NULL)) == NULL) {
+	    !ThreadObject::New(&_GenerateWorld, NULL, &_gw.thread)) {
 		DEBUG(misc, 1, "Cannot create genworld thread, reverting to single-threaded mode");
 		_gw.threaded = false;
 		_GenerateWorld(NULL);

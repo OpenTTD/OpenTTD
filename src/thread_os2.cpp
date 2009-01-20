@@ -59,22 +59,8 @@ void OTTDExitThread()
 
 #endif
 
-/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param)
+/* static */ ThreadObject *ThreadObject::New(OTTDThreadFunc proc, void *param, ThreadObject **thread)
 {
-	return NULL;
-}
-
-/* static */ ThreadObject *ThreadObject::AttachCurrent()
-{
-	return NULL;
-}
-
-/* static */ uint ThreadObject::CurrentId()
-{
-	return -1;
-}
-
-/* static */ ThreadSemaphore *ThreadSemaphore::New()
-{
-	return NULL;
+	if (thread != NULL) *thread = NULL;
+	return false;
 }
