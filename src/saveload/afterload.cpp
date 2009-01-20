@@ -453,9 +453,6 @@ bool AfterLoadGame()
 	/* Update all waypoints */
 	if (CheckSavegameVersion(12)) FixOldWaypoints();
 
-	/* in version 2.2 of the savegame, we have new airports */
-	if (CheckSavegameVersionOldStyle(2, 2)) UpdateOldAircraft();
-
 	AfterLoadTown();
 
 	/* make sure there is a town in the game */
