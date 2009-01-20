@@ -1800,6 +1800,7 @@ struct NetworkJoinStatusWindow : Window {
 	NetworkJoinStatusWindow(const WindowDesc *desc) : Window(desc)
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, 0);
+		this->FindWindowPlacementAndResize(desc);
 	}
 
 	virtual void OnPaint()
