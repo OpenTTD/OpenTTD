@@ -2105,6 +2105,7 @@ void IConsoleListPatches(const char *prefilter)
 	IConsolePrintF(CC_WARNING, "All patches with their current value:");
 
 	for (const SettingDesc *sd = _patch_settings; sd->save.cmd != SL_END; sd++) {
+		if (!SlIsObjectCurrentlyValid(sd->save.version_from, sd->save.version_to)) continue;
 		if (prefilter != NULL) {
 			if (strncmp(sd->desc.name, prefilter, min(strlen(sd->desc.name), strlen(prefilter))) != 0) continue;
 		}
