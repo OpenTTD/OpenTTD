@@ -208,5 +208,7 @@ void AIConfig::SettingsToString(char *string, int size)
 		strcat(string, no);
 		strcat(string, ",");
 	}
-	string[strlen(string) - 1] = '\0';
+	/* Remove the last ',', but only if at least one setting was saved. */
+	size_t len = strlen(string);
+	if (len > 0) string[len - 1] = '\0';
 }
