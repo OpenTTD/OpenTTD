@@ -8,6 +8,7 @@
 #include "../strings_type.h"
 #include "../company_manager_face.h"
 #include "../order_base.h"
+#include "../engine_type.h"
 
 void InitializeOldNames();
 StringID RemapOldStringID(StringID s);
@@ -29,6 +30,9 @@ void ResetViewportAfterLoadGame();
 
 void ConvertOldMultiheadToNew();
 void ConnectMultiheadedTrains();
+
+Engine *GetTempDataEngine(EngineID index);
+void CopyTempEngineData();
 
 extern int32 _saved_scrollpos_x;
 extern int32 _saved_scrollpos_y;

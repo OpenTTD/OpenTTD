@@ -10,9 +10,6 @@
 void SetupEngines();
 void StartupEngines();
 
-Engine *GetTempDataEngine(EngineID index);
-void CopyTempEngineData();
-
 /* Original engine data counts and offsets */
 extern const uint8 _engine_counts[4];
 extern const uint8 _engine_offsets[4];
