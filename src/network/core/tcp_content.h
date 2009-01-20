@@ -62,7 +62,7 @@ struct ContentInfo {
 	char filename[48];       ///< Filename (for the .tar.gz; only valid on download)
 	char name[32];           ///< Name of the content
 	char version[16];        ///< Version of the content
-	char url[64];            ///< URL related to the content
+	char url[96];            ///< URL related to the content
 	char description[512];   ///< Description of the content
 	uint32 unique_id;        ///< Unique ID; either GRF ID or shortname
 	byte md5sum[16];         ///< The MD5 checksum
