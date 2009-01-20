@@ -61,33 +61,14 @@ public:
 	 * with flags whether to download them or not.
 	 * @param infos the list to search in
 	 */
-	NetworkContentDownloadStatusWindow(ContentVector &infos) :
+	NetworkContentDownloadStatusWindow() :
 		Window(&_network_content_download_status_window_desc),
 		cur_id(UINT32_MAX)
 	{
 		this->parent = FindWindowById(WC_NETWORK_WINDOW, 1);
-		this->connection = NetworkContent_Connect(this);
 
-		if (this->connection == NULL) {
-			/* When the connection got broken and we can't rebuild it we can't do much :( */
-			ShowErrorMessage(STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD, STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST, 0, 0);
-			delete this;
-			return;
-		}
-
-		/** Make the list of items to download */
-		uint32 *ids = MallocT<uint32>(infos.Length());
-		for (ContentIterator iter = infos.Begin(); iter != infos.End(); iter++) {
-			const ContentInfo *ci = *iter;
-			if (!ci->IsSelected()) continue;
-
-			ids[this->total_files++] = ci->id;
-			this->total_bytes += ci->filesize;
-		}
-
-		/** And request them for download */
-		this->connection->RequestContent(this->total_files, ids);
-		free(ids);
+		_network_content_client.AddCallback(this);
+		_network_content_client.DownloadSelectedContent(this->total_files, this->total_bytes);
 
 		this->FindWindowPlacementAndResize(&_network_content_download_status_window_desc);
 	}
@@ -121,7 +102,7 @@ public:
 			}
 		}
 
-		NetworkContent_Disconnect(this);
+		_network_content_client.RemoveCallback(this);
 	}
 
 	virtual void OnPaint()
@@ -158,7 +139,7 @@ public:
 		if (widget == NCDSWW_CANCELOK) delete this;
 	}
 
-	virtual void OnDownloadProgress(ContentInfo *ci, uint bytes)
+	virtual void OnDownloadProgress(const ContentInfo *ci, uint bytes)
 	{
 		if (ci->id != this->cur_id) {
 			strecpy(this->name, ci->filename, lastof(this->name));
@@ -198,11 +179,8 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		NCLWW_RESIZE,        ///< Resize button
 	};
 
-	ClientNetworkContentSocketHandler *connection; ///< Connection with the content server
-	SmallVector<ContentID, 4> requested;           ///< ContentIDs we already requested (so we don't do it again)
-	ContentVector infos;                           ///< All content info we received
-	ContentInfo *selected;                         ///< The selected content info
-	int list_pos;                                  ///< Our position in the list
+	const ContentInfo *selected; ///< The selected content info
+	int list_pos;                ///< Our position in the list
 
 	/** Make sure that the currently selected content info is within the visible part of the matrix */
 	void ScrollToSelected()
@@ -218,232 +196,28 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		}
 	}
 
-	/**
-	 * Download information of a given Content ID if not already tried
-	 * @param cid the ID to try
-	 */
-	void DownloadContentInfo(ContentID cid)
-	{
-		/* When we tried to download it already, don't try again */
-		if (this->requested.Contains(cid)) return;
-
-		*this->requested.Append() = cid;
-		assert(this->requested.Contains(cid));
-		this->connection->RequestContentList(1, &cid);
-	}
-
-
-	/**
-	 * Get the content info based on a ContentID
-	 * @param cid the ContentID to search for
-	 * @return the ContentInfo or NULL if not found
-	 */
-	ContentInfo *GetContent(ContentID cid)
-	{
-		for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
-			ContentInfo *ci = *iter;
-			if (ci->id == cid) return ci;
-		}
-		return NULL;
-	}
-
-	/**
-	 * Reverse lookup the dependencies of (direct) parents over a given child.
-	 * @param parents list to store all parents in (is not cleared)
-	 * @param child   the child to search the parents' dependencies for
-	 */
-	void ReverseLookupDependency(ContentVector &parents, ContentInfo *child)
-	{
-		for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
-			ContentInfo *ci = *iter;
-			if (ci == child) continue;
-
-			for (uint i = 0; i < ci->dependency_count; i++) {
-				if (ci->dependencies[i] == child->id) {
-					*parents.Append() = ci;
-					break;
-				}
-			}
-		}
-	}
-
-	/**
-	 * Reverse lookup the dependencies of all parents over a given child.
-	 * @param tree  list to store all parents in (is not cleared)
-	 * @param child the child to search the parents' dependencies for
-	 */
-	void ReverseLookupTreeDependency(ContentVector &tree, ContentInfo *child)
-	{
-		*tree.Append() = child;
-
-		/* First find all direct parents */
-		for (ContentIterator iter = tree.Begin(); iter != tree.End(); iter++) {
-			ContentVector parents;
-			ReverseLookupDependency(parents, *iter);
-
-			for (ContentIterator piter = parents.Begin(); piter != parents.End(); piter++) {
-				tree.Include(*piter);
-			}
-		}
-	}
-
-	/**
-	 * Check the dependencies (recursively) of this content info
-	 * @param ci the content info to check the dependencies of
-	 */
-	void CheckDependencyState(ContentInfo *ci)
-	{
-		if (ci->IsSelected() || ci->state == ContentInfo::ALREADY_HERE) {
-			/* Selection is easy; just walk all children and set the
-			 * autoselected state. That way we can see what we automatically
-			 * selected and thus can unselect when a dependency is removed. */
-			for (uint i = 0; i < ci->dependency_count; i++) {
-				ContentInfo *c = this->GetContent(ci->dependencies[i]);
-				if (c == NULL) {
-					DownloadContentInfo(ci->dependencies[i]);
-				} else if (c->state == ContentInfo::UNSELECTED) {
-					c->state = ContentInfo::AUTOSELECTED;
-					this->CheckDependencyState(c);
-				}
-			}
-			return;
-		}
-
-		if (ci->state != ContentInfo::UNSELECTED) return;
-
-		/* For unselection we need to find the parents of us. We need to
-		 * unselect them. After that we unselect all children that we
-		 * depend on and are not used as dependency for us, but only when
-		 * we automatically selected them. */
-		ContentVector parents;
-		ReverseLookupDependency(parents, ci);
-		for (ContentIterator iter = parents.Begin(); iter != parents.End(); iter++) {
-			ContentInfo *c = *iter;
-			if (!c->IsSelected()) continue;
-
-			c->state = ContentInfo::UNSELECTED;
-			CheckDependencyState(c);
-		}
-
-		for (uint i = 0; i < ci->dependency_count; i++) {
-			ContentInfo *c = this->GetContent(ci->dependencies[i]);
-			if (c == NULL) {
-				DownloadContentInfo(ci->dependencies[i]);
-				continue;
-			}
-			if (c->state != ContentInfo::AUTOSELECTED) continue;
-
-			/* Only unselect when WE are the only parent. */
-			parents.Clear();
-			ReverseLookupDependency(parents, c);
-
-			/* First check whether anything depends on us */
-			int sel_count = 0;
-			bool force_selection = false;
-			for (ContentIterator iter = parents.Begin(); iter != parents.End(); iter++) {
-				if ((*iter)->IsSelected()) sel_count++;
-				if ((*iter)->state == ContentInfo::SELECTED) force_selection = true;
-			}
-			if (sel_count == 0) {
-				/* Nothing depends on us */
-				c->state = ContentInfo::UNSELECTED;
-				this->CheckDependencyState(c);
-				continue;
-			}
-			/* Something manually selected depends directly on us */
-			if (force_selection) continue;
-
-			/* "Flood" search to find all items in the dependency graph*/
-			parents.Clear();
-			ReverseLookupTreeDependency(parents, c);
-
-			/* Is there anything that is "force" selected?, if so... we're done. */
-			for (ContentIterator iter = parents.Begin(); iter != parents.End(); iter++) {
-				if ((*iter)->state != ContentInfo::SELECTED) continue;
-
-				force_selection = true;
-				break;
-			}
-
-			/* So something depended directly on us */
-			if (force_selection) continue;
-
-			/* Nothing depends on us, mark the whole graph as unselected.
-			 * After that's done run over them once again to test their children
-			 * to unselect. Don't do it immediatelly because it'll do exactly what
-			 * we're doing now. */
-			for (ContentIterator iter = parents.Begin(); iter != parents.End(); iter++) {
-				ContentInfo *c = *iter;
-				if (c->state == ContentInfo::AUTOSELECTED) c->state = ContentInfo::UNSELECTED;
-			}
-			for (ContentIterator iter = parents.Begin(); iter != parents.End(); iter++) {
-				this->CheckDependencyState(*iter);
-			}
-		}
-	}
-
-	/** Toggle the state of a content info and check it's dependencies */
-	void ToggleSelectedState()
-	{
-		switch (this->selected->state) {
-			case ContentInfo::SELECTED:
-			case ContentInfo::AUTOSELECTED:
-				this->selected->state = ContentInfo::UNSELECTED;
-				break;
-
-			case ContentInfo::UNSELECTED:
-				this->selected->state = ContentInfo::SELECTED;
-				break;
-
-			default:
-				return;
-		}
-
-		this->CheckDependencyState(this->selected);
-	}
-
 public:
 	/**
 	 * Create the content list window.
 	 * @param desc the window description to pass to Window's constructor.
-	 * @param cv the list with content to show; if NULL find content ourselves
 	 */
-	NetworkContentListWindow(const WindowDesc *desc, ContentVector *cv, ContentType type) : Window(desc, 1), selected(NULL), list_pos(0)
+	NetworkContentListWindow(const WindowDesc *desc, bool select_all) : Window(desc, 1), selected(NULL), list_pos(0)
 	{
-		this->connection = NetworkContent_Connect(this);
-
 		this->vscroll.cap = 14;
 		this->resize.step_height = 14;
 		this->resize.step_width = 2;
 
-		if (cv == NULL) {
-			if (type == CONTENT_TYPE_END) {
-				this->connection->RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
-				this->connection->RequestContentList(CONTENT_TYPE_NEWGRF);
-				this->connection->RequestContentList(CONTENT_TYPE_AI);
-			} else {
-				this->connection->RequestContentList(type);
-			}
-			this->HideWidget(NCLWW_SELECT_ALL);
-		} else {
-			this->connection->RequestContentList(cv, true);
+		_network_content_client.AddCallback(this);
+		this->HideWidget(select_all ? NCLWW_SELECT_UPDATE : NCLWW_SELECT_ALL);
 
-			for (ContentIterator iter = cv->Begin(); iter != cv->End(); iter++) {
-				*this->infos.Append() = *iter;
-			}
-			this->HideWidget(NCLWW_SELECT_UPDATE);
-		}
-
-		SetVScrollCount(this, this->infos.Length());
+		SetVScrollCount(this, _network_content_client.Length());
 		this->FindWindowPlacementAndResize(desc);
 	}
 
 	/** Free everything we allocated */
 	~NetworkContentListWindow()
 	{
-		NetworkContent_Disconnect(this);
-
-		for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) delete *iter;
+		_network_content_client.RemoveCallback(this);
 	}
 
 	virtual void OnPaint()
@@ -452,7 +226,7 @@ public:
 		uint filesize = 0;
 		bool show_select_all = false;
 		bool show_select_update = false;
-		for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
+		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 			const ContentInfo *ci = *iter;
 			switch (ci->state) {
 				case ContentInfo::SELECTED:
@@ -480,7 +254,7 @@ public:
 		/* Fill the matrix with the information */
 		uint y = this->widget[NCLWW_MATRIX].top + 3;
 		int cnt = 0;
-		for (ContentIterator iter = this->infos.Get(this->vscroll.pos); iter != this->infos.End() && cnt < this->vscroll.cap; iter++, cnt++) {
+		for (ConstContentIterator iter = _network_content_client.Get(this->vscroll.pos); iter != _network_content_client.End() && cnt < this->vscroll.cap; iter++, cnt++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(this->widget[NCLWW_CHECKBOX].left + 1, y - 2, this->widget[NCLWW_NAME].right - 1, y + 9, 10);
@@ -557,17 +331,14 @@ public:
 				ContentID cid = this->selected->dependencies[i];
 
 				/* Try to find the dependency */
-				ContentIterator iter = this->infos.Begin();
-				for (; iter != this->infos.End(); iter++) {
+				ConstContentIterator iter = _network_content_client.Begin();
+				for (; iter != _network_content_client.End(); iter++) {
 					const ContentInfo *ci = *iter;
 					if (ci->id != cid) continue;
 
 					p += seprintf(p, lastof(buf), p == buf ? "%s" : ", %s", (*iter)->name);
 					break;
 				}
-
-				/* We miss the dependency, but we'll only request it if not done before. */
-				if (iter == this->infos.End()) DownloadContentInfo(cid);
 			}
 			SetDParamStr(0, buf);
 			y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_DEPENDENCIES, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
@@ -586,13 +357,13 @@ public:
 
 		if (this->selected->IsSelected()) {
 			/* When selected show all manually selected content that depends on this */
-			ContentVector tree;
-			ReverseLookupTreeDependency(tree, this->selected);
+			ConstContentVector tree;
+			_network_content_client.ReverseLookupTreeDependency(tree, this->selected);
 
 			char buf[8192] = "";
 			char *p = buf;
-			for (ContentIterator iter = tree.Begin(); iter != tree.End(); iter++) {
-				ContentInfo *ci = *iter;
+			for (ConstContentIterator iter = tree.Begin(); iter != tree.End(); iter++) {
+				const ContentInfo *ci = *iter;
 				if (ci == this->selected || ci->state != ContentInfo::SELECTED) continue;
 
 				p += seprintf(p, lastof(buf), buf == p ? "%s" : ", %s", ci->name);
@@ -626,34 +397,27 @@ public:
 				if (id_v >= this->vscroll.cap) return; // click out of bounds
 				id_v += this->vscroll.pos;
 
-				if (id_v >= this->infos.Length()) return; // click out of bounds
+				if (id_v >= _network_content_client.Length()) return; // click out of bounds
 
-				this->selected = this->infos[id_v];
+				this->selected = *_network_content_client.Get(id_v);
 				this->list_pos = id_v;
 
-				if (pt.x <= this->widget[NCLWW_CHECKBOX].right) this->ToggleSelectedState();
+				if (pt.x <= this->widget[NCLWW_CHECKBOX].right) _network_content_client.ToggleSelectedState(this->selected);
 
 				this->SetDirty();
 			} break;
 
 			case NCLWW_SELECT_ALL:
+				_network_content_client.SelectAll();
+				this->SetDirty();
+				break;
+
 			case NCLWW_SELECT_UPDATE:
-				for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
-					ContentInfo *ci = *iter;
-					if (ci->state == ContentInfo::UNSELECTED && (widget == NCLWW_SELECT_ALL || ci->update)) {
-						ci->state = ContentInfo::SELECTED;
-						CheckDependencyState(ci);
-					}
-				}
+				_network_content_client.SelectUpdate();
 				this->SetDirty();
 				break;
 
 			case NCLWW_UNSELECT:
-				for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
-					ContentInfo *ci = *iter;
-					/* No need to check dependencies; when everything's off nothing can depend */
-					if (ci->IsSelected()) ci->state = ContentInfo::UNSELECTED;
-				}
 				this->SetDirty();
 				break;
 
@@ -662,14 +426,14 @@ public:
 				break;
 
 			case NCLWW_DOWNLOAD:
-				new NetworkContentDownloadStatusWindow(this->infos);
+				new NetworkContentDownloadStatusWindow();
 				break;
 		}
 	}
 
 	virtual EventState OnKeyPress(uint16 key, uint16 keycode)
 	{
-		if (this->infos.Length() == 0) return ES_HANDLED;
+		if (_network_content_client.Length() == 0) return ES_HANDLED;
 
 		switch (keycode) {
 			case WKC_UP:
@@ -678,7 +442,7 @@ public:
 				break;
 			case WKC_DOWN:
 				/* scroll down by one */
-				if (this->list_pos < (int)this->infos.Length() - 1) this->list_pos++;
+				if (this->list_pos < (int)_network_content_client.Length() - 1) this->list_pos++;
 				break;
 			case WKC_PAGEUP:
 				/* scroll up a page */
@@ -686,7 +450,7 @@ public:
 				break;
 			case WKC_PAGEDOWN:
 				/* scroll down a page */
-				this->list_pos = min(this->list_pos + this->vscroll.cap, (int)this->infos.Length() - 1);
+				this->list_pos = min(this->list_pos + this->vscroll.cap, (int)_network_content_client.Length() - 1);
 				break;
 			case WKC_HOME:
 				/* jump to beginning */
@@ -694,18 +458,18 @@ public:
 				break;
 			case WKC_END:
 				/* jump to end */
-				this->list_pos = this->infos.Length() - 1;
+				this->list_pos = _network_content_client.Length() - 1;
 				break;
 
 			case WKC_SPACE:
-				this->ToggleSelectedState();
+				_network_content_client.ToggleSelectedState(this->selected);
 				this->SetDirty();
 				return ES_HANDLED;
 
 			default: return ES_NOT_HANDLED;
 		}
 
-		this->selected = this->infos[this->list_pos];
+		this->selected = *_network_content_client.Get(this->list_pos);
 
 		/* scroll to the new server if it is outside the current range */
 		this->ScrollToSelected();
@@ -721,7 +485,7 @@ public:
 
 		this->widget[NCLWW_MATRIX].data = (this->vscroll.cap << 8) + 1;
 
-		SetVScrollCount(this, this->infos.Length());
+		SetVScrollCount(this, _network_content_client.Length());
 
 		/* Make the matrix and details section grow both bigger (or smaller) */
 		delta.x /= 2;
@@ -732,52 +496,25 @@ public:
 		this->widget[NCLWW_DETAILS].left    -= delta.x;
 	}
 
-	virtual void OnReceiveContentInfo(ContentInfo *rci)
+	virtual void OnReceiveContentInfo(const ContentInfo *rci)
 	{
-		/* Do we already have a stub for this? */
-		for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
-			ContentInfo *ci = *iter;
-			if (ci->type == rci->type && ci->unique_id == rci->unique_id &&
-					memcmp(ci->md5sum, rci->md5sum, sizeof(ci->md5sum)) == 0) {
-				/* Preserve the name if possible */
-				if (StrEmpty(rci->name)) strecpy(rci->name, ci->name, lastof(rci->name));
-
-				delete ci;
-				*iter = rci;
-
-				this->SetDirty();
-				return;
-			}
-		}
-
-		/* Missing content info? Don't list it */
-		if (rci->filesize == 0) {
-			delete rci;
-			return;
-		}
-
-		/* Nothing selected, lets select something */
-		if (this->selected == NULL) this->selected = rci;
-
-		*this->infos.Append() = rci;
-		SetVScrollCount(this, this->infos.Length());
-
-		/* Incoming data means that we might need to reconsider dependencies */
-		for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
-			CheckDependencyState(*iter);
-		}
-
+		SetVScrollCount(this, _network_content_client.Length());
 		this->SetDirty();
 	}
 
 	virtual void OnDownloadComplete(ContentID cid)
 	{
-		/* When we know something that completed downloading, we have it! */
-		ContentInfo *ci = this->GetContent(cid);
-		if (ci != NULL) {
-			ci->state = ContentInfo::ALREADY_HERE;
-			this->SetDirty();
+		this->SetDirty();
+	}
+
+	virtual void OnConnect(bool success)
+	{
+		if (!success) {
+			ShowErrorMessage(INVALID_STRING_ID, STR_CONTENT_ERROR_COULD_NOT_CONNECT, 0, 0);
+			delete this;
 		}
+
+		this->SetDirty();
 	}
 };
 
@@ -827,21 +564,27 @@ static const WindowDesc _network_content_list_desc = {
 void ShowNetworkContentListWindow(ContentVector *cv, ContentType type)
 {
 #if defined(WITH_ZLIB)
-	if (NetworkContent_Connect(NULL)) {
-		DeleteWindowById(WC_NETWORK_WINDOW, 1);
-		new NetworkContentListWindow(&_network_content_list_desc, cv, type);
-		NetworkContent_Disconnect(NULL);
-	} else {
-		ShowErrorMessage(INVALID_STRING_ID, STR_CONTENT_ERROR_COULD_NOT_CONNECT, 0, 0);
-#else
-	{
-		ShowErrorMessage(STR_CONTENT_NO_ZLIB_SUB, STR_CONTENT_NO_ZLIB, 0, 0);
-#endif /* WITH_ZLIB */
-		/* Connection failed... clean up the mess */
-		if (cv != NULL) {
-			for (ContentIterator iter = cv->Begin(); iter != cv->End(); iter++) delete *iter;
+	if (cv == NULL) {
+		if (type == CONTENT_TYPE_END) {
+			_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+			_network_content_client.RequestContentList(CONTENT_TYPE_AI);
+			_network_content_client.RequestContentList(CONTENT_TYPE_NEWGRF);
+			_network_content_client.RequestContentList(CONTENT_TYPE_AI_LIBRARY);
+		} else {
+			_network_content_client.RequestContentList(type);
 		}
+	} else {
+		_network_content_client.RequestContentList(cv, true);
 	}
+
+	new NetworkContentListWindow(&_network_content_list_desc, cv != NULL);
+#else
+	ShowErrorMessage(STR_CONTENT_NO_ZLIB_SUB, STR_CONTENT_NO_ZLIB, 0, 0);
+	/* Connection failed... clean up the mess */
+	if (cv != NULL) {
+		for (ContentIterator iter = cv->Begin(); iter != cv->End(); iter++) delete *iter;
+	}
+#endif /* WITH_ZLIB */
 }
 
 #endif /* ENABLE_NETWORK */

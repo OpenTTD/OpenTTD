@@ -297,6 +297,7 @@ void VideoDriver_Dedicated::MainLoop()
 			DedicatedHandleKeyInput();
 
 		cur_ticks = GetTime();
+		_realtime_tick += cur_ticks - prev_cur_ticks;
 		if (cur_ticks >= next_tick || cur_ticks < prev_cur_ticks) {
 			next_tick = cur_ticks + 30;
 

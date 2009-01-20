@@ -191,9 +191,9 @@ public:
 	 * @param sin IP etc. of the client
 	 */
 	NetworkContentSocketHandler(SOCKET s, const struct sockaddr_in *sin) :
-		NetworkTCPSocketHandler(s),
-		client_addr(*sin)
+		NetworkTCPSocketHandler(s)
 	{
+		if (sin != NULL) this->client_addr = *sin;
 	}
 
 	/** On destructing of this class, the socket needs to be closed */

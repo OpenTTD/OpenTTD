@@ -12,23 +12,37 @@
 
 /** Vector with content info */
 typedef SmallVector<ContentInfo *, 16> ContentVector;
+typedef SmallVector<const ContentInfo *, 16> ConstContentVector;
+
 /** Iterator for the content vector */
 typedef ContentInfo **ContentIterator;
+typedef const ContentInfo * const * ConstContentIterator;
 
 /** Callbacks for notifying others about incoming data */
 struct ContentCallback {
 	/**
+	 * Callback for when the connection has finished
+	 * @param success whether the connection was made or that we failed to make it
+	 */
+	virtual void OnConnect(bool success) {}
+
+	/**
+	 * Callback for when the connection got disconnected.
+	 */
+	virtual void OnDisconnect() {}
+
+	/**
 	 * We received a content info.
 	 * @param ci the content info
 	 */
-	virtual void OnReceiveContentInfo(ContentInfo *ci) {}
+	virtual void OnReceiveContentInfo(const ContentInfo *ci) {}
 
 	/**
 	 * We have progress in the download of a file
 	 * @param ci the content info of the file
 	 * @param bytes the number of bytes downloaded since the previous call
 	 */
-	virtual void OnDownloadProgress(ContentInfo *ci, uint bytes) {}
+	virtual void OnDownloadProgress(const ContentInfo *ci, uint bytes) {}
 
 	/**
 	 * We have finished downloading a file
@@ -43,32 +57,74 @@ struct ContentCallback {
 /**
  * Socket handler for the content server connection
  */
-class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler {
+class ClientNetworkContentSocketHandler : public NetworkContentSocketHandler, ContentCallback {
 protected:
 	SmallVector<ContentCallback *, 2> callbacks; ///< Callbacks to notify "the world"
+	SmallVector<ContentID, 4> requested;         ///< ContentIDs we already requested (so we don't do it again)
+	ContentVector infos;                         ///< All content info we received
 
 	FILE *curFile;        ///< Currently downloaded file
 	ContentInfo *curInfo; ///< Information about the currently downloaded file
+	bool isConnecting;    ///< Whether we're connecting
+	uint32 lastActivity;  ///< The last time there was network activity
 
-	friend ClientNetworkContentSocketHandler *NetworkContent_Connect(ContentCallback *cb);
-	friend void NetworkContent_Disconnect(ContentCallback *cb);
+	friend class NetworkContentConnecter;
 
 	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_INFO);
 	DECLARE_CONTENT_RECEIVE_COMMAND(PACKET_CONTENT_SERVER_CONTENT);
 
-	ClientNetworkContentSocketHandler(SOCKET s, const struct sockaddr_in *sin);
-	~ClientNetworkContentSocketHandler();
+	ContentInfo *GetContent(ContentID cid);
+	void DownloadContentInfo(ContentID cid);
+
+	void OnConnect(bool success);
+	void OnDisconnect();
+	void OnReceiveContentInfo(const ContentInfo *ci);
+	void OnDownloadProgress(const ContentInfo *ci, uint bytes);
+	void OnDownloadComplete(ContentID cid);
 public:
+	/** The idle timeout; when to close the connection because it's idle. */
+	static const int IDLE_TIMEOUT = 60 * 1000;
+
+	ClientNetworkContentSocketHandler();
+	~ClientNetworkContentSocketHandler();
+
+	void Connect();
+	void SendReceive();
+	void Disconnect();
+
 	void RequestContentList(ContentType type);
 	void RequestContentList(uint count, const ContentID *content_ids);
 	void RequestContentList(ContentVector *cv, bool send_md5sum = true);
 
-	void RequestContent(uint count, const uint32 *content_ids);
+	void DownloadSelectedContent(uint &files, uint &bytes);
+
+	void Select(ContentID cid);
+	void Unselect(ContentID cid);
+	void SelectAll();
+	void SelectUpdate();
+	void UnselectAll();
+	void ToggleSelectedState(const ContentInfo *ci);
+
+	void ReverseLookupDependency(ConstContentVector &parents, const ContentInfo *child) const;
+	void ReverseLookupTreeDependency(ConstContentVector &tree, const ContentInfo *child) const;
+	void CheckDependencyState(ContentInfo *ci);
+
+	/** Get the number of content items we know locally. */
+	uint Length() const { return this->infos.Length(); }
+	/** Get the begin of the content inf iterator. */
+	ConstContentIterator Begin() const { return this->infos.Begin(); }
+	/** Get the nth position of the content inf iterator. */
+	ConstContentIterator Get(uint32 index) const { return this->infos.Get(index); }
+	/** Get the end of the content inf iterator. */
+	ConstContentIterator End() const { return this->infos.End(); }
+
+	/** Add a callback to this class */
+	void AddCallback(ContentCallback *cb) { this->callbacks.Include(cb); }
+	/** Remove a callback */
+	void RemoveCallback(ContentCallback *cb) { this->callbacks.Erase(this->callbacks.Find(cb)); }
 };
 
-ClientNetworkContentSocketHandler *NetworkContent_Connect(ContentCallback *cb);
-void NetworkContent_Disconnect(ContentCallback *cb);
-void NetworkContentLoop();
+extern ClientNetworkContentSocketHandler _network_content_client;
 
 void ShowNetworkContentListWindow(ContentVector *cv = NULL, ContentType type = CONTENT_TYPE_END);
 

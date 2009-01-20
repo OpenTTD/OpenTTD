@@ -946,7 +946,7 @@ static bool NetworkDoClientLoop()
 // We have to do some UDP checking
 void NetworkUDPGameLoop()
 {
-	NetworkContentLoop();
+	_network_content_client.SendReceive();
 	TCPConnecter::CheckCallbacks();
 
 	if (_network_udp_server) {
