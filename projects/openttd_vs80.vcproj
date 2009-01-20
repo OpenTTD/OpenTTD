@@ -3200,6 +3200,14 @@
 			Name="Network Core"
 			>
 			<File
+				RelativePath=".\..\src\network\core\address.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\address.h"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\network\core\config.h"
 				>
 			</File>
@@ -3241,6 +3249,10 @@
 			</File>
 			<File
 				RelativePath=".\..\src\network\core\tcp.h"
+				>
+			</File>
+			<File
+				RelativePath=".\..\src\network\core\tcp_connect.cpp"
 				>
 			</File>
 			<File
