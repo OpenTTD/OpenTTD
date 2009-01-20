@@ -451,12 +451,12 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 }
 
 // A client wants to connect to a server
-static bool NetworkConnect(const char *hostname, int port)
+static bool NetworkConnect(NetworkAddress address)
 {
 	SOCKET s;
 	struct sockaddr_in sin;
 
-	DEBUG(net, 1, "Connecting to %s %d", hostname, port);
+	DEBUG(net, 1, "Connecting to %s %d", address.GetHostname(), address.GetPort());
 
 	s = socket(AF_INET, SOCK_STREAM, 0);
 	if (s == INVALID_SOCKET) {
@@ -467,8 +467,8 @@ static bool NetworkConnect(const char *hostname, int port)
 	if (!SetNoDelay(s)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
 	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
-	sin.sin_port = htons(port);
+	sin.sin_addr.s_addr = address.GetIP();
+	sin.sin_port = htons(address.GetIP());
 	_network_last_host_ip = sin.sin_addr.s_addr;
 
 	/* We failed to connect for which reason what so ever */
@@ -664,7 +664,7 @@ static void NetworkInitialize()
 // Query a server to fetch his game-info
 //  If game_info is true, only the gameinfo is fetched,
 //   else only the client_info is fetched
-void NetworkTCPQueryServer(const char *host, unsigned short port)
+void NetworkTCPQueryServer(NetworkAddress address)
 {
 	if (!_network_available) return;
 
@@ -672,7 +672,7 @@ void NetworkTCPQueryServer(const char *host, unsigned short port)
 	NetworkInitialize();
 
 	// Try to connect
-	_networking = NetworkConnect(host, port);
+	_networking = NetworkConnect(address);
 
 	// We are connected
 	if (_networking) {
@@ -701,7 +701,7 @@ void NetworkAddServer(const char *b)
 		ParseConnectionString(&company, &port, host);
 		if (port != NULL) rport = atoi(port);
 
-		NetworkUDPQueryServer(host, rport, true);
+		NetworkUDPQueryServer(NetworkAddress(host, rport), true);
 	}
 }
 
@@ -727,20 +727,20 @@ void NetworkRebuildHostList()
 }
 
 // Used by clients, to connect to a server
-void NetworkClientConnectGame(const char *host, uint16 port)
+void NetworkClientConnectGame(NetworkAddress address)
 {
 	if (!_network_available) return;
 
-	if (port == 0) return;
+	if (address.GetPort() == 0) return;
 
-	strecpy(_settings_client.network.last_host, host, lastof(_settings_client.network.last_host));
-	_settings_client.network.last_port = port;
+	strecpy(_settings_client.network.last_host, address.GetHostname(), lastof(_settings_client.network.last_host));
+	_settings_client.network.last_port = address.GetPort();
 
 	NetworkDisconnect();
 	NetworkInitialize();
 
 	// Try to connect
-	_networking = NetworkConnect(host, port);
+	_networking = NetworkConnect(address);
 
 	// We are connected
 	if (_networking) {
@@ -1073,13 +1073,13 @@ static void NetworkGenerateUniqueId()
 	snprintf(_settings_client.network.network_id, sizeof(_settings_client.network.network_id), "%s", hex_output);
 }
 
-void NetworkStartDebugLog(const char *hostname, uint16 port)
+void NetworkStartDebugLog(NetworkAddress address)
 {
 	extern SOCKET _debug_socket;  // Comes from debug.c
 	SOCKET s;
 	struct sockaddr_in sin;
 
-	DEBUG(net, 0, "Redirecting DEBUG() to %s:%d", hostname, port);
+	DEBUG(net, 0, "Redirecting DEBUG() to %s:%d", address.GetHostname(), address.GetPort());
 
 	s = socket(AF_INET, SOCK_STREAM, 0);
 	if (s == INVALID_SOCKET) {
@@ -1090,11 +1090,11 @@ void NetworkStartDebugLog(const char *hostname, uint16 port)
 	if (!SetNoDelay(s)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
 
 	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
-	sin.sin_port = htons(port);
+	sin.sin_addr.s_addr = address.GetIP();
+	sin.sin_port = htons(address.GetPort());
 
 	if (connect(s, (struct sockaddr *)&sin, sizeof(sin)) != 0) {
-		DEBUG(net, 0, "Failed to redirection DEBUG() to %s:%d", hostname, port);
+		DEBUG(net, 0, "Failed to redirection DEBUG() to %s:%d", address.GetHostname(), address.GetIP());
 		return;
 	}
 
@@ -1152,6 +1152,24 @@ void NetworkShutDown()
 bool IsNetworkCompatibleVersion(const char *other)
 {
 	return strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
+}
+
+const char *NetworkAddress::GetHostname() const
+{
+	if (this->hostname != NULL) return this->hostname;
+
+	in_addr addr;
+	addr.s_addr = this->ip;
+	return inet_ntoa(addr);
+}
+
+uint32 NetworkAddress::GetIP()
+{
+	if (!this->resolved) {
+		this->ip = NetworkResolveHost(this->hostname);
+		this->resolved = true;
+	}
+	return this->ip;
 }
 
 #endif /* ENABLE_NETWORK */

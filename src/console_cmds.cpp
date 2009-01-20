@@ -692,7 +692,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 		IConsolePrintF(CC_DEFAULT, "    port: %s", port);
 	}
 
-	NetworkClientConnectGame(ip, rport);
+	NetworkClientConnectGame(NetworkAddress(ip, rport));
 
 	return true;
 }

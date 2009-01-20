@@ -32,11 +32,11 @@ void NetworkGameLoop();
 void NetworkUDPGameLoop();
 void NetworkUDPCloseAll();
 void ParseConnectionString(const char **company, const char **port, char *connection_string);
-void NetworkStartDebugLog(const char *hostname, uint16 port);
+void NetworkStartDebugLog(NetworkAddress address);
 void NetworkPopulateCompanyStats(NetworkCompanyStats *stats);
 
 void NetworkUpdateClientInfo(ClientID client_id);
-void NetworkClientConnectGame(const char *host, uint16 port);
+void NetworkClientConnectGame(NetworkAddress address);
 void NetworkClientSendRcon(const char *password, const char *command);
 void NetworkClientSendChat(NetworkAction action, DestType type, int dest, const char *msg, int64 data = 0);
 void NetworkClientSetPassword(const char *password);

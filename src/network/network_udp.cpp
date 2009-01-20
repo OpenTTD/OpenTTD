@@ -276,27 +276,22 @@ DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_SERVER_RESPONSE)
 
 DEF_UDP_RECEIVE_COMMAND(Client, PACKET_UDP_MASTER_RESPONSE_LIST)
 {
-	int i;
-	struct in_addr ip;
-	uint16 port;
-	uint8 ver;
-
 	/* packet begins with the protocol version (uint8)
 	 * then an uint16 which indicates how many
 	 * ip:port pairs are in this packet, after that
 	 * an uint32 (ip) and an uint16 (port) for each pair
 	 */
 
-	ver = p->Recv_uint8();
+	uint8 ver = p->Recv_uint8();
 
 	if (ver == 1) {
-		for (i = p->Recv_uint16(); i != 0 ; i--) {
-			ip.s_addr = TO_LE32(p->Recv_uint32());
-			port = p->Recv_uint16();
+		for (int i = p->Recv_uint16(); i != 0 ; i--) {
+			uint32 ip = TO_LE32(p->Recv_uint32());
+			uint16 port = p->Recv_uint16();
 
 			/* Somehow we reached the end of the packet */
 			if (this->HasClientQuit()) return;
-			NetworkUDPQueryServer(inet_ntoa(ip), port);
+			NetworkUDPQueryServer(NetworkAddress(ip, port));
 		}
 	}
 }
@@ -425,7 +420,7 @@ void NetworkUDPSearchGame()
 	_network_udp_broadcast = 300; // Stay searching for 300 ticks
 }
 
-void NetworkUDPQueryServer(const char *host, unsigned short port, bool manually)
+void NetworkUDPQueryServer(NetworkAddress address, bool manually)
 {
 	struct sockaddr_in out_addr;
 	NetworkGameList *item;
@@ -436,17 +431,17 @@ void NetworkUDPQueryServer(const char *host, unsigned short port, bool manually)
 	}
 
 	out_addr.sin_family = AF_INET;
-	out_addr.sin_port = htons(port);
-	out_addr.sin_addr.s_addr = NetworkResolveHost(host);
+	out_addr.sin_port = htons(address.GetPort());
+	out_addr.sin_addr.s_addr = address.GetIP();
 
 	// Clear item in gamelist
-	item = NetworkGameListAddItem(inet_addr(inet_ntoa(out_addr.sin_addr)), ntohs(out_addr.sin_port));
+	item = NetworkGameListAddItem(address.GetIP(), address.GetPort());
 	if (item == NULL) return;
 
 	if (StrEmpty(item->info.server_name)) {
 		memset(&item->info, 0, sizeof(item->info));
-		strecpy(item->info.server_name, host, lastof(item->info.server_name));
-		strecpy(item->info.hostname, host, lastof(item->info.hostname));
+		strecpy(item->info.server_name, address.GetHostname(), lastof(item->info.server_name));
+		strecpy(item->info.hostname, address.GetHostname(), lastof(item->info.hostname));
 		item->online = false;
 	}
 	item->manually = manually;

@@ -96,18 +96,13 @@ void NetworkGameListRequery()
 	if (++requery_cnt < REQUERY_EVERY_X_GAMELOOPS) return;
 	requery_cnt = 0;
 
-	struct in_addr ip;
-	NetworkGameList *item;
-
-	for (item = _network_game_list; item != NULL; item = item->next) {
+	for (NetworkGameList *item = _network_game_list; item != NULL; item = item->next) {
 		item->retries++;
 		if (item->retries < REFRESH_GAMEINFO_X_REQUERIES && (item->online || item->retries >= MAX_GAME_LIST_REQUERY_COUNT)) continue;
 
-		ip.s_addr = item->ip;
-
 		/* item gets mostly zeroed by NetworkUDPQueryServer */
 		uint8 retries = item->retries;
-		NetworkUDPQueryServer(inet_ntoa(ip), item->port);
+		NetworkUDPQueryServer(NetworkAddress(item->ip, item->port));
 		item->retries = (retries >= REFRESH_GAMEINFO_X_REQUERIES) ? 0 : retries;
 	}
 }

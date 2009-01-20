@@ -681,7 +681,7 @@ int ttd_main(int argc, char *argv[])
 		ParseConnectionString(&not_used, &port, debuglog_conn);
 		if (port != NULL) rport = atoi(port);
 
-		NetworkStartDebugLog(debuglog_conn, rport);
+		NetworkStartDebugLog(NetworkAddress(debuglog_conn, rport));
 	}
 #endif /* ENABLE_NETWORK */
 
@@ -728,7 +728,7 @@ int ttd_main(int argc, char *argv[])
 
 			LoadIntroGame();
 			_switch_mode = SM_NONE;
-			NetworkClientConnectGame(network_conn, rport);
+			NetworkClientConnectGame(NetworkAddress(network_conn, rport));
 		}
 	}
 #endif /* ENABLE_NETWORK */
@@ -1219,7 +1219,7 @@ void GameLoop()
 		if (_network_reconnect > 0 && --_network_reconnect == 0) {
 			/* This means that we want to reconnect to the last host
 			 * We do this here, because it means that the network is really closed */
-			NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
+			NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		}
 		/* Singleplayer */
 		StateGameLoop();

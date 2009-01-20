@@ -558,7 +558,7 @@ public:
 				break;
 
 			case NGWW_REFRESH: // Refresh
-				if (this->server != NULL) NetworkUDPQueryServer(this->server->info.hostname, this->server->port);
+				if (this->server != NULL) NetworkUDPQueryServer(NetworkAddress(this->server->info.hostname, this->server->port));
 				break;
 
 			case NGWW_NEWGRF: // NewGRF Settings
@@ -1313,22 +1313,22 @@ struct NetworkLobbyWindow : public Window {
 			case NLWW_JOIN:     // Join company
 				/* Button can be clicked only when it is enabled */
 				_network_playas = this->company;
-				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
+				NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 				break;
 
 			case NLWW_NEW:      // New company
 				_network_playas = COMPANY_NEW_COMPANY;
-				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
+				NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 				break;
 
 			case NLWW_SPECTATE: // Spectate game
 				_network_playas = COMPANY_SPECTATOR;
-				NetworkClientConnectGame(_settings_client.network.last_host, _settings_client.network.last_port);
+				NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 				break;
 
 			case NLWW_REFRESH:  // Refresh
-				NetworkTCPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // company info
-				NetworkUDPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // general data
+				NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // company info
+				NetworkUDPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // general data
 				/* Clear the information so removed companies don't remain */
 				memset(this->company_info, 0, sizeof(company_info));
 				break;
@@ -1381,8 +1381,8 @@ static void ShowNetworkLobbyWindow(NetworkGameList *ngl)
 {
 	DeleteWindowById(WC_NETWORK_WINDOW, 0);
 
-	NetworkTCPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // company info
-	NetworkUDPQueryServer(_settings_client.network.last_host, _settings_client.network.last_port); // general data
+	NetworkTCPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // company info
+	NetworkUDPQueryServer(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port)); // general data
 
 	new NetworkLobbyWindow(&_network_lobby_window_desc, ngl);
 }
