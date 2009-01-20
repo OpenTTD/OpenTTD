@@ -520,8 +520,6 @@ static const OldChunks town_chunk[] = {
 	OCL_SVAR( OC_UINT16, Town, ratings[6] ),
 	OCL_SVAR( OC_UINT16, Town, ratings[7] ),
 
-	/* XXX - This is pretty odd.. we read 32bit, but only write 16bit.. sure there is
-	nothing changed ? ? */
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Town, have_ratings ),
 	OCL_SVAR( OC_FILE_U32 | OC_VAR_U16, Town, statues ),
 	OCL_NULL( 2 ),         ///< num_houses,        no longer in use
@@ -874,8 +872,8 @@ static const OldChunks _company_chunk[] = {
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id_2 ),
 	OCL_SVAR( OC_UINT32, Company, president_name_2 ),
 
-	OCL_SVAR(  OC_FILE_I32 | OC_VAR_I64, Company, money ),
-	OCL_SVAR(  OC_FILE_I32 | OC_VAR_I64, Company, current_loan ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, Company, money ),
+	OCL_SVAR( OC_FILE_I32 | OC_VAR_I64, Company, current_loan ),
 
 	OCL_SVAR(  OC_UINT8, Company, colour ),
 	OCL_SVAR(  OC_UINT8, Company, money_fraction ),
@@ -1116,7 +1114,7 @@ static const OldChunks vehicle_chunk[] = {
 
 	OCL_VAR ( OC_UINT16,   1, &_old_next_ptr ),
 
-	OCL_SVAR( OC_UINT32, Vehicle, value ),
+	OCL_SVAR( OC_FILE_U32 | OC_VAR_I64, Vehicle, value ),
 
 	OCL_VAR ( OC_UINT16,   1, &_old_string_id ),
 
@@ -1235,7 +1233,7 @@ static const OldChunks engine_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Engine, preview_company_rank ),
 	OCL_SVAR(  OC_UINT8, Engine, preview_wait ),
 
-	OCL_NULL( 2 ), ///< Junk
+	OCL_NULL( 2 ), ///< railtype + junk
 
 	OCL_END()
 };
