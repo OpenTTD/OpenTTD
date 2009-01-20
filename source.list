@@ -467,6 +467,7 @@ saveload/map_sl.cpp
 saveload/misc_sl.cpp
 saveload/newgrf_sl.cpp
 saveload/oldloader.cpp
+saveload/oldloader.h
 saveload/order_sl.cpp
 saveload/saveload.cpp
 saveload/saveload.h
@@ -476,6 +477,7 @@ saveload/station_sl.cpp
 saveload/strings_sl.cpp
 saveload/subsidy_sl.cpp
 saveload/town_sl.cpp
+saveload/ttdloader.cpp
 saveload/vehicle_sl.cpp
 saveload/waypoint_sl.cpp
 
