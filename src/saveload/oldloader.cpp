@@ -397,6 +397,16 @@ static void FixOldVehicles()
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
+		/* For some reason we need to correct for this */
+		switch (v->spritenum) {
+			case 0xfd: break;
+			case 0xff: v->spritenum = 0xfe; break;
+			default:   v->spritenum >>= 1; break;
+		}
+
+		/* Vehicle-subtype is different in TTD(Patch) */
+		if (v->type == VEH_EFFECT) v->subtype = v->subtype >> 1;
+
 		v->name = CopyFromOldName(_old_vehicle_names[v->index]);
 
 		/* We haven't used this bit for stations for ages */
@@ -444,9 +454,9 @@ static void FixOldVehicles()
 #define OCL_ASSERT(size)                            { OC_ASSERT,     1, NULL, size,                      NULL }
 
 /* The savegames has some hard-coded pointers, because it always enters the same
-    piece of memory.. we don't.. so we need to remap ;)
-   Old Towns are 94 bytes big
-   Old Orders are 2 bytes big */
+ *  piece of memory.. we don't.. so we need to remap ;)
+ * Old Towns are 94 bytes big
+ * Old Orders are 2 bytes big */
 #define REMAP_TOWN_IDX(x) ((x) - (0x0459154 - 0x0458EF0)) / 94
 #define REMAP_ORDER_IDX(x) ((x) - (0x045AB08 - 0x0458EF0)) / 2
 
@@ -1127,12 +1137,10 @@ static const OldChunks vehicle_chunk[] = {
 
 bool LoadOldVehicle(LoadgameState *ls, int num)
 {
-	uint i;
-
 	/* Read the TTDPatch flags, because we need some info from it */
 	ReadTTDPatchFlags();
 
-	for (i = 0; i < _old_vehicle_multiplier; i++) {
+	for (uint i = 0; i < _old_vehicle_multiplier; i++) {
 		_current_vehicle_id = num * _old_vehicle_multiplier + i;
 
 		/* Read the vehicle type and allocate the right vehicle */
@@ -1165,20 +1173,9 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 		}
 		v->current_order.AssignOrder(UnpackOldOrder(_old_order));
 
-		/* For some reason we need to correct for this */
-		switch (v->spritenum) {
-			case 0xfd: break;
-			case 0xff: v->spritenum = 0xfe; break;
-			default:   v->spritenum >>= 1; break;
-		}
-
 		if (_old_next_ptr != 0xFFFF) v->next = GetVehiclePoolSize() <= _old_next_ptr ? new (_old_next_ptr) InvalidVehicle() : GetVehicle(_old_next_ptr);
 
 		_old_vehicle_names[_current_vehicle_id] = RemapOldStringID(_old_string_id);
-		v->name = NULL;
-
-		/* Vehicle-subtype is different in TTD(Patch) */
-		if (v->type == VEH_EFFECT) v->subtype = v->subtype >> 1;
 
 		if (_cargo_count != 0) {
 			CargoPacket *cp = new CargoPacket((_cargo_source == 0xFF) ? INVALID_STATION : _cargo_source, _cargo_count);
