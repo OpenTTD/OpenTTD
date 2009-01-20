@@ -249,6 +249,11 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	return AI::ai_scanner->GetAIInfoList();
 }
 
+/* static */ const AIInfoList *AI::GetUniqueInfoList()
+{
+	return AI::ai_scanner->GetUniqueAIInfoList();
+}
+
 /* static */ AIInfo *AI::FindInfo(const char *name, int version)
 {
 	return AI::ai_scanner->FindInfo(name, version);

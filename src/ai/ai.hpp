@@ -108,6 +108,7 @@ public:
 
 	static char *GetConsoleList(char *p, const char *last);
 	static const AIInfoList *GetInfoList();
+	static const AIInfoList *GetUniqueInfoList();
 	static AIInfo *FindInfo(const char *name, int version);
 	static bool ImportLibrary(const char *library, const char *class_name, int version, HSQUIRRELVM vm);
 	static void Rescan();

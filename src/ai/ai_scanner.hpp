@@ -50,6 +50,11 @@ public:
 	const AIInfoList *GetAIInfoList() { return &this->info_list; }
 
 	/**
+	 * Get the list of the newest version of all registered AIs.
+	 */
+	const AIInfoList *GetUniqueAIInfoList() { return &this->info_single_list; }
+
+	/**
 	 * Get the engine of the main squirrel handler (it indexes all avialable squirrels).
 	 */
 	class Squirrel *GetEngine() { return this->engine; }

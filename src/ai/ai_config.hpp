@@ -6,6 +6,7 @@
 #define AI_CONFIG_HPP
 
 #include <map>
+#include "ai_info.hpp"
 
 #ifndef AI_HPP
 struct ltstr { bool operator()(const char *s1, const char *s2) const { return strcmp(s1, s2) < 0; } };
@@ -19,7 +20,8 @@ public:
 	AIConfig() :
 		name(NULL),
 		version(-1),
-		info(NULL)
+		info(NULL),
+		config_list(NULL)
 	{}
 	AIConfig(const AIConfig *config);
 	~AIConfig();
@@ -45,6 +47,11 @@ public:
 	class AIInfo *GetInfo();
 
 	/**
+	 * Get the config list for this AIConfig.
+	 */
+	const AIConfigItemList *GetConfigList();
+
+	/**
 	 * Get the config of a company.
 	 */
 	static AIConfig *GetConfig(CompanyID company, bool forceNewgameSetting = false);
@@ -62,6 +69,11 @@ public:
 	 * Set the value of a setting for this config.
 	 */
 	void SetSetting(const char *name, int value);
+
+	/**
+	 * Reset all settings to their default value.
+	 */
+	void ResetSettings();
 
 	/**
 	 * Randomize all settings the AI requested to be randomized.
@@ -100,6 +112,7 @@ private:
 	int version;
 	class AIInfo *info;
 	SettingValueList settings;
+	AIConfigItemList *config_list;
 };
 
 #endif /* AI_CONFIG_HPP */

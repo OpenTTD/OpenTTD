@@ -28,6 +28,8 @@ struct AIConfigItem {
 	AIConfigFlags flags;     //!< Flags for the configuration setting.
 };
 
+extern AIConfigItem _start_date_config;
+
 typedef std::list<AIConfigItem> AIConfigItemList;
 
 class AIFileInfo : public AIObject {

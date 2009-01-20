@@ -17,6 +17,20 @@
 #include "../settings_type.h"
 #include "../openttd.h"
 
+AIConfigItem _start_date_config = {
+	"start_date",
+	"The amount of days after the start of the last AI, this AI will start (give or take).",
+	AI::START_NEXT_MIN,
+	AI::START_NEXT_MAX,
+	AI::START_NEXT_MEDIUM,
+	AI::START_NEXT_EASY,
+	AI::START_NEXT_MEDIUM,
+	AI::START_NEXT_HARD,
+	AI::START_NEXT_DEVIATION,
+	30,
+	AICONFIG_NONE
+};
+
 AIFileInfo::~AIFileInfo()
 {
 	this->engine->ReleaseObject(this->SQ_instance);
@@ -160,18 +174,9 @@ void AIFileInfo::CheckMethods(SQInteger *res, const char *name)
 	SQInteger res = AIFileInfo::Constructor(vm, info, false);
 	if (res != 0) return res;
 
-	AIConfigItem config;
-	config.name = strdup("start_date");
-	config.description = strdup("The amount of days after the start of the last AI, this AI will start (give or take).");
-	config.min_value = AI::START_NEXT_MIN;
-	config.max_value = AI::START_NEXT_MAX;
-	config.easy_value   = AI::START_NEXT_EASY;
-	config.medium_value = AI::START_NEXT_MEDIUM;
-	config.hard_value   = AI::START_NEXT_HARD;
-	config.custom_value = AI::START_NEXT_MEDIUM;
-	config.random_deviation = AI::START_NEXT_DEVIATION;
-	config.step_size = 30;
-	config.flags = AICONFIG_NONE;
+	AIConfigItem config = _start_date_config;
+	config.name = strdup(config.name);
+	config.description = strdup(config.description);
 	info->config_list.push_back(config);
 
 	/* Check if we have settings */

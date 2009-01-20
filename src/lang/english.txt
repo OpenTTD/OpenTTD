@@ -3674,11 +3674,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI settings
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Kill the AI, reload the script, and restart the AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug window is only available for the server
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI Configuration
+STR_AI_CHANGE                                                   :{BLACK}Select AI
+STR_AI_CONFIGURE                                                :{BLACK}Configure
+STR_AI_CHANGE_TIP                                               :{BLACK}Load another AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Configure the parameters of the AI
+STR_AI_LIST_TIP                                                 :{BLACK}All AIs that will be loaded in the next game
+STR_AI_LIST_CAPTION                                             :{WHITE}Available AIs
+STR_AI_AILIST_TIP                                               :{BLACK}Click to select an AI
+STR_AI_ACCEPT                                                   :{BLACK}Accept
+STR_AI_ACCEPT_TIP                                               :{BLACK}Select highlighted AI
+STR_AI_CANCEL                                                   :{BLACK}Cancel
+STR_AI_CANCEL_TIP                                               :{BLACK}Don't change AI
+STR_AI_CLOSE                                                    :{BLACK}Close
+STR_AI_RESET                                                    :{BLACK}Reset
+STR_AI_HUMAN_PLAYER                                             :Human player
+STR_AI_RANDOM_AI                                                :Random AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI Parameters
+STR_AI_AUTHOR                                                   :Author:
+STR_AI_VERSION                                                  :Version:
+STR_AI_DESCRIPTION                                              :Description:
 ########
 
 ############ town controlled noise level

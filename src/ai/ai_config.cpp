@@ -16,6 +16,9 @@ void AIConfig::ChangeAI(const char *name, int version)
 	this->name = (name == NULL) ? NULL : strdup(name);
 	this->info = (name == NULL) ? NULL : AI::FindInfo(this->name, version);
 	this->version = (info == NULL) ? -1 : info->GetVersion();
+	if (this->config_list != NULL) delete this->config_list;
+	this->config_list = (info == NULL) ? NULL : new AIConfigItemList();
+	if (this->config_list != NULL) this->config_list->push_back(_start_date_config);
 
 	/* The special casing for start_date is here to ensure that the
 	 *  start_date setting won't change even if you chose another AI. */
@@ -46,6 +49,7 @@ AIConfig::AIConfig(const AIConfig *config)
 	this->name = (config->name == NULL) ? NULL : strdup(config->name);
 	this->info = config->info;
 	this->version = config->version;
+	this->config_list = NULL;
 
 	for (SettingValueList::const_iterator it = config->settings.begin(); it != config->settings.end(); it++) {
 		this->settings[strdup((*it).first)] = (*it).second;
@@ -56,10 +60,8 @@ AIConfig::AIConfig(const AIConfig *config)
 AIConfig::~AIConfig()
 {
 	free((void *)this->name);
-	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end(); it++) {
-		free((void*)(*it).first);
-	}
-	this->settings.clear();
+	this->ResetSettings();
+	if (this->config_list != NULL) delete this->config_list;
 }
 
 AIInfo *AIConfig::GetInfo()
@@ -71,6 +73,16 @@ bool AIConfig::ResetInfo()
 {
 	 this->info = AI::FindInfo(this->name, this->version);
 	 return this->info != NULL;
+}
+
+const AIConfigItemList *AIConfig::GetConfigList()
+{
+	if (this->info != NULL) return this->info->GetConfigList();
+	if (this->config_list == NULL) {
+		this->config_list = new AIConfigItemList();
+		this->config_list->push_back(_start_date_config);
+	}
+	return this->config_list;
 }
 
 AIConfig *AIConfig::GetConfig(CompanyID company, bool forceNewgameSetting)
@@ -127,23 +139,17 @@ void AIConfig::SetSetting(const char *name, int value)
 	}
 }
 
+void AIConfig::ResetSettings()
+{
+	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end(); it++) {
+		free((void*)(*it).first);
+	}
+	this->settings.clear();
+}
+
 void AIConfig::AddRandomDeviation()
 {
-	/* No AI configured, so fall back to some defaults */
-	if (this->info == NULL) {
-		int base_start_date;
-		switch (_settings_game.difficulty.diff_level) {
-			case 0: base_start_date = AI::START_NEXT_EASY; break;
-			case 1: base_start_date = AI::START_NEXT_MEDIUM; break;
-			case 2: base_start_date = AI::START_NEXT_HARD; break;
-			case 3: base_start_date = AI::START_NEXT_MEDIUM; break;
-			default: NOT_REACHED();
-		}
-		this->SetSetting("start_date", InteractiveRandomRange(AI::START_NEXT_DEVIATION * 2) - AI::START_NEXT_DEVIATION + base_start_date);
-		return;
-	}
-
-	for (AIConfigItemList::const_iterator it = this->info->GetConfigList()->begin(); it != this->info->GetConfigList()->end(); it++) {
+	for (AIConfigItemList::const_iterator it = this->GetConfigList()->begin(); it != this->GetConfigList()->end(); it++) {
 		if ((*it).random_deviation != 0) {
 			this->SetSetting((*it).name, InteractiveRandomRange((*it).random_deviation * 2) - (*it).random_deviation + this->GetSetting((*it).name));
 		}

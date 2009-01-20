@@ -20,6 +20,10 @@
 #include "../debug.h"
 #include "../command_func.h"
 #include "../network/network.h"
+#include "../string_func.h"
+#include "../textbuf_gui.h"
+#include "../settings_type.h"
+#include "../network/network_content.h"
 
 #include "ai.hpp"
 #include "api/ai_types.hpp"
@@ -27,9 +31,484 @@
 #include "api/ai_object.hpp"
 #include "api/ai_log.hpp"
 #include "ai_info.hpp"
+#include "ai_config.hpp"
 
 #include "table/strings.h"
 #include "../table/sprites.h"
+
+/**
+ * Window that let you choose an available AI.
+ */
+struct AIListWindow : public Window {
+	/** Enum referring to the widgets of the AI list window */
+	enum AIListWindowWidgets {
+		AIL_WIDGET_CLOSEBOX = 0,     ///< Close window button
+		AIL_WIDGET_CAPTION,          ///< Window caption
+		AIL_WIDGET_LIST,             ///< The matrix with all available AIs
+		AIL_WIDGET_SCROLLBAR,        ///< Scrollbar next to the AI list
+		AIL_WIDGET_INFO_BG,          ///< Panel to draw some AI information on
+		AIL_WIDGET_ACCEPT,           ///< Accept button
+		AIL_WIDGET_CANCEL,           ///< Cancel button
+		AIL_WIDGET_CONTENT_DOWNLOAD, ///< Download content button
+		AIL_WIDGET_RESIZE,           ///< Resize button
+	};
+
+	const AIInfoList *ai_info_list;
+	int selected;
+	CompanyID slot;
+
+	AIListWindow(const WindowDesc *desc, CompanyID slot) : Window(desc, 0),
+		selected(0),
+		slot(slot)
+	{
+		this->ai_info_list = AI::GetUniqueInfoList();
+		this->resize.step_height = 14;
+		this->vscroll.cap = (this->widget[AIL_WIDGET_LIST].bottom - this->widget[AIL_WIDGET_LIST].top) / 14 + 1;
+		this->widget[AIL_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		SetVScrollCount(this, this->ai_info_list->size() + 1);
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+
+		/* Draw a list of all available AIs. */
+		AIInfoList::const_iterator it = this->ai_info_list->begin();
+		int i = 1;
+		for (; i < this->vscroll.pos; i++) it++;
+		int y = this->widget[AIL_WIDGET_LIST].top;
+		/* First AI in the list is hardcoded to random */
+		if (this->vscroll.pos == 0) {
+			DrawStringTruncated(4, y + 3, STR_AI_RANDOM_AI, this->selected == -1 ? TC_WHITE : TC_BLACK, this->width - 8);
+			y += 14;
+		}
+		AIInfo *selected_info = NULL;
+		for (; i < this->vscroll.pos + this->vscroll.cap && it != this->ai_info_list->end(); i++, it++) {
+			if (this->selected == i - 1) selected_info = (*it).second;
+			DoDrawStringTruncated((*it).second->GetName(), 4, y + 3, (this->selected == i - 1) ? TC_WHITE : TC_BLACK, this->width - 8);
+			y += 14;
+		}
+
+		/* Some info about the currently selected AI. */
+		if (selected_info != NULL) {
+			int y = this->widget[AIL_WIDGET_INFO_BG].top + 6;
+			int x = DrawString(4, y, STR_AI_AUTHOR, TC_BLACK);
+			DoDrawStringTruncated(selected_info->GetAuthor(), x + 5, y, TC_BLACK, this->width - x - 8);
+			y += 13;
+			x = DrawString(4, y, STR_AI_VERSION, TC_BLACK);
+			static char buf[8];
+			sprintf(buf, "%d", selected_info->GetVersion());
+			DoDrawStringTruncated(buf, x + 5, y, TC_BLACK, this->width - x - 8);
+			y += 13;
+			SetDParamStr(0, selected_info->GetDescription());
+			DrawStringMultiLine(4, y, STR_JUST_RAW_STRING, this->width - 8, this->widget[AIL_WIDGET_INFO_BG].bottom - y);
+		}
+	}
+
+	void ChangeAI()
+	{
+		if (this->selected == -1) {
+			AIConfig::GetConfig(slot)->ChangeAI(NULL);
+		} else {
+			AIInfoList::const_iterator it = this->ai_info_list->begin();
+			for (int i = 0; i < this->selected; i++) it++;
+			AIConfig::GetConfig(slot)->ChangeAI((*it).second->GetName(), (*it).second->GetVersion());
+		}
+		InvalidateWindow(WC_GAME_OPTIONS, 0);
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case AIL_WIDGET_LIST: { // Select one of the AIs
+				int sel = (pt.y - this->widget[AIL_WIDGET_LIST].top) / 14 + this->vscroll.pos - 1;
+				if (sel < (int)this->ai_info_list->size()) {
+					this->selected = sel;
+					this->SetDirty();
+				}
+				break;
+			}
+
+			case AIL_WIDGET_ACCEPT: {
+				this->ChangeAI();
+				delete this;
+				break;
+			}
+
+			case AIL_WIDGET_CANCEL:
+				delete this;
+				break;
+
+			case AIL_WIDGET_CONTENT_DOWNLOAD:
+				if (!_network_available) {
+					ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
+				} else {
+#if defined(ENABLE_NETWORK)
+					ShowNetworkContentListWindow(NULL, CONTENT_TYPE_AI);
+#endif
+				}
+				break;
+		}
+	}
+
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case AIL_WIDGET_LIST: {
+				int sel = (pt.y - this->widget[AIL_WIDGET_LIST].top) / 14 + this->vscroll.pos - 1;
+				if (sel < (int)this->ai_info_list->size()) {
+					this->selected = sel;
+					this->ChangeAI();
+					delete this;
+				}
+				break;
+			}
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		if (delta.x != 0) {
+			ResizeButtons(this, AIL_WIDGET_ACCEPT, AIL_WIDGET_CANCEL);
+		}
+
+		this->vscroll.cap += delta.y / 14;
+		this->widget[AIL_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+	}
+};
+
+/* Widget definition for the ai list window. */
+static const Widget _ai_list_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,    0,   10,    0,   13,  STR_00C5,                 STR_018B_CLOSE_WINDOW},             // AIL_WIDGET_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,   11,  199,    0,   13,  STR_AI_LIST_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},   // AIL_WIDGET_CAPTION
+{     WWT_MATRIX,     RESIZE_RB,  COLOUR_MAUVE,    0,  187,   14,  125,  0x501,                    STR_AI_AILIST_TIP},                 // AIL_WIDGET_LIST
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,  188,  199,   14,  125,  0x0,                      STR_0190_SCROLL_BAR_SCROLLS_LIST }, // AIL_WIDGET_SCROLLBAR
+{      WWT_PANEL,    RESIZE_RTB,  COLOUR_MAUVE,    0,  199,  126,  209,  0x0,                      STR_NULL},                          // AIL_WIDGET_INFO_BG
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_MAUVE,    0,   99,  210,  221,  STR_AI_ACCEPT,            STR_AI_ACCEPT_TIP},                 // AIL_WIDGET_ACCEPT
+{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_MAUVE,  100,  199,  210,  221,  STR_AI_CANCEL,            STR_AI_CANCEL_TIP},                 // AIL_WIDGET_CANCEL
+{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_MAUVE,    0,  187,  222,  233,  STR_CONTENT_INTRO_BUTTON, STR_CONTENT_INTRO_BUTTON_TIP},      // AIL_WIDGET_DOWNLOAD_CONTENT
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,  188,  199,  222,  233,  STR_NULL,                 STR_RESIZE_BUTTON},                 // AIL_WIDGET_RESIZE
+{   WIDGETS_END},
+};
+
+/* Window definition for the ai list window. */
+static const WindowDesc _ai_list_desc = {
+	WDP_CENTER, WDP_CENTER, 200, 234, 200, 234,
+	WC_AI_LIST, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	_ai_list_widgets
+};
+
+void ShowAIListWindow(CompanyID slot)
+{
+	DeleteWindowByClass(WC_AI_LIST);
+	new AIListWindow(&_ai_list_desc, slot);
+}
+
+/**
+ * Window for settings the parameters of an AI.
+ */
+struct AISettingsWindow : public Window {
+	/** Enum referring to the widgets of the AI settings window */
+	enum AISettingsWindowWidgest {
+		AIS_WIDGET_CLOSEBOX = 0, ///< Close window button
+		AIS_WIDGET_CAPTION,      ///< Window caption
+		AIS_WIDGET_BACKGROUND,   ///< Panel to draw the settings on
+		AIS_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through all settings
+		AIS_WIDGET_ACCEPT,       ///< Accept button
+		AIS_WIDGET_RESET,        ///< Reset button
+		AIS_WIDGET_RESIZE,       ///< Resize button
+	};
+
+	CompanyID slot;
+	AIConfig *ai_config;
+	int clicked_button;
+	bool clicked_increase;
+	int timeout;
+	int clicked_row;
+
+	AISettingsWindow(const WindowDesc *desc, CompanyID slot) : Window(desc, 0),
+		slot(slot),
+		clicked_button(-1),
+		timeout(0)
+	{
+		this->FindWindowPlacementAndResize(desc);
+		this->ai_config = AIConfig::GetConfig(slot);
+		this->resize.step_height = 14;
+		this->vscroll.cap = (this->widget[AIS_WIDGET_BACKGROUND].bottom - this->widget[AIS_WIDGET_BACKGROUND].top) / 14 + 1;
+		this->widget[AIS_WIDGET_BACKGROUND].data = (this->vscroll.cap << 8) + 1;
+		SetVScrollCount(this, this->ai_config->GetConfigList()->size());
+		this->FindWindowPlacementAndResize(desc);
+	}
+
+	virtual void OnPaint()
+	{
+		this->DrawWidgets();
+
+		AIConfig *config = this->ai_config;
+		AIConfigItemList::const_iterator it = config->GetConfigList()->begin();
+		int i = 0;
+		for (; i < this->vscroll.pos; i++) it++;
+
+		int y = this->widget[AIS_WIDGET_BACKGROUND].top;
+		for (; i < this->vscroll.pos + this->vscroll.cap && it != config->GetConfigList()->end(); i++, it++) {
+			int current_value = config->GetSetting((*it).name);
+
+			int x = 0;
+			if (((*it).flags & AICONFIG_BOOLEAN) != 0) {
+				DrawFrameRect(4, y  + 2, 23, y + 10, (current_value != 0) ? 6 : 4, (current_value != 0) ? FR_LOWERED : FR_NONE);
+			} else {
+				DrawArrowButtons(4, y + 2, COLOUR_YELLOW, (this->clicked_button == i) ? 1 + !!this->clicked_increase : 0, current_value > (*it).min_value, current_value < (*it).max_value);
+				static char buf[8];
+				sprintf(buf, "%d", current_value);
+				x = DoDrawStringTruncated(buf, 28, y + 3, TC_ORANGE, this->width - 32);
+			}
+
+			DoDrawStringTruncated((*it).description, max(x + 3, 54), y + 3, TC_LIGHT_BLUE, this->width - (4 + max(x + 3, 54)));
+			y += 14;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case AIS_WIDGET_BACKGROUND: {
+				int num = (pt.y - this->widget[AIS_WIDGET_BACKGROUND].top) / 14 + this->vscroll.pos;
+				if (num >= (int)this->ai_config->GetConfigList()->size()) break;
+
+				AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+				for (int i = 0; i < num; i++) it++;
+				AIConfigItem config_item = *it;
+				bool bool_item = (config_item.flags & AICONFIG_BOOLEAN) != 0;
+
+				const int x = pt.x - 4;
+				/* One of the arrows is clicked (or green/red rect in case of bool value) */
+				if (IsInsideMM(x, 0, 21)) {
+					int new_val = this->ai_config->GetSetting(config_item.name);
+					if (bool_item) {
+						new_val = !new_val;
+					} else if (x >= 10) {
+						/* Increase button clicked */
+						new_val += config_item.step_size;
+						if (new_val > config_item.max_value) new_val = config_item.max_value;
+						this->clicked_increase = true;
+					} else {
+						/* Decrease button clicked */
+						new_val -= config_item.step_size;
+						if (new_val < config_item.min_value) new_val = config_item.min_value;
+						this->clicked_increase = false;
+					}
+
+					this->ai_config->SetSetting(config_item.name, new_val);
+					this->clicked_button = num;
+					this->timeout = 5;
+
+					if (_settings_newgame.difficulty.diff_level != 3) {
+						_settings_newgame.difficulty.diff_level = 3;
+						ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+					}
+				} else if (!bool_item) {
+					/* Display a query box so users can enter a custom value. */
+					this->clicked_row = num;
+					SetDParam(0, this->ai_config->GetSetting(config_item.name));
+					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, this, CS_NUMERAL, QSF_NONE);
+				}
+
+				this->SetDirty();
+				break;
+			}
+
+			case AIS_WIDGET_ACCEPT:
+				delete this;
+				break;
+
+			case AIS_WIDGET_RESET:
+				this->ai_config->ResetSettings();
+				this->SetDirty();
+				break;
+		}
+	}
+
+	virtual void OnQueryTextFinished(char *str)
+	{
+		if (StrEmpty(str)) return;
+		AIConfigItemList::const_iterator it = this->ai_config->GetConfigList()->begin();
+		for (int i = 0; i < this->clicked_row; i++) it++;
+		int32 value = atoi(str);
+		this->ai_config->SetSetting((*it).name, value);
+		this->SetDirty();
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		if (delta.x != 0) {
+			ResizeButtons(this, AIS_WIDGET_ACCEPT, AIS_WIDGET_RESET);
+		}
+
+		this->vscroll.cap += delta.y / 14;
+		this->widget[AIS_WIDGET_BACKGROUND].data = (this->vscroll.cap << 8) + 1;
+	}
+
+	virtual void OnTick()
+	{
+		if (this->timeout != 0) {
+			this->timeout--;
+			if (this->timeout == 0) {
+				this->clicked_button = -1;
+				this->SetDirty();
+			}
+		}
+	}
+};
+
+/* Widget definition for the AI settings window. */
+static const Widget _ai_settings_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,    0,   10,    0,   13,  STR_00C5,                 STR_018B_CLOSE_WINDOW},             // AIS_WIDGET_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,   11,  199,    0,   13,  STR_AI_SETTINGS_CAPTION,  STR_018C_WINDOW_TITLE_DRAG_THIS},   // AIS_WIDGET_CAPTION
+{     WWT_MATRIX,     RESIZE_RB,  COLOUR_MAUVE,    0,  187,   14,  195,  0x501,                    STR_NULL},                          // AIS_WIDGET_BACKGROUND
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_MAUVE,  188,  199,   14,  195,  0x0,                      STR_0190_SCROLL_BAR_SCROLLS_LIST }, // AIS_WIDGET_SCROLLBAR
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_MAUVE,    0,   93,  196,  207,  STR_AI_CLOSE,             STR_NULL},                          // AIS_WIDGET_ACCEPT
+{ WWT_PUSHTXTBTN,    RESIZE_RTB,  COLOUR_MAUVE,   94,  187,  196,  207,  STR_AI_RESET,             STR_NULL},                          // AIS_WIDGET_RESET
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_MAUVE,  188,  199,  196,  207,  STR_NULL,                 STR_RESIZE_BUTTON},                 // AIS_WIDGET_RESIZE
+{   WIDGETS_END},
+};
+
+/* Window definition for the AI settings window. */
+static const WindowDesc _ai_settings_desc = {
+	WDP_CENTER, WDP_CENTER, 200, 208, 500, 208,
+	WC_AI_SETTINGS, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	_ai_settings_widgets
+};
+
+void ShowAISettingsWindow(CompanyID slot)
+{
+	DeleteWindowByClass(WC_AI_LIST);
+	DeleteWindowByClass(WC_AI_SETTINGS);
+	new AISettingsWindow(&_ai_settings_desc, slot);
+}
+
+/* Widget definition for the configure AI window. */
+static const Widget _ai_config_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_MAUVE,    0,   10,    0,   13,  STR_00C5,               STR_018B_CLOSE_WINDOW},            // AIC_WIDGET_CLOSEBOX
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_MAUVE,   11,  299,    0,   13,  STR_AI_CONFIG_CAPTION,  STR_018C_WINDOW_TITLE_DRAG_THIS},  // AIC_WIDGET_CAPTION
+{      WWT_PANEL,     RESIZE_RB,  COLOUR_MAUVE,    0,  299,   14,  171,  0x0,                    STR_NULL},                         // AIC_WIDGET_BACKGROUND
+{     WWT_MATRIX,     RESIZE_RB,  COLOUR_MAUVE,    0,  287,   30,  141,  0x501,                  STR_AI_LIST_TIP},                  // AIC_WIDGET_LIST
+{  WWT_SCROLLBAR,     RESIZE_LRB, COLOUR_MAUVE,  288,  299,   30,  141,  STR_NULL,               STR_0190_SCROLL_BAR_SCROLLS_LIST}, // AIC_WIDGET_SCROLLBAR
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_YELLOW,  10,  102,  151,  162,  STR_AI_CHANGE,          STR_AI_CHANGE_TIP},                // AIC_WIDGET_CHANGE
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_YELLOW, 103,  195,  151,  162,  STR_AI_CONFIGURE,       STR_AI_CONFIGURE_TIP},             // AIC_WIDGET_CONFIGURE
+{ WWT_PUSHTXTBTN,     RESIZE_TB,  COLOUR_YELLOW, 196,  289,  151,  162,  STR_AI_CLOSE,           STR_NULL},                         // AIC_WIDGET_CLOSE
+{   WIDGETS_END},
+};
+
+/* Window definition for the configure AI window. */
+static const WindowDesc _ai_config_desc = {
+	WDP_CENTER, WDP_CENTER, 300, 172, 300, 172,
+	WC_GAME_OPTIONS, WC_NONE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_ai_config_widgets
+};
+
+/**
+ * Window to configure which AIs will start.
+ */
+struct AIConfigWindow : public Window {
+	/** Enum referring to the widgets of the AI config window */
+	enum AIConfigWindowWidgets {
+		AIC_WIDGET_CLOSEBOX = 0, ///< Close window button
+		AIC_WIDGET_CAPTION,      ///< Window caption
+		AIC_WIDGET_BACKGROUND,   ///< Window background
+		AIC_WIDGET_LIST,         ///< List with currently selected AIs
+		AIC_WIDGET_SCROLLBAR,    ///< Scrollbar to scroll through the selected AIs
+		AIC_WIDGET_CHANGE,       ///< Select another AI button
+		AIC_WIDGET_CONFIGURE,    ///< Change AI settings button
+		AIC_WIDGET_CLOSE,        ///< Close window button
+		AIC_WIDGET_RESIZE,       ///< Resize button
+	};
+
+	CompanyID selected_slot;
+
+	AIConfigWindow() : Window(&_ai_config_desc)
+	{
+		selected_slot = INVALID_COMPANY;
+		this->resize.step_height = 14;
+		this->vscroll.cap = (this->widget[AIC_WIDGET_LIST].bottom - this->widget[AIC_WIDGET_LIST].top) / 14 + 1;
+		this->widget[AIC_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+		SetVScrollCount(this, MAX_COMPANIES);
+		this->FindWindowPlacementAndResize(&_ai_config_desc);
+	}
+
+	~AIConfigWindow()
+	{
+		DeleteWindowByClass(WC_AI_LIST);
+		DeleteWindowByClass(WC_AI_SETTINGS);
+	}
+
+	virtual void OnPaint()
+	{
+		this->SetWidgetDisabledState(AIC_WIDGET_CHANGE, selected_slot == INVALID_COMPANY);
+		this->SetWidgetDisabledState(AIC_WIDGET_CONFIGURE, selected_slot == INVALID_COMPANY);
+		this->DrawWidgets();
+
+		SetDParam(0, _settings_newgame.difficulty.max_no_competitors);
+		DrawString(10, 18, STR_6805_MAXIMUM_NO_COMPETITORS, TC_FROMSTRING);
+
+		int y = this->widget[AIC_WIDGET_LIST].top;
+		for (int i = this->vscroll.pos; i < this->vscroll.pos + this->vscroll.cap && i < MAX_COMPANIES; i++) {
+			StringID text;
+
+			if (AIConfig::GetConfig((CompanyID)i)->GetInfo() != NULL) {
+				SetDParamStr(0, AIConfig::GetConfig((CompanyID)i)->GetInfo()->GetName());
+				text = STR_JUST_RAW_STRING;
+			} else if (i == 0) {
+				text = STR_AI_HUMAN_PLAYER;
+			} else {
+				text = STR_AI_RANDOM_AI;
+			}
+			DrawStringTruncated(10, y + 3, text, (this->selected_slot == i) ? TC_WHITE : ((i > _settings_newgame.difficulty.max_no_competitors || i == 0) ? TC_SILVER : TC_ORANGE), this->width - 20);
+			y += 14;
+		}
+	}
+
+	virtual void OnClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case AIC_WIDGET_LIST: { // Select a slot
+				uint slot = (pt.y - this->widget[AIC_WIDGET_LIST].top) / 14 + this->vscroll.pos;
+
+				if (slot == 0 || slot > _settings_newgame.difficulty.max_no_competitors) slot = INVALID_COMPANY;
+				this->selected_slot = (CompanyID)slot;
+				this->SetDirty();
+				break;
+			}
+
+			case AIC_WIDGET_CHANGE:  // choose other AI
+				ShowAIListWindow((CompanyID)this->selected_slot);
+				break;
+
+			case AIC_WIDGET_CONFIGURE: // change the settings for an AI
+				ShowAISettingsWindow((CompanyID)this->selected_slot);
+				break;
+
+			case AIC_WIDGET_CLOSE:
+				delete this;
+				break;
+		}
+	}
+
+	virtual void OnResize(Point new_size, Point delta)
+	{
+		this->vscroll.cap += delta.y / 14;
+		this->widget[AIC_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+	}
+};
+
+void ShowAIConfigWindow()
+{
+	DeleteWindowById(WC_GAME_OPTIONS, 0);
+	new AIConfigWindow();
+}
 
 struct AIDebugWindow : public Window {
 	enum AIDebugWindowWidgets {

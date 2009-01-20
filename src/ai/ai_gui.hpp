@@ -6,5 +6,6 @@
 #define AI_GUI_HPP
 
 void ShowAIDebugWindow();
+void ShowAIConfigWindow();
 
 #endif /* AI_GUI_HPP */

@@ -20,13 +20,14 @@
 #include "gfx_func.h"
 #include "settings_type.h"
 #include "functions.h"
+#include "ai/ai_gui.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
 
 static const Widget _select_game_widgets[] = {
 {     WWT_CAPTION,  RESIZE_NONE,  COLOUR_BROWN,     0,  335,    0,   13,  STR_0307_OPENTTD,           STR_NULL},
-{       WWT_PANEL,  RESIZE_NONE,  COLOUR_BROWN,     0,  335,   14,  194,  0x0,                        STR_NULL},
+{       WWT_PANEL,  RESIZE_NONE,  COLOUR_BROWN,     0,  335,   14,  212,  0x0,                        STR_NULL},
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,   10,  167,   22,   33,  STR_0140_NEW_GAME,          STR_02FB_START_A_NEW_GAME},
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  168,  325,   22,   33,  STR_0141_LOAD_GAME,         STR_02FC_LOAD_A_SAVED_GAME},
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,   10,  167,   40,   51,  STR_029A_PLAY_SCENARIO,     STR_0303_START_A_NEW_GAME_USING},
@@ -45,7 +46,10 @@ static const Widget _select_game_widgets[] = {
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  168,  325,  157,  168,  STR_NEWGRF_SETTINGS_BUTTON, STR_NULL},
 
 {  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,   10,  167,  175,  186,  STR_CONTENT_INTRO_BUTTON,   STR_CONTENT_INTRO_BUTTON_TIP},
-{  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  168,  325,  175,  186,  STR_0304_QUIT,              STR_0305_QUIT_OPENTTD},
+{  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  168,  325,  175,  186,  STR_AI_SETTINGS_BUTTON,     STR_NULL},
+
+{  WWT_PUSHTXTBTN,  RESIZE_NONE,  COLOUR_ORANGE,  104,  231,  193,  204,  STR_0304_QUIT,              STR_0305_QUIT_OPENTTD},
+
 {     WIDGETS_END},
 };
 
@@ -73,6 +77,7 @@ private:
 		SGI_PATCHES_OPTIONS,
 		SGI_GRF_SETTINGS,
 		SGI_CONTENT_DOWNLOAD,
+		SGI_AI_SETTINGS,
 		SGI_EXIT,
 	};
 
@@ -133,14 +138,14 @@ public:
 					ShowNetworkContentListWindow();
 				}
 				break;
-
+			case SGI_AI_SETTINGS:     ShowAIConfigWindow(); break;
 			case SGI_EXIT:            HandleExitGameRequest(); break;
 		}
 	}
 };
 
 static const WindowDesc _select_game_desc = {
-	WDP_CENTER, WDP_CENTER, 336, 195, 336, 195,
+	WDP_CENTER, WDP_CENTER, 336, 213, 336, 213,
 	WC_SELECT_GAME, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_game_widgets,
