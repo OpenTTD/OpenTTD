@@ -26,6 +26,8 @@
 #include "../strings_func.h"
 #include "../effectvehicle_base.h"
 #include "../string_func.h"
+#include "../core/mem_func.hpp"
+#include "../core/alloc_type.hpp"
 
 #include "table/strings.h"
 
@@ -312,6 +314,67 @@ static void InitLoading(LoadgameState *ls)
  * Begin -- Stuff to fix the savegames to be OpenTTD compatible
  */
 
+static uint8  *_old_map3;
+
+static void FixOldMapArray()
+{
+	/* _old_map3 is moved to _m::m3 and _m::m4 */
+	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
+		_m[t].m3 = _old_map3[t * 2];
+		_m[t].m4 = _old_map3[t * 2 + 1];
+	}
+
+	for (TileIndex t = 0; t < OLD_MAP_SIZE; t++) {
+		switch (GetTileType(t)) {
+			case MP_STATION:
+				_m[t].m4 = 0; // We do not understand this TTDP station mapping (yet)
+				switch (_m[t].m5) {
+					/* We have drive through stops at a totally different place */
+					case 0x53: case 0x54: _m[t].m5 += 170 - 0x53; break; // Bus drive through
+					case 0x57: case 0x58: _m[t].m5 += 168 - 0x57; break; // Truck drive through
+					case 0x55: case 0x56: _m[t].m5 += 170 - 0x55; break; // Bus tram stop
+					case 0x59: case 0x5A: _m[t].m5 += 168 - 0x59; break; // Truck tram stop
+					default: break;
+				}
+				break;
+
+			case MP_RAILWAY:
+				/* We save presignals different from TTDPatch, convert them */
+				if (GB(_m[t].m5, 6, 2) == 1) { // RAIL_TILE_SIGNALS
+					/* This byte is always zero in TTD for this type of tile */
+					if (_m[t].m4) { // Convert the presignals to our own format
+						_m[t].m4 = (_m[t].m4 >> 1) & 7;
+					}
+				}
+				/* TTDPatch stores PBS things in L6 and all elsewhere; so we'll just
+				 * clear it for ourselves and let OTTD's rebuild PBS itself */
+				_m[t].m4 &= 0xF; // Only keep the lower four bits; upper four is PBS
+				break;
+
+			case MP_WATER:
+				/* if water class == 3, make river there */
+				if (GB(_m[t].m3, 0, 2) == 3) {
+					SetTileType(t, MP_WATER);
+					SetTileOwner(t, OWNER_WATER);
+					_m[t].m2 = 0;
+					_m[t].m3 = 2; // WATER_CLASS_RIVER
+					_m[t].m4 = Random();
+					_m[t].m5 = 0;
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	/* Some old TTD(Patch) savegames could have buoys at tile 0
+	 * (without assigned station struct) */
+	MemSetT(&_m[0], 0);
+	SetTileType(0, MP_WATER);
+	SetTileOwner(0, OWNER_WATER);
+}
+
 extern uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type);
 
 static void FixOldTowns()
@@ -392,7 +455,6 @@ extern uint _animated_tile_count;
 extern char *_old_name_array;
 
 static byte   _old_vehicle_multiplier;
-static uint8  *_old_map3;
 static uint32 _old_town_index;
 static uint16 _old_string_id;
 static uint16 _old_string_id_2;
@@ -1450,66 +1512,25 @@ static const OldChunks main_chunk[] = {
 
 static bool LoadOldMain(LoadgameState *ls)
 {
-	int i;
-
 	DEBUG(oldloader, 3, "Reading main chunk...");
 	/* Load the biggest chunk */
-	_old_map3 = MallocT<byte>(OLD_MAP_SIZE * 2);
+	SmallStackSafeStackAlloc<byte, OLD_MAP_SIZE * 2> map3;
+	_old_map3 = map3.data;
 	_old_vehicle_names = NULL;
 	if (!LoadChunk(ls, NULL, main_chunk)) {
 		DEBUG(oldloader, 0, "Loading failed");
-		free(_old_map3);
 		free(_old_vehicle_names);
 		return false;
 	}
 	DEBUG(oldloader, 3, "Done, converting game data...");
+
+	FixOldMapArray();
 
 	/* Fix some general stuff */
 	_settings_game.game_creation.landscape = _settings_game.game_creation.landscape & 0xF;
 
 	/* Remap some pointers */
 	_cur_town_ctr      = REMAP_TOWN_IDX(_old_cur_town_ctr);
-
-	/* _old_map3 is changed in _map3_lo and _map3_hi */
-	for (i = 0; i < OLD_MAP_SIZE; i++) {
-		_m[i].m3 = _old_map3[i * 2];
-		_m[i].m4 = _old_map3[i * 2 + 1];
-	}
-
-	for (i = 0; i < OLD_MAP_SIZE; i ++) {
-		switch (GetTileType(i)) {
-			case MP_STATION:
-				_m[i].m4 = 0; // We do not understand this TTDP station mapping (yet)
-				switch (_m[i].m5) {
-					/* We have drive through stops at a totally different place */
-					case 0x53: case 0x54: _m[i].m5 += 170 - 0x53; break; // Bus drive through
-					case 0x57: case 0x58: _m[i].m5 += 168 - 0x57; break; // Truck drive through
-					case 0x55: case 0x56: _m[i].m5 += 170 - 0x55; break; // Bus tram stop
-					case 0x59: case 0x5A: _m[i].m5 += 168 - 0x59; break; // Truck tram stop
-					default: break;
-				}
-				break;
-
-			case MP_RAILWAY:
-				/* We save presignals different from TTDPatch, convert them */
-				if (GetRailTileType(i) == RAIL_TILE_SIGNALS) {
-					/* This byte is always zero in TTD for this type of tile */
-					if (_m[i].m4) /* Convert the presignals to our own format */
-						_m[i].m4 = (_m[i].m4 >> 1) & 7;
-				}
-				/* TTDPatch stores PBS things in L6 and all elsewhere; so we'll just
-				 * clear it for ourselves and let OTTD's rebuild PBS itself */
-				_m[i].m4 &= 0xF; /* Only keep the lower four bits; upper four is PBS */
-				break;
-
-			case MP_WATER:
-				if (GetWaterClass(i) == 3) MakeRiver(i, Random());
-				break;
-
-			default:
-				break;
-		}
-	}
 
 	/* Make sure the available engines are really available, otherwise
 	 * we will get a "new vehicle"-spree. */
@@ -1531,7 +1552,6 @@ static bool LoadOldMain(LoadgameState *ls)
 	DEBUG(oldloader, 3, "Finished converting game data");
 	DEBUG(oldloader, 1, "TTD(Patch) savegame successfully converted");
 
-	free(_old_map3);
 	free(_old_vehicle_names);
 
 	return true;
@@ -1581,12 +1601,6 @@ bool LoadOldSaveGame(const char *file)
 		fclose(ls.file);
 		return false;
 	}
-
-	/* Some old TTD(Patch) savegames could have buoys at tile 0
-	 * (without assigned station struct)
-	 * MakeWater() can be used as long as sea has the same
-	 * format as old savegames (eg. everything is zeroed) */
-	MakeWater(0);
 
 	_pause_game = 2;
 
