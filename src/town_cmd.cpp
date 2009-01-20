@@ -31,6 +31,7 @@
 #include "newgrf_house.h"
 #include "newgrf_commons.h"
 #include "newgrf_townname.h"
+#include "newgrf_text.h"
 #include "autoslope.h"
 #include "waypoint.h"
 #include "transparency.h"
@@ -628,10 +629,21 @@ static void GetAcceptedCargo_Town(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Town(TileIndex tile, TileDesc *td)
 {
-	const HouseSpec *hs = GetHouseSpecs(GetHouseType(tile));
+	const HouseID house = GetHouseType(tile);
+	const HouseSpec *hs = GetHouseSpecs(house);
+	bool house_completed = IsHouseCompleted(tile);
 
 	td->str = hs->building_name;
-	if (!IsHouseCompleted(tile)) {
+
+	uint16 callback_res = GetHouseCallback(CBID_HOUSE_CUSTOM_NAME, house_completed ? 1 : 0, 0, house, GetTownByTile(tile), tile);
+	if (callback_res != CALLBACK_FAILED) {
+		StringID new_name = GetGRFStringID(hs->grffile->grfid, 0xD000 + callback_res);
+		if (new_name != STR_NULL && new_name != STR_UNDEFINED) {
+			td->str = new_name;
+		}
+	}
+
+	if (!house_completed) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
 	}

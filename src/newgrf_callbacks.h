@@ -208,6 +208,9 @@ enum CallbackID {
 
 	/** Customize the output cargo types of a newly build industry. */
 	CBID_INDUSTRY_OUTPUT_CARGO_TYPES     = 0x14C, // 8 bit callback
+
+	/** Called on the Get Tile Description for an house tile. */
+	CBID_HOUSE_CUSTOM_NAME               = 0x14D, // 15 bit callback
 };
 
 /**
@@ -251,6 +254,7 @@ enum HouseCallbackMask {
 	CBM_HOUSE_ACCEPT_CARGO              =  8,
 	CBM_HOUSE_PRODUCE_CARGO             =  9,
 	CBM_HOUSE_DENY_DESTRUCTION          = 10,
+
 };
 
 /**
