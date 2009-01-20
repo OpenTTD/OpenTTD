@@ -1532,16 +1532,6 @@ static bool LoadOldMain(LoadgameState *ls)
 	/* Remap some pointers */
 	_cur_town_ctr      = REMAP_TOWN_IDX(_old_cur_town_ctr);
 
-	/* Make sure the available engines are really available, otherwise
-	 * we will get a "new vehicle"-spree. */
-	Engine *e;
-	FOR_ALL_ENGINES(e) {
-		if (_date >= (e->intro_date + DAYS_IN_YEAR)) {
-			e->flags = (e->flags & ~ENGINE_EXCLUSIVE_PREVIEW) | ENGINE_AVAILABLE;
-			e->company_avail = (CompanyMask)-1;
-		}
-	}
-
 	/* Fix the game to be compatible with OpenTTD */
 	FixOldTowns();
 	FixOldVehicles();
