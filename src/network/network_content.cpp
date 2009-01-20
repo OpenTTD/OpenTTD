@@ -100,7 +100,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 			ci->state = ContentInfo::ALREADY_HERE;
 		} else {
 			ci->state = ContentInfo::UNSELECTED;
-			if (proc(ci, false)) ci->update = true;
+			if (proc(ci, false)) ci->upgrade = true;
 		}
 	} else {
 		ci->state = ContentInfo::UNSELECTED;
@@ -116,6 +116,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 				memcmp(ci->md5sum, ici->md5sum, sizeof(ci->md5sum)) == 0) {
 			/* Preserve the name if possible */
 			if (StrEmpty(ci->name)) strecpy(ci->name, ici->name, lastof(ci->name));
+			if (ici->IsSelected()) ci->state = ici->state;
 
 			delete ici;
 			*iter = ci;
@@ -145,6 +146,14 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_INFO)
 
 void ClientNetworkContentSocketHandler::RequestContentList(ContentType type)
 {
+	if (type == CONTENT_TYPE_END) {
+		this->RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
+		this->RequestContentList(CONTENT_TYPE_AI);
+		this->RequestContentList(CONTENT_TYPE_NEWGRF);
+		this->RequestContentList(CONTENT_TYPE_AI_LIBRARY);
+		return;
+	}
+
 	this->Connect();
 
 	Packet *p = new Packet(PACKET_CONTENT_CLIENT_INFO_LIST);
@@ -457,10 +466,12 @@ void ClientNetworkContentSocketHandler::Connect()
 /**
  * Disconnect from the content server.
  */
-void ClientNetworkContentSocketHandler::Disconnect()
+void ClientNetworkContentSocketHandler::Close()
 {
 	if (this->sock == INVALID_SOCKET) return;
-	this->Close();
+	NetworkContentSocketHandler::Close();
+
+	this->OnDisconnect();
 }
 
 /**
@@ -532,7 +543,7 @@ ContentInfo *ClientNetworkContentSocketHandler::GetContent(ContentID cid)
 void ClientNetworkContentSocketHandler::Select(ContentID cid)
 {
 	ContentInfo *ci = this->GetContent(cid);
-	if (ci->state != ContentInfo::UNSELECTED) return;
+	if (ci == NULL || ci->state != ContentInfo::UNSELECTED) return;
 
 	ci->state = ContentInfo::SELECTED;
 	this->CheckDependencyState(ci);
@@ -545,7 +556,7 @@ void ClientNetworkContentSocketHandler::Select(ContentID cid)
 void ClientNetworkContentSocketHandler::Unselect(ContentID cid)
 {
 	ContentInfo *ci = this->GetContent(cid);
-	if (!ci->IsSelected()) return;
+	if (ci == NULL || !ci->IsSelected()) return;
 
 	ci->state = ContentInfo::UNSELECTED;
 	this->CheckDependencyState(ci);
@@ -564,11 +575,11 @@ void ClientNetworkContentSocketHandler::SelectAll()
 }
 
 /** Select everything that's an update for something we've got */
-void ClientNetworkContentSocketHandler::SelectUpdate()
+void ClientNetworkContentSocketHandler::SelectUpgrade()
 {
 	for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) {
 		ContentInfo *ci = *iter;
-		if (ci->state == ContentInfo::UNSELECTED && ci->update) {
+		if (ci->state == ContentInfo::UNSELECTED && ci->upgrade) {
 			ci->state = ContentInfo::SELECTED;
 			this->CheckDependencyState(ci);
 		}

@@ -3725,8 +3725,8 @@ STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name of 
 STR_CONTENT_MATRIX_TIP                                          :{BLACK}Click on a line to see the details{}Click on the checkbox to select it for downloading
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Select all
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Mark all content to be downloaded
-STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Select updates
-STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Mark all content that is an update for existing content to be downloaded
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Select upgrades
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Mark all content that is an upgrade for existing content to be downloaded
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselect all
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Mark all content to be not downloaded
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download

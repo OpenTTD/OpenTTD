@@ -90,7 +90,7 @@ public:
 
 	void Connect();
 	void SendReceive();
-	void Disconnect();
+	void Close();
 
 	void RequestContentList(ContentType type);
 	void RequestContentList(uint count, const ContentID *content_ids);
@@ -101,7 +101,7 @@ public:
 	void Select(ContentID cid);
 	void Unselect(ContentID cid);
 	void SelectAll();
-	void SelectUpdate();
+	void SelectUpgrade();
 	void UnselectAll();
 	void ToggleSelectedState(const ContentInfo *ci);
 

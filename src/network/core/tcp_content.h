@@ -71,7 +71,7 @@ struct ContentInfo {
 	uint8 tag_count;         ///< Number of tags
 	char (*tags)[32];        ///< Malloced array of tags (strings)
 	State state;             ///< Whether the content info is selected (for download)
-	bool update;             ///< This item is an update
+	bool upgrade;            ///< This item is an upgrade
 
 	/** Clear everything in the struct */
 	ContentInfo();
@@ -103,7 +103,7 @@ class NetworkContentSocketHandler : public NetworkTCPSocketHandler {
 protected:
 	struct sockaddr_in client_addr; ///< The address we're connected to.
 	NetworkRecvStatus CloseConnection();
-	void Close();
+	virtual void Close();
 
 	/**
 	 * Client requesting a list of content info:

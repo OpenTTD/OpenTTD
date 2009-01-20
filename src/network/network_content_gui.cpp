@@ -225,7 +225,7 @@ public:
 		/* To sum all the bytes we intend to download */
 		uint filesize = 0;
 		bool show_select_all = false;
-		bool show_select_update = false;
+		bool show_select_upgrade = false;
 		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
 			const ContentInfo *ci = *iter;
 			switch (ci->state) {
@@ -236,7 +236,7 @@ public:
 
 				case ContentInfo::UNSELECTED:
 					show_select_all = true;
-					show_select_update |= ci->update;
+					show_select_upgrade |= ci->upgrade;
 					break;
 
 				default:
@@ -247,7 +247,7 @@ public:
 		this->SetWidgetDisabledState(NCLWW_DOWNLOAD, filesize == 0);
 		this->SetWidgetDisabledState(NCLWW_UNSELECT, filesize == 0);
 		this->SetWidgetDisabledState(NCLWW_SELECT_ALL, !show_select_all);
-		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_update);
+		this->SetWidgetDisabledState(NCLWW_SELECT_UPDATE, !show_select_upgrade);
 
 		this->DrawWidgets();
 
@@ -292,7 +292,7 @@ public:
 		const uint max_y = this->widget[NCLWW_DETAILS].bottom - 15;
 		y = this->widget[NCLWW_DETAILS].top + 55;
 
-		if (this->selected->update) {
+		if (this->selected->upgrade) {
 			SetDParam(0, STR_CONTENT_TYPE_BASE_GRAPHICS + this->selected->type - CONTENT_TYPE_BASE_GRAPHICS);
 			y += DrawStringMultiLine(this->widget[NCLWW_DETAILS].left + 5, y, STR_CONTENT_DETAIL_UPDATE, this->widget[NCLWW_DETAILS].right - this->widget[NCLWW_DETAILS].left - 5, max_y - y);
 			y += 11;
@@ -413,7 +413,7 @@ public:
 				break;
 
 			case NCLWW_SELECT_UPDATE:
-				_network_content_client.SelectUpdate();
+				_network_content_client.SelectUpgrade();
 				this->SetDirty();
 				break;
 
@@ -565,14 +565,7 @@ void ShowNetworkContentListWindow(ContentVector *cv, ContentType type)
 {
 #if defined(WITH_ZLIB)
 	if (cv == NULL) {
-		if (type == CONTENT_TYPE_END) {
-			_network_content_client.RequestContentList(CONTENT_TYPE_BASE_GRAPHICS);
-			_network_content_client.RequestContentList(CONTENT_TYPE_AI);
-			_network_content_client.RequestContentList(CONTENT_TYPE_NEWGRF);
-			_network_content_client.RequestContentList(CONTENT_TYPE_AI_LIBRARY);
-		} else {
-			_network_content_client.RequestContentList(type);
-		}
+		_network_content_client.RequestContentList(type);
 	} else {
 		_network_content_client.RequestContentList(cv, true);
 	}
