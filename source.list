@@ -768,6 +768,8 @@ misc/str.hpp
 misc/strapi.hpp
 
 # Network Core
+network/core/address.cpp
+network/core/address.h
 network/core/config.h
 network/core/core.cpp
 network/core/core.h
@@ -779,6 +781,7 @@ network/core/packet.cpp
 network/core/packet.h
 network/core/tcp.cpp
 network/core/tcp.h
+network/core/tcp_connect.cpp
 network/core/tcp_content.cpp
 network/core/tcp_content.h
 network/core/tcp_game.cpp

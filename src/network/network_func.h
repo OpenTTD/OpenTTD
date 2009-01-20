@@ -7,6 +7,7 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "core/address.h"
 #include "network_type.h"
 #include "../console_type.h"
 

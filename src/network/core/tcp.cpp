@@ -201,5 +201,4 @@ bool NetworkTCPSocketHandler::IsPacketQueueEmpty()
 	return this->packet_queue == NULL;
 }
 
-
 #endif /* ENABLE_NETWORK */

@@ -114,7 +114,6 @@ extern uint8 _network_join_waiting;
 extern uint32 _network_join_bytes;
 extern uint32 _network_join_bytes_total;
 
-extern uint32 _network_last_host_ip;
 extern uint8 _network_reconnect;
 
 extern bool _network_udp_server;

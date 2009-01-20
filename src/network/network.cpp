@@ -72,7 +72,6 @@ uint32 _network_server_bind_ip;
 uint32 _sync_seed_1, _sync_seed_2;
 uint32 _sync_frame;
 bool _network_first_time;
-uint32 _network_last_host_ip;
 bool _network_udp_server;
 uint16 _network_udp_broadcast;
 uint8 _network_advertise_retries;
@@ -238,12 +237,6 @@ static void NetworkError(StringID error_string)
 	_switch_mode = SM_MENU;
 	extern StringID _switch_mode_errorstr;
 	_switch_mode_errorstr = error_string;
-}
-
-static void ClientStartError(const char *error)
-{
-	DEBUG(net, 0, "[client] could not start network: %s",error);
-	NetworkError(STR_NETWORK_ERR_CLIENT_START);
 }
 
 static void ServerStartError(const char *error)
@@ -450,41 +443,6 @@ void NetworkCloseClient(NetworkClientSocket *cs)
 	CheckMinActiveClients();
 }
 
-// A client wants to connect to a server
-static bool NetworkConnect(NetworkAddress address)
-{
-	SOCKET s;
-	struct sockaddr_in sin;
-
-	DEBUG(net, 1, "Connecting to %s %d", address.GetHostname(), address.GetPort());
-
-	s = socket(AF_INET, SOCK_STREAM, 0);
-	if (s == INVALID_SOCKET) {
-		ClientStartError("socket() failed");
-		return false;
-	}
-
-	if (!SetNoDelay(s)) DEBUG(net, 1, "Setting TCP_NODELAY failed");
-
-	sin.sin_family = AF_INET;
-	sin.sin_addr.s_addr = address.GetIP();
-	sin.sin_port = htons(address.GetPort());
-	_network_last_host_ip = sin.sin_addr.s_addr;
-
-	/* We failed to connect for which reason what so ever */
-	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0) return false;
-
-	if (!SetNonBlocking(s)) DEBUG(net, 0, "Setting non-blocking mode failed"); // XXX should this be an error?
-
-	// in client mode, only the first client field is used. it's pointing to the server.
-	NetworkAllocClient(s);
-
-	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
-	ShowJoinStatusWindow();
-
-	return true;
-}
-
 // For the server, to accept new clients
 static void NetworkAcceptClients()
 {
@@ -637,6 +595,8 @@ static void NetworkClose()
 	}
 	NetworkUDPCloseAll();
 
+	TCPConnecter::KillAll();
+
 	_networking = false;
 	_network_server = false;
 
@@ -661,6 +621,24 @@ static void NetworkInitialize()
 	_network_reconnect = 0;
 }
 
+/** Non blocking connection create to query servers */
+class TCPQueryConnecter : TCPConnecter {
+public:
+	TCPQueryConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
+
+	virtual void OnFailure()
+	{
+		NetworkDisconnect();
+	}
+
+	virtual void OnConnect(SOCKET s)
+	{
+		_networking = true;
+		NetworkAllocClient(s);
+		SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)();
+	}
+};
+
 // Query a server to fetch his game-info
 //  If game_info is true, only the gameinfo is fetched,
 //   else only the client_info is fetched
@@ -671,15 +649,7 @@ void NetworkTCPQueryServer(NetworkAddress address)
 	NetworkDisconnect();
 	NetworkInitialize();
 
-	// Try to connect
-	_networking = NetworkConnect(address);
-
-	// We are connected
-	if (_networking) {
-		SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)();
-	} else { // No networking, close everything down again
-		NetworkDisconnect();
-	}
+	new TCPQueryConnecter(address);
 }
 
 /* Validates an address entered as a string and adds the server to
@@ -726,6 +696,26 @@ void NetworkRebuildHostList()
 	}
 }
 
+/** Non blocking connection create to actually connect to servers */
+class TCPClientConnecter : TCPConnecter {
+public:
+	TCPClientConnecter(const NetworkAddress &address) : TCPConnecter(address) {}
+
+	virtual void OnFailure()
+	{
+		NetworkError(STR_NETWORK_ERR_NOCONNECTION);
+	}
+
+	virtual void OnConnect(SOCKET s)
+	{
+		_networking = true;
+		NetworkAllocClient(s);
+		IConsoleCmdExec("exec scripts/on_client.scr 0");
+		NetworkClient_Connected();
+	}
+};
+
+
 // Used by clients, to connect to a server
 void NetworkClientConnectGame(NetworkAddress address)
 {
@@ -739,17 +729,10 @@ void NetworkClientConnectGame(NetworkAddress address)
 	NetworkDisconnect();
 	NetworkInitialize();
 
-	// Try to connect
-	_networking = NetworkConnect(address);
+	_network_join_status = NETWORK_JOIN_STATUS_CONNECTING;
+	ShowJoinStatusWindow();
 
-	// We are connected
-	if (_networking) {
-		IConsoleCmdExec("exec scripts/on_client.scr 0");
-		NetworkClient_Connected();
-	} else {
-		// Connecting failed
-		NetworkError(STR_NETWORK_ERR_NOCONNECTION);
-	}
+	new TCPClientConnecter(address);
 }
 
 static void NetworkInitGameInfo()
@@ -964,6 +947,7 @@ static bool NetworkDoClientLoop()
 void NetworkUDPGameLoop()
 {
 	NetworkContentLoop();
+	TCPConnecter::CheckCallbacks();
 
 	if (_network_udp_server) {
 		_udp_server_socket->ReceivePackets();
@@ -1152,24 +1136,6 @@ void NetworkShutDown()
 bool IsNetworkCompatibleVersion(const char *other)
 {
 	return strncmp(_openttd_revision, other, NETWORK_REVISION_LENGTH - 1) == 0;
-}
-
-const char *NetworkAddress::GetHostname() const
-{
-	if (this->hostname != NULL) return this->hostname;
-
-	in_addr addr;
-	addr.s_addr = this->ip;
-	return inet_ntoa(addr);
-}
-
-uint32 NetworkAddress::GetIP()
-{
-	if (!this->resolved) {
-		this->ip = NetworkResolveHost(this->hostname);
-		this->resolved = true;
-	}
-	return this->ip;
 }
 
 #endif /* ENABLE_NETWORK */
