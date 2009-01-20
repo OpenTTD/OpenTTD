@@ -468,7 +468,7 @@ static bool NetworkConnect(NetworkAddress address)
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = address.GetIP();
-	sin.sin_port = htons(address.GetIP());
+	sin.sin_port = htons(address.GetPort());
 	_network_last_host_ip = sin.sin_addr.s_addr;
 
 	/* We failed to connect for which reason what so ever */
@@ -1094,7 +1094,7 @@ void NetworkStartDebugLog(NetworkAddress address)
 	sin.sin_port = htons(address.GetPort());
 
 	if (connect(s, (struct sockaddr *)&sin, sizeof(sin)) != 0) {
-		DEBUG(net, 0, "Failed to redirection DEBUG() to %s:%d", address.GetHostname(), address.GetIP());
+		DEBUG(net, 0, "Failed to redirection DEBUG() to %s:%d", address.GetHostname(), address.GetPort());
 		return;
 	}
 
