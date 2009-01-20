@@ -39,7 +39,6 @@
 #include "../unmovable_map.h"
 #include "../tree_map.h"
 #include "../company_func.h"
-#include "../command_func.h"
 #include "../road_cmd.h"
 #include "../ai/ai.hpp"
 
@@ -1452,8 +1451,21 @@ bool AfterLoadGame()
 					Owner o = GetTileOwner(t);
 					if (!IsValidCompanyID(o)) {
 						/* remove leftover rail piece from crossing (from very old savegames) */
-						_current_company = o;
-						DoCommand(t, 0, GetCrossingRailTrack(t), DC_EXEC | DC_BANKRUPT, CMD_REMOVE_SINGLE_RAIL);
+						Vehicle *v = NULL, *w;
+						FOR_ALL_VEHICLES(w) {
+							if (w->type == VEH_TRAIN && w->tile == t) {
+								v = w;
+								break;
+							}
+						}
+						if (v != NULL) {
+							/* when there is a train on crossing (it could happen in TTD), set owner of crossing to train owner */
+							SetTileOwner(t, v->owner);
+						} else {
+							/* else change the crossing to normal road (road vehicles won't care) */
+							MakeRoadNormal(t, GetCrossingRoadBits(t), GetRoadTypes(t), GetTownIndex(t),
+								GetRoadOwner(t, ROADTYPE_ROAD), GetRoadOwner(t, ROADTYPE_TRAM), GetRoadOwner(t, ROADTYPE_HWAY));
+						}
 					}
 				}
 			}
