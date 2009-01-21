@@ -1,33 +1,13 @@
 /* $Id$ */
 
-/** @file oldloader.cpp Loading of old TTD(patch) savegames. */
+/** @file oldloader.cpp Functions for handling of TTO/TTD/TTDP savegames. */
 
 #include "../stdafx.h"
 #include "../openttd.h"
-#include "../station_map.h"
-#include "../town.h"
-#include "../industry.h"
-#include "../company_func.h"
-#include "../company_base.h"
-#include "../aircraft.h"
-#include "../roadveh.h"
-#include "../ship.h"
-#include "../train.h"
-#include "../signs_base.h"
+#include "../tile_type.h"
 #include "../debug.h"
-#include "../depot_base.h"
-#include "../newgrf_config.h"
-#include "../ai/ai.hpp"
-#include "../zoom_func.h"
-#include "../functions.h"
-#include "../date_func.h"
-#include "../vehicle_func.h"
-#include "../variables.h"
-#include "../strings_func.h"
-#include "../effectvehicle_base.h"
+#include "../strings_type.h"
 #include "../string_func.h"
-#include "../core/mem_func.hpp"
-#include "../core/alloc_type.hpp"
 
 #include "table/strings.h"
 

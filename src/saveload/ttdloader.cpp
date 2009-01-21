@@ -3,12 +3,10 @@
 /** @file oldloader.cpp Loading of old TTD(patch) savegames. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../station_map.h"
 #include "../town.h"
 #include "../industry.h"
 #include "../company_func.h"
-#include "../company_base.h"
 #include "../aircraft.h"
 #include "../roadveh.h"
 #include "../ship.h"
@@ -17,9 +15,7 @@
 #include "../debug.h"
 #include "../depot_base.h"
 #include "../newgrf_config.h"
-#include "../ai/ai.hpp"
 #include "../zoom_func.h"
-#include "../functions.h"
 #include "../date_func.h"
 #include "../vehicle_func.h"
 #include "../variables.h"
