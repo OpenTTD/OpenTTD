@@ -1043,7 +1043,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis alltid lang dato på statuslinjen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis jernbanesignaler på samme side som kjøreretningen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis regnskap ved nyttår: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordre er uten stopp ved forhåndsstilt: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordre er 'uten stopp' som standard: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kjøretøykø (med kvantumseffekter): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Flytt på bildet hvis pilen er nær ytterkantene av skjermen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat bestikkelser av bystyret: {ORANGE}{STRING}
@@ -1089,6 +1089,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Høydek
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høyden et flatt scenariokart får: {ORANGE}{STRING}
+
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspedning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir tregere spill
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk vedlikehold ved helikopterlandingsteder: {ORANGE}{STRING}
@@ -3667,7 +3671,7 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ town controlled noise level
-STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillat by kontrollert lyd nivå for flyplasser: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillat bykontrollert lydnivå for flyplasser: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Lyd grense i by: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Lyd generert: {GOLD}{COMMA}
 ########

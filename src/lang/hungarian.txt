@@ -850,7 +850,7 @@ STR_CHECKMARK                                                   :{CHECKMARK}
 STR_02C4_GAME_OPTIONS                                           :Beállítások
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nehézségi beállítások
 STR_MENU_CONFIG_PATCHES                                         :Haladó beállítások
-STR_NEWGRF_SETTINGS                                             :Newgrf beállítások
+STR_NEWGRF_SETTINGS                                             :NewGRF beállítások
 STR_TRANSPARENCY_OPTIONS                                        :Átlátszósági beállítások
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Városnevek mutatása
@@ -1156,6 +1156,29 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Magass�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Órairánnyal szemben
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Órairányban
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}A sima térképhez hozzáadandó magasság: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}A térkép határain lévő táj rendezésének engedélyezése
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Az északi határnál egy vagy több mező nem üres
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Az egyik határnál egy vagy több mező nem víz
+
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Szárazföld minden határnál
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Víz csak az északkeleti határnál
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Víz csal a délkeleti határnál
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Víz az északkeleti és délkeleti határoknál
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Víz csak a délnyugati határnál
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Víz az északkeleti és délnyugati határoknál
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Víz a délkeleti és délnyugati határoknál
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Szárazföld csak az északnyugati határnál
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Víz csak az északnyugati határnál
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Víz az északnyugati és északkeleti határoknál
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Víz az északnyugati és délkeleti határoknál
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Szárazföld csak a délnyugati határnál
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Víz az északnyugati és délnyugati határoknál
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Szárazföld csak a délkeleti határnál
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Szárazföld csak az északkeleti határnál
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Víz mindegyik határnál
+# End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
@@ -2221,6 +2244,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vonat van az alagútban
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Közúti jármű van az alagútban
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Másik alagút van az útban
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Az alagút vége a pályán kívülre esik
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nem lehet kiásni a földet az alagút túloldalán
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Előbb le kell rombolnod az alagutat
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Előbb le kell rombolnod a hidat
@@ -3328,7 +3352,7 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Magas k�
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Megszerzett pontok az elérhető pontokból
 
 STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF beállítások
-STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf beállítások
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}NewGRF beállítások
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Alkalmazás
 STR_NEWGRF_TOGGLE_PALETTE                                       :{BLACK}Palettaváltás
 STR_NEWGRF_TOGGLE_PALETTE_TIP                                   :{BLACK}A kiválasztott NewGRF palettájának váltása.{}Akkor használd, ha a NewGRF-ból származó grafikai elemek rózsaszínként jelennek meg
@@ -3777,11 +3801,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :§'"+!%/=()ÖÜ
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}MI beállítások
 STR_AI_DEBUG                                                    :{WHITE}MI nyomkövetés
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}MI neve
 STR_AI_DEBUG_RELOAD                                             :{BLACK}MI újratöltése
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}MI kilövése, szkript újratöltése, MI újraindítása
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Az MI nyomkövetés ablak csak a szerver számára elérhető
+STR_AI_CONFIG_CAPTION                                           :{WHITE}MI beállítások
+STR_AI_CHANGE                                                   :{BLACK}MI kiválasztása
+STR_AI_CONFIGURE                                                :{BLACK}Beállítások
+STR_AI_CHANGE_TIP                                               :{BLACK}Másik MI betöltése
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Az MI paramétereinek beállítása
+STR_AI_LIST_TIP                                                 :{BLACK}Az összes MI, ami be lesz töltve a következő játékban
+STR_AI_LIST_CAPTION                                             :{WHITE}Elérhető MI-k
+STR_AI_AILIST_TIP                                               :{BLACK}Kattints ide az MI kiválasztásához
+STR_AI_ACCEPT                                                   :{BLACK}Elfogad
+STR_AI_ACCEPT_TIP                                               :{BLACK}A kijelölt MI kiválasztása
+STR_AI_CANCEL                                                   :{BLACK}Mégsem
+STR_AI_CANCEL_TIP                                               :{BLACK}MI változtatások visszavonása
+STR_AI_CLOSE                                                    :{BLACK}Bezárás
+STR_AI_RESET                                                    :{BLACK}Visszaállítás
+STR_AI_HUMAN_PLAYER                                             :Játékos
+STR_AI_RANDOM_AI                                                :Véletlenszerűen választott MI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}MI paraméterek
+STR_AI_AUTHOR                                                   :Készítő:
+STR_AI_VERSION                                                  :Verzió:
+STR_AI_DESCRIPTION                                              :Leírás:
 ########
 
 ############ town controlled noise level

@@ -1092,6 +1092,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}El nivel de la altura del mapa plano tiene: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Expansión máxima de est.: {ORANGE}{STRING} {RED}Atención: Valores altos relantizan
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la caja de paisaje a la barra de rail/carretera...: {ORANGE}{STRING}
@@ -3675,11 +3679,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Ajustes de la IA
 STR_AI_DEBUG                                                    :{WHITE}Depuración de la IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nombre de la IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Recarga la IA
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Elimina la IA, recarga el código y reinicia la IA
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}La ventana de depuración de la IA solo está disponible para el servidor
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configuración de la IA
+STR_AI_CHANGE                                                   :{BLACK}Seleccionar IA
+STR_AI_CONFIGURE                                                :{BLACK}Configurar
+STR_AI_CHANGE_TIP                                               :{BLACK}Cargar otra IA
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Configura los parámetros de la IA
+STR_AI_LIST_TIP                                                 :{BLACK}Todas las IAs que serán cargadas en la próxima partida
+STR_AI_LIST_CAPTION                                             :{WHITE}IAs disponibles
+STR_AI_AILIST_TIP                                               :{BLACK}Pincha para seleccionar la IA
+STR_AI_ACCEPT                                                   :{BLACK}Aceptar
+STR_AI_ACCEPT_TIP                                               :{BLACK}Seleccionar la IA resaltada
+STR_AI_CANCEL                                                   :{BLACK}Cancelar
+STR_AI_CANCEL_TIP                                               :{BLACK}No cambiar la IA
+STR_AI_CLOSE                                                    :{BLACK}Cerrar
+STR_AI_RESET                                                    :{BLACK}Reiniciar
+STR_AI_HUMAN_PLAYER                                             :Jugador Humano
+STR_AI_RANDOM_AI                                                :IA aleatoria
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parámetros de la IA
+STR_AI_AUTHOR                                                   :Autor:
+STR_AI_VERSION                                                  :Versión:
+STR_AI_DESCRIPTION                                              :Descripción:
 ########
 
 ############ town controlled noise level

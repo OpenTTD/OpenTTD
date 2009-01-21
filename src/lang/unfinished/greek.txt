@@ -489,6 +489,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Πληροφορίες Περιοχής Εδάφους
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Κόστος καθαρισμού: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Ώφελος όταν καθαριστεί: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Μ/Δ
 STR_01A7_OWNER                                                  :{BLACK}Ιδιοκτήτης: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Ιδιοκτήτης της Οδός: {LTBLUE}{STRING}
@@ -599,6 +600,8 @@ STR_NEWS_INDUSTRY_OPEN                                          :{YELLOW}Ένα�
 STR_NEWS_INDUSTRY_CLOSE                                         :{YELLOW}Κλείνουν οι βιομηχανίες
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Οικονομικές αλλαγές
 STR_INDUSTRY_CHANGES_SERVED_BY_COMPANY                          :{YELLOW}Αλλαγή της Παραγωγής των βιομηχανιών που εξυπηρετούνται από την εταιρεία
+STR_INDUSTRY_CHANGES_SERVED_BY_OTHER                            :{YELLOW}Διαφοροποιήσεις στην παραγωγή των βιομηχανιών που εξυπηρετούνται από ανταγωνιστή(ες)
+STR_OTHER_INDUSTRY_PRODUCTION_CHANGES                           :{YELLOW}Άλλες διαφοροποιήσεις στη παραγωγή
 STR_020B_ADVICE_INFORMATION_ON_COMPANY                          :{YELLOW}Συμβουλή / πληροφορίες για τα εταιρικά οχήματα
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Νέα οχήματα
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Αλλαγές στην αποδοχή φορτίου
@@ -733,6 +736,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Τοπο
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Τοποθέτηση φάρου
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Τοποθέτηση αναμεταδότη
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Ορίστε περιοχή ερήμου.{}Πατήστε και κρατήστε το CTRL για αφαίρεση
+STR_CREATE_LAKE                                                 :{BLACK}Προσδιορισμός θαλάσσιας επιφάνειας.{}Δημιουργία καναλιού, εκτός εάν το πλήκτρο CTRL είναι κρατημένο στο επίπεδο της θάλασσας, όπου θα πλημμυρίσει τις παρακείμενες περιοχές.
 STR_CREATE_RIVER                                                :{BLACK}Τοποθέτισε ποτάμια
 STR_0290_DELETE                                                 :{BLACK}Διαγραφή
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Πλήρης διαγραφή πόλεως
@@ -782,6 +786,7 @@ STR_02C4_GAME_OPTIONS                                           :Επιλογέ�
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
 STR_MENU_CONFIG_PATCHES                                         :Προχωριμένες ρυθμίσεις
 STR_NEWGRF_SETTINGS                                             :Ρυθμίσεις NewGRF
+STR_TRANSPARENCY_OPTIONS                                        :Επιλογές διαφάνειας
 STR_GAMEOPTMENU_0A                                              :
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ονόματα πόλεων που εμφανίζονται
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ονόματα σταθμών που εμφανίζονται
@@ -797,6 +802,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Δια
 STR_02D5_LAND_BLOCK_INFO                                        :Πληροφορίες περιοχής εδάφους
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Ενναλαγή Κονσόλας
+STR_AI_DEBUG_MENU                                               :Εντοπισμός Σφαλμάτων Τεχνιτής Νοημοσύνης
 STR_02D7_SCREENSHOT_CTRL_S                                      :Φωτογραφία εικόνας (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Γιγαντιαία Φωτογραφία Εικόνας (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Σχετικά με το 'OpenTTD'
@@ -864,6 +870,7 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Χρηματο�
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Χρηματοδότηση νέας βιομηχανίας
 STR_JUST_STRING                                                 :{STRING}
+STR_JUST_INT                                                    :{NUM}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...μπορεί να χτιστεί μόνο σε δασώδεις περιοχές
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...μπορεί να χτιστεί μόνο σε περιοχές με έρημο
@@ -932,6 +939,7 @@ STR_CURR_SEK                                                    :Σουηδικ�
 STR_CURR_YTL                                                    :Τούρκικη Λίρα (YTL)
 STR_CURR_SKK                                                    :Σλοβάκικη Κορώνα (SKK)
 STR_CURR_BRL                                                    :Βραζιλιάνικο Real (BRL)
+STR_CURR_EEK                                                    :Εσθονική Κορώνα (EEK)
 
 STR_CURR_CUSTOM                                                 :Άλλο...
 
@@ -973,7 +981,7 @@ STR_NO_ORDERS                                                   :{LTBLUE}Δεν 
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Δεν έχει οδηγίες, {VELOCITY}
 
 STR_PASSENGERS                                                  :Επιβάτες
-STR_BAGS                                                        :Τσάντες
+STR_BAGS                                                        :Σάκκοι
 STR_TONS                                                        :Τόνοι
 STR_LITERS                                                      :Λίτρα
 STR_ITEMS                                                       :αντικείμενα
@@ -983,20 +991,31 @@ STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
-STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Αδύνατο να μοιραστεί η λίστα οδηγιών...
-STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Αδύνατο να αντιγραφεί η λίστα οδηγιών...
+STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Αδύνατο να μοιραστεί η λίστα εντολών...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Αδύνατο να αντιγραφεί η λίστα εντολών...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Τέλος Μοιρασμένων Οδηγιών - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} δεν μπορεί να βρει δρόμο να συνεχίσει
 STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} χάθηκε
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE} Το κέρδος του {VEHICLE} πέρυσι ήταν {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Ευρωπαϊκή Οικονομική Ένωση!{}{}Το Ευρώ είναι πλέον το μοναδικό νόμισμα για τις καθημερινές συναλλαγές στην χώρα σας!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}Το {VEHICLE} έχει πολύ λίγες εντολές στο πρόγραμμα
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}ο {VEHICLE} έχει μη έγκυρη εντολή
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}Το {VEHICLE} έχει διπλή εντολή
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}Το {VEHICLE} έχει μη έγκυρο σταθμό στις εντολές του
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Αποτυχία Αυτόματης Ανανέωσης για το {VEHICLE}{}{STRING}
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Το {VEHICLE} είναι πολύ μεγάλο μετά την ανανέωση
+STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Χωρίς επιλογή Αυτόματης Ανανέωσης
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(χρηματικό όριο)
 
+STR_CONFIG_PATCHES                                              :{BLACK}Προηγμένες Ρυθμίσεις
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Εμφάνιση προηγμένων ρυθμίσεων
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Προηγμένες Ρυθμίσεις
 
 STR_CONFIG_PATCHES_OFF                                          :Κλειστό
 STR_CONFIG_PATCHES_ON                                           :Ανοιχτό
@@ -1014,6 +1033,9 @@ STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Πλη�
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Παράδοση φορτίου σε σταθμό μόνο όταν υπάρχει ζήτηση: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Επιτρέπεται να χτίζονται πολύ μακριές γέφυρες: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Επιτρέπονται οι εντολές αποστολής σε αμαξοστάσιο: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NONE        :κανένα
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_NORMAL      :όπως σε άλλες βιομηχανίες
+STR_CONFIG_PATCHES_RAW_INDUSTRY_CONSTRUCTION_METHOD_PROSPECTING :επικείμενη
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Επιτρέπονται πολλαπλές όμοιες βιομηχανίες ανα πόλη: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Βιομηχανίες ίδου τύπου μπορούν να χτιστούν κοντά η μία στην άλλη: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Εμφάνιση ολόκληρης ημερομηνίες στη γραμμή κατάστασης: {ORANGE}{STRING}
@@ -1025,6 +1047,8 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Επι�
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ανομοιόμορφοι σταθμοί: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Πολλαπλασιαστής βάρους σε φορία για εξομοίωση βαρέων τρένων: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Επιτρέπεται η κίνηση μέσω των στάσεων σε δρόμους πόλεων : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Επιτρέπεται η κατασκευή παρακείμενων σταθμών: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Επιτρέπεται η χρήση πολλαπλών μηχανών από τα NewGRF: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Επιτρέπονται τα μικρά αεροδρόμια πάντα: {ORANGE}{STRING}
 
@@ -1059,6 +1083,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Αντίθετ�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Δεξιόστροφα
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Το επίπεδο ύψους που παίρνει ένα επίπεδο σενάριο: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Μέγιστη διασπορά σταθμών: {ORANGE}{STRING} {RED}Προσοχή: Η υψηλή ρύθμιση καθυστερεί το παιχνίδι
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Αυτόματη επισκευή ελικοπτέρων στα ελικοδρόμια: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Σύνδεση γραμμής εργαλείων τοπίου με γραμμή εργαλείων σιδηρόδρομου/δρόμου/νερού/αεροδρομίου: {ORANGE}{STRING}
@@ -1075,10 +1103,13 @@ STR_CONFIG_PATCHES_SCROLLWHEEL_SCROLL                           :Μετακίν�
 STR_CONFIG_PATCHES_SCROLLWHEEL_OFF                              :Κλειστό
 STR_CONFIG_PATCHES_SCROLLWHEEL_MULTIPLIER                       :{LTBLUE}Ταχύτητα ροδέλας μετακίνησης χάρτη: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Κλικ Εντολών
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Control-click
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :όχι
 
 
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :μεγάλη (31 Δεκ 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :σύντομη (31-12-2008)
 
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :όχι
 STR_CONFIG_PATCHES_LOADING_INDICATORS_OFF                       :όχι
@@ -1181,7 +1212,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Διαμ
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Αδύνατο να αλλαχτεί το όνομα του σημείου πορείας...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Μετατροπή γραμμής σε σημείο πορείας
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Αδύνατο να χτιστεί σημείο πορείας τρένου εδώ...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Αδύνατο να αφαιρεθεί το σημείο πορείας τρένου εδώ...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Αδύνατο να αφαιρεθεί το σημείο πορείας τρένου από εδώ...
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Κατασκευή σιδηροδρομικής γραμμής χρησιμοποιώντας την Αυτόματη Γραμμή
 
@@ -1204,6 +1235,8 @@ STR_CANT_BUILD_CANALS                                           :{WHITE}Δεν �
 STR_BUILD_CANALS_TIP                                            :{BLACK}Δημιουργία καναλιών.
 STR_LANDINFO_CANAL                                              :Κανάλι
 
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Δεν μπορεί να χτιστεί υδατοφράκτης εδώ...
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Κατασκευή Υδατοφράκτη
 
 STR_CANT_PLACE_RIVERS                                           :{WHITE}Δεν μπορούν να τοποθετηθούν ποτάμια εδώ...
 STR_LANDINFO_RIVER                                              :Ποτάμι
@@ -1211,7 +1244,7 @@ STR_LANDINFO_RIVER                                              :Ποτάμι
 STR_BUOY_IS_IN_USE                                              :{WHITE}...σημαδούρα σε χρήση
 
 
-STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Δεν μπορεί να διαλειθεί μέρος του σταθμού...
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Δεν μπορεί να αφαιρεθεί μέρος του σταθμού...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Δεν γίνεται να μετατραπεί ο τύπος της σιδηροτροχιάς εδώ...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Μετατρέψτε/Αλλάξτε τον τύπο της γραμμής
 
@@ -1297,7 +1330,7 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :Kicked απο �
 ##### PNG-MAP-Loader
 
 
-STR_BMPMAP_ERROR                                                :{WHITE}Αδυναμία φόρτωσης τοπίου από ΒΜΡ...
+STR_BMPMAP_ERROR                                                :{WHITE}Αδυναμία φόρτωσης τοπίου από το ΒΜΡ...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...αδύνατη η μετατροπή τύπου εικόνας
 
 ##id 0x0800
@@ -1360,16 +1393,24 @@ STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Πρέπ
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Κατασκευή Δρόμου
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Επιλογή Γέφυρας Δρόμου
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Αδύνατο να χτιστεί δρόμος εδώ...
+STR_CAN_T_BUILD_TRAMWAY_HERE                                    :{WHITE}Δεν μπορεί να χτιστεί γραμμή τραμ εδώ...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Αδύνατο να αφαιρεθεί δρόμος από εδώ...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Προσανατοισμός Σταθμού Οχημάτων
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Αδύνατο να χτιστεί σταθμός οχημάτων εδώ...
+STR_CAN_T_BUILD_TRAM_VEHICLE                                    :{WHITE}Δεν μπορεί να χτιστεί σταθμαρχείο τραμ εδώ...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Αδύνατο να χτιστεί στάση λεωφορείων...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Αδύνατο να χτιστεί στάση φορτηγών...
+STR_CAN_T_BUILD_PASSENGER_TRAM_STATION                          :{WHITE}Δεν μπορεί να χτιστεί επιβατικός σταθμός τραμ...
+STR_CAN_T_BUILD_CARGO_TRAM_STATION                              :{WHITE}Δεν μπορεί να χτιστεί σταθμός τραμ...
 STR_180A_ROAD_CONSTRUCTION                                      :Κατασκευή δρόμου
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Κατασκευή κομματιού δρόμου
+STR_BUILD_AUTOROAD_TIP                                          :{BLACK}Κατασκευή οδικού δικτύου χρησιμοποιώντας τον Αυτόματο Δρόμο
+STR_BUILD_AUTOTRAM_TIP                                          :{BLACK}Κατασκευή γραμμής τραμ χρησιμοποιώντας την Αυτόματη Γραμμή για τραμ.
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Κατασκευή σταθμού οχημάτων (για κατασκευή και επισκευή οχημάτων)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Κατασκευή σταθμού λεωφορείων
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών
+STR_BUILD_PASSENGER_TRAM_STATION                                :{BLACK}Κατασκευή επιβατικού σταθμού τραμ
+STR_BUILD_CARGO_TRAM_STATION                                    :{BLACK}Κατασκευή εμπορευματικού σταθμού τραμ.
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Κατασκευή γέφυρας δρόμου
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Κατασκευή τούνελ δρόμου
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
@@ -1485,6 +1526,7 @@ STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Δεν �
 STR_280A_SIGN                                                   :Πινακίδα
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Αλλαγή κειμένου πινακίδας
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Δεν γίνεται να αλλαχθεί το κείμενο της πινακίδας...
+STR_CAN_T_DELETE_SIGN                                           :{WHITE}Δεν μπορεί να διαγραφεί η πινακίδα
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση
 STR_280E_TREES                                                  :Δέντρα
 STR_280F_RAINFOREST                                             :Δάσος
@@ -1675,7 +1717,7 @@ STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Πρέπ
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Πρέπει πρώτα να καταστραφεί η γέφυρα
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Δεν γίνεται να ξεκινάει και να τελειώνει στο ίδιο σημείο
 STR_BRIDGEHEADS_NOT_SAME_HEIGHT                                 :{WHITE}Η γέφυρα δεν καταλήγει στο ίδιο επίπεδο
-STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Η γέφυρα είναι πολύ χαμηλά για το έδαφος
+STR_BRIDGE_TOO_LOW_FOR_TERRAIN                                  :{WHITE}Η γέφυρα είναι πολύ χαμηλή για το έδαφος
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Η αρχή και το τέλος πρέπει να είναι σε ευθεία
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
@@ -1984,6 +2026,9 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 
 
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}το όχημα δε μπορεί να πάει σε όλους τους σταθμούς
+STR_CAN_T_ADD_ORDER                                             :{WHITE}Το όχημα δεν μπορεί να πάει σε αυτό τον σταθμό
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}όχημα που μοιράζεται αυτή την εντολή δεν μπορεί να πάει σε αυτό τον σταθμό
 
 
 
@@ -1996,6 +2041,8 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 ##id 0x9800
 
+STR_BUILD_AQUEDUCT                                              :{BLACK}Κατασκευή καναλιού
+STR_CAN_T_BUILD_AQUEDUCT_HERE                                   :{WHITE}Δεν μπορεί να χτιστεί κανάλι εδώ...
 
 ##id 0xA000
 
@@ -2010,8 +2057,9 @@ STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Κατάρρευση ανθρακωρυχείου αφήνει καταστροφικό ρήγμα κοντά στο {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Πλημμύρα!{}Τουλάχιστον {COMMA} αγνοούμενοι, το πιθανότερο νεκροί μετά από μεγάλη πλημμύρα!
 
-STR_BRIBE_FAILED                                                :{WHITE}Η δωροδοκία σου έγινε
+STR_BRIBE_FAILED                                                :{WHITE}Η δωροδοκία έγινε
 STR_BRIBE_FAILED_2                                              :{WHITE}αντιληπτή από περιφερειακό επιθεωρητή
+STR_BUILD_DATE                                                  :{BLACK}Κατασκευή: {LTBLUE}{DATE_LONG}
 
 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
@@ -2024,6 +2072,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 
 
 
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Τρένο'{VEHICLE}' που ανήκει στην '{COMPANY}' έχει μη έγκυρο μήκος. Πιθανόν να προέρχεται από πρόβλημα του NewGRFs. Το Παιχνίδι μπορεί ν΄αποσυγχρονιστεί ή να κρασάρει.
 
 
 
@@ -2083,6 +2132,7 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Αερο
 
 ########
 
+STR_BUILD_NEW_INDUSTRY                                          :{BLACK}Κατασκευή
 
 ############ Face formatting
 ########
@@ -2097,4 +2147,10 @@ STR_AIRCRAFT_NOT_AVAILABLE                                      :{WHITE}Αερο
 ########
 
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

@@ -1089,6 +1089,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆時針
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :順時針
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}平面地圖高度：{ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}車站最長延伸範圍：{ORANGE}{STRING} {RED}注意：過高會使效能下降
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}直升機於直升機坪自動維修：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}地形工具列與鐵軌/道路/水道/機場建設合併：{ORANGE}{STRING}
@@ -1709,6 +1713,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :有組合及進
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :有組合及單向進階號誌的鐵軌
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :有進階及單向進階號誌的鐵軌
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}必須先移除火車站
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}建設分體車站
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}合并車站
 
 
 

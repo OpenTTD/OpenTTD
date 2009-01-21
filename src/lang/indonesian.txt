@@ -1091,6 +1091,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Melawan arah ja
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Searah jam
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Tinggi dataran pada peta skenario datar : {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} {RED}Peringatan: Makin tinggi, Makin lambat
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Perbaikan helikopter di helipad secara otomatis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tempel toolbar Landsekap ke toolbar rel/jalan/air/bandara: {ORANGE}{STRING}
@@ -2028,6 +2032,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Berkas simpanan
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Berkas simpanan dibuat dari versi yang lebih baru
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Berkas tidak terbaca
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Berkas tidak dapat ditulisi
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Pemeriksaan integritas data gagal
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Daftar dari "drive", direktori dan file/berkas permainan tersimpan
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nama yang akan digunakan untuk menyimpan permainan
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Hapus nama simpanan permainan terpilih
@@ -3673,11 +3678,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Pengaturan AI
 STR_AI_DEBUG                                                    :{WHITE}AI Debug
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name of the AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Reload AI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Kill the AI, reload the script, and restart the AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI Debug window is only available for the server
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfigurasi AI
+STR_AI_CHANGE                                                   :{BLACK}Pilih AI
+STR_AI_CONFIGURE                                                :{BLACK}Konfigurasikan
+STR_AI_CHANGE_TIP                                               :{BLACK}Muat Ai lainnya
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Mengkonfigurasi parameter AI
+STR_AI_LIST_TIP                                                 :{BLACK}Semua AI yang akan dimuat pada permainan selanjutnya
+STR_AI_LIST_CAPTION                                             :{WHITE}AI tersedia
+STR_AI_AILIST_TIP                                               :{BLACK}Klik untuk memilih AI
+STR_AI_ACCEPT                                                   :{BLACK}Terapkan
+STR_AI_ACCEPT_TIP                                               :{BLACK}Pilih AI yg  disorot
+STR_AI_CANCEL                                                   :{BLACK}Batal
+STR_AI_CANCEL_TIP                                               :{BLACK}Jangan mengubah AI
+STR_AI_CLOSE                                                    :{BLACK}Tutup
+STR_AI_RESET                                                    :{BLACK}Reset
+STR_AI_HUMAN_PLAYER                                             :Pemain Manusia
+STR_AI_RANDOM_AI                                                :AI Acak
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parameter AI
+STR_AI_AUTHOR                                                   :Pembuat:
+STR_AI_VERSION                                                  :Versi:
+STR_AI_DESCRIPTION                                              :Deskripsi:
 ########
 
 ############ town controlled noise level

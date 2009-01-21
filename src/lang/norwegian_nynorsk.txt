@@ -1041,6 +1041,7 @@ STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industr
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alltid vis lang dato på statuslinja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis jernbanesignal på same sida som køyreretninga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis rekneskap ved nyttår: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONSTOP_BY_DEFAULT                           :{LTBLUE}Nye ordre er 'utan stopp' som standard: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Køyretøykøar (med kvantumseffektar): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Flytt på biletet dersom pila er nær ytterkantane på skjermen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillat smørjing av bystyret: {ORANGE}{STRING}
@@ -1048,6 +1049,7 @@ STR_CONFIG_PATCHES_ALLOW_EXCLUSIVE                              :{LTBLUE}Gje hø
 STR_CONFIG_PATCHES_ALLOW_GIVE_MONEY                             :{LTBLUE}Gje høve til å sende penger til andre firma: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikkje-einsarta stasjonar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vektmultiplikator for frakt til å simulere tunge tog: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PLANE_SPEED                                  :{LTBLUE}Flyfartfaktor: {ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_STOP_ON_TOWN_ROAD                            :{LTBLUE}Tillat å køyre gjennom stoppestadar på vegar som byane eig: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADJACENT_STATIONS                            :{LTBLUE}Tillat å byggje stasjonar inntil andre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DYNAMIC_ENGINES                              :{LTBLUE}Slå på fleire sett NewGRF grafikkmotorar: {ORANGE}{STRING}
@@ -1059,6 +1061,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Inspise
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men utelat stoppa køyretøy
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :av alle køyretøy
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Åtvar dersom eit køyretøy har negativ inntekt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Køyretøy utgår aldri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Forny køyretøy automatisk når det vert gamalt
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Forny køyretøy automatisk når det er  {ORANGE}{STRING}{LTBLUE} månader før/etter maks alder
@@ -1084,6 +1087,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Høgdek
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høgden som eit flatt scenariokart får: {ORANGE}{STRING}
+
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspreiing: {ORANGE}{STRING} {RED}Advarsel: Høg innstilling gjev treigare spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Gjer vedlikehald på helikopter automatisk på helikopterlandingsplassar: {ORANGE}{STRING}
@@ -1165,6 +1172,7 @@ STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillat 
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Ved opptrekking, plasser signal hver: {ORANGE}{STRING} rute{P "" r}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg semaforer automatisk før: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Bruk signal GUI: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Signaltype bygd som standard: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Blokker signal
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Vegsignal
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Einvegs vegsignal
@@ -1205,7 +1213,10 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Køyret
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stasjonar
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Økonomi
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Motstandarar
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Vis innstillingar
 STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signaler
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Varebehandling
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Forny automatisk
 STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Vedlikehald
 STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Tog
 STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Byar
@@ -1573,7 +1584,18 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :tenaren er full
 ############ End of leave-in-this-order
 STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spel sett på pause (ikkje nok spelarar)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spel gjenoppteke (nok spelarar)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spel sett på pause (klient koblar seg til)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spel gjenoppteke (klient tilkobla)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spel gjenoppteke (klient kunne ikkje kobla seg til)
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :forlet
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} har blitt med i spelet
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} har forlatt spelet ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} har endra namnet sitt til {STRING}
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gav firmaet ditt {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Du gav {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Lag] :
 STR_NETWORK_CHAT_COMPANY                                        :[Lag] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Lag] Til {STRING}: {GRAY}{STRING}
@@ -1996,6 +2018,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Det lagra spele
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Dette spelet er lagra frå ei nyare utgåve
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Kan ikkje lesa fil
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Kan ikkje skriva fil
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Integritetssjekk av data mislukkast
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste over diskar, mapper og lagra spel
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Gjeldande namn for vald lagra spel
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Slett valde lagra spel
@@ -3647,7 +3670,7 @@ STR_AI_VERSION                                                  :Versjon:
 ########
 
 ############ town controlled noise level
-STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillat byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Tillat at byen kontrollerar lydnivået for flyplassane: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Grense for lydnivå i byen: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Lyd generert: {GOLD}{COMMA}
 ########

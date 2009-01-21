@@ -479,13 +479,17 @@ STR_AGE                                                         :{COMMA} Jahr{P 
 STR_AGE_RED                                                     :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Straßenfahrzeug
-STR_019D_AIRCRAFT                                               :Flugzeug
-STR_019E_SHIP                                                   :Schiff
 STR_019F_TRAIN                                                  :Zug
+STR_019C_ROAD_VEHICLE                                           :Straßenfahrzeug
+STR_019E_SHIP                                                   :Schiff
+STR_019D_AIRCRAFT                                               :Flugzeug
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} wird alt
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} wird sehr alt
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} wird sehr alt und sollte dringend ersetzt werden
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Gebietsinformation
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Räumungskosten: {LTBLUE}k.A.
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Räumungskosten: {RED}{CURRENCY}
+STR_REVENUE_WHEN_CLEARED                                        :{BLACK}Einnahmen beim Abriss: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :k.A.
 STR_01A7_OWNER                                                  :{BLACK}Eigentümer: {LTBLUE}{STRING}
 STR_ROAD_OWNER                                                  :{BLACK}Straßenbesitzer: {LTBLUE}{STRING}
@@ -798,6 +802,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Durchs
 STR_02D5_LAND_BLOCK_INFO                                        :Gebietsinformation
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Konsole öffnen/schließen
+STR_AI_DEBUG_MENU                                               :KI Debug
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Strg-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Riesiger Screenshot (Strg-G)
 STR_02D9_ABOUT_OPENTTD                                          :Über 'OpenTTD'
@@ -991,12 +996,21 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Fehler b
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Fahrplan kann nicht kopiert werden...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ende des gemeinsam genutzten Fahrplans - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} findet keinen Weg zum Vorankommen.
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} hat sich verirrt.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}Der Ertrag von {VEHICLE} lag im letzten Jahr bei {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europäische Währungsunion!{}{}Der Euro wird einzige Währung für alltägliche Zahlungsvorgänge.
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} hat zu wenige Aufträge
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} hat einen Auftrag ohne Ziel
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} hat Ziele mehrfach im Fahrplan
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} hat ungültige Stationen im Fahrplan
 # end of order system
 
+STR_VEHICLE_AUTORENEW_FAILED                                    :{WHITE}Automatisches Ersetzen für {VEHICLE}{}{STRING} fehlgeschlagen
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}{VEHICLE} ist nach Ersetzung zu lang
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Keine Ersetzungs-/Erneuerungsregeln angewandt.
 STR_AUTOREPLACE_MONEY_LIMIT                                     :(Geld fehlt)
 
@@ -1015,6 +1029,7 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erlaube
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistische Zugbeschleunigung aktivieren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zügen und Schiffen 90° Kurven verbieten: {ORANGE}{STRING} {LTBLUE} (nicht mit NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Bahnhöfe vereinigen, die nebeneinander gebaut werden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Erlaubt nicht direkt benachbarte Stationen zu verbinden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Verbessertes Beladeverfahren nutzen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Fahrzeuge schrittweise beladen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
@@ -1050,6 +1065,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Fahrpl�
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nein
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, aber ohne gestoppte Fahrzeuge
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :für alle Fahrzeuge
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warne, wenn Einnahmen eines Fahrzeuges negativ sind: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Fahrzeuge veralten nie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Fahrzeug erneuern, wenn es veraltet
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Erneuere Fahrzeug {ORANGE}{STRING}{LTBLUE} Monate vor/nach Maximalalter
@@ -1076,6 +1092,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :links
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :rechts
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Höhenstufe des Spielfeldes in einem flachen Szenario: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an die Bauwerkzeuge binden: {ORANGE}{STRING}
@@ -1098,6 +1118,13 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommando-Klick
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Strg-Klick
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Aus
 
+STR_CONFIG_PATCHES_LEFT_MOUSE_BTN_SCROLLING                     :{LTBLUE}Scrollen bei gedrückter erster Maustaste: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES                    :{LTBLUE}Verwende {ORANGE}{STRING}{LTBLUE} Datumsformat in Namen der Spielstände
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :langes (25. Dez 2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :kurzes (25-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-25)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Automatische Pause bei Spielstart: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Erweiterte Fahrzeugliste benutzen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Aus
@@ -1109,6 +1136,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :Eigene Firma
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :Alle Firmen
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}Fahrpläne für Fahrzeuge aktivieren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}Zeitpläne in Ticks anstatt in Tagen anzeigen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}Schnelle Erzeugung von Aufträgen für Fahrzeuge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}Gleistyp bei Spielbeginn/geladenem Spiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :normales Gleis
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :elektrifiziertes Gleis
@@ -1118,6 +1146,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_FIRST                      :erster verfügb
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :letzter verfügbarer
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :meistbenutzer
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Reservierte Schienen hervorheben: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Belasse Bauwerkzeuge aktiv nach Benutzung: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Bauwerkzeuge immer anzeigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
@@ -1130,6 +1159,8 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Straße
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Flugzeuge für den Computer abschalten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Schiffe für den Computer abschalten: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Erlaube KI im Mehrspielermodus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}Anzahl Rechenschritte bevor KI unterbrochen wird: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}{STRING} Tage/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Vorgegebenes Wartungsintervall für Züge: {ORANGE}abgeschaltet
@@ -1174,6 +1205,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Mitte
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Rechts
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Fenster schnappen aneinander, wenn näher als: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenster schnappen aneinander, wenn näher als: {ORANGE}ausgeschaltet
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Maximale Fensteranzahl (nicht angepinnte): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Maximale Fensteranzahl (nicht angepinnte): {ORANGE}deaktiviert
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Wachstumsgeschwindigkeit von Städten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :keine
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :langsam
@@ -1191,6 +1224,17 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Fahrzeu
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Bahnhöfe
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Wirtschaft
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Gegenspieler
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Darstellung
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Interaktion
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signale
+STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Frachtbehandlung
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Computerspieler
+STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Automatische Erneuerung
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Warung
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Wegsuche
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Züge
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Städte
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Unternehmen
 
 STR_CONFIG_PATCHES_DISABLED                                     :ausgeschaltet
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1339,7 +1383,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Umrüstu
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Zug kann nicht umgerüstet werden...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Wartungsintervalle in Prozent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Produktion ändern
-
 
 ############ network gui strings
 
@@ -1513,6 +1556,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Trennen
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wieviel Geld möchten Sie geben?
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server ist geschützt. Passwort eingeben:
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma ist geschützt. Passwort eingeben:
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Teilnehmerliste
@@ -1552,6 +1596,20 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :ausgeschlossen
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :hat versucht zu mogeln
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Server voll
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spiel angehalten (nicht genug Spieler)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spiel fortgesetzt (genug Spieler)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spiel angehalten (Teilnehmer meldet sich an)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spiel fortgesetzt (Teilnehmer ist angemeldet)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spiel fortgesetzt (Teilnehmer konnte nicht angemeldet werden)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :geht
+STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} trat dem Spiel bei
+STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} hat das Spiel verlassen ({2:STRING})
+STR_NETWORK_NAME_CHANGE                                         :*** {STRING} hat seinen/ihren Namen in {STRING} geändert
+STR_NETWORK_GIVE_MONEY                                          :*** {STRING} gab Ihrem Unternehmen {2:CURRENCY}
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** Sie gaben {1:STRING} {2:CURRENCY}
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] an {STRING}: {GRAY}{STRING}
@@ -1676,6 +1734,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Gleis mit Kombi
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Gleis mit Kombinations- und einseitigem Pfadsignal
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Gleis mit Pfadsignal und einseitigem Pfadsignal
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Bahnhof muss erst abgerissen werden
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Errichte eine getrennte Station
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Verbinde die Station
 
 
 
@@ -1864,6 +1924,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Zu nah a
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Grenzt an mehr als eine vorhandene Station/Ladeplatz
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zu viele Stationen/Ladeplätze im Stadtgebiet
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Zu viele Stationen/Ladeplätze im Umkreis
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE}Zu viele Bahnsteigteile
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Zu viele Busbahnhöfe
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}Zu viele Lkw-Ladeplätze
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Stationen/Ladeplätze liegen zu dicht beisammen
@@ -1961,6 +2022,7 @@ STR_4001_LOAD_GAME                                              :{WHITE}Spiel la
 STR_4002_SAVE                                                   :{BLACK}Speichern
 STR_4003_DELETE                                                 :{BLACK}Löschen
 STR_4004                                                        :{COMPANY}, {STRING}
+STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Zuschauer, {SKIP}{STRING}
 STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} frei
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Laufwerk nicht betriebsbereit
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spielspeicherung fehlgeschlagen{}{STRING}
@@ -1971,6 +2033,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Spielstandsdate
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spielstand wurde mit neuerer Version erstellt
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datei kann nicht gelesen werden
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Datei kann nicht geschrieben werden
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Prüfung der Dateningetrität fehlgeschlagen
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Liste der Laufwerke, Verzeichnisse und gespeicherten Spiele
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Ausgewählter Spielname
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Lösche gewählten Spielstand
@@ -2764,6 +2827,7 @@ STR_UNKNOWN_STATION                                             :unbekannte Stat
 STR_8812_EMPTY                                                  :{LTBLUE}Leer
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} von {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} von {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} wartet im Depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Neue Fahrzeuge
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Zug zu lang
@@ -2815,6 +2879,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Auftrag 
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Auftrag kann nicht verschoben werden...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Auftrag kann nicht ausgelassen werden...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Wechseln zum ausgewählten Auftrag nicht möglich...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}Fahrzeug kann nicht alle Stationen erreichen
+STR_CAN_T_ADD_ORDER                                             :{WHITE}Fahrzeug kann diese Station nicht erreichen
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}Ein Fahrzeug, welches diesen gemeinsam Fahrplan nutzt, kann die Station nicht erreichen
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Fahrzeug kann nicht bewegt werden...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Hintere Lok folgt immer der vorderen Lok
 STR_8838_N_A                                                    :k.A.{SKIP}
@@ -2922,6 +2989,7 @@ STR_9012_CAPACITY                                               :{BLACK}Kapazit�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...muss in einem Fahrzeugdepot angehalten werden
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Fahrzeug kann nicht verkauft werden...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Fahrzeug kann nicht angehalten/losgeschickt werden...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} wartet im Depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Unterwegs zum Fahrzeugdepot {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Unterwegs zum Fahrzeugdepot {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Wartung im Fahrzeugdepot {TOWN}
@@ -3003,6 +3071,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Unterwe
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Unterwegs zur Werft {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Wartung in der Werft {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Wartung in der Werft {TOWN}, {VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} wartet im Depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Hafen bauen
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Werft bauen (für den Bau und die Wartung von Schiffen)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schiffe - für Einzelheiten auf das Schiff klicken
@@ -3067,6 +3136,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}Unterwe
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Unterwegs zu {STATION} Hangar, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Wartung in {STATION} Hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Wartung in {STATION} Hangar, {VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} wartet im Hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugzeug ist auf dem Weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Flugzeug kann nicht angehalten/losgeschickt werden...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Das Flugzeug ist in der Luft
@@ -3191,6 +3261,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Unerwartetes Sp
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :NewGRF Fehler: 'Unknown Action 0 property.'
 STR_NEWGRF_ERROR_INVALID_ID                                     :Es wurde versucht, eine ungültige ID zu verwenden.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} enthält kaputte Sprites. Diese werden als rote Fragezeichen (?) dargestellt.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Enthält mehrere Aktion 8 Einträge.
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ausgewählte Voreinstellung laden
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Speichern
@@ -3327,6 +3398,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Alle Fah
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste ({COMMA} Schild{P "" er})
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Umrüstungsauftag fehlgeschlagen bei {VEHICLE}
 
 ############ Lists rail types
 
@@ -3446,7 +3518,11 @@ STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebiet: 
 STR_DATE_TINY                                                   :{STRING}-{STRING}-{NUM}
 STR_DATE_SHORT                                                  :{STRING} {NUM}
 STR_DATE_LONG                                                   :{STRING} {STRING} {NUM}
+STR_DATE_ISO                                                    :{2:NUM}-{1:STRING}-{0:STRING}
 
+STR_JUST_DATE_TINY                                              :{DATE_TINY}
+STR_JUST_DATE_LONG                                              :{DATE_LONG}
+STR_JUST_DATE_ISO                                               :{DATE_ISO}
 ########
 
 STR_FEEDER_CARGO_VALUE                                          :{BLACK}Transfer-Kredit: {LTBLUE}{CURRENCY}
@@ -3602,8 +3678,94 @@ STR_OSK_KEYBOARD_LAYOUT                                         :^1234567890ß'�
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :°!"§$%&/()=?`@QWERTZUIOPÜ*ASDFGHJKLÖÄ'>YXCVBNM;:_ .
 ########
 
+############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Einstellungen für die KI
+STR_AI_DEBUG                                                    :{WHITE}KI Debug
+STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Name der KI
+STR_AI_DEBUG_RELOAD                                             :{BLACK}AI neu laden
+STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Stoppe die KI, lade das Script neu und starte de KI erneut
+STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}KI Debug-Fenster ist nur auf dem Server vorhanden
+STR_AI_CONFIG_CAPTION                                           :{WHITE}KI einstellen
+STR_AI_CHANGE                                                   :{BLACK}KI wählen
+STR_AI_CONFIGURE                                                :{BLACK}Einstellungen
+STR_AI_CHANGE_TIP                                               :{BLACK}Lade eine andere KI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Stelle die Parameter der KI ein
+STR_AI_LIST_TIP                                                 :{BLACK}Alle KIs, die im nächsten Spiel geladen werden
+STR_AI_LIST_CAPTION                                             :{WHITE}Verfügbare KIs
+STR_AI_AILIST_TIP                                               :{BLACK}Klicken, um eine KI auszuwählen
+STR_AI_ACCEPT                                                   :{BLACK}Akzeptiert
+STR_AI_ACCEPT_TIP                                               :{BLACK}Ausgewählte KI verwenden
+STR_AI_CANCEL                                                   :{BLACK}Abbrechen
+STR_AI_CANCEL_TIP                                               :{BLACK}KI nicht wechseln
+STR_AI_CLOSE                                                    :{BLACK}Schließen
+STR_AI_RESET                                                    :{BLACK}Rücksetzen
+STR_AI_HUMAN_PLAYER                                             :menschlicher Spieler
+STR_AI_RANDOM_AI                                                :Zufällige KI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}KI Parameter
+STR_AI_AUTHOR                                                   :Autor:
+STR_AI_VERSION                                                  :Version:
+STR_AI_DESCRIPTION                                              :Beschreibung:
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Stadt kontrolliert Lärmbelastung der Flughäfen: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Lärmbelastung in der Stadt: {ORANGE}{COMMA}{BLACK}  Grenzwert: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Lärmbelastung: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD wurde ohne "zlib" erstellt...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... herunterladen des Inhalts nicht möglich!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grundgrafiken
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :KI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :KI Biliothek
+STR_CONTENT_TYPE_SCENARIO                                       :Szenario
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Reliefkarte
+STR_CONTENT_TITLE                                               :{WHITE}Herunterladen von Inhalt
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Art
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Art des Inhaltes
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Name
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Name des Inhaltes
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Auf eine Zeile klicken, um Details zu sehen{}Checkbox anklicken, um zum Download auszuwählen
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Alles wählen
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Allen Inhalt zum Herunterladen auswählen
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Upgrades auswählen
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Allen Inhalt, der einen bestehenden Inhalt verbessert, auswählen
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Alles abwählen
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Keinen Inhalt zum Download auswählen
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Herunterladen
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Beginne den Inhalt herunterzuladen
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Gesamtgräße des Download: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Inhalts-Info
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Sie haben das nicht zum Herunterladen ausgewählt
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Sie haben dies zum Herunterladen ausgewählt
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Diese Abhängigkeit wurde zum Herunterladen ausgewählt
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sie haben das schon
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Der Inhalt ist unbekannt und kann nicht von OpenTTD heruntergeladen werden
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Das ist ein Ersatz für ein existiernde/s {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Name: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Version: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beschreibung: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Typ: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Download-Größe: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Gewählt weil: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Abhängigkeiten: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {WHITE}{STRING}
+
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Inhalt herunterladend...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Dateien anfordernd...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Momentan herunterladend {STRING} ({NUM} von {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Herunterladen abgeschlossen
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} von {BYTES} heruntergeladen ({NUM} %)
+
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kann nicht zum Inhalts-Server verbinden...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Herunterladen fehlgeschlagen...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... Verbindung verloren
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... Datei nicht schreibbar
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kann heruntergeladene Datei nicht entpacken
+
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Prüfe Online-Inhalt
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Prüfe auf neuen oder aktualisierten Inhalt zum Herunterladen
 ########

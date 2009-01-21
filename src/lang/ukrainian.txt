@@ -1216,6 +1216,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Проти го
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :За годинниковою
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Рівень висоти для карт з пласким рельєфом: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. довжина станції: {ORANGE}{STRING} {RED}Велике значення гальмує гру
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Приєднати меню рельєфу до меню будування: {ORANGE}{STRING}
@@ -1279,6 +1283,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Заб�
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Заборонити комп'ютеру будувати літаки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Заборонити комп'ютеру будувати кораблі: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Дозволити AI у командній грі: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}#opcodes перез зупинкою AI: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Інтервал техогляду для поїздів: {ORANGE}{STRING} дн/%
@@ -1671,6 +1676,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Запи
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Запит інформації про компанію..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} клієнт{P "" и ів} перед вами
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} вже завантажено
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Роз'єднання
 
@@ -2141,6 +2147,7 @@ STR_4002_SAVE                                                   :{BLACK}Збер
 STR_4003_DELETE                                                 :{BLACK}Видалити
 STR_4004                                                        :{COMPANY}, {STRING}
 STR_GAME_SAVELOAD_SPECTATOR_SAVEGAME                            :Спостерігач, {SKIP}{STRING}
+STR_4005_BYTES_FREE                                             :{BLACK}{BYTES} вільно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Неможливо прочитати пристрій
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри{}{STRING}
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Неможливо стерти файл
@@ -2150,6 +2157,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Файл збе
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Файл збереженої гри зроблений більш новою версією
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Неможливо прочитати файл
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Неможливо записати файл
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Перевірка на цілісність зазнала невдачі
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Список пристроїв, каталогів і збережених файлів гри
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Поточне вибране ім'я файлу для збереження гри
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Стерти вибрану збережену гру
@@ -3832,11 +3840,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|�
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Параметри AI
 STR_AI_DEBUG                                                    :{WHITE}Дебаг AI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Назва AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезавантажити AI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Знищити AI, перезавантажити скрипт, та рестартувати AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Вікно Дебаг AI доступно тільки серверу
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Конфігурація AI
+STR_AI_CHANGE                                                   :{BLACK}Вибір AI
+STR_AI_CONFIGURE                                                :{BLACK}Настроїти
+STR_AI_CHANGE_TIP                                               :{BLACK}Завантажити інший AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Настроїти параметри AI
+STR_AI_LIST_TIP                                                 :{BLACK}Усі AI, які будуть завантажені у наступній грі
+STR_AI_LIST_CAPTION                                             :{WHITE}Доступні AI
+STR_AI_AILIST_TIP                                               :{BLACK}Клікніть, щоб вибрати AI
+STR_AI_ACCEPT                                                   :{BLACK}Прийняти
+STR_AI_ACCEPT_TIP                                               :{BLACK}Вибрати виділений AI
+STR_AI_CANCEL                                                   :{BLACK}Відміна
+STR_AI_CANCEL_TIP                                               :{BLACK}Не міняти AI
+STR_AI_CLOSE                                                    :{BLACK}Закрити
+STR_AI_RESET                                                    :{BLACK}Скидання
+STR_AI_HUMAN_PLAYER                                             :Гравець-людина
+STR_AI_RANDOM_AI                                                :Випадковий AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметри AI
+STR_AI_AUTHOR                                                   :Автор:
+STR_AI_VERSION                                                  :Версія:
+STR_AI_DESCRIPTION                                              :Опис:
 ########
 
 ############ town controlled noise level
@@ -3846,7 +3875,58 @@ STR_STATION_NOISE                                               :{BLACK}Гене
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD скомпонований без підтримки "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... не можу завантажити вміст!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Базова графіка
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :Бібліотека AI
+STR_CONTENT_TYPE_SCENARIO                                       :Сценарій
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Карта висот
+STR_CONTENT_TITLE                                               :{WHITE}Завантаження змісту
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Тип
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Тип вмісту
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Назва
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Назва вмісту
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Клікніть на рядку, щоб побачити деталі{}Клікніть позначку, щоб обрати його для завантаження
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Вибрати всі
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Позначити для завантаження весь вміст
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Вибрати оновлення
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Позначити весь вміст, що є оновленням існуючого, для завантаження
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Зняти позначки
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Не завантажувати нічого
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Завантажити
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Почати завантаження обраного вмісту
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Загальний розмір завантажень: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}Вміст - інформація
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Ви не обрали це для завантаження
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Ви обрали це для завантаження
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ця залежність була обрана для завантаження
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Ви вже маєте це
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Цей вміст невідомий і не може бути завантажений до OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Це заміна існуючої {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Назва: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Версія: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Опис: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Тип: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Розмір завантаження: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Обрано, тому що: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Залежності: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Позначки: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Завантажую вміст...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Запитую файли...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Завантажується {STRING} ({NUM} з {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Завантаження закінчене
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} з {BYTES} завантажено ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Не можна приєднатись до серверу вмісту...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Не вдалося завантажити...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... перервався зв'язок
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... файл не відкритий для запису
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Не можна розпакувати завантажений файл
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Перевірити вміст у Internet
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Перевірити новий та оновлений вміст для завантаження
 ########

@@ -1157,6 +1157,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Obrnuto od smje
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :U smjeru kazaljke na satu
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visinski nivo koji ravna mapa u scenariju dobiva: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost postaje: {ORANGE}{STRING} {RED}Pozor: visoka vrijednost usporava igru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatski servisiraj helikoptere na heliodromima: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Poveži alatnu traku za krajolik s alatnim trakama za željeznicu/ceste/vodu/zračne luke: {ORANGE}{STRING}
@@ -1613,6 +1617,7 @@ STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Dohvaća
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Dohvaćanje podataka o tvrtki..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klijen{P t ta ata} {P je su je} prije Vas
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} / {BYTES} preuzeto do sada
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odspoji
 
@@ -2093,6 +2098,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Pokvarena sprem
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spremljena igra je stvorena s novijom verzijom
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Datoteka nije čitljiva
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Ne mogu pisati u datoteku
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Provjera integriteta podataka nije uspjela
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Popis diskova, mapa i spremljenih datoteka
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Trenutno odabrano ime za spremanje igre
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Obriši trenutno odabranu spremljenu igru
@@ -3738,15 +3744,44 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI postavke
 STR_AI_DEBUG                                                    :{WHITE}Debugiranje UI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Ime UI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ponovno učitaj UI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Ubij UI, ponovno učitaj skriptu i ponovno pokreni UI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}UI prozor za debugiranje je dozvoljen samo serveru
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI konfiguracija
+STR_AI_CHANGE                                                   :{BLACK}Izaberi AI
+STR_AI_CONFIGURE                                                :{BLACK}Konfiguriraj
+STR_AI_CHANGE_TIP                                               :{BLACK}Učitaj drugi AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfiguriraj parametre izabranog AI
+STR_AI_LIST_TIP                                                 :{BLACK}Svi AI koji će biti učitani u sljedeću igru
+STR_AI_LIST_CAPTION                                             :{WHITE}Dostupni AI
+STR_AI_AUTHOR                                                   :Autor:
+STR_AI_VERSION                                                  :Verzija:
+STR_AI_DESCRIPTION                                              :Opis:
 ########
 
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Omogući određivanje razine buke za zračne luke od strane gradova: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Ograničenje buke u gradu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Proizvedeno buke: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
+STR_CONTENT_TYPE_AI                                             :AI
+STR_CONTENT_TYPE_AI_LIBRARY                                     :AI biblioteka
+STR_CONTENT_TYPE_SCENARIO                                       :Scenarij
+STR_CONTENT_TYPE_HEIGHTMAP                                      :Visinska mapa
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Vrsta
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Vrsta sadržaja
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naziv
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Naziv sadržaja
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Izaberi sve
+STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Označi sav sadržaj za preuzimanje
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izaberi nadogradnje
+
+
+
 ########

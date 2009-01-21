@@ -1091,6 +1091,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 시나리오 맵이 받는 높이: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 높은 값은 게임을 느리게함!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 툴바 연결 : {ORANGE}{STRING}
@@ -2742,7 +2746,7 @@ STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :화물을 받�
 STR_ORDER_DROP_UNLOAD                                           :모든 화물 하차
 STR_ORDER_DROP_TRANSFER                                         :환승
 STR_ORDER_DROP_NO_UNLOADING                                     :화물을 하차시키지 않음
-STR_ORDER_FULL_LOAD                                             :(가득 실음)
+STR_ORDER_FULL_LOAD                                             :(모든 화물을 가득 실음)
 STR_ORDER_FULL_LOAD_ANY                                         :(아무 화물이나 가득 싣기)
 STR_ORDER_NO_LOAD                                               :(싣지 않기)
 STR_ORDER_UNLOAD                                                :(화물 하차 후 적재)
@@ -3674,11 +3678,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}인공지능 설정
 STR_AI_DEBUG                                                    :{WHITE}AI 디버그
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI의 이름
 STR_AI_DEBUG_RELOAD                                             :{BLACK}AI 재시작
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}AI를 종료시키고, 스크립트를 다시 불러와, AI를 재시작합니다
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI 디버그창은 오직 서버만 사용 가능합니다
+STR_AI_CONFIG_CAPTION                                           :{WHITE}인공지능 설정
+STR_AI_CHANGE                                                   :{BLACK}인공지능 선택
+STR_AI_CONFIGURE                                                :{BLACK}설정
+STR_AI_CHANGE_TIP                                               :{BLACK}다른 인공지능 불러오기
+STR_AI_CONFIGURE_TIP                                            :{BLACK}인공지능 파라미터 설정
+STR_AI_LIST_TIP                                                 :{BLACK}다음 게임에 로드될 모든 인공지능
+STR_AI_LIST_CAPTION                                             :{WHITE}사용 가능한 인공지능
+STR_AI_AILIST_TIP                                               :{BLACK}클릭하여 AI를 선택하세요
+STR_AI_ACCEPT                                                   :{BLACK}적용
+STR_AI_ACCEPT_TIP                                               :{BLACK}하이라이트된 AI 선택
+STR_AI_CANCEL                                                   :{BLACK}취소
+STR_AI_CANCEL_TIP                                               :{BLACK}인공지능을 바꾸지 않습니다
+STR_AI_CLOSE                                                    :{BLACK}닫기
+STR_AI_RESET                                                    :{BLACK}초기화
+STR_AI_HUMAN_PLAYER                                             :사용자 플레이어
+STR_AI_RANDOM_AI                                                :무작위 인공지능
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}인공지능 파라미터
+STR_AI_AUTHOR                                                   :저자:
+STR_AI_VERSION                                                  :버젼:
+STR_AI_DESCRIPTION                                              :설명:
 ########
 
 ############ town controlled noise level

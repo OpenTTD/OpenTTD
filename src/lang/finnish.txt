@@ -1091,6 +1091,19 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Litteälle maisemalle annettava korkeus: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Maata vain lounaisreunassa
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Vettä vain lounaisreunassa
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Vettä vain lounais- ja kaakkoisreunassa
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Vettä vain lounais- ja koillisreunassa
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Maata vain luoteisreunassa
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Vettä vain lounais- ja luoteisreunassa
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Maata vain koillisreunassa
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Maata vain lounaisreunassa
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Vettä kaikilla reunoilla
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurin aseman levittäytyminen: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
@@ -2118,6 +2131,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Juna on tunnelissa.
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Ajoneuvo on tunnelissa.
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Toinen tunneli on tiellä.
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunneli loppuisi kartan ulkopuolelle
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Maata ei voi kaivaa tunnelin toisessa päässä.
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunneli pitää tuhota ensin.
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Silta pitää tuhota ensin.
@@ -3674,11 +3688,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :½!"#¤%&/()=?`
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Tekoälyasetukset
 STR_AI_DEBUG                                                    :{WHITE}Tekoälyn virheenjäljitys
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Tekoälyn nimi
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Lataa tekoäly uudelleen
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Lopeta tekoäly, lataa skripti uudelleen ja käynnistä tekoäly uudelleen
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Tekoälyn virheenjäljitysikkuna on vain palvelimen käytettävissä
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Tekoälyn määritteet
+STR_AI_CHANGE                                                   :{BLACK}Valitse tekoäly
+STR_AI_CONFIGURE                                                :{BLACK}Määritä
+STR_AI_CHANGE_TIP                                               :{BLACK}Lataa toinen tekoäly
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Määritä tekoälyn parametrit
+STR_AI_LIST_TIP                                                 :{BLACK}Kaikki seuraavassa pelissä ladattavat tekoälyt
+STR_AI_LIST_CAPTION                                             :{WHITE}Valittavissa olevat tekoälyt
+STR_AI_AILIST_TIP                                               :{BLACK}Napsauta valitaksesi tekoälyn
+STR_AI_ACCEPT                                                   :{BLACK}Hyväksy
+STR_AI_ACCEPT_TIP                                               :{BLACK}Valitse korostettu tekoäly
+STR_AI_CANCEL                                                   :{BLACK}Peruuta
+STR_AI_CANCEL_TIP                                               :{BLACK}Älä vaihda tekoälyä
+STR_AI_CLOSE                                                    :{BLACK}Sulje
+STR_AI_RESET                                                    :{BLACK}Palauta
+STR_AI_HUMAN_PLAYER                                             :Ihmispelaaja
+STR_AI_RANDOM_AI                                                :Sattumanvarainen tekoäly
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Tekoälyn parametrit
+STR_AI_AUTHOR                                                   :Tekijä:
+STR_AI_VERSION                                                  :Versio:
+STR_AI_DESCRIPTION                                              :Kuvaus:
 ########
 
 ############ town controlled noise level

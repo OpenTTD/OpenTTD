@@ -1090,6 +1090,29 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Hoogtek
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tegen de klok in
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Met de klok mee
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}De hoogte van een plat scenario wordt: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Aanpassen van de vakjes op de map rand toestaan
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Een of meer vakjes in de in de noordelijke rand zijn niet leeg
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Een of meer vakjes op de rand zijn geen water
+
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Land op alle randen
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Water alleen aan de  noordoost rand
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Water alleen aan de  zuidoost rand
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Water aan de  noordoost en zuidoost rand
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Water alleen aan de  zuidwest rand
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Water aan de  noordoost  en zuidwest rand
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Water aan de  zuioost  en zuidwest rand
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Land alleen aan de  noordwest  rand
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Water alleen aan de  noordwest  rand
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Water aan de  noordwest  en noordoost rand
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Water aan de  noordwest  en zuidoost rand
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Land alleen aan de  zuidwest rand
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Water aan de  noordwest  en zuidwest rand
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Land alleen aan de zuidoost rand
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Land alleen aan de noordoost rand
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Water aan alle randen
+# End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
@@ -2118,6 +2141,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Trein in tunnel
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Wegvoertuig in tunnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Andere tunnel in de weg
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnel eindigt buiten de kaart
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kan geen land uitgraven voor andere uiteinde tunnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Tunnel moet eerst afgebroken worden
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Brug moet eerst afgebroken worden
@@ -3752,11 +3776,11 @@ STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tags: {
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Inhoud binnenhalen...
 STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Verzoek verzenden bestanden...
 STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Aan het binnenhalen {STRING} ({NUM} of {NUM})
-STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Download gereed
-STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} van {BYTES} gedownload ({NUM} %)
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Binnenhalen is klaar
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} van {BYTES} binnengehaald ({NUM} %)
 
 STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kon geen verbinding maken met inhoudsserver...
-STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Downloaden gefaald...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Binnenhalen gefaald...
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... verbinding verloren
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... bestand niet schrijfbaar
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Kon binnengehaald bestand niet uitpakken

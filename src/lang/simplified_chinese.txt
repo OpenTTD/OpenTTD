@@ -1091,6 +1091,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}由水面场景得到的高度：{ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}站台最大距离：{ORANGE}{STRING} {RED}警告：站台过大会影响速度
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}直升机在降落平台自动保养：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}将景观美化工具栏与铁路/公路/船只/机场工具栏连接：{ORANGE}{STRING}
@@ -2875,6 +2879,8 @@ STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}不能�
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}不能跳过当前命令…
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}不能跳转到选定的命令...
 STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}车辆无法到达全部站点
+STR_CAN_T_ADD_ORDER                                             :{WHITE}车辆无法到达那个车站
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}一个使用此共享调度指令的车辆无法到达那个车站
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}不能移动这项调度计划……
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}尾部的列车引擎必须和头部的一起写作……
 STR_8838_N_A                                                    :N/A{SKIP}
@@ -2961,6 +2967,7 @@ STR_TIMETABLE_STATUS_EARLY                                      :该车辆目前
 STR_TIMETABLE_TOTAL_TIME                                        :该时间表需要 {STRING} 完成
 STR_TIMETABLE_TOTAL_TIME_INCOMPLETE                             :该时间表至少需要 {STRING} 完成（并非全部计划的时间）
 STR_TIMETABLE_AUTOFILL                                          :{BLACK}自动填充
+STR_TIMETABLE_AUTOFILL_TOOLTIP                                  :{BLACK}根据到下一站货物的价值自动填充时间表 (CRTL+左击来保持等候时间)
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}指定的位置有汽车
@@ -3668,11 +3675,14 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}AI 设定
 STR_AI_DEBUG                                                    :{WHITE}AI 调试
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}AI名称
 STR_AI_DEBUG_RELOAD                                             :{BLACK}重载 AI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}关闭AI并重启AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI调试窗口只对服务器可用
+STR_AI_CONFIG_CAPTION                                           :{WHITE}AI 设置
+STR_AI_CHANGE                                                   :{BLACK}选择 AI
 ########
 
 ############ town controlled noise level

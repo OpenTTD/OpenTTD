@@ -1093,6 +1093,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altitudine delle mappe pianeggiante: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max estensione stazioni: {ORANGE}{STRING} {RED}Nota: Valori alti rallentano il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutieni automaticamente gli elicotteri presso gli eliporti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti terreno assieme a quelli di costruzione: {ORANGE}{STRING}
@@ -3676,11 +3680,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :|!"£$%&/()=?^ 
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Impostazioni IA
 STR_AI_DEBUG                                                    :{WHITE}Debug IA
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nome della IA
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Ricarica IA
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Termina la IA, ricarica lo script, e riavvia la IA
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}La finestra di debug IA è disponibile soltanto per il server
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Configurazione IA
+STR_AI_CHANGE                                                   :{BLACK}Scegli IA
+STR_AI_CONFIGURE                                                :{BLACK}Configura
+STR_AI_CHANGE_TIP                                               :{BLACK}Sceglie un'altra IA da caricare
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Configura i parametri della IA
+STR_AI_LIST_TIP                                                 :{BLACK}Lista delle IA che saranno caricate nella prossima partita
+STR_AI_LIST_CAPTION                                             :{WHITE}IA disponibili
+STR_AI_AILIST_TIP                                               :{BLACK}Fare clic per selezionare una IA
+STR_AI_ACCEPT                                                   :{BLACK}Accetta
+STR_AI_ACCEPT_TIP                                               :{BLACK}Sceglie l'IA selezionata
+STR_AI_CANCEL                                                   :{BLACK}Annulla
+STR_AI_CANCEL_TIP                                               :{BLACK}Non modifica l'IA utilizzata
+STR_AI_CLOSE                                                    :{BLACK}Chiudi
+STR_AI_RESET                                                    :{BLACK}Reimposta
+STR_AI_HUMAN_PLAYER                                             :Giocatore umano
+STR_AI_RANDOM_AI                                                :IA casuale
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri IA
+STR_AI_AUTHOR                                                   :Autore:
+STR_AI_VERSION                                                  :Versione:
+STR_AI_DESCRIPTION                                              :Descrizione:
 ########
 
 ############ town controlled noise level
@@ -3703,7 +3728,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipo
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Tipo del contenuto
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nome
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nome del contenuto
-STR_CONTENT_MATRIX_TIP                                          :{BLACK}Fare clic su un elemento per visualizzarne i dettagli.{}Selezionare la casella di controllo per includere nel download.
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Fare clic su un elemento per i dettagli.{}Selezionarlo per includerlo nel download.
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Seleziona tutti
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Include nel download tutti i contenuti
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. aggiornamenti
