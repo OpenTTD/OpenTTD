@@ -1156,7 +1156,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Magass�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Órairánnyal szemben
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Órairányban
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}A sima térképhez hozzáadandó magasság: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}A térkép határain lévő táj rendezésének engedélyezése
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}A térkép határain lévő táj rendezésének engedélyezése: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Az északi határnál egy vagy több mező nem üres
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Az egyik határnál egy vagy több mező nem víz
 

@@ -1158,7 +1158,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Otočen
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Doleva
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Doprava
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Výšková úroveň pro plochou krajinu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Umožnit terénní úpravy dílků na okrajích mapy
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Umožnit terénní úpravy dílků na okrajích mapy: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 

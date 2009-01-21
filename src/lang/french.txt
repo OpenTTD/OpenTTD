@@ -1091,7 +1091,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotatio
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-horaire
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horaire
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Le terrain d'un scénario plat a pour altitude : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Autoriser le terrassement sur les bords de la carte
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Autoriser le terrassement sur les bords de la carte: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord nord ne sont pas vides
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
