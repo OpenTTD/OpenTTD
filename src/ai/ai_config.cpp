@@ -71,8 +71,8 @@ AIInfo *AIConfig::GetInfo()
 
 bool AIConfig::ResetInfo()
 {
-	 this->info = AI::FindInfo(this->name, -1);
-	 return this->info != NULL;
+	this->info = AI::FindInfo(this->name, -1);
+	return this->info != NULL;
 }
 
 const AIConfigItemList *AIConfig::GetConfigList()
