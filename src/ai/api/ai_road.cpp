@@ -422,10 +422,10 @@ static bool NeighbourHasReachableRoad(::RoadTypes rts, TileIndex start_tile, Dia
 	::RoadTypes rts = ::RoadTypeToRoadTypes((::RoadType)GetCurrentRoadType());
 	int32 neighbour = 0;
 
-	if (NeighbourHasReachableRoad(rts, tile, DIAGDIR_NE)) neighbour++;
+	if (TileX(tile) > 0 && NeighbourHasReachableRoad(rts, tile, DIAGDIR_NE)) neighbour++;
 	if (NeighbourHasReachableRoad(rts, tile, DIAGDIR_SE)) neighbour++;
 	if (NeighbourHasReachableRoad(rts, tile, DIAGDIR_SW)) neighbour++;
-	if (NeighbourHasReachableRoad(rts, tile, DIAGDIR_NW)) neighbour++;
+	if (TileY(tile) > 0 && NeighbourHasReachableRoad(rts, tile, DIAGDIR_NW)) neighbour++;
 
 	return neighbour;
 }
