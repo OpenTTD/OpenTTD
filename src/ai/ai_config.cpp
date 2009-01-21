@@ -71,7 +71,7 @@ AIInfo *AIConfig::GetInfo()
 
 bool AIConfig::ResetInfo()
 {
-	 this->info = AI::FindInfo(this->name, this->version);
+	 this->info = AI::FindInfo(this->name, -1);
 	 return this->info != NULL;
 }
 
