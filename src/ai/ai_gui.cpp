@@ -58,7 +58,6 @@ struct AIListWindow : public Window {
 	CompanyID slot;
 
 	AIListWindow(const WindowDesc *desc, CompanyID slot) : Window(desc, 0),
-		selected(0),
 		slot(slot)
 	{
 		this->ai_info_list = AI::GetUniqueInfoList();
@@ -66,6 +65,20 @@ struct AIListWindow : public Window {
 		this->vscroll.cap = (this->widget[AIL_WIDGET_LIST].bottom - this->widget[AIL_WIDGET_LIST].top) / 14 + 1;
 		this->widget[AIL_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
 		SetVScrollCount(this, this->ai_info_list->size() + 1);
+
+		/* Try if we can find the currently selected AI */
+		this->selected = -1;
+		if (AIConfig::GetConfig(slot)->HasAI()) {
+			AIInfo *info = AIConfig::GetConfig(slot)->GetInfo();
+			int i = 0;
+			for (AIInfoList::const_iterator it = this->ai_info_list->begin(); it != this->ai_info_list->end(); it++, i++) {
+				if ((*it).second == info) {
+					this->selected = i;
+					break;
+				}
+			}
+		}
+
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -493,6 +506,16 @@ struct AIConfigWindow : public Window {
 
 			case AIC_WIDGET_CLOSE:
 				delete this;
+				break;
+		}
+	}
+
+	virtual void OnDoubleClick(Point pt, int widget)
+	{
+		switch (widget) {
+			case AIC_WIDGET_LIST:
+				this->OnClick(pt, widget);
+				if (this->selected_slot != INVALID_COMPANY) ShowAIListWindow((CompanyID)this->selected_slot);
 				break;
 		}
 	}
