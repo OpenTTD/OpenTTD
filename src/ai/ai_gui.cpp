@@ -365,12 +365,9 @@ struct AISettingsWindow : public Window {
 
 	virtual void OnTick()
 	{
-		if (this->timeout != 0) {
-			this->timeout--;
-			if (this->timeout == 0) {
-				this->clicked_button = -1;
-				this->SetDirty();
-			}
+		if (--this->timeout == 0) {
+			this->clicked_button = -1;
+			this->SetDirty();
 		}
 	}
 };
@@ -441,8 +438,13 @@ struct AIConfigWindow : public Window {
 	};
 
 	CompanyID selected_slot;
+	bool clicked_button;
+	bool clicked_increase;
+	int timeout;
 
-	AIConfigWindow() : Window(&_ai_config_desc)
+	AIConfigWindow() : Window(&_ai_config_desc),
+		clicked_button(false),
+		timeout(0)
 	{
 		selected_slot = INVALID_COMPANY;
 		this->resize.step_height = 14;
@@ -464,8 +466,10 @@ struct AIConfigWindow : public Window {
 		this->SetWidgetDisabledState(AIC_WIDGET_CONFIGURE, selected_slot == INVALID_COMPANY);
 		this->DrawWidgets();
 
+		byte max_competitors = _settings_newgame.difficulty.max_no_competitors;
+		DrawArrowButtons(10, 18, COLOUR_YELLOW, this->clicked_button ? 1 + !!this->clicked_increase : 0, max_competitors > 0, max_competitors < MAX_COMPANIES - 1);
 		SetDParam(0, _settings_newgame.difficulty.max_no_competitors);
-		DrawString(10, 18, STR_6805_MAXIMUM_NO_COMPETITORS, TC_FROMSTRING);
+		DrawString(36, 18, STR_6805_MAXIMUM_NO_COMPETITORS, TC_FROMSTRING);
 
 		int y = this->widget[AIC_WIDGET_LIST].top;
 		for (int i = this->vscroll.pos; i < this->vscroll.pos + this->vscroll.cap && i < MAX_COMPANIES; i++) {
@@ -487,6 +491,23 @@ struct AIConfigWindow : public Window {
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
+			case AIC_WIDGET_BACKGROUND: {
+				/* Check if the user clicked on one of the arrows to configure the number of AIs */
+				if (IsInsideBS(pt.x, 10, 20) && IsInsideBS(pt.y, 18, 10)) {
+					if (pt.x <= 20) {
+						_settings_newgame.difficulty.max_no_competitors = max(0, _settings_newgame.difficulty.max_no_competitors - 1);
+					} else {
+						_settings_newgame.difficulty.max_no_competitors = min(MAX_COMPANIES - 1, _settings_newgame.difficulty.max_no_competitors + 1);
+					}
+					if (_settings_newgame.difficulty.diff_level != 3) {
+						_settings_newgame.difficulty.diff_level = 3;
+						ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
+					}
+					this->SetDirty();
+				}
+				break;
+			}
+
 			case AIC_WIDGET_LIST: { // Select a slot
 				uint slot = (pt.y - this->widget[AIC_WIDGET_LIST].top) / 14 + this->vscroll.pos;
 
@@ -524,6 +545,14 @@ struct AIConfigWindow : public Window {
 	{
 		this->vscroll.cap += delta.y / 14;
 		this->widget[AIC_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
+	}
+
+	virtual void OnTick()
+	{
+		if (--this->timeout == 0) {
+			this->clicked_button = -1;
+			this->SetDirty();
+		}
 	}
 };
 
