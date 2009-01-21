@@ -1008,8 +1008,8 @@ static void ViewportAddLandscape()
 
 			_tile_type_procs[tt]->draw_tile_proc(&ti);
 
-			if ((x_cur == (int)MapMaxX() * TILE_SIZE && IsInsideMM(y_cur, 0, MapMaxY() * TILE_SIZE)) ||
-				(y_cur == (int)MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE))) {
+			if ((x_cur == (int)MapMaxX() * TILE_SIZE && IsInsideMM(y_cur, 0, MapMaxY() * TILE_SIZE + 1)) ||
+				(y_cur == (int)MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE + 1))) {
 				TileIndex tile = TileVirtXY(x_cur, y_cur);
 				ti.tile = tile;
 				ti.tileh = GetTileSlope(tile, &ti.z);
