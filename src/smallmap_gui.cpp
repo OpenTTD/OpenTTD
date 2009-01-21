@@ -292,7 +292,8 @@ static void DrawSmallMapStuff(void *dst, uint xc, uint yc, int pitch, int reps, 
 
 	do {
 		/* check if the tile (xc,yc) is within the map range */
-		if (xc < MapMaxX() && yc < MapMaxY()) {
+		uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
+		if (IsInsideMM(xc, min_xy, MapMaxX()) && IsInsideMM(yc, min_xy, MapMaxY())) {
 			/* check if the dst pointer points to a pixel inside the screen buffer */
 			if (dst < _screen.dst_ptr) continue;
 			if (dst >= dst_ptr_abs_end) continue;
