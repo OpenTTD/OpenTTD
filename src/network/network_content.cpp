@@ -750,29 +750,37 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 
 void ClientNetworkContentSocketHandler::OnConnect(bool success)
 {
-	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); iter++) {
-		(*iter)->OnConnect(success);
+	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
+		ContentCallback *cb = *iter;
+		cb->OnConnect(success);
+		if (*iter != cb) iter++;
 	}
 }
 
 void ClientNetworkContentSocketHandler::OnDisconnect()
 {
-	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); iter++) {
-		(*iter)->OnDisconnect();
+	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
+		ContentCallback *cb = *iter;
+		cb->OnDisconnect();
+		if (*iter != cb) iter++;
 	}
 }
 
 void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo *ci)
 {
-	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); iter++) {
-		(*iter)->OnReceiveContentInfo(ci);
+	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
+		ContentCallback *cb = *iter;
+		cb->OnReceiveContentInfo(ci);
+		if (*iter != cb) iter++;
 	}
 }
 
 void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo *ci, uint bytes)
 {
-	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); iter++) {
-		(*iter)->OnDownloadProgress(ci, bytes);
+	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
+		ContentCallback *cb = *iter;
+		cb->OnDownloadProgress(ci, bytes);
+		if (*iter != cb) iter++;
 	}
 }
 
@@ -783,8 +791,10 @@ void ClientNetworkContentSocketHandler::OnDownloadComplete(ContentID cid)
 		ci->state = ContentInfo::ALREADY_HERE;
 	}
 
-	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); iter++) {
-		(*iter)->OnDownloadComplete(cid);
+	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
+		ContentCallback *cb = *iter;
+		cb->OnDownloadComplete(cid);
+		if (*iter != cb) iter++;
 	}
 }
 
