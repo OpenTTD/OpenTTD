@@ -550,7 +550,7 @@ struct AIConfigWindow : public Window {
 	virtual void OnTick()
 	{
 		if (--this->timeout == 0) {
-			this->clicked_button = -1;
+			this->clicked_button = false;
 			this->SetDirty();
 		}
 	}
