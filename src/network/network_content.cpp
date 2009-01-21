@@ -753,7 +753,7 @@ void ClientNetworkContentSocketHandler::OnConnect(bool success)
 	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
 		ContentCallback *cb = *iter;
 		cb->OnConnect(success);
-		if (*iter != cb) iter++;
+		if (*iter == cb) iter++;
 	}
 }
 
@@ -762,7 +762,7 @@ void ClientNetworkContentSocketHandler::OnDisconnect()
 	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
 		ContentCallback *cb = *iter;
 		cb->OnDisconnect();
-		if (*iter != cb) iter++;
+		if (*iter == cb) iter++;
 	}
 }
 
@@ -771,7 +771,7 @@ void ClientNetworkContentSocketHandler::OnReceiveContentInfo(const ContentInfo *
 	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
 		ContentCallback *cb = *iter;
 		cb->OnReceiveContentInfo(ci);
-		if (*iter != cb) iter++;
+		if (*iter == cb) iter++;
 	}
 }
 
@@ -780,7 +780,7 @@ void ClientNetworkContentSocketHandler::OnDownloadProgress(const ContentInfo *ci
 	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
 		ContentCallback *cb = *iter;
 		cb->OnDownloadProgress(ci, bytes);
-		if (*iter != cb) iter++;
+		if (*iter == cb) iter++;
 	}
 }
 
@@ -794,7 +794,7 @@ void ClientNetworkContentSocketHandler::OnDownloadComplete(ContentID cid)
 	for (ContentCallback **iter = this->callbacks.Begin(); iter != this->callbacks.End(); /* nothing */) {
 		ContentCallback *cb = *iter;
 		cb->OnDownloadComplete(cid);
-		if (*iter != cb) iter++;
+		if (*iter == cb) iter++;
 	}
 }
 
