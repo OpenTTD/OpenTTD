@@ -1442,6 +1442,31 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 	return found_name;
 }
 
+/**
+ * Change the client name of the given client
+ * @param client_id the client to change the name of
+ * @param new_name the new name for the client
+ * @return true iff the name was changed
+ */
+bool NetworkServerChangeClientName(ClientID client_id, const char *new_name)
+{
+	NetworkClientInfo *ci;
+	/* Check if the name's already in use */
+	FOR_ALL_CLIENT_INFOS(ci) {
+		if (strcmp(ci->client_name, new_name) == 0) return false;
+	}
+
+	ci = NetworkFindClientInfoFromClientID(client_id);
+	if (ci == NULL) return false;
+
+	NetworkTextMessage(NETWORK_ACTION_NAME_CHANGE, CC_DEFAULT, true, ci->client_name, new_name);
+
+	strecpy(ci->client_name, new_name, lastof(ci->client_name));
+
+	NetworkUpdateClientInfo(client_id);
+	return true;
+}
+
 // Reads a packet from the stream
 bool NetworkServer_ReadPackets(NetworkClientSocket *cs)
 {

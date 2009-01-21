@@ -555,6 +555,33 @@ DEF_CONSOLE_CMD(ConServerInfo)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConClientNickChange)
+{
+	if (argc != 3) {
+		IConsoleHelp("Change the nickname of a connected client. Usage: 'client_name <client-id> <new-name>'");
+		IConsoleHelp("For client-id's, see the command 'clients'");
+		return true;
+	}
+
+	ClientID client_id = (ClientID)atoi(argv[1]);
+
+	if (client_id == CLIENT_ID_SERVER) {
+		IConsoleError("Please use the command 'name' to change your own name!");
+		return true;
+	}
+
+	if (NetworkFindClientInfoFromClientID(client_id) == NULL) {
+		IConsoleError("Invalid client");
+		return true;
+	}
+
+	if (!NetworkServerChangeClientName(client_id, argv[2])) {
+		IConsoleError("Cannot give a client a duplicate name");
+	}
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConKick)
 {
 	NetworkClientInfo *ci;
@@ -1690,6 +1717,8 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("reset_company",   ConResetCompany);
 	IConsoleCmdHookAdd("reset_company",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleAliasRegister("clean_company", "reset_company %A");
+	IConsoleCmdRegister("client_name",     ConClientNickChange);
+	IConsoleCmdHookAdd("client_name",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("kick",            ConKick);
 	IConsoleCmdHookAdd("kick",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("ban",             ConBan);

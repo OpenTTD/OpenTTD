@@ -50,6 +50,7 @@ void NetworkServerYearlyLoop();
 void NetworkServerChangeOwner(Owner current_owner, Owner new_owner);
 void NetworkServerShowStatusToConsole();
 bool NetworkServerStart();
+bool NetworkServerChangeClientName(ClientID client_id, const char *new_name);
 
 NetworkClientInfo *NetworkFindClientInfoFromIndex(ClientIndex index);
 NetworkClientInfo *NetworkFindClientInfoFromClientID(ClientID client_id);
