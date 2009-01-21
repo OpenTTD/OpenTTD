@@ -1409,6 +1409,115 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 	return true;
 }
 
+#include "network/network_content.h"
+
+/** Resolve a string to a content type. */
+static ContentType StringToContentType(const char *str)
+{
+	static const char *inv_lookup[] = { "", "base", "newgrf", "ai", "ailib", "scenario", "heightmap" };
+	for (uint i = 1 /* there is no type 0 */; i < lengthof(inv_lookup); i++) {
+		if (strcasecmp(str, inv_lookup[i]) == 0) return (ContentType)i;
+	}
+	return CONTENT_TYPE_END;
+}
+
+/** Asynchronous callback */
+struct ConsoleContentCallback : public ContentCallback {
+	void OnConnect(bool success)
+	{
+		IConsolePrintF(CC_DEFAULT, "Content server connection %s", success ? "established" : "failed");
+	}
+
+	void OnDisconnect()
+	{
+		IConsolePrintF(CC_DEFAULT, "Content server connection closed");
+	}
+
+	void OnDownloadComplete(ContentID cid)
+	{
+		IConsolePrintF(CC_DEFAULT, "Completed download of %d", cid);
+	}
+};
+
+DEF_CONSOLE_CMD(ConContent)
+{
+	static ContentCallback *cb = NULL;
+	if (cb == NULL) {
+		cb = new ConsoleContentCallback();
+		_network_content_client.AddCallback(cb);
+	}
+
+	if (argc <= 1) {
+		IConsoleHelp("Query, select and download content. Usage: 'content update|upgrade|select [all|id]|unselect [all|id]|state|download'");
+		IConsoleHelp("  update: get a new list of downloadable content; must be run first");
+		IConsoleHelp("  upgrade: select all items that are upgrades");
+		IConsoleHelp("  select: select a specific item given by it's id or 'all' to select all");
+		IConsoleHelp("  unselect: unselect a specific item given by it's id or 'all' to unselect all");
+		IConsoleHelp("  state: show the download/select state of all downloadable content");
+		IConsoleHelp("  download: download all content you've selected");
+		return true;
+	}
+
+	if (strcasecmp(argv[1], "update") == 0) {
+		_network_content_client.RequestContentList((argc > 2) ? StringToContentType(argv[2]) : CONTENT_TYPE_END);
+		return true;
+	}
+
+	if (strcasecmp(argv[1], "upgrade") == 0) {
+		_network_content_client.SelectUpgrade();
+		return true;
+	}
+
+	if (strcasecmp(argv[1], "select") == 0) {
+		if (argc <= 2) {
+			IConsoleError("You must enter the id.");
+			return false;
+		}
+		if (strcasecmp(argv[2], "all") == 0) {
+			_network_content_client.SelectAll();
+		} else {
+			_network_content_client.Select((ContentID)atoi(argv[2]));
+		}
+		return true;
+	}
+
+	if (strcasecmp(argv[1], "unselect") == 0) {
+		if (argc <= 2) {
+			IConsoleError("You must enter the id.");
+			return false;
+		}
+		if (strcasecmp(argv[2], "all") == 0) {
+			_network_content_client.UnselectAll();
+		} else {
+			_network_content_client.Unselect((ContentID)atoi(argv[2]));
+		}
+		return true;
+	}
+
+	if (strcasecmp(argv[1], "state") == 0) {
+		IConsolePrintF(CC_WHITE, "id, type, state, name");
+		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
+			static const char *types[] = { "Base graphics", "NewGRF", "AI", "AI library", "Scenario", "Heightmap" };
+			static const char *states[] = { "Not selected", "Selected" , "Dep Selected", "Installed", "Unknown" };
+			static ConsoleColour state_to_colour[] = { CC_COMMAND, CC_INFO, CC_INFO, CC_WHITE, CC_ERROR };
+
+			const ContentInfo *ci = *iter;
+			IConsolePrintF(state_to_colour[ci->state], "%d, %s, %s, %s", ci->id, types[ci->type - 1], states[ci->state], ci->name);
+		}
+		return true;
+	}
+
+	if (strcasecmp(argv[1], "download") == 0) {
+		uint files;
+		uint bytes;
+		_network_content_client.DownloadSelectedContent(files, bytes);
+		IConsolePrintF(CC_DEFAULT, "Downloading %d file(s) (%d bytes)", files, bytes);
+		return true;
+	}
+
+	return false;
+}
+
 #endif /* ENABLE_NETWORK */
 
 DEF_CONSOLE_CMD(ConPatch)
@@ -1551,6 +1660,7 @@ void IConsoleStdLibRegister()
 #ifdef ENABLE_NETWORK
 	/* Network hooks; only active in network */
 	IConsoleCmdHookAdd ("resetengines", ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
+	IConsoleCmdRegister("content",         ConContent);
 
 	/*** Networking commands ***/
 	IConsoleCmdRegister("say",             ConSay);
