@@ -54,7 +54,6 @@
 #include "table/sprites.h"
 #include "table/town_land.h"
 #include "table/build_industry.h"
-#include "table/landscape_sprite.h"
 
 /* TTDPatch extended GRF format codec
  * (c) Petr Baudis 2004 (GPL'd)
