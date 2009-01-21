@@ -289,6 +289,51 @@ void CDECL HandleSavegameLoadCrash(int unused)
 	ShowInfo(buffer);
 }
 
+/**
+ * Tries to change owner of this rail tile to a valid owner. In very old versions it could happen that
+ * a rail track had an invalid owner. When conversion isn't possible, track is removed.
+ * @param t tile to update
+ */
+static void FixOwnerOfRailTrack(TileIndex t)
+{
+	assert(!IsValidCompanyID(GetTileOwner(t)) && (IsLevelCrossingTile(t) || IsPlainRailTile(t)));
+
+	/* remove leftover rail piece from crossing (from very old savegames) */
+	Vehicle *v = NULL, *w;
+	FOR_ALL_VEHICLES(w) {
+		if (w->type == VEH_TRAIN && w->tile == t) {
+			v = w;
+			break;
+		}
+	}
+
+	if (v != NULL) {
+		/* when there is a train on crossing (it could happen in TTD), set owner of crossing to train owner */
+		SetTileOwner(t, v->owner);
+		return;
+	}
+
+	/* try to find any connected rail */
+	for (DiagDirection dd = DIAGDIR_BEGIN; dd < DIAGDIR_END; dd++) {
+		TileIndex tt = t + TileOffsByDiagDir(dd);
+		if (GetTileTrackStatus(t, TRANSPORT_RAIL, 0, dd) != 0 &&
+				GetTileTrackStatus(tt, TRANSPORT_RAIL, 0, ReverseDiagDir(dd)) != 0 &&
+				IsValidCompanyID(GetTileOwner(tt))) {
+			SetTileOwner(t, GetTileOwner(tt));
+			return;
+		}
+	}
+
+	if (IsLevelCrossingTile(t)) {
+		/* else change the crossing to normal road (road vehicles won't care) */
+		MakeRoadNormal(t, GetCrossingRoadBits(t), GetRoadTypes(t), GetTownIndex(t),
+		GetRoadOwner(t, ROADTYPE_ROAD), GetRoadOwner(t, ROADTYPE_TRAM), GetRoadOwner(t, ROADTYPE_HWAY));
+		return;
+	}
+
+	/* if it's not a crossing, make it clean land */
+	MakeClear(t, CLEAR_GRASS, 0);
+}
 
 bool AfterLoadGame()
 {
@@ -1449,26 +1494,10 @@ bool AfterLoadGame()
 					if (o < MAX_COMPANIES && !IsValidCompanyID(o)) SetRoadOwner(t, rt, OWNER_NONE);
 				}
 				if (IsLevelCrossing(t)) {
-					Owner o = GetTileOwner(t);
-					if (!IsValidCompanyID(o)) {
-						/* remove leftover rail piece from crossing (from very old savegames) */
-						Vehicle *v = NULL, *w;
-						FOR_ALL_VEHICLES(w) {
-							if (w->type == VEH_TRAIN && w->tile == t) {
-								v = w;
-								break;
-							}
-						}
-						if (v != NULL) {
-							/* when there is a train on crossing (it could happen in TTD), set owner of crossing to train owner */
-							SetTileOwner(t, v->owner);
-						} else {
-							/* else change the crossing to normal road (road vehicles won't care) */
-							MakeRoadNormal(t, GetCrossingRoadBits(t), GetRoadTypes(t), GetTownIndex(t),
-								GetRoadOwner(t, ROADTYPE_ROAD), GetRoadOwner(t, ROADTYPE_TRAM), GetRoadOwner(t, ROADTYPE_HWAY));
-						}
-					}
+					if (!IsValidCompanyID(GetTileOwner(t))) FixOwnerOfRailTrack(t);
 				}
+			} else if (IsTileType(t, MP_RAILWAY) && IsPlainRailTile(t)) {
+				if (!IsValidCompanyID(GetTileOwner(t))) FixOwnerOfRailTrack(t);
 			}
 		}
 
