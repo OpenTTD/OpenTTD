@@ -113,10 +113,12 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
  **/
 bool GUIPlaceProcDragXY(ViewportDragDropSelectionProcess proc, TileIndex start_tile, TileIndex end_tile)
 {
-	/* When end_tile is MP_VOID, the DoCommandP checks will deny this command without any
-	 * user-visible reason. This happens when terraforming at the southern border. */
-	if (TileX(end_tile) == MapMaxX()) end_tile += TileDiffXY(-1, 0);
-	if (TileY(end_tile) == MapMaxY()) end_tile += TileDiffXY(0, -1);
+	if (!_settings_game.construction.freeform_edges) {
+		/* When end_tile is MP_VOID, the error tile will not be visible to the
+		 * user. This happens when terraforming at the southern border. */
+		if (TileX(end_tile) == MapMaxX()) end_tile += TileDiffXY(-1, 0);
+		if (TileY(end_tile) == MapMaxY()) end_tile += TileDiffXY(0, -1);
+	}
 
 	switch (proc) {
 		case DDSP_DEMOLISH_AREA:
@@ -378,8 +380,8 @@ static void CommonRaiseLowerBigLand(TileIndex tile, int mode)
 	} else {
 		assert(_terraform_size != 0);
 		/* check out for map overflows */
-		sizex = min(MapSizeX() - TileX(tile) - 1, _terraform_size);
-		sizey = min(MapSizeY() - TileY(tile) - 1, _terraform_size);
+		sizex = min(MapSizeX() - TileX(tile), _terraform_size);
+		sizey = min(MapSizeY() - TileY(tile), _terraform_size);
 
 		if (sizex == 0 || sizey == 0) return;
 

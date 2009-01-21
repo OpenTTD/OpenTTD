@@ -96,6 +96,7 @@ static inline uint32 CommandFlagsToDCFlags(uint cmd_flags)
 	uint32 flags = 0;
 	if (cmd_flags & CMD_NO_WATER) flags |= DC_NO_WATER;
 	if (cmd_flags & CMD_AUTO) flags |= DC_AUTO;
+	if (cmd_flags & CMD_ALL_TILES) flags |= DC_ALL_TILES;
 	return flags;
 }
 

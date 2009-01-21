@@ -98,13 +98,14 @@ enum GenerateLandscapeWindowWidgets {
 	GLAND_WATER_TEXT,
 	GLAND_WATER_PULLDOWN,
 	GLAND_SMOOTHNESS_TEXT,
-	GLAND_SMOOTHNESS_PULLDOWN
+	GLAND_SMOOTHNESS_PULLDOWN,
+	GLAND_WATER_BORDERS_PULLDOWN,
 };
 
 static const Widget _generate_landscape_widgets[] = {
 {  WWT_CLOSEBOX,  RESIZE_NONE, COLOUR_BROWN,    0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE, COLOUR_BROWN,   11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,    0, 337,  14, 267, 0x0,                          STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, COLOUR_BROWN,    0, 337,  14, 285, 0x0,                          STR_NULL},
 
 /* Landscape selection */
 {   WWT_IMGBTN_2, RESIZE_NONE, COLOUR_ORANGE,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,         STR_030E_SELECT_TEMPERATE_LANDSCAPE},    // GLAND_TEMPERATE
@@ -166,6 +167,9 @@ static const Widget _generate_landscape_widgets[] = {
 /* Map smoothness */
 {       WWT_TEXT, RESIZE_NONE, COLOUR_ORANGE,  12, 110, 245, 257, STR_SMOOTHNESS,               STR_NULL},                               // GLAND_SMOOTHNESS_TEXT
 {   WWT_DROPDOWN, RESIZE_NONE, COLOUR_ORANGE, 114, 231, 246, 257, 0x0,                          STR_NULL},                               // GLAND_SMOOTHNESS_PULLDOWN
+
+/* Water borders */
+{   WWT_DROPDOWN, RESIZE_NONE, COLOUR_ORANGE,  12, 326, 264, 275, 0x0,                          STR_NULL},                               // GLAND_WATER_BORDERS_PULLDOWN
 {   WIDGETS_END},
 };
 
@@ -269,6 +273,25 @@ static const StringID _rotation[]    = {STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CO
 static const StringID _landscape[]   = {STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL, STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS, INVALID_STRING_ID};
 static const StringID _num_towns[]   = {STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
 static const StringID _num_inds[]    = {STR_NONE, STR_NUM_VERY_LOW, STR_6816_LOW, STR_6817_NORMAL, STR_6818_HIGH, INVALID_STRING_ID};
+static const StringID _water_borders[] = {
+	STR_CONFIG_PATCHES_WATER_BORDER_NONE,
+	STR_CONFIG_PATCHES_WATER_BORDER_NE,
+	STR_CONFIG_PATCHES_WATER_BORDER_SE,
+	STR_CONFIG_PATCHES_WATER_BORDER_SE_NE,
+	STR_CONFIG_PATCHES_WATER_BORDER_SW,
+	STR_CONFIG_PATCHES_WATER_BORDER_SW_NE,
+	STR_CONFIG_PATCHES_WATER_BORDER_SW_SE,
+	STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE,
+	STR_CONFIG_PATCHES_WATER_BORDER_NW,
+	STR_CONFIG_PATCHES_WATER_BORDER_NW_NE,
+	STR_CONFIG_PATCHES_WATER_BORDER_NW_SE,
+	STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE,
+	STR_CONFIG_PATCHES_WATER_BORDER_NW_SW,
+	STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE,
+	STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE,
+	STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE,
+	INVALID_STRING_ID
+};
 
 struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	uint widget_id;
@@ -294,9 +317,10 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 
 	virtual void OnPaint()
 	{
-		/* You can't select smoothness if not terragenesis */
+		/* You can't select smoothness / non-water borders if not terragenesis */
 		if (mode == GLWP_GENERATE) {
 			this->SetWidgetDisabledState(GLAND_SMOOTHNESS_PULLDOWN, _settings_newgame.game_creation.land_generator == 0);
+			this->SetWidgetDisabledState(GLAND_WATER_BORDERS_PULLDOWN, _settings_newgame.game_creation.land_generator == 0 || !_settings_newgame.construction.freeform_edges);
 		}
 		/* Disable snowline if not hilly */
 		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_TEXT, _settings_newgame.game_creation.landscape != LT_ARCTIC);
@@ -324,11 +348,12 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		}
 
 		if (mode == GLWP_GENERATE) {
-			this->widget[GLAND_LANDSCAPE_PULLDOWN].data  = _landscape[_settings_newgame.game_creation.land_generator];
-			this->widget[GLAND_TREE_PULLDOWN].data       = _tree_placer[_settings_newgame.game_creation.tree_placer];
-			this->widget[GLAND_TERRAIN_PULLDOWN].data    = _elevations[_settings_newgame.difficulty.terrain_type];
-			this->widget[GLAND_WATER_PULLDOWN].data      = _sea_lakes[_settings_newgame.difficulty.quantity_sea_lakes];
-			this->widget[GLAND_SMOOTHNESS_PULLDOWN].data = _smoothness[_settings_newgame.game_creation.tgen_smoothness];
+			this->widget[GLAND_LANDSCAPE_PULLDOWN].data     = _landscape[_settings_newgame.game_creation.land_generator];
+			this->widget[GLAND_TREE_PULLDOWN].data          = _tree_placer[_settings_newgame.game_creation.tree_placer];
+			this->widget[GLAND_TERRAIN_PULLDOWN].data       = _elevations[_settings_newgame.difficulty.terrain_type];
+			this->widget[GLAND_WATER_PULLDOWN].data         = _sea_lakes[_settings_newgame.difficulty.quantity_sea_lakes];
+			this->widget[GLAND_SMOOTHNESS_PULLDOWN].data    = _smoothness[_settings_newgame.game_creation.tgen_smoothness];
+			this->widget[GLAND_WATER_BORDERS_PULLDOWN].data = _settings_newgame.construction.freeform_edges ? _water_borders[_settings_newgame.game_creation.water_borders] : STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE;
 		} else {
 			this->widget[GLAND_TREE_PULLDOWN].data               = _tree_placer[_settings_newgame.game_creation.tree_placer];
 			this->widget[GLAND_HEIGHTMAP_ROTATION_PULLDOWN].data = _rotation[_settings_newgame.game_creation.heightmap_rotation];
@@ -483,6 +508,10 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_SMOOTHNESS_PULLDOWN: // Map smoothness
 				ShowDropDownMenu(this, _smoothness, _settings_newgame.game_creation.tgen_smoothness, GLAND_SMOOTHNESS_PULLDOWN, 0, 0);
 				break;
+
+			case GLAND_WATER_BORDERS_PULLDOWN: // Water borders
+				ShowDropDownMenu(this, _water_borders, _settings_newgame.game_creation.water_borders, GLAND_WATER_BORDERS_PULLDOWN, 0, 0);
+				break;
 		}
 	}
 
@@ -507,10 +536,11 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 	virtual void OnDropdownSelect(int widget, int index)
 	{
 		switch (widget) {
-			case GLAND_MAPSIZE_X_PULLDOWN:  _settings_newgame.game_creation.map_x = index; break;
-			case GLAND_MAPSIZE_Y_PULLDOWN:  _settings_newgame.game_creation.map_y = index; break;
-			case GLAND_TREE_PULLDOWN:       _settings_newgame.game_creation.tree_placer = index; break;
-			case GLAND_SMOOTHNESS_PULLDOWN: _settings_newgame.game_creation.tgen_smoothness = index;  break;
+			case GLAND_MAPSIZE_X_PULLDOWN:     _settings_newgame.game_creation.map_x = index; break;
+			case GLAND_MAPSIZE_Y_PULLDOWN:     _settings_newgame.game_creation.map_y = index; break;
+			case GLAND_TREE_PULLDOWN:          _settings_newgame.game_creation.tree_placer = index; break;
+			case GLAND_SMOOTHNESS_PULLDOWN:    _settings_newgame.game_creation.tgen_smoothness = index;  break;
+			case GLAND_WATER_BORDERS_PULLDOWN: _settings_newgame.game_creation.water_borders = index;  break;
 
 			case GLAND_TOWN_PULLDOWN:
 				_settings_newgame.difficulty.number_towns = index;
@@ -571,7 +601,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 };
 
 static const WindowDesc _generate_landscape_desc = {
-	WDP_CENTER, WDP_CENTER, 338, 268, 338, 268,
+	WDP_CENTER, WDP_CENTER, 338, 286, 338, 286,
 	WC_GENERATE_LANDSCAPE, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_generate_landscape_widgets,

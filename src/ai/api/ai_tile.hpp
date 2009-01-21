@@ -291,7 +291,7 @@ public:
 	 *  for example: SLOPE_N | SLOPE_W (= SLOPE_NW)
 	 * @param tile The tile to raise.
 	 * @param slope Corners to raise (SLOPE_xxx).
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre tile < AIMap::GetMapSize().
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_TOO_CLOSE_TO_EDGE
 	 * @exception AITile::ERR_TILE_TOO_HIGH
@@ -304,7 +304,7 @@ public:
 	 *  for example: SLOPE_N | SLOPE_W (= SLOPE_NW)
 	 * @param tile The tile to lower.
 	 * @param slope Corners to lower (SLOPE_xxx).
-	 * @pre AIMap::IsValidTile(tile).
+	 * @pre tile < AIMap::GetMapSize().
 	 * @exception AIError::ERR_AREA_NOT_CLEAR
 	 * @exception AIError::ERR_TOO_CLOSE_TO_EDGE
 	 * @exception AITile::ERR_TILE_TOO_LOW

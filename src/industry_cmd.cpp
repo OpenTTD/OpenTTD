@@ -930,6 +930,8 @@ static void PlantFarmField(TileIndex tile, IndustryID industry)
 	/* offset tile to match size */
 	tile -= TileDiffXY(size_x / 2, size_y / 2);
 
+	if (TileX(tile) + size_x >= MapSizeX() || TileY(tile) + size_y >= MapSizeY()) return;
+
 	/* check the amount of bad tiles */
 	count = 0;
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
@@ -1179,19 +1181,6 @@ static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
 	CheckNewIndustry_OilRig
 };
 
-static bool CheckSuitableIndustryPos(TileIndex tile)
-{
-	uint x = TileX(tile);
-	uint y = TileY(tile);
-
-	if (x < 2 || y < 2 || x > MapMaxX() - 3 || y > MapMaxY() - 3) {
-		_error_message = STR_0239_SITE_UNSUITABLE;
-		return false;
-	}
-
-	return true;
-}
-
 static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 {
 	const Town *t;
@@ -1237,6 +1226,8 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 
 	do {
 		IndustryGfx gfx = GetTranslatedIndustryTileID(it->gfx);
+		if (TileX(tile) + it->ti.x >= MapSizeX()) return false;
+		if (TileY(tile) + it->ti.y >= MapSizeY()) return false;
 		TileIndex cur_tile = tile + ToTileIndexDiff(it->ti);
 
 		if (!IsValidTile(cur_tile)) {
@@ -1342,7 +1333,7 @@ static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int i
 		 *  has to be correct too (in level, or almost in level)
 		 *  else you get a chain-reaction of terraforming. */
 		if (internal == 0 && curh != height) {
-			if (!CheckCanTerraformSurroundingTiles(tile_walk + TileDiffXY(-1, -1), height, internal + 1))
+			if (TileX(tile_walk) == 0 || TileY(tile_walk) == 0 || !CheckCanTerraformSurroundingTiles(tile_walk + TileDiffXY(-1, -1), height, internal + 1))
 				return false;
 		}
 	} END_TILE_LOOP(tile_walk, size_x, size_y, tile);
@@ -1373,6 +1364,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 	/* Remember level height */
 	h = TileHeight(tile);
 
+	if (TileX(tile) <= 1 || TileY(tile) <= 1) return false;
 	/* Check that all tiles in area and surrounding are clear
 	 * this determines that there are no obstructing items */
 	cur_tile = tile + TileDiffXY(-1, -1);
@@ -1380,7 +1372,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 	size_y = max_y + 4;
 
 	/* Check if we don't leave the map */
-	if (TileX(cur_tile) == 0 || TileY(cur_tile) == 0 || TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
+	if (TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
 
 	/* _current_company is OWNER_NONE for randomly generated industries and in editor, or the company who funded or prospected the industry.
 	 * Perform terraforming as OWNER_TOWN to disable autoslope. */
@@ -1632,7 +1624,6 @@ static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint
 	if (t == NULL) return NULL;
 
 	if (!CheckIfIndustryIsAllowed(tile, type, t)) return NULL;
-	if (!CheckSuitableIndustryPos(tile)) return NULL;
 
 	if (!Industry::CanAllocateItem()) return NULL;
 

@@ -304,6 +304,7 @@ enum {
 	DC_NO_TOWN_RATING  = 0x020, ///< town rating does not disallow you from building
 	DC_BANKRUPT        = 0x040, ///< company bankrupts, skip money check, skip vehicle on tile check in some cases
 	DC_AUTOREPLACE     = 0x080, ///< autoreplace/autorenew is in progress, this shall disable vehicle limits when building, and ignore certain restrictions when undoing things (like vehicle attach callback)
+	DC_ALL_TILES       = 0x100, ///< allow this command also on MP_VOID tiles
 };
 
 /**
@@ -340,6 +341,7 @@ enum {
 	CMD_AUTO     = 0x04, ///< set the DC_AUTO flag on this command
 	CMD_NO_TEST  = 0x08, ///< the command's output may differ between test and execute due to town rating changes etc.
 	CMD_NO_WATER = 0x10, ///< set the DC_NO_WATER flag on this command
+	CMD_ALL_TILES= 0x20, ///< allow this command also on MP_VOID tiles
 };
 
 /**

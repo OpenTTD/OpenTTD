@@ -130,9 +130,10 @@ static void TerraformAddDirtyTile(TerraformerState *ts, TileIndex tile)
  */
 static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 {
-	TerraformAddDirtyTile(ts, tile + TileDiffXY( 0, -1));
-	TerraformAddDirtyTile(ts, tile + TileDiffXY(-1, -1));
-	TerraformAddDirtyTile(ts, tile + TileDiffXY(-1,  0));
+	/* Make sure all tiles passed to TerraformAddDirtyTile are within [0, MapSize()] */
+	if (TileY(tile) >= 1) TerraformAddDirtyTile(ts, tile + TileDiffXY( 0, -1));
+	if (TileY(tile) >= 1 && TileX(tile) >= 1) TerraformAddDirtyTile(ts, tile + TileDiffXY(-1, -1));
+	if (TileX(tile) >= 1) TerraformAddDirtyTile(ts, tile + TileDiffXY(-1,  0));
 	TerraformAddDirtyTile(ts, tile);
 }
 
@@ -159,10 +160,10 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 	 */
 	if (height == TerraformGetHeightOfTile(ts, tile)) return CMD_ERROR;
 
-	/* Check "too close to edge of map" */
+	/* Check "too close to edge of map". Only possible when freeform-edges is off. */
 	uint x = TileX(tile);
 	uint y = TileY(tile);
-	if ((x <= 1) || (y <= 1) || (x >= MapMaxX() - 1) || (y >= MapMaxY() - 1)) {
+	if (!_settings_game.construction.freeform_edges && ((x <= 1) || (y <= 1) || (x >= MapMaxX() - 1) || (y >= MapMaxY() - 1))) {
 		/*
 		 * Determine a sensible error tile
 		 */
@@ -187,6 +188,7 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 	{
 		const TileIndexDiffC *ttm;
 
+		TileIndex orig_tile = tile;
 		static const TileIndexDiffC _terraform_tilepos[] = {
 			{ 1,  0}, // move to tile in SE
 			{-2,  0}, // undo last move, and move to tile in NW
@@ -196,6 +198,11 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
 
 		for (ttm = _terraform_tilepos; ttm != endof(_terraform_tilepos); ttm++) {
 			tile += ToTileIndexDiff(*ttm);
+
+			if (tile >= MapSize()) continue;
+			/* Make sure we don't wrap around the map */
+			if (Delta(TileX(orig_tile), TileX(tile)) == MapSizeX() - 1) continue;
+			if (Delta(TileY(orig_tile), TileY(tile)) == MapSizeY() - 1) continue;
 
 			/* Get TileHeight of neighboured tile as of current terraform progress */
 			int r = TerraformGetHeightOfTile(ts, tile);
@@ -224,9 +231,6 @@ static CommandCost TerraformTileHeight(TerraformerState *ts, TileIndex tile, int
  */
 CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
-	/* Make an extra check for map-bounds cause we add tiles to the originating tile */
-	if (tile + TileDiffXY(1, 1) >= MapSize()) return CMD_ERROR;
-
 	_terraform_err_tile = INVALID_TILE;
 
 	CommandCost total_cost(EXPENSES_CONSTRUCTION);
@@ -270,6 +274,11 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 
 		for (int count = ts.tile_table_count; count != 0; count--, ti++) {
 			TileIndex tile = *ti;
+
+			assert(tile < MapSize());
+			/* MP_VOID tiles can be terraformed but as tunnels and bridges
+			 * cannot go under / over these tiles they don't need checking. */
+			if (IsTileType(tile, MP_VOID)) continue;
 
 			/* Find new heights of tile corners */
 			uint z_N = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));

@@ -10,6 +10,7 @@
 #include "company_type.h"
 #include "map_func.h"
 #include "core/bitmath_func.hpp"
+#include "settings_type.h"
 
 /**
  * Returns the height of a tile
@@ -87,8 +88,9 @@ static inline void SetTileType(TileIndex tile, TileType type)
 {
 	assert(tile < MapSize());
 	/* VOID tiles (and no others) are exactly allowed at the lower left and right
-	 * edges of the map */
-	assert((TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) == (type == MP_VOID));
+	 * edges of the map. If _settings_game.construction.freeform_edges is true,
+	 * the upper edges of the map are also VOID tiles. */
+	assert((TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY() || (_settings_game.construction.freeform_edges && (TileX(tile) == 0 || TileY(tile) == 0))) == (type == MP_VOID));
 	SB(_m[tile].type_height, 4, 4, type);
 }
 

@@ -28,6 +28,7 @@
 #include "blitter/factory.hpp"
 #include "tilehighlight_func.h"
 #include "saveload/saveload.h"
+#include "void_map.h"
 
 #include "table/sprites.h"
 
@@ -105,6 +106,12 @@ static void _GenerateWorld(void *arg)
 		/* Don't generate landscape items when in the scenario editor. */
 		if (_gw.mode == GW_EMPTY) {
 			SetGeneratingWorldProgress(GWP_UNMOVABLE, 1);
+
+			/* Make sure the tiles at the north border are void tiles if needed. */
+			if (_settings_game.construction.freeform_edges) {
+				for (uint row = 0; row < MapSizeY(); row++) MakeVoid(TileXY(0, row));
+				for (uint col = 0; col < MapSizeX(); col++) MakeVoid(TileXY(col, 0));
+			}
 
 			/* Make the map the height of the patch setting */
 			if (_game_mode != GM_MENU) FlatEmptyWorld(_settings_game.game_creation.se_flat_world_height);

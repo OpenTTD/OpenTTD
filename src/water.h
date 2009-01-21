@@ -7,6 +7,7 @@
 
 void TileLoop_Water(TileIndex tile);
 bool FloodHalftile(TileIndex t);
+void DoFloodTile(TileIndex target);
 
 void ConvertGroundTilesIntoWaterTiles();
 

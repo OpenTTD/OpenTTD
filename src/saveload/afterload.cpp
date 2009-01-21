@@ -659,6 +659,11 @@ bool AfterLoadGame()
 		}
 	}
 
+	/* Force the freeform edges to false for old savegames. */
+	if (CheckSavegameVersion(111)) {
+		_settings_game.construction.freeform_edges = false;
+	}
+
 	/* From version 9.0, we update the max passengers of a town (was sometimes negative
 	 *  before that. */
 	if (CheckSavegameVersion(9)) {

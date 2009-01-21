@@ -1066,6 +1066,7 @@ static PatchEntry _patches_construction[] = {
 	PatchEntry("construction.extra_dynamite"),
 	PatchEntry("construction.longbridges"),
 	PatchEntry("station.always_small_airport"),
+	PatchEntry("construction.freeform_edges"),
 };
 /** Construction sub-page */
 static PatchPage _patches_construction_page = {_patches_construction, lengthof(_patches_construction)};

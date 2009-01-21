@@ -59,6 +59,7 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 	uint max_x = MapMaxX();
 	uint max_y = MapMaxY();
+	uint min_xy = _settings_game.construction.freeform_edges ? 1 : 0;
 
 	/* go in a 'spiral' with increasing manhattan distance in each iteration */
 	for (uint dist = 1; dist < max_dist; dist++) {
@@ -75,8 +76,8 @@ static uint GetClosestWaterDistance(TileIndex tile, bool water)
 
 			/* each side of this square has length 'dist' */
 			for (uint a = 0; a < dist; a++) {
-				/* MP_VOID tiles are not checked (interval is [0; max) for IsInsideMM())*/
-				if (IsInsideMM(x, 0, max_x) && IsInsideMM(y, 0, max_y)) {
+				/* MP_VOID tiles are not checked (interval is [min; max) for IsInsideMM())*/
+				if (IsInsideMM(x, min_xy, max_x) && IsInsideMM(y, min_xy, max_y)) {
 					TileIndex t = TileXY(x, y);
 					if (IsTileType(t, MP_WATER) == water) return dist;
 				}

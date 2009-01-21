@@ -759,7 +759,7 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
 		if (pos & 2) cur += tid_lt[2];
 
 		cur = (uint)(pos / 4) * cur; // Multiply for the fitting distance
-		if (GetTownRoadBits(TILE_ADD(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
+		if (IsValidTile(tile + TileXY(TileX(cur) / 2, TileY(cur) / 2)) && IsValidTile(tile + cur) && GetTownRoadBits(TILE_ADD(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
 	}
 	return false;
 }
@@ -1134,6 +1134,8 @@ static void GrowTownInTile(TileIndex *tile_ptr, RoadBits cur_rb, DiagDirection t
 
 		/* Don't walk into water. */
 		if (IsWaterTile(house_tile)) return;
+
+		if (!IsValidTile(house_tile) || !IsValidTile(house_tile + TileOffsByDiagDir(target_dir))) return;
 
 		switch (t1->GetActiveLayout()) {
 			default: NOT_REACHED();

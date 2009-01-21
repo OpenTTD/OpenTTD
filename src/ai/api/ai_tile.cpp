@@ -190,22 +190,22 @@
 
 /* static */ bool AITile::RaiseTile(TileIndex tile, int32 slope)
 {
-	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, tile < ::MapSize());
 
 	return AIObject::DoCommand(tile, slope, 1, CMD_TERRAFORM_LAND);
 }
 
 /* static */ bool AITile::LowerTile(TileIndex tile, int32 slope)
 {
-	EnforcePrecondition(false, ::IsValidTile(tile));
+	EnforcePrecondition(false, tile < ::MapSize());
 
 	return AIObject::DoCommand(tile, slope, 0, CMD_TERRAFORM_LAND);
 }
 
 /* static */ bool AITile::LevelTiles(TileIndex start_tile, TileIndex end_tile)
 {
-	EnforcePrecondition(false, ::IsValidTile(start_tile));
-	EnforcePrecondition(false, ::IsValidTile(end_tile));
+	EnforcePrecondition(false, start_tile < ::MapSize());
+	EnforcePrecondition(false, end_tile < ::MapSize());
 
 	return AIObject::DoCommand(end_tile, start_tile, 0, CMD_LEVEL_LAND);
 }

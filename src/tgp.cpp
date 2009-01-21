@@ -552,6 +552,13 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 
 static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime);
 
+enum Borders {
+	BORDER_NE = 0,
+	BORDER_SE = 1,
+	BORDER_SW = 2,
+	BORDER_NW = 3,
+};
+
 /**
  * This routine sculpts in from the edge a random amount, again a Perlin
  * sequence, to avoid the rigid flat-edge slopes that were present before. The
@@ -572,7 +579,7 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
  * Please note that all the small numbers; 53, 101, 167, etc. are small primes
  * to help give the perlin noise a bit more of a random feel.
  */
-static void HeightMapCoastLines()
+static void HeightMapCoastLines(uint8 water_borders)
 {
 	int smallest_size = min(_settings_game.game_creation.map_x, _settings_game.game_creation.map_y);
 	const int margin = 4;
@@ -582,40 +589,47 @@ static void HeightMapCoastLines()
 
 	/* Lower to sea level */
 	for (y = 0; y <= _height_map.size_y; y++) {
-		/* Top right */
-		max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.9, 53) + 0.25) * 5 + (perlin_coast_noise_2D(y, y, 0.35, 179) + 1) * 12);
-		max_x = max((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
-		if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
-		for (x = 0; x < max_x; x++) {
-			_height_map.height(x, y) = 0;
+		if (HasBit(water_borders, BORDER_NE)) {
+			/* Top right */
+			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.9, 53) + 0.25) * 5 + (perlin_coast_noise_2D(y, y, 0.35, 179) + 1) * 12);
+			max_x = max((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
+			if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
+			for (x = 0; x < max_x; x++) {
+				_height_map.height(x, y) = 0;
+			}
 		}
 
-		/* Bottom left */
-		max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 6 + (perlin_coast_noise_2D(y, y, 0.45,  67) + 0.75) * 8);
-		max_x = max((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
-		if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
-		for (x = _height_map.size_x; x > (_height_map.size_x - 1 - max_x); x--) {
-			_height_map.height(x, y) = 0;
+		if (HasBit(water_borders, BORDER_SW)) {
+			/* Bottom left */
+			max_x = abs((perlin_coast_noise_2D(_height_map.size_y - y, y, 0.85, 101) + 0.3) * 6 + (perlin_coast_noise_2D(y, y, 0.45,  67) + 0.75) * 8);
+			max_x = max((smallest_size * smallest_size / 16) + max_x, (smallest_size * smallest_size / 16) + margin - max_x);
+			if (smallest_size < 8 && max_x > 5) max_x /= 1.5;
+			for (x = _height_map.size_x; x > (_height_map.size_x - 1 - max_x); x--) {
+				_height_map.height(x, y) = 0;
+			}
 		}
 	}
 
 	/* Lower to sea level */
 	for (x = 0; x <= _height_map.size_x; x++) {
-		/* Top left */
-		max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 2, 0.9, 167) + 0.4) * 5 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.4, 211) + 0.7) * 9);
-		max_y = max((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
-		if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
-		for (y = 0; y < max_y; y++) {
-			_height_map.height(x, y) = 0;
+		if (HasBit(water_borders, BORDER_NW)) {
+			/* Top left */
+			max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 2, 0.9, 167) + 0.4) * 5 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.4, 211) + 0.7) * 9);
+			max_y = max((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
+			if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
+			for (y = 0; y < max_y; y++) {
+				_height_map.height(x, y) = 0;
+			}
 		}
 
-
-		/* Bottom right */
-		max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.85, 71) + 0.25) * 6 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.35, 193) + 0.75) * 12);
-		max_y = max((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
-		if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
-		for (y = _height_map.size_y; y > (_height_map.size_y - 1 - max_y); y--) {
-			_height_map.height(x, y) = 0;
+		if (HasBit(water_borders, BORDER_SE)) {
+			/* Bottom right */
+			max_y = abs((perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.85, 71) + 0.25) * 6 + (perlin_coast_noise_2D(x, _height_map.size_y / 3, 0.35, 193) + 0.75) * 12);
+			max_y = max((smallest_size * smallest_size / 16) + max_y, (smallest_size * smallest_size / 16) + margin - max_y);
+			if (smallest_size < 8 && max_y > 5) max_y /= 1.5;
+			for (y = _height_map.size_y; y > (_height_map.size_y - 1 - max_y); y--) {
+				_height_map.height(x, y) = 0;
+			}
 		}
 	}
 }
@@ -658,18 +672,18 @@ static void HeightMapSmoothCoastInDirection(int org_x, int org_y, int dir_x, int
 }
 
 /** Smooth coasts by modulating height of tiles close to map edges with cosine of distance from edge */
-static void HeightMapSmoothCoasts()
+static void HeightMapSmoothCoasts(uint8 water_borders)
 {
 	uint x, y;
 	/* First Smooth NW and SE coasts (y close to 0 and y close to size_y) */
 	for (x = 0; x < _height_map.size_x; x++) {
-		HeightMapSmoothCoastInDirection(x, 0, 0, 1);
-		HeightMapSmoothCoastInDirection(x, _height_map.size_y - 1, 0, -1);
+		if (HasBit(water_borders, BORDER_NW)) HeightMapSmoothCoastInDirection(x, 0, 0, 1);
+		if (HasBit(water_borders, BORDER_SE)) HeightMapSmoothCoastInDirection(x, _height_map.size_y - 1, 0, -1);
 	}
 	/* First Smooth NE and SW coasts (x close to 0 and x close to size_x) */
 	for (y = 0; y < _height_map.size_y; y++) {
-		HeightMapSmoothCoastInDirection(0, y, 1, 0);
-		HeightMapSmoothCoastInDirection(_height_map.size_x - 1, y, -1, 0);
+		if (HasBit(water_borders, BORDER_NE)) HeightMapSmoothCoastInDirection(0, y, 1, 0);
+		if (HasBit(water_borders, BORDER_SW)) HeightMapSmoothCoastInDirection(_height_map.size_x - 1, y, -1, 0);
 	}
 }
 
@@ -683,15 +697,15 @@ static void HeightMapSmoothCoasts()
 static void HeightMapSmoothSlopes(height_t dh_max)
 {
 	int x, y;
-	for (y = 1; y <= (int)_height_map.size_y; y++) {
-		for (x = 1; x <= (int)_height_map.size_x; x++) {
-			height_t h_max = min(_height_map.height(x - 1, y), _height_map.height(x, y - 1)) + dh_max;
+	for (y = 0; y <= (int)_height_map.size_y; y++) {
+		for (x = 0; x <= (int)_height_map.size_x; x++) {
+			height_t h_max = min(_height_map.height(x > 0 ? x - 1 : x, y), _height_map.height(x, y > 0 ? y - 1 : y)) + dh_max;
 			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
 	}
-	for (y = _height_map.size_y - 1; y >= 0; y--) {
-		for (x = _height_map.size_x - 1; x >= 0; x--) {
-			height_t h_max = min(_height_map.height(x + 1, y), _height_map.height(x, y + 1)) + dh_max;
+	for (y = _height_map.size_y; y >= 0; y--) {
+		for (x = _height_map.size_x; x >= 0; x--) {
+			height_t h_max = min(_height_map.height((uint)x < _height_map.size_x ? x + 1 : x, y), _height_map.height(x, (uint)y < _height_map.size_y ? y + 1 : y)) + dh_max;
 			if (_height_map.height(x, y) > h_max) _height_map.height(x, y) = h_max;
 		}
 	}
@@ -710,10 +724,12 @@ static void HeightMapNormalize()
 
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);
 
-	HeightMapCoastLines();
+	byte water_borders = _settings_game.construction.freeform_edges ? _settings_game.game_creation.water_borders : 0xF;
+
+	HeightMapCoastLines(water_borders);
 	HeightMapSmoothSlopes(roughness);
 
-	HeightMapSmoothCoasts();
+	HeightMapSmoothCoasts(water_borders);
 	HeightMapSmoothSlopes(roughness);
 
 	HeightMapSineTransform(12, h_max_new);
@@ -817,7 +833,12 @@ static double perlin_coast_noise_2D(const double x, const double y, const double
 static void TgenSetTileHeight(TileIndex tile, int height)
 {
 	SetTileHeight(tile, height);
-	MakeClear(tile, CLEAR_GRASS, 3);
+
+	/* Only clear the tiles within the map area. */
+	if (TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY() &&
+			(!_settings_game.construction.freeform_edges || (TileX(tile) != 0 && TileY(tile) != 0))) {
+		MakeClear(tile, CLEAR_GRASS, 3);
+	}
 }
 
 /**
@@ -842,9 +863,15 @@ void GenerateTerrainPerlin()
 
 	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
+	/* First make sure the tiles at the north border are void tiles if needed. */
+	if (_settings_game.construction.freeform_edges) {
+		for (y = 0; y < _height_map.size_y - 1; y++) MakeVoid(_height_map.size_x * y);
+		for (x = 0; x < _height_map.size_x;     x++) MakeVoid(x);
+	}
+
 	/* Transfer height map into OTTD map */
-	for (y = 2; y < _height_map.size_y - 2; y++) {
-		for (x = 2; x < _height_map.size_x - 2; x++) {
+	for (y = 0; y < _height_map.size_y; y++) {
+		for (x = 0; x < _height_map.size_x; x++) {
 			int height = H2I(_height_map.height(x, y));
 			if (height < 0) height = 0;
 			if (height > 15) height = 15;
@@ -853,10 +880,6 @@ void GenerateTerrainPerlin()
 	}
 
 	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
-
-	/* Recreate void tiles at the border in case they have been affected by generation */
-	for (y = 0; y < _height_map.size_y - 1; y++) MakeVoid(_height_map.size_x * y + _height_map.size_x - 1);
-	for (x = 0; x < _height_map.size_x;     x++) MakeVoid(_height_map.size_x * y + x);
 
 	FreeHeightMap();
 	GenerateWorldSetAbortCallback(NULL);

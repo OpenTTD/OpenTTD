@@ -690,9 +690,9 @@ void InitializeLandscape()
 	uint sizex = MapSizeX();
 
 	uint y;
-	for (y = 0; y < maxy; y++) {
+	for (y = _settings_game.construction.freeform_edges ? 1 : 0; y < maxy; y++) {
 		uint x;
-		for (x = 0; x < maxx; x++) {
+		for (x = _settings_game.construction.freeform_edges ? 1 : 0; x < maxx; x++) {
 			MakeClear(sizex * y + x, CLEAR_GRASS, 3);
 			SetTileHeight(sizex * y + x, 0);
 			SetTropicZone(sizex * y + x, TROPICZONE_NORMAL);

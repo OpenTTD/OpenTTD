@@ -367,11 +367,13 @@ static bool ClickTile_Unmovable(TileIndex tile)
 /* checks, if a radio tower is within a 9x9 tile square around tile */
 static bool IsRadioTowerNearby(TileIndex tile)
 {
-	TileIndex tile_s = tile - TileDiffXY(4, 4);
+	TileIndex tile_s = tile - TileDiffXY(min(TileX(tile), 4U), min(TileY(tile), 4U));
+	uint w = min(TileX(tile), 4U) + 1 + min(MapMaxX() - TileX(tile), 4U);
+	uint h = min(TileY(tile), 4U) + 1 + min(MapMaxY() - TileY(tile), 4U);
 
-	BEGIN_TILE_LOOP(tile, 9, 9, tile_s)
+	BEGIN_TILE_LOOP(tile, w, h, tile_s)
 		if (IsTransmitterTile(tile)) return true;
-	END_TILE_LOOP(tile, 9, 9, tile_s)
+	END_TILE_LOOP(tile, w, h, tile_s)
 
 	return false;
 }
@@ -383,6 +385,23 @@ void GenerateUnmovables()
 	/* add radio tower */
 	int radiotowser_to_build = ScaleByMapSize(15); // maximum number of radio towers on the map
 	int lighthouses_to_build = _settings_game.game_creation.landscape == LT_TROPIC ? 0 : ScaleByMapSize1D((Random() & 3) + 7);
+
+	/* Scale the amount of lighthouses with the amount of land at the borders. */
+	if (_settings_game.construction.freeform_edges) {
+		uint num_water_tiles = 0;
+		for (uint x = 0; x < MapMaxX(); x++) {
+			if (IsTileType(TileXY(x, 1), MP_WATER)) num_water_tiles++;
+			if (IsTileType(TileXY(x, MapMaxY() - 1), MP_WATER)) num_water_tiles++;
+		}
+		for (uint y = 1; y < MapMaxY() - 1; y++) {
+			if (IsTileType(TileXY(1, y), MP_WATER)) num_water_tiles++;
+			if (IsTileType(TileXY(MapMaxX() - 1, y), MP_WATER)) num_water_tiles++;
+		}
+		/* The -6 is because the top borders are MP_VOID (-2) and all corners
+		 * are counted twice (-4). */
+		lighthouses_to_build = lighthouses_to_build * num_water_tiles / (2 * MapMaxY() + 2 * MapMaxX() - 6);
+	}
+
 	SetGeneratingWorldProgress(GWP_UNMOVABLE, radiotowser_to_build + lighthouses_to_build);
 
 	for (uint i = ScaleByMapSize(1000); i != 0; i--) {
@@ -416,13 +435,16 @@ void GenerateUnmovables()
 		TileIndex tile;
 		switch (dir) {
 			default:
-			case DIAGDIR_NE: tile = TileXY(maxx,     r % maxy); break;
-			case DIAGDIR_SE: tile = TileXY(r % maxx, 0);        break;
-			case DIAGDIR_SW: tile = TileXY(0,        r % maxy); break;
-			case DIAGDIR_NW: tile = TileXY(r % maxx, maxy);     break;
+			case DIAGDIR_NE: tile = TileXY(maxx - 1, r % maxy); break;
+			case DIAGDIR_SE: tile = TileXY(r % maxx, 1); break;
+			case DIAGDIR_SW: tile = TileXY(1,        r % maxy); break;
+			case DIAGDIR_NW: tile = TileXY(r % maxx, maxy - 1); break;
 		}
 
-		for (int j = 0; j < 20; j++) {
+		/* Only build lighthouses at tiles where the border is sea. */
+		if (!IsTileType(tile, MP_WATER)) continue;
+
+		for (int j = 0; j < 19; j++) {
 			uint h;
 			if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2 && !IsBridgeAbove(tile)) {
 				MakeLighthouse(tile);

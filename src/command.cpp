@@ -214,7 +214,7 @@ static const Command _command_proc_table[] = {
 	{CmdBuildTrainDepot,      CMD_NO_WATER | CMD_AUTO}, /* CMD_BUILD_TRAIN_DEPOT */
 	{CmdBuildSingleSignal,                   CMD_AUTO}, /* CMD_BUILD_SIGNALS */
 	{CmdRemoveSingleSignal,                  CMD_AUTO}, /* CMD_REMOVE_SIGNALS */
-	{CmdTerraformLand,                       CMD_AUTO}, /* CMD_TERRAFORM_LAND */
+	{CmdTerraformLand,       CMD_ALL_TILES | CMD_AUTO}, /* CMD_TERRAFORM_LAND */
 	{CmdPurchaseLandArea,     CMD_NO_WATER | CMD_AUTO}, /* CMD_PURCHASE_LAND_AREA */
 	{CmdSellLandArea,                               0}, /* CMD_SELL_LAND_AREA */
 	{CmdBuildTunnel,                         CMD_AUTO}, /* CMD_BUILD_TUNNEL */
@@ -311,7 +311,7 @@ static const Command _command_proc_table[] = {
 	{CmdBuildCanal,                          CMD_AUTO}, /* CMD_BUILD_CANAL */
 	{CmdCompanyCtrl,                                0}, /* CMD_COMPANY_CTRL */
 
-	{CmdLevelLand,             CMD_NO_TEST | CMD_AUTO}, /* CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once */
+	{CmdLevelLand, CMD_ALL_TILES | CMD_NO_TEST | CMD_AUTO}, /* CMD_LEVEL_LAND; test run might clear tiles multiple times, in execution that only happens once */
 
 	{CmdRefitRailVehicle,                           0}, /* CMD_REFIT_RAIL_VEHICLE */
 	{CmdRestoreOrderIndex,                          0}, /* CMD_RESTORE_ORDER_INDEX */
@@ -403,7 +403,7 @@ CommandCost DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint32
 	CommandCost res;
 
 	/* Do not even think about executing out-of-bounds tile-commands */
-	if (!IsValidTile(tile)) return CMD_ERROR;
+	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (flags & DC_ALL_TILES) == 0))) return CMD_ERROR;
 
 	CommandProc *proc = _command_proc_table[cmd].proc;
 
@@ -497,9 +497,6 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 {
 	assert(_docommand_recursive == 0);
 
-	/* Do not even think about executing out-of-bounds tile-commands */
-	if (!IsValidTile(tile)) return false;
-
 	CommandCost res, res2;
 
 	int x = TileX(tile) * TILE_SIZE;
@@ -527,6 +524,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	uint cmd_flags = GetCommandFlags(cmd);
 	/* Flags get send to the DoCommand */
 	uint32 flags = CommandFlagsToDCFlags(cmd_flags);
+
+	/* Do not even think about executing out-of-bounds tile-commands */
+	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return false;
 
 	bool notest = (cmd_flags & CMD_NO_TEST) != 0;
 

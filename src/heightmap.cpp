@@ -319,9 +319,14 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 		col_pad = (1 + width - ((img_width * img_scale) / num_div)) / 2;
 	}
 
+	if (_settings_game.construction.freeform_edges) {
+		for (uint x = 0; x < MapSizeX(); x++) MakeVoid(TileXY(x, 0));
+		for (uint y = 0; y < MapSizeY(); y++) MakeVoid(TileXY(0, y));
+	}
+
 	/* Form the landscape */
-	for (row = 0; row < height - 1; row++) {
-		for (col = 0; col < width - 1; col++) {
+	for (row = 0; row < height; row++) {
+		for (col = 0; col < width; col++) {
 			switch (_settings_game.game_creation.heightmap_rotation) {
 				default: NOT_REACHED();
 				case HM_COUNTER_CLOCKWISE: tile = TileXY(col, row); break;
@@ -329,7 +334,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 			}
 
 			/* Check if current tile is within the 1-pixel map edge or padding regions */
-			if ((DistanceFromEdge(tile) <= 1) ||
+			if ((!_settings_game.construction.freeform_edges && DistanceFromEdge(tile) <= 1) ||
 					(row < row_pad) || (row >= (height - row_pad - 1)) ||
 					(col < col_pad) || (col >= (width  - col_pad - 1))) {
 				SetTileHeight(tile, 0);
@@ -353,7 +358,11 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 				/* Color scales from 0 to 255, OpenTTD height scales from 0 to 15 */
 				SetTileHeight(tile, map[img_row * img_width + img_col] / 16);
 			}
-			MakeClear(tile, CLEAR_GRASS, 3);
+			/* Only clear the tiles within the map area. */
+			if (TileX(tile) != MapMaxX() && TileY(tile) != MapMaxY() &&
+					(!_settings_game.construction.freeform_edges || (TileX(tile) != 0 && TileY(tile) != 0))) {
+				MakeClear(tile, CLEAR_GRASS, 3);
+			}
 		}
 	}
 }
@@ -365,7 +374,7 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 static void FixSlopes()
 {
 	uint width, height;
-	uint row, col;
+	int row, col;
 	byte current_tile;
 
 	/* Adjust height difference to maximum one horizontal/vertical change. */
@@ -373,12 +382,17 @@ static void FixSlopes()
 	height  = MapSizeY();
 
 	/* Top and left edge */
-	for (row = 1; row < height - 2; row++) {
-		for (col = 1; col < width - 2; col++) {
-			/* Find lowest tile; either the top or left one */
-			current_tile = TileHeight(TileXY(col - 1, row)); // top edge
-			if (TileHeight(TileXY(col, row - 1)) < current_tile) {
-				current_tile = TileHeight(TileXY(col, row - 1)); // left edge
+	for (row = 0; (uint)row < height; row++) {
+		for (col = 0; (uint)col < width; col++) {
+			current_tile = MAX_TILE_HEIGHT;
+			if (col != 0) {
+				/* Find lowest tile; either the top or left one */
+				current_tile = TileHeight(TileXY(col - 1, row)); // top edge
+			}
+			if (row != 0) {
+				if (TileHeight(TileXY(col, row - 1)) < current_tile) {
+					current_tile = TileHeight(TileXY(col, row - 1)); // left edge
+				}
 			}
 
 			/* Does the height differ more than one? */
@@ -390,12 +404,18 @@ static void FixSlopes()
 	}
 
 	/* Bottom and right edge */
-	for (row = height - 2; row > 0; row--) {
-		for (col = width - 2; col > 0; col--) {
-			/* Find lowest tile; either the bottom and right one */
-			current_tile = TileHeight(TileXY(col + 1, row)); // bottom edge
-			if (TileHeight(TileXY(col, row + 1)) < current_tile) {
-				current_tile = TileHeight(TileXY(col, row + 1)); // right edge
+	for (row = height - 1; row >= 0; row--) {
+		for (col = width - 1; col >= 0; col--) {
+			current_tile = MAX_TILE_HEIGHT;
+			if ((uint)col != width - 1) {
+				/* Find lowest tile; either the bottom and right one */
+				current_tile = TileHeight(TileXY(col + 1, row)); // bottom edge
+			}
+
+			if ((uint)row != height - 1) {
+				if (TileHeight(TileXY(col, row + 1)) < current_tile) {
+					current_tile = TileHeight(TileXY(col, row + 1)); // right edge
+				}
 			}
 
 			/* Does the height differ more than one? */
@@ -447,14 +467,9 @@ void LoadHeightmap(char *filename)
 
 void FlatEmptyWorld(byte tile_height)
 {
-	uint width, height;
-	uint row, col;
-
-	width  = MapSizeX();
-	height = MapSizeY();
-
-	for (row = 2; row < height - 2; row++) {
-		for (col = 2; col < width - 2; col++) {
+	int edge_distance = _settings_game.construction.freeform_edges ? 0 : 2;
+	for (uint row = edge_distance; row < MapSizeY() - edge_distance; row++) {
+		for (uint col = edge_distance; col < MapSizeX() - edge_distance; col++) {
 			SetTileHeight(TileXY(col, row), tile_height);
 		}
 	}

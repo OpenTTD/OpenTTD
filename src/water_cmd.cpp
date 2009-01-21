@@ -358,9 +358,9 @@ static CommandCost ClearTile_Water(TileIndex tile, byte flags)
 		case WATER_TILE_CLEAR:
 			if (flags & DC_NO_WATER) return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
 
-			/* Make sure it's not an edge tile. */
-			if (!IsInsideMM(TileX(tile), 1, MapMaxX() - 1) ||
-					!IsInsideMM(TileY(tile), 1, MapMaxY() - 1)) {
+			/* Make sure freeform edges are allowed or it's not an edge tile. */
+			if (!_settings_game.construction.freeform_edges && (!IsInsideMM(TileX(tile), 1, MapMaxX() - 1) ||
+					!IsInsideMM(TileY(tile), 1, MapMaxY() - 1))) {
 				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 			}
 
@@ -905,7 +905,7 @@ static FloodingBehaviour GetFloodingBehaviour(TileIndex tile)
 /**
  * Floods a tile.
  */
-static void DoFloodTile(TileIndex target)
+void DoFloodTile(TileIndex target)
 {
 	assert(!IsTileType(target, MP_WATER));
 

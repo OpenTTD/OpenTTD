@@ -527,6 +527,7 @@ CommandCost CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32
 
 	for (;;) {
 		end_tile += delta;
+		if (!IsValidTile(end_tile)) return_cmd_error(STR_TUNNEL_THROUGH_MAP_BORDER);
 		end_tileh = GetTileSlope(end_tile, &end_z);
 
 		if (start_z == end_z) break;

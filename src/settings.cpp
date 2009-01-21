@@ -68,6 +68,10 @@
 #include "ai/ai_config.hpp"
 #include "ai/ai_info.hpp"
 
+#include "tile_map.h"
+#include "void_map.h"
+#include "station_base.h"
+
 #include "table/strings.h"
 
 ClientSettings _settings_client;
@@ -1079,6 +1083,71 @@ static int32 CheckNoiseToleranceLevel(const char *value)
 	return 0;
 }
 
+static int32 CheckFreeformEdges(int32 p1)
+{
+	if (_game_mode == GM_MENU) return 0;
+	if (p1 != 0) {
+		Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_SHIP && (TileX(v->tile) == 0 || TileY(v->tile) == 0)) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_EMPTY, 0, 0);
+				_settings_game.construction.freeform_edges = false;
+				return 0;
+			}
+		}
+		Station *st;
+		FOR_ALL_STATIONS(st) {
+			if (TileX(st->xy) == 0 || TileY(st->xy) == 0) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_EMPTY, 0, 0);
+				_settings_game.construction.freeform_edges = false;
+				return 0;
+			}
+		}
+		for (uint i = 0; i < MapSizeX(); i++) MakeVoid(TileXY(i, 0));
+		for (uint i = 0; i < MapSizeY(); i++) MakeVoid(TileXY(0, i));
+	} else {
+		for (uint i = 0; i < MapMaxX(); i++) {
+			if (TileHeight(TileXY(i, 1)) != 0) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
+				_settings_game.construction.freeform_edges = true;
+				return 0;
+			}
+		}
+		for (uint i = 1; i < MapMaxX(); i++) {
+			if (!IsTileType(TileXY(i, MapMaxY() - 1), MP_WATER) || TileHeight(TileXY(1, MapMaxY())) != 0) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
+				_settings_game.construction.freeform_edges = true;
+				return 0;
+			}
+		}
+		for (uint i = 0; i < MapMaxY(); i++) {
+			if (TileHeight(TileXY(1, i)) != 0) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
+				_settings_game.construction.freeform_edges = true;
+				return 0;
+			}
+		}
+		for (uint i = 1; i < MapMaxY(); i++) {
+			if (!IsTileType(TileXY(MapMaxX() - 1, i), MP_WATER) || TileHeight(TileXY(MapMaxX(), i)) != 0) {
+				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
+				_settings_game.construction.freeform_edges = true;
+				return 0;
+			}
+		}
+		/* Make tiles at the border water again. */
+		for (uint i = 0; i < MapMaxX(); i++) {
+			SetTileHeight(TileXY(i, 0), 0);
+			SetTileType(TileXY(i, 0), MP_WATER);
+		}
+		for (uint i = 0; i < MapMaxY(); i++) {
+			SetTileHeight(TileXY(0, i), 0);
+			SetTileType(TileXY(0, i), MP_WATER);
+		}
+	}
+	MarkWholeScreenDirty();
+	return 0;
+}
+
 #ifdef ENABLE_NETWORK
 
 static int32 UpdateMinActiveClients(int32 p1)
@@ -1396,6 +1465,8 @@ const SettingDesc _patch_settings[] = {
 
 	     SDT_VAR(GameSettings, game_creation.map_x,                           SLE_UINT8,                     S, 0,     8,                     6,      11, 0, STR_CONFIG_PATCHES_MAP_X,                 NULL),
 	     SDT_VAR(GameSettings, game_creation.map_y,                           SLE_UINT8,                     S, 0,     8,                     6,      11, 0, STR_CONFIG_PATCHES_MAP_Y,                 NULL),
+	SDT_CONDBOOL(GameSettings, construction.freeform_edges,                             111, SL_MAX_VERSION, 0, 0, false,                                    STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES, CheckFreeformEdges),
+	 SDT_CONDVAR(GameSettings, game_creation.water_borders,                   SLE_UINT8,111, SL_MAX_VERSION, 0, 0,    15,                     0,      15, 0, STR_NULL,                                 NULL),
 
  SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
  SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, "imperial|metric|si", STR_NULL, NULL, NULL),

@@ -47,6 +47,7 @@ bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
 
 	do {
 		tile -= delta;
+		if (!IsValidTile(tile)) return false;
 		height = GetTileZ(tile);
 	} while (z < height);
 

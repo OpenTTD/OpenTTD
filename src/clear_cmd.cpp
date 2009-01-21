@@ -18,6 +18,7 @@
 #include "economy_func.h"
 #include "viewport_func.h"
 #include "settings_type.h"
+#include "water.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -216,6 +217,16 @@ static void TileLoopClearDesert(TileIndex tile)
 
 static void TileLoop_Clear(TileIndex tile)
 {
+	/* If the tile is at any edge flood it to prevent maps without water. */
+	if (_settings_game.construction.freeform_edges && DistanceFromEdge(tile) == 1) {
+		uint z;
+		Slope slope = GetTileSlope(tile, &z);
+		if (z == 0 && slope == SLOPE_FLAT) {
+			DoFloodTile(tile);
+			MarkTileDirtyByTile(tile);
+			return;
+		}
+	}
 	TileLoopClearHelper(tile);
 
 	switch (_settings_game.game_creation.landscape) {

@@ -382,8 +382,8 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	/* we need to move variables in to the valid range, as the
 	 * GetTileZoomCenterWindow() function can call here with invalid x and/or y,
 	 * when the user tries to zoom out along the sides of the map */
-	a = Clamp(a, 0, (int)(MapMaxX() * TILE_SIZE) - 1);
-	b = Clamp(b, 0, (int)(MapMaxY() * TILE_SIZE) - 1);
+	a = Clamp(a, -4 * TILE_SIZE, (int)(MapMaxX() * TILE_SIZE) - 1);
+	b = Clamp(b, -4 * TILE_SIZE, (int)(MapMaxY() * TILE_SIZE) - 1);
 
 	/* (a, b) is the X/Y-world coordinate that belongs to (x,y) if the landscape would be completely flat on height 0.
 	 * Now find the Z-world coordinate by fix point iteration.
@@ -393,12 +393,15 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	 * So give it a z-malus of 4 in the first iterations.
 	 */
 	z = 0;
-	for (int i = 0; i < 5; i++) z = GetSlopeZ(a + max(z, 4u) - 4, b + max(z, 4u) - 4) / 2;
-	for (uint malus = 3; malus > 0; malus--) z = GetSlopeZ(a + max(z, malus) - malus, b + max(z, malus) - malus) / 2;
-	for (int i = 0; i < 5; i++) z = GetSlopeZ(a + z, b + z) / 2;
 
-	pt.x = a + z;
-	pt.y = b + z;
+	int min_coord = _settings_game.construction.freeform_edges ? TILE_SIZE : 0;
+
+	for (int i = 0; i < 5; i++) z = GetSlopeZ(Clamp(a + (int)max(z, 4u) - 4, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)max(z, 4u) - 4, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+	for (uint malus = 3; malus > 0; malus--) z = GetSlopeZ(Clamp(a + (int)max(z, malus) - (int)malus, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)max(z, malus) - (int)malus, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+	for (int i = 0; i < 5; i++) z = GetSlopeZ(Clamp(a + (int)z, min_coord, MapMaxX() * TILE_SIZE - 1), Clamp(b + (int)z, min_coord, MapMaxY() * TILE_SIZE - 1)) / 2;
+
+	pt.x = Clamp(a + (int)z, min_coord, MapMaxX() * TILE_SIZE - 1);
+	pt.y = Clamp(b + (int)z, min_coord, MapMaxY() * TILE_SIZE - 1);
 
 	return pt;
 }
@@ -969,26 +972,33 @@ static void ViewportAddLandscape()
 		int y_cur = y;
 
 		do {
-			TileType tt;
+			TileType tt = MP_VOID;
 
 			ti.x = x_cur;
 			ti.y = y_cur;
-			if (0 <= x_cur && x_cur < (int)MapSizeX() * TILE_SIZE &&
-					0 <= y_cur && y_cur < (int)MapSizeY() * TILE_SIZE) {
+
+			ti.z = 0;
+
+			ti.tileh = SLOPE_FLAT;
+			ti.tile = INVALID_TILE;
+
+			if (0 <= x_cur && x_cur < (int)MapMaxX() * TILE_SIZE &&
+					0 <= y_cur && y_cur < (int)MapMaxY() * TILE_SIZE) {
 				TileIndex tile = TileVirtXY(x_cur, y_cur);
 
-				ti.tile = tile;
-				ti.tileh = GetTileSlope(tile, &ti.z);
-				tt = GetTileType(tile);
-			} else {
-				ti.tileh = SLOPE_FLAT;
-				ti.tile = INVALID_TILE;
-				ti.z = 0;
-				tt = MP_VOID;
-			}
+				if (!_settings_game.construction.freeform_edges || (TileX(tile) != 0 && TileY(tile) != 0)) {
+					if (x_cur == ((int)MapMaxX() - 1) * TILE_SIZE || y_cur == ((int)MapMaxY() - 1) * TILE_SIZE) {
+						uint maxh = max<uint>(TileHeight(tile), 1);
+						for (uint h = 0; h < maxh; h++) {
+							DrawGroundSpriteAt(SPR_SHADOW_CELL, PAL_NONE, ti.x, ti.y, h * TILE_HEIGHT);
+						}
+					}
 
-			y_cur += 0x10;
-			x_cur -= 0x10;
+					ti.tile = tile;
+					ti.tileh = GetTileSlope(tile, &ti.z);
+					tt = GetTileType(tile);
+				}
+			}
 
 			_vd.foundation_part = FOUNDATION_PART_NONE;
 			_vd.foundation[0] = -1;
@@ -997,7 +1007,18 @@ static void ViewportAddLandscape()
 			_vd.last_foundation_child[1] = NULL;
 
 			_tile_type_procs[tt]->draw_tile_proc(&ti);
+
+			if ((x_cur == (int)MapMaxX() * TILE_SIZE && IsInsideMM(y_cur, 0, MapMaxY() * TILE_SIZE)) ||
+				(y_cur == (int)MapMaxY() * TILE_SIZE && IsInsideMM(x_cur, 0, MapMaxX() * TILE_SIZE))) {
+				TileIndex tile = TileVirtXY(x_cur, y_cur);
+				ti.tile = tile;
+				ti.tileh = GetTileSlope(tile, &ti.z);
+				tt = GetTileType(tile);
+			}
 			if (ti.tile != INVALID_TILE) DrawTileSelection(&ti);
+
+			y_cur += 0x10;
+			x_cur -= 0x10;
 		} while (--width_cur);
 
 		if ((direction ^= 1) != 0) {
