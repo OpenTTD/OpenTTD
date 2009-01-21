@@ -176,6 +176,9 @@ byte NetworkSpectatorCount()
 		if (ci->client_playas == COMPANY_SPECTATOR) count++;
 	}
 
+	/* Don't count a dedicated server as spectator */
+	if (_network_dedicated) count--;
+
 	return count;
 }
 
