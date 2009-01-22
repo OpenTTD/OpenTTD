@@ -526,10 +526,6 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		force = max(force, (mass * 8) + resistance);
 	}
 
-	if (force <= 0) force = 10000;
-
-	if (v->u.rail.railtype != RAILTYPE_MAGLEV) force = min(force, mass * 10 * 200);
-
 	if (mode == AM_ACCEL) {
 		return (force - resistance) / (mass * 4);
 	} else {
