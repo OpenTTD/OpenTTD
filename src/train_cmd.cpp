@@ -502,11 +502,9 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	resistance += incl;
 	resistance *= 4; //[N]
 
-	/* Due to the mph to m/s conversion below, at speeds below 3 mph the force is
-	 * actually double the train's power */
 	const int max_te = v->u.rail.cached_max_te; // [N]
 	int force;
-	if (speed > 2) {
+	if (speed > 0) {
 		switch (v->u.rail.railtype) {
 			case RAILTYPE_RAIL:
 			case RAILTYPE_ELECTRIC:
