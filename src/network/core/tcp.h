@@ -22,6 +22,7 @@ private:
 public:
 	bool writable;            ///< Can we write to this socket?
 
+	virtual NetworkRecvStatus CloseConnection();
 	void Send_Packet(Packet *packet);
 	bool Send_Packets();
 	bool IsPacketQueueEmpty();

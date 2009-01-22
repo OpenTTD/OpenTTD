@@ -136,7 +136,10 @@ public:
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget == NCDSWW_CANCELOK) delete this;
+		if (widget == NCDSWW_CANCELOK && this->downloaded_bytes != this->total_bytes) {
+			_network_content_client.Close();
+			delete this;
+		}
 	}
 
 	virtual void OnDownloadProgress(const ContentInfo *ci, uint bytes)

@@ -50,12 +50,6 @@ bool ContentInfo::IsValid() const
 	return this->state < ContentInfo::INVALID && this->type >= CONTENT_TYPE_BEGIN && this->type < CONTENT_TYPE_END;
 }
 
-NetworkRecvStatus NetworkContentSocketHandler::CloseConnection()
-{
-	this->has_quit = true;
-	return NETWORK_RECV_STATUS_OKAY;
-}
-
 void NetworkContentSocketHandler::Close()
 {
 	CloseConnection();

@@ -20,7 +20,14 @@ NetworkTCPSocketHandler::NetworkTCPSocketHandler(SOCKET s) :
 
 NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 {
+	this->CloseConnection();
+
 	if (this->sock != INVALID_SOCKET) closesocket(this->sock);
+	this->sock = INVALID_SOCKET;
+}
+
+NetworkRecvStatus NetworkTCPSocketHandler::CloseConnection()
+{
 	this->writable = false;
 	this->has_quit = true;
 
@@ -33,7 +40,7 @@ NetworkTCPSocketHandler::~NetworkTCPSocketHandler()
 	delete this->packet_recv;
 	this->packet_recv = NULL;
 
-	this->sock = INVALID_SOCKET;
+	return NETWORK_RECV_STATUS_OKAY;
 }
 
 /**

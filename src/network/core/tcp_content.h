@@ -102,7 +102,6 @@ struct ContentInfo {
 class NetworkContentSocketHandler : public NetworkTCPSocketHandler {
 protected:
 	struct sockaddr_in client_addr; ///< The address we're connected to.
-	NetworkRecvStatus CloseConnection();
 	virtual void Close();
 
 	/**
