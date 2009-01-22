@@ -13,6 +13,7 @@
 #include "../core/smallvec_type.hpp"
 #include "../ai/ai.hpp"
 #include "../gfxinit.h"
+#include "../sortlist_type.h"
 #include  "network_content.h"
 
 #include "table/strings.h"
@@ -136,8 +137,8 @@ public:
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget == NCDSWW_CANCELOK && this->downloaded_bytes != this->total_bytes) {
-			_network_content_client.Close();
+		if (widget == NCDSWW_CANCELOK) {
+			if (this->downloaded_bytes != this->total_bytes) _network_content_client.Close();
 			delete this;
 		}
 	}
@@ -158,6 +159,8 @@ public:
 
 /** Window that lists the content that's at the content server */
 class NetworkContentListWindow : public Window, ContentCallback {
+	typedef GUIList<const ContentInfo*> GUIContentList;
+
 	/** All widgets used */
 	enum Widgets {
 		NCLWW_CLOSE,         ///< Close 'X' button
@@ -182,8 +185,75 @@ class NetworkContentListWindow : public Window, ContentCallback {
 		NCLWW_RESIZE,        ///< Resize button
 	};
 
+	/** Runtime saved values */
+	static Listing last_sorting;
+	/** The sorter functions */
+	static GUIContentList::SortFunction * const sorter_funcs[];
+	GUIContentList content;      ///< List with content
+
 	const ContentInfo *selected; ///< The selected content info
 	int list_pos;                ///< Our position in the list
+
+	/**
+	 * (Re)build the network game list as its amount has changed because
+	 * an item has been added or deleted for example
+	 */
+	void BuildContentList()
+	{
+		if (!this->content.NeedRebuild()) return;
+
+		/* Create temporary array of games to use for listing */
+		this->content.Clear();
+
+		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
+			*this->content.Append() = *iter;
+		}
+
+		this->content.Compact();
+		this->content.RebuildDone();
+	}
+
+	/** Sort content by name. */
+	static int CDECL NameSorter(const ContentInfo * const *a, const ContentInfo * const *b)
+	{
+		return strcasecmp((*a)->name, (*b)->name);
+	}
+
+	/** Sort content by type. */
+	static int CDECL TypeSorter(const ContentInfo * const *a, const ContentInfo * const *b)
+	{
+		int r = 0;
+		if ((*a)->type != (*b)->type) {
+			char a_str[64];
+			char b_str[64];
+			GetString(a_str, STR_CONTENT_TYPE_BASE_GRAPHICS + (*a)->type - CONTENT_TYPE_BASE_GRAPHICS, lastof(a_str));
+			GetString(b_str, STR_CONTENT_TYPE_BASE_GRAPHICS + (*b)->type - CONTENT_TYPE_BASE_GRAPHICS, lastof(b_str));
+			r = strcasecmp(a_str, b_str);
+		}
+		if (r == 0) r = NameSorter(a, b);
+		return r;
+	}
+
+	/** Sort content by state. */
+	static int CDECL StateSorter(const ContentInfo * const *a, const ContentInfo * const *b)
+	{
+		int r = (*a)->state - (*b)->state;
+		if (r == 0) r = TypeSorter(a, b);
+		return r;
+	}
+
+	/** Sort the content list */
+	void SortContentList()
+	{
+		if (!this->content.Sort()) return;
+
+		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
+			if (*iter == this->selected) {
+				this->list_pos = iter - this->content.Begin();
+				break;
+			}
+		}
+	}
 
 	/** Make sure that the currently selected content info is within the visible part of the matrix */
 	void ScrollToSelected()
@@ -213,7 +283,12 @@ public:
 		_network_content_client.AddCallback(this);
 		this->HideWidget(select_all ? NCLWW_SELECT_UPDATE : NCLWW_SELECT_ALL);
 
-		SetVScrollCount(this, _network_content_client.Length());
+		this->content.SetListing(this->last_sorting);
+		this->content.SetSortFuncs(this->sorter_funcs);
+		this->content.ForceRebuild();
+		this->SortContentList();
+
+		SetVScrollCount(this, this->content.Length());
 		this->FindWindowPlacementAndResize(desc);
 	}
 
@@ -225,11 +300,19 @@ public:
 
 	virtual void OnPaint()
 	{
+		const SortButtonState arrow = this->content.IsDescSortOrder() ? SBS_DOWN : SBS_UP;
+
+		if (this->content.NeedRebuild()) {
+			this->BuildContentList();
+			SetVScrollCount(this, this->content.Length());
+		}
+		this->SortContentList();
+
 		/* To sum all the bytes we intend to download */
 		uint filesize = 0;
 		bool show_select_all = false;
 		bool show_select_upgrade = false;
-		for (ConstContentIterator iter = _network_content_client.Begin(); iter != _network_content_client.End(); iter++) {
+		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
 			const ContentInfo *ci = *iter;
 			switch (ci->state) {
 				case ContentInfo::SELECTED:
@@ -254,10 +337,16 @@ public:
 
 		this->DrawWidgets();
 
+		switch (this->content.SortType()) {
+			case NCLWW_CHECKBOX - NCLWW_CHECKBOX: this->DrawSortButtonState(NCLWW_CHECKBOX, arrow); break;
+			case NCLWW_TYPE     - NCLWW_CHECKBOX: this->DrawSortButtonState(NCLWW_TYPE,     arrow); break;
+			case NCLWW_NAME     - NCLWW_CHECKBOX: this->DrawSortButtonState(NCLWW_NAME,     arrow); break;
+		}
+
 		/* Fill the matrix with the information */
 		uint y = this->widget[NCLWW_MATRIX].top + 3;
 		int cnt = 0;
-		for (ConstContentIterator iter = _network_content_client.Get(this->vscroll.pos); iter != _network_content_client.End() && cnt < this->vscroll.cap; iter++, cnt++) {
+		for (ConstContentIterator iter = this->content.Get(this->vscroll.pos); iter != this->content.End() && cnt < this->vscroll.cap; iter++, cnt++) {
 			const ContentInfo *ci = *iter;
 
 			if (ci == this->selected) GfxFillRect(this->widget[NCLWW_CHECKBOX].left + 1, y - 2, this->widget[NCLWW_NAME].right - 1, y + 9, 10);
@@ -402,13 +491,31 @@ public:
 
 				if (id_v >= _network_content_client.Length()) return; // click out of bounds
 
-				this->selected = *_network_content_client.Get(id_v);
+				this->selected = *this->content.Get(id_v);
 				this->list_pos = id_v;
 
-				if (pt.x <= this->widget[NCLWW_CHECKBOX].right) _network_content_client.ToggleSelectedState(this->selected);
+				if (pt.x <= this->widget[NCLWW_CHECKBOX].right) {
+					_network_content_client.ToggleSelectedState(this->selected);
+					this->content.ForceResort();
+				}
 
 				this->SetDirty();
 			} break;
+
+			case NCLWW_CHECKBOX:
+			case NCLWW_TYPE:
+			case NCLWW_NAME:
+				if (this->content.SortType() == widget - NCLWW_CHECKBOX) {
+					this->content.ToggleSortOrder();
+					this->list_pos = this->content.Length() - this->list_pos - 1;
+				} else {
+					this->content.SetSortType(widget - NCLWW_CHECKBOX);
+					this->content.ForceResort();
+					this->SortContentList();
+				}
+				this->ScrollToSelected();
+				this->SetDirty();
+				break;
 
 			case NCLWW_SELECT_ALL:
 				_network_content_client.SelectAll();
@@ -445,7 +552,7 @@ public:
 				break;
 			case WKC_DOWN:
 				/* scroll down by one */
-				if (this->list_pos < (int)_network_content_client.Length() - 1) this->list_pos++;
+				if (this->list_pos < (int)this->content.Length() - 1) this->list_pos++;
 				break;
 			case WKC_PAGEUP:
 				/* scroll up a page */
@@ -453,7 +560,7 @@ public:
 				break;
 			case WKC_PAGEDOWN:
 				/* scroll down a page */
-				this->list_pos = min(this->list_pos + this->vscroll.cap, (int)_network_content_client.Length() - 1);
+				this->list_pos = min(this->list_pos + this->vscroll.cap, (int)this->content.Length() - 1);
 				break;
 			case WKC_HOME:
 				/* jump to beginning */
@@ -461,18 +568,19 @@ public:
 				break;
 			case WKC_END:
 				/* jump to end */
-				this->list_pos = _network_content_client.Length() - 1;
+				this->list_pos = this->content.Length() - 1;
 				break;
 
 			case WKC_SPACE:
 				_network_content_client.ToggleSelectedState(this->selected);
+				this->content.ForceResort();
 				this->SetDirty();
 				return ES_HANDLED;
 
 			default: return ES_NOT_HANDLED;
 		}
 
-		this->selected = *_network_content_client.Get(this->list_pos);
+		this->selected = *this->content.Get(this->list_pos);
 
 		/* scroll to the new server if it is outside the current range */
 		this->ScrollToSelected();
@@ -488,7 +596,7 @@ public:
 
 		this->widget[NCLWW_MATRIX].data = (this->vscroll.cap << 8) + 1;
 
-		SetVScrollCount(this, _network_content_client.Length());
+		SetVScrollCount(this, this->content.Length());
 
 		/* Make the matrix and details section grow both bigger (or smaller) */
 		delta.x /= 2;
@@ -501,12 +609,13 @@ public:
 
 	virtual void OnReceiveContentInfo(const ContentInfo *rci)
 	{
-		SetVScrollCount(this, _network_content_client.Length());
+		this->content.ForceRebuild();
 		this->SetDirty();
 	}
 
 	virtual void OnDownloadComplete(ContentID cid)
 	{
+		this->content.ForceResort();
 		this->SetDirty();
 	}
 
@@ -519,6 +628,13 @@ public:
 
 		this->SetDirty();
 	}
+};
+
+Listing NetworkContentListWindow::last_sorting = {false, 1};
+NetworkContentListWindow::GUIContentList::SortFunction * const NetworkContentListWindow::sorter_funcs[] = {
+	&StateSorter,
+	&TypeSorter,
+	&NameSorter,
 };
 
 /** Widgets used for the content list */
