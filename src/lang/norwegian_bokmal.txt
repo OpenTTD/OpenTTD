@@ -2113,6 +2113,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tog i tunnelen
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Kjøretøy i tunnelen
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Annen tunnel i veien
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunnelen ville munne ut utenfor kartkanten
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kan ikke grave ut land til den andre tunnelutgangen
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Må rive tunnel først
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Må rive bro først
@@ -3668,6 +3669,13 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_CONFIGURE                                                :{BLACK}Konfigurer
+STR_AI_ACCEPT                                                   :{BLACK}Godta
+STR_AI_CANCEL                                                   :{BLACK}Avbryt
+STR_AI_CLOSE                                                    :{BLACK}Lukk
+STR_AI_RESET                                                    :{BLACK}Tilbakestill
+STR_AI_VERSION                                                  :Versjon
+STR_AI_DESCRIPTION                                              :Beskrivelse:
 ########
 
 ############ town controlled noise level
@@ -3677,7 +3685,21 @@ STR_STATION_NOISE                                               :{BLACK}Lyd gene
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD er bygget uten støtte for "zlib"...
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Navn
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Velg alt
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Last ned
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Du har ikke valgt at dette skal lastes ned
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Du har valgt at dette skal lastes ned
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Dette har du fra før av
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Navn: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versjon: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Beskrivelse: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Nedlastnings størrelse: {WHITE}{BYTES}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Laster ned innhold...
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Nedlastning fullført
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} av {BYTES} lastet ned ({NUM} %)
 
 
 ########

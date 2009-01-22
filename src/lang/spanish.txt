@@ -1091,9 +1091,28 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotaci�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}El nivel de la altura del mapa plano tiene: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Habilitar la modificación del terreno en los bordes del mapa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Uno o más cuadrados del borde más al norte no están vacios
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Uno o más cuadrados en uno de los bordes no son agua
 
 # Start of map water border strings.
 # DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Tierra en todos los bordes
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Agua solo en el borde Noreste
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Agua solo en el borde Sureste
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Agua en los bordes Noreste y Sureste
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Agua solo en el borde Suroeste
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Agua en los bordes Noreste y Suroeste
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Agua en los bordes Sureste y Suroeste
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Tierra solo en el borde Noroeste
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Agua solo en el borde Noroeste
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Agua en los bordes Noroeste y Noreste
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Agua en los bordes Noroeste y Sureste
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Tierra solo en el borde Suroeste
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Agua en los bordes Noroeste y Suroeste
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Tierra solo en el borde Sureste
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Tierra solo en el borde Noreste
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Agua en todos los bordes
 # End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Expansión máxima de est.: {ORANGE}{STRING} {RED}Atención: Valores altos relantizan
@@ -2123,6 +2142,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren en túnel
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Vehículo de carretera en túnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Otro túnel en el camino
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}El túnel acabaría fuera del mapa
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}No se puede excavar en la tierra al otro lado del túnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Primero debe demolerse el túnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Primero debe demolerse el puente

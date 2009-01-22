@@ -1090,6 +1090,27 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Yüksek
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Saat yönünün tersi
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Düzlük bir senaryonun yükseklik seviyesi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Kuzey kenarda bir veya daha fazla kare boş değil
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Kenarlardan birinde bir veya daha fazla kare su değil
+
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Tüm sınırlarda kara
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Yalnız kuzeydoğu sınırında su
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Yalnız güneydoğu sınırında su
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Kuzeydoğu ve güneydoğu sınırlarında su
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Yalnız güneybatı sınırında su
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Kuzeydoğu ve güneybatı sınırlarında su
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Kuzeybatı sınırında sadece kara
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Yalnız kuzeybatı sınırında su
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Kuzeybatı ve kuzeydoğu sınırlarında su
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Kuzeybatı ve güneydoğu sınırlarında su
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Güneybatı sınırında sadece kara
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Kuzeybatı ve güneydoğu sınırlarında su
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Güneydoğu sınırında sadece kara
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Kuzeydoğu sınırında sadece kara
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Tüm sınırlarda su
+# End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}İstasyon genişleme sınırı: {ORANGE}{STRING} {RED}Uyarı: Yüksek değerler oyunu yavaşlatır
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
@@ -2118,6 +2139,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tünelde tren var
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Tünelde taşıt var
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Yolda başka bir tünel var
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tünel haritanın dışında bitiyor
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tünelin diğer ucunda düzeltme yapılmasi gerekiyor
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Önce tünel yıkılmalı
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Önce köprü yıkılmalı
@@ -3688,6 +3710,18 @@ STR_AI_CONFIGURE_TIP                                            :{BLACK}YZ param
 STR_AI_LIST_TIP                                                 :{BLACK}Sonraki oyunda yüklenecek tüm YZ'ler
 STR_AI_LIST_CAPTION                                             :{WHITE}Mevcut YZ'ler
 STR_AI_AILIST_TIP                                               :{BLACK}YZ seçmek için bir tuşa basın
+STR_AI_ACCEPT                                                   :{BLACK}Kabul et
+STR_AI_ACCEPT_TIP                                               :{BLACK}Vurgulanan YZ'yi seç
+STR_AI_CANCEL                                                   :{BLACK}İptal
+STR_AI_CANCEL_TIP                                               :{BLACK}YZ'yi değiştirme
+STR_AI_CLOSE                                                    :{BLACK}Kapat
+STR_AI_RESET                                                    :{BLACK}Yeniden başlat
+STR_AI_HUMAN_PLAYER                                             :İnsan oyuncu
+STR_AI_RANDOM_AI                                                :Rastgele YZ
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}YZ Parametreleri
+STR_AI_AUTHOR                                                   :Yazar:
+STR_AI_VERSION                                                  :Sürüm:
+STR_AI_DESCRIPTION                                              :Tanım:
 ########
 
 ############ town controlled noise level
@@ -3749,6 +3783,6 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... bağ
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... dosya yazılabilir değil
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}İndirilen sıkıştırılmış dosya açılamadı
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Çevrimiçi içeriği kontol et
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Çevrimiçi içeriği kontrol et
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}İndirilecek yeni ve güncellenmiş içeriği kontrol et
 ########

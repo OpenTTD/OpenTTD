@@ -1090,9 +1090,28 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightm
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :반시계방향
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :시계방향
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}평지 시나리오 맵이 받는 높이: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}맵 경계에서 타일 변경을 허용: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}맵 경계에 있는 한개 이상의 타일에 무언가 있습니다
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}맵 경계에 있는 한개 이상의 타일이 물이 아닙니다
 
 # Start of map water border strings.
 # DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :모든 경계선이 땅
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :북동경계선만 물
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :남동경계선만 물
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :북동와 남동경계선만 물
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :남서경계선만 물
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :북동과 남서경계선만 물
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :남동과 남서경계선만 물
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :북서경계선만 땅
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :북서경계선만 물
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :북서와 북동경계선에 물
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :북서와 남동경계선에 물
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :남서경계선만 땅
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :북서와 남서경계선만 물
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :남동경계선만 땅
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :북동경계선만 땅
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :모든 경계선에 물
 # End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 높은 값은 게임을 느리게함!
@@ -2122,6 +2141,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}터널 속에 열차가 있습니다
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}터널 속에 자동차가 있습니다
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}도중에 다른 터널이 있습니다
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}터널이 맵 끝을 통과합니다
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}지형 문제로 터널의 반대쪽 출구를 만들 수 없습니다
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}터널을 먼저 제거하십시오
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}다리를 먼저 제거하십시오

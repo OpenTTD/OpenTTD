@@ -1092,6 +1092,29 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Вра�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Против часовой стрелки
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовой стрелке
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Уровень высоты для карт с плоским рельефом: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Разрешить терраформинг на краю карты: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Одна или несколько клеток в северном углу не пусты
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
+
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Земля по всем границам
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Вода только на СВ краю карты
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Вода только на ЮВ краю карты
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Вода на СВ и ЮВ краях карты
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Вода только на ЮЗ краю карты
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Вода на СВ и ЮЗ краях карты
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Вода на ЮВ и СЗ краях карты
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Земля только на СЗ краю карты
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Вода только на СЗ краю карты
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Вода на СЗ и СВ краях карты
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Вода на СЗ и ЮВ краях карты
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Земля только на ЮЗ краю карты
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Вода на СЗ и ЮЗ краях карты
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Земля только на ЮВ краю карты
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Земля только на СВ краю карты
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Только водные границы
+# End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. протяженность: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолетных площадках: {ORANGE}{STRING}
@@ -1157,6 +1180,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Не д
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Не допускать постройки кораблей компьютером: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить AI в сетевой игре: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}Число тактов перед остановкой ИИ: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}кажд{P 1 ый ые ые} {STRING} д{P 1 ень ня ней}/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Обслуживание поездов по умолчанию: {ORANGE}не обслуживаются
@@ -1201,6 +1225,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :в центре
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :справа
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Радиус прилипания окон (пикселей): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радиус прилипания окон (пикселей): {ORANGE}отключено
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Макс. число открытых окон (не "приклеенных"): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Макс. число открытых окон (не "приклеенных"): {ORANGE}выкл.
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Скорость роста городов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :нет
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :медленная
@@ -2117,6 +2143,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Поезд в туннеле
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Машина в туннеле
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Другой туннель на пути
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Туннель заканчивается за пределами карты
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Невозможно поднять/опустить землю для другого конца туннеля
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Сначала удалите туннель
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Сначала удалите мост
@@ -3683,11 +3710,32 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Настройки ИИ
 STR_AI_DEBUG                                                    :{WHITE}Отладка AI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Имя AI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Перезагрузить AI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Удалить AI, перезагрузить скрипт и перезапустить AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}Окно отладки AI доступно только для сервера
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Конфигурация ИИ
+STR_AI_CHANGE                                                   :{BLACK}Выбор ИИ
+STR_AI_CONFIGURE                                                :{BLACK}Конфигурация
+STR_AI_CHANGE_TIP                                               :{BLACK}Загрузить другой ИИ
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Настроить параметры ИИ
+STR_AI_LIST_TIP                                                 :{BLACK}Все ИИ будут загружены в следующей игре
+STR_AI_LIST_CAPTION                                             :{WHITE}Доступные ИИ
+STR_AI_AILIST_TIP                                               :{BLACK}Кликнуть для выбора ИИ
+STR_AI_ACCEPT                                                   :{BLACK}Принять
+STR_AI_ACCEPT_TIP                                               :{BLACK}Выбрать подсвеченный ИИ
+STR_AI_CANCEL                                                   :{BLACK}Отмена
+STR_AI_CANCEL_TIP                                               :{BLACK}Не выбирать ИИ
+STR_AI_CLOSE                                                    :{BLACK}Закрыть
+STR_AI_RESET                                                    :{BLACK}Сброс
+STR_AI_HUMAN_PLAYER                                             :Человек
+STR_AI_RANDOM_AI                                                :Случ. ИИ
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Параметры ИИ
+STR_AI_AUTHOR                                                   :Автор:
+STR_AI_VERSION                                                  :Версия:
+STR_AI_DESCRIPTION                                              :Описание:
 ########
 
 ############ town controlled noise level

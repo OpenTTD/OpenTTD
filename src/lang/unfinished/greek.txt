@@ -24,8 +24,8 @@ STR_SUPPLIES                                                    :{BLACK}Προμ
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Επιβάτες
 STR_0010_COAL                                                   :Άνθρακας
-STR_0011_MAIL                                                   :Αλληλογραφία
-STR_0012_OIL                                                    :Πετρέλαιο
+STR_0011_MAIL                                                   :ταχυδρομικά
+STR_0012_OIL                                                    :Λάδι
 STR_0013_LIVESTOCK                                              :Ζώα
 STR_0014_GOODS                                                  :Αγαθά
 STR_0015_GRAIN                                                  :Σιτάρι

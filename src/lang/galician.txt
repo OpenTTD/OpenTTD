@@ -479,10 +479,13 @@ STR_AGE                                                         :{COMMA} ano{P "
 STR_AGE_RED                                                     :{RED}{COMMA} ano{P "" s} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Vehículo de estrada
-STR_019D_AIRCRAFT                                               :Aeronave
-STR_019E_SHIP                                                   :Barco
 STR_019F_TRAIN                                                  :Tren
+STR_019C_ROAD_VEHICLE                                           :Vehículo de estrada
+STR_019E_SHIP                                                   :Barco
+STR_019D_AIRCRAFT                                               :Aeronave
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} está a volverse vello
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} está a volverse moi vello
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} está a volverse moi vello e precisa ser reemprazado con urxencia
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Información dunha área de terreo
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Coste de limpar: {LTBLUE}N/D
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Coste de limpar: {RED}{CURRENCY}
@@ -991,10 +994,12 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Non se p
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Non se pode copia-la lista de ordes...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fin das ordes compartidas - -
 
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} está perdido.
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}¡Unión Monetaria Europea!{}{}¡O Euro introdúcese como a única moeda para as transaccións diarias no teu país!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} ten unha orde nula
 # end of order system
 
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Non se aplicaron as regras de autosubstitución/renovación
@@ -1076,6 +1081,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Esquerda
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Dereita
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Nivel de altitude dun escenario chairo: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Face-lo servicio os helicópteros no heliporto automáticam.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Unir barra de paisaxe as barras de raíl/estrada/auga/aeroporto: {ORANGE}{STRING}
@@ -1097,6 +1106,8 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU                          :{LTBLUE}Emulaci
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Tecla Command
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Tecla Control
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Apagado
+
+
 
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Pausar automáticamente ó comezo dunha nova partida: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Usa-la lista avanzada de vehículos: {ORANGE}{STRING}
@@ -1340,7 +1351,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}No se po
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Intervalos de servicio en porcentaxes: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Cambiar producción
 
-
 ############ network gui strings
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Multixogador
@@ -1551,6 +1561,8 @@ STR_NETWORK_ERR_CLIENT_COMPANY_MISMATCH                         :company-id err�
 STR_NETWORK_ERR_CLIENT_KICKED                                   :pateado polo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :intentaba usar unha trampa
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheo
+############ End of leave-in-this-order
+############ Leave those lines in this order!!
 ############ End of leave-in-this-order
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipo] :
 STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}: {GRAY}{STRING}
@@ -3602,8 +3614,17 @@ STR_OSK_KEYBOARD_LAYOUT                                         :`1234567890-=\q
 STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|QWERTYUIOP{{}}ASDFGHJKL:"  ZXCVBNM<>? .
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Permitir á cidade controla-lo nivel de ruído dos aeroportos: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Límite de ruído na cidade: {ORANGE}{COMMA}{BLACK}  máx: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Ruído xerado: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

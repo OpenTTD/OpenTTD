@@ -1090,9 +1090,28 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotaci�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-horari
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Alçada que un escenari pla pren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activa la terraformació de cel·les a les vores del mapa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Una o més cel·les al vèrtex nord no està buit
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Una o més cel·les en una de les vores no és aigua
 
 # Start of map water border strings.
 # DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Terra a totes les vores
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Aigua només a la vora nord-est
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Aigua només a la vora sud-est
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Aigua a les vores nord-est i sud-est
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Aigua només a la vora sud-oest
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Aigua a les vores nord-est i sud-oest
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Aigua a les vores sud-est i sud-oest
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Terra només a la vora nord-oest
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Aigua només a la vora nord-oest
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Aigua a les vores nord-oest i nord-est
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Aigua a les vores sud-oest i sud-est
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Terra només a la vora sud-oest
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Aigua a les vores nord-oest i sud-oest
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Terra només a la vora sud-est
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Terra només a la vora nord-est
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Aigua a totes les vores
 # End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max extensió de estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt enlenteix el joc
@@ -2122,6 +2141,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren dins del túnel
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Vehicle dins del túnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Un altre túnel en el camí
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}El túnel acabarà fora del mapa
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Impossible excavar la terra a l'altre extrem del túnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Primer has d'enderrocar el túnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Primer has d'enderrocar el pont

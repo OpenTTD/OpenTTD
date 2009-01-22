@@ -1091,6 +1091,10 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :عكس عقار
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :مع عقارب الساعة
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}الأرتفاع الأعلى في محرر الخريطة لسطح المستوي: {ORANGE}{STRING}
 
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+# End of map water border strings.
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}أكبر توسع للمحطه:  {ORANGE}{STRING} {RED}تحذير: الإعدادات العاليه تبطئ اللعبه
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}صيانة الهيلوكبتر في مهبطها تلقائيا: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}اربط اداة التضاريس الى اداة السكة /الطرق / اموانئ / المطارات{ORANGE}{STRING}
@@ -3716,6 +3720,7 @@ STR_CONTENT_DETAIL_URL                                          :{SILVER} عنو
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER} النوع: {WHITE} {STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER} حجم التحميل: {WHITE} {BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER} اختير بسبب: {WHITE} {STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER} الاعتمادية: {WHITE} {STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER} الاسم الرمزي: {WHITE} {STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE} يتم التحميل الان ...

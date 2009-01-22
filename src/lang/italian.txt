@@ -1092,9 +1092,27 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotazio
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altitudine delle mappe pianeggiante: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Uno o più riquadri sul lato nord non sono vuoti
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Uno o più riquadri su uno dei bordi non sono d'acqua
 
 # Start of map water border strings.
 # DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Terreno su tutti i bordi
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Acqua solo sul bordo nord-est
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Acqua solo sul bordo sud-est
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Acqua sui bordi nord-est e sud-est
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Acqua solo sul bordo sud-ovest
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Acqua sui bordi nord-est e sud-ovest
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Acqua sui bordi sud-est e sud-ovest
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Terreno solo sul bordo nord-ovest
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Acqua solo sul bordo nord-ovest
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Acqua sui bordi nord-ovest e nord-est
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Acqua sui bordi nord-ovest e sud-est
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Terreno solo sul bordo sud-ovest
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Acqua sui bordi nord-ovest e sud-ovest
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Terreno solo sul bordo sud-est
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Terreno solo sul bordo nord-est
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Acqua su tutti i bordi
 # End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max estensione stazioni: {ORANGE}{STRING} {RED}Nota: Valori alti rallentano il gioco
@@ -1677,7 +1695,7 @@ STR_0810_DESERT                                                 :Deserto
 ##id 0x1000
 STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreno inclinato nella direzione sbagliata
 STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Combinazione di binari impossibile
-STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Gli scavi danneggerebbero la galleria
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Gli scavi danneggerebbero il tunnel
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}...già al livello del mare
 STR_1004_TOO_HIGH                                               :{WHITE}...troppo alto
 STR_ALREADY_LEVELLED                                            :{WHITE}...già pianeggiante
@@ -2124,6 +2142,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Treno nel tunnel
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Automezzo nel tunnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Altro tunnel di mezzo
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Il tunnel terminerebbe fuori dalla mappa
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Impossibile scavare il terreno all'altra estremità del tunnel
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Bisogna demolire il tunnel prima
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Bisogna demolire il ponte prima

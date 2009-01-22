@@ -1090,9 +1090,19 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Korkeus
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Litteälle maisemalle annettava korkeus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Salli maanmuokkaus kartan reunoilla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Yksi tai useampi ruutu pohjoisreunalla ei ole tyhjä
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Yksi tai useampi ruutu jollakin reunalla ei ole vettä
 
 # Start of map water border strings.
 # DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Maata kaikilla reunoilla
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Vettä vain koillisreunalla
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Vettä vain kaakkoisreunalla
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Vettä koillis- ja kaakkoisreunalla
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Vettä vain lounaisreunalla
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Vettä koillis- ja luoteisreunalla
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Vettä kaakkois- ja lounaisreunalla
 STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Maata vain lounaisreunassa
 STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Vettä vain lounaisreunassa
 STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Vettä vain lounais- ja kaakkoisreunassa

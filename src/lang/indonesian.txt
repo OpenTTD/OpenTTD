@@ -455,7 +455,7 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Tidak dapat mengubah waktu servis
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Tutup window
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Judul Jendela - klik dan tahan disini untuk memindahkan jendela/"window"
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Judul Jendela - klik dan tahan disini untuk memindahkan jendela
 STR_STICKY_BUTTON                                               :{BLACK}Catat jendela ini agar tidak tertutup saat di beri perintah "Tutup Semua Jendela"
 STR_RESIZE_BUTTON                                               :{BLACK}Klik dan Geser untuk mengubah ukuran jendela ini.
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik disini untuk langsung mengarah ke folder asal simpan/buka saat ini.
@@ -571,8 +571,8 @@ STR_01EF_PROGRAM                                                :{TINYFONT}{BLAC
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Kosong
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Simpan
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Program Track musik sekarang
-STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Pilih 'semua track' program
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Pilih program 'gaya musik lama' program
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Pilih program 'semua track'
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Pilih program 'gaya musik lama'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Pilih program 'gaya musik masa kini'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Pilih 'Bebas 1' (program buatan pengguna)
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Pilih 'Bebas 2' (program buatan pengguna)
@@ -580,7 +580,7 @@ STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Hapus pr
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Simpan aturan musik
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik pada musik track untuk menambah pada program sekarang (hanya Bebas 1 atau Bebas 2)
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik pada track musik untuk menghapusnya dari program saat ini. (Bebas 1 atau Bebas 2 saja)
-STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}"Toggle"/Tandai program secara acak
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Acak/Urut program
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Tampilkan jendela pemilihan judul musik
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik pada servis untuk memindahkan industri/kota ke tengah
 STR_01FE_DIFFICULTY                                             :{BLACK}Tingkat kesulitan ({STRING})
@@ -617,7 +617,7 @@ STR_0214_ENTREPRENEUR                                           :Pengusaha
 STR_0215_INDUSTRIALIST                                          :Ahli Industri
 STR_0216_CAPITALIST                                             :Kapitalis
 STR_0217_MAGNATE                                                :Tokoh terkemuka
-STR_0218_MOGUL                                                  :Jutawan/hartawan
+STR_0218_MOGUL                                                  :Jutawan
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Tycoon abad ini
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PRESIDENTNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
@@ -646,7 +646,7 @@ STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Membangu
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Tidak dapat membangun kota disini
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...terlalu dekat dengan batas tepi peta
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...terlalu dekat dengan kota lain
-STR_0239_SITE_UNSUITABLE                                        :{WHITE}...lokasi tidak memungkinkan/mencukupi
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...lokasi tidak sesuai
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...terlalu banyak kota
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Tidak dapat membuat satu kota pun
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...tidak ada lagi ruang tersisa dalam peta
@@ -687,7 +687,7 @@ STR_025C_TOY_FACTORY                                            :{BLACK}Pabrik M
 STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Sumber Mata Air Plastik
 STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Pabrik Minuman berdesis
 STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Pembangkit Gelembung
-STR_0260_TOFFEE_QUARRY                                          :{BLACK}Tambang "Toffee"/gula-gula
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}Tambang gula-gula
 STR_0261_SUGAR_MINE                                             :{BLACK}Tambang Gula
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Membangun Tambang Batubara
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Membangun Stasiun Pembangkit
@@ -1090,9 +1090,28 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Perputa
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Melawan arah jam
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Searah jam
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Tinggi dataran pada peta skenario datar : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Ijinkan terraforming pada area perbatasan peta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Kotak pada ujung utara tidak kosong
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Kotak pada salah satu ujung peta bukanlah perairan
 
 # Start of map water border strings.
 # DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Dataran pd semua pinggiran
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Perairan hanya di batas timur laut saja
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Perairan hanya di batas tenggara saja
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Perairan hanya di batas timur laut dan tenggara
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Perairan hanya di batas barat daya saja
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Perairan hanya di batas timur laut dan barat daya saja
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Perairan hanya di batas tenggara dan barat daya saja
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Dataran hanya di batas barat laut saja
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Perairan hanya di batas barat laut saja
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Perairan hanya di batas barat laut dan timur laut saja
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Perairan hanya di batas barat laut dan tenggara saja
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Dataran hanya di batas barat daya saja
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Perairan hanya di batas barat laut dan barat daya saja
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Dataran hanya di batas tenggara saja
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Dataran hanya di batas timur laut saja
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Perairan pada semua batas
 # End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} {RED}Peringatan: Makin tinggi, Makin lambat
@@ -1681,11 +1700,11 @@ STR_1004_TOO_HIGH                                               :{WHITE}Terlalu 
 STR_ALREADY_LEVELLED                                            :{WHITE}... sudah rata
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tidak tersedia rel yang sesuai
 STR_1007_ALREADY_BUILT                                          :{WHITE}...sudah dibangun
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Harus memindahkan/membongkar rel kereta terlebih dahulu
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Harus membongkar rel  terlebih dahulu
 STR_ERR_CROSSING_ON_ONEWAY_ROAD                                 :{WHITE}Jalan satu arah atau ada yang menghalangi
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Pembangun Rel Kereta
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Konstruksi Kereta Rel Listrik
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Pembangunan Monorail/Rel tunggal
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Pembangunan Monorel
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Pembangunan Maglev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Pilih Jembatan Rel
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Tidak dapat membangun depo kereta disini...
@@ -1697,7 +1716,7 @@ STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Tidak da
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Arah Depo Kereta Api
 STR_1015_RAILROAD_CONSTRUCTION                                  :Pembangunan Rel
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Konstruksi Kereta Rel Listrik
-STR_1016_MONORAIL_CONSTRUCTION                                  :Pembangunan Monorail/Rel tunggal
+STR_1016_MONORAIL_CONSTRUCTION                                  :Pembangunan Monorel
 STR_1017_MAGLEV_CONSTRUCTION                                    :Pembangunan Maglev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Membangun jalur rel
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Membangun depo kereta (untuk membuat dan perbaikan kereta)
@@ -1940,8 +1959,8 @@ STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Peringka
 
 ############ range for rating starts
 STR_3035_APPALLING                                              :Mengerikan
-STR_3036_VERY_POOR                                              :Sangat Miskin
-STR_3037_POOR                                                   :Miskin
+STR_3036_VERY_POOR                                              :Sangat Jelek
+STR_3037_POOR                                                   :Jelek
 STR_3038_MEDIOCRE                                               :Sedang
 STR_3039_GOOD                                                   :Baik
 STR_303A_VERY_GOOD                                              :Sangat Baik
@@ -2033,10 +2052,10 @@ STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Berkas simpanan
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Berkas tidak terbaca
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Berkas tidak dapat ditulisi
 STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Pemeriksaan integritas data gagal
-STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Daftar dari "drive", direktori dan file/berkas permainan tersimpan
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Daftar drive, direktori dan berkas permainan tersimpan
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nama yang akan digunakan untuk menyimpan permainan
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Hapus nama simpanan permainan terpilih
-STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}SImpan permainan saat ini, gunakan nama yang terpilih
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Simpan permainan saat ini, gunakan nama yang terpilih
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Pilih Jenis Permainan Baru
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Pilih skenario(hijau), permainan yang telah di-set (biru), atau permainan baru secara acak
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Bangkitkan permainan baru secara acak
@@ -2081,7 +2100,7 @@ STR_4821_TOY_FACTORY                                            :Pabrik Mainan
 STR_4822_PLASTIC_FOUNTAINS                                      :Sumber Mata Air Plastik
 STR_4823_FIZZY_DRINK_FACTORY                                    :Pabrik Minuman berdesis
 STR_4824_BUBBLE_GENERATOR                                       :Pembangkit Gelembung
-STR_4825_TOFFEE_QUARRY                                          :Tambang "Toffee"/gula-gula
+STR_4825_TOFFEE_QUARRY                                          :Tambang gula-gula
 STR_4826_SUGAR_MINE                                             :Tambang Gula
 
 ############ range for requires starts
@@ -2122,6 +2141,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Kereta Api sedang di dalam terowongan
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Bus/truk sedang di dalam terowongan
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Bersinggungan dengan terowongan lain
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Terowongan boleh berakhir di luar peta
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Tidak dapat menyesuaikan kemiringan tanah di ujung terowongan
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Harus menghancurkan terowongan terlebih dahul
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Harus menghancurkan jembatan terlebih dahulu
@@ -2372,7 +2392,7 @@ STR_7052_COMPANY_VALUES                                         :{WHITE}Nilai Pe
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tabel Liga Perusahaan
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{COMPANYNUM}  '{STRING}'
-STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT} Perusahaan transportasi dalam masalah!
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Perusahaan transportasi bermasalah!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{STRING} akan dijual atau dinyatakan bangkrut kecuali jika dapat meningkatkan nilainya segera!
 STR_7058_PRESIDENT                                              :{BLACK}{PRESIDENTNAME}{}(Pimpinan)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT} Perusahaan transportasi bergabung!
@@ -2895,8 +2915,8 @@ STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Kereta A
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Membuat kereta baru
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Drag kereta ke sini untuk menjualnya
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Arahkan pandangan utama pada lokasi depo kereta
-STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Daftar pilihan kereta api - klik pada kereta untuk menampilkan informasi
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}MEmbuat kereta sesuai pilihan
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Daftar pilihan kereta - klik pada kereta untuk menampilkan informasi
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Membuat kereta sesuai pilihan
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Ubah nama jenis kereta api
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aksi kereta saat ini - klik disini untuk menjalankan/menghentikan kereta
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Tampilkan perintah kereta
@@ -3240,7 +3260,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nama Fil
 STR_NEWGRF_PALETTE                                              :{BLACK}Palet/warna: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
-STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Menerapkan perubahan pada permainan yang sedang berjalan dapat membuat OpenTTD menjadi macet.{}Apakah anda sangat yakin?
+STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Apakah anda yakin utk menerapkan perubahan pada permainan yang sedang berjalan?{}Ini dapat membuat OpenTTD berhenti mendadak
 
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Peringatan: {SILVER}{STRING}
@@ -3731,7 +3751,7 @@ STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Pilih se
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Tandai semua konten untuk diunduh
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Pilih pembaruan
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Pilih semua konten yang tersedia pembaruannya untuk diunduh
-STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Hapus semua pilihan
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Hps semua pilihan
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Tandai semua untuk tidak diunduh
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Unduh
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Mulai unduh konten terpilih
@@ -3739,7 +3759,7 @@ STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total u
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFO KONTEN
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Anda tidak memilih ini untuk diunduh
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Anda memilih ini untuk diunduh
-STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Dependensi ini terpilih untuk diunduh
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Keterkaitan ini terpilih untuk diunduh
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Sudah dimiliki
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Konten tidak diketahui dan tidak dapat diunduh di OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ini adalah penggantian dari  {STRING}
@@ -3765,6 +3785,6 @@ STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... hubu
 STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... berkas tak dapat ditulisi
 STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Tak dapat mengembangkan file terunduh
 
-STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Cari konten daring
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Cari konten
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Cari konten baru dan pembaruan untuk diunduh
 ########

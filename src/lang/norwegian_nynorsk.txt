@@ -833,7 +833,7 @@ STR_02E7                                                        :{BLACK}{SKIP}{S
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Vel køyreretning
 STR_02E9_DRIVE_ON_LEFT                                          :Venstrekøyring
 STR_02EA_DRIVE_ON_RIGHT                                         :Høgrekøyring
-STR_02EB_TOWN_NAMES                                             :{BLACK}Namn på by
+STR_02EB_TOWN_NAMES                                             :{BLACK}Namn på byar
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Vel stil på bynamn
 
@@ -1196,16 +1196,16 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Midtstilt
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Høgre
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Knipseradius for vindauge: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Knipseradius for vindauge: {ORANGE}deaktivert
-STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Byen sin vekseProporsjonfart: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Farten byar veks med: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Ingen
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Sakte
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normal
 STR_CONFIG_PATCHES_TOWN_GROWTH_FAST                             :Rask
 STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Særs rask
-STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporsjon på byar som vil vekse dobbelt så fort: {ORANGE}1 av {STRING}
-STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporsjon på byar som vil vekse dobbelt så fort: {ORANGE}Ingen
+STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel byar som vil vekse dobbelt så fort: {ORANGE}1 av {STRING}
+STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel byar som vil vekse dobbelt så fort: {ORANGE}Ingen
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Faktor for multiplikasjon av bystorleik: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Fjern absurde veg element under vegkonstruksjon
+STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Fjern absurde vegelement under vegkonstruksjon
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Grensesnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruksjon

@@ -1090,6 +1090,29 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Eightma
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Ountercay ockwiseclay
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Ockwiseclay
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Ethay eighthay evellay away atflay enarioscay apmay etsgay: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enableway erraformingtay ethay ilestay atway ethay apmay ordersbay: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Oneway orway oremay ilestay atway ethay orthernnay edgeway areway otnay emptyway
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Oneway orway oremay ilestay atway oneway ofway ethay edgesway isway otnay aterway
+
+# Start of map water border strings.
+# DON'T ADD OR REMOVE LINES HERE
+STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Andlay atway allway ordersbay
+STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Aterway atway orthnay-eastway orderbay onlyway
+STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Aterway atway outhsay-eastway orderbay onlyway
+STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Aterway atway orthnay-eastway andway outhsay-eastway ordersbay
+STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Aterway atway outhsay-estway orderbay onlyway
+STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Aterway atway orthnay-eastway andway outhsay-estway ordersbay
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Aterway atway outhsay-eastway andway outhsay-estway ordersbay
+STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Andlay onlyway atway orthnay-estway orderbay
+STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Aterway atway orthnay-estway orderbay onlyway
+STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Aterway atway orthnay-estway andway orthnay-eastway ordersbay
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Aterway atway orthnay-estway andway outhsay-eastway ordersbay
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Andlay onlyway atway outhsay-estway orderbay
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Aterway atway orthnay-estway andway outhsay-estway ordersbay
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Andlay onlyway atway outhsay-eastway orderbay
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Andlay onlyway atway orthnay-eastway orderbay
+STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Aterway atway allway ordersbay
+# End of map water border strings.
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Axmay ationstay eadspray: {ORANGE}{STRING} {RED}Arningway: Ighhay ettingsay owsslay amegay
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Ervicesay elicoptershay atway elipadshay automaticallyway: {ORANGE}{STRING}
@@ -2118,6 +2141,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Aintray inway unneltay
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Oadray ehiclevay inway unneltay
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Anotherway unneltay inway ethay ayway
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Unneltay ouldway endway outway ofway ethay apmay
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Unableway otay excavateway andlay orfay otherway endway ofway unneltay
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Ustmay emolishday unneltay irstfay
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Ustmay emolishday idgebray irstfay

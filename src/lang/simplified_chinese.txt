@@ -299,7 +299,7 @@ STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}新游戏
 STR_0141_LOAD_GAME                                              :{BLACK}读取存档
 STR_SINGLE_PLAYER                                               :{BLACK}单用户
-STR_MULTIPLAYER                                                 :{BLACK}多用户
+STR_MULTIPLAYER                                                 :{BLACK}联机游戏
 STR_SCENARIO_EDITOR                                             :{BLACK}场景编辑器
 
 STR_MAPSIZE                                                     :{BLACK}地图规模:
@@ -1022,7 +1022,7 @@ STR_CONFIG_PATCHES_ON                                           :打开
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}在状态栏中显示车辆速度：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}允许在斜坡和河岸上建设：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}允许在建筑、轨道下方改变地形（自动斜坡）： {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}允许更真实的水洼地：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}允许购买超长列车：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}打开仿真的列车加速模式：{ORANGE}{STRING}
@@ -1385,7 +1385,7 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}改变�
 
 ############ network gui strings
 
-STR_NETWORK_MULTIPLAYER                                         :{WHITE}多用户游戏
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}联机游戏
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}玩家名称：
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}其他玩家将通过这个名字来认识你
@@ -1441,10 +1441,10 @@ STR_NETWORK_GRF_MISMATCH                                        :{SILVER}NEWGRF 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}加入游戏
 
 
-STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}开始新的多用户游戏
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}开始新的联机游戏
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}游戏名称：
-STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}游戏名称将显示在其他玩家的多用户游戏界面中
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}游戏名称将显示在其他玩家的联机游戏界面中
 STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}为您的联机游戏起名
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}设置密码：
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}如果不希望你的游戏被外人加入，请设置一个密码
@@ -1470,7 +1470,7 @@ STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{S
 STR_NETWORK_START_GAME                                          :{BLACK}开始游戏
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}以指定场景或随机地图开始游戏
 STR_NETWORK_LOAD_GAME                                           :{BLACK}读取游戏
-STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}恢复以前保存的多用户游戏 (请确认所有玩家都连接正确)
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}恢复以前保存的联机游戏 (请确认所有玩家都连接正确)
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :任意
@@ -1511,7 +1511,7 @@ STR_NETWORK_LANG_GREEK                                          :希腊语
 STR_NETWORK_LANG_LATVIAN                                        :拉脱维亚语
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}多用户通道
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}联机游戏大厅
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}正在准备加入： {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}当前参与游戏的公司列表，您可以加入其中一个公司，或者在有空位的情况下，重建一个公司。
@@ -2122,6 +2122,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}隧道中有火车
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}隧道中有汽车
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}规划位置中有另一条隧道
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}隧道出口将超出地图边界
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}隧道出口的地形无法处理
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}必须先拆除隧道
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}必须先拆除桥梁
@@ -3683,6 +3684,22 @@ STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}关闭AI
 STR_AI_DEBUG_SERVER_ONLY                                        :{YELLOW}AI调试窗口只对服务器可用
 STR_AI_CONFIG_CAPTION                                           :{WHITE}AI 设置
 STR_AI_CHANGE                                                   :{BLACK}选择 AI
+STR_AI_CONFIGURE                                                :{BLACK}设定
+STR_AI_CHANGE_TIP                                               :{BLACK}装载另一个AI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}设定AI特征
+STR_AI_LIST_CAPTION                                             :{WHITE}可用 AI
+STR_AI_AILIST_TIP                                               :{BLACK}点击选择 AI
+STR_AI_ACCEPT                                                   :{BLACK}接受
+STR_AI_ACCEPT_TIP                                               :{BLACK}选择高亮的 AI
+STR_AI_CANCEL                                                   :{BLACK}取消
+STR_AI_CANCEL_TIP                                               :{BLACK}不修改本 AI
+STR_AI_CLOSE                                                    :{BLACK}关闭
+STR_AI_HUMAN_PLAYER                                             :玩家
+STR_AI_RANDOM_AI                                                :随机 AI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 特征
+STR_AI_AUTHOR                                                   :作者:
+STR_AI_VERSION                                                  :版本:
+STR_AI_DESCRIPTION                                              :描述:
 ########
 
 ############ town controlled noise level
@@ -3702,6 +3719,7 @@ STR_CONTENT_TYPE_SCENARIO                                       :场景
 STR_CONTENT_TYPE_HEIGHTMAP                                      :高度图
 STR_CONTENT_TITLE                                               :{WHITE}下载内容
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}类型
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}扩展包类型
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}名称
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}内容名称
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}全选
