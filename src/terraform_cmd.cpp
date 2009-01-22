@@ -240,21 +240,21 @@ CommandCost CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 	ts.modheight_count = ts.tile_table_count = 0;
 
 	/* Compute the costs and the terraforming result in a model of the landscape */
-	if ((p1 & SLOPE_W) != 0) {
+	if ((p1 & SLOPE_W) != 0 && tile + TileDiffXY(1, 0) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(1, 0);
 		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
 		if (CmdFailed(cost)) return cost;
 		total_cost.AddCost(cost);
 	}
 
-	if ((p1 & SLOPE_S) != 0) {
+	if ((p1 & SLOPE_S) != 0 && tile + TileDiffXY(1, 1) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(1, 1);
 		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
 		if (CmdFailed(cost)) return cost;
 		total_cost.AddCost(cost);
 	}
 
-	if ((p1 & SLOPE_E) != 0) {
+	if ((p1 & SLOPE_E) != 0 && tile + TileDiffXY(0, 1) < MapSize()) {
 		TileIndex t = tile + TileDiffXY(0, 1);
 		CommandCost cost = TerraformTileHeight(&ts, t, TileHeight(t) + direction);
 		if (CmdFailed(cost)) return cost;
