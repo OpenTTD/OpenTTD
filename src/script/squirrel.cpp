@@ -194,7 +194,7 @@ bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT
 	if (ret != NULL) sq_getstackobj(vm, -1, ret);
 	/* Reset the top, but don't do so for the AI main function, as we need
 	 *  a correct stack when resuming. */
-	if (this->vm->_suspended == 0) sq_settop(this->vm, top);
+	if (suspend == -1) sq_settop(this->vm, top);
 
 	return this->vm->_suspended != 0;
 }
