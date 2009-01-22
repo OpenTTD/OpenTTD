@@ -8,6 +8,7 @@
 #include "../debug.h"
 #include "../strings_type.h"
 #include "../string_func.h"
+#include "../settings_type.h"
 
 #include "table/strings.h"
 
@@ -189,6 +190,8 @@ static void InitLoading(LoadgameState *ls)
 	memset(ls->buffer, 0, BUFFER_SIZE);
 
 	_bump_assert_value = 0;
+
+	_settings_game.construction.freeform_edges = false; // disable so we can convert map array (SetTileType is still used)
 }
 
 
