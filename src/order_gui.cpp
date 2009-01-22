@@ -636,7 +636,7 @@ public:
 		this->selected_order = -1;
 		this->vehicle = v;
 
-		if (_settings_client.gui.quick_goto) {
+		if (_settings_client.gui.quick_goto && v->owner == _local_company) {
 			/* If there are less than 2 station, make Go To active. */
 			int station_orders = 0;
 			const Order *order;
