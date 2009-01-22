@@ -104,7 +104,7 @@ struct Aircraft : public Vehicle {
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 16; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 16; }
-	Money GetRunningCost() const { return AircraftVehInfo(this->engine_type)->running_cost * _price.aircraft_running; }
+	Money GetRunningCost() const;
 	bool IsInDepot() const { return (this->vehstatus & VS_HIDDEN) != 0 && IsHangarTile(this->tile); }
 	void Tick();
 	void OnNewDay();

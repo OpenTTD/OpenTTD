@@ -1999,8 +1999,7 @@ void RoadVehicle::OnNewDay()
 
 	if (this->running_ticks == 0) return;
 
-	const RoadVehicleInfo *rvi = RoadVehInfo(this->engine_type);
-	CommandCost cost(EXPENSES_ROADVEH_RUN, rvi->running_cost * GetPriceByIndex(rvi->running_cost_class) * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
+	CommandCost cost(EXPENSES_ROADVEH_RUN, this->GetRunningCost() * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
 
 	this->profit_this_year -= cost.GetCost();
 	this->running_ticks = 0;

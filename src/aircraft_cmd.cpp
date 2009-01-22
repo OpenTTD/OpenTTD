@@ -629,6 +629,11 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 	}
 }
 
+Money Aircraft::GetRunningCost() const
+{
+	return GetVehicleProperty(this, 0x0E, AircraftVehInfo(this->engine_type)->running_cost) * _price.aircraft_running;
+}
+
 void Aircraft::OnNewDay()
 {
 	if (!IsNormalAircraft(this)) return;
@@ -643,7 +648,7 @@ void Aircraft::OnNewDay()
 
 	if (this->running_ticks == 0) return;
 
-	CommandCost cost(EXPENSES_AIRCRAFT_RUN, GetVehicleProperty(this, 0x0E, AircraftVehInfo(this->engine_type)->running_cost) * _price.aircraft_running * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
+	CommandCost cost(EXPENSES_AIRCRAFT_RUN, this->GetRunningCost() * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
 
 	this->profit_this_year -= cost.GetCost();
 	this->running_ticks = 0;

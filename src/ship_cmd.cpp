@@ -159,6 +159,11 @@ static void CheckIfShipNeedsService(Vehicle *v)
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 }
 
+Money Ship::GetRunningCost() const
+{
+	return GetVehicleProperty(this, 0x0F, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running;
+}
+
 void Ship::OnNewDay()
 {
 	if ((++this->day_counter & 7) == 0)
@@ -172,7 +177,7 @@ void Ship::OnNewDay()
 
 	if (this->running_ticks == 0) return;
 
-	CommandCost cost(EXPENSES_SHIP_RUN, GetVehicleProperty(this, 0x0F, ShipVehInfo(this->engine_type)->running_cost) * _price.ship_running * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
+	CommandCost cost(EXPENSES_SHIP_RUN, this->GetRunningCost() * this->running_ticks / (DAYS_IN_YEAR * DAY_TICKS));
 
 	this->profit_this_year -= cost.GetCost();
 	this->running_ticks = 0;

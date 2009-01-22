@@ -38,7 +38,7 @@ struct Ship: public Vehicle {
 	SpriteID GetImage(Direction direction) const;
 	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }
 	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 32; }
-	Money GetRunningCost() const { return ShipVehInfo(this->engine_type)->running_cost * _price.ship_running; }
+	Money GetRunningCost() const;
 	bool IsInDepot() const { return this->u.ship.state == TRACK_BIT_DEPOT; }
 	void Tick();
 	void OnNewDay();
