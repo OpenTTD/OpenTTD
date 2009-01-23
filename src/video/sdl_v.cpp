@@ -43,9 +43,8 @@ void VideoDriver_SDL::MakeDirty(int left, int top, int width, int height)
 static void UpdatePalette(uint start, uint count)
 {
 	SDL_Color pal[256];
-	uint i;
 
-	for (i = 0; i != count; i++) {
+	for (uint i = 0; i != count; i++) {
 		pal[i].r = _cur_palette[start + i].r;
 		pal[i].g = _cur_palette[start + i].g;
 		pal[i].b = _cur_palette[start + i].b;
@@ -87,12 +86,13 @@ static void CheckPaletteAnim()
 static void DrawSurfaceToScreen()
 {
 	int n = _num_dirty_rects;
-	if (n != 0) {
-		_num_dirty_rects = 0;
-		if (n > MAX_DIRTY_RECTS)
-			SDL_CALL SDL_UpdateRect(_sdl_screen, 0, 0, 0, 0);
-		else
-			SDL_CALL SDL_UpdateRects(_sdl_screen, n, _dirty_rects);
+	if (n == 0) return;
+
+	_num_dirty_rects = 0;
+	if (n > MAX_DIRTY_RECTS) {
+		SDL_CALL SDL_UpdateRect(_sdl_screen, 0, 0, 0, 0);
+	} else {
+		SDL_CALL SDL_UpdateRects(_sdl_screen, n, _dirty_rects);
 	}
 }
 
@@ -148,22 +148,18 @@ static void GetVideoModes()
 
 static void GetAvailableVideoMode(int *w, int *h)
 {
-	int i;
-	int best;
-	uint delta;
-
-	// all modes available?
+	/* All modes available? */
 	if (_all_modes || _num_resolutions == 0) return;
 
-	// is the wanted mode among the available modes?
-	for (i = 0; i != _num_resolutions; i++) {
+	/* Is the wanted mode among the available modes? */
+	for (int i = 0; i != _num_resolutions; i++) {
 		if (*w == _resolutions[i].width && *h == _resolutions[i].height) return;
 	}
 
-	// use the closest possible resolution
-	best = 0;
-	delta = abs((_resolutions[0].width - *w) * (_resolutions[0].height - *h));
-	for (i = 1; i != _num_resolutions; ++i) {
+	/* Use the closest possible resolution */
+	int best = 0;
+	uint delta = abs((_resolutions[0].width - *w) * (_resolutions[0].height - *h));
+	for (int i = 1; i != _num_resolutions; ++i) {
 		uint newdelta = abs((_resolutions[i].width - *w) * (_resolutions[i].height - *h));
 		if (newdelta < delta) {
 			best = i;
@@ -208,7 +204,7 @@ static bool CreateMainSurface(int w, int h)
 		SDL_CALL SDL_FreeSurface(icon);
 	}
 
-	// DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK
+	/* DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK */
 	newscreen = SDL_CALL SDL_SetVideoMode(w, h, bpp, SDL_SWSURFACE | SDL_HWPALETTE | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
 	if (newscreen == NULL) {
 		DEBUG(driver, 0, "SDL: Couldn't allocate a window to draw on");
@@ -303,7 +299,7 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 		}
 	}
 
-	// check scancode for BACKQUOTE key, because we want the key left of "1", not anything else (on non-US keyboards)
+	/* check scancode for BACKQUOTE key, because we want the key left of "1", not anything else (on non-US keyboards) */
 #if defined(WIN32) || defined(__OS2__)
 	if (sym->scancode == 41) key = WKC_BACKQUOTE;
 #elif defined(__APPLE__)
@@ -321,16 +317,12 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	if (sym->scancode == 49) key = WKC_BACKQUOTE;
 #endif
 
-	// META are the command keys on mac
+	/* META are the command keys on mac */
 	if (sym->mod & KMOD_META)  key |= WKC_META;
 	if (sym->mod & KMOD_SHIFT) key |= WKC_SHIFT;
 	if (sym->mod & KMOD_CTRL)  key |= WKC_CTRL;
 	if (sym->mod & KMOD_ALT)   key |= WKC_ALT;
-	// these two lines really help porting hotkey combos. Uncomment to use -- Bjarni
-#if 0
-	DEBUG(driver, 0, "Scancode character pressed %u", sym->scancode);
-	DEBUG(driver, 0, "Unicode character pressed %u", sym->unicode);
-#endif
+
 	return (key << 16) + sym->unicode;
 }
 
@@ -408,9 +400,11 @@ static int PollEvent()
 			}
 			break;
 
-		case SDL_QUIT: HandleExitGameRequest(); break;
+		case SDL_QUIT:
+			HandleExitGameRequest();
+			break;
 
-		case SDL_KEYDOWN: /* Toggle full-screen on ALT + ENTER/F */
+		case SDL_KEYDOWN: // Toggle full-screen on ALT + ENTER/F
 			if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_META)) &&
 					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 				ToggleFullScreen(!_fullscreen);
@@ -496,7 +490,7 @@ void VideoDriver_SDL::MainLoop()
 			_ctrl_pressed  = !!(mod & KMOD_CTRL);
 			_shift_pressed = !!(mod & KMOD_SHIFT);
 
-			// determine which directional keys are down
+			/* determine which directional keys are down */
 			_dirkeys =
 				(keys[SDLK_LEFT]  ? 1 : 0) |
 				(keys[SDLK_UP]    ? 2 : 0) |
@@ -534,7 +528,7 @@ bool VideoDriver_SDL::ToggleFullscreen(bool fullscreen)
 	_fullscreen = fullscreen;
 	GetVideoModes(); // get the list of available video modes
 	if (_num_resolutions == 0 || !this->ChangeResolution(_cur_resolution.width, _cur_resolution.height)) {
-		// switching resolution failed, put back full_screen to original status
+		/* switching resolution failed, put back full_screen to original status */
 		_fullscreen ^= true;
 		return false;
 	}
