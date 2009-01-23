@@ -30,6 +30,7 @@
 #include "tilehighlight_func.h"
 #include "core/bitmath_func.hpp"
 #include "network/network_func.h"
+#include "window_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -60,6 +61,10 @@ void InitializeOldNames();
 
 void InitializeGame(uint size_x, uint size_y, bool reset_date)
 {
+	/* Make sure there isn't any window that can influence anything
+	 * related to the new game we're about to start/load. */
+	UnInitWindowSystem();
+
 	AllocateMap(size_x, size_y);
 
 	SetObjectToPlace(SPR_CURSOR_ZZZ, PAL_NONE, VHM_NONE, WC_MAIN_WINDOW, 0);
