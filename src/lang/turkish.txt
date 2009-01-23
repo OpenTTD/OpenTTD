@@ -1025,7 +1025,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Binalar
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Daha gerçekçi kapsama alanı: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Şehrin yollarını, köprülerini yıkma izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Çok uzun trenlere izin ver: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Gerçekçi tren hızlanması: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Tren ve gemilerin 90 derece dönmesini yasakla: {ORANGE}{STRING} {LTBLUE} (NPF gerektirir)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yan yana yapılan tren istasyonlarını birleştir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Doğrudan bitişik olmayan istasyonları birleştirme izni: {ORANGE}{STRING}

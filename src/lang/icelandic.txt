@@ -1011,7 +1011,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Leyfa l
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Raunverulegri stærð svæðis sem stöðvar ná yfir: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Leyfa meiri eyðingu vega, brúa, gangna o.s.frv. í eigu bæjar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Leyfa mjög langar lestir: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Raunveruleg hröðun lesta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Banna lestum og skipum að taka 90°  beygjur: {ORANGE}{STRING} {LTBLUE} (þarfnast NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Sameina lestarstöðvar sem byggðar eru samsíða: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Nota endurbættan algóriþma við hleðslu: {ORANGE}{STRING}

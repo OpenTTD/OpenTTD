@@ -1067,7 +1067,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Dovoli 
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dovoli bolj resnični območni zajem postaj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Dovoli odstanitev mestnih cest, mostov, itd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Omogoči gradnjo zelo dolgih vlakov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Omogoči bolj resnične pospeške vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prepreči vlakom in ladjam 90-stopinjske zavoje: {ORANGE}{STRING} {LTBLUE} (potrebuje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Združi železniške postaje, ki si stojijo blizu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dovoli združevanje postaj, ki niso v dotiku: {ORANGE}{STRING}

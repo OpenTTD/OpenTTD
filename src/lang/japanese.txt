@@ -1018,7 +1018,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}建物�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}より現実的な受入れ地域を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}より多くの町有の道路／橋などの破壊を許容：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}超長型列車の作成を許容：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}列車の現実的な加速を使用：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}列車／船舶が直角に曲がらないようにする：{ORANGE}{STRING}{LTBLUE}（NPF/YAPFが必要）
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}隣接した駅を一つの駅に統合：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}改良された積載アルゴリズムを使用：{ORANGE}{STRING}

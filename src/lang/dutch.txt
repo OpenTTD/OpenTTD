@@ -1025,7 +1025,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Omgevin
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Gebruik realistisch handelsgebied: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Sta verwijderen van meer stedelijke wegen, bruggen, tunnels, enz. toe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Zeer lange treinen toestaan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbied schepen en treinen om 90 graden te draaien: {ORANGE}{STRING} {LTBLUE} (Vereist NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Niet direct aaneensluitende stations samenvoegen toestaan: {ORANGE}{STRING}

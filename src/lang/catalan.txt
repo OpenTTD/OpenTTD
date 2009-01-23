@@ -1025,7 +1025,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permet 
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permet un tamany més real de l'àrea d'influència: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permet l'esborrat de propietats de les poblacions: carreteres, ponts, túnels, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Activa la construcció de trens molt llargs: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Activa l'acceleració realista per als trens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibeix fer girs de 90 graus als trens i vaixells: {ORANGE}{STRING} {LTBLUE} (necessita NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ajunta estacions de tren fetes al costat d'una altra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permet ajuntar estacions no annexes: {ORANGE}{STRING}

@@ -990,7 +990,6 @@ STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permesu
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permesu pli realgrandaj kaptoregionoj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permesu forigon de pli da urbaj vojoj, pontoj ktp: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permesu konstrui tre longajn trajnojn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permesu realecan rapidigon por trajnoj: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Trajnoj kaj ŝipoj ne ort-turniĝu: {ORANGE}{STRING} {LTBLUE} (bezonas NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ligu stacidomojn konstruatajn unu apud la alia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Uzu plibonigitan ŝarĝalgoritmon: {ORANGE}{STRING}

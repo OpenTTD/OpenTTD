@@ -1025,7 +1025,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Salli m
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Kaupungin omistamien teiden, siltojen, jne. raivaaminen sallittu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erittäin pitkien junien rakentaminen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Junat kiihdyttävät realistisesti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Junat ja laivat: ei 90-asteen käännöksiä: {ORANGE}{STRING} {LTBLUE} (vaatii: NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli ei-vierekkäisten asemien yhdistäminen: {ORANGE}{STRING}

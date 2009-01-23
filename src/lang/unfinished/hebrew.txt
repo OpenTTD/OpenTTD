@@ -1003,7 +1003,6 @@ STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}אפש�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}אפשר לאזורי אגירת מים להיראות יותר ריאליסטיים: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}אפשר הסרה של יותר כבישים גשרים וכו' שבבעלות עיירות: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}אפשר בנייה של רכבות ארוכות מאד: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}אפשר האצה ריאליסטית לרכבות: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}אפשר חיבור של תחנות שנבנות ליד תחנה קיימת: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}השתמש באלגוריתם טעינה משופר: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}טען כלי רכב בהדרגה: {ORANGE}{STRING}

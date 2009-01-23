@@ -1024,7 +1024,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Laattoe
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Laattoe meer realisties grootte opvanggebied: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Toelaat verwydering van meer stad-besite paaie, bruge, ens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Ontsper gebou van baie lang treine: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Ontsper realistiese versnelling vir treine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbied triene en skepe om 90 graad draaie te maak: {ORANGE}{STRING} {LTBLUE} (benodig NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}sluit aan trein stasies gebou naby mekaar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Laat toe dat stasies lanks mekaar gebind kan word: {ORANGE}{STRING}

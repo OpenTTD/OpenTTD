@@ -1027,7 +1027,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Consent
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Consenti aree di copertura più realistiche: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade, ponti, etc. delle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impedisci a treni e navi di curvare a 90°: {ORANGE}{STRING} {LTBLUE} (non funziona con NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unisci le stazioni costruite una accanto all'altra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Consenti di unire stazioni non direttamente adiacenti: {ORANGE}{STRING}

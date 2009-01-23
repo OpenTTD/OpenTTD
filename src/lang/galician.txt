@@ -1017,7 +1017,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permitir áreas de captura máis realistas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permiti-la eliminación de máis estradas, etc... das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permiti-la construcción de trens moi largos: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Habilita-la aceleración realista nos trens: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos xirar 90 graos: {ORANGE}{STRING} {LTBLUE} (require NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}

@@ -1026,7 +1026,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Тер�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Разрушаване на повече градска собственост: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Много дълги влакове: {ORANGE}{STRING.p}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Реалистично ускоряване на влаковете: {ORANGE}{STRING.n}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Забрана 90 градусови завои: {ORANGE}{STRING.f}{LTBLUE} (трябва NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Обединяване на гари построени една до друга: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Позволено е присъединяването на станции, които не се допират: {ORANGE}{STRING}

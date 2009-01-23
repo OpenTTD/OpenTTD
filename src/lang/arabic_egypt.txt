@@ -1026,7 +1026,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}الس�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}السماح ببناء قطارات طويلة جدا{ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}تفعيل التسارع الواقعي للقطارات: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة :  {ORANGE}{STRING} {LTBLUE} (not with NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}

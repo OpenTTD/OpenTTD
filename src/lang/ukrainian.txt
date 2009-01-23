@@ -1150,7 +1150,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Мін�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Великий район обслуговування: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Переміщувати дороги, мости та іншу власність міста: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Будувати дуже довгі поїзди: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Реалістичне прискорення поїздів: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Поїздам і кораблям не повертати на 90 град.: {ORANGE}{STRING} {LTBLUE} (треба NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Будувати суміжні залізничні станції: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Дозволити об'єднувати не безпосередньо суміжні станції: {ORANGE}{STRING}

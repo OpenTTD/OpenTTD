@@ -1025,7 +1025,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Allowwa
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Allowway oremay ealisticallyray izedsay atchmentcay areasway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Allowway emovalray ofway oremay owntay-ownedway oadsray, idgesbray, etcway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Enableway uildingbay eryvay onglay ainstray: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Enableway ealisticray accelerationway orfay ainstray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Orbidfay ainstray andway ipsshay otay akemay 90 egday urnstay: {ORANGE}{STRING} {LTBLUE} (equiresray NPFay)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Oinjay aintray ationsstay uiltbay extnay otay eachway otherway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Allowway otay oinjay ationsstay otnay irectlyday adjacentway: {ORANGE}{STRING}

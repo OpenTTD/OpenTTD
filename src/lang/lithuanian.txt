@@ -1045,7 +1045,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Leisti 
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Kurti tikroviškesnio dydžio mikrorajonus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Leisti griauti miestams priklausančius tiltus, kelius ir kt.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Leisti statyti ypac ilgus traukinius: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistiska traukiniu akseleracija: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Drausti traukiniams/laivams suktis 90 laips.kampu: {ORANGE}{STRING} {LTBLUE} (reik. NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Leisti sujungti greta pastatytas stoteles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Naudoti patobulinta krovimo algoritma: {ORANGE}{STRING}

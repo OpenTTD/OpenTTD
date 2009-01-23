@@ -1011,7 +1011,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Caniat�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Caniatáu ardaloedd dalgylch mwy realistig eu maint: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Caniatáu chwalu ffyrdd, pontydd ayb. o eiddo trefi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Galluogi adeiladu trenau hir iawn: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Galluogi cyflymu realistig ar gyfer trenau: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Rhwystro trenau a llongau rhag troi 90 gradd: {ORANGE}{STRING} {LTBLUE} (angen NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Uno gorsafoedd trên sydd drws nesaf i'w gilydd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Defnyddio'r algorithm llwytho gwell: {ORANGE}{STRING}

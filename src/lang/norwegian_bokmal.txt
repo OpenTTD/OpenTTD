@@ -1024,7 +1024,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Tillat 
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Mer realistisk størrelse på oppfangingsområder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillat riving av industri, mer vei, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Tillat bygging av veldig lange tog : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistisk akslerasjon for tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forby tog og skip å gjøre 90-graders svinger: {ORANGE}{STRING} {LTBLUE} (trenger NGR)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Slå sammen stasjoner som bygges ved siden av hverandre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillat sammenslåing av stasjoner som ikke ligger rett ved siden av hverandre {ORANGE}{STRING}

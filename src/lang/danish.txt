@@ -1024,7 +1024,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Tillad 
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Tillad mere realistisk størrelse på stationernes opland: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillad nedriving af industribygninger, flere veje, osv: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Aktiver bygning af meget lange tog: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktiver realistisk acceleration af tog: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbyd skibe og tog at dreje 90 grader: {ORANGE}{STRING} {LTBLUE} (skal bruge NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Tillad sammenkædning af stationer der ikke ligger direkte op ad hinanden: {ORANGE}{STRING}

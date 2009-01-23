@@ -1025,7 +1025,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}允许�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}允许购买超长列车：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}打开仿真的列车加速模式：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING} {LTBLUE} (需要 NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}将相邻的火车站进行整合：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}允许非毗邻站台合并：{ORANGE}{STRING}

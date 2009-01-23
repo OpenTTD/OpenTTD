@@ -1026,7 +1026,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permitir tamaño del área de captación más realista: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir demoler más propiedades de poblaciones: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir la construcción de trenes muy largos: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Activar aceleración realista de trenes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibir a trenes/barcos giros de 90 grados: {ORANGE}{STRING} {LTBLUE} (requiere NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unir estaciones de tren unas junto a otras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permitir unir estaciones no adyacentes: {ORANGE}{STRING}

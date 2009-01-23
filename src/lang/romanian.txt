@@ -1025,7 +1025,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permite
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permite arii de cuprindere mai realistice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permite demolarea unui nr. mai mare constructii: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permite constructia de trenuri foarte lungi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Permite acceleraţie realistică pentru trenuri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interzice trenurilor si navelor sa faca intoarceri de 90 de grade: {ORANGE}{STRING} {LTBLUE} (necesita NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Uneşte gările alăturate: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permite contopirea (unirea) staţiilor neînvecinate: {ORANGE}{STRING}

@@ -1019,7 +1019,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dimensionamento mais realista de áreas de abrangência: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir remoção de mais estradas, pontes, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de comboios muito longos: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Activar aceleração realista para comboios: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir comboios e barcos de virar a 90 graus: {ORANGE}{STRING} {LTBLUE} (req. NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Juntar estações ferroviárias construídas pegadas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}

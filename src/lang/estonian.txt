@@ -1063,7 +1063,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Võimal
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Võimalda reaalsemaid veekogu alasid: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Luba linnateede, -sildade, -tunnelite jne lammutamine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Lubatakse väga pikkasid ronge ehitatada: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktiveeri realistlik rongide kiirendamine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Rongidel ja laevadel keelatakse 90 kraadised pöörded: {ORANGE}{STRING} {LTBLUE} (vajab NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Ühenda üksteise vastu ehitatud jaamad kokku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Kasuta parandatud laadimisalgoritmi: {ORANGE}{STRING}

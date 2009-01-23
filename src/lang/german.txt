@@ -1026,7 +1026,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Landsch
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Stationsarten haben verschieden große Einzugsgebiete: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erlaube das Bauen von sehr langen Zügen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistische Zugbeschleunigung aktivieren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zügen und Schiffen 90° Kurven verbieten: {ORANGE}{STRING} {LTBLUE} (nicht mit NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Bahnhöfe vereinigen, die nebeneinander gebaut werden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Erlaubt nicht direkt benachbarte Stationen zu verbinden: {ORANGE}{STRING}

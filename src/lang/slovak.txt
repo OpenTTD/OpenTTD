@@ -1088,7 +1088,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Povolit
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit realistickejšiu velkost oblasti pokrytia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Umožnit odstránenie viacerých mestských ciest, mostov, ... : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Umožnit stavbu dlhých vlakov: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Zapnut realnu akceleraciu vlakov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakom a lodiam otácanie o 90 st.: {ORANGE}{STRING} {LTBLUE} (vyžaduje NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Umoznit spajanie stanic: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Povoliť spájať stanice nepriamo hraničiace: {ORANGE}{STRING}

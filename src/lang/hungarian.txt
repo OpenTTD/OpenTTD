@@ -1091,7 +1091,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Építm
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett befogadókörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, stb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Vonatok valósághű gyorsulása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90°-os kanyart: {ORANGE}{STRING} {LTBLUE}(nem NTP-vel)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}

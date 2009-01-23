@@ -1024,7 +1024,6 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}允許�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}按車站種類改變收集範圍：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}可移除更多城鎮所有的道路、橋樑等：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}提高列車長度限制：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}真實的列車加速：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}禁止列車直角轉向：{ORANGE}{STRING} {LTBLUE} (NTP 模式下無法使用)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}合併建在一起的車站：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}使用改善後的裝載演算法：{ORANGE}{STRING}
