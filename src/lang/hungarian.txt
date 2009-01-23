@@ -3593,6 +3593,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Sima ter
 STR_SMALLMAP_CENTER                                             :{BLACK}A kistérkép közepét a jelenlegi helyre állítja
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Térkép szélei:
+STR_NORTHWEST                                                   :{BLACK}Északnyugat
+STR_NORTHEAST                                                   :{BLACK}Északkelet
+STR_SOUTHEAST                                                   :{BLACK}Délkelet
+STR_SOUTHWEST                                                   :{BLACK}Délnyugat
+STR_BORDER_FREEFORM                                             :{BLACK}Szárazföld
+STR_BORDER_WATER                                                :{BLACK}Víz
+STR_BORDER_RANDOM                                               :{BLACK}Véletlen
+STR_BORDER_RANDOMIZE                                            :{BLACK}Véletlen
+STR_BORDER_MANUAL                                               :{BLACK}Kézi
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Kicsi
 STR_CITY_AIRPORT                                                :{BLACK}Városi
@@ -3829,7 +3841,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Típus
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}A tartalom típusa
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Név
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}A tartalom neve
-STR_CONTENT_MATRIX_TIP                                          :{BLACK}Kattints a sorra a részletek megjelenítéséhez{}Kattints a jelölőnégyzetbe letöltésre való kijelöléshez
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Kattints a sorra a részletek megjelenítéséhez. Kattints a jelölőnégyzetbe letöltésre való kijelöléshez
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Összes kijelölése
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Az összes elérhető tartalom kijelölése letöltéshez
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Frissítések kijelölése
@@ -3870,4 +3882,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nem sike
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Letölthető tartalmak
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Új és frissített tartalmak megtekintése és letöltése
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Keresd a hiányzó tartalmat online
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Ellenőrizd, hogy letölthető-e a hiányzó tartalom
 ########

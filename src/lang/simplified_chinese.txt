@@ -1091,10 +1091,6 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}由水面场景得到的高度：{ORANGE}{STRING}
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}站台最大距离：{ORANGE}{STRING} {RED}警告：站台过大会影响速度
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}直升机在降落平台自动保养：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}将景观美化工具栏与铁路/公路/船只/机场工具栏连接：{ORANGE}{STRING}
@@ -3488,6 +3484,16 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}地面�
 STR_SMALLMAP_CENTER                                             :{BLACK}设置小地图的中心位置
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}地图边缘:
+STR_NORTHWEST                                                   :{BLACK}西北
+STR_NORTHEAST                                                   :{BLACK}东北
+STR_SOUTHWEST                                                   :{BLACK}东南
+STR_BORDER_WATER                                                :{BLACK}水面
+STR_BORDER_RANDOM                                               :{BLACK}随机
+STR_BORDER_RANDOMIZE                                            :{BLACK}随机
+STR_BORDER_MANUAL                                               :{BLACK}手动
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}小型机场
 STR_CITY_AIRPORT                                                :{BLACK}城市机场
@@ -3694,6 +3700,7 @@ STR_AI_ACCEPT_TIP                                               :{BLACK}选择�
 STR_AI_CANCEL                                                   :{BLACK}取消
 STR_AI_CANCEL_TIP                                               :{BLACK}不修改本 AI
 STR_AI_CLOSE                                                    :{BLACK}关闭
+STR_AI_RESET                                                    :{BLACK}重设
 STR_AI_HUMAN_PLAYER                                             :玩家
 STR_AI_RANDOM_AI                                                :随机 AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}AI 特征

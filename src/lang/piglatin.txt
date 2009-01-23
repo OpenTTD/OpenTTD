@@ -3490,6 +3490,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Eighthay
 STR_SMALLMAP_CENTER                                             :{BLACK}Entercay ethay allmapsmay onway ethay urrentcay ositionpay
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Apmay edgesway:
+STR_NORTHWEST                                                   :{BLACK}Orthwestnay
+STR_NORTHEAST                                                   :{BLACK}Ortheastnay
+STR_SOUTHEAST                                                   :{BLACK}Outheastsay
+STR_SOUTHWEST                                                   :{BLACK}Outhwestsay
+STR_BORDER_FREEFORM                                             :{BLACK}Eeformfray
+STR_BORDER_WATER                                                :{BLACK}Aterway
+STR_BORDER_RANDOM                                               :{BLACK}Andomray
+STR_BORDER_RANDOMIZE                                            :{BLACK}Andomray
+STR_BORDER_MANUAL                                               :{BLACK}Anualmay
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Allsmay
 STR_CITY_AIRPORT                                                :{BLACK}Itycay
@@ -3767,4 +3779,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Ouldcay 
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Eckchay onlineway ontentcay
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Eckchay orfay ewnay andway updatedway ontentcay otay ownloadday
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Indfay issingmay ontentcay onlineway
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Eckchay etherwhay ethay issingmay ontentcay ancay ebay oundfay onlineway
 ########

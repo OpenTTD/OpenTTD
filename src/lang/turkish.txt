@@ -1090,6 +1090,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Yüksek
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Saat yönünün tersi
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Düzlük bir senaryonun yükseklik seviyesi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Harita sınırlarında kareleri şekillendirmeye izin ver: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Kuzey kenarda bir veya daha fazla kare boş değil
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Kenarlardan birinde bir veya daha fazla kare su değil
 
@@ -3488,6 +3489,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Düzlü�
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Küçük haritayı burada ortala
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Harita kenarları:
+STR_NORTHWEST                                                   :{BLACK}Kuzeybatı
+STR_NORTHEAST                                                   :{BLACK}Kuzeydoğu
+STR_SOUTHEAST                                                   :{BLACK}Güneydoğu
+STR_SOUTHWEST                                                   :{BLACK}Güneybatı
+STR_BORDER_FREEFORM                                             :{BLACK}Serbest
+STR_BORDER_WATER                                                :{BLACK}Su
+STR_BORDER_RANDOM                                               :{BLACK}Rastgele
+STR_BORDER_RANDOMIZE                                            :{BLACK}Rastgele
+STR_BORDER_MANUAL                                               :{BLACK}El ile
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Küçük

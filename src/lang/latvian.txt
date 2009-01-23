@@ -480,10 +480,13 @@ STR_AGE                                                         :{COMMA} gad{P s
 STR_AGE_RED                                                     :{RED}{COMMA} gad{P s i u} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Autotransports
-STR_019D_AIRCRAFT                                               :Lidaparāts
-STR_019E_SHIP                                                   :Kuģis
 STR_019F_TRAIN                                                  :Vilciens
+STR_019C_ROAD_VEHICLE                                           :Autotransports
+STR_019E_SHIP                                                   :Kuģis
+STR_019D_AIRCRAFT                                               :Lidaparāts
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} pamazām noveco
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} ir kļuvis ļoti vecs
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} ir kļuvis ļoti vecs un tam steidzami nepieciešama nomaiņa
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Zemes laukuma informācija
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Izmaksas nolīdzināšanai: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Izmaksas nolīdzināšanai: {RED}{CURRENCY}
@@ -992,10 +995,17 @@ STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nevar da
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nevar kopēt rīkojumu sarakstu...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Dalīto rīkojumu beigas - -
 
+STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nevar atrast ceļu, lai turpinātu
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} ir apmaldījies
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} iepriekšējā gada ienākumi bija {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Eiropas naudas apvienība!{}{}Eiro ir ieviests, kā vienīgā valūta jūsu valstī!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_VEHICLE_HAS_TOO_FEW_ORDERS                                  :{WHITE}{VEHICLE} sarakstā ir pārāk maz pieturvietu
+STR_VEHICLE_HAS_VOID_ORDER                                      :{WHITE}{VEHICLE} ir nederīgs maršruts
+STR_VEHICLE_HAS_DUPLICATE_ENTRY                                 :{WHITE}{VEHICLE} ir divi vienādi maršruti
+STR_VEHICLE_HAS_INVALID_ENTRY                                   :{WHITE}{VEHICLE} maršrutā ir nefunkcionējoša pieturvieta
 # end of order system
 
 STR_AUTOREPLACE_NOTHING_TO_DO                                   :{WHITE}Automātiskā aizvietošana/atjaunošana neatļauta.
@@ -1099,6 +1109,11 @@ STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_COMMAND                  :Kommand-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_CONTROL                  :Ctrl-klik
 STR_CONFIG_PATCHES_RIGHT_MOUSE_BTN_EMU_OFF                      :Izslēgta
 
+
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_LONG               :garšs (31-ais Dec.2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_SHORT              :īss (31-12-2008)
+STR_CONFIG_PATCHES_DATE_FORMAT_IN_SAVE_NAMES_ISO                :ISO (2008-12-31)
+
 STR_CONFIG_PATCHES_PAUSE_ON_NEW_GAME                            :{LTBLUE}Nopauzēt sākot jaunu spēli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS                       :{LTBLUE}Lietot speciālo transporta līdzekļu sarakstu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ADVANCED_VEHICLE_LISTS_OFF                   :Izslēgts
@@ -1189,6 +1204,15 @@ STR_CONFIG_PATCHES_VEHICLES                                     :{ORANGE}Transpo
 STR_CONFIG_PATCHES_STATIONS                                     :{ORANGE}Stacijas
 STR_CONFIG_PATCHES_ECONOMY                                      :{ORANGE}Ekonomika
 STR_CONFIG_PATCHES_AI                                           :{ORANGE}Pretiniekis
+STR_CONFIG_PATCHES_DISPLAY_OPTIONS                              :{ORANGE}Ekrāna izvēlne
+STR_CONFIG_PATCHES_INTERACTION                                  :{ORANGE}Saskarsme
+STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signāli
+STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Dalībnieks
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Apkopē
+STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Maršrutējas
+STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Vilcieni
+STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Pilsētas
+STR_CONFIG_PATCHES_ECONOMY_INDUSTRIES                           :{ORANGE}Rūpniecības nozares
 
 STR_CONFIG_PATCHES_DISABLED                                     :atspējots
 STR_CONFIG_PATCHES_INT32                                        :{NUM}
@@ -1337,7 +1361,6 @@ STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Pārbūv
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nevar pārbūvēt vilcienu...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Apkalpošanas intervāls procentos: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Mainīt produkciju
-
 
 ############ network gui strings
 
@@ -1511,6 +1534,7 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{BYTES} 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Atvienoties
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Ievadiet cik daudz naudas vēlaties dot
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serveris ir aizsargāts. Ieraksti paroli
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Uzņēmums ir aizsargāts. Ieraksti paroli
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientu saraksts
@@ -1550,6 +1574,14 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :serveris tevi i
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :mēģināja krāpties
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveris pilns
 ############ End of leave-in-this-order
+############ Leave those lines in this order!!
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Spēle nopauzēta (nepietiek dalībnieku)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Spēle atsākta (pietiekams dalībnieku skaits)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :Spēle nopauzēta (pieslēdzas dalībniekam)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :Spēle atsākta (dalībnieks pieslēdzies)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Spēle atsākta (dalībniekam neizdevās pieslēgties)
+############ End of leave-in-this-order
+STR_NETWORK_CLIENT_LEAVING                                      :aizeju
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Komanda] :
 STR_NETWORK_CHAT_COMPANY                                        :[Komanda] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Komanda] Uz {STRING}: {GRAY}{STRING}
@@ -1674,6 +1706,8 @@ STR_RAILROAD_TRACK_WITH_COMBO_PBSSIGNALS                        :Sliedes ar komb
 STR_RAILROAD_TRACK_WITH_COMBO_NOENTRYSIGNALS                    :Sliedes ar kombinētiem un vienvirziena signāliem
 STR_RAILROAD_TRACK_WITH_PBS_NOENTRYSIGNALS                      :Sliedes ar virziena un vienvirziena signāliem
 STR_MUST_REMOVE_RAILWAY_STATION_FIRST                           :{WHITE}Virspirms jānovāc stacija
+STR_CREATE_SPLITTED_STATION                                     :{YELLOW}Būvēt atdalītu staciju
+STR_SELECT_STATION_TO_JOIN                                      :{BLACK}Pievienot staciju
 
 
 
@@ -1862,6 +1896,7 @@ STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Pārāk 
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Piekļaujas vairāk par vienu staciju/iekraušanas zonu
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz staciju/iekraušanas zonu šajā pilsētā
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Pārāk daudz staciju/iekraušanas zonu
+STR_TOO_MANY_STATION_SPECS                                      :{WHITE} Pārāk daudz dzelzceļastacijas daļu
 STR_TOO_MANY_BUS_STOPS                                          :{WHITE}Pa'ra'k daudz autobusa pieturu
 STR_TOO_MANY_TRUCK_STOPS                                        :{WHITE}pa'ra'k daudz kravas auto staciju
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Pārāk tuvu citai stacijai/iekraušanas zonai
@@ -1969,6 +2004,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Bojāts saglab�
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Spēle saglabāta ar jaunāku versiju
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Failu nevar nolasīt
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Failā nevar ierakstīt
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Datu integritātes pārbaude nav izdevusies
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Disku, mapju un saglabāto spēļu datņu saraksts
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Šobrīd izvēlētais saglabājamās spēles nosaukums
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Dzēst izvēlēto saglabāto spēli
@@ -2058,6 +2094,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vilciens tunelī
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Automašīna tunelī
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Traucē cits tunelis
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunelis beigsies ārpus kartes
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Nevar izrakt citu tuneli
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Vispirms jānojauc tunelis
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Vispirms jānojauc tilts
@@ -2719,6 +2756,9 @@ STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Vienmēr doties
 STR_ORDER_DROP_SERVICE_DEPOT                                    :Apkope, ja nepieciešama
 STR_ORDER_DROP_HALT_DEPOT                                       :Apstādināt
 
+STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}Kā salīdzināt transportalīdzekļa datus ar dotajām vērtībām
+STR_ORDER_CONDITIONAL_VALUE_CAPT                                :{WHITE}Ievadiet vērtību ar kuru salīdzināsiet
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Cik procenti ielādēti
 STR_ORDER_CONDITIONAL_RELIABILITY                               :Uzticamība
 STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Maks. ātrums
 STR_ORDER_CONDITIONAL_AGE                                       :Transportl. vecums (gadi)
@@ -2750,6 +2790,7 @@ STR_UNKNOWN_STATION                                             :nezināma staci
 STR_8812_EMPTY                                                  :{LTBLUE}Tukšs
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} no {STATION}
 STR_FROM_MULT                                                   :{LTBLUE}{CARGO} no {STATION} (x{NUM})
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}{VEHICLE} gaida depo
 STR_8815_NEW_VEHICLES                                           :{BLACK}Jauni transportlīdzekļi
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vilciens ir pārāk garš
@@ -2777,6 +2818,8 @@ STR_REFIT                                                       :{BLACK}Pārbūv
 STR_REFIT_ORDER                                                 :(Pārbūvēt uz {STRING})
 STR_REFIT_STOP_ORDER                                            :(Nomainīt uz {STRING} un apstāties)
 STR_STOP_ORDER                                                  :(Apstādināt)
+STR_TIMETABLE_VIEW                                              :{BLACK}Saraksts
+STR_TIMETABLE_VIEW_TOOLTIP                                      :{BLACK}Pārslēgties uz Saraksta skatu
 STR_ORDER_VIEW                                                  :{BLACK}Rīkojumi
 STR_ORDER_VIEW_TOOLTIP                                          :{BLACK}Pārslēgt uz rīkojumu skatu
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Rīkojumi)
@@ -2798,6 +2841,9 @@ STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Šo rīk
 STR_CAN_T_MOVE_THIS_ORDER                                       :{WHITE}Nevar pārvietot šo rīkojumu...
 STR_CAN_T_SKIP_ORDER                                            :{WHITE}Pašreizējo rīkojumu nevar izlaist...
 STR_CAN_T_SKIP_TO_ORDER                                         :{WHITE}Izvēlēto rīkojumu nevar izlaist...
+STR_CAN_T_COPY_SHARE_ORDER                                      :{WHITE}tansportalīdzeklis nedodas uz visām stacijām
+STR_CAN_T_ADD_ORDER                                             :{WHITE}transportlīdzeklis nevar doties uz šo staciju
+STR_CAN_T_ADD_ORDER_SHARED                                      :{WHITE}transportlīdzeklis, kas dala šo maršrutu nespēj doties uz norādīto staciju
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Transporta līdzekli nevar pārvietot...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Aizmugures dzinējs vienmēr sekos priekšējam dzinējam
 STR_8838_N_A                                                    :Nav info{SKIP}
@@ -2832,6 +2878,7 @@ STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Rīkojum
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Izlaist pašreizējo rīkojumu un doties pie nākamā, Ctrl+klik izlaiž līdz atzīmētajam rīkojumam
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Dzēst atzīmēto rīkojumu
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Ievietot jaunu rīkojumu pirms atzīmētā rīkojuma, vai saraksta beigās
+STR_TIMETABLE_TOOLTIP                                           :{BLACK}Saraksts-uzklikšķiniet uz maršrutu, lai izceltu to
 STR_SERVICE_HINT                                                :{BLACK}Izlaist šo rīkojumu, izņemot, ja vajadzīga apkope
 STR_885C_BROKEN_DOWN                                            :{RED}Salūzis
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vecums: {LTBLUE}{STRING}{BLACK}   Darbības izmaksas: {LTBLUE}{CURRENCY}/gadā
@@ -3316,6 +3363,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lēzenā
 
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Maza
 STR_CITY_AIRPORT                                                :{BLACK}Pilsēta
@@ -3459,8 +3508,17 @@ STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}Šeit ne
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
 STR_CONFIG_PATCHES_NOISE_LEVEL                                  :{LTBLUE}Atļaut pilsētām kontrolēt trokšņu līmeni lidostās: {ORANGE}{STRING}
 STR_NOISE_IN_TOWN                                               :{BLACK}Trokšņu limits pilsētā: {ORANGE}{COMMA}{BLACK}  maks.: {ORANGE}{COMMA}
 STR_STATION_NOISE                                               :{BLACK}Radītais troksnis: {GOLD}{COMMA}
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

@@ -3491,6 +3491,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altitude
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrer la carte sur la position actuelle
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Bords de la carte:
+STR_NORTHWEST                                                   :{BLACK}Nord-Ouest
+STR_NORTHEAST                                                   :{BLACK}Nord-Est
+STR_SOUTHEAST                                                   :{BLACK}Sud-Est
+STR_SOUTHWEST                                                   :{BLACK}Sud-Ouest
+STR_BORDER_FREEFORM                                             :{BLACK}Forme libre
+STR_BORDER_WATER                                                :{BLACK}Eau
+STR_BORDER_RANDOM                                               :{BLACK}Aléatoire
+STR_BORDER_RANDOMIZE                                            :{BLACK}Aléatoire
+STR_BORDER_MANUAL                                               :{BLACK}Manuel
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Petit
 STR_CITY_AIRPORT                                                :{BLACK}Urbain
@@ -3768,4 +3780,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossib
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Vérifier le contenu en ligne
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Vérifier les contenus à télécharger nouveaux et mis à jour
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Trouver le contenu manquant en ligne
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Vérifier si le contenu manquant peut être trouvé en ligne
 ########

@@ -1088,10 +1088,6 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høgden som eit flatt scenariokart får: {ORANGE}{STRING}
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspreiing: {ORANGE}{STRING} {RED}Advarsel: Høg innstilling gjev treigare spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Gjer vedlikehald på helikopter automatisk på helikopterlandingsplassar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskapsverktøylinja til tog-/vei-/vass- og flyplassverktøylinjene: {ORANGE}{STRING}
@@ -3472,6 +3468,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Høgde p
 STR_SMALLMAP_CENTER                                             :{BLACK}Still oversiktskartet midt på på den gjeldande posisjonen
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Liten
 STR_CITY_AIRPORT                                                :{BLACK}By
@@ -3676,9 +3674,43 @@ STR_STATION_NOISE                                               :{BLACK}Lyd gene
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD er bygd utan støtte for "zlib"...
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... det er ikkje mogeleg å laste ned innhald!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grunngrafikk
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_SCENARIO                                       :Scenario
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Høgdekart
+STR_CONTENT_TITLE                                               :{WHITE}Last ned innhald
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Type
+STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Type innhald
+STR_CONTENT_NAME_CAPTION                                        :{BLACK}Namn
+STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Namnet til innhaldet
+STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Vel alle
+STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Vel oppdateringar
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Vel ingenting
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Last ned
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Last ned valt innhald
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total størrelse: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Dette innhaldet er ukjent og kan ikkje lastas ned i OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Dette erstattar ei eksisterande {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Namn: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versjon: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Omtale: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Type: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Størrelse: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Avheng av: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Lastar ned innhald...
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Ber om filer...
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Lastar ned {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Nedlasting ferdig
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} av {BYTES} lasta ned ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Kunne ikkje koble til innhaldstenar...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Nedlasting mislukkast...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... mista tilkobling
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Sjå etter innhald på nett
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Sjå etter nytt eller oppdatert innhald som kan lastas ned
 ########

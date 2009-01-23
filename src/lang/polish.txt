@@ -3599,6 +3599,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Wysokoś
 STR_SMALLMAP_CENTER                                             :{BLACK}Wyśrodkuj mapę na aktualnej lokalizacji
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Krańce mapy:
+STR_NORTHWEST                                                   :{BLACK}Północny zachód
+STR_NORTHEAST                                                   :{BLACK}Północny wschód
+STR_SOUTHEAST                                                   :{BLACK}Południowy wschód
+STR_SOUTHWEST                                                   :{BLACK}Południowy zachód
+STR_BORDER_FREEFORM                                             :{BLACK}Wolna forma
+STR_BORDER_WATER                                                :{BLACK}Woda
+STR_BORDER_RANDOM                                               :{BLACK}Losowo
+STR_BORDER_RANDOMIZE                                            :{BLACK}Losowo
+STR_BORDER_MANUAL                                               :{BLACK}Ręcznie
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Małe
 STR_CITY_AIRPORT                                                :{BLACK}Miejskie
@@ -3787,9 +3799,27 @@ STR_OSK_KEYBOARD_LAYOUT_CAPS                                    :~!@#$%^&*()_+|Q
 ########
 
 ############ AI GUI
+STR_AI_SETTINGS_BUTTON                                          :{BLACK}Ustawienia SI
 STR_AI_DEBUG_NAME_TIP                                           :{BLACK}Nazwa SI
 STR_AI_DEBUG_RELOAD                                             :{BLACK}Przeładuj SI
 STR_AI_DEBUG_RELOAD_TIP                                         :{BLACK}Zabij SI, przeładuj skrypt i zrestartuj SI
+STR_AI_CONFIG_CAPTION                                           :{WHITE}Konfiguracja SI
+STR_AI_CHANGE                                                   :{BLACK}Wybierz SI
+STR_AI_CONFIGURE                                                :{BLACK}Konfiguruj
+STR_AI_CHANGE_TIP                                               :{BLACK}Wczytaj kolejne SI
+STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfiguruj parametry SI
+STR_AI_ACCEPT                                                   :{BLACK}Zaakceptuj
+STR_AI_ACCEPT_TIP                                               :{BLACK}Wybierz podświetlone SI
+STR_AI_CANCEL                                                   :{BLACK}Anuluj
+STR_AI_CANCEL_TIP                                               :{BLACK}Nie zmieniaj SI
+STR_AI_CLOSE                                                    :{BLACK}Zamknij
+STR_AI_RESET                                                    :{BLACK}Resetuj
+STR_AI_HUMAN_PLAYER                                             :Ludzki gracz
+STR_AI_RANDOM_AI                                                :Losowe SI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametry SI
+STR_AI_AUTHOR                                                   :Autor:
+STR_AI_VERSION                                                  :Wersja:
+STR_AI_DESCRIPTION                                              :Opis:
 ########
 
 ############ town controlled noise level
@@ -3799,7 +3829,9 @@ STR_STATION_NOISE                                               :{BLACK}Wytwarza
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}Open TTD nie obsługuje "zlib"...
 STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Grafiki bazowe
+STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :SI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :Biblioteka SI
 STR_CONTENT_TYPE_SCENARIO                                       :Scenariusz

@@ -1092,6 +1092,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotazio
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antioraria
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Oraria
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altitudine delle mappe pianeggiante: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Abilita la scelta del tipo di riquadri sui bordi della mappa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Uno o più riquadri sul lato nord non sono vuoti
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Uno o più riquadri su uno dei bordi non sono d'acqua
 
@@ -3490,6 +3491,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altezza 
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra la minimappa sulla posizione corrente
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+
+# Strings for map borders at game generation
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Piccolo
