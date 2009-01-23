@@ -342,7 +342,7 @@ struct NewGRFWindow : public Window {
 
 	~NewGRFWindow()
 	{
-		if (!this->execute) {
+		if (this->editable && !this->execute) {
 			CopyGRFConfigList(this->orig_list, this->list, true);
 			ResetGRFConfig(false);
 			ReloadNewGRFData();
