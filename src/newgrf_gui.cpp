@@ -617,6 +617,7 @@ struct NewGRFWindow : public Window {
 						ttd_strlcpy(ci->name, c->name != NULL ? c->name : c->filename, lengthof(ci->name));
 						ci->unique_id = BSWAP32(c->grfid);
 						memcpy(ci->md5sum, c->md5sum, sizeof(ci->md5sum));
+						if (HasBit(c->flags, GCF_COMPATIBLE)) GamelogGetOriginalGRFMD5Checksum(c->grfid, ci->md5sum);
 						*cv.Append() = ci;
 					}
 					ShowNetworkContentListWindow(cv.Length() == 0 ? NULL : &cv, CONTENT_TYPE_NEWGRF);

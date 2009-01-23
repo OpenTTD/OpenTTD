@@ -46,4 +46,6 @@ void GamelogTestGRF();
 
 bool GamelogGRFBugReverse(uint32 grfid, uint16 internal_id);
 
+void GamelogGetOriginalGRFMD5Checksum(uint32 grfid, byte *md5sum);
+
 #endif /* GAMELOG_H */

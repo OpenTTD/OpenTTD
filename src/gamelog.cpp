@@ -666,3 +666,30 @@ void GamelogGRFUpdate(const GRFConfig *oldc, const GRFConfig *newc)
 	free(ol);
 	free(nl);
 }
+
+/**
+ * Get the MD5 checksum of the original NewGRF that was loaded.
+ * @param grfid the GRF ID to search for
+ * @param md5sum the MD5 checksum to write to.
+ */
+void GamelogGetOriginalGRFMD5Checksum(uint32 grfid, byte *md5sum)
+{
+	const LoggedAction *la = &_gamelog_action[_gamelog_actions - 1];
+	/* There should always be a "start game" action */
+	assert(_gamelog_actions > 0);
+
+	do {
+		const LoggedChange *lc = &la->change[la->changes - 1];
+		/* There should always be at least one change per action */
+		assert(la->changes > 0);
+
+		do {
+			if (lc->ct == GLCT_GRFADD && lc->grfadd.grfid == grfid) {
+				memcpy(md5sum, lc->grfadd.md5sum, sizeof(lc->grfadd.md5sum));
+				return;
+			}
+		} while (lc-- != la->change);
+	} while (la-- != _gamelog_action);
+
+	NOT_REACHED();
+}
