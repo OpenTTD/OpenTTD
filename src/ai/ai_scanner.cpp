@@ -89,11 +89,6 @@ void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_rec
 			ttd_strlcat(main_script, "main.nut", sizeof(main_script));
 			if (!FioCheckFileExists(info_script, AI_DIR) || !FioCheckFileExists(main_script, AI_DIR)) continue;
 
-#ifdef WIN32
-			/* Windows doesn't care about the case */
-			strtolower(main_script);
-#endif
-
 			DEBUG(ai, 6, "Loading AI at location '%s'", main_script);
 			this->engine->LoadScript(info_script);
 		} else {
@@ -105,11 +100,6 @@ void AIScanner::ScanDir(const char *dirname, bool library_scan, bool library_rec
 			ttd_strlcat(library_script, "library.nut", sizeof(library_script));
 			ttd_strlcat(main_script, "main.nut", sizeof(main_script));
 			if (!FioCheckFileExists(library_script, AI_LIBRARY_DIR) || !FioCheckFileExists(main_script, AI_LIBRARY_DIR)) continue;
-
-#ifdef WIN32
-			/* Windows doesn't care about the case */
-			strtolower(main_script);
-#endif
 
 			DEBUG(ai, 6, "Loading AI Library at location '%s'", main_script);
 			this->engine->LoadScript(library_script);
@@ -288,7 +278,12 @@ void AIScanner::RegisterLibrary(AILibrary *library)
 
 	if (this->library_list.find(library_name) != this->library_list.end()) {
 		/* This AI was already registered */
+#ifdef WIN32
+		/* Windows doesn't care about the case */
+		if (strcasecmp(this->library_list[library_name]->GetMainScript(), library->GetMainScript()) == 0) {
+#else
 		if (strcmp(this->library_list[library_name]->GetMainScript(), library->GetMainScript()) == 0) {
+#endif
 			delete library;
 			return;
 		}
@@ -320,7 +315,12 @@ void AIScanner::RegisterAI(AIInfo *info)
 
 	if (this->info_list.find(ai_name) != this->info_list.end()) {
 		/* This AI was already registered */
+#ifdef WIN32
+		/* Windows doesn't care about the case */
+		if (strcasecmp(this->info_list[ai_name]->GetMainScript(), info->GetMainScript()) == 0) {
+#else
 		if (strcmp(this->info_list[ai_name]->GetMainScript(), info->GetMainScript()) == 0) {
+#endif
 			delete info;
 			return;
 		}
