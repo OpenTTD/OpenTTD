@@ -177,6 +177,10 @@ bool Squirrel::Resume(int suspend)
 
 bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend)
 {
+	/* Store the stack-location for the return value. We need to
+	 * restore this after saving or the stack will be corrupted
+	 * if we're in the middle of a DoCommand. */
+	SQInteger last_target = this->vm->_suspended_target;
 	/* Store the current top */
 	int top = sq_gettop(this->vm);
 	/* Go to the instance-root */
@@ -195,6 +199,8 @@ bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT
 	/* Reset the top, but don't do so for the AI main function, as we need
 	 *  a correct stack when resuming. */
 	if (suspend == -1) sq_settop(this->vm, top);
+	/* Restore the return-value location. */
+	this->vm->_suspended_target = last_target;
 
 	return this->vm->_suspended != 0;
 }
