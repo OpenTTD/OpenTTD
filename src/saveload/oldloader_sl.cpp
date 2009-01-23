@@ -29,6 +29,7 @@
 
 #include "table/strings.h"
 #include "../table/engines.h"
+#include "../table/namegen.h"
 
 static bool   _read_ttdpatch_flags;
 
@@ -98,7 +99,38 @@ static void FixTTDMapArray()
 	FixOldMapArray();
 }
 
-extern uint32 GetOldTownName(uint32 townnameparts, byte old_town_name_type);
+#define FIXNUM(x, y, z) (((((x) << 16) / (y)) + 1) << z)
+
+static uint32 RemapOldTownName(uint32 townnameparts, byte old_town_name_type)
+{
+	switch (old_town_name_type) {
+		case 0: case 3: // English, American
+			/* Already OK */
+			return townnameparts;
+
+		case 1: // French
+			/* For some reason 86 needs to be subtracted from townnameparts
+			 * 0000 0000 0000 0000 0000 0000 1111 1111 */
+			return FIXNUM(townnameparts - 86, lengthof(name_french_real), 0);
+
+		case 2: // German
+			DEBUG(misc, 0, "German Townnames are buggy (%d)", townnameparts);
+			return townnameparts;
+
+		case 4: // Latin-American
+			/* 0000 0000 0000 0000 0000 0000 1111 1111 */
+			return FIXNUM(townnameparts, lengthof(name_spanish_real), 0);
+
+		case 5: // Silly
+			/* NUM_SILLY_1 - lower 16 bits
+			 * NUM_SILLY_2 - upper 16 bits without leading 1 (first 8 bytes)
+			 * 1000 0000 2222 2222 0000 0000 1111 1111 */
+			return FIXNUM(townnameparts, lengthof(name_silly_1), 0) | FIXNUM(GB(townnameparts, 16, 8), lengthof(name_silly_2), 16);
+	}
+	return 0;
+}
+
+#undef FIXNUM
 
 void FixOldTowns()
 {
@@ -108,7 +140,7 @@ void FixOldTowns()
 	FOR_ALL_TOWNS(town) {
 		if (IsInsideMM(town->townnametype, 0x20C1, 0x20C3)) {
 			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _settings_game.game_creation.town_name;
-			town->townnameparts = GetOldTownName(town->townnameparts, _settings_game.game_creation.town_name);
+			town->townnameparts = RemapOldTownName(town->townnameparts, _settings_game.game_creation.town_name);
 		}
 	}
 }
@@ -678,7 +710,7 @@ static bool LoadOldCargoPaymentRate(LoadgameState *ls, int num)
 	return true;
 }
 
-VehicleID _current_station_id;
+static StationID _current_station_id;
 static uint16 _waiting_acceptance;
 static uint8  _cargo_source;
 static uint8  _cargo_days;
@@ -861,7 +893,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	return true;
 }
 
-CompanyID _current_company_id;
+static CompanyID _current_company_id;
 static int32 _old_yearly;
 
 static const OldChunks _company_yearly_chunk[] = {
@@ -1030,7 +1062,7 @@ static bool LoadOldCompany(LoadgameState *ls, int num)
 
 static uint32 _old_order_ptr;
 static uint16 _old_next_ptr;
-VehicleID _current_vehicle_id;
+static VehicleID _current_vehicle_id;
 
 static const OldChunks vehicle_train_chunk[] = {
 	OCL_SVAR(  OC_UINT8, VehicleRail, track ),
@@ -1259,8 +1291,8 @@ bool LoadOldVehicle(LoadgameState *ls, int num)
 			switch (v->type) {
 				case VEH_TRAIN: {
 					static const byte spriteset_rail[] = {
-						0,   2,   4,   4,   8,  10,  12,  14,  16,  18,  20,  22,  40,  42,  44,  46,
-						48,  52,  54,  66,  68,  70,  72,  74,  76,  78,  80,  82,  84,  86, 120, 122,
+						  0,   2,   4,   4,   8,  10,  12,  14,  16,  18,  20,  22,  40,  42,  44,  46,
+						 48,  52,  54,  66,  68,  70,  72,  74,  76,  78,  80,  82,  84,  86, 120, 122,
 						124, 126, 128, 130, 132, 134, 136, 138, 140
 					};
 					if (v->spritenum / 2 >= lengthof(spriteset_rail)) return false;

@@ -37,7 +37,7 @@ enum OldChunkType {
 	/* 4 bits allocated (16 max) */
 
 	OC_TTD       = 1 << 4, ///< chunk is valid ONLY for TTD savegames
-	OC_TTO       = 1 << 5, ///< -//- TTO (default in neither of these)
+	OC_TTO       = 1 << 5, ///< -//- TTO (default is neither of these)
 	/* 4 bits allocated */
 
 	OC_VAR_I8    = 1 << 8,
