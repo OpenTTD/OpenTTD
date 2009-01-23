@@ -1219,6 +1219,7 @@ void GameLoop()
 		if (_network_reconnect > 0 && --_network_reconnect == 0) {
 			/* This means that we want to reconnect to the last host
 			 * We do this here, because it means that the network is really closed */
+			_network_playas = COMPANY_SPECTATOR;
 			NetworkClientConnectGame(NetworkAddress(_settings_client.network.last_host, _settings_client.network.last_port));
 		}
 		/* Singleplayer */
