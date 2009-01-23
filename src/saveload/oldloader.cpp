@@ -17,12 +17,13 @@
 #include "oldloader.h"
 
 enum {
-	HEADER_SIZE = 49,
+	TTO_HEADER_SIZE = 41,
+	TTD_HEADER_SIZE = 49,
 };
 
 uint32 _bump_assert_value;
 
-static inline OldChunkType GetOldChunkType(OldChunkType type)     {return (OldChunkType)GB(type, 0, 8);}
+static inline OldChunkType GetOldChunkType(OldChunkType type)     {return (OldChunkType)GB(type, 0, 4);}
 static inline OldChunkType GetOldChunkVarType(OldChunkType type)  {return (OldChunkType)(GB(type, 8, 8) << 8);}
 static inline OldChunkType GetOldChunkFileType(OldChunkType type) {return (OldChunkType)(GB(type, 16, 8) << 16);}
 
@@ -101,12 +102,17 @@ byte ReadByte(LoadgameState *ls)
  */
 bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 {
-	const OldChunks *chunk = chunks;
 	byte *base_ptr = (byte*)base;
 
-	while (chunk->type != OC_END) {
+	for (const OldChunks *chunk = chunks; chunk->type != OC_END; chunk++) {
+		if (((chunk->type & OC_TTD) && (_savegame_type == SGT_TTO)) ||
+				((chunk->type & OC_TTO) && (_savegame_type != SGT_TTO))) {
+			/* TTD(P)-only chunk, but TTO savegame || TTO-only chunk, but TTD/TTDP savegame */
+			continue;
+		}
+
 		byte *ptr = (byte*)chunk->ptr;
-		if ((chunk->type & OC_DEREFERENCE_POINTER) != 0) ptr = *(byte**)ptr;
+		if (chunk->type & OC_DEREFERENCE_POINTER) ptr = *(byte**)ptr;
 
 		for (uint i = 0; i < chunk->amount; i++) {
 			if (ls->failed) return false;
@@ -164,8 +170,6 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 				if (chunk->amount > 1 && chunk->ptr != NULL) ptr += CalcOldVarLen(chunk->type);
 			}
 		}
-
-		chunk++;
 	}
 
 	return true;
@@ -194,29 +198,71 @@ static void InitLoading(LoadgameState *ls)
 	_settings_game.construction.freeform_edges = false; // disable so we can convert map array (SetTileType is still used)
 }
 
-
-
 /**
  * Verifies the title has a valid checksum
  * @param title title and checksum
  * @return true iff the title is valid
- * @note the title (incl. checksum) has to be at least 49 (HEADER_SIZE) bytes long!
+ * @note the title (incl. checksum) has to be at least 41/49 (HEADER_SIZE) bytes long!
  */
-static bool VerifyOldNameChecksum(char *title)
+static bool VerifyOldNameChecksum(char *title, uint len)
 {
 	uint16 sum = 0;
-	for (uint i = 0; i < HEADER_SIZE - 2; i++) {
+	for (uint i = 0; i < len - 2; i++) {
 		sum += title[i];
 		sum = ROL(sum, 1);
 	}
 
 	sum ^= 0xAAAA; // computed checksum
 
-	uint16 sum2 = title[HEADER_SIZE - 2]; // checksum in file
-	SB(sum2, 8, 8, title[HEADER_SIZE - 1]);
+	uint16 sum2 = title[len - 2]; // checksum in file
+	SB(sum2, 8, 8, title[len - 1]);
 
 	return sum == sum2;
 }
+
+static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, uint len)
+{
+	assert(last - temp + 1 >= len);
+
+	fseek(f, 0, SEEK_SET);
+	if (fread(temp, 1, len, f) != len) {
+		temp[0] = '\0'; // if reading failed, make the name empty
+		return false;
+	}
+
+	bool ret = VerifyOldNameChecksum(temp, len);
+	temp[len - 2] = '\0'; // name is nul-terminated in savegame, but it's better to be sure
+
+	return ret;
+}
+
+assert_compile(TTD_HEADER_SIZE >= TTO_HEADER_SIZE);
+static SavegameType DetermineOldSavegameType(FILE *f, char *title, const char *last)
+{
+	char temp[TTD_HEADER_SIZE];
+
+	SavegameType type = SGT_TTO;
+
+	if (!CheckOldSavegameType(f, temp, lastof(temp), TTO_HEADER_SIZE)) {
+		type = SGT_TTD;
+		if (!CheckOldSavegameType(f, temp, lastof(temp), TTD_HEADER_SIZE)) {
+			type = SGT_INVALID;
+		}
+	}
+
+	if (title != NULL) {
+		switch (type) {
+			case SGT_TTO: title = strecpy(title, "(TTO) ", last);    break;
+			case SGT_TTD: title = strecpy(title, "(TTD) ", last);    break;
+			default:      title = strecpy(title, "(broken) ", last); break;
+		}
+		title = strecpy(title, temp, last);
+	}
+
+	return type;
+}
+
+typedef bool LoadOldMainProc(LoadgameState *ls);
 
 bool LoadOldSaveGame(const char *file)
 {
@@ -234,8 +280,19 @@ bool LoadOldSaveGame(const char *file)
 		return false;
 	}
 
-	char temp[HEADER_SIZE];
-	if (fread(temp, 1, HEADER_SIZE, ls.file) != HEADER_SIZE || !VerifyOldNameChecksum(temp) || !LoadOldMain(&ls)) {
+	SavegameType type = DetermineOldSavegameType(ls.file, NULL, NULL);
+
+	LoadOldMainProc *proc = NULL;
+
+	switch (type) {
+		case SGT_TTO: proc = &LoadTTOMain; break;
+		case SGT_TTD: proc = &LoadTTDMain; break;
+		default: break;
+	}
+
+	_savegame_type = type;
+
+	if (proc == NULL || !proc(&ls)) {
 		SetSaveLoadError(STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED);
 		fclose(ls.file);
 		return false;
@@ -249,23 +306,16 @@ bool LoadOldSaveGame(const char *file)
 void GetOldSaveGameName(const char *path, const char *file, char *title, const char *last)
 {
 	char filename[MAX_PATH];
-	char temp[HEADER_SIZE];
 
 	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, file);
 	FILE *f = fopen(filename, "rb");
-	temp[0] = '\0'; // name is nul-terminated in savegame ...
 
 	if (f == NULL) {
 		*title = '\0';
 		return;
 	}
 
-	bool broken = (fread(temp, 1, HEADER_SIZE, f) != HEADER_SIZE || !VerifyOldNameChecksum(temp));
-
-	temp[HEADER_SIZE - 2] = '\0'; // ... but it's better to be sure
-
-	if (broken) title = strecpy(title, "(broken) ", last);
-	title = strecpy(title, temp, last);
+	DetermineOldSavegameType(f, title, last);
 
 	fclose(f);
 }

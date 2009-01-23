@@ -34,7 +34,11 @@ enum OldChunkType {
 	OC_NULL      = 1,
 	OC_CHUNK     = 2,
 	OC_ASSERT    = 3,
-	/* 8 bits allocated (256 max) */
+	/* 4 bits allocated (16 max) */
+
+	OC_TTD       = 1 << 4, ///< chunk is valid ONLY for TTD savegames
+	OC_TTO       = 1 << 5, ///< -//- TTO (default in neither of these)
+	/* 4 bits allocated */
 
 	OC_VAR_I8    = 1 << 8,
 	OC_VAR_U8    = 2 << 8,
@@ -91,7 +95,8 @@ extern uint _bump_assert_value;
 byte ReadByte(LoadgameState *ls);
 bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks);
 
-bool LoadOldMain(LoadgameState *ls);
+bool LoadTTDMain(LoadgameState *ls);
+bool LoadTTOMain(LoadgameState *ls);
 
 static inline uint16 ReadUint16(LoadgameState *ls)
 {
@@ -114,11 +119,13 @@ static inline uint32 ReadUint32(LoadgameState *ls)
  *  - OCL_CHUNK: load an other proc to load a part of the savegame, 'amount' times
  *  - OCL_ASSERT: to check if we are really at the place we expect to be.. because old savegames are too binary to be sure ;)
  */
-#define OCL_SVAR(type, base, offset)         { type,          1, NULL,    (uint)cpp_offsetof(base, offset), NULL }
-#define OCL_VAR(type, amount, pointer)       { type,     amount, pointer, 0,                      NULL }
-#define OCL_END()                                   { OC_END,        0, NULL,    0,                      NULL }
-#define OCL_NULL(amount)                            { OC_NULL,  amount, NULL,    0,                      NULL }
-#define OCL_CHUNK(amount, proc)                     { OC_CHUNK, amount, NULL,    0,                      proc }
-#define OCL_ASSERT(size)                            { OC_ASSERT,     1, NULL, size,                      NULL }
+#define OCL_SVAR(type, base, offset)         { type,                 1,    NULL, (uint)cpp_offsetof(base, offset), NULL }
+#define OCL_VAR(type, amount, pointer)       { type,            amount, pointer,    0,                             NULL }
+#define OCL_END()                            { OC_END,               0,    NULL,    0,                             NULL }
+#define OCL_CNULL(type, amount)              { OC_NULL | type,  amount,    NULL,    0,                             NULL }
+#define OCL_CCHUNK(type, amount, proc)       { OC_CHUNK | type, amount,    NULL,    0,                             proc }
+#define OCL_ASSERT(type, size)               { OC_ASSERT | type,     1,    NULL, size,                             NULL }
+#define OCL_NULL(amount)        OCL_CNULL((OldChunkType)0, amount)
+#define OCL_CHUNK(amount, proc) OCL_CCHUNK((OldChunkType)0, amount, proc)
 
 #endif /* OLDLOADER_H */

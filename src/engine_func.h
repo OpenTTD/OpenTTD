@@ -27,5 +27,6 @@ bool IsEngineRefittable(EngineID engine);
 CargoID GetEngineCargoType(EngineID engine);
 void SetCachedEngineCounts();
 void SetYearEngineAgingStops();
+void StartupOneEngine(Engine *e, Date aging_date);
 
 #endif /* ENGINE_H */

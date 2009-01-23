@@ -9,6 +9,7 @@
 #include "../company_manager_face.h"
 #include "../order_base.h"
 #include "../engine_type.h"
+#include "saveload.h"
 
 void InitializeOldNames();
 StringID RemapOldStringID(StringID s);
@@ -36,6 +37,9 @@ void CopyTempEngineData();
 
 extern int32 _saved_scrollpos_x;
 extern int32 _saved_scrollpos_y;
+
+extern SavegameType _savegame_type;
+extern uint32 _ttdp_version;
 
 CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32 face);
 

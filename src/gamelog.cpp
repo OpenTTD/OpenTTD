@@ -195,6 +195,10 @@ void GamelogPrint(GamelogPrintProc *proc)
 								GB(lc->oldver.version, 8, 16), GB(lc->oldver.version, 0, 8));
 							break;
 
+						case SGT_TTO:
+							AddDebugText(buf, "TTO savegame");
+							break;
+
 						case SGT_TTD:
 							AddDebugText(buf, "TTD savegame");
 							break;

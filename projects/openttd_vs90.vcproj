@@ -2073,6 +2073,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\..\src\saveload\oldloader_sl.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\..\src\saveload\order_sl.cpp"
 				>
 			</File>
@@ -2106,10 +2110,6 @@
 			</File>
 			<File
 				RelativePath=".\..\src\saveload\town_sl.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\..\src\saveload\ttdloader.cpp"
 				>
 			</File>
 			<File

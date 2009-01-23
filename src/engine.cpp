@@ -252,6 +252,49 @@ void SetYearEngineAgingStops()
 	}
 }
 
+void StartupOneEngine(Engine *e, Date aging_date)
+{
+	const EngineInfo *ei = &e->info;
+	uint32 r;
+
+	e->age = 0;
+	e->flags = 0;
+	e->company_avail = 0;
+
+	/* The magic value of 729 days below comes from the NewGRF spec. If the
+	 * base intro date is before 1922 then the random number of days is not
+	 * added. */
+	r = Random();
+	e->intro_date = ei->base_intro <= ConvertYMDToDate(1922, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
+	if (e->intro_date <= _date) {
+		e->age = (aging_date - e->intro_date) >> 5;
+		e->company_avail = (CompanyMask)-1;
+		e->flags |= ENGINE_AVAILABLE;
+	}
+
+	e->reliability_start = GB(r, 16, 14) + 0x7AE0;
+	r = Random();
+	e->reliability_max   = GB(r,  0, 14) + 0xBFFF;
+	e->reliability_final = GB(r, 16, 14) + 0x3FFF;
+
+	r = Random();
+	e->duration_phase_1 = GB(r, 0, 5) + 7;
+	e->duration_phase_2 = GB(r, 5, 4) + ei->base_life * 12 - 96;
+	e->duration_phase_3 = GB(r, 9, 7) + 120;
+
+	e->reliability_spd_dec = ei->decay_speed << 2;
+
+	CalcEngineReliability(e);
+
+	e->lifelength = ei->lifelength + _settings_game.vehicle.extend_vehicle_life;
+
+	/* prevent certain engines from ever appearing. */
+	if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) {
+		e->flags |= ENGINE_AVAILABLE;
+		e->company_avail = 0;
+	}
+}
+
 void StartupEngines()
 {
 	Engine *e;
@@ -259,45 +302,7 @@ void StartupEngines()
 	const Date aging_date = min(_date, ConvertYMDToDate(_year_engine_aging_stops, 0, 1));
 
 	FOR_ALL_ENGINES(e) {
-		const EngineInfo *ei = &e->info;
-		uint32 r;
-
-		e->age = 0;
-		e->flags = 0;
-		e->company_avail = 0;
-
-		/* The magic value of 729 days below comes from the NewGRF spec. If the
-		 * base intro date is before 1922 then the random number of days is not
-		 * added. */
-		r = Random();
-		e->intro_date = ei->base_intro <= ConvertYMDToDate(1922, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
-		if (e->intro_date <= _date) {
-			e->age = (aging_date - e->intro_date) >> 5;
-			e->company_avail = (CompanyMask)-1;
-			e->flags |= ENGINE_AVAILABLE;
-		}
-
-		e->reliability_start = GB(r, 16, 14) + 0x7AE0;
-		r = Random();
-		e->reliability_max   = GB(r,  0, 14) + 0xBFFF;
-		e->reliability_final = GB(r, 16, 14) + 0x3FFF;
-
-		r = Random();
-		e->duration_phase_1 = GB(r, 0, 5) + 7;
-		e->duration_phase_2 = GB(r, 5, 4) + ei->base_life * 12 - 96;
-		e->duration_phase_3 = GB(r, 9, 7) + 120;
-
-		e->reliability_spd_dec = ei->decay_speed << 2;
-
-		CalcEngineReliability(e);
-
-		e->lifelength = ei->lifelength + _settings_game.vehicle.extend_vehicle_life;
-
-		/* prevent certain engines from ever appearing. */
-		if (!HasBit(ei->climates, _settings_game.game_creation.landscape)) {
-			e->flags |= ENGINE_AVAILABLE;
-			e->company_avail = 0;
-		}
+		StartupOneEngine(e, aging_date);
 	}
 
 	/* Update the bitmasks for the vehicle lists */

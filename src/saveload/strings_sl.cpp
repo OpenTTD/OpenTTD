@@ -8,6 +8,7 @@
 #include "../core/bitmath_func.hpp"
 #include "../core/alloc_func.hpp"
 #include "../string_func.h"
+#include "saveload_internal.h"
 
 #include "table/strings.h"
 
@@ -44,8 +45,8 @@ char *_old_name_array = NULL;
 
 /**
  * Copy and convert old custom names to UTF-8.
- * They were all stored in a 512 by 32 long string array and are
- * now stored with stations, waypoints and other places with names.
+ * They were all stored in a 512 by 32 (200 by 24 for TTO) long string array
+ * and are now stored with stations, waypoints and other places with names.
  * @param id the StringID of the custom name to clone.
  * @return the clones custom name.
  */
@@ -55,10 +56,11 @@ char *CopyFromOldName(StringID id)
 	if (GB(id, 11, 5) != 15) return NULL;
 
 	if (CheckSavegameVersion(37)) {
-		/* Old names were 32 characters long, so 128 characters should be
+		/* Old names were 24/32 characters long, so 128 characters should be
 		 * plenty to allow for expansion when converted to UTF-8. */
 		char tmp[128];
-		const char *strfrom = &_old_name_array[32 * GB(id, 0, 9)];
+		uint offs = _savegame_type == SGT_TTO ? 24 * GB(id, 0, 8) : 32 * GB(id, 0, 9);
+		const char *strfrom = &_old_name_array[offs];
 		char *strto = tmp;
 
 		for (; *strfrom != '\0'; strfrom++) {
@@ -109,7 +111,7 @@ void ResetOldNames()
 void InitializeOldNames()
 {
 	free(_old_name_array);
-	_old_name_array = CallocT<char>(512 * 32);
+	_old_name_array = CallocT<char>(512 * 32); // 200 * 24 would be enough for TTO savegames
 }
 
 static void Load_NAME()

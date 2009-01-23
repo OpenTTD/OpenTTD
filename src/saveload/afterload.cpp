@@ -327,7 +327,7 @@ static void FixOwnerOfRailTrack(TileIndex t)
 	if (IsLevelCrossingTile(t)) {
 		/* else change the crossing to normal road (road vehicles won't care) */
 		MakeRoadNormal(t, GetCrossingRoadBits(t), GetRoadTypes(t), GetTownIndex(t),
-		GetRoadOwner(t, ROADTYPE_ROAD), GetRoadOwner(t, ROADTYPE_TRAM), GetRoadOwner(t, ROADTYPE_HWAY));
+			GetRoadOwner(t, ROADTYPE_ROAD), GetRoadOwner(t, ROADTYPE_TRAM), GetRoadOwner(t, ROADTYPE_HWAY));
 		return;
 	}
 
@@ -356,7 +356,6 @@ bool AfterLoadGame()
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->train_tile != 0 && st->trainst_h == 0) {
-				extern SavegameType _savegame_type;
 				uint n = _savegame_type == SGT_OTTD ? 4 : 3; // OTTD uses 4 bits per dimensions, TTD 3 bits
 				uint w = GB(st->trainst_w, n, n);
 				uint h = GB(st->trainst_w, 0, n);
