@@ -528,6 +528,7 @@ public:
 				break;
 
 			case NCLWW_UNSELECT:
+				_network_content_client.UnselectAll();
 				this->SetDirty();
 				break;
 

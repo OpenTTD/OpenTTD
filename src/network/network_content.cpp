@@ -380,7 +380,7 @@ DEF_CONTENT_RECEIVE_COMMAND(Client, PACKET_CONTENT_SERVER_CONTENT)
 			return false;
 		}
 
-		this->OnDownloadProgress(this->curInfo, toRead);
+		this->OnDownloadProgress(this->curInfo, (uint)toRead);
 
 		if (toRead == 0) {
 			/* We read nothing; that's our marker for end-of-stream.

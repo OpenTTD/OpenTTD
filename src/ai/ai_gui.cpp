@@ -64,7 +64,7 @@ struct AIListWindow : public Window {
 		this->resize.step_height = 14;
 		this->vscroll.cap = (this->widget[AIL_WIDGET_LIST].bottom - this->widget[AIL_WIDGET_LIST].top) / 14 + 1;
 		this->widget[AIL_WIDGET_LIST].data = (this->vscroll.cap << 8) + 1;
-		SetVScrollCount(this, this->ai_info_list->size() + 1);
+		SetVScrollCount(this, (int)this->ai_info_list->size() + 1);
 
 		/* Try if we can find the currently selected AI */
 		this->selected = -1;
@@ -251,7 +251,7 @@ struct AISettingsWindow : public Window {
 		this->resize.step_height = 14;
 		this->vscroll.cap = (this->widget[AIS_WIDGET_BACKGROUND].bottom - this->widget[AIS_WIDGET_BACKGROUND].top) / 14 + 1;
 		this->widget[AIS_WIDGET_BACKGROUND].data = (this->vscroll.cap << 8) + 1;
-		SetVScrollCount(this, this->ai_config->GetConfigList()->size());
+		SetVScrollCount(this, (int)this->ai_config->GetConfigList()->size());
 		this->FindWindowPlacementAndResize(desc);
 	}
 

@@ -105,7 +105,7 @@ public:
 	 * Convert the custom settings to a string that can be stored in the config
 	 *  file or savegames.
 	 */
-	void SettingsToString(char *string, int size);
+	void SettingsToString(char *string, size_t size);
 
 private:
 	const char *name;

@@ -197,7 +197,7 @@ void AIConfig::StringToSettings(const char *value)
 	free(value_copy);
 }
 
-void AIConfig::SettingsToString(char *string, int size)
+void AIConfig::SettingsToString(char *string, size_t size)
 {
 	string[0] = '\0';
 	for (SettingValueList::iterator it = this->settings.begin(); it != this->settings.end(); it++) {
