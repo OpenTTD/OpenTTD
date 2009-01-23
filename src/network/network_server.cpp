@@ -586,6 +586,32 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientSocket *cs, uint1
 	cs->Send_Packet(p);
 }
 
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_MOVE)(NetworkClientSocket *cs, ClientID client_id, CompanyID company_id)
+{
+	Packet *p = NetworkSend_Init(PACKET_SERVER_MOVE);
+
+	p->Send_uint32(client_id);
+	p->Send_uint8(company_id);
+	cs->Send_Packet(p);
+}
+
+DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_COMPANY_UPDATE)(NetworkClientSocket *cs)
+{
+	Packet *p = NetworkSend_Init(PACKET_SERVER_COMPANY_UPDATE);
+
+	p->Send_uint16(_network_company_passworded);
+	cs->Send_Packet(p);
+}
+
+DEF_SERVER_SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
+{
+	Packet *p = NetworkSend_Init(PACKET_SERVER_CONFIG_UPDATE);
+
+	p->Send_uint8(_settings_client.network.max_companies);
+	p->Send_uint8(_settings_client.network.max_spectators);
+	cs->Send_Packet(p);
+}
+
 // **********
 // Receiving functions
 //   DEF_SERVER_RECEIVE_COMMAND has parameter: NetworkClientSocket *cs, Packet *p
@@ -803,6 +829,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 
 			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "", CLIENT_ID_SERVER, NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT);
 		}
+
+		/* also update the new client with our max values */
+		SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)(cs);
+
+		/* quickly update the syncing client with company details */
+		SEND_COMMAND(PACKET_SERVER_COMPANY_UPDATE)(cs);
 	} else {
 		// Wrong status for this packet, give a warning to client, and close connection
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
@@ -869,6 +901,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 	if (cp.cmd == CMD_COMPANY_CTRL) {
 		if (cp.p1 != 0) {
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_CHEATER);
+			return;
+		}
+
+		/* Check if we are full - else it's possible for spectators to send a CMD_COMPANY_CTRL and the company is created regardless of max_companies! */
+		if (ActiveCompanyCount() >= _settings_client.network.max_companies) {
+			NetworkServerSendChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_CLIENT, ci->client_id, "cannot create new company, server full", CLIENT_ID_SERVER);
 			return;
 		}
 
@@ -1145,6 +1183,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 
 	if (IsValidCompanyID(ci->client_playas)) {
 		strecpy(_network_company_states[ci->client_playas].password, password, lastof(_network_company_states[ci->client_playas].password));
+		NetworkServerUpdateCompanyPassworded(ci->client_playas, !StrEmpty(_network_company_states[ci->client_playas].password));
 	}
 }
 
@@ -1197,6 +1236,30 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 	return;
 }
 
+DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MOVE)
+{
+	CompanyID company_id = (Owner)p->Recv_uint8();
+
+	/* Check if the company is valid */
+	if (!IsValidCompanyID(company_id) && company_id != COMPANY_SPECTATOR) return;
+
+	/* Check if we require a password for this company */
+	if (company_id != COMPANY_SPECTATOR && !StrEmpty(_network_company_states[company_id].password)) {
+		/* we need a password from the client - should be in this packet */
+		char password[NETWORK_PASSWORD_LENGTH];
+		p->Recv_string(password, sizeof(password));
+
+		/* Incorrect password sent, return! */
+		if (strcmp(password, _network_company_states[company_id].password) != 0) {
+			DEBUG(net, 2, "[move] wrong password from client-id #%d for company #%d", cs->client_id, company_id + 1);
+			return;
+		}
+	}
+
+	/* if we get here we can move the client */
+	NetworkServerDoMove(cs->client_id, company_id);
+}
+
 // The layout for the receive-functions by the server
 typedef void NetworkServerPacket(NetworkClientSocket *cs, Packet *p);
 
@@ -1240,6 +1303,10 @@ static NetworkServerPacket * const _network_server_packet[] = {
 	RECEIVE_COMMAND(PACKET_CLIENT_RCON),
 	NULL, /*PACKET_CLIENT_CHECK_NEWGRFS,*/
 	RECEIVE_COMMAND(PACKET_CLIENT_NEWGRFS_CHECKED),
+	NULL, /*PACKET_SERVER_MOVE,*/
+	RECEIVE_COMMAND(PACKET_CLIENT_MOVE),
+	NULL, /*PACKET_SERVER_COMPANY_UPDATE,*/
+	NULL, /*PACKET_SERVER_CONFIG_UPDATE,*/
 };
 
 // If this fails, check the array above with network_data.h
@@ -1394,6 +1461,7 @@ static void NetworkAutoCleanCompanies()
 				_network_company_states[c->index].password[0] = '\0';
 				IConsolePrintF(CC_DEFAULT, "Auto-removed protection from company #%d", c->index + 1);
 				_network_company_states[c->index].months_empty = 0;
+				NetworkServerUpdateCompanyPassworded(c->index, false);
 			}
 		} else {
 			/* It is not empty, reset the date */
@@ -1633,6 +1701,63 @@ void NetworkServerShowStatusToConsole()
 			ci->client_playas + (IsValidCompanyID(ci->client_playas) ? 1 : 0),
 			GetClientIP(ci), ci->unique_id);
 	}
+}
+
+/**
+ * Send Config Update
+ */
+void NetworkServerSendConfigUpdate()
+{
+	NetworkClientSocket *cs;
+
+	FOR_ALL_CLIENT_SOCKETS(cs) {
+		SEND_COMMAND(PACKET_SERVER_CONFIG_UPDATE)(cs);
+	}
+}
+
+void NetworkServerUpdateCompanyPassworded(CompanyID company_id, bool passworded)
+{
+	if (NetworkCompanyIsPassworded(company_id) == passworded) return;
+
+	SB(_network_company_passworded, company_id, 1, !!passworded);
+
+	NetworkClientSocket *cs;
+	FOR_ALL_CLIENT_SOCKETS(cs) {
+		SEND_COMMAND(PACKET_SERVER_COMPANY_UPDATE)(cs);
+	}
+}
+
+/**
+ * Handle the tid-bits of moving a client from one company to another.
+ * @param client_id id of the client we want to move.
+ * @param company_id id of the company we want to move the client to.
+ * @return void
+ **/
+void NetworkServerDoMove(ClientID client_id, CompanyID company_id)
+{
+	/* Only allow non-dedicated servers and normal clients to be moved */
+	if (client_id == CLIENT_ID_SERVER && _network_dedicated) return;
+
+	NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+
+	/* No need to waste network resources if the client is in the company already! */
+	if (ci->client_playas == company_id) return;
+
+	ci->client_playas = company_id;
+
+	if (client_id == CLIENT_ID_SERVER) {
+		SetLocalCompany(company_id);
+	} else {
+		SEND_COMMAND(PACKET_SERVER_MOVE)(NetworkFindClientStateFromClientID(client_id), client_id, company_id);
+	}
+
+	/* announce the client's move */
+	NetworkUpdateClientInfo(client_id);
+
+	NetworkAction action = (company_id == COMPANY_SPECTATOR) ? NETWORK_ACTION_COMPANY_SPECTATOR : NETWORK_ACTION_COMPANY_JOIN;
+	NetworkServerSendChat(action, DESTTYPE_BROADCAST, 0, "", client_id, company_id + 1);
+
+	CheckMinActiveClients();
 }
 
 void NetworkServerSendRcon(ClientID client_id, ConsoleColour colour_code, const char *string)

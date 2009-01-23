@@ -752,8 +752,8 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 				break;
 			}
 
-			/* This is the joining client who wants a new company */
-			if (_local_company != _network_playas && _network_playas == c->index) {
+			/* This is the client (or non-dedicated server) who wants a new company */
+			if (cid == _network_own_client_id) {
 				assert(_local_company == COMPANY_SPECTATOR);
 				SetLocalCompany(c->index);
 				if (!StrEmpty(_settings_client.network.default_company_pass)) {
@@ -780,6 +780,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
 				* server-side in network_server.c:838, function
 				* DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
+				CompanyID old_playas = ci->client_playas;
 				ci->client_playas = c->index;
 				NetworkUpdateClientInfo(ci->client_id);
 
@@ -787,6 +788,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 					CompanyID company_backup = _local_company;
 					_network_company_states[c->index].months_empty = 0;
 					_network_company_states[c->index].password[0] = '\0';
+					NetworkServerUpdateCompanyPassworded(ci->client_playas, false);
 
 					/* XXX - When a client joins, we automatically set its name to the
 					* client's name (for some reason). As it stands now only the server
@@ -802,6 +804,11 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 					_local_company = ci->client_playas;
 					NetworkSend_Command(0, 0, 0, CMD_RENAME_PRESIDENT, NULL, ci->client_name);
 					_local_company = company_backup;
+				}
+
+				/* Announce new company on network, if the client was a SPECTATOR before */
+				if (old_playas == COMPANY_SPECTATOR) {
+					NetworkServerSendChat(NETWORK_ACTION_COMPANY_NEW, DESTTYPE_BROADCAST, 0, "", ci->client_id, ci->client_playas + 1);
 				}
 			}
 #endif /* ENABLE_NETWORK */

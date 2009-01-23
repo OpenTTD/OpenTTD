@@ -1180,6 +1180,13 @@ static int32 UpdateRconPassword(int32 p1)
 	return 0;
 }
 
+static int32 UpdateClientConfigValues(int32 p1)
+{
+	if (_network_server) NetworkServerSendConfigUpdate();
+
+	return 0;
+}
+
 #endif /* ENABLE_NETWORK */
 
 
@@ -1549,9 +1556,9 @@ const SettingDesc _patch_settings[] = {
 	 SDTC_BOOL(network.autoclean_companies,              S, NO, false,                        STR_NULL,                                       NULL),
 	  SDTC_VAR(network.autoclean_unprotected, SLE_UINT8, S,D0|NO,  12,     0,         240, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.autoclean_protected,   SLE_UINT8, S,D0|NO,  36,     0,         240, 0, STR_NULL,                                       NULL),
-	  SDTC_VAR(network.max_companies,         SLE_UINT8, S, NO,     8,     1,MAX_COMPANIES,0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_companies,         SLE_UINT8, S, NO,     8,     1,MAX_COMPANIES,0, STR_NULL,                                       UpdateClientConfigValues),
 	  SDTC_VAR(network.max_clients,           SLE_UINT8, S, NO,    10,     2, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
-	  SDTC_VAR(network.max_spectators,        SLE_UINT8, S, NO,    10,     0, MAX_CLIENTS, 0, STR_NULL,                                       NULL),
+	  SDTC_VAR(network.max_spectators,        SLE_UINT8, S, NO,    10,     0, MAX_CLIENTS, 0, STR_NULL,                                       UpdateClientConfigValues),
 	  SDTC_VAR(network.restart_game_year,     SLE_INT32, S,D0|NO|NC,0, MIN_YEAR, MAX_YEAR, 1, STR_NULL,                                       NULL),
 	  SDTC_VAR(network.min_active_clients,    SLE_UINT8, S, NO,     0,     0, MAX_CLIENTS, 0, STR_NULL,                                       UpdateMinActiveClients),
 	SDTC_OMANY(network.server_lang,           SLE_UINT8, S, NO,     0,    35, "ANY|ENGLISH|GERMAN|FRENCH|BRAZILIAN|BULGARIAN|CHINESE|CZECH|DANISH|DUTCH|ESPERANTO|FINNISH|HUNGARIAN|ICELANDIC|ITALIAN|JAPANESE|KOREAN|LITHUANIAN|NORWEGIAN|POLISH|PORTUGUESE|ROMANIAN|RUSSIAN|SLOVAK|SLOVENIAN|SPANISH|SWEDISH|TURKISH|UKRAINIAN|AFRIKAANS|CROATIAN|CATALAN|ESTONIAN|GALICIAN|GREEK|LATVIAN", STR_NULL, NULL),

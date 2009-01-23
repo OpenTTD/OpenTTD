@@ -45,6 +45,7 @@
 
 #include "network/network.h"
 #include "network/network_gui.h"
+#include "network/network_func.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -199,6 +200,13 @@ static void PopupMainToolbMenu(Window *w, int widget, StringID string, int count
 	SndPlayFx(SND_15_BEEP);
 }
 
+/** Enum for the Company Toolbar's network related buttons */
+enum {
+	CTMN_CLIENT_LIST = -1, ///< Show the client list
+	CTMN_NEW_COMPANY = -2, ///< Create a new company
+	CTMN_SPECTATE    = -3, ///< Become spectator
+};
+
 /**
  * Pop up a generic company list menu.
  */
@@ -206,17 +214,25 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 {
 	DropDownList *list = new DropDownList();
 
+#ifdef ENABLE_NETWORK
 	if (widget == TBN_COMPANIES && _networking) {
 		/* Add the client list button for the companies menu */
-		list->push_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST, -1, false));
+		list->push_back(new DropDownListStringItem(STR_NETWORK_CLIENT_LIST, CTMN_CLIENT_LIST, false));
+
+		if (_local_company == COMPANY_SPECTATOR) {
+			list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_NEW_COMPANY, CTMN_NEW_COMPANY, NetworkMaxCompaniesReached()));
+		} else {
+			list->push_back(new DropDownListStringItem(STR_NETWORK_COMPANY_LIST_SPECTATE, CTMN_SPECTATE, NetworkMaxSpectatorsReached()));
+		}
 	}
+#endif /* ENABLE_NETWORK */
 
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (!IsValidCompanyID(c)) continue;
 		list->push_back(new DropDownListCompanyItem(c, false, HasBit(grey, c)));
 	}
 
-	ShowDropDownList(w, list, _local_company == COMPANY_SPECTATOR ? -1 : _local_company, widget, 240, true, true);
+	ShowDropDownList(w, list, _local_company == COMPANY_SPECTATOR ? CTMN_CLIENT_LIST : _local_company, widget, 240, true, true);
 	SndPlayFx(SND_15_BEEP);
 }
 
@@ -448,11 +464,33 @@ static void ToolbarCompaniesClick(Window *w)
 
 static void MenuClickCompany(int index)
 {
-	if (_networking && index == -1) {
-		ShowClientList();
-	} else {
-		ShowCompany((CompanyID)index);
+#ifdef ENABLE_NETWORK
+	if (_networking) {
+		switch (index) {
+			case CTMN_CLIENT_LIST:
+				ShowClientList();
+				return;
+
+			case CTMN_NEW_COMPANY:
+				if (_network_server) {
+					DoCommandP(0, 0, _network_own_client_id, CMD_COMPANY_CTRL);
+				} else {
+					NetworkSend_Command(0, 0, 0, CMD_COMPANY_CTRL, NULL, NULL);
+				}
+				return;
+
+			case CTMN_SPECTATE:
+				if (_network_server) {
+					NetworkServerDoMove(CLIENT_ID_SERVER, COMPANY_SPECTATOR);
+					MarkWholeScreenDirty();
+				} else {
+					NetworkClientRequestMove(COMPANY_SPECTATOR);
+				}
+				return;
+		}
 	}
+#endif /* ENABLE_NETWORK */
+	ShowCompany((CompanyID)index);
 }
 
 /* --- Graphs button menu --- */

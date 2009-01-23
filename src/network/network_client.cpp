@@ -7,6 +7,7 @@
 #include "../stdafx.h"
 #include "../debug.h"
 #include "../openttd.h"
+#include "../gfx_func.h"
 #include "network_internal.h"
 #include "core/tcp.h"
 #include "network_client.h"
@@ -25,6 +26,7 @@
 #include "../company_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
+#include "../company_type.h"
 #include "../settings_type.h"
 #include "../rev.h"
 
@@ -42,6 +44,11 @@ static uint32 last_ack_frame;
 static uint32 _password_game_seed;
 /** The other bit of 'entropy' used to generate a salt for the company passwords. */
 static char _password_server_unique_id[NETWORK_UNIQUE_ID_LENGTH];
+
+/** Maximum number of companies of the currently joined server. */
+static uint8 _network_server_max_companies;
+/** Maximum number of spectators of the currently joined server. */
+static uint8 _network_server_max_spectators;
 
 /** Make sure the unique ID length is the same as a md5 hash. */
 assert_compile(NETWORK_UNIQUE_ID_LENGTH == 16 * 2 + 1);
@@ -86,6 +93,10 @@ void HashCurrentCompanyPassword(const char *password)
 
 	const char *new_pw = GenerateCompanyPasswordHash(password);
 	strecpy(_network_company_states[_local_company].password, new_pw, lastof(_network_company_states[_local_company].password));
+
+	if (_network_server) {
+		NetworkServerUpdateCompanyPassworded(_local_company, !StrEmpty(_network_company_states[_local_company].password));
+	}
 }
 
 
@@ -312,6 +323,14 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_RCON);
 	p->Send_string(pass);
 	p->Send_string(command);
+	MY_CLIENT->Send_Packet(p);
+}
+
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char *pass)
+{
+	Packet *p = NetworkSend_Init(PACKET_CLIENT_MOVE);
+	p->Send_uint8(company);
+	p->Send_string(GenerateCompanyPasswordHash(pass));
 	MY_CLIENT->Send_Packet(p);
 }
 
@@ -811,6 +830,51 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_RCON)
 	return NETWORK_RECV_STATUS_OKAY;
 }
 
+DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MOVE)
+{
+	/* Nothing more in this packet... */
+	ClientID client_id   = (ClientID)p->Recv_uint32();
+	CompanyID company_id = (CompanyID)p->Recv_uint8();
+
+	if (client_id == 0) {
+		/* definitely an invalid client id, debug message and do nothing. */
+		DEBUG(net, 0, "[move] received invalid client index = 0");
+		return NETWORK_RECV_STATUS_MALFORMED_PACKET;
+	}
+
+	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID(client_id);
+	/* Just make sure we do not try to use a client_index that does not exist */
+	if (ci == NULL) return NETWORK_RECV_STATUS_OKAY;
+
+	/* if not valid player, force spectator, else check player exists */
+	if (!IsValidCompanyID(company_id)) company_id = COMPANY_SPECTATOR;
+
+	if (client_id == _network_own_client_id) {
+		_network_playas = company_id;
+		SetLocalCompany(company_id);
+
+		/* Disable any buttons in any windows the client is now not supposed to get to, and do it fast. */
+		/* Do this ASAP else the client has a chance of sending DoCommands with an incorrect company_id (=kick)! */
+		MarkWholeScreenDirty();
+	}
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CONFIG_UPDATE)
+{
+	_network_server_max_companies = p->Recv_uint8();
+	_network_server_max_spectators = p->Recv_uint8();
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
+
+DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_UPDATE)
+{
+	_network_company_passworded = p->Recv_uint16();
+
+	return NETWORK_RECV_STATUS_OKAY;
+}
 
 
 // The layout for the receive-functions by the client
@@ -855,6 +919,10 @@ static NetworkClientPacket * const _network_client_packet[] = {
 	NULL, /*PACKET_CLIENT_RCON,*/
 	RECEIVE_COMMAND(PACKET_SERVER_CHECK_NEWGRFS),
 	NULL, /*PACKET_CLIENT_NEWGRFS_CHECKED,*/
+	RECEIVE_COMMAND(PACKET_SERVER_MOVE),
+	NULL, /* PACKET_CLIENT_MOVE */
+	RECEIVE_COMMAND(PACKET_SERVER_COMPANY_UPDATE),
+	RECEIVE_COMMAND(PACKET_SERVER_CONFIG_UPDATE),
 };
 
 // If this fails, check the array above with network_data.h
@@ -895,6 +963,17 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientSocket *cs)
 void NetworkClientSendRcon(const char *password, const char *command)
 {
 	SEND_COMMAND(PACKET_CLIENT_RCON)(password, command);
+}
+
+/**
+ * Notify the server of this client wanting to be moved to another company.
+ * @param company_id id of the company the client wishes to be moved to.
+ * @param pass the password, is only checked on the server end if a password is needed.
+ * @return void
+ */
+void NetworkClientRequestMove(CompanyID company_id, const char *pass)
+{
+	SEND_COMMAND(PACKET_CLIENT_MOVE)(company_id, pass);
 }
 
 void NetworkUpdateClientName()
@@ -943,6 +1022,24 @@ bool NetworkClientPreferTeamChat(const NetworkClientInfo *cio)
 	}
 
 	return false;
+}
+
+/**
+ * Check if max_companies has been reached on the server (local check only).
+ * @return true if the max value has been reached or exceeded, false otherwise.
+ */
+bool NetworkMaxCompaniesReached()
+{
+	return ActiveCompanyCount() >= (_network_server ? _settings_client.network.max_companies : _network_server_max_companies);
+}
+
+/**
+ * Check if max_spectatos has been reached on the server (local check only).
+ * @return true if the max value has been reached or exceeded, false otherwise.
+ */
+bool NetworkMaxSpectatorsReached()
+{
+	return NetworkSpectatorCount() >= (_network_server ? _settings_client.network.max_spectators : _network_server_max_spectators);
 }
 
 /**

@@ -18,6 +18,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_PASSWORD)(const char *password);
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_SET_NAME)(const char *name);
 DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_ACK);
 DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_RCON)(const char *pass, const char *command);
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_MOVE)(CompanyID company, const char *pass);
 
 NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientSocket *cs);
 void NetworkClient_Connected();

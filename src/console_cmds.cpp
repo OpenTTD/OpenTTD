@@ -622,6 +622,86 @@ DEF_CONSOLE_CMD(ConKick)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConJoinCompany)
+{
+	if (argc < 2) {
+		IConsoleHelp("Request joining another company. Usage: join <company-id> [<password>]");
+		IConsoleHelp("For valid company-id see company list, use 255 for spectator");
+		return true;
+	}
+
+	CompanyID company_id = (CompanyID)(atoi(argv[1]) <= MAX_COMPANIES ? atoi(argv[1]) - 1 : atoi(argv[1]));
+
+	/* Check we have a valid company id! */
+	if (!IsValidCompanyID(company_id) && company_id != COMPANY_SPECTATOR) {
+		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		return true;
+	}
+
+	if (NetworkFindClientInfoFromClientID(_network_own_client_id)->client_playas == company_id) {
+		IConsoleError("You are already there!");
+		return true;
+	}
+
+	if (company_id == COMPANY_SPECTATOR && NetworkMaxSpectatorsReached()) {
+		IConsoleError("Cannot join spectators, maximum number of spectators reached.");
+		return true;
+	}
+
+	/* Check if the company requires a password */
+	if (NetworkCompanyIsPassworded(company_id) && argc < 3) {
+		IConsolePrintF(CC_ERROR, "Company %d requires a password to join.", company_id + 1);
+		return true;
+	}
+
+	/* non-dedicated server may just do the move! */
+	if (_network_server) {
+		NetworkServerDoMove(CLIENT_ID_SERVER, company_id);
+	} else {
+		NetworkClientRequestMove(company_id, NetworkCompanyIsPassworded(company_id) ? argv[2] : "");
+	}
+
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConMoveClient)
+{
+	if (argc < 3) {
+		IConsoleHelp("Move a client to another company. Usage: move <client-id> <company-id>");
+		IConsoleHelp("For valid client-id see 'clients', for valid company-id see 'companies', use 255 for moving to spectators");
+		return true;
+	}
+
+	const NetworkClientInfo *ci = NetworkFindClientInfoFromClientID((ClientID)atoi(argv[1]));
+	CompanyID company_id = (CompanyID)(atoi(argv[2]) <= MAX_COMPANIES ? atoi(argv[2]) - 1 : atoi(argv[2]));
+
+	/* check the client exists */
+	if (ci == NULL) {
+		IConsoleError("Invalid client-id, check the command 'clients' for valid client-id's.");
+		return true;
+	}
+
+	if (!IsValidCompanyID(company_id) && company_id != COMPANY_SPECTATOR) {
+		IConsolePrintF(CC_ERROR, "Company does not exist. Company-id must be between 1 and %d.", MAX_COMPANIES);
+		return true;
+	}
+
+	if (ci->client_id == CLIENT_ID_SERVER && _network_dedicated) {
+		IConsoleError("Silly boy, you cannot move the server!");
+		return true;
+	}
+
+	if (ci->client_playas == company_id) {
+		IConsoleError("You cannot move someone to where he/she already is!");
+		return true;
+	}
+
+	/* we are the server, so force the update */
+	NetworkServerDoMove(ci->client_id, company_id);
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConResetCompany)
 {
 	CompanyID index;
@@ -1703,7 +1783,6 @@ void IConsoleStdLibRegister()
 
 	IConsoleCmdRegister("connect",         ConNetworkConnect);
 	IConsoleCmdHookAdd("connect",          ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
-	IConsoleAliasRegister("join",          "connect %A");
 	IConsoleCmdRegister("clients",         ConNetworkClients);
 	IConsoleCmdHookAdd("clients",          ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleCmdRegister("status",          ConStatus);
@@ -1714,6 +1793,11 @@ void IConsoleStdLibRegister()
 	IConsoleCmdRegister("rcon",            ConRcon);
 	IConsoleCmdHookAdd("rcon",             ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 
+	IConsoleCmdRegister("join",            ConJoinCompany);
+	IConsoleCmdHookAdd("join",             ICONSOLE_HOOK_ACCESS, ConHookClientOnly);
+	IConsoleAliasRegister("spectate",      "join 255");
+	IConsoleCmdRegister("move",            ConMoveClient);
+	IConsoleCmdHookAdd("move",             ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("reset_company",   ConResetCompany);
 	IConsoleCmdHookAdd("reset_company",    ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleAliasRegister("clean_company", "reset_company %A");

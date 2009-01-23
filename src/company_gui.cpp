@@ -13,6 +13,7 @@
 #include "command_func.h"
 #include "network/network.h"
 #include "network/network_gui.h"
+#include "network/network_func.h"
 #include "variables.h"
 #include "roadveh.h"
 #include "train.h"
@@ -1054,6 +1055,7 @@ enum CompanyWindowWidgets {
 	CW_WIDGET_BUY_SHARE,
 	CW_WIDGET_SELL_SHARE,
 	CW_WIDGET_COMPANY_PASSWORD,
+	CW_WIDGET_COMPANY_JOIN,
 };
 
 static const Widget _company_widgets[] = {
@@ -1069,6 +1071,7 @@ static const Widget _company_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   179,   158,   169, STR_7077_BUY_25_SHARE_IN_COMPANY,  STR_7079_BUY_25_SHARE_IN_THIS_COMPANY},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   180,   359,   158,   169, STR_7078_SELL_25_SHARE_IN_COMPANY, STR_707A_SELL_25_SHARE_IN_THIS_COMPANY},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,   138,   149, STR_COMPANY_PASSWORD,              STR_COMPANY_PASSWORD_TOOLTIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,    46,    57, STR_COMPANY_JOIN,                  STR_COMPANY_JOIN_TIP},
 {   WIDGETS_END},
 };
 
@@ -1187,6 +1190,8 @@ struct CompanyWindow : Window
 		this->SetWidgetHiddenState(CW_WIDGET_BUY_SHARE,        local);
 		this->SetWidgetHiddenState(CW_WIDGET_SELL_SHARE,       local);
 		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_PASSWORD, !local || !_networking);
+		this->SetWidgetHiddenState(CW_WIDGET_COMPANY_JOIN,     local || !_networking);
+		this->SetWidgetDisabledState(CW_WIDGET_COMPANY_JOIN,   !IsHumanCompany(c->index));
 
 		if (!local) {
 			if (_settings_game.economy.allow_shares) { // Shares are allowed
@@ -1298,6 +1303,22 @@ struct CompanyWindow : Window
 			case CW_WIDGET_COMPANY_PASSWORD:
 				if (this->window_number == _local_company) ShowNetworkCompanyPasswordWindow(this);
 				break;
+
+			case CW_WIDGET_COMPANY_JOIN: {
+				this->query_widget = CW_WIDGET_COMPANY_JOIN;
+				CompanyID company = (CompanyID)this->window_number;
+				if (_network_server) {
+					NetworkServerDoMove(CLIENT_ID_SERVER, company);
+					MarkWholeScreenDirty();
+				} else if (NetworkCompanyIsPassworded(company)) {
+					/* ask for the password */
+					ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, 20, 180, this, CS_ALPHANUMERAL, QSF_NONE);
+				} else {
+					/* just send the join command */
+					NetworkClientRequestMove(company);
+				}
+				break;
+			}
 #endif /* ENABLE_NETWORK */
 		}
 	}
@@ -1335,6 +1356,12 @@ struct CompanyWindow : Window
 			case CW_WIDGET_COMPANY_NAME:
 				DoCommandP(0, 0, 0, CMD_RENAME_COMPANY | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME), NULL, str);
 				break;
+
+#ifdef ENABLE_NETWORK
+			case CW_WIDGET_COMPANY_JOIN:
+				NetworkClientRequestMove((CompanyID)this->window_number, str);
+				break;
+#endif /* ENABLE_NETWORK */
 		}
 	}
 };

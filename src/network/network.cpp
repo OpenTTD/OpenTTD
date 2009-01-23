@@ -75,6 +75,7 @@ bool _network_first_time;
 bool _network_udp_server;
 uint16 _network_udp_broadcast;
 uint8 _network_advertise_retries;
+CompanyMask _network_company_passworded; ///< Bitmask of the password status of all companies.
 
 /* Check whether NETWORK_NUM_LANDSCAPES is still in sync with NUM_LANDSCAPE */
 assert_compile((int)NETWORK_NUM_LANDSCAPES == (int)NUM_LANDSCAPE);
@@ -182,6 +183,16 @@ byte NetworkSpectatorCount()
 	return count;
 }
 
+/**
+ * Check if the company we want to join requires a password.
+ * @param company_id id of the company we want to check the 'passworded' flag for.
+ * @return true if the company requires a password.
+ */
+bool NetworkCompanyIsPassworded(CompanyID company_id)
+{
+	return HasBit(_network_company_passworded, company_id);
+}
+
 // This puts a text-message to the console, or in the future, the chat-box,
 //  (to keep it all a bit more general)
 // If 'self_send' is true, this is the client who is sending the message
@@ -198,6 +209,18 @@ void NetworkTextMessage(NetworkAction action, ConsoleColour color, bool self_sen
 			strid = STR_NETWORK_SERVER_MESSAGE;
 			color = CC_DEFAULT;
 			data = STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS + data;
+			break;
+		case NETWORK_ACTION_COMPANY_SPECTATOR:
+			color = CC_DEFAULT;
+			strid = STR_NETWORK_CLIENT_COMPANY_SPECTATE;
+			break;
+		case NETWORK_ACTION_COMPANY_JOIN:
+			color = CC_DEFAULT;
+			strid = STR_NETWORK_CLIENT_COMPANY_JOIN;
+			break;
+		case NETWORK_ACTION_COMPANY_NEW:
+			color = CC_DEFAULT;
+			strid = STR_NETWORK_CLIENT_COMPANY_NEW;
 			break;
 		case NETWORK_ACTION_JOIN:           strid = STR_NETWORK_CLIENT_JOINED; break;
 		case NETWORK_ACTION_LEAVE:          strid = STR_NETWORK_CLIENT_LEFT; break;
