@@ -786,6 +786,7 @@ CommandCost CmdCompanyCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 				if (IsValidCompanyID(ci->client_playas)) {
 					CompanyID company_backup = _local_company;
 					_network_company_states[c->index].months_empty = 0;
+					_network_company_states[c->index].password[0] = '\0';
 
 					/* XXX - When a client joins, we automatically set its name to the
 					* client's name (for some reason). As it stands now only the server
