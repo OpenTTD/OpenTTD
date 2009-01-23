@@ -8,7 +8,9 @@
 #include "../../openttd.h"
 #include "../../tile_type.h"
 #include "../../industry.h"
+#include "../../tile_map.h"
 #include "../../strings_func.h"
+#include "../../station_map.h"
 #include "../../station_func.h"
 #include "table/strings.h"
 
@@ -161,7 +163,14 @@
 	if (!IsValidIndustry(industry_id)) return INVALID_TILE;
 	if (!HasHeliportAndDock(industry_id)) return INVALID_TILE;
 
-	return ::GetIndustry(industry_id)->xy;
+	const Industry *ind = ::GetIndustry(industry_id);
+	BEGIN_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
+		if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
+			return tile_cur;
+		}
+	END_TILE_LOOP(tile_cur, ind->width, ind->height, ind->xy);
+
+	return INVALID_TILE;
 }
 
 /* static */ IndustryType AIIndustry::GetIndustryType(IndustryID industry_id)
