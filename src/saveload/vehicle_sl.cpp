@@ -170,8 +170,8 @@ void UpdateOldAircraft()
 
 	Vehicle *v_oldstyle;
 	FOR_ALL_VEHICLES(v_oldstyle) {
-	/* airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
-	 * skip those */
+		/* airplane has another vehicle with subtype 4 (shadow), helicopter also has 3 (rotor)
+		 * skip those */
 		if (v_oldstyle->type == VEH_AIRCRAFT && IsNormalAircraft(v_oldstyle)) {
 			/* airplane in terminal stopped doesn't hurt anyone, so goto next */
 			if (v_oldstyle->vehstatus & VS_STOPPED && v_oldstyle->u.air.state == 0) {
@@ -181,6 +181,7 @@ void UpdateOldAircraft()
 
 			AircraftLeaveHangar(v_oldstyle); // make airplane visible if it was in a depot for example
 			v_oldstyle->vehstatus &= ~VS_STOPPED; // make airplane moving
+			v_oldstyle->cur_speed = v_oldstyle->max_speed; // so aircraft don't have zero speed while in air
 			if (!v_oldstyle->current_order.IsType(OT_GOTO_STATION) && !v_oldstyle->current_order.IsType(OT_GOTO_DEPOT)) {
 				/* reset current order so aircraft doesn't have invalid "station-only" order */
 				v_oldstyle->current_order.MakeDummy();
