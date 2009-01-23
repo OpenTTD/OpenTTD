@@ -96,7 +96,7 @@ static void DrawSurfaceToScreen()
 	}
 }
 
-static const Dimension default_resolutions[] = {
+static const Dimension _default_resolutions[] = {
 	{ 640,  480},
 	{ 800,  600},
 	{1024,  768},
@@ -112,36 +112,33 @@ static const Dimension default_resolutions[] = {
 
 static void GetVideoModes()
 {
-	int i;
-	SDL_Rect **modes;
+	SDL_Rect **modes = SDL_CALL SDL_ListModes(NULL, SDL_SWSURFACE | SDL_FULLSCREEN);
+	if (modes == NULL) usererror("sdl: no modes available");
 
-	modes = SDL_CALL SDL_ListModes(NULL, SDL_SWSURFACE + (_fullscreen ? SDL_FULLSCREEN : 0));
-
-	if (modes == NULL)
-		usererror("sdl: no modes available");
-
-	_all_modes = (modes == (void*)-1);
-
-	if (_all_modes) {
-		// all modes available, put some default ones here
-		memcpy(_resolutions, default_resolutions, sizeof(default_resolutions));
-		_num_resolutions = lengthof(default_resolutions);
+	_all_modes = (SDL_CALL SDL_ListModes(NULL, SDL_SWSURFACE | (_fullscreen ? SDL_FULLSCREEN : 0)) == (void*)-1);
+	if (modes == (void*)-1) {
+		int n = 0;
+		for (uint i = 0; i < lengthof(_default_resolutions); i++) {
+			if (SDL_VideoModeOK(_default_resolutions[i].width, _default_resolutions[i].height, 8, SDL_FULLSCREEN) != 0) {
+				_resolutions[n] = _default_resolutions[i];
+				if (++n == lengthof(_resolutions)) break;
+			}
+		}
+		_num_resolutions = n;
 	} else {
 		int n = 0;
-		for (i = 0; modes[i]; i++) {
+		for (int i = 0; modes[i]; i++) {
 			int w = modes[i]->w;
 			int h = modes[i]->h;
-			if (w >= 640 && h >= 480) {
-				int j;
-				for (j = 0; j < n; j++) {
-					if (_resolutions[j].width == w && _resolutions[j].height == h) break;
-				}
+			int j;
+			for (j = 0; j < n; j++) {
+				if (_resolutions[j].width == w && _resolutions[j].height == h) break;
+			}
 
-				if (j == n) {
-					_resolutions[j].width  = w;
-					_resolutions[j].height = h;
-					if (++n == lengthof(_resolutions)) break;
-				}
+			if (j == n) {
+				_resolutions[j].width  = w;
+				_resolutions[j].height = h;
+				if (++n == lengthof(_resolutions)) break;
 			}
 		}
 		_num_resolutions = n;
