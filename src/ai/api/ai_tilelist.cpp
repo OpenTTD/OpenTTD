@@ -78,13 +78,12 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 	if (!AIIndustry::IsValidIndustry(industry_id)) return;
 
 	const Industry *i = ::GetIndustry(industry_id);
-	const IndustrySpec *indsp = ::GetIndustrySpec(i->type);
 
 	/* Check if this industry accepts anything */
 	{
 		bool cargo_accepts = false;
-		for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
-			if (indsp->accepts_cargo[j] != CT_INVALID) cargo_accepts = true;
+		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+			if (i->accepts_cargo[j] != CT_INVALID) cargo_accepts = true;
 		}
 		if (!cargo_accepts) return;
 	}
@@ -102,8 +101,8 @@ AITileList_IndustryAccepting::AITileList_IndustryAccepting(IndustryID industry_i
 		::GetAcceptanceAroundTiles(accepts, cur_tile, 1, 1, radius);
 		{
 			bool cargo_accepts = false;
-			for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++) {
-				if (indsp->accepts_cargo[j] != CT_INVALID && accepts[indsp->accepts_cargo[j]] != 0) cargo_accepts = true;
+			for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+				if (i->accepts_cargo[j] != CT_INVALID && accepts[i->accepts_cargo[j]] != 0) cargo_accepts = true;
 			}
 			if (!cargo_accepts) continue;
 		}
@@ -117,13 +116,12 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 	if (!AIIndustry::IsValidIndustry(industry_id)) return;
 
 	const Industry *i = ::GetIndustry(industry_id);
-	const IndustrySpec *indsp = ::GetIndustrySpec(i->type);
 
 	/* Check if this industry produces anything */
 	{
 		bool cargo_produces = false;
-		for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
-			if (indsp->produced_cargo[j] != CT_INVALID) cargo_produces = true;
+		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+			if (i->produced_cargo[j] != CT_INVALID) cargo_produces = true;
 		}
 		if (!cargo_produces) return;
 	}
@@ -141,8 +139,8 @@ AITileList_IndustryProducing::AITileList_IndustryProducing(IndustryID industry_i
 		::GetProductionAroundTiles(produces, cur_tile, 1, 1, radius);
 		{
 			bool cargo_produces = false;
-			for (byte j = 0; j < lengthof(indsp->produced_cargo); j++) {
-				if (indsp->produced_cargo[j] != CT_INVALID && produces[indsp->produced_cargo[j]] != 0) cargo_produces = true;
+			for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+				if (i->produced_cargo[j] != CT_INVALID && produces[i->produced_cargo[j]] != 0) cargo_produces = true;
 			}
 			if (!cargo_produces) continue;
 		}

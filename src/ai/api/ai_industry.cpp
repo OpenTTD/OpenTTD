@@ -45,10 +45,10 @@
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
 	const Industry *i = ::GetIndustry(industry_id);
-	const IndustrySpec *indsp = ::GetIndustrySpec(i->type);
 
-	for (byte j = 0; j < lengthof(indsp->produced_cargo); j++)
-		if (indsp->produced_cargo[j] == cargo_id) return i->production_rate[j] * 8;
+	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+		if (i->produced_cargo[j] == cargo_id) return i->production_rate[j] * 8;
+	}
 
 	return -1;
 }
@@ -59,10 +59,10 @@
 	if (!AICargo::IsValidCargo(cargo_id)) return false;
 
 	const Industry *i = ::GetIndustry(industry_id);
-	const IndustrySpec *indsp = ::GetIndustrySpec(i->type);
 
-	for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++)
-		if (indsp->accepts_cargo[j] == cargo_id) return true;
+	for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+		if (i->accepts_cargo[j] == cargo_id) return true;
+	}
 
 	return false;
 }
@@ -89,10 +89,10 @@
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
 	const Industry *i = ::GetIndustry(industry_id);
-	const IndustrySpec *indsp = ::GetIndustrySpec(i->type);
 
-	for (byte j = 0; j < lengthof(indsp->produced_cargo); j++)
-		if (indsp->produced_cargo[j] == cargo_id) return i->last_month_production[j];
+	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+		if (i->produced_cargo[j] == cargo_id) return i->last_month_production[j];
+	}
 
 	return -1;
 }
@@ -103,10 +103,10 @@
 	if (!AICargo::IsValidCargo(cargo_id)) return -1;
 
 	const Industry *i = ::GetIndustry(industry_id);
-	const IndustrySpec *indsp = ::GetIndustrySpec(i->type);
 
-	for (byte j = 0; j < lengthof(indsp->produced_cargo); j++)
-		if (indsp->produced_cargo[j] == cargo_id) return i->last_month_transported[j];
+	for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+		if (i->produced_cargo[j] == cargo_id) return i->last_month_transported[j];
+	}
 
 	return -1;
 }

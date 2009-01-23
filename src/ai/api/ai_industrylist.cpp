@@ -18,25 +18,21 @@ AIIndustryList::AIIndustryList()
 AIIndustryList_CargoAccepting::AIIndustryList_CargoAccepting(CargoID cargo_id)
 {
 	const Industry *i;
-	const IndustrySpec *indsp;
 
 	FOR_ALL_INDUSTRIES(i) {
-		indsp = ::GetIndustrySpec(i->type);
-
-		for (byte j = 0; j < lengthof(indsp->accepts_cargo); j++)
-			if (indsp->accepts_cargo[j] == cargo_id) this->AddItem(i->index);
+		for (byte j = 0; j < lengthof(i->accepts_cargo); j++) {
+			if (i->accepts_cargo[j] == cargo_id) this->AddItem(i->index);
+		}
 	}
 }
 
 AIIndustryList_CargoProducing::AIIndustryList_CargoProducing(CargoID cargo_id)
 {
 	const Industry *i;
-	const IndustrySpec *indsp;
 
 	FOR_ALL_INDUSTRIES(i) {
-		indsp = ::GetIndustrySpec(i->type);
-
-		for (byte j = 0; j < lengthof(indsp->produced_cargo); j++)
-			if (indsp->produced_cargo[j] == cargo_id) this->AddItem(i->index);
+		for (byte j = 0; j < lengthof(i->produced_cargo); j++) {
+			if (i->produced_cargo[j] == cargo_id) this->AddItem(i->index);
+		}
 	}
 }
