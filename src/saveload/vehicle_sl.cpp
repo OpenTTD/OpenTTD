@@ -274,8 +274,15 @@ void AfterLoadVehicles(bool part_of_load)
 	}
 
 	/* Stop non-front engines */
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_TRAIN && IsTrainEngine(v) && !IsFrontEngine(v)) v->vehstatus |= VS_STOPPED;
+	if (CheckSavegameVersion(112)) {
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_TRAIN && !IsFrontEngine(v)) {
+				if (IsTrainEngine(v)) v->vehstatus |= VS_STOPPED;
+				/* cur_speed is now relevant for non-front parts - nonzero breaks
+				 * moving-wagons-inside-depot- and autoreplace- code */
+				v->cur_speed = 0;
+			}
+		}
 	}
 
 	FOR_ALL_VEHICLES(v) {
