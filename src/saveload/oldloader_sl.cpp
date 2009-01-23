@@ -666,10 +666,10 @@ static bool LoadOldCargoPaymentRate(LoadgameState *ls, int num)
 		* which otherwise would cause much less income while the annual running costs of
 		* the vehicles stay the same" */
 
-		Money m = ((((Money)_old_price) << 16) + _old_price_frac) * 124 / 74;
+		Money m = ((((Money)_old_price) << 16) + (uint)_old_price_frac) * 124 / 74;
 
 		_old_price = m >> 16;
-		_old_price_frac = GB(m, 0, 16);
+		_old_price_frac = GB((int64)m, 0, 16);
 	}
 
 	_cargo_payment_rates[num] = -_old_price;
