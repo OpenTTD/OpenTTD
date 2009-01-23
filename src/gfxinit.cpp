@@ -469,7 +469,7 @@ bool OBGFileScanner::AddFile(const char *filename, size_t basepath_length)
 	if (FillGraphicsSetDetails(graphics, ini, path)) {
 		bool duplicate = false;
 		for (const GraphicsSet *c = _available_graphics_sets; !duplicate && c != NULL; c = c->next) {
-			duplicate = (strcmp(c->name, graphics->name) == 0) || (c->shortname == graphics->shortname && c->version == graphics->version);
+			duplicate = (strcmp(c->name, graphics->name) == 0 || c->shortname == graphics->shortname) && c->version == graphics->version;
 		}
 		if (duplicate) {
 			delete graphics;
