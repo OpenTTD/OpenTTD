@@ -1716,8 +1716,10 @@ static void AILoadConfig(IniFile *ini, const char *grpname)
 
 		config->ChangeAI(item->name);
 		if (!config->HasAI()) {
-			if (strcmp(item->name, "none") != 0) DEBUG(ai, 0, "The AI by the name '%s' was no longer found, and removed from the list.", item->name);
-			continue;
+			if (strcmp(item->name, "none") != 0) {
+				DEBUG(ai, 0, "The AI by the name '%s' was no longer found, and removed from the list.", item->name);
+				continue;
+			}
 		}
 		config->StringToSettings(item->value);
 	}
@@ -1801,12 +1803,11 @@ static void AISaveConfig(IniFile *ini, const char *grpname)
 		AIConfig *config = AIConfig::GetConfig(c, true);
 		const char *name;
 		char value[1024];
+		config->SettingsToString(value, lengthof(value));
 
 		if (config->HasAI()) {
-			config->SettingsToString(value, lengthof(value));
 			name = config->GetName();
 		} else {
-			value[0] = '\0';
 			name = "none";
 		}
 

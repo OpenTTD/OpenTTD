@@ -29,8 +29,14 @@ static void SaveReal_AIPL(int *index_ptr)
 	CompanyID index = (CompanyID)*index_ptr;
 	AIConfig *config = AIConfig::GetConfig(index);
 
-	ttd_strlcpy(_ai_saveload_name, config->GetName(), lengthof(_ai_saveload_name));
-	_ai_saveload_version = config->GetVersion();
+	if (config->HasAI()) {
+		ttd_strlcpy(_ai_saveload_name, config->GetName(), lengthof(_ai_saveload_name));
+		_ai_saveload_version = config->GetVersion();
+	} else {
+		/* No AI is configured for this so store an empty string as name. */
+		_ai_saveload_name[0] = '\0';
+		_ai_saveload_version = -1;
+	}
 
 	_ai_saveload_settings[0] = '\0';
 	config->SettingsToString(_ai_saveload_settings, lengthof(_ai_saveload_settings));
@@ -54,18 +60,23 @@ static void Load_AIPL()
 		_ai_saveload_version = -1;
 		SlObject(NULL, _ai_company);
 
-		config->ChangeAI(_ai_saveload_name, _ai_saveload_version);
-		if (!config->HasAI()) {
-			if (strcmp(_ai_saveload_name, "%_dummy") != 0) {
-				DEBUG(ai, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
-				DEBUG(ai, 0, "A random other AI will be loaded in its place.");
-			} else {
-				DEBUG(ai, 0, "The savegame had no AIs available at the time of saving.");
-				DEBUG(ai, 0, "A random available AI will be loaded now.");
+		if (StrEmpty(_ai_saveload_name)) {
+			/* A random AI. */
+			config->ChangeAI(NULL);
+		} else {
+			config->ChangeAI(_ai_saveload_name, _ai_saveload_version);
+			if (!config->HasAI()) {
+				if (strcmp(_ai_saveload_name, "%_dummy") != 0) {
+					DEBUG(ai, 0, "The savegame has an AI by the name '%s', version %d which is no longer available.", _ai_saveload_name, _ai_saveload_version);
+					DEBUG(ai, 0, "A random other AI will be loaded in its place.");
+				} else {
+					DEBUG(ai, 0, "The savegame had no AIs available at the time of saving.");
+					DEBUG(ai, 0, "A random available AI will be loaded now.");
+				}
+				/* Make sure the AI doesn't get the saveload data, as he was not the
+				 *  writer of the saveload data in the first place */
+				_ai_saveload_version = -1;
 			}
-			/* Make sure the AI doesn't get the saveload data, as he was not the
-			 *  writer of the saveload data in the first place */
-			_ai_saveload_version = -1;
 		}
 
 		config->StringToSettings(_ai_saveload_settings);
@@ -81,8 +92,6 @@ static void Load_AIPL()
 static void Save_AIPL()
 {
 	for (int i = COMPANY_FIRST; i < MAX_COMPANIES; i++) {
-		if (!AIConfig::GetConfig((CompanyID)i)->HasAI()) continue;
-
 		SlSetArrayIndex(i);
 		SlAutolength((AutolengthProc *)SaveReal_AIPL, &i);
 	}
