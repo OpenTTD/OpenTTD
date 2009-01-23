@@ -1094,26 +1094,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enable 
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}One or more tiles at the northern edge are not empty
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}One or more tiles at one of the edges is not water
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Land at all borders
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Water at north-east border only
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Water at south-east border only
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Water at north-east and south-east borders
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Water at south-west border only
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Water at north-east and south-west borders
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Water at south-east and south-west borders
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Land only at north-west border
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Water at north-west border only
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Water at north-west and north-east borders
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Water at north-west and south-east borders
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Land only at south-west border
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Water at north-west and south-west borders
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Land only at south-east border
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Land only at north-east border
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Water at all borders
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING1} {RED}Warning: High setting slows game
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
@@ -3509,6 +3489,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Height o
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
+
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Map edges:
+STR_NORTHWEST                                                   :{BLACK}Northwest
+STR_NORTHEAST                                                   :{BLACK}Northeast
+STR_SOUTHEAST                                                   :{BLACK}Southeast
+STR_SOUTHWEST                                                   :{BLACK}Southwest
+STR_BORDER_FREEFORM                                             :{BLACK}Freeform
+STR_BORDER_WATER                                                :{BLACK}Water
+STR_BORDER_RANDOM                                               :{BLACK}Random
+STR_BORDER_RANDOMIZE                                            :{BLACK}Random
+STR_BORDER_MANUAL                                               :{BLACK}Manual
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Small

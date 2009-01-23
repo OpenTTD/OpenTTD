@@ -1162,26 +1162,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Umožni
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Země na všech okrajích
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Voda pouze na severovýchodním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Voda pouze na jihovýchodním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Voda na severovýchodním a jihovýchodním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Voda pouze na jihozápadním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Voda na severovýchodním a jihozápadním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Voda na jihovýchodním a jihozápadním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Země pouze na severozápadním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Voda pouze na severozápadním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Voda na severozápadním a severovýchodním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Voda na severozápadním a jihovýchodním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Země pouze na jihozápadním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Voda na severozápadním a jihozápadním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Země pouze na jihovýchodním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Země pouze na severovýchodním okraji
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Voda na všech okrajích
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Největší rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoké nastavení zpomalí hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Údržba vrtulníků na heliportech: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat lištu na úpravy terénu s lištami na výstavbu tratí/silnic atd.: {ORANGE}{STRING}

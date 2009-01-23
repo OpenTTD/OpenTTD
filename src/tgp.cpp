@@ -552,13 +552,6 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 
 static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime);
 
-enum Borders {
-	BORDER_NE = 0,
-	BORDER_SE = 1,
-	BORDER_SW = 2,
-	BORDER_NW = 3,
-};
-
 /**
  * This routine sculpts in from the edge a random amount, again a Perlin
  * sequence, to avoid the rigid flat-edge slopes that were present before. The
@@ -725,6 +718,7 @@ static void HeightMapNormalize()
 	HeightMapAdjustWaterLevel(water_percent, h_max_new);
 
 	byte water_borders = _settings_game.construction.freeform_edges ? _settings_game.game_creation.water_borders : 0xF;
+	if (water_borders == BORDERS_RANDOM) water_borders = GB(Random(), 0, 4);
 
 	HeightMapCoastLines(water_borders);
 	HeightMapSmoothSlopes(roughness);

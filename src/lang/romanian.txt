@@ -1094,26 +1094,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Permite
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Una sau ma multe suprafeţe din marginea nordică nu sunt goale
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Una sau mai multe suprafeţe din marginea hărţii nu contin apă
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Pământ pe  toate marginile
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Apă doar la marginea nord-estică
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Apă doar la marginea sud-estică
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Apă la marginile nord-estice si sud-estice
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Apă doar la marginea sud-vestică
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Apă la marginile nord-estice si sud-vestice
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Apă la marginile sud-estice si sud-vestice
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Pământ doar la marginea nord+vestică
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Apă doar la marginea nord+vestică
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Apă la marginile nord-vestice si nord-estice
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Apă la marginile nord-vestice si sud-estice
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Pământ doar la marginea sud-vestică
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Apă la marginile nord-vestice si sud-vestice
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Pământ doar la marginea sud-estică
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Pământ doar la marginea nord-estică
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Apă pe marginea hărţii
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Distanţarea maximă a staţiilor: {ORANGE}{STRING} {RED}Atenţie: Valorile mari încetinesc jocul!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conecteaza bara de instrumente pentru peisaj cu cea de constructii feroviare/auto/aeriane: {ORANGE}{STRING}

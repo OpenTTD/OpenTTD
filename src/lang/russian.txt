@@ -1096,26 +1096,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Раз�
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Одна или несколько клеток в северном углу не пусты
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Одна или несколько клеток берега без воды
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Земля по всем границам
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Вода только на СВ краю карты
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Вода только на ЮВ краю карты
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Вода на СВ и ЮВ краях карты
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Вода только на ЮЗ краю карты
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Вода на СВ и ЮЗ краях карты
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Вода на ЮВ и СЗ краях карты
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Земля только на СЗ краю карты
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Вода только на СЗ краю карты
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Вода на СЗ и СВ краях карты
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Вода на СЗ и ЮВ краях карты
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Земля только на ЮЗ краю карты
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Вода на СЗ и ЮЗ краях карты
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Земля только на ЮВ краю карты
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Земля только на СВ краю карты
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Только водные границы
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. протяженность: {ORANGE}{STRING} {RED}(большие значения замедляют игру)
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Включить обслуживание на вертолетных площадках: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Связать ландшафтную панель с транспортной: {ORANGE}{STRING}

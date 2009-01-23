@@ -1094,26 +1094,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}맵 경
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}맵 경계에 있는 한개 이상의 타일에 무언가 있습니다
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}맵 경계에 있는 한개 이상의 타일이 물이 아닙니다
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :모든 경계선이 땅
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :북동경계선만 물
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :남동경계선만 물
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :북동와 남동경계선만 물
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :남서경계선만 물
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :북동과 남서경계선만 물
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :남동과 남서경계선만 물
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :북서경계선만 땅
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :북서경계선만 물
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :북서와 북동경계선에 물
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :북서와 남동경계선에 물
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :남서경계선만 땅
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :북서와 남서경계선만 물
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :남동경계선만 땅
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :북동경계선만 땅
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :모든 경계선에 물
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}역의 최대 크기: {ORANGE}{STRING} {RED}경고! 높은 값은 게임을 느리게함!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}헬리콥터를 발착장에서 자동으로 점검 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}철도/도로/항만/공항 툴바에 지형 툴바 연결 : {ORANGE}{STRING}

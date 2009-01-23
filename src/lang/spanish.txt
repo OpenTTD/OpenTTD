@@ -1095,26 +1095,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Habilit
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Uno o más cuadrados del borde más al norte no están vacios
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Uno o más cuadrados en uno de los bordes no son agua
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Tierra en todos los bordes
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Agua solo en el borde Noreste
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Agua solo en el borde Sureste
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Agua en los bordes Noreste y Sureste
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Agua solo en el borde Suroeste
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Agua en los bordes Noreste y Suroeste
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Agua en los bordes Sureste y Suroeste
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Tierra solo en el borde Noroeste
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Agua solo en el borde Noroeste
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Agua en los bordes Noroeste y Noreste
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Agua en los bordes Noroeste y Sureste
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Tierra solo en el borde Suroeste
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Agua en los bordes Noroeste y Suroeste
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Tierra solo en el borde Sureste
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Tierra solo en el borde Noreste
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Agua en todos los bordes
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Expansión máxima de est.: {ORANGE}{STRING} {RED}Atención: Valores altos relantizan
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la caja de paisaje a la barra de rail/carretera...: {ORANGE}{STRING}

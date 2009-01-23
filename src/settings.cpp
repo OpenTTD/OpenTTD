@@ -1466,7 +1466,7 @@ const SettingDesc _patch_settings[] = {
 	     SDT_VAR(GameSettings, game_creation.map_x,                           SLE_UINT8,                     S, 0,     8,                     6,      11, 0, STR_CONFIG_PATCHES_MAP_X,                 NULL),
 	     SDT_VAR(GameSettings, game_creation.map_y,                           SLE_UINT8,                     S, 0,     8,                     6,      11, 0, STR_CONFIG_PATCHES_MAP_Y,                 NULL),
 	SDT_CONDBOOL(GameSettings, construction.freeform_edges,                             111, SL_MAX_VERSION, 0, 0, false,                                    STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES, CheckFreeformEdges),
-	 SDT_CONDVAR(GameSettings, game_creation.water_borders,                   SLE_UINT8,111, SL_MAX_VERSION, 0, 0,    15,                     0,      15, 0, STR_NULL,                                 NULL),
+	 SDT_CONDVAR(GameSettings, game_creation.water_borders,                   SLE_UINT8,111, SL_MAX_VERSION, 0, 0,    15,                     0,      16, 0, STR_NULL,                                 NULL),
 
  SDT_CONDOMANY(GameSettings, locale.currency,                               SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|YTL|SKK|BRR|custom", STR_NULL, NULL, NULL),
  SDT_CONDOMANY(GameSettings, locale.units,                                  SLE_UINT8, 97, SL_MAX_VERSION, N, 0, 1, 2, "imperial|metric|si", STR_NULL, NULL, NULL),

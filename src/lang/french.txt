@@ -1095,26 +1095,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Autoris
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Une ou plusieurs cases sur le bord nord ne sont pas vides
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Une ou plusieurs cases sur l'un des bords ne sont pas de l'eau
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Terre sur tous les bords
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Eau sur le bord nord-est uniquement
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Eau sur le bord sud-est uniquement
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Eau sur les bords nord-est et sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Eau sur le bord sud-ouest uniquement
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Eau sur les bords nord-est et sud-ouest
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Eau sur les bords sud-est et sud-ouest
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Terre sur le bord nord-ouest uniquement
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Eau sur le bord nord-ouest uniquement
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Eau sur les bords nord-ouest et nord-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Eau sur les bords nord-ouest et sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Terre sur le bord sud-ouest uniquement
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Eau sur les bords nord-ouest et sud-ouest
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Terre sur le bord sud-est uniquement
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Terre sur le bord  nord-est uniquement
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Eau sur tous les bords
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Etendue max. des stations: {ORANGE}{STRING} {RED}Attention: Valeur élevée = jeu lent
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'héliport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils Paysage avec celle des rails/routes/eau et aéroport: {ORANGE}{STRING}

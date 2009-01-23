@@ -1094,26 +1094,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Enablew
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Oneway orway oremay ilestay atway ethay orthernnay edgeway areway otnay emptyway
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Oneway orway oremay ilestay atway oneway ofway ethay edgesway isway otnay aterway
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Andlay atway allway ordersbay
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Aterway atway orthnay-eastway orderbay onlyway
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Aterway atway outhsay-eastway orderbay onlyway
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Aterway atway orthnay-eastway andway outhsay-eastway ordersbay
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Aterway atway outhsay-estway orderbay onlyway
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Aterway atway orthnay-eastway andway outhsay-estway ordersbay
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Aterway atway outhsay-eastway andway outhsay-estway ordersbay
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Andlay onlyway atway orthnay-estway orderbay
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Aterway atway orthnay-estway orderbay onlyway
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Aterway atway orthnay-estway andway orthnay-eastway ordersbay
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Aterway atway orthnay-estway andway outhsay-eastway ordersbay
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Andlay onlyway atway outhsay-estway orderbay
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Aterway atway orthnay-estway andway outhsay-estway ordersbay
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Andlay onlyway atway outhsay-eastway orderbay
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Andlay onlyway atway orthnay-eastway orderbay
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Aterway atway allway ordersbay
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Axmay ationstay eadspray: {ORANGE}{STRING} {RED}Arningway: Ighhay ettingsay owsslay amegay
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Ervicesay elicoptershay atway elipadshay automaticallyway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Inklay andscapelay oolbartay otay ailray/oadray/aterway/airportway oolbarstay: {ORANGE}{STRING}

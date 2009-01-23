@@ -17,4 +17,15 @@ enum LandscapeType {
 	NUM_LANDSCAPE = 4,
 };
 
+/**
+ * For storing the water borders which shall be retained.
+ */
+enum Borders {
+	BORDER_NE = 0,
+	BORDER_SE = 1,
+	BORDER_SW = 2,
+	BORDER_NW = 3,
+	BORDERS_RANDOM = 16,
+};
+
 #endif /* LANDSCAPE_TYPE_H */

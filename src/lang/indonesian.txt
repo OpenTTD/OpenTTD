@@ -1094,26 +1094,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Ijinkan
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Kotak pada ujung utara tidak kosong
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Kotak pada salah satu ujung peta bukanlah perairan
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Dataran pd semua pinggiran
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Perairan hanya di batas timur laut saja
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Perairan hanya di batas tenggara saja
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Perairan hanya di batas timur laut dan tenggara
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Perairan hanya di batas barat daya saja
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Perairan hanya di batas timur laut dan barat daya saja
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Perairan hanya di batas tenggara dan barat daya saja
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Dataran hanya di batas barat laut saja
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Perairan hanya di batas barat laut saja
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Perairan hanya di batas barat laut dan timur laut saja
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Perairan hanya di batas barat laut dan tenggara saja
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Dataran hanya di batas barat daya saja
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Perairan hanya di batas barat laut dan barat daya saja
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Dataran hanya di batas tenggara saja
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Dataran hanya di batas timur laut saja
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Perairan pada semua batas
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Sebaran stasiun maks.: {ORANGE}{STRING} {RED}Peringatan: Makin tinggi, Makin lambat
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Perbaikan helikopter di helipad secara otomatis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tempel toolbar Landsekap ke toolbar rel/jalan/air/bandara: {ORANGE}{STRING}

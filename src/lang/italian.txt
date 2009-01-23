@@ -1095,26 +1095,6 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altitud
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Uno o più riquadri sul lato nord non sono vuoti
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Uno o più riquadri su uno dei bordi non sono d'acqua
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Terreno su tutti i bordi
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Acqua solo sul bordo nord-est
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Acqua solo sul bordo sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Acqua sui bordi nord-est e sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Acqua solo sul bordo sud-ovest
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Acqua sui bordi nord-est e sud-ovest
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Acqua sui bordi sud-est e sud-ovest
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Terreno solo sul bordo nord-ovest
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Acqua solo sul bordo nord-ovest
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Acqua sui bordi nord-ovest e nord-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Acqua sui bordi nord-ovest e sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Terreno solo sul bordo sud-ovest
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Acqua sui bordi nord-ovest e sud-ovest
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Terreno solo sul bordo sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Terreno solo sul bordo nord-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Acqua su tutti i bordi
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max estensione stazioni: {ORANGE}{STRING} {RED}Nota: Valori alti rallentano il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutieni automaticamente gli elicotteri presso gli eliporti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti terreno assieme a quelli di costruzione: {ORANGE}{STRING}

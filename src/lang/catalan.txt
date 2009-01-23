@@ -1094,26 +1094,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Activa 
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Una o més cel·les al vèrtex nord no està buit
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Una o més cel·les en una de les vores no és aigua
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Terra a totes les vores
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Aigua només a la vora nord-est
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Aigua només a la vora sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Aigua a les vores nord-est i sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Aigua només a la vora sud-oest
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Aigua a les vores nord-est i sud-oest
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Aigua a les vores sud-est i sud-oest
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Terra només a la vora nord-oest
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Aigua només a la vora nord-oest
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Aigua a les vores nord-oest i nord-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Aigua a les vores sud-oest i sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Terra només a la vora sud-oest
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Aigua a les vores nord-oest i sud-oest
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Terra només a la vora sud-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Terra només a la vora nord-est
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Aigua a totes les vores
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max extensió de estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt enlenteix el joc
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manteniment dels helicopters als heliports automàticament: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {ORANGE}{STRING}

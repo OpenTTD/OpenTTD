@@ -1160,26 +1160,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}A térk
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Az északi határnál egy vagy több mező nem üres
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Az egyik határnál egy vagy több mező nem víz
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Szárazföld minden határnál
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Víz csak az északkeleti határnál
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Víz csak a délkeleti határnál
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Víz az északkeleti és délkeleti határoknál
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Víz csak a délnyugati határnál
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Víz az északkeleti és délnyugati határoknál
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Víz a délkeleti és délnyugati határoknál
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Szárazföld csak az északnyugati határnál
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Víz csak az északnyugati határnál
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Víz az északnyugati és északkeleti határoknál
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Víz az északnyugati és délkeleti határoknál
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Szárazföld csak a délnyugati határnál
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Víz az északnyugati és délnyugati határoknál
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Szárazföld csak a délkeleti határnál
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Szárazföld csak az északkeleti határnál
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Víz mindegyik határnál
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendező eszköztár megnyitása az építési eszköztárakkal: {ORANGE}{STRING}

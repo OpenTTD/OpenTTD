@@ -1094,26 +1094,6 @@ STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Aanpass
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Een of meer vakjes in de in de noordelijke rand zijn niet leeg
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Een of meer vakjes op de rand zijn geen water
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Land op alle randen
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Water alleen aan de  noordoost rand
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Water alleen aan de  zuidoost rand
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Water aan de  noordoost en zuidoost rand
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Water alleen aan de  zuidwest rand
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Water aan de  noordoost  en zuidwest rand
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE                           :Water aan de  zuioost  en zuidwest rand
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Land alleen aan de  noordwest  rand
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Water alleen aan de  noordwest  rand
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Water aan de  noordwest  en noordoost rand
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Water aan de  noordwest  en zuidoost rand
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Land alleen aan de  zuidwest rand
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Water aan de  noordwest  en zuidwest rand
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Land alleen aan de zuidoost rand
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Land alleen aan de noordoost rand
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Water aan alle randen
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Verbind de landschaptoolbar met de trein/weg/water/vliegveld toolbars: {ORANGE}{STRING}

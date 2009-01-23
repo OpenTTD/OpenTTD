@@ -1093,25 +1093,6 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Düzlü
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Kuzey kenarda bir veya daha fazla kare boş değil
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Kenarlardan birinde bir veya daha fazla kare su değil
 
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-STR_CONFIG_PATCHES_WATER_BORDER_NONE                            :Tüm sınırlarda kara
-STR_CONFIG_PATCHES_WATER_BORDER_NE                              :Yalnız kuzeydoğu sınırında su
-STR_CONFIG_PATCHES_WATER_BORDER_SE                              :Yalnız güneydoğu sınırında su
-STR_CONFIG_PATCHES_WATER_BORDER_SE_NE                           :Kuzeydoğu ve güneydoğu sınırlarında su
-STR_CONFIG_PATCHES_WATER_BORDER_SW                              :Yalnız güneybatı sınırında su
-STR_CONFIG_PATCHES_WATER_BORDER_SW_NE                           :Kuzeydoğu ve güneybatı sınırlarında su
-STR_CONFIG_PATCHES_WATER_BORDER_SW_SE_NE                        :Kuzeybatı sınırında sadece kara
-STR_CONFIG_PATCHES_WATER_BORDER_NW                              :Yalnız kuzeybatı sınırında su
-STR_CONFIG_PATCHES_WATER_BORDER_NW_NE                           :Kuzeybatı ve kuzeydoğu sınırlarında su
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE                           :Kuzeybatı ve güneydoğu sınırlarında su
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SE_NE                        :Güneybatı sınırında sadece kara
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW                           :Kuzeybatı ve güneydoğu sınırlarında su
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_NE                        :Güneydoğu sınırında sadece kara
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE                        :Kuzeydoğu sınırında sadece kara
-STR_CONFIG_PATCHES_WATER_BORDER_NW_SW_SE_NE                     :Tüm sınırlarda su
-# End of map water border strings.
-
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}İstasyon genişleme sınırı: {ORANGE}{STRING} {RED}Uyarı: Yüksek değerler oyunu yavaşlatır
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubuğunu diğer araç çubuklarına bağla: {ORANGE}{STRING}
