@@ -222,7 +222,7 @@ static bool VerifyOldNameChecksum(char *title, uint len)
 
 static inline bool CheckOldSavegameType(FILE *f, char *temp, const char *last, uint len)
 {
-	assert(last - temp + 1 >= len);
+	assert(last - temp + 1 >= (int)len);
 
 	fseek(f, 0, SEEK_SET);
 	if (fread(temp, 1, len, f) != len) {
