@@ -324,6 +324,13 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			this->SetWidgetDisabledState(GLAND_BORDERS_RANDOM, _settings_newgame.game_creation.land_generator == 0 || !_settings_newgame.construction.freeform_edges);
 			this->SetWidgetsDisabledState(_settings_newgame.game_creation.land_generator == 0 || !_settings_newgame.construction.freeform_edges || _settings_newgame.game_creation.water_borders == BORDERS_RANDOM,
 					GLAND_WATER_NW, GLAND_WATER_NE, GLAND_WATER_SE, GLAND_WATER_SW, WIDGET_LIST_END);
+
+			this->SetWidgetLoweredState(GLAND_BORDERS_RANDOM, _settings_newgame.game_creation.water_borders == BORDERS_RANDOM);
+
+			this->SetWidgetLoweredState(GLAND_WATER_NW, HasBit(_settings_newgame.game_creation.water_borders, BORDER_NW));
+			this->SetWidgetLoweredState(GLAND_WATER_NE, HasBit(_settings_newgame.game_creation.water_borders, BORDER_NE));
+			this->SetWidgetLoweredState(GLAND_WATER_SE, HasBit(_settings_newgame.game_creation.water_borders, BORDER_SE));
+			this->SetWidgetLoweredState(GLAND_WATER_SW, HasBit(_settings_newgame.game_creation.water_borders, BORDER_SW));
 		}
 		/* Disable snowline if not hilly */
 		this->SetWidgetDisabledState(GLAND_SNOW_LEVEL_TEXT, _settings_newgame.game_creation.landscape != LT_ARCTIC);
@@ -341,13 +348,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->SetWidgetLoweredState(GLAND_ARCTIC,    _settings_newgame.game_creation.landscape == LT_ARCTIC);
 		this->SetWidgetLoweredState(GLAND_TROPICAL,  _settings_newgame.game_creation.landscape == LT_TROPIC);
 		this->SetWidgetLoweredState(GLAND_TOYLAND,   _settings_newgame.game_creation.landscape == LT_TOYLAND);
-
-		this->SetWidgetLoweredState(GLAND_BORDERS_RANDOM, _settings_newgame.game_creation.water_borders == BORDERS_RANDOM);
-
-		this->SetWidgetLoweredState(GLAND_WATER_NW, HasBit(_settings_newgame.game_creation.water_borders, BORDER_NW));
-		this->SetWidgetLoweredState(GLAND_WATER_NE, HasBit(_settings_newgame.game_creation.water_borders, BORDER_NE));
-		this->SetWidgetLoweredState(GLAND_WATER_SE, HasBit(_settings_newgame.game_creation.water_borders, BORDER_SE));
-		this->SetWidgetLoweredState(GLAND_WATER_SW, HasBit(_settings_newgame.game_creation.water_borders, BORDER_SW));
 
 		if (_game_mode == GM_EDITOR) {
 			this->widget[GLAND_TOWN_PULLDOWN].data     = STR_6836_OFF;
