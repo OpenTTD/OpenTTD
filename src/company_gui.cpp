@@ -1071,7 +1071,7 @@ static const Widget _company_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   179,   158,   169, STR_7077_BUY_25_SHARE_IN_COMPANY,  STR_7079_BUY_25_SHARE_IN_THIS_COMPANY},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   180,   359,   158,   169, STR_7078_SELL_25_SHARE_IN_COMPANY, STR_707A_SELL_25_SHARE_IN_THIS_COMPANY},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,   138,   149, STR_COMPANY_PASSWORD,              STR_COMPANY_PASSWORD_TOOLTIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,    46,    57, STR_COMPANY_JOIN,                  STR_COMPANY_JOIN_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   266,   355,   138,   149, STR_COMPANY_JOIN,                  STR_COMPANY_JOIN_TIP},
 {   WIDGETS_END},
 };
 
@@ -1216,6 +1216,12 @@ struct CompanyWindow : Window
 		SetDParam(1, c->index);
 
 		this->DrawWidgets();
+
+#ifdef ENABLE_NETWORK
+		if (_networking && NetworkCompanyIsPassworded(c->index)) {
+			DrawSprite(SPR_LOCK, PAL_NONE, this->widget[CW_WIDGET_COMPANY_JOIN].left - 10, this->widget[CW_WIDGET_COMPANY_JOIN].top + 2);
+		}
+#endif /* ENABLE_NETWORK */
 
 		/* Company manager's face */
 		DrawCompanyManagerFace(c->face, c->colour, 2, 16);
