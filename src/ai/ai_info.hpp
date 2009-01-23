@@ -37,7 +37,7 @@ public:
 	friend class AIInfo;
 	friend class AILibrary;
 
-	AIFileInfo() : author(NULL), name(NULL), short_name(NULL), description(NULL), date(NULL), instance_name(NULL) {};
+	AIFileInfo() : SQ_instance(NULL), main_script(NULL), author(NULL), name(NULL), short_name(NULL), description(NULL), date(NULL), instance_name(NULL) {};
 	~AIFileInfo();
 
 	/**
