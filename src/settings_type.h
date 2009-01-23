@@ -283,7 +283,7 @@ struct OrderSettings {
 /** Settings related to vehicles. */
 struct VehicleSettings {
 	bool   mammoth_trains;                   ///< allow very long trains
-	bool   realistic_acceleration;           ///< realistic acceleration for trains
+	uint8  train_acceleration_model;         ///< realistic acceleration for trains
 	bool   wagon_speed_limits;               ///< enable wagon speed limits
 	bool   disable_elrails;                  ///< when true, the elrails are disabled
 	UnitID max_trains;                       ///< max trains in game per company

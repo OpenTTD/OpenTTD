@@ -61,4 +61,9 @@ enum {
 	MAX_LENGTH_VEHICLE_NAME_PIXELS = 150, ///< The maximum length of a vehicle name in pixels
 };
 
+enum TrainAccelerationModel {
+	TAM_ORIGINAL,
+	TAM_REALISTIC,
+};
+
 #endif /* VEHICLE_TYPE_H */

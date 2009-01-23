@@ -539,7 +539,7 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 	y += 10;
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
-	if (_settings_game.vehicle.realistic_acceleration && rvi->railtype != RAILTYPE_MAGLEV) {
+	if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && rvi->railtype != RAILTYPE_MAGLEV) {
 		SetDParam(0, ((weight << multihead) * 10 * GetEngineProperty(engine_number, 0x1F, rvi->tractive_effort)) / 256);
 		DrawString(x, y, STR_PURCHASE_INFO_MAX_TE, TC_FROMSTRING);
 		y += 10;

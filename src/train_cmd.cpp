@@ -1965,7 +1965,7 @@ CommandCost CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, ui
 		if (v->vehstatus & VS_CRASHED || v->breakdown_ctr != 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			if (_settings_game.vehicle.realistic_acceleration && v->cur_speed != 0) {
+			if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && v->cur_speed != 0) {
 				ToggleBit(v->u.rail.flags, VRF_REVERSING);
 			} else {
 				v->cur_speed = 0;
@@ -3280,16 +3280,16 @@ static int UpdateTrainSpeed(Vehicle *v)
 	uint accel;
 
 	if (v->vehstatus & VS_STOPPED || HasBit(v->u.rail.flags, VRF_REVERSING) || HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
-		if (_settings_game.vehicle.realistic_acceleration) {
-			accel = GetTrainAcceleration(v, AM_BRAKE) * 2;
-		} else {
-			accel = v->acceleration * -2;
+		switch (_settings_game.vehicle.train_acceleration_model) {
+			default: NOT_REACHED();
+			case TAM_ORIGINAL:  accel = v->acceleration * -2; break;
+			case TAM_REALISTIC: accel = GetTrainAcceleration(v, AM_BRAKE) * 2; break;
 		}
 	} else {
-		if (_settings_game.vehicle.realistic_acceleration) {
-			accel = GetTrainAcceleration(v, AM_ACCEL);
-		} else {
-			accel = v->acceleration;
+		switch (_settings_game.vehicle.train_acceleration_model) {
+			default: NOT_REACHED();
+			case TAM_ORIGINAL:  accel = v->acceleration; break;
+			case TAM_REALISTIC: accel = GetTrainAcceleration(v, AM_ACCEL); break;
 		}
 	}
 
@@ -3439,7 +3439,7 @@ static const RailtypeSlowdownParams _railtype_slowdown[] = {
 /** Modify the speed of the vehicle due to a turn */
 static inline void AffectSpeedByDirChange(Vehicle *v, Direction new_dir)
 {
-	if (_settings_game.vehicle.realistic_acceleration) return;
+	if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL) return;
 
 	DirDiff diff = DirDifference(v->direction, new_dir);
 	if (diff == DIRDIFF_SAME) return;
@@ -3451,7 +3451,7 @@ static inline void AffectSpeedByDirChange(Vehicle *v, Direction new_dir)
 /** Modify the speed of the vehicle due to a change in altitude */
 static inline void AffectSpeedByZChange(Vehicle *v, byte old_z)
 {
-	if (old_z == v->z_pos || _settings_game.vehicle.realistic_acceleration) return;
+	if (old_z == v->z_pos || _settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL) return;
 
 	const RailtypeSlowdownParams *rsp = &_railtype_slowdown[v->u.rail.railtype];
 

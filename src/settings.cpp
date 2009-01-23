@@ -935,7 +935,7 @@ static int32 EngineRenewMoneyUpdate(int32 p1)
 	return 0;
 }
 
-static int32 RealisticAccelerationChanged(int32 p1)
+static int32 TrainAccelerationModelChanged(int32 p1)
 {
 	Vehicle *v;
 
@@ -1321,7 +1321,7 @@ const SettingDesc _patch_settings[] = {
 	    SDT_BOOL(GameSettings, station.always_small_airport,                                        0,NN, false,                    STR_CONFIG_PATCHES_SMALL_AIRPORTS,         NULL),
 	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_ORIGINAL,TL_NO_ROADS,NUM_TLS-1,1, STR_CONFIG_PATCHES_TOWN_LAYOUT,  CheckTownLayout),
 
-	    SDT_BOOL(GameSettings, vehicle.realistic_acceleration,                                      0, 0, false,                    STR_CONFIG_PATCHES_REALISTICACCEL,         RealisticAccelerationChanged),
+	     SDT_VAR(GameSettings, vehicle.train_acceleration_model,     SLE_UINT8,                     0,MS,     0,     0,       1, 1, STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL, TrainAccelerationModelChanged),
 	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_PATCHES_FORBID_90_DEG,          NULL),
 	    SDT_BOOL(GameSettings, vehicle.mammoth_trains,                                              0,NN,  true,                    STR_CONFIG_PATCHES_MAMMOTHTRAINS,          NULL),
 	    SDT_BOOL(GameSettings, order.gotodepot,                                                     0, 0,  true,                    STR_CONFIG_PATCHES_GOTODEPOT,              NULL),
