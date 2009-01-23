@@ -181,6 +181,10 @@ void UpdateOldAircraft()
 
 			AircraftLeaveHangar(v_oldstyle); // make airplane visible if it was in a depot for example
 			v_oldstyle->vehstatus &= ~VS_STOPPED; // make airplane moving
+			if (!v_oldstyle->current_order.IsType(OT_GOTO_STATION) && !v_oldstyle->current_order.IsType(OT_GOTO_DEPOT)) {
+				/* reset current order so aircraft doesn't have invalid "station-only" order */
+				v_oldstyle->current_order.MakeDummy();
+			}
 			v_oldstyle->u.air.state = FLYING;
 			AircraftNextAirportPos_and_Order(v_oldstyle); // move it to the entry point of the airport
 			GetNewVehiclePosResult gp = GetNewVehiclePos(v_oldstyle);
