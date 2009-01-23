@@ -573,9 +573,11 @@ public:
 				break;
 
 			case WKC_SPACE:
-				_network_content_client.ToggleSelectedState(this->selected);
-				this->content.ForceResort();
-				this->SetDirty();
+				if (this->selected != NULL) {
+					_network_content_client.ToggleSelectedState(this->selected);
+					this->content.ForceResort();
+					this->SetDirty();
+				}
 				return ES_HANDLED;
 
 			default: return ES_NOT_HANDLED;
