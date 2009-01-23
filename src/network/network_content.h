@@ -117,6 +117,8 @@ public:
 	ConstContentIterator Get(uint32 index) const { return this->infos.Get(index); }
 	/** Get the end of the content inf iterator. */
 	ConstContentIterator End() const { return this->infos.End(); }
+	/** Clear all downloaded content information. */
+	void Clear();
 
 	/** Add a callback to this class */
 	void AddCallback(ContentCallback *cb) { this->callbacks.Include(cb); }

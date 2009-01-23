@@ -218,7 +218,7 @@ void ClientNetworkContentSocketHandler::RequestContentList(ContentVector *cv, bo
 		ContentInfo *ci = *iter;
 		bool found = false;
 		for (ContentIterator iter2 = this->infos.Begin(); iter2 != this->infos.End(); iter2++) {
-			ContentInfo *ci2 = *iter;
+			ContentInfo *ci2 = *iter2;
 			if (ci->type == ci2->type && ci->unique_id == ci2->unique_id &&
 					(!send_md5sum || memcmp(ci->md5sum, ci2->md5sum, sizeof(ci->md5sum)) == 0)) {
 				found = true;
@@ -744,6 +744,13 @@ void ClientNetworkContentSocketHandler::CheckDependencyState(ContentInfo *ci)
 			this->CheckDependencyState(this->GetContent((*iter)->id));
 		}
 	}
+}
+
+void ClientNetworkContentSocketHandler::Clear()
+{
+	for (ContentIterator iter = this->infos.Begin(); iter != this->infos.End(); iter++) delete *iter;
+
+	this->infos.Clear();
 }
 
 /*** CALLBACK ***/

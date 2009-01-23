@@ -399,6 +399,18 @@ struct NewGRFWindow : public Window {
 			this->widget[SNGRFS_PRESET_LIST].data = STR_JUST_RAW_STRING;
 		}
 
+		bool has_missing = false;
+		for (const GRFConfig *c = this->list; !has_missing && c != NULL; c = c->next) {
+			has_missing = c->status == GCS_NOT_FOUND || HasBit(c->flags, GCF_COMPATIBLE);
+		}
+		if (has_missing) {
+			this->widget[SNGRFS_CONTENT_DOWNLOAD].data     = STR_CONTENT_INTRO_MISSING_BUTTON;
+			this->widget[SNGRFS_CONTENT_DOWNLOAD].tooltips = STR_CONTENT_INTRO_MISSING_BUTTON_TIP;
+		} else {
+			this->widget[SNGRFS_CONTENT_DOWNLOAD].data     = STR_CONTENT_INTRO_BUTTON;
+			this->widget[SNGRFS_CONTENT_DOWNLOAD].tooltips = STR_CONTENT_INTRO_BUTTON_TIP;
+		}
+
 		this->DrawWidgets();
 
 		/* Draw NewGRF list */
@@ -597,6 +609,8 @@ struct NewGRFWindow : public Window {
 				/* Only show the things in the current list, or everything when nothing's selected */
 					ContentVector cv;
 					for (const GRFConfig *c = this->list; c != NULL; c = c->next) {
+						if (c->status != GCS_NOT_FOUND && !HasBit(c->flags, GCF_COMPATIBLE)) continue;
+
 						ContentInfo *ci = new ContentInfo();
 						ci->type = CONTENT_TYPE_NEWGRF;
 						ci->state = ContentInfo::DOES_NOT_EXIST;

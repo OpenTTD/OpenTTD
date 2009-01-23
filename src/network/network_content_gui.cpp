@@ -684,6 +684,7 @@ static const WindowDesc _network_content_list_desc = {
 void ShowNetworkContentListWindow(ContentVector *cv, ContentType type)
 {
 #if defined(WITH_ZLIB)
+	_network_content_client.Clear();
 	if (cv == NULL) {
 		_network_content_client.RequestContentList(type);
 	} else {

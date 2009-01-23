@@ -3779,4 +3779,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Could no
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Check online content
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Check for new and updated content to download
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Find missing content online
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Check whether the missing content can be found online
 ########
