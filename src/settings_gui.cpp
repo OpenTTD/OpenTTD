@@ -1173,7 +1173,7 @@ static PatchEntry _patches_vehicles_servicing[] = {
 static PatchPage _patches_vehicles_servicing_page = {_patches_vehicles_servicing, lengthof(_patches_vehicles_servicing)};
 
 static PatchEntry _patches_vehicles_trains[] = {
-	PatchEntry("vehicle.realistic_acceleration"),
+	PatchEntry("vehicle.train_acceleration_model"),
 	PatchEntry("vehicle.mammoth_trains"),
 	PatchEntry("gui.lost_train_warn"),
 	PatchEntry("vehicle.wagon_speed_limits"),
