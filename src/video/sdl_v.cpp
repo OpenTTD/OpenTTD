@@ -119,7 +119,7 @@ static void GetVideoModes()
 	if (modes == (void*)-1) {
 		int n = 0;
 		for (uint i = 0; i < lengthof(_default_resolutions); i++) {
-			if (SDL_VideoModeOK(_default_resolutions[i].width, _default_resolutions[i].height, 8, SDL_FULLSCREEN) != 0) {
+			if (SDL_CALL SDL_VideoModeOK(_default_resolutions[i].width, _default_resolutions[i].height, 8, SDL_FULLSCREEN) != 0) {
 				_resolutions[n] = _default_resolutions[i];
 				if (++n == lengthof(_resolutions)) break;
 			}
