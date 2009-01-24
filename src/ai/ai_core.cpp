@@ -160,28 +160,47 @@
 
 /* static */ void AI::NewEvent(CompanyID company, AIEvent *event)
 {
+	/* AddRef() and Release() need to be called at least once, so do it here */
+	event->AddRef();
+
 	/* Clients should ignore events */
-	if (_networking && !_network_server) return;
+	if (_networking && !_network_server) {
+		event->Release();
+		return;
+	}
 
 	/* Only AIs can have an event-queue */
-	if (!IsValidCompanyID(company) || IsHumanCompany(company)) return;
+	if (!IsValidCompanyID(company) || IsHumanCompany(company)) {
+		event->Release();
+		return;
+	}
 
 	/* Queue the event */
 	CompanyID old_company = _current_company;
 	_current_company = company;
 	AIEventController::InsertEvent(event);
 	_current_company = old_company;
+
+	event->Release();
 }
 
 /* static */ void AI::BroadcastNewEvent(AIEvent *event, CompanyID skip_company)
 {
+	/* AddRef() and Release() need to be called at least once, so do it here */
+	event->AddRef();
+
 	/* Clients should ignore events */
-	if (_networking && !_network_server) return;
+	if (_networking && !_network_server) {
+		event->Release();
+		return;
+	}
 
 	/* Try to send the event to all AIs */
 	for (CompanyID c = COMPANY_FIRST; c < MAX_COMPANIES; c++) {
 		if (c != skip_company) AI::NewEvent(c, event);
 	}
+
+	event->Release();
 }
 
 void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
