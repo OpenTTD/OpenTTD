@@ -282,6 +282,11 @@ void AfterLoadVehicles(bool part_of_load)
 				 * moving-wagons-inside-depot- and autoreplace- code */
 				v->cur_speed = 0;
 			}
+			/* trains weren't stopping gradually in old OTTD versions (and TTO/TTD)
+			 * other vehicle types didn't have zero speed while stopped (even in 'recent' OTTD versions) */
+			if ((v->vehstatus & VS_STOPPED) && (v->type != VEH_TRAIN || CheckSavegameVersion(1))) {
+				v->cur_speed = 0;
+			}
 		}
 	}
 
