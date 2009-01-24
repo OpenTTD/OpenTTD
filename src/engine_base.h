@@ -6,6 +6,7 @@
 #define ENGINE_BASE_H
 
 #include "engine_type.h"
+#include "economy_type.h"
 #include "oldpool.h"
 
 DECLARE_OLD_POOL(Engine, Engine, 6, 10000)
@@ -48,6 +49,8 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 	~Engine();
 
 	inline bool IsValid() const { return this->info.climates != 0; }
+
+	Money GetRunningCost() const;
 };
 
 static inline bool IsEngineIndex(uint index)

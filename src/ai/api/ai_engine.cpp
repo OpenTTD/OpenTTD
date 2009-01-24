@@ -193,34 +193,7 @@
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
-	/* We need to create an instance in order to obtain GetRunningCost.
-	 *  This means we temporary allocate a vehicle in the pool, but
-	 *  there is no other way.. */
-	Vehicle *vehicle;
-	switch (::GetEngine(engine_id)->type) {
-		case VEH_ROAD: {
-			vehicle = new RoadVehicle();
-		} break;
-
-		case VEH_TRAIN: {
-			vehicle = new Train();
-		} break;
-
-		case VEH_SHIP: {
-			vehicle = new Ship();
-		} break;
-
-		case VEH_AIRCRAFT: {
-			vehicle = new Aircraft();
-		} break;
-
-		default: NOT_REACHED();
-	}
-
-	vehicle->engine_type = engine_id;
-	Money runningCost = vehicle->GetRunningCost();
-	delete vehicle;
-	return runningCost >> 8;
+	return ::GetEngine(engine_id)->GetRunningCost();
 }
 
 /* static */ AIVehicle::VehicleType AIEngine::GetVehicleType(EngineID engine_id)

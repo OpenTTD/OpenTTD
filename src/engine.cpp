@@ -118,6 +118,25 @@ Engine::~Engine()
 	free(this->name);
 }
 
+Money Engine::GetRunningCost() const
+{
+	switch (this->type) {
+		case VEH_ROAD:
+			return this->u.road.running_cost * GetPriceByIndex(this->u.road.running_cost_class) >> 8;
+
+		case VEH_TRAIN:
+			return GetEngineProperty(this->index, 0x0D, this->u.rail.running_cost) * GetPriceByIndex(this->u.rail.running_cost_class) >> 8;
+
+		case VEH_SHIP:
+			return GetEngineProperty(this->index, 0x0F, this->u.ship.running_cost) * _price.ship_running >> 8;
+
+		case VEH_AIRCRAFT:
+			return GetEngineProperty(this->index, 0x0E, this->u.air.running_cost) * _price.aircraft_running >> 8;
+
+		default: NOT_REACHED();
+	}
+}
+
 /** Sets cached values in Company::num_vehicles and Group::num_vehicles
  */
 void SetCachedEngineCounts()
