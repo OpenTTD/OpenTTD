@@ -130,7 +130,7 @@ static const SaveLoad _company_desc[] = {
 	SLE_CONDARR(Company, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Company, is_ai,                 SLE_BOOL,                    2, SL_MAX_VERSION),
-	SLE_CONDVAR(Company, is_noai,               SLE_BOOL,                  107, SL_MAX_VERSION),
+	SLE_CONDNULL(1, 107, 111), ///< is_noai
 	SLE_CONDNULL(1, 4, 99),
 
 	/* Engine renewal settings */
@@ -221,7 +221,7 @@ static void SaveLoad_PLYR(Company *c)
 	SlObject(c, _company_desc);
 
 	/* Keep backwards compatible for savegames, so load the old AI block */
-	if (CheckSavegameVersion(107) && !IsHumanCompany(c->index) && !c->is_noai) {
+	if (CheckSavegameVersion(107) && !IsHumanCompany(c->index)) {
 		CompanyOldAI old_ai;
 		char nothing;
 
@@ -275,7 +275,6 @@ static void Load_PLYR()
 		Company *c = new (index) Company();
 		SaveLoad_PLYR(c);
 		_company_colours[index] = c->colour;
-		c->is_noai = true;
 	}
 }
 

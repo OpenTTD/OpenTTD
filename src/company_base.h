@@ -70,7 +70,6 @@ struct Company : PoolItem<Company, CompanyByte, &_Company_pool> {
 	Money bankrupt_value;
 
 	bool is_ai;
-	bool is_noai; ///< This is a NoAI player (for loading old savegames properly)
 
 	class AIInstance *ai_instance;
 	class AIInfo *ai_info;
