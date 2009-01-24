@@ -47,7 +47,13 @@
 
 	const Vehicle *v = ::GetVehicle(vehicle_id);
 	switch (v->type) {
-		case VEH_ROAD: return v->u.road.cached_veh_length;
+		case VEH_ROAD: {
+			uint total_length = 0;
+			for (const Vehicle *u = v; u != NULL; u = u->Next()) {
+				total_length += u->u.road.cached_veh_length;
+			}
+			return total_length;
+		}
 		case VEH_TRAIN: return v->u.rail.cached_total_length;
 		default: return -1;
 	}
