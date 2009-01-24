@@ -6169,6 +6169,9 @@ void LoadNewGRF(uint load_index, uint file_index)
 				ClearTemporaryNewGRFData(_cur_grffile);
 				BuildCargoTranslationMap();
 				DEBUG(sprite, 2, "LoadNewGRF: Currently %i sprites are loaded", _cur_spriteid);
+			} else if (stage == GLS_INIT && HasBit(c->flags, GCF_INIT_ONLY)) {
+				/* We're not going to activate this, so free whatever data we allocated */
+				ClearTemporaryNewGRFData(_cur_grffile);
 			}
 		}
 	}
