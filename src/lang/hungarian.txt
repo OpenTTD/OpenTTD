@@ -766,17 +766,17 @@ STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Acélön
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Farm építése
 STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Vasércbánya építése
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Olajkút építése
-STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank építése (csak 1200-nál nagyobb lakosságú településekben építhető)
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank építése (csak 1200-nál nagyobb lakosságú településeken építhető)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Papírgyár építése
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Konzervgyár építése
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Nyomda építése
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Aranybánya építése
-STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank építése (csak nagy településekben építhető)
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Bank építése (csak nagy településeken építhető)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Favágó építése (az esőerdő kivágására és fa termelésére)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Gyümölcsültetvény ültetése
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Gumifa ültetvény ültetése
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Vízforrás építése
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Víztorony építése (csak sivatagi településekben építhető)
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Víztorony építése (csak sivatagi településeken építhető)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Gyémántbánya építése
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Rézércbánya építése
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Vattacukor-erdő ültetése
@@ -819,7 +819,7 @@ STR_PLAY_HEIGHTMAP                                              :{BLACK}Játék 
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Új játékot kezd egy magasságtérkép alapján
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Kilépés a szerkesztőből
-STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak 1200-nál nagyobb lakosságszámú településekben építhető
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak 1200-nál nagyobb lakosságszámú településeken építhető
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}A kezdődátum visszább állítása egy évvel
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}A kezdődátum előrébb állítása egy évvel
 STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...a híd mindkét végének szárazföldön kell lennie
@@ -1091,6 +1091,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Építm
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett befogadókörzetek bekapcsolása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, stb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Eredeti
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Valósághű
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Vonatok és hajók nem tesznek 90°-os kanyart: {ORANGE}{STRING} {LTBLUE}(nem NTP-vel)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Meglévő vasútállomás utólag bővíthető: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Nem közvetlen szomszédos állomások egyesítése: {ORANGE}{STRING}
@@ -1623,6 +1626,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Add meg 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}A szerver jelszóval van védve. Írd be
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}A cég jelszóval van védve. Írd be
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Kliens lista
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Megfigyelés
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Új vállalat
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nem található a hálózati csatoló, vagy nincs hálózati támogatás (ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nem található semmilyen hálózati játék
@@ -1669,6 +1674,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Játék elindí
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :kilépés
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} csatlakozott a játékhoz
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} csatlakozott a(z) {2:NUM}. számú vállalathoz
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} csatlakozott a megfigyelőkhöz
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} új vállalatot alapított (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} kilépett a játékból ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} nevet változtatott. Új neve: {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} a következő összeget utalta cégednek: {2:CURRENCY}
@@ -2505,6 +2513,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}A cég s
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nem építheted ide a székházadat...
 STR_7072_VIEW_HQ                                                :{BLACK}Székház
 STR_RELOCATE_HQ                                                 :{BLACK}SZH áthelyezése
+STR_COMPANY_JOIN                                                :{BLACK}Csatlakozás
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Csatlakozz ezen vállalat vezetőjeként
 STR_COMPANY_PASSWORD                                            :{BLACK}Jelszó
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Védd le a vállalatodat jelszóval ha nem akarod hogy mások csatlakozzanak hozzá.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Vállalati jelszó beállítása

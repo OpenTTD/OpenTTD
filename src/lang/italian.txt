@@ -1027,6 +1027,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Consent
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Consenti aree di copertura più realistiche: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade, ponti, etc. delle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modello accelerazione dei treni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originale
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistico
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impedisci a treni e navi di curvare a 90°: {ORANGE}{STRING} {LTBLUE} (non funziona con NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unisci le stazioni costruite una accanto all'altra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Consenti di unire stazioni non direttamente adiacenti: {ORANGE}{STRING}
@@ -1559,6 +1562,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Inserire
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server protetto. Inserire la password
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Compagnia protetta. Inserire la password
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Elenco dei client
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spettatore
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nuova compagnia
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nessun dispositivo di rete trovato o compilato senza ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Impossibile trovare partite in rete
@@ -1605,6 +1610,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partita ripresa
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :abbandono della partita
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} è entrato nella partita
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} si è unito alla compagnia #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} si è unito agli spettatori
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} ha avviato una nuova compagnia (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} ha abbandonato la partita ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} ha cambiato nome in {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} ha donato alla tua compagnia {2:CURRENCY}
@@ -2404,6 +2412,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Ricostru
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Impossibile costruire la sede della compagnia...
 STR_7072_VIEW_HQ                                                :{BLACK}Vedi sede
 STR_RELOCATE_HQ                                                 :{BLACK}Sposta sede
+STR_COMPANY_JOIN                                                :{BLACK}Entra
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Entra nella partita controllando questa compagnia
 STR_COMPANY_PASSWORD                                            :{BLACK}Password
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protegge la compagnia con una password per impedire ad utenti non autorizzati di accedervi
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Imposta password compagnia
@@ -3492,6 +3502,16 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Centra l
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Bordi della mappa:
+STR_NORTHWEST                                                   :{BLACK}Nord-ovest
+STR_NORTHEAST                                                   :{BLACK}Nord-est
+STR_SOUTHEAST                                                   :{BLACK}Sud-est
+STR_SOUTHWEST                                                   :{BLACK}Sud-ovest
+STR_BORDER_FREEFORM                                             :{BLACK}Libero
+STR_BORDER_WATER                                                :{BLACK}Acqua
+STR_BORDER_RANDOM                                               :{BLACK}Casuale
+STR_BORDER_RANDOMIZE                                            :{BLACK}Casuale
+STR_BORDER_MANUAL                                               :{BLACK}Manuale
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Piccolo
@@ -3770,4 +3790,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Impossib
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Contenuti online
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Controlla l'esistenza di contenuti nuovi o aggiornati da scaricare
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Trova contenuti mancanti online
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Controlla se i contenuti mancanti possono essere recuperati online
 ########

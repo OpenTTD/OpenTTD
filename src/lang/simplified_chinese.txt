@@ -1025,6 +1025,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}允许�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}允许更真实的客源范围：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}允许拆除更多的由城镇所有的公路、桥梁等：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}允许购买超长列车：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}列车加速度: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :TTD原版
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :改良真实版
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}禁止列车和轮船 90 度转弯：{ORANGE}{STRING} {LTBLUE} (需要 NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}将相邻的火车站进行整合：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}允许非毗邻站台合并：{ORANGE}{STRING}
@@ -1554,6 +1557,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}请输�
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}服务器需要密码：
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}公司需要密码：
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}客户端列表
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}旁观
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}新公司
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} 没有网络设备或者编译时未使用 ENABLE_NETWORK 参数
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 不能找到任何网络游戏
@@ -1600,6 +1605,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :游戏继续 (�
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :出发
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} 已加入游戏
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} 已加入 #{2:NUM} 公司
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} 已作为观众加入
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} 成立了新公司 (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} 已离开游戏 ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} 已更改姓名为 {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 送您公司了 {2:CURRENCY}
@@ -2399,6 +2407,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}以公�
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}不能设置公司总部
 STR_7072_VIEW_HQ                                                :{BLACK}查看总部
 STR_RELOCATE_HQ                                                 :{BLACK}重置总部
+STR_COMPANY_JOIN                                                :{BLACK}加入
+STR_COMPANY_JOIN_TIP                                            :{BLACK}加入该公司
 STR_COMPANY_PASSWORD                                            :{BLACK}密码
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}设置密码可以防止未经授权的用户随意加入。
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}设置公司密码
@@ -3487,6 +3497,7 @@ STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRI
 STR_BORDER_TYPE                                                 :{BLACK}地图边缘:
 STR_NORTHWEST                                                   :{BLACK}西北
 STR_NORTHEAST                                                   :{BLACK}东北
+STR_SOUTHEAST                                                   :{BLACK}东南
 STR_SOUTHWEST                                                   :{BLACK}东南
 STR_BORDER_WATER                                                :{BLACK}水面
 STR_BORDER_RANDOM                                               :{BLACK}随机
@@ -3766,4 +3777,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}无法�
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}在线查找扩展包
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}连接服务器并查找扩展包
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}在线查找缺失的扩展包
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}看看您需要的扩展包是否能在线找到
 ########

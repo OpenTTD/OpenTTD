@@ -1025,6 +1025,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Salli m
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Realistisemman kokoiset vaikutusalueet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Kaupungin omistamien teiden, siltojen, jne. raivaaminen sallittu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erittäin pitkien junien rakentaminen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Junien kiihdytysmalli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Alkuperäinen
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistinen
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Junat ja laivat: ei 90-asteen käännöksiä: {ORANGE}{STRING} {LTBLUE} (vaatii: NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Salli ei-vierekkäisten asemien yhdistäminen: {ORANGE}{STRING}
@@ -1557,6 +1560,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Syötä 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Palvelin on suojattu. Anna salasana
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Yhtiö on suojattu. Anna salasana
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Asiakaslista
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Katsele
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Uusi Yhtiö
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Verkkolaitteita ei löytynyt tai käännetty ilman ENABLE_NETWORK-valintaa.
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Verkkopelejä ei löytynyt.
@@ -1603,6 +1608,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Peliä jatketaa
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :poistutaan
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} on liittynyt peliin
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} on liittynyt yhtiöön #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} on liittynyt katselijoihin
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} on aloittanut uuden yhtiön (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} on poistunut pelistä ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} on muuttanut nimekseen {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} antoi yrityksellesi {2:CURRENCY}
@@ -2402,6 +2410,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Rakenna 
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Yhtiön päärakennusta ei voi rakentaa...
 STR_7072_VIEW_HQ                                                :{BLACK}Näytä päämaja
 STR_RELOCATE_HQ                                                 :{BLACK}Sijoita päämaja
+STR_COMPANY_JOIN                                                :{BLACK}Liity
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Liity ja pelaa tässä yhtiössä
 STR_COMPANY_PASSWORD                                            :{BLACK}Salasana
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Salasanalla voit suojata yhtiösi, jotta kukaan vieras ei pääse liittymään.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Aseta yhtiön salasana

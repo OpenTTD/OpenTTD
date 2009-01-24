@@ -1025,6 +1025,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}건물,
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}좀더 현실적인 역세권 지정 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}도시 소유의 도로, 다리 등의 제거를 허용 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}매우 긴 열차 허용 : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}열차 가속 모델: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :오리지널
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :사실감있게
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}열차/선박의 90도 회전을 금지함: {ORANGE}{STRING} {LTBLUE} (NPF 필요)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}바로 옆에 역이 있으면 그 역의 이름으로 건설 (새로운 이름X) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}역이 붙어있지 않아도 같은 이름으로 역을 짓는 것을 허용: {ORANGE}{STRING}
@@ -1557,6 +1560,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}송금�
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}서버 암호가 걸려있습니다. 암호를 입력하세요.
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}회사 암호가 걸려있습니다. 암호를 입력하세요.
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}접속자 목록
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}관전
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}새 회사
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} 네트워크 장치를 찾을수 없거나 컴파일되지 않았습니다.
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} 네트워크 게임이 존재하지 않습니다.
@@ -1603,6 +1608,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :게임 재개�
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :떠남
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} 가 게임에 참여했습니다
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING}님이 회사 #{2:NUM}에 참가하셨습니다
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING}님이 관전을 시작하셨습니다
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING}님이 새 회사 #{2:NUM}을 창업하셨습니다
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} 가 게임에서 나갔습니다 ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} 가 이름을 {STRING}으로 바꿨습니다
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 가 당신의 회사에게 {2:CURRENCY}를 송금하였습니다
@@ -2402,6 +2410,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}회사�
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}본사를 건설할 수 없습니다...
 STR_7072_VIEW_HQ                                                :{BLACK}본사 보기
 STR_RELOCATE_HQ                                                 :{BLACK}본사 재위치
+STR_COMPANY_JOIN                                                :{BLACK}참여
+STR_COMPANY_JOIN_TIP                                            :{BLACK}이 회사로 참가해서 플레이합니다
 STR_COMPANY_PASSWORD                                            :{BLACK}암호
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}다른 참가자가 이 회사로의 플레이를 하지 못하도록 암호로 보호합니다
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}회사 암호 설정
@@ -3495,10 +3505,11 @@ STR_NORTHWEST                                                   :{BLACK}북서
 STR_NORTHEAST                                                   :{BLACK}북동
 STR_SOUTHEAST                                                   :{BLACK}남동
 STR_SOUTHWEST                                                   :{BLACK}남서
-STR_BORDER_FREEFORM                                             :{BLACK}자유
+STR_BORDER_FREEFORM                                             :{BLACK}변경 가능
 STR_BORDER_WATER                                                :{BLACK}물
 STR_BORDER_RANDOM                                               :{BLACK}임의
 STR_BORDER_RANDOMIZE                                            :{BLACK}임의
+STR_BORDER_MANUAL                                               :{BLACK}사용자 정의
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}소형 공항

@@ -3168,7 +3168,9 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: 
 STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Jūs grasieties veikt izmaiņas pašreizējai spēlei. Var notik OpenTTD avārija.{}Vai tu esi pilnībā drošs?
 
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Pārāk daudz NewGRF ir ielādēti.
+STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nezināma darbība 0 īpašumu
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mēģina lietot neesošu ID.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Satur daudzējādu Darbību 8 ierakstus
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ielādēt izvēlēto shēmu
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Saglabāt shēmu
@@ -3197,12 +3199,16 @@ STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nevar pi
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Nevar atrast saskanīgo failu
 STR_NEWGRF_DISABLED                                             :{RED}Atspējots
+STR_NEWGRF_COMPATIBLE_LOADED                                    :{ORANGE}Atbilstošs fails nav atrass (savienojams GRF ielādēts)
 
+STR_NEWGRF_COMPATIBLE_LOAD_WARNING                              :{WHITE}Saderīgs GRF(s) ielādēts pazudusajiem failiem
 STR_NEWGRF_DISABLED_WARNING                                     :{WHITE}Trūkstošie GRF faili tikuši atspējoti
 STR_NEWGRF_NOT_FOUND_WARNING                                    :{WHITE}Lai ielādētu spēli trūkst GRF fails/i
 STR_NEWGRF_UNPAUSE_WARNING_TITLE                                :{YELLOW}Trūkst GRF fails/i
 STR_NEWGRF_UNPAUSE_WARNING                                      :{WHITE}Atpauzēšana var izraisīt OpenTTD avāriju. Neziņot izstrādātājiem par šo kļudu.{}Vai patiešām vēlies atpauzēt?
 
+STR_NEWGRF_BROKEN_VEHICLE_LENGTH                                :{WHITE}Tas maina transportlīdzekļa garumu par '{1:ENGINE}' kad tas neatrodas depo ēkā.
+STR_BROKEN_VEHICLE_LENGTH                                       :{WHITE}Vilciens '{VEHICLE}' kas pieder '{COMPANY}' ir ar nepareizu garumu. Iespējams vainīga problēma ar JaunoGRF. Spēle var pilnībā nedarboties.
 
 STR_LOADGAME_REMOVED_TRAMS                                      :{WHITE}Spēle bija saglabāta bez tramvaju atbalsta. Visi tramvaji tikuši aizvākti.
 
@@ -3214,6 +3220,7 @@ STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffiks
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pariet uz Eiro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Pariet uz Eiro: {ORANGE}nekad
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Priekšskatījums: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mainīt patreizējās valūtas parametrus.
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
 STR_BUS                                                         :{BLACK}{BUS}
@@ -3270,6 +3277,7 @@ STR_REPLACE_HELP                                                :{BLACK}Šis at�
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagona noņemšana: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Auto-aizvietošana saglabās vilciena garumu, aizvācot vagonus (sākot no priekšas), ja mainot lokomatīvi, tas kļūtu garāks.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aizvietošana: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTĀLA METODE {}Parslēgties starp dzinēja un vagona aizvietošanas logiem. {}Vagona aizvietošana notiks tikai tad,ja jaunais vagons pārvietos to pašu kravu ko vecais vagons. Tas tiks pārbaudīts katram vagonam, kad notiks reāla nomaiņa.
 STR_RAIL_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Tranportl. nav pieejams
 STR_ROAD_VEHICLE_NOT_AVAILABLE                                  :{WHITE}Mašīna nav pieejama
 STR_SHIP_NOT_AVAILABLE                                          :{WHITE}Kuģis nav pieejams
@@ -3294,6 +3302,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klik, la
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zīmju saraksts- {COMMA} Zīm{P e es ju}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Salabotā maršruta kļūda apstādināta {VEHICLE}
 
 ############ Lists rail types
 
@@ -3321,16 +3330,26 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-va
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Pārveidojams uz: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Visi kravu tipi
 STR_PURCHASE_INFO_ALL_BUT                                       :Visu izņemot {GOLD}
+STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}Maksimus. Vilcēja piepūle: {GOLD}{FORCE}
 
 ########### For showing numbers in widgets
 
+STR_NUM_1                                                       :{BLACK}{SKIP}{NUM}
+STR_NUM_2                                                       :{BLACK}{SKIP}{SKIP}{NUM}
+STR_NUM_3                                                       :{BLACK}{SKIP}{SKIP}{SKIP}{NUM}
 
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Radīt
 STR_RANDOM                                                      :{BLACK}Nejaušs
+STR_RANDOM_HELP                                                 :{BLACK}Mainīts nejaušais sākums, kas izmantots Virsmas Veidošanā.
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Pasaules ģenerēšana
+STR_RANDOM_SEED                                                 :{BLACK}Nejaušs sākums
+STR_RANDOM_SEED_HELP                                            :{BLACK}Noklikšķiniet,lai ievadītu nejaušu sākumu
+STR_RANDOM_SEED_OSKTITLE                                        :{BLACK}Ievadiet nejaušu sākumu
 STR_LAND_GENERATOR                                              :{BLACK}Zemes radītājs:
+STR_TREE_PLACER                                                 :{BLACK}Koka algoritms:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Reliefa kartes rotācija:
 STR_TERRAIN_TYPE                                                :{BLACK}Apgabala tips:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Jūras līmenis:
 STR_SMOOTHNESS                                                  :{BLACK}Gludums:
@@ -3338,19 +3357,29 @@ STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sniega l
 STR_DATE                                                        :{BLACK}Datums:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Pilsētu sk.:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Rūpnīcu sk.:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_SNOW_LINE_UP                                                :{BLACK}Paaugstināt sniega līnijas augstumu
 STR_SNOW_LINE_DOWN                                              :{BLACK}Pazemināt sniega līnijas augstumu
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Mainīt sniega līnijas augstumu
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mainīt sākšanas gadu
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Līmeņa brīdinājums
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Pārāk Izmainīt pamatkarti nav ieteicams. Turpināt ģenerēšanu?
+STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Pilsētas plānojuma brīdinājums
+STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Pilsētas plānojums ''vairs nekādu ceļu'' nav ieteicams. Turpināt ģenerēšanu?
+STR_HEIGHTMAP_NAME                                              :{BLACK}Reliefkartes nosaukums:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Lielums: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Izveido pasauli...
 STR_GENERATION_ABORT                                            :{BLACK}Atcelt
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Atcelt pasaules radīšanu
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vai tu patiešām vēlies atcelt radīšanu?
 STR_PROGRESS                                                    :{WHITE}{NUM}% pabeigti
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Pasaules ģenerēšana
+STR_TREE_GENERATION                                             :{BLACK}Koka radīšana
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Nepārvietojama radīšana
 STR_CLEARING_TILES                                              :{BLACK}Klinšaina un akmeņaina apvidus ģenerācija
 STR_SETTINGUP_GAME                                              :{BLACK}Uzstādīt spēli
+STR_PREPARING_TILELOOP                                          :{BLACK}Skrejošs nosaukums
 STR_PREPARING_GAME                                              :{BLACK}Sagatavo spēli
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Šī rīcība nomainīja grūtības līmeni uz citu
 STR_SE_FLAT_WORLD                                               :{WHITE}Plakana zeme
@@ -3358,17 +3387,32 @@ STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Radīt p
 STR_SE_RANDOM_LAND                                              :{WHITE}Nejauša zeme
 STR_SE_NEW_WORLD                                                :{BLACK}Izveidot jaunu scenāriju
 STR_SE_CAPTION                                                  :{WHITE}Scenārija tips
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Par vienu līmeni samaziniet augstumu.
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Par vienu līmeni paaugstiniet augstumu.
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}mainiet zemes augstumu
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lēzenās zemes augstums
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrēt minikartes patreizējo pozīciju
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
 # Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Kartes malas:
+STR_NORTHWEST                                                   :{BLACK}Ziemeļrietumi
+STR_NORTHEAST                                                   :{BLACK}Ziemeļaustrumi
+STR_SOUTHEAST                                                   :{BLACK}Dienvidaustrumi
+STR_SOUTHWEST                                                   :{BLACK}Dienvidrietumi
+STR_BORDER_FREEFORM                                             :{BLACK}Brīvā forma
+STR_BORDER_WATER                                                :{BLACK}Ūdens
+STR_BORDER_RANDOM                                               :{BLACK}Nejaušs
+STR_BORDER_RANDOMIZE                                            :{BLACK}Nejaušs
+STR_BORDER_MANUAL                                               :{BLACK}Rokas vadība
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Maza
 STR_CITY_AIRPORT                                                :{BLACK}Pilsēta
 STR_METRO_AIRPORT                                               :{BLACK}Metropoles lidosta
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Starptautiskā lidosta
+STR_COMMUTER_AIRPORT                                            :{BLACK}Ikdienas satiksme
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinentāls
 STR_HELIPORT                                                    :{BLACK}Heliports
 STR_HELIDEPOT                                                   :{BLACK}Helidepo
@@ -3392,7 +3436,10 @@ STR_DATE_LONG                                                   :{STRING} {STRIN
 ########
 
 STR_DRIVE_THROUGH_ERROR_ON_TOWN_ROAD                            :{WHITE}...šis ceļš pieder pilsētai
+STR_DRIVE_THROUGH_ERROR_DIRECTION                               :{WHITE}...ceļš novietots nepareizā virzienā
 
+STR_TRANSPARENCY_TOOLB                                          :{WHITE}Caurspīdības opcija
+STR_TRANSPARENT_INVISIBLE_DESC                                  :{BLACK}Caurspīdības vietā padarīt objektus neredzamus
 
 STR_PERCENT_UP_SMALL                                            :{TINYFONT}{WHITE}{NUM}%{UPARROW}
 STR_PERCENT_UP                                                  :{WHITE}{NUM}%{UPARROW}

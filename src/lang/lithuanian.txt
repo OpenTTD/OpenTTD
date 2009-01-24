@@ -1371,7 +1371,6 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Negalima
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Remonto intervalas procentais: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Keisti produkciją
 
-
 ############ network gui strings
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Žaidimas tinkle
@@ -2717,13 +2716,27 @@ STR_ORDER_UNLOAD                                                :(Iškrauti ir p
 STR_ORDER_UNLOAD_FULL_LOAD                                      :(Iškrauti ir laukti pilno krovinio)
 
 STR_ORDER_NEAREST_HANGAR                                        :artimiausias Angaras
+STR_ORDER_ROAD_DEPOT                                            :Automobilių garažas
+STR_ORDER_SHIP_DEPOT                                            :Laivų statykla
 
+STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :Važiuoti be sustojimo
+STR_ORDER_DROP_SERVICE_DEPOT                                    :Taisytis, jei reikia
+STR_ORDER_DROP_HALT_DEPOT                                       :Sustoti
 
+STR_ORDER_CONDITIONAL_LOAD_PERCENTAGE                           :Krovimosi kiekis (proc)
+STR_ORDER_CONDITIONAL_RELIABILITY                               :Patikimumas
+STR_ORDER_CONDITIONAL_MAX_SPEED                                 :Max. greitis
+STR_ORDER_CONDITIONAL_AGE                                       :Automobilio amžius
 STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :Reikia taisymo
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :Visada
 STR_ORDER_CONDITIONAL_COMPARATOR_EQUALS                         :yra lygu su
 STR_ORDER_CONDITIONAL_COMPARATOR_NOT_EQUALS                     :nelygus su
 STR_ORDER_CONDITIONAL_COMPARATOR_LESS_THAN                      :mažiau negu
+STR_ORDER_CONDITIONAL_COMPARATOR_LESS_EQUALS                    :mažiau arba lygus
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_THAN                      :daugiau negu
+STR_ORDER_CONDITIONAL_COMPARATOR_MORE_EQUALS                    :daugiau arba lygu
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_TRUE                        :tiesa
+STR_ORDER_CONDITIONAL_COMPARATOR_IS_FALSE                       :klaida
 
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kursas i {TOWN} depa
@@ -3311,6 +3324,8 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lygumos 
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti maza zemelapi i sita vieta
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Mažas
 STR_CITY_AIRPORT                                                :{BLACK}Miestas
@@ -3442,5 +3457,14 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}Pakeisti
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

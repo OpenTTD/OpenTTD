@@ -1026,6 +1026,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}الس�
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}السماح بحدود اكثر واقعية للمحطات بحسب الحجم: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}السماح بحذف اكثر من الطرق المملوكة للمدينة و الجسور و غيرها: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}السماح ببناء قطارات طويلة جدا{ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE} موديل تسارع القطارات: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :الاصلي
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :واقعي
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}منع القطارات والسفن من الدوران بزاوية تسعين درجة :  {ORANGE}{STRING} {LTBLUE} (not with NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}ربط محطات القطار المبنيه بجوار بعض:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE} السماح بربط محطتين غير متجاورتين : {ORANGE}{STRING}
@@ -1557,6 +1560,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE} ادخ�
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}الخادم محمي، أدخل الرقم السر
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشركة محمية ، أدخل الرقم السري
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}قائمة العملاء
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE} شركة جديدة
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} لايوجد أجهزة شبكة
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} لايوجد ألعاب شبكة
@@ -1603,6 +1607,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :الاستمر�
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :يغادر
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} قد انضم للعبة
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} انضم الى الشركة رقم : {2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} انضم الى المشاهدين
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} قد بدأ شركة جديدة: (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} قد غادر اللعبة : - {2:STRING}-
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} قد غير اسمه / اسمها الى {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} اعطى شركتك : {2:CURRENCY}
@@ -2402,6 +2409,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}اعاد
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}لا يمكن بناء مبنى الشركة الئيسي ...
 STR_7072_VIEW_HQ                                                :{BLACK}عرض مبنى الشركة الئيسي
 STR_RELOCATE_HQ                                                 :{BLACK}اعادة بناء مقر الشركة
+STR_COMPANY_JOIN                                                :{BLACK} انضم
+STR_COMPANY_JOIN_TIP                                            :{BLACK} انضم و العب بهذه الشركة
 STR_COMPANY_PASSWORD                                            :{BLACK}كلمة المرور
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}احم شركتك بكلمة مرور خاصة لمنع الوصول الغير مسموح من اللاعبين الآخرين.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}ادخل كلمة المرور
