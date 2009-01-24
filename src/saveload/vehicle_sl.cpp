@@ -284,7 +284,7 @@ void AfterLoadVehicles(bool part_of_load)
 			}
 			/* trains weren't stopping gradually in old OTTD versions (and TTO/TTD)
 			 * other vehicle types didn't have zero speed while stopped (even in 'recent' OTTD versions) */
-			if ((v->vehstatus & VS_STOPPED) && (v->type != VEH_TRAIN || CheckSavegameVersion(1))) {
+			if ((v->vehstatus & VS_STOPPED) && (v->type != VEH_TRAIN || CheckSavegameVersionOldStyle(2, 1))) {
 				v->cur_speed = 0;
 			}
 		}
