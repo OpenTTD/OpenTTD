@@ -232,7 +232,7 @@ static void PopupMainCompanyToolbMenu(Window *w, int widget, int grey = 0)
 		list->push_back(new DropDownListCompanyItem(c, false, HasBit(grey, c)));
 	}
 
-	ShowDropDownList(w, list, _local_company == COMPANY_SPECTATOR ? CTMN_CLIENT_LIST : _local_company, widget, 240, true, true);
+	ShowDropDownList(w, list, _local_company == COMPANY_SPECTATOR ? CTMN_CLIENT_LIST : (int)_local_company, widget, 240, true, true);
 	SndPlayFx(SND_15_BEEP);
 }
 
