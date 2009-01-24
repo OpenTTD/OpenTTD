@@ -157,7 +157,7 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
-	return GB(::GetTileTrackStatus(tile, (::TransportType)transport_type, UINT32_MAX), 0, 16) != 0;
+	return ::TrackStatusToTrackdirBits(::GetTileTrackStatus(tile, (::TransportType)transport_type, UINT32_MAX)) != TRACKDIR_BIT_NONE;
 }
 
 /* static */ int32 AITile::GetCargoAcceptance(TileIndex tile, CargoID cargo_type, uint width, uint height, uint radius)

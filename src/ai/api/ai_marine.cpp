@@ -55,16 +55,16 @@
 	if (::DistanceManhattan(t1, t2) != 1) return false;
 	if (t1 > t2) Swap(t1, t2);
 
-	uint32 gtts1 = ::GetTileTrackStatus(t1, TRANSPORT_WATER, 0);
-	uint32 gtts2 = ::GetTileTrackStatus(t2, TRANSPORT_WATER, 0);
-
-	/* Ship can't travel on one of the tiles. */
-	if (gtts1 == 0 || gtts2 == 0) return false;
-
 	DiagDirection to_other_tile = (TileX(t1) == TileX(t2)) ? DIAGDIR_SE : DIAGDIR_SW;
 
-	/* Check whether we can 'leave' the tile at the border and 'enter' the other tile at the border */
-	return (gtts1 & DiagdirReachesTrackdirs(ReverseDiagDir(to_other_tile))) != 0 && (gtts2 & DiagdirReachesTrackdirs(to_other_tile)) != 0;
+	/* Determine the reachable tracks from the shared edge */
+	TrackBits gtts2 = ::TrackStatusToTrackBits(::GetTileTrackStatus(t2, TRANSPORT_WATER, 0, to_other_tile)) & ::DiagdirReachesTracks(to_other_tile);
+	if (gtts2 == TRACK_BIT_NONE) return false;
+
+	to_other_tile = ReverseDiagDir(to_other_tile);
+	TrackBits gtts1 = ::TrackStatusToTrackBits(::GetTileTrackStatus(t1, TRANSPORT_WATER, 0, to_other_tile)) & ::DiagdirReachesTracks(to_other_tile);
+
+	return gtts1 != TRACK_BIT_NONE;
 }
 
 /* static */ bool AIMarine::BuildWaterDepot(TileIndex tile, bool vertical)
