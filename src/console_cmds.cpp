@@ -1558,8 +1558,8 @@ DEF_CONSOLE_CMD(ConContent)
 		IConsoleHelp("Query, select and download content. Usage: 'content update|upgrade|select [all|id]|unselect [all|id]|state|download'");
 		IConsoleHelp("  update: get a new list of downloadable content; must be run first");
 		IConsoleHelp("  upgrade: select all items that are upgrades");
-		IConsoleHelp("  select: select a specific item given by it's id or 'all' to select all");
-		IConsoleHelp("  unselect: unselect a specific item given by it's id or 'all' to unselect all");
+		IConsoleHelp("  select: select a specific item given by its id or 'all' to select all");
+		IConsoleHelp("  unselect: unselect a specific item given by its id or 'all' to unselect all");
 		IConsoleHelp("  state: show the download/select state of all downloadable content");
 		IConsoleHelp("  download: download all content you've selected");
 		return true;
