@@ -754,7 +754,7 @@ static const Widget _newgrf_widgets[] = {
 
 /* Window definition of the manage newgrfs window */
 static const WindowDesc _newgrf_desc = {
-	WDP_CENTER, WDP_CENTER, 300, 262, 300, 262,
+	WDP_CENTER, WDP_CENTER, 300, 263, 300, 263,
 	WC_GAME_OPTIONS, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_newgrf_widgets,
