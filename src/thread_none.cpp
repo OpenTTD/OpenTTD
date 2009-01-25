@@ -12,7 +12,7 @@
 }
 
 /** Mutex that doesn't do locking because it ain't needed when there're no threads */
-class ThreadMutex_None : ThreadMutex {
+class ThreadMutex_None : public ThreadMutex {
 public:
 	virtual void BeginCritical() {}
 	virtual void EndCritical() {}
@@ -20,5 +20,5 @@ public:
 
 /* static */ ThreadMutex *ThreadMutex::New()
 {
-	return new ThreadMutex_None;
+	return new ThreadMutex_None();
 }
