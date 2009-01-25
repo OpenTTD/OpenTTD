@@ -607,91 +607,92 @@ static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 fla
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
 	CommandCost value(EXPENSES_NEW_VEHICLES, GetEngine(engine)->GetCost());
 
+	if (flags & DC_QUERY_COST) return value;
+
+	/* Check that the wagon can drive on the track in question */
+	if (!IsCompatibleRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+
 	uint num_vehicles = 1 + CountArticulatedParts(engine, false);
 
-	if (!(flags & DC_QUERY_COST)) {
-		/* Check that the wagon can drive on the track in question */
-		if (!IsCompatibleRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+	/* Allow for the wagon and the articulated parts, plus one to "terminate" the list. */
+	Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
+	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
-		/* Allow for the wagon and the articulated parts, plus one to "terminate" the list. */
-		Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
-		memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
+	if (!Vehicle::AllocateList(vl, num_vehicles)) {
+		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+	}
 
-		if (!Vehicle::AllocateList(vl, num_vehicles))
-			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+	if (flags & DC_EXEC) {
+		Vehicle *v = vl[0];
+		v->spritenum = rvi->image_index;
 
-		if (flags & DC_EXEC) {
-			Vehicle *v = vl[0];
-			v->spritenum = rvi->image_index;
+		Vehicle *u = NULL;
 
-			Vehicle *u = NULL;
-
-			Vehicle *w;
-			FOR_ALL_VEHICLES(w) {
-				if (w->type == VEH_TRAIN && w->tile == tile &&
-				    IsFreeWagon(w) && w->engine_type == engine &&
-				    !HASBITS(w->vehstatus, VS_CRASHED)) {          /// do not connect new wagon with crashed/flooded consists
-					u = GetLastVehicleInChain(w);
-					break;
-				}
+		Vehicle *w;
+		FOR_ALL_VEHICLES(w) {
+			if (w->type == VEH_TRAIN && w->tile == tile &&
+			    IsFreeWagon(w) && w->engine_type == engine &&
+			    !HASBITS(w->vehstatus, VS_CRASHED)) {          /// do not connect new wagon with crashed/flooded consists
+				u = GetLastVehicleInChain(w);
+				break;
 			}
-
-			v = new (v) Train();
-			v->engine_type = engine;
-
-			DiagDirection dir = GetRailDepotDirection(tile);
-
-			v->direction = DiagDirToDir(dir);
-			v->tile = tile;
-
-			int x = TileX(tile) * TILE_SIZE | _vehicle_initial_x_fract[dir];
-			int y = TileY(tile) * TILE_SIZE | _vehicle_initial_y_fract[dir];
-
-			v->x_pos = x;
-			v->y_pos = y;
-			v->z_pos = GetSlopeZ(x, y);
-			v->owner = _current_company;
-			v->u.rail.track = TRACK_BIT_DEPOT;
-			v->vehstatus = VS_HIDDEN | VS_DEFPAL;
-
-//			v->subtype = 0;
-			SetTrainWagon(v);
-
-			if (u != NULL) {
-				u->SetNext(v);
-			} else {
-				SetFreeWagon(v);
-				InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-			}
-
-			v->cargo_type = rvi->cargo_type;
-//			v->cargo_subtype = 0;
-			v->cargo_cap = rvi->capacity;
-			v->value = value.GetCost();
-//			v->day_counter = 0;
-
-			v->u.rail.railtype = rvi->railtype;
-
-			v->build_year = _cur_year;
-			v->cur_image = 0xAC2;
-			v->random_bits = VehicleRandomBits();
-
-			v->group_id = DEFAULT_GROUP;
-
-			AddArticulatedParts(vl, VEH_TRAIN);
-
-			_new_vehicle_id = v->index;
-
-			VehiclePositionChanged(v);
-			TrainConsistChanged(v->First(), false);
-			UpdateTrainGroupID(v->First());
-
-			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-			if (IsLocalCompany()) {
-				InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
-			}
-			GetCompany(_current_company)->num_engines[engine]++;
 		}
+
+		v = new (v) Train();
+		v->engine_type = engine;
+
+		DiagDirection dir = GetRailDepotDirection(tile);
+
+		v->direction = DiagDirToDir(dir);
+		v->tile = tile;
+
+		int x = TileX(tile) * TILE_SIZE | _vehicle_initial_x_fract[dir];
+		int y = TileY(tile) * TILE_SIZE | _vehicle_initial_y_fract[dir];
+
+		v->x_pos = x;
+		v->y_pos = y;
+		v->z_pos = GetSlopeZ(x, y);
+		v->owner = _current_company;
+		v->u.rail.track = TRACK_BIT_DEPOT;
+		v->vehstatus = VS_HIDDEN | VS_DEFPAL;
+
+//		v->subtype = 0;
+		SetTrainWagon(v);
+
+		if (u != NULL) {
+			u->SetNext(v);
+		} else {
+			SetFreeWagon(v);
+			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+		}
+
+		v->cargo_type = rvi->cargo_type;
+//		v->cargo_subtype = 0;
+		v->cargo_cap = rvi->capacity;
+		v->value = value.GetCost();
+//		v->day_counter = 0;
+
+		v->u.rail.railtype = rvi->railtype;
+
+		v->build_year = _cur_year;
+		v->cur_image = 0xAC2;
+		v->random_bits = VehicleRandomBits();
+
+		v->group_id = DEFAULT_GROUP;
+
+		AddArticulatedParts(vl, VEH_TRAIN);
+
+		_new_vehicle_id = v->index;
+
+		VehiclePositionChanged(v);
+		TrainConsistChanged(v->First(), false);
+		UpdateTrainGroupID(v->First());
+
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		if (IsLocalCompany()) {
+			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
+		}
+		GetCompany(_current_company)->num_engines[engine]++;
 	}
 
 	return value;
@@ -752,124 +753,122 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 	/* Check if the engine-type is valid (for the company) */
 	if (!IsEngineBuildable(p1, VEH_TRAIN, _current_company)) return_cmd_error(STR_RAIL_VEHICLE_NOT_AVAILABLE);
 
-	/* Check if the train is actually being built in a depot belonging
-	 * to the company. Doesn't matter if only the cost is queried */
-	if (!(flags & DC_QUERY_COST)) {
-		if (!IsRailDepotTile(tile)) return CMD_ERROR;
-		if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
-	}
-
-	const RailVehicleInfo *rvi = RailVehInfo(p1);
-
-	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
-
 	const Engine *e = GetEngine(p1);
 	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
+
+	if (flags & DC_QUERY_COST) return value;
+
+	/* Check if the train is actually being built in a depot belonging
+	 * to the company. Doesn't matter if only the cost is queried */
+	if (!IsRailDepotTile(tile)) return CMD_ERROR;
+	if (!IsTileOwner(tile, _current_company)) return CMD_ERROR;
+
+	const RailVehicleInfo *rvi = RailVehInfo(p1);
+	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
 	uint num_vehicles =
 		(rvi->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) +
 		CountArticulatedParts(p1, false);
 
-	if (!(flags & DC_QUERY_COST)) {
-		/* Check if depot and new engine uses the same kind of tracks *
-		 * We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
-		if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
+	/* Check if depot and new engine uses the same kind of tracks *
+	 * We need to see if the engine got power on the tile to avoid eletric engines in non-electric depots */
+	if (!HasPowerOnRail(rvi->railtype, GetRailType(tile))) return CMD_ERROR;
 
-		/* Allow for the dual-heads and the articulated parts, plus one to "terminate" the list. */
-		Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
-		memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
+	/* Allow for the dual-heads and the articulated parts, plus one to "terminate" the list. */
+	Vehicle **vl = AllocaM(Vehicle*, num_vehicles + 1);
+	memset(vl, 0, sizeof(*vl) * (num_vehicles + 1));
 
-		if (!Vehicle::AllocateList(vl, num_vehicles)) {
-			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+	if (!Vehicle::AllocateList(vl, num_vehicles)) {
+		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+	}
+
+	Vehicle *v = vl[0];
+
+	UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
+	if (unit_num > _settings_game.vehicle.max_trains) {
+		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+	}
+
+	if (flags & DC_EXEC) {
+		DiagDirection dir = GetRailDepotDirection(tile);
+		int x = TileX(tile) * TILE_SIZE + _vehicle_initial_x_fract[dir];
+		int y = TileY(tile) * TILE_SIZE + _vehicle_initial_y_fract[dir];
+
+		v = new (v) Train();
+		v->unitnumber = unit_num;
+		v->direction = DiagDirToDir(dir);
+		v->tile = tile;
+		v->owner = _current_company;
+		v->x_pos = x;
+		v->y_pos = y;
+		v->z_pos = GetSlopeZ(x, y);
+//		v->running_ticks = 0;
+		v->u.rail.track = TRACK_BIT_DEPOT;
+		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
+		v->spritenum = rvi->image_index;
+		v->cargo_type = rvi->cargo_type;
+//		v->cargo_subtype = 0;
+		v->cargo_cap = rvi->capacity;
+		v->max_speed = rvi->max_speed;
+		v->value = value.GetCost();
+		v->last_station_visited = INVALID_STATION;
+//		v->dest_tile = 0;
+
+		v->engine_type = p1;
+
+		v->reliability = e->reliability;
+		v->reliability_spd_dec = e->reliability_spd_dec;
+		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
+
+		v->name = NULL;
+		v->u.rail.railtype = rvi->railtype;
+		_new_vehicle_id = v->index;
+
+		v->service_interval = _settings_game.vehicle.servint_trains;
+		v->date_of_last_service = _date;
+		v->build_year = _cur_year;
+		v->cur_image = 0xAC2;
+		v->random_bits = VehicleRandomBits();
+
+//		v->vehicle_flags = 0;
+		if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
+
+		v->group_id = DEFAULT_GROUP;
+
+//		v->subtype = 0;
+		SetFrontEngine(v);
+		SetTrainEngine(v);
+
+		VehiclePositionChanged(v);
+
+		if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
+			SetMultiheaded(v);
+			AddRearEngineToMultiheadedTrain(vl[0], vl[1], true);
+			/* Now we need to link the front and rear engines together
+			 * other_multiheaded_part is the pointer that links to the other half of the engine
+			 * vl[0] is the front and vl[1] is the rear
+			 */
+			vl[0]->u.rail.other_multiheaded_part = vl[1];
+			vl[1]->u.rail.other_multiheaded_part = vl[0];
+		} else {
+			AddArticulatedParts(vl, VEH_TRAIN);
 		}
 
-		Vehicle *v = vl[0];
+		TrainConsistChanged(v, false);
+		UpdateTrainGroupID(v);
 
-		UnitID unit_num = (flags & DC_AUTOREPLACE) ? 0 : GetFreeUnitNumber(VEH_TRAIN);
-		if (unit_num > _settings_game.vehicle.max_trains)
-			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
-
-		if (flags & DC_EXEC) {
-			DiagDirection dir = GetRailDepotDirection(tile);
-			int x = TileX(tile) * TILE_SIZE + _vehicle_initial_x_fract[dir];
-			int y = TileY(tile) * TILE_SIZE + _vehicle_initial_y_fract[dir];
-
-			v = new (v) Train();
-			v->unitnumber = unit_num;
-			v->direction = DiagDirToDir(dir);
-			v->tile = tile;
-			v->owner = _current_company;
-			v->x_pos = x;
-			v->y_pos = y;
-			v->z_pos = GetSlopeZ(x, y);
-//			v->running_ticks = 0;
-			v->u.rail.track = TRACK_BIT_DEPOT;
-			v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
-			v->spritenum = rvi->image_index;
-			v->cargo_type = rvi->cargo_type;
-//			v->cargo_subtype = 0;
-			v->cargo_cap = rvi->capacity;
-			v->max_speed = rvi->max_speed;
-			v->value = value.GetCost();
-			v->last_station_visited = INVALID_STATION;
-//			v->dest_tile = 0;
-
-			v->engine_type = p1;
-
-			v->reliability = e->reliability;
-			v->reliability_spd_dec = e->reliability_spd_dec;
-			v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
-
-			v->name = NULL;
-			v->u.rail.railtype = rvi->railtype;
-			_new_vehicle_id = v->index;
-
-			v->service_interval = _settings_game.vehicle.servint_trains;
-			v->date_of_last_service = _date;
-			v->build_year = _cur_year;
-			v->cur_image = 0xAC2;
-			v->random_bits = VehicleRandomBits();
-
-//			v->vehicle_flags = 0;
-			if (e->flags & ENGINE_EXCLUSIVE_PREVIEW) SetBit(v->vehicle_flags, VF_BUILT_AS_PROTOTYPE);
-
-			v->group_id = DEFAULT_GROUP;
-
-//			v->subtype = 0;
-			SetFrontEngine(v);
-			SetTrainEngine(v);
-
-			VehiclePositionChanged(v);
-
-			if (rvi->railveh_type == RAILVEH_MULTIHEAD) {
-				SetMultiheaded(v);
-				AddRearEngineToMultiheadedTrain(vl[0], vl[1], true);
-				/* Now we need to link the front and rear engines together
-				 * other_multiheaded_part is the pointer that links to the other half of the engine
-				 * vl[0] is the front and vl[1] is the rear
-				 */
-				vl[0]->u.rail.other_multiheaded_part = vl[1];
-				vl[1]->u.rail.other_multiheaded_part = vl[0];
-			} else {
-				AddArticulatedParts(vl, VEH_TRAIN);
-			}
-
-			TrainConsistChanged(v, false);
-			UpdateTrainGroupID(v);
-
-			if (!HasBit(p2, 1) && !(flags & DC_AUTOREPLACE)) { // check if the cars should be added to the new vehicle
-				NormalizeTrainVehInDepot(v);
-			}
-
-			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-			InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
-			InvalidateWindow(WC_COMPANY, v->owner);
-			if (IsLocalCompany()) {
-				InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
-			}
-
-			GetCompany(_current_company)->num_engines[p1]++;
+		if (!HasBit(p2, 1) && !(flags & DC_AUTOREPLACE)) { // check if the cars should be added to the new vehicle
+			NormalizeTrainVehInDepot(v);
 		}
+
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+		InvalidateWindowClassesData(WC_TRAINS_LIST, 0);
+		InvalidateWindow(WC_COMPANY, v->owner);
+		if (IsLocalCompany()) {
+			InvalidateAutoreplaceWindow(v->engine_type, v->group_id); // updates the replace Train window
+		}
+
+		GetCompany(_current_company)->num_engines[p1]++;
 	}
 
 	return value;
