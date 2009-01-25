@@ -4,27 +4,6 @@
 #include "ai_event_types.hpp"
 
 namespace SQConvert {
-	/* Allow AIEventTest to be used as Squirrel parameter */
-	template <> AIEventTest *GetParam(ForceType<AIEventTest *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEventTest *)instance; }
-	template <> AIEventTest &GetParam(ForceType<AIEventTest &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventTest *)instance; }
-	template <> const AIEventTest *GetParam(ForceType<const AIEventTest *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEventTest *)instance; }
-	template <> const AIEventTest &GetParam(ForceType<const AIEventTest &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventTest *)instance; }
-	template <> int Return<AIEventTest *>(HSQUIRRELVM vm, AIEventTest *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIEventTest", res, NULL, DefSQDestructorCallback<AIEventTest>); return 1; }
-}; // namespace SQConvert
-
-void SQAIEventTest_Register(Squirrel *engine) {
-	DefSQClass <AIEventTest> SQAIEventTest("AIEventTest");
-	SQAIEventTest.PreRegister(engine, "AIEvent");
-
-	SQAIEventTest.DefSQStaticMethod(engine, &AIEventTest::GetClassName, "GetClassName", 1, "x");
-	SQAIEventTest.DefSQStaticMethod(engine, &AIEventTest::Convert,      "Convert",      2, "xx");
-
-	SQAIEventTest.DefSQMethod(engine, &AIEventTest::GetTest, "GetTest", 1, "x");
-
-	SQAIEventTest.PostRegister(engine);
-}
-
-namespace SQConvert {
 	/* Allow AIEventVehicleCrashed to be used as Squirrel parameter */
 	template <> AIEventVehicleCrashed *GetParam(ForceType<AIEventVehicleCrashed *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIEventVehicleCrashed *)instance; }
 	template <> AIEventVehicleCrashed &GetParam(ForceType<AIEventVehicleCrashed &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIEventVehicleCrashed *)instance; }

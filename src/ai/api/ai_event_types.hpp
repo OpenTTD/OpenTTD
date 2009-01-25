@@ -13,39 +13,6 @@
 #include "ai_subsidy.hpp"
 
 /**
- * Event Test: a simple test event, to see if the event system is working.
- *  Triggered via AIEventController::Test();
- */
-class AIEventTest : public AIEvent {
-public:
-	static const char *GetClassName() { return "AIEventTest"; }
-
-	/**
-	 * @param test A test value.
-	 */
-	AIEventTest(uint test) :
-		AIEvent(AI_ET_TEST),
-		test(test)
-	{}
-
-	/**
-	 * Convert an AIEvent to the real instance.
-	 * @param instance The instance to convert.
-	 * @return The converted instance.
-	 */
-	static AIEventTest *Convert(AIEvent *instance) { return (AIEventTest *)instance; }
-
-	/**
-	 * Return the test value.
-	 * @return The test value.
-	 */
-	uint GetTest() { return this->test; }
-
-private:
-	uint test;
-};
-
-/**
  * Event Vehicle Crash, indicating a vehicle of yours is crashed.
  *  It contains both the crash site as the vehicle crashed. It has a nice
  *  helper that creates a new vehicle in a depot with the same type

@@ -191,7 +191,6 @@ void AIInstance::RegisterAPI()
 	SQAIEventSubsidyExpired_Register(this->engine);
 	SQAIEventSubsidyOffer_Register(this->engine);
 	SQAIEventSubsidyOfferExpired_Register(this->engine);
-	SQAIEventTest_Register(this->engine);
 	SQAIEventVehicleCrashed_Register(this->engine);
 	SQAIEventVehicleLost_Register(this->engine);
 	SQAIEventVehicleUnprofitable_Register(this->engine);
