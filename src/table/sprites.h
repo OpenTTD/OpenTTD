@@ -379,59 +379,12 @@ enum Sprites {
 	SPR_TRACK_FENCE_SLOPE_NE  = 1307,
 	SPR_TRACK_FENCE_SLOPE_NW  = 1308,
 
-	/* Elrail stuff */
-	/* Wires. First identifier is the direction of the track, second is the required placement of the pylon.
-	 * "short" denotes a wire that requires a pylon on each end. Third identifier is the direction of the slope
-	 * (in positive coordinate direction) */
-	SPR_WIRE_X_SHORT      = SPR_ELRAIL_BASE + 0,
-	SPR_WIRE_Y_SHORT      = SPR_ELRAIL_BASE + 1,
-	SPR_WIRE_EW_SHORT     = SPR_ELRAIL_BASE + 2,
-	SPR_WIRE_NS_SHORT     = SPR_ELRAIL_BASE + 3,
-	SPR_WIRE_X_SHORT_DOWN = SPR_ELRAIL_BASE + 4,
-	SPR_WIRE_Y_SHORT_UP   = SPR_ELRAIL_BASE + 5,
-	SPR_WIRE_X_SHORT_UP   = SPR_ELRAIL_BASE + 6,
-	SPR_WIRE_Y_SHORT_DOWN = SPR_ELRAIL_BASE + 7,
-
-	SPR_WIRE_X_SW      = SPR_ELRAIL_BASE +  8,
-	SPR_WIRE_Y_SE      = SPR_ELRAIL_BASE +  9,
-	SPR_WIRE_EW_E      = SPR_ELRAIL_BASE + 10,
-	SPR_WIRE_NS_S      = SPR_ELRAIL_BASE + 11,
-	SPR_WIRE_X_SW_DOWN = SPR_ELRAIL_BASE + 12,
-	SPR_WIRE_Y_SE_UP   = SPR_ELRAIL_BASE + 13,
-	SPR_WIRE_X_SW_UP   = SPR_ELRAIL_BASE + 14,
-	SPR_WIRE_Y_SE_DOWN = SPR_ELRAIL_BASE + 15,
-
-	SPR_WIRE_X_NE      = SPR_ELRAIL_BASE + 16,
-	SPR_WIRE_Y_NW      = SPR_ELRAIL_BASE + 17,
-	SPR_WIRE_EW_W      = SPR_ELRAIL_BASE + 18,
-	SPR_WIRE_NS_N      = SPR_ELRAIL_BASE + 19,
-	SPR_WIRE_X_NE_DOWN = SPR_ELRAIL_BASE + 20,
-	SPR_WIRE_Y_NW_UP   = SPR_ELRAIL_BASE + 21,
-	SPR_WIRE_X_NE_UP   = SPR_ELRAIL_BASE + 22,
-	SPR_WIRE_Y_NW_DOWN = SPR_ELRAIL_BASE + 23,
-
-	/* Tunnel entries */
-	SPR_WIRE_TUNNEL_NE = SPR_ELRAIL_BASE + 24,
-	SPR_WIRE_TUNNEL_SE = SPR_ELRAIL_BASE + 25,
-	SPR_WIRE_TUNNEL_SW = SPR_ELRAIL_BASE + 26,
-	SPR_WIRE_TUNNEL_NW = SPR_ELRAIL_BASE + 27,
-
-	/* Depot entries */
-	SPR_WIRE_DEPOT_SW = SPR_ELRAIL_BASE + 24,
-	SPR_WIRE_DEPOT_NW = SPR_ELRAIL_BASE + 25,
-	SPR_WIRE_DEPOT_NE = SPR_ELRAIL_BASE + 26,
-	SPR_WIRE_DEPOT_SE = SPR_ELRAIL_BASE + 27,
-
-
-	/* Pylons, first identifier is the direction of the track, second the placement relative to the track */
-	SPR_PYLON_Y_NE = SPR_ELRAIL_BASE + 28,
-	SPR_PYLON_Y_SW = SPR_ELRAIL_BASE + 29,
-	SPR_PYLON_X_NW = SPR_ELRAIL_BASE + 30,
-	SPR_PYLON_X_SE = SPR_ELRAIL_BASE + 31,
-	SPR_PYLON_EW_N = SPR_ELRAIL_BASE + 32,
-	SPR_PYLON_EW_S = SPR_ELRAIL_BASE + 33,
-	SPR_PYLON_NS_W = SPR_ELRAIL_BASE + 34,
-	SPR_PYLON_NS_E = SPR_ELRAIL_BASE + 35,
+	/* Base sprites for elrail.
+	 * Offsets via an enum are used so a complete list of absolute
+	 * sprite numbers is unnecessary.
+	 */
+	SPR_WIRE_BASE         = SPR_ELRAIL_BASE +  0,
+	SPR_PYLON_BASE        = SPR_ELRAIL_BASE + 28,
 
 	/* sprites for roads */
 	SPR_ROAD_PAVED_STRAIGHT_Y       = 1313,
