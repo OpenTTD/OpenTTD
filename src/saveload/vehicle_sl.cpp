@@ -200,6 +200,43 @@ void UpdateOldAircraft()
 	}
 }
 
+/**
+ * Check all vehicles to ensure their engine type is valid
+ * for the currently loaded NewGRFs (that includes none...)
+ * This only makes a difference if NewGRFs are missing, otherwise
+ * all vehicles will be valid. This does not make such a game
+ * playable, it only prevents crash.
+ */
+static void CheckValidVehicles()
+{
+	uint total_engines = GetEnginePoolSize();
+	EngineID first_engine[4] = { INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE, INVALID_ENGINE };
+
+	Engine *e;
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_TRAIN) { first_engine[VEH_TRAIN] = e->index; break; }
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_ROAD) { first_engine[VEH_ROAD] = e->index; break; }
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_SHIP) { first_engine[VEH_SHIP] = e->index; break; }
+	FOR_ALL_ENGINES_OF_TYPE(e, VEH_AIRCRAFT) { first_engine[VEH_AIRCRAFT] = e->index; break; }
+
+	Vehicle *v;
+	FOR_ALL_VEHICLES(v) {
+		/* Test if engine types match */
+		switch (v->type) {
+			case VEH_TRAIN:
+			case VEH_ROAD:
+			case VEH_SHIP:
+			case VEH_AIRCRAFT:
+				if (v->engine_type >= total_engines || v->type != GetEngine(v->engine_type)->type) {
+					v->engine_type = first_engine[v->type];
+				}
+				break;
+
+			default:
+				break;
+		}
+	}
+}
+
 /** Called after load to update coordinates */
 void AfterLoadVehicles(bool part_of_load)
 {
@@ -261,6 +298,8 @@ void AfterLoadVehicles(bool part_of_load)
 			}
 		}
 	}
+
+	CheckValidVehicles();
 
 	FOR_ALL_VEHICLES(v) {
 		assert(v->first != NULL);
