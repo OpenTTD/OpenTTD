@@ -47,6 +47,7 @@ enum OldChunkType {
 	OC_VAR_I32   = 5 << 8,
 	OC_VAR_U32   = 6 << 8,
 	OC_VAR_I64   = 7 << 8,
+	OC_VAR_U64   = 8 << 8,
 	/* 8 bits allocated (256 max) */
 
 	OC_FILE_I8   = 1 << 16,

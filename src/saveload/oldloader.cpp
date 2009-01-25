@@ -163,6 +163,7 @@ bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 					case OC_VAR_I32:*(int32 *)ptr = res; break;
 					case OC_VAR_U32:*(uint32*)ptr = res; break;
 					case OC_VAR_I64:*(int64 *)ptr = res; break;
+					case OC_VAR_U64:*(uint64*)ptr = res; break;
 					default: NOT_REACHED();
 				}
 
