@@ -2704,7 +2704,6 @@ static PBSTileInfo ExtendTrainReservation(const Vehicle *v, TrackBits *new_track
 		if (KillFirstBit(ft.m_new_td_bits) == TRACKDIR_BIT_NONE) {
 			/* Possible signal tile. */
 			if (HasOnewaySignalBlockingTrackdir(ft.m_new_tile, FindFirstTrackdir(ft.m_new_td_bits))) break;
-			AI::NewEvent(v->owner, new AIEventVehicleLost(v->index));
 		}
 
 		if (no_90deg_turns) {
@@ -2954,6 +2953,7 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
 				/* it is first time the problem occurred, set the "path not found" flag */
 				SetBit(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 				/* and notify user about the event */
+				AI::NewEvent(v->owner, new AIEventVehicleLost(v->index));
 				if (_settings_client.gui.lost_train_warn && v->owner == _local_company) {
 					SetDParam(0, v->index);
 					AddNewsItem(
