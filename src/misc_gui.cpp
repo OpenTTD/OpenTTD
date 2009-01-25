@@ -1004,7 +1004,15 @@ HandleEditBoxResult QueryString::HandleEditBoxKey(Window *w, int wid, uint16 key
 
 void QueryString::HandleEditBox(Window *w, int wid)
 {
-	if (HandleCaret(&this->text)) w->InvalidateWidget(wid);
+	if (HandleCaret(&this->text)) {
+		w->InvalidateWidget(wid);
+		/* When we're not the OSK, notify 'our' OSK to redraw the widget,
+		 * so the caret changes appropriately. */
+		if (w->window_class != WC_OSK) {
+			Window *w_osk = FindWindowById(WC_OSK, 0);
+			if (w_osk != NULL && w_osk->parent == w) w_osk->OnInvalidateData();
+		}
+	}
 }
 
 void QueryString::DrawEditBox(Window *w, int wid)
