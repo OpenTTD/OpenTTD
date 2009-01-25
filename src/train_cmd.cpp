@@ -605,7 +605,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, SpriteID pal)
 static CommandCost CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	CommandCost value(EXPENSES_NEW_VEHICLES, (GetEngineProperty(engine, 0x17, rvi->cost_factor) * _price.build_railwagon) >> 8);
+	CommandCost value(EXPENSES_NEW_VEHICLES, GetEngine(engine)->GetCost());
 
 	uint num_vehicles = 1 + CountArticulatedParts(engine, false);
 
@@ -713,11 +713,6 @@ static void NormalizeTrainVehInDepot(const Vehicle *u)
 	}
 }
 
-static CommandCost EstimateTrainCost(EngineID engine, const RailVehicleInfo *rvi)
-{
-	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine, 0x17, rvi->cost_factor) * (_price.build_railvehicle >> 3) >> 5);
-}
-
 static void AddRearEngineToMultiheadedTrain(Vehicle *v, Vehicle *u, bool building)
 {
 	u = new (u) Train();
@@ -768,7 +763,8 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 	if (rvi->railveh_type == RAILVEH_WAGON) return CmdBuildRailWagon(p1, tile, flags);
 
-	CommandCost value = EstimateTrainCost(p1, rvi);
+	const Engine *e = GetEngine(p1);
+	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	uint num_vehicles =
 		(rvi->railveh_type == RAILVEH_MULTIHEAD ? 2 : 1) +
@@ -820,7 +816,6 @@ CommandCost CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 
 
 			v->engine_type = p1;
 
-			const Engine *e = GetEngine(p1);
 			v->reliability = e->reliability;
 			v->reliability_spd_dec = e->reliability_spd_dec;
 			v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;

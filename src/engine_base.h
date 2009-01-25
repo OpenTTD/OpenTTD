@@ -51,6 +51,7 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 	inline bool IsValid() const { return this->info.climates != 0; }
 
 	Money GetRunningCost() const;
+	Money GetCost() const;
 };
 
 static inline bool IsEngineIndex(uint index)

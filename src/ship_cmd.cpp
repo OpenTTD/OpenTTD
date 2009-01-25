@@ -341,11 +341,6 @@ static bool ShipAccelerate(Vehicle *v)
 	return (t < v->progress);
 }
 
-static CommandCost EstimateShipCost(EngineID engine_type)
-{
-	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine_type, 0x0A, ShipVehInfo(engine_type)->cost_factor) * (_price.ship_base >> 3) >> 5);
-}
-
 static void ShipArrivesAt(const Vehicle *v, Station *st)
 {
 	/* Check if station was ever visited before */
@@ -746,13 +741,13 @@ void Ship::Tick()
  */
 CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost value;
 	UnitID unit_num;
-	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_SHIP, _current_company)) return_cmd_error(STR_SHIP_NOT_AVAILABLE);
 
-	value = EstimateShipCost(p1);
+	const Engine *e = GetEngine(p1);
+	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
+
 	if (flags & DC_QUERY_COST) return value;
 
 	/* The ai_new queries the vehicle cost before building the route,
@@ -797,7 +792,6 @@ CommandCost CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 		v->max_speed = svi->max_speed;
 		v->engine_type = p1;
 
-		e = GetEngine(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;

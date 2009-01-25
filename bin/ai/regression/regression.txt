@@ -1529,7 +1529,7 @@
     GetCapacity():      40
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         795
+    GetPrice():         79
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1544,7 +1544,7 @@
     GetCapacity():      30
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         733
+    GetPrice():         73
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1559,7 +1559,7 @@
     GetCapacity():      30
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         566
+    GetPrice():         56
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1574,7 +1574,7 @@
     GetCapacity():      30
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         643
+    GetPrice():         64
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1589,7 +1589,7 @@
     GetCapacity():      25
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         618
+    GetPrice():         61
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1604,7 +1604,7 @@
     GetCapacity():      25
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         611
+    GetPrice():         60
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1619,7 +1619,7 @@
     GetCapacity():      30
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         585
+    GetPrice():         58
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1634,7 +1634,7 @@
     GetCapacity():      30
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         582
+    GetPrice():         57
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1649,7 +1649,7 @@
     GetCapacity():      30
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         576
+    GetPrice():         57
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1664,7 +1664,7 @@
     GetCapacity():      20
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         630
+    GetPrice():         62
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1679,7 +1679,7 @@
     GetCapacity():      20
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         820
+    GetPrice():         81
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1979,7 +1979,7 @@
     GetCapacity():      45
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         795
+    GetPrice():         79
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -1994,7 +1994,7 @@
     GetCapacity():      35
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         733
+    GetPrice():         73
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2009,7 +2009,7 @@
     GetCapacity():      35
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         566
+    GetPrice():         56
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2024,7 +2024,7 @@
     GetCapacity():      35
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         643
+    GetPrice():         64
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2039,7 +2039,7 @@
     GetCapacity():      30
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         618
+    GetPrice():         61
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2054,7 +2054,7 @@
     GetCapacity():      30
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         611
+    GetPrice():         60
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2069,7 +2069,7 @@
     GetCapacity():      35
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         585
+    GetPrice():         58
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2084,7 +2084,7 @@
     GetCapacity():      35
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         582
+    GetPrice():         57
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2099,7 +2099,7 @@
     GetCapacity():      35
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         576
+    GetPrice():         57
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2114,7 +2114,7 @@
     GetCapacity():      25
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         630
+    GetPrice():         62
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2129,7 +2129,7 @@
     GetCapacity():      25
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         820
+    GetPrice():         81
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2459,7 +2459,7 @@
     GetCapacity():      47
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         795
+    GetPrice():         79
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2474,7 +2474,7 @@
     GetCapacity():      37
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         733
+    GetPrice():         73
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2489,7 +2489,7 @@
     GetCapacity():      37
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         566
+    GetPrice():         56
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2504,7 +2504,7 @@
     GetCapacity():      37
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         643
+    GetPrice():         64
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2519,7 +2519,7 @@
     GetCapacity():      32
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         618
+    GetPrice():         61
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2534,7 +2534,7 @@
     GetCapacity():      32
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         611
+    GetPrice():         60
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2549,7 +2549,7 @@
     GetCapacity():      37
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         585
+    GetPrice():         58
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2564,7 +2564,7 @@
     GetCapacity():      37
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         582
+    GetPrice():         57
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2579,7 +2579,7 @@
     GetCapacity():      37
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         576
+    GetPrice():         57
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2594,7 +2594,7 @@
     GetCapacity():      27
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         630
+    GetPrice():         62
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0
@@ -2609,7 +2609,7 @@
     GetCapacity():      27
     GetReliability():   0
     GetMaxSpeed():      0
-    GetPrice():         820
+    GetPrice():         81
     GetMaxAge():        7320
     GetRunningCost():   0
     GetVehicleType():   0

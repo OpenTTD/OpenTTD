@@ -113,29 +113,7 @@ int32 AIEventEnginePreview::GetMaxSpeed()
 
 Money AIEventEnginePreview::GetPrice()
 {
-	switch (::GetEngine(engine)->type) {
-		case VEH_ROAD: {
-			const RoadVehicleInfo *vi = ::RoadVehInfo(engine);
-			return (_price.roadveh_base >> 3) * vi->cost_factor >> 5;
-		} break;
-
-		case VEH_TRAIN: {
-			const RailVehicleInfo *vi = ::RailVehInfo(engine);
-			return (_price.build_railvehicle >> 3) * vi->cost_factor >> 5;
-		} break;
-
-		case VEH_SHIP: {
-			const ShipVehicleInfo *vi = ::ShipVehInfo(engine);
-			return (_price.ship_base >> 3) * vi->cost_factor >> 5;
-		} break;
-
-		case VEH_AIRCRAFT: {
-			const AircraftVehicleInfo *vi = ::AircraftVehInfo(engine);
-			return (_price.aircraft_base >> 3) * vi->cost_factor >> 5;
-		} break;
-
-		default: NOT_REACHED();
-	}
+	return ::GetEngine(engine)->GetCost();
 }
 
 Money AIEventEnginePreview::GetRunningCost()

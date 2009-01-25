@@ -223,12 +223,6 @@ void GetAircraftSpriteSize(EngineID engine, uint &width, uint &height)
 	height = spr->height;
 }
 
-static CommandCost EstimateAircraftCost(EngineID engine, const AircraftVehicleInfo *avi)
-{
-	return CommandCost(EXPENSES_NEW_VEHICLES, GetEngineProperty(engine, 0x0B, avi->cost_factor) * (_price.aircraft_base >> 3) >> 5);
-}
-
-
 /**
  * Calculates cargo capacity based on an aircraft's passenger
  * and mail capacities.
@@ -266,7 +260,8 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 	if (!IsEngineBuildable(p1, VEH_AIRCRAFT, _current_company)) return_cmd_error(STR_AIRCRAFT_NOT_AVAILABLE);
 
 	const AircraftVehicleInfo *avi = AircraftVehInfo(p1);
-	CommandCost value = EstimateAircraftCost(p1, avi);
+	const Engine *e = GetEngine(p1);
+	CommandCost value(EXPENSES_NEW_VEHICLES, e->GetCost());
 
 	/* to just query the cost, it is not neccessary to have a valid tile (automation/AI) */
 	if (flags & DC_QUERY_COST) return value;
@@ -374,7 +369,6 @@ CommandCost CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 			u->cargo_cap = 0;
 		}
 
-		const Engine *e = GetEngine(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;

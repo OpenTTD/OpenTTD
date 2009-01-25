@@ -134,11 +134,6 @@ void DrawRoadVehEngine(int x, int y, EngineID engine, SpriteID pal)
 	DrawSprite(GetRoadVehIcon(engine), pal, x, y);
 }
 
-static CommandCost EstimateRoadVehCost(EngineID engine_type)
-{
-	return CommandCost(EXPENSES_NEW_VEHICLES, ((_price.roadveh_base >> 3) * GetEngineProperty(engine_type, 0x11, RoadVehInfo(engine_type)->cost_factor)) >> 5);
-}
-
 byte GetRoadVehLength(const Vehicle *v)
 {
 	byte length = 8;
@@ -176,14 +171,13 @@ void RoadVehUpdateCache(Vehicle *v)
  */
 CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
-	CommandCost cost;
 	Vehicle *v;
 	UnitID unit_num;
-	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_ROAD, _current_company)) return_cmd_error(STR_ROAD_VEHICLE_NOT_AVAILABLE);
 
-	cost = EstimateRoadVehCost(p1);
+	const Engine *e = GetEngine(p1);
+	CommandCost cost(EXPENSES_NEW_VEHICLES, e->GetCost());
 	if (flags & DC_QUERY_COST) return cost;
 
 	/* The ai_new queries the vehicle cost before building the route,
@@ -251,7 +245,6 @@ CommandCost CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 		v->max_speed = rvi->max_speed;
 		v->engine_type = (EngineID)p1;
 
-		e = GetEngine(p1);
 		v->reliability = e->reliability;
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * DAYS_IN_LEAP_YEAR;
