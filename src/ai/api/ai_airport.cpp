@@ -115,6 +115,7 @@
 
 /* static */ int AIAirport::GetNoiseLevelIncrease(TileIndex tile, AirportType type)
 {
+	extern Town *AirportGetNearestTown(const AirportFTAClass *afc, TileIndex airport_tile);
 	extern uint8 GetAirportNoiseLevelForTown(const AirportFTAClass *afc, TileIndex town_tile, TileIndex tile);
 
 	if (!::IsValidTile(tile)) return -1;
@@ -122,7 +123,7 @@
 
 	if (_settings_game.economy.station_noise_level) {
 		const AirportFTAClass *afc = ::GetAirport(type);
-		const Town *t = ::ClosestTownFromTile(tile, UINT_MAX);
+		const Town *t = AirportGetNearestTown(afc, tile);
 		return GetAirportNoiseLevelForTown(afc, t->xy, tile);
 	}
 
