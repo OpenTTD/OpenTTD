@@ -1136,7 +1136,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :소유한 회�
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :모든 회사
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}자동 차량 경로 지정: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}빠른 행성지 설정: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}철도 형식 기본값 설정 (게임 시작/로드 후): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :보통 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전기 철도
@@ -3743,7 +3743,7 @@ STR_CONTENT_TYPE_AI_LIBRARY                                     :인공지능 �
 STR_CONTENT_TYPE_SCENARIO                                       :시나리오
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Heightmap
 STR_CONTENT_TITLE                                               :{WHITE}컨텐츠 다운로드
-STR_CONTENT_TYPE_CAPTION                                        :{BLACK}종료
+STR_CONTENT_TYPE_CAPTION                                        :{BLACK}종류
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}컨텐츠의 종류
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}이름
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}컨텐츠의 이름
@@ -3763,7 +3763,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}당신�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}당신은 이미 가지고 있습니다
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 컨텐츠는 확인되지 않았으며, OpenTTD에서 받을 수 없습니다
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}으로 대체됩니다
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}을 대체합니다
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}이름: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}버젼: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}설명: {WHITE}{STRING}

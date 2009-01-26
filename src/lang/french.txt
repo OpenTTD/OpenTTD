@@ -1026,6 +1026,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Repaysa
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Autoriser des zones de désserte plus réalistes : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permettre le retrait de plus d'éléments possédés par une ville: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permettre les trains plus longs: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Modèle d'accélération des trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Réaliste
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interdire aux trains et navires les virages à 90° : {ORANGE}{STRING} {LTBLUE} (pas avec NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Joindre les gares juxtaposées: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Permettre de joindre une station non adjacente: {ORANGE}{STRING}
@@ -1558,6 +1561,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Entrer l
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Le serveur est protégé. Entrez le mot de passe
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}La compagnie est protégée. Entrez le mot de passe
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Liste des clients
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Spectateur
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nouvelle compagnie
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Aucun périphérique réseau trouvé ou programme compilé sans ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Aucune partie réseau n'a été trouvée
@@ -1604,6 +1609,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Partie reprise 
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :départ
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} a rejoint la partie
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} a rejoint la compagnie #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} a rejoint les spectateurs
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} a lancé une nouvelle compagnie (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} a quitté la partie ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} a changé son nom en {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} a donné {2:CURRENCY} à votre compagnie
@@ -2403,6 +2411,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Reconstr
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Impossible de construire le siège...
 STR_7072_VIEW_HQ                                                :{BLACK}Voir le siège
 STR_RELOCATE_HQ                                                 :{BLACK}Déménager le QG
+STR_COMPANY_JOIN                                                :{BLACK}Rejoindre
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Rejoindre et jouer dans cette compagnie
 STR_COMPANY_PASSWORD                                            :{BLACK}Mot de passe
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Permet de protéger par mot de passe votre compagnie pour empêcher des utilisateurs non-autorisés de rejoindre. Utilisez '*' pour vider le mot de passe.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Choisir le mot de passe de la compagnie

@@ -583,7 +583,7 @@ STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Apasa pe
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Comutator pentru amestecarea melodiilor (da/nu)
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Afiseaza fereastra pentru selectia melodiilor
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Click pe informatie pentru a centra imaginea pe industrie/oras
-STR_01FE_DIFFICULTY                                             :{BLACK}Nivel dificultate ({STRING})
+STR_01FE_DIFFICULTY                                             :{BLACK}Dificultate: {STRING}
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Ultimul mesaj/ultima stire
 STR_0201_MESSAGE_SETTINGS                                       :Setari mesaje
@@ -749,8 +749,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Salveaz�
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Încarcă scenariu
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Salvează scenariu
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Joacă scenariu
-STR_PLAY_HEIGHTMAP                                              :{BLACK}Reda harta inaltimi
-STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Porneste un nou joc, folosind o scara de inaltimi ca peisaj
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Hartă topografică
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Începe un joc nou folosind o hartă topografică pentru generarea terenului
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}Esti sigur cã vrei sã renunti la acest scenariu?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Ieşire din editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...Se poate construi doar în oraşe cu populaţia de cel puţin 1200
@@ -1159,7 +1159,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Dezacti
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Dezactivează aeronavele pentru jucătorii controlaţi de PC: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Dezactivează navele pentru jucătorii controlaţi de PC: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite IA în multiplayer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permite Inteligenţă Artificială în multiplayer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE}# de operaţii după care IA este suspendată: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalul de service presetat pentru trenuri: {ORANGE}{STRING} zile
@@ -1445,7 +1445,7 @@ STR_NETWORK_JOIN_GAME                                           :{BLACK}Intră �
 STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Începe un joc nou
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nume joc:
-STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Numele jocului va fi afisat celorlalti în meniul de selectare al jocurilor multiplayer
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Numele jocului va fi afişat celorlalţi jucători în meniul de selectare al jocurilor multiplayer
 STR_NETWORK_NEW_GAME_NAME_OSKTITLE                              :{BLACK}Introduceţi un nume pentru joc
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Pune parola
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protejeazã-ti jocul cu o parolã dacã nu vrei sã intre jucãtori neautorizati
@@ -1471,7 +1471,7 @@ STR_NETWORK_LANGUAGE_COMBO                                      :{BLACK}{SKIP}{S
 STR_NETWORK_START_GAME                                          :{BLACK}Începe jocul
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Incepe un joc nou in retea cu o harta aleatoare sau intr-un scenariu
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Incarca joc
-STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Reia un joc multiplayer salvat anterior (asigura-te ca s-au conectat jucatorii corespunzatori)
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Reia un joc multiplayer salvat anterior (asigură-te că s-au conectat jucatorii corespunzători)
 
 ############ Leave those lines in this order!!
 STR_NETWORK_LANG_ANY                                            :Oricare
@@ -3485,7 +3485,7 @@ STR_CLEARING_TILES                                              :{BLACK}Generare
 STR_SETTINGUP_GAME                                              :{BLACK}Fac setarile jocului
 STR_PREPARING_TILELOOP                                          :{BLACK}Initializez ciclul dalelor
 STR_PREPARING_GAME                                              :{BLACK}Pregatesc jocul
-STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Aceasta actiune a modificat nivelul de difficultate la custom
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Această acţiune a setat nivelul de difficultate în "Personalizat"
 STR_SE_FLAT_WORLD                                               :{WHITE}Teren plat
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereaza un teren plat
 STR_SE_RANDOM_LAND                                              :{WHITE}Teren aleator

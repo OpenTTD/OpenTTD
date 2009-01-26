@@ -1093,6 +1093,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Srovná
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Povolit u oblasti pokrytí realističtější velikost: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Povolit bourání více městských silnic, mostů, tunelů, atp.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Povolit stavbu dlouhých vlaků: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akcelerace vlaků: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :původní
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :realistický
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakázat vlakům a lodím otáčení o 90 stupňů: {ORANGE}{STRING} {LTBLUE} (nefunguje s NTP (New Train Pathfinder), zastaralým hledačem cesty)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Spojovat stanice postavené vedle sebe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Umožnit spojení nesousedících stanic: {ORANGE}{STRING}
@@ -1157,7 +1160,7 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Otočen
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Doleva
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Doprava
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Výšková úroveň pro plochou krajinu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Umožnit terénní úpravy dílků na okrajích mapy: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Umožnit terénní úpravy na okrajích mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Alespoň jeden dílek na severním okraji není prázdný
 STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Alespoň jeden dílek na jednom z okrajů není zaplaven
 
@@ -1625,6 +1628,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Napiš �
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chráněný. Napiš heslo
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Společnost je chráněná. Napiš heslo
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Seznam hráčů
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Pozorovat
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nová společnost
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Žádná síťová zařízení nebyla nalezena (nebo je hra zkompilována bez ENABLE_NETWORK)
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nenalezena žádná síťová hra
@@ -1671,6 +1676,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Hra pozastavena
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :odpojování
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} jde hrát
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} se přidává ke společnosti č. {2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} má nové pozorovatele
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} zakládá novou společnost (č. {2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} opouští hru ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} si mění jméno na {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} poslal(a) tvé společnosti {2:CURRENCY}
@@ -2470,6 +2478,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sídlo s
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nemohu postavit ředitelství společnosti
 STR_7072_VIEW_HQ                                                :{BLACK}Ředitelství
 STR_RELOCATE_HQ                                                 :{BLACK}Přesídlit
+STR_COMPANY_JOIN                                                :{BLACK}Přidat se
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Připojit se a hrát za tuto společnost
 STR_COMPANY_PASSWORD                                            :{BLACK}Heslo
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Heslo - zabrání neautorizovaným uživatelům v připojení se k tvé společnosti.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Nastav heslo společnosti.
@@ -3563,6 +3573,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Výška 
 STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malou mapu na tomto místě
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Okraje mapy:
+STR_NORTHWEST                                                   :{BLACK}Severozápad
+STR_NORTHEAST                                                   :{BLACK}Severovýchod
+STR_SOUTHEAST                                                   :{BLACK}Jihovýchod
+STR_SOUTHWEST                                                   :{BLACK}Jihozápad
+STR_BORDER_FREEFORM                                             :{BLACK}terén
+STR_BORDER_WATER                                                :{BLACK}voda
+STR_BORDER_RANDOM                                               :{BLACK}náhodně
+STR_BORDER_RANDOMIZE                                            :{BLACK}náhodně
+STR_BORDER_MANUAL                                               :{BLACK}vlastní
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Malé
 STR_CITY_AIRPORT                                                :{BLACK}Městské
@@ -3770,7 +3792,7 @@ STR_AI_ACCEPT_TIP                                               :{BLACK}Vybrat o
 STR_AI_CANCEL                                                   :{BLACK}Zrušit
 STR_AI_CANCEL_TIP                                               :{BLACK}Neměnit AI
 STR_AI_CLOSE                                                    :{BLACK}Zavřít
-STR_AI_RESET                                                    :{BLACK}Resetovat
+STR_AI_RESET                                                    :{BLACK}Obnovit nastavení
 STR_AI_HUMAN_PLAYER                                             :Lidský hráč
 STR_AI_RANDOM_AI                                                :Náhodná AI
 STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametery AI
@@ -3840,4 +3862,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nešlo r
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Nabídnout on-line obsah
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Ukázat, jaký nový nebo upravený obsah se dá stáhnout
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Hledat chybějící obsah on-line
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Pokusit se zjistit, jestli se dá chybějící obsah najít on-line
 ########

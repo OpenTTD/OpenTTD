@@ -56,27 +56,27 @@ STR_002D_FIZZY_DRINKS                                           :Ανθρακο�
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Επιβάτης
 STR_0030_COAL                                                   :Άνθρακας
-STR_0031_MAIL                                                   :Ταχυδρομείο
-STR_0032_OIL                                                    :Πετρέλαιο
+STR_0031_MAIL                                                   :Ταχυδρομικές Υπηρεσίες
+STR_0032_OIL                                                    :Λάδι
 STR_0033_LIVESTOCK                                              :Ζώα
-STR_0034_GOODS                                                  :Αγαθά
+STR_0034_GOODS                                                  :Βιομηχανικα Προϊόντα
 STR_0035_GRAIN                                                  :Σιτάρι
 STR_0036_WOOD                                                   :Ξυλεία
 STR_0037_IRON_ORE                                               :Μετάλλευμα Σιδήρου
 STR_0038_STEEL                                                  :Χάλυβας
 STR_0039_VALUABLES                                              :Τιμαλφή
 STR_003A_COPPER_ORE                                             :Μετάλλευμα Χαλκού
-STR_003B_MAIZE                                                  :Αραβόσιτος
+STR_003B_MAIZE                                                  :Καλαμπόκι
 STR_003C_FRUIT                                                  :Φρούτα
 STR_003D_DIAMOND                                                :Διαμάντι
 STR_003E_FOOD                                                   :Φαγητό
 STR_003F_PAPER                                                  :Χαρτί
-STR_0040_GOLD                                                   :Χρυσός
+STR_0040_GOLD                                                   :Χρυσό
 STR_0041_WATER                                                  :Νερό
 STR_0042_WHEAT                                                  :Σιτάρι
-STR_0043_RUBBER                                                 :Ελαστικά
+STR_0043_RUBBER                                                 :Λαστικά
 STR_0044_SUGAR                                                  :Ζάχαρη
-STR_0045_TOY                                                    :Παιχνίδι
+STR_0045_TOY                                                    :Παιχνίδια
 STR_0046_CANDY                                                  :Γλυκό
 STR_0047_COLA                                                   :Κόλα
 STR_0048_COTTON_CANDY                                           :Μαλλί της Γριάς
@@ -216,10 +216,10 @@ STR_00F4_500M                                                   :{BLACK}{TINYFON
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Τραίνα
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Οχήματα
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Πλοία
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Αεροσκάφος
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Αεροπλάνο
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Διαδρομές Μεταφορών
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Ορυχείο Άνθρακα
-STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Ηλεκτρικός Σταθμός
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT} Άνθρακορυχειο
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Ηλεκτρική Γεννήτρια
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Δάσος
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Πριονιστήριο
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Διυλιστήριο

@@ -1091,6 +1091,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Dopusti
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dopusti realističnije veličine područja zahvaćanja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Dopusti rušenje više gradskih cesta, mostova itd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Omogući sastavljanje vrlo dugačkih vlakova: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model ubrzanja vlaka: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Originalni
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistični
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zabrani vlakovima i brodovima skretanja pod 90 stupnjeva: {ORANGE}{STRING} {LTBLUE} (ne uz NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Spoji željezničke postaje koje se izgrade jedna pokraj druge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Dozvoli pridruživanje stanica koje nisu jedna do druge {ORANGE}{STRING}
@@ -1155,10 +1158,9 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotacij
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Obrnuto od smjera kazaljke na satu
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :U smjeru kazaljke na satu
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Visinski nivo koji ravna mapa u scenariju dobiva: {ORANGE}{STRING}
-
-# Start of map water border strings.
-# DON'T ADD OR REMOVE LINES HERE
-# End of map water border strings.
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Omogući teraformiranje pločica na rubu karte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}Jedna ili više pločica na sjevernom rubu nisu prazne
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}Jedna ili više pločica na jednom od rubova nije voda
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksimalna raširenost postaje: {ORANGE}{STRING} {RED}Pozor: visoka vrijednost usporava igru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatski servisiraj helikoptere na heliodromima: {ORANGE}{STRING}
@@ -1624,6 +1626,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Unesite 
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Poslužitelj je zaštićen. Unesite zaporku
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Tvrtka je zaštićena. Unesite zaporku
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Popis klijenata
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Promatraj
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nova tvrtka
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nisu pronađeni mrežni uređaji ili je kompajlirano bez ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Niti jedna mrežna igra nije pronađena
@@ -1670,6 +1674,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Igra nastavljen
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :odlazim
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} se pridružio igri
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} se pridružio tvrtci #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} se pridružio promatračima
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} je osnovao novu tvrtku (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} je izašao iz igre ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} je promijenio/la ime u {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} je dao vašoj kompaniji {2:CURRENCY}
@@ -2187,6 +2194,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak u tunelu
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Cestovno vozilo u tunelu
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Smeta drugi tunel
+STR_TUNNEL_THROUGH_MAP_BORDER                                   :{WHITE}Tunel bi završio izvan karte
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Ne moguće iskopoati zemlju na drugoj strani tunela
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Najprije je potrebno srušiti tunel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Najprije je potrebno srušiti most
@@ -2468,6 +2476,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Izgradi 
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nije moguće izgraditi sjedište tvrtke...
 STR_7072_VIEW_HQ                                                :{BLACK}Pogledaj sjedište tvrtke
 STR_RELOCATE_HQ                                                 :{BLACK}Premjesti sjedište kompanije
+STR_COMPANY_JOIN                                                :{BLACK}Pridruži se
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Pridruži se i igraj kao ova tvrtka
 STR_COMPANY_PASSWORD                                            :{BLACK}Zaporka
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Zaštiti svoju tvrtku od neovlaštenog korištenja pomoću zaporke.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Postavi zaporku tvrtke
@@ -3555,6 +3565,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Visina r
 STR_SMALLMAP_CENTER                                             :{BLACK}Centriraj malu mapu na trenutni položaj
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Rubovi Karte:
+STR_NORTHWEST                                                   :{BLACK}Sjeverozapad
+STR_NORTHEAST                                                   :{BLACK}Sjeveroistok
+STR_SOUTHEAST                                                   :{BLACK}Jugoistok
+STR_SOUTHWEST                                                   :{BLACK}Jugozapad
+STR_BORDER_FREEFORM                                             :{BLACK}Slobodni oblik
+STR_BORDER_WATER                                                :{BLACK}Voda
+STR_BORDER_RANDOM                                               :{BLACK}Nasumično
+STR_BORDER_RANDOMIZE                                            :{BLACK}Nasumično
+STR_BORDER_MANUAL                                               :{BLACK}Ručno
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Mala
 STR_CITY_AIRPORT                                                :{BLACK}Grad
@@ -3756,6 +3778,16 @@ STR_AI_CHANGE_TIP                                               :{BLACK}Učitaj 
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfiguriraj parametre izabranog AI
 STR_AI_LIST_TIP                                                 :{BLACK}Svi AI koji će biti učitani u sljedeću igru
 STR_AI_LIST_CAPTION                                             :{WHITE}Dostupni AI
+STR_AI_AILIST_TIP                                               :{BLACK}Klikni da odabereš UI
+STR_AI_ACCEPT                                                   :{BLACK}Prihvati
+STR_AI_ACCEPT_TIP                                               :{BLACK}Odaberi posvijetljeni UI
+STR_AI_CANCEL                                                   :{BLACK}Odustani
+STR_AI_CANCEL_TIP                                               :{BLACK}Nemoj mjenjati UI
+STR_AI_CLOSE                                                    :{BLACK}Zatvori
+STR_AI_RESET                                                    :{BLACK}Resetiraj
+STR_AI_HUMAN_PLAYER                                             :Ljudski igrač
+STR_AI_RANDOM_AI                                                :Nasumična UI
+STR_AI_SETTINGS_CAPTION                                         :{WHITE}Parametri UI
 STR_AI_AUTHOR                                                   :Autor:
 STR_AI_VERSION                                                  :Verzija:
 STR_AI_DESCRIPTION                                              :Opis:
@@ -3768,19 +3800,60 @@ STR_STATION_NOISE                                               :{BLACK}Proizved
 ########
 
 ############ Downloading of content from the central server
+STR_CONTENT_NO_ZLIB                                             :{WHITE}OpenTTD je napravljen bez podrške "zlib"
+STR_CONTENT_NO_ZLIB_SUB                                         :{WHITE}... preuzimanje sadržaja nije moguće!
+STR_CONTENT_TYPE_BASE_GRAPHICS                                  :Osnovna grafika
 STR_CONTENT_TYPE_NEWGRF                                         :NewGRF
 STR_CONTENT_TYPE_AI                                             :AI
 STR_CONTENT_TYPE_AI_LIBRARY                                     :AI biblioteka
 STR_CONTENT_TYPE_SCENARIO                                       :Scenarij
 STR_CONTENT_TYPE_HEIGHTMAP                                      :Visinska mapa
+STR_CONTENT_TITLE                                               :{WHITE}Preuzimanje sadržaja
 STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Vrsta
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Vrsta sadržaja
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Naziv
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Naziv sadržaja
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Kliknite na liniju kako bi vidjeli detalje{}Kliknite na kućicu  kako bi ju označili za preuzimanje
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Izaberi sve
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Označi sav sadržaj za preuzimanje
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Izaberi nadogradnje
+STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Označi sav sadržaj koji je nadogradnja postojećem sadržaju kako bi ga preuzeo
+STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Odznači sve
+STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Označi sav sadržaj koji se ne preuzima
+STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Preuzmi
+STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Počni preuzimanje označenog sadržaja
+STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Ukupna veličina preuzimanja: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_TITLE                                        :{SILVER}INFORMACIJA O SADRŽAJU
+STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}Niste odabrali ovo za preuzimanje
+STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}Odabrali ste ovo za preuzimanje
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Ovaj sadržaj ovisi o prethodnim sadržajima i odabran je za preuzimanje
+STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Već imate ovo
+STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Ovaj sadržaj je nepoznat i nije ga moguće preuzeti u OpenTTD
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Ovo je zamjena za postojeći {STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Ime: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Verzija: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Opis: {WHITE}{STRING}
+STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tip: {WHITE}{STRING}
+STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Veličina preuzimanja: {WHITE}{BYTES}
+STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Označeno zbog: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Ovisi o: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TAGS                                         :{SILVER}Tagovi: {WHITE}{STRING}
 
+STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}Preuzimanje sadržaja
+STR_CONTENT_DOWNLOAD_INITIALISE                                 :{WHITE}Zahtjevanje datoteka
+STR_CONTENT_DOWNLOAD_FILE                                       :{WHITE}Trenutno preuzimam {STRING} ({NUM} of {NUM})
+STR_CONTENT_DOWNLOAD_COMPLETE                                   :{WHITE}Preuzimanje završeno
+STR_CONTENT_DOWNLOAD_PROGRESS_SIZE                              :{WHITE}{BYTES} od {BYTES} preuzeto ({NUM} %)
 
+STR_CONTENT_ERROR_COULD_NOT_CONNECT                             :{WHITE}Nisam se mogao spojiti na poslužitelj sadržaja
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD                            :{WHITE}Preuzimanje nije uspjelo...
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_CONNECTION_LOST            :{WHITE}... veza izgubljena
+STR_CONTENT_ERROR_COULD_NOT_DOWNLOAD_FILE_NOT_WRITABLE          :{WHITE}... datoteku nije moguće zapisati
+STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Nije moguća dekompresija preuzete datoteke
 
+STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Provjeri online sadržaj
+STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Provjeri novi i nadograđeni sadržaj za preuzimanje
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Pronađi nedostajeći sadržaj online
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Provjeri može li se nedostajeći sadržaj pronaći online
 ########

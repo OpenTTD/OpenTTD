@@ -3747,7 +3747,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}Tipus
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}Tipus de contingut
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}Nom
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}Nom del contingut
-STR_CONTENT_MATRIX_TIP                                          :{BLACK}Clica sobre la línia per veure els detalls{}Clica sobre la casella per seleccionar-lo per descarregar
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}Clica sobre la línia per veure detalls{}Clica sobre la casella per seleccionar-lo per descarregar
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}Selecciona tot
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}Marca tots els continguts per a ser descarregats
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Sel. actualitzacions

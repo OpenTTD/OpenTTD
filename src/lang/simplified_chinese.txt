@@ -500,37 +500,37 @@ STR_01AA_NAME                                                   :{BLACK}名称
 STR_01AB                                                        :{BLACK}{TINYFONT}{VEHICLE}
 
 ############ range for days starts
-STR_01AC_1ST                                                    :1日
-STR_01AD_2ND                                                    :2日
-STR_01AE_3RD                                                    :3日
-STR_01AF_4TH                                                    :4日
-STR_01B0_5TH                                                    :5日
-STR_01B1_6TH                                                    :6日
-STR_01B2_7TH                                                    :7日
-STR_01B3_8TH                                                    :8日
-STR_01B4_9TH                                                    :9日
-STR_01B5_10TH                                                   :10日
-STR_01B6_11TH                                                   :11日
-STR_01B7_12TH                                                   :12日
-STR_01B8_13TH                                                   :13日
-STR_01B9_14TH                                                   :14日
-STR_01BA_15TH                                                   :15日
-STR_01BB_16TH                                                   :16日
-STR_01BC_17TH                                                   :17日
-STR_01BD_18TH                                                   :18日
-STR_01BE_19TH                                                   :19日
-STR_01BF_20TH                                                   :20日
-STR_01C0_21ST                                                   :21日
-STR_01C1_22ND                                                   :22日
-STR_01C2_23RD                                                   :23日
-STR_01C3_24TH                                                   :24日
-STR_01C4_25TH                                                   :25日
-STR_01C5_26TH                                                   :26日
-STR_01C6_27TH                                                   :27日
-STR_01C7_28TH                                                   :28日
-STR_01C8_29TH                                                   :29日
-STR_01C9_30TH                                                   :30日
-STR_01CA_31ST                                                   :31日
+STR_01AC_1ST                                                    :1号
+STR_01AD_2ND                                                    :2号
+STR_01AE_3RD                                                    :3号
+STR_01AF_4TH                                                    :4号
+STR_01B0_5TH                                                    :5号
+STR_01B1_6TH                                                    :6号
+STR_01B2_7TH                                                    :7号
+STR_01B3_8TH                                                    :8号
+STR_01B4_9TH                                                    :9号
+STR_01B5_10TH                                                   :10号
+STR_01B6_11TH                                                   :11号
+STR_01B7_12TH                                                   :12号
+STR_01B8_13TH                                                   :13号
+STR_01B9_14TH                                                   :14号
+STR_01BA_15TH                                                   :15号
+STR_01BB_16TH                                                   :16号
+STR_01BC_17TH                                                   :17号
+STR_01BD_18TH                                                   :18号
+STR_01BE_19TH                                                   :19号
+STR_01BF_20TH                                                   :20号
+STR_01C0_21ST                                                   :21号
+STR_01C1_22ND                                                   :22号
+STR_01C2_23RD                                                   :23号
+STR_01C3_24TH                                                   :24号
+STR_01C4_25TH                                                   :25号
+STR_01C5_26TH                                                   :26号
+STR_01C6_27TH                                                   :27号
+STR_01C7_28TH                                                   :28号
+STR_01C8_29TH                                                   :29号
+STR_01C9_30TH                                                   :30号
+STR_01CA_31ST                                                   :31号
 ############ range for days ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -538,11 +538,11 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}接受的货物：{LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
-STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}爵士调音台
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}爵士点唱机
 STR_01D3_SOUND_MUSIC                                            :声音/音乐
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}显示声音/音乐窗口
 STR_01D5_ALL                                                    :{TINYFONT}全部
-STR_01D6_OLD_STYLE                                              :{TINYFONT}旧的风格
+STR_01D6_OLD_STYLE                                              :{TINYFONT}旧风格
 STR_01D7_NEW_STYLE                                              :{TINYFONT}新的风格
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy 大街
 STR_01D9_CUSTOM_1                                               :{TINYFONT}自定义 1
@@ -3265,6 +3265,8 @@ STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :使用 {STRING}
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :未可预料的 sprite 错误。
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :未知的动作属性值： 0
 STR_NEWGRF_ERROR_INVALID_ID                                     :尝试使用无效配置值
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} 含有损坏的图形元素。所有损坏的图形元素将显示为红色的问号（？）。
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :包含复数的 Action 8 入口。
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}装在选定的预定义
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}保存预定义
@@ -3401,6 +3403,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}点击�
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}标志列表 - {COMMA} Sign
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}重新填充调度计划失败，停止了 {VEHICLE}
 
 ############ Lists rail types
 
@@ -3499,6 +3502,7 @@ STR_NORTHWEST                                                   :{BLACK}西北
 STR_NORTHEAST                                                   :{BLACK}东北
 STR_SOUTHEAST                                                   :{BLACK}东南
 STR_SOUTHWEST                                                   :{BLACK}东南
+STR_BORDER_FREEFORM                                             :{BLACK}自由形式
 STR_BORDER_WATER                                                :{BLACK}水面
 STR_BORDER_RANDOM                                               :{BLACK}随机
 STR_BORDER_RANDOMIZE                                            :{BLACK}随机
@@ -3703,6 +3707,7 @@ STR_AI_CHANGE                                                   :{BLACK}选择 A
 STR_AI_CONFIGURE                                                :{BLACK}设定
 STR_AI_CHANGE_TIP                                               :{BLACK}装载另一个AI
 STR_AI_CONFIGURE_TIP                                            :{BLACK}设定AI特征
+STR_AI_LIST_TIP                                                 :{BLACK}所有 AI 将会在下一局游戏中载入。
 STR_AI_LIST_CAPTION                                             :{WHITE}可用 AI
 STR_AI_AILIST_TIP                                               :{BLACK}点击选择 AI
 STR_AI_ACCEPT                                                   :{BLACK}接受
@@ -3739,6 +3744,7 @@ STR_CONTENT_TYPE_CAPTION                                        :{BLACK}类型
 STR_CONTENT_TYPE_CAPTION_TIP                                    :{BLACK}扩展包类型
 STR_CONTENT_NAME_CAPTION                                        :{BLACK}名称
 STR_CONTENT_NAME_CAPTION_TIP                                    :{BLACK}内容名称
+STR_CONTENT_MATRIX_TIP                                          :{BLACK}单击一行以查看详情。{}单击复选框选择下载。
 STR_CONTENT_SELECT_ALL_CAPTION                                  :{BLACK}全选
 STR_CONTENT_SELECT_ALL_CAPTION_TIP                              :{BLACK}选定所有扩展包
 STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}选择升级
@@ -3751,6 +3757,7 @@ STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}总计�
 STR_CONTENT_DETAIL_TITLE                                        :{SILVER}扩展包信息
 STR_CONTENT_DETAIL_SUBTITLE_UNSELECTED                          :{SILVER}您尚未选择下载该扩展包
 STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}您已选择需要下载的扩展包
+STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}此依存组件已被选择下载。
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}您已经下载过该扩展包
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}该扩展包无法识别，OpenTTD无法下载该扩展包
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}该扩展包将会影响到当前使用的 {STRING}
@@ -3761,6 +3768,7 @@ STR_CONTENT_DETAIL_URL                                          :{SILVER}链接:
 STR_CONTENT_DETAIL_TYPE                                         :{SILVER}类型: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}大小: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}按 {WHITE}{STRING} 选择
+STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}依存： {WHITE}{STRING}
 STR_CONTENT_DETAIL_TAGS                                         :{SILVER}标签: {WHITE}{STRING}
 
 STR_CONTENT_DOWNLOAD_TITLE                                      :{WHITE}下载中...
