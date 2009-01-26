@@ -24,8 +24,7 @@ enum CallbackID {
 
 	/* There are no callbacks 0x02 - 0x0F. */
 
-	/** Powered wagons, if the result is lower as 0x40 then the wagon is powered
-	 * @todo : interpret the rest of the result, aka "visual effects". */
+	/** Powered wagons and visual effects. */
 	CBID_TRAIN_WAGON_POWER               = 0x10, // 8 bit callback
 
 	/** Vehicle length, returns the amount of 1/8's the vehicle is shorter for trains and RVs. */
