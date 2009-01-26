@@ -384,26 +384,23 @@ static byte GenerateCompanyColour()
 
 static void GeneratePresidentName(Company *c)
 {
-	Company *cc;
-	char buffer[100], buffer2[40];
-
 	for (;;) {
 restart:;
-
 		c->president_name_2 = Random();
 		c->president_name_1 = SPECSTR_PRESIDENT_NAME;
 
+		char buffer[MAX_LENGTH_PRESIDENT_NAME_BYTES + 1];
 		SetDParam(0, c->index);
 		GetString(buffer, STR_PRESIDENT_NAME, lastof(buffer));
-		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 94)
-			continue;
+		if (strlen(buffer) >= MAX_LENGTH_PRESIDENT_NAME_BYTES) continue;
 
+		Company *cc;
 		FOR_ALL_COMPANIES(cc) {
 			if (c != cc) {
+				char buffer2[MAX_LENGTH_PRESIDENT_NAME_BYTES + 2];
 				SetDParam(0, cc->index);
 				GetString(buffer2, STR_PRESIDENT_NAME, lastof(buffer2));
-				if (strcmp(buffer2, buffer) == 0)
-					goto restart;
+				if (strcmp(buffer2, buffer) == 0) goto restart;
 			}
 		}
 		return;
