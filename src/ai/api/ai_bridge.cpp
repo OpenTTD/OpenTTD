@@ -81,6 +81,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 	}
 
 	AIObject::SetCallbackVariable(0, start);
+	AIObject::SetCallbackVariable(1, end);
 	if (!AIObject::DoCommand(end, start, type | bridge_id, CMD_BUILD_BRIDGE, NULL, &_DoCommandReturnBuildBridge1)) return false;
 
 	/* In case of test-mode, test if we can build both road pieces */
@@ -91,7 +92,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 {
 	/* Build the piece of road on the 'start' side of the bridge */
 	TileIndex end = AIObject::GetCallbackVariable(0);
-	TileIndex start = AIBridge::GetOtherBridgeEnd(end);
+	TileIndex start = AIObject::GetCallbackVariable(1);
 
 	DiagDirection dir_1 = (DiagDirection)((::TileX(start) == ::TileX(end)) ? (::TileY(start) < ::TileY(end) ? DIAGDIR_NW : DIAGDIR_SE) : (::TileX(start) < ::TileX(end) ? DIAGDIR_NE : DIAGDIR_SW));
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
@@ -106,7 +107,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 {
 	/* Build the piece of road on the 'end' side of the bridge */
 	TileIndex end = AIObject::GetCallbackVariable(0);
-	TileIndex start = AIBridge::GetOtherBridgeEnd(end);
+	TileIndex start = AIObject::GetCallbackVariable(1);
 
 	DiagDirection dir_1 = (DiagDirection)((::TileX(start) == ::TileX(end)) ? (::TileY(start) < ::TileY(end) ? DIAGDIR_NW : DIAGDIR_SE) : (::TileX(start) < ::TileX(end) ? DIAGDIR_NE : DIAGDIR_SW));
 	DiagDirection dir_2 = ::ReverseDiagDir(dir_1);
