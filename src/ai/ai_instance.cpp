@@ -606,6 +606,7 @@ void AIInstance::Load(int version)
 		return;
 	}
 	HSQUIRRELVM vm = this->engine->GetVM();
+	SQInteger old_top = sq_gettop(vm);
 
 	SlObject(NULL, _ai_byte);
 	/* Check if there was anything saved at all. */
@@ -624,12 +625,17 @@ void AIInstance::Load(int version)
 
 	if (this->engine->MethodExists(*this->instance, "Load")) {
 		sq_call(vm, 3, SQFalse, SQFalse);
+
+		/* Pop 1) the object instance, 2) the (null) result. */
+		sq_pop(vm, 2);
 	} else {
 		AILog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
+
+		/* Pop 1) the object instance, 2) the function name, 3) the instance again, 4) the version */
+		sq_pop(vm, 4);
 	}
 
-	/* Pop 1) the object instance, 2) the function name, 3) the instance again, 4) the (null) result. */
-	sq_pop(vm, 4);
+	assert(sq_gettop(vm) == old_top);
 
 	AIObject::SetAllowDoCommand(true);
 	return;
