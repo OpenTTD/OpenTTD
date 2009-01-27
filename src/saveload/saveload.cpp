@@ -1101,7 +1101,7 @@ static size_t ReadLZO()
 	if (tmp[0] != lzo_adler32(0, out, size + sizeof(uint32))) SlError(STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME, "Bad checksum");
 
 	/* Decompress */
-	lzo1x_decompress(out + sizeof(uint32)*1, size, _sl.buf, &len, NULL);
+	lzo1x_decompress(out + sizeof(uint32) * 1, size, _sl.buf, &len, NULL);
 	return len;
 }
 
@@ -1110,13 +1110,13 @@ static size_t ReadLZO()
 static void WriteLZO(size_t size)
 {
 	byte out[LZO_SIZE + LZO_SIZE / 64 + 16 + 3 + 8];
-	byte wrkmem[sizeof(byte*)*4096];
+	byte wrkmem[sizeof(byte*) * 4096];
 	uint outlen;
 
-	lzo1x_1_compress(_sl.buf, (lzo_uint)size, out + sizeof(uint32)*2, &outlen, wrkmem);
+	lzo1x_1_compress(_sl.buf, (lzo_uint)size, out + sizeof(uint32) * 2, &outlen, wrkmem);
 	((uint32*)out)[1] = TO_BE32(outlen);
 	((uint32*)out)[0] = TO_BE32(lzo_adler32(0, out + sizeof(uint32), outlen + sizeof(uint32)));
-	if (fwrite(out, outlen + sizeof(uint32)*2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
+	if (fwrite(out, outlen + sizeof(uint32) * 2, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 }
 
 static bool InitLZO()
@@ -1255,7 +1255,7 @@ static bool InitWriteZlib()
 	if (deflateInit(&_z, 6) != Z_OK) return false;
 
 	_sl.bufsize = 4096;
-	_sl.buf = _sl.buf_ori = MallocT<byte>(4096); // also contains fread buffer
+	_sl.buf = _sl.buf_ori = MallocT<byte>(4096);
 	return true;
 }
 
@@ -1269,8 +1269,17 @@ static void WriteZlibLoop(z_streamp z, byte *p, size_t len, int mode)
 	do {
 		z->next_out = buf;
 		z->avail_out = sizeof(buf);
+
+		/**
+		 * For the poor next soul who sees many valgrind warnings of the
+		 * "Conditional jump or move depends on uninitialised value(s)" kind:
+		 * According to the author of zlib it is not a bug and it won't be fixed.
+		 * http://groups.google.com/group/comp.compression/browse_thread/thread/b154b8def8c2a3ef/cdf9b8729ce17ee2
+		 * [Mark Adler, Feb 24 2004, 'zlib-1.2.1 valgrind warnings' in the newgroup comp.compression]
+		 **/
 		r = deflate(z, mode);
-			/* bytes were emitted? */
+
+		/* bytes were emitted? */
 		if ((n = sizeof(buf) - z->avail_out) != 0) {
 			if (fwrite(buf, n, 1, _sl.fh) != 1) SlError(STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE);
 		}
