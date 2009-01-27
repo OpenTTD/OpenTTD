@@ -47,6 +47,7 @@
 #include "core/alloc_func.hpp"
 
 #include "table/strings.h"
+#include "table/sprites.h"
 
 static const uint16 _roadveh_images[63] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,
@@ -160,6 +161,9 @@ void RoadVehUpdateCache(Vehicle *v)
 
 		/* Update the length of the vehicle. */
 		u->u.road.cached_veh_length = GetRoadVehLength(u);
+
+		/* Invalidate the vehicle colour map */
+		u->colormap = PAL_NONE;
 	}
 }
 
@@ -2098,6 +2102,8 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 
 		if (only_this) break;
 	}
+
+	if (flags & DC_EXEC) RoadVehUpdateCache(GetVehicle(p1)->First());
 
 	_returned_refit_capacity = total_capacity;
 
