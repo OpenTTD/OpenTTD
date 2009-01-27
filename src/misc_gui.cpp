@@ -1435,7 +1435,21 @@ static void MakeSortedSaveGameList()
 extern void StartupEngines();
 
 struct SaveLoadWindow : public QueryStringBaseWindow {
+private:
+	enum SaveLoadWindowWidgets {
+		SLWW_CLOSE = 0,
+		SLWW_WINDOWTITLE,
+		SLWW_SORT_BYNAME,
+		SLWW_SORT_BYDATE,
+		SLWW_HOME_BUTTON = 6,
+		SLWW_DRIVES_DIRECTORIES_LIST,
+		SLWW_SAVE_OSK_TITLE = 10,  ///< only available for save operations
+		SLWW_DELETE_SELECTION,     ///< same in here
+		SLWW_SAVE_GAME,            ///< not to mention in here too
+	};
+
 	FiosItem o_dir;
+public:
 
 	void GenerateFileName()
 	{
@@ -1464,8 +1478,8 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 
 		assert((uint)mode < lengthof(saveload_captions));
 
-		this->widget[1].data = saveload_captions[mode];
-		this->LowerWidget(7);
+		this->widget[SLWW_WINDOWTITLE].data = saveload_captions[mode];
+		this->LowerWidget(SLWW_DRIVES_DIRECTORIES_LIST);
 
 		this->afilter = CS_ALPHANUMERAL;
 		InitializeTextBuffer(&this->text, this->edit_str_buf, this->edit_str_size, 240);
@@ -1529,47 +1543,48 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 			MakeSortedSaveGameList();
 		}
 
-		GfxFillRect(this->widget[7].left + 1, this->widget[7].top + 1, this->widget[7].right, this->widget[7].bottom, 0xD7);
-		this->DrawSortButtonState(_savegame_sort_order & SORT_BY_NAME ? 2 : 3, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
+		const Widget *widg = &this->widget[SLWW_DRIVES_DIRECTORIES_LIST];
+		GfxFillRect(widg->left + 1, widg->top + 1, widg->right, widg->bottom, 0xD7);
+		this->DrawSortButtonState(_savegame_sort_order & SORT_BY_NAME ? SLWW_SORT_BYNAME : SLWW_SORT_BYDATE, _savegame_sort_order & SORT_DESCENDING ? SBS_DOWN : SBS_UP);
 
-		y = this->widget[7].top + 1;
+		y = widg->top + 1;
 		for (uint pos = this->vscroll.pos; pos < _fios_items.Length(); pos++) {
 			const FiosItem *item = _fios_items.Get(pos);
 
 			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], this->width - 18);
 			y += 10;
-			if (y >= this->vscroll.cap * 10 + this->widget[7].top + 1) break;
+			if (y >= this->vscroll.cap * 10 + widg->top + 1) break;
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			this->DrawEditBox(10);
+			this->DrawEditBox(SLWW_SAVE_OSK_TITLE);
 		}
 	}
 
 	virtual void OnClick(Point pt, int widget)
 	{
 		switch (widget) {
-			case 2: // Sort save names by name
+			case SLWW_SORT_BYNAME: // Sort save names by name
 				_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
 					SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
 				_savegame_sort_dirty = true;
 				this->SetDirty();
 				break;
 
-			case 3: // Sort save names by date
+			case SLWW_SORT_BYDATE: // Sort save names by date
 				_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
 					SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
 				_savegame_sort_dirty = true;
 				this->SetDirty();
 				break;
 
-			case 6: // OpenTTD 'button', jumps to OpenTTD directory
+			case SLWW_HOME_BUTTON: // OpenTTD 'button', jumps to OpenTTD directory
 				FiosBrowseTo(&o_dir);
 				this->SetDirty();
 				BuildFileList();
 				break;
 
-			case 7: { // Click the listbox
+			case SLWW_DRIVES_DIRECTORIES_LIST: { // Click the listbox
 				int y = (pt.y - this->widget[widget].top - 1) / 10;
 
 				if (y < 0 || (y += this->vscroll.pos) >= this->vscroll.count) return;
@@ -1597,7 +1612,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 						/* SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox */
 						ttd_strlcpy(this->text.buf, file->title, this->text.maxsize);
 						UpdateTextBufferSize(&this->text);
-						this->InvalidateWidget(10);
+						this->InvalidateWidget(SLWW_SAVE_OSK_TITLE);
 					}
 				} else {
 					/* Changed directory, need repaint. */
@@ -1607,7 +1622,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 				break;
 			}
 
-			case 11: case 12: // Delete, Save game
+			case SLWW_DELETE_SELECTION: case SLWW_SAVE_GAME: // Delete, Save game
 				break;
 		}
 	}
@@ -1615,7 +1630,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 	virtual void OnMouseLoop()
 	{
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			this->HandleEditBox(10);
+			this->HandleEditBox(SLWW_SAVE_OSK_TITLE);
 		}
 	}
 
@@ -1628,8 +1643,8 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 
 		EventState state = ES_NOT_HANDLED;
 		if ((_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) &&
-				this->HandleEditBoxKey(10, key, keycode, state) == HEBR_CONFIRM) {
-			this->HandleButtonClick(12);
+				this->HandleEditBoxKey(SLWW_SAVE_OSK_TITLE, key, keycode, state) == HEBR_CONFIRM) {
+			this->HandleButtonClick(SLWW_SAVE_GAME);
 		}
 
 		return state;
@@ -1641,7 +1656,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 		 * in those two saveload mode */
 		if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) return;
 
-		if (this->IsWidgetLowered(11)) { // Delete button clicked
+		if (this->IsWidgetLowered(SLWW_DELETE_SELECTION)) { // Delete button clicked
 			if (!FiosDelete(this->text.buf)) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
 			} else {
@@ -1652,7 +1667,7 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 
 			UpdateTextBufferSize(&this->text);
 			this->SetDirty();
-		} else if (this->IsWidgetLowered(12)) { // Save button clicked
+		} else if (this->IsWidgetLowered(SLWW_SAVE_GAME)) { // Save button clicked
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, this->text.buf, sizeof(_file_to_saveload.name));
 
@@ -1665,15 +1680,15 @@ struct SaveLoadWindow : public QueryStringBaseWindow {
 	{
 		/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
 		uint diff = delta.x / 2;
-		this->widget[2].right += diff;
-		this->widget[3].left  += diff;
-		this->widget[3].right += delta.x;
+		this->widget[SLWW_SORT_BYNAME].right += diff;
+		this->widget[SLWW_SORT_BYDATE].left  += diff;
+		this->widget[SLWW_SORT_BYDATE].right += delta.x;
 
 		/* Same for widget 11 and 12 in save-dialog */
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			this->widget[11].right += diff;
-			this->widget[12].left  += diff;
-			this->widget[12].right += delta.x;
+			this->widget[SLWW_DELETE_SELECTION].right += diff;
+			this->widget[SLWW_SAVE_GAME].left  += diff;
+			this->widget[SLWW_SAVE_GAME].right += delta.x;
 		}
 
 		this->vscroll.cap += delta.y / 10;
