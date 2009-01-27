@@ -330,7 +330,7 @@ static const Colours _similar_colour[COLOUR_END][2] = {
 	{ COLOUR_GREY,       INVALID_COLOUR    }, // COLOUR_WHITE
 };
 
-static byte GenerateCompanyColour()
+static Colours GenerateCompanyColour()
 {
 	Colours colours[COLOUR_END];
 
@@ -426,10 +426,13 @@ Company *DoStartupNewCompany(bool is_ai)
 {
 	if (!Company::CanAllocateItem()) return NULL;
 
+	/* we have to generate colour before this company is valid */
+	Colours colour = GenerateCompanyColour();
+
 	Company *c = new Company(STR_SV_UNNAMED, is_ai);
 
-	/* Make a color */
-	c->colour = GenerateCompanyColour();
+	c->colour = colour;
+
 	ResetCompanyLivery(c);
 	_company_colours[c->index] = c->colour;
 
