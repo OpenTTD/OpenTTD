@@ -424,7 +424,7 @@ void ResetCompanyLivery(Company *c)
  */
 Company *DoStartupNewCompany(bool is_ai)
 {
-	if (!Company::CanAllocateItem()) return NULL;
+	if (ActiveCompanyCount() == MAX_COMPANIES || !Company::CanAllocateItem()) return NULL;
 
 	/* we have to generate colour before this company is valid */
 	Colours colour = GenerateCompanyColour();
