@@ -1566,6 +1566,8 @@
     <ul>
      <li>m1: <a href="#OwnershipInfo">owner</a> of the object (for lighthouses and transmitters normally <tt>10</tt>)</li>
      <li>m2: see company statue
+     <li>m3 bits 4..2: size of HQ
+     <li>m3 bits 1..0: section identification of the HQ
      <li>m5: tile type:
       <table>
        <tr>
@@ -1593,8 +1595,8 @@
        </tr>
 
        <tr>
-        <td nowrap valign=top><tt>80</tt>..<tt>93</tt>&nbsp; </td>
-        <td align=left>company headquarters (5 sets of 4 tiles each, updated quarterly depending on the company performance)</td>
+        <td nowrap valign=top><tt>04</tt><tt></tt>&nbsp; </td>
+        <td align=left>company headquarters</td>
        </tr>
       </table>
      </li>

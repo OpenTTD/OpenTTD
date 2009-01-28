@@ -167,6 +167,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 {
 
 	switch (GetUnmovableType(ti->tile)) {
+		default: NOT_REACHED(); break;
 		case UNMOVABLE_TRANSMITTER:
 		case UNMOVABLE_LIGHTHOUSE: {
 			const DrawTileSeqStruct *dtu = &_draw_tile_transmitterlighthouse_data[GetUnmovableType(ti->tile)];
@@ -205,13 +206,13 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			DrawBridgeMiddle(ti);
 			break;
 
-		default: {
+		case UNMOVABLE_HQ:{
 			assert(IsCompanyHQ(ti->tile));
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, FOUNDATION_LEVELED);
 
 			SpriteID palette = COMPANY_SPRITE_COLOR(GetTileOwner(ti->tile));
 
-			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
+			const DrawTileSprites *t = &_unmovable_display_datas[GetCompanyHQSize(ti->tile) << 2 | GetCompanyHQSection(ti->tile)];
 			DrawGroundSprite(t->ground.sprite, palette);
 
 			if (IsInvisibilitySet(TO_STRUCTURES)) break;

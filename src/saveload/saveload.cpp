@@ -42,7 +42,7 @@
 
 #include <list>
 
-extern const uint16 SAVEGAME_VERSION = 111;
+extern const uint16 SAVEGAME_VERSION = 112;
 
 SavegameType _savegame_type; ///< type of savegame we are loading
 
