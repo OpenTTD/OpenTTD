@@ -311,7 +311,6 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 		this->afilter = CS_NUMERAL;
 
 		this->mode = (glwp_modes)this->window_number;
-		if (_settings_newgame.game_creation.water_borders == BORDERS_RANDOM) _settings_newgame.game_creation.water_borders = GB(Random(), 0, 4);
 
 		this->FindWindowPlacementAndResize(desc);
 	}
