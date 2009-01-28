@@ -1026,6 +1026,7 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Landsch
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Stationsarten haben verschieden große Einzugsgebiete: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Entfernung von weiteren Straßen, Brücken, usw. erlauben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Erlaube das Bauen von sehr langen Zügen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Beschleunigungsmodell für Züge: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Original
 STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistisch
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zügen und Schiffen 90° Kurven verbieten: {ORANGE}{STRING} {LTBLUE} (nicht mit NTP)
@@ -1093,6 +1094,8 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :links
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :rechts
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Höhenstufe des Spielfeldes in einem flachen Szenario: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}Landschafts-bau am Kartenrand erlauben: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE} Eines oder mehrere Felder an der nördlichen Kante sind nicht leer
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE} Eines oder mehrere Felder an einer Kante sind nicht Wasser
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}(Hoher Wert verlangsamt das Spiel)
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}

@@ -1136,7 +1136,7 @@ STR_CONFIG_PATCHES_LOADING_INDICATORS_OWN                       :소유한 회�
 STR_CONFIG_PATCHES_LOADING_INDICATORS_ALL                       :모든 회사
 STR_CONFIG_PATCHES_TIMETABLE_ALLOW                              :{LTBLUE}차량에 시간표 사용: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TIMETABLE_IN_TICKS                           :{LTBLUE}시간표를 일(日)이 아닌 틱으로 표시: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}빠른 행성지 설정: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_QUICKGOTO                                    :{LTBLUE}빠른 행선지 설정: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE                            :{LTBLUE}철도 형식 기본값 설정 (게임 시작/로드 후): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_RAIL                       :보통 철도
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_ELRAIL                     :전기 철도
@@ -1614,7 +1614,7 @@ STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING}님
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} 가 게임에서 나갔습니다 ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} 가 이름을 {STRING}으로 바꿨습니다
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} 가 당신의 회사에게 {2:CURRENCY}를 송금하였습니다
-STR_NETWORK_GAVE_MONEY_AWAY                                     :*** 당인은  {1:STRING} 에게 {2:CURRENCY}를 송금하였습니다
+STR_NETWORK_GAVE_MONEY_AWAY                                     :*** 당신은  {1:STRING} 에게 {2:CURRENCY}를 송금하였습니다
 STR_NETWORK_CHAT_COMPANY_CAPTION                                :[팀] :
 STR_NETWORK_CHAT_COMPANY                                        :[팀] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[팀] {STRING}에게: {GRAY}{STRING}
@@ -3763,7 +3763,7 @@ STR_CONTENT_DETAIL_SUBTITLE_SELECTED                            :{SILVER}당신�
 STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}이것은 다른 콘텐츠에 종속되어 자동선택되었습니다
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}당신은 이미 가지고 있습니다
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}이 컨텐츠는 확인되지 않았으며, OpenTTD에서 받을 수 없습니다
-STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}을 대체합니다
+STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}이것은 이미 존재하는 {STRING}를 대체하는 것입니다.
 STR_CONTENT_DETAIL_NAME                                         :{SILVER}이름: {WHITE}{STRING}
 STR_CONTENT_DETAIL_VERSION                                      :{SILVER}버젼: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}설명: {WHITE}{STRING}

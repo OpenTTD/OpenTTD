@@ -1629,6 +1629,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Wprowad�
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Serwer jest chroniony. Wprowadź hasło
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Firma jest chroniona. Wprowadź hasło
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Lista klientów
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Obserwuj
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Nowe przedsiębiorstwo
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Brak interface'u sieciowego lub skompilowano bez opcji ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Nie można znaleźć żadnej gry w sieci
@@ -1665,6 +1667,7 @@ STR_NETWORK_ERR_CLIENT_KICKED                                   :wyrzucony przez
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :probował użyć ułatwień
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serwer jest pełny
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
 STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :Gra zatrzymana (za mało graczy)
 STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :Gra wznowiona (wystarczająca ilość graczy)
@@ -1674,6 +1677,7 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Gra wznowiona (
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :opuszczanie
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} dołączył do gry.
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} dołączył do obserwatorów
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} opuścił grę ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} zmienił/zmieniła swoje imię na {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} dał/dała twojemu przedsiębiorstwu {2:CURRENCY}
@@ -2101,6 +2105,7 @@ STR_GAME_SAVELOAD_ERROR_BROKEN_SAVEGAME                         :Zepsuta zapisan
 STR_GAME_SAVELOAD_ERROR_TOO_NEW_SAVEGAME                        :Zapisana gra zrobiona w nowszej wersji
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_READABLE                       :Plik nie jest odczytywalny
 STR_GAME_SAVELOAD_ERROR_FILE_NOT_WRITEABLE                      :Plik nie jest zapisywalny
+STR_GAME_SAVELOAD_ERROR_DATA_INTEGRITY_CHECK_FAILED             :Sprawdzenie integralności danych nie powiodło się
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lista napędów, katalogów i zapisanych gier
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Obecnie zaznaczona nazwa dla zapisanej gry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Skasuj zaznaczoną zapisaną grę
@@ -2507,6 +2512,7 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Zbuduj s
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Nie można zbudować siedziby firmy...
 STR_7072_VIEW_HQ                                                :{BLACK}Zobacz SG
 STR_RELOCATE_HQ                                                 :{BLACK}Przenieś SG
+STR_COMPANY_JOIN                                                :{BLACK}Dołącz
 STR_COMPANY_PASSWORD                                            :{BLACK}Hasło
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ochrona hasłem Twojej firmy zapobiega nieautoryzowanemu przyłączeniu się
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Ustaw hasło firmy

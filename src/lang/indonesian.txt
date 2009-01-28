@@ -1025,6 +1025,9 @@ STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Ijinkan
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Ijinkan ukuran jangkauan wilayah lebih realistik: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Ijinkan menggusur lebih banyak jalan/jembatan kota, dsb: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Ijinkan membuat rangkaian gerbong yang sangat panjang: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Model akselerasi kereta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Asli
+STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_REALISTIC           :Realistis
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Kereta dan kapal dilarang belok 90 derajat: {ORANGE}{STRING} {LTBLUE} (tidak dengan NTP)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Gabungkan pembangunan stasiun kereta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DISTANT_JOIN_STATIONS                        :{LTBLUE}Ijinkan menggabung stasiun meski tdk menempel: {ORANGE}{STRING}
@@ -1557,6 +1560,8 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Masukkan
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server terkunci, masukkan kata kunci
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Perusahaan terkunci, masukkan kata kunci
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Daftar klien
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE}Menonton
+STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE}Buat Perusahaan
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Tak menemukan perangkat jaringan atau dibuat tanpa ENABLE_NETWORK
 STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Tidak menemukan permainan di jaringan
@@ -1603,6 +1608,9 @@ STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :Permainan Dilan
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :pergi
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} telah bergabung
+STR_NETWORK_CLIENT_COMPANY_JOIN                                 :*** {STRING} bergabung dalam perusahaan #{2:NUM}
+STR_NETWORK_CLIENT_COMPANY_SPECTATE                             :*** {STRING} bergabung menjadi penonton
+STR_NETWORK_CLIENT_COMPANY_NEW                                  :*** {STRING} mulai mendirikan perusahaan (#{2:NUM})
 STR_NETWORK_CLIENT_LEFT                                         :*** {STRING} meninggalkan permainan ({2:STRING})
 STR_NETWORK_NAME_CHANGE                                         :*** {STRING} telah mengganti namanya menjadi {STRING}
 STR_NETWORK_GIVE_MONEY                                          :*** {STRING} telah memberi perusahaanmu {2:CURRENCY}
@@ -2402,6 +2410,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Membangu
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Tidak dapat membangun kantor pusat perusahaan...
 STR_7072_VIEW_HQ                                                :{BLACK}Lokasi Kantor
 STR_RELOCATE_HQ                                                 :{BLACK}Relokasi Kantor
+STR_COMPANY_JOIN                                                :{BLACK}Gabung
+STR_COMPANY_JOIN_TIP                                            :{BLACK}Gabung dan bermain sebagai perush. ini
 STR_COMPANY_PASSWORD                                            :{BLACK}Kata Sandi
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Kata Sandi-Melindungi perusahaanmu dari pemakai yang tidak bewenang untuk bergabung.
 STR_SET_COMPANY_PASSWORD                                        :{BLACK}Atur Kata Sandi Perusahaan
@@ -3489,6 +3499,18 @@ STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Tinggi d
 STR_SMALLMAP_CENTER                                             :{BLACK}Tengahkan peta kecil pada posisi ini
 STR_SMALLMAP_INDUSTRY                                           :{TINYFONT}{STRING} ({NUM})
 
+# Strings for map borders at game generation
+STR_BORDER_TYPE                                                 :{BLACK}Jenis Tepi Peta:
+STR_NORTHWEST                                                   :{BLACK}Barat Laut
+STR_NORTHEAST                                                   :{BLACK}Timur Laut
+STR_SOUTHEAST                                                   :{BLACK}Tenggara
+STR_SOUTHWEST                                                   :{BLACK}Barat Daya
+STR_BORDER_FREEFORM                                             :{BLACK}Bebas
+STR_BORDER_WATER                                                :{BLACK}Perairan
+STR_BORDER_RANDOM                                               :{BLACK}Acak
+STR_BORDER_RANDOMIZE                                            :{BLACK}Acak
+STR_BORDER_MANUAL                                               :{BLACK}Manual
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Bandara Kecil
 STR_CITY_AIRPORT                                                :{BLACK}Bandara Kota
@@ -3766,4 +3788,6 @@ STR_CONTENT_ERROR_COULD_NOT_EXTRACT                             :{WHITE}Tak dapa
 
 STR_CONTENT_INTRO_BUTTON                                        :{BLACK}Cari konten
 STR_CONTENT_INTRO_BUTTON_TIP                                    :{BLACK}Cari konten baru dan pembaruan untuk diunduh
+STR_CONTENT_INTRO_MISSING_BUTTON                                :{BLACK}Temukan konten yg blm ada
+STR_CONTENT_INTRO_MISSING_BUTTON_TIP                            :{BLACK}Memeriksa apakah ada konten yg bisa ditemukan secara online
 ########

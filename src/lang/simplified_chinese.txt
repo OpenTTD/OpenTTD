@@ -1092,6 +1092,9 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}高度�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :逆时针
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :顺时针
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}由水面场景得到的高度：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENABLE_FREEFORM_EDGES                        :{LTBLUE}允许调整地图边缘的地块地形：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_EDGES_NOT_EMPTY                              :{WHITE}一个或多个北边的地块不是闲置的
+STR_CONFIG_PATCHES_EDGES_NOT_WATER                              :{WHITE}一个或多个地图某边的地块不是水域
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}站台最大距离：{ORANGE}{STRING} {RED}警告：站台过大会影响速度
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}直升机在降落平台自动保养：{ORANGE}{STRING}
