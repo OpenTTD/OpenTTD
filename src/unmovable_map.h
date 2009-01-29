@@ -166,8 +166,7 @@ static inline void SetCompanyHQSection(TileIndex t, uint8 section)
 static inline void EnlargeCompanyHQ(TileIndex t, byte size)
 {
 	assert(GetCompanyHQSection(t) == 0);
-
-	size++;
+	assert(size <= 4);
 	if (size <= GetCompanyHQSize(t)) return;
 
 	SetCompanyHQSize(t                   , size);
