@@ -238,7 +238,7 @@ public:
 };
 
 template <class Types>
-class CYapfFollowAnySafeTileRailT : protected CYapfReserveTrack<Types>
+class CYapfFollowAnySafeTileRailT : public CYapfReserveTrack<Types>
 {
 public:
 	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
@@ -320,7 +320,7 @@ public:
 };
 
 template <class Types>
-class CYapfFollowRailT : protected CYapfReserveTrack<Types>
+class CYapfFollowRailT : public CYapfReserveTrack<Types>
 {
 public:
 	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
