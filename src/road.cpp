@@ -26,6 +26,7 @@ bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 
 RoadBits CleanUpRoadBits(const TileIndex tile, RoadBits org_rb)
 {
+	if (!IsValidTile(tile)) return ROAD_NONE;
 	for (DiagDirection dir = DIAGDIR_BEGIN; dir < DIAGDIR_END; dir++) {
 		const TileIndex neighbor_tile = TileAddByDiagDir(tile, dir);
 
