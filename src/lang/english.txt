@@ -1853,6 +1853,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay triple rates for the next year!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay quadruple rates for the next year!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} local authority refuses to allow another airport to be built in this town
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} local authority refuses permission for airport due to noise concerns
 STR_2036_COTTAGES                                               :Cottages
 STR_2037_HOUSES                                                 :Houses
 STR_2038_FLATS                                                  :Flats

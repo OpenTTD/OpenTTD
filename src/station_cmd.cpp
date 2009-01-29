@@ -1895,23 +1895,27 @@ CommandCost CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 	uint newnoise_level = GetAirportNoiseLevelForTown(afc, nearest->xy, tile);
 
 	/* Check if local auth would allow a new airport */
-	bool authority_refused;
+	StringID authority_refuse_message = STR_NULL;
 
 	if (_settings_game.economy.station_noise_level) {
 		/* do not allow to build a new airport if this raise the town noise over the maximum allowed by town */
-		authority_refused = (nearest->noise_reached + newnoise_level) > nearest->MaxTownNoise();
+		if ((nearest->noise_reached + newnoise_level) > nearest->MaxTownNoise()) {
+			authority_refuse_message = STR_LOCAL_AUTHORITY_REFUSES_NOISE;
+		}
 	} else {
 		uint num = 0;
 		const Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (st->town == t && st->facilities & FACIL_AIRPORT && st->airport_type != AT_OILRIG) num++;
 		}
-		authority_refused = (num >= 2);
+		if (num >= 2) {
+			authority_refuse_message = STR_2035_LOCAL_AUTHORITY_REFUSES;
+		}
 	}
 
-	if (authority_refused) {
+	if (authority_refuse_message != STR_NULL) {
 		SetDParam(0, t->index);
-		return_cmd_error(STR_2035_LOCAL_AUTHORITY_REFUSES);
+		return_cmd_error(authority_refuse_message);
 	}
 
 	if (!_settings_game.station.adjacent_stations || !HasBit(p2, 0)) {
