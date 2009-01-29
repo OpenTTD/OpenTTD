@@ -93,6 +93,34 @@ typedef GUIList<const Station*> GUIStationList;
  */
 class CompanyStationsWindow : public Window
 {
+	/** Enum for CompanyStations, referring to _company_stations_widgets */
+	enum StationListWidgets {
+		SLW_CLOSEBOX =  0,  ///< Close window button
+		SLW_CAPTION,        ///< Window caption
+		SLW_STICKY,         ///< Sticky button
+		SLW_LIST,           ///< The main panel, list of stations
+		SLW_SCROLLBAR,      ///< Scrollbar next to the main panel
+		SLW_RESIZE,         ///< Resize button
+
+		SLW_TRAIN,          ///< 'TRAIN' button - list only facilities where is a railroad station
+		SLW_TRUCK,          ///< 'TRUCK' button - list only facilities where is a truck stop
+		SLW_BUS,            ///< 'BUS' button - list only facilities where is a bus stop
+		SLW_AIRPLANE,       ///< 'AIRPLANE' button - list only facilities where is an airport
+		SLW_SHIP,           ///< 'SHIP' button - list only facilities where is a dock
+		SLW_FACILALL,       ///< 'ALL' button - list all facilities
+
+		SLW_PAN_BETWEEN,    ///< Small panel between list of types of ficilities and list of cargo types
+		SLW_NOCARGOWAITING, ///< 'NO' button - list stations where no cargo is waiting
+		SLW_CARGOALL,       ///< 'ALL' button - list all stations
+		SLW_PAN_RIGHT,      ///< Panel right of list of cargo types
+
+		SLW_SORTBY,         ///< 'Sort by' button - reverse sort direction
+		SLW_SORTDROPBTN,    ///< Dropdown button
+		SLW_PAN_SORT_RIGHT, ///< Panel right of sorting options
+
+		SLW_CARGOSTART,     ///< Widget numbers used for list of cargo types (not present in _company_stations_widgets)
+	};
+
 protected:
 	/* Runtime saved values */
 	static Listing last_sorting;
@@ -570,11 +598,11 @@ const StringID CompanyStationsWindow::sorter_names[] = {
 
 static const Widget _company_stations_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},            // SLW_CLOSEBOX
-{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   345,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   346,   357,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{    WWT_CAPTION,  RESIZE_RIGHT,  COLOUR_GREY,    11,   345,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},  // SLW_CAPTION
+{  WWT_STICKYBOX,     RESIZE_LR,  COLOUR_GREY,   346,   357,     0,    13, 0x0,               STR_STICKY_BUTTON},                // SLW_STICKY
 {      WWT_PANEL,     RESIZE_RB,  COLOUR_GREY,     0,   345,    37,   161, 0x0,               STR_3057_STATION_NAMES_CLICK_ON},  // SLW_LIST
-{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   346,   357,    37,   149, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   346,   357,   150,   161, 0x0,               STR_RESIZE_BUTTON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,  COLOUR_GREY,   346,   357,    37,   149, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST}, // SLW_SCROLLBAR
+{  WWT_RESIZEBOX,   RESIZE_LRTB,  COLOUR_GREY,   346,   357,   150,   161, 0x0,               STR_RESIZE_BUTTON},                // SLW_RESIZE
 
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,    13,    14,    24, STR_TRAIN,         STR_USE_CTRL_TO_SELECT_MORE},      // SLW_TRAIN
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,    14,    27,    14,    24, STR_LORRY,         STR_USE_CTRL_TO_SELECT_MORE},      // SLW_TRUCK

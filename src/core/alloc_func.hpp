@@ -69,7 +69,7 @@ static FORCEINLINE T *CallocT(size_t num_elements)
  * elements of the given type. It also explicitly casts it to the requested
  * type. It extends/shrinks the memory allocation given in t_ptr.
  * @note throws an error when there is no memory anymore.
- * @note the memory contains all zero values.
+ * @note the pointer to the data may change, but the data will remain valid.
  * @param T the type of the variable(s) to allocation.
  * @param t_ptr the previous allocation to extend/shrink.
  * @param num_elements the number of elements to allocate of the given type.
