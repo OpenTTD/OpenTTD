@@ -167,7 +167,7 @@
 	#pragma warning(disable: 4200)  // nonstandard extension used : zero-sized array in struct/union
 
 	#if (_MSC_VER < 1400)                   // MSVC 2005 safety checks
-		#error "Only MSVC 2005 or higher are supported. MSVC 2003 and earlier are not!. Upgrade your compiler."
+		#error "Only MSVC 2005 or higher are supported. MSVC 2003 and earlier are not! Upgrade your compiler."
 	#endif /* (_MSC_VER < 1400) */
 	#pragma warning(disable: 4996)   // 'strdup' was declared deprecated
 	#define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
@@ -188,7 +188,7 @@
 	#endif
 
 	int CDECL snprintf(char *str, size_t size, const char *format, ...);
-	#if (_MSC_VER < 1400) || defined(WINCE)
+	#if defined(WINCE)
 		int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap);
 	#endif
 

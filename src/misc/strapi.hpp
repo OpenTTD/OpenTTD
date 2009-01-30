@@ -38,11 +38,11 @@ template <> /*static*/ inline size_t CStrApiBaseT<char>::StrLen(const char *s)
 /** ::vsprintf wrapper specialization for char */
 template <> /*static*/ inline int CStrApiBaseT<char>::SPrintFL(char *buf, size_t count, const char *fmt, va_list args)
 {
-#if defined(_MSC_VER) && (_MSC_VER >= 1400) && !defined(WINCE) // VC 8.0 and above
+#if defined(_MSC_VER) && !defined(WINCE)
 	return ::vsnprintf_s(buf, count, count - 1, fmt, args);
-#else /* ! VC 8.0 and above */
+#else
 	return ::vsnprintf(buf, count, fmt, args);
-#endif
+#endif /* _MSC_VER && ! WINCE */
 }
 
 #if defined(HAS_WCHAR)
@@ -55,15 +55,15 @@ template <> /*static*/ inline size_t CStrApiBaseT<wchar_t>::StrLen(const wchar_t
 /** ::vsprintf wrapper specialization for wchar_t */
 template <> /*static*/ inline int CStrApiBaseT<wchar_t>::SPrintFL(wchar_t *buf, size_t count, const wchar_t *fmt, va_list args)
 {
-#if defined(_MSC_VER) && (_MSC_VER >= 1400) && !defined(WINCE) // VC 8.0 and above
+#if defined(_MSC_VER) && !defined(WINCE)
 	return ::_vsnwprintf_s(buf, count, count - 1, fmt, args);
-#else /* ! VC 8.0 and above */
+#else
 # if defined(_WIN32)
 	 return ::_vsnwprintf(buf, count, fmt, args);
 # else /* !_WIN32 */
 	 return ::vswprintf(buf, count, fmt, args);
 # endif /* !_WIN32 */
-#endif
+#endif /* _MSC_VER && ! WINCE */
 }
 #endif /* HAS_WCHAR */
 

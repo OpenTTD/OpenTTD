@@ -9,22 +9,12 @@
 /* rdtsc for MSC_VER, uses simple inline assembly, or _rdtsc
  * from external win64.asm because VS2005 does not support inline assembly */
 #if defined(_MSC_VER) && !defined(RDTSC_AVAILABLE) && !defined(WINCE)
-# if _MSC_VER >= 1400
 #include <intrin.h>
 uint64 ottd_rdtsc()
 {
 	return __rdtsc();
 }
-#	else
-uint64 _declspec(naked) ottd_rdtsc()
-{
-	_asm {
-		rdtsc
-		ret
-	}
-}
-# endif
-# define RDTSC_AVAILABLE
+#define RDTSC_AVAILABLE
 #endif
 
 /* rdtsc for OS/2. Hopefully this works, who knows */

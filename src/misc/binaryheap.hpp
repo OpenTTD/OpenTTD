@@ -5,12 +5,6 @@
 #ifndef  BINARYHEAP_HPP
 #define  BINARYHEAP_HPP
 
-//void *operator new (size_t size, void *p) {return p;}
-#if defined(_MSC_VER) && (_MSC_VER >= 1400)
-//void operator delete (void *p, void *p2) {}
-#endif
-
-
 /**
  * Binary Heap as C++ template.
  *
