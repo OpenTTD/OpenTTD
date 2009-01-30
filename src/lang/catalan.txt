@@ -1853,6 +1853,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el triple de la tarifa durant el pròxim any!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvenció per Servei concedida a {COMPANY}!{}{} Servei de {STRING} des de {STATION} fins a {STATION} percebrà el quàdruple de la tarifa durant el pròxim any!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} l'autoritat local denega el permís de construir un altre aeroport en aquesta població
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}L'autoritat local de {TOWN} rebutja donar el permís per a l'aeroport degut al soroll que causaria
 STR_2036_COTTAGES                                               :Xalets
 STR_2037_HOUSES                                                 :Cases
 STR_2038_FLATS                                                  :Apartaments

@@ -1853,6 +1853,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 3배의 추가 보조금을 내년까지 받게 됩니다!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{0:COMPANY}에게 보조금 지급!{}{}{2:STATION}에서 {3:STATION}까지의 {1:STRING} 수송에 대해 4배의 추가 보조금을 내년까지 받게 됩니다!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} 지역당국은 이 도시에 다른 공항이 들어서는 것을 거부합니다!
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} 지역 당국이 소음 문제로 인해 공항 건설을 거부하였습니다
 STR_2036_COTTAGES                                               :아담한 집
 STR_2037_HOUSES                                                 :집
 STR_2038_FLATS                                                  :평지
@@ -1926,7 +1927,7 @@ STR_3002_ORIENTATION                                            :{BLACK}방향
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}트랙 수
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}플랫폼 길이
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}다른 기차역과 너무 가깝습니다!
-STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}1개 이상의 역을 인접시키십시오
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}2개 이상의 역이 인접합니다
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}이 도시에 너무 많은 역이 있습니다
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}역이 너무 많습니다
 STR_TOO_MANY_STATION_SPECS                                      :{WHITE}정거장 조각이 너무 많습니다
@@ -2933,7 +2934,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}가격: 
 STR_885C_BROKEN_DOWN                                            :{RED}고장
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}수명: {LTBLUE}{STRING}{BLACK}   운행비용: {LTBLUE}{CURRENCY}/년
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}무게: {LTBLUE}{WEIGHT_S}  {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속력: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}중량: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속도: {LTBLUE}{VELOCITY} {BLACK}최고 틸팅속력: {LTBLUE}{FORCE}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}중량: {LTBLUE}{WEIGHT_S} {BLACK}힘: {LTBLUE}{POWER}{BLACK} 최고속도: {LTBLUE}{VELOCITY} {BLACK}최고 견인 효과: {LTBLUE}{FORCE}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}올해 수익: {LTBLUE}{CURRENCY}  (작년: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}신뢰도: {LTBLUE}{COMMA}%  {BLACK}최근 점검 이후의 고장: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}정지함

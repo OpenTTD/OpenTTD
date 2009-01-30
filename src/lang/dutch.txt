@@ -1853,6 +1853,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie uitgereikt aan {COMPANY}!{}{}{STRING}route van {STATION} naar {STATION} krijgt driedubbele omzet voor het volgende jaar!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidie uitgereikt aan {COMPANY}!{}{}{STRING}route van {STATION} naar {STATION} krijgt vierdubbele omzet voor het volgende jaar!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}De gemeenteraad van {TOWN} staat bouwen van nog een vliegveld niet toe
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} lokale autoriteiten weigeren toestemming te geven voor vliegveld wegens zorgen om geluid
 STR_2036_COTTAGES                                               :Plattelandshuisjes
 STR_2037_HOUSES                                                 :Huizen
 STR_2038_FLATS                                                  :Flats

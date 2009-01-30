@@ -1854,6 +1854,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}¡Subvención otorgada a {COMPANY}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará tasa triple durante un año!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}¡Subvención otorgada a {COMPANY}!{}{}¡Servicio de {STRING} desde {STATION} a {STATION} pagará tasa cuádruple durante un año!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} la autoridad local rechaza la construcción de otro aeropuerto en esta población
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Las autoridades locales de {TOWN} rechazan el permiso para el aeropuerto debido al ruido
 STR_2036_COTTAGES                                               :Cabañas
 STR_2037_HOUSES                                                 :Casas
 STR_2038_FLATS                                                  :Apartamentos

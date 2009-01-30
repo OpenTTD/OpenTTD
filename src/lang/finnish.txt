@@ -1853,6 +1853,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tuki myönnetty yhtiölle {COMPANY}!{}{}{STRING}kuljetus välillä {STATION}-{STATION} tuottaa kolminkertaisesti seuraavan vuoden ajan!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Tuki myönnetty yhtiölle {COMPANY}!{}{}{STRING}kuljetus välillä {STATION}-{STATION} tuottaa nelinkertaisesti seuraavan vuoden ajan!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}: paikallisviranomaiset eivät salli toisen lentokentän rakentamista tähän kaupunkiin.
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} paikallisviranomaiset kieltävät lentokentän rakennuksen äänekkyyden takia
 STR_2036_COTTAGES                                               :Mökkejä
 STR_2037_HOUSES                                                 :Taloja
 STR_2038_FLATS                                                  :Asuntoja

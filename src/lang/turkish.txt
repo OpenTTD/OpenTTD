@@ -1853,6 +1853,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca üç kat fazla gelir sağlayacak!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sübvansiyon {COMPANY} şirketine verildi!{}{}{STRING} servisi {STATION} -> {STATION} aralığında bir yıl boyunca dört kat fazla gelir sağlayacak!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} belediyesi bu şehir için başka havalimanına izin vermiyor
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} belediyesi gürültü endişesiyle havalimanına izin vermiyor
 STR_2036_COTTAGES                                               :Kulübe
 STR_2037_HOUSES                                                 :Evler
 STR_2038_FLATS                                                  :Daireler

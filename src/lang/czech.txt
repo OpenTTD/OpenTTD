@@ -1921,6 +1921,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet trojnásobek normální ceny!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotace přidělena společnosti {COMPANY}.{}{}Doprava {STRING.gen} z {STATION} do {STATION} bude po jeden rok vynášet čtyřnásobek normální ceny!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Místní správa města {TOWN} zakazuje stavbu dalšího letiště v tomto městě.
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}Zastupitelstvo města {TOWN} odmítá vydat povolení na stavbu letiště kvůli hlukovým limitům
 STR_2036_COTTAGES                                               :Chatky
 STR_2037_HOUSES                                                 :Domy
 STR_2038_FLATS                                                  :Byty

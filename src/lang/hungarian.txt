@@ -1919,6 +1919,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között háromszoros hasznot hoz neki!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} támogatást kapott!{}{}Így {STRING} szállítása {STATION} és {STATION} között négyszeres hasznot hoz neki!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} önkormányzata nem engedélyez új repteret a városban
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} önkormányzata a zajszintnormák miatt megtagadta a repülőtér építését
 STR_2036_COTTAGES                                               :Vidéki házak
 STR_2037_HOUSES                                                 :Házak
 STR_2038_FLATS                                                  :Bérház

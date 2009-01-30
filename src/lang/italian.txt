@@ -1855,6 +1855,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il triplo per il prossimo anno!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Sussidio aggiudicato alla {COMPANY}!{}{}Il trasporto di {STRING} da {STATION} a {STATION} verrà pagato il quadruplo per il prossimo anno!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}L'autorita locale di {TOWN} rifiuta la costruzione di un altro aeroporto nella città
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}L'autorita locale di {TOWN} rifiuta il permesso per motivi di inquinamento acustico
 STR_2036_COTTAGES                                               :Cottage
 STR_2037_HOUSES                                                 :Case
 STR_2038_FLATS                                                  :Appartamenti

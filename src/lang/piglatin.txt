@@ -1853,6 +1853,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Ervicesay ubsidysay awardedway otay {COMPANY}!{}{}{STRING} ervicesay omfray {STATION} otay {STATION} illway aypay ipletray atesray orfay ethay extnay earyay!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Ervicesay ubsidysay awardedway otay {COMPANY}!{}{}{STRING} ervicesay omfray {STATION} otay {STATION} illway aypay adruplequay atesray orfay ethay extnay earyay!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} ocallay authorityway efusesray otay allowway anotherway airportway otay ebay uiltbay inway isthay owntay
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} ocallay authorityway efusesray ermissionpay orfay airportway ueday otay oisenay oncernscay
 STR_2036_COTTAGES                                               :Ottagescay
 STR_2037_HOUSES                                                 :Ouseshay
 STR_2038_FLATS                                                  :Atsflay
