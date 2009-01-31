@@ -34,56 +34,134 @@ enum {
 static void DoShowCompanyFinances(CompanyID company, bool show_small, bool show_stickied, int top = FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 static void DoSelectCompanyManagerFace(Window *parent, bool show_big, int top =  FIRST_GUI_CALL, int left = FIRST_GUI_CALL);
 
+/** Standard unsorted list of expenses. */
+static ExpensesType _expenses_list_1[] = {
+	EXPENSES_CONSTRUCTION,
+	EXPENSES_NEW_VEHICLES,
+	EXPENSES_TRAIN_RUN,
+	EXPENSES_ROADVEH_RUN,
+	EXPENSES_AIRCRAFT_RUN,
+	EXPENSES_SHIP_RUN,
+	EXPENSES_PROPERTY,
+	EXPENSES_TRAIN_INC,
+	EXPENSES_ROADVEH_INC,
+	EXPENSES_AIRCRAFT_INC,
+	EXPENSES_SHIP_INC,
+	EXPENSES_LOAN_INT,
+	EXPENSES_OTHER,
+};
+
+/** Grouped list of expenses. */
+static ExpensesType _expenses_list_2[] = {
+	EXPENSES_TRAIN_INC,
+	EXPENSES_ROADVEH_INC,
+	EXPENSES_AIRCRAFT_INC,
+	EXPENSES_SHIP_INC,
+	INVALID_EXPENSES,
+	EXPENSES_TRAIN_RUN,
+	EXPENSES_ROADVEH_RUN,
+	EXPENSES_AIRCRAFT_RUN,
+	EXPENSES_SHIP_RUN,
+	EXPENSES_PROPERTY,
+	EXPENSES_LOAN_INT,
+	INVALID_EXPENSES,
+	EXPENSES_CONSTRUCTION,
+	EXPENSES_NEW_VEHICLES,
+	EXPENSES_OTHER,
+	INVALID_EXPENSES,
+};
+
+/** Expense list container. */
+struct ExpensesList {
+	const ExpensesType *et; ///< Expenses items.
+	const int length;       ///< Number of items in list.
+	const int height;       ///< Height of list, 10 pixels per item, plus an additional 12 pixels per subtotal. */
+};
+
+static const ExpensesList _expenses_list_types[] = {
+	{ _expenses_list_1, lengthof(_expenses_list_1), lengthof(_expenses_list_1) * 10 },
+	{ _expenses_list_2, lengthof(_expenses_list_2), lengthof(_expenses_list_2) * 10 + 3 * 12 },
+};
+
 static void DrawCompanyEconomyStats(const Company *c, bool small)
 {
+	int type = _settings_client.gui.expenses_layout;
 	int x, y, i, j, year;
 	const Money (*tbl)[EXPENSES_END];
-	Money sum, cost;
 	StringID str;
 
 	if (!small) { // normal sized economics window
 		/* draw categories */
 		DrawStringCenterUnderline(61, 15, STR_700F_EXPENDITURE_INCOME, TC_FROMSTRING);
-		for (i = 0; i != EXPENSES_END; i++)
-			DrawString(2, 27 + i * 10, STR_7011_CONSTRUCTION + i, TC_FROMSTRING);
-		DrawStringRightAligned(111, 27 + 10 * EXPENSES_END + 2, STR_7020_TOTAL, TC_FROMSTRING);
+
+		y = 27;
+		for (i = 0; i < _expenses_list_types[type].length; i++) {
+			ExpensesType et = _expenses_list_types[type].et[i];
+			if (et == INVALID_EXPENSES) {
+				y += 2;
+				DrawStringRightAligned(111, y, STR_7020_TOTAL, TC_FROMSTRING);
+				y += 20;
+			} else {
+				DrawString(2, y, STR_7011_CONSTRUCTION + et, TC_FROMSTRING);
+				y += 10;
+			}
+		}
+
+		DrawStringRightAligned(111, y + 2, STR_7020_TOTAL, TC_FROMSTRING);
 
 		/* draw the price columns */
 		year = _cur_year - 2;
 		j = 3;
 		x = 215;
 		tbl = c->yearly_expenses + 2;
+
 		do {
 			if (year >= c->inaugurated_year) {
 				SetDParam(0, year);
 				DrawStringRightAlignedUnderline(x, 15, STR_7010, TC_FROMSTRING);
-				sum = 0;
-				for (i = 0; i != EXPENSES_END; i++) {
-					/* draw one row in the price column */
-					cost = (*tbl)[i];
-					if (cost != 0) {
-						sum += cost;
 
+				Money sum = 0;
+				Money subtotal = 0;
+
+				int y = 27;
+
+				for (int i = 0; i < _expenses_list_types[type].length; i++) {
+					ExpensesType et = _expenses_list_types[type].et[i];
+					Money cost;
+
+					if (et == INVALID_EXPENSES) {
+						GfxFillRect(x - 75, y, x, y, 215);
+						cost = subtotal;
+						subtotal = 0;
+						y += 2;
+					} else {
+						cost = (*tbl)[et];
+						subtotal += cost;
+						sum += cost;
+					}
+
+					if (cost != 0 || et == INVALID_EXPENSES) {
 						str = STR_701E;
 						if (cost < 0) { cost = -cost; str++; }
 						SetDParam(0, cost);
-						DrawStringRightAligned(x, 27 + i * 10, str, TC_FROMSTRING);
+						DrawStringRightAligned(x, y, str, TC_FROMSTRING);
 					}
+					y += (et == INVALID_EXPENSES) ? 20 : 10;
 				}
 
 				str = STR_701E;
 				if (sum < 0) { sum = -sum; str++; }
 				SetDParam(0, sum);
-				DrawStringRightAligned(x, 27 + EXPENSES_END * 10 + 2, str, TC_FROMSTRING);
+				DrawStringRightAligned(x, y + 2, str, TC_FROMSTRING);
 
-				GfxFillRect(x - 75, 27 + 10 * EXPENSES_END, x, 27 + 10 * EXPENSES_END, 215);
+				GfxFillRect(x - 75, y, x, y, 215);
 				x += 95;
 			}
 			year++;
 			tbl--;
 		} while (--j != 0);
 
-		y = 27 + 10 * EXPENSES_END + 14;
+		y += 14;
 
 		/* draw max loan aligned to loan below (y += 10) */
 		SetDParam(0, _economy.max_loan);
@@ -112,19 +190,21 @@ static void DrawCompanyEconomyStats(const Company *c, bool small)
 
 enum CompanyFinancesWindowWidgets {
 	CFW_WIDGET_TOGGLE_SIZE   = 2,
+	CFW_WIDGET_EXPS_PANEL    = 4,
+	CFW_WIDGET_TOTAL_PANEL   = 5,
 	CFW_WIDGET_INCREASE_LOAN = 6,
 	CFW_WIDGET_REPAY_LOAN    = 7,
 };
 
 static const Widget _company_finances_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   380,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   395,   406,     0,    13, 0x0,                    STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,    14, 39 + 10 * EXPENSES_END, 0x0,    STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406, 40 + 10 * EXPENSES_END, 73 + 10 * EXPENSES_END, 0x0, STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   202, 74 + 10 * EXPENSES_END, 85 + 10 * EXPENSES_END, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   203,   406, 74 + 10 * EXPENSES_END, 85 + 10 * EXPENSES_END, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_GREY,     0,    10,       0,      13, STR_00C5,               STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,  COLOUR_GREY,    11,   379,       0,      13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,  COLOUR_GREY,   380,   394,       0,      13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_GREY,   395,   406,       0,      13, 0x0,                    STR_STICKY_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406,      14, 13 + 10, 0x0,    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_GREY,     0,   406, 14 + 10, 47 + 10, 0x0, STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,     0,   202, 48 + 10, 59 + 10, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,  COLOUR_GREY,   203,   406, 48 + 10, 59 + 10, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
 };
 
@@ -166,8 +246,19 @@ struct CompanyFinancesWindow : Window {
 		CompanyID company = (CompanyID)this->window_number;
 		const Company *c = GetCompany(company);
 
+		if (!small) {
+			int type = _settings_client.gui.expenses_layout;
+			int height = this->widget[CFW_WIDGET_EXPS_PANEL].bottom - this->widget[CFW_WIDGET_EXPS_PANEL].top + 1;
+			if (_expenses_list_types[type].height + 26 != height) {
+				this->SetDirty();
+				ResizeWindowForWidget(this, CFW_WIDGET_EXPS_PANEL, 0, _expenses_list_types[type].height - height + 26);
+				this->SetDirty();
+				return;
+			}
+		}
+
 		/* Recheck the size of the window as it might need to be resized due to the local company changing */
-		int new_height = ((company != _local_company) ? 0 : 12) + ((this->small != 0) ? 48 : 74 + 10 * EXPENSES_END);
+		int new_height = this->widget[(company == _local_company) ? CFW_WIDGET_INCREASE_LOAN : CFW_WIDGET_TOTAL_PANEL].bottom + 1;
 		if (this->height != new_height) {
 			/* Make window dirty before and after resizing */
 			this->SetDirty();
@@ -220,7 +311,7 @@ struct CompanyFinancesWindow : Window {
 };
 
 static const WindowDesc _company_finances_desc = {
-	WDP_AUTO, WDP_AUTO, 407, 86 + 10 * EXPENSES_END, 407, 86 + 10 * EXPENSES_END,
+	WDP_AUTO, WDP_AUTO, 407, 60 + 10, 407, 60 + 10,
 	WC_FINANCES, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_company_finances_widgets,

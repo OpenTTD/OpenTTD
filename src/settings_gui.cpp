@@ -1001,6 +1001,7 @@ static PatchEntry _patches_ui_display[] = {
 	PatchEntry("gui.loading_indicators"),
 	PatchEntry("gui.liveries"),
 	PatchEntry("gui.show_track_reservation"),
+	PatchEntry("gui.expenses_layout"),
 };
 /** Display options sub-page */
 static PatchPage _patches_ui_display_page = {_patches_ui_display, lengthof(_patches_ui_display)};

@@ -1521,6 +1521,7 @@ const SettingDesc _patch_settings[] = {
 	 SDTC_BOOL(gui.station_dragdrop,                     S,  0,  true,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.station_show_coverage,                S,  0, false,                        STR_NULL,                                       NULL),
 	 SDTC_BOOL(gui.persistent_buildingtools,             S,  0, false,                        STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS,    NULL),
+	 SDTC_BOOL(gui.expenses_layout,                      S,  0, false,                        STR_CONFIG_PATCHES_EXPENSES_LAYOUT,             RedrawScreen),
 
 	  SDTC_VAR(gui.console_backlog_timeout,  SLE_UINT16, S,  0,   100,       10,    65500, 0, STR_NULL,                                       NULL),
 	  SDTC_VAR(gui.console_backlog_length,   SLE_UINT16, S,  0,   100,       10,    65500, 0, STR_NULL,                                       NULL),
