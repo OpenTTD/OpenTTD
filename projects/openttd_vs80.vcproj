@@ -90,7 +90,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="NDEBUG"
-				Culture="1053"
+				Culture="2057"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -188,7 +188,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_DEBUG"
-				Culture="1053"
+				Culture="2057"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -299,7 +299,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="NDEBUG"
-				Culture="1053"
+				Culture="2057"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -400,7 +400,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_DEBUG"
-				Culture="1053"
+				Culture="2057"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -3451,10 +3451,6 @@
 				</FileConfiguration>
 			</File>
 		</Filter>
-		<File
-			RelativePath=".\..\media\mainicon.ico"
-			>
-		</File>
 		<File
 			RelativePath=".\..\media\openttd.ico"
 			>
