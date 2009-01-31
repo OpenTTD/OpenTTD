@@ -3,7 +3,6 @@
 /** @file map_sl.cpp Code handling saving and loading of map */
 
 #include "../stdafx.h"
-#include "../tile_type.h"
 #include "../map_func.h"
 #include "../core/alloc_type.hpp"
 #include "../core/bitmath_func.hpp"

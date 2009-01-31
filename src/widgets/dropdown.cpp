@@ -3,17 +3,13 @@
 /** @file dropdown.cpp Implementation of the dropdown widget. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../strings_type.h"
 #include "../window_gui.h"
 #include "../strings_func.h"
 #include "../gfx_func.h"
 #include "../window_func.h"
 #include "../core/math_func.hpp"
 #include "dropdown_type.h"
-#include "dropdown_func.h"
 
-#include "../table/sprites.h"
 #include "table/strings.h"
 
 void DropDownListItem::Draw(int x, int y, uint width, uint height, bool sel, int bg_colour) const

@@ -3,7 +3,6 @@
 /** @file ai_industrylist.cpp Implementation of AIIndustryList and friends. */
 
 #include "ai_industrylist.hpp"
-#include "../../openttd.h"
 #include "../../tile_type.h"
 #include "../../industry.h"
 

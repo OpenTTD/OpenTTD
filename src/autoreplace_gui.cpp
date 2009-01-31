@@ -3,29 +3,21 @@
 /** @file autoreplace_gui.cpp GUI for autoreplace handling. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "gui.h"
 #include "command_func.h"
-#include "variables.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "group.h"
 #include "rail.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "vehicle_func.h"
 #include "autoreplace_func.h"
 #include "gfx_func.h"
 #include "company_func.h"
 #include "widgets/dropdown_type.h"
-#include "widgets/dropdown_func.h"
-#include "engine_func.h"
 #include "engine_base.h"
 #include "window_gui.h"
 #include "engine_gui.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 void DrawEngineList(VehicleType type, int x, int r, int y, const GUIEngineList *eng_list, uint16 min, uint16 max, EngineID selected_id, int count_location, GroupID selected_group);

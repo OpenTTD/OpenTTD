@@ -3,33 +3,17 @@
 /** @file newgrf_engine.cpp NewGRF handling of engines. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
 #include "debug.h"
-#include "engine_func.h"
-#include "engine_base.h"
 #include "train.h"
 #include "company_func.h"
-#include "company_base.h"
-#include "station_base.h"
-#include "airport.h"
-#include "newgrf.h"
-#include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
-#include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
-#include "newgrf_cargo.h"
-#include "cargotype.h"
 #include "date_func.h"
 #include "vehicle_func.h"
 #include "core/random_func.hpp"
-#include "direction_func.h"
-#include "rail_map.h"
-#include "rail.h"
-#include "settings_type.h"
 #include "aircraft.h"
 #include "core/smallmap_type.hpp"
-
+#include "settings_type.h"
 
 int _traininfo_vehicle_pitch = 0;
 int _traininfo_vehicle_width = 29;

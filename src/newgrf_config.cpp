@@ -3,13 +3,9 @@
 /** @file newgrf_config.cpp Finding NewGRFs and configuring them. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
-#include "variables.h"
 #include "md5.h"
 #include "newgrf.h"
-#include "newgrf_config.h"
-#include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "gamelog.h"
 #include "network/network_type.h"

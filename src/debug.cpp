@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <stdarg.h>
-#include "openttd.h"
 #include "console_func.h"
 #include "debug.h"
 #include "string_func.h"

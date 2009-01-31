@@ -3,18 +3,12 @@
 /** @file ai_order.cpp Implementation of AIOrder. */
 
 #include "ai_order.hpp"
-#include "ai_map.hpp"
 #include "ai_vehicle.hpp"
 #include "../ai_instance.hpp"
-#include "../../openttd.h"
 #include "../../debug.h"
 #include "../../vehicle_base.h"
 #include "../../depot_base.h"
-#include "../../landscape.h"
-#include "../../rail_map.h"
-#include "../../road_map.h"
 #include "../../station_map.h"
-#include "../../water_map.h"
 #include "../../waypoint.h"
 
 /**

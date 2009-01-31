@@ -7,7 +7,7 @@
 #include "gui.h"
 #include "window_gui.h"
 #include "viewport_func.h"
-#include "news_func.h"
+#include "news_type.h"
 #include "settings_type.h"
 #include "transparency.h"
 #include "strings_func.h"
@@ -17,11 +17,9 @@
 #include "sound_func.h"
 #include "string_func.h"
 #include "widgets/dropdown_func.h"
-#include "map_func.h"
 #include "statusbar_gui.h"
 #include "company_manager_face.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 #define NB_WIDG_PER_SETTING 4

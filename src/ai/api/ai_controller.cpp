@@ -3,18 +3,12 @@
 /** @file ai_controller.cpp Implementation of AIControler. */
 
 #include "../../stdafx.h"
-#include "../../openttd.h"
-#include "../../company_func.h"
-#include "../../core/alloc_func.hpp"
 #include "../../string_func.h"
-#include "../../settings_type.h"
 #include "../../company_base.h"
-#include "../../saveload/saveload.h"
 #include "table/strings.h"
 
 #include "../ai.hpp"
 #include "ai_controller.hpp"
-#include "../ai_info.hpp"
 #include "../ai_storage.hpp"
 #include "../ai_instance.hpp"
 #include "../ai_config.hpp"

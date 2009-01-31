@@ -25,7 +25,6 @@
 #include "../strings_func.h"
 #include "../gfx_func.h"
 #include "../core/alloc_func.hpp"
-#include "../functions.h"
 #include "../core/endian_func.hpp"
 #include "../vehicle_base.h"
 #include "../company_func.h"
@@ -37,10 +36,7 @@
 
 #include "table/strings.h"
 
-#include "saveload.h"
 #include "saveload_internal.h"
-
-#include <list>
 
 extern const uint16 SAVEGAME_VERSION = 112;
 
@@ -1160,7 +1156,6 @@ static void UninitNoComp()
  ********** START OF MEMORY CODE (in ram)****
  ********************************************/
 
-#include "../table/sprites.h"
 #include "../gui.h"
 
 struct ThreadedSave {

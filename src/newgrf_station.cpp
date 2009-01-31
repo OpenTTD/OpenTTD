@@ -3,21 +3,14 @@
 /** @file newgrf_station.cpp Functions for dealing with station classes and custom stations. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "variables.h"
-#include "tile_cmd.h"
 #include "landscape.h"
 #include "debug.h"
-#include "sprite.h"
-#include "station_base.h"
 #include "station_map.h"
-#include "newgrf.h"
-#include "newgrf_callbacks.h"
 #include "newgrf_commons.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_sound.h"
-#include "cargotype.h"
 #include "town.h"
 #include "newgrf_town.h"
 #include "gfx_func.h"
@@ -26,10 +19,8 @@
 #include "animated_tile_func.h"
 #include "functions.h"
 #include "tunnelbridge_map.h"
-#include "rail_map.h"
 #include "spritecache.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 StationClass _station_classes[STAT_CLASS_MAX];

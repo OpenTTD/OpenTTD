@@ -5,18 +5,13 @@
 #if defined(ENABLE_NETWORK)
 
 #include "../stdafx.h"
-#include "../debug.h"
 #include "../rev.h"
-#include "../core/alloc_func.hpp"
-#include "../core/math_func.hpp"
-#include "../newgrf_config.h"
 #include "../fileio_func.h"
 #include "../string_func.h"
 #include "../ai/ai.hpp"
 #include "../window_func.h"
 #include "../gui.h"
 #include "../variables.h"
-#include "core/host.h"
 #include "network_content.h"
 
 #include "table/strings.h"

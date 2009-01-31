@@ -2,11 +2,9 @@
 
 /** @file ai_event.cpp Implementation of AIEvent. */
 
-#include "ai_event.hpp"
 #include "ai_event_types.hpp"
 
 #include <queue>
-#include <set>
 
 struct AIEventData {
 	std::queue<AIEvent *> stack;

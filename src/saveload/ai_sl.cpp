@@ -3,12 +3,10 @@
 /** @file ai_sl.cpp Handles the saveload part of the AIs */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../debug.h"
 #include "saveload.h"
-#include "../settings_type.h"
 #include "../string_func.h"
 #include "../ai/ai.hpp"
 #include "../ai/ai_config.hpp"

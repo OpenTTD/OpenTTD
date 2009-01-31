@@ -3,19 +3,13 @@
 /** @file signs_gui.cpp The GUI for signs. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "gui.h"
-#include "textbuf_gui.h"
-#include "window_gui.h"
 #include "company_gui.h"
 #include "company_func.h"
 #include "signs_base.h"
 #include "signs_func.h"
 #include "debug.h"
-#include "variables.h"
 #include "command_func.h"
 #include "strings_func.h"
-#include "core/alloc_func.hpp"
 #include "window_func.h"
 #include "map_func.h"
 #include "gfx_func.h"
@@ -25,7 +19,6 @@
 #include "string_func.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 struct SignList {
 	typedef GUIList<const Sign *> GUISignList;

@@ -10,7 +10,6 @@
 #include "../window_func.h"
 #include "../window_gui.h"
 #include "../gui.h"
-#include "../core/smallvec_type.hpp"
 #include "../ai/ai.hpp"
 #include "../gfxinit.h"
 #include "../sortlist_type.h"

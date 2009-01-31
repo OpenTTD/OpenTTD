@@ -3,12 +3,10 @@
 /** @file subsidy_gui.cpp GUI for subsidies. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "station_base.h"
 #include "industry.h"
 #include "town.h"
 #include "economy_func.h"
-#include "variables.h"
 #include "cargotype.h"
 #include "window_gui.h"
 #include "strings_func.h"

@@ -2,18 +2,8 @@
 
 /** @file pbs.cpp */
 #include "stdafx.h"
-#include "openttd.h"
 #include "pbs.h"
-#include "rail_map.h"
-#include "road_map.h"
-#include "station_map.h"
-#include "tunnelbridge_map.h"
 #include "functions.h"
-#include "debug.h"
-#include "direction_func.h"
-#include "settings_type.h"
-#include "road_func.h"
-#include "vehicle_base.h"
 #include "vehicle_func.h"
 #include "yapf/follow_track.hpp"
 

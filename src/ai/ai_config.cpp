@@ -8,7 +8,6 @@
 #include "../core/random_func.hpp"
 #include "ai.hpp"
 #include "ai_config.hpp"
-#include "ai_info.hpp"
 
 void AIConfig::ChangeAI(const char *name, int version)
 {

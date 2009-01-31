@@ -12,7 +12,6 @@
 
 #include "table/strings.h"
 
-#include "saveload.h"
 #include "saveload_internal.h"
 #include "oldloader.h"
 

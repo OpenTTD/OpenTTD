@@ -3,12 +3,9 @@
 /** @file timetable_cmd.cpp Commands related to time tabling. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
 #include "command_func.h"
 #include "functions.h"
 #include "window_func.h"
-#include "vehicle_func.h"
 #include "vehicle_base.h"
 #include "settings_type.h"
 

@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "debug.h"
-#include "direction_func.h"
 #include "core/bitmath_func.hpp"
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"

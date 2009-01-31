@@ -3,11 +3,8 @@
 /** @file articulated_vehicles.cpp Implementation of articulated vehicles. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "articulated_vehicles.h"
 #include "train.h"
 #include "roadveh.h"
-#include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "vehicle_func.h"
 

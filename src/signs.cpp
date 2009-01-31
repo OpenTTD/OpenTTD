@@ -3,13 +3,11 @@
 /** @file signs.cpp Handling of signs. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "landscape.h"
 #include "company_func.h"
 #include "signs_base.h"
 #include "signs_func.h"
 #include "command_func.h"
-#include "variables.h"
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "tilehighlight_func.h"

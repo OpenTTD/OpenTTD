@@ -4,12 +4,9 @@
 
 #include "stdafx.h"
 #include "depot_base.h"
-#include "landscape.h"
 #include "order_func.h"
 #include "window_func.h"
 #include "oldpool_func.h"
-
-#include "table/strings.h"
 
 DEFINE_OLD_POOL_GENERIC(Depot, Depot)
 

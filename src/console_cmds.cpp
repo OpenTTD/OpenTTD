@@ -22,7 +22,6 @@
 #include "strings_func.h"
 #include "viewport_func.h"
 #include "window_func.h"
-#include "functions.h"
 #include "map_func.h"
 #include "date_func.h"
 #include "vehicle_func.h"

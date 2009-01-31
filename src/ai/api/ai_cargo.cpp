@@ -3,7 +3,6 @@
 /** @file ai_cargo.cpp Implementation of AICargo. */
 
 #include "ai_cargo.hpp"
-#include "../../openttd.h"
 #include "../../cargotype.h"
 #include "../../economy_func.h"
 #include "../../core/alloc_func.hpp"

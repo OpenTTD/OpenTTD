@@ -7,8 +7,6 @@
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
-#include "network.h"
-#include "network_type.h"
 #include "../date_func.h"
 #include "../gfx_func.h"
 #include "../strings_func.h"
@@ -16,12 +14,9 @@
 #include "../console_func.h"
 #include "../video/video_driver.hpp"
 #include "../table/sprites.h"
-#include "../window_gui.h"
-#include "../textbuf_gui.h"
 #include "../querystring_gui.h"
 #include "../town.h"
 #include "../window_func.h"
-#include "../settings_type.h"
 #include "network_internal.h"
 #include "network_client.h"
 

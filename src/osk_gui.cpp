@@ -3,10 +3,6 @@
 /** @file osk_gui.cpp The On Screen Keyboard GUI */
 
 #include "stdafx.h"
-#include "openttd.h"
-
-#include "textbuf_gui.h"
-#include "window_gui.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "debug.h"

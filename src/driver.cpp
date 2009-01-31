@@ -3,10 +3,7 @@
 /** @file driver.cpp Base for all driver handling. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
-#include "driver.h"
-
 #include "sound/sound_driver.hpp"
 #include "music/music_driver.hpp"
 #include "video/video_driver.hpp"

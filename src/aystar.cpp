@@ -19,7 +19,6 @@
  */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "aystar.h"
 #include "core/alloc_func.hpp"
 

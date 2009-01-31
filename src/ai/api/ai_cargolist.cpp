@@ -4,7 +4,6 @@
 
 #include "ai_cargolist.hpp"
 #include "ai_industry.hpp"
-#include "../../openttd.h"
 #include "../../cargotype.h"
 #include "../../tile_type.h"
 #include "../../industry.h"

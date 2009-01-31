@@ -7,7 +7,6 @@
 #include "../variables.h"
 #include "../core/random_func.hpp"
 #include "../openttd.h"
-#include "../tile_type.h"
 #include "../zoom_func.h"
 #include "../vehicle_func.h"
 #include "../window_gui.h"

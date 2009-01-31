@@ -3,14 +3,11 @@
 /** @file waypoint_gui.cpp Handling of waypoints gui. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "window_gui.h"
 #include "gui.h"
 #include "textbuf_gui.h"
 #include "vehicle_gui.h"
-#include "waypoint.h"
 #include "viewport_func.h"
-#include "string_func.h"
 #include "strings_func.h"
 #include "gfx_func.h"
 #include "command_func.h"

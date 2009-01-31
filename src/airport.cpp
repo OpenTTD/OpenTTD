@@ -3,7 +3,6 @@
 /** @file airport.cpp Functions related to airports. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
 #include "airport.h"
 #include "airport_movement.h"

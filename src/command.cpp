@@ -9,7 +9,6 @@
 #include "gui.h"
 #include "command_func.h"
 #include "network/network.h"
-#include "variables.h"
 #include "genworld.h"
 #include "newgrf_storage.h"
 #include "strings_func.h"

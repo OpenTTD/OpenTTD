@@ -2,25 +2,11 @@
 
 /** @file ai_object.cpp Implementation of AIObject. */
 
-#include "ai_object.hpp"
 #include "ai_log.hpp"
-#include "ai_error.hpp"
 #include "table/strings.h"
-#include "../../openttd.h"
-#include "../../command_func.h"
-#include "../../map_func.h"
-#include "../../network/network.h"
-#include "../../company_func.h"
-#include "../../signs_func.h"
-#include "../../tunnelbridge.h"
-#include "../../vehicle_func.h"
-#include "../../group.h"
 #include "../ai.hpp"
-#include "ai_controller.hpp"
 #include "../ai_storage.hpp"
 #include "../ai_instance.hpp"
-
-#include <vector>
 
 static AIStorage *GetStorage()
 {

@@ -7,7 +7,6 @@
 #include "ai_cargo.hpp"
 #include "ai_error.hpp"
 #include "../../command_type.h"
-#include "../../openttd.h"
 #include "../../town.h"
 #include "../../strings_func.h"
 #include "../../core/alloc_func.hpp"

@@ -6,20 +6,15 @@
 #include "openttd.h"
 #include "saveload/saveload.h"
 #include "core/alloc_func.hpp"
-#include "core/bitmath_func.hpp"
-#include "core/math_func.hpp"
-#include "network/core/config.h"
 #include "variables.h"
 #include "string_func.h"
 #include "settings_type.h"
-#include "newgrf_config.h"
 #include "gamelog.h"
 #include "gamelog_internal.h"
 #include "console_func.h"
 #include "debug.h"
 #include "rev.h"
 
-#include <string.h>
 #include <stdarg.h>
 
 extern const uint16 SAVEGAME_VERSION;  ///< current savegame version

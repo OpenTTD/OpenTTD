@@ -4,18 +4,13 @@
 
 #include "stdafx.h"
 #include <math.h>
-#include "openttd.h"
 #include "clear_map.h"
-#include "variables.h"
 #include "void_map.h"
-#include "tgp.h"
 #include "genworld.h"
 #include "core/alloc_func.hpp"
 #include "core/random_func.hpp"
-#include "settings_type.h"
 #include "landscape_type.h"
-
-#include "table/strings.h"
+#include "settings_type.h"
 
 /*
  *

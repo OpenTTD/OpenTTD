@@ -3,15 +3,12 @@
 /** @file sound.cpp Handling of playing sounds. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "landscape.h"
 #include "mixer.h"
-#include "sound_func.h"
 #include "fileio_func.h"
 #include "newgrf_sound.h"
 #include "fios.h"
 #include "window_gui.h"
-#include "core/alloc_func.hpp"
 #include "map_func.h"
 #include "vehicle_base.h"
 #include "debug.h"

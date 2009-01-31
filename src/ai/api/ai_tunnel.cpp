@@ -3,13 +3,9 @@
 /** @file ai_tunnel.cpp Implementation of AITunnel. */
 
 #include "ai_tunnel.hpp"
-#include "ai_map.hpp"
 #include "ai_rail.hpp"
 #include "../ai_instance.hpp"
-#include "../../openttd.h"
-#include "../../landscape.h"
 #include "../../tunnel_map.h"
-#include "../../road_type.h"
 #include "../../command_func.h"
 #include "../../tunnelbridge.h"
 #include "../../road_func.h"

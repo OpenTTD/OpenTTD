@@ -3,21 +3,14 @@
 /** @file gfxinit.cpp Initializing of the (GRF) graphics. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
-#include "gfxinit.h"
 #include "spritecache.h"
 #include "fileio_func.h"
 #include "fios.h"
 #include "newgrf.h"
 #include "md5.h"
-#include "variables.h"
 #include "fontcache.h"
 #include "gfx_func.h"
-#include "core/alloc_func.hpp"
-#include "core/bitmath_func.hpp"
-#include "core/smallvec_type.hpp"
-#include <string.h>
 #include "settings_type.h"
 #include "string_func.h"
 #include "ini_type.h"

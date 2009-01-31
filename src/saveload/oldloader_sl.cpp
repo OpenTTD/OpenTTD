@@ -3,7 +3,6 @@
 /** @file oldloader_sl.cpp Chunks and fix-ups for TTO/TTD/TTDP savegames. TTO loader code is based on SVXConverter by Roman Vetter. */
 
 #include "../stdafx.h"
-#include "../station_map.h"
 #include "../town.h"
 #include "../industry.h"
 #include "../company_func.h"
@@ -19,9 +18,7 @@
 #include "../date_func.h"
 #include "../vehicle_func.h"
 #include "../variables.h"
-#include "../strings_func.h"
 #include "../effectvehicle_base.h"
-#include "../string_func.h"
 #include "../core/mem_func.hpp"
 #include "../core/alloc_type.hpp"
 #include "saveload_internal.h"

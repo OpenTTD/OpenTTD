@@ -4,13 +4,11 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../openttd.h"
 #include "../string_func.h"
 #include "../fileio_func.h"
 #include "../fios.h"
 #include "../network/network.h"
 #include "../core/random_func.hpp"
-#include <sys/types.h>
 #include <sys/stat.h>
 
 #include <squirrel.h>

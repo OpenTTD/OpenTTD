@@ -3,12 +3,9 @@
 /** @file airport_gui.cpp The GUI for airports. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "window_gui.h"
-#include "gui.h"
 #include "station_gui.h"
 #include "terraform_gui.h"
-#include "command_func.h"
 #include "airport.h"
 #include "sound_func.h"
 #include "window_func.h"
@@ -17,7 +14,6 @@
 #include "viewport_func.h"
 #include "gfx_func.h"
 #include "company_func.h"
-#include "order_func.h"
 #include "station_type.h"
 #include "tilehighlight_func.h"
 #include "company_base.h"

@@ -3,17 +3,13 @@
 /** @file ai_info.cpp Implementation of AIFileInfo */
 
 #include "../stdafx.h"
-#include "../core/alloc_func.hpp"
 
 #include <squirrel.h>
 #include "../script/squirrel.hpp"
 #include "../script/squirrel_helper.hpp"
-#include "../script/squirrel_class.hpp"
-#include "../script/squirrel_std.hpp"
 #include "ai.hpp"
 #include "ai_info.hpp"
 #include "ai_scanner.hpp"
-#include "api/ai_controller.hpp"
 #include "../settings_type.h"
 #include "../openttd.h"
 

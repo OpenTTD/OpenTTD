@@ -3,8 +3,6 @@
 /** @file autoreplace.cpp Management of replacement lists. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
 #include "command_func.h"
 #include "group.h"
 #include "autoreplace_base.h"

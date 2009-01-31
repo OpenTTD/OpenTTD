@@ -4,9 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "bridge_map.h"
 #include "clear_map.h"
-#include "tile_cmd.h"
 #include "landscape.h"
 #include "tree_map.h"
 #include "viewport_func.h"
@@ -19,7 +17,6 @@
 #include "functions.h"
 #include "company_func.h"
 #include "sound_func.h"
-#include "settings_type.h"
 #include "water_map.h"
 #include "water.h"
 #include "landscape_type.h"

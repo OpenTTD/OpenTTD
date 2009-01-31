@@ -3,7 +3,6 @@
 /** @file ai_industrytypelist.cpp Implementation of AIIndustryTypeList. */
 
 #include "ai_industrytypelist.hpp"
-#include "../../openttd.h"
 #include "../../tile_type.h"
 #include "../../industry.h"
 

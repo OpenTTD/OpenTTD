@@ -3,21 +3,16 @@
 /** @file spritecache.cpp Caching of sprites. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
-#include "debug.h"
-#include "spritecache.h"
+#include "gfx_type.h"
 #include "fileio_func.h"
 #include "spriteloader/grf.hpp"
 #include "core/alloc_func.hpp"
-#include "core/math_func.hpp"
 #include "gfx_func.h"
 #ifdef WITH_PNG
 #include "spriteloader/png.hpp"
 #endif /* WITH_PNG */
 #include "blitter/factory.hpp"
 #include "core/math_func.hpp"
-#include "core/enum_type.hpp"
 
 #include "table/sprites.h"
 

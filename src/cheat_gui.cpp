@@ -3,9 +3,8 @@
 /** @file cheat_gui.cpp GUI related to cheating. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "command_func.h"
-#include "cheat_func.h"
+#include "cheat_type.h"
 #include "company_base.h"
 #include "company_func.h"
 #include "gfx_func.h"

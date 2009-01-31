@@ -3,7 +3,6 @@
 /** @file queue.cpp Implementation of the Queue/Hash. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "queue.h"
 #include "core/alloc_func.hpp"
 

@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "bridge_map.h"
 #include "clear_map.h"
 #include "company_func.h"
 #include "company_base.h"
@@ -22,10 +21,10 @@
 #include "unmovable_map.h"
 #include "textbuf_gui.h"
 #include "genworld.h"
-#include "settings_type.h"
 #include "tree_map.h"
 #include "landscape_type.h"
 #include "tilehighlight_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

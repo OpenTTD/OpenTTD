@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "engine_func.h"
 #include "engine_base.h"
 #include "company_func.h"
 #include "company_gui.h"
@@ -22,23 +21,18 @@
 #include "tile_map.h"
 #include "strings_func.h"
 #include "gfx_func.h"
-#include "functions.h"
 #include "date_func.h"
-#include "vehicle_func.h"
 #include "sound_func.h"
 #include "core/alloc_func.hpp"
-#include "core/sort_func.hpp"
 #include "autoreplace_func.h"
 #include "autoreplace_gui.h"
 #include "string_func.h"
 #include "road_func.h"
 #include "rail.h"
 #include "sprite.h"
-#include "debug.h"
 #include "oldpool_func.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 CompanyByte _local_company;
 CompanyByte _current_company;

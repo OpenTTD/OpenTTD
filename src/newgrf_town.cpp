@@ -3,11 +3,7 @@
 /** @file newgrf_town.cpp Implementation of the town part of NewGRF houses. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "settings_type.h"
 #include "debug.h"
-#include "core/bitmath_func.hpp"
-#include "core/math_func.hpp"
 #include "town.h"
 
 /** This function implements the town variables that newGRF defines.

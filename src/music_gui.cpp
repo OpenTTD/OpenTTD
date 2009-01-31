@@ -5,7 +5,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "fileio_func.h"
-#include "variables.h"
 #include "music.h"
 #include "music/music_driver.hpp"
 #include "window_gui.h"

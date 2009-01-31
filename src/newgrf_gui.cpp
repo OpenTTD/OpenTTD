@@ -3,16 +3,12 @@
 /** @file newgrf_gui.cpp GUI to change NewGRF settings. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "textbuf_gui.h"
 #include "newgrf.h"
-#include "newgrf_config.h"
 #include "strings_func.h"
 #include "window_func.h"
-#include "core/alloc_func.hpp"
 #include "string_func.h"
 #include "gfx_func.h"
 #include "gamelog.h"

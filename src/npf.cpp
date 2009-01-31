@@ -3,28 +3,18 @@
 /** @file npf.cpp Implementation of the NPF pathfinder. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "npf.h"
-#include "bridge_map.h"
 #include "debug.h"
-#include "tile_cmd.h"
-#include "bridge.h"
 #include "landscape.h"
-#include "aystar.h"
-#include "pathfind.h"
-#include "station_base.h"
-#include "station_map.h"
 #include "depot_base.h"
 #include "depot_map.h"
-#include "tunnel_map.h"
 #include "network/network.h"
-#include "water_map.h"
 #include "tunnelbridge_map.h"
 #include "functions.h"
 #include "vehicle_base.h"
-#include "settings_type.h"
 #include "tunnelbridge.h"
 #include "pbs.h"
+#include "settings_type.h"
 
 static AyStar _npf_aystar;
 

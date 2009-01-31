@@ -9,15 +9,12 @@
 
 #include "../stdafx.h"
 #include "../debug.h"
-#include "../newgrf_config.h"
 #include "../core/alloc_func.hpp"
 #include "../thread.h"
 #include "../string_func.h"
 #include "network_internal.h"
-#include "core/game.h"
 #include "network_udp.h"
 #include "network_gamelist.h"
-#include "network_gui.h"
 
 NetworkGameList *_network_game_list = NULL;
 

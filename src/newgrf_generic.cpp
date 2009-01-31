@@ -3,16 +3,9 @@
 /** @file newgrf_generic.cpp Handling of generic feature callbacks. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
-#include "landscape.h"
 #include "debug.h"
 #include "newgrf.h"
-#include "newgrf_callbacks.h"
-#include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
-#include "newgrf_generic.h"
-#include "tile_map.h"
 #include <list>
 
 

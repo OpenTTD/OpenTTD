@@ -3,20 +3,16 @@
 /** @file fileio.cpp Standard In/Out file operations */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "fileio_func.h"
 #include "variables.h"
 #include "debug.h"
 #include "fios.h"
-#include "core/alloc_func.hpp"
-#include "core/math_func.hpp"
 #include "string_func.h"
 #include "tar_type.h"
 #ifdef WIN32
 #include <windows.h>
 #else
 #include <pwd.h>
-#include <unistd.h>
 #endif
 #include <sys/stat.h>
 #include <algorithm>

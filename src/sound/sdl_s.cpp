@@ -6,7 +6,6 @@
 
 #include "../stdafx.h"
 
-#include "../driver.h"
 #include "../mixer.h"
 #include "../sdl.h"
 #include "sdl_s.h"

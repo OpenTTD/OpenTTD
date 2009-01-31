@@ -8,13 +8,10 @@
 #ifdef ENABLE_NETWORK
 
 #include "../openttd.h"
-#include "../debug.h"
 #include "../strings_func.h"
-#include "../map_func.h"
 #include "../command_func.h"
 #include "../variables.h"
 #include "../date_func.h"
-#include "../newgrf_config.h"
 #include "network_internal.h"
 #include "network_client.h"
 #include "network_server.h"
@@ -22,18 +19,15 @@
 #include "network_udp.h"
 #include "network_gamelist.h"
 #include "core/udp.h"
-#include "core/tcp.h"
-#include "core/core.h"
 #include "core/host.h"
 #include "network_gui.h"
 #include "../console_func.h"
-#include <stdarg.h> /* va_list */
 #include "../md5.h"
-#include "../texteff.hpp"
 #include "../core/random_func.hpp"
 #include "../window_func.h"
 #include "../string_func.h"
 #include "../company_func.h"
+#include "../company_base.h"
 #include "../settings_type.h"
 #include "../landscape_type.h"
 #include "../rev.h"
@@ -42,7 +36,6 @@
 	#include "../fileio_func.h"
 #endif /* DEBUG_DUMP_COMMANDS */
 #include "table/strings.h"
-#include "../company_base.h"
 #include "../oldpool_func.h"
 
 DECLARE_POSTFIX_INCREMENT(ClientID);

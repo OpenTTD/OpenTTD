@@ -3,10 +3,6 @@
 /** @file dbg_helpers.cpp Helpers for outputting debug information. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../direction_type.h"
-#include "../strings_type.h"
-#include "../rail.h"
 #include "../rail_map.h"
 #include "dbg_helpers.h"
 

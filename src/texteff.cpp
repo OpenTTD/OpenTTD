@@ -4,9 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "landscape.h"
-#include "gfx_func.h"
-#include "variables.h"
+#include "strings_type.h"
 #include "texteff.hpp"
 #include "core/bitmath_func.hpp"
 #include "transparency.h"

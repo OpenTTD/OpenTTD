@@ -3,10 +3,7 @@
 /** @file ai_subsidy.cpp Implementation of AISubsidy. */
 
 #include "ai_subsidy.hpp"
-#include "ai_error.hpp"
-#include "ai_company.hpp"
 #include "ai_date.hpp"
-#include "../../openttd.h"
 #include "../../economy_func.h"
 #include "../../station_base.h"
 #include "../../cargotype.h"

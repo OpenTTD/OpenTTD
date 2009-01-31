@@ -3,21 +3,13 @@
 /** @file ai_rail.cpp Implementation of AIRail. */
 
 #include "ai_rail.hpp"
-#include "ai_object.hpp"
 #include "ai_map.hpp"
-#include "../../openttd.h"
 #include "../../debug.h"
-#include "../../rail_map.h"
-#include "../../road_map.h"
-#include "../../command_type.h"
 #include "../../station_map.h"
 #include "../../company_func.h"
-#include "../../core/math_func.hpp"
 #include "../../waypoint.h"
-#include "../../newgrf.h"
 #include "../../newgrf_generic.h"
 #include "../../newgrf_station.h"
-#include "../../newgrf_callbacks.h"
 
 /* static */ bool AIRail::IsRailTile(TileIndex tile)
 {

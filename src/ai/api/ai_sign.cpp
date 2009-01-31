@@ -5,7 +5,6 @@
 #include "ai_sign.hpp"
 #include "table/strings.h"
 #include "../ai_instance.hpp"
-#include "../../openttd.h"
 #include "../../command_func.h"
 #include "../../core/alloc_func.hpp"
 #include "../../signs_base.h"

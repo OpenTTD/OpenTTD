@@ -4,7 +4,6 @@
 
 #include "ai_gamesettings.hpp"
 #include "../../settings_internal.h"
-#include "../../saveload/saveload.h"
 
 /* static */ bool AIGameSettings::IsValid(const char *setting)
 {

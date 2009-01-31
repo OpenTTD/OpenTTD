@@ -4,17 +4,13 @@
 
 #include "stdafx.h"
 #include "core/alloc_func.hpp"
-#include "string_func.h"
-#include "strings_type.h"
 #include "core/math_func.hpp"
+#include "string_func.h"
 #include "console_internal.h"
 #include "network/network.h"
 #include "network/network_func.h"
-#include "rev.h"
 
 #include <stdarg.h>
-
-#include "table/strings.h"
 
 #define ICON_BUFFER 79
 #define ICON_HISTORY_SIZE 20

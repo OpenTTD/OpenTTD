@@ -3,12 +3,9 @@
 /** @file newgrf_canal.cpp Implementation of NewGRF canals. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
-#include "landscape.h"
+#include "core/overflowsafe_type.hpp"
+#include "tile_type.h"
 #include "debug.h"
-#include "newgrf.h"
-#include "newgrf_callbacks.h"
 #include "newgrf_commons.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_canal.h"

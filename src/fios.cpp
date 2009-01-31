@@ -6,13 +6,9 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "variables.h"
-#include "heightmap.h"
 #include "fios.h"
 #include "fileio_func.h"
-#include "functions.h"
 #include "string_func.h"
-#include <sys/types.h>
 #include <sys/stat.h>
 
 #ifdef WIN32

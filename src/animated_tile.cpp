@@ -3,8 +3,6 @@
 /** @file animated_tile.cpp Everything related to animated tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "landscape.h"
 #include "core/alloc_func.hpp"
 #include "functions.h"
 

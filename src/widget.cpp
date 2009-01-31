@@ -3,13 +3,9 @@
 /** @file widget.cpp Handling of the default/simple widgets. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "core/math_func.hpp"
 #include "company_func.h"
 #include "gfx_func.h"
 #include "window_gui.h"
-#include "window_func.h"
-#include "widgets/dropdown_func.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

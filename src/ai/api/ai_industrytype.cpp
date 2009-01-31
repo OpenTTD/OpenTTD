@@ -4,11 +4,9 @@
 
 #include "ai_industrytype.hpp"
 #include "ai_map.hpp"
-#include "../../openttd.h"
 #include "../../command_type.h"
 #include "../../settings_type.h"
 #include "../../strings_func.h"
-#include "../../tile_type.h"
 #include "../../industry.h"
 
 /* static */ bool AIIndustryType::IsValidIndustryType(IndustryType industry_type)

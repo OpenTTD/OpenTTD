@@ -5,13 +5,10 @@
 #include "ai_industry.hpp"
 #include "ai_cargo.hpp"
 #include "ai_map.hpp"
-#include "../../openttd.h"
 #include "../../tile_type.h"
 #include "../../industry.h"
-#include "../../tile_map.h"
 #include "../../strings_func.h"
 #include "../../station_map.h"
-#include "../../station_func.h"
 #include "table/strings.h"
 
 /* static */ IndustryID AIIndustry::GetMaxIndustryID()

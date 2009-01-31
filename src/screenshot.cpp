@@ -4,15 +4,12 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "debug.h"
 #include "fileio_func.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
-#include "core/math_func.hpp"
 #include "screenshot.h"
 #include "variables.h"
 #include "blitter/factory.hpp"
-#include "strings_func.h"
 #include "zoom_func.h"
 #include "core/alloc_func.hpp"
 #include "core/endian_func.hpp"
@@ -20,7 +17,6 @@
 #include "saveload/saveload.h"
 #include "company_func.h"
 
-#include "table/strings.h"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;

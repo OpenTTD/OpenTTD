@@ -3,21 +3,12 @@
 /** @file signal.cpp functions related to rail signals updating */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
-#include "tile_cmd.h"
-#include "rail_map.h"
-#include "road_map.h"
 #include "station_map.h"
 #include "tunnelbridge_map.h"
 #include "vehicle_func.h"
-#include "train.h"
-#include "newgrf_station.h"
+#include "vehicle_base.h"
 #include "functions.h"
-#include "track_type.h"
-#include "track_func.h"
-#include "signal_func.h"
-#include "company_func.h"
 
 
 /** these are the maximums used for updating signal blocks */

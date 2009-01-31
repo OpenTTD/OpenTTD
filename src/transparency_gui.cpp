@@ -4,9 +4,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "gui.h"
 #include "window_gui.h"
-#include "variables.h"
 #include "transparency.h"
 #include "sound_func.h"
 

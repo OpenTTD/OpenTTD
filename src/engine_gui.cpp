@@ -3,16 +3,12 @@
 /** @file engine_gui.cpp GUI to show engine related information. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "gui.h"
 #include "window_gui.h"
 #include "gfx_func.h"
 #include "engine_func.h"
 #include "engine_base.h"
 #include "command_func.h"
-#include "economy_func.h"
-#include "news_func.h"
-#include "variables.h"
+#include "news_type.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
 #include "engine_gui.h"

@@ -3,7 +3,6 @@
 /** @file ai_error.cpp Implementation of AIError. */
 
 #include "ai_error.hpp"
-#include "table/strings.h"
 #include "../../core/bitmath_func.hpp"
 
 AIError::AIErrorMap AIError::error_map = AIError::AIErrorMap();

@@ -9,16 +9,13 @@
 #include "viewport_func.h"
 #include "landscape.h"
 #include "newgrf.h"
-#include "industry.h"
+#include "core/random_func.hpp"
 #include "newgrf_commons.h"
-#include "newgrf_spritegroup.h"
-#include "newgrf_callbacks.h"
 #include "newgrf_industries.h"
 #include "newgrf_industrytiles.h"
 #include "newgrf_sound.h"
 #include "newgrf_text.h"
 #include "industry_map.h"
-#include "clear_map.h"
 #include "sprite.h"
 #include "transparency.h"
 #include "functions.h"
@@ -27,7 +24,6 @@
 #include "animated_tile_func.h"
 #include "water.h"
 
-#include "table/sprites.h"
 #include "table/strings.h"
 
 /**

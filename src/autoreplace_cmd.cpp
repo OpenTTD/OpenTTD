@@ -3,13 +3,9 @@
 /** @file autoreplace_cmd.cpp Deals with autoreplace execution but not the setup */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "company_func.h"
-#include "debug.h"
 #include "vehicle_gui.h"
 #include "train.h"
-#include "aircraft.h"
-#include "roadveh.h"
 #include "rail.h"
 #include "command_func.h"
 #include "engine_base.h"

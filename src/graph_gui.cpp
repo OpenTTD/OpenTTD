@@ -9,17 +9,14 @@
 #include "company_base.h"
 #include "company_gui.h"
 #include "economy_func.h"
-#include "variables.h"
 #include "cargotype.h"
 #include "strings_func.h"
-#include "core/alloc_func.hpp"
 #include "window_func.h"
 #include "date_func.h"
 #include "gfx_func.h"
 #include "sortlist_type.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 /* Bitmasks of company and cargo indices that shouldn't be drawn. */
 static uint _legend_excluded_companies;

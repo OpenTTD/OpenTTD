@@ -12,7 +12,6 @@
 #include "../callback_table.h"
 #include "../core/alloc_func.hpp"
 #include "../string_func.h"
-#include "../date_func.h"
 #include "../company_func.h"
 
 /** Local queue of packets */

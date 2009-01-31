@@ -4,12 +4,7 @@
 
 #include "stdafx.h"
 #include "thread.h"
-#include "debug.h"
-#include "core/alloc_func.hpp"
-#include <stdlib.h>
 #include <pthread.h>
-#include <semaphore.h>
-#include <unistd.h>
 
 /**
  * POSIX pthread version for ThreadObject.

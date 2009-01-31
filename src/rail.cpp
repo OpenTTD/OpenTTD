@@ -3,19 +3,13 @@
 /** @file rail.cpp Implementation of rail specific functions. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "bridge_map.h"
-#include "rail.h"
 #include "station_map.h"
-#include "tunnel_map.h"
 #include "tunnelbridge_map.h"
-#include "settings_type.h"
 #include "date_func.h"
 #include "company_func.h"
 #include "company_base.h"
-#include "engine_func.h"
 #include "engine_base.h"
-
+#include "settings_type.h"
 
 /* XXX: Below 3 tables store duplicate data. Maybe remove some? */
 /* Maps a trackdir to the bit that stores its status in the map arrays, in the

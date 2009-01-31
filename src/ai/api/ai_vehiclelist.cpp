@@ -4,7 +4,6 @@
 
 #include "ai_vehiclelist.hpp"
 #include "ai_station.hpp"
-#include "../../openttd.h"
 #include "../../company_func.h"
 #include "../../vehicle_base.h"
 

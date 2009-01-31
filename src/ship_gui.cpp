@@ -3,21 +3,14 @@
 /** @file ship_gui.cpp GUI for ships. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "ship.h"
-#include "gui.h"
+#include "vehicle_base.h"
 #include "window_gui.h"
-#include "viewport_func.h"
 #include "gfx_func.h"
 #include "vehicle_gui.h"
-#include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
-#include "order_func.h"
 
 #include "table/strings.h"
-#include "table/sprites.h"
 
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 {

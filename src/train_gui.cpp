@@ -3,9 +3,6 @@
 /** @file train_gui.cpp GUI for trains. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "gui.h"
 #include "window_gui.h"
 #include "gfx_func.h"
 #include "command_func.h"
@@ -14,11 +11,9 @@
 #include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
-#include "settings_type.h"
-#include "order_func.h"
-#include "engine_func.h"
 #include "engine_base.h"
 #include "window_func.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"

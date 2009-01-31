@@ -3,13 +3,8 @@
 /** @file ai_instance.cpp Implementation of AIInstance. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../debug.h"
-#include "../company_func.h"
-#include "../core/alloc_func.hpp"
-#include "../string_func.h"
 #include "../settings_type.h"
-#include "../company_base.h"
 #include "../vehicle_base.h"
 #include "../saveload/saveload.h"
 #include "table/strings.h"
@@ -22,7 +17,6 @@
 
 #define DEFINE_SCRIPT_FILES
 
-#include "ai.hpp"
 #include "ai_info.hpp"
 #include "ai_storage.hpp"
 #include "ai_instance.hpp"

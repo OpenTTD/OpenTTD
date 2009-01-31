@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "station_base.h"
-#include "cargopacket.h"
 #include "oldpool_func.h"
 
 /* Initialize the cargopacket-pool */

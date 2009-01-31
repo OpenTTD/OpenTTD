@@ -10,7 +10,6 @@
 #include "window_func.h"
 #include "network/network.h"
 #include "command_func.h"
-#include "command_type.h"
 #include "company_func.h"
 #include "company_base.h"
 #include "settings_type.h"

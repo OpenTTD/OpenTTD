@@ -3,20 +3,16 @@
 /** @file timetable_gui.cpp GUI for time tabling. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
 #include "command_func.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "window_func.h"
 #include "textbuf_gui.h"
-#include "cargotype.h"
 #include "strings_func.h"
 #include "vehicle_base.h"
 #include "string_func.h"
 #include "gfx_func.h"
 #include "company_func.h"
-#include "order_func.h"
 #include "settings_type.h"
 
 #include "table/strings.h"

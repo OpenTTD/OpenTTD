@@ -5,13 +5,10 @@
 #ifdef ENABLE_NETWORK
 
 #include "../stdafx.h"
-#include "../openttd.h" // XXX StringID
 #include "../debug.h"
 #include "../strings_func.h"
 #include "network_internal.h"
-#include "core/tcp.h"
 #include "../vehicle_base.h"
-#include "../vehicle_func.h"
 #include "../date_func.h"
 #include "network_server.h"
 #include "network_udp.h"
@@ -19,12 +16,9 @@
 #include "../command_func.h"
 #include "../saveload/saveload.h"
 #include "../station_base.h"
-#include "../variables.h"
 #include "../genworld.h"
-#include "../core/alloc_func.hpp"
 #include "../fileio_func.h"
 #include "../string_func.h"
-#include "../company_base.h"
 #include "../company_func.h"
 #include "../company_gui.h"
 #include "../settings_type.h"

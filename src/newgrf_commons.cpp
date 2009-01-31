@@ -5,16 +5,12 @@
  */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
 #include "landscape.h"
 #include "town.h"
 #include "industry.h"
 #include "newgrf.h"
 #include "newgrf_commons.h"
-#include "tile_map.h"
 #include "station_map.h"
-#include "settings_type.h"
 #include "tree_map.h"
 
 /** Constructor of generic class

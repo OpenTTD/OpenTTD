@@ -5,14 +5,11 @@
 #include "ai_bridge.hpp"
 #include "ai_rail.hpp"
 #include "../ai_instance.hpp"
-#include "../../openttd.h"
 #include "../../bridge_map.h"
 #include "../../strings_func.h"
 #include "../../core/alloc_func.hpp"
 #include "../../economy_func.h"
 #include "../../settings_type.h"
-#include "../../road_map.h"
-#include "table/strings.h"
 
 /* static */ bool AIBridge::IsValidBridge(BridgeID bridge_id)
 {

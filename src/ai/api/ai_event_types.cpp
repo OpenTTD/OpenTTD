@@ -3,14 +3,9 @@
 /** @file ai_event_types.cpp Implementation of all EventTypes. */
 
 #include "ai_event_types.hpp"
-#include "../../openttd.h"
-#include "../../core/alloc_func.hpp"
 #include "../../strings_func.h"
-#include "../../roadveh.h"
-#include "../../train.h"
-#include "../../ship.h"
-#include "../../aircraft.h"
 #include "../../settings_type.h"
+#include "../../aircraft.h"
 #include "../../articulated_vehicles.h"
 #include "table/strings.h"
 

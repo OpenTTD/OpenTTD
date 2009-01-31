@@ -3,12 +3,9 @@
 /** @file signs_sl.cpp Code handling saving and loading of economy data */
 
 #include "../stdafx.h"
-#include "../strings_func.h"
 #include "../company_func.h"
 #include "../signs_base.h"
-#include "../signs_func.h"
 
-#include "saveload_internal.h"
 #include "saveload.h"
 
 static const SaveLoad _sign_desc[] = {

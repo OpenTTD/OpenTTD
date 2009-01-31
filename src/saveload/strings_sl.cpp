@@ -3,16 +3,11 @@
 /** @file strings_sl.cpp Code handling saving and loading of strings */
 
 #include "../stdafx.h"
-#include "../strings_type.h"
-#include "../core/math_func.hpp"
-#include "../core/bitmath_func.hpp"
 #include "../core/alloc_func.hpp"
 #include "../string_func.h"
 #include "saveload_internal.h"
 
 #include "table/strings.h"
-
-#include "saveload.h"
 
 /**
  * Remap a string ID from the old format to the new format

@@ -8,10 +8,8 @@
 
 #if defined(UNIX) && !defined(__MORPHOS__)
 
-#include "openttd.h"
 #include "variables.h"
 
-#include <sys/types.h>
 #include <unistd.h>
 
 #if defined(SUNOS) && !defined(_LP64) && !defined(_I32LPx)

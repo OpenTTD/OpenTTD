@@ -10,13 +10,8 @@
  */
 
 #include "stdafx.h"
-#include "debug.h"
-#include "openttd.h"
-#include "variables.h"
 #include "newgrf.h"
-#include "newgrf_text.h"
 #include "strings_func.h"
-#include "core/alloc_func.hpp"
 #include "newgrf_storage.h"
 #include "string_func.h"
 #include "date_type.h"

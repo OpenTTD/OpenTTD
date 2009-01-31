@@ -5,7 +5,6 @@
 #ifndef DRIVER_H
 #define DRIVER_H
 
-#include "debug.h"
 #include "core/enum_type.hpp"
 #include "string_func.h"
 #include <map>

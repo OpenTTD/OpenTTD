@@ -3,18 +3,15 @@
 /** @file bridge_gui.cpp Graphical user interface for bridge construction */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "gui.h"
 #include "window_gui.h"
 #include "command_func.h"
 #include "economy_func.h"
-#include "variables.h"
 #include "bridge.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "sound_func.h"
 #include "map_func.h"
-#include "viewport_func.h"
 #include "gfx_func.h"
 #include "tunnelbridge.h"
 #include "sortlist_type.h"

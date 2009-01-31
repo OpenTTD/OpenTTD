@@ -3,10 +3,7 @@
 /** @file null_v.cpp The videio driver that doesn't blit. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../gfx_func.h"
-#include "../variables.h"
-#include "../debug.h"
 #include "../blitter/factory.hpp"
 #include "null_v.h"
 

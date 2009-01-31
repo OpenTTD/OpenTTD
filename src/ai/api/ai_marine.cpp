@@ -3,11 +3,7 @@
 /** @file ai_marine.cpp Implementation of AIMarine. */
 
 #include "ai_marine.hpp"
-#include "../../openttd.h"
-#include "../../command_type.h"
-#include "../../variables.h"
 #include "../../station_map.h"
-#include "../../water_map.h"
 #include "../../tile_cmd.h"
 
 

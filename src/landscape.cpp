@@ -5,31 +5,23 @@
 /** @defgroup SnowLineGroup Snowline functions and data structures */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "bridge_map.h"
 #include "heightmap.h"
 #include "clear_map.h"
 #include "spritecache.h"
-#include <stdarg.h>
 #include "viewport_func.h"
 #include "command_func.h"
 #include "landscape.h"
 #include "variables.h"
 #include "void_map.h"
-#include "water_map.h"
 #include "tgp.h"
 #include "genworld.h"
-#include "tile_cmd.h"
-#include "core/alloc_func.hpp"
 #include "fios.h"
-#include "window_func.h"
 #include "functions.h"
 #include "date_func.h"
-#include "vehicle_func.h"
-#include "settings_type.h"
 #include "water.h"
 #include "effectvehicle_func.h"
 #include "landscape_type.h"
+#include "settings_type.h"
 
 #include "table/sprites.h"
 

@@ -5,8 +5,6 @@
 #include "../stdafx.h"
 #include "../company_base.h"
 #include "../company_func.h"
-#include "../network/network.h"
-#include "../ai/ai.hpp"
 #include "../company_manager_face.h"
 
 #include "saveload.h"

@@ -3,7 +3,6 @@
 /** @file currency.cpp Support for different currencies. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "currency.h"
 #include "news_func.h"
 #include "settings_type.h"

@@ -4,12 +4,8 @@
 
 #include "ai_airport.hpp"
 #include "ai_station.hpp"
-#include "ai_error.hpp"
-#include "../../openttd.h"
-#include "../../variables.h"
 #include "../../station_map.h"
 #include "../../company_func.h"
-#include "../../settings_type.h"
 #include "../../command_type.h"
 #include "../../town.h"
 

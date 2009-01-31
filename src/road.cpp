@@ -6,15 +6,13 @@
 #include "openttd.h"
 #include "rail_map.h"
 #include "road_map.h"
-#include "road_internal.h"
 #include "water_map.h"
 #include "genworld.h"
 #include "company_func.h"
 #include "company_base.h"
-#include "engine_func.h"
 #include "engine_base.h"
-#include "settings_type.h"
 #include "date_func.h"
+#include "settings_type.h"
 
 bool IsPossibleCrossing(const TileIndex tile, Axis ax)
 {

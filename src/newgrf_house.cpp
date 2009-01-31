@@ -8,13 +8,11 @@
 #include "debug.h"
 #include "viewport_func.h"
 #include "landscape.h"
-#include "town.h"
 #include "town_map.h"
 #include "sprite.h"
 #include "newgrf.h"
 #include "newgrf_house.h"
 #include "newgrf_spritegroup.h"
-#include "newgrf_callbacks.h"
 #include "newgrf_town.h"
 #include "newgrf_sound.h"
 #include "newgrf_commons.h"
@@ -22,12 +20,7 @@
 #include "functions.h"
 #include "company_func.h"
 #include "animated_tile_func.h"
-#include "date_func.h"
 #include "company_base.h"
-
-#include "table/strings.h"
-#include "table/sprites.h"
-#include "table/town_land.h"
 
 static BuildingCounts    _building_counts;
 static HouseClassMapping _class_mapping[HOUSE_CLASS_MAX];

@@ -4,15 +4,10 @@
 
 #include "ai_tilelist.hpp"
 #include "ai_industry.hpp"
-#include "../../openttd.h"
-#include "../../landscape.h"
-#include "../../settings_type.h"
-#include "../../station_func.h"
-#include "../../map_func.h"
 #include "../../tile_map.h"
 #include "../../industry_map.h"
-#include "../../station_base.h"
 #include "../../station_map.h"
+#include "../../settings_type.h"
 
 void AITileList::FixRectangleSpan(TileIndex &t1, TileIndex &t2)
 {

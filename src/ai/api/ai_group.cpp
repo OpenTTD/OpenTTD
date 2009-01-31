@@ -3,10 +3,8 @@
 /** @file ai_group.cpp Implementation of AIGroup. */
 
 #include "ai_group.hpp"
-#include "ai_vehicle.hpp"
 #include "ai_engine.hpp"
 #include "../ai_instance.hpp"
-#include "../../openttd.h"
 #include "../../company_func.h"
 #include "../../group.h"
 #include "../../string_func.h"

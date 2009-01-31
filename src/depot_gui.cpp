@@ -2,10 +2,7 @@
 
 /** @file depot_gui.cpp The GUI for depots. */
 
-#include "stdafx.h"
-#include "openttd.h"
 #include "train.h"
-#include "roadveh.h"
 #include "ship.h"
 #include "aircraft.h"
 #include "gui.h"
@@ -15,14 +12,12 @@
 #include "command_func.h"
 #include "depot_base.h"
 #include "vehicle_gui.h"
-#include "station_map.h"
 #include "newgrf_engine.h"
 #include "spritecache.h"
 #include "strings_func.h"
 #include "window_func.h"
 #include "vehicle_func.h"
 #include "company_func.h"
-#include "order_func.h"
 #include "tilehighlight_func.h"
 #include "window_gui.h"
 #include "vehiclelist.h"

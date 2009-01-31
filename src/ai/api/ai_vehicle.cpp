@@ -2,19 +2,15 @@
 
 /** @file ai_vehicle.cpp Implementation of AIVehicle. */
 
-#include "ai_vehicle.hpp"
 #include "ai_engine.hpp"
 #include "ai_cargo.hpp"
-#include "ai_order.hpp"
 #include "ai_gamesettings.hpp"
 #include "ai_group.hpp"
 #include "../ai_instance.hpp"
-#include "../../openttd.h"
 #include "../../company_func.h"
 #include "../../aircraft.h"
 #include "../../string_func.h"
 #include "../../strings_func.h"
-#include "../../core/alloc_func.hpp"
 #include "../../command_func.h"
 #include "../../roadveh.h"
 #include "../../train.h"

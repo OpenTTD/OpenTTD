@@ -6,8 +6,6 @@
 #include "../core/alloc_func.hpp"
 #include "../core/math_func.hpp"
 #include "../gfx_func.h"
-#include "../zoom_func.h"
-#include "../debug.h"
 #include "../video/video_driver.hpp"
 #include "32bpp_anim.hpp"
 

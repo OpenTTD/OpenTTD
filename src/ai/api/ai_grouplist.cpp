@@ -3,7 +3,6 @@
 /** @file ai_grouplist.cpp Implementation of AIGroupList and friends. */
 
 #include "ai_grouplist.hpp"
-#include "../../openttd.h"
 #include "../../company_func.h"
 #include "../../group.h"
 

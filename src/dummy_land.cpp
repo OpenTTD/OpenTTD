@@ -3,7 +3,6 @@
 /** @file dummy_land.cpp Handling of void (or dummy) tiles. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "tile_cmd.h"
 #include "command_func.h"
 #include "viewport_func.h"

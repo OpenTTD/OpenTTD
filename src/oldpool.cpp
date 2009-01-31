@@ -3,7 +3,6 @@
 /** @file oldpool.cpp Implementation of the old pool. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
 #include "oldpool.h"
 #include "core/alloc_func.hpp"

@@ -3,17 +3,13 @@
 /** @file heightmap.cpp Creating of maps from heightmaps. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
 #include "heightmap.h"
 #include "clear_map.h"
 #include "void_map.h"
-#include "debug.h"
 #include "gui.h"
 #include "saveload/saveload.h"
 #include "bmp.h"
 #include "gfx_func.h"
-#include "core/alloc_func.hpp"
 #include "fios.h"
 #include "settings_type.h"
 

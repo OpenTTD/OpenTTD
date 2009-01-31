@@ -3,16 +3,10 @@
 /** @file pathfind.cpp Implementation of the oldest supported pathfinder. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "bridge_map.h"
 #include "station_map.h"
-#include "tile_cmd.h"
-#include "landscape.h"
-#include "pathfind.h"
-#include "rail_type.h"
-#include "debug.h"
-#include "tunnel_map.h"
 #include "settings_type.h"
+#include "pathfind.h"
+#include "debug.h"
 #include "tunnelbridge_map.h"
 #include "core/random_func.hpp"
 #include "core/alloc_type.hpp"

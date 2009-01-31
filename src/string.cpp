@@ -3,7 +3,6 @@
 /** @file string.cpp Handling of C-type strings (char*). */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
 #include "core/alloc_func.hpp"
 #include "core/math_func.hpp"

@@ -3,14 +3,10 @@
 /** @file newgrf_cargo.cpp Implementation of NewGRF cargoes. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "debug.h"
-#include "cargotype.h"
 #include "newgrf.h"
-#include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_cargo.h"
-
 
 static uint32 CargoGetRandomBits(const ResolverObject *object)
 {

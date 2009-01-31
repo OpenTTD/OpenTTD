@@ -3,7 +3,6 @@
 /** @file ai_map.cpp Implementation of AIMap. */
 
 #include "ai_map.hpp"
-#include "../../map_func.h"
 #include "../../tile_map.h"
 
 /* static */ bool AIMap::IsValidTile(TileIndex t)

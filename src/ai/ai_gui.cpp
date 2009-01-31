@@ -3,21 +3,14 @@
 /** @file ai_gui.cpp Window for configuring the AIs */
 
 #include "../stdafx.h"
-#include "../openttd.h"
 #include "../gui.h"
 #include "../window_gui.h"
 #include "../company_func.h"
 #include "../company_base.h"
 #include "../company_gui.h"
-#include "../economy_func.h"
-#include "../variables.h"
-#include "../cargotype.h"
 #include "../strings_func.h"
-#include "../core/alloc_func.hpp"
 #include "../window_func.h"
-#include "../date_func.h"
 #include "../gfx_func.h"
-#include "../debug.h"
 #include "../command_func.h"
 #include "../network/network.h"
 #include "../string_func.h"
@@ -26,15 +19,10 @@
 #include "../network/network_content.h"
 
 #include "ai.hpp"
-#include "api/ai_types.hpp"
-#include "api/ai_controller.hpp"
-#include "api/ai_object.hpp"
 #include "api/ai_log.hpp"
-#include "ai_info.hpp"
 #include "ai_config.hpp"
 
 #include "table/strings.h"
-#include "../table/sprites.h"
 
 /**
  * Window that let you choose an available AI.

@@ -3,18 +3,14 @@
 /** @file ai_core.cpp Implementation of AI. */
 
 #include "../stdafx.h"
-#include "../openttd.h"
-#include "../company_type.h"
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../debug.h"
 #include "../network/network.h"
 #include "../settings_type.h"
-#include "../window_type.h"
 #include "../window_func.h"
 #include "../command_func.h"
 #include "ai.hpp"
-#include "ai_info.hpp"
 #include "ai_scanner.hpp"
 #include "ai_instance.hpp"
 #include "ai_config.hpp"

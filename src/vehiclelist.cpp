@@ -3,12 +3,7 @@
 /** @file vehiclelist.cpp Lists of vehicles. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "vehicle_type.h"
-#include "vehicle_func.h"
-#include "vehicle_base.h"
 #include "vehicle_gui.h"
-#include "core/alloc_func.hpp"
 #include "train.h"
 #include "vehiclelist.h"
 

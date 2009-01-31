@@ -3,7 +3,6 @@
 /** @file engine_sl.cpp Code handling saving and loading of engines */
 
 #include "../stdafx.h"
-#include "saveload.h"
 #include "saveload_internal.h"
 #include "../engine_base.h"
 #include <map>

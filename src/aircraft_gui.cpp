@@ -3,16 +3,12 @@
 /** @file aircraft_gui.cpp The GUI of aircraft. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "aircraft.h"
-#include "debug.h"
-#include "gui.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "strings_func.h"
 #include "vehicle_func.h"
 #include "gfx_func.h"
-#include "order_func.h"
 #include "window_gui.h"
 
 #include "table/sprites.h"

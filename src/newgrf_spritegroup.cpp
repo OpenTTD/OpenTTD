@@ -3,16 +3,10 @@
 /** @file newgrf_spritegroup.cpp Handling of primarily NewGRF action 2. */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "variables.h"
-#include "landscape.h"
 #include "oldpool.h"
 #include "newgrf.h"
-#include "newgrf_callbacks.h"
 #include "newgrf_spritegroup.h"
 #include "sprite.h"
-#include "date_func.h"
-#include "settings_type.h"
 
 static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item);
 

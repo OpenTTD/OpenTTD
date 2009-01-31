@@ -4,7 +4,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "debug.h"
 #include "town.h"
 #include "viewport_func.h"
 #include "gfx_func.h"
@@ -20,10 +19,7 @@
 #include "strings_func.h"
 #include "sound_func.h"
 #include "economy_func.h"
-#include "core/alloc_func.hpp"
-#include "settings_type.h"
 #include "tilehighlight_func.h"
-#include "string_func.h"
 #include "sortlist_type.h"
 #include "road_cmd.h"
 

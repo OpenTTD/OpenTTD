@@ -3,7 +3,6 @@
 /** @file mixer.cpp Mixing of sound samples. */
 
 #include "stdafx.h"
-#include "openttd.h"
 #include "mixer.h"
 #include "core/math_func.hpp"
 

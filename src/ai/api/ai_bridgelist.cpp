@@ -4,7 +4,6 @@
 
 #include "ai_bridgelist.hpp"
 #include "ai_bridge.hpp"
-#include "../../openttd.h"
 #include "../../bridge.h"
 #include "../../date_func.h"
 

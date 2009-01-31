@@ -3,11 +3,9 @@
 /** @file town_sl.cpp Code handling saving and loading of towns and houses */
 
 #include "../stdafx.h"
-#include "../town.h"
 #include "../newgrf_house.h"
 #include "../newgrf_commons.h"
 #include "../variables.h"
-#include "../tile_map.h"
 #include "../town_map.h"
 
 #include "saveload.h"

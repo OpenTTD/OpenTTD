@@ -7,9 +7,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "../openttd.h"
-#include "../debug.h"
 #include "../gfx_func.h"
-#include "../network/network.h"
 #include "../network/network_internal.h"
 #include "../console_func.h"
 #include "../variables.h"
@@ -17,7 +15,6 @@
 #include "../fileio_type.h"
 #include "../fios.h"
 #include "../blitter/factory.hpp"
-#include "../core/alloc_func.hpp"
 #include "../company_func.h"
 #include "../core/random_func.hpp"
 #include "dedicated_v.h"
