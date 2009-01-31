@@ -472,11 +472,14 @@ void StartupCompanies()
 
 static void MaybeStartNewCompany()
 {
-	uint n;
+#ifdef ENABLE_NETWORK
+	if (_networking && ActiveCompanyCount() >= _settings_client.network.max_companies) return;
+#endif /* ENABLE_NETWORK */
+
 	Company *c;
 
 	/* count number of competitors */
-	n = 0;
+	uint n = 0;
 	FOR_ALL_COMPANIES(c) {
 		if (c->is_ai) n++;
 	}
