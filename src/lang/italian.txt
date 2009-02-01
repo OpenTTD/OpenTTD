@@ -1149,6 +1149,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :L'ultima dispon
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :La più usata
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostra i binari riservati: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Mantieni aperte le finestre di costruzione dopo l'uso: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Raggruppa spese nella finestra Finanze della compagnia: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Consenti costruzione di infrastrutture senza veicoli disponibili: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}

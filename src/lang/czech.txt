@@ -1064,8 +1064,8 @@ STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemůžu
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Konec sdílených příkazů - -
 
 STR_TRAIN_IS_STUCK                                              :{WHITE}{VEHICLE} nemůže najít cestu.
-STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} se ztratil/a/o.
-STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} loni prodělal/a/o {CURRENCY}
+STR_TRAIN_IS_LOST                                               :{WHITE}{VEHICLE} se ztratil.
+STR_VEHICLE_IS_UNPROFITABLE                                     :{WHITE}{VEHICLE} - loňský zisk {CURRENCY}
 STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Evropská měnová unie{}{}Euro se v této zemi stalo jedinou měnou pro každodenní obchodní transakce!
 
 # Start of order review system.
@@ -1215,6 +1215,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :poslední dostu
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :nejpoužívanější
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vyznačovat rezervovanou trať: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Nevypínat po použití nástroje pro výstavbu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Zobrazovat odděleně příjmy a výdaje v přehledu financí: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Zobrazit nástroje pro budování i bez dostupných vozidel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaků na hráče: {ORANGE}{STRING}
@@ -2250,10 +2251,10 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}... již
 ##id 0x6000
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Beze jména
-STR_SV_TRAIN_NAME                                               :Vlak {COMMA}
-STR_SV_ROADVEH_NAME                                             :Silniční vozidlo {COMMA}
-STR_SV_SHIP_NAME                                                :Loď {COMMA}
-STR_SV_AIRCRAFT_NAME                                            :Letadlo {COMMA}
+STR_SV_TRAIN_NAME                                               :{G=m}Vlak {COMMA}
+STR_SV_ROADVEH_NAME                                             :{G=n}Silniční vozidlo {COMMA}
+STR_SV_SHIP_NAME                                                :{G=f}Loď {COMMA}
+STR_SV_AIRCRAFT_NAME                                            :{G=n}Letadlo {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
 STR_SV_STNAME_NORTH                                             :{STRING} sever

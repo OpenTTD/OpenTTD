@@ -1147,6 +1147,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :第后一个可
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :最常用的
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}显示保留的轨道： {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}造建筑工具使用后仍选中: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}企业财政窗口中的组群支出：{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}当没有合适的运输工具时显示建设工具: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}每位玩家最大火车数量：{ORANGE}{STRING}
@@ -1853,6 +1854,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得三倍的报酬！
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}{COMPANY} 获得财政补贴！{}{}今后一年中将 {STRING} 从 {STATION} 运送到 {STATION} 将获得四倍的报酬！
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} 地方政府不同意在本市范围内再兴建一座机场
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} 考虑到噪音控制，地方当局拒绝修建机场。
 STR_2036_COTTAGES                                               :农舍
 STR_2037_HOUSES                                                 :房屋
 STR_2038_FLATS                                                  :平房

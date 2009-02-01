@@ -1272,6 +1272,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Остання 
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Найчастіше використовувана
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Показувати резервні шляхи: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Залишити інстументи активними після використання: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Групувати витрати у вікні фінансів компанії: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Показувати засоби будівництва, коли нема відповідного транспорту: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
@@ -1978,6 +1979,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе втричі більше прибутків наступного року!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Субсидію надано {COMPANY}!{}{}Перевезення {STRING.r} з {STATION} до {STATION} принесе вчетверо більше прибутків наступного року!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE} Влада міста {TOWN} відмовляє у будівництві ще одного аеропорту.
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN}: місцева влада відмовляє у дозволі на аеропорт з міркувань шуму
 STR_2036_COTTAGES                                               :Котеджі
 STR_2037_HOUSES                                                 :Будинки
 STR_2038_FLATS                                                  :Квартири

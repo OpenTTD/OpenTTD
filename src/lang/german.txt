@@ -1148,6 +1148,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :letzter verfüg
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :meistbenutzer
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Reservierte Schienen hervorheben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Belasse Bauwerkzeuge aktiv nach Benutzung: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Kategorien einzeln summieren im Fenster "Firmenfinanzen": {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Bauwerkzeuge immer anzeigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
@@ -2371,9 +2372,9 @@ STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Gesichts
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Wähle männliches Gesicht aus
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Wähle weibliches Gesicht aus
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Wähle zufälliges neues Gesicht
-STR_704C_KEY                                                    :{BLACK}Schlüssel
-STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Aufschlüsselung des Diagramms
-STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Schlüssel des Firmendiagramms
+STR_704C_KEY                                                    :{BLACK}Legende
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Legende des Diagramms
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legende des Firmendiagramms
 STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Graph der Firma ein-/ausblenden
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Beförderte Frachteinheiten
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Bewertung der Firmenleistung (Höchstwert = 1000)
@@ -3256,7 +3257,7 @@ STR_NEWGRF_CONFIRMATION_TEXT                                    :{YELLOW}Sie sin
 STR_NEWGRF_ERROR_MSG_INFO                                       :{SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_WARNING                                    :{RED}Warnung: {SILVER}{STRING}
 STR_NEWGRF_ERROR_MSG_ERROR                                      :{RED}Fehler: {SILVER}{STRING}
-STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Fataler Fehler: {SILVER}{STRING}
+STR_NEWGRF_ERROR_MSG_FATAL                                      :{RED}Schwerer Fehler: {SILVER}{STRING}
 STR_NEWGRF_ERROR_VERSION_NUMBER                                 :{SKIP}{STRING} funktioniert nicht im Zusammenhang mit der von OpenTTD ermittelten TTDPatch-Version.
 STR_NEWGRF_ERROR_DOS_OR_WINDOWS                                 :{SKIP}{STRING} ist für die {STRING}-Version von TTD.
 STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} ist für die Nutzung mit {STRING} vorgesehen

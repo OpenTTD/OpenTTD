@@ -1147,6 +1147,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Tersedia terakh
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Sering dipakai
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Sorot rel yang akan terpakai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Toolbar tetap aktif setelah dipakai: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Kelompokkan pengeluaran perusahaan dalam neraca: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Tampilkan toolbar meski kendaraan belum tersedia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. kereta tiap pemain: {ORANGE}{STRING}
@@ -1853,6 +1854,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidi diberikan kepada {COMPANY}!{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} akan dibayar tiga kali lipat hingga tahun depan!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subsidi diberikan kepada {COMPANY}!{}{}Jasa transportasi {STRING} dari {STATION} ke {STATION} akan dibayar empat kali lipat hingga tahun depan!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Pemkot {TOWN} menolak pemberian izin pembangunan bandara lain di kota ini
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE}{TOWN} Pihak Pemkot menolak izin pembangunan bandara karena masalah kebisingan
 STR_2036_COTTAGES                                               :Pondok
 STR_2037_HOUSES                                                 :Rumah
 STR_2038_FLATS                                                  :Apartemen

@@ -3502,6 +3502,7 @@ STR_NORTHWEST                                                   :{BLACK}Noroeste
 STR_NORTHEAST                                                   :{BLACK}Nordeste
 STR_SOUTHEAST                                                   :{BLACK}Sudeste
 STR_SOUTHWEST                                                   :{BLACK}Sudoeste
+STR_BORDER_FREEFORM                                             :{BLACK}Modo livre
 STR_BORDER_WATER                                                :{BLACK}Água
 STR_BORDER_RANDOM                                               :{BLACK}Aleatório
 STR_BORDER_RANDOMIZE                                            :{BLACK}Aleatório
