@@ -331,7 +331,7 @@ void AfterLoadVehicles(bool part_of_load)
 	FOR_ALL_VEHICLES(v) {
 		switch (v->type) {
 			case VEH_ROAD:
-				v->u.road.roadtype = HasBit(EngInfo(v->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
+				v->u.road.roadtype = HasBit(EngInfo(v->First()->engine_type)->misc_flags, EF_ROAD_TRAM) ? ROADTYPE_TRAM : ROADTYPE_ROAD;
 				v->u.road.compatible_roadtypes = RoadTypeToRoadTypes(v->u.road.roadtype);
 				/* FALL THROUGH */
 			case VEH_TRAIN:
