@@ -226,14 +226,7 @@ struct DropdownWindow : Window {
 
 void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, uint width, bool auto_width, bool instant_close)
 {
-	bool is_dropdown_menu_shown = w->IsWidgetLowered(button);
-
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
-
-	if (is_dropdown_menu_shown) {
-		DeleteDropDownList(list);
-		return;
-	}
 
 	w->LowerWidget(button);
 	w->InvalidateWidget(button);
@@ -339,12 +332,6 @@ void ShowDropDownList(Window *w, DropDownList *list, int selected, int button, u
 
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask, uint width)
 {
-	/* Don't create a new list if we're just closing an existing menu */
-	if (w->IsWidgetLowered(button)) {
-		DeleteWindowById(WC_DROPDOWN_MENU, 0);
-		return;
-	}
-
 	uint result = 0;
 	DropDownList *list = new DropDownList();
 
@@ -368,7 +355,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
  * Delete the drop-down menu from window \a pw
  * @param pw Parent window of the drop-down menu window
  */
-void HideDropDownMenu(Window *pw)
+int HideDropDownMenu(Window *pw)
 {
 	Window *w;
 	FOR_ALL_WINDOWS_FROM_BACK(w) {
@@ -377,9 +364,12 @@ void HideDropDownMenu(Window *pw)
 		DropdownWindow *dw = dynamic_cast<DropdownWindow*>(w);
 		if (pw->window_class == dw->parent_wnd_class &&
 				pw->window_number == dw->parent_wnd_num) {
+			int parent_button = dw->parent_button;
 			delete dw;
-			break;
+			return parent_button;
 		}
 	}
+
+	return -1;
 }
 

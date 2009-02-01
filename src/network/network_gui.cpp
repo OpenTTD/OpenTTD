@@ -925,7 +925,6 @@ struct NetworkStartServerWindow : public QueryStringBaseWindow {
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget != NSSW_CONNTYPE_BTN && widget != NSSW_LANGUAGE_BTN) HideDropDownMenu(this);
 		this->field = widget;
 		switch (widget) {
 			case NSSW_CLOSE:  // Close 'X'

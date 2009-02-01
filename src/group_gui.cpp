@@ -440,8 +440,6 @@ public:
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (widget != GRP_WIDGET_SORT_BY_DROPDOWN && widget != GRP_WIDGET_MANAGE_VEHICLES_DROPDOWN) HideDropDownMenu(this);
-
 		switch(widget) {
 			case GRP_WIDGET_SORT_BY_ORDER: // Flip sorting method ascending/descending
 				this->vehicles.ToggleSortOrder();

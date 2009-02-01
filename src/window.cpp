@@ -22,6 +22,7 @@
 #include "tilehighlight_func.h"
 #include "network/network.h"
 #include "querystring_gui.h"
+#include "widgets/dropdown_func.h"
 
 #include "table/sprites.h"
 
@@ -187,6 +188,10 @@ static void DispatchLeftClickEvent(Window *w, int x, int y, bool double_click)
 				qs->OnOpenOSKWindow(widget_index);
 			}
 		}
+
+		/* Close any child drop down menus. If the button pressed was the drop down
+		 * list's own button, then we should not process the click any further. */
+		if (HideDropDownMenu(w) == widget) return;
 
 		if (w->desc_flags & WDF_STD_BTN) {
 			if (widget == 0) { /* 'X' */

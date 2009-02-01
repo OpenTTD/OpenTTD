@@ -839,7 +839,6 @@ public:
 
 	virtual void OnClick(Point pt, int widget)
 	{
-		if (this->widget[widget].type != WWT_DROPDOWN) HideDropDownMenu(this);
 		switch (widget) {
 			case ORDER_WIDGET_ORDER_LIST: {
 				ResetObjectToPlace();
