@@ -9,6 +9,7 @@
 #include "../driver.h"
 #include "../mixer.h"
 #include "../sdl.h"
+#include "../debug.h"
 #include "allegro_s.h"
 #include <allegro.h>
 
