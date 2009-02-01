@@ -7386,7 +7386,7 @@
     GetAge():            0
     GetMaxAge():         5490
     GetAgeLeft():        5490
-    GetCurrentSpeed():   4
+    GetCurrentSpeed():   7
     GetRunningCost():    14
     GetProfitThisYear(): 0
     GetProfitLastYear(): 0
@@ -7474,7 +7474,7 @@
     13 => 5490
     12 => 5490
   CurrentSpeed ListDump:
-    12 => 13
+    12 => 21
     17 => 0
     16 => 0
     14 => 0
