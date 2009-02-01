@@ -119,7 +119,7 @@
 	if (!IsValidEngine(engine_id)) return -1;
 
 	const Engine *e = ::GetEngine(engine_id);
-	int32 max_speed = e->GetDisplayMaxSpeed() * 16 / 10; // convert mph to km-ish/h
+	int32 max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
 	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
 	return max_speed;
 }

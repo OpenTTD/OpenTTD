@@ -156,22 +156,22 @@ Money Engine::GetCost() const
 
 /**
  * Returns max speed for display purposes
- * @return max speed in mph
+ * @return max speed in km-ish/h
  */
 uint Engine::GetDisplayMaxSpeed() const
 {
 	switch (this->type) {
 		case VEH_TRAIN:
-			return GetEngineProperty(this->index, 0x09, this->u.rail.max_speed) * 10 / 16;
+			return GetEngineProperty(this->index, 0x09, this->u.rail.max_speed);
 
 		case VEH_ROAD:
-			return this->u.road.max_speed * 10 / 32;
+			return this->u.road.max_speed / 2;
 
 		case VEH_SHIP:
-			return GetEngineProperty(this->index, 0x0B, this->u.ship.max_speed) * 10 / 32;
+			return GetEngineProperty(this->index, 0x0B, this->u.ship.max_speed) / 2;
 
 		case VEH_AIRCRAFT:
-			return this->u.air.max_speed * 10 / 16;
+			return this->u.air.max_speed;
 
 		default: NOT_REACHED();
 	}

@@ -322,8 +322,8 @@ struct Train : public Vehicle {
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return IsFrontEngine(this); }
 	SpriteID GetImage(Direction direction) const;
-	int GetDisplaySpeed() const { return this->u.rail.last_speed * 10 / 16; }
-	int GetDisplayMaxSpeed() const { return this->u.rail.cached_max_speed * 10 / 16; }
+	int GetDisplaySpeed() const { return this->u.rail.last_speed; }
+	int GetDisplayMaxSpeed() const { return this->u.rail.cached_max_speed; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return CheckTrainInDepot(this, false) != -1; }
 	bool IsStoppedInDepot() const { return CheckTrainStoppedInDepot(this) >= 0; }

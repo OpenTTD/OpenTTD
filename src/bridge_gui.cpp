@@ -165,7 +165,7 @@ public:
 			const BridgeSpec *b = this->bridges->Get(i)->spec;
 
 			SetDParam(2, this->bridges->Get(i)->cost);
-			SetDParam(1, b->speed * 10 / 16);
+			SetDParam(1, b->speed);
 			SetDParam(0, b->material);
 
 			DrawSprite(b->sprite, b->pal, 3, y);

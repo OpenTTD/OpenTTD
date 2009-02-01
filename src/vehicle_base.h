@@ -397,13 +397,13 @@ public:
 	virtual SpriteID GetImage(Direction direction) const { return 0; }
 
 	/**
-	 * Gets the speed in mph that can be sent into SetDParam for string processing.
+	 * Gets the speed in km-ish/h that can be sent into SetDParam for string processing.
 	 * @return the vehicle's speed
 	 */
 	virtual int GetDisplaySpeed() const { return 0; }
 
 	/**
-	 * Gets the maximum speed in mph that can be sent into SetDParam for string processing.
+	 * Gets the maximum speed in km-ish/h that can be sent into SetDParam for string processing.
 	 * @return the vehicle's maximum speed
 	 */
 	virtual int GetDisplayMaxSpeed() const { return 0; }

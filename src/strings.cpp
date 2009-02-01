@@ -596,7 +596,7 @@ static char *FormatString(char *buff, const char *str, const int64 *argv, uint c
 			case SCC_VELOCITY: {// {VELOCITY}
 				int64 args[1];
 				assert(_settings_game.locale.units < lengthof(units));
-				args[0] = ConvertSpeedToDisplaySpeed(GetInt32(&argv));
+				args[0] = ConvertSpeedToDisplaySpeed(GetInt32(&argv) * 10 / 16);
 				buff = FormatString(buff, GetStringPtr(units[_settings_game.locale.units].velocity), args, modifier >> 24, last);
 				modifier = 0;
 				break;

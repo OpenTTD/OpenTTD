@@ -80,7 +80,7 @@ int32 AIEventEnginePreview::GetCapacity()
 int32 AIEventEnginePreview::GetMaxSpeed()
 {
 	const Engine *e = ::GetEngine(engine);
-	int32 max_speed = e->GetDisplayMaxSpeed() * 16 / 10; // convert mph to km-ish/h
+	int32 max_speed = e->GetDisplayMaxSpeed(); // km-ish/h
 	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
 	return max_speed;
 }

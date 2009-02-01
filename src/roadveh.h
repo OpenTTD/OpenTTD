@@ -74,8 +74,8 @@ struct RoadVehicle : public Vehicle {
 	ExpensesType GetExpenseType(bool income) const { return income ? EXPENSES_ROADVEH_INC : EXPENSES_ROADVEH_RUN; }
 	bool IsPrimaryVehicle() const { return IsRoadVehFront(this); }
 	SpriteID GetImage(Direction direction) const;
-	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }
-	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 32; }
+	int GetDisplaySpeed() const { return this->cur_speed / 2; }
+	int GetDisplayMaxSpeed() const { return this->max_speed / 2; }
 	Money GetRunningCost() const { return RoadVehInfo(this->engine_type)->running_cost * GetPriceByIndex(RoadVehInfo(this->engine_type)->running_cost_class); }
 	bool IsInDepot() const { return this->u.road.state == RVSB_IN_DEPOT; }
 	bool IsStoppedInDepot() const;

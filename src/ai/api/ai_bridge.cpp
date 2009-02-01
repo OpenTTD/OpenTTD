@@ -133,7 +133,7 @@ static void _DoCommandReturnBuildBridge1(class AIInstance *instance)
 {
 	if (!IsValidBridge(bridge_id)) return -1;
 
-	return ::GetBridgeSpec(bridge_id)->speed;
+	return ::GetBridgeSpec(bridge_id)->speed; // km-ish/h
 }
 
 /* static */ Money AIBridge::GetPrice(BridgeID bridge_id, uint length)

@@ -36,8 +36,8 @@ struct Ship: public Vehicle {
 	void PlayLeaveStationSound() const;
 	bool IsPrimaryVehicle() const { return true; }
 	SpriteID GetImage(Direction direction) const;
-	int GetDisplaySpeed() const { return this->cur_speed * 10 / 32; }
-	int GetDisplayMaxSpeed() const { return this->max_speed * 10 / 32; }
+	int GetDisplaySpeed() const { return this->cur_speed / 2; }
+	int GetDisplayMaxSpeed() const { return this->max_speed / 2; }
 	Money GetRunningCost() const;
 	bool IsInDepot() const { return this->u.ship.state == TRACK_BIT_DEPOT; }
 	void Tick();
