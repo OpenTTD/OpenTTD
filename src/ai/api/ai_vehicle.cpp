@@ -278,7 +278,7 @@
 {
 	if (!IsValidVehicle(vehicle_id)) return -1;
 
-	return ::GetVehicle(vehicle_id)->GetDisplaySpeed();
+	return ::GetVehicle(vehicle_id)->GetDisplaySpeed() * 16 / 10;
 }
 
 /* static */ AIVehicle::VehicleState AIVehicle::GetState(VehicleID vehicle_id)

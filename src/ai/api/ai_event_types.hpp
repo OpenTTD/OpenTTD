@@ -240,7 +240,9 @@ public:
 	/**
 	 * Get the maximum speed of the offered engine.
 	 * @return The maximum speed the engine has.
-	 * @note The speed is in km/h.
+	 * @note The speed is in OpenTTD's internal speed unit.
+	 *       This is mph / 1.6, which is roughly km/h.
+	 *       To get km/h multiply this number by 1.00584.
 	 */
 	int32 GetMaxSpeed();
 

@@ -91,7 +91,9 @@ public:
 	 * @param engine_id The engine to get the maximum speed of.
 	 * @pre IsValidEngine(engine_id).
 	 * @return The maximum speed the engine has.
-	 * @note The speed is in km/h.
+	 * @note The speed is in OpenTTD's internal speed unit.
+	 *       This is mph / 1.6, which is roughly km/h.
+	 *       To get km/h multiply this number by 1.00584.
 	 */
 	static int32 GetMaxSpeed(EngineID engine_id);
 

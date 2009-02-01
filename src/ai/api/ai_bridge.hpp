@@ -60,10 +60,13 @@ public:
 	static char *GetName(BridgeID bridge_id);
 
 	/**
-	 * Get the maximum speed of a bridge (in km/h).
+	 * Get the maximum speed of a bridge.
 	 * @param bridge_id The bridge to get the maximum speed of.
 	 * @pre IsValidBridge(bridge_id).
 	 * @return The maximum speed the bridge has.
+	 * @note The speed is in OpenTTD's internal speed unit.
+	 *       This is mph / 1.6, which is roughly km/h.
+	 *       To get km/h multiply this number by 1.00584.
 	 */
 	static int32 GetMaxSpeed(BridgeID bridge_id);
 

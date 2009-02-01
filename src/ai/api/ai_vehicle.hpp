@@ -205,7 +205,9 @@ public:
 	 * @param vehicle_id The vehicle to get the age of.
 	 * @pre IsValidVehicle(vehicle_id).
 	 * @return The current speed of the vehicle.
-	 * @note Speed is in km/h.
+	 * @note The speed is in OpenTTD's internal speed unit.
+	 *       This is mph / 1.6, which is roughly km/h.
+	 *       To get km/h multiply this number by 1.00584.
 	 */
 	static int32 GetCurrentSpeed(VehicleID vehicle_id);
 
