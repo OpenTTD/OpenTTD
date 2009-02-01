@@ -55,7 +55,6 @@ void UpdateHousesAndTowns()
 	/* Update the population and num_house dependant values */
 	FOR_ALL_TOWNS(town) {
 		UpdateTownRadius(town);
-		UpdateTownMaxPass(town);
 	}
 }
 
