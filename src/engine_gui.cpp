@@ -124,13 +124,12 @@ static uint GetTotalCapacityOfArticulatedParts(EngineID engine, VehicleType type
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
-	int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD) ? 1 : 0;
 	const Engine *e = GetEngine(engine);
 
 	SetDParam(0, e->GetCost());
-	SetDParam(2, GetEngineProperty(engine, 0x09, rvi->max_speed) * 10 / 16);
-	SetDParam(3, GetEngineProperty(engine, 0x0B, rvi->power));
-	SetDParam(1, GetEngineProperty(engine, 0x16, rvi->weight) << multihead);
+	SetDParam(2, e->GetDisplayMaxSpeed());
+	SetDParam(3, e->GetPower());
+	SetDParam(1, e->GetDisplayWeight());
 
 	SetDParam(4, e->GetRunningCost());
 
@@ -150,7 +149,7 @@ static void DrawAircraftEngineInfo(EngineID engine, int x, int y, int maxw)
 	const Engine *e = GetEngine(engine);
 
 	SetDParam(0, e->GetCost());
-	SetDParam(1, avi->max_speed * 10 / 16);
+	SetDParam(1, e->GetDisplayMaxSpeed());
 	SetDParam(2, avi->passenger_capacity);
 	SetDParam(3, avi->mail_capacity);
 	SetDParam(4, e->GetRunningCost());
@@ -164,7 +163,7 @@ static void DrawRoadVehEngineInfo(EngineID engine, int x, int y, int maxw)
 	const Engine *e = GetEngine(engine);
 
 	SetDParam(0, e->GetCost());
-	SetDParam(1, rvi->max_speed * 10 / 32);
+	SetDParam(1, e->GetDisplayMaxSpeed());
 	SetDParam(2, e->GetRunningCost());
 	SetDParam(3, rvi->cargo_type);
 	SetDParam(4, GetTotalCapacityOfArticulatedParts(engine, VEH_ROAD));
@@ -178,7 +177,7 @@ static void DrawShipEngineInfo(EngineID engine, int x, int y, int maxw)
 	const Engine *e = GetEngine(engine);
 
 	SetDParam(0, e->GetCost());
-	SetDParam(1, GetEngineProperty(engine, 0x0B, svi->max_speed) * 10 / 32);
+	SetDParam(1, e->GetDisplayMaxSpeed());
 	SetDParam(2, svi->cargo_type);
 	SetDParam(3, GetEngineProperty(engine, 0x0D, svi->capacity));
 	SetDParam(4, e->GetRunningCost());

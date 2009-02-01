@@ -154,6 +154,56 @@ Money Engine::GetCost() const
 	}
 }
 
+/**
+ * Returns max speed for display purposes
+ * @return max speed in mph
+ */
+uint Engine::GetDisplayMaxSpeed() const
+{
+	switch (this->type) {
+		case VEH_TRAIN:
+			return GetEngineProperty(this->index, 0x09, this->u.rail.max_speed) * 10 / 16;
+
+		case VEH_ROAD:
+			return this->u.road.max_speed * 10 / 32;
+
+		case VEH_SHIP:
+			return GetEngineProperty(this->index, 0x0B, this->u.ship.max_speed) * 10 / 32;
+
+		case VEH_AIRCRAFT:
+			return this->u.air.max_speed * 10 / 16;
+
+		default: NOT_REACHED();
+	}
+}
+
+uint Engine::GetPower() const
+{
+	/* Currently only trains have 'power' */
+	switch (this->type) {
+		case VEH_TRAIN:
+			return GetEngineProperty(this->index, 0x0B, this->u.rail.power);
+
+		default: NOT_REACHED();
+	}
+}
+
+/**
+ * Returns the weight for display purposes.
+ * For dual-headed train-engines this is the weight of both heads
+ * @return weight in display units metric tons
+ */
+uint Engine::GetDisplayWeight() const
+{
+	/* Currently only trains have 'weight' */
+	switch (this->type) {
+		case VEH_TRAIN:
+			return GetEngineProperty(this->index, 0x16, this->u.rail.weight) << (this->u.rail.railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
+
+		default: NOT_REACHED();
+	}
+}
+
 /** Sets cached values in Company::num_vehicles and Group::num_vehicles
  */
 void SetCachedEngineCounts()

@@ -482,7 +482,7 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 	y += 10;
 
 	/* Wagon weight - (including cargo) */
-	uint weight = GetEngineProperty(engine_number, 0x16, rvi->weight);
+	uint weight = e->GetDisplayWeight();
 	SetDParam(0, weight);
 	SetDParam(1, (GetCargo(rvi->cargo_type)->weight * GetEngineProperty(engine_number, 0x14, rvi->capacity) >> 4) + weight);
 	DrawString(x, y, STR_PURCHASE_INFO_WEIGHT_CWEIGHT, TC_FROMSTRING);
@@ -490,9 +490,9 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 
 	/* Wagon speed limit, displayed if above zero */
 	if (_settings_game.vehicle.wagon_speed_limits) {
-		uint max_speed = GetEngineProperty(engine_number, 0x09, rvi->max_speed);
+		uint max_speed = e->GetDisplayMaxSpeed();
 		if (max_speed > 0) {
-			SetDParam(0, max_speed * 10 / 16);
+			SetDParam(0, max_speed);
 			DrawString(x, y, STR_PURCHASE_INFO_SPEED, TC_FROMSTRING);
 			y += 10;
 		}
@@ -511,25 +511,24 @@ static int DrawRailWagonPurchaseInfo(int x, int y, EngineID engine_number, const
 /* Draw locomotive specific details */
 static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, const RailVehicleInfo *rvi)
 {
-	int multihead = (rvi->railveh_type == RAILVEH_MULTIHEAD ? 1 : 0);
-	uint weight = GetEngineProperty(engine_number, 0x16, rvi->weight);
 	const Engine *e = GetEngine(engine_number);
+	uint weight = e->GetDisplayWeight();
 
 	/* Purchase Cost - Engine weight */
 	SetDParam(0, e->GetCost());
-	SetDParam(1, weight << multihead);
+	SetDParam(1, weight);
 	DrawString(x, y, STR_PURCHASE_INFO_COST_WEIGHT, TC_FROMSTRING);
 	y += 10;
 
 	/* Max speed - Engine power */
-	SetDParam(0, GetEngineProperty(engine_number, 0x09, rvi->max_speed) * 10 / 16);
-	SetDParam(1, GetEngineProperty(engine_number, 0x0B, rvi->power));
+	SetDParam(0, e->GetDisplayMaxSpeed());
+	SetDParam(1, e->GetPower());
 	DrawString(x, y, STR_PURCHASE_INFO_SPEED_POWER, TC_FROMSTRING);
 	y += 10;
 
 	/* Max tractive effort - not applicable if old acceleration or maglev */
 	if (_settings_game.vehicle.train_acceleration_model != TAM_ORIGINAL && rvi->railtype != RAILTYPE_MAGLEV) {
-		SetDParam(0, ((weight << multihead) * 10 * GetEngineProperty(engine_number, 0x1F, rvi->tractive_effort)) / 256);
+		SetDParam(0, (weight * 10 * GetEngineProperty(engine_number, 0x1F, rvi->tractive_effort)) / 256);
 		DrawString(x, y, STR_PURCHASE_INFO_MAX_TE, TC_FROMSTRING);
 		y += 10;
 	}
@@ -553,13 +552,13 @@ static int DrawRailEnginePurchaseInfo(int x, int y, EngineID engine_number, cons
 }
 
 /* Draw road vehicle specific details */
-static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number, const RoadVehicleInfo *rvi)
+static int DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const Engine *e = GetEngine(engine_number);
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, e->GetCost());
-	SetDParam(1, rvi->max_speed * 10 / 32);
+	SetDParam(1, e->GetDisplayMaxSpeed());
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, TC_FROMSTRING);
 	y += 10;
 
@@ -579,7 +578,7 @@ static int DrawShipPurchaseInfo(int x, int y, EngineID engine_number, const Ship
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, e->GetCost());
-	SetDParam(1, GetEngineProperty(engine_number, 0x0B, svi->max_speed) * 10 / 32);
+	SetDParam(1, e->GetDisplayMaxSpeed());
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, TC_FROMSTRING);
 	y += 10;
 
@@ -606,7 +605,7 @@ static int DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number, const 
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, e->GetCost());
-	SetDParam(1, avi->max_speed * 10 / 16);
+	SetDParam(1, e->GetDisplayMaxSpeed());
 	DrawString(x, y, STR_PURCHASE_INFO_COST_SPEED, TC_FROMSTRING);
 	y += 10;
 
@@ -674,7 +673,7 @@ int DrawVehiclePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 			break;
 		}
 		case VEH_ROAD:
-			y = DrawRoadVehPurchaseInfo(x, y, engine_number, RoadVehInfo(engine_number));
+			y = DrawRoadVehPurchaseInfo(x, y, engine_number);
 			break;
 		case VEH_SHIP:
 			y = DrawShipPurchaseInfo(x, y, engine_number, ShipVehInfo(engine_number));

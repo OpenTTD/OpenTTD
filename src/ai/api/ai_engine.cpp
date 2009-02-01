@@ -118,31 +118,10 @@
 {
 	if (!IsValidEngine(engine_id)) return -1;
 
-	switch (::GetEngine(engine_id)->type) {
-		case VEH_ROAD: {
-			const RoadVehicleInfo *vi = ::RoadVehInfo(engine_id);
-			/* Internal speeds are km/h * 2 */
-			return vi->max_speed / 2;
-		} break;
-
-		case VEH_TRAIN: {
-			const RailVehicleInfo *vi = ::RailVehInfo(engine_id);
-			return vi->max_speed;
-		} break;
-
-		case VEH_SHIP: {
-			const ShipVehicleInfo *vi = ::ShipVehInfo(engine_id);
-			/* Internal speeds are km/h * 2 */
-			return vi->max_speed / 2;
-		} break;
-
-		case VEH_AIRCRAFT: {
-			const AircraftVehicleInfo *vi = ::AircraftVehInfo(engine_id);
-			return vi->max_speed / _settings_game.vehicle.plane_speed;
-		} break;
-
-		default: NOT_REACHED();
-	}
+	const Engine *e = ::GetEngine(engine_id);
+	int32 max_speed = e->GetDisplayMaxSpeed() * 16 / 10; // convert mph to km-ish/h
+	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
+	return max_speed;
 }
 
 /* static */ Money AIEngine::GetPrice(EngineID engine_id)

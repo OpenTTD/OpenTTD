@@ -79,31 +79,10 @@ int32 AIEventEnginePreview::GetCapacity()
 
 int32 AIEventEnginePreview::GetMaxSpeed()
 {
-	switch (::GetEngine(engine)->type) {
-		case VEH_ROAD: {
-			const RoadVehicleInfo *vi = ::RoadVehInfo(engine);
-			/* Internal speeds are km/h * 2 */
-			return vi->max_speed / 2;
-		} break;
-
-		case VEH_TRAIN: {
-			const RailVehicleInfo *vi = ::RailVehInfo(engine);
-			return vi->max_speed;
-		} break;
-
-		case VEH_SHIP: {
-			const ShipVehicleInfo *vi = ::ShipVehInfo(engine);
-			/* Internal speeds are km/h * 2 */
-			return vi->max_speed / 2;
-		} break;
-
-		case VEH_AIRCRAFT: {
-			const AircraftVehicleInfo *vi = ::AircraftVehInfo(engine);
-			return vi->max_speed / _settings_game.vehicle.plane_speed;
-		} break;
-
-		default: NOT_REACHED();
-	}
+	const Engine *e = ::GetEngine(engine);
+	int32 max_speed = e->GetDisplayMaxSpeed() * 16 / 10; // convert mph to km-ish/h
+	if (e->type == VEH_AIRCRAFT) max_speed /= _settings_game.vehicle.plane_speed;
+	return max_speed;
 }
 
 Money AIEventEnginePreview::GetPrice()

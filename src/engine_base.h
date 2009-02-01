@@ -52,6 +52,9 @@ struct Engine : PoolItem<Engine, EngineID, &_Engine_pool> {
 
 	Money GetRunningCost() const;
 	Money GetCost() const;
+	uint GetDisplayMaxSpeed() const;
+	uint GetPower() const;
+	uint GetDisplayWeight() const;
 };
 
 static inline bool IsEngineIndex(uint index)
