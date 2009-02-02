@@ -75,9 +75,6 @@ struct AIListWindow : public Window {
 		this->DrawWidgets();
 
 		/* Draw a list of all available AIs. */
-		AIInfoList::const_iterator it = this->ai_info_list->begin();
-		int i = 1;
-		for (; i < this->vscroll.pos; i++) it++;
 		int y = this->widget[AIL_WIDGET_LIST].top;
 		/* First AI in the list is hardcoded to random */
 		if (this->vscroll.pos == 0) {
@@ -85,10 +82,13 @@ struct AIListWindow : public Window {
 			y += 14;
 		}
 		AIInfo *selected_info = NULL;
-		for (; i < this->vscroll.pos + this->vscroll.cap && it != this->ai_info_list->end(); i++, it++) {
+		AIInfoList::const_iterator it = this->ai_info_list->begin();
+		for (int i = 1; it != this->ai_info_list->end(); i++, it++) {
 			if (this->selected == i - 1) selected_info = (*it).second;
-			DoDrawStringTruncated((*it).second->GetName(), 4, y + 3, (this->selected == i - 1) ? TC_WHITE : TC_BLACK, this->width - 8);
-			y += 14;
+			if (IsInsideBS(i, this->vscroll.pos, this->vscroll.cap)) {
+				DoDrawStringTruncated((*it).second->GetName(), 4, y + 3, (this->selected == i - 1) ? TC_WHITE : TC_BLACK, this->width - 8);
+				y += 14;
+			}
 		}
 
 		/* Some info about the currently selected AI. */
