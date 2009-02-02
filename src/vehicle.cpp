@@ -926,17 +926,6 @@ void CheckVehicleBreakdown(Vehicle *v)
 	}
 }
 
-static void ShowVehicleGettingOld(Vehicle *v, StringID msg)
-{
-	if (v->owner != _local_company) return;
-
-	/* Do not show getting-old message if autorenew is active (and it can replace the vehicle) */
-	if (GetCompany(v->owner)->engine_renew && GetEngine(v->engine_type)->company_avail != 0) return;
-
-	SetDParam(0, v->index);
-	AddNewsItem(msg, NS_ADVICE, v->index, 0);
-}
-
 void AgeVehicle(Vehicle *v)
 {
 	if (v->age < 65535) v->age++;
@@ -949,13 +938,25 @@ void AgeVehicle(Vehicle *v)
 
 	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
+	/* Don't warn about non-primary or not ours vehicles */
+	if (v->Previous() != NULL || v->owner != _local_company) return;
+
+	/* Don't warn if a renew is active */
+	if (GetCompany(v->owner)->engine_renew && GetEngine(v->engine_type)->company_avail != 0) return;
+
+	StringID str;
 	if (age == -DAYS_IN_LEAP_YEAR) {
-		ShowVehicleGettingOld(v, STR_01A0_IS_GETTING_OLD);
+		str = STR_01A0_IS_GETTING_OLD;
 	} else if (age == 0) {
-		ShowVehicleGettingOld(v, STR_01A1_IS_GETTING_VERY_OLD);
+		str = STR_01A1_IS_GETTING_VERY_OLD;
 	} else if (age > 0 && (age % DAYS_IN_LEAP_YEAR) == 0) {
-		ShowVehicleGettingOld(v, STR_01A2_IS_GETTING_VERY_OLD_AND);
+		str = STR_01A2_IS_GETTING_VERY_OLD_AND;
+	} else {
+		return;
 	}
+
+	SetDParam(0, v->index);
+	AddNewsItem(str, NS_ADVICE, v->index, 0);
 }
 
 /** Start/Stop a vehicle
