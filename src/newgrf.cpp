@@ -778,12 +778,11 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x13: // Power in 10hp
+				rvi->power = grf_load_byte(&buf);
+				break;
+
 			case 0x14: // Weight in 1/4 tons
-				/** @todo Support for road vehicles realistic power
-				 * computations (called rvpower in TTDPatch) is just
-				 * missing in OTTD yet. --pasky */
-				grf_load_byte(&buf);
-				ret = CIR_UNHANDLED;
+				rvi->weight = grf_load_byte(&buf);
 				break;
 
 			case 0x15: // Speed in mph/0.8
@@ -799,10 +798,11 @@ static ChangeInfoResult RoadVehicleChangeInfo(uint engine, int numinfo, int prop
 				break;
 
 			case 0x18: // Tractive effort
+				rvi->tractive_effort = grf_load_byte(&buf);
+				break;
+
 			case 0x19: // Air drag
-				/** @todo Tractive effort and air drag for road vehicles. */
-				grf_load_byte(&buf);
-				ret = CIR_UNHANDLED;
+				rvi->air_drag = grf_load_byte(&buf);
 				break;
 
 			case 0x1A: // Refit cost

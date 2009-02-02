@@ -616,101 +616,103 @@ static const AircraftVehicleInfo _orig_aircraft_vehicle_info[] = {
  * @param e max_speed
  * @param f capacity
  * @param g cargo_type
+ * @param h weight (1/4ton)
+ * @param i power (10hp)
  */
-#define ROV(a, b, c, d, e, f, g) { a, b, c, RC_R, {d}, e, f, g }
+#define ROV(a, b, c, d, e, f, g, h, i) { a, b, c, RC_R, {d}, e, f, g, h, i, 76, 0 }
 static const RoadVehicleInfo _orig_road_vehicle_info[] = {
 	//    image_index       sfx                                 max_speed
 	//    |    base_cost    |                                   |   capacity
 	//    |    |    running_cost                                |   |  cargo_type
 	//    |    |    |       |                                   |   |  |
-	ROV(  0, 120,  91, SND_19_BUS_START_PULL_AWAY,            112, 31, CT_PASSENGERS   ), /*  0 */
-	ROV( 17, 140, 128, SND_1C_TRUCK_START_2,                  176, 35, CT_PASSENGERS   ), /*  1 */
-	ROV( 17, 150, 178, SND_1B_TRUCK_START,                    224, 37, CT_PASSENGERS   ), /*  2 */
-	ROV( 34, 160, 240, SND_1B_TRUCK_START,                    255, 40, CT_PASSENGERS   ), /*  3 */
-	ROV( 51, 120,  91, SND_3C_COMEDY_CAR,                     112, 30, CT_PASSENGERS   ), /*  4 */
-	ROV( 51, 140, 171, SND_3E_COMEDY_CAR_2,                   192, 35, CT_PASSENGERS   ), /*  5 */
-	ROV( 51, 160, 240, SND_3C_COMEDY_CAR,                     240, 38, CT_PASSENGERS   ), /*  6 */
-	ROV(  1, 108,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_COAL         ), /*  7 */
-	ROV( 18, 128, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_COAL         ), /*  8 */
-	ROV( 35, 138, 240, SND_19_BUS_START_PULL_AWAY,            224, 28, CT_COAL         ), /*  9 */
-	ROV(  2, 115,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_MAIL         ), /* 10 */
-	ROV( 19, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 28, CT_MAIL         ), /* 11 */
-	ROV( 36, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 30, CT_MAIL         ), /* 12 */
-	ROV( 57, 115,  90, SND_3E_COMEDY_CAR_2,                    96, 22, CT_MAIL         ), /* 13 */
-	ROV( 57, 135, 168, SND_3C_COMEDY_CAR,                     176, 28, CT_MAIL         ), /* 14 */
-	ROV( 57, 145, 240, SND_3E_COMEDY_CAR_2,                   224, 30, CT_MAIL         ), /* 15 */
-	ROV(  3, 110,  90, SND_19_BUS_START_PULL_AWAY,             96, 21, CT_OIL          ), /* 16 */
-	ROV( 20, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_OIL          ), /* 17 */
-	ROV( 37, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_OIL          ), /* 18 */
-	ROV(  4, 105,  90, SND_19_BUS_START_PULL_AWAY,             96, 14, CT_LIVESTOCK    ), /* 19 */
-	ROV( 21, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16, CT_LIVESTOCK    ), /* 20 */
-	ROV( 38, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18, CT_LIVESTOCK    ), /* 21 */
-	ROV(  5, 107,  90, SND_19_BUS_START_PULL_AWAY,             96, 14, CT_GOODS        ), /* 22 */
-	ROV( 22, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16, CT_GOODS        ), /* 23 */
-	ROV( 39, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18, CT_GOODS        ), /* 24 */
-	ROV(  6, 114,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_GRAIN        ), /* 25 */
-	ROV( 23, 133, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_GRAIN        ), /* 26 */
-	ROV( 40, 143, 240, SND_19_BUS_START_PULL_AWAY,            224, 30, CT_GRAIN        ), /* 27 */
-	ROV(  7, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_WOOD         ), /* 28 */
-	ROV( 24, 137, 168, SND_19_BUS_START_PULL_AWAY,            176, 22, CT_WOOD         ), /* 29 */
-	ROV( 41, 147, 240, SND_19_BUS_START_PULL_AWAY,            224, 24, CT_WOOD         ), /* 30 */
-	ROV(  8, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_IRON_ORE     ), /* 31 */
-	ROV( 25, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_IRON_ORE     ), /* 32 */
-	ROV( 42, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_IRON_ORE     ), /* 33 */
-	ROV(  9, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15, CT_STEEL        ), /* 34 */
-	ROV( 26, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18, CT_STEEL        ), /* 35 */
-	ROV( 43, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20, CT_STEEL        ), /* 36 */
-	ROV( 10, 145,  90, SND_19_BUS_START_PULL_AWAY,             96, 12, CT_VALUABLES    ), /* 37 */
-	ROV( 27, 170, 168, SND_19_BUS_START_PULL_AWAY,            176, 15, CT_VALUABLES    ), /* 38 */
-	ROV( 44, 180, 240, SND_19_BUS_START_PULL_AWAY,            224, 16, CT_VALUABLES    ), /* 39 */
-	ROV( 11, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 17, CT_FOOD         ), /* 40 */
-	ROV( 28, 134, 168, SND_19_BUS_START_PULL_AWAY,            176, 20, CT_FOOD         ), /* 41 */
-	ROV( 45, 144, 240, SND_19_BUS_START_PULL_AWAY,            224, 22, CT_FOOD         ), /* 42 */
-	ROV( 12, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15, CT_PAPER        ), /* 43 */
-	ROV( 29, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18, CT_PAPER        ), /* 44 */
-	ROV( 46, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20, CT_PAPER        ), /* 45 */
-	ROV( 13, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_COPPER_ORE   ), /* 46 */
-	ROV( 30, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_COPPER_ORE   ), /* 47 */
-	ROV( 47, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_COPPER_ORE   ), /* 48 */
-	ROV( 14, 111,  90, SND_19_BUS_START_PULL_AWAY,             96, 21, CT_WATER        ), /* 49 */
-	ROV( 31, 141, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_WATER        ), /* 50 */
-	ROV( 48, 151, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_WATER        ), /* 51 */
-	ROV( 15, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 18, CT_FRUIT        ), /* 52 */
-	ROV( 32, 148, 168, SND_19_BUS_START_PULL_AWAY,            176, 20, CT_FRUIT        ), /* 53 */
-	ROV( 49, 158, 240, SND_19_BUS_START_PULL_AWAY,            224, 23, CT_FRUIT        ), /* 54 */
-	ROV( 16, 117,  90, SND_19_BUS_START_PULL_AWAY,             96, 17, CT_RUBBER       ), /* 55 */
-	ROV( 33, 147, 168, SND_19_BUS_START_PULL_AWAY,            176, 19, CT_RUBBER       ), /* 56 */
-	ROV( 50, 157, 240, SND_19_BUS_START_PULL_AWAY,            224, 22, CT_RUBBER       ), /* 57 */
-	ROV( 52, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_SUGAR        ), /* 58 */
-	ROV( 52, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_SUGAR        ), /* 59 */
-	ROV( 52, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_SUGAR        ), /* 60 */
-	ROV( 53, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_COLA         ), /* 61 */
-	ROV( 53, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_COLA         ), /* 62 */
-	ROV( 53, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_COLA         ), /* 63 */
-	ROV( 54, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_COTTON_CANDY ), /* 64 */
-	ROV( 54, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_COTTON_CANDY ), /* 65 */
-	ROV( 54, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_COTTON_CANDY ), /* 66 */
-	ROV( 55, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_TOFFEE       ), /* 67 */
-	ROV( 55, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_TOFFEE       ), /* 68 */
-	ROV( 55, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_TOFFEE       ), /* 69 */
-	ROV( 56, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_TOYS         ), /* 70 */
-	ROV( 56, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_TOYS         ), /* 71 */
-	ROV( 56, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_TOYS         ), /* 72 */
-	ROV( 58, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_CANDY        ), /* 73 */
-	ROV( 58, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_CANDY        ), /* 74 */
-	ROV( 58, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_CANDY        ), /* 75 */
-	ROV( 59, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_BATTERIES    ), /* 76 */
-	ROV( 59, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_BATTERIES    ), /* 77 */
-	ROV( 59, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_BATTERIES    ), /* 78 */
-	ROV( 60, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_FIZZY_DRINKS ), /* 79 */
-	ROV( 60, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_FIZZY_DRINKS ), /* 80 */
-	ROV( 60, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_FIZZY_DRINKS ), /* 81 */
-	ROV( 61, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_PLASTIC      ), /* 82 */
-	ROV( 61, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_PLASTIC      ), /* 83 */
-	ROV( 61, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_PLASTIC      ), /* 84 */
-	ROV( 62, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_BUBBLES      ), /* 85 */
-	ROV( 62, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_BUBBLES      ), /* 86 */
-	ROV( 62, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_BUBBLES      ), /* 87 */
+	ROV(  0, 120,  91, SND_19_BUS_START_PULL_AWAY,            112, 31, CT_PASSENGERS   , 42,  9), /*  0 */
+	ROV( 17, 140, 128, SND_1C_TRUCK_START_2,                  176, 35, CT_PASSENGERS   , 60, 12), /*  1 */
+	ROV( 17, 150, 178, SND_1B_TRUCK_START,                    224, 37, CT_PASSENGERS   , 70, 15), /*  2 */
+	ROV( 34, 160, 240, SND_1B_TRUCK_START,                    255, 40, CT_PASSENGERS   ,100, 25), /*  3 */
+	ROV( 51, 120,  91, SND_3C_COMEDY_CAR,                     112, 30, CT_PASSENGERS   , 42,  9), /*  4 */
+	ROV( 51, 140, 171, SND_3E_COMEDY_CAR_2,                   192, 35, CT_PASSENGERS   , 60, 15), /*  5 */
+	ROV( 51, 160, 240, SND_3C_COMEDY_CAR,                     240, 38, CT_PASSENGERS   , 90, 25), /*  6 */
+	ROV(  1, 108,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_COAL         , 38, 12), /*  7 */
+	ROV( 18, 128, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_COAL         , 48, 22), /*  8 */
+	ROV( 35, 138, 240, SND_19_BUS_START_PULL_AWAY,            224, 28, CT_COAL         , 69, 45), /*  9 */
+	ROV(  2, 115,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_MAIL         , 38, 12), /* 10 */
+	ROV( 19, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 28, CT_MAIL         , 48, 22), /* 11 */
+	ROV( 36, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 30, CT_MAIL         , 69, 45), /* 12 */
+	ROV( 57, 115,  90, SND_3E_COMEDY_CAR_2,                    96, 22, CT_MAIL         , 38, 12), /* 13 */
+	ROV( 57, 135, 168, SND_3C_COMEDY_CAR,                     176, 28, CT_MAIL         , 48, 22), /* 14 */
+	ROV( 57, 145, 240, SND_3E_COMEDY_CAR_2,                   224, 30, CT_MAIL         , 69, 45), /* 15 */
+	ROV(  3, 110,  90, SND_19_BUS_START_PULL_AWAY,             96, 21, CT_OIL          , 38, 12), /* 16 */
+	ROV( 20, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_OIL          , 48, 22), /* 17 */
+	ROV( 37, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_OIL          , 69, 45), /* 18 */
+	ROV(  4, 105,  90, SND_19_BUS_START_PULL_AWAY,             96, 14, CT_LIVESTOCK    , 38, 12), /* 19 */
+	ROV( 21, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16, CT_LIVESTOCK    , 48, 22), /* 20 */
+	ROV( 38, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18, CT_LIVESTOCK    , 69, 45), /* 21 */
+	ROV(  5, 107,  90, SND_19_BUS_START_PULL_AWAY,             96, 14, CT_GOODS        , 38, 12), /* 22 */
+	ROV( 22, 130, 168, SND_19_BUS_START_PULL_AWAY,            176, 16, CT_GOODS        , 48, 22), /* 23 */
+	ROV( 39, 140, 240, SND_19_BUS_START_PULL_AWAY,            224, 18, CT_GOODS        , 69, 45), /* 24 */
+	ROV(  6, 114,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_GRAIN        , 38, 12), /* 25 */
+	ROV( 23, 133, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_GRAIN        , 48, 22), /* 26 */
+	ROV( 40, 143, 240, SND_19_BUS_START_PULL_AWAY,            224, 30, CT_GRAIN        , 69, 45), /* 27 */
+	ROV(  7, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 20, CT_WOOD         , 38, 12), /* 28 */
+	ROV( 24, 137, 168, SND_19_BUS_START_PULL_AWAY,            176, 22, CT_WOOD         , 48, 22), /* 29 */
+	ROV( 41, 147, 240, SND_19_BUS_START_PULL_AWAY,            224, 24, CT_WOOD         , 69, 45), /* 30 */
+	ROV(  8, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_IRON_ORE     , 38, 12), /* 31 */
+	ROV( 25, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_IRON_ORE     , 48, 22), /* 32 */
+	ROV( 42, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_IRON_ORE     , 69, 45), /* 33 */
+	ROV(  9, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15, CT_STEEL        , 38, 12), /* 34 */
+	ROV( 26, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18, CT_STEEL        , 48, 22), /* 35 */
+	ROV( 43, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20, CT_STEEL        , 69, 45), /* 36 */
+	ROV( 10, 145,  90, SND_19_BUS_START_PULL_AWAY,             96, 12, CT_VALUABLES    , 38, 12), /* 37 */
+	ROV( 27, 170, 168, SND_19_BUS_START_PULL_AWAY,            176, 15, CT_VALUABLES    , 48, 22), /* 38 */
+	ROV( 44, 180, 240, SND_19_BUS_START_PULL_AWAY,            224, 16, CT_VALUABLES    , 69, 45), /* 39 */
+	ROV( 11, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 17, CT_FOOD         , 38, 12), /* 40 */
+	ROV( 28, 134, 168, SND_19_BUS_START_PULL_AWAY,            176, 20, CT_FOOD         , 48, 22), /* 41 */
+	ROV( 45, 144, 240, SND_19_BUS_START_PULL_AWAY,            224, 22, CT_FOOD         , 69, 45), /* 42 */
+	ROV( 12, 112,  90, SND_19_BUS_START_PULL_AWAY,             96, 15, CT_PAPER        , 38, 12), /* 43 */
+	ROV( 29, 135, 168, SND_19_BUS_START_PULL_AWAY,            176, 18, CT_PAPER        , 48, 22), /* 44 */
+	ROV( 46, 145, 240, SND_19_BUS_START_PULL_AWAY,            224, 20, CT_PAPER        , 69, 45), /* 45 */
+	ROV( 13, 121,  90, SND_19_BUS_START_PULL_AWAY,             96, 22, CT_COPPER_ORE   , 38, 12), /* 46 */
+	ROV( 30, 140, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_COPPER_ORE   , 48, 22), /* 47 */
+	ROV( 47, 150, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_COPPER_ORE   , 69, 45), /* 48 */
+	ROV( 14, 111,  90, SND_19_BUS_START_PULL_AWAY,             96, 21, CT_WATER        , 38, 12), /* 49 */
+	ROV( 31, 141, 168, SND_19_BUS_START_PULL_AWAY,            176, 25, CT_WATER        , 48, 22), /* 50 */
+	ROV( 48, 151, 240, SND_19_BUS_START_PULL_AWAY,            224, 27, CT_WATER        , 69, 45), /* 51 */
+	ROV( 15, 118,  90, SND_19_BUS_START_PULL_AWAY,             96, 18, CT_FRUIT        , 38, 12), /* 52 */
+	ROV( 32, 148, 168, SND_19_BUS_START_PULL_AWAY,            176, 20, CT_FRUIT        , 48, 22), /* 53 */
+	ROV( 49, 158, 240, SND_19_BUS_START_PULL_AWAY,            224, 23, CT_FRUIT        , 69, 45), /* 54 */
+	ROV( 16, 117,  90, SND_19_BUS_START_PULL_AWAY,             96, 17, CT_RUBBER       , 38, 12), /* 55 */
+	ROV( 33, 147, 168, SND_19_BUS_START_PULL_AWAY,            176, 19, CT_RUBBER       , 48, 22), /* 56 */
+	ROV( 50, 157, 240, SND_19_BUS_START_PULL_AWAY,            224, 22, CT_RUBBER       , 69, 45), /* 57 */
+	ROV( 52, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_SUGAR        , 38, 12), /* 58 */
+	ROV( 52, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_SUGAR        , 48, 22), /* 59 */
+	ROV( 52, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_SUGAR        , 69, 45), /* 60 */
+	ROV( 53, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_COLA         , 38, 12), /* 61 */
+	ROV( 53, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_COLA         , 48, 22), /* 62 */
+	ROV( 53, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_COLA         , 69, 45), /* 63 */
+	ROV( 54, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_COTTON_CANDY , 38, 12), /* 64 */
+	ROV( 54, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_COTTON_CANDY , 48, 22), /* 65 */
+	ROV( 54, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_COTTON_CANDY , 69, 45), /* 66 */
+	ROV( 55, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_TOFFEE       , 38, 12), /* 67 */
+	ROV( 55, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_TOFFEE       , 48, 22), /* 68 */
+	ROV( 55, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_TOFFEE       , 69, 45), /* 69 */
+	ROV( 56, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_TOYS         , 38, 12), /* 70 */
+	ROV( 56, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_TOYS         , 48, 22), /* 71 */
+	ROV( 56, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_TOYS         , 69, 45), /* 72 */
+	ROV( 58, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_CANDY        , 38, 12), /* 73 */
+	ROV( 58, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_CANDY        , 48, 22), /* 74 */
+	ROV( 58, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_CANDY        , 69, 45), /* 75 */
+	ROV( 59, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_BATTERIES    , 38, 12), /* 76 */
+	ROV( 59, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_BATTERIES    , 48, 22), /* 77 */
+	ROV( 59, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_BATTERIES    , 69, 45), /* 78 */
+	ROV( 60, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_FIZZY_DRINKS , 38, 12), /* 79 */
+	ROV( 60, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_FIZZY_DRINKS , 48, 22), /* 80 */
+	ROV( 60, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_FIZZY_DRINKS , 69, 45), /* 81 */
+	ROV( 61, 117,  90, SND_3F_COMEDY_CAR_3,                    96, 17, CT_PLASTIC      , 38, 12), /* 82 */
+	ROV( 61, 147, 168, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 176, 19, CT_PLASTIC      , 48, 22), /* 83 */
+	ROV( 61, 157, 240, SND_3F_COMEDY_CAR_3,                   224, 22, CT_PLASTIC      , 69, 45), /* 84 */
+	ROV( 62, 117,  90, SND_40_COMEDY_CAR_START_AND_PULL_AWAY,  96, 17, CT_BUBBLES      , 38, 12), /* 85 */
+	ROV( 62, 147, 168, SND_3F_COMEDY_CAR_3,                   176, 19, CT_BUBBLES      , 48, 22), /* 86 */
+	ROV( 62, 157, 240, SND_40_COMEDY_CAR_START_AND_PULL_AWAY, 224, 22, CT_BUBBLES      , 69, 45), /* 87 */
 };
 #undef ROV
 

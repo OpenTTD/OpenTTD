@@ -99,6 +99,10 @@ struct RoadVehicleInfo {
 	uint16 max_speed;        ///< Maximum speed in mph/3.2 units
 	byte capacity;
 	CargoID cargo_type;
+	uint8 weight;            ///< Weight in 1/4t units
+	uint8 power;             ///< Power in 10hp units
+	uint8 tractive_effort;   ///< Coefficient of tractive effort
+	uint8 air_drag;          ///< Coefficient of air drag
 };
 
 /** Information about a vehicle
