@@ -169,6 +169,7 @@ static const char *GetEnglishFontName(const ENUMLOGFONTEX *logfont)
 {
 	static char font_name[MAX_PATH];
 	const char *ret_font_name = NULL;
+	uint pos = 0;
 
 	HFONT font = CreateFontIndirect(&logfont->elfLogFont);
 	if (font == NULL) goto err1;
@@ -182,7 +183,6 @@ static const char *GetEnglishFontName(const ENUMLOGFONTEX *logfont)
 	dw = GetFontData(dc, 'eman', 0, buf, dw);
 	if (dw == GDI_ERROR) goto err3;
 
-	uint pos = 0;
 	uint16 format = buf[pos++] << 8;
 	format += buf[pos++];
 	assert(format == 0);
