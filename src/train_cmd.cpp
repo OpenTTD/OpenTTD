@@ -2456,7 +2456,7 @@ void FreeTrainTrackReservation(const Vehicle *v, TileIndex origin, Trackdir orig
 	CFollowTrackRail ft(v, GetRailTypeInfo(v->u.rail.railtype)->compatible_railtypes);
 	while (ft.Follow(tile, td)) {
 		tile = ft.m_new_tile;
-		TrackdirBits bits = (TrackdirBits)(ft.m_new_td_bits & (GetReservedTrackbits(tile) * 0x101));
+		TrackdirBits bits = ft.m_new_td_bits & TrackBitsToTrackdirBits(GetReservedTrackbits(tile));
 		td = RemoveFirstTrackdir(&bits);
 		assert(bits == TRACKDIR_BIT_NONE);
 
@@ -2562,8 +2562,8 @@ static const byte _pick_track_table[6] = {1, 3, 2, 2, 0, 0};
  * @param enterdir Diagonal direction the train is coming from
  * @param tracks Usable tracks on the new tile
  * @param path_not_found [out] Set to false if the pathfinder couldn't find a way to the destination
- * @param do_track_reservation
- * @param dest [out]
+ * @param do_track_reservation Path reservation is requested
+ * @param dest [out] State and destination of the requested path
  * @return The best track the train should follow
  */
 static Track DoTrainPathfind(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks, bool *path_not_found, bool do_track_reservation, PBSTileInfo *dest)
@@ -3024,7 +3024,9 @@ static Track ChooseTrainTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir
  * Try to reserve a path to a safe position.
  *
  * @param v The vehicle
- * @return True if a path could be reserved
+ * @param mark_as_stuck Should the train be marked as stuck on a failed reservation?
+ * @param first_tile_okay True if no path should be reserved if the current tile is a safe position.
+ * @return True if a path could be reserved.
  */
 bool TryPathReserve(Vehicle *v, bool mark_as_stuck, bool first_tile_okay)
 {
@@ -3049,7 +3051,7 @@ bool TryPathReserve(Vehicle *v, bool mark_as_stuck, bool first_tile_okay)
 	TileIndex next_tile = TileAddByDiagDir(v->tile, dir);
 	if (IsTileType(next_tile, MP_RAILWAY) && HasReservedTracks(next_tile, DiagdirReachesTracks(dir))) {
 		/* Can have only one reserved trackdir. */
-		Trackdir td = FindFirstTrackdir((TrackdirBits)(GetReservedTrackbits(next_tile) * 0x101 & DiagdirReachesTrackdirs(dir)));
+		Trackdir td = FindFirstTrackdir(TrackBitsToTrackdirBits(GetReservedTrackbits(next_tile)) & DiagdirReachesTrackdirs(dir));
 		if (HasSignalOnTrackdir(next_tile, td) && HasSignalOnTrackdir(next_tile, ReverseTrackdir(td)) &&
 				!IsPbsSignal(GetSignalType(next_tile, TrackdirToTrack(td)))) {
 			/* Signal already reserved, is not ours. */
@@ -3084,7 +3086,7 @@ bool TryPathReserve(Vehicle *v, bool mark_as_stuck, bool first_tile_okay)
 
 	DiagDirection exitdir = TrackdirToExitdir(origin.trackdir);
 	TileIndex     new_tile = TileAddByDiagDir(origin.tile, exitdir);
-	TrackBits     reachable = TrackdirBitsToTrackBits((TrackdirBits)GetTileTrackStatus(new_tile, TRANSPORT_RAIL, 0) & DiagdirReachesTrackdirs(exitdir));
+	TrackBits     reachable = TrackdirBitsToTrackBits(TrackStatusToTrackdirBits(GetTileTrackStatus(new_tile, TRANSPORT_RAIL, 0)) & DiagdirReachesTrackdirs(exitdir));
 
 	if (_settings_game.pf.pathfinder_for_trains != VPF_NTP && _settings_game.pf.forbid_90_deg) reachable &= ~TrackCrossesTracks(TrackdirToTrack(origin.trackdir));
 
