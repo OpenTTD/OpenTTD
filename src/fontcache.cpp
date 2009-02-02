@@ -152,6 +152,84 @@ registry_no_font_found:
 	return err;
 }
 
+/**
+ * Fonts can have localised names and when the system locale is the same as
+ * one of those localised names Windows will always return that localised name
+ * instead of allowing to get the non-localised (English US) name of the font.
+ * This will later on give problems as freetype uses the non-localised name of
+ * the font and we need to compare based on that name.
+ * Windows furthermore DOES NOT have an API to get the non-localised name nor
+ * can we override the system locale. This means that we have to actually read
+ * the font itself to gather the font name we want.
+ * Based on: http://blogs.msdn.com/michkap/archive/2006/02/13/530814.aspx
+ * @param logfont the font information to get the english name of.
+ * @return the English name (if it could be found).
+ */
+static const char *GetEnglishFontName(const ENUMLOGFONTEX *logfont)
+{
+	static char font_name[MAX_PATH];
+	const char *ret_font_name = NULL;
+
+	HFONT font = CreateFontIndirect(&logfont->elfLogFont);
+	if (font == NULL) goto err1;
+
+	HDC dc = GetDC(NULL);
+	HGDIOBJ oldfont = SelectObject(dc, font);
+	DWORD dw = GetFontData(dc, 'eman', 0, NULL, 0);
+	if (dw == GDI_ERROR) goto err2;
+
+	byte *buf = MallocT<byte>(dw);
+	dw = GetFontData(dc, 'eman', 0, buf, dw);
+	if (dw == GDI_ERROR) goto err3;
+
+	uint pos = 0;
+	uint16 format = buf[pos++] << 8;
+	format += buf[pos++];
+	assert(format == 0);
+	uint16 count = buf[pos++] << 8;
+	count += buf[pos++];
+	uint16 stringOffset = buf[pos++] << 8;
+	stringOffset += buf[pos++];
+	for (uint i = 0; i < count; i++) {
+		uint16 platformId = buf[pos++] << 8;
+		platformId += buf[pos++];
+		uint16 encodingId = buf[pos++] << 8;
+		encodingId += buf[pos++];
+		uint16 languageId = buf[pos++] << 8;
+		languageId += buf[pos++];
+		uint16 nameId = buf[pos++] << 8;
+		nameId += buf[pos++];
+		if (nameId != 1) {
+			pos += 4; // skip length and offset
+			continue;
+		}
+		uint16 length = buf[pos++] << 8;
+		length += buf[pos++];
+		uint16 offset = buf[pos++] << 8;
+		offset += buf[pos++];
+
+		/* Don't buffer overflow */
+		length = min(length, MAX_PATH - 1);
+		for (uint j = 0; j < length; j++) font_name[j] = buf[stringOffset + offset + j];
+		font_name[length] = '\0';
+
+		if ((platformId == 1 && languageId == 0) ||      // Macintosh English
+			(platformId == 3 && languageId == 0x0409)) { // Microsoft English (US)
+			ret_font_name = font_name;
+			break;
+		}
+	}
+
+err3:
+	free(buf);
+err2:
+	SelectObject(dc, oldfont);
+	ReleaseDC(NULL, dc);
+err1:
+	DeleteObject(font);
+
+	return ret_font_name == NULL ? WIDE_TO_MB((const TCHAR*)logfont->elfFullName) : ret_font_name;
+}
 
 struct EFCParam {
 	FreeTypeSettings *settings;
@@ -184,7 +262,7 @@ static int CALLBACK EnumFontCallback(const ENUMLOGFONTEX *logfont, const NEWTEXT
 		if ((fs.fsCsb[0] & info->locale.lsCsbSupported[0]) == 0 && (fs.fsCsb[1] & info->locale.lsCsbSupported[1]) == 0) return 1;
 	}
 
-	const char *font_name = WIDE_TO_MB((const TCHAR*)logfont->elfFullName);
+	const char *font_name = GetEnglishFontName(logfont);
 	DEBUG(freetype, 1, "Fallback font: %s", font_name);
 
 	strecpy(info->settings->small_font,  font_name, lastof(info->settings->small_font));
