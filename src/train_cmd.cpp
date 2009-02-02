@@ -504,9 +504,9 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	}
 
 	if (mode == AM_ACCEL) {
-		return (force - resistance) / (mass * 4);
+		return (force - resistance) / (mass * 2);
 	} else {
-		return min((-force - resistance) / (mass * 4), -10000 / (mass * 4));
+		return min((-force - resistance) / mass, -10000 / mass);
 	}
 }
 
@@ -3255,18 +3255,18 @@ static int UpdateTrainSpeed(Vehicle *v)
 	if (v->vehstatus & VS_STOPPED || HasBit(v->u.rail.flags, VRF_REVERSING) || HasBit(v->u.rail.flags, VRF_TRAIN_STUCK)) {
 		switch (_settings_game.vehicle.train_acceleration_model) {
 			default: NOT_REACHED();
-			case TAM_ORIGINAL:  accel = v->acceleration * -2; break;
-			case TAM_REALISTIC: accel = GetTrainAcceleration(v, AM_BRAKE) * 2; break;
+			case TAM_ORIGINAL:  accel = v->acceleration * -4; break;
+			case TAM_REALISTIC: accel = GetTrainAcceleration(v, AM_BRAKE); break;
 		}
 	} else {
 		switch (_settings_game.vehicle.train_acceleration_model) {
 			default: NOT_REACHED();
-			case TAM_ORIGINAL:  accel = v->acceleration; break;
+			case TAM_ORIGINAL:  accel = v->acceleration * 2; break;
 			case TAM_REALISTIC: accel = GetTrainAcceleration(v, AM_ACCEL); break;
 		}
 	}
 
-	uint spd = v->subspeed + accel * 2;
+	uint spd = v->subspeed + accel;
 	v->subspeed = (byte)spd;
 	{
 		int tempmax = v->max_speed;
