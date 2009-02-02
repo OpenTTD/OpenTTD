@@ -97,7 +97,7 @@ char *CDECL str_fmt(const char *str, ...)
 }
 
 
-void str_validate(char *str, bool allow_newlines)
+void str_validate(char *str, bool allow_newlines, bool ignore)
 {
 	char *dst = str;
 	WChar c;
@@ -122,7 +122,7 @@ void str_validate(char *str, bool allow_newlines)
 			assert(c != '\r');
 			/* Replace the undesirable character with a question mark */
 			str += len;
-			*dst++ = '?';
+			if (!ignore) *dst++ = '?';
 		}
 	}
 

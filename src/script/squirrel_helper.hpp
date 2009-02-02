@@ -9,6 +9,7 @@
 #include "../core/math_func.hpp"
 #include "../core/smallvec_type.hpp"
 #include "../economy_type.h"
+#include "../string_func.h"
 #include "squirrel_helper_type.hpp"
 
 /**
@@ -79,8 +80,8 @@ namespace SQConvert {
 	template <> inline int Return<int64>       (HSQUIRRELVM vm, int64 res)       { sq_pushinteger(vm, ClampToI32(res)); return 1; }
 	template <> inline int Return<Money>       (HSQUIRRELVM vm, Money res)       { sq_pushinteger(vm, ClampToI32(res)); return 1; }
 	template <> inline int Return<bool>        (HSQUIRRELVM vm, bool res)        { sq_pushbool   (vm, res); return 1; }
-	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == NULL) sq_pushnull(vm); else sq_pushstring (vm, OTTD2FS(res), strlen(res)); free(res); return 1; }
-	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == NULL) sq_pushnull(vm); else sq_pushstring (vm, OTTD2FS(res), strlen(res)); return 1; }
+	template <> inline int Return<char *>      (HSQUIRRELVM vm, char *res)       { if (res == NULL) sq_pushnull(vm); else {str_validate(res, false, true); sq_pushstring (vm, OTTD2FS(res), strlen(res)); free(res);} return 1; }
+	template <> inline int Return<const char *>(HSQUIRRELVM vm, const char *res) { if (res == NULL) sq_pushnull(vm); else {str_validate((char*)res, false, true); sq_pushstring (vm, OTTD2FS(res), strlen(res));} return 1; }
 	template <> inline int Return<void *>      (HSQUIRRELVM vm, void *res)       { sq_pushuserpointer(vm, res); return 1; }
 
 	/**
