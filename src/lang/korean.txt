@@ -3677,12 +3677,12 @@ STR_FACE_TIE_EARRING_TIP                                        :{BLACK}넥타�
 ############ signal GUI
 STR_SIGNAL_SELECTION                                            :{WHITE}신호기 선택
 STR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE                           :{WHITE}이곳의 신호기를 변환할 수 없습니다...
-STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}폐색 신호기 (구식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
-STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (구식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
-STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (구식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (구식){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}경로 신호기 (구식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
-STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}일방통행 경로 신호기 (구식){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_NORM_TIP                             :{BLACK}폐색 신호기 (완목){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
+STR_BUILD_SIGNAL_SEMAPHORE_ENTRY_TIP                            :{BLACK}입구 신호기 (완목){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
+STR_BUILD_SIGNAL_SEMAPHORE_EXIT_TIP                             :{BLACK}출구-신호기 (완목){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}콤보-신호기 (완목){}콤보-신호기는 입구/출구 신호기의 역할을 동시에 합니다. 이 신호기는 거대한 전면신호기의 "나무구조"를 건설할 수 있게 합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}경로 신호기 (완목){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 경로 신호기는 반대편에서 통과가 가능합니다.
+STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}일방통행 경로 신호기 (완목){}경로 신호기는 경로가 겹치지 않는 경우에 한 대 이상의 열차가 한 폐색 구간에 동시에 들어갈 수 있게 해줍니다. 일방통행 신호기는 반대편에서 통과가 불가능합니다.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}폐색 신호기 (전자식){}가장 기본적인 신호기 형식입니다. 단 한 대의 열차만이 이 폐색 구간을 통과할 수 있습니다.
 STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}입구-신호기 (전자식){}다음 폐색 구간에 출구 신호기가 하나라도 파란불이면 파란불이 되며, 다른 경우에는 빨간불이 됩니다.
 STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}출구-신호기 (전자식){}일반 신호기와 같은 방법으로 만들되, 입구 & 콤보 신호기와 올바르게 연계되어야 합니다.

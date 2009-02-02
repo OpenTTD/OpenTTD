@@ -1148,6 +1148,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :الجديد
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :الأكثر استخداما
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}اظهار الطرق المحجوزة: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE} ابقاء ادوات البناء فعالة بعد استخدامها: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE} النفقات للمجموعة في النافذة المالية: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}عرض ادوات البناء عندما لا توجد مركبات متاحة بعد: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}الحد الأعلى لعدد القطارات لكل لاعب: {ORANGE}{STRING}
@@ -1560,6 +1561,7 @@ STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE} ادخ�
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}الخادم محمي، أدخل الرقم السر
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}الشركة محمية ، أدخل الرقم السري
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}قائمة العملاء
+STR_NETWORK_COMPANY_LIST_SPECTATE                               :{WHITE} شاهد
 STR_NETWORK_COMPANY_LIST_NEW_COMPANY                            :{WHITE} شركة جديدة
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} لايوجد أجهزة شبكة
@@ -1852,6 +1854,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}شركة {COMPANY}  فازت بالعرض{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي 3 اضعاف الدخل للسنة القادمة
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT} شركة {COMPANY}  فازت بالعرض !{}{} نقل {STRING} من {STATION} الى {STATION} سوف يعطي اربعة اضعاف الدخل للسنة القادمة
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN}البلدية ترفض بناء مطار آخر في هذه المدينة
+STR_LOCAL_AUTHORITY_REFUSES_NOISE                               :{WHITE} بلدية {TOWN}{} ترفض السماح بمطار هنا بسبب تتعلق بالضوضاء العالية منه .
 STR_2036_COTTAGES                                               :اكواخ
 STR_2037_HOUSES                                                 :منازل
 STR_2038_FLATS                                                  :شقق

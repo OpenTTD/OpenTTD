@@ -1147,6 +1147,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Laatst beschikb
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Meest gebruikte
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Toon gereserveerd spoor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Hou bouw-tools actief na gebruik: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Groepeer uitgaven in bedrijfsfinanciën scherm: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Geef bouwgereedschap weer wanneer geen geschikte voertuigen beschikbaar zijn: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}

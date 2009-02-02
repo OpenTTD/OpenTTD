@@ -1213,6 +1213,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhe
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Legutoljára használt
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányszakasz foglaltságának jelzése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Építő eszközök aktívak maradnak használat után: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Kiadás/bevétel adatok csoportosítása a pénzügyi ablakban: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Eszköztár mutatása, még ha nem is építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}

@@ -3813,6 +3813,7 @@ STR_AI_CHANGE                                                   :{BLACK}Wybierz 
 STR_AI_CONFIGURE                                                :{BLACK}Konfiguruj
 STR_AI_CHANGE_TIP                                               :{BLACK}Wczytaj kolejne SI
 STR_AI_CONFIGURE_TIP                                            :{BLACK}Konfiguruj parametry SI
+STR_AI_AILIST_TIP                                               :{BLACK}Kliknij, aby wybrać SI
 STR_AI_ACCEPT                                                   :{BLACK}Zaakceptuj
 STR_AI_ACCEPT_TIP                                               :{BLACK}Wybierz podświetlone SI
 STR_AI_CANCEL                                                   :{BLACK}Anuluj
