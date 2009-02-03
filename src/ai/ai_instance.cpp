@@ -507,7 +507,7 @@ void AIInstance::Save()
 			return;
 		}
 		/* Push the loaded savegame data to the top of the stack. */
-		sq_push(vm, -3);
+		sq_push(vm, -2);
 		_ai_sl_byte = 1;
 		SlObject(NULL, _ai_byte);
 		/* Save the data that was just loaded. */
@@ -623,8 +623,8 @@ void AIInstance::Load(int version)
 
 	/* First remove the value "false" since we have data to load. */
 	sq_poptop(vm);
-	LoadObjects(vm);
 	sq_pushinteger(vm, version);
+	LoadObjects(vm);
 	sq_pushbool(vm, true);
 }
 
@@ -655,7 +655,7 @@ void AIInstance::CallLoad()
 	sq_get(vm, -2);
 	/* Push the main instance as "this" object */
 	sq_pushobject(vm, *this->instance);
-	/* Push the savegame data and version as arguments */
+	/* Push the version data and savegame data as arguments */
 	sq_push(vm, -5);
 	sq_push(vm, -5);
 
@@ -663,7 +663,7 @@ void AIInstance::CallLoad()
 	 * function pointer) from the stack. */
 	sq_call(vm, 3, SQFalse, SQFalse);
 
-	/* Pop 1) The savegame data, 2) the version, 3) the object instance, 4) the function pointer. */
+	/* Pop 1) The version, 2) the savegame data, 3) the object instance, 4) the function pointer. */
 	sq_pop(vm, 4);
 
 	AIObject::SetAllowDoCommand(true);
