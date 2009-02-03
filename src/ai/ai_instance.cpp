@@ -132,12 +132,9 @@ AIInstance::AIInstance(AIInfo *info) :
 	/* Register the API functions and classes */
 	this->RegisterAPI();
 
-	/* Run the constructor if it exists. Don't allow any DoCommands in it. */
-	if (this->engine->MethodExists(*this->instance, "constructor")) {
-		AIObject::SetAllowDoCommand(false);
-		this->engine->CallMethod(*this->instance, "constructor");
-		AIObject::SetAllowDoCommand(true);
-	}
+	/* The topmost stack item is true if there is data from a savegame
+	 * and false otherwise. */
+	sq_pushbool(this->engine->vm, false);
 }
 
 AIInstance::~AIInstance()
@@ -271,8 +268,15 @@ void AIInstance::GameLoop()
 	this->callback = NULL;
 
 	if (!this->is_started) {
-		/* Start the AI by calling Start() */
 		try {
+			/* Run the constructor if it exists. Don't allow any DoCommands in it. */
+			if (this->engine->MethodExists(*this->instance, "constructor")) {
+				AIObject::SetAllowDoCommand(false);
+				this->engine->CallMethod(*this->instance, "constructor");
+				AIObject::SetAllowDoCommand(true);
+			}
+			this->CallLoad();
+			/* Start the AI by calling Start() */
 			if (!this->engine->CallMethod(*this->instance, "Start",  _settings_game.ai.ai_max_opcode_till_suspend)) this->Died();
 		} catch (AI_VMSuspend e) {
 			this->suspend  = e.GetSuspendTime();
@@ -494,20 +498,33 @@ void AIInstance::Save()
 		return;
 	}
 
-	/* We don't want to be interrupted during the save function. */
-	AIObject::SetAllowDoCommand(false);
-
-	HSQOBJECT savedata;
-	if (this->engine->MethodExists(*this->instance, "Save")) {
-		this->engine->CallMethod(*this->instance, "Save", &savedata);
-		if (!sq_istable(savedata)) {
-			AILog::Error("Save function should return a table.");
-			_ai_sl_byte = 0;
-			SlObject(NULL, _ai_byte);
-			AIObject::SetAllowDoCommand(true);
+	HSQUIRRELVM vm = this->engine->GetVM();
+	if (!this->is_started) {
+		SQBool res;
+		sq_getbool(vm, -1, &res);
+		if (!res) {
+			SaveEmpty();
 			return;
 		}
-		HSQUIRRELVM vm = this->engine->GetVM();
+		/* Push the loaded savegame data to the top of the stack. */
+		sq_push(vm, -3);
+		_ai_sl_byte = 1;
+		SlObject(NULL, _ai_byte);
+		/* Save the data that was just loaded. */
+		SaveObject(vm, -1, AISAVE_MAX_DEPTH, false);
+		sq_poptop(vm);
+	} else if (this->engine->MethodExists(*this->instance, "Save")) {
+		HSQOBJECT savedata;
+		/* We don't want to be interrupted during the save function. */
+		AIObject::SetAllowDoCommand(false);
+		this->engine->CallMethod(*this->instance, "Save", &savedata);
+		AIObject::SetAllowDoCommand(true);
+
+		if (!sq_istable(savedata)) {
+			AILog::Error("Save function should return a table.");
+			SaveEmpty();
+			return;
+		}
 		sq_pushobject(vm, savedata);
 		if (SaveObject(vm, -1, AISAVE_MAX_DEPTH, true)) {
 			_ai_sl_byte = 1;
@@ -524,7 +541,6 @@ void AIInstance::Save()
 		SlObject(NULL, _ai_byte);
 	}
 
-	AIObject::SetAllowDoCommand(true);
 }
 
 /* static */ bool AIInstance::LoadObjects(HSQUIRRELVM vm)
@@ -600,37 +616,55 @@ void AIInstance::Load(int version)
 		return;
 	}
 	HSQUIRRELVM vm = this->engine->GetVM();
-	SQInteger old_top = sq_gettop(vm);
 
 	SlObject(NULL, _ai_byte);
 	/* Check if there was anything saved at all. */
 	if (_ai_sl_byte == 0) return;
+
+	/* First remove the value "false" since we have data to load. */
+	sq_poptop(vm);
+	LoadObjects(vm);
+	sq_pushinteger(vm, version);
+	sq_pushbool(vm, true);
+}
+
+void AIInstance::CallLoad()
+{
+	HSQUIRRELVM vm = this->engine->GetVM();
+	/* Is there save data that we should load? */
+	SQBool res;
+	sq_getbool(vm, -1, &res);
+	sq_poptop(vm);
+	if (!res) return;
+
+	if (!this->engine->MethodExists(*this->instance, "Load")) {
+		AILog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
+
+		/* Pop the savegame data and version. */
+		sq_pop(vm, 2);
+		return;
+	}
+
 	AIObject::SetAllowDoCommand(false);
 
 	/* Go to the instance-root */
 	sq_pushobject(vm, *this->instance);
 	/* Find the function-name inside the script */
 	sq_pushstring(vm, OTTD2FS("Load"), -1);
-	if (SQ_FAILED(sq_get(vm, -2))) sq_pushnull(vm);
+	/* Change the "Load" string in a function pointer */
+	sq_get(vm, -2);
+	/* Push the main instance as "this" object */
 	sq_pushobject(vm, *this->instance);
-	sq_pushinteger(vm, version);
+	/* Push the savegame data and version as arguments */
+	sq_push(vm, -5);
+	sq_push(vm, -5);
 
-	LoadObjects(vm);
+	/* Call the AI load function. sq_call removes the arguments (but not the
+	 * function pointer) from the stack. */
+	sq_call(vm, 3, SQFalse, SQFalse);
 
-	if (this->engine->MethodExists(*this->instance, "Load")) {
-		sq_call(vm, 3, SQFalse, SQFalse);
-
-		/* Pop 1) the object instance, 2) the (null) result. */
-		sq_pop(vm, 2);
-	} else {
-		AILog::Warning("Loading failed: there was data for the AI to load, but the AI does not have a Load() function.");
-
-		/* Pop 1) the object instance, 2) the function name, 3) the instance again, 4) the version */
-		sq_pop(vm, 4);
-	}
-
-	assert(sq_gettop(vm) == old_top);
+	/* Pop 1) The savegame data, 2) the version, 3) the object instance, 4) the function pointer. */
+	sq_pop(vm, 4);
 
 	AIObject::SetAllowDoCommand(true);
-	return;
 }

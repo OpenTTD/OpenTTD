@@ -85,12 +85,17 @@ public:
 	static void SaveEmpty();
 
 	/**
-	 * Load data from a savegame and call the AI Load function if it
-	 *   exists.
+	 * Load data from a savegame and store it on the stack.
 	 * @param version The version of the AI when saving, or -1 if this was
 	 *  not the original AI saving the game.
 	 */
 	void Load(int version);
+
+	/**
+	 * Call the AI Load function if it exists and data was loaded
+	 *  from a savegame.
+	 */
+	void CallLoad();
 
 	/**
 	 * Load and discard data from a savegame.
