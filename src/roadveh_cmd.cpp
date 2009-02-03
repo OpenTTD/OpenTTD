@@ -2071,7 +2071,7 @@ CommandCost CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 
 		total_capacity += capacity;
 
-		if (IsHumanCompany(v->owner) && new_cid != v->cargo_type) {
+		if (new_cid != v->cargo_type) {
 			cost.AddCost(GetRefitCost(v->engine_type));
 		}
 

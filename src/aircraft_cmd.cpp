@@ -570,7 +570,7 @@ CommandCost CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2,
 	_returned_refit_capacity = pass;
 
 	CommandCost cost;
-	if (IsHumanCompany(v->owner) && new_cid != v->cargo_type) {
+	if (new_cid != v->cargo_type) {
 		cost = GetRefitCost(v->engine_type);
 	}
 
