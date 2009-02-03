@@ -1148,7 +1148,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :letzter verfüg
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :meistbenutzer
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Reservierte Schienen hervorheben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Belasse Bauwerkzeuge aktiv nach Benutzung: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Kategorien einzeln summieren im Fenster "Firmenfinanzen": {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Firmenausgaben im Finanzenfenster:{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Bauwerkzeuge immer anzeigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
@@ -1232,7 +1232,7 @@ STR_CONFIG_PATCHES_CONSTRUCTION_SIGNALS                         :{ORANGE}Signale
 STR_CONFIG_PATCHES_STATIONS_CARGOHANDLING                       :{ORANGE}Frachtbehandlung
 STR_CONFIG_PATCHES_AI_NPC                                       :{ORANGE}Computerspieler
 STR_CONFIG_PATCHES_VEHICLES_AUTORENEW                           :{ORANGE}Automatische Erneuerung
-STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Warung
+STR_CONFIG_PATCHES_VEHICLES_SERVICING                           :{ORANGE}Wartung
 STR_CONFIG_PATCHES_VEHICLES_ROUTING                             :{ORANGE}Wegsuche
 STR_CONFIG_PATCHES_VEHICLES_TRAINS                              :{ORANGE}Züge
 STR_CONFIG_PATCHES_ECONOMY_TOWNS                                :{ORANGE}Städte
@@ -2923,8 +2923,8 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Zeige Ei
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Zeige Einzelheiten zu den Schienenfahrzeugen
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Zeige Kapazität jedes Fahrzeugs
 STR_SHOW_TOTAL_CARGO                                            :{BLACK}Frachtübersicht des Zuges anzeigen, aufgeteilt nach Frachttyp
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Auftragsliste - zum Markieren hier anklicken
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Übergehe den laufenden Auftrag, und starte den nächsten
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Auftragsliste - zum Markieren hier anklicken. STRG + Klick springt zum Bahnhof
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Überspringe den laufenden Auftrag, und starte den nächsten. STRG + Klick überspringt den ausgewählten
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Lösche den markierten Auftrag
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Füge einen neuen Auftrag vor dem markierten Auftrag ein, oder setze ihn ans Ende der Liste
 STR_TIMETABLE_TOOLTIP                                           :{BLACK}Fahrplan - Einträge anklicken um sie zu markieren.
