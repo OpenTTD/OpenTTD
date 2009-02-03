@@ -11,7 +11,7 @@ cp ai/regression/regression.nut ai/regression/main.nut
 cp ai/regression/regression_info.nut ai/regression/info.nut
 
 if [ -f scripts/game_start.scr ]; then
-	mv scripts/game_start.scr scripts/game_start.src.regression
+	mv scripts/game_start.scr scripts/game_start.scr.regression
 fi
 
 params=""
@@ -43,7 +43,7 @@ fi
 rm -f ai/regression/main.nut ai/regression/info.nut
 
 if [ -f scripts/game_start.scr.regression ]; then
-	mv scripts/game_start.scr.regression scripts/game_start.src
+	mv scripts/game_start.scr.regression scripts/game_start.scr
 fi
 
 if [ "$1" != "-k" ]; then
