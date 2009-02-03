@@ -7,14 +7,11 @@
 
 #include <map>
 #include "ai_info.hpp"
-
-#ifndef AI_HPP
-struct ltstr { bool operator()(const char *s1, const char *s2) const { return strcmp(s1, s2) < 0; } };
-#endif /* AI_HPP */
+#include "../core/string_compare_type.hpp"
 
 class AIConfig {
 private:
-	typedef std::map<const char *, int, ltstr> SettingValueList;
+	typedef std::map<const char *, int, StringCompare> SettingValueList;
 
 public:
 	AIConfig() :

@@ -5,6 +5,7 @@
 #ifndef AI_SCANNER_HPP
 #define AI_SCANNER_HPP
 
+#include "../core/string_compare_type.hpp"
 #include <map>
 
 class AIScanner {
@@ -73,7 +74,7 @@ public:
   bool HasAI(const struct ContentInfo *ci, bool md5sum);
 #endif
 private:
-	typedef std::map<const char *, class AILibrary *, ltstr> AILibraryList;
+	typedef std::map<const char *, class AILibrary *, StringCompare> AILibraryList;
 
 	/**
 	 * Scan the AI dir for scripts.

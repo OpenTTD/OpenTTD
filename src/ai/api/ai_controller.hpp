@@ -5,10 +5,8 @@
 #ifndef AI_CONTROLLER_HPP
 #define AI_CONTROLLER_HPP
 
+#include "../../core/string_compare_type.hpp"
 #include <map>
-#ifndef AI_HPP
-struct ltstr { bool operator()(const char *s1, const char *s2) const { return strcmp(s1, s2) < 0; } };
-#endif /* AI_HPP */
 
 /**
  * The Controller, the class each AI should extend. It creates the AI, makes
@@ -85,7 +83,7 @@ public:
 	static void Print(bool error_msg, const char *message);
 
 private:
-	typedef std::map<const char *, const char *, ltstr> LoadedLibraryList;
+	typedef std::map<const char *, const char *, StringCompare> LoadedLibraryList;
 
 	uint ticks;
 	LoadedLibraryList loaded_library;

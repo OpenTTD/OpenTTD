@@ -7,11 +7,9 @@
 
 #include "api/ai_event_types.hpp"
 #include "../date_type.h"
+#include "../core/string_compare_type.hpp"
 
-#ifndef AI_CONFIG_HPP
-struct ltstr { bool operator()(const char *s1, const char *s2) const { return strcmp(s1, s2) < 0; } };
-#endif /* AI_CONFIG_HPP */
-typedef std::map<const char *, class AIInfo *, ltstr> AIInfoList;
+typedef std::map<const char *, class AIInfo *, StringCompare> AIInfoList;
 
 
 void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2);

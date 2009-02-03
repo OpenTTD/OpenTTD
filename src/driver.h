@@ -6,6 +6,7 @@
 #define DRIVER_H
 
 #include "core/enum_type.hpp"
+#include "core/string_compare_type.hpp"
 #include "string_func.h"
 #include <map>
 
@@ -38,13 +39,6 @@ private:
 	Driver::Type type;
 	const char *name;
 	int priority;
-
-	struct StringCompare {
-		bool operator () (const char *a, const char *b) const
-		{
-			return strcmp(a, b) < 0;
-		}
-	};
 
 	typedef std::map<const char *, DriverFactoryBase *, StringCompare> Drivers;
 

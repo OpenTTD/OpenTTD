@@ -8,6 +8,7 @@
 #include "base.hpp"
 #include "../debug.h"
 #include "../string_func.h"
+#include "../core/string_compare_type.hpp"
 #include <map>
 
 #if defined(WITH_COCOA)
@@ -20,13 +21,6 @@ bool QZ_CanDisplay8bpp();
 class BlitterFactoryBase {
 private:
 	const char *name;
-
-	struct StringCompare {
-		bool operator () (const char *a, const char *b) const
-		{
-			return strcmp(a, b) < 0;
-		}
-	};
 
 	typedef std::map<const char *, BlitterFactoryBase *, StringCompare> Blitters;
 
