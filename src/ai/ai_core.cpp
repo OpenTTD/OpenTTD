@@ -3,6 +3,7 @@
 /** @file ai_core.cpp Implementation of AI. */
 
 #include "../stdafx.h"
+#include "../core/bitmath_func.hpp"
 #include "../company_base.h"
 #include "../company_func.h"
 #include "../debug.h"
@@ -66,6 +67,13 @@
 			_current_company = c->index;
 			c->ai_instance->GameLoop();
 		}
+	}
+
+	/* Occasionally collect garbage; every 255 ticks do one company.
+	 * Effectively collecting garbage once every two months per AI. */
+	if ((AI::frame_counter & 255) == 0) {
+		CompanyID cid = (CompanyID)GB(AI::frame_counter, 8, 4);
+		if (IsValidCompanyID(cid) && !IsHumanCompany(cid)) GetCompany(cid)->ai_instance->CollectGarbage();
 	}
 
 	_current_company = OWNER_NONE;

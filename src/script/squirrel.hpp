@@ -101,6 +101,11 @@ public:
 	 */
 	bool Resume(int suspend = -1);
 
+	/**
+	 * Tell the VM to do a garbage collection run.
+	 */
+	void CollectGarbage();
+
 	void InsertResult(bool result);
 	void InsertResult(int result);
 

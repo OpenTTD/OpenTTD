@@ -175,6 +175,11 @@ bool Squirrel::Resume(int suspend)
 	return this->vm->_suspended != 0;
 }
 
+void Squirrel::CollectGarbage()
+{
+	sq_collectgarbage(this->vm);
+}
+
 bool Squirrel::CallMethod(HSQOBJECT instance, const char *method_name, HSQOBJECT *ret, int suspend)
 {
 	/* Store the stack-location for the return value. We need to

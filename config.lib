@@ -1243,7 +1243,6 @@ make_cflags_and_ldflags() {
 		CFLAGS="$CFLAGS -D_SQ64"
 	fi
 	CFLAGS="$CFLAGS -I$SCRIPT_SRC_DIR"
-	CFLAGS="$CFLAGS -DNO_GARBAGE_COLLECTOR"
 
 	if [ -n "$png_config" ]; then
 		CFLAGS="$CFLAGS -DWITH_PNG"

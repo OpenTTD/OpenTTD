@@ -45,6 +45,11 @@ public:
 	void GameLoop();
 
 	/**
+	 * Let the VM collect any garbage.
+	 */
+	void CollectGarbage();
+
+	/**
 	 * Get the storage of this AI.
 	 */
 	static class AIStorage *GetStorage();

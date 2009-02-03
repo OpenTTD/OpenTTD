@@ -296,6 +296,11 @@ void AIInstance::GameLoop()
 	}
 }
 
+void AIInstance::CollectGarbage()
+{
+	if (this->is_started && !this->is_dead) this->engine->CollectGarbage();
+}
+
 /* static */ void AIInstance::DoCommandReturn(AIInstance *instance)
 {
 	instance->engine->InsertResult(AIObject::GetLastCommandRes());
