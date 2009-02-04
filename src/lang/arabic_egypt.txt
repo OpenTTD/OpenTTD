@@ -1192,9 +1192,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :اشارات ا
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :اشارات الطريق فقط
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :الكل
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}تصميم المدن "لا مزيد من الطرق" غير مقبول في محرر الخريطة
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}اختر شكل الطرق بالمدينة: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :لا مزيد من الطرق
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :قياسي
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :طرق افضل
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :شبكة 2*2
@@ -3471,8 +3468,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE} غير 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE} غير سنة البداية
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}تحذير
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}اعادة تحجيم الخريطة المصدر كثيرا غير مستحسن. هل تريد اكمال توليد الخريطة؟
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE} تحذير نمط المدينة
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}نمط المدينة "لا مزيد من الطرق" غير مستحسن. هل تريد الاستمرار بالتطوير؟
 STR_HEIGHTMAP_NAME                                              :{BLACK}اسم خريطة المرتفعات:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}الحجم: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}توليد الخريطة

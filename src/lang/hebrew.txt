@@ -1193,9 +1193,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :רמזורי ב
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :רמזורי נתיב בלבד
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :הכל
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE} בטל את פריסת הערים "ללא כבישים נוספים" בעורך הסצנריו
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{ORANGE}{STRING}{LTBLUE} : פריסת הכבישים בערים
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :ללא כבישים נוספים
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :רגילה
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :כבישים משופרים
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 רשת
@@ -3468,8 +3465,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}שנה �
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}שנה את שנת הפתיחה
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}אזהרת קנה מידה
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}?שינוי גדול של גודל המפה המקורית אינו מומלץ. להמשיך
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}אזהרת מבנה העיירות
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}? מבנה העיירות "ללא כבישים נוספים" אינו מומלץ. להמשיך
 STR_HEIGHTMAP_NAME                                              :{BLACK} :שם מפת הגבהים
 STR_HEIGHTMAP_SIZE                                              ::{ORANGE}{NUM} x {NUM} {BLACK} :גודל
 STR_GENERATION_WORLD                                            :{WHITE}... יוצר עולם

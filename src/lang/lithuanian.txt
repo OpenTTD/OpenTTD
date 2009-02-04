@@ -1190,9 +1190,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Tik tradicinių
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Kelio signalų
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Visus
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Miestų sandara ''Be kelių'' negalioja scenarijaus redaktoriuje
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Nustatyti miestų kelių rūšis: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :Be kelių
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :numatytas
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :geresni keliai
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 laukeliai

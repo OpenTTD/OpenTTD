@@ -1209,9 +1209,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Ainult tavaline
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Ainult täiustatud
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Kõik
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Stsenaariumiredaktor ei tunnista "ilma teedeta" linnaplaneeringut
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vali linnale teedeplaneering: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :rohkem teid ei ole
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :vaikimisi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :paremad teed
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 võrgustik
@@ -3433,8 +3430,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Muuda lu
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Muuda algusaastat
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skaala hoiatus
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaardi suuruse muutmine pole soovitatav. Jätka?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Linnaplaneerimise hoiatus
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Linnaplaneeringut "ilma teedeta" ei ole soovitatav kasutada. Jätkata selle tekitamisega?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Kõrgusekaardi nimi:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Suurus: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Maailma genereerimine...

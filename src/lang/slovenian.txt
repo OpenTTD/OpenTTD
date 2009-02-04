@@ -1233,9 +1233,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Samo normalni
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Samo napredni
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Vse
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Mestna razporeditev "nič več cest" ni veljavna v urejevalniku terena
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Izberi razporeditev mestnih cest: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :nič več cest
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :privzeto
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :boljše ceste
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
@@ -3550,8 +3547,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Spremeni
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Spremeni začetno leto
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Opozorilo za merilo
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prevelika sprememba velikosti ozemlja ni priporočena. Nadaljujem?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Opozorilo mestne  razporeditve
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Mestna razporeditev "nič več cest" ni priporočena. Nadaljuješ z ustvarjanjem?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Ime višinskega zemljevida:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velikost: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Ustvarjanje sveta...

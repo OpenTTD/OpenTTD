@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Doar normal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Doar avansat
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Toate
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Apectul de oras "fara alte drumuri" nu este valid in editorul de scenarii
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Alege amplasarea drumurilor în oraş: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :fara alte drumuri
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :implicit
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :drumuri mai bune
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grila 2x2
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Nu pot m
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Modifica inceputul anului
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avertisment de scala
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionarea excesiva a hartii nu este recomandata. Continui cu generarea?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Avertisment aspect oras
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Aspectul de oras "fara alte drumuri" nu este recomanat. Continui generarea?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nume harta inaltimi:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Dimensiune: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generez lumea...

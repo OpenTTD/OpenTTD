@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Vain tavallinen
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Vain edistynyt
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Kaikki
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Tiekaavaa "ei uusia teitä" ei voi käyttää editorissa
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Valitse tiekaava: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :ei uusia teitä
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :oletus
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :parempia teitä
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 ruudukko
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Vaihda l
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Vaihda aloitusvuosi
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Mittakaava-varoitus
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Lähdekartan koon liiallinen muuttaminen ei ole suositeltavaa. Haluatko jatkaa?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Varoitus tiekaavasta
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Tiekaavaa "ei uusia teitä" ei suositella. Jatketaanko?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Korkeuskartan nimi:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Koko: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Maailmaa luodaan...

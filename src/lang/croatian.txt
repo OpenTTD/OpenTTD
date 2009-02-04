@@ -1256,9 +1256,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Samo blokiraju�
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Samo putni signali
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Sve
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Raspored grada "nema više cesta" nije valjan u editoru scenarija
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Odaberi grad-cesta raspored: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :nema više cesta
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :inicijalno
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bolje ceste
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 mreža
@@ -3534,8 +3531,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Promijen
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Promijeni početnu godinu
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozorenje o veličini
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prekomjerna promjena veličine karte nije preporučena. Nastaviti sa kreiranjem?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Upozorenje na raspored grada
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Raspored grada s opcijom "nema više cesti" nije preporučen. Nastaviti s generiranjem?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Ime visinske karte:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Veličina: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Izrada svijeta u toku...

@@ -1257,9 +1257,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Csak normál
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Csak fejlett (PBS)
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Mind
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A "nincs több út" városkinézeti séma a pályaszerkesztőben nem elérhető
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Válassz városi úthálózat-sémát: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :nincs több út
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :alapértelmezett
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :jobb utak
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
@@ -3573,8 +3570,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Hóhatá
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Kezdő év megváltoztatása
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Átméretezési figyelmeztetés
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}A forrás térkép túlságosan nagy mértékű átméretezése nem javasolt. Folytatod mégis?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Városkinézeti figyelmeztetés
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}A "nincs több út" városkinézeti séma ellenjavallott. Biztosan folytatod a generálást?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Magasságtérkép neve:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Méret: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Térkép létrehozása...

@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Bloķēt tikai 
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Tikai ceļa signāli
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Visi
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE} Pilsētas plānojums "vairāk ielas nevar" nav spēkā scenāriju redaktorā
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Izvēlieties pilsēta-iela plānojumu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :nav vairāk ceļu
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :noklusētais
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :labāki ceļi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 režģis
@@ -3462,8 +3459,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Mainīt 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mainīt sākšanas gadu
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Līmeņa brīdinājums
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Pārāk Izmainīt pamatkarti nav ieteicams. Turpināt ģenerēšanu?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Pilsētas plānojuma brīdinājums
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Pilsētas plānojums ''vairs nekādu ceļu'' nav ieteicams. Turpināt ģenerēšanu?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Reliefkartes nosaukums:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Lielums: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Izveido pasauli...

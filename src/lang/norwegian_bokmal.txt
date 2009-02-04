@@ -1185,9 +1185,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Normalt bare
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Avansert bare
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Byutlegget «ingen flere veier» er ikke gyldig i scenariobyggeren
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Velg byvei-layout: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :ingen flere veier
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :default
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bedre veier
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
@@ -3449,8 +3446,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Skift h�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Endre startår
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalaadvarsel
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Å endre kildemapstørrelsen for mye er ikke anbefalt. Fortsette generering?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Byutleggsadvarsel
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Byutlegget «ingen flere veier» anbefales ikke. Fortsette generering?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Høydekartnavn:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Genererer verden...

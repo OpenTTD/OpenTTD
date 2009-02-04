@@ -1183,9 +1183,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Само нор
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Само напреднат
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Всички
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Грацкиа план "няма повече пътища" е невалиден в сценарий редакторат
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Избери грацки пътформат: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :няма повече пътища
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :default
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :по-добри пътища
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2х2 мрежа
@@ -3436,8 +3433,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Висо
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Промяна началната година
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Мащаб предупреждение
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Прекаленото оразмеряване не е препорачително. Продължаване с генерацията?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Грацки план предупреждение
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Грацкиа план "няма повече пътища" не е препоръчан. Продължи със създаването?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Име на височинна карта:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Размер: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Създаване на свят...

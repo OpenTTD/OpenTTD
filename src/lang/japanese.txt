@@ -1173,9 +1173,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :ブロック信
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :パス信号のみ
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :全て
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}シナリオエディタを使用時に、「道路網を拡大せず」という道路網が選択できません
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}道路網の選択：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :道路網を拡大せず
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :デフォルト
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :改善の道路網
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :格子状（2x2）
@@ -3359,8 +3356,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}雪線�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}始める年を変えます
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}リサイズ警告
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}ソース地図をリサイズしすぎることはお勧めしません。地形作成を続けてもよろしいですか？
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}道路網の警告
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}「道路網を拡大せず」という道路網をおすすめしません。続けてもよろしいですか？
 STR_HEIGHTMAP_NAME                                              :{BLACK}ハイトマップ名：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}サイズ：{ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}地形作成中...

@@ -1184,10 +1184,7 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Block signals o
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Path signals only
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :All
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}The town layout "no more roads" isn't valid in the scenario editor
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Select town-road layout: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :no more roads
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :default
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :original
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :better roads
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 grid
@@ -3453,8 +3450,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Change s
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Change starting year
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Scale warning
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Resizing source map too much is not recommended. Continue with the generation?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Town layout warning
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}The town layout "no more roads" is not recommended. Continue with the generation?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap name:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Size: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generating world...

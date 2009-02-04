@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Hanya sinyal bl
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Hanya sinyal jalur
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Semua
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Kota yang "tidak memiliki jalan"  dalam editor skenario tidak sah
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Pilih tata jalan kota: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :Tidak memiliki jalan
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :Asli
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lebih baik
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :kotak 2x2
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ubah ket
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ganti Tahun Permulaan
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Peringatan Skala
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ukuran peta terlalu besar dan tidak direkomendasikan. Lanjutkan?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Peringatan layout Kota
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Layout Kota "tidak ada lagi jalan" tidak direkomendasi. Lanjutkan?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nama Peta Heightmap:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Luas: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Membuat Peta ...

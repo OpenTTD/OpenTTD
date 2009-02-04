@@ -1246,9 +1246,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Iba blokovacie 
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Iba obojsmerné signály
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Všetky
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Struktúra mesta "žiadne cesty naviac" nie je platná v editore scenárov
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Struktúra mestských ciest: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :žiadne cesty
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :štandardná
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :zdokonalená
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :bloky 2x2
@@ -3515,8 +3512,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Zmenit v
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Zmenit rok zaciatku hry
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozornenie na stupnicu
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prilis velka zmena velkosti zdrojovej mapy sa neodporuca. Pokracovat s generovanim?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Upozornenie na štruktúra mesta
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Štruktúra mesta  "žiadne cesty naviac" sa neodporúca. Pokracovat s generovaním?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nazov vyskovej mapy:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velkost: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generujem  krajinu ...

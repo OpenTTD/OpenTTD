@@ -1259,9 +1259,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :pouze obyčejn�
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :pouze dokonalejší (PBS)
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :všechna
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vzor "žádné silnice" se neuplatňuje v editoru scénářů
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vzor městských silnic: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :žádné silnice
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :původní
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepší silnice
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :mřížka 2x2
@@ -3544,8 +3541,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Změnit 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Změnit počáteční rok
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Varování kvůli velikosti
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Tak velká zmena velikosti zdrojové mapy není doporučena. Pokračovat s generováním?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Varování kvůli vzoru silnic
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Vzor "žádné silnice" není doporučen (nepostaví se ani domy). Pokračovat ve vytváření mapy?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Jméno výškové mapy:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Velikost: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Vytvářím krajinu...

@@ -1181,9 +1181,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Kun normal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Kun avanceret
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vejlayoutet "ikke flere veje" er ikke gyldigt i scenarieeditoren
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vælg layout for veje i byer: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :ikke flere veje
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standard
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bedre veje
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 gitter
@@ -3436,8 +3433,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ændre s
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ændre startår
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalerings advarsel
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}At ændre størrelsen på kildebilledet anbefales ikke. Fortsæt genereringen?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Vejlayout-advarsel
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Vejlayoutet "ikke flere veje" anbefales ikke. Fortsæt med at generere?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Højdekortets navn:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Genererer verden...

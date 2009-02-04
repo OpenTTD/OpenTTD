@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Normal apenas
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Avançados apenas
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todos
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}O layout de cidade "sem mais estradas" não é válido no editor
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecione o layout das estradas {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :sem mais estradas
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :padrão
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :melhores estradas
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grade 2x2
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Mudar li
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mudar data de início
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Aviso de Escala
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Alterar muito o tamanho do mapa original não é recomendado. Continuar com a geração?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Aviso do layout da cidade
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}O Layout "sem mais estradas" não é recomendado. Continuar com a geração?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome do mapa em relevo:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Gerando mundo...

@@ -1316,9 +1316,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :тільки н
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :тільки розширені
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :усі
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Схема міста "не треба більше доріг" недійсна у редакторі сценаріїв
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Виберіть схему доріг у місті: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :не треба більше доріг
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :стандартна
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :кращі дороги
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :сітка 2x2
@@ -3632,8 +3629,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Змін
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Змінити рік початку гри
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Завелике значення
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Розміри дуже великі. Продовжити генерацію?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Попередження про схему міста
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Схема міста "не треба більше доріг" небажана. Продовжити генерацію?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Назва рельєфу:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Розмір: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Генерація світу...

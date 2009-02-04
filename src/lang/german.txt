@@ -1192,9 +1192,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :nur Normale
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :nur Pfadsignale
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Der Stadtaufbau "keine weiteren Straßen" ist im Szenarieneditor nicht möglich
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Stadtstraßenaufbau auswählen: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :keine weiteren Straßen
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :Vorgabe
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bessere Straßen
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2×2-Gitter
@@ -3471,8 +3468,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Höhe de
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Startjahr ändern
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalierungswarnung
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Zu starke Skalierung des Spielfeldes wird nicht empfohlen. Generierung dennoch fortsetzen?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Städtebauwarnung
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Der Stadtaufbau "keine weiteren Straßen" wird nicht empfohlen. Mit der Generierung fortfahren?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Reliefkartenname:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Größe: {ORANGE}{NUM} × {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Spielfeld wird generiert...

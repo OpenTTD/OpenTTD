@@ -1157,9 +1157,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Signalau blocio
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Signalau llwybr yn unig
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Pob math
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Nid yw'r cynllun tref "dim mwy o ffyrdd" yn ddilys yn y golygydd senario
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}dewis cynllun ffyrdd tref: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :dim mwy o ffyrdd
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :rhagosodedig
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :ffyrdd gwell
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grid 2x2

@@ -1177,9 +1177,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Blok seine alee
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Pad seinligte alleenlik
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Die dorp uitleg "niks meer paaie" is nie geldig in die draaiboek redigeerder
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Kies dorp-pad uitleg: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :niks meer paaie
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :verstek
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :beter paaie
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 grid
@@ -3414,8 +3411,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begins jaar
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skaal waaskuwing
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Om die kaart te veel te verstel is nie aanbeveel. Gaan voort met die generasie?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Dorp uitleg waarskuwing
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Die dorp uitleg "geen meer paaie" is nie aanbeveel nie. Gaan aan met generasie?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart name:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Groote: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Genereer wêreld...

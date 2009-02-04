@@ -1263,9 +1263,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Tylko zwykle
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Tylko zaawansowane
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Wszystkie
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Plan sieci dróg "bez nowych dróg" nie jest poprawny dla edytora scenariuszy
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Wybierz plan sieci dróg miejskich: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :bez nowych dróg
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standardowy
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :lepsze drogi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :siatka 2x2
@@ -3573,8 +3570,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Zmień w
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Zmień datę rozpoczęcia
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ostrzeżenie o skali
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Nie zaleca się zbyt dużej zmiany wielkości mapy źrodłowej. Kontynuować tworzenie?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Ostrzeżenie o planie miasta
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Model rozwoju miasta "bez nowych dróg" nie jest polecany. Kontynuować tworzenie?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nazwa mapy wysokosci:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Rozmiar: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Tworzenie świata...

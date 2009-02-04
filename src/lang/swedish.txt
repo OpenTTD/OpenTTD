@@ -1157,9 +1157,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Endast normala
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Endast avancerade
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alla
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Det går ej att använda "inga fler vägar" i scenario editorn
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Välj stadens väg-inställningar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :inga fler vägar
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standard
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bättre vägar
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rutnät
@@ -3386,8 +3383,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ändra s
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ändra Startår
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala-varning
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}För stora storleksändringar av källkarta är inte rekomenderat. Fortsätt med generering?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Varning genererat från stadens väg-inställningar
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Det är ej rekommenderat att använda inställningen "inga fler vägar". Vill du fortsätta ändå?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Namn på höjdkarta:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Storlek: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Genererar värld...

@@ -1193,9 +1193,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Solo segnali di
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Solo segnali a percorso
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Tutti
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}L'opzione "Nessuna nuova strada" non è valida nell'editor di scenari
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Disposizione delle strade cittadine: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :Nessuna nuova strada
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :Predefinita
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :Pianta migliorata
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :Griglia 2x2
@@ -3472,8 +3469,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambia l
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambia l'anno di inizio
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avviso scala
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ridimensionare di molto l'heightmap sorgente non è consigliabile. Continuare con la generazione?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Avviso sulla disposizione delle strade
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}L'opzione "Nessuna nuova strada" non è raccomandata. Proseguire con la generazione?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome heightmap:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Dim.: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generazione del mondo...

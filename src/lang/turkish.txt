@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Yalnızca blok 
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Yalnızca yol sinyalleri
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Hepsi
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Senaryo düzenleyicisinde "yolsuz" şehir seçeneği kullanılamaz
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Şehir yol yerleşimini seç: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :yolsuz
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :varsayılan
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :daha iyi yollar
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Kar yük
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Başlangıç yılını değiştir
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ölcek uyarısı
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaynak haritanin boyutunu değiştirmek önerilmez. Harita oluşturmaya devam edilsin mi?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Şehir planlama uyarısı
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}"Başka karayolu yok" şeklindeki kasaba yerleşimi tavsiye edilmez. Oluşturmaya devam edilsin mi?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Yükseklik haritası adı:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Boyut: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Harita oluşturuluyor...

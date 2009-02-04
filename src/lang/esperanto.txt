@@ -1100,9 +1100,6 @@ STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tirante
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Aŭtomate konstruu semaforojn antaŭ: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :ĉiom
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}La urbaspekto "sen pliaj vojoj" ne validas en la scenarkreilo
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Elektu urbvojan aspekton: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :sen pliaj vojoj
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :defaŭlte
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :pli bonaj vojoj
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :kvadrataro de 2x2
@@ -3086,8 +3083,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ŝanĝu 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ŝanĝu komencjaron
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala averto
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ne rekomendindas tro ŝanĝi la grandecon de la mapo. Ĉu daŭrigi la generadon?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Urbaspekta averto
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}La urbaspekto "sen pliaj vojoj" ne estas rekomendata. Ĉu plugeneri?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Mapa nomo:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Grandeco: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generante mondon...

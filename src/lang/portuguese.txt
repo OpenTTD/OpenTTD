@@ -1190,9 +1190,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Apenas faróis 
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Apenas faróis de rota
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todos
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}A disposição de cidade "sem mais estradas" não é válida no editor de cenários
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Seleccionar disposição das estradas na cidade: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :sem mais estradas
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :por defeito
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :estradas melhores
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grelha 2x2
@@ -3465,8 +3462,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Mudar a 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mudar ano de início
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Aviso de redimensionamento
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Aviso de disposição da cidade
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}A disposição de cidade "sem mais estradas" não é recomendado. Continuar a geração?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome mapa de alt.:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}A gerar mundo...

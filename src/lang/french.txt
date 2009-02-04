@@ -1192,9 +1192,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Signaux de bloc
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Signaux de chemin uniquement
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Tous
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Le schéma de ville "pas de routes" n'est pas autorisé dans l'éditeur de scénario
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Choisir un schéma de ville: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :pas de routes
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :défaut
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :meilleures routes
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grille 2x2
@@ -3471,8 +3468,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Modifier
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Modifier l'année de départ
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avertissement de redimensionnement
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Trop redimensionner la carte source n'est pas recommandé. Continuer la génération ?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Avertissement schéma de ville
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Le schéma de ville "pas de routes" n'est pas recommandé.  Voulez-vous poursuivre la génération?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nom de la carte d'altitude :
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Taille: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Création du monde...

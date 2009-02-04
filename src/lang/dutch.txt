@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Alleen normaal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Alleen geavanceerd
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allemaal
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}De stadsindeling "geen wegen" is niet geldig in de scenario editor
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecteer stedelijke wegindeling: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :geen wegen
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standaard
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betere wegen
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 raster
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begin jaar
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Schaal waarschuwing
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaar is niet aan te bevelen. Toch doorgaan?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Stadsindelingswaarschuwing
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}De stadsindeling "geen wegen" is niet aanbevolen. Doorgaan met aanmaken?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart naam:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Grootte: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Wereld creëren

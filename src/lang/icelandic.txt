@@ -1154,9 +1154,6 @@ STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Brautar ljós
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Ein-stefnu ljós
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allt
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Vegaskipulagið "ekki fleiri vegi" er ekki gilt við landslagsgerð
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Vegaskipulag bæja: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :ekki fleiri vegi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :sjálfgefið
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betri vegi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 net
@@ -3364,8 +3361,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Breyta h
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Breyta upphafsári
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Stærð hæðarlínukorts
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ekki er mælt með því að breyta stærð grunnkorts of mikið. Viltu halda áfram?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Vegaskipulagsaðvörun
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Vegaskipulagið "ekki fleiri vegi" er óráðlegt. Halda myndun áfram?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nafn hæðarlínukorts:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Stærð: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Skapa heim...

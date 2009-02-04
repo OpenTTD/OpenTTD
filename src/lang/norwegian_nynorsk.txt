@@ -1184,9 +1184,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Kun blokkerings
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Kun vegsignal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Byoppsettet " ingen fleire vegar" kan ikkje brukast i scenarioredigeringsprogrammet
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Velg oppsett for byvegar: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :Ingen fleire vegar
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standard
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betre vegar
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 rutenett
@@ -3450,8 +3447,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Skift h�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Endre startår
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalaåtvaring
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Å endre storleiken på kjeldekartet for mykje er ikkje anbefalt. Vil du halde fram med genereringa?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Åtvaring for byoppsett
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Byoppsettet "ingen fleire vegar" er ikkje anbefalt.  Hald fram med bygginga?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Høgdekartnamn:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Storleik: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Genererer verd...

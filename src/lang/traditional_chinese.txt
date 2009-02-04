@@ -1183,9 +1183,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :僅限閉塞號
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :僅限路徑號誌
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :所有號誌
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}在場景編輯器中不可選擇「不再規劃道路」
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}選擇市鎮道路規劃：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :不再規劃道路
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :預設
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :較佳規劃
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :２x２網格
@@ -3450,8 +3447,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}變更�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}變更開始年份
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}縮放警告
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}不建議過度縮放地圖。要繼續產生嗎？
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}市鎮規劃警告
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}不建議選擇「不再規劃道路」。您要繼續產生嗎？
 STR_HEIGHTMAP_NAME                                              :{BLACK}高度圖名稱：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}大小：{ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}正在產生世界...

@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Ockblay ignalss
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Advancedway onlyway
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allway
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}Ethay owntay ayoutlay "onay oremay oadsray" isn'tway alidvay inway ethay enarioscay editorway
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Electsay owntay-oadray ayoutlay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :onay oremay oadsray
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :efaultday
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :etterbay oadsray
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2xay2 idgray
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Angechay
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Angechay artingstay earyay
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Alescay arningway
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Esizingray ourcesay apmay ootay uchmay isway otnay ecommendedray. Ontinuecay ithway ethay enerationgay?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Owntay ayoutlay arningway
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}Ethay owntay ayoutlay "onay oremay oadsray" isway otnay ecommendedray. Ontinuecay ithway ethay enerationgay?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Eightmaphay amenay:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Izesay: {ORANGE}{NUM} xay {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Eneratinggay orldway...

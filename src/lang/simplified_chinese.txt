@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :仅有普通
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :仅有高级
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :全部
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}城镇扩展设置中“无道路”方式在场景编辑器中无效。
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}选择城镇自动扩展布局: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :无道路
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :默认
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :改良道路
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2格
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}改变�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}改变游戏开始的日期
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}缩放警告
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}不推荐将源图片过度放缩，是否继续生成？
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}城镇扩张警告
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}城镇扩张选项使用“无道路”方式进行是不推荐的.继续么?
 STR_HEIGHTMAP_NAME                                              :{BLACK}高度图名称：
 STR_HEIGHTMAP_SIZE                                              :{BLACK}大小： {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}正在生成地图……

@@ -1192,9 +1192,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Solo normales
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Solo avanzada
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todas
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}El trazado de ciudad "no más carreteras" no es válido en el editor de escenarios
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Selecciona trazado de carretera en ciudad: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :no más carreteras
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :por defecto
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :mejores carreteras
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
@@ -3471,8 +3468,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambiar 
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambiar año de inicio
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Alerta de escala
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Cambiar demasiado el tamaño del mapa de origen no está recomendado. ¿Desea continuar con la generación?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}Aviso de trazado de ciudad
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}El trazado de ciudad "no más carreteras" no es recomendable. ¿Continuar con la generación?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nombre del mapa de alturas:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamaño: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generando mundo...

@@ -1191,9 +1191,6 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :일반 신호�
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :경로 신호기만
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :모두
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID                          :{WHITE}도시설계 "도로건설 안함"은 시나리오 에디터에서 유효하지 않습니다
-STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}도시도로 설계: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TOWN_LAYOUT_NO_ROADS                         :도로건설 안함
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :기본값
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :개선된 도로
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 칸
@@ -3470,8 +3467,6 @@ STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}만년�
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}시작 년도를 변경합니다.
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}맵 크기에 대한 경고
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}원본 맵의 크기를 많이 조정하는 것은 좋지 않습니다. 만들기를 계속하시겠습니까?
-STR_TOWN_LAYOUT_WARNING_CAPTION                                 :{WHITE}도시 설계 경고
-STR_TOWN_LAYOUT_WARNING_MESSAGE                                 :{YELLOW}도시 설계 "도로건설 안함"은 추천하지 않습니다. 만들기를 계속하시겠습니까?
 STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap 이름:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}크기: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}세계 만드는 중..
