@@ -26,13 +26,13 @@
 #include "saveload/saveload.h"
 #include "void_map.h"
 #include "settings_type.h"
+#include "town.h"
 
 #include "table/sprites.h"
 
 void GenerateClearTile();
 void GenerateIndustries();
 void GenerateUnmovables();
-bool GenerateTowns();
 void GenerateTrees();
 
 void StartupEconomy();
@@ -121,7 +121,7 @@ static void _GenerateWorld(void *arg)
 
 			/* only generate towns, tree and industries in newgame mode. */
 			if (_game_mode != GM_EDITOR) {
-				GenerateTowns();
+				GenerateTowns(_settings_game.economy.town_layout);
 				GenerateIndustries();
 				GenerateUnmovables();
 				GenerateTrees();

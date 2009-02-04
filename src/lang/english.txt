@@ -764,6 +764,14 @@ STR_SCENARIO_EDITOR_CITY                                        :{BLACK}City
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Select town size
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Town size:
 
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Town road layout:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Select road layout used for this town
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Better roads
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 grid
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 grid
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Random
+
 STR_02B6                                                        :{STRING}  -  {STRING5}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Show last message or news report
 STR_OFF                                                         :Off

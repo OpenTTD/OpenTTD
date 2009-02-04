@@ -28,8 +28,8 @@
 
 typedef GUIList<const Town*> GUITownList;
 
-extern bool GenerateTowns();
 static int _scengen_town_size = 1; // depress medium-sized towns per default
+static TownLayout _scengen_town_layout;
 
 static const Widget _town_authority_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},              // TWA_CLOSEBOX
@@ -603,24 +603,35 @@ void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceProc_Town(TileIndex tile)
 {
-	uint32 size = min(_scengen_town_size, (int)TSM_CITY);
-	uint32 mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
-	DoCommandP(tile, size, mode, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
+	uint32 size = min(_scengen_town_size, 2);
+	uint32 mode = _scengen_town_size > 2 ? TSM_CITY : TSM_FIXED;
+	uint32 layout = _scengen_town_layout;
+	DoCommandP(tile, size | (layout << 16), mode, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
 }
 
 static const Widget _scen_edit_town_gen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,  148,   159,     0,    13, 0x0,                      STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   159,    14,    94, 0x0,                      STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   159,    14,   146, 0x0,                      STR_NULL},
+
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    16,    27, STR_0234_NEW_TOWN,        STR_0235_CONSTRUCT_NEW_TOWN},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    29,    40, STR_023D_RANDOM_TOWN,     STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,    STR_RANDOM_TOWNS_TIP},
+
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    54,    67, STR_02A5_TOWN_SIZE,       STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    53,    68,    79, STR_02A1_SMALL,           STR_02A4_SELECT_TOWN_SIZE},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         54,   105,    68,    79, STR_02A2_MEDIUM,          STR_02A4_SELECT_TOWN_SIZE},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        106,   157,    68,    79, STR_02A3_LARGE,           STR_02A4_SELECT_TOWN_SIZE},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    81,    92, STR_SCENARIO_EDITOR_CITY, STR_02A4_SELECT_TOWN_SIZE},
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    54,    67, STR_02A5_TOWN_SIZE,       STR_NULL},
+
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    93,   106, STR_TOWN_ROAD_LAYOUT,           STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   107,   118, STR_SELECT_LAYOUT_ORIGINAL,     STR_SELECT_TOWN_ROAD_LAYOUT},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   107,   118, STR_SELECT_LAYOUT_BETTER_ROADS, STR_SELECT_TOWN_ROAD_LAYOUT},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   120,   131, STR_SELECT_LAYOUT_2X2_GRID,     STR_SELECT_LAYOUT_2X2_GRID},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   120,   131, STR_SELECT_LAYOUT_3X3_GRID,     STR_SELECT_TOWN_ROAD_LAYOUT},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,   133,   144, STR_SELECT_LAYOUT_RANDOM,       STR_SELECT_TOWN_ROAD_LAYOUT},
+
 {   WIDGETS_END},
 };
 
@@ -631,10 +642,17 @@ private:
 		TSEW_NEWTOWN = 4,
 		TSEW_RANDOMTOWN,
 		TSEW_MANYRANDOMTOWNS,
+		TSEW_TOWNSIZE,
 		TSEW_SMALLTOWN,
 		TSEW_MEDIUMTOWN,
 		TSEW_LARGETOWN,
 		TSEW_CITY,
+		TSEW_TOWNLAYOUT,
+		TSEW_LAYOUT_ORIGINAL,
+		TSEW_LAYOUT_BETTER,
+		TSEW_LAYOUT_GRID2,
+		TSEW_LAYOUT_GRID3,
+		TSEW_LAYOUT_RANDOM,
 	};
 
 public:
@@ -642,6 +660,8 @@ public:
 	{
 		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
 		this->FindWindowPlacementAndResize(desc);
+		_scengen_town_layout = _settings_game.economy.town_layout;
+		this->LowerWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
 	}
 
 	virtual void OnPaint()
@@ -664,7 +684,7 @@ public:
 				this->HandleButtonClick(TSEW_RANDOMTOWN);
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
-				t = CreateRandomTown(20, mode, size);
+				t = CreateRandomTown(20, mode, size, _scengen_town_layout);
 				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;
 
@@ -680,7 +700,7 @@ public:
 
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
-				if (!GenerateTowns()) {
+				if (!GenerateTowns(_scengen_town_layout)) {
 					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
 				}
 				UpdateNearestTownForRoadTiles(false);
@@ -691,6 +711,14 @@ public:
 				this->RaiseWidget(_scengen_town_size + TSEW_SMALLTOWN);
 				_scengen_town_size = widget - TSEW_SMALLTOWN;
 				this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+				this->SetDirty();
+				break;
+
+			case TSEW_LAYOUT_ORIGINAL: case TSEW_LAYOUT_BETTER: case TSEW_LAYOUT_GRID2:
+			case TSEW_LAYOUT_GRID3: case TSEW_LAYOUT_RANDOM:
+				this->RaiseWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
+				_scengen_town_layout = (TownLayout)(widget - TSEW_LAYOUT_ORIGINAL);
+				this->LowerWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
 				this->SetDirty();
 				break;
 		}
@@ -712,12 +740,13 @@ public:
 	{
 		this->RaiseButtons();
 		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+		this->LowerWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
 		this->SetDirty();
 	}
 };
 
 static const WindowDesc _scen_edit_town_gen_desc = {
-	WDP_AUTO, WDP_AUTO, 160, 95, 160, 95,
+	WDP_AUTO, WDP_AUTO, 160, 147, 160, 147,
 	WC_SCEN_TOWN_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_town_gen_widgets,

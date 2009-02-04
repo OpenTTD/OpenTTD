@@ -184,7 +184,7 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 
 	inline bool IsValid() const { return this->xy != INVALID_TILE; }
 
-	void InitializeLayout();
+	void InitializeLayout(TownLayout layout);
 
 	/** Calculate the max town noise
 	 * The value is counted using the population divided by the content of the
@@ -250,7 +250,7 @@ void UpdateAllTownVirtCoords();
 void InitializeTown();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
-Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size);
+Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size, TownLayout layout);
 
 enum {
 	ROAD_REMOVE = 0,
@@ -358,6 +358,7 @@ void ChangeTownRating(Town *t, int add, int max);
 HouseZonesBits GetTownRadiusGroup(const Town *t, TileIndex tile);
 void SetTownRatingTestMode(bool mode);
 uint GetMaskOfTownActions(int *nump, CompanyID cid, const Town *t);
+bool GenerateTowns(TownLayout layout);
 
 /**
  * Calculate a hash value from a tile position
