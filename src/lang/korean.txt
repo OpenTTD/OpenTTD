@@ -442,8 +442,8 @@ STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사�
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 자동차 목록 표시
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 선박 목록 표시
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}회사의 항공기 목록 표시
-STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}풍경 확대
-STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}풍경 축소
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}화면을 확대합니다
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}화면을 축소합니다
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}철로 건설
 STR_0182_BUILD_ROADS                                            :{BLACK}도로 건설
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}항만 건설
@@ -632,10 +632,10 @@ STR_0225                                                        :{BLACK}{DOWNARR
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 편집툴의 크기를 키움
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}지형 편집툴의 크기를 줄임
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}무작위로 지형 만들기
-STR_022B_RESET_LANDSCAPE                                        :{BLACK}풍경 초기화
-STR_022C_RESET_LANDSCAPE                                        :{WHITE}풍경 리셋
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}지형만 남기기
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}플레이어 소유물 제거
 STR_RESET_LANDSCAPE_TOOLTIP                                     :{BLACK}맵에서 모든 플레이어 소유의 자산을 제거
-STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}정말로 모든 플레이어 소유의 자산을 제거하시겠습니까?
+STR_RESET_LANDSCAPE_CONFIRMATION_TEXT                           :{WHITE}이 작업은 기본 지형(도시 포함) 이외의 모든 플레이어의 소유물(철도,도로 등)을 제거할 것입니다. 계속하시겠습니까?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}지형 만들기
 STR_022F_TOWN_GENERATION                                        :{BLACK}마을 만들기
 STR_0230_INDUSTRY_GENERATION                                    :{BLACK}산업 시설 만들기
@@ -750,7 +750,7 @@ STR_0298_LOAD_SCENARIO                                          :{WHITE}시나�
 STR_0299_SAVE_SCENARIO                                          :{WHITE}시나리오 저장하기
 STR_029A_PLAY_SCENARIO                                          :{BLACK}시나리오 플레이
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Heightmap 플레이
-STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Heightmap을 풍경으로 하여 게임을 시작합니다.
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Heightmap을 지형으로 사용하여 게임을 시작합니다.
 STR_QUIT_SCENARIO_QUERY                                         :{YELLOW}정말 이 시나리오를 종료하시겠습니까?
 STR_029C_QUIT_EDITOR                                            :{WHITE}에디터 종료
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...1200명 이상의 도시에만 건설할 수 있습니다!
@@ -2252,7 +2252,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}물/호
 STR_6813_ECONOMY                                                :{LTBLUE}경제: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}열차 회차: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}재앙: {ORANGE}{STRING}
-STR_CITY_APPROVAL                                               :{LTBLUE}도시 당국의 지역 재건설에 대한 태도: {ORANGE}{STRING}
+STR_CITY_APPROVAL                                               :{LTBLUE}도시 지역 당국의 재건설/파괴에 대한 태도: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_NONE                                                        :없음
@@ -2293,9 +2293,9 @@ STR_6835_AT_END_OF_LINE_ONLY                                    :선로 끝에�
 STR_6836_OFF                                                    :끔
 STR_6837_ON                                                     :켬
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}고득점 차트 보이기
-STR_PERMISSIVE                                                  :허용적
-STR_TOLERANT                                                    :관대함
-STR_HOSTILE                                                     :적대적
+STR_PERMISSIVE                                                  :신경 안씀
+STR_TOLERANT                                                    :신경 씀
+STR_HOSTILE                                                     :싫어함
 
 ##id 0x7000
 STR_7000                                                        :

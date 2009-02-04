@@ -28,14 +28,14 @@ STR_0011_MAIL                                                   :Pošta
 STR_0012_OIL                                                    :Nafta
 STR_0013_LIVESTOCK                                              :Stoka
 STR_0014_GOODS                                                  :Roba
-STR_0015_GRAIN                                                  :Åœito
+STR_0015_GRAIN                                                  :žito
 STR_0016_WOOD                                                   :Drvo
-STR_0017_IRON_ORE                                               :Ruda GvoÅŸÄa
-STR_0018_STEEL                                                  :Äelik
+STR_0017_IRON_ORE                                               :Ruda Gvožđa
+STR_0018_STEEL                                                  :Čelik
 STR_0019_VALUABLES                                              :Roba Od Vrednosti
 STR_001A_COPPER_ORE                                             :Ruda Bakra
 STR_001B_MAIZE                                                  :Kukuruz
-STR_001C_FRUIT                                                  :VoÄe
+STR_001C_FRUIT                                                  :Voće
 STR_001D_DIAMONDS                                               :Dijamanti
 STR_001E_FOOD                                                   :Hrana
 STR_001F_PAPER                                                  :Papir
@@ -365,10 +365,10 @@ STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLAC
 ############ range for service numbers starts
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Motorno vozilo
-STR_019D_AIRCRAFT                                               :Letelica
-STR_019E_SHIP                                                   :Brod
 STR_019F_TRAIN                                                  :Voz
+STR_019C_ROAD_VEHICLE                                           :Motorno vozilo
+STR_019E_SHIP                                                   :Brod
+STR_019D_AIRCRAFT                                               :Letelica
 STR_01A0_IS_GETTING_OLD                                         :{WHITE}{VEHICLE} postaje star
 STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{VEHICLE} postaje vrlo star
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{VEHICLE} postaje vrlo star i zahteva hitnu zamenu
@@ -775,7 +775,6 @@ STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izabrati
 
 
 
-
 ############ network gui strings
 
 
@@ -1017,6 +1016,12 @@ STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Kupiti isključ
 
 
 ##id 0xA000
+STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Napraviti Letelicu
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Letelice se ne može napraviti
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Leteluca
+STR_A00E_MAX_SPEED                                              :{BLACK}Maks. Brzina: {LTBLUE}{VELOCITY}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit ove godine: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pouzdanost: {LTBLUE}{COMMA}%  {BLACK}Kvarovi od prošle posete: {LTBLUE}{COMMA}
 
 
 
@@ -1070,6 +1075,8 @@ STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Svet stv
 STR_WORLD_GENERATION                                            :{BLACK}Svet stvaranje
 
 
+# Strings for map borders at game generation
+
 ########### String for new airports
 
 
@@ -1114,5 +1121,14 @@ STR_FACE_COLLAR_TIP                                             :{BLACK}Promena 
 ############ on screen keyboard
 ########
 
+############ AI GUI
+########
+
 ############ town controlled noise level
+########
+
+############ Downloading of content from the central server
+
+
+
 ########

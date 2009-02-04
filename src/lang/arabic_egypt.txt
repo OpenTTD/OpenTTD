@@ -1162,6 +1162,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}حظر 
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}حظر السفن على الكمبيوتر: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE} السماح بالذكاء الصناعي في اللعب الجماعي : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_MAX_OPCODES                               :{LTBLUE} #opcodes قبل تعليق الذكاء الصناعي : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}فترات الصيانة القياسية للقطارات: {ORANGE}{STRING} يوم / %
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}فترة الصيانة القياسية للقطارات{ORANGE}غير مفعل

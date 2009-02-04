@@ -1147,6 +1147,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Astlay availabl
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Ostmay usedway
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Owshay eservedray ackstray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Eepkay uildingbay oolstay activeway afterway usageway: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Oupgray expensesway inway ompanycay inancefay indowway: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Owshay uildingbay oolstay enwhay onay uitablesay ehiclesvay:{ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Axmay ainstray erpay ayerplay: {ORANGE}{STRING}

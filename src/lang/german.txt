@@ -1148,7 +1148,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :letzter verfüg
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :meistbenutzer
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Reservierte Schienen hervorheben: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Belasse Bauwerkzeuge aktiv nach Benutzung: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Firmenausgaben im Finanzenfenster:{ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Zwischensummen für Kategorien bei Firmenausgaben:{ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Bauwerkzeuge immer anzeigen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
