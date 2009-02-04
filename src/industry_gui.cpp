@@ -417,7 +417,7 @@ public:
 
 void ShowBuildIndustryWindow()
 {
-	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_current_company)) return;
+	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_local_company)) return;
 	if (BringWindowToFrontById(WC_BUILD_INDUSTRY, 0)) return;
 	new BuildIndustryWindow();
 }

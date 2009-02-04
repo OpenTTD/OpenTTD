@@ -833,7 +833,7 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 {
 	BuildRailToolbarWindow *w;
 
-	if (!IsValidCompanyID(_current_company)) return;
+	if (!IsValidCompanyID(_local_company)) return;
 	if (!ValParamRailtype(railtype)) return;
 
 	// don't recreate the window if we're clicking on a button and the window exists.

@@ -1786,7 +1786,7 @@ bool CanBuildVehicleInfrastructure(VehicleType type)
 {
 	assert(IsCompanyBuildableVehicleType(type));
 
-	if (!IsValidCompanyID(_current_company)) return false;
+	if (!IsValidCompanyID(_local_company)) return false;
 	if (_settings_client.gui.always_build_infrastructure) return true;
 
 	UnitID max;

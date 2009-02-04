@@ -952,16 +952,16 @@ struct StationViewWindow : public Window {
 
 			case SVW_PLANES: { // Show a list of scheduled aircraft to this station
 				const Station *st = GetStation(this->window_number);
-				/* Since oilrigs have no owners, show the scheduled aircraft of current company */
-				Owner owner = (st->owner == OWNER_NONE) ? _current_company : st->owner;
+				/* Since oilrigs have no owners, show the scheduled aircraft of local company */
+				Owner owner = (st->owner == OWNER_NONE) ? _local_company : st->owner;
 				ShowVehicleListWindow(owner, VEH_AIRCRAFT, (StationID)this->window_number);
 				break;
 			}
 
 			case SVW_SHIPS: { // Show a list of scheduled ships to this station
 				const Station *st = GetStation(this->window_number);
-				/* Since oilrigs/bouys have no owners, show the scheduled ships of current company */
-				Owner owner = (st->owner == OWNER_NONE) ? _current_company : st->owner;
+				/* Since oilrigs/bouys have no owners, show the scheduled ships of local company */
+				Owner owner = (st->owner == OWNER_NONE) ? _local_company : st->owner;
 				ShowVehicleListWindow(owner, VEH_SHIP, (StationID)this->window_number);
 				break;
 			}

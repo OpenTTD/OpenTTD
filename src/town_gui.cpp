@@ -725,6 +725,6 @@ static const WindowDesc _scen_edit_town_gen_desc = {
 
 void ShowBuildTownWindow()
 {
-	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_current_company)) return;
+	if (_game_mode != GM_EDITOR && !IsValidCompanyID(_local_company)) return;
 	AllocateWindowDescFront<ScenarioEditorTownGenerationWindow>(&_scen_edit_town_gen_desc, 0);
 }

@@ -350,7 +350,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		StationID st_index = GetStationIndex(tile);
 		const Station *st = GetStation(st_index);
 
-		if (st->owner == _current_company || st->owner == OWNER_NONE) {
+		if (st->owner == _local_company || st->owner == OWNER_NONE) {
 			byte facil;
 			(facil = FACIL_DOCK, v->type == VEH_SHIP) ||
 			(facil = FACIL_TRAIN, v->type == VEH_TRAIN) ||
