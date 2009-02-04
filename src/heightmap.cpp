@@ -331,8 +331,8 @@ static void GrayscaleToMapHeights(uint img_width, uint img_height, byte *map)
 
 			/* Check if current tile is within the 1-pixel map edge or padding regions */
 			if ((!_settings_game.construction.freeform_edges && DistanceFromEdge(tile) <= 1) ||
-					(row < row_pad) || (row >= (height - row_pad - 1)) ||
-					(col < col_pad) || (col >= (width  - col_pad - 1))) {
+					(row < row_pad) || (row >= (height - row_pad - (_settings_game.construction.freeform_edges ? 0 : 1))) ||
+					(col < col_pad) || (col >= (width  - col_pad - (_settings_game.construction.freeform_edges ? 0 : 1)))) {
 				SetTileHeight(tile, 0);
 			} else {
 				/* Use nearest neighbor resizing to scale map data.
