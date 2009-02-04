@@ -192,3 +192,10 @@
 	}
 	return max(0, 2 - num);
 }
+
+/* static */ AITown::RoadLayout AITown::GetRoadLayout(TownID town_id)
+{
+	if (!IsValidTown(town_id)) return ROAD_LAYOUT_INVALID;
+
+	return (AITown::RoadLayout)((TownLayout)::GetTown(town_id)->layout);
+}

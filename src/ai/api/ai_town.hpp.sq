@@ -9,6 +9,8 @@ namespace SQConvert {
 	template <> int Return<AITown::TownAction>(HSQUIRRELVM vm, AITown::TownAction res) { sq_pushinteger(vm, (int32)res); return 1; }
 	template <> AITown::TownRating GetParam(ForceType<AITown::TownRating>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITown::TownRating)tmp; }
 	template <> int Return<AITown::TownRating>(HSQUIRRELVM vm, AITown::TownRating res) { sq_pushinteger(vm, (int32)res); return 1; }
+	template <> AITown::RoadLayout GetParam(ForceType<AITown::RoadLayout>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQInteger tmp; sq_getinteger(vm, index, &tmp); return (AITown::RoadLayout)tmp; }
+	template <> int Return<AITown::RoadLayout>(HSQUIRRELVM vm, AITown::RoadLayout res) { sq_pushinteger(vm, (int32)res); return 1; }
 
 	/* Allow AITown to be used as Squirrel parameter */
 	template <> AITown *GetParam(ForceType<AITown *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AITown *)instance; }
@@ -41,6 +43,11 @@ void SQAITown_Register(Squirrel *engine) {
 	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_EXCELLENT,        "TOWN_RATING_EXCELLENT");
 	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_OUTSTANDING,      "TOWN_RATING_OUTSTANDING");
 	SQAITown.DefSQConst(engine, AITown::TOWN_RATING_INVALID,          "TOWN_RATING_INVALID");
+	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_ORIGINAL,         "ROAD_LAYOUT_ORIGINAL");
+	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_BETTER_ROADS,     "ROAD_LAYOUT_BETTER_ROADS");
+	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_2x2,              "ROAD_LAYOUT_2x2");
+	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_3x3,              "ROAD_LAYOUT_3x3");
+	SQAITown.DefSQConst(engine, AITown::ROAD_LAYOUT_INVALID,          "ROAD_LAYOUT_INVALID");
 
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetClassName,               "GetClassName",               1, "x");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetMaxTownID,               "GetMaxTownID",               1, "x");
@@ -64,6 +71,7 @@ void SQAITown_Register(Squirrel *engine) {
 	SQAITown.DefSQStaticMethod(engine, &AITown::PerformTownAction,          "PerformTownAction",          3, "xii");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetRating,                  "GetRating",                  3, "xii");
 	SQAITown.DefSQStaticMethod(engine, &AITown::GetAllowedNoise,            "GetAllowedNoise",            2, "xi");
+	SQAITown.DefSQStaticMethod(engine, &AITown::GetRoadLayout,              "GetRoadLayout",              2, "xi");
 
 	SQAITown.PostRegister(engine);
 }

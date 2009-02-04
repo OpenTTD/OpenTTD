@@ -85,6 +85,18 @@ public:
 	};
 
 	/**
+	 * Possible layouts for the roads in a town.
+	 */
+	enum RoadLayout {
+		/* Order IS important, as it matches an in-game value */
+		ROAD_LAYOUT_ORIGINAL,     ///< Original algorithm (min. 1 distance between roads).
+		ROAD_LAYOUT_BETTER_ROADS, ///< Extended original algorithm (min. 2 distance between roads).
+		ROAD_LAYOUT_2x2,          ///< Geometric 2x2 grid algorithm
+		ROAD_LAYOUT_3x3,          ///< Geometric 3x3 grid algorithm
+		ROAD_LAYOUT_INVALID = -1, ///< The layout for invalid towns.
+	};
+
+	/**
 	 * Gets the maximum town index; there are no valid towns with a higher index.
 	 * @return The maximum town index.
 	 * @post Return value is always non-negative.
@@ -279,6 +291,13 @@ public:
 	 * @return The noise that still can be added.
 	 */
 	static int GetAllowedNoise(TownID town_id);
+
+	/**
+	 * Get the road layout for a town.
+	 * @param town_id The town to get the road layout from.
+	 * @return The RoadLayout for the town.
+	 */
+	static RoadLayout GetRoadLayout(TownID town_id);
 };
 
 #endif /* AI_TOWN_HPP */
