@@ -523,6 +523,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallbac
 	/* Do not even think about executing out-of-bounds tile-commands */
 	if (tile != 0 && (tile >= MapSize() || (!IsValidTile(tile) && (cmd_flags & CMD_ALL_TILES) == 0))) return false;
 
+	/* If the server is a spectator, it may only do server commands! */
+	if (_current_company == COMPANY_SPECTATOR && (cmd_flags & CMD_SERVER) == 0) return false;
+
 	bool notest = (cmd_flags & CMD_NO_TEST) != 0;
 
 	_docommand_recursive = 1;
