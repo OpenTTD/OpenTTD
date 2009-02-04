@@ -48,7 +48,7 @@ template <> struct EnumPropsT<SettingGuiFlagLong> : MakeEnumPropsT<SettingGuiFla
 typedef TinyEnumT<SettingGuiFlagLong> SettingGuiFlag;
 
 
-typedef int32 OnChange(int32 var);          ///< callback prototype on data modification
+typedef bool OnChange(int32 var);           ///< callback prototype on data modification
 typedef int32 OnConvert(const char *value); ///< callback prototype for convertion error
 
 struct SettingDescBase {

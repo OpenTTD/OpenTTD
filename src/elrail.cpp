@@ -479,7 +479,7 @@ void DrawCatenary(const TileInfo *ti)
 	DrawCatenaryRailway(ti);
 }
 
-int32 SettingsDisableElrail(int32 p1)
+bool SettingsDisableElrail(int32 p1)
 {
 	Vehicle *v;
 	Company *c;
@@ -529,5 +529,5 @@ int32 SettingsDisableElrail(int32 p1)
 	* rails. It may have unintended consequences if that function is ever
 	* extended, though. */
 	ReinitGuiAfterToggleElrail(disable);
-	return 0;
+	return true;
 }

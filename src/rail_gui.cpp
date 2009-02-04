@@ -1779,7 +1779,7 @@ static void SetDefaultRailGui()
  * @param 0 needed to be called when a patch setting changes
  * @return success, needed for patch settings
  */
-int32 ResetSignalVariant(int32 = 0)
+bool ResetSignalVariant(int32 = 0)
 {
 	SignalVariant new_variant = (_cur_year < _settings_client.gui.semaphore_build_before ? SIG_SEMAPHORE : SIG_ELECTRIC);
 
@@ -1792,7 +1792,7 @@ int32 ResetSignalVariant(int32 = 0)
 		_cur_signal_variant = new_variant;
 	}
 
-	return 0;
+	return true;
 }
 
 /** Resets the rail GUI - sets default railtype to build

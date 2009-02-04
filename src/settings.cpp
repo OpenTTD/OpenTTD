@@ -818,77 +818,76 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 
 /* Begin - Callback Functions for the various settings */
 /* virtual PositionMainToolbar function, calls the right one.*/
-static int32 v_PositionMainToolbar(int32 p1)
+static bool v_PositionMainToolbar(int32 p1)
 {
 	if (_game_mode != GM_MENU) PositionMainToolbar(NULL);
-	return 0;
+	return true;
 }
 
-static int32 PopulationInLabelActive(int32 p1)
+static bool PopulationInLabelActive(int32 p1)
 {
 	Town *t;
-
 	FOR_ALL_TOWNS(t) UpdateTownVirtCoord(t);
 
-	return 0;
+	return true;
 }
 
-static int32 RedrawScreen(int32 p1)
+static bool RedrawScreen(int32 p1)
 {
 	MarkWholeScreenDirty();
-	return 0;
+	return true;
 }
 
-static int32 InValidateDetailsWindow(int32 p1)
+static bool InvalidateDetailsWindow(int32 p1)
 {
 	InvalidateWindowClasses(WC_VEHICLE_DETAILS);
-	return 0;
+	return true;
 }
 
-static int32 InvalidateStationBuildWindow(int32 p1)
+static bool InvalidateStationBuildWindow(int32 p1)
 {
 	InvalidateWindow(WC_BUILD_STATION, 0);
-	return 0;
+	return true;
 }
 
-static int32 InvalidateBuildIndustryWindow(int32 p1)
+static bool InvalidateBuildIndustryWindow(int32 p1)
 {
 	InvalidateWindowData(WC_BUILD_INDUSTRY, 0);
-	return 0;
+	return true;
 }
 
-static int32 CloseSignalGUI(int32 p1)
+static bool CloseSignalGUI(int32 p1)
 {
 	if (p1 == 0) {
 		DeleteWindowByClass(WC_BUILD_SIGNAL);
 	}
-	return 0;
+	return true;
 }
 
-static int32 InvalidateTownViewWindow(int32 p1)
+static bool InvalidateTownViewWindow(int32 p1)
 {
 	InvalidateWindowClassesData(WC_TOWN_VIEW, p1);
-	return 0;
+	return true;
 }
 
-static int32 DeleteSelectStationWindow(int32 p1)
+static bool DeleteSelectStationWindow(int32 p1)
 {
 	DeleteWindowById(WC_SELECT_STATION, 0);
-	return 0;
+	return true;
 }
 
-static int32 UpdateConsists(int32 p1)
+static bool UpdateConsists(int32 p1)
 {
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		/* Update the consist of all trains so the maximum speed is set correctly. */
 		if (v->type == VEH_TRAIN && (IsFrontEngine(v) || IsFreeWagon(v))) TrainConsistChanged(v, true);
 	}
-	return 0;
+	return true;
 }
 
 /* Check service intervals of vehicles, p1 is value of % or day based servicing */
-static int32 CheckInterval(int32 p1)
+static bool CheckInterval(int32 p1)
 {
 	VehicleSettings *ptc = (_game_mode == GM_MENU) ? &_settings_newgame.vehicle : &_settings_game.vehicle;
 
@@ -904,28 +903,30 @@ static int32 CheckInterval(int32 p1)
 		ptc->servint_ships    = 100;
 	}
 
-	return InValidateDetailsWindow(0);
+	InvalidateDetailsWindow(0);
+
+	return true;
 }
 
-static int32 EngineRenewUpdate(int32 p1)
+static bool EngineRenewUpdate(int32 p1)
 {
 	DoCommandP(0, 0, _settings_client.gui.autorenew, CMD_SET_AUTOREPLACE);
-	return 0;
+	return true;
 }
 
-static int32 EngineRenewMonthsUpdate(int32 p1)
+static bool EngineRenewMonthsUpdate(int32 p1)
 {
 	DoCommandP(0, 1, _settings_client.gui.autorenew_months, CMD_SET_AUTOREPLACE);
-	return 0;
+	return true;
 }
 
-static int32 EngineRenewMoneyUpdate(int32 p1)
+static bool EngineRenewMoneyUpdate(int32 p1)
 {
 	DoCommandP(0, 2, _settings_client.gui.autorenew_money, CMD_SET_AUTOREPLACE);
-	return 0;
+	return true;
 }
 
-static int32 TrainAccelerationModelChanged(int32 p1)
+static bool TrainAccelerationModelChanged(int32 p1)
 {
 	Vehicle *v;
 
@@ -933,14 +934,14 @@ static int32 TrainAccelerationModelChanged(int32 p1)
 		if (v->type == VEH_TRAIN && IsFrontEngine(v)) UpdateTrainAcceleration(v);
 	}
 
-	return 0;
+	return true;
 }
 
-static int32 DragSignalsDensityChanged(int32)
+static bool DragSignalsDensityChanged(int32)
 {
 	SetWindowDirty(FindWindowById(WC_BUILD_SIGNAL, 0));
 
-	return 0;
+	return true;
 }
 
 /*
@@ -993,13 +994,13 @@ void CheckDifficultyLevels()
 	}
 }
 
-static int32 DifficultyReset(int32 level)
+static bool DifficultyReset(int32 level)
 {
 	SetDifficultyLevel(level, (_game_mode == GM_MENU) ? &_settings_newgame.difficulty : &_settings_game.difficulty);
-	return 0;
+	return true;
 }
 
-static int32 DifficultyChange(int32)
+static bool DifficultyChange(int32)
 {
 	if (_game_mode == GM_MENU) {
 		_settings_newgame.difficulty.diff_level = 3;
@@ -1014,10 +1015,10 @@ static int32 DifficultyChange(int32)
 		ShowGameDifficulty();
 	}
 
-	return 0;
+	return true;
 }
 
-static int32 DifficultyNoiseChange(int32 i)
+static bool DifficultyNoiseChange(int32 i)
 {
 	if (_game_mode == GM_NORMAL) {
 		UpdateAirportsNoise();
@@ -1035,15 +1036,15 @@ static int32 DifficultyNoiseChange(int32 i)
  * able to grow. If a user desires to have a town with no road,
  * he can easily remove them himself. This would create less confusion
  * @param p1 unused
- * @return always 0
+ * @return always true
  */
-static int32 CheckTownLayout(int32 p1)
+static bool CheckTownLayout(int32 p1)
 {
 	if (_settings_game.economy.town_layout == TL_NO_ROADS && _game_mode == GM_EDITOR) {
 		ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID, 0, 0);
 		_settings_game.economy.town_layout = TL_ORIGINAL;
 	}
-	return 0;
+	return true;
 }
 
 /** Conversion callback for _gameopt_settings_game.landscape
@@ -1073,24 +1074,22 @@ static int32 CheckNoiseToleranceLevel(const char *value)
 	return 0;
 }
 
-static int32 CheckFreeformEdges(int32 p1)
+static bool CheckFreeformEdges(int32 p1)
 {
-	if (_game_mode == GM_MENU) return 0;
+	if (_game_mode == GM_MENU) return true;
 	if (p1 != 0) {
 		Vehicle *v;
 		FOR_ALL_VEHICLES(v) {
 			if (v->type == VEH_SHIP && (TileX(v->tile) == 0 || TileY(v->tile) == 0)) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_EMPTY, 0, 0);
-				_settings_game.construction.freeform_edges = false;
-				return 0;
+				return false;
 			}
 		}
 		Station *st;
 		FOR_ALL_STATIONS(st) {
 			if (TileX(st->xy) == 0 || TileY(st->xy) == 0) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_EMPTY, 0, 0);
-				_settings_game.construction.freeform_edges = false;
-				return 0;
+				return false;
 			}
 		}
 		for (uint i = 0; i < MapSizeX(); i++) MakeVoid(TileXY(i, 0));
@@ -1099,29 +1098,25 @@ static int32 CheckFreeformEdges(int32 p1)
 		for (uint i = 0; i < MapMaxX(); i++) {
 			if (TileHeight(TileXY(i, 1)) != 0) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
-				_settings_game.construction.freeform_edges = true;
-				return 0;
+				return false;
 			}
 		}
 		for (uint i = 1; i < MapMaxX(); i++) {
 			if (!IsTileType(TileXY(i, MapMaxY() - 1), MP_WATER) || TileHeight(TileXY(1, MapMaxY())) != 0) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
-				_settings_game.construction.freeform_edges = true;
-				return 0;
+				return false;
 			}
 		}
 		for (uint i = 0; i < MapMaxY(); i++) {
 			if (TileHeight(TileXY(1, i)) != 0) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
-				_settings_game.construction.freeform_edges = true;
-				return 0;
+				return false;
 			}
 		}
 		for (uint i = 1; i < MapMaxY(); i++) {
 			if (!IsTileType(TileXY(MapMaxX() - 1, i), MP_WATER) || TileHeight(TileXY(MapMaxX(), i)) != 0) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_EDGES_NOT_WATER, 0, 0);
-				_settings_game.construction.freeform_edges = true;
-				return 0;
+				return false;
 			}
 		}
 		/* Make tiles at the border water again. */
@@ -1135,46 +1130,46 @@ static int32 CheckFreeformEdges(int32 p1)
 		}
 	}
 	MarkWholeScreenDirty();
-	return 0;
+	return true;
 }
 
 #ifdef ENABLE_NETWORK
 
-static int32 UpdateMinActiveClients(int32 p1)
+static bool UpdateMinActiveClients(int32 p1)
 {
 	CheckMinActiveClients();
-	return 0;
+	return true;
 }
 
-static int32 UpdateClientName(int32 p1)
+static bool UpdateClientName(int32 p1)
 {
 	NetworkUpdateClientName();
-	return 0;
+	return true;
 }
 
-static int32 UpdateServerPassword(int32 p1)
+static bool UpdateServerPassword(int32 p1)
 {
 	if (strcmp(_settings_client.network.server_password, "*") == 0) {
 		_settings_client.network.server_password[0] = '\0';
 	}
 
-	return 0;
+	return true;
 }
 
-static int32 UpdateRconPassword(int32 p1)
+static bool UpdateRconPassword(int32 p1)
 {
 	if (strcmp(_settings_client.network.rcon_password, "*") == 0) {
 		_settings_client.network.rcon_password[0] = '\0';
 	}
 
-	return 0;
+	return true;
 }
 
-static int32 UpdateClientConfigValues(int32 p1)
+static bool UpdateClientConfigValues(int32 p1)
 {
 	if (_network_server) NetworkServerSendConfigUpdate();
 
-	return 0;
+	return true;
 }
 
 #endif /* ENABLE_NETWORK */
@@ -1339,10 +1334,10 @@ const SettingDesc _patch_settings[] = {
 	     SDT_VAR(GameSettings, vehicle.max_aircraft,                SLE_UINT16,                     0, 0,   200,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_AIRCRAFT,           RedrawScreen),
 	     SDT_VAR(GameSettings, vehicle.max_ships,                   SLE_UINT16,                     0, 0,   300,     0,    5000, 0, STR_CONFIG_PATCHES_MAX_SHIPS,              RedrawScreen),
 	    SDT_BOOL(GameSettings, vehicle.servint_ispercent,                                           0,NN, false,                    STR_CONFIG_PATCHES_SERVINT_ISPERCENT,      CheckInterval),
-	     SDT_VAR(GameSettings, vehicle.servint_trains,              SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_TRAINS,         InValidateDetailsWindow),
-	     SDT_VAR(GameSettings, vehicle.servint_roadveh,             SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_ROADVEH,        InValidateDetailsWindow),
-	     SDT_VAR(GameSettings, vehicle.servint_ships,               SLE_UINT16,                     0,D0,   360,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_SHIPS,          InValidateDetailsWindow),
-	     SDT_VAR(GameSettings, vehicle.servint_aircraft,            SLE_UINT16,                     0,D0,   100,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,       InValidateDetailsWindow),
+	     SDT_VAR(GameSettings, vehicle.servint_trains,              SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_TRAINS,         InvalidateDetailsWindow),
+	     SDT_VAR(GameSettings, vehicle.servint_roadveh,             SLE_UINT16,                     0,D0,   150,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_ROADVEH,        InvalidateDetailsWindow),
+	     SDT_VAR(GameSettings, vehicle.servint_ships,               SLE_UINT16,                     0,D0,   360,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_SHIPS,          InvalidateDetailsWindow),
+	     SDT_VAR(GameSettings, vehicle.servint_aircraft,            SLE_UINT16,                     0,D0,   100,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,       InvalidateDetailsWindow),
 	    SDT_BOOL(GameSettings, order.no_servicing_if_no_breakdowns,                                 0, 0, false,                    STR_CONFIG_PATCHES_NOSERVICE,              NULL),
 	    SDT_BOOL(GameSettings, vehicle.wagon_speed_limits,                                          0,NN,  true,                    STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,       UpdateConsists),
 	SDT_CONDBOOL(GameSettings, vehicle.disable_elrails,                         38, SL_MAX_VERSION, 0,NN, false,                    STR_CONFIG_PATCHES_DISABLE_ELRAILS,        SettingsDisableElrail),
@@ -1998,9 +1993,14 @@ CommandCost CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint3
 		Write_ValidateSetting(var, sd, newval);
 		newval = (int32)ReadValue(var, sd->save.conv);
 
-		if (sd->desc.proc != NULL) sd->desc.proc(newval);
+		if (oldval == newval) return CommandCost();
 
-		if ((sd->desc.flags & SGF_NO_NETWORK) && oldval != newval) {
+		if (sd->desc.proc != NULL && !sd->desc.proc(newval)) {
+			WriteValue(var, sd->save.conv, (int64)oldval);
+			return CommandCost();
+		}
+
+		if (sd->desc.flags & SGF_NO_NETWORK) {
 			GamelogStartAction(GLAT_PATCH);
 			GamelogPatch(sd->desc.name, oldval, newval);
 			GamelogStopAction();
