@@ -5307,7 +5307,7 @@ static void InitializeGRFSpecial()
 
 	_ttdpatch_flags[3] =                                                 (0 << 0x00)  // newcargodistribution
 	                   |                                                 (1 << 0x01)  // windowsnap
-	                   |  ((_settings_game.economy.town_layout == TL_NO_ROADS ? 1 : 0) << 0x02)  // townbuildnoroad
+	                   | ((_settings_game.economy.allow_town_roads || _generating_world ? 0 : 1) << 0x02)  // townbuildnoroad
 	                   |                                                 (1 << 0x03)  // pathbasedsignalling
 	                   |                                                 (0 << 0x04)  // aichoosechance
 	                   |                                                 (1 << 0x05)  // resolutionwidth

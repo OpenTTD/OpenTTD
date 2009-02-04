@@ -443,13 +443,7 @@ struct GenerateLandscapeWindow : public QueryStringBaseWindow {
 			case GLAND_GENERATE_BUTTON: // Generate
 				MakeNewgameSettingsLive();
 
-				if (_settings_game.economy.town_layout == TL_NO_ROADS) {
-					ShowQuery(
-						STR_TOWN_LAYOUT_WARNING_CAPTION,
-						STR_TOWN_LAYOUT_WARNING_MESSAGE,
-						this,
-						LandscapeGenerationCallback);
-				} else if (mode == GLWP_HEIGHTMAP &&
+				if (mode == GLWP_HEIGHTMAP &&
 						(this->x * 2 < (1U << _settings_newgame.game_creation.map_x) ||
 						this->x / 2 > (1U << _settings_newgame.game_creation.map_x) ||
 						this->y * 2 < (1U << _settings_newgame.game_creation.map_y) ||
@@ -685,10 +679,6 @@ void ShowHeightmapLoad()
 
 void StartScenarioEditor()
 {
-	if (_settings_newgame.economy.town_layout == TL_NO_ROADS) {
-		_settings_newgame.economy.town_layout = TL_ORIGINAL;
-	}
-
 	StartGeneratingLandscape(GLWP_SCENARIO);
 }
 

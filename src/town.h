@@ -166,15 +166,13 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 
 	/* If this is a larger town, and should grow more quickly. */
 	bool larger_town;
+	TownLayoutByte layout; ///< town specific road layout
 
 	/* NOSAVE: UpdateTownRadius updates this given the house count. */
 	uint32 squared_town_zone_radius[HZB_END];
 
 	/* NOSAVE: The number of each type of building in the town. */
 	BuildingCounts building_counts;
-
-	/* NOSAVE: The town specific road layout */
-	TownLayout layout;
 
 	/**
 	 * Creates a new town
@@ -188,29 +186,19 @@ struct Town : PoolItem<Town, TownID, &_Town_pool> {
 
 	void InitializeLayout();
 
-	inline TownLayout GetActiveLayout() const;
-
 	/** Calculate the max town noise
 	 * The value is counted using the population divided by the content of the
 	 * entry in town_noise_population corespondig to the town's tolerance.
 	 * To this result, we add 3, which is the noise of the lowest airport.
 	 * So user can at least buld that airport
 	 * @return the maximum noise level the town will tolerate */
-	inline uint16 MaxTownNoise() const {
+	inline uint16 MaxTownNoise() const
+	{
 		if (this->population == 0) return 0; // no population? no noise
 
 		return ((this->population / _settings_game.economy.town_noise_population[_settings_game.difficulty.town_council_tolerance]) + 3);
 	}
 };
-
-/**
- * Get the current valid layout for the town
- * @return the active layout for this town
- */
-inline TownLayout Town::GetActiveLayout() const
-{
-	return (_settings_game.economy.town_layout == TL_RANDOM) ? this->layout : _settings_game.economy.town_layout;
-}
 
 struct HouseSpec {
 	/* Standard properties */

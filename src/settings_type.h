@@ -320,6 +320,7 @@ struct EconomySettings {
 	uint8  larger_towns;                     ///< the number of cities to build. These start off larger and grow twice as fast
 	uint8  initial_city_size;                ///< multiplier for the initial size of the cities compared to towns
 	TownLayoutByte town_layout;              ///< select town layout
+	bool   allow_town_roads;                 ///< towns are allowed to build roads (always allowed when generating world / in SE)
 	bool   station_noise_level;              ///< build new airports when the town noise level is still within accepted limits
 	uint16 town_noise_population[3];         ///< population to base decision on noise evaluation (@see town_council_tolerance)
 };

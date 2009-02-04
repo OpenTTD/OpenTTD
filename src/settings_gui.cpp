@@ -1097,6 +1097,7 @@ static PatchEntry _patches_economy_towns[] = {
 	PatchEntry("economy.bribe"),
 	PatchEntry("economy.exclusive_rights"),
 	PatchEntry("economy.town_layout"),
+	PatchEntry("economy.allow_town_roads"),
 	PatchEntry("economy.mod_road_rebuild"),
 	PatchEntry("economy.town_growth_rate"),
 	PatchEntry("economy.larger_towns"),

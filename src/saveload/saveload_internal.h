@@ -21,7 +21,6 @@ void FixOldWaypoints();
 void AfterLoadWaypoints();
 void AfterLoadVehicles(bool part_of_load);
 void AfterLoadStations();
-void AfterLoadTown();
 void UpdateHousesAndTowns();
 
 void UpdateOldAircraft();

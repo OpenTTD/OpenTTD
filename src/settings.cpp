@@ -1031,23 +1031,6 @@ static bool DifficultyNoiseChange(int32 i)
 }
 
 /**
- * Check for right TownLayout usage in editor mode.
- * The No Road mode is not desirable since towns have to be
- * able to grow. If a user desires to have a town with no road,
- * he can easily remove them himself. This would create less confusion
- * @param p1 unused
- * @return always true
- */
-static bool CheckTownLayout(int32 p1)
-{
-	if (_settings_game.economy.town_layout == TL_NO_ROADS && _game_mode == GM_EDITOR) {
-		ShowErrorMessage(INVALID_STRING_ID, STR_CONFIG_PATCHES_TOWN_LAYOUT_INVALID, 0, 0);
-		_settings_game.economy.town_layout = TL_ORIGINAL;
-	}
-	return true;
-}
-
-/**
  * Check whether the road side may be changed.
  * @param p1 unused
  * @return true if the road side may be changed.
@@ -1322,7 +1305,8 @@ const SettingDesc _patch_settings[] = {
 	    SDT_BOOL(GameSettings, construction.longbridges,                                            0,NN,  true,                    STR_CONFIG_PATCHES_LONGBRIDGES,            NULL),
 	    SDT_BOOL(GameSettings, construction.signal_side,                                            N,NN,  true,                    STR_CONFIG_PATCHES_SIGNALSIDE,             RedrawScreen),
 	    SDT_BOOL(GameSettings, station.always_small_airport,                                        0,NN, false,                    STR_CONFIG_PATCHES_SMALL_AIRPORTS,         NULL),
-	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_ORIGINAL,TL_NO_ROADS,NUM_TLS-1,1, STR_CONFIG_PATCHES_TOWN_LAYOUT,  CheckTownLayout),
+	 SDT_CONDVAR(GameSettings, economy.town_layout,                  SLE_UINT8, 59, SL_MAX_VERSION, 0,MS,TL_BETTER_ROADS,TL_BEGIN,NUM_TLS-1,1, STR_CONFIG_PATCHES_TOWN_LAYOUT, NULL),
+	SDT_CONDBOOL(GameSettings, economy.allow_town_roads,                       113, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS,       NULL),
 
 	     SDT_VAR(GameSettings, vehicle.train_acceleration_model,     SLE_UINT8,                     0,MS,     0,     0,       1, 1, STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL, TrainAccelerationModelChanged),
 	    SDT_BOOL(GameSettings, pf.forbid_90_deg,                                                    0, 0, false,                    STR_CONFIG_PATCHES_FORBID_90_DEG,          NULL),

@@ -65,8 +65,8 @@ enum {
  * Town Layouts
  */
 enum TownLayout {
-	TL_NO_ROADS     = 0, ///< Build no more roads, but still build houses
-	TL_ORIGINAL,         ///< Original algorithm (min. 1 distance between roads)
+	TL_BEGIN = 0,
+	TL_ORIGINAL = 0,     ///< Original algorithm (min. 1 distance between roads)
 	TL_BETTER_ROADS,     ///< Extended original algorithm (min. 2 distance between roads)
 	TL_2X2_GRID,         ///< Geometric 2x2 grid algorithm
 	TL_3X3_GRID,         ///< Geometric 3x3 grid algorithm
@@ -78,7 +78,7 @@ enum TownLayout {
 
 /* It needs to be 8bits, because we save and load it as such */
 /** Define basic enum properties */
-template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_NO_ROADS, NUM_TLS, NUM_TLS> {};
+template <> struct EnumPropsT<TownLayout> : MakeEnumPropsT<TownLayout, byte, TL_BEGIN, NUM_TLS, NUM_TLS> {};
 typedef TinyEnumT<TownLayout> TownLayoutByte; //typedefing-enumification of TownLayout
 
 enum {

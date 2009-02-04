@@ -127,6 +127,7 @@ static const SaveLoad _town_desc[] = {
 	SLE_CONDVAR(Town, exclusive_counter,     SLE_UINT8,                  2, SL_MAX_VERSION),
 
 	SLE_CONDVAR(Town, larger_town,           SLE_BOOL,                  56, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, layout,                SLE_UINT8,                113, SL_MAX_VERSION),
 
 	/* reserve extra space in savegame here. (currently 30 bytes) */
 	SLE_CONDNULL(30, 2, SL_MAX_VERSION),
@@ -193,12 +194,6 @@ static void Load_TOWN()
 	 *  the size of the TownPool */
 	if (_cur_town_ctr > GetMaxTownIndex())
 		_cur_town_ctr = 0;
-}
-
-void AfterLoadTown()
-{
-	Town *t;
-	FOR_ALL_TOWNS(t) t->InitializeLayout();
 }
 
 extern const ChunkHandler _town_chunk_handlers[] = {

@@ -482,8 +482,6 @@ bool AfterLoadGame()
 	/* Update all waypoints */
 	if (CheckSavegameVersion(12)) FixOldWaypoints();
 
-	AfterLoadTown();
-
 	/* make sure there is a town in the game */
 	if (_game_mode == GM_NORMAL && !ClosestTownFromTile(0, UINT_MAX)) {
 		SetSaveLoadError(STR_NO_TOWN_IN_SCENARIO);
@@ -1691,6 +1689,36 @@ bool AfterLoadGame()
 				SetCompanyHQSize(t, GB(old_m5, 2, 3));
 				SetCompanyHQSection(t, GB(old_m5, 0, 2));
 			}
+		}
+	}
+
+	if (CheckSavegameVersion(113)) {
+		/* allow_town_roads is added, set it if town_layout wasn't TL_NO_ROADS */
+		if (_settings_game.economy.town_layout == 0) { // was TL_NO_ROADS
+			_settings_game.economy.allow_town_roads = false;
+			_settings_game.economy.town_layout = TL_BETTER_ROADS;
+		} else {
+			_settings_game.economy.allow_town_roads = true;
+			_settings_game.economy.town_layout = _settings_game.economy.town_layout - 1;
+		}
+
+		/* Initialize layout of all towns. Older versions were using different
+		 * generator for random town layout, use it if needed. */
+		Town *t;
+		FOR_ALL_TOWNS(t) {
+			if (_settings_game.economy.town_layout != TL_RANDOM) {
+				t->layout = _settings_game.economy.town_layout;
+				continue;
+			}
+
+			/* Use old layout randomizer code */
+			byte layout = TileHash(TileX(t->xy), TileY(t->xy)) % 6;
+			switch (layout) {
+				default: break;
+				case 5: layout = 1; break;
+				case 0: layout = 2; break;
+			}
+			t->layout = layout - 1;
 		}
 	}
 
