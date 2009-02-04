@@ -43,7 +43,7 @@ OBJS     := $(OBJS_C) $(OBJS_CPP) $(OBJS_MM) $(OBJS_RC)
 SRCS     := !!SRCS!!
 
 # All C-files depend on those 3 files
-FILE_DEP := $(CONFIG_CACHE_COMPILER) $(LANG_OBJS_DIR)/table/strings.h endian_target.h
+FILE_DEP := $(CONFIG_CACHE_COMPILER) endian_target.h
 # Create all dirs and subdirs
 RES      := $(shell mkdir -p $(BIN_DIR) $(sort $(dir $(OBJS))))
 
@@ -195,7 +195,7 @@ endif
 	/:/ {                               \
 		left = NF - 1;                    \
 		for (n = 2; n <= NF; n++) {       \
-			if (match($$n, "^$(SRC_DIR)") == 0) { \
+			if (match($$n, "^$(ROOT_DIR)") == 0) { \
 				$$n = "";                     \
 				left--;                       \
 			}                               \
