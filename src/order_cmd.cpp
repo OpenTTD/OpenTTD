@@ -408,7 +408,7 @@ static uint GetOrderDistance(const Order *prev, const Order *cur, const Vehicle 
  * - p1 = (bit  0 - 15) - ID of the vehicle
  * - p1 = (bit 16 - 31) - the selected order (if any). If the last order is given,
  *                        the order will be inserted before that one
- *                        only the first 8 bits used currently (bit 16 - 23) (max 255)
+ *                        the maximum vehicle order id is 254.
  * @param p2 packed order to insert
  */
 CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
@@ -553,7 +553,7 @@ CommandCost CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, c
 	if (!Order::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 	if (v->orders.list == NULL && !OrderList::CanAllocateItem()) return_cmd_error(STR_8831_NO_MORE_SPACE_FOR_ORDERS);
 
-	if (v->type == VEH_SHIP && IsHumanCompany(v->owner) && _settings_game.pf.pathfinder_for_ships != VPF_NPF) {
+	if (v->type == VEH_SHIP && _settings_game.pf.pathfinder_for_ships != VPF_NPF) {
 		/* Make sure the new destination is not too far away from the previous */
 		const Order *prev = NULL;
 		uint n = 0;
