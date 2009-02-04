@@ -1047,6 +1047,17 @@ static bool CheckTownLayout(int32 p1)
 	return true;
 }
 
+/**
+ * Check whether the road side may be changed.
+ * @param p1 unused
+ * @return true if the road side may be changed.
+ */
+static bool CheckRoadSide(int p1)
+{
+	extern bool RoadVehiclesAreBuilt();
+	return _game_mode == GM_MENU || !RoadVehiclesAreBuilt();
+}
+
 /** Conversion callback for _gameopt_settings_game.landscape
  * It converts (or try) between old values and the new ones,
  * without losing initial setting of the user
@@ -1303,7 +1314,7 @@ const SettingDesc _patch_settings[] = {
  SDT_CONDOMANY(GameSettings, game_creation.town_name,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 0, 255, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL, NULL),
  SDT_CONDOMANY(GameSettings, game_creation.landscape,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 0,   3, "temperate|arctic|tropic|toyland", STR_NULL, NULL, ConvertLandscape),
 	 SDT_CONDVAR(GameSettings, game_creation.snow_line,              SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 7 * TILE_HEIGHT, 2 * TILE_HEIGHT, 13 * TILE_HEIGHT, 0, STR_NULL, NULL),
- SDT_CONDOMANY(GameSettings, vehicle.road_side,                    SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 1,   1, "left|right", STR_NULL, NULL, NULL),
+ SDT_CONDOMANY(GameSettings, vehicle.road_side,                    SLE_UINT8, 97, SL_MAX_VERSION, 0,NN, 1,   1, "left|right", STR_NULL, CheckRoadSide, NULL),
 
 	    SDT_BOOL(GameSettings, construction.build_on_slopes,                                        0,NN,  true,                    STR_CONFIG_PATCHES_BUILDONSLOPES,          NULL),
 	SDT_CONDBOOL(GameSettings, construction.autoslope,                          75, SL_MAX_VERSION, 0, 0,  true,                    STR_CONFIG_PATCHES_AUTOSLOPE,              NULL),

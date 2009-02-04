@@ -275,7 +275,9 @@ struct GameOptionsWindow : Window {
 
 			case GAMEOPT_ROADSIDE_BTN: // Road side
 				if (this->opt->vehicle.road_side != index) { // only change if setting changed
-					DoCommandP(0, index, 0, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+					uint i;
+					if (GetPatchFromName("vehicle.road_side", &i) == NULL) NOT_REACHED();
+					SetPatchValue(i, index);
 					MarkWholeScreenDirty();
 				}
 				break;

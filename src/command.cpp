@@ -144,8 +144,6 @@ DEF_COMMAND(CmdBuildTown);
 DEF_COMMAND(CmdRenameTown);
 DEF_COMMAND(CmdDoTownAction);
 
-DEF_COMMAND(CmdSetRoadDriveSide);
-
 DEF_COMMAND(CmdChangePatchSetting);
 
 DEF_COMMAND(CmdSellShip);
@@ -293,8 +291,6 @@ static const Command _command_proc_table[] = {
 	{CmdBuildTown,                        CMD_OFFLINE}, /* CMD_BUILD_TOWN */
 	{CmdRenameTown,                        CMD_SERVER}, /* CMD_RENAME_TOWN */
 	{CmdDoTownAction,                               0}, /* CMD_DO_TOWN_ACTION */
-
-	{CmdSetRoadDriveSide,                  CMD_SERVER}, /* CMD_SET_ROAD_DRIVE_SIDE */
 
 	{CmdSellShip,                                   0}, /* CMD_SELL_SHIP */
 	{CmdBuildShip,                                  0}, /* CMD_BUILD_SHIP */

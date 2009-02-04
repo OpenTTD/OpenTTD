@@ -240,8 +240,6 @@ enum {
 	CMD_RENAME_TOWN,                  ///< rename a town
 	CMD_DO_TOWN_ACTION,               ///< do a action from the town detail window (like advertises or bribe)
 
-	CMD_SET_ROAD_DRIVE_SIDE,          ///< set the side where the road vehicles drive
-
 	CMD_SELL_SHIP,                    ///< sell a ship
 	CMD_BUILD_SHIP,                   ///< build a new ship
 	CMD_SEND_SHIP_TO_DEPOT,           ///< send a ship to a depot
