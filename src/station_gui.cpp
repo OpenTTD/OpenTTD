@@ -1210,7 +1210,7 @@ struct SelectStationWindow : Window {
 static const WindowDesc _select_station_desc = {
 	WDP_AUTO, WDP_AUTO, 200, 92, 200, 182,
 	WC_SELECT_STATION, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE | WDF_CONSTRUCTION,
 	_select_station_widgets,
 };
 

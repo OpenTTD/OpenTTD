@@ -83,6 +83,12 @@ void SetLocalCompany(CompanyID new_company)
 		_settings_client.gui.autorenew_money  = c->engine_renew_money;
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
+
+	/* Delete any construction windows... */
+	DeleteConstructionWindows();
+
+	/* ... and redraw the whole screen. */
+	MarkWholeScreenDirty();
 }
 
 bool IsHumanCompany(CompanyID company)

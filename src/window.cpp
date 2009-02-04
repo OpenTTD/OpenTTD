@@ -2191,6 +2191,28 @@ restart_search:
 	}
 }
 
+/**
+ * Delete all windows that are used for construction of vehicle etc.
+ * Once done with that invalidate the others to ensure they get refreshed too.
+ */
+void DeleteConstructionWindows()
+{
+	Window *w;
+
+restart_search:
+	/* When we find the window to delete, we need to restart the search
+	 * as deleting this window could cascade in deleting (many) others
+	 * anywhere in the z-array */
+	FOR_ALL_WINDOWS_FROM_BACK(w) {
+		if (w->desc_flags & WDF_CONSTRUCTION) {
+			delete w;
+			goto restart_search;
+		}
+	}
+
+	FOR_ALL_WINDOWS_FROM_BACK(w) w->SetDirty();
+}
+
 /** Delete all always on-top windows to get an empty screen */
 void HideVitalWindows()
 {

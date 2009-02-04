@@ -846,10 +846,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MOVE)
 	if (client_id == _network_own_client_id) {
 		_network_playas = company_id;
 		SetLocalCompany(company_id);
-
-		/* Disable any buttons in any windows the client is now not supposed to get to, and do it fast. */
-		/* Do this ASAP else the client has a chance of sending DoCommands with an incorrect company_id (=kick)! */
-		MarkWholeScreenDirty();
 	}
 
 	return NETWORK_RECV_STATUS_OKAY;

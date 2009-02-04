@@ -28,6 +28,7 @@ void InvalidateWindowClassesData(WindowClass cls, int data = 0);
 
 void DeleteNonVitalWindows();
 void DeleteAllNonVitalWindows();
+void DeleteConstructionWindows();
 void HideVitalWindows();
 void ShowVitalWindows();
 

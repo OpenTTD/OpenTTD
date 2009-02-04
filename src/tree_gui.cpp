@@ -174,7 +174,7 @@ static const Widget _build_trees_widgets[] = {
 static const WindowDesc _build_trees_desc = {
 	WDP_AUTO, WDP_AUTO, 143, 184, 143, 184,
 	WC_BUILD_TREES, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
 	_build_trees_widgets,
 };
 

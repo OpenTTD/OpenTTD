@@ -46,8 +46,6 @@ static int32 ClickChangeCompanyCheat(int32 p1, int32 p2)
 	while ((uint)p1 < GetCompanyPoolSize()) {
 		if (IsValidCompanyID((CompanyID)p1)) {
 			SetLocalCompany((CompanyID)p1);
-
-			MarkWholeScreenDirty();
 			return _local_company;
 		}
 		p1 += p2;

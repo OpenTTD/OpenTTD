@@ -351,7 +351,6 @@ static void LoadIntroGame()
 
 	_pause_game = 0;
 	_cursor.fix_at = false;
-	MarkWholeScreenDirty();
 
 	CheckForMissingGlyphsInLoadedLanguagePack();
 
@@ -792,8 +791,6 @@ static void MakeNewGame(bool from_heightmap)
 static void MakeNewEditorWorldDone()
 {
 	SetLocalCompany(OWNER_NONE);
-
-	MarkWholeScreenDirty();
 }
 
 static void MakeNewEditorWorld()

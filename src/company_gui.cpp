@@ -1096,7 +1096,7 @@ public:
 static const WindowDesc _select_company_manager_face_desc = {
 	WDP_AUTO, WDP_AUTO, 190, 163, 190, 163,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_select_company_manager_face_widgets,
 };
 
@@ -1104,7 +1104,7 @@ static const WindowDesc _select_company_manager_face_desc = {
 static const WindowDesc _select_company_manager_face_adv_desc = {
 	WDP_AUTO, WDP_AUTO, 220, 220, 220, 220,
 	WC_COMPANY_MANAGER_FACE, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_CONSTRUCTION,
 	_select_company_manager_face_adv_widgets,
 };
 
@@ -1518,7 +1518,7 @@ static const Widget _buy_company_widgets[] = {
 static const WindowDesc _buy_company_desc = {
 	153, 171, 334, 137, 334, 137,
 	WC_BUY_COMPANY, WC_NONE,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_CONSTRUCTION,
 	_buy_company_widgets,
 };
 

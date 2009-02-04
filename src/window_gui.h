@@ -124,6 +124,7 @@ enum WindowDefaultFlag {
 	WDF_STD_TOOLTIPS    =   1 << 0, ///< use standard routine when displaying tooltips
 	WDF_DEF_WIDGET      =   1 << 1, ///< Default widget control for some widgets in the on click event, @see DispatchLeftClickEvent()
 	WDF_STD_BTN         =   1 << 2, ///< Default handling for close and titlebar widgets (widget no 0 and 1)
+	WDF_CONSTRUCTION    =   1 << 3, ///< This window is used for construction; close it whenever changing company.
 
 	WDF_UNCLICK_BUTTONS =   1 << 4, ///< Unclick buttons when the window event times out
 	WDF_STICKY_BUTTON   =   1 << 5, ///< Set window to sticky mode; they are not closed unless closed with 'X' (widget 2)
