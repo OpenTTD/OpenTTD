@@ -28,7 +28,8 @@
 
 typedef GUIList<const Town*> GUITownList;
 
-static uint _scengen_town_size = 1; // select medium-sized towns per default
+static TownSize _scengen_town_size = TS_MEDIUM; // select medium-sized towns per default
+static bool _scengen_city;
 static TownLayout _scengen_town_layout;
 
 static const Widget _town_authority_widgets[] = {
@@ -603,33 +604,32 @@ void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceProc_Town(TileIndex tile)
 {
-	bool city = _scengen_town_size > (uint)TS_LARGE;
-	TownSize size = city ? TS_RANDOM : (TownSize)_scengen_town_size;
-	DoCommandP(tile, size | city << 2 | (_scengen_town_layout << 3), 0, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
+	DoCommandP(tile, _scengen_town_size | _scengen_city << 2 | _scengen_town_layout << 3, 0, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
 }
 
 static const Widget _scen_edit_town_gen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,  148,   159,     0,    13, 0x0,                      STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   159,    14,   146, 0x0,                      STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   159,    14,   161, 0x0,                      STR_NULL},
 
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    16,    27, STR_0234_NEW_TOWN,        STR_0235_CONSTRUCT_NEW_TOWN},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    29,    40, STR_023D_RANDOM_TOWN,     STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION},
 {    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,    STR_RANDOM_TOWNS_TIP},
 
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    54,    67, STR_02A5_TOWN_SIZE,       STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    53,    68,    79, STR_02A1_SMALL,           STR_02A4_SELECT_TOWN_SIZE},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         54,   105,    68,    79, STR_02A2_MEDIUM,          STR_02A4_SELECT_TOWN_SIZE},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,        106,   157,    68,    79, STR_02A3_LARGE,           STR_02A4_SELECT_TOWN_SIZE},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    81,    92, STR_SCENARIO_EDITOR_CITY, STR_02A4_SELECT_TOWN_SIZE},
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    54,    67, STR_02A5_TOWN_SIZE,          STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    68,    79, STR_02A1_SMALL,              STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    68,    79, STR_02A2_MEDIUM,             STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,    81,    92, STR_02A3_LARGE,              STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,    81,    92, STR_SELECT_TOWN_SIZE_RANDOM, STR_02A4_SELECT_TOWN_SIZE},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,    96,   107, STR_SCENARIO_EDITOR_CITY,    STR_SCENARIO_EDITOR_CITY_TOOLTIP},
 
-{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,    93,   106, STR_TOWN_ROAD_LAYOUT,           STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   107,   118, STR_SELECT_LAYOUT_ORIGINAL,     STR_SELECT_TOWN_ROAD_LAYOUT},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   107,   118, STR_SELECT_LAYOUT_BETTER_ROADS, STR_SELECT_TOWN_ROAD_LAYOUT},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   120,   131, STR_SELECT_LAYOUT_2X2_GRID,     STR_SELECT_LAYOUT_2X2_GRID},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   120,   131, STR_SELECT_LAYOUT_3X3_GRID,     STR_SELECT_TOWN_ROAD_LAYOUT},
-{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,   133,   144, STR_SELECT_LAYOUT_RANDOM,       STR_SELECT_TOWN_ROAD_LAYOUT},
+{      WWT_LABEL,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,   147,   108,   121, STR_TOWN_ROAD_LAYOUT,           STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   122,   133, STR_SELECT_LAYOUT_ORIGINAL,     STR_SELECT_TOWN_ROAD_LAYOUT},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   122,   133, STR_SELECT_LAYOUT_BETTER_ROADS, STR_SELECT_TOWN_ROAD_LAYOUT},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,    79,   135,   146, STR_SELECT_LAYOUT_2X2_GRID,     STR_SELECT_TOWN_ROAD_LAYOUT},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,         80,   157,   135,   146, STR_SELECT_LAYOUT_3X3_GRID,     STR_SELECT_TOWN_ROAD_LAYOUT},
+{    WWT_TEXTBTN,   RESIZE_NONE,  COLOUR_GREY,          2,   157,   148,   159, STR_SELECT_LAYOUT_RANDOM,       STR_SELECT_TOWN_ROAD_LAYOUT},
 
 {   WIDGETS_END},
 };
@@ -642,9 +642,10 @@ private:
 		TSEW_RANDOMTOWN,
 		TSEW_MANYRANDOMTOWNS,
 		TSEW_TOWNSIZE,
-		TSEW_SMALLTOWN,
-		TSEW_MEDIUMTOWN,
-		TSEW_LARGETOWN,
+		TSEW_SIZE_SMALL,
+		TSEW_SIZE_MEDIUM,
+		TSEW_SIZE_LARGE,
+		TSEW_SIZE_RANDOM,
 		TSEW_CITY,
 		TSEW_TOWNLAYOUT,
 		TSEW_LAYOUT_ORIGINAL,
@@ -657,10 +658,11 @@ private:
 public:
 	ScenarioEditorTownGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+		this->LowerWidget(_scengen_town_size + TSEW_SIZE_SMALL);
 		this->FindWindowPlacementAndResize(desc);
 		_scengen_town_layout = _settings_game.economy.town_layout;
 		this->LowerWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
+		_scengen_city = false;
 	}
 
 	virtual void OnPaint()
@@ -676,14 +678,10 @@ public:
 				break;
 
 			case TSEW_RANDOMTOWN: {
-				bool city = _scengen_town_size == 3;
-				/* cities will always have 'large size' * initial_city_size */
-				TownSize size = city ? TS_RANDOM : (TownSize)_scengen_town_size;
-
 				this->HandleButtonClick(TSEW_RANDOMTOWN);
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
-				const Town *t = CreateRandomTown(20, size, city, _scengen_town_layout);
+				const Town *t = CreateRandomTown(20, _scengen_town_size, _scengen_city, _scengen_town_layout);
 				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;
 
@@ -706,10 +704,16 @@ public:
 				_generating_world = false;
 				break;
 
-			case TSEW_SMALLTOWN: case TSEW_MEDIUMTOWN: case TSEW_LARGETOWN: case TSEW_CITY:
-				this->RaiseWidget(_scengen_town_size + TSEW_SMALLTOWN);
-				_scengen_town_size = widget - TSEW_SMALLTOWN;
-				this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+			case TSEW_SIZE_SMALL: case TSEW_SIZE_MEDIUM: case TSEW_SIZE_LARGE: case TSEW_SIZE_RANDOM:
+				this->RaiseWidget(_scengen_town_size + TSEW_SIZE_SMALL);
+				_scengen_town_size = (TownSize)(widget - TSEW_SIZE_SMALL);
+				this->LowerWidget(_scengen_town_size + TSEW_SIZE_SMALL);
+				this->SetDirty();
+				break;
+
+			case TSEW_CITY:
+				_scengen_city ^= true;
+				this->SetWidgetLoweredState(TSEW_CITY, _scengen_city);
 				this->SetDirty();
 				break;
 
@@ -738,14 +742,15 @@ public:
 	virtual void OnPlaceObjectAbort()
 	{
 		this->RaiseButtons();
-		this->LowerWidget(_scengen_town_size + TSEW_SMALLTOWN);
+		this->LowerWidget(_scengen_town_size + TSEW_SIZE_SMALL);
+		this->SetWidgetLoweredState(TSEW_CITY, _scengen_city);
 		this->LowerWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
 		this->SetDirty();
 	}
 };
 
 static const WindowDesc _scen_edit_town_gen_desc = {
-	WDP_AUTO, WDP_AUTO, 160, 147, 160, 147,
+	WDP_AUTO, WDP_AUTO, 160, 162, 160, 162,
 	WC_SCEN_TOWN_GEN, WC_NONE,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_town_gen_widgets,
