@@ -429,7 +429,7 @@ bool SetFallbackFont(FreeTypeSettings *settings, const char *language_isocode, i
 
 	FcDefaultSubstitute(pat);
 
-	/* The create a font set and match that */
+	/* Then create a font set and match that */
 	match = FcFontMatch(0, pat, &result);
 
 	if (match == NULL) {
