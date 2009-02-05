@@ -1194,7 +1194,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :特に早い
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}市に展開する町の割合：{ORANGE}{STRING}の１
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}市に展開する町の割合：{ORANGE}なし
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初期の市町村のサイズの乗数：{ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}道路建設時に変な部分を破壊
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}道路建設時に変な部分を破壊
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}インターフェース
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}建設

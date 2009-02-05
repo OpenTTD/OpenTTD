@@ -1178,7 +1178,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Cyflym iawn
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Cyfran o drefi a fydd yn troi'n ddinasoedd: {ORANGE}1 o bob {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Cyfran o drefi a fydd yn datblygu'n ddinasoedd: {ORANGE}Dim
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Lluosydd cychwynol maint dinas: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Dileu ffyrdd disynnwyr wrth adeiladu ffyrdd
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Dileu ffyrdd disynnwyr wrth adeiladu ffyrdd
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Rhyngwyneb
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Adeiladu

@@ -1206,7 +1206,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Много бъ
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}1 в {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}Нито един
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Множител за големината на града: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Премахни абсурдни пътни-елементи по пътниат строеж
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Премахни абсурдни пътни-елементи по пътниат строеж
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Строене

@@ -1279,7 +1279,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Vrlo brzo
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Omjer gradova koji će postati metropole: {ORANGE}1 od {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Omjer gradova koji će postati metropole: {ORANGE}Nijedan
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Početni množitelj veličine grada: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Ukloni apsurdne cestovne elemente tijekom konstrukcije prometnica
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Ukloni apsurdne cestovne elemente tijekom konstrukcije prometnica
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Sučelje
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Izgradnja

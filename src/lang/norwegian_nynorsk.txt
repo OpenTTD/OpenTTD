@@ -1205,7 +1205,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Særs rask
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel byar som vil vekse dobbelt så fort: {ORANGE}1 av {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel byar som vil vekse dobbelt så fort: {ORANGE}Ingen
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Faktor for multiplikasjon av bystorleik: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Fjern absurde vegelement under vegkonstruksjon
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Fjern absurde vegelement under vegkonstruksjon
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Grensesnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruksjon

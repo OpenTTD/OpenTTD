@@ -1214,7 +1214,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Eryvay astfay
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}1 inway {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}Onenay
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initialway itycay izesay ultipliermay: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfaceway
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Onstructioncay

@@ -1214,7 +1214,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Molt ràpida
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}1 de cada {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporció de ciutats que creixeran el doble de ràpid: {ORANGE}Cap
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador de mida de ciutat inicial: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Treu els elements de carretera absurds durant la reconstrucció de carretera
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Treu els elements de carretera absurds durant la reconstrucció de carretera
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfície
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Construcció

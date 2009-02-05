@@ -1204,7 +1204,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :非常快
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}城鎮升格為城市的比例：{ORANGE}{STRING} 分之一
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}城鎮升格為城市的比例：{ORANGE}無
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初始市鎮規模倍率：{ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}鋪設道路時移除不合理的路面
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}鋪設道路時移除不合理的路面
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}介面
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}建造

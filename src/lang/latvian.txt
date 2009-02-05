@@ -1214,7 +1214,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Ļoti ātrs
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Ciematu proporcija, kas kļūs par pilsētām: {ORANGE}1 pret {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ciematu proporcija, kas kļūs par pilsētām: {ORANGE}Neviens
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Sākotnējais pilsētas lieluma daudzkārtnis: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Novākt absurdus ceļa elementus, ceļu būves laikā
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Novākt absurdus ceļa elementus, ceļu būves laikā
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Saskarne
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Būvniecība

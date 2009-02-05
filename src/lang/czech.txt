@@ -1282,7 +1282,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :velmi rychlá
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Podíl měst, ze kterých se stanou velkoměsta: {ORANGE}1 z {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Podíl měst, ze kterých se stanou velkoměsta: {ORANGE}žádné
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Činitel základní velikosti města: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Odstraňovat nesmyslné prvky vozovky při výstavbě silnic
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Odstraňovat nesmyslné prvky vozovky při výstavbě silnic
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Ovládaní
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Výstavba

@@ -1214,7 +1214,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Çok Hızlı
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Kasabaların şehir olması için gerekli nüfus: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Şehir olacak kasabaların oranı: {ORANGE}Hiçbiri
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Birincil şehir büyüklüğü çarpanı: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Yol yapımı sırasında gerçekçi olmayan yerleri kaldır
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Yol yapımı sırasında gerçekçi olmayan yerleri kaldır
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Arayüz
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}İnşaat

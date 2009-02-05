@@ -1211,7 +1211,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Muito Rápido
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}1 em {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Proporção de cidades que se tornarão metrópoles: {ORANGE}Nenhuma
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Multiplicador inicial para dimensão da cidade: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Remover partes absurdas durante a construção de estradas
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Remover partes absurdas durante a construção de estradas
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interface
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Construção

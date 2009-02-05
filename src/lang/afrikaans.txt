@@ -1198,7 +1198,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Baie vinnig
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Gedeelte van dorpe wat sal stede word: {ORANGE}1 in {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Gedeelte van dorpe wat sal stede word: {ORANGE}None
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Aanvanklike stad grootte multiplier: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Verwyder verspot pad-elemente gedurende die pad konstruksie
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Verwyder verspot pad-elemente gedurende die pad konstruksie
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}koppelvlak
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruksie

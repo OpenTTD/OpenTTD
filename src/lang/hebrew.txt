@@ -1212,7 +1212,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :מהיר מאו
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{ORANGE}1/{STRING}{LTBLUE} :אחוז העיירות אשר יתפתחו לערים
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{ORANGE}מבוטל {LTBLUE} :אחוז העיירות אשר יתפתחו לערים
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{ORANGE}{STRING}{LTBLUE} :מכפיל התחלתי של גודל העיירות
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}הסר פרטים מגוחכים בעת בניית כבישים
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}הסר פרטים מגוחכים בעת בניית כבישים
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}ממשק חזותי
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}בנייה

@@ -1178,7 +1178,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}1 av {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}Inga
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial stadsstorleks multiplikator: {ORANGE}{STRING}
-STR_CONFIG_MODIFIED_ROAD_REBUILD                                :{LTBLUE}Ta bort absurda väg-element under vägkonstruktion
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Ta bort absurda väg-element under vägkonstruktion
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruktion
