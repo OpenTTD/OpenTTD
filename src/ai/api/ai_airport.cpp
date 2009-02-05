@@ -125,3 +125,13 @@
 
 	return 1;
 }
+
+/* static */ TownID AIAirport::GetNearestTown(TileIndex tile, AirportType type)
+{
+	extern Town *AirportGetNearestTown(const AirportFTAClass *afc, TileIndex airport_tile);
+
+	if (!::IsValidTile(tile)) return INVALID_TOWN;
+	if (!IsValidAirportType(type)) return INVALID_TOWN;
+
+	return AirportGetNearestTown(GetAirport(type), tile)->index;
+}

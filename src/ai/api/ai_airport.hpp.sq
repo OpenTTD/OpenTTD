@@ -52,6 +52,7 @@ void SQAIAirport_Register(Squirrel *engine) {
 	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::RemoveAirport,            "RemoveAirport",            2, "xi");
 	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetAirportType,           "GetAirportType",           2, "xi");
 	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNoiseLevelIncrease,    "GetNoiseLevelIncrease",    3, "xii");
+	SQAIAirport.DefSQStaticMethod(engine, &AIAirport::GetNearestTown,           "GetNearestTown",           3, "xii");
 
 	SQAIAirport.PostRegister(engine);
 }

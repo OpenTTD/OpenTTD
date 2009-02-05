@@ -155,10 +155,19 @@ public:
 	 *  built at this tile.
 	 * @param tile The tile to check.
 	 * @param type The AirportType to check.
-	 * @return The TownID of the town closest to the tile.
-	 * @note The noise will be added to the town with TownID AITile.GetClosestTown(tile).
+	 * @return The amount of noise added to the nearest town.
+	 * @note The noise will be added to the town with TownID GetNearestTown(itle, type).
 	 */
 	static int GetNoiseLevelIncrease(TileIndex tile, AirportType type);
+
+	/**
+	 * Get the TownID of the town whose local authority will influence
+	 *  an airport at some tile.
+	 * @param tile The tile to check.
+	 * @param type The AirportType to check.
+	 * @return The TownID of the town closest to the tile.
+	 */
+	static TownID GetNearestTown(TileIndex tile, AirportType type);
 };
 
 #endif /* AI_AIRPORT_HPP */
