@@ -33,6 +33,7 @@
 #include "sound_func.h"
 #include "effectvehicle_func.h"
 #include "roadveh.h"
+#include "ai/ai.hpp"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -215,8 +216,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 			if (IsValidTile(tile) &&
 					IsTileType(tile, MP_STATION) &&
-					IsAirport(tile) &&
-					IsHumanCompany(GetTileOwner(tile))) {
+					IsAirport(tile)) {
 				v->current_order.SetDestination(1);
 				v->age = 0;
 
@@ -225,6 +225,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 					NS_ACCIDENT_VEHICLE,
 					v->index,
 					0);
+				AI::NewEvent(GetTileOwner(tile), new AIEventDisasterZeppelinerCrashed(GetStationIndex(tile)));
 			}
 		}
 
@@ -239,10 +240,10 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 		if (IsValidTile(tile) &&
 				IsTileType(tile, MP_STATION) &&
-				IsAirport(tile) &&
-				IsHumanCompany(GetTileOwner(tile))) {
+				IsAirport(tile)) {
 			st = GetStationByTile(tile);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
+			AI::NewEvent(GetTileOwner(tile), new AIEventDisasterZeppelinerCleared(st->index));
 		}
 
 		SetDisasterVehiclePos(v, v->x_pos, v->y_pos, v->z_pos);
@@ -280,8 +281,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	tile = v->tile;
 	if (IsValidTile(tile) &&
 			IsTileType(tile, MP_STATION) &&
-			IsAirport(tile) &&
-			IsHumanCompany(GetTileOwner(tile))) {
+			IsAirport(tile)) {
 		st = GetStationByTile(tile);
 		SETBITS(st->airport_flags, RUNWAY_IN_block);
 	}
@@ -318,7 +318,7 @@ static void DisasterTick_Ufo(Vehicle *v)
 		v->current_order.SetDestination(1);
 
 		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_ROAD && IsRoadVehFront(u) && IsHumanCompany(u->owner)) {
+			if (u->type == VEH_ROAD && IsRoadVehFront(u)) {
 				v->dest_tile = u->index;
 				v->age = 0;
 				return;
@@ -357,6 +357,8 @@ static void DisasterTick_Ufo(Vehicle *v)
 					NS_ACCIDENT_VEHICLE,
 					u->index,
 					0);
+
+				AI::NewEvent(u->owner, new AIEventVehicleCrashed(u->index, u->tile, AIEventVehicleCrashed::CRASH_RV_UFO));
 
 				for (Vehicle *w = u; w != NULL; w = w->Next()) {
 					w->vehstatus |= VS_CRASHED;
@@ -756,9 +758,7 @@ static void Disaster_Zeppeliner_Init()
 	int x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->airport_tile != INVALID_TILE &&
-				st->airport_type <= 1 &&
-				IsHumanCompany(st->owner)) {
+		if (st->airport_tile != INVALID_TILE && (st->airport_type == AT_SMALL || st->airport_type == AT_LARGE)) {
 			x = (TileX(st->airport_tile) + 2) * TILE_SIZE;
 			break;
 		}

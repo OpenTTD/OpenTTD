@@ -29,6 +29,7 @@ public:
 	enum CrashReason {
 		CRASH_TRAIN,                ///< Two trains collided
 		CRASH_RV_LEVEL_CROSSING,    ///< Road vehicle got under a train
+		CRASH_RV_UFO,               ///< Road vehicle got under a landing ufo
 		CRASH_PLANE_LANDING,        ///< Plane crashed on landing
 		CRASH_AIRCRAFT_NO_AIRPORT,  ///< Aircraft crashed after it found not a single airport for landing
 	};
@@ -666,6 +667,70 @@ public:
 private:
 	StationID station;
 	VehicleID vehicle;
+};
+
+/**
+ * Event Disaster Zeppeliner Crashed, indicating a zeppeliner has crashed on an airport and is blocking the runway.
+ */
+class AIEventDisasterZeppelinerCrashed : public AIEvent {
+public:
+	static const char *GetClassName() { return "AIEventDisasterZeppelinerCrashed"; }
+
+	/**
+	 * @param station The station containing the affected airport
+	 */
+	AIEventDisasterZeppelinerCrashed(StationID station) :
+		AIEvent(AI_ET_DISASTER_ZEPPELINER_CRASHED),
+		station(station)
+	{}
+
+	/**
+	 * Convert an AIEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static AIEventDisasterZeppelinerCrashed *Convert(AIEvent *instance) { return (AIEventDisasterZeppelinerCrashed *)instance; }
+
+	/**
+	 * Get the StationID of the station containing the affected airport.
+	 * @return The StationID of the station containing the affected airport.
+	 */
+	StationID GetStationID() { return station; }
+
+private:
+	StationID station;
+};
+
+/**
+ * Event Disaster Zeppeliner Cleared, indicating a previously crashed zeppeliner has been remvoed, and the airport is operating again.
+ */
+class AIEventDisasterZeppelinerCleared : public AIEvent {
+public:
+	static const char *GetClassName() { return "AIEventDisasterZeppelinerCleared"; }
+
+	/**
+	 * @param station The station containing the affected airport
+	 */
+	AIEventDisasterZeppelinerCleared(StationID station) :
+		AIEvent(AI_ET_DISASTER_ZEPPELINER_CLEARED),
+		station(station)
+	{}
+
+	/**
+	 * Convert an AIEvent to the real instance.
+	 * @param instance The instance to convert.
+	 * @return The converted instance.
+	 */
+	static AIEventDisasterZeppelinerCleared *Convert(AIEvent *instance) { return (AIEventDisasterZeppelinerCleared *)instance; }
+
+	/**
+	 * Get the StationID of the station containing the affected airport.
+	 * @return The StationID of the station containing the affected airport.
+	 */
+	StationID GetStationID() { return station; }
+
+private:
+	StationID station;
 };
 
 #endif /* AI_EVENT_TYPES_HPP */
