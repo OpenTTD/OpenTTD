@@ -3584,7 +3584,7 @@ static bool CheckTrainCollision(Vehicle *v)
 	/* any dead -> no crash */
 	if (tcc.num == 0) return false;
 
-	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile));
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_TRAIN));
 	SetDParam(0, tcc.num);
 	AddNewsItem(STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL,
 		NS_ACCIDENT_VEHICLE,

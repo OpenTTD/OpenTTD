@@ -221,6 +221,7 @@ void AIInstance::RegisterAPI()
 	SQAITunnel_Register(this->engine);
 	SQAIVehicle_Register(this->engine);
 	SQAIVehicleList_Register(this->engine);
+	SQAIVehicleList_SharedOrders_Register(this->engine);
 	SQAIVehicleList_Station_Register(this->engine);
 
 	this->engine->SetGlobalPointer(this->engine);

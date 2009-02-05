@@ -600,7 +600,7 @@ static void RoadVehCrash(Vehicle *v)
 
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 
-	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile));
+	AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_RV_LEVEL_CROSSING));
 
 	SetDParam(0, pass);
 	AddNewsItem(

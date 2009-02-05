@@ -24,13 +24,24 @@ public:
 	static const char *GetClassName() { return "AIEventVehicleCrashed"; }
 
 	/**
+	 * The reasons for vehicle crashes
+	 */
+	enum CrashReason {
+		CRASH_TRAIN,                ///< Two trains collided
+		CRASH_RV_LEVEL_CROSSING,    ///< Road vehicle got under a train
+		CRASH_PLANE_LANDING,        ///< Plane crashed on landing
+		CRASH_AIRCRAFT_NO_AIRPORT,  ///< Aircraft crashed after it found not a single airport for landing
+	};
+
+	/**
 	 * @param vehicle The vehicle that crashed.
 	 * @param crash_site Where the vehicle crashed.
 	 */
-	AIEventVehicleCrashed(VehicleID vehicle, TileIndex crash_site) :
+	AIEventVehicleCrashed(VehicleID vehicle, TileIndex crash_site, CrashReason crash_reason) :
 		AIEvent(AI_ET_VEHICLE_CRASHED),
 		crash_site(crash_site),
-		vehicle(vehicle)
+		vehicle(vehicle),
+		crash_reason(crash_reason)
 	{}
 
 	/**
@@ -53,6 +64,12 @@ public:
 	TileIndex GetCrashSite() { return crash_site; }
 
 	/**
+	 * Get the reason for crashing
+	 * @return The reason for crashing
+	 */
+	CrashReason GetCrashReason() { return crash_reason; }
+
+	/**
 	 * Clone the crashed vehicle and send it on its way again.
 	 * @param depot the depot to build the vehicle in.
 	 * @return True when the cloning succeeded.
@@ -63,6 +80,7 @@ public:
 private:
 	TileIndex crash_site;
 	VehicleID vehicle;
+	CrashReason crash_reason;
 };
 
 /**
