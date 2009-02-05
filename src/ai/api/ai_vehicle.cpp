@@ -390,3 +390,11 @@
 		default: NOT_REACHED();
 	}
 }
+
+/* static */ bool AIVehicle::HasSharedOrders(VehicleID vehicle_id)
+{
+	if (!IsValidVehicle(vehicle_id)) return false;
+
+	Vehicle *v = ::GetVehicle(vehicle_id);
+	return v->orders.list != NULL && v->orders.list->GetNumVehicles() > 1;
+}

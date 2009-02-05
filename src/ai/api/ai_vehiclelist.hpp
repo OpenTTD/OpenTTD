@@ -31,4 +31,18 @@ public:
 	AIVehicleList_Station(StationID station_id);
 };
 
+/**
+ * Creates a list of vehicles that share orders.
+ * @ingroup AIList
+ */
+class AIVehicleList_SharedOrders : public AIAbstractList {
+public:
+	static const char *GetClassName() { return "AIVehicleList_SharedOrders"; }
+
+	/**
+	 * @param station_id The vehicle that the rest shared orders with.
+	 */
+	AIVehicleList_SharedOrders(VehicleID vehicle_id);
+};
+
 #endif /* AI_VEHICLELIST_HPP */

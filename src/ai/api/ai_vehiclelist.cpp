@@ -4,6 +4,7 @@
 
 #include "ai_vehiclelist.hpp"
 #include "ai_station.hpp"
+#include "ai_vehicle.hpp"
 #include "../../company_func.h"
 #include "../../vehicle_base.h"
 
@@ -32,5 +33,19 @@ AIVehicleList_Station::AIVehicleList_Station(StationID station_id)
 				}
 			}
 		}
+	}
+}
+
+AIVehicleList_SharedOrders::AIVehicleList_SharedOrders(VehicleID vehicle_id)
+{
+	if (!AIVehicle::IsValidVehicle(vehicle_id)) return;
+
+	Vehicle *v = GetVehicle(vehicle_id)->FirstShared();
+	if (v == NULL) {
+		this->AddItem(vehicle_id);
+		return;
+	}
+	for (; v != NULL; v->NextShared()) {
+		this->AddItem(v->index);
 	}
 }

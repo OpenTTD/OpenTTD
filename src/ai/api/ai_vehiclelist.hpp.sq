@@ -40,3 +40,22 @@ void SQAIVehicleList_Station_Register(Squirrel *engine) {
 
 	SQAIVehicleList_Station.PostRegister(engine);
 }
+
+namespace SQConvert {
+	/* Allow AIVehicleList_SharedOrders to be used as Squirrel parameter */
+	template <> AIVehicleList_SharedOrders *GetParam(ForceType<AIVehicleList_SharedOrders *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIVehicleList_SharedOrders *)instance; }
+	template <> AIVehicleList_SharedOrders &GetParam(ForceType<AIVehicleList_SharedOrders &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIVehicleList_SharedOrders *)instance; }
+	template <> const AIVehicleList_SharedOrders *GetParam(ForceType<const AIVehicleList_SharedOrders *>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return  (AIVehicleList_SharedOrders *)instance; }
+	template <> const AIVehicleList_SharedOrders &GetParam(ForceType<const AIVehicleList_SharedOrders &>, HSQUIRRELVM vm, int index, SQAutoFreePointers *ptr) { SQUserPointer instance; sq_getinstanceup(vm, index, &instance, 0); return *(AIVehicleList_SharedOrders *)instance; }
+	template <> int Return<AIVehicleList_SharedOrders *>(HSQUIRRELVM vm, AIVehicleList_SharedOrders *res) { if (res == NULL) { sq_pushnull(vm); return 1; } res->AddRef(); Squirrel::CreateClassInstanceVM(vm, "AIVehicleList_SharedOrders", res, NULL, DefSQDestructorCallback<AIVehicleList_SharedOrders>); return 1; }
+}; // namespace SQConvert
+
+void SQAIVehicleList_SharedOrders_Register(Squirrel *engine) {
+	DefSQClass <AIVehicleList_SharedOrders> SQAIVehicleList_SharedOrders("AIVehicleList_SharedOrders");
+	SQAIVehicleList_SharedOrders.PreRegister(engine, "AIAbstractList");
+	SQAIVehicleList_SharedOrders.AddConstructor<void (AIVehicleList_SharedOrders::*)(VehicleID vehicle_id), 2>(engine, "xi");
+
+	SQAIVehicleList_SharedOrders.DefSQStaticMethod(engine, &AIVehicleList_SharedOrders::GetClassName, "GetClassName", 1, "x");
+
+	SQAIVehicleList_SharedOrders.PostRegister(engine);
+}

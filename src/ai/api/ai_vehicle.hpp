@@ -478,6 +478,14 @@ public:
 	 * @return True if the vehicle is articulated.
 	 */
 	static bool IsArticulated(VehicleID vehicle_id);
+
+	/**
+	 * Check if the vehicle has shared orders.
+	 * @param vehicle_id The vehicle to check.
+	 * @pre IsValidVehicle(vehicle_id).
+	 * @return True if the vehicle has shared orders.
+	 */
+	static bool HasSharedOrders(VehicleID vehicle_id);
 };
 
 #endif /* AI_VEHICLE_HPP */
