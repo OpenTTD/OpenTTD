@@ -28,10 +28,6 @@
 
 typedef GUIList<const Town*> GUITownList;
 
-static TownSize _scengen_town_size = TS_MEDIUM; // select medium-sized towns per default
-static bool _scengen_city;
-static TownLayout _scengen_town_layout;
-
 static const Widget _town_authority_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_BROWN,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},              // TWA_CLOSEBOX
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_BROWN,    11,   316,     0,    13, STR_2022_LOCAL_AUTHORITY, STR_018C_WINDOW_TITLE_DRAG_THIS},    // TWA_CAPTION
@@ -602,11 +598,6 @@ void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void PlaceProc_Town(TileIndex tile)
-{
-	DoCommandP(tile, _scengen_town_size | _scengen_city << 2 | _scengen_town_layout << 3, 0, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
-}
-
 static const Widget _scen_edit_town_gen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,  COLOUR_DARK_GREEN,    0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,  COLOUR_DARK_GREEN,   11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -655,14 +646,18 @@ private:
 		TSEW_LAYOUT_RANDOM,
 	};
 
+	static TownSize town_size;
+	static bool city;
+	static TownLayout town_layout;
+
 public:
 	ScenarioEditorTownGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->LowerWidget(_scengen_town_size + TSEW_SIZE_SMALL);
+		this->LowerWidget(town_size + TSEW_SIZE_SMALL);
 		this->FindWindowPlacementAndResize(desc);
-		_scengen_town_layout = _settings_game.economy.town_layout;
-		this->LowerWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
-		_scengen_city = false;
+		town_layout = _settings_game.economy.town_layout;
+		this->LowerWidget(town_layout + TSEW_LAYOUT_ORIGINAL);
+		city = false;
 	}
 
 	virtual void OnPaint()
@@ -681,7 +676,7 @@ public:
 				this->HandleButtonClick(TSEW_RANDOMTOWN);
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
-				const Town *t = CreateRandomTown(20, _scengen_town_size, _scengen_city, _scengen_town_layout);
+				const Town *t = CreateRandomTown(20, town_size, city, town_layout);
 				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;
 
@@ -697,7 +692,7 @@ public:
 
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
-				if (!GenerateTowns(_scengen_town_layout)) {
+				if (!GenerateTowns(town_layout)) {
 					ShowErrorMessage(STR_NO_SPACE_FOR_TOWN, STR_CANNOT_GENERATE_TOWN, 0, 0);
 				}
 				UpdateNearestTownForRoadTiles(false);
@@ -705,23 +700,23 @@ public:
 				break;
 
 			case TSEW_SIZE_SMALL: case TSEW_SIZE_MEDIUM: case TSEW_SIZE_LARGE: case TSEW_SIZE_RANDOM:
-				this->RaiseWidget(_scengen_town_size + TSEW_SIZE_SMALL);
-				_scengen_town_size = (TownSize)(widget - TSEW_SIZE_SMALL);
-				this->LowerWidget(_scengen_town_size + TSEW_SIZE_SMALL);
+				this->RaiseWidget(town_size + TSEW_SIZE_SMALL);
+				town_size = (TownSize)(widget - TSEW_SIZE_SMALL);
+				this->LowerWidget(town_size + TSEW_SIZE_SMALL);
 				this->SetDirty();
 				break;
 
 			case TSEW_CITY:
-				_scengen_city ^= true;
-				this->SetWidgetLoweredState(TSEW_CITY, _scengen_city);
+				city ^= true;
+				this->SetWidgetLoweredState(TSEW_CITY, city);
 				this->SetDirty();
 				break;
 
 			case TSEW_LAYOUT_ORIGINAL: case TSEW_LAYOUT_BETTER: case TSEW_LAYOUT_GRID2:
 			case TSEW_LAYOUT_GRID3: case TSEW_LAYOUT_RANDOM:
-				this->RaiseWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
-				_scengen_town_layout = (TownLayout)(widget - TSEW_LAYOUT_ORIGINAL);
-				this->LowerWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
+				this->RaiseWidget(town_layout + TSEW_LAYOUT_ORIGINAL);
+				town_layout = (TownLayout)(widget - TSEW_LAYOUT_ORIGINAL);
+				this->LowerWidget(town_layout + TSEW_LAYOUT_ORIGINAL);
 				this->SetDirty();
 				break;
 		}
@@ -742,12 +737,21 @@ public:
 	virtual void OnPlaceObjectAbort()
 	{
 		this->RaiseButtons();
-		this->LowerWidget(_scengen_town_size + TSEW_SIZE_SMALL);
-		this->SetWidgetLoweredState(TSEW_CITY, _scengen_city);
-		this->LowerWidget(_scengen_town_layout + TSEW_LAYOUT_ORIGINAL);
+		this->LowerWidget(town_size + TSEW_SIZE_SMALL);
+		this->SetWidgetLoweredState(TSEW_CITY, city);
+		this->LowerWidget(town_layout + TSEW_LAYOUT_ORIGINAL);
 		this->SetDirty();
 	}
+
+	static void PlaceProc_Town(TileIndex tile)
+	{
+		DoCommandP(tile, town_size | city << 2 | town_layout << 3, 0, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
+	}
 };
+
+TownSize ScenarioEditorTownGenerationWindow::town_size = TS_MEDIUM; // select medium-sized towns per default
+bool ScenarioEditorTownGenerationWindow::city;
+TownLayout ScenarioEditorTownGenerationWindow::town_layout;
 
 static const WindowDesc _scen_edit_town_gen_desc = {
 	WDP_AUTO, WDP_AUTO, 160, 162, 160, 162,
