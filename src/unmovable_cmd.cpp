@@ -41,7 +41,7 @@ static CommandCost DestroyCompanyHQ(CompanyID cid, uint32 flags)
 	if (flags & DC_EXEC) {
 		TileIndex t = c->location_of_HQ;
 
-		DoClearSquare(t + TileDiffXY(0, 0));
+		DoClearSquare(t);
 		DoClearSquare(t + TileDiffXY(0, 1));
 		DoClearSquare(t + TileDiffXY(1, 0));
 		DoClearSquare(t + TileDiffXY(1, 1));
@@ -68,7 +68,7 @@ void UpdateCompanyHQ(Company *c, uint score)
 
 	EnlargeCompanyHQ(tile, val);
 
-	MarkTileDirtyByTile(tile + TileDiffXY(0, 0));
+	MarkTileDirtyByTile(tile);
 	MarkTileDirtyByTile(tile + TileDiffXY(0, 1));
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 0));
 	MarkTileDirtyByTile(tile + TileDiffXY(1, 1));
