@@ -1070,7 +1070,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :jā, izņemot a
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :visiem transporta līdzekļiem
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Brīdināt, ja transporta ienākumi ir negatīvi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Transporta līdzekļi nekad nemirst: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automātiski atjaunot transportl., kad tie kļuvuši veci
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automātiski atjaunot transportl., kad tie kļuvuši veci: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automātiski atjaunot transportl. {ORANGE}{STRING}{LTBLUE} mēnešus pirms/pēc maks. vecuma
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automātiski atjaunot minimālo naudu, kas vajadzīga atjaunošanai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Kļūdas ziņas ilgums: {ORANGE}{STRING}
@@ -1178,8 +1178,8 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Izslēg
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Krāsainās avīzes parādās: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Sākuma gads: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ieslēgt lēzenas izmaiņas ekonomikā
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citām kompānijām
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Ieslēgt lēzenas izmaiņas ekonomikā: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Atļaut akciju pirkšanu no citām kompānijām: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Velkot, izvietot semaforus katras: {ORANGE}{STRING} šūnas
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automātiski būvēt semaforus pirms: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Ieslēgt signālu grafisko lietotāju saskarni: {ORANGE}{STRING}
@@ -1214,7 +1214,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Ļoti ātrs
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Ciematu proporcija, kas kļūs par pilsētām: {ORANGE}1 pret {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Ciematu proporcija, kas kļūs par pilsētām: {ORANGE}Neviens
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Sākotnējais pilsētas lieluma daudzkārtnis: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Novākt absurdus ceļa elementus, ceļu būves laikā
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Novākt absurdus ceļa elementus, ceļu būves laikā: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Saskarne
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Būvniecība

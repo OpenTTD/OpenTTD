@@ -1049,7 +1049,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ja, på alla fordon
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Fordon blir aldrig gamla: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Förnya fordon automatiskt när dom blir gamla
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Förnya fordon automatiskt när dom blir gamla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månader före/efter maximal ålder
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minst mängd pengar för auto-förnyelse av fordon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING}
@@ -1143,8 +1143,8 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Stäng 
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Lugn ekonomi (flera små ändringar)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillåt inköp av aktier från andra företag
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Lugn ekonomi (flera små ändringar): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Tillåt inköp av aktier från andra företag: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Vid utdragning av signaler, placera en signal var: {ORANGE}{STRING} ruta
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Bygg automatiskt semaforer innan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Använd signal-GUI: {ORANGE}{STRING}
@@ -1178,7 +1178,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Väldigt snabbt
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}1 av {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Andel av städerna som kommer växa dubbelt så fort: {ORANGE}Inga
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initial stadsstorleks multiplikator: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Ta bort absurda väg-element under vägkonstruktion
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Ta bort absurda väg-element under vägkonstruktion: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Gränssnitt
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Konstruktion

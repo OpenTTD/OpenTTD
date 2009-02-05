@@ -1070,7 +1070,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :כן,למעט �
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :עבור כל הרכבים
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{ORANGE}{STRING}{LTBLUE} :התרע על רכבים בעלי הכנסה שלילית
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{ORANGE}{STRING}{LTBLUE} :בטל התיישנות כלי רכב
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}חידוש עצמי של כלי רכב כשהוא נהיה ישן
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}חידוש עצמי של כלי רכב כשהוא {ORANGE}{STRING}{LTBLUE} חודשים לפני\אחרי הגיל המקסימלי.
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}סכום הכסף המינימלי הנדרש בשביל חידוש: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}משך הצגת הודעת שגיאה: {ORANGE}{STRING}
@@ -1179,8 +1178,6 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{ORANGE}{STRING
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{ORANGE}{STRING}{LTBLUE} :הצג חדשות צבעוניות החל משנת
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{ORANGE}{STRING}{LTBLUE} :שנת התחלה
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}(אפשר כלכלה מתונה (שינויים מדודים וספורים
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}אפשר קניית מניות בחברות אחרות
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{ORANGE}משבצ(ו)ת {STRING}{LTBLUE} :בעת גרירה, הצג רמזורים בכל
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{ORANGE}{STRING}{LTBLUE} :בנה רמזורים מכאניים לפני
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{ORANGE}{STRING}{LTBLUE} :אפשר ממשק ויזואלי עבור רמזורים
@@ -1212,7 +1209,6 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :מהיר מאו
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{ORANGE}1/{STRING}{LTBLUE} :אחוז העיירות אשר יתפתחו לערים
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{ORANGE}מבוטל {LTBLUE} :אחוז העיירות אשר יתפתחו לערים
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{ORANGE}{STRING}{LTBLUE} :מכפיל התחלתי של גודל העיירות
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}הסר פרטים מגוחכים בעת בניית כבישים
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}ממשק חזותי
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}בנייה

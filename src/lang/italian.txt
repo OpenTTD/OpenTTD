@@ -1070,7 +1070,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sì, ma escludi
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :Sì, per tutti i veicoli
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avvisa se il profitto di un veicolo è in negativo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}I veicoli non diventano mai obsoleti: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova un veicolo quando diventa vecchio
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Rinnova un veicolo quando diventa vecchio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Rinnova un veicolo quando è {ORANGE}{STRING}{LTBLUE} mesi fuori età massima
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Rinnova solo se disponibile il fondo minimo di {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata dei messaggi d'errore: {ORANGE}{STRING}
@@ -1179,8 +1179,8 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Disabil
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Giornali a colori dal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Anno di inizio: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Abilita economia fluida (cambiamenti piccoli e frequenti)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permetti l'acquisto di azioni di altre compagnie
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Abilita economia fluida (cambiamenti piccoli e frequenti): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permetti l'acquisto di azioni di altre compagnie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascinando il cursore, piazza i segnali ogni: {ORANGE}{STRING} quadrato/i
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Costruisci segnali semaforici prima del: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Abilita l'interfaccia di selezione segnali: {ORANGE}{STRING}
@@ -1216,7 +1216,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Molto veloce
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Città che diventeranno metropoli: {ORANGE}1 su {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Città che diventeranno metropoli: {ORANGE}Nessuna
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Moltiplicatore iniziale dimensioni metropoli: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Rimuovi segmenti isolati con la ricostruzione delle strade cittadine
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Rimuovi segmenti isolati con la ricostruzione delle strade cittadine: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfaccia
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Costruzione

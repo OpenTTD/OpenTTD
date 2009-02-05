@@ -1066,7 +1066,6 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :включен,
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :включен
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждение ако превозното средство е на загуба: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}ПС не губят валидност: {ORANGE}{STRING.n}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Подновяване на остарели ПС
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Подновяване {ORANGE}{STRING}{LTBLUE} месеца преди/след амортизацията на ПС
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Минимална сума за начало на подновяване: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Продължителност на съобщенията за грешки: {ORANGE}{STRING} сек.
@@ -1169,8 +1168,6 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Без 
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Цветни нови се появяват през: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Начална година: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Плавна икономика (повече и по-малки промени)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Позволяване покупката на акции от други компании
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Поставяне семафори всеки: {ORANGE}{STRING} плочк{P а и}
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Поставяне на семафори преди: {ORANGE}{STRING} година
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Инструменти за сигналите: {ORANGE}{STRING.p}
@@ -1206,7 +1203,6 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Много бъ
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}1 в {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Съразмерност на градове който ще пораснат двойно по-бързо: {ORANGE}Нито един
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Множител за големината на града: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Премахни абсурдни пътни-елементи по пътниат строеж
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Строене

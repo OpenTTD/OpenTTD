@@ -1068,7 +1068,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :esyay, utbay ex
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :ofway allway ehiclesvay
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Arnway ifway away ehicle'svay incomeway isway egativenay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Ehiclesvay evernay expireway: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenewway ehiclevay enwhay itway etsgay oldway
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenewway ehiclevay enwhay itway etsgay oldway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenewway enwhay ehicevay isway {ORANGE}{STRING}{LTBLUE} onthsmay eforebay/afterway axmay ageway
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autorenewway inimummay eedednay oneymay orfay enewray: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Urationday ofway errorway essagemay: {ORANGE}{STRING}
@@ -1177,8 +1177,8 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Isabled
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Olouredcay ewsnay appearsway inway: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Artingstay earyay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enableway oothsmay economyway (oremay, allersmay angeschay)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allowway uyingbay aresshay omfray otherway ompaniescay
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enableway oothsmay economyway (oremay, allersmay angeschay): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allowway uyingbay aresshay omfray otherway ompaniescay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Enwhay aggingdray, aceplay ignalssay everyway: {ORANGE}{STRING} iletay(say)
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}Automaticallyway uildbay emaphoressay eforebay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}Enableway ethay ignalsay UIGay: {ORANGE}{STRING}
@@ -1214,7 +1214,7 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :Eryvay astfay
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}1 inway {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}Oportionpray ofway ownstay atthay illway ecomebay itiescay: {ORANGE}Onenay
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}Initialway itycay izesay ultipliermay: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay
+STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}Emoveray absurdway oadray-elementsway uringday hetay oadray onstructioncay: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}Interfaceway
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}Onstructioncay

@@ -1068,7 +1068,7 @@ STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :检查，不包
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :检查，所有车辆
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}若线路亏损时发出提示: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}车辆永不报废：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}当车辆报废时自动更新：
+STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}当车辆报废时自动更新：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}当车辆在报废前/后 {ORANGE}{STRING}{LTBLUE} 个月时自动更新
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}启动自动更新需要的最少现金：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}错误信息显示时间：{ORANGE}{STRING}
@@ -1177,8 +1177,8 @@ STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}禁用�
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}彩色新闻出现在：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}开始年份：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}启用平滑经济模式 (更多小的经济变化)
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}允许购买其他公司的股份
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}启用平滑经济模式 (更多小的经济变化)：{ORANGE}{STRING}
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}允许购买其他公司的股份：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}当拖动的时候每 {ORANGE}{STRING} 个地块放置一个信号灯
 STR_CONFIG_PATCHES_SEMAPHORE_BUILD_BEFORE_DATE                  :{LTBLUE}在 {ORANGE}{STRING} 前自动设置旗帜信号
 STR_CONFIG_PATCHES_ENABLE_SIGNAL_GUI                            :{LTBLUE}使用信号GUI： {ORANGE}{STRING}
@@ -1214,7 +1214,6 @@ STR_CONFIG_PATCHES_TOWN_GROWTH_VERY_FAST                        :非常快
 STR_CONFIG_PATCHES_LARGER_TOWNS                                 :{LTBLUE}城镇发展为城市的比例：{ORANGE}1 / {STRING}
 STR_CONFIG_PATCHES_LARGER_TOWNS_DISABLED                        :{LTBLUE}城镇发展为城市的比例：{ORANGE}无
 STR_CONFIG_PATCHES_CITY_SIZE_MULTIPLIER                         :{LTBLUE}初始城市规模因子：{ORANGE}{STRING}
-STR_CONFIG_PATCHES_MODIFIED_ROAD_REBUILD                        :{LTBLUE}道路建设时移除不合理部分。
 
 STR_CONFIG_PATCHES_GUI                                          :{ORANGE}界面
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{ORANGE}建设
