@@ -326,10 +326,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 				 * of the PCP for preferred/allowed determination*/
 				PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
 				SetBit(PCPstatus, i); // This PCP is in use
+				PPPpreferred[i] &= PreferredPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
 			}
 
 			if (HasBit(trackconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
-				PPPpreferred[i] &= PreferredPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
 				PPPallowed[i] &= ~DisallowedPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
 			}
 		}
