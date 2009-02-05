@@ -653,11 +653,25 @@ private:
 public:
 	ScenarioEditorTownGenerationWindow(const WindowDesc *desc, WindowNumber window_number) : Window(desc, window_number)
 	{
-		this->LowerWidget(town_size + TSEW_SIZE_SMALL);
 		this->FindWindowPlacementAndResize(desc);
 		town_layout = _settings_game.economy.town_layout;
-		this->LowerWidget(town_layout + TSEW_LAYOUT_ORIGINAL);
 		city = false;
+		this->UpdateButtons();
+	}
+
+	void UpdateButtons()
+	{
+		for (int i = TSEW_SIZE_SMALL; i <= TSEW_SIZE_RANDOM; i++) {
+			this->SetWidgetLoweredState(i, i == TSEW_SIZE_SMALL + town_size);
+		}
+
+		this->SetWidgetLoweredState(TSEW_CITY, city);
+
+		for (int i = TSEW_LAYOUT_ORIGINAL; i <= TSEW_LAYOUT_RANDOM; i++) {
+			this->SetWidgetLoweredState(i, i == TSEW_LAYOUT_ORIGINAL + town_layout);
+		}
+
+		this->SetDirty();
 	}
 
 	virtual void OnPaint()
@@ -700,10 +714,8 @@ public:
 				break;
 
 			case TSEW_SIZE_SMALL: case TSEW_SIZE_MEDIUM: case TSEW_SIZE_LARGE: case TSEW_SIZE_RANDOM:
-				this->RaiseWidget(town_size + TSEW_SIZE_SMALL);
 				town_size = (TownSize)(widget - TSEW_SIZE_SMALL);
-				this->LowerWidget(town_size + TSEW_SIZE_SMALL);
-				this->SetDirty();
+				this->UpdateButtons();
 				break;
 
 			case TSEW_CITY:
@@ -714,10 +726,8 @@ public:
 
 			case TSEW_LAYOUT_ORIGINAL: case TSEW_LAYOUT_BETTER: case TSEW_LAYOUT_GRID2:
 			case TSEW_LAYOUT_GRID3: case TSEW_LAYOUT_RANDOM:
-				this->RaiseWidget(town_layout + TSEW_LAYOUT_ORIGINAL);
 				town_layout = (TownLayout)(widget - TSEW_LAYOUT_ORIGINAL);
-				this->LowerWidget(town_layout + TSEW_LAYOUT_ORIGINAL);
-				this->SetDirty();
+				this->UpdateButtons();
 				break;
 		}
 	}
@@ -737,10 +747,7 @@ public:
 	virtual void OnPlaceObjectAbort()
 	{
 		this->RaiseButtons();
-		this->LowerWidget(town_size + TSEW_SIZE_SMALL);
-		this->SetWidgetLoweredState(TSEW_CITY, city);
-		this->LowerWidget(town_layout + TSEW_LAYOUT_ORIGINAL);
-		this->SetDirty();
+		this->UpdateButtons();
 	}
 
 	static void PlaceProc_Town(TileIndex tile)

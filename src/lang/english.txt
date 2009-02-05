@@ -762,7 +762,7 @@ STR_02A2_MEDIUM                                                 :{BLACK}Medium
 STR_02A3_LARGE                                                  :{BLACK}Large
 STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Random
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}City
-STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Cities grow faster than regular towns{}Depending on settings, they are bigger when found
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Cities grow faster than regular towns{}Depending on settings, they are bigger when founded
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Select town size
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Town size:
 
