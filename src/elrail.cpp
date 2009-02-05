@@ -112,6 +112,51 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 }
 
 /**
+ * Masks out track bits when neighbouring tiles are unelectrified.
+ */
+static TrackBits MaskWireBits(TileIndex t, TrackBits tracks)
+{
+	if (!IsTileType(t, MP_RAILWAY) || !IsPlainRailTile(t)) return tracks;
+
+	TrackdirBits neighbour_tdb = TRACKDIR_BIT_NONE;
+	for (DiagDirection d = DIAGDIR_BEGIN; d < DIAGDIR_END; d++) {
+		/* If the neighbor tile is either not electrified or has no tracks that can be reached
+		 * from this tile, mark all trackdirs that can be reached from the neighbour tile
+		 * as needing no catenary. */
+		RailType rt = GetTileRailType(TileAddByDiagDir(t, d));
+		if (rt == INVALID_RAILTYPE || !HasCatenary(rt) || (TrackStatusToTrackBits(GetTileTrackStatus(TileAddByDiagDir(t, d), TRANSPORT_RAIL, 0)) & DiagdirReachesTracks(d)) == TRACK_BIT_NONE) {
+			neighbour_tdb |= DiagdirReachesTrackdirs(ReverseDiagDir(d));
+		}
+	}
+
+	/* If the tracks from either a diagonal crossing or don't overlap, both
+	 * trackdirs have to be marked to mask the corresponding track bit. Else
+	 * one marked trackdir is enough the mask the track bit. */
+	TrackBits mask;
+	if (tracks == TRACK_BIT_CROSS || !TracksOverlap(tracks)) {
+		/* If the tracks form either a diagonal crossing or don't overlap, both
+		 * trackdirs have to be marked to mask the corresponding track bit. */
+		mask = ~(TrackBits)((neighbour_tdb & (neighbour_tdb >> 8)) & TRACK_BIT_MASK);
+		/* If that results in no masked tracks and it is not a diagonal crossing,
+		 * require only one marked trackdir to mask. */
+		if (tracks != TRACK_BIT_CROSS && (mask & TRACK_BIT_MASK) == TRACK_BIT_MASK) mask = ~TrackdirBitsToTrackBits(neighbour_tdb);
+	} else {
+		/* Require only one marked trackdir to mask the track. */
+		mask = ~TrackdirBitsToTrackBits(neighbour_tdb);
+		/* If that results in an empty set, require both trackdirs for diagonal track. */
+		if ((tracks & mask) == TRACK_BIT_NONE) {
+			if ((neighbour_tdb & TRACKDIR_BIT_X_NE) == 0 || (neighbour_tdb & TRACKDIR_BIT_X_SW) == 0) mask |= TRACK_BIT_X;
+			if ((neighbour_tdb & TRACKDIR_BIT_Y_NW) == 0 || (neighbour_tdb & TRACKDIR_BIT_Y_SE) == 0) mask |= TRACK_BIT_Y;
+			/* If that still is not enough, require both trackdirs for any track. */
+			if ((tracks & mask) == TRACK_BIT_NONE) mask = ~(TrackBits)((neighbour_tdb & (neighbour_tdb >> 8)) & TRACK_BIT_MASK);
+		}
+	}
+
+	/* Mask the tracks only if at least one track bit would remain. */
+	return (tracks & mask) != TRACK_BIT_NONE ? tracks & mask : tracks;
+}
+
+/**
  * Get the base wire sprite to use.
  */
 static inline SpriteID GetWireBase(TileIndex tile)
@@ -212,6 +257,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	 * the track configuration of 2 adjacent tiles. trackconfig[0] stores the
 	 * current tile (home tile) while [1] holds the neighbour */
 	TrackBits trackconfig[TS_END];
+	TrackBits wireconfig[TS_END];
 	bool isflat[TS_END];
 	/* Note that ti->tileh has already been adjusted for Foundations */
 	Slope tileh[TS_END] = { ti->tileh, SLOPE_FLAT };
@@ -233,6 +279,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	 *    because that one is drawn on the bridge. Exception is for length 0 bridges
 	 *    which have no middle tiles */
 	trackconfig[TS_HOME] = GetRailTrackBitsUniversal(ti->tile, &OverridePCP);
+	wireconfig[TS_HOME] = MaskWireBits(ti->tile, trackconfig[TS_HOME]);
 	/* If a track bit is present that is not in the main direction, the track is level */
 	isflat[TS_HOME] = ((trackconfig[TS_HOME] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
@@ -240,7 +287,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 	SpriteID pylon_base = GetPylonBase(ti->tile);
 
-	for (DiagDirection i = DIAGDIR_NE; i < DIAGDIR_END; i++) {
+	for (DiagDirection i = DIAGDIR_BEGIN; i < DIAGDIR_END; i++) {
 		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		Foundation foundation = FOUNDATION_NONE;
 		byte elevation = GetPCPElevation(ti->tile, i);
@@ -249,11 +296,12 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		 * existing foundataions, so we do have to do that manually later on.*/
 		tileh[TS_NEIGHBOUR] = GetTileSlope(neighbour, NULL);
 		trackconfig[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, NULL);
-		if (IsTunnelTile(neighbour) && i != GetTunnelBridgeDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
+		wireconfig[TS_NEIGHBOUR] = MaskWireBits(neighbour, trackconfig[TS_NEIGHBOUR]);
+		if (IsTunnelTile(neighbour) && i != GetTunnelBridgeDirection(neighbour)) wireconfig[TS_NEIGHBOUR] = trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
 
 		/* If the neighboured tile does not smoothly connect to the current tile (because of a foundation),
 		 * we have to draw all pillars on the current tile. */
-		if (elevation != GetPCPElevation(neighbour, ReverseDiagDir(i))) trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
+		if (elevation != GetPCPElevation(neighbour, ReverseDiagDir(i))) wireconfig[TS_NEIGHBOUR] = trackconfig[TS_NEIGHBOUR] = TRACK_BIT_NONE;
 
 		isflat[TS_NEIGHBOUR] = ((trackconfig[TS_NEIGHBOUR] & (TRACK_BIT_HORZ | TRACK_BIT_VERT)) != 0);
 
@@ -272,12 +320,15 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 			/* We check whether the track in question (k) is present in the tile
 			 * (TrackSourceTile) */
-			if (HasBit(trackconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
+			DiagDirection PCPpos = i;
+			if (HasBit(wireconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
 				/* track found, if track is in the neighbour tile, adjust the number
 				 * of the PCP for preferred/allowed determination*/
-				DiagDirection PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
+				PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
 				SetBit(PCPstatus, i); // This PCP is in use
+			}
 
+			if (HasBit(trackconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
 				PPPpreferred[i] &= PreferredPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
 				PPPallowed[i] &= ~DisallowedPPPofTrackAtPCP[TracksAtPCP[i][k]][PCPpos];
 			}
@@ -342,7 +393,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 					/* Don't build the pylon if it would be outside the tile */
 					if (!HasBit(OwnedPPPonPCP[i], temp)) {
 						/* We have a neighour that will draw it, bail out */
-						if (trackconfig[TS_NEIGHBOUR] != 0) break;
+						if (trackconfig[TS_NEIGHBOUR] != TRACK_BIT_NONE) break;
 						continue; /* No neighbour, go looking for a better position */
 					}
 
@@ -369,7 +420,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 	/* Drawing of pylons is finished, now draw the wires */
 	for (Track t = TRACK_BEGIN; t < TRACK_END; t++) {
-		if (HasBit(trackconfig[TS_HOME], t)) {
+		if (HasBit(wireconfig[TS_HOME], t)) {
 			byte PCPconfig = HasBit(PCPstatus, PCPpositions[t][0]) +
 				(HasBit(PCPstatus, PCPpositions[t][1]) << 1);
 
