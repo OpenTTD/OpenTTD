@@ -32,6 +32,7 @@
 #include "newgrf_cargo.h"
 #include "effectvehicle_func.h"
 #include "tunnelbridge_map.h"
+#include "ai/ai.hpp"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -838,6 +839,7 @@ static void FloodVehicle(Vehicle *v)
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, VVW_WIDGET_START_STOP_VEH);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
+		AI::NewEvent(v->owner, new AIEventVehicleCrashed(v->index, v->tile, AIEventVehicleCrashed::CRASH_FLOODED));
 		SetDParam(0, pass);
 		AddNewsItem(STR_B006_FLOOD_VEHICLE_DESTROYED,
 			NS_ACCIDENT_VEHICLE,

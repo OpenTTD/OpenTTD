@@ -32,6 +32,7 @@ public:
 		CRASH_RV_UFO,               ///< Road vehicle got under a landing ufo
 		CRASH_PLANE_LANDING,        ///< Plane crashed on landing
 		CRASH_AIRCRAFT_NO_AIRPORT,  ///< Aircraft crashed after it found not a single airport for landing
+		CRASH_FLOODED,              ///< Vehicle was flooded
 	};
 
 	/**

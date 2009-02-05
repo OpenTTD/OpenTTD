@@ -25,6 +25,7 @@ void SQAIEventVehicleCrashed_Register(Squirrel *engine) {
 	SQAIEventVehicleCrashed.DefSQConst(engine, AIEventVehicleCrashed::CRASH_RV_UFO,              "CRASH_RV_UFO");
 	SQAIEventVehicleCrashed.DefSQConst(engine, AIEventVehicleCrashed::CRASH_PLANE_LANDING,       "CRASH_PLANE_LANDING");
 	SQAIEventVehicleCrashed.DefSQConst(engine, AIEventVehicleCrashed::CRASH_AIRCRAFT_NO_AIRPORT, "CRASH_AIRCRAFT_NO_AIRPORT");
+	SQAIEventVehicleCrashed.DefSQConst(engine, AIEventVehicleCrashed::CRASH_FLOODED,             "CRASH_FLOODED");
 
 	SQAIEventVehicleCrashed.DefSQStaticMethod(engine, &AIEventVehicleCrashed::GetClassName, "GetClassName", 1, "x");
 	SQAIEventVehicleCrashed.DefSQStaticMethod(engine, &AIEventVehicleCrashed::Convert,      "Convert",      2, "xx");
