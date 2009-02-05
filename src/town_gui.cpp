@@ -28,7 +28,7 @@
 
 typedef GUIList<const Town*> GUITownList;
 
-static int _scengen_town_size = 1; // depress medium-sized towns per default
+static uint _scengen_town_size = 1; // select medium-sized towns per default
 static TownLayout _scengen_town_layout;
 
 static const Widget _town_authority_widgets[] = {
@@ -603,10 +603,9 @@ void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceProc_Town(TileIndex tile)
 {
-	uint32 size = min(_scengen_town_size, 2);
-	uint32 mode = _scengen_town_size > 2 ? TSM_CITY : TSM_FIXED;
-	uint32 layout = _scengen_town_layout;
-	DoCommandP(tile, size | (layout << 16), mode, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
+	bool city = _scengen_town_size > (uint)TS_LARGE;
+	TownSize size = city ? TS_RANDOM : (TownSize)_scengen_town_size;
+	DoCommandP(tile, size | city << 2 | (_scengen_town_layout << 3), 0, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE), CcBuildTown);
 }
 
 static const Widget _scen_edit_town_gen_widgets[] = {
@@ -677,14 +676,14 @@ public:
 				break;
 
 			case TSEW_RANDOMTOWN: {
-				Town *t;
-				uint size = min(_scengen_town_size, (int)TSM_CITY);
-				TownSizeMode mode = _scengen_town_size > TSM_CITY ? TSM_CITY : TSM_FIXED;
+				bool city = _scengen_town_size == 3;
+				/* cities will always have 'large size' * initial_city_size */
+				TownSize size = city ? TS_RANDOM : (TownSize)_scengen_town_size;
 
 				this->HandleButtonClick(TSEW_RANDOMTOWN);
 				_generating_world = true;
 				UpdateNearestTownForRoadTiles(true);
-				t = CreateRandomTown(20, mode, size, _scengen_town_layout);
+				const Town *t = CreateRandomTown(20, size, city, _scengen_town_layout);
 				UpdateNearestTownForRoadTiles(false);
 				_generating_world = false;
 

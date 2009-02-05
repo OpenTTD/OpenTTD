@@ -250,7 +250,7 @@ void UpdateAllTownVirtCoords();
 void InitializeTown();
 void ShowTownViewWindow(TownID town);
 void ExpandTown(Town *t);
-Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size, TownLayout layout);
+Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layout);
 
 enum {
 	ROAD_REMOVE = 0,

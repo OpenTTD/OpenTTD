@@ -14,10 +14,12 @@ typedef uint16 HouseClassID;
 struct Town;
 struct HouseSpec;
 
-enum TownSizeMode {
-	TSM_RANDOM,
-	TSM_FIXED,
-	TSM_CITY
+/** Supported initial town sizes */
+enum TownSize {
+	TS_SMALL,  ///< small town
+	TS_MEDIUM, ///< medium town
+	TS_LARGE,  ///< large town
+	TS_RANDOM, ///< random size, bigger than small, smaller than large
 };
 
 enum {

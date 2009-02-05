@@ -1428,7 +1428,7 @@ void UpdateTownMaxPass(Town *t)
  * @param size_mode How the size should be determined
  * @param size Parameter for size determination
  */
-static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSizeMode size_mode, uint size, TownLayout layout)
+static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize size, bool city, TownLayout layout)
 {
 	extern int _nb_orig_names;
 
@@ -1480,26 +1480,11 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
 
 	t->InitializeLayout(layout);
 
-	/* Random town size. */
-	int x = (Random() & 0xF) + 8;
+	t->larger_town = city;
 
-	switch (size_mode) {
-		default: NOT_REACHED();
-
-		case TSM_RANDOM:
-			t->larger_town = false;
-			break;
-
-		case TSM_FIXED:
-			x = size * 16 + 3;
-			t->larger_town = false;
-			break;
-
-		case TSM_CITY:
-			x *= _settings_game.economy.initial_city_size;
-			t->larger_town = true;
-			break;
-	}
+	int x = (int)size * 16 + 3;
+	if (size == TS_RANDOM) x = (Random() & 0xF) + 8;
+	if (city) x *= _settings_game.economy.initial_city_size;
 
 	t->noise_reached = 0;
 
@@ -1521,20 +1506,21 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, TownSize
  * as it might be possible in the future to fund your own town :)
  * @param tile coordinates where town is built
  * @param flags type of operation
- * @param p1  0..15 size of the town (0 = small, 1 = medium, 2 = large)
- *           16..31 town road layout
- * @param p2 size mode (@see TownSizeMode)
+ * @param p1  0..1 size of the town (@see TownSize)
+ *               2 true iff it should be a city
+ *            3..5 town road layout (@see TownLayout)
+ * @param p2 unused
  */
 CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, const char *text)
 {
 	/* Only in the scenario editor */
 	if (_game_mode != GM_EDITOR) return CMD_ERROR;
 
-	TownSizeMode tsm = (TownSizeMode)p2;
-	uint size = GB(p1, 0, 16);
-	TownLayout layout = (TownLayout)GB(p1, 16, 16);
+	TownSize size = (TownSize)GB(p1, 0, 2);
+	bool city = HasBit(p1, 2);
+	TownLayout layout = (TownLayout)GB(p1, 3, 3);
 
-	if (tsm > TSM_CITY) return CMD_ERROR;
+	if (size > TS_RANDOM) return CMD_ERROR;
 	if (layout > TL_RANDOM) return CMD_ERROR;
 
 	/* Check if too close to the edge of map */
@@ -1564,14 +1550,14 @@ CommandCost CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, con
 		Town *t = new Town(tile);
 		_generating_world = true;
 		UpdateNearestTownForRoadTiles(true);
-		DoCreateTown(t, tile, townnameparts, tsm, size, layout);
+		DoCreateTown(t, tile, townnameparts, size, city, layout);
 		UpdateNearestTownForRoadTiles(false);
 		_generating_world = false;
 	}
 	return CommandCost();
 }
 
-Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size, TownLayout layout)
+Town *CreateRandomTown(uint attempts, TownSize size, bool city, TownLayout layout)
 {
 	if (!Town::CanAllocateItem()) return NULL;
 
@@ -1603,7 +1589,7 @@ Town *CreateRandomTown(uint attempts, TownSizeMode mode, uint size, TownLayout l
 		/* Allocate a town struct */
 		Town *t = new Town(tile);
 
-		DoCreateTown(t, tile, townnameparts, mode, size, layout);
+		DoCreateTown(t, tile, townnameparts, size, city, layout);
 		return t;
 	} while (--attempts != 0);
 
@@ -1623,13 +1609,12 @@ bool GenerateTowns(TownLayout layout)
 	do {
 		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		/* try 20 times to create a random-sized town for the first loop. */
-		TownSizeMode mode = num_cities > 0 ? TSM_CITY : TSM_RANDOM;
-		if (CreateRandomTown(20, mode, _settings_game.economy.initial_city_size, layout) != NULL) num++;
+		if (CreateRandomTown(20, TS_RANDOM, num_cities > 0, layout) != NULL) num++;
 		if (num_cities > 0) num_cities--;
 	} while (--n);
 
 	/* give it a last try, but now more aggressive */
-	if (num == 0 && CreateRandomTown(10000, TSM_RANDOM, 0, layout) == NULL) {
+	if (num == 0 && CreateRandomTown(10000, TS_RANDOM, false, layout) == NULL) {
 		if (GetNumTowns() == 0) {
 			/* XXX - can we handle that more gracefully? */
 			if (_game_mode != GM_EDITOR) usererror("Could not generate any town");
