@@ -1427,9 +1427,8 @@ void CheckOrders(const Vehicle *v)
 		/* Do we only have 1 station in our order list? */
 		if (n_st < 2 && problem_type == -1) problem_type = 0;
 
-		assert(v->orders.list); // otherwise the check for v->FirstShared() != v would have been true
 #ifndef NDEBUG
-		v->orders.list->DebugCheckSanity();
+		if (v->orders.list != NULL) v->orders.list->DebugCheckSanity();
 #endif
 
 		/* We don't have a problem */
