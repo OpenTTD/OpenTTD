@@ -22,6 +22,7 @@
 #include "economy_func.h"
 #include "cheat_type.h"
 #include "landscape_type.h"
+#include "unmovable.h"
 
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -132,7 +133,7 @@ CommandCost CmdPurchaseLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		MarkTileDirtyByTile(tile);
 	}
 
-	return cost.AddCost(_price.clear_roughland * 10);
+	return cost.AddCost(GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetBuildingCost());
 }
 
 /** Sell a land area. Actually you only sell one tile, so
@@ -152,7 +153,7 @@ CommandCost CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2, 
 
 	if (flags & DC_EXEC) DoClearSquare(tile);
 
-	return CommandCost(EXPENSES_CONSTRUCTION, - _price.clear_roughland * 2);
+	return CommandCost(EXPENSES_CONSTRUCTION, - GetUnmovableSpec(UNMOVABLE_OWNED_LAND)->GetRemovalCost());
 }
 
 static Foundation GetFoundation_Unmovable(TileIndex tile, Slope tileh);
@@ -300,13 +301,7 @@ static void GetAcceptedCargo_Unmovable(TileIndex tile, AcceptedCargo ac)
 
 static void GetTileDesc_Unmovable(TileIndex tile, TileDesc *td)
 {
-	switch (GetUnmovableType(tile)) {
-		case UNMOVABLE_TRANSMITTER: td->str = STR_5801_TRANSMITTER; break;
-		case UNMOVABLE_LIGHTHOUSE:  td->str = STR_5802_LIGHTHOUSE; break;
-		case UNMOVABLE_STATUE:      td->str = STR_2016_STATUE; break;
-		case UNMOVABLE_OWNED_LAND:  td->str = STR_5805_COMPANY_OWNED_LAND; break;
-		default:                    td->str = STR_5803_COMPANY_HEADQUARTERS; break;
-	}
+	td->str = GetUnmovableSpec(GetUnmovableType(tile))->name;
 	td->owner[0] = GetTileOwner(tile);
 }
 
