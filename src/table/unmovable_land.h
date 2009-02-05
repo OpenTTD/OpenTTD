@@ -93,7 +93,7 @@ static const DrawTileSprites _unmovable_display_datas[] = {
 
 #undef TILE_SPRITE_LINE
 
-static const UnmovableSpec _original_unmovable[] = {
+const UnmovableSpec _original_unmovable[] = {
 	{STR_5801_TRANSMITTER,          1,   1},
 	{STR_5802_LIGHTHOUSE,           1,   1},
 	{STR_2016_STATUE,               1,   1},
