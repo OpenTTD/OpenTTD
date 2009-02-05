@@ -40,12 +40,7 @@ AIVehicleList_SharedOrders::AIVehicleList_SharedOrders(VehicleID vehicle_id)
 {
 	if (!AIVehicle::IsValidVehicle(vehicle_id)) return;
 
-	Vehicle *v = GetVehicle(vehicle_id)->FirstShared();
-	if (v == NULL) {
-		this->AddItem(vehicle_id);
-		return;
-	}
-	for (; v != NULL; v->NextShared()) {
+	for (const Vehicle *v = GetVehicle(vehicle_id)->FirstShared(); v != NULL; v->NextShared()) {
 		this->AddItem(v->index);
 	}
 }
