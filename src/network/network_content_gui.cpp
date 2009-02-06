@@ -279,15 +279,18 @@ class NetworkContentListWindow : public QueryStringBaseWindow, ContentCallback {
 	{
 		if (!this->content.Filter(this->edit_str_buf)) return;
 
-		this->selected = NULL;
-		this->list_pos = 0;
-
+		/* update list position */
 		for (ConstContentIterator iter = this->content.Begin(); iter != this->content.End(); iter++) {
 			if (*iter == this->selected) {
 				this->list_pos = iter - this->content.Begin();
-				break;
+				this->ScrollToSelected();
+				return;
 			}
 		}
+
+		/* previously selected item not in list anymore */
+		this->selected = NULL;
+		this->list_pos = 0;
 	}
 
 	/** Make sure that the currently selected content info is within the visible part of the matrix */

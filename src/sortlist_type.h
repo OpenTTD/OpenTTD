@@ -321,16 +321,18 @@ public:
 		/* Do not filter if the filter bit is not set */
 		if (!HASBITS(this->flags, VL_FILTER)) return false;
 
+		bool changed = false;
 		for (uint iter = 0; iter < this->items;) {
 			T *item = &this->data[iter];
 			if (!decide(item, filter_data)) {
 				this->Erase(item);
+				changed = true;
 			} else {
 				iter++;
 			}
 		}
 
-		return true;
+		return changed;
 	}
 
 	/**
