@@ -18,7 +18,8 @@ enum SortListFlags {
 	VL_RESORT     = 1 << 1, ///< instruct the code to resort the list in the next loop
 	VL_REBUILD    = 1 << 2, ///< rebuild the sort list
 	VL_FIRST_SORT = 1 << 3, ///< sort with qsort first
-	VL_END        = 1 << 4,
+	VL_FILTER     = 1 << 4, ///< filter disabled/enabled
+	VL_END        = 1 << 5,
 };
 DECLARE_ENUM_AS_BIT_SET(SortListFlags);
 
@@ -26,17 +27,24 @@ struct Listing {
 	bool order;    ///< Ascending/descending
 	byte criteria; ///< Sorting criteria
 };
+struct Filtering {
+	bool state;    ///< Filter on/off
+	byte criteria; ///< Filtering criteria
+};
 
-template <typename T>
+template <typename T, typename F = char>
 class GUIList : public SmallVector<T, 32> {
 public:
 	typedef int CDECL SortFunction(const T*, const T*);
+	typedef bool CDECL FilterFunction(const T*, const F*);
 
 protected:
-	SortFunction * const *func_list; ///< The sort criteria functions
-	SortListFlags flags;             ///< used to control sorting/resorting/etc.
-	uint8 sort_type;                 ///< what criteria to sort on
-	uint16 resort_timer;             ///< resort list after a given amount of ticks if set
+	SortFunction * const *sort_func_list;     ///< the sort criteria functions
+	FilterFunction * const *filter_func_list; ///< the filter criteria functions
+	SortListFlags flags;                      ///< used to control sorting/resorting/etc.
+	uint8 sort_type;                          ///< what criteria to sort on
+	uint8 filter_type;                        ///< what criteria to filter on
+	uint16 resort_timer;                      ///< resort list after a given amount of ticks if set
 
 	/**
 	 * Check if the list is sortable
@@ -59,9 +67,11 @@ protected:
 
 public:
 	GUIList() :
-		func_list(NULL),
+		sort_func_list(NULL),
+		filter_func_list(NULL),
 		flags(VL_FIRST_SORT),
 		sort_type(0),
+		filter_type(0),
 		resort_timer(1)
 	{};
 
@@ -105,7 +115,7 @@ public:
 	/**
 	 * Import sort conditions
 	 *
-	 * @param l The sport conditions we want to use
+	 * @param l The sort conditions we want to use
 	 */
 	void SetListing(Listing l)
 	{
@@ -117,6 +127,57 @@ public:
 		this->sort_type = l.criteria;
 
 		SETBITS(this->flags, VL_FIRST_SORT);
+	}
+
+	/**
+	 * Get the filtertype of the list
+	 *
+	 * @return The current filtertype
+	 */
+	uint8 FilterType() const
+	{
+		return this->filter_type;
+	}
+
+	/**
+	 * Set the filtertype of the list
+	 *
+	 * @param n_type the new filter type
+	 */
+	void SetFilterType(uint8 n_type)
+	{
+		if (this->filter_type != n_type) {
+			this->filter_type = n_type;
+		}
+	}
+
+	/**
+	 * Export current filter conditions
+	 *
+	 * @return the current filter conditions
+	 */
+	Filtering GetFiltering() const
+	{
+		Filtering f;
+		f.state = HASBITS(this->flags, VL_FILTER);
+		f.criteria = this->filter_type;
+
+		return f;
+	}
+
+	/**
+	 * Import filter conditions
+	 *
+	 * @param f The filter conditions we want to use
+	 */
+	void SetFiltering(Filtering f)
+	{
+		if (f.state) {
+			SETBITS(this->flags, VL_FILTER);
+		} else {
+			CLRBITS(this->flags, VL_FILTER);
+		}
+		this->filter_type = f.criteria;
 	}
 
 	/**
@@ -209,7 +270,7 @@ public:
 	 */
 	void SetSortFuncs(SortFunction * const *n_funcs)
 	{
-		this->func_list = n_funcs;
+		this->sort_func_list = n_funcs;
 	}
 
 	/**
@@ -220,8 +281,78 @@ public:
 	 */
 	bool Sort()
 	{
-		assert(this->func_list != NULL);
-		return this->Sort(this->func_list[this->sort_type]);
+		assert(this->sort_func_list != NULL);
+		return this->Sort(this->sort_func_list[this->sort_type]);
+	}
+
+	/**
+	 * Check if the filter is enabled
+	 *
+	 * @return true if the filter is enabled
+	 */
+	bool IsFilterEnabled() const
+	{
+		return HASBITS(this->flags, VL_FILTER);
+	}
+
+	/**
+	 * Enable or disable the filter
+	 *
+	 * @param state If filtering should be enabled or disabled
+	 */
+	void SetFilterState(bool state)
+	{
+		if (state) {
+			SETBITS(this->flags, VL_FILTER);
+		} else {
+			CLRBITS(this->flags, VL_FILTER);
+		}
+	}
+
+	/**
+	 * Filter the list.
+	 *
+	 * @param decide The function to decide about an item
+	 * @param filter_data The data for filter on
+	 * @return true if the list has been altered by filtering
+	 * */
+	bool Filter(FilterFunction *decide, const F *filter_data)
+	{
+		/* Do not filter if the filter bit is not set */
+		if (!HASBITS(this->flags, VL_FILTER)) return false;
+
+		for (uint iter = 0; iter < this->items;) {
+			T *item = &this->data[iter];
+			if (!decide(item, filter_data)) {
+				this->Erase(item);
+			} else {
+				iter++;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Hand the array of filter function pointers to the sort list
+	 *
+	 * @param n_funcs The pointer to the first filter func
+	 */
+	void SetFilterFuncs(FilterFunction * const *n_funcs)
+	{
+		this->filter_func_list = n_funcs;
+	}
+
+	/**
+	 * Filter the data with the currently selected filter.
+	 *
+	 * @param filter_data The data for filer on
+	 * @return true if the list has been altered by filtering
+	 */
+	bool Filter(const F *filter_data)
+	{
+		if (this->filter_func_list == NULL) return false;
+		return this->Filter(this->filter_func_list[this->filter_type], filter_data);
 	}
 
 	/**
