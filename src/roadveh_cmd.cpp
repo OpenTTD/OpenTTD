@@ -1202,24 +1202,6 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 	return dist;
 }
 
-enum {
-	RDE_NEXT_TILE = 0x80,
-	RDE_TURNED    = 0x40,
-
-	/* Start frames for when a vehicle enters a tile/changes its state.
-	 * The start frame is different for vehicles that turned around or
-	 * are leaving the depot as the do not start at the edge of the tile.
-	 * For trams there are a few different start frames as there are two
-	 * places where trams can turn. */
-	RVC_DEFAULT_START_FRAME                =  0,
-	RVC_TURN_AROUND_START_FRAME            =  1,
-	RVC_DEPOT_START_FRAME                  =  6,
-	RVC_START_FRAME_AFTER_LONG_TRAM        = 21,
-	RVC_TURN_AROUND_START_FRAME_SHORT_TRAM = 16,
-	/* Stop frame for a vehicle in a drive-through stop */
-	RVC_DRIVE_THROUGH_STOP_FRAME           =  7
-};
-
 struct RoadDriveEntry {
 	byte x, y;
 };

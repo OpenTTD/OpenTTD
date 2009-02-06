@@ -27,6 +27,7 @@
 #include "functions.h"
 #include "effectvehicle_func.h"
 #include "elrail_func.h"
+#include "roadveh.h"
 
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1537,7 +1538,7 @@ static VehicleEnterTileStatus VehicleEnter_Road(Vehicle *v, TileIndex tile, int 
 
 		case ROAD_TILE_DEPOT:
 			if (v->type == VEH_ROAD &&
-					v->u.road.frame == 11 &&
+					v->u.road.frame == RVC_DEPOT_STOP_FRAME &&
 					_roadveh_enter_depot_dir[GetRoadDepotDirection(tile)] == v->u.road.state) {
 				v->u.road.state = RVSB_IN_DEPOT;
 				v->vehstatus |= VS_HIDDEN;
