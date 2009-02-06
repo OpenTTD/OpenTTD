@@ -234,8 +234,9 @@ static inline bool IsWhitespace(WChar c)
 }
 
 #ifndef _GNU_SOURCE
-/* strndup is a GNU extension */
+/* strndup and strcasestr are GNU extensions */
 char *strndup(const char *s, size_t len);
+const char *strcasestr(const char *haystack, const char *needle);
 #endif /* !_GNU_SOURCE */
 
 #endif /* STRING_FUNC_H */
