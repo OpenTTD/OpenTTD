@@ -362,7 +362,9 @@ char *strndup(const char *s, size_t len)
 	memcpy(tmp, s, len);
 	return tmp;
 }
+#endif /* !_GNU_SOURCE */
 
+#ifdef DEFINE_STRCASESTR
 const char *strcasestr(const char *haystack, const char *needle)
 {
 	size_t hay_len = strlen(haystack);
@@ -376,4 +378,4 @@ const char *strcasestr(const char *haystack, const char *needle)
 
 	return NULL;
 }
-#endif /* !_GNU_SOURCE */
+#endif /* DEFINE_STRCASESTR */
