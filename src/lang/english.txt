@@ -3763,6 +3763,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Select u
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Mark all content that is an upgrade for existing content to be downloaded
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselect all
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Mark all content to be not downloaded
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Enter filter string
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Enter a keyword to filter the list for
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tag/name filter:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Download
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Start downloading the selected content
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Total download size: {WHITE}{BYTES}
