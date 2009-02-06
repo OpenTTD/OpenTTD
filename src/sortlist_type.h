@@ -32,11 +32,11 @@ struct Filtering {
 	byte criteria; ///< Filtering criteria
 };
 
-template <typename T, typename F = char>
+template <typename T, typename F = const char*>
 class GUIList : public SmallVector<T, 32> {
 public:
 	typedef int CDECL SortFunction(const T*, const T*);
-	typedef bool CDECL FilterFunction(const T*, const F*);
+	typedef bool CDECL FilterFunction(const T*, F);
 
 protected:
 	SortFunction * const *sort_func_list;     ///< the sort criteria functions
@@ -316,7 +316,7 @@ public:
 	 * @param filter_data Additional data passed to the filter function
 	 * @return true if the list has been altered by filtering
 	 */
-	bool Filter(FilterFunction *decide, const F *filter_data)
+	bool Filter(FilterFunction *decide, F filter_data)
 	{
 		/* Do not filter if the filter bit is not set */
 		if (!HASBITS(this->flags, VL_FILTER)) return false;
@@ -349,7 +349,7 @@ public:
 	 * @param filter_data Additional data passed to the filter function.
 	 * @return true if the list has been altered by filtering
 	 */
-	bool Filter(const F *filter_data)
+	bool Filter(F filter_data)
 	{
 		if (this->filter_func_list == NULL) return false;
 		return this->Filter(this->filter_func_list[this->filter_type], filter_data);
