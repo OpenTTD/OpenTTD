@@ -716,7 +716,7 @@ static RoadBits GetTownRoadBits(TileIndex tile)
 }
 
 /**
- * Check if a neighboring tile has a road
+ * Check if certain neighboring tiles have a road in a specific direction
  *
  * @param tile curent tile
  * @param dir target direction
@@ -726,6 +726,8 @@ static RoadBits GetTownRoadBits(TileIndex tile)
  */
 static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dist_multi)
 {
+	if (!IsValidTile(tile)) return false;
+
 	/* Lookup table for the used diff values */
 	const TileIndexDiff tid_lt[3] = {
 		TileOffsByDiagDir(ChangeDiagDir(dir, DIAGDIRDIFF_90RIGHT)),
@@ -747,7 +749,9 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
 		if (pos & 2) cur += tid_lt[2];
 
 		cur = (uint)(pos / 4) * cur; // Multiply for the fitting distance
-		if (IsValidTile(tile + TileXY(TileX(cur) / 2, TileY(cur) / 2)) && IsValidTile(tile + cur) && GetTownRoadBits(TILE_ADD(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
+
+		if (IsValidTile(tile + cur) &&
+			GetTownRoadBits(TILE_ADD(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
 	}
 	return false;
 }
