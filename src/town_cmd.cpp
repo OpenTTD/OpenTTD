@@ -716,13 +716,14 @@ static RoadBits GetTownRoadBits(TileIndex tile)
 }
 
 /**
- * Check if certain neighboring tiles have a road in a specific direction
+ * Check for parallel road inside a given distance.
+ *   Assuming a road from (tile - TileOffsByDiagDir(dir)) to tile,
+ *   is there a parallel road left or right of it within distance dist_multi?
  *
  * @param tile curent tile
  * @param dir target direction
  * @param dist_multi distance multiplyer
- * @return true if one of the neighboring tiles at the
- *  given distance is a road tile else false
+ * @return true if there is a parallel road
  */
 static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dist_multi)
 {
@@ -735,21 +736,15 @@ static bool IsNeighborRoadTile(TileIndex tile, const DiagDirection dir, uint dis
 		TileOffsByDiagDir(ReverseDiagDir(dir)),
 	};
 
-	/* We add 1 to the distance because we want to get 1 for
-	 * the min distance multiplyer and not 0.
-	 * Therefore we start at 4. The 4 is used because
-	 * there are 4 tiles per distance step to check. */
 	dist_multi = (dist_multi + 1) * 4;
 	for (uint pos = 4; pos < dist_multi; pos++) {
-		TileIndexDiff cur = 0;
-		/* For each even value of pos add the right TileIndexDiff
-		 * for each uneven value the left TileIndexDiff
-		 * for each with 2nd bit set (2,3,6,7,..) add the reversed TileIndexDiff */
-		cur += tid_lt[(pos & 1) ? 0 : 1];
+		/* Go (pos / 4) tiles to the left or the right */
+		TileIndexDiff cur = tid_lt[(pos & 1) ? 0 : 1] * (pos / 4);
+
+		/* Use the current tile as origin, or go one tile backwards */
 		if (pos & 2) cur += tid_lt[2];
 
-		cur = (uint)(pos / 4) * cur; // Multiply for the fitting distance
-
+		/* Test for roadbit parallel to dir and facing towards the middle axis */
 		if (IsValidTile(tile + cur) &&
 			GetTownRoadBits(TILE_ADD(tile, cur)) & DiagDirToRoadBits((pos & 2) ? dir : ReverseDiagDir(dir))) return true;
 	}
