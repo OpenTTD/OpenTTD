@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...els e
 STR_02A1_SMALL                                                  :{BLACK}Petit
 STR_02A2_MEDIUM                                                 :{BLACK}Mitjà
 STR_02A3_LARGE                                                  :{BLACK}Gran
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Aleatori
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Ciutat
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Les ciutats creixen més ràpid que els pobles normals{}Depenent de la configuració, són més grans quan es funden
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecciona la mida de la població
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Mida de població:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Disposició de les carreteres del poble:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Selecciona la disposició de les carreteres utilitzades per aquest poble
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Millors carreteres
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}graella 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}graella 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Aleatori
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostra el darrer missatge o notícia
@@ -1191,11 +1201,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Només normal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Només avançada
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Totes
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Disposició de carreteres pels nous pobles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :predeterminat
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :millors carreteres
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :graella 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :graella 3x3
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :aleatori
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Els pobles poden construir carreteres: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posició de la barra d'eines principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerra

@@ -762,9 +762,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...abiem
 STR_02A1_SMALL                                                  :{BLACK}Mazs
 STR_02A2_MEDIUM                                                 :{BLACK}Vidējs
 STR_02A3_LARGE                                                  :{BLACK}Liels
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Nejaušs
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Pilsēta
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Lielpilsētas attīstās ātrāk kā mazpilsētas{}Atkarībā no uzstādījumiem tās dibināšanas brīdī ir lielākas.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Norādīt pilsētas izmērus
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Pilsētas izmēri:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Pilsētas ceļu izskats:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Uzslēgt pilsētas ceļa izskatu
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Oriģināls
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Labāks ceļš
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 režģis
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 režģis
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Nejaušs
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Parādīt pēdējo ziņojumu vai avīzes rakstu
@@ -1187,15 +1197,18 @@ STR_CONFIG_PATCHES_DEFAULT_SIGNAL_TYPE                          :{LTBLUE}Noklus�
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_NORMAL                        :Bloka signāli
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBS                           :Ceļa signāli
 STR_CONFIG_PATCHES_DEFAULT_SIGNAL_PBSOWAY                       :Vienvirziena ceļa signāli
+STR_CONFIG_PATCHES_CYCLE_SIGNAL_TYPES                           :{LTBLUE}Braukt cauri sgnālu tipiem: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Bloķēt tikai signālus
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Tikai ceļa signāli
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Visi
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Ceļu izskats jaunām pilsētām: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :noklusētais
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :labāki ceļi
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 režģis
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 režģis
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :pēc nejaušības
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Pilsētām ir atļauts būvēt ceļu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Galvenās rīkjoslas izvietojums: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Pa kreisi
@@ -3258,12 +3271,14 @@ STR_NEWGRF_ERROR_UNSET_SWITCH                                   :{SKIP}{STRING} 
 STR_NEWGRF_ERROR_INVALID_PARAMETER                              :{SKIP}Nepareizs parametrs priekš {STRING}: parametrs {STRING} ({NUM})
 STR_NEWGRF_ERROR_LOAD_BEFORE                                    :{SKIP}{STRING} jābūt ielādētam pirms {STRING}.
 STR_NEWGRF_ERROR_LOAD_AFTER                                     :{SKIP}{STRING} jābūt ielādētam pēc {STRING}.
+STR_NEWGRF_ERROR_OTTD_VERSION_NUMBER                            :{SKIP}{STRING} nepieciešama Open TTD versija {STRING} vai labāka.
 STR_NEWGRF_ERROR_AFTER_TRANSLATED_FILE                          :GRF fails radīts tulkošanai
 STR_NEWGRF_ERROR_TOO_MANY_NEWGRFS_LOADED                        :Pārāk daudz NewGRF ir ielādēti.
 STR_NEWGRF_ERROR_STATIC_GRF_CAUSES_DESYNC                       :Ielādē {STRING} kā statisks NewGRF {STRING} var radīt desinhronizāciju.
 STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Negaidīts sprite.
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Nezināma darbība 0 īpašumu
 STR_NEWGRF_ERROR_INVALID_ID                                     :Mēģina lietot neesošu ID.
+STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} satur bojātu spraitu.Visi bojātie spraiti tiks parādīti ar sarkanu jautājuma zīmi (?)
 STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Satur daudzējādu Darbību 8 ierakstus
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Ielādēt izvēlēto shēmu
@@ -3281,6 +3296,7 @@ STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Pārviet
 STR_NEWGRF_MOVEDOWN                                             :{BLACK}Uz leju
 STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Pārvietot atlasīto NewGRF failu saraksta apakšā
 STR_NEWGRF_FILE_TIP                                             :{BLACK}Instalēto NewGRF failu saraksts. Klik uz faila, lai mainītu tā parametrus
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametri: {SILVER}{STRING}
 STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Ievadi NewGRF parametrus
 STR_NEWGRF_NO_INFO                                              :{BLACK}Informācija nav pieejama
 
@@ -3668,6 +3684,12 @@ STR_BUILD_SIGNAL_SEMAPHORE_COMBO_TIP                            :{BLACK}Signāls
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_TIP                              :{BLACK}Ceļa signāls (semaphore){}Ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens rezervējis drošu apstāšanās punktu. Standart ceļa signāli var tikt padots no muguras.
 STR_BUILD_SIGNAL_SEMAPHORE_PBS_OWAY_TIP                         :{BLACK}Viena veida ceļa signāls (semaphore){}Viena veida ceļa signāls ļauj vairāk kā vienam vilcienam iebraukt signāla blokā vienlaicīgi, ja vien vilciens rezervējis drošu apstāšanās punktu.Šis signāls nevar tikt padots no muguras.
 STR_BUILD_SIGNAL_ELECTRIC_NORM_TIP                              :{BLACK}Bloķējoš signāls (elektrisks){}Šis ir pamata signāls,kas ļauj vienlaicīgi tikai vienam vilcienam atrasties uz konkrētajām sliedēm, vai bloka.
+STR_BUILD_SIGNAL_ELECTRIC_ENTRY_TIP                             :{BLACK}Izejas zignāls (electric){}Zaļš līdz parādās vēl viena zaļā izeja-signāls no konkrētām sekcijas sliedēm. Citādi tas parādās sarkans.
+STR_BUILD_SIGNAL_ELECTRIC_EXIT_TIP                              :{BLACK}Izejas-Signāls (electric){}Izturas tā pat kā bloka signāls, bet nepieciešamības gadījumā var pārvērsties korektā  izejas krāsā arī kominētajiem signāliem.
+STR_BUILD_SIGNAL_ELECTRIC_COMBO_TIP                             :{BLACK}Kombo-signāls (electric){}Kominētais signāls darbojas kā ieejas un izejas signāls.tas ļauj radīt lielu signālu tīklu.
+STR_BUILD_SIGNAL_ELECTRIC_PBS_TIP                               :{BLACK}Ceļa-Signāls (electric){}Ceļa signāls ļaj vairāk kā vienam vilcienam iebraukt signāla blokā tājā pat laikā,ja vien ir pieejams drošs apstāšanās ceļš. Standarta signāls var tikt izvietots no mugurpuses
+STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TIP                          :{BLACK}Viena ceļa signāls (electric){}Signāls ļauj vairākiem vilcieniem iebraukt signāla blokā, ja vien rodams drošs apstāšanās ceļš.šis signāls nav izvietojams no muguras.
+STR_SIGNAL_CONVERT_TIP                                          :{BLACK}Signāla pārveidotājs (electric){}kad aktivizēts jau esošs signāls kļūs par norādīto signāla tipu un variantuCTRL un klikšķis, lai iezīmētu patreizējo variantu.
 STR_DRAG_SIGNALS_DENSITY_TIP                                    :{BLACK}Vilkt signālu biežumu
 STR_DRAG_SIGNALS_DENSITY_DECREASE_TIP                           :{BLACK}Samazināt signālu biežumu
 STR_DRAG_SIGNALS_DENSITY_INCREASE_TIP                           :{BLACK}Palielināt signālu biežumu
@@ -3744,7 +3766,11 @@ STR_CONTENT_DETAIL_SUBTITLE_AUTOSELECTED                        :{SILVER}Šis at
 STR_CONTENT_DETAIL_SUBTITLE_ALREADY_HERE                        :{SILVER}Jums jau šis ir.
 STR_CONTENT_DETAIL_SUBTITLE_DOES_NOT_EXIST                      :{SILVER}Šī materiāla saturs ir nezināms, tādēļ nav iespejams to lejupielādēt OpenTTD
 STR_CONTENT_DETAIL_UPDATE                                       :{SILVER}Jau esoša aizvietošanai{STRING}
+STR_CONTENT_DETAIL_NAME                                         :{SILVER}Vārds: {WHITE}{STRING}
+STR_CONTENT_DETAIL_VERSION                                      :{SILVER}Versija: {WHITE}{STRING}
+STR_CONTENT_DETAIL_DESCRIPTION                                  :{SILVER}Apraksts: {WHITE}{STRING}
 STR_CONTENT_DETAIL_URL                                          :{SILVER}URL: {WHITE}{STRING}
+STR_CONTENT_DETAIL_TYPE                                         :{SILVER}Tips: {WHITE}{STRING}
 STR_CONTENT_DETAIL_FILESIZE                                     :{SILVER}Izmērs: {WHITE}{BYTES}
 STR_CONTENT_DETAIL_SELECTED_BECAUSE_OF                          :{SILVER}Iezīmēts, jo: {WHITE}{STRING}
 STR_CONTENT_DETAIL_DEPENDENCIES                                 :{SILVER}Dependencies: {WHITE}{STRING}

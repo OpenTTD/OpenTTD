@@ -761,9 +761,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...يج�
 STR_02A1_SMALL                                                  :{BLACK}صغير
 STR_02A2_MEDIUM                                                 :{BLACK}وسط
 STR_02A3_LARGE                                                  :{BLACK}كبير
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK} عشوائي
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}مدينة
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK} المدن الكبيرة تنمو اسرع من المدن العادية. {} كلما كانت اكبر عند انشائها, بالاعتماد على الاعدادات.
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}اختر حجم المدينة
 STR_02A5_TOWN_SIZE                                              :{YELLOW}حجم المدينة:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW} تصميم طرق المدينة
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK} اختر تصميم الطرق لهذه المدينة
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK} اصلي
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK} طرق افضل
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK} نمط 2 * 2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK} نمط 3 * 3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK} عشوائي
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}اظهر اخر رسالة / تقرير
@@ -1192,11 +1202,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :اشارات ا
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :اشارات الطريق فقط
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :الكل
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE} تصميم الطرق للمدن الجديدة : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :قياسي
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :طرق افضل
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :شبكة 2*2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :شبكة 3*3
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :عشوائي
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE} السماح للمدن ببناء طرق: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}موقع شريط الأدوات الرئيسي:  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :يسار

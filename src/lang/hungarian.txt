@@ -826,9 +826,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...a hí
 STR_02A1_SMALL                                                  :{BLACK}Kicsi
 STR_02A2_MEDIUM                                                 :{BLACK}Közepes
 STR_02A3_LARGE                                                  :{BLACK}Nagy
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Véletlenszerű
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Város
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Átlagosnál gyorsabban növekedő városok{}Függ a beállításoktól, nagyobbak, mint alapításkor
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}A település méretének kiválasztása
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Új település mérete:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Település úthálózat építési módja:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Válassz úthálózati sémát ehhez a városhoz
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Eredeti
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Jobb utak
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2-es háló
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3-as háló
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Véletlenszerű
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Utolsó üzenet vagy újsághír megmutatása
@@ -1089,7 +1099,7 @@ STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Jármű
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Lejtőre és partokra építés: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSLOPE                                    :{LTBLUE}Építmények alatti tereprendezés engedélyezése (autoslope): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Élethűbben méretezett befogadókörzetek bekapcsolása: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Engedélyezi az ipari létesítmények és utak rombolását, stb: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Városi tulajdonú utak/hidak/alagutak rombolásának engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Óriásvonatok engedélyezése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL                     :{LTBLUE}Vonatok gyorsulási módja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TRAIN_ACCELERATION_MODEL_ORIGINAL            :Eredeti
@@ -1213,7 +1223,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Utolsó elérhe
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Legutoljára használt
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Vágányszakasz foglaltságának jelzése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Építő eszközök aktívak maradnak használat után: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Kiadás/bevétel adatok csoportosítása a pénzügyi ablakban: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Kiadási/bevételi adatok csoportosítása a pénzügyi ablakban: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Eszköztár mutatása, még ha nem is építhető semmi róla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
@@ -1257,11 +1267,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Csak normál
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Csak fejlett (PBS)
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Mind
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Új települések útépítési szerkezete: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :alapértelmezett
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :jobb utak
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2-es háló
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3-as háló
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :véletlenszerű
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Települések építhetnek utakat: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}A fő eszközsor helye: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Balra
@@ -1271,7 +1283,7 @@ STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Ablakig
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Ablakigazítás kiterjedése: {ORANGE}letiltva
 STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Nem zárolt ablakok maximális száma: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Nem zárolt ablakok maximális száma: {ORANGE}nincs korlát
-STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Település növekedési sebessége: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Települések növekedési sebessége: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Nincs
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lassú
 STR_CONFIG_PATCHES_TOWN_GROWTH_NORMAL                           :Normális

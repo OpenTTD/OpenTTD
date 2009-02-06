@@ -766,6 +766,7 @@ STR_SCENARIO_EDITOR_CITY                                        :{BLACK}עיר
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}בחר את גודל העיר
 STR_02A5_TOWN_SIZE                                              :{YELLOW}:גודל העיר
 
+
 STR_02B6                                                        :{1:STRING}  -  {0:STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}הצג הודעה או חדשות אחרונים
 STR_OFF                                                         :כבוי
@@ -1200,6 +1201,10 @@ STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{ORANGE}{STRING
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :שמאל
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :מרכז
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :ימין
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Window soft limit (non-sticky): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Window soft limit (non-sticky): {ORANGE}disabled
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{ORANGE}{STRING}{LTBLUE} : קצב ההתרחבות של העיירות
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :מבוטל
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :איטי
@@ -3617,6 +3622,7 @@ STR_INDUSTRY_SELECTION_HINT                                     :{BLACK}בחר �
 
 ############ Face formatting
 STR_FACE_ADVANCED                                               :{BLACK}מתקדם
+STR_FACE_ADVANCED_TIP                                           :{BLACK}בחירת תוי פנים מתקדמת
 STR_FACE_SIMPLE                                                 :{BLACK}פשוט
 STR_FACE_SIMPLE_TIP                                             :{BLACK}בחירה בסיסית של תוי פנים
 STR_FACE_LOAD                                                   :{BLACK}טען

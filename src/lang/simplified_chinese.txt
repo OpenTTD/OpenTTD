@@ -764,6 +764,7 @@ STR_SCENARIO_EDITOR_CITY                                        :{BLACK}城市
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}选择城镇规模
 STR_02A5_TOWN_SIZE                                              :{YELLOW}城镇规模：
 
+
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}显示最后一条消息或新闻
 STR_OFF                                                         :关闭
@@ -1191,11 +1192,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :仅有普通
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :仅有高级
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :全部
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}新建城镇道路自动延伸: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :默认
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :改良道路
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2格
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3格
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :随机
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}允许城镇建设道路: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}主工具栏位置：{ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :左侧

@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ambos
 STR_02A1_SMALL                                                  :{BLACK}Pequena
 STR_02A2_MEDIUM                                                 :{BLACK}Média
 STR_02A3_LARGE                                                  :{BLACK}Grande
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Aleatório
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Cidade
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Cidades crescem mais depressa que o normal{}Dependendo da configuração, são maiores aquando da sua fundação
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Seleccione o tamanho da cidade
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamanho da cidade:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Disposição de estradas na cidade:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Seleccione disposição das estradas utilizada para esta cidade
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Estradas melhores
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}grelha 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}grelha 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Aleatório
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostrar a última mensagem ou notícia
@@ -1147,6 +1157,7 @@ STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_LAST                       :Último dispon�
 STR_CONFIG_PATCHES_DEFAULT_RAIL_TYPE_MOST_USED                  :Mais utilizado
 STR_CONFIG_PATCHES_SHOW_TRACK_RESERVATION                       :{LTBLUE}Mostrar estrada de ferro reservada: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_PERSISTENT_BUILDINGTOOLS                     :{LTBLUE}Deixar ferramentas de construção activas depois de usadas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXPENSES_LAYOUT                              :{LTBLUE}Despesas do grupo na janela de finanças corporativas: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ALWAYS_BUILD_INFRASTRUCTURE                  :{LTBLUE}Mostrar ferram. de construção se não houver veículos adequados: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
@@ -1190,11 +1201,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Apenas faróis 
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Apenas faróis de rota
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todos
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Disposição de estradas para novas cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :por defeito
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :estradas melhores
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grelha 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :grelha 3x3
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :ao acaso
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}As cidades têm permissão para construir estradas: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posição da barra de ferramentas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Esquerda
@@ -1202,6 +1215,8 @@ STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centro
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Direita
 STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Raio de atracção de janelas: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Raio de atracção de janelas: {ORANGE}desactivado
+STR_CONFIG_PATCHES_SOFT_LIMIT                                   :{LTBLUE}Limite visual da janela (não-pegajoso): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SOFT_LIMIT_DISABLED                          :{LTBLUE}Limite visual da janela (não-pegajoso):{ORANGE}desactivado
 STR_CONFIG_PATCHES_TOWN_GROWTH                                  :{LTBLUE}Ritmo de crescimento de cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_GROWTH_NONE                             :Nenhum
 STR_CONFIG_PATCHES_TOWN_GROWTH_SLOW                             :Lento
@@ -3265,6 +3280,7 @@ STR_NEWGRF_ERROR_UNEXPECTED_SPRITE                              :Rotina inespera
 STR_NEWGRF_ERROR_UNKNOWN_PROPERTY                               :Propriedade da Acção 0 desconhecida.
 STR_NEWGRF_ERROR_INVALID_ID                                     :Tentativa de usar ID inválido.
 STR_NEWGRF_ERROR_CORRUPT_SPRITE                                 :{YELLOW}{STRING} contém uma rotina corrompida. As rotinas corrompidas serão assinaladas com um ponto de interrogação (?) vermelho.
+STR_NEWGRF_ERROR_MULTIPLE_ACTION_8                              :Contém 8 entradas de acção múltipla
 
 STR_NEWGRF_PRESET_LIST_TIP                                      :{BLACK}Carregar a predefinição seleccionada
 STR_NEWGRF_PRESET_SAVE                                          :{BLACK}Guardar
@@ -3401,6 +3417,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Pression
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Ordem de ajuste não foi bem sucedida - parado {VEHICLE}
 
 ############ Lists rail types
 

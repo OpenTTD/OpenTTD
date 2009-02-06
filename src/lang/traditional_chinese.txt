@@ -763,6 +763,7 @@ STR_SCENARIO_EDITOR_CITY                                        :{BLACK}城市
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}選擇市鎮大小
 STR_02A5_TOWN_SIZE                                              :{YELLOW}市鎮大小：
 
+
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}顯示上次訊息/新聞報告
 STR_OFF                                                         :關閉
@@ -1588,11 +1589,11 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :伺服器已滿
 ############ End of leave-in-this-order
 STR_NETWORK_SERVER_MESSAGE                                      :*** {2:STRING}
 ############ Leave those lines in this order!!
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :遊戲暫停 (玩家人數不足)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :遊戲繼續 (玩家人數足夠)
-STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :遊戲暫停 (連接用戶端中)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :遊戲繼續 (用戶端已連接)
-STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :遊戲繼續 (用戶端連接失敗)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_PLAYERS                  :遊戲暫停 (玩家不足)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_PLAYERS                :遊戲繼續 (玩家足數)
+STR_NETWORK_SERVER_MESSAGE_GAME_PAUSED_CONNECT                  :遊戲暫停 (鏈入客戶端)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT                :遊戲繼續 (客戶端鏈入成功)
+STR_NETWORK_SERVER_MESSAGE_GAME_UNPAUSED_CONNECT_FAIL           :遊戲繼續 (客戶端鏈入失敗)
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_LEAVING                                      :離開中
 STR_NETWORK_CLIENT_JOINED                                       :*** {STRING} 已加入遊戲
@@ -2982,6 +2983,7 @@ STR_9012_CAPACITY                                               :{BLACK}容量�
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...必須停在車庫内
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}無法出售車輛...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}無法停止/起動車輛...
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{VEHICLE} 正在車庫待命
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}正前往 {TOWN} 車庫
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}正前往 {TOWN} 車庫，{VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}在 {TOWN} 車庫維護中
@@ -3063,6 +3065,7 @@ STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}正前�
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}正前往 {TOWN} 船塢，{VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}正在 {TOWN} 船塢維護中
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}正在 {TOWN} 船塢維護中，{VELOCITY}
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{VEHICLE} 正在船塢待命
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}興建碼頭
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}興建船塢 (用以購買/維護船舶)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}船舶 - 點選船舶可看到詳細資料
@@ -3127,6 +3130,7 @@ STR_HEADING_FOR_HANGAR                                          :{ORANGE}正前�
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}正前往 {STATION} 機棚，{VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}在 {STATION} 機棚維護中
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}在 {STATION} 機棚維護中，{VELOCITY}
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{VEHICLE} 正在機庫待命
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}前方有飛機
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}無法停止/起動飛機...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}飛機正在飛行中

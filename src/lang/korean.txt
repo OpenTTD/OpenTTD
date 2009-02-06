@@ -652,7 +652,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}도시�
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...맵에 더이상 공간이 없습니다!
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}도시의 크기 키우기
 STR_023C_EXPAND                                                 :{BLACK}확장하기
-STR_023D_RANDOM_TOWN                                            :{BLACK}무작위
+STR_023D_RANDOM_TOWN                                            :{BLACK}무작위 마을 건설
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}무작위로 도시를 건설합니다.
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}산업시설 만들기
 STR_0240_COAL_MINE                                              :{BLACK}석탄 광산
@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...교�
 STR_02A1_SMALL                                                  :{BLACK}소형
 STR_02A2_MEDIUM                                                 :{BLACK}중형
 STR_02A3_LARGE                                                  :{BLACK}대형
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}임의
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}도시
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}도시는 보통 마을보다 더 빠르게 성장합니다{}세팅에 따라 그들이 만들어졌을때 더 큽니다
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}도시 크기 선택
 STR_02A5_TOWN_SIZE                                              :{YELLOW}도시 크기:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}도시도로설계:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}이 마을에 사용할 도로 설계를 선택합니다
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}오르지날
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}개선된 도로
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 칸
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 칸
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}임의
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}마지막 메시지/뉴스 보기
@@ -1191,11 +1201,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :일반 신호�
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :경로 신호기만
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :모두
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}새 마을에서 사용할 도로설계: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :기본값
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :개선된 도로
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 칸
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 칸
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :무작위
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}마을에서 도로건설 허용: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}주메뉴의 위치 : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :왼쪽
@@ -1300,7 +1312,7 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}자동 �
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...시나리오에 도시가 없습니다.
 
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}무작위로 지형을 만드시겠습니까?
-STR_MANY_RANDOM_TOWNS                                           :{BLACK}무작위 도시 건설
+STR_MANY_RANDOM_TOWNS                                           :{BLACK}도시 여러개를 무작위 건설
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}무작위로 도시를 건설합니다.
 STR_MANY_RANDOM_INDUSTRIES                                      :무작위 산업시설 건설
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}무작위로 산업시설을 건설합니다.

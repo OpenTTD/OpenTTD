@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...ambel
 STR_02A1_SMALL                                                  :{BLACK}Mic
 STR_02A2_MEDIUM                                                 :{BLACK}Mediu
 STR_02A3_LARGE                                                  :{BLACK}Mare
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Aleator
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Oras
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Metropolele cresc mai repede decat oraşele{}În funcţie de setări, sunt mai mari când sunt fondate
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Alege mărimea oraşului
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Mărime oraş:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Modelul drumului:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Alege modelul de drum folosit pentru acest oraş
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Drumuri mai bune
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Grilă 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Grilă 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Aleator
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Re-afişează ultimul mesaj
@@ -1191,11 +1201,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Doar normal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Doar avansat
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Toate
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Modelul drumurilor pentru oraşele noi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :implicit
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :drumuri mai bune
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :grila 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :grila 3x3
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :aleator
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Oraşele pot construi drumuri: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Pozitia listei cu instrumente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :stânga

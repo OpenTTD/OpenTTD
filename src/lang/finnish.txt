@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...silla
 STR_02A1_SMALL                                                  :{BLACK}Pieni
 STR_02A2_MEDIUM                                                 :{BLACK}Keskisuuri
 STR_02A3_LARGE                                                  :{BLACK}Suuri
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Sattumanvarainen
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Kaupunki
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Suurkaupungit kasvavat nopeammin kuin tavalliset kaupungit{}Asetuksista riippuen, ne ovat suurempia perustettaessa
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Valitse kaupungin koko.
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Kaupungin koko:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Kaupungin tiekaava:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Valitse tiekaava tälle kaupungille
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Alkuperäinen
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Parempia teitä
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 ruudukko
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 ruudukko
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Sattumanvarainen
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Näytä viimeisin viesti tai uutisraportti.
@@ -1191,11 +1201,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Vain tavallinen
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Vain edistynyt
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Kaikki
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Uusissa kaupungeissa käytettävä tiekaava: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :oletus
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :parempia teitä
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 ruudukko
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 ruudukko
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :satunnainen
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Kaupungit saavat rakentaa teitä: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Päätyökalupalkin sijainti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :vasen
@@ -3751,6 +3763,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Valitse 
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Valitse kaikki sisältö, joka on päivitys nykyiseen sisältöön ladattavaksi
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Poista valinnat
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Poista kaikesta sisällöstä valinta ladattavaksi
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Syötä suodatin teksti
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Syötä avainsana suodattaaksesi listan
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Tagi/nimi suodatus:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Lataa
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Aloita valitun sisällön lataaminen
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Latausten koko: {WHITE}{BYTES}

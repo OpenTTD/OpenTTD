@@ -761,9 +761,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...Brüc
 STR_02A1_SMALL                                                  :{BLACK}Klein
 STR_02A2_MEDIUM                                                 :{BLACK}Mittel
 STR_02A3_LARGE                                                  :{BLACK}Groß
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Zufällig
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stadt
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Städte wachsen schneller als normale Orte{}Abhängig von den Einstellungen sind diese größer wenn sie gegründet werden
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Stadtgröße bestimmen
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadtgröße:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Stadtstraßenanordnung:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Wähle die Straßenanordnung für diese Stadt
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Bessere Straßen
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 Muster
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 Muster
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Zufall
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Letzte Nachricht oder letzten Bericht anzeigen
@@ -1192,11 +1202,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :nur Normale
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :nur Pfadsignale
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Alle
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Straßenanordnung für neue Städte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :Vorgabe
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :bessere Straßen
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2×2-Gitter
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3×3-Gitter
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :zufällig
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Erlaube Städten Straßen zu bauen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position der Werkzeugleiste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links

@@ -760,9 +760,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...endsw
 STR_02A1_SMALL                                                  :{BLACK}Allsmay
 STR_02A2_MEDIUM                                                 :{BLACK}Ediummay
 STR_02A3_LARGE                                                  :{BLACK}Argelay
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Andomray
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Itycay
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Itiescay owgray asterfay anthay egularray ownstay{}Ependingday onway ettingssay, eythay areway iggerbay enwhay oundedfay
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Electsay owntay izesay
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Owntay izesay:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Owntay oadray ayoutlay:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Electsay oadray ayoutlay usedway orfay isthay owntay
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Originalway
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Etterbay oadsray
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2xay2 idgray
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3xay3 idgray
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Andomray
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Owshay astlay essagemay orway ewsnay eportray
@@ -1191,11 +1201,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Ockblay ignalss
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Advancedway onlyway
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allway
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Oadray ayoutlay orfay ewnay ownstay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :efaultday
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :etterbay oadsray
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2xay2 idgray
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3xay3 idgray
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :andomray
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Ownstay areway allowedway otay uildbay oadsray: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Ositionpay ofway ainmay oolbartay: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Eftlay
@@ -3751,6 +3763,9 @@ STR_CONTENT_SELECT_UPDATES_CAPTION                              :{BLACK}Electsay
 STR_CONTENT_SELECT_UPDATES_CAPTION_TIP                          :{BLACK}Arkmay allway ontentcay atthay isway anway updateway orfay existingway ontentcay otay ebay ownloadedday
 STR_CONTENT_UNSELECT_ALL_CAPTION                                :{BLACK}Unselectway allway
 STR_CONTENT_UNSELECT_ALL_CAPTION_TIP                            :{BLACK}Arkmay allway ontentcay otay ebay otnay ownloadedday
+STR_CONTENT_FILTER_OSKTITLE                                     :{BLACK}Enterway ilterfay ingstray
+STR_CONTENT_FILTER_TIP                                          :{BLACK}Enterway away eywordkay otay ilterfay ethay istlay orfay
+STR_CONTENT_FILTER_TITLE                                        :{BLACK}Agtay/amenay ilterfay:
 STR_CONTENT_DOWNLOAD_CAPTION                                    :{BLACK}Ownloadday
 STR_CONTENT_DOWNLOAD_CAPTION_TIP                                :{BLACK}Artstay ownloadingday ethay electedsay ontentcay
 STR_CONTENT_TOTAL_DOWNLOAD_SIZE                                 :{SILVER}Otaltay ownloadday izesay: {WHITE}{BYTES}

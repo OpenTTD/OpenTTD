@@ -761,9 +761,19 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...los d
 STR_02A1_SMALL                                                  :{BLACK}Pequeña
 STR_02A2_MEDIUM                                                 :{BLACK}Mediana
 STR_02A3_LARGE                                                  :{BLACK}Grande
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Aleatorio
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Ciudad
+STR_SCENARIO_EDITOR_CITY_TOOLTIP                                :{BLACK}Las ciudades crecen más rápido que las villas normales{}Dependiendo de los ajustes, son mayores al ser fundadas
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Selecciona el tamaño de la población
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Tamaño población:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Patrón de carreteras en ciudades:
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Seleccionar patrón de carreteras para esta ciudad
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Original
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Mejores carreteras
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}Rejilla de 2x2
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}Rejilla 3x3
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Aleatorio
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Mostrar último mensaje/noticia
@@ -1192,11 +1202,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Solo normales
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Solo avanzada
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Todas
 
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Patrón de construcción de carreteras para las nuevas ciudades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :por defecto
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :mejores carreteras
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :rejilla 2x2
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :rejilla 3x3
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :aleatorio
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Permitir que las ciudades construyan carreteras: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posición de la barra de herramientas principal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Izquierda

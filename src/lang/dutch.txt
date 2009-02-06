@@ -760,9 +760,18 @@ STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...uitei
 STR_02A1_SMALL                                                  :{BLACK}Klein
 STR_02A2_MEDIUM                                                 :{BLACK}Middelmatig
 STR_02A3_LARGE                                                  :{BLACK}Groot
+STR_SELECT_TOWN_SIZE_RANDOM                                     :{BLACK}Willekeurig
 STR_SCENARIO_EDITOR_CITY                                        :{BLACK}Stad
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Kies stadsgrootte
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Stadsgrootte:
+
+STR_TOWN_ROAD_LAYOUT                                            :{YELLOW}Wegpatroon
+STR_SELECT_TOWN_ROAD_LAYOUT                                     :{BLACK}Selecteer het wegpatroon voor deze stad
+STR_SELECT_LAYOUT_ORIGINAL                                      :{BLACK}Origineel
+STR_SELECT_LAYOUT_BETTER_ROADS                                  :{BLACK}Verbeterd
+STR_SELECT_LAYOUT_2X2_GRID                                      :{BLACK}2x2 raster
+STR_SELECT_LAYOUT_3X3_GRID                                      :{BLACK}3x3 raster
+STR_SELECT_LAYOUT_RANDOM                                        :{BLACK}Willekeurig
 
 STR_02B6                                                        :{STRING} - {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Laat laatste (nieuws)bericht zien
@@ -1191,11 +1200,13 @@ STR_CONFIG_PATCHES_CYCLE_SIGNAL_NORMAL                          :Alleen normaal
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_PBS                             :Alleen geavanceerd
 STR_CONFIG_PATCHES_CYCLE_SIGNAL_ALL                             :Allemaal
 
-STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :standaard
+STR_CONFIG_PATCHES_TOWN_LAYOUT                                  :{LTBLUE}Wegpatroon voor nieuwe steden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOWN_LAYOUT_DEFAULT                          :origineel
 STR_CONFIG_PATCHES_TOWN_LAYOUT_BETTER_ROADS                     :betere wegen
 STR_CONFIG_PATCHES_TOWN_LAYOUT_2X2_GRID                         :2x2 raster
 STR_CONFIG_PATCHES_TOWN_LAYOUT_3X3_GRID                         :3x3 raster
 STR_CONFIG_PATCHES_TOWN_LAYOUT_RANDOM                           :willekeurig
+STR_CONFIG_PATCHES_ALLOW_TOWN_ROADS                             :{LTBLUE}Steden mogen wegen bouwen: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Positie van algemene toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Links
@@ -3506,7 +3517,7 @@ STR_BORDER_FREEFORM                                             :{BLACK}Vrij vor
 STR_BORDER_WATER                                                :{BLACK}Water
 STR_BORDER_RANDOM                                               :{BLACK}Willekeurig
 STR_BORDER_RANDOMIZE                                            :{BLACK}Willekeurig
-STR_BORDER_MANUAL                                               :{BLACK}Handleiding
+STR_BORDER_MANUAL                                               :{BLACK}Handmatig
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein
