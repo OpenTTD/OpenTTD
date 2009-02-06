@@ -303,10 +303,10 @@ public:
 
 		/* First, try clients */
 		if (*item < MAX_CLIENT_SLOTS) {
-			if (*item + 1 < GetNetworkClientInfoPoolSize()) {
+			if (*item < GetNetworkClientInfoPoolSize()) {
 				/* Skip inactive clients */
 				NetworkClientInfo *ci;
-				FOR_ALL_CLIENT_INFOS_FROM(ci, *item + 1) break;
+				FOR_ALL_CLIENT_INFOS_FROM(ci, *item) break;
 				if (ci != NULL) {
 					*item = ci->index;
 					return ci->client_name;
