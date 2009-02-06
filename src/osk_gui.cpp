@@ -120,7 +120,7 @@ struct OskWindow : public Window {
 
 			if (!IsValidChar(c, this->qs->afilter)) return;
 
-			if (InsertTextBufferChar(&this->qs->text, c)) this->InvalidateWidget(OSK_WIDGET_TEXT);
+			if (InsertTextBufferChar(&this->qs->text, c)) this->InvalidateParent();
 
 			if (HasBit(_keystate, KEYS_SHIFT)) {
 				ToggleBit(_keystate, KEYS_SHIFT);
@@ -130,11 +130,9 @@ struct OskWindow : public Window {
 			return;
 		}
 
-		bool delete_this = false;
-
 		switch (widget) {
 			case OSK_WIDGET_BACKSPACE:
-				if (DeleteTextBufferChar(&this->qs->text, WKC_BACKSPACE)) this->InvalidateWidget(OSK_WIDGET_TEXT);
+				if (DeleteTextBufferChar(&this->qs->text, WKC_BACKSPACE)) this->InvalidateParent();
 				break;
 
 			case OSK_WIDGET_SPECIAL:
@@ -156,15 +154,15 @@ struct OskWindow : public Window {
 				break;
 
 			case OSK_WIDGET_SPACE:
-				if (InsertTextBufferChar(&this->qs->text, ' ')) this->InvalidateWidget(OSK_WIDGET_TEXT);
+				if (InsertTextBufferChar(&this->qs->text, ' ')) this->InvalidateParent();
 				break;
 
 			case OSK_WIDGET_LEFT:
-				if (MoveTextBufferPos(&this->qs->text, WKC_LEFT)) this->InvalidateWidget(OSK_WIDGET_TEXT);
+				if (MoveTextBufferPos(&this->qs->text, WKC_LEFT)) this->InvalidateParent();
 				break;
 
 			case OSK_WIDGET_RIGHT:
-				if (MoveTextBufferPos(&this->qs->text, WKC_RIGHT)) this->InvalidateWidget(OSK_WIDGET_TEXT);
+				if (MoveTextBufferPos(&this->qs->text, WKC_RIGHT)) this->InvalidateParent();
 				break;
 
 			case OSK_WIDGET_OK:
@@ -176,7 +174,7 @@ struct OskWindow : public Window {
 						return;
 					}
 				}
-				delete_this = true;
+				delete this;
 				break;
 
 			case OSK_WIDGET_CANCEL:
@@ -188,13 +186,20 @@ struct OskWindow : public Window {
 					strcpy(qs->text.buf, this->orig_str_buf);
 					UpdateTextBufferSize(&qs->text);
 					MoveTextBufferPos(&qs->text, WKC_END);
-					delete_this = true;
+					this->InvalidateParent();
+					delete this;
 				}
 				break;
 		}
-		/* make sure that the parent window's textbox also gets updated */
+	}
+
+	void InvalidateParent()
+	{
+		QueryStringBaseWindow *w = dynamic_cast<QueryStringBaseWindow*>(this->parent);
+		if (w != NULL) w->OnOSKInput(this->text_btn);
+
+		this->InvalidateWidget(OSK_WIDGET_TEXT);
 		if (this->parent != NULL) this->parent->InvalidateWidget(this->text_btn);
-		if (delete_this) delete this;
 	}
 
 	virtual void OnMouseLoop()

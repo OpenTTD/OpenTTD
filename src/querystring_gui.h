@@ -68,6 +68,7 @@ struct QueryStringBaseWindow : public Window, public QueryString {
 	void HandleEditBox(int wid);
 	HandleEditBoxResult HandleEditBoxKey(int wid, uint16 key, uint16 keycode, EventState &state);
 	virtual void OnOpenOSKWindow(int wid);
+	virtual void OnOSKInput(int wid) {}
 };
 
 void ShowOnScreenKeyboard(QueryStringBaseWindow *parent, int button, int cancel, int ok);
